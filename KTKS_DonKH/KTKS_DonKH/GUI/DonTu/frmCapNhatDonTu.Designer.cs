@@ -786,8 +786,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1094, 674);
+            this.ClientSize = new System.Drawing.Size(1457, 674);
             this.Controls.Add(this.chkcmbNoiNhanKTXM);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);

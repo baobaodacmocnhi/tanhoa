@@ -79,7 +79,7 @@ namespace KTKS_DonKH.GUI.DonTu
             txtDiaChi.Text = entity.SO + " " + entity.DUONG + _cDocSo.GetPhuongQuan(entity.Quan, entity.Phuong);
             txtGiaBieu.Text = entity.GB.ToString();
             txtDinhMuc.Text = entity.DM.ToString();
-            dgvLichSuNhanDon.DataSource = _cDonTu.getDSByDanhBo(entity.DANHBA);
+            dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(entity.DANHBA);
         }
 
         public void LoadDonTu(LinQ.DonTu entity)
@@ -140,7 +140,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 chkCT_GDKKD.Checked = entity.CT_GDKKD;
                 chkCT_GCNDTDHN.Checked = entity.CT_GCNDTDHN;
 
-                dgvLichSuNhanDon.DataSource = _cDonTu.getDSByDanhBo(entity.DanhBo);
+                dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(entity.DanhBo);
             }
             catch (Exception ex)
             {
@@ -181,8 +181,11 @@ namespace KTKS_DonKH.GUI.DonTu
             txtNguoiBao.Text = "";
             txtDienThoai.Text = "";
             dgvDanhBo.DataSource = null;
-            //dgvDanhBo.Rows.Clear();
-            //dgvDanhBo.Rows.Add();
+            if (dgvDanhBo.DataSource == null)
+            {
+                dgvDanhBo.Rows.Clear();
+                dgvDanhBo.Rows.Add();
+            }
 
             chkCT_HoaDon.Checked = false;
             chkCT_HK_KT3.Checked = false;

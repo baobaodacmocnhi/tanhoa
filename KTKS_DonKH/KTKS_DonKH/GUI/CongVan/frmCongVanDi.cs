@@ -21,12 +21,14 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.CongVan
 {
     public partial class frmCongVanDi : Form
     {
         CCongVanDi _cCongVanDi = new CCongVanDi();
+        CDonTu _cDonTu = new CDonTu();
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
@@ -67,6 +69,9 @@ namespace KTKS_DonKH.GUI.CongVan
             {
                 switch (cmbLoaiVanBan.SelectedItem.ToString())
                 {
+                    case "Đơn Từ Mới":
+                        TenTable = "DonTu";
+                        break;
                     case "Đơn Tổ Khách Hàng":
                         TenTable = "DonKH";
                         break;
@@ -258,7 +263,7 @@ namespace KTKS_DonKH.GUI.CongVan
             if (chkCreateBy.Checked == true)
             {
                 if (string.IsNullOrEmpty(txtNoiDungTimKiem.Text.Trim()))
-                    dgvDSCongVan.DataSource = _cCongVanDi.GetDS(CTaiKhoan.MaUser,dateTu.Value, int.Parse(cmbTuGio.SelectedItem.ToString()), dateDen.Value, int.Parse(cmbDenGio.SelectedItem.ToString()));
+                    dgvDSCongVan.DataSource = _cCongVanDi.GetDS(CTaiKhoan.MaUser, dateTu.Value, int.Parse(cmbTuGio.SelectedItem.ToString()), dateDen.Value, int.Parse(cmbDenGio.SelectedItem.ToString()));
                 else
                     switch (cmbTimKiem.SelectedItem.ToString())
                     {
@@ -303,6 +308,29 @@ namespace KTKS_DonKH.GUI.CongVan
             {
                 switch (cmbLoaiVanBan.SelectedItem.ToString())
                 {
+                    case "Đơn Từ Mới":
+                        LinQ.DonTu_ChiTiet dontu_ChiTiet=null;
+                        if (txtTuMa.Text.Trim().Contains(".") == true)
+                        {
+                            string[] MaDons = txtTuMa.Text.Trim().Split('.');
+                            dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                        }
+                        else
+                        {
+                            dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(txtTuMa.Text.Trim()), 1);
+                            if (dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count > 1)
+                            {
+                                MessageBox.Show("Đơn Công Văn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                        if (dontu_ChiTiet != null)
+                        {
+                            txtDanhBo.Text = dontu_ChiTiet.DanhBo;
+                            txtHoTen.Text = dontu_ChiTiet.HoTen;
+                            txtDiaChi.Text = dontu_ChiTiet.DiaChi;
+                        }
+                        break;
                     case "Đơn Tổ Khách Hàng":
                         DonKH donkh = _cDonKH.Get(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = donkh.DanhBo;
@@ -480,8 +508,8 @@ namespace KTKS_DonKH.GUI.CongVan
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["LoaiVanBan"] = item.Cells["LoaiVanBan"].Value.ToString();
-                if (item.Cells["Ma"].Value.ToString().Length > 2)
-                    dr["Ma"] = item.Cells["Ma"].Value.ToString().Insert(item.Cells["Ma"].Value.ToString().Length - 2, "-");
+                //if (item.Cells["Ma"].Value.ToString().Length > 2)
+                dr["Ma"] = item.Cells["Ma"].Value.ToString();
                 dr["CreateDate"] = item.Cells["CreateDate"].Value.ToString();
                 if (item.Cells["DanhBo"].Value.ToString().Length == 11)
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");

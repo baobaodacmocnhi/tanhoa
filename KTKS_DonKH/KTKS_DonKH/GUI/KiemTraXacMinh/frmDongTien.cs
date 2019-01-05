@@ -177,7 +177,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 string DanhBo = txtDanhBo.Text.Trim();
                 Clear();
                 txtDanhBo.Text = DanhBo;
-                dgvDSKetQuaKiemTra.DataSource = _cKTXM.GetDS(txtDanhBo.Text.Trim());
+                dgvDSKetQuaKiemTra.DataSource = _cKTXM.getDS_ByDanhBo(txtDanhBo.Text.Trim());
             }
         }
 
@@ -288,10 +288,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void dgvDSKetQuaKiemTra_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvDSKetQuaKiemTra.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null&&e.Value.ToString()!="")
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
+            //if (dgvDSKetQuaKiemTra.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null&&e.Value.ToString()!="")
+            //{
+            //    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            //}
         }
 
         private void dgvDSKetQuaKiemTra_CellContentClick(object sender, DataGridViewCellEventArgs e)

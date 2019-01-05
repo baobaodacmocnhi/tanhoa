@@ -171,7 +171,21 @@ namespace KTKS_DonKH.GUI.DonTu
             _dontu_ChiTiet = null;
             _dontu_LichSu = null;
 
+            dateChuyen.Value = DateTime.Now;
             cmbNoiChuyen.SelectedIndex = -1;
+            for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
+            {
+                chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
+            }
+            for (int i = 0; i < chkcmbNoiNhanKTXM.Properties.Items.Count; i++)
+            {
+                chkcmbNoiNhanKTXM.Properties.Items[i].CheckState = CheckState.Unchecked;
+            }
+        }
+
+        public void ClearChuyenDon()
+        {
+            dateChuyen.Value = DateTime.Now;
             for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
             {
                 chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
@@ -233,7 +247,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                     //đi KTXM
                                     if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5")
                                     {
-                                        
+
                                         for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
                                             if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
                                             {
@@ -261,7 +275,6 @@ namespace KTKS_DonKH.GUI.DonTu
                                         _cDonTu.SubmitChanges();
                                     }
                                     flag = true;
-                                    chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
                                 }
                             if (flag == false)
                             {
@@ -297,7 +310,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                             //đi KTXM
                                             if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5")
                                             {
-                                                
+
                                                 for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
                                                     if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
                                                     {
@@ -329,7 +342,6 @@ namespace KTKS_DonKH.GUI.DonTu
                                                 _cDonTu.Them_LichSu(entity);
                                             }
                                             flag = true;
-                                            chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
                                         }
                                     if (flag == false)
                                     {
@@ -362,7 +374,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                                     //đi KTXM
                                                     if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5")
                                                     {
-                                                        
+
                                                         for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
                                                             if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
                                                             {
@@ -394,7 +406,6 @@ namespace KTKS_DonKH.GUI.DonTu
                                                         _cDonTu.Them_LichSu(entity);
                                                     }
                                                     flag = true;
-                                                    chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
                                                 }
                                             if (flag == false)
                                             {
@@ -424,7 +435,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                                         //đi KTXM
                                                         if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5")
                                                         {
-                                                            
+
                                                             for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
                                                                 if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
                                                                 {
@@ -459,7 +470,6 @@ namespace KTKS_DonKH.GUI.DonTu
                                                             _cDonTu.Them_LichSu(entity);
                                                         }
                                                         flag = true;
-                                                        //chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
                                                     }
                                                 if (flag == false)
                                                 {
@@ -478,8 +488,8 @@ namespace KTKS_DonKH.GUI.DonTu
                                             }
                                         }
                                 }
+                            ClearChuyenDon();
                             LoadLichSu();
-                            //dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("DonTu", _dontu.MaDon);
                         }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -515,8 +525,11 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 if (_cDonTu.Xoa_LichSu(_cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()))))
                 {
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadLichSu();
                 }
+                else
+                MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

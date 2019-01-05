@@ -182,8 +182,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             txtLoTrinh.Text = _dontxl.MLT;
                             txtHoTen.Text = _dontxl.HoTen;
                             txtDiaChi.Text = _dontxl.DiaChi;
-                            txtGiaBieu.Text = _dontxl.GiaBieu;
-                            txtDinhMuc.Text = _dontxl.DinhMuc;
+                            txtGiaBieu.Text = _dontxl.GiaBieu.Value.ToString();
+                            txtDinhMuc.Text = _dontxl.DinhMuc.Value.ToString();
                         }
                     }
                     else
@@ -211,8 +211,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 txtLoTrinh.Text = _dontbc.MLT;
                                 txtHoTen.Text = _dontbc.HoTen;
                                 txtDiaChi.Text = _dontbc.DiaChi;
-                                txtGiaBieu.Text = _dontbc.GiaBieu;
-                                txtDinhMuc.Text = _dontbc.DinhMuc;
+                                txtGiaBieu.Text = _dontbc.GiaBieu.Value.ToString();
+                                txtDinhMuc.Text = _dontbc.DinhMuc.Value.ToString();
                             }
                         }
                         else
@@ -239,8 +239,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 txtLoTrinh.Text = _dontkh.MLT;
                                 txtHoTen.Text = _dontkh.HoTen;
                                 txtDiaChi.Text = _dontkh.DiaChi;
-                                txtGiaBieu.Text = _dontkh.GiaBieu;
-                                txtDinhMuc.Text = _dontkh.DinhMuc;
+                                txtGiaBieu.Text = _dontkh.GiaBieu.Value.ToString();
+                                txtDinhMuc.Text = _dontkh.DinhMuc.Value.ToString();
                             }
                         }
                         else
@@ -361,6 +361,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 return;
                         }
                         cttttl.MaTTTL = _cTTTL.get(_dontu_ChiTiet.MaDon.Value).MaTTTL;
+                        cttttl.STT = _dontu_ChiTiet.STT.Value;
                     }
                     else
                         if (_dontkh != null)

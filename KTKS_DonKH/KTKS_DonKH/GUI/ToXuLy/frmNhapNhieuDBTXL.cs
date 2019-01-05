@@ -148,9 +148,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         if (item.Cells["MSThue"].Value != null)
                             dontxl.MSThue = item.Cells["MSThue"].Value.ToString();
                         if (item.Cells["GiaBieu"].Value != null)
-                            dontxl.GiaBieu = item.Cells["GiaBieu"].Value.ToString();
+                            dontxl.GiaBieu = int.Parse(item.Cells["GiaBieu"].Value.ToString());
                         if (item.Cells["DinhMuc"].Value != null)
-                            dontxl.DinhMuc = item.Cells["DinhMuc"].Value.ToString();
+                            dontxl.DinhMuc = int.Parse(item.Cells["DinhMuc"].Value.ToString());
                         if (item.Cells["Dot"].Value != null)
                             dontxl.Dot = item.Cells["Dot"].Value.ToString();
                         if (item.Cells["Ky"].Value != null)

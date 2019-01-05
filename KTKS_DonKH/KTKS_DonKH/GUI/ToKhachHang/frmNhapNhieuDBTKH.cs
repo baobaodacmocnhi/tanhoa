@@ -213,9 +213,9 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                             if (item.Cells["DiaChi"].Value != null)
                                 donkh.DiaChi = item.Cells["DiaChi"].Value.ToString();
                             if (item.Cells["GiaBieu"].Value != null)
-                                donkh.GiaBieu = item.Cells["GiaBieu"].Value.ToString();
+                                donkh.GiaBieu = int.Parse(item.Cells["GiaBieu"].Value.ToString());
                             if (item.Cells["DinhMuc"].Value != null)
-                                donkh.DinhMuc = item.Cells["DinhMuc"].Value.ToString();
+                                donkh.DinhMuc = int.Parse(item.Cells["DinhMuc"].Value.ToString());
                             if (item.Cells["Dot"].Value != null)
                                 donkh.Dot = item.Cells["Dot"].Value.ToString();
                             if (item.Cells["Ky"].Value != null)
@@ -319,9 +319,9 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                 if (item.Cells["DiaChiVP"].Value != null)
                                     donkh.DiaChi = item.Cells["DiaChiVP"].Value.ToString();
                                 if (item.Cells["GiaBieuVP"].Value != null)
-                                    donkh.GiaBieu = item.Cells["GiaBieuVP"].Value.ToString();
+                                    donkh.GiaBieu = int.Parse(item.Cells["GiaBieuVP"].Value.ToString());
                                 if (item.Cells["DinhMucVP"].Value != null)
-                                    donkh.DinhMuc = item.Cells["DinhMucVP"].Value.ToString();
+                                    donkh.DinhMuc = int.Parse(item.Cells["DinhMucVP"].Value.ToString());
                                 if (item.Cells["DotVP"].Value != null)
                                     donkh.Dot = item.Cells["DotVP"].Value.ToString();
                                 if (item.Cells["KyVP"].Value != null)

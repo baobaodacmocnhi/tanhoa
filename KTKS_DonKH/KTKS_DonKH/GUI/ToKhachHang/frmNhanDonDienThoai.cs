@@ -61,8 +61,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 {
                     dondt.HopDong = _hoadon.HOPDONG;
                     dondt.MSThue = _hoadon.MST;
-                    dondt.GiaBieu = _hoadon.GB.ToString();
-                    dondt.DinhMuc = _hoadon.DM.ToString();
+                    dondt.GiaBieu = _hoadon.GB;
+                    dondt.DinhMuc = (int)_hoadon.DM;
                     dondt.Dot = _hoadon.DOT.ToString();
                     dondt.Ky = _hoadon.KY.ToString();
                     dondt.Nam = _hoadon.NAM.ToString();

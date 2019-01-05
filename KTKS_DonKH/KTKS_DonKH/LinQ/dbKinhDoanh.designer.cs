@@ -940,6 +940,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonTBC> _DonTBC;
 		
+		private EntityRef<DonTu> _DonTu;
+		
 		private EntityRef<DonTXL> _DonTXL;
 		
     #region Extensibility Method Definitions
@@ -971,6 +973,7 @@ namespace KTKS_DonKH.LinQ
 			this._BamChi_ChiTiets = new EntitySet<BamChi_ChiTiet>(new Action<BamChi_ChiTiet>(this.attach_BamChi_ChiTiets), new Action<BamChi_ChiTiet>(this.detach_BamChi_ChiTiets));
 			this._DonKH = default(EntityRef<DonKH>);
 			this._DonTBC = default(EntityRef<DonTBC>);
+			this._DonTu = default(EntityRef<DonTu>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
@@ -1078,6 +1081,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonMoi != value))
 				{
+					if (this._DonTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonMoiChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonMoi = value;
@@ -1244,6 +1251,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaDonTBC = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonTBC");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_BamChi", Storage="_DonTu", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu
+		{
+			get
+			{
+				return this._DonTu.Entity;
+			}
+			set
+			{
+				DonTu previousValue = this._DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu.Entity = null;
+						previousValue.BamChis.Remove(this);
+					}
+					this._DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.BamChis.Add(this);
+						this._MaDonMoi = value.MaDon;
+					}
+					else
+					{
+						this._MaDonMoi = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu");
 				}
 			}
 		}
@@ -4450,6 +4491,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonTBC> _DonTBC;
 		
+		private EntityRef<DonTu> _DonTu;
+		
 		private EntityRef<DonTXL> _DonTXL;
 		
     #region Extensibility Method Definitions
@@ -4483,6 +4526,7 @@ namespace KTKS_DonKH.LinQ
 			this._CHDB_Phieus = new EntitySet<CHDB_Phieu>(new Action<CHDB_Phieu>(this.attach_CHDB_Phieus), new Action<CHDB_Phieu>(this.detach_CHDB_Phieus));
 			this._DonKH = default(EntityRef<DonKH>);
 			this._DonTBC = default(EntityRef<DonTBC>);
+			this._DonTu = default(EntityRef<DonTu>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
@@ -4590,6 +4634,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonMoi != value))
 				{
+					if (this._DonTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonMoiChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonMoi = value;
@@ -4782,6 +4830,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaDonTBC = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonTBC");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_CHDB", Storage="_DonTu", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu
+		{
+			get
+			{
+				return this._DonTu.Entity;
+			}
+			set
+			{
+				DonTu previousValue = this._DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu.Entity = null;
+						previousValue.CHDBs.Remove(this);
+					}
+					this._DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.CHDBs.Add(this);
+						this._MaDonMoi = value.MaDon;
+					}
+					else
+					{
+						this._MaDonMoi = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu");
 				}
 			}
 		}
@@ -13855,6 +13937,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonTBC> _DonTBC;
 		
+		private EntityRef<DonTu> _DonTu;
+		
 		private EntityRef<DonTXL> _DonTXL;
 		
     #region Extensibility Method Definitions
@@ -13887,6 +13971,7 @@ namespace KTKS_DonKH.LinQ
 			this._DCBD_ChiTietHoaDons = new EntitySet<DCBD_ChiTietHoaDon>(new Action<DCBD_ChiTietHoaDon>(this.attach_DCBD_ChiTietHoaDons), new Action<DCBD_ChiTietHoaDon>(this.detach_DCBD_ChiTietHoaDons));
 			this._DonKH = default(EntityRef<DonKH>);
 			this._DonTBC = default(EntityRef<DonTBC>);
+			this._DonTu = default(EntityRef<DonTu>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
@@ -13994,6 +14079,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonMoi != value))
 				{
+					if (this._DonTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonMoiChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonMoi = value;
@@ -14173,6 +14262,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaDonTBC = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonTBC");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_DCBD", Storage="_DonTu", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu
+		{
+			get
+			{
+				return this._DonTu.Entity;
+			}
+			set
+			{
+				DonTu previousValue = this._DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu.Entity = null;
+						previousValue.DCBDs.Remove(this);
+					}
+					this._DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.DCBDs.Add(this);
+						this._MaDonMoi = value.MaDon;
+					}
+					else
+					{
+						this._MaDonMoi = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu");
 				}
 			}
 		}
@@ -17412,9 +17535,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MSThue;
 		
-		private string _GiaBieu;
+		private System.Nullable<int> _GiaBieu;
 		
-		private string _DinhMuc;
+		private System.Nullable<int> _DinhMuc;
 		
 		private string _SH;
 		
@@ -17466,9 +17589,9 @@ namespace KTKS_DonKH.LinQ
     partial void OnDienThoaiChanged();
     partial void OnMSThueChanging(string value);
     partial void OnMSThueChanged();
-    partial void OnGiaBieuChanging(string value);
+    partial void OnGiaBieuChanging(System.Nullable<int> value);
     partial void OnGiaBieuChanged();
-    partial void OnDinhMucChanging(string value);
+    partial void OnDinhMucChanging(System.Nullable<int> value);
     partial void OnDinhMucChanged();
     partial void OnSHChanging(string value);
     partial void OnSHChanged();
@@ -17667,8 +17790,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="NVarChar(50)")]
-		public string GiaBieu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="Int")]
+		public System.Nullable<int> GiaBieu
 		{
 			get
 			{
@@ -17687,8 +17810,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="NVarChar(50)")]
-		public string DinhMuc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="Int")]
+		public System.Nullable<int> DinhMuc
 		{
 			get
 			{
@@ -18058,6 +18181,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonTBC> _DonTBC;
 		
+		private EntityRef<DonTu> _DonTu;
+		
 		private EntityRef<DonTXL> _DonTXL;
 		
     #region Extensibility Method Definitions
@@ -18089,6 +18214,7 @@ namespace KTKS_DonKH.LinQ
 			this._DongNuoc_ChiTiets = new EntitySet<DongNuoc_ChiTiet>(new Action<DongNuoc_ChiTiet>(this.attach_DongNuoc_ChiTiets), new Action<DongNuoc_ChiTiet>(this.detach_DongNuoc_ChiTiets));
 			this._DonKH = default(EntityRef<DonKH>);
 			this._DonTBC = default(EntityRef<DonTBC>);
+			this._DonTu = default(EntityRef<DonTu>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
@@ -18196,6 +18322,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonMoi != value))
 				{
+					if (this._DonTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonMoiChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonMoi = value;
@@ -18362,6 +18492,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaDonTBC = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonTBC");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_DongNuoc", Storage="_DonTu", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu
+		{
+			get
+			{
+				return this._DonTu.Entity;
+			}
+			set
+			{
+				DonTu previousValue = this._DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu.Entity = null;
+						previousValue.DongNuocs.Remove(this);
+					}
+					this._DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.DongNuocs.Add(this);
+						this._MaDonMoi = value.MaDon;
+					}
+					else
+					{
+						this._MaDonMoi = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu");
 				}
 			}
 		}
@@ -19724,9 +19888,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DienThoai;
 		
-		private string _GiaBieu;
+		private System.Nullable<int> _GiaBieu;
 		
-		private string _DinhMuc;
+		private System.Nullable<int> _DinhMuc;
 		
 		private string _Dot;
 		
@@ -19886,6 +20050,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<LichSuChuyenVanPhong> _LichSuChuyenVanPhongs;
 		
+		private EntitySet<ThuMoi> _ThuMois;
+		
 		private EntitySet<ToTrinh> _ToTrinhs;
 		
 		private EntitySet<TruyThuTienNuoc> _TruyThuTienNuocs;
@@ -19914,9 +20080,9 @@ namespace KTKS_DonKH.LinQ
     partial void OnDiaChiChanged();
     partial void OnDienThoaiChanging(string value);
     partial void OnDienThoaiChanged();
-    partial void OnGiaBieuChanging(string value);
+    partial void OnGiaBieuChanging(System.Nullable<int> value);
     partial void OnGiaBieuChanged();
-    partial void OnDinhMucChanging(string value);
+    partial void OnDinhMucChanging(System.Nullable<int> value);
     partial void OnDinhMucChanged();
     partial void OnDotChanging(string value);
     partial void OnDotChanged();
@@ -20070,6 +20236,7 @@ namespace KTKS_DonKH.LinQ
 			this._LichSuChuyenKhacs = new EntitySet<LichSuChuyenKhac>(new Action<LichSuChuyenKhac>(this.attach_LichSuChuyenKhacs), new Action<LichSuChuyenKhac>(this.detach_LichSuChuyenKhacs));
 			this._LichSuChuyenKTXMs = new EntitySet<LichSuChuyenKTXM>(new Action<LichSuChuyenKTXM>(this.attach_LichSuChuyenKTXMs), new Action<LichSuChuyenKTXM>(this.detach_LichSuChuyenKTXMs));
 			this._LichSuChuyenVanPhongs = new EntitySet<LichSuChuyenVanPhong>(new Action<LichSuChuyenVanPhong>(this.attach_LichSuChuyenVanPhongs), new Action<LichSuChuyenVanPhong>(this.detach_LichSuChuyenVanPhongs));
+			this._ThuMois = new EntitySet<ThuMoi>(new Action<ThuMoi>(this.attach_ThuMois), new Action<ThuMoi>(this.detach_ThuMois));
 			this._ToTrinhs = new EntitySet<ToTrinh>(new Action<ToTrinh>(this.attach_ToTrinhs), new Action<ToTrinh>(this.detach_ToTrinhs));
 			this._TruyThuTienNuocs = new EntitySet<TruyThuTienNuoc>(new Action<TruyThuTienNuoc>(this.attach_TruyThuTienNuocs), new Action<TruyThuTienNuoc>(this.detach_TruyThuTienNuocs));
 			this._TTTLs = new EntitySet<TTTL>(new Action<TTTL>(this.attach_TTTLs), new Action<TTTL>(this.detach_TTTLs));
@@ -20237,8 +20404,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="NVarChar(50)")]
-		public string GiaBieu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="Int")]
+		public System.Nullable<int> GiaBieu
 		{
 			get
 			{
@@ -20257,8 +20424,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="NVarChar(50)")]
-		public string DinhMuc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="Int")]
+		public System.Nullable<int> DinhMuc
 		{
 			get
 			{
@@ -21791,6 +21958,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_ThuMoi", Storage="_ThuMois", ThisKey="MaDon", OtherKey="MaDonTKH")]
+		public EntitySet<ThuMoi> ThuMois
+		{
+			get
+			{
+				return this._ThuMois;
+			}
+			set
+			{
+				this._ThuMois.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_ToTrinh", Storage="_ToTrinhs", ThisKey="MaDon", OtherKey="MaDon")]
 		public EntitySet<ToTrinh> ToTrinhs
 		{
@@ -22004,6 +22184,18 @@ namespace KTKS_DonKH.LinQ
 			entity.DonKH = null;
 		}
 		
+		private void attach_ThuMois(ThuMoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonKH = this;
+		}
+		
+		private void detach_ThuMois(ThuMoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonKH = null;
+		}
+		
 		private void attach_ToTrinhs(ToTrinh entity)
 		{
 			this.SendPropertyChanging();
@@ -22065,9 +22257,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MSThue;
 		
-		private string _GiaBieu;
+		private System.Nullable<int> _GiaBieu;
 		
-		private string _DinhMuc;
+		private System.Nullable<int> _DinhMuc;
 		
 		private string _Dot;
 		
@@ -22111,6 +22303,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<KTXM> _KTXMs;
 		
+		private EntitySet<ThuMoi> _ThuMois;
+		
 		private EntitySet<ToTrinh> _ToTrinhs;
 		
 		private EntitySet<TruyThuTienNuoc> _TruyThuTienNuocs;
@@ -22141,9 +22335,9 @@ namespace KTKS_DonKH.LinQ
     partial void OnDienThoaiChanged();
     partial void OnMSThueChanging(string value);
     partial void OnMSThueChanged();
-    partial void OnGiaBieuChanging(string value);
+    partial void OnGiaBieuChanging(System.Nullable<int> value);
     partial void OnGiaBieuChanged();
-    partial void OnDinhMucChanging(string value);
+    partial void OnDinhMucChanging(System.Nullable<int> value);
     partial void OnDinhMucChanged();
     partial void OnDotChanging(string value);
     partial void OnDotChanged();
@@ -22185,6 +22379,7 @@ namespace KTKS_DonKH.LinQ
 			this._DongNuocs = new EntitySet<DongNuoc>(new Action<DongNuoc>(this.attach_DongNuocs), new Action<DongNuoc>(this.detach_DongNuocs));
 			this._GianLans = new EntitySet<GianLan>(new Action<GianLan>(this.attach_GianLans), new Action<GianLan>(this.detach_GianLans));
 			this._KTXMs = new EntitySet<KTXM>(new Action<KTXM>(this.attach_KTXMs), new Action<KTXM>(this.detach_KTXMs));
+			this._ThuMois = new EntitySet<ThuMoi>(new Action<ThuMoi>(this.attach_ThuMois), new Action<ThuMoi>(this.detach_ThuMois));
 			this._ToTrinhs = new EntitySet<ToTrinh>(new Action<ToTrinh>(this.attach_ToTrinhs), new Action<ToTrinh>(this.detach_ToTrinhs));
 			this._TruyThuTienNuocs = new EntitySet<TruyThuTienNuoc>(new Action<TruyThuTienNuoc>(this.attach_TruyThuTienNuocs), new Action<TruyThuTienNuoc>(this.detach_TruyThuTienNuocs));
 			this._TTTLs = new EntitySet<TTTL>(new Action<TTTL>(this.attach_TTTLs), new Action<TTTL>(this.detach_TTTLs));
@@ -22372,8 +22567,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="NVarChar(50)")]
-		public string GiaBieu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="Int")]
+		public System.Nullable<int> GiaBieu
 		{
 			get
 			{
@@ -22392,8 +22587,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="NVarChar(50)")]
-		public string DinhMuc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="Int")]
+		public System.Nullable<int> DinhMuc
 		{
 			get
 			{
@@ -22794,6 +22989,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_ThuMoi", Storage="_ThuMois", ThisKey="MaDon", OtherKey="MaDonTBC")]
+		public EntitySet<ThuMoi> ThuMois
+		{
+			get
+			{
+				return this._ThuMois;
+			}
+			set
+			{
+				this._ThuMois.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_ToTrinh", Storage="_ToTrinhs", ThisKey="MaDon", OtherKey="MaDonTBC")]
 		public EntitySet<ToTrinh> ToTrinhs
 		{
@@ -22959,6 +23167,18 @@ namespace KTKS_DonKH.LinQ
 			entity.DonTBC = null;
 		}
 		
+		private void attach_ThuMois(ThuMoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTBC = this;
+		}
+		
+		private void detach_ThuMois(ThuMoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTBC = null;
+		}
+		
 		private void attach_ToTrinhs(ToTrinh entity)
 		{
 			this.SendPropertyChanging();
@@ -23074,11 +23294,33 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
+		private EntitySet<BamChi> _BamChis;
+		
+		private EntitySet<CHDB> _CHDBs;
+		
+		private EntitySet<DCBD> _DCBDs;
+		
+		private EntitySet<DongNuoc> _DongNuocs;
+		
 		private EntitySet<DonTu_ChiTiet> _DonTu_ChiTiets;
 		
 		private EntitySet<DonTu_LichSu> _DonTu_LichSus;
 		
+		private EntitySet<GianLan> _GianLans;
+		
+		private EntitySet<KTXM> _KTXMs;
+		
+		private EntitySet<ThuMoi> _ThuMois;
+		
+		private EntitySet<ThuMoi> _ThuMois1;
+		
+		private EntitySet<ToTrinh> _ToTrinhs;
+		
 		private EntitySet<TruyThuTienNuoc> _TruyThuTienNuocs;
+		
+		private EntitySet<TruyThuTienNuoc> _TruyThuTienNuocs1;
+		
+		private EntitySet<TTTL> _TTTLs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -23160,9 +23402,20 @@ namespace KTKS_DonKH.LinQ
 		
 		public DonTu()
 		{
+			this._BamChis = new EntitySet<BamChi>(new Action<BamChi>(this.attach_BamChis), new Action<BamChi>(this.detach_BamChis));
+			this._CHDBs = new EntitySet<CHDB>(new Action<CHDB>(this.attach_CHDBs), new Action<CHDB>(this.detach_CHDBs));
+			this._DCBDs = new EntitySet<DCBD>(new Action<DCBD>(this.attach_DCBDs), new Action<DCBD>(this.detach_DCBDs));
+			this._DongNuocs = new EntitySet<DongNuoc>(new Action<DongNuoc>(this.attach_DongNuocs), new Action<DongNuoc>(this.detach_DongNuocs));
 			this._DonTu_ChiTiets = new EntitySet<DonTu_ChiTiet>(new Action<DonTu_ChiTiet>(this.attach_DonTu_ChiTiets), new Action<DonTu_ChiTiet>(this.detach_DonTu_ChiTiets));
 			this._DonTu_LichSus = new EntitySet<DonTu_LichSu>(new Action<DonTu_LichSu>(this.attach_DonTu_LichSus), new Action<DonTu_LichSu>(this.detach_DonTu_LichSus));
+			this._GianLans = new EntitySet<GianLan>(new Action<GianLan>(this.attach_GianLans), new Action<GianLan>(this.detach_GianLans));
+			this._KTXMs = new EntitySet<KTXM>(new Action<KTXM>(this.attach_KTXMs), new Action<KTXM>(this.detach_KTXMs));
+			this._ThuMois = new EntitySet<ThuMoi>(new Action<ThuMoi>(this.attach_ThuMois), new Action<ThuMoi>(this.detach_ThuMois));
+			this._ThuMois1 = new EntitySet<ThuMoi>(new Action<ThuMoi>(this.attach_ThuMois1), new Action<ThuMoi>(this.detach_ThuMois1));
+			this._ToTrinhs = new EntitySet<ToTrinh>(new Action<ToTrinh>(this.attach_ToTrinhs), new Action<ToTrinh>(this.detach_ToTrinhs));
 			this._TruyThuTienNuocs = new EntitySet<TruyThuTienNuoc>(new Action<TruyThuTienNuoc>(this.attach_TruyThuTienNuocs), new Action<TruyThuTienNuoc>(this.detach_TruyThuTienNuocs));
+			this._TruyThuTienNuocs1 = new EntitySet<TruyThuTienNuoc>(new Action<TruyThuTienNuoc>(this.attach_TruyThuTienNuocs1), new Action<TruyThuTienNuoc>(this.detach_TruyThuTienNuocs1));
+			this._TTTLs = new EntitySet<TTTL>(new Action<TTTL>(this.attach_TTTLs), new Action<TTTL>(this.detach_TTTLs));
 			OnCreated();
 		}
 		
@@ -23886,6 +24139,58 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_BamChi", Storage="_BamChis", ThisKey="MaDon", OtherKey="MaDonMoi")]
+		public EntitySet<BamChi> BamChis
+		{
+			get
+			{
+				return this._BamChis;
+			}
+			set
+			{
+				this._BamChis.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_CHDB", Storage="_CHDBs", ThisKey="MaDon", OtherKey="MaDonMoi")]
+		public EntitySet<CHDB> CHDBs
+		{
+			get
+			{
+				return this._CHDBs;
+			}
+			set
+			{
+				this._CHDBs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_DCBD", Storage="_DCBDs", ThisKey="MaDon", OtherKey="MaDonMoi")]
+		public EntitySet<DCBD> DCBDs
+		{
+			get
+			{
+				return this._DCBDs;
+			}
+			set
+			{
+				this._DCBDs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_DongNuoc", Storage="_DongNuocs", ThisKey="MaDon", OtherKey="MaDonMoi")]
+		public EntitySet<DongNuoc> DongNuocs
+		{
+			get
+			{
+				return this._DongNuocs;
+			}
+			set
+			{
+				this._DongNuocs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_DonTu_ChiTiet", Storage="_DonTu_ChiTiets", ThisKey="MaDon", OtherKey="MaDon")]
 		public EntitySet<DonTu_ChiTiet> DonTu_ChiTiets
 		{
@@ -23912,6 +24217,71 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_GianLan", Storage="_GianLans", ThisKey="MaDon", OtherKey="MaDonMoi")]
+		public EntitySet<GianLan> GianLans
+		{
+			get
+			{
+				return this._GianLans;
+			}
+			set
+			{
+				this._GianLans.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_KTXM", Storage="_KTXMs", ThisKey="MaDon", OtherKey="MaDonMoi")]
+		public EntitySet<KTXM> KTXMs
+		{
+			get
+			{
+				return this._KTXMs;
+			}
+			set
+			{
+				this._KTXMs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_ThuMoi", Storage="_ThuMois", ThisKey="MaDon", OtherKey="MaDonMoi")]
+		public EntitySet<ThuMoi> ThuMois
+		{
+			get
+			{
+				return this._ThuMois;
+			}
+			set
+			{
+				this._ThuMois.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_ThuMoi1", Storage="_ThuMois1", ThisKey="MaDon", OtherKey="MaDonMoi")]
+		public EntitySet<ThuMoi> ThuMois1
+		{
+			get
+			{
+				return this._ThuMois1;
+			}
+			set
+			{
+				this._ThuMois1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_ToTrinh", Storage="_ToTrinhs", ThisKey="MaDon", OtherKey="MaDonMoi")]
+		public EntitySet<ToTrinh> ToTrinhs
+		{
+			get
+			{
+				return this._ToTrinhs;
+			}
+			set
+			{
+				this._ToTrinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_TruyThuTienNuoc", Storage="_TruyThuTienNuocs", ThisKey="MaDon", OtherKey="MaDonMoi")]
 		public EntitySet<TruyThuTienNuoc> TruyThuTienNuocs
 		{
@@ -23922,6 +24292,32 @@ namespace KTKS_DonKH.LinQ
 			set
 			{
 				this._TruyThuTienNuocs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_TruyThuTienNuoc1", Storage="_TruyThuTienNuocs1", ThisKey="MaDon", OtherKey="MaDonMoi")]
+		public EntitySet<TruyThuTienNuoc> TruyThuTienNuocs1
+		{
+			get
+			{
+				return this._TruyThuTienNuocs1;
+			}
+			set
+			{
+				this._TruyThuTienNuocs1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_TTTL", Storage="_TTTLs", ThisKey="MaDon", OtherKey="MaDonMoi")]
+		public EntitySet<TTTL> TTTLs
+		{
+			get
+			{
+				return this._TTTLs;
+			}
+			set
+			{
+				this._TTTLs.Assign(value);
 			}
 		}
 		
@@ -23943,6 +24339,54 @@ namespace KTKS_DonKH.LinQ
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_BamChis(BamChi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = this;
+		}
+		
+		private void detach_BamChis(BamChi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = null;
+		}
+		
+		private void attach_CHDBs(CHDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = this;
+		}
+		
+		private void detach_CHDBs(CHDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = null;
+		}
+		
+		private void attach_DCBDs(DCBD entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = this;
+		}
+		
+		private void detach_DCBDs(DCBD entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = null;
+		}
+		
+		private void attach_DongNuocs(DongNuoc entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = this;
+		}
+		
+		private void detach_DongNuocs(DongNuoc entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = null;
 		}
 		
 		private void attach_DonTu_ChiTiets(DonTu_ChiTiet entity)
@@ -23969,6 +24413,66 @@ namespace KTKS_DonKH.LinQ
 			entity.DonTu = null;
 		}
 		
+		private void attach_GianLans(GianLan entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = this;
+		}
+		
+		private void detach_GianLans(GianLan entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = null;
+		}
+		
+		private void attach_KTXMs(KTXM entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = this;
+		}
+		
+		private void detach_KTXMs(KTXM entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = null;
+		}
+		
+		private void attach_ThuMois(ThuMoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = this;
+		}
+		
+		private void detach_ThuMois(ThuMoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = null;
+		}
+		
+		private void attach_ThuMois1(ThuMoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu1 = this;
+		}
+		
+		private void detach_ThuMois1(ThuMoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu1 = null;
+		}
+		
+		private void attach_ToTrinhs(ToTrinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = this;
+		}
+		
+		private void detach_ToTrinhs(ToTrinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = null;
+		}
+		
 		private void attach_TruyThuTienNuocs(TruyThuTienNuoc entity)
 		{
 			this.SendPropertyChanging();
@@ -23976,6 +24480,30 @@ namespace KTKS_DonKH.LinQ
 		}
 		
 		private void detach_TruyThuTienNuocs(TruyThuTienNuoc entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = null;
+		}
+		
+		private void attach_TruyThuTienNuocs1(TruyThuTienNuoc entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu1 = this;
+		}
+		
+		private void detach_TruyThuTienNuocs1(TruyThuTienNuoc entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu1 = null;
+		}
+		
+		private void attach_TTTLs(TTTL entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = this;
+		}
+		
+		private void detach_TTTLs(TTTL entity)
 		{
 			this.SendPropertyChanging();
 			entity.DonTu = null;
@@ -24982,9 +25510,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MSThue;
 		
-		private string _GiaBieu;
+		private System.Nullable<int> _GiaBieu;
 		
-		private string _DinhMuc;
+		private System.Nullable<int> _DinhMuc;
 		
 		private string _Dot;
 		
@@ -25094,6 +25622,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<LichSuChuyenVanPhong> _LichSuChuyenVanPhongs;
 		
+		private EntitySet<ThuMoi> _ThuMois;
+		
 		private EntitySet<ToTrinh> _ToTrinhs;
 		
 		private EntitySet<TruyThuTienNuoc> _TruyThuTienNuocs;
@@ -25126,9 +25656,9 @@ namespace KTKS_DonKH.LinQ
     partial void OnDienThoaiChanged();
     partial void OnMSThueChanging(string value);
     partial void OnMSThueChanged();
-    partial void OnGiaBieuChanging(string value);
+    partial void OnGiaBieuChanging(System.Nullable<int> value);
     partial void OnGiaBieuChanged();
-    partial void OnDinhMucChanging(string value);
+    partial void OnDinhMucChanging(System.Nullable<int> value);
     partial void OnDinhMucChanged();
     partial void OnDotChanging(string value);
     partial void OnDotChanged();
@@ -25232,6 +25762,7 @@ namespace KTKS_DonKH.LinQ
 			this._LichSuChuyenKhacs = new EntitySet<LichSuChuyenKhac>(new Action<LichSuChuyenKhac>(this.attach_LichSuChuyenKhacs), new Action<LichSuChuyenKhac>(this.detach_LichSuChuyenKhacs));
 			this._LichSuChuyenKTXMs = new EntitySet<LichSuChuyenKTXM>(new Action<LichSuChuyenKTXM>(this.attach_LichSuChuyenKTXMs), new Action<LichSuChuyenKTXM>(this.detach_LichSuChuyenKTXMs));
 			this._LichSuChuyenVanPhongs = new EntitySet<LichSuChuyenVanPhong>(new Action<LichSuChuyenVanPhong>(this.attach_LichSuChuyenVanPhongs), new Action<LichSuChuyenVanPhong>(this.detach_LichSuChuyenVanPhongs));
+			this._ThuMois = new EntitySet<ThuMoi>(new Action<ThuMoi>(this.attach_ThuMois), new Action<ThuMoi>(this.detach_ThuMois));
 			this._ToTrinhs = new EntitySet<ToTrinh>(new Action<ToTrinh>(this.attach_ToTrinhs), new Action<ToTrinh>(this.detach_ToTrinhs));
 			this._TruyThuTienNuocs = new EntitySet<TruyThuTienNuoc>(new Action<TruyThuTienNuoc>(this.attach_TruyThuTienNuocs), new Action<TruyThuTienNuoc>(this.detach_TruyThuTienNuocs));
 			this._TTTLs = new EntitySet<TTTL>(new Action<TTTL>(this.attach_TTTLs), new Action<TTTL>(this.detach_TTTLs));
@@ -25439,8 +25970,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="NVarChar(50)")]
-		public string GiaBieu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="Int")]
+		public System.Nullable<int> GiaBieu
 		{
 			get
 			{
@@ -25459,8 +25990,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="NVarChar(50)")]
-		public string DinhMuc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="Int")]
+		public System.Nullable<int> DinhMuc
 		{
 			get
 			{
@@ -26493,6 +27024,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_ThuMoi", Storage="_ThuMois", ThisKey="MaDon", OtherKey="MaDonTXL")]
+		public EntitySet<ThuMoi> ThuMois
+		{
+			get
+			{
+				return this._ThuMois;
+			}
+			set
+			{
+				this._ThuMois.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_ToTrinh", Storage="_ToTrinhs", ThisKey="MaDon", OtherKey="MaDonTXL")]
 		public EntitySet<ToTrinh> ToTrinhs
 		{
@@ -26706,6 +27250,18 @@ namespace KTKS_DonKH.LinQ
 			entity.DonTXL = null;
 		}
 		
+		private void attach_ThuMois(ThuMoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTXL = this;
+		}
+		
+		private void detach_ThuMois(ThuMoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTXL = null;
+		}
+		
 		private void attach_ToTrinhs(ToTrinh entity)
 		{
 			this.SendPropertyChanging();
@@ -26773,6 +27329,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonTBC> _DonTBC;
 		
+		private EntityRef<DonTu> _DonTu;
+		
 		private EntityRef<DonTXL> _DonTXL;
 		
     #region Extensibility Method Definitions
@@ -26804,6 +27362,7 @@ namespace KTKS_DonKH.LinQ
 			this._GianLan_ChiTiets = new EntitySet<GianLan_ChiTiet>(new Action<GianLan_ChiTiet>(this.attach_GianLan_ChiTiets), new Action<GianLan_ChiTiet>(this.detach_GianLan_ChiTiets));
 			this._DonKH = default(EntityRef<DonKH>);
 			this._DonTBC = default(EntityRef<DonTBC>);
+			this._DonTu = default(EntityRef<DonTu>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
@@ -26911,6 +27470,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonMoi != value))
 				{
+					if (this._DonTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonMoiChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonMoi = value;
@@ -27077,6 +27640,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaDonTBC = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonTBC");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_GianLan", Storage="_DonTu", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu
+		{
+			get
+			{
+				return this._DonTu.Entity;
+			}
+			set
+			{
+				DonTu previousValue = this._DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu.Entity = null;
+						previousValue.GianLans.Remove(this);
+					}
+					this._DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.GianLans.Add(this);
+						this._MaDonMoi = value.MaDon;
+					}
+					else
+					{
+						this._MaDonMoi = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu");
 				}
 			}
 		}
@@ -28797,6 +29394,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonTBC> _DonTBC;
 		
+		private EntityRef<DonTu> _DonTu;
+		
 		private EntityRef<DonTXL> _DonTXL;
 		
     #region Extensibility Method Definitions
@@ -28828,6 +29427,7 @@ namespace KTKS_DonKH.LinQ
 			this._KTXM_ChiTiets = new EntitySet<KTXM_ChiTiet>(new Action<KTXM_ChiTiet>(this.attach_KTXM_ChiTiets), new Action<KTXM_ChiTiet>(this.detach_KTXM_ChiTiets));
 			this._DonKH = default(EntityRef<DonKH>);
 			this._DonTBC = default(EntityRef<DonTBC>);
+			this._DonTu = default(EntityRef<DonTu>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
@@ -28935,6 +29535,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonMoi != value))
 				{
+					if (this._DonTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonMoiChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonMoi = value;
@@ -29101,6 +29705,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaDonTBC = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonTBC");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_KTXM", Storage="_DonTu", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu
+		{
+			get
+			{
+				return this._DonTu.Entity;
+			}
+			set
+			{
+				DonTu previousValue = this._DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu.Entity = null;
+						previousValue.KTXMs.Remove(this);
+					}
+					this._DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.KTXMs.Add(this);
+						this._MaDonMoi = value.MaDon;
+					}
+					else
+					{
+						this._MaDonMoi = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu");
 				}
 			}
 		}
@@ -37347,6 +37985,16 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<ThuMoi_ChiTiet> _ThuMoi_ChiTiets;
 		
+		private EntityRef<DonKH> _DonKH;
+		
+		private EntityRef<DonTBC> _DonTBC;
+		
+		private EntityRef<DonTu> _DonTu;
+		
+		private EntityRef<DonTu> _DonTu1;
+		
+		private EntityRef<DonTXL> _DonTXL;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -37374,6 +38022,11 @@ namespace KTKS_DonKH.LinQ
 		public ThuMoi()
 		{
 			this._ThuMoi_ChiTiets = new EntitySet<ThuMoi_ChiTiet>(new Action<ThuMoi_ChiTiet>(this.attach_ThuMoi_ChiTiets), new Action<ThuMoi_ChiTiet>(this.detach_ThuMoi_ChiTiets));
+			this._DonKH = default(EntityRef<DonKH>);
+			this._DonTBC = default(EntityRef<DonTBC>);
+			this._DonTu = default(EntityRef<DonTu>);
+			this._DonTu1 = default(EntityRef<DonTu>);
+			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
 		
@@ -37408,6 +38061,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonTKH != value))
 				{
+					if (this._DonKH.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonTKHChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonTKH = value;
@@ -37428,6 +38085,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonTXL != value))
 				{
+					if (this._DonTXL.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonTXLChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonTXL = value;
@@ -37448,6 +38109,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonTBC != value))
 				{
+					if (this._DonTBC.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonTBCChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonTBC = value;
@@ -37468,6 +38133,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonMoi != value))
 				{
+					if ((this._DonTu.HasLoadedOrAssignedValue || this._DonTu1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonMoiChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonMoi = value;
@@ -37567,6 +38236,176 @@ namespace KTKS_DonKH.LinQ
 			set
 			{
 				this._ThuMoi_ChiTiets.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_ThuMoi", Storage="_DonKH", ThisKey="MaDonTKH", OtherKey="MaDon", IsForeignKey=true)]
+		public DonKH DonKH
+		{
+			get
+			{
+				return this._DonKH.Entity;
+			}
+			set
+			{
+				DonKH previousValue = this._DonKH.Entity;
+				if (((previousValue != value) 
+							|| (this._DonKH.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonKH.Entity = null;
+						previousValue.ThuMois.Remove(this);
+					}
+					this._DonKH.Entity = value;
+					if ((value != null))
+					{
+						value.ThuMois.Add(this);
+						this._MaDonTKH = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTKH = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonKH");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_ThuMoi", Storage="_DonTBC", ThisKey="MaDonTBC", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTBC DonTBC
+		{
+			get
+			{
+				return this._DonTBC.Entity;
+			}
+			set
+			{
+				DonTBC previousValue = this._DonTBC.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTBC.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTBC.Entity = null;
+						previousValue.ThuMois.Remove(this);
+					}
+					this._DonTBC.Entity = value;
+					if ((value != null))
+					{
+						value.ThuMois.Add(this);
+						this._MaDonTBC = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTBC = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTBC");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_ThuMoi", Storage="_DonTu", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu
+		{
+			get
+			{
+				return this._DonTu.Entity;
+			}
+			set
+			{
+				DonTu previousValue = this._DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu.Entity = null;
+						previousValue.ThuMois.Remove(this);
+					}
+					this._DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.ThuMois.Add(this);
+						this._MaDonMoi = value.MaDon;
+					}
+					else
+					{
+						this._MaDonMoi = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_ThuMoi1", Storage="_DonTu1", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu1
+		{
+			get
+			{
+				return this._DonTu1.Entity;
+			}
+			set
+			{
+				DonTu previousValue = this._DonTu1.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu1.Entity = null;
+						previousValue.ThuMois1.Remove(this);
+					}
+					this._DonTu1.Entity = value;
+					if ((value != null))
+					{
+						value.ThuMois1.Add(this);
+						this._MaDonMoi = value.MaDon;
+					}
+					else
+					{
+						this._MaDonMoi = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_ThuMoi", Storage="_DonTXL", ThisKey="MaDonTXL", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTXL DonTXL
+		{
+			get
+			{
+				return this._DonTXL.Entity;
+			}
+			set
+			{
+				DonTXL previousValue = this._DonTXL.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTXL.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTXL.Entity = null;
+						previousValue.ThuMois.Remove(this);
+					}
+					this._DonTXL.Entity = value;
+					if ((value != null))
+					{
+						value.ThuMois.Add(this);
+						this._MaDonTXL = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTXL = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTXL");
+				}
 			}
 		}
 		
@@ -38522,6 +39361,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonTBC> _DonTBC;
 		
+		private EntityRef<DonTu> _DonTu;
+		
 		private EntityRef<DonTXL> _DonTXL;
 		
     #region Extensibility Method Definitions
@@ -38553,6 +39394,7 @@ namespace KTKS_DonKH.LinQ
 			this._ToTrinh_ChiTiets = new EntitySet<ToTrinh_ChiTiet>(new Action<ToTrinh_ChiTiet>(this.attach_ToTrinh_ChiTiets), new Action<ToTrinh_ChiTiet>(this.detach_ToTrinh_ChiTiets));
 			this._DonKH = default(EntityRef<DonKH>);
 			this._DonTBC = default(EntityRef<DonTBC>);
+			this._DonTu = default(EntityRef<DonTu>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
@@ -38660,6 +39502,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonMoi != value))
 				{
+					if (this._DonTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonMoiChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonMoi = value;
@@ -38826,6 +39672,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaDonTBC = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonTBC");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_ToTrinh", Storage="_DonTu", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu
+		{
+			get
+			{
+				return this._DonTu.Entity;
+			}
+			set
+			{
+				DonTu previousValue = this._DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu.Entity = null;
+						previousValue.ToTrinhs.Remove(this);
+					}
+					this._DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.ToTrinhs.Add(this);
+						this._MaDonMoi = value.MaDon;
+					}
+					else
+					{
+						this._MaDonMoi = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu");
 				}
 			}
 		}
@@ -40072,11 +40952,13 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<TruyThuTienNuoc_ChiTiet> _TruyThuTienNuoc_ChiTiets;
 		
+		private EntityRef<DonTu> _DonTu;
+		
 		private EntityRef<DonKH> _DonKH;
 		
 		private EntityRef<DonTBC> _DonTBC;
 		
-		private EntityRef<DonTu> _DonTu;
+		private EntityRef<DonTu> _DonTu1;
 		
 		private EntityRef<DonTXL> _DonTXL;
 		
@@ -40107,9 +40989,10 @@ namespace KTKS_DonKH.LinQ
 		public TruyThuTienNuoc()
 		{
 			this._TruyThuTienNuoc_ChiTiets = new EntitySet<TruyThuTienNuoc_ChiTiet>(new Action<TruyThuTienNuoc_ChiTiet>(this.attach_TruyThuTienNuoc_ChiTiets), new Action<TruyThuTienNuoc_ChiTiet>(this.detach_TruyThuTienNuoc_ChiTiets));
+			this._DonTu = default(EntityRef<DonTu>);
 			this._DonKH = default(EntityRef<DonKH>);
 			this._DonTBC = default(EntityRef<DonTBC>);
-			this._DonTu = default(EntityRef<DonTu>);
+			this._DonTu1 = default(EntityRef<DonTu>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
@@ -40217,7 +41100,7 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonMoi != value))
 				{
-					if (this._DonTu.HasLoadedOrAssignedValue)
+					if ((this._DonTu.HasLoadedOrAssignedValue || this._DonTu1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -40323,6 +41206,40 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_TruyThuTienNuoc", Storage="_DonTu", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu
+		{
+			get
+			{
+				return this._DonTu.Entity;
+			}
+			set
+			{
+				DonTu previousValue = this._DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu.Entity = null;
+						previousValue.TruyThuTienNuocs.Remove(this);
+					}
+					this._DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.TruyThuTienNuocs.Add(this);
+						this._MaDonMoi = value.MaDon;
+					}
+					else
+					{
+						this._MaDonMoi = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu");
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_TruyThuTienNuoc", Storage="_DonKH", ThisKey="MaDon", OtherKey="MaDon", IsForeignKey=true)]
 		public DonKH DonKH
 		{
@@ -40391,36 +41308,36 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_TruyThuTienNuoc", Storage="_DonTu", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
-		public DonTu DonTu
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_TruyThuTienNuoc1", Storage="_DonTu1", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu1
 		{
 			get
 			{
-				return this._DonTu.Entity;
+				return this._DonTu1.Entity;
 			}
 			set
 			{
-				DonTu previousValue = this._DonTu.Entity;
+				DonTu previousValue = this._DonTu1.Entity;
 				if (((previousValue != value) 
-							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
+							|| (this._DonTu1.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._DonTu.Entity = null;
-						previousValue.TruyThuTienNuocs.Remove(this);
+						this._DonTu1.Entity = null;
+						previousValue.TruyThuTienNuocs1.Remove(this);
 					}
-					this._DonTu.Entity = value;
+					this._DonTu1.Entity = value;
 					if ((value != null))
 					{
-						value.TruyThuTienNuocs.Add(this);
+						value.TruyThuTienNuocs1.Add(this);
 						this._MaDonMoi = value.MaDon;
 					}
 					else
 					{
 						this._MaDonMoi = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("DonTu");
+					this.SendPropertyChanged("DonTu1");
 				}
 			}
 		}
@@ -43326,6 +44243,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonTBC> _DonTBC;
 		
+		private EntityRef<DonTu> _DonTu;
+		
 		private EntityRef<DonTXL> _DonTXL;
 		
     #region Extensibility Method Definitions
@@ -43357,6 +44276,7 @@ namespace KTKS_DonKH.LinQ
 			this._TTTL_ChiTiets = new EntitySet<TTTL_ChiTiet>(new Action<TTTL_ChiTiet>(this.attach_TTTL_ChiTiets), new Action<TTTL_ChiTiet>(this.detach_TTTL_ChiTiets));
 			this._DonKH = default(EntityRef<DonKH>);
 			this._DonTBC = default(EntityRef<DonTBC>);
+			this._DonTu = default(EntityRef<DonTu>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
@@ -43464,6 +44384,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonMoi != value))
 				{
+					if (this._DonTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonMoiChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonMoi = value;
@@ -43630,6 +44554,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaDonTBC = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonTBC");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_TTTL", Storage="_DonTu", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu
+		{
+			get
+			{
+				return this._DonTu.Entity;
+			}
+			set
+			{
+				DonTu previousValue = this._DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu.Entity = null;
+						previousValue.TTTLs.Remove(this);
+					}
+					this._DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.TTTLs.Add(this);
+						this._MaDonMoi = value.MaDon;
+					}
+					else
+					{
+						this._MaDonMoi = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu");
 				}
 			}
 		}

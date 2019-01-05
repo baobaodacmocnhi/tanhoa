@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbNoiNhan_LichSuChuyenDon = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtNoiDungTimKiem_LichSuChuyenDon = new System.Windows.Forms.TextBox();
+            this.cmbTimTheo_LichSuChuyenDon = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnBaoCao_LichSuChuyenDon = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian_LichSuChuyenDon = new System.Windows.Forms.Panel();
             this.dateTu_LichSuChuyenDon = new System.Windows.Forms.DateTimePicker();
@@ -47,10 +53,7 @@
             this.dateDen_DSChuyenKTXM = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.cmbTimTheo_LichSuChuyenDon = new System.Windows.Forms.ComboBox();
-            this.txtNoiDungTimKiem_LichSuChuyenDon = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.chkNguoiLap = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian_LichSuChuyenDon.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -59,6 +62,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkNguoiLap);
+            this.groupBox1.Controls.Add(this.cmbNoiNhan_LichSuChuyenDon);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtNoiDungTimKiem_LichSuChuyenDon);
             this.groupBox1.Controls.Add(this.cmbTimTheo_LichSuChuyenDon);
             this.groupBox1.Controls.Add(this.label3);
@@ -67,14 +73,74 @@
             this.groupBox1.Controls.Add(this.panel_KhoangThoiGian_LichSuChuyenDon);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(523, 87);
+            this.groupBox1.Size = new System.Drawing.Size(853, 89);
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lịch Sử Chuyển Đơn";
             // 
+            // cmbNoiNhan_LichSuChuyenDon
+            // 
+            this.cmbNoiNhan_LichSuChuyenDon.FormattingEnabled = true;
+            this.cmbNoiNhan_LichSuChuyenDon.Items.AddRange(new object[] {
+            "",
+            "Số Công Văn",
+            "Ngày"});
+            this.cmbNoiNhan_LichSuChuyenDon.Location = new System.Drawing.Point(512, 31);
+            this.cmbNoiNhan_LichSuChuyenDon.Name = "cmbNoiNhan_LichSuChuyenDon";
+            this.cmbNoiNhan_LichSuChuyenDon.Size = new System.Drawing.Size(250, 24);
+            this.cmbNoiNhan_LichSuChuyenDon.TabIndex = 41;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(442, 36);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(64, 16);
+            this.label9.TabIndex = 40;
+            this.label9.Text = "Nơi Nhận";
+            // 
+            // txtNoiDungTimKiem_LichSuChuyenDon
+            // 
+            this.txtNoiDungTimKiem_LichSuChuyenDon.Location = new System.Drawing.Point(259, 33);
+            this.txtNoiDungTimKiem_LichSuChuyenDon.Name = "txtNoiDungTimKiem_LichSuChuyenDon";
+            this.txtNoiDungTimKiem_LichSuChuyenDon.Size = new System.Drawing.Size(100, 22);
+            this.txtNoiDungTimKiem_LichSuChuyenDon.TabIndex = 39;
+            this.txtNoiDungTimKiem_LichSuChuyenDon.Visible = false;
+            // 
+            // cmbTimTheo_LichSuChuyenDon
+            // 
+            this.cmbTimTheo_LichSuChuyenDon.FormattingEnabled = true;
+            this.cmbTimTheo_LichSuChuyenDon.Items.AddRange(new object[] {
+            "",
+            "Số Công Văn",
+            "Ngày"});
+            this.cmbTimTheo_LichSuChuyenDon.Location = new System.Drawing.Point(80, 33);
+            this.cmbTimTheo_LichSuChuyenDon.Name = "cmbTimTheo_LichSuChuyenDon";
+            this.cmbTimTheo_LichSuChuyenDon.Size = new System.Drawing.Size(100, 24);
+            this.cmbTimTheo_LichSuChuyenDon.TabIndex = 37;
+            this.cmbTimTheo_LichSuChuyenDon.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_LichSuChuyenDon_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(186, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 16);
+            this.label3.TabIndex = 38;
+            this.label3.Text = "Nội Dung:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 16);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Tìm Theo:";
+            // 
             // btnBaoCao_LichSuChuyenDon
             // 
-            this.btnBaoCao_LichSuChuyenDon.Location = new System.Drawing.Point(442, 40);
+            this.btnBaoCao_LichSuChuyenDon.Location = new System.Drawing.Point(768, 30);
             this.btnBaoCao_LichSuChuyenDon.Name = "btnBaoCao_LichSuChuyenDon";
             this.btnBaoCao_LichSuChuyenDon.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_LichSuChuyenDon.TabIndex = 25;
@@ -139,9 +205,9 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.panel_KhoangThoiGian_DSChuyenKTXM);
-            this.groupBox3.Location = new System.Drawing.Point(12, 105);
+            this.groupBox3.Location = new System.Drawing.Point(12, 107);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(523, 85);
+            this.groupBox3.Size = new System.Drawing.Size(523, 89);
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh Sách Chuyển KTXM";
@@ -253,51 +319,22 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Đến Ngày:";
             // 
-            // cmbTimTheo_LichSuChuyenDon
+            // chkNguoiLap
             // 
-            this.cmbTimTheo_LichSuChuyenDon.FormattingEnabled = true;
-            this.cmbTimTheo_LichSuChuyenDon.Items.AddRange(new object[] {
-            "",
-            "Số Công Văn",
-            "Ngày"});
-            this.cmbTimTheo_LichSuChuyenDon.Location = new System.Drawing.Point(80, 33);
-            this.cmbTimTheo_LichSuChuyenDon.Name = "cmbTimTheo_LichSuChuyenDon";
-            this.cmbTimTheo_LichSuChuyenDon.Size = new System.Drawing.Size(100, 24);
-            this.cmbTimTheo_LichSuChuyenDon.TabIndex = 37;
-            this.cmbTimTheo_LichSuChuyenDon.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_LichSuChuyenDon_SelectedIndexChanged);
-            // 
-            // txtNoiDungTimKiem_LichSuChuyenDon
-            // 
-            this.txtNoiDungTimKiem_LichSuChuyenDon.Location = new System.Drawing.Point(259, 33);
-            this.txtNoiDungTimKiem_LichSuChuyenDon.Name = "txtNoiDungTimKiem_LichSuChuyenDon";
-            this.txtNoiDungTimKiem_LichSuChuyenDon.Size = new System.Drawing.Size(100, 22);
-            this.txtNoiDungTimKiem_LichSuChuyenDon.TabIndex = 39;
-            this.txtNoiDungTimKiem_LichSuChuyenDon.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(186, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 16);
-            this.label3.TabIndex = 38;
-            this.label3.Text = "Nội Dung:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 36);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 16);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "Tìm Theo:";
+            this.chkNguoiLap.AutoSize = true;
+            this.chkNguoiLap.Location = new System.Drawing.Point(80, 63);
+            this.chkNguoiLap.Name = "chkNguoiLap";
+            this.chkNguoiLap.Size = new System.Drawing.Size(89, 20);
+            this.chkNguoiLap.TabIndex = 42;
+            this.chkNguoiLap.Text = "Người Lập";
+            this.chkNguoiLap.UseVisualStyleBackColor = true;
             // 
             // frmBaoCaoDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(551, 407);
+            this.ClientSize = new System.Drawing.Size(928, 407);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -341,5 +378,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtNoiDungTimKiem_LichSuChuyenDon;
+        private System.Windows.Forms.ComboBox cmbNoiNhan_LichSuChuyenDon;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox chkNguoiLap;
     }
 }

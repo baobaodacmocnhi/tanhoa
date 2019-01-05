@@ -97,7 +97,10 @@ namespace KTKS_DonKH.GUI.BamChi
             if (ctbamchi.BamChi.MaDonMoi != null)
             {
                 _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctbamchi.BamChi.MaDonMoi.Value, ctbamchi.STT.Value);
-                txtMaDonMoi.Text = ctbamchi.BamChi.MaDonMoi.ToString();
+                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                    txtMaDonMoi.Text = ctbamchi.BamChi.MaDonMoi.ToString();
+                else
+                    txtMaDonMoi.Text = ctbamchi.BamChi.MaDonMoi.Value.ToString() + "." + ctbamchi.STT.Value.ToString();
             }
             else
             if (ctbamchi.BamChi.MaDon != null)
@@ -153,6 +156,7 @@ namespace KTKS_DonKH.GUI.BamChi
         public void Clear()
         {
             txtMaDonCu.Text = "";
+            txtMaDonMoi.Text = "";
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtHoTen.Text = "";
@@ -190,6 +194,7 @@ namespace KTKS_DonKH.GUI.BamChi
         public void Clear_GetDataGridView()
         {
             txtMaDonCu.Text = "";
+            txtMaDonMoi.Text = "";
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtHoTen.Text = "";
@@ -224,21 +229,22 @@ namespace KTKS_DonKH.GUI.BamChi
         public void GetDataGridView()
         {
             if (_dontu_ChiTiet != null)
-                dgvDSNhapBamChi.DataSource = _cBamChi.getDS(_dontu_ChiTiet.MaDon.Value);
+                dgvDSNhapBamChi.DataSource = _cBamChi.getDS("", _dontu_ChiTiet.MaDon.Value);
             else
                 if (_dontkh != null)
-                    dgvDSNhapBamChi.DataSource = _cBamChi.GetDS("TKH", _dontkh.MaDon);
+                    dgvDSNhapBamChi.DataSource = _cBamChi.getDS("TKH", _dontkh.MaDon);
                 else
                     if (_dontxl != null)
-                        dgvDSNhapBamChi.DataSource = _cBamChi.GetDS("TXL", _dontxl.MaDon);
+                        dgvDSNhapBamChi.DataSource = _cBamChi.getDS("TXL", _dontxl.MaDon);
                     else
                         if (_dontbc != null)
-                            dgvDSNhapBamChi.DataSource = _cBamChi.GetDS("TBC", _dontbc.MaDon);
+                            dgvDSNhapBamChi.DataSource = _cBamChi.getDS("TBC", _dontbc.MaDon);
         }
 
         public void Clear2()
         {
             txtMaDonCu.Text = "";
+            txtMaDonMoi.Text = "";
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtHoTen.Text = "";
@@ -447,6 +453,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             return;
                         }
                         ctbamchi.MaBC = _cBamChi.get(_dontu_ChiTiet.MaDon.Value).MaBC;
+                        ctbamchi.STT = _dontu_ChiTiet.STT;
                     }
                     else
                         if (_dontkh != null)
@@ -777,10 +784,10 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void dgvDSNhapBamChi_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvDSNhapBamChi.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
+            //if (dgvDSNhapBamChi.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            //{
+            //    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            //}
         }
 
         private void cmbTrangThai_SelectedIndexChanged(object sender, EventArgs e)

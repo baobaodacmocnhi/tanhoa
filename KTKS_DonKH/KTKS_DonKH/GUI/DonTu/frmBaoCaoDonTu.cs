@@ -12,12 +12,14 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.BaoCao.DonTu;
 using KTKS_DonKH.BaoCao.ToXuLy;
 using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
     public partial class frmBaoCaoDonTu : Form
     {
         CDonTu _cDonTu = new CDonTu();
+        CNoiChuyen _cNoiChuyen = new CNoiChuyen();
 
         public frmBaoCaoDonTu()
         {
@@ -26,7 +28,15 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void frmBaoCaoDonTu_Load(object sender, EventArgs e)
         {
-
+            List<NoiChuyen> lstNoiChuyen = _cNoiChuyen.GetDS("DonTuNhan");
+            NoiChuyen en = new NoiChuyen();
+            en.ID = 0;
+            en.Name = "Tất Cả";
+            lstNoiChuyen.Insert(0, en);
+            cmbNoiNhan_LichSuChuyenDon.DataSource = lstNoiChuyen;
+            cmbNoiNhan_LichSuChuyenDon.ValueMember = "ID";
+            cmbNoiNhan_LichSuChuyenDon.DisplayMember = "Name";
+            cmbNoiNhan_LichSuChuyenDon.SelectedIndex = -1;
         }
 
         private void cmbTimTheo_LichSuChuyenDon_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,15 +70,27 @@ namespace KTKS_DonKH.GUI.DonTu
             else if (CTaiKhoan.ToBC == true)
                 To = "TBC";
             DataTable dt = new DataTable();
-            switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
-            {
-                case "Ngày":
-                    dt = _cDonTu.getDS_LichSu(To, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value);
-                    break;
-                case "Số Công Văn":
-                    dt = _cDonTu.getDS_LichSu(To, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper());
-                    break;
-            }
+            if (cmbNoiNhan_LichSuChuyenDon.SelectedIndex == 0)
+                switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
+                {
+                    case "Ngày":
+                        dt = _cDonTu.getDS_LichSu(To,chkNguoiLap.Checked, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value);
+                        break;
+                    case "Số Công Văn":
+                        dt = _cDonTu.getDS_LichSu(To, chkNguoiLap.Checked, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper());
+                        break;
+                }
+            else
+                if (cmbNoiNhan_LichSuChuyenDon.SelectedIndex > 0)
+                    switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
+                    {
+                        case "Ngày":
+                            dt = _cDonTu.getDS_LichSu(To, chkNguoiLap.Checked, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value, int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
+                            break;
+                        case "Số Công Văn":
+                            dt = _cDonTu.getDS_LichSu(To, chkNguoiLap.Checked, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper(), int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
+                            break;
+                    }
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow item in dt.Rows)
             {

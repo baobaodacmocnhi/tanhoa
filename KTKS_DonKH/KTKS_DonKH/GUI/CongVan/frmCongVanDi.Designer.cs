@@ -96,6 +96,7 @@
             // 
             this.cmbLoaiVanBan.FormattingEnabled = true;
             this.cmbLoaiVanBan.Items.AddRange(new object[] {
+            "Đơn Từ Mới",
             "Đơn Tổ Khách Hàng",
             "Đơn Tổ Xử Lý",
             "Đơn Tổ Bấm Chì",

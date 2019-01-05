@@ -131,8 +131,8 @@ namespace KTKS_DonKH.GUI.ToBamChi
             txtDienThoai.Text = entity.DienThoai;
             txtHoTen.Text = entity.HoTen;
             txtDiaChi.Text = entity.DiaChi;
-            txtGiaBieu.Text = entity.GiaBieu;
-            txtDinhMuc.Text = entity.DinhMuc;
+            txtGiaBieu.Text = entity.GiaBieu.Value.ToString();
+            txtDinhMuc.Text = entity.DinhMuc.Value.ToString();
 
             dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(entity.DanhBo);
             dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(txtDanhBo.Text.Trim());
@@ -246,8 +246,10 @@ namespace KTKS_DonKH.GUI.ToBamChi
                         dontbc.HoTen = txtHoTen.Text.Trim();
                         dontbc.DiaChi = txtDiaChi.Text.Trim();
                         dontbc.DienThoai = txtDienThoai.Text.Trim();
-                        dontbc.GiaBieu = txtGiaBieu.Text.Trim();
-                        dontbc.DinhMuc = txtDinhMuc.Text.Trim();
+                        if (txtGiaBieu.Text.Trim() != "")
+                            dontbc.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                        if (txtDinhMuc.Text.Trim() != "")
+                            dontbc.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         if (_hoadon != null)
                         {
                             dontbc.Dot = _hoadon.DOT.ToString();
@@ -360,8 +362,10 @@ namespace KTKS_DonKH.GUI.ToBamChi
                         _dontbc.HoTen = txtHoTen.Text.Trim();
                         _dontbc.DiaChi = txtDiaChi.Text.Trim();
                         _dontbc.DienThoai = txtDienThoai.Text.Trim();
-                        _dontbc.GiaBieu = txtGiaBieu.Text.Trim();
-                        _dontbc.DinhMuc = txtDinhMuc.Text.Trim();
+                        if (txtGiaBieu.Text.Trim() != "")
+                            _dontbc.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                        if (txtDinhMuc.Text.Trim() != "")
+                            _dontbc.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         _dontbc.NoiDung = txtNoiDung.Text.Trim();
 
                         if (_cDonTBC.Sua(_dontbc))

@@ -52,8 +52,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void frmKTXM_Load(object sender, EventArgs e)
         {
             dgvDSKetQuaKiemTra.AutoGenerateColumns = false;
-
-            cmbHienTrangKiemTra.DataSource = _cHienTrangKiemTra.getDS("ToTB");
+            string To = "";
+             if (CTaiKhoan.ToTB == true)
+                 To = "ToTB";
+            else if (CTaiKhoan.ToTP == true)
+                 To = "ToTP";
+            else if (CTaiKhoan.ToBC == true)
+                 To = "ToBC";
+             cmbHienTrangKiemTra.DataSource = _cHienTrangKiemTra.getDS(To);
             cmbHienTrangKiemTra.DisplayMember = "TenHTKT";
             cmbHienTrangKiemTra.ValueMember = "TenHTKT";
             cmbHienTrangKiemTra.SelectedIndex = -1;
@@ -95,26 +101,29 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (ctktxm.KTXM.MaDonMoi != null)
             {
                 _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctktxm.KTXM.MaDonMoi.Value, ctktxm.STT.Value);
-                txtMaDonMoi.Text = ctktxm.KTXM.MaDonMoi.ToString();
+                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                    txtMaDonMoi.Text = ctktxm.KTXM.MaDonMoi.ToString();
+                else
+                    txtMaDonMoi.Text = ctktxm.KTXM.MaDonMoi.Value.ToString() + "." + ctktxm.STT.Value.ToString();
             }
             else
-            if (ctktxm.KTXM.MaDon != null)
-            {
-                _dontkh = _cDonKH.Get(ctktxm.KTXM.MaDon.Value);
-                txtMaDonCu.Text = ctktxm.KTXM.MaDon.ToString().Insert(ctktxm.KTXM.MaDon.ToString().Length - 2, "-");
-            }
-            else
-                if (ctktxm.KTXM.MaDonTXL != null)
+                if (ctktxm.KTXM.MaDon != null)
                 {
-                    _dontxl = _cDonTXL.Get(ctktxm.KTXM.MaDonTXL.Value);
-                    txtMaDonCu.Text = "TXL" + ctktxm.KTXM.MaDonTXL.ToString().Insert(ctktxm.KTXM.MaDonTXL.ToString().Length - 2, "-");
+                    _dontkh = _cDonKH.Get(ctktxm.KTXM.MaDon.Value);
+                    txtMaDonCu.Text = ctktxm.KTXM.MaDon.ToString().Insert(ctktxm.KTXM.MaDon.ToString().Length - 2, "-");
                 }
                 else
-                    if (ctktxm.KTXM.MaDonTBC != null)
+                    if (ctktxm.KTXM.MaDonTXL != null)
                     {
-                        _dontbc = _cDonTBC.Get(ctktxm.KTXM.MaDonTBC.Value);
-                        txtMaDonCu.Text = "TBC" + ctktxm.KTXM.MaDonTBC.ToString().Insert(ctktxm.KTXM.MaDonTBC.ToString().Length - 2, "-");
+                        _dontxl = _cDonTXL.Get(ctktxm.KTXM.MaDonTXL.Value);
+                        txtMaDonCu.Text = "TXL" + ctktxm.KTXM.MaDonTXL.ToString().Insert(ctktxm.KTXM.MaDonTXL.ToString().Length - 2, "-");
                     }
+                    else
+                        if (ctktxm.KTXM.MaDonTBC != null)
+                        {
+                            _dontbc = _cDonTBC.Get(ctktxm.KTXM.MaDonTBC.Value);
+                            txtMaDonCu.Text = "TBC" + ctktxm.KTXM.MaDonTBC.ToString().Insert(ctktxm.KTXM.MaDonTBC.ToString().Length - 2, "-");
+                        }
             txtDanhBo.Text = ctktxm.DanhBo;
             txtHopDong.Text = ctktxm.HopDong;
             txtHoTen.Text = ctktxm.HoTen;
@@ -151,6 +160,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         public void Clear()
         {
+            txtMaDonCu.Text = "";
+            txtMaDonMoi.Text = "";
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtHoTen.Text = "";
@@ -191,6 +202,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         public void Clear_LoadDSKTXM()
         {
+            txtMaDonCu.Text = "";
+            txtMaDonMoi.Text = "";
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtHoTen.Text = "";
@@ -228,16 +241,16 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         public void LoadDSKTXM()
         {
             if (_dontu_ChiTiet != null)
-                dgvDSKetQuaKiemTra.DataSource = _cKTXM.getDS(_dontu_ChiTiet.MaDon.Value);
+                dgvDSKetQuaKiemTra.DataSource = _cKTXM.getDS("", _dontu_ChiTiet.MaDon.Value);
             else
             if (_dontkh != null)
-                dgvDSKetQuaKiemTra.DataSource = _cKTXM.GetDS("TKH",  _dontkh.MaDon);
+                dgvDSKetQuaKiemTra.DataSource = _cKTXM.getDS("TKH",  _dontkh.MaDon);
             else
                 if (_dontxl != null)
-                    dgvDSKetQuaKiemTra.DataSource = _cKTXM.GetDS("TXL",  _dontxl.MaDon);
+                    dgvDSKetQuaKiemTra.DataSource = _cKTXM.getDS("TXL", _dontxl.MaDon);
                 else
                     if (_dontbc != null)
-                        dgvDSKetQuaKiemTra.DataSource = _cKTXM.GetDS("TBC",  _dontbc.MaDon);
+                        dgvDSKetQuaKiemTra.DataSource = _cKTXM.getDS("TBC", _dontbc.MaDon);
         }
 
         private void txtMaDonCu_KeyPress(object sender, KeyPressEventArgs e)

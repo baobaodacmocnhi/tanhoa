@@ -304,7 +304,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         if (_cThuMoi.checkExist(_dontu_ChiTiet.MaDon.Value) == false)
                         {
                             LinQ.ThuMoi tm = new LinQ.ThuMoi();
-                            tm.MaDonTKH = _dontu_ChiTiet.MaDon;
+                            tm.MaDonMoi = _dontu_ChiTiet.MaDon;
                             _cThuMoi.them(tm);
                         }
                         if (_cThuMoi.checkExist_ChiTiet(_dontu_ChiTiet.MaDon.Value, txtDanhBo.Text.Trim()) == true)
@@ -317,6 +317,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         else
                             entity.Lan = 2;
                         entity.ID = _cThuMoi.get(_dontu_ChiTiet.MaDon.Value).ID;
+                        entity.STT = _dontu_ChiTiet.STT.Value;
                     }
                     else
                         if (_dontkh != null)

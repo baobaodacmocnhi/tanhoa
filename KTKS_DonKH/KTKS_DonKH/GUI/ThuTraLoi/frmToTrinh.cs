@@ -253,6 +253,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             //return;
                         }
                         cttt.ID = _cTT.get(_dontu_ChiTiet.MaDon.Value).ID;
+                        cttt.STT = _dontu_ChiTiet.STT.Value;
                     }
                     else
                         if (_dontkh != null)

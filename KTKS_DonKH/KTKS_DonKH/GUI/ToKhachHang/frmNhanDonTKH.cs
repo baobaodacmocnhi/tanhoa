@@ -207,8 +207,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtDienThoai.Text = entity.DienThoai;
             txtHoTen.Text = entity.HoTen;
             txtDiaChi.Text = entity.DiaChi;
-            txtGiaBieu.Text = entity.GiaBieu;
-            txtDinhMuc.Text = entity.DinhMuc;
+            txtGiaBieu.Text = entity.GiaBieu.Value.ToString();
+            txtDinhMuc.Text = entity.DinhMuc.Value.ToString();
 
             if (entity.CT_HoaDon)
                 chkCT_HoaDon.Checked = true;
@@ -570,8 +570,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         donkh.HoTen = txtHoTen.Text.Trim();
                         donkh.DiaChi = txtDiaChi.Text.Trim();
                         donkh.DienThoai = txtDienThoai.Text.Trim();
-                        donkh.GiaBieu = txtGiaBieu.Text.Trim();
-                        donkh.DinhMuc = txtDinhMuc.Text.Trim();
+                        if (txtGiaBieu.Text.Trim() != "")
+                            donkh.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                        if (txtDinhMuc.Text.Trim() != "")
+                            donkh.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         if (_hoadon != null)
                         {
                             donkh.Dot = _hoadon.DOT.Value.ToString();
@@ -717,8 +719,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     _donkh.HoTen = txtHoTen.Text.Trim();
                     _donkh.DiaChi = txtDiaChi.Text.Trim();
                     _donkh.DienThoai = txtDienThoai.Text.Trim();
-                    _donkh.GiaBieu = txtGiaBieu.Text.Trim();
-                    _donkh.DinhMuc = txtDinhMuc.Text.Trim();
+                    if (txtGiaBieu.Text.Trim() != "")
+                        _donkh.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                    if (txtDinhMuc.Text.Trim() != "")
+                        _donkh.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
 
                     _donkh.NoiDung = txtNoiDung.Text.Trim();
                     _donkh.DinhMucSau = txtDinhMucSau.Text.Trim();

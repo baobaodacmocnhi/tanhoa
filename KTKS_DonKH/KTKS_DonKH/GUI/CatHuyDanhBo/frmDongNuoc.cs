@@ -80,28 +80,28 @@ namespace KTKS_DonKH.GUI.DongNuoc
             {
                 _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctdongnuoc.DongNuoc.MaDonMoi.Value, ctdongnuoc.STT.Value);
                 txtMaDonMoi.Text = ctdongnuoc.DongNuoc.MaDonMoi.ToString();
-                dgvDSBamChi.DataSource = _cBamChi.getDS(ctdongnuoc.DongNuoc.MaDonMoi.Value, ctdongnuoc.DanhBo);
+                //dgvDSBamChi.DataSource = _cBamChi.getDS(ctdongnuoc.DongNuoc.MaDonMoi.Value, ctdongnuoc.DanhBo);
             }
             else
             if (ctdongnuoc.DongNuoc.MaDon != null)
             {
                 _dontkh = _cDonKH.Get(ctdongnuoc.DongNuoc.MaDon.Value);
                 txtMaDonCu.Text = ctdongnuoc.DongNuoc.MaDon.ToString().Insert(ctdongnuoc.DongNuoc.MaDon.ToString().Length - 2, "-");
-                dgvDSBamChi.DataSource = _cBamChi.GetDS("TKH", ctdongnuoc.DongNuoc.MaDon.Value, ctdongnuoc.DanhBo);
+                //dgvDSBamChi.DataSource = _cBamChi.GetDS("TKH", ctdongnuoc.DongNuoc.MaDon.Value, ctdongnuoc.DanhBo);
             }
             else
                 if (ctdongnuoc.DongNuoc.MaDonTXL != null)
                 {
                     _dontxl = _cDonTXL.Get(ctdongnuoc.DongNuoc.MaDonTXL.Value);
                     txtMaDonCu.Text = "TXL" + ctdongnuoc.DongNuoc.MaDonTXL.ToString().Insert(ctdongnuoc.DongNuoc.MaDonTXL.ToString().Length - 2, "-");
-                    dgvDSBamChi.DataSource = _cBamChi.GetDS("TXL", ctdongnuoc.DongNuoc.MaDonTXL.Value, ctdongnuoc.DanhBo);
+                    //dgvDSBamChi.DataSource = _cBamChi.GetDS("TXL", ctdongnuoc.DongNuoc.MaDonTXL.Value, ctdongnuoc.DanhBo);
                 }
                 else
                     if (ctdongnuoc.DongNuoc.MaDonTBC != null)
                     {
                         _dontbc = _cDonTBC.Get(ctdongnuoc.DongNuoc.MaDonTBC.Value);
                         txtMaDonCu.Text = "TBC" + ctdongnuoc.DongNuoc.MaDonTBC.ToString().Insert(ctdongnuoc.DongNuoc.MaDonTBC.ToString().Length - 2, "-");
-                        dgvDSBamChi.DataSource = _cBamChi.GetDS("TBC", ctdongnuoc.DongNuoc.MaDonTBC.Value, ctdongnuoc.DanhBo);
+                        //dgvDSBamChi.DataSource = _cBamChi.GetDS("TBC", ctdongnuoc.DongNuoc.MaDonTBC.Value, ctdongnuoc.DanhBo);
                     }
             txtMaThongBao_DN.Text = ctdongnuoc.MaCTDN.ToString().Insert(ctdongnuoc.MaCTDN.ToString().Length - 2, "-");
 

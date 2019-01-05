@@ -14,6 +14,7 @@
       <Association Name="BamChi_BamChi_ChiTiet" Member="BamChi_ChiTiets" ThisKey="MaBC" OtherKey="MaBC" Type="BamChi_ChiTiet" />
       <Association Name="DonKH_BamChi" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
       <Association Name="DonTBC_BamChi" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
+      <Association Name="DonTu_BamChi" Member="DonTu" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
       <Association Name="DonTXL_BamChi" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
@@ -172,6 +173,7 @@
       <Association Name="CHDB_CHDB_Phieu" Member="CHDB_Phieus" ThisKey="MaCHDB" OtherKey="MaCHDB" Type="CHDB_Phieu" />
       <Association Name="DonKH_CHDB" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
       <Association Name="DonTBC_CHDB" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
+      <Association Name="DonTu_CHDB" Member="DonTu" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
       <Association Name="DonTXL_CHDB" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
@@ -586,6 +588,7 @@
       <Association Name="DCBD_DCBD_ChiTietHoaDon" Member="DCBD_ChiTietHoaDons" ThisKey="MaDCBD" OtherKey="MaDCBD" Type="DCBD_ChiTietHoaDon" />
       <Association Name="DonKH_DCBD" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
       <Association Name="DonTBC_DCBD" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
+      <Association Name="DonTu_DCBD" Member="DonTu" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
       <Association Name="DonTXL_DCBD" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
@@ -733,8 +736,8 @@
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MSThue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GiaBieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DinhMuc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GiaBieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SX" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DV" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -766,6 +769,7 @@
       <Association Name="DongNuoc_DongNuoc_ChiTiet" Member="DongNuoc_ChiTiets" ThisKey="MaDN" OtherKey="MaDN" Type="DongNuoc_ChiTiet" />
       <Association Name="DonKH_DongNuoc" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
       <Association Name="DonTBC_DongNuoc" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
+      <Association Name="DonTu_DongNuoc" Member="DonTu" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
       <Association Name="DonTXL_DongNuoc" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
@@ -836,8 +840,8 @@
       <Column Name="HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GiaBieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DinhMuc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GiaBieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Dot" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -917,6 +921,7 @@
       <Association Name="DonKH_LichSuChuyenKhac" Member="LichSuChuyenKhacs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenKhac" />
       <Association Name="DonKH_LichSuChuyenKTXM" Member="LichSuChuyenKTXMs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenKTXM" />
       <Association Name="DonKH_LichSuChuyenVanPhong" Member="LichSuChuyenVanPhongs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenVanPhong" />
+      <Association Name="DonKH_ThuMoi" Member="ThuMois" ThisKey="MaDon" OtherKey="MaDonTKH" Type="ThuMoi" />
       <Association Name="DonKH_ToTrinh" Member="ToTrinhs" ThisKey="MaDon" OtherKey="MaDon" Type="ToTrinh" />
       <Association Name="DonKH_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDon" Type="TruyThuTienNuoc" />
       <Association Name="DonKH_TTTL" Member="TTTLs" ThisKey="MaDon" OtherKey="MaDon" Type="TTTL" />
@@ -934,8 +939,8 @@
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MSThue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GiaBieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DinhMuc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GiaBieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Dot" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -957,6 +962,7 @@
       <Association Name="DonTBC_DongNuoc" Member="DongNuocs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="DongNuoc" />
       <Association Name="DonTBC_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDonTBC" Type="GianLan" />
       <Association Name="DonTBC_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="KTXM" />
+      <Association Name="DonTBC_ThuMoi" Member="ThuMois" ThisKey="MaDon" OtherKey="MaDonTBC" Type="ThuMoi" />
       <Association Name="DonTBC_ToTrinh" Member="ToTrinhs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="ToTrinh" />
       <Association Name="DonTBC_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="TruyThuTienNuoc" />
       <Association Name="DonTBC_TTTL" Member="TTTLs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="TTTL" />
@@ -1001,9 +1007,20 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DonTu_BamChi" Member="BamChis" ThisKey="MaDon" OtherKey="MaDonMoi" Type="BamChi" />
+      <Association Name="DonTu_CHDB" Member="CHDBs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="CHDB" />
+      <Association Name="DonTu_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="DCBD" />
+      <Association Name="DonTu_DongNuoc" Member="DongNuocs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="DongNuoc" />
       <Association Name="DonTu_DonTu_ChiTiet" Member="DonTu_ChiTiets" ThisKey="MaDon" OtherKey="MaDon" Type="DonTu_ChiTiet" />
       <Association Name="DonTu_DonTu_LichSu" Member="DonTu_LichSus" ThisKey="MaDon" OtherKey="MaDon" Type="DonTu_LichSu" />
+      <Association Name="DonTu_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDonMoi" Type="GianLan" />
+      <Association Name="DonTu_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="KTXM" />
+      <Association Name="DonTu_ThuMoi" Member="ThuMois" ThisKey="MaDon" OtherKey="MaDonMoi" Type="ThuMoi" />
+      <Association Name="DonTu_ThuMoi1" Member="ThuMois1" ThisKey="MaDon" OtherKey="MaDonMoi" Type="ThuMoi" />
+      <Association Name="DonTu_ToTrinh" Member="ToTrinhs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="ToTrinh" />
       <Association Name="DonTu_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="TruyThuTienNuoc" />
+      <Association Name="DonTu_TruyThuTienNuoc1" Member="TruyThuTienNuocs1" ThisKey="MaDon" OtherKey="MaDonMoi" Type="TruyThuTienNuoc" />
+      <Association Name="DonTu_TTTL" Member="TTTLs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="TTTL" />
     </Type>
   </Table>
   <Table Name="dbo.DonTu_ChiTiet" Member="DonTu_ChiTiets">
@@ -1062,8 +1079,8 @@
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MSThue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GiaBieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DinhMuc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GiaBieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Dot" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -1118,6 +1135,7 @@
       <Association Name="DonTXL_LichSuChuyenKhac" Member="LichSuChuyenKhacs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenKhac" />
       <Association Name="DonTXL_LichSuChuyenKTXM" Member="LichSuChuyenKTXMs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenKTXM" />
       <Association Name="DonTXL_LichSuChuyenVanPhong" Member="LichSuChuyenVanPhongs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenVanPhong" />
+      <Association Name="DonTXL_ThuMoi" Member="ThuMois" ThisKey="MaDon" OtherKey="MaDonTXL" Type="ThuMoi" />
       <Association Name="DonTXL_ToTrinh" Member="ToTrinhs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="ToTrinh" />
       <Association Name="DonTXL_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="TruyThuTienNuoc" />
       <Association Name="DonTXL_TTTL" Member="TTTLs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="TTTL" />
@@ -1138,6 +1156,7 @@
       <Association Name="GianLan_GianLan_ChiTiet" Member="GianLan_ChiTiets" ThisKey="MaGL" OtherKey="MaGL" Type="GianLan_ChiTiet" />
       <Association Name="DonKH_GianLan" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
       <Association Name="DonTBC_GianLan" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
+      <Association Name="DonTu_GianLan" Member="DonTu" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
       <Association Name="DonTXL_GianLan" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1229,6 +1248,7 @@
       <Association Name="KTXM_KTXM_ChiTiet" Member="KTXM_ChiTiets" ThisKey="MaKTXM" OtherKey="MaKTXM" Type="KTXM_ChiTiet" />
       <Association Name="DonKH_KTXM" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
       <Association Name="DonTBC_KTXM" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
+      <Association Name="DonTu_KTXM" Member="DonTu" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
       <Association Name="DonTXL_KTXM" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1626,6 +1646,11 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="ThuMoi_ThuMoi_ChiTiet" Member="ThuMoi_ChiTiets" ThisKey="ID" OtherKey="ID" Type="ThuMoi_ChiTiet" />
+      <Association Name="DonKH_ThuMoi" Member="DonKH" ThisKey="MaDonTKH" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
+      <Association Name="DonTBC_ThuMoi" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
+      <Association Name="DonTu_ThuMoi" Member="DonTu" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
+      <Association Name="DonTu_ThuMoi1" Member="DonTu1" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
+      <Association Name="DonTXL_ThuMoi" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ThuMoi_ChiTiet" Member="ThuMoi_ChiTiets">
@@ -1683,6 +1708,7 @@
       <Association Name="ToTrinh_ToTrinh_ChiTiet" Member="ToTrinh_ChiTiets" ThisKey="ID" OtherKey="ID" Type="ToTrinh_ChiTiet" />
       <Association Name="DonKH_ToTrinh" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
       <Association Name="DonTBC_ToTrinh" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
+      <Association Name="DonTu_ToTrinh" Member="DonTu" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
       <Association Name="DonTXL_ToTrinh" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1750,9 +1776,10 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="TruyThuTienNuoc_TruyThuTienNuoc_ChiTiet" Member="TruyThuTienNuoc_ChiTiets" ThisKey="ID" OtherKey="ID" Type="TruyThuTienNuoc_ChiTiet" />
+      <Association Name="DonTu_TruyThuTienNuoc" Member="DonTu" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
       <Association Name="DonKH_TruyThuTienNuoc" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
       <Association Name="DonTBC_TruyThuTienNuoc" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
-      <Association Name="DonTu_TruyThuTienNuoc" Member="DonTu" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
+      <Association Name="DonTu_TruyThuTienNuoc1" Member="DonTu1" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
       <Association Name="DonTXL_TruyThuTienNuoc" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1898,6 +1925,7 @@
       <Association Name="TTTL_TTTL_ChiTiet" Member="TTTL_ChiTiets" ThisKey="MaTTTL" OtherKey="MaTTTL" Type="TTTL_ChiTiet" />
       <Association Name="DonKH_TTTL" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
       <Association Name="DonTBC_TTTL" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
+      <Association Name="DonTu_TTTL" Member="DonTu" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
       <Association Name="DonTXL_TTTL" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>

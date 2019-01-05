@@ -121,31 +121,37 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 case "Mã Đơn":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
                     {
+                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                             dt = _cKTXM.getDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                        else
                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                            dt = _cKTXM.GetDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                            dt = _cKTXM.getDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
                         else
                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                dt = _cKTXM.GetDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                dt = _cKTXM.getDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
                             else
-                                dt = _cKTXM.GetDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                                dt = _cKTXM.getDS("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()), decimal.Parse(txtNoiDungTimKiem2.Text.Trim()));
                     }
                     else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                         {
+                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                dt = _cKTXM.getDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                            else
                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                dt = _cKTXM.GetDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                dt = _cKTXM.getDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                             else
                                 if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                    dt = _cKTXM.GetDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    dt = _cKTXM.getDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                 else
-                                    dt = _cKTXM.GetDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                    dt = _cKTXM.getDS("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
                         }
                     break;
                 case "Danh Bộ":
-                    dt = _cKTXM.GetDS(txtNoiDungTimKiem.Text.Trim());
+                    dt = _cKTXM.getDS_ByDanhBo(txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Số Công Văn":
-                    dt = _cKTXM.GetDSBySoCongVan(txtNoiDungTimKiem.Text.Trim());
+                    dt = _cKTXM.getDS_BySoCongVan(txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Ngày":
                     if (CTaiKhoan.ToTB)

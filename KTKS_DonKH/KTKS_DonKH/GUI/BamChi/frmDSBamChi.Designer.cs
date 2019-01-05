@@ -242,7 +242,6 @@
             this.TenLD.DataPropertyName = "TenLD";
             this.TenLD.HeaderText = "Tên Loại Đơn";
             this.TenLD.Name = "TenLD";
-            this.TenLD.Width = 130;
             // 
             // DanhBo
             // 
@@ -280,6 +279,7 @@
             this.NgayBC.HeaderText = "Ngày BC";
             this.NgayBC.Name = "NgayBC";
             this.NgayBC.ReadOnly = true;
+            this.NgayBC.Width = 90;
             // 
             // TrangThaiBC
             // 
@@ -348,7 +348,7 @@
             this.NiemChi.DataPropertyName = "NiemChi";
             this.NiemChi.HeaderText = "Niêm Chì";
             this.NiemChi.Name = "NiemChi";
-            this.NiemChi.Width = 50;
+            this.NiemChi.Width = 70;
             // 
             // frmDSBamChi
             // 

@@ -24,6 +24,8 @@ using KTKS_DonKH.GUI.DongNuoc;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.GUI.ToBamChi;
 using KTKS_DonKH.GUI.TruyThu;
+using KTKS_DonKH.GUI.ThuMoi;
+using KTKS_DonKH.GUI.DonTu;
 
 namespace KTKS_DonKH.GUI.TimKiem
 {
@@ -55,6 +57,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             gridControl.LevelTree.Nodes.Add("Chi Tiết Gian Lận", gridViewGianLan);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Truy Thu", gridViewTruyThu);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Tờ Trình", gridViewToTrinh);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Thư Mời", gridViewThuMoi);
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
@@ -77,13 +80,16 @@ namespace KTKS_DonKH.GUI.TimKiem
                 switch (cmbTimTheo.SelectedItem.ToString())
                 {
                     case "Mã Đơn":
+                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                            dt = _cTimKiem.GetTienTrinh_DonTKH(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
+                    else
                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
                             dt = _cTimKiem.GetTienTrinh_DonTXL(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
                         else
                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
                                 dt = _cTimKiem.GetTienTrinh_DonTBC(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
                             else
-                                dt = _cTimKiem.GetTienTrinh_DonTKH(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", ""))).Tables["Don"];
+                                dt = _cTimKiem.GetTienTrinh_DonTKH(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
                         break;
                     case "Danh Bộ":
                         dt = _cTimKiem.GetTienTrinhByDanhBo(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
@@ -107,10 +113,10 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewDon_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-            if (e.Column.FieldName == "MaDon" && e.Value != null)
-            {
-                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
+            //if (e.Column.FieldName == "MaDon" && e.Value != null)
+            //{
+            //    e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            //}
         }
 
         private void gridViewDon_KeyDown(object sender, KeyEventArgs e)
@@ -123,17 +129,27 @@ namespace KTKS_DonKH.GUI.TimKiem
                     frm.ShowDialog();
                 }
                 else
-                if (((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().ToUpper().Contains("TXL"))
-                {
-                    frmNhanDonTXL frm = new frmNhanDonTXL(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().Substring(3)));
-                    frm.ShowDialog();
-                }
-                else
-                    if (((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().ToUpper().Contains("TBC"))
-                {
-                    frmNhanDonTBC frm = new frmNhanDonTBC(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().Substring(3)));
-                    frm.ShowDialog();
-                }
+                    if (((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().ToUpper().Contains("TXL"))
+                    {
+                        frmNhanDonTXL frm = new frmNhanDonTXL(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().Substring(3)));
+                        frm.ShowDialog();
+                    }
+                    else
+                        if (((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().ToUpper().Contains("TBC"))
+                        {
+                            frmNhanDonTBC frm = new frmNhanDonTBC(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().Substring(3)));
+                            frm.ShowDialog();
+                        }
+                        else
+                        {
+                            string MaDon = ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString();
+
+                            if (MaDon.Contains(".") == true)
+                                MaDon = MaDon.Substring(0,MaDon.IndexOf("."));
+
+                            frmNhanDonTu frm = new frmNhanDonTu(int.Parse(MaDon));
+                            frm.ShowDialog();
+                        }
             }
         }
 
@@ -145,14 +161,6 @@ namespace KTKS_DonKH.GUI.TimKiem
             //    {
             //        view.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(view_CustomColumnDisplayText);
             //    }
-        }
-
-        void view_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.Column.FieldName == "MaDon" && e.Value != null)
-            {
-                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
         }
 
         #endregion
@@ -537,6 +545,36 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         #endregion
 
+        #region gridViewThuMoi
+
+        private void gridViewThuMoi_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "SoPhieu" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void gridViewThuMoi_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        private void gridViewThuMoi_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            {
+                frmThaoThuMoi frm = new frmThaoThuMoi(int.Parse(_CTRow.Row["SoPhieu"].ToString()));
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                {
+                    _CTRow = null;
+                }
+            }
+        }
+
+        #endregion
+
         private void btnIn_Click(object sender, EventArgs e)
         {
             if (gridViewDon.RowCount > 0)
@@ -708,6 +746,8 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
 
         }
+
+        
 
         
 

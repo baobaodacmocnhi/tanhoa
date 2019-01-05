@@ -66,6 +66,40 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            if (CTaiKhoan.TruongPhong == true || CTaiKhoan.ToTruong == true || CTaiKhoan.ThuKy == true)
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã Đơn":
+                        if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                            MessageBox.Show("Liên hệ BảoBảo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            if (txtNoiDungTimKiem.Text.Trim() != "")
+                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                    dgvDSCTKTXM.DataSource = _cKTXM.getDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                else
+                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                        dgvDSCTKTXM.DataSource = _cKTXM.getDS("TXL",  decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    else
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                            dgvDSCTKTXM.DataSource = _cKTXM.getDS("TBC",  decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        else
+                                            dgvDSCTKTXM.DataSource = _cKTXM.getDS("",  decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                        break;
+                    case "Danh Bộ":
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            dgvDSCTKTXM.DataSource = _cKTXM.getDS_ByDanhBo( txtNoiDungTimKiem.Text.Trim());
+                        break;
+                    case "Số Công Văn":
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            dgvDSCTKTXM.DataSource = _cKTXM.getDS_BySoCongVan( txtNoiDungTimKiem.Text.Trim());
+                        break;
+                    case "Ngày":
+                        dgvDSCTKTXM.DataSource = _cKTXM.getDS( dateTu.Value, dateDen.Value);
+                        break;
+                    default:
+                        break;
+                }
+            else
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Mã Đơn":
@@ -73,39 +107,27 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         MessageBox.Show("Liên hệ BảoBảo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
+                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                dgvDSCTKTXM.DataSource = _cKTXM.getDS("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                else
                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                dgvDSCTKTXM.DataSource = _cKTXM.getDS("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                             else
                                 if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                    dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    dgvDSCTKTXM.DataSource = _cKTXM.getDS("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                 else
-                                    dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    dgvDSCTKTXM.DataSource = _cKTXM.getDS("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
                     break;
                 case "Danh Bộ":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSCTKTXM.DataSource = _cKTXM.GetDSByDanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
+                        dgvDSCTKTXM.DataSource = _cKTXM.getDS_ByDanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Số Công Văn":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSCTKTXM.DataSource = _cKTXM.GetDSBySoCongVan(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
+                        dgvDSCTKTXM.DataSource = _cKTXM.getDS_BySoCongVan(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Ngày":
-                    if(CTaiKhoan.TruongPhong)
-                        dgvDSCTKTXM.DataSource = _cKTXM.GetDS(dateTu.Value, dateDen.Value);
-                    else
-                    if (CTaiKhoan.ThuKy)
-                    {
-                        if (CTaiKhoan.ToTB)
-                            dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TKH", dateTu.Value, dateDen.Value);
-                        else
-                            if (CTaiKhoan.ToTP)
-                                dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TXL", dateTu.Value, dateDen.Value);
-                            else
-                                if (CTaiKhoan.ToBC)
-                                    dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TBC", dateTu.Value, dateDen.Value);
-                    }
-                    else
-                        dgvDSCTKTXM.DataSource = _cKTXM.GetDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                        dgvDSCTKTXM.DataSource = _cKTXM.getDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;
