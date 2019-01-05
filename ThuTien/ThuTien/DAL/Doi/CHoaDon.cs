@@ -700,6 +700,15 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
+        public DataTable getTongGiaoHoaDon(int MaTo, int Nam, int Ky)
+        {
+            string sql = "select nd.STT,HanhThu=nd.HoTen,DOT,TongHD=COUNT(ID_HOADON) from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
+                        + " where NAM=" + Nam + " and KY=" + Ky + " and MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " group by nd.STT,nd.HoTen,DOT"
+                        + " order by nd.STT";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         public DataTable GetTongTon_To(int MaTo)
         {
             string sql = "declare @TuCuonGCS int;"
@@ -7102,7 +7111,7 @@ namespace ThuTien.DAL.Doi
                         + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                         + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                         + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To',GiaBieu=GB"
                         + " from HOADON hd"
                         + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
                         + " left join TT_To tto on tto.MaTo=nd.MaTo"
@@ -7133,7 +7142,7 @@ namespace ThuTien.DAL.Doi
                         + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                         + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                         + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To',GiaBieu=GB"
                         + " from HOADON hd"
                         + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
                         + " left join TT_To tto on tto.MaTo=nd.MaTo"

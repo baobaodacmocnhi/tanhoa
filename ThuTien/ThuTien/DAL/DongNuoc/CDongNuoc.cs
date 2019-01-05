@@ -375,7 +375,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.NgayDN,
                             itemKQ.Duyet,
                             NhanVien = itemtableND.HoTen,
-                            _db.TT_Tos.SingleOrDefault(itemT=>itemT.MaTo== itemtableND.MaTo).TenTo,
+                            To=_db.TT_Tos.SingleOrDefault(itemT=>itemT.MaTo== itemtableND.MaTo).TenTo,
                         };
             return LINQToDataTable(query.Distinct());
         }

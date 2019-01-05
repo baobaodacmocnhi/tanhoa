@@ -4980,7 +4980,7 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ChiaHoaDonRow AddChiaHoaDonRow(string LoaiBaoCao, string To, string Dot, string Ky, string Nam, string NhanVien, string MLT, string SoPhatHanh, int TongHD, int TongGiaBan, int TongThueGTGT, int TongPhiBVMT, int TongCong) {
+            public ChiaHoaDonRow AddChiaHoaDonRow(string LoaiBaoCao, string To, int Dot, string Ky, string Nam, string NhanVien, string MLT, string SoPhatHanh, int TongHD, int TongGiaBan, int TongThueGTGT, int TongPhiBVMT, int TongCong) {
                 ChiaHoaDonRow rowChiaHoaDonRow = ((ChiaHoaDonRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         LoaiBaoCao,
@@ -5040,7 +5040,7 @@ namespace ThuTien.BaoCao {
                 base.Columns.Add(this.columnLoaiBaoCao);
                 this.columnTo = new global::System.Data.DataColumn("To", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTo);
-                this.columnDot = new global::System.Data.DataColumn("Dot", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDot = new global::System.Data.DataColumn("Dot", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDot);
                 this.columnKy = new global::System.Data.DataColumn("Ky", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKy);
@@ -16685,10 +16685,10 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Dot {
+            public int Dot {
                 get {
                     try {
-                        return ((string)(this[this.tableChiaHoaDon.DotColumn]));
+                        return ((int)(this[this.tableChiaHoaDon.DotColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Dot\' in table \'ChiaHoaDon\' is DBNull.", e);

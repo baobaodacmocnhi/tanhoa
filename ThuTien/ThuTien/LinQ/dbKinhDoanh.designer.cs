@@ -4920,9 +4920,9 @@ namespace ThuTien.LinQ
 		
 		private string _DienThoai;
 		
-		private string _GiaBieu;
+		private System.Nullable<int> _GiaBieu;
 		
-		private string _DinhMuc;
+		private System.Nullable<int> _DinhMuc;
 		
 		private string _Dot;
 		
@@ -5084,9 +5084,9 @@ namespace ThuTien.LinQ
     partial void OnDiaChiChanged();
     partial void OnDienThoaiChanging(string value);
     partial void OnDienThoaiChanged();
-    partial void OnGiaBieuChanging(string value);
+    partial void OnGiaBieuChanging(System.Nullable<int> value);
     partial void OnGiaBieuChanged();
-    partial void OnDinhMucChanging(string value);
+    partial void OnDinhMucChanging(System.Nullable<int> value);
     partial void OnDinhMucChanged();
     partial void OnDotChanging(string value);
     partial void OnDotChanged();
@@ -5394,8 +5394,8 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="NVarChar(50)")]
-		public string GiaBieu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="Int")]
+		public System.Nullable<int> GiaBieu
 		{
 			get
 			{
@@ -5414,8 +5414,8 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="NVarChar(50)")]
-		public string DinhMuc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="Int")]
+		public System.Nullable<int> DinhMuc
 		{
 			get
 			{
@@ -6884,9 +6884,9 @@ namespace ThuTien.LinQ
 		
 		private string _MSThue;
 		
-		private string _GiaBieu;
+		private System.Nullable<int> _GiaBieu;
 		
-		private string _DinhMuc;
+		private System.Nullable<int> _DinhMuc;
 		
 		private string _Dot;
 		
@@ -6942,9 +6942,9 @@ namespace ThuTien.LinQ
     partial void OnDienThoaiChanged();
     partial void OnMSThueChanging(string value);
     partial void OnMSThueChanged();
-    partial void OnGiaBieuChanging(string value);
+    partial void OnGiaBieuChanging(System.Nullable<int> value);
     partial void OnGiaBieuChanged();
-    partial void OnDinhMucChanging(string value);
+    partial void OnDinhMucChanging(System.Nullable<int> value);
     partial void OnDinhMucChanged();
     partial void OnDotChanging(string value);
     partial void OnDotChanged();
@@ -7164,8 +7164,8 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="NVarChar(50)")]
-		public string GiaBieu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="Int")]
+		public System.Nullable<int> GiaBieu
 		{
 			get
 			{
@@ -7184,8 +7184,8 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="NVarChar(50)")]
-		public string DinhMuc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="Int")]
+		public System.Nullable<int> DinhMuc
 		{
 			get
 			{
@@ -7576,9 +7576,9 @@ namespace ThuTien.LinQ
 		
 		private string _MSThue;
 		
-		private string _GiaBieu;
+		private System.Nullable<int> _GiaBieu;
 		
-		private string _DinhMuc;
+		private System.Nullable<int> _DinhMuc;
 		
 		private string _Dot;
 		
@@ -7694,9 +7694,9 @@ namespace ThuTien.LinQ
     partial void OnDienThoaiChanged();
     partial void OnMSThueChanging(string value);
     partial void OnMSThueChanged();
-    partial void OnGiaBieuChanging(string value);
+    partial void OnGiaBieuChanging(System.Nullable<int> value);
     partial void OnGiaBieuChanged();
-    partial void OnDinhMucChanging(string value);
+    partial void OnDinhMucChanging(System.Nullable<int> value);
     partial void OnDinhMucChanged();
     partial void OnDotChanging(string value);
     partial void OnDotChanged();
@@ -7994,8 +7994,8 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="NVarChar(50)")]
-		public string GiaBieu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="Int")]
+		public System.Nullable<int> GiaBieu
 		{
 			get
 			{
@@ -8014,8 +8014,8 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="NVarChar(50)")]
-		public string DinhMuc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="Int")]
+		public System.Nullable<int> DinhMuc
 		{
 			get
 			{

@@ -448,5 +448,36 @@ namespace ThuTien.GUI.ToTruong
 
         }
 
+        private void btnInTongKy_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            if (CNguoiDung.Doi)
+                dt = _cHoaDon.getTongGiaoHoaDon((int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+            else
+                dt = _cHoaDon.getTongGiaoHoaDon(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+            dsBaoCao ds = new dsBaoCao();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = ds.Tables["ChiaHoaDon"].NewRow();
+                dr["LoaiBaoCao"] = "";
+                if (CNguoiDung.Doi)
+                    dr["To"] = ((TT_To)cmbTo.SelectedItem).TenTo;
+                else
+                    dr["To"] = CNguoiDung.TenTo;
+                dr["Ky"] = cmbKy.SelectedItem.ToString();
+                dr["Nam"] = cmbNam.SelectedValue.ToString();
+                dr["NhanVien"] = item["HanhThu"];
+                dr["Dot"]=item["Dot"];
+                dr["TongHD"] = item["TongHD"];
+                ds.Tables["ChiaHoaDon"].Rows.Add(dr);
+            }
+
+            rptTongChiaHoaDon rpt = new rptTongChiaHoaDon();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
+
     }
 }

@@ -96,6 +96,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnIn = new System.Windows.Forms.Button();
             this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.btnInTongKy = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -756,11 +757,22 @@
             this.cmbTo.Visible = false;
             this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
             // 
+            // btnInTongKy
+            // 
+            this.btnInTongKy.Location = new System.Drawing.Point(944, 70);
+            this.btnInTongKy.Name = "btnInTongKy";
+            this.btnInTongKy.Size = new System.Drawing.Size(75, 23);
+            this.btnInTongKy.TabIndex = 47;
+            this.btnInTongKy.Text = "In Tổng Kỳ";
+            this.btnInTongKy.UseVisualStyleBackColor = true;
+            this.btnInTongKy.Click += new System.EventHandler(this.btnInTongKy_Click);
+            // 
             // frmGiaoHDHanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1069, 467);
+            this.Controls.Add(this.btnInTongKy);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.txtSoHD);
@@ -866,5 +878,6 @@
         private System.Windows.Forms.TextBox txtTongCong_TG;
         private System.Windows.Forms.TextBox txtTongHD_TG;
         private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Button btnInTongKy;
     }
 }

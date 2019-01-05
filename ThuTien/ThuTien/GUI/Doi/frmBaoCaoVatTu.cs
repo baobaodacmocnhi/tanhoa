@@ -95,7 +95,7 @@ namespace ThuTien.GUI.Doi
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
                     TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvBamChi["MaKQDN", e.RowIndex].Value.ToString()));
-                    kqdongnuoc.Duyet = bool.Parse(dgvBamChi[e.ColumnIndex, e.RowIndex].Value.ToString());
+                    kqdongnuoc.Duyet = bool.Parse(e.FormattedValue.ToString());
                     _cDongNuoc.SuaKQ(kqdongnuoc);
                 }
                 else
