@@ -541,14 +541,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //    }
         //}
 
-        public DataTable LoadDSCatChuyenDMByMaDon(decimal MaDon)
+        public DataTable LoadDSCatChuyenDMByMaDon(string To,decimal MaDon)
         {
-            try
+            switch (To)
             {
-                var query = from itemLSCT in db.ChungTu_LichSus
+                case "TKH":
+                    var query = from itemLSCT in db.ChungTu_LichSus
                             join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
-                            where itemLSCT.SoPhieu != null && (itemLSCT.MaDon == MaDon || itemLSCT.MaDonTXL == MaDon)
+                            where itemLSCT.SoPhieu != null && itemLSCT.MaDon == MaDon
                             orderby itemLSCT.CreateDate ascending
                             select new
                             {
@@ -567,32 +568,117 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
                                 : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
                                 : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                case "TXL":
+                    query = from itemLSCT in db.ChungTu_LichSus
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemLSCT.SoPhieu != null &&  itemLSCT.MaDonTXL == MaDon
+                            orderby itemLSCT.CreateDate ascending
+                            select new
+                            {
+                                itemLSCT.PhieuDuocKy,
+                                itemLSCT.MaLSCT,
+                                itemLSCT.SoPhieu,
+                                itemLSCT.CreateDate,
+                                itemLSCT.MaCT,
+                                Loai = itemLSCT.CatDM == true ? "Cắt" : (itemLSCT.YeuCauCat == true ? "YC Cắt" : ""),
+                                itemLSCT.SoNK,
+                                CatNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.CatNK_MaCN).TenCN,
+                                itemLSCT.CatNK_DanhBo,
+                                itemLSCT.CatNK_HoTen,
+                                itemLSCT.CatNK_DiaChi,
+                                NhanNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.NhanNK_MaCN).TenCN,
+                                itemLSCT.NhanNK_DanhBo,
+                                itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NhanNK_DiaChi,
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+                case "TBC":
+                    query = from itemLSCT in db.ChungTu_LichSus
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemLSCT.SoPhieu != null && itemLSCT.MaDonTBC == MaDon
+                            orderby itemLSCT.CreateDate ascending
+                            select new
+                            {
+                                itemLSCT.PhieuDuocKy,
+                                itemLSCT.MaLSCT,
+                                itemLSCT.SoPhieu,
+                                itemLSCT.CreateDate,
+                                itemLSCT.MaCT,
+                                Loai = itemLSCT.CatDM == true ? "Cắt" : (itemLSCT.YeuCauCat == true ? "YC Cắt" : ""),
+                                itemLSCT.SoNK,
+                                CatNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.CatNK_MaCN).TenCN,
+                                itemLSCT.CatNK_DanhBo,
+                                itemLSCT.CatNK_HoTen,
+                                itemLSCT.CatNK_DiaChi,
+                                NhanNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.NhanNK_MaCN).TenCN,
+                                itemLSCT.NhanNK_DanhBo,
+                                itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NhanNK_DiaChi,
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+                default:
+                   query = from itemLSCT in db.ChungTu_LichSus
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemLSCT.SoPhieu != null && itemLSCT.MaDonMoi == MaDon
+                            orderby itemLSCT.CreateDate ascending
+                            select new
+                            {
+                                itemLSCT.PhieuDuocKy,
+                                itemLSCT.MaLSCT,
+                                itemLSCT.SoPhieu,
+                                itemLSCT.CreateDate,
+                                itemLSCT.MaCT,
+                                Loai = itemLSCT.CatDM == true ? "Cắt" : (itemLSCT.YeuCauCat == true ? "YC Cắt" : ""),
+                                itemLSCT.SoNK,
+                                CatNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.CatNK_MaCN).TenCN,
+                                itemLSCT.CatNK_DanhBo,
+                                itemLSCT.CatNK_HoTen,
+                                itemLSCT.CatNK_DiaChi,
+                                NhanNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.NhanNK_MaCN).TenCN,
+                                itemLSCT.NhanNK_DanhBo,
+                                itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NhanNK_DiaChi,
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
         }
 
-        public DataTable LoadDSCatChuyenDMByMaDons(decimal TuMaDon, decimal DenMaDon)
+        public DataTable LoadDSCatChuyenDMByMaDons(string To,decimal TuMaDon, decimal DenMaDon)
         {
-            try
+            switch (To)
             {
-                var query = from itemLSCT in db.ChungTu_LichSus
+                case "TKH":
+                     var query = from itemLSCT in db.ChungTu_LichSus
                             join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.SoPhieu != null &&
-                            ((itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
-                            && (itemLSCT.MaDon >= TuMaDon && itemLSCT.MaDon <= DenMaDon))
-                            || ((itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
-                            && (itemLSCT.MaDonTXL >= TuMaDon && itemLSCT.MaDonTXL <= DenMaDon))
+                            (itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemLSCT.MaDon >= TuMaDon && itemLSCT.MaDon <= DenMaDon)
                             orderby itemLSCT.CreateDate ascending
                             select new
                             {
@@ -611,17 +697,107 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
                                 : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
                                 : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                case "TXL":
+                     query = from itemLSCT in db.ChungTu_LichSus
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemLSCT.SoPhieu != null &&
+                            (itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemLSCT.MaDonTXL >= TuMaDon && itemLSCT.MaDonTXL <= DenMaDon)
+                            orderby itemLSCT.CreateDate ascending
+                            select new
+                            {
+                                itemLSCT.PhieuDuocKy,
+                                itemLSCT.MaLSCT,
+                                itemLSCT.SoPhieu,
+                                itemLSCT.CreateDate,
+                                itemLSCT.MaCT,
+                                Loai = itemLSCT.CatDM == true ? "Cắt" : (itemLSCT.YeuCauCat == true ? "YC Cắt" : ""),
+                                itemLSCT.SoNK,
+                                CatNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.CatNK_MaCN).TenCN,
+                                itemLSCT.CatNK_DanhBo,
+                                itemLSCT.CatNK_HoTen,
+                                itemLSCT.CatNK_DiaChi,
+                                NhanNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.NhanNK_MaCN).TenCN,
+                                itemLSCT.NhanNK_DanhBo,
+                                itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NhanNK_DiaChi,
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+                case "TBC":
+                     query = from itemLSCT in db.ChungTu_LichSus
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemLSCT.SoPhieu != null &&
+                            (itemLSCT.MaDonTBC.Value.ToString().Substring(itemLSCT.MaDonTBC.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDonTBC.Value.ToString().Substring(itemLSCT.MaDonTBC.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemLSCT.MaDonTBC >= TuMaDon && itemLSCT.MaDonTBC <= DenMaDon)
+                            orderby itemLSCT.CreateDate ascending
+                            select new
+                            {
+                                itemLSCT.PhieuDuocKy,
+                                itemLSCT.MaLSCT,
+                                itemLSCT.SoPhieu,
+                                itemLSCT.CreateDate,
+                                itemLSCT.MaCT,
+                                Loai = itemLSCT.CatDM == true ? "Cắt" : (itemLSCT.YeuCauCat == true ? "YC Cắt" : ""),
+                                itemLSCT.SoNK,
+                                CatNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.CatNK_MaCN).TenCN,
+                                itemLSCT.CatNK_DanhBo,
+                                itemLSCT.CatNK_HoTen,
+                                itemLSCT.CatNK_DiaChi,
+                                NhanNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.NhanNK_MaCN).TenCN,
+                                itemLSCT.NhanNK_DanhBo,
+                                itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NhanNK_DiaChi,
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+                default:
+                    query = from itemLSCT in db.ChungTu_LichSus
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemLSCT.SoPhieu != null &&itemLSCT.MaDonMoi >= TuMaDon && itemLSCT.MaDonMoi <= DenMaDon
+                            orderby itemLSCT.CreateDate ascending
+                            select new
+                            {
+                                itemLSCT.PhieuDuocKy,
+                                itemLSCT.MaLSCT,
+                                itemLSCT.SoPhieu,
+                                itemLSCT.CreateDate,
+                                itemLSCT.MaCT,
+                                Loai = itemLSCT.CatDM == true ? "Cắt" : (itemLSCT.YeuCauCat == true ? "YC Cắt" : ""),
+                                itemLSCT.SoNK,
+                                CatNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.CatNK_MaCN).TenCN,
+                                itemLSCT.CatNK_DanhBo,
+                                itemLSCT.CatNK_HoTen,
+                                itemLSCT.CatNK_DiaChi,
+                                NhanNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.NhanNK_MaCN).TenCN,
+                                itemLSCT.NhanNK_DanhBo,
+                                itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NhanNK_DiaChi,
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
         }
 
@@ -789,14 +965,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable LoadDSCatChuyenDMByMaDon(int CreateBy, decimal MaDon)
+        public DataTable LoadDSCatChuyenDMByMaDon(string To,int CreateBy, decimal MaDon)
         {
-            try
+            switch (To)
             {
-                var query = from itemLSCT in db.ChungTu_LichSus
+                case "TKH":
+                    var query = from itemLSCT in db.ChungTu_LichSus
                             join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
-                            where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && (itemLSCT.MaDon == MaDon || itemLSCT.MaDonTXL == MaDon)
+                            where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && itemLSCT.MaDon == MaDon
                             orderby itemLSCT.CreateDate ascending
                             select new
                             {
@@ -815,32 +992,117 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
                                 : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
                                 : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                case "TXL":
+                    query = from itemLSCT in db.ChungTu_LichSus
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && itemLSCT.MaDonTXL == MaDon
+                            orderby itemLSCT.CreateDate ascending
+                            select new
+                            {
+                                itemLSCT.PhieuDuocKy,
+                                itemLSCT.MaLSCT,
+                                itemLSCT.SoPhieu,
+                                itemLSCT.CreateDate,
+                                itemLSCT.MaCT,
+                                Loai = itemLSCT.CatDM == true ? "Cắt" : (itemLSCT.YeuCauCat == true ? "YC Cắt" : ""),
+                                itemLSCT.SoNK,
+                                CatNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.CatNK_MaCN).TenCN,
+                                itemLSCT.CatNK_DanhBo,
+                                itemLSCT.CatNK_HoTen,
+                                itemLSCT.CatNK_DiaChi,
+                                NhanNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.NhanNK_MaCN).TenCN,
+                                itemLSCT.NhanNK_DanhBo,
+                                itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NhanNK_DiaChi,
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+                case "TBC":
+                    query = from itemLSCT in db.ChungTu_LichSus
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && itemLSCT.MaDonTBC == MaDon
+                            orderby itemLSCT.CreateDate ascending
+                            select new
+                            {
+                                itemLSCT.PhieuDuocKy,
+                                itemLSCT.MaLSCT,
+                                itemLSCT.SoPhieu,
+                                itemLSCT.CreateDate,
+                                itemLSCT.MaCT,
+                                Loai = itemLSCT.CatDM == true ? "Cắt" : (itemLSCT.YeuCauCat == true ? "YC Cắt" : ""),
+                                itemLSCT.SoNK,
+                                CatNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.CatNK_MaCN).TenCN,
+                                itemLSCT.CatNK_DanhBo,
+                                itemLSCT.CatNK_HoTen,
+                                itemLSCT.CatNK_DiaChi,
+                                NhanNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.NhanNK_MaCN).TenCN,
+                                itemLSCT.NhanNK_DanhBo,
+                                itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NhanNK_DiaChi,
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+                default:
+                    query = from itemLSCT in db.ChungTu_LichSus
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && itemLSCT.MaDonMoi == MaDon
+                            orderby itemLSCT.CreateDate ascending
+                            select new
+                            {
+                                itemLSCT.PhieuDuocKy,
+                                itemLSCT.MaLSCT,
+                                itemLSCT.SoPhieu,
+                                itemLSCT.CreateDate,
+                                itemLSCT.MaCT,
+                                Loai = itemLSCT.CatDM == true ? "Cắt" : (itemLSCT.YeuCauCat == true ? "YC Cắt" : ""),
+                                itemLSCT.SoNK,
+                                CatNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.CatNK_MaCN).TenCN,
+                                itemLSCT.CatNK_DanhBo,
+                                itemLSCT.CatNK_HoTen,
+                                itemLSCT.CatNK_DiaChi,
+                                NhanNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.NhanNK_MaCN).TenCN,
+                                itemLSCT.NhanNK_DanhBo,
+                                itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NhanNK_DiaChi,
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
         }
 
-        public DataTable LoadDSCatChuyenDMByMaDons(int CreateBy, decimal TuMaDon, decimal DenMaDon)
+        public DataTable LoadDSCatChuyenDMByMaDons(string To,int CreateBy, decimal TuMaDon, decimal DenMaDon)
         {
-            try
+            switch (To)
             {
-                var query = from itemLSCT in db.ChungTu_LichSus
+                case "TKH":
+                     var query = from itemLSCT in db.ChungTu_LichSus
                             join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null &&
-                            ((itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
-                            && (itemLSCT.MaDon >= TuMaDon && itemLSCT.MaDon <= DenMaDon))
-                            || ((itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
-                            && (itemLSCT.MaDonTXL >= TuMaDon && itemLSCT.MaDonTXL <= DenMaDon))
+                            (itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemLSCT.MaDon >= TuMaDon && itemLSCT.MaDon <= DenMaDon)
                             orderby itemLSCT.CreateDate ascending
                             select new
                             {
@@ -859,17 +1121,106 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
                                 : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
                                 : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                case "TXL":
+                    query = from itemLSCT in db.ChungTu_LichSus
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null &&(itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemLSCT.MaDonTXL >= TuMaDon && itemLSCT.MaDonTXL <= DenMaDon)
+                            orderby itemLSCT.CreateDate ascending
+                            select new
+                            {
+                                itemLSCT.PhieuDuocKy,
+                                itemLSCT.MaLSCT,
+                                itemLSCT.SoPhieu,
+                                itemLSCT.CreateDate,
+                                itemLSCT.MaCT,
+                                Loai = itemLSCT.CatDM == true ? "Cắt" : (itemLSCT.YeuCauCat == true ? "YC Cắt" : ""),
+                                itemLSCT.SoNK,
+                                CatNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.CatNK_MaCN).TenCN,
+                                itemLSCT.CatNK_DanhBo,
+                                itemLSCT.CatNK_HoTen,
+                                itemLSCT.CatNK_DiaChi,
+                                NhanNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.NhanNK_MaCN).TenCN,
+                                itemLSCT.NhanNK_DanhBo,
+                                itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NhanNK_DiaChi,
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+                case "TBC":
+                    query = from itemLSCT in db.ChungTu_LichSus
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null &&
+                            (itemLSCT.MaDonTBC.Value.ToString().Substring(itemLSCT.MaDonTBC.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDonTBC.Value.ToString().Substring(itemLSCT.MaDonTBC.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemLSCT.MaDonTBC >= TuMaDon && itemLSCT.MaDonTBC <= DenMaDon)
+                            orderby itemLSCT.CreateDate ascending
+                            select new
+                            {
+                                itemLSCT.PhieuDuocKy,
+                                itemLSCT.MaLSCT,
+                                itemLSCT.SoPhieu,
+                                itemLSCT.CreateDate,
+                                itemLSCT.MaCT,
+                                Loai = itemLSCT.CatDM == true ? "Cắt" : (itemLSCT.YeuCauCat == true ? "YC Cắt" : ""),
+                                itemLSCT.SoNK,
+                                CatNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.CatNK_MaCN).TenCN,
+                                itemLSCT.CatNK_DanhBo,
+                                itemLSCT.CatNK_HoTen,
+                                itemLSCT.CatNK_DiaChi,
+                                NhanNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.NhanNK_MaCN).TenCN,
+                                itemLSCT.NhanNK_DanhBo,
+                                itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NhanNK_DiaChi,
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+                default:
+                   query = from itemLSCT in db.ChungTu_LichSus
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && itemLSCT.MaDonMoi >= TuMaDon && itemLSCT.MaDonMoi <= DenMaDon
+                            orderby itemLSCT.CreateDate ascending
+                            select new
+                            {
+                                itemLSCT.PhieuDuocKy,
+                                itemLSCT.MaLSCT,
+                                itemLSCT.SoPhieu,
+                                itemLSCT.CreateDate,
+                                itemLSCT.MaCT,
+                                Loai = itemLSCT.CatDM == true ? "Cắt" : (itemLSCT.YeuCauCat == true ? "YC Cắt" : ""),
+                                itemLSCT.SoNK,
+                                CatNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.CatNK_MaCN).TenCN,
+                                itemLSCT.CatNK_DanhBo,
+                                itemLSCT.CatNK_HoTen,
+                                itemLSCT.CatNK_DiaChi,
+                                NhanNK_MaCN = db.ChiNhanhs.SingleOrDefault(item => item.MaCN == itemLSCT.NhanNK_MaCN).TenCN,
+                                itemLSCT.NhanNK_DanhBo,
+                                itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NhanNK_DiaChi,
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0 
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
         }
 

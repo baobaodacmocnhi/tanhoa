@@ -19,7 +19,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                where itemDon.MaDon == MaDon
                                select new
                                {
-                                   MaDon = "TKH" + itemDon.MaDon,
+                                   MaDon = itemDon.DonTu.DonTu_ChiTiets.Count == 1 ? itemDon.MaDon.Value.ToString() : itemDon.MaDon.Value.ToString() + itemDon.STT.Value.ToString(),
                                    //itemDon.LoaiDon.TenLD,
                                    itemDon.CreateDate,
                                    itemDon.DanhBo,

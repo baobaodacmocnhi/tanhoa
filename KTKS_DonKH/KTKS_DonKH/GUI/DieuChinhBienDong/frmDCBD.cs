@@ -18,6 +18,7 @@ using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.GUI.DonTu;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -366,9 +367,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (_hoadon != null)
                     {
                         LoadTTKH(_hoadon);
+                        txtDanhBo.Focus();
                     }
                     else
+                    {
                         MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtDanhBo.Focus();
+                    }
                 }
                 else
                     MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -879,6 +884,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (e.Control && e.KeyCode == Keys.D4)
             {
                 frmTimKiemChungTu frm = new frmTimKiemChungTu();
+                frm.ShowDialog();
+            }
+            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            {
+                frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet);
                 frm.ShowDialog();
             }
         }

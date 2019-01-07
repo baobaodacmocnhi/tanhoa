@@ -58,6 +58,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             gridControl.LevelTree.Nodes.Add("Chi Tiết Truy Thu", gridViewTruyThu);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Tờ Trình", gridViewToTrinh);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thư Mời", gridViewThuMoi);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Tiến Trình", gridViewTienTrinh);
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
@@ -89,7 +90,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
                                 dt = _cTimKiem.GetTienTrinh_DonTBC(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
                             else
-                                dt = _cTimKiem.GetTienTrinh_DonTKH(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
+                                dt = _cTimKiem.GetTienTrinh_DonTu(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["Don"];
                         break;
                     case "Danh Bộ":
                         dt = _cTimKiem.GetTienTrinhByDanhBo(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];

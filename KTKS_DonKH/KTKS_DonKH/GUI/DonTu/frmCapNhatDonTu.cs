@@ -34,6 +34,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             dgvDanhBo.AutoGenerateColumns = false;
             dgvLichSuDonTu.AutoGenerateColumns = false;
+            dgvLichSuDonTu_Update.AutoGenerateColumns = false;
 
             cmbNoiChuyen.DataSource = _cNoiChuyen.GetDS("DonTuChuyen");
             cmbNoiChuyen.ValueMember = "ID";
@@ -120,7 +121,10 @@ namespace KTKS_DonKH.GUI.DonTu
                 if (_dontu_ChiTiet == null)
                     dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu.MaDon, 1);
                 else
-                    dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                    if (dgvDanhBo.SelectedRows.Count > 1)
+                        dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, dgvDanhBo.SelectedRows[0].Index);
+                    else
+                        dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
         }
 
         public void FillLichSu(DonTu_LichSu en)
@@ -236,6 +240,7 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
+                    //cập nhật
                     if (_dontu_LichSu != null)
                     {
                         bool flag = false;//ghi nhận có chọn checkcombobox
@@ -288,9 +293,9 @@ namespace KTKS_DonKH.GUI.DonTu
                                 _cDonTu.SubmitChanges();
                             }
                         }
-                        LoadLichSu();
                     }
                     else
+                        //thêm mới
                         if (_dontu != null)
                         {
                             //đơn cá nhân
@@ -463,7 +468,6 @@ namespace KTKS_DonKH.GUI.DonTu
                                                             entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
                                                             entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
                                                             entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                                            entity.MaDon = _dontu.MaDon;
                                                             DonTu_ChiTiet dontu_chitiet = _cDonTu.get_ChiTiet(int.Parse(item.Cells["ID_CongVan"].Value.ToString()));
                                                             entity.MaDon = dontu_chitiet.DonTu.MaDon;
                                                             entity.STT = dontu_chitiet.STT;
@@ -488,10 +492,10 @@ namespace KTKS_DonKH.GUI.DonTu
                                             }
                                         }
                                 }
-                            ClearChuyenDon();
-                            LoadLichSu();
                         }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearChuyenDon();
+                    LoadLichSu();
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -598,6 +602,43 @@ namespace KTKS_DonKH.GUI.DonTu
             using (SolidBrush b = new SolidBrush(dgvDanhBo.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void btnXem_Update_Click(object sender, EventArgs e)
+        {
+            string To = "";
+            if (CTaiKhoan.ToGD == true)
+                To = "TGD";
+            else if (CTaiKhoan.ToTB == true)
+                To = "TKH";
+            else if (CTaiKhoan.ToTP == true)
+                To = "TXL";
+            else if (CTaiKhoan.ToBC == true)
+                To = "TBC";
+            dgvLichSuDonTu_Update.DataSource  = _cDonTu.getDS_LichSu(To, CTaiKhoan.MaUser, dateFromNgayChuyen.Value, dateToNgayChuyen.Value);
+        }
+
+        private void btnXoa_Update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+                {
+                    foreach (DataGridViewRow item in dgvLichSuDonTu_Update.SelectedRows)
+                    {
+                        DonTu_LichSu en = _cDonTu.get_LichSu(int.Parse(item.Cells["ID_Update"].Value.ToString()));
+                        _cDonTu.Xoa_LichSu(en);
+                    }
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnXem_Update.PerformClick();
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

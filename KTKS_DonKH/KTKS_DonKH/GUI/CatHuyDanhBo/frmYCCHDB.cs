@@ -18,6 +18,7 @@ using KTKS_DonKH.BaoCao.CatHuyDanhBo;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.GUI.DonTu;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -627,6 +628,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 dateTroNgai.Enabled = false;
                 cmbNoiDung.Enabled = false;
+            }
+        }
+
+        private void frmYCCHDB_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            {
+                frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet);
+                frm.ShowDialog();
             }
         }
 

@@ -199,9 +199,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 where item.ThuMoi.MaDonTKH == MaDon
                                 select new
                                 {
-                                    MaDon = item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
-                                        : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
-                                        : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
+                                    MaDon = "TKH" + item.ThuMoi.MaDonTKH,
                                     item.IDCT,
                                     item.SoPhieu,
                                     item.DanhBo,
@@ -218,13 +216,11 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
-                    var query2 = from item in db.ThuMoi_ChiTiets
+                    query = from item in db.ThuMoi_ChiTiets
                                  where item.ThuMoi.MaDonTXL == MaDon
                                  select new
                                  {
-                                     MaDon = item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
-                                         : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
-                                         : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
+                                     MaDon = "TXL" + item.ThuMoi.MaDonTXL,
                                      item.IDCT,
                                      item.SoPhieu,
                                      item.DanhBo,
@@ -239,15 +235,13 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                      item.CreateDate,
                                      item.CreateBy,
                                  };
-                    return LINQToDataTable(query2);
+                    return LINQToDataTable(query);
                 case "TBC":
-                    var query3 = from item in db.ThuMoi_ChiTiets
+                    query = from item in db.ThuMoi_ChiTiets
                                  where item.ThuMoi.MaDonTBC == MaDon
                                  select new
                                  {
-                                     MaDon = item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
-                                         : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
-                                         : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
+                                     MaDon = "TBC" + item.ThuMoi.MaDonTBC,
                                      item.IDCT,
                                      item.SoPhieu,
                                      item.DanhBo,
@@ -262,9 +256,28 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                      item.CreateDate,
                                      item.CreateBy,
                                  };
-                    return LINQToDataTable(query3);
+                    return LINQToDataTable(query);
                 default:
-                    return null;
+                    query = from item in db.ThuMoi_ChiTiets
+                                 where item.ThuMoi.MaDonMoi == MaDon
+                                 select new
+                                 {
+                                     MaDon =  item.ThuMoi.MaDonMoi.Value.ToString(),
+                                     item.IDCT,
+                                     item.SoPhieu,
+                                     item.DanhBo,
+                                     item.HoTen,
+                                     item.DiaChi,
+                                     item.GiaBieu,
+                                     item.DinhMuc,
+                                     item.Lan,
+                                     item.CanCu,
+                                     item.VaoLuc,
+                                     item.VeViec,
+                                     item.CreateDate,
+                                     item.CreateBy,
+                                 };
+                    return LINQToDataTable(query);
             }
         }
 

@@ -108,6 +108,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtTCHC = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxNoiDungXuLy.SuspendLayout();
             this.groupBoxGhiChu.SuspendLayout();
@@ -144,7 +145,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtDanhBo);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 40);
+            this.groupBox1.Location = new System.Drawing.Point(12, 56);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(853, 70);
             this.groupBox1.TabIndex = 4;
@@ -238,7 +239,7 @@
             this.groupBoxNoiDungXuLy.Controls.Add(this.label14);
             this.groupBoxNoiDungXuLy.Controls.Add(this.label17);
             this.groupBoxNoiDungXuLy.Controls.Add(this.txtHieuLucKy);
-            this.groupBoxNoiDungXuLy.Location = new System.Drawing.Point(12, 116);
+            this.groupBoxNoiDungXuLy.Location = new System.Drawing.Point(12, 132);
             this.groupBoxNoiDungXuLy.Name = "groupBoxNoiDungXuLy";
             this.groupBoxNoiDungXuLy.Size = new System.Drawing.Size(853, 292);
             this.groupBoxNoiDungXuLy.TabIndex = 5;
@@ -513,7 +514,7 @@
             this.groupBoxGhiChu.Controls.Add(this.txtNoiDungGhiChu);
             this.groupBoxGhiChu.Controls.Add(this.dgvGhiChu);
             this.groupBoxGhiChu.Controls.Add(this.label28);
-            this.groupBoxGhiChu.Location = new System.Drawing.Point(12, 414);
+            this.groupBoxGhiChu.Location = new System.Drawing.Point(12, 430);
             this.groupBoxGhiChu.Name = "groupBoxGhiChu";
             this.groupBoxGhiChu.Size = new System.Drawing.Size(575, 228);
             this.groupBoxGhiChu.TabIndex = 7;
@@ -652,7 +653,7 @@
             this.NgayXuLy,
             this.DanhBo,
             this.LyDo});
-            this.dgvLichSuCHDB.Location = new System.Drawing.Point(593, 493);
+            this.dgvLichSuCHDB.Location = new System.Drawing.Point(593, 509);
             this.dgvLichSuCHDB.Name = "dgvLichSuCHDB";
             this.dgvLichSuCHDB.ReadOnly = true;
             this.dgvLichSuCHDB.Size = new System.Drawing.Size(699, 141);
@@ -880,13 +881,24 @@
             this.label13.TabIndex = 119;
             this.label13.Text = "TCHC:";
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.ForeColor = System.Drawing.Color.Red;
+            this.label34.Location = new System.Drawing.Point(424, 37);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(168, 16);
+            this.label34.TabIndex = 125;
+            this.label34.Text = "Ctrl+T: Cập Nhật Tiến Trình";
+            // 
             // frmCTDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1298, 652);
+            this.ClientSize = new System.Drawing.Size(1302, 667);
+            this.Controls.Add(this.label34);
             this.Controls.Add(this.txtTCHC);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dgvGhiChuDocSo);
@@ -916,9 +928,11 @@
             this.Controls.Add(this.txtMaDonCu);
             this.Controls.Add(this.label21);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyPreview = true;
             this.Name = "frmCTDB";
             this.Text = "Cắt Tạm Danh Bộ";
             this.Load += new System.EventHandler(this.frmCTDB_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmCTDB_KeyUp);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxNoiDungXuLy.ResumeLayout(false);
@@ -1015,5 +1029,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.TextBox txtTCHC;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label34;
     }
 }

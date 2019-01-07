@@ -18,6 +18,7 @@ using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.GUI.DonTu;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -1487,6 +1488,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.Control && e.KeyCode == Keys.Add)
                 btnThem.PerformClick();
+            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            {
+                frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet);
+                frm.ShowDialog();
+            }
         }
 
         private void txtGiaBieu_Cu_TextChanged(object sender, EventArgs e)

@@ -70,27 +70,52 @@ namespace KTKS_DonKH.GUI.DonTu
             else if (CTaiKhoan.ToBC == true)
                 To = "TBC";
             DataTable dt = new DataTable();
-            if (cmbNoiNhan_LichSuChuyenDon.SelectedIndex == 0)
-                switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
-                {
-                    case "Ngày":
-                        dt = _cDonTu.getDS_LichSu(To,chkNguoiLap.Checked, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value);
-                        break;
-                    case "Số Công Văn":
-                        dt = _cDonTu.getDS_LichSu(To, chkNguoiLap.Checked, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper());
-                        break;
-                }
-            else
-                if (cmbNoiNhan_LichSuChuyenDon.SelectedIndex > 0)
+            if (chkNguoiLap.Checked == true)
+            {
+                if (cmbNoiNhan_LichSuChuyenDon.SelectedIndex == 0)
                     switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
                     {
                         case "Ngày":
-                            dt = _cDonTu.getDS_LichSu(To, chkNguoiLap.Checked, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value, int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
+                            dt = _cDonTu.getDS_LichSu(To, CTaiKhoan.MaUser, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value);
                             break;
                         case "Số Công Văn":
-                            dt = _cDonTu.getDS_LichSu(To, chkNguoiLap.Checked, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper(), int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
+                            dt = _cDonTu.getDS_LichSu(To, CTaiKhoan.MaUser, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper());
                             break;
                     }
+                else
+                    if (cmbNoiNhan_LichSuChuyenDon.SelectedIndex > 0)
+                        switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
+                        {
+                            case "Ngày":
+                                dt = _cDonTu.getDS_LichSu(To, CTaiKhoan.MaUser, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value, int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
+                                break;
+                            case "Số Công Văn":
+                                dt = _cDonTu.getDS_LichSu(To, CTaiKhoan.MaUser, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper(), int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
+                                break;
+                        }
+            }
+            else
+                if (cmbNoiNhan_LichSuChuyenDon.SelectedIndex == 0)
+                    switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
+                    {
+                        case "Ngày":
+                            dt = _cDonTu.getDS_LichSu(To,  dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value);
+                            break;
+                        case "Số Công Văn":
+                            dt = _cDonTu.getDS_LichSu(To,  txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper());
+                            break;
+                    }
+                else
+                    if (cmbNoiNhan_LichSuChuyenDon.SelectedIndex > 0)
+                        switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
+                        {
+                            case "Ngày":
+                                dt = _cDonTu.getDS_LichSu(To, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value, int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
+                                break;
+                            case "Số Công Văn":
+                                dt = _cDonTu.getDS_LichSu(To,  txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper(), int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
+                                break;
+                        }
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow item in dt.Rows)
             {

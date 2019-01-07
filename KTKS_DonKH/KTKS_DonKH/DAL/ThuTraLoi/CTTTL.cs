@@ -196,9 +196,9 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             return LINQToDataTable(db.TTTL_ChiTiets.ToList());
         }
 
-        public DataTable GetDS(string Loai, decimal MaDon)
+        public DataTable GetDS(string To, decimal MaDon)
         {
-            switch (Loai)
+            switch (To)
             {
                 case "TKH":
                     var query = from item in db.TTTL_ChiTiets
@@ -246,7 +246,20 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             };
                     return LINQToDataTable(query);
                 default:
-                    return null;
+                    query = from item in db.TTTL_ChiTiets
+                            where item.TTTL.MaDonMoi == MaDon
+                            select new
+                            {
+                                MaDon =  item.TTTL.MaDonMoi.Value.ToString(),
+                                item.MaCTTTTL,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.VeViec,
+                                item.NoiDung,
+                                item.NoiNhan,
+                                item.ThuDuocKy,
+                            };
+                    return LINQToDataTable(query);
             }
         }
 

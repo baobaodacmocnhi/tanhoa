@@ -18,6 +18,7 @@ using KTKS_DonKH.BaoCao.ThuMoi;
 using KTKS_DonKH.GUI.BaoCao;
 using CrystalDecisions.CrystalReports.Engine;
 using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.GUI.DonTu;
 
 namespace KTKS_DonKH.GUI.ThuMoi
 {
@@ -574,6 +575,15 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 _thumoi = _cThuMoi.get_ChiTiet(int.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
                 if (_thumoi != null)
                     LoadEntity(_thumoi);
+            }
+        }
+
+        private void frmThaoThuMoi_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            {
+                frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet);
+                frm.ShowDialog();
             }
         }
 

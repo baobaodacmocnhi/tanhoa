@@ -81,6 +81,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtTCHC = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuTTTL)).BeginInit();
@@ -121,7 +122,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtDanhBo);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 40);
+            this.groupBox1.Location = new System.Drawing.Point(12, 56);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(778, 87);
             this.groupBox1.TabIndex = 2;
@@ -249,7 +250,7 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.txtVeViec);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Location = new System.Drawing.Point(12, 133);
+            this.groupBox2.Location = new System.Drawing.Point(12, 149);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(778, 288);
             this.groupBox2.TabIndex = 3;
@@ -310,7 +311,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(715, 427);
+            this.btnThem.Location = new System.Drawing.Point(715, 443);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 4;
@@ -356,7 +357,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(77, 431);
+            this.label8.Location = new System.Drawing.Point(77, 447);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 16);
             this.label8.TabIndex = 13;
@@ -365,7 +366,7 @@
             // cmbVeViec
             // 
             this.cmbVeViec.FormattingEnabled = true;
-            this.cmbVeViec.Location = new System.Drawing.Point(141, 427);
+            this.cmbVeViec.Location = new System.Drawing.Point(141, 443);
             this.cmbVeViec.Name = "cmbVeViec";
             this.cmbVeViec.Size = new System.Drawing.Size(487, 24);
             this.cmbVeViec.TabIndex = 14;
@@ -495,7 +496,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(715, 458);
+            this.btnSua.Location = new System.Drawing.Point(715, 474);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 58;
@@ -505,7 +506,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(715, 489);
+            this.btnXoa.Location = new System.Drawing.Point(715, 505);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 59;
@@ -556,13 +557,24 @@
             this.label16.TabIndex = 121;
             this.label16.Text = "TCHC:";
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.ForeColor = System.Drawing.Color.Red;
+            this.label34.Location = new System.Drawing.Point(424, 37);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(168, 16);
+            this.label34.TabIndex = 125;
+            this.label34.Text = "Ctrl+T: Cập Nhật Tiến Trình";
+            // 
             // frmTTTL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1251, 518);
+            this.ClientSize = new System.Drawing.Size(1251, 537);
+            this.Controls.Add(this.label34);
             this.Controls.Add(this.txtTCHC);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtMaDonMoi);
@@ -588,10 +600,12 @@
             this.Controls.Add(this.label21);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frmTTTL";
             this.Text = "Thảo Thư Trả Lời";
             this.Load += new System.EventHandler(this.frmTTTL_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmTTTL_KeyUp);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -658,5 +672,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtTCHC;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label34;
     }
 }

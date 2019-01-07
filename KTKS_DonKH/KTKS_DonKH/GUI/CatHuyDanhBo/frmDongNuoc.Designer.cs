@@ -44,6 +44,10 @@
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBoxXuLyDongNuoc = new System.Windows.Forms.GroupBox();
+            this.txtNoiDung = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtLyDo = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.dateDongNuoc = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
             this.btnLapTBDongNuoc = new System.Windows.Forms.Button();
@@ -86,10 +90,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.txtLyDo = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtNoiDung = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxXuLyDongNuoc.SuspendLayout();
             this.groupBoxXuLyMoNuoc.SuspendLayout();
@@ -102,7 +103,7 @@
             // 
             // txtMaThongBao_DN
             // 
-            this.txtMaThongBao_DN.Location = new System.Drawing.Point(630, 12);
+            this.txtMaThongBao_DN.Location = new System.Drawing.Point(640, 12);
             this.txtMaThongBao_DN.Name = "txtMaThongBao_DN";
             this.txtMaThongBao_DN.Size = new System.Drawing.Size(60, 22);
             this.txtMaThongBao_DN.TabIndex = 3;
@@ -111,7 +112,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(503, 15);
+            this.label10.Location = new System.Drawing.Point(513, 15);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(121, 16);
             this.label10.TabIndex = 2;
@@ -129,7 +130,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtDanhBo);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 40);
+            this.groupBox1.Location = new System.Drawing.Point(12, 56);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(911, 99);
             this.groupBox1.TabIndex = 4;
@@ -258,6 +259,39 @@
             this.groupBoxXuLyDongNuoc.TabIndex = 5;
             this.groupBoxXuLyDongNuoc.TabStop = false;
             this.groupBoxXuLyDongNuoc.Text = "Xử Lý Đóng Nước";
+            // 
+            // txtNoiDung
+            // 
+            this.txtNoiDung.Location = new System.Drawing.Point(128, 52);
+            this.txtNoiDung.Multiline = true;
+            this.txtNoiDung.Name = "txtNoiDung";
+            this.txtNoiDung.Size = new System.Drawing.Size(641, 188);
+            this.txtNoiDung.TabIndex = 14;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(8, 55);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(67, 16);
+            this.label24.TabIndex = 13;
+            this.label24.Text = "Nội Dung:";
+            // 
+            // txtLyDo
+            // 
+            this.txtLyDo.Location = new System.Drawing.Point(275, 24);
+            this.txtLyDo.Name = "txtLyDo";
+            this.txtLyDo.Size = new System.Drawing.Size(494, 22);
+            this.txtLyDo.TabIndex = 12;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(223, 28);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(46, 16);
+            this.label23.TabIndex = 11;
+            this.label23.Text = "Lý Do:";
             // 
             // dateDongNuoc
             // 
@@ -538,7 +572,7 @@
             // 
             // txtMaThongBao_MN
             // 
-            this.txtMaThongBao_MN.Location = new System.Drawing.Point(810, 12);
+            this.txtMaThongBao_MN.Location = new System.Drawing.Point(820, 12);
             this.txtMaThongBao_MN.Name = "txtMaThongBao_MN";
             this.txtMaThongBao_MN.Size = new System.Drawing.Size(60, 22);
             this.txtMaThongBao_MN.TabIndex = 11;
@@ -547,7 +581,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(696, 15);
+            this.label17.Location = new System.Drawing.Point(706, 15);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(108, 16);
             this.label17.TabIndex = 10;
@@ -556,7 +590,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvDSBamChi);
-            this.groupBox2.Location = new System.Drawing.Point(12, 438);
+            this.groupBox2.Location = new System.Drawing.Point(12, 454);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(911, 154);
             this.groupBox2.TabIndex = 12;
@@ -608,7 +642,7 @@
             // 
             // txtMaDonMoi
             // 
-            this.txtMaDonMoi.Location = new System.Drawing.Point(417, 12);
+            this.txtMaDonMoi.Location = new System.Drawing.Point(427, 12);
             this.txtMaDonMoi.Name = "txtMaDonMoi";
             this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
             this.txtMaDonMoi.TabIndex = 117;
@@ -627,7 +661,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 145);
+            this.tabControl1.Location = new System.Drawing.Point(12, 161);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(932, 287);
@@ -650,50 +684,28 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(941, 258);
+            this.tabPage2.Size = new System.Drawing.Size(924, 258);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mở Nước";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // txtLyDo
+            // label34
             // 
-            this.txtLyDo.Location = new System.Drawing.Point(275, 24);
-            this.txtLyDo.Name = "txtLyDo";
-            this.txtLyDo.Size = new System.Drawing.Size(494, 22);
-            this.txtLyDo.TabIndex = 12;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(223, 28);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(46, 16);
-            this.label23.TabIndex = 11;
-            this.label23.Text = "Lý Do:";
-            // 
-            // txtNoiDung
-            // 
-            this.txtNoiDung.Location = new System.Drawing.Point(128, 52);
-            this.txtNoiDung.Multiline = true;
-            this.txtNoiDung.Name = "txtNoiDung";
-            this.txtNoiDung.Size = new System.Drawing.Size(641, 188);
-            this.txtNoiDung.TabIndex = 14;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(8, 55);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(67, 16);
-            this.label24.TabIndex = 13;
-            this.label24.Text = "Nội Dung:";
+            this.label34.AutoSize = true;
+            this.label34.ForeColor = System.Drawing.Color.Red;
+            this.label34.Location = new System.Drawing.Point(424, 37);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(168, 16);
+            this.label34.TabIndex = 125;
+            this.label34.Text = "Ctrl+T: Cập Nhật Tiến Trình";
             // 
             // frmDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1017, 602);
+            this.ClientSize = new System.Drawing.Size(955, 612);
+            this.Controls.Add(this.label34);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label20);
@@ -707,10 +719,12 @@
             this.Controls.Add(this.txtMaDonCu);
             this.Controls.Add(this.label21);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frmDongNuoc";
             this.Text = "Thông Báo Đóng/Mở Nước";
             this.Load += new System.EventHandler(this.frmDongNuoc_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmDongNuoc_KeyUp);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxXuLyDongNuoc.ResumeLayout(false);
@@ -791,5 +805,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label34;
     }
 }

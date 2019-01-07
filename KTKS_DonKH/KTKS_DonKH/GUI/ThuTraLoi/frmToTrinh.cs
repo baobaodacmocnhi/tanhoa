@@ -17,6 +17,7 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ThuTraLoi;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.GUI.DonTu;
 
 namespace KTKS_DonKH.GUI.ThuTraLoi
 {
@@ -609,6 +610,15 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             rpt.Dispose();
                         }
                 }
+            }
+        }
+
+        private void frmToTrinh_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            {
+                frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet);
+                frm.ShowDialog();
             }
         }
 

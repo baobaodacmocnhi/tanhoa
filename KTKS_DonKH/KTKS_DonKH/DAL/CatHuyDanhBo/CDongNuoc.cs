@@ -242,9 +242,9 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable GetDSDongNuoc(string Loai, decimal MaDon)
+        public DataTable GetDSDongNuoc(string To, decimal MaDon)
         {
-            switch (Loai)
+            switch (To)
             {
                 case "TKH":
                     var query = from item in db.DongNuoc_ChiTiets
@@ -289,7 +289,19 @@ namespace KTKS_DonKH.DAL.DongNuoc
                             };
                     return LINQToDataTable(query);
                 default:
-                    return null;
+                   query = from item in db.DongNuoc_ChiTiets
+                            where item.DongNuoc.MaDonMoi == MaDon
+                            select new
+                            {
+                                MaDon =  item.DongNuoc.MaDonMoi.Value.ToString(),
+                                PhieuDuocKy = item.ThongBaoDuocKy_DN,
+                                MaTB = item.MaCTDN,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
+                            };
+                    return LINQToDataTable(query);
             }
         }
 

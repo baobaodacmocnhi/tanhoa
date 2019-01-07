@@ -275,8 +275,8 @@ namespace KTKS_DonKH.DAL.DonTu
         {
             try
             {
-                if (entity.CreateBy != CTaiKhoan.MaUser)
-                    return false;
+                //if (entity.CreateBy != CTaiKhoan.MaUser)
+                //    return false;
                 db.DonTu_LichSus.DeleteOnSubmit(entity);
                 db.SubmitChanges();
                 return true;
@@ -338,35 +338,14 @@ namespace KTKS_DonKH.DAL.DonTu
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_LichSu(string To, bool CheckCreateBy, string SoCongVan)
+        public DataTable getDS_LichSu(string To, string SoCongVan)
         {
-            if (CheckCreateBy == true)
-                switch (To)
-                {
-                    case "TGD":
-                        var query = from item in db.DonTu_LichSus
-                                    join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                    where item.ID_NoiChuyen == 1 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CTaiKhoan.MaUser
-                                    orderby item.MaDon, item.STT
-                                    select new
-                                    {
-                                        item.ID,
-                                        item.NgayChuyen,
-                                        item.NoiChuyen,
-                                        item.NoiNhan,
-                                        item.KTXM,
-                                        item.NoiDung,
-                                        CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                        MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                        itemDon.DanhBo,
-                                        itemDon.DiaChi,
-                                        NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                    };
-                        return LINQToDataTable(query);
-                    case "TKH":
-                        query = from item in db.DonTu_LichSus
+            switch (To)
+            {
+                case "TGD":
+                    var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 2 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CTaiKhoan.MaUser
+                                where item.ID_NoiChuyen == 1 && item.DonTu.SoCongVan.Contains(SoCongVan)
                                 orderby item.MaDon, item.STT
                                 select new
                                 {
@@ -382,202 +361,99 @@ namespace KTKS_DonKH.DAL.DonTu
                                     itemDon.DiaChi,
                                     NoiDungDon = itemDon.DonTu.Name_NhomDon,
                                 };
-                        return LINQToDataTable(query);
-                    case "TXL":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 3 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CTaiKhoan.MaUser
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    case "TBC":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 4 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CTaiKhoan.MaUser
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    default:
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CTaiKhoan.MaUser
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                }
-            else
-                switch (To)
-                {
-                    case "TGD":
-                        var query = from item in db.DonTu_LichSus
-                                    join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                    where item.ID_NoiChuyen == 1 && item.DonTu.SoCongVan.Contains(SoCongVan)
-                                    orderby item.MaDon, item.STT
-                                    select new
-                                    {
-                                        item.ID,
-                                        item.NgayChuyen,
-                                        item.NoiChuyen,
-                                        item.NoiNhan,
-                                        item.KTXM,
-                                        item.NoiDung,
-                                        CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                        MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                        itemDon.DanhBo,
-                                        itemDon.DiaChi,
-                                        NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                    };
-                        return LINQToDataTable(query);
-                    case "TKH":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 2 && item.DonTu.SoCongVan.Contains(SoCongVan)
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    case "TXL":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 3 && item.DonTu.SoCongVan.Contains(SoCongVan)
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    case "TBC":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 4 && item.DonTu.SoCongVan.Contains(SoCongVan)
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    default:
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.DonTu.SoCongVan.Contains(SoCongVan)
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                }
+                    return LINQToDataTable(query);
+                case "TKH":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 2 && item.DonTu.SoCongVan.Contains(SoCongVan)
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 3 && item.DonTu.SoCongVan.Contains(SoCongVan)
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 4 && item.DonTu.SoCongVan.Contains(SoCongVan)
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.DonTu.SoCongVan.Contains(SoCongVan)
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+            }
         }
 
-        public DataTable getDS_LichSu(string To, bool CheckCreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_LichSu(string To, int CreateBy, string SoCongVan)
         {
-            if (CheckCreateBy == true)
-                switch (To)
-                {
-                    case "TGD":
-                        var query = from item in db.DonTu_LichSus
-                                    join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                    where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.CreateBy == CTaiKhoan.MaUser
-                                    select new
-                                    {
-                                        item.ID,
-                                        item.NgayChuyen,
-                                        item.NoiChuyen,
-                                        item.NoiNhan,
-                                        item.KTXM,
-                                        item.NoiDung,
-                                        CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                        MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                        itemDon.DanhBo,
-                                        itemDon.DiaChi,
-                                        NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                    };
-                        return LINQToDataTable(query);
-                    case "TKH":
-                        query = from item in db.DonTu_LichSus
+            switch (To)
+            {
+                case "TGD":
+                    var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.CreateBy == CTaiKhoan.MaUser
+                                where item.ID_NoiChuyen == 1 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CreateBy
+                                orderby item.MaDon, item.STT
                                 select new
                                 {
                                     item.ID,
@@ -592,196 +468,98 @@ namespace KTKS_DonKH.DAL.DonTu
                                     itemDon.DiaChi,
                                     NoiDungDon = itemDon.DonTu.Name_NhomDon,
                                 };
-                        return LINQToDataTable(query);
-                    case "TXL":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.CreateBy == CTaiKhoan.MaUser
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    case "TBC":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.CreateBy == CTaiKhoan.MaUser
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    default:
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.CreateBy == CTaiKhoan.MaUser
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                }
-            else
-                switch (To)
-                {
-                    case "TGD":
-                        var query = from item in db.DonTu_LichSus
-                                    join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                    where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
-                                    select new
-                                    {
-                                        item.ID,
-                                        item.NgayChuyen,
-                                        item.NoiChuyen,
-                                        item.NoiNhan,
-                                        item.KTXM,
-                                        item.NoiDung,
-                                        CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                        MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                        itemDon.DanhBo,
-                                        itemDon.DiaChi,
-                                        NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                    };
-                        return LINQToDataTable(query);
-                    case "TKH":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    case "TXL":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    case "TBC":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    default:
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                }
+                    return LINQToDataTable(query);
+                case "TKH":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 2 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CreateBy
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 3 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CreateBy
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 4 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CreateBy
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CreateBy
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+            }
         }
 
-        public DataTable getDS_LichSu(string To, bool CheckCreateBy, string SoCongVan, int ID_NoiNhan)
+        public DataTable getDS_LichSu(string To, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            if (CheckCreateBy == true)
-                switch (To)
-                {
-                    case "TGD":
-                        var query = from item in db.DonTu_LichSus
-                                    join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                    where item.ID_NoiChuyen == 1 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CTaiKhoan.MaUser
-                                    orderby item.MaDon, item.STT
-                                    select new
-                                    {
-                                        item.ID,
-                                        item.NgayChuyen,
-                                        item.NoiChuyen,
-                                        item.NoiNhan,
-                                        item.KTXM,
-                                        item.NoiDung,
-                                        CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                        MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                        itemDon.DanhBo,
-                                        itemDon.DiaChi,
-                                        NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                    };
-                        return LINQToDataTable(query);
-                    case "TKH":
-                        query = from item in db.DonTu_LichSus
+            switch (To)
+            {
+                case "TGD":
+                    var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 2 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CTaiKhoan.MaUser
-                                orderby item.MaDon, item.STT
+                                where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
                                 select new
                                 {
                                     item.ID,
@@ -796,202 +574,94 @@ namespace KTKS_DonKH.DAL.DonTu
                                     itemDon.DiaChi,
                                     NoiDungDon = itemDon.DonTu.Name_NhomDon,
                                 };
-                        return LINQToDataTable(query);
-                    case "TXL":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 3 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CTaiKhoan.MaUser
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    case "TBC":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 4 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CTaiKhoan.MaUser
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    default:
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CTaiKhoan.MaUser
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                }
-            else
-                switch (To)
-                {
-                    case "TGD":
-                        var query = from item in db.DonTu_LichSus
-                                    join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                    where item.ID_NoiChuyen == 1 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
-                                    orderby item.MaDon, item.STT
-                                    select new
-                                    {
-                                        item.ID,
-                                        item.NgayChuyen,
-                                        item.NoiChuyen,
-                                        item.NoiNhan,
-                                        item.KTXM,
-                                        item.NoiDung,
-                                        CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                        MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                        itemDon.DanhBo,
-                                        itemDon.DiaChi,
-                                        NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                    };
-                        return LINQToDataTable(query);
-                    case "TKH":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 2 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    case "TXL":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 3 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    case "TBC":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 4 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    default:
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
-                                orderby item.MaDon, item.STT
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                }
+                    return LINQToDataTable(query);
+                case "TKH":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+            }
         }
 
-        public DataTable getDS_LichSu(string To, bool CheckCreateBy, DateTime FromCreateDate, DateTime ToCreateDate, int ID_NoiNhan)
+        public DataTable getDS_LichSu(string To, int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            if (CheckCreateBy == true)
-                switch (To)
-                {
-                    case "TGD":
-                        var query = from item in db.DonTu_LichSus
-                                    join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                    where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CTaiKhoan.MaUser
-                                    select new
-                                    {
-                                        item.ID,
-                                        item.NgayChuyen,
-                                        item.NoiChuyen,
-                                        item.NoiNhan,
-                                        item.KTXM,
-                                        item.NoiDung,
-                                        CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                        MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                        itemDon.DanhBo,
-                                        itemDon.DiaChi,
-                                        NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                    };
-                        return LINQToDataTable(query);
-                    case "TKH":
-                        query = from item in db.DonTu_LichSus
+            switch (To)
+            {
+                case "TGD":
+                    var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CTaiKhoan.MaUser
+                                where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
                                 select new
                                 {
                                     item.ID,
@@ -1006,11 +676,95 @@ namespace KTKS_DonKH.DAL.DonTu
                                     itemDon.DiaChi,
                                     NoiDungDon = itemDon.DonTu.Name_NhomDon,
                                 };
-                        return LINQToDataTable(query);
-                    case "TXL":
-                        query = from item in db.DonTu_LichSus
+                    return LINQToDataTable(query);
+                case "TKH":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+            }
+        }
+
+        public DataTable getDS_LichSu(string To, string SoCongVan, int ID_NoiNhan)
+        {
+            switch (To)
+            {
+                case "TGD":
+                    var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CTaiKhoan.MaUser
+                                where item.ID_NoiChuyen == 1 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
+                                orderby item.MaDon, item.STT
                                 select new
                                 {
                                     item.ID,
@@ -1025,11 +779,99 @@ namespace KTKS_DonKH.DAL.DonTu
                                     itemDon.DiaChi,
                                     NoiDungDon = itemDon.DonTu.Name_NhomDon,
                                 };
-                        return LINQToDataTable(query);
-                    case "TBC":
-                        query = from item in db.DonTu_LichSus
+                    return LINQToDataTable(query);
+                case "TKH":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 2 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 3 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 4 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+            }
+        }
+
+        public DataTable getDS_LichSu(string To, int CreateBy, string SoCongVan, int ID_NoiNhan)
+        {
+            switch (To)
+            {
+                case "TGD":
+                    var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CTaiKhoan.MaUser
+                                where item.ID_NoiChuyen == 1 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                                orderby item.MaDon, item.STT
                                 select new
                                 {
                                     item.ID,
@@ -1044,11 +886,98 @@ namespace KTKS_DonKH.DAL.DonTu
                                     itemDon.DiaChi,
                                     NoiDungDon = itemDon.DonTu.Name_NhomDon,
                                 };
-                        return LINQToDataTable(query);
-                    default:
-                        query = from item in db.DonTu_LichSus
+                    return LINQToDataTable(query);
+                case "TKH":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 2 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 3 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 4 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            orderby item.MaDon, item.STT
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+            }
+        }
+
+        public DataTable getDS_LichSu(string To, DateTime FromCreateDate, DateTime ToCreateDate, int ID_NoiNhan)
+        {
+            switch (To)
+            {
+                case "TGD":
+                    var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CTaiKhoan.MaUser
+                                where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
                                 select new
                                 {
                                     item.ID,
@@ -1063,34 +992,94 @@ namespace KTKS_DonKH.DAL.DonTu
                                     itemDon.DiaChi,
                                     NoiDungDon = itemDon.DonTu.Name_NhomDon,
                                 };
-                        return LINQToDataTable(query);
-                }
-            else
-                switch (To)
-                {
-                    case "TGD":
-                        var query = from item in db.DonTu_LichSus
-                                    join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                    where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
-                                    select new
-                                    {
-                                        item.ID,
-                                        item.NgayChuyen,
-                                        item.NoiChuyen,
-                                        item.NoiNhan,
-                                        item.KTXM,
-                                        item.NoiDung,
-                                        CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                        MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                        itemDon.DanhBo,
-                                        itemDon.DiaChi,
-                                        NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                    };
-                        return LINQToDataTable(query);
-                    case "TKH":
-                        query = from item in db.DonTu_LichSus
+                    return LINQToDataTable(query);
+                case "TKH":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+            }
+        }
+
+        public DataTable getDS_LichSu(string To, int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate, int ID_NoiNhan)
+        {
+            switch (To)
+            {
+                case "TGD":
+                    var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                                where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
                                 select new
                                 {
                                     item.ID,
@@ -1105,65 +1094,84 @@ namespace KTKS_DonKH.DAL.DonTu
                                     itemDon.DiaChi,
                                     NoiDungDon = itemDon.DonTu.Name_NhomDon,
                                 };
-                        return LINQToDataTable(query);
-                    case "TXL":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    case "TBC":
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                    default:
-                        query = from item in db.DonTu_LichSus
-                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
-                                select new
-                                {
-                                    item.ID,
-                                    item.NgayChuyen,
-                                    item.NoiChuyen,
-                                    item.NoiNhan,
-                                    item.KTXM,
-                                    item.NoiDung,
-                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
-                                    itemDon.DanhBo,
-                                    itemDon.DiaChi,
-                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
-                                };
-                        return LINQToDataTable(query);
-                }
+                    return LINQToDataTable(query);
+                case "TKH":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                MaDon = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+            }
         }
 
         public DataTable getDS_ChuyenKTXM(string Loai, DateTime FromNgayChuyen, DateTime ToNgayChuyen)

@@ -775,46 +775,58 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (txtNoiDungTimKiem.Text.Trim() != "")
                         if (radDSCatTamDanhBo.Checked)
                         {
-                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                             else
-                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                    dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                    dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                 else
-                                    dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                        dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    else
+                                        dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
                         }
                         else
                             if (radDSCatHuyDanhBo.Checked)
                             {
-                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                    dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                    dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                 else
-                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                        dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                        dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                     else
-                                        dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                            dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        else
+                                            dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
                             }
                             else
                                 if (radDSYCCHDB.Checked)
                                 {
-                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                        dgvDSCTCHDB.DataSource = _cCHDB.GetDSPhieuHuy("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                        dgvDSCTCHDB.DataSource = _cCHDB.GetDSPhieuHuy("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                     else
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                            dgvDSCTCHDB.DataSource = _cCHDB.GetDSPhieuHuy("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                            dgvDSCTCHDB.DataSource = _cCHDB.GetDSPhieuHuy("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                         else
-                                            dgvDSCTCHDB.DataSource = _cCHDB.GetDSPhieuHuy("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                dgvDSCTCHDB.DataSource = _cCHDB.GetDSPhieuHuy("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                dgvDSCTCHDB.DataSource = _cCHDB.GetDSPhieuHuy("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
                                 }
                                 else
                                     if (radDSDongNuoc.Checked)
                                     {
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                            dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                            dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                         else
-                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                                dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                                dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                             else
-                                                dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                    dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                else
+                                                    dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
                                     }
                     break;
                 case "Danh Bộ":

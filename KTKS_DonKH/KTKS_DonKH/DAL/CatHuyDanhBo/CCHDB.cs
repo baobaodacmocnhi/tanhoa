@@ -321,9 +321,9 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public DataTable GetDSCatTam(string Loai, decimal MaDon)
+        public DataTable GetDSCatTam(string To, decimal MaDon)
         {
-            switch (Loai)
+            switch (To)
             {
                 case "TKH":
                     var query = from item in db.CHDB_ChiTietCatTams
@@ -386,7 +386,25 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             };
                     return LINQToDataTable(query);
                 default:
-                    return null;
+                    query = from item in db.CHDB_ChiTietCatTams
+                            where item.CHDB.MaDonMoi == MaDon
+                            select new
+                            {
+                                MaDon = item.CHDB.MaDonMoi.Value.ToString(),
+                                item.PhieuDuocKy,
+                                item.DaLapPhieu,
+                                item.SoPhieu,
+                                item.ThongBaoDuocKy,
+                                ID = item.MaCTCTDB,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
+                                item.LyDo,
+                                item.GhiChuLyDo,
+                                item.SoTien,
+                            };
+                    return LINQToDataTable(query);
             }
         }
 
@@ -710,9 +728,9 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public DataTable GetDSCatHuy(string Loai, decimal MaDon)
+        public DataTable GetDSCatHuy(string To, decimal MaDon)
         {
-            switch (Loai)
+            switch (To)
             {
                 case "TKH":
                     var query = from item in db.CHDB_ChiTietCatHuys
@@ -775,7 +793,25 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             };
                     return LINQToDataTable(query);
                 default:
-                    return null;
+                    query = from item in db.CHDB_ChiTietCatHuys
+                            where item.CHDB.MaDonMoi == MaDon
+                            select new
+                            {
+                                MaDon =  item.CHDB.MaDonMoi.Value.ToString(),
+                                item.PhieuDuocKy,
+                                item.DaLapPhieu,
+                                item.SoPhieu,
+                                item.ThongBaoDuocKy,
+                                ID = item.MaCTCHDB,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
+                                item.LyDo,
+                                item.GhiChuLyDo,
+                                item.SoTien,
+                            };
+                    return LINQToDataTable(query);
             }
         }
 
@@ -1214,16 +1250,16 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public DataTable GetDSPhieuHuy(string Loai, decimal MaDon)
+        public DataTable GetDSPhieuHuy(string To, decimal MaDon)
         {
-            switch (Loai)
+            switch (To)
             {
                 case "TKH":
                     var query = from item in db.CHDB_Phieus
-                                where item.MaDon == MaDon
+                                where item.CHDB.MaDon == MaDon
                                 select new
                                 {
-                                    MaDon = "TKH" + item.MaDon,
+                                    MaDon = "TKH" + item.CHDB.MaDon,
                                     item.PhieuDuocKy,
                                     ID = item.MaYCCHDB,
                                     item.CreateDate,
@@ -1237,10 +1273,10 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     return LINQToDataTable(query);
                 case "TXL":
                     query = from item in db.CHDB_Phieus
-                            where item.MaDonTXL == MaDon
+                            where item.CHDB.MaDonTXL == MaDon
                             select new
                             {
-                                MaDon = "TXL" + item.MaDonTXL,
+                                MaDon = "TXL" + item.CHDB.MaDonTXL,
                                 item.PhieuDuocKy,
                                 ID = item.MaYCCHDB,
                                 item.CreateDate,
@@ -1254,10 +1290,10 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     return LINQToDataTable(query);
                 case "TBC":
                     query = from item in db.CHDB_Phieus
-                            where item.MaDonTBC == MaDon
+                            where item.CHDB.MaDonTBC == MaDon
                             select new
                             {
-                                MaDon = "TBC" + item.MaDonTBC,
+                                MaDon = "TBC" + item.CHDB.MaDonTBC,
                                 item.PhieuDuocKy,
                                 ID = item.MaYCCHDB,
                                 item.CreateDate,
@@ -1270,7 +1306,22 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             };
                     return LINQToDataTable(query);
                 default:
-                    return null;
+                   query = from item in db.CHDB_Phieus
+                            where item.CHDB.MaDonMoi == MaDon
+                            select new
+                            {
+                                MaDon =item.CHDB.MaDonMoi.Value.ToString(),
+                                item.PhieuDuocKy,
+                                ID = item.MaYCCHDB,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
+                                item.LyDo,
+                                item.GhiChuLyDo,
+                                item.SoTien,
+                            };
+                    return LINQToDataTable(query);
             }
         }
 

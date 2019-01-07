@@ -70,6 +70,7 @@
             this.txtSoPhieu = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.radRong = new System.Windows.Forms.RadioButton();
+            this.label34 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
@@ -94,7 +95,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(674, 213);
+            this.btnIn.Location = new System.Drawing.Point(674, 229);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 25);
             this.btnIn.TabIndex = 127;
@@ -104,7 +105,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(584, 195);
+            this.btnXoa.Location = new System.Drawing.Point(584, 211);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 126;
@@ -114,7 +115,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(584, 164);
+            this.btnSua.Location = new System.Drawing.Point(584, 180);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 125;
@@ -124,7 +125,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(584, 133);
+            this.btnThem.Location = new System.Drawing.Point(584, 149);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 122;
@@ -140,7 +141,7 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.txtCanCu);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Location = new System.Drawing.Point(12, 133);
+            this.groupBox2.Location = new System.Drawing.Point(12, 149);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(566, 109);
             this.groupBox2.TabIndex = 121;
@@ -232,7 +233,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtDanhBo);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 40);
+            this.groupBox1.Location = new System.Drawing.Point(12, 56);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(763, 87);
             this.groupBox1.TabIndex = 120;
@@ -371,7 +372,7 @@
             this.CreateDate,
             this.CanCu,
             this.VaoLuc});
-            this.dgvDSThu.Location = new System.Drawing.Point(12, 257);
+            this.dgvDSThu.Location = new System.Drawing.Point(12, 273);
             this.dgvDSThu.Name = "dgvDSThu";
             this.dgvDSThu.Size = new System.Drawing.Size(647, 126);
             this.dgvDSThu.TabIndex = 130;
@@ -414,7 +415,7 @@
             // radDutChi
             // 
             this.radDutChi.AutoSize = true;
-            this.radDutChi.Location = new System.Drawing.Point(674, 133);
+            this.radDutChi.Location = new System.Drawing.Point(674, 149);
             this.radDutChi.Name = "radDutChi";
             this.radDutChi.Size = new System.Drawing.Size(67, 20);
             this.radDutChi.TabIndex = 131;
@@ -425,7 +426,7 @@
             // radCDDM
             // 
             this.radCDDM.AutoSize = true;
-            this.radCDDM.Location = new System.Drawing.Point(674, 159);
+            this.radCDDM.Location = new System.Drawing.Point(674, 175);
             this.radCDDM.Name = "radCDDM";
             this.radCDDM.Size = new System.Drawing.Size(64, 20);
             this.radCDDM.TabIndex = 132;
@@ -453,7 +454,7 @@
             // radRong
             // 
             this.radRong.AutoSize = true;
-            this.radRong.Location = new System.Drawing.Point(674, 185);
+            this.radRong.Location = new System.Drawing.Point(674, 201);
             this.radRong.Name = "radRong";
             this.radRong.Size = new System.Drawing.Size(59, 20);
             this.radRong.TabIndex = 135;
@@ -461,12 +462,23 @@
             this.radRong.Text = "Rỗng";
             this.radRong.UseVisualStyleBackColor = true;
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.ForeColor = System.Drawing.Color.Red;
+            this.label34.Location = new System.Drawing.Point(424, 37);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(168, 16);
+            this.label34.TabIndex = 136;
+            this.label34.Text = "Ctrl+T: Cập Nhật Tiến Trình";
+            // 
             // frmThaoThuMoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(853, 396);
+            this.ClientSize = new System.Drawing.Size(783, 408);
+            this.Controls.Add(this.label34);
             this.Controls.Add(this.radRong);
             this.Controls.Add(this.txtSoPhieu);
             this.Controls.Add(this.label9);
@@ -484,10 +496,12 @@
             this.Controls.Add(this.label21);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmThaoThuMoi";
             this.Text = "Thảo Thư Mời";
             this.Load += new System.EventHandler(this.frmThaoThuMoi_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmThaoThuMoi_KeyUp);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -541,5 +555,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn CanCu;
         private System.Windows.Forms.DataGridViewTextBoxColumn VaoLuc;
+        private System.Windows.Forms.Label label34;
     }
 }

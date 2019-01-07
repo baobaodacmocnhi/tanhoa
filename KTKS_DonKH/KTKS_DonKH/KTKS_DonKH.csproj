@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>980</ApplicationRevision>
+    <ApplicationRevision>987</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -868,6 +868,12 @@
     </Compile>
     <Compile Include="GUI\DonTu\frmBaoCaoDonTu.Designer.cs">
       <DependentUpon>frmBaoCaoDonTu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DonTu\frmCapNhatDonTu_Thumbnail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DonTu\frmCapNhatDonTu_Thumbnail.Designer.cs">
+      <DependentUpon>frmCapNhatDonTu_Thumbnail.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DonTu\frmCapNhatDonTu.cs">
       <SubType>Form</SubType>
@@ -1770,6 +1776,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DonTu\frmBaoCaoDonTu.resx">
       <DependentUpon>frmBaoCaoDonTu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DonTu\frmCapNhatDonTu_Thumbnail.resx">
+      <DependentUpon>frmCapNhatDonTu_Thumbnail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DonTu\frmCapNhatDonTu.resx">
       <DependentUpon>frmCapNhatDonTu.cs</DependentUpon>

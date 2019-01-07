@@ -128,6 +128,7 @@
             this.label31 = new System.Windows.Forms.Label();
             this.txtMaCTGL = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbThanhToan3.SuspendLayout();
@@ -147,7 +148,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtDanhBo);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 40);
+            this.groupBox1.Location = new System.Drawing.Point(12, 56);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(904, 55);
             this.groupBox1.TabIndex = 2;
@@ -204,7 +205,7 @@
             // 
             // txtMaDonCu
             // 
-            this.txtMaDonCu.Location = new System.Drawing.Point(248, 12);
+            this.txtMaDonCu.Location = new System.Drawing.Point(238, 12);
             this.txtMaDonCu.Name = "txtMaDonCu";
             this.txtMaDonCu.Size = new System.Drawing.Size(75, 22);
             this.txtMaDonCu.TabIndex = 1;
@@ -213,7 +214,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(166, 15);
+            this.label21.Location = new System.Drawing.Point(156, 15);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(76, 16);
             this.label21.TabIndex = 0;
@@ -246,7 +247,7 @@
             this.groupBox2.Controls.Add(this.gbToTrinh1);
             this.groupBox2.Controls.Add(this.txtNoiDungViPham);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(12, 101);
+            this.groupBox2.Location = new System.Drawing.Point(12, 117);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1274, 218);
             this.groupBox2.TabIndex = 3;
@@ -872,7 +873,7 @@
             this.NoiDungViPham,
             this.TinhTrang,
             this.XepDon});
-            this.dgvGianLan.Location = new System.Drawing.Point(12, 390);
+            this.dgvGianLan.Location = new System.Drawing.Point(12, 406);
             this.dgvGianLan.Name = "dgvGianLan";
             this.dgvGianLan.Size = new System.Drawing.Size(1231, 235);
             this.dgvGianLan.TabIndex = 8;
@@ -942,7 +943,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(525, 341);
+            this.btnXem.Location = new System.Drawing.Point(525, 357);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 25);
             this.btnXem.TabIndex = 22;
@@ -952,7 +953,7 @@
             // 
             // btnInDS
             // 
-            this.btnInDS.Location = new System.Drawing.Point(606, 341);
+            this.btnInDS.Location = new System.Drawing.Point(606, 357);
             this.btnInDS.Name = "btnInDS";
             this.btnInDS.Size = new System.Drawing.Size(75, 25);
             this.btnInDS.TabIndex = 89;
@@ -963,7 +964,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(95, 341);
+            this.label20.Location = new System.Drawing.Point(95, 357);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(69, 16);
             this.label20.TabIndex = 90;
@@ -976,7 +977,7 @@
             "",
             "Danh Bộ",
             "Ngày"});
-            this.cmbTimTheo.Location = new System.Drawing.Point(169, 338);
+            this.cmbTimTheo.Location = new System.Drawing.Point(169, 354);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(100, 24);
             this.cmbTimTheo.TabIndex = 91;
@@ -984,7 +985,7 @@
             // 
             // txtNoiDungTimKiem
             // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(349, 338);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(349, 354);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(100, 22);
             this.txtNoiDungTimKiem.TabIndex = 93;
@@ -993,7 +994,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(275, 341);
+            this.label22.Location = new System.Drawing.Point(275, 357);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(67, 16);
             this.label22.TabIndex = 92;
@@ -1005,7 +1006,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label26);
             this.panel_KhoangThoiGian.Controls.Add(this.label27);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(342, 325);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(342, 341);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(180, 59);
             this.panel_KhoangThoiGian.TabIndex = 94;
@@ -1068,7 +1069,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(329, 15);
+            this.label31.Location = new System.Drawing.Point(319, 15);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(92, 16);
             this.label31.TabIndex = 116;
@@ -1091,12 +1092,23 @@
             this.label32.TabIndex = 118;
             this.label32.Text = "Mã GL:";
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.ForeColor = System.Drawing.Color.Red;
+            this.label34.Location = new System.Drawing.Point(414, 37);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(168, 16);
+            this.label34.TabIndex = 125;
+            this.label34.Text = "Ctrl+T: Cập Nhật Tiến Trình";
+            // 
             // frmGianLan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1291, 637);
+            this.ClientSize = new System.Drawing.Size(1291, 650);
+            this.Controls.Add(this.label34);
             this.Controls.Add(this.txtMaCTGL);
             this.Controls.Add(this.label32);
             this.Controls.Add(this.txtMaDonMoi);
@@ -1115,10 +1127,12 @@
             this.Controls.Add(this.txtMaDonCu);
             this.Controls.Add(this.label21);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frmGianLan";
             this.Text = "Gian Lận";
             this.Load += new System.EventHandler(this.frmGianLan_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmGianLan_KeyUp);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1242,5 +1256,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDungViPham;
         private System.Windows.Forms.DataGridViewTextBoxColumn TinhTrang;
         private System.Windows.Forms.DataGridViewCheckBoxColumn XepDon;
+        private System.Windows.Forms.Label label34;
     }
 }

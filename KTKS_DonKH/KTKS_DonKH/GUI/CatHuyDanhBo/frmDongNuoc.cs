@@ -18,6 +18,7 @@ using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.GUI.DonTu;
 
 namespace KTKS_DonKH.GUI.DongNuoc
 {
@@ -606,6 +607,15 @@ namespace KTKS_DonKH.GUI.DongNuoc
             }
             else
                 MessageBox.Show("Chưa có Thông Báo Đóng Nước/Nội Dung Mở Nước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void frmDongNuoc_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            {
+                frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet);
+                frm.ShowDialog();
+            }
         }
 
         

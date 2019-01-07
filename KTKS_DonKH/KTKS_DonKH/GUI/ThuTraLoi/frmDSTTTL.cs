@@ -198,13 +198,17 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 case "Mã Đơn":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
+                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                            dgvDSThu.DataSource = _cTTTL.GetDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                else
+
                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
                             dgvDSThu.DataSource = _cTTTL.GetDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                         else
                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
                                 dgvDSThu.DataSource = _cTTTL.GetDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                             else
-                                dgvDSThu.DataSource = _cTTTL.GetDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                dgvDSThu.DataSource = _cTTTL.GetDS("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
                     break;
                 case "Mã Thư":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
@@ -257,10 +261,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
-            if (dgvDSThu.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
+            //if (dgvDSThu.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            //{
+            //    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            //}
         }
 
     }
