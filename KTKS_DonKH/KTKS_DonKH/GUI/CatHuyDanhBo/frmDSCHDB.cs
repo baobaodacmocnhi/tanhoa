@@ -583,7 +583,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["NguoiKy"] = ycchdb.NguoiKy;
 
                                 if (ycchdb.CHDB.MaDonMoi != null)
-                                    dr["MaDon"] = ycchdb.CHDB.MaDonMoi.ToString();
+                                {
+                                    if (ycchdb.CHDB.DonTu.DonTu_ChiTiets.Count == 1)
+                                        dr["MaDon"] = ycchdb.CHDB.MaDonMoi.Value.ToString();
+                                    else
+                                        dr["MaDon"] = ycchdb.CHDB.MaDonMoi.Value.ToString() + "." + ycchdb.STT.Value.ToString();
+                                }
                                 else
                                     if (ycchdb.CHDB.MaDon != null)
                                         dr["MaDon"] = ycchdb.CHDB.MaDon.ToString().Insert(ycchdb.CHDB.MaDon.ToString().Length - 2, "-");

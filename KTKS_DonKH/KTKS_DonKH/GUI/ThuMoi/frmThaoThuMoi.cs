@@ -93,42 +93,45 @@ namespace KTKS_DonKH.GUI.ThuMoi
             txtDinhMuc.Text = hoadon.DM.ToString();
         }
 
-        public void LoadEntity(LinQ.ThuMoi_ChiTiet entity)
+        public void LoadEntity(LinQ.ThuMoi_ChiTiet en)
         {
-            if (entity.ThuMoi.MaDonMoi != null)
+            if (en.ThuMoi.MaDonMoi != null)
             {
-                _dontu_ChiTiet = _cDonTu.get_ChiTiet(entity.ThuMoi.MaDonMoi.Value, entity.STT.Value);
-                txtMaDonMoi.Text = entity.ThuMoi.MaDonMoi.Value.ToString();
+                _dontu_ChiTiet = _cDonTu.get_ChiTiet(en.ThuMoi.MaDonMoi.Value, en.STT.Value);
+                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                    txtMaDonMoi.Text = en.ThuMoi.MaDonMoi.ToString();
+                else
+                    txtMaDonMoi.Text = en.ThuMoi.MaDonMoi.Value.ToString() + "." + en.STT.Value.ToString();
             }
             else
-                if (entity.ThuMoi.MaDonTKH != null)
+                if (en.ThuMoi.MaDonTKH != null)
             {
-                _dontkh = _cDonKH.Get(entity.ThuMoi.MaDonTKH.Value);
-                txtMaDonCu.Text = entity.ThuMoi.MaDonTKH.Value.ToString().Insert(entity.ThuMoi.MaDonTKH.Value.ToString().Length - 2, "-");
+                _dontkh = _cDonKH.Get(en.ThuMoi.MaDonTKH.Value);
+                txtMaDonCu.Text = en.ThuMoi.MaDonTKH.Value.ToString().Insert(en.ThuMoi.MaDonTKH.Value.ToString().Length - 2, "-");
             }
             else
-                    if (entity.ThuMoi.MaDonTXL != null)
+                    if (en.ThuMoi.MaDonTXL != null)
                 {
-                    _dontxl = _cDonTXL.Get(entity.ThuMoi.MaDonTXL.Value);
-                    txtMaDonCu.Text = "TXL" + entity.ThuMoi.MaDonTXL.Value.ToString().Insert(entity.ThuMoi.MaDonTXL.Value.ToString().Length - 2, "-");
+                    _dontxl = _cDonTXL.Get(en.ThuMoi.MaDonTXL.Value);
+                    txtMaDonCu.Text = "TXL" + en.ThuMoi.MaDonTXL.Value.ToString().Insert(en.ThuMoi.MaDonTXL.Value.ToString().Length - 2, "-");
                 }
                 else
-                        if (entity.ThuMoi.MaDonTBC != null)
+                        if (en.ThuMoi.MaDonTBC != null)
                     {
-                        _dontbc = _cDonTBC.Get(entity.ThuMoi.MaDonTBC.Value);
-                        txtMaDonCu.Text = "TBC" + entity.ThuMoi.MaDonTBC.Value.ToString().Insert(entity.ThuMoi.MaDonTBC.Value.ToString().Length - 2, "-");
+                        _dontbc = _cDonTBC.Get(en.ThuMoi.MaDonTBC.Value);
+                        txtMaDonCu.Text = "TBC" + en.ThuMoi.MaDonTBC.Value.ToString().Insert(en.ThuMoi.MaDonTBC.Value.ToString().Length - 2, "-");
                     }
 
-            txtDanhBo.Text = entity.DanhBo;
-            //txtHopDong.Text = entity.HopDong;
-            //txtLoTrinh.Text = entity.LoTrinh;
-            txtHoTen.Text = entity.HoTen;
-            txtDiaChi.Text = entity.DiaChi;
-            //txtGiaBieu.Text = entity.GiaBieu;
-            //txtDinhMuc.Text = entity.DinhMuc;
-            txtCanCu.Text = entity.CanCu;
-            txtVaoLuc.Text = entity.VaoLuc;
-            txtVeViec.Text = entity.VeViec;
+            txtDanhBo.Text = en.DanhBo;
+            //txtHopDong.Text = en.HopDong;
+            //txtLoTrinh.Text = en.LoTrinh;
+            txtHoTen.Text = en.HoTen;
+            txtDiaChi.Text = en.DiaChi;
+            //txtGiaBieu.Text = en.GiaBieu;
+            //txtDinhMuc.Text = en.DinhMuc;
+            txtCanCu.Text = en.CanCu;
+            txtVaoLuc.Text = en.VaoLuc;
+            txtVeViec.Text = en.VeViec;
         }
 
         public void Clear()

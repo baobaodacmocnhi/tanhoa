@@ -141,7 +141,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (ctchdb.CHDB.MaDonMoi != null)
             {
                 _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctchdb.CHDB.MaDonMoi.Value, ctchdb.STT.Value);
-                txtMaDonMoi.Text = ctchdb.CHDB.MaDonMoi.Value.ToString();
+                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                    txtMaDonMoi.Text = ctchdb.CHDB.MaDonMoi.ToString();
+                else
+                    txtMaDonMoi.Text = ctchdb.CHDB.MaDonMoi.Value.ToString() + "." + ctchdb.STT.Value.ToString();
             }
             else
             if (ctchdb.CHDB.MaDon != null)
@@ -216,7 +219,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (ctctdb.CHDB.MaDonMoi != null)
             {
                 _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctctdb.CHDB.MaDonMoi.Value, ctctdb.STT.Value);
-                txtMaDonMoi.Text = ctctdb.CHDB.MaDonMoi.ToString();
+                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                    txtMaDonMoi.Text = ctctdb.CHDB.MaDonMoi.ToString();
+                else
+                    txtMaDonMoi.Text = ctctdb.CHDB.MaDonMoi.Value.ToString() + "." + ctctdb.STT.Value.ToString();
             }
             else
             if (ctctdb.CHDB.MaDon != null)
@@ -749,7 +755,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 try
                 {
-                    if (_ctchdb != null)
+                    if (_ctchdb != null&&_dontu_ChiTiet==null)
                     {
                         CHDB_GhiChu item = new CHDB_GhiChu();
                         item.NgayLap = dateLap.Value;

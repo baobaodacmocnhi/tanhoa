@@ -243,14 +243,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (_dontu_ChiTiet != null)
                 dgvDSKetQuaKiemTra.DataSource = _cKTXM.getDS("", _dontu_ChiTiet.MaDon.Value);
             else
-            if (_dontkh != null)
-                dgvDSKetQuaKiemTra.DataSource = _cKTXM.getDS("TKH",  _dontkh.MaDon);
-            else
-                if (_dontxl != null)
-                    dgvDSKetQuaKiemTra.DataSource = _cKTXM.getDS("TXL", _dontxl.MaDon);
+                if (_dontkh != null)
+                    dgvDSKetQuaKiemTra.DataSource = _cKTXM.getDS("TKH", _dontkh.MaDon);
                 else
-                    if (_dontbc != null)
-                        dgvDSKetQuaKiemTra.DataSource = _cKTXM.getDS("TBC", _dontbc.MaDon);
+                    if (_dontxl != null)
+                        dgvDSKetQuaKiemTra.DataSource = _cKTXM.getDS("TXL", _dontxl.MaDon);
+                    else
+                        if (_dontbc != null)
+                            dgvDSKetQuaKiemTra.DataSource = _cKTXM.getDS("TBC", _dontbc.MaDon);
         }
 
         private void txtMaDonCu_KeyPress(object sender, KeyPressEventArgs e)
@@ -580,7 +580,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _ctktxm.NgayKTXM_Truoc_NgayGiao = chkNgayKTXMTruocNgayGiao.Checked;
                         _ctktxm.NgayKTXM = dateKTXM.Value;
 
-                        if (cmbHienTrangKiemTra.SelectedValue != null)
+                        if (cmbHienTrangKiemTra.SelectedValue != null && cmbHienTrangKiemTra.SelectedValue.ToString()!="")
                             _ctktxm.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedValue.ToString();
 
                         if (cmbViTriDHN1.SelectedItem != null)
@@ -670,10 +670,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void dgvDSKetQuaKiemTra_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvDSKetQuaKiemTra.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
+            //if (dgvDSKetQuaKiemTra.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            //{
+            //    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            //}
         }
 
         private void dgvDSKetQuaKiemTra_CellContentClick(object sender, DataGridViewCellEventArgs e)

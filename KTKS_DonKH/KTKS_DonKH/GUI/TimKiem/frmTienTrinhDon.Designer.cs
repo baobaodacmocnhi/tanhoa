@@ -237,6 +237,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.gridColumn89 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBamChi)).BeginInit();
@@ -1758,6 +1759,7 @@
             this.gridColumn85,
             this.gridColumn86,
             this.gridColumn87,
+            this.gridColumn89,
             this.gridColumn88});
             this.gridViewTienTrinh.GridControl = this.gridControl;
             this.gridViewTienTrinh.Name = "gridViewTienTrinh";
@@ -1804,7 +1806,7 @@
             this.gridColumn88.Name = "gridColumn88";
             this.gridColumn88.OptionsColumn.AllowEdit = false;
             this.gridColumn88.Visible = true;
-            this.gridColumn88.VisibleIndex = 3;
+            this.gridColumn88.VisibleIndex = 4;
             this.gridColumn88.Width = 200;
             // 
             // gridViewDon
@@ -2420,6 +2422,15 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Danh Bộ:";
             // 
+            // gridColumn89
+            // 
+            this.gridColumn89.Caption = "Nhân Viên Kiểm Tra";
+            this.gridColumn89.FieldName = "KTXM";
+            this.gridColumn89.Name = "gridColumn89";
+            this.gridColumn89.Visible = true;
+            this.gridColumn89.VisibleIndex = 3;
+            this.gridColumn89.Width = 200;
+            // 
             // frmTienTrinhDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2660,5 +2671,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn86;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn87;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn88;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn89;
     }
 }

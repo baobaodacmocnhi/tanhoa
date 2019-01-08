@@ -87,10 +87,12 @@ namespace KTKS_DonKH.GUI.DonTu
                 else
                 {
                     tabControl.SelectTab("tabCongVan");
-                    if (en_ChiTiet!=null)
-                        txtMaDon.Text += "." + en_ChiTiet.STT;
-
                     dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
+                    if (en_ChiTiet != null)
+                    {
+                        txtMaDon.Text += "." + en_ChiTiet.STT;
+                        dgvDanhBo.Rows[en_ChiTiet.STT.Value-1].Selected = true;
+                    }
                 }
 
                 LoadLichSu();

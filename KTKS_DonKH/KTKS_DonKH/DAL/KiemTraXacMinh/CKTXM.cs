@@ -455,7 +455,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             where  itemCTKTXM.KTXM.MaDonMoi == MaDon
                             select new
                             {
-                                MaDon = itemCTKTXM.KTXM.MaDonMoi.Value.ToString(),
+                                MaDon = itemCTKTXM.KTXM.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTKTXM.KTXM.MaDonMoi.Value.ToString() : itemCTKTXM.KTXM.MaDonMoi.Value.ToString() + "." + itemCTKTXM.STT.Value.ToString(),
                                 TenLD = "",
                                 itemCTKTXM.MaCTKTXM,
                                 itemCTKTXM.DanhBo,

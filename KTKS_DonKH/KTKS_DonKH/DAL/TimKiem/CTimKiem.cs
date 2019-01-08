@@ -14,12 +14,12 @@ namespace KTKS_DonKH.DAL.TimKiem
             try
             {
                 DataSet ds = new DataSet();
-                ///Table DonKH
+                ///Table DonTu
                 var queryDon = from itemDon in db.DonTu_ChiTiets
                                where itemDon.MaDon == MaDon
                                select new
                                {
-                                   MaDon = itemDon.DonTu.DonTu_ChiTiets.Count == 1 ? itemDon.MaDon.Value.ToString() : itemDon.MaDon.Value.ToString() + itemDon.STT.Value.ToString(),
+                                   MaDon = itemDon.DonTu.DonTu_ChiTiets.Count == 1 ? itemDon.MaDon.Value.ToString() : itemDon.MaDon.Value.ToString() +"."+ itemDon.STT.Value.ToString(),
                                    //itemDon.LoaiDon.TenLD,
                                    itemDon.CreateDate,
                                    itemDon.DanhBo,
@@ -40,7 +40,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTKTXM.KTXM.MaDonMoi == MaDon
                                 select new
                                 {
-                                    MaDon = itemCTKTXM.KTXM.MaDonMoi,
+                                    MaDon = itemCTKTXM.KTXM.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTKTXM.KTXM.MaDonMoi.Value.ToString() : itemCTKTXM.KTXM.MaDonMoi.Value.ToString()+"."+itemCTKTXM.STT.Value.ToString(),
                                     itemCTKTXM.MaCTKTXM,
                                     itemCTKTXM.NgayKTXM,
                                     itemCTKTXM.DanhBo,
@@ -63,7 +63,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   where itemCTBamChi.BamChi.MaDonMoi == MaDon
                                   select new
                                   {
-                                      MaDon = itemCTBamChi.BamChi.MaDonMoi,
+                                      MaDon = itemCTBamChi.BamChi.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi.Value.ToString() + "." + itemCTBamChi.STT.Value.ToString(),
                                       itemCTBamChi.MaCTBC,
                                       itemCTBamChi.NgayBC,
                                       itemCTBamChi.DanhBo,
@@ -85,7 +85,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     where itemCTDongNuoc.DongNuoc.MaDonMoi == MaDon
                                     select new
                                     {
-                                        MaDon = itemCTDongNuoc.DongNuoc.MaDonMoi,
+                                        MaDon = itemCTDongNuoc.DongNuoc.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTDongNuoc.DongNuoc.MaDonMoi.Value.ToString() : itemCTDongNuoc.DongNuoc.MaDonMoi.Value.ToString() + "." + itemCTDongNuoc.STT.Value.ToString(),
                                         itemCTDongNuoc.MaCTDN,
                                         itemCTDongNuoc.NgayDN,
                                         itemCTDongNuoc.DanhBo,
@@ -106,7 +106,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   where itemCTDCBD.DCBD.MaDonMoi == MaDon
                                   select new
                                   {
-                                      MaDon = itemCTDCBD.DCBD.MaDonMoi,
+                                      MaDon = itemCTDCBD.DCBD.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTDCBD.DCBD.MaDonMoi.Value.ToString() : itemCTDCBD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCBD.STT.Value.ToString(),
                                       MaDC = itemCTDCBD.MaCTDCBD,
                                       DieuChinh = "Biến Động",
                                       itemCTDCBD.CreateDate,
@@ -130,7 +130,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   where itemCTDCHD.DCBD.MaDonMoi == MaDon
                                   select new
                                   {
-                                      MaDon = itemCTDCHD.DCBD.MaDonMoi,
+                                      MaDon = itemCTDCHD.DCBD.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTDCHD.DCBD.MaDonMoi.Value.ToString() : itemCTDCHD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCHD.STT.Value.ToString(),
                                       MaDC = itemCTDCHD.MaCTDCHD,
                                       DieuChinh = "Hóa Đơn",
                                       itemCTDCHD.CreateDate,
@@ -160,7 +160,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   where itemCTCTDB.CHDB.MaDonMoi == MaDon
                                   select new
                                   {
-                                      MaDon = itemCTCTDB.CHDB.MaDonMoi,
+                                      MaDon = itemCTCTDB.CHDB.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTCTDB.CHDB.MaDonMoi.Value.ToString() : itemCTCTDB.CHDB.MaDonMoi.Value.ToString() + "." + itemCTCTDB.STT.Value.ToString(),
                                       MaCH = itemCTCTDB.MaCTCTDB,
                                       LoaiCat = "Cắt Tạm",
                                       itemCTCTDB.CreateDate,
@@ -178,7 +178,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   where itemCTCHDB.CHDB.MaDonMoi == MaDon
                                   select new
                                   {
-                                      MaDon = itemCTCHDB.CHDB.MaDonMoi,
+                                      MaDon = itemCTCHDB.CHDB.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTCHDB.CHDB.MaDonMoi.Value.ToString() : itemCTCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemCTCHDB.STT.Value.ToString(),
                                       MaCH = itemCTCHDB.MaCTCHDB,
                                       LoaiCat = "Cắt Hủy",
                                       itemCTCHDB.CreateDate,
@@ -202,7 +202,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   where itemYCCHDB.CHDB.MaDonMoi == MaDon
                                   select new
                                   {
-                                      MaDon = itemYCCHDB.CHDB.MaDonMoi,
+                                      MaDon = itemYCCHDB.CHDB.DonTu.DonTu_ChiTiets.Count == 1 ? itemYCCHDB.CHDB.MaDonMoi.Value.ToString() : itemYCCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemYCCHDB.STT.Value.ToString(),
                                       itemYCCHDB.MaYCCHDB,
                                       itemYCCHDB.CreateDate,
                                       itemYCCHDB.DanhBo,
@@ -222,7 +222,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTTTTL.TTTL.MaDonMoi == MaDon
                                 select new
                                 {
-                                    MaDon = itemCTTTTL.TTTL.MaDonMoi,
+                                    MaDon = itemCTTTTL.TTTL.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTTTTL.TTTL.MaDonMoi.Value.ToString() : itemCTTTTL.TTTL.MaDonMoi.Value.ToString() + "." + itemCTTTTL.STT.Value.ToString(),
                                     itemCTTTTL.MaCTTTTL,
                                     itemCTTTTL.CreateDate,
                                     itemCTTTTL.DanhBo,
@@ -242,7 +242,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    where itemGL.GianLan.MaDonMoi == MaDon
                                    select new
                                    {
-                                       MaDon = itemGL.GianLan.MaDonMoi,
+                                       MaDon = itemGL.GianLan.DonTu.DonTu_ChiTiets.Count == 1 ? itemGL.GianLan.MaDonMoi.Value.ToString() : itemGL.GianLan.MaDonMoi.Value.ToString() + "." + itemGL.STT.Value.ToString(),
                                        ID = itemGL.MaCTGL,
                                        itemGL.DanhBo,
                                        itemGL.HoTen,
@@ -265,7 +265,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    where itemTT.TruyThuTienNuoc.MaDonMoi == MaDon
                                    select new
                                    {
-                                       MaDon = itemTT.TruyThuTienNuoc.MaDonMoi,
+                                       MaDon = itemTT.TruyThuTienNuoc.DonTu.DonTu_ChiTiets.Count == 1 ? itemTT.TruyThuTienNuoc.MaDonMoi.Value.ToString() : itemTT.TruyThuTienNuoc.MaDonMoi.Value.ToString() + "." + itemTT.STT.Value.ToString(),
                                        itemTT.IDCT,
                                        itemTT.DanhBo,
                                        itemTT.HoTen,
@@ -286,7 +286,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    where itemCTTT.ToTrinh.MaDonMoi == MaDon
                                    select new
                                    {
-                                       MaDon = itemCTTT.ToTrinh.MaDonMoi,
+                                       MaDon = itemCTTT.ToTrinh.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTTT.ToTrinh.MaDonMoi.Value.ToString() : itemCTTT.ToTrinh.MaDonMoi.Value.ToString() + "." + itemCTTT.STT.Value.ToString(),
                                        itemCTTT.IDCT,
                                        itemCTTT.DanhBo,
                                        itemCTTT.HoTen,
@@ -305,7 +305,360 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   where item.ThuMoi.MaDonMoi == MaDon
                                   select new
                                   {
-                                      MaDon = item.ThuMoi.MaDonMoi,
+                                      MaDon = item.ThuMoi.DonTu.DonTu_ChiTiets.Count == 1 ? item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi.Value.ToString() + "." + item.STT.Value.ToString(),
+                                      item.IDCT,
+                                      item.SoPhieu,
+                                      item.Lan,
+                                      item.DanhBo,
+                                      item.HoTen,
+                                      item.DiaChi,
+                                      item.CreateDate,
+                                      item.VeViec,
+                                  };
+                DataTable dtThuMoi = new DataTable();
+                dtThuMoi = LINQToDataTable(queryThuMoi);
+                dtThuMoi.TableName = "ThuMoi";
+                ds.Tables.Add(dtThuMoi);
+
+                if (dtDon.Rows.Count > 0 && dtKTXM.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Kiểm Tra Xác Minh", ds.Tables["Don"].Columns["MaDon"], ds.Tables["KTXM"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtBamChi.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Bấm Chì", ds.Tables["Don"].Columns["MaDon"], ds.Tables["BamChi"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtDongNuoc.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Đóng Nước", ds.Tables["Don"].Columns["MaDon"], ds.Tables["DongNuoc"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtDCBD.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Điều Chỉnh Biến Động", ds.Tables["Don"].Columns["MaDon"], ds.Tables["DCBD"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtCHDB.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["CHDB"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtYCCHDB.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtTruyThu.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Truy Thu", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TruyThu"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtToTrinh.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Tờ Trình", ds.Tables["Don"].Columns["MaDon"], ds.Tables["ToTrinh"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtThuMoi.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Thư Mời", ds.Tables["Don"].Columns["MaDon"], ds.Tables["ThuMoi"].Columns["MaDon"]);
+
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataSet GetTienTrinh_DonTu(int MaDon,int STT)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                ///Table DonTu
+                var queryDon = from itemDon in db.DonTu_ChiTiets
+                               where itemDon.MaDon == MaDon&&itemDon.STT==STT
+                               select new
+                               {
+                                   MaDon = itemDon.MaDon.Value.ToString() + "." + itemDon.STT.Value.ToString(),
+                                   //itemDon.LoaiDon.TenLD,
+                                   itemDon.CreateDate,
+                                   itemDon.DanhBo,
+                                   itemDon.HoTen,
+                                   itemDon.DiaChi,
+                                   itemDon.GiaBieu,
+                                   itemDon.DinhMuc,
+                                   NoiDung = itemDon.DonTu.Name_NhomDon,
+                               };
+                DataTable dtDon = new DataTable();
+                dtDon = LINQToDataTable(queryDon);
+                dtDon.TableName = "Don";
+                ds.Tables.Add(dtDon);
+
+                ///Table CTKTXM
+                var queryKTXM = from itemCTKTXM in db.KTXM_ChiTiets
+                                join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                where itemCTKTXM.KTXM.MaDonMoi == MaDon && itemCTKTXM.STT == STT
+                                select new
+                                {
+                                    MaDon =  itemCTKTXM.KTXM.MaDonMoi.Value.ToString() + "." + itemCTKTXM.STT.Value.ToString(),
+                                    itemCTKTXM.MaCTKTXM,
+                                    itemCTKTXM.NgayKTXM,
+                                    itemCTKTXM.DanhBo,
+                                    itemCTKTXM.HoTen,
+                                    itemCTKTXM.DiaChi,
+                                    itemCTKTXM.NoiDungKiemTra,
+                                    CreateBy = itemUser.HoTen,
+                                    itemCTKTXM.NoiDungDongTien,
+                                    itemCTKTXM.NgayDongTien,
+                                    itemCTKTXM.SoTienDongTien,
+                                };
+                DataTable dtKTXM = new DataTable();
+                dtKTXM = LINQToDataTable(queryKTXM);
+                dtKTXM.TableName = "KTXM";
+                ds.Tables.Add(dtKTXM);
+
+                ///Table CTBamChi
+                var queryBamChi = from itemCTBamChi in db.BamChi_ChiTiets
+                                  join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                  where itemCTBamChi.BamChi.MaDonMoi == MaDon && itemCTBamChi.STT == STT
+                                  select new
+                                  {
+                                      MaDon =  itemCTBamChi.BamChi.MaDonMoi.Value.ToString() + "." + itemCTBamChi.STT.Value.ToString(),
+                                      itemCTBamChi.MaCTBC,
+                                      itemCTBamChi.NgayBC,
+                                      itemCTBamChi.DanhBo,
+                                      itemCTBamChi.HoTen,
+                                      itemCTBamChi.DiaChi,
+                                      itemCTBamChi.TrangThaiBC,
+                                      itemCTBamChi.TheoYeuCau,
+                                      itemCTBamChi.MaSoBC,
+                                      CreateBy = itemUser.HoTen,
+                                  };
+                DataTable dtBamChi = new DataTable();
+                dtBamChi = LINQToDataTable(queryBamChi);
+                dtBamChi.TableName = "BamChi";
+                ds.Tables.Add(dtBamChi);
+
+                ///Table CTDongNuoc
+                var queryDongNuoc = from itemCTDongNuoc in db.DongNuoc_ChiTiets
+                                    join itemUser in db.Users on itemCTDongNuoc.CreateBy equals itemUser.MaU
+                                    where itemCTDongNuoc.DongNuoc.MaDonMoi == MaDon && itemCTDongNuoc.STT == STT
+                                    select new
+                                    {
+                                        MaDon =  itemCTDongNuoc.DongNuoc.MaDonMoi.Value.ToString() + "." + itemCTDongNuoc.STT.Value.ToString(),
+                                        itemCTDongNuoc.MaCTDN,
+                                        itemCTDongNuoc.NgayDN,
+                                        itemCTDongNuoc.DanhBo,
+                                        itemCTDongNuoc.HoTen,
+                                        itemCTDongNuoc.DiaChi,
+                                        itemCTDongNuoc.MaCTMN,
+                                        itemCTDongNuoc.NgayMN,
+                                        CreateBy = itemUser.HoTen,
+                                    };
+                DataTable dtDongNuoc = new DataTable();
+                dtDongNuoc = LINQToDataTable(queryDongNuoc);
+                dtDongNuoc.TableName = "DongNuoc";
+                ds.Tables.Add(dtDongNuoc);
+
+                ///Table CTDCBD
+                var queryCTDCBD = from itemCTDCBD in db.DCBD_ChiTietBienDongs
+                                  join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
+                                  where itemCTDCBD.DCBD.MaDonMoi == MaDon && itemCTDCBD.STT == STT
+                                  select new
+                                  {
+                                      MaDon =  itemCTDCBD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCBD.STT.Value.ToString(),
+                                      MaDC = itemCTDCBD.MaCTDCBD,
+                                      DieuChinh = "Biến Động",
+                                      itemCTDCBD.CreateDate,
+                                      itemCTDCBD.ThongTin,
+                                      itemCTDCBD.DanhBo,
+                                      itemCTDCBD.HoTen_BD,
+                                      itemCTDCBD.DiaChi_BD,
+                                      itemCTDCBD.MSThue_BD,
+                                      itemCTDCBD.GiaBieu_BD,
+                                      itemCTDCBD.DinhMuc_BD,
+                                      itemCTDCBD.HoTen,
+                                      itemCTDCBD.DiaChi,
+                                      itemCTDCBD.MSThue,
+                                      itemCTDCBD.GiaBieu,
+                                      itemCTDCBD.DinhMuc,
+                                      CreateBy = itemUser.HoTen,
+                                  };
+                ///Bảng CTDCHD
+                var queryCTDCHD = from itemCTDCHD in db.DCBD_ChiTietHoaDons
+                                  join itemUser in db.Users on itemCTDCHD.CreateBy equals itemUser.MaU
+                                  where itemCTDCHD.DCBD.MaDonMoi == MaDon && itemCTDCHD.STT == STT
+                                  select new
+                                  {
+                                      MaDon =  itemCTDCHD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCHD.STT.Value.ToString(),
+                                      MaDC = itemCTDCHD.MaCTDCHD,
+                                      DieuChinh = "Hóa Đơn",
+                                      itemCTDCHD.CreateDate,
+                                      itemCTDCHD.DanhBo,
+                                      itemCTDCHD.HoTen,
+                                      itemCTDCHD.DiaChi,
+                                      itemCTDCHD.GiaBieu,
+                                      itemCTDCHD.GiaBieu_BD,
+                                      itemCTDCHD.DinhMuc,
+                                      itemCTDCHD.DinhMuc_BD,
+                                      itemCTDCHD.TieuThu,
+                                      itemCTDCHD.TieuThu_BD,
+                                      itemCTDCHD.TongCong_Start,
+                                      itemCTDCHD.TongCong_End,
+                                      itemCTDCHD.TangGiam,
+                                      itemCTDCHD.TongCong_BD,
+                                      CreateBy = itemUser.HoTen,
+                                  };
+                DataTable dtDCBD = new DataTable();
+                dtDCBD = LINQToDataTable(queryCTDCBD);
+                dtDCBD.Merge(LINQToDataTable(queryCTDCHD));
+                dtDCBD.TableName = "DCBD";
+                ds.Tables.Add(dtDCBD);
+
+                ///Table CTCTDB
+                var queryCTCTDB = from itemCTCTDB in db.CHDB_ChiTietCatTams
+                                  where itemCTCTDB.CHDB.MaDonMoi == MaDon && itemCTCTDB.STT == STT
+                                  select new
+                                  {
+                                      MaDon = itemCTCTDB.CHDB.MaDonMoi.Value.ToString() + "." + itemCTCTDB.STT.Value.ToString(),
+                                      MaCH = itemCTCTDB.MaCTCTDB,
+                                      LoaiCat = "Cắt Tạm",
+                                      itemCTCTDB.CreateDate,
+                                      itemCTCTDB.DanhBo,
+                                      itemCTCTDB.HoTen,
+                                      itemCTCTDB.DiaChi,
+                                      itemCTCTDB.LyDo,
+                                      itemCTCTDB.GhiChuLyDo,
+                                      itemCTCTDB.DaLapPhieu,
+                                      itemCTCTDB.SoPhieu,
+                                      itemCTCTDB.NgayLapPhieu,
+                                  };
+                ///Table CHDB_ChiTietCatHuy
+                var queryCTCHDB = from itemCTCHDB in db.CHDB_ChiTietCatHuys
+                                  where itemCTCHDB.CHDB.MaDonMoi == MaDon && itemCTCHDB.STT == STT
+                                  select new
+                                  {
+                                      MaDon =itemCTCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemCTCHDB.STT.Value.ToString(),
+                                      MaCH = itemCTCHDB.MaCTCHDB,
+                                      LoaiCat = "Cắt Hủy",
+                                      itemCTCHDB.CreateDate,
+                                      itemCTCHDB.DanhBo,
+                                      itemCTCHDB.HoTen,
+                                      itemCTCHDB.DiaChi,
+                                      itemCTCHDB.LyDo,
+                                      itemCTCHDB.GhiChuLyDo,
+                                      itemCTCHDB.DaLapPhieu,
+                                      itemCTCHDB.SoPhieu,
+                                      itemCTCHDB.NgayLapPhieu,
+                                  };
+                DataTable dtCHDB = new DataTable();
+                dtCHDB = LINQToDataTable(queryCTCTDB);
+                dtCHDB.Merge(LINQToDataTable(queryCTCHDB));
+                dtCHDB.TableName = "CHDB";
+                ds.Tables.Add(dtCHDB);
+
+                ///Table PhieuCHDB
+                var queryYCCHDB = from itemYCCHDB in db.CHDB_Phieus
+                                  where itemYCCHDB.CHDB.MaDonMoi == MaDon && itemYCCHDB.STT == STT
+                                  select new
+                                  {
+                                      MaDon =  itemYCCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemYCCHDB.STT.Value.ToString(),
+                                      itemYCCHDB.MaYCCHDB,
+                                      itemYCCHDB.CreateDate,
+                                      itemYCCHDB.DanhBo,
+                                      itemYCCHDB.HoTen,
+                                      itemYCCHDB.DiaChi,
+                                      itemYCCHDB.LyDo,
+                                      itemYCCHDB.GhiChuLyDo,
+                                      itemYCCHDB.HieuLucKy,
+                                  };
+                DataTable dtYCCHDB = new DataTable();
+                dtYCCHDB = LINQToDataTable(queryYCCHDB);
+                dtYCCHDB.TableName = "YCCHDB";
+                ds.Tables.Add(dtYCCHDB);
+
+                ///Table CTTTTL
+                var queryTTTL = from itemCTTTTL in db.TTTL_ChiTiets
+                                where itemCTTTTL.TTTL.MaDonMoi == MaDon && itemCTTTTL.STT == STT
+                                select new
+                                {
+                                    MaDon = itemCTTTTL.TTTL.MaDonMoi.Value.ToString() + "." + itemCTTTTL.STT.Value.ToString(),
+                                    itemCTTTTL.MaCTTTTL,
+                                    itemCTTTTL.CreateDate,
+                                    itemCTTTTL.DanhBo,
+                                    itemCTTTTL.HoTen,
+                                    itemCTTTTL.DiaChi,
+                                    itemCTTTTL.VeViec,
+                                    itemCTTTTL.NoiDung,
+                                    itemCTTTTL.NoiNhan,
+                                };
+                DataTable dtTTTL = new DataTable();
+                dtTTTL = LINQToDataTable(queryTTTL);
+                dtTTTL.TableName = "TTTL";
+                ds.Tables.Add(dtTTTL);
+
+                ///Table GianLan
+                var queryGianLan = from itemGL in db.GianLan_ChiTiets
+                                   where itemGL.GianLan.MaDonMoi == MaDon && itemGL.STT == STT
+                                   select new
+                                   {
+                                       MaDon = itemGL.GianLan.MaDonMoi.Value.ToString() + "." + itemGL.STT.Value.ToString(),
+                                       ID = itemGL.MaCTGL,
+                                       itemGL.DanhBo,
+                                       itemGL.HoTen,
+                                       itemGL.DiaChi,
+                                       itemGL.CreateDate,
+                                       itemGL.NoiDungViPham,
+                                       itemGL.TinhTrang,
+                                       itemGL.ThanhToan1,
+                                       itemGL.ThanhToan2,
+                                       itemGL.ThanhToan3,
+                                       itemGL.XepDon,
+                                   };
+                DataTable dtGianLan = new DataTable();
+                dtGianLan = LINQToDataTable(queryGianLan);
+                dtGianLan.TableName = "GianLan";
+                ds.Tables.Add(dtGianLan);
+
+                ///Table TruyThu
+                var queryTruyThu = from itemTT in db.TruyThuTienNuoc_ChiTiets
+                                   where itemTT.TruyThuTienNuoc.MaDonMoi == MaDon && itemTT.STT == STT
+                                   select new
+                                   {
+                                       MaDon =  itemTT.TruyThuTienNuoc.MaDonMoi.Value.ToString() + "." + itemTT.STT.Value.ToString(),
+                                       itemTT.IDCT,
+                                       itemTT.DanhBo,
+                                       itemTT.HoTen,
+                                       itemTT.DiaChi,
+                                       itemTT.CreateDate,
+                                       itemTT.NoiDung,
+                                       itemTT.TongTien,
+                                       itemTT.Tongm3BinhQuan,
+                                       itemTT.TinhTrang,
+                                   };
+                DataTable dtTruyThu = new DataTable();
+                dtTruyThu = LINQToDataTable(queryTruyThu);
+                dtTruyThu.TableName = "TruyThu";
+                ds.Tables.Add(dtTruyThu);
+
+                ///Table ToTrinh
+                var queryToTrinh = from itemCTTT in db.ToTrinh_ChiTiets
+                                   where itemCTTT.ToTrinh.MaDonMoi == MaDon && itemCTTT.STT == STT
+                                   select new
+                                   {
+                                       MaDon =  itemCTTT.ToTrinh.MaDonMoi.Value.ToString() + "." + itemCTTT.STT.Value.ToString(),
+                                       itemCTTT.IDCT,
+                                       itemCTTT.DanhBo,
+                                       itemCTTT.HoTen,
+                                       itemCTTT.DiaChi,
+                                       itemCTTT.CreateDate,
+                                       itemCTTT.VeViec,
+                                       itemCTTT.NoiDung,
+                                   };
+                DataTable dtToTrinh = new DataTable();
+                dtToTrinh = LINQToDataTable(queryToTrinh);
+                dtToTrinh.TableName = "ToTrinh";
+                ds.Tables.Add(dtToTrinh);
+
+                ///Table ThuMoi
+                var queryThuMoi = from item in db.ThuMoi_ChiTiets
+                                  where item.ThuMoi.MaDonMoi == MaDon && item.STT == STT
+                                  select new
+                                  {
+                                      MaDon =  item.ThuMoi.MaDonMoi.Value.ToString() + "." + item.STT.Value.ToString(),
                                       item.IDCT,
                                       item.SoPhieu,
                                       item.Lan,

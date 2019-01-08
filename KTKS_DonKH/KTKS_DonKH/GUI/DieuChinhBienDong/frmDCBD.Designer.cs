@@ -851,7 +851,7 @@
             // 
             // txtHieuLucKy
             // 
-            this.txtHieuLucKy.Location = new System.Drawing.Point(983, 12);
+            this.txtHieuLucKy.Location = new System.Drawing.Point(993, 12);
             this.txtHieuLucKy.Name = "txtHieuLucKy";
             this.txtHieuLucKy.Size = new System.Drawing.Size(70, 22);
             this.txtHieuLucKy.TabIndex = 6;
@@ -861,7 +861,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(896, 15);
+            this.label22.Location = new System.Drawing.Point(906, 15);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(81, 16);
             this.label22.TabIndex = 5;
@@ -879,7 +879,7 @@
             // 
             // txtDot
             // 
-            this.txtDot.Location = new System.Drawing.Point(855, 11);
+            this.txtDot.Location = new System.Drawing.Point(865, 11);
             this.txtDot.Name = "txtDot";
             this.txtDot.Size = new System.Drawing.Size(35, 22);
             this.txtDot.TabIndex = 13;
@@ -887,7 +887,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(818, 15);
+            this.label23.Location = new System.Drawing.Point(828, 15);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(31, 16);
             this.label23.TabIndex = 12;
@@ -1305,7 +1305,7 @@
             // 
             // txtGhiChu
             // 
-            this.txtGhiChu.Location = new System.Drawing.Point(1122, 13);
+            this.txtGhiChu.Location = new System.Drawing.Point(1132, 13);
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.Size = new System.Drawing.Size(150, 22);
             this.txtGhiChu.TabIndex = 24;
@@ -1313,7 +1313,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(1059, 16);
+            this.label30.Location = new System.Drawing.Point(1069, 16);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(57, 16);
             this.label30.TabIndex = 23;
@@ -1341,7 +1341,7 @@
             // 
             // txtSoPhieu
             // 
-            this.txtSoPhieu.Location = new System.Drawing.Point(742, 12);
+            this.txtSoPhieu.Location = new System.Drawing.Point(752, 12);
             this.txtSoPhieu.Name = "txtSoPhieu";
             this.txtSoPhieu.Size = new System.Drawing.Size(70, 22);
             this.txtSoPhieu.TabIndex = 28;
@@ -1350,7 +1350,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(671, 15);
+            this.label31.Location = new System.Drawing.Point(681, 15);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(65, 16);
             this.label31.TabIndex = 27;
@@ -1394,7 +1394,7 @@
             // 
             // txtMaDonMoi
             // 
-            this.txtMaDonMoi.Location = new System.Drawing.Point(585, 12);
+            this.txtMaDonMoi.Location = new System.Drawing.Point(595, 12);
             this.txtMaDonMoi.Name = "txtMaDonMoi";
             this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
             this.txtMaDonMoi.TabIndex = 117;

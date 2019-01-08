@@ -1947,6 +1947,8 @@
       <Column Name="VeViec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="NoiNhan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NguoiBao" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DienThoai" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="GiamNuocXaBo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="KiemDinhDHN_Dung" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="KiemDinhDHN_Sai" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />

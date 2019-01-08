@@ -88,6 +88,15 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         public void LoadGianLan(GianLan_ChiTiet entity)
         {
+            if (entity.GianLan.MaDonMoi != null)
+            {
+                _dontu_ChiTiet = _cDonTu.get_ChiTiet(entity.GianLan.MaDonMoi.Value, entity.STT.Value);
+                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                    txtMaDonMoi.Text = entity.GianLan.MaDonMoi.ToString();
+                else
+                    txtMaDonMoi.Text = entity.GianLan.MaDonMoi.Value.ToString() + "." + entity.STT.Value.ToString();
+            }
+            else
             if (entity.GianLan.MaDon != null)
             {
                 _dontkh = _cDonKH.Get(entity.GianLan.MaDon.Value);

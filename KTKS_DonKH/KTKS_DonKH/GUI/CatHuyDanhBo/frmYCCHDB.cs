@@ -83,7 +83,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (phieuCHDB.CHDB.MaDonMoi != null)
             {
                 _dontu_ChiTiet = _cDonTu.get_ChiTiet(phieuCHDB.CHDB.MaDonMoi.Value, phieuCHDB.STT.Value);
-                txtMaDonMoi.Text = phieuCHDB.CHDB.MaDonMoi.ToString();
+                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                    txtMaDonMoi.Text = phieuCHDB.CHDB.MaDonMoi.ToString();
+                else
+                    txtMaDonMoi.Text = phieuCHDB.CHDB.MaDonMoi.Value.ToString() + "." + phieuCHDB.STT.Value.ToString();
             }
             else
             if (phieuCHDB.CHDB.MaDon != null)
@@ -541,7 +544,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (_ycchdb != null)
                 {
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                    DataRow dr = dsBaoCao.Tables["CHDB_Phieu"].NewRow();
+                    DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
 
                     dr["SoPhieu"] = _ycchdb.MaYCCHDB.ToString().Insert(_ycchdb.MaYCCHDB.ToString().Length - 2, "-");
                     dr["HieuLucKy"] = _ycchdb.HieuLucKy;
@@ -565,18 +568,23 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["NguoiKy"] = _ycchdb.NguoiKy;
 
                     if (_ycchdb.CHDB.MaDonMoi != null)
-                        dr["MaDon"] = _ycchdb.CHDB.MaDonMoi.ToString();
-                    else
-                    if (_ycchdb.CHDB.MaDon != null)
-                        dr["MaDon"] = "TKH" + _ycchdb.CHDB.MaDon.ToString().Insert(_ycchdb.CHDB.MaDon.ToString().Length - 2, "-");
-                    else
-                        if (_ycchdb.CHDB.MaDonTXL != null)
-                            dr["MaDon"] = "TXL" + _ycchdb.CHDB.MaDonTXL.ToString().Insert(_ycchdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
+                    {
+                        if (_ycchdb.CHDB.DonTu.DonTu_ChiTiets.Count == 1)
+                            dr["MaDon"] = _ycchdb.CHDB.MaDonMoi.Value.ToString();
                         else
-                            if (_ycchdb.CHDB.MaDonTBC != null)
-                                dr["MaDon"] = "TBC" + _ycchdb.CHDB.MaDonTBC.ToString().Insert(_ycchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
+                            dr["MaDon"] = _ycchdb.CHDB.MaDonMoi.Value.ToString() + "." + _ycchdb.STT.Value.ToString();
+                    }
+                    else
+                        if (_ycchdb.CHDB.MaDon != null)
+                            dr["MaDon"] = "TKH" + _ycchdb.CHDB.MaDon.ToString().Insert(_ycchdb.CHDB.MaDon.ToString().Length - 2, "-");
+                        else
+                            if (_ycchdb.CHDB.MaDonTXL != null)
+                                dr["MaDon"] = "TXL" + _ycchdb.CHDB.MaDonTXL.ToString().Insert(_ycchdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
+                            else
+                                if (_ycchdb.CHDB.MaDonTBC != null)
+                                    dr["MaDon"] = "TBC" + _ycchdb.CHDB.MaDonTBC.ToString().Insert(_ycchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
 
-                    dsBaoCao.Tables["CHDB_Phieu"].Rows.Add(dr);
+                    dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 
                     //rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
                     //for (int j = 0; j < rpt.Subreports.Count; j++)

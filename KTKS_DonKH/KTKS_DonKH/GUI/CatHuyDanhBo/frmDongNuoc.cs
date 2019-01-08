@@ -80,7 +80,10 @@ namespace KTKS_DonKH.GUI.DongNuoc
             if (ctdongnuoc.DongNuoc.MaDonMoi != null)
             {
                 _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctdongnuoc.DongNuoc.MaDonMoi.Value, ctdongnuoc.STT.Value);
-                txtMaDonMoi.Text = ctdongnuoc.DongNuoc.MaDonMoi.ToString();
+                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                    txtMaDonMoi.Text = ctdongnuoc.DongNuoc.MaDonMoi.ToString();
+                else
+                    txtMaDonMoi.Text = ctdongnuoc.DongNuoc.MaDonMoi.Value.ToString() + "." + ctdongnuoc.STT.Value.ToString();
                 //dgvDSBamChi.DataSource = _cBamChi.getDS(ctdongnuoc.DongNuoc.MaDonMoi.Value, ctdongnuoc.DanhBo);
             }
             else

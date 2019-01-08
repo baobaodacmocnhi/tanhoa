@@ -90,7 +90,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             if (cttttl.TTTL.MaDonMoi != null)
             {
                 _dontu_ChiTiet = _cDonTu.get_ChiTiet(cttttl.TTTL.MaDonMoi.Value, cttttl.STT.Value);
-                txtMaDonMoi.Text = cttttl.TTTL.MaDonMoi.Value.ToString();
+                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                    txtMaDonMoi.Text = cttttl.TTTL.MaDonMoi.ToString();
+                else
+                    txtMaDonMoi.Text = cttttl.TTTL.MaDonMoi.Value.ToString() + "." + cttttl.STT.Value.ToString();
             }
             else
             if (cttttl.TTTL.MaDon != null)
@@ -123,6 +126,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtVeViec.Text = cttttl.VeViec;
             txtNoiDung.Text = cttttl.NoiDung;
             txtNoiNhan.Text = cttttl.NoiNhan;
+            txtNguoiBao.Text = cttttl.NguoiBao;
+            txtDienThoai.Text = cttttl.DienThoai;
 
             dgvLichSuTTTL.DataSource = _cTTTL.GetLichSuCTByDanhBo(cttttl.DanhBo);
             dgvGhiChu.DataSource = _cGhiChuCTTTTL.GetDS(cttttl.MaCTTTTL);
@@ -144,6 +149,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtVeViec.Text = "";
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
+            txtNguoiBao.Text = "";
+            txtDienThoai.Text = "";
 
             _dontu_ChiTiet = null;
             _dontkh = null;
@@ -436,6 +443,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     cttttl.VeViec = txtVeViec.Text.Trim();
                     cttttl.NoiDung = txtNoiDung.Text;
                     cttttl.NoiNhan = txtNoiNhan.Text.Trim();
+                     cttttl.NguoiBao=txtNguoiBao.Text.Trim();
+                     cttttl.DienThoai=txtDienThoai.Text.Trim();
 
                     ///Ký Tên
                     BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -491,6 +500,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         _cttttl.VeViec = txtVeViec.Text.Trim();
                         _cttttl.NoiDung = txtNoiDung.Text;
                         _cttttl.NoiNhan = txtNoiNhan.Text.Trim();
+                        _cttttl.NguoiBao = txtNguoiBao.Text.Trim();
+                        _cttttl.DienThoai = txtDienThoai.Text.Trim();
 
                         ///Ký Tên
                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -549,7 +560,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 try
                 {
-                    if (_cttttl != null)
+                    if (_cttttl != null && _dontu_ChiTiet == null)
                     {
                         TTTL_GhiChu ghichu = new TTTL_GhiChu();
                         ghichu.NgayGhiChu = dateGhiChu.Value;

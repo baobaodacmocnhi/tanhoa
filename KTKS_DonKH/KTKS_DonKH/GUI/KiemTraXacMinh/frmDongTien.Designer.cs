@@ -649,7 +649,8 @@
             this.cmbNoiDungXuLy.Items.AddRange(new object[] {
             "Đóng Tiền Bồi Thường",
             "Trình Thay Miễn Phí",
-            "Trình Bấm Lại Mặt Số"});
+            "Trình Bấm Lại Mặt Số",
+            "Bồi Thường Hộp Bảo Vệ"});
             this.cmbNoiDungXuLy.Location = new System.Drawing.Point(781, 226);
             this.cmbNoiDungXuLy.MaxDropDownItems = 50;
             this.cmbNoiDungXuLy.Name = "cmbNoiDungXuLy";

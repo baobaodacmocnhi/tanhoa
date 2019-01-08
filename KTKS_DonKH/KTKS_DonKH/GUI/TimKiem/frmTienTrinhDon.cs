@@ -90,7 +90,15 @@ namespace KTKS_DonKH.GUI.TimKiem
                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
                                 dt = _cTimKiem.GetTienTrinh_DonTBC(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
                             else
-                                dt = _cTimKiem.GetTienTrinh_DonTu(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["Don"];
+                            {
+                                if (txtNoiDungTimKiem.Text.Trim().Contains("."))
+                                {
+                                    string[] MaDons = txtNoiDungTimKiem.Text.Trim().Split('.');
+                                    dt = _cTimKiem.GetTienTrinh_DonTu(int.Parse(MaDons[0]), int.Parse(MaDons[1])).Tables["Don"];
+                                }
+                                else
+                                    dt = _cTimKiem.GetTienTrinh_DonTu(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["Don"];
+                            }
                         break;
                     case "Danh Bộ":
                         dt = _cTimKiem.GetTienTrinhByDanhBo(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];

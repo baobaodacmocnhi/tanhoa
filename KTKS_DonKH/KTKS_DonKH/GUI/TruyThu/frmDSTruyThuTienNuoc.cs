@@ -97,10 +97,10 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void dgvDSTruyThuTienNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvDSTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "MaDon")
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
+            //if (dgvDSTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "MaDon")
+            //{
+            //    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            //}
             if (dgvDSTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "IDCT" && e.Value != null && e.Value.ToString().Length > 2)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
@@ -142,7 +142,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                dr["MaDon"] = item.Cells["MaDon"].Value.ToString().Insert(item.Cells["MaDon"].Value.ToString().Length - 2, "-");
+                dr["MaDon"] = item.Cells["MaDon"].Value.ToString();
                 dr["SoCongVan"] = item.Cells["SoCongVan"].Value;
                 dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = item.Cells["HoTen"].Value;

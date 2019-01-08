@@ -91,6 +91,15 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         public void LoadTTTN(TruyThuTienNuoc_ChiTiet cttttn)
         {
+            if (cttttn.TruyThuTienNuoc.MaDonMoi != null)
+            {
+                _dontu_ChiTiet = _cDonTu.get_ChiTiet(cttttn.TruyThuTienNuoc.MaDonMoi.Value, cttttn.STT.Value);
+                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                    txtMaDonMoi.Text = cttttn.TruyThuTienNuoc.MaDonMoi.ToString();
+                else
+                    txtMaDonMoi.Text = cttttn.TruyThuTienNuoc.MaDonMoi.Value.ToString() + "." + cttttn.STT.Value.ToString();
+            }
+            else
             if (cttttn.TruyThuTienNuoc.MaDon != null)
             {
                 _dontkh = _cDonKH.Get(cttttn.TruyThuTienNuoc.MaDon.Value);
@@ -1091,6 +1100,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
+                    if(txtMaDonMoi.Text.Trim()!="")
+                        dr["MaDon"] = txtMaDonMoi.Text.Trim();
+                    else
                     dr["MaDon"] = txtMaDonCu.Text.Trim();
                     dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = txtHoTen.Text.Trim();
@@ -1477,20 +1489,26 @@ namespace KTKS_DonKH.GUI.TruyThu
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
-                if(_cttttn.TruyThuTienNuoc.MaDonMoi!=null)
-                    dr["MaDon"] = _cttttn.TruyThuTienNuoc.MaDonMoi.Value.ToString();
+                if (_cttttn.TruyThuTienNuoc.MaDonMoi != null)
+                {
+                    if (_cttttn.TruyThuTienNuoc.DonTu.DonTu_ChiTiets.Count == 1)
+                        dr["MaDon"] = _cttttn.TruyThuTienNuoc.MaDonMoi.Value.ToString();
+                    else
+                        dr["MaDon"] = _cttttn.TruyThuTienNuoc.MaDonMoi.Value.ToString() + "." + _cttttn.STT.Value.ToString();
+                }
                 else
-                if(_cttttn.TruyThuTienNuoc.MaDon!=null)
-                    dr["MaDon"] ="TKH"+ _cttttn.TruyThuTienNuoc.MaDon.Value.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDon.Value.ToString().Length-2,"-");
-                else
-                if(_cttttn.TruyThuTienNuoc.MaDonTXL!=null)
-                    dr["MaDon"] = "TXL"+_cttttn.TruyThuTienNuoc.MaDonTXL.Value.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDonTXL.Value.ToString().Length - 2, "-");
-                else
-                    if (_cttttn.TruyThuTienNuoc.MaDonTBC != null)
-                        dr["MaDon"] = "TBC"+_cttttn.TruyThuTienNuoc.MaDonTBC.Value.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDonTBC.Value.ToString().Length - 2, "-");
-                    dr["DanhBo"] = _cttttn.DanhBo.Insert(7, " ").Insert(4, " ");
-                    dr["DiaChi"] = _cttttn.DiaChi ;
-                    dr["HopDong"] = _cttttn.DienThoai;
+                    if (_cttttn.TruyThuTienNuoc.MaDon != null)
+                        dr["MaDon"] = "TKH" + _cttttn.TruyThuTienNuoc.MaDon.Value.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDon.Value.ToString().Length - 2, "-");
+                    else
+                        if (_cttttn.TruyThuTienNuoc.MaDonTXL != null)
+                            dr["MaDon"] = "TXL" + _cttttn.TruyThuTienNuoc.MaDonTXL.Value.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDonTXL.Value.ToString().Length - 2, "-");
+                        else
+                            if (_cttttn.TruyThuTienNuoc.MaDonTBC != null)
+                                dr["MaDon"] = "TBC" + _cttttn.TruyThuTienNuoc.MaDonTBC.Value.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDonTBC.Value.ToString().Length - 2, "-");
+                dr["ID"] = _cttttn.IDCT.ToString().Insert(_cttttn.IDCT.ToString().Length - 2, "-");
+                dr["DanhBo"] = _cttttn.DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = _cttttn.DiaChi;
+                dr["HopDong"] = _cttttn.DienThoai;
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                 rptTruyThuTienNuoc_Bia rpt = new rptTruyThuTienNuoc_Bia();
                 rpt.SetDataSource(dsBaoCao);

@@ -121,7 +121,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (ctdcbd.DCBD.MaDonMoi != null)
             {
                 _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctdcbd.DCBD.MaDonMoi.Value, ctdcbd.STT.Value);
-                txtMaDonMoi.Text = ctdcbd.DCBD.MaDonMoi.ToString();
+                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                    txtMaDonMoi.Text = ctdcbd.DCBD.MaDonMoi.ToString();
+                else
+                    txtMaDonMoi.Text = ctdcbd.DCBD.MaDonMoi.Value.ToString() + "." + ctdcbd.STT.Value.ToString();
             }
             else
             if (ctdcbd.DCBD.MaDon != null)

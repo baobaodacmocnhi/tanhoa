@@ -84,7 +84,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             if (en.ToTrinh.MaDonMoi != null)
             {
                 _dontu_ChiTiet = _cDonTu.get_ChiTiet(en.ToTrinh.MaDonMoi.Value, en.STT.Value);
-                txtMaDonMoi.Text = en.ToTrinh.MaDonMoi.Value.ToString();
+                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                    txtMaDonMoi.Text = en.ToTrinh.MaDonMoi.ToString();
+                else
+                    txtMaDonMoi.Text = en.ToTrinh.MaDonMoi.Value.ToString() + "." + en.STT.Value.ToString();
             }
             else
                 if (en.ToTrinh.MaDon != null)

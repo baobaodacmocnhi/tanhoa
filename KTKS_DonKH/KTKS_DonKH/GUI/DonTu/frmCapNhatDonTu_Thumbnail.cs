@@ -30,6 +30,9 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void frmCapNhanDonTu_Thumbnail_Load(object sender, EventArgs e)
         {
+            this.Location = new Point(200,120);
+            dgvLichSuDonTu.AutoGenerateColumns = false;
+
             cmbNoiChuyen.DataSource = _cNoiChuyen.GetDS("DonTuChuyen");
             cmbNoiChuyen.ValueMember = "ID";
             cmbNoiChuyen.DisplayMember = "Name";
@@ -40,10 +43,13 @@ namespace KTKS_DonKH.GUI.DonTu
             chkcmbNoiNhan.Properties.DisplayMember = "Name";
 
             if (_dontu_ChiTiet != null)
+            {
                 if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
                     txtMaDon.Text = _dontu_ChiTiet.MaDon.Value.ToString();
                 else
                     txtMaDon.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();
+                dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+            }
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)

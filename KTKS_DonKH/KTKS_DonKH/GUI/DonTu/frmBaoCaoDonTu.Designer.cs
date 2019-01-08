@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkNguoiLap = new System.Windows.Forms.CheckBox();
             this.cmbNoiNhan_LichSuChuyenDon = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtNoiDungTimKiem_LichSuChuyenDon = new System.Windows.Forms.TextBox();
@@ -53,7 +54,6 @@
             this.dateDen_DSChuyenKTXM = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.chkNguoiLap = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian_LichSuChuyenDon.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -77,6 +77,16 @@
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lịch Sử Chuyển Đơn";
+            // 
+            // chkNguoiLap
+            // 
+            this.chkNguoiLap.AutoSize = true;
+            this.chkNguoiLap.Location = new System.Drawing.Point(80, 63);
+            this.chkNguoiLap.Name = "chkNguoiLap";
+            this.chkNguoiLap.Size = new System.Drawing.Size(89, 20);
+            this.chkNguoiLap.TabIndex = 42;
+            this.chkNguoiLap.Text = "Người Lập";
+            this.chkNguoiLap.UseVisualStyleBackColor = true;
             // 
             // cmbNoiNhan_LichSuChuyenDon
             // 
@@ -319,22 +329,12 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Đến Ngày:";
             // 
-            // chkNguoiLap
-            // 
-            this.chkNguoiLap.AutoSize = true;
-            this.chkNguoiLap.Location = new System.Drawing.Point(80, 63);
-            this.chkNguoiLap.Name = "chkNguoiLap";
-            this.chkNguoiLap.Size = new System.Drawing.Size(89, 20);
-            this.chkNguoiLap.TabIndex = 42;
-            this.chkNguoiLap.Text = "Người Lập";
-            this.chkNguoiLap.UseVisualStyleBackColor = true;
-            // 
             // frmBaoCaoDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(928, 407);
+            this.ClientSize = new System.Drawing.Size(928, 513);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

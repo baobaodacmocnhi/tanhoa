@@ -44697,6 +44697,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiNhan;
 		
+		private string _NguoiBao;
+		
+		private string _DienThoai;
+		
 		private bool _GiamNuocXaBo;
 		
 		private bool _KiemDinhDHN_Dung;
@@ -44783,6 +44787,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnNoiDungChanged();
     partial void OnNoiNhanChanging(string value);
     partial void OnNoiNhanChanged();
+    partial void OnNguoiBaoChanging(string value);
+    partial void OnNguoiBaoChanged();
+    partial void OnDienThoaiChanging(string value);
+    partial void OnDienThoaiChanged();
     partial void OnGiamNuocXaBoChanging(bool value);
     partial void OnGiamNuocXaBoChanged();
     partial void OnKiemDinhDHN_DungChanging(bool value);
@@ -45155,6 +45163,46 @@ namespace KTKS_DonKH.LinQ
 					this._NoiNhan = value;
 					this.SendPropertyChanged("NoiNhan");
 					this.OnNoiNhanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NguoiBao", DbType="NVarChar(50)")]
+		public string NguoiBao
+		{
+			get
+			{
+				return this._NguoiBao;
+			}
+			set
+			{
+				if ((this._NguoiBao != value))
+				{
+					this.OnNguoiBaoChanging(value);
+					this.SendPropertyChanging();
+					this._NguoiBao = value;
+					this.SendPropertyChanged("NguoiBao");
+					this.OnNguoiBaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DienThoai", DbType="VarChar(20)")]
+		public string DienThoai
+		{
+			get
+			{
+				return this._DienThoai;
+			}
+			set
+			{
+				if ((this._DienThoai != value))
+				{
+					this.OnDienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._DienThoai = value;
+					this.SendPropertyChanged("DienThoai");
+					this.OnDienThoaiChanged();
 				}
 			}
 		}
