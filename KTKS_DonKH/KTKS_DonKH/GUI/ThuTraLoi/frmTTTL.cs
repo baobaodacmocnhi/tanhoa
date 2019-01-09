@@ -327,11 +327,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 if (txtMaDonMoi.Text.Trim() != "")
                     txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonMoi.Text.Trim() + ")";
                 else
-                if (txtMaDonCu.Text.Trim() != "")
-                    txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonCu.Text.Trim() + ")";
-                else
-                    if (txtMaDonMoi.Text.Trim() != "")
-                        txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonMoi.Text.Trim() + ")";
+                    if (txtMaDonCu.Text.Trim() != "")
+                        txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonCu.Text.Trim() + ")";
             }
             else
             {

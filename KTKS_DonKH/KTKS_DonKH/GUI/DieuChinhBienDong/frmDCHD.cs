@@ -360,6 +360,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (_hoadon != null)
                     {
                         LoadTTKH(_hoadon);
+                        chkCodeF2.Focus();
                     }
                     else
                         MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -149,7 +149,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                   where itemCTDCBD.DanhBo == DanhBo
                                   select new
                                   {
-                                      MaDon = itemCTDCBD.DCBD.MaDon != null ? "TKH" + itemCTDCBD.DCBD.MaDon
+                                      MaDon = itemCTDCBD.DCBD.MaDonMoi != null ? itemCTDCBD.DCBD.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTDCBD.DCBD.MaDonMoi.Value.ToString() : itemCTDCBD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCBD.STT.Value.ToString()
+                                      : itemCTDCBD.DCBD.MaDon != null ? "TKH" + itemCTDCBD.DCBD.MaDon
                                       : itemCTDCBD.DCBD.MaDonTXL != null ? "TXL" + itemCTDCBD.DCBD.MaDonTXL
                                       : itemCTDCBD.DCBD.MaDonTBC != null ? "TBC" + itemCTDCBD.DCBD.MaDonTBC : null,
                                       MaDC = itemCTDCBD.MaCTDCBD,
@@ -174,7 +175,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                   where itemCTDCHD.DanhBo == DanhBo
                                   select new
                                   {
-                                      MaDon = itemCTDCHD.DCBD.MaDon != null ? "TKH" + itemCTDCHD.DCBD.MaDon
+                                      MaDon = itemCTDCHD.DCBD.MaDonMoi != null ? itemCTDCHD.DCBD.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTDCHD.DCBD.MaDonMoi.Value.ToString() : itemCTDCHD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCHD.STT.Value.ToString()
+                                      : itemCTDCHD.DCBD.MaDon != null ? "TKH" + itemCTDCHD.DCBD.MaDon
                                       : itemCTDCHD.DCBD.MaDonTXL != null ? "TXL" + itemCTDCHD.DCBD.MaDonTXL
                                       : itemCTDCHD.DCBD.MaDonTBC != null ? "TBC" + itemCTDCHD.DCBD.MaDonTBC : null,
                                       MaDC = itemCTDCHD.MaCTDCHD,

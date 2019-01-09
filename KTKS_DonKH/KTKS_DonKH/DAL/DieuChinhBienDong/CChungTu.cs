@@ -828,7 +828,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
                                 : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
                                 : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
@@ -871,7 +872,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
                                 : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
                                 : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
@@ -911,7 +913,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
                                 : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
                                 : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
@@ -951,7 +954,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
                                 : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
                                 : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
@@ -1250,7 +1254,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
                                 : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
                                 : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
@@ -1293,7 +1298,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
                                 : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
                                 : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
@@ -1333,7 +1339,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
                                 : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
                                 : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
@@ -1373,7 +1380,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                MaCTDCBD = itemLSCT.MaDonMoi != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonMoi == itemLSCT.MaDonMoi).MaCTDCBD : 0
+                                : itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
                                 : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
                                 : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,

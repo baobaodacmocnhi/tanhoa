@@ -518,11 +518,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 ToTrinh_VeViec vv = (ToTrinh_VeViec)cmbVeViec.SelectedItem;
                 txtVeViec.Text = vv.Name;
                 txtNoiDung.Text = vv.NoiDung;
-                if (txtMaDonCu.Text.Trim() != "")
-                    txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonCu.Text.Trim() + ")";
-                //else
-                //    if (txtMaDonMoi.Text.Trim() != "")
-                //        txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonMoi.Text.Trim() + ")";
+                if (txtMaDonMoi.Text.Trim() != "")
+                    txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonMoi.Text.Trim() + ")";
+                else
+                    if (txtMaDonCu.Text.Trim() != "")
+                        txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonCu.Text.Trim() + ")";
             }
             else
             {
