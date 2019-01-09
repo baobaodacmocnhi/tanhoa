@@ -777,7 +777,7 @@
             // 
             // txtMaDonMoi
             // 
-            this.txtMaDonMoi.Location = new System.Drawing.Point(417, 12);
+            this.txtMaDonMoi.Location = new System.Drawing.Point(427, 12);
             this.txtMaDonMoi.Name = "txtMaDonMoi";
             this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
             this.txtMaDonMoi.TabIndex = 117;

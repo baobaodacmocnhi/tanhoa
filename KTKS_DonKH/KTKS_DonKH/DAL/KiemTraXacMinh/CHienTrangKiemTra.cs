@@ -80,11 +80,11 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             switch (To)
             {
                 case "ToTB":
-                    return db.KTXM_HienTrangs.Where(item => item.ToTB == true).OrderBy(item => item.TenHTKT).ToList();
+                    return db.KTXM_HienTrangs.Where(item => item.ToTB == true).OrderBy(item => item.STT_ToTB).ToList();
                 case "ToTP":
-                    return db.KTXM_HienTrangs.Where(item => item.ToTP == true).OrderBy(item => item.TenHTKT).ToList();
+                    return db.KTXM_HienTrangs.Where(item => item.ToTP == true).OrderBy(item => item.STT_ToTP).ToList();
                 case "ToBC":
-                    return db.KTXM_HienTrangs.Where(item => item.ToBC == true).OrderBy(item => item.TenHTKT).ToList();
+                    return db.KTXM_HienTrangs.Where(item => item.ToBC == true).OrderBy(item => item.STT_ToBC).ToList();
                 default:
                     return db.KTXM_HienTrangs.OrderBy(item => item.TenHTKT).ToList();
             }

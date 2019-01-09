@@ -25117,6 +25117,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiDung;
 		
+		private string _TableName;
+		
+		private System.Nullable<int> _IDCT;
+		
 		private System.Nullable<int> _MaDon;
 		
 		private System.Nullable<int> _STT;
@@ -25149,6 +25153,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnKTXMChanged();
     partial void OnNoiDungChanging(string value);
     partial void OnNoiDungChanged();
+    partial void OnTableNameChanging(string value);
+    partial void OnTableNameChanged();
+    partial void OnIDCTChanging(System.Nullable<int> value);
+    partial void OnIDCTChanged();
     partial void OnMaDonChanging(System.Nullable<int> value);
     partial void OnMaDonChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
@@ -25325,7 +25333,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDung", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDung", DbType="NVarChar(1000)")]
 		public string NoiDung
 		{
 			get
@@ -25341,6 +25349,46 @@ namespace KTKS_DonKH.LinQ
 					this._NoiDung = value;
 					this.SendPropertyChanged("NoiDung");
 					this.OnNoiDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="VarChar(50)")]
+		public string TableName
+		{
+			get
+			{
+				return this._TableName;
+			}
+			set
+			{
+				if ((this._TableName != value))
+				{
+					this.OnTableNameChanging(value);
+					this.SendPropertyChanging();
+					this._TableName = value;
+					this.SendPropertyChanged("TableName");
+					this.OnTableNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCT", DbType="Int")]
+		public System.Nullable<int> IDCT
+		{
+			get
+			{
+				return this._IDCT;
+			}
+			set
+			{
+				if ((this._IDCT != value))
+				{
+					this.OnIDCTChanging(value);
+					this.SendPropertyChanging();
+					this._IDCT = value;
+					this.SendPropertyChanged("IDCT");
+					this.OnIDCTChanged();
 				}
 			}
 		}
@@ -31295,9 +31343,15 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _ToTB;
 		
+		private System.Nullable<int> _STT_ToTB;
+		
 		private bool _ToTP;
 		
+		private System.Nullable<int> _STT_ToTP;
+		
 		private bool _ToBC;
+		
+		private System.Nullable<int> _STT_ToBC;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -31319,10 +31373,16 @@ namespace KTKS_DonKH.LinQ
     partial void OnTenHTKTChanged();
     partial void OnToTBChanging(bool value);
     partial void OnToTBChanged();
+    partial void OnSTT_ToTBChanging(System.Nullable<int> value);
+    partial void OnSTT_ToTBChanged();
     partial void OnToTPChanging(bool value);
     partial void OnToTPChanged();
+    partial void OnSTT_ToTPChanging(System.Nullable<int> value);
+    partial void OnSTT_ToTPChanged();
     partial void OnToBCChanging(bool value);
     partial void OnToBCChanged();
+    partial void OnSTT_ToBCChanging(System.Nullable<int> value);
+    partial void OnSTT_ToBCChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -31418,6 +31478,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT_ToTB", DbType="Int")]
+		public System.Nullable<int> STT_ToTB
+		{
+			get
+			{
+				return this._STT_ToTB;
+			}
+			set
+			{
+				if ((this._STT_ToTB != value))
+				{
+					this.OnSTT_ToTBChanging(value);
+					this.SendPropertyChanging();
+					this._STT_ToTB = value;
+					this.SendPropertyChanged("STT_ToTB");
+					this.OnSTT_ToTBChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToTP", DbType="Bit NOT NULL")]
 		public bool ToTP
 		{
@@ -31438,6 +31518,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT_ToTP", DbType="Int")]
+		public System.Nullable<int> STT_ToTP
+		{
+			get
+			{
+				return this._STT_ToTP;
+			}
+			set
+			{
+				if ((this._STT_ToTP != value))
+				{
+					this.OnSTT_ToTPChanging(value);
+					this.SendPropertyChanging();
+					this._STT_ToTP = value;
+					this.SendPropertyChanged("STT_ToTP");
+					this.OnSTT_ToTPChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToBC", DbType="Bit NOT NULL")]
 		public bool ToBC
 		{
@@ -31454,6 +31554,26 @@ namespace KTKS_DonKH.LinQ
 					this._ToBC = value;
 					this.SendPropertyChanged("ToBC");
 					this.OnToBCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT_ToBC", DbType="Int")]
+		public System.Nullable<int> STT_ToBC
+		{
+			get
+			{
+				return this._STT_ToBC;
+			}
+			set
+			{
+				if ((this._STT_ToBC != value))
+				{
+					this.OnSTT_ToBCChanging(value);
+					this.SendPropertyChanging();
+					this._STT_ToBC = value;
+					this.SendPropertyChanged("STT_ToBC");
+					this.OnSTT_ToBCChanged();
 				}
 			}
 		}
@@ -38450,8 +38570,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _IDCT;
 		
-		private System.Nullable<int> _SoPhieu;
-		
 		private System.Nullable<int> _Lan;
 		
 		private string _DanhBo;
@@ -38500,8 +38618,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDCTChanging(int value);
     partial void OnIDCTChanged();
-    partial void OnSoPhieuChanging(System.Nullable<int> value);
-    partial void OnSoPhieuChanged();
     partial void OnLanChanging(System.Nullable<int> value);
     partial void OnLanChanged();
     partial void OnDanhBoChanging(string value);
@@ -38566,26 +38682,6 @@ namespace KTKS_DonKH.LinQ
 					this._IDCT = value;
 					this.SendPropertyChanged("IDCT");
 					this.OnIDCTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhieu", DbType="Int")]
-		public System.Nullable<int> SoPhieu
-		{
-			get
-			{
-				return this._SoPhieu;
-			}
-			set
-			{
-				if ((this._SoPhieu != value))
-				{
-					this.OnSoPhieuChanging(value);
-					this.SendPropertyChanging();
-					this._SoPhieu = value;
-					this.SendPropertyChanged("SoPhieu");
-					this.OnSoPhieuChanged();
 				}
 			}
 		}

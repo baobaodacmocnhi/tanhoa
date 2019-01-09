@@ -307,7 +307,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   {
                                       MaDon = item.ThuMoi.DonTu.DonTu_ChiTiets.Count == 1 ? item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi.Value.ToString() + "." + item.STT.Value.ToString(),
                                       item.IDCT,
-                                      item.SoPhieu,
                                       item.Lan,
                                       item.DanhBo,
                                       item.HoTen,
@@ -660,7 +659,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   {
                                       MaDon =  item.ThuMoi.MaDonMoi.Value.ToString() + "." + item.STT.Value.ToString(),
                                       item.IDCT,
-                                      item.SoPhieu,
                                       item.Lan,
                                       item.DanhBo,
                                       item.HoTen,
@@ -1013,7 +1011,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   {
                                       MaDon = "TKH" + item.ThuMoi.MaDonTKH,
                                       item.IDCT,
-                                      item.SoPhieu,
                                       item.Lan,
                                       item.DanhBo,
                                       item.HoTen,
@@ -1366,7 +1363,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   {
                                       MaDon = "TXL" + item.ThuMoi.MaDonTXL,
                                       item.IDCT,
-                                      item.SoPhieu,
                                       item.Lan,
                                       item.DanhBo,
                                       item.HoTen,
@@ -1719,7 +1715,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   {
                                       MaDon = "TBC" + item.ThuMoi.MaDonTBC,
                                       item.IDCT,
-                                      item.SoPhieu,
                                       item.Lan,
                                       item.DanhBo,
                                       item.HoTen,
@@ -2101,7 +2096,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                       : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                                       item.IDCT,
-                                      item.SoPhieu,
                                       item.Lan,
                                       item.DanhBo,
                                       item.HoTen,
@@ -3528,7 +3522,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                       : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                                       item.IDCT,
-                                      item.SoPhieu,
                                       item.Lan,
                                       item.DanhBo,
                                       item.HoTen,
@@ -4953,7 +4946,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                       : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                                       item.IDCT,
-                                      item.SoPhieu,
                                       item.Lan,
                                       item.DanhBo,
                                       item.HoTen,

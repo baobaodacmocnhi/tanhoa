@@ -90,6 +90,7 @@
             this.mnuGiaNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChiNhanhCapNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaoCaoDCBD = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuKhuCongNghiep = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCatHuy = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCTDB = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCHDB = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,7 +121,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mnuKhuCongNghiep = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -146,9 +146,10 @@
             this.mnuCongVan,
             this.mnuTimKiem,
             this.mnuTrungTamKhachHang});
+            this.menuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1284, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1407, 43);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -624,6 +625,13 @@
             this.mnuBaoCaoDCBD.Text = "Báo Cáo";
             this.mnuBaoCaoDCBD.Click += new System.EventHandler(this.mnuBaoCaoDCBD_Click);
             // 
+            // mnuKhuCongNghiep
+            // 
+            this.mnuKhuCongNghiep.Name = "mnuKhuCongNghiep";
+            this.mnuKhuCongNghiep.Size = new System.Drawing.Size(231, 22);
+            this.mnuKhuCongNghiep.Text = "Khu Công Nghiệp";
+            this.mnuKhuCongNghiep.Click += new System.EventHandler(this.mnuKhuCongNghiep_Click);
+            // 
             // mnuCatHuy
             // 
             this.mnuCatHuy.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -830,10 +838,10 @@
             // 
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl.Location = new System.Drawing.Point(0, 24);
+            this.tabControl.Location = new System.Drawing.Point(0, 43);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1284, 26);
+            this.tabControl.Size = new System.Drawing.Size(1407, 26);
             this.tabControl.TabIndex = 2;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -844,7 +852,7 @@
             this.StripStatus_HoTen});
             this.statusStrip1.Location = new System.Drawing.Point(0, 448);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1284, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1407, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -860,19 +868,12 @@
             this.StripStatus_HoTen.Size = new System.Drawing.Size(205, 17);
             this.StripStatus_HoTen.Text = "                                                 Xin Chào:";
             // 
-            // mnuKhuCongNghiep
-            // 
-            this.mnuKhuCongNghiep.Name = "mnuKhuCongNghiep";
-            this.mnuKhuCongNghiep.Size = new System.Drawing.Size(231, 22);
-            this.mnuKhuCongNghiep.Text = "Khu Công Nghiệp";
-            this.mnuKhuCongNghiep.Click += new System.EventHandler(this.mnuKhuCongNghiep_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1284, 470);
+            this.ClientSize = new System.Drawing.Size(1407, 470);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip);

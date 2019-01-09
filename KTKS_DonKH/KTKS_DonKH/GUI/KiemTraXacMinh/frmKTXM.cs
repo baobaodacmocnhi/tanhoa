@@ -53,13 +53,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             dgvDSKetQuaKiemTra.AutoGenerateColumns = false;
             string To = "";
-             if (CTaiKhoan.ToTB == true)
-                 To = "ToTB";
+            if (CTaiKhoan.ToTB == true)
+                To = "ToTB";
             else if (CTaiKhoan.ToTP == true)
-                 To = "ToTP";
+                To = "ToTP";
             else if (CTaiKhoan.ToBC == true)
-                 To = "ToBC";
-             cmbHienTrangKiemTra.DataSource = _cHienTrangKiemTra.getDS(To);
+                To = "ToBC";
+            cmbHienTrangKiemTra.DataSource = _cHienTrangKiemTra.getDS(To);
             cmbHienTrangKiemTra.DisplayMember = "TenHTKT";
             cmbHienTrangKiemTra.ValueMember = "TenHTKT";
             cmbHienTrangKiemTra.SelectedIndex = -1;
@@ -68,14 +68,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (_MaCTKTXM != -1)
             {
                 _ctktxm = _cKTXM.GetCT(_MaCTKTXM);
-                if (_ctktxm.KTXM.MaDon != null)
-                    txtMaDonCu.Text = _ctktxm.KTXM.MaDon.ToString().Insert(_ctktxm.KTXM.MaDon.ToString().Length - 2, "-");
-                else
-                    if (_ctktxm.KTXM.MaDonTXL != null)
-                        txtMaDonCu.Text = "TXL" + _ctktxm.KTXM.MaDonTXL.ToString().Insert(_ctktxm.KTXM.MaDonTXL.ToString().Length - 2, "-");
-                    else
-                        if (_ctktxm.KTXM.MaDonTBC != null)
-                            txtMaDonCu.Text = "TBC" + _ctktxm.KTXM.MaDonTBC.ToString().Insert(_ctktxm.KTXM.MaDonTBC.ToString().Length - 2, "-");
                 LoadCTKTXM(_ctktxm);
             }
         }
@@ -334,6 +326,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     else
                         txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();
                     LoadDSKTXM();
+                    MessageBox.Show("Mã Đơn này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtDanhBo.Focus();
                     //_hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
                     //if (_hoadon != null)
@@ -374,12 +367,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             MessageBox.Show("Lỗi Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                    if ((cmbHienTrangKiemTra.SelectedValue.ToString().Contains("BB") && cmbHienTrangKiemTra.SelectedValue.ToString() != "BB tái lập Danh Bộ") || cmbHienTrangKiemTra.SelectedValue.ToString() == "Hóa Đơn = 0")
-                        if (txtHoTenKHKy.Text.Trim() == "")
-                        {
-                            MessageBox.Show("Thiếu Tên Khách Hàng Ký", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                    //if ((cmbHienTrangKiemTra.SelectedValue.ToString().Contains("BB") && cmbHienTrangKiemTra.SelectedValue.ToString() != "BB tái lập Danh Bộ") || cmbHienTrangKiemTra.SelectedValue.ToString() == "Hóa Đơn = 0")
+                    //    if (txtHoTenKHKy.Text.Trim() == "")
+                    //    {
+                    //        MessageBox.Show("Thiếu Tên Khách Hàng Ký", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //        return;
+                    //    }
                     if (txtHoTen.Text.Trim() == "" || txtDiaChi.Text.Trim() == "" || txtNoiDungKiemTra.Text.Trim() == "")
                     {
                         MessageBox.Show("Chưa đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -519,7 +512,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     if (_cKTXM.ThemCT(ctktxm))
                     {
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them_LichSu("KTXM", "Đã Kiểm Tra, "+ctktxm.NoiDungKiemTra, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);          
+                            _cDonTu.Them_LichSu("KTXM", ctktxm.NoiDungKiemTra, (int)ctktxm.MaCTKTXM,_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);          
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear_LoadDSKTXM();
                         txtMaDonCu.Focus();

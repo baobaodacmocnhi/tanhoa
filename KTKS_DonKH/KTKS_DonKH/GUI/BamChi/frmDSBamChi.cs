@@ -80,7 +80,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             dgvDSCTBamChi.DataSource = _cBamChi.getDS(txtNoiDungTimKiem.Text.Trim());
                         break;
                     case "Ngày":
-                        dgvDSCTBamChi.DataSource = _cBamChi.GetDS(dateTu.Value, dateDen.Value);
+                        dgvDSCTBamChi.DataSource = _cBamChi.getDS(dateTu.Value, dateDen.Value);
                         break;
                     default:
                         break;

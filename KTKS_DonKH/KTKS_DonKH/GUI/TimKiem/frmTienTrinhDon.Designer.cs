@@ -171,6 +171,7 @@
             this.gridColumn85 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn86 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn87 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn89 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn88 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridViewDon = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -237,7 +238,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.gridColumn89 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBamChi)).BeginInit();
@@ -1682,7 +1682,7 @@
             // gridColumn78
             // 
             this.gridColumn78.Caption = "Mã";
-            this.gridColumn78.FieldName = "SoPhieu";
+            this.gridColumn78.FieldName = "IDCT";
             this.gridColumn78.Name = "gridColumn78";
             this.gridColumn78.OptionsColumn.AllowEdit = false;
             this.gridColumn78.Visible = true;
@@ -1798,6 +1798,15 @@
             this.gridColumn87.Visible = true;
             this.gridColumn87.VisibleIndex = 2;
             this.gridColumn87.Width = 250;
+            // 
+            // gridColumn89
+            // 
+            this.gridColumn89.Caption = "Nhân Viên Kiểm Tra";
+            this.gridColumn89.FieldName = "KTXM";
+            this.gridColumn89.Name = "gridColumn89";
+            this.gridColumn89.Visible = true;
+            this.gridColumn89.VisibleIndex = 3;
+            this.gridColumn89.Width = 200;
             // 
             // gridColumn88
             // 
@@ -2421,15 +2430,6 @@
             this.label5.Size = new System.Drawing.Size(63, 16);
             this.label5.TabIndex = 12;
             this.label5.Text = "Danh Bộ:";
-            // 
-            // gridColumn89
-            // 
-            this.gridColumn89.Caption = "Nhân Viên Kiểm Tra";
-            this.gridColumn89.FieldName = "KTXM";
-            this.gridColumn89.Name = "gridColumn89";
-            this.gridColumn89.Visible = true;
-            this.gridColumn89.VisibleIndex = 3;
-            this.gridColumn89.Width = 200;
             // 
             // frmTienTrinhDon
             // 

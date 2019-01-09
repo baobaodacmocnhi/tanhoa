@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnXem = new System.Windows.Forms.Button();
             this.chkSelectAll = new System.Windows.Forms.CheckBox();
             this.btnIn = new System.Windows.Forms.Button();
@@ -36,20 +36,6 @@
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
             this.dgvDSThu = new System.Windows.Forms.DataGridView();
-            this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CanCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
@@ -63,6 +49,20 @@
             this.btnInDS = new System.Windows.Forms.Button();
             this.radRong = new System.Windows.Forms.RadioButton();
             this.btnInNhan = new System.Windows.Forms.Button();
+            this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CanCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -135,18 +135,18 @@
             // 
             this.dgvDSThu.AllowUserToAddRows = false;
             this.dgvDSThu.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSThu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSThu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSThu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.In,
-            this.SoPhieu,
+            this.IDCT,
             this.CreateDate,
             this.MaDon,
             this.DanhBo,
@@ -166,106 +166,6 @@
             this.dgvDSThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSThu_CellFormatting);
             this.dgvDSThu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSThu_RowPostPaint);
             this.dgvDSThu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSThu_KeyDown);
-            // 
-            // In
-            // 
-            this.In.DataPropertyName = "In";
-            this.In.FalseValue = "False";
-            this.In.HeaderText = "In";
-            this.In.Name = "In";
-            this.In.TrueValue = "True";
-            this.In.Width = 30;
-            // 
-            // SoPhieu
-            // 
-            this.SoPhieu.DataPropertyName = "SoPhieu";
-            this.SoPhieu.HeaderText = "SoPhieu";
-            this.SoPhieu.Name = "SoPhieu";
-            this.SoPhieu.Visible = false;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.ReadOnly = true;
-            // 
-            // MaDon
-            // 
-            this.MaDon.DataPropertyName = "MaDon";
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 200;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 200;
-            // 
-            // Lan
-            // 
-            this.Lan.DataPropertyName = "Lan";
-            this.Lan.HeaderText = "Lần";
-            this.Lan.Name = "Lan";
-            this.Lan.Width = 50;
-            // 
-            // CanCu
-            // 
-            this.CanCu.DataPropertyName = "CanCu";
-            this.CanCu.HeaderText = "Căn Cứ";
-            this.CanCu.Name = "CanCu";
-            this.CanCu.Width = 150;
-            // 
-            // VaoLuc
-            // 
-            this.VaoLuc.DataPropertyName = "VaoLuc";
-            this.VaoLuc.HeaderText = "Vào Lúc";
-            this.VaoLuc.Name = "VaoLuc";
-            this.VaoLuc.Width = 150;
-            // 
-            // VeViec
-            // 
-            this.VeViec.DataPropertyName = "VeViec";
-            this.VeViec.HeaderText = "Về Việc";
-            this.VeViec.Name = "VeViec";
-            this.VeViec.ReadOnly = true;
-            this.VeViec.Width = 150;
-            // 
-            // GiaBieu
-            // 
-            this.GiaBieu.DataPropertyName = "GiaBieu";
-            this.GiaBieu.HeaderText = "GiaBieu";
-            this.GiaBieu.Name = "GiaBieu";
-            this.GiaBieu.Visible = false;
-            // 
-            // DinhMuc
-            // 
-            this.DinhMuc.DataPropertyName = "DinhMuc";
-            this.DinhMuc.HeaderText = "DinhMuc";
-            this.DinhMuc.Name = "DinhMuc";
-            this.DinhMuc.Visible = false;
-            // 
-            // CreateBy
-            // 
-            this.CreateBy.DataPropertyName = "CreateBy";
-            this.CreateBy.HeaderText = "CreateBy";
-            this.CreateBy.Name = "CreateBy";
-            this.CreateBy.Visible = false;
             // 
             // label1
             // 
@@ -394,6 +294,106 @@
             this.btnInNhan.UseVisualStyleBackColor = true;
             this.btnInNhan.Click += new System.EventHandler(this.btnInNhan_Click);
             // 
+            // In
+            // 
+            this.In.DataPropertyName = "In";
+            this.In.FalseValue = "False";
+            this.In.HeaderText = "In";
+            this.In.Name = "In";
+            this.In.TrueValue = "True";
+            this.In.Width = 30;
+            // 
+            // IDCT
+            // 
+            this.IDCT.DataPropertyName = "IDCT";
+            this.IDCT.HeaderText = "SoPhieu";
+            this.IDCT.Name = "IDCT";
+            this.IDCT.Visible = false;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 200;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 200;
+            // 
+            // Lan
+            // 
+            this.Lan.DataPropertyName = "Lan";
+            this.Lan.HeaderText = "Lần";
+            this.Lan.Name = "Lan";
+            this.Lan.Width = 50;
+            // 
+            // CanCu
+            // 
+            this.CanCu.DataPropertyName = "CanCu";
+            this.CanCu.HeaderText = "Căn Cứ";
+            this.CanCu.Name = "CanCu";
+            this.CanCu.Width = 150;
+            // 
+            // VaoLuc
+            // 
+            this.VaoLuc.DataPropertyName = "VaoLuc";
+            this.VaoLuc.HeaderText = "Vào Lúc";
+            this.VaoLuc.Name = "VaoLuc";
+            this.VaoLuc.Width = 150;
+            // 
+            // VeViec
+            // 
+            this.VeViec.DataPropertyName = "VeViec";
+            this.VeViec.HeaderText = "Về Việc";
+            this.VeViec.Name = "VeViec";
+            this.VeViec.ReadOnly = true;
+            this.VeViec.Width = 150;
+            // 
+            // GiaBieu
+            // 
+            this.GiaBieu.DataPropertyName = "GiaBieu";
+            this.GiaBieu.HeaderText = "GiaBieu";
+            this.GiaBieu.Name = "GiaBieu";
+            this.GiaBieu.Visible = false;
+            // 
+            // DinhMuc
+            // 
+            this.DinhMuc.DataPropertyName = "DinhMuc";
+            this.DinhMuc.HeaderText = "DinhMuc";
+            this.DinhMuc.Name = "DinhMuc";
+            this.DinhMuc.Visible = false;
+            // 
+            // CreateBy
+            // 
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "CreateBy";
+            this.CreateBy.Name = "CreateBy";
+            this.CreateBy.Visible = false;
+            // 
             // frmDSThuMoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -449,8 +449,10 @@
         private System.Windows.Forms.RadioButton radCDDM;
         private System.Windows.Forms.RadioButton radDutChi;
         private System.Windows.Forms.Button btnInDS;
+        private System.Windows.Forms.RadioButton radRong;
+        private System.Windows.Forms.Button btnInNhan;
         private System.Windows.Forms.DataGridViewCheckBoxColumn In;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
@@ -463,7 +465,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
-        private System.Windows.Forms.RadioButton radRong;
-        private System.Windows.Forms.Button btnInNhan;
     }
 }

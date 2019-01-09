@@ -64,7 +64,7 @@ namespace KTKS_DonKH.DAL.QuanTri
 
         public List<Nhom> GetDS()
         {
-            return db.Nhoms.ToList();
+            return db.Nhoms.OrderBy(item=>item.TenNhom).ToList();
         }
 
         public Nhom GetByMaNhom(int MaTT_Nhom)

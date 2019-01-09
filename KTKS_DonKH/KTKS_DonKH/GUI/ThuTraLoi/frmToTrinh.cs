@@ -334,7 +334,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     if (_cTT.Them_ChiTiet(cttt))
                     {
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them_LichSu("ToTrinh", "Đã Lập Từ Tờ Trình, "+cttt.VeViec, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                            _cDonTu.Them_LichSu("ToTrinh", cttt.VeViec,cttt.IDCT, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                         txtMaDonCu.Focus();

@@ -65,14 +65,6 @@ namespace KTKS_DonKH.GUI.BamChi
             if (_MaCTBamChi != -1)
             {
                 _ctbamchi = _cBamChi.GetCT(_MaCTBamChi);
-                if (_ctbamchi.BamChi.MaDon != null)
-                    txtMaDonCu.Text = _ctbamchi.BamChi.MaDon.ToString().Insert(_ctbamchi.BamChi.MaDon.ToString().Length - 2, "-");
-                else
-                    if (_ctbamchi.BamChi.MaDonTXL != null)
-                        txtMaDonCu.Text = "TXL" + _ctbamchi.BamChi.MaDonTXL.ToString().Insert(_ctbamchi.BamChi.MaDonTXL.ToString().Length - 2, "-");
-                    else
-                        if (_ctbamchi.BamChi.MaDonTBC != null)
-                            txtMaDonCu.Text = "TBC" + _ctbamchi.BamChi.MaDonTBC.ToString().Insert(_ctbamchi.BamChi.MaDonTBC.ToString().Length - 2, "-");
                 LoadCTBamChi(_ctbamchi);
             }
         }
@@ -591,7 +583,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     if (_cBamChi.ThemCT(ctbamchi))
                     {
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them_LichSu("Bấm Chì", "Đã Bấm Chì", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                            _cDonTu.Them_LichSu("BamChi", ctbamchi.TrangThaiBC,(int)ctbamchi.MaCTBC, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear_GetDataGridView();
                         txtMaDonCu.Focus();

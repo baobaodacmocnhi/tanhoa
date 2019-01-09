@@ -71,7 +71,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
             {
                 if (db.ThuMoi_ChiTiets.Count() > 0)
                 {
-                    entity.IDCT = db.ThuMoi_ChiTiets.Max(item => item.IDCT) + 1;
+                    //entity.IDCT = db.ThuMoi_ChiTiets.Max(item => item.IDCT) + 1;
                     //if (entity.ThuMoi.MaDonTKH != null)
                     //{
                     //    if (db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonTKH == entity.ThuMoi.MaDonTKH&&item.DanhBo==entity.DanhBo) == false)
@@ -95,17 +95,16 @@ namespace KTKS_DonKH.DAL.ThuMoi
                     //            else
                     //                entity.Lan = db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonTBC == entity.ThuMoi.MaDonTBC && item.DanhBo == entity.DanhBo).Count() + 1;
                     //        }
-                    string Column = "SoPhieu";
+                    string Column = "IDCT";
                     string Table = "ThuMoi_ChiTiet";
-                    int SoPhieu = db.ExecuteQuery<int>("declare @Ma int " +
+                    int IDCT = db.ExecuteQuery<int>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + Column + "),LEN(CONVERT(nvarchar(50)," + Column + "))-1,2)) from " + Table + " " +
                         "select MAX(" + Column + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + Column + "),LEN(CONVERT(nvarchar(50)," + Column + "))-1,2)=@Ma").Single();
-                    entity.SoPhieu = (int)getMaxNextIDTable(SoPhieu);
+                    entity.IDCT = (int)getMaxNextIDTable(IDCT);
                 }
                 else
                 {
-                    entity.IDCT = 1;
-                    entity.SoPhieu = int.Parse("1" + DateTime.Now.ToString("yy"));
+                    entity.IDCT = int.Parse("1" + DateTime.Now.ToString("yy"));
                 }
                 entity.CreateDate = DateTime.Now;
                 entity.CreateBy = CTaiKhoan.MaUser;
@@ -185,9 +184,9 @@ namespace KTKS_DonKH.DAL.ThuMoi
             }
         }
 
-        public ThuMoi_ChiTiet get_ChiTiet(int SoPhieu)
+        public ThuMoi_ChiTiet get_ChiTiet(int IDCT)
         {
-            return db.ThuMoi_ChiTiets.SingleOrDefault(item => item.SoPhieu == SoPhieu);
+            return db.ThuMoi_ChiTiets.SingleOrDefault(item => item.IDCT == IDCT);
         }
 
         public DataTable getDS_ChiTiet(string To, decimal MaDon)
@@ -201,7 +200,6 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 {
                                     MaDon = "TKH" + item.ThuMoi.MaDonTKH,
                                     item.IDCT,
-                                    item.SoPhieu,
                                     item.DanhBo,
                                     item.HoTen,
                                     item.DiaChi,
@@ -222,7 +220,6 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                  {
                                      MaDon = "TXL" + item.ThuMoi.MaDonTXL,
                                      item.IDCT,
-                                     item.SoPhieu,
                                      item.DanhBo,
                                      item.HoTen,
                                      item.DiaChi,
@@ -243,7 +240,6 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                  {
                                      MaDon = "TBC" + item.ThuMoi.MaDonTBC,
                                      item.IDCT,
-                                     item.SoPhieu,
                                      item.DanhBo,
                                      item.HoTen,
                                      item.DiaChi,
@@ -264,7 +260,6 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                  {
                                      MaDon =  item.ThuMoi.MaDonMoi.Value.ToString(),
                                      item.IDCT,
-                                     item.SoPhieu,
                                      item.DanhBo,
                                      item.HoTen,
                                      item.DiaChi,
@@ -291,7 +286,6 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                 : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                             item.IDCT,
-                            item.SoPhieu,
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
@@ -317,7 +311,6 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                 : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                             item.IDCT,
-                            item.SoPhieu,
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
@@ -343,7 +336,6 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                 : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                             item.IDCT,
-                            item.SoPhieu,
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,

@@ -616,7 +616,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (_cCHDB.ThemCTCHDB(ctchdb))
                     {
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them_LichSu("Cắt Hủy", "Đã Thông Báo Cắt Hủy", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);   
+                            _cDonTu.Them_LichSu("CHDB", ctchdb.LyDo,(int)ctchdb.MaCTCHDB, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);   
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                         txtMaDonCu.Focus();

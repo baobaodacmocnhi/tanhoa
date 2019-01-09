@@ -1059,7 +1059,9 @@
       <Column Name="NoiNhan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ID_KTXM" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="KTXM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="TableName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IDCT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -1321,8 +1323,11 @@
       <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TenHTKT" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ToTB" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="STT_ToTB" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ToTP" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="STT_ToTP" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ToBC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="STT_ToBC" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -1656,7 +1661,6 @@
   <Table Name="dbo.ThuMoi_ChiTiet" Member="ThuMoi_ChiTiets">
     <Type Name="ThuMoi_ChiTiet">
       <Column Name="IDCT" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="SoPhieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Lan" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DanhBo" Type="System.String" DbType="Char(11)" CanBeNull="true" />
       <Column Name="HoTen" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />

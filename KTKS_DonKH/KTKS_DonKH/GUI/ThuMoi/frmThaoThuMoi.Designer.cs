@@ -67,7 +67,7 @@
             this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radDutChi = new System.Windows.Forms.RadioButton();
             this.radCDDM = new System.Windows.Forms.RadioButton();
-            this.txtSoPhieu = new System.Windows.Forms.TextBox();
+            this.txtIDCT = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.radRong = new System.Windows.Forms.RadioButton();
             this.label34 = new System.Windows.Forms.Label();
@@ -434,13 +434,13 @@
             this.radCDDM.Text = "CĐĐM";
             this.radCDDM.UseVisualStyleBackColor = true;
             // 
-            // txtSoPhieu
+            // txtIDCT
             // 
-            this.txtSoPhieu.Location = new System.Drawing.Point(572, 12);
-            this.txtSoPhieu.Name = "txtSoPhieu";
-            this.txtSoPhieu.Size = new System.Drawing.Size(80, 22);
-            this.txtSoPhieu.TabIndex = 134;
-            this.txtSoPhieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoPhieu_KeyPress);
+            this.txtIDCT.Location = new System.Drawing.Point(572, 12);
+            this.txtIDCT.Name = "txtIDCT";
+            this.txtIDCT.Size = new System.Drawing.Size(80, 22);
+            this.txtIDCT.TabIndex = 134;
+            this.txtIDCT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIDCT_KeyPress);
             // 
             // label9
             // 
@@ -480,7 +480,7 @@
             this.ClientSize = new System.Drawing.Size(783, 408);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.radRong);
-            this.Controls.Add(this.txtSoPhieu);
+            this.Controls.Add(this.txtIDCT);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.radCDDM);
             this.Controls.Add(this.radDutChi);
@@ -547,7 +547,7 @@
         private System.Windows.Forms.DataGridView dgvDSThu;
         private System.Windows.Forms.RadioButton radDutChi;
         private System.Windows.Forms.RadioButton radCDDM;
-        private System.Windows.Forms.TextBox txtSoPhieu;
+        private System.Windows.Forms.TextBox txtIDCT;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton radRong;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;

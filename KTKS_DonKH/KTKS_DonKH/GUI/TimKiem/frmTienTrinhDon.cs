@@ -574,7 +574,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
-                frmThaoThuMoi frm = new frmThaoThuMoi(int.Parse(_CTRow.Row["SoPhieu"].ToString()));
+                frmThaoThuMoi frm = new frmThaoThuMoi(int.Parse(_CTRow.Row["IDCT"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;

@@ -28,20 +28,33 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void frmThongTin_KT_BC_Load(object sender, EventArgs e)
         {
             dgvDSHienTrangKT.AutoGenerateColumns = false;
-            List<To> lstTo = _cTo.getDS_KTXM();
-            To en = new To();
-            en.MaTo = 0;
-            en.TenTo = "Tất Cả";
-            lstTo.Insert(0, en);
-            cmbTo.DataSource = lstTo;
-            cmbTo.DisplayMember = "TenTo";
-            cmbTo.ValueMember = "KyHieu";
-            //LoadDataTable();
+
+            if (CTaiKhoan.TruongPhong)
+            {
+                List<To> lstTo = _cTo.getDS_KTXM();
+                To en = new To();
+                en.MaTo = 0;
+                en.TenTo = "Tất Cả";
+                lstTo.Insert(0, en);
+                cmbTo.DataSource = lstTo;
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "KyHieu";
+
+                panel1.Visible = true;
+            }
+            LoadDataTable();
         }
 
         public void LoadDataTable()
         {
-            _blHienTrangKiemTra = new BindingList<KTXM_HienTrang>(_cHienTrangKiemTra.getDS());
+            string To = "";
+            if (CTaiKhoan.ToTB == true)
+                To = "ToTB";
+            else if (CTaiKhoan.ToTP == true)
+                To = "ToTP";
+            else if (CTaiKhoan.ToBC == true)
+                To = "ToBC";
+            _blHienTrangKiemTra = new BindingList<KTXM_HienTrang>(_cHienTrangKiemTra.getDS(To));
             dgvDSHienTrangKT.DataSource = _blHienTrangKiemTra;
         }
 
@@ -160,7 +173,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 ///update STT dô database
                 for (int i = 0; i < _blHienTrangKiemTra.Count; i++)
                 {
-                    _blHienTrangKiemTra[i].STT = i + 1;
+                    if (CTaiKhoan.ToTB == true)
+                        _blHienTrangKiemTra[i].STT_ToTB = i + 1;
+                    else if (CTaiKhoan.ToTP == true)
+                        _blHienTrangKiemTra[i].STT_ToTP = i + 1;
+                    else if (CTaiKhoan.ToBC == true)
+                        _blHienTrangKiemTra[i].STT_ToBC = i + 1;
                 }
                 _cHienTrangKiemTra.SubmitChanges();
             }
@@ -189,11 +207,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if(cmbTo.SelectedIndex==0)
-            _blHienTrangKiemTra = new BindingList<KTXM_HienTrang>(_cHienTrangKiemTra.getDS());
+            if (cmbTo.SelectedIndex == 0)
+                _blHienTrangKiemTra = new BindingList<KTXM_HienTrang>(_cHienTrangKiemTra.getDS());
             else
                 if (cmbTo.SelectedIndex > 0)
-            _blHienTrangKiemTra = new BindingList<KTXM_HienTrang>(_cHienTrangKiemTra.getDS(cmbTo.SelectedValue.ToString()));
+                    _blHienTrangKiemTra = new BindingList<KTXM_HienTrang>(_cHienTrangKiemTra.getDS(cmbTo.SelectedValue.ToString()));
             dgvDSHienTrangKT.DataSource = _blHienTrangKiemTra;
         }
 

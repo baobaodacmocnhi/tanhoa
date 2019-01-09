@@ -40,7 +40,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
         LinQ.ThuMoi_ChiTiet _thumoi = null;
-        int _SoPhieu = -1;
+        int _IDCT = -1;
 
         public frmThaoThuMoi()
         {
@@ -49,7 +49,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
 
         public frmThaoThuMoi(int SoPhieu)
         {
-            _SoPhieu = SoPhieu;
+            _IDCT = SoPhieu;
             InitializeComponent();
         }
 
@@ -73,12 +73,12 @@ namespace KTKS_DonKH.GUI.ThuMoi
             }
             txtVeViec.AutoCompleteCustomSource = auto2;
 
-            if (_SoPhieu != -1)
+            if (_IDCT != -1)
             {
-                txtSoPhieu.Text = _SoPhieu.ToString();
+                txtIDCT.Text = _IDCT.ToString();
                 KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
 
-                txtSoPhieu_KeyPress(sender, arg);
+                txtIDCT_KeyPress(sender, arg);
             }
         }
 
@@ -280,7 +280,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
                     else
                         txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();
-                    dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("TBC", _dontbc.MaDon);
+                    dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("", (int)_dontu_ChiTiet.MaDon);
 
                     _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
                     if (_hoadon != null)
@@ -410,7 +410,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     if (_cThuMoi.them_ChiTiet(entity))
                     {
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them_LichSu("ThuMoi", "Đã Gửi Thư Mời, "+entity.VeViec, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                            _cDonTu.Them_LichSu("ThuMoi", entity.VeViec,entity.IDCT, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                     }
@@ -571,11 +571,11 @@ namespace KTKS_DonKH.GUI.ThuMoi
             }
         }
 
-        private void txtSoPhieu_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtIDCT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtSoPhieu.Text.Trim() != "")
+            if (e.KeyChar == 13 && txtIDCT.Text.Trim() != "")
             {
-                _thumoi = _cThuMoi.get_ChiTiet(int.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
+                _thumoi = _cThuMoi.get_ChiTiet(int.Parse(txtIDCT.Text.Trim().Replace("-", "")));
                 if (_thumoi != null)
                     LoadEntity(_thumoi);
             }
