@@ -207,6 +207,9 @@ namespace ThuTien.LinQ
     partial void InsertTT_NiemChi(TT_NiemChi instance);
     partial void UpdateTT_NiemChi(TT_NiemChi instance);
     partial void DeleteTT_NiemChi(TT_NiemChi instance);
+    partial void InsertTT_DangNhap(TT_DangNhap instance);
+    partial void UpdateTT_DangNhap(TT_DangNhap instance);
+    partial void DeleteTT_DangNhap(TT_DangNhap instance);
     #endregion
 		
 		public dbThuTienDataContext() : 
@@ -740,6 +743,14 @@ namespace ThuTien.LinQ
 			get
 			{
 				return this.GetTable<TT_NiemChi>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TT_DangNhap> TT_DangNhaps
+		{
+			get
+			{
+				return this.GetTable<TT_DangNhap>();
 			}
 		}
 		
@@ -24913,6 +24924,236 @@ namespace ThuTien.LinQ
 					this._imgHuHong = value;
 					this.SendPropertyChanged("imgHuHong");
 					this.OnimgHuHongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_DangNhap")]
+	public partial class TT_DangNhap : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _MaND;
+		
+		private string _Name_PC;
+		
+		private string _IP_PC;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnMaNDChanging(System.Nullable<int> value);
+    partial void OnMaNDChanged();
+    partial void OnName_PCChanging(string value);
+    partial void OnName_PCChanged();
+    partial void OnIP_PCChanging(string value);
+    partial void OnIP_PCChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    #endregion
+		
+		public TT_DangNhap()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaND", DbType="Int")]
+		public System.Nullable<int> MaND
+		{
+			get
+			{
+				return this._MaND;
+			}
+			set
+			{
+				if ((this._MaND != value))
+				{
+					this.OnMaNDChanging(value);
+					this.SendPropertyChanging();
+					this._MaND = value;
+					this.SendPropertyChanged("MaND");
+					this.OnMaNDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name_PC", DbType="VarChar(50)")]
+		public string Name_PC
+		{
+			get
+			{
+				return this._Name_PC;
+			}
+			set
+			{
+				if ((this._Name_PC != value))
+				{
+					this.OnName_PCChanging(value);
+					this.SendPropertyChanging();
+					this._Name_PC = value;
+					this.SendPropertyChanged("Name_PC");
+					this.OnName_PCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IP_PC", DbType="VarChar(50)")]
+		public string IP_PC
+		{
+			get
+			{
+				return this._IP_PC;
+			}
+			set
+			{
+				if ((this._IP_PC != value))
+				{
+					this.OnIP_PCChanging(value);
+					this.SendPropertyChanging();
+					this._IP_PC = value;
+					this.SendPropertyChanged("IP_PC");
+					this.OnIP_PCChanged();
 				}
 			}
 		}

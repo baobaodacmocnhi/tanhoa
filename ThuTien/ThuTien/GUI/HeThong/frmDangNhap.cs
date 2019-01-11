@@ -78,6 +78,13 @@ namespace ThuTien.GUI.HeThong
                             }
                         }
 
+                        TT_DangNhap en = new TT_DangNhap();
+                        en.MaND = nguoidung.MaND;
+                        en.Name_PC = CNguoiDung.Name_PC;
+                        en.IP_PC = CNguoiDung.IP_PC;
+                        if (_cNguoiDung.DangNhap(en))
+                            CNguoiDung.ID_DangNhap = en.ID;
+
                         GetLoginResult(true);
                         this.Hide();
                     }

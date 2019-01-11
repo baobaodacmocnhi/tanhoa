@@ -68,6 +68,7 @@ namespace ThuTien
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            CNguoiDung.DangXuat();
             Application.Exit();
         }
 
@@ -169,6 +170,7 @@ namespace ThuTien
 
         private void mnuDangXuat_Click(object sender, EventArgs e)
         {
+            CNguoiDung.DangXuat();
             foreach (Form item in this.MdiChildren)
             {
                 this.ActiveMdiChild.Close();
@@ -1138,6 +1140,12 @@ namespace ThuTien
         }
 
         #endregion
+
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CNguoiDung.DangXuat();
+        }
 
 
     }

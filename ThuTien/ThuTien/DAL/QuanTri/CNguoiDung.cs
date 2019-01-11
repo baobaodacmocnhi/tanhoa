@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ThuTien.LinQ;
+using System.Data;
 
 namespace ThuTien.DAL.QuanTri
 {
@@ -92,6 +93,13 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._IP_PC = value; }
         }
 
+        static int _ID_DangNhap;
+        public static int ID_DangNhap
+        {
+            get { return CNguoiDung._ID_DangNhap; }
+            set { CNguoiDung._ID_DangNhap = value; }
+        }
+
         public static bool CheckQuyen(string TenMenu, string LoaiQuyen)
         {
             string query = "";
@@ -162,9 +170,8 @@ namespace ThuTien.DAL.QuanTri
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -230,7 +237,7 @@ namespace ThuTien.DAL.QuanTri
         /// <returns></returns>
         public List<TT_NguoiDung> GetDSExceptMaND(int MaND)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0&&item.An==false && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0 && item.An == false && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
         }
 
         public List<TT_NguoiDung> GetDSExceptMaND_Doi(int MaND)
@@ -255,12 +262,12 @@ namespace ThuTien.DAL.QuanTri
 
         public List<TT_NguoiDung> GetDSByMaTo(int MaTo)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && (item.HanhThu == true||item.ToTruong)).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && (item.HanhThu == true || item.ToTruong)).OrderBy(item => item.STT).ToList();
         }
 
         public List<TT_NguoiDung> GetDSByToVanPhong(int MaTo)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.TT_To.HanhThu==false && item.VanPhong == true).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.TT_To.HanhThu == false && item.VanPhong == true).OrderBy(item => item.STT).ToList();
         }
 
         public List<TT_NguoiDung> GetDSDongNuocByMaTo(int MaTo)
@@ -284,20 +291,20 @@ namespace ThuTien.DAL.QuanTri
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                 return null;
             }
-            
+
         }
 
         public bool DangNhap(string TaiKhoan, string MatKhau)
         {
             try
             {
-                return _db.TT_NguoiDungs.Any(item => item.TaiKhoan == TaiKhoan && item.MatKhau == MatKhau&&item.An==false);
+                return _db.TT_NguoiDungs.Any(item => item.TaiKhoan == TaiKhoan && item.MatKhau == MatKhau && item.An == false);
             }
             catch (Exception)
             {
                 return false;
             }
-            
+
         }
 
         public string GetHoTenByMaND(int MaND)
@@ -326,6 +333,58 @@ namespace ThuTien.DAL.QuanTri
                 return 0;
             else
                 return _db.TT_NguoiDungs.Max(item => item.STT).Value;
+        }
+
+        public bool DangNhap(TT_DangNhap en)
+        {
+            try
+            {
+                if (_db.TT_DangNhaps.Count() > 0)
+                    en.ID = _db.TT_DangNhaps.Max(item => item.ID) + 1;
+                else
+                    en.ID = 1;
+                en.CreateDate = DateTime.Now;
+                en.CreateBy = CNguoiDung.MaND;
+                _db.TT_DangNhaps.InsertOnSubmit(en);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public static bool DangXuat()
+        {
+            try
+            {
+                TT_DangNhap en = _db.TT_DangNhaps.SingleOrDefault(item => item.ID == CNguoiDung.ID_DangNhap);
+                en.ModifyDate = DateTime.Now;
+                en.ModifyBy = CNguoiDung.MaND;
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        //Danh sách đăng nhập
+
+        public DataTable getDS_DangNhap()
+        {
+            var query = from item in _db.TT_DangNhaps
+                        join itemND in _db.TT_NguoiDungs on item.MaND equals itemND.MaND
+                        where item.ModifyBy == null
+                        select new
+                          {
+                              itemND.HoTen,
+                              item.Name_PC,
+                          };
+            return LINQToDataTable(query);
         }
     }
 }

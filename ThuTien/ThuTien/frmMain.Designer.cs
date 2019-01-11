@@ -156,9 +156,10 @@
             this.mnuTimKiem,
             this.mnuPhoGiamDoc,
             this.mnuTrungTamKhachHang});
+            this.menuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1184, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1184, 23);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -170,7 +171,7 @@
             this.mnuDangXuat,
             this.mnuAdmin});
             this.mnuHeThong.Name = "mnuHeThong";
-            this.mnuHeThong.Size = new System.Drawing.Size(72, 20);
+            this.mnuHeThong.Size = new System.Drawing.Size(72, 19);
             this.mnuHeThong.Text = "Hệ Thống";
             // 
             // mnuDangNhap
@@ -209,7 +210,7 @@
             this.mnuNhom,
             this.mnuNguoiDung});
             this.mnuQuanTri.Name = "mnuQuanTri";
-            this.mnuQuanTri.Size = new System.Drawing.Size(64, 20);
+            this.mnuQuanTri.Size = new System.Drawing.Size(64, 19);
             this.mnuQuanTri.Text = "Quản Trị";
             // 
             // mnuTo
@@ -258,7 +259,7 @@
             this.mnuGuiThongBao,
             this.mnuNiemChi});
             this.mnuDoi.Name = "mnuDoi";
-            this.mnuDoi.Size = new System.Drawing.Size(37, 20);
+            this.mnuDoi.Size = new System.Drawing.Size(37, 19);
             this.mnuDoi.Text = "Đội";
             // 
             // mnuLuuHD
@@ -427,7 +428,7 @@
             this.mnuHDChuyenKhoan,
             this.mnuKiemTraHienTruong});
             this.mnuToTruong.Name = "mnuToTruong";
-            this.mnuToTruong.Size = new System.Drawing.Size(74, 20);
+            this.mnuToTruong.Size = new System.Drawing.Size(74, 19);
             this.mnuToTruong.Text = "Tổ Trưởng";
             // 
             // mnuGiaoHDHanhThu
@@ -535,7 +536,7 @@
             this.mnuDangNganTon,
             this.mnuQuetTam});
             this.mnuHanhThu.Name = "mnuHanhThu";
-            this.mnuHanhThu.Size = new System.Drawing.Size(79, 20);
+            this.mnuHanhThu.Size = new System.Drawing.Size(79, 19);
             this.mnuHanhThu.Text = "Đăng Ngân";
             // 
             // mnuDangNganHanhThu
@@ -567,7 +568,7 @@
             this.mnuVanTu,
             this.mnuThongKeDongMoNuoc});
             this.mnuDongNuoc.Name = "mnuDongNuoc";
-            this.mnuDongNuoc.Size = new System.Drawing.Size(80, 20);
+            this.mnuDongNuoc.Size = new System.Drawing.Size(80, 19);
             this.mnuDongNuoc.Text = "Đóng Nước";
             // 
             // mnuTBDongNuoc
@@ -616,7 +617,7 @@
             this.mnuBaoCaoChuyenKhoan,
             this.mnuPhanTichChuyenKhoan});
             this.mnuChuyenKhoan.Name = "mnuChuyenKhoan";
-            this.mnuChuyenKhoan.Size = new System.Drawing.Size(97, 20);
+            this.mnuChuyenKhoan.Size = new System.Drawing.Size(97, 19);
             this.mnuChuyenKhoan.Text = "Chuyển Khoản";
             // 
             // mnuDangNganChuyenKhoan
@@ -733,7 +734,7 @@
             this.mnuQuetGiaoTon,
             this.mnuBaoCaoQuay});
             this.mnuQuay.Name = "mnuQuay";
-            this.mnuQuay.Size = new System.Drawing.Size(47, 20);
+            this.mnuQuay.Size = new System.Drawing.Size(47, 19);
             this.mnuQuay.Text = "Quầy";
             // 
             // mnuDangNganQuay
@@ -831,7 +832,7 @@
             this.mnuDangKyKiemTra,
             this.mnuToTrinhDCHD});
             this.mnuTongHop.Name = "mnuTongHop";
-            this.mnuTongHop.Size = new System.Drawing.Size(73, 20);
+            this.mnuTongHop.Size = new System.Drawing.Size(73, 19);
             this.mnuTongHop.Text = "Tổng Hợp";
             // 
             // mnuDCHD
@@ -889,7 +890,7 @@
             this.mnuTimKiemKhachHang,
             this.mnuTimKiemDienThoai});
             this.mnuTimKiem.Name = "mnuTimKiem";
-            this.mnuTimKiem.Size = new System.Drawing.Size(70, 20);
+            this.mnuTimKiem.Size = new System.Drawing.Size(70, 19);
             this.mnuTimKiem.Text = "Tìm Kiếm";
             // 
             // mnuTimKiemKhachHang
@@ -912,7 +913,7 @@
             this.mnuKiemTraThu2Lan,
             this.mnuKiemTraTon});
             this.mnuPhoGiamDoc.Name = "mnuPhoGiamDoc";
-            this.mnuPhoGiamDoc.Size = new System.Drawing.Size(95, 20);
+            this.mnuPhoGiamDoc.Size = new System.Drawing.Size(95, 19);
             this.mnuPhoGiamDoc.Text = "Phó Giám Đốc";
             this.mnuPhoGiamDoc.Visible = false;
             // 
@@ -933,7 +934,7 @@
             // mnuTrungTamKhachHang
             // 
             this.mnuTrungTamKhachHang.Name = "mnuTrungTamKhachHang";
-            this.mnuTrungTamKhachHang.Size = new System.Drawing.Size(144, 20);
+            this.mnuTrungTamKhachHang.Size = new System.Drawing.Size(144, 19);
             this.mnuTrungTamKhachHang.Text = "Trung Tâm Khách Hàng";
             this.mnuTrungTamKhachHang.Visible = false;
             // 
@@ -978,7 +979,7 @@
             // tabControl
             // 
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl.Location = new System.Drawing.Point(0, 24);
+            this.tabControl.Location = new System.Drawing.Point(0, 23);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1184, 26);
@@ -1006,6 +1007,7 @@
             this.Name = "frmMain";
             this.Text = "Quản Lý Thu Ngân";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.MdiChildActivate += new System.EventHandler(this.frmMain_MdiChildActivate);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseMove);

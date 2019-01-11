@@ -55,6 +55,11 @@
             this.QuanLy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgvDangNhap = new System.Windows.Forms.DataGridView();
+            this.btnXem_DangNhap = new System.Windows.Forms.Button();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name_PC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -65,6 +70,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDangNhap)).BeginInit();
             this.SuspendLayout();
             // 
             // btnXoa
@@ -147,7 +154,7 @@
             // 
             // gridControl
             // 
-            this.gridControl.Location = new System.Drawing.Point(13, 19);
+            this.gridControl.Location = new System.Drawing.Point(6, 19);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -157,7 +164,7 @@
             this.repositoryItemCheckEdit4,
             this.repositoryItemCheckEdit5,
             this.repositoryItemCheckEdit6});
-            this.gridControl.Size = new System.Drawing.Size(629, 595);
+            this.gridControl.Size = new System.Drawing.Size(515, 460);
             this.gridControl.TabIndex = 12;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -215,7 +222,7 @@
             this.TextMenu.Name = "TextMenu";
             this.TextMenu.Visible = true;
             this.TextMenu.VisibleIndex = 0;
-            this.TextMenu.Width = 150;
+            this.TextMenu.Width = 200;
             // 
             // Xem
             // 
@@ -225,6 +232,7 @@
             this.Xem.Name = "Xem";
             this.Xem.Visible = true;
             this.Xem.VisibleIndex = 1;
+            this.Xem.Width = 40;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -240,6 +248,7 @@
             this.Them.Name = "Them";
             this.Them.Visible = true;
             this.Them.VisibleIndex = 2;
+            this.Them.Width = 40;
             // 
             // repositoryItemCheckEdit2
             // 
@@ -255,6 +264,7 @@
             this.Sua.Name = "Sua";
             this.Sua.Visible = true;
             this.Sua.VisibleIndex = 3;
+            this.Sua.Width = 40;
             // 
             // repositoryItemCheckEdit3
             // 
@@ -270,6 +280,7 @@
             this.Xoa.Name = "Xoa";
             this.Xoa.Visible = true;
             this.Xoa.VisibleIndex = 4;
+            this.Xoa.Width = 40;
             // 
             // repositoryItemCheckEdit4
             // 
@@ -285,6 +296,7 @@
             this.ToanQuyen.Name = "ToanQuyen";
             this.ToanQuyen.Visible = true;
             this.ToanQuyen.VisibleIndex = 5;
+            this.ToanQuyen.Width = 70;
             // 
             // repositoryItemCheckEdit5
             // 
@@ -300,6 +312,7 @@
             this.QuanLy.Name = "QuanLy";
             this.QuanLy.Visible = true;
             this.QuanLy.VisibleIndex = 6;
+            this.QuanLy.Width = 50;
             // 
             // repositoryItemCheckEdit6
             // 
@@ -312,16 +325,70 @@
             this.groupBox1.Controls.Add(this.gridControl);
             this.groupBox1.Location = new System.Drawing.Point(269, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(656, 623);
+            this.groupBox1.Size = new System.Drawing.Size(528, 484);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phân Quyền";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvDangNhap);
+            this.groupBox2.Controls.Add(this.btnXem_DangNhap);
+            this.groupBox2.Location = new System.Drawing.Point(803, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(374, 484);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Đăng Nhập";
+            // 
+            // dgvDangNhap
+            // 
+            this.dgvDangNhap.AllowUserToAddRows = false;
+            this.dgvDangNhap.AllowUserToDeleteRows = false;
+            this.dgvDangNhap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDangNhap.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.HoTen,
+            this.Name_PC});
+            this.dgvDangNhap.Location = new System.Drawing.Point(6, 49);
+            this.dgvDangNhap.MultiSelect = false;
+            this.dgvDangNhap.Name = "dgvDangNhap";
+            this.dgvDangNhap.ReadOnly = true;
+            this.dgvDangNhap.Size = new System.Drawing.Size(362, 430);
+            this.dgvDangNhap.TabIndex = 9;
+            this.dgvDangNhap.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDangNhap_RowPostPaint);
+            // 
+            // btnXem_DangNhap
+            // 
+            this.btnXem_DangNhap.Location = new System.Drawing.Point(46, 20);
+            this.btnXem_DangNhap.Name = "btnXem_DangNhap";
+            this.btnXem_DangNhap.Size = new System.Drawing.Size(75, 23);
+            this.btnXem_DangNhap.TabIndex = 0;
+            this.btnXem_DangNhap.Text = "Xem";
+            this.btnXem_DangNhap.UseVisualStyleBackColor = true;
+            this.btnXem_DangNhap.Click += new System.EventHandler(this.btnXem_DangNhap_Click);
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 150;
+            // 
+            // Name_PC
+            // 
+            this.Name_PC.DataPropertyName = "Name_PC";
+            this.Name_PC.HeaderText = "Máy Tính";
+            this.Name_PC.Name = "Name_PC";
+            this.Name_PC.ReadOnly = true;
+            this.Name_PC.Width = 150;
             // 
             // frmNhom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1010, 709);
+            this.ClientSize = new System.Drawing.Size(1741, 642);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
@@ -342,6 +409,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDangNhap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,5 +445,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private DevExpress.XtraGrid.Columns.GridColumn QuanLy;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit6;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dgvDangNhap;
+        private System.Windows.Forms.Button btnXem_DangNhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name_PC;
     }
 }

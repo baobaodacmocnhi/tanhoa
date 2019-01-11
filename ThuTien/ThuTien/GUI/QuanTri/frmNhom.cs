@@ -14,6 +14,7 @@ namespace ThuTien.GUI.QuanTri
     public partial class frmNhom : Form
     {
         int _selectedindex = -1;
+        CNguoiDung _cNguoiDung = new CNguoiDung();
         CNhom _cNhom = new CNhom();
         CPhanQuyenNhom _cPhanQuyenNhom = new CPhanQuyenNhom();
         CMenu _cMenu = new CMenu();
@@ -36,6 +37,8 @@ namespace ThuTien.GUI.QuanTri
         {
             dgvNhom.AutoGenerateColumns = false;
             dgvNhom.DataSource = _cNhom.GetDS();
+
+            dgvDangNhap.AutoGenerateColumns = false;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -158,6 +161,19 @@ namespace ThuTien.GUI.QuanTri
                     gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Sua"], "False");
                     gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xoa"], "False");
                 }
+        }
+
+        private void btnXem_DangNhap_Click(object sender, EventArgs e)
+        {
+            dgvDangNhap.DataSource = _cNguoiDung.getDS_DangNhap();
+        }
+
+        private void dgvDangNhap_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDangNhap.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
         }
 
     }
