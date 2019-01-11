@@ -85,6 +85,7 @@
             this.Sua.Name = "Sua";
             this.Sua.Visible = true;
             this.Sua.VisibleIndex = 3;
+            this.Sua.Width = 40;
             // 
             // repositoryItemCheckEdit3
             // 
@@ -106,6 +107,7 @@
             this.Them.Name = "Them";
             this.Them.Visible = true;
             this.Them.VisibleIndex = 2;
+            this.Them.Width = 40;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -121,6 +123,7 @@
             this.Xoa.Name = "Xoa";
             this.Xoa.Visible = true;
             this.Xoa.VisibleIndex = 4;
+            this.Xoa.Width = 40;
             // 
             // repositoryItemCheckEdit4
             // 
@@ -142,6 +145,7 @@
             this.QuanLy.Name = "QuanLy";
             this.QuanLy.Visible = true;
             this.QuanLy.VisibleIndex = 6;
+            this.QuanLy.Width = 50;
             // 
             // repositoryItemCheckEdit5
             // 
@@ -157,6 +161,7 @@
             this.ToanQuyen.Name = "ToanQuyen";
             this.ToanQuyen.Visible = true;
             this.ToanQuyen.VisibleIndex = 5;
+            this.ToanQuyen.Width = 70;
             // 
             // Xem
             // 
@@ -166,6 +171,7 @@
             this.Xem.Name = "Xem";
             this.Xem.Visible = true;
             this.Xem.VisibleIndex = 1;
+            this.Xem.Width = 40;
             // 
             // TextMenu
             // 
@@ -174,14 +180,14 @@
             this.TextMenu.Name = "TextMenu";
             this.TextMenu.Visible = true;
             this.TextMenu.VisibleIndex = 0;
-            this.TextMenu.Width = 150;
+            this.TextMenu.Width = 200;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.gridControl);
             this.groupBox1.Location = new System.Drawing.Point(309, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(644, 428);
+            this.groupBox1.Size = new System.Drawing.Size(528, 428);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phân Quyền";
@@ -198,7 +204,7 @@
             this.repositoryItemCheckEdit4,
             this.repositoryItemCheckEdit5,
             this.repositoryItemCheckEdit6});
-            this.gridControl.Size = new System.Drawing.Size(630, 400);
+            this.gridControl.Size = new System.Drawing.Size(515, 400);
             this.gridControl.TabIndex = 12;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -323,7 +329,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(962, 451);
+            this.ClientSize = new System.Drawing.Size(903, 451);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSua);

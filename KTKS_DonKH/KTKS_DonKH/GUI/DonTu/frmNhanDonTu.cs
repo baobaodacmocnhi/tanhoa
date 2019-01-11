@@ -468,6 +468,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     {
                         if (_dontu.DonTu_ChiTiets.Count == 1)
                         {
+                            if (txtDanhBo.Text.Trim().Replace(" ", "") != _dontu.DonTu_ChiTiets.SingleOrDefault().DanhBo || txtHoTen.Text.Trim() != _dontu.DonTu_ChiTiets.SingleOrDefault().HoTen || txtDiaChi.Text.Trim() != _dontu.DonTu_ChiTiets.SingleOrDefault().DiaChi)
                             if (_cDonTu.checkExist_ChiTiet(txtDanhBo.Text.Trim().Replace(" ", ""), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim(), DateTime.Now) == true)
                             {
                                 if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
