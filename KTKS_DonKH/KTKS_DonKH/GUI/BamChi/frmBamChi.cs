@@ -405,7 +405,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         MessageBox.Show("Lỗi Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (txtHoTen.Text.Trim() == "" || txtDiaChi.Text.Trim() == "" || txtTheoYeuCau.Text.Trim() == "" )
+                    if (txtHoTen.Text.Trim() == "" || txtDiaChi.Text.Trim() == "" || txtTheoYeuCau.Text.Trim() == "")
                     {
                         MessageBox.Show("Chưa đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -576,14 +576,14 @@ namespace KTKS_DonKH.GUI.BamChi
                         ctbamchi.VienChi = int.Parse(txtVienChi.Text.Trim());
 
                     if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
-                        ctbamchi.DayChi = Convert.ToDouble(txtDayChi.Text.Trim());
+                        ctbamchi.DayChi = CTaiKhoan.getDouble(txtDayChi.Text.Trim());
 
                     ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
 
                     if (_cBamChi.ThemCT(ctbamchi))
                     {
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them_LichSu("BamChi", ctbamchi.TrangThaiBC,(int)ctbamchi.MaCTBC, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                            _cDonTu.Them_LichSu("BamChi", ctbamchi.TrangThaiBC, (int)ctbamchi.MaCTBC, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear_GetDataGridView();
                         txtMaDonCu.Focus();
@@ -699,7 +699,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             _ctbamchi.VienChi = int.Parse(txtVienChi.Text.Trim());
 
                         if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
-                            _ctbamchi.DayChi = Convert.ToDouble(txtDayChi.Text.Trim());
+                            _ctbamchi.DayChi = CTaiKhoan.getDouble(txtDayChi.Text.Trim());
 
                         _ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim();
 
@@ -802,11 +802,11 @@ namespace KTKS_DonKH.GUI.BamChi
                         break;
                     case "Bấm Chì Góc-Chì Thân":
                         txtVienChi.Text = "2";
-                        txtDayChi.Text = "1.2";
+                        txtDayChi.Text = "1,2";
                         break;
                     default:
                         txtVienChi.Text = "1";
-                        txtDayChi.Text = "0.6";
+                        txtDayChi.Text = "0,6";
                         break;
                 }
         }

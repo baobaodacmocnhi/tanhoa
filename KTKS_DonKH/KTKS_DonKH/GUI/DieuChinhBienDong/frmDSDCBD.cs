@@ -26,11 +26,13 @@ using KTKS_DonKH.GUI.BaoCao;
 using System.Globalization;
 using System.Transactions;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
     public partial class frmDSDCBD : Form
     {
+        CDonTu _cDonTu = new CDonTu();
         CDonKH _cDonKH = new CDonKH();
         CDCBD _cDCBD = new CDCBD();
         CKTXM _cKTXM = new CKTXM();
@@ -701,14 +703,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                             DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
-                                            if (lichsuchungtu.MaDon != null)
-                                                dr["MaDon"] = lichsuchungtu.MaDon.ToString().Insert(lichsuchungtu.MaDon.ToString().Length - 2, "-");
-                                            else
-                                                if (lichsuchungtu.MaDonTXL != null)
-                                                    dr["MaDon"] = "TXL" + lichsuchungtu.MaDonTXL.ToString().Insert(lichsuchungtu.MaDonTXL.ToString().Length - 2, "-");
+                                            if (lichsuchungtu.MaDonMoi != null)
+                                            {
+                                                LinQ.DonTu en = _cDonTu.get(lichsuchungtu.MaDonMoi.Value);
+                                                if(en.DonTu_ChiTiets.Count==1)
+                                                dr["MaDon"] = lichsuchungtu.MaDonMoi.ToString();
                                                 else
-                                                    if (lichsuchungtu.MaDonTBC != null)
-                                                        dr["MaDon"] = "TBC" + lichsuchungtu.MaDonTBC.ToString().Insert(lichsuchungtu.MaDonTBC.ToString().Length - 2, "-");
+                                                    dr["MaDon"] = lichsuchungtu.MaDonMoi.ToString()+"."+lichsuchungtu.STT.Value.ToString();
+                                            }
+                                            else
+                                                if (lichsuchungtu.MaDon != null)
+                                                    dr["MaDon"] = "TKH"+lichsuchungtu.MaDon.ToString().Insert(lichsuchungtu.MaDon.ToString().Length - 2, "-");
+                                                else
+                                                    if (lichsuchungtu.MaDonTXL != null)
+                                                        dr["MaDon"] = "TXL" + lichsuchungtu.MaDonTXL.ToString().Insert(lichsuchungtu.MaDonTXL.ToString().Length - 2, "-");
+                                                    else
+                                                        if (lichsuchungtu.MaDonTBC != null)
+                                                            dr["MaDon"] = "TBC" + lichsuchungtu.MaDonTBC.ToString().Insert(lichsuchungtu.MaDonTBC.ToString().Length - 2, "-");
 
                                             dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
                                             dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(lichsuchungtu.CatNK_MaCN.Value);
@@ -1022,8 +1033,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
+                                if (lichsuchungtu.MaDonMoi != null)
+                                {
+                                    LinQ.DonTu en = _cDonTu.get(lichsuchungtu.MaDonMoi.Value);
+                                    if (en.DonTu_ChiTiets.Count == 1)
+                                        dr["MaDon"] = lichsuchungtu.MaDonMoi.ToString();
+                                    else
+                                        dr["MaDon"] = lichsuchungtu.MaDonMoi.ToString() + "." + lichsuchungtu.STT.Value.ToString();
+                                }
+                                else
                                 if (lichsuchungtu.MaDon != null)
-                                    dr["MaDon"] = lichsuchungtu.MaDon.ToString().Insert(lichsuchungtu.MaDon.ToString().Length - 2, "-");
+                                    dr["MaDon"] = "TKH"+lichsuchungtu.MaDon.ToString().Insert(lichsuchungtu.MaDon.ToString().Length - 2, "-");
                                 else
                                     if (lichsuchungtu.MaDonTXL != null)
                                         dr["MaDon"] = "TXL" + lichsuchungtu.MaDonTXL.ToString().Insert(lichsuchungtu.MaDonTXL.ToString().Length - 2, "-");
@@ -1054,8 +1074,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 {
                                     DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
+                                    if (lichsuchungtu.MaDonMoi != null)
+                                    {
+                                        LinQ.DonTu en = _cDonTu.get(lichsuchungtu.MaDonMoi.Value);
+                                        if (en.DonTu_ChiTiets.Count == 1)
+                                            dr["MaDon"] = lichsuchungtu.MaDonMoi.ToString();
+                                        else
+                                            dr["MaDon"] = lichsuchungtu.MaDonMoi.ToString() + "." + lichsuchungtu.STT.Value.ToString();
+                                    }
+                                    else
                                     if (lichsuchungtu.MaDon != null)
-                                        dr["MaDon"] = lichsuchungtu.MaDon.ToString().Insert(lichsuchungtu.MaDon.ToString().Length - 2, "-");
+                                        dr["MaDon"] = "TKH"+lichsuchungtu.MaDon.ToString().Insert(lichsuchungtu.MaDon.ToString().Length - 2, "-");
                                     else
                                         if (lichsuchungtu.MaDonTXL != null)
                                             dr["MaDon"] = "TXL" + lichsuchungtu.MaDonTXL.ToString().Insert(lichsuchungtu.MaDonTXL.ToString().Length - 2, "-");

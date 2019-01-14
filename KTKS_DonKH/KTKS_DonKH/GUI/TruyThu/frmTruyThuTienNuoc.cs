@@ -145,6 +145,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dgvTruyThuTienNuoc["GiaBieu_Cu", dgvTruyThuTienNuoc.RowCount - 2].Value = item.GiaBieuCu;
                 dgvTruyThuTienNuoc["DinhMuc_Cu", dgvTruyThuTienNuoc.RowCount - 2].Value = item.DinhMucCu;
                 dgvTruyThuTienNuoc["TieuThu_Cu", dgvTruyThuTienNuoc.RowCount - 2].Value = item.TieuThuCu;
+                dgvTruyThuTienNuoc["GiaBan_Cu", dgvTruyThuTienNuoc.RowCount - 2].Value = item.GiaBanCu;
+                dgvTruyThuTienNuoc["ThueGTGT_Cu", dgvTruyThuTienNuoc.RowCount - 2].Value = item.ThueGTGTCu;
+                dgvTruyThuTienNuoc["PhiBVMT_Cu", dgvTruyThuTienNuoc.RowCount - 2].Value = item.PhiBVMTCu;
                 dgvTruyThuTienNuoc["TongCong_Cu", dgvTruyThuTienNuoc.RowCount - 2].Value = item.TongCongCu;
                 dgvTruyThuTienNuoc["GiaBieu_Moi", dgvTruyThuTienNuoc.RowCount - 2].Value = item.GiaBieuMoi;
                 dgvTruyThuTienNuoc["DinhMuc_Moi", dgvTruyThuTienNuoc.RowCount - 2].Value = item.DinhMucMoi;
@@ -153,6 +156,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dgvTruyThuTienNuoc["ThueGTGT_Moi", dgvTruyThuTienNuoc.RowCount - 2].Value = item.ThueGTGTMoi;
                 dgvTruyThuTienNuoc["PhiBVMT_Moi", dgvTruyThuTienNuoc.RowCount - 2].Value = item.PhiBVMTMoi;
                 dgvTruyThuTienNuoc["TongCong_Moi", dgvTruyThuTienNuoc.RowCount - 2].Value = item.TongCongMoi;
+                dgvTruyThuTienNuoc["TangGiam", dgvTruyThuTienNuoc.RowCount - 2].Value = item.TangGiam;
             }
 
             LoadDSThanhToan(cttttn.IDCT);
@@ -690,15 +694,15 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void dgvTruyThuTienNuoc_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if(_flagLoad==false)
-            if (e.RowIndex < dgvTruyThuTienNuoc.RowCount - 1)
-            {
-                dgvTruyThuTienNuoc["Nam", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["Nam", e.RowIndex].Value;
-                dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value;
-                dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex].Value;
-                dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value;
-                dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex].Value;
-            }
+            if (_flagLoad == false&&_cttttn==null)
+                if (e.RowIndex < dgvTruyThuTienNuoc.RowCount - 1)
+                {
+                    dgvTruyThuTienNuoc["Nam", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["Nam", e.RowIndex].Value;
+                    dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value;
+                    dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex].Value;
+                    dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value;
+                    dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex].Value;
+                }
         }
 
         private void dgvTruyThuTienNuoc_KeyDown(object sender, KeyEventArgs e)
@@ -905,13 +909,6 @@ namespace KTKS_DonKH.GUI.TruyThu
                     if (_cttttn != null)
                     {
                         //_cttttn.XepDon = chkXepDon.Checked;
-                        if (cmbTinhTrang.SelectedIndex != -1)
-                        {
-                            _cttttn.NgayTinhTrang = dateTinhTrang.Value;
-                            _cttttn.TinhTrang = cmbTinhTrang.SelectedItem.ToString();
-                        }
-                        else
-                            _cttttn.TinhTrang = "";
                         _cttttn.DanhBo = txtDanhBo.Text.Trim();
                         _cttttn.HopDong = txtHopDong.Text.Trim();
                         _cttttn.LoTrinh = txtLoTrinh.Text.Trim();

@@ -169,15 +169,15 @@ namespace KTKS_DonKH.GUI.BamChi
                     return;
                 }
                 dr["Co"] = itemRow["Co"];
-                dr["VienChi"] = itemRow["VienChi"];
-                dr["DayChi"] = itemRow["DayChi"];
+                dr["NiemChi"] = itemRow["NiemChi"];
+                dr["DayChi"] = double.Parse( itemRow["DayChi"].ToString());
                 dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
                 dr["NguoiLap"] = CTaiKhoan.HoTen;
 
                 dsBaoCao.Tables["QuyetToanVatTu"].Rows.Add(dr);
             }
 
-            rptQuyetToanVatTu rpt = new rptQuyetToanVatTu();
+            rptQuyetToanVatTu_NiemChi rpt = new rptQuyetToanVatTu_NiemChi();
             rpt.SetDataSource(dsBaoCao);
             ///report 0 là header
             for (int j = 1; j < rpt.Subreports.Count; j++)

@@ -398,7 +398,7 @@ namespace KTKS_DonKH.DAL.DonTu
             var query = from item in db.DonTu_LichSus
                         join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                         where item.MaDon == MaDon && item.STT == STT
-                        orderby item.NgayChuyen descending
+                        orderby  item.NgayChuyen descending,item.ID descending
                         select new
                         {
                             item.ID,
