@@ -52,14 +52,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChinhQuyen_CANHAN.cs">
-      <DependentUpon>ChinhQuyen_CANHAN.rpt</DependentUpon>
+    <Compile Include="ChinhQuyen_CANHAN_A3.cs">
+      <DependentUpon>ChinhQuyen_CANHAN_A3.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ChinhQuyen_TAPTHE.cs">
-      <DependentUpon>ChinhQuyen_TAPTHE.rpt</DependentUpon>
+    <Compile Include="ChinhQuyen_TAPTHE_A3.cs">
+      <DependentUpon>ChinhQuyen_TAPTHE_A3.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -176,13 +176,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ChinhQuyen_CANHAN.rpt">
+    <EmbeddedResource Include="ChinhQuyen_CANHAN_A3.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ChinhQuyen_CANHAN.cs</LastGenOutput>
+      <LastGenOutput>ChinhQuyen_CANHAN_A3.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChinhQuyen_TAPTHE.rpt">
+    <EmbeddedResource Include="ChinhQuyen_TAPTHE_A3.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ChinhQuyen_TAPTHE.cs</LastGenOutput>
+      <LastGenOutput>ChinhQuyen_TAPTHE_A3.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TLD_GKCongDoan_CanBo_CANHAN.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

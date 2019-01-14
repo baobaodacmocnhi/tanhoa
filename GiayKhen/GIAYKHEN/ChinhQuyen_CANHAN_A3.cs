@@ -16,14 +16,14 @@ namespace GIAYKHEN {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ChinhQuyen_CANHAN : ReportClass {
+    public class ChinhQuyen_CANHAN_A3 : ReportClass {
         
-        public ChinhQuyen_CANHAN() {
+        public ChinhQuyen_CANHAN_A3() {
         }
         
         public override string ResourceName {
             get {
-                return "ChinhQuyen_CANHAN.rpt";
+                return "ChinhQuyen_CANHAN_A3.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace GIAYKHEN {
         
         public override string FullResourceName {
             get {
-                return "GIAYKHEN.ChinhQuyen_CANHAN.rpt";
+                return "GIAYKHEN.ChinhQuyen_CANHAN_A3.rpt";
             }
             set {
                 // Do nothing
@@ -138,9 +138,9 @@ namespace GIAYKHEN {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedChinhQuyen_CANHAN : Component, ICachedReport {
+    public class CachedChinhQuyen_CANHAN_A3 : Component, ICachedReport {
         
-        public CachedChinhQuyen_CANHAN() {
+        public CachedChinhQuyen_CANHAN_A3() {
         }
         
         [Browsable(false)]
@@ -177,7 +177,7 @@ namespace GIAYKHEN {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ChinhQuyen_CANHAN rpt = new ChinhQuyen_CANHAN();
+            ChinhQuyen_CANHAN_A3 rpt = new ChinhQuyen_CANHAN_A3();
             rpt.Site = this.Site;
             return rpt;
         }
