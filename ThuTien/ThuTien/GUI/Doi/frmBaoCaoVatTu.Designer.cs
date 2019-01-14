@@ -47,6 +47,7 @@
             this.ChiSoDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NiemChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DongNuoc2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NiemChi1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayDN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChiSoDN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -126,6 +127,7 @@
             this.ChiSoDN,
             this.NgayDN,
             this.NiemChi,
+            this.DongNuoc2,
             this.NiemChi1,
             this.NgayDN1,
             this.ChiSoDN1,
@@ -221,6 +223,13 @@
             this.NiemChi.Name = "NiemChi";
             this.NiemChi.Width = 70;
             // 
+            // DongNuoc2
+            // 
+            this.DongNuoc2.DataPropertyName = "DongNuoc2";
+            this.DongNuoc2.HeaderText = "DongNuoc2";
+            this.DongNuoc2.Name = "DongNuoc2";
+            this.DongNuoc2.Visible = false;
+            // 
             // NiemChi1
             // 
             this.NiemChi1.DataPropertyName = "NiemChi1";
@@ -303,6 +312,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSoDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn NiemChi;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn DongNuoc2;
         private System.Windows.Forms.DataGridViewTextBoxColumn NiemChi1;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDN1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSoDN1;
