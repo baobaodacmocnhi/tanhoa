@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="GK">
+  <DataContextMoniker Name="/GKDataContext" />
+  <nestedChildShapes>
+    <classShape Id="f9535253-b9bd-44cb-96b1-48de05aafd24" absoluteBounds="4.125, 1.625, 2, 2.5401025390625">
+      <DataClassMoniker Name="/GKDataContext/A_GIAYKHEN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2cf4e3a0-cb12-443e-abb3-c3241f3a1263" absoluteBounds="4.14, 2.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
