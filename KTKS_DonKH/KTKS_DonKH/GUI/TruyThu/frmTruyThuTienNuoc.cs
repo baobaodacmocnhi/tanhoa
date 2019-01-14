@@ -694,7 +694,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void dgvTruyThuTienNuoc_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (_flagLoad == false&&_cttttn==null)
+            if (_flagLoad == false && dgvTruyThuTienNuoc["ID_HoaDon", e.RowIndex].Value==null)
                 if (e.RowIndex < dgvTruyThuTienNuoc.RowCount - 1)
                 {
                     dgvTruyThuTienNuoc["Nam", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["Nam", e.RowIndex].Value;

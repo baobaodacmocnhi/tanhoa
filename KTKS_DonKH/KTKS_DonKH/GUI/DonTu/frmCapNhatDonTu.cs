@@ -91,7 +91,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     if (en_ChiTiet != null)
                     {
                         txtMaDon.Text += "." + en_ChiTiet.STT;
-                        dgvDanhBo.Rows[en_ChiTiet.STT.Value-1].Selected = true;
+                        dgvDanhBo.Rows[en_ChiTiet.STT.Value - 1].Selected = true;
+                        dgvDanhBo.CurrentCell = dgvDanhBo.Rows[en_ChiTiet.STT.Value - 1].Cells["DanhBo"];
                     }
                 }
 
