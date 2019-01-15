@@ -4,3 +4,6 @@
 namespace GIAYKHEN
 {
 }
+namespace GIAYKHEN
+{
+}

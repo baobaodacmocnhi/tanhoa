@@ -49,7 +49,7 @@ namespace GIAYKHEN
                 rp = new ChinhQuyen_CANHAN_A3();
             else
                 if (comboBox1.SelectedIndex == 1)
-                    rp = new ChinhQuyen_TAPTHE_A3();
+                    rp = new ChinhQuyen_TAPTHE_A3_Edit();
             //ReportDocument rp = new GKCongDoan_CANHAN();
             rp.SetDataSource(dt);
             rp.SetParameterValue("qdNam", this.txtQDNm.Text);
@@ -81,7 +81,7 @@ namespace GIAYKHEN
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2019, 01, 14);
+            txtNgay.Value = new DateTime(2019, 01, 11);
         }
     }
 }

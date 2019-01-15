@@ -64,6 +64,18 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ChinhQuyen_CANHAN_A3_Edit.cs">
+      <DependentUpon>ChinhQuyen_CANHAN_A3_Edit.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ChinhQuyen_TAPTHE_A3_Edit.cs">
+      <DependentUpon>ChinhQuyen_TAPTHE_A3_Edit.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="TLD_GKCongDoan_CanBo_CANHAN.cs">
       <DependentUpon>TLD_GKCongDoan_CanBo_CANHAN.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -183,6 +195,14 @@
     <EmbeddedResource Include="ChinhQuyen_TAPTHE_A3.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ChinhQuyen_TAPTHE_A3.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChinhQuyen_CANHAN_A3_Edit.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ChinhQuyen_CANHAN_A3_Edit.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChinhQuyen_TAPTHE_A3_Edit.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ChinhQuyen_TAPTHE_A3_Edit.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TLD_GKCongDoan_CanBo_CANHAN.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
