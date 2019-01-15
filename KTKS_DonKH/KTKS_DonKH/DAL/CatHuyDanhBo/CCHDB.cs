@@ -321,7 +321,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public DataTable GetDSCatTam(string To, decimal MaDon)
+        public DataTable getDS_CatTam(string To, decimal MaDon)
         {
             switch (To)
             {
@@ -390,7 +390,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             where item.CHDB.MaDonMoi == MaDon
                             select new
                             {
-                                MaDon = item.CHDB.MaDonMoi.Value.ToString(),
+                                MaDon= db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ?  item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT,
                                 item.PhieuDuocKy,
                                 item.DaLapPhieu,
                                 item.SoPhieu,
@@ -408,13 +408,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public DataTable GetDSCatTam(decimal MaCTCTDB)
+        public DataTable getDS_CatTam(decimal MaCTCTDB)
         {
             var query = from item in db.CHDB_ChiTietCatTams
                         where item.MaCTCTDB == MaCTCTDB
                         select new
                         {
-                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
                                     : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
                                     : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
                             item.PhieuDuocKy,
@@ -434,7 +435,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSCatTam(decimal FromMaCTCTDB, decimal ToMaCTCTDB)
+        public DataTable getDS_CatTam(decimal FromMaCTCTDB, decimal ToMaCTCTDB)
         {
             var query = from item in db.CHDB_ChiTietCatTams
                         where item.MaCTCTDB.ToString().Substring(item.MaCTCTDB.ToString().Length - 2, 2) == FromMaCTCTDB.ToString().Substring(FromMaCTCTDB.ToString().Length - 2, 2)
@@ -442,7 +443,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             && item.MaCTCTDB >= FromMaCTCTDB && item.MaCTCTDB <= ToMaCTCTDB
                         select new
                         {
-                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
                                     : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
                                     : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
                             item.PhieuDuocKy,
@@ -461,13 +463,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSCatTamByDanhBo(string DanhBo)
+        public DataTable getDS_CatTam_DanhBo(string DanhBo)
         {
             var query = from item in db.CHDB_ChiTietCatTams
                         where item.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
                                     : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
                                     : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
                             item.PhieuDuocKy,
@@ -486,13 +489,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSCatTamByLyDo(string LyDo)
+        public DataTable getDS_CatTam_LyDo(string LyDo)
         {
             var query = from item in db.CHDB_ChiTietCatTams
                         where item.LyDo.Contains(LyDo)
                         select new
                         {
-                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
                                     : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
                                     : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
                             item.PhieuDuocKy,
@@ -511,7 +515,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSCatTam(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_CatTam(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.CHDB_ChiTietCatTams
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
@@ -728,7 +732,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public DataTable GetDSCatHuy(string To, decimal MaDon)
+        public DataTable getDS_CatHuy(string To, decimal MaDon)
         {
             switch (To)
             {
@@ -797,7 +801,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             where item.CHDB.MaDonMoi == MaDon
                             select new
                             {
-                                MaDon =  item.CHDB.MaDonMoi.Value.ToString(),
+                                MaDon = db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT,
                                 item.PhieuDuocKy,
                                 item.DaLapPhieu,
                                 item.SoPhieu,
@@ -815,13 +819,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public DataTable GetDSCatHuy(decimal MaCTCHDB)
+        public DataTable getDS_CatHuy(decimal MaCTCHDB)
         {
             var query = from item in db.CHDB_ChiTietCatHuys
                         where item.MaCTCHDB == MaCTCHDB
                         select new
                         {
-                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
                                     : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
                                     : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
                             item.PhieuDuocKy,
@@ -841,7 +846,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSCatHuy(decimal FromMaCTCHDB, decimal ToMaCTCHDB)
+        public DataTable getDS_CatHuy(decimal FromMaCTCHDB, decimal ToMaCTCHDB)
         {
             var query = from item in db.CHDB_ChiTietCatHuys
                         where item.MaCTCHDB.ToString().Substring(item.MaCTCHDB.ToString().Length - 2, 2) == FromMaCTCHDB.ToString().Substring(FromMaCTCHDB.ToString().Length - 2, 2)
@@ -849,7 +854,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             && item.MaCTCHDB >= FromMaCTCHDB && item.MaCTCHDB <= ToMaCTCHDB
                         select new
                         {
-                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
                                     : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
                                     : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
                             item.PhieuDuocKy,
@@ -868,13 +874,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSCatHuyByDanhBo(string DanhBo)
+        public DataTable getDS_CatHuy_DanhBo(string DanhBo)
         {
             var query = from item in db.CHDB_ChiTietCatHuys
                         where item.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
                                     : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
                                     : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
                             item.PhieuDuocKy,
@@ -893,13 +900,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSCatHuyByLyDo(string LyDo)
+        public DataTable getDS_CatHuy_LyDo(string LyDo)
         {
             var query = from item in db.CHDB_ChiTietCatHuys
                         where item.LyDo.Contains(LyDo)
                         select new
                         {
-                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
                                     : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
                                     : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
                             item.PhieuDuocKy,
@@ -918,13 +926,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSCatHuy(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_CatHuy(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.CHDB_ChiTietCatHuys
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
                                     : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
                                     : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
                             item.PhieuDuocKy,
@@ -1250,7 +1259,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public DataTable GetDSPhieuHuy(string To, decimal MaDon)
+        public DataTable getDS_PhieuHuy(string To, decimal MaDon)
         {
             switch (To)
             {
@@ -1310,7 +1319,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             where item.CHDB.MaDonMoi == MaDon
                             select new
                             {
-                                MaDon =item.CHDB.MaDonMoi.Value.ToString(),
+                                MaDon = db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT,
                                 item.PhieuDuocKy,
                                 ID = item.MaYCCHDB,
                                 item.CreateDate,
@@ -1325,13 +1334,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public DataTable GetDSPhieuHuy(decimal MaYCCHDB)
+        public DataTable getDS_PhieuHuy(decimal MaYCCHDB)
         {
             var query = from item in db.CHDB_Phieus
                         where item.MaYCCHDB == MaYCCHDB
                         select new
                         {
-                            MaDon = item.MaDon != null ? "TKH" + item.MaDon
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.MaDon != null ? "TKH" + item.MaDon
                                     : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
                                     : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
                             item.PhieuDuocKy,
@@ -1347,7 +1357,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSPhieuHuy(decimal FromMaYCCHDB, decimal ToMaYCCHDB)
+        public DataTable getDS_PhieuHuy(decimal FromMaYCCHDB, decimal ToMaYCCHDB)
         {
             var query = from item in db.CHDB_Phieus
                         where item.MaYCCHDB.ToString().Substring(item.MaYCCHDB.ToString().Length - 2, 2) == FromMaYCCHDB.ToString().Substring(FromMaYCCHDB.ToString().Length - 2, 2)
@@ -1355,7 +1365,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             && item.MaYCCHDB >= FromMaYCCHDB && item.MaYCCHDB <= ToMaYCCHDB
                         select new
                         {
-                            MaDon = item.MaDon != null ? "TKH" + item.MaDon
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.MaDon != null ? "TKH" + item.MaDon
                                     : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
                                     : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
                             item.PhieuDuocKy,
@@ -1371,13 +1382,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSPhieuHuy(string DanhBo)
+        public DataTable getDS_PhieuHuy(string DanhBo)
         {
             var query = from item in db.CHDB_Phieus
                         where item.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = item.MaDon != null ? "TKH" + item.MaDon
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.MaDon != null ? "TKH" + item.MaDon
                                     : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
                                     : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
                             item.PhieuDuocKy,
@@ -1393,13 +1405,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSPhieuHuy(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_PhieuHuy(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.CHDB_Phieus
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            MaDon = item.MaDon != null ? "TKH" + item.MaDon
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.MaDon != null ? "TKH" + item.MaDon
                                     : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
                                     : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
                             item.PhieuDuocKy,

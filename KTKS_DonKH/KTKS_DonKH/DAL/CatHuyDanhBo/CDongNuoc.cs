@@ -242,7 +242,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable GetDSDongNuoc(string To, decimal MaDon)
+        public DataTable getDS_DongNuoc(string To, decimal MaDon)
         {
             switch (To)
             {
@@ -293,7 +293,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                             where item.DongNuoc.MaDonMoi == MaDon
                             select new
                             {
-                                MaDon =  item.DongNuoc.MaDonMoi.Value.ToString(),
+                                MaDon = db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.DongNuoc.MaDonMoi).Count() == 1 ? item.DongNuoc.MaDonMoi.Value.ToString() : item.DongNuoc.MaDonMoi + "." + item.STT,
                                 PhieuDuocKy = item.ThongBaoDuocKy_DN,
                                 MaTB = item.MaCTDN,
                                 item.CreateDate,
@@ -305,15 +305,16 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable GetDSDongNuoc(decimal MaCTDN)
+        public DataTable getDS_DongNuoc(decimal MaCTDN)
         {
             var query = from item in db.DongNuoc_ChiTiets
                         where item.MaCTDN == MaCTDN
                         select new
                         {
-                            MaDon = item.DongNuoc.MaDon != null ? "TKH" + item.DongNuoc.MaDon
-                                : item.DongNuoc.MaDonTXL != null ? "TXL" + item.DongNuoc.MaDonTXL
-                                : item.DongNuoc.MaDonTBC != null ? "TBC" + item.DongNuoc.MaDonTBC : null,
+                            MaDon = item.DongNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.DongNuoc.MaDonMoi).Count() == 1 ? item.DongNuoc.MaDonMoi.Value.ToString() : item.DongNuoc.MaDonMoi + "." + item.STT
+                                    : item.DongNuoc.MaDon != null ? "TKH" + item.DongNuoc.MaDon
+                                    : item.DongNuoc.MaDonTXL != null ? "TXL" + item.DongNuoc.MaDonTXL
+                                    : item.DongNuoc.MaDonTBC != null ? "TBC" + item.DongNuoc.MaDonTBC : null,
                             PhieuDuocKy = item.ThongBaoDuocKy_DN,
                             MaTB = item.MaCTDN,
                             ID = item.MaCTDN,
@@ -325,15 +326,16 @@ namespace KTKS_DonKH.DAL.DongNuoc
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSDongNuoc(string DanhBo)
+        public DataTable getDS_DongNuoc(string DanhBo)
         {
             var query = from item in db.DongNuoc_ChiTiets
                         where item.DanhBo==DanhBo
                         select new
                         {
-                            MaDon = item.DongNuoc.MaDon != null ? "TKH" + item.DongNuoc.MaDon
-                                : item.DongNuoc.MaDonTXL != null ? "TXL" + item.DongNuoc.MaDonTXL
-                                : item.DongNuoc.MaDonTBC != null ? "TBC" + item.DongNuoc.MaDonTBC : null,
+                            MaDon = item.DongNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.DongNuoc.MaDonMoi).Count() == 1 ? item.DongNuoc.MaDonMoi.Value.ToString() : item.DongNuoc.MaDonMoi + "." + item.STT
+                                    : item.DongNuoc.MaDon != null ? "TKH" + item.DongNuoc.MaDon
+                                    : item.DongNuoc.MaDonTXL != null ? "TXL" + item.DongNuoc.MaDonTXL
+                                    : item.DongNuoc.MaDonTBC != null ? "TBC" + item.DongNuoc.MaDonTBC : null,
                             PhieuDuocKy = item.ThongBaoDuocKy_DN,
                             MaTB = item.MaCTDN,
                             item.CreateDate,
@@ -344,15 +346,16 @@ namespace KTKS_DonKH.DAL.DongNuoc
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSDongNuocByNgayDN(DateTime FromNgayDN, DateTime ToNgayDN)
+        public DataTable getDS_DongNuoc_NgayDN(DateTime FromNgayDN, DateTime ToNgayDN)
         {
             var query = from item in db.DongNuoc_ChiTiets
                         where item.NgayDN.Value.Date >= FromNgayDN.Date && item.NgayDN.Value.Date <= ToNgayDN.Date
                         select new
                         {
-                            MaDon = item.DongNuoc.MaDon != null ? "TKH" + item.DongNuoc.MaDon
-                                : item.DongNuoc.MaDonTXL != null ? "TXL" + item.DongNuoc.MaDonTXL
-                                : item.DongNuoc.MaDonTBC != null ? "TBC" + item.DongNuoc.MaDonTBC : null,
+                            MaDon = item.DongNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.DongNuoc.MaDonMoi).Count() == 1 ? item.DongNuoc.MaDonMoi.Value.ToString() : item.DongNuoc.MaDonMoi + "." + item.STT
+                                    : item.DongNuoc.MaDon != null ? "TKH" + item.DongNuoc.MaDon
+                                    : item.DongNuoc.MaDonTXL != null ? "TXL" + item.DongNuoc.MaDonTXL
+                                    : item.DongNuoc.MaDonTBC != null ? "TBC" + item.DongNuoc.MaDonTBC : null,
                             PhieuDuocKy = item.ThongBaoDuocKy_DN,
                             MaTB = item.MaCTDN,
                             ID = item.MaCTDN,
@@ -364,15 +367,16 @@ namespace KTKS_DonKH.DAL.DongNuoc
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSDongNuocByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_DongNuoc_CreateDate(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.DongNuoc_ChiTiets
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            MaDon = item.DongNuoc.MaDon != null ? "TKH" + item.DongNuoc.MaDon
-                                : item.DongNuoc.MaDonTXL != null ? "TXL" + item.DongNuoc.MaDonTXL
-                                : item.DongNuoc.MaDonTBC != null ? "TBC" + item.DongNuoc.MaDonTBC : null,
+                            MaDon = item.DongNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.DongNuoc.MaDonMoi).Count() == 1 ? item.DongNuoc.MaDonMoi.Value.ToString() : item.DongNuoc.MaDonMoi + "." + item.STT
+                                    : item.DongNuoc.MaDon != null ? "TKH" + item.DongNuoc.MaDon
+                                    : item.DongNuoc.MaDonTXL != null ? "TXL" + item.DongNuoc.MaDonTXL
+                                    : item.DongNuoc.MaDonTBC != null ? "TBC" + item.DongNuoc.MaDonTBC : null,
                             PhieuDuocKy = item.ThongBaoDuocKy_DN,
                             MaTB = item.MaCTDN,
                             ID = item.MaCTDN,

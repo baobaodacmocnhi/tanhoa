@@ -214,10 +214,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
                         where item.DanhBo == DanhBo
                         select new
                         {
-                            ID = item.MaCTGL,
-                            MaDon = item.GianLan.MaDon != null ? "TKH" + item.GianLan.MaDon
+                            MaDon = item.GianLan.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.GianLan.MaDonMoi).Count() == 1 ?  item.GianLan.MaDonMoi.Value.ToString() : item.GianLan.MaDonMoi + "." + item.STT
+                                    : item.GianLan.MaDon != null ? "TKH" + item.GianLan.MaDon
                                     : item.GianLan.MaDonTXL != null ? "TXL" + item.GianLan.MaDonTXL
                                     : item.GianLan.MaDonTBC != null ? "TBC" + item.GianLan.MaDonTBC : null,
+                            ID = item.MaCTGL,
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
@@ -235,10 +236,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            ID = item.MaCTGL,
-                            MaDon = item.GianLan.MaDon != null ? "TKH" + item.GianLan.MaDon
+                            MaDon = item.GianLan.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.GianLan.MaDonMoi).Count() == 1 ?  item.GianLan.MaDonMoi.Value.ToString() : item.GianLan.MaDonMoi + "." + item.STT
+                                    : item.GianLan.MaDon != null ? "TKH" + item.GianLan.MaDon
                                     : item.GianLan.MaDonTXL != null ? "TXL" + item.GianLan.MaDonTXL
                                     : item.GianLan.MaDonTBC != null ? "TBC" + item.GianLan.MaDonTBC : null,
+                            ID = item.MaCTGL,
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,

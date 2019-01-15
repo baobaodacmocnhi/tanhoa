@@ -248,18 +248,20 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
         }
 
-        public DataTable GetDS(int IDCT)
+        public DataTable getDS(int IDCT)
         {
             var query = from item in db.TruyThuTienNuoc_ChiTiets
                         where item.IDCT == IDCT
                         select new
                         {
-                            MaDon = item.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc.MaDon
-                                : item.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc.MaDonTXL
-                                : item.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc.MaDonTBC : null,
-                            SoCongVan = item.TruyThuTienNuoc.MaDon != null ? item.TruyThuTienNuoc.DonKH.SoCongVan
-                                : item.TruyThuTienNuoc.MaDonTXL != null ? item.TruyThuTienNuoc.DonTXL.SoCongVan
-                                : item.TruyThuTienNuoc.MaDonTBC != null ? item.TruyThuTienNuoc.DonTBC.SoCongVan : null,
+                            MaDon = item.TruyThuTienNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TruyThuTienNuoc.MaDonMoi).Count() == 1 ?  item.TruyThuTienNuoc.MaDonMoi.Value.ToString() : item.TruyThuTienNuoc.MaDonMoi + "." + item.STT
+                                    : item.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc.MaDon
+                                    : item.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc.MaDonTXL
+                                    : item.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc.MaDonTBC : null,
+                            SoCongVan = item.TruyThuTienNuoc.MaDonMoi != null ? item.TruyThuTienNuoc.DonTu.SoCongVan
+                                    : item.TruyThuTienNuoc.MaDon != null ? item.TruyThuTienNuoc.DonKH.SoCongVan
+                                    : item.TruyThuTienNuoc.MaDonTXL != null ? item.TruyThuTienNuoc.DonTXL.SoCongVan
+                                    : item.TruyThuTienNuoc.MaDonTBC != null ? item.TruyThuTienNuoc.DonTBC.SoCongVan : null,
                             item.IDCT,
                             item.CreateDate,
                             item.DanhBo,
@@ -275,18 +277,20 @@ namespace KTKS_DonKH.DAL.TruyThu
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS(string DanhBo)
+        public DataTable getDS(string DanhBo)
         {
             var query = from item in db.TruyThuTienNuoc_ChiTiets
                         where item.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = item.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc.MaDon
-                                : item.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc.MaDonTXL
-                                : item.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc.MaDonTBC : null,
-                            SoCongVan = item.TruyThuTienNuoc.MaDon != null ? item.TruyThuTienNuoc.DonKH.SoCongVan
-                            : item.TruyThuTienNuoc.MaDonTXL != null ? item.TruyThuTienNuoc.DonTXL.SoCongVan
-                            : item.TruyThuTienNuoc.MaDonTBC != null ? item.TruyThuTienNuoc.DonTBC.SoCongVan : null,
+                            MaDon = item.TruyThuTienNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TruyThuTienNuoc.MaDonMoi).Count() == 1 ?  item.TruyThuTienNuoc.MaDonMoi.Value.ToString() : item.TruyThuTienNuoc.MaDonMoi + "." + item.STT
+                                    : item.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc.MaDon
+                                    : item.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc.MaDonTXL
+                                    : item.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc.MaDonTBC : null,
+                            SoCongVan = item.TruyThuTienNuoc.MaDonMoi != null ? item.TruyThuTienNuoc.DonTu.SoCongVan
+                                    :item.TruyThuTienNuoc.MaDon != null ? item.TruyThuTienNuoc.DonKH.SoCongVan
+                                    : item.TruyThuTienNuoc.MaDonTXL != null ? item.TruyThuTienNuoc.DonTXL.SoCongVan
+                                    : item.TruyThuTienNuoc.MaDonTBC != null ? item.TruyThuTienNuoc.DonTBC.SoCongVan : null,
                             item.IDCT,
                             item.CreateDate,
                             item.DanhBo,
@@ -302,18 +306,20 @@ namespace KTKS_DonKH.DAL.TruyThu
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS(DateTime FromNgayTinhTrang, DateTime ToNgayTinhTrang)
+        public DataTable getDS(DateTime FromNgayTinhTrang, DateTime ToNgayTinhTrang)
         {
             var query = from item in db.TruyThuTienNuoc_ChiTiets
                         where item.NgayTinhTrang.Value.Date >= FromNgayTinhTrang.Date && item.NgayTinhTrang.Value.Date <= ToNgayTinhTrang.Date
                         select new
                         {
-                            MaDon = item.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc.MaDon
-                                : item.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc.MaDonTXL
-                                : item.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc.MaDonTBC : null,
-                            SoCongVan = item.TruyThuTienNuoc.MaDon != null ? item.TruyThuTienNuoc.DonKH.SoCongVan
-                            : item.TruyThuTienNuoc.MaDonTXL != null ? item.TruyThuTienNuoc.DonTXL.SoCongVan
-                            : item.TruyThuTienNuoc.MaDonTBC != null ? item.TruyThuTienNuoc.DonTBC.SoCongVan : null,
+                            MaDon = item.TruyThuTienNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TruyThuTienNuoc.MaDonMoi).Count() == 1 ?  item.TruyThuTienNuoc.MaDonMoi.Value.ToString() : item.TruyThuTienNuoc.MaDonMoi + "." + item.STT
+                                    : item.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc.MaDon
+                                    : item.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc.MaDonTXL
+                                    : item.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc.MaDonTBC : null,
+                            SoCongVan = item.TruyThuTienNuoc.MaDonMoi != null ? item.TruyThuTienNuoc.DonTu.SoCongVan
+                                    : item.TruyThuTienNuoc.MaDon != null ? item.TruyThuTienNuoc.DonKH.SoCongVan
+                                    : item.TruyThuTienNuoc.MaDonTXL != null ? item.TruyThuTienNuoc.DonTXL.SoCongVan
+                                    : item.TruyThuTienNuoc.MaDonTBC != null ? item.TruyThuTienNuoc.DonTBC.SoCongVan : null,
                             item.IDCT,
                             item.CreateDate,
                             item.DanhBo,
@@ -587,12 +593,14 @@ namespace KTKS_DonKH.DAL.TruyThu
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            MaDon = item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDon
-                                : item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonTXL
-                                : item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonTBC : null,
-                            SoCongVan = item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDon != null ? item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.DonKH.SoCongVan
-                            : item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonTXL != null ? item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.DonTXL.SoCongVan
-                            : item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonTBC != null ? item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.DonTBC.SoCongVan : null,
+                            MaDon = item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonMoi).Count() == 1 ? "" + item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonMoi : item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonMoi + "." + item.STT
+                                    : item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDon
+                                    : item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonTXL
+                                    : item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonTBC : null,
+                            SoCongVan = item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonMoi != null ? item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.DonTu.SoCongVan
+                                    : item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDon != null ? item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.DonKH.SoCongVan
+                                    : item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonTXL != null ? item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.DonTXL.SoCongVan
+                                    : item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.MaDonTBC != null ? item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc.DonTBC.SoCongVan : null,
                             item.IDCT,
                             item.CreateDate,
                             item.TruyThuTienNuoc_ChiTiet.DanhBo,

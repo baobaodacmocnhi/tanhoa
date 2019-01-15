@@ -215,63 +215,63 @@ namespace KTKS_DonKH.DAL.ThuMoi
                     return LINQToDataTable(query);
                 case "TXL":
                     query = from item in db.ThuMoi_ChiTiets
-                                 where item.ThuMoi.MaDonTXL == MaDon
-                                 select new
-                                 {
-                                     MaDon = "TXL" + item.ThuMoi.MaDonTXL,
-                                     item.IDCT,
-                                     item.DanhBo,
-                                     item.HoTen,
-                                     item.DiaChi,
-                                     item.GiaBieu,
-                                     item.DinhMuc,
-                                     item.Lan,
-                                     item.CanCu,
-                                     item.VaoLuc,
-                                     item.VeViec,
-                                     item.CreateDate,
-                                     item.CreateBy,
-                                 };
+                            where item.ThuMoi.MaDonTXL == MaDon
+                            select new
+                            {
+                                MaDon = "TXL" + item.ThuMoi.MaDonTXL,
+                                item.IDCT,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
+                                item.GiaBieu,
+                                item.DinhMuc,
+                                item.Lan,
+                                item.CanCu,
+                                item.VaoLuc,
+                                item.VeViec,
+                                item.CreateDate,
+                                item.CreateBy,
+                            };
                     return LINQToDataTable(query);
                 case "TBC":
                     query = from item in db.ThuMoi_ChiTiets
-                                 where item.ThuMoi.MaDonTBC == MaDon
-                                 select new
-                                 {
-                                     MaDon = "TBC" + item.ThuMoi.MaDonTBC,
-                                     item.IDCT,
-                                     item.DanhBo,
-                                     item.HoTen,
-                                     item.DiaChi,
-                                     item.GiaBieu,
-                                     item.DinhMuc,
-                                     item.Lan,
-                                     item.CanCu,
-                                     item.VaoLuc,
-                                     item.VeViec,
-                                     item.CreateDate,
-                                     item.CreateBy,
-                                 };
+                            where item.ThuMoi.MaDonTBC == MaDon
+                            select new
+                            {
+                                MaDon = "TBC" + item.ThuMoi.MaDonTBC,
+                                item.IDCT,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
+                                item.GiaBieu,
+                                item.DinhMuc,
+                                item.Lan,
+                                item.CanCu,
+                                item.VaoLuc,
+                                item.VeViec,
+                                item.CreateDate,
+                                item.CreateBy,
+                            };
                     return LINQToDataTable(query);
                 default:
                     query = from item in db.ThuMoi_ChiTiets
-                                 where item.ThuMoi.MaDonMoi == MaDon
-                                 select new
-                                 {
-                                     MaDon =  item.ThuMoi.MaDonMoi.Value.ToString(),
-                                     item.IDCT,
-                                     item.DanhBo,
-                                     item.HoTen,
-                                     item.DiaChi,
-                                     item.GiaBieu,
-                                     item.DinhMuc,
-                                     item.Lan,
-                                     item.CanCu,
-                                     item.VaoLuc,
-                                     item.VeViec,
-                                     item.CreateDate,
-                                     item.CreateBy,
-                                 };
+                            where item.ThuMoi.MaDonMoi == MaDon
+                            select new
+                            {
+                                MaDon = item.ThuMoi.DonTu.DonTu_ChiTiets.Count == 1 ? item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi.Value.ToString() + "." + item.STT.Value.ToString(),
+                                item.IDCT,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
+                                item.GiaBieu,
+                                item.DinhMuc,
+                                item.Lan,
+                                item.CanCu,
+                                item.VaoLuc,
+                                item.VeViec,
+                                item.CreateDate,
+                                item.CreateBy,
+                            };
                     return LINQToDataTable(query);
             }
         }
@@ -282,9 +282,10 @@ namespace KTKS_DonKH.DAL.ThuMoi
                         where item.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
-                                : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
-                                : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
+                            MaDon = item.ThuMoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuMoi.MaDonMoi).Count() == 1 ?  item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi + "." + item.STT
+                                    : item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
+                                    : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
+                                    : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                             item.IDCT,
                             item.DanhBo,
                             item.HoTen,
@@ -307,9 +308,10 @@ namespace KTKS_DonKH.DAL.ThuMoi
                         where item.CreateDate.Value.Date >= FromCreatDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            MaDon = item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
-                                : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
-                                : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
+                            MaDon = item.ThuMoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuMoi.MaDonMoi).Count() == 1 ?  item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi + "." + item.STT
+                                    : item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
+                                    : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
+                                    : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                             item.IDCT,
                             item.DanhBo,
                             item.HoTen,
@@ -332,9 +334,10 @@ namespace KTKS_DonKH.DAL.ThuMoi
                         where item.CreateBy == CreateBy && item.CreateDate.Value.Date >= FromCreatDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            MaDon = item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
-                                : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
-                                : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
+                            MaDon = item.ThuMoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuMoi.MaDonMoi).Count() == 1 ?  item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi + "." + item.STT
+                                    : item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
+                                    : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
+                                    : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                             item.IDCT,
                             item.DanhBo,
                             item.HoTen,

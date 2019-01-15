@@ -29,7 +29,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void btnBaoCao_ThongKeTruyThu_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cTTTN.GetDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value);
+            DataTable dt = _cTTTN.getDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)

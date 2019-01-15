@@ -96,23 +96,23 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     txtMaDonMoi.Text = cttttl.TTTL.MaDonMoi.Value.ToString() + "." + cttttl.STT.Value.ToString();
             }
             else
-            if (cttttl.TTTL.MaDon != null)
-            {
-                _dontkh = _cDonKH.Get(cttttl.TTTL.MaDon.Value);
-                txtMaDonCu.Text = cttttl.TTTL.MaDon.Value.ToString().Insert(cttttl.TTTL.MaDon.Value.ToString().Length - 2, "-");
-            }
-            else
-                if (cttttl.TTTL.MaDonTXL != null)
+                if (cttttl.TTTL.MaDon != null)
                 {
-                    _dontxl = _cDonTXL.Get(cttttl.TTTL.MaDonTXL.Value);
-                    txtMaDonCu.Text = "TXL" + cttttl.TTTL.MaDonTXL.Value.ToString().Insert(cttttl.TTTL.MaDonTXL.Value.ToString().Length - 2, "-");
+                    _dontkh = _cDonKH.Get(cttttl.TTTL.MaDon.Value);
+                    txtMaDonCu.Text = cttttl.TTTL.MaDon.Value.ToString().Insert(cttttl.TTTL.MaDon.Value.ToString().Length - 2, "-");
                 }
                 else
-                    if (cttttl.TTTL.MaDonTBC != null)
+                    if (cttttl.TTTL.MaDonTXL != null)
                     {
-                        _dontbc = _cDonTBC.Get(cttttl.TTTL.MaDonTBC.Value);
-                        txtMaDonCu.Text = "TBC" + cttttl.TTTL.MaDonTBC.Value.ToString().Insert(cttttl.TTTL.MaDonTBC.Value.ToString().Length - 2, "-");
+                        _dontxl = _cDonTXL.Get(cttttl.TTTL.MaDonTXL.Value);
+                        txtMaDonCu.Text = "TXL" + cttttl.TTTL.MaDonTXL.Value.ToString().Insert(cttttl.TTTL.MaDonTXL.Value.ToString().Length - 2, "-");
                     }
+                    else
+                        if (cttttl.TTTL.MaDonTBC != null)
+                        {
+                            _dontbc = _cDonTBC.Get(cttttl.TTTL.MaDonTBC.Value);
+                            txtMaDonCu.Text = "TBC" + cttttl.TTTL.MaDonTBC.Value.ToString().Insert(cttttl.TTTL.MaDonTBC.Value.ToString().Length - 2, "-");
+                        }
             txtMaCTTTTL.Text = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
             txtTCHC.Text = cttttl.TCHC;
 
@@ -186,7 +186,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                             txtDanhBo.Text = _dontxl.DanhBo;
-                            txtHopDong.Text =_dontxl.HopDong;
+                            txtHopDong.Text = _dontxl.HopDong;
                             txtLoTrinh.Text = _dontxl.MLT;
                             txtHoTen.Text = _dontxl.HoTen;
                             txtDiaChi.Text = _dontxl.DiaChi;
@@ -340,9 +340,9 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
                     if (txtVeViec.Text.Trim() == "" || txtNoiDung.Text.Trim() == "" || txtNoiNhan.Text.Trim() == "")
                     {
@@ -440,8 +440,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     cttttl.VeViec = txtVeViec.Text.Trim();
                     cttttl.NoiDung = txtNoiDung.Text;
                     cttttl.NoiNhan = txtNoiNhan.Text.Trim();
-                     cttttl.NguoiBao=txtNguoiBao.Text.Trim();
-                     cttttl.DienThoai=txtDienThoai.Text.Trim();
+                    cttttl.NguoiBao = txtNguoiBao.Text.Trim();
+                    cttttl.DienThoai = txtDienThoai.Text.Trim();
 
                     ///Ký Tên
                     BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -455,26 +455,26 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     if (_cTTTL.ThemCT(cttttl))
                     {
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them_LichSu("TTTL", cttttl.VeViec,(int)cttttl.MaCTTTTL, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                            _cDonTu.Them_LichSu("TTTL", cttttl.VeViec, (int)cttttl.MaCTTTTL, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                         txtMaDonCu.Focus();
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
                     if (_cttttl != null)
                     {
@@ -517,20 +517,20 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                 {
                     if (_cttttl != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
@@ -542,13 +542,13 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCapNhatGhiChu_Click(object sender, EventArgs e)
@@ -599,17 +599,17 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
-            if (dgvLichSuTTTL.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null && e.Value.ToString().Length > 2)
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
+            //if (dgvLichSuTTTL.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null && e.Value.ToString().Length > 2)
+            //{
+            //    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            //}
         }
 
         private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                 {
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         if (_cGhiChuCTTTTL.Xoa(_cGhiChuCTTTTL.Get(int.Parse(dgvGhiChu.CurrentRow.Cells["ID"].Value.ToString()))))
@@ -617,14 +617,13 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             dgvGhiChu.DataSource = _cGhiChuCTTTTL.GetDS(_cttttl.MaCTTTTL);
                         }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -638,7 +637,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 dr["LoTrinh"] = _cttttl.LoTrinh;
                 dr["HoTen"] = _cttttl.HoTen;
                 dr["DiaChi"] = _cttttl.DiaChi;
-                if (!string.IsNullOrEmpty(_cttttl.DanhBo)&&_cttttl.DanhBo.Length==11)
+                if (!string.IsNullOrEmpty(_cttttl.DanhBo) && _cttttl.DanhBo.Length == 11)
                     dr["DanhBo"] = _cttttl.DanhBo.Insert(7, " ").Insert(4, " ");
 
                 dr["HopDong"] = _cttttl.HopDong;
@@ -647,14 +646,14 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 if (_cttttl.TTTL.MaDonMoi != null)
                     dr["NgayNhanDon"] = _cDonTu.get(_cttttl.TTTL.MaDonMoi.Value).CreateDate.Value.ToString("dd/MM/yyyy");
                 else
-                if (_cttttl.TTTL.MaDon != null)
-                    dr["NgayNhanDon"] = _cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
-                else
-                    if (_cttttl.TTTL.MaDonTXL != null)
-                        dr["NgayNhanDon"] = _cttttl.TTTL.DonTXL.CreateDate.Value.ToString("dd/MM/yyyy");
+                    if (_cttttl.TTTL.MaDon != null)
+                        dr["NgayNhanDon"] = _cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
                     else
-                        if (_cttttl.TTTL.MaDonTBC != null)
-                            dr["NgayNhanDon"] = _cttttl.TTTL.DonTBC.CreateDate.Value.ToString("dd/MM/yyyy");
+                        if (_cttttl.TTTL.MaDonTXL != null)
+                            dr["NgayNhanDon"] = _cttttl.TTTL.DonTXL.CreateDate.Value.ToString("dd/MM/yyyy");
+                        else
+                            if (_cttttl.TTTL.MaDonTBC != null)
+                                dr["NgayNhanDon"] = _cttttl.TTTL.DonTBC.CreateDate.Value.ToString("dd/MM/yyyy");
 
                 dr["VeViec"] = _cttttl.VeViec;
                 dr["NoiDung"] = _cttttl.NoiDung;
@@ -689,8 +688,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 frm.ShowDialog();
             }
         }
-
-        
 
 
     }

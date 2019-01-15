@@ -8,7 +8,7 @@ using System.Data;
 
 namespace KTKS_DonKH.DAL.ThuTraLoi
 {
-    class CToTrinh:CDAL
+    class CToTrinh : CDAL
     {
         #region ToTrinh (Tờ Trình)
 
@@ -28,7 +28,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                 }
                 else
                     en.ID = 1;
-                    //en.ID = int.Parse("1" + DateTime.Now.ToString("yy"));
+                //en.ID = int.Parse("1" + DateTime.Now.ToString("yy"));
                 en.CreateDate = DateTime.Now;
                 en.CreateBy = CTaiKhoan.MaUser;
                 db.ToTrinhs.InsertOnSubmit(en);
@@ -213,9 +213,10 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                         where item.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
-                                : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
-                                : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
+                            MaDon = item.ToTrinh.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ToTrinh.MaDonMoi).Count() == 1 ?  item.ToTrinh.MaDonMoi.Value.ToString() : item.ToTrinh.MaDonMoi + "." + item.STT
+                                    : item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
+                                    : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
+                                    : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
                             item.IDCT,
                             item.CreateDate,
                             item.DanhBo,
@@ -233,9 +234,10 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                         where item.VeViec.Contains(VeViec)
                         select new
                         {
-                            MaDon = item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
-                                : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
-                                : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
+                            MaDon = item.ToTrinh.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ToTrinh.MaDonMoi).Count() == 1 ?  item.ToTrinh.MaDonMoi.Value.ToString() : item.ToTrinh.MaDonMoi + "." + item.STT
+                                    : item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
+                                    : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
+                                    : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
                             item.IDCT,
                             item.CreateDate,
                             item.DanhBo,
@@ -250,12 +252,13 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
         public DataTable getDS_ChiTiet(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.ToTrinh_ChiTiets
-                        where item.CreateDate.Value.Date >=FromCreateDate.Date && item.CreateDate.Value.Date<=ToCreateDate.Date
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            MaDon = item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
-                                : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
-                                : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
+                            MaDon = item.ToTrinh.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ToTrinh.MaDonMoi).Count() == 1 ?  item.ToTrinh.MaDonMoi.Value.ToString() : item.ToTrinh.MaDonMoi + "." + item.STT
+                                    : item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
+                                    : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
+                                    : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
                             item.IDCT,
                             item.CreateDate,
                             item.DanhBo,
@@ -273,17 +276,17 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 
         public bool checkExist(int MaDon)
         {
-                    return db.ToTrinhs.Any(item => item.MaDonMoi == MaDon);
+            return db.ToTrinhs.Any(item => item.MaDonMoi == MaDon);
         }
 
         public bool checkExist_ChiTiet(int MaDon, string DanhBo, DateTime CreateDate)
         {
-                    return db.ToTrinh_ChiTiets.Any(item => item.ToTrinh.MaDonMoi == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+            return db.ToTrinh_ChiTiets.Any(item => item.ToTrinh.MaDonMoi == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
         }
 
         public ToTrinh get(int MaDon)
         {
-                    return db.ToTrinhs.SingleOrDefault(item => item.MaDonMoi == MaDon);
+            return db.ToTrinhs.SingleOrDefault(item => item.MaDonMoi == MaDon);
         }
 
     }

@@ -196,25 +196,25 @@ namespace KTKS_DonKH.GUI.QuanTri
                     switch (cmbLoai.SelectedItem.ToString())
                     {
                         case "Điều Chỉnh Biến Động":
-                            dgvDanhSach.DataSource = _cDCBD.getDSBienDongBySoPhieu(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cDCBD.getDS_BienDong_SoPhieu(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Điều Chỉnh Hóa Đơn":
-                            dgvDanhSach.DataSource = _cDCBD.getDSHoaDonBySoPhieu(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cDCBD.getDS_HoaDon_SoPhieu(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Cắt Chuyển":
-                            dgvDanhSach.DataSource = _cChungTu.LoadDSCatChuyenDMBySoPhieu(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cChungTu.getDS_CatChuyenDM_SoPhieu(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Cắt Tạm Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.GetDSCatTam(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cCHDB.getDS_CatTam(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Cắt Hủy Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.GetDSCatHuy(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cCHDB.getDS_CatHuy(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Yêu Cầu Cắt Hủy Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.GetDSPhieuHuy(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cCHDB.getDS_PhieuHuy(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Đóng Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.GetDSDongNuoc(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cDongNuoc.getDS_DongNuoc(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Mở Nước":
                             dgvDanhSach.DataSource = _cDongNuoc.GetDSMoNuoc(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
@@ -228,25 +228,25 @@ namespace KTKS_DonKH.GUI.QuanTri
                     switch (cmbLoai.SelectedItem.ToString())
                     {
                         case "Điều Chỉnh Biến Động":
-                            dgvDanhSach.DataSource = _cDCBD.getDSBienDongByCreateDate(dateTu.Value, dateDen.Value);
+                            dgvDanhSach.DataSource = _cDCBD.getDS_BienDong_CreateDate(dateTu.Value, dateDen.Value);
                             break;
                         case "Điều Chỉnh Hóa Đơn":
-                            dgvDanhSach.DataSource = _cDCBD.getDSHoaDonByCreateDate(dateTu.Value, dateDen.Value);
+                            dgvDanhSach.DataSource = _cDCBD.getDS_HoaDon_CreateDate(dateTu.Value, dateDen.Value);
                             break;
                         case "Cắt Chuyển":
                             dgvDanhSach.DataSource = _cChungTu.getDSCatChuyenDM(dateTu.Value, dateDen.Value);
                             break;
                         case "Cắt Tạm Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.GetDSCatTam(dateTu.Value, dateDen.Value);
+                            dgvDanhSach.DataSource = _cCHDB.getDS_CatTam(dateTu.Value, dateDen.Value);
                             break;
                         case "Cắt Hủy Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.GetDSCatHuy(dateTu.Value, dateDen.Value);
+                            dgvDanhSach.DataSource = _cCHDB.getDS_CatHuy(dateTu.Value, dateDen.Value);
                             break;
                         case "Yêu Cầu Cắt Hủy Danh Bộ":
                             dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDB_Don(dateTu.Value, dateDen.Value);
                             break;
                         case "Đóng Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.GetDSDongNuocByCreateDate(dateTu.Value, dateDen.Value);
+                            dgvDanhSach.DataSource = _cDongNuoc.getDS_DongNuoc_CreateDate(dateTu.Value, dateDen.Value);
                             break;
                         case "Mở Nước":
                             dgvDanhSach.DataSource = _cDongNuoc.GetDSMoNuoc(dateTu.Value, dateDen.Value);

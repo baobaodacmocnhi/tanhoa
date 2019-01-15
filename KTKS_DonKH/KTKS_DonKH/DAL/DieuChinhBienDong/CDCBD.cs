@@ -456,7 +456,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongByMaDon(string To,decimal MaDon)
+        public DataTable getDS_BienDong_MaDon(string To, decimal MaDon)
         {
             switch (To)
             {
@@ -603,7 +603,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongByMaDon(string To,decimal TuMaDon, decimal DenMaDon)
+        public DataTable getDS_BienDong_MaDon(string To, decimal TuMaDon, decimal DenMaDon)
         {
             switch (To)
             {
@@ -753,7 +753,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongByMaDon(string To,int CreateBy, decimal MaDon)
+        public DataTable getDS_BienDong_MaDon(string To, int CreateBy, decimal MaDon)
         {
             switch (To)
             {
@@ -900,7 +900,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongByMaDon(string To,int CreateBy, decimal TuMaDon, decimal DenMaDon)
+        public DataTable getDS_BienDong_MaDon(string To,int CreateBy, decimal TuMaDon, decimal DenMaDon)
         {
             switch (To)
             {
@@ -1050,7 +1050,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongBySoPhieu(decimal SoPhieu)
+        public DataTable getDS_BienDong_SoPhieu(decimal SoPhieu)
         {
             try
             {
@@ -1096,7 +1096,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongBySoPhieu(decimal TuSoPhieu, decimal DenSoPhieu)
+        public DataTable getDS_BienDong_SoPhieu(decimal TuSoPhieu, decimal DenSoPhieu)
         {
             try
             {
@@ -1144,7 +1144,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongBySoPhieu(int CreateBy, decimal SoPhieu)
+        public DataTable getDS_BienDong_SoPhieu(int CreateBy, decimal SoPhieu)
         {
             try
             {
@@ -1190,7 +1190,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongBySoPhieu(int CreateBy, decimal TuSoPhieu, decimal DenSoPhieu)
+        public DataTable getDS_BienDong_SoPhieu(int CreateBy, decimal TuSoPhieu, decimal DenSoPhieu)
         {
             try
             {
@@ -1238,7 +1238,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongByDanhBo(string DanhBo)
+        public DataTable getDS_BienDong_DanhBo(string DanhBo)
         {
             try
             {
@@ -1284,7 +1284,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongByDanhBo(int CreateBy, string DanhBo)
+        public DataTable getDS_BienDong_DanhBo(int CreateBy, string DanhBo)
         {
             try
             {
@@ -1330,7 +1330,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_BienDong_CreateDate(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             try
             {
@@ -1383,7 +1383,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongByCreateDate(bool SoCongVan, DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_BienDong_CreateDate(bool SoCongVan, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             try
             {
@@ -1471,7 +1471,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongByCreateDate(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_BienDong_CreateDate(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             try
             {
@@ -1517,7 +1517,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan)
+        public DataTable getDS_BienDong_CreateDate(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan)
         {
             //string sql = "select t1.*,t3.TenQuan from DCBD_ChiTietBienDong t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
@@ -1570,7 +1570,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan, int MaPhuong)
+        public DataTable getDS_BienDong_CreateDate(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan, int MaPhuong)
         {
             //string sql = "select t1.*,t3.TenQuan,t4.TenPhuong from DCBD_ChiTietBienDong t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
@@ -1804,7 +1804,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDonByMaDon(string To,decimal MaDon)
+        public DataTable getDS_HoaDon_MaDon(string To,decimal MaDon)
         {
             switch (To)
             {
@@ -1931,7 +1931,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDonByMaDon(string To,decimal TuMaDon, decimal DenMaDon)
+        public DataTable getDS_HoaDon_MaDon(string To,decimal TuMaDon, decimal DenMaDon)
         {
             switch (To)
             {
@@ -2061,7 +2061,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDonByMaDon(string To,int CreateBy, decimal MaDon)
+        public DataTable getDS_HoaDon_MaDon(string To,int CreateBy, decimal MaDon)
         {
             switch (To)
             {
@@ -2188,7 +2188,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDonByMaDon(string To,int CreateBy, decimal TuMaDon, decimal DenMaDon)
+        public DataTable getDS_HoaDon_MaDon(string To,int CreateBy, decimal TuMaDon, decimal DenMaDon)
         {
             switch (To)
             {
@@ -2318,7 +2318,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDonBySoPhieu(decimal SoPhieu)
+        public DataTable getDS_HoaDon_SoPhieu(decimal SoPhieu)
         {
             try
             {
@@ -2359,7 +2359,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDonBySoPhieu(decimal TuSoPhieu, decimal DenSoPhieu)
+        public DataTable getDS_HoaDon_SoPhieu(decimal TuSoPhieu, decimal DenSoPhieu)
         {
             try
             {
@@ -2402,7 +2402,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDonBySoPhieu(int CreateBy, decimal SoPhieu)
+        public DataTable getDS_HoaDon_SoPhieu(int CreateBy, decimal SoPhieu)
         {
             try
             {
@@ -2443,7 +2443,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDonBySoPhieu(int CreateBy, decimal TuSoPhieu, decimal DenSoPhieu)
+        public DataTable getDS_HoaDon_SoPhieu(int CreateBy, decimal TuSoPhieu, decimal DenSoPhieu)
         {
             try
             {
@@ -2486,7 +2486,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDonByDanhBo(string DanhBo)
+        public DataTable getDS_HoaDon_DanhBo(string DanhBo)
         {
             try
             {
@@ -2527,7 +2527,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDonByDanhBo(int CreateBy, string DanhBo)
+        public DataTable getDS_HoaDon_DanhBo(int CreateBy, string DanhBo)
         {
             try
             {
@@ -2569,7 +2569,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         }
 
-        public DataTable getDSHoaDonByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_HoaDon_CreateDate(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             try
             {
@@ -2610,7 +2610,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDonByCreateDate(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_HoaDon_CreateDate(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             try
             {
@@ -2651,7 +2651,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDonByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan)
+        public DataTable getDS_HoaDon_CreateDate(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan)
         {
             //string sql = "select t1.*,t3.TenQuan from DCBD_ChiTietHoaDon t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
@@ -2698,7 +2698,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDonByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan, int MaPhuong)
+        public DataTable getDS_HoaDon_CreateDate(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan, int MaPhuong)
         {
             //string sql = "select t1.*,t3.TenQuan from DCBD_ChiTietHoaDon t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"

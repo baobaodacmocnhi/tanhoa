@@ -781,120 +781,120 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         if (radDSCatTamDanhBo.Checked)
                         {
                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatTam("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                             else
                                 if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                    dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatTam("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                 else
                                     if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                        dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatTam("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                     else
-                                        dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                                        dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatTam("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
                         }
                         else
                             if (radDSCatHuyDanhBo.Checked)
                             {
                                 if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                    dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                 else
                                     if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                        dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                     else
                                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                            dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                         else
-                                            dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                                            dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
                             }
                             else
                                 if (radDSYCCHDB.Checked)
                                 {
                                     if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                        dgvDSCTCHDB.DataSource = _cCHDB.GetDSPhieuHuy("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        dgvDSCTCHDB.DataSource = _cCHDB.getDS_PhieuHuy("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                     else
                                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                            dgvDSCTCHDB.DataSource = _cCHDB.GetDSPhieuHuy("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            dgvDSCTCHDB.DataSource = _cCHDB.getDS_PhieuHuy("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                         else
                                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                                dgvDSCTCHDB.DataSource = _cCHDB.GetDSPhieuHuy("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                dgvDSCTCHDB.DataSource = _cCHDB.getDS_PhieuHuy("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                             else
-                                                dgvDSCTCHDB.DataSource = _cCHDB.GetDSPhieuHuy("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                                                dgvDSCTCHDB.DataSource = _cCHDB.getDS_PhieuHuy("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
                                 }
                                 else
                                     if (radDSDongNuoc.Checked)
                                     {
                                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                            dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            dgvDSYCCHDB.DataSource = _cDongNuoc.getDS_DongNuoc("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                         else
                                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                                dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                dgvDSYCCHDB.DataSource = _cDongNuoc.getDS_DongNuoc("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                             else
                                                 if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                                    dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                    dgvDSYCCHDB.DataSource = _cDongNuoc.getDS_DongNuoc("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                                 else
-                                                    dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                                                    dgvDSYCCHDB.DataSource = _cDongNuoc.getDS_DongNuoc("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
                                     }
                     break;
                 case "Danh Bộ":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
                         if (radDSCatTamDanhBo.Checked)
-                            dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTamByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatTam_DanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
                         else
                             if (radDSCatHuyDanhBo.Checked)
-                                dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuyByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                                dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy_DanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
                             else
                                 if (radDSYCCHDB.Checked)
-                                    dgvDSYCCHDB.DataSource = _cCHDB.GetDSPhieuHuy(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                                    dgvDSYCCHDB.DataSource = _cCHDB.getDS_PhieuHuy(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
                                 else
                                     if (radDSDongNuoc.Checked)
-                                        dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                                        dgvDSYCCHDB.DataSource = _cDongNuoc.getDS_DongNuoc(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
                     break;
                 case "Số Thông Báo/Số Phiếu":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
                     {
                         if (radDSCatTamDanhBo.Checked)
-                            dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                            dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatTam(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                         else
                             if (radDSCatHuyDanhBo.Checked)
-                                dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                                dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                             else
                                 if (radDSYCCHDB.Checked)
-                                    dgvDSYCCHDB.DataSource = _cCHDB.GetDSPhieuHuy(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                                    dgvDSYCCHDB.DataSource = _cCHDB.getDS_PhieuHuy(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                     }
                     else
                     {
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                             if (radDSCatTamDanhBo.Checked)
-                                dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatTam(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                             else
                                 if (radDSCatHuyDanhBo.Checked)
-                                    dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                    dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                                 else
                                     if (radDSYCCHDB.Checked)
-                                        dgvDSYCCHDB.DataSource = _cCHDB.GetDSPhieuHuy(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                        dgvDSYCCHDB.DataSource = _cCHDB.getDS_PhieuHuy(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                                     else
                                         if (radDSDongNuoc.Checked)
-                                            dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                            dgvDSYCCHDB.DataSource = _cDongNuoc.getDS_DongNuoc(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                     }
                     break;
                 case "Lý Do":
                     if (radDSCatTamDanhBo.Checked)
-                        dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTamByLyDo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatTam_LyDo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                     else
                         if (radDSCatHuyDanhBo.Checked)
-                            dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuyByLyDo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy_LyDo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                     break;
                 case "Ngày":
                     if (radDSCatTamDanhBo.Checked)
-                        dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatTam(dateTu.Value, dateDen.Value);
+                        dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatTam(dateTu.Value, dateDen.Value);
                     else
                         if (radDSCatHuyDanhBo.Checked)
-                            dgvDSCTCHDB.DataSource = _cCHDB.GetDSCatHuy(dateTu.Value, dateDen.Value);
+                            dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy(dateTu.Value, dateDen.Value);
                         else
                             if (radDSYCCHDB.Checked)
-                                dgvDSYCCHDB.DataSource = _cCHDB.GetDSPhieuHuy(dateTu.Value, dateDen.Value);
+                                dgvDSYCCHDB.DataSource = _cCHDB.getDS_PhieuHuy(dateTu.Value, dateDen.Value);
                             else
                                 if (radDSDongNuoc.Checked)
-                                    dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuocByCreateDate(dateTu.Value, dateDen.Value);
+                                    dgvDSYCCHDB.DataSource = _cDongNuoc.getDS_DongNuoc_CreateDate(dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;

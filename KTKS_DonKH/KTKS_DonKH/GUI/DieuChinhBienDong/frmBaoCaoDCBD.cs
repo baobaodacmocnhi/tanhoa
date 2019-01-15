@@ -1083,21 +1083,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             if (int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()) == 0)
             {
-                dtDCBD = _cDCBD.getDSBienDongByCreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value);
-                dtDCHD = _cDCBD.getDSHoaDonByCreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value);
+                dtDCBD = _cDCBD.getDS_BienDong_CreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value);
+                dtDCHD = _cDCBD.getDS_HoaDon_CreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value);
                 dtCatChuyenDM = _cChungTu.getDSCatChuyenDM(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value);
             }
             else
                 if (int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()) == 0)
                 {
-                    dtDCBD = _cDCBD.getDSBienDongByCreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()));
-                    dtDCHD = _cDCBD.getDSHoaDonByCreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()));
+                    dtDCBD = _cDCBD.getDS_BienDong_CreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()));
+                    dtDCHD = _cDCBD.getDS_HoaDon_CreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()));
                     dtCatChuyenDM = _cChungTu.getDSCatChuyenDM(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()));
                 }
                 else
                 {
-                    dtDCBD = _cDCBD.getDSBienDongByCreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()), int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()));
-                    dtDCHD = _cDCBD.getDSHoaDonByCreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()), int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()));
+                    dtDCBD = _cDCBD.getDS_BienDong_CreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()), int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()));
+                    dtDCHD = _cDCBD.getDS_HoaDon_CreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()), int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()));
                     dtCatChuyenDM = _cChungTu.getDSCatChuyenDM(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()), int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()));
                 }
 
@@ -1451,12 +1451,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (radBienDong.Checked)
             {
                 strName="DANH SÁCH ĐIỀU CHỈNH BIẾN ĐỘNG";
-                dt = _cDCBD.getDSBienDongByCreateDate(dateTu_DSDCBD.Value, dateDen_DSDCBD.Value);
+                dt = _cDCBD.getDS_BienDong_CreateDate(dateTu_DSDCBD.Value, dateDen_DSDCBD.Value);
             }
             else
             {
                 strName="DANH SÁCH ĐIỀU CHỈNH HÓA ĐƠN";
-                dt = _cDCBD.getDSHoaDonByCreateDate(dateTu_DSDCBD.Value, dateDen_DSDCBD.Value);
+                dt = _cDCBD.getDS_HoaDon_CreateDate(dateTu_DSDCBD.Value, dateDen_DSDCBD.Value);
             }
             if (dt == null)
                 return;
@@ -1584,7 +1584,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (radHoaDon.Checked)
             {
-                DataTable dt = _cDCBD.getDSHoaDonByCreateDate(dateTu_DSDCBD.Value, dateDen_DSDCBD.Value);
+                DataTable dt = _cDCBD.getDS_HoaDon_CreateDate(dateTu_DSDCBD.Value, dateDen_DSDCBD.Value);
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (DataRow item in dt.Rows)
                 {

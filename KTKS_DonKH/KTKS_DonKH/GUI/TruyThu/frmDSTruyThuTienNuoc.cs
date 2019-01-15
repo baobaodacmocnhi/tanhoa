@@ -72,25 +72,25 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if(radTruyThu.Checked==true)
-            switch (cmbTimTheo.SelectedItem.ToString())
-            {
-                case "Số Phiếu":
-                    if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSTruyThuTienNuoc.DataSource = _cTTTN.GetDS(int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                    break;
-                case "Danh Bộ":
-                    if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSTruyThuTienNuoc.DataSource = _cTTTN.GetDS(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                    break;
-                case "Ngày":
-                    dgvDSTruyThuTienNuoc.DataSource = _cTTTN.GetDS(dateTu.Value, dateDen.Value);
-                    break;
-                default:
-                    break;
-            }
+            if (radTruyThu.Checked == true)
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Số Phiếu":
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            dgvDSTruyThuTienNuoc.DataSource = _cTTTN.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                        break;
+                    case "Danh Bộ":
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            dgvDSTruyThuTienNuoc.DataSource = _cTTTN.getDS(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        break;
+                    case "Ngày":
+                        dgvDSTruyThuTienNuoc.DataSource = _cTTTN.getDS(dateTu.Value, dateDen.Value);
+                        break;
+                    default:
+                        break;
+                }
             else
-                if(radThuMoi.Checked==true)
+                if (radThuMoi.Checked == true)
                     dgvDSTruyThuTienNuoc.DataSource = _cTTTN.getDS_ThuMoi(dateTu.Value, dateDen.Value);
             CountdgvDSTruyThuTienNuoc();
         }

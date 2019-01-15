@@ -557,7 +557,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         where itemCTKTXM.CreateBy == CreateBy && itemCTKTXM.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? "" + itemCTKTXM.KTXM.MaDonMoi : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT
+                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? itemCTKTXM.KTXM.MaDonMoi.Value.ToString() : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT
                                     : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
@@ -583,7 +583,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         where itemCTKTXM.CreateBy == CreateBy && itemCTKTXM.KTXM.DonKH.SoCongVan.Contains(SoCongVan)
                         select new
                         {
-                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? "" + itemCTKTXM.KTXM.MaDonMoi : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT
+                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? itemCTKTXM.KTXM.MaDonMoi.Value.ToString() : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT
                                    : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                    : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                    : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
@@ -611,7 +611,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         orderby itemCTKTXM.KTXM.MaDonMoi,itemCTKTXM.STT ascending
                         select new
                         {
-                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? "" + itemCTKTXM.KTXM.MaDonMoi : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT
+                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? itemCTKTXM.KTXM.MaDonMoi.Value.ToString() : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT
                                     : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
@@ -637,7 +637,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         where itemCTKTXM.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? "" + itemCTKTXM.KTXM.MaDonMoi : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT
+                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? itemCTKTXM.KTXM.MaDonMoi.Value.ToString() : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT
                                     : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
@@ -663,7 +663,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         where itemCTKTXM.KTXM.DonKH.SoCongVan.Contains(SoCongVan)
                         select new
                         {
-                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? "" + itemCTKTXM.KTXM.MaDonMoi : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT
+                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? itemCTKTXM.KTXM.MaDonMoi.Value.ToString() : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT
                                    : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                    : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                    : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
@@ -690,7 +690,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         orderby itemCTKTXM.KTXM.MaDonMoi, itemCTKTXM.STT ascending
                         select new
                         {
-                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? "" + itemCTKTXM.KTXM.MaDonMoi : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT
+                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? itemCTKTXM.KTXM.MaDonMoi.Value.ToString() : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT
                                     : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,

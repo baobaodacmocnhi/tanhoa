@@ -925,10 +925,10 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void dgvGianLan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvGianLan.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null )
-            {
-                //e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
+            //if (dgvGianLan.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null )
+            //{
+            //    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            //}
         }
 
         private void txtMaCTGL_KeyPress(object sender, KeyPressEventArgs e)
