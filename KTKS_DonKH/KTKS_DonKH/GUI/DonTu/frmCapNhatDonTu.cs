@@ -48,7 +48,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
         }
 
-        public void LoadDonTu(LinQ.DonTu entity,DonTu_ChiTiet en_ChiTiet)
+        public void LoadDonTu(LinQ.DonTu entity, DonTu_ChiTiet en_ChiTiet)
         {
             try
             {
@@ -137,7 +137,7 @@ namespace KTKS_DonKH.GUI.DonTu
             for (int i = 0; i < chkcmbNoiNhanKTXM.Properties.Items.Count; i++)
                 chkcmbNoiNhanKTXM.Properties.Items[i].CheckState = CheckState.Unchecked;
             dateChuyen.Value = en.NgayChuyen.Value;
-            
+
             if (en.ID_NoiChuyen != null)
                 cmbNoiChuyen.SelectedValue = en.ID_NoiChuyen;
             else
@@ -145,10 +145,10 @@ namespace KTKS_DonKH.GUI.DonTu
 
             if (en.ID_NoiNhan != null)
                 chkcmbNoiNhan.SetEditValue(en.ID_NoiNhan);
-            
+
             if (en.ID_KTXM != null)
                 chkcmbNoiNhanKTXM.SetEditValue(en.ID_KTXM);
-            
+
             txtNoiDung_LichSu.Text = en.NoiDung;
         }
 
@@ -546,7 +546,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         }
                         else
                         {
-                            if (_cDonTu.Xoa_LichSu(_cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString())),CTaiKhoan.MaUser))
+                            if (_cDonTu.Xoa_LichSu(_cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString())), CTaiKhoan.MaUser))
                             {
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 LoadLichSu();
@@ -607,7 +607,7 @@ namespace KTKS_DonKH.GUI.DonTu
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
         }
@@ -644,7 +644,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 To = "TXL";
             else if (CTaiKhoan.ToBC == true)
                 To = "TBC";
-            dgvLichSuDonTu_Update.DataSource  = _cDonTu.getDS_LichSu(To, CTaiKhoan.MaUser, dateFromNgayChuyen.Value, dateToNgayChuyen.Value);
+            dgvLichSuDonTu_Update.DataSource = _cDonTu.getDS_LichSu(To, CTaiKhoan.MaUser, dateFromNgayChuyen.Value, dateToNgayChuyen.Value);
         }
 
         private void btnXoa_Update_Click(object sender, EventArgs e)

@@ -16,11 +16,11 @@ namespace KTKS_DonKH.DAL.DonTu
             {
                 if (db.DonTus.Any(item => item.NamThang == DateTime.Now.ToString("yyMM")) == true)
                 {
-                    entity.STT = (int.Parse(db.DonTus.Where(item => item.NamThang == DateTime.Now.ToString("yyMM")).Max(item => item.STT)) + 1).ToString("000");
+                    entity.STT = (int.Parse(db.DonTus.Where(item => item.NamThang == DateTime.Now.ToString("yyMM")).Max(item => item.STT)) + 1).ToString("0000");
                 }
                 else
                 {
-                    entity.STT = 1.ToString("000");
+                    entity.STT = 1.ToString("0000");
                 }
                 entity.NamThang = DateTime.Now.ToString("yyMM");
                 entity.MaDon = int.Parse(entity.NamThang + entity.STT);
@@ -148,6 +148,43 @@ namespace KTKS_DonKH.DAL.DonTu
         }
 
         // chi tiết
+
+        public bool Them_ChiTiet(DonTu_ChiTiet en)
+        {
+            try
+            {
+                if (db.DonTu_ChiTiets.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = db.DonTu_ChiTiets.Max(item => item.ID) + 1;
+                en.STT = db.DonTu_ChiTiets.Where(item => item.MaDon == en.MaDon).Max(item => item.STT) + 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.DonTu_ChiTiets.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_ChiTiet(DonTu_ChiTiet en)
+        {
+            try
+            {
+                db.DonTu_ChiTiets.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
 
         public int getMaxID_ChiTiet()
         {

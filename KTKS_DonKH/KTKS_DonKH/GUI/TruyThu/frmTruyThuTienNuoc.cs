@@ -1458,11 +1458,11 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void dgvTruyThuTienNuoc_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            try
             {
-                if (_cttttn != null)
+                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                 {
-                    try
+                    if (_cttttn != null)
                     {
                         TruyThuTienNuoc_HoaDon cttttn_hoadon = _cTTTN.get_HoaDon(_cttttn.IDCT, e.Row.Cells["Ky"].Value.ToString(), e.Row.Cells["Nam"].Value.ToString());
                         if (_cTTTN.Xoa_HoaDon(cttttn_hoadon))
@@ -1473,14 +1473,14 @@ namespace KTKS_DonKH.GUI.TruyThu
                             _cTTTN.SubmitChanges();
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnInBia_Click(object sender, EventArgs e)

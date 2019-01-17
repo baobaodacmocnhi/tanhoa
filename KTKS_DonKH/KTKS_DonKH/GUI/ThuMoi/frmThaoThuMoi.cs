@@ -545,7 +545,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
         {
             try
             {
-                _thumoi = _cThuMoi.get_ChiTiet(int.Parse(dgvDSThu.CurrentRow.Cells["SoPhieu"].Value.ToString()));
+                _thumoi = _cThuMoi.get_ChiTiet(int.Parse(dgvDSThu.CurrentRow.Cells["IDCT"].Value.ToString()));
                 LoadEntity(_thumoi);
             }
             catch (Exception)
