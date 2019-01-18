@@ -87,7 +87,7 @@
             "Danh Bộ",
             "Số Công Văn",
             "Ngày"});
-            this.cmbTimTheo.Location = new System.Drawing.Point(356, 12);
+            this.cmbTimTheo.Location = new System.Drawing.Point(356, 10);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(100, 24);
             this.cmbTimTheo.TabIndex = 12;
@@ -105,7 +105,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(281, 15);
+            this.label2.Location = new System.Drawing.Point(281, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 16);
             this.label2.TabIndex = 11;
@@ -113,7 +113,7 @@
             // 
             // btnInDSDon
             // 
-            this.btnInDSDon.Location = new System.Drawing.Point(798, 15);
+            this.btnInDSDon.Location = new System.Drawing.Point(798, 13);
             this.btnInDSDon.Name = "btnInDSDon";
             this.btnInDSDon.Size = new System.Drawing.Size(75, 25);
             this.btnInDSDon.TabIndex = 17;
@@ -131,7 +131,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(717, 15);
+            this.btnXem.Location = new System.Drawing.Point(717, 13);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 25);
             this.btnXem.TabIndex = 16;
@@ -145,7 +145,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(535, 2);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(535, 0);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(176, 60);
             this.panel_KhoangThoiGian.TabIndex = 15;
@@ -162,7 +162,7 @@
             // 
             // txtNoiDungTimKiem
             // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(535, 12);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(535, 10);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 22);
             this.txtNoiDungTimKiem.TabIndex = 18;
@@ -171,7 +171,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(462, 15);
+            this.label1.Location = new System.Drawing.Point(462, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 16);
             this.label1.TabIndex = 13;
@@ -179,7 +179,7 @@
             // 
             // txtNoiDungTimKiem2
             // 
-            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(535, 40);
+            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(535, 38);
             this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
             this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(130, 22);
             this.txtNoiDungTimKiem2.TabIndex = 14;
@@ -206,10 +206,10 @@
             this.HoTen,
             this.DiaChi,
             this.NoiDung});
-            this.dgvDSDonTu.Location = new System.Drawing.Point(0, 68);
+            this.dgvDSDonTu.Location = new System.Drawing.Point(0, 66);
             this.dgvDSDonTu.MultiSelect = false;
             this.dgvDSDonTu.Name = "dgvDSDonTu";
-            this.dgvDSDonTu.Size = new System.Drawing.Size(1132, 570);
+            this.dgvDSDonTu.Size = new System.Drawing.Size(1113, 540);
             this.dgvDSDonTu.TabIndex = 20;
             this.dgvDSDonTu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDonTu_CellFormatting);
             this.dgvDSDonTu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonTu_RowPostPaint);
@@ -344,14 +344,14 @@
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(105, 68);
+            this.gridControl1.Location = new System.Drawing.Point(86, 66);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1,
             this.repositoryItemCheckedComboBoxEdit1,
             this.repositoryItemLookUpEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(1027, 542);
+            this.gridControl1.Size = new System.Drawing.Size(824, 509);
             this.gridControl1.TabIndex = 21;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -363,7 +363,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1375, 661);
+            this.ClientSize = new System.Drawing.Size(1123, 611);
             this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.dgvDSDonTu);
             this.Controls.Add(this.gridControl1);

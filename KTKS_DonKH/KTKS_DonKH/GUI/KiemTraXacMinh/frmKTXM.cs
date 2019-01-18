@@ -603,8 +603,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
                         _ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
                         _ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());
-                        if (cmbNoiDungBaoThay.SelectedIndex != -1 && string.IsNullOrEmpty(cmbNoiDungBaoThay.SelectedText) == false)
-                            _ctktxm.NoiDungBaoThay = cmbNoiDungBaoThay.SelectedText;
+                        if (cmbNoiDungBaoThay.SelectedIndex != -1 && string.IsNullOrEmpty(cmbNoiDungBaoThay.SelectedItem.ToString()) == false)
+                            _ctktxm.NoiDungBaoThay = cmbNoiDungBaoThay.SelectedItem.ToString();
 
                         if (_cKTXM.SuaCT(_ctktxm))
                         {

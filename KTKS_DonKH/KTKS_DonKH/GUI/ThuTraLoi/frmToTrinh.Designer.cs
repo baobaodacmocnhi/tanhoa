@@ -179,6 +179,7 @@
             this.txtNoiDung.Location = new System.Drawing.Point(8, 87);
             this.txtNoiDung.Multiline = true;
             this.txtNoiDung.Name = "txtNoiDung";
+            this.txtNoiDung.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtNoiDung.Size = new System.Drawing.Size(610, 150);
             this.txtNoiDung.TabIndex = 3;
             // 

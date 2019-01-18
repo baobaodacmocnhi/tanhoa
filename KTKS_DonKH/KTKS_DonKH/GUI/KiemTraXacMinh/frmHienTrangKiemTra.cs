@@ -29,8 +29,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             dgvDSHienTrangKT.AutoGenerateColumns = false;
 
-            if (CTaiKhoan.TruongPhong)
-            {
+            //if (CTaiKhoan.TruongPhong)
+            //{
                 List<To> lstTo = _cTo.getDS_KTXM();
                 To en = new To();
                 en.MaTo = 0;
@@ -41,8 +41,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 cmbTo.ValueMember = "KyHieu";
 
                 panel1.Visible = true;
-            }
-            LoadDataTable();
+            //}
+            //LoadDataTable();
         }
 
         public void LoadDataTable()
@@ -90,7 +90,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         KTXM_HienTrang hientrangkiemtra = new KTXM_HienTrang();
                         hientrangkiemtra.TenHTKT = txtHienTrangKT.Text.Trim();
                         hientrangkiemtra.STT = _cHienTrangKiemTra.GetMaxSTT() + 1;
-
+                        if (CTaiKhoan.ToTB == true)
+                            hientrangkiemtra.ToTB = true;
+                        else if (CTaiKhoan.ToTP == true)
+                            hientrangkiemtra.ToTP = true;
+                        else if (CTaiKhoan.ToBC == true)
+                            hientrangkiemtra.ToBC = true;
                         if (_cHienTrangKiemTra.Them(hientrangkiemtra))
                         {
                             txtHienTrangKT.Text = "";

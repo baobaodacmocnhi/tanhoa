@@ -56,7 +56,7 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (cmbTinhTrang.SelectedIndex == -1)
                 return;
-            DataTable dt = _cTTTN.GetDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value, cmbTinhTrang.SelectedItem.ToString());
+            DataTable dt = _cTTTN.getDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value, cmbTinhTrang.SelectedItem.ToString());
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
@@ -67,7 +67,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
                 dr["LoaiBaoCao"] = cmbTinhTrang.Text.ToUpper();
-                dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
+                dr["MaDon"] = item["MaDon"].ToString();
                 dr["SoCongVan"] = item["SoCongVan"];
                 dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = item["HoTen"];

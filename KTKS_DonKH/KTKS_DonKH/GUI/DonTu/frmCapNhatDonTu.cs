@@ -125,7 +125,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu.MaDon, 1);
                 else
                     if (dgvDanhBo.SelectedRows.Count > 1)
-                        dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, dgvDanhBo.SelectedRows[0].Index);
+                        dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, dgvDanhBo.CurrentRow.Index);
                     else
                         dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
         }
@@ -172,7 +172,6 @@ namespace KTKS_DonKH.GUI.DonTu
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
             dgvDanhBo.DataSource = null;
-            dgvDanhBo.Rows.Clear();
 
             _dontu = null;
             _dontu_ChiTiet = null;
