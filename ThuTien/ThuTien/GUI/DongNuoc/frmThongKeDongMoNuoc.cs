@@ -57,7 +57,7 @@ namespace ThuTien.GUI.DongNuoc
             txtTongMoNuoc.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongMoNuoc);
 
             ///
-            dgvDongNuoc.DataSource= _cDongNuoc.GetDSKQDongNuocByNgayDNs(dateTu.Value, dateDen.Value);
+            dgvDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc(dateTu.Value, dateDen.Value);
             foreach (DataGridViewRow item in dgvDongNuoc.Rows)
             {
                 DocSo entity = _cDocSoHandheld.Get(item.Cells["DanhBo"].Value.ToString());

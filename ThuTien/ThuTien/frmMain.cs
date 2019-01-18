@@ -55,7 +55,7 @@ namespace ThuTien
 
         void Application_Idle(object sender, EventArgs e)
         {
-            if (CNguoiDung.MaTo == 5&&CNguoiDung.MaND!=51)
+            if (CNguoiDung.MaTo == 5 && CNguoiDung.MaND != 51)
                 timer.Stop();
             else
                 timer.Start();

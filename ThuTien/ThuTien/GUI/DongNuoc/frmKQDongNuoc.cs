@@ -549,6 +549,8 @@ namespace ThuTien.GUI.DongNuoc
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            try
+            {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
@@ -603,6 +605,11 @@ namespace ThuTien.GUI.DongNuoc
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -612,16 +619,16 @@ namespace ThuTien.GUI.DongNuoc
                 if (CNguoiDung.Doi)
                 {
                     if(cmbTo.SelectedIndex==0)
-                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByNgayDNs( dateTu.Value, dateDen.Value);
+                        dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc( dateTu.Value, dateDen.Value);
                     else
                         if(cmbTo.SelectedIndex>0)
-                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaToNgayDNs((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+                            dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc_MaTo_NgayDN((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
                 }
                 else
                     if (CNguoiDung.ToTruong)
-                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaToNgayDNs(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                        dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc_MaTo_NgayDN(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
                     else
-                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaNVNgayDNs(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                        dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc_MaNV_NgayDN(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
             }
             else
                 if (radMoNuoc.Checked)
