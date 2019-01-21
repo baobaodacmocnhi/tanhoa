@@ -6,9 +6,9 @@ using System.Data;
 
 namespace TrungTamKhachHang.DAL
 {
-    class CThuTien
+    class CKinhDoanh
     {
-        CConnection _cDAL = new CConnection(CConnection.connectionString_ThuTien);
+        CConnection _cDAL = new CConnection(CConnection.connectionString_KinhDoanh);
 
         public DataTable GetDSTimKiem(string DanhBo)
         {

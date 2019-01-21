@@ -114,8 +114,10 @@
     <Compile Include="DAL\CCapNuocTanHoa.cs" />
     <Compile Include="DAL\CConnection.cs" />
     <Compile Include="DAL\CDocSo.cs" />
+    <Compile Include="DAL\CKinhDoanh.cs" />
     <Compile Include="DAL\CThuTien.cs" />
     <Compile Include="DAL\CTrungTamKhachHang.cs" />
+    <Compile Include="DAL\KhachHang\CKhieuNai.cs" />
     <Compile Include="DAL\QuanTri\CMenu.cs" />
     <Compile Include="DAL\QuanTri\CNhom.cs" />
     <Compile Include="DAL\QuanTri\CPhanQuyenNhom.cs" />
@@ -150,6 +152,12 @@
     </Compile>
     <Compile Include="GUI\HeThong\frmDoiMatKhau.designer.cs">
       <DependentUpon>frmDoiMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\KhachHang\frmDanhSachKhieuNai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KhachHang\frmDanhSachKhieuNai.Designer.cs">
+      <DependentUpon>frmDanhSachKhieuNai.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\KhachHang\frmKhieuNaiKhachHang.cs">
       <SubType>Form</SubType>
@@ -202,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmDoiMatKhau.resx">
       <DependentUpon>frmDoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\frmDanhSachKhieuNai.resx">
+      <DependentUpon>frmDanhSachKhieuNai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\frmKhieuNaiKhachHang.resx">
       <DependentUpon>frmKhieuNaiKhachHang.cs</DependentUpon>

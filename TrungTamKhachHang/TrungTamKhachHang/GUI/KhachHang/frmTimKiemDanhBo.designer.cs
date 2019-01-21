@@ -164,6 +164,7 @@
             this.Controls.Add(this.txtHoTen);
             this.Controls.Add(this.label1);
             this.Name = "frmTimKiemDanhBo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tìm Kiếm Danh Bộ";
             this.Load += new System.EventHandler(this.frmTimKiemDanhBo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

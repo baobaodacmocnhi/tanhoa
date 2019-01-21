@@ -209,6 +209,19 @@ namespace TrungTamKhachHang
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuDanhSachKhieuNai_Click(object sender, EventArgs e)
+        {
+            if (CUser.CheckQuyen("mnuDanhSachKhieuNai", "Xem"))
+            {
+                frmDanhSachKhieuNai frm = new frmDanhSachKhieuNai();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
+
+        
     }
 }
