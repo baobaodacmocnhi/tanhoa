@@ -47,7 +47,7 @@ namespace ThuTien.GUI.TimKiem
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) || !string.IsNullOrEmpty(txtMLT.Text.Trim().Replace(" ", "")))
-                dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""), txtMLT.Text.Trim());
+                dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""));
             else
                 dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiemTTKH(txtHoTen.Text.Trim(), txtSoNha.Text.Trim(), txtTenDuong.Text.Trim());
 
@@ -275,7 +275,7 @@ namespace ThuTien.GUI.TimKiem
         private void btnTimKiemTatCa_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) || !string.IsNullOrEmpty(txtMLT.Text.Trim().Replace(" ", "")))
-                dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiemTatCa(txtDanhBo.Text.Trim().Replace(" ", ""), txtMLT.Text.Trim());
+                dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiemTatCa(txtDanhBo.Text.Trim().Replace(" ", ""));
 
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
             {

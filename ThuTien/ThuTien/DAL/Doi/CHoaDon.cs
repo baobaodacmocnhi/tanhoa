@@ -9014,7 +9014,7 @@ namespace ThuTien.DAL.Doi
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetDSTimKiem(string DanhBo, string MLT)
+        public DataTable GetDSTimKiem(string DanhBo)
         {
             //string sql = "select ID_HOADON as MaHD,DANHBA as DanhBo,MALOTRINH as MLT,TENKH as HoTen,(SO+' '+DUONG) as DiaChi,GB as GiaBieu,DM as DinhMuc,a.SoHoaDon,"
             //    + "(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM)) as Ky,TieuThu,GiaBan,Thue as ThueGTGT,Phi as PhiBVMT,TongCong,NgayGiaiTrach,b.HoTen as DangNgan,c.HoTen as HanhThu,MaDN,NgayDN,NgayMN"
@@ -9027,15 +9027,18 @@ namespace ThuTien.DAL.Doi
             //    + " left join TT_KQDongNuoc c on a.MaDN=c.MaDN where Huy=0) as dn on  a.SOHOADON=dn.SoHoaDon"
             //    + " where a.DANHBA like '%" + DanhBo + "%' and a.TENKH like '%" + HoTen + "%' and (SO+' '+DUONG) like '%" + DiaChi + "%'"
             //    + "order by ID_HOADON desc";
-            string sql = "select * from fnTimKiem('" + DanhBo + "','" + MLT + "') order by MaHD desc";
 
+            //string sql = "select * from fnTimKiem('" + DanhBo + "','" + MLT + "') order by MaHD desc";
+            string sql = "select * from fnTimKiem('" + DanhBo + "') order by MaHD desc";
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetDSTimKiemTatCa(string DanhBo, string MLT)
+        public DataTable GetDSTimKiemTatCa(string DanhBo)
         {
-            string sqlCu = "select * from fnTimKiemCu('" + DanhBo + "','" + MLT + "')";
-            string sql = "select * from fnTimKiem('" + DanhBo + "','" + MLT + "')";
+            //string sqlCu = "select * from fnTimKiemCu('" + DanhBo + "','" + MLT + "')";
+            //string sql = "select * from fnTimKiem('" + DanhBo + "','" + MLT + "')";
+            string sqlCu = "select * from fnTimKiemCu('" + DanhBo + "')";
+            string sql = "select * from fnTimKiem('" + DanhBo + "')";
 
             DataTable dt = ExecuteQuery_DataTable(sql);
             dt.Merge(ExecuteQuery_DataTable(sqlCu));
