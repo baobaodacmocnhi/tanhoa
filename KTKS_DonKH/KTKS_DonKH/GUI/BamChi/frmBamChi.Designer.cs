@@ -103,7 +103,7 @@
             this.txtMaDonCu.Location = new System.Drawing.Point(248, 12);
             this.txtMaDonCu.Name = "txtMaDonCu";
             this.txtMaDonCu.Size = new System.Drawing.Size(75, 22);
-            this.txtMaDonCu.TabIndex = 1;
+            this.txtMaDonCu.TabIndex = 9;
             this.txtMaDonCu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonCu_KeyPress);
             // 
             // label21
@@ -112,7 +112,7 @@
             this.label21.Location = new System.Drawing.Point(166, 15);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(76, 16);
-            this.label21.TabIndex = 0;
+            this.label21.TabIndex = 8;
             this.label21.Text = "Mã Đơn Cũ:";
             // 
             // groupBox1
@@ -655,7 +655,7 @@
             this.dgvDSNhapBamChi.Location = new System.Drawing.Point(12, 332);
             this.dgvDSNhapBamChi.Name = "dgvDSNhapBamChi";
             this.dgvDSNhapBamChi.Size = new System.Drawing.Size(961, 126);
-            this.dgvDSNhapBamChi.TabIndex = 6;
+            this.dgvDSNhapBamChi.TabIndex = 7;
             this.dgvDSNhapBamChi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSNhapBamChi_CellContentClick);
             this.dgvDSNhapBamChi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSNhapBamChi_CellFormatting);
             this.dgvDSNhapBamChi.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSNhapBamChi_RowPostPaint);
@@ -722,7 +722,7 @@
             this.btnXoa.Location = new System.Drawing.Point(979, 270);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
-            this.btnXoa.TabIndex = 7;
+            this.btnXoa.TabIndex = 6;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -732,7 +732,7 @@
             this.txtMaDonMoi.Location = new System.Drawing.Point(417, 12);
             this.txtMaDonMoi.Name = "txtMaDonMoi";
             this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
-            this.txtMaDonMoi.TabIndex = 9;
+            this.txtMaDonMoi.TabIndex = 1;
             this.txtMaDonMoi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonMoi_KeyPress);
             // 
             // label24
@@ -741,7 +741,7 @@
             this.label24.Location = new System.Drawing.Point(329, 15);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(92, 16);
-            this.label24.TabIndex = 8;
+            this.label24.TabIndex = 0;
             this.label24.Text = "Mã Đơn(New):";
             // 
             // frmBamChi

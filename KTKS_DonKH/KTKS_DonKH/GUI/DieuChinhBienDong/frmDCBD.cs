@@ -268,45 +268,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtMaDonCu_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtMaDonCu.Text.Trim() != "")
-            {
-                string MaDon = txtMaDonCu.Text.Trim();
-                Clear();
-                txtMaDonCu.Text = MaDon;
-                ///Đơn Tổ Xử Lý
-                if (txtMaDonCu.Text.Trim().ToUpper().Contains("TXL"))
+            if (e.KeyChar == 13)
+                if (txtMaDonCu.Text.Trim() != "")
                 {
-                    if (_cDonTXL.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                    string MaDon = txtMaDonCu.Text.Trim();
+                    Clear();
+                    txtMaDonCu.Text = MaDon;
+                    ///Đơn Tổ Xử Lý
+                    if (txtMaDonCu.Text.Trim().ToUpper().Contains("TXL"))
                     {
-                        _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
-                        txtMaDonCu.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
+                        if (_cDonTXL.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                        {
+                            _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
+                            txtMaDonCu.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
 
-                        if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
-                        {
-                            _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
-                            LoadTTKH(_hoadon);
-                            txtDanhBo.Focus();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtDanhBo.Focus();
-                        }
-                    }
-                    else
-                        MessageBox.Show("Mã Đơn TXL này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                    if (txtMaDonCu.Text.Trim().ToUpper().Contains("TBC"))
-                    {
-                        if (_cDonTBC.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
-                        {
-                            _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
-                            txtMaDonCu.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
-
-                            if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
+                            if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                             {
-                                _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
+                                _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
                                 LoadTTKH(_hoadon);
                                 txtDanhBo.Focus();
                             }
@@ -319,28 +297,53 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             MessageBox.Show("Mã Đơn TXL này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    ///Đơn Tổ Khách Hàng
                     else
-                        if (_cDonKH.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", ""))) == true)
+                        if (txtMaDonCu.Text.Trim().ToUpper().Contains("TBC"))
                         {
-                            _dontkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
-                            txtMaDonCu.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
-
-                            if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
+                            if (_cDonTBC.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
                             {
-                                _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
-                                LoadTTKH(_hoadon);
-                                txtDanhBo.Focus();
+                                _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
+                                txtMaDonCu.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
+
+                                if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
+                                {
+                                    _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
+                                    LoadTTKH(_hoadon);
+                                    txtDanhBo.Focus();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    txtDanhBo.Focus();
+                                }
                             }
                             else
-                            {
-                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                txtDanhBo.Focus();
-                            }
+                                MessageBox.Show("Mã Đơn TXL này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                        ///Đơn Tổ Khách Hàng
                         else
-                            MessageBox.Show("Mã Đơn KH này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                            if (_cDonKH.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", ""))) == true)
+                            {
+                                _dontkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
+                                txtMaDonCu.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
+
+                                if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
+                                {
+                                    _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
+                                    LoadTTKH(_hoadon);
+                                    txtDanhBo.Focus();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    txtDanhBo.Focus();
+                                }
+                            }
+                            else
+                                MessageBox.Show("Mã Đơn KH này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    txtMaDonMoi.Focus();
         }
 
         private void txtMaDonMoi_KeyPress(object sender, KeyPressEventArgs e)
@@ -855,45 +858,89 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void frmDCBD_KeyUp(object sender, KeyEventArgs e)
+        private void frmDCBD_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.Add)
-                btnThem.PerformClick();
-            if ((_dontu_ChiTiet != null || _dontkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D1)
-            {
-                Them();
-            }
-            if ((_dontu_ChiTiet != null || _dontkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D2)
-            {
-                Nhan();
-            }
-            if (e.Control && e.KeyCode == Keys.D3)
-            {
-                if (!_flagCtrl3)
+            if (e.Control)
+                switch (e.KeyCode)
                 {
-                    _flagCtrl3 = true;
-                    groupBox_DSSoDangKy.Height = 358;
-                    dgvDSSoDangKy.Height = 330;
-                    panel_LichSuDieuChinh.Location = new Point(0, 560);
+                    case Keys.Add://lưu
+                        btnThem.PerformClick();
+                        break;
+                    case Keys.D1://mở form thêm sổ
+                        if ((_dontu_ChiTiet != null || _dontkh != null || _dontxl != null || _dontbc != null))
+                            Them();
+                        break;
+                    case Keys.D2://mở form nhận sổ
+                        if ((_dontu_ChiTiet != null || _dontkh != null || _dontxl != null || _dontbc != null))
+                            Nhan();
+                        break;
+                    case Keys.D3://mở rộng form 
+                        if (!_flagCtrl3)
+                        {
+                            _flagCtrl3 = true;
+                            groupBox_DSSoDangKy.Height = 358;
+                            dgvDSSoDangKy.Height = 330;
+                            panel_LichSuDieuChinh.Location = new Point(0, 560);
+                        }
+                        else
+                        {
+                            _flagCtrl3 = false;
+                            groupBox_DSSoDangKy.Height = 229;
+                            dgvDSSoDangKy.Height = 200;
+                            panel_LichSuDieuChinh.Location = new Point(0, 434);
+                        }
+                        break;
+                    case Keys.D4://mở form tìm kiếm chung cư
+                        frmTimKiemChungTu frm = new frmTimKiemChungTu();
+                        frm.ShowDialog();
+                        break;
+                    case Keys.T://mở form cập nhật tiến trình
+                        if (_dontu_ChiTiet != null)
+                        {
+                            frmCapNhatDonTu_Thumbnail frm2 = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet);
+                            frm2.ShowDialog();
+                        }
+                        break;
+                    default:
+                        break;
                 }
-                else
-                {
-                    _flagCtrl3 = false;
-                    groupBox_DSSoDangKy.Height = 229;
-                    dgvDSSoDangKy.Height = 200;
-                    panel_LichSuDieuChinh.Location = new Point(0, 434);
-                }
-            }
-            if (e.Control && e.KeyCode == Keys.D4)
-            {
-                frmTimKiemChungTu frm = new frmTimKiemChungTu();
-                frm.ShowDialog();
-            }
-            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
-            {
-                frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet);
-                frm.ShowDialog();
-            }
+            //if (e.Control && e.KeyCode == Keys.Add)
+            //    btnThem.PerformClick();
+            //if ((_dontu_ChiTiet != null || _dontkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D1)
+            //{
+            //    Them();
+            //}
+            //if ((_dontu_ChiTiet != null || _dontkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D2)
+            //{
+            //    Nhan();
+            //}
+            //if (e.Control && e.KeyCode == Keys.D3)
+            //{
+            //    if (!_flagCtrl3)
+            //    {
+            //        _flagCtrl3 = true;
+            //        groupBox_DSSoDangKy.Height = 358;
+            //        dgvDSSoDangKy.Height = 330;
+            //        panel_LichSuDieuChinh.Location = new Point(0, 560);
+            //    }
+            //    else
+            //    {
+            //        _flagCtrl3 = false;
+            //        groupBox_DSSoDangKy.Height = 229;
+            //        dgvDSSoDangKy.Height = 200;
+            //        panel_LichSuDieuChinh.Location = new Point(0, 434);
+            //    }
+            //}
+            //if (e.Control && e.KeyCode == Keys.D4)
+            //{
+            //    frmTimKiemChungTu frm = new frmTimKiemChungTu();
+            //    frm.ShowDialog();
+            //}
+            //if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            //{
+            //    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet);
+            //    frm.ShowDialog();
+            //}
         }
 
         private void lbDSHetHan_DoubleClick(object sender, EventArgs e)
@@ -1139,10 +1186,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
-            if (dgvDSDieuChinh.Columns[e.ColumnIndex].Name == "MaDon" && !string.IsNullOrEmpty(e.Value.ToString()))
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
+            //if (dgvDSDieuChinh.Columns[e.ColumnIndex].Name == "MaDon" && !string.IsNullOrEmpty(e.Value.ToString()))
+            //{
+            //    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            //}
         }
 
         private void dgvDSDieuChinh_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -1665,5 +1712,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frmNhapNhieuGB frm = new frmNhapNhieuGB();
             frm.ShowDialog();
         }
+
+        
     }
 }

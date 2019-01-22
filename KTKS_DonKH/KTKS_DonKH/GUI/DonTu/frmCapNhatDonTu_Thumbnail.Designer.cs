@@ -69,7 +69,7 @@
             // 
             // chkcmbNoiNhan
             // 
-            this.chkcmbNoiNhan.Location = new System.Drawing.Point(325, 56);
+            this.chkcmbNoiNhan.Location = new System.Drawing.Point(355, 56);
             this.chkcmbNoiNhan.Name = "chkcmbNoiNhan";
             this.chkcmbNoiNhan.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.chkcmbNoiNhan.Properties.Appearance.Options.UseFont = true;
@@ -84,7 +84,7 @@
             // 
             // btnCapNhat
             // 
-            this.btnCapNhat.Location = new System.Drawing.Point(687, 53);
+            this.btnCapNhat.Location = new System.Drawing.Point(717, 53);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(75, 25);
             this.btnCapNhat.TabIndex = 91;
@@ -94,7 +94,7 @@
             // 
             // txtNoiDung_LichSu
             // 
-            this.txtNoiDung_LichSu.Location = new System.Drawing.Point(531, 56);
+            this.txtNoiDung_LichSu.Location = new System.Drawing.Point(561, 56);
             this.txtNoiDung_LichSu.Name = "txtNoiDung_LichSu";
             this.txtNoiDung_LichSu.Size = new System.Drawing.Size(150, 22);
             this.txtNoiDung_LichSu.TabIndex = 90;
@@ -102,7 +102,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(527, 37);
+            this.label34.Location = new System.Drawing.Point(557, 37);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(67, 16);
             this.label34.TabIndex = 89;
@@ -111,7 +111,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(324, 37);
+            this.label33.Location = new System.Drawing.Point(354, 37);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(67, 16);
             this.label33.TabIndex = 88;
@@ -120,7 +120,7 @@
             // cmbNoiChuyen
             // 
             this.cmbNoiChuyen.FormattingEnabled = true;
-            this.cmbNoiChuyen.Location = new System.Drawing.Point(119, 56);
+            this.cmbNoiChuyen.Location = new System.Drawing.Point(149, 56);
             this.cmbNoiChuyen.MaxDropDownItems = 10;
             this.cmbNoiChuyen.Name = "cmbNoiChuyen";
             this.cmbNoiChuyen.Size = new System.Drawing.Size(200, 24);
@@ -129,7 +129,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(119, 37);
+            this.label32.Location = new System.Drawing.Point(149, 37);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(80, 16);
             this.label32.TabIndex = 86;
@@ -137,11 +137,11 @@
             // 
             // dateChuyen
             // 
-            this.dateChuyen.CustomFormat = "dd/MM/yyyy";
+            this.dateChuyen.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dateChuyen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateChuyen.Location = new System.Drawing.Point(3, 56);
             this.dateChuyen.Name = "dateChuyen";
-            this.dateChuyen.Size = new System.Drawing.Size(110, 22);
+            this.dateChuyen.Size = new System.Drawing.Size(140, 22);
             this.dateChuyen.TabIndex = 85;
             // 
             // label30

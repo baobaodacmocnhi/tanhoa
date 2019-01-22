@@ -107,7 +107,7 @@
             this.txtMaDonCu.Location = new System.Drawing.Point(248, 12);
             this.txtMaDonCu.Name = "txtMaDonCu";
             this.txtMaDonCu.Size = new System.Drawing.Size(75, 22);
-            this.txtMaDonCu.TabIndex = 1;
+            this.txtMaDonCu.TabIndex = 10;
             this.txtMaDonCu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonCu_KeyPress);
             // 
             // label21
@@ -116,7 +116,7 @@
             this.label21.Location = new System.Drawing.Point(166, 15);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(76, 16);
-            this.label21.TabIndex = 0;
+            this.label21.TabIndex = 9;
             this.label21.Text = "Mã Đơn Cũ:";
             // 
             // groupBox1
@@ -275,7 +275,7 @@
             this.btnThem.Location = new System.Drawing.Point(1034, 220);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
-            this.btnThem.TabIndex = 4;
+            this.btnThem.TabIndex = 5;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -304,7 +304,7 @@
             this.dgvDSKetQuaKiemTra.Location = new System.Drawing.Point(12, 374);
             this.dgvDSKetQuaKiemTra.Name = "dgvDSKetQuaKiemTra";
             this.dgvDSKetQuaKiemTra.Size = new System.Drawing.Size(1016, 126);
-            this.dgvDSKetQuaKiemTra.TabIndex = 6;
+            this.dgvDSKetQuaKiemTra.TabIndex = 8;
             this.dgvDSKetQuaKiemTra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSKetQuaKiemTra_CellContentClick);
             this.dgvDSKetQuaKiemTra.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSKetQuaKiemTra_CellFormatting);
             this.dgvDSKetQuaKiemTra.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSKetQuaKiemTra_RowPostPaint);
@@ -400,7 +400,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 181);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1016, 187);
-            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
             // 
@@ -734,7 +734,7 @@
             this.btnSua.Location = new System.Drawing.Point(1034, 251);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
-            this.btnSua.TabIndex = 5;
+            this.btnSua.TabIndex = 6;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -754,7 +754,7 @@
             this.btnXoa.Location = new System.Drawing.Point(1034, 282);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
-            this.btnXoa.TabIndex = 8;
+            this.btnXoa.TabIndex = 7;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -780,7 +780,7 @@
             this.txtMaDonMoi.Location = new System.Drawing.Point(427, 12);
             this.txtMaDonMoi.Name = "txtMaDonMoi";
             this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
-            this.txtMaDonMoi.TabIndex = 117;
+            this.txtMaDonMoi.TabIndex = 1;
             this.txtMaDonMoi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonMoi_KeyPress);
             // 
             // label25
@@ -789,7 +789,7 @@
             this.label25.Location = new System.Drawing.Point(329, 15);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(92, 16);
-            this.label25.TabIndex = 116;
+            this.label25.TabIndex = 0;
             this.label25.Text = "Mã Đơn(New):";
             // 
             // chkNgayKTXMTruocNgayGiao
@@ -798,7 +798,7 @@
             this.chkNgayKTXMTruocNgayGiao.Location = new System.Drawing.Point(108, 155);
             this.chkNgayKTXMTruocNgayGiao.Name = "chkNgayKTXMTruocNgayGiao";
             this.chkNgayKTXMTruocNgayGiao.Size = new System.Drawing.Size(205, 20);
-            this.chkNgayKTXMTruocNgayGiao.TabIndex = 118;
+            this.chkNgayKTXMTruocNgayGiao.TabIndex = 3;
             this.chkNgayKTXMTruocNgayGiao.Text = "Ngày KTXM Trước Ngày Giao";
             this.chkNgayKTXMTruocNgayGiao.UseVisualStyleBackColor = true;
             // 

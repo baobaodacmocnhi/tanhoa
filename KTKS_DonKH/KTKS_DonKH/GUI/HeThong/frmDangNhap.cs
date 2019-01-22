@@ -41,9 +41,21 @@ namespace KTKS_DonKH.GUI.HeThong
                     CTaiKhoan.Admin = nguoidung.Admin;
                     CTaiKhoan.ThuKy = nguoidung.ThuKy;
                     CTaiKhoan.ToGD = nguoidung.ToGD;
-                    CTaiKhoan.ToTB = nguoidung.ToTB;
-                    CTaiKhoan.ToTP = nguoidung.ToTP;
-                    CTaiKhoan.ToBC = nguoidung.ToBC;
+                    if (nguoidung.ToTB == true)
+                    {
+                        CTaiKhoan.ToTB = nguoidung.ToTB;
+                        CTaiKhoan.TenTo = "ToTB";
+                    }
+                    else if (nguoidung.ToTP == true)
+                    {
+                        CTaiKhoan.ToTP = nguoidung.ToTP;
+                        CTaiKhoan.TenTo = "ToTP";
+                    }
+                    else if (nguoidung.ToBC == true)
+                    {
+                        CTaiKhoan.ToBC = nguoidung.ToBC;
+                        CTaiKhoan.TenTo = "ToBC";
+                    }
                     CTaiKhoan.ToTruong = nguoidung.ToTruong;
                     CTaiKhoan.PhoGiamDoc = nguoidung.PhoGiamDoc;
                     CTaiKhoan.TruongPhong = nguoidung.TruongPhong;
