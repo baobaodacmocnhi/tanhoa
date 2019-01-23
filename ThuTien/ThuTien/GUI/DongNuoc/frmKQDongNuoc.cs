@@ -68,6 +68,7 @@ namespace ThuTien.GUI.DongNuoc
             txtDiaChi.Text = "";
             dateDongNuoc.Value = DateTime.Now;
             txtChiSoDN.Text = "";
+            txtNiemChi.Text = "";
             txtHieu.Text = "";
             txtCo.Text = "";
             txtSoThan.Text = "";
@@ -83,8 +84,10 @@ namespace ThuTien.GUI.DongNuoc
             chkDongNuoc2.Checked = false;
             dateDongNuoc1.Value = DateTime.Now;
             txtChiSoDN1.Text = "";
+            txtNiemChi1.Text = "";
             dateDongNuoc2.Value = DateTime.Now;
             txtChiSoDN2.Text = "";
+            txtNiemChi2.Text = "";
             _dongnuoc = null;
             _kqdongnuoc = null;
         }
@@ -657,6 +660,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             try
             {
+                Clear();
                 //dgvKQDongNuoc.Rows[e.RowIndex].Selected = true;
                 _kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
                 LoadEntity(_kqdongnuoc);

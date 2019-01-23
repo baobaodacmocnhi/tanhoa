@@ -78,7 +78,6 @@ namespace ThuTien.GUI.Doi
 
                         ds.Tables["KQDongNuoc"].Rows.Add(dr);
                     }
-                    else
                     {
                         DataRow dr = ds.Tables["KQDongNuoc"].NewRow();
 

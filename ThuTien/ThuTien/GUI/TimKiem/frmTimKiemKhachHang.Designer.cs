@@ -621,7 +621,6 @@
             this.txtMLT.Name = "txtMLT";
             this.txtMLT.Size = new System.Drawing.Size(100, 20);
             this.txtMLT.TabIndex = 3;
-            this.txtMLT.Visible = false;
             this.txtMLT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMLT_KeyPress);
             // 
             // label8
@@ -632,7 +631,6 @@
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 2;
             this.label8.Text = "MLT:";
-            this.label8.Visible = false;
             // 
             // txtTenDuong
             // 
