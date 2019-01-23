@@ -226,36 +226,56 @@ namespace KTKS_DonKH.DAL.DonTu
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_ThongKeNhomDon(string Loai, DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_ThongKeNhomDon(string TenTo, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            DataTable dt = new DataTable();
-            string sql = ";WITH dtls_temp AS"
-                        + " ("
-                        + "    SELECT *,ROW_NUMBER() OVER (PARTITION BY MaDon,STT ORDER BY CreateDate asc) AS rn"
-                        + "    FROM DonTu_LichSu"
-                        + "    where cast(createdate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(createdate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
-                        + " )"
-                        + " select NhomDon=dt.Name_NhomDon,"
-                        + " MaDon=case when (select count(MaDon) from DonTu_ChiTiet where MaDon=dt.MaDon)>1 then CONVERT(varchar(8),dtct.MaDon)+'.'+CONVERT(varchar(3),dtct.STT) else CONVERT(varchar(8),dtct.MaDon) end,"
-                        + " ChuyenTrucTiep=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtct.MaDon and dtls.STT=dtct.STT and ID_NoiNhan=5) then 'false' else 'true' end,"
-                        + " ChuyenKTXM=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtct.MaDon and dtls.STT=dtct.STT and ID_NoiNhan=5) then 'true' else 'false' end,"
-                        + " DaKTXM=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtct.MaDon and dtls.STT=dtct.STT and ID_NoiNhan=5) then case when exists(select ktxm.MaKTXM from KTXM ktxm, KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT) then 'true' else 'false' end else 'false' end"
-                        + " from DonTu dt, DonTu_ChiTiet dtct, dtls_temp where dtls_temp.rn=1 and dt.MaDon=dtct.MaDon and dtct.MaDon=dtls_temp.MaDon and dtct.STT=dtls_temp.STT";
-            switch (Loai)
+            if (TenTo == "ToGD")
             {
-                case "ToTB":
-                    sql += " and ID_NoiNhan=2";
-                    break;
-                case "ToTP":
-                    sql += " and ID_NoiNhan=3";
-                    break;
-                case "ToBC":
-                    sql += " and ID_NoiNhan=4";
-                    break;
+                string sql = "";
+                return ExecuteQuery_DataTable(sql);
             }
-            sql += " and CAST(dtct.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(dtct.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'";
-            sql += " order by dtct.MaDon,dtct.STT";
-            return ExecuteQuery_DataTable(sql);
+            else
+            {
+                string sql = ";WITH dtls_temp AS"
+                            + " ("
+                            + " SELECT dtls.*,ROW_NUMBER() OVER (PARTITION BY dtls.MaDon,dtls.STT ORDER BY dtls.CreateDate asc) AS rn"
+                            + " FROM DonTu_ChiTiet dtct, DonTu_LichSu dtls"
+                            + " where cast(dtct.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(dtct.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and dtct.MaDon=dtls.MaDon and dtct.STT=dtls.STT"
+                            + " )"
+                            + " select NhomDon=dt.Name_NhomDon,MaDonMoi=dt.MaDon,dt.TongDB,"
+                            + " MaDon=case when dt.TongDB=0 then CONVERT(varchar(8),dtls_temp.MaDon)"
+                            + " 		   when dt.TongDB=1 then CONVERT(varchar(8),dtls_temp.MaDon)"
+                            + " 		   when dt.TongDB>=2 then CONVERT(varchar(8),dtls_temp.MaDon)+'.'+CONVERT(varchar(3),dtls_temp.STT) end,"
+                            + " ChuyenTrucTiep=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtls_temp.MaDon and dtls.STT=dtls_temp.STT and ID_NoiNhan=5) then 'false' else 'true' end,"
+                            + " ChuyenKTXM=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtls_temp.MaDon and dtls.STT=dtls_temp.STT and ID_NoiNhan=5) then 'true' else 'false' end,";
+                switch (TenTo)
+                {
+                    case "ToTB":
+                    case "ToTP":
+                        sql += " DaKTXM=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtls_temp.MaDon and dtls.STT=dtls_temp.STT and ID_NoiNhan=5) then"
+                            + " case when exists(select ktxm.MaKTXM from KTXM ktxm, KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtls_temp.MaDon and ktxmct.STT=dtls_temp.STT) then 'true' else 'false' end else 'false' end";
+                        break;
+                    case "ToBC":
+                        sql += " DaKTXM=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtls_temp.MaDon and dtls.STT=dtls_temp.STT and ID_NoiNhan=5) then"
+                            + " case when exists(select bc.MaBC from BamChi bc, BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtls_temp.MaDon and bcct.STT=dtls_temp.STT) then 'true'"
+                            + " else case when exists(select ktxm.MaKTXM from KTXM ktxm, KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtls_temp.MaDon and ktxmct.STT=dtls_temp.STT) then 'true' else 'false' end end else 'false' end";
+                        break;
+                }
+                sql += " from DonTu dt, dtls_temp where dtls_temp.rn=1 and dt.MaDon=dtls_temp.MaDon";
+                switch (TenTo)
+                {
+                    case "ToTB":
+                        sql += " and ID_NoiNhan=2";
+                        break;
+                    case "ToTP":
+                        sql += " and ID_NoiNhan=3";
+                        break;
+                    case "ToBC":
+                        sql += " and ID_NoiNhan=4";
+                        break;
+                }
+                sql += " order by dtls_temp.MaDon,dtls_temp.STT";
+                return ExecuteQuery_DataTable(sql);
+            }
         }
 
         // lịch sử chuyển đơn

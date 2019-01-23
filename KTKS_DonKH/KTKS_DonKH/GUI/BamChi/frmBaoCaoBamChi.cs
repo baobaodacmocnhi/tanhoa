@@ -37,7 +37,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 dt = _cBamChi.getDS("", dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
             else
             {
-                    dt = _cBamChi.getDS(CTaiKhoan.TenTo, dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
+                    dt = _cBamChi.getDS(CTaiKhoan.MaTo, dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
             }
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -66,7 +66,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 dt = _cBamChi.getDS("", dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
             else
             {
-                dt = _cBamChi.getDS(CTaiKhoan.TenTo, dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
+                dt = _cBamChi.getDS(CTaiKhoan.MaTo, dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
             }
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow item in dt.Rows)

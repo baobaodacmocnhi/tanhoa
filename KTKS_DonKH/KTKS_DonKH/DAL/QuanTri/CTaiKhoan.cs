@@ -108,7 +108,14 @@ namespace KTKS_DonKH.DAL.QuanTri
             set { CTaiKhoan._ToBC = value; }
         }
 
-        static string _TenTo="";
+        static string _MaTo = "";
+        public static string MaTo
+        {
+            get { return CTaiKhoan._MaTo; }
+            set { CTaiKhoan._MaTo = value; }
+        }
+
+        static string _TenTo = "";
         public static string TenTo
         {
             get { return CTaiKhoan._TenTo; }

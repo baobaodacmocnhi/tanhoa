@@ -68,10 +68,10 @@ namespace KTKS_DonKH.GUI.DonTu
                     switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
                     {
                         case "Ngày":
-                            dt = _cDonTu.getDS_LichSu(CTaiKhoan.TenTo, CTaiKhoan.MaUser, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value);
+                            dt = _cDonTu.getDS_LichSu(CTaiKhoan.MaTo, CTaiKhoan.MaUser, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value);
                             break;
                         case "Số Công Văn":
-                            dt = _cDonTu.getDS_LichSu(CTaiKhoan.TenTo, CTaiKhoan.MaUser, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper());
+                            dt = _cDonTu.getDS_LichSu(CTaiKhoan.MaTo, CTaiKhoan.MaUser, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper());
                             break;
                     }
                 else
@@ -79,10 +79,10 @@ namespace KTKS_DonKH.GUI.DonTu
                         switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
                         {
                             case "Ngày":
-                                dt = _cDonTu.getDS_LichSu(CTaiKhoan.TenTo, CTaiKhoan.MaUser, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value, int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
+                                dt = _cDonTu.getDS_LichSu(CTaiKhoan.MaTo, CTaiKhoan.MaUser, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value, int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
                                 break;
                             case "Số Công Văn":
-                                dt = _cDonTu.getDS_LichSu(CTaiKhoan.TenTo, CTaiKhoan.MaUser, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper(), int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
+                                dt = _cDonTu.getDS_LichSu(CTaiKhoan.MaTo, CTaiKhoan.MaUser, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper(), int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
                                 break;
                         }
             }
@@ -91,10 +91,10 @@ namespace KTKS_DonKH.GUI.DonTu
                     switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
                     {
                         case "Ngày":
-                            dt = _cDonTu.getDS_LichSu(CTaiKhoan.TenTo, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value);
+                            dt = _cDonTu.getDS_LichSu(CTaiKhoan.MaTo, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value);
                             break;
                         case "Số Công Văn":
-                            dt = _cDonTu.getDS_LichSu(CTaiKhoan.TenTo, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper());
+                            dt = _cDonTu.getDS_LichSu(CTaiKhoan.MaTo, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper());
                             break;
                     }
                 else
@@ -102,10 +102,10 @@ namespace KTKS_DonKH.GUI.DonTu
                         switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
                         {
                             case "Ngày":
-                                dt = _cDonTu.getDS_LichSu(CTaiKhoan.TenTo, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value, int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
+                                dt = _cDonTu.getDS_LichSu(CTaiKhoan.MaTo, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value, int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
                                 break;
                             case "Số Công Văn":
-                                dt = _cDonTu.getDS_LichSu(CTaiKhoan.TenTo, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper(), int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
+                                dt = _cDonTu.getDS_LichSu(CTaiKhoan.MaTo, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper(), int.Parse(cmbNoiNhan_LichSuChuyenDon.SelectedValue.ToString()));
                                 break;
                         }
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -158,10 +158,10 @@ namespace KTKS_DonKH.GUI.DonTu
             switch (cmbTimTheo_DSChuyenKTXM.SelectedItem.ToString())
             {
                 case "Ngày":
-                    dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.TenTo, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                    dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.MaTo, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                     break;
                 case "Số Công Văn":
-                    dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.TenTo, txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
+                    dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.MaTo, txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
                     break;
             }
 
@@ -224,7 +224,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnBaoCao_ThongKeNhomDon_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.TenTo, dateTu_ThongKeNhomDon.Value, dateDen_ThongKeNhomDon.Value);
+            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon.Value, dateDen_ThongKeNhomDon.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
@@ -233,6 +233,8 @@ namespace KTKS_DonKH.GUI.DonTu
 
                 dr["TuNgay"] = dateTu_ThongKeNhomDon.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeNhomDon.Value.ToString("dd/MM/yyyy");
+                dr["LoaiBaoCao"] = CTaiKhoan.TenTo.ToUpper();
+                dr["MaDonMoi"] = item["MaDonMoi"];
                 dr["MaDon"] = item["MaDon"];
                 dr["TenLD"] = item["NhomDon"];
                 dr["ChuyenTrucTiep"] = item["ChuyenTrucTiep"];
@@ -251,7 +253,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnInDSChuaChuyen_ThongKeNhomDon_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.TenTo, dateTu_ThongKeNhomDon.Value, dateDen_ThongKeNhomDon.Value);
+            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon.Value, dateDen_ThongKeNhomDon.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
@@ -274,7 +276,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnInDSChuaKTXM_ThongKeNhomDon_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.TenTo, dateTu_ThongKeNhomDon.Value, dateDen_ThongKeNhomDon.Value);
+            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon.Value, dateDen_ThongKeNhomDon.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)

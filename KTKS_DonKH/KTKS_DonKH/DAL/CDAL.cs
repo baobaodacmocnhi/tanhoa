@@ -141,10 +141,9 @@ namespace KTKS_DonKH.DAL
                 else
                     return false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
-                throw;
+                throw ex;
             }
         }
 
@@ -169,8 +168,7 @@ namespace KTKS_DonKH.DAL
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -184,10 +182,9 @@ namespace KTKS_DonKH.DAL
                 Disconnect();
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
-                throw;
+                throw ex;
             }
         }
 
@@ -197,16 +194,16 @@ namespace KTKS_DonKH.DAL
             DataTable dt = new DataTable();
             command = new SqlCommand(sql, connection);
             adapter = new SqlDataAdapter(command);
+            this.Disconnect();
             try
             {
                 adapter.Fill(dt);
+                return dt;
             }
-            catch (SqlException e)
+            catch (SqlException ex)
             {
-                throw e;
+                throw ex;
             }
-            this.Disconnect();
-            return dt;
         }
 
         /// <summary>

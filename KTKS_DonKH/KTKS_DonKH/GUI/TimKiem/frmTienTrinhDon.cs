@@ -714,7 +714,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                 dgvHoaDon.DataSource = _cDocSo.GetDS(txtSoThanDHN.Text.Trim());
             else
                 if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")))
-                    dgvHoaDon.DataSource = _cThuTien.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""));
+                    dgvHoaDon.DataSource = _cThuTien.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""),"");
                 else
                     dgvHoaDon.DataSource = _cThuTien.GetDSTimKiemTTKH(txtHoTen.Text.Trim(), txtSoNha.Text.Trim(), txtTenDuong.Text.Trim());
         }

@@ -88,9 +88,9 @@ namespace KTKS_DonKH.DAL
                 return 0;
         }
 
-        public DataTable GetDSTimKiem(string DanhBo)
+        public DataTable GetDSTimKiem(string DanhBo,string MLT)
         {
-            string sql = "select * from fnTimKiem('" + DanhBo + "') order by MaHD desc";
+            string sql = "select * from fnTimKiem('" + DanhBo + "','"+MLT+"') order by MaHD desc";
 
             return ExecuteQuery_DataTable(sql);
         }
