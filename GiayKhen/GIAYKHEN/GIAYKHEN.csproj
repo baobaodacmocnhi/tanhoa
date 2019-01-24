@@ -76,6 +76,30 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="DoanThanhNien_SoQD_CANHAN_MayA3.cs">
+      <DependentUpon>DoanThanhNien_SoQD_CANHAN_MayA3.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DoanThanhNien_SoQD_TAPTHE_MayA3.cs">
+      <DependentUpon>DoanThanhNien_SoQD_TAPTHE_MayA3.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DoanThanhNien_SoQD_PBT_TAPTHE.cs">
+      <DependentUpon>DoanThanhNien_SoQD_PBT_TAPTHE.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DoanThanhNien_SoQD_PBT_CANHAN.cs">
+      <DependentUpon>DoanThanhNien_SoQD_PBT_CANHAN.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="TLD_GKCongDoan_CanBo_CANHAN.cs">
       <DependentUpon>TLD_GKCongDoan_CanBo_CANHAN.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -90,18 +114,6 @@
     </Compile>
     <Compile Include="HCM_CANHAN.cs">
       <DependentUpon>HCM_CANHAN.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="SoQD_GKDoanThanhNien_TAPTHE.cs">
-      <DependentUpon>SoQD_GKDoanThanhNien_TAPTHE.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="SoQD_GKDoanThanhNien_CANHAN.cs">
-      <DependentUpon>SoQD_GKDoanThanhNien_CANHAN.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -146,14 +158,14 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="GKDoanThanhNien_TAPTHE.cs">
-      <DependentUpon>GKDoanThanhNien_TAPTHE.rpt</DependentUpon>
+    <Compile Include="DoanThanhNien_TAPTHE.cs">
+      <DependentUpon>DoanThanhNien_TAPTHE.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="GKDoanThanhNien_CANHAN.cs">
-      <DependentUpon>GKDoanThanhNien_CANHAN.rpt</DependentUpon>
+    <Compile Include="DoanThanhNien_CANHAN.cs">
+      <DependentUpon>DoanThanhNien_CANHAN.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -204,6 +216,22 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ChinhQuyen_TAPTHE_A3_Edit.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="DoanThanhNien_SoQD_CANHAN_MayA3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DoanThanhNien_SoQD_CANHAN_MayA3.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoanThanhNien_SoQD_TAPTHE_MayA3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DoanThanhNien_SoQD_TAPTHE_MayA3.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoanThanhNien_SoQD_PBT_TAPTHE.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DoanThanhNien_SoQD_PBT_TAPTHE.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoanThanhNien_SoQD_PBT_CANHAN.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DoanThanhNien_SoQD_PBT_CANHAN.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="TLD_GKCongDoan_CanBo_CANHAN.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>TLD_GKCongDoan_CanBo_CANHAN.cs</LastGenOutput>
@@ -215,14 +243,6 @@
     <EmbeddedResource Include="HCM_CANHAN.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>HCM_CANHAN.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SoQD_GKDoanThanhNien_TAPTHE.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>SoQD_GKDoanThanhNien_TAPTHE.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SoQD_GKDoanThanhNien_CANHAN.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>SoQD_GKDoanThanhNien_CANHAN.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TLD_GKCongDoan_CANHAN_KT.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -248,13 +268,13 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>TLD_GKCongDoan_CANHAN.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="GKDoanThanhNien_TAPTHE.rpt">
+    <EmbeddedResource Include="DoanThanhNien_TAPTHE.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>GKDoanThanhNien_TAPTHE.cs</LastGenOutput>
+      <LastGenOutput>DoanThanhNien_TAPTHE.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="GKDoanThanhNien_CANHAN.rpt">
+    <EmbeddedResource Include="DoanThanhNien_CANHAN.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>GKDoanThanhNien_CANHAN.cs</LastGenOutput>
+      <LastGenOutput>DoanThanhNien_CANHAN.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="GKCongDoan_TAPTHE.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

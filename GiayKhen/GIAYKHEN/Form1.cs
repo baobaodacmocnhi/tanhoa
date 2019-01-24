@@ -26,9 +26,9 @@ namespace GIAYKHEN
 
             string query = "";
             if (comboBox1.SelectedIndex == 0)
-                query = "select * FROM A_GIAYKHEN WHERE TAPTHE=0 AND CONGDOAN=0";
+                query = "select * FROM A_GIAYKHEN WHERE TAPTHE=0 AND DOANTHANHNIEN=1";
             if (comboBox1.SelectedIndex == 1)
-                query = "select * FROM A_GIAYKHEN WHERE TAPTHE=1 AND CONGDOAN=0";
+                query = "select * FROM A_GIAYKHEN WHERE TAPTHE=1 AND DOANTHANHNIEN=1";
             SqlDataAdapter adapter = new SqlDataAdapter(query, db.Connection.ConnectionString);
 
             adapter.Fill(ds, "A_GIAYKHEN");
@@ -46,10 +46,10 @@ namespace GIAYKHEN
             //}
             ReportDocument rp = new ReportDocument();
             if (comboBox1.SelectedIndex == 0)
-                rp = new ChinhQuyen_CANHAN_A3();
+                rp = new DoanThanhNien_SoQD_CANHAN_MayA3();
             else
                 if (comboBox1.SelectedIndex == 1)
-                    rp = new ChinhQuyen_TAPTHE_A3_Edit();
+                    rp = new DoanThanhNien_SoQD_TAPTHE_MayA3();
             //ReportDocument rp = new GKCongDoan_CANHAN();
             rp.SetDataSource(dt);
             rp.SetParameterValue("qdNam", this.txtQDNm.Text);
@@ -81,7 +81,7 @@ namespace GIAYKHEN
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2019, 01, 11);
+            txtNgay.Value = new DateTime(2019, 01, 23);
         }
     }
 }

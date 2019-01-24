@@ -16,14 +16,14 @@ namespace GIAYKHEN {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class SoQD_GKDoanThanhNien_TAPTHE : ReportClass {
+    public class DoanThanhNien_CANHAN : ReportClass {
         
-        public SoQD_GKDoanThanhNien_TAPTHE() {
+        public DoanThanhNien_CANHAN() {
         }
         
         public override string ResourceName {
             get {
-                return "SoQD_GKDoanThanhNien_TAPTHE.rpt";
+                return "DoanThanhNien_CANHAN.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace GIAYKHEN {
         
         public override string FullResourceName {
             get {
-                return "GIAYKHEN.SoQD_GKDoanThanhNien_TAPTHE.rpt";
+                return "GIAYKHEN.DoanThanhNien_CANHAN.rpt";
             }
             set {
                 // Do nothing
@@ -138,9 +138,9 @@ namespace GIAYKHEN {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedSoQD_GKDoanThanhNien_TAPTHE : Component, ICachedReport {
+    public class CachedDoanThanhNien_CANHAN : Component, ICachedReport {
         
-        public CachedSoQD_GKDoanThanhNien_TAPTHE() {
+        public CachedDoanThanhNien_CANHAN() {
         }
         
         [Browsable(false)]
@@ -177,7 +177,7 @@ namespace GIAYKHEN {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            SoQD_GKDoanThanhNien_TAPTHE rpt = new SoQD_GKDoanThanhNien_TAPTHE();
+            DoanThanhNien_CANHAN rpt = new DoanThanhNien_CANHAN();
             rpt.Site = this.Site;
             return rpt;
         }
