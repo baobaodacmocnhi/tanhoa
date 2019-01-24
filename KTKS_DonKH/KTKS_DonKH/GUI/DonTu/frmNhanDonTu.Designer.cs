@@ -638,7 +638,7 @@
             this.tabCongVan.Controls.Add(this.dgvDanhBo);
             this.tabCongVan.Location = new System.Drawing.Point(4, 25);
             this.tabCongVan.Name = "tabCongVan";
-            this.tabCongVan.Size = new System.Drawing.Size(653, 169);
+            this.tabCongVan.Size = new System.Drawing.Size(653, 191);
             this.tabCongVan.TabIndex = 1;
             this.tabCongVan.Text = "Công Văn";
             this.tabCongVan.UseVisualStyleBackColor = true;
@@ -663,10 +663,9 @@
             this.dgvDanhBo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDanhBo.Location = new System.Drawing.Point(0, 0);
             this.dgvDanhBo.Name = "dgvDanhBo";
-            this.dgvDanhBo.Size = new System.Drawing.Size(653, 169);
+            this.dgvDanhBo.Size = new System.Drawing.Size(653, 191);
             this.dgvDanhBo.TabIndex = 0;
             this.dgvDanhBo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBo_CellEndEdit);
-            this.dgvDanhBo.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBo_CellValueChanged);
             this.dgvDanhBo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhBo_RowPostPaint);
             this.dgvDanhBo.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDanhBo_UserAddedRow);
             this.dgvDanhBo.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDanhBo_UserDeletedRow);

@@ -11,12 +11,14 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ToKhachHang;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.ToKhachHang
 {
     public partial class frmToTrinhDCHD : Form
     {
         CDonKH _cDonKH = new CDonKH();
+        CDonTu _cDonTu = new CDonTu();
 
         public frmToTrinhDCHD()
         {
@@ -28,13 +30,13 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         }
 
-        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtMaDonCu_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtMaDon.Text.Trim()))
+            if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtMaDonCu.Text.Trim()))
             {
-                DonKH donkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                DonKH donkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
 
-                txtMaDon.Text = donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-");
+                txtMaDonCu.Text = donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-");
                 txtCreateDate.Text = donkh.CreateDate.Value.ToString("dd/MM/yyyy");
                 txtDanhBo.Text = donkh.DanhBo;
                 txtHopDong.Text = donkh.HopDong;
@@ -43,12 +45,52 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             }
         }
 
+        private void txtMaDonMoi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtMaDonMoi.Text.Trim()))
+            {
+                DonTu_ChiTiet dontu_ChiTiet = new DonTu_ChiTiet();
+                string MaDon = txtMaDonMoi.Text.Trim();
+                if (MaDon.Contains(".") == true)
+                {
+                    string[] MaDons = MaDon.Split('.');
+                    dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                }
+                else
+                {
+                    dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                }
+                //
+                if (dontu_ChiTiet != null)
+                {
+                    if (dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count() == 1)
+                        txtMaDonMoi.Text = dontu_ChiTiet.MaDon.Value.ToString();
+                    else
+                        txtMaDonMoi.Text = dontu_ChiTiet.MaDon.Value.ToString() + "." + dontu_ChiTiet.STT.Value.ToString();
+
+                }
+                else
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                txtMaDonMoi.Text = dontu_ChiTiet.MaDon.ToString();
+                txtCreateDate.Text = dontu_ChiTiet.CreateDate.Value.ToString("dd/MM/yyyy");
+                txtDanhBo.Text = dontu_ChiTiet.DanhBo;
+                txtHopDong.Text = dontu_ChiTiet.HopDong;
+                txtMLT.Text = dontu_ChiTiet.MLT;
+                txtDiaChi.Text = dontu_ChiTiet.DiaChi;
+            }
+        }
+
         private void btnIn_Click(object sender, EventArgs e)
         {
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataRow dr = dsBaoCao.Tables["ToTrinhDCHD"].NewRow();
 
-            dr["MaDon"] = txtMaDon.Text.Trim();
+            if (txtMaDonCu.Text.Trim()!=null)
+            dr["MaDon"] = txtMaDonCu.Text.Trim();
+            else
+                if (txtMaDonMoi.Text.Trim() != null)
+                    dr["MaDon"] = txtMaDonMoi.Text.Trim();
             dr["CreateDate"] = txtCreateDate.Text.Trim();
             dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
             dr["HopDong"] = txtHopDong.Text.Trim();
@@ -78,7 +120,11 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataRow dr = dsBaoCao.Tables["ToTrinhDCHD"].NewRow();
 
-            dr["MaDon"] = txtMaDon.Text.Trim();
+            if (txtMaDonCu.Text.Trim() != null)
+                dr["MaDon"] = txtMaDonCu.Text.Trim();
+            else
+                if (txtMaDonMoi.Text.Trim() != null)
+                    dr["MaDon"] = txtMaDonMoi.Text.Trim();
             dr["CreateDate"] = txtCreateDate.Text.Trim();
             dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
             dr["HopDong"] = txtHopDong.Text.Trim();
@@ -107,7 +153,11 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataRow dr = dsBaoCao.Tables["ToTrinhDCHD"].NewRow();
 
-            dr["MaDon"] = txtMaDon.Text.Trim();
+            if (txtMaDonCu.Text.Trim() != null)
+                dr["MaDon"] = txtMaDonCu.Text.Trim();
+            else
+                if (txtMaDonMoi.Text.Trim() != null)
+                    dr["MaDon"] = txtMaDonMoi.Text.Trim();
             dr["CreateDate"] = txtCreateDate.Text.Trim();
             dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
             dr["HopDong"] = txtHopDong.Text.Trim();
@@ -125,5 +175,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
+
+        
+
     }
 }

@@ -381,7 +381,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             select new
                             {
                                 MaDon = itemCTKTXM.KTXM.MaDonMoi.Value.ToString(),
-                                TenLD="",
+                                TenLD=itemCTKTXM.KTXM.DonTu.Name_NhomDon,
                                 itemCTKTXM.MaCTKTXM,
                                 itemCTKTXM.DanhBo,
                                 itemCTKTXM.HoTen,
@@ -456,7 +456,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             select new
                             {
                                 MaDon = itemCTKTXM.KTXM.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTKTXM.KTXM.MaDonMoi.Value.ToString() : itemCTKTXM.KTXM.MaDonMoi.Value.ToString() + "." + itemCTKTXM.STT.Value.ToString(),
-                                TenLD = "",
+                                TenLD = itemCTKTXM.KTXM.DonTu.Name_NhomDon,
                                 itemCTKTXM.MaCTKTXM,
                                 itemCTKTXM.DanhBo,
                                 itemCTKTXM.HoTen,
@@ -537,7 +537,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             select new
                             {
                                 MaDon = itemCTKTXM.KTXM.MaDonMoi.Value.ToString(),
-                               TenLD="",
+                               TenLD=itemCTKTXM.KTXM.DonTu.Name_NhomDon,
                                 itemCTKTXM.MaCTKTXM,
                                 itemCTKTXM.DanhBo,
                                 itemCTKTXM.HoTen,
@@ -561,7 +561,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
-                            TenLD = itemCTKTXM.KTXM.MaDonMoi != null ? ""
+                            TenLD = itemCTKTXM.KTXM.MaDonMoi != null ? itemCTKTXM.KTXM.DonTu.Name_NhomDon
                                     : itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
@@ -587,7 +587,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                    : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                    : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                    : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
-                            TenLD = itemCTKTXM.KTXM.MaDonMoi != null ? ""
+                            TenLD = itemCTKTXM.KTXM.MaDonMoi != null ? itemCTKTXM.KTXM.DonTu.Name_NhomDon
                                     : itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
@@ -615,7 +615,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
-                            TenLD = itemCTKTXM.KTXM.MaDonMoi != null ? ""
+                            TenLD = itemCTKTXM.KTXM.MaDonMoi != null ? itemCTKTXM.KTXM.DonTu.Name_NhomDon
                                     : itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
@@ -641,7 +641,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
-                            TenLD = itemCTKTXM.KTXM.MaDonMoi != null ? ""
+                            TenLD = itemCTKTXM.KTXM.MaDonMoi != null ? itemCTKTXM.KTXM.DonTu.Name_NhomDon
                                     : itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
@@ -667,7 +667,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                    : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                    : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                    : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
-                            TenLD = itemCTKTXM.KTXM.MaDonMoi != null ? ""
+                            TenLD = itemCTKTXM.KTXM.MaDonMoi != null ? itemCTKTXM.KTXM.DonTu.Name_NhomDon
                                     : itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
@@ -694,7 +694,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
-                            TenLD = itemCTKTXM.KTXM.MaDonMoi != null ? ""
+                            TenLD = itemCTKTXM.KTXM.MaDonMoi != null ? itemCTKTXM.KTXM.DonTu.Name_NhomDon
                                     : itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtMaDon = new System.Windows.Forms.TextBox();
+            this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,24 +64,26 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtm3 = new System.Windows.Forms.TextBox();
             this.btnInKhac = new System.Windows.Forms.Button();
+            this.txtMaDonMoi = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txtMaDon
+            // txtMaDonCu
             // 
-            this.txtMaDon.Location = new System.Drawing.Point(265, 12);
-            this.txtMaDon.Name = "txtMaDon";
-            this.txtMaDon.Size = new System.Drawing.Size(100, 22);
-            this.txtMaDon.TabIndex = 1;
-            this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
+            this.txtMaDonCu.Location = new System.Drawing.Point(166, 12);
+            this.txtMaDonCu.Name = "txtMaDonCu";
+            this.txtMaDonCu.Size = new System.Drawing.Size(100, 22);
+            this.txtMaDonCu.TabIndex = 1;
+            this.txtMaDonCu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonCu_KeyPress);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(202, 16);
+            this.label21.Location = new System.Drawing.Point(87, 15);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 16);
+            this.label21.Size = new System.Drawing.Size(73, 16);
             this.label21.TabIndex = 0;
-            this.label21.Text = "Mã Đơn:";
+            this.label21.Text = "Mã Đơn Cũ";
             // 
             // txtDanhBo
             // 
@@ -313,7 +315,7 @@
             // 
             // txtCreateDate
             // 
-            this.txtCreateDate.Location = new System.Drawing.Point(447, 13);
+            this.txtCreateDate.Location = new System.Drawing.Point(539, 12);
             this.txtCreateDate.Name = "txtCreateDate";
             this.txtCreateDate.Size = new System.Drawing.Size(100, 22);
             this.txtCreateDate.TabIndex = 3;
@@ -321,7 +323,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(371, 16);
+            this.label14.Location = new System.Drawing.Point(463, 15);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(70, 16);
             this.label14.TabIndex = 2;
@@ -362,12 +364,31 @@
             this.btnInKhac.UseVisualStyleBackColor = true;
             this.btnInKhac.Click += new System.EventHandler(this.btnInKhac_Click);
             // 
+            // txtMaDonMoi
+            // 
+            this.txtMaDonMoi.Location = new System.Drawing.Point(357, 12);
+            this.txtMaDonMoi.Name = "txtMaDonMoi";
+            this.txtMaDonMoi.Size = new System.Drawing.Size(100, 22);
+            this.txtMaDonMoi.TabIndex = 37;
+            this.txtMaDonMoi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonMoi_KeyPress);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(272, 15);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(79, 16);
+            this.label16.TabIndex = 36;
+            this.label16.Text = "Mã Đơn Mới";
+            // 
             // frmToTrinhDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(906, 355);
+            this.Controls.Add(this.txtMaDonMoi);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.btnInKhac);
             this.Controls.Add(this.txtm3);
             this.Controls.Add(this.txtXacNhanDTT);
@@ -402,7 +423,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDanhBo);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtMaDon);
+            this.Controls.Add(this.txtMaDonCu);
             this.Controls.Add(this.label21);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -416,7 +437,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtMaDon;
+        private System.Windows.Forms.TextBox txtMaDonCu;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox txtDanhBo;
         private System.Windows.Forms.Label label1;
@@ -452,5 +473,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtm3;
         private System.Windows.Forms.Button btnInKhac;
+        private System.Windows.Forms.TextBox txtMaDonMoi;
+        private System.Windows.Forms.Label label16;
     }
 }

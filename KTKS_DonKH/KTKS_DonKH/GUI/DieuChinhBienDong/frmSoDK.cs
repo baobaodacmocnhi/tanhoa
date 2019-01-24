@@ -1412,6 +1412,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         public void CopyLichSuChungTu(ChungTu_LichSu A, ref ChungTu_LichSu B)
         {
+            B.MaDonMoi = A.MaDonMoi;
+            B.STT = A.STT;
             B.MaDonTBC = A.MaDonTBC;
             B.MaDonTXL = A.MaDonTXL;
             B.MaDon = A.MaDon;

@@ -230,7 +230,22 @@ namespace KTKS_DonKH.DAL.DonTu
         {
             if (TenTo == "ToGD")
             {
-                string sql = "";
+                string sql = ";WITH dtls_temp AS"
+                            + " ("
+                            + " SELECT dtls.*,ROW_NUMBER() OVER (PARTITION BY dtls.MaDon,dtls.STT ORDER BY dtls.CreateDate asc) AS rn"
+                            + " FROM DonTu_ChiTiet dtct, DonTu_LichSu dtls"
+                            + " where cast(dtct.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(dtct.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and dtct.MaDon=dtls.MaDon and dtct.STT=dtls.STT"
+                            + " )"
+                            + " select MaDonMoi=dt.MaDon,NhomDon=dt.Name_NhomDon,"
+                            + " MaDon=case when dt.TongDB=0 then CONVERT(varchar(8),dtct.MaDon)"
+                            + "            when dt.TongDB=1 then CONVERT(varchar(8),dtct.MaDon)"
+                            + "            when dt.TongDB>=2 then CONVERT(varchar(8),dtct.MaDon)+'.'+CONVERT(varchar(3),dtct.STT) end,"
+                            + " ChuyenToTP=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan=2) then 'true' else 'false' end,"
+                            + " ChuyenToTB=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan=3) then 'true' else 'false' end,"
+                            + " ChuyenToBC=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan=4) then 'true' else 'false' end,"
+                            + " ChuyenKhac=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan!=2 and ID_NoiNhan!=3 and ID_NoiNhan!=4) then 'true' else 'false' end"
+                            + " from DonTu dt, DonTu_ChiTiet dtct where CAST(dt.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(dt.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and dt.MaDon=dtct.MaDon"
+                            + " order by dtct.MaDon,dtct.STT asc";
                 return ExecuteQuery_DataTable(sql);
             }
             else

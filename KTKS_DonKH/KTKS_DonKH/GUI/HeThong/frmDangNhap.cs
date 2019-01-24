@@ -40,7 +40,13 @@ namespace KTKS_DonKH.GUI.HeThong
                     CTaiKhoan.MaKiemBamChi = nguoidung.MaKiemBamChi;
                     CTaiKhoan.Admin = nguoidung.Admin;
                     CTaiKhoan.ThuKy = nguoidung.ThuKy;
-                    CTaiKhoan.ToGD = nguoidung.ToGD;
+
+                    if (nguoidung.ToGD == true)
+                    {
+                        CTaiKhoan.ToGD = nguoidung.ToGD;
+                        CTaiKhoan.MaTo = "ToGD";
+                    }
+                    else
                     if (nguoidung.ToTB == true)
                     {
                         CTaiKhoan.ToTB = nguoidung.ToTB;
@@ -56,6 +62,7 @@ namespace KTKS_DonKH.GUI.HeThong
                         CTaiKhoan.ToBC = nguoidung.ToBC;
                         CTaiKhoan.MaTo = "ToBC";
                     }
+                    if(nguoidung.MaTo!=null)
                     CTaiKhoan.TenTo = nguoidung.To.TenTo;
                     CTaiKhoan.ToTruong = nguoidung.ToTruong;
                     CTaiKhoan.PhoGiamDoc = nguoidung.PhoGiamDoc;
