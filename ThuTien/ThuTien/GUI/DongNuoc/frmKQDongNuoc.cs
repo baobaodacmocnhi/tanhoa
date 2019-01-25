@@ -235,31 +235,7 @@ namespace ThuTien.GUI.DongNuoc
                         _kqdongnuoc.NgayDN_ThucTe = DateTime.Now;
                         if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
                             _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
-                        if (chkKhoaTu.Checked == false && _kqdongnuoc.NgayDN.Value.Date > DateTime.Parse("2018-10-17"))
-                        {
-                            if (txtNiemChi.Text.Trim() == "")
-                            {
-                                MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                            if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && (_kqdongnuoc.NiemChi==null ||_kqdongnuoc.NiemChi.Value != int.Parse(txtNiemChi.Text.Trim())))
-                            {
-                                if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
-                                {
-                                    MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                                if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi.Text.Trim())) == true)
-                                {
-                                    MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                                if (_kqdongnuoc.NiemChi != null)
-                                    _cNiemChi.traSuDung(_kqdongnuoc.NiemChi.Value);
-                                _kqdongnuoc.NiemChi = int.Parse(txtNiemChi.Text.Trim());
-                                _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
-                            }
-                        }
+                        
                         _kqdongnuoc.Hieu = txtHieu.Text.Trim();
                         if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
                             _kqdongnuoc.Co = int.Parse(txtCo.Text.Trim());
@@ -273,6 +249,7 @@ namespace ThuTien.GUI.DongNuoc
                         _kqdongnuoc.ButChi = chkButChi.Checked;
                         _kqdongnuoc.KhongThuPhi = chkKhongThuTienMoNuoc.Checked;
 
+                        //cập nhật đóng nước lần 2
                         if (chkDongNuoc2.Checked)
                         {
                             _kqdongnuoc.DongNuoc2 = true;
@@ -357,6 +334,32 @@ namespace ThuTien.GUI.DongNuoc
                                 _kqdongnuoc.ChuyenDN1 = false;
                                 _kqdongnuoc.NgayChuyenDN1 = null;
                             }
+                        //cập nhật đóng nước lần 1
+                        if (chkKhoaTu.Checked == false && _kqdongnuoc.NgayDN.Value.Date > DateTime.Parse("2018-10-17"))
+                        {
+                            if (txtNiemChi.Text.Trim() == "")
+                            {
+                                MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && (_kqdongnuoc.NiemChi == null || _kqdongnuoc.NiemChi.Value != int.Parse(txtNiemChi.Text.Trim())))
+                            {
+                                if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
+                                {
+                                    MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi.Text.Trim())) == true)
+                                {
+                                    MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                if (_kqdongnuoc.NiemChi != null)
+                                    _cNiemChi.traSuDung(_kqdongnuoc.NiemChi.Value);
+                                _kqdongnuoc.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                                _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
+                            }
+                        }
 
                         if (_cDongNuoc.SuaKQ(_kqdongnuoc))
                         {
@@ -639,16 +642,16 @@ namespace ThuTien.GUI.DongNuoc
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQMoNuocByDates(dateTu.Value, dateDen.Value);
+                            dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQMoNuoc(dateTu.Value, dateDen.Value);
                         else
                             if (cmbTo.SelectedIndex > 0)
-                                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQMoNuocByMaToDates((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+                                dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQMoNuoc_MaTo_NgayMN((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
                     }
                     else
                         if (CNguoiDung.ToTruong)
-                            dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQMoNuocByMaToDates(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                            dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQMoNuoc_MaTo_NgayMN(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
                         else
-                            dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQMoNuocByMaNVDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                            dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc_MaNV_NgayMN(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
                 }
             //foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
             //{
