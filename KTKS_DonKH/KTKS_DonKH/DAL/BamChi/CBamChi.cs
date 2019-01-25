@@ -222,117 +222,6 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public DataTable getDS(string TenTo, DateTime FromNgayBC, DateTime ToNgayBC)
-        {
-            switch (TenTo)
-            {
-                case "ToTB":
-                    var query = from itemCTBamChi in db.BamChi_ChiTiets
-                                join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                where itemCTBamChi.BamChi.MaDon != null
-                                && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
-                                select new
-                                {
-                                    MaDon = "TKH" + itemCTBamChi.BamChi.MaDon,
-                                    itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
-                                    itemCTBamChi.MaCTBC,
-                                    itemCTBamChi.DanhBo,
-                                    itemCTBamChi.HoTen,
-                                    itemCTBamChi.DiaChi,
-                                    itemCTBamChi.HopDong,
-                                    itemCTBamChi.NgayBC,
-                                    itemCTBamChi.TrangThaiBC,
-                                    itemCTBamChi.Hieu,
-                                    itemCTBamChi.Co,
-                                    itemCTBamChi.ChiSo,
-                                    itemCTBamChi.VienChi,
-                                    itemCTBamChi.DayChi,
-                                    itemCTBamChi.TheoYeuCau,
-                                    itemCTBamChi.MaSoBC,
-                                    CreateBy = itemUser.HoTen,
-                                };
-                    return LINQToDataTable(query.OrderBy(item => item.TenLD));
-                case "ToTP":
-                    query = from itemCTBamChi in db.BamChi_ChiTiets
-                            join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                            where itemCTBamChi.BamChi.MaDonTXL != null
-                            && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
-                            select new
-                            {
-                                MaDon = "TXL" + itemCTBamChi.BamChi.MaDonTXL,
-                                itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
-                                itemCTBamChi.MaCTBC,
-                                itemCTBamChi.DanhBo,
-                                itemCTBamChi.HoTen,
-                                itemCTBamChi.DiaChi,
-                                itemCTBamChi.HopDong,
-                                itemCTBamChi.NgayBC,
-                                itemCTBamChi.TrangThaiBC,
-                                itemCTBamChi.Hieu,
-                                itemCTBamChi.Co,
-                                itemCTBamChi.ChiSo,
-                                itemCTBamChi.VienChi,
-                                itemCTBamChi.DayChi,
-                                itemCTBamChi.TheoYeuCau,
-                                itemCTBamChi.MaSoBC,
-                                CreateBy = itemUser.HoTen,
-                            };
-                    return LINQToDataTable(query.OrderBy(item => item.TenLD));
-                case "ToBC":
-                    query = from itemCTBamChi in db.BamChi_ChiTiets
-                            join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                            where itemCTBamChi.BamChi.MaDonTBC != null
-                            && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
-                            select new
-                            {
-                                MaDon = "TBC" + itemCTBamChi.BamChi.MaDonTBC,
-                                itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD,
-                                itemCTBamChi.MaCTBC,
-                                itemCTBamChi.DanhBo,
-                                itemCTBamChi.HoTen,
-                                itemCTBamChi.DiaChi,
-                                itemCTBamChi.HopDong,
-                                itemCTBamChi.NgayBC,
-                                itemCTBamChi.TrangThaiBC,
-                                itemCTBamChi.Hieu,
-                                itemCTBamChi.Co,
-                                itemCTBamChi.ChiSo,
-                                itemCTBamChi.VienChi,
-                                itemCTBamChi.DayChi,
-                                itemCTBamChi.TheoYeuCau,
-                                itemCTBamChi.MaSoBC,
-                                CreateBy = itemUser.HoTen,
-                            };
-                    return LINQToDataTable(query.OrderBy(item => item.TenLD));
-                default:
-                    query = from itemCTBamChi in db.BamChi_ChiTiets
-                            join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                            where itemCTBamChi.BamChi.MaDonMoi != null
-                            && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
-                            select new
-                            {
-                                MaDon = itemCTBamChi.BamChi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTBamChi.BamChi.MaDonMoi).Count() == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi + "." + itemCTBamChi.STT : null,
-                                TenLD = "",
-                                itemCTBamChi.MaCTBC,
-                                itemCTBamChi.DanhBo,
-                                itemCTBamChi.HoTen,
-                                itemCTBamChi.DiaChi,
-                                itemCTBamChi.HopDong,
-                                itemCTBamChi.NgayBC,
-                                itemCTBamChi.TrangThaiBC,
-                                itemCTBamChi.Hieu,
-                                itemCTBamChi.Co,
-                                itemCTBamChi.ChiSo,
-                                itemCTBamChi.VienChi,
-                                itemCTBamChi.DayChi,
-                                itemCTBamChi.TheoYeuCau,
-                                itemCTBamChi.MaSoBC,
-                                CreateBy = itemUser.HoTen,
-                            };
-                    return LINQToDataTable(query.OrderBy(item => item.TenLD));
-            }
-        }
-
         public DataTable getDS(string TenTo, int CreateBy, decimal MaDon)
         {
             switch (TenTo)
@@ -422,7 +311,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             select new
                             {
                                 MaDon = itemCTBamChi.BamChi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTBamChi.BamChi.MaDonMoi).Count() == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi + "." + itemCTBamChi.STT : null,
-                                TenLD = "",
+                                TenLD = itemCTBamChi.BamChi.DonTu.Name_NhomDon,
                                 itemCTBamChi.MaCTBC,
                                 itemCTBamChi.DanhBo,
                                 itemCTBamChi.HoTen,
@@ -533,7 +422,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             select new
                             {
                                 MaDon = itemCTBamChi.BamChi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTBamChi.BamChi.MaDonMoi).Count() == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi + "." + itemCTBamChi.STT:null,
-                                TenLD = "",
+                                TenLD = itemCTBamChi.BamChi.DonTu.Name_NhomDon,
                                 itemCTBamChi.MaCTBC,
                                 itemCTBamChi.DanhBo,
                                 itemCTBamChi.HoTen,
@@ -641,7 +530,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             select new
                             {
                                 MaDon = itemCTBamChi.BamChi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTBamChi.BamChi.MaDonMoi).Count() == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi + "." + itemCTBamChi.STT:null,
-                                TenLD = "",
+                                TenLD = itemCTBamChi.BamChi.DonTu.Name_NhomDon,
                                 itemCTBamChi.MaCTBC,
                                 itemCTBamChi.DanhBo,
                                 itemCTBamChi.HoTen,
@@ -673,7 +562,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                         : itemCTBamChi.BamChi.MaDon != null ? "TKH" + itemCTBamChi.BamChi.MaDon
                                         : itemCTBamChi.BamChi.MaDonTXL != null ? "TXL" + itemCTBamChi.BamChi.MaDonTXL
                                         : itemCTBamChi.BamChi.MaDonTBC != null ? "TBC" + itemCTBamChi.BamChi.MaDonTBC : null,
-                            TenLD = itemCTBamChi.BamChi.MaDonMoi != null ? ""
+                            TenLD = itemCTBamChi.BamChi.MaDonMoi != null ? itemCTBamChi.BamChi.DonTu.Name_NhomDon
                                         : itemCTBamChi.BamChi.MaDon != null ? itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD
                                         : itemCTBamChi.BamChi.MaDonTXL != null ? itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD
                                         : itemCTBamChi.BamChi.MaDonTBC != null ? itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD : null,
@@ -708,7 +597,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                         : itemCTBamChi.BamChi.MaDon != null ? "TKH" + itemCTBamChi.BamChi.MaDon
                                         : itemCTBamChi.BamChi.MaDonTXL != null ? "TXL" + itemCTBamChi.BamChi.MaDonTXL
                                         : itemCTBamChi.BamChi.MaDonTBC != null ? "TBC" + itemCTBamChi.BamChi.MaDonTBC : null,
-                            TenLD = itemCTBamChi.BamChi.MaDonMoi != null ? ""
+                            TenLD = itemCTBamChi.BamChi.MaDonMoi != null ? itemCTBamChi.BamChi.DonTu.Name_NhomDon
                                         : itemCTBamChi.BamChi.MaDon != null ? itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD
                                         : itemCTBamChi.BamChi.MaDonTXL != null ? itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD
                                         : itemCTBamChi.BamChi.MaDonTBC != null ? itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD : null,
@@ -744,7 +633,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                         : itemCTBamChi.BamChi.MaDon != null ? "TKH" + itemCTBamChi.BamChi.MaDon
                                         : itemCTBamChi.BamChi.MaDonTXL != null ? "TXL" + itemCTBamChi.BamChi.MaDonTXL
                                         : itemCTBamChi.BamChi.MaDonTBC != null ? "TBC" + itemCTBamChi.BamChi.MaDonTBC : null,
-                            TenLD = itemCTBamChi.BamChi.MaDonMoi != null ? ""
+                            TenLD = itemCTBamChi.BamChi.MaDonMoi != null ? itemCTBamChi.BamChi.DonTu.Name_NhomDon
                                         : itemCTBamChi.BamChi.MaDon != null ? itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD
                                         : itemCTBamChi.BamChi.MaDonTXL != null ? itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD
                                         : itemCTBamChi.BamChi.MaDonTBC != null ? itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD : null,
@@ -779,7 +668,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                         : itemCTBamChi.BamChi.MaDon != null ? "TKH" + itemCTBamChi.BamChi.MaDon
                                         : itemCTBamChi.BamChi.MaDonTXL != null ? "TXL" + itemCTBamChi.BamChi.MaDonTXL
                                         : itemCTBamChi.BamChi.MaDonTBC != null ? "TBC" + itemCTBamChi.BamChi.MaDonTBC : null,
-                            TenLD = itemCTBamChi.BamChi.MaDonMoi != null ? ""
+                            TenLD = itemCTBamChi.BamChi.MaDonMoi != null ? itemCTBamChi.BamChi.DonTu.Name_NhomDon
                                         : itemCTBamChi.BamChi.MaDon != null ? itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD
                                         : itemCTBamChi.BamChi.MaDonTXL != null ? itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD
                                         : itemCTBamChi.BamChi.MaDonTBC != null ? itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD : null,

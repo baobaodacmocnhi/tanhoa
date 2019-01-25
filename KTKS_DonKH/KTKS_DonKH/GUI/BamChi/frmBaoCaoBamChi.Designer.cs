@@ -35,7 +35,6 @@
             this.btnBaoCao_ThongKeTrangThaiBamChi = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkAll_ThongKeHienTrangKiemTra = new System.Windows.Forms.CheckBox();
             this.btnIn_ThongKeTrangThaiBamChi = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -101,7 +100,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnIn_ThongKeTrangThaiBamChi);
-            this.groupBox1.Controls.Add(this.chkAll_ThongKeHienTrangKiemTra);
             this.groupBox1.Controls.Add(this.panel_KhoangThoiGian);
             this.groupBox1.Controls.Add(this.btnBaoCao_ThongKeTrangThaiBamChi);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -110,16 +108,6 @@
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống Kê theo Loại Đơn (ngày Bấm Chì)";
-            // 
-            // chkAll_ThongKeHienTrangKiemTra
-            // 
-            this.chkAll_ThongKeHienTrangKiemTra.AutoSize = true;
-            this.chkAll_ThongKeHienTrangKiemTra.Location = new System.Drawing.Point(268, 42);
-            this.chkAll_ThongKeHienTrangKiemTra.Name = "chkAll_ThongKeHienTrangKiemTra";
-            this.chkAll_ThongKeHienTrangKiemTra.Size = new System.Drawing.Size(114, 20);
-            this.chkAll_ThongKeHienTrangKiemTra.TabIndex = 29;
-            this.chkAll_ThongKeHienTrangKiemTra.Text = "Tất Cả Các Tổ";
-            this.chkAll_ThongKeHienTrangKiemTra.UseVisualStyleBackColor = true;
             // 
             // btnIn_ThongKeTrangThaiBamChi
             // 
@@ -146,7 +134,6 @@
             this.panel_KhoangThoiGian.ResumeLayout(false);
             this.panel_KhoangThoiGian.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -160,7 +147,6 @@
         private System.Windows.Forms.Button btnBaoCao_ThongKeTrangThaiBamChi;
         private System.Windows.Forms.Panel panel_KhoangThoiGian;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox chkAll_ThongKeHienTrangKiemTra;
         private System.Windows.Forms.Button btnIn_ThongKeTrangThaiBamChi;
 
     }

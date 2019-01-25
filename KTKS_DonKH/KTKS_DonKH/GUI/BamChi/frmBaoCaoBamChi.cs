@@ -33,12 +33,7 @@ namespace KTKS_DonKH.GUI.BamChi
         private void btnBaoCao_ThongKeTrangThaiBamChi_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            if (chkAll_ThongKeHienTrangKiemTra.Checked == true)
-                dt = _cBamChi.getDS("", dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
-            else
-            {
-                    dt = _cBamChi.getDS(CTaiKhoan.MaTo, dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
-            }
+            dt = _cBamChi.getDS(dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
@@ -62,12 +57,8 @@ namespace KTKS_DonKH.GUI.BamChi
         private void btnIn_ThongKeTrangThaiBamChi_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            if (chkAll_ThongKeHienTrangKiemTra.Checked == true)
-                dt = _cBamChi.getDS("", dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
-            else
-            {
-                dt = _cBamChi.getDS(CTaiKhoan.MaTo, dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
-            }
+            dt = _cBamChi.getDS(dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
+
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow item in dt.Rows)
             {
@@ -77,11 +68,11 @@ namespace KTKS_DonKH.GUI.BamChi
                 dr["DenNgay"] = dateDen_ThongKeTrangThaiBamChi.Value.ToString("dd/MM/yyyy");
                 dr["LoaiBaoCao"] = "BẤM CHÌ";
                 dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
-                if (string.IsNullOrEmpty(item["DanhBo"].ToString()) == false && item["DanhBo"].ToString().Length==11)
-                dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                if (string.IsNullOrEmpty(item["DanhBo"].ToString()) == false && item["DanhBo"].ToString().Length == 11)
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = item["HoTen"];
                 dr["DiaChi"] = item["DiaChi"];
-                dr["GhiChu"]=item["TenLD"];
+                dr["GhiChu"] = item["TenLD"];
 
                 dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
             }

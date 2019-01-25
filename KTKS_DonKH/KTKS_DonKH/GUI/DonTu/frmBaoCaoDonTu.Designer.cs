@@ -55,7 +55,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To = new System.Windows.Forms.Button();
             this.btnInDSChuaChuyen_ThongKeNhomDon_3To = new System.Windows.Forms.Button();
             this.btnBaoCao_ThongKeNhomDon_3To = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -64,7 +63,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnInDSChuaKTXM_ThongKeNhomDon_ToGD = new System.Windows.Forms.Button();
             this.btnInDSChuaChuyen_ThongKeNhomDon_ToGD = new System.Windows.Forms.Button();
             this.btnBaoCao_ThongKeNhomDon_ToGD = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -72,6 +70,7 @@
             this.dateDen_ThongKeNhomDon_ToGD = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian_LichSuChuyenDon.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -364,16 +363,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thống Kê Theo Nhóm Đơn (ngày nhận) - Tổ Tân Bình, Tân Phú, Bấm Chì";
             // 
-            // btnInDSChuaKTXM_ThongKeNhomDon_3To
-            // 
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Location = new System.Drawing.Point(366, 40);
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Name = "btnInDSChuaKTXM_ThongKeNhomDon_3To";
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Size = new System.Drawing.Size(90, 41);
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.TabIndex = 27;
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Text = "In DS Chưa KTXM";
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.UseVisualStyleBackColor = true;
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Click += new System.EventHandler(this.btnInDSChuaKTXM_ThongKeNhomDon_3To_Click);
-            // 
             // btnInDSChuaChuyen_ThongKeNhomDon_3To
             // 
             this.btnInDSChuaChuyen_ThongKeNhomDon_3To.Location = new System.Drawing.Point(270, 40);
@@ -443,7 +432,6 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.btnInDSChuaKTXM_ThongKeNhomDon_ToGD);
             this.groupBox4.Controls.Add(this.btnInDSChuaChuyen_ThongKeNhomDon_ToGD);
             this.groupBox4.Controls.Add(this.btnBaoCao_ThongKeNhomDon_ToGD);
             this.groupBox4.Controls.Add(this.panel1);
@@ -453,16 +441,6 @@
             this.groupBox4.TabIndex = 32;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Thống Kê Theo Nhóm Đơn (ngày nhận) - Tổ Giao Dịch";
-            // 
-            // btnInDSChuaKTXM_ThongKeNhomDon_ToGD
-            // 
-            this.btnInDSChuaKTXM_ThongKeNhomDon_ToGD.Location = new System.Drawing.Point(366, 40);
-            this.btnInDSChuaKTXM_ThongKeNhomDon_ToGD.Name = "btnInDSChuaKTXM_ThongKeNhomDon_ToGD";
-            this.btnInDSChuaKTXM_ThongKeNhomDon_ToGD.Size = new System.Drawing.Size(90, 41);
-            this.btnInDSChuaKTXM_ThongKeNhomDon_ToGD.TabIndex = 27;
-            this.btnInDSChuaKTXM_ThongKeNhomDon_ToGD.Text = "In DS Chưa KTXM";
-            this.btnInDSChuaKTXM_ThongKeNhomDon_ToGD.UseVisualStyleBackColor = true;
-            this.btnInDSChuaKTXM_ThongKeNhomDon_ToGD.Click += new System.EventHandler(this.btnInDSChuaKTXM_ThongKeNhomDon_ToGD_Click);
             // 
             // btnInDSChuaChuyen_ThongKeNhomDon_ToGD
             // 
@@ -531,6 +509,16 @@
             this.label13.TabIndex = 16;
             this.label13.Text = "Đến Ngày:";
             // 
+            // btnInDSChuaKTXM_ThongKeNhomDon_3To
+            // 
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Location = new System.Drawing.Point(366, 40);
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Name = "btnInDSChuaKTXM_ThongKeNhomDon_3To";
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Size = new System.Drawing.Size(90, 41);
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.TabIndex = 27;
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Text = "In DS Chưa KTXM";
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.UseVisualStyleBackColor = true;
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Click += new System.EventHandler(this.btnInDSChuaKTXM_ThongKeNhomDon_3To_Click);
+            // 
             // frmBaoCaoDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -592,7 +580,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox chkNguoiLap;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnInDSChuaKTXM_ThongKeNhomDon_3To;
         private System.Windows.Forms.Button btnInDSChuaChuyen_ThongKeNhomDon_3To;
         private System.Windows.Forms.Button btnBaoCao_ThongKeNhomDon_3To;
         private System.Windows.Forms.Panel panel2;
@@ -601,7 +588,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button btnInDSChuaKTXM_ThongKeNhomDon_ToGD;
         private System.Windows.Forms.Button btnInDSChuaChuyen_ThongKeNhomDon_ToGD;
         private System.Windows.Forms.Button btnBaoCao_ThongKeNhomDon_ToGD;
         private System.Windows.Forms.Panel panel1;
@@ -609,5 +595,6 @@
         private System.Windows.Forms.DateTimePicker dateDen_ThongKeNhomDon_ToGD;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnInDSChuaKTXM_ThongKeNhomDon_3To;
     }
 }

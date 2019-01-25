@@ -309,8 +309,8 @@ namespace KTKS_DonKH.GUI.DonTu
                 dr["TuNgay"] = dateTu_ThongKeNhomDon_ToGD.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeNhomDon_ToGD.Value.ToString("dd/MM/yyyy");
                 dr["LoaiBaoCao"] = CTaiKhoan.TenTo.ToUpper();
-                dr["MaDonMoi"] = item["MaDonMoi"];
                 dr["MaDon"] = item["MaDon"];
+                dr["MaDonChiTiet"] = item["MaDonChiTiet"];
                 dr["NhomDon"] = item["NhomDon"];
                 dr["ChuyenToTB"] = item["ChuyenToTB"];
                 dr["ChuyenToTP"] = item["ChuyenToTP"];
@@ -329,15 +329,32 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnInDSChuaChuyen_ThongKeNhomDon_ToGD_Click(object sender, EventArgs e)
         {
+            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon_ToGD.Value, dateDen_ThongKeNhomDon_ToGD.Value);
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
+            foreach (DataRow item in dt.Rows)
+                if (bool.Parse(item["ChuyenToTB"].ToString()) == false && bool.Parse(item["ChuyenToTP"].ToString()) == false && bool.Parse(item["ChuyenToBC"].ToString()) == false && bool.Parse(item["ChuyenKhac"].ToString()) == false)
+                {
+                    DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
+
+                    dr["TuNgay"] = dateTu_ThongKeNhomDon_ToGD.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen_ThongKeNhomDon_ToGD.Value.ToString("dd/MM/yyyy");
+                    dr["LoaiBaoCao"] = "CHƯA CHUYỂN";
+                    dr["MaDon"] = item["MaDonChiTiet"];
+                    dr["DanhBo"] = item["DanhBo"];
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
+
+                    dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
+                }
+
+            rptDanhSach_Doc rpt = new rptDanhSach_Doc();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
         }
 
-        private void btnInDSChuaKTXM_ThongKeNhomDon_ToGD_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        
 
 
     }

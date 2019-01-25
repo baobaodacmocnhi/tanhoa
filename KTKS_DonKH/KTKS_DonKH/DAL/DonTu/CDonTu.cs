@@ -232,12 +232,12 @@ namespace KTKS_DonKH.DAL.DonTu
             {
                 string sql = ";WITH dtls_temp AS"
                             + " ("
-                            + " SELECT dtls.*,ROW_NUMBER() OVER (PARTITION BY dtls.MaDon,dtls.STT ORDER BY dtls.CreateDate asc) AS rn"
+                            + " SELECT dtls.*,ROW_NUMBER() OVER (PARTITION BY dtls.MaDon,dtls.STT ORDER BY dtls.NgayChuyen asc,dtls.ID asc) AS rn"
                             + " FROM DonTu_ChiTiet dtct, DonTu_LichSu dtls"
                             + " where cast(dtct.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(dtct.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and dtct.MaDon=dtls.MaDon and dtct.STT=dtls.STT"
                             + " )"
-                            + " select MaDonMoi=dt.MaDon,NhomDon=dt.Name_NhomDon,"
-                            + " MaDon=case when dt.TongDB=0 then CONVERT(varchar(8),dtct.MaDon)"
+                            + " select dt.MaDon,NhomDon=dt.Name_NhomDon,dt.TongDB,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,"
+                            + " MaDonChiTiet=case when dt.TongDB=0 then CONVERT(varchar(8),dtct.MaDon)"
                             + "            when dt.TongDB=1 then CONVERT(varchar(8),dtct.MaDon)"
                             + "            when dt.TongDB>=2 then CONVERT(varchar(8),dtct.MaDon)+'.'+CONVERT(varchar(3),dtct.STT) end,"
                             + " ChuyenToTP=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan=2) then 'true' else 'false' end,"
@@ -252,12 +252,12 @@ namespace KTKS_DonKH.DAL.DonTu
             {
                 string sql = ";WITH dtls_temp AS"
                             + " ("
-                            + " SELECT dtls.*,ROW_NUMBER() OVER (PARTITION BY dtls.MaDon,dtls.STT ORDER BY dtls.CreateDate asc) AS rn"
+                            + " SELECT dtls.*,ROW_NUMBER() OVER (PARTITION BY dtls.MaDon,dtls.STT ORDER BY dtls.NgayChuyen asc,dtls.ID asc) AS rn"
                             + " FROM DonTu_ChiTiet dtct, DonTu_LichSu dtls"
                             + " where cast(dtct.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(dtct.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and dtct.MaDon=dtls.MaDon and dtct.STT=dtls.STT"
                             + " )"
-                            + " select NhomDon=dt.Name_NhomDon,MaDonMoi=dt.MaDon,dt.TongDB,"
-                            + " MaDon=case when dt.TongDB=0 then CONVERT(varchar(8),dtls_temp.MaDon)"
+                            + " select dt.MaDon,NhomDon=dt.Name_NhomDon,dt.TongDB,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,"
+                            + " MaDonChiTiet=case when dt.TongDB=0 then CONVERT(varchar(8),dtls_temp.MaDon)"
                             + " 		   when dt.TongDB=1 then CONVERT(varchar(8),dtls_temp.MaDon)"
                             + " 		   when dt.TongDB>=2 then CONVERT(varchar(8),dtls_temp.MaDon)+'.'+CONVERT(varchar(3),dtls_temp.STT) end,"
                             + " ChuyenTrucTiep=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtls_temp.MaDon and dtls.STT=dtls_temp.STT and ID_NoiNhan=5) then 'false' else 'true' end,"
@@ -330,6 +330,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         entity.NoiDung = "Đã Kiểm Tra, " + NoiDung;
                         entity.TableName = "KTXM_ChiTiet";
                         entity.IDCT = IDCT;
+                        entity.NgayChuyen = db.KTXM_ChiTiets.SingleOrDefault(item => item.MaCTKTXM == IDCT).NgayKTXM;
                         break;
                     case "BamChi":
                         entity.ID_NoiChuyen = 5;
@@ -337,6 +338,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         entity.NoiDung = "Đã Bấm Chì, " + NoiDung;
                         entity.TableName = "BamChi_ChiTiet";
                         entity.IDCT = IDCT;
+                        entity.NgayChuyen = db.BamChi_ChiTiets.SingleOrDefault(item => item.MaCTBC == IDCT).NgayBC;
                         break;
                     case "DCBD":
                         entity.ID_NoiChuyen = 6;
