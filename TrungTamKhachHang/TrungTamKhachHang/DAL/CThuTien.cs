@@ -10,9 +10,9 @@ namespace TrungTamKhachHang.DAL
     {
         CConnection _cDAL = new CConnection(CConnection.connectionString_ThuTien);
 
-        public DataTable GetDSTimKiem(string DanhBo)
+        public DataTable getTimKiem(string DanhBo)
         {
-            string sql = "select * from fnTimKiem('" + DanhBo + "') order by MaHD desc";
+            string sql = "select * from fnTimKiem('" + DanhBo + "','') order by MaHD desc";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 

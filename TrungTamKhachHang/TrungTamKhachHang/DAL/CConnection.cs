@@ -178,6 +178,32 @@ namespace TrungTamKhachHang.DAL
             }
         }
 
+        public DataSet ExecuteQuery_DataSet(string sql)
+        {
+            try
+            {
+                Connect();
+                DataSet dataset = new DataSet();
+                command = new SqlCommand(sql, connection);
+                adapter = new SqlDataAdapter(command);
+                try
+                {
+                    adapter.Fill(dataset);
+                }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
+                Disconnect();
+                return dataset;
+            }
+            catch (Exception ex)
+            {
+                Disconnect();
+                throw ex;
+            }
+        }
+
         /// <summary>
         /// Thực thi câu truy vấn SQL trả về một đối tượng DataSet chứa kết quả trả về
         /// </summary>
