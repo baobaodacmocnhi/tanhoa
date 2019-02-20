@@ -55,7 +55,6 @@ namespace TrungTamKhachHang.GUI.KhachHang
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thư Mời", gridViewThuMoi);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Tiến Trình", gridViewTienTrinh);
 
-            
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -64,17 +63,17 @@ namespace TrungTamKhachHang.GUI.KhachHang
             {
                 try
                 {
-                    _log = System.IO.File.AppendText("\\\\192.168.90.9\\BaoBao$\\TrungTamKhachHang\\log" + CUser.MaUser + ".txt");
+                    //_log = System.IO.File.AppendText("\\\\192.168.90.9\\BaoBao$\\TrungTamKhachHang\\log" + CUser.MaUser + ".txt");
                     string strDanhBo = txtDanhBoTimKiem.Text.Trim().Replace(" ", "");
                     //lấy lịch sử khiếu nại
-                    DateTime dateTong = DateTime.Now;
-                    DateTime date = DateTime.Now;
+                    //DateTime dateTong = DateTime.Now;
+                    //DateTime date = DateTime.Now;
                     dgvKhieuNai.DataSource = _cKN.getDS_DanhBo(strDanhBo);
-                    TimeSpan diff = DateTime.Now - date;
-                    _log.WriteLine("lấy lịch sử khiếu nại " + diff.TotalSeconds);
+                    //TimeSpan diff = DateTime.Now - date;
+                    //_log.WriteLine("lấy lịch sử khiếu nại " + diff.TotalSeconds);
 
                     //lấy thông tin khách hàng
-                    date = DateTime.Now;
+                    //date = DateTime.Now;
                     DataTable dt = _cCapNuocTanHoa.getThongTin(strDanhBo);
                     if (dt != null && dt.Rows.Count > 0)
                     {
@@ -94,38 +93,38 @@ namespace TrungTamKhachHang.GUI.KhachHang
                         dateNgayGan.Value = DateTime.Parse(dt.Rows[0]["NgayThay"].ToString());
                         dateNgayKiemDinh.Value = DateTime.Parse(dt.Rows[0]["NgayKiemDinh"].ToString());
                     }
-                    diff = DateTime.Now - date;
-                    _log.WriteLine("lấy thông tin khách hàng " + diff.TotalSeconds);
+                    //diff = DateTime.Now - date;
+                    //_log.WriteLine("lấy thông tin khách hàng " + diff.TotalSeconds);
 
                     //lấy thông tin đọc số
-                    date = DateTime.Now;
+                    //date = DateTime.Now;
                     dgvDHN_DocSo.DataSource = _cDocSo.getGhiChiSo(strDanhBo);
-                    diff = DateTime.Now - date;
-                    _log.WriteLine("lấy thông tin đọc số " + diff.TotalSeconds);
+                    //diff = DateTime.Now - date;
+                    //_log.WriteLine("lấy thông tin đọc số " + diff.TotalSeconds);
 
                     //lấy thông tin ghi chú
-                    date = DateTime.Now;
+                    //date = DateTime.Now;
                     dgvDHN_GhiChu.DataSource = _cCapNuocTanHoa.getGhiChu(strDanhBo);
-                    diff = DateTime.Now - date;
-                    _log.WriteLine("lấy thông tin ghi chú " + diff.TotalSeconds);
+                    //diff = DateTime.Now - date;
+                    //_log.WriteLine("lấy thông tin ghi chú " + diff.TotalSeconds);
 
                     //lấy thông tin thu tiền
-                    date = DateTime.Now;
+                    //date = DateTime.Now;
                     dgvThuTien.DataSource = _cThuTien.getTimKiem(strDanhBo);
-                    diff = DateTime.Now - date;
-                    _log.WriteLine("lấy thông tin thu tiền " + diff.TotalSeconds);
+                    //diff = DateTime.Now - date;
+                    //_log.WriteLine("lấy thông tin thu tiền " + diff.TotalSeconds);
 
                     //lấy thông tin kinh doanh
-                    date = DateTime.Now;
+                    //date = DateTime.Now;
                     gridControl.DataSource = _cKinhDoanh.getTimKiem(strDanhBo).Tables["DonTu"];
-                    diff = DateTime.Now - date;
-                    _log.WriteLine("lấy thông tin kinh doanh " + diff.TotalSeconds);
+                    //diff = DateTime.Now - date;
+                    //_log.WriteLine("lấy thông tin kinh doanh " + diff.TotalSeconds);
 
-                    diff = DateTime.Now - dateTong;
-                    _log.WriteLine("Tổng " + diff.TotalSeconds);
-                    _log.WriteLine("=============================================");
-                    _log.Close();
-                    _log.Dispose();
+                    //diff = DateTime.Now - dateTong;
+                    //_log.WriteLine("Tổng " + diff.TotalSeconds);
+                    //_log.WriteLine("=============================================");
+                    //_log.Close();
+                    //_log.Dispose();
                 }
                 catch (Exception ex)
                 {
