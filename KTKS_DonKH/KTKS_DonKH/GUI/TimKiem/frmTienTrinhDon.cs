@@ -79,8 +79,8 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             try
             {
-                _log = System.IO.File.AppendText("\\\\192.168.90.9\\BaoBao$\\TrungTamKhachHang\\log.txt");
-                DateTime date = DateTime.Now;
+                //_log = System.IO.File.AppendText("\\\\192.168.90.9\\BaoBao$\\TrungTamKhachHang\\log.txt");
+                //DateTime date = DateTime.Now;
                 
                 switch (cmbTimTheo.SelectedItem.ToString())
                 {
@@ -114,10 +114,10 @@ namespace KTKS_DonKH.GUI.TimKiem
                         dt = _cTimKiem.getTienTrinhByDiaChi(txtNoiDungTimKiem.Text.Trim()).Tables["DonTu"];
                         break;
                 }
-                TimeSpan diff = DateTime.Now - date;
-                _log.WriteLine("lấy lịch sử khiếu nại " + diff.TotalSeconds.ToString());
-                _log.Close();
-                _log.Dispose();
+                //TimeSpan diff = DateTime.Now - date;
+                //_log.WriteLine("lấy lịch sử khiếu nại " + diff.TotalSeconds.ToString());
+                //_log.Close();
+                //_log.Dispose();
                 gridControl.DataSource = dt;
             }
             catch (Exception)
