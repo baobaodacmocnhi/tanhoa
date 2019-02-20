@@ -188,6 +188,32 @@ namespace KTKS_DonKH.DAL
             }
         }
 
+        public DataSet ExecuteQuery_DataSet(string sql)
+        {
+            try
+            {
+                Connect();
+                DataSet dataset = new DataSet();
+                command = new SqlCommand(sql, connection);
+                adapter = new SqlDataAdapter(command);
+                try
+                {
+                    adapter.Fill(dataset);
+                }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
+                Disconnect();
+                return dataset;
+            }
+            catch (Exception ex)
+            {
+                Disconnect();
+                throw ex;
+            }
+        }
+
         public DataTable ExecuteQuery_DataTable(string sql)
         {
             this.Connect();

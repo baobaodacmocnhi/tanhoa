@@ -214,6 +214,8 @@
             this.cmbTinhTrang.Items.AddRange(new object[] {
             "",
             "Đang gửi thư mời",
+            "Đang lập bảng giá",
+            "Đang trình ký",
             "Chưa thanh toán",
             "Đã thanh toán",
             "Trả góp",

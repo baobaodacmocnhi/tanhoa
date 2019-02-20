@@ -482,6 +482,7 @@ namespace KTKS_DonKH.DAL.DonTu
             var query = from item in db.DonTu_LichSus
                         join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                         where item.MaDon == MaDon
+                        orderby  item.NgayChuyen descending,item.ID descending
                         select new
                         {
                             item.ID,
@@ -530,7 +531,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                                 where item.ID_NoiChuyen == 1 && item.DonTu.SoCongVan.Contains(SoCongVan)
-                                orderby item.MaDon, item.STT
+                                orderby  item.NgayChuyen descending,item.ID descending
                                 select new
                                 {
                                     item.ID,
@@ -550,7 +551,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 2 && item.DonTu.SoCongVan.Contains(SoCongVan)
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -570,7 +571,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 3 && item.DonTu.SoCongVan.Contains(SoCongVan)
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -590,7 +591,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 4 && item.DonTu.SoCongVan.Contains(SoCongVan)
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -610,7 +611,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.DonTu.SoCongVan.Contains(SoCongVan)
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -637,7 +638,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                                 where item.ID_NoiChuyen == 1 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CreateBy
-                                orderby item.MaDon, item.STT
+                                orderby  item.NgayChuyen descending,item.ID descending
                                 select new
                                 {
                                     item.ID,
@@ -657,7 +658,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 2 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CreateBy
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -677,7 +678,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 3 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CreateBy
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -697,7 +698,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 4 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CreateBy
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -717,7 +718,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.DonTu.SoCongVan.Contains(SoCongVan) && item.CreateBy == CreateBy
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -744,6 +745,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                                 where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                                orderby item.NgayChuyen descending, item.ID descending
                                 select new
                                 {
                                     item.ID,
@@ -763,6 +765,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -782,6 +785,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -801,6 +805,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -820,6 +825,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -846,6 +852,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                                 where (item.ID_NoiChuyen == 1 || item.CreateBy == CreateBy) && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                                orderby item.NgayChuyen descending, item.ID descending
                                 select new
                                 {
                                     item.ID,
@@ -865,6 +872,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where (item.ID_NoiChuyen == 2 || item.CreateBy == CreateBy) && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -884,6 +892,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where (item.ID_NoiChuyen == 3 || item.CreateBy == CreateBy) && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -903,6 +912,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where (item.ID_NoiChuyen == 4 || item.CreateBy == CreateBy) && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -922,6 +932,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -948,7 +959,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                                 where item.ID_NoiChuyen == 1 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
-                                orderby item.MaDon, item.STT
+                                orderby  item.NgayChuyen descending,item.ID descending
                                 select new
                                 {
                                     item.ID,
@@ -968,7 +979,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 2 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -988,7 +999,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 3 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1008,7 +1019,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 4 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1028,7 +1039,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1055,7 +1066,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                                 where item.ID_NoiChuyen == 1 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
-                                orderby item.MaDon, item.STT
+                                orderby  item.NgayChuyen descending,item.ID descending
                                 select new
                                 {
                                     item.ID,
@@ -1075,7 +1086,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 2 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1095,7 +1106,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 3 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1115,7 +1126,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 4 && item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1135,7 +1146,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.DonTu.SoCongVan.Contains(SoCongVan) && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
-                            orderby item.MaDon, item.STT
+                            orderby  item.NgayChuyen descending,item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1162,6 +1173,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                                 where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                                orderby item.NgayChuyen descending, item.ID descending
                                 select new
                                 {
                                     item.ID,
@@ -1181,6 +1193,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1200,6 +1213,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1219,6 +1233,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1238,6 +1253,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1264,6 +1280,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                                 where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                                orderby item.NgayChuyen descending, item.ID descending
                                 select new
                                 {
                                     item.ID,
@@ -1283,6 +1300,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1302,6 +1320,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1321,6 +1340,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,
@@ -1340,6 +1360,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
                             where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
                                 item.ID,

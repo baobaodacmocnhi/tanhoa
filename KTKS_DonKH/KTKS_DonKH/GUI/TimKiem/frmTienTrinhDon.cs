@@ -36,6 +36,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         CDocSo _cDocSo = new CDocSo();
         DataRowView _CTRow = null;
         DataTable dt = new DataTable();
+        System.IO.StreamWriter _log;
 
         public frmTienTrinhDon()
         {
@@ -48,12 +49,12 @@ namespace KTKS_DonKH.GUI.TimKiem
 
             cmbTimTheo.SelectedIndex = 0;
             gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh", gridViewKTXM);
-            gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewDCBD);
-            gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", gridViewCHDB);
-            gridControl.LevelTree.Nodes.Add("Chi Tiết Phiếu Hủy Danh Bộ", gridViewYeuCauCHDB);
-            gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewTTTL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì", gridViewBamChi);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewDongNuoc);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewDCBD);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", gridViewCHDB);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Phiếu Hủy Danh Bộ", gridViewPhieuCHDB);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewTTTL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Gian Lận", gridViewGianLan);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Truy Thu", gridViewTruyThu);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Tờ Trình", gridViewToTrinh);
@@ -78,43 +79,50 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             try
             {
+                _log = System.IO.File.AppendText("\\\\192.168.90.9\\BaoBao$\\TrungTamKhachHang\\log.txt");
+                DateTime date = DateTime.Now;
+                
                 switch (cmbTimTheo.SelectedItem.ToString())
                 {
                     case "Mã Đơn":
                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                            dt = _cTimKiem.GetTienTrinh_DonTKH(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
+                            dt = _cTimKiem.GetTienTrinh_DonTKH(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["DonTu"];
                     else
                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                            dt = _cTimKiem.GetTienTrinh_DonTXL(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
+                            dt = _cTimKiem.GetTienTrinh_DonTXL(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["DonTu"];
                         else
                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                dt = _cTimKiem.GetTienTrinh_DonTBC(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
+                                dt = _cTimKiem.GetTienTrinh_DonTBC(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["DonTu"];
                             else
                             {
                                 if (txtNoiDungTimKiem.Text.Trim().Contains("."))
                                 {
                                     string[] MaDons = txtNoiDungTimKiem.Text.Trim().Split('.');
-                                    dt = _cTimKiem.GetTienTrinh_DonTu(int.Parse(MaDons[0]), int.Parse(MaDons[1])).Tables["Don"];
+                                    dt = _cTimKiem.GetTienTrinh_DonTu(int.Parse(MaDons[0]), int.Parse(MaDons[1])).Tables["DonTu"];
                                 }
                                 else
-                                    dt = _cTimKiem.GetTienTrinh_DonTu(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["Don"];
+                                    dt = _cTimKiem.GetTienTrinh_DonTu(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["DonTu"];
                             }
                         break;
                     case "Danh Bộ":
-                        dt = _cTimKiem.GetTienTrinhByDanhBo(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
+                        dt = _cTimKiem.getTienTrinhByDanhBo(txtNoiDungTimKiem.Text.Trim()).Tables["DonTu"];
                         break;
                     case "Họ Tên":
-                        dt = _cTimKiem.GetTienTrinhByHoTen(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
+                        dt = _cTimKiem.getTienTrinhByHoTen(txtNoiDungTimKiem.Text.Trim()).Tables["DonTu"];
                         break;
                     case "Địa Chỉ":
-                        dt = _cTimKiem.GetTienTrinhByDiaChi(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
+                        dt = _cTimKiem.getTienTrinhByDiaChi(txtNoiDungTimKiem.Text.Trim()).Tables["DonTu"];
                         break;
                 }
+                TimeSpan diff = DateTime.Now - date;
+                _log.WriteLine("lấy lịch sử khiếu nại " + diff.TotalSeconds.ToString());
+                _log.Close();
+                _log.Dispose();
                 gridControl.DataSource = dt;
             }
             catch (Exception)
             {
-
+               
             }
         }
 
@@ -398,9 +406,9 @@ namespace KTKS_DonKH.GUI.TimKiem
         }
         #endregion
 
-        #region gridViewYeuCauCHDB
+        #region gridViewPhieuCHDB
 
-        private void gridViewYeuCauCHDB_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        private void gridViewPhieuCHDB_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             if (e.Column.FieldName == "MaYCCHDB" && e.Value != null)
             {
@@ -408,13 +416,13 @@ namespace KTKS_DonKH.GUI.TimKiem
             }
         }
 
-        private void gridViewYeuCauCHDB_RowCellClick(object sender, RowCellClickEventArgs e)
+        private void gridViewPhieuCHDB_RowCellClick(object sender, RowCellClickEventArgs e)
         {
             GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
             _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
         }
 
-        private void gridViewYeuCauCHDB_KeyDown(object sender, KeyEventArgs e)
+        private void gridViewPhieuCHDB_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
@@ -756,8 +764,8 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         }
 
-        
 
+       
         
 
     }

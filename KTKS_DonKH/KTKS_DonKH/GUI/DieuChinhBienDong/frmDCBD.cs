@@ -1420,16 +1420,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             //DCBD_ChiTietBienDong ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
             if (_ctdcbd.DCBD.MaDonMoi != null)
-                dr["MaDon"] = _ctdcbd.DCBD.MaDonMoi.ToString();
-            else
-            if (_ctdcbd.DCBD.MaDon != null)
-                dr["MaDon"] = _ctdcbd.DCBD.MaDon.ToString().Insert(_ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
-            else
-                if (_ctdcbd.DCBD.MaDonTXL != null)
-                    dr["MaDon"] = "TXL" + _ctdcbd.DCBD.MaDonTXL.ToString().Insert(_ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+            {
+                if (_ctdcbd.DCBD.DonTu.DonTu_ChiTiets.Count == 0)
+                    dr["MaDon"] = _ctdcbd.DCBD.MaDonMoi.ToString();
                 else
-                    if (_ctdcbd.DCBD.MaDonTBC != null)
-                        dr["MaDon"] = "TBC" + _ctdcbd.DCBD.MaDonTBC.ToString().Insert(_ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
+                    dr["MaDon"] = _ctdcbd.DCBD.MaDonMoi.ToString() + "." + _ctdcbd.STT;
+            }
+            else
+                if (_ctdcbd.DCBD.MaDon != null)
+                    dr["MaDon"] = _ctdcbd.DCBD.MaDon.ToString().Insert(_ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
+                else
+                    if (_ctdcbd.DCBD.MaDonTXL != null)
+                        dr["MaDon"] = "TXL" + _ctdcbd.DCBD.MaDonTXL.ToString().Insert(_ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+                    else
+                        if (_ctdcbd.DCBD.MaDonTBC != null)
+                            dr["MaDon"] = "TBC" + _ctdcbd.DCBD.MaDonTBC.ToString().Insert(_ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
 
             dr["SoPhieu"] = _ctdcbd.MaCTDCBD.ToString().Insert(_ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
             dr["ThongTin"] = _ctdcbd.ThongTin;

@@ -1878,6 +1878,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["SoPhieu"] = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                     dr["DanhBo"] = _ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
                     dr["HoTen"] = _ctdchd.HoTen;
+                    if(_ctdchd.DCBD.MaDonMoi!=null)
+                        dr["SoVanBan"] = _ctdchd.DCBD.MaDon.Value.ToString()+"."+_ctdchd.STT;
+                    else
                     if (_ctdchd.DCBD.MaDon != null)
                         dr["SoVanBan"] = _ctdchd.DCBD.MaDon.Value.ToString().Insert(_ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
                     else

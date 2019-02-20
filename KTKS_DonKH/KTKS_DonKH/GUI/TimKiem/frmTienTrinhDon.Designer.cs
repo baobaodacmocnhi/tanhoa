@@ -107,7 +107,7 @@
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn112 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn119 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridViewYeuCauCHDB = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewPhieuCHDB = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn134 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn135 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn136 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -245,7 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDCBD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCHDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewYeuCauCHDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewPhieuCHDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTTTL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGianLan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
@@ -406,7 +406,7 @@
             gridLevelNode4.RelationName = "Level4";
             gridLevelNode5.LevelTemplate = this.gridViewCHDB;
             gridLevelNode5.RelationName = "Level5";
-            gridLevelNode6.LevelTemplate = this.gridViewYeuCauCHDB;
+            gridLevelNode6.LevelTemplate = this.gridViewPhieuCHDB;
             gridLevelNode6.RelationName = "Level6";
             gridLevelNode7.LevelTemplate = this.gridViewTTTL;
             gridLevelNode7.RelationName = "Level7";
@@ -450,7 +450,7 @@
             this.gridViewDongNuoc,
             this.gridViewDCBD,
             this.gridViewCHDB,
-            this.gridViewYeuCauCHDB,
+            this.gridViewPhieuCHDB,
             this.gridViewTTTL,
             this.gridViewGianLan,
             this.gridViewTruyThu,
@@ -1056,15 +1056,15 @@
             this.gridColumn119.Visible = true;
             this.gridColumn119.VisibleIndex = 10;
             // 
-            // gridViewYeuCauCHDB
+            // gridViewPhieuCHDB
             // 
-            this.gridViewYeuCauCHDB.Appearance.HeaderPanel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridViewYeuCauCHDB.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridViewYeuCauCHDB.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.gridViewYeuCauCHDB.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridViewYeuCauCHDB.Appearance.Row.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridViewYeuCauCHDB.Appearance.Row.Options.UseFont = true;
-            this.gridViewYeuCauCHDB.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewPhieuCHDB.Appearance.HeaderPanel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridViewPhieuCHDB.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridViewPhieuCHDB.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridViewPhieuCHDB.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridViewPhieuCHDB.Appearance.Row.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridViewPhieuCHDB.Appearance.Row.Options.UseFont = true;
+            this.gridViewPhieuCHDB.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn134,
             this.gridColumn135,
             this.gridColumn136,
@@ -1073,16 +1073,16 @@
             this.gridColumn139,
             this.gridColumn140,
             this.gridColumn150});
-            this.gridViewYeuCauCHDB.GridControl = this.gridControl;
-            this.gridViewYeuCauCHDB.Name = "gridViewYeuCauCHDB";
-            this.gridViewYeuCauCHDB.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridViewYeuCauCHDB.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridViewYeuCauCHDB.OptionsBehavior.AutoPopulateColumns = false;
-            this.gridViewYeuCauCHDB.OptionsView.ColumnAutoWidth = false;
-            this.gridViewYeuCauCHDB.OptionsView.ShowGroupPanel = false;
-            this.gridViewYeuCauCHDB.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewYeuCauCHDB_RowCellClick);
-            this.gridViewYeuCauCHDB.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewYeuCauCHDB_CustomColumnDisplayText);
-            this.gridViewYeuCauCHDB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewYeuCauCHDB_KeyDown);
+            this.gridViewPhieuCHDB.GridControl = this.gridControl;
+            this.gridViewPhieuCHDB.Name = "gridViewPhieuCHDB";
+            this.gridViewPhieuCHDB.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewPhieuCHDB.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewPhieuCHDB.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewPhieuCHDB.OptionsView.ColumnAutoWidth = false;
+            this.gridViewPhieuCHDB.OptionsView.ShowGroupPanel = false;
+            this.gridViewPhieuCHDB.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewPhieuCHDB_RowCellClick);
+            this.gridViewPhieuCHDB.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewPhieuCHDB_CustomColumnDisplayText);
+            this.gridViewPhieuCHDB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewPhieuCHDB_KeyDown);
             // 
             // gridColumn134
             // 
@@ -2451,7 +2451,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDCBD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCHDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewYeuCauCHDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewPhieuCHDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTTTL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGianLan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
@@ -2573,7 +2573,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn DiaChi;
         private DevExpress.XtraGrid.Columns.GridColumn MaCTMN;
         private DevExpress.XtraGrid.Columns.GridColumn NgayMN;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewYeuCauCHDB;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewPhieuCHDB;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn134;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn135;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn136;

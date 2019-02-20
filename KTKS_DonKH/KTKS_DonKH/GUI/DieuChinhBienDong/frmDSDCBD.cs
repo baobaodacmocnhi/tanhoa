@@ -503,6 +503,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
                                 DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                                if (ctdcbd.DCBD.MaDonMoi != null)
+                                {
+                                    if (ctdcbd.DCBD.DonTu.DonTu_ChiTiets.Count == 0)
+                                        dr["MaDon"] = ctdcbd.DCBD.MaDonMoi.ToString();
+                                    else
+                                        dr["MaDon"] = ctdcbd.DCBD.MaDonMoi.ToString() + "." + ctdcbd.STT;
+                                }
+                                else
                                 if (ctdcbd.DCBD.MaDon != null)
                                     dr["MaDon"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
                                 else
@@ -602,6 +610,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["SoPhieu"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                                     dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
                                     dr["HoTen"] = ctdchd.HoTen;
+                                    if(ctdchd.DCBD.MaDonMoi!=null)
+                                        dr["SoVanBan"] = ctdchd.DCBD.MaDonMoi.Value.ToString()+"."+ctdchd.STT;
+                                    else
                                     if (ctdchd.DCBD.MaDon != null)
                                         dr["SoVanBan"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
                                     else
