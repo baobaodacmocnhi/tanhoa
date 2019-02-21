@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.txtQuyetDinhCaNhan = new System.Windows.Forms.TextBox();
+            this.txtQuyetDinhTapThe = new System.Windows.Forms.TextBox();
             this.txtQDNm = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btXem = new System.Windows.Forms.Button();
             this.txtNguoiKy = new System.Windows.Forms.TextBox();
             this.txtNgay = new System.Windows.Forms.DateTimePicker();
-            this.txtQuyetDinhTapThe = new System.Windows.Forms.TextBox();
+            this.txtQuyetDinhCaNhan = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,14 +56,14 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.txtQuyetDinhCaNhan);
+            this.splitContainer1.Panel1.Controls.Add(this.txtQuyetDinhTapThe);
             this.splitContainer1.Panel1.Controls.Add(this.txtQDNm);
             this.splitContainer1.Panel1.Controls.Add(this.label5);
             this.splitContainer1.Panel1.Controls.Add(this.comboBox1);
             this.splitContainer1.Panel1.Controls.Add(this.btXem);
             this.splitContainer1.Panel1.Controls.Add(this.txtNguoiKy);
             this.splitContainer1.Panel1.Controls.Add(this.txtNgay);
-            this.splitContainer1.Panel1.Controls.Add(this.txtQuyetDinhTapThe);
+            this.splitContainer1.Panel1.Controls.Add(this.txtQuyetDinhCaNhan);
             this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
@@ -76,13 +76,13 @@
             this.splitContainer1.SplitterDistance = 76;
             this.splitContainer1.TabIndex = 2;
             // 
-            // txtQuyetDinhCaNhan
+            // txtQuyetDinhTapThe
             // 
-            this.txtQuyetDinhCaNhan.Location = new System.Drawing.Point(490, 47);
-            this.txtQuyetDinhCaNhan.Name = "txtQuyetDinhCaNhan";
-            this.txtQuyetDinhCaNhan.Size = new System.Drawing.Size(160, 26);
-            this.txtQuyetDinhCaNhan.TabIndex = 11;
-            this.txtQuyetDinhCaNhan.Text = "04";
+            this.txtQuyetDinhTapThe.Location = new System.Drawing.Point(490, 47);
+            this.txtQuyetDinhTapThe.Name = "txtQuyetDinhTapThe";
+            this.txtQuyetDinhTapThe.Size = new System.Drawing.Size(160, 26);
+            this.txtQuyetDinhTapThe.TabIndex = 11;
+            this.txtQuyetDinhTapThe.Text = "037-QĐ/ĐU";
             // 
             // txtQDNm
             // 
@@ -128,7 +128,7 @@
             this.txtNguoiKy.Name = "txtNguoiKy";
             this.txtNguoiKy.Size = new System.Drawing.Size(166, 26);
             this.txtNguoiKy.TabIndex = 5;
-            this.txtNguoiKy.Text = "NGUYỄN TRẦN LAM";
+            this.txtNguoiKy.Text = "PHẠM ANH TÀI";
             // 
             // txtNgay
             // 
@@ -139,13 +139,13 @@
             this.txtNgay.Size = new System.Drawing.Size(108, 26);
             this.txtNgay.TabIndex = 4;
             // 
-            // txtQuyetDinhTapThe
+            // txtQuyetDinhCaNhan
             // 
-            this.txtQuyetDinhTapThe.Location = new System.Drawing.Point(490, 15);
-            this.txtQuyetDinhTapThe.Name = "txtQuyetDinhTapThe";
-            this.txtQuyetDinhTapThe.Size = new System.Drawing.Size(160, 26);
-            this.txtQuyetDinhTapThe.TabIndex = 3;
-            this.txtQuyetDinhTapThe.Text = "04";
+            this.txtQuyetDinhCaNhan.Location = new System.Drawing.Point(490, 15);
+            this.txtQuyetDinhCaNhan.Name = "txtQuyetDinhCaNhan";
+            this.txtQuyetDinhCaNhan.Size = new System.Drawing.Size(160, 26);
+            this.txtQuyetDinhCaNhan.TabIndex = 3;
+            this.txtQuyetDinhCaNhan.Text = "038-QĐ/ĐU";
             // 
             // label4
             // 
@@ -226,13 +226,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker txtNgay;
-        private System.Windows.Forms.TextBox txtQuyetDinhTapThe;
+        private System.Windows.Forms.TextBox txtQuyetDinhCaNhan;
         private System.Windows.Forms.Button btXem;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox txtQDNm;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtNguoiKy;
-        private System.Windows.Forms.TextBox txtQuyetDinhCaNhan;
+        private System.Windows.Forms.TextBox txtQuyetDinhTapThe;
 
     }
 }
