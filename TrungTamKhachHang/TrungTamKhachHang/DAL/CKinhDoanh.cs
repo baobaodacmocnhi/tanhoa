@@ -24,10 +24,10 @@ namespace TrungTamKhachHang.DAL
         public DataSet getTimKiem(string DanhBo)
         {
             DataSet ds = new DataSet();
-            ds = _cDAL.ExecuteQuery_DataSet("exec pTimKiemByBanhBo_DonTuChiTiet '" + DanhBo + "'");
+            ds = _cDAL.ExecuteQuery_DataSet("exec spTimKiemByBanhBo_DonTuChiTiet '" + DanhBo + "'");
 
             DataTable dt = new DataTable();
-            dt = _cDAL.ExecuteQuery_DataTable("exec pTimKiemByBanhBo_DonTu '" + DanhBo + "'");
+            dt = _cDAL.ExecuteQuery_DataTable("exec spTimKiemByBanhBo_DonTu '" + DanhBo + "'");
             DataTable dtDon = new DataTable();
             dtDon.Columns.Add("MaDon", typeof(string));
             dtDon.Columns.Add("TenLD", typeof(string));

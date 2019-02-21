@@ -4,7 +4,7 @@
     <PublishUrlHistory>\\192.168.90.9\baobao%24\TrungTamKhachHang\|publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
-    <UpdateUrlHistory />
+    <UpdateUrlHistory>\\192.168.90.9\baobao%24\TrungTamKhachHang\</UpdateUrlHistory>
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>
