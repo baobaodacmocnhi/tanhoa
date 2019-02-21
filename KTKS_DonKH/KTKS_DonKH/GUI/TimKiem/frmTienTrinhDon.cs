@@ -105,7 +105,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                             }
                         break;
                     case "Danh Bộ":
-                        dt = _cTimKiem.getTienTrinhByDanhBo(txtNoiDungTimKiem.Text.Trim()).Tables["DonTu"];
+                        dt = _cTimKiem.getTienTrinhByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ","")).Tables["DonTu"];
                         break;
                     case "Họ Tên":
                         dt = _cTimKiem.getTienTrinhByHoTen(txtNoiDungTimKiem.Text.Trim()).Tables["DonTu"];

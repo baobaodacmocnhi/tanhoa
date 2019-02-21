@@ -38,11 +38,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     if (CTaiKhoan.ToBC == true)
                         TenTo = "TBC";
             DataTable dt = _cDongTienNoiDung.getDS(TenTo);
-                DataRow dr=dt.NewRow();
-                dr["ID"] = "0";
-            dr["Name"]="Tất Cả";
+            DataRow dr = dt.NewRow();
+            dr["ID"] = "0";
+            dr["Name"] = "Tất Cả";
             dt.Rows.InsertAt(dr, 0);
-            cmbNoiDungDongTien_ThongKeXuLyBB.DataSource =dt;
+            cmbNoiDungDongTien_ThongKeXuLyBB.DataSource = dt;
             cmbNoiDungDongTien_ThongKeXuLyBB.DisplayMember = "Name";
             cmbNoiDungDongTien_ThongKeXuLyBB.ValueMember = "Name";
             cmbNoiDungDongTien_ThongKeXuLyBB.SelectedIndex = -1;
@@ -52,17 +52,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             DataTable dt = new DataTable();
             if (chkAll_ThongKeHienTrangKiemTra.Checked == true)
-                dt = _cKTXM.GetDS(dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
+                dt = _cKTXM.getDS("",dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
             else
             {
-                if (CTaiKhoan.ToTB)
-                    dt = _cKTXM.GetDS("TKH", dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
-                else
-                    if (CTaiKhoan.ToTP)
-                        dt = _cKTXM.GetDS("TXL", dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
-                    else
-                        if (CTaiKhoan.ToBC)
-                            dt = _cKTXM.GetDS("TBC", dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
+                dt = _cKTXM.getDS(CTaiKhoan.MaTo, dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
             }
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -154,14 +147,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     dt = _cKTXM.getDS_BySoCongVan(txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Ngày":
-                    if (CTaiKhoan.ToTB)
-                        dt = _cKTXM.GetDS("TKH", dateTu_SoLuong.Value, dateDen_SoLuong.Value);
-                    else
-                        if (CTaiKhoan.ToTP)
-                            dt = _cKTXM.GetDS("TXL", dateTu_SoLuong.Value, dateDen_SoLuong.Value);
-                        else
-                            if (CTaiKhoan.ToBC)
-                                dt = _cKTXM.GetDS("TBC", dateTu_SoLuong.Value, dateDen_SoLuong.Value);
+                        dt = _cKTXM.getDS(CTaiKhoan.MaTo, dateTu_SoLuong.Value, dateDen_SoLuong.Value);
                     break;
                 default:
                     break;
@@ -300,19 +286,19 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     if (radLapBangGia.Checked == true)
                     {
                         LoaiBaoCao = "LẬP BẢNG GIÁ";
-                        dt = _cKTXM.GetDSLapBangGia("", NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                        dt = _cKTXM.getDSLapBangGia("", NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
                     }
                     else
                         if (radDongTien.Checked == true)
                         {
                             LoaiBaoCao = "ĐÓNG TIỀN";
-                            dt = _cKTXM.GetDSDongTien("", NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                            dt = _cKTXM.getDSDongTien("", NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
                         }
                         else
                             if (radChuyenLapTBCat.Checked == true)
                             {
                                 LoaiBaoCao = "CHUYỂN LẬP TB CẮT";
-                                dt = _cKTXM.GetDSChuyenLapTBCat("", NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                                dt = _cKTXM.getDSChuyenLapTBCat("", NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
                             }
                 }
                 else
@@ -320,19 +306,19 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     if (radLapBangGia.Checked == true)
                     {
                         LoaiBaoCao = "LẬP BẢNG GIÁ";
-                        dt = _cKTXM.GetDSLapBangGia("", txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                        dt = _cKTXM.getDSLapBangGia("", txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
                     }
                     else
                         if (radDongTien.Checked == true)
                         {
                             LoaiBaoCao = "ĐÓNG TIỀN";
-                            dt = _cKTXM.GetDSDongTien("", txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                            dt = _cKTXM.getDSDongTien("", txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
                         }
                         else
                             if (radChuyenLapTBCat.Checked == true)
                             {
                                 LoaiBaoCao = "CHUYỂN LẬP TB CẮT";
-                                dt = _cKTXM.GetDSChuyenLapTBCat("", txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                                dt = _cKTXM.getDSChuyenLapTBCat("", txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
                             }
                 }
             }
@@ -343,19 +329,19 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     if (radLapBangGia.Checked == true)
                     {
                         LoaiBaoCao = "LẬP BẢNG GIÁ";
-                        dt = _cKTXM.GetDSLapBangGia(TenTo, NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                        dt = _cKTXM.getDSLapBangGia(TenTo, NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
                     }
                     else
                         if (radDongTien.Checked == true)
                         {
                             LoaiBaoCao = "ĐÓNG TIỀN";
-                            dt = _cKTXM.GetDSDongTien(TenTo, NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                            dt = _cKTXM.getDSDongTien(TenTo, NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
                         }
                         else
                             if (radChuyenLapTBCat.Checked == true)
                             {
                                 LoaiBaoCao = "CHUYỂN LẬP TB CẮT";
-                                dt = _cKTXM.GetDSChuyenLapTBCat(TenTo, NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                                dt = _cKTXM.getDSChuyenLapTBCat(TenTo, NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
                             }
                 }
                 else
@@ -363,19 +349,19 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     if (radLapBangGia.Checked == true)
                     {
                         LoaiBaoCao = "LẬP BẢNG GIÁ";
-                        dt = _cKTXM.GetDSLapBangGia(TenTo, txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                        dt = _cKTXM.getDSLapBangGia(TenTo, txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
                     }
                     else
                         if (radDongTien.Checked == true)
                         {
                             LoaiBaoCao = "ĐÓNG TIỀN";
-                            dt = _cKTXM.GetDSDongTien(TenTo, txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                            dt = _cKTXM.getDSDongTien(TenTo, txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
                         }
                         else
                             if (radChuyenLapTBCat.Checked == true)
                             {
                                 LoaiBaoCao = "CHUYỂN LẬP TB CẮT";
-                                dt = _cKTXM.GetDSChuyenLapTBCat(TenTo, txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                                dt = _cKTXM.getDSChuyenLapTBCat(TenTo, txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
                             }
                 }
             }
@@ -388,7 +374,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dr["TuNgay"] = dateTu_ThongKeXuLyBB.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeXuLyBB.Value.ToString("dd/MM/yyyy");
                 dr["LoaiBaoCao"] = LoaiBaoCao;
-                dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length-2,"-");
+                dr["MaDon"] = item["MaDon"].ToString();
                 dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = item["HoTen"];
                 dr["DiaChi"] = item["DiaChi"];
@@ -415,17 +401,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             DataTable dt = new DataTable();
             if (chkAll_ThongKeLoaiDon.Checked == true)
-                dt = _cKTXM.GetDS("", dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
+                dt = _cKTXM.getDS("", dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
             else
             {
-                if (CTaiKhoan.ToTB)
-                    dt = _cKTXM.GetDS("TKH", dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
-                else
-                    if (CTaiKhoan.ToTP)
-                        dt = _cKTXM.GetDS("TXL", dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
-                    else
-                        if (CTaiKhoan.ToBC)
-                            dt = _cKTXM.GetDS("TBC", dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
+                dt = _cKTXM.getDS(CTaiKhoan.MaTo, dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
             }
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();

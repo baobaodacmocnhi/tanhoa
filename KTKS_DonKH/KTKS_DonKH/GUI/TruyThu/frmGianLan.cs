@@ -763,6 +763,14 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                 GianLan_ChiTiet entity = _cGianLan.get_ChiTiet(int.Parse(item.Cells["ID"].Value.ToString()));
 
+                if (entity.GianLan.MaDonMoi != null)
+                {
+                    if (entity.GianLan.DonTu.DonTu_ChiTiets.Count == 1)
+                        dr["MaDon"] = entity.GianLan.MaDonMoi.Value.ToString();
+                    else
+                        dr["MaDon"] = entity.GianLan.MaDonMoi.Value.ToString()+"."+entity.STT.Value.ToString();
+                }
+                else
                 if (entity.GianLan.MaDon != null)
                     dr["MaDon"] = "TKH" + entity.GianLan.MaDon.Value.ToString().Insert(entity.GianLan.MaDon.Value.ToString().Length - 2, "-");
                 else

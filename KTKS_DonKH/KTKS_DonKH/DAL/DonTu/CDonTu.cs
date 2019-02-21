@@ -237,14 +237,14 @@ namespace KTKS_DonKH.DAL.DonTu
                             + " where cast(dtct.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(dtct.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and dtct.MaDon=dtls.MaDon and dtct.STT=dtls.STT"
                             + " )"
                             + " select dt.MaDon,NhomDon=dt.Name_NhomDon,dt.TongDB,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,"
-                            + " MaDonChiTiet=case when dt.TongDB=0 then CONVERT(varchar(8),dtct.MaDon)"
+                            + " MaDonMoi=case when dt.TongDB=0 then CONVERT(varchar(8),dtct.MaDon)"
                             + "            when dt.TongDB=1 then CONVERT(varchar(8),dtct.MaDon)"
                             + "            when dt.TongDB>=2 then CONVERT(varchar(8),dtct.MaDon)+'.'+CONVERT(varchar(3),dtct.STT) end,"
                             + " ChuyenToTP=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan=2) then 'true' else 'false' end,"
                             + " ChuyenToTB=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan=3) then 'true' else 'false' end,"
                             + " ChuyenToBC=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan=4) then 'true' else 'false' end,"
                             + " ChuyenKhac=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan!=2 and ID_NoiNhan!=3 and ID_NoiNhan!=4) then 'true' else 'false' end"
-                            + " from DonTu dt, DonTu_ChiTiet dtct where CAST(dt.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(dt.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and dt.MaDon=dtct.MaDon"
+                            + " from DonTu dt,DonTu_ChiTiet dtct where CAST(dt.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(dt.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and dt.MaDon=dtct.MaDon"
                             + " order by dtct.MaDon,dtct.STT asc";
                 return ExecuteQuery_DataTable(sql);
             }
@@ -257,7 +257,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             + " where cast(dtct.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(dtct.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and dtct.MaDon=dtls.MaDon and dtct.STT=dtls.STT"
                             + " )"
                             + " select dt.MaDon,NhomDon=dt.Name_NhomDon,dt.TongDB,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,"
-                            + " MaDonChiTiet=case when dt.TongDB=0 then CONVERT(varchar(8),dtls_temp.MaDon)"
+                            + " MaDonMoi=case when dt.TongDB=0 then CONVERT(varchar(8),dtls_temp.MaDon)"
                             + " 		   when dt.TongDB=1 then CONVERT(varchar(8),dtls_temp.MaDon)"
                             + " 		   when dt.TongDB>=2 then CONVERT(varchar(8),dtls_temp.MaDon)+'.'+CONVERT(varchar(3),dtls_temp.STT) end,"
                             + " ChuyenTrucTiep=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtls_temp.MaDon and dtls.STT=dtls_temp.STT and ID_NoiNhan=5) then 'false' else 'true' end,"
@@ -275,7 +275,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             + " else case when exists(select ktxm.MaKTXM from KTXM ktxm, KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtls_temp.MaDon and ktxmct.STT=dtls_temp.STT) then 'true' else 'false' end end else 'false' end";
                         break;
                 }
-                sql += " from DonTu dt, dtls_temp where dtls_temp.rn=1 and dt.MaDon=dtls_temp.MaDon";
+                sql += " from DonTu dt,DonTu_ChiTiet dtct,dtls_temp where dtls_temp.rn=1 and dt.MaDon=dtct.MaDon and dtct.MaDon=dtls_temp.MaDon and dtct.STT=dtls_temp.STT";
                 switch (TenTo)
                 {
                     case "ToTB":

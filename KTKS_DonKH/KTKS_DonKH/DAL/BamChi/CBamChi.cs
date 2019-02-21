@@ -692,6 +692,41 @@ namespace KTKS_DonKH.DAL.BamChi
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS(string TrangThaiBamChi, DateTime FromNgayBC, DateTime ToNgayBC)
+        {
+            var query = from itemCTBamChi in db.BamChi_ChiTiets
+                        join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                        where itemCTBamChi.TrangThaiBC.Contains(TrangThaiBamChi) && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
+                        select new
+                        {
+                            MaDon = itemCTBamChi.BamChi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTBamChi.BamChi.MaDonMoi).Count() == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi + "." + itemCTBamChi.STT
+                                         : itemCTBamChi.BamChi.MaDon != null ? "TKH" + itemCTBamChi.BamChi.MaDon
+                                         : itemCTBamChi.BamChi.MaDonTXL != null ? "TXL" + itemCTBamChi.BamChi.MaDonTXL
+                                         : itemCTBamChi.BamChi.MaDonTBC != null ? "TBC" + itemCTBamChi.BamChi.MaDonTBC : null,
+                            TenLD = itemCTBamChi.BamChi.MaDonMoi != null ? itemCTBamChi.BamChi.DonTu.Name_NhomDon
+                                        : itemCTBamChi.BamChi.MaDon != null ? itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD
+                                        : itemCTBamChi.BamChi.MaDonTXL != null ? itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD
+                                        : itemCTBamChi.BamChi.MaDonTBC != null ? itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD : null,
+                            itemCTBamChi.MaCTBC,
+                            itemCTBamChi.DanhBo,
+                            itemCTBamChi.HoTen,
+                            itemCTBamChi.DiaChi,
+                            itemCTBamChi.HopDong,
+                            itemCTBamChi.NgayBC,
+                            itemCTBamChi.TrangThaiBC,
+                            itemCTBamChi.Hieu,
+                            itemCTBamChi.Co,
+                            itemCTBamChi.ChiSo,
+                            itemCTBamChi.VienChi,
+                            itemCTBamChi.DayChi,
+                            itemCTBamChi.TheoYeuCau,
+                            itemCTBamChi.MaSoBC,
+                            itemCTBamChi.NiemChi,
+                            CreateBy = itemUser.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
         #endregion
 
         //MaDonMoi

@@ -8094,10 +8094,10 @@ namespace KTKS_DonKH.DAL.TimKiem
         public DataSet getTienTrinhByDanhBo(string DanhBo)
         {
             DataSet ds = new DataSet();
-            ds = ExecuteQuery_DataSet("exec pTimKiemByBanhBo_DonTuChiTiet '" + DanhBo + "'");
+            ds = ExecuteQuery_DataSet("exec spTimKiemByBanhBo_DonTuChiTiet '" + DanhBo + "'");
 
             DataTable dt = new DataTable();
-            dt = ExecuteQuery_DataTable("exec pTimKiemByBanhBo_DonTu '" + DanhBo + "'");
+            dt = ExecuteQuery_DataTable("exec spTimKiemByBanhBo_DonTu '" + DanhBo + "'");
             DataTable dtDon = new DataTable();
             dtDon.Columns.Add("MaDon", typeof(string));
             dtDon.Columns.Add("TenLD", typeof(string));
@@ -8169,10 +8169,10 @@ namespace KTKS_DonKH.DAL.TimKiem
         public DataSet getTienTrinhByHoTen(string HoTen)
         {
             DataSet ds = new DataSet();
-            ds = ExecuteQuery_DataSet("exec pTimKiemByHoTen_DonTuChiTiet '" + HoTen + "'");
+            ds = ExecuteQuery_DataSet("exec spTimKiemByHoTen_DonTuChiTiet '" + HoTen + "'");
 
             DataTable dt = new DataTable();
-            dt = ExecuteQuery_DataTable("exec pTimKiemByHoTen_DonTu '" + HoTen + "'");
+            dt = ExecuteQuery_DataTable("exec spTimKiemByHoTen_DonTu '" + HoTen + "'");
             DataTable dtDon = new DataTable();
             dtDon.Columns.Add("MaDon", typeof(string));
             dtDon.Columns.Add("TenLD", typeof(string));
@@ -8244,10 +8244,10 @@ namespace KTKS_DonKH.DAL.TimKiem
         public DataSet getTienTrinhByDiaChi(string DiaChi)
         {
             DataSet ds = new DataSet();
-            ds = ExecuteQuery_DataSet("exec pTimKiemByDiaChi_DonTuChiTiet '" + DiaChi + "'");
+            ds = ExecuteQuery_DataSet("exec spTimKiemByDiaChi_DonTuChiTiet '" + DiaChi + "'");
 
             DataTable dt = new DataTable();
-            dt = ExecuteQuery_DataTable("exec pTimKiemByDiaChi_DonTu '" + DiaChi + "'");
+            dt = ExecuteQuery_DataTable("exec spTimKiemByDiaChi_DonTu '" + DiaChi + "'");
             DataTable dtDon = new DataTable();
             dtDon.Columns.Add("MaDon", typeof(string));
             dtDon.Columns.Add("TenLD", typeof(string));

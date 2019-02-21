@@ -33,8 +33,8 @@ namespace KTKS_DonKH.GUI.HeThong
                     CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
 
                     CTaiKhoan.MaUser = nguoidung.MaU;
-                    if (nguoidung.MaNhom!=null)
-                    CTaiKhoan.MaNhom = nguoidung.MaNhom.Value;
+                    if (nguoidung.MaNhom != null)
+                        CTaiKhoan.MaNhom = nguoidung.MaNhom.Value;
                     CTaiKhoan.TaiKhoan = nguoidung.TaiKhoan;
                     CTaiKhoan.HoTen = nguoidung.HoTen;
                     CTaiKhoan.MaKiemBamChi = nguoidung.MaKiemBamChi;
@@ -47,23 +47,25 @@ namespace KTKS_DonKH.GUI.HeThong
                         CTaiKhoan.MaTo = "ToGD";
                     }
                     else
-                    if (nguoidung.ToTB == true)
-                    {
-                        CTaiKhoan.ToTB = nguoidung.ToTB;
-                        CTaiKhoan.MaTo = "ToTB";
-                    }
-                    else if (nguoidung.ToTP == true)
-                    {
-                        CTaiKhoan.ToTP = nguoidung.ToTP;
-                        CTaiKhoan.MaTo = "ToTP";
-                    }
-                    else if (nguoidung.ToBC == true)
-                    {
-                        CTaiKhoan.ToBC = nguoidung.ToBC;
-                        CTaiKhoan.MaTo = "ToBC";
-                    }
-                    if(nguoidung.MaTo!=null)
-                    CTaiKhoan.TenTo = nguoidung.To.TenTo;
+                        if (nguoidung.ToTB == true)
+                        {
+                            CTaiKhoan.ToTB = nguoidung.ToTB;
+                            CTaiKhoan.MaTo = "ToTB";
+                        }
+                        else
+                            if (nguoidung.ToTP == true)
+                            {
+                                CTaiKhoan.ToTP = nguoidung.ToTP;
+                                CTaiKhoan.MaTo = "ToTP";
+                            }
+                            else
+                                if (nguoidung.ToBC == true)
+                                {
+                                    CTaiKhoan.ToBC = nguoidung.ToBC;
+                                    CTaiKhoan.MaTo = "ToBC";
+                                }
+                    if (nguoidung.MaTo != null)
+                        CTaiKhoan.TenTo = nguoidung.To.TenTo;
                     CTaiKhoan.ToTruong = nguoidung.ToTruong;
                     CTaiKhoan.PhoGiamDoc = nguoidung.PhoGiamDoc;
                     CTaiKhoan.TruongPhong = nguoidung.TruongPhong;
