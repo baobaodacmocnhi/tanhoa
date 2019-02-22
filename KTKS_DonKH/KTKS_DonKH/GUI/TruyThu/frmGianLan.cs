@@ -779,6 +779,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     else
                         if (entity.GianLan.MaDonTBC != null)
                             dr["MaDon"] = "TKH" + entity.GianLan.MaDonTBC.Value.ToString().Insert(entity.GianLan.MaDonTBC.Value.ToString().Length - 2, "-");
+                dr["ID"] = entity.MaCTGL.ToString().Insert(entity.MaCTGL.ToString().Length-2,"-");
                 if (entity.NgayKTXM != null)
                     dr["NgayKTXM"] = entity.NgayKTXM.Value.ToString("dd/MM/yyyy");
                 if (entity.DanhBo!="")
