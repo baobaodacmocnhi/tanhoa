@@ -1097,36 +1097,40 @@ namespace ThuTien.GUI.ChuyenKhoan
             cl6.ColumnWidth = 15;
 
             Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("G1", "G1");
-            cl7.Value2 = "Tổng Cộng";
+            cl7.Value2 = "Giá Bán";
             cl7.ColumnWidth = 15;
 
             Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("H1", "H1");
-            cl8.Value2 = "Đăng Ngân";
+            cl8.Value2 = "Tổng Cộng";
             cl8.ColumnWidth = 15;
 
             Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("I1", "I1");
-            cl9.Value2 = "Ngân Hàng";
-            cl9.ColumnWidth = 10;
+            cl9.Value2 = "Đăng Ngân";
+            cl9.ColumnWidth = 15;
 
             Microsoft.Office.Interop.Excel.Range cl10 = oSheet.get_Range("J1", "J1");
-            cl10.Value2 = "Giá Biểu";
+            cl10.Value2 = "Ngân Hàng";
             cl10.ColumnWidth = 10;
 
             Microsoft.Office.Interop.Excel.Range cl11 = oSheet.get_Range("K1", "K1");
-            cl11.Value2 = "Hành Thu";
-            cl11.ColumnWidth = 20;
+            cl11.Value2 = "Giá Biểu";
+            cl11.ColumnWidth = 10;
 
             Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("L1", "L1");
-            cl11.Value2 = "Tổ";
-            cl11.ColumnWidth = 5;
+            cl12.Value2 = "Hành Thu";
+            cl12.ColumnWidth = 20;
 
             Microsoft.Office.Interop.Excel.Range cl13 = oSheet.get_Range("M1", "M1");
-            cl13.Value2 = "Tiêu Thụ";
+            cl13.Value2 = "Tổ";
             cl13.ColumnWidth = 5;
+
+            Microsoft.Office.Interop.Excel.Range cl14 = oSheet.get_Range("N1", "N1");
+            cl14.Value2 = "Tiêu Thụ";
+            cl14.ColumnWidth = 5;
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 13];
+            object[,] arr = new object[dt.Rows.Count, 14];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -1139,13 +1143,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i, 3] = dr["HoTen"].ToString();
                 arr[i, 4] = dr["DiaChi"].ToString();
                 arr[i, 5] = dr["MLT"].ToString();
-                arr[i, 6] = dr["TongCong"].ToString();
-                arr[i, 7] = dr["DangNgan"].ToString();
-                arr[i, 8] = dr["TenNH"].ToString();
-                arr[i, 9] = dr["GiaBieu"].ToString();
-                arr[i, 10] = dr["HanhThu"].ToString();
-                arr[i, 11] = dr["To"].ToString();
-                arr[i, 12] = dr["TieuThu"].ToString();
+                arr[i, 6] = dr["GiaBan"].ToString();
+                arr[i, 7] = dr["TongCong"].ToString();
+                arr[i, 8] = dr["DangNgan"].ToString();
+                arr[i, 9] = dr["TenNH"].ToString();
+                arr[i, 10] = dr["GiaBieu"].ToString();
+                arr[i, 11] = dr["HanhThu"].ToString();
+                arr[i, 12] = dr["To"].ToString();
+                arr[i, 13] = dr["TieuThu"].ToString();
             }
 
             //Thiết lập vùng điền dữ liệu
@@ -1153,7 +1158,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             int columnStart = 1;
 
             int rowEnd = rowStart + dt.Rows.Count - 1;
-            int columnEnd = 13;
+            int columnEnd = 14;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
