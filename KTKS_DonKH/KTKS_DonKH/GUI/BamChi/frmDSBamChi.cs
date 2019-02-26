@@ -136,7 +136,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 dr["TrangThaiBC"] = itemRow["TrangThaiBC"];
                 dr["VienChi"] = itemRow["VienChi"];
                 dr["DayChi"] = itemRow["DayChi"];
-                dr["MaSoBC"] = itemRow["MaSoBC"];
+                dr["MaSoBC"] = itemRow["NiemChi"];
                 dr["NguoiBC"] = itemRow["CreateBy"];
                 dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
                 dr["NguoiLap"] = CTaiKhoan.HoTen;

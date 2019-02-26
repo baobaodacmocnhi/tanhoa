@@ -60,7 +60,7 @@ namespace KTKS_DonKH.GUI.BamChi
             cmbTrangThaiBC.SelectedIndex = -1;
             _flagFirst = false;
 
-            txtMaSoBC.Text = CTaiKhoan.MaKiemBamChi;
+            //txtMaSoBC.Text = CTaiKhoan.MaKiemBamChi;
 
             if (_MaCTBamChi != -1)
             {

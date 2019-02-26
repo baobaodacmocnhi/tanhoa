@@ -215,7 +215,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
             for (int i = 0; i < dgvDSThu.Rows.Count; i++)
                 if (dgvDSThu["In", i].Value != null && bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
                 {
-                    ThuMoi_ChiTiet en = _cThuMoi.get_ChiTiet(int.Parse(dgvDSThu["SoPhieu", i].Value.ToString()));
+                    ThuMoi_ChiTiet en = _cThuMoi.get_ChiTiet(int.Parse(dgvDSThu["IDCT", i].Value.ToString()));
                     if (en != null)
                     {
                         if (flag == true)

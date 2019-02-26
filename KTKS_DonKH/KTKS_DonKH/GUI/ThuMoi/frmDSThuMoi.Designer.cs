@@ -161,7 +161,7 @@
             this.CreateBy});
             this.dgvDSThu.Location = new System.Drawing.Point(12, 68);
             this.dgvDSThu.Name = "dgvDSThu";
-            this.dgvDSThu.Size = new System.Drawing.Size(1298, 560);
+            this.dgvDSThu.Size = new System.Drawing.Size(1298, 540);
             this.dgvDSThu.TabIndex = 36;
             this.dgvDSThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSThu_CellFormatting);
             this.dgvDSThu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSThu_RowPostPaint);
@@ -400,7 +400,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1324, 641);
+            this.ClientSize = new System.Drawing.Size(1324, 611);
             this.Controls.Add(this.btnInNhan);
             this.Controls.Add(this.radRong);
             this.Controls.Add(this.btnInDS);
