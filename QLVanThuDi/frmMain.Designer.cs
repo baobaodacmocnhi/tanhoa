@@ -73,7 +73,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 719);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 687);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1366, 24);
             this.statusStrip1.TabIndex = 0;
@@ -115,7 +115,7 @@
             this.PathFile});
             this.dgvDSVanThuDi.Location = new System.Drawing.Point(0, 118);
             this.dgvDSVanThuDi.Name = "dgvDSVanThuDi";
-            this.dgvDSVanThuDi.Size = new System.Drawing.Size(1342, 595);
+            this.dgvDSVanThuDi.Size = new System.Drawing.Size(1342, 560);
             this.dgvDSVanThuDi.TabIndex = 0;
             this.dgvDSVanThuDi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSVanThu_CellContentClick);
             this.dgvDSVanThuDi.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSVanThuDi_CellMouseClick);
@@ -409,7 +409,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1366, 743);
+            this.ClientSize = new System.Drawing.Size(1366, 711);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbPhongBanDoi);
             this.Controls.Add(this.groupBox2);
