@@ -264,7 +264,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                                 _dontu_LichSu.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
                                                 _dontu_LichSu.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
                                                 _dontu_LichSu.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                                _dontu_LichSu.MaDon = _dontu.MaDon;
+                                                //_dontu_LichSu.MaDon = _dontu.MaDon;
                                                 _dontu_LichSu.ID_KTXM = int.Parse(chkcmbNoiNhanKTXM.Properties.Items[j].Value.ToString());
                                                 _dontu_LichSu.KTXM = chkcmbNoiNhanKTXM.Properties.Items[j].ToString();
                                                 _cDonTu.SubmitChanges();
@@ -278,7 +278,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                         _dontu_LichSu.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
                                         _dontu_LichSu.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
                                         _dontu_LichSu.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                        _dontu_LichSu.MaDon = _dontu.MaDon;
+                                        //_dontu_LichSu.MaDon = _dontu.MaDon;
                                         _cDonTu.SubmitChanges();
                                     }
                                     flag = true;
@@ -291,9 +291,20 @@ namespace KTKS_DonKH.GUI.DonTu
                                 //_dontu_LichSu.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
                                 //_dontu_LichSu.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
                                 _dontu_LichSu.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                _dontu_LichSu.MaDon = _dontu.MaDon;
+                                //_dontu_LichSu.MaDon = _dontu.MaDon;
                                 _cDonTu.SubmitChanges();
                             }
+                        }
+                        else
+                        {
+                            _dontu_LichSu.NgayChuyen = dateChuyen.Value;
+                            _dontu_LichSu.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                            _dontu_LichSu.NoiChuyen = cmbNoiChuyen.Text;
+                            //_dontu_LichSu.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                            //_dontu_LichSu.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                            _dontu_LichSu.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                            //_dontu_LichSu.MaDon = _dontu.MaDon;
+                            _cDonTu.SubmitChanges();
                         }
                     }
                     else

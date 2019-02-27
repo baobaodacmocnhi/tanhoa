@@ -27,6 +27,7 @@ namespace KTKS_DonKH.GUI.DonTu
         LinQ.DonTu _dontu = null;
         HOADON _hoadon = null;
         int _MaDon = -1;
+        bool _flagdgvDanhBo_inserRow = false;
 
         public frmNhanDonTu()
         {
@@ -303,6 +304,11 @@ namespace KTKS_DonKH.GUI.DonTu
                     LinQ.DonTu entity = new LinQ.DonTu();
                     if (tabControl.SelectedTab.Name == "tabTTKH")
                     {
+                        if (txtSoCongVan.Text.Trim() != "")
+                        {
+                            MessageBox.Show("Hãy nhập loại công văn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (_cDonTu.checkExist_ChiTiet(txtDanhBo.Text.Trim().Replace(" ", ""), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim(), DateTime.Now) == true)
                         {
                             if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -342,7 +348,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     }
                     else if (tabControl.SelectedTab.Name == "tabCongVan")
                     {
-                        if (int.Parse(txtTongDB.Text.Trim()) != dgvDanhBo.RowCount-1)
+                        if (int.Parse(txtTongDB.Text.Trim()) != dgvDanhBo.RowCount - 1)
                         {
                             MessageBox.Show("Tổng Danh Bộ không đúng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -869,6 +875,43 @@ namespace KTKS_DonKH.GUI.DonTu
                     en.ModifyDate = DateTime.Now;
                     _cDonTu.SubmitChanges();
                 }
+                //thêm row mới
+                if (_flagdgvDanhBo_inserRow == true)
+                {
+                    DonTu_ChiTiet en = new DonTu_ChiTiet();
+                    if (dgvDanhBo["DanhBo", e.RowIndex].Value != null)
+                        en.DanhBo = dgvDanhBo["DanhBo", e.RowIndex].Value.ToString();
+                    if (dgvDanhBo["MLT", e.RowIndex].Value != null)
+                        en.MLT = dgvDanhBo["MLT", e.RowIndex].Value.ToString();
+                    if (dgvDanhBo["HopDong", e.RowIndex].Value != null)
+                        en.HopDong = dgvDanhBo["HopDong", e.RowIndex].Value.ToString();
+                    if (dgvDanhBo["HoTen", e.RowIndex].Value != null)
+                        en.HoTen = dgvDanhBo["HoTen", e.RowIndex].Value.ToString();
+                    if (dgvDanhBo["DiaChi", e.RowIndex].Value != null)
+                        en.DiaChi = dgvDanhBo["DiaChi", e.RowIndex].Value.ToString();
+                    if (dgvDanhBo["GiaBieu", e.RowIndex].Value != null)
+                        en.GiaBieu = int.Parse(dgvDanhBo["GiaBieu", e.RowIndex].Value.ToString());
+                    if (dgvDanhBo["DinhMuc", e.RowIndex].Value != null)
+                        en.DinhMuc = int.Parse(dgvDanhBo["DinhMuc", e.RowIndex].Value.ToString());
+                    if (dgvDanhBo["Dot", e.RowIndex].Value != null)
+                        en.Dot = int.Parse(dgvDanhBo["Dot", e.RowIndex].Value.ToString());
+                    if (dgvDanhBo["Ky", e.RowIndex].Value != null)
+                        en.Ky = int.Parse(dgvDanhBo["Ky", e.RowIndex].Value.ToString());
+                    if (dgvDanhBo["Nam", e.RowIndex].Value != null)
+                        en.Nam = int.Parse(dgvDanhBo["Nam", e.RowIndex].Value.ToString());
+                    if (dgvDanhBo["Quan", e.RowIndex].Value != null)
+                        en.Quan = dgvDanhBo["Quan", e.RowIndex].Value.ToString();
+                    if (dgvDanhBo["Phuong", e.RowIndex].Value != null)
+                        en.Phuong = dgvDanhBo["Phuong", e.RowIndex].Value.ToString();
+                    en.MaDon = _dontu.MaDon;
+                    en.STT = _dontu.DonTu_ChiTiets.Max(item => item.STT) + 1;
+                    en.CreateBy = CTaiKhoan.MaUser;
+                    en.CreateDate = DateTime.Now;
+                    _dontu.DonTu_ChiTiets.Add(en);
+                    _cDonTu.SubmitChanges();
+                    //_cDonTu.Them_ChiTiet(en);
+                    _flagdgvDanhBo_inserRow = false;
+                }
             }
         }
 
@@ -904,15 +947,41 @@ namespace KTKS_DonKH.GUI.DonTu
                 dgvDanhBoTimKiem.DataSource = _cDocSo.TimKiem(txtHoTen_TimKiem.Text.Trim(), txtSoNha_TimKiem.Text.Trim(), txtTenDuong_TimKiem.Text.Trim());
         }
 
-        private void dgvDanhBo_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        private void dgvDanhBo_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
             try
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
-                    if (_dontu != null && e.Row.Cells["ID"].Value != null)
+                    if (_dontu != null && e.Row.Cells["ID"].Value == null)
                     {
-                        _cDonTu.Xoa_ChiTiet(_cDonTu.get_ChiTiet(int.Parse(e.Row.Cells["ID"].Value.ToString())));
+                        _flagdgvDanhBo_inserRow = true;
+                        //DonTu_ChiTiet en = new DonTu_ChiTiet();
+                        //if (e.Row.Cells["DanhBo"].Value != null)
+                        //    en.DanhBo = e.Row.Cells["DanhBo"].Value.ToString();
+                        //if (e.Row.Cells["MLT"].Value != null)
+                        //    en.MLT = e.Row.Cells["MLT"].Value.ToString();
+                        //if (e.Row.Cells["HopDong"].Value != null)
+                        //    en.HopDong = e.Row.Cells["HopDong"].Value.ToString();
+                        //if (e.Row.Cells["HoTen"].Value != null)
+                        //    en.HoTen = e.Row.Cells["HoTen"].Value.ToString();
+                        //if (e.Row.Cells["DiaChi"].Value != null)
+                        //    en.DiaChi = e.Row.Cells["DiaChi"].Value.ToString();
+                        //if (e.Row.Cells["GiaBieu"].Value != null)
+                        //    en.GiaBieu = int.Parse(e.Row.Cells["GiaBieu"].Value.ToString());
+                        //if (e.Row.Cells["DinhMuc"].Value != null)
+                        //    en.DinhMuc = int.Parse(e.Row.Cells["DinhMuc"].Value.ToString());
+                        //if (e.Row.Cells["Dot"].Value != null)
+                        //    en.Dot = int.Parse(e.Row.Cells["Dot"].Value.ToString());
+                        //if (e.Row.Cells["Ky"].Value != null)
+                        //    en.Ky = int.Parse(e.Row.Cells["Ky"].Value.ToString());
+                        //if (e.Row.Cells["Nam"].Value != null)
+                        //    en.Nam = int.Parse(e.Row.Cells["Nam"].Value.ToString());
+                        //if (e.Row.Cells["Quan"].Value != null)
+                        //    en.Quan = e.Row.Cells["Quan"].Value.ToString();
+                        //if (e.Row.Cells["Phuong"].Value != null)
+                        //    en.Phuong = e.Row.Cells["Phuong"].Value.ToString();
+                        //_cDonTu.Them_ChiTiet(en);
                     }
                 }
                 else
@@ -924,40 +993,15 @@ namespace KTKS_DonKH.GUI.DonTu
             }
         }
 
-        private void dgvDanhBo_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        private void dgvDanhBo_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             try
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
-                    if (_dontu != null && e.Row.Cells["ID"].Value == null)
+                    if (_dontu != null && dgvDanhBo.Columns.Contains("ID") && e.Row.Cells["ID"].Value != null)
                     {
-                        DonTu_ChiTiet en = new DonTu_ChiTiet();
-                        if (e.Row.Cells["DanhBo"].Value != null)
-                            en.DanhBo = e.Row.Cells["DanhBo"].Value.ToString();
-                        if (e.Row.Cells["MLT"].Value != null)
-                            en.MLT = e.Row.Cells["MLT"].Value.ToString();
-                        if (e.Row.Cells["HopDong"].Value != null)
-                            en.HopDong = e.Row.Cells["HopDong"].Value.ToString();
-                        if (e.Row.Cells["HoTen"].Value != null)
-                            en.HoTen = e.Row.Cells["HoTen"].Value.ToString();
-                        if (e.Row.Cells["DiaChi"].Value != null)
-                            en.DiaChi = e.Row.Cells["DiaChi"].Value.ToString();
-                        if (e.Row.Cells["GiaBieu"].Value != null)
-                            en.GiaBieu = int.Parse(e.Row.Cells["GiaBieu"].Value.ToString());
-                        if (e.Row.Cells["DinhMuc"].Value != null)
-                            en.DinhMuc = int.Parse(e.Row.Cells["DinhMuc"].Value.ToString());
-                        if (e.Row.Cells["Dot"].Value != null)
-                            en.Dot = int.Parse(e.Row.Cells["Dot"].Value.ToString());
-                        if (e.Row.Cells["Ky"].Value != null)
-                            en.Ky = int.Parse(e.Row.Cells["Ky"].Value.ToString());
-                        if (e.Row.Cells["Nam"].Value != null)
-                            en.Nam = int.Parse(e.Row.Cells["Nam"].Value.ToString());
-                        if (e.Row.Cells["Quan"].Value != null)
-                            en.Quan = e.Row.Cells["Quan"].Value.ToString();
-                        if (e.Row.Cells["Phuong"].Value != null)
-                            en.Phuong = e.Row.Cells["Phuong"].Value.ToString();
-                        _cDonTu.Them_ChiTiet(en);
+                        _cDonTu.Xoa_ChiTiet(_cDonTu.get_ChiTiet(int.Parse(e.Row.Cells["ID"].Value.ToString())));
                     }
                 }
                 else
