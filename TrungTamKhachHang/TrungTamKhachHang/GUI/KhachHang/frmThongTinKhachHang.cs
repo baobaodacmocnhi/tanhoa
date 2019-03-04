@@ -90,8 +90,10 @@ namespace TrungTamKhachHang.GUI.KhachHang
                         txtCap.Text = dt.Rows[0]["Cap"].ToString();
                         txtSoThan.Text = dt.Rows[0]["SoThanDH"].ToString();
                         txtViTri.Text = dt.Rows[0]["ViTriDHN"].ToString();
-                        dateNgayGan.Value = DateTime.Parse(dt.Rows[0]["NgayThay"].ToString());
-                        dateNgayKiemDinh.Value = DateTime.Parse(dt.Rows[0]["NgayKiemDinh"].ToString());
+                        if (dt.Rows[0]["NgayThay"].ToString() != "")
+                            dateNgayGan.Value = DateTime.Parse(dt.Rows[0]["NgayThay"].ToString());
+                        if (dt.Rows[0]["NgayKiemDinh"].ToString() != "")
+                            dateNgayKiemDinh.Value = DateTime.Parse(dt.Rows[0]["NgayKiemDinh"].ToString());
                     }
                     //diff = DateTime.Now - date;
                     //_log.WriteLine("lấy thông tin khách hàng " + diff.TotalSeconds);
