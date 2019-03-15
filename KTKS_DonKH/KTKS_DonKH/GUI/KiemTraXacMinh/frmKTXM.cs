@@ -190,6 +190,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             _dontbc = null;
             _hoadon = null;
             dgvDSKetQuaKiemTra.DataSource = null;
+            txtMaDonMoi.Focus();
         }
 
         public void Clear_LoadDSKTXM()
@@ -228,6 +229,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             _hoadon = null;
 
             LoadDSKTXM();
+            txtMaDonMoi.Focus();
         }
 
         public void LoadDSKTXM()

@@ -63,6 +63,10 @@ namespace KTKS_DonKH.GUI.DonTu
 
                 txtNoiDung.Text = entity.Name_NhomDon;
                 txtVanDeKhac.Text = entity.VanDeKhac;
+                if (entity.ID_NhomDon.Contains("1") || entity.ID_NhomDon.Contains("2"))
+                    panel1.Visible = true;
+                else
+                    panel1.Visible = false;
 
                 if (entity.DonTu_ChiTiets.Count == 1)
                 {
@@ -579,6 +583,8 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if (txtSoNK.Text.Trim() != "")
                 txtDM.Text = (int.Parse(txtSoNK.Text.Trim()) * 4).ToString();
+            else
+                txtDM.Text = "";
         }
 
         private void txtSoNK_KeyPress(object sender, KeyPressEventArgs e)

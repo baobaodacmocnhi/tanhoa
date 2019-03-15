@@ -144,6 +144,10 @@ namespace KTKS_DonKH.GUI.DonTu
                 if (entity.ID_NhomDon != null)
                 {
                     chkcmbDieuChinh.SetEditValue(entity.ID_NhomDon);
+                    if (entity.ID_NhomDon.Contains("1") || entity.ID_NhomDon.Contains("2"))
+                        panel1.Visible = true;
+                    else
+                        panel1.Visible = false;
                     chkcmbKhieuNai.SetEditValue(entity.ID_NhomDon);
                     chkcmbDHN.SetEditValue(entity.ID_NhomDon);
                 }
