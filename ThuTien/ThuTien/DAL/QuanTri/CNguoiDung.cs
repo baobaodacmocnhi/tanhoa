@@ -93,7 +93,7 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._IP_PC = value; }
         }
 
-        static int _ID_DangNhap;
+        static int _ID_DangNhap=-1;
         public static int ID_DangNhap
         {
             get { return CNguoiDung._ID_DangNhap; }
@@ -360,11 +360,15 @@ namespace ThuTien.DAL.QuanTri
         {
             try
             {
-                TT_DangNhap en = _db.TT_DangNhaps.SingleOrDefault(item => item.ID == CNguoiDung.ID_DangNhap);
-                en.ModifyDate = DateTime.Now;
-                en.ModifyBy = CNguoiDung.MaND;
-                _db.SubmitChanges();
-                return true;
+                if (CNguoiDung.ID_DangNhap != -1)
+                {
+                    TT_DangNhap en = _db.TT_DangNhaps.SingleOrDefault(item => item.ID == CNguoiDung.ID_DangNhap);
+                    en.ModifyDate = DateTime.Now;
+                    en.ModifyBy = CNguoiDung.MaND;
+                    _db.SubmitChanges();
+                    return true;
+                }
+                return false;
             }
             catch (Exception ex)
             {

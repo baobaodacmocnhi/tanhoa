@@ -68,12 +68,12 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.TT_BangKes.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
         }
 
-        public TT_BangKe Get(int MaBK)
+        public TT_BangKe get(int MaBK)
         {
             return _db.TT_BangKes.SingleOrDefault(item => item.MaBK == MaBK);
         }
 
-        public TT_BangKe Get(string DanhBo)
+        public TT_BangKe get(string DanhBo)
         {
             if (_db.TT_BangKes.Any(item => item.DanhBo == DanhBo))
                 return _db.TT_BangKes.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).First();
@@ -157,8 +157,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                 + " set @FromNgayGiaiTrach='" + TuNgay.ToString("yyyyMMdd") + "';"
                 + " set @ToNgayGiaiTrach='" + DenNgay.ToString("yyyyMMdd") + "';"
                 + " select * from"
-                + " (select MaBK,bk.DanhBo,SoTien,Phi,CreateDate,TenNH,HoaDon,TongCong,CASE WHEN TongCong is null THEN SoTien ELSE SoTien-TongCong END as ChenhLech from"
-                + " (select MaBK,DanhBo,SoTien,Phi,MaNH,CreateDate from TT_BangKe where CAST(CreateDate as date)>=@FromNgayGiaiTrach and CAST(CreateDate as date)<=@ToNgayGiaiTrach) bk"
+                + " (select MaBK,bk.DanhBo,SoTien,Phi,SoPhieuThu,NgayPhieuThu,CreateDate,TenNH,HoaDon,TongCong,CASE WHEN TongCong is null THEN SoTien ELSE SoTien-TongCong END as ChenhLech from"
+                + " (select MaBK,DanhBo,SoTien,Phi,MaNH,SoPhieuThu,NgayPhieuThu,CreateDate from TT_BangKe where CAST(CreateDate as date)>=@FromNgayGiaiTrach and CAST(CreateDate as date)<=@ToNgayGiaiTrach) bk"
                 + " left join"
                 + " (select ID_NGANHANG,NGANHANG as TenNH from NGANHANG) nh on bk.MaNH=nh.ID_NGANHANG"
                 + " left join"

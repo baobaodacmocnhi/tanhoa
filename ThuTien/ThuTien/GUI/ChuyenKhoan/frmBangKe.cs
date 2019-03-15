@@ -144,7 +144,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         foreach (DataGridViewRow item in dgvBangKe.SelectedRows)
                             using (var scope = new TransactionScope())
                             {
-                                TT_BangKe bangke = _cBangKe.Get(int.Parse(item.Cells["MaBK"].Value.ToString()));
+                                TT_BangKe bangke = _cBangKe.get(int.Parse(item.Cells["MaBK"].Value.ToString()));
                                 if (_cBangKe.Xoa(bangke))
                                     if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê", "Xóa"))
                                         scope.Complete();
@@ -237,7 +237,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         }
                         using (var scope = new TransactionScope())
                         {
-                            TT_BangKe bangke = _cBangKe.Get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
+                            TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
                             int SoTien = bangke.SoTien.Value;
                             bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
                             if (_cBangKe.Sua(bangke))
@@ -317,5 +317,50 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
         }
 
+        private void btnChonFileCapNhatPhieuThu_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                try
+                {
+                    OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                    dialog.Multiselect = false;
+
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn Sửa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            CExcel fileExcel = new CExcel(dialog.FileName);
+                            DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                            //check 2 source
+                            if (dgvBangKe.Rows.Count != dtExcel.Rows.Count)
+                            {
+                                MessageBox.Show("2 Danh Sách Khác Nhau", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            for (int i = 0; i < dgvBangKe.Rows.Count; i++)
+                                if (dgvBangKe.Rows[i].Cells["DanhBo"].Value.ToString() == dtExcel.Rows[i][0].ToString().Replace(" ", "") && dgvBangKe.Rows[i].Cells["SoTien"].Value.ToString() == dtExcel.Rows[i][1].ToString())
+                                {
+                                    TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe.Rows[i].Cells["MaBK"].Value.ToString()));
+                                    bangke.SoPhieuThu = dtExcel.Rows[i][3].ToString().Trim();
+                                    string[] date = dtExcel.Rows[i][4].ToString().Trim().Split('/');
+                                    bangke.NgayPhieuThu = new DateTime(int.Parse(date[2]),int.Parse(date[1]),int.Parse(date[0]));
+                                    _cBangKe.Sua(bangke);
+                                }
+
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnXem.PerformClick();
+                        }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
     }
 }
+
