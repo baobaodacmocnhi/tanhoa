@@ -908,6 +908,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     if (dgvDanhBo["Phuong", e.RowIndex].Value != null)
                         en.Phuong = dgvDanhBo["Phuong", e.RowIndex].Value.ToString();
                     en.MaDon = _dontu.MaDon;
+                    en.ID = _cDonTu.getMaxID_ChiTiet()+1;
                     en.STT = _dontu.DonTu_ChiTiets.Max(item => item.STT) + 1;
                     en.CreateBy = CTaiKhoan.MaUser;
                     en.CreateDate = DateTime.Now;
