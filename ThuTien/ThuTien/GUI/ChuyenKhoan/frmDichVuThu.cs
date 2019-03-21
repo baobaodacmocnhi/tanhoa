@@ -417,8 +417,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                         {
                             if (item.Cells["IDGiaoDich"].Value.ToString() == "")
                             {
-                                MessageBox.Show("Xóa cơ chế cũ, Liên hệ BảoBảo để xóa tiếp", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                //MessageBox.Show("Xóa cơ chế cũ, Liên hệ BảoBảo để xóa tiếp", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 TT_DichVuThu dvt = _cDichVuThu.Get(item.Cells["SoHoaDon"].Value.ToString());
+                                if (dvt.TenDichVu == "PAYOO")
+                                {
+                                    _cDichVuThu.ExecuteNonQuery("delete BGW_HOADON where ID_HOADON="+dvt.MaHD);
+                                    _cDichVuThu.ExecuteNonQuery("delete BGW_DANGNGAN_UNC where FK_HOADON=" + dvt.MaHD);
+                                }
                                 _cDichVuThu.Xoa(dvt);
                             }
                             else

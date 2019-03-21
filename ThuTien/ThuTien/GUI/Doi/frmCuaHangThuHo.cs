@@ -45,21 +45,21 @@ namespace ThuTien.GUI.Doi
                         foreach (DataRow item in dtExcel.Rows)
                         {
                             string sql = "INSERT INTO TT_DichVuThu_CuaHang"
-           + "([ID]"
-           + ",[Name]"
-           + ",[DiaChi]"
-           + ",[GioHoatDong]"
-           + ",[TenDichVu]"
-           + ",[CreateBy]"
-           + ",[CreateDate])"
-     + "VALUES"
-           + "((select max(ID) from TT_DichVuThu_CuaHang)+1"
-           + ",N'" + item[0].ToString().Substring(item[0].ToString().IndexOf(" ")+1) + "'"
-           + ",N'" + item[1].ToString() + "'"
-           + ",'" + item[2].ToString() + "'"
-           + ",'PAYOO'"
-           + ",0"
-           + ",getDate())";
+                                       + "([ID]"
+                                       + ",[Name]"
+                                       + ",[DiaChi]"
+                                       + ",[GioHoatDong]"
+                                       + ",[TenDichVu]"
+                                       + ",[CreateBy]"
+                                       + ",[CreateDate])"
+                                       + "VALUES"
+                                       + "((select max(ID) from TT_DichVuThu_CuaHang)+1"
+                                       + ",N'" + item[0].ToString().Substring(item[0].ToString().IndexOf(" ")+1) + "'"
+                                       + ",N'" + item[1].ToString() + "'"
+                                       + ",'" + item[2].ToString() + "'"
+                                       + ",'PAYOO'"
+                                       + ",0"
+                                       + ",getDate())";
                             _cHoaDon.ExecuteNonQuery(sql);
                         }
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
