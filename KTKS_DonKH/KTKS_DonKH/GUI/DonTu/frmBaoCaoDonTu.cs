@@ -234,7 +234,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 dr["TuNgay"] = dateTu_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
                 dr["LoaiBaoCao"] = CTaiKhoan.TenTo.ToUpper();
-                dr["MaDonMoi"] = item["MaDonMoi"];
+                dr["MaDonMoi"] = item["MaDonChiTiet"];
                 dr["MaDon"] = item["MaDon"];
                 dr["TenLD"] = item["NhomDon"];
                 dr["ChuyenTrucTiep"] = item["ChuyenTrucTiep"];
