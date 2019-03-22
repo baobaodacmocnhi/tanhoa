@@ -1421,7 +1421,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //DCBD_ChiTietBienDong ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
             if (_ctdcbd.DCBD.MaDonMoi != null)
             {
-                if (_ctdcbd.DCBD.DonTu.DonTu_ChiTiets.Count == 0)
+                if (_ctdcbd.DCBD.DonTu.DonTu_ChiTiets.Count == 1)
                     dr["MaDon"] = _ctdcbd.DCBD.MaDonMoi.ToString();
                 else
                     dr["MaDon"] = _ctdcbd.DCBD.MaDonMoi.ToString() + "." + _ctdcbd.STT;

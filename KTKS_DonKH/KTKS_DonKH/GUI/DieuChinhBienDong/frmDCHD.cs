@@ -1878,17 +1878,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["SoPhieu"] = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                     dr["DanhBo"] = _ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
                     dr["HoTen"] = _ctdchd.HoTen;
-                    if(_ctdchd.DCBD.MaDonMoi!=null)
-                        dr["SoVanBan"] = _ctdchd.DCBD.MaDon.Value.ToString()+"."+_ctdchd.STT;
-                    else
-                    if (_ctdchd.DCBD.MaDon != null)
-                        dr["SoVanBan"] = _ctdchd.DCBD.MaDon.Value.ToString().Insert(_ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
-                    else
-                        if (_ctdchd.DCBD.MaDonTXL != null)
-                            dr["SoVanBan"] = "TXL" + _ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(_ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                    if (_ctdchd.DCBD.MaDonMoi != null)
+                    {
+                        if (_ctdchd.DCBD.DonTu.DonTu_ChiTiets.Count == 1)
+                            dr["SoVanBan"] = _ctdchd.DCBD.MaDonMoi.Value.ToString();
                         else
-                            if (_ctdchd.DCBD.MaDonTBC != null)
-                                dr["SoVanBan"] = "TBC" + _ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(_ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
+                            dr["SoVanBan"] = _ctdchd.DCBD.MaDonMoi.Value.ToString() + "." + _ctdchd.STT;
+                    }
+                    else
+                        if (_ctdchd.DCBD.MaDon != null)
+                            dr["SoVanBan"] = _ctdchd.DCBD.MaDon.Value.ToString().Insert(_ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                        else
+                            if (_ctdchd.DCBD.MaDonTXL != null)
+                                dr["SoVanBan"] = "TXL" + _ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(_ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                            else
+                                if (_ctdchd.DCBD.MaDonTBC != null)
+                                    dr["SoVanBan"] = "TBC" + _ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(_ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
 
                     dr["NgayVanBan"] = _ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
                     dr["KyHD"] = _ctdchd.KyHD;
