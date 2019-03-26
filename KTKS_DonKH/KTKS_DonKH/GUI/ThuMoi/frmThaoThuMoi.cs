@@ -137,6 +137,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
         public void Clear()
         {
             txtMaDonCu.Text = "";
+            txtMaDonMoi.Text = "";
             ///
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
@@ -499,16 +500,21 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
                 if (_thumoi.ThuMoi.MaDonMoi != null)
-                    dr["SoPhieu"] = _thumoi.ThuMoi.MaDonMoi.ToString();
+                {
+                    if (_thumoi.ThuMoi.DonTu.DonTu_ChiTiets.Count==1)
+                        dr["SoPhieu"] = _thumoi.ThuMoi.MaDonMoi.ToString();
+                    else
+                        dr["SoPhieu"] = _thumoi.ThuMoi.MaDonMoi.ToString() + "." + _thumoi.STT;
+                }
                 else
                     if (_thumoi.ThuMoi.MaDonTKH != null)
                         dr["SoPhieu"] = "TKH" + _thumoi.ThuMoi.MaDonTKH.ToString().Insert(_thumoi.ThuMoi.MaDonTKH.ToString().Length - 2, "-");
-                else
+                    else
                         if (_thumoi.ThuMoi.MaDonTXL != null)
                             dr["SoPhieu"] = "TXL" + _thumoi.ThuMoi.MaDonTXL.ToString().Insert(_thumoi.ThuMoi.MaDonTXL.ToString().Length - 2, "-");
-                    else
+                        else
                             if (_thumoi.ThuMoi.MaDonTBC != null)
-                            dr["SoPhieu"] = "TBC"+_thumoi.ThuMoi.MaDonTBC.ToString().Insert(_thumoi.ThuMoi.MaDonTBC.ToString().Length - 2, "-");
+                                dr["SoPhieu"] = "TBC" + _thumoi.ThuMoi.MaDonTBC.ToString().Insert(_thumoi.ThuMoi.MaDonTBC.ToString().Length - 2, "-");
 
                 dr["HoTen"] = _thumoi.HoTen;
                 dr["DiaChi"] = _thumoi.DiaChi;
@@ -524,7 +530,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
 
                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
-                ReportDocument rpt=new ReportDocument();
+                ReportDocument rpt = new ReportDocument();
                 if (radDutChi.Checked == true)
                     rpt = new rptThuMoiDutChi();
                 else

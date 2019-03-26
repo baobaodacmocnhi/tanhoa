@@ -1016,7 +1016,6 @@
       <Association Name="DonTu_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDonMoi" Type="GianLan" />
       <Association Name="DonTu_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="KTXM" />
       <Association Name="DonTu_ThuMoi" Member="ThuMois" ThisKey="MaDon" OtherKey="MaDonMoi" Type="ThuMoi" />
-      <Association Name="DonTu_ThuMoi1" Member="ThuMois1" ThisKey="MaDon" OtherKey="MaDonMoi" Type="ThuMoi" />
       <Association Name="DonTu_ToTrinh" Member="ToTrinhs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="ToTrinh" />
       <Association Name="DonTu_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="TruyThuTienNuoc" />
       <Association Name="DonTu_TruyThuTienNuoc1" Member="TruyThuTienNuocs1" ThisKey="MaDon" OtherKey="MaDonMoi" Type="TruyThuTienNuoc" />
@@ -1654,7 +1653,6 @@
       <Association Name="DonKH_ThuMoi" Member="DonKH" ThisKey="MaDonTKH" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
       <Association Name="DonTBC_ThuMoi" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
       <Association Name="DonTu_ThuMoi" Member="DonTu" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
-      <Association Name="DonTu_ThuMoi1" Member="DonTu1" ThisKey="MaDonMoi" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
       <Association Name="DonTXL_ThuMoi" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>

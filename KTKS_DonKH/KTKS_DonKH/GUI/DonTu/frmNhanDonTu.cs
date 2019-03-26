@@ -87,7 +87,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             try
             {
-                if (entity.DonTu_ChiTiets.Count == 1)
+                if (entity.DonTu_ChiTiets.Count == 1 && (entity.SoCongVan == null || entity.SoCongVan == ""))
                 {
                     tabControl.SelectTab("tabTTKH");
                     if (entity.SoNK != null)

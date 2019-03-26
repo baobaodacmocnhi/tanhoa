@@ -23312,8 +23312,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<ThuMoi> _ThuMois;
 		
-		private EntitySet<ThuMoi> _ThuMois1;
-		
 		private EntitySet<ToTrinh> _ToTrinhs;
 		
 		private EntitySet<TruyThuTienNuoc> _TruyThuTienNuocs;
@@ -23411,7 +23409,6 @@ namespace KTKS_DonKH.LinQ
 			this._GianLans = new EntitySet<GianLan>(new Action<GianLan>(this.attach_GianLans), new Action<GianLan>(this.detach_GianLans));
 			this._KTXMs = new EntitySet<KTXM>(new Action<KTXM>(this.attach_KTXMs), new Action<KTXM>(this.detach_KTXMs));
 			this._ThuMois = new EntitySet<ThuMoi>(new Action<ThuMoi>(this.attach_ThuMois), new Action<ThuMoi>(this.detach_ThuMois));
-			this._ThuMois1 = new EntitySet<ThuMoi>(new Action<ThuMoi>(this.attach_ThuMois1), new Action<ThuMoi>(this.detach_ThuMois1));
 			this._ToTrinhs = new EntitySet<ToTrinh>(new Action<ToTrinh>(this.attach_ToTrinhs), new Action<ToTrinh>(this.detach_ToTrinhs));
 			this._TruyThuTienNuocs = new EntitySet<TruyThuTienNuoc>(new Action<TruyThuTienNuoc>(this.attach_TruyThuTienNuocs), new Action<TruyThuTienNuoc>(this.detach_TruyThuTienNuocs));
 			this._TruyThuTienNuocs1 = new EntitySet<TruyThuTienNuoc>(new Action<TruyThuTienNuoc>(this.attach_TruyThuTienNuocs1), new Action<TruyThuTienNuoc>(this.detach_TruyThuTienNuocs1));
@@ -24256,19 +24253,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_ThuMoi1", Storage="_ThuMois1", ThisKey="MaDon", OtherKey="MaDonMoi")]
-		public EntitySet<ThuMoi> ThuMois1
-		{
-			get
-			{
-				return this._ThuMois1;
-			}
-			set
-			{
-				this._ThuMois1.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_ToTrinh", Storage="_ToTrinhs", ThisKey="MaDon", OtherKey="MaDonMoi")]
 		public EntitySet<ToTrinh> ToTrinhs
 		{
@@ -24447,18 +24431,6 @@ namespace KTKS_DonKH.LinQ
 		{
 			this.SendPropertyChanging();
 			entity.DonTu = null;
-		}
-		
-		private void attach_ThuMois1(ThuMoi entity)
-		{
-			this.SendPropertyChanging();
-			entity.DonTu1 = this;
-		}
-		
-		private void detach_ThuMois1(ThuMoi entity)
-		{
-			this.SendPropertyChanging();
-			entity.DonTu1 = null;
 		}
 		
 		private void attach_ToTrinhs(ToTrinh entity)
@@ -38111,8 +38083,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonTu> _DonTu;
 		
-		private EntityRef<DonTu> _DonTu1;
-		
 		private EntityRef<DonTXL> _DonTXL;
 		
     #region Extensibility Method Definitions
@@ -38145,7 +38115,6 @@ namespace KTKS_DonKH.LinQ
 			this._DonKH = default(EntityRef<DonKH>);
 			this._DonTBC = default(EntityRef<DonTBC>);
 			this._DonTu = default(EntityRef<DonTu>);
-			this._DonTu1 = default(EntityRef<DonTu>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
@@ -38253,7 +38222,7 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonMoi != value))
 				{
-					if ((this._DonTu.HasLoadedOrAssignedValue || this._DonTu1.HasLoadedOrAssignedValue))
+					if (this._DonTu.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -38457,40 +38426,6 @@ namespace KTKS_DonKH.LinQ
 						this._MaDonMoi = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("DonTu");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_ThuMoi1", Storage="_DonTu1", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
-		public DonTu DonTu1
-		{
-			get
-			{
-				return this._DonTu1.Entity;
-			}
-			set
-			{
-				DonTu previousValue = this._DonTu1.Entity;
-				if (((previousValue != value) 
-							|| (this._DonTu1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DonTu1.Entity = null;
-						previousValue.ThuMois1.Remove(this);
-					}
-					this._DonTu1.Entity = value;
-					if ((value != null))
-					{
-						value.ThuMois1.Add(this);
-						this._MaDonMoi = value.MaDon;
-					}
-					else
-					{
-						this._MaDonMoi = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("DonTu1");
 				}
 			}
 		}

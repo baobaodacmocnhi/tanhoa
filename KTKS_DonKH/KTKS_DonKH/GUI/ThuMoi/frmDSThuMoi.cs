@@ -101,7 +101,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
-                            dr["SoPhieu"] = dgvDSThu["MaDon", i].Value.ToString().Insert(dgvDSThu["MaDon", i].Value.ToString().Length - 2, "-");
+                            dr["SoPhieu"] = dgvDSThu["MaDon", i].Value.ToString();
 
                             dr["HoTen"] = dgvDSThu["HoTen", i].Value.ToString();
                             dr["DiaChi"] = dgvDSThu["DiaChi", i].Value.ToString();
