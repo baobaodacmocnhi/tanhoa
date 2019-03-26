@@ -153,6 +153,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
             //txtVeViec.Text = "Thanh toán chi phí (đồng hồ nước) đứt chì góc theo biên bản số";
             txtVeViec.Text = "";
 
+            dgvDSThu.DataSource = null;
             _dontu_ChiTiet = null;
             _dontkh = null;
             _dontxl = null;

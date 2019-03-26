@@ -310,8 +310,11 @@ namespace KTKS_DonKH.GUI.DonTu
                     {
                         if (txtSoCongVan.Text.Trim() != "")
                         {
-                            MessageBox.Show("Hãy nhập loại công văn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            if (int.Parse(txtTongDB.Text.Trim()) != 1)
+                            {
+                                MessageBox.Show("Tổng Danh Bộ không đúng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
                         if (_cDonTu.checkExist_ChiTiet(txtDanhBo.Text.Trim().Replace(" ", ""), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim(), DateTime.Now) == true)
                         {
@@ -532,13 +535,28 @@ namespace KTKS_DonKH.GUI.DonTu
                                 _dontu.DonTu_ChiTiets.SingleOrDefault().Phuong = _hoadon.Phuong;
                             }
                         }
-                        if (txtSoCongVan.Text.Trim() != "")
+                        if (tabControl.SelectedTab.Name == "tabTTKH")
+                        {
+                            if (txtSoCongVan.Text.Trim() != "")
+                            {
+                                if (int.Parse(txtTongDB.Text.Trim()) != 1)
+                                {
+                                    MessageBox.Show("Tổng Danh Bộ không đúng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+                        else if (tabControl.SelectedTab.Name == "tabCongVan")
                         {
                             if (int.Parse(txtTongDB.Text.Trim()) != dgvDanhBo.RowCount - 1)
                             {
                                 MessageBox.Show("Tổng Danh Bộ không đúng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
+                        }
+                        //
+                        if (txtSoCongVan.Text.Trim() != "")
+                        {
                             _dontu.SoCongVan = txtSoCongVan.Text.Trim();
                             _dontu.TongDB = int.Parse(txtTongDB.Text.Trim());
                         }
