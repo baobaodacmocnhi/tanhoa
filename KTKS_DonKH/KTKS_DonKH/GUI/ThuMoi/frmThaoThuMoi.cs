@@ -522,6 +522,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 if (!string.IsNullOrEmpty(_thumoi.DanhBo) && _thumoi.DanhBo.Length == 11)
                     dr["DanhBo"] = _thumoi.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["GiaBieu"] = _thumoi.GiaBieu.Value.ToString();
+                if(_thumoi.DinhMuc!=null)
                 dr["DinhMuc"] = _thumoi.DinhMuc.Value.ToString();
                 dr["CanCu"] = _thumoi.CanCu;
                 dr["VaoLuc"] = _thumoi.VaoLuc;

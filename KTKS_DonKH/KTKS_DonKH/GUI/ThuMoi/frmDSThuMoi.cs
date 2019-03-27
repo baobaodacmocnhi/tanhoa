@@ -108,6 +108,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             if (!string.IsNullOrEmpty(dgvDSThu["DanhBo", i].Value.ToString()) && dgvDSThu["DanhBo", i].Value.ToString().Length == 11)
                                 dr["DanhBo"] = dgvDSThu["DanhBo", i].Value.ToString().Insert(7, " ").Insert(4, " ");
                             dr["GiaBieu"] = dgvDSThu["GiaBieu", i].Value.ToString();
+                            if (dgvDSThu["DinhMuc", i].Value != null)
                             dr["DinhMuc"] = dgvDSThu["DinhMuc", i].Value.ToString();
                             dr["CanCu"] = dgvDSThu["CanCu", i].Value.ToString();
                             dr["VaoLuc"] = dgvDSThu["VaoLuc", i].Value.ToString();
