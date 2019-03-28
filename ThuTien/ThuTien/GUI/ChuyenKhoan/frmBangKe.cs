@@ -344,17 +344,26 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 MessageBox.Show("2 Danh Sách Khác Nhau", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            for (int i = 0; i < dgvBangKe.Rows.Count; i++)
-                                if (dgvBangKe.Rows[i].Cells["DanhBo"].Value.ToString() == dtExcel.Rows[i][0].ToString().Replace(" ", "") && dgvBangKe.Rows[i].Cells["SoTien"].Value.ToString() == dtExcel.Rows[i][1].ToString()
-                                    && !string.IsNullOrEmpty(dtExcel.Rows[i][3].ToString()) && !string.IsNullOrEmpty(dtExcel.Rows[i][4].ToString()))
-                                {
-                                    TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe.Rows[i].Cells["MaBK"].Value.ToString()));
-                                    bangke.SoPhieuThu = dtExcel.Rows[i][3].ToString().Trim();
-                                    string[] date = dtExcel.Rows[i][4].ToString().Trim().Split('/');
-                                    bangke.NgayPhieuThu = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-                                    _cBangKe.Sua(bangke);
-                                }
-
+                            using (var scope = new TransactionScope())
+                            {
+                                for (int i = 0; i < dgvBangKe.Rows.Count; i++)
+                                    if (dgvBangKe.Rows[i].Cells["DanhBo"].Value.ToString() == dtExcel.Rows[i][0].ToString().Replace(" ", "") && dgvBangKe.Rows[i].Cells["SoTien"].Value.ToString() == dtExcel.Rows[i][1].ToString()
+                                        && !string.IsNullOrEmpty(dtExcel.Rows[i][3].ToString()) && !string.IsNullOrEmpty(dtExcel.Rows[i][4].ToString()))
+                                    {
+                                        TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe.Rows[i].Cells["MaBK"].Value.ToString()));
+                                        bangke.SoPhieuThu = dtExcel.Rows[i][3].ToString().Trim();
+                                        string[] date = dtExcel.Rows[i][4].ToString().Trim().Split('/');
+                                        string[] year = date[2].Split(' ');
+                                        bangke.NgayPhieuThu = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]));
+                                        _cBangKe.Sua(bangke);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Lỗi Danh Bộ " + dtExcel.Rows[i][0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                scope.Complete();
+                            }
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
                         }

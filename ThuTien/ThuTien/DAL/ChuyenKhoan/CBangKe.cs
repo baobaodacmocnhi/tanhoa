@@ -165,7 +165,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                 + " (select DANHBA,COUNT(*) as HoaDon,SUM(TONGCONG) as TongCong from HOADON where DangNgan_ChuyenKhoan=1"
                 + " and CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach group by DANHBA) dn on bk.DanhBo=dn.DANHBA) as t1"
                 + " outer apply"
-                + " (select top 1 TENKH as HoTen from HOADON where DANHBA=t1.DanhBo order by ID_HOADON desc) as la";
+                + " (select top 1 TENKH as HoTen from HOADON where DANHBA=t1.DanhBo order by ID_HOADON desc) as la"
+                + " order by MaBK asc";
 
             return ExecuteQuery_DataTable(sql);
         }

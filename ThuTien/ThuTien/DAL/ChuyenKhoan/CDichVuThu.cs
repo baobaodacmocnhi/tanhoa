@@ -53,7 +53,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -100,7 +100,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -149,7 +149,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -198,7 +198,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -238,7 +238,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -279,7 +279,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -320,7 +320,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -362,7 +362,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -404,7 +404,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -445,7 +445,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -482,7 +482,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                           {
                               itemDV.SoHoaDon,
                               itemDV.SoTien,
-                              itemDV.Phi,
+                              Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                               itemDV.TenDichVu,
                               itemDV.CreateDate,
                               itemHD.NGAYGIAITRACH,
@@ -525,7 +525,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -562,7 +562,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                           {
                               itemDV.SoHoaDon,
                               itemDV.SoTien,
-                              itemDV.Phi,
+                              Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                               itemDV.TenDichVu,
                               itemDV.CreateDate,
                               itemHD.NGAYGIAITRACH,
@@ -606,7 +606,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -644,7 +644,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                           {
                               itemDV.SoHoaDon,
                               itemDV.SoTien,
-                              itemDV.Phi,
+                              Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                               itemDV.TenDichVu,
                               itemDV.CreateDate,
                               itemHD.NGAYGIAITRACH,
@@ -688,7 +688,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -726,7 +726,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                           {
                               itemDV.SoHoaDon,
                               itemDV.SoTien,
-                              itemDV.Phi,
+                              Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                               itemDV.TenDichVu,
                               itemDV.CreateDate,
                               itemHD.NGAYGIAITRACH,
@@ -1033,7 +1033,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -1075,7 +1075,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -1117,7 +1117,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -1155,7 +1155,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                           {
                               itemDV.SoHoaDon,
                               itemDV.SoTien,
-                              itemDV.Phi,
+                              Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                               itemDV.TenDichVu,
                               itemDV.CreateDate,
                               itemHD.NGAYGIAITRACH,
@@ -1198,7 +1198,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -1241,7 +1241,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -1284,7 +1284,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.IDGiaoDich,
                             itemDV.CreateDate,
@@ -1323,7 +1323,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                           {
                               itemDV.SoHoaDon,
                               itemDV.SoTien,
-                              itemDV.Phi,
+                              Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                               itemDV.TenDichVu,
                               itemDV.CreateDate,
                               itemHD.NGAYGIAITRACH,
@@ -1542,7 +1542,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.CreateDate,
                             itemHD.NGAYGIAITRACH,
@@ -1576,7 +1576,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            itemDV.Phi,
+                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.CreateDate,
                             itemHD.NGAYGIAITRACH,
