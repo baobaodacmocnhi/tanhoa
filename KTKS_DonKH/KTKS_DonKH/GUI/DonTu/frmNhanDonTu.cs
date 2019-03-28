@@ -87,7 +87,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             try
             {
-                if (entity.DonTu_ChiTiets.Count == 1 && (entity.SoCongVan == null || entity.SoCongVan == ""))
+                if (entity.DonTu_ChiTiets.Count == 1)
                 {
                     tabControl.SelectTab("tabTTKH");
                     if (entity.SoNK != null)
@@ -102,9 +102,9 @@ namespace KTKS_DonKH.GUI.DonTu
                     txtNguoiBao.Text = entity.DonTu_ChiTiets.SingleOrDefault().NguoiBao;
                     txtHoTen.Text = entity.DonTu_ChiTiets.SingleOrDefault().HoTen;
                     txtDiaChi.Text = entity.DonTu_ChiTiets.SingleOrDefault().DiaChi;
-                    if (entity.GiaBieu != null)
+                    if (entity.DonTu_ChiTiets.SingleOrDefault().GiaBieu != null)
                         txtGiaBieu.Text = entity.DonTu_ChiTiets.SingleOrDefault().GiaBieu.Value.ToString();
-                    if (entity.DinhMuc != null)
+                    if (entity.DonTu_ChiTiets.SingleOrDefault().DinhMuc != null)
                         txtDinhMuc.Text = entity.DonTu_ChiTiets.SingleOrDefault().DinhMuc.Value.ToString();
                 }
                 else
@@ -522,7 +522,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.DonTu_ChiTiets.SingleOrDefault().HoTen = txtHoTen.Text.Trim();
                             _dontu.DonTu_ChiTiets.SingleOrDefault().DiaChi = txtDiaChi.Text.Trim();
                             if (txtGiaBieu.Text.Trim() != "")
-                                _dontu.DonTu_ChiTiets.SingleOrDefault().GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                                _dontu.DonTu_ChiTiets.SingleOrDefault().GiaBieu= int.Parse(txtGiaBieu.Text.Trim());
                             if (txtDinhMuc.Text.Trim() != "")
                                 _dontu.DonTu_ChiTiets.SingleOrDefault().DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                             if (_hoadon != null && _hoadon.DANHBA != txtDanhBo.Text.Trim().Replace(" ", ""))
@@ -927,7 +927,10 @@ namespace KTKS_DonKH.GUI.DonTu
                         en.Phuong = dgvDanhBo["Phuong", e.RowIndex].Value.ToString();
                     en.MaDon = _dontu.MaDon;
                     en.ID = _cDonTu.getMaxID_ChiTiet()+1;
-                    en.STT = _dontu.DonTu_ChiTiets.Max(item => item.STT) + 1;
+                    if (_dontu.DonTu_ChiTiets.Max(item => item.STT) == null)
+                        en.STT = 1;
+                    else
+                        en.STT = _dontu.DonTu_ChiTiets.Max(item => item.STT) + 1;
                     en.CreateBy = CTaiKhoan.MaUser;
                     en.CreateDate = DateTime.Now;
                     _dontu.DonTu_ChiTiets.Add(en);
