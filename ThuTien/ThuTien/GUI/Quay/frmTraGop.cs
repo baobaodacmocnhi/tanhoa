@@ -88,7 +88,11 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cTraGop.GetDS();
+            if(radTon.Checked)
+            dgvHoaDon.DataSource = _cTraGop.getDS_Ton();
+            else
+                if (radAll.Checked)
+                    dgvHoaDon.DataSource = _cTraGop.getDS();
         }
 
         private void btnThem_Click(object sender, EventArgs e)

@@ -419,7 +419,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i, 0] = dr["DanhBo"].ToString();
                 arr[i, 1] = dr["SoTien"].ToString();
 
-                TT_BangKe bangke = _cBangKe.get(dr["DanhBo"].ToString());
+                TT_BangKe bangke = _cBangKe.getMoiNhat(dr["DanhBo"].ToString());
                 if (bangke != null)
                     arr[i, 2] = bangke.CreateDate.Value.ToString("dd/MM/yyyy");
 

@@ -73,7 +73,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.TT_BangKes.SingleOrDefault(item => item.MaBK == MaBK);
         }
 
-        public TT_BangKe get(string DanhBo)
+        public TT_BangKe getMoiNhat(string DanhBo)
         {
             if (_db.TT_BangKes.Any(item => item.DanhBo == DanhBo))
                 return _db.TT_BangKes.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).First();
@@ -128,6 +128,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                             itemBK.CreateDate,
                             MaNH = itemtableNH.ID_NGANHANG,
                             TenNH = itemtableNH.NGANHANG1,
+                            itemBK.SoPhieuThu,
+                            itemBK.NgayPhieuThu,
                         };
             return LINQToDataTable(query);
         }
@@ -137,7 +139,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             var query = from itemBK in _db.TT_BangKes
                         join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
-                        where itemBK.CreateDate.Value.Date >= CreateDate.Date.AddDays(-5) && itemBK.CreateDate.Value.Date <= CreateDate.Date
+                        where itemBK.CreateDate.Value.Date >= CreateDate.Date.AddDays(-5) && itemBK.CreateDate.Value.Date < CreateDate.Date
                         select new
                         {
                             itemBK.MaBK,
@@ -146,6 +148,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                             itemBK.CreateDate,
                             MaNH = itemtableNH.ID_NGANHANG,
                             TenNH = itemtableNH.NGANHANG1,
+                            itemBK.SoPhieuThu,
+                            itemBK.NgayPhieuThu,
                         };
             return LINQToDataTable(query);
         }

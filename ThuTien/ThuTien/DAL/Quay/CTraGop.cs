@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
+using System.Data;
 
 namespace ThuTien.DAL.Quay
 {
@@ -90,10 +91,16 @@ namespace ThuTien.DAL.Quay
             return _db.TT_TraGops.Where(item => item.MaHD == MaHD).ToList();
         }
 
-        public System.Data.DataTable GetDS()
+        public DataTable getDS()
         {
-            return ExecuteQuery_DataTable("select distinct ID_HOADON as MaHD,tg.SoHoaDon,SOPHATHANH,CAST(hd.KY as varchar)+'/'+CAST(hd.NAM as varchar) as Ky,DANHBA as DanhBo,hd.TENKH as HoTen,(hd.SO+' '+hd.DUONG) as DiaChi,MALOTRINH as MLT,TONGCONG from TT_TraGop tg,HOADON hd where tg.SoHoaDon=hd.SOHOADON");
+            return ExecuteQuery_DataTable("select distinct ID_HOADON as MaHD,tg.SoHoaDon,SOPHATHANH,CAST(hd.KY as varchar)+'/'+CAST(hd.NAM as varchar) as Ky,DANHBA as DanhBo,hd.TENKH as HoTen,(hd.SO+' '+hd.DUONG) as DiaChi,MALOTRINH as MLT,TONGCONG,NGAYGIAITRACH from TT_TraGop tg,HOADON hd where tg.SoHoaDon=hd.SOHOADON");
         }
+
+        public DataTable getDS_Ton()
+        {
+            return ExecuteQuery_DataTable("select distinct ID_HOADON as MaHD,tg.SoHoaDon,SOPHATHANH,CAST(hd.KY as varchar)+'/'+CAST(hd.NAM as varchar) as Ky,DANHBA as DanhBo,hd.TENKH as HoTen,(hd.SO+' '+hd.DUONG) as DiaChi,MALOTRINH as MLT,TONGCONG,NGAYGIAITRACH from TT_TraGop tg,HOADON hd where NGAYGIAITRACH is null and tg.SoHoaDon=hd.SOHOADON");
+        }
+
         public TT_TraGop GetByMaTG(int MaTG)
         {
             return _db.TT_TraGops.SingleOrDefault(item => item.MaTG == MaTG);
