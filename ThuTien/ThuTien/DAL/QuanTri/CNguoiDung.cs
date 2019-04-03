@@ -227,7 +227,7 @@ namespace ThuTien.DAL.QuanTri
 
         public List<TT_NguoiDung> GetDSChamCong()
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaND != 0 && item.ChamCong == true).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaND != 0 && item.ChamCong == true && item.An==false).OrderBy(item => item.STT).ToList();
         }
 
         /// <summary>

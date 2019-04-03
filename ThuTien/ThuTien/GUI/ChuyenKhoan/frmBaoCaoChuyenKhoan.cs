@@ -990,7 +990,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
 
-            oSheet.Cells[rowEnd + 1, 5] = dt.Compute("sum(SoTien)", "");
+            oSheet.Cells[rowEnd + 1, 5] = dt.Compute("sum(SoTien)", "NgayPhieuThu >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
             oSheet.Cells[rowEnd + 1, 9] = dt.Compute("sum(GiaBan)", "");
             oSheet.Cells[rowEnd + 1, 10] = dt.Compute("sum(ThueGTGT)", "");
             oSheet.Cells[rowEnd + 1, 11] = dt.Compute("sum(PhiBVMT)", "");
@@ -1001,10 +1001,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheet.Cells[rowEnd + 5, 2] = "KHO BẠC";
             oSheet.Cells[rowEnd + 6, 2] = "VCB";
 
-            oSheet.Cells[rowEnd + 3, 3] = dt.Compute("sum(SoTien)", "MaNH <> 3 and MaNH <> 4 and MaNH <> 10");
-            oSheet.Cells[rowEnd + 4, 3] = dt.Compute("sum(SoTien)", "MaNH = 4");
-            oSheet.Cells[rowEnd + 5, 3] = dt.Compute("sum(SoTien)", "MaNH = 3");
-            oSheet.Cells[rowEnd + 6, 3] = dt.Compute("sum(SoTien)", "MaNH = 10");
+            oSheet.Cells[rowEnd + 3, 3] = dt.Compute("sum(SoTien)", "MaNH <> 3 and MaNH <> 4 and MaNH <> 10 and NgayPhieuThu >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 4, 3] = dt.Compute("sum(SoTien)", "MaNH = 4 and NgayPhieuThu >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 5, 3] = dt.Compute("sum(SoTien)", "MaNH = 3 and NgayPhieuThu >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 6, 3] = dt.Compute("sum(SoTien)", "MaNH = 10 and NgayPhieuThu >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
 
             oSheet.Cells[rowEnd + 8, 2] = "Tồn cuối ngày: "+_cTienDu.GetTongTienTonDenNgay(dateGiaiTrach.Value);
         }
