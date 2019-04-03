@@ -251,7 +251,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     if (_dontu_LichSu != null)
                     {
                         bool flag = false;//ghi nhận có chọn checkcombobox
-                        if (chkcmbNoiNhan.Properties.Items.Count > 0)
+                        if (cmbNoiChuyen.SelectedIndex > -1)
                         {
                             for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
                                 if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
@@ -302,15 +302,20 @@ namespace KTKS_DonKH.GUI.DonTu
                         }
                         else
                         {
-                            _dontu_LichSu.NgayChuyen = dateChuyen.Value;
-                            _dontu_LichSu.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
-                            _dontu_LichSu.NoiChuyen = cmbNoiChuyen.Text;
-                            //_dontu_LichSu.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
-                            //_dontu_LichSu.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
-                            _dontu_LichSu.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                            //_dontu_LichSu.MaDon = _dontu.MaDon;
-                            _cDonTu.SubmitChanges();
+                            MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
+                        //else
+                        //{
+                        //    _dontu_LichSu.NgayChuyen = dateChuyen.Value;
+                        //    _dontu_LichSu.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                        //    _dontu_LichSu.NoiChuyen = cmbNoiChuyen.Text;
+                        //    //_dontu_LichSu.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                        //    //_dontu_LichSu.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                        //    _dontu_LichSu.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                        //    //_dontu_LichSu.MaDon = _dontu.MaDon;
+                        //    _cDonTu.SubmitChanges();
+                        //}
                     }
                     else
                         //thêm mới
@@ -325,7 +330,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                     return;
                                 }
                                 bool flag = false;//ghi nhận có chọn checkcombobox
-                                if (chkcmbNoiNhan.Properties.Items.Count > 0)
+                                if (cmbNoiChuyen.SelectedIndex > -1)
                                 {
                                     for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
                                         if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
@@ -380,6 +385,11 @@ namespace KTKS_DonKH.GUI.DonTu
                                         _cDonTu.Them_LichSu(entity);
                                     }
                                 }
+                                else
+                                {
+                                    MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             }
                             else
                                 //đơn công văn
@@ -389,7 +399,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                     if (_dontu_ChiTiet != null)
                                     {
                                         bool flag = false;//ghi nhận có chọn checkcombobox
-                                        if (chkcmbNoiNhan.Properties.Items.Count > 0)
+                                        if (cmbNoiChuyen.SelectedIndex > -1)
                                         {
                                             for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
                                                 if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
@@ -444,13 +454,18 @@ namespace KTKS_DonKH.GUI.DonTu
                                                 _cDonTu.Them_LichSu(entity);
                                             }
                                         }
+                                        else
+                                        {
+                                            MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
                                     }
                                     else
                                         //nhập nhiều
                                         foreach (DataGridViewRow item in dgvDanhBo.SelectedRows)
                                         {
                                             bool flag = false;//ghi nhận có chọn checkcombobox
-                                            if (chkcmbNoiNhan.Properties.Items.Count > 0)
+                                            if (cmbNoiChuyen.SelectedIndex > -1)
                                             {
                                                 for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
                                                     if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
@@ -507,6 +522,11 @@ namespace KTKS_DonKH.GUI.DonTu
                                                     entity.STT = dontu_chitiet.STT;
                                                     _cDonTu.Them_LichSu(entity);
                                                 }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
                                             }
                                         }
                                 }

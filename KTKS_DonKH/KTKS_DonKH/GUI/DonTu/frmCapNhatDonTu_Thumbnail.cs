@@ -59,7 +59,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 if (_dontu_ChiTiet != null)
                 {
                     bool flag = false;//ghi nhận có chọn checkcombobox
-                    if (chkcmbNoiNhan.Properties.Items.Count > 0)
+                    if (cmbNoiChuyen.SelectedIndex > -1)
                     {
                         for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
                             if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
@@ -113,6 +113,11 @@ namespace KTKS_DonKH.GUI.DonTu
                             entity.STT = _dontu_ChiTiet.STT;
                             _cDonTu.Them_LichSu(entity);
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
