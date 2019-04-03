@@ -204,6 +204,7 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 chkcmbNoiNhanKTXM.Properties.Items[i].CheckState = CheckState.Unchecked;
             }
+            txtNoiDung_LichSu.Text = "";
         }
 
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)

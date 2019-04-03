@@ -43,17 +43,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnInNhan = new System.Windows.Forms.Button();
             this.dgvDSThu = new System.Windows.Forms.DataGridView();
+            this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
+            this.btnXem = new System.Windows.Forms.Button();
             this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ThuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaCTTTTL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
-            this.btnXem = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
             this.SuspendLayout();
@@ -199,18 +201,38 @@
             this.CreateDate,
             this.MaDon,
             this.DanhBo,
+            this.HoTen,
+            this.DiaChi,
             this.VeViec,
             this.NoiDung,
             this.NoiNhan});
             this.dgvDSThu.Location = new System.Drawing.Point(12, 68);
             this.dgvDSThu.Name = "dgvDSThu";
             this.dgvDSThu.RowHeadersWidth = 60;
-            this.dgvDSThu.Size = new System.Drawing.Size(1311, 560);
+            this.dgvDSThu.Size = new System.Drawing.Size(1311, 551);
             this.dgvDSThu.TabIndex = 11;
             this.dgvDSThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSThu_CellFormatting);
             this.dgvDSThu.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvDSThu_CellValidating);
             this.dgvDSThu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSThu_RowPostPaint);
             this.dgvDSThu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSThu_KeyDown);
+            // 
+            // txtNoiDungTimKiem2
+            // 
+            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(434, 37);
+            this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
+            this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(100, 22);
+            this.txtNoiDungTimKiem2.TabIndex = 28;
+            this.txtNoiDungTimKiem2.Visible = false;
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(614, 18);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 25);
+            this.btnXem.TabIndex = 29;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // In
             // 
@@ -259,13 +281,27 @@
             this.DanhBo.Name = "DanhBo";
             this.DanhBo.ReadOnly = true;
             // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 200;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 200;
+            // 
             // VeViec
             // 
             this.VeViec.DataPropertyName = "VeViec";
             this.VeViec.HeaderText = "Về Việc";
             this.VeViec.Name = "VeViec";
             this.VeViec.ReadOnly = true;
-            this.VeViec.Width = 250;
+            this.VeViec.Width = 150;
             // 
             // NoiDung
             // 
@@ -273,7 +309,7 @@
             this.NoiDung.HeaderText = "Nội Dung";
             this.NoiDung.Name = "NoiDung";
             this.NoiDung.ReadOnly = true;
-            this.NoiDung.Width = 400;
+            this.NoiDung.Width = 200;
             // 
             // NoiNhan
             // 
@@ -282,31 +318,13 @@
             this.NoiNhan.Name = "NoiNhan";
             this.NoiNhan.ReadOnly = true;
             // 
-            // txtNoiDungTimKiem2
-            // 
-            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(434, 37);
-            this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
-            this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(100, 22);
-            this.txtNoiDungTimKiem2.TabIndex = 28;
-            this.txtNoiDungTimKiem2.Visible = false;
-            // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(614, 18);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 25);
-            this.btnXem.TabIndex = 29;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
             // frmDSTTTL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1331, 661);
+            this.ClientSize = new System.Drawing.Size(1331, 631);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.btnInNhan);
             this.Controls.Add(this.chkSelectAll);
@@ -354,6 +372,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;

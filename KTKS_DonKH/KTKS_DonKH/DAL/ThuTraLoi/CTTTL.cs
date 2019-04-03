@@ -208,7 +208,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                                     MaDon = "TKH" + item.TTTL.MaDon,
                                     item.MaCTTTTL,
                                     item.CreateDate,
-                                    item.DanhBo,
+                                    item.DanhBo,item.HoTen,item.DiaChi,
                                     item.VeViec,
                                     item.NoiDung,
                                     item.NoiNhan,
@@ -223,7 +223,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                                 MaDon = "TXL" + item.TTTL.MaDonTBC,
                                 item.MaCTTTTL,
                                 item.CreateDate,
-                                item.DanhBo,
+                                item.DanhBo,item.HoTen,item.DiaChi,
                                 item.VeViec,
                                 item.NoiDung,
                                 item.NoiNhan,
@@ -238,7 +238,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                                 MaDon = "TBC" + item.TTTL.MaDonTBC,
                                 item.MaCTTTTL,
                                 item.CreateDate,
-                                item.DanhBo,
+                                item.DanhBo,item.HoTen,item.DiaChi,
                                 item.VeViec,
                                 item.NoiDung,
                                 item.NoiNhan,
@@ -253,7 +253,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                                 MaDon =  item.TTTL.MaDonMoi.Value.ToString(),
                                 item.MaCTTTTL,
                                 item.CreateDate,
-                                item.DanhBo,
+                                item.DanhBo,item.HoTen,item.DiaChi,
                                 item.VeViec,
                                 item.NoiDung,
                                 item.NoiNhan,
@@ -269,13 +269,14 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                         where item.MaCTTTTL == MaCTTTTL
                         select new
                         {
-                            MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
+                            MaDon = item.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TTTL.MaDonMoi).Count() == 1 ? item.TTTL.MaDonMoi.Value.ToString() : item.TTTL.MaDonMoi + "." + item.STT
+                                : item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
                                 : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
                                 : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
                             item.MaCTTTTL,
                             ID = item.MaCTTTTL,
                             item.CreateDate,
-                            item.DanhBo,
+                            item.DanhBo,item.HoTen,item.DiaChi,
                             item.VeViec,
                             item.NoiDung,
                             item.NoiNhan,
@@ -292,12 +293,13 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                                 && item.MaCTTTTL >= TuMaCTTTTL && item.MaCTTTTL <= DenMaCTTTTL
                         select new
                         {
-                            MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
+                            MaDon = item.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TTTL.MaDonMoi).Count() == 1 ? item.TTTL.MaDonMoi.Value.ToString() : item.TTTL.MaDonMoi + "." + item.STT
+                                : item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
                                 : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
                                 : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
                             item.MaCTTTTL,
                             item.CreateDate,
-                            item.DanhBo,
+                            item.DanhBo,item.HoTen,item.DiaChi,
                             item.VeViec,
                             item.NoiDung,
                             item.NoiNhan,
@@ -312,12 +314,13 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                         where item.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
+                            MaDon = item.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TTTL.MaDonMoi).Count() == 1 ? item.TTTL.MaDonMoi.Value.ToString() : item.TTTL.MaDonMoi + "." + item.STT
+                                : item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
                                 : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
                                 : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
                             item.MaCTTTTL,
                             item.CreateDate,
-                            item.DanhBo,
+                            item.DanhBo,item.HoTen,item.DiaChi,
                             item.VeViec,
                             item.NoiDung,
                             item.NoiNhan,
@@ -332,13 +335,14 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
+                            MaDon = item.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TTTL.MaDonMoi).Count() == 1 ? item.TTTL.MaDonMoi.Value.ToString() : item.TTTL.MaDonMoi + "." + item.STT
+                                : item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
                                 : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
                                 : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
                             item.MaCTTTTL,
                             ID = item.MaCTTTTL,
                             item.CreateDate,
-                            item.DanhBo,
+                            item.DanhBo,item.HoTen,item.DiaChi,
                             item.VeViec,
                             item.NoiDung,
                             item.NoiNhan,
@@ -355,7 +359,8 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                         select new
                         {
                             item.MaCTTTTL,
-                            MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
+                            MaDon = item.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TTTL.MaDonMoi).Count() == 1 ? item.TTTL.MaDonMoi.Value.ToString() : item.TTTL.MaDonMoi + "." + item.STT
+                                : item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
                                 : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
                                 : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
                             item.VeViec,
