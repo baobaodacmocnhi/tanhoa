@@ -311,6 +311,8 @@ namespace ThuTien.GUI.Doi
                     cmbNhanVien_Giao.SelectedValue = dgvNiemChi_Giao["MaNV_Giao", e.RowIndex].Value;
                 txtTuSo_Giao.Text = dgvNiemChi_Giao["TuSo_Giao", e.RowIndex].Value.ToString();
                 txtDenSo_Giao.Text = dgvNiemChi_Giao["DenSo_Giao", e.RowIndex].Value.ToString();
+                //lấy niêm chì tồn
+                txtNiemChiTon.Text = _cNiemChi.getDSNiemChiTon(int.Parse(dgvNiemChi_Giao["MaNV_Giao", e.RowIndex].Value.ToString()));
             }
             catch (Exception)
             {

@@ -550,6 +550,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             dt.Columns.Add("SoTien", typeof(int));
             dt.Columns.Add("SoPhieuThu", typeof(string));
             dt.Columns.Add("NgayPhieuThu", typeof(DateTime));
+            dt.Columns.Add("CreateDate", typeof(DateTime));
             dt.Columns.Add("MaNH", typeof(int));
             dt.Columns.Add("NganHang", typeof(string));
             dt.Columns.Add("Ky", typeof(string));
@@ -581,6 +582,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["SoTien"] = item["SoTien"];
                             dr["SoPhieuThu"] = item["SoPhieuThu"];
                             dr["NgayPhieuThu"] = item["NgayPhieuThu"];
+                            dr["CreateDate"] = item["CreateDate"];
                             dr["MaNH"] = item["MaNH"];
                             dr["NganHang"] = item["TenNH"];
                             dr["Lech"] = int.Parse(item["SoTien"].ToString()) - TongCong;
@@ -590,6 +592,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["MaBK"] = item["MaBK"];
                             dr["SoPhieuThu"] = item["SoPhieuThu"];
                             dr["NgayPhieuThu"] = item["NgayPhieuThu"];
+                            dr["CreateDate"] = item["CreateDate"];
                         }
 
                         dr["DanhBo"] = item["DanhBo"];
@@ -631,6 +634,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["SoTien"] = item["SoTien"];
                     dr["SoPhieuThu"] = item["SoPhieuThu"];
                     dr["NgayPhieuThu"] = item["NgayPhieuThu"];
+                    dr["CreateDate"] = item["CreateDate"];
                     dr["MaNH"] = item["MaNH"];
                     dr["NganHang"] = item["TenNH"];
 
@@ -674,6 +678,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["SoPhieuThu"] = bk.SoPhieuThu;
                     if (bk.NgayPhieuThu != null)
                     dr["NgayPhieuThu"] = bk.NgayPhieuThu;
+                    dr["CreateDate"] = bk.CreateDate;
                     dr["MaNH"] = bk.MaNH;
                     dr["NganHang"] = _cNganHang.GetByMaNH(bk.MaNH.Value).NGANHANG1;
 
@@ -990,7 +995,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
 
-            oSheet.Cells[rowEnd + 1, 5] = dt.Compute("sum(SoTien)", "NgayPhieuThu >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 1, 5] = dt.Compute("sum(SoTien)", "");
             oSheet.Cells[rowEnd + 1, 9] = dt.Compute("sum(GiaBan)", "");
             oSheet.Cells[rowEnd + 1, 10] = dt.Compute("sum(ThueGTGT)", "");
             oSheet.Cells[rowEnd + 1, 11] = dt.Compute("sum(PhiBVMT)", "");
@@ -1001,10 +1006,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheet.Cells[rowEnd + 5, 2] = "KHO BẠC";
             oSheet.Cells[rowEnd + 6, 2] = "VCB";
 
-            oSheet.Cells[rowEnd + 3, 3] = dt.Compute("sum(SoTien)", "MaNH <> 3 and MaNH <> 4 and MaNH <> 10 and NgayPhieuThu >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
-            oSheet.Cells[rowEnd + 4, 3] = dt.Compute("sum(SoTien)", "MaNH = 4 and NgayPhieuThu >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
-            oSheet.Cells[rowEnd + 5, 3] = dt.Compute("sum(SoTien)", "MaNH = 3 and NgayPhieuThu >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
-            oSheet.Cells[rowEnd + 6, 3] = dt.Compute("sum(SoTien)", "MaNH = 10 and NgayPhieuThu >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 3, 3] = dt.Compute("sum(SoTien)", "MaNH <> 3 and MaNH <> 4 and MaNH <> 10 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 4, 3] = dt.Compute("sum(SoTien)", "MaNH = 4 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 5, 3] = dt.Compute("sum(SoTien)", "MaNH = 3 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 6, 3] = dt.Compute("sum(SoTien)", "MaNH = 10 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
 
             oSheet.Cells[rowEnd + 8, 2] = "Tồn cuối ngày: "+_cTienDu.GetTongTienTonDenNgay(dateGiaiTrach.Value);
         }

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chkButChi = new System.Windows.Forms.CheckBox();
             this.chkKhoaTu = new System.Windows.Forms.CheckBox();
@@ -531,7 +531,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 26);
+            this.label2.Location = new System.Drawing.Point(6, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 0;
@@ -604,14 +604,14 @@
             // 
             this.dgvKQDongNuoc.AllowUserToAddRows = false;
             this.dgvKQDongNuoc.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvKQDongNuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvKQDongNuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvKQDongNuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKQDongNuoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.In,
@@ -642,27 +642,27 @@
             this.DaKy,
             this.NgayKy,
             this.MLT});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvKQDongNuoc.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvKQDongNuoc.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvKQDongNuoc.Location = new System.Drawing.Point(446, 49);
             this.dgvKQDongNuoc.MultiSelect = false;
             this.dgvKQDongNuoc.Name = "dgvKQDongNuoc";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvKQDongNuoc.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvKQDongNuoc.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvKQDongNuoc.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvKQDongNuoc.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvKQDongNuoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKQDongNuoc.Size = new System.Drawing.Size(911, 570);
             this.dgvKQDongNuoc.TabIndex = 30;
@@ -973,14 +973,14 @@
             this.groupBox3.Controls.Add(this.chkDongNuoc2);
             this.groupBox3.Location = new System.Drawing.Point(1, 475);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(401, 186);
+            this.groupBox3.Size = new System.Drawing.Size(401, 144);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết Quả Đóng Nước lần 2";
             // 
             // txtNiemChi2
             // 
-            this.txtNiemChi2.Location = new System.Drawing.Point(223, 78);
+            this.txtNiemChi2.Location = new System.Drawing.Point(92, 108);
             this.txtNiemChi2.Name = "txtNiemChi2";
             this.txtNiemChi2.Size = new System.Drawing.Size(89, 20);
             this.txtNiemChi2.TabIndex = 49;
@@ -988,7 +988,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(140, 81);
+            this.label26.Location = new System.Drawing.Point(5, 111);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(78, 13);
             this.label26.TabIndex = 48;
@@ -996,7 +996,7 @@
             // 
             // txtNiemChi1
             // 
-            this.txtNiemChi1.Location = new System.Drawing.Point(223, 156);
+            this.txtNiemChi1.Location = new System.Drawing.Point(289, 111);
             this.txtNiemChi1.Name = "txtNiemChi1";
             this.txtNiemChi1.ReadOnly = true;
             this.txtNiemChi1.Size = new System.Drawing.Size(89, 20);
@@ -1005,7 +1005,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(140, 159);
+            this.label25.Location = new System.Drawing.Point(203, 114);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(78, 13);
             this.label25.TabIndex = 46;
@@ -1013,7 +1013,7 @@
             // 
             // btnHinhDongNuoc2
             // 
-            this.btnHinhDongNuoc2.Location = new System.Drawing.Point(24, 51);
+            this.btnHinhDongNuoc2.Location = new System.Drawing.Point(124, 20);
             this.btnHinhDongNuoc2.Name = "btnHinhDongNuoc2";
             this.btnHinhDongNuoc2.Size = new System.Drawing.Size(100, 23);
             this.btnHinhDongNuoc2.TabIndex = 45;
@@ -1023,7 +1023,7 @@
             // 
             // txtChiSoDN1
             // 
-            this.txtChiSoDN1.Location = new System.Drawing.Point(223, 130);
+            this.txtChiSoDN1.Location = new System.Drawing.Point(289, 85);
             this.txtChiSoDN1.Name = "txtChiSoDN1";
             this.txtChiSoDN1.ReadOnly = true;
             this.txtChiSoDN1.Size = new System.Drawing.Size(89, 20);
@@ -1032,7 +1032,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(140, 133);
+            this.label10.Location = new System.Drawing.Point(203, 88);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(67, 13);
             this.label10.TabIndex = 43;
@@ -1043,7 +1043,7 @@
             this.dateDongNuoc1.CustomFormat = "dd/MM/yyyy";
             this.dateDongNuoc1.Enabled = false;
             this.dateDongNuoc1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDongNuoc1.Location = new System.Drawing.Point(223, 104);
+            this.dateDongNuoc1.Location = new System.Drawing.Point(289, 59);
             this.dateDongNuoc1.Name = "dateDongNuoc1";
             this.dateDongNuoc1.Size = new System.Drawing.Size(100, 20);
             this.dateDongNuoc1.TabIndex = 42;
@@ -1051,7 +1051,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(137, 107);
+            this.label11.Location = new System.Drawing.Point(203, 62);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(80, 13);
             this.label11.TabIndex = 41;
@@ -1059,7 +1059,7 @@
             // 
             // txtChiSoDN2
             // 
-            this.txtChiSoDN2.Location = new System.Drawing.Point(223, 52);
+            this.txtChiSoDN2.Location = new System.Drawing.Point(92, 82);
             this.txtChiSoDN2.Name = "txtChiSoDN2";
             this.txtChiSoDN2.Size = new System.Drawing.Size(89, 20);
             this.txtChiSoDN2.TabIndex = 40;
@@ -1067,7 +1067,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(140, 55);
+            this.label13.Location = new System.Drawing.Point(5, 85);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(67, 13);
             this.label13.TabIndex = 39;
@@ -1077,7 +1077,7 @@
             // 
             this.dateDongNuoc2.CustomFormat = "dd/MM/yyyy";
             this.dateDongNuoc2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDongNuoc2.Location = new System.Drawing.Point(223, 26);
+            this.dateDongNuoc2.Location = new System.Drawing.Point(92, 56);
             this.dateDongNuoc2.Name = "dateDongNuoc2";
             this.dateDongNuoc2.Size = new System.Drawing.Size(100, 20);
             this.dateDongNuoc2.TabIndex = 38;
@@ -1085,7 +1085,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(137, 29);
+            this.label17.Location = new System.Drawing.Point(6, 59);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(80, 13);
             this.label17.TabIndex = 37;
@@ -1094,7 +1094,7 @@
             // chkDongNuoc2
             // 
             this.chkDongNuoc2.AutoSize = true;
-            this.chkDongNuoc2.Location = new System.Drawing.Point(24, 28);
+            this.chkDongNuoc2.Location = new System.Drawing.Point(11, 24);
             this.chkDongNuoc2.Name = "chkDongNuoc2";
             this.chkDongNuoc2.Size = new System.Drawing.Size(107, 17);
             this.chkDongNuoc2.TabIndex = 36;
@@ -1183,7 +1183,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1360, 661);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1360, 631);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.lbTo);
             this.Controls.Add(this.btnInDS);
