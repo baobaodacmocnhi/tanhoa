@@ -39,6 +39,7 @@ namespace ThuTien.GUI.QuanTri
             chkDoi.Checked = false;
             chkToTruong.Checked = false;
             chkHanhThu.Checked = false;
+            chkHanhThuVanPhong.Checked = false;
             chkDongNuoc.Checked = false;
             chkVanPhong.Checked = false;
             if (CNguoiDung.Admin)
@@ -112,6 +113,7 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.Doi = chkDoi.Checked;
                     nguoidung.ToTruong = chkToTruong.Checked;
                     nguoidung.HanhThu = chkHanhThu.Checked;
+                    nguoidung.HanhThuVanPhong = chkHanhThuVanPhong.Checked;
                     nguoidung.DongNuoc = chkDongNuoc.Checked;
                     nguoidung.VanPhong = chkVanPhong.Checked;
                     nguoidung.ChamCong = chkChamCong.Checked;
@@ -162,6 +164,7 @@ namespace ThuTien.GUI.QuanTri
                         nguoidung.Doi = chkDoi.Checked;
                         nguoidung.ToTruong = chkToTruong.Checked;
                         nguoidung.HanhThu = chkHanhThu.Checked;
+                        nguoidung.HanhThuVanPhong = chkHanhThuVanPhong.Checked;
                         nguoidung.DongNuoc = chkDongNuoc.Checked;
                         nguoidung.VanPhong = chkVanPhong.Checked;
                         nguoidung.ChamCong = chkChamCong.Checked;
@@ -235,6 +238,7 @@ namespace ThuTien.GUI.QuanTri
                 chkDoi.Checked = bool.Parse(dgvNguoiDung["Doi", e.RowIndex].Value.ToString());
                 chkToTruong.Checked = bool.Parse(dgvNguoiDung["ToTruong", e.RowIndex].Value.ToString());
                 chkHanhThu.Checked = bool.Parse(dgvNguoiDung["HanhThu", e.RowIndex].Value.ToString());
+                chkHanhThuVanPhong.Checked = bool.Parse(dgvNguoiDung["HanhThuVanPhong", e.RowIndex].Value.ToString());
                 chkDongNuoc.Checked = bool.Parse(dgvNguoiDung["DongNuoc", e.RowIndex].Value.ToString());
                 chkVanPhong.Checked = bool.Parse(dgvNguoiDung["VanPhong", e.RowIndex].Value.ToString());
                 chkChamCong.Checked = bool.Parse(dgvNguoiDung["ChamCong", e.RowIndex].Value.ToString());
