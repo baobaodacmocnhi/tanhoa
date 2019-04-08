@@ -563,10 +563,50 @@ namespace ThuTien.GUI.ChuyenKhoan
             dt.Columns.Add("TienMat", typeof(int));
             //dt.Columns.Add("Loai", typeof(string));
 
+            string SoPhieuThu = "";
+            int count=1,countSum=1,SumSoTien = 0, SumGiaBan = 0, SumThueGTGT = 0, SumPhiBVMT = 0, SumTongCong = 0;
             foreach (DataRow item in dtBK.Rows)
             {
-                DataRow[] drDN = dtDN.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
+                if (SoPhieuThu == "")
+                {
+                    SoPhieuThu = item["SoPhieuThu"].ToString();
+                    SumSoTien = int.Parse(item["SoTien"].ToString());
+                }
+                else
+                    if (SoPhieuThu == item["SoPhieuThu"].ToString())
+                    {
+                        countSum++;
+                        SumSoTien += int.Parse(item["SoTien"].ToString());
+                    }
+                    else
+                    {
+                        if (countSum>1)
+                        {
+                            //thêm dòng sum
+                            DataRow dr = dt.NewRow();
+                            dr["MaBK"] = dtBK.Rows[count - 2]["MaBK"];
+                            dr["SoPhieuThu"] = dtBK.Rows[count - 2]["SoPhieuThu"];
+                            dr["NgayPhieuThu"] = dtBK.Rows[count - 2]["NgayPhieuThu"];
+                            dr["SoTien"] = SumSoTien;
+                            dr["GiaBan"] = SumGiaBan;
+                            dr["ThueGTGT"] = SumThueGTGT;
+                            dr["PhiBVMT"] = SumPhiBVMT;
+                            dr["TongCong"] = SumTongCong;
+                            dr["Lech"] = SumSoTien-SumTongCong;
+                            dt.Rows.Add(dr);
+                        }
+                        countSum = 1;
+                        SumGiaBan = 0;
+                        SumThueGTGT = 0;
+                        SumPhiBVMT = 0;
+                        SumTongCong = 0;
+                        SoPhieuThu = item["SoPhieuThu"].ToString();
+                        SumSoTien = int.Parse(item["SoTien"].ToString());
+                    }
+                count++;
 
+                DataRow[] drDN = dtDN.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
+                
                 ///bảng kê có đăng ngân
                 if (drDN.Count() > 0)
                 {
@@ -575,11 +615,30 @@ namespace ThuTien.GUI.ChuyenKhoan
                     int ThueGTGT = int.Parse(dtDN.Compute("sum(ThueGTGT)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
                     int PhiBVMT = int.Parse(dtDN.Compute("sum(PhiBVMT)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
                     int TongCong = int.Parse(dtDN.Compute("sum(TongCong)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
+
+                    //cập nhật sum
+                    if (SoPhieuThu == item["SoPhieuThu"].ToString())
+                    {
+                        SumGiaBan += GiaBan;
+                        SumThueGTGT += ThueGTGT;
+                        SumPhiBVMT += PhiBVMT;
+                        SumTongCong += TongCong;
+                    }
+                    //else
+                    //{
+                    //    SoPhieuThu = item["SoPhieuThu"].ToString();
+                    //    SumGiaBan = GiaBan;
+                    //    SumThueGTGT = ThueGTGT;
+                    //    SumPhiBVMT = PhiBVMT;
+                    //    SumTongCong = TongCong;
+                    //}
+
                     foreach (DataRow itemdrDN in drDN)
                     {
+                        //thêm dòng
                         DataRow dr = dt.NewRow();
-
-                        if (drDN.Count() == 1)
+                        //if (drDN.Count() == 1)
+                        if (i==0)
                         {
                             dr["MaBK"] = item["MaBK"];
                             dr["SoTien"] = item["SoTien"];
@@ -626,29 +685,30 @@ namespace ThuTien.GUI.ChuyenKhoan
                         ///trừ bớt trong danh sách đăng ngân
                         dtDN.Rows.Remove(itemdrDN);
                     }
-                    if (i > 1)
-                    {
-                        DataRow dr = dt.NewRow();
-                        dr["MaBK"] = item["MaBK"];
-                        dr["SoTien"] = item["SoTien"];
-                        dr["SoPhieuThu"] = item["SoPhieuThu"];
-                        dr["NgayPhieuThu"] = item["NgayPhieuThu"];
-                        dr["CreateDate"] = item["CreateDate"];
-                        dr["MaNH"] = item["MaNH"];
-                        dr["NganHang"] = item["TenNH"];
-                        dr["GiaBan"] = GiaBan;
-                        dr["ThueGTGT"] = ThueGTGT;
-                        dr["PhiBVMT"] = PhiBVMT;
-                        dr["TongCong"] = TongCong;
-                        dr["Lech"] = int.Parse(item["SoTien"].ToString()) - TongCong;
-                        dt.Rows.Add(dr);
-                    }
+                    //if (i > 1)
+                    //{
+                    //    DataRow dr = dt.NewRow();
+                    //    dr["MaBK"] = item["MaBK"];
+                    //    dr["SoTien"] = item["SoTien"];
+                    //    dr["SoPhieuThu"] = item["SoPhieuThu"];
+                    //    dr["NgayPhieuThu"] = item["NgayPhieuThu"];
+                    //    dr["CreateDate"] = item["CreateDate"];
+                    //    dr["MaNH"] = item["MaNH"];
+                    //    dr["NganHang"] = item["TenNH"];
+                    //    dr["GiaBan"] = GiaBan;
+                    //    dr["ThueGTGT"] = ThueGTGT;
+                    //    dr["PhiBVMT"] = PhiBVMT;
+                    //    dr["TongCong"] = TongCong;
+                    //    dr["Lech"] = int.Parse(item["SoTien"].ToString()) - TongCong;
+                    //    dt.Rows.Add(dr);
+                    //}
+                    
                 }
                 ///bảng kê không có đăng ngân
                 else
                 {
+                    //thêm dòng
                     DataRow dr = dt.NewRow();
-
                     dr["MaBK"] = item["MaBK"];
                     dr["DanhBo"] = item["DanhBo"];
                     dr["SoTien"] = item["SoTien"];
@@ -670,6 +730,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                     dt.Rows.Add(dr);
                 }
+                
             }
 
             //dt.DefaultView.Sort = "Loai DESC,MaBK ASC";
@@ -844,7 +905,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             Microsoft.Office.Interop.Excel.Range cl4b = oSheet.get_Range("E6", "E6");
             cl4b.Value2 = "SỐ TIỀN";
-            cl4b.ColumnWidth = 10;
+            cl4b.ColumnWidth = 12;
             cl4b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl4b.Font.Name = "Times New Roman";
 
@@ -875,7 +936,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             Microsoft.Office.Interop.Excel.Range cl5d = oSheet.get_Range("I6", "I6");
             cl5d.Value2 = "TN";
-            cl5d.ColumnWidth = 10;
+            cl5d.ColumnWidth = 12;
             cl5d.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5d.Font.Name = "Times New Roman";
 
@@ -893,7 +954,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             Microsoft.Office.Interop.Excel.Range cl5g = oSheet.get_Range("L6", "L6");
             cl5g.Value2 = "CỘNG GT";
-            cl5g.ColumnWidth = 10;
+            cl5g.ColumnWidth = 12;
             cl5g.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5g.Font.Name = "Times New Roman";
 

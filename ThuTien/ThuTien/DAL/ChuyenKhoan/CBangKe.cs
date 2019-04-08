@@ -120,6 +120,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
                         where itemBK.CreateDate.Value.Date == CreateDate.Date
+                        orderby itemBK.MaBK ascending
                         select new
                         {
                             itemBK.MaBK,
