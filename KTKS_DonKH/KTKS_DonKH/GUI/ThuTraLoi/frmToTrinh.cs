@@ -266,8 +266,14 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         {
             if (e.KeyChar == 13 && _cTT.checkExist_ChiTiet(int.Parse(txtMaCTTT.Text.Trim().Replace("-", ""))) == true)
             {
+                string MaDon = txtMaCTTT.Text.Trim();
+                Clear();
+                txtMaCTTT.Text = MaDon;
                 _cttt = _cTT.get_ChiTiet(int.Parse(txtMaCTTT.Text.Trim().Replace("-", "")));
+                if(_cttt!=null)
                 LoadTT(_cttt);
+                else
+                    MessageBox.Show("Mã này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

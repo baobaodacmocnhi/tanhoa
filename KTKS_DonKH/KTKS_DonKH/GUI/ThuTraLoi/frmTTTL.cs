@@ -312,8 +312,14 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         {
             if (e.KeyChar == 13 && _cTTTL.CheckExist_CT(decimal.Parse(txtMaCTTTTL.Text.Trim().Replace("-", ""))) == true)
             {
+                string MaDon = txtMaCTTTTL.Text.Trim();
+                Clear();
+                txtMaCTTTTL.Text = MaDon;
                 _cttttl = _cTTTL.GetCT(decimal.Parse(txtMaCTTTTL.Text.Trim().Replace("-", "")));
+               if(_cttttl!=null)
                 LoadTTTL(_cttttl);
+               else
+                   MessageBox.Show("Mã này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

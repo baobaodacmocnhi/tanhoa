@@ -371,11 +371,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void txtMaThongBao_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (e.KeyChar == 13 && txtMaThongBao.Text.Trim() != "")
             {
-                if (_cCHDB.CheckExist_CTCTDB(decimal.Parse(txtMaThongBao.Text.Trim().Replace("-", ""))) == true)
+                string MaDon = txtMaThongBao.Text.Trim();
+                Clear();
+                txtMaThongBao.Text = MaDon;
+                _ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(txtMaThongBao.Text.Trim().Replace("-", "")));
+                if (_ctctdb!=null)
                 {
-                    _ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(txtMaThongBao.Text.Trim().Replace("-", "")));
                     LoadCTDB(_ctctdb);
                 }
                 else

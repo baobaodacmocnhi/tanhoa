@@ -200,6 +200,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void Clear()
         {
             //txtMaDon.Text = "";
+            //txtMaDonMoi.Text = "";
             txtSoPhieu.Text = "";
             txtDot.Text = "";
             txtHieuLucKy.Text = "";
@@ -286,12 +287,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
                                 LoadTTKH(_hoadon);
-                                txtDanhBo.Focus();
+                                txtMaDonMoi.Focus();
                             }
                             else
                             {
                                 MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                txtDanhBo.Focus();
+                                txtMaDonMoi.Focus();
                             }
                         }
                         else
@@ -309,12 +310,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 {
                                     _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
                                     LoadTTKH(_hoadon);
-                                    txtDanhBo.Focus();
+                                    txtMaDonMoi.Focus();
                                 }
                                 else
                                 {
                                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    txtDanhBo.Focus();
+                                    txtMaDonMoi.Focus();
                                 }
                             }
                             else
@@ -331,12 +332,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 {
                                     _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
                                     LoadTTKH(_hoadon);
-                                    txtDanhBo.Focus();
+                                    txtMaDonMoi.Focus();
                                 }
                                 else
                                 {
                                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    txtDanhBo.Focus();
+                                    txtMaDonMoi.Focus();
                                 }
                             }
                             else
@@ -384,6 +385,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 else
                     MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+                txtDanhBo.Focus();
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -405,6 +408,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.KeyChar == 13 && txtSoPhieu.Text.Trim() != "")
             {
+                string MaDon = txtSoPhieu.Text.Trim();
+                Clear();
+                txtSoPhieu.Text = MaDon;
                 _ctdcbd = _cDCBD.getBienDong(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
                 if (_ctdcbd!=null)
                 {

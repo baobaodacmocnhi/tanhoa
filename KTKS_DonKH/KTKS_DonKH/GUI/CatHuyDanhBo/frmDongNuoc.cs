@@ -299,11 +299,14 @@ namespace KTKS_DonKH.GUI.DongNuoc
 
         private void txtMaThongBao_DN_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (e.KeyChar == 13 && txtMaThongBao_DN.Text.Trim()!="")
             {
-                if (_cDongNuoc.GetCTByMaCTDN(decimal.Parse(txtMaThongBao_DN.Text.Trim().Replace("-", ""))) != null)
+                string MaDon = txtMaThongBao_DN.Text.Trim();
+                Clear();
+                txtMaThongBao_DN.Text = MaDon;
+                _ctdongnuoc = _cDongNuoc.GetCTByMaCTDN(decimal.Parse(txtMaThongBao_DN.Text.Trim().Replace("-", "")));
+                if (_ctdongnuoc != null)
                 {
-                    _ctdongnuoc = _cDongNuoc.GetCTByMaCTDN(decimal.Parse(txtMaThongBao_DN.Text.Trim().Replace("-", "")));
                     LoadDongNuoc(_ctdongnuoc);
                 }
                 else
@@ -313,11 +316,14 @@ namespace KTKS_DonKH.GUI.DongNuoc
 
         private void txtMaThongBao_MN_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (e.KeyChar == 13 && txtMaThongBao_MN.Text.Trim()!="")
             {
-                if (_cDongNuoc.GetCTByMaCTMN(decimal.Parse(txtMaThongBao_MN.Text.Trim().Replace("-", ""))) != null)
+                string MaDon = txtMaThongBao_MN.Text.Trim();
+                Clear();
+                txtMaThongBao_MN.Text = MaDon;
+                _ctdongnuoc = _cDongNuoc.GetCTByMaCTMN(decimal.Parse(txtMaThongBao_MN.Text.Trim().Replace("-", "")));
+                if (_ctdongnuoc != null)
                 {
-                    _ctdongnuoc = _cDongNuoc.GetCTByMaCTMN(decimal.Parse(txtMaThongBao_MN.Text.Trim().Replace("-", "")));
                     LoadDongNuoc(_ctdongnuoc);
                 }
                 else

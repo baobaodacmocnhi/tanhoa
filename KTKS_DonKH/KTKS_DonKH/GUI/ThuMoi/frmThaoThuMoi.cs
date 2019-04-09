@@ -583,9 +583,14 @@ namespace KTKS_DonKH.GUI.ThuMoi
         {
             if (e.KeyChar == 13 && txtIDCT.Text.Trim() != "")
             {
+                string MaDon = txtIDCT.Text.Trim();
+                Clear();
+                txtIDCT.Text = MaDon;
                 _thumoi = _cThuMoi.get_ChiTiet(int.Parse(txtIDCT.Text.Trim().Replace("-", "")));
                 if (_thumoi != null)
                     LoadEntity(_thumoi);
+                else
+                    MessageBox.Show("Mã này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

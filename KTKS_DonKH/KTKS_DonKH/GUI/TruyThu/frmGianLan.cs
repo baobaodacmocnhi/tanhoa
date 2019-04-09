@@ -944,13 +944,14 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (e.KeyChar == 13 && txtMaCTGL.Text.Trim() != "")
             {
-                string MaCTGL = txtMaCTGL.Text.Trim();
+                string MaCTGL = txtMaCTGL.Text.Trim().Replace("-", "");
                 Clear();
-                _gianlan = _cGianLan.get_ChiTiet(int.Parse(MaCTGL));
+                txtMaCTGL.Text = MaCTGL;
+                _gianlan = _cGianLan.get_ChiTiet(int.Parse(txtMaCTGL.Text.Trim()));
                 if (_gianlan != null)
                     LoadGianLan(_gianlan);
                 else
-                    MessageBox.Show("Không có Mã Gian Lận này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Mã này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

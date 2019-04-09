@@ -295,6 +295,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (e.KeyChar == 13 && txtMaYCCHDB.Text.Trim() != "")
             {
+                string MaDon = txtMaYCCHDB.Text.Trim();
+                Clear();
+                txtMaYCCHDB.Text = MaDon;
                 _ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(txtMaYCCHDB.Text.Trim().Replace("-", "")));
                 if (_ycchdb != null)
                 {

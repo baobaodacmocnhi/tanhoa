@@ -422,11 +422,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.KeyChar == 13 && txtSoPhieu.Text.Trim() != "")
             {
+                string MaDon = txtSoPhieu.Text.Trim();
+                Clear();
+                txtSoPhieu.Text = MaDon;
                 _ctdchd = _cDCBD.getHoaDon(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
                 if (_ctdchd != null)
                 {
                     LoadDCHD(_ctdchd);
                 }
+                else
+                    MessageBox.Show("Số Phiếu này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

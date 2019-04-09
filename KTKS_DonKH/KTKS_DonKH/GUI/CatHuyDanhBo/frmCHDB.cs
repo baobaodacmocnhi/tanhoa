@@ -421,6 +421,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (e.KeyChar == 13 && txtMaThongBaoCH.Text.Trim() != "")
             {
+                string MaDon = txtMaThongBaoCH.Text.Trim();
+                Clear();
+                txtMaThongBaoCH.Text = MaDon;
                 _ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(txtMaThongBaoCH.Text.Trim().Replace("-", "")));
                 if (_ctchdb != null)
                 {
@@ -433,8 +436,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void txtMaThongBaoCT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (e.KeyChar == 13 && txtMaThongBaoCT.Text.Trim()!="")
             {
+                string MaDon = txtMaThongBaoCT.Text.Trim();
+                Clear();
+                txtMaThongBaoCT.Text = MaDon;
                 _ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", "")));
                 if (_ctctdb != null)
                 {
