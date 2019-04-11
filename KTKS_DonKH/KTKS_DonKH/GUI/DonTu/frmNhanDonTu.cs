@@ -515,6 +515,12 @@ namespace KTKS_DonKH.GUI.DonTu
                                 _dontu.SoNK = int.Parse(txtSoNK.Text.Trim());
                                 _dontu.HieuLucKy = txtHieuLucKy.Text.Trim();
                             }
+                            else
+                                if (_dontu.SoNK != null)
+                                {
+                                    _dontu.SoNK = null;
+                                    _dontu.HieuLucKy = null;
+                                }
                             _dontu.DonTu_ChiTiets.SingleOrDefault().DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                             _dontu.DonTu_ChiTiets.SingleOrDefault().HopDong = txtHopDong.Text.Trim();
                             _dontu.DonTu_ChiTiets.SingleOrDefault().DienThoai = txtDienThoai.Text.Trim();

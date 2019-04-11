@@ -349,44 +349,45 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtMaDonMoi_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtMaDonMoi.Text.Trim() != "")
-            {
-                string MaDon = txtMaDonMoi.Text.Trim();
-                Clear();
-                if (MaDon.Contains(".") == true)
+            if (e.KeyChar == 13)
+                if (txtMaDonMoi.Text.Trim() != "")
                 {
-                    string[] MaDons = MaDon.Split('.');
-                    _dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
-                }
-                else
-                {
-                    _dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
-                }
-                //
-                if (_dontu_ChiTiet != null)
-                {
-                    if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count() == 1)
-                        txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+                    string MaDon = txtMaDonMoi.Text.Trim();
+                    Clear();
+                    if (MaDon.Contains(".") == true)
+                    {
+                        string[] MaDons = MaDon.Split('.');
+                        _dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                    }
                     else
-                        txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();
+                    {
+                        _dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                    }
+                    //
+                    if (_dontu_ChiTiet != null)
+                    {
+                        if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count() == 1)
+                            txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+                        else
+                            txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();
 
-                    _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
-                    if (_hoadon != null)
-                    {
-                        LoadTTKH(_hoadon);
-                        txtDanhBo.Focus();
+                        _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
+                        if (_hoadon != null)
+                        {
+                            LoadTTKH(_hoadon);
+                            txtDanhBo.Focus();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtDanhBo.Focus();
+                        }
                     }
                     else
-                    {
-                        MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtDanhBo.Focus();
-                    }
+                        MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-                txtDanhBo.Focus();
+                    txtDanhBo.Focus();
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
