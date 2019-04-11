@@ -593,19 +593,11 @@ namespace ThuTien.DAL.Doi
             //                HD0 = itemGroup.Count(groupItem => groupItem.TIEUTHU == 0),
             //            };
             //return LINQToDataTable(query.OrderBy(item => item.Dot));
-            string sql = "declare @Nam int;"
-                    + " declare @Ky int;"
-                    + " set @Nam=" + Nam + ";"
-                    + " set @Ky=" + Ky + ";"
-                    + " select * from"
-                    + " (select DOT,TongHD=COUNT(ID_HOADON),TongTieuThu=SUM(TIEUTHU),TongGiaBan=SUM(GIABAN),TongThueGTGT=SUM(THUE),"
-                    + " TongPhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG),HD0=COUNT(case when TIEUTHU = 0 then 1 else null end)"
-                    + " from HOADON where NAM=@Nam and KY=@Ky group by DOT) a,"
-                    + " (select * from"
-                    + " (select DOT,SoNgay,CreateDate,ROW_NUMBER() OVER (PARTITION BY DOT ORDER BY CreateDate DESC) AS rn from HOADON where NAM=@Nam and KY=@Ky) b"
-                    + " where rn=1) c"
-                    + " where a.DOT=c.DOT"
-                    + " order by a.DOT";
+            string sql = "select DOT,TongHD=COUNT(ID_HOADON),TongTieuThu=SUM(TIEUTHU),TongGiaBan=SUM(GIABAN),TongThueGTGT=SUM(THUE),"
+                        + " TongPhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG),HD0=COUNT(case when TIEUTHU = 0 then 1 else null end),"
+                        + " SONGAY=MAX(SONGAY),CreateDate=MAX(CreateDate)"
+                        + " from HOADON where NAM=" + Nam + " and KY=" + Ky
+                        + " group by DOT";
             return ExecuteQuery_DataTable(sql);
         }
 
