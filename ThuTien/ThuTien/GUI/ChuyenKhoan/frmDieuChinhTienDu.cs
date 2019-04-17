@@ -142,7 +142,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             }
                             using (var scope = new TransactionScope())
                             {
-                                if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), -kqdongnuoc.PhiMoNuoc.Value, "Điều Chỉnh Tiền", "Thêm Chuyển Phí Mở Nước"))
+                                if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), -kqdongnuoc.PhiMoNuoc.Value, "Điều Chỉnh Tiền", "Thêm Chuyển Phí Mở Nước",dateLap.Value))
                                 {
                                     HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
 
@@ -157,13 +157,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     phimonuoc.PhiMoNuoc = kqdongnuoc.PhiMoNuoc;
                                     phimonuoc.MaKQDN = kqdongnuoc.MaKQDN;
 
-                                    if (_cPhiMoNuoc.Them(phimonuoc))
+                                    if (_cPhiMoNuoc.Them(phimonuoc,dateLap.Value))
                                     {
                                         if (_cTienDu.LinQ_ExecuteNonQuery("update TT_TienDu set ChoXuLy=0 where DanhBo='" + hoadon.DANHBA + "'"))
                                         {
                                             kqdongnuoc.DongPhi = true;
                                             kqdongnuoc.ChuyenKhoan = true;
-                                            kqdongnuoc.NgayDongPhi = DateTime.Now;
+                                            kqdongnuoc.NgayDongPhi = dateLap.Value;
                                             if (_cDongNuoc.SuaKQ(kqdongnuoc))
                                             //if (_cDongNuoc.LinQ_ExecuteNonQuery("update TT_KQDongNuoc set DongPhi=1,ChuyenKhoan=1,NgayDongPhi=getdate() where MaKQDN=" + kqdongnuoc.MaKQDN))
                                             {

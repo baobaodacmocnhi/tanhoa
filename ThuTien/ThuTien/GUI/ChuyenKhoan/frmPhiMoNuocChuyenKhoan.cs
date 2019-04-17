@@ -86,46 +86,48 @@ namespace ThuTien.GUI.ChuyenKhoan
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (dgvPhiMoNuoc.Columns[e.ColumnIndex].Name == "NhanHD_PMN" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvPhiMoNuoc[e.ColumnIndex, e.RowIndex].Value.ToString()))
+            if (dgvPhiMoNuoc.Columns[e.ColumnIndex].Name == "Chot_PMN" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvPhiMoNuoc[e.ColumnIndex, e.RowIndex].Value.ToString()))
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
                     TT_PhiMoNuoc phimonuoc = _cPhiMoNuoc.Get(decimal.Parse(dgvPhiMoNuoc["MaPMN", e.RowIndex].Value.ToString()));
-                    if (bool.Parse(e.FormattedValue.ToString()))
+                    if (bool.Parse(e.FormattedValue.ToString())==true)
                     {
-                        phimonuoc.NhanHD = bool.Parse(e.FormattedValue.ToString());
-                        phimonuoc.NgayNhanHD = DateTime.Now;
+                        phimonuoc.Chot = bool.Parse(e.FormattedValue.ToString());
+                        phimonuoc.NgayChot = DateTime.Now;
                     }
                     else
                     {
-                        phimonuoc.NhanHD = bool.Parse(e.FormattedValue.ToString());
-                        phimonuoc.NgayNhanHD = null;
+                        MessageBox.Show("Đã Chốt không được xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                        //phimonuoc.Chot = bool.Parse(e.FormattedValue.ToString());
+                        //phimonuoc.NgayChot = null;
                     }
                     _cPhiMoNuoc.Sua(phimonuoc);
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (dgvPhiMoNuoc.Columns[e.ColumnIndex].Name == "TraHD_PMN" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvPhiMoNuoc[e.ColumnIndex, e.RowIndex].Value.ToString()))
-            {
-                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
-                {
-                    TT_PhiMoNuoc phimonuoc = _cPhiMoNuoc.Get(decimal.Parse(dgvPhiMoNuoc["MaPMN", e.RowIndex].Value.ToString()));
-                    if (bool.Parse(e.FormattedValue.ToString()))
-                    {
-                        phimonuoc.TraHD = bool.Parse(e.FormattedValue.ToString());
-                        phimonuoc.NgayTraHD = DateTime.Now;
-                    }
-                    else
-                    {
-                        phimonuoc.TraHD = bool.Parse(e.FormattedValue.ToString());
-                        phimonuoc.NgayTraHD = null;
-                    }
-                    _cPhiMoNuoc.Sua(phimonuoc);
-                }
-                else
-                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //if (dgvPhiMoNuoc.Columns[e.ColumnIndex].Name == "TraHD_PMN" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvPhiMoNuoc[e.ColumnIndex, e.RowIndex].Value.ToString()))
+            //{
+            //    if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            //    {
+            //        TT_PhiMoNuoc phimonuoc = _cPhiMoNuoc.Get(decimal.Parse(dgvPhiMoNuoc["MaPMN", e.RowIndex].Value.ToString()));
+            //        if (bool.Parse(e.FormattedValue.ToString()))
+            //        {
+            //            phimonuoc.TraHD = bool.Parse(e.FormattedValue.ToString());
+            //            phimonuoc.NgayTraHD = DateTime.Now;
+            //        }
+            //        else
+            //        {
+            //            phimonuoc.TraHD = bool.Parse(e.FormattedValue.ToString());
+            //            phimonuoc.NgayTraHD = null;
+            //        }
+            //        _cPhiMoNuoc.Sua(phimonuoc);
+            //    }
+            //    else
+            //        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void btnIn_Click(object sender, EventArgs e)

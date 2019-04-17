@@ -20,6 +20,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CBangKe _cBangKe = new CBangKe();
         CTienDu _cTienDu = new CTienDu();
         CNganHang _cNganHang = new CNganHang();
+        CPhiMoNuoc _cPMN = new CPhiMoNuoc();
 
         public frmBaoCaoChuyenKhoan()
         {
@@ -851,7 +852,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             head.RowHeight = 50;
             head.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
-            long TonDau = _cTienDu.GetTongTienTonDauNgay(dateGiaiTrach.Value);
+            long TonDau = _cTienDu.GetTongTienTonDauNgay(dateGiaiTrach.Value)+_cPMN.getPhiMoNuoc_Chot(false);
 
             Microsoft.Office.Interop.Excel.Range head2a = oSheet.get_Range("A2", "B2");
             head2a.MergeCells = true;
@@ -1164,7 +1165,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheet.get_Range(c2sum2, c3sum2).NumberFormat = "#,##0";
 
             oSheet.Cells[rowEnd + 8, 2] = "Tồn cuối ngày:";
-            oSheet.Cells[rowEnd + 8, 3] = _cTienDu.GetTongTienTonDenNgay(dateGiaiTrach.Value);
+            oSheet.Cells[rowEnd + 8, 3] = _cTienDu.GetTongTienTonDenNgay(dateGiaiTrach.Value) + _cPMN.getPhiMoNuoc_Chot(false);
             //format number
             Microsoft.Office.Interop.Excel.Range c1sum3 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd + 8, 3];
             Microsoft.Office.Interop.Excel.Range c2sum3 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd + 8, 3];

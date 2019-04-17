@@ -508,7 +508,7 @@ namespace ThuTien.DAL.Quay
         {
             var query = from itemLH in _db.TT_LenhHuys
                         join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
-                        where itemHD.DANHBA == DanhBo
+                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH==null
                         orderby itemHD.ID_HOADON descending
                         select new
                         {

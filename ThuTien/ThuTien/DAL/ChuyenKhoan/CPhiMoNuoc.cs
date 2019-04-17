@@ -10,7 +10,7 @@ namespace ThuTien.DAL.ChuyenKhoan
 {
     class CPhiMoNuoc:CDAL
     {
-        public bool Them(TT_PhiMoNuoc phimonuoc)
+        public bool Them(TT_PhiMoNuoc phimonuoc,DateTime CreateDate)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                 }
                 else
                     phimonuoc.MaPMN = decimal.Parse("1" + DateTime.Now.ToString("yy"));
-                phimonuoc.CreateDate = DateTime.Now;
+                phimonuoc.CreateDate = CreateDate;
                 phimonuoc.CreateBy = CNguoiDung.MaND;
                 _db.TT_PhiMoNuocs.InsertOnSubmit(phimonuoc);
                 _db.SubmitChanges();
@@ -79,6 +79,14 @@ namespace ThuTien.DAL.ChuyenKhoan
         public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             return LINQToDataTable(_db.TT_PhiMoNuocs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date).ToList().OrderByDescending(item=>item.CreateDate));
+        }
+
+        public int getPhiMoNuoc_Chot(bool Chot)
+        {
+            if (_db.TT_PhiMoNuocs.Any(item => item.Chot == Chot) == false)
+                return 0;
+            else
+                return _db.TT_PhiMoNuocs.Where(item => item.Chot == Chot).Sum(item => item.PhiMoNuoc).Value;
         }
     }
 }
