@@ -10,6 +10,7 @@ using KTKS_DonKH.DAL.TruyThu;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.TruyThu;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.TruyThu
 {
@@ -42,6 +43,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["NoiDung"] = item["TinhTrang"];
                 dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
                 dr["TongCongMoi"] = item["TongTien"];
+                dr["NhanVien"] = CTaiKhoan.HoTen;
 
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
             }
@@ -76,6 +78,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                 dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
                 dr["TongCongMoi"] = item["TongTien"];
+                dr["NhanVien"] = CTaiKhoan.HoTen;
 
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
             }

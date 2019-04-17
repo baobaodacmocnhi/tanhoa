@@ -222,6 +222,7 @@
             "Điều chỉnh không phát sinh truy thu",
             "Miễn truy thu",
             "Đã gửi TB tạm ngưng cung cấp nước",
+            "Chuyển lập TB cắt tạm",
             "Chuyển lập TB hủy",
             "Giữ nguyên"});
             this.cmbTinhTrang.Location = new System.Drawing.Point(286, 160);
