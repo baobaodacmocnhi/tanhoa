@@ -114,32 +114,32 @@ namespace ThuTien.GUI.ChuyenKhoan
                         {
                             ///chọn tất cả tổ
                             if (cmbTo.SelectedIndex == 0)
-                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
+                                dgvDichVuThu.DataSource = _cDichVuThu.getDS(cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
                             ///chọn 1 tổ
                             else
                                 ///chọn tất cả nhân viên
                                 if (cmbNhanVien.SelectedIndex == 0)
-                                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                                    dgvDichVuThu.DataSource = _cDichVuThu.getDS(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
                                 else
                                     ///chọn 1 nhân viên cụ thể
                                     if (cmbNhanVien.SelectedIndex > 0)
-                                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                                        dgvDichVuThu.DataSource = _cDichVuThu.getDS_NV(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
                         }
                         else
                             if (cmbFromDot.SelectedIndex > 0)
                             {
                                 ///chọn tất cả tổ
                                 if (cmbTo.SelectedIndex == 0)
-                                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS_Dot(cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                                    dgvDichVuThu.DataSource = _cDichVuThu.getDS_Dot(cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
                                 ///chọn 1 tổ
                                 else
                                     ///chọn tất cả nhân viên
                                     if (cmbNhanVien.SelectedIndex == 0)
-                                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS_Dot(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                                        dgvDichVuThu.DataSource = _cDichVuThu.getDS_Dot(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
                                     else
                                         ///chọn 1 nhân viên cụ thể
                                         if (cmbNhanVien.SelectedIndex > 0)
-                                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV_Dot(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                                            dgvDichVuThu.DataSource = _cDichVuThu.getDS_NV_Dot(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
                             }
                 }
                 //lấy có lệnh hủy
@@ -204,9 +204,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                         item.DefaultCellStyle.BackColor = Color.Red;
                     }
                 }
-                if (!string.IsNullOrEmpty(item.Cells["SoTien"].Value.ToString()))
+                if (item.Cells["SoTien"].Value!=null&&!string.IsNullOrEmpty(item.Cells["SoTien"].Value.ToString()))
                     TongSoTien += int.Parse(item.Cells["SoTien"].Value.ToString());
-                if (!string.IsNullOrEmpty(item.Cells["Phi"].Value.ToString()))
+                if (item.Cells["Phi"].Value!=null&&!string.IsNullOrEmpty(item.Cells["Phi"].Value.ToString()))
                     TongPhi += int.Parse(item.Cells["Phi"].Value.ToString());
             }
             txtTongHD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvDichVuThu.Rows.Count);
