@@ -13,6 +13,8 @@ using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DonTu;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.TruyThu;
+using KTKS_DonKH.DAL.KiemTraXacMinh;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
@@ -23,6 +25,9 @@ namespace KTKS_DonKH.GUI.DonTu
         CNhomDon _cNhomDon = new CNhomDon();
         CThuTien _cThuTien = new CThuTien();
         CDocSo _cDocSo = new CDocSo();
+        CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
+        CGanMoi _cGanMoi = new CGanMoi();
+        CKTXM _cKTXM = new CKTXM();
 
         LinQ.DonTu _dontu = null;
         HOADON _hoadon = null;
@@ -44,6 +49,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             dgvDanhBo.AutoGenerateColumns = false;
             dgvLichSuNhanDon.AutoGenerateColumns = false;
+            lbTruyThu.Text = "";
 
             DataTable dt = _cNhomDon.GetDS("DieuChinh");
             chkcmbDieuChinh.Properties.DataSource = dt;
@@ -81,6 +87,19 @@ namespace KTKS_DonKH.GUI.DonTu
             txtGiaBieu.Text = entity.GB.ToString();
             txtDinhMuc.Text = entity.DM.ToString();
             dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(entity.DANHBA);
+
+            string str = _cTTTN.GetTinhTrang(entity.DANHBA);
+            if (str != "")
+            {
+                lbTruyThu.Text = "Tình Trạng Truy Thu: " + str;
+                MessageBox.Show("Danh Bộ này đang Truy Thu", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            }
+            else
+                lbTruyThu.Text = "";
+
+            string strDuongCamDao = _cGanMoi.getDuongCamDao(entity.SO, entity.DUONG);
+            if (strDuongCamDao != "")
+                MessageBox.Show(strDuongCamDao, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadDonTu(LinQ.DonTu entity)
@@ -176,6 +195,7 @@ namespace KTKS_DonKH.GUI.DonTu
             txtSoCongVan.Text = "";
             txtTongDB.Text = "";
             txtMaDon.Text = "";
+            lbTruyThu.Text = "";
 
             for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
             {
@@ -321,6 +341,14 @@ namespace KTKS_DonKH.GUI.DonTu
                             if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                 return;
                         }
+
+                        if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
+                        {
+                            if (MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                //MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return;
+                        }
+
                         if (txtSoNK.Text.Trim() != "")
                         {
                             entity.SoNK = int.Parse(txtSoNK.Text.Trim());

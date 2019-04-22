@@ -29,14 +29,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void frmBaoCaoKTXM_Load(object sender, EventArgs e)
         {
-            if (CTaiKhoan.ToTB == true)
-                TenTo = "TKH";
-            else
-                if (CTaiKhoan.ToTP == true)
-                    TenTo = "TXL";
-                else
-                    if (CTaiKhoan.ToBC == true)
-                        TenTo = "TBC";
+            //if (CTaiKhoan.ToTB == true)
+            //    TenTo = "TKH";
+            //else
+            //    if (CTaiKhoan.ToTP == true)
+            //        TenTo = "TXL";
+            //    else
+            //        if (CTaiKhoan.ToBC == true)
+            //            TenTo = "TBC";
             DataTable dt = _cDongTienNoiDung.getDS(TenTo);
             DataRow dr = dt.NewRow();
             dr["ID"] = "0";
