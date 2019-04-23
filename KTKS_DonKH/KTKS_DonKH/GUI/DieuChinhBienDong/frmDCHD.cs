@@ -267,75 +267,79 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtMaDonCu_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtMaDonCu.Text.Trim() != "")
-            {
-                string MaDon = txtMaDonCu.Text.Trim();
-                Clear();
-                txtMaDonCu.Text = MaDon;
-                ///Đơn Tổ Xử Lý
-                if (txtMaDonCu.Text.Trim().ToUpper().Contains("TXL"))
+            if (e.KeyChar == 13)
+                if (txtMaDonCu.Text.Trim() != "")
                 {
-                    if (_cDonTXL.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                    string MaDon = txtMaDonCu.Text.Trim();
+                    Clear();
+                    txtMaDonCu.Text = MaDon;
+                    ///Đơn Tổ Xử Lý
+                    if (txtMaDonCu.Text.Trim().ToUpper().Contains("TXL"))
                     {
-                        _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
-                        txtMaDonCu.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
-
-                        if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
+                        if (_cDonTXL.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
                         {
-                            _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
-                            LoadTTKH(_hoadon);
-                            chkCodeF2.Focus();
+                            _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
+                            txtMaDonCu.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
+
+                            if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
+                            {
+                                _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
+                                LoadTTKH(_hoadon);
+                                chkCodeF2.Focus();
+                            }
+                            else
+                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
-                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Mã Đơn TXL này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
-                        MessageBox.Show("Mã Đơn TXL này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (txtMaDonCu.Text.Trim().ToUpper().Contains("TBC"))
+                        {
+                            if (_cDonTBC.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                            {
+                                _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
+                                txtMaDonCu.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
+
+                                if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
+                                {
+                                    _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
+                                    LoadTTKH(_hoadon);
+                                    chkCodeF2.Focus();
+                                }
+                                else
+                                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                                MessageBox.Show("Mã Đơn TBC này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        ///Đơn Tổ Khách Hàng
+                        else
+                            if (_cDonKH.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", ""))) == true)
+                            {
+                                _dontkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
+                                txtMaDonCu.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
+
+                                if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
+                                {
+                                    _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
+                                    LoadTTKH(_hoadon);
+                                    chkCodeF2.Focus();
+                                }
+                                else
+                                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                                MessageBox.Show("Mã Đơn KH này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                    if (txtMaDonCu.Text.Trim().ToUpper().Contains("TBC"))
-                    {
-                        if (_cDonTBC.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
-                        {
-                            _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
-                            txtMaDonCu.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
-
-                            if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
-                            {
-                                _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
-                                LoadTTKH(_hoadon);
-                                chkCodeF2.Focus();
-                            }
-                            else
-                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                            MessageBox.Show("Mã Đơn TBC này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    ///Đơn Tổ Khách Hàng
-                    else
-                        if (_cDonKH.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", ""))) == true)
-                        {
-                            _dontkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
-                            txtMaDonCu.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
-
-                            if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
-                            {
-                                _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
-                                LoadTTKH(_hoadon);
-                                chkCodeF2.Focus();
-                            }
-                            else
-                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                            MessageBox.Show("Mã Đơn KH này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                    txtMaDonMoi.Focus();
         }
 
         private void txtMaDonMoi_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtMaDonMoi.Text.Trim() != "")
+            if (e.KeyChar == 13)
+            if(txtMaDonMoi.Text.Trim() != "")
             {
                 string MaDon = txtMaDonMoi.Text.Trim();
                 Clear();
@@ -368,6 +372,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 else
                     MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+                chkCodeF2.Focus();
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)

@@ -379,6 +379,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dr["HoTen"] = item["HoTen"];
                 dr["DiaChi"] = item["DiaChi"];
                 dr["NgayLapBangGia"] = item["NgayLap"];
+                dr["NoiDungXuLy"] = item["NoiDungXuLy"];
                 dr["GhiChu"] = item["GhiChuNoiDungXuLy"];
                 if (dt.Columns.Contains("SoTienDongTien") == true)
                 {

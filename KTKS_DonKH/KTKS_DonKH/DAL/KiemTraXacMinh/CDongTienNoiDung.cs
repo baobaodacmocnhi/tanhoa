@@ -12,12 +12,12 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             switch (Loai)
             {
-                case "TKH":
-                    return LINQToDataTable(db.DongTienNoiDungs.Where(item => item.TKH == true).ToList());
-                case "TXL":
-                    return LINQToDataTable(db.DongTienNoiDungs.Where(item => item.TXL == true).ToList());
-                case "TBC":
-                    return LINQToDataTable(db.DongTienNoiDungs.Where(item => item.TBC == true).ToList());
+                case "ToTB":
+                    return LINQToDataTable(db.DongTienNoiDungs.Where(item => item.ToTB == true).ToList());
+                case "ToTP":
+                    return LINQToDataTable(db.DongTienNoiDungs.Where(item => item.ToTP == true).ToList());
+                case "ToBC":
+                    return LINQToDataTable(db.DongTienNoiDungs.Where(item => item.ToBC == true).ToList());
                 default:
                     return LINQToDataTable(db.DongTienNoiDungs.ToList());;
             }

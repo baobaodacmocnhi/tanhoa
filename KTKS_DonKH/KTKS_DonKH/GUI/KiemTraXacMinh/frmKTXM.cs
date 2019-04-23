@@ -147,7 +147,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (ctktxm.TieuThuTrungBinh!=null)
             txtTieuThuTrungBinh.Text = ctktxm.TieuThuTrungBinh.Value.ToString();
             if (ctktxm.NoiDungBaoThay != null)
+            {
                 cmbNoiDungBaoThay.SelectedText = ctktxm.NoiDungBaoThay;
+                txtGhiChuNoiDungBaoThay.Text = ctktxm.GhiChuNoiDungBaoThay;
+            }
         }
 
         public void Clear()
@@ -181,6 +184,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtTheoYeuCau.Text = "";
             txtTieuThuTrungBinh.Text = "0";
             cmbNoiDungBaoThay.SelectedIndex=-1;
+            txtGhiChuNoiDungBaoThay.Text = "";
 
             _MaCTKTXM = -1;
             _ctktxm = null;
@@ -223,6 +227,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtTheoYeuCau.Text = "";
             txtTieuThuTrungBinh.Text = "0";
             cmbNoiDungBaoThay.SelectedIndex = -1 ;
+            txtGhiChuNoiDungBaoThay.Text = "";
 
             _MaCTKTXM = -1;
             _ctktxm = null;
@@ -509,7 +514,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
                     ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());
                     if (cmbNoiDungBaoThay.SelectedIndex != -1 && string.IsNullOrEmpty(cmbNoiDungBaoThay.SelectedItem.ToString()) == false)
+                    {
                         ctktxm.NoiDungBaoThay = cmbNoiDungBaoThay.SelectedItem.ToString();
+                        if (txtGhiChuNoiDungBaoThay.Text.Trim()!="")
+                        ctktxm.GhiChuNoiDungBaoThay = txtGhiChuNoiDungBaoThay.Text.Trim();
+                    }
 
                     if (_cKTXM.ThemCT(ctktxm))
                     {
@@ -606,7 +615,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
                         _ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());
                         if (cmbNoiDungBaoThay.SelectedIndex != -1 && string.IsNullOrEmpty(cmbNoiDungBaoThay.SelectedItem.ToString()) == false)
+                        {
                             _ctktxm.NoiDungBaoThay = cmbNoiDungBaoThay.SelectedItem.ToString();
+                            if (txtGhiChuNoiDungBaoThay.Text.Trim() != "")
+                                _ctktxm.GhiChuNoiDungBaoThay = txtGhiChuNoiDungBaoThay.Text.Trim();
+                        }
 
                         if (_cKTXM.SuaCT(_ctktxm))
                         {

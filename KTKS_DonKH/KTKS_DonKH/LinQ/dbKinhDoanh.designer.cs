@@ -19578,11 +19578,11 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _GhiChu;
 		
-		private bool _TKH;
+		private bool _ToTB;
 		
-		private bool _TXL;
+		private bool _ToTP;
 		
-		private bool _TBC;
+		private bool _ToBC;
 		
 		private System.Nullable<int> _CreateBy;
 		
@@ -19604,12 +19604,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnNameChanged();
     partial void OnGhiChuChanging(string value);
     partial void OnGhiChuChanged();
-    partial void OnTKHChanging(bool value);
-    partial void OnTKHChanged();
-    partial void OnTXLChanging(bool value);
-    partial void OnTXLChanged();
-    partial void OnTBCChanging(bool value);
-    partial void OnTBCChanged();
+    partial void OnToTBChanging(bool value);
+    partial void OnToTBChanged();
+    partial void OnToTPChanging(bool value);
+    partial void OnToTPChanged();
+    partial void OnToBCChanging(bool value);
+    partial void OnToBCChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -19705,62 +19705,62 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TKH", DbType="Bit NOT NULL")]
-		public bool TKH
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToTB", DbType="Bit NOT NULL")]
+		public bool ToTB
 		{
 			get
 			{
-				return this._TKH;
+				return this._ToTB;
 			}
 			set
 			{
-				if ((this._TKH != value))
+				if ((this._ToTB != value))
 				{
-					this.OnTKHChanging(value);
+					this.OnToTBChanging(value);
 					this.SendPropertyChanging();
-					this._TKH = value;
-					this.SendPropertyChanged("TKH");
-					this.OnTKHChanged();
+					this._ToTB = value;
+					this.SendPropertyChanged("ToTB");
+					this.OnToTBChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TXL", DbType="Bit NOT NULL")]
-		public bool TXL
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToTP", DbType="Bit NOT NULL")]
+		public bool ToTP
 		{
 			get
 			{
-				return this._TXL;
+				return this._ToTP;
 			}
 			set
 			{
-				if ((this._TXL != value))
+				if ((this._ToTP != value))
 				{
-					this.OnTXLChanging(value);
+					this.OnToTPChanging(value);
 					this.SendPropertyChanging();
-					this._TXL = value;
-					this.SendPropertyChanged("TXL");
-					this.OnTXLChanged();
+					this._ToTP = value;
+					this.SendPropertyChanged("ToTP");
+					this.OnToTPChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TBC", DbType="Bit NOT NULL")]
-		public bool TBC
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToBC", DbType="Bit NOT NULL")]
+		public bool ToBC
 		{
 			get
 			{
-				return this._TBC;
+				return this._ToBC;
 			}
 			set
 			{
-				if ((this._TBC != value))
+				if ((this._ToBC != value))
 				{
-					this.OnTBCChanging(value);
+					this.OnToBCChanging(value);
 					this.SendPropertyChanging();
-					this._TBC = value;
-					this.SendPropertyChanged("TBC");
-					this.OnTBCChanged();
+					this._ToBC = value;
+					this.SendPropertyChanged("ToBC");
+					this.OnToBCChanged();
 				}
 			}
 		}
@@ -29926,6 +29926,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiDungBaoThay;
 		
+		private string _GhiChuNoiDungBaoThay;
+		
 		private bool _KhongLienHe;
 		
 		private System.Nullable<decimal> _MaKTXM;
@@ -30048,6 +30050,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDinhMucMoiChanged();
     partial void OnNoiDungBaoThayChanging(string value);
     partial void OnNoiDungBaoThayChanged();
+    partial void OnGhiChuNoiDungBaoThayChanging(string value);
+    partial void OnGhiChuNoiDungBaoThayChanged();
     partial void OnKhongLienHeChanging(bool value);
     partial void OnKhongLienHeChanged();
     partial void OnMaKTXMChanging(System.Nullable<decimal> value);
@@ -30978,6 +30982,26 @@ namespace KTKS_DonKH.LinQ
 					this._NoiDungBaoThay = value;
 					this.SendPropertyChanged("NoiDungBaoThay");
 					this.OnNoiDungBaoThayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChuNoiDungBaoThay", DbType="NVarChar(200)")]
+		public string GhiChuNoiDungBaoThay
+		{
+			get
+			{
+				return this._GhiChuNoiDungBaoThay;
+			}
+			set
+			{
+				if ((this._GhiChuNoiDungBaoThay != value))
+				{
+					this.OnGhiChuNoiDungBaoThayChanging(value);
+					this.SendPropertyChanging();
+					this._GhiChuNoiDungBaoThay = value;
+					this.SendPropertyChanged("GhiChuNoiDungBaoThay");
+					this.OnGhiChuNoiDungBaoThayChanged();
 				}
 			}
 		}

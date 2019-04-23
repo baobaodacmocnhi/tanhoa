@@ -97,6 +97,7 @@
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.chkNgayKTXMTruocNgayGiao = new System.Windows.Forms.CheckBox();
+            this.txtGhiChuNoiDungBaoThay = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -362,6 +363,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtGhiChuNoiDungBaoThay);
             this.groupBox2.Controls.Add(this.label26);
             this.groupBox2.Controls.Add(this.cmbNoiDungBaoThay);
             this.groupBox2.Controls.Add(this.label24);
@@ -802,6 +804,13 @@
             this.chkNgayKTXMTruocNgayGiao.Text = "Ngày KTXM Trước Ngày Giao";
             this.chkNgayKTXMTruocNgayGiao.UseVisualStyleBackColor = true;
             // 
+            // txtGhiChuNoiDungBaoThay
+            // 
+            this.txtGhiChuNoiDungBaoThay.Location = new System.Drawing.Point(253, 155);
+            this.txtGhiChuNoiDungBaoThay.Name = "txtGhiChuNoiDungBaoThay";
+            this.txtGhiChuNoiDungBaoThay.Size = new System.Drawing.Size(287, 22);
+            this.txtGhiChuNoiDungBaoThay.TabIndex = 122;
+            // 
             // frmKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -907,5 +916,6 @@
         private System.Windows.Forms.CheckBox chkNgayKTXMTruocNgayGiao;
         private System.Windows.Forms.ComboBox cmbNoiDungBaoThay;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txtGhiChuNoiDungBaoThay;
     }
 }
