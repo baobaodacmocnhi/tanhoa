@@ -151,7 +151,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     phimonuoc.HoTen = hoadon.TENKH;
                                     phimonuoc.DiaChi = hoadon.SO + " " + hoadon.DUONG;
                                     phimonuoc.NgayBK = dateBangKe.Value;
-                                    phimonuoc.SoTien = _cBangKe.GetSoTien(hoadon.DANHBA, dateBangKe.Value);
+                                    phimonuoc.SoTien = _cBangKe.getSoTien(hoadon.DANHBA, dateBangKe.Value);
                                     phimonuoc.SoTK = _cBangKe.GetSoTK(hoadon.DANHBA, dateBangKe.Value);
                                     phimonuoc.TongCong = phimonuoc.SoTien - kqdongnuoc.PhiMoNuoc.Value;
                                     phimonuoc.PhiMoNuoc = kqdongnuoc.PhiMoNuoc;
@@ -191,7 +191,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dateBangKe_ValueChanged(object sender, EventArgs e)
         {
-            txtSoTien.Text = _cBangKe.GetSoTien(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), dateBangKe.Value).ToString() ;
+            txtSoTien.Text = _cBangKe.getSoTien(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), dateBangKe.Value).ToString() ;
         }
 
         private void txtDanhBoSuaTien_KeyPress(object sender, KeyPressEventArgs e)

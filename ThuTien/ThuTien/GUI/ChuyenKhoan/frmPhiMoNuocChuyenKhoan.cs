@@ -24,6 +24,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CTienDu _cTienDu = new CTienDu();
         CPhiMoNuoc _cPhiMoNuoc = new CPhiMoNuoc();
         CDongNuoc _cDongNuoc = new CDongNuoc();
+        CBangKe _cBangKe = new CBangKe();
 
         public frmPhiMoNuocChuyenKhoan()
         {
@@ -255,7 +256,9 @@ namespace ThuTien.GUI.ChuyenKhoan
             for (int i = 0; i < dgvPhiMoNuoc.Rows.Count; i++)
             {
                 arr[i, 0] = dgvPhiMoNuoc["DanhBo_PMN", i].Value.ToString();
-                arr[i, 1] = "";
+                string SoPhieuThu = _cBangKe.get(dgvPhiMoNuoc["DanhBo_PMN", i].Value.ToString(), DateTime.Parse(dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString())).SoPhieuThu;
+                if(SoPhieuThu!=null)
+                    arr[i, 1] = _cBangKe.getTongSoTien(SoPhieuThu);
                 arr[i, 2] = dgvPhiMoNuoc["TongCong_PMN", i].Value.ToString();
                 arr[i, 3] = dgvPhiMoNuoc["PhiMoNuoc", i].Value.ToString();
                 arr[i, 4] = dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString();

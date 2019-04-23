@@ -73,6 +73,11 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.TT_BangKes.SingleOrDefault(item => item.MaBK == MaBK);
         }
 
+        public TT_BangKe get(string DanhBo, DateTime CreateDate)
+        {
+            return _db.TT_BangKes.SingleOrDefault(item => item.DanhBo == DanhBo&&item.CreateDate.Value.Date==CreateDate.Date);
+        }
+
         public TT_BangKe getMoiNhat(string DanhBo)
         {
             if (_db.TT_BangKes.Any(item => item.DanhBo == DanhBo))
@@ -223,12 +228,17 @@ namespace ThuTien.DAL.ChuyenKhoan
             return dt;
         }
 
-        public int GetSoTien(string DanhBo, DateTime CreateDate)
+        public int getSoTien(string DanhBo, DateTime CreateDate)
         {
             if (_db.TT_BangKes.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date))
                 return _db.TT_BangKes.Where(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date).Sum(item => item.SoTien).Value;
             else
                 return 0;
+        }
+
+        public long getTongSoTien(string SoPhieuThu)
+        {
+            return (long)_db.TT_BangKes.Where(item => item.SoPhieuThu == SoPhieuThu).Sum(item => item.SoTien);
         }
 
         public string GetSoTK(string DanhBo, DateTime CreateDate)

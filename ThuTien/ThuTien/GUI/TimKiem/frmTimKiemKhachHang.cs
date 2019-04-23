@@ -337,7 +337,7 @@ namespace ThuTien.GUI.TimKiem
         {
             if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")))
             {
-                dgvThuHo.DataSource = _cDichVuThu.GetDS(txtDanhBo.Text.Trim().Replace(" ", ""));
+                dgvThuHo.DataSource = _cDichVuThu.getDS(txtDanhBo.Text.Trim().Replace(" ", ""));
                 dgvThuHo.Visible = true;
             }
         }
