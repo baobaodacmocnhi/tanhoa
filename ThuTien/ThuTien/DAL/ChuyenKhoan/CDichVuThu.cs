@@ -435,7 +435,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                         + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                         + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
-                        + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + ToDot + " and hd.DOT<=" + FromDot + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                         + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -487,7 +487,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                         + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                         + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
-                        + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.DOT>=" + ToDot + " and hd.DOT<=" + FromDot + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                         + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -782,7 +782,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                             + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                             + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
-                            + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.MaNV_HanhThu=" + MaNV_HanhThu + " and not exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + ToDot + " and hd.DOT<=" + FromDot
+                            + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.MaNV_HanhThu=" + MaNV_HanhThu + " and not exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot 
                             + " order by dvt.CreateDate asc"
                         + " else"
                             + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
@@ -792,7 +792,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                             + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                             + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
-                            + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc=" + MaNV_HanhThu + " and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN and dn.Huy=0 and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + ToDot + " and hd.DOT<=" + FromDot
+                            + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc=" + MaNV_HanhThu + " and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN and dn.Huy=0 and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot 
                             + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -885,7 +885,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                             + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                             + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
-                            + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.MaNV_HanhThu=" + MaNV_HanhThu + " and not exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.DOT>=" + ToDot + " and hd.DOT<=" + FromDot
+                            + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.MaNV_HanhThu=" + MaNV_HanhThu + " and not exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot 
                             + " order by dvt.CreateDate asc"
                         + " else"
                             + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
@@ -895,7 +895,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                             + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                             + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
-                            + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc=" + MaNV_HanhThu + " and ctdn.MaHD=dvt.MaHD and dn.Huy=0 and dn.MaDN=ctdn.MaDN and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.DOT>=" + ToDot + " and hd.DOT<=" + FromDot
+                            + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc=" + MaNV_HanhThu + " and ctdn.MaHD=dvt.MaHD and dn.Huy=0 and dn.MaDN=ctdn.MaDN and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot 
                             + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }

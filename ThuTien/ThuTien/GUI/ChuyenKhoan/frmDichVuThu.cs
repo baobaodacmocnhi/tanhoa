@@ -180,6 +180,10 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             long TongSoTien = 0;
             int TongPhi = 0;
+            //DataTable dtPMN = new DataTable();
+            //dtPMN.Columns.Add("DanhBo", typeof(string));
+            string DanhBoPMN = "";
+
             foreach (DataGridViewRow item in dgvDichVuThu.Rows)
             {
                 //string HoTen = "", TenTo = "";
@@ -189,6 +193,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                 //    item.Cells["To"].Value = TenTo;
                 //    item.DefaultCellStyle.BackColor = Color.Yellow;
                 //}
+
+                //if (dtPMN.AsEnumerable().Any(itemPMN => itemPMN.Field<string>("DanhBo") == item.Cells["DanhBo"].Value.ToString()) == false)
+                //{
+                //    DataRow dr = dtPMN.NewRow();
+                //    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString();
+                //    dtPMN.Rows.Add(dr);
+                //}
+
                 if (chkKiemTraLenhHuy.Checked == false)
                 {
                     if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
@@ -204,10 +216,25 @@ namespace ThuTien.GUI.ChuyenKhoan
                         item.DefaultCellStyle.BackColor = Color.Red;
                     }
                 }
-                if (item.Cells["SoTien"].Value!=null&&!string.IsNullOrEmpty(item.Cells["SoTien"].Value.ToString()))
+                if (item.Cells["SoTien"].Value != null && !string.IsNullOrEmpty(item.Cells["SoTien"].Value.ToString()))
                     TongSoTien += int.Parse(item.Cells["SoTien"].Value.ToString());
-                if (item.Cells["Phi"].Value!=null&&!string.IsNullOrEmpty(item.Cells["Phi"].Value.ToString()))
-                    TongPhi += int.Parse(item.Cells["Phi"].Value.ToString());
+                
+                if (item.Cells["Phi"].Value != null && !string.IsNullOrEmpty(item.Cells["Phi"].Value.ToString()) && item.Cells["Phi"].Value.ToString()!="0")
+                {
+                    if (DanhBoPMN == "")
+                    {
+                        DanhBoPMN = item.Cells["DanhBo"].Value.ToString();
+                        TongPhi += int.Parse(item.Cells["Phi"].Value.ToString());
+                    }
+                    else
+                        if (DanhBoPMN == item.Cells["DanhBo"].Value.ToString())
+                            item.Cells["Phi"].Value = 0;
+                        else
+                        {
+                            DanhBoPMN = item.Cells["DanhBo"].Value.ToString();
+                            TongPhi += int.Parse(item.Cells["Phi"].Value.ToString());
+                        }
+                }
             }
             txtTongHD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvDichVuThu.Rows.Count);
             txtTongSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSoTien);
