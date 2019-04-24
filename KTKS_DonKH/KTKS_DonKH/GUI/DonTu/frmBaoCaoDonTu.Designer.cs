@@ -55,6 +55,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To = new System.Windows.Forms.Button();
             this.btnInDSChuaChuyen_ThongKeNhomDon_3To = new System.Windows.Forms.Button();
             this.btnBaoCao_ThongKeNhomDon_3To = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -70,7 +71,9 @@
             this.dateDen_ThongKeNhomDon_ToGD = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To = new System.Windows.Forms.Button();
+            this.panelTo = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian_LichSuChuyenDon.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -79,6 +82,7 @@
             this.panel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panelTo.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -352,16 +356,27 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.panelTo);
             this.groupBox2.Controls.Add(this.btnInDSChuaKTXM_ThongKeNhomDon_3To);
             this.groupBox2.Controls.Add(this.btnInDSChuaChuyen_ThongKeNhomDon_3To);
             this.groupBox2.Controls.Add(this.btnBaoCao_ThongKeNhomDon_3To);
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Location = new System.Drawing.Point(12, 295);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(465, 87);
+            this.groupBox2.Size = new System.Drawing.Size(690, 87);
             this.groupBox2.TabIndex = 31;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thống Kê Theo Nhóm Đơn (ngày nhận) - Tổ Tân Bình, Tân Phú, Bấm Chì";
+            // 
+            // btnInDSChuaKTXM_ThongKeNhomDon_3To
+            // 
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Location = new System.Drawing.Point(366, 40);
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Name = "btnInDSChuaKTXM_ThongKeNhomDon_3To";
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Size = new System.Drawing.Size(90, 41);
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.TabIndex = 27;
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Text = "In DS Chưa KTXM";
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.UseVisualStyleBackColor = true;
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Click += new System.EventHandler(this.btnInDSChuaKTXM_ThongKeNhomDon_3To_Click);
             // 
             // btnInDSChuaChuyen_ThongKeNhomDon_3To
             // 
@@ -509,15 +524,31 @@
             this.label13.TabIndex = 16;
             this.label13.Text = "Đến Ngày:";
             // 
-            // btnInDSChuaKTXM_ThongKeNhomDon_3To
+            // panelTo
             // 
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Location = new System.Drawing.Point(366, 40);
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Name = "btnInDSChuaKTXM_ThongKeNhomDon_3To";
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Size = new System.Drawing.Size(90, 41);
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.TabIndex = 27;
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Text = "In DS Chưa KTXM";
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.UseVisualStyleBackColor = true;
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Click += new System.EventHandler(this.btnInDSChuaKTXM_ThongKeNhomDon_3To_Click);
+            this.panelTo.Controls.Add(this.cmbTo);
+            this.panelTo.Controls.Add(this.label14);
+            this.panelTo.Location = new System.Drawing.Point(472, 20);
+            this.panelTo.Name = "panelTo";
+            this.panelTo.Size = new System.Drawing.Size(129, 56);
+            this.panelTo.TabIndex = 28;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(3, 6);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(28, 16);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Tổ:";
+            // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(3, 25);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(121, 24);
+            this.cmbTo.TabIndex = 1;
             // 
             // frmBaoCaoDonTu
             // 
@@ -547,6 +578,8 @@
             this.groupBox4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panelTo.ResumeLayout(false);
+            this.panelTo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -596,5 +629,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnInDSChuaKTXM_ThongKeNhomDon_3To;
+        private System.Windows.Forms.Panel panelTo;
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label label14;
     }
 }

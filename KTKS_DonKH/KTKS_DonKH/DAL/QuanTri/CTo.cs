@@ -6,7 +6,7 @@ using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.DAL.QuanTri
 {
-    class CTo:CDAL
+    class CTo : CDAL
     {
         public bool Them(To to)
         {
@@ -67,12 +67,12 @@ namespace KTKS_DonKH.DAL.QuanTri
 
         public List<To> getDS()
         {
-            return db.Tos.Where(item=>item.An==false).ToList();
+            return db.Tos.Where(item => item.An == false).ToList();
         }
 
         public List<To> getDS_KTXM()
         {
-            return db.Tos.Where(item =>item.KTXM==true&& item.An == false).ToList();
+            return db.Tos.Where(item => item.KTXM == true && item.An == false).ToList();
         }
 
         public To get(int MaTo)

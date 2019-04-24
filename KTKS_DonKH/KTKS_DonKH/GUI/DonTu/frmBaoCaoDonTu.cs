@@ -21,6 +21,7 @@ namespace KTKS_DonKH.GUI.DonTu
     {
         CDonTu _cDonTu = new CDonTu();
         CNoiChuyen _cNoiChuyen = new CNoiChuyen();
+        CTo _cTo = new CTo();
 
         public frmBaoCaoDonTu()
         {
@@ -38,6 +39,18 @@ namespace KTKS_DonKH.GUI.DonTu
             cmbNoiNhan_LichSuChuyenDon.ValueMember = "ID";
             cmbNoiNhan_LichSuChuyenDon.DisplayMember = "Name";
             cmbNoiNhan_LichSuChuyenDon.SelectedIndex = -1;
+
+            if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.ToTruong)
+            {
+                cmbTo.DataSource = _cTo.getDS_KTXM();
+                cmbNoiNhan_LichSuChuyenDon.ValueMember = "KyHieu";
+                cmbNoiNhan_LichSuChuyenDon.DisplayMember = "TenTo";
+                panelTo.Visible = true;
+            }
+            else
+            {
+                panelTo.Visible = false;
+            }
         }
 
         private void cmbTimTheo_LichSuChuyenDon_SelectedIndexChanged(object sender, EventArgs e)
@@ -224,7 +237,14 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnBaoCao_ThongKeNhomDon_3To_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon_3To.Value, dateDen_ThongKeNhomDon_3To.Value);
+            DataTable dt = new DataTable();
+            if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.ToTruong)
+            {
+                if (cmbTo.SelectedIndex > -1)
+                    dt = _cDonTu.getDS_ThongKeNhomDon(cmbTo.SelectedValue.ToString(), dateTu_ThongKeNhomDon_3To.Value, dateDen_ThongKeNhomDon_3To.Value);
+            }
+            else
+                dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon_3To.Value, dateDen_ThongKeNhomDon_3To.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
@@ -234,8 +254,8 @@ namespace KTKS_DonKH.GUI.DonTu
                 dr["TuNgay"] = dateTu_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
                 dr["LoaiBaoCao"] = CTaiKhoan.TenTo.ToUpper();
-                dr["MaDonMoi"] = item["MaDonChiTiet"];
-                dr["MaDon"] = item["MaDon"];
+                dr["MaDonMoi"] = item["MaDon"];
+                dr["MaDon"] = item["MaDonChiTiet"];
                 dr["TenLD"] = item["NhomDon"];
                 dr["ChuyenTrucTiep"] = item["ChuyenTrucTiep"];
                 dr["ChuyenKTXM"] = item["ChuyenKTXM"];
@@ -253,7 +273,14 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnInDSChuaChuyen_ThongKeNhomDon_3To_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon_3To.Value, dateDen_ThongKeNhomDon_3To.Value);
+            DataTable dt = new DataTable();
+            if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.ToTruong)
+            {
+                if (cmbTo.SelectedIndex > -1)
+                    dt = _cDonTu.getDS_ThongKeNhomDon(cmbTo.SelectedValue.ToString(), dateTu_ThongKeNhomDon_3To.Value, dateDen_ThongKeNhomDon_3To.Value);
+            }
+            else
+                dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon_3To.Value, dateDen_ThongKeNhomDon_3To.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
@@ -263,7 +290,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
                     dr["TuNgay"] = dateTu_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = dateDen_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
-                    dr["MaDon"] = item["MaDon"];
+                    dr["MaDon"] = item["MaDonChiTiet"];
 
                     dsBaoCao.Tables["DanhSachDonKH"].Rows.Add(dr);
                 }
@@ -276,7 +303,14 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnInDSChuaKTXM_ThongKeNhomDon_3To_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon_3To.Value, dateDen_ThongKeNhomDon_3To.Value);
+            DataTable dt = new DataTable();
+            if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.ToTruong)
+            {
+                if (cmbTo.SelectedIndex > -1)
+                    dt = _cDonTu.getDS_ThongKeNhomDon(cmbTo.SelectedValue.ToString(), dateTu_ThongKeNhomDon_3To.Value, dateDen_ThongKeNhomDon_3To.Value);
+            }
+            else
+                dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon_3To.Value, dateDen_ThongKeNhomDon_3To.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
@@ -286,7 +320,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
                     dr["TuNgay"] = dateTu_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = dateDen_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
-                    dr["MaDon"] = item["MaDon"];
+                    dr["MaDon"] = item["MaDonChiTiet"];
 
                     dsBaoCao.Tables["DanhSachDonKH"].Rows.Add(dr);
                 }
@@ -299,7 +333,11 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnBaoCao_ThongKeNhomDon_ToGD_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon_ToGD.Value, dateDen_ThongKeNhomDon_ToGD.Value);
+            DataTable dt=new DataTable();
+            if(CTaiKhoan.Admin||CTaiKhoan.TruongPhong||CTaiKhoan.ToTruong)
+            dt = _cDonTu.getDS_ThongKeNhomDon("ToGD", dateTu_ThongKeNhomDon_ToGD.Value, dateDen_ThongKeNhomDon_ToGD.Value);
+            else
+                dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon_ToGD.Value, dateDen_ThongKeNhomDon_ToGD.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
