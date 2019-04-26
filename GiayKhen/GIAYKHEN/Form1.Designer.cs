@@ -82,7 +82,7 @@
             this.txtQuyetDinhTapThe.Name = "txtQuyetDinhTapThe";
             this.txtQuyetDinhTapThe.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhTapThe.TabIndex = 11;
-            this.txtQuyetDinhTapThe.Text = "037-QĐ/ĐU";
+            this.txtQuyetDinhTapThe.Text = "0055/QĐ-TH-TCHC";
             // 
             // txtQDNm
             // 
@@ -128,7 +128,7 @@
             this.txtNguoiKy.Name = "txtNguoiKy";
             this.txtNguoiKy.Size = new System.Drawing.Size(166, 26);
             this.txtNguoiKy.TabIndex = 5;
-            this.txtNguoiKy.Text = "PHẠM ANH TÀI";
+            this.txtNguoiKy.Text = "TRẦM THỊ CẨM VÂN";
             // 
             // txtNgay
             // 
@@ -145,7 +145,7 @@
             this.txtQuyetDinhCaNhan.Name = "txtQuyetDinhCaNhan";
             this.txtQuyetDinhCaNhan.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhCaNhan.TabIndex = 3;
-            this.txtQuyetDinhCaNhan.Text = "038-QĐ/ĐU";
+            this.txtQuyetDinhCaNhan.Text = "0055/QĐ-TH-TCHC";
             // 
             // label4
             // 
