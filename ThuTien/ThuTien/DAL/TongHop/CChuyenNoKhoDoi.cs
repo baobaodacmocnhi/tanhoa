@@ -244,14 +244,14 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSCT(DateTime TuNgay, DateTime DenNgay)
+        public DataTable getDS_ChiTitet(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from itemCNKD in _db.TT_CTChuyenNoKhoDois
                         join itemHD in _db.HOADONs on itemCNKD.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemCNKD.CreateDate.Value.Date >= TuNgay.Date && itemCNKD.CreateDate.Value.Date <= DenNgay.Date
-                        orderby itemHD.MALOTRINH ascending
+                        where itemCNKD.CreateDate.Value.Date >= FromCreateDate.Date && itemCNKD.CreateDate.Value.Date <= ToCreateDate.Date
+                        orderby itemCNKD.CreateDate ascending
                         select new
                         {
                             itemCNKD.MaHD,

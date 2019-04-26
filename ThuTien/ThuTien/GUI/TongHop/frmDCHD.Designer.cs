@@ -59,9 +59,6 @@
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvDCHD = new System.Windows.Forms.DataGridView();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnInDSDangNgan = new System.Windows.Forms.Button();
-            this.btnInDSTon = new System.Windows.Forms.Button();
             this.Ngay_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDCHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaHD_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,6 +81,9 @@
             this.HanhThu_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChuanThu1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NgayGiaiTrach_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnInDSDangNgan = new System.Windows.Forms.Button();
+            this.btnInDSTon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDCHD)).BeginInit();
             this.SuspendLayout();
@@ -343,36 +343,6 @@
             this.dgvDCHD.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDCHD_RowPostPaint);
             this.dgvDCHD.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvDCHD_MouseDoubleClick);
             // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(570, 242);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 40;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnInDSDangNgan
-            // 
-            this.btnInDSDangNgan.Location = new System.Drawing.Point(651, 242);
-            this.btnInDSDangNgan.Name = "btnInDSDangNgan";
-            this.btnInDSDangNgan.Size = new System.Drawing.Size(103, 23);
-            this.btnInDSDangNgan.TabIndex = 41;
-            this.btnInDSDangNgan.Text = "In DS Đăng Ngân";
-            this.btnInDSDangNgan.UseVisualStyleBackColor = true;
-            this.btnInDSDangNgan.Click += new System.EventHandler(this.btnInDSDangNgan_Click);
-            // 
-            // btnInDSTon
-            // 
-            this.btnInDSTon.Location = new System.Drawing.Point(760, 242);
-            this.btnInDSTon.Name = "btnInDSTon";
-            this.btnInDSTon.Size = new System.Drawing.Size(75, 23);
-            this.btnInDSTon.TabIndex = 42;
-            this.btnInDSTon.Text = "In DS Tồn";
-            this.btnInDSTon.UseVisualStyleBackColor = true;
-            this.btnInDSTon.Click += new System.EventHandler(this.btnInDSTon_Click);
-            // 
             // Ngay_DC
             // 
             this.Ngay_DC.DataPropertyName = "NgayDC";
@@ -534,12 +504,42 @@
             this.NgayGiaiTrach_DC.Name = "NgayGiaiTrach_DC";
             this.NgayGiaiTrach_DC.Width = 80;
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(570, 242);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 40;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnInDSDangNgan
+            // 
+            this.btnInDSDangNgan.Location = new System.Drawing.Point(651, 242);
+            this.btnInDSDangNgan.Name = "btnInDSDangNgan";
+            this.btnInDSDangNgan.Size = new System.Drawing.Size(103, 23);
+            this.btnInDSDangNgan.TabIndex = 41;
+            this.btnInDSDangNgan.Text = "In DS Đăng Ngân";
+            this.btnInDSDangNgan.UseVisualStyleBackColor = true;
+            this.btnInDSDangNgan.Click += new System.EventHandler(this.btnInDSDangNgan_Click);
+            // 
+            // btnInDSTon
+            // 
+            this.btnInDSTon.Location = new System.Drawing.Point(760, 242);
+            this.btnInDSTon.Name = "btnInDSTon";
+            this.btnInDSTon.Size = new System.Drawing.Size(75, 23);
+            this.btnInDSTon.TabIndex = 42;
+            this.btnInDSTon.Text = "In DS Tồn";
+            this.btnInDSTon.UseVisualStyleBackColor = true;
+            this.btnInDSTon.Click += new System.EventHandler(this.btnInDSTon_Click);
+            // 
             // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1426, 662);
+            this.ClientSize = new System.Drawing.Size(1387, 662);
             this.Controls.Add(this.btnInDSTon);
             this.Controls.Add(this.btnInDSDangNgan);
             this.Controls.Add(this.btnXoa);

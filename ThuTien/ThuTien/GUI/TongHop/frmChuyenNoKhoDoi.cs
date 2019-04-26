@@ -88,24 +88,37 @@ namespace ThuTien.GUI.TongHop
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
                 List<HOADON> lstHDTemp = new List<HOADON>();
-                foreach (ListViewItem item in lstHD.Items)
-                {
-                    if (!_cHoaDon.CheckExist(item.Text))
+                //insert from list
+                if (dgvHoaDon_Chon.Rows.Count == 0)
+                    foreach (ListViewItem item in lstHD.Items)
                     {
-                        MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        item.Selected = true;
-                        item.Focused = true;
-                        return;
+                        if (!_cHoaDon.CheckExist(item.Text))
+                        {
+                            MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
+                        if (_cCNKD.CheckExistCT(item.ToString()))
+                        {
+                            MessageBox.Show("Hóa Đơn đã có trong Chuyển Nợ Khó Đòi: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
+                        lstHDTemp.Add(_cHoaDon.Get(item.Text));
                     }
-                    if (_cCNKD.CheckExistCT(item.ToString()))
+                    //insert from datagridview
+                else
+                    foreach (DataGridViewRow item in dgvHoaDon_Chon.Rows)
                     {
-                        MessageBox.Show("Hóa Đơn đã có trong Chuyển Nợ Khó Đòi: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        item.Selected = true;
-                        item.Focused = true;
-                        return;
+                        if (_cCNKD.CheckExistCT(item.ToString()))
+                        {
+                            MessageBox.Show("Hóa Đơn đã có trong Chuyển Nợ Khó Đòi: " + item.Cells["SoHoaDon_Chon"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        lstHDTemp.Add(_cHoaDon.Get(item.Cells["SoHoaDon_Chon"].Value.ToString()));
                     }
-                    lstHDTemp.Add(_cHoaDon.Get(item.Text));
-                }
                 try
                 {
                     _cCNKD.BeginTransaction();
@@ -161,6 +174,7 @@ namespace ThuTien.GUI.TongHop
                     }
                     _cCNKD.CommitTransaction();
                     lstHD.Items.Clear();
+                    dgvHoaDon_Chon.DataSource = null;
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -221,7 +235,7 @@ namespace ThuTien.GUI.TongHop
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cCNKD.GetDSCT(dateTu.Value, dateDen.Value);
+            dgvHoaDon.DataSource = _cCNKD.getDS_ChiTitet(dateTu.Value, dateDen.Value);
             int TongCong = 0;
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
             {
@@ -266,51 +280,52 @@ namespace ThuTien.GUI.TongHop
 
         private void btnInPhieu_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(dgvHoaDon.SelectedRows[0].Cells["MaCNKD"].Value.ToString()))
-            {
-                TT_ChuyenNoKhoDoi cnkd = _cCNKD.Get(decimal.Parse(dgvHoaDon.SelectedRows[0].Cells["MaCNKD"].Value.ToString()));
-                DataTable dt = _cCNKD.GetDSCT(decimal.Parse(dgvHoaDon.SelectedRows[0].Cells["MaCNKD"].Value.ToString()));
-                
-                dsBaoCao ds = new dsBaoCao();
-                foreach (DataRow item in dt.Rows)
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
+                if (!string.IsNullOrEmpty(item.Cells["MaCNKD"].Value.ToString()) && ds.Tables["TongHopNo"].AsEnumerable().Any(itemL => itemL.Field<String>("DanhBo").Replace(" ","") == item.Cells["DanhBo"].Value.ToString())==false)
                 {
-                    DataRow dr = ds.Tables["TongHopNo"].NewRow();
-                    dr["SoPhieu"] = item["MaCNKD"].ToString().Insert(item["MaCNKD"].ToString().Length - 2, "-");
-                    dr["DanhBo"] = cnkd.DanhBo.Insert(4, " ").Insert(8, " ");
-                    dr["HoTen"] = cnkd.HoTen;
-                    dr["DiaChi"] = cnkd.DiaChi;
-                    if (cnkd.SoPhieuYCCHDB!=null)
-                        dr["SoPhieuYCCHDB"] = cnkd.SoPhieuYCCHDB.Value.ToString().Insert(cnkd.SoPhieuYCCHDB.Value.ToString().Length - 2, "-");
-                    if (cnkd.NgayYCCHDB != null)
-                        dr["NgayYCCHDB"] = cnkd.NgayYCCHDB.Value.ToString("dd/MM/yyyy");
-                    if (cnkd.LyDo != null)
-                        dr["LyDo"] = cnkd.LyDo;
-                    dr["Ky"] = item["Ky"];
-                    dr["SoPhatHanh"] = item["SoPhatHanh"];
-                    dr["TieuThu"] = item["TieuThu"];
-                    if (_cDCHD.CheckExist_ChuanThu(int.Parse(item["MaHD"].ToString())))
-                    {
-                        DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(item["MaHD"].ToString()));
-                        dr["GiaBan"] = dchd.GIABAN_BD;
-                        dr["ThueGTGT"] =  dchd.THUE_BD;
-                        dr["PhiBVMT"] = dchd.PHI_BD;
-                        dr["TongCong"] = dchd.TONGCONG_BD;
-                    }
-                    else
-                    {
-                        dr["GiaBan"] = item["GiaBan"];
-                        dr["ThueGTGT"] = item["ThueGTGT"];
-                        dr["PhiBVMT"] = item["PhiBVMT"];
-                        dr["TongCong"] = item["TongCong"];
-                    }
-                    ds.Tables["TongHopNo"].Rows.Add(dr);
-                }
+                    TT_ChuyenNoKhoDoi cnkd = _cCNKD.Get(decimal.Parse(item.Cells["MaCNKD"].Value.ToString()));
+                    DataTable dt = _cCNKD.GetDSCT(decimal.Parse(item.Cells["MaCNKD"].Value.ToString()));
 
-                rptChuyenNoKhoDoi rpt = new rptChuyenNoKhoDoi();
-                rpt.SetDataSource(ds);
-                frmBaoCao frm = new frmBaoCao(rpt);
-                frm.Show();
-            }
+                    
+                    foreach (DataRow itemC in dt.Rows)
+                    {
+                        DataRow dr = ds.Tables["TongHopNo"].NewRow();
+                        dr["SoPhieu"] = itemC["MaCNKD"].ToString().Insert(itemC["MaCNKD"].ToString().Length - 2, "-");
+                        dr["DanhBo"] = cnkd.DanhBo.Insert(4, " ").Insert(8, " ");
+                        dr["HoTen"] = cnkd.HoTen;
+                        dr["DiaChi"] = cnkd.DiaChi;
+                        if (cnkd.SoPhieuYCCHDB != null)
+                            dr["SoPhieuYCCHDB"] = cnkd.SoPhieuYCCHDB.Value.ToString().Insert(cnkd.SoPhieuYCCHDB.Value.ToString().Length - 2, "-");
+                        if (cnkd.NgayYCCHDB != null)
+                            dr["NgayYCCHDB"] = cnkd.NgayYCCHDB.Value.ToString("dd/MM/yyyy");
+                        if (cnkd.LyDo != null)
+                            dr["LyDo"] = cnkd.LyDo;
+                        dr["Ky"] = itemC["Ky"];
+                        dr["SoPhatHanh"] = itemC["SoPhatHanh"];
+                        dr["TieuThu"] = itemC["TieuThu"];
+                        if (_cDCHD.CheckExist_ChuanThu(int.Parse(itemC["MaHD"].ToString())))
+                        {
+                            DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(itemC["MaHD"].ToString()));
+                            dr["GiaBan"] = dchd.GIABAN_BD;
+                            dr["ThueGTGT"] = dchd.THUE_BD;
+                            dr["PhiBVMT"] = dchd.PHI_BD;
+                            dr["TongCong"] = dchd.TONGCONG_BD;
+                        }
+                        else
+                        {
+                            dr["GiaBan"] = itemC["GiaBan"];
+                            dr["ThueGTGT"] = itemC["ThueGTGT"];
+                            dr["PhiBVMT"] = itemC["PhiBVMT"];
+                            dr["TongCong"] = itemC["TongCong"];
+                        }
+                        ds.Tables["TongHopNo"].Rows.Add(dr);
+                    }
+                }
+            rptChuyenNoKhoDoi rpt = new rptChuyenNoKhoDoi();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
 
         private void dgvHoaDon_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -336,6 +351,14 @@ namespace ThuTien.GUI.TongHop
         private void btnSua_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBo.Text.Trim() != "")
+            {
+                dgvHoaDon_Chon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim());
+            }
         }
     }
 }
