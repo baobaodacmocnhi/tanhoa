@@ -288,7 +288,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         sql += " and ID_NoiNhan=4";
                         break;
                 }
-                sql += " order by dtls_temp.MaDon,dtls_temp.STT";
+                sql += " order by dtct.MaDon,dtct.STT asc";
                 return ExecuteQuery_DataTable(sql);
             }
         }

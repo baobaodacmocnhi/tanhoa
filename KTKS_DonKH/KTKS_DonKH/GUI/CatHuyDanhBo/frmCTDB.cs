@@ -741,11 +741,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 _ctctdb.HieuLucKy = ycchdb.HieuLucKy;
                                 _ctctdb.PhieuDuocKy = true;
                                 ///
-                                _ctctdb.NgayXuLy = DateTime.Now;
-                                _ctctdb.NoiDungXuLy = "Lập phiếu hủy DB";
-                                _ctctdb.CreateDate_NgayXuLy = DateTime.Now;
-                                _cCHDB.SuaCTCTDB(_ctctdb);
-
                                 CHDB_GhiChu ghichu = new CHDB_GhiChu();
                                 ghichu.NgayLap = _ctctdb.NgayXuLy;
                                 ghichu.NoiDung = _ctctdb.NoiDungXuLy;
@@ -754,7 +749,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 {
                                     dgvGhiChu.DataSource = _cCHDB.GetDSGhiChuByMaCTCTDB(_ctctdb.MaCTCTDB);
                                 }
-
+                                _ctctdb.NgayXuLy = DateTime.Now;
+                                _ctctdb.NoiDungXuLy = "Lập phiếu hủy DB";
+                                _ctctdb.CreateDate_NgayXuLy = DateTime.Now;
+                                _cCHDB.SuaCTCTDB(_ctctdb);
 
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();

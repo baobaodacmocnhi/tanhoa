@@ -43,8 +43,8 @@ namespace KTKS_DonKH.GUI.DonTu
             if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.ToTruong)
             {
                 cmbTo.DataSource = _cTo.getDS_KTXM();
-                cmbNoiNhan_LichSuChuyenDon.ValueMember = "KyHieu";
-                cmbNoiNhan_LichSuChuyenDon.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "KyHieu";
+                cmbTo.DisplayMember = "TenTo";
                 panelTo.Visible = true;
             }
             else
@@ -367,7 +367,11 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnInDSChuaChuyen_ThongKeNhomDon_ToGD_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon_ToGD.Value, dateDen_ThongKeNhomDon_ToGD.Value);
+            DataTable dt = new DataTable();
+            if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.ToTruong)
+                dt = _cDonTu.getDS_ThongKeNhomDon("ToGD", dateTu_ThongKeNhomDon_ToGD.Value, dateDen_ThongKeNhomDon_ToGD.Value);
+            else
+                dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon_ToGD.Value, dateDen_ThongKeNhomDon_ToGD.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
