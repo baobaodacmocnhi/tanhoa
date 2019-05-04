@@ -196,7 +196,7 @@ namespace ThuTien.GUI.ToTruong
                             if (dcbd.DinhMuc_BD != null)
                                 row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
                         }
-                        row["TienDu"] = _cTienDu.GetTienDu(item["DanhBo"].ToString());
+                        row["TienDu"] = _cTienDu.GetTienDu(item["DanhBo"].ToString())*-1;
                         _dt.Rows.Add(row);
                     }
                 }
@@ -241,7 +241,7 @@ namespace ThuTien.GUI.ToTruong
                             if (dcbd.DinhMuc_BD != null)
                                 row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
                         }
-                        row["TienDu"] = _cTienDu.GetTienDu(hoadon.DANHBA);
+                        row["TienDu"] = _cTienDu.GetTienDu(hoadon.DANHBA) * -1;
                         _dt.Rows.Add(row);
                     }
                 }
@@ -324,7 +324,7 @@ namespace ThuTien.GUI.ToTruong
                             dr["TienDu"] = item.Cells["TienDu"].Value.ToString();
                         else
                             dr["TienDu"] = 0;
-                        TongCongSo += int.Parse(item.Cells["TongCong"].Value.ToString()) - int.Parse(dr["TienDu"].ToString());
+                        TongCongSo += int.Parse(item.Cells["TongCong"].Value.ToString()) + int.Parse(dr["TienDu"].ToString());
                         dr["CSM"] = txtCSM.Text.Trim();
                         dr["CSC"] = txtCSC.Text.Trim();
                         dr["TT"] = txtTT.Text.Trim();
@@ -495,7 +495,7 @@ namespace ThuTien.GUI.ToTruong
                     dr["TienDu"] = item.TienDu.Value.ToString();
                 else
                     dr["TienDu"] = 0;
-                TongCongSo += (int)item.TongCong.Value - int.Parse(dr["TienDu"].ToString());
+                TongCongSo += (int)item.TongCong.Value + int.Parse(dr["TienDu"].ToString());
                 dr["CSM"] = tonghopno.ChiSoMoi;
                 dr["CSC"] = tonghopno.ChiSoCu;
                 dr["TT"] = tonghopno.TieuThu;

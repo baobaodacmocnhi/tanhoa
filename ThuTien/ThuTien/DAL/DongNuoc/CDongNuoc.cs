@@ -489,6 +489,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.NgayDN1,
                             itemKQ.NiemChi1,
                             itemKQ.KhoaTu,
+                            itemKQ.KhoaKhac,
                             NhanVien = itemtableND.HoTen,
                             To=_db.TT_Tos.SingleOrDefault(itemT=>itemT.MaTo== itemtableND.MaTo).TenTo,
                         };

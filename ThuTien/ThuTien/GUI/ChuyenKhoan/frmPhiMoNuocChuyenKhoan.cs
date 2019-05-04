@@ -303,6 +303,25 @@ namespace ThuTien.GUI.ChuyenKhoan
             range.Value2 = arr;
         }
 
+        private void chkChotTatCa_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dgvPhiMoNuoc.RowCount > 0&&chkChotTatCa.Checked==true)
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    foreach (DataGridViewRow item in dgvPhiMoNuoc.Rows)
+                    {
+                        TT_PhiMoNuoc phimonuoc = _cPhiMoNuoc.Get(decimal.Parse(item.Cells["MaPMN"].Value.ToString()));
+                        phimonuoc.Chot = true;
+                        phimonuoc.NgayChot = DateTime.Now;
+                        _cPhiMoNuoc.Sua(phimonuoc);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         
     }
 }

@@ -52,6 +52,7 @@
             this.NgayDN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChiSoDN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KhoaTu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.KhoaKhac = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBamChi)).BeginInit();
@@ -132,6 +133,7 @@
             this.NgayDN1,
             this.ChiSoDN1,
             this.KhoaTu,
+            this.KhoaKhac,
             this.NhanVien,
             this.To});
             this.dgvBamChi.Location = new System.Drawing.Point(12, 38);
@@ -139,7 +141,7 @@
             this.dgvBamChi.Name = "dgvBamChi";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvBamChi.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvBamChi.Size = new System.Drawing.Size(1173, 589);
+            this.dgvBamChi.Size = new System.Drawing.Size(1212, 589);
             this.dgvBamChi.TabIndex = 20;
             this.dgvBamChi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBamChi_CellFormatting);
             this.dgvBamChi.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvBamChi_CellValidating);
@@ -258,6 +260,13 @@
             this.KhoaTu.Name = "KhoaTu";
             this.KhoaTu.Width = 40;
             // 
+            // KhoaKhac
+            // 
+            this.KhoaKhac.DataPropertyName = "KhoaKhac";
+            this.KhoaKhac.HeaderText = "Khóa Khác";
+            this.KhoaKhac.Name = "KhoaKhac";
+            this.KhoaKhac.Width = 40;
+            // 
             // NhanVien
             // 
             this.NhanVien.DataPropertyName = "NhanVien";
@@ -276,7 +285,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1198, 640);
+            this.ClientSize = new System.Drawing.Size(1241, 640);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.dgvBamChi);
             this.Controls.Add(this.label2);
@@ -317,6 +326,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDN1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSoDN1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn KhoaTu;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn KhoaKhac;
         private System.Windows.Forms.DataGridViewTextBoxColumn NhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn To;
     }

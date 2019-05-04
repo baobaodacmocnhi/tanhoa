@@ -31,6 +31,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CTamThu _cTamThu = new CTamThu();
         CBangKe _cBangKe = new CBangKe();
         CDocSo _cDocSo = new CDocSo();
+        CNganHang _cNganHang = new CNganHang();
 
         public frmTienDu()
         {
@@ -397,7 +398,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("I3", "I3");
             cl9.Value2 = "Bank";
-            cl9.ColumnWidth = 12;
+            cl9.ColumnWidth = 10;
 
             Microsoft.Office.Interop.Excel.Range cl10 = oSheet.get_Range("J3", "J3");
             cl10.Value2 = "Điện Thoại";
@@ -405,15 +406,19 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             Microsoft.Office.Interop.Excel.Range cl11 = oSheet.get_Range("K3", "K3");
             cl11.Value2 = "Loại";
-            cl11.ColumnWidth = 12;
+            cl11.ColumnWidth = 5;
 
             Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("L3", "L3");
             cl12.Value2 = "SPT";
-            cl12.ColumnWidth = 12;
+            cl12.ColumnWidth = 10;
+
+            Microsoft.Office.Interop.Excel.Range cl13 = oSheet.get_Range("M3", "M3");
+            cl13.Value2 = "NPT";
+            cl13.ColumnWidth = 12;
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 12];
+            object[,] arr = new object[dt.Rows.Count, 13];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -427,7 +432,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if (bangke != null)
                 {
                     arr[i, 2] = bangke.CreateDate.Value.ToString("dd/MM/yyyy");
+                    arr[i, 8] = _cNganHang.getTenNH(bangke.MaNH.Value);
                     arr[i, 11] = bangke.SoPhieuThu;
+                    arr[i, 12] = bangke.NgayPhieuThu;
                 }
                 HOADON hoadon = _cHoaDon.GetMoiNhat(dr["DanhBo"].ToString());
                 if (hoadon != null)
@@ -445,7 +452,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     else
                         arr[i, 10] = "CQ";
                 }
-                arr[i, 8] = _cBangKe.GetBank(dr["DanhBo"].ToString());
+                
                 arr[i, 9] = dr["DienThoai"].ToString();
             }
 
@@ -454,7 +461,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             int columnStart = 1;
 
             int rowEnd = rowStart + dt.Rows.Count - 1;
-            int columnEnd = 12;
+            int columnEnd = 13;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
@@ -485,6 +492,12 @@ namespace ThuTien.GUI.ChuyenKhoan
             Microsoft.Office.Interop.Excel.Range c3e = oSheet.get_Range(c1e, c2e);
             c3e.NumberFormat = "@";
             c3e.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range c1f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 13];
+            Microsoft.Office.Interop.Excel.Range c2f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 13];
+            Microsoft.Office.Interop.Excel.Range c3f = oSheet.get_Range(c1f, c2f);
+            c3f.NumberFormat = "@";
+            c3f.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;

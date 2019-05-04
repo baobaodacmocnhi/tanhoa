@@ -73,7 +73,7 @@ namespace ThuTien.GUI.Doi
                                 dr["DayDong"] = "0.6";
                             }
                             else
-                                if (bool.Parse(item.Cells["KhoaTu"].Value.ToString()) == true)
+                                if (bool.Parse(item.Cells["KhoaKhac"].Value.ToString()) == true || bool.Parse(item.Cells["KhoaTu"].Value.ToString()) == true)
                                     dr["KhoaTu"] = "X";
                             dr["GhiChu"] = "Thu hồi nợ";
                             dr["ChucVu"] = CNguoiKy.getChucVu();
@@ -107,7 +107,7 @@ namespace ThuTien.GUI.Doi
                             dr["DayDong"] = "0.6";
                         }
                         else
-                            if (bool.Parse(item.Cells["KhoaTu"].Value.ToString()) == true)
+                            if (bool.Parse(item.Cells["KhoaKhac"].Value.ToString()) == true || bool.Parse(item.Cells["KhoaTu"].Value.ToString()) == true)
                                 dr["KhoaTu"] = "X";
                         dr["GhiChu"] = "Thu hồi nợ";
                         dr["ChucVu"] = CNguoiKy.getChucVu();

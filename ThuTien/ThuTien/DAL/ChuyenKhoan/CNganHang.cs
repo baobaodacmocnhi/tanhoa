@@ -62,6 +62,11 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
+        public bool checkExist(int MaNH)
+        {
+            return _db.NGANHANGs.Any(item => item.ID_NGANHANG == MaNH);
+        }
+
         public bool CheckExist(string KyHieu)
         {
             return _db.NGANHANGs.Any(item => item.KyHieu == KyHieu);
@@ -70,6 +75,14 @@ namespace ThuTien.DAL.ChuyenKhoan
         public NGANHANG GetByMaNH(int MaNH)
         {
             return _db.NGANHANGs.SingleOrDefault(item => item.ID_NGANHANG == MaNH);
+        }
+
+        public string getTenNH(int MaNH)
+        {
+            if (checkExist(MaNH) == true)
+                return _db.NGANHANGs.SingleOrDefault(item => item.ID_NGANHANG == MaNH).NGANHANG1;
+            else
+                return "";
         }
 
         public int GetMaNHByKyHieu(string KyHieu)

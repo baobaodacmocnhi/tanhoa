@@ -80,6 +80,8 @@ namespace ThuTien.GUI.DongNuoc
             txtChiSoMN.Text = "";
             chkKhoaTu.Checked = false;
             chkButChi.Checked = false;
+            chkKhoaKhac.Checked = false;
+            txtKhoaKhac_GhiChu.Text = "";
             chkKhongThuTienMoNuoc.Checked = false;
             chkDongNuoc2.Checked = false;
             dateDongNuoc1.Value = DateTime.Now;
@@ -113,6 +115,8 @@ namespace ThuTien.GUI.DongNuoc
             txtLyDo.Text = entity.LyDo;
             chkKhoaTu.Checked = entity.KhoaTu;
             chkButChi.Checked = entity.ButChi;
+            chkKhoaKhac.Checked = entity.KhoaKhac;
+            txtKhoaKhac_GhiChu.Text = entity.KhoaKhac_GhiChu;
             chkKhongThuTienMoNuoc.Checked = entity.KhongThuPhi;
             if (entity.MoNuoc)
             {
@@ -247,6 +251,8 @@ namespace ThuTien.GUI.DongNuoc
                         _kqdongnuoc.LyDo = txtLyDo.Text.Trim();
                         _kqdongnuoc.KhoaTu = chkKhoaTu.Checked;
                         _kqdongnuoc.ButChi = chkButChi.Checked;
+                        _kqdongnuoc.KhoaKhac = chkKhoaKhac.Checked;
+                        _kqdongnuoc.KhoaKhac_GhiChu = txtKhoaKhac_GhiChu.Text.Trim();
                         _kqdongnuoc.KhongThuPhi = chkKhongThuTienMoNuoc.Checked;
 
                         //cập nhật đóng nước lần 2
@@ -335,7 +341,7 @@ namespace ThuTien.GUI.DongNuoc
                                 _kqdongnuoc.NgayChuyenDN1 = null;
                             }
                         //cập nhật đóng nước lần 1
-                        if (chkKhoaTu.Checked == false && _kqdongnuoc.NgayDN.Value.Date > DateTime.Parse("2018-10-17"))
+                        if (chkKhoaKhac.Checked==false &&  chkKhoaTu.Checked == false && _kqdongnuoc.NgayDN.Value.Date > DateTime.Parse("2018-10-17"))
                         {
                             if (txtNiemChi.Text.Trim() == "")
                             {
@@ -406,7 +412,7 @@ namespace ThuTien.GUI.DongNuoc
                             kqdongnuoc.NgayDN_ThucTe = DateTime.Now;
                             if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
                                 kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
-                            if (chkKhoaTu.Checked == false)
+                            if (chkKhoaKhac.Checked == false && chkKhoaTu.Checked == false)
                             {
                                 if (txtNiemChi.Text.Trim() == "")
                                 {
@@ -440,6 +446,8 @@ namespace ThuTien.GUI.DongNuoc
                             kqdongnuoc.LyDo = txtLyDo.Text.Trim();
                             kqdongnuoc.KhoaTu = chkKhoaTu.Checked;
                             kqdongnuoc.ButChi = chkButChi.Checked;
+                            kqdongnuoc.KhoaKhac = chkKhoaKhac.Checked;
+                            kqdongnuoc.KhoaKhac_GhiChu = txtKhoaKhac_GhiChu.Text.Trim();
                             kqdongnuoc.KhongThuPhi = chkKhongThuTienMoNuoc.Checked;
 
                             kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc();
@@ -1144,6 +1152,14 @@ namespace ThuTien.GUI.DongNuoc
             {
                 File.Delete(tempFileName);
             };
+        }
+
+        private void chkKhoaKhac_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkKhoaKhac.Checked == true)
+                txtKhoaKhac_GhiChu.ReadOnly = false;
+            else
+                txtKhoaKhac_GhiChu.ReadOnly = true;
         }
 
     }

@@ -138,6 +138,8 @@
             this.btnInDS = new System.Windows.Forms.Button();
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.lbTo = new System.Windows.Forms.Label();
+            this.chkKhoaKhac = new System.Windows.Forms.CheckBox();
+            this.txtKhoaKhac_GhiChu = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
@@ -146,6 +148,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtKhoaKhac_GhiChu);
+            this.groupBox2.Controls.Add(this.chkKhoaKhac);
             this.groupBox2.Controls.Add(this.chkButChi);
             this.groupBox2.Controls.Add(this.chkKhoaTu);
             this.groupBox2.Controls.Add(this.txtNiemChi);
@@ -185,7 +189,7 @@
             // chkButChi
             // 
             this.chkButChi.AutoSize = true;
-            this.chkButChi.Location = new System.Drawing.Point(212, 205);
+            this.chkButChi.Location = new System.Drawing.Point(212, 173);
             this.chkButChi.Name = "chkButChi";
             this.chkButChi.Size = new System.Drawing.Size(60, 17);
             this.chkButChi.TabIndex = 44;
@@ -195,7 +199,7 @@
             // chkKhoaTu
             // 
             this.chkKhoaTu.AutoSize = true;
-            this.chkKhoaTu.Location = new System.Drawing.Point(212, 182);
+            this.chkKhoaTu.Location = new System.Drawing.Point(212, 150);
             this.chkKhoaTu.Name = "chkKhoaTu";
             this.chkKhoaTu.Size = new System.Drawing.Size(67, 17);
             this.chkKhoaTu.TabIndex = 43;
@@ -1179,6 +1183,25 @@
             this.lbTo.TabIndex = 47;
             this.lbTo.Text = "Tổ:";
             // 
+            // chkKhoaKhac
+            // 
+            this.chkKhoaKhac.AutoSize = true;
+            this.chkKhoaKhac.Location = new System.Drawing.Point(184, 205);
+            this.chkKhoaKhac.Name = "chkKhoaKhac";
+            this.chkKhoaKhac.Size = new System.Drawing.Size(79, 17);
+            this.chkKhoaKhac.TabIndex = 45;
+            this.chkKhoaKhac.Text = "Khóa Khác";
+            this.chkKhoaKhac.UseVisualStyleBackColor = true;
+            this.chkKhoaKhac.CheckedChanged += new System.EventHandler(this.chkKhoaKhac_CheckedChanged);
+            // 
+            // txtKhoaKhac_GhiChu
+            // 
+            this.txtKhoaKhac_GhiChu.Location = new System.Drawing.Point(269, 203);
+            this.txtKhoaKhac_GhiChu.Name = "txtKhoaKhac_GhiChu";
+            this.txtKhoaKhac_GhiChu.ReadOnly = true;
+            this.txtKhoaKhac_GhiChu.Size = new System.Drawing.Size(119, 20);
+            this.txtKhoaKhac_GhiChu.TabIndex = 46;
+            // 
             // frmKQDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1335,5 +1358,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn DaKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
+        private System.Windows.Forms.TextBox txtKhoaKhac_GhiChu;
+        private System.Windows.Forms.CheckBox chkKhoaKhac;
     }
 }
