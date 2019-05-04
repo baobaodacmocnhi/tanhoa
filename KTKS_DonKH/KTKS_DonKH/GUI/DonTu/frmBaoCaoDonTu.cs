@@ -333,9 +333,9 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnBaoCao_ThongKeNhomDon_ToGD_Click(object sender, EventArgs e)
         {
-            DataTable dt=new DataTable();
-            if(CTaiKhoan.Admin||CTaiKhoan.TruongPhong||CTaiKhoan.ToTruong)
-            dt = _cDonTu.getDS_ThongKeNhomDon("ToGD", dateTu_ThongKeNhomDon_ToGD.Value, dateDen_ThongKeNhomDon_ToGD.Value);
+            DataTable dt = new DataTable();
+            if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.ToTruong)
+                dt = _cDonTu.getDS_ThongKeNhomDon("ToGD", dateTu_ThongKeNhomDon_ToGD.Value, dateDen_ThongKeNhomDon_ToGD.Value);
             else
                 dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.MaTo, dateTu_ThongKeNhomDon_ToGD.Value, dateDen_ThongKeNhomDon_ToGD.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
