@@ -28,6 +28,7 @@ namespace KTKS_DonKH.GUI.DonTu
         CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
         CGanMoi _cGanMoi = new CGanMoi();
         CKTXM _cKTXM = new CKTXM();
+        CTaiKhoan _cTaiKhoan = new CTaiKhoan();
 
         LinQ.DonTu _dontu = null;
         HOADON _hoadon = null;
@@ -153,6 +154,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
                 txtMaDon.Text = entity.MaDon.ToString();
                 dateCreateDate.Value = entity.CreateDate.Value;
+                txtNguoiLap.Text = _cTaiKhoan.GetHoTen(entity.CreateBy.Value);
 
                 if (entity.SoCongVan != null)
                 {
@@ -196,6 +198,7 @@ namespace KTKS_DonKH.GUI.DonTu
             txtTongDB.Text = "";
             txtMaDon.Text = "";
             lbTruyThu.Text = "";
+            txtNguoiLap.Text = "";
 
             for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
             {

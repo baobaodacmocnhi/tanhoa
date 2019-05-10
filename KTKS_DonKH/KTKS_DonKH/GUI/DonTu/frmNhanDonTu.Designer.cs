@@ -127,6 +127,8 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkKhongInBienNhan = new System.Windows.Forms.CheckBox();
             this.lbTruyThu = new System.Windows.Forms.Label();
+            this.txtNguoiLap = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbDieuChinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbKhieuNai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbDHN.Properties)).BeginInit();
@@ -1064,11 +1066,27 @@
             this.lbTruyThu.AutoSize = true;
             this.lbTruyThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTruyThu.ForeColor = System.Drawing.Color.Red;
-            this.lbTruyThu.Location = new System.Drawing.Point(495, 9);
+            this.lbTruyThu.Location = new System.Drawing.Point(495, 5);
             this.lbTruyThu.Name = "lbTruyThu";
             this.lbTruyThu.Size = new System.Drawing.Size(78, 16);
             this.lbTruyThu.TabIndex = 72;
             this.lbTruyThu.Text = "lbTruyThu";
+            // 
+            // txtNguoiLap
+            // 
+            this.txtNguoiLap.Location = new System.Drawing.Point(399, 28);
+            this.txtNguoiLap.Name = "txtNguoiLap";
+            this.txtNguoiLap.Size = new System.Drawing.Size(200, 22);
+            this.txtNguoiLap.TabIndex = 74;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(317, 31);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(66, 16);
+            this.label24.TabIndex = 73;
+            this.label24.Text = "Người lập";
             // 
             // frmNhanDonTu
             // 
@@ -1076,6 +1094,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1270, 562);
+            this.Controls.Add(this.txtNguoiLap);
+            this.Controls.Add(this.label24);
             this.Controls.Add(this.lbTruyThu);
             this.Controls.Add(this.chkKhongInBienNhan);
             this.Controls.Add(this.groupBox3);
@@ -1229,5 +1249,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quan;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phuong;
         private System.Windows.Forms.Label lbTruyThu;
+        private System.Windows.Forms.TextBox txtNguoiLap;
+        private System.Windows.Forms.Label label24;
     }
 }

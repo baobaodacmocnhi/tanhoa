@@ -54,6 +54,7 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 txtMaDon.Text = entity.MaDon.ToString();
                 dateCreateDate.Value = entity.CreateDate.Value;
+                txtNguoiLap.Text = _cTaiKhoan.GetHoTen(entity.CreateBy.Value);
 
                 if (entity.SoCongVan != null)
                 {
@@ -161,6 +162,7 @@ namespace KTKS_DonKH.GUI.DonTu
             txtSoCongVan.Text = "";
             txtTongDB.Text = "";
             txtMaDon.Text = "";
+            txtNguoiLap.Text = "";
 
             txtSoNK.Text = "";
             txtHieuLucKy.Text = "";

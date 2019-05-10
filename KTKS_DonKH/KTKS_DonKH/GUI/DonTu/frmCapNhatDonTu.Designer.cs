@@ -119,6 +119,8 @@
             this.dateToNgayChuyen = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dateFromNgayChuyen = new System.Windows.Forms.DateTimePicker();
+            this.txtNguoiLap = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabTTKH.SuspendLayout();
             this.tabCongVan.SuspendLayout();
@@ -952,6 +954,22 @@
             this.dateFromNgayChuyen.Size = new System.Drawing.Size(110, 22);
             this.dateFromNgayChuyen.TabIndex = 17;
             // 
+            // txtNguoiLap
+            // 
+            this.txtNguoiLap.Location = new System.Drawing.Point(399, 28);
+            this.txtNguoiLap.Name = "txtNguoiLap";
+            this.txtNguoiLap.Size = new System.Drawing.Size(200, 22);
+            this.txtNguoiLap.TabIndex = 76;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(317, 31);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(66, 16);
+            this.label24.TabIndex = 75;
+            this.label24.Text = "Người lập";
+            // 
             // frmCapNhatDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -959,6 +977,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1457, 628);
+            this.Controls.Add(this.txtNguoiLap);
+            this.Controls.Add(this.label24);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chkcmbNoiNhanKTXM);
             this.Controls.Add(this.label1);
@@ -1103,6 +1123,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn KTXM;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
+        private System.Windows.Forms.TextBox txtNguoiLap;
+        private System.Windows.Forms.Label label24;
 
     }
 }
