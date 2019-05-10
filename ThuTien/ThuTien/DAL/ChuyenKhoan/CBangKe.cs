@@ -102,6 +102,23 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_XuatTienDu(string DanhBo, DateTime CreateDate)
+        {
+            var query = from itemBK in _db.TT_BangKes
+                        where itemBK.DanhBo==DanhBo&& itemBK.CreateDate.Value.Date <= CreateDate.Date
+                        orderby itemBK.CreateDate descending
+                        select new
+                        {
+                            itemBK.MaBK,
+                            itemBK.DanhBo,
+                            itemBK.SoTien,
+                            itemBK.SoPhieuThu,
+                            itemBK.NgayPhieuThu,
+                            itemBK.CreateDate,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDS(DateTime TuNgay, DateTime DenNgay)
         {
             var query = from itemBK in _db.TT_BangKes

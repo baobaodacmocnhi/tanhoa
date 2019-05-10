@@ -303,7 +303,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     foreach (DataGridViewRow item in dgvTienDu.Rows)
                     {
-                        if(item.Cells["DanhBo_TienDu"].Value.ToString()=="13111798220")
+                        if (item.Cells["DanhBo_TienDu"].Value.ToString() == "13111798220")
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         List<HOADON> lstHD = _cHoaDon.GetDSTon(item.Cells["DanhBo_TienDu"].Value.ToString());
                         if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
@@ -427,15 +427,33 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                 arr[i, 0] = dr["DanhBo"].ToString();
                 arr[i, 1] = dr["SoTien"].ToString();
-
-                TT_BangKe bangke = _cBangKe.get(dr["DanhBo"].ToString(), dateNgayGiaiTrach.Value);
-                if (bangke != null)
+                int TienDu = int.Parse(dr["SoTien"].ToString());
+                int TienBK = 0;
+                int k = 0;
+                DataTable dtBK = _cBangKe.getDS_XuatTienDu(dr["DanhBo"].ToString(), dateNgayGiaiTrach.Value);
+                while (TienBK < TienDu && dtBK != null && dtBK.Rows.Count > 0 && k <= dtBK.Rows.Count)
                 {
-                    arr[i, 2] = bangke.CreateDate.Value.ToString("dd/MM/yyyy");
-                    arr[i, 8] = _cNganHang.getTenNH(bangke.MaNH.Value);
-                    arr[i, 11] = bangke.SoPhieuThu;
-                    arr[i, 12] = bangke.NgayPhieuThu;
-                }
+                    TienBK += int.Parse(dtBK.Rows[k]["SoTien"].ToString());
+                    if (dtBK.Rows[k]["SoPhieuThu"].ToString() != "")
+                        if (arr[i, 11] == null)
+                            arr[i, 11] += dtBK.Rows[k]["SoPhieuThu"].ToString();
+                        else
+                            arr[i, 11] += ", " + dtBK.Rows[k]["SoPhieuThu"].ToString();
+                    if (dtBK.Rows[k]["NgayPhieuThu"].ToString() != "")
+                        if (arr[i, 12] == null)
+                            arr[i, 12] += DateTime.Parse(dtBK.Rows[k]["NgayPhieuThu"].ToString()).ToString("dd/MM/yyyy");
+                        else
+                            arr[i, 12] += ", " + DateTime.Parse(dtBK.Rows[k]["NgayPhieuThu"].ToString()).ToString("dd/MM/yyyy");
+                    k++;
+                };
+                //TT_BangKe bangke = _cBangKe.get(dr["DanhBo"].ToString(), dateNgayGiaiTrach.Value);
+                //if (bangke != null)
+                //{
+                //    arr[i, 2] = bangke.CreateDate.Value.ToString("dd/MM/yyyy");
+                //    arr[i, 8] = _cNganHang.getTenNH(bangke.MaNH.Value);
+                //    arr[i, 11] = bangke.SoPhieuThu;
+                //    arr[i, 12] = bangke.NgayPhieuThu;
+                //}
                 HOADON hoadon = _cHoaDon.GetMoiNhat(dr["DanhBo"].ToString());
                 if (hoadon != null)
                 {
@@ -452,7 +470,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     else
                         arr[i, 10] = "CQ";
                 }
-                
+
                 arr[i, 9] = dr["DienThoai"].ToString();
             }
 
@@ -486,6 +504,12 @@ namespace ThuTien.GUI.ChuyenKhoan
             Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
             c3c.NumberFormat = "@";
             c3c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range c1g = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
+            Microsoft.Office.Interop.Excel.Range c2g = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
+            Microsoft.Office.Interop.Excel.Range c3g = oSheet.get_Range(c1g, c2g);
+            c3g.NumberFormat = "@";
+            c3g.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
             Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 12];
             Microsoft.Office.Interop.Excel.Range c2e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 12];
@@ -592,7 +616,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["DienThoai"] = _cDocSo.GetDienThoai(hoadon.DANHBA);
                     dr["Ky"] = hoadon.KY + "/" + hoadon.NAM;
                     dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
-                    dr["TongCong"] = hoadon.TONGCONG-(int)item.Cells["SoTien_TienDu"].Value;
+                    dr["TongCong"] = hoadon.TONGCONG - (int)item.Cells["SoTien_TienDu"].Value;
 
                     ds.Tables["TienDuKhachHang"].Rows.Add(dr);
                 }
