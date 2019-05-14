@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbLoaiVanBan = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -79,6 +79,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.chkcmbNoiNhan = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.chkCreateBy = new System.Windows.Forms.CheckBox();
+            this.chkNgayLap = new System.Windows.Forms.CheckBox();
+            this.dateNgayLap = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCongVan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).BeginInit();
             this.SuspendLayout();
@@ -282,14 +284,14 @@
             // 
             this.dgvDSCongVan.AllowUserToAddRows = false;
             this.dgvDSCongVan.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSCongVan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSCongVan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDSCongVan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSCongVan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -638,12 +640,35 @@
             this.chkCreateBy.Text = "Theo Người Lập";
             this.chkCreateBy.UseVisualStyleBackColor = true;
             // 
+            // chkNgayLap
+            // 
+            this.chkNgayLap.AutoSize = true;
+            this.chkNgayLap.Location = new System.Drawing.Point(867, 132);
+            this.chkNgayLap.Name = "chkNgayLap";
+            this.chkNgayLap.Size = new System.Drawing.Size(86, 20);
+            this.chkNgayLap.TabIndex = 103;
+            this.chkNgayLap.Text = "Ngày Lập";
+            this.chkNgayLap.UseVisualStyleBackColor = true;
+            this.chkNgayLap.CheckedChanged += new System.EventHandler(this.chkNgayLap_CheckedChanged);
+            // 
+            // dateNgayLap
+            // 
+            this.dateNgayLap.CustomFormat = "dd/MM/yyyy";
+            this.dateNgayLap.Enabled = false;
+            this.dateNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateNgayLap.Location = new System.Drawing.Point(959, 132);
+            this.dateNgayLap.Name = "dateNgayLap";
+            this.dateNgayLap.Size = new System.Drawing.Size(90, 22);
+            this.dateNgayLap.TabIndex = 104;
+            // 
             // frmCongVanDi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1284, 609);
+            this.Controls.Add(this.dateNgayLap);
+            this.Controls.Add(this.chkNgayLap);
             this.Controls.Add(this.chkCreateBy);
             this.Controls.Add(this.chkcmbNoiNhan);
             this.Controls.Add(this.txtNoiDungTimKiem);
@@ -749,5 +774,7 @@
         private System.Windows.Forms.Label label19;
         private DevExpress.XtraEditors.CheckedComboBoxEdit chkcmbNoiNhan;
         private System.Windows.Forms.CheckBox chkCreateBy;
+        private System.Windows.Forms.CheckBox chkNgayLap;
+        private System.Windows.Forms.DateTimePicker dateNgayLap;
     }
 }

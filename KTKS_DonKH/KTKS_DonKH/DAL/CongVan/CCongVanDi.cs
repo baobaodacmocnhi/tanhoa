@@ -30,6 +30,26 @@ namespace KTKS_DonKH.DAL.CongVan
             }
         }
 
+        public bool Them(CongVanDi item,DateTime CreateDate)
+        {
+            try
+            {
+                if (db.CongVanDis.Count() > 0)
+                    item.ID = db.CongVanDis.Max(item2 => item2.ID) + 1;
+                else
+                    item.ID = 1;
+                item.CreateDate = CreateDate;
+                item.CreateBy = CTaiKhoan.MaUser;
+                db.CongVanDis.InsertOnSubmit(item);
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public bool Sua(CongVanDi item)
         {
             try

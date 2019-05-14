@@ -116,6 +116,7 @@ namespace KTKS_DonKH.GUI.CongVan
             txtDanhBo.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
+            chkNgayLap.Checked = false;
             for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
                 chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
         }
@@ -141,21 +142,45 @@ namespace KTKS_DonKH.GUI.CongVan
                             if (txtTuMa.Text.Trim().Replace("-", "") != "")
                                 if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma, item.NoiChuyen, DateTime.Now))
                                 {
-                                    if (_cCongVanDi.Them(item))
+                                    if (chkNgayLap.Checked)
                                     {
-                                        Clear();
-                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        btnXem.PerformClick();
+                                        if (_cCongVanDi.Them(item,dateNgayLap.Value))
+                                        {
+                                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            Clear();
+                                            btnXem.PerformClick();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (_cCongVanDi.Them(item))
+                                        {
+                                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            Clear();
+                                            btnXem.PerformClick();
+                                        }
                                     }
                                 }
                                 else
                                     MessageBox.Show("Đã có: " + item.Ma, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             else
-                                if (_cCongVanDi.Them(item))
+                                if (chkNgayLap.Checked)
                                 {
-                                    Clear();
-                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    btnXem.PerformClick();
+                                    if (_cCongVanDi.Them(item, dateNgayLap.Value))
+                                    {
+                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        Clear();
+                                        btnXem.PerformClick();
+                                    }
+                                }
+                                else
+                                {
+                                    if (_cCongVanDi.Them(item))
+                                    {
+                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        Clear();
+                                        btnXem.PerformClick();
+                                    }
                                 }
                         }
                 }
@@ -247,13 +272,22 @@ namespace KTKS_DonKH.GUI.CongVan
                                 item.NoiChuyen = chkcmbNoiNhan.Properties.Items[i].ToString();
 
                                 if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma, item.NoiChuyen, DateTime.Now))
-                                    _cCongVanDi.Them(item);
+                                {
+                                    if (chkNgayLap.Checked)
+                                    {
+                                        _cCongVanDi.Them(item,dateNgayLap.Value);
+                                    }
+                                    else
+                                    {
+                                        _cCongVanDi.Them(item);
+                                    }
+                                }
                                 else
                                     MessageBox.Show("Đã có: " + item.Ma, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                     }
-                    Clear();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Clear();
                     btnXem.PerformClick();
                 }
         }
@@ -560,6 +594,14 @@ namespace KTKS_DonKH.GUI.CongVan
             //entity.NoiDung="test";
             //_cDonTu.Them(entity);
             //dgvTest.DataSource = _cDonTu.GetDS();
+        }
+
+        private void chkNgayLap_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNgayLap.Checked)
+                dateNgayLap.Enabled = true;
+            else
+                dateNgayLap.Enabled = false;
         }
 
        
