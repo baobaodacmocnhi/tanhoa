@@ -135,7 +135,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             txtDienThoai.Text = cttttn.DienThoai;
             txtNoiDung.Text = cttttn.NoiDung;
 
-            foreach (TruyThuTienNuoc_HoaDon item in cttttn.TruyThuTienNuoc_HoaDons.ToList())
+            foreach (TruyThuTienNuoc_HoaDon item in cttttn.TruyThuTienNuoc_HoaDons.OrderBy(itemA => itemA.Nam).ThenBy(itemA => itemA.Ky).ToList())
             {
                 dgvTruyThuTienNuoc.Rows.Insert(dgvTruyThuTienNuoc.RowCount - 1, 1);
 
@@ -850,12 +850,12 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
                         if (item.Cells["Ky"].Value != null && item.Cells["Ky"].ToString() != "")
-                            if (_cTTTN.CheckExist_HoaDon(IDCT, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()) == false)
+                            if (_cTTTN.CheckExist_HoaDon(IDCT, int.Parse(item.Cells["Ky"].Value.ToString()), int.Parse(item.Cells["Nam"].Value.ToString())) == false)
                             {
                                 TruyThuTienNuoc_HoaDon cttttn_hoadon = new TruyThuTienNuoc_HoaDon();
                                 cttttn_hoadon.IDCT = IDCT;
-                                cttttn_hoadon.Ky = item.Cells["Ky"].Value.ToString();
-                                cttttn_hoadon.Nam = item.Cells["Nam"].Value.ToString();
+                                cttttn_hoadon.Ky = int.Parse(item.Cells["Ky"].Value.ToString());
+                                cttttn_hoadon.Nam = int.Parse(item.Cells["Nam"].Value.ToString());
                                 cttttn_hoadon.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
                                 cttttn_hoadon.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
                                 cttttn_hoadon.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
@@ -938,14 +938,14 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
                             if (item.Cells["Ky"].Value != null && item.Cells["Ky"].ToString() != "")
-                                if (_cTTTN.CheckExist_HoaDon(_cttttn.IDCT, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()) == false)
+                                if (_cTTTN.CheckExist_HoaDon(_cttttn.IDCT, int.Parse(item.Cells["Ky"].Value.ToString()), int.Parse(item.Cells["Nam"].Value.ToString())) == false)
                                 //if (item.Cells["IDCT"].Value == null || item.Cells["IDCT"].Value.ToString()=="")
                                 {
                                     TruyThuTienNuoc_HoaDon cttttn_hoadon = new TruyThuTienNuoc_HoaDon();
 
                                     cttttn_hoadon.IDCT = _cttttn.IDCT;
-                                    cttttn_hoadon.Ky = item.Cells["Ky"].Value.ToString();
-                                    cttttn_hoadon.Nam = item.Cells["Nam"].Value.ToString();
+                                    cttttn_hoadon.Ky = int.Parse(item.Cells["Ky"].Value.ToString());
+                                    cttttn_hoadon.Nam = int.Parse(item.Cells["Nam"].Value.ToString());
                                     cttttn_hoadon.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
                                     cttttn_hoadon.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
                                     cttttn_hoadon.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
@@ -970,11 +970,11 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 }
                                 else
                                 {
-                                    TruyThuTienNuoc_HoaDon cttttn_hoadon = _cTTTN.get_HoaDon(_cttttn.IDCT, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString());
+                                    TruyThuTienNuoc_HoaDon cttttn_hoadon = _cTTTN.get_HoaDon(_cttttn.IDCT, int.Parse(item.Cells["Ky"].Value.ToString()), int.Parse(item.Cells["Nam"].Value.ToString()));
                                     //TruyThuTienNuoc_HoaDon cttttn_hoadon = _cTTTN.GetCT(int.Parse(item.Cells["IDCT"].Value.ToString()));
 
-                                    cttttn_hoadon.Ky = item.Cells["Ky"].Value.ToString();
-                                    cttttn_hoadon.Nam = item.Cells["Nam"].Value.ToString();
+                                    cttttn_hoadon.Ky = int.Parse(item.Cells["Ky"].Value.ToString());
+                                    cttttn_hoadon.Nam = int.Parse(item.Cells["Nam"].Value.ToString());
                                     cttttn_hoadon.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
                                     cttttn_hoadon.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
                                     cttttn_hoadon.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
@@ -1044,7 +1044,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             if (_cttttn != null)
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                foreach (TruyThuTienNuoc_HoaDon item in _cttttn.TruyThuTienNuoc_HoaDons.ToList())
+                foreach (TruyThuTienNuoc_HoaDon item in _cttttn.TruyThuTienNuoc_HoaDons.OrderBy(itemA => itemA.Nam).ThenBy(itemA => itemA.Ky).ToList())
                     {
                         DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
@@ -1096,7 +1096,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             if (_cttttn != null)
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                foreach (TruyThuTienNuoc_HoaDon item in _cttttn.TruyThuTienNuoc_HoaDons.ToList())
+                foreach (TruyThuTienNuoc_HoaDon item in _cttttn.TruyThuTienNuoc_HoaDons.OrderBy(itemA => itemA.Nam).ThenBy(itemA => itemA.Ky).ToList())
                     {
                         DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
@@ -1464,7 +1464,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_cttttn != null)
                     {
-                        TruyThuTienNuoc_HoaDon cttttn_hoadon = _cTTTN.get_HoaDon(_cttttn.IDCT, e.Row.Cells["Ky"].Value.ToString(), e.Row.Cells["Nam"].Value.ToString());
+                        TruyThuTienNuoc_HoaDon cttttn_hoadon = _cTTTN.get_HoaDon(_cttttn.IDCT, int.Parse(e.Row.Cells["Ky"].Value.ToString()), int.Parse(e.Row.Cells["Nam"].Value.ToString()));
                         if (_cTTTN.Xoa_HoaDon(cttttn_hoadon))
                         {
                             _cttttn = _cTTTN.get_ChiTiet(_cttttn.IDCT);

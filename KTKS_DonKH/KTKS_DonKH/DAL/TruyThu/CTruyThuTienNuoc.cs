@@ -431,7 +431,7 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
         }
 
-        public bool CheckExist_HoaDon(decimal IDCT, string Ky, string Nam)
+        public bool CheckExist_HoaDon(decimal IDCT, int Ky, int Nam)
         {
             return db.TruyThuTienNuoc_HoaDons.Any(item => item.IDCT == IDCT && item.Ky == Ky && item.Nam == Nam);
         }
@@ -441,7 +441,7 @@ namespace KTKS_DonKH.DAL.TruyThu
             return db.TruyThuTienNuoc_HoaDons.SingleOrDefault(item => item.IDCT == IDCT);
         }
 
-        public TruyThuTienNuoc_HoaDon get_HoaDon(decimal IDCT, string Ky, string Nam)
+        public TruyThuTienNuoc_HoaDon get_HoaDon(decimal IDCT, int Ky, int Nam)
         {
             return db.TruyThuTienNuoc_HoaDons.SingleOrDefault(item => item.IDCT == IDCT && item.Ky == Ky && item.Nam == Nam);
         }

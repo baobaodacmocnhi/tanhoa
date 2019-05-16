@@ -42283,9 +42283,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
-		private string _Ky;
+		private System.Nullable<int> _Ky;
 		
-		private string _Nam;
+		private System.Nullable<int> _Nam;
 		
 		private System.Nullable<int> _GiaBieuCu;
 		
@@ -42335,9 +42335,9 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnKyChanging(string value);
+    partial void OnKyChanging(System.Nullable<int> value);
     partial void OnKyChanged();
-    partial void OnNamChanging(string value);
+    partial void OnNamChanging(System.Nullable<int> value);
     partial void OnNamChanged();
     partial void OnGiaBieuCuChanging(System.Nullable<int> value);
     partial void OnGiaBieuCuChanged();
@@ -42407,8 +42407,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ky", DbType="NVarChar(50)")]
-		public string Ky
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ky", DbType="Int")]
+		public System.Nullable<int> Ky
 		{
 			get
 			{
@@ -42427,8 +42427,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nam", DbType="NVarChar(50)")]
-		public string Nam
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nam", DbType="Int")]
+		public System.Nullable<int> Nam
 		{
 			get
 			{

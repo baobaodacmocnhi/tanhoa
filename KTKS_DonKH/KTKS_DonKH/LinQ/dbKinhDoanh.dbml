@@ -1824,8 +1824,8 @@
   <Table Name="dbo.TruyThuTienNuoc_HoaDon" Member="TruyThuTienNuoc_HoaDons">
     <Type Name="TruyThuTienNuoc_HoaDon">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ky" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GiaBieuCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMucCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TieuThuCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
