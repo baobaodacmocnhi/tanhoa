@@ -48,6 +48,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnBaoCao_TheoNgayXuLy = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
+            this.cmbQuan_TheoNgayXuLy = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -187,6 +189,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbQuan_TheoNgayXuLy);
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.cmbNoiDung_TheoNgayXuLy);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.cmbLoaiBaoCao_TheoNgayXuLy);
@@ -194,7 +198,7 @@
             this.groupBox2.Controls.Add(this.btnBaoCao_TheoNgayXuLy);
             this.groupBox2.Location = new System.Drawing.Point(12, 199);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(448, 86);
+            this.groupBox2.Size = new System.Drawing.Size(448, 114);
             this.groupBox2.TabIndex = 34;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Theo Ngày Xử Lý";
@@ -205,7 +209,7 @@
             this.cmbNoiDung_TheoNgayXuLy.Items.AddRange(new object[] {
             "DS Cắt Hủy",
             "DS Cắt Tạm"});
-            this.cmbNoiDung_TheoNgayXuLy.Location = new System.Drawing.Point(105, 51);
+            this.cmbNoiDung_TheoNgayXuLy.Location = new System.Drawing.Point(105, 81);
             this.cmbNoiDung_TheoNgayXuLy.Name = "cmbNoiDung_TheoNgayXuLy";
             this.cmbNoiDung_TheoNgayXuLy.Size = new System.Drawing.Size(250, 24);
             this.cmbNoiDung_TheoNgayXuLy.TabIndex = 30;
@@ -213,7 +217,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 54);
+            this.label5.Location = new System.Drawing.Point(6, 84);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 16);
             this.label5.TabIndex = 29;
@@ -241,7 +245,7 @@
             // 
             // btnBaoCao_TheoNgayXuLy
             // 
-            this.btnBaoCao_TheoNgayXuLy.Location = new System.Drawing.Point(361, 50);
+            this.btnBaoCao_TheoNgayXuLy.Location = new System.Drawing.Point(361, 80);
             this.btnBaoCao_TheoNgayXuLy.Name = "btnBaoCao_TheoNgayXuLy";
             this.btnBaoCao_TheoNgayXuLy.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_TheoNgayXuLy.TabIndex = 28;
@@ -258,6 +262,23 @@
             this.btnThongKe.Text = "Thống Kê";
             this.btnThongKe.UseVisualStyleBackColor = true;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
+            // 
+            // cmbQuan_TheoNgayXuLy
+            // 
+            this.cmbQuan_TheoNgayXuLy.FormattingEnabled = true;
+            this.cmbQuan_TheoNgayXuLy.Location = new System.Drawing.Point(105, 51);
+            this.cmbQuan_TheoNgayXuLy.Name = "cmbQuan_TheoNgayXuLy";
+            this.cmbQuan_TheoNgayXuLy.Size = new System.Drawing.Size(100, 24);
+            this.cmbQuan_TheoNgayXuLy.TabIndex = 32;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 54);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 16);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "Quận";
             // 
             // frmBaoCaoCHDB
             // 
@@ -306,6 +327,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbLyDo_TheoNgayLap;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbQuan_TheoNgayXuLy;
+        private System.Windows.Forms.Label label7;
 
     }
 }
