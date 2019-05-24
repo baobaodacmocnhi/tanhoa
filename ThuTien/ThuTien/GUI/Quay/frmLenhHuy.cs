@@ -135,9 +135,18 @@ namespace ThuTien.GUI.Quay
                     _cLenhHuy.BeginTransaction();
                     foreach (ListViewItem item in lstHD.Items)
                     {
+
                         TT_LenhHuy lenhhuy = new TT_LenhHuy();
-                        lenhhuy.MaHD = _cHoaDon.Get(item.Text).ID_HOADON;
+                        HOADON hd = _cHoaDon.Get(item.Text);
+                        lenhhuy.MaHD = hd.ID_HOADON;
                         lenhhuy.SoHoaDon = item.Text;
+                        lenhhuy.DanhBo = hd.DANHBA;
+                        TT_LenhHuy lhMoiNhat = _cLenhHuy.getMoiNhat(hd.DANHBA);
+                        if (lhMoiNhat != null)
+                        {
+                            lenhhuy.TinhTrang = lhMoiNhat.TinhTrang;
+                            lenhhuy.Cat = lhMoiNhat.Cat;
+                        }
                         if (!_cLenhHuy.Them(lenhhuy))
                         {
                             _cLenhHuy.Rollback();

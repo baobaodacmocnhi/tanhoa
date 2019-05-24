@@ -92,6 +92,11 @@ namespace ThuTien.DAL.Quay
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
         }
 
+        public TT_LenhHuy getMoiNhat(string DanhBo) 
+        {
+            return _db.TT_LenhHuys.Where(item => item.DanhBo == DanhBo).OrderByDescending(item=>item.CreateDate).First();
+        }
+
         public DataTable GetDS()
         {
             var query = from itemLH in _db.TT_LenhHuys

@@ -391,6 +391,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                     while (TienBK < TienDu && k <= dtBK.Rows.Count)
                     {
                         DataRow drTD_extra = dtTD.NewRow();
+                        if (dtBK.Rows[k]["SoTien"].ToString() != "")
+                            drTD_extra["SoTien"] = dtBK.Rows[k]["SoTien"];
                         if (dtBK.Rows[k]["SoPhieuThu"].ToString() != "")
                             drTD_extra["SoPhieuThu"] = dtBK.Rows[k]["SoPhieuThu"];
                         if (dtBK.Rows[k]["NgayPhieuThu"].ToString() != "")
