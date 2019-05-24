@@ -50,6 +50,7 @@ namespace KTKS_ChungCu
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG;
+            txtDot.Text = hoadon.DOT.Value.ToString();
         }
 
         public void Clear()
@@ -331,6 +332,7 @@ namespace KTKS_ChungCu
                     dr["HoTen"] = txtHoTen.Text.Trim();
                     dr["DiaChi"] = txtDiaChi.Text.Trim();
                     dr["HopDong"] = _hoadon.HOPDONG;
+                    dr["Dot"] = _hoadon.DOT.Value.ToString();
                     dr["GiaBieu"] = _hoadon.GB;
                     dr["DinhMuc"] = _hoadon.DM;
                     dr["LoTrinh"] = _hoadon.DOT + _hoadon.MAY + _hoadon.STT;
