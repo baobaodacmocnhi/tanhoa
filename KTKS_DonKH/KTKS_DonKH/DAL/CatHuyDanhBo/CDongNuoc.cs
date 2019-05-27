@@ -388,6 +388,28 @@ namespace KTKS_DonKH.DAL.DongNuoc
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_DongNuoc_CreateDate(string MaQuan,DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from item in db.DongNuoc_ChiTiets
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        && item.Quan==MaQuan
+                        select new
+                        {
+                            MaDon = item.DongNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.DongNuoc.MaDonMoi).Count() == 1 ? item.DongNuoc.MaDonMoi.Value.ToString() : item.DongNuoc.MaDonMoi + "." + item.STT
+                                    : item.DongNuoc.MaDon != null ? "TKH" + item.DongNuoc.MaDon
+                                    : item.DongNuoc.MaDonTXL != null ? "TXL" + item.DongNuoc.MaDonTXL
+                                    : item.DongNuoc.MaDonTBC != null ? "TBC" + item.DongNuoc.MaDonTBC : null,
+                            PhieuDuocKy = item.ThongBaoDuocKy_DN,
+                            MaTB = item.MaCTDN,
+                            ID = item.MaCTDN,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSMoNuoc(string Loai, decimal MaDon)
         {
             switch (Loai)

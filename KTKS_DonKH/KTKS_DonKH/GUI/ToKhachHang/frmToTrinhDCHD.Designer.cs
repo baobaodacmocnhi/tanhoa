@@ -73,7 +73,7 @@
             this.txtMaDonCu.Location = new System.Drawing.Point(166, 12);
             this.txtMaDonCu.Name = "txtMaDonCu";
             this.txtMaDonCu.Size = new System.Drawing.Size(100, 22);
-            this.txtMaDonCu.TabIndex = 1;
+            this.txtMaDonCu.TabIndex = 37;
             this.txtMaDonCu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonCu_KeyPress);
             // 
             // label21
@@ -82,7 +82,7 @@
             this.label21.Location = new System.Drawing.Point(87, 15);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(73, 16);
-            this.label21.TabIndex = 0;
+            this.label21.TabIndex = 36;
             this.label21.Text = "Mã Đơn Cũ";
             // 
             // txtDanhBo
@@ -218,7 +218,7 @@
             this.txtDeXuat.Location = new System.Drawing.Point(255, 172);
             this.txtDeXuat.Name = "txtDeXuat";
             this.txtDeXuat.Size = new System.Drawing.Size(284, 22);
-            this.txtDeXuat.TabIndex = 25;
+            this.txtDeXuat.TabIndex = 26;
             // 
             // label9
             // 
@@ -226,7 +226,7 @@
             this.label9.Location = new System.Drawing.Point(78, 175);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(165, 16);
-            this.label9.TabIndex = 24;
+            this.label9.TabIndex = 25;
             this.label9.Text = "Phòng Kinh doanh đề xuất:";
             // 
             // txtKy
@@ -234,7 +234,7 @@
             this.txtKy.Location = new System.Drawing.Point(255, 200);
             this.txtKy.Name = "txtKy";
             this.txtKy.Size = new System.Drawing.Size(100, 22);
-            this.txtKy.TabIndex = 27;
+            this.txtKy.TabIndex = 28;
             // 
             // label10
             // 
@@ -242,7 +242,7 @@
             this.label10.Location = new System.Drawing.Point(78, 203);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(141, 16);
-            this.label10.TabIndex = 26;
+            this.label10.TabIndex = 27;
             this.label10.Text = "Điều chỉnh hóa đơn kỳ:";
             // 
             // txtTuKy
@@ -250,7 +250,7 @@
             this.txtTuKy.Location = new System.Drawing.Point(128, 228);
             this.txtTuKy.Name = "txtTuKy";
             this.txtTuKy.Size = new System.Drawing.Size(100, 22);
-            this.txtTuKy.TabIndex = 29;
+            this.txtTuKy.TabIndex = 30;
             // 
             // label11
             // 
@@ -258,7 +258,7 @@
             this.label11.Location = new System.Drawing.Point(78, 231);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(44, 16);
-            this.label11.TabIndex = 28;
+            this.label11.TabIndex = 29;
             this.label11.Text = "Từ kỳ:";
             // 
             // txtChiSo
@@ -266,7 +266,7 @@
             this.txtChiSo.Location = new System.Drawing.Point(328, 228);
             this.txtChiSo.Name = "txtChiSo";
             this.txtChiSo.Size = new System.Drawing.Size(100, 22);
-            this.txtChiSo.TabIndex = 31;
+            this.txtChiSo.TabIndex = 32;
             // 
             // label12
             // 
@@ -274,7 +274,7 @@
             this.label12.Location = new System.Drawing.Point(234, 231);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(88, 16);
-            this.label12.TabIndex = 30;
+            this.label12.TabIndex = 31;
             this.label12.Text = "Tính từ chỉ số:";
             // 
             // btnIn
@@ -282,7 +282,7 @@
             this.btnIn.Location = new System.Drawing.Point(128, 256);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 25);
-            this.btnIn.TabIndex = 32;
+            this.btnIn.TabIndex = 33;
             this.btnIn.Text = "In";
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
@@ -292,7 +292,7 @@
             this.btnInHD0.Location = new System.Drawing.Point(209, 256);
             this.btnInHD0.Name = "btnInHD0";
             this.btnInHD0.Size = new System.Drawing.Size(75, 25);
-            this.btnInHD0.TabIndex = 33;
+            this.btnInHD0.TabIndex = 34;
             this.btnInHD0.Text = "In HĐ=0";
             this.btnInHD0.UseVisualStyleBackColor = true;
             this.btnInHD0.Click += new System.EventHandler(this.btnInHD0_Click);
@@ -351,7 +351,7 @@
             this.txtm3.Name = "txtm3";
             this.txtm3.ReadOnly = true;
             this.txtm3.Size = new System.Drawing.Size(50, 22);
-            this.txtm3.TabIndex = 34;
+            this.txtm3.TabIndex = 24;
             this.txtm3.Text = "m³";
             // 
             // btnInKhac
@@ -369,7 +369,7 @@
             this.txtMaDonMoi.Location = new System.Drawing.Point(357, 12);
             this.txtMaDonMoi.Name = "txtMaDonMoi";
             this.txtMaDonMoi.Size = new System.Drawing.Size(100, 22);
-            this.txtMaDonMoi.TabIndex = 37;
+            this.txtMaDonMoi.TabIndex = 1;
             this.txtMaDonMoi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonMoi_KeyPress);
             // 
             // label16
@@ -378,7 +378,7 @@
             this.label16.Location = new System.Drawing.Point(272, 15);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(79, 16);
-            this.label16.TabIndex = 36;
+            this.label16.TabIndex = 0;
             this.label16.Text = "Mã Đơn Mới";
             // 
             // frmToTrinhDCHD

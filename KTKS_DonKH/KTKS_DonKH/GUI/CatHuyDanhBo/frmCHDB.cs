@@ -809,6 +809,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 //        if (_ctchdb.CHDB.MaDonTBC != null)
                                 //            ycchdb.MaDonTBC = _ctchdb.CHDB.MaDonTBC;
                                 ycchdb.MaCHDB = _ctchdb.MaCHDB;
+                                ycchdb.STT = _ctchdb.STT;
                                 ycchdb.TBCHDB = true;
                                 ycchdb.MaCTCHDB = _ctchdb.MaCTCHDB;
                                 ycchdb.DanhBo = _ctchdb.DanhBo;
@@ -825,6 +826,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     ycchdb.Dot = hoadon.DOT.ToString();
                                     ycchdb.Ky = hoadon.KY.ToString();
                                     ycchdb.Nam = hoadon.NAM.ToString();
+                                    ycchdb.Phuong = hoadon.Phuong;
+                                    ycchdb.Quan = hoadon.Quan;
                                 }
                                 ///Ký Tên
                                 BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -926,6 +929,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     //        if (_ctchdb.CHDB.MaDonTBC != null)
                                     //            ycchdb.MaDonTBC = _ctchdb.CHDB.MaDonTBC;
                                     ycchdb.MaCHDB = _ctchdb.MaCHDB;
+                                    ycchdb.STT = _ctchdb.STT;
                                     ycchdb.TBCHDB = true;
                                     ycchdb.MaCTCHDB = _ctchdb.MaCTCHDB;
                                     ycchdb.DanhBo = _ctchdb.DanhBo;
@@ -943,6 +947,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                         ycchdb.Dot = hoadon.DOT.ToString();
                                         ycchdb.Ky = hoadon.KY.ToString();
                                         ycchdb.Nam = hoadon.NAM.ToString();
+                                        ycchdb.Phuong = hoadon.Phuong;
+                                        ycchdb.Quan = hoadon.Quan;
                                     }
                                     ///Ký Tên
                                     BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();

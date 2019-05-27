@@ -23,6 +23,7 @@ using KTKS_DonKH.BaoCao.DongNuoc;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.GUI.DongNuoc;
 using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -32,6 +33,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();
         CDongNuoc _cDongNuoc = new CDongNuoc();
+        CDocSo _cDocSo = new CDocSo();
 
         public frmDSCHDB()
         {
@@ -47,6 +49,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             dgvDSYCCHDB.Location = dgvDSCTCHDB.Location;
 
             cmbTimTheo.SelectedItem = "Ngày";
+
+            List<QUAN> lst = _cDocSo.GetDSQuan();
+            QUAN quan = new QUAN();
+            quan.MAQUAN = 0;
+            quan.TENQUAN = "Tất Cả";
+            lst.Insert(0, quan);
+            cmbQuan.DataSource = lst;
+            cmbQuan.DisplayMember = "TenQuan";
+            cmbQuan.ValueMember = "MaQuan";
         }
 
         private void radDSCatTamDanhBo_CheckedChanged(object sender, EventArgs e)
@@ -884,17 +895,35 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy_LyDo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                     break;
                 case "Ngày":
-                    if (radDSCatTamDanhBo.Checked)
-                        dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatTam(dateTu.Value, dateDen.Value);
-                    else
-                        if (radDSCatHuyDanhBo.Checked)
-                            dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy(dateTu.Value, dateDen.Value);
+                    if (cmbQuan.SelectedIndex == 0)
+                    {
+                        if (radDSCatTamDanhBo.Checked)
+                            dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatTam(dateTu.Value, dateDen.Value);
                         else
-                            if (radDSYCCHDB.Checked)
-                                dgvDSYCCHDB.DataSource = _cCHDB.getDS_PhieuHuy(dateTu.Value, dateDen.Value);
+                            if (radDSCatHuyDanhBo.Checked)
+                                dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy(dateTu.Value, dateDen.Value);
                             else
-                                if (radDSDongNuoc.Checked)
-                                    dgvDSYCCHDB.DataSource = _cDongNuoc.getDS_DongNuoc_CreateDate(dateTu.Value, dateDen.Value);
+                                if (radDSYCCHDB.Checked)
+                                    dgvDSYCCHDB.DataSource = _cCHDB.getDS_PhieuHuy(dateTu.Value, dateDen.Value);
+                                else
+                                    if (radDSDongNuoc.Checked)
+                                        dgvDSYCCHDB.DataSource = _cDongNuoc.getDS_DongNuoc_CreateDate(dateTu.Value, dateDen.Value);
+                    }
+                    else
+                        if (cmbQuan.SelectedIndex > 0)
+                        {
+                            if (radDSCatTamDanhBo.Checked)
+                                dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatTam(cmbQuan.SelectedValue.ToString(),dateTu.Value, dateDen.Value);
+                            else
+                                if (radDSCatHuyDanhBo.Checked)
+                                    dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy(cmbQuan.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
+                                else
+                                    if (radDSYCCHDB.Checked)
+                                        dgvDSYCCHDB.DataSource = _cCHDB.getDS_PhieuHuy(cmbQuan.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
+                                    else
+                                        if (radDSDongNuoc.Checked)
+                                            dgvDSYCCHDB.DataSource = _cDongNuoc.getDS_DongNuoc_CreateDate(cmbQuan.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
+                        }
                     break;
                 default:
                     break;

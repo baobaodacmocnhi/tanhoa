@@ -67,17 +67,14 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         txtMaDonMoi.Text = dontu_ChiTiet.MaDon.Value.ToString();
                     else
                         txtMaDonMoi.Text = dontu_ChiTiet.MaDon.Value.ToString() + "." + dontu_ChiTiet.STT.Value.ToString();
-
+                    txtCreateDate.Text = dontu_ChiTiet.CreateDate.Value.ToString("dd/MM/yyyy");
+                    txtDanhBo.Text = dontu_ChiTiet.DanhBo;
+                    txtHopDong.Text = dontu_ChiTiet.HopDong;
+                    txtMLT.Text = dontu_ChiTiet.MLT;
+                    txtDiaChi.Text = dontu_ChiTiet.DiaChi;
                 }
                 else
                     MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                txtMaDonMoi.Text = dontu_ChiTiet.MaDon.ToString();
-                txtCreateDate.Text = dontu_ChiTiet.CreateDate.Value.ToString("dd/MM/yyyy");
-                txtDanhBo.Text = dontu_ChiTiet.DanhBo;
-                txtHopDong.Text = dontu_ChiTiet.HopDong;
-                txtMLT.Text = dontu_ChiTiet.MLT;
-                txtDiaChi.Text = dontu_ChiTiet.DiaChi;
             }
         }
 
@@ -86,10 +83,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataRow dr = dsBaoCao.Tables["ToTrinhDCHD"].NewRow();
 
-            if (txtMaDonCu.Text.Trim()!=null)
+            if (txtMaDonCu.Text.Trim()!="")
             dr["MaDon"] = txtMaDonCu.Text.Trim();
             else
-                if (txtMaDonMoi.Text.Trim() != null)
+                if (txtMaDonMoi.Text.Trim() != "")
                     dr["MaDon"] = txtMaDonMoi.Text.Trim();
             dr["CreateDate"] = txtCreateDate.Text.Trim();
             dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
@@ -120,10 +117,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataRow dr = dsBaoCao.Tables["ToTrinhDCHD"].NewRow();
 
-            if (txtMaDonCu.Text.Trim() != null)
+            if (txtMaDonCu.Text.Trim() != "")
                 dr["MaDon"] = txtMaDonCu.Text.Trim();
             else
-                if (txtMaDonMoi.Text.Trim() != null)
+                if (txtMaDonMoi.Text.Trim() != "")
                     dr["MaDon"] = txtMaDonMoi.Text.Trim();
             dr["CreateDate"] = txtCreateDate.Text.Trim();
             dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
@@ -153,10 +150,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataRow dr = dsBaoCao.Tables["ToTrinhDCHD"].NewRow();
 
-            if (txtMaDonCu.Text.Trim() != null)
+            if (txtMaDonCu.Text.Trim() != "")
                 dr["MaDon"] = txtMaDonCu.Text.Trim();
             else
-                if (txtMaDonMoi.Text.Trim() != null)
+                if (txtMaDonMoi.Text.Trim() != "")
                     dr["MaDon"] = txtMaDonMoi.Text.Trim();
             dr["CreateDate"] = txtCreateDate.Text.Trim();
             dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");

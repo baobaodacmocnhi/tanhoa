@@ -95,16 +95,16 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         switch (cmbLoaiBaoCao_TheoNgayLap.SelectedItem.ToString())
                         {
                             case "DS Cắt Hủy Đã Xử Lý":
-                                dt = _cCHDB.GetDSCatHuy_NgayLap_DaXuLy(dateTu.Value, dateDen.Value, cmbLyDo_TheoNgayLap.SelectedValue.ToString());
+                                dt = _cCHDB.GetDSCatHuy_NgayLap_LyDo_DaXuLy(dateTu.Value, dateDen.Value, cmbLyDo_TheoNgayLap.SelectedValue.ToString());
                                 break;
                             case "DS Cắt Hủy Chưa Xử Lý":
-                                dt = _cCHDB.GetDSCatHuy_NgayLap_ChuaXuLy(dateTu.Value, dateDen.Value, cmbLyDo_TheoNgayLap.SelectedValue.ToString());
+                                dt = _cCHDB.GetDSCatHuy_NgayLap_LyDo_ChuaXuLy(dateTu.Value, dateDen.Value, cmbLyDo_TheoNgayLap.SelectedValue.ToString());
                                 break;
                             case "DS Cắt Tạm Đã Xử Lý":
-                                dt = _cCHDB.GetDSCatTam_NgayLap_DaXuLy(dateTu.Value, dateDen.Value, cmbLyDo_TheoNgayLap.SelectedValue.ToString());
+                                dt = _cCHDB.GetDSCatTam_NgayLap_LyDo_DaXuLy(dateTu.Value, dateDen.Value, cmbLyDo_TheoNgayLap.SelectedValue.ToString());
                                 break;
                             case "DS Cắt Tạm Chưa Xử Lý":
-                                dt = _cCHDB.GetDSCatTam_NgayLap_ChuaXuLy(dateTu.Value, dateDen.Value, cmbLyDo_TheoNgayLap.SelectedValue.ToString());
+                                dt = _cCHDB.GetDSCatTam_NgayLap_LyDo_ChuaXuLy(dateTu.Value, dateDen.Value, cmbLyDo_TheoNgayLap.SelectedValue.ToString());
                                 break;
                             default:
                                 break;
@@ -119,16 +119,16 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         switch (cmbLoaiBaoCao_TheoNgayLap.SelectedItem.ToString())
                         {
                             case "DS Cắt Hủy Đã Xử Lý":
-                                dt = _cCHDB.GetDSCatHuy_NgayLap_DaXuLy(dateTu.Value, dateDen.Value, int.Parse(cmbQuan_TheoNgayLap.SelectedValue.ToString()));
+                                dt = _cCHDB.GetDSCatHuy_NgayLap_Quan_DaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString());
                                 break;
                             case "DS Cắt Hủy Chưa Xử Lý":
-                                dt = _cCHDB.GetDSCatHuy_NgayLap_ChuaXuLy(dateTu.Value, dateDen.Value, int.Parse(cmbQuan_TheoNgayLap.SelectedValue.ToString()));
+                                dt = _cCHDB.GetDSCatHuy_NgayLap_Quan_ChuaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString());
                                 break;
                             case "DS Cắt Tạm Đã Xử Lý":
-                                dt = _cCHDB.GetDSCatTam_NgayLap_DaXuLy(dateTu.Value, dateDen.Value, int.Parse(cmbQuan_TheoNgayLap.SelectedValue.ToString()));
+                                dt = _cCHDB.GetDSCatTam_NgayLap_Quan_DaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString());
                                 break;
                             case "DS Cắt Tạm Chưa Xử Lý":
-                                dt = _cCHDB.GetDSCatTam_NgayLap_ChuaXuLy(dateTu.Value, dateDen.Value, int.Parse(cmbQuan_TheoNgayLap.SelectedValue.ToString()));
+                                dt = _cCHDB.GetDSCatTam_NgayLap_Quan_ChuaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString());
                                 break;
                             default:
                                 break;
@@ -140,16 +140,16 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             switch (cmbLoaiBaoCao_TheoNgayLap.SelectedItem.ToString())
                             {
                                 case "DS Cắt Hủy Đã Xử Lý":
-                                    dt = _cCHDB.GetDSCatHuy_NgayLap_DaXuLy(dateTu.Value, dateDen.Value, int.Parse(cmbQuan_TheoNgayLap.SelectedValue.ToString()), cmbLyDo_TheoNgayLap.SelectedValue.ToString());
+                                    dt = _cCHDB.GetDSCatHuy_NgayLap_DaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString(), cmbLyDo_TheoNgayLap.SelectedValue.ToString());
                                     break;
                                 case "DS Cắt Hủy Chưa Xử Lý":
-                                    dt = _cCHDB.GetDSCatHuy_NgayLap_ChuaXuLy(dateTu.Value, dateDen.Value, int.Parse(cmbQuan_TheoNgayLap.SelectedValue.ToString()), cmbLyDo_TheoNgayLap.SelectedValue.ToString());
+                                    dt = _cCHDB.GetDSCatHuy_NgayLap_ChuaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString(), cmbLyDo_TheoNgayLap.SelectedValue.ToString());
                                     break;
                                 case "DS Cắt Tạm Đã Xử Lý":
-                                    dt = _cCHDB.GetDSCatTam_NgayLap_DaXuLy(dateTu.Value, dateDen.Value, int.Parse(cmbQuan_TheoNgayLap.SelectedValue.ToString()), cmbLyDo_TheoNgayLap.SelectedValue.ToString());
+                                    dt = _cCHDB.GetDSCatTam_NgayLap_DaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString(), cmbLyDo_TheoNgayLap.SelectedValue.ToString());
                                     break;
                                 case "DS Cắt Tạm Chưa Xử Lý":
-                                    dt = _cCHDB.GetDSCatTam_NgayLap_ChuaXuLy(dateTu.Value, dateDen.Value, int.Parse(cmbQuan_TheoNgayLap.SelectedValue.ToString()), cmbLyDo_TheoNgayLap.SelectedValue.ToString());
+                                    dt = _cCHDB.GetDSCatTam_NgayLap_ChuaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString(), cmbLyDo_TheoNgayLap.SelectedValue.ToString());
                                     break;
                                 default:
                                     break;
@@ -189,19 +189,19 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     switch (cmbLoaiBaoCao_TheoNgayLap.SelectedItem.ToString())
                     {
                         case "DS Cắt Hủy Đã Xử Lý":
-                            dr["LoaiBaoCao"] = "TB CẮT HỦY ĐÃ XỬ LÝ " + item["TenQuan"];
+                            dr["LoaiBaoCao"] = "TB CẮT HỦY ĐÃ XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
                             dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
                             break;
                         case "DS Cắt Hủy Chưa Xử Lý":
-                            dr["LoaiBaoCao"] = "TB CẮT HỦY CHƯA XỬ LÝ " + item["TenQuan"];
+                            dr["LoaiBaoCao"] = "TB CẮT HỦY CHƯA XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
                             dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
                             break;
                         case "DS Cắt Tạm Đã Xử Lý":
-                            dr["LoaiBaoCao"] = "TB CẮT TẠM ĐÃ XỬ LÝ " + item["TenQuan"];
+                            dr["LoaiBaoCao"] = "TB CẮT TẠM ĐÃ XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
                             dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
                             break;
                         case "DS Cắt Tạm Chưa Xử Lý":
-                            dr["LoaiBaoCao"] = "TB CẮT TẠM CHƯA XỬ LÝ " + item["TenQuan"];
+                            dr["LoaiBaoCao"] = "TB CẮT TẠM CHƯA XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
                             dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
                             break;
                         default:
@@ -249,10 +249,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         switch (cmbLoaiBaoCao_TheoNgayXuLy.SelectedItem.ToString())
                         {
                             case "DS Cắt Hủy":
-                                dt = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value, cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
+                                dt = _cCHDB.GetDSCatHuy_NgayXuLy_NoiDung_DaXuLy(dateTu.Value, dateDen.Value, cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
                                 break;
                             case "DS Cắt Tạm":
-                                dt = _cCHDB.GetDSCatTam_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value, cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
+                                dt = _cCHDB.GetDSCatTam_NgayXuLy_NoiDung_DaXuLy(dateTu.Value, dateDen.Value, cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
                                 break;
                             default:
                                 break;
@@ -265,10 +265,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         switch (cmbLoaiBaoCao_TheoNgayXuLy.SelectedItem.ToString())
                         {
                             case "DS Cắt Hủy":
-                                dt = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value,int.Parse(cmbQuan_TheoNgayXuLy.SelectedValue.ToString()));
+                                dt = _cCHDB.GetDSCatHuy_NgayXuLy_Quan_DaXuLy(dateTu.Value, dateDen.Value,cmbQuan_TheoNgayXuLy.SelectedValue.ToString());
                                 break;
                             case "DS Cắt Tạm":
-                                dt = _cCHDB.GetDSCatTam_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value, int.Parse(cmbQuan_TheoNgayXuLy.SelectedValue.ToString()));
+                                dt = _cCHDB.GetDSCatTam_NgayXuLy_Quan_DaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayXuLy.SelectedValue.ToString());
                                 break;
                             default:
                                 break;
@@ -278,10 +278,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             switch (cmbLoaiBaoCao_TheoNgayXuLy.SelectedItem.ToString())
                             {
                                 case "DS Cắt Hủy":
-                                    dt = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value, int.Parse(cmbQuan_TheoNgayXuLy.SelectedValue.ToString()), cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
+                                    dt = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayXuLy.SelectedValue.ToString(), cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
                                     break;
                                 case "DS Cắt Tạm":
-                                    dt = _cCHDB.GetDSCatTam_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value, int.Parse(cmbQuan_TheoNgayXuLy.SelectedValue.ToString()), cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
+                                    dt = _cCHDB.GetDSCatTam_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayXuLy.SelectedValue.ToString(), cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
                                     break;
                                 default:
                                     break;
@@ -312,11 +312,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         switch (cmbLoaiBaoCao_TheoNgayXuLy.SelectedItem.ToString())
                         {
                             case "DS Cắt Hủy":
-                                dr["LoaiBaoCao"] = "CẮT HỦY ĐÃ XỬ LÝ " + item["TenQuan"];
+                                dr["LoaiBaoCao"] = "CẮT HỦY ĐÃ XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
                                 dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
                                 break;
                             case "DS Cắt Tạm":
-                                dr["LoaiBaoCao"] = "CẮT TẠM ĐÃ XỬ LÝ " + item["TenQuan"];
+                                dr["LoaiBaoCao"] = "CẮT TẠM ĐÃ XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
                                 dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
                                 break;
                             default:

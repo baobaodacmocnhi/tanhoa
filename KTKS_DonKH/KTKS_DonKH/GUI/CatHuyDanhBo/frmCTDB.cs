@@ -707,6 +707,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             //        if (_ctctdb.CHDB.MaDonTBC != null)
                             //            ycchdb.MaDonTBC = _ctctdb.CHDB.MaDonTBC;
                             ycchdb.MaCHDB = _ctctdb.MaCHDB;
+                            ycchdb.STT = _ctctdb.STT;
                             ycchdb.TBCTDB = true;
                             ycchdb.MaCTCTDB = _ctctdb.MaCTCTDB;
                             ycchdb.DanhBo = _ctctdb.DanhBo;
@@ -723,6 +724,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 ycchdb.Dot = hoadon.DOT.ToString();
                                 ycchdb.Ky = hoadon.KY.ToString();
                                 ycchdb.Nam = hoadon.NAM.ToString();
+                                ycchdb.Phuong = hoadon.Phuong;
+                                ycchdb.Quan = hoadon.Quan;
                             }
                             ///Ký Tên
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -823,6 +826,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 //        if (_ctctdb.CHDB.MaDonTBC != null)
                                 //            ycchdb.MaDonTBC = _ctctdb.CHDB.MaDonTBC;
                                 ycchdb.MaCHDB = _ctctdb.MaCHDB;
+                                ycchdb.STT = _ctctdb.STT;
                                 ycchdb.TBCTDB = true;
                                 ycchdb.MaCTCTDB = _ctctdb.MaCTCTDB;
                                 ycchdb.DanhBo = _ctctdb.DanhBo;
@@ -839,6 +843,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     ycchdb.Dot = hoadon.DOT.ToString();
                                     ycchdb.Ky = hoadon.KY.ToString();
                                     ycchdb.Nam = hoadon.NAM.ToString();
+                                    ycchdb.Phuong = hoadon.Phuong;
+                                    ycchdb.Quan = hoadon.Quan;
                                 }
                                 ///Ký Tên
                                 BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
