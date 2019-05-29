@@ -678,6 +678,22 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             //return ExecuteQuery_DataTable(sql);
         }
 
+        public DataTable getCatTam_BaoCao(DateTime FromDate, DateTime ToDate)
+        {
+            string sql = "declare @FromDate datetime"
+                        + " declare @ToDate datetime"
+                        + " set @FromDate='" + FromDate.ToString("yyyyMMdd") + "'"
+                        + " set @ToDate='" + ToDate.ToString("yyyyMMdd") + "'"
+                        + " declare @LuyKe int"
+                        + " declare @Nhan int"
+                        + " declare @XuLy int"
+                        + " set @LuyKe=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatTam where CAST(CreateDate as date)<@FromDate and (NgayXuLy is null or CAST(NgayXuLy as date)>@ToDate))"
+                        + " set @Nhan=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatTam where CAST(CreateDate as date)>=@FromDate and CAST(CreateDate as date)<=@ToDate)"
+                        + " set @XuLy=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatTam where CAST(NgayXuLy as date)>=@FromDate and CAST(NgayXuLy as date)<=@ToDate)"
+                        + " select LuyKe=@LuyKe,Nhan=@Nhan,XuLy=@XuLy,Ton=@LuyKe+@Nhan-@XuLy";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         #endregion
 
         #region CHDB_ChiTietCatHuy (Chi Tiết Cắt Hủy Danh Bộ)
@@ -1190,6 +1206,22 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             //            + " order by t1.CreateDate";
 
             //return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getCatHuy_BaoCao(DateTime FromDate, DateTime ToDate)
+        {
+            string sql = "declare @FromDate datetime"
+                        + " declare @ToDate datetime"
+                        + " set @FromDate='" + FromDate.ToString("yyyyMMdd") + "'"
+                        + " set @ToDate='" + ToDate.ToString("yyyyMMdd") + "'"
+                        + " declare @LuyKe int"
+                        + " declare @Nhan int"
+                        + " declare @XuLy int"
+                        + " set @LuyKe=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatHuy where CAST(CreateDate as date)<@FromDate and (NgayXuLy is null or CAST(NgayXuLy as date)>@ToDate))"
+                        + " set @Nhan=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatHuy where CAST(CreateDate as date)>=@FromDate and CAST(CreateDate as date)<=@ToDate)"
+                        + " set @XuLy=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatHuy where CAST(NgayXuLy as date)>=@FromDate and CAST(NgayXuLy as date)<=@ToDate)"
+                        + " select LuyKe=@LuyKe,Nhan=@Nhan,XuLy=@XuLy,Ton=@LuyKe+@Nhan-@XuLy";
+            return ExecuteQuery_DataTable(sql);
         }
 
         #endregion
