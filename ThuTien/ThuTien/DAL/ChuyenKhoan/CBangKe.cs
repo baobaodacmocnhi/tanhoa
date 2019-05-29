@@ -78,12 +78,17 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.TT_BangKes.Where(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date).FirstOrDefault();
         }
 
-        public TT_BangKe getMoiNhat(string DanhBo)
+        public TT_BangKe getLast(string DanhBo)
         {
             if (_db.TT_BangKes.Any(item => item.DanhBo == DanhBo))
                 return _db.TT_BangKes.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).First();
             else
                 return null;
+        }
+
+        public TT_BangKe getLast(string DanhBo, DateTime CreateDate)
+        {
+            return _db.TT_BangKes.Where(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date <= CreateDate.Date).OrderByDescending(item=>item.CreateDate).First();
         }
 
         public DataTable GetDS()

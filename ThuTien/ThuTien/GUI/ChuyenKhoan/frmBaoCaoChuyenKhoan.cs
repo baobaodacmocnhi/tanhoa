@@ -608,7 +608,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                 DataRow[] drDN = dtDN.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
 
-                ///bảng kê có đăng ngân
+                //bảng kê có đăng ngân
                 if (drDN.Count() > 0)
                 {
                     int i = 0;
@@ -683,7 +683,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                         dt.Rows.Add(dr);
                         i++;
-                        ///trừ bớt trong danh sách đăng ngân
+                        //trừ bớt trong danh sách đăng ngân
                         dtDN.Rows.Remove(itemdrDN);
                     }
                     //if (i > 1)
@@ -705,7 +705,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //}
 
                 }
-                ///bảng kê không có đăng ngân
+                //bảng kê không có đăng ngân
                 else
                 {
                     //thêm dòng
@@ -718,7 +718,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["CreateDate"] = item["CreateDate"];
                     dr["MaNH"] = item["MaNH"];
                     dr["NganHang"] = item["TenNH"];
-
+                    dr["Lech"] = item["SoTien"];
                     //if (item["DanhBo"].ToString().Length == 11)
                     //{
                     //    HOADON hoadon = _cHoaDon.GetMoiNhat(item["DanhBo"].ToString());
@@ -738,7 +738,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             dt.DefaultView.Sort = "MaBK ASC";
             dt = dt.DefaultView.ToTable();
 
-            ///danh sách đăng ngân còn lại
+            //danh sách đăng ngân còn lại
             //if (dtDN.Rows.Count > 0)
             //{
             //    dtDN.DefaultView.Sort = "GiaBieu ASC";
@@ -746,7 +746,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             //}
             foreach (DataRow item in dtDN.Rows)
             {
-                TT_BangKe bk = _cBangKe.getMoiNhat(item["DanhBo"].ToString());
+                TT_BangKe bk = _cBangKe.getLast(item["DanhBo"].ToString(),dateGiaiTrach.Value);
 
                 ///có bảng kê
                 if (bk != null)
@@ -781,6 +781,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["PhiBVMT"] = item["PhiBVMT"];
                         dr["TongCong"] = int.Parse(item["TongCong"].ToString()) - int.Parse(item["TienMat"].ToString());
                     }
+                    dr["Lech"] = int.Parse(item["TongCong"].ToString()) * -1;
                     dr["TienMat"] = item["TienMat"];
                     //if (int.Parse(item["GiaBieu"].ToString()) > 20)
                     //    dr["Loai"] = "CQ";
@@ -789,7 +790,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                     dt.Rows.Add(dr);
                 }
-                ///không có bảng kê
+                //không có bảng kê
                 else
                 {
                     DataRow dr = dt.NewRow();
@@ -811,6 +812,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["PhiBVMT"] = item["PhiBVMT"];
                         dr["TongCong"] = int.Parse(item["TongCong"].ToString()) - int.Parse(item["TienMat"].ToString());
                     }
+                    dr["Lech"] = int.Parse(item["TongCong"].ToString())*-1;
                     dr["TienMat"] = item["TienMat"];
                     //if (int.Parse(item["GiaBieu"].ToString()) > 20)
                     //    dr["Loai"] = "CQ";
@@ -1130,6 +1132,13 @@ namespace ThuTien.GUI.ChuyenKhoan
             //oSheet.get_Range(c2h, c3h).Font.Bold = true;
             //oSheet.get_Range(c2h, c3h).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             oSheet.get_Range(c2h, c3h).NumberFormat = "#,##0";
+
+            Microsoft.Office.Interop.Excel.Range c1i = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 13];
+            Microsoft.Office.Interop.Excel.Range c2i = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 13];
+            Microsoft.Office.Interop.Excel.Range c3i = oSheet.get_Range(c1i, c2i);
+            //oSheet.get_Range(c2i, c3i).Font.Bold = true;
+            //oSheet.get_Range(c2i, c3i).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c2i, c3i).NumberFormat = "#,##0";
 
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
