@@ -52,6 +52,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cmbLoaiCT = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtMLT = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHoTen = new System.Windows.Forms.TextBox();
@@ -94,8 +96,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
-            this.txtDot = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHangChungCu)).BeginInit();
@@ -287,7 +287,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtDot);
+            this.groupBox1.Controls.Add(this.txtMLT);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.txtDiaChi);
             this.groupBox1.Controls.Add(this.label4);
@@ -304,12 +304,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Khách Hàng";
             // 
+            // txtMLT
+            // 
+            this.txtMLT.Location = new System.Drawing.Point(810, 43);
+            this.txtMLT.Name = "txtMLT";
+            this.txtMLT.ReadOnly = true;
+            this.txtMLT.Size = new System.Drawing.Size(95, 25);
+            this.txtMLT.TabIndex = 9;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(869, 23);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(38, 17);
+            this.label18.TabIndex = 8;
+            this.label18.Text = "MLT";
+            // 
             // txtDiaChi
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(429, 43);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.ReadOnly = true;
-            this.txtDiaChi.Size = new System.Drawing.Size(437, 25);
+            this.txtDiaChi.Size = new System.Drawing.Size(375, 25);
             this.txtDiaChi.TabIndex = 7;
             // 
             // label4
@@ -710,23 +727,6 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
-            // txtDot
-            // 
-            this.txtDot.Location = new System.Drawing.Point(872, 43);
-            this.txtDot.Name = "txtDot";
-            this.txtDot.ReadOnly = true;
-            this.txtDot.Size = new System.Drawing.Size(33, 25);
-            this.txtDot.TabIndex = 9;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(869, 23);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(31, 17);
-            this.label18.TabIndex = 8;
-            this.label18.Text = "Đợt";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -836,7 +836,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayHetHan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
-        private System.Windows.Forms.TextBox txtDot;
+        private System.Windows.Forms.TextBox txtMLT;
         private System.Windows.Forms.Label label18;
     }
 }

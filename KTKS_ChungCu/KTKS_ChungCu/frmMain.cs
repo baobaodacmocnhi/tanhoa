@@ -50,7 +50,7 @@ namespace KTKS_ChungCu
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG;
-            txtDot.Text = hoadon.DOT.Value.ToString();
+            txtMLT.Text = hoadon.DOT + hoadon.MAY + hoadon.STT;
         }
 
         public void Clear()
