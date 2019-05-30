@@ -345,78 +345,77 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            DataTable dtCTDB = new DataTable();
-            DataTable dtCHDB = new DataTable();
-            DataTable dtYCCHDB = new DataTable();
+            DataTable dtCatTam_ThongKe = new DataTable();
+            DataTable dtCatHuy_ThongKe = new DataTable();
+            DataTable dtDSCatTam_DaXuLy = new DataTable();
+            DataTable dtDSCatHuy_DaXuLy = new DataTable();
+            DataTable dtDSPhieuHuy = new DataTable();
 
-            dtCTDB = _cCHDB.getDS_CatTam(dateTu.Value, dateDen.Value);
-            dtCHDB = _cCHDB.getDS_CatHuy(dateTu.Value, dateDen.Value);
-            dtYCCHDB = _cCHDB.LoadDSYCCHDB_Don(dateTu.Value, dateDen.Value);
+            dtCatTam_ThongKe = _cCHDB.getCatTam_BaoCao(dateTu.Value, dateDen.Value);
+            dtCatHuy_ThongKe = _cCHDB.getCatHuy_BaoCao(dateTu.Value, dateDen.Value);
+            dtDSCatTam_DaXuLy = _cCHDB.GetDSCatTam_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value);
+            dtDSCatHuy_DaXuLy = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value);
+            dtDSPhieuHuy = _cCHDB.getDS_PhieuHuy(dateTu.Value, dateDen.Value);
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            DataRow drT = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
+            drT["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+            drT["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+            dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(drT);
 
-            foreach (DataRow itemRow in dtCTDB.Rows)
+            DataSetBaoCao dsCatTam = new DataSetBaoCao();
+            foreach (DataRow itemRow in dtDSCatTam_DaXuLy.Rows)
             {
-                DataRow dr = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
-                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                dr["LoaiCat"] = "Lập Thông Báo Cắt Tạm";
+                DataRow dr = dsCatTam.Tables["ThongBaoCHDB"].NewRow();
+                //dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                //dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["SoPhieu"] = itemRow["MaCTCTDB"];
                 dr["LyDo"] = itemRow["LyDo"];
-                dr["DanhBo"] = itemRow["DanhBo"];
-                if (!string.IsNullOrEmpty(itemRow["NoiDungXuLy"].ToString()))
-                    dr["NoiDungXuLy"] = itemRow["NoiDungXuLy"];
-                else
-                    dr["NoiDungXuLy"] = "Chưa Xử Lý";
+                dr["NoiDungXuLy"] = itemRow["NoiDungXuLy"];
 
-                //if (bool.Parse(itemRow["DaLapPhieu"].ToString()))
-                //{
-                //    dr["LapPhieu"] = "True";
-                //}
+                dr["LuyKe"] = dtCatTam_ThongKe.Rows[0]["LuyKe"];
+                dr["Nhan"] = dtCatTam_ThongKe.Rows[0]["Nhan"];
+                dr["XuLy"] = dtCatTam_ThongKe.Rows[0]["XuLy"];
+                dr["Ton"] = dtCatTam_ThongKe.Rows[0]["Ton"];
 
-                dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr);
+                dsCatTam.Tables["ThongBaoCHDB"].Rows.Add(dr);
             }
 
-            foreach (DataRow itemRow in dtCHDB.Rows)
+            DataSetBaoCao dsCatHuy = new DataSetBaoCao();
+            foreach (DataRow itemRow in dtDSCatHuy_DaXuLy.Rows)
             {
-                DataRow dr = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
-                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                dr["LoaiCat"] = "Lập Thông Báo Cắt Hủy";
+                DataRow dr = dsCatHuy.Tables["ThongBaoCHDB"].NewRow();
+                //dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                //dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["SoPhieu"] = itemRow["MaCTCHDB"];
                 dr["LyDo"] = itemRow["LyDo"];
-                dr["DanhBo"] = itemRow["DanhBo"];
-                if (!string.IsNullOrEmpty(itemRow["NoiDungXuLy"].ToString()))
-                    dr["NoiDungXuLy"] = itemRow["NoiDungXuLy"];
-                else
-                    dr["NoiDungXuLy"] = "Chưa Xử Lý";
+                dr["NoiDungXuLy"] = itemRow["NoiDungXuLy"];
 
-                //if (bool.Parse(itemRow["DaLapPhieu"].ToString()))
-                //{
-                //    dr["LapPhieu"] = "True";
-                //}
+                dr["LuyKe"] = dtCatHuy_ThongKe.Rows[0]["LuyKe"];
+                dr["Nhan"] = dtCatHuy_ThongKe.Rows[0]["Nhan"];
+                dr["XuLy"] = dtCatHuy_ThongKe.Rows[0]["XuLy"];
+                dr["Ton"] = dtCatHuy_ThongKe.Rows[0]["Ton"];
 
-                dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr);
+                dsCatHuy.Tables["ThongBaoCHDB"].Rows.Add(dr);
             }
 
-            DataSetBaoCao dsBaoCaoPhieuHuy = new DataSetBaoCao();
-            foreach (DataRow itemRow in dtYCCHDB.Rows)
+            DataSetBaoCao dsPhieuHuy = new DataSetBaoCao();
+            foreach (DataRow itemRow in dtDSPhieuHuy.Rows)
             {
-                DataRow dr = dsBaoCaoPhieuHuy.Tables["ThongKeCHDB"].NewRow();
-                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                dr["LoaiCat"] = "Lập Phiếu Hủy Danh Bộ";
+                DataRow dr = dsPhieuHuy.Tables["PhieuCHDB"].NewRow();
+                //dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                //dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["LyDo"] = itemRow["LyDo"];
-                dr["DanhBo"] = itemRow["DanhBo"];
-                //if (!string.IsNullOrEmpty(itemRow["NoiDungTroNgai"].ToString()))
-                //    dr["NoiDungTroNgai"] = itemRow["NoiDungTroNgai"];
-                //else
-                //    dr["NoiDungTroNgai"] = "Chưa Xử Lý";
+                dr["SoPhieu"] = itemRow["ID"];;
 
-                dsBaoCaoPhieuHuy.Tables["ThongKeCHDB"].Rows.Add(dr);
+                dsPhieuHuy.Tables["PhieuCHDB"].Rows.Add(dr);
             }
 
             rptThongKeCHDB rpt = new rptThongKeCHDB();
             rpt.SetDataSource(dsBaoCao);
-            rpt.Subreports[0].SetDataSource(dsBaoCaoPhieuHuy);
+            rpt.Subreports["rptCatTam"].SetDataSource(dsCatTam);
+            rpt.Subreports["rptCatHuy"].SetDataSource(dsCatHuy);
+            rpt.Subreports["rptPhieuHuy"].SetDataSource(dsPhieuHuy);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
         }

@@ -1217,9 +1217,9 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         + " declare @LuyKe int"
                         + " declare @Nhan int"
                         + " declare @XuLy int"
-                        + " set @LuyKe=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatHuy where CAST(CreateDate as date)<@FromDate and (NgayXuLy is null or CAST(NgayXuLy as date)>@ToDate))"
-                        + " set @Nhan=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatHuy where CAST(CreateDate as date)>=@FromDate and CAST(CreateDate as date)<=@ToDate)"
-                        + " set @XuLy=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatHuy where CAST(NgayXuLy as date)>=@FromDate and CAST(NgayXuLy as date)<=@ToDate)"
+                        + " set @LuyKe=(select COUNT(MaCTCHDB) from CHDB_ChiTietCatHuy where CAST(CreateDate as date)<@FromDate and (NgayXuLy is null or CAST(NgayXuLy as date)>@ToDate))"
+                        + " set @Nhan=(select COUNT(MaCTCHDB) from CHDB_ChiTietCatHuy where CAST(CreateDate as date)>=@FromDate and CAST(CreateDate as date)<=@ToDate)"
+                        + " set @XuLy=(select COUNT(MaCTCHDB) from CHDB_ChiTietCatHuy where CAST(NgayXuLy as date)>=@FromDate and CAST(NgayXuLy as date)<=@ToDate)"
                         + " select LuyKe=@LuyKe,Nhan=@Nhan,XuLy=@XuLy,Ton=@LuyKe+@Nhan-@XuLy";
             return ExecuteQuery_DataTable(sql);
         }

@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1092</ApplicationRevision>
+    <ApplicationRevision>1093</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -178,6 +178,12 @@
       <DependentUpon>rptTiepNhan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\CatHuyDanhBo\rptThongKeCHDB.cs">
+      <DependentUpon>rptThongKeCHDB.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\CatHuyDanhBo\rptDSCHDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -190,10 +196,10 @@
       <DependentUpon>rptPhieuCHDBx2.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\CatHuyDanhBo\rptThongKeCHDB.cs">
+    <Compile Include="BaoCao\CatHuyDanhBo\rptThongKeCHDB_Old.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rptThongKeCHDB.rpt</DependentUpon>
+      <DependentUpon>rptThongKeCHDB_Old.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\CongVan\rptDSCongVan.cs">
@@ -1395,6 +1401,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTiepNhan.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\CatHuyDanhBo\rptThongKeCHDB.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThongKeCHDB.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\CatHuyDanhBo\rptDSCHDB.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSCHDB.cs</LastGenOutput>
@@ -1403,9 +1413,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuCHDBx2.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\CatHuyDanhBo\rptThongKeCHDB.rpt">
+    <EmbeddedResource Include="BaoCao\CatHuyDanhBo\rptThongKeCHDB_Old.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptThongKeCHDB.cs</LastGenOutput>
+      <LastGenOutput>rptThongKeCHDB_Old.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\CongVan\rptDSCongVan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
