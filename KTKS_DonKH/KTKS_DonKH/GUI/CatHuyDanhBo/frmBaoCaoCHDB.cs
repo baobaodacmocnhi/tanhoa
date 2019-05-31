@@ -34,6 +34,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             quan.MAQUAN = 0;
             quan.TENQUAN = "Tất Cả";
             lst.Insert(0, quan);
+
+            cmbQuan.DataSource = lst;
+            cmbQuan.DisplayMember = "TenQuan";
+            cmbQuan.ValueMember = "MaQuan";
+
             cmbQuan_TheoNgayLap.DataSource = lst;
             cmbQuan_TheoNgayLap.DisplayMember = "TenQuan";
             cmbQuan_TheoNgayLap.ValueMember = "MaQuan";
@@ -351,24 +356,35 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             DataTable dtDSCatHuy_DaXuLy = new DataTable();
             DataTable dtDSPhieuHuy = new DataTable();
 
-            dtCatTam_ThongKe = _cCHDB.getCatTam_BaoCao(dateTu.Value, dateDen.Value);
-            dtCatHuy_ThongKe = _cCHDB.getCatHuy_BaoCao(dateTu.Value, dateDen.Value);
-            dtDSCatTam_DaXuLy = _cCHDB.GetDSCatTam_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value);
-            dtDSCatHuy_DaXuLy = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value);
-            dtDSPhieuHuy = _cCHDB.getDS_PhieuHuy(dateTu.Value, dateDen.Value);
-
+            
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataRow drT = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
             drT["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
             drT["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+            if (cmbQuan.SelectedIndex == 0)
+            {
+                dtCatTam_ThongKe = _cCHDB.getCatTam_BaoCao(dateTu.Value, dateDen.Value);
+                dtCatHuy_ThongKe = _cCHDB.getCatHuy_BaoCao(dateTu.Value, dateDen.Value);
+                dtDSCatTam_DaXuLy = _cCHDB.GetDSCatTam_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value);
+                dtDSCatHuy_DaXuLy = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value);
+                dtDSPhieuHuy = _cCHDB.getDS_PhieuHuy(dateTu.Value, dateDen.Value);
+            }
+            else
+                if (cmbQuan.SelectedIndex > 0)
+                {
+                    dtCatTam_ThongKe = _cCHDB.getCatTam_BaoCao(dateTu.Value, dateDen.Value, cmbQuan.SelectedValue.ToString());
+                    dtCatHuy_ThongKe = _cCHDB.getCatHuy_BaoCao(dateTu.Value, dateDen.Value, cmbQuan.SelectedValue.ToString());
+                    dtDSCatTam_DaXuLy = _cCHDB.GetDSCatTam_NgayXuLy_Quan_DaXuLy(dateTu.Value, dateDen.Value, cmbQuan.SelectedValue.ToString());
+                    dtDSCatHuy_DaXuLy = _cCHDB.GetDSCatHuy_NgayXuLy_Quan_DaXuLy(dateTu.Value, dateDen.Value, cmbQuan.SelectedValue.ToString());
+                    dtDSPhieuHuy = _cCHDB.getDS_PhieuHuy(dateTu.Value, dateDen.Value, cmbQuan.SelectedValue.ToString());
+                    drT["Quan"] = cmbQuan.Text;
+                }
             dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(drT);
 
             DataSetBaoCao dsCatTam = new DataSetBaoCao();
             foreach (DataRow itemRow in dtDSCatTam_DaXuLy.Rows)
             {
                 DataRow dr = dsCatTam.Tables["ThongBaoCHDB"].NewRow();
-                //dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                //dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["SoPhieu"] = itemRow["MaCTCTDB"];
                 dr["LyDo"] = itemRow["LyDo"];
                 dr["NoiDungXuLy"] = itemRow["NoiDungXuLy"];
@@ -385,8 +401,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             foreach (DataRow itemRow in dtDSCatHuy_DaXuLy.Rows)
             {
                 DataRow dr = dsCatHuy.Tables["ThongBaoCHDB"].NewRow();
-                //dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                //dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["SoPhieu"] = itemRow["MaCTCHDB"];
                 dr["LyDo"] = itemRow["LyDo"];
                 dr["NoiDungXuLy"] = itemRow["NoiDungXuLy"];
@@ -403,8 +417,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             foreach (DataRow itemRow in dtDSPhieuHuy.Rows)
             {
                 DataRow dr = dsPhieuHuy.Tables["PhieuCHDB"].NewRow();
-                //dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                //dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["LyDo"] = itemRow["LyDo"];
                 dr["SoPhieu"] = itemRow["ID"];;
 

@@ -995,6 +995,7 @@
       <Column Name="NgayHenGiaiQuyet" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="ID_NhomDon" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Name_NhomDon" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ID_NhomDon_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CT_HoaDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CT_HK_KT3" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CT_STT_GXNTT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
@@ -1003,10 +1004,10 @@
       <Column Name="CT_GXN2SN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CT_GDKKD" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CT_GCNDTDHN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="DonTu_BamChi" Member="BamChis" ThisKey="MaDon" OtherKey="MaDonMoi" Type="BamChi" />
       <Association Name="DonTu_CHDB" Member="CHDBs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="CHDB" />
       <Association Name="DonTu_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="DCBD" />
@@ -1041,10 +1042,10 @@
       <Column Name="DienThoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="NguoiBao" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="DonTu_DonTu_ChiTiet" Member="DonTu" ThisKey="MaDon" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1525,10 +1526,22 @@
       <Column Name="DieuChinh" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="KhieuNai" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="DHN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NhomDon_ChiTiet" Member="NhomDon_ChiTiets">
+    <Type Name="NhomDon_ChiTiet">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ID_NhomDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.NiemChi" Member="NiemChis">

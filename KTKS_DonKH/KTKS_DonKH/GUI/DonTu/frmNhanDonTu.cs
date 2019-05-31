@@ -52,23 +52,28 @@ namespace KTKS_DonKH.GUI.DonTu
             dgvLichSuNhanDon.AutoGenerateColumns = false;
             lbTruyThu.Text = "";
 
-            DataTable dt = _cNhomDon.GetDS("DieuChinh");
+            DataTable dt = _cNhomDon.getDS("DieuChinh");
             chkcmbDieuChinh.Properties.DataSource = dt;
             chkcmbDieuChinh.Properties.ValueMember = "ID";
             chkcmbDieuChinh.Properties.DisplayMember = "Name";
             chkcmbDieuChinh.Properties.DropDownRows = dt.Rows.Count + 1;
 
-            dt = _cNhomDon.GetDS("KhieuNai");
+            dt = _cNhomDon.getDS("KhieuNai");
             chkcmbKhieuNai.Properties.DataSource = dt;
             chkcmbKhieuNai.Properties.ValueMember = "ID";
             chkcmbKhieuNai.Properties.DisplayMember = "Name";
             chkcmbKhieuNai.Properties.DropDownRows = dt.Rows.Count + 1;
 
-            dt = _cNhomDon.GetDS("DHN");
+            dt = _cNhomDon.getDS("DHN");
             chkcmbDHN.Properties.DataSource = dt;
             chkcmbDHN.Properties.ValueMember = "ID";
             chkcmbDHN.Properties.DisplayMember = "Name";
             chkcmbDHN.Properties.DropDownRows = dt.Rows.Count + 1;
+
+            cmbNhomDon_ChiTiet.DataSource = _cNhomDon.getDS_ChiTiet();
+            cmbNhomDon_ChiTiet.ValueMember = "ID";
+            cmbNhomDon_ChiTiet.DisplayMember = "Name";
+            cmbNhomDon_ChiTiet.SelectedIndex = -1;
 
             if (_MaDon != -1)
             {
@@ -172,6 +177,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     chkcmbKhieuNai.SetEditValue(entity.ID_NhomDon);
                     chkcmbDHN.SetEditValue(entity.ID_NhomDon);
                 }
+                if(entity.ID_NhomDon_ChiTiet!=null)
+                cmbNhomDon_ChiTiet.SelectedValue = entity.ID_NhomDon_ChiTiet;
                 txtNoiDung.Text = entity.Name_NhomDon;
                 txtVanDeKhac.Text = entity.VanDeKhac;
 
@@ -212,6 +219,7 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 chkcmbDHN.Properties.Items[i].CheckState = CheckState.Unchecked;
             }
+            cmbNhomDon_ChiTiet.SelectedIndex= - 1;
             txtSoNK.Text = "";
             txtHieuLucKy.Text = "";
             txtNoiDung.Text = "";
@@ -357,6 +365,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             entity.SoNK = int.Parse(txtSoNK.Text.Trim());
                             entity.HieuLucKy = txtHieuLucKy.Text.Trim();
                         }
+                        
                         DonTu_ChiTiet entityCT = new DonTu_ChiTiet();
                         entityCT.ID = _cDonTu.getMaxID_ChiTiet() + 1;
                         entityCT.STT = 1;
@@ -452,7 +461,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         entity.TongDB = int.Parse(txtTongDB.Text.Trim());
                     }
                     //
-                    entity.NgayHenGiaiQuyet = "Trong thời gian 5 ngày làm việc kể từ ngày nhận hồ sơ, Công ty sẽ giải quyết theo quy định hiện hành";
+                    entity.NgayHenGiaiQuyet = "Trong thời gian 5 ngày làm việc kể từ ngày nhận hồ sơ, sẽ có nhân viên đến liên hệ với Khách Hàng";
                     entity.ID_NhomDon = "";
                     for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
                         if (chkcmbDieuChinh.Properties.Items[i].CheckState == CheckState.Checked)
@@ -483,6 +492,10 @@ namespace KTKS_DonKH.GUI.DonTu
                     entity.Name_NhomDon = txtNoiDung.Text.Trim();
                     if (txtVanDeKhac.Text.Trim() != "")
                         entity.VanDeKhac = txtVanDeKhac.Text.Trim();
+                    if (cmbNhomDon_ChiTiet.SelectedIndex > -1)
+                    {
+                        entity.ID_NhomDon_ChiTiet = int.Parse(cmbNhomDon_ChiTiet.SelectedValue.ToString());
+                    }
                     ///
                     if (chkCT_HoaDon.Checked)
                         entity.CT_HoaDon = true;
@@ -629,6 +642,10 @@ namespace KTKS_DonKH.GUI.DonTu
                         _dontu.Name_NhomDon = txtNoiDung.Text.Trim();
                         if (txtVanDeKhac.Text.Trim() != "")
                             _dontu.VanDeKhac = txtVanDeKhac.Text.Trim();
+                        if (cmbNhomDon_ChiTiet.SelectedIndex > -1)
+                        {
+                            _dontu.ID_NhomDon_ChiTiet = int.Parse(cmbNhomDon_ChiTiet.SelectedValue.ToString());
+                        }
                         ///
                         if (chkCT_HoaDon.Checked)
                             _dontu.CT_HoaDon = true;

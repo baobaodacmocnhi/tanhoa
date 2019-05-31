@@ -129,6 +129,7 @@
             this.lbTruyThu = new System.Windows.Forms.Label();
             this.txtNguoiLap = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
+            this.cmbNhomDon_ChiTiet = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbDieuChinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbKhieuNai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbDHN.Properties)).BeginInit();
@@ -1088,12 +1089,21 @@
             this.label24.TabIndex = 73;
             this.label24.Text = "Người lập";
             // 
+            // cmbNhomDon_ChiTiet
+            // 
+            this.cmbNhomDon_ChiTiet.FormattingEnabled = true;
+            this.cmbNhomDon_ChiTiet.Location = new System.Drawing.Point(527, 107);
+            this.cmbNhomDon_ChiTiet.Name = "cmbNhomDon_ChiTiet";
+            this.cmbNhomDon_ChiTiet.Size = new System.Drawing.Size(250, 24);
+            this.cmbNhomDon_ChiTiet.TabIndex = 75;
+            // 
             // frmNhanDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1270, 562);
+            this.Controls.Add(this.cmbNhomDon_ChiTiet);
             this.Controls.Add(this.txtNguoiLap);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.lbTruyThu);
@@ -1251,5 +1261,6 @@
         private System.Windows.Forms.Label lbTruyThu;
         private System.Windows.Forms.TextBox txtNguoiLap;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ComboBox cmbNhomDon_ChiTiet;
     }
 }

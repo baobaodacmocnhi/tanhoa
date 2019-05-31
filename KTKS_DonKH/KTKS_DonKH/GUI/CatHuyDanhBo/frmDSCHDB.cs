@@ -919,7 +919,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy(cmbQuan.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
                                 else
                                     if (radDSYCCHDB.Checked)
-                                        dgvDSYCCHDB.DataSource = _cCHDB.getDS_PhieuHuy(cmbQuan.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
+                                        dgvDSYCCHDB.DataSource = _cCHDB.getDS_PhieuHuy( dateTu.Value, dateDen.Value,cmbQuan.SelectedValue.ToString());
                                     else
                                         if (radDSDongNuoc.Checked)
                                             dgvDSYCCHDB.DataSource = _cDongNuoc.getDS_DongNuoc_CreateDate(cmbQuan.SelectedValue.ToString(), dateTu.Value, dateDen.Value);

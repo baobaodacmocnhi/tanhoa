@@ -75,7 +75,7 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public DataTable GetDS(string Loai)
+        public DataTable getDS(string Loai)
         {
             switch (Loai)
             {
@@ -90,6 +90,9 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-
+        public DataTable getDS_ChiTiet()
+        {
+            return LINQToDataTable(db.NhomDon_ChiTiets.ToList());
+        }
     }
 }

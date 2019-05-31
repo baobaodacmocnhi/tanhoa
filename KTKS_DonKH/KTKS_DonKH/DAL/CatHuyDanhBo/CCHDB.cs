@@ -694,6 +694,22 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return ExecuteQuery_DataTable(sql);
         }
 
+        public DataTable getCatTam_BaoCao(DateTime FromDate, DateTime ToDate,string MaQuan)
+        {
+            string sql = "declare @FromDate datetime"
+                        + " declare @ToDate datetime"
+                        + " set @FromDate='" + FromDate.ToString("yyyyMMdd") + "'"
+                        + " set @ToDate='" + ToDate.ToString("yyyyMMdd") + "'"
+                        + " declare @LuyKe int"
+                        + " declare @Nhan int"
+                        + " declare @XuLy int"
+                        + " set @LuyKe=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatTam where CAST(CreateDate as date)<@FromDate and (NgayXuLy is null or CAST(NgayXuLy as date)>@ToDate) and Quan='"+MaQuan+"')"
+                        + " set @Nhan=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatTam where CAST(CreateDate as date)>=@FromDate and CAST(CreateDate as date)<=@ToDate and Quan='" + MaQuan + "')"
+                        + " set @XuLy=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatTam where CAST(NgayXuLy as date)>=@FromDate and CAST(NgayXuLy as date)<=@ToDate and Quan='" + MaQuan + "')"
+                        + " select LuyKe=@LuyKe,Nhan=@Nhan,XuLy=@XuLy,Ton=@LuyKe+@Nhan-@XuLy";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         #endregion
 
         #region CHDB_ChiTietCatHuy (Chi Tiết Cắt Hủy Danh Bộ)
@@ -1224,6 +1240,22 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return ExecuteQuery_DataTable(sql);
         }
 
+        public DataTable getCatHuy_BaoCao(DateTime FromDate, DateTime ToDate,string MaQuan)
+        {
+            string sql = "declare @FromDate datetime"
+                        + " declare @ToDate datetime"
+                        + " set @FromDate='" + FromDate.ToString("yyyyMMdd") + "'"
+                        + " set @ToDate='" + ToDate.ToString("yyyyMMdd") + "'"
+                        + " declare @LuyKe int"
+                        + " declare @Nhan int"
+                        + " declare @XuLy int"
+                        + " set @LuyKe=(select COUNT(MaCTCHDB) from CHDB_ChiTietCatHuy where CAST(CreateDate as date)<@FromDate and (NgayXuLy is null or CAST(NgayXuLy as date)>@ToDate) and Quan='" + MaQuan + "')"
+                        + " set @Nhan=(select COUNT(MaCTCHDB) from CHDB_ChiTietCatHuy where CAST(CreateDate as date)>=@FromDate and CAST(CreateDate as date)<=@ToDate and Quan='" + MaQuan + "')"
+                        + " set @XuLy=(select COUNT(MaCTCHDB) from CHDB_ChiTietCatHuy where CAST(NgayXuLy as date)>=@FromDate and CAST(NgayXuLy as date)<=@ToDate and Quan='" + MaQuan + "')"
+                        + " select LuyKe=@LuyKe,Nhan=@Nhan,XuLy=@XuLy,Ton=@LuyKe+@Nhan-@XuLy";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         #endregion
 
         #region YeuCauCHDB (Phiếu Yêu Cầu Cắt Hủy Danh Bộ)
@@ -1577,7 +1609,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_PhieuHuy(string MaQuan,DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_PhieuHuy(DateTime FromCreateDate, DateTime ToCreateDate,string MaQuan)
         {
             var query = from item in db.CHDB_Phieus
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
