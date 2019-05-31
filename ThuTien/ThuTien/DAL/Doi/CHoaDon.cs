@@ -9649,6 +9649,30 @@ namespace ThuTien.DAL.Doi
             return dt;
         }
 
+        public DataTable getDS_XacNhanThanhToan(string DanhBo, int FromKy, int FromNam, int ToKy, int ToNam)
+        {
+            string sql = "declare @DanhBo char(11)"
+                        + " declare @FromKy int"
+                        + " declare @FromNam int"
+                        + " declare @ToKy int"
+                        + " declare @ToNam int"
+                        + " set @DanhBo='"+DanhBo+"'"
+                        + " set @FromKy="+FromKy
+                        + " set @FromNam="+FromNam
+                        + " set @ToKy="+ToKy
+                        + " set @ToNam="+ToNam
+                        + " if(@FromNam=@ToNam)"
+                        + " 	select DanhBo=DANHBA,KY,NAM,GIABAN,ThueGTGT=THUE,PhiBVMT=PHI,TONGCONG,NGAYGIAITRACH from HOADON where DANHBA=@DanhBo and NAM>=@FromNam and KY>=@FromKy and NAM<=@ToNam and KY<=@ToKy"
+                        + " 	union all"
+                        + " 	select DanhBo=DANHBA,KY,NAM,GIABAN,ThueGTGT=THUE,PhiBVMT=PHI,TONGCONG,NGAYGIAITRACH from TT_HoaDonCu where DANHBA=@DanhBo and NAM>=@FromNam and KY>=@FromKy and NAM<=@ToNam and KY<=@ToKy"
+                        + " else"
+                        + " 	if(@FromNam<@ToNam)"
+                        + " 		select DanhBo=DANHBA,KY,NAM,GIABAN,ThueGTGT=THUE,PhiBVMT=PHI,TONGCONG,NGAYGIAITRACH from HOADON where DANHBA=@DanhBo and ((NAM>=@FromNam and NAM<@ToNam and KY>=@FromKy) or (NAM=@ToNam and KY<=@ToKy))"
+                        + " 		union all"
+                        + " 		select DanhBo=DANHBA,KY,NAM,GIABAN,ThueGTGT=THUE,PhiBVMT=PHI,TONGCONG,NGAYGIAITRACH from TT_HoaDonCu where DANHBA=@DanhBo and ((NAM>=@FromNam and NAM<@ToNam  and KY>=@FromKy) or (NAM=@ToNam and KY<=@ToKy))";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         public int CountHoaDon(int Nam, int Ky)
         {
             return _db.HOADONs.Count(item => item.NAM == Nam && item.KY == Ky);

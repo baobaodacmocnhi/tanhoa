@@ -102,6 +102,7 @@
             this.mnuChanTienDu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaoCaoChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPhanTichChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuXacNhanThanhToan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuQuay = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDangNganQuay = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTamThuQuay = new System.Windows.Forms.ToolStripMenuItem();
@@ -624,7 +625,8 @@
             this.mnuPhiMoNuocChuyenKhoan,
             this.mnuChanTienDu,
             this.mnuBaoCaoChuyenKhoan,
-            this.mnuPhanTichChuyenKhoan});
+            this.mnuPhanTichChuyenKhoan,
+            this.mnuXacNhanThanhToan});
             this.mnuChuyenKhoan.Name = "mnuChuyenKhoan";
             this.mnuChuyenKhoan.Size = new System.Drawing.Size(97, 19);
             this.mnuChuyenKhoan.Text = "Chuyển Khoản";
@@ -726,6 +728,13 @@
             this.mnuPhanTichChuyenKhoan.Size = new System.Drawing.Size(265, 22);
             this.mnuPhanTichChuyenKhoan.Text = "Phân Tích Chuyển Khoản";
             this.mnuPhanTichChuyenKhoan.Click += new System.EventHandler(this.mnuPhanTichChuyenKhoan_Click);
+            // 
+            // mnuXacNhanThanhToan
+            // 
+            this.mnuXacNhanThanhToan.Name = "mnuXacNhanThanhToan";
+            this.mnuXacNhanThanhToan.Size = new System.Drawing.Size(265, 22);
+            this.mnuXacNhanThanhToan.Text = "Xác Nhận Thanh Toán";
+            this.mnuXacNhanThanhToan.Click += new System.EventHandler(this.mnuXacNhanThanhToan_Click);
             // 
             // mnuQuay
             // 
@@ -1138,6 +1147,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuNiemChi;
         private System.Windows.Forms.ToolStripMenuItem mnuToTrinhDCHD;
         private System.Windows.Forms.ToolStripMenuItem mnuCuaHangThuHo;
+        private System.Windows.Forms.ToolStripMenuItem mnuXacNhanThanhToan;
     }
 }
 
