@@ -1190,21 +1190,6 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TT_XacNhanThanhToan" Member="TT_XacNhanThanhToans">
-    <Type Name="TT_XacNhanThanhToan">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TCHC" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DanhBo" Type="System.String" DbType="Char(11)" CanBeNull="true" />
-      <Column Name="HoTen" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="NgayDeNghi" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="TT_XacNhanThanhToan_TT_XacNhanThanhToan_ChiTiet" Member="TT_XacNhanThanhToan_ChiTiets" ThisKey="ID" OtherKey="ID" Type="TT_XacNhanThanhToan_ChiTiet" />
-    </Type>
-  </Table>
   <Table Name="dbo.TT_XacNhanThanhToan_ChiTiet" Member="TT_XacNhanThanhToan_ChiTiets">
     <Type Name="TT_XacNhanThanhToan_ChiTiet">
       <Column Name="IDCT" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1221,6 +1206,22 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="TT_XacNhanThanhToan_TT_XacNhanThanhToan_ChiTiet" Member="TT_XacNhanThanhToan" ThisKey="ID" OtherKey="ID" Type="TT_XacNhanThanhToan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_XacNhanThanhToan" Member="TT_XacNhanThanhToans">
+    <Type Name="TT_XacNhanThanhToan">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TCHC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DanhBo" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="NgayDeNghi" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NguoiDeNghi" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TT_XacNhanThanhToan_TT_XacNhanThanhToan_ChiTiet" Member="TT_XacNhanThanhToan_ChiTiets" ThisKey="ID" OtherKey="ID" Type="TT_XacNhanThanhToan_ChiTiet" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">

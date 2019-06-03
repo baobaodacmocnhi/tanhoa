@@ -54,15 +54,23 @@ namespace ThuTien.GUI.ChuyenKhoan
         public void LoadXacNhanThanhToan(TT_XacNhanThanhToan en)
         {
             dateNgayDeNghi.Value = en.NgayDeNghi.Value;
+            txtNguoiDeNghi.Text = en.NguoiDeNghi;
             txtDanhBo.Text = en.DanhBo.Insert(7, " ").Insert(4, " ");
             txtHoTen.Text = en.HoTen;
             txtDiaChi.Text = en.DiaChi;
+            if (en.TCHC!=null)
             txtTCHC.Text = en.TCHC.Value.ToString();
+            
+            cmbFromKy.SelectedItem = _xntt.TT_XacNhanThanhToan_ChiTiets.FirstOrDefault().Ky.Value.ToString();
+            cmbFromNam.SelectedValue = _xntt.TT_XacNhanThanhToan_ChiTiets.FirstOrDefault().Nam.Value;
+            cmbToKy.SelectedItem = _xntt.TT_XacNhanThanhToan_ChiTiets.Last().Ky.Value.ToString();
+            cmbToNam.SelectedValue = _xntt.TT_XacNhanThanhToan_ChiTiets.Last().Nam.Value;
         }
 
         public void Clear()
         {
             dateNgayDeNghi.Value = DateTime.Now;
+            txtNguoiDeNghi.Text = "";
             txtDanhBo.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
@@ -104,6 +112,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     en.HoTen = txtHoTen.Text.Trim();
                     en.DiaChi = txtDiaChi.Text.Trim();
                     en.NgayDeNghi = dateNgayDeNghi.Value;
+                    en.NguoiDeNghi = txtNguoiDeNghi.Text.Trim();
                     if (_cXNTT.Them(en) == true)
                     {
                         foreach (DataRow item in dt.Rows)
@@ -146,6 +155,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         _xntt.HoTen = txtHoTen.Text.Trim();
                         _xntt.DiaChi = txtDiaChi.Text.Trim();
                         _xntt.NgayDeNghi = dateNgayDeNghi.Value;
+                        _xntt.NguoiDeNghi = txtNguoiDeNghi.Text.Trim();
                         if (txtTCHC.Text.Trim()!="")
                         _xntt.TCHC = int.Parse(txtTCHC.Text.Trim());
                         DataTable dt = _cHoaDon.getDS_XacNhanThanhToan(txtDanhBo.Text.Trim().Replace(" ", ""), int.Parse(cmbFromKy.SelectedItem.ToString()), int.Parse(cmbFromNam.SelectedValue.ToString()), int.Parse(cmbToKy.SelectedItem.ToString()), int.Parse(cmbToNam.SelectedValue.ToString()));
@@ -224,6 +234,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     DataRow dr = ds.Tables["TongHopNo"].NewRow();
                     dr["TuNgay"] = "ngày " + item.TT_XacNhanThanhToan.NgayDeNghi.Value.ToString("dd") + " tháng " + item.TT_XacNhanThanhToan.NgayDeNghi.Value.ToString("MM") + " năm " + item.TT_XacNhanThanhToan.NgayDeNghi.Value.ToString("yyyy");
+                    dr["KinhGui"] = item.TT_XacNhanThanhToan.NguoiDeNghi;
                     dr["DanhBo"] = item.TT_XacNhanThanhToan.DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = item.TT_XacNhanThanhToan.HoTen;
                     dr["DiaChi"] = item.TT_XacNhanThanhToan.DiaChi;
@@ -252,6 +263,14 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
             catch (Exception)
             {
+            }
+        }
+
+        private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null && e.Value.ToString().Length == 11)
+            {
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }
         }
     }

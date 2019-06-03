@@ -62,7 +62,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
             if (dgvPhiMoNuoc.Columns[e.ColumnIndex].Name == "DanhBo_PMN" && e.Value != null && e.Value.ToString().Length==11)
             {
-                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }
         }
 
