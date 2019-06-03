@@ -690,7 +690,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         if (_cDonTu.Sua(_dontu))
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            //Clear();
+                            Clear();
                         }
                     }
                 }
