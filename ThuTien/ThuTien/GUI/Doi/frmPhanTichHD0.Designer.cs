@@ -162,6 +162,7 @@
             this.TenTo_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNV_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MLT_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DM_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1207,7 +1208,7 @@
             // txtKy12_2
             // 
             this.txtKy12_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy12_2.Location = new System.Drawing.Point(1161, 580);
+            this.txtKy12_2.Location = new System.Drawing.Point(1241, 580);
             this.txtKy12_2.Name = "txtKy12_2";
             this.txtKy12_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy12_2.TabIndex = 117;
@@ -1216,7 +1217,7 @@
             // txtKy11_2
             // 
             this.txtKy11_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy11_2.Location = new System.Drawing.Point(1101, 580);
+            this.txtKy11_2.Location = new System.Drawing.Point(1181, 580);
             this.txtKy11_2.Name = "txtKy11_2";
             this.txtKy11_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy11_2.TabIndex = 116;
@@ -1225,7 +1226,7 @@
             // txtKy10_2
             // 
             this.txtKy10_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy10_2.Location = new System.Drawing.Point(1041, 580);
+            this.txtKy10_2.Location = new System.Drawing.Point(1121, 580);
             this.txtKy10_2.Name = "txtKy10_2";
             this.txtKy10_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy10_2.TabIndex = 115;
@@ -1234,7 +1235,7 @@
             // txtKy9_2
             // 
             this.txtKy9_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy9_2.Location = new System.Drawing.Point(981, 580);
+            this.txtKy9_2.Location = new System.Drawing.Point(1061, 580);
             this.txtKy9_2.Name = "txtKy9_2";
             this.txtKy9_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy9_2.TabIndex = 114;
@@ -1243,7 +1244,7 @@
             // txtKy8_2
             // 
             this.txtKy8_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy8_2.Location = new System.Drawing.Point(921, 580);
+            this.txtKy8_2.Location = new System.Drawing.Point(1001, 580);
             this.txtKy8_2.Name = "txtKy8_2";
             this.txtKy8_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy8_2.TabIndex = 113;
@@ -1252,7 +1253,7 @@
             // txtKy7_2
             // 
             this.txtKy7_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy7_2.Location = new System.Drawing.Point(861, 580);
+            this.txtKy7_2.Location = new System.Drawing.Point(941, 580);
             this.txtKy7_2.Name = "txtKy7_2";
             this.txtKy7_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy7_2.TabIndex = 112;
@@ -1261,7 +1262,7 @@
             // txtKy6_2
             // 
             this.txtKy6_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy6_2.Location = new System.Drawing.Point(801, 580);
+            this.txtKy6_2.Location = new System.Drawing.Point(881, 580);
             this.txtKy6_2.Name = "txtKy6_2";
             this.txtKy6_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy6_2.TabIndex = 111;
@@ -1270,7 +1271,7 @@
             // txtKy5_2
             // 
             this.txtKy5_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy5_2.Location = new System.Drawing.Point(741, 580);
+            this.txtKy5_2.Location = new System.Drawing.Point(821, 580);
             this.txtKy5_2.Name = "txtKy5_2";
             this.txtKy5_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy5_2.TabIndex = 110;
@@ -1279,7 +1280,7 @@
             // txtKy4_2
             // 
             this.txtKy4_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy4_2.Location = new System.Drawing.Point(681, 580);
+            this.txtKy4_2.Location = new System.Drawing.Point(761, 580);
             this.txtKy4_2.Name = "txtKy4_2";
             this.txtKy4_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy4_2.TabIndex = 109;
@@ -1288,7 +1289,7 @@
             // txtKy3_2
             // 
             this.txtKy3_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy3_2.Location = new System.Drawing.Point(621, 580);
+            this.txtKy3_2.Location = new System.Drawing.Point(701, 580);
             this.txtKy3_2.Name = "txtKy3_2";
             this.txtKy3_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy3_2.TabIndex = 108;
@@ -1297,7 +1298,7 @@
             // txtKy2_2
             // 
             this.txtKy2_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy2_2.Location = new System.Drawing.Point(561, 580);
+            this.txtKy2_2.Location = new System.Drawing.Point(641, 580);
             this.txtKy2_2.Name = "txtKy2_2";
             this.txtKy2_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy2_2.TabIndex = 107;
@@ -1306,7 +1307,7 @@
             // txtKy1_2
             // 
             this.txtKy1_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy1_2.Location = new System.Drawing.Point(501, 580);
+            this.txtKy1_2.Location = new System.Drawing.Point(581, 580);
             this.txtKy1_2.Name = "txtKy1_2";
             this.txtKy1_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy1_2.TabIndex = 106;
@@ -1385,6 +1386,7 @@
             this.TenTo_DK2,
             this.MaNV_DK2,
             this.HoTen_DK2,
+            this.MLT_DK2,
             this.DanhBo_DK2,
             this.DiaChi_DK2,
             this.DM_DK2,
@@ -1413,7 +1415,7 @@
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhBoDK2.RowsDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvDanhBoDK2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDanhBoDK2.Size = new System.Drawing.Size(1232, 547);
+            this.dgvDanhBoDK2.Size = new System.Drawing.Size(1310, 547);
             this.dgvDanhBoDK2.TabIndex = 99;
             this.dgvDanhBoDK2.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhBoDK2_CellFormatting);
             this.dgvDanhBoDK2.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhBoDK2_RowPostPaint);
@@ -1489,6 +1491,13 @@
             this.HoTen_DK2.DataPropertyName = "HoTen";
             this.HoTen_DK2.HeaderText = "Nhân Viên";
             this.HoTen_DK2.Name = "HoTen_DK2";
+            // 
+            // MLT_DK2
+            // 
+            this.MLT_DK2.DataPropertyName = "MLT";
+            this.MLT_DK2.HeaderText = "MLT";
+            this.MLT_DK2.Name = "MLT_DK2";
+            this.MLT_DK2.Width = 80;
             // 
             // DanhBo_DK2
             // 
@@ -1740,6 +1749,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTo_DK2;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV_DK2;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_DK2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MLT_DK2;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_DK2;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi_DK2;
         private System.Windows.Forms.DataGridViewTextBoxColumn DM_DK2;

@@ -34,7 +34,9 @@ namespace ThuTien.GUI.Doi
         private void frmPhanTichHD0_Load(object sender, EventArgs e)
         {
             dgvHoaDon.AutoGenerateColumns = false;
+            dgvDSTongHD0.AutoGenerateColumns = false;
             dgvDanhBoDK.AutoGenerateColumns = false;
+            dgvDanhBoDK2.AutoGenerateColumns = false;
 
             _lstTo = _cTo.GetDS();
             TT_To to = new TT_To();
@@ -746,6 +748,10 @@ namespace ThuTien.GUI.Doi
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
             }
+            if (dgvDanhBoDK2.Columns[e.ColumnIndex].Name == "MLT_DK2" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
         }
 
         private void dgvDanhBoDK2_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -763,6 +769,7 @@ namespace ThuTien.GUI.Doi
             {
                 DataRow dr = ds.Tables["DangKyHD0"].NewRow();
                 dr["NhanVien"] = item.Cells["HoTen_DK2"].Value;
+                dr["MLT"] = item.Cells["MLT_DK2"].Value.ToString().Insert(4, " ").Insert(2, " ");
                 dr["DanhBo"] = item.Cells["DanhBo_DK2"].Value.ToString().Insert(7, " ").Insert(4, " ");
                 dr["DiaChi"] = item.Cells["DiaChi_DK2"].Value;
                 dr["Ky1"] = item.Cells["Ky1_DK2"].Value;
