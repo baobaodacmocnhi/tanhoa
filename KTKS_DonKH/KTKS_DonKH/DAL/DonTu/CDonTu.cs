@@ -231,6 +231,21 @@ namespace KTKS_DonKH.DAL.DonTu
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ThongKeNhomDon(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+
+            string sql = "select dt.MaDon,NhomDon=dt.Name_NhomDon,dt.TongDB,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,"
+                        + " MaDonChiTiet=case when dt.TongDB=0 then CONVERT(varchar(8),dtct.MaDon)"
+                        + " when dt.TongDB=1 then CONVERT(varchar(8),dtct.MaDon)"
+                        + " when dt.TongDB>=2 then CONVERT(varchar(8),dtct.MaDon)+'.'+CONVERT(varchar(3),dtct.STT) end,"
+                        + " DaKTXM=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtct.MaDon and dtls.STT=dtct.STT and ID_NoiNhan=6) then 'true'"
+                        + " else case when exists(select ktxm.MaKTXM from KTXM ktxm, KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT) then 'true'"
+                        + " else case when exists(select bc.MaBC from BamChi bc, BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT) then 'true' else 'false' end end end"
+                        + " from DonTu dt,DonTu_ChiTiet dtct where CAST(dt.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(dt.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and dt.MaDon=dtct.MaDon"
+                        + " order by dtct.MaDon,dtct.STT asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         public DataTable getDS_ThongKeNhomDon(string TenTo, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             if (TenTo == "ToGD")
@@ -265,7 +280,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             + " MaDonChiTiet=case when dt.TongDB=0 then CONVERT(varchar(8),dtls_temp.MaDon)"
                             + " 		   when dt.TongDB=1 then CONVERT(varchar(8),dtls_temp.MaDon)"
                             + " 		   when dt.TongDB>=2 then CONVERT(varchar(8),dtls_temp.MaDon)+'.'+CONVERT(varchar(3),dtls_temp.STT) end,"
-                            + " ChuyenTrucTiep=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtls_temp.MaDon and dtls.STT=dtls_temp.STT and ID_NoiNhan=5) then 'false' else 'true' end,"
+                            + " ChuyenTrucTiep=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtls_temp.MaDon and dtls.STT=dtls_temp.STT and ID_NoiNhan=6) then 'false' else 'true' end,"
                             + " ChuyenKTXM=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtls_temp.MaDon and dtls.STT=dtls_temp.STT and ID_NoiNhan=5) then 'true' else 'false' end,";
                 switch (TenTo)
                 {

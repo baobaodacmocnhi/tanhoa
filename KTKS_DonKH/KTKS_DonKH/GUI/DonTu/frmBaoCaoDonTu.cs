@@ -396,6 +396,60 @@ namespace KTKS_DonKH.GUI.DonTu
             frm.Show();
         }
 
+        private void btnBaoCao_ThongKeNhomDon_Phong_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cDonTu.getDS_ThongKeNhomDon( dateTu_ThongKeNhomDon_Phong.Value, dateDen_ThongKeNhomDon_Phong.Value);
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
+
+                dr["TuNgay"] = dateTu_ThongKeNhomDon_Phong.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_ThongKeNhomDon_Phong.Value.ToString("dd/MM/yyyy");
+                dr["MaDon"] = item["MaDon"];
+                dr["MaDonChiTiet"] = item["MaDonChiTiet"];
+                dr["NhomDon"] = item["NhomDon"];
+                //dr["ChuyenKhac"] = item["ChuyenTrucTiep"];
+                dr["DaKTXM"] = item["DaKTXM"];
+                dr["NguoiLap"] = CTaiKhoan.HoTen;
+
+                dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
+            }
+
+            rptThongKeDonTu_Phong rpt = new rptThongKeDonTu_Phong();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
+        }
+
+        private void btnInDSChuaChuyen_ThongKeNhomDon_Phong_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(dateTu_ThongKeNhomDon_Phong.Value, dateDen_ThongKeNhomDon_Phong.Value);
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow item in dt.Rows)
+                if (bool.Parse(item["DaKTXM"].ToString()) == false)
+                {
+                    DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
+
+                    dr["TuNgay"] = dateTu_ThongKeNhomDon_Phong.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen_ThongKeNhomDon_Phong.Value.ToString("dd/MM/yyyy");
+                    dr["LoaiBaoCao"] = "TỒN";
+                    dr["MaDon"] = item["MaDonChiTiet"];
+                    dr["DanhBo"] = item["DanhBo"];
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
+
+                    dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
+                }
+
+            rptDanhSach_Doc rpt = new rptDanhSach_Doc();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
+        }
+
 
 
 
