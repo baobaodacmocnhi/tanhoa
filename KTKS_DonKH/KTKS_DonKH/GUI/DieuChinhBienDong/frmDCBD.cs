@@ -111,6 +111,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHCSN.Text = hoadon.TILEHCSN.ToString();
             txtDot.Text = _cDocSo.GetDot(hoadon.DANHBA);
 
+            if (hoadon.PHI == 0)
+                lbKhongTinhPhiBVMT.Visible = true;
+            else
+                lbKhongTinhPhiBVMT.Visible = false;
+
             dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(hoadon.DANHBA);
             dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(hoadon.DANHBA);
             LoadTongNK();
@@ -191,6 +196,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             chkDoanThanhNien.Checked = ctdcbd.DoanThanhNien;
             chkCatMSThue.Checked = ctdcbd.CatMSThue;
             chkXoaDiaChiLienHe.Checked = ctdcbd.XoaDiaChiLienHe;
+            chkTinhPhiBVMT.Checked = ctdcbd.TinhPhiBVMT;
+            chkKhongTinhPhiBVMT.Checked = ctdcbd.KhongTinhPhiBVMT;
             ///
             dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(ctdcbd.DanhBo);
             dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(ctdcbd.DanhBo);
@@ -226,6 +233,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             chkCatMSThue.Checked = false;
             chkXoaDiaChiLienHe.Checked = false;
             chkBoQuaKiemTraTrung.Checked = false;
+            chkTinhPhiBVMT.Checked = false;
+            chkKhongTinhPhiBVMT.Checked = false;
             ///
             txtHoTen_BD.Text = "";
             txtDiaChi_BD.Text = "";
@@ -237,6 +246,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDV_BD.Text = "";
             txtHCSN_BD.Text = "";
             lbTongNK.Text = "";
+            lbTongDM.Text = "";
+            lbKhongTinhPhiBVMT.Visible = false;
             ///
             _dontu_ChiTiet = null;
             _dontkh = null;
@@ -581,9 +592,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (chkCatMSThue.Checked)
                     {
                         if (string.IsNullOrEmpty(ThongTin) == true)
-                            ThongTin += "MST";
+                            ThongTin += "Cắt MST";
                         else
-                            ThongTin += ". MST";
+                            ThongTin += ". Cắt MST";
                         ctdcbd.CatMSThue = true;
                     }
                     ///Giá Biểu
@@ -610,6 +621,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ThongTin += "Tỷ Lệ";
                         else
                             ThongTin += ". Tỷ Lệ";
+                    }
+                    if (chkTinhPhiBVMT.Checked)
+                    {
+                        if (string.IsNullOrEmpty(ThongTin) == true)
+                            ThongTin += "Tính Phí BVMT";
+                        else
+                            ThongTin += ". Tính Phí BVMT";
+                        ctdcbd.TinhPhiBVMT = true;
+                    }
+                    if (chkKhongTinhPhiBVMT.Checked)
+                    {
+                        if (string.IsNullOrEmpty(ThongTin) == true)
+                            ThongTin += "Không Tính Phí BVMT";
+                        else
+                            ThongTin += ". Không Tính Phí BVMT";
+                        ctdcbd.KhongTinhPhiBVMT = true;
                     }
                     ///SH
                     if (txtSH_BD.Text.Trim() != "")
@@ -745,9 +772,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (chkCatMSThue.Checked)
                         {
                             if (string.IsNullOrEmpty(ThongTin) == true)
-                                ThongTin += "MST";
+                                ThongTin += "Cắt MST";
                             else
-                                ThongTin += ". MST";
+                                ThongTin += ". Cắt MST";
                             _ctdcbd.CatMSThue = true;
                         }
                         else
@@ -780,6 +807,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ThongTin += "Tỷ Lệ";
                             else
                                 ThongTin += ". Tỷ Lệ";
+                        }
+                        if (chkTinhPhiBVMT.Checked)
+                        {
+                            if (string.IsNullOrEmpty(ThongTin) == true)
+                                ThongTin += "Tính Phí BVMT";
+                            else
+                                ThongTin += ". Tính Phí BVMT";
+                            _ctdcbd.TinhPhiBVMT = true;
+                        }
+                        if (chkKhongTinhPhiBVMT.Checked)
+                        {
+                            if (string.IsNullOrEmpty(ThongTin) == true)
+                                ThongTin += "Không Tính Phí BVMT";
+                            else
+                                ThongTin += ". Không Tính Phí BVMT";
+                            _ctdcbd.KhongTinhPhiBVMT = true;
                         }
                         ///SH
                         if (txtSH_BD.Text.Trim() != "")
@@ -1486,6 +1529,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["TyLe"] = "Tỷ Lệ HCSN: " + _ctdcbd.HCSN_BD + "%";
                 else
                     dr["TyLe"] += ", HCSN: " + _ctdcbd.HCSN_BD + "%";
+            
             ///Ký Tên
             if (_ctdcbd.DMGiuNguyen)
                 dr["KhongBD"] = "ĐM Giữ Nguyên";

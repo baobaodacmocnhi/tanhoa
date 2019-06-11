@@ -14456,6 +14456,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _XoaDiaChiLienHe;
 		
+		private bool _TinhPhiBVMT;
+		
+		private bool _KhongTinhPhiBVMT;
+		
 		private string _HieuLucKy;
 		
 		private System.Nullable<decimal> _MaDCBD;
@@ -14574,6 +14578,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnCatMSThueChanged();
     partial void OnXoaDiaChiLienHeChanging(bool value);
     partial void OnXoaDiaChiLienHeChanged();
+    partial void OnTinhPhiBVMTChanging(bool value);
+    partial void OnTinhPhiBVMTChanged();
+    partial void OnKhongTinhPhiBVMTChanging(bool value);
+    partial void OnKhongTinhPhiBVMTChanged();
     partial void OnHieuLucKyChanging(string value);
     partial void OnHieuLucKyChanged();
     partial void OnMaDCBDChanging(System.Nullable<decimal> value);
@@ -15230,6 +15238,46 @@ namespace KTKS_DonKH.LinQ
 					this._XoaDiaChiLienHe = value;
 					this.SendPropertyChanged("XoaDiaChiLienHe");
 					this.OnXoaDiaChiLienHeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinhPhiBVMT", DbType="Bit NOT NULL")]
+		public bool TinhPhiBVMT
+		{
+			get
+			{
+				return this._TinhPhiBVMT;
+			}
+			set
+			{
+				if ((this._TinhPhiBVMT != value))
+				{
+					this.OnTinhPhiBVMTChanging(value);
+					this.SendPropertyChanging();
+					this._TinhPhiBVMT = value;
+					this.SendPropertyChanged("TinhPhiBVMT");
+					this.OnTinhPhiBVMTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KhongTinhPhiBVMT", DbType="Bit NOT NULL")]
+		public bool KhongTinhPhiBVMT
+		{
+			get
+			{
+				return this._KhongTinhPhiBVMT;
+			}
+			set
+			{
+				if ((this._KhongTinhPhiBVMT != value))
+				{
+					this.OnKhongTinhPhiBVMTChanging(value);
+					this.SendPropertyChanging();
+					this._KhongTinhPhiBVMT = value;
+					this.SendPropertyChanged("KhongTinhPhiBVMT");
+					this.OnKhongTinhPhiBVMTChanged();
 				}
 			}
 		}
