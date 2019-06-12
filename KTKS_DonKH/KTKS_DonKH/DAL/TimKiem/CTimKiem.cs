@@ -199,19 +199,19 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table PhieuCHDB
                 var queryPhieuCHDB = from itemYCCHDB in db.CHDB_Phieus
-                                  where itemYCCHDB.CHDB.MaDonMoi == MaDon
-                                  select new
-                                  {
-                                      MaDon = itemYCCHDB.CHDB.DonTu.DonTu_ChiTiets.Count == 1 ? itemYCCHDB.CHDB.MaDonMoi.Value.ToString() : itemYCCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemYCCHDB.STT.Value.ToString(),
-                                      itemYCCHDB.MaYCCHDB,
-                                      itemYCCHDB.CreateDate,
-                                      itemYCCHDB.DanhBo,
-                                      itemYCCHDB.HoTen,
-                                      itemYCCHDB.DiaChi,
-                                      itemYCCHDB.LyDo,
-                                      itemYCCHDB.GhiChuLyDo,
-                                      itemYCCHDB.HieuLucKy,
-                                  };
+                                     where itemYCCHDB.CHDB.MaDonMoi == MaDon
+                                     select new
+                                     {
+                                         MaDon = itemYCCHDB.CHDB.DonTu.DonTu_ChiTiets.Count == 1 ? itemYCCHDB.CHDB.MaDonMoi.Value.ToString() : itemYCCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemYCCHDB.STT.Value.ToString(),
+                                         itemYCCHDB.MaYCCHDB,
+                                         itemYCCHDB.CreateDate,
+                                         itemYCCHDB.DanhBo,
+                                         itemYCCHDB.HoTen,
+                                         itemYCCHDB.DiaChi,
+                                         itemYCCHDB.LyDo,
+                                         itemYCCHDB.GhiChuLyDo,
+                                         itemYCCHDB.HieuLucKy,
+                                     };
                 DataTable dtPhieuCHDB = new DataTable();
                 dtPhieuCHDB = LINQToDataTable(queryPhieuCHDB);
                 dtPhieuCHDB.TableName = "PhieuCHDB";
@@ -572,19 +572,19 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table PhieuCHDB
                 var queryPhieuCHDB = from itemYCCHDB in db.CHDB_Phieus
-                                  where itemYCCHDB.CHDB.MaDonMoi == MaDon && itemYCCHDB.STT == STT
-                                  select new
-                                  {
-                                      MaDon = itemYCCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemYCCHDB.STT.Value.ToString(),
-                                      itemYCCHDB.MaYCCHDB,
-                                      itemYCCHDB.CreateDate,
-                                      itemYCCHDB.DanhBo,
-                                      itemYCCHDB.HoTen,
-                                      itemYCCHDB.DiaChi,
-                                      itemYCCHDB.LyDo,
-                                      itemYCCHDB.GhiChuLyDo,
-                                      itemYCCHDB.HieuLucKy,
-                                  };
+                                     where itemYCCHDB.CHDB.MaDonMoi == MaDon && itemYCCHDB.STT == STT
+                                     select new
+                                     {
+                                         MaDon = itemYCCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemYCCHDB.STT.Value.ToString(),
+                                         itemYCCHDB.MaYCCHDB,
+                                         itemYCCHDB.CreateDate,
+                                         itemYCCHDB.DanhBo,
+                                         itemYCCHDB.HoTen,
+                                         itemYCCHDB.DiaChi,
+                                         itemYCCHDB.LyDo,
+                                         itemYCCHDB.GhiChuLyDo,
+                                         itemYCCHDB.HieuLucKy,
+                                     };
                 DataTable dtPhieuCHDB = new DataTable();
                 dtPhieuCHDB = LINQToDataTable(queryPhieuCHDB);
                 dtPhieuCHDB.TableName = "PhieuCHDB";
@@ -945,19 +945,19 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table PhieuCHDB
                 var queryPhieuCHDB = from itemYCCHDB in db.CHDB_Phieus
-                                  where itemYCCHDB.CHDB.MaDon == MaDon
-                                  select new
-                                  {
-                                      MaDon = "TKH" + itemYCCHDB.CHDB.MaDon,
-                                      itemYCCHDB.MaYCCHDB,
-                                      itemYCCHDB.CreateDate,
-                                      itemYCCHDB.DanhBo,
-                                      itemYCCHDB.HoTen,
-                                      itemYCCHDB.DiaChi,
-                                      itemYCCHDB.LyDo,
-                                      itemYCCHDB.GhiChuLyDo,
-                                      itemYCCHDB.HieuLucKy,
-                                  };
+                                     where itemYCCHDB.CHDB.MaDon == MaDon
+                                     select new
+                                     {
+                                         MaDon = "TKH" + itemYCCHDB.CHDB.MaDon,
+                                         itemYCCHDB.MaYCCHDB,
+                                         itemYCCHDB.CreateDate,
+                                         itemYCCHDB.DanhBo,
+                                         itemYCCHDB.HoTen,
+                                         itemYCCHDB.DiaChi,
+                                         itemYCCHDB.LyDo,
+                                         itemYCCHDB.GhiChuLyDo,
+                                         itemYCCHDB.HieuLucKy,
+                                     };
                 DataTable dtPhieuCHDB = new DataTable();
                 dtPhieuCHDB = LINQToDataTable(queryPhieuCHDB);
                 dtPhieuCHDB.TableName = "PhieuCHDB";
@@ -1297,19 +1297,19 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table PhieuCHDB
                 var queryPhieuCHDB = from itemYCCHDB in db.CHDB_Phieus
-                                  where itemYCCHDB.CHDB.MaDonTXL == MaDonTXL
-                                  select new
-                                  {
-                                      MaDon = "TXL" + itemYCCHDB.CHDB.MaDonTXL,
-                                      itemYCCHDB.MaYCCHDB,
-                                      itemYCCHDB.CreateDate,
-                                      itemYCCHDB.DanhBo,
-                                      itemYCCHDB.HoTen,
-                                      itemYCCHDB.DiaChi,
-                                      itemYCCHDB.LyDo,
-                                      itemYCCHDB.GhiChuLyDo,
-                                      itemYCCHDB.HieuLucKy,
-                                  };
+                                     where itemYCCHDB.CHDB.MaDonTXL == MaDonTXL
+                                     select new
+                                     {
+                                         MaDon = "TXL" + itemYCCHDB.CHDB.MaDonTXL,
+                                         itemYCCHDB.MaYCCHDB,
+                                         itemYCCHDB.CreateDate,
+                                         itemYCCHDB.DanhBo,
+                                         itemYCCHDB.HoTen,
+                                         itemYCCHDB.DiaChi,
+                                         itemYCCHDB.LyDo,
+                                         itemYCCHDB.GhiChuLyDo,
+                                         itemYCCHDB.HieuLucKy,
+                                     };
                 DataTable dtPhieuCHDB = new DataTable();
                 dtPhieuCHDB = LINQToDataTable(queryPhieuCHDB);
                 dtPhieuCHDB.TableName = "PhieuCHDB";
@@ -1649,19 +1649,19 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table PhieuCHDB
                 var queryPhieuCHDB = from itemYCCHDB in db.CHDB_Phieus
-                                  where itemYCCHDB.CHDB.MaDonTBC == MaDonTBC
-                                  select new
-                                  {
-                                      MaDon = "TBC" + itemYCCHDB.CHDB.MaDonTBC,
-                                      itemYCCHDB.MaYCCHDB,
-                                      itemYCCHDB.CreateDate,
-                                      itemYCCHDB.DanhBo,
-                                      itemYCCHDB.HoTen,
-                                      itemYCCHDB.DiaChi,
-                                      itemYCCHDB.LyDo,
-                                      itemYCCHDB.GhiChuLyDo,
-                                      itemYCCHDB.HieuLucKy,
-                                  };
+                                     where itemYCCHDB.CHDB.MaDonTBC == MaDonTBC
+                                     select new
+                                     {
+                                         MaDon = "TBC" + itemYCCHDB.CHDB.MaDonTBC,
+                                         itemYCCHDB.MaYCCHDB,
+                                         itemYCCHDB.CreateDate,
+                                         itemYCCHDB.DanhBo,
+                                         itemYCCHDB.HoTen,
+                                         itemYCCHDB.DiaChi,
+                                         itemYCCHDB.LyDo,
+                                         itemYCCHDB.GhiChuLyDo,
+                                         itemYCCHDB.HieuLucKy,
+                                     };
                 DataTable dtPhieuCHDB = new DataTable();
                 dtPhieuCHDB = LINQToDataTable(queryPhieuCHDB);
                 dtPhieuCHDB.TableName = "PhieuCHDB";
@@ -3897,7 +3897,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
         //        if (dtDon.Rows.Count > 0 && dtTienTrinh.Rows.Count > 0)
         //            ds.Relations.Add("Chi Tiết Tiến Trình", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TienTrinh"].Columns["MaDon"]);
-                
+
         //        return ds;
         //    }
         //    catch (Exception ex)
@@ -8093,11 +8093,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
         public DataSet getTienTrinhByDanhBo(string DanhBo)
         {
-            DataSet ds = new DataSet();
-            ds = ExecuteQuery_DataSet("exec spTimKiemByBanhBo_DonTuChiTiet '" + DanhBo + "'");
+            DataSet ds = ExecuteQuery_DataSet("exec spTimKiemByBanhBo_DonTuChiTiet '" + DanhBo + "'");
 
-            DataTable dt = new DataTable();
-            dt = ExecuteQuery_DataTable("exec spTimKiemByBanhBo_DonTu '" + DanhBo + "'");
+            DataTable dt = ExecuteQuery_DataTable("exec spTimKiemByBanhBo_DonTu '" + DanhBo + "'");
             DataTable dtDon = new DataTable();
             dtDon.Columns.Add("MaDon", typeof(string));
             dtDon.Columns.Add("TenLD", typeof(string));
@@ -8168,11 +8166,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
         public DataSet getTienTrinhByHoTen(string HoTen)
         {
-            DataSet ds = new DataSet();
-            ds = ExecuteQuery_DataSet("exec spTimKiemByHoTen_DonTuChiTiet '" + HoTen + "'");
+            DataSet ds = ExecuteQuery_DataSet("exec spTimKiemByHoTen_DonTuChiTiet '" + HoTen + "'");
 
-            DataTable dt = new DataTable();
-            dt = ExecuteQuery_DataTable("exec spTimKiemByHoTen_DonTu '" + HoTen + "'");
+            DataTable dt = ExecuteQuery_DataTable("exec spTimKiemByHoTen_DonTu '" + HoTen + "'");
             DataTable dtDon = new DataTable();
             dtDon.Columns.Add("MaDon", typeof(string));
             dtDon.Columns.Add("TenLD", typeof(string));
@@ -8243,11 +8239,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
         public DataSet getTienTrinhByDiaChi(string DiaChi)
         {
-            DataSet ds = new DataSet();
-            ds = ExecuteQuery_DataSet("exec spTimKiemByDiaChi_DonTuChiTiet '" + DiaChi + "'");
+            DataSet ds = ExecuteQuery_DataSet("exec spTimKiemByDiaChi_DonTuChiTiet '" + DiaChi + "'");
 
-            DataTable dt = new DataTable();
-            dt = ExecuteQuery_DataTable("exec spTimKiemByDiaChi_DonTu '" + DiaChi + "'");
+            DataTable dt = ExecuteQuery_DataTable("exec spTimKiemByDiaChi_DonTu '" + DiaChi + "'");
             DataTable dtDon = new DataTable();
             dtDon.Columns.Add("MaDon", typeof(string));
             dtDon.Columns.Add("TenLD", typeof(string));
