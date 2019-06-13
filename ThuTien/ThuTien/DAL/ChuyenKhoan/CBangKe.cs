@@ -88,7 +88,10 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public TT_BangKe getLast(string DanhBo, DateTime CreateDate)
         {
-            return _db.TT_BangKes.Where(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date <= CreateDate.Date).OrderByDescending(item=>item.CreateDate).First();
+            if (_db.TT_BangKes.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date <= CreateDate.Date) == true)
+                return _db.TT_BangKes.Where(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date <= CreateDate.Date).OrderByDescending(item => item.CreateDate).First();
+            else
+                return null;
         }
 
         public DataTable GetDS()
