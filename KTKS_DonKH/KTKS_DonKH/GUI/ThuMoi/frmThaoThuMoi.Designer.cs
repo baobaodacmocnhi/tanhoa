@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnIn = new System.Windows.Forms.Button();
@@ -60,17 +60,21 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDSThu = new System.Windows.Forms.DataGridView();
+            this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CanCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radDutChi = new System.Windows.Forms.RadioButton();
             this.radCDDM = new System.Windows.Forms.RadioButton();
             this.txtIDCT = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.radRong = new System.Windows.Forms.RadioButton();
             this.label34 = new System.Windows.Forms.Label();
-            this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CanCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtLuuy = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtNoiNhan = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
@@ -135,6 +139,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtNoiNhan);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.txtLuuy);
+            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.txtVeViec);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.txtVaoLuc);
@@ -143,7 +151,7 @@
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Location = new System.Drawing.Point(12, 149);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(566, 109);
+            this.groupBox2.Size = new System.Drawing.Size(566, 207);
             this.groupBox2.TabIndex = 121;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nội Dung Thư";
@@ -357,14 +365,14 @@
             // 
             this.dgvDSThu.AllowUserToAddRows = false;
             this.dgvDSThu.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSThu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSThu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDSThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSThu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDCT,
@@ -372,11 +380,45 @@
             this.CreateDate,
             this.CanCu,
             this.VaoLuc});
-            this.dgvDSThu.Location = new System.Drawing.Point(12, 273);
+            this.dgvDSThu.Location = new System.Drawing.Point(12, 362);
             this.dgvDSThu.Name = "dgvDSThu";
             this.dgvDSThu.Size = new System.Drawing.Size(616, 126);
             this.dgvDSThu.TabIndex = 130;
             this.dgvDSThu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSThu_CellContentClick);
+            // 
+            // IDCT
+            // 
+            this.IDCT.DataPropertyName = "IDCT";
+            this.IDCT.HeaderText = "SoPhieu";
+            this.IDCT.Name = "IDCT";
+            this.IDCT.Visible = false;
+            // 
+            // Lan
+            // 
+            this.Lan.DataPropertyName = "Lan";
+            this.Lan.HeaderText = "Lần";
+            this.Lan.Name = "Lan";
+            this.Lan.Width = 50;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // CanCu
+            // 
+            this.CanCu.DataPropertyName = "CanCu";
+            this.CanCu.HeaderText = "Căn Cứ";
+            this.CanCu.Name = "CanCu";
+            this.CanCu.Width = 200;
+            // 
+            // VaoLuc
+            // 
+            this.VaoLuc.DataPropertyName = "VaoLuc";
+            this.VaoLuc.HeaderText = "Vào Lúc";
+            this.VaoLuc.Name = "VaoLuc";
+            this.VaoLuc.Width = 200;
             // 
             // radDutChi
             // 
@@ -438,46 +480,53 @@
             this.label34.TabIndex = 136;
             this.label34.Text = "Ctrl+T: Cập Nhật Tiến Trình";
             // 
-            // IDCT
+            // txtLuuy
             // 
-            this.IDCT.DataPropertyName = "IDCT";
-            this.IDCT.HeaderText = "SoPhieu";
-            this.IDCT.Name = "IDCT";
-            this.IDCT.Visible = false;
+            this.txtLuuy.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtLuuy.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtLuuy.Location = new System.Drawing.Point(70, 105);
+            this.txtLuuy.Multiline = true;
+            this.txtLuuy.Name = "txtLuuy";
+            this.txtLuuy.Size = new System.Drawing.Size(487, 44);
+            this.txtLuuy.TabIndex = 7;
+            this.txtLuuy.Text = "Nếu quá thời hạn trên, Ông (Bà) không đến liên hệ. Công ty Cổ phần Cấp nước Tân H" +
+                "òa sẽ giải quyết theo quy định: điều chỉnh định mức = 0 và tạm ngưng cung cấp nư" +
+                "ớc.";
             // 
-            // Lan
+            // label11
             // 
-            this.Lan.DataPropertyName = "Lan";
-            this.Lan.HeaderText = "Lần";
-            this.Lan.Name = "Lan";
-            this.Lan.Width = 50;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 108);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 16);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Lưu ý";
             // 
-            // CreateDate
+            // txtNoiNhan
             // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
+            this.txtNoiNhan.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtNoiNhan.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtNoiNhan.Location = new System.Drawing.Point(70, 155);
+            this.txtNoiNhan.Multiline = true;
+            this.txtNoiNhan.Name = "txtNoiNhan";
+            this.txtNoiNhan.Size = new System.Drawing.Size(487, 44);
+            this.txtNoiNhan.TabIndex = 9;
             // 
-            // CanCu
+            // label13
             // 
-            this.CanCu.DataPropertyName = "CanCu";
-            this.CanCu.HeaderText = "Căn Cứ";
-            this.CanCu.Name = "CanCu";
-            this.CanCu.Width = 200;
-            // 
-            // VaoLuc
-            // 
-            this.VaoLuc.DataPropertyName = "VaoLuc";
-            this.VaoLuc.HeaderText = "Vào Lúc";
-            this.VaoLuc.Name = "VaoLuc";
-            this.VaoLuc.Width = 200;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 158);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(64, 16);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "Nơi Nhận";
             // 
             // frmThaoThuMoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(783, 408);
+            this.ClientSize = new System.Drawing.Size(783, 562);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.radRong);
             this.Controls.Add(this.txtIDCT);
@@ -556,5 +605,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn CanCu;
         private System.Windows.Forms.DataGridViewTextBoxColumn VaoLuc;
+        private System.Windows.Forms.TextBox txtNoiNhan;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtLuuy;
+        private System.Windows.Forms.Label label11;
     }
 }

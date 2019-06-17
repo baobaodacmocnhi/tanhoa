@@ -72,7 +72,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 auto2.Add(item["VeViec"].ToString());
             }
             txtVeViec.AutoCompleteCustomSource = auto2;
-
+            txtNoiNhan.Text = CTaiKhoan.HoTen;
             if (_IDCT != -1)
             {
                 txtIDCT.Text = _IDCT.ToString();
@@ -132,6 +132,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
             txtCanCu.Text = en.CanCu;
             txtVaoLuc.Text = en.VaoLuc;
             txtVeViec.Text = en.VeViec;
+            txtLuuy.Text = en.Luuy;
+            txtNoiNhan.Text = en.NoiNhan;
         }
 
         public void Clear()
@@ -152,6 +154,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
             txtVaoLuc.Text = "";
             //txtVeViec.Text = "Thanh toán chi phí (đồng hồ nước) đứt chì góc theo biên bản số";
             txtVeViec.Text = "";
+            txtLuuy.Text = "Nếu quá thời hạn trên, Ông (Bà) không đến liên hệ. Công ty Cổ phần Cấp nước Tân Hòa sẽ giải quyết theo quy định: điều chỉnh định mức = 0 và tạm ngưng cung cấp nước.";
+            txtNoiNhan.Text = CTaiKhoan.HoTen;
 
             dgvDSThu.DataSource = null;
             _dontu_ChiTiet = null;
@@ -408,6 +412,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     entity.CanCu = txtCanCu.Text.Trim();
                     entity.VaoLuc = txtVaoLuc.Text.Trim();
                     entity.VeViec = txtVeViec.Text.Trim();
+                    entity.Luuy = txtLuuy.Text.Trim();
+                    entity.NoiNhan = txtNoiNhan.Text.Trim();
 
                     if (_cThuMoi.them_ChiTiet(entity))
                     {
@@ -448,6 +454,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         _thumoi.CanCu = txtCanCu.Text.Trim();
                         _thumoi.VaoLuc = txtVaoLuc.Text.Trim();
                         _thumoi.VeViec = txtVeViec.Text.Trim();
+                        _thumoi.Luuy = txtLuuy.Text.Trim();
+                        _thumoi.NoiNhan = txtNoiNhan.Text.Trim();
 
                         if (_cThuMoi.sua_ChiTiet(_thumoi))
                         {
@@ -528,7 +536,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 dr["VaoLuc"] = _thumoi.VaoLuc;
                 dr["VeViec"] = _thumoi.VeViec;
                 dr["Lan"] = _thumoi.Lan;
-                dr["NoiNhan"] = _cTaiKhoan.GetHoTen(_thumoi.CreateBy.Value);
+                dr["Luuy"] = _thumoi.Luuy;
+                dr["NoiNhan"] = _thumoi.NoiNhan;
 
                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 

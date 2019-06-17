@@ -38870,6 +38870,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _VeViec;
 		
+		private string _Luuy;
+		
+		private string _NoiNhan;
+		
 		private int _ID;
 		
 		private System.Nullable<int> _STT;
@@ -38918,6 +38922,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnVaoLucChanged();
     partial void OnVeViecChanging(string value);
     partial void OnVeViecChanged();
+    partial void OnLuuyChanging(string value);
+    partial void OnLuuyChanged();
+    partial void OnNoiNhanChanging(string value);
+    partial void OnNoiNhanChanged();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
@@ -39234,6 +39242,46 @@ namespace KTKS_DonKH.LinQ
 					this._VeViec = value;
 					this.SendPropertyChanged("VeViec");
 					this.OnVeViecChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Luuy", DbType="NVarChar(500)")]
+		public string Luuy
+		{
+			get
+			{
+				return this._Luuy;
+			}
+			set
+			{
+				if ((this._Luuy != value))
+				{
+					this.OnLuuyChanging(value);
+					this.SendPropertyChanging();
+					this._Luuy = value;
+					this.SendPropertyChanged("Luuy");
+					this.OnLuuyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiNhan", DbType="NVarChar(200)")]
+		public string NoiNhan
+		{
+			get
+			{
+				return this._NoiNhan;
+			}
+			set
+			{
+				if ((this._NoiNhan != value))
+				{
+					this.OnNoiNhanChanging(value);
+					this.SendPropertyChanging();
+					this._NoiNhan = value;
+					this.SendPropertyChanged("NoiNhan");
+					this.OnNoiNhanChanged();
 				}
 			}
 		}

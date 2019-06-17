@@ -1689,6 +1689,8 @@
       <Column Name="CanCu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="VaoLuc" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="VeViec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Luuy" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="NoiNhan" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />

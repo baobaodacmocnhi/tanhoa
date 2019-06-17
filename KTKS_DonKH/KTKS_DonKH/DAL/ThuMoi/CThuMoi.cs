@@ -209,6 +209,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                     item.CanCu,
                                     item.VaoLuc,
                                     item.VeViec,
+                                    item.Luuy,
+                                    item.NoiNhan,
                                     item.CreateDate,
                                     item.CreateBy,
                                 };
@@ -229,6 +231,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 item.CanCu,
                                 item.VaoLuc,
                                 item.VeViec,
+                                item.Luuy,
+                                item.NoiNhan,
                                 item.CreateDate,
                                 item.CreateBy,
                             };
@@ -249,6 +253,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 item.CanCu,
                                 item.VaoLuc,
                                 item.VeViec,
+                                item.Luuy,
+                                item.NoiNhan,
                                 item.CreateDate,
                                 item.CreateBy,
                             };
@@ -269,6 +275,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 item.CanCu,
                                 item.VaoLuc,
                                 item.VeViec,
+                                item.Luuy,
+                                item.NoiNhan,
                                 item.CreateDate,
                                 item.CreateBy,
                             };
@@ -282,7 +290,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                         where item.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = item.ThuMoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuMoi.MaDonMoi).Count() == 1 ?  item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi + "." + item.STT
+                            MaDon = item.ThuMoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuMoi.MaDonMoi).Count() == 1 ? item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi + "." + item.STT
                                     : item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
                                     : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                     : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
@@ -296,6 +304,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.CanCu,
                             item.VaoLuc,
                             item.VeViec,
+                            item.Luuy,
+                            item.NoiNhan,
                             item.CreateDate,
                             item.CreateBy,
                         };
@@ -308,7 +318,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                         where item.CreateDate.Value.Date >= FromCreatDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            MaDon = item.ThuMoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuMoi.MaDonMoi).Count() == 1 ?  item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi + "." + item.STT
+                            MaDon = item.ThuMoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuMoi.MaDonMoi).Count() == 1 ? item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi + "." + item.STT
                                     : item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
                                     : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                     : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
@@ -322,6 +332,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.CanCu,
                             item.VaoLuc,
                             item.VeViec,
+                            item.Luuy,
+                            item.NoiNhan,
                             item.CreateDate,
                             item.CreateBy,
                         };
@@ -334,7 +346,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                         where item.CreateBy == CreateBy && item.CreateDate.Value.Date >= FromCreatDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            MaDon = item.ThuMoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuMoi.MaDonMoi).Count() == 1 ?  item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi + "." + item.STT
+                            MaDon = item.ThuMoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuMoi.MaDonMoi).Count() == 1 ? item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi + "." + item.STT
                                     : item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
                                     : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                     : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
@@ -348,6 +360,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.CanCu,
                             item.VaoLuc,
                             item.VeViec,
+                            item.Luuy,
+                            item.NoiNhan,
                             item.CreateDate,
                             item.CreateBy,
                         };
@@ -403,6 +417,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.CanCu,
                             item.VaoLuc,
                             item.VeViec,
+                            item.Luuy,
+                            item.NoiNhan,
                             item.CreateDate,
                         };
             return LINQToDataTable(query);
