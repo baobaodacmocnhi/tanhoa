@@ -94,7 +94,10 @@ namespace ThuTien.DAL.Quay
 
         public TT_LenhHuy getMoiNhat(string DanhBo) 
         {
-            return _db.TT_LenhHuys.Where(item => item.DanhBo == DanhBo).OrderByDescending(item=>item.CreateDate).First();
+            if (_db.TT_LenhHuys.Any(item => item.DanhBo == DanhBo) == true)
+                return _db.TT_LenhHuys.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).First();
+            else
+                return null;
         }
 
         public DataTable GetDS()
