@@ -160,10 +160,10 @@ namespace KTKS_DonKH.GUI.ThuMoi
 
         private void dgvDSThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //if (dgvDSThu.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
-            //{
-            //    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            //}
+            if (dgvDSThu.Columns[e.ColumnIndex].Name == "IDCT" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
         }
 
         private void dgvDSThu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -267,6 +267,12 @@ namespace KTKS_DonKH.GUI.ThuMoi
             rpt.Subreports[1].SetDataSource(dsBaoCao2);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void txtNoiDungTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtNoiDungTimKiem.Text.Trim() != "")
+                btnXem.PerformClick();
         }
     }
 }

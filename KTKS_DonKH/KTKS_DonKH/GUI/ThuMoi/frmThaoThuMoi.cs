@@ -121,7 +121,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         _dontbc = _cDonTBC.Get(en.ThuMoi.MaDonTBC.Value);
                         txtMaDonCu.Text = "TBC" + en.ThuMoi.MaDonTBC.Value.ToString().Insert(en.ThuMoi.MaDonTBC.Value.ToString().Length - 2, "-");
                     }
-
+            txtIDCT.Text = en.IDCT.ToString().Insert(en.IDCT.ToString().Length-2,"-");
             txtDanhBo.Text = en.DanhBo;
             //txtHopDong.Text = en.HopDong;
             //txtLoTrinh.Text = en.LoTrinh;

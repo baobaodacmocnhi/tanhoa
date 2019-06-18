@@ -165,7 +165,7 @@
             this.CreateBy});
             this.dgvDSThu.Location = new System.Drawing.Point(12, 68);
             this.dgvDSThu.Name = "dgvDSThu";
-            this.dgvDSThu.Size = new System.Drawing.Size(1298, 540);
+            this.dgvDSThu.Size = new System.Drawing.Size(1322, 540);
             this.dgvDSThu.TabIndex = 36;
             this.dgvDSThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSThu_CellFormatting);
             this.dgvDSThu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSThu_RowPostPaint);
@@ -187,6 +187,7 @@
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(100, 22);
             this.txtNoiDungTimKiem.TabIndex = 33;
             this.txtNoiDungTimKiem.Visible = false;
+            this.txtNoiDungTimKiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoiDungTimKiem_KeyPress);
             // 
             // txtNoiDungTimKiem2
             // 
@@ -310,9 +311,9 @@
             // IDCT
             // 
             this.IDCT.DataPropertyName = "IDCT";
-            this.IDCT.HeaderText = "SoPhieu";
+            this.IDCT.HeaderText = "Mã Thư";
             this.IDCT.Name = "IDCT";
-            this.IDCT.Visible = false;
+            this.IDCT.Width = 80;
             // 
             // CreateDate
             // 
@@ -339,7 +340,7 @@
             this.HoTen.DataPropertyName = "HoTen";
             this.HoTen.HeaderText = "Khách Hàng";
             this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 200;
+            this.HoTen.Width = 150;
             // 
             // DiaChi
             // 
@@ -418,7 +419,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1324, 611);
+            this.ClientSize = new System.Drawing.Size(1395, 611);
             this.Controls.Add(this.btnInNhan);
             this.Controls.Add(this.radRong);
             this.Controls.Add(this.btnInDS);

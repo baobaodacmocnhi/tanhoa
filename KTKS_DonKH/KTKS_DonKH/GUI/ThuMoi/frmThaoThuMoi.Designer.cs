@@ -36,6 +36,10 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtNoiNhan = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtLuuy = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.txtVeViec = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtVaoLuc = new System.Windows.Forms.TextBox();
@@ -71,10 +75,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.radRong = new System.Windows.Forms.RadioButton();
             this.label34 = new System.Windows.Forms.Label();
-            this.txtLuuy = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtNoiNhan = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
@@ -85,7 +85,7 @@
             this.txtMaDonMoi.Location = new System.Drawing.Point(427, 12);
             this.txtMaDonMoi.Name = "txtMaDonMoi";
             this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
-            this.txtMaDonMoi.TabIndex = 129;
+            this.txtMaDonMoi.TabIndex = 1;
             this.txtMaDonMoi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonMoi_KeyPress);
             // 
             // label15
@@ -94,7 +94,7 @@
             this.label15.Location = new System.Drawing.Point(329, 15);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(92, 16);
-            this.label15.TabIndex = 128;
+            this.label15.TabIndex = 0;
             this.label15.Text = "Mã Đơn(New):";
             // 
             // btnIn
@@ -102,7 +102,7 @@
             this.btnIn.Location = new System.Drawing.Point(674, 229);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 25);
-            this.btnIn.TabIndex = 127;
+            this.btnIn.TabIndex = 12;
             this.btnIn.Text = "In Thư";
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
@@ -112,7 +112,7 @@
             this.btnXoa.Location = new System.Drawing.Point(584, 211);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
-            this.btnXoa.TabIndex = 126;
+            this.btnXoa.TabIndex = 8;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -122,7 +122,7 @@
             this.btnSua.Location = new System.Drawing.Point(584, 180);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
-            this.btnSua.TabIndex = 125;
+            this.btnSua.TabIndex = 7;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -132,7 +132,7 @@
             this.btnThem.Location = new System.Drawing.Point(584, 149);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
-            this.btnThem.TabIndex = 122;
+            this.btnThem.TabIndex = 6;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -152,9 +152,50 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 149);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(566, 207);
-            this.groupBox2.TabIndex = 121;
+            this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nội Dung Thư";
+            // 
+            // txtNoiNhan
+            // 
+            this.txtNoiNhan.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtNoiNhan.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtNoiNhan.Location = new System.Drawing.Point(70, 155);
+            this.txtNoiNhan.Multiline = true;
+            this.txtNoiNhan.Name = "txtNoiNhan";
+            this.txtNoiNhan.Size = new System.Drawing.Size(487, 44);
+            this.txtNoiNhan.TabIndex = 9;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 158);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(64, 16);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "Nơi Nhận";
+            // 
+            // txtLuuy
+            // 
+            this.txtLuuy.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtLuuy.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtLuuy.Location = new System.Drawing.Point(70, 105);
+            this.txtLuuy.Multiline = true;
+            this.txtLuuy.Name = "txtLuuy";
+            this.txtLuuy.Size = new System.Drawing.Size(487, 44);
+            this.txtLuuy.TabIndex = 7;
+            this.txtLuuy.Text = "Nếu quá thời hạn trên, Ông (Bà) không đến liên hệ. Công ty Cổ phần Cấp nước Tân H" +
+                "òa sẽ giải quyết theo quy định: điều chỉnh định mức = 0 và tạm ngưng cung cấp nư" +
+                "ớc.";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 108);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 16);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Lưu ý";
             // 
             // txtVeViec
             // 
@@ -213,7 +254,7 @@
             this.txtMaDonCu.Location = new System.Drawing.Point(248, 12);
             this.txtMaDonCu.Name = "txtMaDonCu";
             this.txtMaDonCu.Size = new System.Drawing.Size(75, 22);
-            this.txtMaDonCu.TabIndex = 119;
+            this.txtMaDonCu.TabIndex = 15;
             this.txtMaDonCu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonCu_KeyPress);
             // 
             // label21
@@ -222,7 +263,7 @@
             this.label21.Location = new System.Drawing.Point(166, 15);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(76, 16);
-            this.label21.TabIndex = 118;
+            this.label21.TabIndex = 14;
             this.label21.Text = "Mã Đơn Cũ:";
             // 
             // groupBox1
@@ -244,7 +285,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 56);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(763, 87);
-            this.groupBox1.TabIndex = 120;
+            this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Khách Hàng";
             // 
@@ -383,7 +424,7 @@
             this.dgvDSThu.Location = new System.Drawing.Point(12, 362);
             this.dgvDSThu.Name = "dgvDSThu";
             this.dgvDSThu.Size = new System.Drawing.Size(616, 126);
-            this.dgvDSThu.TabIndex = 130;
+            this.dgvDSThu.TabIndex = 13;
             this.dgvDSThu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSThu_CellContentClick);
             // 
             // IDCT
@@ -423,10 +464,11 @@
             // radDutChi
             // 
             this.radDutChi.AutoSize = true;
+            this.radDutChi.Checked = true;
             this.radDutChi.Location = new System.Drawing.Point(674, 149);
             this.radDutChi.Name = "radDutChi";
             this.radDutChi.Size = new System.Drawing.Size(67, 20);
-            this.radDutChi.TabIndex = 131;
+            this.radDutChi.TabIndex = 9;
             this.radDutChi.TabStop = true;
             this.radDutChi.Text = "Đứt Chì";
             this.radDutChi.UseVisualStyleBackColor = true;
@@ -437,7 +479,7 @@
             this.radCDDM.Location = new System.Drawing.Point(674, 175);
             this.radCDDM.Name = "radCDDM";
             this.radCDDM.Size = new System.Drawing.Size(64, 20);
-            this.radCDDM.TabIndex = 132;
+            this.radCDDM.TabIndex = 10;
             this.radCDDM.TabStop = true;
             this.radCDDM.Text = "CĐĐM";
             this.radCDDM.UseVisualStyleBackColor = true;
@@ -447,7 +489,7 @@
             this.txtIDCT.Location = new System.Drawing.Point(572, 12);
             this.txtIDCT.Name = "txtIDCT";
             this.txtIDCT.Size = new System.Drawing.Size(80, 22);
-            this.txtIDCT.TabIndex = 134;
+            this.txtIDCT.TabIndex = 3;
             this.txtIDCT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIDCT_KeyPress);
             // 
             // label9
@@ -456,7 +498,7 @@
             this.label9.Location = new System.Drawing.Point(513, 15);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 16);
-            this.label9.TabIndex = 133;
+            this.label9.TabIndex = 2;
             this.label9.Text = "Mã Thư";
             // 
             // radRong
@@ -465,7 +507,7 @@
             this.radRong.Location = new System.Drawing.Point(674, 201);
             this.radRong.Name = "radRong";
             this.radRong.Size = new System.Drawing.Size(59, 20);
-            this.radRong.TabIndex = 135;
+            this.radRong.TabIndex = 11;
             this.radRong.TabStop = true;
             this.radRong.Text = "Rỗng";
             this.radRong.UseVisualStyleBackColor = true;
@@ -479,47 +521,6 @@
             this.label34.Size = new System.Drawing.Size(168, 16);
             this.label34.TabIndex = 136;
             this.label34.Text = "Ctrl+T: Cập Nhật Tiến Trình";
-            // 
-            // txtLuuy
-            // 
-            this.txtLuuy.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtLuuy.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtLuuy.Location = new System.Drawing.Point(70, 105);
-            this.txtLuuy.Multiline = true;
-            this.txtLuuy.Name = "txtLuuy";
-            this.txtLuuy.Size = new System.Drawing.Size(487, 44);
-            this.txtLuuy.TabIndex = 7;
-            this.txtLuuy.Text = "Nếu quá thời hạn trên, Ông (Bà) không đến liên hệ. Công ty Cổ phần Cấp nước Tân H" +
-                "òa sẽ giải quyết theo quy định: điều chỉnh định mức = 0 và tạm ngưng cung cấp nư" +
-                "ớc.";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 108);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(39, 16);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "Lưu ý";
-            // 
-            // txtNoiNhan
-            // 
-            this.txtNoiNhan.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtNoiNhan.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtNoiNhan.Location = new System.Drawing.Point(70, 155);
-            this.txtNoiNhan.Multiline = true;
-            this.txtNoiNhan.Name = "txtNoiNhan";
-            this.txtNoiNhan.Size = new System.Drawing.Size(487, 44);
-            this.txtNoiNhan.TabIndex = 9;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 158);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(64, 16);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "Nơi Nhận";
             // 
             // frmThaoThuMoi
             // 
