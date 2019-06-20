@@ -57,6 +57,7 @@ namespace KTKS_DonKH.DAL.DonTu
         {
             try
             {
+                
                 db.DonTu_ChiTiets.DeleteAllOnSubmit(entity.DonTu_ChiTiets.ToList());
                 db.DonTus.DeleteOnSubmit(entity);
                 db.SubmitChanges();
@@ -72,6 +73,11 @@ namespace KTKS_DonKH.DAL.DonTu
         public bool checkExist(int MaDon)
         {
             return db.DonTus.Any(item => item.MaDon == MaDon);
+        }
+
+        public bool checkPhong(int MaDon, int MaPhong)
+        {
+            return db.DonTus.Any(item => item.MaDon == MaDon && db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy.Value).MaPhong == MaPhong);
         }
 
         public LinQ.DonTu get(int MaDon)
@@ -97,10 +103,10 @@ namespace KTKS_DonKH.DAL.DonTu
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS(int FromMaDon, int ToMaDon)
+        public DataTable getDS(int MaDon,int MaPhong)
         {
             var query = from item in db.DonTus
-                        where item.MaDon >= FromMaDon && item.MaDon <= ToMaDon
+                        where item.MaDon == MaDon&& db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).MaPhong==MaPhong
                         select new
                         {
                             item.MaDon,
@@ -110,10 +116,28 @@ namespace KTKS_DonKH.DAL.DonTu
                             HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
                             DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
                             NoiDung = item.Name_NhomDon,
-                            CreateBy=db.Users.SingleOrDefault(itemA=>itemA.CreateBy==item.CreateBy).HoTen,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.CreateBy == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }
+
+        //public DataTable getDS(int FromMaDon, int ToMaDon)
+        //{
+        //    var query = from item in db.DonTus
+        //                where item.MaDon >= FromMaDon && item.MaDon <= ToMaDon
+        //                select new
+        //                {
+        //                    item.MaDon,
+        //                    item.SoCongVan,
+        //                    item.CreateDate,
+        //                    DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
+        //                    HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
+        //                    DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
+        //                    NoiDung = item.Name_NhomDon,
+        //                    CreateBy=db.Users.SingleOrDefault(itemA=>itemA.CreateBy==item.CreateBy).HoTen,
+        //                };
+        //    return LINQToDataTable(query);
+        //}
 
         public DataTable getDSBySoCongVan(string SoCongVan)
         {
@@ -133,10 +157,46 @@ namespace KTKS_DonKH.DAL.DonTu
             return LINQToDataTable(query);
         }
 
+        public DataTable getDSBySoCongVan(string SoCongVan, int MaPhong)
+        {
+            var query = from item in db.DonTus
+                        where item.SoCongVan == SoCongVan && db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).MaPhong == MaPhong
+                        select new
+                        {
+                            item.MaDon,
+                            item.SoCongVan,
+                            item.CreateDate,
+                            DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
+                            HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
+                            DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
+                            NoiDung = item.Name_NhomDon,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.CreateBy == item.CreateBy).HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.DonTus
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            item.MaDon,
+                            item.SoCongVan,
+                            item.CreateDate,
+                            DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
+                            HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
+                            DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
+                            NoiDung = item.Name_NhomDon,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.CreateBy == item.CreateBy).HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate, int MaPhong)
+        {
+            var query = from item in db.DonTus
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).MaPhong == MaPhong
                         select new
                         {
                             item.MaDon,
@@ -217,6 +277,24 @@ namespace KTKS_DonKH.DAL.DonTu
         {
             var query = from item in db.DonTu_ChiTiets
                         where item.DanhBo == DanhBo
+                        select new
+                        {
+                            item.MaDon,
+                            item.DonTu.SoCongVan,
+                            item.CreateDate,
+                            DanhBo = item.DonTu.DonTu_ChiTiets.Count == 1 ? item.DonTu.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
+                            HoTen = item.DonTu.DonTu_ChiTiets.Count == 1 ? item.DonTu.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
+                            DiaChi = item.DonTu.DonTu_ChiTiets.Count == 1 ? item.DonTu.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
+                            NoiDung = item.DonTu.Name_NhomDon,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.CreateBy == item.CreateBy).HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_ByDanhBo(string DanhBo, int MaPhong)
+        {
+            var query = from item in db.DonTu_ChiTiets
+                        where item.DanhBo == DanhBo && db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).MaPhong == MaPhong
                         select new
                         {
                             item.MaDon,

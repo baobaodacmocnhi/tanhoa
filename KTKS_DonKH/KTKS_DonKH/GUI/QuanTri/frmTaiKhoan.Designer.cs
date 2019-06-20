@@ -88,6 +88,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.chkKTXM = new System.Windows.Forms.CheckBox();
             this.chkBamChi = new System.Windows.Forms.CheckBox();
+            this.cmbPhong = new System.Windows.Forms.ComboBox();
+            this.lbPhong = new System.Windows.Forms.Label();
+            this.btnXem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTaiKhoan)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -603,7 +606,7 @@
             // cmbNhom
             // 
             this.cmbNhom.FormattingEnabled = true;
-            this.cmbNhom.Location = new System.Drawing.Point(377, 136);
+            this.cmbNhom.Location = new System.Drawing.Point(373, 136);
             this.cmbNhom.Name = "cmbNhom";
             this.cmbNhom.Size = new System.Drawing.Size(138, 24);
             this.cmbNhom.TabIndex = 33;
@@ -654,12 +657,46 @@
             this.chkBamChi.Text = "Bấm Chì";
             this.chkBamChi.UseVisualStyleBackColor = true;
             // 
+            // cmbPhong
+            // 
+            this.cmbPhong.FormattingEnabled = true;
+            this.cmbPhong.Location = new System.Drawing.Point(570, 137);
+            this.cmbPhong.Name = "cmbPhong";
+            this.cmbPhong.Size = new System.Drawing.Size(138, 24);
+            this.cmbPhong.TabIndex = 39;
+            this.cmbPhong.Visible = false;
+            // 
+            // lbPhong
+            // 
+            this.lbPhong.AutoSize = true;
+            this.lbPhong.Location = new System.Drawing.Point(517, 140);
+            this.lbPhong.Name = "lbPhong";
+            this.lbPhong.Size = new System.Drawing.Size(47, 16);
+            this.lbPhong.TabIndex = 38;
+            this.lbPhong.Text = "Phòng";
+            this.lbPhong.Visible = false;
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(579, 13);
+            this.btnXem.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 25);
+            this.btnXem.TabIndex = 40;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Visible = false;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
             // frmTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1328, 626);
+            this.Controls.Add(this.btnXem);
+            this.Controls.Add(this.cmbPhong);
+            this.Controls.Add(this.lbPhong);
             this.Controls.Add(this.chkBamChi);
             this.Controls.Add(this.chkKTXM);
             this.Controls.Add(this.cmbTo);
@@ -764,5 +801,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToTP;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToBC;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ThuKy;
+        private System.Windows.Forms.ComboBox cmbPhong;
+        private System.Windows.Forms.Label lbPhong;
+        private System.Windows.Forms.Button btnXem;
     }
 }

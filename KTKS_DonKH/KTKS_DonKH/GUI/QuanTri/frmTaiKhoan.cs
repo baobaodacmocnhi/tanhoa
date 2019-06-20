@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.QuanTri
 {
@@ -20,6 +21,7 @@ namespace KTKS_DonKH.GUI.QuanTri
         CNhom _cNhom = new CNhom();
         CMenu _cMenu = new CMenu();
         CTo _cTo = new CTo();
+        CPhongBanDoi _cPBD = new CPhongBanDoi();
         int _selectedindex = -1;
         BindingList<User> _blNguoiDung;
 
@@ -30,22 +32,31 @@ namespace KTKS_DonKH.GUI.QuanTri
 
         private void frmTaiKhoan_Load(object sender, EventArgs e)
         {
+            dgvDSTaiKhoan.AutoGenerateColumns = false;
             if (CTaiKhoan.Admin)
             {
                 chkPhoGiamDoc.Visible = true;
                 chkAn.Visible = true;
-                _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDS_Admin());
+                lbPhong.Visible = true;
+                cmbPhong.Visible = true;
+                cmbPhong.DataSource = _cPBD.getDS_ConfigChuongTrinh();
+                cmbPhong.ValueMember = "ID";
+                cmbPhong.DisplayMember = "Name";
+                btnXem.Visible = true;
+                btnXem.PerformClick();
                 dgvDSTaiKhoan.Columns["MatKhau"].Visible = true;
             }
             else
             {
                 chkPhoGiamDoc.Visible = false;
                 chkAn.Visible = false;
+                lbPhong.Visible = false;
+                cmbPhong.Visible = false;
+                btnXem.Visible = false;
                 _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDSExceptMaND(CTaiKhoan.MaUser));
+                dgvDSTaiKhoan.DataSource = _blNguoiDung;
             }
-            dgvDSTaiKhoan.AutoGenerateColumns = false;
-            dgvDSTaiKhoan.DataSource = _blNguoiDung;
-
+            
             cmbTo.DataSource = _cTo.getDS();
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
@@ -69,7 +80,7 @@ namespace KTKS_DonKH.GUI.QuanTri
             chkBamChi.Checked = false;
             if (CTaiKhoan.Admin)
             {
-                _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDS_Admin());
+                btnXem.PerformClick();
             }
             else
             {
@@ -92,6 +103,10 @@ namespace KTKS_DonKH.GUI.QuanTri
                     nguoidung.MaKiemBamChi = txtMaKiemBamChi.Text.Trim();
                     nguoidung.MaTo = int.Parse(cmbTo.SelectedValue.ToString());
                     nguoidung.MaNhom = int.Parse(cmbNhom.SelectedValue.ToString());
+                    if (CTaiKhoan.Admin == true)
+                        nguoidung.MaPhong = int.Parse(cmbPhong.SelectedValue.ToString());
+                    else
+                        nguoidung.MaPhong = CTaiKhoan.MaPhong;
                     nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
                     nguoidung.An = chkAn.Checked;
                     nguoidung.TruongPhong = chkPhong.Checked;
@@ -299,6 +314,12 @@ namespace KTKS_DonKH.GUI.QuanTri
                     gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Sua"], "False");
                     gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xoa"], "False");
                 }
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDS_Admin(int.Parse(cmbPhong.SelectedValue.ToString())));
+            dgvDSTaiKhoan.DataSource = _blNguoiDung;
         }
 
         

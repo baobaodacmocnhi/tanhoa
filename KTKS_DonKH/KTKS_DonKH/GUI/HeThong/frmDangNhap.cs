@@ -44,32 +44,33 @@ namespace KTKS_DonKH.GUI.HeThong
                     if (nguoidung.ToGD == true)
                     {
                         CTaiKhoan.ToGD = nguoidung.ToGD;
-                        CTaiKhoan.MaTo = "ToGD";
+                        CTaiKhoan.KyHieuMaTo = "ToGD";
                     }
                     else
                         if (nguoidung.ToTB == true)
                         {
                             CTaiKhoan.ToTB = nguoidung.ToTB;
-                            CTaiKhoan.MaTo = "ToTB";
+                            CTaiKhoan.KyHieuMaTo = "ToTB";
                         }
                         else
                             if (nguoidung.ToTP == true)
                             {
                                 CTaiKhoan.ToTP = nguoidung.ToTP;
-                                CTaiKhoan.MaTo = "ToTP";
+                                CTaiKhoan.KyHieuMaTo = "ToTP";
                             }
                             else
                                 if (nguoidung.ToBC == true)
                                 {
                                     CTaiKhoan.ToBC = nguoidung.ToBC;
-                                    CTaiKhoan.MaTo = "ToBC";
+                                    CTaiKhoan.KyHieuMaTo = "ToBC";
                                 }
                     if (nguoidung.MaTo != null)
                         CTaiKhoan.TenTo = nguoidung.To.TenTo;
                     CTaiKhoan.ToTruong = nguoidung.ToTruong;
                     CTaiKhoan.PhoGiamDoc = nguoidung.PhoGiamDoc;
                     CTaiKhoan.TruongPhong = nguoidung.TruongPhong;
-
+                    CTaiKhoan.MaPhong = nguoidung.MaPhong.Value;
+                    CTaiKhoan.TenPhong = nguoidung.Phong.Name;
                     if (nguoidung.MaNhom != null)
                         CTaiKhoan.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(true, nguoidung.MaNhom.Value);
                     CTaiKhoan.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(true, nguoidung.MaU);

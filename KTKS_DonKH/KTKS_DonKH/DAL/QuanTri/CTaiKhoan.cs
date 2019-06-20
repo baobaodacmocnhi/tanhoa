@@ -108,11 +108,11 @@ namespace KTKS_DonKH.DAL.QuanTri
             set { CTaiKhoan._ToBC = value; }
         }
 
-        static string _MaTo = "";
-        public static string MaTo
+        static string _KyHieuMaTo = "";
+        public static string KyHieuMaTo
         {
-            get { return CTaiKhoan._MaTo; }
-            set { CTaiKhoan._MaTo = value; }
+            get { return CTaiKhoan._KyHieuMaTo; }
+            set { CTaiKhoan._KyHieuMaTo = value; }
         }
 
         static string _TenTo = "";
@@ -120,6 +120,20 @@ namespace KTKS_DonKH.DAL.QuanTri
         {
             get { return CTaiKhoan._TenTo; }
             set { CTaiKhoan._TenTo = value; }
+        }
+
+        static int _MaPhong = -1;
+        public static int MaPhong
+        {
+            get { return CTaiKhoan._MaPhong; }
+            set { CTaiKhoan._MaPhong = value; }
+        }
+
+        static string _TenPhong = "";
+        public static string TenPhong
+        {
+            get { return CTaiKhoan._TenPhong; }
+            set { CTaiKhoan._TenPhong = value; }
         }
 
         static System.Data.DataTable _dtQuyenNhom;
@@ -164,9 +178,25 @@ namespace KTKS_DonKH.DAL.QuanTri
                 //db.SubmitChanges();
             }
             _maUser = -1;
+            _maNhom = -1;
             _taiKhoan = "";
             _hoTen = "";
             _MaKiemBamChi = "";
+            _Admin = false;
+            _PhoGiamDoc = false;
+            _TruongPhong = false;
+            _ToTruong = false;
+            _ThuKy = false;
+            _ToGD = false;
+            _ToKH = false;
+            _ToXL = false;
+            _ToBC = false;
+            _KyHieuMaTo = "";
+            _TenTo = "";
+            _MaPhong = -1;
+            _TenPhong = "";
+            _dtQuyenNguoiDung = null;
+            _dtQuyenNhom = null;
             ///
             db.Connection.Close();
         }
@@ -274,9 +304,9 @@ namespace KTKS_DonKH.DAL.QuanTri
             return db.Users.OrderBy(item => item.STT).ToList();
         }
 
-        public List<User> GetDS_Admin()
+        public List<User> GetDS_Admin(int MaPhong)
         {
-            return db.Users.Where(item=>item.MaU!=0).OrderBy(item => item.STT).ToList();
+            return db.Users.Where(item=>item.MaU!=0).Where(item=>item.MaPhong==MaPhong).OrderBy(item => item.STT).ToList();
         }
 
         public List<User> GetDSExceptMaND(int MaND)
@@ -321,7 +351,7 @@ namespace KTKS_DonKH.DAL.QuanTri
             return db.Users.SingleOrDefault(item => item.MaU == MaU).HoTen;
         }
 
-        public static bool CheckQuyen(string TenMenu, string LoaiQuyen)
+        public static bool  CheckQuyen(string TenMenu, string LoaiQuyen)
         {
             string query = "";
             switch (LoaiQuyen)
@@ -373,6 +403,11 @@ namespace KTKS_DonKH.DAL.QuanTri
                 }
                 else
                     return false;
+        }
+
+        public static bool checkPhong(int MaU,int MaPhong)
+        {
+            return db.Users.Any(item => item.MaU == MaU && item.MaPhong == MaPhong);
         }
 
         public int GetMaxSTT()

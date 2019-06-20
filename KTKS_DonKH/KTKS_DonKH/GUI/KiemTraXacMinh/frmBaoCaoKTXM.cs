@@ -55,7 +55,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dt = _cKTXM.getDS("",dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
             else
             {
-                dt = _cKTXM.getDS(CTaiKhoan.MaTo, dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
+                dt = _cKTXM.getDS(CTaiKhoan.KyHieuMaTo, dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
             }
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -147,7 +147,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     dt = _cKTXM.getDS_BySoCongVan(txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Ngày":
-                        dt = _cKTXM.getDS(CTaiKhoan.MaTo, dateTu_SoLuong.Value, dateDen_SoLuong.Value);
+                        dt = _cKTXM.getDS(CTaiKhoan.KyHieuMaTo, dateTu_SoLuong.Value, dateDen_SoLuong.Value);
                     break;
                 default:
                     break;
@@ -405,7 +405,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dt = _cKTXM.getDS("", dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
             else
             {
-                dt = _cKTXM.getDS(CTaiKhoan.MaTo, dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
+                dt = _cKTXM.getDS(CTaiKhoan.KyHieuMaTo, dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
             }
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();

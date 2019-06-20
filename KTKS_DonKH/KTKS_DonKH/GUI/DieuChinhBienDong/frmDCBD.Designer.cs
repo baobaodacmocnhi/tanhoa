@@ -187,6 +187,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtHCSN);
+            this.groupBox1.Controls.Add(this.lbKhongTinhPhiBVMT);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.txtDV);
             this.groupBox1.Controls.Add(this.label10);
@@ -1496,7 +1497,7 @@
             // 
             this.lbKhongTinhPhiBVMT.AutoSize = true;
             this.lbKhongTinhPhiBVMT.ForeColor = System.Drawing.Color.Red;
-            this.lbKhongTinhPhiBVMT.Location = new System.Drawing.Point(1041, 206);
+            this.lbKhongTinhPhiBVMT.Location = new System.Drawing.Point(463, 18);
             this.lbKhongTinhPhiBVMT.Name = "lbKhongTinhPhiBVMT";
             this.lbKhongTinhPhiBVMT.Size = new System.Drawing.Size(109, 16);
             this.lbKhongTinhPhiBVMT.TabIndex = 126;
@@ -1510,7 +1511,6 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1320, 659);
-            this.Controls.Add(this.lbKhongTinhPhiBVMT);
             this.Controls.Add(this.chkKhongTinhPhiBVMT);
             this.Controls.Add(this.chkTinhPhiBVMT);
             this.Controls.Add(this.label34);

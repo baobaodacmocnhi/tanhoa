@@ -486,21 +486,21 @@ namespace KTKS_DonKH.GUI.TruyThu
                     {
                         entity.ThanhToan1 = true;
                         entity.Ngay1 = dateThanhToan1.Value;
-                        entity.SoTien1 = int.Parse(txtSoTien1.Text.Trim());
+                        entity.SoTien1 = int.Parse(txtSoTien1.Text.Trim().Replace(".", ""));
                     }
                     ///
                     if (chkThanhToan2.Checked)
                     {
                         entity.ThanhToan2 = true;
                         entity.Ngay2 = dateThanhToan2.Value;
-                        entity.SoTien2 = int.Parse(txtSoTien2.Text.Trim());
+                        entity.SoTien2 = int.Parse(txtSoTien2.Text.Trim().Replace(".", ""));
                     }
                     ///
                     if (chkThanhToan3.Checked)
                     {
                         entity.ThanhToan3 = true;
                         entity.Ngay3 = dateThanhToan3.Value;
-                        entity.SoTien3 = int.Parse(txtSoTien3.Text.Trim());
+                        entity.SoTien3 = int.Parse(txtSoTien3.Text.Trim().Replace(".", ""));
                     }
 
                     if (_cGianLan.Them_ChiTiet(entity))
@@ -581,7 +581,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             _gianlan.ThanhToan1 = true;
                             _gianlan.Ngay1 = dateThanhToan1.Value;
-                            _gianlan.SoTien1 = int.Parse(txtSoTien1.Text.Trim());
+                            _gianlan.SoTien1 = int.Parse(txtSoTien1.Text.Trim().Replace(".", ""));
                         }
                         else
                         {
@@ -594,7 +594,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             _gianlan.ThanhToan2 = true;
                             _gianlan.Ngay2 = dateThanhToan2.Value;
-                            _gianlan.SoTien2 = int.Parse(txtSoTien2.Text.Trim());
+                            _gianlan.SoTien2 = int.Parse(txtSoTien2.Text.Trim().Replace(".", ""));
                         }
                         else
                         {
@@ -607,7 +607,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             _gianlan.ThanhToan3 = true;
                             _gianlan.Ngay3 = dateThanhToan3.Value;
-                            _gianlan.SoTien3 = int.Parse(txtSoTien3.Text.Trim());
+                            _gianlan.SoTien3 = int.Parse(txtSoTien3.Text.Trim().Replace(".", ""));
                         }
                         else
                         {

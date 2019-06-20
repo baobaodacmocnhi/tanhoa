@@ -1153,7 +1153,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         entity.IDCT = _cttttn.IDCT;
                         entity.NgayDong = dateDongTien.Value;
-                        entity.SoTien = int.Parse(txtSoTien.Text.Trim());
+                        entity.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".",""));
 
                         if (_cTTTN.Them_ThanhToan(entity))
                         {
@@ -1183,7 +1183,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         TruyThuTienNuoc_ThanhToan entity = _cTTTN.get_ThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc.SelectedRows[0].Cells["MaTTTTTN"].Value.ToString()));
 
                         entity.NgayDong = dateDongTien.Value;
-                        entity.SoTien = int.Parse(txtSoTien.Text.Trim());
+                        entity.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
 
                         if (_cTTTN.Sua_ThanhToan(entity))
                         {

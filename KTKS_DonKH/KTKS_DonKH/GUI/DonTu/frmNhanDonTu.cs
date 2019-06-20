@@ -520,6 +520,8 @@ namespace KTKS_DonKH.GUI.DonTu
 
                     if (chkCT_GCNDTDHN.Checked)
                         entity.CT_GCNDTDHN = true;
+
+                    entity.MaPhong = CTaiKhoan.MaPhong;
                     ///
                     if (_cDonTu.Them(entity))
                     {
@@ -546,6 +548,11 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     if (_dontu != null)
                     {
+                        if (CTaiKhoan.Admin==false&& _cDonTu.checkPhong(_dontu.MaDon, CTaiKhoan.MaPhong) == false)
+                        {
+                            MessageBox.Show("Mã Đơn này không thuộc phòng của bạn lập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (_dontu.DonTu_ChiTiets.Count == 1)
                         {
                             if (txtDanhBo.Text.Trim().Replace(" ", "") != _dontu.DonTu_ChiTiets.SingleOrDefault().DanhBo || txtHoTen.Text.Trim() != _dontu.DonTu_ChiTiets.SingleOrDefault().HoTen || txtDiaChi.Text.Trim() != _dontu.DonTu_ChiTiets.SingleOrDefault().DiaChi)
@@ -711,6 +718,11 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     if (_dontu != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
+                        if (CTaiKhoan.Admin == false && _cDonTu.checkPhong(_dontu.MaDon, CTaiKhoan.MaPhong) == false)
+                        {
+                            MessageBox.Show("Mã Đơn này không thuộc phòng của bạn lập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (_cDonTu.Xoa(_dontu))
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -861,6 +873,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 if (entity.SoNK != null)
                     dr["DinhMucSau"] = entity.SoNK * 4;
                 dr["HieuLucTuKy"] = entity.HieuLucKy;
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 dr["HoTenNV"] = CTaiKhoan.HoTen;
                 dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
                 rptBienNhanDonTu rpt = new rptBienNhanDonTu();

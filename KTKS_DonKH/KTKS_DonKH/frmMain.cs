@@ -145,7 +145,7 @@ namespace KTKS_DonKH
 
                 foreach (ToolStripMenuItem itemParent in this.MainMenuStrip.Items)
                 {
-                    if (itemParent.Name == "mnuHeThong" || itemParent.Name == "mnuTimKiem" || itemParent.Name == "mnuTrungTamKhachHang")
+                    if (itemParent.Name == "mnuHeThong" || itemParent.Name == "mnuTimKiem")// || itemParent.Name == "mnuTrungTamKhachHang")
                         continue;
                     if (_cPhanQuyenNhom.CheckByTenMenuChaMaNhom(itemParent.Name, CTaiKhoan.MaNhom))
                         itemParent.Visible = true;

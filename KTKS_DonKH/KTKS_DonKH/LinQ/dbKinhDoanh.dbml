@@ -47,12 +47,14 @@
       <Column Name="PhoGiamDoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MaNhom" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaPhong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="User_PhanQuyenNguoiDung" Member="PhanQuyenNguoiDungs" ThisKey="MaU" OtherKey="MaND" Type="PhanQuyenNguoiDung" />
       <Association Name="Nhom_User" Member="Nhom" ThisKey="MaNhom" OtherKey="MaNhom" Type="Nhom" IsForeignKey="true" />
+      <Association Name="Phong_User" Member="Phong" ThisKey="MaPhong" OtherKey="ID" Type="Phong" IsForeignKey="true" />
       <Association Name="To_User" Member="To" ThisKey="MaTo" OtherKey="MaTo" Type="To" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1006,6 +1008,7 @@
       <Column Name="CT_GXN2SN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CT_GDKKD" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CT_GCNDTDHN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MaPhong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -1607,6 +1610,15 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Menu_PhanQuyenNhom" Member="Menu" ThisKey="MaMenu" OtherKey="MaMenu" Type="Menu" IsForeignKey="true" />
       <Association Name="Nhom_PhanQuyenNhom" Member="Nhom" ThisKey="MaNhom" OtherKey="MaNhom" Type="Nhom" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Phong" Member="Phongs">
+    <Type Name="Phong">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Phong_User" Member="Users" ThisKey="ID" OtherKey="MaPhong" Type="User" />
     </Type>
   </Table>
   <Table Name="dbo.PhongBanDoi" Member="PhongBanDois">
