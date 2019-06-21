@@ -74,11 +74,11 @@
             // 
             // dateDen
             // 
-            this.dateDen.CustomFormat = "dd/MM/yyyy";
+            this.dateDen.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateDen.Location = new System.Drawing.Point(80, 33);
             this.dateDen.Name = "dateDen";
-            this.dateDen.Size = new System.Drawing.Size(90, 22);
+            this.dateDen.Size = new System.Drawing.Size(140, 22);
             this.dateDen.TabIndex = 2;
             // 
             // cmbTimTheo
@@ -98,11 +98,11 @@
             // 
             // dateTu
             // 
-            this.dateTu.CustomFormat = "dd/MM/yyyy";
+            this.dateTu.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTu.Location = new System.Drawing.Point(80, 5);
             this.dateTu.Name = "dateTu";
-            this.dateTu.Size = new System.Drawing.Size(90, 22);
+            this.dateTu.Size = new System.Drawing.Size(140, 22);
             this.dateTu.TabIndex = 1;
             // 
             // label2
@@ -116,7 +116,7 @@
             // 
             // btnInDSDon
             // 
-            this.btnInDSDon.Location = new System.Drawing.Point(798, 13);
+            this.btnInDSDon.Location = new System.Drawing.Point(848, 13);
             this.btnInDSDon.Name = "btnInDSDon";
             this.btnInDSDon.Size = new System.Drawing.Size(75, 25);
             this.btnInDSDon.TabIndex = 17;
@@ -135,7 +135,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(717, 13);
+            this.btnXem.Location = new System.Drawing.Point(767, 13);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 25);
             this.btnXem.TabIndex = 16;
@@ -151,7 +151,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
             this.panel_KhoangThoiGian.Location = new System.Drawing.Point(535, 0);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
-            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(176, 60);
+            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(226, 60);
             this.panel_KhoangThoiGian.TabIndex = 15;
             this.panel_KhoangThoiGian.Visible = false;
             // 
@@ -394,6 +394,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1219, 611);
+            this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.cmbPhong);
             this.Controls.Add(this.lbPhong);
             this.Controls.Add(this.dgvDSDonTu);
@@ -405,7 +406,6 @@
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNoiDungTimKiem2);
-            this.Controls.Add(this.panel_KhoangThoiGian);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmDSDonTu";

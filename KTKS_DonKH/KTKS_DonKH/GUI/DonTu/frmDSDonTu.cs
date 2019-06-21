@@ -226,14 +226,16 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                     DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
 
-                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
+                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
                     dr["Ma"] = item.Cells["MaDon"].Value.ToString();
                     dr["CreateDate"] = item.Cells["CreateDate"].Value.ToString();
                     if (item.Cells["DanhBo"].Value.ToString().Length == 11)
                         dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
                     dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
                     dr["NoiDung"] = item.Cells["NoiDung"].Value.ToString();
+                    if (CTaiKhoan.MaPhong == 1)
+                        dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
                     dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                     dsBaoCao.Tables["CongVan"].Rows.Add(dr);

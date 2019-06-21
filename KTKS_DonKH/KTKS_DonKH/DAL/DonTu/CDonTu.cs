@@ -178,7 +178,7 @@ namespace KTKS_DonKH.DAL.DonTu
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.DonTus
-                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        where item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate
                         select new
                         {
                             item.MaDon,
@@ -196,7 +196,7 @@ namespace KTKS_DonKH.DAL.DonTu
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate, int MaPhong)
         {
             var query = from item in db.DonTus
-                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).MaPhong == MaPhong
+                        where item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value<= ToCreateDate && db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).MaPhong == MaPhong
                         select new
                         {
                             item.MaDon,

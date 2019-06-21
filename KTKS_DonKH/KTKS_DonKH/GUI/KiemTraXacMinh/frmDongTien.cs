@@ -91,11 +91,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 chkLapBangGia.Checked = true;
                 dateLapBangGia.Value = ctktxm.NgayLapBangGia.Value;
+                txtSoTienDongTien.Text = ctktxm.SoTienDongTien;
             }
             else
             {
                 chkLapBangGia.Checked = false;
                 dateLapBangGia.Value = DateTime.Now;
+                txtSoTienDongTien.Text = "";
             }
 
             if (ctktxm.DongTien)
@@ -103,14 +105,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 chkDongTien.Checked = true;
                 //cmbNoiDungDongTien.SelectedValue = ctktxm.NoiDungDongTien;
                 dateDongTien.Value = ctktxm.NgayDongTien.Value;
-                txtSoTienDongTien.Text = ctktxm.SoTienDongTien;
+                
             }
             else
             {
                 chkDongTien.Checked = false;
                 //cmbNoiDungXuLy.SelectedIndex = -1;
                 dateDongTien.Value = DateTime.Now;
-                txtSoTienDongTien.Text = "";
+                
             }
 
             if (ctktxm.ChuyenLapTBCat)
@@ -153,10 +155,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 ///
                 chkLapBangGia.Checked = false;
                 dateLapBangGia.Value = DateTime.Now;
+                txtSoTienDongTien.Text = "";
                 ///
                 chkDongTien.Checked = false;
                 dateDongTien.Value = DateTime.Now;
-                txtSoTienDongTien.Text = "";
+                
                 ///
                 chkChuyenLapTBCat.Checked = false;
                 dateChuyenCatHuy.Value = DateTime.Now;
@@ -205,11 +208,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             ctktxm.LapBangGia = true;
                             ctktxm.NgayLapBangGia = dateLapBangGia.Value;
+                            ctktxm.SoTienDongTien = txtSoTienDongTien.Text.Trim();
                         }
                         else
                         {
                             ctktxm.LapBangGia = false;
                             ctktxm.NgayLapBangGia = null;
+                            ctktxm.SoTienDongTien = null;
                         }
 
                         if (chkDongTien.Checked)
@@ -217,14 +222,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             ctktxm.DongTien = true;
                             //ctktxm.NoiDungDongTien = cmbNoiDungDongTien.SelectedValue.ToString();
                             ctktxm.NgayDongTien = dateDongTien.Value;
-                            ctktxm.SoTienDongTien = txtSoTienDongTien.Text.Trim();
+                            
                         }
                         else
                         {
                             ctktxm.DongTien = false;
                             ctktxm.NoiDungDongTien = null;
                             ctktxm.NgayDongTien = null;
-                            ctktxm.SoTienDongTien = null;
+                            
                         }
 
                         if (chkChuyenLapTBCat.Checked)

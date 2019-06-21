@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbTheoYeuCau = new System.Windows.Forms.Label();
             this.txtTheoYeuCau = new System.Windows.Forms.TextBox();
             this.cmbTinhTrangDHN = new System.Windows.Forms.ComboBox();
@@ -490,14 +490,14 @@
             // 
             this.dgvDSKetQuaKiemTra.AllowUserToAddRows = false;
             this.dgvDSKetQuaKiemTra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDSKetQuaKiemTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSKetQuaKiemTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTKTXM,
@@ -589,20 +589,18 @@
             // 
             // groupBoxDongTien
             // 
-            this.groupBoxDongTien.Controls.Add(this.txtSoTienDongTien);
-            this.groupBoxDongTien.Controls.Add(this.label23);
             this.groupBoxDongTien.Controls.Add(this.dateDongTien);
             this.groupBoxDongTien.Controls.Add(this.label22);
             this.groupBoxDongTien.Enabled = false;
             this.groupBoxDongTien.Location = new System.Drawing.Point(779, 356);
             this.groupBoxDongTien.Name = "groupBoxDongTien";
-            this.groupBoxDongTien.Size = new System.Drawing.Size(370, 66);
+            this.groupBoxDongTien.Size = new System.Drawing.Size(115, 66);
             this.groupBoxDongTien.TabIndex = 41;
             this.groupBoxDongTien.TabStop = false;
             // 
             // txtSoTienDongTien
             // 
-            this.txtSoTienDongTien.Location = new System.Drawing.Point(119, 37);
+            this.txtSoTienDongTien.Location = new System.Drawing.Point(113, 37);
             this.txtSoTienDongTien.Name = "txtSoTienDongTien";
             this.txtSoTienDongTien.Size = new System.Drawing.Size(245, 22);
             this.txtSoTienDongTien.TabIndex = 57;
@@ -610,7 +608,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(118, 18);
+            this.label23.Location = new System.Drawing.Point(112, 18);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(55, 16);
             this.label23.TabIndex = 56;
@@ -661,7 +659,7 @@
             // chkChuyenLapTBCat
             // 
             this.chkChuyenLapTBCat.AutoSize = true;
-            this.chkChuyenLapTBCat.Location = new System.Drawing.Point(998, 256);
+            this.chkChuyenLapTBCat.Location = new System.Drawing.Point(900, 343);
             this.chkChuyenLapTBCat.Name = "chkChuyenLapTBCat";
             this.chkChuyenLapTBCat.Size = new System.Drawing.Size(142, 20);
             this.chkChuyenLapTBCat.TabIndex = 44;
@@ -674,7 +672,7 @@
             this.groupBoxChuyenCatHuy.Controls.Add(this.dateChuyenCatHuy);
             this.groupBoxChuyenCatHuy.Controls.Add(this.label6);
             this.groupBoxChuyenCatHuy.Enabled = false;
-            this.groupBoxChuyenCatHuy.Location = new System.Drawing.Point(998, 269);
+            this.groupBoxChuyenCatHuy.Location = new System.Drawing.Point(900, 356);
             this.groupBoxChuyenCatHuy.Name = "groupBoxChuyenCatHuy";
             this.groupBoxChuyenCatHuy.Size = new System.Drawing.Size(151, 66);
             this.groupBoxChuyenCatHuy.TabIndex = 43;
@@ -711,12 +709,14 @@
             // 
             // groupBoxLapBangGia
             // 
+            this.groupBoxLapBangGia.Controls.Add(this.txtSoTienDongTien);
+            this.groupBoxLapBangGia.Controls.Add(this.label23);
             this.groupBoxLapBangGia.Controls.Add(this.dateLapBangGia);
             this.groupBoxLapBangGia.Controls.Add(this.label2);
             this.groupBoxLapBangGia.Enabled = false;
             this.groupBoxLapBangGia.Location = new System.Drawing.Point(779, 269);
             this.groupBoxLapBangGia.Name = "groupBoxLapBangGia";
-            this.groupBoxLapBangGia.Size = new System.Drawing.Size(153, 66);
+            this.groupBoxLapBangGia.Size = new System.Drawing.Size(370, 66);
             this.groupBoxLapBangGia.TabIndex = 45;
             this.groupBoxLapBangGia.TabStop = false;
             // 
@@ -761,7 +761,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1167, 463);
+            this.ClientSize = new System.Drawing.Size(1158, 463);
             this.Controls.Add(this.chkKhongLienHe);
             this.Controls.Add(this.txtGhiChuNoiDungXuLy);
             this.Controls.Add(this.label8);

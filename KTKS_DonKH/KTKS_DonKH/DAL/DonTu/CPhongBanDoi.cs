@@ -14,6 +14,11 @@ namespace KTKS_DonKH.DAL.DonTu
             return LINQToDataTable(db.Phongs.ToList());
         }
 
+        public string getTenPhong_ConfigChuongTrinh(int MaPhong)
+        {
+            return db.Phongs.SingleOrDefault(item => item.ID == MaPhong).Name;
+        }
+
         public DataTable GetDS()
         {
             return LINQToDataTable(db.PhongBanDois.OrderBy(item => item.STT).ToList());

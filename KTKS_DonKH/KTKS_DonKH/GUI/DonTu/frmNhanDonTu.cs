@@ -183,12 +183,24 @@ namespace KTKS_DonKH.GUI.DonTu
                 txtVanDeKhac.Text = entity.VanDeKhac;
 
                 chkCT_HoaDon.Checked = entity.CT_HoaDon;
+                chkCT_HDTN_CQN.Checked = entity.CT_HDTN_CQN;
+                chkCT_CQN.Checked = entity.CT_CQN;
+                chkCT_Khac.Checked = entity.CT_Khac;
+                if (entity.CT_Khac == true)
+                {
+                    txtCT_Khac_GhiChu.Text = entity.CT_Khac_GhiChu;
+                }
+                else
+                {
+                    txtCT_Khac_GhiChu.Text = "";
+                }
+
                 chkCT_HK_KT3.Checked = entity.CT_HK_KT3;
                 chkCT_STT_GXNTT.Checked = entity.CT_STT_GXNTT;
-                chkCT_HDTN_CQN.Checked = entity.CT_HDTN_CQN;
+                chkCT_GDKKD.Checked = entity.CT_GDKKD;
+
                 chkCT_GC_SDSN.Checked = entity.CT_GC_SDSN;
                 chkCT_GXN2SN.Checked = entity.CT_GXN2SN;
-                chkCT_GDKKD.Checked = entity.CT_GDKKD;
                 chkCT_GCNDTDHN.Checked = entity.CT_GCNDTDHN;
 
                 dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(entity.DanhBo);
@@ -242,12 +254,17 @@ namespace KTKS_DonKH.GUI.DonTu
             //}
 
             chkCT_HoaDon.Checked = false;
+            chkCT_HDTN_CQN.Checked = false;
+            chkCT_CQN.Checked = false;
+            chkCT_Khac.Checked = false;
+            txtCT_Khac_GhiChu.Text = "";
+
             chkCT_HK_KT3.Checked = false;
             chkCT_STT_GXNTT.Checked = false;
-            chkCT_HDTN_CQN.Checked = false;
+            chkCT_GDKKD.Checked = false;
+
             chkCT_GC_SDSN.Checked = false;
             chkCT_GXN2SN.Checked = false;
-            chkCT_GDKKD.Checked = false;
             chkCT_GCNDTDHN.Checked = false;
 
             _dontu = null;
@@ -499,25 +516,28 @@ namespace KTKS_DonKH.GUI.DonTu
                     ///
                     if (chkCT_HoaDon.Checked)
                         entity.CT_HoaDon = true;
+                    if (chkCT_HDTN_CQN.Checked)
+                        entity.CT_HDTN_CQN = true;
+                    if (chkCT_CQN.Checked)
+                        entity.CT_CQN = true;
+                    if (chkCT_Khac.Checked)
+                    {
+                        entity.CT_Khac = true;
+                        entity.CT_Khac_GhiChu = txtCT_Khac_GhiChu.Text.Trim();
+                    }
 
                     if (chkCT_HK_KT3.Checked)
                         entity.CT_HK_KT3 = true;
-
                     if (chkCT_STT_GXNTT.Checked)
                         entity.CT_STT_GXNTT = true;
-
-                    if (chkCT_HDTN_CQN.Checked)
-                        entity.CT_HDTN_CQN = true;
+                    if (chkCT_GDKKD.Checked)
+                        entity.CT_GDKKD = true;
+                    
 
                     if (chkCT_GC_SDSN.Checked)
                         entity.CT_GC_SDSN = true;
-
                     if (chkCT_GXN2SN.Checked)
                         entity.CT_GXN2SN = true;
-
-                    if (chkCT_GDKKD.Checked)
-                        entity.CT_GDKKD = true;
-
                     if (chkCT_GCNDTDHN.Checked)
                         entity.CT_GCNDTDHN = true;
 
@@ -659,6 +679,29 @@ namespace KTKS_DonKH.GUI.DonTu
                         else
                             _dontu.CT_HoaDon = false;
 
+                        if (chkCT_HDTN_CQN.Checked)
+                            _dontu.CT_HDTN_CQN = true;
+                        else
+                            _dontu.CT_HDTN_CQN = false;
+
+                        if (chkCT_CQN.Checked)
+                            _dontu.CT_CQN = true;
+                        else
+                            _dontu.CT_CQN = false;
+
+                        if (chkCT_Khac.Checked)
+                        {
+                            _dontu.CT_Khac = true;
+                            _dontu.CT_Khac_GhiChu = txtCT_Khac_GhiChu.Text.Trim();
+                        }
+                        else
+                        {
+                            _dontu.CT_Khac = false;
+                            _dontu.CT_Khac_GhiChu = null;
+                        }
+
+                        //
+
                         if (chkCT_HK_KT3.Checked)
                             _dontu.CT_HK_KT3 = true;
                         else
@@ -669,10 +712,12 @@ namespace KTKS_DonKH.GUI.DonTu
                         else
                             _dontu.CT_STT_GXNTT = false;
 
-                        if (chkCT_HDTN_CQN.Checked)
-                            _dontu.CT_HDTN_CQN = true;
+                        if (chkCT_GDKKD.Checked)
+                            _dontu.CT_GDKKD = true;
                         else
-                            _dontu.CT_HDTN_CQN = false;
+                            _dontu.CT_GDKKD = false;
+
+                        //
 
                         if (chkCT_GC_SDSN.Checked)
                             _dontu.CT_GC_SDSN = true;
@@ -683,11 +728,6 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.CT_GXN2SN = true;
                         else
                             _dontu.CT_GXN2SN = false;
-
-                        if (chkCT_GDKKD.Checked)
-                            _dontu.CT_GDKKD = true;
-                        else
-                            _dontu.CT_GDKKD = false;
 
                         if (chkCT_GCNDTDHN.Checked)
                             _dontu.CT_GCNDTDHN = true;
@@ -805,6 +845,36 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["CT_HoaDon"] = false;
                 }
 
+                if (entity.CT_HDTN_CQN)
+                {
+                    dr["CT_HDTN_CQN"] = true;
+                }
+                else
+                {
+                    dr["CT_HDTN_CQN"] = false;
+                }
+
+                if (entity.CT_CQN)
+                {
+                    dr["CT_CQN"] = true;
+                }
+                else
+                {
+                    dr["CT_CQN"] = false;
+                }
+
+                if (entity.CT_Khac)
+                {
+                    dr["CT_Khac"] = true;
+                    dr["CT_Khac_GhiChu"] = entity.CT_Khac_GhiChu;
+                }
+                else
+                {
+                    dr["CT_Khac"] = false;
+                }
+
+                //
+
                 if (entity.CT_HK_KT3)
                 {
                     dr["CT_HK_KT3"] = true;
@@ -823,14 +893,16 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["CT_STT_GXNTT"] = false;
                 }
 
-                if (entity.CT_HDTN_CQN)
+                if (entity.CT_GDKKD)
                 {
-                    dr["CT_HDTN_CQN"] = true;
+                    dr["CT_GDKKD"] = true;
                 }
                 else
                 {
-                    dr["CT_HDTN_CQN"] = false;
+                    dr["CT_GDKKD"] = false;
                 }
+
+                //
 
                 if (entity.CT_GC_SDSN)
                 {
@@ -848,15 +920,6 @@ namespace KTKS_DonKH.GUI.DonTu
                 else
                 {
                     dr["CT_GXN2SN"] = false;
-                }
-
-                if (entity.CT_GDKKD)
-                {
-                    dr["CT_GDKKD"] = true;
-                }
-                else
-                {
-                    dr["CT_GDKKD"] = false;
                 }
 
                 if (entity.CT_GCNDTDHN)
@@ -1105,6 +1168,18 @@ namespace KTKS_DonKH.GUI.DonTu
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void chkCT_Khac_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkCT_Khac.Checked == true)
+                txtCT_Khac_GhiChu.ReadOnly = false;
+            else
+            {
+                txtCT_Khac_GhiChu.Text = "";
+                txtCT_Khac_GhiChu.ReadOnly = true;
+            }
+        }
+
 
     }
 }

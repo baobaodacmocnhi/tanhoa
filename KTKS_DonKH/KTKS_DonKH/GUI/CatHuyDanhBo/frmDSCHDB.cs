@@ -510,8 +510,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
                                 rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-
-                                rpt.PrintToPrinter(1, false, 1, 1);
+                                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                //rpt.PrintToPrinter(1, false, 1, 1);
                                 rpt.Clone();
                                 rpt.Dispose();
                             }
@@ -560,8 +560,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
                                 rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-
-                                rpt.PrintToPrinter(1, false, 1, 1);
+                                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                //rpt.PrintToPrinter(1, false, 1, 1);
                             }
                     if (radDSYCCHDB.Checked)
                         for (int i = 0; i < dgvDSYCCHDB.Rows.Count; i++)
@@ -626,8 +626,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
                                 rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-
-                                rpt.PrintToPrinter(1, false, 1, 1);
+                                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                //rpt.PrintToPrinter(1, false, 1, 1);
                                 rpt.Clone();
                                 rpt.Dispose();
                             }
@@ -666,8 +666,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
                                 rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-
-                                rpt.PrintToPrinter(1, false, 1, 1);
+                                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                //rpt.PrintToPrinter(1, false, 1, 1);
                                 rpt.Clone();
                                 rpt.Dispose();
                             }

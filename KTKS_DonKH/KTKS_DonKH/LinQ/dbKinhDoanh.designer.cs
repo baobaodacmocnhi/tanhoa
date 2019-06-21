@@ -23415,6 +23415,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _CT_HDTN_CQN;
 		
+		private bool _CT_CQN;
+		
 		private bool _CT_GC_SDSN;
 		
 		private bool _CT_GXN2SN;
@@ -23422,6 +23424,10 @@ namespace KTKS_DonKH.LinQ
 		private bool _CT_GDKKD;
 		
 		private bool _CT_GCNDTDHN;
+		
+		private bool _CT_Khac;
+		
+		private string _CT_Khac_GhiChu;
 		
 		private System.Nullable<int> _MaPhong;
 		
@@ -23521,6 +23527,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCT_STT_GXNTTChanged();
     partial void OnCT_HDTN_CQNChanging(bool value);
     partial void OnCT_HDTN_CQNChanged();
+    partial void OnCT_CQNChanging(bool value);
+    partial void OnCT_CQNChanged();
     partial void OnCT_GC_SDSNChanging(bool value);
     partial void OnCT_GC_SDSNChanged();
     partial void OnCT_GXN2SNChanging(bool value);
@@ -23529,6 +23537,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnCT_GDKKDChanged();
     partial void OnCT_GCNDTDHNChanging(bool value);
     partial void OnCT_GCNDTDHNChanged();
+    partial void OnCT_KhacChanging(bool value);
+    partial void OnCT_KhacChanged();
+    partial void OnCT_Khac_GhiChuChanging(string value);
+    partial void OnCT_Khac_GhiChuChanged();
     partial void OnMaPhongChanging(System.Nullable<int> value);
     partial void OnMaPhongChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -24139,6 +24151,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_CQN", DbType="Bit NOT NULL")]
+		public bool CT_CQN
+		{
+			get
+			{
+				return this._CT_CQN;
+			}
+			set
+			{
+				if ((this._CT_CQN != value))
+				{
+					this.OnCT_CQNChanging(value);
+					this.SendPropertyChanging();
+					this._CT_CQN = value;
+					this.SendPropertyChanged("CT_CQN");
+					this.OnCT_CQNChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_GC_SDSN", DbType="Bit NOT NULL")]
 		public bool CT_GC_SDSN
 		{
@@ -24215,6 +24247,46 @@ namespace KTKS_DonKH.LinQ
 					this._CT_GCNDTDHN = value;
 					this.SendPropertyChanged("CT_GCNDTDHN");
 					this.OnCT_GCNDTDHNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_Khac", DbType="Bit NOT NULL")]
+		public bool CT_Khac
+		{
+			get
+			{
+				return this._CT_Khac;
+			}
+			set
+			{
+				if ((this._CT_Khac != value))
+				{
+					this.OnCT_KhacChanging(value);
+					this.SendPropertyChanging();
+					this._CT_Khac = value;
+					this.SendPropertyChanged("CT_Khac");
+					this.OnCT_KhacChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_Khac_GhiChu", DbType="NVarChar(200)")]
+		public string CT_Khac_GhiChu
+		{
+			get
+			{
+				return this._CT_Khac_GhiChu;
+			}
+			set
+			{
+				if ((this._CT_Khac_GhiChu != value))
+				{
+					this.OnCT_Khac_GhiChuChanging(value);
+					this.SendPropertyChanging();
+					this._CT_Khac_GhiChu = value;
+					this.SendPropertyChanged("CT_Khac_GhiChu");
+					this.OnCT_Khac_GhiChuChanged();
 				}
 			}
 		}
