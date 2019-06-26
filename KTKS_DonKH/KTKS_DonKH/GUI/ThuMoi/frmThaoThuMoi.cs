@@ -508,6 +508,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
+                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                 if (_thumoi.ThuMoi.MaDonMoi != null)
                 {
                     if (_thumoi.ThuMoi.DonTu.DonTu_ChiTiets.Count==1)

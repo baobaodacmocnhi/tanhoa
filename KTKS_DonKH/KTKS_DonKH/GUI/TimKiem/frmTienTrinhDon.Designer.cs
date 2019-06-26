@@ -183,6 +183,7 @@
             this.gridColumn125 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn126 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn90 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn102 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn110 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -443,7 +444,7 @@
             this.repositoryItemCheckEdit4,
             this.repositoryItemCheckEdit5,
             this.repositoryItemCheckEdit6});
-            this.gridControl.Size = new System.Drawing.Size(1350, 552);
+            this.gridControl.Size = new System.Drawing.Size(1378, 552);
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewBamChi,
@@ -1836,7 +1837,8 @@
             this.gridColumn6,
             this.gridColumn125,
             this.gridColumn126,
-            this.gridColumn12});
+            this.gridColumn12,
+            this.gridColumn90});
             this.gridViewDon.GridControl = this.gridControl;
             this.gridViewDon.IndicatorWidth = 41;
             this.gridViewDon.Name = "gridViewDon";
@@ -1858,7 +1860,7 @@
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 130;
+            this.gridColumn1.Width = 120;
             // 
             // gridColumn2
             // 
@@ -1898,7 +1900,7 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 212;
+            this.gridColumn5.Width = 180;
             // 
             // gridColumn6
             // 
@@ -1908,7 +1910,7 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
-            this.gridColumn6.Width = 325;
+            this.gridColumn6.Width = 280;
             // 
             // gridColumn125
             // 
@@ -1937,6 +1939,16 @@
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 8;
             this.gridColumn12.Width = 200;
+            // 
+            // gridColumn90
+            // 
+            this.gridColumn90.Caption = "Điện Thoại";
+            this.gridColumn90.FieldName = "DienThoai";
+            this.gridColumn90.Name = "gridColumn90";
+            this.gridColumn90.OptionsColumn.AllowEdit = false;
+            this.gridColumn90.Visible = true;
+            this.gridColumn90.VisibleIndex = 9;
+            this.gridColumn90.Width = 100;
             // 
             // repositoryItemCheckEdit3
             // 
@@ -2046,7 +2058,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1361, 624);
+            this.tabControl1.Size = new System.Drawing.Size(1394, 624);
             this.tabControl1.TabIndex = 9;
             // 
             // tabPage1
@@ -2061,7 +2073,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1353, 595);
+            this.tabPage1.Size = new System.Drawing.Size(1386, 595);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tiến Trình Đơn";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -2085,7 +2097,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1353, 595);
+            this.tabPage2.Size = new System.Drawing.Size(1386, 595);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Thông Tin Khách Hàng";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2437,7 +2449,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1361, 624);
+            this.ClientSize = new System.Drawing.Size(1394, 624);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -2672,5 +2684,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn87;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn88;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn89;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn90;
     }
 }

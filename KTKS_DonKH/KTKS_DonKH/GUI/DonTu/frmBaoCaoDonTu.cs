@@ -137,6 +137,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 dr["NoiNhan"] = item["NoiNhan"].ToString();
                 dr["GhiChu"] = item["NoiDung"].ToString();
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                dr["NguoiLap"] = CTaiKhoan.HoTen;
 
                 dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }

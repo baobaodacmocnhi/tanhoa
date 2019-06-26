@@ -12,6 +12,7 @@ using KTKS_DonKH.BaoCao.CatHuyDanhBo;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -215,6 +216,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 dr["CreateDate"] = item["CreateDate"].ToString();
                 if (item["DanhBo"].ToString() != "")
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
@@ -330,6 +332,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 dr["CreateDate"] = item["CreateDate"].ToString();
                 if (item["DanhBo"].ToString() != "")
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
@@ -361,6 +364,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             DataRow drT = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
             drT["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
             drT["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+            drT["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
             if (cmbQuan.SelectedIndex == 0)
             {
                 dtCatTam_ThongKe = _cCHDB.getCatTam_BaoCao(dateTu.Value, dateDen.Value);

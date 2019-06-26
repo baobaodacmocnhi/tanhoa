@@ -498,6 +498,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 dr["ChucVu"] = ctctdb.ChucVu;
                                 dr["NguoiKy"] = ctctdb.NguoiKy;
+                                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
 
                                 dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
 
@@ -548,6 +549,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 dr["ChucVu"] = ctchdb.ChucVu;
                                 dr["NguoiKy"] = ctchdb.NguoiKy;
+                                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
 
                                 dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
 
@@ -592,6 +594,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 dr["ChucVu"] = ycchdb.ChucVu;
                                 dr["NguoiKy"] = ycchdb.NguoiKy;
+                                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
 
                                 if (ycchdb.CHDB.MaDonMoi != null)
                                 {
@@ -654,6 +657,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 ///
                                 dr["ChucVu"] = ctdongnuoc.ChucVu_DN;
                                 dr["NguoiKy"] = ctdongnuoc.NguoiKy_DN;
+                                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
 
                                 dsBaoCao.Tables["ThongBaoDongNuoc"].Rows.Add(dr);
 

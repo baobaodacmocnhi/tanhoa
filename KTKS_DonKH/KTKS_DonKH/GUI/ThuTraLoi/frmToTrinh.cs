@@ -516,6 +516,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
+                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 dr["SoPhieu"] = _cttt.IDCT.ToString().Insert(_cttt.IDCT.ToString().Length - 2, "-");
                 dr["HoTen"] = _cttt.HoTen;
                 dr["DiaChi"] = _cttt.DiaChi;
@@ -589,6 +591,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
                             ToTrinh_ChiTiet cttt = _cTT.get_ChiTiet(int.Parse(dgvToTrinh["IDCT", i].Value.ToString()));
 
+                            dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                             dr["SoPhieu"] = cttt.IDCT.ToString().Insert(cttt.IDCT.ToString().Length - 2, "-");
                             dr["HoTen"] = cttt.HoTen;
                             dr["DiaChi"] = cttt.DiaChi;

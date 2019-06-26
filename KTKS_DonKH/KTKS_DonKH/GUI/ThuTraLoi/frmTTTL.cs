@@ -640,6 +640,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
                 //dr["SoPhieu"] = _cttttl.MaCTTTTL.ToString().Insert(_cttttl.MaCTTTTL.ToString().Length - 2, "-");
+                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                 dr["LoTrinh"] = _cttttl.LoTrinh;
                 dr["HoTen"] = _cttttl.HoTen;
                 dr["DiaChi"] = _cttttl.DiaChi;

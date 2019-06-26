@@ -45,6 +45,7 @@
       <Column Name="ToTruong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TruongPhong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="PhoGiamDoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ChuKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MaNhom" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaPhong" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -1619,6 +1620,7 @@
     <Type Name="Phong">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KyHieu" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="Phong_User" Member="Users" ThisKey="ID" OtherKey="MaPhong" Type="User" />

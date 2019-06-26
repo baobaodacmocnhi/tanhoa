@@ -569,6 +569,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                     dr["ChucVu"] = _ycchdb.ChucVu;
                     dr["NguoiKy"] = _ycchdb.NguoiKy;
+                    dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
 
                     if (_ycchdb.CHDB.MaDonMoi != null)
                     {

@@ -98,7 +98,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
                             DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
                             NoiDung = item.Name_NhomDon,
-                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.CreateBy == item.CreateBy).HoTen,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -116,7 +116,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
                             DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
                             NoiDung = item.Name_NhomDon,
-                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.CreateBy == item.CreateBy).HoTen,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -134,7 +134,7 @@ namespace KTKS_DonKH.DAL.DonTu
         //                    HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
         //                    DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
         //                    NoiDung = item.Name_NhomDon,
-        //                    CreateBy=db.Users.SingleOrDefault(itemA=>itemA.CreateBy==item.CreateBy).HoTen,
+        //                    CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
         //                };
         //    return LINQToDataTable(query);
         //}
@@ -152,7 +152,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
                             DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
                             NoiDung = item.Name_NhomDon,
-                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.CreateBy == item.CreateBy).HoTen,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -170,7 +170,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
                             DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
                             NoiDung = item.Name_NhomDon,
-                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.CreateBy == item.CreateBy).HoTen,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -188,7 +188,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
                             DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
                             NoiDung = item.Name_NhomDon,
-                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.CreateBy == item.CreateBy).HoTen,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -206,7 +206,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
                             DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
                             NoiDung = item.Name_NhomDon,
-                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.CreateBy == item.CreateBy).HoTen,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -286,7 +286,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             HoTen = item.DonTu.DonTu_ChiTiets.Count == 1 ? item.DonTu.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
                             DiaChi = item.DonTu.DonTu_ChiTiets.Count == 1 ? item.DonTu.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
                             NoiDung = item.DonTu.Name_NhomDon,
-                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.CreateBy == item.CreateBy).HoTen,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -304,7 +304,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             HoTen = item.DonTu.DonTu_ChiTiets.Count == 1 ? item.DonTu.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
                             DiaChi = item.DonTu.DonTu_ChiTiets.Count == 1 ? item.DonTu.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
                             NoiDung = item.DonTu.Name_NhomDon,
-                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.CreateBy == item.CreateBy).HoTen,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }

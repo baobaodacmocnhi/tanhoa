@@ -100,7 +100,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         {
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
-
+                            
+                            dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                             dr["SoPhieu"] = dgvDSThu["MaDon", i].Value.ToString();
 
                             dr["HoTen"] = dgvDSThu["HoTen", i].Value.ToString();

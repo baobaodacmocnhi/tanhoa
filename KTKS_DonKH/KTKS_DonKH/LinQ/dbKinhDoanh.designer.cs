@@ -1434,6 +1434,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _PhoGiamDoc;
 		
+		private bool _ChuKy;
+		
 		private System.Nullable<int> _MaNhom;
 		
 		private System.Nullable<int> _MaTo;
@@ -1510,6 +1512,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTruongPhongChanged();
     partial void OnPhoGiamDocChanging(bool value);
     partial void OnPhoGiamDocChanged();
+    partial void OnChuKyChanging(bool value);
+    partial void OnChuKyChanged();
     partial void OnMaNhomChanging(System.Nullable<int> value);
     partial void OnMaNhomChanged();
     partial void OnMaToChanging(System.Nullable<int> value);
@@ -2031,6 +2035,26 @@ namespace KTKS_DonKH.LinQ
 					this._PhoGiamDoc = value;
 					this.SendPropertyChanged("PhoGiamDoc");
 					this.OnPhoGiamDocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChuKy", DbType="Bit NOT NULL")]
+		public bool ChuKy
+		{
+			get
+			{
+				return this._ChuKy;
+			}
+			set
+			{
+				if ((this._ChuKy != value))
+				{
+					this.OnChuKyChanging(value);
+					this.SendPropertyChanging();
+					this._ChuKy = value;
+					this.SendPropertyChanged("ChuKy");
+					this.OnChuKyChanged();
 				}
 			}
 		}
@@ -37664,6 +37688,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _Name;
 		
+		private string _KyHieu;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -37678,6 +37704,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnIDChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
+    partial void OnKyHieuChanging(string value);
+    partial void OnKyHieuChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -37726,6 +37754,26 @@ namespace KTKS_DonKH.LinQ
 					this._Name = value;
 					this.SendPropertyChanged("Name");
 					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KyHieu", DbType="VarChar(10)")]
+		public string KyHieu
+		{
+			get
+			{
+				return this._KyHieu;
+			}
+			set
+			{
+				if ((this._KyHieu != value))
+				{
+					this.OnKyHieuChanging(value);
+					this.SendPropertyChanging();
+					this._KyHieu = value;
+					this.SendPropertyChanged("KyHieu");
+					this.OnKyHieuChanged();
 				}
 			}
 		}

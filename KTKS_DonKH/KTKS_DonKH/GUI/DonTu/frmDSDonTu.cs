@@ -235,9 +235,14 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
                     dr["NoiDung"] = item.Cells["NoiDung"].Value.ToString();
                     if (CTaiKhoan.MaPhong == 1)
+                    {
                         dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
+                        dr["VisibleNoiNhan"] = true;
+                    }
                     dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
-
+                    dr["NguoiLap"] = CTaiKhoan.HoTen;
+                    dr["ChuKy"] = CTaiKhoan.ChuKy;
+                    
                     dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }
             rptDSChuyenDonTu rpt = new rptDSChuyenDonTu();

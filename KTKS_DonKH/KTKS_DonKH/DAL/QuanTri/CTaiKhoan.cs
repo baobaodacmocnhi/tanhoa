@@ -136,6 +136,20 @@ namespace KTKS_DonKH.DAL.QuanTri
             set { CTaiKhoan._TenPhong = value; }
         }
 
+        static string _KyHieuPhong = "";
+        public static string KyHieuPhong
+        {
+            get { return CTaiKhoan._KyHieuPhong; }
+            set { CTaiKhoan._KyHieuPhong = value; }
+        }
+
+        static string _ChuKy = "";
+        public static string ChuKy
+        {
+            get { return CTaiKhoan._ChuKy; }
+            set { CTaiKhoan._ChuKy = value; }
+        }
+
         static System.Data.DataTable _dtQuyenNhom;
         public static System.Data.DataTable dtQuyenNhom
         {
@@ -195,6 +209,8 @@ namespace KTKS_DonKH.DAL.QuanTri
             _TenTo = "";
             _MaPhong = -1;
             _TenPhong = "";
+            _KyHieuPhong = "";
+            _ChuKy = "";
             _dtQuyenNguoiDung = null;
             _dtQuyenNhom = null;
             ///

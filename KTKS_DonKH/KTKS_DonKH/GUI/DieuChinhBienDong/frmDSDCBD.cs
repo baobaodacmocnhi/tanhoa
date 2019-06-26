@@ -719,6 +719,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                             DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
+                                            dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                                             if (lichsuchungtu.MaDonMoi != null)
                                             {
                                                 LinQ.DonTu en = _cDonTu.get(lichsuchungtu.MaDonMoi.Value);
@@ -1049,6 +1050,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
+                                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                                 if (lichsuchungtu.MaDonMoi != null)
                                 {
                                     LinQ.DonTu en = _cDonTu.get(lichsuchungtu.MaDonMoi.Value);
@@ -1090,6 +1092,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 {
                                     DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
+                                    dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                                     if (lichsuchungtu.MaDonMoi != null)
                                     {
                                         LinQ.DonTu en = _cDonTu.get(lichsuchungtu.MaDonMoi.Value);
@@ -1164,7 +1167,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 //    else
                                 //        if (ctdchd.DCBD.MaDonTBC != null)
                                 //            dr["MaDon"] = "TBC" + ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
-
+                                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                                 dr["MaDon"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                                 dr["SoPhieu"] = "_________";
                                 dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
@@ -1537,6 +1540,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
+                                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                                 dr["SoPhieu"] = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
                                 dr["HieuLucKy"] = ctdcbd.HieuLucKy;
                                 dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");

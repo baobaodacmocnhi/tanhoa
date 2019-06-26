@@ -541,6 +541,7 @@ namespace KTKS_DonKH.GUI.CongVan
                 DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 dr["LoaiVanBan"] = item.Cells["LoaiVanBan"].Value.ToString();
                 //if (item.Cells["Ma"].Value.ToString().Length > 2)
                 dr["Ma"] = item.Cells["Ma"].Value.ToString();

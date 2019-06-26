@@ -18,6 +18,7 @@ using KTKS_DonKH.BaoCao.ThuTraLoi;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.ThuTraLoi
 {
@@ -93,6 +94,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
 
                             //dr["SoPhieu"] = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
+                            dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                             dr["LoTrinh"] = cttttl.LoTrinh;
                             dr["HoTen"] = cttttl.HoTen;
                             dr["DiaChi"] = cttttl.DiaChi;
