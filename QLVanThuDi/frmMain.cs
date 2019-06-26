@@ -643,6 +643,7 @@ namespace QLVanThu
                 oSheet.get_Range(c3, c4).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 oSheet.get_Range(c3, c4).Font.Name = "Times New Roman";
                 oSheet.get_Range(c3, c4).Font.Size = 12;
+                c4.NumberFormat = "@";
                 // Căn trái cột Số Ký Hiệu A
                 Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
                 Microsoft.Office.Interop.Excel.Range c3b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
@@ -905,6 +906,7 @@ namespace QLVanThu
                 oSheetTongHop.get_Range(c3b, c4b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 oSheetTongHop.get_Range(c3b, c4b).Font.Name = "Times New Roman";
                 oSheetTongHop.get_Range(c3b, c4b).Font.Size = 12;
+                c4b.NumberFormat = "@";
                 // Căn trái cột Số Ký Hiệu A
                 Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheetTongHop.Cells[rowStart, 3];
                 Microsoft.Office.Interop.Excel.Range c3c = (Microsoft.Office.Interop.Excel.Range)oSheetTongHop.Cells[rowEnd, 3];
@@ -1158,6 +1160,7 @@ namespace QLVanThu
                 oSheet.get_Range(c3b, c4b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 oSheet.get_Range(c3b, c4b).Font.Name = "Times New Roman";
                 oSheet.get_Range(c3b, c4b).Font.Size = 12;
+                c4b.NumberFormat = "@";
                 // Căn trái cột Số Ký Hiệu A
                 Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
                 Microsoft.Office.Interop.Excel.Range c3c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];

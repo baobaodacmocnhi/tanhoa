@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <PublishUrlHistory>\\192.168.90.9\BaoBao%24\QLVanThuDi\|\\192.168.90.9\cntt\BaoBao\QLVanThuDi\|publish\</PublishUrlHistory>
+    <PublishUrlHistory>\\server9\BaoBao%24\QLVanThuDi\|\\192.168.90.9\BaoBao%24\QLVanThuDi\|\\192.168.90.9\cntt\BaoBao\QLVanThuDi\|publish\</PublishUrlHistory>
     <InstallUrlHistory>
     </InstallUrlHistory>
     <SupportUrlHistory>
     </SupportUrlHistory>
-    <UpdateUrlHistory>\\192.168.90.9\cntt\BaoBao\QLVanThuDi\</UpdateUrlHistory>
+    <UpdateUrlHistory>\\192.168.90.9\BaoBao%24\QLVanThuDi\|\\192.168.90.9\cntt\BaoBao\QLVanThuDi\</UpdateUrlHistory>
     <BootstrapperUrlHistory>\\192.168.90.9\BaoBao%24\QLVanThuDi|\\192.168.90.9\cntt\BaoBao\QLVanThuDi</BootstrapperUrlHistory>
     <ErrorReportUrlHistory>
     </ErrorReportUrlHistory>
