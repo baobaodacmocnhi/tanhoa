@@ -712,6 +712,17 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuPhoiHop_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuPhoiHop", "Xem"))
+            {
+                frmPhoiHop frm = new frmPhoiHop();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Chuyển Khoản
@@ -1168,6 +1179,8 @@ namespace ThuTien
         {
             CNguoiDung.DangXuat();
         }
+
+        
 
         
 

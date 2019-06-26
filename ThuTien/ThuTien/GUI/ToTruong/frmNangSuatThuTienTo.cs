@@ -744,119 +744,119 @@ namespace ThuTien.GUI.ToTruong
                 ds.Tables["BaoCaoTongHop"].Rows.Add(drTC);
 
                 ///Thêm Đóng Nước
-                DataTable dtDongNuoc = new DataTable();
-                DataTable dtDCHD_DongNuoc = new DataTable();
+                //DataTable dtDongNuoc = new DataTable();
+                //DataTable dtDCHD_DongNuoc = new DataTable();
 
-                if (CNguoiDung.Doi)
-                {
-                     dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
-                     dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
-                }
-                else
-                {
-                    dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
-                    dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
-                }
+                //if (CNguoiDung.Doi)
+                //{
+                //     dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+                //     dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+                //}
+                //else
+                //{
+                //    dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                //    dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                //}
 
-                foreach (DataRow item in dtDCHD_DongNuoc.Rows)
-                {
-                    DataRow[] drDN = dtDongNuoc.Select("MaNV=" + item["MaNV"]);
-                    if (!string.IsNullOrEmpty(item["TCTonCu_END"].ToString()))
-                        drDN[0]["TCTonCu"] = long.Parse(drDN[0]["TCTonCu"].ToString()) - long.Parse(item["TCTonCu_END"].ToString()) + long.Parse(item["TCTonCu_BD"].ToString());
-                    if (!string.IsNullOrEmpty(item["TCNhan_END"].ToString()))
-                        drDN[0]["TCNhan"] = long.Parse(drDN[0]["TCNhan"].ToString()) - long.Parse(item["TCNhan_END"].ToString()) + long.Parse(item["TCNhan_BD"].ToString());
-                    if (!string.IsNullOrEmpty(item["TCDangNgan_END"].ToString()))
-                        drDN[0]["TCDangNgan"] = long.Parse(drDN[0]["TCDangNgan"].ToString()) - long.Parse(item["TCDangNgan_END"].ToString()) + long.Parse(item["TCDangNgan_BD"].ToString());
-                    if (!string.IsNullOrEmpty(item["TCHuy_END"].ToString()))
-                        drDN[0]["TCHuy"] = long.Parse(drDN[0]["TCHuy"].ToString()) - long.Parse(item["TCHuy_END"].ToString()) + long.Parse(item["TCHuy_BD"].ToString());
-                    if (!string.IsNullOrEmpty(item["TCTongTon_END"].ToString()))
-                        drDN[0]["TCTongTon"] = long.Parse(drDN[0]["TCTongTon"].ToString()) - long.Parse(item["TCTongTon_END"].ToString()) + long.Parse(item["TCTongTon_BD"].ToString());
-                }
+                //foreach (DataRow item in dtDCHD_DongNuoc.Rows)
+                //{
+                //    DataRow[] drDN = dtDongNuoc.Select("MaNV=" + item["MaNV"]);
+                //    if (!string.IsNullOrEmpty(item["TCTonCu_END"].ToString()))
+                //        drDN[0]["TCTonCu"] = long.Parse(drDN[0]["TCTonCu"].ToString()) - long.Parse(item["TCTonCu_END"].ToString()) + long.Parse(item["TCTonCu_BD"].ToString());
+                //    if (!string.IsNullOrEmpty(item["TCNhan_END"].ToString()))
+                //        drDN[0]["TCNhan"] = long.Parse(drDN[0]["TCNhan"].ToString()) - long.Parse(item["TCNhan_END"].ToString()) + long.Parse(item["TCNhan_BD"].ToString());
+                //    if (!string.IsNullOrEmpty(item["TCDangNgan_END"].ToString()))
+                //        drDN[0]["TCDangNgan"] = long.Parse(drDN[0]["TCDangNgan"].ToString()) - long.Parse(item["TCDangNgan_END"].ToString()) + long.Parse(item["TCDangNgan_BD"].ToString());
+                //    if (!string.IsNullOrEmpty(item["TCHuy_END"].ToString()))
+                //        drDN[0]["TCHuy"] = long.Parse(drDN[0]["TCHuy"].ToString()) - long.Parse(item["TCHuy_END"].ToString()) + long.Parse(item["TCHuy_BD"].ToString());
+                //    if (!string.IsNullOrEmpty(item["TCTongTon_END"].ToString()))
+                //        drDN[0]["TCTongTon"] = long.Parse(drDN[0]["TCTongTon"].ToString()) - long.Parse(item["TCTongTon_END"].ToString()) + long.Parse(item["TCTongTon_BD"].ToString());
+                //}
 
-                foreach (DataRow item in dtDongNuoc.Rows)
-                {
-                    DataRow dr = ds.Tables["DSDongNuoc"].NewRow();
+                //foreach (DataRow item in dtDongNuoc.Rows)
+                //{
+                //    DataRow dr = ds.Tables["DSDongNuoc"].NewRow();
 
-                    dr["STT"] = item["STT"];
-                    dr["HanhThu"] = item["HoTen"];
-                    if (string.IsNullOrEmpty(item["DCTonCu"].ToString()))
-                    {
-                        dr["DCTonCu"] = 0;
-                        dr["HDTonCu"] = 0;
-                        dr["TCTonCu"] = 0;
-                    }
-                    else
-                    {
-                        dr["DCTonCu"] = item["DCTonCu"];
-                        dr["HDTonCu"] = item["HDTonCu"];
-                        dr["TCTonCu"] = item["TCTonCu"];
-                    }
-                    ///
-                    if (string.IsNullOrEmpty(item["DCNhan"].ToString()))
-                    {
-                        dr["DCNhan"] = 0;
-                        dr["HDNhan"] = 0;
-                        dr["TCNhan"] = 0;
-                    }
-                    else
-                    {
-                        dr["DCNhan"] = item["DCNhan"];
-                        dr["HDNhan"] = item["HDNhan"];
-                        dr["TCNhan"] = item["TCNhan"];
-                    }
-                    ///
-                    if (string.IsNullOrEmpty(item["DCNhan"].ToString()))
-                    {
-                        dr["DCDangNgan"] = 0;
-                        dr["HDDangNgan"] = 0;
-                        dr["TCDangNgan"] = 0;
-                    }
-                    else
-                    {
-                        dr["DCDangNgan"] = item["DCDangNgan"];
-                        dr["HDDangNgan"] = item["HDDangNgan"];
-                        dr["TCDangNgan"] = item["TCDangNgan"];
-                    }
-                    ///
-                    if (string.IsNullOrEmpty(item["DCHuy"].ToString()))
-                    {
-                        dr["DCHuy"] = 0;
-                        dr["HDHuy"] = 0;
-                        dr["TCHuy"] = 0;
-                    }
-                    else
-                    {
-                        dr["DCHuy"] = item["DCHuy"];
-                        dr["HDHuy"] = item["HDHuy"];
-                        dr["TCHuy"] = item["TCHuy"];
-                    }
-                    ///
-                    if (string.IsNullOrEmpty(item["DCTongTon"].ToString()))
-                    {
-                        dr["DCTongTon"] = 0;
-                        dr["HDTongTon"] = 0;
-                        dr["TCTongTon"] = 0;
-                    }
-                    else
-                    {
-                        dr["DCTongTon"] = item["DCTongTon"];
-                        dr["HDTongTon"] = item["HDTongTon"];
-                        dr["TCTongTon"] = item["TCTongTon"];
-                    }
-                    ///
-                    if (string.IsNullOrEmpty(item["DCKhoaNuoc"].ToString()))
-                    {
-                        dr["DCDongNuoc"] = 0;
-                    }
-                    else
-                    {
-                        dr["DCDongNuoc"] = item["DCKhoaNuoc"];
-                    }
+                //    dr["STT"] = item["STT"];
+                //    dr["HanhThu"] = item["HoTen"];
+                //    if (string.IsNullOrEmpty(item["DCTonCu"].ToString()))
+                //    {
+                //        dr["DCTonCu"] = 0;
+                //        dr["HDTonCu"] = 0;
+                //        dr["TCTonCu"] = 0;
+                //    }
+                //    else
+                //    {
+                //        dr["DCTonCu"] = item["DCTonCu"];
+                //        dr["HDTonCu"] = item["HDTonCu"];
+                //        dr["TCTonCu"] = item["TCTonCu"];
+                //    }
+                //    ///
+                //    if (string.IsNullOrEmpty(item["DCNhan"].ToString()))
+                //    {
+                //        dr["DCNhan"] = 0;
+                //        dr["HDNhan"] = 0;
+                //        dr["TCNhan"] = 0;
+                //    }
+                //    else
+                //    {
+                //        dr["DCNhan"] = item["DCNhan"];
+                //        dr["HDNhan"] = item["HDNhan"];
+                //        dr["TCNhan"] = item["TCNhan"];
+                //    }
+                //    ///
+                //    if (string.IsNullOrEmpty(item["DCNhan"].ToString()))
+                //    {
+                //        dr["DCDangNgan"] = 0;
+                //        dr["HDDangNgan"] = 0;
+                //        dr["TCDangNgan"] = 0;
+                //    }
+                //    else
+                //    {
+                //        dr["DCDangNgan"] = item["DCDangNgan"];
+                //        dr["HDDangNgan"] = item["HDDangNgan"];
+                //        dr["TCDangNgan"] = item["TCDangNgan"];
+                //    }
+                //    ///
+                //    if (string.IsNullOrEmpty(item["DCHuy"].ToString()))
+                //    {
+                //        dr["DCHuy"] = 0;
+                //        dr["HDHuy"] = 0;
+                //        dr["TCHuy"] = 0;
+                //    }
+                //    else
+                //    {
+                //        dr["DCHuy"] = item["DCHuy"];
+                //        dr["HDHuy"] = item["HDHuy"];
+                //        dr["TCHuy"] = item["TCHuy"];
+                //    }
+                //    ///
+                //    if (string.IsNullOrEmpty(item["DCTongTon"].ToString()))
+                //    {
+                //        dr["DCTongTon"] = 0;
+                //        dr["HDTongTon"] = 0;
+                //        dr["TCTongTon"] = 0;
+                //    }
+                //    else
+                //    {
+                //        dr["DCTongTon"] = item["DCTongTon"];
+                //        dr["HDTongTon"] = item["HDTongTon"];
+                //        dr["TCTongTon"] = item["TCTongTon"];
+                //    }
+                //    ///
+                //    if (string.IsNullOrEmpty(item["DCKhoaNuoc"].ToString()))
+                //    {
+                //        dr["DCDongNuoc"] = 0;
+                //    }
+                //    else
+                //    {
+                //        dr["DCDongNuoc"] = item["DCKhoaNuoc"];
+                //    }
 
-                    ds.Tables["DSDongNuoc"].Rows.Add(dr);
-                }
+                //    ds.Tables["DSDongNuoc"].Rows.Add(dr);
+                //}
 
-                rptBaoCaoTongHopTo rpt = new rptBaoCaoTongHopTo();
+                rptBaoCaoTongHopTo_HanhThu rpt = new rptBaoCaoTongHopTo_HanhThu();
                 rpt.SetDataSource(ds);
                 rpt.Subreports[0].SetDataSource(ds);
                 frmBaoCao frm = new frmBaoCao(rpt);
@@ -913,6 +913,180 @@ namespace ThuTien.GUI.ToTruong
 
             rptDSHDDongNuoc rpt = new rptDSHDDongNuoc();
             rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
+
+        private void btnBaoCaoDongNuoc_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            DataTable dtDongNuoc = new DataTable();
+            DataTable dtDCHD_DongNuoc = new DataTable();
+
+            if (CNguoiDung.Doi)
+            {
+                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop_HanhThu((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+                dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+            }
+            else
+            {
+                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop_HanhThu(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+            }
+
+            foreach (DataRow item in dtDCHD_DongNuoc.Rows)
+            {
+                DataRow[] drDN = dtDongNuoc.Select("MaNV=" + item["MaNV"]);
+                if (!string.IsNullOrEmpty(item["TCTonCu_END"].ToString()))
+                    drDN[0]["TCTonCu"] = long.Parse(drDN[0]["TCTonCu"].ToString()) - long.Parse(item["TCTonCu_END"].ToString()) + long.Parse(item["TCTonCu_BD"].ToString());
+                if (!string.IsNullOrEmpty(item["TCNhan_END"].ToString()))
+                    drDN[0]["TCNhan"] = long.Parse(drDN[0]["TCNhan"].ToString()) - long.Parse(item["TCNhan_END"].ToString()) + long.Parse(item["TCNhan_BD"].ToString());
+                if (!string.IsNullOrEmpty(item["TCDangNgan_END"].ToString()))
+                    drDN[0]["TCDangNgan"] = long.Parse(drDN[0]["TCDangNgan"].ToString()) - long.Parse(item["TCDangNgan_END"].ToString()) + long.Parse(item["TCDangNgan_BD"].ToString());
+                if (!string.IsNullOrEmpty(item["TCHuy_END"].ToString()))
+                    drDN[0]["TCHuy"] = long.Parse(drDN[0]["TCHuy"].ToString()) - long.Parse(item["TCHuy_END"].ToString()) + long.Parse(item["TCHuy_BD"].ToString());
+                if (!string.IsNullOrEmpty(item["TCTongTon_END"].ToString()))
+                    drDN[0]["TCTongTon"] = long.Parse(drDN[0]["TCTongTon"].ToString()) - long.Parse(item["TCTongTon_END"].ToString()) + long.Parse(item["TCTongTon_BD"].ToString());
+            }
+
+            foreach (DataRow item in dtDongNuoc.Rows)
+            {
+                DataRow dr = ds.Tables["DSDongNuoc"].NewRow();
+
+                dr["STT"] = item["STT"];
+                dr["HanhThu"] = item["HoTen"];
+                if (string.IsNullOrEmpty(item["DCTonCu"].ToString()))
+                {
+                    dr["DCTonCu"] = 0;
+                    dr["HDTonCu"] = 0;
+                    dr["TCTonCu"] = 0;
+                }
+                else
+                {
+                    dr["DCTonCu"] = item["DCTonCu"];
+                    dr["HDTonCu"] = item["HDTonCu"];
+                    dr["TCTonCu"] = item["TCTonCu"];
+                }
+                ///
+                if (string.IsNullOrEmpty(item["DCNhan"].ToString()))
+                {
+                    dr["DCNhan"] = 0;
+                    dr["HDNhan"] = 0;
+                    dr["TCNhan"] = 0;
+                }
+                else
+                {
+                    dr["DCNhan"] = item["DCNhan"];
+                    dr["HDNhan"] = item["HDNhan"];
+                    dr["TCNhan"] = item["TCNhan"];
+                }
+                ///
+                if (string.IsNullOrEmpty(item["DCDangNgan"].ToString()))
+                {
+                    dr["DCDangNgan"] = 0;
+                    dr["HDDangNgan"] = 0;
+                    dr["TCDangNgan"] = 0;
+                }
+                else
+                {
+                    dr["DCDangNgan"] = item["DCDangNgan"];
+                    dr["HDDangNgan"] = item["HDDangNgan"];
+                    dr["TCDangNgan"] = item["TCDangNgan"];
+                }
+                ///
+                if (string.IsNullOrEmpty(item["DCHuy"].ToString()))
+                {
+                    dr["DCHuy"] = 0;
+                    dr["HDHuy"] = 0;
+                    dr["TCHuy"] = 0;
+                }
+                else
+                {
+                    dr["DCHuy"] = item["DCHuy"];
+                    dr["HDHuy"] = item["HDHuy"];
+                    dr["TCHuy"] = item["TCHuy"];
+                }
+                ///
+                if (string.IsNullOrEmpty(item["DCTongTon"].ToString()))
+                {
+                    dr["DCTongTon"] = 0;
+                    dr["HDTongTon"] = 0;
+                    dr["TCTongTon"] = 0;
+                }
+                else
+                {
+                    dr["DCTongTon"] = item["DCTongTon"];
+                    dr["HDTongTon"] = item["HDTongTon"];
+                    dr["TCTongTon"] = item["TCTongTon"];
+                }
+                ///
+                //if (string.IsNullOrEmpty(item["DCKhoaNuoc"].ToString()))
+                //{
+                //    dr["DCDongNuoc"] = 0;
+                //}
+                //else
+                //{
+                //    dr["DCDongNuoc"] = item["DCKhoaNuoc"];
+                //}
+
+                ds.Tables["DSDongNuoc"].Rows.Add(dr);
+            }
+
+            dsBaoCao dsChiTiet = new dsBaoCao();
+            dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop_DongNuoc((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+            foreach (DataRow item in dtDongNuoc.Rows)
+            {
+                DataRow dr = dsChiTiet.Tables["DSDongNuoc"].NewRow();
+
+                dr["STT"] = item["STT"];
+                dr["HanhThu"] = item["HoTen"];
+                if (string.IsNullOrEmpty(item["DCDangNgan"].ToString()))
+                {
+                    dr["DCDangNgan"] = 0;
+                    dr["HDDangNgan"] = 0;
+                    dr["TCDangNgan"] = 0;
+                }
+                else
+                {
+                    dr["DCDangNgan"] = item["DCDangNgan"];
+                    dr["HDDangNgan"] = item["HDDangNgan"];
+                    dr["TCDangNgan"] = item["TCDangNgan"];
+                }
+                ///
+                if (string.IsNullOrEmpty(item["DCKhoaNuoc"].ToString()))
+                {
+                    dr["DCKhoaNuoc"] = 0;
+                }
+                else
+                {
+                    dr["DCKhoaNuoc"] = item["DCHuy"];
+                }
+                ///
+                if (string.IsNullOrEmpty(item["DCMoNuoc"].ToString()))
+                {
+                    dr["DCMoNuoc"] = 0;
+                }
+                else
+                {
+                    dr["DCMoNuoc"] = item["DCMoNuoc"];
+                }
+                ///
+                if (string.IsNullOrEmpty(item["DCPhoiHop"].ToString()))
+                {
+                    dr["DCPhoiHop"] = 0;
+                }
+                else
+                {
+                    dr["DCPhoiHop"] = item["DCPhoiHop"];
+                }
+
+                dsChiTiet.Tables["DSDongNuoc"].Rows.Add(dr);
+            }
+
+
+            rptBaoCaoTongHopTo_DongNuoc rpt = new rptBaoCaoTongHopTo_DongNuoc();
+            rpt.SetDataSource(ds);
+            rpt.Subreports["DongNuoc_ChiTiet"].SetDataSource(dsChiTiet);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
         }

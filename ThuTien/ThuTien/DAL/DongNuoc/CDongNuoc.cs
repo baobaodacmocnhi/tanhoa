@@ -820,7 +820,7 @@ namespace ThuTien.DAL.DongNuoc
             return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
         }
 
-        public DataTable GetBaoCaoTongHop(int MaTo,DateTime FromDate, DateTime ToDate)
+        public DataTable GetBaoCaoTongHop_HanhThu(int MaTo,DateTime FromDate, DateTime ToDate)
         {
             string sql = "declare @FromDate date;"
                         + " declare @ToDate date;"
@@ -875,6 +875,50 @@ namespace ThuTien.DAL.DongNuoc
                         + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and CAST(kqdn.NgayDN as date)>=@FromDate and CAST(kqdn.NgayDN as date)<=@ToDate"
                         + " group by nd.MaND,nd.HoTen,nd.STT) khoanuoc on nd.MaND=khoanuoc.MaND"
+                        + " order by nd.STT asc";
+
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetBaoCaoTongHop_DongNuoc(int MaTo, DateTime FromDate, DateTime ToDate)
+        {
+            string sql = "declare @FromDate date;"
+                        + " declare @ToDate date;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @FromDate='" + FromDate.ToString("yyyyMMdd") + "';"
+                        + " set @ToDate='" + ToDate.ToString("yyyyMMdd") + "';"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select nd.MaND as MaNV,nd.HoTen,nd.STT,dangngan.DCDangNgan,khoanuoc.DCKhoaNuoc,monuoc.DCMoNuoc,phoihop.DCPhoiHop from"
+                        + " (select MaND,HoTen,STT from TT_NguoiDung where DongNuoc=1 and MaTo=" + MaTo + ") nd"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT dn.MaDN) as DCDangNgan"
+                        + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
+                        + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and CAST(hd.NGAYGIAITRACH as date)>=@FromDate and CAST(hd.NGAYGIAITRACH as date)<=@ToDate"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) dangngan on nd.MaND=dangngan.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT kqdn.DanhBo) as DCKhoaNuoc"
+                        + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,TT_KQDongNuoc kqdn,HOADON hd,TT_NguoiDung nd"
+                        + " where dn.MaDN=ctdn.MaDN and dn.MaDN=kqdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and CAST(kqdn.NgayDN as date)>=@FromDate and CAST(kqdn.NgayDN as date)<=@ToDate"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) khoanuoc on nd.MaND=khoanuoc.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT kqdn.DanhBo) as DCMoNuoc"
+                        + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,TT_KQDongNuoc kqdn,HOADON hd,TT_NguoiDung nd"
+                        + " where dn.MaDN=ctdn.MaDN and dn.MaDN=kqdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and CAST(kqdn.NgayMN as date)>=@FromDate and CAST(kqdn.NgayMN as date)<=@ToDate"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) monuoc on nd.MaND=monuoc.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT ph.ID) as DCPhoiHop"
+                        + " from TT_DongNuoc_PhoiHop ph,TT_NguoiDung nd"
+                        + " where ph.CreateBy=nd.MaND"
+                        + " and CAST(ph.CreateDate as date)>=@FromDate and CAST(ph.CreateDate as date)<=@ToDate"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) phoihop on nd.MaND=phoihop.MaND"
                         + " order by nd.STT asc";
 
             return ExecuteQuery_DataTable(sql);

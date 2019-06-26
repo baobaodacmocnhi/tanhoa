@@ -1224,6 +1224,30 @@
       <Association Name="TT_XacNhanThanhToan_TT_XacNhanThanhToan_ChiTiet" Member="TT_XacNhanThanhToan_ChiTiets" ThisKey="ID" OtherKey="ID" Type="TT_XacNhanThanhToan_ChiTiet" />
     </Type>
   </Table>
+  <Table Name="dbo.TT_DongNuoc_LoaiPhoiHop" Member="TT_DongNuoc_LoaiPhoiHops">
+    <Type Name="TT_DongNuoc_LoaiPhoiHop">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_DongNuoc_PhoiHop" Member="TT_DongNuoc_PhoiHops">
+    <Type Name="TT_DongNuoc_PhoiHop">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">
     <Parameter Name="DanhBo" Parameter="danhBo" Type="System.String" DbType="VarChar(11)" />
     <Parameter Name="MLT" Parameter="mLT" Type="System.String" DbType="VarChar(11)" />
