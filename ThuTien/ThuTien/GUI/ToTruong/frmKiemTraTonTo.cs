@@ -16,6 +16,7 @@ using ThuTien.DAL.Quay;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.ChuyenKhoan;
 using ThuTien.BaoCao.ToTruong;
+using ThuTien.DAL.HanhThu;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -27,6 +28,7 @@ namespace ThuTien.GUI.ToTruong
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
+        CQuetTam _cQuetTam = new CQuetTam();
 
         public frmKiemTraTonTo()
         {
@@ -1047,18 +1049,18 @@ namespace ThuTien.GUI.ToTruong
                     if (chkDenKy.Checked)
                     {
                         if (cmbFromDot.SelectedIndex == 0)
-                           dt = _cHoaDon.GetBaoCaoTonDenKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()),  dateGiaiTrach.Value);
+                            dt = _cHoaDon.GetBaoCaoTonDenKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
                         else
                             if (cmbFromDot.SelectedIndex > 0)
-                               dt = _cHoaDon.GetBaoCaoTonDenKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
+                                dt = _cHoaDon.GetBaoCaoTonDenKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
                     }
                     else
                         if (chkTrongKy.Checked)
                             if (cmbFromDot.SelectedIndex == 0)
-                               dt = _cHoaDon.GetBaoCaoTonTrongKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()),dateGiaiTrach.Value);
+                                dt = _cHoaDon.GetBaoCaoTonTrongKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
                             else
                                 if (cmbFromDot.SelectedIndex > 0)
-                                   dt = _cHoaDon.GetBaoCaoTonTrongKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);      
+                                    dt = _cHoaDon.GetBaoCaoTonTrongKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
                 }
                 else
                     if (chkDenKy.Checked)
@@ -1068,7 +1070,7 @@ namespace ThuTien.GUI.ToTruong
                         else
                             if (cmbFromDot.SelectedIndex > 0)
                                 dt = _cHoaDon.GetBaoCaoTonDenKy_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
-                        
+
                     }
                     else
                         if (chkNgayKiemTra.Checked)
@@ -1236,8 +1238,6 @@ namespace ThuTien.GUI.ToTruong
                     {
                         if (cmbNhanVien.SelectedIndex > 0 && chkDenKy.Checked == true)
                         {
-                            try
-                            {
                             DataTable dt = _cHoaDon.GetDSTonDenKy_NV(int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDTuGia.SelectedRows[0].Cells["Dot_TG"].Value.ToString()), 2);
                             //dồn lệnh cũ
                             foreach (DataRow item in dt.Rows)
@@ -1274,7 +1274,7 @@ namespace ThuTien.GUI.ToTruong
                             //lập lệnh mới
                             List<HOADON> lstHDTemp = new List<HOADON>();
                             foreach (DataRow item in dt.Rows)
-                                if (int.Parse(item["TieuThu"].ToString())!=0&&_cDongNuoc.CheckExist_CTDongNuoc(item["SoHoaDon"].ToString())==false)
+                                if (int.Parse(item["TieuThu"].ToString()) != 0 && _cDongNuoc.CheckExist_CTDongNuoc(item["SoHoaDon"].ToString()) == false)
                                     lstHDTemp.Add(_cHoaDon.Get(item["SoHoaDon"].ToString()));
 
                             try
@@ -1339,11 +1339,41 @@ namespace ThuTien.GUI.ToTruong
                                 _cHoaDon.Rollback();
                                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                        }
+                        else
+                            MessageBox.Show("Thông tin chọn sai", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnChuyenQuetTam_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn Chuyển Quét Tạm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        if (cmbNhanVien.SelectedIndex > 0 && chkDenKy.Checked == true)
+                        {
+                            DataTable dt = _cHoaDon.GetDSTonDenKy_NV(int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDTuGia.SelectedRows[0].Cells["Dot_TG"].Value.ToString()), 2);
+                            foreach (DataRow item in dt.Rows)
+                                if (!_cQuetTam.CheckExist(item["SoHoaDon"].ToString(), CNguoiDung.MaND, DateTime.Now))
+                                {
+                                    TT_QuetTam quettam = new TT_QuetTam();
+                                    quettam.MaHD = int.Parse(item["SoHoaDon"].ToString());
+                                    quettam.SoHoaDon = item["SoHoaDon"].ToString();
+                                    if (!_cQuetTam.Them(quettam))
+                                    {
+                                    }
+                                }
                         }
                         else
                             MessageBox.Show("Thông tin chọn sai", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
