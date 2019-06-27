@@ -49,11 +49,6 @@
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.lbTo = new System.Windows.Forms.Label();
             this.dgvPhoiHop = new System.Windows.Forms.DataGridView();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.dateDen = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateTu = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +56,11 @@
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.dateDen = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateTu = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhoiHop)).BeginInit();
             this.SuspendLayout();
@@ -128,7 +128,7 @@
             this.cmbLoaiPhoiHop.FormattingEnabled = true;
             this.cmbLoaiPhoiHop.Location = new System.Drawing.Point(92, 90);
             this.cmbLoaiPhoiHop.Name = "cmbLoaiPhoiHop";
-            this.cmbLoaiPhoiHop.Size = new System.Drawing.Size(200, 21);
+            this.cmbLoaiPhoiHop.Size = new System.Drawing.Size(300, 21);
             this.cmbLoaiPhoiHop.TabIndex = 7;
             // 
             // txtNoiDung
@@ -149,7 +149,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(298, 89);
+            this.btnXoa.Location = new System.Drawing.Point(398, 88);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 17;
@@ -159,7 +159,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(298, 60);
+            this.btnSua.Location = new System.Drawing.Point(398, 59);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 16;
@@ -169,7 +169,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(298, 31);
+            this.btnThem.Location = new System.Drawing.Point(398, 30);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 15;
@@ -261,52 +261,6 @@
             this.dgvPhoiHop.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhoiHop_CellContentClick);
             this.dgvPhoiHop.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPhoiHop_CellFormatting);
             // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(537, 17);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 23);
-            this.btnXem.TabIndex = 34;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
-            // dateDen
-            // 
-            this.dateDen.CustomFormat = "dd/MM/yyyy";
-            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(431, 19);
-            this.dateDen.Name = "dateDen";
-            this.dateDen.Size = new System.Drawing.Size(100, 20);
-            this.dateDen.TabIndex = 33;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(367, 20);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 13);
-            this.label6.TabIndex = 32;
-            this.label6.Text = "Đến Ngày:";
-            // 
-            // dateTu
-            // 
-            this.dateTu.CustomFormat = "dd/MM/yyyy";
-            this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(261, 19);
-            this.dateTu.Name = "dateTu";
-            this.dateTu.Size = new System.Drawing.Size(100, 20);
-            this.dateTu.TabIndex = 31;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(204, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 13);
-            this.label7.TabIndex = 30;
-            this.label7.Text = "Từ Ngày:";
-            // 
             // ID
             // 
             this.ID.DataPropertyName = "ID";
@@ -353,6 +307,52 @@
             this.NoiDung.HeaderText = "Nội Dung";
             this.NoiDung.Name = "NoiDung";
             this.NoiDung.Width = 200;
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(537, 17);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 34;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // dateDen
+            // 
+            this.dateDen.CustomFormat = "dd/MM/yyyy";
+            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen.Location = new System.Drawing.Point(431, 19);
+            this.dateDen.Name = "dateDen";
+            this.dateDen.Size = new System.Drawing.Size(100, 20);
+            this.dateDen.TabIndex = 33;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(367, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Đến Ngày:";
+            // 
+            // dateTu
+            // 
+            this.dateTu.CustomFormat = "dd/MM/yyyy";
+            this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu.Location = new System.Drawing.Point(261, 19);
+            this.dateTu.Name = "dateTu";
+            this.dateTu.Size = new System.Drawing.Size(100, 20);
+            this.dateTu.TabIndex = 31;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(204, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 13);
+            this.label7.TabIndex = 30;
+            this.label7.Text = "Từ Ngày:";
             // 
             // frmPhoiHop
             // 

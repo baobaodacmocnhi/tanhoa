@@ -86,7 +86,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getDS(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate)
+         public DataTable getDS(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             //var query = from itemDV in _db.TT_DichVuThus
             //            join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON

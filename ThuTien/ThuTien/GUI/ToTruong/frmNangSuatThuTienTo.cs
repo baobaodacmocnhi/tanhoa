@@ -844,13 +844,13 @@ namespace ThuTien.GUI.ToTruong
                 //        dr["TCTongTon"] = item["TCTongTon"];
                 //    }
                 //    ///
-                //    if (string.IsNullOrEmpty(item["DCKhoaNuoc"].ToString()))
+                //    if (string.IsNullOrEmpty(item["DCDongNuoc"].ToString()))
                 //    {
                 //        dr["DCDongNuoc"] = 0;
                 //    }
                 //    else
                 //    {
-                //        dr["DCDongNuoc"] = item["DCKhoaNuoc"];
+                //        dr["DCDongNuoc"] = item["DCDongNuoc"];
                 //    }
 
                 //    ds.Tables["DSDongNuoc"].Rows.Add(dr);
@@ -922,16 +922,22 @@ namespace ThuTien.GUI.ToTruong
             dsBaoCao ds = new dsBaoCao();
             DataTable dtDongNuoc = new DataTable();
             DataTable dtDCHD_DongNuoc = new DataTable();
-
+            DataTable dtDongNuoc_ChiTiet = new DataTable();
+            DataTable dtDongNuoc_DanhSach = new DataTable();
+            //add tổng
             if (CNguoiDung.Doi)
             {
                 dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop_HanhThu((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
                 dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_DongNuoc((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DongNuoc_DanhSach((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
             }
             else
             {
                 dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop_HanhThu(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
                 dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_DongNuoc(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DongNuoc_DanhSach(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
             }
 
             foreach (DataRow item in dtDCHD_DongNuoc.Rows)
@@ -952,6 +958,12 @@ namespace ThuTien.GUI.ToTruong
             foreach (DataRow item in dtDongNuoc.Rows)
             {
                 DataRow dr = ds.Tables["DSDongNuoc"].NewRow();
+
+                dr["ThoiGian"] = dateTu.Value.Month.ToString() + "/" + dateTu.Value.Year.ToString();
+                if (CNguoiDung.Doi)
+                    dr["To"] = ((TT_To)cmbTo.SelectedItem).TenTo;
+                else
+                    dr["To"] = CNguoiDung.TenTo;
 
                 dr["STT"] = item["STT"];
                 dr["HanhThu"] = item["HoTen"];
@@ -1020,21 +1032,21 @@ namespace ThuTien.GUI.ToTruong
                     dr["TCTongTon"] = item["TCTongTon"];
                 }
                 ///
-                //if (string.IsNullOrEmpty(item["DCKhoaNuoc"].ToString()))
+                //if (string.IsNullOrEmpty(item["DCDongNuoc"].ToString()))
                 //{
                 //    dr["DCDongNuoc"] = 0;
                 //}
                 //else
                 //{
-                //    dr["DCDongNuoc"] = item["DCKhoaNuoc"];
+                //    dr["DCDongNuoc"] = item["DCDongNuoc"];
                 //}
 
                 ds.Tables["DSDongNuoc"].Rows.Add(dr);
             }
 
+            //add tổng chi tiết
             dsBaoCao dsChiTiet = new dsBaoCao();
-            dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop_DongNuoc((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
-            foreach (DataRow item in dtDongNuoc.Rows)
+            foreach (DataRow item in dtDongNuoc_ChiTiet.Rows)
             {
                 DataRow dr = dsChiTiet.Tables["DSDongNuoc"].NewRow();
 
@@ -1043,23 +1055,19 @@ namespace ThuTien.GUI.ToTruong
                 if (string.IsNullOrEmpty(item["DCDangNgan"].ToString()))
                 {
                     dr["DCDangNgan"] = 0;
-                    dr["HDDangNgan"] = 0;
-                    dr["TCDangNgan"] = 0;
                 }
                 else
                 {
                     dr["DCDangNgan"] = item["DCDangNgan"];
-                    dr["HDDangNgan"] = item["HDDangNgan"];
-                    dr["TCDangNgan"] = item["TCDangNgan"];
                 }
                 ///
-                if (string.IsNullOrEmpty(item["DCKhoaNuoc"].ToString()))
+                if (string.IsNullOrEmpty(item["DCDongNuoc"].ToString()))
                 {
-                    dr["DCKhoaNuoc"] = 0;
+                    dr["DCDongNuoc"] = 0;
                 }
                 else
                 {
-                    dr["DCKhoaNuoc"] = item["DCHuy"];
+                    dr["DCDongNuoc"] = item["DCDongNuoc"];
                 }
                 ///
                 if (string.IsNullOrEmpty(item["DCMoNuoc"].ToString()))
@@ -1083,10 +1091,56 @@ namespace ThuTien.GUI.ToTruong
                 dsChiTiet.Tables["DSDongNuoc"].Rows.Add(dr);
             }
 
+            //add danh sách chi tiết
+            foreach (DataRow item in dtDongNuoc_DanhSach.Rows)
+            {
+                if (bool.Parse(item["DongNuoc2"].ToString()) == true)
+                {
+                    DataRow dr = dsChiTiet.Tables["KQDongNuoc"].NewRow();
+                    dr["STT"] = item["STT"];
+                    dr["NhanVien"] = item["HanhThu"];
+                    dr["Loai"] = item["Loai"].ToString().ToUpper();
+                    dr["DanhBo"] = item["DanhBo"];
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
+                    dr["NgayDN"] = item["NgayXuLy"];
+                    if (item["NiemChi1"].ToString() != "")
+                    {
+                        dr["NiemChi"] = item["NiemChi1"].ToString();
+                    }
+                    else
+                        if (bool.Parse(item["KhoaKhac"].ToString()) == true || bool.Parse(item["KhoaTu"].ToString()) == true)
+                            dr["KhoaTu"] = "X";
+                    dr["GhiChu"] = item["NoiDung"];
+
+                    dsChiTiet.Tables["KQDongNuoc"].Rows.Add(dr);
+                }
+                {
+                    DataRow dr = dsChiTiet.Tables["KQDongNuoc"].NewRow();
+                    dr["STT"] = item["STT"];
+                    dr["NhanVien"] = item["HanhThu"];
+                    dr["Loai"] = item["Loai"].ToString().ToUpper();
+                    dr["DanhBo"] = item["DanhBo"];
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
+                    dr["NgayDN"] = item["NgayXuLy"];
+                    if (item["NiemChi"].ToString() != "")
+                    {
+                        dr["NiemChi"] = item["NiemChi"].ToString();
+                    }
+                    else
+                        if (bool.Parse(item["KhoaKhac"].ToString()) == true || bool.Parse(item["KhoaTu"].ToString()) == true)
+                            dr["KhoaTu"] = "X";
+                    dr["GhiChu"] = item["NoiDung"];
+
+                    dsChiTiet.Tables["KQDongNuoc"].Rows.Add(dr);
+                }
+            }
 
             rptBaoCaoTongHopTo_DongNuoc rpt = new rptBaoCaoTongHopTo_DongNuoc();
             rpt.SetDataSource(ds);
             rpt.Subreports["DongNuoc_ChiTiet"].SetDataSource(dsChiTiet);
+            rpt.Subreports["DanhSach_ChiTiet"].SetDataSource(dsChiTiet);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
         }

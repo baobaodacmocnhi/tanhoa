@@ -76,8 +76,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                                             MessageBox.Show("Lỗi Tên Ngân Hàng tại Danh Bộ: " + bangke.DanhBo + "\nBảng Kê đã lưu được tới đây", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
-                                        bangke.CreateDate = DateTime.Now;
-                                        //bangke.CreateDate = dateNgayLap.Value;
+                                        if (chkNgayLap.Checked == true)
+                                            bangke.CreateDate = dateNgayLap.Value;
+                                        else
+                                            bangke.CreateDate = DateTime.Now;
+                                        
                                         bangke.CreateBy = CNguoiDung.MaND;
                                         bangke.CreateDate2 = DateTime.Now;
                                         if (_cBangKe.Them(bangke))
@@ -376,6 +379,14 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void chkNgayLap_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNgayLap.Checked == true)
+                dateNgayLap.Enabled = true;
+            else
+                dateNgayLap.Enabled = false;
         }
 
     }

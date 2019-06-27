@@ -51,7 +51,6 @@
             this.txtTongDanhBo = new System.Windows.Forms.TextBox();
             this.txtTongSoTien = new System.Windows.Forms.TextBox();
             this.dateNgayLap = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgvBangKe = new System.Windows.Forms.DataGridView();
             this.MaBK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +78,7 @@
             this.TongCong_Group3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.btnChonFileCapNhatPhieuThu = new System.Windows.Forms.Button();
+            this.chkNgayLap = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKeGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKeGroup3)).BeginInit();
@@ -171,22 +171,12 @@
             // dateNgayLap
             // 
             this.dateNgayLap.CustomFormat = "dd/MM/yyyy";
+            this.dateNgayLap.Enabled = false;
             this.dateNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateNgayLap.Location = new System.Drawing.Point(766, 12);
             this.dateNgayLap.Name = "dateNgayLap";
             this.dateNgayLap.Size = new System.Drawing.Size(100, 20);
             this.dateNgayLap.TabIndex = 78;
-            this.dateNgayLap.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(704, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 77;
-            this.label1.Text = "Ngày Lập:";
-            this.label1.Visible = false;
             // 
             // dgvBangKe
             // 
@@ -502,11 +492,23 @@
             this.btnChonFileCapNhatPhieuThu.UseVisualStyleBackColor = true;
             this.btnChonFileCapNhatPhieuThu.Click += new System.EventHandler(this.btnChonFileCapNhatPhieuThu_Click);
             // 
+            // chkNgayLap
+            // 
+            this.chkNgayLap.AutoSize = true;
+            this.chkNgayLap.Location = new System.Drawing.Point(688, 15);
+            this.chkNgayLap.Name = "chkNgayLap";
+            this.chkNgayLap.Size = new System.Drawing.Size(72, 17);
+            this.chkNgayLap.TabIndex = 91;
+            this.chkNgayLap.Text = "Ngày Lập";
+            this.chkNgayLap.UseVisualStyleBackColor = true;
+            this.chkNgayLap.CheckedChanged += new System.EventHandler(this.chkNgayLap_CheckedChanged);
+            // 
             // frmBangKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 631);
+            this.Controls.Add(this.chkNgayLap);
             this.Controls.Add(this.btnChonFileCapNhatPhieuThu);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvBangKeGroup3);
@@ -515,7 +517,6 @@
             this.Controls.Add(this.txtTongHD);
             this.Controls.Add(this.txtTongCong);
             this.Controls.Add(this.dateNgayLap);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTongDanhBo);
             this.Controls.Add(this.txtTongSoTien);
             this.Controls.Add(this.dateTu);
@@ -551,7 +552,6 @@
         private System.Windows.Forms.TextBox txtTongDanhBo;
         private System.Windows.Forms.TextBox txtTongSoTien;
         private System.Windows.Forms.DateTimePicker dateNgayLap;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvBangKe;
         private System.Windows.Forms.TextBox txtTongHD;
         private System.Windows.Forms.TextBox txtTongCong;
@@ -579,5 +579,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieuThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayPhieuThu;
+        private System.Windows.Forms.CheckBox chkNgayLap;
     }
 }

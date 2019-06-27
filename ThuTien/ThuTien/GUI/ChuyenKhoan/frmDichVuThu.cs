@@ -182,7 +182,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             int TongPhi = 0;
             //DataTable dtPMN = new DataTable();
             //dtPMN.Columns.Add("DanhBo", typeof(string));
-            string DanhBoPMN = "";
+            string IDGiaoDich = "";
 
             foreach (DataGridViewRow item in dgvDichVuThu.Rows)
             {
@@ -218,20 +218,20 @@ namespace ThuTien.GUI.ChuyenKhoan
                 }
                 if (item.Cells["SoTien"].Value != null && !string.IsNullOrEmpty(item.Cells["SoTien"].Value.ToString()))
                     TongSoTien += int.Parse(item.Cells["SoTien"].Value.ToString());
-                
-                if (item.Cells["Phi"].Value != null && !string.IsNullOrEmpty(item.Cells["Phi"].Value.ToString()) && item.Cells["Phi"].Value.ToString()!="0")
+
+                if (item.Cells["Phi"].Value != null && !string.IsNullOrEmpty(item.Cells["Phi"].Value.ToString()) && item.Cells["Phi"].Value.ToString() != "0")
                 {
-                    if (DanhBoPMN == "")
+                    if (IDGiaoDich == "")
                     {
-                        DanhBoPMN = item.Cells["DanhBo"].Value.ToString();
+                        IDGiaoDich = item.Cells["IDGiaoDich"].Value.ToString();
                         TongPhi += int.Parse(item.Cells["Phi"].Value.ToString());
                     }
                     else
-                        if (DanhBoPMN == item.Cells["DanhBo"].Value.ToString())
+                        if (IDGiaoDich == item.Cells["IDGiaoDich"].Value.ToString())
                             item.Cells["Phi"].Value = 0;
                         else
                         {
-                            DanhBoPMN = item.Cells["DanhBo"].Value.ToString();
+                            IDGiaoDich = item.Cells["IDGiaoDich"].Value.ToString();
                             TongPhi += int.Parse(item.Cells["Phi"].Value.ToString());
                         }
                 }
