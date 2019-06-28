@@ -478,7 +478,8 @@ namespace KTKS_DonKH.GUI.DonTu
                         entity.TongDB = int.Parse(txtTongDB.Text.Trim());
                     }
                     //
-                    entity.NgayHenGiaiQuyet = "Trong thời gian 5 ngày làm việc kể từ ngày nhận hồ sơ, sẽ có nhân viên đến liên hệ với Khách Hàng";
+                    entity.NgayHenGiaiQuyet = "Trong thời gian 5 ngày làm việc kể từ ngày nhận hồ sơ, sẽ có nhân viên đến liên hệ với Khách Hàng. ";
+                    //entity.NgayHenGiaiQuyet = "";
                     entity.ID_NhomDon = "";
                     for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
                         if (chkcmbDieuChinh.Properties.Items[i].CheckState == CheckState.Checked)
@@ -488,7 +489,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             else
                                 entity.ID_NhomDon += ";" + chkcmbDieuChinh.Properties.Items[i].Value.ToString();
                             if (chkcmbDieuChinh.Properties.Items[i].Value.ToString() == "4")
-                                entity.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + GetToDate(DateTime.Now, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
+                                entity.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + GetToDate(DateTime.Now, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết. ";
                         }
                     for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
                         if (chkcmbKhieuNai.Properties.Items[i].CheckState == CheckState.Checked)
