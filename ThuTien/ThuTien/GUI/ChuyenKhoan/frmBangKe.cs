@@ -76,16 +76,23 @@ namespace ThuTien.GUI.ChuyenKhoan
                                             MessageBox.Show("Lỗi Tên Ngân Hàng tại Danh Bộ: " + bangke.DanhBo + "\nBảng Kê đã lưu được tới đây", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
-                                        if (chkNgayLap.Checked == true)
-                                            bangke.CreateDate = dateNgayLap.Value;
-                                        else
-                                            bangke.CreateDate = DateTime.Now;
                                         
                                         bangke.CreateBy = CNguoiDung.MaND;
                                         bangke.CreateDate2 = DateTime.Now;
-                                        if (_cBangKe.Them(bangke))
-                                            if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value))
-                                                scope.Complete();
+                                        if (chkNgayLap.Checked == true)
+                                        {
+                                            bangke.CreateDate = dateNgayLap.Value;
+                                            if (_cBangKe.Them(bangke))
+                                                if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value, dateNgayLap.Value))
+                                                    scope.Complete();
+                                        }
+                                        else
+                                        {
+                                            bangke.CreateDate = DateTime.Now;
+                                            if (_cBangKe.Them(bangke))
+                                                if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value))
+                                                    scope.Complete();
+                                        }
                                     }
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();

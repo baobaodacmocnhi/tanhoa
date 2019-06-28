@@ -12,7 +12,7 @@ namespace ThuTien.DAL.ChuyenKhoan
     class CTienDu : CDAL
     {
         //Quản lý tiền dư của khách hàng
-        
+
         public bool Them(TT_TienDu tiendu)
         {
             try
@@ -51,12 +51,12 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable GetDSTienAm()
         {
-            return LINQToDataTable( _db.TT_TienDus.Where(item => item.SoTien < 0).ToList());
+            return LINQToDataTable(_db.TT_TienDus.Where(item => item.SoTien < 0).ToList());
         }
 
         public DataTable GetDSTienDu()
         {
-            return LINQToDataTable( _db.TT_TienDus.Where(item => item.SoTien > 0).ToList());
+            return LINQToDataTable(_db.TT_TienDus.Where(item => item.SoTien > 0).ToList());
         }
 
         public DataTable GetDSPhiMoNuoc()
@@ -80,7 +80,7 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable GetDSTienBienDong()
         {
-            return LINQToDataTable( _db.TT_TienDus.Where(item => item.SoTien != 0).ToList());
+            return LINQToDataTable(_db.TT_TienDus.Where(item => item.SoTien != 0).ToList());
         }
 
         public TT_TienDu Get(string DanhBo)
@@ -93,18 +93,18 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.TT_TienDus.Any(item => item.DanhBo == DanhBo);
         }
 
-        public bool Update(string DanhBo, int SoTien,string Loai,string GhiChu)
+        public bool Update(string DanhBo, int SoTien, string Loai, string GhiChu)
         {
             try
             {
                 if (LinQ_ExecuteNonQuery("update TT_TienDu set SoTien=SoTien+" + SoTien + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo='" + DanhBo + "'"))
                 {
-                    return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'"+GhiChu+"'," + CNguoiDung.MaND + ",GETDATE())");
+                    return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'" + GhiChu + "'," + CNguoiDung.MaND + ",GETDATE())");
                 }
                 else
                     if (LinQ_ExecuteNonQuery("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate,ModifyBy,ModifyDate) values('" + DanhBo + "'," + SoTien + "," + CNguoiDung.MaND + ",GETDATE()," + CNguoiDung.MaND + ",GETDATE())"))
                     {
-                        return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'"+GhiChu+"'," + CNguoiDung.MaND + ",GETDATE())");
+                        return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'" + GhiChu + "'," + CNguoiDung.MaND + ",GETDATE())");
                     }
                     else
                     {
@@ -143,16 +143,16 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
-        public bool Update(string DanhBo, int SoTien, string Loai, string GhiChu,int MaNH)
+        public bool Update(string DanhBo, int SoTien, string Loai, string GhiChu, int MaNH)
         {
             try
             {
-                if (LinQ_ExecuteNonQuery("update TT_TienDu set SoTien=SoTien+" + SoTien + ",MaNH="+MaNH+",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo='" + DanhBo + "'"))
+                if (LinQ_ExecuteNonQuery("update TT_TienDu set SoTien=SoTien+" + SoTien + ",MaNH=" + MaNH + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo='" + DanhBo + "'"))
                 {
                     return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'" + GhiChu + "'," + CNguoiDung.MaND + ",GETDATE())");
                 }
                 else
-                    if (LinQ_ExecuteNonQuery("insert into TT_TienDu(DanhBo,SoTien,MaNH,CreateBy,CreateDate,ModifyBy,ModifyDate) values('" + DanhBo + "'," + SoTien + ","+MaNH+"," + CNguoiDung.MaND + ",GETDATE()," + CNguoiDung.MaND + ",GETDATE())"))
+                    if (LinQ_ExecuteNonQuery("insert into TT_TienDu(DanhBo,SoTien,MaNH,CreateBy,CreateDate,ModifyBy,ModifyDate) values('" + DanhBo + "'," + SoTien + "," + MaNH + "," + CNguoiDung.MaND + ",GETDATE()," + CNguoiDung.MaND + ",GETDATE())"))
                     {
                         return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'" + GhiChu + "'," + CNguoiDung.MaND + ",GETDATE())");
                     }
@@ -168,7 +168,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
-        public bool Update(string DanhBo, int SoTien, string Loai, string GhiChu, int MaNH,DateTime CreateDate)
+        public bool Update(string DanhBo, int SoTien, string Loai, string GhiChu, int MaNH, DateTime CreateDate)
         {
             try
             {
@@ -193,18 +193,18 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
-        public bool Update(string DanhBo, int SoTien, string Loai, string GhiChu,string DanhBoChuyenNhan)
+        public bool Update(string DanhBo, int SoTien, string Loai, string GhiChu, string DanhBoChuyenNhan)
         {
             try
             {
                 if (LinQ_ExecuteNonQuery("update TT_TienDu set SoTien=SoTien+" + SoTien + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo='" + DanhBo + "'"))
                 {
-                    return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,DanhBoChuyenNhan,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'" + GhiChu + "','"+DanhBoChuyenNhan+"'," + CNguoiDung.MaND + ",GETDATE())");
+                    return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,DanhBoChuyenNhan,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'" + GhiChu + "','" + DanhBoChuyenNhan + "'," + CNguoiDung.MaND + ",GETDATE())");
                 }
                 else
                     if (LinQ_ExecuteNonQuery("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate,ModifyBy,ModifyDate) values('" + DanhBo + "'," + SoTien + "," + CNguoiDung.MaND + ",GETDATE()," + CNguoiDung.MaND + ",GETDATE())"))
                     {
-                        return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,DanhBoChuyenNhan,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'" + GhiChu + "','"+DanhBoChuyenNhan+"'," + CNguoiDung.MaND + ",GETDATE())");
+                        return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,DanhBoChuyenNhan,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'" + GhiChu + "','" + DanhBoChuyenNhan + "'," + CNguoiDung.MaND + ",GETDATE())");
                     }
                     else
                     {
@@ -445,7 +445,7 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public int GetTienDu_SoHoaDon(string SoHoaDon)
         {
-            if (_db.TT_TienDus.Any(item => item.DanhBo == _db.HOADONs.SingleOrDefault(itemHD=>itemHD.SOHOADON==SoHoaDon).DANHBA))
+            if (_db.TT_TienDus.Any(item => item.DanhBo == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).DANHBA))
                 return _db.TT_TienDus.SingleOrDefault(item => item.DanhBo == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).DANHBA).SoTien.Value;
             else
                 return 0;
@@ -453,10 +453,10 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable GetDSLichSu(string DanhBo)
         {
-            return LINQToDataTable(_db.TT_TienDuLichSus.Where(item => item.DanhBo == DanhBo).OrderByDescending(item=>item.CreateDate).ToList());
+            return LINQToDataTable(_db.TT_TienDuLichSus.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).ToList());
         }
 
-        public DataTable GetDSLichSu(string Loai,DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable GetDSLichSu(string Loai, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             return LINQToDataTable(_db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Loai.Contains(Loai)));
         }

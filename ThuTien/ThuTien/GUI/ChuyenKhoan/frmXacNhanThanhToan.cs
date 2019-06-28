@@ -126,6 +126,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             en_CT.TongCong = int.Parse(item["TongCong"].ToString());
                             if (item["NgayGiaiTrach"].ToString() != "")
                                 en_CT.NgayGiaiTrach = DateTime.Parse(item["NgayGiaiTrach"].ToString());
+                            en_CT.SoHoaDon = item["SoHoaDon"].ToString();
                             en_CT.ID = en.ID;
                             _cXNTT.Them_ChiTiet(en_CT);
                         }
@@ -173,6 +174,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 en_CT.TongCong = int.Parse(item["TongCong"].ToString());
                                 if (item["NgayGiaiTrach"].ToString() != "")
                                     en_CT.NgayGiaiTrach = DateTime.Parse(item["NgayGiaiTrach"].ToString());
+                                en_CT.SoHoaDon = item["SoHoaDon"].ToString();
                                 en_CT.ID = _xntt.ID;
                                 _cXNTT.Them_ChiTiet(en_CT);
                             }
@@ -245,6 +247,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["TongCong"] = item.TongCong.ToString();
                     if (item.NgayGiaiTrach!=null)
                     dr["NgayThanhToan"] = item.NgayGiaiTrach.Value.ToString("dd/MM/yyyy");
+                    dr["SoPhatHanh"] = item.SoHoaDon;
                     ds.Tables["TongHopNo"].Rows.Add(dr);
                 }
                 rptXacNhanThanhToan rpt = new rptXacNhanThanhToan();

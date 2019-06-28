@@ -9670,14 +9670,14 @@ namespace ThuTien.DAL.Doi
                         + " set @ToKy="+ToKy
                         + " set @ToNam="+ToNam
                         + " if(@FromNam=@ToNam)"
-                        + " 	select DanhBo=DANHBA,KY,NAM,GIABAN,ThueGTGT=THUE,PhiBVMT=PHI,TONGCONG,NGAYGIAITRACH from HOADON where DANHBA=@DanhBo and NAM>=@FromNam and KY>=@FromKy and NAM<=@ToNam and KY<=@ToKy"
+                        + " 	select DanhBo=DANHBA,KY,NAM,GIABAN,ThueGTGT=THUE,PhiBVMT=PHI,TONGCONG,NGAYGIAITRACH,SOHOADON from HOADON where DANHBA=@DanhBo and NAM>=@FromNam and KY>=@FromKy and NAM<=@ToNam and KY<=@ToKy"
                         + " 	union all"
-                        + " 	select DanhBo=DANHBA,KY,NAM,GIABAN,ThueGTGT=THUE,PhiBVMT=PHI,TONGCONG,NGAYGIAITRACH from TT_HoaDonCu where DANHBA=@DanhBo and NAM>=@FromNam and KY>=@FromKy and NAM<=@ToNam and KY<=@ToKy"
+                        + " 	select DanhBo=DANHBA,KY,NAM,GIABAN,ThueGTGT=THUE,PhiBVMT=PHI,TONGCONG,NGAYGIAITRACH,SOHOADON from TT_HoaDonCu where DANHBA=@DanhBo and NAM>=@FromNam and KY>=@FromKy and NAM<=@ToNam and KY<=@ToKy"
                         + " else"
                         + " 	if(@FromNam<@ToNam)"
-                        + " 		select DanhBo=DANHBA,KY,NAM,GIABAN,ThueGTGT=THUE,PhiBVMT=PHI,TONGCONG,NGAYGIAITRACH from HOADON where DANHBA=@DanhBo and ((NAM>=@FromNam and NAM<@ToNam and KY>=@FromKy) or (NAM=@ToNam and KY<=@ToKy))"
+                        + " 		select DanhBo=DANHBA,KY,NAM,GIABAN,ThueGTGT=THUE,PhiBVMT=PHI,TONGCONG,NGAYGIAITRACH,SOHOADON from HOADON where DANHBA=@DanhBo and ((NAM>=@FromNam and NAM<@ToNam and KY>=@FromKy) or (NAM=@ToNam and KY<=@ToKy))"
                         + " 		union all"
-                        + " 		select DanhBo=DANHBA,KY,NAM,GIABAN,ThueGTGT=THUE,PhiBVMT=PHI,TONGCONG,NGAYGIAITRACH from TT_HoaDonCu where DANHBA=@DanhBo and ((NAM>=@FromNam and NAM<@ToNam  and KY>=@FromKy) or (NAM=@ToNam and KY<=@ToKy))";
+                        + " 		select DanhBo=DANHBA,KY,NAM,GIABAN,ThueGTGT=THUE,PhiBVMT=PHI,TONGCONG,NGAYGIAITRACH,SOHOADON from TT_HoaDonCu where DANHBA=@DanhBo and ((NAM>=@FromNam and NAM<@ToNam  and KY>=@FromKy) or (NAM=@ToNam and KY<=@ToKy))";
             return ExecuteQuery_DataTable(sql);
         }
 
