@@ -64,8 +64,11 @@ namespace ThuTien.GUI.TimKiem
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
                 {
                     //if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()) == true)
-                    if (item.Cells["MaDN"].Value.ToString()!="")
-                        item.DefaultCellStyle.BackColor = Color.Yellow;
+                    if (item.Cells["MaDN"].Value.ToString() != "")
+                        if (item.Cells["MaNV_DongNuoc"].Value.ToString() == "")
+                            item.DefaultCellStyle.BackColor = Color.DeepSkyBlue;
+                        else
+                            item.DefaultCellStyle.BackColor = Color.Yellow;
                     //if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()) == true)
                     if (bool.Parse(item.Cells["DongNuoc2"].Value.ToString()) == true)
                         item.DefaultCellStyle.BackColor = Color.Orange;

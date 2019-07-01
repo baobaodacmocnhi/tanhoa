@@ -159,11 +159,18 @@
             this.cmbNhanVienDK2 = new System.Windows.Forms.ComboBox();
             this.cmbToDK2 = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.btnInTBBamChi = new System.Windows.Forms.Button();
+            this.cmbToDot = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cmbFromDot = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.TenTo_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNV_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NhanVien_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HopDong_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DM_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky1_DK2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -197,7 +204,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1489, 643);
+            this.tabControl1.Size = new System.Drawing.Size(1489, 743);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -1130,6 +1137,11 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.White;
+            this.tabPage3.Controls.Add(this.cmbToDot);
+            this.tabPage3.Controls.Add(this.label18);
+            this.tabPage3.Controls.Add(this.cmbFromDot);
+            this.tabPage3.Controls.Add(this.label19);
+            this.tabPage3.Controls.Add(this.btnInTBBamChi);
             this.tabPage3.Controls.Add(this.btnChonFile2KhongNhanVien);
             this.tabPage3.Controls.Add(this.btnChonFile2);
             this.tabPage3.Controls.Add(this.btnInThongKe2);
@@ -1161,7 +1173,7 @@
             this.tabPage3.Controls.Add(this.label17);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1481, 617);
+            this.tabPage3.Size = new System.Drawing.Size(1481, 717);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Đăng Ký 2";
             // 
@@ -1208,7 +1220,7 @@
             // txtKy12_2
             // 
             this.txtKy12_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy12_2.Location = new System.Drawing.Point(1241, 580);
+            this.txtKy12_2.Location = new System.Drawing.Point(1241, 609);
             this.txtKy12_2.Name = "txtKy12_2";
             this.txtKy12_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy12_2.TabIndex = 117;
@@ -1217,7 +1229,7 @@
             // txtKy11_2
             // 
             this.txtKy11_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy11_2.Location = new System.Drawing.Point(1181, 580);
+            this.txtKy11_2.Location = new System.Drawing.Point(1181, 609);
             this.txtKy11_2.Name = "txtKy11_2";
             this.txtKy11_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy11_2.TabIndex = 116;
@@ -1226,7 +1238,7 @@
             // txtKy10_2
             // 
             this.txtKy10_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy10_2.Location = new System.Drawing.Point(1121, 580);
+            this.txtKy10_2.Location = new System.Drawing.Point(1121, 609);
             this.txtKy10_2.Name = "txtKy10_2";
             this.txtKy10_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy10_2.TabIndex = 115;
@@ -1235,7 +1247,7 @@
             // txtKy9_2
             // 
             this.txtKy9_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy9_2.Location = new System.Drawing.Point(1061, 580);
+            this.txtKy9_2.Location = new System.Drawing.Point(1061, 609);
             this.txtKy9_2.Name = "txtKy9_2";
             this.txtKy9_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy9_2.TabIndex = 114;
@@ -1244,7 +1256,7 @@
             // txtKy8_2
             // 
             this.txtKy8_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy8_2.Location = new System.Drawing.Point(1001, 580);
+            this.txtKy8_2.Location = new System.Drawing.Point(1001, 609);
             this.txtKy8_2.Name = "txtKy8_2";
             this.txtKy8_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy8_2.TabIndex = 113;
@@ -1253,7 +1265,7 @@
             // txtKy7_2
             // 
             this.txtKy7_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy7_2.Location = new System.Drawing.Point(941, 580);
+            this.txtKy7_2.Location = new System.Drawing.Point(941, 609);
             this.txtKy7_2.Name = "txtKy7_2";
             this.txtKy7_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy7_2.TabIndex = 112;
@@ -1262,7 +1274,7 @@
             // txtKy6_2
             // 
             this.txtKy6_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy6_2.Location = new System.Drawing.Point(881, 580);
+            this.txtKy6_2.Location = new System.Drawing.Point(881, 609);
             this.txtKy6_2.Name = "txtKy6_2";
             this.txtKy6_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy6_2.TabIndex = 111;
@@ -1271,7 +1283,7 @@
             // txtKy5_2
             // 
             this.txtKy5_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy5_2.Location = new System.Drawing.Point(821, 580);
+            this.txtKy5_2.Location = new System.Drawing.Point(821, 609);
             this.txtKy5_2.Name = "txtKy5_2";
             this.txtKy5_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy5_2.TabIndex = 110;
@@ -1280,7 +1292,7 @@
             // txtKy4_2
             // 
             this.txtKy4_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy4_2.Location = new System.Drawing.Point(761, 580);
+            this.txtKy4_2.Location = new System.Drawing.Point(761, 609);
             this.txtKy4_2.Name = "txtKy4_2";
             this.txtKy4_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy4_2.TabIndex = 109;
@@ -1289,7 +1301,7 @@
             // txtKy3_2
             // 
             this.txtKy3_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy3_2.Location = new System.Drawing.Point(701, 580);
+            this.txtKy3_2.Location = new System.Drawing.Point(701, 609);
             this.txtKy3_2.Name = "txtKy3_2";
             this.txtKy3_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy3_2.TabIndex = 108;
@@ -1298,7 +1310,7 @@
             // txtKy2_2
             // 
             this.txtKy2_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy2_2.Location = new System.Drawing.Point(641, 580);
+            this.txtKy2_2.Location = new System.Drawing.Point(641, 609);
             this.txtKy2_2.Name = "txtKy2_2";
             this.txtKy2_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy2_2.TabIndex = 107;
@@ -1307,7 +1319,7 @@
             // txtKy1_2
             // 
             this.txtKy1_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy1_2.Location = new System.Drawing.Point(581, 580);
+            this.txtKy1_2.Location = new System.Drawing.Point(581, 609);
             this.txtKy1_2.Name = "txtKy1_2";
             this.txtKy1_2.Size = new System.Drawing.Size(60, 20);
             this.txtKy1_2.TabIndex = 106;
@@ -1316,7 +1328,7 @@
             // txtTong2
             // 
             this.txtTong2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTong2.Location = new System.Drawing.Point(8, 580);
+            this.txtTong2.Location = new System.Drawing.Point(8, 609);
             this.txtTong2.Name = "txtTong2";
             this.txtTong2.Size = new System.Drawing.Size(45, 20);
             this.txtTong2.TabIndex = 105;
@@ -1385,9 +1397,11 @@
             this.dgvDanhBoDK2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TenTo_DK2,
             this.MaNV_DK2,
-            this.HoTen_DK2,
+            this.NhanVien_DK2,
             this.MLT_DK2,
+            this.HopDong_DK2,
             this.DanhBo_DK2,
+            this.HoTen_DK2,
             this.DiaChi_DK2,
             this.DM_DK2,
             this.Ky1_DK2,
@@ -1410,7 +1424,7 @@
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDanhBoDK2.DefaultCellStyle = dataGridViewCellStyle13;
-            this.dgvDanhBoDK2.Location = new System.Drawing.Point(8, 33);
+            this.dgvDanhBoDK2.Location = new System.Drawing.Point(8, 62);
             this.dgvDanhBoDK2.Name = "dgvDanhBoDK2";
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhBoDK2.RowsDefaultCellStyle = dataGridViewCellStyle14;
@@ -1472,6 +1486,93 @@
             this.label17.TabIndex = 93;
             this.label17.Text = "Tổ:";
             // 
+            // btnInTBBamChi
+            // 
+            this.btnInTBBamChi.Location = new System.Drawing.Point(1288, 4);
+            this.btnInTBBamChi.Name = "btnInTBBamChi";
+            this.btnInTBBamChi.Size = new System.Drawing.Size(90, 23);
+            this.btnInTBBamChi.TabIndex = 122;
+            this.btnInTBBamChi.Text = "In TB Bấm Chì";
+            this.btnInTBBamChi.UseVisualStyleBackColor = true;
+            this.btnInTBBamChi.Click += new System.EventHandler(this.btnInTBBamChi_Click);
+            // 
+            // cmbToDot
+            // 
+            this.cmbToDot.FormattingEnabled = true;
+            this.cmbToDot.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cmbToDot.Location = new System.Drawing.Point(382, 33);
+            this.cmbToDot.Name = "cmbToDot";
+            this.cmbToDot.Size = new System.Drawing.Size(40, 21);
+            this.cmbToDot.TabIndex = 126;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(326, 38);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(50, 13);
+            this.label18.TabIndex = 125;
+            this.label18.Text = "Đến Đợt:";
+            // 
+            // cmbFromDot
+            // 
+            this.cmbFromDot.FormattingEnabled = true;
+            this.cmbFromDot.Items.AddRange(new object[] {
+            "Tất Cả",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cmbFromDot.Location = new System.Drawing.Point(280, 33);
+            this.cmbFromDot.Name = "cmbFromDot";
+            this.cmbFromDot.Size = new System.Drawing.Size(40, 21);
+            this.cmbFromDot.TabIndex = 124;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(231, 36);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(43, 13);
+            this.label19.TabIndex = 123;
+            this.label19.Text = "Từ Đợt:";
+            // 
             // TenTo_DK2
             // 
             this.TenTo_DK2.DataPropertyName = "TenTo";
@@ -1486,11 +1587,11 @@
             this.MaNV_DK2.Name = "MaNV_DK2";
             this.MaNV_DK2.Visible = false;
             // 
-            // HoTen_DK2
+            // NhanVien_DK2
             // 
-            this.HoTen_DK2.DataPropertyName = "HoTen";
-            this.HoTen_DK2.HeaderText = "Nhân Viên";
-            this.HoTen_DK2.Name = "HoTen_DK2";
+            this.NhanVien_DK2.DataPropertyName = "NhanVien";
+            this.NhanVien_DK2.HeaderText = "Nhân Viên";
+            this.NhanVien_DK2.Name = "NhanVien_DK2";
             // 
             // MLT_DK2
             // 
@@ -1499,11 +1600,25 @@
             this.MLT_DK2.Name = "MLT_DK2";
             this.MLT_DK2.Width = 80;
             // 
+            // HopDong_DK2
+            // 
+            this.HopDong_DK2.DataPropertyName = "HopDong";
+            this.HopDong_DK2.HeaderText = "Hợp Đồng";
+            this.HopDong_DK2.Name = "HopDong_DK2";
+            this.HopDong_DK2.Visible = false;
+            // 
             // DanhBo_DK2
             // 
             this.DanhBo_DK2.DataPropertyName = "DanhBo";
             this.DanhBo_DK2.HeaderText = "Danh Bộ";
             this.DanhBo_DK2.Name = "DanhBo_DK2";
+            // 
+            // HoTen_DK2
+            // 
+            this.HoTen_DK2.DataPropertyName = "HoTen";
+            this.HoTen_DK2.HeaderText = "Họ Tên";
+            this.HoTen_DK2.Name = "HoTen_DK2";
+            this.HoTen_DK2.Visible = false;
             // 
             // DiaChi_DK2
             // 
@@ -1607,7 +1722,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1489, 643);
+            this.ClientSize = new System.Drawing.Size(1489, 743);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmPhanTichHD0";
             this.Text = "Phân Tích Hóa Đơn = 0";
@@ -1746,11 +1861,18 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnChonFileCoNhanVien;
         private System.Windows.Forms.Button btnChonFile2KhongNhanVien;
+        private System.Windows.Forms.Button btnInTBBamChi;
+        private System.Windows.Forms.ComboBox cmbToDot;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox cmbFromDot;
+        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTo_DK2;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV_DK2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_DK2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NhanVien_DK2;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT_DK2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HopDong_DK2;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_DK2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_DK2;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi_DK2;
         private System.Windows.Forms.DataGridViewTextBoxColumn DM_DK2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky1_DK2;

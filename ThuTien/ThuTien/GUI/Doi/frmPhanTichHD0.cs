@@ -659,7 +659,11 @@ namespace ThuTien.GUI.Doi
                     List<TT_NguoiDung> lstND = _cNguoiDung.GetDSHanhThuByMaTo(itemTo.MaTo);
                     foreach (TT_NguoiDung itemND in lstND)
                     {
-                        dt.Merge(_cDangKy.GetDS(itemND.MaND, int.Parse(cmbNamDK2.SelectedValue.ToString())));
+                        if (cmbFromDot.SelectedIndex == 0)
+                            dt.Merge(_cDangKy.getDS(itemND.MaND, int.Parse(cmbNamDK2.SelectedValue.ToString())));
+                        else
+                            if (cmbFromDot.SelectedIndex > 0)
+                                dt.Merge(_cDangKy.getDS(itemND.MaND, int.Parse(cmbNamDK2.SelectedValue.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString())));
                     }
                 }
                 dgvDanhBoDK2.DataSource = dt;
@@ -674,7 +678,12 @@ namespace ThuTien.GUI.Doi
                         List<TT_NguoiDung> lstND = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbToDK2.SelectedValue.ToString()));
                         foreach (TT_NguoiDung itemND in lstND)
                         {
-                            dt.Merge(_cDangKy.GetDS(itemND.MaND, int.Parse(cmbNamDK2.SelectedValue.ToString())));
+                            if (cmbFromDot.SelectedIndex == 0)
+                                dt.Merge(_cDangKy.getDS(itemND.MaND, int.Parse(cmbNamDK2.SelectedValue.ToString())));
+                            else
+                                if (cmbFromDot.SelectedIndex > 0)
+                                    dt.Merge(_cDangKy.getDS(itemND.MaND, int.Parse(cmbNamDK2.SelectedValue.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString())));
+
                         }
                         dgvDanhBoDK2.DataSource = dt;
                     }
@@ -682,7 +691,10 @@ namespace ThuTien.GUI.Doi
                         ///chọn 1 nhân viên cụ thể
                         if (cmbNhanVienDK2.SelectedIndex > 0)
                         {
-                            dgvDanhBoDK2.DataSource = _cDangKy.GetDS(int.Parse(cmbNhanVienDK2.SelectedValue.ToString()), int.Parse(cmbNamDK2.SelectedValue.ToString()));
+                            if (cmbFromDot.SelectedIndex == 0)
+                                dgvDanhBoDK2.DataSource = _cDangKy.getDS(int.Parse(cmbNhanVienDK2.SelectedValue.ToString()), int.Parse(cmbNamDK2.SelectedValue.ToString()));
+                            else
+                                dgvDanhBoDK2.DataSource = _cDangKy.getDS(int.Parse(cmbNhanVienDK2.SelectedValue.ToString()), int.Parse(cmbNamDK2.SelectedValue.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
                         }
             CountdgvDanhBoDK2();
         }
@@ -768,7 +780,7 @@ namespace ThuTien.GUI.Doi
             foreach (DataGridViewRow item in dgvDanhBoDK2.Rows)
             {
                 DataRow dr = ds.Tables["DangKyHD0"].NewRow();
-                dr["NhanVien"] = item.Cells["HoTen_DK2"].Value;
+                dr["NhanVien"] = item.Cells["NhanVien_DK2"].Value;
                 dr["MLT"] = item.Cells["MLT_DK2"].Value.ToString().Insert(4, " ").Insert(2, " ");
                 dr["DanhBo"] = item.Cells["DanhBo_DK2"].Value.ToString().Insert(7, " ").Insert(4, " ");
                 dr["DiaChi"] = item.Cells["DiaChi_DK2"].Value;
@@ -800,7 +812,7 @@ namespace ThuTien.GUI.Doi
             {
                 DataRow dr = ds.Tables["DangKyHD0"].NewRow();
                 dr["To"] = item.Cells["TenTo_DK2"].Value;
-                dr["NhanVien"] = item.Cells["HoTen_DK2"].Value;
+                dr["NhanVien"] = item.Cells["NhanVien_DK2"].Value;
                 dr["DanhBo"] = item.Cells["DanhBo_DK2"].Value.ToString().Insert(7, " ").Insert(4, " ");
                 dr["DiaChi"] = item.Cells["DiaChi_DK2"].Value;
                 dr["Ky1"] = item.Cells["Ky1_DK2"].Value;
@@ -967,6 +979,27 @@ namespace ThuTien.GUI.Doi
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnInTBBamChi_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvDanhBoDK2.Rows)
+            {
+                DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                dr["NhanVien"] = item.Cells["NhanVien_DK2"].Value;
+                dr["MLT"] = item.Cells["MLT_DK2"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                dr["DanhBo"] = item.Cells["DanhBo_DK2"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = item.Cells["HoTen_DK2"].Value;
+                dr["DiaChi"] = item.Cells["DiaChi_DK2"].Value;
+                dr["SoHoaDon"] = item.Cells["HopDong_DK2"].Value;
+                ds.Tables["DSHoaDon"].Rows.Add(dr);
+            }
+
+            rptGuiThongBaoBamChi rpt = new rptGuiThongBaoBamChi();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
     }
 }

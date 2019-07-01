@@ -155,12 +155,23 @@ namespace ThuTien.GUI.ChuyenKhoan
                             using (var scope = new TransactionScope())
                             {
                                 TT_BangKe bangke = _cBangKe.get(int.Parse(item.Cells["MaBK"].Value.ToString()));
+                                bool flagLuiNgay = false;
+                                DateTime CreateDate = new DateTime();
+                                if (bangke.CreateDate.Value.Date != bangke.CreateDate2.Value.Date)
+                                {
+                                    flagLuiNgay = true;
+                                    CreateDate = bangke.CreateDate.Value;
+                                }
                                 if (_cBangKe.Xoa(bangke))
-                                    if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê", "Xóa"))
-                                        scope.Complete();
+                                    if (flagLuiNgay == true)
+                                        if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê", "Xóa", CreateDate))
+                                            scope.Complete();
+                                        else
+                                            if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê", "Xóa"))
+                                                scope.Complete();
                             }
-                        btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnXem.PerformClick();
                     }
                     catch (Exception ex)
                     {
