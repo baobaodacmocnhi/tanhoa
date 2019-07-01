@@ -1363,7 +1363,7 @@ namespace ThuTien.GUI.ToTruong
                     {
                         if (cmbNhanVien.SelectedIndex > 0 && chkDenKy.Checked == true)
                         {
-                            DataTable dt = _cHoaDon.GetDSTonDenKy_NV(int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDTuGia.SelectedRows[0].Cells["Dot_TG"].Value.ToString()), 2);
+                            DataTable dt = _cHoaDon.GetDSTonDenKy_NV(int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDTuGia.SelectedRows[0].Cells["Dot_TG"].Value.ToString()), int.Parse(txtSoKy.Text.Trim()));
                             foreach (DataRow item in dt.Rows)
                                 if (!_cQuetTam.CheckExist(item["SoHoaDon"].ToString(), CNguoiDung.MaND, DateTime.Now))
                                 {

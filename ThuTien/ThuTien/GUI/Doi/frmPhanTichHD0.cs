@@ -985,16 +985,17 @@ namespace ThuTien.GUI.Doi
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvDanhBoDK2.Rows)
-            {
-                DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                dr["NhanVien"] = item.Cells["NhanVien_DK2"].Value;
-                dr["MLT"] = item.Cells["MLT_DK2"].Value.ToString().Insert(4, " ").Insert(2, " ");
-                dr["DanhBo"] = item.Cells["DanhBo_DK2"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                dr["HoTen"] = item.Cells["HoTen_DK2"].Value;
-                dr["DiaChi"] = item.Cells["DiaChi_DK2"].Value;
-                dr["SoHoaDon"] = item.Cells["HopDong_DK2"].Value;
-                ds.Tables["DSHoaDon"].Rows.Add(dr);
-            }
+                if (int.Parse(item.Cells["Ky"+DateTime.Today.Month+"_DK2"].Value.ToString()) == 0)
+                {
+                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                    dr["NhanVien"] = item.Cells["NhanVien_DK2"].Value;
+                    dr["MLT"] = item.Cells["MLT_DK2"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                    dr["DanhBo"] = item.Cells["DanhBo_DK2"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = item.Cells["HoTen_DK2"].Value;
+                    dr["DiaChi"] = item.Cells["DiaChi_DK2"].Value;
+                    dr["SoHoaDon"] = item.Cells["HopDong_DK2"].Value;
+                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                }
 
             rptGuiThongBaoBamChi rpt = new rptGuiThongBaoBamChi();
             rpt.SetDataSource(ds);
