@@ -183,6 +183,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 txtVanDeKhac.Text = entity.VanDeKhac;
 
                 chkCT_HoaDon.Checked = entity.CT_HoaDon;
+                chkCT_GiayBao.Checked = entity.CT_GiayBao;
                 chkCT_HDTN_CQN.Checked = entity.CT_HDTN_CQN;
                 chkCT_CQN.Checked = entity.CT_CQN;
                 chkCT_Khac.Checked = entity.CT_Khac;
@@ -254,6 +255,7 @@ namespace KTKS_DonKH.GUI.DonTu
             //}
 
             chkCT_HoaDon.Checked = false;
+            chkCT_GiayBao.Checked = false;
             chkCT_HDTN_CQN.Checked = false;
             chkCT_CQN.Checked = false;
             chkCT_Khac.Checked = false;
@@ -517,6 +519,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     ///
                     if (chkCT_HoaDon.Checked)
                         entity.CT_HoaDon = true;
+                    if (chkCT_GiayBao.Checked)
+                        entity.CT_GiayBao = true;
                     if (chkCT_HDTN_CQN.Checked)
                         entity.CT_HDTN_CQN = true;
                     if (chkCT_CQN.Checked)
@@ -638,6 +642,11 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.SoCongVan = txtSoCongVan.Text.Trim();
                             _dontu.TongDB = int.Parse(txtTongDB.Text.Trim());
                         }
+                        else
+                        {
+                            _dontu.SoCongVan = null;
+                            _dontu.TongDB = 0;
+                        }
                         ///
                         _dontu.ID_NhomDon = "";
                         _dontu.NgayHenGiaiQuyet = "Trong thời gian 5 ngày làm việc kể từ ngày nhận hồ sơ, Công ty sẽ giải quyết theo quy định hiện hành";
@@ -679,6 +688,11 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.CT_HoaDon = true;
                         else
                             _dontu.CT_HoaDon = false;
+
+                        if (chkCT_GiayBao.Checked)
+                            _dontu.CT_GiayBao = true;
+                        else
+                            _dontu.CT_GiayBao = false;
 
                         if (chkCT_HDTN_CQN.Checked)
                             _dontu.CT_HDTN_CQN = true;
@@ -844,6 +858,15 @@ namespace KTKS_DonKH.GUI.DonTu
                 else
                 {
                     dr["CT_HoaDon"] = false;
+                }
+
+                if (entity.CT_GiayBao)
+                {
+                    dr["CT_GiayBao"] = true;
+                }
+                else
+                {
+                    dr["CT_GiayBao"] = false;
                 }
 
                 if (entity.CT_HDTN_CQN)
