@@ -207,7 +207,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             using (var scope = new TransactionScope())
                             {
                                 if (_cHoaDon.DangNgan("ChuyenKhoan", item.Text, CNguoiDung.MaND, dateGiaiTrachSua.Value))
-                                    if (_cTienDu.UpdateThem(item.Text))
+                                    if (_cTienDu.UpdateThem_Doi(item.Text, dateGiaiTrachSua.Value))
                                         scope.Complete();
                             }
                         btnXem.PerformClick();

@@ -782,9 +782,9 @@
             this.label14.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label14.Location = new System.Drawing.Point(1002, 33);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(152, 15);
+            this.label14.Size = new System.Drawing.Size(188, 15);
             this.label14.TabIndex = 30;
-            this.label14.Text = "Quét: màu xanh dương";
+            this.label14.Text = "Quét Lệnh: màu xanh dương";
             // 
             // frmTimKiemKhachHang
             // 

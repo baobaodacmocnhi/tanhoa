@@ -1368,7 +1368,7 @@ namespace ThuTien.GUI.ToTruong
                                 if (!_cQuetTam.CheckExist(item["SoHoaDon"].ToString(), CNguoiDung.MaND, DateTime.Now))
                                 {
                                     TT_QuetTam quettam = new TT_QuetTam();
-                                    quettam.MaHD = int.Parse(item["SoHoaDon"].ToString());
+                                    quettam.MaHD = int.Parse(item["MaHD"].ToString());
                                     quettam.SoHoaDon = item["SoHoaDon"].ToString();
                                     if (!_cQuetTam.Them(quettam))
                                     {
