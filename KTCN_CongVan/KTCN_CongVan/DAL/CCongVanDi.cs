@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using KTCN_CongVan.LinQ;
 using System.Data;
+using KTCN_CongVan.DAL.QuanTri;
 
 namespace KTCN_CongVan.DAL
 {
@@ -17,7 +18,9 @@ namespace KTCN_CongVan.DAL
                     entity.ID = _db.CongVanDis.Max(item => item.ID) + 1;
                 else
                     entity.ID = 1;
+                entity.CreateBy = CUser.ID;
                 entity.CreateDate = DateTime.Now;
+                entity.IDPhong = CUser.IDPhong;
                 _db.CongVanDis.InsertOnSubmit(entity);
                 _db.SubmitChanges();
                 return true;
@@ -34,6 +37,7 @@ namespace KTCN_CongVan.DAL
         {
             try
             {
+                entity.ModifyBy = CUser.ID;
                 entity.ModifyDate = DateTime.Now;
                 _db.SubmitChanges();
                 return true;
@@ -61,19 +65,19 @@ namespace KTCN_CongVan.DAL
             }
         }
 
-        public CongVanDi Get(int ID)
+        public CongVanDi get(int ID)
         {
             return _db.CongVanDis.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DataTable GetLoaiCongVan()
+        public DataTable getLoaiCongVan(int IDPhong)
         {
-            return LINQToDataTable(_db.CongVanDis.Select(item => new { item.LoaiCongVan }).ToList().Distinct());
+            return LINQToDataTable(_db.CongVanDis.Where(item => item.IDPhong == IDPhong).Select(item => new { item.LoaiCongVan }).ToList().Distinct());
         }
 
-        public DataTable GetNoiDung()
+        public DataTable getNoiDung(int IDPhong)
         {
-            return LINQToDataTable(_db.CongVanDis.Select(item => new { item.NoiDung }).ToList().Distinct());
+            return LINQToDataTable(_db.CongVanDis.Where(item=>item.IDPhong==IDPhong).Select(item => new { item.NoiDung }).ToList().Distinct());
         }
 
         public DataTable GetDS()
@@ -81,29 +85,29 @@ namespace KTCN_CongVan.DAL
             return LINQToDataTable(_db.CongVanDis.ToList());
         }
 
-        public DataTable GetDS_SoCongVan(string SoCongVan)
+        public DataTable getDS_SoCongVan(int IDPhong,string SoCongVan)
         {
-            return LINQToDataTable(_db.CongVanDis.Where(item => item.SoCongVan.Contains(SoCongVan)).ToList());
+            return LINQToDataTable(_db.CongVanDis.Where(item => item.IDPhong == IDPhong && item.SoCongVan.Contains(SoCongVan)).ToList());
         }
 
-        public DataTable GetDS_NoiDung(string NoiDung)
+        public DataTable getDS_NoiDung(int IDPhong, string NoiDung)
         {
-            return LINQToDataTable(_db.CongVanDis.Where(item => item.NoiDung.Contains(NoiDung)).ToList());
+            return LINQToDataTable(_db.CongVanDis.Where(item => item.IDPhong == IDPhong && item.NoiDung.Contains(NoiDung)).ToList());
         }
 
-        public DataTable GetDS_NoiNhan(string NoiNhan)
+        public DataTable getDS_NoiNhan(int IDPhong, string NoiNhan)
         {
-            return LINQToDataTable(_db.CongVanDis.Where(item => item.NoiNhan.Contains(NoiNhan)).ToList());
+            return LINQToDataTable(_db.CongVanDis.Where(item => item.IDPhong == IDPhong && item.NoiNhan.Contains(NoiNhan)).ToList());
         }
 
-        public DataTable GetDS(DateTime FromNgayNhan,DateTime ToNgayNhan)
+        public DataTable getDS(int IDPhong, DateTime FromNgayNhan, DateTime ToNgayNhan)
         {
-            return LINQToDataTable(_db.CongVanDis.Where(item=>item.NgayNhan.Value.Date>=FromNgayNhan.Date&&item.NgayNhan.Value.Date<=ToNgayNhan.Date).ToList());
+            return LINQToDataTable(_db.CongVanDis.Where(item => item.IDPhong == IDPhong && item.NgayNhan.Value.Date >= FromNgayNhan.Date && item.NgayNhan.Value.Date <= ToNgayNhan.Date).ToList());
         }
 
-        public DataTable GetDS_NgayHetHan(DateTime FromNgayHetHan, DateTime ToNgayHetHan)
+        public DataTable getDS_NgayHetHan(int IDPhong, DateTime FromNgayHetHan, DateTime ToNgayHetHan)
         {
-            return LINQToDataTable(_db.CongVanDis.Where(item => item.NgayHetHan.Value.Date >= FromNgayHetHan.Date && item.NgayHetHan.Value.Date <= ToNgayHetHan.Date).ToList());
+            return LINQToDataTable(_db.CongVanDis.Where(item =>item.IDPhong==IDPhong && item.NgayHetHan.Value.Date >= FromNgayHetHan.Date && item.NgayHetHan.Value.Date <= ToNgayHetHan.Date).ToList());
         }
     }
 }

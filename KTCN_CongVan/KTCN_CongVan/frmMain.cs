@@ -6,551 +6,269 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTCN_CongVan.LinQ;
-using KTCN_CongVan.DAL;
+using KTCN_CongVan.DAL.QuanTri;
+using KTCN_CongVan.GUI.QuanTri;
+using KTCN_CongVan.GUI.HeThong;
+using KTCN_CongVan.GUI.CongVan;
+using KTCN_CongVan.GUI.ToThietKe;
 
 namespace KTCN_CongVan
 {
     public partial class frmMain : Form
     {
-        CongVanDi _congvandi = null;
-        CongVanDen _congvanden = null;
-        CCongVanDi _cCongVanDi = new CCongVanDi();
-        CCongVanDen _cCongVanDen = new CCongVanDen();
-        CToThietKe _cTTK = new CToThietKe();
+        CPhanQuyenNhom _cPhanQuyenNhom = new CPhanQuyenNhom();
+        CPhanQuyenUser _cPhanQuyenUser = new CPhanQuyenUser();
 
         public frmMain()
         {
             InitializeComponent();
         }
 
+        public void GetLoginResult(bool result)
+        {
+            if (result)
+            {
+                mnuDangNhap.Enabled = false;
+                mnuDoiMatKhau.Enabled = true;
+                mnuDangXuat.Enabled = true;
+                StripStatus_HoTen.Text = "Xin Chào: " + CUser.HoTen;
+                if (CUser.ID == 0)
+                    mnuAdmin.Enabled = true;
+                else
+                    mnuAdmin.Enabled = false;
+
+                foreach (ToolStripMenuItem itemParent in this.MainMenuStrip.Items)
+                {
+                    if (itemParent.Name == "mnuHeThong" || itemParent.Name == "mnuTimKiem")// || itemParent.Name == "mnuTrungTamKhachHang")
+                        continue;
+                    if (_cPhanQuyenNhom.checkExist_TenMenuChaMaNhom(itemParent.Name, CUser.IDNhom))
+                        itemParent.Visible = true;
+                    else
+                        if (_cPhanQuyenUser.checkExist_TenMenuChaMaND(itemParent.Name, CUser.ID))
+                            itemParent.Visible = true;
+                        else
+                            itemParent.Visible = false;
+                }
+            }
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
-            dgvCongVan_Den.AutoGenerateColumns = false;
-            DataTable dtLoaiCongVan_Den = _cCongVanDen.GetLoaiCongVan();
-            AutoCompleteStringCollection auto_Den = new AutoCompleteStringCollection();
-            foreach (DataRow item in dtLoaiCongVan_Den.Rows)
-            {
-                auto_Den.Add(item["LoaiCongVan"].ToString());
-            }
-            txtLoaiCongVan_Den.AutoCompleteCustomSource = auto_Den;
-
-            DataTable dtNoiDung_Den = _cCongVanDen.GetNoiDung();
-            AutoCompleteStringCollection autoNoiDung_Den = new AutoCompleteStringCollection();
-            foreach (DataRow item in dtNoiDung_Den.Rows)
-            {
-                autoNoiDung_Den.Add(item["NoiDung"].ToString());
-            }
-            txtNoiDung_Den.AutoCompleteCustomSource = autoNoiDung_Den;
-
-            /////////////////////
-
-            dgvCongVan_Di.AutoGenerateColumns = false;
-            DataTable dtLoaiCongVan_Di = _cCongVanDi.GetLoaiCongVan();
-            AutoCompleteStringCollection auto_Di = new AutoCompleteStringCollection();
-            foreach (DataRow item in dtLoaiCongVan_Di.Rows)
-            {
-                auto_Di.Add(item["LoaiCongVan"].ToString());
-            }
-            txtLoaiCongVan_Di.AutoCompleteCustomSource = auto_Di;
-
-            DataTable dtNoiDung_Di = _cCongVanDi.GetNoiDung();
-            AutoCompleteStringCollection autoNoiDung_Di = new AutoCompleteStringCollection();
-            foreach (DataRow item in dtNoiDung_Di.Rows)
-            {
-                autoNoiDung_Di.Add(item["NoiDung"].ToString());
-            }
-            txtNoiDung_Di.AutoCompleteCustomSource = autoNoiDung_Di;
-
-            /////////////////////
-
-            dgvDotThiCong.AutoGenerateColumns = false;
-            dgvDSHoSo.AutoGenerateColumns = false;
-            cmbLoaiHoSo_TTK.SelectedIndex = 0;
-
+            //Application.Idle += new EventHandler(Application_Idle);
+            mnuDangNhap.PerformClick();
         }
 
-        private void LoadCongVanDi(CongVanDi entity)
+        void Application_Idle(object sender, EventArgs e)
         {
-            txtSoCongVan_Di.Text = entity.SoCongVan;
-            dateNgayNhan_Di.Value = entity.NgayNhan.Value;
-            chkCongVanCongTy_Di.Checked = entity.CongVanCongTy;
-            txtLoaiCongVan_Di.Text = entity.LoaiCongVan;
-            chkBanChinh_Di.Checked = entity.BanChinh;
-            txtNoiDung_Di.Text = entity.NoiDung;
-            txtNoiNhan_Di.Text = entity.NoiNhan;
-            txtGhiChu_Di.Text = entity.GhiChu;
-            chkHetHan_Di.Checked = entity.HetHan;
-            dateNgayHetHan_Di.Value = entity.NgayHetHan.Value;
-        }
-
-        private void ClearCongVanDi()
-        {
-            txtSoCongVan_Di.Text = "";
-            dateNgayNhan_Di.Value = DateTime.Now;
-            chkCongVanCongTy_Di.Checked = false;
-            txtLoaiCongVan_Di.Text = "";
-            chkBanChinh_Di.Checked = false;
-            txtNoiDung_Di.Text = "";
-            txtNoiNhan_Di.Text = "";
-            txtGhiChu_Di.Text = "";
-            chkHetHan_Di.Checked = false;
-            dateNgayHetHan_Di.Value = DateTime.Now;
-
-            _congvandi = null;
-        }
-
-        private void btnThem_Di_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                CongVanDi entity = new CongVanDi();
-                entity.SoCongVan = txtSoCongVan_Di.Text.Trim();
-                entity.NgayNhan = dateNgayNhan_Di.Value;
-                entity.CongVanCongTy = chkCongVanCongTy_Di.Checked;
-                entity.LoaiCongVan = txtLoaiCongVan_Di.Text.Trim();
-                entity.BanChinh = chkBanChinh_Di.Checked;
-                entity.NoiDung = txtNoiDung_Di.Text.Trim();
-                entity.NoiNhan = txtNoiNhan_Di.Text.Trim();
-                entity.GhiChu = txtGhiChu_Di.Text.Trim();
-                if (chkHetHan_Di.Checked == true)
-                {
-                    entity.HetHan = chkHetHan_Di.Checked;
-                    entity.NgayHetHan = dateNgayHetHan_Di.Value;
-                }
-                if (_cCongVanDi.Them(entity) == true)
-                {
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearCongVanDi();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnXoa_Di_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (_congvandi != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-                    if (_cCongVanDi.Xoa(_congvandi) == true)
-                    {
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ClearCongVanDi();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnSua_Di_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (_congvandi != null)
-                {
-                    _congvandi.SoCongVan = txtSoCongVan_Di.Text.Trim();
-                    _congvandi.NgayNhan = dateNgayNhan_Di.Value;
-                    _congvandi.CongVanCongTy = chkCongVanCongTy_Di.Checked;
-                    _congvandi.LoaiCongVan = txtLoaiCongVan_Di.Text.Trim();
-                    _congvandi.BanChinh = chkBanChinh_Di.Checked;
-                    _congvandi.NoiDung = txtNoiDung_Di.Text.Trim();
-                    _congvandi.NoiNhan = txtNoiNhan_Di.Text.Trim();
-                    _congvandi.GhiChu = txtGhiChu_Di.Text.Trim();
-                    if (chkHetHan_Di.Checked == true)
-                    {
-                        _congvandi.HetHan = true;
-                        _congvandi.NgayHetHan = dateNgayHetHan_Di.Value;
-                    }
-                    else
-                    {
-                        _congvandi.HetHan = false;
-                    }
-                    if (_cCongVanDi.Sua(_congvandi) == true)
-                    {
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ClearCongVanDi();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void cmbTimTheo_Di_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (cmbTimTheo_Di.SelectedItem.ToString())
-            {
-                case "Số Công Văn":
-                case "Nội Dung":
-                case "Nơi Nhận":
-                    panel_NoiDung_Di.Visible = true;
-                    panel_ThoiGian_Di.Visible = false;
-                    break;
-                case "Ngày Nhận":
-                case "Ngày Hết Hạn":
-                    panel_NoiDung_Di.Visible = false;
-                    panel_ThoiGian_Di.Visible = true;
-                    break;
-                default:
-                    panel_NoiDung_Di.Visible = false;
-                    panel_ThoiGian_Di.Visible = false;
-                    break;
-            }
-        }
-
-        private void btnXem_Di_Click(object sender, EventArgs e)
-        {
-
-            switch (cmbTimTheo_Di.SelectedItem.ToString())
-            {
-                case "Số Công Văn":
-                    dgvCongVan_Di.DataSource = _cCongVanDi.GetDS_SoCongVan(txtNoiDungTimKiem_Di.Text.Trim());
-                    break;
-                case "Nội Dung":
-                    dgvCongVan_Di.DataSource = _cCongVanDi.GetDS_NoiDung(txtNoiDungTimKiem_Di.Text.Trim());
-                    break;
-                case "Nơi Nhận":
-                    dgvCongVan_Di.DataSource = _cCongVanDi.GetDS_NoiNhan(txtNoiDungTimKiem_Di.Text.Trim());
-                    break;
-                case "Ngày Nhận":
-                    dgvCongVan_Di.DataSource = _cCongVanDi.GetDS(dateTu_Di.Value, dateDen_Di.Value);
-                    break;
-                case "Ngày Hết Hạn":
-                    dgvCongVan_Di.DataSource = _cCongVanDi.GetDS_NgayHetHan(dateTu_Di.Value, dateDen_Di.Value);
-                    break;
-                default:
-                    dgvCongVan_Di.DataSource = null;
-                    break;
-            }
-        }
-
-        private void dgvCongVan_Di_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                _congvandi = _cCongVanDi.Get(int.Parse(dgvCongVan_Di.CurrentRow.Cells["ID_Di"].Value.ToString()));
-                LoadCongVanDi(_congvandi);
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
-        private void chkHetHan_Di_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkHetHan_Di.Checked == true)
-                dateNgayHetHan_Di.Enabled = true;
+            if (CUser.MaTo == 5 && CUser.ID != 51)
+                timer.Stop();
             else
-                dateNgayHetHan_Di.Enabled = false;
+                timer.Start();
         }
 
-        /////////////////////
-
-        private void LoadCongVanDen(CongVanDen entity)
+        private void frmMain_MouseMove(object sender, MouseEventArgs e)
         {
-            txtSoCongVan_Den.Text = entity.SoCongVan;
-            dateNgayCongVan_Den.Value = entity.NgayCongVan.Value;
-            txtDonViPhatHanh_Den.Text = entity.DonViPhatHanh;
-            dateNgayNhan_Den.Value = entity.NgayNhan.Value;
-            txtLoaiCongVan_Den.Text = entity.LoaiCongVan;
-            txtNoiDung_Den.Text = entity.NoiDung;
-            txtNoiNhan_Den.Text = entity.NoiNhan;
-            txtGhiChu_Den.Text = entity.GhiChu;
-            chkHetHan_Den.Checked = entity.HetHan;
-            dateNgayHetHan_Den.Value = entity.NgayHetHan.Value;
+            //timer.Stop();
         }
 
-        private void ClearCongVanDen()
+        private void timer_Tick(object sender, EventArgs e)
         {
-            txtSoCongVan_Den.Text = "";
-            dateNgayCongVan_Den.Value = DateTime.Now;
-            txtDonViPhatHanh_Den.Text = "";
-            dateNgayNhan_Den.Value = DateTime.Now;
-            txtLoaiCongVan_Den.Text = "";
-            txtNoiDung_Den.Text = "";
-            txtNoiNhan_Den.Text = "";
-            txtGhiChu_Den.Text = "";
-            chkHetHan_Den.Checked = false;
-            dateNgayHetHan_Den.Value = DateTime.Now;
-
-            _congvanden = null;
+            Application.Exit();
         }
 
-        private void btnThem_Den_Click(object sender, EventArgs e)
+        public void OpenForm(Form frm)
         {
-            try
-            {
-                CongVanDen entity = new CongVanDen();
-                entity.SoCongVan = txtSoCongVan_Den.Text.Trim();
-                entity.NgayCongVan = dateNgayCongVan_Den.Value;
-                entity.DonViPhatHanh = txtDonViPhatHanh_Den.Text.Trim();
-                entity.NgayNhan = dateNgayNhan_Den.Value;
-                entity.LoaiCongVan = txtLoaiCongVan_Den.Text.Trim();
-                entity.NoiDung = txtNoiDung_Den.Text.Trim();
-                entity.NoiNhan = txtNoiNhan_Den.Text.Trim();
-                entity.GhiChu = txtGhiChu_Den.Text.Trim();
-                if (chkHetHan_Den.Checked == true)
-                {
-                    entity.HetHan = chkHetHan_Den.Checked;
-                    entity.NgayHetHan = dateNgayHetHan_Den.Value;
-                }
-                if (_cCongVanDen.Them(entity) == true)
-                {
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearCongVanDen();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+            //foreach (Form item in this.MdiChildren)
+            //{
+            //    this.ActiveMdiChild.Close();
+            //}
+            //frm.MdiParent = this;
+            //frm.FormBorderStyle = FormBorderStyle.None;
+            //frm.Dock = DockStyle.Fill;
+            //frm.Show();
+            //StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
 
-        private void btnXoa_Den_Click(object sender, EventArgs e)
-        {
-            try
+            //foreach (Form form in Application.OpenForms)
+            //{
+            //    if (form.Name == frm.Name)
+            //    {
+            //        tabControl.TabPages.con;
+            //        return;
+            //    }
+            //}
+            if (tabControl.TabPages.ContainsKey(frm.Name))
             {
-                if (_congvanden != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-                    if (_cCongVanDen.Xoa(_congvanden) == true)
-                    {
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ClearCongVanDen();
-                    }
-                }
+                tabControl.SelectedTab = tabControl.TabPages[frm.Name];
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnSua_Den_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (_congvanden != null)
-                {
-                    _congvanden.SoCongVan = txtSoCongVan_Den.Text.Trim();
-                    _congvanden.NgayCongVan = dateNgayCongVan_Den.Value;
-                    _congvanden.DonViPhatHanh = txtDonViPhatHanh_Den.Text.Trim();
-                    _congvanden.NgayNhan = dateNgayNhan_Den.Value;
-                    _congvanden.LoaiCongVan = txtLoaiCongVan_Den.Text.Trim();
-                    _congvanden.NoiDung = txtNoiDung_Den.Text.Trim();
-                    _congvanden.NoiNhan = txtNoiNhan_Den.Text.Trim();
-                    _congvanden.GhiChu = txtGhiChu_Den.Text.Trim();
-                    if (chkHetHan_Den.Checked == true)
-                    {
-                        _congvanden.HetHan = true;
-                        _congvanden.NgayHetHan = dateNgayHetHan_Den.Value;
-                    }
-                    else
-                    {
-                        _congvanden.HetHan = false;
-                    }
-                    if (_cCongVanDen.Sua(_congvanden) == true)
-                    {
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ClearCongVanDen();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void cmbTimTheo_Den_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (cmbTimTheo_Den.SelectedItem.ToString())
-            {
-                case "Số Công Văn":
-                case "Nội Dung":
-                case "Nơi Nhận":
-                    panel_NoiDung_Den.Visible = true;
-                    panel_ThoiGian_Den.Visible = false;
-                    break;
-                case "Ngày Nhận":
-                case "Ngày Hết Hạn":
-                    panel_NoiDung_Den.Visible = false;
-                    panel_ThoiGian_Den.Visible = true;
-                    break;
-                default:
-                    panel_NoiDung_Den.Visible = false;
-                    panel_ThoiGian_Den.Visible = false;
-                    break;
-            }
-        }
-
-        private void btnXem_Den_Click(object sender, EventArgs e)
-        {
-
-            switch (cmbTimTheo_Den.SelectedItem.ToString())
-            {
-                case "Số Công Văn":
-                    dgvCongVan_Den.DataSource = _cCongVanDen.GetDS_SoCongVan(txtNoiDungTimKiem_Den.Text.Trim());
-                    break;
-                case "Nội Dung":
-                    dgvCongVan_Den.DataSource = _cCongVanDen.GetDS_NoiDung(txtNoiDungTimKiem_Den.Text.Trim());
-                    break;
-                case "Nơi Nhận":
-                    dgvCongVan_Den.DataSource = _cCongVanDen.GetDS_NoiNhan(txtNoiDungTimKiem_Den.Text.Trim());
-                    break;
-                case "Ngày Nhận":
-                    dgvCongVan_Den.DataSource = _cCongVanDen.GetDS(dateTu_Den.Value, dateDen_Den.Value);
-                    break;
-                case "Ngày Hết Hạn":
-                    dgvCongVan_Den.DataSource = _cCongVanDen.GetDS_NgayHetHan(dateTu_Den.Value, dateDen_Den.Value);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        private void dgvCongVan_Den_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                _congvanden = _cCongVanDen.Get(int.Parse(dgvCongVan_Den.CurrentRow.Cells["ID_Den"].Value.ToString()));
-                LoadCongVanDen(_congvanden);
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
-        private void chkHetHan_Den_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkHetHan_Den.Checked == true)
-                dateNgayHetHan_Den.Enabled = true;
             else
-                dateNgayHetHan_Den.Enabled = false;
+            {
+                frm.MdiParent = this;
+                frm.Show();
+            }
         }
 
-        /////////////////////
-
-        private void btnXem_TTK_Click(object sender, EventArgs e)
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            if ((tabControl.SelectedTab != null) && (tabControl.SelectedTab.Tag != null))
+                (tabControl.SelectedTab.Tag as Form).Select();
+        }
+
+        private void frmMain_MdiChildActivate(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild == null)
+                tabControl.Visible = false; // If no any child form, hide tabControl
+            else
             {
-                string LoaiHoSo = "";
-                switch (cmbLoaiHoSo_TTK.SelectedIndex)
+                this.ActiveMdiChild.WindowState = FormWindowState.Maximized; // Child form always maximized
+
+                foreach (TabPage item in tabControl.TabPages)
                 {
-                    case 0:
-                        LoaiHoSo = "";
-                        break;
-                    case 1:
-                        LoaiHoSo = "GanMoi";
-                        break;
-                    case 2:
-                        LoaiHoSo = "CatHuy";
-                        break;
-                    case 3:
-                        LoaiHoSo = "DichVu";
-                        break;
-                    default:
-                        break;
+                    if (this.ActiveMdiChild.Text == item.Text)
+                        return;
                 }
-                if (radNgayLap.Checked == true)
-                    dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong_NgayLap(LoaiHoSo, dateTu.Value, dateDen.Value);
+
+                // If child form is new and no has tabPage, create new tabPage
+                if (this.ActiveMdiChild.Tag == null)
+                {
+                    // Add a tabPage to tabControl with child form caption
+                    TabPage tp = new TabPage();
+                    tp.Name = this.ActiveMdiChild.Name;
+                    tp.Text = this.ActiveMdiChild.Text;
+                    tp.Tag = this.ActiveMdiChild;
+                    tp.Parent = tabControl;
+                    tabControl.SelectedTab = tp;
+
+                    this.ActiveMdiChild.Tag = tp;
+                    this.ActiveMdiChild.FormClosed += new FormClosedEventHandler(ActiveMdiChild_FormClosed);
+                }
                 else
-                    if (radNgayChuyen.Checked == true)
-                        dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong_NgayChuyen(LoaiHoSo, dateTu.Value, dateDen.Value);
-                    else
-                        if (radTon.Checked == true)
-                            dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong_Ton(LoaiHoSo);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                {
+                    TabPage tp = new TabPage(this.ActiveMdiChild.Text);
+                    tabControl.SelectedTab = tp;
+                }
+
+                if (!tabControl.Visible) tabControl.Visible = true;
             }
         }
 
-        private void btnTimKiem_TTK_Click(object sender, EventArgs e)
+        // If child form closed, remove tabPage
+        private void ActiveMdiChild_FormClosed(object sender, FormClosedEventArgs e)
         {
-            try
-            {
-                dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong(txtMaDot_TTK.Text.Trim());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            ((sender as Form).Tag as TabPage).Dispose();
         }
 
-        private void dgvDotThiCong_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        #region Hệ Thống
+
+        private void mnuDangNhap_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dgvDSHoSo.DataSource = _cTTK.getDSHoSo(dgvDotThiCong.CurrentRow.Cells["MaDot"].Value.ToString());
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            frmDangNhap frm = new frmDangNhap();
+            frm.GetLoginResult = new frmDangNhap.GetValue(GetLoginResult);
+            frm.ShowDialog();
         }
 
-        private void dgvDotThiCong_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private void mnuDoiMatKhau_Click(object sender, EventArgs e)
         {
-            using (SolidBrush b = new SolidBrush(dgvDotThiCong.RowHeadersDefaultCellStyle.ForeColor))
+            frmDoiMatKhau frm = new frmDoiMatKhau();
+            OpenForm(frm);
+        }
+
+        private void mnuDangXuat_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
             {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+                this.ActiveMdiChild.Close();
             }
+            StripStatus_HoTen.Text = "";
+            CUser.ID = -1;
+            CUser.HoTen = "";
+            CUser.Admin = false;
+            CUser.IDPhong = -1;
+            CUser.IDNhom = -1;
+            mnuDangNhap_Click(sender, e);
         }
 
-        private void dgvDotThiCong_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        private void mnuAdmin_Click(object sender, EventArgs e)
         {
-            if (dgvDotThiCong.Rows[e.RowIndex].Cells["HoanCong_DTC"].Value!=null&&bool.Parse(dgvDotThiCong.Rows[e.RowIndex].Cells["HoanCong_DTC"].Value.ToString()) == false)
-                if (dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value != null && dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value.ToString() != "")
-                    if (dgvDotThiCong.Rows[e.RowIndex].Cells["MaLoai"].Value.ToString() == "GM" || dgvDotThiCong.Rows[e.RowIndex].Cells["MaLoai"].Value.ToString() == "HD")
-                    {
-                        if (_cTTK.GetToDate(DateTime.Parse(dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value.ToString()), 5).Date <= DateTime.Now.Date)
-                            dgvDotThiCong.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
-                    }
-                    else
-                        if (_cTTK.GetToDate(DateTime.Parse(dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value.ToString()), 2).Date <= DateTime.Now.Date)
-                            dgvDotThiCong.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+            frmAdmin frm = new frmAdmin();
+            OpenForm(frm);
         }
 
-        private void dgvDSHoSo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        #endregion
+
+        #region Quản Trị
+
+        private void mnuNhom_Click(object sender, EventArgs e)
         {
-            using (SolidBrush b = new SolidBrush(dgvDSHoSo.RowHeadersDefaultCellStyle.ForeColor))
+            if (CUser.CheckQuyen("mnuNhom", "Xem"))
             {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
-            }
-        }
-
-        private void dgvDSHoSo_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
-        {
-            if (dgvDSHoSo.Rows[e.RowIndex].Cells["NgayHoanCong"].Value.ToString()=="")
-            if (dgvDSHoSo.Rows[e.RowIndex].Cells["MaLoaiHoSo"].Value.ToString() == "GM" || dgvDSHoSo.Rows[e.RowIndex].Cells["MaLoaiHoSo"].Value.ToString() == "HD")
-            {
-                if (dgvDSHoSo.Rows[e.RowIndex].Cells["HoSoCha"].Value.ToString() == "" && (dgvDSHoSo.Rows[e.RowIndex].Cells["NgayGiaoSDV"].Value.ToString() == "" || (_cTTK.GetToDate(DateTime.Parse(dgvDSHoSo.Rows[e.RowIndex].Cells["NgayGiaoSDV"].Value.ToString()), 5).Date <= DateTime.Now.Date && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayLapBG"].Value.ToString() == "" && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayTraHS"].Value.ToString() == "")))
-                    dgvDSHoSo.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                frmNhom frm = new frmNhom();
+                OpenForm(frm);
             }
             else
-                if (dgvDSHoSo.Rows[e.RowIndex].Cells["HoSoCha"].Value.ToString() == "" && (dgvDSHoSo.Rows[e.RowIndex].Cells["NgayGiaoSDV"].Value.ToString() == "" || (_cTTK.GetToDate(DateTime.Parse(dgvDSHoSo.Rows[e.RowIndex].Cells["NgayGiaoSDV"].Value.ToString()), 2).Date <= DateTime.Now.Date && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayLapBG"].Value.ToString() == "" && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayTraHS"].Value.ToString() == "")))
-                    dgvDSHoSo.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void txtMaDot_TTK_KeyPress(object sender, KeyPressEventArgs e)
+        private void mnuUser_Click(object sender, EventArgs e)
         {
-            if (e.KeyChar == 13)
-                btnTimKiem_TTK.PerformClick();
+            if (CUser.CheckQuyen("mnuUser", "Xem"))
+            {
+                frmUser frm = new frmUser();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        #endregion
+
+        #region Công Văn
+
+        private void mnuCongVanDen_Click(object sender, EventArgs e)
+        {
+            if (CUser.CheckQuyen("mnuCongVanDen", "Xem"))
+            {
+                frmCongVanDen frm = new frmCongVanDen();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuCongVanDi_Click(object sender, EventArgs e)
+        {
+            if (CUser.CheckQuyen("mnuCongVanDi", "Xem"))
+            {
+                frmCongVanDi frm = new frmCongVanDi();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
+        #region Tổ Thiết Kế
+
+        private void mnuTimKiemTTK_Click(object sender, EventArgs e)
+        {
+            if (CUser.CheckQuyen("mnuTimKiemTTK", "Xem"))
+            {
+                frmToThietKe frm = new frmToThietKe();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
+        
+
+
+
+
 
 
     }
 }
+    
