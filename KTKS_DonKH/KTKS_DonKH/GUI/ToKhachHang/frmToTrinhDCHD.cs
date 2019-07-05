@@ -12,6 +12,7 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ToKhachHang;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.ToKhachHang
 {
@@ -83,6 +84,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataRow dr = dsBaoCao.Tables["ToTrinhDCHD"].NewRow();
 
+            dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
             if (txtMaDonCu.Text.Trim()!="")
             dr["MaDon"] = txtMaDonCu.Text.Trim();
             else
@@ -117,6 +119,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataRow dr = dsBaoCao.Tables["ToTrinhDCHD"].NewRow();
 
+            dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
             if (txtMaDonCu.Text.Trim() != "")
                 dr["MaDon"] = txtMaDonCu.Text.Trim();
             else

@@ -1127,6 +1127,14 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         //    return LINQToDataTable(query);
         //}
 
-        
+        public DataTable getDS_DonGia()
+        {
+            return LINQToDataTable(db.KTXM_DonGias.ToList());
+        }
+
+        public DataTable getDS_BangGia(decimal IDCTKTXM)
+        {
+            return LINQToDataTable(db.KTXM_BangGias.Where(item => item.IDCTKTXM == IDCTKTXM).ToList());
+        }
     }
 }

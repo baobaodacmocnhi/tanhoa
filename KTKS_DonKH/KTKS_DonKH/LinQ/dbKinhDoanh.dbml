@@ -1264,6 +1264,16 @@
       <Association Name="DonTXL_KTXM" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.KTXM_BangGia" Member="KTXM_BangGias">
+    <Type Name="KTXM_BangGia">
+      <Column Name="IDCTKTXM" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDDonGia" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="KTXM_ChiTiet_KTXM_BangGia" Member="KTXM_ChiTiet" ThisKey="IDCTKTXM" OtherKey="MaCTKTXM" Type="KTXM_ChiTiet" IsForeignKey="true" />
+      <Association Name="KTXM_DonGia_KTXM_BangGia" Member="KTXM_DonGia" ThisKey="IDDonGia" OtherKey="ID" Type="KTXM_DonGia" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.KTXM_ChiTiet" Member="KTXM_ChiTiets">
     <Type Name="KTXM_ChiTiet">
       <Column Name="MaCTKTXM" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1325,11 +1335,12 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="KTXM_ChiTiet_KTXM_BangGia" Member="KTXM_BangGias" ThisKey="MaCTKTXM" OtherKey="IDCTKTXM" Type="KTXM_BangGia" />
       <Association Name="KTXM_KTXM_ChiTiet" Member="KTXM" ThisKey="MaKTXM" OtherKey="MaKTXM" Type="KTXM" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.KTXM_DongTien" Member="KTXM_DongTiens">
-    <Type Name="KTXM_DongTien">
+  <Table Name="dbo.KTXM_DonGia" Member="KTXM_DonGias">
+    <Type Name="KTXM_DonGia">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
@@ -1338,6 +1349,7 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="KTXM_DonGia_KTXM_BangGia" Member="KTXM_BangGias" ThisKey="ID" OtherKey="IDDonGia" Type="KTXM_BangGia" />
     </Type>
   </Table>
   <Table Name="dbo.KTXM_HienTrang" Member="KTXM_HienTrangs">

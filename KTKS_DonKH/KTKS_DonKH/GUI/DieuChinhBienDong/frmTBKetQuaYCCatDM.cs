@@ -119,6 +119,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
+                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                 dr["SoPhieu"] = tb.SoPhieu.ToString().Insert(tb.SoPhieu.ToString().Length - 2, "-");
                 dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(tb.NhanNK_MaCN.Value);
                 if (!string.IsNullOrEmpty(tb.NhanNK_DanhBo))
@@ -208,6 +209,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
+                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                 dr["SoPhieu"] = tb.SoPhieu.ToString().Insert(tb.SoPhieu.ToString().Length - 2, "-");
                 dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(tb.NhanNK_MaCN.Value);
                 if (!string.IsNullOrEmpty(tb.NhanNK_DanhBo))

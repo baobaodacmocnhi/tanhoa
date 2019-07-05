@@ -52,6 +52,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void frmKTXM_Load(object sender, EventArgs e)
         {
             dgvDSKetQuaKiemTra.AutoGenerateColumns = false;
+            dgvBangGia.AutoGenerateColumns = false;
             string To = "";
             if (CTaiKhoan.ToTB == true)
                 To = "ToTB";
@@ -63,6 +64,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             cmbHienTrangKiemTra.DisplayMember = "TenHTKT";
             cmbHienTrangKiemTra.ValueMember = "TenHTKT";
             cmbHienTrangKiemTra.SelectedIndex = -1;
+
+            Namee.DataSource = _cKTXM.getDS_DonGia();
+            Namee.ValueMember = "ID";
+            Namee.DisplayMember = "Name";
+            Namee.DropDownWidth = 300;
+
             _flagFirst = false;
 
             if (_MaCTKTXM != -1)
@@ -151,6 +158,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 cmbNoiDungBaoThay.SelectedText = ctktxm.NoiDungBaoThay;
                 txtGhiChuNoiDungBaoThay.Text = ctktxm.GhiChuNoiDungBaoThay;
             }
+            foreach (KTXM_BangGia item in ctktxm.KTXM_BangGias.ToList())
+            {
+                var index = dgvBangGia.Rows.Add();
+                dgvBangGia.Rows[index].Cells["Namee"].Value = item.KTXM_DonGia.Name;
+                dgvBangGia.Rows[index].Cells["SoTien"].Value = item.KTXM_DonGia.SoTien;
+            }
         }
 
         public void Clear()
@@ -194,6 +207,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             _dontbc = null;
             _hoadon = null;
             dgvDSKetQuaKiemTra.DataSource = null;
+            dgvBangGia.Rows.Clear();
             txtMaDonMoi.Focus();
         }
 
@@ -785,6 +799,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         }
 
+        private void dgvBangGia_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
     }
 }

@@ -19,9 +19,11 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 case "ToBC":
                     return LINQToDataTable(db.DongTienNoiDungs.Where(item => item.ToBC == true).ToList());
                 default:
-                    return LINQToDataTable(db.DongTienNoiDungs.ToList());;
+                    return LINQToDataTable(db.DongTienNoiDungs.ToList());
             }
 
         }
+
+        
     }
 }

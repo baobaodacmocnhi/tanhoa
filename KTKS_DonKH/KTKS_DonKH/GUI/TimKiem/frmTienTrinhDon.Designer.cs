@@ -378,13 +378,13 @@
             // 
             // gridColumn115
             // 
-            this.gridColumn115.Caption = "Ngày Xử Lý";
+            this.gridColumn115.Caption = "Ngày Đóng Tiền";
             this.gridColumn115.FieldName = "NgayDongTien";
             this.gridColumn115.Name = "gridColumn115";
             this.gridColumn115.OptionsColumn.AllowEdit = false;
             this.gridColumn115.Visible = true;
             this.gridColumn115.VisibleIndex = 8;
-            this.gridColumn115.Width = 100;
+            this.gridColumn115.Width = 120;
             // 
             // gridColumn116
             // 

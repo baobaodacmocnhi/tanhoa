@@ -144,12 +144,15 @@ namespace KTKS_DonKH.LinQ
     partial void InsertKTXM(KTXM instance);
     partial void UpdateKTXM(KTXM instance);
     partial void DeleteKTXM(KTXM instance);
+    partial void InsertKTXM_BangGia(KTXM_BangGia instance);
+    partial void UpdateKTXM_BangGia(KTXM_BangGia instance);
+    partial void DeleteKTXM_BangGia(KTXM_BangGia instance);
     partial void InsertKTXM_ChiTiet(KTXM_ChiTiet instance);
     partial void UpdateKTXM_ChiTiet(KTXM_ChiTiet instance);
     partial void DeleteKTXM_ChiTiet(KTXM_ChiTiet instance);
-    partial void InsertKTXM_DongTien(KTXM_DongTien instance);
-    partial void UpdateKTXM_DongTien(KTXM_DongTien instance);
-    partial void DeleteKTXM_DongTien(KTXM_DongTien instance);
+    partial void InsertKTXM_DonGia(KTXM_DonGia instance);
+    partial void UpdateKTXM_DonGia(KTXM_DonGia instance);
+    partial void DeleteKTXM_DonGia(KTXM_DonGia instance);
     partial void InsertKTXM_HienTrang(KTXM_HienTrang instance);
     partial void UpdateKTXM_HienTrang(KTXM_HienTrang instance);
     partial void DeleteKTXM_HienTrang(KTXM_HienTrang instance);
@@ -606,6 +609,14 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		public System.Data.Linq.Table<KTXM_BangGia> KTXM_BangGias
+		{
+			get
+			{
+				return this.GetTable<KTXM_BangGia>();
+			}
+		}
+		
 		public System.Data.Linq.Table<KTXM_ChiTiet> KTXM_ChiTiets
 		{
 			get
@@ -614,11 +625,11 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		public System.Data.Linq.Table<KTXM_DongTien> KTXM_DongTiens
+		public System.Data.Linq.Table<KTXM_DonGia> KTXM_DonGias
 		{
 			get
 			{
-				return this.GetTable<KTXM_DongTien>();
+				return this.GetTable<KTXM_DonGia>();
 			}
 		}
 		
@@ -30144,6 +30155,222 @@ namespace KTKS_DonKH.LinQ
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KTXM_BangGia")]
+	public partial class KTXM_BangGia : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _IDCTKTXM;
+		
+		private int _IDDonGia;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<KTXM_ChiTiet> _KTXM_ChiTiet;
+		
+		private EntityRef<KTXM_DonGia> _KTXM_DonGia;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDCTKTXMChanging(decimal value);
+    partial void OnIDCTKTXMChanged();
+    partial void OnIDDonGiaChanging(int value);
+    partial void OnIDDonGiaChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public KTXM_BangGia()
+		{
+			this._KTXM_ChiTiet = default(EntityRef<KTXM_ChiTiet>);
+			this._KTXM_DonGia = default(EntityRef<KTXM_DonGia>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCTKTXM", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal IDCTKTXM
+		{
+			get
+			{
+				return this._IDCTKTXM;
+			}
+			set
+			{
+				if ((this._IDCTKTXM != value))
+				{
+					if (this._KTXM_ChiTiet.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDCTKTXMChanging(value);
+					this.SendPropertyChanging();
+					this._IDCTKTXM = value;
+					this.SendPropertyChanged("IDCTKTXM");
+					this.OnIDCTKTXMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDonGia", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDDonGia
+		{
+			get
+			{
+				return this._IDDonGia;
+			}
+			set
+			{
+				if ((this._IDDonGia != value))
+				{
+					if (this._KTXM_DonGia.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDDonGiaChanging(value);
+					this.SendPropertyChanging();
+					this._IDDonGia = value;
+					this.SendPropertyChanged("IDDonGia");
+					this.OnIDDonGiaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KTXM_ChiTiet_KTXM_BangGia", Storage="_KTXM_ChiTiet", ThisKey="IDCTKTXM", OtherKey="MaCTKTXM", IsForeignKey=true)]
+		public KTXM_ChiTiet KTXM_ChiTiet
+		{
+			get
+			{
+				return this._KTXM_ChiTiet.Entity;
+			}
+			set
+			{
+				KTXM_ChiTiet previousValue = this._KTXM_ChiTiet.Entity;
+				if (((previousValue != value) 
+							|| (this._KTXM_ChiTiet.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._KTXM_ChiTiet.Entity = null;
+						previousValue.KTXM_BangGias.Remove(this);
+					}
+					this._KTXM_ChiTiet.Entity = value;
+					if ((value != null))
+					{
+						value.KTXM_BangGias.Add(this);
+						this._IDCTKTXM = value.MaCTKTXM;
+					}
+					else
+					{
+						this._IDCTKTXM = default(decimal);
+					}
+					this.SendPropertyChanged("KTXM_ChiTiet");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KTXM_DonGia_KTXM_BangGia", Storage="_KTXM_DonGia", ThisKey="IDDonGia", OtherKey="ID", IsForeignKey=true)]
+		public KTXM_DonGia KTXM_DonGia
+		{
+			get
+			{
+				return this._KTXM_DonGia.Entity;
+			}
+			set
+			{
+				KTXM_DonGia previousValue = this._KTXM_DonGia.Entity;
+				if (((previousValue != value) 
+							|| (this._KTXM_DonGia.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._KTXM_DonGia.Entity = null;
+						previousValue.KTXM_BangGias.Remove(this);
+					}
+					this._KTXM_DonGia.Entity = value;
+					if ((value != null))
+					{
+						value.KTXM_BangGias.Add(this);
+						this._IDDonGia = value.ID;
+					}
+					else
+					{
+						this._IDDonGia = default(int);
+					}
+					this.SendPropertyChanged("KTXM_DonGia");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KTXM_ChiTiet")]
 	public partial class KTXM_ChiTiet : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -30267,6 +30494,8 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<System.DateTime> _DocSo_NgayNhan;
 		
 		private string _DocSo_GhiChu;
+		
+		private EntitySet<KTXM_BangGia> _KTXM_BangGias;
 		
 		private EntityRef<KTXM> _KTXM;
 		
@@ -30396,6 +30625,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public KTXM_ChiTiet()
 		{
+			this._KTXM_BangGias = new EntitySet<KTXM_BangGia>(new Action<KTXM_BangGia>(this.attach_KTXM_BangGias), new Action<KTXM_BangGia>(this.detach_KTXM_BangGias));
 			this._KTXM = default(EntityRef<KTXM>);
 			OnCreated();
 		}
@@ -31584,6 +31814,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KTXM_ChiTiet_KTXM_BangGia", Storage="_KTXM_BangGias", ThisKey="MaCTKTXM", OtherKey="IDCTKTXM")]
+		public EntitySet<KTXM_BangGia> KTXM_BangGias
+		{
+			get
+			{
+				return this._KTXM_BangGias;
+			}
+			set
+			{
+				this._KTXM_BangGias.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KTXM_KTXM_ChiTiet", Storage="_KTXM", ThisKey="MaKTXM", OtherKey="MaKTXM", IsForeignKey=true)]
 		public KTXM KTXM
 		{
@@ -31637,10 +31880,22 @@ namespace KTKS_DonKH.LinQ
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_KTXM_BangGias(KTXM_BangGia entity)
+		{
+			this.SendPropertyChanging();
+			entity.KTXM_ChiTiet = this;
+		}
+		
+		private void detach_KTXM_BangGias(KTXM_BangGia entity)
+		{
+			this.SendPropertyChanging();
+			entity.KTXM_ChiTiet = null;
+		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KTXM_DongTien")]
-	public partial class KTXM_DongTien : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KTXM_DonGia")]
+	public partial class KTXM_DonGia : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -31660,6 +31915,8 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<int> _ModifyBy;
 		
 		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private EntitySet<KTXM_BangGia> _KTXM_BangGias;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -31683,8 +31940,9 @@ namespace KTKS_DonKH.LinQ
     partial void OnModifyDateChanged();
     #endregion
 		
-		public KTXM_DongTien()
+		public KTXM_DonGia()
 		{
+			this._KTXM_BangGias = new EntitySet<KTXM_BangGia>(new Action<KTXM_BangGia>(this.attach_KTXM_BangGias), new Action<KTXM_BangGia>(this.detach_KTXM_BangGias));
 			OnCreated();
 		}
 		
@@ -31848,6 +32106,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KTXM_DonGia_KTXM_BangGia", Storage="_KTXM_BangGias", ThisKey="ID", OtherKey="IDDonGia")]
+		public EntitySet<KTXM_BangGia> KTXM_BangGias
+		{
+			get
+			{
+				return this._KTXM_BangGias;
+			}
+			set
+			{
+				this._KTXM_BangGias.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -31866,6 +32137,18 @@ namespace KTKS_DonKH.LinQ
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_KTXM_BangGias(KTXM_BangGia entity)
+		{
+			this.SendPropertyChanging();
+			entity.KTXM_DonGia = this;
+		}
+		
+		private void detach_KTXM_BangGias(KTXM_BangGia entity)
+		{
+			this.SendPropertyChanging();
+			entity.KTXM_DonGia = null;
 		}
 	}
 	

@@ -592,6 +592,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             ToTrinh_ChiTiet cttt = _cTT.get_ChiTiet(int.Parse(dgvToTrinh["IDCT", i].Value.ToString()));
 
                             dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+                            dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                             dr["SoPhieu"] = cttt.IDCT.ToString().Insert(cttt.IDCT.ToString().Length - 2, "-");
                             dr["HoTen"] = cttt.HoTen;
                             dr["DiaChi"] = cttt.DiaChi;

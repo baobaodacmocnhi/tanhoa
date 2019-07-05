@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -58,6 +59,7 @@
             this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtGhiChuNoiDungBaoThay = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.cmbNoiDungBaoThay = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -97,10 +99,15 @@
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.chkNgayKTXMTruocNgayGiao = new System.Windows.Forms.CheckBox();
-            this.txtGhiChuNoiDungBaoThay = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dgvBangGia = new System.Windows.Forms.DataGridView();
+            this.Namee = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBangGia)).BeginInit();
             this.SuspendLayout();
             // 
             // txtMaDonCu
@@ -405,6 +412,13 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
+            // 
+            // txtGhiChuNoiDungBaoThay
+            // 
+            this.txtGhiChuNoiDungBaoThay.Location = new System.Drawing.Point(253, 155);
+            this.txtGhiChuNoiDungBaoThay.Name = "txtGhiChuNoiDungBaoThay";
+            this.txtGhiChuNoiDungBaoThay.Size = new System.Drawing.Size(287, 22);
+            this.txtGhiChuNoiDungBaoThay.TabIndex = 122;
             // 
             // label26
             // 
@@ -804,12 +818,50 @@
             this.chkNgayKTXMTruocNgayGiao.Text = "Ngày KTXM Trước Ngày Giao";
             this.chkNgayKTXMTruocNgayGiao.UseVisualStyleBackColor = true;
             // 
-            // txtGhiChuNoiDungBaoThay
+            // groupBox3
             // 
-            this.txtGhiChuNoiDungBaoThay.Location = new System.Drawing.Point(253, 155);
-            this.txtGhiChuNoiDungBaoThay.Name = "txtGhiChuNoiDungBaoThay";
-            this.txtGhiChuNoiDungBaoThay.Size = new System.Drawing.Size(287, 22);
-            this.txtGhiChuNoiDungBaoThay.TabIndex = 122;
+            this.groupBox3.Controls.Add(this.dgvBangGia);
+            this.groupBox3.Location = new System.Drawing.Point(687, 40);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(422, 135);
+            this.groupBox3.TabIndex = 30;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Bảng Giá";
+            // 
+            // dgvBangGia
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBangGia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvBangGia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBangGia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Namee,
+            this.SoTien});
+            this.dgvBangGia.Location = new System.Drawing.Point(15, 20);
+            this.dgvBangGia.Name = "dgvBangGia";
+            this.dgvBangGia.Size = new System.Drawing.Size(401, 109);
+            this.dgvBangGia.TabIndex = 9;
+            this.dgvBangGia.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvBangGia_CellValidating);
+            // 
+            // Namee
+            // 
+            this.Namee.DataPropertyName = "Name";
+            this.Namee.HeaderText = "Loại";
+            this.Namee.Name = "Namee";
+            this.Namee.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Namee.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Namee.Width = 250;
+            // 
+            // SoTien
+            // 
+            this.SoTien.DataPropertyName = "SoTien";
+            this.SoTien.HeaderText = "Số Tiền";
+            this.SoTien.Name = "SoTien";
             // 
             // frmKTXM
             // 
@@ -817,6 +869,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1115, 503);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.chkNgayKTXMTruocNgayGiao);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label25);
@@ -841,6 +894,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBangGia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -917,5 +972,9 @@
         private System.Windows.Forms.ComboBox cmbNoiDungBaoThay;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtGhiChuNoiDungBaoThay;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridView dgvBangGia;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Namee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoTien;
     }
 }
