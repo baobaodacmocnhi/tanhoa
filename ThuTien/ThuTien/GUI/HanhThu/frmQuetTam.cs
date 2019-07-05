@@ -654,6 +654,7 @@ namespace ThuTien.GUI.HanhThu
                             dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(7, " ").Insert(4, " ");
                         dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
                         dr["HopDong"] = item.Cells["HopDong_TG"].Value;
+                        dr["HanhThu"] = item.Cells["HanhThu_TG"].Value;
                         dr["Ky"] = Ky;
                         dr["TongCong"] = TongCong;
                         if (chkChuKy.Checked)

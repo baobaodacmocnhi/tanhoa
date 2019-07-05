@@ -171,15 +171,88 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvTienDu.Rows)
-            {
-                List<HOADON> lstHD = _cHoaDon.GetDSTon_CoChanTienDu(item.Cells["DanhBo_TienDu"].Value.ToString());
-
-                if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) < lstHD.Sum(itemHD => itemHD.TONGCONG))
+                if (_cHoaDon.CheckDCHDTienDuByDanhBo(item.Cells["DanhBo_TienDu"].Value.ToString()) == true)
                 {
-                    string ThongTin = "";
-                    foreach (HOADON itemHD in lstHD)
-                        ///nếu có trong dịch vụ thu thì không thu thêm
-                        if (!_cDichVuThu.CheckExist(itemHD.SOHOADON))
+                    MessageBox.Show("Danh bộ: " + item.Cells["DanhBo_TienDu"].Value.ToString()+" có ĐCHĐ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    List<HOADON> lstHD = _cHoaDon.GetDSTon_CoChanTienDu(item.Cells["DanhBo_TienDu"].Value.ToString());
+
+                    if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) < lstHD.Sum(itemHD => itemHD.TONGCONG))
+                    {
+                        string ThongTin = "";
+                        foreach (HOADON itemHD in lstHD)
+                            ///nếu có trong dịch vụ thu thì không thu thêm
+                            if (!_cDichVuThu.CheckExist(itemHD.SOHOADON))
+                            {
+                                DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
+                                dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                                dr["HoTen"] = itemHD.TENKH;
+                                dr["MLT"] = itemHD.MALOTRINH;
+                                dr["DienThoai"] = _cDocSo.GetDienThoai(itemHD.DANHBA);
+                                dr["Ky"] = itemHD.KY + "/" + itemHD.NAM;
+                                dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
+                                dr["TongCong"] = itemHD.TONGCONG;
+                                if (lstHD[0].MaNV_HanhThu != null)
+                                {
+                                    dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
+                                    dr["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
+                                }
+                                ThongTin += "Hóa đơn kỳ " + itemHD.KY + "/" + itemHD.NAM + " : " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemHD.TONGCONG) + " đồng\r\n";
+                                dr["ThongTin"] = ThongTin;
+
+                                ds.Tables["TienDuKhachHang"].Rows.Add(dr);
+
+                                DataRow drTT = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                                drTT["LoaiBaoCao"] = "TIỀN DƯ THU THÊM";
+                                drTT["DanhBo"] = itemHD.DANHBA.Insert(4, " ").Insert(8, " ");
+                                drTT["HoTen"] = itemHD.TENKH;
+                                drTT["MLT"] = itemHD.MALOTRINH;
+                                drTT["Ky"] = itemHD.KY + "/" + itemHD.NAM;
+                                drTT["TongCong"] = itemHD.TONGCONG;
+                                if (itemHD.MaNV_HanhThu != null)
+                                {
+                                    drTT["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
+                                    drTT["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
+                                }
+                                if (itemHD.GB.Value > 20)
+                                    drTT["Loai"] = "CQ";
+                                else
+                                    drTT["Loai"] = "TG";
+                                if (_cLenhHuy.CheckExist(itemHD.SOHOADON))
+                                    drTT["LenhHuy"] = true;
+                                ds.Tables["TamThuChuyenKhoan"].Rows.Add(drTT);
+                            }
+                    }
+                }
+            rptTienDuKhachHang rpt = new rptTienDuKhachHang();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+
+            rptDSTamThuChuyenKhoan rptTT = new rptDSTamThuChuyenKhoan();
+            rptTT.SetDataSource(ds);
+            frmBaoCao frmTT = new frmBaoCao(rptTT);
+            frmTT.ShowDialog();
+        }
+
+        private void btnInDSDuTien_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvTienDu.Rows)
+                if (_cHoaDon.CheckDCHDTienDuByDanhBo(item.Cells["DanhBo_TienDu"].Value.ToString()) == true)
+                {
+                    MessageBox.Show("Danh bộ: " + item.Cells["DanhBo_TienDu"].Value.ToString() + " có ĐCHĐ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    List<HOADON> lstHD = _cHoaDon.GetDSTon_CoChanTienDu(item.Cells["DanhBo_TienDu"].Value.ToString());
+
+                    if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
+                    {
+                        string ThongTin = "";
+                        foreach (HOADON itemHD in lstHD)
                         {
                             DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
                             dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
@@ -194,13 +267,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
                                 dr["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
                             }
-                            ThongTin += "Hóa đơn kỳ " + itemHD.KY + "/" + itemHD.NAM + " : " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemHD.TONGCONG) + " đồng\r\n";
+                            ThongTin += "Hóa đơn kỳ " + itemHD.KY + "/" + itemHD.NAM + " : " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemHD.TONGCONG) + "đồng\r\n";
                             dr["ThongTin"] = ThongTin;
 
                             ds.Tables["TienDuKhachHang"].Rows.Add(dr);
 
                             DataRow drTT = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                            drTT["LoaiBaoCao"] = "TIỀN DƯ THU THÊM";
+                            drTT["LoaiBaoCao"] = "ĐỦ TIỀN";
                             drTT["DanhBo"] = itemHD.DANHBA.Insert(4, " ").Insert(8, " ");
                             drTT["HoTen"] = itemHD.TENKH;
                             drTT["MLT"] = itemHD.MALOTRINH;
@@ -219,71 +292,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 drTT["LenhHuy"] = true;
                             ds.Tables["TamThuChuyenKhoan"].Rows.Add(drTT);
                         }
-                }
-            }
-            rptTienDuKhachHang rpt = new rptTienDuKhachHang();
-            rpt.SetDataSource(ds);
-            frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
-
-            rptDSTamThuChuyenKhoan rptTT = new rptDSTamThuChuyenKhoan();
-            rptTT.SetDataSource(ds);
-            frmBaoCao frmTT = new frmBaoCao(rptTT);
-            frmTT.ShowDialog();
-        }
-
-        private void btnInDSDuTien_Click(object sender, EventArgs e)
-        {
-            dsBaoCao ds = new dsBaoCao();
-            foreach (DataGridViewRow item in dgvTienDu.Rows)
-            {
-                List<HOADON> lstHD = _cHoaDon.GetDSTon_CoChanTienDu(item.Cells["DanhBo_TienDu"].Value.ToString());
-
-                if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
-                {
-                    string ThongTin = "";
-                    foreach (HOADON itemHD in lstHD)
-                    {
-                        DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
-                        dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                        dr["HoTen"] = itemHD.TENKH;
-                        dr["MLT"] = itemHD.MALOTRINH;
-                        dr["DienThoai"] = _cDocSo.GetDienThoai(itemHD.DANHBA);
-                        dr["Ky"] = itemHD.KY + "/" + itemHD.NAM;
-                        dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
-                        dr["TongCong"] = itemHD.TONGCONG;
-                        if (lstHD[0].MaNV_HanhThu != null)
-                        {
-                            dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
-                            dr["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
-                        }
-                        ThongTin += "Hóa đơn kỳ " + itemHD.KY + "/" + itemHD.NAM + " : " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemHD.TONGCONG) + "đồng\r\n";
-                        dr["ThongTin"] = ThongTin;
-
-                        ds.Tables["TienDuKhachHang"].Rows.Add(dr);
-
-                        DataRow drTT = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                        drTT["LoaiBaoCao"] = "ĐỦ TIỀN";
-                        drTT["DanhBo"] = itemHD.DANHBA.Insert(4, " ").Insert(8, " ");
-                        drTT["HoTen"] = itemHD.TENKH;
-                        drTT["MLT"] = itemHD.MALOTRINH;
-                        drTT["Ky"] = itemHD.KY + "/" + itemHD.NAM;
-                        drTT["TongCong"] = itemHD.TONGCONG;
-                        if (itemHD.MaNV_HanhThu != null)
-                        {
-                            drTT["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
-                            drTT["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
-                        }
-                        if (itemHD.GB.Value > 20)
-                            drTT["Loai"] = "CQ";
-                        else
-                            drTT["Loai"] = "TG";
-                        if (_cLenhHuy.CheckExist(itemHD.SOHOADON))
-                            drTT["LenhHuy"] = true;
-                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(drTT);
                     }
                 }
-            }
             rptTienDuKhachHang rpt = new rptTienDuKhachHang();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);

@@ -10049,7 +10049,7 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Any(item => item.DANHBA == DanhBo && item.KhoaTienDu == true);
         }
 
-        public bool CheckDCHDienDuBySoHoaDon(string SoHoaDon)
+        public bool CheckDCHDTienDuBySoHoaDon(string SoHoaDon)
         {
             return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && item.DCHD == true);
         }

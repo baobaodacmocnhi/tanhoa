@@ -927,17 +927,17 @@ namespace ThuTien.GUI.ToTruong
             //add tổng
             if (CNguoiDung.Doi)
             {
-                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop_HanhThu((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
                 dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
-                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_DongNuoc((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
-                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DongNuoc_DanhSach((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_ChiTiet((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DanhSach((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
             }
             else
             {
-                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop_HanhThu(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
                 dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
-                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_DongNuoc(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
-                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DongNuoc_DanhSach(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_ChiTiet(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DanhSach(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
             }
 
             foreach (DataRow item in dtDCHD_DongNuoc.Rows)

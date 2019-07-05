@@ -113,6 +113,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnLapTBDongNuoc = new System.Windows.Forms.Button();
             this.btnChuyenQuetTam = new System.Windows.Forms.Button();
+            this.txtTongTien = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabCoQuan.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -809,9 +811,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(1249, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 48;
-            this.label1.Text = "Nhiều Kỳ:";
+            this.label1.Text = "Nhiều Kỳ";
             // 
             // btnInDSNVThucTe
             // 
@@ -952,11 +954,30 @@
             this.btnChuyenQuetTam.UseVisualStyleBackColor = true;
             this.btnChuyenQuetTam.Click += new System.EventHandler(this.btnChuyenQuetTam_Click);
             // 
+            // txtTongTien
+            // 
+            this.txtTongTien.Location = new System.Drawing.Point(1120, 56);
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.Size = new System.Drawing.Size(59, 20);
+            this.txtTongTien.TabIndex = 103;
+            this.txtTongTien.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1117, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.TabIndex = 102;
+            this.label5.Text = "Tổng Tiền >";
+            // 
             // frmKiemTraTonTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1328, 476);
+            this.ClientSize = new System.Drawing.Size(1500, 476);
+            this.Controls.Add(this.txtTongTien);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnChuyenQuetTam);
             this.Controls.Add(this.btnLapTBDongNuoc);
             this.Controls.Add(this.cmbToDot);
@@ -1076,5 +1097,7 @@
         private System.Windows.Forms.TextBox txtTongHDTonThucTe_TG;
         private System.Windows.Forms.Button btnLapTBDongNuoc;
         private System.Windows.Forms.Button btnChuyenQuetTam;
+        private System.Windows.Forms.TextBox txtTongTien;
+        private System.Windows.Forms.Label label5;
     }
 }

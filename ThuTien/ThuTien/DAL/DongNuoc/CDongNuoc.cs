@@ -820,7 +820,7 @@ namespace ThuTien.DAL.DongNuoc
             return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
         }
 
-        public DataTable GetBaoCaoTongHop_HanhThu(int MaTo,DateTime FromDate, DateTime ToDate)
+        public DataTable GetBaoCaoTongHop(int MaTo,DateTime FromDate, DateTime ToDate)
         {
             string sql = "declare @FromDate date;"
                         + " declare @ToDate date;"
@@ -855,7 +855,7 @@ namespace ThuTien.DAL.DongNuoc
                         + " and CAST(NGAYGIAITRACH as date)>=@FromDate and CAST(NGAYGIAITRACH as date)<=@ToDate"
                         + " group by nd.MaND,nd.HoTen,nd.STT) dangngan on nd.MaND=dangngan.MaND"
                         + " left join"
-                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT lenhhuy.DanhBo) as DCHuy,COUNT(hd.SOHOADON) as HDHuy,SUM(hd.TONGCONG) as TCHuy"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT dn.DanhBo) as DCHuy,COUNT(hd.SOHOADON) as HDHuy,SUM(hd.TONGCONG) as TCHuy"
                         + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_LenhHuy lenhhuy,TT_NguoiDung nd"
                         + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and lenhhuy.MaHD=hd.ID_HOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
                         + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
@@ -880,7 +880,7 @@ namespace ThuTien.DAL.DongNuoc
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetBaoCaoTongHop_DongNuoc(int MaTo, DateTime FromDate, DateTime ToDate)
+        public DataTable GetBaoCaoTongHop_ChiTiet(int MaTo, DateTime FromDate, DateTime ToDate)
         {
             string sql = "declare @FromDate date;"
                         + " declare @ToDate date;"
@@ -893,7 +893,7 @@ namespace ThuTien.DAL.DongNuoc
                         + " select nd.MaND as MaNV,nd.HoTen,nd.STT,dangngan.DCDangNgan,dongnuoc.DCDongNuoc,monuoc.DCMoNuoc,phoihop.DCPhoiHop from"
                         + " (select MaND,HoTen,STT from TT_NguoiDung where DongNuoc=1 and MaTo=" + MaTo + ") nd"
                         + " left join"
-                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT dn.MaDN) as DCDangNgan"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCDangNgan"
                         + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
                         + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
                         + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
@@ -924,7 +924,7 @@ namespace ThuTien.DAL.DongNuoc
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetBaoCaoTongHop_DongNuoc_DanhSach(int MaTo, DateTime FromDate, DateTime ToDate)
+        public DataTable GetBaoCaoTongHop_DanhSach(int MaTo, DateTime FromDate, DateTime ToDate)
         {
             string sql = "declare @FromDate date;"
                         + " declare @ToDate date;"

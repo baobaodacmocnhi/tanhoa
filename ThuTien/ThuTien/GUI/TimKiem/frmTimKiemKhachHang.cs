@@ -41,6 +41,8 @@ namespace ThuTien.GUI.TimKiem
         {
             dgvHoaDon.AutoGenerateColumns = false;
             dgvKinhDoanh.AutoGenerateColumns = false;
+            dgvLenhHuy.AutoGenerateColumns = false;
+            dgvThuHo.AutoGenerateColumns = false;
             cmbSoKy.SelectedIndex = 0;
         }
 

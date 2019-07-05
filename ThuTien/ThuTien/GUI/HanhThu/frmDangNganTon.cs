@@ -202,7 +202,7 @@ namespace ThuTien.GUI.HanhThu
                             item.Focused = true;
                             return;
                         }
-                        if (_cHoaDon.CheckDCHDienDuBySoHoaDon(item.Text))
+                        if (_cHoaDon.CheckDCHDTienDuByDanhBo(item.Text))
                         {
                             MessageBox.Show("Hóa Đơn đã DCHD Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             lstHD.Focus();
