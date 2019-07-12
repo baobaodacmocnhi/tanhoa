@@ -19,6 +19,7 @@ namespace ThuTien.GUI.DongNuoc
         CHoaDon _cHoaDon = new CHoaDon();
         CPhoiHop _cPhoiHop = new CPhoiHop();
         CTo _cTo = new CTo();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
         HOADON _hoadon = null;
         TT_DongNuoc_PhoiHop _phoihop = null;
 
@@ -49,6 +50,10 @@ namespace ThuTien.GUI.DongNuoc
             cmbLoaiPhoiHop.DataSource = _cPhoiHop.getDS_LoaiPhoiHop();
             cmbLoaiPhoiHop.DisplayMember = "Name";
             cmbLoaiPhoiHop.ValueMember = "Name";
+
+            cmbDongNuoc.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(CNguoiDung.MaTo);
+            cmbDongNuoc.DisplayMember = "HoTen";
+            cmbDongNuoc.ValueMember = "MaND";
         }
 
         public void Clear()
@@ -77,6 +82,7 @@ namespace ThuTien.GUI.DongNuoc
             txtDiaChi.Text = en.DiaChi;
             cmbLoaiPhoiHop.SelectedValue = en.Loai;
             txtNoiDung.Text = en.NoiDung;
+            cmbDongNuoc.SelectedValue = en.CreateBy;
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -101,7 +107,7 @@ namespace ThuTien.GUI.DongNuoc
                     en.DiaChi = txtDiaChi.Text.Trim();
                     en.Loai = cmbLoaiPhoiHop.SelectedValue.ToString();
                     en.NoiDung = txtNoiDung.Text.Trim();
-                    if (_cPhoiHop.Them(en) == true)
+                    if (_cPhoiHop.Them(en,int.Parse(cmbDongNuoc.SelectedValue.ToString())) == true)
                     {
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();

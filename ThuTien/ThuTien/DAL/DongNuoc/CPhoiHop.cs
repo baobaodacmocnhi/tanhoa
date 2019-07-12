@@ -40,6 +40,27 @@ namespace ThuTien.DAL.DongNuoc
             }
         }
 
+        public bool Them(TT_DongNuoc_PhoiHop en,int CreateBy)
+        {
+            try
+            {
+                if (_db.TT_DongNuoc_PhoiHops.Count() > 0)
+                    en.ID = _db.TT_DongNuoc_PhoiHops.Max(item => item.ID) + 1;
+                else
+                    en.ID = 1;
+                en.CreateBy = CreateBy;
+                en.CreateDate = DateTime.Now;
+                _db.TT_DongNuoc_PhoiHops.InsertOnSubmit(en);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
         public bool Sua(TT_DongNuoc_PhoiHop en)
         {
             try
