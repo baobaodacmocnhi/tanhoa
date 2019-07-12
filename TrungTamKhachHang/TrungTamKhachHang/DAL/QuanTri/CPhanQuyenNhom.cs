@@ -76,6 +76,11 @@ namespace TrungTamKhachHang.DAL.QuanTri
             return _db.PhanQuyenNhoms.Any(item => item.MaMenu == MaMenu && item.MaNhom == MaNhom);
         }
 
+        public bool CheckExist(string TenMenuCha, int MaNhom)
+        {
+            return _db.PhanQuyenNhoms.Any(item => item.Menu.TenMenuCha == TenMenuCha && item.MaNhom == MaNhom);
+        }
+
         public PhanQuyenNhom Get(int MaMenu,int MaNhom)
         {
             return _db.PhanQuyenNhoms.SingleOrDefault(item => item.MaMenu == MaMenu && item.MaNhom == MaNhom);

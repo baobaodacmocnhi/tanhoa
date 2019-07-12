@@ -29,6 +29,13 @@ namespace TrungTamKhachHang.DAL.QuanTri
             set { CUser._Admin = value; }
         }
 
+        static int _MaNhom;
+        public static int MaNhom
+        {
+            get { return CUser._MaNhom; }
+            set { CUser._MaNhom = value; }
+        }
+
         static System.Data.DataTable _dtQuyenNhom;
         public static System.Data.DataTable dtQuyenNhom
         {

@@ -54,8 +54,11 @@ namespace TrungTamKhachHang.GUI.HeThong
                         CUser.MaUser = user.ID;
                         CUser.Name = user.Name;
                         CUser.Admin = user.Admin;
-                        if (user.MaNhom != null)
-                            CUser.dtQuyenNhom = _cPhanQuyenNhom.GetDS(user.MaNhom.Value);
+                            if (user.MaNhom != null)
+                            {
+                                CUser.MaNhom = user.MaNhom.Value;
+                                CUser.dtQuyenNhom = _cPhanQuyenNhom.GetDS(user.MaNhom.Value);
+                            }
                         CUser.dtQuyenNguoiDung = _cPhanQuyenUser.GetDS(user.ID);
 
                         GetLoginResult(true);

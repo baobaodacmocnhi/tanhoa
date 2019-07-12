@@ -10,11 +10,15 @@ using TrungTamKhachHang.DAL.QuanTri;
 using TrungTamKhachHang.GUI.HeThong;
 using TrungTamKhachHang.GUI.QuanTri;
 using TrungTamKhachHang.GUI.KhachHang;
+using TrungTamKhachHang.GUI.LichDocSoThuTien;
 
 namespace TrungTamKhachHang
 {
     public partial class frmMain : Form
     {
+        CPhanQuyenNhom _cPhanQuyenNhom = new CPhanQuyenNhom();
+        CPhanQuyenUser _cPhanQuyenUser = new CPhanQuyenUser();
+
         public frmMain()
         {
             InitializeComponent();
@@ -53,6 +57,19 @@ namespace TrungTamKhachHang
                     mnuAdmin.Enabled = true;
                 else
                     mnuAdmin.Enabled = false;
+
+                foreach (ToolStripMenuItem itemParent in this.MainMenuStrip.Items)
+                {
+                    if (itemParent.Name == "mnuHeThong" || itemParent.Name == "mnuTimKiem")// || itemParent.Name == "mnuTrungTamKhachHang")
+                        continue;
+                    if (_cPhanQuyenNhom.CheckExist(itemParent.Name, CUser.MaNhom))
+                        itemParent.Visible = true;
+                    else
+                        if (_cPhanQuyenUser.CheckExist(itemParent.Name, CUser.MaUser))
+                            itemParent.Visible = true;
+                        else
+                            itemParent.Visible = false;
+                }
             }
         }
 
@@ -222,6 +239,31 @@ namespace TrungTamKhachHang
 
         #endregion
 
-        
+        #region Lịch Đọc Số & Thu Tiền
+
+        private void mnuLichDocSo_Click(object sender, EventArgs e)
+        {
+            if (CUser.CheckQuyen("mnuLichDocSo", "Xem"))
+            {
+                frmLichDocSo frm = new frmLichDocSo();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuLichThuTien_Click(object sender, EventArgs e)
+        {
+            if (CUser.CheckQuyen("mnuLichThuTien", "Xem"))
+            {
+                frmLichThuTien frm = new frmLichThuTien();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
     }
 }

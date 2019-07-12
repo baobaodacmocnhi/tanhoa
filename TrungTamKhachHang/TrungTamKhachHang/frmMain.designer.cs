@@ -42,6 +42,9 @@
             this.mnuKhachHang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuThongTinKhachHang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDanhSachKhieuNai = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLichDocSoThuTien = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLichDocSo = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLichThuTien = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.StripStatus_Version = new System.Windows.Forms.ToolStripStatusLabel();
@@ -59,7 +62,8 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuHeThong,
             this.mnuQuanTri,
-            this.mnuKhachHang});
+            this.mnuKhachHang,
+            this.mnuLichDocSoThuTien});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1068, 24);
@@ -151,6 +155,29 @@
             this.mnuDanhSachKhieuNai.Size = new System.Drawing.Size(184, 22);
             this.mnuDanhSachKhieuNai.Text = "Danh Sách Khiếu Nại";
             this.mnuDanhSachKhieuNai.Click += new System.EventHandler(this.mnuDanhSachKhieuNai_Click);
+            // 
+            // mnuLichDocSoThuTien
+            // 
+            this.mnuLichDocSoThuTien.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuLichDocSo,
+            this.mnuLichThuTien});
+            this.mnuLichDocSoThuTien.Name = "mnuLichDocSoThuTien";
+            this.mnuLichDocSoThuTien.Size = new System.Drawing.Size(139, 20);
+            this.mnuLichDocSoThuTien.Text = "Lịch Đọc Số - Thu Tiền";
+            // 
+            // mnuLichDocSo
+            // 
+            this.mnuLichDocSo.Name = "mnuLichDocSo";
+            this.mnuLichDocSo.Size = new System.Drawing.Size(152, 22);
+            this.mnuLichDocSo.Text = "Lịch Đọc Số";
+            this.mnuLichDocSo.Click += new System.EventHandler(this.mnuLichDocSo_Click);
+            // 
+            // mnuLichThuTien
+            // 
+            this.mnuLichThuTien.Name = "mnuLichThuTien";
+            this.mnuLichThuTien.Size = new System.Drawing.Size(152, 22);
+            this.mnuLichThuTien.Text = "Lịch Thu Tiền";
+            this.mnuLichThuTien.Click += new System.EventHandler(this.mnuLichThuTien_Click);
             // 
             // tabControl
             // 
@@ -254,6 +281,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuKhachHang;
         private System.Windows.Forms.ToolStripMenuItem mnuThongTinKhachHang;
         private System.Windows.Forms.ToolStripMenuItem mnuDanhSachKhieuNai;
+        private System.Windows.Forms.ToolStripMenuItem mnuLichDocSoThuTien;
+        private System.Windows.Forms.ToolStripMenuItem mnuLichDocSo;
+        private System.Windows.Forms.ToolStripMenuItem mnuLichThuTien;
     }
 }
 
