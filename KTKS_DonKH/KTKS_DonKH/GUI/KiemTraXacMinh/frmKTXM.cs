@@ -799,7 +799,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         }
 
-        private void dgvBangGia_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        private void dgvBangGia_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

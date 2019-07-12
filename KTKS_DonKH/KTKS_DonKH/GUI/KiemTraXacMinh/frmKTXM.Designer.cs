@@ -846,7 +846,6 @@
             this.dgvBangGia.Name = "dgvBangGia";
             this.dgvBangGia.Size = new System.Drawing.Size(401, 109);
             this.dgvBangGia.TabIndex = 9;
-            this.dgvBangGia.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvBangGia_CellValidating);
             // 
             // Namee
             // 
