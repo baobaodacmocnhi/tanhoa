@@ -38,13 +38,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cmbTimTheo_Di = new System.Windows.Forms.ComboBox();
             this.dgvCongVan_Di = new System.Windows.Forms.DataGridView();
-            this.ID_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoCongVan_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayNhan_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiNhan_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GhiChu_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayHetHan_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem_Di = new System.Windows.Forms.Button();
             this.panel_NoiDung_Di = new System.Windows.Forms.Panel();
             this.txtNoiDungTimKiem_Di = new System.Windows.Forms.TextBox();
@@ -67,6 +60,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtSoCongVan_Di = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ID_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoCongVan_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayNhan_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiNhan_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GhiChu_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayHetHan_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkHoanTat = new System.Windows.Forms.CheckBox();
+            this.dateHoanTat = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCongVan_Di)).BeginInit();
             this.panel_NoiDung_Di.SuspendLayout();
@@ -92,11 +94,11 @@
             // chkHetHan_Di
             // 
             this.chkHetHan_Di.AutoSize = true;
-            this.chkHetHan_Di.Location = new System.Drawing.Point(87, 142);
+            this.chkHetHan_Di.Location = new System.Drawing.Point(87, 145);
             this.chkHetHan_Di.Name = "chkHetHan_Di";
-            this.chkHetHan_Di.Size = new System.Drawing.Size(97, 17);
+            this.chkHetHan_Di.Size = new System.Drawing.Size(94, 17);
             this.chkHetHan_Di.TabIndex = 34;
-            this.chkHetHan_Di.Text = "Ngày Hết Hạn:";
+            this.chkHetHan_Di.Text = "Ngày Hết Hạn";
             this.chkHetHan_Di.UseVisualStyleBackColor = true;
             this.chkHetHan_Di.CheckedChanged += new System.EventHandler(this.chkHetHan_Di_CheckedChanged);
             // 
@@ -161,8 +163,9 @@
             "Số Công Văn",
             "Nội Dung",
             "Nơi Nhận",
-            "Ngày Nhận",
-            "Ngày Hết Hạn"});
+            "Ngày Lập",
+            "Ngày Hết Hạn",
+            "Tồn"});
             this.cmbTimTheo_Di.Location = new System.Drawing.Point(147, 19);
             this.cmbTimTheo_Di.Name = "cmbTimTheo_Di";
             this.cmbTimTheo_Di.Size = new System.Drawing.Size(121, 21);
@@ -187,52 +190,6 @@
             this.dgvCongVan_Di.Size = new System.Drawing.Size(1058, 356);
             this.dgvCongVan_Di.TabIndex = 5;
             this.dgvCongVan_Di.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCongVan_Di_CellContentClick);
-            // 
-            // ID_Di
-            // 
-            this.ID_Di.DataPropertyName = "ID";
-            this.ID_Di.HeaderText = "ID";
-            this.ID_Di.Name = "ID_Di";
-            this.ID_Di.Visible = false;
-            // 
-            // SoCongVan_Di
-            // 
-            this.SoCongVan_Di.DataPropertyName = "SoCongVan";
-            this.SoCongVan_Di.HeaderText = "Số Công Văn";
-            this.SoCongVan_Di.Name = "SoCongVan_Di";
-            // 
-            // NgayNhan_Di
-            // 
-            this.NgayNhan_Di.DataPropertyName = "NgayNhan";
-            this.NgayNhan_Di.HeaderText = "Ngày Nhận";
-            this.NgayNhan_Di.Name = "NgayNhan_Di";
-            // 
-            // NoiDung_Di
-            // 
-            this.NoiDung_Di.DataPropertyName = "NoiDung";
-            this.NoiDung_Di.HeaderText = "Nội Dung";
-            this.NoiDung_Di.Name = "NoiDung_Di";
-            this.NoiDung_Di.Width = 300;
-            // 
-            // NoiNhan_Di
-            // 
-            this.NoiNhan_Di.DataPropertyName = "NoiNhan";
-            this.NoiNhan_Di.HeaderText = "Nơi Nhận";
-            this.NoiNhan_Di.Name = "NoiNhan_Di";
-            this.NoiNhan_Di.Width = 200;
-            // 
-            // GhiChu_Di
-            // 
-            this.GhiChu_Di.DataPropertyName = "GhiChu";
-            this.GhiChu_Di.HeaderText = "Ghi Chú";
-            this.GhiChu_Di.Name = "GhiChu_Di";
-            this.GhiChu_Di.Width = 200;
-            // 
-            // NgayHetHan_Di
-            // 
-            this.NgayHetHan_Di.DataPropertyName = "NgayHetHan";
-            this.NgayHetHan_Di.HeaderText = "Ngày Hết Hạn";
-            this.NgayHetHan_Di.Name = "NgayHetHan_Di";
             // 
             // btnXem_Di
             // 
@@ -414,9 +371,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(193, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 22;
-            this.label2.Text = "Ngày Nhận:";
+            this.label2.Text = "Ngày Lập:";
             // 
             // txtSoCongVan_Di
             // 
@@ -434,11 +391,80 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Số Công Văn:";
             // 
+            // ID_Di
+            // 
+            this.ID_Di.DataPropertyName = "ID";
+            this.ID_Di.HeaderText = "ID";
+            this.ID_Di.Name = "ID_Di";
+            this.ID_Di.Visible = false;
+            // 
+            // SoCongVan_Di
+            // 
+            this.SoCongVan_Di.DataPropertyName = "SoCongVan";
+            this.SoCongVan_Di.HeaderText = "Số Công Văn";
+            this.SoCongVan_Di.Name = "SoCongVan_Di";
+            // 
+            // NgayNhan_Di
+            // 
+            this.NgayNhan_Di.DataPropertyName = "NgayNhan";
+            this.NgayNhan_Di.HeaderText = "Ngày Lập";
+            this.NgayNhan_Di.Name = "NgayNhan_Di";
+            // 
+            // NoiDung_Di
+            // 
+            this.NoiDung_Di.DataPropertyName = "NoiDung";
+            this.NoiDung_Di.HeaderText = "Nội Dung";
+            this.NoiDung_Di.Name = "NoiDung_Di";
+            this.NoiDung_Di.Width = 300;
+            // 
+            // NoiNhan_Di
+            // 
+            this.NoiNhan_Di.DataPropertyName = "NoiNhan";
+            this.NoiNhan_Di.HeaderText = "Nơi Nhận";
+            this.NoiNhan_Di.Name = "NoiNhan_Di";
+            this.NoiNhan_Di.Width = 200;
+            // 
+            // GhiChu_Di
+            // 
+            this.GhiChu_Di.DataPropertyName = "GhiChu";
+            this.GhiChu_Di.HeaderText = "Ghi Chú";
+            this.GhiChu_Di.Name = "GhiChu_Di";
+            this.GhiChu_Di.Width = 200;
+            // 
+            // NgayHetHan_Di
+            // 
+            this.NgayHetHan_Di.DataPropertyName = "NgayHetHan";
+            this.NgayHetHan_Di.HeaderText = "Ngày Hết Hạn";
+            this.NgayHetHan_Di.Name = "NgayHetHan_Di";
+            // 
+            // chkHoanTat
+            // 
+            this.chkHoanTat.AutoSize = true;
+            this.chkHoanTat.Location = new System.Drawing.Point(291, 145);
+            this.chkHoanTat.Name = "chkHoanTat";
+            this.chkHoanTat.Size = new System.Drawing.Size(99, 17);
+            this.chkHoanTat.TabIndex = 40;
+            this.chkHoanTat.Text = "Ngày Hoàn Tất";
+            this.chkHoanTat.UseVisualStyleBackColor = true;
+            this.chkHoanTat.CheckedChanged += new System.EventHandler(this.chkHoanTat_CheckedChanged);
+            // 
+            // dateHoanTat
+            // 
+            this.dateHoanTat.CustomFormat = "dd/MM/yyyy";
+            this.dateHoanTat.Enabled = false;
+            this.dateHoanTat.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateHoanTat.Location = new System.Drawing.Point(396, 142);
+            this.dateHoanTat.Name = "dateHoanTat";
+            this.dateHoanTat.Size = new System.Drawing.Size(95, 20);
+            this.dateHoanTat.TabIndex = 41;
+            // 
             // frmCongVanDi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1083, 594);
+            this.Controls.Add(this.chkHoanTat);
+            this.Controls.Add(this.dateHoanTat);
             this.Controls.Add(this.txtNoiNhan_Di);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.chkHetHan_Di);
@@ -486,13 +512,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbTimTheo_Di;
         private System.Windows.Forms.DataGridView dgvCongVan_Di;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Di;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoCongVan_Di;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayNhan_Di;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung_Di;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan_Di;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu_Di;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayHetHan_Di;
         private System.Windows.Forms.Button btnXem_Di;
         private System.Windows.Forms.Panel panel_NoiDung_Di;
         private System.Windows.Forms.TextBox txtNoiDungTimKiem_Di;
@@ -515,5 +534,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSoCongVan_Di;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Di;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoCongVan_Di;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayNhan_Di;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung_Di;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan_Di;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu_Di;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayHetHan_Di;
+        private System.Windows.Forms.CheckBox chkHoanTat;
+        private System.Windows.Forms.DateTimePicker dateHoanTat;
     }
 }

@@ -109,5 +109,10 @@ namespace KTCN_CongVan.DAL
         {
             return LINQToDataTable(_db.CongVanDis.Where(item =>item.IDPhong==IDPhong && item.NgayHetHan.Value.Date >= FromNgayHetHan.Date && item.NgayHetHan.Value.Date <= ToNgayHetHan.Date).ToList());
         }
+
+        public DataTable getDS_Ton(int IDPhong)
+        {
+            return LINQToDataTable(_db.CongVanDis.Where(item => item.IDPhong == IDPhong && item.HoanTat==false).ToList());
+        }
     }
 }

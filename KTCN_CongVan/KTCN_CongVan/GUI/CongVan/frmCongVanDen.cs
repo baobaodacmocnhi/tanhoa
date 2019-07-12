@@ -54,6 +54,7 @@ namespace KTCN_CongVan.GUI.CongVan
             txtNoiNhan_Den.Text = entity.NoiNhan;
             txtGhiChu_Den.Text = entity.GhiChu;
             chkHetHan_Den.Checked = entity.HetHan;
+            if (entity.NgayHetHan != null)
             dateNgayHetHan_Den.Value = entity.NgayHetHan.Value;
         }
 
@@ -156,6 +157,7 @@ namespace KTCN_CongVan.GUI.CongVan
                         else
                         {
                             _congvanden.HetHan = false;
+                            _congvanden.NgayHetHan = null;
                         }
                         if (_cCongVanDen.Sua(_congvanden) == true)
                         {

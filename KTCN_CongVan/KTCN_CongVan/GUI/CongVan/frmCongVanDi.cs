@@ -53,7 +53,11 @@ namespace KTCN_CongVan.GUI.CongVan
             txtNoiNhan_Di.Text = entity.NoiNhan;
             txtGhiChu_Di.Text = entity.GhiChu;
             chkHetHan_Di.Checked = entity.HetHan;
+            if(entity.NgayHetHan!=null)
             dateNgayHetHan_Di.Value = entity.NgayHetHan.Value;
+            chkHoanTat.Checked = entity.HoanTat;
+            if(entity.NgayHoanTat!=null)
+            dateHoanTat.Value = entity.NgayHoanTat.Value;
         }
 
         private void ClearCongVanDi()
@@ -68,6 +72,8 @@ namespace KTCN_CongVan.GUI.CongVan
             txtGhiChu_Di.Text = "";
             chkHetHan_Di.Checked = false;
             dateNgayHetHan_Di.Value = DateTime.Now;
+            chkHoanTat.Checked = false;
+            dateHoanTat.Value = DateTime.Now;
 
             _congvandi = null;
         }
@@ -91,6 +97,11 @@ namespace KTCN_CongVan.GUI.CongVan
                     {
                         entity.HetHan = chkHetHan_Di.Checked;
                         entity.NgayHetHan = dateNgayHetHan_Di.Value;
+                    }
+                    if (chkHoanTat.Checked == true)
+                    {
+                        entity.HoanTat = chkHoanTat.Checked;
+                        entity.NgayHoanTat = dateHoanTat.Value;
                     }
                     if (_cCongVanDi.Them(entity) == true)
                     {
@@ -155,6 +166,17 @@ namespace KTCN_CongVan.GUI.CongVan
                         else
                         {
                             _congvandi.HetHan = false;
+                            _congvandi.NgayHetHan = null;
+                        }
+                        if (chkHoanTat.Checked == true)
+                        {
+                            _congvandi.HoanTat = true;
+                            _congvandi.NgayHoanTat = dateHoanTat.Value;
+                        }
+                        else
+                        {
+                            _congvandi.HoanTat = false;
+                            _congvandi.NgayHoanTat = null;
                         }
                         if (_cCongVanDi.Sua(_congvandi) == true)
                         {
@@ -179,10 +201,11 @@ namespace KTCN_CongVan.GUI.CongVan
                 case "Số Công Văn":
                 case "Nội Dung":
                 case "Nơi Nhận":
+                case "Tồn":
                     panel_NoiDung_Di.Visible = true;
                     panel_ThoiGian_Di.Visible = false;
                     break;
-                case "Ngày Nhận":
+                case "Ngày Lập":
                 case "Ngày Hết Hạn":
                     panel_NoiDung_Di.Visible = false;
                     panel_ThoiGian_Di.Visible = true;
@@ -208,8 +231,11 @@ namespace KTCN_CongVan.GUI.CongVan
                 case "Nơi Nhận":
                     dgvCongVan_Di.DataSource = _cCongVanDi.getDS_NoiNhan(CUser.IDPhong, txtNoiDungTimKiem_Di.Text.Trim());
                     break;
-                case "Ngày Nhận":
+                case "Ngày Lập":
                     dgvCongVan_Di.DataSource = _cCongVanDi.getDS(CUser.IDPhong, dateTu_Di.Value, dateDen_Di.Value);
+                    break;
+                case "Tồn":
+                    dgvCongVan_Di.DataSource = _cCongVanDi.getDS_Ton(CUser.IDPhong);
                     break;
                 case "Ngày Hết Hạn":
                     dgvCongVan_Di.DataSource = _cCongVanDi.getDS_NgayHetHan(CUser.IDPhong, dateTu_Di.Value, dateDen_Di.Value);
@@ -239,6 +265,14 @@ namespace KTCN_CongVan.GUI.CongVan
                 dateNgayHetHan_Di.Enabled = true;
             else
                 dateNgayHetHan_Di.Enabled = false;
+        }
+
+        private void chkHoanTat_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkHoanTat.Checked == true)
+                dateHoanTat.Enabled = true;
+            else
+                dateHoanTat.Enabled = false;
         }
     }
 }

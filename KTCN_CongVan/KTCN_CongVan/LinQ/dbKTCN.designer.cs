@@ -1072,6 +1072,10 @@ namespace KTCN_CongVan.LinQ
 		
 		private System.Nullable<System.DateTime> _NgayHetHan;
 		
+		private bool _HoanTat;
+		
+		private System.Nullable<System.DateTime> _NgayHoanTat;
+		
 		private System.Nullable<int> _IDPhong;
 		
 		private System.Nullable<int> _CreateBy;
@@ -1108,6 +1112,10 @@ namespace KTCN_CongVan.LinQ
     partial void OnHetHanChanged();
     partial void OnNgayHetHanChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayHetHanChanged();
+    partial void OnHoanTatChanging(bool value);
+    partial void OnHoanTatChanged();
+    partial void OnNgayHoanTatChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayHoanTatChanged();
     partial void OnIDPhongChanging(System.Nullable<int> value);
     partial void OnIDPhongChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -1341,6 +1349,46 @@ namespace KTCN_CongVan.LinQ
 					this._NgayHetHan = value;
 					this.SendPropertyChanged("NgayHetHan");
 					this.OnNgayHetHanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoanTat", DbType="Bit NOT NULL")]
+		public bool HoanTat
+		{
+			get
+			{
+				return this._HoanTat;
+			}
+			set
+			{
+				if ((this._HoanTat != value))
+				{
+					this.OnHoanTatChanging(value);
+					this.SendPropertyChanging();
+					this._HoanTat = value;
+					this.SendPropertyChanged("HoanTat");
+					this.OnHoanTatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayHoanTat", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayHoanTat
+		{
+			get
+			{
+				return this._NgayHoanTat;
+			}
+			set
+			{
+				if ((this._NgayHoanTat != value))
+				{
+					this.OnNgayHoanTatChanging(value);
+					this.SendPropertyChanging();
+					this._NgayHoanTat = value;
+					this.SendPropertyChanged("NgayHoanTat");
+					this.OnNgayHoanTatChanged();
 				}
 			}
 		}
