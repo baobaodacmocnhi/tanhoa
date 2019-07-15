@@ -258,6 +258,11 @@ namespace KTKS_DonKH.DAL.DonTu
                 return db.DonTu_ChiTiets.Max(item => item.ID);
         }
 
+        public bool checkExist_ChiTiet(int MaDon, int STT)
+        {
+            return db.DonTu_ChiTiets.Any(item => item.MaDon == MaDon && item.STT == STT);
+        }
+
         public bool checkExist_ChiTiet(string DanhBo, string HoTen, string DiaChi, DateTime CreateDate)
         {
             return db.DonTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.HoTen == HoTen && item.DiaChi == DiaChi && item.CreateDate.Value.Date == CreateDate.Date);

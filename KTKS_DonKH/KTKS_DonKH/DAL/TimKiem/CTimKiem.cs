@@ -696,11 +696,11 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 //Table TienTrinh
                 var queryTienTrinh = from item in db.DonTu_LichSus
-                                     where item.MaDon == MaDon
+                                     where item.MaDon == MaDon && item.STT == STT
                                      orderby item.NgayChuyen descending, item.ID descending
                                      select new
                                      {
-                                         MaDon = item.DonTu.DonTu_ChiTiets.Count == 1 ? item.MaDon.Value.ToString() : item.MaDon.Value.ToString() + "." + item.STT.Value.ToString(),
+                                         MaDon = item.MaDon.Value.ToString() + "." + item.STT.Value.ToString(),
                                          item.NgayChuyen,
                                          item.NoiChuyen,
                                          item.NoiNhan,
