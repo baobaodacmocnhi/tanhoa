@@ -198,6 +198,7 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                     _dtp.Size = new Size(_rectangle.Width, _rectangle.Height);
                     _dtp.Location = new Point(_rectangle.X,_rectangle.Y);
                     _dtp.Visible = true;
+                    dgvDot.CurrentCell.Value = _dtp.Text;
                     break;
             }
         }

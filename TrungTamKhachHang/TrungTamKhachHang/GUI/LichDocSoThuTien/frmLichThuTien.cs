@@ -189,12 +189,13 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
             switch (dgvDot.Columns[e.ColumnIndex].Name)
             {
                 case "NgayChuyenListing":
-                case "NgaThuTien_From":
+                case "NgayThuTien_From":
                 case "NgayThuTien_To":
                     _rectangle = dgvDot.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
                     _dtp.Size = new Size(_rectangle.Width, _rectangle.Height);
                     _dtp.Location = new Point(_rectangle.X, _rectangle.Y);
                     _dtp.Visible = true;
+                    dgvDot.CurrentCell.Value = _dtp.Text;
                     break;
             }
         }
