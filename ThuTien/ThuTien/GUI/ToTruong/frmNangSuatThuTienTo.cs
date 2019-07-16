@@ -959,7 +959,9 @@ namespace ThuTien.GUI.ToTruong
             {
                 DataRow dr = ds.Tables["DSDongNuoc"].NewRow();
 
-                dr["ThoiGian"] = dateTu.Value.Month.ToString() + "/" + dateTu.Value.Year.ToString();
+                dr["Ky"] = dateTu.Value.Month.ToString() + "/" + dateTu.Value.Year.ToString();
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 if (CNguoiDung.Doi)
                     dr["To"] = ((TT_To)cmbTo.SelectedItem).TenTo;
                 else
@@ -1097,6 +1099,8 @@ namespace ThuTien.GUI.ToTruong
                 if (bool.Parse(item["DongNuoc2"].ToString()) == true)
                 {
                     DataRow dr = dsChiTiet.Tables["KQDongNuoc"].NewRow();
+                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                     dr["STT"] = item["STT"];
                     dr["NhanVien"] = item["HanhThu"];
                     dr["Loai"] = item["Loai"].ToString().ToUpper();
@@ -1117,6 +1121,8 @@ namespace ThuTien.GUI.ToTruong
                 }
                 {
                     DataRow dr = dsChiTiet.Tables["KQDongNuoc"].NewRow();
+                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                     dr["STT"] = item["STT"];
                     dr["NhanVien"] = item["HanhThu"];
                     dr["Loai"] = item["Loai"].ToString().ToUpper();

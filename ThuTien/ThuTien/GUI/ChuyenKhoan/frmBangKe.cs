@@ -122,8 +122,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                         TongHD += int.Parse(item.Cells["HoaDon"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCong"].Value.ToString()))
                         TongCong += long.Parse(item.Cells["TongCong"].Value.ToString());
-                    if (!string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString()) && !_cCapNuocTanHoa.CheckExist(item.Cells["DanhBo"].Value.ToString()))
-                        item.DefaultCellStyle.BackColor = Color.Red;
+                    //if (!string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString()) && !_cCapNuocTanHoa.CheckExist(item.Cells["DanhBo"].Value.ToString()))
+                    //    item.DefaultCellStyle.BackColor = Color.Red;
                 }
                 txtTongDanhBo.Text = dgvBangKe.RowCount.ToString();
                 txtTongSoTien.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSoTien);
@@ -164,11 +164,15 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 }
                                 if (_cBangKe.Xoa(bangke))
                                     if (flagLuiNgay == true)
+                                    {
                                         if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê", "Xóa", CreateDate))
                                             scope.Complete();
-                                        else
-                                            if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê", "Xóa"))
-                                                scope.Complete();
+                                    }
+                                    else
+                                    {
+                                        if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê", "Xóa"))
+                                            scope.Complete();
+                                    }
                             }
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnXem.PerformClick();
