@@ -1000,24 +1000,27 @@ namespace KTKS_DonKH.GUI.DonTu
                         MessageBox.Show("Danh Bộ đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString());
-                if (hoadon != null)
+                if (dgvDanhBo["DanhBo", e.RowIndex].Value != null)
                 {
-                    dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
-                    dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
-                    dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
-                    dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
-                    dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
-                    dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT;
-                    dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY;
-                    dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM;
-                    dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH;
-                    dgvDanhBo["Quan", e.RowIndex].Value = hoadon.Quan;
-                    dgvDanhBo["Phuong", e.RowIndex].Value = hoadon.Phuong;
-                }
-                else
-                {
-                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString());
+                    if (hoadon != null)
+                    {
+                        dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
+                        dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
+                        dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                        dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
+                        dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
+                        dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT;
+                        dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY;
+                        dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM;
+                        dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH;
+                        dgvDanhBo["Quan", e.RowIndex].Value = hoadon.Quan;
+                        dgvDanhBo["Phuong", e.RowIndex].Value = hoadon.Phuong;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 //update record đã lưu
                 if (dgvDanhBo["ID", e.RowIndex].Value != null)

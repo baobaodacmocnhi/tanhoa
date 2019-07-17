@@ -96,7 +96,18 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="BamChi_ChiTiet_BamChi_ChiTiet_Hinh" Member="BamChi_ChiTiet_Hinhs" ThisKey="MaCTBC" OtherKey="IDBamChi_ChiTiet" Type="BamChi_ChiTiet_Hinh" />
       <Association Name="BamChi_BamChi_ChiTiet" Member="BamChi" ThisKey="MaBC" OtherKey="MaBC" Type="BamChi" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BamChi_ChiTiet_Hinh" Member="BamChi_ChiTiet_Hinhs">
+    <Type Name="BamChi_ChiTiet_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDBamChi_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="BamChi_ChiTiet_BamChi_ChiTiet_Hinh" Member="BamChi_ChiTiet" ThisKey="IDBamChi_ChiTiet" OtherKey="MaCTBC" Type="BamChi_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.BamChi_TrangThai" Member="BamChi_TrangThais">
@@ -237,9 +248,20 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="CHDB_ChiTietCatHuy_CHDB_ChiTietCatHuy_Hinh" Member="CHDB_ChiTietCatHuy_Hinhs" ThisKey="MaCTCHDB" OtherKey="IDCHDB_ChiTietCatHuy" Type="CHDB_ChiTietCatHuy_Hinh" />
       <Association Name="CHDB_ChiTietCatHuy_CHDB_GhiChu" Member="CHDB_GhiChus" ThisKey="MaCTCHDB" OtherKey="MaCTCHDB" Type="CHDB_GhiChu" />
       <Association Name="CHDB_ChiTietCatHuy_CHDB_Phieu" Member="CHDB_Phieus" ThisKey="MaCTCHDB" OtherKey="MaCTCHDB" Type="CHDB_Phieu" />
       <Association Name="CHDB_CHDB_ChiTietCatHuy" Member="CHDB" ThisKey="MaCHDB" OtherKey="MaCHDB" Type="CHDB" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CHDB_ChiTietCatHuy_Hinh" Member="CHDB_ChiTietCatHuy_Hinhs">
+    <Type Name="CHDB_ChiTietCatHuy_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDCHDB_ChiTietCatHuy" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="CHDB_ChiTietCatHuy_CHDB_ChiTietCatHuy_Hinh" Member="CHDB_ChiTietCatHuy" ThisKey="IDCHDB_ChiTietCatHuy" OtherKey="MaCTCHDB" Type="CHDB_ChiTietCatHuy" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CHDB_ChiTietCatTam" Member="CHDB_ChiTietCatTams">
@@ -293,9 +315,20 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="CHDB_ChiTietCatTam_CHDB_ChiTietCatTam_Hinh" Member="CHDB_ChiTietCatTam_Hinhs" ThisKey="MaCTCTDB" OtherKey="IDCHDB_ChiTietCatTam" Type="CHDB_ChiTietCatTam_Hinh" />
       <Association Name="CHDB_ChiTietCatTam_CHDB_GhiChu" Member="CHDB_GhiChus" ThisKey="MaCTCTDB" OtherKey="MaCTCTDB" Type="CHDB_GhiChu" />
       <Association Name="CHDB_ChiTietCatTam_CHDB_Phieu" Member="CHDB_Phieus" ThisKey="MaCTCTDB" OtherKey="MaCTCTDB" Type="CHDB_Phieu" />
       <Association Name="CHDB_CHDB_ChiTietCatTam" Member="CHDB" ThisKey="MaCHDB" OtherKey="MaCHDB" Type="CHDB" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CHDB_ChiTietCatTam_Hinh" Member="CHDB_ChiTietCatTam_Hinhs">
+    <Type Name="CHDB_ChiTietCatTam_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDCHDB_ChiTietCatTam" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="CHDB_ChiTietCatTam_CHDB_ChiTietCatTam_Hinh" Member="CHDB_ChiTietCatTam" ThisKey="IDCHDB_ChiTietCatTam" OtherKey="MaCTCTDB" Type="CHDB_ChiTietCatTam" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CHDB_GhiChu" Member="CHDB_GhiChus">
@@ -385,9 +418,20 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="CHDB_Phieu_CHDB_Phieu_Hinh" Member="CHDB_Phieu_Hinhs" ThisKey="MaYCCHDB" OtherKey="IDCHDB_Phieu" Type="CHDB_Phieu_Hinh" />
       <Association Name="CHDB_CHDB_Phieu" Member="CHDB" ThisKey="MaCHDB" OtherKey="MaCHDB" Type="CHDB" IsForeignKey="true" />
       <Association Name="CHDB_ChiTietCatHuy_CHDB_Phieu" Member="CHDB_ChiTietCatHuy" ThisKey="MaCTCHDB" OtherKey="MaCTCHDB" Type="CHDB_ChiTietCatHuy" IsForeignKey="true" />
       <Association Name="CHDB_ChiTietCatTam_CHDB_Phieu" Member="CHDB_ChiTietCatTam" ThisKey="MaCTCTDB" OtherKey="MaCTCTDB" Type="CHDB_ChiTietCatTam" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CHDB_Phieu_Hinh" Member="CHDB_Phieu_Hinhs">
+    <Type Name="CHDB_Phieu_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDCHDB_Phieu" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="CHDB_Phieu_CHDB_Phieu_Hinh" Member="CHDB_Phieu" ThisKey="IDCHDB_Phieu" OtherKey="MaYCCHDB" Type="CHDB_Phieu" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ChiNhanh" Member="ChiNhanhs">
@@ -523,6 +567,17 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ChungTu_LichSu_ChungTu_LichSu_Hinh" Member="ChungTu_LichSu_Hinhs" ThisKey="MaLSCT" OtherKey="IDChungTu_LichSu" Type="ChungTu_LichSu_Hinh" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChungTu_LichSu_Hinh" Member="ChungTu_LichSu_Hinhs">
+    <Type Name="ChungTu_LichSu_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDChungTu_LichSu" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="ChungTu_LichSu_ChungTu_LichSu_Hinh" Member="ChungTu_LichSu" ThisKey="IDChungTu_LichSu" OtherKey="MaLSCT" Type="ChungTu_LichSu" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ChuyenDe" Member="ChuyenDes">
@@ -655,7 +710,18 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="DCBD_ChiTietBienDong_DCBD_ChiTietBienDong_Hinh" Member="DCBD_ChiTietBienDong_Hinhs" ThisKey="MaCTDCBD" OtherKey="IDDCBD_ChiTietBienDong" Type="DCBD_ChiTietBienDong_Hinh" />
       <Association Name="DCBD_DCBD_ChiTietBienDong" Member="DCBD" ThisKey="MaDCBD" OtherKey="MaDCBD" Type="DCBD" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DCBD_ChiTietBienDong_Hinh" Member="DCBD_ChiTietBienDong_Hinhs">
+    <Type Name="DCBD_ChiTietBienDong_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDDCBD_ChiTietBienDong" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="DCBD_ChiTietBienDong_DCBD_ChiTietBienDong_Hinh" Member="DCBD_ChiTietBienDong" ThisKey="IDDCBD_ChiTietBienDong" OtherKey="MaCTDCBD" Type="DCBD_ChiTietBienDong" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DCBD_ChiTietHoaDon" Member="DCBD_ChiTietHoaDons">
@@ -728,7 +794,18 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="DCBD_ChiTietHoaDon_DCBD_ChiTietHoaDon_Hinh" Member="DCBD_ChiTietHoaDon_Hinhs" ThisKey="MaCTDCHD" OtherKey="IDDCBD_ChiTietHoaDon" Type="DCBD_ChiTietHoaDon_Hinh" />
       <Association Name="DCBD_DCBD_ChiTietHoaDon" Member="DCBD" ThisKey="MaDCBD" OtherKey="MaDCBD" Type="DCBD" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DCBD_ChiTietHoaDon_Hinh" Member="DCBD_ChiTietHoaDon_Hinhs">
+    <Type Name="DCBD_ChiTietHoaDon_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDDCBD_ChiTietHoaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="DCBD_ChiTietHoaDon_DCBD_ChiTietHoaDon_Hinh" Member="DCBD_ChiTietHoaDon" ThisKey="IDDCBD_ChiTietHoaDon" OtherKey="MaCTDCHD" Type="DCBD_ChiTietHoaDon" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DonDienThoai" Member="DonDienThoais">
@@ -817,7 +894,18 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DongNuoc_ChiTiet_DongNuoc_ChiTiet_Hinh" Member="DongNuoc_ChiTiet_Hinhs" ThisKey="MaCTDN" OtherKey="IDDongNuoc_ChiTiet" Type="DongNuoc_ChiTiet_Hinh" />
       <Association Name="DongNuoc_DongNuoc_ChiTiet" Member="DongNuoc" ThisKey="MaDN" OtherKey="MaDN" Type="DongNuoc" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DongNuoc_ChiTiet_Hinh" Member="DongNuoc_ChiTiet_Hinhs">
+    <Type Name="DongNuoc_ChiTiet_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDDongNuoc_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="DongNuoc_ChiTiet_DongNuoc_ChiTiet_Hinh" Member="DongNuoc_ChiTiet" ThisKey="IDDongNuoc_ChiTiet" OtherKey="MaCTDN" Type="DongNuoc_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DongTienNoiDung" Member="DongTienNoiDungs">
@@ -1222,7 +1310,18 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="GianLan_ChiTiet_GianLan_ChiTiet_Hinh" Member="GianLan_ChiTiet_Hinhs" ThisKey="MaCTGL" OtherKey="IDGianLan_ChiTiet" Type="GianLan_ChiTiet_Hinh" />
       <Association Name="GianLan_GianLan_ChiTiet" Member="GianLan" ThisKey="MaGL" OtherKey="MaGL" Type="GianLan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GianLan_ChiTiet_Hinh" Member="GianLan_ChiTiet_Hinhs">
+    <Type Name="GianLan_ChiTiet_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDGianLan_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="GianLan_ChiTiet_GianLan_ChiTiet_Hinh" Member="GianLan_ChiTiet" ThisKey="IDGianLan_ChiTiet" OtherKey="MaCTGL" Type="GianLan_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.GiaNuoc" Member="GiaNuocs">
@@ -1336,7 +1435,18 @@
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="KTXM_ChiTiet_KTXM_BangGia" Member="KTXM_BangGias" ThisKey="MaCTKTXM" OtherKey="IDCTKTXM" Type="KTXM_BangGia" />
+      <Association Name="KTXM_ChiTiet_KTXM_ChiTiet_Hinh" Member="KTXM_ChiTiet_Hinhs" ThisKey="MaCTKTXM" OtherKey="IDKTXM_ChiTiet" Type="KTXM_ChiTiet_Hinh" />
       <Association Name="KTXM_KTXM_ChiTiet" Member="KTXM" ThisKey="MaKTXM" OtherKey="MaKTXM" Type="KTXM" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KTXM_ChiTiet_Hinh" Member="KTXM_ChiTiet_Hinhs">
+    <Type Name="KTXM_ChiTiet_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDKTXM_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="KTXM_ChiTiet_KTXM_ChiTiet_Hinh" Member="KTXM_ChiTiet" ThisKey="IDKTXM_ChiTiet" OtherKey="MaCTKTXM" Type="KTXM_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.KTXM_DonGia" Member="KTXM_DonGias">
@@ -1739,7 +1849,18 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ThuMoi_ChiTiet_ThuMoi_ChiTiet_Hinh" Member="ThuMoi_ChiTiet_Hinhs" ThisKey="IDCT" OtherKey="IDThuMoi_ChiTiet" Type="ThuMoi_ChiTiet_Hinh" />
       <Association Name="ThuMoi_ThuMoi_ChiTiet" Member="ThuMoi" ThisKey="ID" OtherKey="ID" Type="ThuMoi" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ThuMoi_ChiTiet_Hinh" Member="ThuMoi_ChiTiet_Hinhs">
+    <Type Name="ThuMoi_ChiTiet_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDThuMoi_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="ThuMoi_ChiTiet_ThuMoi_ChiTiet_Hinh" Member="ThuMoi_ChiTiet" ThisKey="IDThuMoi_ChiTiet" OtherKey="IDCT" Type="ThuMoi_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.[To]" Member="Tos">
@@ -1810,7 +1931,18 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="ToTrinh_ChiTiet_ToTrinh_ChiTiet_Hinh" Member="ToTrinh_ChiTiet_Hinhs" ThisKey="IDCT" OtherKey="IDToTrinh_ChiTiet" Type="ToTrinh_ChiTiet_Hinh" />
       <Association Name="ToTrinh_ToTrinh_ChiTiet" Member="ToTrinh" ThisKey="ID" OtherKey="ID" Type="ToTrinh" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ToTrinh_ChiTiet_Hinh" Member="ToTrinh_ChiTiet_Hinhs">
+    <Type Name="ToTrinh_ChiTiet_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDToTrinh_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="ToTrinh_ChiTiet_ToTrinh_ChiTiet_Hinh" Member="ToTrinh_ChiTiet" ThisKey="IDToTrinh_ChiTiet" OtherKey="IDCT" Type="ToTrinh_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ToTrinh_VeViec" Member="ToTrinh_VeViecs">
@@ -1874,10 +2006,21 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ChiTiet_Hinh" Member="TruyThuTienNuoc_ChiTiet_Hinhs" ThisKey="IDCT" OtherKey="IDTruyThuTienNuoc_ChiTiet" Type="TruyThuTienNuoc_ChiTiet_Hinh" />
       <Association Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_HoaDon" Member="TruyThuTienNuoc_HoaDons" ThisKey="IDCT" OtherKey="IDCT" Type="TruyThuTienNuoc_HoaDon" />
       <Association Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThanhToan" Member="TruyThuTienNuoc_ThanhToans" ThisKey="IDCT" OtherKey="IDCT" Type="TruyThuTienNuoc_ThanhToan" />
       <Association Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThuMoi" Member="TruyThuTienNuoc_ThuMois" ThisKey="IDCT" OtherKey="IDCT" Type="TruyThuTienNuoc_ThuMoi" />
       <Association Name="TruyThuTienNuoc_TruyThuTienNuoc_ChiTiet" Member="TruyThuTienNuoc" ThisKey="ID" OtherKey="ID" Type="TruyThuTienNuoc" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TruyThuTienNuoc_ChiTiet_Hinh" Member="TruyThuTienNuoc_ChiTiet_Hinhs">
+    <Type Name="TruyThuTienNuoc_ChiTiet_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDTruyThuTienNuoc_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ChiTiet_Hinh" Member="TruyThuTienNuoc_ChiTiet" ThisKey="IDTruyThuTienNuoc_ChiTiet" OtherKey="IDCT" Type="TruyThuTienNuoc_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TruyThuTienNuoc_HoaDon" Member="TruyThuTienNuoc_HoaDons">
@@ -2035,7 +2178,18 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="TTTL_ChiTiet_TTTL_ChiTiet_Hinh" Member="TTTL_ChiTiet_Hinhs" ThisKey="MaCTTTTL" OtherKey="IDTTTL_ChiTiet" Type="TTTL_ChiTiet_Hinh" />
       <Association Name="TTTL_TTTL_ChiTiet" Member="TTTL" ThisKey="MaTTTL" OtherKey="MaTTTL" Type="TTTL" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TTTL_ChiTiet_Hinh" Member="TTTL_ChiTiet_Hinhs">
+    <Type Name="TTTL_ChiTiet_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDTTTL_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TTTL_ChiTiet_TTTL_ChiTiet_Hinh" Member="TTTL_ChiTiet" ThisKey="IDTTTL_ChiTiet" OtherKey="MaCTTTTL" Type="TTTL_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TTTL_GhiChu" Member="TTTL_GhiChus">

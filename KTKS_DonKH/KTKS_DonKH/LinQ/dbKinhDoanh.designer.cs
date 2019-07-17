@@ -39,6 +39,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertBamChi_ChiTiet(BamChi_ChiTiet instance);
     partial void UpdateBamChi_ChiTiet(BamChi_ChiTiet instance);
     partial void DeleteBamChi_ChiTiet(BamChi_ChiTiet instance);
+    partial void InsertBamChi_ChiTiet_Hinh(BamChi_ChiTiet_Hinh instance);
+    partial void UpdateBamChi_ChiTiet_Hinh(BamChi_ChiTiet_Hinh instance);
+    partial void DeleteBamChi_ChiTiet_Hinh(BamChi_ChiTiet_Hinh instance);
     partial void InsertBamChi_TrangThai(BamChi_TrangThai instance);
     partial void UpdateBamChi_TrangThai(BamChi_TrangThai instance);
     partial void DeleteBamChi_TrangThai(BamChi_TrangThai instance);
@@ -54,9 +57,15 @@ namespace KTKS_DonKH.LinQ
     partial void InsertCHDB_ChiTietCatHuy(CHDB_ChiTietCatHuy instance);
     partial void UpdateCHDB_ChiTietCatHuy(CHDB_ChiTietCatHuy instance);
     partial void DeleteCHDB_ChiTietCatHuy(CHDB_ChiTietCatHuy instance);
+    partial void InsertCHDB_ChiTietCatHuy_Hinh(CHDB_ChiTietCatHuy_Hinh instance);
+    partial void UpdateCHDB_ChiTietCatHuy_Hinh(CHDB_ChiTietCatHuy_Hinh instance);
+    partial void DeleteCHDB_ChiTietCatHuy_Hinh(CHDB_ChiTietCatHuy_Hinh instance);
     partial void InsertCHDB_ChiTietCatTam(CHDB_ChiTietCatTam instance);
     partial void UpdateCHDB_ChiTietCatTam(CHDB_ChiTietCatTam instance);
     partial void DeleteCHDB_ChiTietCatTam(CHDB_ChiTietCatTam instance);
+    partial void InsertCHDB_ChiTietCatTam_Hinh(CHDB_ChiTietCatTam_Hinh instance);
+    partial void UpdateCHDB_ChiTietCatTam_Hinh(CHDB_ChiTietCatTam_Hinh instance);
+    partial void DeleteCHDB_ChiTietCatTam_Hinh(CHDB_ChiTietCatTam_Hinh instance);
     partial void InsertCHDB_GhiChu(CHDB_GhiChu instance);
     partial void UpdateCHDB_GhiChu(CHDB_GhiChu instance);
     partial void DeleteCHDB_GhiChu(CHDB_GhiChu instance);
@@ -69,6 +78,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertCHDB_Phieu(CHDB_Phieu instance);
     partial void UpdateCHDB_Phieu(CHDB_Phieu instance);
     partial void DeleteCHDB_Phieu(CHDB_Phieu instance);
+    partial void InsertCHDB_Phieu_Hinh(CHDB_Phieu_Hinh instance);
+    partial void UpdateCHDB_Phieu_Hinh(CHDB_Phieu_Hinh instance);
+    partial void DeleteCHDB_Phieu_Hinh(CHDB_Phieu_Hinh instance);
     partial void InsertChiNhanh(ChiNhanh instance);
     partial void UpdateChiNhanh(ChiNhanh instance);
     partial void DeleteChiNhanh(ChiNhanh instance);
@@ -81,6 +93,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertChungTu_LichSu(ChungTu_LichSu instance);
     partial void UpdateChungTu_LichSu(ChungTu_LichSu instance);
     partial void DeleteChungTu_LichSu(ChungTu_LichSu instance);
+    partial void InsertChungTu_LichSu_Hinh(ChungTu_LichSu_Hinh instance);
+    partial void UpdateChungTu_LichSu_Hinh(ChungTu_LichSu_Hinh instance);
+    partial void DeleteChungTu_LichSu_Hinh(ChungTu_LichSu_Hinh instance);
     partial void InsertChuyenDe(ChuyenDe instance);
     partial void UpdateChuyenDe(ChuyenDe instance);
     partial void DeleteChuyenDe(ChuyenDe instance);
@@ -96,9 +111,15 @@ namespace KTKS_DonKH.LinQ
     partial void InsertDCBD_ChiTietBienDong(DCBD_ChiTietBienDong instance);
     partial void UpdateDCBD_ChiTietBienDong(DCBD_ChiTietBienDong instance);
     partial void DeleteDCBD_ChiTietBienDong(DCBD_ChiTietBienDong instance);
+    partial void InsertDCBD_ChiTietBienDong_Hinh(DCBD_ChiTietBienDong_Hinh instance);
+    partial void UpdateDCBD_ChiTietBienDong_Hinh(DCBD_ChiTietBienDong_Hinh instance);
+    partial void DeleteDCBD_ChiTietBienDong_Hinh(DCBD_ChiTietBienDong_Hinh instance);
     partial void InsertDCBD_ChiTietHoaDon(DCBD_ChiTietHoaDon instance);
     partial void UpdateDCBD_ChiTietHoaDon(DCBD_ChiTietHoaDon instance);
     partial void DeleteDCBD_ChiTietHoaDon(DCBD_ChiTietHoaDon instance);
+    partial void InsertDCBD_ChiTietHoaDon_Hinh(DCBD_ChiTietHoaDon_Hinh instance);
+    partial void UpdateDCBD_ChiTietHoaDon_Hinh(DCBD_ChiTietHoaDon_Hinh instance);
+    partial void DeleteDCBD_ChiTietHoaDon_Hinh(DCBD_ChiTietHoaDon_Hinh instance);
     partial void InsertDonDienThoai(DonDienThoai instance);
     partial void UpdateDonDienThoai(DonDienThoai instance);
     partial void DeleteDonDienThoai(DonDienThoai instance);
@@ -108,6 +129,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertDongNuoc_ChiTiet(DongNuoc_ChiTiet instance);
     partial void UpdateDongNuoc_ChiTiet(DongNuoc_ChiTiet instance);
     partial void DeleteDongNuoc_ChiTiet(DongNuoc_ChiTiet instance);
+    partial void InsertDongNuoc_ChiTiet_Hinh(DongNuoc_ChiTiet_Hinh instance);
+    partial void UpdateDongNuoc_ChiTiet_Hinh(DongNuoc_ChiTiet_Hinh instance);
+    partial void DeleteDongNuoc_ChiTiet_Hinh(DongNuoc_ChiTiet_Hinh instance);
     partial void InsertDongTienNoiDung(DongTienNoiDung instance);
     partial void UpdateDongTienNoiDung(DongTienNoiDung instance);
     partial void DeleteDongTienNoiDung(DongTienNoiDung instance);
@@ -135,6 +159,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertGianLan_ChiTiet(GianLan_ChiTiet instance);
     partial void UpdateGianLan_ChiTiet(GianLan_ChiTiet instance);
     partial void DeleteGianLan_ChiTiet(GianLan_ChiTiet instance);
+    partial void InsertGianLan_ChiTiet_Hinh(GianLan_ChiTiet_Hinh instance);
+    partial void UpdateGianLan_ChiTiet_Hinh(GianLan_ChiTiet_Hinh instance);
+    partial void DeleteGianLan_ChiTiet_Hinh(GianLan_ChiTiet_Hinh instance);
     partial void InsertGiaNuoc(GiaNuoc instance);
     partial void UpdateGiaNuoc(GiaNuoc instance);
     partial void DeleteGiaNuoc(GiaNuoc instance);
@@ -150,6 +177,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertKTXM_ChiTiet(KTXM_ChiTiet instance);
     partial void UpdateKTXM_ChiTiet(KTXM_ChiTiet instance);
     partial void DeleteKTXM_ChiTiet(KTXM_ChiTiet instance);
+    partial void InsertKTXM_ChiTiet_Hinh(KTXM_ChiTiet_Hinh instance);
+    partial void UpdateKTXM_ChiTiet_Hinh(KTXM_ChiTiet_Hinh instance);
+    partial void DeleteKTXM_ChiTiet_Hinh(KTXM_ChiTiet_Hinh instance);
     partial void InsertKTXM_DonGia(KTXM_DonGia instance);
     partial void UpdateKTXM_DonGia(KTXM_DonGia instance);
     partial void DeleteKTXM_DonGia(KTXM_DonGia instance);
@@ -228,6 +258,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertThuMoi_ChiTiet(ThuMoi_ChiTiet instance);
     partial void UpdateThuMoi_ChiTiet(ThuMoi_ChiTiet instance);
     partial void DeleteThuMoi_ChiTiet(ThuMoi_ChiTiet instance);
+    partial void InsertThuMoi_ChiTiet_Hinh(ThuMoi_ChiTiet_Hinh instance);
+    partial void UpdateThuMoi_ChiTiet_Hinh(ThuMoi_ChiTiet_Hinh instance);
+    partial void DeleteThuMoi_ChiTiet_Hinh(ThuMoi_ChiTiet_Hinh instance);
     partial void InsertTo(To instance);
     partial void UpdateTo(To instance);
     partial void DeleteTo(To instance);
@@ -237,6 +270,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertToTrinh_ChiTiet(ToTrinh_ChiTiet instance);
     partial void UpdateToTrinh_ChiTiet(ToTrinh_ChiTiet instance);
     partial void DeleteToTrinh_ChiTiet(ToTrinh_ChiTiet instance);
+    partial void InsertToTrinh_ChiTiet_Hinh(ToTrinh_ChiTiet_Hinh instance);
+    partial void UpdateToTrinh_ChiTiet_Hinh(ToTrinh_ChiTiet_Hinh instance);
+    partial void DeleteToTrinh_ChiTiet_Hinh(ToTrinh_ChiTiet_Hinh instance);
     partial void InsertToTrinh_VeViec(ToTrinh_VeViec instance);
     partial void UpdateToTrinh_VeViec(ToTrinh_VeViec instance);
     partial void DeleteToTrinh_VeViec(ToTrinh_VeViec instance);
@@ -246,6 +282,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertTruyThuTienNuoc_ChiTiet(TruyThuTienNuoc_ChiTiet instance);
     partial void UpdateTruyThuTienNuoc_ChiTiet(TruyThuTienNuoc_ChiTiet instance);
     partial void DeleteTruyThuTienNuoc_ChiTiet(TruyThuTienNuoc_ChiTiet instance);
+    partial void InsertTruyThuTienNuoc_ChiTiet_Hinh(TruyThuTienNuoc_ChiTiet_Hinh instance);
+    partial void UpdateTruyThuTienNuoc_ChiTiet_Hinh(TruyThuTienNuoc_ChiTiet_Hinh instance);
+    partial void DeleteTruyThuTienNuoc_ChiTiet_Hinh(TruyThuTienNuoc_ChiTiet_Hinh instance);
     partial void InsertTruyThuTienNuoc_HoaDon(TruyThuTienNuoc_HoaDon instance);
     partial void UpdateTruyThuTienNuoc_HoaDon(TruyThuTienNuoc_HoaDon instance);
     partial void DeleteTruyThuTienNuoc_HoaDon(TruyThuTienNuoc_HoaDon instance);
@@ -267,6 +306,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertTTTL_ChiTiet(TTTL_ChiTiet instance);
     partial void UpdateTTTL_ChiTiet(TTTL_ChiTiet instance);
     partial void DeleteTTTL_ChiTiet(TTTL_ChiTiet instance);
+    partial void InsertTTTL_ChiTiet_Hinh(TTTL_ChiTiet_Hinh instance);
+    partial void UpdateTTTL_ChiTiet_Hinh(TTTL_ChiTiet_Hinh instance);
+    partial void DeleteTTTL_ChiTiet_Hinh(TTTL_ChiTiet_Hinh instance);
     partial void InsertTTTL_GhiChu(TTTL_GhiChu instance);
     partial void UpdateTTTL_GhiChu(TTTL_GhiChu instance);
     partial void DeleteTTTL_GhiChu(TTTL_GhiChu instance);
@@ -329,6 +371,14 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		public System.Data.Linq.Table<BamChi_ChiTiet_Hinh> BamChi_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this.GetTable<BamChi_ChiTiet_Hinh>();
+			}
+		}
+		
 		public System.Data.Linq.Table<BamChi_TrangThai> BamChi_TrangThais
 		{
 			get
@@ -369,11 +419,27 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		public System.Data.Linq.Table<CHDB_ChiTietCatHuy_Hinh> CHDB_ChiTietCatHuy_Hinhs
+		{
+			get
+			{
+				return this.GetTable<CHDB_ChiTietCatHuy_Hinh>();
+			}
+		}
+		
 		public System.Data.Linq.Table<CHDB_ChiTietCatTam> CHDB_ChiTietCatTams
 		{
 			get
 			{
 				return this.GetTable<CHDB_ChiTietCatTam>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CHDB_ChiTietCatTam_Hinh> CHDB_ChiTietCatTam_Hinhs
+		{
+			get
+			{
+				return this.GetTable<CHDB_ChiTietCatTam_Hinh>();
 			}
 		}
 		
@@ -409,6 +475,14 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		public System.Data.Linq.Table<CHDB_Phieu_Hinh> CHDB_Phieu_Hinhs
+		{
+			get
+			{
+				return this.GetTable<CHDB_Phieu_Hinh>();
+			}
+		}
+		
 		public System.Data.Linq.Table<ChiNhanh> ChiNhanhs
 		{
 			get
@@ -438,6 +512,14 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<ChungTu_LichSu>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ChungTu_LichSu_Hinh> ChungTu_LichSu_Hinhs
+		{
+			get
+			{
+				return this.GetTable<ChungTu_LichSu_Hinh>();
 			}
 		}
 		
@@ -481,11 +563,27 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		public System.Data.Linq.Table<DCBD_ChiTietBienDong_Hinh> DCBD_ChiTietBienDong_Hinhs
+		{
+			get
+			{
+				return this.GetTable<DCBD_ChiTietBienDong_Hinh>();
+			}
+		}
+		
 		public System.Data.Linq.Table<DCBD_ChiTietHoaDon> DCBD_ChiTietHoaDons
 		{
 			get
 			{
 				return this.GetTable<DCBD_ChiTietHoaDon>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DCBD_ChiTietHoaDon_Hinh> DCBD_ChiTietHoaDon_Hinhs
+		{
+			get
+			{
+				return this.GetTable<DCBD_ChiTietHoaDon_Hinh>();
 			}
 		}
 		
@@ -510,6 +608,14 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<DongNuoc_ChiTiet>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DongNuoc_ChiTiet_Hinh> DongNuoc_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this.GetTable<DongNuoc_ChiTiet_Hinh>();
 			}
 		}
 		
@@ -585,6 +691,14 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		public System.Data.Linq.Table<GianLan_ChiTiet_Hinh> GianLan_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this.GetTable<GianLan_ChiTiet_Hinh>();
+			}
+		}
+		
 		public System.Data.Linq.Table<GiaNuoc> GiaNuocs
 		{
 			get
@@ -622,6 +736,14 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<KTXM_ChiTiet>();
+			}
+		}
+		
+		public System.Data.Linq.Table<KTXM_ChiTiet_Hinh> KTXM_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this.GetTable<KTXM_ChiTiet_Hinh>();
 			}
 		}
 		
@@ -833,6 +955,14 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		public System.Data.Linq.Table<ThuMoi_ChiTiet_Hinh> ThuMoi_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this.GetTable<ThuMoi_ChiTiet_Hinh>();
+			}
+		}
+		
 		public System.Data.Linq.Table<To> Tos
 		{
 			get
@@ -857,6 +987,14 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		public System.Data.Linq.Table<ToTrinh_ChiTiet_Hinh> ToTrinh_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this.GetTable<ToTrinh_ChiTiet_Hinh>();
+			}
+		}
+		
 		public System.Data.Linq.Table<ToTrinh_VeViec> ToTrinh_VeViecs
 		{
 			get
@@ -878,6 +1016,14 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<TruyThuTienNuoc_ChiTiet>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TruyThuTienNuoc_ChiTiet_Hinh> TruyThuTienNuoc_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this.GetTable<TruyThuTienNuoc_ChiTiet_Hinh>();
 			}
 		}
 		
@@ -934,6 +1080,14 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<TTTL_ChiTiet>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TTTL_ChiTiet_Hinh> TTTL_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this.GetTable<TTTL_ChiTiet_Hinh>();
 			}
 		}
 		
@@ -2457,6 +2611,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
+		private EntitySet<BamChi_ChiTiet_Hinh> _BamChi_ChiTiet_Hinhs;
+		
 		private EntityRef<BamChi> _BamChi;
 		
     #region Extensibility Method Definitions
@@ -2537,6 +2693,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public BamChi_ChiTiet()
 		{
+			this._BamChi_ChiTiet_Hinhs = new EntitySet<BamChi_ChiTiet_Hinh>(new Action<BamChi_ChiTiet_Hinh>(this.attach_BamChi_ChiTiet_Hinhs), new Action<BamChi_ChiTiet_Hinh>(this.detach_BamChi_ChiTiet_Hinhs));
 			this._BamChi = default(EntityRef<BamChi>);
 			OnCreated();
 		}
@@ -3245,6 +3402,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BamChi_ChiTiet_BamChi_ChiTiet_Hinh", Storage="_BamChi_ChiTiet_Hinhs", ThisKey="MaCTBC", OtherKey="IDBamChi_ChiTiet")]
+		public EntitySet<BamChi_ChiTiet_Hinh> BamChi_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this._BamChi_ChiTiet_Hinhs;
+			}
+			set
+			{
+				this._BamChi_ChiTiet_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BamChi_BamChi_ChiTiet", Storage="_BamChi", ThisKey="MaBC", OtherKey="MaBC", IsForeignKey=true)]
 		public BamChi BamChi
 		{
@@ -3275,6 +3445,217 @@ namespace KTKS_DonKH.LinQ
 						this._MaBC = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("BamChi");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_BamChi_ChiTiet_Hinhs(BamChi_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.BamChi_ChiTiet = this;
+		}
+		
+		private void detach_BamChi_ChiTiet_Hinhs(BamChi_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.BamChi_ChiTiet = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BamChi_ChiTiet_Hinh")]
+	public partial class BamChi_ChiTiet_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<decimal> _IDBamChi_ChiTiet;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<BamChi_ChiTiet> _BamChi_ChiTiet;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDBamChi_ChiTietChanging(System.Nullable<decimal> value);
+    partial void OnIDBamChi_ChiTietChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public BamChi_ChiTiet_Hinh()
+		{
+			this._BamChi_ChiTiet = default(EntityRef<BamChi_ChiTiet>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDBamChi_ChiTiet", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> IDBamChi_ChiTiet
+		{
+			get
+			{
+				return this._IDBamChi_ChiTiet;
+			}
+			set
+			{
+				if ((this._IDBamChi_ChiTiet != value))
+				{
+					if (this._BamChi_ChiTiet.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDBamChi_ChiTietChanging(value);
+					this.SendPropertyChanging();
+					this._IDBamChi_ChiTiet = value;
+					this.SendPropertyChanged("IDBamChi_ChiTiet");
+					this.OnIDBamChi_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BamChi_ChiTiet_BamChi_ChiTiet_Hinh", Storage="_BamChi_ChiTiet", ThisKey="IDBamChi_ChiTiet", OtherKey="MaCTBC", IsForeignKey=true)]
+		public BamChi_ChiTiet BamChi_ChiTiet
+		{
+			get
+			{
+				return this._BamChi_ChiTiet.Entity;
+			}
+			set
+			{
+				BamChi_ChiTiet previousValue = this._BamChi_ChiTiet.Entity;
+				if (((previousValue != value) 
+							|| (this._BamChi_ChiTiet.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._BamChi_ChiTiet.Entity = null;
+						previousValue.BamChi_ChiTiet_Hinhs.Remove(this);
+					}
+					this._BamChi_ChiTiet.Entity = value;
+					if ((value != null))
+					{
+						value.BamChi_ChiTiet_Hinhs.Add(this);
+						this._IDBamChi_ChiTiet = value.MaCTBC;
+					}
+					else
+					{
+						this._IDBamChi_ChiTiet = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("BamChi_ChiTiet");
 				}
 			}
 		}
@@ -5208,6 +5589,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DocSo_GhiChu;
 		
+		private EntitySet<CHDB_ChiTietCatHuy_Hinh> _CHDB_ChiTietCatHuy_Hinhs;
+		
 		private EntitySet<CHDB_GhiChu> _CHDB_GhiChus;
 		
 		private EntitySet<CHDB_Phieu> _CHDB_Phieus;
@@ -5332,6 +5715,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public CHDB_ChiTietCatHuy()
 		{
+			this._CHDB_ChiTietCatHuy_Hinhs = new EntitySet<CHDB_ChiTietCatHuy_Hinh>(new Action<CHDB_ChiTietCatHuy_Hinh>(this.attach_CHDB_ChiTietCatHuy_Hinhs), new Action<CHDB_ChiTietCatHuy_Hinh>(this.detach_CHDB_ChiTietCatHuy_Hinhs));
 			this._CHDB_GhiChus = new EntitySet<CHDB_GhiChu>(new Action<CHDB_GhiChu>(this.attach_CHDB_GhiChus), new Action<CHDB_GhiChu>(this.detach_CHDB_GhiChus));
 			this._CHDB_Phieus = new EntitySet<CHDB_Phieu>(new Action<CHDB_Phieu>(this.attach_CHDB_Phieus), new Action<CHDB_Phieu>(this.detach_CHDB_Phieus));
 			this._CHDB = default(EntityRef<CHDB>);
@@ -6442,6 +6826,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHDB_ChiTietCatHuy_CHDB_ChiTietCatHuy_Hinh", Storage="_CHDB_ChiTietCatHuy_Hinhs", ThisKey="MaCTCHDB", OtherKey="IDCHDB_ChiTietCatHuy")]
+		public EntitySet<CHDB_ChiTietCatHuy_Hinh> CHDB_ChiTietCatHuy_Hinhs
+		{
+			get
+			{
+				return this._CHDB_ChiTietCatHuy_Hinhs;
+			}
+			set
+			{
+				this._CHDB_ChiTietCatHuy_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHDB_ChiTietCatHuy_CHDB_GhiChu", Storage="_CHDB_GhiChus", ThisKey="MaCTCHDB", OtherKey="MaCTCHDB")]
 		public EntitySet<CHDB_GhiChu> CHDB_GhiChus
 		{
@@ -6522,6 +6919,18 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		private void attach_CHDB_ChiTietCatHuy_Hinhs(CHDB_ChiTietCatHuy_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.CHDB_ChiTietCatHuy = this;
+		}
+		
+		private void detach_CHDB_ChiTietCatHuy_Hinhs(CHDB_ChiTietCatHuy_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.CHDB_ChiTietCatHuy = null;
+		}
+		
 		private void attach_CHDB_GhiChus(CHDB_GhiChu entity)
 		{
 			this.SendPropertyChanging();
@@ -6544,6 +6953,205 @@ namespace KTKS_DonKH.LinQ
 		{
 			this.SendPropertyChanging();
 			entity.CHDB_ChiTietCatHuy = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CHDB_ChiTietCatHuy_Hinh")]
+	public partial class CHDB_ChiTietCatHuy_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<decimal> _IDCHDB_ChiTietCatHuy;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<CHDB_ChiTietCatHuy> _CHDB_ChiTietCatHuy;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDCHDB_ChiTietCatHuyChanging(System.Nullable<decimal> value);
+    partial void OnIDCHDB_ChiTietCatHuyChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public CHDB_ChiTietCatHuy_Hinh()
+		{
+			this._CHDB_ChiTietCatHuy = default(EntityRef<CHDB_ChiTietCatHuy>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCHDB_ChiTietCatHuy", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> IDCHDB_ChiTietCatHuy
+		{
+			get
+			{
+				return this._IDCHDB_ChiTietCatHuy;
+			}
+			set
+			{
+				if ((this._IDCHDB_ChiTietCatHuy != value))
+				{
+					if (this._CHDB_ChiTietCatHuy.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDCHDB_ChiTietCatHuyChanging(value);
+					this.SendPropertyChanging();
+					this._IDCHDB_ChiTietCatHuy = value;
+					this.SendPropertyChanged("IDCHDB_ChiTietCatHuy");
+					this.OnIDCHDB_ChiTietCatHuyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHDB_ChiTietCatHuy_CHDB_ChiTietCatHuy_Hinh", Storage="_CHDB_ChiTietCatHuy", ThisKey="IDCHDB_ChiTietCatHuy", OtherKey="MaCTCHDB", IsForeignKey=true)]
+		public CHDB_ChiTietCatHuy CHDB_ChiTietCatHuy
+		{
+			get
+			{
+				return this._CHDB_ChiTietCatHuy.Entity;
+			}
+			set
+			{
+				CHDB_ChiTietCatHuy previousValue = this._CHDB_ChiTietCatHuy.Entity;
+				if (((previousValue != value) 
+							|| (this._CHDB_ChiTietCatHuy.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CHDB_ChiTietCatHuy.Entity = null;
+						previousValue.CHDB_ChiTietCatHuy_Hinhs.Remove(this);
+					}
+					this._CHDB_ChiTietCatHuy.Entity = value;
+					if ((value != null))
+					{
+						value.CHDB_ChiTietCatHuy_Hinhs.Add(this);
+						this._IDCHDB_ChiTietCatHuy = value.MaCTCHDB;
+					}
+					else
+					{
+						this._IDCHDB_ChiTietCatHuy = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("CHDB_ChiTietCatHuy");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -6650,6 +7258,8 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<System.DateTime> _DocSo_NgayNhan;
 		
 		private string _DocSo_GhiChu;
+		
+		private EntitySet<CHDB_ChiTietCatTam_Hinh> _CHDB_ChiTietCatTam_Hinhs;
 		
 		private EntitySet<CHDB_GhiChu> _CHDB_GhiChus;
 		
@@ -6763,6 +7373,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public CHDB_ChiTietCatTam()
 		{
+			this._CHDB_ChiTietCatTam_Hinhs = new EntitySet<CHDB_ChiTietCatTam_Hinh>(new Action<CHDB_ChiTietCatTam_Hinh>(this.attach_CHDB_ChiTietCatTam_Hinhs), new Action<CHDB_ChiTietCatTam_Hinh>(this.detach_CHDB_ChiTietCatTam_Hinhs));
 			this._CHDB_GhiChus = new EntitySet<CHDB_GhiChu>(new Action<CHDB_GhiChu>(this.attach_CHDB_GhiChus), new Action<CHDB_GhiChu>(this.detach_CHDB_GhiChus));
 			this._CHDB_Phieus = new EntitySet<CHDB_Phieu>(new Action<CHDB_Phieu>(this.attach_CHDB_Phieus), new Action<CHDB_Phieu>(this.detach_CHDB_Phieus));
 			this._CHDB = default(EntityRef<CHDB>);
@@ -7753,6 +8364,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHDB_ChiTietCatTam_CHDB_ChiTietCatTam_Hinh", Storage="_CHDB_ChiTietCatTam_Hinhs", ThisKey="MaCTCTDB", OtherKey="IDCHDB_ChiTietCatTam")]
+		public EntitySet<CHDB_ChiTietCatTam_Hinh> CHDB_ChiTietCatTam_Hinhs
+		{
+			get
+			{
+				return this._CHDB_ChiTietCatTam_Hinhs;
+			}
+			set
+			{
+				this._CHDB_ChiTietCatTam_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHDB_ChiTietCatTam_CHDB_GhiChu", Storage="_CHDB_GhiChus", ThisKey="MaCTCTDB", OtherKey="MaCTCTDB")]
 		public EntitySet<CHDB_GhiChu> CHDB_GhiChus
 		{
@@ -7833,6 +8457,18 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		private void attach_CHDB_ChiTietCatTam_Hinhs(CHDB_ChiTietCatTam_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.CHDB_ChiTietCatTam = this;
+		}
+		
+		private void detach_CHDB_ChiTietCatTam_Hinhs(CHDB_ChiTietCatTam_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.CHDB_ChiTietCatTam = null;
+		}
+		
 		private void attach_CHDB_GhiChus(CHDB_GhiChu entity)
 		{
 			this.SendPropertyChanging();
@@ -7855,6 +8491,205 @@ namespace KTKS_DonKH.LinQ
 		{
 			this.SendPropertyChanging();
 			entity.CHDB_ChiTietCatTam = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CHDB_ChiTietCatTam_Hinh")]
+	public partial class CHDB_ChiTietCatTam_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<decimal> _IDCHDB_ChiTietCatTam;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<CHDB_ChiTietCatTam> _CHDB_ChiTietCatTam;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDCHDB_ChiTietCatTamChanging(System.Nullable<decimal> value);
+    partial void OnIDCHDB_ChiTietCatTamChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public CHDB_ChiTietCatTam_Hinh()
+		{
+			this._CHDB_ChiTietCatTam = default(EntityRef<CHDB_ChiTietCatTam>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCHDB_ChiTietCatTam", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> IDCHDB_ChiTietCatTam
+		{
+			get
+			{
+				return this._IDCHDB_ChiTietCatTam;
+			}
+			set
+			{
+				if ((this._IDCHDB_ChiTietCatTam != value))
+				{
+					if (this._CHDB_ChiTietCatTam.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDCHDB_ChiTietCatTamChanging(value);
+					this.SendPropertyChanging();
+					this._IDCHDB_ChiTietCatTam = value;
+					this.SendPropertyChanged("IDCHDB_ChiTietCatTam");
+					this.OnIDCHDB_ChiTietCatTamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHDB_ChiTietCatTam_CHDB_ChiTietCatTam_Hinh", Storage="_CHDB_ChiTietCatTam", ThisKey="IDCHDB_ChiTietCatTam", OtherKey="MaCTCTDB", IsForeignKey=true)]
+		public CHDB_ChiTietCatTam CHDB_ChiTietCatTam
+		{
+			get
+			{
+				return this._CHDB_ChiTietCatTam.Entity;
+			}
+			set
+			{
+				CHDB_ChiTietCatTam previousValue = this._CHDB_ChiTietCatTam.Entity;
+				if (((previousValue != value) 
+							|| (this._CHDB_ChiTietCatTam.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CHDB_ChiTietCatTam.Entity = null;
+						previousValue.CHDB_ChiTietCatTam_Hinhs.Remove(this);
+					}
+					this._CHDB_ChiTietCatTam.Entity = value;
+					if ((value != null))
+					{
+						value.CHDB_ChiTietCatTam_Hinhs.Add(this);
+						this._IDCHDB_ChiTietCatTam = value.MaCTCTDB;
+					}
+					else
+					{
+						this._IDCHDB_ChiTietCatTam = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("CHDB_ChiTietCatTam");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -8840,6 +9675,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DocSo_GhiChu;
 		
+		private EntitySet<CHDB_Phieu_Hinh> _CHDB_Phieu_Hinhs;
+		
 		private EntityRef<CHDB> _CHDB;
 		
 		private EntityRef<CHDB_ChiTietCatHuy> _CHDB_ChiTietCatHuy;
@@ -8938,6 +9775,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public CHDB_Phieu()
 		{
+			this._CHDB_Phieu_Hinhs = new EntitySet<CHDB_Phieu_Hinh>(new Action<CHDB_Phieu_Hinh>(this.attach_CHDB_Phieu_Hinhs), new Action<CHDB_Phieu_Hinh>(this.detach_CHDB_Phieu_Hinhs));
 			this._CHDB = default(EntityRef<CHDB>);
 			this._CHDB_ChiTietCatHuy = default(EntityRef<CHDB_ChiTietCatHuy>);
 			this._CHDB_ChiTietCatTam = default(EntityRef<CHDB_ChiTietCatTam>);
@@ -9796,6 +10634,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHDB_Phieu_CHDB_Phieu_Hinh", Storage="_CHDB_Phieu_Hinhs", ThisKey="MaYCCHDB", OtherKey="IDCHDB_Phieu")]
+		public EntitySet<CHDB_Phieu_Hinh> CHDB_Phieu_Hinhs
+		{
+			get
+			{
+				return this._CHDB_Phieu_Hinhs;
+			}
+			set
+			{
+				this._CHDB_Phieu_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHDB_CHDB_Phieu", Storage="_CHDB", ThisKey="MaCHDB", OtherKey="MaCHDB", IsForeignKey=true)]
 		public CHDB CHDB
 		{
@@ -9894,6 +10745,217 @@ namespace KTKS_DonKH.LinQ
 						this._MaCTCTDB = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("CHDB_ChiTietCatTam");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_CHDB_Phieu_Hinhs(CHDB_Phieu_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.CHDB_Phieu = this;
+		}
+		
+		private void detach_CHDB_Phieu_Hinhs(CHDB_Phieu_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.CHDB_Phieu = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CHDB_Phieu_Hinh")]
+	public partial class CHDB_Phieu_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<decimal> _IDCHDB_Phieu;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<CHDB_Phieu> _CHDB_Phieu;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDCHDB_PhieuChanging(System.Nullable<decimal> value);
+    partial void OnIDCHDB_PhieuChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public CHDB_Phieu_Hinh()
+		{
+			this._CHDB_Phieu = default(EntityRef<CHDB_Phieu>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCHDB_Phieu", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> IDCHDB_Phieu
+		{
+			get
+			{
+				return this._IDCHDB_Phieu;
+			}
+			set
+			{
+				if ((this._IDCHDB_Phieu != value))
+				{
+					if (this._CHDB_Phieu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDCHDB_PhieuChanging(value);
+					this.SendPropertyChanging();
+					this._IDCHDB_Phieu = value;
+					this.SendPropertyChanged("IDCHDB_Phieu");
+					this.OnIDCHDB_PhieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHDB_Phieu_CHDB_Phieu_Hinh", Storage="_CHDB_Phieu", ThisKey="IDCHDB_Phieu", OtherKey="MaYCCHDB", IsForeignKey=true)]
+		public CHDB_Phieu CHDB_Phieu
+		{
+			get
+			{
+				return this._CHDB_Phieu.Entity;
+			}
+			set
+			{
+				CHDB_Phieu previousValue = this._CHDB_Phieu.Entity;
+				if (((previousValue != value) 
+							|| (this._CHDB_Phieu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CHDB_Phieu.Entity = null;
+						previousValue.CHDB_Phieu_Hinhs.Remove(this);
+					}
+					this._CHDB_Phieu.Entity = value;
+					if ((value != null))
+					{
+						value.CHDB_Phieu_Hinhs.Add(this);
+						this._IDCHDB_Phieu = value.MaYCCHDB;
+					}
+					else
+					{
+						this._IDCHDB_Phieu = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("CHDB_Phieu");
 				}
 			}
 		}
@@ -12037,6 +13099,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
+		private EntitySet<ChungTu_LichSu_Hinh> _ChungTu_LichSu_Hinhs;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -12127,6 +13191,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public ChungTu_LichSu()
 		{
+			this._ChungTu_LichSu_Hinhs = new EntitySet<ChungTu_LichSu_Hinh>(new Action<ChungTu_LichSu_Hinh>(this.attach_ChungTu_LichSu_Hinhs), new Action<ChungTu_LichSu_Hinh>(this.detach_ChungTu_LichSu_Hinhs));
 			OnCreated();
 		}
 		
@@ -12946,6 +14011,230 @@ namespace KTKS_DonKH.LinQ
 					this._ModifyBy = value;
 					this.SendPropertyChanged("ModifyBy");
 					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChungTu_LichSu_ChungTu_LichSu_Hinh", Storage="_ChungTu_LichSu_Hinhs", ThisKey="MaLSCT", OtherKey="IDChungTu_LichSu")]
+		public EntitySet<ChungTu_LichSu_Hinh> ChungTu_LichSu_Hinhs
+		{
+			get
+			{
+				return this._ChungTu_LichSu_Hinhs;
+			}
+			set
+			{
+				this._ChungTu_LichSu_Hinhs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ChungTu_LichSu_Hinhs(ChungTu_LichSu_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.ChungTu_LichSu = this;
+		}
+		
+		private void detach_ChungTu_LichSu_Hinhs(ChungTu_LichSu_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.ChungTu_LichSu = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ChungTu_LichSu_Hinh")]
+	public partial class ChungTu_LichSu_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<decimal> _IDChungTu_LichSu;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<ChungTu_LichSu> _ChungTu_LichSu;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDChungTu_LichSuChanging(System.Nullable<decimal> value);
+    partial void OnIDChungTu_LichSuChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public ChungTu_LichSu_Hinh()
+		{
+			this._ChungTu_LichSu = default(EntityRef<ChungTu_LichSu>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDChungTu_LichSu", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> IDChungTu_LichSu
+		{
+			get
+			{
+				return this._IDChungTu_LichSu;
+			}
+			set
+			{
+				if ((this._IDChungTu_LichSu != value))
+				{
+					if (this._ChungTu_LichSu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDChungTu_LichSuChanging(value);
+					this.SendPropertyChanging();
+					this._IDChungTu_LichSu = value;
+					this.SendPropertyChanged("IDChungTu_LichSu");
+					this.OnIDChungTu_LichSuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChungTu_LichSu_ChungTu_LichSu_Hinh", Storage="_ChungTu_LichSu", ThisKey="IDChungTu_LichSu", OtherKey="MaLSCT", IsForeignKey=true)]
+		public ChungTu_LichSu ChungTu_LichSu
+		{
+			get
+			{
+				return this._ChungTu_LichSu.Entity;
+			}
+			set
+			{
+				ChungTu_LichSu previousValue = this._ChungTu_LichSu.Entity;
+				if (((previousValue != value) 
+							|| (this._ChungTu_LichSu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ChungTu_LichSu.Entity = null;
+						previousValue.ChungTu_LichSu_Hinhs.Remove(this);
+					}
+					this._ChungTu_LichSu.Entity = value;
+					if ((value != null))
+					{
+						value.ChungTu_LichSu_Hinhs.Add(this);
+						this._IDChungTu_LichSu = value.MaLSCT;
+					}
+					else
+					{
+						this._IDChungTu_LichSu = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("ChungTu_LichSu");
 				}
 			}
 		}
@@ -14634,6 +15923,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DocSo_GhiChu;
 		
+		private EntitySet<DCBD_ChiTietBienDong_Hinh> _DCBD_ChiTietBienDong_Hinhs;
+		
 		private EntityRef<DCBD> _DCBD;
 		
     #region Extensibility Method Definitions
@@ -14760,6 +16051,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public DCBD_ChiTietBienDong()
 		{
+			this._DCBD_ChiTietBienDong_Hinhs = new EntitySet<DCBD_ChiTietBienDong_Hinh>(new Action<DCBD_ChiTietBienDong_Hinh>(this.attach_DCBD_ChiTietBienDong_Hinhs), new Action<DCBD_ChiTietBienDong_Hinh>(this.detach_DCBD_ChiTietBienDong_Hinhs));
 			this._DCBD = default(EntityRef<DCBD>);
 			OnCreated();
 		}
@@ -15928,6 +17220,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_ChiTietBienDong_DCBD_ChiTietBienDong_Hinh", Storage="_DCBD_ChiTietBienDong_Hinhs", ThisKey="MaCTDCBD", OtherKey="IDDCBD_ChiTietBienDong")]
+		public EntitySet<DCBD_ChiTietBienDong_Hinh> DCBD_ChiTietBienDong_Hinhs
+		{
+			get
+			{
+				return this._DCBD_ChiTietBienDong_Hinhs;
+			}
+			set
+			{
+				this._DCBD_ChiTietBienDong_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_DCBD_ChiTietBienDong", Storage="_DCBD", ThisKey="MaDCBD", OtherKey="MaDCBD", IsForeignKey=true)]
 		public DCBD DCBD
 		{
@@ -15958,6 +17263,217 @@ namespace KTKS_DonKH.LinQ
 						this._MaDCBD = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DCBD");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_DCBD_ChiTietBienDong_Hinhs(DCBD_ChiTietBienDong_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.DCBD_ChiTietBienDong = this;
+		}
+		
+		private void detach_DCBD_ChiTietBienDong_Hinhs(DCBD_ChiTietBienDong_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.DCBD_ChiTietBienDong = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DCBD_ChiTietBienDong_Hinh")]
+	public partial class DCBD_ChiTietBienDong_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<decimal> _IDDCBD_ChiTietBienDong;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<DCBD_ChiTietBienDong> _DCBD_ChiTietBienDong;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDDCBD_ChiTietBienDongChanging(System.Nullable<decimal> value);
+    partial void OnIDDCBD_ChiTietBienDongChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public DCBD_ChiTietBienDong_Hinh()
+		{
+			this._DCBD_ChiTietBienDong = default(EntityRef<DCBD_ChiTietBienDong>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDCBD_ChiTietBienDong", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> IDDCBD_ChiTietBienDong
+		{
+			get
+			{
+				return this._IDDCBD_ChiTietBienDong;
+			}
+			set
+			{
+				if ((this._IDDCBD_ChiTietBienDong != value))
+				{
+					if (this._DCBD_ChiTietBienDong.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDDCBD_ChiTietBienDongChanging(value);
+					this.SendPropertyChanging();
+					this._IDDCBD_ChiTietBienDong = value;
+					this.SendPropertyChanged("IDDCBD_ChiTietBienDong");
+					this.OnIDDCBD_ChiTietBienDongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_ChiTietBienDong_DCBD_ChiTietBienDong_Hinh", Storage="_DCBD_ChiTietBienDong", ThisKey="IDDCBD_ChiTietBienDong", OtherKey="MaCTDCBD", IsForeignKey=true)]
+		public DCBD_ChiTietBienDong DCBD_ChiTietBienDong
+		{
+			get
+			{
+				return this._DCBD_ChiTietBienDong.Entity;
+			}
+			set
+			{
+				DCBD_ChiTietBienDong previousValue = this._DCBD_ChiTietBienDong.Entity;
+				if (((previousValue != value) 
+							|| (this._DCBD_ChiTietBienDong.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DCBD_ChiTietBienDong.Entity = null;
+						previousValue.DCBD_ChiTietBienDong_Hinhs.Remove(this);
+					}
+					this._DCBD_ChiTietBienDong.Entity = value;
+					if ((value != null))
+					{
+						value.DCBD_ChiTietBienDong_Hinhs.Add(this);
+						this._IDDCBD_ChiTietBienDong = value.MaCTDCBD;
+					}
+					else
+					{
+						this._IDDCBD_ChiTietBienDong = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DCBD_ChiTietBienDong");
 				}
 			}
 		}
@@ -16125,6 +17641,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DocSo_GhiChu;
 		
+		private EntitySet<DCBD_ChiTietHoaDon_Hinh> _DCBD_ChiTietHoaDon_Hinhs;
+		
 		private EntityRef<DCBD> _DCBD;
 		
     #region Extensibility Method Definitions
@@ -16271,6 +17789,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public DCBD_ChiTietHoaDon()
 		{
+			this._DCBD_ChiTietHoaDon_Hinhs = new EntitySet<DCBD_ChiTietHoaDon_Hinh>(new Action<DCBD_ChiTietHoaDon_Hinh>(this.attach_DCBD_ChiTietHoaDon_Hinhs), new Action<DCBD_ChiTietHoaDon_Hinh>(this.detach_DCBD_ChiTietHoaDon_Hinhs));
 			this._DCBD = default(EntityRef<DCBD>);
 			OnCreated();
 		}
@@ -17639,6 +19158,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_ChiTietHoaDon_DCBD_ChiTietHoaDon_Hinh", Storage="_DCBD_ChiTietHoaDon_Hinhs", ThisKey="MaCTDCHD", OtherKey="IDDCBD_ChiTietHoaDon")]
+		public EntitySet<DCBD_ChiTietHoaDon_Hinh> DCBD_ChiTietHoaDon_Hinhs
+		{
+			get
+			{
+				return this._DCBD_ChiTietHoaDon_Hinhs;
+			}
+			set
+			{
+				this._DCBD_ChiTietHoaDon_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_DCBD_ChiTietHoaDon", Storage="_DCBD", ThisKey="MaDCBD", OtherKey="MaDCBD", IsForeignKey=true)]
 		public DCBD DCBD
 		{
@@ -17669,6 +19201,217 @@ namespace KTKS_DonKH.LinQ
 						this._MaDCBD = default(decimal);
 					}
 					this.SendPropertyChanged("DCBD");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_DCBD_ChiTietHoaDon_Hinhs(DCBD_ChiTietHoaDon_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.DCBD_ChiTietHoaDon = this;
+		}
+		
+		private void detach_DCBD_ChiTietHoaDon_Hinhs(DCBD_ChiTietHoaDon_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.DCBD_ChiTietHoaDon = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DCBD_ChiTietHoaDon_Hinh")]
+	public partial class DCBD_ChiTietHoaDon_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<decimal> _IDDCBD_ChiTietHoaDon;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<DCBD_ChiTietHoaDon> _DCBD_ChiTietHoaDon;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDDCBD_ChiTietHoaDonChanging(System.Nullable<decimal> value);
+    partial void OnIDDCBD_ChiTietHoaDonChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public DCBD_ChiTietHoaDon_Hinh()
+		{
+			this._DCBD_ChiTietHoaDon = default(EntityRef<DCBD_ChiTietHoaDon>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDCBD_ChiTietHoaDon", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> IDDCBD_ChiTietHoaDon
+		{
+			get
+			{
+				return this._IDDCBD_ChiTietHoaDon;
+			}
+			set
+			{
+				if ((this._IDDCBD_ChiTietHoaDon != value))
+				{
+					if (this._DCBD_ChiTietHoaDon.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDDCBD_ChiTietHoaDonChanging(value);
+					this.SendPropertyChanging();
+					this._IDDCBD_ChiTietHoaDon = value;
+					this.SendPropertyChanged("IDDCBD_ChiTietHoaDon");
+					this.OnIDDCBD_ChiTietHoaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_ChiTietHoaDon_DCBD_ChiTietHoaDon_Hinh", Storage="_DCBD_ChiTietHoaDon", ThisKey="IDDCBD_ChiTietHoaDon", OtherKey="MaCTDCHD", IsForeignKey=true)]
+		public DCBD_ChiTietHoaDon DCBD_ChiTietHoaDon
+		{
+			get
+			{
+				return this._DCBD_ChiTietHoaDon.Entity;
+			}
+			set
+			{
+				DCBD_ChiTietHoaDon previousValue = this._DCBD_ChiTietHoaDon.Entity;
+				if (((previousValue != value) 
+							|| (this._DCBD_ChiTietHoaDon.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DCBD_ChiTietHoaDon.Entity = null;
+						previousValue.DCBD_ChiTietHoaDon_Hinhs.Remove(this);
+					}
+					this._DCBD_ChiTietHoaDon.Entity = value;
+					if ((value != null))
+					{
+						value.DCBD_ChiTietHoaDon_Hinhs.Add(this);
+						this._IDDCBD_ChiTietHoaDon = value.MaCTDCHD;
+					}
+					else
+					{
+						this._IDDCBD_ChiTietHoaDon = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DCBD_ChiTietHoaDon");
 				}
 			}
 		}
@@ -18858,6 +20601,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
+		private EntitySet<DongNuoc_ChiTiet_Hinh> _DongNuoc_ChiTiet_Hinhs;
+		
 		private EntityRef<DongNuoc> _DongNuoc;
 		
     #region Extensibility Method Definitions
@@ -18942,6 +20687,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public DongNuoc_ChiTiet()
 		{
+			this._DongNuoc_ChiTiet_Hinhs = new EntitySet<DongNuoc_ChiTiet_Hinh>(new Action<DongNuoc_ChiTiet_Hinh>(this.attach_DongNuoc_ChiTiet_Hinhs), new Action<DongNuoc_ChiTiet_Hinh>(this.detach_DongNuoc_ChiTiet_Hinhs));
 			this._DongNuoc = default(EntityRef<DongNuoc>);
 			OnCreated();
 		}
@@ -19690,6 +21436,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DongNuoc_ChiTiet_DongNuoc_ChiTiet_Hinh", Storage="_DongNuoc_ChiTiet_Hinhs", ThisKey="MaCTDN", OtherKey="IDDongNuoc_ChiTiet")]
+		public EntitySet<DongNuoc_ChiTiet_Hinh> DongNuoc_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this._DongNuoc_ChiTiet_Hinhs;
+			}
+			set
+			{
+				this._DongNuoc_ChiTiet_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DongNuoc_DongNuoc_ChiTiet", Storage="_DongNuoc", ThisKey="MaDN", OtherKey="MaDN", IsForeignKey=true)]
 		public DongNuoc DongNuoc
 		{
@@ -19720,6 +21479,217 @@ namespace KTKS_DonKH.LinQ
 						this._MaDN = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DongNuoc");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_DongNuoc_ChiTiet_Hinhs(DongNuoc_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.DongNuoc_ChiTiet = this;
+		}
+		
+		private void detach_DongNuoc_ChiTiet_Hinhs(DongNuoc_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.DongNuoc_ChiTiet = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DongNuoc_ChiTiet_Hinh")]
+	public partial class DongNuoc_ChiTiet_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<decimal> _IDDongNuoc_ChiTiet;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<DongNuoc_ChiTiet> _DongNuoc_ChiTiet;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDDongNuoc_ChiTietChanging(System.Nullable<decimal> value);
+    partial void OnIDDongNuoc_ChiTietChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public DongNuoc_ChiTiet_Hinh()
+		{
+			this._DongNuoc_ChiTiet = default(EntityRef<DongNuoc_ChiTiet>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDongNuoc_ChiTiet", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> IDDongNuoc_ChiTiet
+		{
+			get
+			{
+				return this._IDDongNuoc_ChiTiet;
+			}
+			set
+			{
+				if ((this._IDDongNuoc_ChiTiet != value))
+				{
+					if (this._DongNuoc_ChiTiet.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDDongNuoc_ChiTietChanging(value);
+					this.SendPropertyChanging();
+					this._IDDongNuoc_ChiTiet = value;
+					this.SendPropertyChanged("IDDongNuoc_ChiTiet");
+					this.OnIDDongNuoc_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DongNuoc_ChiTiet_DongNuoc_ChiTiet_Hinh", Storage="_DongNuoc_ChiTiet", ThisKey="IDDongNuoc_ChiTiet", OtherKey="MaCTDN", IsForeignKey=true)]
+		public DongNuoc_ChiTiet DongNuoc_ChiTiet
+		{
+			get
+			{
+				return this._DongNuoc_ChiTiet.Entity;
+			}
+			set
+			{
+				DongNuoc_ChiTiet previousValue = this._DongNuoc_ChiTiet.Entity;
+				if (((previousValue != value) 
+							|| (this._DongNuoc_ChiTiet.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DongNuoc_ChiTiet.Entity = null;
+						previousValue.DongNuoc_ChiTiet_Hinhs.Remove(this);
+					}
+					this._DongNuoc_ChiTiet.Entity = value;
+					if ((value != null))
+					{
+						value.DongNuoc_ChiTiet_Hinhs.Add(this);
+						this._IDDongNuoc_ChiTiet = value.MaCTDN;
+					}
+					else
+					{
+						this._IDDongNuoc_ChiTiet = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DongNuoc_ChiTiet");
 				}
 			}
 		}
@@ -28192,6 +30162,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
+		private EntitySet<GianLan_ChiTiet_Hinh> _GianLan_ChiTiet_Hinhs;
+		
 		private EntityRef<GianLan> _GianLan;
 		
     #region Extensibility Method Definitions
@@ -28298,6 +30270,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public GianLan_ChiTiet()
 		{
+			this._GianLan_ChiTiet_Hinhs = new EntitySet<GianLan_ChiTiet_Hinh>(new Action<GianLan_ChiTiet_Hinh>(this.attach_GianLan_ChiTiet_Hinhs), new Action<GianLan_ChiTiet_Hinh>(this.detach_GianLan_ChiTiet_Hinhs));
 			this._GianLan = default(EntityRef<GianLan>);
 			OnCreated();
 		}
@@ -29266,6 +31239,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GianLan_ChiTiet_GianLan_ChiTiet_Hinh", Storage="_GianLan_ChiTiet_Hinhs", ThisKey="MaCTGL", OtherKey="IDGianLan_ChiTiet")]
+		public EntitySet<GianLan_ChiTiet_Hinh> GianLan_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this._GianLan_ChiTiet_Hinhs;
+			}
+			set
+			{
+				this._GianLan_ChiTiet_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GianLan_GianLan_ChiTiet", Storage="_GianLan", ThisKey="MaGL", OtherKey="MaGL", IsForeignKey=true)]
 		public GianLan GianLan
 		{
@@ -29296,6 +31282,217 @@ namespace KTKS_DonKH.LinQ
 						this._MaGL = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("GianLan");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_GianLan_ChiTiet_Hinhs(GianLan_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.GianLan_ChiTiet = this;
+		}
+		
+		private void detach_GianLan_ChiTiet_Hinhs(GianLan_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.GianLan_ChiTiet = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GianLan_ChiTiet_Hinh")]
+	public partial class GianLan_ChiTiet_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<int> _IDGianLan_ChiTiet;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<GianLan_ChiTiet> _GianLan_ChiTiet;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDGianLan_ChiTietChanging(System.Nullable<int> value);
+    partial void OnIDGianLan_ChiTietChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public GianLan_ChiTiet_Hinh()
+		{
+			this._GianLan_ChiTiet = default(EntityRef<GianLan_ChiTiet>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDGianLan_ChiTiet", DbType="Int")]
+		public System.Nullable<int> IDGianLan_ChiTiet
+		{
+			get
+			{
+				return this._IDGianLan_ChiTiet;
+			}
+			set
+			{
+				if ((this._IDGianLan_ChiTiet != value))
+				{
+					if (this._GianLan_ChiTiet.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDGianLan_ChiTietChanging(value);
+					this.SendPropertyChanging();
+					this._IDGianLan_ChiTiet = value;
+					this.SendPropertyChanged("IDGianLan_ChiTiet");
+					this.OnIDGianLan_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GianLan_ChiTiet_GianLan_ChiTiet_Hinh", Storage="_GianLan_ChiTiet", ThisKey="IDGianLan_ChiTiet", OtherKey="MaCTGL", IsForeignKey=true)]
+		public GianLan_ChiTiet GianLan_ChiTiet
+		{
+			get
+			{
+				return this._GianLan_ChiTiet.Entity;
+			}
+			set
+			{
+				GianLan_ChiTiet previousValue = this._GianLan_ChiTiet.Entity;
+				if (((previousValue != value) 
+							|| (this._GianLan_ChiTiet.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._GianLan_ChiTiet.Entity = null;
+						previousValue.GianLan_ChiTiet_Hinhs.Remove(this);
+					}
+					this._GianLan_ChiTiet.Entity = value;
+					if ((value != null))
+					{
+						value.GianLan_ChiTiet_Hinhs.Add(this);
+						this._IDGianLan_ChiTiet = value.MaCTGL;
+					}
+					else
+					{
+						this._IDGianLan_ChiTiet = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("GianLan_ChiTiet");
 				}
 			}
 		}
@@ -30497,6 +32694,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<KTXM_BangGia> _KTXM_BangGias;
 		
+		private EntitySet<KTXM_ChiTiet_Hinh> _KTXM_ChiTiet_Hinhs;
+		
 		private EntityRef<KTXM> _KTXM;
 		
     #region Extensibility Method Definitions
@@ -30626,6 +32825,7 @@ namespace KTKS_DonKH.LinQ
 		public KTXM_ChiTiet()
 		{
 			this._KTXM_BangGias = new EntitySet<KTXM_BangGia>(new Action<KTXM_BangGia>(this.attach_KTXM_BangGias), new Action<KTXM_BangGia>(this.detach_KTXM_BangGias));
+			this._KTXM_ChiTiet_Hinhs = new EntitySet<KTXM_ChiTiet_Hinh>(new Action<KTXM_ChiTiet_Hinh>(this.attach_KTXM_ChiTiet_Hinhs), new Action<KTXM_ChiTiet_Hinh>(this.detach_KTXM_ChiTiet_Hinhs));
 			this._KTXM = default(EntityRef<KTXM>);
 			OnCreated();
 		}
@@ -31827,6 +34027,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KTXM_ChiTiet_KTXM_ChiTiet_Hinh", Storage="_KTXM_ChiTiet_Hinhs", ThisKey="MaCTKTXM", OtherKey="IDKTXM_ChiTiet")]
+		public EntitySet<KTXM_ChiTiet_Hinh> KTXM_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this._KTXM_ChiTiet_Hinhs;
+			}
+			set
+			{
+				this._KTXM_ChiTiet_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KTXM_KTXM_ChiTiet", Storage="_KTXM", ThisKey="MaKTXM", OtherKey="MaKTXM", IsForeignKey=true)]
 		public KTXM KTXM
 		{
@@ -31891,6 +34104,217 @@ namespace KTKS_DonKH.LinQ
 		{
 			this.SendPropertyChanging();
 			entity.KTXM_ChiTiet = null;
+		}
+		
+		private void attach_KTXM_ChiTiet_Hinhs(KTXM_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.KTXM_ChiTiet = this;
+		}
+		
+		private void detach_KTXM_ChiTiet_Hinhs(KTXM_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.KTXM_ChiTiet = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KTXM_ChiTiet_Hinh")]
+	public partial class KTXM_ChiTiet_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<decimal> _IDKTXM_ChiTiet;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<KTXM_ChiTiet> _KTXM_ChiTiet;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDKTXM_ChiTietChanging(System.Nullable<decimal> value);
+    partial void OnIDKTXM_ChiTietChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public KTXM_ChiTiet_Hinh()
+		{
+			this._KTXM_ChiTiet = default(EntityRef<KTXM_ChiTiet>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDKTXM_ChiTiet", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> IDKTXM_ChiTiet
+		{
+			get
+			{
+				return this._IDKTXM_ChiTiet;
+			}
+			set
+			{
+				if ((this._IDKTXM_ChiTiet != value))
+				{
+					if (this._KTXM_ChiTiet.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDKTXM_ChiTietChanging(value);
+					this.SendPropertyChanging();
+					this._IDKTXM_ChiTiet = value;
+					this.SendPropertyChanged("IDKTXM_ChiTiet");
+					this.OnIDKTXM_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KTXM_ChiTiet_KTXM_ChiTiet_Hinh", Storage="_KTXM_ChiTiet", ThisKey="IDKTXM_ChiTiet", OtherKey="MaCTKTXM", IsForeignKey=true)]
+		public KTXM_ChiTiet KTXM_ChiTiet
+		{
+			get
+			{
+				return this._KTXM_ChiTiet.Entity;
+			}
+			set
+			{
+				KTXM_ChiTiet previousValue = this._KTXM_ChiTiet.Entity;
+				if (((previousValue != value) 
+							|| (this._KTXM_ChiTiet.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._KTXM_ChiTiet.Entity = null;
+						previousValue.KTXM_ChiTiet_Hinhs.Remove(this);
+					}
+					this._KTXM_ChiTiet.Entity = value;
+					if ((value != null))
+					{
+						value.KTXM_ChiTiet_Hinhs.Add(this);
+						this._IDKTXM_ChiTiet = value.MaCTKTXM;
+					}
+					else
+					{
+						this._IDKTXM_ChiTiet = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("KTXM_ChiTiet");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -39816,6 +42240,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
+		private EntitySet<ThuMoi_ChiTiet_Hinh> _ThuMoi_ChiTiet_Hinhs;
+		
 		private EntityRef<ThuMoi> _ThuMoi;
 		
     #region Extensibility Method Definitions
@@ -39872,6 +42298,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public ThuMoi_ChiTiet()
 		{
+			this._ThuMoi_ChiTiet_Hinhs = new EntitySet<ThuMoi_ChiTiet_Hinh>(new Action<ThuMoi_ChiTiet_Hinh>(this.attach_ThuMoi_ChiTiet_Hinhs), new Action<ThuMoi_ChiTiet_Hinh>(this.detach_ThuMoi_ChiTiet_Hinhs));
 			this._ThuMoi = default(EntityRef<ThuMoi>);
 			OnCreated();
 		}
@@ -40340,6 +42767,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ThuMoi_ChiTiet_ThuMoi_ChiTiet_Hinh", Storage="_ThuMoi_ChiTiet_Hinhs", ThisKey="IDCT", OtherKey="IDThuMoi_ChiTiet")]
+		public EntitySet<ThuMoi_ChiTiet_Hinh> ThuMoi_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this._ThuMoi_ChiTiet_Hinhs;
+			}
+			set
+			{
+				this._ThuMoi_ChiTiet_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ThuMoi_ThuMoi_ChiTiet", Storage="_ThuMoi", ThisKey="ID", OtherKey="ID", IsForeignKey=true)]
 		public ThuMoi ThuMoi
 		{
@@ -40370,6 +42810,217 @@ namespace KTKS_DonKH.LinQ
 						this._ID = default(int);
 					}
 					this.SendPropertyChanged("ThuMoi");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ThuMoi_ChiTiet_Hinhs(ThuMoi_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.ThuMoi_ChiTiet = this;
+		}
+		
+		private void detach_ThuMoi_ChiTiet_Hinhs(ThuMoi_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.ThuMoi_ChiTiet = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ThuMoi_ChiTiet_Hinh")]
+	public partial class ThuMoi_ChiTiet_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<int> _IDThuMoi_ChiTiet;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<ThuMoi_ChiTiet> _ThuMoi_ChiTiet;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDThuMoi_ChiTietChanging(System.Nullable<int> value);
+    partial void OnIDThuMoi_ChiTietChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public ThuMoi_ChiTiet_Hinh()
+		{
+			this._ThuMoi_ChiTiet = default(EntityRef<ThuMoi_ChiTiet>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDThuMoi_ChiTiet", DbType="Int")]
+		public System.Nullable<int> IDThuMoi_ChiTiet
+		{
+			get
+			{
+				return this._IDThuMoi_ChiTiet;
+			}
+			set
+			{
+				if ((this._IDThuMoi_ChiTiet != value))
+				{
+					if (this._ThuMoi_ChiTiet.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDThuMoi_ChiTietChanging(value);
+					this.SendPropertyChanging();
+					this._IDThuMoi_ChiTiet = value;
+					this.SendPropertyChanged("IDThuMoi_ChiTiet");
+					this.OnIDThuMoi_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ThuMoi_ChiTiet_ThuMoi_ChiTiet_Hinh", Storage="_ThuMoi_ChiTiet", ThisKey="IDThuMoi_ChiTiet", OtherKey="IDCT", IsForeignKey=true)]
+		public ThuMoi_ChiTiet ThuMoi_ChiTiet
+		{
+			get
+			{
+				return this._ThuMoi_ChiTiet.Entity;
+			}
+			set
+			{
+				ThuMoi_ChiTiet previousValue = this._ThuMoi_ChiTiet.Entity;
+				if (((previousValue != value) 
+							|| (this._ThuMoi_ChiTiet.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ThuMoi_ChiTiet.Entity = null;
+						previousValue.ThuMoi_ChiTiet_Hinhs.Remove(this);
+					}
+					this._ThuMoi_ChiTiet.Entity = value;
+					if ((value != null))
+					{
+						value.ThuMoi_ChiTiet_Hinhs.Add(this);
+						this._IDThuMoi_ChiTiet = value.IDCT;
+					}
+					else
+					{
+						this._IDThuMoi_ChiTiet = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("ThuMoi_ChiTiet");
 				}
 			}
 		}
@@ -41197,6 +43848,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DocSo_GhiChu;
 		
+		private EntitySet<ToTrinh_ChiTiet_Hinh> _ToTrinh_ChiTiet_Hinhs;
+		
 		private EntityRef<ToTrinh> _ToTrinh;
 		
     #region Extensibility Method Definitions
@@ -41275,6 +43928,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public ToTrinh_ChiTiet()
 		{
+			this._ToTrinh_ChiTiet_Hinhs = new EntitySet<ToTrinh_ChiTiet_Hinh>(new Action<ToTrinh_ChiTiet_Hinh>(this.attach_ToTrinh_ChiTiet_Hinhs), new Action<ToTrinh_ChiTiet_Hinh>(this.detach_ToTrinh_ChiTiet_Hinhs));
 			this._ToTrinh = default(EntityRef<ToTrinh>);
 			OnCreated();
 		}
@@ -41963,6 +44617,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ToTrinh_ChiTiet_ToTrinh_ChiTiet_Hinh", Storage="_ToTrinh_ChiTiet_Hinhs", ThisKey="IDCT", OtherKey="IDToTrinh_ChiTiet")]
+		public EntitySet<ToTrinh_ChiTiet_Hinh> ToTrinh_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this._ToTrinh_ChiTiet_Hinhs;
+			}
+			set
+			{
+				this._ToTrinh_ChiTiet_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ToTrinh_ToTrinh_ChiTiet", Storage="_ToTrinh", ThisKey="ID", OtherKey="ID", IsForeignKey=true)]
 		public ToTrinh ToTrinh
 		{
@@ -41993,6 +44660,217 @@ namespace KTKS_DonKH.LinQ
 						this._ID = default(int);
 					}
 					this.SendPropertyChanged("ToTrinh");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ToTrinh_ChiTiet_Hinhs(ToTrinh_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.ToTrinh_ChiTiet = this;
+		}
+		
+		private void detach_ToTrinh_ChiTiet_Hinhs(ToTrinh_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.ToTrinh_ChiTiet = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ToTrinh_ChiTiet_Hinh")]
+	public partial class ToTrinh_ChiTiet_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<int> _IDToTrinh_ChiTiet;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<ToTrinh_ChiTiet> _ToTrinh_ChiTiet;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDToTrinh_ChiTietChanging(System.Nullable<int> value);
+    partial void OnIDToTrinh_ChiTietChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public ToTrinh_ChiTiet_Hinh()
+		{
+			this._ToTrinh_ChiTiet = default(EntityRef<ToTrinh_ChiTiet>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDToTrinh_ChiTiet", DbType="Int")]
+		public System.Nullable<int> IDToTrinh_ChiTiet
+		{
+			get
+			{
+				return this._IDToTrinh_ChiTiet;
+			}
+			set
+			{
+				if ((this._IDToTrinh_ChiTiet != value))
+				{
+					if (this._ToTrinh_ChiTiet.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDToTrinh_ChiTietChanging(value);
+					this.SendPropertyChanging();
+					this._IDToTrinh_ChiTiet = value;
+					this.SendPropertyChanged("IDToTrinh_ChiTiet");
+					this.OnIDToTrinh_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ToTrinh_ChiTiet_ToTrinh_ChiTiet_Hinh", Storage="_ToTrinh_ChiTiet", ThisKey="IDToTrinh_ChiTiet", OtherKey="IDCT", IsForeignKey=true)]
+		public ToTrinh_ChiTiet ToTrinh_ChiTiet
+		{
+			get
+			{
+				return this._ToTrinh_ChiTiet.Entity;
+			}
+			set
+			{
+				ToTrinh_ChiTiet previousValue = this._ToTrinh_ChiTiet.Entity;
+				if (((previousValue != value) 
+							|| (this._ToTrinh_ChiTiet.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ToTrinh_ChiTiet.Entity = null;
+						previousValue.ToTrinh_ChiTiet_Hinhs.Remove(this);
+					}
+					this._ToTrinh_ChiTiet.Entity = value;
+					if ((value != null))
+					{
+						value.ToTrinh_ChiTiet_Hinhs.Add(this);
+						this._IDToTrinh_ChiTiet = value.IDCT;
+					}
+					else
+					{
+						this._IDToTrinh_ChiTiet = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("ToTrinh_ChiTiet");
 				}
 			}
 		}
@@ -42815,6 +45693,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
+		private EntitySet<TruyThuTienNuoc_ChiTiet_Hinh> _TruyThuTienNuoc_ChiTiet_Hinhs;
+		
 		private EntitySet<TruyThuTienNuoc_HoaDon> _TruyThuTienNuoc_HoaDons;
 		
 		private EntitySet<TruyThuTienNuoc_ThanhToan> _TruyThuTienNuoc_ThanhToans;
@@ -42885,6 +45765,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public TruyThuTienNuoc_ChiTiet()
 		{
+			this._TruyThuTienNuoc_ChiTiet_Hinhs = new EntitySet<TruyThuTienNuoc_ChiTiet_Hinh>(new Action<TruyThuTienNuoc_ChiTiet_Hinh>(this.attach_TruyThuTienNuoc_ChiTiet_Hinhs), new Action<TruyThuTienNuoc_ChiTiet_Hinh>(this.detach_TruyThuTienNuoc_ChiTiet_Hinhs));
 			this._TruyThuTienNuoc_HoaDons = new EntitySet<TruyThuTienNuoc_HoaDon>(new Action<TruyThuTienNuoc_HoaDon>(this.attach_TruyThuTienNuoc_HoaDons), new Action<TruyThuTienNuoc_HoaDon>(this.detach_TruyThuTienNuoc_HoaDons));
 			this._TruyThuTienNuoc_ThanhToans = new EntitySet<TruyThuTienNuoc_ThanhToan>(new Action<TruyThuTienNuoc_ThanhToan>(this.attach_TruyThuTienNuoc_ThanhToans), new Action<TruyThuTienNuoc_ThanhToan>(this.detach_TruyThuTienNuoc_ThanhToans));
 			this._TruyThuTienNuoc_ThuMois = new EntitySet<TruyThuTienNuoc_ThuMoi>(new Action<TruyThuTienNuoc_ThuMoi>(this.attach_TruyThuTienNuoc_ThuMois), new Action<TruyThuTienNuoc_ThuMoi>(this.detach_TruyThuTienNuoc_ThuMois));
@@ -43436,6 +46317,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ChiTiet_Hinh", Storage="_TruyThuTienNuoc_ChiTiet_Hinhs", ThisKey="IDCT", OtherKey="IDTruyThuTienNuoc_ChiTiet")]
+		public EntitySet<TruyThuTienNuoc_ChiTiet_Hinh> TruyThuTienNuoc_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this._TruyThuTienNuoc_ChiTiet_Hinhs;
+			}
+			set
+			{
+				this._TruyThuTienNuoc_ChiTiet_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_HoaDon", Storage="_TruyThuTienNuoc_HoaDons", ThisKey="IDCT", OtherKey="IDCT")]
 		public EntitySet<TruyThuTienNuoc_HoaDon> TruyThuTienNuoc_HoaDons
 		{
@@ -43529,6 +46423,18 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		private void attach_TruyThuTienNuoc_ChiTiet_Hinhs(TruyThuTienNuoc_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.TruyThuTienNuoc_ChiTiet = this;
+		}
+		
+		private void detach_TruyThuTienNuoc_ChiTiet_Hinhs(TruyThuTienNuoc_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.TruyThuTienNuoc_ChiTiet = null;
+		}
+		
 		private void attach_TruyThuTienNuoc_HoaDons(TruyThuTienNuoc_HoaDon entity)
 		{
 			this.SendPropertyChanging();
@@ -43563,6 +46469,205 @@ namespace KTKS_DonKH.LinQ
 		{
 			this.SendPropertyChanging();
 			entity.TruyThuTienNuoc_ChiTiet = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TruyThuTienNuoc_ChiTiet_Hinh")]
+	public partial class TruyThuTienNuoc_ChiTiet_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<int> _IDTruyThuTienNuoc_ChiTiet;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<TruyThuTienNuoc_ChiTiet> _TruyThuTienNuoc_ChiTiet;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDTruyThuTienNuoc_ChiTietChanging(System.Nullable<int> value);
+    partial void OnIDTruyThuTienNuoc_ChiTietChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public TruyThuTienNuoc_ChiTiet_Hinh()
+		{
+			this._TruyThuTienNuoc_ChiTiet = default(EntityRef<TruyThuTienNuoc_ChiTiet>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDTruyThuTienNuoc_ChiTiet", DbType="Int")]
+		public System.Nullable<int> IDTruyThuTienNuoc_ChiTiet
+		{
+			get
+			{
+				return this._IDTruyThuTienNuoc_ChiTiet;
+			}
+			set
+			{
+				if ((this._IDTruyThuTienNuoc_ChiTiet != value))
+				{
+					if (this._TruyThuTienNuoc_ChiTiet.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDTruyThuTienNuoc_ChiTietChanging(value);
+					this.SendPropertyChanging();
+					this._IDTruyThuTienNuoc_ChiTiet = value;
+					this.SendPropertyChanged("IDTruyThuTienNuoc_ChiTiet");
+					this.OnIDTruyThuTienNuoc_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ChiTiet_Hinh", Storage="_TruyThuTienNuoc_ChiTiet", ThisKey="IDTruyThuTienNuoc_ChiTiet", OtherKey="IDCT", IsForeignKey=true)]
+		public TruyThuTienNuoc_ChiTiet TruyThuTienNuoc_ChiTiet
+		{
+			get
+			{
+				return this._TruyThuTienNuoc_ChiTiet.Entity;
+			}
+			set
+			{
+				TruyThuTienNuoc_ChiTiet previousValue = this._TruyThuTienNuoc_ChiTiet.Entity;
+				if (((previousValue != value) 
+							|| (this._TruyThuTienNuoc_ChiTiet.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TruyThuTienNuoc_ChiTiet.Entity = null;
+						previousValue.TruyThuTienNuoc_ChiTiet_Hinhs.Remove(this);
+					}
+					this._TruyThuTienNuoc_ChiTiet.Entity = value;
+					if ((value != null))
+					{
+						value.TruyThuTienNuoc_ChiTiet_Hinhs.Add(this);
+						this._IDTruyThuTienNuoc_ChiTiet = value.IDCT;
+					}
+					else
+					{
+						this._IDTruyThuTienNuoc_ChiTiet = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TruyThuTienNuoc_ChiTiet");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -46095,6 +49200,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DocSo_GhiChu;
 		
+		private EntitySet<TTTL_ChiTiet_Hinh> _TTTL_ChiTiet_Hinhs;
+		
 		private EntityRef<TTTL> _TTTL;
 		
     #region Extensibility Method Definitions
@@ -46189,6 +49296,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public TTTL_ChiTiet()
 		{
+			this._TTTL_ChiTiet_Hinhs = new EntitySet<TTTL_ChiTiet_Hinh>(new Action<TTTL_ChiTiet_Hinh>(this.attach_TTTL_ChiTiet_Hinhs), new Action<TTTL_ChiTiet_Hinh>(this.detach_TTTL_ChiTiet_Hinhs));
 			this._TTTL = default(EntityRef<TTTL>);
 			OnCreated();
 		}
@@ -47037,6 +50145,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TTTL_ChiTiet_TTTL_ChiTiet_Hinh", Storage="_TTTL_ChiTiet_Hinhs", ThisKey="MaCTTTTL", OtherKey="IDTTTL_ChiTiet")]
+		public EntitySet<TTTL_ChiTiet_Hinh> TTTL_ChiTiet_Hinhs
+		{
+			get
+			{
+				return this._TTTL_ChiTiet_Hinhs;
+			}
+			set
+			{
+				this._TTTL_ChiTiet_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TTTL_TTTL_ChiTiet", Storage="_TTTL", ThisKey="MaTTTL", OtherKey="MaTTTL", IsForeignKey=true)]
 		public TTTL TTTL
 		{
@@ -47067,6 +50188,217 @@ namespace KTKS_DonKH.LinQ
 						this._MaTTTL = default(decimal);
 					}
 					this.SendPropertyChanged("TTTL");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TTTL_ChiTiet_Hinhs(TTTL_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.TTTL_ChiTiet = this;
+		}
+		
+		private void detach_TTTL_ChiTiet_Hinhs(TTTL_ChiTiet_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.TTTL_ChiTiet = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TTTL_ChiTiet_Hinh")]
+	public partial class TTTL_ChiTiet_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<decimal> _IDTTTL_ChiTiet;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<TTTL_ChiTiet> _TTTL_ChiTiet;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDTTTL_ChiTietChanging(System.Nullable<decimal> value);
+    partial void OnIDTTTL_ChiTietChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public TTTL_ChiTiet_Hinh()
+		{
+			this._TTTL_ChiTiet = default(EntityRef<TTTL_ChiTiet>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDTTTL_ChiTiet", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> IDTTTL_ChiTiet
+		{
+			get
+			{
+				return this._IDTTTL_ChiTiet;
+			}
+			set
+			{
+				if ((this._IDTTTL_ChiTiet != value))
+				{
+					if (this._TTTL_ChiTiet.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDTTTL_ChiTietChanging(value);
+					this.SendPropertyChanging();
+					this._IDTTTL_ChiTiet = value;
+					this.SendPropertyChanged("IDTTTL_ChiTiet");
+					this.OnIDTTTL_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TTTL_ChiTiet_TTTL_ChiTiet_Hinh", Storage="_TTTL_ChiTiet", ThisKey="IDTTTL_ChiTiet", OtherKey="MaCTTTTL", IsForeignKey=true)]
+		public TTTL_ChiTiet TTTL_ChiTiet
+		{
+			get
+			{
+				return this._TTTL_ChiTiet.Entity;
+			}
+			set
+			{
+				TTTL_ChiTiet previousValue = this._TTTL_ChiTiet.Entity;
+				if (((previousValue != value) 
+							|| (this._TTTL_ChiTiet.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TTTL_ChiTiet.Entity = null;
+						previousValue.TTTL_ChiTiet_Hinhs.Remove(this);
+					}
+					this._TTTL_ChiTiet.Entity = value;
+					if ((value != null))
+					{
+						value.TTTL_ChiTiet_Hinhs.Add(this);
+						this._IDTTTL_ChiTiet = value.MaCTTTTL;
+					}
+					else
+					{
+						this._IDTTTL_ChiTiet = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("TTTL_ChiTiet");
 				}
 			}
 		}
