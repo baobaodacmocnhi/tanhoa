@@ -54,15 +54,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.dgvLichSuTienDu = new System.Windows.Forms.DataGridView();
-            this.CreateDate_LSTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTien_LSTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Loai_LSTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBoChuyenNhan_LSTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbLoai = new System.Windows.Forms.ComboBox();
             this.txtTongCong = new System.Windows.Forms.TextBox();
             this.txtTongCong_LSTD = new System.Windows.Forms.TextBox();
+            this.CreateDate_LSTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTien_LSTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BienDong_LSTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loai_LSTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBoChuyenNhan_LSTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDieuChinhTienDu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuTienDu)).BeginInit();
             this.SuspendLayout();
@@ -257,6 +258,7 @@
             this.dgvLichSuTienDu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CreateDate_LSTD,
             this.SoTien_LSTD,
+            this.BienDong_LSTD,
             this.Loai_LSTD,
             this.DanhBoChuyenNhan_LSTD,
             this.dataGridViewTextBoxColumn1});
@@ -280,42 +282,10 @@
             this.dgvLichSuTienDu.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvLichSuTienDu.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvLichSuTienDu.Size = new System.Drawing.Size(580, 565);
+            this.dgvLichSuTienDu.Size = new System.Drawing.Size(650, 565);
             this.dgvLichSuTienDu.TabIndex = 90;
             this.dgvLichSuTienDu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSuTienDu_CellFormatting);
             this.dgvLichSuTienDu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvLichSuTienDu_RowPostPaint);
-            // 
-            // CreateDate_LSTD
-            // 
-            this.CreateDate_LSTD.DataPropertyName = "CreateDate";
-            this.CreateDate_LSTD.HeaderText = "Ngày Lập";
-            this.CreateDate_LSTD.Name = "CreateDate_LSTD";
-            // 
-            // SoTien_LSTD
-            // 
-            this.SoTien_LSTD.DataPropertyName = "SoTien";
-            this.SoTien_LSTD.HeaderText = "Số Tiền";
-            this.SoTien_LSTD.Name = "SoTien_LSTD";
-            this.SoTien_LSTD.Width = 70;
-            // 
-            // Loai_LSTD
-            // 
-            this.Loai_LSTD.DataPropertyName = "Loai";
-            this.Loai_LSTD.HeaderText = "Loại";
-            this.Loai_LSTD.Name = "Loai_LSTD";
-            // 
-            // DanhBoChuyenNhan_LSTD
-            // 
-            this.DanhBoChuyenNhan_LSTD.DataPropertyName = "DanhBoChuyenNhan";
-            this.DanhBoChuyenNhan_LSTD.HeaderText = "Danh Bộ Chuyển/Nhận";
-            this.DanhBoChuyenNhan_LSTD.Name = "DanhBoChuyenNhan_LSTD";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "GhiChu";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Ghi Chú";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 150;
             // 
             // label1
             // 
@@ -359,11 +329,50 @@
             this.txtTongCong_LSTD.TabIndex = 99;
             this.txtTongCong_LSTD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // CreateDate_LSTD
+            // 
+            this.CreateDate_LSTD.DataPropertyName = "CreateDate";
+            this.CreateDate_LSTD.HeaderText = "Ngày Lập";
+            this.CreateDate_LSTD.Name = "CreateDate_LSTD";
+            // 
+            // SoTien_LSTD
+            // 
+            this.SoTien_LSTD.DataPropertyName = "SoTien";
+            this.SoTien_LSTD.HeaderText = "Số Tiền";
+            this.SoTien_LSTD.Name = "SoTien_LSTD";
+            this.SoTien_LSTD.Width = 70;
+            // 
+            // BienDong_LSTD
+            // 
+            this.BienDong_LSTD.DataPropertyName = "BienDong";
+            this.BienDong_LSTD.HeaderText = "Biến Động";
+            this.BienDong_LSTD.Name = "BienDong_LSTD";
+            this.BienDong_LSTD.Width = 70;
+            // 
+            // Loai_LSTD
+            // 
+            this.Loai_LSTD.DataPropertyName = "Loai";
+            this.Loai_LSTD.HeaderText = "Loại";
+            this.Loai_LSTD.Name = "Loai_LSTD";
+            // 
+            // DanhBoChuyenNhan_LSTD
+            // 
+            this.DanhBoChuyenNhan_LSTD.DataPropertyName = "DanhBoChuyenNhan";
+            this.DanhBoChuyenNhan_LSTD.HeaderText = "Danh Bộ Chuyển/Nhận";
+            this.DanhBoChuyenNhan_LSTD.Name = "DanhBoChuyenNhan_LSTD";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "GhiChu";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Ghi Chú";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 150;
+            // 
             // frmLichSuDieuChinhTienDu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1304, 656);
+            this.ClientSize = new System.Drawing.Size(1373, 656);
             this.Controls.Add(this.txtTongCong_LSTD);
             this.Controls.Add(this.txtTongCong);
             this.Controls.Add(this.cmbLoai);
@@ -412,12 +421,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBoChuyenNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
+        private System.Windows.Forms.TextBox txtTongCong;
+        private System.Windows.Forms.TextBox txtTongCong_LSTD;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_LSTD;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTien_LSTD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BienDong_LSTD;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_LSTD;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBoChuyenNhan_LSTD;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.TextBox txtTongCong;
-        private System.Windows.Forms.TextBox txtTongCong_LSTD;
     }
 }

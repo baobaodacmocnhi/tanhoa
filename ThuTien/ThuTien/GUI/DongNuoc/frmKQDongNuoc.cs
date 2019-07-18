@@ -461,6 +461,9 @@ namespace ThuTien.GUI.DongNuoc
 
                             if (_cDongNuoc.ThemKQ(kqdongnuoc))
                             {
+                                TT_KQDongNuoc_Hinh en = new TT_KQDongNuoc_Hinh();
+                                en.MaKQDN = kqdongnuoc.MaKQDN;
+                                _cDongNuoc.ThemKQ_Hinh(en);
                                 Clear();
                                 btnXem.PerformClick();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

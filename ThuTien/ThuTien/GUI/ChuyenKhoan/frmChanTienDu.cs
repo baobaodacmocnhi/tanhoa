@@ -198,9 +198,9 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnChonFile_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            try
             {
-                try
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
                     OpenFileDialog dialog = new OpenFileDialog();
                     dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
@@ -226,17 +226,17 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         _cHoaDon.Sua(hoadon);
                                     }
                                 }
-                            dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
                         }
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         #region Điều Chỉnh Tiền Hóa Đơn
@@ -253,36 +253,38 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnThem_DCHD_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            try
             {
-                try
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
                     foreach (DataGridViewRow item in dgvHoaDon_DCHD.Rows)
                         if (item.Cells["Chon_DCHD"].Value != null && bool.Parse(item.Cells["Chon_DCHD"].Value.ToString()))
                         {
                             HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_HD_DCHD"].Value.ToString());
                             if (hoadon.DCHD == false)
-                                using (var scope = new TransactionScope())
+                                using (TransactionScope scope = new TransactionScope())
                                 {
                                     hoadon.DCHD = true;
                                     hoadon.Ngay_DCHD = DateTime.Now;
                                     hoadon.TongCongTruoc_DCHD = (int)hoadon.TONGCONG.Value;
                                     hoadon.TienDuTruoc_DCHD = _cTienDu.GetTienDu(hoadon.DANHBA);
                                     hoadon.TONGCONG -= hoadon.TienDuTruoc_DCHD;
+                                    hoadon.Name_PC = CNguoiDung.Name_PC;
+                                    hoadon.IP_PC = CNguoiDung.IP_PC;
                                     if (_cHoaDon.Sua(hoadon))
                                         scope.Complete();
                                 }
                         }
-                    dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXoa_DCHD_Click(object sender, EventArgs e)
@@ -320,6 +322,6 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         #endregion
 
-        
+
     }
 }

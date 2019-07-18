@@ -17,6 +17,7 @@ using ThuTien.BaoCao.ChuyenKhoan;
 using ThuTien.GUI.BaoCao;
 using ThuTien.GUI.TimKiem;
 using ThuTien.DAL;
+using System.Transactions;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -309,7 +310,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (CNguoiDung.CheckQuyen("mnuTamThuChuyenKhoan", "Them"))
             {
-                if (MessageBox.Show("Bạn có chắc chắn Chuyển Tạm Thu " + cmbFromDot.SelectedItem.ToString() + "?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("Bạn có chắc chắn Chuyển Tạm Thu từ Đợt " + cmbFromDot.SelectedItem.ToString() + " -> " + cmbToDot.SelectedItem.ToString() + " ?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     foreach (DataGridViewRow item in dgvTienDu.Rows)
                     {
@@ -750,6 +751,56 @@ namespace ThuTien.GUI.ChuyenKhoan
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void btnChuyenChanTienDu_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuChanTienDu", "Them"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn Chuyển Chặn Tiền Dư từ Đợt " + cmbFromDot.SelectedItem.ToString() + " -> " + cmbToDot.SelectedItem.ToString() + " ?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    foreach (DataGridViewRow item in dgvTienDu.Rows)
+                    {
+                        List<HOADON> lstHD = _cHoaDon.getDSTon_KhongChanTienDu_KhongDCHD(item.Cells["DanhBo_TienDu"].Value.ToString());
+                        if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()))
+                            //số tiền dư > tổng cộng => thêm vào chặn tiền
+                            if (int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
+                            {
+                                foreach (HOADON itemHD in lstHD)
+                                    {
+                                        itemHD.KhoaTienDu = true;
+                                        itemHD.ChanTienDu = true;
+                                        itemHD.NgayChanTienDu = DateTime.Now;
+                                        itemHD.NGAYGIAITRACH = DateTime.Now;
+                                        itemHD.Name_PC = CNguoiDung.Name_PC;
+                                        itemHD.IP_PC = CNguoiDung.IP_PC;
+                                        _cHoaDon.Sua(itemHD);
+                                    }
+
+                            }
+                            //số tiền dư < tổng cộng => thêm vào điều chỉnh tiền
+                            else
+                            {
+                                foreach (HOADON itemHD in lstHD)
+                                    if (itemHD.DCHD == false)
+                                        using (TransactionScope scope = new TransactionScope())
+                                        {
+                                            itemHD.DCHD = true;
+                                            itemHD.Ngay_DCHD = DateTime.Now;
+                                            itemHD.TongCongTruoc_DCHD = (int)itemHD.TONGCONG.Value;
+                                            itemHD.TienDuTruoc_DCHD = _cTienDu.GetTienDu(itemHD.DANHBA);
+                                            itemHD.TONGCONG -= itemHD.TienDuTruoc_DCHD;
+                                            itemHD.Name_PC = CNguoiDung.Name_PC;
+                                            itemHD.IP_PC = CNguoiDung.IP_PC;
+                                            if (_cHoaDon.Sua(itemHD))
+                                                scope.Complete();
+                                        }
+                            }
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form Tạm Thu Chuyển Khoản", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
     }

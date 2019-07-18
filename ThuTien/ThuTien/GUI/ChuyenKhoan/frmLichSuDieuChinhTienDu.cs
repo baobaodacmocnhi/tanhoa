@@ -97,11 +97,20 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 dgvLichSuTienDu.DataSource = _cTienDu.GetDSLichSu(txtDanhBo.Text.Trim().Replace(" ", ""));
                 long TongCong = 0;
-                foreach (DataGridViewRow item in dgvLichSuTienDu.Rows)
-                    if (item.Cells["SoTien_LSTD"].Value.ToString()!="")
-                {
-                    TongCong += int.Parse(item.Cells["SoTien_LSTD"].Value.ToString());
-                }
+                for (int i = dgvLichSuTienDu.RowCount-1; i >= 0; i--)
+                    if (dgvLichSuTienDu["SoTien_LSTD", i].Value.ToString() != "")
+                    {
+                        if (i == dgvLichSuTienDu.RowCount-1)
+                            dgvLichSuTienDu["BienDong_LSTD", i].Value = dgvLichSuTienDu["SoTien_LSTD", i].Value;
+                        else
+                            dgvLichSuTienDu["BienDong_LSTD", i].Value = int.Parse(dgvLichSuTienDu["BienDong_LSTD", i + 1].Value.ToString()) + int.Parse(dgvLichSuTienDu["SoTien_LSTD", i].Value.ToString());
+                        TongCong += int.Parse(dgvLichSuTienDu["SoTien_LSTD", i].Value.ToString());
+                    }
+                //foreach (DataGridViewRow item in dgvLichSuTienDu.Rows)
+                //    if (item.Cells["SoTien_LSTD"].Value.ToString() != "")
+                //    {
+                //        TongCong += int.Parse(item.Cells["SoTien_LSTD"].Value.ToString());
+                //    }
                 txtTongCong_LSTD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
         }
@@ -217,6 +226,13 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (dgvLichSuTienDu.Columns[e.ColumnIndex].Name == "SoTien_LSTD" && e.Value != null)
             {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvLichSuTienDu.Columns[e.ColumnIndex].Name == "BienDong_LSTD" && e.Value != null)
+            {
+                if ((int)e.Value == 0)
+                    e.Value = "0";
+                else
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
             if (dgvLichSuTienDu.Columns[e.ColumnIndex].Name == "DanhBoChuyenNhan_LSTD" && e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))

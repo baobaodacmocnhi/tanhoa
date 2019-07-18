@@ -50,13 +50,6 @@
             this.txtTongCongTienDu = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvTienDu = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dgvTienAm = new System.Windows.Forms.DataGridView();
-            this.DanhBo_TienAm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTien_TienAm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ModifyDate_TienAm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.btnInTBTienDu = new System.Windows.Forms.Button();
             this.DanhBo_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTien_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phi_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +57,14 @@
             this.DienThoai_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChoXuLy_TienDu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SoPhieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dgvTienAm = new System.Windows.Forms.DataGridView();
+            this.DanhBo_TienAm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTien_TienAm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ModifyDate_TienAm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.btnInTBTienDu = new System.Windows.Forms.Button();
+            this.btnChuyenChanTienDu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTienDu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTienAm)).BeginInit();
             this.SuspendLayout();
@@ -277,6 +278,54 @@
             this.dgvTienDu.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvTienDu_CellValidating);
             this.dgvTienDu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTienDu_RowPostPaint);
             // 
+            // DanhBo_TienDu
+            // 
+            this.DanhBo_TienDu.DataPropertyName = "DanhBo";
+            this.DanhBo_TienDu.HeaderText = "Danh Bộ";
+            this.DanhBo_TienDu.Name = "DanhBo_TienDu";
+            // 
+            // SoTien_TienDu
+            // 
+            this.SoTien_TienDu.DataPropertyName = "SoTien";
+            this.SoTien_TienDu.HeaderText = "Số Tiền";
+            this.SoTien_TienDu.Name = "SoTien_TienDu";
+            this.SoTien_TienDu.Width = 90;
+            // 
+            // Phi_TienDu
+            // 
+            this.Phi_TienDu.DataPropertyName = "Phi";
+            this.Phi_TienDu.HeaderText = "Phí";
+            this.Phi_TienDu.Name = "Phi_TienDu";
+            this.Phi_TienDu.Visible = false;
+            this.Phi_TienDu.Width = 70;
+            // 
+            // ModifyDate_TienDu
+            // 
+            this.ModifyDate_TienDu.DataPropertyName = "ModifyDate";
+            this.ModifyDate_TienDu.HeaderText = "Cập Nhật";
+            this.ModifyDate_TienDu.Name = "ModifyDate_TienDu";
+            // 
+            // DienThoai_TienDu
+            // 
+            this.DienThoai_TienDu.DataPropertyName = "DienThoai";
+            this.DienThoai_TienDu.HeaderText = "Điện Thoại";
+            this.DienThoai_TienDu.Name = "DienThoai_TienDu";
+            this.DienThoai_TienDu.Width = 150;
+            // 
+            // ChoXuLy_TienDu
+            // 
+            this.ChoXuLy_TienDu.DataPropertyName = "ChoXuLy";
+            this.ChoXuLy_TienDu.HeaderText = "Chờ Xử Lý";
+            this.ChoXuLy_TienDu.Name = "ChoXuLy_TienDu";
+            this.ChoXuLy_TienDu.Width = 50;
+            // 
+            // SoPhieuThu
+            // 
+            this.SoPhieuThu.DataPropertyName = "SoPhieuThu";
+            this.SoPhieuThu.HeaderText = "SPT";
+            this.SoPhieuThu.Name = "SoPhieuThu";
+            this.SoPhieuThu.Width = 50;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -367,59 +416,22 @@
             this.btnInTBTienDu.UseVisualStyleBackColor = true;
             this.btnInTBTienDu.Click += new System.EventHandler(this.btnInTBTienDu_Click);
             // 
-            // DanhBo_TienDu
+            // btnChuyenChanTienDu
             // 
-            this.DanhBo_TienDu.DataPropertyName = "DanhBo";
-            this.DanhBo_TienDu.HeaderText = "Danh Bộ";
-            this.DanhBo_TienDu.Name = "DanhBo_TienDu";
-            // 
-            // SoTien_TienDu
-            // 
-            this.SoTien_TienDu.DataPropertyName = "SoTien";
-            this.SoTien_TienDu.HeaderText = "Số Tiền";
-            this.SoTien_TienDu.Name = "SoTien_TienDu";
-            this.SoTien_TienDu.Width = 90;
-            // 
-            // Phi_TienDu
-            // 
-            this.Phi_TienDu.DataPropertyName = "Phi";
-            this.Phi_TienDu.HeaderText = "Phí";
-            this.Phi_TienDu.Name = "Phi_TienDu";
-            this.Phi_TienDu.Visible = false;
-            this.Phi_TienDu.Width = 70;
-            // 
-            // ModifyDate_TienDu
-            // 
-            this.ModifyDate_TienDu.DataPropertyName = "ModifyDate";
-            this.ModifyDate_TienDu.HeaderText = "Cập Nhật";
-            this.ModifyDate_TienDu.Name = "ModifyDate_TienDu";
-            // 
-            // DienThoai_TienDu
-            // 
-            this.DienThoai_TienDu.DataPropertyName = "DienThoai";
-            this.DienThoai_TienDu.HeaderText = "Điện Thoại";
-            this.DienThoai_TienDu.Name = "DienThoai_TienDu";
-            this.DienThoai_TienDu.Width = 150;
-            // 
-            // ChoXuLy_TienDu
-            // 
-            this.ChoXuLy_TienDu.DataPropertyName = "ChoXuLy";
-            this.ChoXuLy_TienDu.HeaderText = "Chờ Xử Lý";
-            this.ChoXuLy_TienDu.Name = "ChoXuLy_TienDu";
-            this.ChoXuLy_TienDu.Width = 50;
-            // 
-            // SoPhieuThu
-            // 
-            this.SoPhieuThu.DataPropertyName = "SoPhieuThu";
-            this.SoPhieuThu.HeaderText = "SPT";
-            this.SoPhieuThu.Name = "SoPhieuThu";
-            this.SoPhieuThu.Width = 50;
+            this.btnChuyenChanTienDu.Location = new System.Drawing.Point(989, 157);
+            this.btnChuyenChanTienDu.Name = "btnChuyenChanTienDu";
+            this.btnChuyenChanTienDu.Size = new System.Drawing.Size(120, 23);
+            this.btnChuyenChanTienDu.TabIndex = 105;
+            this.btnChuyenChanTienDu.Text = "Chuyển Chặn Tiền Dư";
+            this.btnChuyenChanTienDu.UseVisualStyleBackColor = true;
+            this.btnChuyenChanTienDu.Click += new System.EventHandler(this.btnChuyenChanTienDu_Click);
             // 
             // frmTienDu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 638);
+            this.Controls.Add(this.btnChuyenChanTienDu);
             this.Controls.Add(this.btnInTBTienDu);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.cmbToDot);
@@ -480,6 +492,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai_TienDu;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ChoXuLy_TienDu;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieuThu;
+        private System.Windows.Forms.Button btnChuyenChanTienDu;
 
 
     }

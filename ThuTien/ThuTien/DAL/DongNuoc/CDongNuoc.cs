@@ -142,6 +142,23 @@ namespace ThuTien.DAL.DongNuoc
             }
         }
 
+        public bool ThemKQ_Hinh(TT_KQDongNuoc_Hinh en)
+        {
+            try
+            {
+                en.CreateDate = DateTime.Now;
+                en.CreateBy = CNguoiDung.MaND;
+                _db.TT_KQDongNuoc_Hinhs.InsertOnSubmit(en);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
         public bool GiaoDongNuoc(decimal MaDN,int MaNV_DongNuoc)
         {
             try

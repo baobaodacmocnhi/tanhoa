@@ -175,7 +175,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             item.Focused = true;
                             return;
                         }
-                        if (_cHoaDon.CheckDCHDTienDuByDanhBo(item.Text))
+                        if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Text))
                         {
                             MessageBox.Show("Hóa Đơn đã DCHD Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             lstHD.Focus();
