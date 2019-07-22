@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KTKS_DonKH.LinQ;
-using System.Windows.Forms;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Data;
 
@@ -38,9 +37,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -56,9 +54,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -124,9 +121,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -141,9 +137,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -161,9 +156,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -1128,6 +1122,43 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         //}
 
         #region Đơn Giá
+
+        public bool Them_BangGia(KTXM_BangGia en)
+        {
+            try
+            {
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.KTXM_BangGias.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_BangGia(KTXM_BangGia en)
+        {
+            try
+            {
+                db.KTXM_BangGias.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public KTXM_BangGia get_BangGia(decimal IDCTKTXM,int IDDonGia)
+        {
+            return db.KTXM_BangGias.SingleOrDefault(item => item.IDCTKTXM == IDCTKTXM && item.IDDonGia == IDDonGia);
+        }
 
         public KTXM_DonGia get_DonGia(string Name,int SoTien)
         {

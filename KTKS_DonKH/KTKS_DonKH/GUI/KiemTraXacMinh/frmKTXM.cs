@@ -154,8 +154,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
             txtTheoYeuCau.Text = ctktxm.TheoYeuCau;
             txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
-            if (ctktxm.TieuThuTrungBinh!=null)
-            txtTieuThuTrungBinh.Text = ctktxm.TieuThuTrungBinh.Value.ToString();
+            if (ctktxm.TieuThuTrungBinh != null)
+                txtTieuThuTrungBinh.Text = ctktxm.TieuThuTrungBinh.Value.ToString();
             if (ctktxm.NoiDungBaoThay != null)
             {
                 cmbNoiDungBaoThay.SelectedText = ctktxm.NoiDungBaoThay;
@@ -164,9 +164,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             foreach (KTXM_BangGia item in ctktxm.KTXM_BangGias.ToList())
             {
                 var index = dgvBangGia.Rows.Add();
+                dgvBangGia.Rows[index].Cells["IDCTKTXM"].Value = item.IDCTKTXM;
+                dgvBangGia.Rows[index].Cells["IDDonGia"].Value = item.IDDonGia;
                 dgvBangGia.Rows[index].Cells["Namee"].Value = item.KTXM_DonGia.Name;
                 dgvBangGia.Rows[index].Cells["SoTien"].Value = item.KTXM_DonGia.SoTien;
             }
+            LoaddgvBangGia();
         }
 
         public void Clear()
@@ -199,7 +202,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtNoiDungKiemTra.Text = "";
             txtTheoYeuCau.Text = "";
             txtTieuThuTrungBinh.Text = "0";
-            cmbNoiDungBaoThay.SelectedIndex=-1;
+            cmbNoiDungBaoThay.SelectedIndex = -1;
             txtGhiChuNoiDungBaoThay.Text = "";
 
             _MaCTKTXM = -1;
@@ -243,7 +246,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtNoiDungKiemTra.Text = "";
             txtTheoYeuCau.Text = "";
             txtTieuThuTrungBinh.Text = "0";
-            cmbNoiDungBaoThay.SelectedIndex = -1 ;
+            cmbNoiDungBaoThay.SelectedIndex = -1;
             txtGhiChuNoiDungBaoThay.Text = "";
 
             _MaCTKTXM = -1;
@@ -251,6 +254,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             _hoadon = null;
 
             LoadDSKTXM();
+            dgvBangGia.Rows.Clear();
             txtMaDonMoi.Focus();
         }
 
@@ -279,7 +283,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 ///Đơn Tổ Xử Lý
                 if (txtMaDonCu.Text.Trim().ToUpper().Contains("TXL"))
                 {
-                    if ( _cDonTXL.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                    if (_cDonTXL.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
                     {
                         _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDonCu.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
@@ -296,7 +300,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     ///Đơn Tổ Bấm Chì
                     if (txtMaDonCu.Text.Trim().ToUpper().Contains("TBC"))
                     {
-                        if ( _cDonTBC.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                        if (_cDonTBC.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
                         {
                             _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
                             txtMaDonCu.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
@@ -381,9 +385,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
                     if (!txtDanhBo.Text.Trim().Contains("GM"))
                         if ((txtDanhBo.Text.Trim().Length > 0 && txtDanhBo.Text.Trim().Length < 11) || txtDanhBo.Text.Trim().Length > 11)
@@ -533,33 +537,40 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     if (cmbNoiDungBaoThay.SelectedIndex != -1 && string.IsNullOrEmpty(cmbNoiDungBaoThay.SelectedItem.ToString()) == false)
                     {
                         ctktxm.NoiDungBaoThay = cmbNoiDungBaoThay.SelectedItem.ToString();
-                        if (txtGhiChuNoiDungBaoThay.Text.Trim()!="")
-                        ctktxm.GhiChuNoiDungBaoThay = txtGhiChuNoiDungBaoThay.Text.Trim();
+                        if (txtGhiChuNoiDungBaoThay.Text.Trim() != "")
+                            ctktxm.GhiChuNoiDungBaoThay = txtGhiChuNoiDungBaoThay.Text.Trim();
                     }
-
+                    ctktxm.SoTienDongTien = txtTongSoTien.Text.Trim().Replace(".","");
                     if (_cKTXM.ThemCT(ctktxm))
                     {
+                        foreach (DataGridViewRow item in dgvBangGia.Rows)
+                        {
+                            KTXM_BangGia banggia = new KTXM_BangGia();
+                            banggia.IDCTKTXM = ctktxm.MaCTKTXM;
+                            banggia.IDDonGia = int.Parse(item.Cells["IDDonGia"].Value.ToString());
+                            _cKTXM.Them_BangGia(banggia);
+                        }
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them_LichSu("KTXM", ctktxm.NoiDungKiemTra, (int)ctktxm.MaCTKTXM,_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);          
+                            _cDonTu.Them_LichSu("KTXM", ctktxm.NoiDungKiemTra, (int)ctktxm.MaCTKTXM, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear_LoadDSKTXM();
                         txtMaDonCu.Focus();
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
                     if (_ctktxm != null)
                     {
@@ -601,7 +612,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _ctktxm.NgayKTXM_Truoc_NgayGiao = chkNgayKTXMTruocNgayGiao.Checked;
                         _ctktxm.NgayKTXM = dateKTXM.Value;
 
-                        if (cmbHienTrangKiemTra.SelectedValue != null && cmbHienTrangKiemTra.SelectedValue.ToString()!="")
+                        if (cmbHienTrangKiemTra.SelectedValue != null && cmbHienTrangKiemTra.SelectedValue.ToString() != "")
                             _ctktxm.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedValue.ToString();
 
                         if (cmbViTriDHN1.SelectedItem != null)
@@ -646,20 +657,20 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                 {
                     if (_ctktxm != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
@@ -676,13 +687,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvDSKetQuaKiemTra_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -807,10 +818,127 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (e.KeyData == Keys.Return)
             {
                 string[] NoiDung = txtDonGia.Text.Trim().Split(':');
-                KTXM_DonGia dongia = _cKTXM.get_DonGia(NoiDung[0].Trim(),int.Parse(NoiDung[1].Trim()));
-                var index = dgvBangGia.Rows.Add();
-                dgvBangGia.Rows[index].Cells["Namee"].Value = dongia.Name;
-                dgvBangGia.Rows[index].Cells["SoTien"].Value = dongia.SoTien;
+                KTXM_DonGia dongia = _cKTXM.get_DonGia(NoiDung[0].ToString().Trim(), int.Parse(NoiDung[1].ToString().Trim().Replace(".", "")));
+                bool flagExist = false;
+                foreach (DataGridViewRow item in dgvBangGia.Rows)
+                    if (item.Cells["Namee"].Value.ToString() == dongia.Name && int.Parse(item.Cells["SoTien"].Value.ToString()) == dongia.SoTien)
+                    {
+                        flagExist = true;
+                    }
+                if (flagExist == false)
+                {
+                    if (_ctktxm != null)
+                    {
+                        if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                        {
+                            KTXM_BangGia banggia = new KTXM_BangGia();
+                            banggia.IDCTKTXM = _ctktxm.MaCTKTXM;
+                            banggia.IDDonGia = dongia.ID;
+                            if (_cKTXM.Them_BangGia(banggia))
+                            {
+                                var index = dgvBangGia.Rows.Add();
+                                dgvBangGia.Rows[index].Cells["IDDonGia"].Value = dongia.ID;
+                                dgvBangGia.Rows[index].Cells["Namee"].Value = dongia.Name;
+                                dgvBangGia.Rows[index].Cells["SoTien"].Value = dongia.SoTien;
+                                txtDonGia.Text = "";
+                                LoaddgvBangGia();
+                            }
+                        }
+                        else
+                            MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var index = dgvBangGia.Rows.Add();
+                        dgvBangGia.Rows[index].Cells["IDDonGia"].Value = dongia.ID;
+                        dgvBangGia.Rows[index].Cells["Namee"].Value = dongia.Name;
+                        dgvBangGia.Rows[index].Cells["SoTien"].Value = dongia.SoTien;
+                        txtDonGia.Text = "";
+                        LoaddgvBangGia();
+                    }
+                }
+                else
+                    MessageBox.Show("Đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void LoaddgvBangGia()
+        {
+            int TongSoTien = 0;
+            foreach (DataGridViewRow item in dgvBangGia.Rows)
+            {
+                TongSoTien += int.Parse(item.Cells["SoTien"].Value.ToString());
+            }
+            if (TongSoTien == 0)
+                txtTongSoTien.Text = "0";
+            else
+            txtTongSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSoTien);
+        }
+
+        private void dgvBangGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvBangGia.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(e.Value.ToString()));
+            }
+        }
+
+        private void dgvBangGia_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvBangGia.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
+                        {
+                            MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (dgvBangGia.CurrentRow.Cells["IDCTKTXM"].Value != null)
+                            if (_cKTXM.Xoa_BangGia(_cKTXM.get_BangGia(int.Parse(dgvBangGia.CurrentRow.Cells["IDCTKTXM"].Value.ToString()), int.Parse(dgvBangGia.CurrentRow.Cells["IDDonGia"].Value.ToString()))))
+                            {
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                dgvBangGia.Rows.RemoveAt(dgvBangGia.CurrentRow.Index);
+                            }
+                            else
+                                MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            dgvBangGia.Rows.RemoveAt(dgvBangGia.CurrentRow.Index);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvBangGia_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
+                dgvBangGia.CurrentCell = dgvBangGia.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+        }
+
+        private void dgvBangGia_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(dgvBangGia, new Point(e.X, e.Y));
             }
         }
 
