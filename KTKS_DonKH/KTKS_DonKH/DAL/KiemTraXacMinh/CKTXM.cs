@@ -1127,6 +1127,13 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         //    return LINQToDataTable(query);
         //}
 
+        #region Đơn Giá
+
+        public KTXM_DonGia get_DonGia(string Name,int SoTien)
+        {
+            return db.KTXM_DonGias.SingleOrDefault(item => item.Name == Name && item.SoTien == SoTien);
+        }
+
         public DataTable getDS_DonGia()
         {
             return LINQToDataTable(db.KTXM_DonGias.ToList());
@@ -1136,5 +1143,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             return LINQToDataTable(db.KTXM_BangGias.Where(item => item.IDCTKTXM == IDCTKTXM).ToList());
         }
+
+        #endregion
     }
 }

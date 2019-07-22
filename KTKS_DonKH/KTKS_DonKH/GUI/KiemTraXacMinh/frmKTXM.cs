@@ -65,10 +65,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             cmbHienTrangKiemTra.ValueMember = "TenHTKT";
             cmbHienTrangKiemTra.SelectedIndex = -1;
 
-            Namee.DataSource = _cKTXM.getDS_DonGia();
-            Namee.ValueMember = "ID";
-            Namee.DisplayMember = "Name";
-            Namee.DropDownWidth = 300;
+            DataTable dt1 = _cKTXM.getDS_DonGia();
+            AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
+            foreach (DataRow item in dt1.Rows)
+            {
+                auto1.Add(item["Name"].ToString() + " : " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item["SoTien"].ToString())));
+            }
+            txtDonGia.AutoCompleteCustomSource = auto1;
 
             _flagFirst = false;
 
@@ -799,9 +802,16 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         }
 
-        private void dgvBangGia_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void txtDonGia_KeyUp(object sender, KeyEventArgs e)
         {
-            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (e.KeyData == Keys.Return)
+            {
+                string[] NoiDung = txtDonGia.Text.Trim().Split(':');
+                KTXM_DonGia dongia = _cKTXM.get_DonGia(NoiDung[0].Trim(),int.Parse(NoiDung[1].Trim()));
+                var index = dgvBangGia.Rows.Add();
+                dgvBangGia.Rows[index].Cells["Namee"].Value = dongia.Name;
+                dgvBangGia.Rows[index].Cells["SoTien"].Value = dongia.SoTien;
+            }
         }
 
     }
