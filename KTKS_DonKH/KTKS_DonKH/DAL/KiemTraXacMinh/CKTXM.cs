@@ -147,6 +147,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             try
             {
                 decimal MaKTXM = ctktxm.MaKTXM.Value;
+                db.KTXM_BangGias.DeleteAllOnSubmit(ctktxm.KTXM_BangGias.ToList());
+                db.KTXM_ChiTiet_Hinhs.DeleteAllOnSubmit(ctktxm.KTXM_ChiTiet_Hinhs.ToList());
                 db.KTXM_ChiTiets.DeleteOnSubmit(ctktxm);
                 db.SubmitChanges();
                 if (db.KTXM_ChiTiets.Any(item => item.MaKTXM == MaKTXM) == false)
@@ -1173,6 +1175,51 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         public DataTable getDS_BangGia(decimal IDCTKTXM)
         {
             return LINQToDataTable(db.KTXM_BangGias.Where(item => item.IDCTKTXM == IDCTKTXM).ToList());
+        }
+
+        #endregion
+
+        #region Hình
+
+        public bool Them_Hinh(KTXM_ChiTiet_Hinh en)
+        {
+            try
+            {
+                if (db.KTXM_ChiTiet_Hinhs.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = db.KTXM_ChiTiet_Hinhs.Max(item => item.ID) + 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.KTXM_ChiTiet_Hinhs.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_Hinh(KTXM_ChiTiet_Hinh en)
+        {
+            try
+            {
+                db.KTXM_ChiTiet_Hinhs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public KTXM_ChiTiet_Hinh get_Hinh(int ID)
+        {
+            return db.KTXM_ChiTiet_Hinhs.SingleOrDefault(item => item.ID == ID);
         }
 
         #endregion

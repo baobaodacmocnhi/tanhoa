@@ -3490,6 +3490,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<decimal> _IDBamChi_ChiTiet;
@@ -3506,6 +3508,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDBamChi_ChiTietChanging(System.Nullable<decimal> value);
@@ -3538,6 +3542,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -6964,6 +6988,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<decimal> _IDCHDB_ChiTietCatHuy;
@@ -6980,6 +7006,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDCHDB_ChiTietCatHuyChanging(System.Nullable<decimal> value);
@@ -7012,6 +7040,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -8502,6 +8550,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<decimal> _IDCHDB_ChiTietCatTam;
@@ -8518,6 +8568,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDCHDB_ChiTietCatTamChanging(System.Nullable<decimal> value);
@@ -8550,6 +8602,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -10790,6 +10862,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<decimal> _IDCHDB_Phieu;
@@ -10806,6 +10880,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDCHDB_PhieuChanging(System.Nullable<decimal> value);
@@ -10838,6 +10914,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -14069,6 +14165,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<decimal> _IDChungTu_LichSu;
@@ -14085,6 +14183,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDChungTu_LichSuChanging(System.Nullable<decimal> value);
@@ -14117,6 +14217,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -17308,6 +17428,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<decimal> _IDDCBD_ChiTietBienDong;
@@ -17324,6 +17446,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDDCBD_ChiTietBienDongChanging(System.Nullable<decimal> value);
@@ -17356,6 +17480,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -19246,6 +19390,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<decimal> _IDDCBD_ChiTietHoaDon;
@@ -19262,6 +19408,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDDCBD_ChiTietHoaDonChanging(System.Nullable<decimal> value);
@@ -19294,6 +19442,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -21524,6 +21692,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<decimal> _IDDongNuoc_ChiTiet;
@@ -21540,6 +21710,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDDongNuoc_ChiTietChanging(System.Nullable<decimal> value);
@@ -21572,6 +21744,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -25423,6 +25615,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ID_NhomDon_ChiTiet;
 		
+		private string _Name_NhomDon_ChiTiet;
+		
 		private bool _CT_HoaDon;
 		
 		private bool _CT_GiayBao;
@@ -25537,6 +25731,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnName_NhomDonChanged();
     partial void OnID_NhomDon_ChiTietChanging(System.Nullable<int> value);
     partial void OnID_NhomDon_ChiTietChanged();
+    partial void OnName_NhomDon_ChiTietChanging(string value);
+    partial void OnName_NhomDon_ChiTietChanged();
     partial void OnCT_HoaDonChanging(bool value);
     partial void OnCT_HoaDonChanged();
     partial void OnCT_GiayBaoChanging(bool value);
@@ -26087,6 +26283,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID_NhomDon_ChiTiet = value;
 					this.SendPropertyChanged("ID_NhomDon_ChiTiet");
 					this.OnID_NhomDon_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name_NhomDon_ChiTiet", DbType="NVarChar(100)")]
+		public string Name_NhomDon_ChiTiet
+		{
+			get
+			{
+				return this._Name_NhomDon_ChiTiet;
+			}
+			set
+			{
+				if ((this._Name_NhomDon_ChiTiet != value))
+				{
+					this.OnName_NhomDon_ChiTietChanging(value);
+					this.SendPropertyChanging();
+					this._Name_NhomDon_ChiTiet = value;
+					this.SendPropertyChanged("Name_NhomDon_ChiTiet");
+					this.OnName_NhomDon_ChiTietChanged();
 				}
 			}
 		}
@@ -31327,6 +31543,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<int> _IDGianLan_ChiTiet;
@@ -31343,6 +31561,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDGianLan_ChiTietChanging(System.Nullable<int> value);
@@ -31375,6 +31595,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -34127,6 +34367,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<decimal> _IDKTXM_ChiTiet;
@@ -34143,6 +34385,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDKTXM_ChiTietChanging(System.Nullable<decimal> value);
@@ -34175,6 +34419,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -42855,6 +43119,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<int> _IDThuMoi_ChiTiet;
@@ -42871,6 +43137,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDThuMoi_ChiTietChanging(System.Nullable<int> value);
@@ -42903,6 +43171,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -44705,6 +44993,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<int> _IDToTrinh_ChiTiet;
@@ -44721,6 +45011,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDToTrinh_ChiTietChanging(System.Nullable<int> value);
@@ -44753,6 +45045,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -46480,6 +46792,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<int> _IDTruyThuTienNuoc_ChiTiet;
@@ -46496,6 +46810,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDTruyThuTienNuoc_ChiTietChanging(System.Nullable<int> value);
@@ -46528,6 +46844,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -50233,6 +50569,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private string _Name;
+		
 		private System.Data.Linq.Binary _Hinh;
 		
 		private System.Nullable<decimal> _IDTTTL_ChiTiet;
@@ -50249,6 +50587,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
     partial void OnIDTTTL_ChiTietChanging(System.Nullable<decimal> value);
@@ -50281,6 +50621,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}

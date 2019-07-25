@@ -34,6 +34,8 @@
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.btnBaoCao_TheoNgayLap = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
+            this.cmbQuan = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbLyDo_TheoNgayLap = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,8 +52,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnBaoCao_TheoNgayXuLy = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
-            this.cmbQuan = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.btnImportExcelCatHuy = new System.Windows.Forms.Button();
+            this.btnImportExcelCatTam = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -115,6 +117,23 @@
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(191, 92);
             this.panel_KhoangThoiGian.TabIndex = 27;
+            // 
+            // cmbQuan
+            // 
+            this.cmbQuan.FormattingEnabled = true;
+            this.cmbQuan.Location = new System.Drawing.Point(84, 61);
+            this.cmbQuan.Name = "cmbQuan";
+            this.cmbQuan.Size = new System.Drawing.Size(100, 24);
+            this.cmbQuan.TabIndex = 36;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 64);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(40, 16);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "Quận";
             // 
             // groupBox1
             // 
@@ -284,22 +303,25 @@
             this.btnThongKe.UseVisualStyleBackColor = true;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
-            // cmbQuan
+            // btnImportExcelCatHuy
             // 
-            this.cmbQuan.FormattingEnabled = true;
-            this.cmbQuan.Location = new System.Drawing.Point(84, 61);
-            this.cmbQuan.Name = "cmbQuan";
-            this.cmbQuan.Size = new System.Drawing.Size(100, 24);
-            this.cmbQuan.TabIndex = 36;
+            this.btnImportExcelCatHuy.Location = new System.Drawing.Point(443, 58);
+            this.btnImportExcelCatHuy.Name = "btnImportExcelCatHuy";
+            this.btnImportExcelCatHuy.Size = new System.Drawing.Size(100, 40);
+            this.btnImportExcelCatHuy.TabIndex = 35;
+            this.btnImportExcelCatHuy.Text = "Import Excel Cắt Hủy";
+            this.btnImportExcelCatHuy.UseVisualStyleBackColor = true;
+            this.btnImportExcelCatHuy.Click += new System.EventHandler(this.btnImportExcelCatHuy_Click);
             // 
-            // label8
+            // btnImportExcelCatTam
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 64);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 16);
-            this.label8.TabIndex = 35;
-            this.label8.Text = "Quận";
+            this.btnImportExcelCatTam.Location = new System.Drawing.Point(443, 12);
+            this.btnImportExcelCatTam.Name = "btnImportExcelCatTam";
+            this.btnImportExcelCatTam.Size = new System.Drawing.Size(100, 40);
+            this.btnImportExcelCatTam.TabIndex = 36;
+            this.btnImportExcelCatTam.Text = "Import Excel Cắt Tạm";
+            this.btnImportExcelCatTam.UseVisualStyleBackColor = true;
+            this.btnImportExcelCatTam.Click += new System.EventHandler(this.btnImportExcelCatTam_Click);
             // 
             // frmBaoCaoCHDB
             // 
@@ -307,6 +329,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(712, 402);
+            this.Controls.Add(this.btnImportExcelCatTam);
+            this.Controls.Add(this.btnImportExcelCatHuy);
             this.Controls.Add(this.btnThongKe);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -352,6 +376,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbQuan;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnImportExcelCatHuy;
+        private System.Windows.Forms.Button btnImportExcelCatTam;
 
     }
 }

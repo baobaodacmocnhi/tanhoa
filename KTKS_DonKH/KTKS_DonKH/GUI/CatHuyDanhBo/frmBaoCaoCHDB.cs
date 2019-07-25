@@ -97,7 +97,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 }
                 else
                     if (cmbLyDo_TheoNgayLap.SelectedIndex > 0)
-                {
+                    {
                         switch (cmbLoaiBaoCao_TheoNgayLap.SelectedItem.ToString())
                         {
                             case "DS Cắt Hủy Đã Xử Lý":
@@ -115,7 +115,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             default:
                                 break;
                         }
-                }
+                    }
             }
             else
                 if (cmbQuan_TheoNgayLap.SelectedIndex > 0)
@@ -192,27 +192,27 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     }
                 else
                     if (cmbQuan_TheoNgayLap.SelectedIndex > 0)
-                    switch (cmbLoaiBaoCao_TheoNgayLap.SelectedItem.ToString())
-                    {
-                        case "DS Cắt Hủy Đã Xử Lý":
-                            dr["LoaiBaoCao"] = "TB CẮT HỦY ĐÃ XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
-                            dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
-                            break;
-                        case "DS Cắt Hủy Chưa Xử Lý":
-                            dr["LoaiBaoCao"] = "TB CẮT HỦY CHƯA XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
-                            dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
-                            break;
-                        case "DS Cắt Tạm Đã Xử Lý":
-                            dr["LoaiBaoCao"] = "TB CẮT TẠM ĐÃ XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
-                            dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
-                            break;
-                        case "DS Cắt Tạm Chưa Xử Lý":
-                            dr["LoaiBaoCao"] = "TB CẮT TẠM CHƯA XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
-                            dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
-                            break;
-                        default:
-                            break;
-                    }
+                        switch (cmbLoaiBaoCao_TheoNgayLap.SelectedItem.ToString())
+                        {
+                            case "DS Cắt Hủy Đã Xử Lý":
+                                dr["LoaiBaoCao"] = "TB CẮT HỦY ĐÃ XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
+                                dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
+                                break;
+                            case "DS Cắt Hủy Chưa Xử Lý":
+                                dr["LoaiBaoCao"] = "TB CẮT HỦY CHƯA XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
+                                dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
+                                break;
+                            case "DS Cắt Tạm Đã Xử Lý":
+                                dr["LoaiBaoCao"] = "TB CẮT TẠM ĐÃ XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
+                                dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
+                                break;
+                            case "DS Cắt Tạm Chưa Xử Lý":
+                                dr["LoaiBaoCao"] = "TB CẮT TẠM CHƯA XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
+                                dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
+                                break;
+                            default:
+                                break;
+                        }
 
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
@@ -272,7 +272,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         switch (cmbLoaiBaoCao_TheoNgayXuLy.SelectedItem.ToString())
                         {
                             case "DS Cắt Hủy":
-                                dt = _cCHDB.GetDSCatHuy_NgayXuLy_Quan_DaXuLy(dateTu.Value, dateDen.Value,cmbQuan_TheoNgayXuLy.SelectedValue.ToString());
+                                dt = _cCHDB.GetDSCatHuy_NgayXuLy_Quan_DaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayXuLy.SelectedValue.ToString());
                                 break;
                             case "DS Cắt Tạm":
                                 dt = _cCHDB.GetDSCatTam_NgayXuLy_Quan_DaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayXuLy.SelectedValue.ToString());
@@ -359,7 +359,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             DataTable dtDSCatHuy_DaXuLy = new DataTable();
             DataTable dtDSPhieuHuy = new DataTable();
 
-            
+
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataRow drT = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
             drT["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
@@ -422,7 +422,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 DataRow dr = dsPhieuHuy.Tables["PhieuCHDB"].NewRow();
                 dr["LyDo"] = itemRow["LyDo"];
-                dr["SoPhieu"] = itemRow["ID"];;
+                dr["SoPhieu"] = itemRow["ID"]; ;
 
                 dsPhieuHuy.Tables["PhieuCHDB"].Rows.Add(dr);
             }
@@ -436,6 +436,245 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             frm.Show();
         }
 
+        private void btnImportExcelCatHuy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                dialog.Multiselect = false;
 
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    DataTable dtExport = new DataTable();
+                    dtExport.Columns.Add("DanhBo", typeof(String));
+                    dtExport.Columns.Add("ID", typeof(String));
+                    dtExport.Columns.Add("NoiDungXuLy", typeof(String));
+                    CExcel fileExcel = new CExcel(dialog.FileName);
+                    DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                    foreach (DataRow item in dtExcel.Rows)
+                        if (item[0].ToString().Replace(" ", "").Length == 11)
+                        {
+                            DataRow dr = dtExport.NewRow();
+                            dr["DanhBo"] = item[0].ToString().Replace(" ", "");
+
+                            DataTable dtTemp = _cCHDB.getDS_CatHuy_DanhBo(item[0].ToString().Replace(" ", ""));
+                            foreach (DataRow itemTemp in dtTemp.Rows)
+                            {
+                                if (dr["ID"].ToString() == "")
+                                {
+                                    if (itemTemp["ID"].ToString() != "")
+                                        dr["ID"] = itemTemp["ID"].ToString().Insert(itemTemp["ID"].ToString().Length-2,"-");
+                                }
+                                else
+                                {
+                                    if (itemTemp["ID"].ToString() != "")
+                                        dr["ID"] += " ; " + itemTemp["ID"].ToString().Insert(itemTemp["ID"].ToString().Length - 2, "-");
+                                }
+
+                                if (dr["NoiDungXuLy"].ToString() == "")
+                                {
+                                    if (itemTemp["NgayXuLy"].ToString() != "")
+                                        dr["NoiDungXuLy"] = DateTime.Parse(itemTemp["NgayXuLy"].ToString()).ToString("dd/MM/yyyy");
+                                    if (itemTemp["NoiDungXuLy"].ToString() != "")
+                                        dr["NoiDungXuLy"] += ", " + itemTemp["NoiDungXuLy"];
+                                }
+                                else
+                                {
+                                    if (itemTemp["NgayXuLy"].ToString() != "")
+                                        dr["NoiDungXuLy"] += " ; " + DateTime.Parse(itemTemp["NgayXuLy"].ToString()).ToString("dd/MM/yyyy");
+                                    if (itemTemp["NoiDungXuLy"].ToString() != "")
+                                        dr["NoiDungXuLy"] += ", " + itemTemp["NoiDungXuLy"];
+                                }
+                            }
+
+                            dtExport.Rows.Add(dr);
+                        }
+                    //Tạo các đối tượng Excel
+                    Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                    Microsoft.Office.Interop.Excel.Workbooks oBooks;
+                    Microsoft.Office.Interop.Excel.Sheets oSheets;
+                    Microsoft.Office.Interop.Excel.Workbook oBook;
+                    Microsoft.Office.Interop.Excel.Worksheet oSheet;
+                    //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
+
+                    //Tạo mới một Excel WorkBook 
+                    oExcel.Visible = true;
+                    oExcel.DisplayAlerts = false;
+                    //khai báo số lượng sheet
+                    oExcel.Application.SheetsInNewWorkbook = 1;
+                    oBooks = oExcel.Workbooks;
+
+                    oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                    oSheets = oBook.Worksheets;
+                    oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+                    //oSheetCQ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
+
+                    XuatExcel(dtExport, oSheet, "Cắt Hủy");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnImportExcelCatTam_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                dialog.Multiselect = false;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    DataTable dtExport = new DataTable();
+                    dtExport.Columns.Add("DanhBo", typeof(String));
+                    dtExport.Columns.Add("ID", typeof(String));
+                    dtExport.Columns.Add("NoiDungXuLy", typeof(String));
+                    CExcel fileExcel = new CExcel(dialog.FileName);
+                    DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                    foreach (DataRow item in dtExcel.Rows)
+                        if (string.IsNullOrEmpty(item[0].ToString()) && item[0].ToString().Replace(" ", "").Length == 11)
+                        {
+                            DataRow dr = dtExport.NewRow();
+                            dr["DanhBo"] = item[0].ToString().Replace(" ", "");
+
+                            DataTable dtTemp = _cCHDB.getDS_CatTam_DanhBo(item[0].ToString().Replace(" ", ""));
+                            foreach (DataRow itemTemp in dtTemp.Rows)
+                            {
+                                if (dr["ID"].ToString() == "")
+                                {
+                                    if (itemTemp["ID"].ToString() != "")
+                                        dr["ID"] = itemTemp["ID"].ToString().Insert(itemTemp["ID"].ToString().Length - 2, "-");
+                                }
+                                else
+                                {
+                                    if (itemTemp["ID"].ToString() != "")
+                                        dr["ID"] += " ; " + itemTemp["ID"].ToString().Insert(itemTemp["ID"].ToString().Length - 2, "-");
+                                }
+
+                                if (dr["NoiDungXuLy"].ToString() == "")
+                                {
+                                    if (itemTemp["NgayXuLy"].ToString() != "")
+                                        dr["NoiDungXuLy"] = DateTime.Parse(itemTemp["NgayXuLy"].ToString()).ToString("dd/MM/yyyy");
+                                    if (itemTemp["NoiDungXuLy"].ToString() != "")
+                                        dr["NoiDungXuLy"] += ", " + itemTemp["NoiDungXuLy"];
+                                }
+                                else
+                                {
+                                    if (itemTemp["NgayXuLy"].ToString() != "")
+                                        dr["NoiDungXuLy"] += " ; " + DateTime.Parse(itemTemp["NgayXuLy"].ToString()).ToString("dd/MM/yyyy");
+                                    if (itemTemp["NoiDungXuLy"].ToString() != "")
+                                        dr["NoiDungXuLy"] += ", " + itemTemp["NoiDungXuLy"];
+                                }
+                            }
+
+                            dtExport.Rows.Add(dr);
+                        }
+                    //Tạo các đối tượng Excel
+                    Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                    Microsoft.Office.Interop.Excel.Workbooks oBooks;
+                    Microsoft.Office.Interop.Excel.Sheets oSheets;
+                    Microsoft.Office.Interop.Excel.Workbook oBook;
+                    Microsoft.Office.Interop.Excel.Worksheet oSheet;
+                    //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
+
+                    //Tạo mới một Excel WorkBook 
+                    oExcel.Visible = true;
+                    oExcel.DisplayAlerts = false;
+                    //khai báo số lượng sheet
+                    oExcel.Application.SheetsInNewWorkbook = 1;
+                    oBooks = oExcel.Workbooks;
+
+                    oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                    oSheets = oBook.Worksheets;
+                    oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+                    //oSheetCQ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
+
+                    XuatExcel(dtExport, oSheet, "Cắt Tạm");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void XuatExcel(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName)
+        {
+            oSheet.Name = SheetName;
+            // Tạo tiêu đề cột 
+            Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
+            cl1.Value2 = "Danh Bộ";
+            cl1.ColumnWidth = 15;
+
+            Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B1", "B1");
+            cl2.Value2 = "Mã Lệnh";
+            cl2.ColumnWidth = 30;
+
+            Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C1", "C1");
+            cl3.Value2 = "Xử Lý";
+            cl3.ColumnWidth = 30;
+
+            // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+            // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+            object[,] arr = new object[dt.Rows.Count, 13];
+
+            //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+
+                arr[i, 0] = dr["DanhBo"].ToString();
+                arr[i, 1] = dr["ID"].ToString();
+                arr[i, 2] = dr["NoiDungXuLy"].ToString();
+            }
+
+            //Thiết lập vùng điền dữ liệu
+            int rowStart = 2;
+            int columnStart = 1;
+
+            int rowEnd = rowStart + dt.Rows.Count - 1;
+            int columnEnd = 13;
+
+            // Ô bắt đầu điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+            // Ô kết thúc điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+            // Lấy về vùng điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+            Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
+            Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
+            Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+            c3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
+            Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
+            Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
+            c3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            c3b.NumberFormat = "@";
+
+            Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+            Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+            Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
+            c3c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
+            Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
+            Microsoft.Office.Interop.Excel.Range c3d = oSheet.get_Range(c1d, c2d);
+            c3d.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 5];
+            Microsoft.Office.Interop.Excel.Range c2e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 5];
+            Microsoft.Office.Interop.Excel.Range c3e = oSheet.get_Range(c1e, c2e);
+            c3e.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            c3e.NumberFormat = "@";
+
+            //Điền dữ liệu vào vùng đã thiết lập
+            range.Value2 = arr;
+        }
     }
 }

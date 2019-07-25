@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1142</ApplicationRevision>
+    <ApplicationRevision>1146</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -917,6 +917,12 @@
     </Compile>
     <Compile Include="GUI\DonTu\frmNhanDonTu.Designer.cs">
       <DependentUpon>frmNhanDonTu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\HeThong\frmShowImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\HeThong\frmShowImage.Designer.cs">
+      <DependentUpon>frmShowImage.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThuTraLoi\frmToTrinhVeViec.cs">
       <SubType>Form</SubType>
@@ -1830,6 +1836,9 @@
     <EmbeddedResource Include="GUI\DonTu\frmNhanDonTu.resx">
       <DependentUpon>frmNhanDonTu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\HeThong\frmShowImage.resx">
+      <DependentUpon>frmShowImage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThuTraLoi\frmToTrinhVeViec.resx">
       <DependentUpon>frmToTrinhVeViec.cs</DependentUpon>
     </EmbeddedResource>
@@ -2145,6 +2154,7 @@
     <None Include="Resources\email receive 48.png" />
     <None Include="Resources\email send 48.png" />
     <None Include="Resources\Treetog Documents.ico" />
+    <None Include="Resources\file 24x24.png" />
     <Content Include="Sources\AxInterop.AcroPDFLib.dll" />
     <Content Include="Sources\DevComponents.DotNetBar2.dll" />
     <Content Include="Sources\IrisSkin2.dll" />

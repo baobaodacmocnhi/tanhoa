@@ -6,6 +6,9 @@ using KTKS_DonKH.LinQ;
 using System.Data.SqlClient;
 using System.Data;
 using System.Reflection;
+using System.IO;
+using System.Drawing;
+using System.Diagnostics;
 
 namespace KTKS_DonKH.DAL
 {
@@ -282,5 +285,41 @@ namespace KTKS_DonKH.DAL
             return dtReturn;
         }
 
+        public void LoadImageView(byte[] pData)
+        {
+            // get a tempfilename and store the image
+            var tempFileName = Path.GetTempFileName();
+
+            FileStream mStream = new FileStream(tempFileName, FileMode.Create);
+            //byte[] pData = entity.Image.ToArray();
+            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+            Bitmap bm = new Bitmap(mStream, false);
+            mStream.Dispose();
+
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+
+            // create our startup process and argument
+            var psi = new ProcessStartInfo(
+                "rundll32.exe",
+                String.Format(
+                    "\"{0}{1}\", ImageView_Fullscreen {2}",
+                    Environment.Is64BitOperatingSystem ?
+                        path.Replace(" (x86)", "") :
+                        path
+                        ,
+                    @"\Windows Photo Viewer\PhotoViewer.dll",
+                    tempFileName)
+                );
+
+            psi.UseShellExecute = false;
+
+            var viewer = Process.Start(psi);
+            // cleanup when done...
+            viewer.EnableRaisingEvents = true;
+            viewer.Exited += (o, args) =>
+            {
+                File.Delete(tempFileName);
+            };
+        }
     }
 }

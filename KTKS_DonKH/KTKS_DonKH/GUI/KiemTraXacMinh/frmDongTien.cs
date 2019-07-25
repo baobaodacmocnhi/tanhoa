@@ -91,13 +91,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 chkLapBangGia.Checked = true;
                 dateLapBangGia.Value = ctktxm.NgayLapBangGia.Value;
-                txtSoTienDongTien.Text = ctktxm.SoTienDongTien;
+                
             }
             else
             {
                 chkLapBangGia.Checked = false;
                 dateLapBangGia.Value = DateTime.Now;
-                txtSoTienDongTien.Text = "";
             }
 
             if (ctktxm.DongTien)
@@ -126,6 +125,15 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dateChuyenCatHuy.Value = DateTime.Now;
             }
             cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
+            foreach (KTXM_BangGia item in ctktxm.KTXM_BangGias.ToList())
+            {
+                var index = dgvBangGia.Rows.Add();
+                dgvBangGia.Rows[index].Cells["IDCTKTXM"].Value = item.IDCTKTXM;
+                dgvBangGia.Rows[index].Cells["IDDonGia"].Value = item.IDDonGia;
+                dgvBangGia.Rows[index].Cells["Namee"].Value = item.KTXM_DonGia.Name;
+                dgvBangGia.Rows[index].Cells["SoTien"].Value = item.KTXM_DonGia.SoTien;
+            }
+            txtSoTienDongTien.Text = ctktxm.SoTienDongTien;
         }
 
         public void Clear()
@@ -317,6 +325,22 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             //{
             //    txtGhiChuDongTien.Text = ((DongTienNoiDung)cmbNoiDungDongTien.SelectedItem).GhiChu;
             //}
+        }
+
+        private void dgvBangGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvBangGia.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(e.Value.ToString()));
+            }
+        }
+
+        private void dgvBangGia_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvBangGia.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
         }
     }
 }

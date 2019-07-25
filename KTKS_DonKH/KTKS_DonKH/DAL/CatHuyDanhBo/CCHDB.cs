@@ -485,6 +485,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.LyDo,
                             item.GhiChuLyDo,
                             item.SoTien,
+                            item.NgayXuLy,
+                            item.NoiDungXuLy,
                         };
             return LINQToDataTable(query);
         }
@@ -986,6 +988,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.LyDo,
                             item.GhiChuLyDo,
                             item.SoTien,
+                            item.NgayXuLy,
+                            item.NoiDungXuLy,
                         };
             return LINQToDataTable(query);
         }

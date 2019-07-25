@@ -515,6 +515,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     if (cmbNhomDon_ChiTiet.SelectedIndex > -1)
                     {
                         entity.ID_NhomDon_ChiTiet = int.Parse(cmbNhomDon_ChiTiet.SelectedValue.ToString());
+                        entity.Name_NhomDon_ChiTiet = cmbNhomDon_ChiTiet.Text;
                     }
                     ///
                     if (chkCT_HoaDon.Checked)
@@ -682,6 +683,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         if (cmbNhomDon_ChiTiet.SelectedIndex > -1)
                         {
                             _dontu.ID_NhomDon_ChiTiet = int.Parse(cmbNhomDon_ChiTiet.SelectedValue.ToString());
+                            _dontu.Name_NhomDon_ChiTiet = cmbNhomDon_ChiTiet.Text;
                         }
                         ///
                         if (chkCT_HoaDon.Checked)

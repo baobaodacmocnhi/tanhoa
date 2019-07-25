@@ -36,7 +36,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         CDocSo _cDocSo = new CDocSo();
         DataRowView _CTRow = null;
         DataTable dt = new DataTable();
-        System.IO.StreamWriter _log;
+        //System.IO.StreamWriter _log;
 
         public frmTienTrinhDon()
         {

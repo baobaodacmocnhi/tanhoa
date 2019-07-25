@@ -103,6 +103,7 @@
   <Table Name="dbo.BamChi_ChiTiet_Hinh" Member="BamChi_ChiTiet_Hinhs">
     <Type Name="BamChi_ChiTiet_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDBamChi_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -257,6 +258,7 @@
   <Table Name="dbo.CHDB_ChiTietCatHuy_Hinh" Member="CHDB_ChiTietCatHuy_Hinhs">
     <Type Name="CHDB_ChiTietCatHuy_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDCHDB_ChiTietCatHuy" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -324,6 +326,7 @@
   <Table Name="dbo.CHDB_ChiTietCatTam_Hinh" Member="CHDB_ChiTietCatTam_Hinhs">
     <Type Name="CHDB_ChiTietCatTam_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDCHDB_ChiTietCatTam" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -427,6 +430,7 @@
   <Table Name="dbo.CHDB_Phieu_Hinh" Member="CHDB_Phieu_Hinhs">
     <Type Name="CHDB_Phieu_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDCHDB_Phieu" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -573,6 +577,7 @@
   <Table Name="dbo.ChungTu_LichSu_Hinh" Member="ChungTu_LichSu_Hinhs">
     <Type Name="ChungTu_LichSu_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDChungTu_LichSu" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -717,6 +722,7 @@
   <Table Name="dbo.DCBD_ChiTietBienDong_Hinh" Member="DCBD_ChiTietBienDong_Hinhs">
     <Type Name="DCBD_ChiTietBienDong_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDDCBD_ChiTietBienDong" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -801,6 +807,7 @@
   <Table Name="dbo.DCBD_ChiTietHoaDon_Hinh" Member="DCBD_ChiTietHoaDon_Hinhs">
     <Type Name="DCBD_ChiTietHoaDon_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDDCBD_ChiTietHoaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -901,6 +908,7 @@
   <Table Name="dbo.DongNuoc_ChiTiet_Hinh" Member="DongNuoc_ChiTiet_Hinhs">
     <Type Name="DongNuoc_ChiTiet_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDDongNuoc_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -1089,6 +1097,7 @@
       <Column Name="ID_NhomDon" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Name_NhomDon" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="ID_NhomDon_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name_NhomDon_ChiTiet" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="CT_HoaDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CT_GiayBao" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CT_HK_KT3" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
@@ -1317,6 +1326,7 @@
   <Table Name="dbo.GianLan_ChiTiet_Hinh" Member="GianLan_ChiTiet_Hinhs">
     <Type Name="GianLan_ChiTiet_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDGianLan_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -1442,6 +1452,7 @@
   <Table Name="dbo.KTXM_ChiTiet_Hinh" Member="KTXM_ChiTiet_Hinhs">
     <Type Name="KTXM_ChiTiet_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDKTXM_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -1856,6 +1867,7 @@
   <Table Name="dbo.ThuMoi_ChiTiet_Hinh" Member="ThuMoi_ChiTiet_Hinhs">
     <Type Name="ThuMoi_ChiTiet_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDThuMoi_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -1938,6 +1950,7 @@
   <Table Name="dbo.ToTrinh_ChiTiet_Hinh" Member="ToTrinh_ChiTiet_Hinhs">
     <Type Name="ToTrinh_ChiTiet_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDToTrinh_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -2016,6 +2029,7 @@
   <Table Name="dbo.TruyThuTienNuoc_ChiTiet_Hinh" Member="TruyThuTienNuoc_ChiTiet_Hinhs">
     <Type Name="TruyThuTienNuoc_ChiTiet_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDTruyThuTienNuoc_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -2185,6 +2199,7 @@
   <Table Name="dbo.TTTL_ChiTiet_Hinh" Member="TTTL_ChiTiet_Hinhs">
     <Type Name="TTTL_ChiTiet_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDTTTL_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />

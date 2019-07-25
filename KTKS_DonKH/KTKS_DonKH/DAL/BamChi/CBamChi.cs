@@ -668,7 +668,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                         : itemCTBamChi.BamChi.MaDon != null ? "TKH" + itemCTBamChi.BamChi.MaDon
                                         : itemCTBamChi.BamChi.MaDonTXL != null ? "TXL" + itemCTBamChi.BamChi.MaDonTXL
                                         : itemCTBamChi.BamChi.MaDonTBC != null ? "TBC" + itemCTBamChi.BamChi.MaDonTBC : null,
-                            TenLD = itemCTBamChi.BamChi.MaDonMoi != null ? itemCTBamChi.BamChi.DonTu.Name_NhomDon
+                            TenLD = itemCTBamChi.BamChi.MaDonMoi != null ? itemCTBamChi.BamChi.DonTu.Name_NhomDon+" "+ itemCTBamChi.BamChi.DonTu.Name_NhomDon_ChiTiet
                                         : itemCTBamChi.BamChi.MaDon != null ? itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD
                                         : itemCTBamChi.BamChi.MaDonTXL != null ? itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD
                                         : itemCTBamChi.BamChi.MaDonTBC != null ? itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD : null,
@@ -802,5 +802,50 @@ namespace KTKS_DonKH.DAL.BamChi
         //    return LINQToDataTable(query);
         //}
 
+
+        #region Hình
+
+        public bool Them_Hinh(BamChi_ChiTiet_Hinh en)
+        {
+            try
+            {
+                if (db.BamChi_ChiTiet_Hinhs.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = db.BamChi_ChiTiet_Hinhs.Max(item => item.ID) + 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.BamChi_ChiTiet_Hinhs.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_Hinh(BamChi_ChiTiet_Hinh en)
+        {
+            try
+            {
+                db.BamChi_ChiTiet_Hinhs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public BamChi_ChiTiet_Hinh get_Hinh(int ID)
+        {
+            return db.BamChi_ChiTiet_Hinhs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        #endregion
     }
 }
