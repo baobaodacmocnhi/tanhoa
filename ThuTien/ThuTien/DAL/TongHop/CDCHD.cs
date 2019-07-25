@@ -1303,6 +1303,38 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSByNgayDC(DateTime TuNgay, DateTime DenNgay,int Nam,int Ky)
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemDC.NGAY_DC.Value.Date >= TuNgay.Date && itemDC.NGAY_DC.Value.Date <= DenNgay.Date && itemHD.NAM==Nam&&itemHD.KY==Ky
+                        select new
+                        {
+                            NgayDC = itemDC.NGAY_DC,
+                            MaDCHD = itemDC.ID_DIEUCHINH_HD,
+                            MaHD = itemDC.FK_HOADON,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            GiaBan_End = itemDC.GIABAN_END,
+                            ThueGTGT_End = itemDC.THUE_END,
+                            PhiBVMT_End = itemDC.PHI_END,
+                            TongCong_End = itemDC.TONGCONG_END,
+                            itemDC.TangGiam,
+                            TongCong_BD = itemDC.TONGCONG_DC,
+                            TongCong_Start = itemDC.TONGCONG_BD,
+                            TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                            itemDC.ChuanThu1,
+                            itemHD.NGAYGIAITRACH,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSDangNgan(DateTime TuNgay, DateTime DenNgay)
         {
             var query = from itemDC in _db.DIEUCHINH_HDs
@@ -1332,6 +1364,35 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSDangNgan(DateTime TuNgay, DateTime DenNgay, int Nam, int Ky)
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.ChuyenNoKhoDoi == false && itemHD.NGAYGIAITRACH.Value.Date >= TuNgay.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgay.Date && itemHD.NAM == Nam && itemHD.KY == Ky
+                        select new
+                        {
+                            NgayDC = itemDC.NGAY_DC,
+                            MaDCHD = itemDC.ID_DIEUCHINH_HD,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            GiaBan_End = itemDC.GIABAN_END,
+                            ThueGTGT_End = itemDC.THUE_END,
+                            PhiBVMT_End = itemDC.PHI_END,
+                            TongCong_End = itemDC.TONGCONG_END,
+                            itemDC.TangGiam,
+                            TongCong_BD = itemDC.TONGCONG_DC,
+                            TongCong_Start = itemDC.TONGCONG_BD,
+                            TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSTon()
         {
             var query = from itemDC in _db.DIEUCHINH_HDs
@@ -1339,6 +1400,35 @@ namespace ThuTien.DAL.TongHop
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.NGAYGIAITRACH==null
+                        select new
+                        {
+                            NgayDC = itemDC.NGAY_DC,
+                            MaDCHD = itemDC.ID_DIEUCHINH_HD,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            GiaBan_End = itemDC.GIABAN_END,
+                            ThueGTGT_End = itemDC.THUE_END,
+                            PhiBVMT_End = itemDC.PHI_END,
+                            TongCong_End = itemDC.TONGCONG_END,
+                            itemDC.TangGiam,
+                            TongCong_BD = itemDC.TONGCONG_DC,
+                            TongCong_Start = itemDC.TONGCONG_BD,
+                            TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSTon(int Nam, int Ky)
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.NGAYGIAITRACH == null && itemHD.NAM == Nam && itemHD.KY == Ky
                         select new
                         {
                             NgayDC = itemDC.NGAY_DC,

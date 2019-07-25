@@ -264,16 +264,16 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["TongCong"] = item.Cells["TongCong_TT"].Value.ToString();
                     dr["HanhThu"] = item.Cells["HanhThu_TT"].Value.ToString();
                     dr["To"] = item.Cells["To_TT"].Value.ToString();
-                    //if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
-                    //{
-                    //    dr["Loai"] = "CQ";
-                    //    dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
-                    //}
-                    //else
-                    //{
-                    //    dr["Loai"] = "TG";
-                    //    dr["HoTen"] = item.Cells["DiaChi_TT"].Value.ToString();
-                    //}
+                    if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
+                    {
+                        dr["Loai"] = "CQ";
+                        //dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
+                    }
+                    else
+                    {
+                        dr["Loai"] = "TG";
+                        //dr["HoTen"] = item.Cells["DiaChi_TT"].Value.ToString();
+                    }
                     dr["HoTen"] = item.Cells["DiaChi_TT"].Value.ToString();
                     if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString())==true)
                         dr["LenhHuy"] = true;
@@ -282,7 +282,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["ToTrinhCatHuy"] = true;
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }
-            rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
+            rptDSTamThuChuyenKhoan_HanhThu rpt = new rptDSTamThuChuyenKhoan_HanhThu();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();

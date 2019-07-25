@@ -131,7 +131,11 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (dgvDSChanTienDu.Columns[e.ColumnIndex].Name == "DanhBo_Chan" && e.Value != null)
             {
-                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            }
+            if (dgvDSChanTienDu.Columns[e.ColumnIndex].Name == "MLT_Chan" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
             }
             if (dgvDSChanTienDu.Columns[e.ColumnIndex].Name == "TongCong_Chan" && e.Value != null)
             {
@@ -320,7 +324,33 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         }
 
+        private void dgvDCHD_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDCHD.Columns[e.ColumnIndex].Name == "DanhBo_DCHD" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            }
+            if (dgvDCHD.Columns[e.ColumnIndex].Name == "MLT_DCHD" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
+            if (dgvDCHD.Columns[e.ColumnIndex].Name == "TongCong_DCHD" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvDCHD.Columns[e.ColumnIndex].Name == "TienDu_DCHD" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvDCHD.Columns[e.ColumnIndex].Name == "TongCongCu_DCHD" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
         #endregion
+
+        
 
 
     }

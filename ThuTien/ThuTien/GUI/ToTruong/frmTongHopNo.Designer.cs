@@ -103,6 +103,8 @@
             this.chkChuKy = new System.Windows.Forms.CheckBox();
             this.chkTenKy = new System.Windows.Forms.CheckBox();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.txtLyDoTienDu = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHopNo)).BeginInit();
             this.panel1.SuspendLayout();
@@ -746,11 +748,29 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
+            // txtLyDoTienDu
+            // 
+            this.txtLyDoTienDu.Location = new System.Drawing.Point(1029, 38);
+            this.txtLyDoTienDu.Name = "txtLyDoTienDu";
+            this.txtLyDoTienDu.Size = new System.Drawing.Size(100, 20);
+            this.txtLyDoTienDu.TabIndex = 101;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(947, 41);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(76, 13);
+            this.label13.TabIndex = 100;
+            this.label13.Text = "Lý Do Tiền Dư";
+            // 
             // frmTongHopNo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 645);
+            this.Controls.Add(this.txtLyDoTienDu);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.chkTenKy);
             this.Controls.Add(this.chkChuKy);
@@ -873,5 +893,7 @@
         private System.Windows.Forms.CheckBox chkChuKy;
         private System.Windows.Forms.CheckBox chkTenKy;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.TextBox txtLyDoTienDu;
+        private System.Windows.Forms.Label label13;
     }
 }

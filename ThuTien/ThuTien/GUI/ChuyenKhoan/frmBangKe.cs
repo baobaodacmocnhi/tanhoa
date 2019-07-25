@@ -59,7 +59,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                             foreach (DataRow item in dtExcel.Rows)
                                 if ((string.IsNullOrEmpty(item[0].ToString()) || item[0].ToString().Replace(" ", "").Length == 11) && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
-                                    using (var scope = new TransactionScope())
+                                    using (TransactionScope scope = new TransactionScope())
                                     {
                                         //if (item[0].ToString().Length == 11 && _cBangKe.CheckExist(item[0].ToString(), DateTime.Now))
                                         //{
@@ -372,8 +372,15 @@ namespace ThuTien.GUI.ChuyenKhoan
                             using (var scope = new TransactionScope())
                             {
                                 for (int i = 0; i < dgvBangKe.Rows.Count; i++)
-                                    if (dgvBangKe.Rows[i].Cells["DanhBo"].Value.ToString() == dtExcel.Rows[i][0].ToString().Replace(" ", "") && dgvBangKe.Rows[i].Cells["SoTien"].Value.ToString() == dtExcel.Rows[i][1].ToString()
-                                        && !string.IsNullOrEmpty(dtExcel.Rows[i][3].ToString()) && !string.IsNullOrEmpty(dtExcel.Rows[i][4].ToString()))
+                                    //if (dgvBangKe.Rows[i].Cells["DanhBo"].Value.ToString() == "13152203536")
+                                    //{
+                                    //    string str = dtExcel.Rows[i][0].ToString().Replace(" ", "");
+                                    //    string str2 = dtExcel.Rows[i][1].ToString();
+                                    //    string str3 = dtExcel.Rows[i][3].ToString();
+                                    //    string str4 = dtExcel.Rows[i][4].ToString();
+                                    //}
+                                    if (dgvBangKe.Rows[i].Cells["DanhBo"].Value.ToString() == dtExcel.Rows[i][0].ToString().Replace(" ", "") && dgvBangKe.Rows[i].Cells["SoTien"].Value.ToString() == dtExcel.Rows[i][1].ToString().Trim()
+                                        && !string.IsNullOrEmpty(dtExcel.Rows[i][3].ToString().Trim()) && !string.IsNullOrEmpty(dtExcel.Rows[i][4].ToString().Trim()))
                                     {
                                         TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe.Rows[i].Cells["MaBK"].Value.ToString()));
                                         bangke.SoPhieuThu = dtExcel.Rows[i][3].ToString().Trim();

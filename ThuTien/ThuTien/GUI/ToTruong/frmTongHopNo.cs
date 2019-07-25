@@ -271,6 +271,7 @@ namespace ThuTien.GUI.ToTruong
                     tonghopno.NgayThanhToan = dateThanhToan.Value;
                     tonghopno.TuNgay = txtTuNgay.Text.Trim();
                     tonghopno.DenNgay = txtDenNgay.Text.Trim();
+                    tonghopno.LyDoTienDu = txtLyDoTienDu.Text.Trim();
                     //if (radGiamDoc.Checked)
                     //    tonghopno.NguoiKy = "GIÁM ĐỐC";
                     //else
@@ -280,7 +281,7 @@ namespace ThuTien.GUI.ToTruong
                     int ID = _cTHN.GetNextID_CTTongHopNo();
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     {
-                        TT_CTTongHopNo cttonghopno = new TT_CTTongHopNo();
+                        TT_TongHopNo_ChiTiet cttonghopno = new TT_TongHopNo_ChiTiet();
                         cttonghopno.ID = ID++;
                         cttonghopno.DanhBo = item.Cells["DanhBo"].Value.ToString();
                         cttonghopno.DiaChi = item.Cells["DiaChi"].Value.ToString();
@@ -301,7 +302,7 @@ namespace ThuTien.GUI.ToTruong
                             cttonghopno.TienDu = 0;
                         cttonghopno.CreateBy = CNguoiDung.MaND;
                         cttonghopno.CreateDate = DateTime.Now;
-                        tonghopno.TT_CTTongHopNos.Add(cttonghopno);
+                        tonghopno.TT_TongHopNo_ChiTiets.Add(cttonghopno);
                     }
                     _cTHN.Them(tonghopno);
 
@@ -325,16 +326,23 @@ namespace ThuTien.GUI.ToTruong
                         else
                             dr["TienDu"] = 0;
                         TongCongSo += int.Parse(item.Cells["TongCong"].Value.ToString()) + int.Parse(dr["TienDu"].ToString());
-                        dr["CSM"] = txtCSM.Text.Trim();
-                        dr["CSC"] = txtCSC.Text.Trim();
-                        dr["TT"] = txtTT.Text.Trim();
-                        dr["DM"] = txtDM.Text.Trim();
-                        dr["TuNgay"] = txtTuNgay.Text.Trim();
-                        dr["DenNgay"] = txtDenNgay.Text.Trim();
+                        //dr["CSM"] = txtCSM.Text.Trim();
+                        //dr["CSC"] = txtCSC.Text.Trim();
+                        //dr["TT"] = txtTT.Text.Trim();
+                        //dr["DM"] = txtDM.Text.Trim();
+                        //dr["TuNgay"] = txtTuNgay.Text.Trim();
+                        //dr["DenNgay"] = txtDenNgay.Text.Trim();
 
                         ds.Tables["TongHopNo"].Rows.Add(dr);
                     }
                     DataRow dr1 = ds.Tables["TongHopNo"].NewRow();
+                    dr1["CSM"] = txtCSM.Text.Trim();
+                    dr1["CSC"] = txtCSC.Text.Trim();
+                    dr1["TT"] = txtTT.Text.Trim();
+                    dr1["DM"] = txtDM.Text.Trim();
+                    dr1["TuNgay"] = txtTuNgay.Text.Trim();
+                    dr1["DenNgay"] = txtDenNgay.Text.Trim();
+                    dr1["LyDo"] = txtLyDoTienDu.Text.Trim();
                     dr1["TongCongSo"] = TongCongSo;
                     dr1["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
                     dr1["NgayThanhToan"] = dateThanhToan.Value.ToString("dd/MM/yyyy");
@@ -478,7 +486,7 @@ namespace ThuTien.GUI.ToTruong
 
             dsBaoCao ds = new dsBaoCao();
             int TongCongSo = 0;
-            foreach (TT_CTTongHopNo item in tonghopno.TT_CTTongHopNos)
+            foreach (TT_TongHopNo_ChiTiet item in tonghopno.TT_TongHopNo_ChiTiets)
             {
                 DataRow dr = ds.Tables["TongHopNo"].NewRow();
                 dr["SoPhieu"] = tonghopno.MaTHN.ToString().Insert(tonghopno.MaTHN.ToString().Length - 2, "-");
@@ -496,16 +504,23 @@ namespace ThuTien.GUI.ToTruong
                 else
                     dr["TienDu"] = 0;
                 TongCongSo += (int)item.TongCong.Value + int.Parse(dr["TienDu"].ToString());
-                dr["CSM"] = tonghopno.ChiSoMoi;
-                dr["CSC"] = tonghopno.ChiSoCu;
-                dr["TT"] = tonghopno.TieuThu;
-                dr["DM"] = tonghopno.DinhMuc;
-                dr["TuNgay"] = tonghopno.TuNgay;
-                dr["DenNgay"] = tonghopno.DenNgay;
+                //dr["CSM"] = tonghopno.ChiSoMoi;
+                //dr["CSC"] = tonghopno.ChiSoCu;
+                //dr["TT"] = tonghopno.TieuThu;
+                //dr["DM"] = tonghopno.DinhMuc;
+                //dr["TuNgay"] = tonghopno.TuNgay;
+                //dr["DenNgay"] = tonghopno.DenNgay;
 
                 ds.Tables["TongHopNo"].Rows.Add(dr);
             }
             DataRow dr1 = ds.Tables["TongHopNo"].NewRow();
+            dr1["CSM"] = tonghopno.ChiSoMoi;
+            dr1["CSC"] = tonghopno.ChiSoCu;
+            dr1["TT"] = tonghopno.TieuThu;
+            dr1["DM"] = tonghopno.DinhMuc;
+            dr1["TuNgay"] = tonghopno.TuNgay;
+            dr1["DenNgay"] = tonghopno.DenNgay;
+            dr1["LyDo"] = tonghopno.LyDoTienDu;
             dr1["TongCongSo"] = TongCongSo;
             dr1["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
             dr1["NgayThanhToan"] = tonghopno.NgayThanhToan.Value.ToString("dd/MM/yyyy");

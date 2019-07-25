@@ -35,6 +35,14 @@ namespace ThuTien.GUI.TongHop
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
+
+            DataTable dtNam = _cHoaDon.GetNam();
+            //DataRow dr = dtNam.NewRow();
+            //dr["ID"] = "Tất Cả";
+            //dtNam.Rows.InsertAt(dr, 0);
+            cmbNam.DataSource = dtNam;
+            cmbNam.DisplayMember = "ID";
+            cmbNam.ValueMember = "Nam";
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -65,7 +73,7 @@ namespace ThuTien.GUI.TongHop
 
         private void dgvDCHD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (dgvDCHD.RowCount > 0 && e.Button==MouseButtons.Left)
+            if (dgvDCHD.RowCount > 0 && e.Button == MouseButtons.Left)
             {
                 frmShowDCHD frm = new frmShowDCHD(int.Parse(dgvDCHD.SelectedRows[0].Cells["MaHD_DC"].Value.ToString()), dgvDCHD.SelectedRows[0].Cells["SoHoaDon_DC"].Value.ToString());
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -83,7 +91,10 @@ namespace ThuTien.GUI.TongHop
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvDCHD.DataSource = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+            if (chkTrongKy.Checked)
+                dgvDCHD.DataSource = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+            else
+                dgvDCHD.DataSource = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -137,29 +148,33 @@ namespace ThuTien.GUI.TongHop
 
         private void btnInDSDangNgan_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cDCHD.GetDSDangNgan(dateTu.Value, dateDen.Value);
+            DataTable dt = new DataTable();
+            if (chkTrongKy.Checked)
+                dt = _cDCHD.GetDSDangNgan(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+            else
+                dt = _cDCHD.GetDSDangNgan(dateTu.Value, dateDen.Value);
             dsBaoCao ds = new dsBaoCao();
-                foreach (DataRow item in dt.Rows)
-                    {
-                        DataRow dr = ds.Tables["DSDCHD"].NewRow();
-                        dr["LoaiBaoCao"] = "ĐĂNG NGÂN";
-                        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                        dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                        dr["Ky"] = item["Ky"];
-                        dr["SoHoaDon"] = item["SoHoaDon"];
-                        dr["GiaBan"] = item["GiaBan_End"];
-                        dr["ThueGTGT"] = item["ThueGTGT_End"];
-                        dr["PhiBVMT"] = item["PhiBVMT_End"];
-                        dr["TongCong"] = item["TongCong_End"];
-                        dr["TongCongTruoc"] = item["TongCong_Start"];
-                        dr["TongCongBD"] = item["TongCong_BD"];
-                        dr["TieuThuBD"] = item["TieuThu_BD"];
-                        dr["HanhThu"] = item["HanhThu"];
-                        dr["To"] = item["To"];
-                        ds.Tables["DSDCHD"].Rows.Add(dr);
-                    }
-            
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = ds.Tables["DSDCHD"].NewRow();
+                dr["LoaiBaoCao"] = "ĐĂNG NGÂN";
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                dr["Ky"] = item["Ky"];
+                dr["SoHoaDon"] = item["SoHoaDon"];
+                dr["GiaBan"] = item["GiaBan_End"];
+                dr["ThueGTGT"] = item["ThueGTGT_End"];
+                dr["PhiBVMT"] = item["PhiBVMT_End"];
+                dr["TongCong"] = item["TongCong_End"];
+                dr["TongCongTruoc"] = item["TongCong_Start"];
+                dr["TongCongBD"] = item["TongCong_BD"];
+                dr["TieuThuBD"] = item["TieuThu_BD"];
+                dr["HanhThu"] = item["HanhThu"];
+                dr["To"] = item["To"];
+                ds.Tables["DSDCHD"].Rows.Add(dr);
+            }
+
             rptDSDCHD rpt = new rptDSDCHD();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
@@ -168,28 +183,32 @@ namespace ThuTien.GUI.TongHop
 
         private void btnInDSTon_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cDCHD.GetDSTon();
+            DataTable dt = new DataTable();
+            if (chkTrongKy.Checked)
+                dt = _cDCHD.GetDSTon(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+            else
+                dt = _cDCHD.GetDSTon();
             dsBaoCao ds = new dsBaoCao();
             foreach (DataRow item in dt.Rows)
-                {
-                    DataRow dr = ds.Tables["DSDCHD"].NewRow();
-                    dr["LoaiBaoCao"] = "TỒN";
-                    //dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                    //dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                    dr["Ky"] = item["Ky"];
-                    dr["SoHoaDon"] = item["SoHoaDon"];
-                    dr["GiaBan"] = item["GiaBan_End"];
-                    dr["ThueGTGT"] = item["ThueGTGT_End"];
-                    dr["PhiBVMT"] = item["PhiBVMT_End"];
-                    dr["TongCong"] = item["TongCong_End"];
-                    dr["TongCongTruoc"] = item["TongCong_Start"];
-                    dr["TongCongBD"] = item["TongCong_BD"];
-                    dr["TieuThuBD"] = item["TieuThu_BD"];
-                    dr["HanhThu"] = item["HanhThu"];
-                    dr["To"] = item["To"];
-                    ds.Tables["DSDCHD"].Rows.Add(dr);
-                }
+            {
+                DataRow dr = ds.Tables["DSDCHD"].NewRow();
+                dr["LoaiBaoCao"] = "TỒN";
+                //dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                //dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                dr["Ky"] = item["Ky"];
+                dr["SoHoaDon"] = item["SoHoaDon"];
+                dr["GiaBan"] = item["GiaBan_End"];
+                dr["ThueGTGT"] = item["ThueGTGT_End"];
+                dr["PhiBVMT"] = item["PhiBVMT_End"];
+                dr["TongCong"] = item["TongCong_End"];
+                dr["TongCongTruoc"] = item["TongCong_Start"];
+                dr["TongCongBD"] = item["TongCong_BD"];
+                dr["TieuThuBD"] = item["TieuThu_BD"];
+                dr["HanhThu"] = item["HanhThu"];
+                dr["To"] = item["To"];
+                ds.Tables["DSDCHD"].Rows.Add(dr);
+            }
             rptDSDCHD rpt = new rptDSDCHD();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
@@ -290,6 +309,14 @@ namespace ThuTien.GUI.TongHop
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    
+
+        private void chkTrongKy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkTrongKy.Checked)
+                panel1.Enabled = true;
+            else
+                panel1.Enabled = false;
+        }
+
     }
 }
