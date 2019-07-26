@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.ToKhachHang;
-using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.DAL.TruyThu;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ToXuLy;
@@ -19,6 +19,7 @@ using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.BaoCao.TruyThu;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.GUI.DonTu;
+using KTKS_DonKH.DAL.ToXuLy;
 
 namespace KTKS_DonKH.GUI.TruyThu
 {

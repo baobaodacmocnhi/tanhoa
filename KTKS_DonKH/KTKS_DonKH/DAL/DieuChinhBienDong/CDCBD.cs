@@ -2785,5 +2785,90 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     return db.DCBD_ChiTietHoaDons.Any(item => item.DCBD.MaDonMoi == MaDon && item.DanhBo == DanhBo && item.KyHD == KyHD);
         }
 
+        #region Hình
+
+        public bool Them_Hinh(DCBD_ChiTietBienDong_Hinh en)
+        {
+            try
+            {
+                if (db.DCBD_ChiTietBienDong_Hinhs.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = db.DCBD_ChiTietBienDong_Hinhs.Max(item => item.ID) + 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.DCBD_ChiTietBienDong_Hinhs.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_Hinh(DCBD_ChiTietBienDong_Hinh en)
+        {
+            try
+            {
+                db.DCBD_ChiTietBienDong_Hinhs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public DCBD_ChiTietBienDong_Hinh get_BienDong_Hinh(int ID)
+        {
+            return db.DCBD_ChiTietBienDong_Hinhs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        //
+        public bool Them_Hinh(DCBD_ChiTietHoaDon_Hinh en)
+        {
+            try
+            {
+                if (db.DCBD_ChiTietHoaDon_Hinhs.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = db.DCBD_ChiTietHoaDon_Hinhs.Max(item => item.ID) + 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.DCBD_ChiTietHoaDon_Hinhs.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_Hinh(DCBD_ChiTietHoaDon_Hinh en)
+        {
+            try
+            {
+                db.DCBD_ChiTietHoaDon_Hinhs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public DCBD_ChiTietHoaDon_Hinh get_HoaDon_Hinh(int ID)
+        {
+            return db.DCBD_ChiTietHoaDon_Hinhs.SingleOrDefault(item => item.ID == ID);
+        }
+        #endregion
     }
 }

@@ -3548,5 +3548,50 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         }
 
         #endregion
+
+        #region Hình
+
+        public bool Them_Hinh(ChungTu_LichSu_Hinh en)
+        {
+            try
+            {
+                if (db.ChungTu_LichSu_Hinhs.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = db.ChungTu_LichSu_Hinhs.Max(item => item.ID) + 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.ChungTu_LichSu_Hinhs.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_Hinh(ChungTu_LichSu_Hinh en)
+        {
+            try
+            {
+                db.ChungTu_LichSu_Hinhs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public ChungTu_LichSu_Hinh get_Hinh(int ID)
+        {
+            return db.ChungTu_LichSu_Hinhs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        #endregion
     }
 }

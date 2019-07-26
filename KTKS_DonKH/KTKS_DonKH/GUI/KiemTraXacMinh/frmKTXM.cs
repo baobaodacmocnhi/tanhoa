@@ -169,6 +169,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 cmbNoiDungBaoThay.SelectedText = ctktxm.NoiDungBaoThay;
                 txtGhiChuNoiDungBaoThay.Text = ctktxm.GhiChuNoiDungBaoThay;
             }
+            dgvBangGia.Rows.Clear();
             foreach (KTXM_BangGia item in ctktxm.KTXM_BangGias.ToList())
             {
                 var index = dgvBangGia.Rows.Add();
@@ -178,6 +179,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dgvBangGia.Rows[index].Cells["SoTien"].Value = item.KTXM_DonGia.SoTien;
             }
             LoaddgvBangGia();
+            dgvHinh.Rows.Clear();
             foreach (KTXM_ChiTiet_Hinh item in ctktxm.KTXM_ChiTiet_Hinhs.ToList())
             {
                 var index = dgvHinh.Rows.Add();
@@ -576,10 +578,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 _cKTXM.Them_Hinh(en);
                             }
                             if (_dontu_ChiTiet != null)
+                            {
                                 if (_cDonTu.Them_LichSu("KTXM", ctktxm.NoiDungKiemTra, (int)ctktxm.MaCTKTXM, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
                                     scope.Complete();
-                                else
-                                    scope.Complete();
+                            }
+                            else
+                                scope.Complete();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear_LoadDSKTXM();
                             txtMaDonCu.Focus();
@@ -602,11 +606,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 {
                     if (_ctktxm != null)
                     {
-                        if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
-                        {
-                            MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                            if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
+                            {
+                                MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         if (!txtDanhBo.Text.Trim().Contains("GM"))
                             if ((txtDanhBo.Text.Trim().Length > 0 && txtDanhBo.Text.Trim().Length < 11) || txtDanhBo.Text.Trim().Length > 11)
                             {
@@ -702,11 +707,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 {
                     if (_ctktxm != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
-                        {
-                            MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                            if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
+                            {
+                                MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         if (_cKTXM.XoaCT(_ctktxm))
                         {
                             Clear();
@@ -871,6 +877,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                             {
+                                if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                                    if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
+                                    {
+                                        MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
                                 KTXM_BangGia banggia = new KTXM_BangGia();
                                 banggia.IDCTKTXM = _ctktxm.MaCTKTXM;
                                 banggia.IDDonGia = dongia.ID;
@@ -939,11 +951,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     {
                         if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
-                            {
-                                MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                            if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                                if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
+                                {
+                                    MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             if (dgvBangGia.CurrentRow.Cells["IDCTKTXM"].Value != null)
                                 if (_cKTXM.Xoa_BangGia(_cKTXM.get_BangGia(int.Parse(dgvBangGia.CurrentRow.Cells["IDCTKTXM"].Value.ToString()), int.Parse(dgvBangGia.CurrentRow.Cells["IDDonGia"].Value.ToString()))))
                                 {
@@ -1005,6 +1018,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     {
                         if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                         {
+                            if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                                if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
+                                {
+                                    MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             KTXM_ChiTiet_Hinh en = new KTXM_ChiTiet_Hinh();
                             en.IDKTXM_ChiTiet = _ctktxm.MaCTKTXM;
                             en.Hinh = bytes;
@@ -1059,11 +1078,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     {
                         if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
-                            {
-                                MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                            if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                                if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
+                                {
+                                    MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null)
                                 if (_cKTXM.Xoa_Hinh(_cKTXM.get_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
                                 {
@@ -1083,6 +1103,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             }
         }
 
-        
+
     }
 }

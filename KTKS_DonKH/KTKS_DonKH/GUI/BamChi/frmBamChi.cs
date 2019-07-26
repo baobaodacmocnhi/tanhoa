@@ -14,6 +14,7 @@ using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.DonTu;
+using System.Transactions;
 
 namespace KTKS_DonKH.GUI.BamChi
 {
@@ -139,6 +140,7 @@ namespace KTKS_DonKH.GUI.BamChi
             txtGhiChu.Text = ctbamchi.GhiChu;
             txtMaSoBC.Text = ctbamchi.MaSoBC;
             txtTheoYeuCau.Text = ctbamchi.TheoYeuCau;
+            dgvHinh.Rows.Clear();
             foreach (BamChi_ChiTiet_Hinh item in ctbamchi.BamChi_ChiTiet_Hinhs.ToList())
             {
                 var index = dgvHinh.Rows.Add();
@@ -401,9 +403,9 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
                     if ((txtDanhBo.Text.Trim().Length > 0 && txtDanhBo.Text.Trim().Length < 11) || txtDanhBo.Text.Trim().Length > 11)
                     {
@@ -585,33 +587,46 @@ namespace KTKS_DonKH.GUI.BamChi
 
                     ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
 
-                    if (_cBamChi.ThemCT(ctbamchi))
-                    {
-                        if (_dontu_ChiTiet != null)
-                            _cDonTu.Them_LichSu("BamChi", ctbamchi.TrangThaiBC, (int)ctbamchi.MaCTBC, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Clear_GetDataGridView();
-                        txtMaDonCu.Focus();
-                    }
+                    using (TransactionScope scope = new TransactionScope())
+                        if (_cBamChi.ThemCT(ctbamchi))
+                        {
+                            foreach (DataGridViewRow item in dgvHinh.Rows)
+                            {
+                                BamChi_ChiTiet_Hinh en = new BamChi_ChiTiet_Hinh();
+                                en.IDBamChi_ChiTiet = ctbamchi.MaCTBC;
+                                en.Hinh = Convert.FromBase64String(item.Cells["Bytes"].Value.ToString());
+                                _cBamChi.Them_Hinh(en);
+                            }
+                            if (_dontu_ChiTiet != null)
+                            {
+                                if (_cDonTu.Them_LichSu("BamChi", ctbamchi.TrangThaiBC, (int)ctbamchi.MaCTBC, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
+                                    scope.Complete();
+                            }
+                            else
+                                scope.Complete();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear_GetDataGridView();
+                            txtMaDonCu.Focus();
+                        }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
                     if (_ctbamchi != null)
                     {
-                        if (CTaiKhoan.ToTruong == false)
+                        if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                             if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
                             {
                                 MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -716,29 +731,29 @@ namespace KTKS_DonKH.GUI.BamChi
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                 {
                     if (_ctbamchi != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if(CTaiKhoan.ToTruong!=true)
-                        if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
-                        {
-                            MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                            if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
+                            {
+                                MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         if (_ctbamchi.NiemChi != null)
                             _cNiemChi.traSuDung(_ctbamchi.NiemChi.Value);
                         if (_cBamChi.XoaCT(_ctbamchi))
@@ -749,13 +764,13 @@ namespace KTKS_DonKH.GUI.BamChi
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvDSNhapBamChi_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -919,6 +934,12 @@ namespace KTKS_DonKH.GUI.BamChi
                     {
                         if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                         {
+                            if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                                if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
+                                {
+                                    MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             BamChi_ChiTiet_Hinh en = new BamChi_ChiTiet_Hinh();
                             en.IDBamChi_ChiTiet = _ctbamchi.MaCTBC;
                             en.Hinh = bytes;
@@ -973,6 +994,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     {
                         if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
+                            if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                             if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
                             {
                                 MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

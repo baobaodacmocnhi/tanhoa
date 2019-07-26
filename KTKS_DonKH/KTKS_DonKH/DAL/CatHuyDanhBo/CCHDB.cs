@@ -1949,5 +1949,134 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             return db.CHDBs.SingleOrDefault(item => item.MaDonMoi == MaDon);
         }
+
+        #region Hình
+
+        public bool Them_Hinh(CHDB_ChiTietCatTam_Hinh en)
+        {
+            try
+            {
+                if (db.CHDB_ChiTietCatTam_Hinhs.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = db.CHDB_ChiTietCatTam_Hinhs.Max(item => item.ID) + 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.CHDB_ChiTietCatTam_Hinhs.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_Hinh(CHDB_ChiTietCatTam_Hinh en)
+        {
+            try
+            {
+                db.CHDB_ChiTietCatTam_Hinhs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public CHDB_ChiTietCatTam_Hinh get_CatTam_Hinh(int ID)
+        {
+            return db.CHDB_ChiTietCatTam_Hinhs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        //
+        public bool Them_Hinh(CHDB_ChiTietCatHuy_Hinh en)
+        {
+            try
+            {
+                if (db.CHDB_ChiTietCatHuy_Hinhs.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = db.CHDB_ChiTietCatHuy_Hinhs.Max(item => item.ID) + 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.CHDB_ChiTietCatHuy_Hinhs.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_Hinh(CHDB_ChiTietCatHuy_Hinh en)
+        {
+            try
+            {
+                db.CHDB_ChiTietCatHuy_Hinhs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public CHDB_ChiTietCatHuy_Hinh get_CatHuy_Hinh(int ID)
+        {
+            return db.CHDB_ChiTietCatHuy_Hinhs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        //
+        public bool Them_Hinh(CHDB_Phieu_Hinh en)
+        {
+            try
+            {
+                if (db.CHDB_Phieu_Hinhs.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = db.CHDB_Phieu_Hinhs.Max(item => item.ID) + 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.CHDB_Phieu_Hinhs.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_Hinh(CHDB_Phieu_Hinh en)
+        {
+            try
+            {
+                db.CHDB_Phieu_Hinhs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public CHDB_Phieu_Hinh get_Phieu_Hinh(int ID)
+        {
+            return db.CHDB_Phieu_Hinhs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        #endregion
     }
 }

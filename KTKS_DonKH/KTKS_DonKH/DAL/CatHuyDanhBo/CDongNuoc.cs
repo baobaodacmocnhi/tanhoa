@@ -542,5 +542,50 @@ namespace KTKS_DonKH.DAL.DongNuoc
         {
                     return db.DongNuocs.SingleOrDefault(item => item.MaDonMoi == MaDon);
         }
+
+        #region Hình
+
+        public bool Them_Hinh(DongNuoc_ChiTiet_Hinh en)
+        {
+            try
+            {
+                if (db.DongNuoc_ChiTiet_Hinhs.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = db.DongNuoc_ChiTiet_Hinhs.Max(item => item.ID) + 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.DongNuoc_ChiTiet_Hinhs.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_Hinh(DongNuoc_ChiTiet_Hinh en)
+        {
+            try
+            {
+                db.DongNuoc_ChiTiet_Hinhs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public DongNuoc_ChiTiet_Hinh get_Hinh(int ID)
+        {
+            return db.DongNuoc_ChiTiet_Hinhs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        #endregion
     }
 }

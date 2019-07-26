@@ -423,5 +423,50 @@ namespace KTKS_DonKH.DAL.ThuMoi
                         };
             return LINQToDataTable(query);
         }
+
+        #region Hình
+
+        public bool Them_Hinh(ThuMoi_ChiTiet_Hinh en)
+        {
+            try
+            {
+                if (db.ThuMoi_ChiTiet_Hinhs.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = db.ThuMoi_ChiTiet_Hinhs.Max(item => item.ID) + 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.ThuMoi_ChiTiet_Hinhs.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_Hinh(ThuMoi_ChiTiet_Hinh en)
+        {
+            try
+            {
+                db.ThuMoi_ChiTiet_Hinhs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public ThuMoi_ChiTiet_Hinh get_Hinh(int ID)
+        {
+            return db.ThuMoi_ChiTiet_Hinhs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        #endregion
     }
 }

@@ -125,6 +125,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dateChuyenCatHuy.Value = DateTime.Now;
             }
             cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
+            dgvBangGia.Rows.Clear();
             foreach (KTXM_BangGia item in ctktxm.KTXM_BangGias.ToList())
             {
                 var index = dgvBangGia.Rows.Add();
@@ -174,6 +175,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 _selectedindex = -1;
                 ///
                 dgvDSKetQuaKiemTra.DataSource = null;
+                dgvBangGia.Rows.Clear();
             }
             catch (Exception ex)
             {
