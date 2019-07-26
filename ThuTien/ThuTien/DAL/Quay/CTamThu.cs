@@ -139,7 +139,7 @@ namespace ThuTien.DAL.Quay
             return _db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon && item.ChuyenKhoan == false);
         }
 
-        public DataTable GetDS(bool ChuyenKhoan, DateTime TuNgay, DateTime DenNgay)
+        public DataTable getDS(bool ChuyenKhoan, DateTime TuNgay, DateTime DenNgay)
         {
             var query = from itemTT in _db.TAMTHUs
                         join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
@@ -169,8 +169,8 @@ namespace ThuTien.DAL.Quay
                             ThueGTGT = itemHD.THUE,
                             PhiBVMT = itemHD.PHI,
                             itemHD.TONGCONG,
-                            HanhThu = _db.TT_CTDongNuocs.Any(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-                            To = _db.TT_CTDongNuocs.Any(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
+                            HanhThu = _db.TT_CTDongNuocs.Any(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false&&item.TT_DongNuoc.MaNV_DongNuoc!=null) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
+                            To = _db.TT_CTDongNuocs.Any(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false && item.TT_DongNuoc.MaNV_DongNuoc != null) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
                             itemTT.MaNH,
                             TenNH = itemtableNH.NGANHANG1,
                             GiaBieu = itemHD.GB,

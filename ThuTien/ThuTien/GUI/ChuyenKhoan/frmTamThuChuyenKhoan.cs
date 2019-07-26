@@ -175,7 +175,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void btnXem_Click(object sender, EventArgs e)
         {
             if (dateDen.Value >= dateTu.Value)
-                dgvTamThu.DataSource = _cTamThu.GetDS(true, dateTu.Value, dateDen.Value);
+                dgvTamThu.DataSource = _cTamThu.getDS(true, dateTu.Value, dateDen.Value);
             //string HoTen = "", TenTo = "";
             foreach (DataGridViewRow item in dgvTamThu.Rows)
             {
