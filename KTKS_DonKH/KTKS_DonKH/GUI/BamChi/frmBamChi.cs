@@ -150,6 +150,45 @@ namespace KTKS_DonKH.GUI.BamChi
             }
         }
 
+        //public void Clear()
+        //{
+        //    txtMaDonCu.Text = "";
+        //    txtMaDonMoi.Text = "";
+        //    txtDanhBo.Text = "";
+        //    txtHopDong.Text = "";
+        //    txtHoTen.Text = "";
+        //    txtDiaChi.Text = "";
+        //    txtGiaBieu.Text = "";
+        //    txtDinhMuc.Text = "";
+        //    ///
+        //    //dateBamChi.Value = DateTime.Now;
+        //    //cmbHienTrangKiemTra.SelectedIndex = -1;
+        //    txtHieu.Text = "";
+        //    txtCo.Text = "";
+        //    txtSoThan.Text = "";
+        //    txtChiSo.Text = "";
+        //    cmbTinhTrangChiSo.SelectedIndex = -1;
+        //    cmbChiMatSo.SelectedIndex = -1;
+        //    cmbChiKhoaGoc.SelectedIndex = -1;
+        //    //txtMucDichSuDung.Text = "";
+        //    //txtVienChi.Text = "";
+        //    //txtDayChi.Text = "";
+        //    //cmbTrangThaiBC.SelectedIndex = -1;
+        //    //txtMaSoBC.Text = "";
+        //    //txtTheoYeuCau.Text = "";
+        //    txtGhiChu.Text = "";
+
+        //    _MaCTBamChi = -1;
+        //    _ctbamchi = null;
+        //    _dontu_ChiTiet = null;
+        //    _dontkh = null;
+        //    _dontxl = null;
+        //    _dontbc = null;
+        //    _hoadon = null;
+        //    dgvDSNhapBamChi.DataSource = null;
+        //    dgvHinh.Rows.Clear();
+        //}
+
         public void Clear()
         {
             txtMaDonCu.Text = "";
@@ -180,48 +219,10 @@ namespace KTKS_DonKH.GUI.BamChi
 
             _MaCTBamChi = -1;
             _ctbamchi = null;
-            _dontu_ChiTiet = null;
-            _dontkh = null;
-            _dontxl = null;
-            _dontbc = null;
-            _hoadon = null;
-            dgvDSNhapBamChi.DataSource = null;
-            dgvHinh.Rows.Clear();
-        }
-
-        public void Clear_GetDataGridView()
-        {
-            txtMaDonCu.Text = "";
-            txtMaDonMoi.Text = "";
-            txtDanhBo.Text = "";
-            txtHopDong.Text = "";
-            txtHoTen.Text = "";
-            txtDiaChi.Text = "";
-            txtGiaBieu.Text = "";
-            txtDinhMuc.Text = "";
-            ///
-            //dateBamChi.Value = DateTime.Now;
-            //cmbHienTrangKiemTra.SelectedIndex = -1;
-            txtHieu.Text = "";
-            txtCo.Text = "";
-            txtSoThan.Text = "";
-            txtChiSo.Text = "";
-            cmbTinhTrangChiSo.SelectedIndex = -1;
-            cmbChiMatSo.SelectedIndex = -1;
-            cmbChiKhoaGoc.SelectedIndex = -1;
-            //txtMucDichSuDung.Text = "";
-            //txtVienChi.Text = "";
-            //txtDayChi.Text = "";
-            //cmbTrangThaiBC.SelectedIndex = -1;
-            //txtMaSoBC.Text = "";
-            //txtTheoYeuCau.Text = "";
-            txtGhiChu.Text = "";
-
-            _MaCTBamChi = -1;
-            _ctbamchi = null;
             _hoadon = null;
             dgvHinh.Rows.Clear();
-            GetDataGridView();
+            
+            txtMaDonMoi.Focus();
         }
 
         public void GetDataGridView()
@@ -599,15 +600,15 @@ namespace KTKS_DonKH.GUI.BamChi
                             }
                             if (_dontu_ChiTiet != null)
                             {
-                                if (_cDonTu.Them_LichSu("BamChi", ctbamchi.TrangThaiBC, (int)ctbamchi.MaCTBC, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
+                                if (_cDonTu.Them_LichSu(ctbamchi.NgayBC.Value,"BamChi", "Đã Bấm Chì, " + ctbamchi.TrangThaiBC, (int)ctbamchi.MaCTBC, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
                                     scope.Complete();
                             }
                             else
                                 scope.Complete();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Clear_GetDataGridView();
-                            txtMaDonCu.Focus();
+                            Clear();
                         }
+                    GetDataGridView();
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

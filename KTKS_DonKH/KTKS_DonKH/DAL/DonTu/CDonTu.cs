@@ -422,76 +422,76 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public bool Them_LichSu(string NoiChuyen, string NoiDung, int IDCT,int MaDon, int STT)
+        public bool Them_LichSu(DateTime NgayChuyen, string NoiChuyen, string NoiDung, int IDCT, int MaDon, int STT)
         {
             try
             {
                 DonTu_LichSu entity = new DonTu_LichSu();
-                entity.NgayChuyen = DateTime.Now;
+                entity.NgayChuyen = NgayChuyen;
                 switch (NoiChuyen)
                 {
                     case "KTXM":
                         entity.ID_NoiChuyen = 5;
                         entity.NoiChuyen = "Kiểm Tra";
-                        entity.NoiDung = "Đã Kiểm Tra, " + NoiDung;
+                        entity.NoiDung =  NoiDung;
                         entity.TableName = "KTXM_ChiTiet";
                         entity.IDCT = IDCT;
-                        entity.NgayChuyen = db.KTXM_ChiTiets.SingleOrDefault(item => item.MaCTKTXM == IDCT).NgayKTXM;
+                        //entity.NgayChuyen = db.KTXM_ChiTiets.SingleOrDefault(item => item.MaCTKTXM == IDCT).NgayKTXM;
                         break;
                     case "BamChi":
                         entity.ID_NoiChuyen = 5;
                         entity.NoiChuyen = "Kiểm Tra";
-                        entity.NoiDung = "Đã Bấm Chì, " + NoiDung;
+                        entity.NoiDung =  NoiDung;
                         entity.TableName = "BamChi_ChiTiet";
                         entity.IDCT = IDCT;
-                        entity.NgayChuyen = db.BamChi_ChiTiets.SingleOrDefault(item => item.MaCTBC == IDCT).NgayBC;
+                        //entity.NgayChuyen = db.BamChi_ChiTiets.SingleOrDefault(item => item.MaCTBC == IDCT).NgayBC;
                         break;
                     case "DCBD":
                         entity.ID_NoiChuyen = 6;
                         entity.NoiChuyen = "Điều Chỉnh";
-                        entity.NoiDung = "Đã Điều Chỉnh Biến Động, " + NoiDung;
+                        entity.NoiDung =  NoiDung;
                         entity.TableName = "DCBD_ChiTietBienDong";
                         entity.IDCT = IDCT;
                         break;
                     case "DCHD":
                         entity.ID_NoiChuyen = 6;
                         entity.NoiChuyen = "Điều Chỉnh";
-                        entity.NoiDung = "Đã Điều Chỉnh Hóa Đơn, " + NoiDung;
+                        entity.NoiDung =  NoiDung;
                         entity.TableName = "DCBD_ChiTietHoaDon";
                         entity.IDCT = IDCT;
                         break;
                     case "CTDB":
                         entity.ID_NoiChuyen = 7;
                         entity.NoiChuyen = "Cắt Hủy";
-                        entity.NoiDung = "Đã Lập Thông Báo Cắt Tạm, " + NoiDung;
+                        entity.NoiDung = NoiDung;
                         entity.TableName = "CHDB_ChiTietCatTam";
                         entity.IDCT = IDCT;
                         break;
                     case "CHDB":
                         entity.ID_NoiChuyen = 7;
                         entity.NoiChuyen = "Cắt Hủy";
-                        entity.NoiDung = "Đã Lập Thông Báo Cắt Hủy, " + NoiDung;
+                        entity.NoiDung =  NoiDung;
                         entity.TableName = "CHDB_ChiTietCatHuy";
                         entity.IDCT = IDCT;
                         break;
                     case "PhieuCHDB":
                         entity.ID_NoiChuyen = 7;
                         entity.NoiChuyen = "Cắt Hủy";
-                        entity.NoiDung = "Đã Lập Phiếu Hủy, " + NoiDung;
+                        entity.NoiDung =  NoiDung;
                         entity.TableName = "CHDB_Phieu";
                         entity.IDCT = IDCT;
                         break;
                     case "TruyThu":
                         entity.ID_NoiChuyen = 8;
                         entity.NoiChuyen = "Truy Thu";
-                        entity.NoiDung = "Đã Lập Truy Thu, " + NoiDung;
+                        entity.NoiDung =  NoiDung;
                         entity.TableName = "TruyThuTienNuoc_ChiTiet";
                         entity.IDCT = IDCT;
                         break;
                     case "TruyThuThuMoi":
                         entity.ID_NoiChuyen = 8;
                         entity.NoiChuyen = "Truy Thu";
-                        entity.NoiDung = "Đã Gửi Thư Mời, " + NoiDung;
+                        entity.NoiDung =  NoiDung;
                         entity.TableName = "TruyThuTienNuoc_ThuMoi";
                         entity.IDCT = IDCT;
                         break;
@@ -505,21 +505,21 @@ namespace KTKS_DonKH.DAL.DonTu
                     case "TTTL":
                         entity.ID_NoiChuyen = 9;
                         entity.NoiChuyen = "Thư Trả Lời";
-                        entity.NoiDung = "Đã Gửi Thư Trả Lời, " + NoiDung;
+                        entity.NoiDung =  NoiDung;
                         entity.TableName = "TTTL_ChiTiet";
                         entity.IDCT = IDCT;
                         break;
                     case "ThuMoi":
                         entity.ID_NoiChuyen = 10;
                         entity.NoiChuyen = "Thư Mời";
-                        entity.NoiDung = "Đã Gửi Thư Mời, " + NoiDung;
+                        entity.NoiDung =  NoiDung;
                         entity.TableName = "ThuMoi_ChiTiet";
                         entity.IDCT = IDCT;
                         break;
                     case "ToTrinh":
                         entity.ID_NoiChuyen = 11;
                         entity.NoiChuyen = "Tờ Trình";
-                        entity.NoiDung = "Đã Lập Tờ Trình, " + NoiDung;
+                        entity.NoiDung =  NoiDung;
                         entity.TableName = "ToTrinh_ChiTiet";
                         entity.IDCT = IDCT;
                         break;

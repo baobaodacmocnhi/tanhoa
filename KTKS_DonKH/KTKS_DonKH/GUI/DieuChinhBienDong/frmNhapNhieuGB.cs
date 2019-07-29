@@ -421,7 +421,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (_cDCBD.ThemDCBD(ctdcbd))
                             {
                                 if (dontu_ChiTiet != null)
-                                    _cDonTu.Them_LichSu("DCBD",ctdcbd.ThongTin,(int)ctdcbd.MaCTDCBD, dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
+                                    _cDonTu.Them_LichSu(ctdcbd.CreateDate.Value, "DCBD", "Đã Điều Chỉnh Biến Động, " + ctdcbd.ThongTin, (int)ctdcbd.MaCTDCBD, dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
                                 if (min == 0)
                                     min = ctdcbd.MaCTDCBD;
                                 max = ctdcbd.MaCTDCBD;

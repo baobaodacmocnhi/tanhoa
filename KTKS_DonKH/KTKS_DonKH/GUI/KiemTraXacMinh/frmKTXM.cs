@@ -270,8 +270,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             _MaCTKTXM = -1;
             _ctktxm = null;
             _hoadon = null;
-
-            LoadDSKTXM();
+            
             dgvBangGia.Rows.Clear();
             dgvHinh.Rows.Clear();
             txtMaDonMoi.Focus();
@@ -579,15 +578,16 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             }
                             if (_dontu_ChiTiet != null)
                             {
-                                if (_cDonTu.Them_LichSu("KTXM", ctktxm.NoiDungKiemTra, (int)ctktxm.MaCTKTXM, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
+                                if (_cDonTu.Them_LichSu(ctktxm.NgayKTXM.Value,"KTXM", "Đã Kiểm Tra, " + ctktxm.NoiDungKiemTra, (int)ctktxm.MaCTKTXM, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
                                     scope.Complete();
                             }
                             else
                                 scope.Complete();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear_LoadDSKTXM();
-                            txtMaDonCu.Focus();
+                            txtMaDonMoi.Focus();
                         }
+                    LoadDSKTXM();
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
