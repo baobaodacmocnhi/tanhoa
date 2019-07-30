@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DH_CODONG" Class="dbDH_CODONGDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.1.9;Initial Catalog=DH_CODONG;Persist Security Info=True;User ID=sa" SettingsObjectName="BauCu.Properties.Settings" SettingsPropertyName="DH_CODONGConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BAUCU" Member="BAUCUs">
+    <Type Name="BAUCU">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LANBC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NGAYBC" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TENBC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SLDY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SLKDY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CREATEBY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CREATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TIEUCHIBIEUQUYET" Member="TIEUCHIBIEUQUYETs">
+    <Type Name="TIEUCHIBIEUQUYET">
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TENLOAI" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BIEUQUYET" Member="BIEUQUYETs">
+    <Type Name="BIEUQUYET">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LANBQ" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NGAYBQ" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LOAIBQ" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="STTCD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MACD" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TONGCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="C1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="C2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="C3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="C4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="C5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="C6" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="C7" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="C8" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CREATEBY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CREATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DSCODONG" Member="DSCODONGs">
+    <Type Name="DSCODONG">
+      <Column Name="STT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="STTCD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MACD" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENCD" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CMND" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NGAYCAP" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NOICAP" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CDGD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PHONGTOA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TONGCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImgPath" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DSCODONG_THAMDU" Member="DSCODONG_THAMDUs">
+    <Type Name="DSCODONG_THAMDU">
+      <Column Name="STT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="STTCD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MACD" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENCD" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CMND" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NGAYCAP" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NOICAP" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CDGD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PHONGTOA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TONGCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NGAYVAO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="DSCODONG_THAMDU_KIEMPHIEU_BAUCU" Member="KIEMPHIEU_BAUCUs" ThisKey="MACD" OtherKey="MACD" Type="KIEMPHIEU_BAUCU" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KHONGHOPLE" Member="KHONGHOPLEs">
+    <Type Name="KHONGHOPLE">
+      <Column Name="STTCD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MACD" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenCD" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TONGCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LoaiBC" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KIEMPHIEU_BAUCU" Member="KIEMPHIEU_BAUCUs">
+    <Type Name="KIEMPHIEU_BAUCU">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LANBQ" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NGAYBQ" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="STTCD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MACD" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="TONGCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_UngCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CREATEBY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CREATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="DSCODONG_THAMDU_KIEMPHIEU_BAUCU" Member="DSCODONG_THAMDU" ThisKey="MACD" OtherKey="MACD" Type="DSCODONG_THAMDU" IsForeignKey="true" />
+      <Association Name="UNGVIEN_KIEMPHIEU_BAUCU" Member="UNGVIEN" ThisKey="ID_UngCu" OtherKey="ID" Type="UNGVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KIEMPHIEU_BIEUQUYET" Member="KIEMPHIEU_BIEUQUYETs">
+    <Type Name="KIEMPHIEU_BIEUQUYET">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LANBQ" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NGAYBQ" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LOAIBQ" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="STTCD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MACD" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TONGCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CREATEBY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CREATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SYS_USERS" Member="SYS_USERs">
+    <Type Name="SYS_USER">
+      <Column Name="USERNAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="PASSWORD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UNGVIEN" Member="UNGVIENs">
+    <Type Name="UNGVIEN">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LoaiBC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="UNGVIEN_KIEMPHIEU_BAUCU" Member="KIEMPHIEU_BAUCUs" ThisKey="ID" OtherKey="ID_UngCu" Type="KIEMPHIEU_BAUCU" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BAUSOPHIEUDU" Member="BAUSOPHIEUDUs">
+    <Type Name="BAUSOPHIEUDU">
+      <Column Name="STTCD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MACD" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenCD" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TONGCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LoaiBC" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
