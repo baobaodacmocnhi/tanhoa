@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.5" name="CallCenter">
+  <DataContextMoniker Name="/KyThuatDataContext" />
+  <nestedChildShapes>
+    <classShape Id="958ea04a-37dc-40a6-850e-433ad9c0e840" absoluteBounds="7.5, 8.5, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/KyThuatDataContext/KT_DongNuoc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4652a5a8-677b-4bfa-b32f-3262769640c2" absoluteBounds="7.515, 8.96, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="69cf2425-f181-46ac-b256-0754e0090073" absoluteBounds="4.875, 3.5, 2, 6.7707340494791657">
+      <DataClassMoniker Name="/KyThuatDataContext/KT_BaoBe" />
+      <nestedChildShapes>
+        <elementListCompartment Id="04539c7e-20c6-4b26-957c-9c6e8970d98d" absoluteBounds="4.89, 3.96, 1.9700000000000002, 6.2107340494791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0814359a-1d8d-4bd2-acab-a481843feb88" absoluteBounds="1.25, 3.125, 2, 6.1938297526041657">
+      <DataClassMoniker Name="/KyThuatDataContext/KT_Van" />
+      <nestedChildShapes>
+        <elementListCompartment Id="73ef9e5b-15b6-433d-a2c4-11d496d601d7" absoluteBounds="1.2650000000000001, 3.585, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="31535d58-2f95-441d-85c8-f0df5527a1e1" absoluteBounds="0.75, 1.25, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/KyThuatDataContext/DongHo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dd1aec25-3600-4634-bd83-e55fa0fdd26f" absoluteBounds="0.765, 1.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

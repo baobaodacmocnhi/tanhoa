@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.75" name="TanHoa">
+  <DataContextMoniker Name="/TanHoaDataContext" />
+  <nestedChildShapes>
+    <classShape Id="623bfbd0-583e-437e-ae51-938f8a339e1f" absoluteBounds="2.375, 3, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/TanHoaDataContext/GNKDT_THONGTINDMA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aec47d40-d903-4d52-9845-0dc637cff15b" absoluteBounds="2.39, 3.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a972d043-05aa-433b-9179-9ef512a84468" absoluteBounds="6.875, 1.875, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/TanHoaDataContext/SYS_USER" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f4a6790c-c8da-4bc7-be62-d7e57af4c3c4" absoluteBounds="6.89, 2.335, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7c9c7f70-bc7e-479d-85b1-b6dbbca76f5d" absoluteBounds="5.5, 2.625, 2, 9.8475569661458326">
+      <DataClassMoniker Name="/TanHoaDataContext/TB_DULIEUKHACHHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0e9182d5-8037-4d74-af3d-252e3550be8c" absoluteBounds="5.515, 3.085, 1.9700000000000002, 9.2875569661458321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3525c1a2-6260-42f9-aeb4-954060822db2" absoluteBounds="5.875, 1.75, 2, 10.809064127604165">
+      <DataClassMoniker Name="/TanHoaDataContext/TB_DULIEUKHACHHANG_HUYDB" />
+      <nestedChildShapes>
+        <elementListCompartment Id="480db5d8-48d5-426c-8947-99f608e5ebb1" absoluteBounds="5.89, 2.21, 1.9700000000000002, 10.249064127604166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ebbb2e38-e8b8-42f0-8a19-56a638aaec48" absoluteBounds="0.5, 2.625, 2, 1.9631982421875">
+      <DataClassMoniker Name="/TanHoaDataContext/TB_DULIEUKHACHHANG_IMG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3eb8c850-1187-4659-adf8-d89c4d76041b" absoluteBounds="0.515, 3.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

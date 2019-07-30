@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 19.5" name="GanMoi">
+  <DataContextMoniker Name="/GanMoiDataContext" />
+  <nestedChildShapes>
+    <classShape Id="88e10422-19b9-4513-9660-fc779925e319" absoluteBounds="2.5, 3.875, 2, 15.424298502604165">
+      <DataClassMoniker Name="/GanMoiDataContext/KH_HOSOKHACHHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7ea0a8ad-e355-4a13-9a3b-58325d7c4c35" absoluteBounds="2.515, 4.335, 1.9700000000000002, 14.864298502604166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d9d3a71d-c459-48eb-875e-31df4aa5890a" absoluteBounds="2.5, 1.25, 2, 5.0400211588541657">
+      <DataClassMoniker Name="/GanMoiDataContext/BIENNHANDON" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4a9cf9e1-b537-4ca4-b0a9-531113639f63" absoluteBounds="2.515, 1.71, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5998ac40-9f3c-4728-9cca-220a02d7e0b5" absoluteBounds="5.875, 3.125, 2, 9.0783512369791648">
+      <DataClassMoniker Name="/GanMoiDataContext/DON_KHACHHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="56aa37bc-9b2e-4b29-810a-9d881b445cfa" absoluteBounds="5.89, 3.585, 1.9700000000000002, 8.5183512369791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

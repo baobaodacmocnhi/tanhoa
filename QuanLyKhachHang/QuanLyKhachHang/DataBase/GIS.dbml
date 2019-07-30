@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TANHOAGIS" Class="GISDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=192.168.90.11\SERVER2008;Initial Catalog=TANHOAGIS;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TANHOAGISConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.t_Channel_Configurations" Member="t_Channel_Configurations">
+    <Type Name="t_Channel_Configuration">
+      <Column Name="ChannelId" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LoggerId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ChannelName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Unit" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Pressure1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Pressure2" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ForwardFlow" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReverseFlow" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TimeStamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IndexTimeStamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastIndex" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ObjectID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DATALOGGER" Member="DATALOGGERs">
+    <Type Name="DATALOGGER">
+      <Column Name="OBJECTID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDDiemApLuc" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ViTriDiemApLuc" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ToaDo_X" Type="System.Decimal" DbType="Decimal(38,8)" CanBeNull="true" />
+      <Column Name="ToaDo_Y" Type="System.Decimal" DbType="Decimal(38,8)" CanBeNull="true" />
+      <Column Name="TenDiem" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ThoiGianDo" Type="System.Decimal" DbType="Decimal(38,8)" CanBeNull="true" />
+      <Column Name="ApLucDo" Type="System.Decimal" DbType="Decimal(38,8)" CanBeNull="true" />
+      <Column Name="SoNha" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaDuong" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MaPhuong" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MaQuan" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="GlobalID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="NamLapDat" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="TinhTrangSuDung" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="NguoiCapNhat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaDMA" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="CheckTool" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoDienThoai" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="SoSeri" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BoTruyenTinHieu" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="GiaTriLN" Type="System.Decimal" DbType="Decimal(38,8)" CanBeNull="true" />
+      <Column Name="GiaTriNN" Type="System.Decimal" DbType="Decimal(38,8)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="SHAPE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
