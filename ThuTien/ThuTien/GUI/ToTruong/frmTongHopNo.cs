@@ -326,22 +326,22 @@ namespace ThuTien.GUI.ToTruong
                         else
                             dr["TienDu"] = 0;
                         TongCongSo += int.Parse(item.Cells["TongCong"].Value.ToString()) + int.Parse(dr["TienDu"].ToString());
-                        //dr["CSM"] = txtCSM.Text.Trim();
-                        //dr["CSC"] = txtCSC.Text.Trim();
-                        //dr["TT"] = txtTT.Text.Trim();
-                        //dr["DM"] = txtDM.Text.Trim();
-                        //dr["TuNgay"] = txtTuNgay.Text.Trim();
-                        //dr["DenNgay"] = txtDenNgay.Text.Trim();
+                        dr["CSM"] = txtCSM.Text.Trim();
+                        dr["CSC"] = txtCSC.Text.Trim();
+                        dr["TT"] = txtTT.Text.Trim();
+                        dr["DM"] = txtDM.Text.Trim();
+                        dr["TuNgay"] = txtTuNgay.Text.Trim();
+                        dr["DenNgay"] = txtDenNgay.Text.Trim();
 
                         ds.Tables["TongHopNo"].Rows.Add(dr);
                     }
                     DataRow dr1 = ds.Tables["TongHopNo"].NewRow();
-                    dr1["CSM"] = txtCSM.Text.Trim();
-                    dr1["CSC"] = txtCSC.Text.Trim();
-                    dr1["TT"] = txtTT.Text.Trim();
-                    dr1["DM"] = txtDM.Text.Trim();
-                    dr1["TuNgay"] = txtTuNgay.Text.Trim();
-                    dr1["DenNgay"] = txtDenNgay.Text.Trim();
+                    //dr1["CSM"] = txtCSM.Text.Trim();
+                    //dr1["CSC"] = txtCSC.Text.Trim();
+                    //dr1["TT"] = txtTT.Text.Trim();
+                    //dr1["DM"] = txtDM.Text.Trim();
+                    //dr1["TuNgay"] = txtTuNgay.Text.Trim();
+                    //dr1["DenNgay"] = txtDenNgay.Text.Trim();
                     dr1["LyDo"] = txtLyDoTienDu.Text.Trim();
                     dr1["TongCongSo"] = TongCongSo;
                     dr1["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
@@ -504,22 +504,22 @@ namespace ThuTien.GUI.ToTruong
                 else
                     dr["TienDu"] = 0;
                 TongCongSo += (int)item.TongCong.Value + int.Parse(dr["TienDu"].ToString());
-                //dr["CSM"] = tonghopno.ChiSoMoi;
-                //dr["CSC"] = tonghopno.ChiSoCu;
-                //dr["TT"] = tonghopno.TieuThu;
-                //dr["DM"] = tonghopno.DinhMuc;
-                //dr["TuNgay"] = tonghopno.TuNgay;
-                //dr["DenNgay"] = tonghopno.DenNgay;
+                dr["CSM"] = tonghopno.ChiSoMoi;
+                dr["CSC"] = tonghopno.ChiSoCu;
+                dr["TT"] = tonghopno.TieuThu;
+                dr["DM"] = tonghopno.DinhMuc;
+                dr["TuNgay"] = tonghopno.TuNgay;
+                dr["DenNgay"] = tonghopno.DenNgay;
 
                 ds.Tables["TongHopNo"].Rows.Add(dr);
             }
             DataRow dr1 = ds.Tables["TongHopNo"].NewRow();
-            dr1["CSM"] = tonghopno.ChiSoMoi;
-            dr1["CSC"] = tonghopno.ChiSoCu;
-            dr1["TT"] = tonghopno.TieuThu;
-            dr1["DM"] = tonghopno.DinhMuc;
-            dr1["TuNgay"] = tonghopno.TuNgay;
-            dr1["DenNgay"] = tonghopno.DenNgay;
+            //dr1["CSM"] = tonghopno.ChiSoMoi;
+            //dr1["CSC"] = tonghopno.ChiSoCu;
+            //dr1["TT"] = tonghopno.TieuThu;
+            //dr1["DM"] = tonghopno.DinhMuc;
+            //dr1["TuNgay"] = tonghopno.TuNgay;
+            //dr1["DenNgay"] = tonghopno.DenNgay;
             dr1["LyDo"] = tonghopno.LyDoTienDu;
             dr1["TongCongSo"] = TongCongSo;
             dr1["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
