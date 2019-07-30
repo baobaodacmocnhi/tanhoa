@@ -16,15 +16,15 @@ namespace QuanLyKhachHang
 {
     public partial class mHome : System.Web.UI.Page
     {
+        TB_DULIEUKHACHHANG khachhang = null;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             MaintainScrollPositionOnPostBack = true;
             if (IsPostBack)
                 return;
-
-
         }
-        TB_DULIEUKHACHHANG khachhang = null;
+
         void LoadThongTinDB(string sodanhbo)
         {
             if (sodanhbo.Length == 11)
@@ -65,7 +65,6 @@ namespace QuanLyKhachHang
                     loadGhiChu(khachhang.DANHBO);
                     LoadHInh(khachhang.DANHBO);
                     LoadVideos(this.txtDB.Text);
-
                 }
                 else
                 {
@@ -74,7 +73,6 @@ namespace QuanLyKhachHang
                     {
                         try
                         {
-
                             lbDanhBo.Text = khachhanghuy.DANHBO;
                             lotrinh.Text = khachhang.LOTRINH;
                             ////    DOT.Text = khachhanghuy.DOT;
@@ -108,35 +106,32 @@ namespace QuanLyKhachHang
                         {
 
                         }
-
                     }
                     else
                     {
-
                         lbTenKh.Text = "Không Tìm Thấy Khách Hàng";
                         lbTenKh.ForeColor = Color.Red;
                         //Refesh();
                     }
-
                 }
             }
         }
+
         public void loadHoaDon(string db)
         {
             GridView1.DataSource = Class.C_DuLieuKhachHang.getListHoaDonReport(db);
             GridView1.DataBind();
         }
+
         public void loadGhiChu(string db)
         {
             GridView2.DataSource = Class.C_DuLieuKhachHang.lisGhiChu(db);
             GridView2.DataBind();
 
-
             GridView4.DataSource = Class.C_TrungTamKhachHang.getKiemTraXM(db);
             GridView4.DataBind();
-
-
         }
+
         public void LoadHInh(string db)
         {
             List<TB_DULIEUKHACHHANG_IMG> lis = C_DuLieuKhachHang.getListImg(db);
@@ -159,9 +154,7 @@ namespace QuanLyKhachHang
                 Label t = new Label();
                 t.Text = "   ";
                 PanelImg.Controls.Add(t);
-
             }
-
         }
 
         public void LoadVideos(string db)
@@ -169,12 +162,10 @@ namespace QuanLyKhachHang
             List<TB_DULIEUKHACHHANG_IMG> lis = C_DuLieuKhachHang.getListVideo(db);
             DataList1.DataSource = lis;
             DataList1.DataBind();
-
         }
 
         protected void txtDB_TextChanged(object sender, EventArgs e)
         {
-
             string s = dot.SelectedValue + "";
             string search = txtDB.Text;
             if ("0".Equals(s))
@@ -192,11 +183,19 @@ namespace QuanLyKhachHang
                 GridView3.DataSource = tb;
                 GridView3.DataBind();
                 Panel3.Visible = true;
-
+            }
+            else if ("2".Equals(s))
+            {
+                string query = "";
+                query = "SELECT DANHBO, LOTRINH,HOTEN, (SONHA+ ' ' + TENDUONG ) AS DCHI,HOPDONG,GIABIEU,DINHMUC,CODH, HIEUDH,SOTHANDH,YEAR(NGAYTHAY) AS NAMGAN, VITRIDHN,CHISOKYTRUOC ";
+                query += "FROM TB_DULIEUKHACHHANG KH ";
+                query += "WHERE SOTHANDH LIKE '%" + this.txtDB.Text + "%' ";
+                DataTable tb = LinQConnection.getDataTable(query);
+                GridView3.DataSource = tb;
+                GridView3.DataBind();
+                Panel3.Visible = true;
             }
             //Session["sds"] = Class.C_QuanLyDHN.getDiaChi(search);
-
-
 
         }
 
@@ -220,10 +219,8 @@ namespace QuanLyKhachHang
 
                 scale -= 0.05f;
             }
-
             return currentByteImageArray;
         }
-
 
         protected void btUploag_Click(object sender, EventArgs e)
         {
@@ -263,7 +260,6 @@ namespace QuanLyKhachHang
             }
             else
             {
-
                 if (FileUpload2.HasFile)
                     try
                     {
@@ -285,7 +281,6 @@ namespace QuanLyKhachHang
                         this.upload.Text = "OK";
                         this.upload.BackColor = Color.Blue;
                         LoadHInh(this.txtDB.Text);
-
                     }
                     catch (Exception ex)
                     {
@@ -302,7 +297,6 @@ namespace QuanLyKhachHang
                 this.txtDB.Text = e.CommandArgument.ToString();
                 LoadThongTinDB(e.CommandArgument.ToString());
                 Panel3.Visible = false;
-
             }
         }
     }

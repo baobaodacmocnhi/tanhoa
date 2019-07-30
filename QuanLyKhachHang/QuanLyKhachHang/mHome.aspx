@@ -40,6 +40,7 @@
       <tr><td style="width:80px;"><asp:DropDownList ID="dot" runat="server" Height="19px" Width="85px">
           <asp:ListItem Value="0">Danh Bộ</asp:ListItem>
           <asp:ListItem Value="1">Địa Chỉ</asp:ListItem>
+          <asp:ListItem Value="2">Số Thân</asp:ListItem>
           </asp:DropDownList></td><td>
           <asp:TextBox ID="txtDB" runat="server" ontextchanged="txtDB_TextChanged" 
                   style="margin-left: 0px"></asp:TextBox>
