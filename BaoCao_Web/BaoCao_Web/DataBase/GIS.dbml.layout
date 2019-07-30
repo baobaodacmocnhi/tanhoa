@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="GIS">
+  <DataContextMoniker Name="/GISDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5f27b70e-84d0-43d5-a5a4-1a10ef052d9a" absoluteBounds="0.75, 1.125, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/GISDataContext/t_Channel_Configuration" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e3dda458-874d-4269-b55e-965132ccbb1b" absoluteBounds="0.765, 1.585, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="60fa8483-54a5-4a46-978c-276492490125" absoluteBounds="4.75, 0.875, 2, 6.0015283203125">
+      <DataClassMoniker Name="/GISDataContext/DATALOGGER" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dba0b07d-6882-4c87-ae4d-96cc9a0113ce" absoluteBounds="4.7650000000000006, 1.335, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

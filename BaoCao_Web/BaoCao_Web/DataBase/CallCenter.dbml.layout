@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="CallCenter">
+  <DataContextMoniker Name="/CallCenterDataContext" />
+  <nestedChildShapes>
+    <classShape Id="8803b9ad-b0b6-4f7d-a64c-9ddbc78360d6" absoluteBounds="0.875, 1.25, 2, 3.1170068359375">
+      <DataClassMoniker Name="/CallCenterDataContext/KT_DongNuoc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b65e8eab-2b46-4295-bb97-53c11529871c" absoluteBounds="0.89, 1.71, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
