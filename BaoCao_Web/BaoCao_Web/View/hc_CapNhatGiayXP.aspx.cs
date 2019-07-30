@@ -258,7 +258,7 @@ namespace BaoCao_Web.View
                 GridView1.DataSource = Class.C_ToChucHanhChanh.getDuLieuXinVe(cbThang0.Text, cbNam.Text);
             }
             else
-                GridView1.DataSource = Class.C_ToChucHanhChanh.getDuLieuXinVe(cbPhongBanDoi.SelectedItem.Text,cbThang0.Text, cbNam.Text);
+                GridView1.DataSource = Class.C_ToChucHanhChanh.getDuLieuXinVe(cbPhongBanDoi.SelectedValue, cbThang0.Text, cbNam.Text);
             GridView1.DataBind();
         }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
