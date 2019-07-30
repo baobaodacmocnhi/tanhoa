@@ -77,7 +77,7 @@ namespace BaoCao_Web.View
             try
             {
                 TCHC_GIAYXINVE xv = new TCHC_GIAYXINVE();
-                xv.PHONGBAN = this.cbPhongBanDoi.SelectedItem.Text;
+                xv.PHONGBAN = Class.LinQConnection.getDataTable("SELECT MaPhong FROM TCHC_PHONGBAN WHERE ID=" + this.cbPhongBanDoi.SelectedValue).Rows[0][0].ToString();
                 xv.MANV = this.cpNhanVien.SelectedItem.Value;
                 xv.TENNV = this.cpNhanVien.SelectedItem.Text;
                 xv.LOAIGP = this.cpLoaiGiayPhep.SelectedValue;
