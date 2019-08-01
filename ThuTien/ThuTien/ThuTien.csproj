@@ -25,13 +25,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>\\192.168.90.9\BaoBao%24\ThuTien\</UpdateUrl>
+    <UpdateUrl>\\server9\BaoBao%24\ThuTien\</UpdateUrl>
     <TargetCulture>vi-VN</TargetCulture>
     <ProductName>Quản Lý Thu Ngân</ProductName>
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1128</ApplicationRevision>
+    <ApplicationRevision>1129</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

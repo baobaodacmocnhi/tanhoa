@@ -459,9 +459,11 @@ namespace ThuTien.GUI.Doi
                                 foreach (string SoHoaDon in SoHoaDons)
                                     if (String.IsNullOrEmpty(SoHoaDon)==false&&_cLenhHuy.CheckExist(SoHoaDon)==false)
                                     {
+                                        HOADON hoadon=_cHoaDon.Get(SoHoaDon);
                                         TT_LenhHuy lenhhuy = new TT_LenhHuy();
-                                        lenhhuy.MaHD = _cHoaDon.Get(SoHoaDon).ID_HOADON;
+                                        lenhhuy.MaHD = hoadon.ID_HOADON;
                                         lenhhuy.SoHoaDon = SoHoaDon;
+                                        lenhhuy.DanhBo = hoadon.DANHBA;
                                         lenhhuy.TinhTrang = totrinh.TT_CTToTrinhCatHuys.SingleOrDefault(itemLst => itemLst.DanhBo == item.DanhBo).GhiChu;
                                         _cLenhHuy.Them(lenhhuy);
                                     }
