@@ -21,7 +21,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
     public partial class frmCapNhatDonTKH : Form
     {
         string _mnu = "mnuCapNhatDon";
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CThuTien _cThuTien = new CThuTien();
         CLoaiDon _cLoaiDon = new CLoaiDon();
         CDonTu _cDonTu = new CDonTu();

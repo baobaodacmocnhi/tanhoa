@@ -25,7 +25,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
         CThuTien _cThuTien = new CThuTien();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CDCBD _cDCBD = new CDCBD();
 

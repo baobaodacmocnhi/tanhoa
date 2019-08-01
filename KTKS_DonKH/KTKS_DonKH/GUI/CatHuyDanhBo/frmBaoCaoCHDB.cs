@@ -19,7 +19,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
     public partial class frmBaoCaoCHDB : Form
     {
         CCHDB _cCHDB = new CCHDB();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CCHDB_LyDo _cLyDoCHDB = new CCHDB_LyDo();
         CCHDB_NoiDungXuLy _cNoiDungXuLyCHDB = new CCHDB_NoiDungXuLy();
 

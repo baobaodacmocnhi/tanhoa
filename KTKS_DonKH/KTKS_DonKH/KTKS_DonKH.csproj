@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1152</ApplicationRevision>
+    <ApplicationRevision>1158</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -209,6 +209,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptDSCongVan.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\DonTu\rptDonTu_GroupNoiDung.cs">
+      <DependentUpon>rptDonTu_GroupNoiDung.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BaoCao\DonTu\rptThongKeDonTu_Phong.cs">
       <DependentUpon>rptThongKeDonTu_Phong.rpt</DependentUpon>
@@ -733,7 +739,7 @@
     <Compile Include="DAL\CallCenter\DataGridV.cs" />
     <Compile Include="DAL\CallCenter\DateToString.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CCHDB_NoiDungXuLy.cs" />
-    <Compile Include="DAL\CDocSo.cs" />
+    <Compile Include="DAL\CDHN.cs" />
     <Compile Include="DAL\CGanMoi.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDataTransfer.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CKhuCongNghiep.cs" />
@@ -745,6 +751,7 @@
     <Compile Include="DAL\CExcel.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CChuyenDe.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CDongTienNoiDung.cs" />
+    <Compile Include="DAL\PhongKhachHang\CTraHopDong.cs" />
     <Compile Include="DAL\ThuMoi\CThuMoi.cs" />
     <Compile Include="DAL\ThuTraLoi\CToTrinh_VeViec.cs" />
     <Compile Include="DAL\ThuTraLoi\CToTrinh.cs" />
@@ -923,6 +930,12 @@
     </Compile>
     <Compile Include="GUI\HeThong\frmShowImage.Designer.cs">
       <DependentUpon>frmShowImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PhongKhachHang\frmTraHopDong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PhongKhachHang\frmTraHopDong.Designer.cs">
+      <DependentUpon>frmTraHopDong.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThuTraLoi\frmToTrinhVeViec.cs">
       <SubType>Form</SubType>
@@ -1434,6 +1447,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSCongVan.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DonTu\rptDonTu_GroupNoiDung.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDonTu_GroupNoiDung.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DonTu\rptThongKeDonTu_Phong.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeDonTu_Phong.cs</LastGenOutput>
@@ -1838,6 +1855,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmShowImage.resx">
       <DependentUpon>frmShowImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PhongKhachHang\frmTraHopDong.resx">
+      <DependentUpon>frmTraHopDong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThuTraLoi\frmToTrinhVeViec.resx">
       <DependentUpon>frmToTrinhVeViec.cs</DependentUpon>
@@ -2595,6 +2615,7 @@
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

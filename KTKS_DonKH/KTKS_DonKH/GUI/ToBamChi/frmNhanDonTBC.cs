@@ -19,7 +19,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
     public partial class frmNhanDonTBC : Form
     {
         string _mnu = "mnuNhanDonTBC";
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CThuTien _cThuTien = new CThuTien();
         CDonTu _cDonTu = new CDonTu();
         CLoaiDonTBC _cLoaiDonTBC = new CLoaiDonTBC();

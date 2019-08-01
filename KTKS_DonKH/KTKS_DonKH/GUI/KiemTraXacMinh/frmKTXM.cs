@@ -28,7 +28,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CDonTBC _cDonTBC = new CDonTBC();
         CThuTien _cThuTien = new CThuTien();
         CKTXM _cKTXM = new CKTXM();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CHienTrangKiemTra _cHienTrangKiemTra = new CHienTrangKiemTra();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;

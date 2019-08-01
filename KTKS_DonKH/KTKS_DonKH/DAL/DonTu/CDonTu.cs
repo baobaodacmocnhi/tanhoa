@@ -160,7 +160,7 @@ namespace KTKS_DonKH.DAL.DonTu
         public DataTable getDSBySoCongVan(string SoCongVan, int MaPhong)
         {
             var query = from item in db.DonTus
-                        where item.SoCongVan == SoCongVan && db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).MaPhong == MaPhong
+                        where item.SoCongVan == SoCongVan && item.MaPhong == MaPhong
                         select new
                         {
                             item.MaDon,
@@ -196,7 +196,7 @@ namespace KTKS_DonKH.DAL.DonTu
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate, int MaPhong)
         {
             var query = from item in db.DonTus
-                        where item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value<= ToCreateDate && db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).MaPhong == MaPhong
+                        where item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value<= ToCreateDate && item.MaPhong == MaPhong
                         select new
                         {
                             item.MaDon,
@@ -205,7 +205,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
                             HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
                             DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
-                            NoiDung = item.Name_NhomDon,
+                            NoiDung = item.VanDeKhac==null? item.Name_NhomDon:item.Name_NhomDon+" " +item.VanDeKhac,
                             CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
@@ -299,7 +299,7 @@ namespace KTKS_DonKH.DAL.DonTu
         public DataTable getDS_ChiTiet_ByDanhBo(string DanhBo, int MaPhong)
         {
             var query = from item in db.DonTu_ChiTiets
-                        where item.DanhBo == DanhBo && db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).MaPhong == MaPhong
+                        where item.DanhBo == DanhBo && item.DonTu.MaPhong == MaPhong
                         select new
                         {
                             item.MaDon,

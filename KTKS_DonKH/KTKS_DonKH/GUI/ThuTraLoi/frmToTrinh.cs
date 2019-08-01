@@ -31,7 +31,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
         CToTrinh _cTT = new CToTrinh();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CToTrinh_VeViec _cVeViecToTrinh = new CToTrinh_VeViec();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;

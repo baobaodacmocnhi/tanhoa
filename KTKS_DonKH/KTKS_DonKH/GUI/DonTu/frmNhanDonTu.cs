@@ -24,7 +24,7 @@ namespace KTKS_DonKH.GUI.DonTu
         CDonTu _cDonTu = new CDonTu();
         CNhomDon _cNhomDon = new CNhomDon();
         CThuTien _cThuTien = new CThuTien();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
         CGanMoi _cGanMoi = new CGanMoi();
         CKTXM _cKTXM = new CKTXM();

@@ -31,7 +31,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CThuTien _cThuTien = new CThuTien();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
         CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();

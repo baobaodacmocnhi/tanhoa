@@ -63,6 +63,7 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.cmbPhong = new System.Windows.Forms.ComboBox();
             this.lbPhong = new System.Windows.Forms.Label();
+            this.btnInThongKe = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonTu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
@@ -387,6 +388,16 @@
             this.lbPhong.Text = "Phòng";
             this.lbPhong.Visible = false;
             // 
+            // btnInThongKe
+            // 
+            this.btnInThongKe.Location = new System.Drawing.Point(929, 13);
+            this.btnInThongKe.Name = "btnInThongKe";
+            this.btnInThongKe.Size = new System.Drawing.Size(90, 25);
+            this.btnInThongKe.TabIndex = 42;
+            this.btnInThongKe.Text = "In Thống Kê";
+            this.btnInThongKe.UseVisualStyleBackColor = true;
+            this.btnInThongKe.Click += new System.EventHandler(this.btnInThongKe_Click);
+            // 
             // frmDSDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -394,6 +405,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1219, 611);
+            this.Controls.Add(this.btnInThongKe);
             this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.cmbPhong);
             this.Controls.Add(this.lbPhong);
@@ -459,5 +471,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.ComboBox cmbPhong;
         private System.Windows.Forms.Label lbPhong;
+        private System.Windows.Forms.Button btnInThongKe;
     }
 }

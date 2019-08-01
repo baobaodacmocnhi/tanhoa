@@ -30,7 +30,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CCHDB _cCHDB = new CCHDB();
         CCHDB_LyDo _cLyDoCHDB = new CCHDB_LyDo();

@@ -33,7 +33,7 @@ namespace KTKS_DonKH.GUI.TimKiem
     {
         CTimKiem _cTimKiem = new CTimKiem();
         CThuTien _cThuTien = new CThuTien();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         DataRowView _CTRow = null;
         DataTable dt = new DataTable();
         //System.IO.StreamWriter _log;

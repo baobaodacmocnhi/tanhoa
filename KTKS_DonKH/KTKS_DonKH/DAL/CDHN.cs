@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace KTKS_DonKH.DAL
 {
-    class CDocSo
+    class CDHN
     {
         private dbDocSoDataContext db = new dbDocSoDataContext();
 
@@ -18,7 +18,7 @@ namespace KTKS_DonKH.DAL
         protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
         protected SqlCommand command;
 
-        public CDocSo()
+        public CDHN()
         {
             try
             {

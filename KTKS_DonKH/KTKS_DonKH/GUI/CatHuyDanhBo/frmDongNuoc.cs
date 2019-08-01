@@ -30,7 +30,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
         CThuTien _cThuTien = new CThuTien();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CBamChi _cBamChi = new CBamChi();

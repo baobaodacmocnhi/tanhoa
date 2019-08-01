@@ -38,7 +38,7 @@ namespace KTKS_DonKH.GUI.CongVan
         CCHDB _cCHDB = new CCHDB();
         CTTTL _cTTTL = new CTTTL();
         CThuTien _cThuTien = new CThuTien();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
 
         public frmCongVanDi()
         {

@@ -19,7 +19,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
     public partial class frmNhanDonTXL : Form
     {
         string _mnu = "mnuNhanDonTXL";
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CThuTien _cThuTien = new CThuTien();
         CDonTu _cDonTu = new CDonTu();
         CLoaiDonTXL _cLoaiDonTXL = new CLoaiDonTXL();

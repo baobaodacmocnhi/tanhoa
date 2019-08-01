@@ -40,7 +40,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChungTu _cChungTu = new CChungTu();
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CGiaNuoc _cGiaNuoc = new CGiaNuoc();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
 
         List<GiaNuoc> _lstGiaNuoc;
 

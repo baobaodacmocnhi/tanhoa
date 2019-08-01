@@ -19,7 +19,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CLoaiDon _cLoaiDon = new CLoaiDon();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CThuTien _cThuTien = new CThuTien();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CDonTu _cDonTu = new CDonTu();
         CDonKH _cDonKH = new CDonKH();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();

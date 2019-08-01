@@ -19,7 +19,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
         CLoaiDonTBC _cLoaiDonTBC = new CLoaiDonTBC();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CThuTien _cThuTien = new CThuTien();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CDonTu _cDonTu = new CDonTu();
         CDonTBC _cDonTBC = new CDonTBC();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();

@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         CTTTL _cTTTL = new CTTTL();
         CTTTL_GhiChu _cGhiChuCTTTTL = new CTTTL_GhiChu();
         CThuTien _cThuTien = new CThuTien();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CTTTL_VeViec _cVeViecTTTL = new CTTTL_VeViec();
 

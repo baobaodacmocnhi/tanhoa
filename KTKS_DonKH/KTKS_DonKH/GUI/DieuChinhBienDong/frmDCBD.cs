@@ -35,7 +35,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CThuTien _cThuTien = new CThuTien();
         CDCBD _cDCBD = new CDCBD();
         CKTXM _cKTXM = new CKTXM();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;

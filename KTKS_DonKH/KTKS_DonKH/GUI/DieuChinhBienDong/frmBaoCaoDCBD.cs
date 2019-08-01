@@ -19,7 +19,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
     {
         CChungTu _cChungTu = new CChungTu();
         CDCBD _cDCBD = new CDCBD();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         List<QUAN> _lst;
         CThuTien _cThuTien = new CThuTien();
 

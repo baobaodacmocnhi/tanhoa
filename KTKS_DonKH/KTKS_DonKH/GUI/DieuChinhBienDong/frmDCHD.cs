@@ -34,7 +34,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CGiaNuoc _cGiaNuoc = new CGiaNuoc();
         CKTXM _cKTXM = new CKTXM();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CThuTien _cThuTien = new CThuTien();
         CKhuCongNghiep _cKCN = new CKhuCongNghiep();
 

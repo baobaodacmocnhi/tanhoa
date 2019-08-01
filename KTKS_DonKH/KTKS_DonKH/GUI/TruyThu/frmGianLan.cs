@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.TruyThu
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
         CThuTien _cThuTien = new CThuTien();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CGianLan _cGianLan = new CGianLan();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;

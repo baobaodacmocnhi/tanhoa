@@ -33,7 +33,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();
         CDongNuoc _cDongNuoc = new CDongNuoc();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
 
         public frmDSCHDB()
         {

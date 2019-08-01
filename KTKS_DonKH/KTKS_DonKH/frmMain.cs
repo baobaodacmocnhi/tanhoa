@@ -26,6 +26,7 @@ using KTKS_DonKH.GUI.CallCenter;
 using KTKS_DonKH.GUI.DonTu;
 using System.Deployment.Application;
 using KTKS_DonKH.GUI.ThuMoi;
+using KTKS_DonKH.GUI.PhongKhachHang;
 
 namespace KTKS_DonKH
 {
@@ -1004,11 +1005,24 @@ namespace KTKS_DonKH
 
         #endregion
 
-        
 
-        
+        #region Phòng Khách Hàng
 
-       
+        private void mnuTraHopDong_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuTraHopDong", "Xem"))
+            {
+                frmTraHopDong frm = new frmTraHopDong();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
+
+
 
 
 

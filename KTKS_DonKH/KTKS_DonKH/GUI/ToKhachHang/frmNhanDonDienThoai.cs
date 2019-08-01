@@ -18,7 +18,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         string _mnu = "mnuNhanDonDienThoai";
         CDonDienThoai _cDonDT = new CDonDienThoai();
         CThuTien _cThuTien = new CThuTien();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CThongTinKhachHang _cTTKH = new CThongTinKhachHang();
         HOADON _hoadon = null;
         int _selectedindex = -1;

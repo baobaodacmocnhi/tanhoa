@@ -27,7 +27,7 @@ namespace KTKS_DonKH.GUI.BamChi
         CDonTBC _cDonTBC = new CDonTBC();
         CThuTien _cThuTien = new CThuTien();
         CBamChi _cBamChi = new CBamChi();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
         CNiemChi _cNiemChi = new CNiemChi();
 

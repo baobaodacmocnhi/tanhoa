@@ -17,7 +17,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
     public partial class frmPhuongQuan : Form
     {
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CChungTu _cChungTu = new CChungTu();
         CDCBD _cDCBD = new CDCBD();
         DataTable _dt = new DataTable();
