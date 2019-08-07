@@ -188,7 +188,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             //else
             //    lbTruyThu.Text = "";
 
-            string str= _cTTTN.GetTinhTrang(entity.DANHBA);
+            string str = _cTTTN.check_TinhTrang_Ton(entity.DANHBA);
             if (str != "")
                 lbTruyThu.Text = "Tình Trạng Truy Thu: "+str;
             else

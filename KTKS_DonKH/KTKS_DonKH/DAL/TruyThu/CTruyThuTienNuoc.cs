@@ -220,12 +220,13 @@ namespace KTKS_DonKH.DAL.TruyThu
             return db.TruyThuTienNuoc_ChiTiets.Any(item => (item.TinhTrang == null || item.TinhTrang == "" || item.TinhTrang == "Đang gửi thư mời") && item.DanhBo == DanhBo);
         }
 
-        public string GetTinhTrang(string DanhBo)
+        public string check_TinhTrang_Ton(string DanhBo)
         {
-            if (db.TruyThuTienNuoc_ChiTiets.Any(item => item.DanhBo == DanhBo && (item.TinhTrang == "Chưa thanh toán" || item.TinhTrang == "Đang gửi thư mời" || item.TinhTrang == "Trả góp" || item.TinhTrang == "Đã gửi TB tạm ngưng cung cấp nước" || item.TinhTrang == "Chuyển lập TB hủy")) == true)
-                return db.TruyThuTienNuoc_ChiTiets.SingleOrDefault(item => item.DanhBo == DanhBo && (item.TinhTrang == "Chưa thanh toán" || item.TinhTrang == "Đang gửi thư mời" || item.TinhTrang == "Trả góp" || item.TinhTrang == "Đã gửi TB tạm ngưng cung cấp nước" || item.TinhTrang == "Chuyển lập TB hủy")).TinhTrang;
-            else
-                return "";
+            //if (db.TruyThuTienNuoc_ChiTiets.Any(item => item.DanhBo == DanhBo && (item.TinhTrang != "Đã thanh toán" && item.TinhTrang != "Điều chỉnh không phát sinh truy thu" && item.TinhTrang != "Miễn truy thu" && item.TinhTrang != "Giữ nguyên")) == true)
+            //    return db.TruyThuTienNuoc_ChiTiets.SingleOrDefault(item => item.DanhBo == DanhBo && (item.TinhTrang != "Đã thanh toán" && item.TinhTrang != "Điều chỉnh không phát sinh truy thu" && item.TinhTrang != "Miễn truy thu" && item.TinhTrang != "Giữ nguyên")).TinhTrang;
+            //else
+            //    return "";
+            return ExecuteQuery_ReturnOneValue("select dbo.fnCheckTinhTrangTruyThu_Ton('" + DanhBo + "')").ToString();
         }
 
         public TruyThuTienNuoc_ChiTiet get_ChiTiet(decimal IDCT)

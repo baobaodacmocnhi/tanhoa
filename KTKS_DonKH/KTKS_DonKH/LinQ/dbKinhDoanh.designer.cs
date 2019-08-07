@@ -42637,6 +42637,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiNhan;
 		
+		private bool _KhachHangDaLienHe;
+		
 		private int _ID;
 		
 		private System.Nullable<int> _STT;
@@ -42691,6 +42693,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnLuuyChanged();
     partial void OnNoiNhanChanging(string value);
     partial void OnNoiNhanChanged();
+    partial void OnKhachHangDaLienHeChanging(bool value);
+    partial void OnKhachHangDaLienHeChanged();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
@@ -43048,6 +43052,26 @@ namespace KTKS_DonKH.LinQ
 					this._NoiNhan = value;
 					this.SendPropertyChanged("NoiNhan");
 					this.OnNoiNhanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KhachHangDaLienHe", DbType="Bit NOT NULL")]
+		public bool KhachHangDaLienHe
+		{
+			get
+			{
+				return this._KhachHangDaLienHe;
+			}
+			set
+			{
+				if ((this._KhachHangDaLienHe != value))
+				{
+					this.OnKhachHangDaLienHeChanging(value);
+					this.SendPropertyChanging();
+					this._KhachHangDaLienHe = value;
+					this.SendPropertyChanged("KhachHangDaLienHe");
+					this.OnKhachHangDaLienHeChanged();
 				}
 			}
 		}

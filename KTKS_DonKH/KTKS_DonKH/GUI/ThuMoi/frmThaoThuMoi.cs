@@ -107,23 +107,23 @@ namespace KTKS_DonKH.GUI.ThuMoi
             }
             else
                 if (en.ThuMoi.MaDonTKH != null)
-            {
-                _dontkh = _cDonKH.Get(en.ThuMoi.MaDonTKH.Value);
-                txtMaDonCu.Text = en.ThuMoi.MaDonTKH.Value.ToString().Insert(en.ThuMoi.MaDonTKH.Value.ToString().Length - 2, "-");
-            }
-            else
-                    if (en.ThuMoi.MaDonTXL != null)
                 {
-                    _dontxl = _cDonTXL.Get(en.ThuMoi.MaDonTXL.Value);
-                    txtMaDonCu.Text = "TXL" + en.ThuMoi.MaDonTXL.Value.ToString().Insert(en.ThuMoi.MaDonTXL.Value.ToString().Length - 2, "-");
+                    _dontkh = _cDonKH.Get(en.ThuMoi.MaDonTKH.Value);
+                    txtMaDonCu.Text = en.ThuMoi.MaDonTKH.Value.ToString().Insert(en.ThuMoi.MaDonTKH.Value.ToString().Length - 2, "-");
                 }
                 else
-                        if (en.ThuMoi.MaDonTBC != null)
+                    if (en.ThuMoi.MaDonTXL != null)
                     {
-                        _dontbc = _cDonTBC.Get(en.ThuMoi.MaDonTBC.Value);
-                        txtMaDonCu.Text = "TBC" + en.ThuMoi.MaDonTBC.Value.ToString().Insert(en.ThuMoi.MaDonTBC.Value.ToString().Length - 2, "-");
+                        _dontxl = _cDonTXL.Get(en.ThuMoi.MaDonTXL.Value);
+                        txtMaDonCu.Text = "TXL" + en.ThuMoi.MaDonTXL.Value.ToString().Insert(en.ThuMoi.MaDonTXL.Value.ToString().Length - 2, "-");
                     }
-            txtIDCT.Text = en.IDCT.ToString().Insert(en.IDCT.ToString().Length-2,"-");
+                    else
+                        if (en.ThuMoi.MaDonTBC != null)
+                        {
+                            _dontbc = _cDonTBC.Get(en.ThuMoi.MaDonTBC.Value);
+                            txtMaDonCu.Text = "TBC" + en.ThuMoi.MaDonTBC.Value.ToString().Insert(en.ThuMoi.MaDonTBC.Value.ToString().Length - 2, "-");
+                        }
+            txtIDCT.Text = en.IDCT.ToString().Insert(en.IDCT.ToString().Length - 2, "-");
             txtDanhBo.Text = en.DanhBo;
             //txtHopDong.Text = en.HopDong;
             //txtLoTrinh.Text = en.LoTrinh;
@@ -136,6 +136,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
             txtVeViec.Text = en.VeViec;
             txtLuuy.Text = en.Luuy;
             txtNoiNhan.Text = en.NoiNhan;
+            chkKhachHangDaLienHe.Checked = en.KhachHangDaLienHe;
 
             dgvHinh.Rows.Clear();
             foreach (ThuMoi_ChiTiet_Hinh item in en.ThuMoi_ChiTiet_Hinhs.ToList())
@@ -167,6 +168,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
             txtVeViec.Text = "";
             txtLuuy.Text = "Nếu quá thời hạn trên, Ông (Bà) không đến liên hệ. Công ty Cổ phần Cấp nước Tân Hòa sẽ giải quyết theo quy định: điều chỉnh định mức = 0 và tạm ngưng cung cấp nước.";
             txtNoiNhan.Text = CTaiKhoan.HoTen;
+            chkKhachHangDaLienHe.Checked = false;
 
             dgvDSThu.DataSource = null;
             _dontu_ChiTiet = null;
@@ -318,10 +320,10 @@ namespace KTKS_DonKH.GUI.ThuMoi
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-             try
-                {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+            try
             {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+                {
                     LinQ.ThuMoi_ChiTiet entity = new LinQ.ThuMoi_ChiTiet();
 
                     if (_dontu_ChiTiet != null)
@@ -450,22 +452,22 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
                         }
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-             catch (Exception ex)
-             {
-                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             try
-                {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
                     if (_thumoi != null)
                     {
                         _thumoi.DanhBo = txtDanhBo.Text.Trim();
@@ -484,6 +486,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         _thumoi.VeViec = txtVeViec.Text.Trim();
                         _thumoi.Luuy = txtLuuy.Text.Trim();
                         _thumoi.NoiNhan = txtNoiNhan.Text.Trim();
+                        _thumoi.KhachHangDaLienHe = chkKhachHangDaLienHe.Checked;
 
                         if (_cThuMoi.sua_ChiTiet(_thumoi))
                         {
@@ -492,11 +495,11 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         }
                     }
                     else
-                    MessageBox.Show("Chưa chọn thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Chưa chọn thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -506,9 +509,9 @@ namespace KTKS_DonKH.GUI.ThuMoi
         private void btnXoa_Click(object sender, EventArgs e)
         {
             try
-                {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+                {
                     if (_thumoi != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         if (_cThuMoi.xoa_ChiTiet(_thumoi))
@@ -519,10 +522,10 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     }
                     else
                         MessageBox.Show("Chưa chọn thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -539,7 +542,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                 if (_thumoi.ThuMoi.MaDonMoi != null)
                 {
-                    if (_thumoi.ThuMoi.DonTu.DonTu_ChiTiets.Count==1)
+                    if (_thumoi.ThuMoi.DonTu.DonTu_ChiTiets.Count == 1)
                         dr["SoPhieu"] = _thumoi.ThuMoi.MaDonMoi.ToString();
                     else
                         dr["SoPhieu"] = _thumoi.ThuMoi.MaDonMoi.ToString() + "." + _thumoi.STT;
@@ -559,8 +562,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 if (!string.IsNullOrEmpty(_thumoi.DanhBo) && _thumoi.DanhBo.Length == 11)
                     dr["DanhBo"] = _thumoi.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["GiaBieu"] = _thumoi.GiaBieu.Value.ToString();
-                if(_thumoi.DinhMuc!=null)
-                dr["DinhMuc"] = _thumoi.DinhMuc.Value.ToString();
+                if (_thumoi.DinhMuc != null)
+                    dr["DinhMuc"] = _thumoi.DinhMuc.Value.ToString();
                 dr["CanCu"] = _thumoi.CanCu;
                 dr["VaoLuc"] = _thumoi.VaoLuc;
                 dr["VeViec"] = _thumoi.VeViec;

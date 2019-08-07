@@ -143,7 +143,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             //}
             //else
             //    lbTruyThu.Text = "";
-            string str = _cTTTN.GetTinhTrang(hoadon.DANHBA);
+            string str = _cTTTN.check_TinhTrang_Ton(hoadon.DANHBA);
             if (str != "")
             {
                 lbTruyThu.Text = "Tình Trạng Truy Thu: " + str;

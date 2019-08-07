@@ -41,6 +41,7 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkCT_GiayBao = new System.Windows.Forms.CheckBox();
             this.txtCT_Khac_GhiChu = new System.Windows.Forms.TextBox();
             this.chkCT_Khac = new System.Windows.Forms.CheckBox();
             this.chkCT_CQN = new System.Windows.Forms.CheckBox();
@@ -133,7 +134,6 @@
             this.txtNguoiLap = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.cmbNhomDon_ChiTiet = new System.Windows.Forms.ComboBox();
-            this.chkCT_GiayBao = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbDieuChinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbKhieuNai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbDHN.Properties)).BeginInit();
@@ -281,6 +281,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chứng Từ Kèm Theo";
             // 
+            // chkCT_GiayBao
+            // 
+            this.chkCT_GiayBao.AutoSize = true;
+            this.chkCT_GiayBao.Location = new System.Drawing.Point(13, 49);
+            this.chkCT_GiayBao.Name = "chkCT_GiayBao";
+            this.chkCT_GiayBao.Size = new System.Drawing.Size(148, 20);
+            this.chkCT_GiayBao.TabIndex = 11;
+            this.chkCT_GiayBao.Text = "Giấy Báo Tiền Nước";
+            this.chkCT_GiayBao.UseVisualStyleBackColor = true;
+            // 
             // txtCT_Khac_GhiChu
             // 
             this.txtCT_Khac_GhiChu.Location = new System.Drawing.Point(286, 100);
@@ -384,9 +394,9 @@
             this.chkCT_HoaDon.AutoSize = true;
             this.chkCT_HoaDon.Location = new System.Drawing.Point(13, 23);
             this.chkCT_HoaDon.Name = "chkCT_HoaDon";
-            this.chkCT_HoaDon.Size = new System.Drawing.Size(80, 20);
+            this.chkCT_HoaDon.Size = new System.Drawing.Size(145, 20);
             this.chkCT_HoaDon.TabIndex = 0;
-            this.chkCT_HoaDon.Text = "Hóa Đơn";
+            this.chkCT_HoaDon.Text = "Hóa Đơn Tiền Nước";
             this.chkCT_HoaDon.UseVisualStyleBackColor = true;
             // 
             // txtSoNK
@@ -1132,16 +1142,6 @@
             this.cmbNhomDon_ChiTiet.Name = "cmbNhomDon_ChiTiet";
             this.cmbNhomDon_ChiTiet.Size = new System.Drawing.Size(250, 24);
             this.cmbNhomDon_ChiTiet.TabIndex = 75;
-            // 
-            // chkCT_GiayBao
-            // 
-            this.chkCT_GiayBao.AutoSize = true;
-            this.chkCT_GiayBao.Location = new System.Drawing.Point(13, 49);
-            this.chkCT_GiayBao.Name = "chkCT_GiayBao";
-            this.chkCT_GiayBao.Size = new System.Drawing.Size(83, 20);
-            this.chkCT_GiayBao.TabIndex = 11;
-            this.chkCT_GiayBao.Text = "Giấy Báo";
-            this.chkCT_GiayBao.UseVisualStyleBackColor = true;
             // 
             // frmNhanDonTu
             // 

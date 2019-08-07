@@ -87,6 +87,7 @@
             this.btnChonFile = new System.Windows.Forms.Button();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkKhachHangDaLienHe = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
@@ -640,12 +641,23 @@
             this.xoaFile_dgvHinh.Text = "Xóa";
             this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
             // 
+            // chkKhachHangDaLienHe
+            // 
+            this.chkKhachHangDaLienHe.AutoSize = true;
+            this.chkKhachHangDaLienHe.Location = new System.Drawing.Point(575, 304);
+            this.chkKhachHangDaLienHe.Name = "chkKhachHangDaLienHe";
+            this.chkKhachHangDaLienHe.Size = new System.Drawing.Size(169, 20);
+            this.chkKhachHangDaLienHe.TabIndex = 138;
+            this.chkKhachHangDaLienHe.Text = "Khách Hàng Đã Liên Hệ";
+            this.chkKhachHangDaLienHe.UseVisualStyleBackColor = true;
+            // 
             // frmThaoThuMoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(923, 562);
+            this.Controls.Add(this.chkKhachHangDaLienHe);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.radRong);
@@ -743,5 +755,6 @@
         private System.Windows.Forms.Button btnChonFile;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem xoaFile_dgvHinh;
+        private System.Windows.Forms.CheckBox chkKhachHangDaLienHe;
     }
 }

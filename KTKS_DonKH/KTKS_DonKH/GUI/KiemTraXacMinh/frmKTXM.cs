@@ -230,6 +230,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             _dontbc = null;
             _hoadon = null;
             dgvDSKetQuaKiemTra.DataSource = null;
+            txtDonGia.Text = "";
             dgvBangGia.Rows.Clear();
             dgvHinh.Rows.Clear();
             txtMaDonMoi.Focus();
@@ -270,7 +271,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             _MaCTKTXM = -1;
             _ctktxm = null;
             _hoadon = null;
-            
+
+            txtDonGia.Text = "";
             dgvBangGia.Rows.Clear();
             dgvHinh.Rows.Clear();
             txtMaDonMoi.Focus();
