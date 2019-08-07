@@ -201,7 +201,7 @@
             // txtTongGiaBan_TG
             // 
             this.txtTongGiaBan_TG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongGiaBan_TG.Location = new System.Drawing.Point(229, 156);
+            this.txtTongGiaBan_TG.Location = new System.Drawing.Point(228, 156);
             this.txtTongGiaBan_TG.Name = "txtTongGiaBan_TG";
             this.txtTongGiaBan_TG.Size = new System.Drawing.Size(100, 20);
             this.txtTongGiaBan_TG.TabIndex = 6;
@@ -210,7 +210,7 @@
             // txtTongThueGTGT_TG
             // 
             this.txtTongThueGTGT_TG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongThueGTGT_TG.Location = new System.Drawing.Point(329, 156);
+            this.txtTongThueGTGT_TG.Location = new System.Drawing.Point(328, 156);
             this.txtTongThueGTGT_TG.Name = "txtTongThueGTGT_TG";
             this.txtTongThueGTGT_TG.Size = new System.Drawing.Size(100, 20);
             this.txtTongThueGTGT_TG.TabIndex = 5;
@@ -219,7 +219,7 @@
             // txtTongPhiBVMT_TG
             // 
             this.txtTongPhiBVMT_TG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongPhiBVMT_TG.Location = new System.Drawing.Point(429, 156);
+            this.txtTongPhiBVMT_TG.Location = new System.Drawing.Point(428, 156);
             this.txtTongPhiBVMT_TG.Name = "txtTongPhiBVMT_TG";
             this.txtTongPhiBVMT_TG.Size = new System.Drawing.Size(100, 20);
             this.txtTongPhiBVMT_TG.TabIndex = 4;
@@ -228,7 +228,7 @@
             // txtTongCong_TG
             // 
             this.txtTongCong_TG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongCong_TG.Location = new System.Drawing.Point(529, 156);
+            this.txtTongCong_TG.Location = new System.Drawing.Point(528, 156);
             this.txtTongCong_TG.Name = "txtTongCong_TG";
             this.txtTongCong_TG.Size = new System.Drawing.Size(100, 20);
             this.txtTongCong_TG.TabIndex = 3;
@@ -237,7 +237,7 @@
             // txtTongHD_TG
             // 
             this.txtTongHD_TG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongHD_TG.Location = new System.Drawing.Point(149, 156);
+            this.txtTongHD_TG.Location = new System.Drawing.Point(148, 156);
             this.txtTongHD_TG.Name = "txtTongHD_TG";
             this.txtTongHD_TG.Size = new System.Drawing.Size(80, 20);
             this.txtTongHD_TG.TabIndex = 2;
@@ -696,7 +696,7 @@
             // txtTongGiaBan_TC
             // 
             this.txtTongGiaBan_TC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongGiaBan_TC.Location = new System.Drawing.Point(903, 602);
+            this.txtTongGiaBan_TC.Location = new System.Drawing.Point(901, 602);
             this.txtTongGiaBan_TC.Name = "txtTongGiaBan_TC";
             this.txtTongGiaBan_TC.Size = new System.Drawing.Size(100, 20);
             this.txtTongGiaBan_TC.TabIndex = 11;
@@ -705,7 +705,7 @@
             // txtTongThueGTGT_TC
             // 
             this.txtTongThueGTGT_TC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongThueGTGT_TC.Location = new System.Drawing.Point(1003, 602);
+            this.txtTongThueGTGT_TC.Location = new System.Drawing.Point(1001, 602);
             this.txtTongThueGTGT_TC.Name = "txtTongThueGTGT_TC";
             this.txtTongThueGTGT_TC.Size = new System.Drawing.Size(100, 20);
             this.txtTongThueGTGT_TC.TabIndex = 10;
@@ -714,7 +714,7 @@
             // txtTongPhiBVMT_TC
             // 
             this.txtTongPhiBVMT_TC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongPhiBVMT_TC.Location = new System.Drawing.Point(1103, 602);
+            this.txtTongPhiBVMT_TC.Location = new System.Drawing.Point(1101, 602);
             this.txtTongPhiBVMT_TC.Name = "txtTongPhiBVMT_TC";
             this.txtTongPhiBVMT_TC.Size = new System.Drawing.Size(100, 20);
             this.txtTongPhiBVMT_TC.TabIndex = 9;
@@ -723,7 +723,7 @@
             // txtTongCong_TC
             // 
             this.txtTongCong_TC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongCong_TC.Location = new System.Drawing.Point(1203, 602);
+            this.txtTongCong_TC.Location = new System.Drawing.Point(1201, 602);
             this.txtTongCong_TC.Name = "txtTongCong_TC";
             this.txtTongCong_TC.Size = new System.Drawing.Size(100, 20);
             this.txtTongCong_TC.TabIndex = 8;
@@ -732,7 +732,7 @@
             // txtTongHD_TC
             // 
             this.txtTongHD_TC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongHD_TC.Location = new System.Drawing.Point(823, 602);
+            this.txtTongHD_TC.Location = new System.Drawing.Point(821, 602);
             this.txtTongHD_TC.Name = "txtTongHD_TC";
             this.txtTongHD_TC.Size = new System.Drawing.Size(80, 20);
             this.txtTongHD_TC.TabIndex = 7;
