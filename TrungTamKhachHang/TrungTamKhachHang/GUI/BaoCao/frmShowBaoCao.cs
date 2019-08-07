@@ -10,9 +10,9 @@ using CrystalDecisions.CrystalReports.Engine;
 
 namespace TrungTamKhachHang.GUI.BaoCao
 {
-    public partial class frmBaoCao : Form
+    public partial class frmShowBaoCao : Form
     {
-        public frmBaoCao(ReportDocument rpt)
+        public frmShowBaoCao(ReportDocument rpt)
         {
             InitializeComponent();
             crystalReportViewer1.ReportSource = rpt;

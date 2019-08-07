@@ -66,7 +66,7 @@
             this.mnuLichDocSoThuTien});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1068, 24);
+            this.menuStrip.Size = new System.Drawing.Size(834, 24);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -168,14 +168,14 @@
             // mnuLichDocSo
             // 
             this.mnuLichDocSo.Name = "mnuLichDocSo";
-            this.mnuLichDocSo.Size = new System.Drawing.Size(152, 22);
+            this.mnuLichDocSo.Size = new System.Drawing.Size(146, 22);
             this.mnuLichDocSo.Text = "Lịch Đọc Số";
             this.mnuLichDocSo.Click += new System.EventHandler(this.mnuLichDocSo_Click);
             // 
             // mnuLichThuTien
             // 
             this.mnuLichThuTien.Name = "mnuLichThuTien";
-            this.mnuLichThuTien.Size = new System.Drawing.Size(152, 22);
+            this.mnuLichThuTien.Size = new System.Drawing.Size(146, 22);
             this.mnuLichThuTien.Text = "Lịch Thu Tiền";
             this.mnuLichThuTien.Click += new System.EventHandler(this.mnuLichThuTien_Click);
             // 
@@ -185,7 +185,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 24);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1068, 26);
+            this.tabControl.Size = new System.Drawing.Size(834, 26);
             this.tabControl.TabIndex = 6;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -196,9 +196,9 @@
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel5,
             this.StripStatus_HoTen});
-            this.statusStrip.Location = new System.Drawing.Point(0, 433);
+            this.statusStrip.Location = new System.Drawing.Point(0, 539);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1068, 22);
+            this.statusStrip.Size = new System.Drawing.Size(834, 22);
             this.statusStrip.TabIndex = 8;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -237,7 +237,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1068, 455);
+            this.ClientSize = new System.Drawing.Size(834, 561);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip);

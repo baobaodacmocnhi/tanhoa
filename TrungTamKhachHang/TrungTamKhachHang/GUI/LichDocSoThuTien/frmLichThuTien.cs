@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using TrungTamKhachHang.DAL.QuanTri;
 using TrungTamKhachHang.DAL.LichDocSoThuTien;
 using TrungTamKhachHang.LinQ;
+using TrungTamKhachHang.BaoCao;
+using TrungTamKhachHang.BaoCao.LichDocSoThuTien;
+using TrungTamKhachHang.GUI.BaoCao;
 
 namespace TrungTamKhachHang.GUI.LichDocSoThuTien
 {
@@ -35,6 +38,59 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
         void dtp_TextChanged(object sender, EventArgs e)
         {
             dgvDot.CurrentCell.Value = _dtp.Text;
+            if (dgvDot.Columns[dgvDot.CurrentCell.ColumnIndex].Name == "NgayChuyenListing")
+            {
+                DateTime NgayChuyenListing = _dtp.Value,
+                    NgayThuTien_From = NgayChuyenListing.AddDays(1),
+                    NgayThuTien_To = NgayThuTien_From.AddDays(1);
+                //edit row 0
+                if (NgayChuyenListing.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    NgayThuTien_From = NgayChuyenListing.AddDays(2);
+                    NgayThuTien_To = NgayThuTien_From.AddDays(1);
+                }
+                if (NgayThuTien_From.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    NgayThuTien_From = NgayThuTien_From.AddDays(2);
+                    NgayThuTien_To = NgayThuTien_From.AddDays(1);
+                }
+                if (NgayThuTien_To.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    NgayThuTien_To = NgayThuTien_To.AddDays(2);
+                }
+                int i = dgvDot.CurrentRow.Index;
+                dgvDot["NgayChuyenListing", i].Value = NgayChuyenListing.ToString("dd/MM/yyyy");
+                dgvDot["NgayThuTien_From", i].Value = NgayThuTien_From.ToString("dd/MM/yyyy");
+                dgvDot["NgayThuTien_To", i].Value = NgayThuTien_To.ToString("dd/MM/yyyy");
+
+                //edit row 1++
+                while (i < dgvDot.RowCount - 1)
+                {
+                    DateTime date = DateTime.Parse(dgvDot.Rows[i].Cells["NgayDoc"].Value.ToString());
+                    NgayChuyenListing = date.AddDays(1);
+                    NgayThuTien_From = NgayChuyenListing.AddDays(1);
+                    NgayThuTien_To = NgayThuTien_From.AddDays(1);
+                    if (NgayChuyenListing.DayOfWeek == DayOfWeek.Saturday)
+                    {
+                        NgayChuyenListing = NgayChuyenListing.AddDays(2);
+                        NgayThuTien_From = NgayChuyenListing.AddDays(1);
+                        NgayThuTien_To = NgayThuTien_From.AddDays(1);
+                    }
+                    if (NgayThuTien_From.DayOfWeek == DayOfWeek.Saturday)
+                    {
+                        NgayThuTien_From = NgayThuTien_From.AddDays(2);
+                        NgayThuTien_To = NgayThuTien_From.AddDays(1);
+                    }
+                    if (NgayThuTien_To.DayOfWeek == DayOfWeek.Saturday)
+                    {
+                        NgayThuTien_To = NgayThuTien_To.AddDays(2);
+                    }
+                    dgvDot["NgayChuyenListing", i + 1].Value = NgayChuyenListing.ToString("dd/MM/yyyy");
+                    dgvDot["NgayThuTien_From", i + 1].Value = NgayThuTien_From.ToString("dd/MM/yyyy");
+                    dgvDot["NgayThuTien_To", i + 1].Value = NgayThuTien_To.ToString("dd/MM/yyyy");
+                    i++;
+                }
+            }
         }
 
         private void frmLichThuTien_Load(object sender, EventArgs e)
@@ -208,6 +264,41 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
         private void dgvDot_Scroll(object sender, ScrollEventArgs e)
         {
             _dtp.Visible = false;
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            if (_thutien != null)
+            {
+                dsBaoCao dsBaoCao = new dsBaoCao();
+                foreach (Lich_ThuTien_ChiTiet item in _thutien.Lich_ThuTien_ChiTiets.ToList())
+                {
+                    DataRow dr = dsBaoCao.Tables["LichDocSoThuTien"].NewRow();
+                    dr["LoaiBaoCao"] = "LỊCH THU TIỀN DỰ KIẾN KỲ " + _thutien.Ky + " NĂM " + _thutien.Nam;
+                    dr["TuNgay"] = _thutien.TuNgay.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = _thutien.DenNgay.Value.ToString("dd/MM/yyyy");
+                    dr["Dot"] = item.Lich_Dot.Name;
+                    dr["NgayChuyenListing"] = item.NgayChuyenListing.Value.Day;
+                    if (item.NgayThuTien_From.Value.Day != item.NgayThuTien_To.Value.Day)
+                        dr["NgayDocSoThuTien"] = item.NgayThuTien_From.Value.Day + "-" + item.NgayThuTien_To.Value.ToString("dd/MM/yyyy");
+                    else
+                        dr["NgayDocSoThuTien"] = item.NgayThuTien_From.Value.ToString("dd/MM/yyyy");
+                    dr["TB1_From"] = item.Lich_Dot.TB1_From.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    dr["TB1_To"] = item.Lich_Dot.TB1_To.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    dr["TB2_From"] = item.Lich_Dot.TB2_From.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    dr["TB2_To"] = item.Lich_Dot.TB2_To.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    dr["TP1_From"] = item.Lich_Dot.TP1_From.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    dr["TP1_To"] = item.Lich_Dot.TP1_To.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    dr["TP2_From"] = item.Lich_Dot.TP2_From.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    dr["TP2_To"] = item.Lich_Dot.TP2_To.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    dsBaoCao.Tables["LichDocSoThuTien"].Rows.Add(dr);
+                }
+
+                rptLichThuTien rpt = new rptLichThuTien();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
+            }
         }
     }
 }

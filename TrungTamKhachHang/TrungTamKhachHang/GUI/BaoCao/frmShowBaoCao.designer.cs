@@ -1,6 +1,6 @@
 ﻿namespace TrungTamKhachHang.GUI.BaoCao
 {
-    partial class frmBaoCao
+    partial class frmShowBaoCao
     {
         /// <summary>
         /// Required designer variable.

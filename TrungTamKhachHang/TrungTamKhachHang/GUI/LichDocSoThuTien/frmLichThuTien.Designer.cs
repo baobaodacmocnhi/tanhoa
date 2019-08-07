@@ -30,6 +30,11 @@
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvDot = new System.Windows.Forms.DataGridView();
+            this.IDThuTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDDot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayChuyenListing = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayThuTien_From = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayThuTien_To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvKy = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,11 +53,7 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.IDThuTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDDot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayChuyenListing = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayThuTien_From = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayThuTien_To = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnIn = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDot)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -89,6 +90,38 @@
             this.dgvDot.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDot_CellClick);
             this.dgvDot.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvDot_ColumnWidthChanged);
             this.dgvDot.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvDot_Scroll);
+            // 
+            // IDThuTien
+            // 
+            this.IDThuTien.DataPropertyName = "IDThuTien";
+            this.IDThuTien.HeaderText = "IDThuTien";
+            this.IDThuTien.Name = "IDThuTien";
+            this.IDThuTien.Visible = false;
+            // 
+            // IDDot
+            // 
+            this.IDDot.DataPropertyName = "IDDot";
+            this.IDDot.HeaderText = "Đợt";
+            this.IDDot.Name = "IDDot";
+            this.IDDot.Width = 50;
+            // 
+            // NgayChuyenListing
+            // 
+            this.NgayChuyenListing.DataPropertyName = "NgayChuyenListing";
+            this.NgayChuyenListing.HeaderText = "Ngày Chuyển Listing";
+            this.NgayChuyenListing.Name = "NgayChuyenListing";
+            // 
+            // NgayThuTien_From
+            // 
+            this.NgayThuTien_From.DataPropertyName = "NgayThuTien_From";
+            this.NgayThuTien_From.HeaderText = "Từ Ngày Thu Tiền";
+            this.NgayThuTien_From.Name = "NgayThuTien_From";
+            // 
+            // NgayThuTien_To
+            // 
+            this.NgayThuTien_To.DataPropertyName = "NgayThuTien_To";
+            this.NgayThuTien_To.HeaderText = "Đến Ngày Thu Tiền";
+            this.NgayThuTien_To.Name = "NgayThuTien_To";
             // 
             // groupBox2
             // 
@@ -146,6 +179,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnIn);
             this.groupBox1.Controls.Add(this.txtNam);
             this.groupBox1.Controls.Add(this.txtKy);
             this.groupBox1.Controls.Add(this.label1);
@@ -198,7 +232,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(181, 98);
+            this.btnSua.Location = new System.Drawing.Point(181, 69);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 10;
@@ -217,7 +251,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(181, 69);
+            this.btnXoa.Location = new System.Drawing.Point(181, 40);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 9;
@@ -236,7 +270,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(181, 40);
+            this.btnThem.Location = new System.Drawing.Point(181, 11);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 8;
@@ -262,37 +296,15 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Năm";
             // 
-            // IDThuTien
+            // btnIn
             // 
-            this.IDThuTien.DataPropertyName = "IDThuTien";
-            this.IDThuTien.HeaderText = "IDThuTien";
-            this.IDThuTien.Name = "IDThuTien";
-            this.IDThuTien.Visible = false;
-            // 
-            // IDDot
-            // 
-            this.IDDot.DataPropertyName = "IDDot";
-            this.IDDot.HeaderText = "Đợt";
-            this.IDDot.Name = "IDDot";
-            this.IDDot.Width = 50;
-            // 
-            // NgayChuyenListing
-            // 
-            this.NgayChuyenListing.DataPropertyName = "NgayChuyenListing";
-            this.NgayChuyenListing.HeaderText = "Ngày Chuyển Listing";
-            this.NgayChuyenListing.Name = "NgayChuyenListing";
-            // 
-            // NgayThuTien_From
-            // 
-            this.NgayThuTien_From.DataPropertyName = "NgayThuTien_From";
-            this.NgayThuTien_From.HeaderText = "Từ Ngày Thu Tiền";
-            this.NgayThuTien_From.Name = "NgayThuTien_From";
-            // 
-            // NgayThuTien_To
-            // 
-            this.NgayThuTien_To.DataPropertyName = "NgayThuTien_To";
-            this.NgayThuTien_To.HeaderText = "Đến Ngày Thu Tiền";
-            this.NgayThuTien_To.Name = "NgayThuTien_To";
+            this.btnIn.Location = new System.Drawing.Point(181, 98);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 14;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // frmLichThuTien
             // 
@@ -342,5 +354,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyenListing;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayThuTien_From;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayThuTien_To;
+        private System.Windows.Forms.Button btnIn;
     }
 }

@@ -54,6 +54,7 @@
             this.NgayKiemSoat_From = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayKiemSoat_To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayChuyenListing = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnIn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKy)).BeginInit();
@@ -117,7 +118,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(181, 40);
+            this.btnThem.Location = new System.Drawing.Point(181, 11);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 8;
@@ -127,7 +128,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(181, 69);
+            this.btnXoa.Location = new System.Drawing.Point(181, 40);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 9;
@@ -137,7 +138,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(181, 98);
+            this.btnSua.Location = new System.Drawing.Point(181, 69);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 10;
@@ -147,6 +148,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnIn);
             this.groupBox1.Controls.Add(this.txtNam);
             this.groupBox1.Controls.Add(this.txtKy);
             this.groupBox1.Controls.Add(this.label1);
@@ -302,6 +304,16 @@
             this.NgayChuyenListing.HeaderText = "Ngày Chuyển Listing";
             this.NgayChuyenListing.Name = "NgayChuyenListing";
             // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(181, 98);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 13;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // frmLichDocSo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,5 +363,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayKiemSoat_From;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayKiemSoat_To;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyenListing;
+        private System.Windows.Forms.Button btnIn;
     }
 }

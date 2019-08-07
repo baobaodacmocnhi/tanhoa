@@ -15,7 +15,7 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\192.168.90.9\baobao%24\TrungTamKhachHang\</PublishUrl>
+    <PublishUrl>\\server9\baobao%24\TrungTamKhachHang\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -25,13 +25,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>\\192.168.90.9\baobao%24\TrungTamKhachHang\</UpdateUrl>
+    <UpdateUrl>\\server9\baobao%24\TrungTamKhachHang\</UpdateUrl>
     <ProductName>Trung Tâm Khách Hàng</ProductName>
     <PublisherName>Phòng Kỹ Thuật Công Nghiệp</PublisherName>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationRevision>10</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -111,6 +111,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsBaoCao.xsd</DependentUpon>
     </Compile>
+    <Compile Include="BaoCao\LichDocSoThuTien\rptLichThuTien.cs">
+      <DependentUpon>rptLichThuTien.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\LichDocSoThuTien\rptLichDocSo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptLichDocSo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DAL\CCapNuocTanHoa.cs" />
     <Compile Include="DAL\CConnection.cs" />
     <Compile Include="DAL\CDocSo.cs" />
@@ -131,11 +143,11 @@
     <Compile Include="frmMain.designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\BaoCao\frmBaoCao.cs">
+    <Compile Include="GUI\BaoCao\frmShowBaoCao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\BaoCao\frmBaoCao.designer.cs">
-      <DependentUpon>frmBaoCao.cs</DependentUpon>
+    <Compile Include="GUI\BaoCao\frmShowBaoCao.designer.cs">
+      <DependentUpon>frmShowBaoCao.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\HeThong\frmAdmin.cs">
       <SubType>Form</SubType>
@@ -210,11 +222,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BaoCao\LichDocSoThuTien\rptLichThuTien.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLichThuTien.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\LichDocSoThuTien\rptLichDocSo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLichDocSo.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\BaoCao\frmBaoCao.resx">
-      <DependentUpon>frmBaoCao.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\BaoCao\frmShowBaoCao.resx">
+      <DependentUpon>frmShowBaoCao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
@@ -419,6 +439,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

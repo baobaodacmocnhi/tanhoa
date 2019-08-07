@@ -19,7 +19,7 @@ namespace TrungTamKhachHang.GUI.KhachHang
         CThuTien _cThuTien = new CThuTien();
         CKinhDoanh _cKinhDoanh = new CKinhDoanh();
         CKhieuNai _cKN = new CKhieuNai();
-        System.IO.StreamWriter _log;
+        //System.IO.StreamWriter _log;
 
         public frmThongTinKhachHang()
         {
