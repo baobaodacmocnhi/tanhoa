@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTongHopDangNganDoiMoi = new System.Windows.Forms.Button();
             this.cmbKy = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbNam = new System.Windows.Forms.ComboBox();
@@ -39,8 +40,14 @@
             this.btnTongHopDangNganDoi = new System.Windows.Forms.Button();
             this.dateGiaiTrachTongHopDangNgan = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnTongHopDangNganDoiMoi = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnIn_KeToan = new System.Windows.Forms.Button();
+            this.dateTu_KeToan = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateDen_KeToan = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -62,6 +69,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tổng Hợp Đăng Ngân";
+            // 
+            // btnTongHopDangNganDoiMoi
+            // 
+            this.btnTongHopDangNganDoiMoi.Location = new System.Drawing.Point(449, 17);
+            this.btnTongHopDangNganDoiMoi.Name = "btnTongHopDangNganDoiMoi";
+            this.btnTongHopDangNganDoiMoi.Size = new System.Drawing.Size(85, 23);
+            this.btnTongHopDangNganDoiMoi.TabIndex = 61;
+            this.btnTongHopDangNganDoiMoi.Text = "Tổng Hợp Mới";
+            this.btnTongHopDangNganDoiMoi.UseVisualStyleBackColor = true;
+            this.btnTongHopDangNganDoiMoi.Click += new System.EventHandler(this.btnTongHopDangNganDoiMoi_Click);
             // 
             // cmbKy
             // 
@@ -171,27 +188,80 @@
             this.label1.TabIndex = 51;
             this.label1.Text = "Ngày Giải Trách:";
             // 
-            // btnTongHopDangNganDoiMoi
+            // groupBox2
             // 
-            this.btnTongHopDangNganDoiMoi.Location = new System.Drawing.Point(449, 17);
-            this.btnTongHopDangNganDoiMoi.Name = "btnTongHopDangNganDoiMoi";
-            this.btnTongHopDangNganDoiMoi.Size = new System.Drawing.Size(85, 23);
-            this.btnTongHopDangNganDoiMoi.TabIndex = 61;
-            this.btnTongHopDangNganDoiMoi.Text = "Tổng Hợp Mới";
-            this.btnTongHopDangNganDoiMoi.UseVisualStyleBackColor = true;
-            this.btnTongHopDangNganDoiMoi.Click += new System.EventHandler(this.btnTongHopDangNganDoiMoi_Click);
+            this.groupBox2.Controls.Add(this.btnIn_KeToan);
+            this.groupBox2.Controls.Add(this.dateTu_KeToan);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.dateDen_KeToan);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Location = new System.Drawing.Point(12, 95);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(544, 49);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Tổng Hợp Tiền Nước Thu Được gửi Kế Toán";
+            // 
+            // btnIn_KeToan
+            // 
+            this.btnIn_KeToan.Location = new System.Drawing.Point(342, 17);
+            this.btnIn_KeToan.Name = "btnIn_KeToan";
+            this.btnIn_KeToan.Size = new System.Drawing.Size(75, 23);
+            this.btnIn_KeToan.TabIndex = 33;
+            this.btnIn_KeToan.Text = "In";
+            this.btnIn_KeToan.UseVisualStyleBackColor = true;
+            this.btnIn_KeToan.Click += new System.EventHandler(this.btnIn_KeToan_Click);
+            // 
+            // dateTu_KeToan
+            // 
+            this.dateTu_KeToan.CustomFormat = "dd/MM/yyyy";
+            this.dateTu_KeToan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu_KeToan.Location = new System.Drawing.Point(66, 19);
+            this.dateTu_KeToan.Name = "dateTu_KeToan";
+            this.dateTu_KeToan.Size = new System.Drawing.Size(100, 20);
+            this.dateTu_KeToan.TabIndex = 32;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "Từ Ngày:";
+            // 
+            // dateDen_KeToan
+            // 
+            this.dateDen_KeToan.CustomFormat = "dd/MM/yyyy";
+            this.dateDen_KeToan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen_KeToan.Location = new System.Drawing.Point(236, 19);
+            this.dateDen_KeToan.Name = "dateDen_KeToan";
+            this.dateDen_KeToan.Size = new System.Drawing.Size(100, 20);
+            this.dateDen_KeToan.TabIndex = 30;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(172, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Đến Ngày:";
             // 
             // frmBaoCaoTongHop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 404);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmBaoCaoTongHop";
             this.Text = "Báo Cáo Tổng Hợp";
             this.Load += new System.EventHandler(this.frmBaoCaoTongHop_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -210,5 +280,11 @@
         private System.Windows.Forms.ComboBox cmbNam;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnTongHopDangNganDoiMoi;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnIn_KeToan;
+        private System.Windows.Forms.DateTimePicker dateTu_KeToan;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dateDen_KeToan;
+        private System.Windows.Forms.Label label5;
     }
 }

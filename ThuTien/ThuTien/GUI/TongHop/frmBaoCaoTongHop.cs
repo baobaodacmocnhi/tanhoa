@@ -434,7 +434,7 @@ namespace ThuTien.GUI.TongHop
                     dr["LoaiBaoCao"] = "THU TIỀN";
                     dr["HoTen"] = item["HoTen"];
 
-                    dr["PhanKy"] = "Kỳ "+cmbKy.SelectedItem.ToString();
+                    dr["PhanKy"] = "Kỳ " + cmbKy.SelectedItem.ToString();
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
@@ -1649,6 +1649,34 @@ namespace ThuTien.GUI.TongHop
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.Show();
             }
+        }
+
+        private void btnIn_KeToan_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            DataTable dt = _cHoaDon.getTongHopDangNgan_KeToan(dateTu_KeToan.Value, dateDen_KeToan.Value);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
+
+                dr["TuNgay"] = dateTu_KeToan.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_KeToan.Value.ToString("dd/MM/yyyy");
+                dr["MaNV"] = item["STT"];
+                dr["PhanKy"] = item["PhanKy"];
+                dr["LoaiBaoCao"] = item["Loai"];
+                dr["Ngay"] = item["NgayGiaiTrach"];
+                dr["TongGiaBan"] = item["GiaBan"];
+                dr["TongThueGTGT"] = item["ThueGTGT"];
+                dr["TongPhiBVMT"] = item["PhiBVMT"];
+                dr["TongCong"] = item["TongCong"];
+
+                ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+            }
+            rptTongHopDangNgan_KeToan rpt = new rptTongHopDangNgan_KeToan();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
 
     }

@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1130</ApplicationRevision>
+    <ApplicationRevision>1131</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -319,6 +319,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptPhieuBaoGiaoTon.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\TongHop\rptTongHopDangNgan_KeToan.cs">
+      <DependentUpon>rptTongHopDangNgan_KeToan.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BaoCao\TongHop\rptTongHopDangNganChiTiet_PhanKy.cs">
       <DependentUpon>rptTongHopDangNganChiTiet_PhanKy.rpt</DependentUpon>
@@ -1345,6 +1351,10 @@
     <EmbeddedResource Include="BaoCao\Quay\rptPhieuBaoGiaoTon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuBaoGiaoTon.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\TongHop\rptTongHopDangNgan_KeToan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTongHopDangNgan_KeToan.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\TongHop\rptTongHopDangNganChiTiet_PhanKy.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
