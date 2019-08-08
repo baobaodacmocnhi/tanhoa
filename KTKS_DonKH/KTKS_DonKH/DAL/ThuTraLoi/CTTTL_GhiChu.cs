@@ -11,19 +11,19 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 {
     class CTTTL_GhiChu : CDAL
     {
-        public bool Them(TTTL_GhiChu ghichu)
+        public bool Them(ThuTraLoi_GhiChu ghichu)
         {
             try
             {
-                if (db.TTTL_GhiChus.Count() > 0)
+                if (db.ThuTraLoi_GhiChus.Count() > 0)
                 {
-                    ghichu.ID = db.TTTL_GhiChus.Max(item => item.ID) + 1;
+                    ghichu.ID = db.ThuTraLoi_GhiChus.Max(item => item.ID) + 1;
                 }
                 else
                     ghichu.ID = 1;
                 ghichu.CreateDate = DateTime.Now;
                 ghichu.CreateBy = CTaiKhoan.MaUser;
-                db.TTTL_GhiChus.InsertOnSubmit(ghichu);
+                db.ThuTraLoi_GhiChus.InsertOnSubmit(ghichu);
                 db.SubmitChanges();
                 return true;
             }
@@ -35,7 +35,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public bool Sua(TTTL_GhiChu ghichu)
+        public bool Sua(ThuTraLoi_GhiChu ghichu)
         {
             try
             {
@@ -52,11 +52,11 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public bool Xoa(TTTL_GhiChu ghichu)
+        public bool Xoa(ThuTraLoi_GhiChu ghichu)
         {
             try
             {
-                db.TTTL_GhiChus.DeleteOnSubmit(ghichu);
+                db.ThuTraLoi_GhiChus.DeleteOnSubmit(ghichu);
                 db.SubmitChanges();
                 return true;
             }
@@ -68,14 +68,14 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public TTTL_GhiChu Get(int ID)
+        public ThuTraLoi_GhiChu Get(int ID)
         {
-            return db.TTTL_GhiChus.SingleOrDefault(item => item.ID == ID);
+            return db.ThuTraLoi_GhiChus.SingleOrDefault(item => item.ID == ID);
         }
 
         public DataTable GetDS(decimal MaCTTTTL)
         {
-            return LINQToDataTable(db.TTTL_GhiChus.Where(item => item.MaCTTTTL == MaCTTTTL).OrderByDescending(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.ThuTraLoi_GhiChus.Where(item => item.MaCTTTTL == MaCTTTTL).OrderByDescending(item => item.CreateDate).ToList());
         }
     }
 }

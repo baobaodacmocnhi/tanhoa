@@ -15,6 +15,7 @@ using KTKS_DonKH.BaoCao.DonTu;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.TruyThu;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
+using KTKS_DonKH.DAL.ThuMoi;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
@@ -28,6 +29,7 @@ namespace KTKS_DonKH.GUI.DonTu
         CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
         CGanMoi _cGanMoi = new CGanMoi();
         CKTXM _cKTXM = new CKTXM();
+        CThuMoi _cThuMoi = new CThuMoi();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
 
         LinQ.DonTu _dontu = null;
@@ -94,15 +96,26 @@ namespace KTKS_DonKH.GUI.DonTu
             txtDinhMuc.Text = entity.DM.ToString();
             dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(entity.DANHBA);
 
-            string str = _cTTTN.check_TinhTrang_Ton(entity.DANHBA);
+            string str = "";
+            str = _cTTTN.check_TinhTrang_Ton(entity.DANHBA);
+            if (str == "")
+            {
+                if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
+                    str = "Kiểm Tra Xác Minh có Thư Mời";
+            }
+            if (str == "")
+            {
+                if (_cThuMoi.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
+                    str = "có Thư Mời";
+            }
+            //hiện thị
             if (str != "")
             {
-                lbTruyThu.Text = "Tình Trạng Truy Thu: " + str;
-                MessageBox.Show("Danh Bộ này đang Truy Thu", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                lbTruyThu.Text = str;
+                MessageBox.Show("Danh Bộ này đang có Đơn Tồn", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
             else
                 lbTruyThu.Text = "";
-
             string strDuongCamDao = _cGanMoi.getDuongCamDao(entity.SO, entity.DUONG);
             if (strDuongCamDao != "")
                 MessageBox.Show(strDuongCamDao, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -177,8 +190,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     chkcmbKhieuNai.SetEditValue(entity.ID_NhomDon);
                     chkcmbDHN.SetEditValue(entity.ID_NhomDon);
                 }
-                if(entity.ID_NhomDon_ChiTiet!=null)
-                cmbNhomDon_ChiTiet.SelectedValue = entity.ID_NhomDon_ChiTiet;
+                if (entity.ID_NhomDon_ChiTiet != null)
+                    cmbNhomDon_ChiTiet.SelectedValue = entity.ID_NhomDon_ChiTiet;
                 txtNoiDung.Text = entity.Name_NhomDon;
                 txtVanDeKhac.Text = entity.VanDeKhac;
 
@@ -232,7 +245,7 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 chkcmbDHN.Properties.Items[i].CheckState = CheckState.Unchecked;
             }
-            cmbNhomDon_ChiTiet.SelectedIndex= - 1;
+            cmbNhomDon_ChiTiet.SelectedIndex = -1;
             txtSoNK.Text = "";
             txtHieuLucKy.Text = "";
             txtNoiDung.Text = "";
@@ -371,20 +384,19 @@ namespace KTKS_DonKH.GUI.DonTu
                             if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                 return;
                         }
-
-                        if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
-                        {
-                            if (MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                                //MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                return;
-                        }
+                        //if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
+                        //{
+                        //    if (MessageBox.Show("Danh Bộ này Đã có THƯ MỜI bên Kiểm Tra Xác Minh, nhưng không liên hệ\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                        //        //MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //        return;
+                        //}
 
                         if (txtSoNK.Text.Trim() != "")
                         {
                             entity.SoNK = int.Parse(txtSoNK.Text.Trim());
                             entity.HieuLucKy = txtHieuLucKy.Text.Trim();
                         }
-                        
+
                         DonTu_ChiTiet entityCT = new DonTu_ChiTiet();
                         entityCT.ID = _cDonTu.getMaxID_ChiTiet() + 1;
                         entityCT.STT = 1;
@@ -538,7 +550,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         entity.CT_STT_GXNTT = true;
                     if (chkCT_GDKKD.Checked)
                         entity.CT_GDKKD = true;
-                    
+
 
                     if (chkCT_GC_SDSN.Checked)
                         entity.CT_GC_SDSN = true;
@@ -574,7 +586,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     if (_dontu != null)
                     {
-                        if (CTaiKhoan.Admin==false&& _cDonTu.checkPhong(_dontu.MaDon, CTaiKhoan.MaPhong) == false)
+                        if (CTaiKhoan.Admin == false && _cDonTu.checkPhong(_dontu.MaDon, CTaiKhoan.MaPhong) == false)
                         {
                             MessageBox.Show("Mã Đơn này không thuộc phòng của bạn lập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -605,7 +617,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.DonTu_ChiTiets.SingleOrDefault().HoTen = txtHoTen.Text.Trim();
                             _dontu.DonTu_ChiTiets.SingleOrDefault().DiaChi = txtDiaChi.Text.Trim();
                             if (txtGiaBieu.Text.Trim() != "")
-                                _dontu.DonTu_ChiTiets.SingleOrDefault().GiaBieu= int.Parse(txtGiaBieu.Text.Trim());
+                                _dontu.DonTu_ChiTiets.SingleOrDefault().GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                             if (txtDinhMuc.Text.Trim() != "")
                                 _dontu.DonTu_ChiTiets.SingleOrDefault().DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                             if (_hoadon != null && _hoadon.DANHBA != txtDanhBo.Text.Trim().Replace(" ", ""))
@@ -1087,7 +1099,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     if (dgvDanhBo["Phuong", e.RowIndex].Value != null)
                         en.Phuong = dgvDanhBo["Phuong", e.RowIndex].Value.ToString();
                     en.MaDon = _dontu.MaDon;
-                    en.ID = _cDonTu.getMaxID_ChiTiet()+1;
+                    en.ID = _cDonTu.getMaxID_ChiTiet() + 1;
                     if (_dontu.DonTu_ChiTiets.Max(item => item.STT) == null)
                         en.STT = 1;
                     else
@@ -1140,6 +1152,11 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
+                    if (CTaiKhoan.Admin == false && _cDonTu.checkPhong(_dontu.MaDon, CTaiKhoan.MaPhong) == false)
+                    {
+                        MessageBox.Show("Mã Đơn này không thuộc phòng của bạn lập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     if (_dontu != null && e.Row.Cells["ID"].Value == null)
                     {
                         _flagdgvDanhBo_inserRow = true;
@@ -1186,6 +1203,11 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
+                    if (CTaiKhoan.Admin == false && _cDonTu.checkPhong(_dontu.MaDon, CTaiKhoan.MaPhong) == false)
+                    {
+                        MessageBox.Show("Mã Đơn này không thuộc phòng của bạn lập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     if (_dontu != null && dgvDanhBo.Columns.Contains("ID") && e.Row.Cells["ID"].Value != null)
                     {
                         _cDonTu.Xoa_ChiTiet(_cDonTu.get_ChiTiet(int.Parse(e.Row.Cells["ID"].Value.ToString())));
@@ -1210,7 +1232,6 @@ namespace KTKS_DonKH.GUI.DonTu
                 txtCT_Khac_GhiChu.ReadOnly = true;
             }
         }
-
 
     }
 }

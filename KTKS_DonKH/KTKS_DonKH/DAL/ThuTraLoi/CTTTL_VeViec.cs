@@ -10,17 +10,17 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 {
     class CTTTL_VeViec : CDAL
     {
-        public bool Them(TTTL_VeViec vv)
+        public bool Them(ThuTraLoi_VeViec vv)
         {
             try
             {
-                if (db.TTTL_VeViecs.Count() > 0)
-                    vv.MaVV = db.TTTL_VeViecs.Max(item => item.MaVV) + 1;
+                if (db.ThuTraLoi_VeViecs.Count() > 0)
+                    vv.MaVV = db.ThuTraLoi_VeViecs.Max(item => item.MaVV) + 1;
                 else
                     vv.MaVV = 1;
                 vv.CreateDate = DateTime.Now;
                 vv.CreateBy = CTaiKhoan.MaUser;
-                db.TTTL_VeViecs.InsertOnSubmit(vv);
+                db.ThuTraLoi_VeViecs.InsertOnSubmit(vv);
                 db.SubmitChanges();
                 return true;
             }
@@ -32,7 +32,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public bool Sua(TTTL_VeViec vv)
+        public bool Sua(ThuTraLoi_VeViec vv)
         {
             try
             {
@@ -49,11 +49,11 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public bool Xoa(TTTL_VeViec vv)
+        public bool Xoa(ThuTraLoi_VeViec vv)
         {
             try
             {
-                db.TTTL_VeViecs.DeleteOnSubmit(vv);
+                db.ThuTraLoi_VeViecs.DeleteOnSubmit(vv);
                 db.SubmitChanges();
                 return true;
             }
@@ -65,22 +65,22 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public List<TTTL_VeViec> GetDS()
+        public List<ThuTraLoi_VeViec> GetDS()
         {
-            return db.TTTL_VeViecs.OrderBy(item => item.STT).ToList();
+            return db.ThuTraLoi_VeViecs.OrderBy(item => item.STT).ToList();
         }
 
-        public TTTL_VeViec Get(int MaVV)
+        public ThuTraLoi_VeViec Get(int MaVV)
         {
-            return db.TTTL_VeViecs.Single(item => item.MaVV == MaVV);
+            return db.ThuTraLoi_VeViecs.Single(item => item.MaVV == MaVV);
         }
 
         public int GetMaxSTT()
         {
-            if (db.TTTL_VeViecs.Count() == 0)
+            if (db.ThuTraLoi_VeViecs.Count() == 0)
                 return 0;
             else
-                return db.TTTL_VeViecs.Max(item => item.STT).Value;
+                return db.ThuTraLoi_VeViecs.Max(item => item.STT).Value;
         }
     }
 }

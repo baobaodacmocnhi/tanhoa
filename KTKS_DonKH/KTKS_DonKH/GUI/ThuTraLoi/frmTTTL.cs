@@ -41,7 +41,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
-        TTTL_ChiTiet _cttttl = null;
+        ThuTraLoi_ChiTiet _cttttl = null;
         decimal _MaCTTTTL = -1;
 
         public frmTTTL()
@@ -85,35 +85,47 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtDinhMuc.Text = hoadon.DM.ToString();
 
             dgvLichSuTTTL.DataSource = _cTTTL.GetLichSuCTByDanhBo(_hoadon.DANHBA);
+
+            if (_dontu_ChiTiet != null)
+                dateNhanDon.Value = _dontu_ChiTiet.CreateDate.Value;
+            else
+                if (_dontkh != null)
+                    dateNhanDon.Value = _dontkh.CreateDate.Value;
+                else
+                    if (_dontxl != null)
+                        dateNhanDon.Value = _dontxl.CreateDate.Value;
+                    else
+                        if (_dontbc != null)
+                            dateNhanDon.Value = _dontbc.CreateDate.Value;
         }
 
-        public void LoadTTTL(TTTL_ChiTiet cttttl)
+        public void LoadTTTL(ThuTraLoi_ChiTiet cttttl)
         {
-            if (cttttl.TTTL.MaDonMoi != null)
+            if (cttttl.ThuTraLoi.MaDonMoi != null)
             {
-                _dontu_ChiTiet = _cDonTu.get_ChiTiet(cttttl.TTTL.MaDonMoi.Value, cttttl.STT.Value);
+                _dontu_ChiTiet = _cDonTu.get_ChiTiet(cttttl.ThuTraLoi.MaDonMoi.Value, cttttl.STT.Value);
                 if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
-                    txtMaDonMoi.Text = cttttl.TTTL.MaDonMoi.ToString();
+                    txtMaDonMoi.Text = cttttl.ThuTraLoi.MaDonMoi.ToString();
                 else
-                    txtMaDonMoi.Text = cttttl.TTTL.MaDonMoi.Value.ToString() + "." + cttttl.STT.Value.ToString();
+                    txtMaDonMoi.Text = cttttl.ThuTraLoi.MaDonMoi.Value.ToString() + "." + cttttl.STT.Value.ToString();
             }
             else
-                if (cttttl.TTTL.MaDon != null)
+                if (cttttl.ThuTraLoi.MaDon != null)
                 {
-                    _dontkh = _cDonKH.Get(cttttl.TTTL.MaDon.Value);
-                    txtMaDonCu.Text = cttttl.TTTL.MaDon.Value.ToString().Insert(cttttl.TTTL.MaDon.Value.ToString().Length - 2, "-");
+                    _dontkh = _cDonKH.Get(cttttl.ThuTraLoi.MaDon.Value);
+                    txtMaDonCu.Text = cttttl.ThuTraLoi.MaDon.Value.ToString().Insert(cttttl.ThuTraLoi.MaDon.Value.ToString().Length - 2, "-");
                 }
                 else
-                    if (cttttl.TTTL.MaDonTXL != null)
+                    if (cttttl.ThuTraLoi.MaDonTXL != null)
                     {
-                        _dontxl = _cDonTXL.Get(cttttl.TTTL.MaDonTXL.Value);
-                        txtMaDonCu.Text = "TXL" + cttttl.TTTL.MaDonTXL.Value.ToString().Insert(cttttl.TTTL.MaDonTXL.Value.ToString().Length - 2, "-");
+                        _dontxl = _cDonTXL.Get(cttttl.ThuTraLoi.MaDonTXL.Value);
+                        txtMaDonCu.Text = "TXL" + cttttl.ThuTraLoi.MaDonTXL.Value.ToString().Insert(cttttl.ThuTraLoi.MaDonTXL.Value.ToString().Length - 2, "-");
                     }
                     else
-                        if (cttttl.TTTL.MaDonTBC != null)
+                        if (cttttl.ThuTraLoi.MaDonTBC != null)
                         {
-                            _dontbc = _cDonTBC.Get(cttttl.TTTL.MaDonTBC.Value);
-                            txtMaDonCu.Text = "TBC" + cttttl.TTTL.MaDonTBC.Value.ToString().Insert(cttttl.TTTL.MaDonTBC.Value.ToString().Length - 2, "-");
+                            _dontbc = _cDonTBC.Get(cttttl.ThuTraLoi.MaDonTBC.Value);
+                            txtMaDonCu.Text = "TBC" + cttttl.ThuTraLoi.MaDonTBC.Value.ToString().Insert(cttttl.ThuTraLoi.MaDonTBC.Value.ToString().Length - 2, "-");
                         }
             txtMaCTTTTL.Text = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
             txtTCHC.Text = cttttl.TCHC;
@@ -125,6 +137,22 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtDiaChi.Text = cttttl.DiaChi;
             txtGiaBieu.Text = cttttl.GiaBieu;
             txtDinhMuc.Text = cttttl.DinhMuc;
+            if(cttttl.NgayTiepNhan!=null)
+            dateNhanDon.Value = cttttl.NgayTiepNhan.Value;
+            else
+            {
+                if (cttttl.ThuTraLoi.MaDonMoi != null)
+                    dateNhanDon.Value = cttttl.ThuTraLoi.DonTu.CreateDate.Value;
+                else
+                    if (cttttl.ThuTraLoi.MaDon != null)
+                        dateNhanDon.Value = cttttl.ThuTraLoi.DonKH.CreateDate.Value;
+                    else
+                        if (cttttl.ThuTraLoi.MaDonTXL != null)
+                            dateNhanDon.Value = cttttl.ThuTraLoi.DonTXL.CreateDate.Value;
+                        else
+                            if (cttttl.ThuTraLoi.MaDonTBC != null)
+                                dateNhanDon.Value = cttttl.ThuTraLoi.DonTBC.CreateDate.Value;
+            }
             txtVeViec.Text = cttttl.VeViec;
             txtNoiDung.Text = cttttl.NoiDung;
             txtNoiNhan.Text = cttttl.NoiNhan;
@@ -135,7 +163,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             dgvGhiChu.DataSource = _cGhiChuCTTTTL.GetDS(cttttl.MaCTTTTL);
 
             dgvHinh.Rows.Clear();
-            foreach (TTTL_ChiTiet_Hinh item in cttttl.TTTL_ChiTiet_Hinhs.ToList())
+            foreach (ThuTraLoi_ChiTiet_Hinh item in cttttl.ThuTraLoi_ChiTiet_Hinhs.ToList())
             {
                 var index = dgvHinh.Rows.Add();
                 dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
@@ -342,7 +370,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         {
             if (cmbVeViec.SelectedIndex != -1)
             {
-                TTTL_VeViec vv = (TTTL_VeViec)cmbVeViec.SelectedItem;
+                ThuTraLoi_VeViec vv = (ThuTraLoi_VeViec)cmbVeViec.SelectedItem;
                 txtVeViec.Text = vv.TenVV;
                 txtNoiDung.Text = vv.NoiDung;
                 if (txtMaDonMoi.Text.Trim() != "")
@@ -371,13 +399,13 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         return;
                     }
 
-                    TTTL_ChiTiet cttttl = new TTTL_ChiTiet();
+                    ThuTraLoi_ChiTiet cttttl = new ThuTraLoi_ChiTiet();
 
                     if (_dontu_ChiTiet != null)
                     {
                         if (_cTTTL.checkExist(_dontu_ChiTiet.MaDon.Value) == false)
                         {
-                            TTTL tttl = new TTTL();
+                            LinQ.ThuTraLoi tttl = new LinQ.ThuTraLoi();
                             tttl.MaDonMoi = _dontu_ChiTiet.MaDon.Value;
                             _cTTTL.Them(tttl);
                         }
@@ -394,7 +422,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         {
                             if (_cTTTL.CheckExist("TKH", _dontkh.MaDon) == false)
                             {
-                                TTTL tttl = new TTTL();
+                                LinQ.ThuTraLoi tttl = new LinQ.ThuTraLoi();
                                 tttl.MaDon = _dontkh.MaDon;
                                 _cTTTL.Them(tttl);
                             }
@@ -410,7 +438,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             {
                                 if (_cTTTL.CheckExist("TXL", _dontxl.MaDon) == false)
                                 {
-                                    TTTL tttl = new TTTL();
+                                    LinQ.ThuTraLoi tttl = new LinQ.ThuTraLoi();
                                     tttl.MaDonTXL = _dontxl.MaDon;
                                     _cTTTL.Them(tttl);
                                 }
@@ -426,7 +454,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 {
                                     if (_cTTTL.CheckExist("TBC", _dontbc.MaDon) == false)
                                     {
-                                        TTTL tttl = new TTTL();
+                                        LinQ.ThuTraLoi tttl = new LinQ.ThuTraLoi();
                                         tttl.MaDonTBC = _dontbc.MaDon;
                                         _cTTTL.Them(tttl);
                                     }
@@ -458,6 +486,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         cttttl.Phuong = _hoadon.Phuong;
                         cttttl.Quan = _hoadon.Quan;
                     }
+                    cttttl.NgayTiepNhan = dateNhanDon.Value;
                     cttttl.VeViec = txtVeViec.Text.Trim();
                     cttttl.NoiDung = txtNoiDung.Text;
                     cttttl.NoiNhan = txtNoiNhan.Text.Trim();
@@ -478,14 +507,14 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     {
                         foreach (DataGridViewRow item in dgvHinh.Rows)
                         {
-                            TTTL_ChiTiet_Hinh en = new TTTL_ChiTiet_Hinh();
+                            ThuTraLoi_ChiTiet_Hinh en = new ThuTraLoi_ChiTiet_Hinh();
                             en.IDTTTL_ChiTiet = cttttl.MaCTTTTL;
                             en.Hinh = Convert.FromBase64String(item.Cells["Bytes"].Value.ToString());
                             _cTTTL.Them_Hinh(en);
                         }
                         if (_dontu_ChiTiet != null)
                         {
-                           if( _cDonTu.Them_LichSu(cttttl.CreateDate.Value, "TTTL", "Đã Gửi Thư Trả Lời, " + cttttl.VeViec, (int)cttttl.MaCTTTTL, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value)==true)
+                           if( _cDonTu.Them_LichSu(cttttl.CreateDate.Value, "ThuTraLoi", "Đã Gửi Thư Trả Lời, " + cttttl.VeViec, (int)cttttl.MaCTTTTL, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value)==true)
                             scope.Complete();
                         }
                         else
@@ -527,6 +556,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             _cttttl.Phuong = _hoadon.Phuong;
                             _cttttl.Quan = _hoadon.Quan;
                         }
+                        _cttttl.NgayTiepNhan = dateNhanDon.Value;
                         _cttttl.VeViec = txtVeViec.Text.Trim();
                         _cttttl.NoiDung = txtNoiDung.Text;
                         _cttttl.NoiNhan = txtNoiNhan.Text.Trim();
@@ -590,7 +620,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 {
                     if (_cttttl != null && _dontu_ChiTiet == null)
                     {
-                        TTTL_GhiChu ghichu = new TTTL_GhiChu();
+                        ThuTraLoi_GhiChu ghichu = new ThuTraLoi_GhiChu();
                         ghichu.NgayGhiChu = dateGhiChu.Value;
                         ghichu.GhiChu = txtGhiChu.Text.Trim();
                         ghichu.MaCTTTTL = _cttttl.MaCTTTTL;
@@ -675,17 +705,18 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 dr["HopDong"] = _cttttl.HopDong;
                 dr["GiaBieu"] = _cttttl.GiaBieu;
                 dr["DinhMuc"] = _cttttl.DinhMuc;
-                if (_cttttl.TTTL.MaDonMoi != null)
-                    dr["NgayNhanDon"] = _cDonTu.get(_cttttl.TTTL.MaDonMoi.Value).CreateDate.Value.ToString("dd/MM/yyyy");
-                else
-                    if (_cttttl.TTTL.MaDon != null)
-                        dr["NgayNhanDon"] = _cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
-                    else
-                        if (_cttttl.TTTL.MaDonTXL != null)
-                            dr["NgayNhanDon"] = _cttttl.TTTL.DonTXL.CreateDate.Value.ToString("dd/MM/yyyy");
-                        else
-                            if (_cttttl.TTTL.MaDonTBC != null)
-                                dr["NgayNhanDon"] = _cttttl.TTTL.DonTBC.CreateDate.Value.ToString("dd/MM/yyyy");
+                //if (_cttttl.ThuTraLoi.MaDonMoi != null)
+                //    dr["NgayNhanDon"] = _cDonTu.get(_cttttl.ThuTraLoi.MaDonMoi.Value).CreateDate.Value.ToString("dd/MM/yyyy");
+                //else
+                //    if (_cttttl.ThuTraLoi.MaDon != null)
+                //        dr["NgayNhanDon"] = _cttttl.ThuTraLoi.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
+                //    else
+                //        if (_cttttl.ThuTraLoi.MaDonTXL != null)
+                //            dr["NgayNhanDon"] = _cttttl.ThuTraLoi.DonTXL.CreateDate.Value.ToString("dd/MM/yyyy");
+                //        else
+                //            if (_cttttl.ThuTraLoi.MaDonTBC != null)
+                //                dr["NgayNhanDon"] = _cttttl.ThuTraLoi.DonTBC.CreateDate.Value.ToString("dd/MM/yyyy");
+                dr["NgayNhanDon"] = _cttttl.NgayTiepNhan.Value.ToString("dd/MM/yyyy");
 
                 dr["VeViec"] = _cttttl.VeViec;
                 dr["NoiDung"] = _cttttl.NoiDung;
@@ -747,7 +778,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     {
                         if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                         {
-                            TTTL_ChiTiet_Hinh en = new TTTL_ChiTiet_Hinh();
+                            ThuTraLoi_ChiTiet_Hinh en = new ThuTraLoi_ChiTiet_Hinh();
                             en.IDTTTL_ChiTiet = _cttttl.MaCTTTTL;
                             en.Hinh = bytes;
                             if (_cTTTL.Them_Hinh(en) == true)

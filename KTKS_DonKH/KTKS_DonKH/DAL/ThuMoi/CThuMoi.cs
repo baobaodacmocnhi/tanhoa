@@ -169,6 +169,11 @@ namespace KTKS_DonKH.DAL.ThuMoi
             }
         }
 
+        public bool checkKhongLienHe(string DanhBo)
+        {
+            return db.ThuMoi_ChiTiets.Any(item => item.DanhBo == DanhBo && item.KhachHangDaLienHe == false);
+        }
+
         public int maxLan_ChiTiet(string Loai, decimal MaDon, string DanhBo)
         {
             switch (Loai)

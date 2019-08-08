@@ -11,18 +11,18 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 {
     class CTTTL : CDAL
     {
-        ///Chứa hàm truy xuất dữ liệu từ bảng TTTL & CTTTL
+        ///Chứa hàm truy xuất dữ liệu từ bảng ThuTraLoi & CTTTL
 
-        #region TTTL (Thảo Thư Trả Lời)
+        #region ThuTraLoi (Thảo Thư Trả Lời)
 
-        public bool Them(TTTL tttl)
+        public bool Them(LinQ.ThuTraLoi tttl)
         {
             try
             {
-                if (db.TTTLs.Count() > 0)
+                if (db.ThuTraLois.Count() > 0)
                 {
                     string ID = "MaTTTL";
-                    string Table = "TTTL";
+                    string Table = "ThuTraLoi";
                     decimal MaTTTL = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
@@ -32,7 +32,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                     tttl.MaTTTL = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                 tttl.CreateDate = DateTime.Now;
                 tttl.CreateBy = CTaiKhoan.MaUser;
-                db.TTTLs.InsertOnSubmit(tttl);
+                db.ThuTraLois.InsertOnSubmit(tttl);
                 db.SubmitChanges();
                 return true;
             }
@@ -44,7 +44,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public bool Sua(TTTL tttl)
+        public bool Sua(LinQ.ThuTraLoi tttl)
         {
             try
             {
@@ -61,21 +61,21 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public TTTL Get(decimal MaTTTL)
+        public LinQ.ThuTraLoi Get(decimal MaTTTL)
         {
-            return db.TTTLs.SingleOrDefault(itemTTTL => itemTTTL.MaTTTL == MaTTTL);
+            return db.ThuTraLois.SingleOrDefault(itemTTTL => itemTTTL.MaTTTL == MaTTTL);
         }
 
-        public TTTL Get(string Loai, decimal MaDon)
+        public LinQ.ThuTraLoi Get(string Loai, decimal MaDon)
         {
             switch (Loai)
             {
                 case "TKH":
-                    return db.TTTLs.SingleOrDefault(item => item.MaDon == MaDon);
+                    return db.ThuTraLois.SingleOrDefault(item => item.MaDon == MaDon);
                 case "TXL":
-                    return db.TTTLs.SingleOrDefault(item => item.MaDonTXL == MaDon);
+                    return db.ThuTraLois.SingleOrDefault(item => item.MaDonTXL == MaDon);
                 case "TBC":
-                    return db.TTTLs.SingleOrDefault(item => item.MaDonTBC == MaDon);
+                    return db.ThuTraLois.SingleOrDefault(item => item.MaDonTBC == MaDon);
                 default:
                     return null;
             }
@@ -86,11 +86,11 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             switch (Loai)
             {
                 case "TKH":
-                    return db.TTTLs.Any(item => item.MaDon == MaDon);
+                    return db.ThuTraLois.Any(item => item.MaDon == MaDon);
                 case "TXL":
-                    return db.TTTLs.Any(item => item.MaDonTXL == MaDon);
+                    return db.ThuTraLois.Any(item => item.MaDonTXL == MaDon);
                 case "TBC":
-                    return db.TTTLs.Any(item => item.MaDonTBC == MaDon);
+                    return db.ThuTraLois.Any(item => item.MaDonTBC == MaDon);
                 default:
                     return false;
             }
@@ -98,16 +98,16 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 
         #endregion
 
-        #region TTTL_ChiTiet (Chi Tiết Thảo Thư Trả Lời)
+        #region ThuTraLoi_ChiTiet (Chi Tiết Thảo Thư Trả Lời)
 
-        public bool ThemCT(TTTL_ChiTiet cttttl)
+        public bool ThemCT(ThuTraLoi_ChiTiet cttttl)
         {
             try
             {
-                if (db.TTTL_ChiTiets.Count() > 0)
+                if (db.ThuTraLoi_ChiTiets.Count() > 0)
                 {
                     string ID = "MaCTTTTL";
-                    string Table = "TTTL_ChiTiet";
+                    string Table = "ThuTraLoi_ChiTiet";
                     decimal MaCTTTTL = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
@@ -117,7 +117,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                     cttttl.MaCTTTTL = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                 cttttl.CreateDate = DateTime.Now;
                 cttttl.CreateBy = CTaiKhoan.MaUser;
-                db.TTTL_ChiTiets.InsertOnSubmit(cttttl);
+                db.ThuTraLoi_ChiTiets.InsertOnSubmit(cttttl);
                 db.SubmitChanges();
                 return true;
             }
@@ -129,7 +129,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public bool SuaCT(TTTL_ChiTiet cttttl)
+        public bool SuaCT(ThuTraLoi_ChiTiet cttttl)
         {
             try
             {
@@ -146,15 +146,15 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public bool XoaCT(TTTL_ChiTiet cttttl)
+        public bool XoaCT(ThuTraLoi_ChiTiet cttttl)
         {
             try
             {
                 decimal ID = cttttl.MaTTTL;
-                db.TTTL_ChiTiets.DeleteOnSubmit(cttttl);
+                db.ThuTraLoi_ChiTiets.DeleteOnSubmit(cttttl);
                 db.SubmitChanges();
-                if (db.TTTL_ChiTiets.Any(item => item.MaTTTL == ID) == false)
-                    db.TTTLs.DeleteOnSubmit(db.TTTLs.SingleOrDefault(item => item.MaTTTL == ID));
+                if (db.ThuTraLoi_ChiTiets.Any(item => item.MaTTTL == ID) == false)
+                    db.ThuTraLois.DeleteOnSubmit(db.ThuTraLois.SingleOrDefault(item => item.MaTTTL == ID));
                 db.SubmitChanges();
                 return true;
             }
@@ -171,11 +171,11 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             switch (Loai)
             {
                 case "TKH":
-                    return db.TTTL_ChiTiets.Any(item => item.TTTL.MaDon == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+                    return db.ThuTraLoi_ChiTiets.Any(item => item.ThuTraLoi.MaDon == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
                 case "TXL":
-                    return db.TTTL_ChiTiets.Any(item => item.TTTL.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+                    return db.ThuTraLoi_ChiTiets.Any(item => item.ThuTraLoi.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
                 case "TBC":
-                    return db.TTTL_ChiTiets.Any(item => item.TTTL.MaDonTBC == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+                    return db.ThuTraLoi_ChiTiets.Any(item => item.ThuTraLoi.MaDonTBC == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
                 default:
                     return false;
             }
@@ -183,17 +183,17 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 
         public bool CheckExist_CT(decimal MaCTTTTL)
         {
-            return db.TTTL_ChiTiets.Any(item => item.MaCTTTTL == MaCTTTTL);
+            return db.ThuTraLoi_ChiTiets.Any(item => item.MaCTTTTL == MaCTTTTL);
         }
 
-        public TTTL_ChiTiet GetCT(decimal MaCTTTTL)
+        public ThuTraLoi_ChiTiet GetCT(decimal MaCTTTTL)
         {
-            return db.TTTL_ChiTiets.SingleOrDefault(itemCTTTTL => itemCTTTTL.MaCTTTTL == MaCTTTTL);
+            return db.ThuTraLoi_ChiTiets.SingleOrDefault(itemCTTTTL => itemCTTTTL.MaCTTTTL == MaCTTTTL);
         }
 
         public DataTable GetDS()
         {
-            return LINQToDataTable(db.TTTL_ChiTiets.ToList());
+            return LINQToDataTable(db.ThuTraLoi_ChiTiets.ToList());
         }
 
         public DataTable GetDS(string To, decimal MaDon)
@@ -201,11 +201,11 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             switch (To)
             {
                 case "TKH":
-                    var query = from item in db.TTTL_ChiTiets
-                                where item.TTTL.MaDon == MaDon
+                    var query = from item in db.ThuTraLoi_ChiTiets
+                                where item.ThuTraLoi.MaDon == MaDon
                                 select new
                                 {
-                                    MaDon = "TKH" + item.TTTL.MaDon,
+                                    MaDon = "TKH" + item.ThuTraLoi.MaDon,
                                     item.MaCTTTTL,
                                     item.CreateDate,
                                     item.DanhBo,item.HoTen,item.DiaChi,
@@ -216,11 +216,11 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
-                    query = from item in db.TTTL_ChiTiets
-                            where item.TTTL.MaDonTXL == MaDon
+                    query = from item in db.ThuTraLoi_ChiTiets
+                            where item.ThuTraLoi.MaDonTXL == MaDon
                             select new
                             {
-                                MaDon = "TXL" + item.TTTL.MaDonTBC,
+                                MaDon = "TXL" + item.ThuTraLoi.MaDonTBC,
                                 item.MaCTTTTL,
                                 item.CreateDate,
                                 item.DanhBo,item.HoTen,item.DiaChi,
@@ -231,11 +231,11 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             };
                     return LINQToDataTable(query);
                 case "TBC":
-                    query = from item in db.TTTL_ChiTiets
-                            where item.TTTL.MaDonTBC == MaDon
+                    query = from item in db.ThuTraLoi_ChiTiets
+                            where item.ThuTraLoi.MaDonTBC == MaDon
                             select new
                             {
-                                MaDon = "TBC" + item.TTTL.MaDonTBC,
+                                MaDon = "TBC" + item.ThuTraLoi.MaDonTBC,
                                 item.MaCTTTTL,
                                 item.CreateDate,
                                 item.DanhBo,item.HoTen,item.DiaChi,
@@ -246,11 +246,11 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             };
                     return LINQToDataTable(query);
                 default:
-                    query = from item in db.TTTL_ChiTiets
-                            where item.TTTL.MaDonMoi == MaDon
+                    query = from item in db.ThuTraLoi_ChiTiets
+                            where item.ThuTraLoi.MaDonMoi == MaDon
                             select new
                             {
-                                MaDon =  item.TTTL.MaDonMoi.Value.ToString(),
+                                MaDon =  item.ThuTraLoi.MaDonMoi.Value.ToString(),
                                 item.MaCTTTTL,
                                 item.CreateDate,
                                 item.DanhBo,item.HoTen,item.DiaChi,
@@ -265,14 +265,14 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 
         public DataTable GetDS(decimal MaCTTTTL)
         {
-            var query = from item in db.TTTL_ChiTiets
+            var query = from item in db.ThuTraLoi_ChiTiets
                         where item.MaCTTTTL == MaCTTTTL
                         select new
                         {
-                            MaDon = item.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TTTL.MaDonMoi).Count() == 1 ? item.TTTL.MaDonMoi.Value.ToString() : item.TTTL.MaDonMoi + "." + item.STT
-                                : item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
-                                : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
-                                : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
+                            MaDon = item.ThuTraLoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuTraLoi.MaDonMoi).Count() == 1 ? item.ThuTraLoi.MaDonMoi.Value.ToString() : item.ThuTraLoi.MaDonMoi + "." + item.STT
+                                : item.ThuTraLoi.MaDon != null ? "TKH" + item.ThuTraLoi.MaDon
+                                : item.ThuTraLoi.MaDonTXL != null ? "TXL" + item.ThuTraLoi.MaDonTXL
+                                : item.ThuTraLoi.MaDonTBC != null ? "TBC" + item.ThuTraLoi.MaDonTBC : null,
                             item.MaCTTTTL,
                             ID = item.MaCTTTTL,
                             item.CreateDate,
@@ -287,16 +287,16 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 
         public DataTable GetDS(decimal TuMaCTTTTL, decimal DenMaCTTTTL)
         {
-            var query = from item in db.TTTL_ChiTiets
+            var query = from item in db.ThuTraLoi_ChiTiets
                         where item.MaCTTTTL.ToString().Substring(item.MaCTTTTL.ToString().Length - 2, 2) == TuMaCTTTTL.ToString().Substring(TuMaCTTTTL.ToString().Length - 2, 2)
                                 && item.MaCTTTTL.ToString().Substring(item.MaCTTTTL.ToString().Length - 2, 2) == DenMaCTTTTL.ToString().Substring(DenMaCTTTTL.ToString().Length - 2, 2)
                                 && item.MaCTTTTL >= TuMaCTTTTL && item.MaCTTTTL <= DenMaCTTTTL
                         select new
                         {
-                            MaDon = item.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TTTL.MaDonMoi).Count() == 1 ? item.TTTL.MaDonMoi.Value.ToString() : item.TTTL.MaDonMoi + "." + item.STT
-                                : item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
-                                : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
-                                : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
+                            MaDon = item.ThuTraLoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuTraLoi.MaDonMoi).Count() == 1 ? item.ThuTraLoi.MaDonMoi.Value.ToString() : item.ThuTraLoi.MaDonMoi + "." + item.STT
+                                : item.ThuTraLoi.MaDon != null ? "TKH" + item.ThuTraLoi.MaDon
+                                : item.ThuTraLoi.MaDonTXL != null ? "TXL" + item.ThuTraLoi.MaDonTXL
+                                : item.ThuTraLoi.MaDonTBC != null ? "TBC" + item.ThuTraLoi.MaDonTBC : null,
                             item.MaCTTTTL,
                             item.CreateDate,
                             item.DanhBo,item.HoTen,item.DiaChi,
@@ -310,14 +310,14 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 
         public DataTable GetDS(string DanhBo)
         {
-            var query = from item in db.TTTL_ChiTiets
+            var query = from item in db.ThuTraLoi_ChiTiets
                         where item.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = item.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TTTL.MaDonMoi).Count() == 1 ? item.TTTL.MaDonMoi.Value.ToString() : item.TTTL.MaDonMoi + "." + item.STT
-                                : item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
-                                : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
-                                : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
+                            MaDon = item.ThuTraLoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuTraLoi.MaDonMoi).Count() == 1 ? item.ThuTraLoi.MaDonMoi.Value.ToString() : item.ThuTraLoi.MaDonMoi + "." + item.STT
+                                : item.ThuTraLoi.MaDon != null ? "TKH" + item.ThuTraLoi.MaDon
+                                : item.ThuTraLoi.MaDonTXL != null ? "TXL" + item.ThuTraLoi.MaDonTXL
+                                : item.ThuTraLoi.MaDonTBC != null ? "TBC" + item.ThuTraLoi.MaDonTBC : null,
                             item.MaCTTTTL,
                             item.CreateDate,
                             item.DanhBo,item.HoTen,item.DiaChi,
@@ -331,14 +331,14 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 
         public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            var query = from item in db.TTTL_ChiTiets
+            var query = from item in db.ThuTraLoi_ChiTiets
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            MaDon = item.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TTTL.MaDonMoi).Count() == 1 ? item.TTTL.MaDonMoi.Value.ToString() : item.TTTL.MaDonMoi + "." + item.STT
-                                : item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
-                                : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
-                                : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
+                            MaDon = item.ThuTraLoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuTraLoi.MaDonMoi).Count() == 1 ? item.ThuTraLoi.MaDonMoi.Value.ToString() : item.ThuTraLoi.MaDonMoi + "." + item.STT
+                                : item.ThuTraLoi.MaDon != null ? "TKH" + item.ThuTraLoi.MaDon
+                                : item.ThuTraLoi.MaDonTXL != null ? "TXL" + item.ThuTraLoi.MaDonTXL
+                                : item.ThuTraLoi.MaDonTBC != null ? "TBC" + item.ThuTraLoi.MaDonTBC : null,
                             item.MaCTTTTL,
                             ID = item.MaCTTTTL,
                             item.CreateDate,
@@ -353,16 +353,16 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 
         public DataTable GetLichSuCTByDanhBo(string DanhBo)
         {
-            var query = from item in db.TTTL_ChiTiets
+            var query = from item in db.ThuTraLoi_ChiTiets
                         where item.DanhBo == DanhBo
                         orderby item.CreateDate descending
                         select new
                         {
                             item.MaCTTTTL,
-                            MaDon = item.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TTTL.MaDonMoi).Count() == 1 ? item.TTTL.MaDonMoi.Value.ToString() : item.TTTL.MaDonMoi + "." + item.STT
-                                : item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
-                                : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
-                                : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
+                            MaDon = item.ThuTraLoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuTraLoi.MaDonMoi).Count() == 1 ? item.ThuTraLoi.MaDonMoi.Value.ToString() : item.ThuTraLoi.MaDonMoi + "." + item.STT
+                                : item.ThuTraLoi.MaDon != null ? "TKH" + item.ThuTraLoi.MaDon
+                                : item.ThuTraLoi.MaDonTXL != null ? "TXL" + item.ThuTraLoi.MaDonTXL
+                                : item.ThuTraLoi.MaDonTBC != null ? "TBC" + item.ThuTraLoi.MaDonTBC : null,
                             item.VeViec,
                         };
             return LINQToDataTable(query);
@@ -374,32 +374,32 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 
         public bool checkExist(int MaDon)
         {
-                    return db.TTTLs.Any(item => item.MaDonMoi == MaDon);
+                    return db.ThuTraLois.Any(item => item.MaDonMoi == MaDon);
         }
 
         public bool checkExist_ChiTiet(int MaDon, string DanhBo, DateTime CreateDate)
         {
-                    return db.TTTL_ChiTiets.Any(item => item.TTTL.MaDonMoi == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+                    return db.ThuTraLoi_ChiTiets.Any(item => item.ThuTraLoi.MaDonMoi == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
         }
 
-        public TTTL get(int MaDon)
+        public LinQ.ThuTraLoi get(int MaDon)
         {
-                    return db.TTTLs.SingleOrDefault(item => item.MaDonMoi == MaDon);
+                    return db.ThuTraLois.SingleOrDefault(item => item.MaDonMoi == MaDon);
         }
 
         #region Hình
 
-        public bool Them_Hinh(TTTL_ChiTiet_Hinh en)
+        public bool Them_Hinh(ThuTraLoi_ChiTiet_Hinh en)
         {
             try
             {
-                if (db.TTTL_ChiTiet_Hinhs.Count() == 0)
+                if (db.ThuTraLoi_ChiTiet_Hinhs.Count() == 0)
                     en.ID = 1;
                 else
-                    en.ID = db.TTTL_ChiTiet_Hinhs.Max(item => item.ID) + 1;
+                    en.ID = db.ThuTraLoi_ChiTiet_Hinhs.Max(item => item.ID) + 1;
                 en.CreateBy = CTaiKhoan.MaUser;
                 en.CreateDate = DateTime.Now;
-                db.TTTL_ChiTiet_Hinhs.InsertOnSubmit(en);
+                db.ThuTraLoi_ChiTiet_Hinhs.InsertOnSubmit(en);
                 db.SubmitChanges();
                 return true;
             }
@@ -410,11 +410,11 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public bool Xoa_Hinh(TTTL_ChiTiet_Hinh en)
+        public bool Xoa_Hinh(ThuTraLoi_ChiTiet_Hinh en)
         {
             try
             {
-                db.TTTL_ChiTiet_Hinhs.DeleteOnSubmit(en);
+                db.ThuTraLoi_ChiTiet_Hinhs.DeleteOnSubmit(en);
                 db.SubmitChanges();
                 return true;
             }
@@ -425,9 +425,9 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public TTTL_ChiTiet_Hinh get_Hinh(int ID)
+        public ThuTraLoi_ChiTiet_Hinh get_Hinh(int ID)
         {
-            return db.TTTL_ChiTiet_Hinhs.SingleOrDefault(item => item.ID == ID);
+            return db.ThuTraLoi_ChiTiet_Hinhs.SingleOrDefault(item => item.ID == ID);
         }
 
         #endregion

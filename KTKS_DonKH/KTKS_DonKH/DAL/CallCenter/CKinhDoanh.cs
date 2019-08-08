@@ -268,13 +268,13 @@ namespace KTKS_DonKH.DAL.CallCenter
                 ds.Tables.Add(dtYCCHDB);
 
                 ///Table TTTL_ChiTiet
-                var queryTTTL = from itemCTTTTL in db.TTTL_ChiTiets
-                                where itemCTTTTL.DanhBo == DanhBo || (itemCTTTTL.TTTL.DonKH.DanhBo == DanhBo || itemCTTTTL.TTTL.DonTXL.DanhBo == DanhBo || itemCTTTTL.TTTL.DonTBC.DanhBo == DanhBo)
+                var queryTTTL = from itemCTTTTL in db.ThuTraLoi_ChiTiets
+                                where itemCTTTTL.DanhBo == DanhBo || (itemCTTTTL.ThuTraLoi.DonKH.DanhBo == DanhBo || itemCTTTTL.ThuTraLoi.DonTXL.DanhBo == DanhBo || itemCTTTTL.ThuTraLoi.DonTBC.DanhBo == DanhBo)
                                 select new
                                 {
-                                    MaDon = itemCTTTTL.TTTL.MaDon != null ? "TKH" + itemCTTTTL.TTTL.MaDon
-                                    : itemCTTTTL.TTTL.MaDonTXL != null ? "TXL" + itemCTTTTL.TTTL.MaDonTXL
-                                    : itemCTTTTL.TTTL.MaDonTBC != null ? "TBC" + itemCTTTTL.TTTL.MaDonTBC : null,
+                                    MaDon = itemCTTTTL.ThuTraLoi.MaDon != null ? "TKH" + itemCTTTTL.ThuTraLoi.MaDon
+                                    : itemCTTTTL.ThuTraLoi.MaDonTXL != null ? "TXL" + itemCTTTTL.ThuTraLoi.MaDonTXL
+                                    : itemCTTTTL.ThuTraLoi.MaDonTBC != null ? "TBC" + itemCTTTTL.ThuTraLoi.MaDonTBC : null,
                                     itemCTTTTL.MaCTTTTL,
                                     itemCTTTTL.CreateDate,
                                     itemCTTTTL.DanhBo,
@@ -286,7 +286,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                                 };
                 DataTable dtTTTL = new DataTable();
                 dtTTTL = LINQToDataTable(queryTTTL);
-                dtTTTL.TableName = "TTTL";
+                dtTTTL.TableName = "ThuTraLoi";
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
@@ -459,9 +459,9 @@ namespace KTKS_DonKH.DAL.CallCenter
                              };
                 dt.Merge(LINQToDataTable(queryDonKH));
 
-                ///Table TTTL_ChiTiets
+                ///Table ThuTraLoi_ChiTiets
                 queryDonKH = from itemDon in db.DonKHs
-                             join itemCTTTTL in db.TTTL_ChiTiets on itemDon.MaDon equals itemCTTTTL.TTTL.MaDon
+                             join itemCTTTTL in db.ThuTraLoi_ChiTiets on itemDon.MaDon equals itemCTTTTL.ThuTraLoi.MaDon
                              where itemCTTTTL.DanhBo == DanhBo
                              select new
                              {
@@ -660,9 +660,9 @@ namespace KTKS_DonKH.DAL.CallCenter
                               };
                 dt.Merge(LINQToDataTable(queryDonTXL));
 
-                ///Table TTTL_ChiTiets
+                ///Table ThuTraLoi_ChiTiets
                 queryDonTXL = from itemDonTXL in db.DonTXLs
-                              join itemCTTTTL in db.TTTL_ChiTiets on itemDonTXL.MaDon equals itemCTTTTL.TTTL.MaDonTXL
+                              join itemCTTTTL in db.ThuTraLoi_ChiTiets on itemDonTXL.MaDon equals itemCTTTTL.ThuTraLoi.MaDonTXL
                               where itemCTTTTL.DanhBo == DanhBo
                               select new
                               {
@@ -861,9 +861,9 @@ namespace KTKS_DonKH.DAL.CallCenter
                               };
                 dt.Merge(LINQToDataTable(queryDonTBC));
 
-                ///Table TTTL_ChiTiets
+                ///Table ThuTraLoi_ChiTiets
                 queryDonTBC = from itemDon in db.DonTBCs
-                              join itemCTTTTL in db.TTTL_ChiTiets on itemDon.MaDon equals itemCTTTTL.TTTL.MaDonTBC
+                              join itemCTTTTL in db.ThuTraLoi_ChiTiets on itemDon.MaDon equals itemCTTTTL.ThuTraLoi.MaDonTBC
                               where itemCTTTTL.DanhBo == DanhBo
                               select new
                               {
@@ -957,7 +957,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                     ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["Don"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);

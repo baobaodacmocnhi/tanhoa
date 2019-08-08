@@ -100,7 +100,7 @@ namespace KTKS_DonKH.GUI.CongVan
                         TenTable = "CHDB_Phieu";
                         break;
                     case "Thư Trả Lời":
-                        TenTable = "TTTL_ChiTiet";
+                        TenTable = "ThuTraLoi_ChiTiet";
                         break;
                     default:
 
@@ -282,7 +282,7 @@ namespace KTKS_DonKH.GUI.CongVan
                                         item.DiaChi = ycchdb.DiaChi;
                                         break;
                                     case "Thư Trả Lời":
-                                        TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        ThuTraLoi_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                         item.DanhBo = cttttl.DanhBo;
                                         item.HoTen = cttttl.HoTen;
                                         item.DiaChi = cttttl.DiaChi;
@@ -449,7 +449,7 @@ namespace KTKS_DonKH.GUI.CongVan
                         txtDiaChi.Text = ycchdb.DiaChi;
                         break;
                     case "Thư Trả Lời":
-                        TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        ThuTraLoi_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = cttttl.DanhBo;
                         txtHoTen.Text = cttttl.HoTen;
                         txtDiaChi.Text = cttttl.DiaChi;

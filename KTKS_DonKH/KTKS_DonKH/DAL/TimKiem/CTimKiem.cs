@@ -219,11 +219,11 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ds.Tables.Add(dtPhieuCHDB);
 
                 ///Table CTTTTL
-                var queryTTTL = from itemCTTTTL in db.TTTL_ChiTiets
-                                where itemCTTTTL.TTTL.MaDonMoi == MaDon
+                var queryTTTL = from itemCTTTTL in db.ThuTraLoi_ChiTiets
+                                where itemCTTTTL.ThuTraLoi.MaDonMoi == MaDon
                                 select new
                                 {
-                                    MaDon = itemCTTTTL.TTTL.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTTTTL.TTTL.MaDonMoi.Value.ToString() : itemCTTTTL.TTTL.MaDonMoi.Value.ToString() + "." + itemCTTTTL.STT.Value.ToString(),
+                                    MaDon = itemCTTTTL.ThuTraLoi.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTTTTL.ThuTraLoi.MaDonMoi.Value.ToString() : itemCTTTTL.ThuTraLoi.MaDonMoi.Value.ToString() + "." + itemCTTTTL.STT.Value.ToString(),
                                     itemCTTTTL.MaCTTTTL,
                                     itemCTTTTL.CreateDate,
                                     itemCTTTTL.DanhBo,
@@ -235,7 +235,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
                 DataTable dtTTTL = new DataTable();
                 dtTTTL = LINQToDataTable(queryTTTL);
-                dtTTTL.TableName = "TTTL";
+                dtTTTL.TableName = "ThuTraLoi";
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
@@ -357,7 +357,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                     ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["PhieuCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
@@ -593,11 +593,11 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ds.Tables.Add(dtPhieuCHDB);
 
                 ///Table CTTTTL
-                var queryTTTL = from itemCTTTTL in db.TTTL_ChiTiets
-                                where itemCTTTTL.TTTL.MaDonMoi == MaDon && itemCTTTTL.STT == STT
+                var queryTTTL = from itemCTTTTL in db.ThuTraLoi_ChiTiets
+                                where itemCTTTTL.ThuTraLoi.MaDonMoi == MaDon && itemCTTTTL.STT == STT
                                 select new
                                 {
-                                    MaDon = itemCTTTTL.TTTL.MaDonMoi.Value.ToString() + "." + itemCTTTTL.STT.Value.ToString(),
+                                    MaDon = itemCTTTTL.ThuTraLoi.MaDonMoi.Value.ToString() + "." + itemCTTTTL.STT.Value.ToString(),
                                     itemCTTTTL.MaCTTTTL,
                                     itemCTTTTL.CreateDate,
                                     itemCTTTTL.DanhBo,
@@ -609,7 +609,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
                 DataTable dtTTTL = new DataTable();
                 dtTTTL = LINQToDataTable(queryTTTL);
-                dtTTTL.TableName = "TTTL";
+                dtTTTL.TableName = "ThuTraLoi";
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
@@ -731,7 +731,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                     ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["PhieuCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
@@ -967,11 +967,11 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ds.Tables.Add(dtPhieuCHDB);
 
                 ///Table CTTTTL
-                var queryTTTL = from itemCTTTTL in db.TTTL_ChiTiets
-                                where itemCTTTTL.TTTL.MaDon == MaDon
+                var queryTTTL = from itemCTTTTL in db.ThuTraLoi_ChiTiets
+                                where itemCTTTTL.ThuTraLoi.MaDon == MaDon
                                 select new
                                 {
-                                    MaDon = "TKH" + itemCTTTTL.TTTL.MaDon,
+                                    MaDon = "TKH" + itemCTTTTL.ThuTraLoi.MaDon,
                                     itemCTTTTL.MaCTTTTL,
                                     itemCTTTTL.CreateDate,
                                     itemCTTTTL.DanhBo,
@@ -983,7 +983,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
                 DataTable dtTTTL = new DataTable();
                 dtTTTL = LINQToDataTable(queryTTTL);
-                dtTTTL.TableName = "TTTL";
+                dtTTTL.TableName = "ThuTraLoi";
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
@@ -1087,7 +1087,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                     ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["PhieuCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
@@ -1320,11 +1320,11 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ds.Tables.Add(dtPhieuCHDB);
 
                 ///Table CTTTTL
-                var queryTTTL = from itemCTTTTL in db.TTTL_ChiTiets
-                                where itemCTTTTL.TTTL.MaDonTXL == MaDonTXL
+                var queryTTTL = from itemCTTTTL in db.ThuTraLoi_ChiTiets
+                                where itemCTTTTL.ThuTraLoi.MaDonTXL == MaDonTXL
                                 select new
                                 {
-                                    MaDon = "TXL" + itemCTTTTL.TTTL.MaDonTXL,
+                                    MaDon = "TXL" + itemCTTTTL.ThuTraLoi.MaDonTXL,
                                     itemCTTTTL.MaCTTTTL,
                                     itemCTTTTL.CreateDate,
                                     itemCTTTTL.DanhBo,
@@ -1336,7 +1336,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
                 DataTable dtTTTL = new DataTable();
                 dtTTTL = LINQToDataTable(queryTTTL);
-                dtTTTL.TableName = "TTTL";
+                dtTTTL.TableName = "ThuTraLoi";
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
@@ -1440,7 +1440,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                     ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["PhieuCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
@@ -1673,11 +1673,11 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ds.Tables.Add(dtPhieuCHDB);
 
                 ///Table CTTTTL
-                var queryTTTL = from itemCTTTTL in db.TTTL_ChiTiets
-                                where itemCTTTTL.TTTL.MaDonTBC == MaDonTBC
+                var queryTTTL = from itemCTTTTL in db.ThuTraLoi_ChiTiets
+                                where itemCTTTTL.ThuTraLoi.MaDonTBC == MaDonTBC
                                 select new
                                 {
-                                    MaDon = "TBC" + itemCTTTTL.TTTL.MaDonTBC,
+                                    MaDon = "TBC" + itemCTTTTL.ThuTraLoi.MaDonTBC,
                                     itemCTTTTL.MaCTTTTL,
                                     itemCTTTTL.CreateDate,
                                     itemCTTTTL.DanhBo,
@@ -1689,7 +1689,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
                 DataTable dtTTTL = new DataTable();
                 dtTTTL = LINQToDataTable(queryTTTL);
-                dtTTTL.TableName = "TTTL";
+                dtTTTL.TableName = "ThuTraLoi";
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
@@ -1793,7 +1793,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                     ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["PhieuCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
@@ -2041,14 +2041,14 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        ds.Tables.Add(dtPhieuCHDB);
 
         //        ///Table CTTTTL
-        //        var queryTTTL = from itemCTTTTL in db.TTTL_ChiTiets
-        //                        where itemCTTTTL.DanhBo == DanhBo || (itemCTTTTL.TTTL.DonKH.DanhBo == DanhBo || itemCTTTTL.TTTL.DonTXL.DanhBo == DanhBo || itemCTTTTL.TTTL.DonTBC.DanhBo == DanhBo)
+        //        var queryTTTL = from itemCTTTTL in db.ThuTraLoi_ChiTiets
+        //                        where itemCTTTTL.DanhBo == DanhBo || (itemCTTTTL.ThuTraLoi.DonKH.DanhBo == DanhBo || itemCTTTTL.ThuTraLoi.DonTXL.DanhBo == DanhBo || itemCTTTTL.ThuTraLoi.DonTBC.DanhBo == DanhBo)
         //                        select new
         //                        {
-        //                            MaDon = itemCTTTTL.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTTTTL.TTTL.MaDonMoi).Count() == 1 ? itemCTTTTL.TTTL.MaDonMoi.Value.ToString() : itemCTTTTL.TTTL.MaDonMoi + "." + itemCTTTTL.STT
-        //                            : itemCTTTTL.TTTL.MaDon != null ? "TKH" + itemCTTTTL.TTTL.MaDon
-        //                            : itemCTTTTL.TTTL.MaDonTXL != null ? "TXL" + itemCTTTTL.TTTL.MaDonTXL
-        //                            : itemCTTTTL.TTTL.MaDonTBC != null ? "TBC" + itemCTTTTL.TTTL.MaDonTBC : null,
+        //                            MaDon = itemCTTTTL.ThuTraLoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTTTTL.ThuTraLoi.MaDonMoi).Count() == 1 ? itemCTTTTL.ThuTraLoi.MaDonMoi.Value.ToString() : itemCTTTTL.ThuTraLoi.MaDonMoi + "." + itemCTTTTL.STT
+        //                            : itemCTTTTL.ThuTraLoi.MaDon != null ? "TKH" + itemCTTTTL.ThuTraLoi.MaDon
+        //                            : itemCTTTTL.ThuTraLoi.MaDonTXL != null ? "TXL" + itemCTTTTL.ThuTraLoi.MaDonTXL
+        //                            : itemCTTTTL.ThuTraLoi.MaDonTBC != null ? "TBC" + itemCTTTTL.ThuTraLoi.MaDonTBC : null,
         //                            itemCTTTTL.MaCTTTTL,
         //                            itemCTTTTL.CreateDate,
         //                            itemCTTTTL.DanhBo,
@@ -2060,7 +2060,7 @@ namespace KTKS_DonKH.DAL.TimKiem
         //                        };
         //        DataTable dtTTTL = new DataTable();
         //        dtTTTL = LINQToDataTable(queryTTTL);
-        //        dtTTTL.TableName = "TTTL";
+        //        dtTTTL.TableName = "ThuTraLoi";
         //        ds.Tables.Add(dtTTTL);
 
         //        ///Table GianLan
@@ -2327,9 +2327,9 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        //             };
         //        //dt.Merge(LINQToDataTable(queryDonTu));
 
-        //        /////Table TTTL_ChiTiets
+        //        /////Table ThuTraLoi_ChiTiets
         //        //queryDonTu = from itemDon in db.DonTu_ChiTiets
-        //        //             join itemCTTTTL in db.TTTL_ChiTiets on new { itemDon.MaDon, itemDon.STT } equals new { MaDon = itemCTTTTL.TTTL.MaDonMoi, itemCTTTTL.STT }
+        //        //             join itemCTTTTL in db.ThuTraLoi_ChiTiets on new { itemDon.MaDon, itemDon.STT } equals new { MaDon = itemCTTTTL.ThuTraLoi.MaDonMoi, itemCTTTTL.STT }
         //        //             where itemCTTTTL.DanhBo == DanhBo
         //        //             select new
         //        //             {
@@ -2583,9 +2583,9 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        //             };
         //        //dt.Merge(LINQToDataTable(queryDonKH));
 
-        //        /////Table TTTL_ChiTiets
+        //        /////Table ThuTraLoi_ChiTiets
         //        //queryDonKH = from itemDon in db.DonKHs
-        //        //             join itemCTTTTL in db.TTTL_ChiTiets on itemDon.MaDon equals itemCTTTTL.TTTL.MaDon
+        //        //             join itemCTTTTL in db.ThuTraLoi_ChiTiets on itemDon.MaDon equals itemCTTTTL.ThuTraLoi.MaDon
         //        //             where itemCTTTTL.DanhBo == DanhBo
         //        //             select new
         //        //             {
@@ -2838,9 +2838,9 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        //              };
         //        //dt.Merge(LINQToDataTable(queryDonTXL));
 
-        //        /////Table TTTL_ChiTiets
+        //        /////Table ThuTraLoi_ChiTiets
         //        //queryDonTXL = from itemDonTXL in db.DonTXLs
-        //        //              join itemCTTTTL in db.TTTL_ChiTiets on itemDonTXL.MaDon equals itemCTTTTL.TTTL.MaDonTXL
+        //        //              join itemCTTTTL in db.ThuTraLoi_ChiTiets on itemDonTXL.MaDon equals itemCTTTTL.ThuTraLoi.MaDonTXL
         //        //              where itemCTTTTL.DanhBo == DanhBo
         //        //              select new
         //        //              {
@@ -3093,9 +3093,9 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        //              };
         //        //dt.Merge(LINQToDataTable(queryDonTBC));
 
-        //        /////Table TTTL_ChiTiets
+        //        /////Table ThuTraLoi_ChiTiets
         //        //queryDonTBC = from itemDon in db.DonTBCs
-        //        //              join itemCTTTTL in db.TTTL_ChiTiets on itemDon.MaDon equals itemCTTTTL.TTTL.MaDonTBC
+        //        //              join itemCTTTTL in db.ThuTraLoi_ChiTiets on itemDon.MaDon equals itemCTTTTL.ThuTraLoi.MaDonTBC
         //        //              where itemCTTTTL.DanhBo == DanhBo
         //        //              select new
         //        //              {
@@ -3624,47 +3624,47 @@ namespace KTKS_DonKH.DAL.TimKiem
         //                     };
         //        dt.Merge(LINQToDataTable(queryDonTu));
 
-        //        ///Table TTTL_ChiTiets
-        //        queryDonTu = from item in db.TTTL_ChiTiets
+        //        ///Table ThuTraLoi_ChiTiets
+        //        queryDonTu = from item in db.ThuTraLoi_ChiTiets
         //                     where item.DanhBo == DanhBo
         //                     select new
         //                     {
-        //                         MaDon = item.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TTTL.MaDonMoi).Count() == 1 ? item.TTTL.MaDonMoi.Value.ToString() : item.TTTL.MaDonMoi + "." + item.STT
-        //                            : item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
-        //                            : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
-        //                            : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
-        //                         TenLD = item.TTTL.MaDonMoi != null ? ""
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.LoaiDon.TenLD
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.LoaiDonTXL.TenLD
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.LoaiDonTBC.TenLD : null,
-        //                         CreateDate = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.CreateDate
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.CreateDate
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.CreateDate
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.CreateDate : null,
-        //                         DanhBo = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.DanhBo
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.DanhBo
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.DanhBo
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.DanhBo : null,
-        //                         HoTen = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.HoTen
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.HoTen
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.HoTen
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.HoTen : null,
-        //                         DiaChi = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.DiaChi
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.DiaChi
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.DiaChi
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.DiaChi : null,
-        //                         GiaBieu = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.GiaBieu
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.GiaBieu
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.GiaBieu
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.GiaBieu : null,
-        //                         DinhMuc = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.DinhMuc
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.DinhMuc
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.DinhMuc
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.DinhMuc : null,
-        //                         NoiDung = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.Name_NhomDon
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.NoiDung
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.NoiDung
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.NoiDung : null,
+        //                         MaDon = item.ThuTraLoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuTraLoi.MaDonMoi).Count() == 1 ? item.ThuTraLoi.MaDonMoi.Value.ToString() : item.ThuTraLoi.MaDonMoi + "." + item.STT
+        //                            : item.ThuTraLoi.MaDon != null ? "TKH" + item.ThuTraLoi.MaDon
+        //                            : item.ThuTraLoi.MaDonTXL != null ? "TXL" + item.ThuTraLoi.MaDonTXL
+        //                            : item.ThuTraLoi.MaDonTBC != null ? "TBC" + item.ThuTraLoi.MaDonTBC : null,
+        //                         TenLD = item.ThuTraLoi.MaDonMoi != null ? ""
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.LoaiDon.TenLD
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.LoaiDonTXL.TenLD
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.LoaiDonTBC.TenLD : null,
+        //                         CreateDate = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.CreateDate
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.CreateDate
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.CreateDate
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.CreateDate : null,
+        //                         DanhBo = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.DanhBo
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.DanhBo
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.DanhBo
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.DanhBo : null,
+        //                         HoTen = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.HoTen
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.HoTen
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.HoTen
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.HoTen : null,
+        //                         DiaChi = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.DiaChi
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.DiaChi
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.DiaChi
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.DiaChi : null,
+        //                         GiaBieu = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.GiaBieu
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.GiaBieu
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.GiaBieu
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.GiaBieu : null,
+        //                         DinhMuc = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.DinhMuc
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.DinhMuc
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.DinhMuc
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.DinhMuc : null,
+        //                         NoiDung = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.Name_NhomDon
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.NoiDung
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.NoiDung
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.NoiDung : null,
         //                     };
         //        dt.Merge(LINQToDataTable(queryDonTu));
 
@@ -3886,7 +3886,7 @@ namespace KTKS_DonKH.DAL.TimKiem
         //            ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["PhieuCHDB"].Columns["MaDon"]);
 
         //        if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-        //            ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+        //            ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDon"]);
 
         //        if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
         //            ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
@@ -4133,15 +4133,15 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        ds.Tables.Add(dtPhieuCHDB);
 
         //        ///Table CTTTTL
-        //        var queryTTTL = from itemCTTTTL in db.TTTL_ChiTiets
+        //        var queryTTTL = from itemCTTTTL in db.ThuTraLoi_ChiTiets
         //                        where itemCTTTTL.HoTen.Contains(HoTen)
         //                        select new
         //                        {
 
-        //                            MaDon = itemCTTTTL.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTTTTL.TTTL.MaDonMoi).Count() == 1 ? itemCTTTTL.TTTL.MaDonMoi.Value.ToString() : itemCTTTTL.TTTL.MaDonMoi + "." + itemCTTTTL.STT
-        //                            : itemCTTTTL.TTTL.MaDon != null ? "TKH" + itemCTTTTL.TTTL.MaDon
-        //                            : itemCTTTTL.TTTL.MaDonTXL != null ? "TXL" + itemCTTTTL.TTTL.MaDonTXL
-        //                            : itemCTTTTL.TTTL.MaDonTBC != null ? "TBC" + itemCTTTTL.TTTL.MaDonTBC : null,
+        //                            MaDon = itemCTTTTL.ThuTraLoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTTTTL.ThuTraLoi.MaDonMoi).Count() == 1 ? itemCTTTTL.ThuTraLoi.MaDonMoi.Value.ToString() : itemCTTTTL.ThuTraLoi.MaDonMoi + "." + itemCTTTTL.STT
+        //                            : itemCTTTTL.ThuTraLoi.MaDon != null ? "TKH" + itemCTTTTL.ThuTraLoi.MaDon
+        //                            : itemCTTTTL.ThuTraLoi.MaDonTXL != null ? "TXL" + itemCTTTTL.ThuTraLoi.MaDonTXL
+        //                            : itemCTTTTL.ThuTraLoi.MaDonTBC != null ? "TBC" + itemCTTTTL.ThuTraLoi.MaDonTBC : null,
         //                            itemCTTTTL.MaCTTTTL,
         //                            itemCTTTTL.CreateDate,
         //                            itemCTTTTL.DanhBo,
@@ -4153,7 +4153,7 @@ namespace KTKS_DonKH.DAL.TimKiem
         //                        };
         //        DataTable dtTTTL = new DataTable();
         //        dtTTTL = LINQToDataTable(queryTTTL);
-        //        dtTTTL.TableName = "TTTL";
+        //        dtTTTL.TableName = "ThuTraLoi";
         //        ds.Tables.Add(dtTTTL);
 
         //        ///Table GianLan
@@ -4419,9 +4419,9 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        //             };
         //        //dt.Merge(LINQToDataTable(queryDonTu));
 
-        //        /////Table TTTL_ChiTiets
+        //        /////Table ThuTraLoi_ChiTiets
         //        //queryDonTu = from itemDon in db.DonTu_ChiTiets
-        //        //             join itemCTTTTL in db.TTTL_ChiTiets on new { itemDon.MaDon, itemDon.STT } equals new { MaDon = itemCTTTTL.TTTL.MaDonMoi, itemCTTTTL.STT }
+        //        //             join itemCTTTTL in db.ThuTraLoi_ChiTiets on new { itemDon.MaDon, itemDon.STT } equals new { MaDon = itemCTTTTL.ThuTraLoi.MaDonMoi, itemCTTTTL.STT }
         //        //             where itemCTTTTL.HoTen.Contains(HoTen)
         //        //             select new
         //        //             {
@@ -4674,9 +4674,9 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        //             };
         //        //dt.Merge(LINQToDataTable(queryDonKH));
 
-        //        /////Table TTTL_ChiTiets
+        //        /////Table ThuTraLoi_ChiTiets
         //        //queryDonKH = from itemDon in db.DonKHs
-        //        //             join itemCTTTTL in db.TTTL_ChiTiets on itemDon.MaDon equals itemCTTTTL.TTTL.MaDon
+        //        //             join itemCTTTTL in db.ThuTraLoi_ChiTiets on itemDon.MaDon equals itemCTTTTL.ThuTraLoi.MaDon
         //        //             where itemCTTTTL.HoTen.Contains(HoTen)
         //        //             select new
         //        //             {
@@ -4929,9 +4929,9 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        //              };
         //        //dt.Merge(LINQToDataTable(queryDonTXL));
 
-        //        /////Table TTTL_ChiTiets
+        //        /////Table ThuTraLoi_ChiTiets
         //        //queryDonTXL = from itemDonTXL in db.DonTXLs
-        //        //              join itemCTTTTL in db.TTTL_ChiTiets on itemDonTXL.MaDon equals itemCTTTTL.TTTL.MaDonTXL
+        //        //              join itemCTTTTL in db.ThuTraLoi_ChiTiets on itemDonTXL.MaDon equals itemCTTTTL.ThuTraLoi.MaDonTXL
         //        //              where itemCTTTTL.HoTen.Contains(HoTen)
         //        //              select new
         //        //              {
@@ -5184,9 +5184,9 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        //              };
         //        //dt.Merge(LINQToDataTable(queryDonTBC));
 
-        //        /////Table TTTL_ChiTiets
+        //        /////Table ThuTraLoi_ChiTiets
         //        //queryDonTBC = from itemDon in db.DonTBCs
-        //        //              join itemCTTTTL in db.TTTL_ChiTiets on itemDon.MaDon equals itemCTTTTL.TTTL.MaDonTBC
+        //        //              join itemCTTTTL in db.ThuTraLoi_ChiTiets on itemDon.MaDon equals itemCTTTTL.ThuTraLoi.MaDonTBC
         //        //              where itemCTTTTL.HoTen.Contains(HoTen)
         //        //              select new
         //        //              {
@@ -5715,47 +5715,47 @@ namespace KTKS_DonKH.DAL.TimKiem
         //                     };
         //        dt.Merge(LINQToDataTable(queryDonTu));
 
-        //        ///Table TTTL_ChiTiets
-        //        queryDonTu = from item in db.TTTL_ChiTiets
+        //        ///Table ThuTraLoi_ChiTiets
+        //        queryDonTu = from item in db.ThuTraLoi_ChiTiets
         //                     where item.HoTen.Contains(HoTen)
         //                     select new
         //                     {
-        //                         MaDon = item.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TTTL.MaDonMoi).Count() == 1 ? item.TTTL.MaDonMoi.Value.ToString() : item.TTTL.MaDonMoi + "." + item.STT
-        //                            : item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
-        //                            : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
-        //                            : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
-        //                         TenLD = item.TTTL.MaDonMoi != null ? ""
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.LoaiDon.TenLD
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.LoaiDonTXL.TenLD
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.LoaiDonTBC.TenLD : null,
-        //                         CreateDate = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.CreateDate
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.CreateDate
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.CreateDate
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.CreateDate : null,
-        //                         DanhBo = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.DanhBo
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.DanhBo
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.DanhBo
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.DanhBo : null,
-        //                         HoTen = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.HoTen
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.HoTen
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.HoTen
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.HoTen : null,
-        //                         DiaChi = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.DiaChi
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.DiaChi
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.DiaChi
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.DiaChi : null,
-        //                         GiaBieu = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.GiaBieu
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.GiaBieu
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.GiaBieu
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.GiaBieu : null,
-        //                         DinhMuc = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.DinhMuc
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.DinhMuc
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.DinhMuc
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.DinhMuc : null,
-        //                         NoiDung = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.Name_NhomDon
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.NoiDung
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.NoiDung
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.NoiDung : null,
+        //                         MaDon = item.ThuTraLoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuTraLoi.MaDonMoi).Count() == 1 ? item.ThuTraLoi.MaDonMoi.Value.ToString() : item.ThuTraLoi.MaDonMoi + "." + item.STT
+        //                            : item.ThuTraLoi.MaDon != null ? "TKH" + item.ThuTraLoi.MaDon
+        //                            : item.ThuTraLoi.MaDonTXL != null ? "TXL" + item.ThuTraLoi.MaDonTXL
+        //                            : item.ThuTraLoi.MaDonTBC != null ? "TBC" + item.ThuTraLoi.MaDonTBC : null,
+        //                         TenLD = item.ThuTraLoi.MaDonMoi != null ? ""
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.LoaiDon.TenLD
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.LoaiDonTXL.TenLD
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.LoaiDonTBC.TenLD : null,
+        //                         CreateDate = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.CreateDate
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.CreateDate
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.CreateDate
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.CreateDate : null,
+        //                         DanhBo = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.DanhBo
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.DanhBo
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.DanhBo
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.DanhBo : null,
+        //                         HoTen = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.HoTen
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.HoTen
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.HoTen
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.HoTen : null,
+        //                         DiaChi = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.DiaChi
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.DiaChi
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.DiaChi
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.DiaChi : null,
+        //                         GiaBieu = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.GiaBieu
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.GiaBieu
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.GiaBieu
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.GiaBieu : null,
+        //                         DinhMuc = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.DinhMuc
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.DinhMuc
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.DinhMuc
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.DinhMuc : null,
+        //                         NoiDung = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.Name_NhomDon
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.NoiDung
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.NoiDung
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.NoiDung : null,
         //                     };
         //        dt.Merge(LINQToDataTable(queryDonTu));
 
@@ -5977,7 +5977,7 @@ namespace KTKS_DonKH.DAL.TimKiem
         //            ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["PhieuCHDB"].Columns["MaDonTXL"]);
 
         //        if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-        //            ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDonTXL"]);
+        //            ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDonTXL"]);
 
         //        if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
         //            ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
@@ -6224,14 +6224,14 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        ds.Tables.Add(dtPhieuCHDB);
 
         //        ///Table CTTTTL
-        //        var queryTTTL = from itemCTTTTL in db.TTTL_ChiTiets
+        //        var queryTTTL = from itemCTTTTL in db.ThuTraLoi_ChiTiets
         //                        where itemCTTTTL.DiaChi.Contains(DiaChi)
         //                        select new
         //                        {
-        //                            MaDon = itemCTTTTL.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTTTTL.TTTL.MaDonMoi).Count() == 1 ? itemCTTTTL.TTTL.MaDonMoi.Value.ToString() : itemCTTTTL.TTTL.MaDonMoi + "." + itemCTTTTL.STT
-        //                              : itemCTTTTL.TTTL.MaDon != null ? "TKH" + itemCTTTTL.TTTL.MaDon
-        //                            : itemCTTTTL.TTTL.MaDonTXL != null ? "TXL" + itemCTTTTL.TTTL.MaDonTXL
-        //                            : itemCTTTTL.TTTL.MaDonTBC != null ? "TBC" + itemCTTTTL.TTTL.MaDonTBC : null,
+        //                            MaDon = itemCTTTTL.ThuTraLoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTTTTL.ThuTraLoi.MaDonMoi).Count() == 1 ? itemCTTTTL.ThuTraLoi.MaDonMoi.Value.ToString() : itemCTTTTL.ThuTraLoi.MaDonMoi + "." + itemCTTTTL.STT
+        //                              : itemCTTTTL.ThuTraLoi.MaDon != null ? "TKH" + itemCTTTTL.ThuTraLoi.MaDon
+        //                            : itemCTTTTL.ThuTraLoi.MaDonTXL != null ? "TXL" + itemCTTTTL.ThuTraLoi.MaDonTXL
+        //                            : itemCTTTTL.ThuTraLoi.MaDonTBC != null ? "TBC" + itemCTTTTL.ThuTraLoi.MaDonTBC : null,
         //                            itemCTTTTL.MaCTTTTL,
         //                            itemCTTTTL.CreateDate,
         //                            itemCTTTTL.DanhBo,
@@ -6243,7 +6243,7 @@ namespace KTKS_DonKH.DAL.TimKiem
         //                        };
         //        DataTable dtTTTL = new DataTable();
         //        dtTTTL = LINQToDataTable(queryTTTL);
-        //        dtTTTL.TableName = "TTTL";
+        //        dtTTTL.TableName = "ThuTraLoi";
         //        ds.Tables.Add(dtTTTL);
 
         //        ///Table GianLan
@@ -6509,9 +6509,9 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        //             };
         //        //dt.Merge(LINQToDataTable(queryDonTu));
 
-        //        /////Table TTTL_ChiTiets
+        //        /////Table ThuTraLoi_ChiTiets
         //        //queryDonTu = from itemDon in db.DonTu_ChiTiets
-        //        //             join itemCTTTTL in db.TTTL_ChiTiets on new { itemDon.MaDon, itemDon.STT } equals new { MaDon = itemCTTTTL.TTTL.MaDonMoi, itemCTTTTL.STT }
+        //        //             join itemCTTTTL in db.ThuTraLoi_ChiTiets on new { itemDon.MaDon, itemDon.STT } equals new { MaDon = itemCTTTTL.ThuTraLoi.MaDonMoi, itemCTTTTL.STT }
         //        //             where itemCTTTTL.DiaChi.Contains(DiaChi)
         //        //             select new
         //        //             {
@@ -6765,9 +6765,9 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        //             };
         //        //dt.Merge(LINQToDataTable(queryDonKH));
 
-        //        /////Table TTTL_ChiTiets
+        //        /////Table ThuTraLoi_ChiTiets
         //        //queryDonKH = from itemDon in db.DonKHs
-        //        //             join itemCTTTTL in db.TTTL_ChiTiets on itemDon.MaDon equals itemCTTTTL.TTTL.MaDon
+        //        //             join itemCTTTTL in db.ThuTraLoi_ChiTiets on itemDon.MaDon equals itemCTTTTL.ThuTraLoi.MaDon
         //        //             where itemCTTTTL.DiaChi.Contains(DiaChi)
         //        //             select new
         //        //             {
@@ -7020,9 +7020,9 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        //              };
         //        //dt.Merge(LINQToDataTable(queryDonTXL));
 
-        //        /////Table TTTL_ChiTiets
+        //        /////Table ThuTraLoi_ChiTiets
         //        //queryDonTXL = from itemDonTXL in db.DonTXLs
-        //        //              join itemCTTTTL in db.TTTL_ChiTiets on itemDonTXL.MaDon equals itemCTTTTL.TTTL.MaDonTXL
+        //        //              join itemCTTTTL in db.ThuTraLoi_ChiTiets on itemDonTXL.MaDon equals itemCTTTTL.ThuTraLoi.MaDonTXL
         //        //              where itemCTTTTL.DiaChi.Contains(DiaChi)
         //        //              select new
         //        //              {
@@ -7275,9 +7275,9 @@ namespace KTKS_DonKH.DAL.TimKiem
         //        //              };
         //        //dt.Merge(LINQToDataTable(queryDonTBC));
 
-        //        /////Table TTTL_ChiTiets
+        //        /////Table ThuTraLoi_ChiTiets
         //        //queryDonTBC = from itemDon in db.DonTBCs
-        //        //              join itemCTTTTL in db.TTTL_ChiTiets on itemDon.MaDon equals itemCTTTTL.TTTL.MaDonTBC
+        //        //              join itemCTTTTL in db.ThuTraLoi_ChiTiets on itemDon.MaDon equals itemCTTTTL.ThuTraLoi.MaDonTBC
         //        //              where itemCTTTTL.DiaChi.Contains(DiaChi)
         //        //              select new
         //        //              {
@@ -7806,47 +7806,47 @@ namespace KTKS_DonKH.DAL.TimKiem
         //                     };
         //        dt.Merge(LINQToDataTable(queryDonTu));
 
-        //        ///Table TTTL_ChiTiets
-        //        queryDonTu = from item in db.TTTL_ChiTiets
+        //        ///Table ThuTraLoi_ChiTiets
+        //        queryDonTu = from item in db.ThuTraLoi_ChiTiets
         //                     where item.DiaChi.Contains(DiaChi)
         //                     select new
         //                     {
-        //                         MaDon = item.TTTL.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TTTL.MaDonMoi).Count() == 1 ? item.TTTL.MaDonMoi.Value.ToString() : item.TTTL.MaDonMoi + "." + item.STT
-        //                            : item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
-        //                            : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
-        //                            : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
-        //                         TenLD = item.TTTL.MaDonMoi != null ? ""
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.LoaiDon.TenLD
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.LoaiDonTXL.TenLD
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.LoaiDonTBC.TenLD : null,
-        //                         CreateDate = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.CreateDate
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.CreateDate
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.CreateDate
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.CreateDate : null,
-        //                         DanhBo = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.DanhBo
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.DanhBo
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.DanhBo
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.DanhBo : null,
-        //                         HoTen = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.HoTen
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.HoTen
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.HoTen
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.HoTen : null,
-        //                         DiaChi = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.DiaChi
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.DiaChi
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.DiaChi
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.DiaChi : null,
-        //                         GiaBieu = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.GiaBieu
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.GiaBieu
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.GiaBieu
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.GiaBieu : null,
-        //                         DinhMuc = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.DinhMuc
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.DinhMuc
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.DinhMuc
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.DinhMuc : null,
-        //                         NoiDung = item.TTTL.MaDonMoi != null ? item.TTTL.DonTu.Name_NhomDon
-        //                            : item.TTTL.MaDon != null ? item.TTTL.DonKH.NoiDung
-        //                            : item.TTTL.MaDonTXL != null ? item.TTTL.DonTXL.NoiDung
-        //                            : item.TTTL.MaDonTBC != null ? item.TTTL.DonTBC.NoiDung : null,
+        //                         MaDon = item.ThuTraLoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuTraLoi.MaDonMoi).Count() == 1 ? item.ThuTraLoi.MaDonMoi.Value.ToString() : item.ThuTraLoi.MaDonMoi + "." + item.STT
+        //                            : item.ThuTraLoi.MaDon != null ? "TKH" + item.ThuTraLoi.MaDon
+        //                            : item.ThuTraLoi.MaDonTXL != null ? "TXL" + item.ThuTraLoi.MaDonTXL
+        //                            : item.ThuTraLoi.MaDonTBC != null ? "TBC" + item.ThuTraLoi.MaDonTBC : null,
+        //                         TenLD = item.ThuTraLoi.MaDonMoi != null ? ""
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.LoaiDon.TenLD
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.LoaiDonTXL.TenLD
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.LoaiDonTBC.TenLD : null,
+        //                         CreateDate = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.CreateDate
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.CreateDate
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.CreateDate
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.CreateDate : null,
+        //                         DanhBo = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.DanhBo
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.DanhBo
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.DanhBo
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.DanhBo : null,
+        //                         HoTen = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.HoTen
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.HoTen
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.HoTen
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.HoTen : null,
+        //                         DiaChi = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.DiaChi
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.DiaChi
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.DiaChi
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.DiaChi : null,
+        //                         GiaBieu = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.GiaBieu
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.GiaBieu
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.GiaBieu
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.GiaBieu : null,
+        //                         DinhMuc = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.DinhMuc
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.DinhMuc
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.DinhMuc
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.DinhMuc : null,
+        //                         NoiDung = item.ThuTraLoi.MaDonMoi != null ? item.ThuTraLoi.DonTu.Name_NhomDon
+        //                            : item.ThuTraLoi.MaDon != null ? item.ThuTraLoi.DonKH.NoiDung
+        //                            : item.ThuTraLoi.MaDonTXL != null ? item.ThuTraLoi.DonTXL.NoiDung
+        //                            : item.ThuTraLoi.MaDonTBC != null ? item.ThuTraLoi.DonTBC.NoiDung : null,
         //                     };
         //        dt.Merge(LINQToDataTable(queryDonTu));
 
@@ -8068,7 +8068,7 @@ namespace KTKS_DonKH.DAL.TimKiem
         //            ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["PhieuCHDB"].Columns["MaDon"]);
 
         //        if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-        //            ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+        //            ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDon"]);
 
         //        if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
         //            ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
@@ -8146,7 +8146,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                         case "PhieuCHDB":
                             ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
-                        case "TTTL":
+                        case "ThuTraLoi":
                             ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
                         case "GianLan":
@@ -8220,7 +8220,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                         case "PhieuCHDB":
                             ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
-                        case "TTTL":
+                        case "ThuTraLoi":
                             ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
                         case "GianLan":
@@ -8294,7 +8294,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                         case "PhieuCHDB":
                             ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
-                        case "TTTL":
+                        case "ThuTraLoi":
                             ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
                         case "GianLan":

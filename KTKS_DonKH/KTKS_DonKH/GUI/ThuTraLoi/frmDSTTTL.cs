@@ -91,7 +91,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
-                            TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+                            ThuTraLoi_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
 
                             //dr["SoPhieu"] = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
                             dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
@@ -103,14 +103,14 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             dr["HopDong"] = cttttl.HopDong;
                             dr["GiaBieu"] = cttttl.GiaBieu;
                             dr["DinhMuc"] = cttttl.DinhMuc;
-                            if (cttttl.TTTL.MaDon!=null)
-                                dr["NgayNhanDon"] = cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
+                            if (cttttl.ThuTraLoi.MaDon!=null)
+                                dr["NgayNhanDon"] = cttttl.ThuTraLoi.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
                             else
-                                if (cttttl.TTTL.MaDonTXL != null)
-                                dr["NgayNhanDon"] = cttttl.TTTL.DonTXL.CreateDate.Value.ToString("dd/MM/yyyy");
+                                if (cttttl.ThuTraLoi.MaDonTXL != null)
+                                dr["NgayNhanDon"] = cttttl.ThuTraLoi.DonTXL.CreateDate.Value.ToString("dd/MM/yyyy");
                             else
-                                    if (cttttl.TTTL.MaDonTBC != null)
-                                        dr["NgayNhanDon"] = cttttl.TTTL.DonTBC.CreateDate.Value.ToString("dd/MM/yyyy");
+                                    if (cttttl.ThuTraLoi.MaDonTBC != null)
+                                        dr["NgayNhanDon"] = cttttl.ThuTraLoi.DonTBC.CreateDate.Value.ToString("dd/MM/yyyy");
 
                             dr["VeViec"] = cttttl.VeViec;
                             dr["NoiDung"] = cttttl.NoiDung;
@@ -167,7 +167,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     {
                         DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
 
-                        TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+                        ThuTraLoi_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
 
                         dr["HoTen"] = cttttl.HoTen;
                         dr["DiaChi"] = cttttl.DiaChi;
@@ -179,7 +179,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     {
                         DataRow dr = dsBaoCao2.Tables["ThaoThuTraLoi"].NewRow();
 
-                        TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+                        ThuTraLoi_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
 
                         dr["HoTen"] = cttttl.HoTen;
                         dr["DiaChi"] = cttttl.DiaChi;
@@ -234,7 +234,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         {
             if (dgvDSThu.Columns[e.ColumnIndex].Name == "ThuDuocKy" && e.FormattedValue.ToString() != dgvDSThu[e.ColumnIndex, e.RowIndex].Value.ToString())
             {
-                TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", e.RowIndex].Value.ToString()));
+                ThuTraLoi_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", e.RowIndex].Value.ToString()));
                 cttttl.ThuDuocKy = bool.Parse(e.FormattedValue.ToString());
                 _cTTTL.SuaCT(cttttl);
             }
