@@ -46,6 +46,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dateDen_KeToan = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnXuatExcel_KeToan = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -190,6 +191,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnXuatExcel_KeToan);
             this.groupBox2.Controls.Add(this.btnIn_KeToan);
             this.groupBox2.Controls.Add(this.dateTu_KeToan);
             this.groupBox2.Controls.Add(this.label4);
@@ -248,6 +250,16 @@
             this.label5.TabIndex = 29;
             this.label5.Text = "Đến Ngày:";
             // 
+            // btnXuatExcel_KeToan
+            // 
+            this.btnXuatExcel_KeToan.Location = new System.Drawing.Point(423, 17);
+            this.btnXuatExcel_KeToan.Name = "btnXuatExcel_KeToan";
+            this.btnXuatExcel_KeToan.Size = new System.Drawing.Size(75, 23);
+            this.btnXuatExcel_KeToan.TabIndex = 34;
+            this.btnXuatExcel_KeToan.Text = "Xuất Excel";
+            this.btnXuatExcel_KeToan.UseVisualStyleBackColor = true;
+            this.btnXuatExcel_KeToan.Click += new System.EventHandler(this.btnXuatExcel_KeToan_Click);
+            // 
             // frmBaoCaoTongHop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,5 +298,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateDen_KeToan;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnXuatExcel_KeToan;
     }
 }
