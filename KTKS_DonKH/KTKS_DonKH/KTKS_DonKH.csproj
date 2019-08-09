@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1164</ApplicationRevision>
+    <ApplicationRevision>1167</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -751,6 +751,7 @@
     <Compile Include="DAL\CExcel.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CChuyenDe.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CDongTienNoiDung.cs" />
+    <Compile Include="DAL\PhongKhachHang\CCongVanDi_PKH.cs" />
     <Compile Include="DAL\PhongKhachHang\CTraHopDong.cs" />
     <Compile Include="DAL\ThuMoi\CThuMoi.cs" />
     <Compile Include="DAL\ThuTraLoi\CToTrinh_VeViec.cs" />
@@ -930,6 +931,12 @@
     </Compile>
     <Compile Include="GUI\HeThong\frmShowImage.Designer.cs">
       <DependentUpon>frmShowImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PhongKhachHang\frmCongVanDi_PKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PhongKhachHang\frmCongVanDi_PKH.Designer.cs">
+      <DependentUpon>frmCongVanDi_PKH.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\PhongKhachHang\frmTraHopDong.cs">
       <SubType>Form</SubType>
@@ -1855,6 +1862,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmShowImage.resx">
       <DependentUpon>frmShowImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PhongKhachHang\frmCongVanDi_PKH.resx">
+      <DependentUpon>frmCongVanDi_PKH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhongKhachHang\frmTraHopDong.resx">
       <DependentUpon>frmTraHopDong.cs</DependentUpon>

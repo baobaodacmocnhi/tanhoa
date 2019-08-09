@@ -103,7 +103,18 @@ namespace KTKS_DonKH.DAL.DonTu
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS(int MaDon,int MaPhong)
+        public DataTable getDS(int FromMaDon, int ToMaDon)
+        {
+            var query = from item in db.DonTus
+                        where item.MaDon >= FromMaDon && item.MaDon <= ToMaDon
+                        select new
+                        {
+                            item.MaDon,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_Phong(int MaDon,int MaPhong)
         {
             var query = from item in db.DonTus
                         where item.MaDon == MaDon&& db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).MaPhong==MaPhong

@@ -91,6 +91,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             txtDanhBo.Text = ctchungtu.DanhBo;
                             chkKhacDiaBan.Checked = ctchungtu.ChungTu.KhacDiaBan;
+
                             cmbLoaiCT.SelectedValue = ctchungtu.ChungTu.MaLCT;
                             txtMaCT.Text = ctchungtu.MaCT;
                             txtHoTen.Text = ctchungtu.ChungTu.HoTen;
@@ -179,6 +180,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         txtHoTen.Text = _dataT.HoTen;
                         txtDiaChi.Text = _dataT.DiaChi;
+                        dateHetHan.Enabled = true;
                     }
                 }
                 //hiện thị cắt chuyển từ DSDCBD, cái làm mới
@@ -328,7 +330,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
                             {
                                 ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
-                                ctchungtu.NgayHetHan = DateTime.Now.AddMonths(int.Parse(txtThoiHan.Text.Trim()));
+                                    ctchungtu.NgayHetHan = dateHetHan.Value;
                             }
                             ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                             ctchungtu.Lo = txtLo.Text.Trim();
@@ -1172,7 +1174,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (_flagLoadFirst)
             {
                 txtThoiHan.Text = ((LoaiChungTu)cmbLoaiCT.SelectedItem).ThoiHan.ToString();
-
+                if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
+                dateHetHan.Value = DateTime.Now.AddMonths(int.Parse(txtThoiHan.Text.Trim()));
                 if (cmbLoaiCT.SelectedValue.ToString() == "7")
                     txtGhiChu.Text = "DINH MUC NHAP CU";
                 else
@@ -1429,6 +1432,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             B.Phong = A.Phong;
             B.Quan = A.Quan;
             B.Phuong = A.Phuong;
+        }
+
+        private void chkSuaNgayHetHan_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSuaNgayHetHan.Checked)
+                dateHetHan.Enabled = true;
+            else
+                dateHetHan.Enabled = false;
         }
 
     }

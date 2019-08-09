@@ -147,7 +147,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                 //    dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
                                 //else
                                 if (txtNoiDungTimKiem.Text.Trim() != "")
-                                    dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(cmbPhong.SelectedValue.ToString()));
+                                    dgvDSDonTu.DataSource = _cDonTu.getDS_Phong(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(cmbPhong.SelectedValue.ToString()));
                                 break;
                             case "Danh Bộ":
                                 if (txtNoiDungTimKiem.Text.Trim() != "")
@@ -174,7 +174,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         //    dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
                         //else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()), CTaiKhoan.MaPhong);
+                            dgvDSDonTu.DataSource = _cDonTu.getDS_Phong(int.Parse(txtNoiDungTimKiem.Text.Trim()), CTaiKhoan.MaPhong);
                         break;
                     case "Danh Bộ":
                         if (txtNoiDungTimKiem.Text.Trim() != "")

@@ -1152,13 +1152,13 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
-                    if (CTaiKhoan.Admin == false && _cDonTu.checkPhong(_dontu.MaDon, CTaiKhoan.MaPhong) == false)
-                    {
-                        MessageBox.Show("Mã Đơn này không thuộc phòng của bạn lập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
                     if (_dontu != null && e.Row.Cells["ID"].Value == null)
                     {
+                        if (CTaiKhoan.Admin == false && _cDonTu.checkPhong(_dontu.MaDon, CTaiKhoan.MaPhong) == false)
+                        {
+                            MessageBox.Show("Mã Đơn này không thuộc phòng của bạn lập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         _flagdgvDanhBo_inserRow = true;
                         //DonTu_ChiTiet en = new DonTu_ChiTiet();
                         //if (e.Row.Cells["DanhBo"].Value != null)
@@ -1203,13 +1203,13 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
-                    if (CTaiKhoan.Admin == false && _cDonTu.checkPhong(_dontu.MaDon, CTaiKhoan.MaPhong) == false)
-                    {
-                        MessageBox.Show("Mã Đơn này không thuộc phòng của bạn lập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
                     if (_dontu != null && dgvDanhBo.Columns.Contains("ID") && e.Row.Cells["ID"].Value != null)
                     {
+                        if (CTaiKhoan.Admin == false && _cDonTu.checkPhong(_dontu.MaDon, CTaiKhoan.MaPhong) == false)
+                        {
+                            MessageBox.Show("Mã Đơn này không thuộc phòng của bạn lập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         _cDonTu.Xoa_ChiTiet(_cDonTu.get_ChiTiet(int.Parse(e.Row.Cells["ID"].Value.ToString())));
                     }
                 }
