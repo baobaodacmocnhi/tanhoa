@@ -25593,9 +25593,13 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _STT;
 		
+		private string _SoCongVan_PhongBanDoi;
+		
 		private string _SoCongVan;
 		
 		private int _TongDB;
+		
+		private bool _VanPhong;
 		
 		private string _VanDeKhac;
 		
@@ -25709,10 +25713,14 @@ namespace KTKS_DonKH.LinQ
     partial void OnNamThangChanged();
     partial void OnSTTChanging(string value);
     partial void OnSTTChanged();
+    partial void OnSoCongVan_PhongBanDoiChanging(string value);
+    partial void OnSoCongVan_PhongBanDoiChanged();
     partial void OnSoCongVanChanging(string value);
     partial void OnSoCongVanChanged();
     partial void OnTongDBChanging(int value);
     partial void OnTongDBChanged();
+    partial void OnVanPhongChanging(bool value);
+    partial void OnVanPhongChanged();
     partial void OnVanDeKhacChanging(string value);
     partial void OnVanDeKhacChanged();
     partial void OnSoNKChanging(System.Nullable<int> value);
@@ -25869,6 +25877,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoCongVan_PhongBanDoi", DbType="NVarChar(100)")]
+		public string SoCongVan_PhongBanDoi
+		{
+			get
+			{
+				return this._SoCongVan_PhongBanDoi;
+			}
+			set
+			{
+				if ((this._SoCongVan_PhongBanDoi != value))
+				{
+					this.OnSoCongVan_PhongBanDoiChanging(value);
+					this.SendPropertyChanging();
+					this._SoCongVan_PhongBanDoi = value;
+					this.SendPropertyChanged("SoCongVan_PhongBanDoi");
+					this.OnSoCongVan_PhongBanDoiChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoCongVan", DbType="NVarChar(200)")]
 		public string SoCongVan
 		{
@@ -25905,6 +25933,26 @@ namespace KTKS_DonKH.LinQ
 					this._TongDB = value;
 					this.SendPropertyChanged("TongDB");
 					this.OnTongDBChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VanPhong", DbType="Bit NOT NULL")]
+		public bool VanPhong
+		{
+			get
+			{
+				return this._VanPhong;
+			}
+			set
+			{
+				if ((this._VanPhong != value))
+				{
+					this.OnVanPhongChanging(value);
+					this.SendPropertyChanging();
+					this._VanPhong = value;
+					this.SendPropertyChanged("VanPhong");
+					this.OnVanPhongChanged();
 				}
 			}
 		}

@@ -87,20 +87,55 @@ namespace KTKS_DonKH.DAL.DonTu
 
         public DataTable getDS(int MaDon)
         {
-            var query = from item in db.DonTus
-                        where item.MaDon == MaDon
-                        select new
-                        {
-                            item.MaDon,
-                            item.SoCongVan,
-                            item.CreateDate,
-                            DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
-                            HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
-                            DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
-                            NoiDung = item.Name_NhomDon,
-                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
-                        };
-            return LINQToDataTable(query);
+            //switch (Loai)
+            //{
+            //    case"Quầy":
+            //        var query = from item in db.DonTus
+            //                    where item.MaDon == MaDon && item.VanPhong==false
+            //                    select new
+            //                    {
+            //                        item.MaDon,
+            //                        item.SoCongVan,
+            //                        item.CreateDate,
+            //                        DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
+            //                        HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
+            //                        DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "Số: " + item.SoCongVan + " gồm " + item.TongDB.ToString() + " địa chỉ",
+            //                        NoiDung = item.Name_NhomDon,
+            //                        CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
+            //                    };
+            //        return LINQToDataTable(query);
+            //    case "Văn Phòng":
+            //        var query1 = from item in db.DonTus
+            //                where item.MaDon == MaDon && item.VanPhong == true
+            //                    select new
+            //                    {
+            //                        item.MaDon,
+            //                        item.SoCongVan,
+            //                        item.CreateDate,
+            //                        DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
+            //                        HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
+            //                        DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "Số: " + item.SoCongVan + " gồm " + item.TongDB.ToString() + " địa chỉ",
+            //                        NoiDung = item.Name_NhomDon,
+            //                        CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
+            //                    };
+            //        return LINQToDataTable(query1);
+            //    default:
+            var query2 = from item in db.DonTus
+                         where item.MaDon == MaDon
+                         select new
+                         {
+                             item.MaDon,
+                             item.SoCongVan,
+                             item.CreateDate,
+                             DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
+                             HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
+                             DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "Số: " + item.SoCongVan + " gồm " + item.TongDB.ToString() + " địa chỉ",
+                             NoiDung = item.Name_NhomDon,
+                             CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
+                         };
+            return LINQToDataTable(query2);
+            //}
+
         }
 
         public DataTable getDS(int FromMaDon, int ToMaDon)
@@ -116,7 +151,40 @@ namespace KTKS_DonKH.DAL.DonTu
 
         public DataTable getDS_Phong(int MaDon,int MaPhong)
         {
-            var query = from item in db.DonTus
+            //switch (Loai)
+            //{
+            //    case "Quầy":
+            //        var query = from item in db.DonTus
+            //                    where item.MaDon == MaDon && db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).MaPhong == MaPhong&&item.VanPhong==false
+            //                    select new
+            //                    {
+            //                        item.MaDon,
+            //                        item.SoCongVan,
+            //                        item.CreateDate,
+            //                        DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
+            //                        HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
+            //                        DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "Số: " + item.SoCongVan + " gồm " + item.TongDB.ToString() + " địa chỉ",
+            //                        NoiDung = item.Name_NhomDon,
+            //                        CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
+            //                    };
+            //        return LINQToDataTable(query);
+            //    case "Văn Phòng":
+            //        var query1 = from item in db.DonTus
+            //                where item.MaDon == MaDon && db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).MaPhong == MaPhong && item.VanPhong == true
+            //                    select new
+            //                    {
+            //                        item.MaDon,
+            //                        item.SoCongVan,
+            //                        item.CreateDate,
+            //                        DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
+            //                        HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
+            //                        DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "Số: " + item.SoCongVan + " gồm " + item.TongDB.ToString() + " địa chỉ",
+            //                        NoiDung = item.Name_NhomDon,
+            //                        CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
+            //                    };
+            //        return LINQToDataTable(query1);
+            //    default:
+                    var query2 = from item in db.DonTus
                         where item.MaDon == MaDon&& db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).MaPhong==MaPhong
                         select new
                         {
@@ -125,11 +193,13 @@ namespace KTKS_DonKH.DAL.DonTu
                             item.CreateDate,
                             DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
                             HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
-                            DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
+                            DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "Số: " + item.SoCongVan + " gồm " + item.TongDB.ToString() + " địa chỉ",
                             NoiDung = item.Name_NhomDon,
                             CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
-            return LINQToDataTable(query);
+            return LINQToDataTable(query2);
+            //}
+            
         }
 
         //public DataTable getDS(int FromMaDon, int ToMaDon)
@@ -143,7 +213,7 @@ namespace KTKS_DonKH.DAL.DonTu
         //                    item.CreateDate,
         //                    DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
         //                    HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
-        //                    DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
+        //                    DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "Số: " + item.SoCongVan + " gồm " + item.TongDB.ToString() + " địa chỉ",
         //                    NoiDung = item.Name_NhomDon,
         //                    CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
         //                };
@@ -161,7 +231,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             item.CreateDate,
                             DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
                             HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
-                            DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
+                            DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "Số: " + item.SoCongVan + " gồm " + item.TongDB.ToString() + " địa chỉ",
                             NoiDung = item.Name_NhomDon,
                             CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
@@ -179,7 +249,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             item.CreateDate,
                             DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
                             HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
-                            DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
+                            DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "Số: " + item.SoCongVan + " gồm " + item.TongDB.ToString() + " địa chỉ",
                             NoiDung = item.Name_NhomDon,
                             CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
@@ -197,29 +267,64 @@ namespace KTKS_DonKH.DAL.DonTu
                             item.CreateDate,
                             DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
                             HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
-                            DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
+                            DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "Số: " + item.SoCongVan + " gồm " + item.TongDB.ToString() + " địa chỉ",
                             NoiDung = item.Name_NhomDon,
                             CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate, int MaPhong)
+        public DataTable getDS(string Loai, DateTime FromCreateDate, DateTime ToCreateDate, int MaPhong)
         {
-            var query = from item in db.DonTus
-                        where item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value<= ToCreateDate && item.MaPhong == MaPhong
-                        select new
-                        {
-                            item.MaDon,
-                            item.SoCongVan,
-                            item.CreateDate,
-                            DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
-                            HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
-                            DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "",
-                            NoiDung = item.VanDeKhac==null? item.Name_NhomDon:item.Name_NhomDon+" " +item.VanDeKhac,
-                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
-                        };
-            return LINQToDataTable(query);
+            switch (Loai)
+            {
+                case "Quầy":
+                    var query = from item in db.DonTus
+                                where item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == false
+                                select new
+                                {
+                                    item.MaDon,
+                                    item.SoCongVan,
+                                    item.CreateDate,
+                                    DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
+                                    HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
+                                    DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "Số: " + item.SoCongVan + " gồm " + item.TongDB.ToString() + " địa chỉ",
+                                    NoiDung = item.VanDeKhac == null ? item.Name_NhomDon : item.Name_NhomDon + " " + item.VanDeKhac,
+                                    CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
+                                };
+                    return LINQToDataTable(query);
+                case "Văn Phòng":
+                    var query1 = from item in db.DonTus
+                                 where item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == true
+                                 select new
+                                 {
+                                     item.MaDon,
+                                     item.SoCongVan,
+                                     item.CreateDate,
+                                     DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
+                                     HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
+                                     DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "Số: " + item.SoCongVan + " gồm " + item.TongDB.ToString() + " địa chỉ",
+                                     NoiDung = item.VanDeKhac == null ? item.Name_NhomDon : item.Name_NhomDon + " " + item.VanDeKhac,
+                                     CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
+                                 };
+                    return LINQToDataTable(query1);
+                default:
+                    var query2 = from item in db.DonTus
+                                 where item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong
+                                 select new
+                                 {
+                                     item.MaDon,
+                                     item.SoCongVan,
+                                     item.CreateDate,
+                                     DanhBo = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DanhBo : "",
+                                     HoTen = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().HoTen : "",
+                                     DiaChi = item.DonTu_ChiTiets.Count == 1 ? item.DonTu_ChiTiets.SingleOrDefault().DiaChi : "Số: " + item.SoCongVan + " gồm " + item.TongDB.ToString() + " địa chỉ",
+                                     NoiDung = item.VanDeKhac == null ? item.Name_NhomDon : item.Name_NhomDon + " " + item.VanDeKhac,
+                                     CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
+                                 };
+                    return LINQToDataTable(query2);
+            }
+
         }
 
         // chi tiết

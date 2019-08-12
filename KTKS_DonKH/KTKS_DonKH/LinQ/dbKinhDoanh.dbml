@@ -1075,8 +1075,10 @@
       <Column Name="MaDon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="NamThang" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="STT" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="SoCongVan_PhongBanDoi" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="SoCongVan" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="TongDB" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VanPhong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="VanDeKhac" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="SoNK" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="HieuLucKy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />

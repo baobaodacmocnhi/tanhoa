@@ -119,11 +119,11 @@
             this.mnBaoBe = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPhongKhachHang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTraHopDong = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCongVanDi_PKH = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mnuCongVanDi_PKH = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -788,7 +788,7 @@
             // mnuCongVanDi
             // 
             this.mnuCongVanDi.Name = "mnuCongVanDi";
-            this.mnuCongVanDi.Size = new System.Drawing.Size(152, 22);
+            this.mnuCongVanDi.Size = new System.Drawing.Size(150, 22);
             this.mnuCongVanDi.Text = "Công Văn Đi";
             this.mnuCongVanDi.Click += new System.EventHandler(this.mnuCongVanDi_Click);
             // 
@@ -854,6 +854,14 @@
             this.mnuTraHopDong.Text = "Trả Hợp Đồng";
             this.mnuTraHopDong.Click += new System.EventHandler(this.mnuTraHopDong_Click);
             // 
+            // mnuCongVanDi_PKH
+            // 
+            this.mnuCongVanDi_PKH.Name = "mnuCongVanDi_PKH";
+            this.mnuCongVanDi_PKH.Size = new System.Drawing.Size(161, 22);
+            this.mnuCongVanDi_PKH.Text = "Công Văn Đi";
+            this.mnuCongVanDi_PKH.Visible = false;
+            this.mnuCongVanDi_PKH.Click += new System.EventHandler(this.mnuCongVanDi_PKH_Click);
+            // 
             // tabControl
             // 
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Top;
@@ -887,13 +895,6 @@
             this.StripStatus_HoTen.Name = "StripStatus_HoTen";
             this.StripStatus_HoTen.Size = new System.Drawing.Size(205, 17);
             this.StripStatus_HoTen.Text = "                                                 Xin Chào:";
-            // 
-            // mnuCongVanDi_PKH
-            // 
-            this.mnuCongVanDi_PKH.Name = "mnuCongVanDi_PKH";
-            this.mnuCongVanDi_PKH.Size = new System.Drawing.Size(161, 22);
-            this.mnuCongVanDi_PKH.Text = "Công Văn Đi";
-            this.mnuCongVanDi_PKH.Click += new System.EventHandler(this.mnuCongVanDi_PKH_Click);
             // 
             // frmMain
             // 

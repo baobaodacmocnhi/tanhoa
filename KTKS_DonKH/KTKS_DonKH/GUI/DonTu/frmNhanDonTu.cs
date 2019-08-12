@@ -31,6 +31,7 @@ namespace KTKS_DonKH.GUI.DonTu
         CKTXM _cKTXM = new CKTXM();
         CThuMoi _cThuMoi = new CThuMoi();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
+        CPhongBanDoi _cPBD = new CPhongBanDoi();
 
         LinQ.DonTu _dontu = null;
         HOADON _hoadon = null;
@@ -76,6 +77,11 @@ namespace KTKS_DonKH.GUI.DonTu
             cmbNhomDon_ChiTiet.ValueMember = "ID";
             cmbNhomDon_ChiTiet.DisplayMember = "Name";
             cmbNhomDon_ChiTiet.SelectedIndex = -1;
+
+            cmbPhongBanDoi.DataSource = _cPBD.GetDS();
+            cmbPhongBanDoi.DisplayMember = "Name";
+            cmbPhongBanDoi.ValueMember = "Name";
+            cmbPhongBanDoi.SelectedIndex = -1;
 
             if (_MaDon != -1)
             {
@@ -169,11 +175,12 @@ namespace KTKS_DonKH.GUI.DonTu
                     }
                     //dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
                 }
-
+                chkVanPhong.Checked = entity.VanPhong;
                 txtMaDon.Text = entity.MaDon.ToString();
                 dateCreateDate.Value = entity.CreateDate.Value;
                 txtNguoiLap.Text = _cTaiKhoan.GetHoTen(entity.CreateBy.Value);
-
+                if (entity.SoCongVan_PhongBanDoi != null)
+                    cmbPhongBanDoi.SelectedValue = entity.SoCongVan_PhongBanDoi;
                 if (entity.SoCongVan != null)
                 {
                     txtSoCongVan.Text = entity.SoCongVan;
@@ -227,6 +234,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
         public void Clear()
         {
+            cmbPhongBanDoi.SelectedIndex = -1;
             txtSoCongVan.Text = "";
             txtTongDB.Text = "";
             txtMaDon.Text = "";
@@ -390,7 +398,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         //        //MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //        return;
                         //}
-
+                        entity.VanPhong = chkVanPhong.Checked;
                         if (txtSoNK.Text.Trim() != "")
                         {
                             entity.SoNK = int.Parse(txtSoNK.Text.Trim());
@@ -488,6 +496,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     //
                     if (txtSoCongVan.Text.Trim() != "")
                     {
+                        if (cmbPhongBanDoi.SelectedIndex != -1)
+                            entity.SoCongVan_PhongBanDoi = cmbPhongBanDoi.SelectedValue.ToString();
                         entity.SoCongVan = txtSoCongVan.Text.Trim();
                         entity.TongDB = int.Parse(txtTongDB.Text.Trim());
                     }
@@ -650,8 +660,11 @@ namespace KTKS_DonKH.GUI.DonTu
                             }
                         }
                         //
+                        _dontu.VanPhong = chkVanPhong.Checked;
                         if (txtSoCongVan.Text.Trim() != "")
                         {
+                            if (cmbPhongBanDoi.SelectedIndex != -1)
+                                _dontu.SoCongVan_PhongBanDoi = cmbPhongBanDoi.SelectedValue.ToString();
                             _dontu.SoCongVan = txtSoCongVan.Text.Trim();
                             _dontu.TongDB = int.Parse(txtTongDB.Text.Trim());
                         }
