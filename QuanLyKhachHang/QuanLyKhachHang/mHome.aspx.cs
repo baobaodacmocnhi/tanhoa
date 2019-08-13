@@ -175,10 +175,13 @@ namespace QuanLyKhachHang
             }
             else if ("1".Equals(s))
             {
-                string query = "";
-                query = "SELECT DANHBO, LOTRINH,HOTEN, (SONHA+ ' ' + TENDUONG ) AS DCHI,HOPDONG,GIABIEU,DINHMUC,CODH, HIEUDH,SOTHANDH,YEAR(NGAYTHAY) AS NAMGAN, VITRIDHN,CHISOKYTRUOC ";
-                query += "FROM TB_DULIEUKHACHHANG KH ";
-                query += "WHERE (SONHA+' '+ TENDUONG) LIKE '%" + this.txtDB.Text + "%' ";
+                string query = "SELECT DANHBO, LOTRINH,HOTEN, (SONHA+ ' ' + TENDUONG ) AS DCHI,HOPDONG,GIABIEU,DINHMUC,CODH, HIEUDH,SOTHANDH,YEAR(NGAYTHAY) AS NAMGAN, VITRIDHN,CHISOKYTRUOC"
+                                + " FROM TB_DULIEUKHACHHANG KH"
+                                + " WHERE (SONHA+' '+ TENDUONG) LIKE N'%" + this.txtDB.Text + "%'"
+                                + " union all"
+                                + " SELECT DANHBO, LOTRINH,HOTEN, (SONHA+ ' ' + TENDUONG ) AS DCHI,HOPDONG,GIABIEU,DINHMUC,CODH, HIEUDH,SOTHANDH,YEAR(NGAYTHAY) AS NAMGAN, VITRIDHN,CHISOKYTRUOC"
+                                + " FROM TB_DULIEUKHACHHANG_HUYDB KH"
+                                + " WHERE (SONHA+' '+ TENDUONG) LIKE N'%" + this.txtDB.Text + "%'";
                 DataTable tb = LinQConnection.getDataTable(query);
                 GridView3.DataSource = tb;
                 GridView3.DataBind();
@@ -186,10 +189,13 @@ namespace QuanLyKhachHang
             }
             else if ("2".Equals(s))
             {
-                string query = "";
-                query = "SELECT DANHBO, LOTRINH,HOTEN, (SONHA+ ' ' + TENDUONG ) AS DCHI,HOPDONG,GIABIEU,DINHMUC,CODH, HIEUDH,SOTHANDH,YEAR(NGAYTHAY) AS NAMGAN, VITRIDHN,CHISOKYTRUOC ";
-                query += "FROM TB_DULIEUKHACHHANG KH ";
-                query += "WHERE SOTHANDH LIKE '%" + this.txtDB.Text + "%' ";
+                string query = "SELECT DANHBO, LOTRINH,HOTEN, (SONHA+ ' ' + TENDUONG ) AS DCHI,HOPDONG,GIABIEU,DINHMUC,CODH, HIEUDH,SOTHANDH,YEAR(NGAYTHAY) AS NAMGAN, VITRIDHN,CHISOKYTRUOC"
+                               + " FROM TB_DULIEUKHACHHANG KH"
+                               + " WHERE SOTHANDH LIKE N'%" + this.txtDB.Text + "%'"
+                               + " union all"
+                               + " SELECT DANHBO, LOTRINH,HOTEN, (SONHA+ ' ' + TENDUONG ) AS DCHI,HOPDONG,GIABIEU,DINHMUC,CODH, HIEUDH,SOTHANDH,YEAR(NGAYTHAY) AS NAMGAN, VITRIDHN,CHISOKYTRUOC"
+                               + " FROM TB_DULIEUKHACHHANG_HUYDB KH"
+                               + " WHERE SOTHANDH LIKE N'%" + this.txtDB.Text + "%'";
                 DataTable tb = LinQConnection.getDataTable(query);
                 GridView3.DataSource = tb;
                 GridView3.DataBind();
