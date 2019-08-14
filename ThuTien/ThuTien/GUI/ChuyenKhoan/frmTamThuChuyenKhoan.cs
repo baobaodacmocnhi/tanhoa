@@ -251,7 +251,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvTamThu.Rows)
-                if (!bool.Parse(item.Cells["TienDu_TT"].Value.ToString()))
+                //if (!bool.Parse(item.Cells["TienDu_TT"].Value.ToString()))
                 {
                     DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
                     dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
@@ -306,15 +306,15 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["TongCong"] = item.Cells["TongCong_TT"].Value.ToString();
                     dr["HanhThu"] = item.Cells["HanhThu_TT"].Value.ToString();
                     dr["To"] = item.Cells["To_TT"].Value.ToString();
-                    //if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
-                    //    dr["Loai"] = "CQ";
-                    //else
-                    //    dr["Loai"] = "TG";
+                    if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
                     if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))
                         dr["LenhHuy"] = true;
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }
-            rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
+            rptDSTamThuChuyenKhoan_HanhThu rpt = new rptDSTamThuChuyenKhoan_HanhThu();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();

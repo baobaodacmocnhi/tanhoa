@@ -1660,11 +1660,20 @@ namespace ThuTien.GUI.TongHop
             {
                 DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
 
-                dr["TuNgay"] = dateTu_KeToan.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen_KeToan.Value.ToString("dd/MM/yyyy");
-                dr["MaNV"] = item["STT"];
-                dr["PhanKy"] = item["PhanKy"];
-                dr["LoaiBaoCao"] = item["Loai"];
+                dr["TuNgay"] = dateTu_KeToan.Value.Month.ToString("00");
+                dr["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
+                switch (item["PhanKy"].ToString())
+                {
+                    case "Cùng Kỳ":
+                        dr["PhanKy"] = "của Kỳ " + dateTu_KeToan.Value.Month.ToString();
+                        break;
+                    case "Khác Kỳ":
+                        dr["PhanKy"] = "của Kỳ " + dateTu_KeToan.Value.Month.ToString()+" trở về trước";
+                        break;
+                    default:
+                        break;
+                }
+                
                 dr["Ngay"] = item["NgayGiaiTrach"];
                 dr["TongGiaBan"] = item["GiaBan"];
                 dr["TongThueGTGT"] = item["ThueGTGT"];
@@ -1672,6 +1681,19 @@ namespace ThuTien.GUI.TongHop
                 dr["TongCong"] = item["TongCong"];
 
                 ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+                //add page tổng cộng
+                DataRow drTC = ds.Tables["TongHopDangNgan"].NewRow();
+
+                drTC["TuNgay"] = dateTu_KeToan.Value.Month.ToString("00");
+                drTC["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
+                drTC["PhanKy"] = "";
+                drTC["Ngay"] = item["NgayGiaiTrach"];
+                drTC["TongGiaBan"] = item["GiaBan"];
+                drTC["TongThueGTGT"] = item["ThueGTGT"];
+                drTC["TongPhiBVMT"] = item["PhiBVMT"];
+                drTC["TongCong"] = item["TongCong"];
+
+                ds.Tables["TongHopDangNgan"].Rows.Add(drTC);
             }
             rptTongHopDangNgan_KeToan rpt = new rptTongHopDangNgan_KeToan();
             rpt.SetDataSource(ds);
