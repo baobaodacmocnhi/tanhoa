@@ -6,6 +6,7 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using System.Data;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.DAL.TruyThu
 {
@@ -158,6 +159,8 @@ namespace KTKS_DonKH.DAL.TruyThu
         {
             try
             {
+                CDonTu _cDonTu = new CDonTu();
+                _cDonTu.Xoa_LichSu("TruyThuTienNuoc_ChiTiet", (int)cttttn.IDCT);
                 int ID = cttttn.ID.Value;
                 int IDCT = cttttn.IDCT;
                 db.TruyThuTienNuoc_HoaDons.DeleteAllOnSubmit(cttttn.TruyThuTienNuoc_HoaDons.ToList());
@@ -168,7 +171,8 @@ namespace KTKS_DonKH.DAL.TruyThu
                 db.SubmitChanges();
                 db.TruyThuTienNuoc_ChiTiets.DeleteOnSubmit(cttttn);
                 db.SubmitChanges();
-                db.TruyThuTienNuocs.DeleteOnSubmit(db.TruyThuTienNuocs.SingleOrDefault(item=>item.ID==ID));
+                if (db.TruyThuTienNuoc_ChiTiets.Any(item => item.ID == ID) == false)
+                    db.TruyThuTienNuocs.DeleteOnSubmit(db.TruyThuTienNuocs.SingleOrDefault(item => item.ID == ID));
                 db.SubmitChanges();
                 return true;
             }

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using KTKS_DonKH.DAL.QuanTri;
-using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.DAL.BamChi
 {
@@ -39,9 +39,8 @@ namespace KTKS_DonKH.DAL.BamChi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -57,9 +56,8 @@ namespace KTKS_DonKH.DAL.BamChi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -74,9 +72,8 @@ namespace KTKS_DonKH.DAL.BamChi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -97,15 +94,7 @@ namespace KTKS_DonKH.DAL.BamChi
 
         public LinQ.BamChi Get(decimal MaBC)
         {
-            try
-            {
-                return db.BamChis.SingleOrDefault(itemBamChi => itemBamChi.MaBC == MaBC);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            return db.BamChis.SingleOrDefault(itemBamChi => itemBamChi.MaBC == MaBC);
         }
 
         public LinQ.BamChi Get(string TenTo, decimal MaDon)
@@ -151,9 +140,8 @@ namespace KTKS_DonKH.DAL.BamChi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -168,9 +156,8 @@ namespace KTKS_DonKH.DAL.BamChi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -178,6 +165,8 @@ namespace KTKS_DonKH.DAL.BamChi
         {
             try
             {
+                CDonTu _cDonTu = new CDonTu();
+                _cDonTu.Xoa_LichSu("BamChi_ChiTiet",(int)ctbamchi.MaCTBC);
                 decimal MaBC = ctbamchi.MaBC.Value;
                 db.BamChi_ChiTiets.DeleteOnSubmit(ctbamchi);
                 db.SubmitChanges();
@@ -188,9 +177,8 @@ namespace KTKS_DonKH.DAL.BamChi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -211,15 +199,7 @@ namespace KTKS_DonKH.DAL.BamChi
 
         public BamChi_ChiTiet GetCT(decimal MaCTBC)
         {
-            try
-            {
-                return db.BamChi_ChiTiets.SingleOrDefault(itemCTBamChi => itemCTBamChi.MaCTBC == MaCTBC);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            return db.BamChi_ChiTiets.SingleOrDefault(itemCTBamChi => itemCTBamChi.MaCTBC == MaCTBC);
         }
 
         public DataTable getDS(string TenTo, int CreateBy, decimal MaDon)
@@ -421,7 +401,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             where itemCTBamChi.BamChi.MaDonMoi == MaDon
                             select new
                             {
-                                MaDon = itemCTBamChi.BamChi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTBamChi.BamChi.MaDonMoi).Count() == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi + "." + itemCTBamChi.STT:null,
+                                MaDon = itemCTBamChi.BamChi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTBamChi.BamChi.MaDonMoi).Count() == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi + "." + itemCTBamChi.STT : null,
                                 TenLD = itemCTBamChi.BamChi.DonTu.Name_NhomDon,
                                 itemCTBamChi.MaCTBC,
                                 itemCTBamChi.DanhBo,
@@ -529,7 +509,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             where itemCTBamChi.BamChi.MaDonMoi == MaDon && itemCTBamChi.DanhBo == DanhBo
                             select new
                             {
-                                MaDon = itemCTBamChi.BamChi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTBamChi.BamChi.MaDonMoi).Count() == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi + "." + itemCTBamChi.STT:null,
+                                MaDon = itemCTBamChi.BamChi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTBamChi.BamChi.MaDonMoi).Count() == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi + "." + itemCTBamChi.STT : null,
                                 TenLD = itemCTBamChi.BamChi.DonTu.Name_NhomDon,
                                 itemCTBamChi.MaCTBC,
                                 itemCTBamChi.DanhBo,
@@ -661,14 +641,14 @@ namespace KTKS_DonKH.DAL.BamChi
         {
             var query = from itemCTBamChi in db.BamChi_ChiTiets
                         join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                        where  itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
+                        where itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
                         select new
                         {
-                           MaDon = itemCTBamChi.BamChi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTBamChi.BamChi.MaDonMoi).Count() == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi + "." + itemCTBamChi.STT
-                                        : itemCTBamChi.BamChi.MaDon != null ? "TKH" + itemCTBamChi.BamChi.MaDon
-                                        : itemCTBamChi.BamChi.MaDonTXL != null ? "TXL" + itemCTBamChi.BamChi.MaDonTXL
-                                        : itemCTBamChi.BamChi.MaDonTBC != null ? "TBC" + itemCTBamChi.BamChi.MaDonTBC : null,
-                            TenLD = itemCTBamChi.BamChi.MaDonMoi != null ? itemCTBamChi.BamChi.DonTu.Name_NhomDon+" "+ itemCTBamChi.BamChi.DonTu.Name_NhomDon_ChiTiet
+                            MaDon = itemCTBamChi.BamChi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTBamChi.BamChi.MaDonMoi).Count() == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi + "." + itemCTBamChi.STT
+                                         : itemCTBamChi.BamChi.MaDon != null ? "TKH" + itemCTBamChi.BamChi.MaDon
+                                         : itemCTBamChi.BamChi.MaDonTXL != null ? "TXL" + itemCTBamChi.BamChi.MaDonTXL
+                                         : itemCTBamChi.BamChi.MaDonTBC != null ? "TBC" + itemCTBamChi.BamChi.MaDonTBC : null,
+                            TenLD = itemCTBamChi.BamChi.MaDonMoi != null ? itemCTBamChi.BamChi.DonTu.Name_NhomDon + " " + itemCTBamChi.BamChi.DonTu.Name_NhomDon_ChiTiet
                                         : itemCTBamChi.BamChi.MaDon != null ? itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD
                                         : itemCTBamChi.BamChi.MaDonTXL != null ? itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD
                                         : itemCTBamChi.BamChi.MaDonTBC != null ? itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD : null,

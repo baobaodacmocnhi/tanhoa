@@ -40066,6 +40066,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _TBC;
 		
+		private bool _KiemTra;
+		
 		private EntitySet<CTNoiChuyen> _CTNoiChuyens;
 		
     #region Extensibility Method Definitions
@@ -40088,6 +40090,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTXLChanged();
     partial void OnTBCChanging(bool value);
     partial void OnTBCChanged();
+    partial void OnKiemTraChanging(bool value);
+    partial void OnKiemTraChanged();
     #endregion
 		
 		public NoiChuyen()
@@ -40252,6 +40256,26 @@ namespace KTKS_DonKH.LinQ
 					this._TBC = value;
 					this.SendPropertyChanged("TBC");
 					this.OnTBCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KiemTra", DbType="Bit NOT NULL")]
+		public bool KiemTra
+		{
+			get
+			{
+				return this._KiemTra;
+			}
+			set
+			{
+				if ((this._KiemTra != value))
+				{
+					this.OnKiemTraChanging(value);
+					this.SendPropertyChanging();
+					this._KiemTra = value;
+					this.SendPropertyChanged("KiemTra");
+					this.OnKiemTraChanged();
 				}
 			}
 		}

@@ -6,6 +6,7 @@ using System.Data;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.DAL.ThuTraLoi
 {
@@ -150,6 +151,8 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
         {
             try
             {
+                CDonTu _cDonTu = new CDonTu();
+                _cDonTu.Xoa_LichSu("ThuTraLoi_ChiTiet", (int)cttttl.MaCTTTTL);
                 decimal ID = cttttl.MaTTTL;
                 db.ThuTraLoi_ChiTiets.DeleteOnSubmit(cttttl);
                 db.SubmitChanges();

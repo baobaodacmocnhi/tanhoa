@@ -21,8 +21,6 @@ namespace KTKS_DonKH.GUI.DonTu
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CPhongBanDoi _cPhongBanDoi = new CPhongBanDoi();
 
-        //DataSet _dsNoiChuyen = new DataSet("NoiChuyen");
-
         public frmDSDonTu()
         {
             InitializeComponent();
@@ -51,38 +49,9 @@ namespace KTKS_DonKH.GUI.DonTu
                 cmbPhong.Visible = false;
             }
 
-            //repositoryItemLookUpEdit1.DataSource = _cNoiChuyen.GetDS("DonTu");
-            //repositoryItemLookUpEdit1.DisplayMember = "Name";
-            //repositoryItemLookUpEdit1.ValueMember = "ID";
-
-            //DataTable dt = new DataTable();
-            //dt = new DataTable();
-            //dt = _cTaiKhoan.GetDS_ThuKy("TKH");
-            //dt.TableName = "2";//Tổ Khách Hàng
-            //_dsNoiChuyen.Tables.Add(dt);
-            /////
-            //dt = new DataTable();
-            //dt = _cTaiKhoan.GetDS_ThuKy("TXL");
-            //dt.TableName = "3";//Tổ Xử Lý
-            //_dsNoiChuyen.Tables.Add(dt);
-            /////
-            //dt = new DataTable();
-            //dt = _cTaiKhoan.GetDS_ThuKy("TBC");
-            //dt.TableName = "4";//Tổ Bấm Chì
-            //_dsNoiChuyen.Tables.Add(dt);
-            /////
-            //dt = new DataTable();
-            //dt = _cTaiKhoan.GetDS_ThuKy("TVP");
-            //dt.TableName = "5";//Tổ Văn Phòng
-            //_dsNoiChuyen.Tables.Add(dt);
-            /////
-            //dt = new DataTable();
-            //dt = _cPhongBanDoi.GetDS();
-            //dt.TableName = "6";//Phòng Ban Đội Khác
-            //_dsNoiChuyen.Tables.Add(dt);
-
             cmbTimTheo.SelectedItem = "Ngày";
             cmbLoai.SelectedIndex = 0;
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Đơn", gridViewDonChiTiet);
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -152,19 +121,22 @@ namespace KTKS_DonKH.GUI.DonTu
                                 //    dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
                                 //else
                                 if (txtNoiDungTimKiem.Text.Trim() != "")
-                                    dgvDSDonTu.DataSource = _cDonTu.getDS_Phong( int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(cmbPhong.SelectedValue.ToString()));
+                                    //dgvDSDonTu.DataSource = _cDonTu.getDS_Phong(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(cmbPhong.SelectedValue.ToString()));
+                                    dgvDSDonTu.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(cmbPhong.SelectedValue.ToString())).Tables["DonTu"];
                                 break;
                             case "Danh Bộ":
                                 if (txtNoiDungTimKiem.Text.Trim() != "")
-                                    dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo( txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), int.Parse(cmbPhong.SelectedValue.ToString()));
+                                    //dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), int.Parse(cmbPhong.SelectedValue.ToString()));
+                                    dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), int.Parse(cmbPhong.SelectedValue.ToString())).Tables["DonTu"];
                                 break;
                             case "Số Công Văn":
                                 if (txtNoiDungTimKiem.Text.Trim() != "")
-                                    dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper(), int.Parse(cmbPhong.SelectedValue.ToString()));
+                                    //dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper(), int.Parse(cmbPhong.SelectedValue.ToString()));
+                                    dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper(), int.Parse(cmbPhong.SelectedValue.ToString())).Tables["DonTu"];
                                 break;
                             case "Ngày":
-                                dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbPhong.SelectedValue.ToString()));
-                                //gridControl1.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
+                                //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbPhong.SelectedValue.ToString()));
+                                gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbPhong.SelectedValue.ToString())).Tables["DonTu"];
                                 break;
                             default:
                                 break;
@@ -179,19 +151,22 @@ namespace KTKS_DonKH.GUI.DonTu
                         //    dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
                         //else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSDonTu.DataSource = _cDonTu.getDS_Phong(int.Parse(txtNoiDungTimKiem.Text.Trim()), CTaiKhoan.MaPhong);
+                            //dgvDSDonTu.DataSource = _cDonTu.getDS_Phong(int.Parse(txtNoiDungTimKiem.Text.Trim()), CTaiKhoan.MaPhong);
+                            dgvDSDonTu.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim()), CTaiKhoan.MaPhong).Tables["DonTu"];
                         break;
                     case "Danh Bộ":
                         if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo( txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), CTaiKhoan.MaPhong);
+                            //dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), CTaiKhoan.MaPhong);
+                            dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), CTaiKhoan.MaPhong).Tables["DonTu"];
                         break;
                     case "Số Công Văn":
                         if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper(), CTaiKhoan.MaPhong);
+                            //dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper(), CTaiKhoan.MaPhong);
+                            dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper(), CTaiKhoan.MaPhong).Tables["DonTu"];
                         break;
                     case "Ngày":
-                        dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, CTaiKhoan.MaPhong);
-                        //gridControl1.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
+                        //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, CTaiKhoan.MaPhong);
+                        gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value, CTaiKhoan.MaPhong).Tables["DonTu"];
                         break;
                     default:
                         break;
@@ -201,7 +176,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void dgvDSDonTu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvDSDonTu.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null && e.Value.ToString().Length ==11)
+            if (dgvDSDonTu.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null && e.Value.ToString().Length == 11)
             {
                 e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }
@@ -227,28 +202,52 @@ namespace KTKS_DonKH.GUI.DonTu
         private void btnInDSDon_Click(object sender, EventArgs e)
         {
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-            foreach (DataGridViewRow item in dgvDSDonTu.Rows)
-            {
-                    DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
+            DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
+            //foreach (DataGridViewRow item in dgvDSDonTu.Rows)
+            //{
+            //        DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
 
-                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
-                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
-                    dr["Ma"] = item.Cells["MaDon"].Value.ToString();
-                    dr["CreateDate"] = item.Cells["CreateDate"].Value.ToString();
-                    if (item.Cells["DanhBo"].Value.ToString().Length == 11)
-                        dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                    dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
-                    dr["NoiDung"] = item.Cells["NoiDung"].Value.ToString();
-                    if (CTaiKhoan.MaPhong == 1)
-                    {
-                        dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
-                        dr["VisibleNoiNhan"] = true;
-                    }
-                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
-                    dr["NguoiLap"] = CTaiKhoan.HoTen;
-                    dr["ChuKy"] = CTaiKhoan.ChuKy;
-                    
-                    dsBaoCao.Tables["CongVan"].Rows.Add(dr);
+            //        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
+            //        dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
+            //        dr["Ma"] = item.Cells["MaDon"].Value.ToString();
+            //        dr["CreateDate"] = item.Cells["CreateDate"].Value.ToString();
+            //        if (item.Cells["DanhBo"].Value.ToString().Length == 11)
+            //            dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+            //        dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+            //        dr["NoiDung"] = item.Cells["NoiDung"].Value.ToString();
+            //        if (CTaiKhoan.MaPhong == 1)
+            //        {
+            //            dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
+            //            dr["VisibleNoiNhan"] = true;
+            //        }
+            //        dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+            //        dr["NguoiLap"] = CTaiKhoan.HoTen;
+            //        dr["ChuKy"] = CTaiKhoan.ChuKy;
+
+            //        dsBaoCao.Tables["CongVan"].Rows.Add(dr);
+            //}
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
+
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
+                dr["Ma"] = item["MaDon"].ToString();
+                dr["CreateDate"] = item["CreateDate"].ToString();
+                if (item["DanhBo"].ToString().Length == 11)
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = item["DiaChi"].ToString();
+                dr["NoiDung"] = item["NoiDung"].ToString();
+                if (CTaiKhoan.MaPhong == 1)
+                {
+                    dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
+                    dr["VisibleNoiNhan"] = true;
+                }
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                dr["NguoiLap"] = CTaiKhoan.HoTen;
+                dr["ChuKy"] = CTaiKhoan.ChuKy;
+
+                dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }
             rptDSChuyenDonTu rpt = new rptDSChuyenDonTu();
             rpt.SetDataSource(dsBaoCao);
@@ -259,18 +258,42 @@ namespace KTKS_DonKH.GUI.DonTu
         private void btnInThongKe_Click(object sender, EventArgs e)
         {
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-            foreach (DataGridViewRow item in dgvDSDonTu.Rows)
+            DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
+            //foreach (DataGridViewRow item in dgvDSDonTu.Rows)
+            //{
+            //    DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
+
+            //    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
+            //    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
+            //    dr["Ma"] = item.Cells["MaDon"].Value.ToString();
+            //    dr["CreateDate"] = item.Cells["CreateDate"].Value.ToString();
+            //    if (item.Cells["DanhBo"].Value.ToString().Length == 11)
+            //        dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+            //    dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+            //    dr["NoiDung"] = item.Cells["NoiDung"].Value.ToString();
+            //    if (CTaiKhoan.MaPhong == 1)
+            //    {
+            //        dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
+            //        dr["VisibleNoiNhan"] = true;
+            //    }
+            //    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+            //    dr["NguoiLap"] = CTaiKhoan.HoTen;
+            //    dr["ChuKy"] = CTaiKhoan.ChuKy;
+
+            //    dsBaoCao.Tables["CongVan"].Rows.Add(dr);
+            //}
+            foreach (DataRow item in dt.Rows)
             {
                 DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
 
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
-                dr["Ma"] = item.Cells["MaDon"].Value.ToString();
-                dr["CreateDate"] = item.Cells["CreateDate"].Value.ToString();
-                if (item.Cells["DanhBo"].Value.ToString().Length == 11)
-                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
-                dr["NoiDung"] = item.Cells["NoiDung"].Value.ToString();
+                dr["Ma"] = item["MaDon"].ToString();
+                dr["CreateDate"] = item["CreateDate"].ToString();
+                if (item["DanhBo"].ToString().Length == 11)
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = item["DiaChi"].ToString();
+                dr["NoiDung"] = item["NoiDung"].ToString();
                 if (CTaiKhoan.MaPhong == 1)
                 {
                     dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
@@ -289,6 +312,48 @@ namespace KTKS_DonKH.GUI.DonTu
 
         }
 
-        
+        private void gridViewDon_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "DanhBo" && e.Value != null && e.Value.ToString().Length == 11)
+            {
+                e.DisplayText = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            }
+        }
+
+        private void gridViewDonChiTiet_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "DanhBo" && e.Value != null && e.Value.ToString().Length == 11)
+            {
+                e.DisplayText = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            }
+        }
+
+        private void gridViewDon_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+        }
+
+        private void gridViewDonChiTiet_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+        }
+
+        private void gridViewDon_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (gridViewDon.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                string MaDon = ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString();
+
+                if (MaDon.Contains(".") == true)
+                    MaDon = MaDon.Substring(0, MaDon.IndexOf("."));
+
+                frmNhanDonTu frm = new frmNhanDonTu(int.Parse(MaDon));
+                frm.ShowDialog();
+            }
+        }
+
+
     }
 }

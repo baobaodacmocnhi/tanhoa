@@ -5,6 +5,7 @@ using System.Text;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Data;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.DAL.ThuMoi
 {
@@ -139,6 +140,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
         {
             try
             {
+                CDonTu _cDonTu = new CDonTu();
+                _cDonTu.Xoa_LichSu("ThuMoi_ChiTiet", (int)entity.IDCT);
                 int ID = entity.ID;
                 db.ThuMoi_ChiTiets.DeleteOnSubmit(entity);
                 db.SubmitChanges();

@@ -5,6 +5,7 @@ using System.Text;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Data;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.DAL.TruyThu
 {
@@ -147,7 +148,12 @@ namespace KTKS_DonKH.DAL.TruyThu
         {
             try
             {
+                CDonTu _cDonTu = new CDonTu();
+                _cDonTu.Xoa_LichSu("GianLan_ChiTiet", (int)entity.MaCTGL);
+                int ID = entity.MaGL.Value;
                 db.GianLan_ChiTiets.DeleteOnSubmit(entity);
+                if (db.GianLan_ChiTiets.Any(item => item.MaGL == ID) == false)
+                    db.GianLans.DeleteOnSubmit(db.GianLans.SingleOrDefault(item => item.MaGL == ID));
                 db.SubmitChanges();
                 return true;
             }

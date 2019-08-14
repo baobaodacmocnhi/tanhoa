@@ -6,6 +6,7 @@ using System.Data;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {
@@ -360,6 +361,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
+                CDonTu _cDonTu = new CDonTu();
+                _cDonTu.Xoa_LichSu("DCBD_ChiTietBienDong", (int)ctdcbd.MaCTDCBD);
                 decimal ID = ctdcbd.MaDCBD.Value;
                 db.DCBD_ChiTietBienDongs.DeleteOnSubmit(ctdcbd);
                 db.SubmitChanges();
@@ -1741,6 +1744,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
+                CDonTu _cDonTu = new CDonTu();
+                _cDonTu.Xoa_LichSu("DCBD_ChiTietHoaDon", (int)ctdchd.MaCTDCHD);
                 decimal ID = ctdchd.MaDCBD;
                 db.DCBD_ChiTietHoaDons.DeleteOnSubmit(ctdchd);
                 db.SubmitChanges();

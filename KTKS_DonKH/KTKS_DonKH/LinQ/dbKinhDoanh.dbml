@@ -1733,6 +1733,7 @@
       <Column Name="TKH" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TXL" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TBC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="KiemTra" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="NoiChuyen_CTNoiChuyen" Member="CTNoiChuyens" ThisKey="ID" OtherKey="ID_NoiChuyen" Type="CTNoiChuyen" />
     </Type>
   </Table>

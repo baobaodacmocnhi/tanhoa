@@ -6,6 +6,7 @@ using System.Data;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.DAL.CatHuyDanhBo
 {
@@ -228,6 +229,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
+                CDonTu _cDonTu = new CDonTu();
+                _cDonTu.Xoa_LichSu("CHDB_ChiTietCatTam", (int)ctctdb.MaCTCTDB);
                 decimal ID = ctctdb.MaCHDB.Value;
                 db.CHDB_ChiTietCatTams.DeleteOnSubmit(ctctdb);
                 db.SubmitChanges();
@@ -769,6 +772,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
+                CDonTu _cDonTu = new CDonTu();
+                _cDonTu.Xoa_LichSu("CHDB_ChiTietCatHuy", (int)ctchdb.MaCTCHDB);
                 decimal ID = ctchdb.MaCHDB.Value;
                 db.CHDB_ChiTietCatHuys.DeleteOnSubmit(ctchdb);
                 db.SubmitChanges();
@@ -1314,6 +1319,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
+                CDonTu _cDonTu = new CDonTu();
+                _cDonTu.Xoa_LichSu("CHDB_Phieu", (int)ycchdb.MaYCCHDB);
                 decimal ID = ycchdb.MaCHDB.Value;
                 db.CHDB_Phieus.DeleteOnSubmit(ycchdb);
                 db.SubmitChanges();
