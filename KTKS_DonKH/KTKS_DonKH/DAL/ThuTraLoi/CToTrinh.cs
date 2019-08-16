@@ -151,6 +151,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                 CDonTu _cDonTu = new CDonTu();
                 _cDonTu.Xoa_LichSu("ToTrinh_ChiTiet", (int)en.IDCT);
                 decimal ID = en.ID;
+                db.ToTrinh_ChiTiet_Hinhs.DeleteAllOnSubmit(en.ToTrinh_ChiTiet_Hinhs.ToList());
                 db.ToTrinh_ChiTiets.DeleteOnSubmit(en);
                 db.SubmitChanges();
                 if (db.ToTrinh_ChiTiets.Any(item => item.ID == ID) == false)

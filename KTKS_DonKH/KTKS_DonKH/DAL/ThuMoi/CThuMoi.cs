@@ -143,6 +143,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                 CDonTu _cDonTu = new CDonTu();
                 _cDonTu.Xoa_LichSu("ThuMoi_ChiTiet", (int)entity.IDCT);
                 int ID = entity.ID;
+                db.ThuMoi_ChiTiet_Hinhs.DeleteAllOnSubmit(entity.ThuMoi_ChiTiet_Hinhs.ToList());
                 db.ThuMoi_ChiTiets.DeleteOnSubmit(entity);
                 db.SubmitChanges();
                 if (db.ThuMoi_ChiTiets.Any(item => item.ID == ID) == false)

@@ -65,7 +65,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             _flagFirst = true;
 
             DataTable dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_KTXM("TBC");
+            dt = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
             dt.TableName = "1";//Kiểm Tra Xác Minh
             _dsNoiChuyen.Tables.Add(dt);
             ///

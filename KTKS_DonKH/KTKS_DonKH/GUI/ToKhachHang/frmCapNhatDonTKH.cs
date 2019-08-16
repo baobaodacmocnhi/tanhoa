@@ -70,7 +70,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             cmbNoiChuyen.SelectedIndex = -1;
 
             DataTable dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_KTXM("TKH");
+            dt = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
             dt.TableName = "1";//Kiểm Tra Xác Minh
             _dsNoiChuyen.Tables.Add(dt);
             ///

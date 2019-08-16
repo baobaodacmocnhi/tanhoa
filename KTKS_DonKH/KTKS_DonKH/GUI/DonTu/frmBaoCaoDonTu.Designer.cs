@@ -376,7 +376,8 @@
             this.groupBox2.Size = new System.Drawing.Size(690, 87);
             this.groupBox2.TabIndex = 31;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Thống Kê Theo Nhóm Đơn (ngày nhận) - Tổ Tân Bình, Tân Phú, Bấm Chì";
+            this.groupBox2.Text = "Thống Kê Theo Nhóm Đơn (ngày nhận) - Tổ GD, Tổ Tân Bình, Tân Phú, Bấm Chì - Chuyể" +
+                "n Đơn";
             // 
             // panelTo
             // 
@@ -491,7 +492,7 @@
             this.groupBox4.Size = new System.Drawing.Size(465, 87);
             this.groupBox4.TabIndex = 32;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Thống Kê Theo Nhóm Đơn (ngày nhận) - Tổ Giao Dịch";
+            this.groupBox4.Text = "Thống Kê Theo Nhóm Đơn (ngày nhận) - Phòng - Chuyển Đơn";
             // 
             // btnInDSChuaChuyen_ThongKeNhomDon_ToGD
             // 

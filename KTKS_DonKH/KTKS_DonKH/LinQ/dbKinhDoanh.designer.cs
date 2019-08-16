@@ -2587,6 +2587,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _Phuong;
 		
+		private bool _NgayBC_Truoc_NgayGiao;
+		
 		private System.Nullable<System.DateTime> _NgayBC;
 		
 		private string _HienTrangKiemTra;
@@ -2665,6 +2667,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnQuanChanged();
     partial void OnPhuongChanging(string value);
     partial void OnPhuongChanged();
+    partial void OnNgayBC_Truoc_NgayGiaoChanging(bool value);
+    partial void OnNgayBC_Truoc_NgayGiaoChanged();
     partial void OnNgayBCChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayBCChanged();
     partial void OnHienTrangKiemTraChanging(string value);
@@ -2956,6 +2960,26 @@ namespace KTKS_DonKH.LinQ
 					this._Phuong = value;
 					this.SendPropertyChanged("Phuong");
 					this.OnPhuongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayBC_Truoc_NgayGiao", DbType="Bit NOT NULL")]
+		public bool NgayBC_Truoc_NgayGiao
+		{
+			get
+			{
+				return this._NgayBC_Truoc_NgayGiao;
+			}
+			set
+			{
+				if ((this._NgayBC_Truoc_NgayGiao != value))
+				{
+					this.OnNgayBC_Truoc_NgayGiaoChanging(value);
+					this.SendPropertyChanging();
+					this._NgayBC_Truoc_NgayGiao = value;
+					this.SendPropertyChanged("NgayBC_Truoc_NgayGiao");
+					this.OnNgayBC_Truoc_NgayGiaoChanged();
 				}
 			}
 		}
@@ -39276,6 +39300,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<bool> _DHN;
 		
+		private string _NameGroup;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -39300,6 +39326,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnKhieuNaiChanged();
     partial void OnDHNChanging(System.Nullable<bool> value);
     partial void OnDHNChanged();
+    partial void OnNameGroupChanging(string value);
+    partial void OnNameGroupChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -39431,6 +39459,26 @@ namespace KTKS_DonKH.LinQ
 					this._DHN = value;
 					this.SendPropertyChanged("DHN");
 					this.OnDHNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameGroup", DbType="NVarChar(200)")]
+		public string NameGroup
+		{
+			get
+			{
+				return this._NameGroup;
+			}
+			set
+			{
+				if ((this._NameGroup != value))
+				{
+					this.OnNameGroupChanging(value);
+					this.SendPropertyChanging();
+					this._NameGroup = value;
+					this.SendPropertyChanged("NameGroup");
+					this.OnNameGroupChanged();
 				}
 			}
 		}

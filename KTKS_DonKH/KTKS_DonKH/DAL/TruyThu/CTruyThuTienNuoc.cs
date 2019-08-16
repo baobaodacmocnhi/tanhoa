@@ -169,6 +169,7 @@ namespace KTKS_DonKH.DAL.TruyThu
                 db.SubmitChanges();
                 db.TruyThuTienNuoc_ThuMois.DeleteAllOnSubmit(cttttn.TruyThuTienNuoc_ThuMois.ToList());
                 db.SubmitChanges();
+                db.TruyThuTienNuoc_ChiTiet_Hinhs.DeleteAllOnSubmit(cttttn.TruyThuTienNuoc_ChiTiet_Hinhs.ToList());
                 db.TruyThuTienNuoc_ChiTiets.DeleteOnSubmit(cttttn);
                 db.SubmitChanges();
                 if (db.TruyThuTienNuoc_ChiTiets.Any(item => item.ID == ID) == false)

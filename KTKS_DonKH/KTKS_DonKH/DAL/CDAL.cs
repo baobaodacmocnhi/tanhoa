@@ -138,7 +138,6 @@ namespace KTKS_DonKH.DAL
                 Connect();
                 command = new SqlCommand(sql, connection);
                 int rowsAffected = command.ExecuteNonQuery();
-                Disconnect();
                 if (rowsAffected >= 1)
                     return true;
                 else
@@ -146,6 +145,7 @@ namespace KTKS_DonKH.DAL
             }
             catch (Exception ex)
             {
+                Disconnect();
                 throw ex;
             }
         }
@@ -171,6 +171,7 @@ namespace KTKS_DonKH.DAL
             }
             catch (Exception ex)
             {
+                Disconnect();
                 throw ex;
             }
         }
@@ -187,6 +188,7 @@ namespace KTKS_DonKH.DAL
             }
             catch (Exception ex)
             {
+                Disconnect();
                 throw ex;
             }
         }
@@ -199,14 +201,7 @@ namespace KTKS_DonKH.DAL
                 DataSet dataset = new DataSet();
                 command = new SqlCommand(sql, connection);
                 adapter = new SqlDataAdapter(command);
-                try
-                {
                     adapter.Fill(dataset);
-                }
-                catch (SqlException e)
-                {
-                    throw e;
-                }
                 Disconnect();
                 return dataset;
             }
@@ -219,18 +214,19 @@ namespace KTKS_DonKH.DAL
 
         public DataTable ExecuteQuery_DataTable(string sql)
         {
-            this.Connect();
-            DataTable dt = new DataTable();
-            command = new SqlCommand(sql, connection);
-            adapter = new SqlDataAdapter(command);
-            this.Disconnect();
             try
             {
+                this.Connect();
+                DataTable dt = new DataTable();
+                command = new SqlCommand(sql, connection);
+                adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
+                this.Disconnect();
                 return dt;
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
+                Disconnect();
                 throw ex;
             }
         }

@@ -330,15 +330,17 @@ namespace KTKS_DonKH.DAL.QuanTri
             return db.Users.Where(item => item.MaU != MaND && item.MaU != 0 && item.An == false && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
         }
 
-        public DataTable GetDS_KTXM(string Loai)
+        public DataTable GetDS_KTXM(string KyHieuTo)
         {
-            switch (Loai)
+            switch (KyHieuTo)
             {
-                case "TKH":
+                case "ToGD":
+                    return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToGD == true && item.An == false).OrderBy(item => item.STT).ToList());
+                case "ToTB":
                     return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToTB == true && item.An == false).OrderBy(item => item.STT).ToList());
-                case "TXL":
+                case "ToTP":
                     return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToTP == true && item.An == false).OrderBy(item => item.STT).ToList());
-                case "TBC":
+                case "ToBC":
                     return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
                 default:
                     return null;

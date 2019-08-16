@@ -151,6 +151,7 @@ namespace KTKS_DonKH.DAL.TruyThu
                 CDonTu _cDonTu = new CDonTu();
                 _cDonTu.Xoa_LichSu("GianLan_ChiTiet", (int)entity.MaCTGL);
                 int ID = entity.MaGL.Value;
+                db.GianLan_ChiTiet_Hinhs.DeleteAllOnSubmit(entity.GianLan_ChiTiet_Hinhs.ToList());
                 db.GianLan_ChiTiets.DeleteOnSubmit(entity);
                 if (db.GianLan_ChiTiets.Any(item => item.MaGL == ID) == false)
                     db.GianLans.DeleteOnSubmit(db.GianLans.SingleOrDefault(item => item.MaGL == ID));

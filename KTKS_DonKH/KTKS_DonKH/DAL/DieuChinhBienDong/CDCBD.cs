@@ -364,6 +364,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 CDonTu _cDonTu = new CDonTu();
                 _cDonTu.Xoa_LichSu("DCBD_ChiTietBienDong", (int)ctdcbd.MaCTDCBD);
                 decimal ID = ctdcbd.MaDCBD.Value;
+                db.DCBD_ChiTietBienDong_Hinhs.DeleteAllOnSubmit(ctdcbd.DCBD_ChiTietBienDong_Hinhs.ToList());
                 db.DCBD_ChiTietBienDongs.DeleteOnSubmit(ctdcbd);
                 db.SubmitChanges();
                 if (db.DCBD_ChiTietBienDongs.Any(item => item.MaDCBD == ID) == false && db.DCBD_ChiTietHoaDons.Any(item => item.MaDCBD == ID) == false)
@@ -1747,6 +1748,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 CDonTu _cDonTu = new CDonTu();
                 _cDonTu.Xoa_LichSu("DCBD_ChiTietHoaDon", (int)ctdchd.MaCTDCHD);
                 decimal ID = ctdchd.MaDCBD;
+                db.DCBD_ChiTietHoaDon_Hinhs.DeleteAllOnSubmit(ctdchd.DCBD_ChiTietHoaDon_Hinhs.ToList());
                 db.DCBD_ChiTietHoaDons.DeleteOnSubmit(ctdchd);
                 db.SubmitChanges();
                 if (db.DCBD_ChiTietBienDongs.Any(item => item.MaDCBD == ID) == false && db.DCBD_ChiTietHoaDons.Any(item => item.MaDCBD == ID) == false)

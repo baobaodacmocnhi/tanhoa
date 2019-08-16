@@ -121,6 +121,7 @@ namespace KTKS_DonKH.GUI.BamChi
             txtGiaBieu.Text = ctbamchi.GiaBieu.ToString();
             txtDinhMuc.Text = ctbamchi.DinhMuc.ToString();
             ///
+            chkNgayBCTruocNgayGiao.Checked = ctbamchi.NgayBC_Truoc_NgayGiao;
             dateBamChi.Value = ctbamchi.NgayBC.Value;
             cmbHienTrangKiemTra.SelectedItem = ctbamchi.HienTrangKiemTra;
             txtHieu.Text = ctbamchi.Hieu;
@@ -527,6 +528,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         ctbamchi.Quan = _hoadon.Quan;
                     }
                     ///
+                    ctbamchi.NgayBC_Truoc_NgayGiao = chkNgayBCTruocNgayGiao.Checked;
                     ctbamchi.NgayBC = dateBamChi.Value;
 
                     if (cmbHienTrangKiemTra.SelectedItem != null)
@@ -660,6 +662,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             _ctbamchi.Quan = _hoadon.Quan;
                         }
                         ///
+                        _ctbamchi.NgayBC_Truoc_NgayGiao = chkNgayBCTruocNgayGiao.Checked;
                         _ctbamchi.NgayBC = dateBamChi.Value;
 
                         if (cmbHienTrangKiemTra.SelectedItem != null)

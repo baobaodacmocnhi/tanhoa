@@ -232,6 +232,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 CDonTu _cDonTu = new CDonTu();
                 _cDonTu.Xoa_LichSu("CHDB_ChiTietCatTam", (int)ctctdb.MaCTCTDB);
                 decimal ID = ctctdb.MaCHDB.Value;
+                db.CHDB_ChiTietCatTam_Hinhs.DeleteAllOnSubmit(ctctdb.CHDB_ChiTietCatTam_Hinhs.ToList());
                 db.CHDB_ChiTietCatTams.DeleteOnSubmit(ctctdb);
                 db.SubmitChanges();
                 if (db.CHDB_ChiTietCatTams.Any(item => item.MaCHDB == ID) == false && db.CHDB_ChiTietCatHuys.Any(item => item.MaCHDB == ID) == false && db.CHDB_Phieus.Any(item => item.MaCHDB == ID) == false)
@@ -775,6 +776,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 CDonTu _cDonTu = new CDonTu();
                 _cDonTu.Xoa_LichSu("CHDB_ChiTietCatHuy", (int)ctchdb.MaCTCHDB);
                 decimal ID = ctchdb.MaCHDB.Value;
+                db.CHDB_ChiTietCatHuy_Hinhs.DeleteAllOnSubmit(ctchdb.CHDB_ChiTietCatHuy_Hinhs.ToList());
                 db.CHDB_ChiTietCatHuys.DeleteOnSubmit(ctchdb);
                 db.SubmitChanges();
                 if (db.CHDB_ChiTietCatTams.Any(item => item.MaCHDB == ID) == false && db.CHDB_ChiTietCatHuys.Any(item => item.MaCHDB == ID) == false && db.CHDB_Phieus.Any(item => item.MaCHDB == ID) == false)
@@ -1322,6 +1324,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 CDonTu _cDonTu = new CDonTu();
                 _cDonTu.Xoa_LichSu("CHDB_Phieu", (int)ycchdb.MaYCCHDB);
                 decimal ID = ycchdb.MaCHDB.Value;
+                db.CHDB_Phieu_Hinhs.DeleteAllOnSubmit(ycchdb.CHDB_Phieu_Hinhs.ToList());
                 db.CHDB_Phieus.DeleteOnSubmit(ycchdb);
                 db.SubmitChanges();
                 if (db.CHDB_ChiTietCatTams.Any(item => item.MaCHDB == ID) == false && db.CHDB_ChiTietCatHuys.Any(item => item.MaCHDB == ID) == false && db.CHDB_Phieus.Any(item => item.MaCHDB == ID) == false)

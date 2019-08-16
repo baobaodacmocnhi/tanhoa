@@ -542,7 +542,6 @@ namespace KTKS_DonKH.DAL.DonTu
 
         public DataTable getDS_ThongKeNhomDon(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-
             string sql = "select dt.MaDon,dt.TongDB,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,"
                         + " NhomDon=case when dt.Name_NhomDon != '' then dt.Name_NhomDon else dt.VanDeKhac end,"
                         + " MaDonChiTiet=case when dt.TongDB=0 then CONVERT(varchar(8),dtct.MaDon)"
@@ -556,9 +555,9 @@ namespace KTKS_DonKH.DAL.DonTu
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getDS_ThongKeNhomDon(string TenTo, DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_ThongKeNhomDon(string KyHieuTo, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            if (TenTo == "ToGD")
+            if (KyHieuTo == "")
             {
                 string sql = ";WITH dtls_temp AS"
                             + " ("
@@ -571,10 +570,11 @@ namespace KTKS_DonKH.DAL.DonTu
                             + " MaDonChiTiet=case when dt.TongDB=0 then CONVERT(varchar(8),dtct.MaDon)"
                             + "            when dt.TongDB=1 then CONVERT(varchar(8),dtct.MaDon)"
                             + "            when dt.TongDB>=2 then CONVERT(varchar(8),dtct.MaDon)+'.'+CONVERT(varchar(3),dtct.STT) end,"
+                            + " ChuyenToGD=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan=1) then 'true' else 'false' end,"
                             + " ChuyenToTB=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan=2) then 'true' else 'false' end,"
                             + " ChuyenToTP=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan=3) then 'true' else 'false' end,"
                             + " ChuyenToBC=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan=4) then 'true' else 'false' end,"
-                            + " ChuyenKhac=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan!=2 and ID_NoiNhan!=3 and ID_NoiNhan!=4) then 'true' else 'false' end"
+                            + " ChuyenKhac=case when exists(select ID from dtls_temp where rn=1 and dtls_temp.MaDon=dtct.MaDon and dtls_temp.STT=dtct.STT and ID_NoiNhan!=1 and ID_NoiNhan!=2 and ID_NoiNhan!=3 and ID_NoiNhan!=4) then 'true' else 'false' end"
                             + " from DonTu dt,DonTu_ChiTiet dtct where CAST(dt.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(dt.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and dt.MaDon=dtct.MaDon"
                             + " order by dtct.MaDon,dtct.STT asc";
                 return ExecuteQuery_DataTable(sql);
@@ -594,8 +594,9 @@ namespace KTKS_DonKH.DAL.DonTu
                             + " 		   when dt.TongDB>=2 then CONVERT(varchar(8),dtls_temp.MaDon)+'.'+CONVERT(varchar(3),dtls_temp.STT) end,"
                             + " ChuyenTrucTiep=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtls_temp.MaDon and dtls.STT=dtls_temp.STT and ID_NoiNhan=6) then 'false' else 'true' end,"
                             + " ChuyenKTXM=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtls_temp.MaDon and dtls.STT=dtls_temp.STT and ID_NoiNhan=5) then 'true' else 'false' end,";
-                switch (TenTo)
+                switch (KyHieuTo)
                 {
+                    case "ToGD":
                     case "ToTB":
                     case "ToTP":
                         sql += " DaKTXM=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtls_temp.MaDon and dtls.STT=dtls_temp.STT and ID_NoiNhan=5) then"
@@ -608,8 +609,11 @@ namespace KTKS_DonKH.DAL.DonTu
                         break;
                 }
                 sql += " from DonTu dt,DonTu_ChiTiet dtct,dtls_temp where dtls_temp.rn=1 and dt.MaDon=dtct.MaDon and dtct.MaDon=dtls_temp.MaDon and dtct.STT=dtls_temp.STT";
-                switch (TenTo)
+                switch (KyHieuTo)
                 {
+                    case "ToGD":
+                        sql += " and ID_NoiNhan=1";
+                        break;
                     case "ToTB":
                         sql += " and ID_NoiNhan=2";
                         break;
@@ -896,9 +900,9 @@ namespace KTKS_DonKH.DAL.DonTu
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_LichSu(string TenTo, string SoCongVan)
+        public DataTable getDS_LichSu(string KyHieuTo, string SoCongVan)
         {
-            switch (TenTo)
+            switch (KyHieuTo)
             {
                 case "ToGD":
                     var query = from item in db.DonTu_LichSus
@@ -1003,9 +1007,9 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public DataTable getDS_LichSu(string TenTo, int CreateBy, string SoCongVan)
+        public DataTable getDS_LichSu(string KyHieuTo, int CreateBy, string SoCongVan)
         {
-            switch (TenTo)
+            switch (KyHieuTo)
             {
                 case "ToGD":
                     var query = from item in db.DonTu_LichSus
@@ -1110,9 +1114,9 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public DataTable getDS_LichSu(string TenTo, DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_LichSu(string KyHieuTo, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            switch (TenTo)
+            switch (KyHieuTo)
             {
                 case "ToGD":
                     var query = from item in db.DonTu_LichSus
@@ -1217,9 +1221,9 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public DataTable getDS_LichSu(string TenTo, int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_LichSu(string KyHieuTo, int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            switch (TenTo)
+            switch (KyHieuTo)
             {
                 case "ToGD":
                     var query = from item in db.DonTu_LichSus
@@ -1324,9 +1328,9 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public DataTable getDS_LichSu(string TenTo, string SoCongVan, int ID_NoiNhan)
+        public DataTable getDS_LichSu(string KyHieuTo, string SoCongVan, int ID_NoiNhan)
         {
-            switch (TenTo)
+            switch (KyHieuTo)
             {
                 case "ToGD":
                     var query = from item in db.DonTu_LichSus
@@ -1431,9 +1435,9 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public DataTable getDS_LichSu(string TenTo, int CreateBy, string SoCongVan, int ID_NoiNhan)
+        public DataTable getDS_LichSu(string KyHieuTo, int CreateBy, string SoCongVan, int ID_NoiNhan)
         {
-            switch (TenTo)
+            switch (KyHieuTo)
             {
                 case "ToGD":
                     var query = from item in db.DonTu_LichSus
@@ -1538,9 +1542,9 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public DataTable getDS_LichSu(string TenTo, DateTime FromCreateDate, DateTime ToCreateDate, int ID_NoiNhan)
+        public DataTable getDS_LichSu(string KyHieuTo, DateTime FromCreateDate, DateTime ToCreateDate, int ID_NoiNhan)
         {
-            switch (TenTo)
+            switch (KyHieuTo)
             {
                 case "ToGD":
                     var query = from item in db.DonTu_LichSus
@@ -1645,9 +1649,9 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public DataTable getDS_LichSu(string TenTo, int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate, int ID_NoiNhan)
+        public DataTable getDS_LichSu(string KyHieuTo, int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate, int ID_NoiNhan)
         {
-            switch (TenTo)
+            switch (KyHieuTo)
             {
                 case "ToGD":
                     var query = from item in db.DonTu_LichSus
@@ -1752,21 +1756,24 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public DataTable getDS_ChuyenKTXM(string TenTo, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
+        public DataTable getDS_ChuyenKTXM(string KyHieuTo, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
         {
             DataTable dt = new DataTable();
             string sql = "select MaDon=case when (select COUNT(MaDon) from DonTu_ChiTiet where MaDon=dt.MaDon)=1 then convert(char(8),dtct.MaDon) else convert(char(8),dtct.MaDon)+'.'+convert(varchar(3),dtct.STT) end,"
                         + " dt.SoCongVan,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,dtls.NgayChuyen,GhiChu=dtls.NoiDung,"
                         + " NoiDung=case when dt.Name_NhomDon != '' then dt.Name_NhomDon else dt.VanDeKhac end,"
-                        + " GiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or ktxmct.NgayKTXM>=dtls.NgayChuyen))then 'true'"
-                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and bcct.NgayBC>=dtls.NgayChuyen)then 'true' else 'false' end,"
-                        + " NgayGiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or ktxmct.NgayKTXM>=dtls.NgayChuyen))then (select top 1 ktxmct.NgayKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or ktxmct.NgayKTXM>=dtls.NgayChuyen))"
-                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and bcct.NgayBC>=dtls.NgayChuyen)then (select top 1 bcct.NgayBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and bcct.NgayBC>=dtls.NgayChuyen) else null end,"
+                        + " GiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or cast(ktxmct.NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))then 'true'"
+                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))))then 'true' else 'false' end,"
+                        + " NgayGiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or cast(ktxmct.NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 ktxmct.NgayKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or cast(ktxmct.NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))"
+                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))))then (select top 1 bcct.NgayBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))) else null end,"
                         + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
                         + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
                         + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5";
-            switch (TenTo)
+            switch (KyHieuTo)
             {
+                case "ToGD":
+                    sql += " and ID_NoiChuyen=1";
+                    break;
                 case "ToTB":
                     sql += " and ID_NoiChuyen=2";
                     break;
@@ -1782,21 +1789,24 @@ namespace KTKS_DonKH.DAL.DonTu
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getDS_ChuyenKTXM(string TenTo, string SoCongVan)
+        public DataTable getDS_ChuyenKTXM(string KyHieuTo, string SoCongVan)
         {
             DataTable dt = new DataTable();
             string sql = "select MaDon=case when (select COUNT(MaDon) from DonTu_ChiTiet where MaDon=dt.MaDon)=1 then convert(char(8),dtct.MaDon) else convert(char(8),dtct.MaDon)+'.'+convert(varchar(3),dtct.STT) end,"
                         + " dt.SoCongVan,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,dtls.NgayChuyen,GhiChu=dtls.NoiDung,"
                         + " NoiDung=case when dt.Name_NhomDon != '' then dt.Name_NhomDon else dt.VanDeKhac end,"
-                        + " GiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or ktxmct.NgayKTXM>=dtls.NgayChuyen))then 'true'"
-                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and bcct.NgayBC>=dtls.NgayChuyen)then 'true' else 'false' end,"
-                        + " NgayGiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or ktxmct.NgayKTXM>=dtls.NgayChuyen))then (select top 1 ktxmct.NgayKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or ktxmct.NgayKTXM>=dtls.NgayChuyen))"
-                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and bcct.NgayBC>=dtls.NgayChuyen)then (select top 1 bcct.NgayBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and bcct.NgayBC>=dtls.NgayChuyen) else null end,"
+                        + " GiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or cast(ktxmct.NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))then 'true'"
+                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))))then 'true' else 'false' end,"
+                        + " NgayGiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or cast(ktxmct.NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 ktxmct.NgayKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or cast(ktxmct.NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))"
+                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))))then (select top 1 bcct.NgayBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))) else null end,"
                         + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
                         + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
                         + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5";
-            switch (TenTo)
+            switch (KyHieuTo)
             {
+                case "ToGD":
+                    sql += " and ID_NoiChuyen=1";
+                    break;
                 case "ToTB":
                     sql += " and ID_NoiChuyen=2";
                     break;

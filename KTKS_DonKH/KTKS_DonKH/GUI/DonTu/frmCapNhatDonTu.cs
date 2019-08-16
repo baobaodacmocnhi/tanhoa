@@ -625,12 +625,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     DataTable dt = new DataTable();
 
-                    if (CTaiKhoan.ToTB == true)
-                        dt = _cTaiKhoan.GetDS_KTXM("TKH");
-                    else if (CTaiKhoan.ToTP == true)
-                        dt = _cTaiKhoan.GetDS_KTXM("TXL");
-                    else if (CTaiKhoan.ToBC == true)
-                        dt = _cTaiKhoan.GetDS_KTXM("TBC");
+                        dt = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
                     chkcmbNoiNhanKTXM.Properties.DataSource = dt;
                     chkcmbNoiNhanKTXM.Properties.ValueMember = "MaU";
                     chkcmbNoiNhanKTXM.Properties.DisplayMember = "HoTen";

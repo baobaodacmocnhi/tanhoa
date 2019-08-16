@@ -116,7 +116,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             dr["VeViec"] = dgvDSThu["VeViec", i].Value.ToString();
                             dr["Lan"] = dgvDSThu["Lan", i].Value.ToString();
                             dr["Luuy"] = dgvDSThu["Luuy", i].Value.ToString();
-                            dr["NoiNhan"] = dgvDSThu["NoiNhan", i].Value.ToString();
+                            dr["NoiNhan"] = dgvDSThu["NoiNhan", i].Value.ToString() + "(" + dgvDSThu["IDCT", i].Value.ToString() + ")";
 
                             dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 

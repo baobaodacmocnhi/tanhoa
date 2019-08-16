@@ -66,7 +66,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             _flagFirst = true;
 
             DataTable dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_KTXM("TXL");
+            dt = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
             dt.TableName = "1";//Kiểm Tra Xác Minh
             _dsNoiChuyen.Tables.Add(dt);
             ///

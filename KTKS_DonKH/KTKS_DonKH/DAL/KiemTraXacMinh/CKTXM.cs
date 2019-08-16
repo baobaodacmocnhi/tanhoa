@@ -636,6 +636,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             var query = from itemCTKTXM in db.KTXM_ChiTiets
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                         where itemCTKTXM.DanhBo == DanhBo
+                        orderby itemCTKTXM.CreateDate descending
                         select new
                         {
                             MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? itemCTKTXM.KTXM.MaDonMoi.Value.ToString() : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT

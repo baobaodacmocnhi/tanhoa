@@ -234,9 +234,12 @@ namespace KTKS_DonKH.GUI.DonTu
 
         public void Clear()
         {
-            cmbPhongBanDoi.SelectedIndex = -1;
-            txtSoCongVan.Text = "";
-            txtTongDB.Text = "";
+            if (chkGiuSoCongVan.Checked == false)
+            {
+                cmbPhongBanDoi.SelectedIndex = -1;
+                txtSoCongVan.Text = "";
+                txtTongDB.Text = "1";
+            }
             txtMaDon.Text = "";
             lbTruyThu.Text = "";
             txtNguoiLap.Text = "";
