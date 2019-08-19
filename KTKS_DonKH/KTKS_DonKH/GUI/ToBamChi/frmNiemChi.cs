@@ -31,7 +31,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             dgvNiemChi_Giao.AutoGenerateColumns = false;
             dgvNiemChiTong_Giao.AutoGenerateColumns = false;
 
-            cmbNhanVien_Giao.DataSource = _cTaiKhoan.GetDS_KTXM("TBC");
+            cmbNhanVien_Giao.DataSource = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
             cmbNhanVien_Giao.DisplayMember = "HoTen";
             cmbNhanVien_Giao.ValueMember = "MaU";
 

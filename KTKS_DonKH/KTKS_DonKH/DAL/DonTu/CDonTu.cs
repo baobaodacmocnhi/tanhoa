@@ -202,10 +202,16 @@ namespace KTKS_DonKH.DAL.DonTu
 
         }
 
-        public DataSet getDS_Phong_GridControl(int MaDon, int MaPhong)
+        public DataSet getDS_Phong_GridControl(int MaDon, bool KiemTra)
+        {
+            List<LinQ.DonTu> lst = db.DonTus.Where(item => item.MaDon == MaDon).ToList();
+            return EntityToDataset(lst, KiemTra);
+        }
+
+        public DataSet getDS_Phong_GridControl(int MaDon, int MaPhong, bool KiemTra)
         {
             List<LinQ.DonTu> lst = db.DonTus.Where(item => item.MaDon == MaDon && item.MaPhong == MaPhong).ToList();
-            return EntityToDataset(lst);
+            return EntityToDataset(lst, KiemTra);
         }
 
         //public DataTable getDS(int FromMaDon, int ToMaDon)
@@ -262,10 +268,16 @@ namespace KTKS_DonKH.DAL.DonTu
             return LINQToDataTable(query);
         }
 
-        public DataSet getDSBySoCongVan_GridControl(string SoCongVan, int MaPhong)
+        public DataSet getDSBySoCongVan_GridControl(string SoCongVan, bool KiemTra)
+        {
+            List<LinQ.DonTu> lst = db.DonTus.Where(item => item.SoCongVan.Contains(SoCongVan)).ToList();
+            return EntityToDataset(lst, KiemTra);
+        }
+
+        public DataSet getDSBySoCongVan_GridControl(string SoCongVan, int MaPhong, bool KiemTra)
         {
             List<LinQ.DonTu> lst = db.DonTus.Where(item => item.SoCongVan.Contains(SoCongVan) && item.MaPhong == MaPhong).ToList();
-            return EntityToDataset(lst);
+            return EntityToDataset(lst, KiemTra);
         }
 
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -339,7 +351,25 @@ namespace KTKS_DonKH.DAL.DonTu
 
         }
 
-        public DataSet getDS_GridControl(string Loai, DateTime FromCreateDate, DateTime ToCreateDate, int MaPhong)
+        public DataSet getDS_GridControl(string Loai, DateTime FromCreateDate, DateTime ToCreateDate, bool KiemTra)
+        {
+            List<LinQ.DonTu> lst = new List<LinQ.DonTu>();
+            switch (Loai)
+            {
+                case "Quầy":
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.VanPhong == false).ToList();
+                    break;
+                case "Văn Phòng":
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.VanPhong == true).ToList();
+                    break;
+                default:
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate).ToList();
+                    break;
+            }
+            return EntityToDataset(lst, KiemTra);
+        }
+
+        public DataSet getDS_GridControl(string Loai, DateTime FromCreateDate, DateTime ToCreateDate, int MaPhong, bool KiemTra)
         {
             List<LinQ.DonTu> lst = new List<LinQ.DonTu>();
             switch (Loai)
@@ -354,10 +384,10 @@ namespace KTKS_DonKH.DAL.DonTu
                     lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong).ToList();
                     break;
             }
-            return EntityToDataset(lst);
+            return EntityToDataset(lst, KiemTra);
         }
 
-        public DataSet EntityToDataset(List<LinQ.DonTu> lst)
+        public DataSet EntityToDataset(List<LinQ.DonTu> lst,bool KiemTra)
         {
             DataTable dtDonTu = new DataTable();
             dtDonTu.Columns.Add("MaDon", typeof(string));
@@ -368,7 +398,7 @@ namespace KTKS_DonKH.DAL.DonTu
             dtDonTu.Columns.Add("DiaChi", typeof(string));
             dtDonTu.Columns.Add("NoiDung", typeof(string));
             dtDonTu.Columns.Add("CreateBy", typeof(string));
-            dtDonTu.Columns.Add("HoanThanh", typeof(bool));
+            dtDonTu.Columns.Add("TinhTrang", typeof(string));
             dtDonTu.TableName = "DonTu";
 
             DataTable dtDonTuChiTiet = new DataTable();
@@ -376,7 +406,7 @@ namespace KTKS_DonKH.DAL.DonTu
             dtDonTuChiTiet.Columns.Add("DanhBo", typeof(string));
             dtDonTuChiTiet.Columns.Add("HoTen", typeof(string));
             dtDonTuChiTiet.Columns.Add("DiaChi", typeof(string));
-            dtDonTuChiTiet.Columns.Add("HoanThanh", typeof(bool));
+            dtDonTuChiTiet.Columns.Add("TinhTrang", typeof(string));
             dtDonTuChiTiet.TableName = "DonTuChiTiet";
 
             foreach (LinQ.DonTu item in lst)
@@ -392,7 +422,8 @@ namespace KTKS_DonKH.DAL.DonTu
                         dr["DanhBo"] = item.DonTu_ChiTiets.SingleOrDefault().DanhBo;
                         dr["HoTen"] = item.DonTu_ChiTiets.SingleOrDefault().HoTen;
                         dr["DiaChi"] = item.DonTu_ChiTiets.SingleOrDefault().DiaChi;
-                        dr["HoanThanh"] = checkExist_HoanThanh(item.MaDon, 1);
+                        if(KiemTra==true)
+                        dr["TinhTrang"] = getTinhTrangDon(item.MaDon, 1);
                     }
                     else
                     {
@@ -406,13 +437,15 @@ namespace KTKS_DonKH.DAL.DonTu
                             drCT["DanhBo"] = itemCT.DanhBo;
                             drCT["HoTen"] = itemCT.HoTen;
                             drCT["DiaChi"] = itemCT.DiaChi;
-                            drCT["HoanThanh"] = checkExist_HoanThanh(item.MaDon, itemCT.STT.Value);
+                            if (KiemTra == true)
+                            drCT["TinhTrang"] = getTinhTrangDon(item.MaDon, itemCT.STT.Value);
                             dtDonTuChiTiet.Rows.Add(drCT);
                         }
-                        if (item.DonTu_ChiTiets.Count == int.Parse(dtDonTuChiTiet.Compute("count(DanhBo)", "MaDon=" + item.MaDon + " and HoanThanh='true'").ToString()))
-                            dr["HoanThanh"] = true;
+                        if (KiemTra == true)
+                        if (item.DonTu_ChiTiets.Count == int.Parse(dtDonTuChiTiet.Compute("count(DanhBo)", "MaDon=" + item.MaDon + " and TinhTrang like '%Hoàn Thành%'").ToString()))
+                            dr["TinhTrang"] = "Hoàn Thành";
                         else
-                            dr["HoanThanh"] = false;
+                            dr["TinhTrang"] = "Tồn";
                     }
                     dr["NoiDung"] = item.Name_NhomDon;
                     dr["CreateBy"] = db.Users.SingleOrDefault(itemR => itemR.MaU == item.CreateBy).HoTen;
@@ -534,10 +567,16 @@ namespace KTKS_DonKH.DAL.DonTu
             return LINQToDataTable(query);
         }
 
-        public DataSet getDS_ChiTiet_ByDanhBo_GridControl(string DanhBo, int MaPhong)
+        public DataSet getDS_ChiTiet_ByDanhBo_GridControl(string DanhBo, bool KiemTra)
+        {
+            List<LinQ.DonTu> lst = db.DonTus.Where(item => item.DonTu_ChiTiets.Any(itemA => itemA.DanhBo == DanhBo) == true).ToList();
+            return EntityToDataset(lst, KiemTra);
+        }
+
+        public DataSet getDS_ChiTiet_ByDanhBo_GridControl(string DanhBo, int MaPhong, bool KiemTra)
         {
             List<LinQ.DonTu> lst = db.DonTus.Where(item => item.DonTu_ChiTiets.Any(itemA => itemA.DanhBo == DanhBo) == true && item.MaPhong == MaPhong).ToList();
-            return EntityToDataset(lst);
+            return EntityToDataset(lst, KiemTra);
         }
 
         public DataTable getDS_ThongKeNhomDon(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -827,21 +866,41 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public bool checkExist_HoanThanh(int MaDon, int STT)
+        public string getTinhTrangDon(int MaDon, int STT)
         {
-            List<DonTu_LichSu> lst = db.DonTu_LichSus.Where(item => item.MaDon == MaDon && item.STT == STT).ToList();
-            bool flag = false;
-            for (int i = 0; i < lst.Count; i++)
+            //7 - cắt hủy
+            //8 - truy thu
+            List<DonTu_LichSu> lst = db.DonTu_LichSus.Where(item => item.MaDon == MaDon && item.STT == STT).OrderBy(item => item.NgayChuyen).ThenBy(item => item.ID).ToList();
+            string flag = "Tồn";
+            for (int i = 0; i < lst.Count-1; i++)
             {
                 if (lst[i].ID_NoiNhan != null && db.NoiChuyens.SingleOrDefault(item => item.ID == lst[i].ID_NoiNhan).KiemTra == true)
                 {
-                    flag = false;
-                    for (int j = i + 1; j < lst.Count - 1; j++)
+                    flag = "Tồn";
+                    for (int j = i + 1; j < lst.Count; j++)
                     {
-                        if (lst[j].ID_NoiChuyen == lst[i].ID_NoiNhan && lst[j].TableName != null)
+                        if (lst[j].ID_NoiChuyen == 7 && lst[j].ID_NoiChuyen == lst[i].ID_NoiNhan && lst[j].TableName != null)
                         {
-                            flag = true;
+                            string result = ExecuteQuery_ReturnOneValue("select dbo.fnCheckTinhTrangCatHuy_Ton('" + lst[j] .TableName+ "'," + lst[j].IDCT + ")").ToString();
+                            if (result == "")
+                                flag = "Hoàn Thành";
+                            else
+                                flag = "Hoàn Thành (KH)";
                         }
+                        else
+                            if (lst[j].ID_NoiChuyen == 8 && lst[j].ID_NoiChuyen == lst[i].ID_NoiNhan && lst[j].TableName != null)
+                            {
+                                string result = ExecuteQuery_ReturnOneValue("select dbo.fnCheckTinhTrangTruyThu_Ton_IDCT(" + lst[j].IDCT + ")").ToString();
+                                if (result == "")
+                                    flag = "Hoàn Thành";
+                                else
+                                    flag = "Hoàn Thành (KH)";
+                            }
+                            else
+                                if (lst[j].ID_NoiChuyen == lst[i].ID_NoiNhan && lst[j].TableName != null)
+                                {
+                                    flag = "Hoàn Thành";
+                                }
                     }
                 }
             }
@@ -1763,9 +1822,9 @@ namespace KTKS_DonKH.DAL.DonTu
                         + " dt.SoCongVan,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,dtls.NgayChuyen,GhiChu=dtls.NoiDung,"
                         + " NoiDung=case when dt.Name_NhomDon != '' then dt.Name_NhomDon else dt.VanDeKhac end,"
                         + " GiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or cast(ktxmct.NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))then 'true'"
-                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))))then 'true' else 'false' end,"
+                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))))then 'true' else 'false' end,"
                         + " NgayGiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or cast(ktxmct.NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 ktxmct.NgayKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or cast(ktxmct.NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))"
-                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))))then (select top 1 bcct.NgayBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))) else null end,"
+                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 bcct.NgayBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))) else null end,"
                         + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
                         + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
                         + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5";
@@ -1796,9 +1855,9 @@ namespace KTKS_DonKH.DAL.DonTu
                         + " dt.SoCongVan,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,dtls.NgayChuyen,GhiChu=dtls.NoiDung,"
                         + " NoiDung=case when dt.Name_NhomDon != '' then dt.Name_NhomDon else dt.VanDeKhac end,"
                         + " GiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or cast(ktxmct.NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))then 'true'"
-                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))))then 'true' else 'false' end,"
+                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))then 'true' else 'false' end,"
                         + " NgayGiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or cast(ktxmct.NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 ktxmct.NgayKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or cast(ktxmct.NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))"
-                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))))then (select top 1 bcct.NgayBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))) else null end,"
+                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 bcct.NgayBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))) else null end,"
                         + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
                         + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
                         + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5";

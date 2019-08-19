@@ -449,7 +449,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     DataTable dtExport = new DataTable();
                     dtExport.Columns.Add("DanhBo", typeof(String));
                     dtExport.Columns.Add("ID", typeof(String));
+                    dtExport.Columns.Add("LyDo", typeof(String));
                     dtExport.Columns.Add("NoiDungXuLy", typeof(String));
+                    
                     CExcel fileExcel = new CExcel(dialog.FileName);
                     DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                     foreach (DataRow item in dtExcel.Rows)
@@ -470,6 +472,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 {
                                     if (itemTemp["ID"].ToString() != "")
                                         dr["ID"] += " ; " + itemTemp["ID"].ToString().Insert(itemTemp["ID"].ToString().Length - 2, "-");
+                                }
+
+                                if (dr["LyDo"].ToString() == "")
+                                {
+                                    if (itemTemp["LyDo"].ToString() != "")
+                                        dr["LyDo"] = itemTemp["LyDo"].ToString().Insert(itemTemp["LyDo"].ToString().Length - 2, "-");
+                                }
+                                else
+                                {
+                                    if (itemTemp["LyDo"].ToString() != "")
+                                        dr["LyDo"] += " ; " + itemTemp["LyDo"].ToString().Insert(itemTemp["LyDo"].ToString().Length - 2, "-");
                                 }
 
                                 if (dr["NoiDungXuLy"].ToString() == "")
@@ -532,7 +545,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     DataTable dtExport = new DataTable();
                     dtExport.Columns.Add("DanhBo", typeof(String));
                     dtExport.Columns.Add("ID", typeof(String));
+                    dtExport.Columns.Add("LyDo", typeof(String));
                     dtExport.Columns.Add("NoiDungXuLy", typeof(String));
+
                     CExcel fileExcel = new CExcel(dialog.FileName);
                     DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                     foreach (DataRow item in dtExcel.Rows)
@@ -553,6 +568,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 {
                                     if (itemTemp["ID"].ToString() != "")
                                         dr["ID"] += " ; " + itemTemp["ID"].ToString().Insert(itemTemp["ID"].ToString().Length - 2, "-");
+                                }
+
+                                if (dr["LyDo"].ToString() == "")
+                                {
+                                    if (itemTemp["LyDo"].ToString() != "")
+                                        dr["LyDo"] = itemTemp["LyDo"].ToString().Insert(itemTemp["LyDo"].ToString().Length - 2, "-");
+                                }
+                                else
+                                {
+                                    if (itemTemp["LyDo"].ToString() != "")
+                                        dr["LyDo"] += " ; " + itemTemp["LyDo"].ToString().Insert(itemTemp["LyDo"].ToString().Length - 2, "-");
                                 }
 
                                 if (dr["NoiDungXuLy"].ToString() == "")
@@ -615,12 +641,16 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             cl2.ColumnWidth = 30;
 
             Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C1", "C1");
-            cl3.Value2 = "Xử Lý";
-            cl3.ColumnWidth = 30;
+            cl3.Value2 = "Lý Do";
+            cl3.ColumnWidth = 50;
+
+            Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D1", "D1");
+            cl4.Value2 = "Xử Lý";
+            cl4.ColumnWidth = 30;
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 13];
+            object[,] arr = new object[dt.Rows.Count, 4];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -629,7 +659,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 arr[i, 0] = dr["DanhBo"].ToString();
                 arr[i, 1] = dr["ID"].ToString();
-                arr[i, 2] = dr["NoiDungXuLy"].ToString();
+                arr[i, 2] = dr["LyDo"].ToString();
+                arr[i, 3] = dr["NoiDungXuLy"].ToString();
             }
 
             //Thiết lập vùng điền dữ liệu
@@ -637,7 +668,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             int columnStart = 1;
 
             int rowEnd = rowStart + dt.Rows.Count - 1;
-            int columnEnd = 13;
+            int columnEnd = 4;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];

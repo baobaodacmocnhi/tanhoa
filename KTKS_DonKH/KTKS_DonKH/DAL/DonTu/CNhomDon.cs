@@ -80,11 +80,11 @@ namespace KTKS_DonKH.DAL.DonTu
             switch (Loai)
             {
                 case "DieuChinh":
-                    return LINQToDataTable(db.NhomDons.Where(item => item.DieuChinh == true).ToList());
+                    return LINQToDataTable(db.NhomDons.Where(item => item.DieuChinh == true).OrderBy(item=>item.STT).ToList());
                 case "KhieuNai":
-                    return LINQToDataTable(db.NhomDons.Where(item => item.KhieuNai == true).ToList());
+                    return LINQToDataTable(db.NhomDons.Where(item => item.KhieuNai == true).OrderBy(item => item.STT).ToList());
                 case "DHN":
-                    return LINQToDataTable(db.NhomDons.Where(item => item.DHN == true).ToList());
+                    return LINQToDataTable(db.NhomDons.Where(item => item.DHN == true).OrderBy(item => item.STT).ToList());
                 default:
                     return null;
             }

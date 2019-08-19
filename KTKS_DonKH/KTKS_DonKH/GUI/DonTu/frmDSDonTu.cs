@@ -32,16 +32,16 @@ namespace KTKS_DonKH.GUI.DonTu
 
             if (CTaiKhoan.Admin)
             {
-                lbPhong.Visible = true;
-                cmbPhong.Visible = true;
-                DataTable dt = _cPhongBanDoi.getDS_ConfigChuongTrinh();
-                DataRow dr = dt.NewRow();
-                dr["ID"] = 0;
-                dr["Name"] = "Tất Cả";
-                dt.Rows.InsertAt(dr, 0);
-                cmbPhong.DataSource = dt;
-                cmbPhong.ValueMember = "ID";
-                cmbPhong.DisplayMember = "Name";
+                //lbPhong.Visible = true;
+                //cmbPhong.Visible = true;
+                //DataTable dt = _cPhongBanDoi.getDS_ConfigChuongTrinh();
+                //DataRow dr = dt.NewRow();
+                //dr["ID"] = 0;
+                //dr["Name"] = "Tất Cả";
+                //dt.Rows.InsertAt(dr, 0);
+                //cmbPhong.DataSource = dt;
+                //cmbPhong.ValueMember = "ID";
+                //cmbPhong.DisplayMember = "Name";
             }
             else
             {
@@ -86,34 +86,34 @@ namespace KTKS_DonKH.GUI.DonTu
             if (CTaiKhoan.Admin == true)
             {
                 //tất cả
-                if (cmbPhong.SelectedIndex == 0)
-                    switch (cmbTimTheo.SelectedItem.ToString())
-                    {
-                        case "Mã Đơn":
-                            //if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                            //    dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
-                            //else
-                            if (txtNoiDungTimKiem.Text.Trim() != "")
-                                dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()));
-                            break;
-                        case "Danh Bộ":
-                            if (txtNoiDungTimKiem.Text.Trim() != "")
-                                dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
-                            break;
-                        case "Số Công Văn":
-                            if (txtNoiDungTimKiem.Text.Trim() != "")
-                                dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
-                            break;
-                        case "Ngày":
-                            dgvDSDonTu.DataSource = _cDonTu.getDS(dateTu.Value, dateDen.Value);
-                            //gridControl1.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
-                            break;
-                        default:
-                            break;
-                    }
-                else
-                    //chia phòng
-                    if (cmbPhong.SelectedIndex > 0)
+                //if (cmbPhong.SelectedIndex == 0)
+                //    switch (cmbTimTheo.SelectedItem.ToString())
+                //    {
+                //        case "Mã Đơn":
+                //            //if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                //            //    dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                //            //else
+                //            if (txtNoiDungTimKiem.Text.Trim() != "")
+                //                dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()));
+                //            break;
+                //        case "Danh Bộ":
+                //            if (txtNoiDungTimKiem.Text.Trim() != "")
+                //                dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
+                //            break;
+                //        case "Số Công Văn":
+                //            if (txtNoiDungTimKiem.Text.Trim() != "")
+                //                dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
+                //            break;
+                //        case "Ngày":
+                //            dgvDSDonTu.DataSource = _cDonTu.getDS(dateTu.Value, dateDen.Value);
+                //            //gridControl1.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
+                //            break;
+                //        default:
+                //            break;
+                //    }
+                //else
+                //    //chia phòng
+                //    if (cmbPhong.SelectedIndex > 0)
                         switch (cmbTimTheo.SelectedItem.ToString())
                         {
                             case "Mã Đơn":
@@ -122,21 +122,21 @@ namespace KTKS_DonKH.GUI.DonTu
                                 //else
                                 if (txtNoiDungTimKiem.Text.Trim() != "")
                                     //dgvDSDonTu.DataSource = _cDonTu.getDS_Phong(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(cmbPhong.SelectedValue.ToString()));
-                                    dgvDSDonTu.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(cmbPhong.SelectedValue.ToString())).Tables["DonTu"];
+                                    gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim()),chkKiemTraTon.Checked).Tables["DonTu"];
                                 break;
                             case "Danh Bộ":
                                 if (txtNoiDungTimKiem.Text.Trim() != "")
                                     //dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), int.Parse(cmbPhong.SelectedValue.ToString()));
-                                    dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), int.Parse(cmbPhong.SelectedValue.ToString())).Tables["DonTu"];
+                                    gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), chkKiemTraTon.Checked).Tables["DonTu"];
                                 break;
                             case "Số Công Văn":
                                 if (txtNoiDungTimKiem.Text.Trim() != "")
                                     //dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper(), int.Parse(cmbPhong.SelectedValue.ToString()));
-                                    dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper(), int.Parse(cmbPhong.SelectedValue.ToString())).Tables["DonTu"];
+                                    gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper(), chkKiemTraTon.Checked).Tables["DonTu"];
                                 break;
                             case "Ngày":
                                 //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbPhong.SelectedValue.ToString()));
-                                gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbPhong.SelectedValue.ToString())).Tables["DonTu"];
+                                gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value, chkKiemTraTon.Checked).Tables["DonTu"];
                                 break;
                             default:
                                 break;
@@ -152,21 +152,21 @@ namespace KTKS_DonKH.GUI.DonTu
                         //else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                             //dgvDSDonTu.DataSource = _cDonTu.getDS_Phong(int.Parse(txtNoiDungTimKiem.Text.Trim()), CTaiKhoan.MaPhong);
-                            dgvDSDonTu.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim()), CTaiKhoan.MaPhong).Tables["DonTu"];
+                            gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim()), chkKiemTraTon.Checked).Tables["DonTu"];
                         break;
                     case "Danh Bộ":
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                             //dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), CTaiKhoan.MaPhong);
-                            dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), CTaiKhoan.MaPhong).Tables["DonTu"];
+                            gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), chkKiemTraTon.Checked).Tables["DonTu"];
                         break;
                     case "Số Công Văn":
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                             //dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper(), CTaiKhoan.MaPhong);
-                            dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper(), CTaiKhoan.MaPhong).Tables["DonTu"];
+                            gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper(), chkKiemTraTon.Checked).Tables["DonTu"];
                         break;
                     case "Ngày":
                         //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, CTaiKhoan.MaPhong);
-                        gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value, CTaiKhoan.MaPhong).Tables["DonTu"];
+                        gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value, chkKiemTraTon.Checked).Tables["DonTu"];
                         break;
                     default:
                         break;
