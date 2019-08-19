@@ -312,6 +312,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["Loai"] = "TG";
                     if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))
                         dr["LenhHuy"] = true;
+                    else
+                        if (_cTTCH.CheckExist_CT(item.Cells["SoHoaDon_TT"].Value.ToString()) == true)
+                            dr["ToTrinhCatHuy"] = true;
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }
             rptDSTamThuChuyenKhoan_HanhThu rpt = new rptDSTamThuChuyenKhoan_HanhThu();

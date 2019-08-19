@@ -425,7 +425,7 @@
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon_Chon.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHoaDon_Chon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHoaDon_Chon.Size = new System.Drawing.Size(1211, 200);
+            this.dgvHoaDon_Chon.Size = new System.Drawing.Size(1022, 200);
             this.dgvHoaDon_Chon.TabIndex = 74;
             // 
             // dataGridViewTextBoxColumn1
