@@ -266,7 +266,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(149, 10);
+            this.btnXem.Location = new System.Drawing.Point(150, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 32;
@@ -277,7 +277,7 @@
             // cmbTo
             // 
             this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Location = new System.Drawing.Point(83, 12);
+            this.cmbTo.Location = new System.Drawing.Point(84, 12);
             this.cmbTo.Name = "cmbTo";
             this.cmbTo.Size = new System.Drawing.Size(60, 21);
             this.cmbTo.TabIndex = 44;
@@ -287,7 +287,7 @@
             // 
             this.lbTo.AutoSize = true;
             this.lbTo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTo.Location = new System.Drawing.Point(45, 14);
+            this.lbTo.Location = new System.Drawing.Point(46, 14);
             this.lbTo.Name = "lbTo";
             this.lbTo.Size = new System.Drawing.Size(32, 19);
             this.lbTo.TabIndex = 45;
