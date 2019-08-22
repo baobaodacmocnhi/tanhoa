@@ -9487,6 +9487,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _An;
 		
+		private bool _KhongKiemTra;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -9507,6 +9509,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNoiDungChanged();
     partial void OnAnChanging(bool value);
     partial void OnAnChanged();
+    partial void OnKhongKiemTraChanging(bool value);
+    partial void OnKhongKiemTraChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -9598,6 +9602,26 @@ namespace KTKS_DonKH.LinQ
 					this._An = value;
 					this.SendPropertyChanged("An");
 					this.OnAnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KhongKiemTra", DbType="Bit NOT NULL")]
+		public bool KhongKiemTra
+		{
+			get
+			{
+				return this._KhongKiemTra;
+			}
+			set
+			{
+				if ((this._KhongKiemTra != value))
+				{
+					this.OnKhongKiemTraChanging(value);
+					this.SendPropertyChanging();
+					this._KhongKiemTra = value;
+					this.SendPropertyChanged("KhongKiemTra");
+					this.OnKhongKiemTraChanged();
 				}
 			}
 		}
@@ -27127,6 +27151,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _MaDon;
 		
+		private string _TinhTrang;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -27175,6 +27201,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNguoiBaoChanged();
     partial void OnMaDonChanging(System.Nullable<int> value);
     partial void OnMaDonChanged();
+    partial void OnTinhTrangChanging(string value);
+    partial void OnTinhTrangChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -27531,6 +27559,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDon = value;
 					this.SendPropertyChanged("MaDon");
 					this.OnMaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinhTrang", DbType="NVarChar(100)")]
+		public string TinhTrang
+		{
+			get
+			{
+				return this._TinhTrang;
+			}
+			set
+			{
+				if ((this._TinhTrang != value))
+				{
+					this.OnTinhTrangChanging(value);
+					this.SendPropertyChanging();
+					this._TinhTrang = value;
+					this.SendPropertyChanged("TinhTrang");
+					this.OnTinhTrangChanged();
 				}
 			}
 		}
@@ -33136,6 +33184,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _KhongLienHe;
 		
+		private bool _LapTruyThu;
+		
+		private System.Nullable<int> _DinhMuc_KhongDangKy;
+		
 		private System.Nullable<decimal> _MaKTXM;
 		
 		private System.Nullable<int> _STT;
@@ -33264,6 +33316,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnGhiChuNoiDungBaoThayChanged();
     partial void OnKhongLienHeChanging(bool value);
     partial void OnKhongLienHeChanged();
+    partial void OnLapTruyThuChanging(bool value);
+    partial void OnLapTruyThuChanged();
+    partial void OnDinhMuc_KhongDangKyChanging(System.Nullable<int> value);
+    partial void OnDinhMuc_KhongDangKyChanged();
     partial void OnMaKTXMChanging(System.Nullable<decimal> value);
     partial void OnMaKTXMChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
@@ -34234,6 +34290,46 @@ namespace KTKS_DonKH.LinQ
 					this._KhongLienHe = value;
 					this.SendPropertyChanged("KhongLienHe");
 					this.OnKhongLienHeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LapTruyThu", DbType="Bit NOT NULL")]
+		public bool LapTruyThu
+		{
+			get
+			{
+				return this._LapTruyThu;
+			}
+			set
+			{
+				if ((this._LapTruyThu != value))
+				{
+					this.OnLapTruyThuChanging(value);
+					this.SendPropertyChanging();
+					this._LapTruyThu = value;
+					this.SendPropertyChanged("LapTruyThu");
+					this.OnLapTruyThuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc_KhongDangKy", DbType="Int")]
+		public System.Nullable<int> DinhMuc_KhongDangKy
+		{
+			get
+			{
+				return this._DinhMuc_KhongDangKy;
+			}
+			set
+			{
+				if ((this._DinhMuc_KhongDangKy != value))
+				{
+					this.OnDinhMuc_KhongDangKyChanging(value);
+					this.SendPropertyChanging();
+					this._DinhMuc_KhongDangKy = value;
+					this.SendPropertyChanged("DinhMuc_KhongDangKy");
+					this.OnDinhMuc_KhongDangKyChanged();
 				}
 			}
 		}

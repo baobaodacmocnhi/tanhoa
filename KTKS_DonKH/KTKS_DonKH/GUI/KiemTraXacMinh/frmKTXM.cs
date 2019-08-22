@@ -142,6 +142,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDinhMuc.Text = ctktxm.DinhMuc;
             if (ctktxm.DinhMucMoi != null)
                 txtDinhMucMoi.Text = ctktxm.DinhMucMoi.Value.ToString();
+            if (ctktxm.DinhMuc_KhongDangKy!= null)
+                txtDinhMuc_KhongDangKy.Text = ctktxm.DinhMuc_KhongDangKy.Value.ToString();
             ///
             chkNgayKTXMTruocNgayGiao.Checked = ctktxm.NgayKTXM_Truoc_NgayGiao;
             dateKTXM.Value = ctktxm.NgayKTXM.Value;
@@ -200,6 +202,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
             txtDinhMucMoi.Text = "";
+            txtDinhMuc_KhongDangKy.Text = "";
             ///
             chkNgayKTXMTruocNgayGiao.Checked = false;
             //dateKTXM.Value = DateTime.Now;
@@ -247,6 +250,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
             txtDinhMucMoi.Text = "";
+            txtDinhMuc_KhongDangKy.Text = "";
             ///
             //dateKTXM.Value = DateTime.Now;
             //cmbTinhTrangKiemTra.SelectedIndex = -1;
@@ -512,6 +516,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
                     if (txtDinhMucMoi.Text.Trim() != "")
                         ctktxm.DinhMucMoi = int.Parse(txtDinhMucMoi.Text.Trim());
+                    if (txtDinhMuc_KhongDangKy.Text.Trim() != "")
+                        ctktxm.DinhMuc_KhongDangKy = int.Parse(txtDinhMuc_KhongDangKy.Text.Trim());
                     if (_hoadon != null)
                     {
                         ctktxm.Dot = _hoadon.DOT.ToString();
@@ -635,6 +641,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
                         if (txtDinhMucMoi.Text.Trim() != "")
                             _ctktxm.DinhMucMoi = int.Parse(txtDinhMucMoi.Text.Trim());
+                        if (txtDinhMuc_KhongDangKy.Text.Trim() != "")
+                            _ctktxm.DinhMuc_KhongDangKy = int.Parse(txtDinhMuc_KhongDangKy.Text.Trim());
                         if (_hoadon != null)
                         {
                             _ctktxm.Dot = _hoadon.DOT.ToString();
