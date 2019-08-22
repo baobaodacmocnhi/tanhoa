@@ -19,6 +19,7 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
     {
         string _mnu = "mnuLichThuTien";
         CLichThuTien _cLTT = new CLichThuTien();
+        CLichDocSo _cLDS = new CLichDocSo();
         Lich_ThuTien _thutien = null;
 
         DateTimePicker _dtp = new DateTimePicker();
@@ -38,17 +39,11 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
         void dtp_TextChanged(object sender, EventArgs e)
         {
             dgvDot.CurrentCell.Value = _dtp.Text;
-            if (dgvDot.Columns[dgvDot.CurrentCell.ColumnIndex].Name == "NgayChuyenListing")
+            if (dgvDot.Columns[dgvDot.CurrentCell.ColumnIndex].Name == "NgayThuTien_From")
             {
-                DateTime NgayChuyenListing = _dtp.Value,
-                    NgayThuTien_From = NgayChuyenListing.AddDays(1),
+                DateTime NgayThuTien_From = _dtp.Value,
                     NgayThuTien_To = NgayThuTien_From.AddDays(1);
                 //edit row 0
-                if (NgayChuyenListing.DayOfWeek == DayOfWeek.Saturday)
-                {
-                    NgayThuTien_From = NgayChuyenListing.AddDays(2);
-                    NgayThuTien_To = NgayThuTien_From.AddDays(1);
-                }
                 if (NgayThuTien_From.DayOfWeek == DayOfWeek.Saturday)
                 {
                     NgayThuTien_From = NgayThuTien_From.AddDays(2);
@@ -59,23 +54,15 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                     NgayThuTien_To = NgayThuTien_To.AddDays(2);
                 }
                 int i = dgvDot.CurrentRow.Index;
-                dgvDot["NgayChuyenListing", i].Value = NgayChuyenListing.ToString("dd/MM/yyyy");
                 dgvDot["NgayThuTien_From", i].Value = NgayThuTien_From.ToString("dd/MM/yyyy");
                 dgvDot["NgayThuTien_To", i].Value = NgayThuTien_To.ToString("dd/MM/yyyy");
 
                 //edit row 1++
                 while (i < dgvDot.RowCount - 1)
                 {
-                    DateTime date = DateTime.Parse(dgvDot.Rows[i].Cells["NgayDoc"].Value.ToString());
-                    NgayChuyenListing = date.AddDays(1);
-                    NgayThuTien_From = NgayChuyenListing.AddDays(1);
+                    DateTime date = DateTime.Parse(dgvDot.Rows[i].Cells["NgayThuTien_From"].Value.ToString());
+                    NgayThuTien_From = date.AddDays(1);
                     NgayThuTien_To = NgayThuTien_From.AddDays(1);
-                    if (NgayChuyenListing.DayOfWeek == DayOfWeek.Saturday)
-                    {
-                        NgayChuyenListing = NgayChuyenListing.AddDays(2);
-                        NgayThuTien_From = NgayChuyenListing.AddDays(1);
-                        NgayThuTien_To = NgayThuTien_From.AddDays(1);
-                    }
                     if (NgayThuTien_From.DayOfWeek == DayOfWeek.Saturday)
                     {
                         NgayThuTien_From = NgayThuTien_From.AddDays(2);
@@ -85,7 +72,6 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                     {
                         NgayThuTien_To = NgayThuTien_To.AddDays(2);
                     }
-                    dgvDot["NgayChuyenListing", i + 1].Value = NgayChuyenListing.ToString("dd/MM/yyyy");
                     dgvDot["NgayThuTien_From", i + 1].Value = NgayThuTien_From.ToString("dd/MM/yyyy");
                     dgvDot["NgayThuTien_To", i + 1].Value = NgayThuTien_To.ToString("dd/MM/yyyy");
                     i++;
@@ -198,6 +184,8 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                     foreach (DataGridViewRow item in dgvDot.Rows)
                     {
                         Lich_ThuTien_ChiTiet enCT = _thutien.Lich_ThuTien_ChiTiets.SingleOrDefault(itemA => itemA.IDDot == int.Parse(item.Cells["IDDot"].Value.ToString()));
+                        if (item.Cells["NgayDoc"].Value != null)
+                            enCT.NgayDoc = DateTime.Parse(item.Cells["NgayDoc"].Value.ToString());
                         if (item.Cells["NgayChuyenListing"].Value != null)
                             enCT.NgayChuyenListing = DateTime.Parse(item.Cells["NgayChuyenListing"].Value.ToString());
                         if (item.Cells["NgayThuTien_From"].Value != null)
@@ -233,6 +221,15 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                 {
                     FillEntity(_thutien);
                     dgvDot.DataSource = _thutien.Lich_ThuTien_ChiTiets.ToList();
+                    if (dgvDot["NgayThuTien_From",0].Value == null)
+                    {
+                        Lich_DocSo _docso = _cLDS.get(_thutien.Ky.Value, _thutien.Nam.Value);
+                        foreach (DataGridViewRow item in dgvDot.Rows)
+                        {
+                            item.Cells["NgayDoc"].Value = _docso.Lich_DocSo_ChiTiets[item.Index].NgayDoc;
+                            item.Cells["NgayChuyenListing"].Value = _docso.Lich_DocSo_ChiTiets[item.Index].NgayChuyenListing;
+                        }
+                    }
                 }
             }
             catch
@@ -278,9 +275,10 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                     dr["TuNgay"] = _thutien.TuNgay.Value.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = _thutien.DenNgay.Value.ToString("dd/MM/yyyy");
                     dr["Dot"] = item.Lich_Dot.Name;
+                    dr["NgayDoc"] = item.NgayDoc.Value.Day;
                     dr["NgayChuyenListing"] = item.NgayChuyenListing.Value.Day;
                     if (item.NgayThuTien_From.Value.Day != item.NgayThuTien_To.Value.Day)
-                        dr["NgayDocSoThuTien"] = item.NgayThuTien_From.Value.Day + "-" + item.NgayThuTien_To.Value.ToString("dd/MM/yyyy");
+                        dr["NgayDocSoThuTien"] = item.NgayThuTien_From.Value.Day.ToString("00") + "-" + item.NgayThuTien_To.Value.ToString("dd/MM/yyyy");
                     else
                         dr["NgayDocSoThuTien"] = item.NgayThuTien_From.Value.ToString("dd/MM/yyyy");
                     dr["TB1_From"] = item.Lich_Dot.TB1_From.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");

@@ -33,9 +33,27 @@ namespace TrungTamKhachHang.LinQ
     partial void InsertDienThoai(DienThoai instance);
     partial void UpdateDienThoai(DienThoai instance);
     partial void DeleteDienThoai(DienThoai instance);
-    partial void InsertUser(User instance);
-    partial void UpdateUser(User instance);
-    partial void DeleteUser(User instance);
+    partial void InsertZalo_LichSuTruyVan(Zalo_LichSuTruyVan instance);
+    partial void UpdateZalo_LichSuTruyVan(Zalo_LichSuTruyVan instance);
+    partial void DeleteZalo_LichSuTruyVan(Zalo_LichSuTruyVan instance);
+    partial void InsertKhieuNai(KhieuNai instance);
+    partial void UpdateKhieuNai(KhieuNai instance);
+    partial void DeleteKhieuNai(KhieuNai instance);
+    partial void InsertLich_DocSo(Lich_DocSo instance);
+    partial void UpdateLich_DocSo(Lich_DocSo instance);
+    partial void DeleteLich_DocSo(Lich_DocSo instance);
+    partial void InsertLich_DocSo_ChiTiet(Lich_DocSo_ChiTiet instance);
+    partial void UpdateLich_DocSo_ChiTiet(Lich_DocSo_ChiTiet instance);
+    partial void DeleteLich_DocSo_ChiTiet(Lich_DocSo_ChiTiet instance);
+    partial void InsertLich_Dot(Lich_Dot instance);
+    partial void UpdateLich_Dot(Lich_Dot instance);
+    partial void DeleteLich_Dot(Lich_Dot instance);
+    partial void InsertLich_ThuTien(Lich_ThuTien instance);
+    partial void UpdateLich_ThuTien(Lich_ThuTien instance);
+    partial void DeleteLich_ThuTien(Lich_ThuTien instance);
+    partial void InsertLich_ThuTien_ChiTiet(Lich_ThuTien_ChiTiet instance);
+    partial void UpdateLich_ThuTien_ChiTiet(Lich_ThuTien_ChiTiet instance);
+    partial void DeleteLich_ThuTien_ChiTiet(Lich_ThuTien_ChiTiet instance);
     partial void InsertMenu(Menu instance);
     partial void UpdateMenu(Menu instance);
     partial void DeleteMenu(Menu instance);
@@ -48,24 +66,12 @@ namespace TrungTamKhachHang.LinQ
     partial void InsertPhanQuyenUser(PhanQuyenUser instance);
     partial void UpdatePhanQuyenUser(PhanQuyenUser instance);
     partial void DeletePhanQuyenUser(PhanQuyenUser instance);
-    partial void InsertKhieuNai(KhieuNai instance);
-    partial void UpdateKhieuNai(KhieuNai instance);
-    partial void DeleteKhieuNai(KhieuNai instance);
-    partial void InsertLich_DocSo(Lich_DocSo instance);
-    partial void UpdateLich_DocSo(Lich_DocSo instance);
-    partial void DeleteLich_DocSo(Lich_DocSo instance);
-    partial void InsertLich_ThuTien_ChiTiet(Lich_ThuTien_ChiTiet instance);
-    partial void UpdateLich_ThuTien_ChiTiet(Lich_ThuTien_ChiTiet instance);
-    partial void DeleteLich_ThuTien_ChiTiet(Lich_ThuTien_ChiTiet instance);
-    partial void InsertLich_DocSo_ChiTiet(Lich_DocSo_ChiTiet instance);
-    partial void UpdateLich_DocSo_ChiTiet(Lich_DocSo_ChiTiet instance);
-    partial void DeleteLich_DocSo_ChiTiet(Lich_DocSo_ChiTiet instance);
-    partial void InsertLich_Dot(Lich_Dot instance);
-    partial void UpdateLich_Dot(Lich_Dot instance);
-    partial void DeleteLich_Dot(Lich_Dot instance);
-    partial void InsertLich_ThuTien(Lich_ThuTien instance);
-    partial void UpdateLich_ThuTien(Lich_ThuTien instance);
-    partial void DeleteLich_ThuTien(Lich_ThuTien instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
+    partial void InsertZalo(Zalo instance);
+    partial void UpdateZalo(Zalo instance);
+    partial void DeleteZalo(Zalo instance);
     #endregion
 		
 		public dbTrungTamKhachHangDataContext() : 
@@ -106,11 +112,59 @@ namespace TrungTamKhachHang.LinQ
 			}
 		}
 		
-		public System.Data.Linq.Table<User> Users
+		public System.Data.Linq.Table<Zalo_LichSuTruyVan> Zalo_LichSuTruyVans
 		{
 			get
 			{
-				return this.GetTable<User>();
+				return this.GetTable<Zalo_LichSuTruyVan>();
+			}
+		}
+		
+		public System.Data.Linq.Table<KhieuNai> KhieuNais
+		{
+			get
+			{
+				return this.GetTable<KhieuNai>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Lich_DocSo> Lich_DocSos
+		{
+			get
+			{
+				return this.GetTable<Lich_DocSo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Lich_DocSo_ChiTiet> Lich_DocSo_ChiTiets
+		{
+			get
+			{
+				return this.GetTable<Lich_DocSo_ChiTiet>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Lich_Dot> Lich_Dots
+		{
+			get
+			{
+				return this.GetTable<Lich_Dot>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Lich_ThuTien> Lich_ThuTiens
+		{
+			get
+			{
+				return this.GetTable<Lich_ThuTien>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Lich_ThuTien_ChiTiet> Lich_ThuTien_ChiTiets
+		{
+			get
+			{
+				return this.GetTable<Lich_ThuTien_ChiTiet>();
 			}
 		}
 		
@@ -146,51 +200,19 @@ namespace TrungTamKhachHang.LinQ
 			}
 		}
 		
-		public System.Data.Linq.Table<KhieuNai> KhieuNais
+		public System.Data.Linq.Table<User> Users
 		{
 			get
 			{
-				return this.GetTable<KhieuNai>();
+				return this.GetTable<User>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Lich_DocSo> Lich_DocSos
+		public System.Data.Linq.Table<Zalo> Zalos
 		{
 			get
 			{
-				return this.GetTable<Lich_DocSo>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Lich_ThuTien_ChiTiet> Lich_ThuTien_ChiTiets
-		{
-			get
-			{
-				return this.GetTable<Lich_ThuTien_ChiTiet>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Lich_DocSo_ChiTiet> Lich_DocSo_ChiTiets
-		{
-			get
-			{
-				return this.GetTable<Lich_DocSo_ChiTiet>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Lich_Dot> Lich_Dots
-		{
-			get
-			{
-				return this.GetTable<Lich_Dot>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Lich_ThuTien> Lich_ThuTiens
-		{
-			get
-			{
-				return this.GetTable<Lich_ThuTien>();
+				return this.GetTable<Zalo>();
 			}
 		}
 	}
@@ -401,25 +423,165 @@ namespace TrungTamKhachHang.LinQ
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
-	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Zalo_LichSuTruyVan")]
+	public partial class Zalo_LichSuTruyVan : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _ID;
+		
+		private System.Nullable<decimal> _IDZalo;
+		
+		private string _TruyVan;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(decimal value);
+    partial void OnIDChanged();
+    partial void OnIDZaloChanging(System.Nullable<decimal> value);
+    partial void OnIDZaloChanged();
+    partial void OnTruyVanChanging(string value);
+    partial void OnTruyVanChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public Zalo_LichSuTruyVan()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Decimal(20,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public decimal ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDZalo", DbType="Decimal(20,0)")]
+		public System.Nullable<decimal> IDZalo
+		{
+			get
+			{
+				return this._IDZalo;
+			}
+			set
+			{
+				if ((this._IDZalo != value))
+				{
+					this.OnIDZaloChanging(value);
+					this.SendPropertyChanging();
+					this._IDZalo = value;
+					this.SendPropertyChanged("IDZalo");
+					this.OnIDZaloChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruyVan", DbType="VarChar(50)")]
+		public string TruyVan
+		{
+			get
+			{
+				return this._TruyVan;
+			}
+			set
+			{
+				if ((this._TruyVan != value))
+				{
+					this.OnTruyVanChanging(value);
+					this.SendPropertyChanging();
+					this._TruyVan = value;
+					this.SendPropertyChanged("TruyVan");
+					this.OnTruyVanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KhieuNai")]
+	public partial class KhieuNai : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
-		private string _Name;
+		private string _DanhBo;
 		
-		private string _Username;
+		private string _HoTen;
 		
-		private string _Password;
+		private string _DiaChi;
 		
-		private bool _Admin;
+		private string _NoiDung;
 		
-		private bool _An;
+		private string _NguoiBao;
 		
-		private System.Nullable<int> _MaNhom;
+		private string _DienThoai;
+		
+		private bool _GiaiQuyet;
+		
+		private System.Nullable<System.DateTime> _NgayGiaiQuyet;
+		
+		private System.Nullable<decimal> _IDZalo;
 		
 		private System.Nullable<int> _CreateBy;
 		
@@ -429,26 +591,30 @@ namespace TrungTamKhachHang.LinQ
 		
 		private System.Nullable<System.DateTime> _ModifyDate;
 		
-		private EntitySet<PhanQuyenUser> _PhanQuyenUsers;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnUsernameChanging(string value);
-    partial void OnUsernameChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnAdminChanging(bool value);
-    partial void OnAdminChanged();
-    partial void OnAnChanging(bool value);
-    partial void OnAnChanged();
-    partial void OnMaNhomChanging(System.Nullable<int> value);
-    partial void OnMaNhomChanged();
+    partial void OnDanhBoChanging(string value);
+    partial void OnDanhBoChanged();
+    partial void OnHoTenChanging(string value);
+    partial void OnHoTenChanged();
+    partial void OnDiaChiChanging(string value);
+    partial void OnDiaChiChanged();
+    partial void OnNoiDungChanging(string value);
+    partial void OnNoiDungChanged();
+    partial void OnNguoiBaoChanging(string value);
+    partial void OnNguoiBaoChanged();
+    partial void OnDienThoaiChanging(string value);
+    partial void OnDienThoaiChanged();
+    partial void OnGiaiQuyetChanging(bool value);
+    partial void OnGiaiQuyetChanged();
+    partial void OnNgayGiaiQuyetChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayGiaiQuyetChanged();
+    partial void OnIDZaloChanging(System.Nullable<decimal> value);
+    partial void OnIDZaloChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -459,9 +625,8 @@ namespace TrungTamKhachHang.LinQ
     partial void OnModifyDateChanged();
     #endregion
 		
-		public User()
+		public KhieuNai()
 		{
-			this._PhanQuyenUsers = new EntitySet<PhanQuyenUser>(new Action<PhanQuyenUser>(this.attach_PhanQuyenUsers), new Action<PhanQuyenUser>(this.detach_PhanQuyenUsers));
 			OnCreated();
 		}
 		
@@ -485,122 +650,182 @@ namespace TrungTamKhachHang.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
-		public string Name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="Char(11)")]
+		public string DanhBo
 		{
 			get
 			{
-				return this._Name;
+				return this._DanhBo;
 			}
 			set
 			{
-				if ((this._Name != value))
+				if ((this._DanhBo != value))
 				{
-					this.OnNameChanging(value);
+					this.OnDanhBoChanging(value);
 					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
+					this._DanhBo = value;
+					this.SendPropertyChanged("DanhBo");
+					this.OnDanhBoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(50)")]
-		public string Username
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(100)")]
+		public string HoTen
 		{
 			get
 			{
-				return this._Username;
+				return this._HoTen;
 			}
 			set
 			{
-				if ((this._Username != value))
+				if ((this._HoTen != value))
 				{
-					this.OnUsernameChanging(value);
+					this.OnHoTenChanging(value);
 					this.SendPropertyChanging();
-					this._Username = value;
-					this.SendPropertyChanged("Username");
-					this.OnUsernameChanged();
+					this._HoTen = value;
+					this.SendPropertyChanged("HoTen");
+					this.OnHoTenChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(50)")]
-		public string Password
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(200)")]
+		public string DiaChi
 		{
 			get
 			{
-				return this._Password;
+				return this._DiaChi;
 			}
 			set
 			{
-				if ((this._Password != value))
+				if ((this._DiaChi != value))
 				{
-					this.OnPasswordChanging(value);
+					this.OnDiaChiChanging(value);
 					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
+					this._DiaChi = value;
+					this.SendPropertyChanged("DiaChi");
+					this.OnDiaChiChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin", DbType="Bit NOT NULL")]
-		public bool Admin
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDung", DbType="NVarChar(200)")]
+		public string NoiDung
 		{
 			get
 			{
-				return this._Admin;
+				return this._NoiDung;
 			}
 			set
 			{
-				if ((this._Admin != value))
+				if ((this._NoiDung != value))
 				{
-					this.OnAdminChanging(value);
+					this.OnNoiDungChanging(value);
 					this.SendPropertyChanging();
-					this._Admin = value;
-					this.SendPropertyChanged("Admin");
-					this.OnAdminChanged();
+					this._NoiDung = value;
+					this.SendPropertyChanged("NoiDung");
+					this.OnNoiDungChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_An", DbType="Bit NOT NULL")]
-		public bool An
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NguoiBao", DbType="NVarChar(100)")]
+		public string NguoiBao
 		{
 			get
 			{
-				return this._An;
+				return this._NguoiBao;
 			}
 			set
 			{
-				if ((this._An != value))
+				if ((this._NguoiBao != value))
 				{
-					this.OnAnChanging(value);
+					this.OnNguoiBaoChanging(value);
 					this.SendPropertyChanging();
-					this._An = value;
-					this.SendPropertyChanged("An");
-					this.OnAnChanged();
+					this._NguoiBao = value;
+					this.SendPropertyChanged("NguoiBao");
+					this.OnNguoiBaoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNhom", DbType="Int")]
-		public System.Nullable<int> MaNhom
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DienThoai", DbType="VarChar(11)")]
+		public string DienThoai
 		{
 			get
 			{
-				return this._MaNhom;
+				return this._DienThoai;
 			}
 			set
 			{
-				if ((this._MaNhom != value))
+				if ((this._DienThoai != value))
 				{
-					this.OnMaNhomChanging(value);
+					this.OnDienThoaiChanging(value);
 					this.SendPropertyChanging();
-					this._MaNhom = value;
-					this.SendPropertyChanged("MaNhom");
-					this.OnMaNhomChanged();
+					this._DienThoai = value;
+					this.SendPropertyChanged("DienThoai");
+					this.OnDienThoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaiQuyet", DbType="Bit NOT NULL")]
+		public bool GiaiQuyet
+		{
+			get
+			{
+				return this._GiaiQuyet;
+			}
+			set
+			{
+				if ((this._GiaiQuyet != value))
+				{
+					this.OnGiaiQuyetChanging(value);
+					this.SendPropertyChanging();
+					this._GiaiQuyet = value;
+					this.SendPropertyChanged("GiaiQuyet");
+					this.OnGiaiQuyetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayGiaiQuyet", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayGiaiQuyet
+		{
+			get
+			{
+				return this._NgayGiaiQuyet;
+			}
+			set
+			{
+				if ((this._NgayGiaiQuyet != value))
+				{
+					this.OnNgayGiaiQuyetChanging(value);
+					this.SendPropertyChanging();
+					this._NgayGiaiQuyet = value;
+					this.SendPropertyChanged("NgayGiaiQuyet");
+					this.OnNgayGiaiQuyetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDZalo", DbType="Decimal(20,0)")]
+		public System.Nullable<decimal> IDZalo
+		{
+			get
+			{
+				return this._IDZalo;
+			}
+			set
+			{
+				if ((this._IDZalo != value))
+				{
+					this.OnIDZaloChanging(value);
+					this.SendPropertyChanging();
+					this._IDZalo = value;
+					this.SendPropertyChanged("IDZalo");
+					this.OnIDZaloChanged();
 				}
 			}
 		}
@@ -685,16 +910,273 @@ namespace TrungTamKhachHang.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_PhanQuyenUser", Storage="_PhanQuyenUsers", ThisKey="ID", OtherKey="MaUser")]
-		public EntitySet<PhanQuyenUser> PhanQuyenUsers
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lich_DocSo")]
+	public partial class Lich_DocSo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _Ky;
+		
+		private System.Nullable<int> _Nam;
+		
+		private System.Nullable<System.DateTime> _TuNgay;
+		
+		private System.Nullable<System.DateTime> _DenNgay;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private EntitySet<Lich_DocSo_ChiTiet> _Lich_DocSo_ChiTiets;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnKyChanging(System.Nullable<int> value);
+    partial void OnKyChanged();
+    partial void OnNamChanging(System.Nullable<int> value);
+    partial void OnNamChanged();
+    partial void OnTuNgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnTuNgayChanged();
+    partial void OnDenNgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnDenNgayChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    #endregion
+		
+		public Lich_DocSo()
+		{
+			this._Lich_DocSo_ChiTiets = new EntitySet<Lich_DocSo_ChiTiet>(new Action<Lich_DocSo_ChiTiet>(this.attach_Lich_DocSo_ChiTiets), new Action<Lich_DocSo_ChiTiet>(this.detach_Lich_DocSo_ChiTiets));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
 		{
 			get
 			{
-				return this._PhanQuyenUsers;
+				return this._ID;
 			}
 			set
 			{
-				this._PhanQuyenUsers.Assign(value);
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ky", DbType="Int")]
+		public System.Nullable<int> Ky
+		{
+			get
+			{
+				return this._Ky;
+			}
+			set
+			{
+				if ((this._Ky != value))
+				{
+					this.OnKyChanging(value);
+					this.SendPropertyChanging();
+					this._Ky = value;
+					this.SendPropertyChanged("Ky");
+					this.OnKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nam", DbType="Int")]
+		public System.Nullable<int> Nam
+		{
+			get
+			{
+				return this._Nam;
+			}
+			set
+			{
+				if ((this._Nam != value))
+				{
+					this.OnNamChanging(value);
+					this.SendPropertyChanging();
+					this._Nam = value;
+					this.SendPropertyChanged("Nam");
+					this.OnNamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TuNgay", DbType="Date")]
+		public System.Nullable<System.DateTime> TuNgay
+		{
+			get
+			{
+				return this._TuNgay;
+			}
+			set
+			{
+				if ((this._TuNgay != value))
+				{
+					this.OnTuNgayChanging(value);
+					this.SendPropertyChanging();
+					this._TuNgay = value;
+					this.SendPropertyChanged("TuNgay");
+					this.OnTuNgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DenNgay", DbType="Date")]
+		public System.Nullable<System.DateTime> DenNgay
+		{
+			get
+			{
+				return this._DenNgay;
+			}
+			set
+			{
+				if ((this._DenNgay != value))
+				{
+					this.OnDenNgayChanging(value);
+					this.SendPropertyChanging();
+					this._DenNgay = value;
+					this.SendPropertyChanged("DenNgay");
+					this.OnDenNgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_DocSo_Lich_DocSo_ChiTiet", Storage="_Lich_DocSo_ChiTiets", ThisKey="ID", OtherKey="IDDocSo")]
+		public EntitySet<Lich_DocSo_ChiTiet> Lich_DocSo_ChiTiets
+		{
+			get
+			{
+				return this._Lich_DocSo_ChiTiets;
+			}
+			set
+			{
+				this._Lich_DocSo_ChiTiets.Assign(value);
 			}
 		}
 		
@@ -718,16 +1200,1448 @@ namespace TrungTamKhachHang.LinQ
 			}
 		}
 		
-		private void attach_PhanQuyenUsers(PhanQuyenUser entity)
+		private void attach_Lich_DocSo_ChiTiets(Lich_DocSo_ChiTiet entity)
 		{
 			this.SendPropertyChanging();
-			entity.User = this;
+			entity.Lich_DocSo = this;
 		}
 		
-		private void detach_PhanQuyenUsers(PhanQuyenUser entity)
+		private void detach_Lich_DocSo_ChiTiets(Lich_DocSo_ChiTiet entity)
 		{
 			this.SendPropertyChanging();
-			entity.User = null;
+			entity.Lich_DocSo = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lich_DocSo_ChiTiet")]
+	public partial class Lich_DocSo_ChiTiet : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IDDocSo;
+		
+		private int _IDDot;
+		
+		private System.Nullable<System.DateTime> _NgayDoc;
+		
+		private System.Nullable<System.DateTime> _NgayKiemSoat_From;
+		
+		private System.Nullable<System.DateTime> _NgayKiemSoat_To;
+		
+		private System.Nullable<System.DateTime> _NgayChuyenListing;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private EntityRef<Lich_DocSo> _Lich_DocSo;
+		
+		private EntityRef<Lich_Dot> _Lich_Dot;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDDocSoChanging(int value);
+    partial void OnIDDocSoChanged();
+    partial void OnIDDotChanging(int value);
+    partial void OnIDDotChanged();
+    partial void OnNgayDocChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayDocChanged();
+    partial void OnNgayKiemSoat_FromChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayKiemSoat_FromChanged();
+    partial void OnNgayKiemSoat_ToChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayKiemSoat_ToChanged();
+    partial void OnNgayChuyenListingChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayChuyenListingChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    #endregion
+		
+		public Lich_DocSo_ChiTiet()
+		{
+			this._Lich_DocSo = default(EntityRef<Lich_DocSo>);
+			this._Lich_Dot = default(EntityRef<Lich_Dot>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDocSo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDDocSo
+		{
+			get
+			{
+				return this._IDDocSo;
+			}
+			set
+			{
+				if ((this._IDDocSo != value))
+				{
+					if (this._Lich_DocSo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDDocSoChanging(value);
+					this.SendPropertyChanging();
+					this._IDDocSo = value;
+					this.SendPropertyChanged("IDDocSo");
+					this.OnIDDocSoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDot", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDDot
+		{
+			get
+			{
+				return this._IDDot;
+			}
+			set
+			{
+				if ((this._IDDot != value))
+				{
+					if (this._Lich_Dot.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDDotChanging(value);
+					this.SendPropertyChanging();
+					this._IDDot = value;
+					this.SendPropertyChanged("IDDot");
+					this.OnIDDotChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayDoc", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayDoc
+		{
+			get
+			{
+				return this._NgayDoc;
+			}
+			set
+			{
+				if ((this._NgayDoc != value))
+				{
+					this.OnNgayDocChanging(value);
+					this.SendPropertyChanging();
+					this._NgayDoc = value;
+					this.SendPropertyChanged("NgayDoc");
+					this.OnNgayDocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayKiemSoat_From", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayKiemSoat_From
+		{
+			get
+			{
+				return this._NgayKiemSoat_From;
+			}
+			set
+			{
+				if ((this._NgayKiemSoat_From != value))
+				{
+					this.OnNgayKiemSoat_FromChanging(value);
+					this.SendPropertyChanging();
+					this._NgayKiemSoat_From = value;
+					this.SendPropertyChanged("NgayKiemSoat_From");
+					this.OnNgayKiemSoat_FromChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayKiemSoat_To", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayKiemSoat_To
+		{
+			get
+			{
+				return this._NgayKiemSoat_To;
+			}
+			set
+			{
+				if ((this._NgayKiemSoat_To != value))
+				{
+					this.OnNgayKiemSoat_ToChanging(value);
+					this.SendPropertyChanging();
+					this._NgayKiemSoat_To = value;
+					this.SendPropertyChanged("NgayKiemSoat_To");
+					this.OnNgayKiemSoat_ToChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChuyenListing", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayChuyenListing
+		{
+			get
+			{
+				return this._NgayChuyenListing;
+			}
+			set
+			{
+				if ((this._NgayChuyenListing != value))
+				{
+					this.OnNgayChuyenListingChanging(value);
+					this.SendPropertyChanging();
+					this._NgayChuyenListing = value;
+					this.SendPropertyChanged("NgayChuyenListing");
+					this.OnNgayChuyenListingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_DocSo_Lich_DocSo_ChiTiet", Storage="_Lich_DocSo", ThisKey="IDDocSo", OtherKey="ID", IsForeignKey=true)]
+		public Lich_DocSo Lich_DocSo
+		{
+			get
+			{
+				return this._Lich_DocSo.Entity;
+			}
+			set
+			{
+				Lich_DocSo previousValue = this._Lich_DocSo.Entity;
+				if (((previousValue != value) 
+							|| (this._Lich_DocSo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Lich_DocSo.Entity = null;
+						previousValue.Lich_DocSo_ChiTiets.Remove(this);
+					}
+					this._Lich_DocSo.Entity = value;
+					if ((value != null))
+					{
+						value.Lich_DocSo_ChiTiets.Add(this);
+						this._IDDocSo = value.ID;
+					}
+					else
+					{
+						this._IDDocSo = default(int);
+					}
+					this.SendPropertyChanged("Lich_DocSo");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_Dot_Lich_DocSo_ChiTiet", Storage="_Lich_Dot", ThisKey="IDDot", OtherKey="ID", IsForeignKey=true)]
+		public Lich_Dot Lich_Dot
+		{
+			get
+			{
+				return this._Lich_Dot.Entity;
+			}
+			set
+			{
+				Lich_Dot previousValue = this._Lich_Dot.Entity;
+				if (((previousValue != value) 
+							|| (this._Lich_Dot.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Lich_Dot.Entity = null;
+						previousValue.Lich_DocSo_ChiTiets.Remove(this);
+					}
+					this._Lich_Dot.Entity = value;
+					if ((value != null))
+					{
+						value.Lich_DocSo_ChiTiets.Add(this);
+						this._IDDot = value.ID;
+					}
+					else
+					{
+						this._IDDot = default(int);
+					}
+					this.SendPropertyChanged("Lich_Dot");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lich_Dot")]
+	public partial class Lich_Dot : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _Name;
+		
+		private System.Nullable<int> _TB1_From;
+		
+		private System.Nullable<int> _TB1_To;
+		
+		private System.Nullable<int> _TB2_From;
+		
+		private System.Nullable<int> _TB2_To;
+		
+		private System.Nullable<int> _TP1_From;
+		
+		private System.Nullable<int> _TP1_To;
+		
+		private System.Nullable<int> _TP2_From;
+		
+		private System.Nullable<int> _TP2_To;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private EntitySet<Lich_DocSo_ChiTiet> _Lich_DocSo_ChiTiets;
+		
+		private EntitySet<Lich_ThuTien_ChiTiet> _Lich_ThuTien_ChiTiets;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(System.Nullable<int> value);
+    partial void OnNameChanged();
+    partial void OnTB1_FromChanging(System.Nullable<int> value);
+    partial void OnTB1_FromChanged();
+    partial void OnTB1_ToChanging(System.Nullable<int> value);
+    partial void OnTB1_ToChanged();
+    partial void OnTB2_FromChanging(System.Nullable<int> value);
+    partial void OnTB2_FromChanged();
+    partial void OnTB2_ToChanging(System.Nullable<int> value);
+    partial void OnTB2_ToChanged();
+    partial void OnTP1_FromChanging(System.Nullable<int> value);
+    partial void OnTP1_FromChanged();
+    partial void OnTP1_ToChanging(System.Nullable<int> value);
+    partial void OnTP1_ToChanged();
+    partial void OnTP2_FromChanging(System.Nullable<int> value);
+    partial void OnTP2_FromChanged();
+    partial void OnTP2_ToChanging(System.Nullable<int> value);
+    partial void OnTP2_ToChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    #endregion
+		
+		public Lich_Dot()
+		{
+			this._Lich_DocSo_ChiTiets = new EntitySet<Lich_DocSo_ChiTiet>(new Action<Lich_DocSo_ChiTiet>(this.attach_Lich_DocSo_ChiTiets), new Action<Lich_DocSo_ChiTiet>(this.detach_Lich_DocSo_ChiTiets));
+			this._Lich_ThuTien_ChiTiets = new EntitySet<Lich_ThuTien_ChiTiet>(new Action<Lich_ThuTien_ChiTiet>(this.attach_Lich_ThuTien_ChiTiets), new Action<Lich_ThuTien_ChiTiet>(this.detach_Lich_ThuTien_ChiTiets));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="Int")]
+		public System.Nullable<int> Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TB1_From", DbType="Int")]
+		public System.Nullable<int> TB1_From
+		{
+			get
+			{
+				return this._TB1_From;
+			}
+			set
+			{
+				if ((this._TB1_From != value))
+				{
+					this.OnTB1_FromChanging(value);
+					this.SendPropertyChanging();
+					this._TB1_From = value;
+					this.SendPropertyChanged("TB1_From");
+					this.OnTB1_FromChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TB1_To", DbType="Int")]
+		public System.Nullable<int> TB1_To
+		{
+			get
+			{
+				return this._TB1_To;
+			}
+			set
+			{
+				if ((this._TB1_To != value))
+				{
+					this.OnTB1_ToChanging(value);
+					this.SendPropertyChanging();
+					this._TB1_To = value;
+					this.SendPropertyChanged("TB1_To");
+					this.OnTB1_ToChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TB2_From", DbType="Int")]
+		public System.Nullable<int> TB2_From
+		{
+			get
+			{
+				return this._TB2_From;
+			}
+			set
+			{
+				if ((this._TB2_From != value))
+				{
+					this.OnTB2_FromChanging(value);
+					this.SendPropertyChanging();
+					this._TB2_From = value;
+					this.SendPropertyChanged("TB2_From");
+					this.OnTB2_FromChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TB2_To", DbType="Int")]
+		public System.Nullable<int> TB2_To
+		{
+			get
+			{
+				return this._TB2_To;
+			}
+			set
+			{
+				if ((this._TB2_To != value))
+				{
+					this.OnTB2_ToChanging(value);
+					this.SendPropertyChanging();
+					this._TB2_To = value;
+					this.SendPropertyChanged("TB2_To");
+					this.OnTB2_ToChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TP1_From", DbType="Int")]
+		public System.Nullable<int> TP1_From
+		{
+			get
+			{
+				return this._TP1_From;
+			}
+			set
+			{
+				if ((this._TP1_From != value))
+				{
+					this.OnTP1_FromChanging(value);
+					this.SendPropertyChanging();
+					this._TP1_From = value;
+					this.SendPropertyChanged("TP1_From");
+					this.OnTP1_FromChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TP1_To", DbType="Int")]
+		public System.Nullable<int> TP1_To
+		{
+			get
+			{
+				return this._TP1_To;
+			}
+			set
+			{
+				if ((this._TP1_To != value))
+				{
+					this.OnTP1_ToChanging(value);
+					this.SendPropertyChanging();
+					this._TP1_To = value;
+					this.SendPropertyChanged("TP1_To");
+					this.OnTP1_ToChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TP2_From", DbType="Int")]
+		public System.Nullable<int> TP2_From
+		{
+			get
+			{
+				return this._TP2_From;
+			}
+			set
+			{
+				if ((this._TP2_From != value))
+				{
+					this.OnTP2_FromChanging(value);
+					this.SendPropertyChanging();
+					this._TP2_From = value;
+					this.SendPropertyChanged("TP2_From");
+					this.OnTP2_FromChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TP2_To", DbType="Int")]
+		public System.Nullable<int> TP2_To
+		{
+			get
+			{
+				return this._TP2_To;
+			}
+			set
+			{
+				if ((this._TP2_To != value))
+				{
+					this.OnTP2_ToChanging(value);
+					this.SendPropertyChanging();
+					this._TP2_To = value;
+					this.SendPropertyChanged("TP2_To");
+					this.OnTP2_ToChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_Dot_Lich_DocSo_ChiTiet", Storage="_Lich_DocSo_ChiTiets", ThisKey="ID", OtherKey="IDDot")]
+		public EntitySet<Lich_DocSo_ChiTiet> Lich_DocSo_ChiTiets
+		{
+			get
+			{
+				return this._Lich_DocSo_ChiTiets;
+			}
+			set
+			{
+				this._Lich_DocSo_ChiTiets.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_Dot_Lich_ThuTien_ChiTiet", Storage="_Lich_ThuTien_ChiTiets", ThisKey="ID", OtherKey="IDDot")]
+		public EntitySet<Lich_ThuTien_ChiTiet> Lich_ThuTien_ChiTiets
+		{
+			get
+			{
+				return this._Lich_ThuTien_ChiTiets;
+			}
+			set
+			{
+				this._Lich_ThuTien_ChiTiets.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Lich_DocSo_ChiTiets(Lich_DocSo_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lich_Dot = this;
+		}
+		
+		private void detach_Lich_DocSo_ChiTiets(Lich_DocSo_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lich_Dot = null;
+		}
+		
+		private void attach_Lich_ThuTien_ChiTiets(Lich_ThuTien_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lich_Dot = this;
+		}
+		
+		private void detach_Lich_ThuTien_ChiTiets(Lich_ThuTien_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lich_Dot = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lich_ThuTien")]
+	public partial class Lich_ThuTien : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _Ky;
+		
+		private System.Nullable<int> _Nam;
+		
+		private System.Nullable<System.DateTime> _TuNgay;
+		
+		private System.Nullable<System.DateTime> _DenNgay;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private EntitySet<Lich_ThuTien_ChiTiet> _Lich_ThuTien_ChiTiets;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnKyChanging(System.Nullable<int> value);
+    partial void OnKyChanged();
+    partial void OnNamChanging(System.Nullable<int> value);
+    partial void OnNamChanged();
+    partial void OnTuNgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnTuNgayChanged();
+    partial void OnDenNgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnDenNgayChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    #endregion
+		
+		public Lich_ThuTien()
+		{
+			this._Lich_ThuTien_ChiTiets = new EntitySet<Lich_ThuTien_ChiTiet>(new Action<Lich_ThuTien_ChiTiet>(this.attach_Lich_ThuTien_ChiTiets), new Action<Lich_ThuTien_ChiTiet>(this.detach_Lich_ThuTien_ChiTiets));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ky", DbType="Int")]
+		public System.Nullable<int> Ky
+		{
+			get
+			{
+				return this._Ky;
+			}
+			set
+			{
+				if ((this._Ky != value))
+				{
+					this.OnKyChanging(value);
+					this.SendPropertyChanging();
+					this._Ky = value;
+					this.SendPropertyChanged("Ky");
+					this.OnKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nam", DbType="Int")]
+		public System.Nullable<int> Nam
+		{
+			get
+			{
+				return this._Nam;
+			}
+			set
+			{
+				if ((this._Nam != value))
+				{
+					this.OnNamChanging(value);
+					this.SendPropertyChanging();
+					this._Nam = value;
+					this.SendPropertyChanged("Nam");
+					this.OnNamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TuNgay", DbType="Date")]
+		public System.Nullable<System.DateTime> TuNgay
+		{
+			get
+			{
+				return this._TuNgay;
+			}
+			set
+			{
+				if ((this._TuNgay != value))
+				{
+					this.OnTuNgayChanging(value);
+					this.SendPropertyChanging();
+					this._TuNgay = value;
+					this.SendPropertyChanged("TuNgay");
+					this.OnTuNgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DenNgay", DbType="Date")]
+		public System.Nullable<System.DateTime> DenNgay
+		{
+			get
+			{
+				return this._DenNgay;
+			}
+			set
+			{
+				if ((this._DenNgay != value))
+				{
+					this.OnDenNgayChanging(value);
+					this.SendPropertyChanging();
+					this._DenNgay = value;
+					this.SendPropertyChanged("DenNgay");
+					this.OnDenNgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_ThuTien_Lich_ThuTien_ChiTiet", Storage="_Lich_ThuTien_ChiTiets", ThisKey="ID", OtherKey="IDThuTien")]
+		public EntitySet<Lich_ThuTien_ChiTiet> Lich_ThuTien_ChiTiets
+		{
+			get
+			{
+				return this._Lich_ThuTien_ChiTiets;
+			}
+			set
+			{
+				this._Lich_ThuTien_ChiTiets.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Lich_ThuTien_ChiTiets(Lich_ThuTien_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lich_ThuTien = this;
+		}
+		
+		private void detach_Lich_ThuTien_ChiTiets(Lich_ThuTien_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lich_ThuTien = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lich_ThuTien_ChiTiet")]
+	public partial class Lich_ThuTien_ChiTiet : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IDThuTien;
+		
+		private int _IDDot;
+		
+		private System.Nullable<System.DateTime> _NgayDoc;
+		
+		private System.Nullable<System.DateTime> _NgayChuyenListing;
+		
+		private System.Nullable<System.DateTime> _NgayThuTien_From;
+		
+		private System.Nullable<System.DateTime> _NgayThuTien_To;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private EntityRef<Lich_Dot> _Lich_Dot;
+		
+		private EntityRef<Lich_ThuTien> _Lich_ThuTien;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDThuTienChanging(int value);
+    partial void OnIDThuTienChanged();
+    partial void OnIDDotChanging(int value);
+    partial void OnIDDotChanged();
+    partial void OnNgayDocChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayDocChanged();
+    partial void OnNgayChuyenListingChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayChuyenListingChanged();
+    partial void OnNgayThuTien_FromChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayThuTien_FromChanged();
+    partial void OnNgayThuTien_ToChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayThuTien_ToChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    #endregion
+		
+		public Lich_ThuTien_ChiTiet()
+		{
+			this._Lich_Dot = default(EntityRef<Lich_Dot>);
+			this._Lich_ThuTien = default(EntityRef<Lich_ThuTien>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDThuTien", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDThuTien
+		{
+			get
+			{
+				return this._IDThuTien;
+			}
+			set
+			{
+				if ((this._IDThuTien != value))
+				{
+					if (this._Lich_ThuTien.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDThuTienChanging(value);
+					this.SendPropertyChanging();
+					this._IDThuTien = value;
+					this.SendPropertyChanged("IDThuTien");
+					this.OnIDThuTienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDot", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDDot
+		{
+			get
+			{
+				return this._IDDot;
+			}
+			set
+			{
+				if ((this._IDDot != value))
+				{
+					if (this._Lich_Dot.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDDotChanging(value);
+					this.SendPropertyChanging();
+					this._IDDot = value;
+					this.SendPropertyChanged("IDDot");
+					this.OnIDDotChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayDoc", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayDoc
+		{
+			get
+			{
+				return this._NgayDoc;
+			}
+			set
+			{
+				if ((this._NgayDoc != value))
+				{
+					this.OnNgayDocChanging(value);
+					this.SendPropertyChanging();
+					this._NgayDoc = value;
+					this.SendPropertyChanged("NgayDoc");
+					this.OnNgayDocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChuyenListing", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayChuyenListing
+		{
+			get
+			{
+				return this._NgayChuyenListing;
+			}
+			set
+			{
+				if ((this._NgayChuyenListing != value))
+				{
+					this.OnNgayChuyenListingChanging(value);
+					this.SendPropertyChanging();
+					this._NgayChuyenListing = value;
+					this.SendPropertyChanged("NgayChuyenListing");
+					this.OnNgayChuyenListingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayThuTien_From", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayThuTien_From
+		{
+			get
+			{
+				return this._NgayThuTien_From;
+			}
+			set
+			{
+				if ((this._NgayThuTien_From != value))
+				{
+					this.OnNgayThuTien_FromChanging(value);
+					this.SendPropertyChanging();
+					this._NgayThuTien_From = value;
+					this.SendPropertyChanged("NgayThuTien_From");
+					this.OnNgayThuTien_FromChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayThuTien_To", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayThuTien_To
+		{
+			get
+			{
+				return this._NgayThuTien_To;
+			}
+			set
+			{
+				if ((this._NgayThuTien_To != value))
+				{
+					this.OnNgayThuTien_ToChanging(value);
+					this.SendPropertyChanging();
+					this._NgayThuTien_To = value;
+					this.SendPropertyChanged("NgayThuTien_To");
+					this.OnNgayThuTien_ToChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_Dot_Lich_ThuTien_ChiTiet", Storage="_Lich_Dot", ThisKey="IDDot", OtherKey="ID", IsForeignKey=true)]
+		public Lich_Dot Lich_Dot
+		{
+			get
+			{
+				return this._Lich_Dot.Entity;
+			}
+			set
+			{
+				Lich_Dot previousValue = this._Lich_Dot.Entity;
+				if (((previousValue != value) 
+							|| (this._Lich_Dot.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Lich_Dot.Entity = null;
+						previousValue.Lich_ThuTien_ChiTiets.Remove(this);
+					}
+					this._Lich_Dot.Entity = value;
+					if ((value != null))
+					{
+						value.Lich_ThuTien_ChiTiets.Add(this);
+						this._IDDot = value.ID;
+					}
+					else
+					{
+						this._IDDot = default(int);
+					}
+					this.SendPropertyChanged("Lich_Dot");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_ThuTien_Lich_ThuTien_ChiTiet", Storage="_Lich_ThuTien", ThisKey="IDThuTien", OtherKey="ID", IsForeignKey=true)]
+		public Lich_ThuTien Lich_ThuTien
+		{
+			get
+			{
+				return this._Lich_ThuTien.Entity;
+			}
+			set
+			{
+				Lich_ThuTien previousValue = this._Lich_ThuTien.Entity;
+				if (((previousValue != value) 
+							|| (this._Lich_ThuTien.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Lich_ThuTien.Entity = null;
+						previousValue.Lich_ThuTien_ChiTiets.Remove(this);
+					}
+					this._Lich_ThuTien.Entity = value;
+					if ((value != null))
+					{
+						value.Lich_ThuTien_ChiTiets.Add(this);
+						this._IDThuTien = value.ID;
+					}
+					else
+					{
+						this._IDThuTien = default(int);
+					}
+					this.SendPropertyChanged("Lich_ThuTien");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -2091,27 +4005,25 @@ namespace TrungTamKhachHang.LinQ
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KhieuNai")]
-	public partial class KhieuNai : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
-		private string _DanhBo;
+		private string _Name;
 		
-		private string _HoTen;
+		private string _Username;
 		
-		private string _DiaChi;
+		private string _Password;
 		
-		private string _NoiDung;
+		private bool _Admin;
 		
-		private string _NguoiBao;
+		private bool _An;
 		
-		private string _DienThoai;
-		
-		private bool _GiaiQuyet;
+		private System.Nullable<int> _MaNhom;
 		
 		private System.Nullable<int> _CreateBy;
 		
@@ -2121,26 +4033,26 @@ namespace TrungTamKhachHang.LinQ
 		
 		private System.Nullable<System.DateTime> _ModifyDate;
 		
+		private EntitySet<PhanQuyenUser> _PhanQuyenUsers;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnDanhBoChanging(string value);
-    partial void OnDanhBoChanged();
-    partial void OnHoTenChanging(string value);
-    partial void OnHoTenChanged();
-    partial void OnDiaChiChanging(string value);
-    partial void OnDiaChiChanged();
-    partial void OnNoiDungChanging(string value);
-    partial void OnNoiDungChanged();
-    partial void OnNguoiBaoChanging(string value);
-    partial void OnNguoiBaoChanged();
-    partial void OnDienThoaiChanging(string value);
-    partial void OnDienThoaiChanged();
-    partial void OnGiaiQuyetChanging(bool value);
-    partial void OnGiaiQuyetChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnUsernameChanging(string value);
+    partial void OnUsernameChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnAdminChanging(bool value);
+    partial void OnAdminChanged();
+    partial void OnAnChanging(bool value);
+    partial void OnAnChanged();
+    partial void OnMaNhomChanging(System.Nullable<int> value);
+    partial void OnMaNhomChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -2151,8 +4063,9 @@ namespace TrungTamKhachHang.LinQ
     partial void OnModifyDateChanged();
     #endregion
 		
-		public KhieuNai()
+		public User()
 		{
+			this._PhanQuyenUsers = new EntitySet<PhanQuyenUser>(new Action<PhanQuyenUser>(this.attach_PhanQuyenUsers), new Action<PhanQuyenUser>(this.detach_PhanQuyenUsers));
 			OnCreated();
 		}
 		
@@ -2176,7 +4089,318 @@ namespace TrungTamKhachHang.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="Char(11)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(50)")]
+		public string Username
+		{
+			get
+			{
+				return this._Username;
+			}
+			set
+			{
+				if ((this._Username != value))
+				{
+					this.OnUsernameChanging(value);
+					this.SendPropertyChanging();
+					this._Username = value;
+					this.SendPropertyChanged("Username");
+					this.OnUsernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(50)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin", DbType="Bit NOT NULL")]
+		public bool Admin
+		{
+			get
+			{
+				return this._Admin;
+			}
+			set
+			{
+				if ((this._Admin != value))
+				{
+					this.OnAdminChanging(value);
+					this.SendPropertyChanging();
+					this._Admin = value;
+					this.SendPropertyChanged("Admin");
+					this.OnAdminChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_An", DbType="Bit NOT NULL")]
+		public bool An
+		{
+			get
+			{
+				return this._An;
+			}
+			set
+			{
+				if ((this._An != value))
+				{
+					this.OnAnChanging(value);
+					this.SendPropertyChanging();
+					this._An = value;
+					this.SendPropertyChanged("An");
+					this.OnAnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNhom", DbType="Int")]
+		public System.Nullable<int> MaNhom
+		{
+			get
+			{
+				return this._MaNhom;
+			}
+			set
+			{
+				if ((this._MaNhom != value))
+				{
+					this.OnMaNhomChanging(value);
+					this.SendPropertyChanging();
+					this._MaNhom = value;
+					this.SendPropertyChanged("MaNhom");
+					this.OnMaNhomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_PhanQuyenUser", Storage="_PhanQuyenUsers", ThisKey="ID", OtherKey="MaUser")]
+		public EntitySet<PhanQuyenUser> PhanQuyenUsers
+		{
+			get
+			{
+				return this._PhanQuyenUsers;
+			}
+			set
+			{
+				this._PhanQuyenUsers.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PhanQuyenUsers(PhanQuyenUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_PhanQuyenUsers(PhanQuyenUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Zalo")]
+	public partial class Zalo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _IDZalo;
+		
+		private string _DanhBo;
+		
+		private string _HoTen;
+		
+		private string _DiaChi;
+		
+		private string _DienThoai;
+		
+		private string _KyHieuPhong;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDZaloChanging(decimal value);
+    partial void OnIDZaloChanged();
+    partial void OnDanhBoChanging(string value);
+    partial void OnDanhBoChanged();
+    partial void OnHoTenChanging(string value);
+    partial void OnHoTenChanged();
+    partial void OnDiaChiChanging(string value);
+    partial void OnDiaChiChanged();
+    partial void OnDienThoaiChanging(string value);
+    partial void OnDienThoaiChanged();
+    partial void OnKyHieuPhongChanging(string value);
+    partial void OnKyHieuPhongChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public Zalo()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDZalo", DbType="Decimal(20,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal IDZalo
+		{
+			get
+			{
+				return this._IDZalo;
+			}
+			set
+			{
+				if ((this._IDZalo != value))
+				{
+					this.OnIDZaloChanging(value);
+					this.SendPropertyChanging();
+					this._IDZalo = value;
+					this.SendPropertyChanged("IDZalo");
+					this.OnIDZaloChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="Char(11) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string DanhBo
 		{
 			get
@@ -2196,7 +4420,7 @@ namespace TrungTamKhachHang.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(500)")]
 		public string HoTen
 		{
 			get
@@ -2216,7 +4440,7 @@ namespace TrungTamKhachHang.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(500)")]
 		public string DiaChi
 		{
 			get
@@ -2236,47 +4460,7 @@ namespace TrungTamKhachHang.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDung", DbType="NVarChar(200)")]
-		public string NoiDung
-		{
-			get
-			{
-				return this._NoiDung;
-			}
-			set
-			{
-				if ((this._NoiDung != value))
-				{
-					this.OnNoiDungChanging(value);
-					this.SendPropertyChanging();
-					this._NoiDung = value;
-					this.SendPropertyChanged("NoiDung");
-					this.OnNoiDungChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NguoiBao", DbType="NVarChar(100)")]
-		public string NguoiBao
-		{
-			get
-			{
-				return this._NguoiBao;
-			}
-			set
-			{
-				if ((this._NguoiBao != value))
-				{
-					this.OnNguoiBaoChanging(value);
-					this.SendPropertyChanging();
-					this._NguoiBao = value;
-					this.SendPropertyChanged("NguoiBao");
-					this.OnNguoiBaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DienThoai", DbType="VarChar(11)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DienThoai", DbType="VarChar(10)")]
 		public string DienThoai
 		{
 			get
@@ -2296,42 +4480,22 @@ namespace TrungTamKhachHang.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaiQuyet", DbType="Bit NOT NULL")]
-		public bool GiaiQuyet
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KyHieuPhong", DbType="VarChar(10)")]
+		public string KyHieuPhong
 		{
 			get
 			{
-				return this._GiaiQuyet;
+				return this._KyHieuPhong;
 			}
 			set
 			{
-				if ((this._GiaiQuyet != value))
+				if ((this._KyHieuPhong != value))
 				{
-					this.OnGiaiQuyetChanging(value);
+					this.OnKyHieuPhongChanging(value);
 					this.SendPropertyChanging();
-					this._GiaiQuyet = value;
-					this.SendPropertyChanged("GiaiQuyet");
-					this.OnGiaiQuyetChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
-		public System.Nullable<int> CreateBy
-		{
-			get
-			{
-				return this._CreateBy;
-			}
-			set
-			{
-				if ((this._CreateBy != value))
-				{
-					this.OnCreateByChanging(value);
-					this.SendPropertyChanging();
-					this._CreateBy = value;
-					this.SendPropertyChanged("CreateBy");
-					this.OnCreateByChanged();
+					this._KyHieuPhong = value;
+					this.SendPropertyChanged("KyHieuPhong");
+					this.OnKyHieuPhongChanged();
 				}
 			}
 		}
@@ -2356,46 +4520,6 @@ namespace TrungTamKhachHang.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
-		public System.Nullable<int> ModifyBy
-		{
-			get
-			{
-				return this._ModifyBy;
-			}
-			set
-			{
-				if ((this._ModifyBy != value))
-				{
-					this.OnModifyByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyBy = value;
-					this.SendPropertyChanged("ModifyBy");
-					this.OnModifyByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifyDate
-		{
-			get
-			{
-				return this._ModifyDate;
-			}
-			set
-			{
-				if ((this._ModifyDate != value))
-				{
-					this.OnModifyDateChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyDate = value;
-					this.SendPropertyChanged("ModifyDate");
-					this.OnModifyDateChanged();
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2414,1696 +4538,6 @@ namespace TrungTamKhachHang.LinQ
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lich_DocSo")]
-	public partial class Lich_DocSo : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private System.Nullable<int> _Ky;
-		
-		private System.Nullable<int> _Nam;
-		
-		private System.Nullable<System.DateTime> _TuNgay;
-		
-		private System.Nullable<System.DateTime> _DenNgay;
-		
-		private System.Nullable<int> _CreateBy;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<int> _ModifyBy;
-		
-		private System.Nullable<System.DateTime> _ModifyDate;
-		
-		private EntitySet<Lich_DocSo_ChiTiet> _Lich_DocSo_ChiTiets;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnKyChanging(System.Nullable<int> value);
-    partial void OnKyChanged();
-    partial void OnNamChanging(System.Nullable<int> value);
-    partial void OnNamChanged();
-    partial void OnTuNgayChanging(System.Nullable<System.DateTime> value);
-    partial void OnTuNgayChanged();
-    partial void OnDenNgayChanging(System.Nullable<System.DateTime> value);
-    partial void OnDenNgayChanged();
-    partial void OnCreateByChanging(System.Nullable<int> value);
-    partial void OnCreateByChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnModifyByChanging(System.Nullable<int> value);
-    partial void OnModifyByChanged();
-    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifyDateChanged();
-    #endregion
-		
-		public Lich_DocSo()
-		{
-			this._Lich_DocSo_ChiTiets = new EntitySet<Lich_DocSo_ChiTiet>(new Action<Lich_DocSo_ChiTiet>(this.attach_Lich_DocSo_ChiTiets), new Action<Lich_DocSo_ChiTiet>(this.detach_Lich_DocSo_ChiTiets));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ky", DbType="Int")]
-		public System.Nullable<int> Ky
-		{
-			get
-			{
-				return this._Ky;
-			}
-			set
-			{
-				if ((this._Ky != value))
-				{
-					this.OnKyChanging(value);
-					this.SendPropertyChanging();
-					this._Ky = value;
-					this.SendPropertyChanged("Ky");
-					this.OnKyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nam", DbType="Int")]
-		public System.Nullable<int> Nam
-		{
-			get
-			{
-				return this._Nam;
-			}
-			set
-			{
-				if ((this._Nam != value))
-				{
-					this.OnNamChanging(value);
-					this.SendPropertyChanging();
-					this._Nam = value;
-					this.SendPropertyChanged("Nam");
-					this.OnNamChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TuNgay", DbType="Date")]
-		public System.Nullable<System.DateTime> TuNgay
-		{
-			get
-			{
-				return this._TuNgay;
-			}
-			set
-			{
-				if ((this._TuNgay != value))
-				{
-					this.OnTuNgayChanging(value);
-					this.SendPropertyChanging();
-					this._TuNgay = value;
-					this.SendPropertyChanged("TuNgay");
-					this.OnTuNgayChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DenNgay", DbType="Date")]
-		public System.Nullable<System.DateTime> DenNgay
-		{
-			get
-			{
-				return this._DenNgay;
-			}
-			set
-			{
-				if ((this._DenNgay != value))
-				{
-					this.OnDenNgayChanging(value);
-					this.SendPropertyChanging();
-					this._DenNgay = value;
-					this.SendPropertyChanged("DenNgay");
-					this.OnDenNgayChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
-		public System.Nullable<int> CreateBy
-		{
-			get
-			{
-				return this._CreateBy;
-			}
-			set
-			{
-				if ((this._CreateBy != value))
-				{
-					this.OnCreateByChanging(value);
-					this.SendPropertyChanging();
-					this._CreateBy = value;
-					this.SendPropertyChanged("CreateBy");
-					this.OnCreateByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
-		public System.Nullable<int> ModifyBy
-		{
-			get
-			{
-				return this._ModifyBy;
-			}
-			set
-			{
-				if ((this._ModifyBy != value))
-				{
-					this.OnModifyByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyBy = value;
-					this.SendPropertyChanged("ModifyBy");
-					this.OnModifyByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifyDate
-		{
-			get
-			{
-				return this._ModifyDate;
-			}
-			set
-			{
-				if ((this._ModifyDate != value))
-				{
-					this.OnModifyDateChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyDate = value;
-					this.SendPropertyChanged("ModifyDate");
-					this.OnModifyDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_DocSo_Lich_DocSo_ChiTiet", Storage="_Lich_DocSo_ChiTiets", ThisKey="ID", OtherKey="IDDocSo")]
-		public EntitySet<Lich_DocSo_ChiTiet> Lich_DocSo_ChiTiets
-		{
-			get
-			{
-				return this._Lich_DocSo_ChiTiets;
-			}
-			set
-			{
-				this._Lich_DocSo_ChiTiets.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Lich_DocSo_ChiTiets(Lich_DocSo_ChiTiet entity)
-		{
-			this.SendPropertyChanging();
-			entity.Lich_DocSo = this;
-		}
-		
-		private void detach_Lich_DocSo_ChiTiets(Lich_DocSo_ChiTiet entity)
-		{
-			this.SendPropertyChanging();
-			entity.Lich_DocSo = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lich_ThuTien_ChiTiet")]
-	public partial class Lich_ThuTien_ChiTiet : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IDThuTien;
-		
-		private int _IDDot;
-		
-		private System.Nullable<System.DateTime> _NgayChuyenListing;
-		
-		private System.Nullable<System.DateTime> _NgayThuTien_From;
-		
-		private System.Nullable<System.DateTime> _NgayThuTien_To;
-		
-		private System.Nullable<int> _CreateBy;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<int> _ModifyBy;
-		
-		private System.Nullable<System.DateTime> _ModifyDate;
-		
-		private EntityRef<Lich_Dot> _Lich_Dot;
-		
-		private EntityRef<Lich_ThuTien> _Lich_ThuTien;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDThuTienChanging(int value);
-    partial void OnIDThuTienChanged();
-    partial void OnIDDotChanging(int value);
-    partial void OnIDDotChanged();
-    partial void OnNgayChuyenListingChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayChuyenListingChanged();
-    partial void OnNgayThuTien_FromChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayThuTien_FromChanged();
-    partial void OnNgayThuTien_ToChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayThuTien_ToChanged();
-    partial void OnCreateByChanging(System.Nullable<int> value);
-    partial void OnCreateByChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnModifyByChanging(System.Nullable<int> value);
-    partial void OnModifyByChanged();
-    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifyDateChanged();
-    #endregion
-		
-		public Lich_ThuTien_ChiTiet()
-		{
-			this._Lich_Dot = default(EntityRef<Lich_Dot>);
-			this._Lich_ThuTien = default(EntityRef<Lich_ThuTien>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDThuTien", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDThuTien
-		{
-			get
-			{
-				return this._IDThuTien;
-			}
-			set
-			{
-				if ((this._IDThuTien != value))
-				{
-					if (this._Lich_ThuTien.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDThuTienChanging(value);
-					this.SendPropertyChanging();
-					this._IDThuTien = value;
-					this.SendPropertyChanged("IDThuTien");
-					this.OnIDThuTienChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDot", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDDot
-		{
-			get
-			{
-				return this._IDDot;
-			}
-			set
-			{
-				if ((this._IDDot != value))
-				{
-					if (this._Lich_Dot.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDDotChanging(value);
-					this.SendPropertyChanging();
-					this._IDDot = value;
-					this.SendPropertyChanged("IDDot");
-					this.OnIDDotChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChuyenListing", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayChuyenListing
-		{
-			get
-			{
-				return this._NgayChuyenListing;
-			}
-			set
-			{
-				if ((this._NgayChuyenListing != value))
-				{
-					this.OnNgayChuyenListingChanging(value);
-					this.SendPropertyChanging();
-					this._NgayChuyenListing = value;
-					this.SendPropertyChanged("NgayChuyenListing");
-					this.OnNgayChuyenListingChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayThuTien_From", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayThuTien_From
-		{
-			get
-			{
-				return this._NgayThuTien_From;
-			}
-			set
-			{
-				if ((this._NgayThuTien_From != value))
-				{
-					this.OnNgayThuTien_FromChanging(value);
-					this.SendPropertyChanging();
-					this._NgayThuTien_From = value;
-					this.SendPropertyChanged("NgayThuTien_From");
-					this.OnNgayThuTien_FromChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayThuTien_To", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayThuTien_To
-		{
-			get
-			{
-				return this._NgayThuTien_To;
-			}
-			set
-			{
-				if ((this._NgayThuTien_To != value))
-				{
-					this.OnNgayThuTien_ToChanging(value);
-					this.SendPropertyChanging();
-					this._NgayThuTien_To = value;
-					this.SendPropertyChanged("NgayThuTien_To");
-					this.OnNgayThuTien_ToChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
-		public System.Nullable<int> CreateBy
-		{
-			get
-			{
-				return this._CreateBy;
-			}
-			set
-			{
-				if ((this._CreateBy != value))
-				{
-					this.OnCreateByChanging(value);
-					this.SendPropertyChanging();
-					this._CreateBy = value;
-					this.SendPropertyChanged("CreateBy");
-					this.OnCreateByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
-		public System.Nullable<int> ModifyBy
-		{
-			get
-			{
-				return this._ModifyBy;
-			}
-			set
-			{
-				if ((this._ModifyBy != value))
-				{
-					this.OnModifyByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyBy = value;
-					this.SendPropertyChanged("ModifyBy");
-					this.OnModifyByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifyDate
-		{
-			get
-			{
-				return this._ModifyDate;
-			}
-			set
-			{
-				if ((this._ModifyDate != value))
-				{
-					this.OnModifyDateChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyDate = value;
-					this.SendPropertyChanged("ModifyDate");
-					this.OnModifyDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_Dot_Lich_ThuTien_ChiTiet", Storage="_Lich_Dot", ThisKey="IDDot", OtherKey="ID", IsForeignKey=true)]
-		public Lich_Dot Lich_Dot
-		{
-			get
-			{
-				return this._Lich_Dot.Entity;
-			}
-			set
-			{
-				Lich_Dot previousValue = this._Lich_Dot.Entity;
-				if (((previousValue != value) 
-							|| (this._Lich_Dot.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Lich_Dot.Entity = null;
-						previousValue.Lich_ThuTien_ChiTiets.Remove(this);
-					}
-					this._Lich_Dot.Entity = value;
-					if ((value != null))
-					{
-						value.Lich_ThuTien_ChiTiets.Add(this);
-						this._IDDot = value.ID;
-					}
-					else
-					{
-						this._IDDot = default(int);
-					}
-					this.SendPropertyChanged("Lich_Dot");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_ThuTien_Lich_ThuTien_ChiTiet", Storage="_Lich_ThuTien", ThisKey="IDThuTien", OtherKey="ID", IsForeignKey=true)]
-		public Lich_ThuTien Lich_ThuTien
-		{
-			get
-			{
-				return this._Lich_ThuTien.Entity;
-			}
-			set
-			{
-				Lich_ThuTien previousValue = this._Lich_ThuTien.Entity;
-				if (((previousValue != value) 
-							|| (this._Lich_ThuTien.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Lich_ThuTien.Entity = null;
-						previousValue.Lich_ThuTien_ChiTiets.Remove(this);
-					}
-					this._Lich_ThuTien.Entity = value;
-					if ((value != null))
-					{
-						value.Lich_ThuTien_ChiTiets.Add(this);
-						this._IDThuTien = value.ID;
-					}
-					else
-					{
-						this._IDThuTien = default(int);
-					}
-					this.SendPropertyChanged("Lich_ThuTien");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lich_DocSo_ChiTiet")]
-	public partial class Lich_DocSo_ChiTiet : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IDDocSo;
-		
-		private int _IDDot;
-		
-		private System.Nullable<System.DateTime> _NgayDoc;
-		
-		private System.Nullable<System.DateTime> _NgayKiemSoat_From;
-		
-		private System.Nullable<System.DateTime> _NgayKiemSoat_To;
-		
-		private System.Nullable<System.DateTime> _NgayChuyenListing;
-		
-		private System.Nullable<int> _CreateBy;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<int> _ModifyBy;
-		
-		private System.Nullable<System.DateTime> _ModifyDate;
-		
-		private EntityRef<Lich_DocSo> _Lich_DocSo;
-		
-		private EntityRef<Lich_Dot> _Lich_Dot;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDDocSoChanging(int value);
-    partial void OnIDDocSoChanged();
-    partial void OnIDDotChanging(int value);
-    partial void OnIDDotChanged();
-    partial void OnNgayDocChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayDocChanged();
-    partial void OnNgayKiemSoat_FromChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayKiemSoat_FromChanged();
-    partial void OnNgayKiemSoat_ToChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayKiemSoat_ToChanged();
-    partial void OnNgayChuyenListingChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayChuyenListingChanged();
-    partial void OnCreateByChanging(System.Nullable<int> value);
-    partial void OnCreateByChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnModifyByChanging(System.Nullable<int> value);
-    partial void OnModifyByChanged();
-    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifyDateChanged();
-    #endregion
-		
-		public Lich_DocSo_ChiTiet()
-		{
-			this._Lich_DocSo = default(EntityRef<Lich_DocSo>);
-			this._Lich_Dot = default(EntityRef<Lich_Dot>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDocSo", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDDocSo
-		{
-			get
-			{
-				return this._IDDocSo;
-			}
-			set
-			{
-				if ((this._IDDocSo != value))
-				{
-					if (this._Lich_DocSo.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDDocSoChanging(value);
-					this.SendPropertyChanging();
-					this._IDDocSo = value;
-					this.SendPropertyChanged("IDDocSo");
-					this.OnIDDocSoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDot", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDDot
-		{
-			get
-			{
-				return this._IDDot;
-			}
-			set
-			{
-				if ((this._IDDot != value))
-				{
-					if (this._Lich_Dot.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDDotChanging(value);
-					this.SendPropertyChanging();
-					this._IDDot = value;
-					this.SendPropertyChanged("IDDot");
-					this.OnIDDotChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayDoc", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayDoc
-		{
-			get
-			{
-				return this._NgayDoc;
-			}
-			set
-			{
-				if ((this._NgayDoc != value))
-				{
-					this.OnNgayDocChanging(value);
-					this.SendPropertyChanging();
-					this._NgayDoc = value;
-					this.SendPropertyChanged("NgayDoc");
-					this.OnNgayDocChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayKiemSoat_From", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayKiemSoat_From
-		{
-			get
-			{
-				return this._NgayKiemSoat_From;
-			}
-			set
-			{
-				if ((this._NgayKiemSoat_From != value))
-				{
-					this.OnNgayKiemSoat_FromChanging(value);
-					this.SendPropertyChanging();
-					this._NgayKiemSoat_From = value;
-					this.SendPropertyChanged("NgayKiemSoat_From");
-					this.OnNgayKiemSoat_FromChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayKiemSoat_To", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayKiemSoat_To
-		{
-			get
-			{
-				return this._NgayKiemSoat_To;
-			}
-			set
-			{
-				if ((this._NgayKiemSoat_To != value))
-				{
-					this.OnNgayKiemSoat_ToChanging(value);
-					this.SendPropertyChanging();
-					this._NgayKiemSoat_To = value;
-					this.SendPropertyChanged("NgayKiemSoat_To");
-					this.OnNgayKiemSoat_ToChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChuyenListing", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayChuyenListing
-		{
-			get
-			{
-				return this._NgayChuyenListing;
-			}
-			set
-			{
-				if ((this._NgayChuyenListing != value))
-				{
-					this.OnNgayChuyenListingChanging(value);
-					this.SendPropertyChanging();
-					this._NgayChuyenListing = value;
-					this.SendPropertyChanged("NgayChuyenListing");
-					this.OnNgayChuyenListingChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
-		public System.Nullable<int> CreateBy
-		{
-			get
-			{
-				return this._CreateBy;
-			}
-			set
-			{
-				if ((this._CreateBy != value))
-				{
-					this.OnCreateByChanging(value);
-					this.SendPropertyChanging();
-					this._CreateBy = value;
-					this.SendPropertyChanged("CreateBy");
-					this.OnCreateByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
-		public System.Nullable<int> ModifyBy
-		{
-			get
-			{
-				return this._ModifyBy;
-			}
-			set
-			{
-				if ((this._ModifyBy != value))
-				{
-					this.OnModifyByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyBy = value;
-					this.SendPropertyChanged("ModifyBy");
-					this.OnModifyByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifyDate
-		{
-			get
-			{
-				return this._ModifyDate;
-			}
-			set
-			{
-				if ((this._ModifyDate != value))
-				{
-					this.OnModifyDateChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyDate = value;
-					this.SendPropertyChanged("ModifyDate");
-					this.OnModifyDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_DocSo_Lich_DocSo_ChiTiet", Storage="_Lich_DocSo", ThisKey="IDDocSo", OtherKey="ID", IsForeignKey=true)]
-		public Lich_DocSo Lich_DocSo
-		{
-			get
-			{
-				return this._Lich_DocSo.Entity;
-			}
-			set
-			{
-				Lich_DocSo previousValue = this._Lich_DocSo.Entity;
-				if (((previousValue != value) 
-							|| (this._Lich_DocSo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Lich_DocSo.Entity = null;
-						previousValue.Lich_DocSo_ChiTiets.Remove(this);
-					}
-					this._Lich_DocSo.Entity = value;
-					if ((value != null))
-					{
-						value.Lich_DocSo_ChiTiets.Add(this);
-						this._IDDocSo = value.ID;
-					}
-					else
-					{
-						this._IDDocSo = default(int);
-					}
-					this.SendPropertyChanged("Lich_DocSo");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_Dot_Lich_DocSo_ChiTiet", Storage="_Lich_Dot", ThisKey="IDDot", OtherKey="ID", IsForeignKey=true)]
-		public Lich_Dot Lich_Dot
-		{
-			get
-			{
-				return this._Lich_Dot.Entity;
-			}
-			set
-			{
-				Lich_Dot previousValue = this._Lich_Dot.Entity;
-				if (((previousValue != value) 
-							|| (this._Lich_Dot.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Lich_Dot.Entity = null;
-						previousValue.Lich_DocSo_ChiTiets.Remove(this);
-					}
-					this._Lich_Dot.Entity = value;
-					if ((value != null))
-					{
-						value.Lich_DocSo_ChiTiets.Add(this);
-						this._IDDot = value.ID;
-					}
-					else
-					{
-						this._IDDot = default(int);
-					}
-					this.SendPropertyChanged("Lich_Dot");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lich_Dot")]
-	public partial class Lich_Dot : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private System.Nullable<int> _Name;
-		
-		private System.Nullable<int> _TB1_From;
-		
-		private System.Nullable<int> _TB1_To;
-		
-		private System.Nullable<int> _TB2_From;
-		
-		private System.Nullable<int> _TB2_To;
-		
-		private System.Nullable<int> _TP1_From;
-		
-		private System.Nullable<int> _TP1_To;
-		
-		private System.Nullable<int> _TP2_From;
-		
-		private System.Nullable<int> _TP2_To;
-		
-		private System.Nullable<int> _CreateBy;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<int> _ModifyBy;
-		
-		private System.Nullable<System.DateTime> _ModifyDate;
-		
-		private EntitySet<Lich_ThuTien_ChiTiet> _Lich_ThuTien_ChiTiets;
-		
-		private EntitySet<Lich_DocSo_ChiTiet> _Lich_DocSo_ChiTiets;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnNameChanging(System.Nullable<int> value);
-    partial void OnNameChanged();
-    partial void OnTB1_FromChanging(System.Nullable<int> value);
-    partial void OnTB1_FromChanged();
-    partial void OnTB1_ToChanging(System.Nullable<int> value);
-    partial void OnTB1_ToChanged();
-    partial void OnTB2_FromChanging(System.Nullable<int> value);
-    partial void OnTB2_FromChanged();
-    partial void OnTB2_ToChanging(System.Nullable<int> value);
-    partial void OnTB2_ToChanged();
-    partial void OnTP1_FromChanging(System.Nullable<int> value);
-    partial void OnTP1_FromChanged();
-    partial void OnTP1_ToChanging(System.Nullable<int> value);
-    partial void OnTP1_ToChanged();
-    partial void OnTP2_FromChanging(System.Nullable<int> value);
-    partial void OnTP2_FromChanged();
-    partial void OnTP2_ToChanging(System.Nullable<int> value);
-    partial void OnTP2_ToChanged();
-    partial void OnCreateByChanging(System.Nullable<int> value);
-    partial void OnCreateByChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnModifyByChanging(System.Nullable<int> value);
-    partial void OnModifyByChanged();
-    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifyDateChanged();
-    #endregion
-		
-		public Lich_Dot()
-		{
-			this._Lich_ThuTien_ChiTiets = new EntitySet<Lich_ThuTien_ChiTiet>(new Action<Lich_ThuTien_ChiTiet>(this.attach_Lich_ThuTien_ChiTiets), new Action<Lich_ThuTien_ChiTiet>(this.detach_Lich_ThuTien_ChiTiets));
-			this._Lich_DocSo_ChiTiets = new EntitySet<Lich_DocSo_ChiTiet>(new Action<Lich_DocSo_ChiTiet>(this.attach_Lich_DocSo_ChiTiets), new Action<Lich_DocSo_ChiTiet>(this.detach_Lich_DocSo_ChiTiets));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="Int")]
-		public System.Nullable<int> Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TB1_From", DbType="Int")]
-		public System.Nullable<int> TB1_From
-		{
-			get
-			{
-				return this._TB1_From;
-			}
-			set
-			{
-				if ((this._TB1_From != value))
-				{
-					this.OnTB1_FromChanging(value);
-					this.SendPropertyChanging();
-					this._TB1_From = value;
-					this.SendPropertyChanged("TB1_From");
-					this.OnTB1_FromChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TB1_To", DbType="Int")]
-		public System.Nullable<int> TB1_To
-		{
-			get
-			{
-				return this._TB1_To;
-			}
-			set
-			{
-				if ((this._TB1_To != value))
-				{
-					this.OnTB1_ToChanging(value);
-					this.SendPropertyChanging();
-					this._TB1_To = value;
-					this.SendPropertyChanged("TB1_To");
-					this.OnTB1_ToChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TB2_From", DbType="Int")]
-		public System.Nullable<int> TB2_From
-		{
-			get
-			{
-				return this._TB2_From;
-			}
-			set
-			{
-				if ((this._TB2_From != value))
-				{
-					this.OnTB2_FromChanging(value);
-					this.SendPropertyChanging();
-					this._TB2_From = value;
-					this.SendPropertyChanged("TB2_From");
-					this.OnTB2_FromChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TB2_To", DbType="Int")]
-		public System.Nullable<int> TB2_To
-		{
-			get
-			{
-				return this._TB2_To;
-			}
-			set
-			{
-				if ((this._TB2_To != value))
-				{
-					this.OnTB2_ToChanging(value);
-					this.SendPropertyChanging();
-					this._TB2_To = value;
-					this.SendPropertyChanged("TB2_To");
-					this.OnTB2_ToChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TP1_From", DbType="Int")]
-		public System.Nullable<int> TP1_From
-		{
-			get
-			{
-				return this._TP1_From;
-			}
-			set
-			{
-				if ((this._TP1_From != value))
-				{
-					this.OnTP1_FromChanging(value);
-					this.SendPropertyChanging();
-					this._TP1_From = value;
-					this.SendPropertyChanged("TP1_From");
-					this.OnTP1_FromChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TP1_To", DbType="Int")]
-		public System.Nullable<int> TP1_To
-		{
-			get
-			{
-				return this._TP1_To;
-			}
-			set
-			{
-				if ((this._TP1_To != value))
-				{
-					this.OnTP1_ToChanging(value);
-					this.SendPropertyChanging();
-					this._TP1_To = value;
-					this.SendPropertyChanged("TP1_To");
-					this.OnTP1_ToChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TP2_From", DbType="Int")]
-		public System.Nullable<int> TP2_From
-		{
-			get
-			{
-				return this._TP2_From;
-			}
-			set
-			{
-				if ((this._TP2_From != value))
-				{
-					this.OnTP2_FromChanging(value);
-					this.SendPropertyChanging();
-					this._TP2_From = value;
-					this.SendPropertyChanged("TP2_From");
-					this.OnTP2_FromChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TP2_To", DbType="Int")]
-		public System.Nullable<int> TP2_To
-		{
-			get
-			{
-				return this._TP2_To;
-			}
-			set
-			{
-				if ((this._TP2_To != value))
-				{
-					this.OnTP2_ToChanging(value);
-					this.SendPropertyChanging();
-					this._TP2_To = value;
-					this.SendPropertyChanged("TP2_To");
-					this.OnTP2_ToChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
-		public System.Nullable<int> CreateBy
-		{
-			get
-			{
-				return this._CreateBy;
-			}
-			set
-			{
-				if ((this._CreateBy != value))
-				{
-					this.OnCreateByChanging(value);
-					this.SendPropertyChanging();
-					this._CreateBy = value;
-					this.SendPropertyChanged("CreateBy");
-					this.OnCreateByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
-		public System.Nullable<int> ModifyBy
-		{
-			get
-			{
-				return this._ModifyBy;
-			}
-			set
-			{
-				if ((this._ModifyBy != value))
-				{
-					this.OnModifyByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyBy = value;
-					this.SendPropertyChanged("ModifyBy");
-					this.OnModifyByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifyDate
-		{
-			get
-			{
-				return this._ModifyDate;
-			}
-			set
-			{
-				if ((this._ModifyDate != value))
-				{
-					this.OnModifyDateChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyDate = value;
-					this.SendPropertyChanged("ModifyDate");
-					this.OnModifyDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_Dot_Lich_ThuTien_ChiTiet", Storage="_Lich_ThuTien_ChiTiets", ThisKey="ID", OtherKey="IDDot")]
-		public EntitySet<Lich_ThuTien_ChiTiet> Lich_ThuTien_ChiTiets
-		{
-			get
-			{
-				return this._Lich_ThuTien_ChiTiets;
-			}
-			set
-			{
-				this._Lich_ThuTien_ChiTiets.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_Dot_Lich_DocSo_ChiTiet", Storage="_Lich_DocSo_ChiTiets", ThisKey="ID", OtherKey="IDDot")]
-		public EntitySet<Lich_DocSo_ChiTiet> Lich_DocSo_ChiTiets
-		{
-			get
-			{
-				return this._Lich_DocSo_ChiTiets;
-			}
-			set
-			{
-				this._Lich_DocSo_ChiTiets.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Lich_ThuTien_ChiTiets(Lich_ThuTien_ChiTiet entity)
-		{
-			this.SendPropertyChanging();
-			entity.Lich_Dot = this;
-		}
-		
-		private void detach_Lich_ThuTien_ChiTiets(Lich_ThuTien_ChiTiet entity)
-		{
-			this.SendPropertyChanging();
-			entity.Lich_Dot = null;
-		}
-		
-		private void attach_Lich_DocSo_ChiTiets(Lich_DocSo_ChiTiet entity)
-		{
-			this.SendPropertyChanging();
-			entity.Lich_Dot = this;
-		}
-		
-		private void detach_Lich_DocSo_ChiTiets(Lich_DocSo_ChiTiet entity)
-		{
-			this.SendPropertyChanging();
-			entity.Lich_Dot = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lich_ThuTien")]
-	public partial class Lich_ThuTien : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private System.Nullable<int> _Ky;
-		
-		private System.Nullable<int> _Nam;
-		
-		private System.Nullable<System.DateTime> _TuNgay;
-		
-		private System.Nullable<System.DateTime> _DenNgay;
-		
-		private System.Nullable<int> _CreateBy;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<int> _ModifyBy;
-		
-		private System.Nullable<System.DateTime> _ModifyDate;
-		
-		private EntitySet<Lich_ThuTien_ChiTiet> _Lich_ThuTien_ChiTiets;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnKyChanging(System.Nullable<int> value);
-    partial void OnKyChanged();
-    partial void OnNamChanging(System.Nullable<int> value);
-    partial void OnNamChanged();
-    partial void OnTuNgayChanging(System.Nullable<System.DateTime> value);
-    partial void OnTuNgayChanged();
-    partial void OnDenNgayChanging(System.Nullable<System.DateTime> value);
-    partial void OnDenNgayChanged();
-    partial void OnCreateByChanging(System.Nullable<int> value);
-    partial void OnCreateByChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnModifyByChanging(System.Nullable<int> value);
-    partial void OnModifyByChanged();
-    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifyDateChanged();
-    #endregion
-		
-		public Lich_ThuTien()
-		{
-			this._Lich_ThuTien_ChiTiets = new EntitySet<Lich_ThuTien_ChiTiet>(new Action<Lich_ThuTien_ChiTiet>(this.attach_Lich_ThuTien_ChiTiets), new Action<Lich_ThuTien_ChiTiet>(this.detach_Lich_ThuTien_ChiTiets));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ky", DbType="Int")]
-		public System.Nullable<int> Ky
-		{
-			get
-			{
-				return this._Ky;
-			}
-			set
-			{
-				if ((this._Ky != value))
-				{
-					this.OnKyChanging(value);
-					this.SendPropertyChanging();
-					this._Ky = value;
-					this.SendPropertyChanged("Ky");
-					this.OnKyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nam", DbType="Int")]
-		public System.Nullable<int> Nam
-		{
-			get
-			{
-				return this._Nam;
-			}
-			set
-			{
-				if ((this._Nam != value))
-				{
-					this.OnNamChanging(value);
-					this.SendPropertyChanging();
-					this._Nam = value;
-					this.SendPropertyChanged("Nam");
-					this.OnNamChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TuNgay", DbType="Date")]
-		public System.Nullable<System.DateTime> TuNgay
-		{
-			get
-			{
-				return this._TuNgay;
-			}
-			set
-			{
-				if ((this._TuNgay != value))
-				{
-					this.OnTuNgayChanging(value);
-					this.SendPropertyChanging();
-					this._TuNgay = value;
-					this.SendPropertyChanged("TuNgay");
-					this.OnTuNgayChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DenNgay", DbType="Date")]
-		public System.Nullable<System.DateTime> DenNgay
-		{
-			get
-			{
-				return this._DenNgay;
-			}
-			set
-			{
-				if ((this._DenNgay != value))
-				{
-					this.OnDenNgayChanging(value);
-					this.SendPropertyChanging();
-					this._DenNgay = value;
-					this.SendPropertyChanged("DenNgay");
-					this.OnDenNgayChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
-		public System.Nullable<int> CreateBy
-		{
-			get
-			{
-				return this._CreateBy;
-			}
-			set
-			{
-				if ((this._CreateBy != value))
-				{
-					this.OnCreateByChanging(value);
-					this.SendPropertyChanging();
-					this._CreateBy = value;
-					this.SendPropertyChanged("CreateBy");
-					this.OnCreateByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
-		public System.Nullable<int> ModifyBy
-		{
-			get
-			{
-				return this._ModifyBy;
-			}
-			set
-			{
-				if ((this._ModifyBy != value))
-				{
-					this.OnModifyByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyBy = value;
-					this.SendPropertyChanged("ModifyBy");
-					this.OnModifyByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifyDate
-		{
-			get
-			{
-				return this._ModifyDate;
-			}
-			set
-			{
-				if ((this._ModifyDate != value))
-				{
-					this.OnModifyDateChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyDate = value;
-					this.SendPropertyChanged("ModifyDate");
-					this.OnModifyDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_ThuTien_Lich_ThuTien_ChiTiet", Storage="_Lich_ThuTien_ChiTiets", ThisKey="ID", OtherKey="IDThuTien")]
-		public EntitySet<Lich_ThuTien_ChiTiet> Lich_ThuTien_ChiTiets
-		{
-			get
-			{
-				return this._Lich_ThuTien_ChiTiets;
-			}
-			set
-			{
-				this._Lich_ThuTien_ChiTiets.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Lich_ThuTien_ChiTiets(Lich_ThuTien_ChiTiet entity)
-		{
-			this.SendPropertyChanging();
-			entity.Lich_ThuTien = this;
-		}
-		
-		private void detach_Lich_ThuTien_ChiTiets(Lich_ThuTien_ChiTiet entity)
-		{
-			this.SendPropertyChanging();
-			entity.Lich_ThuTien = null;
 		}
 	}
 }

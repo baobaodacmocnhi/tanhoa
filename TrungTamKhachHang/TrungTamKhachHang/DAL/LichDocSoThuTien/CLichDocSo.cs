@@ -82,6 +82,11 @@ namespace TrungTamKhachHang.DAL.LichDocSoThuTien
             return _db.Lich_DocSos.SingleOrDefault(item => item.ID == ID);
         }
 
+        public Lich_DocSo get(int Ky, int Nam)
+        {
+            return _db.Lich_DocSos.SingleOrDefault(item => item.Ky == Ky&&item.Nam==Nam);
+        }
+
         public DataTable getDS()
         {
             return LINQToDataTable(_db.Lich_DocSos.OrderByDescending(item=>item.CreateDate).ToList());
