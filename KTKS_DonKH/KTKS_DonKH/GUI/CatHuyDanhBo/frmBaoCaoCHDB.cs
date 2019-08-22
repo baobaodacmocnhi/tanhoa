@@ -67,6 +67,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             cmbNoiDung_TheoNgayXuLy.DataSource = lst3;
             cmbNoiDung_TheoNgayXuLy.DisplayMember = "NoiDung";
             cmbNoiDung_TheoNgayXuLy.ValueMember = "NoiDung";
+
+            cmbLyDo.DataSource = lst2;
+            cmbLyDo.DisplayMember = "LyDo";
+            cmbLyDo.ValueMember = "LyDo";
+            cmbNoiDung.DataSource = lst3;
+            cmbNoiDung.DisplayMember = "NoiDung";
+            cmbNoiDung.ValueMember = "NoiDung";
         }
 
         private void btnBaoCao_TheoNgayLap_Click(object sender, EventArgs e)
@@ -706,6 +713,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
+        }
+
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -54,9 +54,16 @@
             this.btnThongKe = new System.Windows.Forms.Button();
             this.btnImportExcelCatHuy = new System.Windows.Forms.Button();
             this.btnImportExcelCatTam = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cmbLyDo = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cmbNoiDung = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnBaoCao = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dateDen
@@ -323,12 +330,77 @@
             this.btnImportExcelCatTam.UseVisualStyleBackColor = true;
             this.btnImportExcelCatTam.Click += new System.EventHandler(this.btnImportExcelCatTam_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnBaoCao);
+            this.groupBox3.Controls.Add(this.cmbNoiDung);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.cmbLyDo);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Location = new System.Drawing.Point(12, 370);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(448, 84);
+            this.groupBox3.TabIndex = 37;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Theo Lý Do - Nội Dung Xử Lý";
+            // 
+            // cmbLyDo
+            // 
+            this.cmbLyDo.FormattingEnabled = true;
+            this.cmbLyDo.Items.AddRange(new object[] {
+            "DS Cắt Hủy",
+            "DS Cắt Tạm"});
+            this.cmbLyDo.Location = new System.Drawing.Point(105, 21);
+            this.cmbLyDo.Name = "cmbLyDo";
+            this.cmbLyDo.Size = new System.Drawing.Size(250, 24);
+            this.cmbLyDo.TabIndex = 34;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 24);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(43, 16);
+            this.label10.TabIndex = 33;
+            this.label10.Text = "Lý Do";
+            // 
+            // cmbNoiDung
+            // 
+            this.cmbNoiDung.FormattingEnabled = true;
+            this.cmbNoiDung.Items.AddRange(new object[] {
+            "DS Cắt Hủy",
+            "DS Cắt Tạm"});
+            this.cmbNoiDung.Location = new System.Drawing.Point(105, 51);
+            this.cmbNoiDung.Name = "cmbNoiDung";
+            this.cmbNoiDung.Size = new System.Drawing.Size(250, 24);
+            this.cmbNoiDung.TabIndex = 36;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 54);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(64, 16);
+            this.label11.TabIndex = 35;
+            this.label11.Text = "Nội Dung";
+            // 
+            // btnBaoCao
+            // 
+            this.btnBaoCao.Location = new System.Drawing.Point(361, 50);
+            this.btnBaoCao.Name = "btnBaoCao";
+            this.btnBaoCao.Size = new System.Drawing.Size(75, 25);
+            this.btnBaoCao.TabIndex = 37;
+            this.btnBaoCao.Text = "Báo Cáo";
+            this.btnBaoCao.UseVisualStyleBackColor = true;
+            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
+            // 
             // frmBaoCaoCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(712, 402);
+            this.ClientSize = new System.Drawing.Size(712, 575);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnImportExcelCatTam);
             this.Controls.Add(this.btnImportExcelCatHuy);
             this.Controls.Add(this.btnThongKe);
@@ -346,6 +418,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -378,6 +452,12 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnImportExcelCatHuy;
         private System.Windows.Forms.Button btnImportExcelCatTam;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ComboBox cmbLyDo;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnBaoCao;
+        private System.Windows.Forms.ComboBox cmbNoiDung;
+        private System.Windows.Forms.Label label11;
 
     }
 }
