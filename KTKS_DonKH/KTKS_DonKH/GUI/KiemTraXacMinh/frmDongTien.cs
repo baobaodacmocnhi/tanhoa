@@ -73,6 +73,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
             cmbTinhTrangDHN.SelectedItem = ctktxm.TinhTrangDHN;
             txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
+            if (ctktxm.DinhMucMoi != null)
+                txtDinhMucMoi.Text = ctktxm.DinhMucMoi.Value.ToString();
+            if (ctktxm.DinhMuc_KhongDangKy != null)
+                txtDinhMuc_KhongDangKy.Text = ctktxm.DinhMuc_KhongDangKy.Value.ToString();
             chkDutChiGoc.Checked = ctktxm.DutChiGoc;
             chkMoNuoc.Checked = ctktxm.MoNuoc;
             chkKhongLienHe.Checked = ctktxm.KhongLienHe;
@@ -156,6 +160,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 txtHoTenKHKy.Text = "";
                 txtNoiDungKiemTra.Text = "";
                 txtTheoYeuCau.Text = "";
+                txtDinhMucMoi.Text = "";
+                txtDinhMuc_KhongDangKy.Text = "";
                 chkDutChiGoc.Checked = false;
                 chkMoNuoc.Checked = false; 
                 cmbNoiDungXuLy.SelectedIndex = -1;
@@ -168,7 +174,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 ///
                 chkDongTien.Checked = false;
                 dateDongTien.Value = DateTime.Now;
-                
                 ///
                 chkChuyenLapTBCat.Checked = false;
                 dateChuyenCatHuy.Value = DateTime.Now;
@@ -204,10 +209,15 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     {
                         KTXM_ChiTiet ctktxm = _cKTXM.GetCT(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", _selectedindex].Value.ToString()));
 
+                        if (txtDinhMucMoi.Text.Trim() != "")
+                            ctktxm.DinhMucMoi = int.Parse(txtDinhMucMoi.Text.Trim());
+                        if (txtDinhMuc_KhongDangKy.Text.Trim() != "")
+                            ctktxm.DinhMuc_KhongDangKy = int.Parse(txtDinhMuc_KhongDangKy.Text.Trim());
+
                         ctktxm.DutChiGoc = chkDutChiGoc.Checked;
                         ctktxm.MoNuoc = chkMoNuoc.Checked;
                         ctktxm.KhongLienHe = chkKhongLienHe.Checked;
-
+                        ctktxm.LapTruyThu = chkLapTruyThu.Checked;
                         if (cmbNoiDungXuLy.SelectedIndex >-1)
                         {
                             ctktxm.NoiDungXuLy = cmbNoiDungXuLy.SelectedValue.ToString();
@@ -343,6 +353,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            _cKTXM.LoadImageView(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
         }
     }
 }
