@@ -715,9 +715,66 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             range.Value2 = arr;
         }
 
-        private void btnBaoCao_Click(object sender, EventArgs e)
+        private void btnBaoCao_CatTam_Click(object sender, EventArgs e)
         {
+            DataTable dt = _cCHDB.getDS_CatTam_LyDo_NoiDungXuLy(cmbLyDo.SelectedValue.ToString(),cmbNoiDung.SelectedValue.ToString());
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
+                dr["LoaiBaoCao"] = "CẮT TẠM";
+                dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                dr["CreateDate"] = item["CreateDate"].ToString();
+                if (item["DanhBo"].ToString() != "")
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = item["HoTen"].ToString();
+                dr["DiaChi"] = item["DiaChi"].ToString();
+                dr["LyDo"] = item["LyDo"].ToString();
+                dr["NgayXuLy"] = item["NgayXuLy"].ToString();
+                dr["NoiDungXuLy"] = item["NoiDungXuLy"].ToString();
+                dr["GroupNoiDungXuLy"] = "True";
+                dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
+            }
+
+            rptDSCHDB rpt = new rptDSCHDB();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
+        }
+
+        private void btnBaoCao_CatHuy_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cCHDB.getDS_CatHuy_LyDo_NoiDungXuLy(cmbLyDo.SelectedValue.ToString(), cmbNoiDung.SelectedValue.ToString());
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
+
+                dr["LoaiBaoCao"] = "CẮT HỦY";
+                dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                dr["CreateDate"] = item["CreateDate"].ToString();
+                if (item["DanhBo"].ToString() != "")
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = item["HoTen"].ToString();
+                dr["DiaChi"] = item["DiaChi"].ToString();
+                dr["LyDo"] = item["LyDo"].ToString();
+                dr["NgayXuLy"] = item["NgayXuLy"].ToString();
+                dr["NoiDungXuLy"] = item["NoiDungXuLy"].ToString();
+                dr["GroupNoiDungXuLy"] = "True";
+                dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
+            }
+
+            rptDSCHDB rpt = new rptDSCHDB();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
         }
     }
 }

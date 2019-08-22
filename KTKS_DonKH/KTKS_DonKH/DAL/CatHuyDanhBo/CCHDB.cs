@@ -576,6 +576,11 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_CatTam_LyDo_NoiDungXuLy(string LyDo,string NoiDungXuLy)
+        {
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.LyDo==LyDo&&item.NoiDungXuLy==NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
+        }
+
         public DataTable GetDSCatTam_NgayLap_ChuaXuLy(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.NgayXuLy == null).OrderBy(item => item.CreateDate).ToList());
@@ -1127,6 +1132,10 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         //    }
         //}
 
+        public DataTable getDS_CatHuy_LyDo_NoiDungXuLy(string LyDo, string NoiDungXuLy)
+        {
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.LyDo == LyDo && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
+        }
         public DataTable GetDSCatHuy_NgayLap_ChuaXuLy(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.NgayXuLy == null).OrderBy(item => item.CreateDate).ToList());
