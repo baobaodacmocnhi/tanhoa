@@ -1563,7 +1563,7 @@ namespace QLVanThu
                     KeyWord = "KTCN";
                     break;
                 case 5:
-                    KeyWord = "KTKS";
+                    KeyWord = "TV";
                     break;
                 case 6:
                     KeyWord = "QLDA";
@@ -1609,8 +1609,8 @@ namespace QLVanThu
                 if (KeyWord == "ĐTT")
                     expression = String.Format("(SoKyHieuVB not like '%CNTT' and SoKyHieuVB like '%TT' or SoKyHieuVB like '%{0}%')", KeyWord);
                 else
-                if (KeyWord == "KD")
-                    expression = String.Format("(SoKyHieuVB like '%KTKS%' or SoKyHieuVB like '%{0}%')", KeyWord);
+                if (KeyWord == "TV")
+                    expression = String.Format("(SoKyHieuVB like '%KTKS%' or SoKyHieuVB like '%KD%' or SoKyHieuVB like '%{0}%')", KeyWord);
                 else
                     if (KeyWord == "QĐ-TCHC")
                         expression = "SoKyHieuVB like '%QĐ%' and SoKyHieuVB like '%TCHC%'";
