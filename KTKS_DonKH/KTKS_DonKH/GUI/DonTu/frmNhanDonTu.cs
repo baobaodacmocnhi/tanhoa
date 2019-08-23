@@ -239,23 +239,25 @@ namespace KTKS_DonKH.GUI.DonTu
                 cmbPhongBanDoi.SelectedIndex = -1;
                 txtSoCongVan.Text = "";
                 txtTongDB.Text = "1";
+
+                for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
+                {
+                    chkcmbDieuChinh.Properties.Items[i].CheckState = CheckState.Unchecked;
+                }
+                for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
+                {
+                    chkcmbKhieuNai.Properties.Items[i].CheckState = CheckState.Unchecked;
+                }
+                for (int i = 0; i < chkcmbDHN.Properties.Items.Count; i++)
+                {
+                    chkcmbDHN.Properties.Items[i].CheckState = CheckState.Unchecked;
+                }
             }
             txtMaDon.Text = "";
             lbTruyThu.Text = "";
             txtNguoiLap.Text = "";
 
-            for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
-            {
-                chkcmbDieuChinh.Properties.Items[i].CheckState = CheckState.Unchecked;
-            }
-            for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
-            {
-                chkcmbKhieuNai.Properties.Items[i].CheckState = CheckState.Unchecked;
-            }
-            for (int i = 0; i < chkcmbDHN.Properties.Items.Count; i++)
-            {
-                chkcmbDHN.Properties.Items[i].CheckState = CheckState.Unchecked;
-            }
+            
             cmbNhomDon_ChiTiet.SelectedIndex = -1;
             txtSoNK.Text = "";
             txtHieuLucKy.Text = "";
