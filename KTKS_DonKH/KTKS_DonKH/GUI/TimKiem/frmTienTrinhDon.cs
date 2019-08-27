@@ -113,6 +113,9 @@ namespace KTKS_DonKH.GUI.TimKiem
                     case "Địa Chỉ":
                         dt = _cTimKiem.getTienTrinhByDiaChi(txtNoiDungTimKiem.Text.Trim()).Tables["DonTu"];
                         break;
+                    case "Số Chứng Từ":
+                        dt = _cTimKiem.getTienTrinhBySoChungTu(txtNoiDungTimKiem.Text.Trim()).Tables["DonTu"];
+                        break;
                 }
                 //TimeSpan diff = DateTime.Now - date;
                 //_log.WriteLine("lấy lịch sử khiếu nại " + diff.TotalSeconds.ToString());
@@ -759,14 +762,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                 btnTimKiemTTKH.PerformClick();
         }
 
-        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-
-       
-        
 
     }
 

@@ -31,6 +31,22 @@ namespace KTKS_DonKH.DAL.PhongKhachHang
             }
         }
 
+        public bool sua(KH_HopDong en)
+        {
+            try
+            {
+                en.ModifyBy = CTaiKhoan.MaUser;
+                en.ModifyDate = DateTime.Now;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
         public bool xoa(KH_HopDong en)
         {
             try

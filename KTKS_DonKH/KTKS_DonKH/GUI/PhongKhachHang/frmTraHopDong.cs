@@ -122,7 +122,7 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
         {
             if (dgvDanhBo.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
             {
-                e.Value = e.Value.ToString().Insert(7," ").Insert(4," ");
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }
         }
 
@@ -155,6 +155,34 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             dgvDanhBo.DataSource = _cTHD.getDS(txtDanhBo.Text.Trim().Replace(" ", ""));
+        }
+
+        private void dgvDanhBo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvDanhBo.Columns[e.ColumnIndex].Name == "Tra")
+                {
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                    {
+                        if (_en != null)
+                        {
+                            _en.Tra = bool.Parse(dgvDanhBo[e.ColumnIndex, e.RowIndex].Value.ToString());
+                            if (_en.Tra == true)
+                                _en.NgayTra = DateTime.Now;
+                            else
+                                _en.NgayTra = null;
+                            _cTHD.sua(_en);
+                        }
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

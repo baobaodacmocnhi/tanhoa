@@ -37,10 +37,12 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvDanhBo = new System.Windows.Forms.DataGridView();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnTimKiem = new System.Windows.Forms.Button();
+            this.Tra = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.NgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,14 +126,27 @@
             this.dgvDanhBo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.DanhBo,
-            this.CreateDate});
+            this.CreateDate,
+            this.Tra,
+            this.NgayTra});
             this.dgvDanhBo.Location = new System.Drawing.Point(12, 74);
             this.dgvDanhBo.Name = "dgvDanhBo";
-            this.dgvDanhBo.Size = new System.Drawing.Size(366, 505);
+            this.dgvDanhBo.Size = new System.Drawing.Size(515, 505);
             this.dgvDanhBo.TabIndex = 14;
             this.dgvDanhBo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBo_CellContentClick);
+            this.dgvDanhBo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBo_CellEndEdit);
             this.dgvDanhBo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhBo_CellFormatting);
             this.dgvDanhBo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhBo_RowPostPaint);
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Location = new System.Drawing.Point(279, 12);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(75, 25);
+            this.btnTimKiem.TabIndex = 15;
+            this.btnTimKiem.Text = "Tìm Kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // ID
             // 
@@ -151,21 +166,26 @@
             this.CreateDate.HeaderText = "Ngày Lập";
             this.CreateDate.Name = "CreateDate";
             // 
-            // btnTimKiem
+            // Tra
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(279, 12);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(75, 25);
-            this.btnTimKiem.TabIndex = 15;
-            this.btnTimKiem.Text = "Tìm Kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            this.Tra.DataPropertyName = "Tra";
+            this.Tra.HeaderText = "Trả";
+            this.Tra.Name = "Tra";
+            this.Tra.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Tra.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Tra.Width = 50;
+            // 
+            // NgayTra
+            // 
+            this.NgayTra.DataPropertyName = "NgayTra";
+            this.NgayTra.HeaderText = "Ngày Trả";
+            this.NgayTra.Name = "NgayTra";
             // 
             // frmTraHopDong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 591);
+            this.ClientSize = new System.Drawing.Size(538, 591);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.dgvDanhBo);
             this.Controls.Add(this.btnXoa);
@@ -194,9 +214,11 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvDanhBo;
+        private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
-        private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Tra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayTra;
     }
 }

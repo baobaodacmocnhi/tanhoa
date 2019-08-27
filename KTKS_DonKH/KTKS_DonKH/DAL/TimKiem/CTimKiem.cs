@@ -8317,5 +8317,79 @@ namespace KTKS_DonKH.DAL.TimKiem
 
             return ds;
         }
+
+        public DataSet getTienTrinhBySoChungTu(string SoChungTu)
+        {
+            DataSet ds = ExecuteQuery_DataSet("exec spTimKiemBySoChungTu_DonTuChiTiet '" + SoChungTu + "'");
+
+            DataTable dt = ExecuteQuery_DataTable("exec spTimKiemBySoChungTu_DonTu '" + SoChungTu + "'");
+            DataTable dtDon = new DataTable();
+            dtDon.Columns.Add("MaDon", typeof(string));
+            dtDon.Columns.Add("TenLD", typeof(string));
+            dtDon.Columns.Add("CreateDate", typeof(DateTime));
+            dtDon.Columns.Add("DanhBo", typeof(string));
+            dtDon.Columns.Add("HoTen", typeof(string));
+            dtDon.Columns.Add("DiaChi", typeof(string));
+            dtDon.Columns.Add("GiaBieu", typeof(string));
+            dtDon.Columns.Add("DinhMuc", typeof(string));
+            dtDon.Columns.Add("NoiDung", typeof(string));
+            dtDon.Columns.Add("DienThoai", typeof(string));
+            dtDon.TableName = "DonTu";
+
+            foreach (DataRow itemRow in dt.Rows)
+            {
+                if (dtDon.Select("MaDon = '" + itemRow["MaDon"] + "'").Count() <= 0)
+                    dtDon.ImportRow(itemRow);
+            }
+
+            dtDon.DefaultView.Sort = "CreateDate ASC";
+            ds.Tables.Add(dtDon.DefaultView.ToTable());
+
+            for (int i = 0; i < ds.Tables.Count; i++)
+                if (ds.Tables[i].Rows.Count > 0)
+                {
+                    switch (ds.Tables[i].Rows[0][0].ToString())
+                    {
+                        case "KTXM":
+                            ds.Relations.Add("Chi Tiết Kiểm Tra Xác Minh", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                        case "BamChi":
+                            ds.Relations.Add("Chi Tiết Bấm Chì", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                        case "DongNuoc":
+                            ds.Relations.Add("Chi Tiết Đóng Nước", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                        case "DCBD":
+                            ds.Relations.Add("Chi Tiết Điều Chỉnh Biến Động", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                        case "CHDB":
+                            ds.Relations.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                        case "PhieuCHDB":
+                            ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                        case "ThuTraLoi":
+                            ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                        case "GianLan":
+                            ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                        case "TruyThu":
+                            ds.Relations.Add("Chi Tiết Truy Thu", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                        case "ToTrinh":
+                            ds.Relations.Add("Chi Tiết Tờ Trình", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                        case "ThuMoi":
+                            ds.Relations.Add("Chi Tiết Thư Mời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                        case "TienTrinh":
+                            ds.Relations.Add("Chi Tiết Tiến Trình", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                    }
+                }
+
+            return ds;
+        }
     }
 }

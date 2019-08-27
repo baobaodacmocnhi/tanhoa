@@ -912,7 +912,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         }
                                         if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
                                         {
-                                            _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set SOHO=SONHA+' '+TENDUONG,SONHA=N'" + ctdcbd.DiaChi_BD.Substring(0, ctdcbd.DiaChi_BD.IndexOf(" ")) + "',TENDUONG=N'" + ctdcbd.DiaChi_BD.Substring((ctdcbd.DiaChi_BD.IndexOf(" ") + 1), ctdcbd.DiaChi_BD.Length - ctdcbd.DiaChi_BD.IndexOf(" ") - 1) + "' where DANHBO='" + ctdcbd.DanhBo + "'");
+                                            _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DiaChiHoaDon=N'" + ctdcbd.DiaChi_BD + "',SOHO=SONHA+' '+TENDUONG,SONHA=N'" + ctdcbd.DiaChi_BD.Substring(0, ctdcbd.DiaChi_BD.IndexOf(" ")) + "',TENDUONG=N'" + ctdcbd.DiaChi_BD.Substring((ctdcbd.DiaChi_BD.IndexOf(" ") + 1), ctdcbd.DiaChi_BD.Length - ctdcbd.DiaChi_BD.IndexOf(" ") - 1) + "' where DANHBO='" + ctdcbd.DanhBo + "'");
                                         }
                                         if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                         {
@@ -1011,7 +1011,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
                                     {
-                                        _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set SONHA=N'" + ctdcbd.DiaChi.Substring(0, ctdcbd.DiaChi.IndexOf(" ")) + "',TENDUONG=N'" + ctdcbd.DiaChi.Substring((ctdcbd.DiaChi.IndexOf(" ") + 1), ctdcbd.DiaChi.Length - ctdcbd.DiaChi.IndexOf(" ") - 1) + "' where DANHBO='" + ctdcbd.DanhBo + "'");
+                                        _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DiaChiHoaDon=N'" + ctdcbd.DiaChi + "',SONHA=N'" + ctdcbd.DiaChi.Substring(0, ctdcbd.DiaChi.IndexOf(" ")) + "',TENDUONG=N'" + ctdcbd.DiaChi.Substring((ctdcbd.DiaChi.IndexOf(" ") + 1), ctdcbd.DiaChi.Length - ctdcbd.DiaChi.IndexOf(" ") - 1) + "' where DANHBO='" + ctdcbd.DanhBo + "'");
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                     {
