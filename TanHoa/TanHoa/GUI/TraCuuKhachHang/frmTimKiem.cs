@@ -16,10 +16,10 @@ namespace TanHoa.GUI.TraCuuKhachHang
         //CConnection _cDocSo = new CConnection("Data Source=192.168.90.8\\KD;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=sa;Password=P@ssW012d");
         //CConnection _cThuTien = new CConnection("Data Source=192.168.90.9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=P@ssW012d9");
         //CConnection _cKinhDoanh = new CConnection("Data Source=192.168.90.11;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=capnuoctanhoa789");
-        CConnection _cDHN = new CConnection("Data Source=hp_g7\\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;User ID=sa;Password=P@ssW012d");
-        CConnection _cDocSo = new CConnection("Data Source=hp_g7\\KD;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=sa;Password=P@ssW012d");
-        CConnection _cThuTien = new CConnection("Data Source=server9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=P@ssW012d9");
-        CConnection _cKinhDoanh = new CConnection("Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=capnuoctanhoa789");
+        CConnection _cDHN = new CConnection("Data Source=hp_g7\\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;User ID=sa;Password=db8@tanhoa");
+        CConnection _cDocSo = new CConnection("Data Source=hp_g7\\KD;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=sa;Password=db8@tanhoa");
+        CConnection _cThuTien = new CConnection("Data Source=server9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=db9@tanhoa");
+        CConnection _cKinhDoanh = new CConnection("Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=db11@tanhoa");
         
         public frmTimKiem()
         {
@@ -154,7 +154,7 @@ namespace TanHoa.GUI.TraCuuKhachHang
                             + " union all"
                             + " select CreateDate,Loai=N'Tờ Trình',NoiDung=VeViec,GhiChu=NoiDung from ToTrinh_ChiTiet where DanhBo=@DanhBo"
                             + " union all"
-                            + " select CreateDate,Loai=N'Thư Trả Lời',NoiDung=VeViec,GhiChu=NoiDung from TTTL_ChiTiet where DanhBo=@DanhBo"
+                            + " select CreateDate,Loai=N'Thư Trả Lời',NoiDung=VeViec,GhiChu=NoiDung from ThuTraLoi_ChiTiet where DanhBo=@DanhBo"
                             + " union all"
                             + " select CreateDate,Loai=N'Truy Thu',NoiDung=TinhTrang,GhiChu=CONVERT(char(10),TongTien) from TruyThuTienNuoc_ChiTiet where DanhBo=@DanhBo"
                             + " union all"

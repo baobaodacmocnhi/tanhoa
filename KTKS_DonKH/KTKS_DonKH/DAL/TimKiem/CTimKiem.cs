@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Windows.Forms;
+using KTKS_DonKH.DAL.DieuChinhBienDong;
 
 namespace KTKS_DonKH.DAL.TimKiem
 {
@@ -8320,9 +8321,16 @@ namespace KTKS_DonKH.DAL.TimKiem
 
         public DataSet getTienTrinhBySoChungTu(string SoChungTu)
         {
-            DataSet ds = ExecuteQuery_DataSet("exec spTimKiemBySoChungTu_DonTuChiTiet '" + SoChungTu + "'");
+            CChungTu _cChungTu = new CChungTu();
+            DataTable dtChungTu = _cChungTu.getDS_ChiTiet(SoChungTu);
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            foreach (DataRow item in dtChungTu.Rows)
+            {
+                dt.Merge(ExecuteQuery_DataTable("exec spTimKiemByBanhBo_DonTu '" + item["DanhBo"] + "'"));
+                ds.Merge(ExecuteQuery_DataSet("exec spTimKiemByBanhBo_DonTuChiTiet '" + item["DanhBo"] + "'"));
+            }
 
-            DataTable dt = ExecuteQuery_DataTable("exec spTimKiemBySoChungTu_DonTu '" + SoChungTu + "'");
             DataTable dtDon = new DataTable();
             dtDon.Columns.Add("MaDon", typeof(string));
             dtDon.Columns.Add("TenLD", typeof(string));

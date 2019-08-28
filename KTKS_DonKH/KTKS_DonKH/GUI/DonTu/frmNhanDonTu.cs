@@ -991,9 +991,9 @@ namespace KTKS_DonKH.GUI.DonTu
                 #endregion
 
                 dr["NgayGiaiQuyet"] = entity.NgayHenGiaiQuyet;
-                if (entity.SoNK != null)
-                    dr["DinhMucSau"] = entity.SoNK * 4;
-                dr["HieuLucTuKy"] = entity.HieuLucKy;
+                //if (entity.SoNK != null)
+                //    dr["DinhMucSau"] = entity.SoNK * 4;
+                //dr["HieuLucTuKy"] = entity.HieuLucKy;
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 dr["HoTenNV"] = CTaiKhoan.HoTen;
                 dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);

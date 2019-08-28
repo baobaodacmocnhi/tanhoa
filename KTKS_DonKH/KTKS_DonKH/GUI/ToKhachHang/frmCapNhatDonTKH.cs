@@ -69,38 +69,39 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             cmbNoiChuyen.ValueMember = "ID";
             cmbNoiChuyen.SelectedIndex = -1;
 
-            DataTable dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
-            dt.TableName = "1";//Kiểm Tra Xác Minh
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TKH");
-            dt.TableName = "2";//Tổ Khách Hàng
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TXL");
-            dt.TableName = "3";//Tổ Xử Lý
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TBC");
-            dt.TableName = "4";//Tổ Bấm Chì
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TVP");
-            dt.TableName = "5";//Tổ Văn Phòng
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cPhongBanDoi.GetDS();
-            dt.TableName = "6";//Phòng Ban Đội Khác
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TVP");
+            //DataTable dt = new DataTable();
+            //dt = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
+            //dt.TableName = "1";//Kiểm Tra Xác Minh
+            //_dsNoiChuyen.Tables.Add(dt);
+            /////
+            //dt = new DataTable();
+            //dt = _cTaiKhoan.GetDS_ThuKy("TKH");
+            //dt.TableName = "2";//Tổ Khách Hàng
+            //_dsNoiChuyen.Tables.Add(dt);
+            /////
+            //dt = new DataTable();
+            //dt = _cTaiKhoan.GetDS_ThuKy("TXL");
+            //dt.TableName = "3";//Tổ Xử Lý
+            //_dsNoiChuyen.Tables.Add(dt);
+            /////
+            //dt = new DataTable();
+            //dt = _cTaiKhoan.GetDS_ThuKy("TBC");
+            //dt.TableName = "4";//Tổ Bấm Chì
+            //_dsNoiChuyen.Tables.Add(dt);
+            /////
+            //dt = new DataTable();
+            //dt = _cTaiKhoan.GetDS_ThuKy("TVP");
+            //dt.TableName = "5";//Tổ Văn Phòng
+            //_dsNoiChuyen.Tables.Add(dt);
+            /////
+            //dt = new DataTable();
+            //dt = _cPhongBanDoi.GetDS();
+            //dt.TableName = "6";//Phòng Ban Đội Khác
+            //_dsNoiChuyen.Tables.Add(dt);
+
+            /////
+            //dt = new DataTable();
+            //dt = _cTaiKhoan.GetDS_ThuKy("TVP");
             ///
             //DataRow dr2 = dt.NewRow();
             //dr2["MaU"] = "0";
@@ -137,21 +138,22 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             //dr2["HoTen"] = "Hẹn Kiểm Định";
             //dt.Rows.Add(dr2);
             ///
-            for (int i = 0; i < _dsNoiChuyen.Tables["6"].Rows.Count; i++)
-            {
-                DataRow dr = dt.NewRow();
-                dr["MaU"] = _dsNoiChuyen.Tables["6"].Rows[i]["ID"];
-                dr["HoTen"] = _dsNoiChuyen.Tables["6"].Rows[i]["Name"];
-                dt.Rows.Add(dr);
-            }
-            DataTable dt2 = _cNoiChuyen.GetDS_CT(9);
-            for (int i = 0; i < dt2.Rows.Count; i++)
-            {
-                DataRow dr = dt.NewRow();
-                dr["MaU"] = dt2.Rows[i]["ID"];
-                dr["HoTen"] = dt2.Rows[i]["Name"];
-                dt.Rows.Add(dr);
-            }
+
+            //for (int i = 0; i < _dsNoiChuyen.Tables["6"].Rows.Count; i++)
+            //{
+            //    DataRow dr = dt.NewRow();
+            //    dr["MaU"] = _dsNoiChuyen.Tables["6"].Rows[i]["ID"];
+            //    dr["HoTen"] = _dsNoiChuyen.Tables["6"].Rows[i]["Name"];
+            //    dt.Rows.Add(dr);
+            //}
+            //DataTable dt2 = _cNoiChuyen.GetDS_CT(9);
+            //for (int i = 0; i < dt2.Rows.Count; i++)
+            //{
+            //    DataRow dr = dt.NewRow();
+            //    dr["MaU"] = dt2.Rows[i]["ID"];
+            //    dr["HoTen"] = dt2.Rows[i]["Name"];
+            //    dt.Rows.Add(dr);
+            //}
             ///
             //dr2 = dt.NewRow();
             //dr2["MaU"] = "0";
@@ -167,8 +169,9 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             //dr2["MaU"] = "0";
             //dr2["HoTen"] = "Xếp Đơn";
             //dt.Rows.Add(dr2);
-            dt.TableName = "9";//Tiến Trình
-            _dsNoiChuyen.Tables.Add(dt);
+
+            //dt.TableName = "9";//Tiến Trình
+            //_dsNoiChuyen.Tables.Add(dt);
             _flagFirst = true;
         }
 

@@ -179,6 +179,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ChiTiet(string MaCT)
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        where itemCTCT.MaCT == MaCT
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                        };
+
+            return LINQToDataTable(query);
+        }
+
         #endregion
 
         #region ChungTu_LichSu
