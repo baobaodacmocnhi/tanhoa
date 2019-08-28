@@ -65,40 +65,40 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
             _flagFirst = true;
 
-            DataTable dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
-            dt.TableName = "1";//Kiểm Tra Xác Minh
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TKH");
-            dt.TableName = "2";//Tổ Khách Hàng
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TXL");
-            dt.TableName = "3";//Tổ Xử Lý
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TBC");
-            dt.TableName = "4";//Tổ Bấm Chì
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TVP");
-            dt.TableName = "5";//Tổ Văn Phòng
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cPhongBanDoi.GetDS();
-            dt.TableName = "6";//Phòng Ban Đội Khác
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cNoiChuyen.GetDS_CT(10);
-            dt.TableName = "10";//Chuyên Đề Định Mức
-            _dsNoiChuyen.Tables.Add(dt);
+            //DataTable dt = new DataTable();
+            //dt = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
+            //dt.TableName = "1";//Kiểm Tra Xác Minh
+            //_dsNoiChuyen.Tables.Add(dt);
+            /////
+            //dt = new DataTable();
+            //dt = _cTaiKhoan.GetDS_ThuKy("TKH");
+            //dt.TableName = "2";//Tổ Khách Hàng
+            //_dsNoiChuyen.Tables.Add(dt);
+            /////
+            //dt = new DataTable();
+            //dt = _cTaiKhoan.GetDS_ThuKy("TXL");
+            //dt.TableName = "3";//Tổ Xử Lý
+            //_dsNoiChuyen.Tables.Add(dt);
+            /////
+            //dt = new DataTable();
+            //dt = _cTaiKhoan.GetDS_ThuKy("TBC");
+            //dt.TableName = "4";//Tổ Bấm Chì
+            //_dsNoiChuyen.Tables.Add(dt);
+            /////
+            //dt = new DataTable();
+            //dt = _cTaiKhoan.GetDS_ThuKy("TVP");
+            //dt.TableName = "5";//Tổ Văn Phòng
+            //_dsNoiChuyen.Tables.Add(dt);
+            /////
+            //dt = new DataTable();
+            //dt = _cPhongBanDoi.GetDS();
+            //dt.TableName = "6";//Phòng Ban Đội Khác
+            //_dsNoiChuyen.Tables.Add(dt);
+            /////
+            //dt = new DataTable();
+            //dt = _cNoiChuyen.GetDS_CT(10);
+            //dt.TableName = "10";//Chuyên Đề Định Mức
+            //_dsNoiChuyen.Tables.Add(dt);
 
             if (_MaDonTo != -1)
             {
