@@ -760,7 +760,7 @@ namespace ThuTien.DAL.Doi
                         + " from"
                         + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " where "
                         + " and NAM=@Nam"
                         + " group by nd.MaND,nd.HoTen,NAM) tong"
                         + " left join"
@@ -3932,6 +3932,12 @@ namespace ThuTien.DAL.Doi
         //        }
         //    return null;
         //}
+
+        public DataTable GetTongDangNgan_To(int MaTo, DateTime NgayGiaiTrach)
+        {
+            string sql = "";
+            return ExecuteQuery_DataTable(sql);
+        }
 
         /// <summary>
         /// Lấy Sum thông tin những hóa đơn đã đăng ngân bởi các anh/em, không tính nhân viên thuộc tổ đó không

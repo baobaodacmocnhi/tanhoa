@@ -252,17 +252,16 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     chkcmbDHN.Properties.Items[i].CheckState = CheckState.Unchecked;
                 }
+                txtNoiDung.Text = "";
+                txtVanDeKhac.Text = "";
             }
             txtMaDon.Text = "";
             lbTruyThu.Text = "";
             txtNguoiLap.Text = "";
-
             
             cmbNhomDon_ChiTiet.SelectedIndex = -1;
             txtSoNK.Text = "";
             txtHieuLucKy.Text = "";
-            txtNoiDung.Text = "";
-            txtVanDeKhac.Text = "";
 
             txtDanhBo.Text = "";
             txtHopDong.Text = "";

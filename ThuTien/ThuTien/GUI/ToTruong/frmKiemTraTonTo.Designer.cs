@@ -751,7 +751,7 @@
             // 
             this.lbTo.AutoSize = true;
             this.lbTo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTo.Location = new System.Drawing.Point(14, 9);
+            this.lbTo.Location = new System.Drawing.Point(12, 9);
             this.lbTo.Name = "lbTo";
             this.lbTo.Size = new System.Drawing.Size(32, 19);
             this.lbTo.TabIndex = 28;

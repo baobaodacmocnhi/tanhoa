@@ -19,6 +19,7 @@ namespace ThuTien.GUI.ToTruong
     {
         //string _mnu = "mnuKiemTraDangNganTo";
         CHoaDon _cHoaDon = new CHoaDon();
+        CTo _cTo = new CTo();
 
         public frmKiemTraDangNganTo()
         {
@@ -30,9 +31,34 @@ namespace ThuTien.GUI.ToTruong
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
 
-            lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
+            if (CNguoiDung.Doi)
+            {
+                cmbTo.Visible = true;
+
+                cmbTo.DataSource = _cTo.GetDSHanhThu();
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+            }
+            else
+                lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
+
+            DataTable dtNam = _cHoaDon.GetNam();
+            DataRow dr = dtNam.NewRow();
+            dr["ID"] = "Tất Cả";
+            dtNam.Rows.InsertAt(dr, 0);
+            cmbNam.DataSource = dtNam;
+            cmbNam.DisplayMember = "ID";
+            cmbNam.ValueMember = "Nam";
 
             dateGiaiTrach.Value = DateTime.Now;
+
+            cmbNam.SelectedValue = DateTime.Now.Year.ToString();
+            cmbKy.SelectedItem = DateTime.Now.Month.ToString();
+            cmbFromDot.SelectedIndex = 0;
+            cmbToDot.SelectedIndex = 0;
+
+            tabTuGia.Text = "Hóa Đơn";
+            tabControl.TabPages.Remove(tabCoQuan);
         }
 
         public void CountdgvHDTuGia()
@@ -93,12 +119,12 @@ namespace ThuTien.GUI.ToTruong
                 dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNgan_To("TG", CNguoiDung.MaTo, dateGiaiTrach.Value);
                 CountdgvHDTuGia();
             }
-            else
-                if (tabControl.SelectedTab.Name == "tabCoQuan")
-                {
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNgan_To("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
-                    CountdgvHDCoQuan();
-            }
+            //else
+            //    if (tabControl.SelectedTab.Name == "tabCoQuan")
+            //    {
+            //        dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNgan_To("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
+            //        CountdgvHDCoQuan();
+            //}
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -110,7 +136,7 @@ namespace ThuTien.GUI.ToTruong
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                    dr["LoaiBaoCao"] = "TƯ GIA ĐÃ THU";
+                    dr["LoaiBaoCao"] = "ĐÃ THU";
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                     dr["Ky"] = item["Ky"];
                     dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
@@ -121,24 +147,24 @@ namespace ThuTien.GUI.ToTruong
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
                 }
             }
-            else
-                if (tabControl.SelectedTab.Name == "tabCoQuan")
-                {
-                    DataTable dt = _cHoaDon.GetDSDangNgan("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), dateGiaiTrach.Value);
-                    foreach (DataRow item in dt.Rows)
-                    {
-                        DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                        dr["LoaiBaoCao"] = "CƠ QUAN ĐÃ THU";
-                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                        dr["Ky"] = item["Ky"];
-                        dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
-                        dr["TongCong"] = item["TongCong"];
-                        //dr["SoPhatHanh"] = item["SoPhatHanh"];
-                        dr["SoHoaDon"] = item["SoHoaDon"];
-                        dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
-                        ds.Tables["DSHoaDon"].Rows.Add(dr);
-                    }
-                }
+            //else
+            //    if (tabControl.SelectedTab.Name == "tabCoQuan")
+            //    {
+            //        DataTable dt = _cHoaDon.GetDSDangNgan("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), dateGiaiTrach.Value);
+            //        foreach (DataRow item in dt.Rows)
+            //        {
+            //            DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+            //            dr["LoaiBaoCao"] = "CƠ QUAN ĐÃ THU";
+            //            dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+            //            dr["Ky"] = item["Ky"];
+            //            dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
+            //            dr["TongCong"] = item["TongCong"];
+            //            //dr["SoPhatHanh"] = item["SoPhatHanh"];
+            //            dr["SoHoaDon"] = item["SoHoaDon"];
+            //            dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
+            //            ds.Tables["DSHoaDon"].Rows.Add(dr);
+            //        }
+            //    }
             rptDSHoaDon rpt = new rptDSHoaDon();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
@@ -218,7 +244,7 @@ namespace ThuTien.GUI.ToTruong
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                    dr["LoaiBaoCao"] = "CÓ THU HỘ TƯ GIA";
+                    dr["LoaiBaoCao"] = "CÓ THU HỘ";
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = item["HoTen"];
                     dr["Ky"] = item["Ky"];
@@ -227,30 +253,30 @@ namespace ThuTien.GUI.ToTruong
                     dr["SoHoaDon"] = item["SoHoaDon"];
                     dr["HanhThu"] = item["HanhThu"];
                     dr["To"] = item["To"];
-                    dr["Loai"] = "TG";
+                    //dr["Loai"] = "TG";
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }
             }
-            else
-                if (tabControl.SelectedTab.Name == "tabCoQuan")
-                {
-                    DataTable dt = _cHoaDon.GetDSDangNganHanhThu_To_CoThuHo("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
-                    foreach (DataRow item in dt.Rows)
-                    {
-                        DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                        dr["LoaiBaoCao"] = "CÓ THU HỘ CƠ QUAN";
-                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                        dr["HoTen"] = item["HoTen"];
-                        dr["Ky"] = item["Ky"];
-                        dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
-                        dr["TongCong"] = item["TongCong"];
-                        dr["SoHoaDon"] = item["SoHoaDon"];
-                        dr["HanhThu"] = item["HanhThu"];
-                        dr["To"] = item["To"];
-                        dr["Loai"] = "CQ";
-                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
-                    }
-                }
+            //else
+            //    if (tabControl.SelectedTab.Name == "tabCoQuan")
+            //    {
+            //        DataTable dt = _cHoaDon.GetDSDangNganHanhThu_To_CoThuHo("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
+            //        foreach (DataRow item in dt.Rows)
+            //        {
+            //            DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+            //            dr["LoaiBaoCao"] = "CÓ THU HỘ CƠ QUAN";
+            //            dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+            //            dr["HoTen"] = item["HoTen"];
+            //            dr["Ky"] = item["Ky"];
+            //            dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
+            //            dr["TongCong"] = item["TongCong"];
+            //            dr["SoHoaDon"] = item["SoHoaDon"];
+            //            dr["HanhThu"] = item["HanhThu"];
+            //            dr["To"] = item["To"];
+            //            dr["Loai"] = "CQ";
+            //            ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+            //        }
+            //    }
             rptDSDangNganQuay rpt = new rptDSDangNganQuay();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
