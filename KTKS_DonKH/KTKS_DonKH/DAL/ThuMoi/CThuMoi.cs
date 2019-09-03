@@ -221,7 +221,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                     item.Luuy,
                                     item.NoiNhan,
                                     item.CreateDate,
-                                    item.CreateBy,
+                                    CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
@@ -243,7 +243,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 item.Luuy,
                                 item.NoiNhan,
                                 item.CreateDate,
-                                item.CreateBy,
+                                CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
                             };
                     return LINQToDataTable(query);
                 case "TBC":
@@ -265,7 +265,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 item.Luuy,
                                 item.NoiNhan,
                                 item.CreateDate,
-                                item.CreateBy,
+                                CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
                             };
                     return LINQToDataTable(query);
                 default:
@@ -287,7 +287,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 item.Luuy,
                                 item.NoiNhan,
                                 item.CreateDate,
-                                item.CreateBy,
+                                CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
                             };
                     return LINQToDataTable(query);
             }
@@ -316,7 +316,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.Luuy,
                             item.NoiNhan,
                             item.CreateDate,
-                            item.CreateBy,
+                            CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -344,7 +344,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.Luuy,
                             item.NoiNhan,
                             item.CreateDate,
-                            item.CreateBy,
+                            CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -372,7 +372,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.Luuy,
                             item.NoiNhan,
                             item.CreateDate,
-                            item.CreateBy,
+                            CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }

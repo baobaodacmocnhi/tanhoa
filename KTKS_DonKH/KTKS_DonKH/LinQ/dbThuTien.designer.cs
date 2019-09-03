@@ -259,6 +259,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _DangNgan_DienThoai;
 		
+		private bool _InGiayBao_DienThoai;
+		
+		private bool _Xoa_DienThoai;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -431,6 +435,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnIP_PCChanged();
     partial void OnDangNgan_DienThoaiChanging(bool value);
     partial void OnDangNgan_DienThoaiChanged();
+    partial void OnInGiayBao_DienThoaiChanging(bool value);
+    partial void OnInGiayBao_DienThoaiChanged();
+    partial void OnXoa_DienThoaiChanging(bool value);
+    partial void OnXoa_DienThoaiChanged();
     #endregion
 		
 		public HOADON()
@@ -2118,6 +2126,46 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InGiayBao_DienThoai", DbType="Bit NOT NULL")]
+		public bool InGiayBao_DienThoai
+		{
+			get
+			{
+				return this._InGiayBao_DienThoai;
+			}
+			set
+			{
+				if ((this._InGiayBao_DienThoai != value))
+				{
+					this.OnInGiayBao_DienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._InGiayBao_DienThoai = value;
+					this.SendPropertyChanged("InGiayBao_DienThoai");
+					this.OnInGiayBao_DienThoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Xoa_DienThoai", DbType="Bit NOT NULL")]
+		public bool Xoa_DienThoai
+		{
+			get
+			{
+				return this._Xoa_DienThoai;
+			}
+			set
+			{
+				if ((this._Xoa_DienThoai != value))
+				{
+					this.OnXoa_DienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Xoa_DienThoai = value;
+					this.SendPropertyChanged("Xoa_DienThoai");
+					this.OnXoa_DienThoaiChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2313,6 +2361,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _DangNgan_DienThoai;
 		
+		private bool _InGiayBao_DienThoai;
+		
+		private bool _Xoa_DienThoai;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2485,6 +2537,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnIP_PCChanged();
     partial void OnDangNgan_DienThoaiChanging(bool value);
     partial void OnDangNgan_DienThoaiChanged();
+    partial void OnInGiayBao_DienThoaiChanging(bool value);
+    partial void OnInGiayBao_DienThoaiChanged();
+    partial void OnXoa_DienThoaiChanging(bool value);
+    partial void OnXoa_DienThoaiChanged();
     #endregion
 		
 		public TT_HoaDonCu()
@@ -4168,6 +4224,46 @@ namespace KTKS_DonKH.LinQ
 					this._DangNgan_DienThoai = value;
 					this.SendPropertyChanged("DangNgan_DienThoai");
 					this.OnDangNgan_DienThoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InGiayBao_DienThoai", DbType="Bit NOT NULL")]
+		public bool InGiayBao_DienThoai
+		{
+			get
+			{
+				return this._InGiayBao_DienThoai;
+			}
+			set
+			{
+				if ((this._InGiayBao_DienThoai != value))
+				{
+					this.OnInGiayBao_DienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._InGiayBao_DienThoai = value;
+					this.SendPropertyChanged("InGiayBao_DienThoai");
+					this.OnInGiayBao_DienThoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Xoa_DienThoai", DbType="Bit NOT NULL")]
+		public bool Xoa_DienThoai
+		{
+			get
+			{
+				return this._Xoa_DienThoai;
+			}
+			set
+			{
+				if ((this._Xoa_DienThoai != value))
+				{
+					this.OnXoa_DienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Xoa_DienThoai = value;
+					this.SendPropertyChanged("Xoa_DienThoai");
+					this.OnXoa_DienThoaiChanged();
 				}
 			}
 		}

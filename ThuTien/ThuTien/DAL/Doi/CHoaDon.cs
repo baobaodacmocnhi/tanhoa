@@ -3933,7 +3933,7 @@ namespace ThuTien.DAL.Doi
         //    return null;
         //}
 
-        public DataTable GetTongDangNgan_To(int MaTo, DateTime NgayGiaiTrach)
+        public DataTable GetTongDangNgan_To(int MaTo,int Nam,int Ky,int FromDot,int ToDot, DateTime NgayGiaiTrach)
         {
             string sql = "";
             return ExecuteQuery_DataTable(sql);

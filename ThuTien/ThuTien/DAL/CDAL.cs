@@ -12,7 +12,7 @@ namespace ThuTien.DAL
     class CDAL
     {
         protected static dbThuTienDataContext _db = new dbThuTienDataContext();
-        
+
         public void BeginTransaction()
         {
             if (_db.Connection.State == System.Data.ConnectionState.Closed)
@@ -125,7 +125,7 @@ namespace ThuTien.DAL
             {
                 //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         public void Connect()
@@ -220,7 +220,7 @@ namespace ThuTien.DAL
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                command = new SqlCommand(sql, connection,transaction);
+                command = new SqlCommand(sql, connection, transaction);
                 //command.CommandTimeout = 0;
                 //command.Transaction = transaction;
                 if (command.ExecuteNonQuery() == 0)
@@ -237,21 +237,22 @@ namespace ThuTien.DAL
 
         public DataTable ExecuteQuery_DataTable(string sql)
         {
-            this.Connect();
-            DataTable dt = new DataTable();
-            command = new SqlCommand();
-            command.Connection = this.connection;
-            adapter = new SqlDataAdapter(sql, connection);
             try
             {
+                this.Connect();
+                DataTable dt = new DataTable();
+                command = new SqlCommand();
+                command.Connection = this.connection;
+                adapter = new SqlDataAdapter(sql, connection);
                 adapter.Fill(dt);
+                this.Disconnect();
+                return dt;
             }
-            catch (SqlException e)
+            catch (Exception ex)
             {
-                throw e;
+                Disconnect();
+                throw ex;
             }
-            this.Disconnect();
-            return dt;
         }
 
         public DataSet ExecuteQuery_DataSet(string sql)
@@ -262,14 +263,7 @@ namespace ThuTien.DAL
                 DataSet dataset = new DataSet();
                 command = new SqlCommand(sql, connection);
                 adapter = new SqlDataAdapter(command);
-                try
-                {
-                    adapter.Fill(dataset);
-                }
-                catch (SqlException e)
-                {
-                    throw e;
-                }
+                adapter.Fill(dataset);
                 Disconnect();
                 return dataset;
             }
@@ -376,7 +370,7 @@ namespace ThuTien.DAL
 
         public string ConvertMoneyToWord(string money)
         {
-            string str=replace_special_word(join_unit(money));
+            string str = replace_special_word(join_unit(money));
             if (str.Length > 1)
                 return str.Substring(0, 1).ToUpper() + str.Substring(1).ToLower();
             else

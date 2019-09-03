@@ -43,9 +43,9 @@ namespace ThuTien.GUI.ToTruong
                 lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
 
             DataTable dtNam = _cHoaDon.GetNam();
-            DataRow dr = dtNam.NewRow();
-            dr["ID"] = "Tất Cả";
-            dtNam.Rows.InsertAt(dr, 0);
+            //DataRow dr = dtNam.NewRow();
+            //dr["ID"] = "Tất Cả";
+            //dtNam.Rows.InsertAt(dr, 0);
             cmbNam.DataSource = dtNam;
             cmbNam.DisplayMember = "ID";
             cmbNam.ValueMember = "Nam";
@@ -116,7 +116,7 @@ namespace ThuTien.GUI.ToTruong
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNgan_To("TG", CNguoiDung.MaTo, dateGiaiTrach.Value);
+                dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNgan_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
                 CountdgvHDTuGia();
             }
             //else

@@ -409,9 +409,8 @@
             // CreateBy
             // 
             this.CreateBy.DataPropertyName = "CreateBy";
-            this.CreateBy.HeaderText = "CreateBy";
+            this.CreateBy.HeaderText = "Người Lập";
             this.CreateBy.Name = "CreateBy";
-            this.CreateBy.Visible = false;
             // 
             // frmDSThuMoi
             // 
