@@ -256,6 +256,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             dgvGhiChu.DataSource = null;
             dgvLichSuCHDB.DataSource = null;
             dgvHinh.Rows.Clear();
+            txtMaDonMoi.Focus();
         }
 
         public void CheckLichSuCHDB()
@@ -550,7 +551,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             CHDB_ChiTietCatTam_Hinh en = new CHDB_ChiTietCatTam_Hinh();
                             en.IDCHDB_ChiTietCatTam = ctctdb.MaCTCTDB;
-                            en.Hinh = Convert.FromBase64String(item.Cells["Bytes"].Value.ToString());
+                            en.Name = item.Cells["Name_Hinh"].Value.ToString();
+                            en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
                             _cCHDB.Them_Hinh(en);
                         }
                         if (_dontu_ChiTiet != null)
@@ -562,7 +564,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             scope.Complete();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
-                        txtMaDonCu.Focus();
+                    
                     }
                 }
                 catch (Exception ex)
@@ -648,7 +650,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtMaDonCu.Focus();
+                        
                         }
                     }
                 }
@@ -676,7 +678,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtMaDonCu.Focus();
+                    
                     }
                 }
             }
@@ -1331,12 +1333,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             CHDB_ChiTietCatTam_Hinh en = new CHDB_ChiTietCatTam_Hinh();
                             en.IDCHDB_ChiTietCatTam = _ctctdb.MaCTCTDB;
+                            en.Name = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                             en.Hinh = bytes;
                             if (_cCHDB.Them_Hinh(en) == true)
                             {
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 var index = dgvHinh.Rows.Add();
-                                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
                                 dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
                             }
                         }

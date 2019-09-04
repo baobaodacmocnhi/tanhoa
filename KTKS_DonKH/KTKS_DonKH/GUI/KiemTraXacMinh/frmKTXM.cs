@@ -581,7 +581,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             {
                                 KTXM_ChiTiet_Hinh en = new KTXM_ChiTiet_Hinh();
                                 en.IDKTXM_ChiTiet = ctktxm.MaCTKTXM;
-                                en.Hinh = Convert.FromBase64String(item.Cells["Bytes"].Value.ToString());
+                                en.Name = item.Cells["Name_Hinh"].Value.ToString();
+                                en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
                                 _cKTXM.Them_Hinh(en);
                             }
                             if (_dontu_ChiTiet != null)
@@ -1036,12 +1037,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 }
                             KTXM_ChiTiet_Hinh en = new KTXM_ChiTiet_Hinh();
                             en.IDKTXM_ChiTiet = _ctktxm.MaCTKTXM;
+                            en.Name = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                             en.Hinh = bytes;
                             if (_cKTXM.Them_Hinh(en) == true)
                             {
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 var index = dgvHinh.Rows.Add();
-                                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
                                 dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
                             }
                         }

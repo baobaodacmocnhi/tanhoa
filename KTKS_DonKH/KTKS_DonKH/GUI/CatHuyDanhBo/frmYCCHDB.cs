@@ -19,6 +19,7 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.GUI.DonTu;
+using System.Transactions;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -182,6 +183,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             _MaYCCHDB = -1;
 
             dgvHinh.Rows.Clear();
+            txtMaDonMoi.Focus();
         }
 
         private void txtMaDonCu_KeyPress(object sender, KeyPressEventArgs e)
@@ -436,13 +438,27 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     ycchdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
                     ycchdb.PhieuDuocKy = true;
 
+                    using (TransactionScope scope = new TransactionScope())
                     if (_cCHDB.ThemPhieuHuy(ycchdb))
                     {
+                        foreach (DataGridViewRow item in dgvHinh.Rows)
+                        {
+                            CHDB_Phieu_Hinh en = new CHDB_Phieu_Hinh();
+                            en.IDCHDB_Phieu = ycchdb.MaYCCHDB;
+                            en.Name = item.Cells["Name_Hinh"].Value.ToString();
+                            en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
+                            _cCHDB.Them_Hinh(en);
+                        }
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them_LichSu(ycchdb.CreateDate.Value,"PhieuCHDB", "Đã Lập Phiếu Hủy, " + ycchdb.LyDo, (int)ycchdb.MaYCCHDB, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                        {
+                            if(_cDonTu.Them_LichSu(ycchdb.CreateDate.Value, "PhieuCHDB", "Đã Lập Phiếu Hủy, " + ycchdb.LyDo, (int)ycchdb.MaYCCHDB, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value))
+                                scope.Complete();
+                        }
+                        else
+                            scope.Complete();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
-                        txtMaDonCu.Focus();
+                        
                     }
                 }
                 catch (Exception ex)
@@ -511,7 +527,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtMaDonCu.Focus();
+                            
                         }
                     }
                     else
@@ -538,7 +554,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtMaDonCu.Focus();
+                            
                         }
                     }
                 }
@@ -691,12 +707,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             CHDB_Phieu_Hinh en = new CHDB_Phieu_Hinh();
                             en.IDCHDB_Phieu = _ycchdb.MaYCCHDB;
+                            en.Name = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                             en.Hinh = bytes;
                             if (_cCHDB.Them_Hinh(en) == true)
                             {
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 var index = dgvHinh.Rows.Add();
-                                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
                                 dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
                             }
                         }
