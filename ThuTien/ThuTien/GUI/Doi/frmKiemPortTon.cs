@@ -243,7 +243,7 @@ namespace ThuTien.GUI.Doi
                         //TT_TestHoaDonTon hoadon = _db.TT_TestHoaDonTons.SingleOrDefault(itemHD => itemHD.SoHoaDon == item.Cells["SoHoaDon"].Value.ToString());
                         //_db.TT_TestHoaDonTons.DeleteOnSubmit(hoadon);
                         //_db.SubmitChanges();
-                        _db.ExecuteCommand("delete TT_TestHoaDonTon where MaHD=" + item.Cells["MaHD"].Value.ToString());
+                        _db.ExecuteCommand("delete TT_PortTon where MaHD=" + item.Cells["MaHD"].Value.ToString());
                     }
                 lstHD.Items.Clear();
                 LoadDSHoaDon();

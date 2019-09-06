@@ -2043,6 +2043,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             en.Hinh = bytes;
                             if (_cDCBD.Them_Hinh(en) == true)
                             {
+                                _cDCBD.Refresh();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 var index = dgvHinh.Rows.Add();
                                 dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
@@ -2088,7 +2089,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_ctdchd == null)
                     dgvHinh.Rows.RemoveAt(dgvHinh.CurrentRow.Index);
                 else
-                    if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                     {
                         if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
@@ -2103,7 +2104,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                     }
                     else
-                        MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

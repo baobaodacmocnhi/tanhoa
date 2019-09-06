@@ -916,7 +916,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     if (ycchdb.GhiChuLyDo != "")
                                         dr["LyDo"] += ycchdb.GhiChuLyDo + ". ";
                                     if (ycchdb.SoTien.ToString() != "")
-                                        dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ycchdb.SoTien);
+                                        dr["LyDo"] += "Tổng Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ycchdb.SoTien);
 
                                     dr["ChucVu"] = ycchdb.ChucVu;
                                     dr["NguoiKy"] = ycchdb.NguoiKy;
@@ -1337,6 +1337,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             en.Hinh = bytes;
                             if (_cCHDB.Them_Hinh(en) == true)
                             {
+                                _cCHDB.Refresh();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 var index = dgvHinh.Rows.Add();
                                 dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
@@ -1382,7 +1383,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (_ctctdb == null)
                     dgvHinh.Rows.RemoveAt(dgvHinh.CurrentRow.Index);
                 else
-                    if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                     {
                         if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
@@ -1397,7 +1398,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         }
                     }
                     else
-                        MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

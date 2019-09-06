@@ -261,7 +261,11 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _InGiayBao_DienThoai;
 		
+		private System.Nullable<System.DateTime> _InGiayBao_Ngay_DienThoai;
+		
 		private bool _Xoa_DienThoai;
+		
+		private System.Nullable<System.DateTime> _Xoa_Ngay_DienThoai;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -437,8 +441,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnDangNgan_DienThoaiChanged();
     partial void OnInGiayBao_DienThoaiChanging(bool value);
     partial void OnInGiayBao_DienThoaiChanged();
+    partial void OnInGiayBao_Ngay_DienThoaiChanging(System.Nullable<System.DateTime> value);
+    partial void OnInGiayBao_Ngay_DienThoaiChanged();
     partial void OnXoa_DienThoaiChanging(bool value);
     partial void OnXoa_DienThoaiChanged();
+    partial void OnXoa_Ngay_DienThoaiChanging(System.Nullable<System.DateTime> value);
+    partial void OnXoa_Ngay_DienThoaiChanged();
     #endregion
 		
 		public HOADON()
@@ -2146,6 +2154,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InGiayBao_Ngay_DienThoai", DbType="DateTime")]
+		public System.Nullable<System.DateTime> InGiayBao_Ngay_DienThoai
+		{
+			get
+			{
+				return this._InGiayBao_Ngay_DienThoai;
+			}
+			set
+			{
+				if ((this._InGiayBao_Ngay_DienThoai != value))
+				{
+					this.OnInGiayBao_Ngay_DienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._InGiayBao_Ngay_DienThoai = value;
+					this.SendPropertyChanged("InGiayBao_Ngay_DienThoai");
+					this.OnInGiayBao_Ngay_DienThoaiChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Xoa_DienThoai", DbType="Bit NOT NULL")]
 		public bool Xoa_DienThoai
 		{
@@ -2162,6 +2190,26 @@ namespace KTKS_DonKH.LinQ
 					this._Xoa_DienThoai = value;
 					this.SendPropertyChanged("Xoa_DienThoai");
 					this.OnXoa_DienThoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Xoa_Ngay_DienThoai", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Xoa_Ngay_DienThoai
+		{
+			get
+			{
+				return this._Xoa_Ngay_DienThoai;
+			}
+			set
+			{
+				if ((this._Xoa_Ngay_DienThoai != value))
+				{
+					this.OnXoa_Ngay_DienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Xoa_Ngay_DienThoai = value;
+					this.SendPropertyChanged("Xoa_Ngay_DienThoai");
+					this.OnXoa_Ngay_DienThoaiChanged();
 				}
 			}
 		}
@@ -2363,7 +2411,11 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _InGiayBao_DienThoai;
 		
+		private System.Nullable<System.DateTime> _InGiayBao_Ngay_DienThoai;
+		
 		private bool _Xoa_DienThoai;
+		
+		private System.Nullable<System.DateTime> _Xoa_Ngay_DienThoai;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2539,8 +2591,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnDangNgan_DienThoaiChanged();
     partial void OnInGiayBao_DienThoaiChanging(bool value);
     partial void OnInGiayBao_DienThoaiChanged();
+    partial void OnInGiayBao_Ngay_DienThoaiChanging(System.Nullable<System.DateTime> value);
+    partial void OnInGiayBao_Ngay_DienThoaiChanged();
     partial void OnXoa_DienThoaiChanging(bool value);
     partial void OnXoa_DienThoaiChanged();
+    partial void OnXoa_Ngay_DienThoaiChanging(System.Nullable<System.DateTime> value);
+    partial void OnXoa_Ngay_DienThoaiChanged();
     #endregion
 		
 		public TT_HoaDonCu()
@@ -4248,6 +4304,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InGiayBao_Ngay_DienThoai", DbType="DateTime")]
+		public System.Nullable<System.DateTime> InGiayBao_Ngay_DienThoai
+		{
+			get
+			{
+				return this._InGiayBao_Ngay_DienThoai;
+			}
+			set
+			{
+				if ((this._InGiayBao_Ngay_DienThoai != value))
+				{
+					this.OnInGiayBao_Ngay_DienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._InGiayBao_Ngay_DienThoai = value;
+					this.SendPropertyChanged("InGiayBao_Ngay_DienThoai");
+					this.OnInGiayBao_Ngay_DienThoaiChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Xoa_DienThoai", DbType="Bit NOT NULL")]
 		public bool Xoa_DienThoai
 		{
@@ -4264,6 +4340,26 @@ namespace KTKS_DonKH.LinQ
 					this._Xoa_DienThoai = value;
 					this.SendPropertyChanged("Xoa_DienThoai");
 					this.OnXoa_DienThoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Xoa_Ngay_DienThoai", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Xoa_Ngay_DienThoai
+		{
+			get
+			{
+				return this._Xoa_Ngay_DienThoai;
+			}
+			set
+			{
+				if ((this._Xoa_Ngay_DienThoai != value))
+				{
+					this.OnXoa_Ngay_DienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Xoa_Ngay_DienThoai = value;
+					this.SendPropertyChanged("Xoa_Ngay_DienThoai");
+					this.OnXoa_Ngay_DienThoaiChanged();
 				}
 			}
 		}

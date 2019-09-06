@@ -63,26 +63,67 @@ namespace ThuTien.GUI.ToTruong
 
         public void CountdgvHDTuGia()
         {
-            int TongHD = 0;
-            int TongGiaBan = 0;
-            int TongThueGTGT = 0;
-            int TongPhiBVMT = 0;
-            int TongCong = 0;
+            int TongHDTonDau = 0;
+            int TongCongTonDau = 0;
+            int TongHDDangNgan = 0;
+            int TongCongDangNgan = 0;
+            int TongHDDangNganQuay = 0;
+            int TongCongDangNganQuay = 0;
+            int TongHDDangNganChuyenKhoan = 0;
+            int TongCongDangNganChuyenKhoan = 0;
+            int TongHDTonCuoi = 0;
+            int TongCongTonCuoi = 0;
+            int TongHDInGiayBao = 0;
+            int TongCongInGiayBao = 0;
+            int TongHDXoa = 0;
+            int TongCongXoa = 0;
             if (dgvHDTuGia.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
-                    TongHD += int.Parse(item.Cells["TongHD_TG"].Value.ToString());
-                    TongGiaBan += int.Parse(item.Cells["TongGiaBan_TG"].Value.ToString());
-                    TongThueGTGT += int.Parse(item.Cells["TongThueGTGT_TG"].Value.ToString());
-                    TongPhiBVMT += int.Parse(item.Cells["TongPhiBVMT_TG"].Value.ToString());
-                    TongCong += int.Parse(item.Cells["TongCong_TG"].Value.ToString());
+                    if (item.Cells["TongHDTonDau"].Value.ToString() != "")
+                        TongHDTonDau += int.Parse(item.Cells["TongHDTonDau"].Value.ToString());
+                    if (item.Cells["TongCongTonDau"].Value.ToString() != "")
+                        TongCongTonDau += int.Parse(item.Cells["TongCongTonDau"].Value.ToString());
+                    if (item.Cells["TongHDDangNgan"].Value.ToString() != "")
+                        TongHDDangNgan += int.Parse(item.Cells["TongHDDangNgan"].Value.ToString());
+                    if (item.Cells["TongCongDangNgan"].Value.ToString() != "")
+                        TongCongDangNgan += int.Parse(item.Cells["TongCongDangNgan"].Value.ToString());
+                    if (item.Cells["TongHDDangNganQuay"].Value.ToString() != "")
+                        TongHDDangNganQuay += int.Parse(item.Cells["TongHDDangNganQuay"].Value.ToString());
+                    if (item.Cells["TongCongDangNganQuay"].Value.ToString() != "")
+                        TongCongDangNganQuay += int.Parse(item.Cells["TongCongDangNganQuay"].Value.ToString());
+                    if (item.Cells["TongHDDangNganChuyenKhoan"].Value.ToString() != "")
+                        TongHDDangNganChuyenKhoan += int.Parse(item.Cells["TongHDDangNganChuyenKhoan"].Value.ToString());
+                    if (item.Cells["TongCongDangNganChuyenKhoan"].Value.ToString() != "")
+                        TongCongDangNganChuyenKhoan += int.Parse(item.Cells["TongCongDangNganChuyenKhoan"].Value.ToString());
+                    if (item.Cells["TongHDTonCuoi"].Value.ToString() != "")
+                        TongHDTonCuoi += int.Parse(item.Cells["TongHDTonCuoi"].Value.ToString());
+                    if (item.Cells["TongCongTonCuoi"].Value.ToString() != "")
+                        TongCongTonCuoi += int.Parse(item.Cells["TongCongTonCuoi"].Value.ToString());
+                    if (item.Cells["TongHDInGiayBao"].Value.ToString() != "")
+                        TongHDInGiayBao += int.Parse(item.Cells["TongHDInGiayBao"].Value.ToString());
+                    if (item.Cells["TongCongInGiayBao"].Value.ToString() != "")
+                        TongCongInGiayBao += int.Parse(item.Cells["TongCongInGiayBao"].Value.ToString());
+                    if (item.Cells["TongHDXoa"].Value.ToString() != "")
+                        TongHDXoa += int.Parse(item.Cells["TongHDXoa"].Value.ToString());
+                    if (item.Cells["TongCongXoa"].Value.ToString() != "")
+                        TongCongXoa += int.Parse(item.Cells["TongCongXoa"].Value.ToString());
                 }
-                txtTongHD_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
-                txtTongGiaBan_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBan);
-                txtTongThueGTGT_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongThueGTGT);
-                txtTongPhiBVMT_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT);
-                txtTongCong_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+                txtTongHDTonDau_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTonDau);
+                txtTongCongTonDau_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongTonDau);
+                txtTongHDDangNgan_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDDangNgan);
+                txtTongCongDangNgan_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongDangNgan);
+                txtTongHDDangNganQuay_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDDangNganQuay);
+                txtTongCongDangNganQuay_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongDangNganQuay);
+                txtTongHDDangNganChuyenKhoan_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDDangNganChuyenKhoan);
+                txtTongCongDangNganChuyenKhoan_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongDangNganChuyenKhoan);
+                txtTongHDTonCuoi_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTonCuoi);
+                txtTongCongTonCuoi_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongTonCuoi);
+                txtTongHDInGiayBao_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDInGiayBao);
+                txtTongCongInGiayBao_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongInGiayBao);
+                txtTongHDXoa_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDXoa);
+                txtTongCongXoa_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongXoa);
             }
         }
 
@@ -93,7 +134,7 @@ namespace ThuTien.GUI.ToTruong
             int TongThueGTGT = 0;
             int TongPhiBVMT = 0;
             int TongCong = 0;
-            
+
             if (dgvHDCoQuan.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
@@ -116,7 +157,10 @@ namespace ThuTien.GUI.ToTruong
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNgan_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
+                if (CNguoiDung.Doi == true)
+                    dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNgan_To(int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
+                else
+                    dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNgan_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
                 CountdgvHDTuGia();
             }
             //else
@@ -132,7 +176,7 @@ namespace ThuTien.GUI.ToTruong
             dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                DataTable dt = _cHoaDon.GetDSDangNgan("TG",int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), dateGiaiTrach.Value);
+                DataTable dt = _cHoaDon.GetDSDangNgan("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV"].Value.ToString()), dateGiaiTrach.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["DSHoaDon"].NewRow();
