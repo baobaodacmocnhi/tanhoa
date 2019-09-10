@@ -12,6 +12,7 @@ using System.Globalization;
 using ThuTien.BaoCao;
 using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.Quay;
+using ThuTien.LinQ;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -20,6 +21,7 @@ namespace ThuTien.GUI.ToTruong
         //string _mnu = "mnuKiemTraDangNganTo";
         CHoaDon _cHoaDon = new CHoaDon();
         CTo _cTo = new CTo();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
 
         public frmKiemTraDangNganTo()
         {
@@ -67,6 +69,8 @@ namespace ThuTien.GUI.ToTruong
             int TongCongTonDau = 0;
             int TongHDDangNgan = 0;
             int TongCongDangNgan = 0;
+            int TongHDDangNganTangCuong = 0;
+            int TongCongDangNganTangCuong = 0;
             int TongHDDangNganQuay = 0;
             int TongCongDangNganQuay = 0;
             int TongHDDangNganChuyenKhoan = 0;
@@ -89,6 +93,10 @@ namespace ThuTien.GUI.ToTruong
                         TongHDDangNgan += int.Parse(item.Cells["TongHDDangNgan"].Value.ToString());
                     if (item.Cells["TongCongDangNgan"].Value.ToString() != "")
                         TongCongDangNgan += int.Parse(item.Cells["TongCongDangNgan"].Value.ToString());
+                    if (item.Cells["TongHDDangNganTangCuong"].Value.ToString() != "")
+                        TongHDDangNganTangCuong += int.Parse(item.Cells["TongHDDangNganTangCuong"].Value.ToString());
+                    if (item.Cells["TongCongDangNganTangCuong"].Value.ToString() != "")
+                        TongCongDangNganTangCuong += int.Parse(item.Cells["TongCongDangNganTangCuong"].Value.ToString());
                     if (item.Cells["TongHDDangNganQuay"].Value.ToString() != "")
                         TongHDDangNganQuay += int.Parse(item.Cells["TongHDDangNganQuay"].Value.ToString());
                     if (item.Cells["TongCongDangNganQuay"].Value.ToString() != "")
@@ -114,6 +122,8 @@ namespace ThuTien.GUI.ToTruong
                 txtTongCongTonDau_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongTonDau);
                 txtTongHDDangNgan_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDDangNgan);
                 txtTongCongDangNgan_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongDangNgan);
+                txtTongHDDangNganTangCuong_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDDangNganTangCuong);
+                txtTongCongDangNganTangCuong_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongDangNganTangCuong);
                 txtTongHDDangNganQuay_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDDangNganQuay);
                 txtTongCongDangNganQuay_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongDangNganQuay);
                 txtTongHDDangNganChuyenKhoan_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDDangNganChuyenKhoan);
@@ -157,10 +167,21 @@ namespace ThuTien.GUI.ToTruong
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
+                List<TT_NguoiDung> lst = new List<TT_NguoiDung>();
                 if (CNguoiDung.Doi == true)
-                    dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNgan_To(int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
+                {
+                    lst = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
+                }
                 else
-                    dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNgan_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
+                {
+                    lst = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+                }
+                DataTable dt = new DataTable();
+                foreach (TT_NguoiDung item in lst)
+                {
+                    dt.Merge(_cHoaDon.GetTongDangNgan_NV(item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value));
+                }
+                dgvHDTuGia.DataSource = dt;
                 CountdgvHDTuGia();
             }
             //else
@@ -217,23 +238,67 @@ namespace ThuTien.GUI.ToTruong
 
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongHD_TG" && e.Value != null)
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongHDTonDau" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongGiaBan_TG" && e.Value != null)
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCongTonDau" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongThueGTGT_TG" && e.Value != null)
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongHDDangNgan" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongPhiBVMT_TG" && e.Value != null)
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCongDangNgan" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCong_TG" && e.Value != null)
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongHDDangNganTangCuong" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCongDangNganTangCuong" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongHDDangNganQuay" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCongDangNganQuay" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongHDDangNganChuyenKhoan" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCongDangNganChuyenKhoan" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongHDTonCuoi" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCongTonCuoi" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongHDInGiayBao" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCongInGiayBao" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongHDXoa" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCongXoa" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }

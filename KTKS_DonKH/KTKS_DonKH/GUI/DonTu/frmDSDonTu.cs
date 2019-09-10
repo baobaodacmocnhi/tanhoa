@@ -122,21 +122,21 @@ namespace KTKS_DonKH.GUI.DonTu
                                 //else
                                 if (txtNoiDungTimKiem.Text.Trim() != "")
                                     //dgvDSDonTu.DataSource = _cDonTu.getDS_Phong(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(cmbPhong.SelectedValue.ToString()));
-                                    gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim()),chkKiemTraTon.Checked).Tables["DonTu"];
+                                    gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["DonTu"];
                                 break;
                             case "Danh Bộ":
                                 if (txtNoiDungTimKiem.Text.Trim() != "")
                                     //dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), int.Parse(cmbPhong.SelectedValue.ToString()));
-                                    gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), chkKiemTraTon.Checked).Tables["DonTu"];
+                                    gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", "")).Tables["DonTu"];
                                 break;
                             case "Số Công Văn":
                                 if (txtNoiDungTimKiem.Text.Trim() != "")
                                     //dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper(), int.Parse(cmbPhong.SelectedValue.ToString()));
-                                    gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper(), chkKiemTraTon.Checked).Tables["DonTu"];
+                                    gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper()).Tables["DonTu"];
                                 break;
                             case "Ngày":
                                 //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbPhong.SelectedValue.ToString()));
-                                gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value, chkKiemTraTon.Checked).Tables["DonTu"];
+                                gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
                                 break;
                             default:
                                 break;
@@ -152,21 +152,21 @@ namespace KTKS_DonKH.GUI.DonTu
                         //else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                             //dgvDSDonTu.DataSource = _cDonTu.getDS_Phong(int.Parse(txtNoiDungTimKiem.Text.Trim()), CTaiKhoan.MaPhong);
-                            gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim()), chkKiemTraTon.Checked).Tables["DonTu"];
+                            gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["DonTu"];
                         break;
                     case "Danh Bộ":
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                             //dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), CTaiKhoan.MaPhong);
-                            gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), chkKiemTraTon.Checked).Tables["DonTu"];
+                            gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", "")).Tables["DonTu"];
                         break;
                     case "Số Công Văn":
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                             //dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper(), CTaiKhoan.MaPhong);
-                            gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper(), chkKiemTraTon.Checked).Tables["DonTu"];
+                            gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper()).Tables["DonTu"];
                         break;
                     case "Ngày":
                         //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, CTaiKhoan.MaPhong);
-                        gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value, chkKiemTraTon.Checked).Tables["DonTu"];
+                        gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
                         break;
                     default:
                         break;
@@ -245,7 +245,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 }
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 dr["NguoiLap"] = CTaiKhoan.HoTen;
-                dr["ChuKy"] = CTaiKhoan.ChuKy;
+                dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
                 dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }
@@ -301,7 +301,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 }
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 dr["NguoiLap"] = CTaiKhoan.HoTen;
-                dr["ChuKy"] = CTaiKhoan.ChuKy;
+                dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
                 dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }

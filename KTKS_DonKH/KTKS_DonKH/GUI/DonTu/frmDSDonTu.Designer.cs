@@ -73,7 +73,6 @@
             this.lbPhong = new System.Windows.Forms.Label();
             this.btnInThongKe = new System.Windows.Forms.Button();
             this.cmbLoai = new System.Windows.Forms.ComboBox();
-            this.chkKiemTraTon = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDonChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDon)).BeginInit();
@@ -532,16 +531,6 @@
             this.cmbLoai.TabIndex = 43;
             this.cmbLoai.Visible = false;
             // 
-            // chkKiemTraTon
-            // 
-            this.chkKiemTraTon.AutoSize = true;
-            this.chkKiemTraTon.Location = new System.Drawing.Point(767, 35);
-            this.chkKiemTraTon.Name = "chkKiemTraTon";
-            this.chkKiemTraTon.Size = new System.Drawing.Size(108, 20);
-            this.chkKiemTraTon.TabIndex = 45;
-            this.chkKiemTraTon.Text = "Kiểm Tra Tồn";
-            this.chkKiemTraTon.UseVisualStyleBackColor = true;
-            // 
             // frmDSDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -549,7 +538,6 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1444, 727);
-            this.Controls.Add(this.chkKiemTraTon);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.cmbLoai);
             this.Controls.Add(this.btnInThongKe);
@@ -625,6 +613,5 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
-        private System.Windows.Forms.CheckBox chkKiemTraTon;
     }
 }

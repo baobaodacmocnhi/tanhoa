@@ -201,7 +201,7 @@ namespace KTKS_DonKH.DAL
                 DataSet dataset = new DataSet();
                 command = new SqlCommand(sql, connection);
                 adapter = new SqlDataAdapter(command);
-                    adapter.Fill(dataset);
+                adapter.Fill(dataset);
                 Disconnect();
                 return dataset;
             }
@@ -283,39 +283,50 @@ namespace KTKS_DonKH.DAL
 
         public void LoadImageView(byte[] pData)
         {
-            // get a tempfilename and store the image
-            var tempFileName = Path.GetTempFileName();
-
-            FileStream mStream = new FileStream(tempFileName, FileMode.Create);
-            //byte[] pData = entity.Image.ToArray();
-            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
-            Bitmap bm = new Bitmap(mStream, false);
-            mStream.Dispose();
-
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-
-            // create our startup process and argument
-            var psi = new ProcessStartInfo(
-                "rundll32.exe",
-                String.Format(
-                    "\"{0}{1}\", ImageView_Fullscreen {2}",
-                    Environment.Is64BitOperatingSystem ?
-                        path.Replace(" (x86)", "") :
-                        path
-                        ,
-                    @"\Windows Photo Viewer\PhotoViewer.dll",
-                    tempFileName)
-                );
-
-            psi.UseShellExecute = false;
-
-            var viewer = Process.Start(psi);
-            // cleanup when done...
-            viewer.EnableRaisingEvents = true;
-            viewer.Exited += (o, args) =>
+            try
             {
-                File.Delete(tempFileName);
-            };
+                // get a tempfilename and store the image
+                //var tempFileName = Path.GetTempFileName();
+                string tempFileName = Path.GetRandomFileName();
+                tempFileName = Path.ChangeExtension(tempFileName, "jpg");
+                tempFileName = Path.Combine(Path.GetTempPath(), tempFileName);
+
+                FileStream mStream = new FileStream(tempFileName, FileMode.Create);
+                //byte[] pData = entity.Image.ToArray();
+                mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+                Bitmap bm = new Bitmap(mStream, false);
+                mStream.Dispose();
+
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+
+                // create our startup process and argument
+                var psi = new ProcessStartInfo(
+                    "rundll32.exe",
+                    String.Format(
+                        "\"{0}{1}\", ImageView_Fullscreen {2}",
+                        Environment.Is64BitOperatingSystem ?
+                            path.Replace(" (x86)", "") :
+                            path
+                            ,
+                        @"\Windows Photo Viewer\PhotoViewer.dll",
+                        tempFileName)
+                    );
+
+                psi.UseShellExecute = false;
+
+                var viewer = Process.Start(psi);
+                // cleanup when done...
+                viewer.EnableRaisingEvents = true;
+                viewer.Exited += (o, args) =>
+                {
+                    File.Delete(tempFileName);
+                };
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
+
     }
 }

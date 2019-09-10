@@ -202,16 +202,16 @@ namespace KTKS_DonKH.DAL.DonTu
 
         }
 
-        public DataSet getDS_Phong_GridControl(int MaDon, bool KiemTra)
+        public DataSet getDS_Phong_GridControl(int MaDon)
         {
             List<LinQ.DonTu> lst = db.DonTus.Where(item => item.MaDon == MaDon).ToList();
-            return EntityToDataset(lst, KiemTra);
+            return EntityToDataset(lst);
         }
 
-        public DataSet getDS_Phong_GridControl(int MaDon, int MaPhong, bool KiemTra)
+        public DataSet getDS_Phong_GridControl(int MaDon, int MaPhong)
         {
             List<LinQ.DonTu> lst = db.DonTus.Where(item => item.MaDon == MaDon && item.MaPhong == MaPhong).ToList();
-            return EntityToDataset(lst, KiemTra);
+            return EntityToDataset(lst);
         }
 
         //public DataTable getDS(int FromMaDon, int ToMaDon)
@@ -268,16 +268,16 @@ namespace KTKS_DonKH.DAL.DonTu
             return LINQToDataTable(query);
         }
 
-        public DataSet getDSBySoCongVan_GridControl(string SoCongVan, bool KiemTra)
+        public DataSet getDSBySoCongVan_GridControl(string SoCongVan)
         {
             List<LinQ.DonTu> lst = db.DonTus.Where(item => item.SoCongVan.Contains(SoCongVan)).ToList();
-            return EntityToDataset(lst, KiemTra);
+            return EntityToDataset(lst);
         }
 
-        public DataSet getDSBySoCongVan_GridControl(string SoCongVan, int MaPhong, bool KiemTra)
+        public DataSet getDSBySoCongVan_GridControl(string SoCongVan, int MaPhong)
         {
             List<LinQ.DonTu> lst = db.DonTus.Where(item => item.SoCongVan.Contains(SoCongVan) && item.MaPhong == MaPhong).ToList();
-            return EntityToDataset(lst, KiemTra);
+            return EntityToDataset(lst);
         }
 
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -351,7 +351,7 @@ namespace KTKS_DonKH.DAL.DonTu
 
         }
 
-        public DataSet getDS_GridControl(string Loai, DateTime FromCreateDate, DateTime ToCreateDate, bool KiemTra)
+        public DataSet getDS_GridControl(string Loai, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             List<LinQ.DonTu> lst = new List<LinQ.DonTu>();
             switch (Loai)
@@ -366,10 +366,10 @@ namespace KTKS_DonKH.DAL.DonTu
                     lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate).ToList();
                     break;
             }
-            return EntityToDataset(lst, KiemTra);
+            return EntityToDataset(lst);
         }
 
-        public DataSet getDS_GridControl(string Loai, DateTime FromCreateDate, DateTime ToCreateDate, int MaPhong, bool KiemTra)
+        public DataSet getDS_GridControl(string Loai, DateTime FromCreateDate, DateTime ToCreateDate, int MaPhong)
         {
             List<LinQ.DonTu> lst = new List<LinQ.DonTu>();
             switch (Loai)
@@ -384,10 +384,10 @@ namespace KTKS_DonKH.DAL.DonTu
                     lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong).ToList();
                     break;
             }
-            return EntityToDataset(lst, KiemTra);
+            return EntityToDataset(lst);
         }
 
-        public DataSet EntityToDataset(List<LinQ.DonTu> lst,bool KiemTra)
+        public DataSet EntityToDataset(List<LinQ.DonTu> lst)
         {
             DataTable dtDonTu = new DataTable();
             dtDonTu.Columns.Add("MaDon", typeof(string));
@@ -422,8 +422,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         dr["DanhBo"] = item.DonTu_ChiTiets.SingleOrDefault().DanhBo;
                         dr["HoTen"] = item.DonTu_ChiTiets.SingleOrDefault().HoTen;
                         dr["DiaChi"] = item.DonTu_ChiTiets.SingleOrDefault().DiaChi;
-                        if(KiemTra==true)
-                        dr["TinhTrang"] = getTinhTrangDon(item.MaDon, 1);
+                        dr["TinhTrang"] = item.DonTu_ChiTiets.SingleOrDefault().TinhTrang;
                     }
                     else
                     {
@@ -437,11 +436,9 @@ namespace KTKS_DonKH.DAL.DonTu
                             drCT["DanhBo"] = itemCT.DanhBo;
                             drCT["HoTen"] = itemCT.HoTen;
                             drCT["DiaChi"] = itemCT.DiaChi;
-                            if (KiemTra == true)
-                            drCT["TinhTrang"] = getTinhTrangDon(item.MaDon, itemCT.STT.Value);
+                            drCT["TinhTrang"] = itemCT.TinhTrang;
                             dtDonTuChiTiet.Rows.Add(drCT);
                         }
-                        if (KiemTra == true)
                         if (item.DonTu_ChiTiets.Count == int.Parse(dtDonTuChiTiet.Compute("count(DanhBo)", "MaDon=" + item.MaDon + " and TinhTrang like '%Hoàn Thành%'").ToString()))
                             dr["TinhTrang"] = "Hoàn Thành";
                         else
@@ -567,16 +564,16 @@ namespace KTKS_DonKH.DAL.DonTu
             return LINQToDataTable(query);
         }
 
-        public DataSet getDS_ChiTiet_ByDanhBo_GridControl(string DanhBo, bool KiemTra)
+        public DataSet getDS_ChiTiet_ByDanhBo_GridControl(string DanhBo)
         {
             List<LinQ.DonTu> lst = db.DonTus.Where(item => item.DonTu_ChiTiets.Any(itemA => itemA.DanhBo == DanhBo) == true).ToList();
-            return EntityToDataset(lst, KiemTra);
+            return EntityToDataset(lst);
         }
 
-        public DataSet getDS_ChiTiet_ByDanhBo_GridControl(string DanhBo, int MaPhong, bool KiemTra)
+        public DataSet getDS_ChiTiet_ByDanhBo_GridControl(string DanhBo, int MaPhong)
         {
             List<LinQ.DonTu> lst = db.DonTus.Where(item => item.DonTu_ChiTiets.Any(itemA => itemA.DanhBo == DanhBo) == true && item.MaPhong == MaPhong).ToList();
-            return EntityToDataset(lst, KiemTra);
+            return EntityToDataset(lst);
         }
 
         public DataTable getDS_ThongKeNhomDon(DateTime FromCreateDate, DateTime ToCreateDate)

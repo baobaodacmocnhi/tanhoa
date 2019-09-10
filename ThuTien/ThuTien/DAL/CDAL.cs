@@ -241,9 +241,9 @@ namespace ThuTien.DAL
             {
                 this.Connect();
                 DataTable dt = new DataTable();
-                command = new SqlCommand();
-                command.Connection = this.connection;
-                adapter = new SqlDataAdapter(sql, connection);
+                command = new SqlCommand(sql, connection);
+                command.CommandTimeout = 0;
+                adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
                 this.Disconnect();
                 return dt;
@@ -262,6 +262,7 @@ namespace ThuTien.DAL
                 Connect();
                 DataSet dataset = new DataSet();
                 command = new SqlCommand(sql, connection);
+                command.CommandTimeout = 0;
                 adapter = new SqlDataAdapter(command);
                 adapter.Fill(dataset);
                 Disconnect();

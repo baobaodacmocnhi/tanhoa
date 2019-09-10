@@ -225,9 +225,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(78, 175);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(165, 16);
+            this.label9.Size = new System.Drawing.Size(164, 16);
             this.label9.TabIndex = 25;
-            this.label9.Text = "Phòng Kinh doanh đề xuất:";
+            this.label9.Text = "Phòng Thương Vụ đề xuất:";
             // 
             // txtKy
             // 
