@@ -686,8 +686,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
                         ctdcbd.PhieuDuocKy = true;
                     }
-
-                    using (TransactionScope scope = new TransactionScope())
+                    //không chạy transaction đc vì hàm xử lý hiệu lực kỳ
+                    //using (TransactionScope scope = new TransactionScope())
                     if (_cDCBD.ThemDCBD(ctdcbd))
                     {
                         foreach (DataGridViewRow item in dgvHinh.Rows)
@@ -700,11 +700,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                         if (_dontu_ChiTiet != null)
                         {
-                           if( _cDonTu.Them_LichSu(ctdcbd.CreateDate.Value, "DCBD", "Đã Điều Chỉnh Biến Động, " + ctdcbd.ThongTin, (int)ctdcbd.MaCTDCBD, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value)==true)
-                               scope.Complete();
+                            if (_cDonTu.Them_LichSu(ctdcbd.CreateDate.Value, "DCBD", "Đã Điều Chỉnh Biến Động, " + ctdcbd.ThongTin, (int)ctdcbd.MaCTDCBD, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true) { 
+                               //scope.Complete();
+                            }
                         }
-                        else
-                            scope.Complete();
+                        //else
+                            //scope.Complete();
                         MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                     }

@@ -333,11 +333,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     {
                         string ID = "MaCTDCBD";
                         string Table = "DCBD_ChiTietBienDong";
-                        object result = ExecuteQuery_ReturnOneValue("declare @Ma int"
-                            + " set @Ma=" + HieuLucKys[1].ToString().Substring(HieuLucKys[1].ToString().Length - 2, 2)
-                            + " select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma");
-                        if (result != null)
+                        decimal MaCTDCBD = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        if (MaCTDCBD.ToString().Substring(MaCTDCBD.ToString().Length - 2, 2) == HieuLucKys[1].ToString().Substring(HieuLucKys[1].ToString().Length - 2, 2))
                         {
+                            decimal result = (decimal)ExecuteQuery_ReturnOneValue("declare @Ma int"
+                                + " set @Ma=" + HieuLucKys[1].ToString().Substring(HieuLucKys[1].ToString().Length - 2, 2)
+                                + " select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma");
                             string Ma = result.ToString();
                             string nam = Ma.ToString().Substring(Ma.ToString().Length - 2, 2);
                             string stt = Ma.ToString().Substring(0, Ma.ToString().Length - 2);

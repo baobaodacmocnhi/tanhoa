@@ -183,7 +183,7 @@ namespace KTKS_DonKH.DAL
                 Connect();
                 command = new SqlCommand(sql, connection);
                 object result = command.ExecuteScalar();
-                Disconnect();
+                //Disconnect();
                 return result;
             }
             catch (Exception ex)
