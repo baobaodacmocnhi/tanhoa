@@ -921,11 +921,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 try
                 {
                     if (_ctdcbd != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        if (_ctdcbd.ChuyenDocSo == true)
+                        {
+                            MessageBox.Show("Đã có Chuyển Đọc Số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (_cDCBD.XoaDCBD(_ctdcbd))
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
+                    }
                 }
                 catch (Exception ex)
                 {
