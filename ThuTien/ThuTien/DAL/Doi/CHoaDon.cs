@@ -3974,12 +3974,12 @@ namespace ThuTien.DAL.Doi
                         + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and MaNV_HanhThu=@MaNV"
                         + " group by MaNV_HanhThu) toncuoi on tondau.MaNV_HanhThu=toncuoi.MaNV_HanhThu"
                         + " left join"
-                        + " (select MaNV_HanhThu,TongHDInGiayBao=COUNT(ID_HOADON),TongCongInGiayBao=SUM(TONGCONG) from HOADON"
-                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and InGiayBao_DienThoai=1 and MaNV_HanhThu=@MaNV"
-                        + " group by MaNV_HanhThu) ingiaybao on tondau.MaNV_HanhThu=ingiaybao.MaNV_HanhThu"
+                        + " (select MaNV_HanhThu,TongHDInPhieuBao=COUNT(ID_HOADON),TongCongInPhieuBao=SUM(TONGCONG) from HOADON"
+                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and InPhieuBao_DienThoai=1 and MaNV_HanhThu=@MaNV"
+                        + " group by MaNV_HanhThu) inphieubao on tondau.MaNV_HanhThu=inphieubao.MaNV_HanhThu"
                         + " left join"
                         + " (select MaNV_HanhThu,TongHDXoa=COUNT(ID_HOADON),TongCongXoa=SUM(TONGCONG) from HOADON"
-                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and Xoa_DienThoai=1 and MaNV_HanhThu=@MaNV"
+                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and XoaDangNgan_DienThoai=1 and MaNV_HanhThu=@MaNV"
                         + " group by MaNV_HanhThu) xoa on tondau.MaNV_HanhThu=xoa.MaNV_HanhThu"
                         + " order by STT";
             return ExecuteQuery_DataTable(sql);
