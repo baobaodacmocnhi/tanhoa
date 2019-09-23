@@ -459,6 +459,44 @@ namespace KTKS_DonKH.GUI.DonTu
             frm.Show();
         }
 
+        private void btnInDS_ThongKeNhomDon_3To_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.ToTruong)
+            {
+                if (cmbTo.SelectedIndex > -1)
+                    dt = _cDonTu.getDS_ThongKeNhomDon(cmbTo.SelectedValue.ToString(), dateTu_ThongKeNhomDon_3To.Value, dateDen_ThongKeNhomDon_3To.Value);
+            }
+            else
+                dt = _cDonTu.getDS_ThongKeNhomDon(CTaiKhoan.KyHieuMaTo, dateTu_ThongKeNhomDon_3To.Value, dateDen_ThongKeNhomDon_3To.Value);
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow[] checkExists = dsBaoCao.Tables["DanhSach"].Select("MaDon = '" + item["MaDon"] + "'");
+                if (checkExists.Length == 0)
+                {
+                    DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
+
+                    dr["TuNgay"] = dateTu_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
+                    dr["LoaiBaoCao"] = CTaiKhoan.TenTo.ToUpper();
+                    dr["MaDon"] = item["MaDon"];
+                    dr["DanhBo"] = item["DanhBo"];
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
+                    dr["NhomDon"] = item["NhomDon"];
+
+                    dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
+                }
+            }
+
+            rptDanhSach_Doc_GroupNhomDon rpt = new rptDanhSach_Doc_GroupNhomDon();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
+        }
+
 
 
 

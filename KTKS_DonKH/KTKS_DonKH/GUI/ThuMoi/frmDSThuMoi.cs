@@ -228,7 +228,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             dr["HoTen"] = en.HoTen;
                             dr["DiaChi"] = en.DiaChi;
                             if (en.ThuMoi.MaDonMoi != null)
-                                dr["SoPhieu"] = en.ThuMoi.MaDonTKH.ToString() + "/TB";
+                                dr["SoPhieu"] = en.ThuMoi.MaDonMoi.ToString() + "/TB";
                             if (en.ThuMoi.MaDonTKH != null)
                                 dr["SoPhieu"] = "TKH" + en.ThuMoi.MaDonTKH.ToString().Insert(en.ThuMoi.MaDonTKH.ToString().Length - 2, "-") + "/TB";
                             else
@@ -248,7 +248,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             dr["HoTen"] = en.HoTen;
                             dr["DiaChi"] = en.DiaChi;
                             if (en.ThuMoi.MaDonMoi != null)
-                                dr["SoPhieu"] = en.ThuMoi.MaDonTKH.ToString() + "/TB";
+                                dr["SoPhieu"] = en.ThuMoi.MaDonMoi.ToString() + "/TB";
                             if (en.ThuMoi.MaDonTKH != null)
                                 dr["SoPhieu"] = "TKH" + en.ThuMoi.MaDonTKH.ToString().Insert(en.ThuMoi.MaDonTKH.ToString().Length - 2, "-") + "/TB";
                             else

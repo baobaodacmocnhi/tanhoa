@@ -82,6 +82,7 @@
             this.dateDen_ThongKeNhomDon_Phong = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.btnInDS_ThongKeNhomDon_3To = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian_LichSuChuyenDon.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -366,6 +367,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnInDS_ThongKeNhomDon_3To);
             this.groupBox2.Controls.Add(this.panelTo);
             this.groupBox2.Controls.Add(this.btnInDSChuaKTXM_ThongKeNhomDon_3To);
             this.groupBox2.Controls.Add(this.btnInDSChuaChuyen_ThongKeNhomDon_3To);
@@ -373,7 +375,7 @@
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Location = new System.Drawing.Point(12, 295);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(690, 87);
+            this.groupBox2.Size = new System.Drawing.Size(853, 87);
             this.groupBox2.TabIndex = 31;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thống Kê Theo Nhóm Đơn (ngày nhận) - Tổ GD, Tổ Tân Bình, Tân Phú, Bấm Chì - Chuyể" +
@@ -383,7 +385,7 @@
             // 
             this.panelTo.Controls.Add(this.cmbTo);
             this.panelTo.Controls.Add(this.label14);
-            this.panelTo.Location = new System.Drawing.Point(472, 20);
+            this.panelTo.Location = new System.Drawing.Point(553, 20);
             this.panelTo.Name = "panelTo";
             this.panelTo.Size = new System.Drawing.Size(212, 56);
             this.panelTo.TabIndex = 28;
@@ -407,7 +409,7 @@
             // 
             // btnInDSChuaKTXM_ThongKeNhomDon_3To
             // 
-            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Location = new System.Drawing.Point(366, 40);
+            this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Location = new System.Drawing.Point(447, 40);
             this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Name = "btnInDSChuaKTXM_ThongKeNhomDon_3To";
             this.btnInDSChuaKTXM_ThongKeNhomDon_3To.Size = new System.Drawing.Size(90, 41);
             this.btnInDSChuaKTXM_ThongKeNhomDon_3To.TabIndex = 27;
@@ -417,7 +419,7 @@
             // 
             // btnInDSChuaChuyen_ThongKeNhomDon_3To
             // 
-            this.btnInDSChuaChuyen_ThongKeNhomDon_3To.Location = new System.Drawing.Point(270, 40);
+            this.btnInDSChuaChuyen_ThongKeNhomDon_3To.Location = new System.Drawing.Point(351, 40);
             this.btnInDSChuaChuyen_ThongKeNhomDon_3To.Name = "btnInDSChuaChuyen_ThongKeNhomDon_3To";
             this.btnInDSChuaChuyen_ThongKeNhomDon_3To.Size = new System.Drawing.Size(90, 41);
             this.btnInDSChuaChuyen_ThongKeNhomDon_3To.TabIndex = 26;
@@ -427,7 +429,7 @@
             // 
             // btnBaoCao_ThongKeNhomDon_3To
             // 
-            this.btnBaoCao_ThongKeNhomDon_3To.Location = new System.Drawing.Point(189, 40);
+            this.btnBaoCao_ThongKeNhomDon_3To.Location = new System.Drawing.Point(270, 40);
             this.btnBaoCao_ThongKeNhomDon_3To.Name = "btnBaoCao_ThongKeNhomDon_3To";
             this.btnBaoCao_ThongKeNhomDon_3To.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_ThongKeNhomDon_3To.TabIndex = 25;
@@ -640,6 +642,16 @@
             this.label16.TabIndex = 16;
             this.label16.Text = "Đến Ngày:";
             // 
+            // btnInDS_ThongKeNhomDon_3To
+            // 
+            this.btnInDS_ThongKeNhomDon_3To.Location = new System.Drawing.Point(189, 40);
+            this.btnInDS_ThongKeNhomDon_3To.Name = "btnInDS_ThongKeNhomDon_3To";
+            this.btnInDS_ThongKeNhomDon_3To.Size = new System.Drawing.Size(75, 25);
+            this.btnInDS_ThongKeNhomDon_3To.TabIndex = 29;
+            this.btnInDS_ThongKeNhomDon_3To.Text = "In DS";
+            this.btnInDS_ThongKeNhomDon_3To.UseVisualStyleBackColor = true;
+            this.btnInDS_ThongKeNhomDon_3To.Click += new System.EventHandler(this.btnInDS_ThongKeNhomDon_3To_Click);
+            // 
             // frmBaoCaoDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -734,5 +746,6 @@
         private System.Windows.Forms.DateTimePicker dateDen_ThongKeNhomDon_Phong;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btnInDS_ThongKeNhomDon_3To;
     }
 }

@@ -402,6 +402,7 @@ namespace KTKS_DonKH.DAL.DonTu
             dtDonTu.TableName = "DonTu";
 
             DataTable dtDonTuChiTiet = new DataTable();
+            dtDonTuChiTiet.Columns.Add("STT", typeof(string));
             dtDonTuChiTiet.Columns.Add("MaDon", typeof(string));
             dtDonTuChiTiet.Columns.Add("DanhBo", typeof(string));
             dtDonTuChiTiet.Columns.Add("HoTen", typeof(string));
@@ -432,6 +433,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         foreach (DonTu_ChiTiet itemCT in item.DonTu_ChiTiets)
                         {
                             DataRow drCT = dtDonTuChiTiet.NewRow();
+                            drCT["STT"] = itemCT.STT;
                             drCT["MaDon"] = itemCT.MaDon;
                             drCT["DanhBo"] = itemCT.DanhBo;
                             drCT["HoTen"] = itemCT.HoTen;

@@ -114,33 +114,33 @@ namespace KTKS_DonKH.GUI.DonTu
                 //else
                 //    //chia phòng
                 //    if (cmbPhong.SelectedIndex > 0)
-                        switch (cmbTimTheo.SelectedItem.ToString())
-                        {
-                            case "Mã Đơn":
-                                //if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                                //    dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
-                                //else
-                                if (txtNoiDungTimKiem.Text.Trim() != "")
-                                    //dgvDSDonTu.DataSource = _cDonTu.getDS_Phong(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(cmbPhong.SelectedValue.ToString()));
-                                    gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["DonTu"];
-                                break;
-                            case "Danh Bộ":
-                                if (txtNoiDungTimKiem.Text.Trim() != "")
-                                    //dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), int.Parse(cmbPhong.SelectedValue.ToString()));
-                                    gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", "")).Tables["DonTu"];
-                                break;
-                            case "Số Công Văn":
-                                if (txtNoiDungTimKiem.Text.Trim() != "")
-                                    //dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper(), int.Parse(cmbPhong.SelectedValue.ToString()));
-                                    gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper()).Tables["DonTu"];
-                                break;
-                            case "Ngày":
-                                //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbPhong.SelectedValue.ToString()));
-                                gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
-                                break;
-                            default:
-                                break;
-                        }
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã Đơn":
+                        //if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                        //    dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                        //else
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            //dgvDSDonTu.DataSource = _cDonTu.getDS_Phong(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(cmbPhong.SelectedValue.ToString()));
+                            gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["DonTu"];
+                        break;
+                    case "Danh Bộ":
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            //dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), int.Parse(cmbPhong.SelectedValue.ToString()));
+                            gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", "")).Tables["DonTu"];
+                        break;
+                    case "Số Công Văn":
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            //dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper(), int.Parse(cmbPhong.SelectedValue.ToString()));
+                            gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper()).Tables["DonTu"];
+                        break;
+                    case "Ngày":
+                        //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbPhong.SelectedValue.ToString()));
+                        gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
+                        break;
+                    default:
+                        break;
+                }
             }
             else
             {
@@ -284,26 +284,64 @@ namespace KTKS_DonKH.GUI.DonTu
             //}
             foreach (DataRow item in dt.Rows)
             {
-                DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
+                DataRow[] childRows = item.GetChildRows("Chi Tiết Đơn");
 
-                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
-                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
-                dr["Ma"] = item["MaDon"].ToString();
-                dr["CreateDate"] = item["CreateDate"].ToString();
-                if (item["DanhBo"].ToString().Length == 11)
-                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                dr["DiaChi"] = item["DiaChi"].ToString();
-                dr["NoiDung"] = item["NoiDung"].ToString();
-                if (CTaiKhoan.MaPhong == 1)
+                if (childRows.Count() == 0)
                 {
-                    dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
-                    dr["VisibleNoiNhan"] = true;
-                }
-                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
-                dr["NguoiLap"] = CTaiKhoan.HoTen;
-                dr["NguoiKy"] = CTaiKhoan.NguoiKy;
+                    DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
+                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
+                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
+                    dr["Ma"] = item["MaDon"].ToString();
+                    dr["MaChiTiet"] = item["MaDon"].ToString();
+                    if (item["DanhBo"].ToString().Length == 11)
+                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["DiaChi"] = item["DiaChi"].ToString();
+                    dr["CreateDate"] = item["CreateDate"].ToString();
+                    dr["NoiDung"] = item["NoiDung"].ToString();
+                    //mượn đỡ 2 cột để xét tình trạng
+                    dr["GhiChu"] = item["TinhTrang"].ToString();
+                    dr["NoiNhan"] = item["TinhTrang"].ToString();
+                    if (CTaiKhoan.MaPhong == 1)
+                    {
+                        dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
+                        dr["VisibleNoiNhan"] = true;
+                    }
+                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                    dr["NguoiLap"] = CTaiKhoan.HoTen;
+                    dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
-                dsBaoCao.Tables["CongVan"].Rows.Add(dr);
+                    dsBaoCao.Tables["CongVan"].Rows.Add(dr);
+                }
+                else
+                {
+                    foreach (DataRow itemChild in childRows)
+                    {
+                        DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
+                        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
+                        dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
+                        dr["Ma"] = itemChild["MaDon"].ToString();
+                        dr["MaChiTiet"] = item["MaDon"].ToString() + "." + itemChild["STT"].ToString();
+                        if (itemChild["DanhBo"].ToString().Length == 11)
+                            dr["DanhBo"] = itemChild["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["DiaChi"] = itemChild["DiaChi"].ToString();
+                        dr["CreateDate"] = item["CreateDate"].ToString();
+                        dr["NoiDung"] = item["NoiDung"].ToString();
+                        //mượn đỡ 2 cột để xét tình trạng
+                        dr["GhiChu"] = itemChild["TinhTrang"].ToString();
+                        dr["NoiNhan"] = item["TinhTrang"].ToString();
+                        if (CTaiKhoan.MaPhong == 1)
+                        {
+                            dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
+                            dr["VisibleNoiNhan"] = true;
+                        }
+                        dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                        dr["NguoiLap"] = CTaiKhoan.HoTen;
+                        dr["NguoiKy"] = CTaiKhoan.NguoiKy;
+
+                        dsBaoCao.Tables["CongVan"].Rows.Add(dr);
+                    }
+                }
+
             }
             rptDonTu_GroupNoiDung rpt = new rptDonTu_GroupNoiDung();
             rpt.SetDataSource(dsBaoCao);
