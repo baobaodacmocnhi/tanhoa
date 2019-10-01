@@ -239,7 +239,7 @@ namespace ThuTien.GUI.DongNuoc
                         _kqdongnuoc.NgayDN_ThucTe = DateTime.Now;
                         if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
                             _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
-                        
+
                         _kqdongnuoc.Hieu = txtHieu.Text.Trim();
                         if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
                             _kqdongnuoc.Co = int.Parse(txtCo.Text.Trim());
@@ -280,8 +280,8 @@ namespace ThuTien.GUI.DongNuoc
                             if (chkKhoaTu.Checked == false)
                                 if (!string.IsNullOrEmpty(txtNiemChi2.Text.Trim()))
                                 {
-                                    if(_kqdongnuoc.NgayDN1.Value.Date > DateTime.Parse("2018-10-17"))
-                                        if( _kqdongnuoc.NiemChi.Value== int.Parse(txtNiemChi2.Text.Trim()))
+                                    if (_kqdongnuoc.NgayDN1.Value.Date > DateTime.Parse("2018-10-17"))
+                                        if (_kqdongnuoc.NiemChi.Value == int.Parse(txtNiemChi2.Text.Trim()))
                                         {
                                             MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
@@ -341,7 +341,7 @@ namespace ThuTien.GUI.DongNuoc
                                 _kqdongnuoc.NgayChuyenDN1 = null;
                             }
                         //cập nhật đóng nước lần 1
-                        if (chkKhoaKhac.Checked==false &&  chkKhoaTu.Checked == false && _kqdongnuoc.NgayDN.Value.Date > DateTime.Parse("2018-10-17"))
+                        if (chkKhoaKhac.Checked == false && chkKhoaTu.Checked == false && _kqdongnuoc.NgayDN.Value.Date > DateTime.Parse("2018-10-17"))
                         {
                             if (txtNiemChi.Text.Trim() == "")
                             {
@@ -568,60 +568,60 @@ namespace ThuTien.GUI.DongNuoc
         {
             try
             {
-            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
-            {
-                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (CNguoiDung.Doi)
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
-                        if (kqdongnuoc.MoNuoc == true)
+                        if (CNguoiDung.Doi)
                         {
-                            MessageBox.Show("Có mở nước, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
+                            if (kqdongnuoc.MoNuoc == true)
+                            {
+                                MessageBox.Show("Có mở nước, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            if (kqdongnuoc.NiemChi != null)
+                                _cNiemChi.traSuDung(kqdongnuoc.NiemChi.Value);
+                            if (kqdongnuoc.NiemChi1 != null)
+                                _cNiemChi.traSuDung(kqdongnuoc.NiemChi1.Value);
+                            if (_cDongNuoc.XoaKQ(kqdongnuoc))
+                            {
+                                Clear();
+                                btnXem.PerformClick();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
-                        if (kqdongnuoc.NiemChi != null)
-                            _cNiemChi.traSuDung(kqdongnuoc.NiemChi.Value);
-                        if (kqdongnuoc.NiemChi1 != null)
-                            _cNiemChi.traSuDung(kqdongnuoc.NiemChi1.Value);
-                        if (_cDongNuoc.XoaKQ(kqdongnuoc))
+                        else
                         {
-                            Clear();
-                            btnXem.PerformClick();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                    else
-                    {
-                        DateTime date = new DateTime();
-                        DateTime.TryParse(dgvKQDongNuoc.SelectedRows[0].Cells["CreateDate"].Value.ToString(), out date);
-                        if (date.Date != DateTime.Now.Date)
-                        {
-                            MessageBox.Show("Chỉ được Xóa trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                            DateTime date = new DateTime();
+                            DateTime.TryParse(dgvKQDongNuoc.SelectedRows[0].Cells["CreateDate"].Value.ToString(), out date);
+                            if (date.Date != DateTime.Now.Date)
+                            {
+                                MessageBox.Show("Chỉ được Xóa trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
-                        TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
-                        if (kqdongnuoc.MoNuoc == true)
-                        {
-                            MessageBox.Show("Có mở nước, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        if (kqdongnuoc.NiemChi != null)
-                            _cNiemChi.traSuDung(kqdongnuoc.NiemChi.Value);
-                        if (kqdongnuoc.NiemChi1 != null)
-                            _cNiemChi.traSuDung(kqdongnuoc.NiemChi1.Value);
-                        if (_cDongNuoc.XoaKQ(kqdongnuoc))
-                        {
-                            Clear();
-                            btnXem.PerformClick();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
+                            if (kqdongnuoc.MoNuoc == true)
+                            {
+                                MessageBox.Show("Có mở nước, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            if (kqdongnuoc.NiemChi != null)
+                                _cNiemChi.traSuDung(kqdongnuoc.NiemChi.Value);
+                            if (kqdongnuoc.NiemChi1 != null)
+                                _cNiemChi.traSuDung(kqdongnuoc.NiemChi1.Value);
+                            if (_cDongNuoc.XoaKQ(kqdongnuoc))
+                            {
+                                Clear();
+                                btnXem.PerformClick();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                     }
                 }
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -635,10 +635,10 @@ namespace ThuTien.GUI.DongNuoc
             {
                 if (CNguoiDung.Doi)
                 {
-                    if(cmbTo.SelectedIndex==0)
-                        dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc( dateTu.Value, dateDen.Value);
+                    if (cmbTo.SelectedIndex == 0)
+                        dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc(dateTu.Value, dateDen.Value);
                     else
-                        if(cmbTo.SelectedIndex>0)
+                        if (cmbTo.SelectedIndex > 0)
                             dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc_MaTo_NgayDN((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
                 }
                 else
@@ -928,7 +928,7 @@ namespace ThuTien.GUI.DongNuoc
                                     dr["ChiSoDongMoNuoc"] = item.ChiSoMN.Value.ToString("D4");
                                 else
                                     dr["ChiSoDongMoNuoc"] = item.ChiSoMN.Value.ToString("D5");
-                                if(item.ButChi==true)
+                                if (item.ButChi == true)
                                     dr["ButChi"] = true;
                                 dr["ButChiParent"] = flagButChi;
                                 dr["ChucVu"] = CNguoiKy.getChucVu();

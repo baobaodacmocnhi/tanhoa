@@ -66,21 +66,21 @@ namespace ThuTien.GUI.ToTruong
         public void CountdgvHDTuGia()
         {
             int TongHDTonDau = 0;
-            int TongCongTonDau = 0;
+            long TongCongTonDau = 0;
             int TongHDDangNgan = 0;
-            int TongCongDangNgan = 0;
+            long TongCongDangNgan = 0;
             int TongHDDangNganTangCuong = 0;
-            int TongCongDangNganTangCuong = 0;
+            long TongCongDangNganTangCuong = 0;
             int TongHDDangNganQuay = 0;
-            int TongCongDangNganQuay = 0;
+            long TongCongDangNganQuay = 0;
             int TongHDDangNganChuyenKhoan = 0;
-            int TongCongDangNganChuyenKhoan = 0;
+            long TongCongDangNganChuyenKhoan = 0;
             int TongHDTonCuoi = 0;
-            int TongCongTonCuoi = 0;
-            int TongHDInGiayBao = 0;
-            int TongCongInGiayBao = 0;
+            long TongCongTonCuoi = 0;
+            int TongHDInPhieuBao = 0;
+            int TongHDTBDongNuoc = 0;
             int TongHDXoa = 0;
-            int TongCongXoa = 0;
+            long TongCongXoa = 0;
             if (dgvHDTuGia.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
@@ -88,35 +88,35 @@ namespace ThuTien.GUI.ToTruong
                     if (item.Cells["TongHDTonDau"].Value.ToString() != "")
                         TongHDTonDau += int.Parse(item.Cells["TongHDTonDau"].Value.ToString());
                     if (item.Cells["TongCongTonDau"].Value.ToString() != "")
-                        TongCongTonDau += int.Parse(item.Cells["TongCongTonDau"].Value.ToString());
+                        TongCongTonDau += long.Parse(item.Cells["TongCongTonDau"].Value.ToString());
                     if (item.Cells["TongHDDangNgan"].Value.ToString() != "")
                         TongHDDangNgan += int.Parse(item.Cells["TongHDDangNgan"].Value.ToString());
                     if (item.Cells["TongCongDangNgan"].Value.ToString() != "")
-                        TongCongDangNgan += int.Parse(item.Cells["TongCongDangNgan"].Value.ToString());
+                        TongCongDangNgan += long.Parse(item.Cells["TongCongDangNgan"].Value.ToString());
                     if (item.Cells["TongHDDangNganTangCuong"].Value.ToString() != "")
                         TongHDDangNganTangCuong += int.Parse(item.Cells["TongHDDangNganTangCuong"].Value.ToString());
                     if (item.Cells["TongCongDangNganTangCuong"].Value.ToString() != "")
-                        TongCongDangNganTangCuong += int.Parse(item.Cells["TongCongDangNganTangCuong"].Value.ToString());
+                        TongCongDangNganTangCuong += long.Parse(item.Cells["TongCongDangNganTangCuong"].Value.ToString());
                     if (item.Cells["TongHDDangNganQuay"].Value.ToString() != "")
                         TongHDDangNganQuay += int.Parse(item.Cells["TongHDDangNganQuay"].Value.ToString());
                     if (item.Cells["TongCongDangNganQuay"].Value.ToString() != "")
-                        TongCongDangNganQuay += int.Parse(item.Cells["TongCongDangNganQuay"].Value.ToString());
+                        TongCongDangNganQuay += long.Parse(item.Cells["TongCongDangNganQuay"].Value.ToString());
                     if (item.Cells["TongHDDangNganChuyenKhoan"].Value.ToString() != "")
                         TongHDDangNganChuyenKhoan += int.Parse(item.Cells["TongHDDangNganChuyenKhoan"].Value.ToString());
                     if (item.Cells["TongCongDangNganChuyenKhoan"].Value.ToString() != "")
-                        TongCongDangNganChuyenKhoan += int.Parse(item.Cells["TongCongDangNganChuyenKhoan"].Value.ToString());
+                        TongCongDangNganChuyenKhoan += long.Parse(item.Cells["TongCongDangNganChuyenKhoan"].Value.ToString());
                     if (item.Cells["TongHDTonCuoi"].Value.ToString() != "")
                         TongHDTonCuoi += int.Parse(item.Cells["TongHDTonCuoi"].Value.ToString());
                     if (item.Cells["TongCongTonCuoi"].Value.ToString() != "")
-                        TongCongTonCuoi += int.Parse(item.Cells["TongCongTonCuoi"].Value.ToString());
-                    if (item.Cells["TongHDInGiayBao"].Value.ToString() != "")
-                        TongHDInGiayBao += int.Parse(item.Cells["TongHDInGiayBao"].Value.ToString());
-                    if (item.Cells["TongCongInGiayBao"].Value.ToString() != "")
-                        TongCongInGiayBao += int.Parse(item.Cells["TongCongInGiayBao"].Value.ToString());
+                        TongCongTonCuoi += long.Parse(item.Cells["TongCongTonCuoi"].Value.ToString());
+                    if (item.Cells["TongHDInPhieuBao"].Value.ToString() != "")
+                        TongHDInPhieuBao += int.Parse(item.Cells["TongHDInPhieuBao"].Value.ToString());
+                    if (item.Cells["TongHDTBDongNuoc"].Value.ToString() != "")
+                        TongHDTBDongNuoc += int.Parse(item.Cells["TongHDTBDongNuoc"].Value.ToString());
                     if (item.Cells["TongHDXoa"].Value.ToString() != "")
                         TongHDXoa += int.Parse(item.Cells["TongHDXoa"].Value.ToString());
                     if (item.Cells["TongCongXoa"].Value.ToString() != "")
-                        TongCongXoa += int.Parse(item.Cells["TongCongXoa"].Value.ToString());
+                        TongCongXoa += long.Parse(item.Cells["TongCongXoa"].Value.ToString());
                 }
                 txtTongHDTonDau_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTonDau);
                 txtTongCongTonDau_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongTonDau);
@@ -130,8 +130,8 @@ namespace ThuTien.GUI.ToTruong
                 txtTongCongDangNganChuyenKhoan_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongDangNganChuyenKhoan);
                 txtTongHDTonCuoi_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTonCuoi);
                 txtTongCongTonCuoi_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongTonCuoi);
-                txtTongHDInGiayBao_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDInGiayBao);
-                txtTongCongInGiayBao_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongInGiayBao);
+                txtTongHDInPhieuBao_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDInPhieuBao);
+                txtTongHDTBDongNuoc_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTBDongNuoc);
                 txtTongHDXoa_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDXoa);
                 txtTongCongXoa_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongXoa);
             }
@@ -177,10 +177,17 @@ namespace ThuTien.GUI.ToTruong
                     lst = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
                 }
                 DataTable dt = new DataTable();
-                foreach (TT_NguoiDung item in lst)
-                {
-                    dt.Merge(_cHoaDon.GetTongDangNgan_NV(item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value));
-                }
+                if (cmbFromDot.SelectedIndex == 0)
+                    foreach (TT_NguoiDung item in lst)
+                    {
+                        dt.Merge(_cHoaDon.GetTongDangNgan_NV(item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value));
+                    }
+                else
+                    if (cmbFromDot.SelectedIndex > 0)
+                        foreach (TT_NguoiDung item in lst)
+                        {
+                            dt.Merge(_cHoaDon.GetTongDangNgan_NV(item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value));
+                        }
                 dgvHDTuGia.DataSource = dt;
                 CountdgvHDTuGia();
             }
@@ -195,21 +202,34 @@ namespace ThuTien.GUI.ToTruong
         private void btnIn_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
+            dsBaoCao ds2 = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                DataTable dt = _cHoaDon.GetDSDangNgan("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV"].Value.ToString()), dateGiaiTrach.Value);
+                DataTable dt = _cHoaDon.GetDSDangNgan("", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV"].Value.ToString()), dateGiaiTrach.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                    dr["LoaiBaoCao"] = "ĐÃ THU";
+                    dr["LoaiBaoCao"] = "ĐĂNG NGÂN";
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                     dr["Ky"] = item["Ky"];
-                    dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
+                    dr["GiaBan"] = item["GiaBan"];
+                    dr["ThueGTGT"] = item["ThueGTGT"];
+                    dr["PhiBVMT"] = item["PhiBVMT"];
                     dr["TongCong"] = item["TongCong"];
-                    //dr["SoPhatHanh"] = item["SoPhatHanh"];
-                    dr["SoHoaDon"] = item["SoHoaDon"];
-                    dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
+                    dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen"].Value.ToString();
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
+                }
+                dt = _cHoaDon.getDSXoaDangNgan_HoaDonDienTu(int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV"].Value.ToString()), dateGiaiTrach.Value);
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = ds2.Tables["DSHoaDon"].NewRow();
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                    dr["Ky"] = item["Ky"];
+                    dr["GiaBan"] = item["GiaBan"];
+                    dr["ThueGTGT"] = item["ThueGTGT"];
+                    dr["PhiBVMT"] = item["PhiBVMT"];
+                    dr["TongCong"] = item["TongCong"];
+                    ds2.Tables["DSHoaDon"].Rows.Add(dr);
                 }
             }
             //else
@@ -232,6 +252,7 @@ namespace ThuTien.GUI.ToTruong
             //    }
             rptDSHoaDon rpt = new rptDSHoaDon();
             rpt.SetDataSource(ds);
+            rpt.Subreports["DanhSachXoaDangNgan"].SetDataSource(ds2);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
         }

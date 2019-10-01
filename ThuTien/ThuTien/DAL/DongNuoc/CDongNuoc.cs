@@ -207,6 +207,7 @@ namespace ThuTien.DAL.DongNuoc
         {
             try
             {
+                _db.TT_KQDongNuoc_Hinhs.DeleteOnSubmit(kqdongnuoc.TT_KQDongNuoc_Hinh);
                 _db.TT_KQDongNuocs.DeleteOnSubmit(kqdongnuoc);
                 _db.SubmitChanges();
                 return true;
