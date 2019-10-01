@@ -113,6 +113,9 @@ namespace KTKS_DonKH.GUI.TimKiem
                     case "Địa Chỉ":
                         dt = _cTimKiem.getTienTrinhByDiaChi(txtNoiDungTimKiem.Text.Trim()).Tables["DonTu"];
                         break;
+                    case "Niêm Chì":
+                        dt = _cTimKiem.getTienTrinhByNiemChi(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["DonTu"];
+                        break;
                     case "Số Chứng Từ":
                         dt = _cTimKiem.getTienTrinhBySoChungTu(txtNoiDungTimKiem.Text.Trim()).Tables["DonTu"];
                         break;

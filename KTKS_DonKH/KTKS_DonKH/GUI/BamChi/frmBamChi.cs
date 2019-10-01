@@ -562,7 +562,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             return;
                         }
                         ctbamchi.NiemChi = int.Parse(txtNiemChi.Text.Trim());
-                        _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
+                        //_cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                     }
 
                     if (cmbTinhTrangChiSo.SelectedItem != null)
@@ -593,6 +593,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     using (TransactionScope scope = new TransactionScope())
                         if (_cBamChi.ThemCT(ctbamchi))
                         {
+                            _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                             foreach (DataGridViewRow item in dgvHinh.Rows)
                             {
                                 BamChi_ChiTiet_Hinh en = new BamChi_ChiTiet_Hinh();
