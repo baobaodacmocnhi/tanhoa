@@ -26,8 +26,8 @@ namespace GIAYKHEN.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER9;Initial Catalog=BaoBao;Persist Security Info=True;User ID=sa;" +
-            "Password=db9@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER9;Initial Catalog=DH_CODONG;Persist Security Info=True;User ID=" +
+            "sa;Password=db9@tanhoa")]
         public string HOADON_TAConnectionString {
             get {
                 return ((string)(this["HOADON_TAConnectionString"]));

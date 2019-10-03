@@ -46,10 +46,10 @@ namespace GIAYKHEN
             //}
             ReportDocument rp = new ReportDocument();
             if (comboBox1.SelectedIndex == 0)
-                rp = new HCM_CANHAN_A3();
+                rp = new DanVanKheo_CANHAN_A3();
             else
                 if (comboBox1.SelectedIndex == 1)
-                    rp = new HCM_TAPTHE_A3();
+                    rp = new DanVanKheo_TAPTHE_A3();
             //ReportDocument rp = new GKCongDoan_CANHAN();
             rp.SetDataSource(dt);
             rp.SetParameterValue("qdNam", this.txtQDNm.Text);

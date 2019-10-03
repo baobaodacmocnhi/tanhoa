@@ -90,7 +90,7 @@
             this.txtQDNm.Name = "txtQDNm";
             this.txtQDNm.Size = new System.Drawing.Size(68, 26);
             this.txtQDNm.TabIndex = 2;
-            this.txtQDNm.Text = "2018";
+            this.txtQDNm.Text = "2019";
             // 
             // label5
             // 

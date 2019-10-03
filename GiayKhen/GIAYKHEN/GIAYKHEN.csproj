@@ -76,6 +76,18 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="DanVanKheo_TAPTHE_A3.cs">
+      <DependentUpon>DanVanKheo_TAPTHE_A3.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DanVanKheo_CANHAN_A3.cs">
+      <DependentUpon>DanVanKheo_CANHAN_A3.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="HCM_CANHAN_A3.cs">
       <DependentUpon>HCM_CANHAN_A3.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -239,6 +251,14 @@
     <EmbeddedResource Include="ChinhQuyen_TAPTHE_A3_Edit.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ChinhQuyen_TAPTHE_A3_Edit.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DanVanKheo_TAPTHE_A3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DanVanKheo_TAPTHE_A3.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DanVanKheo_CANHAN_A3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DanVanKheo_CANHAN_A3.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="HCM_CANHAN_A3.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
