@@ -81,7 +81,7 @@ namespace GIAYKHEN
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2019, 04, 23);
+            txtNgay.Value = new DateTime(2019, 10, 02);
         }
 
     }
