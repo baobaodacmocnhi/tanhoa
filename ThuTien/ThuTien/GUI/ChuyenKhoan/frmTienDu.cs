@@ -429,6 +429,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                         };
                     }
                 }
+                else
+                {
+
+                    dtTD.Rows.Add(drTD);
+                }
             }
 
             //Tạo các đối tượng Excel
