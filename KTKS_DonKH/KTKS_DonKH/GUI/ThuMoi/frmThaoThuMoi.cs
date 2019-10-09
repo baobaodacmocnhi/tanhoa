@@ -570,7 +570,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 dr["VeViec"] = _thumoi.VeViec;
                 dr["Lan"] = _thumoi.Lan;
                 dr["Luuy"] = _thumoi.Luuy;
-                dr["NoiNhan"] = _thumoi.NoiNhan+"("+_thumoi.IDCT+")";
+                dr["NoiNhan"] = _thumoi.NoiNhan + "(" + _thumoi.IDCT + ")";
                 dr["TenPhong"] = CTaiKhoan.TenPhong;
                 dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 

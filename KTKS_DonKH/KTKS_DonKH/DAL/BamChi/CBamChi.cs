@@ -166,7 +166,7 @@ namespace KTKS_DonKH.DAL.BamChi
             try
             {
                 CDonTu _cDonTu = new CDonTu();
-                _cDonTu.Xoa_LichSu("BamChi_ChiTiet",(int)ctbamchi.MaCTBC);
+                _cDonTu.Xoa_LichSu("BamChi_ChiTiet", (int)ctbamchi.MaCTBC);
                 decimal MaBC = ctbamchi.MaBC.Value;
                 db.BamChi_ChiTiet_Hinhs.DeleteAllOnSubmit(ctbamchi.BamChi_ChiTiet_Hinhs.ToList());
                 db.BamChi_ChiTiets.DeleteOnSubmit(ctbamchi);
@@ -196,6 +196,11 @@ namespace KTKS_DonKH.DAL.BamChi
                 default:
                     return false;
             }
+        }
+
+        public DateTime getMaxNgayQuyetToan()
+        {
+            return db.BamChi_ChiTiets.Max(item => item.NgayQuyetToan).Value;
         }
 
         public BamChi_ChiTiet GetCT(decimal MaCTBC)
@@ -231,6 +236,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     itemCTBamChi.MaSoBC,
                                     itemCTBamChi.NiemChi,
                                     CreateBy = itemUser.HoTen,
+                                    itemCTBamChi.NgayQuyetToan,
                                 };
                     return LINQToDataTable(query);
                 case "ToTP":
@@ -257,6 +263,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.MaSoBC,
                                 itemCTBamChi.NiemChi,
                                 CreateBy = itemUser.HoTen,
+                                itemCTBamChi.NgayQuyetToan,
                             };
                     return LINQToDataTable(query);
                 case "ToBC":
@@ -283,6 +290,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.MaSoBC,
                                 itemCTBamChi.NiemChi,
                                 CreateBy = itemUser.HoTen,
+                                itemCTBamChi.NgayQuyetToan,
                             };
                     return LINQToDataTable(query);
                 default:
@@ -309,6 +317,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.MaSoBC,
                                 itemCTBamChi.NiemChi,
                                 CreateBy = itemUser.HoTen,
+                                itemCTBamChi.NgayQuyetToan,
                             };
                     return LINQToDataTable(query);
             }
@@ -342,6 +351,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     itemCTBamChi.MaSoBC,
                                     itemCTBamChi.NiemChi,
                                     CreateBy = itemUser.HoTen,
+                                    itemCTBamChi.NgayQuyetToan,
                                 };
                     return LINQToDataTable(query);
                 case "ToTP":
@@ -368,6 +378,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.MaSoBC,
                                 itemCTBamChi.NiemChi,
                                 CreateBy = itemUser.HoTen,
+                                itemCTBamChi.NgayQuyetToan,
                             };
                     return LINQToDataTable(query);
                 case "TpBC":
@@ -394,6 +405,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.MaSoBC,
                                 itemCTBamChi.NiemChi,
                                 CreateBy = itemUser.HoTen,
+                                itemCTBamChi.NgayQuyetToan,
                             };
                     return LINQToDataTable(query);
                 default:
@@ -420,6 +432,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.MaSoBC,
                                 itemCTBamChi.NiemChi,
                                 CreateBy = itemUser.HoTen,
+                                itemCTBamChi.NgayQuyetToan,
                             };
                     return LINQToDataTable(query);
             }
@@ -452,6 +465,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     itemCTBamChi.TheoYeuCau,
                                     itemCTBamChi.MaSoBC,
                                     CreateBy = itemUser.HoTen,
+                                    itemCTBamChi.NgayQuyetToan,
                                 };
                     return LINQToDataTable(query);
                 case "ToTP":
@@ -477,6 +491,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
                                 CreateBy = itemUser.HoTen,
+                                itemCTBamChi.NgayQuyetToan,
                             };
                     return LINQToDataTable(query);
                 case "ToBC":
@@ -502,6 +517,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
                                 CreateBy = itemUser.HoTen,
+                                itemCTBamChi.NgayQuyetToan,
                             };
                     return LINQToDataTable(query);
                 default:
@@ -527,6 +543,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
                                 CreateBy = itemUser.HoTen,
+                                itemCTBamChi.NgayQuyetToan,
                             };
                     return LINQToDataTable(query);
             }
@@ -563,6 +580,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.MaSoBC,
                             itemCTBamChi.NiemChi,
                             CreateBy = itemUser.HoTen,
+                            itemCTBamChi.NgayQuyetToan,
                         };
             return LINQToDataTable(query);
         }
@@ -598,6 +616,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.MaSoBC,
                             itemCTBamChi.NiemChi,
                             CreateBy = itemUser.HoTen,
+                            itemCTBamChi.NgayQuyetToan,
                         };
             return LINQToDataTable(query);
         }
@@ -633,6 +652,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.MaSoBC,
                             itemCTBamChi.NiemChi,
                             CreateBy = itemUser.HoTen,
+                            itemCTBamChi.NgayQuyetToan,
                         };
             return LINQToDataTable(query);
         }
@@ -668,6 +688,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.MaSoBC,
                             itemCTBamChi.NiemChi,
                             CreateBy = itemUser.HoTen,
+                            itemCTBamChi.NgayQuyetToan,
                         };
             return LINQToDataTable(query);
         }
@@ -704,6 +725,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.MaSoBC,
                             itemCTBamChi.NiemChi,
                             CreateBy = itemUser.HoTen,
+                            itemCTBamChi.NgayQuyetToan,
                         };
             return LINQToDataTable(query);
         }
@@ -739,6 +761,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.MaSoBC,
                             itemCTBamChi.NiemChi,
                             CreateBy = itemUser.HoTen,
+                            itemCTBamChi.NgayQuyetToan,
                         };
             return LINQToDataTable(query);
         }
@@ -785,7 +808,7 @@ namespace KTKS_DonKH.DAL.BamChi
         //                    itemCTBamChi.DayChi,
         //                    itemCTBamChi.TheoYeuCau,
         //                    itemCTBamChi.MaSoBC,
-        //                    CreateBy = itemUser.HoTen,
+        //                    CreateBy = itemUser.HoTen,itemCTBamChi.NgayQuyetToan,
         //                };
         //    return LINQToDataTable(query);
         //}
@@ -813,7 +836,7 @@ namespace KTKS_DonKH.DAL.BamChi
         //                    itemCTBamChi.DayChi,
         //                    itemCTBamChi.TheoYeuCau,
         //                    itemCTBamChi.MaSoBC,
-        //                    CreateBy = itemUser.HoTen,
+        //                    CreateBy = itemUser.HoTen,itemCTBamChi.NgayQuyetToan,
         //                };
         //    return LINQToDataTable(query);
         //}

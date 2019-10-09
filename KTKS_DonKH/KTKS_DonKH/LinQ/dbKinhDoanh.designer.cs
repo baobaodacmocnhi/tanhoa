@@ -2623,6 +2623,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TheoYeuCau;
 		
+		private System.Nullable<System.DateTime> _NgayQuyetToan;
+		
 		private System.Nullable<decimal> _MaBC;
 		
 		private System.Nullable<int> _STT;
@@ -2703,6 +2705,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaSoBCChanged();
     partial void OnTheoYeuCauChanging(string value);
     partial void OnTheoYeuCauChanged();
+    partial void OnNgayQuyetToanChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayQuyetToanChanged();
     partial void OnMaBCChanging(System.Nullable<decimal> value);
     partial void OnMaBCChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
@@ -3320,6 +3324,26 @@ namespace KTKS_DonKH.LinQ
 					this._TheoYeuCau = value;
 					this.SendPropertyChanged("TheoYeuCau");
 					this.OnTheoYeuCauChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayQuyetToan", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayQuyetToan
+		{
+			get
+			{
+				return this._NgayQuyetToan;
+			}
+			set
+			{
+				if ((this._NgayQuyetToan != value))
+				{
+					this.OnNgayQuyetToanChanging(value);
+					this.SendPropertyChanging();
+					this._NgayQuyetToan = value;
+					this.SendPropertyChanged("NgayQuyetToan");
+					this.OnNgayQuyetToanChanged();
 				}
 			}
 		}

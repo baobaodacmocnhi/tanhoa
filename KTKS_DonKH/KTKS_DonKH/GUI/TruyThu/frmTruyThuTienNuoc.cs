@@ -400,7 +400,7 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (e.KeyChar == 13 && txtMaCTTTTN.Text.Trim() != "")
             {
-                string IDCT = txtMaCTTTTN.Text.Trim().Replace("-","");
+                string IDCT = txtMaCTTTTN.Text.Trim().Replace("-", "");
                 Clear();
                 _cttttn = _cTTTN.get_ChiTiet(int.Parse(IDCT));
                 if (_cttttn != null)
@@ -707,7 +707,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void dgvTruyThuTienNuoc_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (_flagLoad == false && dgvTruyThuTienNuoc["ID_HoaDon", e.RowIndex].Value==null)
+            if (_flagLoad == false && dgvTruyThuTienNuoc["ID_HoaDon", e.RowIndex].Value == null)
                 if (e.RowIndex < dgvTruyThuTienNuoc.RowCount - 1)
                 {
                     dgvTruyThuTienNuoc["Nam", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["Nam", e.RowIndex].Value;
@@ -909,7 +909,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     _cTTTN.SubmitChanges();
 
                     if (_dontu_ChiTiet != null)
-                        _cDonTu.Them_LichSu(cttttn.CreateDate.Value,"TruyThu", "Đã Lập Truy Thu, " + cttttn.NoiDung, cttttn.IDCT, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                        _cDonTu.Them_LichSu(cttttn.CreateDate.Value, "TruyThu", "Đã Lập Truy Thu, " + cttttn.NoiDung, cttttn.IDCT, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Clear();
                 }
@@ -1063,104 +1063,192 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void btnIn_Click(object sender, EventArgs e)
         {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             if (_cttttn != null)
             {
-                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (TruyThuTienNuoc_HoaDon item in _cttttn.TruyThuTienNuoc_HoaDons.OrderBy(itemA => itemA.Nam).ThenBy(itemA => itemA.Ky).ToList())
+                {
+                    DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
+
+                    //if (txtMaDonMoi.Text.Trim() != "")
+                    //    dr["MaDon"] = txtMaDonMoi.Text.Trim();
+                    //else
+                    //    dr["MaDon"] = txtMaDonCu.Text.Trim();
+                    dr["ID"] = _cttttn.IDCT.ToString().Insert(_cttttn.IDCT.ToString().Length - 2, "-");
+                    dr["DanhBo"] = _cttttn.DanhBo.ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = _cttttn.HoTen;
+                    dr["DiaChi"] = _cttttn.DiaChi;
+                    dr["HopDong"] = _cttttn.HopDong;
+                    dr["GiaBieu"] = _cttttn.GiaBieu;
+                    dr["DinhMuc"] = _cttttn.DinhMuc;
+
+                    dr["Ky"] = item.Ky;
+                    dr["Nam"] = item.Nam;
+                    dr["GiaBieuCu"] = item.GiaBieuCu;
+                    dr["DinhMucCu"] = item.DinhMucCu;
+                    dr["TieuThuCu"] = item.TieuThuCu;
+                    dr["GiaBanCu"] = item.GiaBanCu;
+                    dr["ThueGTGTCu"] = item.ThueGTGTCu;
+                    dr["PhiBVMTCu"] = item.PhiBVMTCu;
+                    dr["TongCongCu"] = item.TongCongCu;
+                    dr["GiaBieuMoi"] = item.GiaBieuMoi;
+                    dr["DinhMucMoi"] = item.DinhMucMoi;
+                    dr["TieuThuMoi"] = item.TieuThuMoi;
+                    dr["GiaBanMoi"] = item.GiaBanMoi;
+                    dr["ThueGTGTMoi"] = item.ThueGTGTMoi;
+                    dr["PhiBVMTMoi"] = item.PhiBVMTMoi;
+                    dr["TongCongMoi"] = item.TongCongMoi;
+                    dr["TangGiam"] = item.TangGiam;
+
+                    dr["SoTien1m3"] = _cttttn.SoTien1m3;
+                    dr["NhanVien"] = CTaiKhoan.HoTen;
+
+                    dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
+                    if (item.Cells["Ky"].Value != null)
                     {
                         DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
-                        //if (txtMaDonMoi.Text.Trim() != "")
-                        //    dr["MaDon"] = txtMaDonMoi.Text.Trim();
-                        //else
-                        //    dr["MaDon"] = txtMaDonCu.Text.Trim();
-                        dr["ID"] = _cttttn.IDCT.ToString().Insert(_cttttn.IDCT.ToString().Length - 2, "-");
-                        dr["DanhBo"] = _cttttn.DanhBo.ToString().Insert(7, " ").Insert(4, " ");
-                        dr["HoTen"] = _cttttn.HoTen;
-                        dr["DiaChi"] = _cttttn.DiaChi;
-                        dr["HopDong"] = _cttttn.HopDong;
-                        dr["GiaBieu"] = _cttttn.GiaBieu;
-                        dr["DinhMuc"] = _cttttn.DinhMuc;
+                        dr["MaDon"] = txtMaDonCu.Text.Trim();
+                        dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
+                        dr["HoTen"] = txtHoTen.Text.Trim();
+                        dr["DiaChi"] = txtDiaChi.Text.Trim();
+                        dr["HopDong"] = txtHopDong.Text.Trim();
+                        dr["GiaBieu"] = txtGiaBieu.Text.Trim();
+                        dr["DinhMuc"] = txtDinhMuc.Text.Trim();
 
-                        dr["Ky"] = item.Ky;
-                        dr["Nam"] = item.Nam;
-                        dr["GiaBieuCu"] = item.GiaBieuCu;
-                        dr["DinhMucCu"] = item.DinhMucCu;
-                        dr["TieuThuCu"] = item.TieuThuCu;
-                        dr["GiaBanCu"] = item.GiaBanCu;
-                        dr["ThueGTGTCu"] = item.ThueGTGTCu;
-                        dr["PhiBVMTCu"] = item.PhiBVMTCu;
-                        dr["TongCongCu"] = item.TongCongCu;
-                        dr["GiaBieuMoi"] = item.GiaBieuMoi;
-                        dr["DinhMucMoi"] = item.DinhMucMoi;
-                        dr["TieuThuMoi"] = item.TieuThuMoi;
-                        dr["GiaBanMoi"] = item.GiaBanMoi;
-                        dr["ThueGTGTMoi"] = item.ThueGTGTMoi;
-                        dr["PhiBVMTMoi"] = item.PhiBVMTMoi;
-                        dr["TongCongMoi"] = item.TongCongMoi;
-                        dr["TangGiam"] = item.TangGiam;
-
-                        dr["SoTien1m3"] = _cttttn.SoTien1m3;
+                        dr["Ky"] = item.Cells["Ky"].Value.ToString();
+                        dr["Nam"] = item.Cells["Nam"].Value.ToString();
+                        dr["GiaBieuCu"] = item.Cells["GiaBieu_Cu"].Value.ToString();
+                        dr["DinhMucCu"] = item.Cells["DinhMuc_Cu"].Value.ToString();
+                        dr["TieuThuCu"] = item.Cells["TieuThu_Cu"].Value.ToString();
+                        dr["GiaBanCu"] = item.Cells["GiaBan_Cu"].Value.ToString();
+                        dr["ThueGTGTCu"] = item.Cells["ThueGTGT_Cu"].Value.ToString();
+                        dr["PhiBVMTCu"] = item.Cells["PhiBVMT_Cu"].Value.ToString();
+                        dr["TongCongCu"] = item.Cells["TongCong_Cu"].Value.ToString();
+                        dr["GiaBieuMoi"] = item.Cells["GiaBieu_Moi"].Value.ToString();
+                        dr["DinhMucMoi"] = item.Cells["DinhMuc_Moi"].Value.ToString();
+                        dr["TieuThuMoi"] = item.Cells["TieuThu_Moi"].Value.ToString();
+                        dr["GiaBanMoi"] = item.Cells["GiaBan_Moi"].Value.ToString();
+                        dr["ThueGTGTMoi"] = item.Cells["ThueGTGT_Moi"].Value.ToString();
+                        dr["PhiBVMTMoi"] = item.Cells["PhiBVMT_Moi"].Value.ToString();
+                        dr["TongCongMoi"] = item.Cells["TongCong_Moi"].Value.ToString();
+                        dr["TangGiam"] = item.Cells["TangGiam"].Value.ToString();
                         dr["NhanVien"] = CTaiKhoan.HoTen;
+                        //TruyThuTienNuoc_ChiTiet cttttn = new TruyThuTienNuoc_ChiTiet();
+                        //if (_dontu_ChiTiet != null)
+                        //    cttttn = _cTTTN.get_ChiTiet(_dontu_ChiTiet.MaDon.Value);
+                        //else
+                        //    if (_dontkh != null)
+                        //        cttttn = _cTTTN.get_ChiTiet("TKH", _dontkh.MaDon);
+                        //    else
+                        //        if (_dontxl != null)
+                        //            cttttn = _cTTTN.get_ChiTiet("TXL", _dontxl.MaDon);
+                        //        else
+                        //            if (_dontbc != null)
+                        //                cttttn = _cTTTN.get_ChiTiet("TBC", _dontbc.MaDon);
+                        //if (cttttn != null)
+                        //    dr["SoTien1m3"] = cttttn.SoTien1m3;
 
                         dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                     }
-
-                rptTruyThuTienNuoc rpt = new rptTruyThuTienNuoc();
-                rpt.SetDataSource(dsBaoCao);
-                frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                frm.Show();
             }
+            rptTruyThuTienNuoc rpt = new rptTruyThuTienNuoc();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
         }
 
         private void btnInChiTiet_Click(object sender, EventArgs e)
         {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             if (_cttttn != null)
             {
-                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (TruyThuTienNuoc_HoaDon item in _cttttn.TruyThuTienNuoc_HoaDons.OrderBy(itemA => itemA.Nam).ThenBy(itemA => itemA.Ky).ToList())
+                {
+                    DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
+
+                    //if (txtMaDonMoi.Text.Trim() != "")
+                    //    dr["MaDon"] = txtMaDonMoi.Text.Trim();
+                    //else
+                    //    dr["MaDon"] = txtMaDonCu.Text.Trim();
+                    dr["ID"] = _cttttn.IDCT.ToString().Insert(_cttttn.IDCT.ToString().Length - 2, "-");
+                    dr["DanhBo"] = _cttttn.DanhBo.ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = _cttttn.HoTen;
+                    dr["DiaChi"] = _cttttn.DiaChi;
+                    dr["HopDong"] = _cttttn.HopDong;
+                    dr["GiaBieu"] = _cttttn.GiaBieu;
+                    dr["DinhMuc"] = _cttttn.DinhMuc;
+
+                    dr["Ky"] = item.Ky;
+                    dr["Nam"] = item.Nam;
+                    dr["GiaBieuCu"] = item.GiaBieuCu;
+                    dr["DinhMucCu"] = item.DinhMucCu;
+                    dr["TieuThuCu"] = item.TieuThuCu;
+                    dr["GiaBanCu"] = item.GiaBanCu;
+                    dr["ThueGTGTCu"] = item.ThueGTGTCu;
+                    dr["PhiBVMTCu"] = item.PhiBVMTCu;
+                    dr["TongCongCu"] = item.TongCongCu;
+                    dr["GiaBieuMoi"] = item.GiaBieuMoi;
+                    dr["DinhMucMoi"] = item.DinhMucMoi;
+                    dr["TieuThuMoi"] = item.TieuThuMoi;
+                    dr["GiaBanMoi"] = item.GiaBanMoi;
+                    dr["ThueGTGTMoi"] = item.ThueGTGTMoi;
+                    dr["PhiBVMTMoi"] = item.PhiBVMTMoi;
+                    dr["TongCongMoi"] = item.TongCongMoi;
+                    dr["TangGiam"] = item.TangGiam;
+
+                    dr["NhanVien"] = CTaiKhoan.HoTen;
+                    dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
+                    if (item.Cells["Ky"].Value != null)
                     {
                         DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
-                        //if (txtMaDonMoi.Text.Trim() != "")
-                        //    dr["MaDon"] = txtMaDonMoi.Text.Trim();
-                        //else
-                        //    dr["MaDon"] = txtMaDonCu.Text.Trim();
-                        dr["ID"] = _cttttn.IDCT.ToString().Insert(_cttttn.IDCT.ToString().Length - 2, "-");
-                        dr["DanhBo"] = _cttttn.DanhBo.ToString().Insert(7, " ").Insert(4, " ");
-                        dr["HoTen"] = _cttttn.HoTen;
-                        dr["DiaChi"] = _cttttn.DiaChi;
-                        dr["HopDong"] = _cttttn.HopDong;
-                        dr["GiaBieu"] = _cttttn.GiaBieu;
-                        dr["DinhMuc"] = _cttttn.DinhMuc;
+                        dr["MaDon"] = txtMaDonCu.Text.Trim();
+                        dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
+                        dr["HoTen"] = txtHoTen.Text.Trim();
+                        dr["DiaChi"] = txtDiaChi.Text.Trim();
+                        dr["HopDong"] = txtHopDong.Text.Trim();
+                        dr["GiaBieu"] = txtGiaBieu.Text.Trim();
+                        dr["DinhMuc"] = txtDinhMuc.Text.Trim();
 
-                        dr["Ky"] = item.Ky;
-                        dr["Nam"] = item.Nam;
-                        dr["GiaBieuCu"] = item.GiaBieuCu;
-                        dr["DinhMucCu"] = item.DinhMucCu;
-                        dr["TieuThuCu"] = item.TieuThuCu;
-                        dr["GiaBanCu"] = item.GiaBanCu;
-                        dr["ThueGTGTCu"] = item.ThueGTGTCu;
-                        dr["PhiBVMTCu"] = item.PhiBVMTCu;
-                        dr["TongCongCu"] = item.TongCongCu;
-                        dr["GiaBieuMoi"] = item.GiaBieuMoi;
-                        dr["DinhMucMoi"] = item.DinhMucMoi;
-                        dr["TieuThuMoi"] = item.TieuThuMoi;
-                        dr["GiaBanMoi"] = item.GiaBanMoi;
-                        dr["ThueGTGTMoi"] = item.ThueGTGTMoi;
-                        dr["PhiBVMTMoi"] = item.PhiBVMTMoi;
-                        dr["TongCongMoi"] = item.TongCongMoi;
-                        dr["TangGiam"] = item.TangGiam;
-
+                        dr["Ky"] = item.Cells["Ky"].Value.ToString();
+                        dr["Nam"] = item.Cells["Nam"].Value.ToString();
+                        dr["GiaBieuCu"] = item.Cells["GiaBieu_Cu"].Value.ToString();
+                        if (item.Cells["DinhMuc_Cu"].Value != null)
+                            dr["DinhMucCu"] = item.Cells["DinhMuc_Cu"].Value.ToString();
+                        dr["TieuThuCu"] = item.Cells["TieuThu_Cu"].Value.ToString();
+                        dr["GiaBanCu"] = item.Cells["GiaBan_Cu"].Value.ToString();
+                        dr["ThueGTGTCu"] = item.Cells["ThueGTGT_Cu"].Value.ToString();
+                        dr["PhiBVMTCu"] = item.Cells["PhiBVMT_Cu"].Value.ToString();
+                        dr["TongCongCu"] = item.Cells["TongCong_Cu"].Value.ToString();
+                        dr["GiaBieuMoi"] = item.Cells["GiaBieu_Moi"].Value.ToString();
+                        if (item.Cells["DinhMuc_Moi"].Value != null)
+                            dr["DinhMucMoi"] = item.Cells["DinhMuc_Moi"].Value.ToString();
+                        dr["TieuThuMoi"] = item.Cells["TieuThu_Moi"].Value.ToString();
+                        dr["GiaBanMoi"] = item.Cells["GiaBan_Moi"].Value.ToString();
+                        dr["ThueGTGTMoi"] = item.Cells["ThueGTGT_Moi"].Value.ToString();
+                        dr["PhiBVMTMoi"] = item.Cells["PhiBVMT_Moi"].Value.ToString();
+                        dr["TongCongMoi"] = item.Cells["TongCong_Moi"].Value.ToString();
+                        if (item.Cells["TangGiam"].Value != null)
+                            dr["TangGiam"] = item.Cells["TangGiam"].Value.ToString();
                         dr["NhanVien"] = CTaiKhoan.HoTen;
                         dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                     }
-
-                rptTruyThuTienNuocChiTiet rpt = new rptTruyThuTienNuocChiTiet();
-                rpt.SetDataSource(dsBaoCao);
-                frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                frm.Show();
             }
+            rptTruyThuTienNuocChiTiet rpt = new rptTruyThuTienNuocChiTiet();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
         }
 
         private void btnThemThanhToan_Click(object sender, EventArgs e)
@@ -1175,7 +1263,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         entity.IDCT = _cttttn.IDCT;
                         entity.NgayDong = dateDongTien.Value;
-                        entity.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".",""));
+                        entity.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
 
                         if (_cTTTN.Them_ThanhToan(entity))
                         {
@@ -1202,7 +1290,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_cttttn != null)
                     {
-                        TruyThuTienNuoc_ThanhToan entity = _cTTTN.get_ThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc.SelectedRows[0].Cells["MaTTTTTN"].Value.ToString()));
+                        TruyThuTienNuoc_ThanhToan entity = _cTTTN.get_ThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc.SelectedRows[0].Cells["ID_ThanhToan"].Value.ToString()));
 
                         entity.NgayDong = dateDongTien.Value;
                         entity.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
@@ -1232,7 +1320,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_cttttn != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        TruyThuTienNuoc_ThanhToan entity = _cTTTN.get_ThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc.SelectedRows[0].Cells["MaTTTTTN"].Value.ToString()));
+                        TruyThuTienNuoc_ThanhToan entity = _cTTTN.get_ThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc.SelectedRows[0].Cells["ID_ThanhToan"].Value.ToString()));
 
                         if (_cTTTN.Xoa_ThanhToan(entity))
                         {
@@ -1358,7 +1446,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_cttttn != null)
                     {
-                        TruyThuTienNuoc_ThuMoi entity = _cTTTN.get_ThuMoi(int.Parse(dgvThuMoi.SelectedRows[0].Cells["ID"].Value.ToString()));
+                        TruyThuTienNuoc_ThuMoi entity = _cTTTN.get_ThuMoi(int.Parse(dgvThuMoi.SelectedRows[0].Cells["ID_ThuMoi"].Value.ToString()));
 
                         entity.VaoLuc = txtVaoLuc.Text.Trim();
                         entity.VeViec = txtVeViec.Text.Trim();
@@ -1388,7 +1476,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_cttttn != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        TruyThuTienNuoc_ThuMoi entity = _cTTTN.get_ThuMoi(int.Parse(dgvThuMoi.SelectedRows[0].Cells["ID"].Value.ToString()));
+                        TruyThuTienNuoc_ThuMoi entity = _cTTTN.get_ThuMoi(int.Parse(dgvThuMoi.SelectedRows[0].Cells["ID_ThuMoi"].Value.ToString()));
 
                         if (_cTTTN.Xoa_ThuMoi(entity))
                         {

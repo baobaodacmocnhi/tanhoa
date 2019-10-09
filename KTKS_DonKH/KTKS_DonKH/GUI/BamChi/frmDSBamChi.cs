@@ -17,6 +17,7 @@ using KTKS_DonKH.DAL.ToKhachHang;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.BamChi;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.BamChi
 {
@@ -219,6 +220,30 @@ namespace KTKS_DonKH.GUI.BamChi
             //{
             //    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             //}
+        }
+
+        private void btnChotQuyetToan_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.ToTruong == true)
+            {
+                foreach (DataGridViewRow item in dgvDSCTBamChi.Rows)
+                    if (item.Cells["NgayQuyetToan"].Value.ToString() != "")
+                    {
+                        MessageBox.Show("Đã Chốt Quyết Toán", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                foreach (DataGridViewRow item in dgvDSCTBamChi.Rows)
+                {
+                    BamChi_ChiTiet en = _cBamChi.GetCT(decimal.Parse(item.Cells["MaCTBC"].Value.ToString()));
+                    en.NgayQuyetToan = DateTime.Now;
+                    _cBamChi.SuaCT(en);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         

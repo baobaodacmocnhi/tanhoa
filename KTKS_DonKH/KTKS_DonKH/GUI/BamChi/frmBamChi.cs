@@ -97,23 +97,23 @@ namespace KTKS_DonKH.GUI.BamChi
                     txtMaDonMoi.Text = ctbamchi.BamChi.MaDonMoi.Value.ToString() + "." + ctbamchi.STT.Value.ToString();
             }
             else
-            if (ctbamchi.BamChi.MaDon != null)
-            {
-                _dontkh = _cDonKH.Get(ctbamchi.BamChi.MaDon.Value);
-                txtMaDonCu.Text = ctbamchi.BamChi.MaDon.ToString().Insert(ctbamchi.BamChi.MaDon.ToString().Length - 2, "-");
-            }
-            else
-                if (ctbamchi.BamChi.MaDonTXL != null)
+                if (ctbamchi.BamChi.MaDon != null)
                 {
-                    _dontxl = _cDonTXL.Get(ctbamchi.BamChi.MaDonTXL.Value);
-                    txtMaDonCu.Text = "TXL" + ctbamchi.BamChi.MaDonTXL.ToString().Insert(ctbamchi.BamChi.MaDonTXL.ToString().Length - 2, "-");
+                    _dontkh = _cDonKH.Get(ctbamchi.BamChi.MaDon.Value);
+                    txtMaDonCu.Text = ctbamchi.BamChi.MaDon.ToString().Insert(ctbamchi.BamChi.MaDon.ToString().Length - 2, "-");
                 }
                 else
-                    if (ctbamchi.BamChi.MaDonTBC != null)
+                    if (ctbamchi.BamChi.MaDonTXL != null)
                     {
-                        _dontbc = _cDonTBC.Get(ctbamchi.BamChi.MaDonTBC.Value);
-                        txtMaDonCu.Text = "TBC" + ctbamchi.BamChi.MaDonTBC.ToString().Insert(ctbamchi.BamChi.MaDonTBC.ToString().Length - 2, "-");
+                        _dontxl = _cDonTXL.Get(ctbamchi.BamChi.MaDonTXL.Value);
+                        txtMaDonCu.Text = "TXL" + ctbamchi.BamChi.MaDonTXL.ToString().Insert(ctbamchi.BamChi.MaDonTXL.ToString().Length - 2, "-");
                     }
+                    else
+                        if (ctbamchi.BamChi.MaDonTBC != null)
+                        {
+                            _dontbc = _cDonTBC.Get(ctbamchi.BamChi.MaDonTBC.Value);
+                            txtMaDonCu.Text = "TBC" + ctbamchi.BamChi.MaDonTBC.ToString().Insert(ctbamchi.BamChi.MaDonTBC.ToString().Length - 2, "-");
+                        }
             txtDanhBo.Text = ctbamchi.DanhBo;
             txtHopDong.Text = ctbamchi.HopDong;
             txtHoTen.Text = ctbamchi.HoTen;
@@ -131,8 +131,8 @@ namespace KTKS_DonKH.GUI.BamChi
             cmbChiKhoaGoc.SelectedItem = ctbamchi.ChiKhoaGoc;
             txtMucDichSuDung.Text = ctbamchi.MucDichSuDung;
             txtChiSo.Text = ctbamchi.ChiSo.ToString();
-            if (ctbamchi.NiemChi!=null)
-            txtNiemChi.Text = ctbamchi.NiemChi.Value.ToString();
+            if (ctbamchi.NiemChi != null)
+                txtNiemChi.Text = ctbamchi.NiemChi.Value.ToString();
             cmbTinhTrangChiSo.SelectedItem = ctbamchi.TinhTrangChiSo;
             cmbTrangThaiBC.SelectedValue = ctbamchi.TrangThaiBC;
             txtVienChi.Text = ctbamchi.VienChi.ToString();
@@ -222,7 +222,7 @@ namespace KTKS_DonKH.GUI.BamChi
             _ctbamchi = null;
             _hoadon = null;
             dgvHinh.Rows.Clear();
-            
+
             txtMaDonMoi.Focus();
         }
 
@@ -291,7 +291,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 ///Đơn Tổ Xử Lý
                 if (txtMaDonCu.Text.Trim().ToUpper().Contains("TXL"))
                 {
-                    if ( _cDonTXL.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                    if (_cDonTXL.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
                     {
                         _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDonCu.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
@@ -313,7 +313,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     ///Đơn Tổ Bấm Chì
                     if (txtMaDonCu.Text.Trim().ToUpper().Contains("TBC"))
                     {
-                        if ( _cDonTBC.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                        if (_cDonTBC.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
                         {
                             _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
                             txtMaDonCu.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
@@ -333,7 +333,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     }
                     ///Đơn Tổ Khách Hàng
                     else
-                        if ( _cDonKH.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", ""))) == true)
+                        if (_cDonKH.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", ""))) == true)
                         {
                             _dontkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
                             txtMaDonCu.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
@@ -385,7 +385,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);   
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -438,6 +438,12 @@ namespace KTKS_DonKH.GUI.BamChi
                     //    }
                     //}
 
+                    DateTime NgayQuyetToan = _cBamChi.getMaxNgayQuyetToan();
+                    if (dateBamChi.Value.Date <= NgayQuyetToan.Date)
+                    {
+                        MessageBox.Show("Ngày Bấm Chì đã được Quết Toán", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     BamChi_ChiTiet ctbamchi = new BamChi_ChiTiet();
 
                     if (_dontu_ChiTiet != null)
@@ -604,7 +610,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             }
                             if (_dontu_ChiTiet != null)
                             {
-                                if (_cDonTu.Them_LichSu(ctbamchi.NgayBC.Value,"BamChi", "Đã Bấm Chì, " + ctbamchi.TrangThaiBC, (int)ctbamchi.MaCTBC, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
+                                if (_cDonTu.Them_LichSu(ctbamchi.NgayBC.Value, "BamChi", "Đã Bấm Chì, " + ctbamchi.TrangThaiBC, (int)ctbamchi.MaCTBC, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
                                     scope.Complete();
                             }
                             else
@@ -631,6 +637,11 @@ namespace KTKS_DonKH.GUI.BamChi
                 {
                     if (_ctbamchi != null)
                     {
+                        if (_ctbamchi.NgayQuyetToan != null)
+                        {
+                            MessageBox.Show("Biên bản bấm chì đã được Chốt Quyết Toán", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                             if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
                             {
@@ -754,6 +765,11 @@ namespace KTKS_DonKH.GUI.BamChi
                 {
                     if (_ctbamchi != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
+                        if (_ctbamchi.NgayQuyetToan != null)
+                        {
+                            MessageBox.Show("Biên bản bấm chì đã được Chốt Quyết Toán", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                             if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
                             {
@@ -1002,11 +1018,11 @@ namespace KTKS_DonKH.GUI.BamChi
                         if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
-                            if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
-                            {
-                                MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                                if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
+                                {
+                                    MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null)
                                 if (_cBamChi.Xoa_Hinh(_cBamChi.get_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
                                 {
@@ -1025,7 +1041,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
 
     }
 }

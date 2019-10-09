@@ -258,7 +258,7 @@ namespace KTKS_DonKH.GUI.DonTu
             txtMaDon.Text = "";
             lbTruyThu.Text = "";
             txtNguoiLap.Text = "";
-            
+
             cmbNhomDon_ChiTiet.SelectedIndex = -1;
             txtSoNK.Text = "";
             txtHieuLucKy.Text = "";
@@ -272,12 +272,13 @@ namespace KTKS_DonKH.GUI.DonTu
             txtDinhMuc.Text = "";
             txtNguoiBao.Text = "";
             txtDienThoai.Text = "";
-            dgvDanhBo.DataSource = null;
-            //if (dgvDanhBo.DataSource == null)
-            //{
-            dgvDanhBo.Rows.Clear();
-            //    dgvDanhBo.Rows.Add();
-            //}
+            if (dgvDanhBo.DataSource != null)
+                dgvDanhBo.DataSource = null;
+            else
+            {
+                dgvDanhBo.Rows.Clear();
+                dgvDanhBo.Rows.Add();
+            }
 
             chkCT_HoaDon.Checked = false;
             chkCT_GiayBao.Checked = false;
