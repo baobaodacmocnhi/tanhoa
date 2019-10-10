@@ -235,7 +235,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 foreach (DataGridViewRow item in dgvDSCTBamChi.Rows)
                 {
                     BamChi_ChiTiet en = _cBamChi.GetCT(decimal.Parse(item.Cells["MaCTBC"].Value.ToString()));
-                    en.NgayQuyetToan = DateTime.Now;
+                    en.NgayQuyetToan = dateQuyetToan.Value;
                     _cBamChi.SuaCT(en);
                 }
             }

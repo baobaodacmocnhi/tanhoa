@@ -118,6 +118,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 txtHoTen_Cat_YCC1.Text = ctchungtu.CatNK_HoTen;
                                 txtDiaChiKH_Cat_YCC1.Text = ctchungtu.CatNK_DiaChi;
                                 txtSoNKCat_YCC1.Text = ctchungtu.CatNK_SoNKCat.ToString();
+                                txtHoTensCat_YCC1.Text = ctchungtu.CatNK_HoTens;
                             }
                             if (ctchungtu.YeuCauCat2)
                             {
@@ -131,6 +132,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 txtHoTen_Cat_YCC2.Text = ctchungtu.CatNK_HoTen2;
                                 txtDiaChiKH_Cat_YCC2.Text = ctchungtu.CatNK_DiaChi2;
                                 txtSoNKCat_YCC2.Text = ctchungtu.CatNK_SoNKCat2.ToString();
+                                txtHoTensCat_YCC2.Text = ctchungtu.CatNK_HoTens2;
                             }
                             if (ctchungtu.YeuCauCat3)
                             {
@@ -143,6 +145,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 txtHoTen_Cat_YCC3.Text = ctchungtu.CatNK_HoTen3;
                                 txtDiaChiKH_Cat_YCC3.Text = ctchungtu.CatNK_DiaChi3;
                                 txtSoNKCat_YCC3.Text = ctchungtu.CatNK_SoNKCat3.ToString();
+                                txtHoTensCat_YCC3.Text = ctchungtu.CatNK_HoTens3;
                             }
                             if (ctchungtu.YeuCauCat4)
                             {
@@ -155,6 +158,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 txtHoTen_Cat_YCC4.Text = ctchungtu.CatNK_HoTen4;
                                 txtDiaChiKH_Cat_YCC4.Text = ctchungtu.CatNK_DiaChi4;
                                 txtSoNKCat_YCC4.Text = ctchungtu.CatNK_SoNKCat4.ToString();
+                                txtHoTensCat_YCC4.Text = ctchungtu.CatNK_HoTens4;
                             }
                             if (ctchungtu.YeuCauCat5)
                             {
@@ -167,6 +171,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 txtHoTen_Cat_YCC5.Text = ctchungtu.CatNK_HoTen5;
                                 txtDiaChiKH_Cat_YCC5.Text = ctchungtu.CatNK_DiaChi5;
                                 txtSoNKCat_YCC5.Text = ctchungtu.CatNK_SoNKCat5.ToString();
+                                txtHoTensCat_YCC5.Text = ctchungtu.CatNK_HoTens5;
                             }
                         }
                         else
@@ -220,6 +225,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             txtHoTen_Cat_YCC1.Text = ctchungtu.CatNK_HoTen;
                             txtDiaChiKH_Cat_YCC1.Text = ctchungtu.CatNK_DiaChi;
                             txtSoNKCat_YCC1.Text = ctchungtu.CatNK_SoNKCat.ToString();
+                            txtHoTensCat_YCC1.Text = ctchungtu.CatNK_HoTens;
                         }
                         if (ctchungtu.YeuCauCat2)
                         {
@@ -233,6 +239,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             txtHoTen_Cat_YCC2.Text = ctchungtu.CatNK_HoTen2;
                             txtDiaChiKH_Cat_YCC2.Text = ctchungtu.CatNK_DiaChi2;
                             txtSoNKCat_YCC2.Text = ctchungtu.CatNK_SoNKCat2.ToString();
+                            txtHoTensCat_YCC2.Text = ctchungtu.CatNK_HoTens2;
                         }
                         if (ctchungtu.YeuCauCat3)
                         {
@@ -245,6 +252,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             txtHoTen_Cat_YCC3.Text = ctchungtu.CatNK_HoTen3;
                             txtDiaChiKH_Cat_YCC3.Text = ctchungtu.CatNK_DiaChi3;
                             txtSoNKCat_YCC3.Text = ctchungtu.CatNK_SoNKCat3.ToString();
+                            txtHoTensCat_YCC3.Text = ctchungtu.CatNK_HoTens3;
                         }
                         if (ctchungtu.YeuCauCat4)
                         {
@@ -257,6 +265,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             txtHoTen_Cat_YCC4.Text = ctchungtu.CatNK_HoTen4;
                             txtDiaChiKH_Cat_YCC4.Text = ctchungtu.CatNK_DiaChi4;
                             txtSoNKCat_YCC4.Text = ctchungtu.CatNK_SoNKCat4.ToString();
+                            txtHoTensCat_YCC4.Text = ctchungtu.CatNK_HoTens4;
                         }
                         if (ctchungtu.YeuCauCat5)
                         {
@@ -269,6 +278,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             txtHoTen_Cat_YCC5.Text = ctchungtu.CatNK_HoTen5;
                             txtDiaChiKH_Cat_YCC5.Text = ctchungtu.CatNK_DiaChi5;
                             txtSoNKCat_YCC5.Text = ctchungtu.CatNK_SoNKCat5.ToString();
+                            txtHoTensCat_YCC5.Text = ctchungtu.CatNK_HoTens5;
                         }
                     }
                     else
@@ -419,6 +429,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ///
                                     lichsuchungtu1.YeuCauCat = true;
                                     lichsuchungtu1.SoNK = int.Parse(txtSoNKCat_YCC1.Text.Trim());
+                                    lichsuchungtu1.CatNK_HoTens = txtHoTensCat_YCC1.Text.Trim();
                                     ///
                                     lichsuchungtu1.CatNK_MaCN = int.Parse(cmbChiNhanh_YCC1.SelectedValue.ToString());
                                     lichsuchungtu1.CatNK_DanhBo = txtDanhBo_Cat_YCC1.Text.Trim();
@@ -442,6 +453,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ctchungtu.CatNK_HoTen = txtHoTen_Cat_YCC1.Text.Trim();
                                         ctchungtu.CatNK_DiaChi = txtDiaChiKH_Cat_YCC1.Text.Trim();
                                         ctchungtu.CatNK_SoNKCat = int.Parse(txtSoNKCat_YCC1.Text.Trim());
+                                        ctchungtu.CatNK_HoTens = txtHoTensCat_YCC1.Text.Trim();
                                         ctchungtu.SoLuongDC_YCC = 1;
                                     }
                                 }
@@ -459,6 +471,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ///
                                     lichsuchungtu1.YeuCauCat = true;
                                     lichsuchungtu1.SoNK = int.Parse(txtSoNKCat_YCC2.Text.Trim());
+                                    lichsuchungtu1.CatNK_HoTens = txtHoTensCat_YCC2.Text.Trim();
                                     ///
                                     lichsuchungtu1.CatNK_MaCN = int.Parse(cmbChiNhanh_YCC2.SelectedValue.ToString());
                                     lichsuchungtu1.CatNK_DanhBo = txtDanhBo_Cat_YCC2.Text.Trim();
@@ -482,6 +495,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ctchungtu.CatNK_HoTen2 = txtHoTen_Cat_YCC2.Text.Trim();
                                         ctchungtu.CatNK_DiaChi2 = txtDiaChiKH_Cat_YCC2.Text.Trim();
                                         ctchungtu.CatNK_SoNKCat2 = int.Parse(txtSoNKCat_YCC2.Text.Trim());
+                                        ctchungtu.CatNK_HoTens2 = txtHoTensCat_YCC2.Text.Trim();
                                         ctchungtu.SoLuongDC_YCC = 2;
                                     }
                                 }
@@ -499,6 +513,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ///
                                     lichsuchungtu1.YeuCauCat = true;
                                     lichsuchungtu1.SoNK = int.Parse(txtSoNKCat_YCC3.Text.Trim());
+                                    lichsuchungtu1.CatNK_HoTens = txtHoTensCat_YCC3.Text.Trim();
                                     ///
                                     lichsuchungtu1.CatNK_MaCN = int.Parse(cmbChiNhanh_YCC3.SelectedValue.ToString());
                                     lichsuchungtu1.CatNK_DanhBo = txtDanhBo_Cat_YCC3.Text.Trim();
@@ -522,6 +537,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ctchungtu.CatNK_HoTen3 = txtHoTen_Cat_YCC3.Text.Trim();
                                         ctchungtu.CatNK_DiaChi3 = txtDiaChiKH_Cat_YCC3.Text.Trim();
                                         ctchungtu.CatNK_SoNKCat3 = int.Parse(txtSoNKCat_YCC3.Text.Trim());
+                                        ctchungtu.CatNK_HoTens3 = txtHoTensCat_YCC3.Text.Trim();
                                         ctchungtu.SoLuongDC_YCC = 3;
                                     }
                                 }
@@ -539,6 +555,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ///
                                     lichsuchungtu1.YeuCauCat = true;
                                     lichsuchungtu1.SoNK = int.Parse(txtSoNKCat_YCC4.Text.Trim());
+                                    lichsuchungtu1.CatNK_HoTens = txtHoTensCat_YCC4.Text.Trim();
                                     ///
                                     lichsuchungtu1.CatNK_MaCN = int.Parse(cmbChiNhanh_YCC4.SelectedValue.ToString());
                                     lichsuchungtu1.CatNK_DanhBo = txtDanhBo_Cat_YCC4.Text.Trim();
@@ -562,6 +579,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ctchungtu.CatNK_HoTen4 = txtHoTen_Cat_YCC4.Text.Trim();
                                         ctchungtu.CatNK_DiaChi4 = txtDiaChiKH_Cat_YCC4.Text.Trim();
                                         ctchungtu.CatNK_SoNKCat4 = int.Parse(txtSoNKCat_YCC4.Text.Trim());
+                                        ctchungtu.CatNK_HoTens4 = txtHoTensCat_YCC4.Text.Trim();
                                         ctchungtu.SoLuongDC_YCC = 4;
                                     }
                                 }
@@ -579,6 +597,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ///
                                     lichsuchungtu1.YeuCauCat = true;
                                     lichsuchungtu1.SoNK = int.Parse(txtSoNKCat_YCC5.Text.Trim());
+                                    lichsuchungtu1.CatNK_HoTens = txtHoTensCat_YCC5.Text.Trim();
                                     ///
                                     lichsuchungtu1.CatNK_MaCN = int.Parse(cmbChiNhanh_YCC5.SelectedValue.ToString());
                                     lichsuchungtu1.CatNK_DanhBo = txtDanhBo_Cat_YCC5.Text.Trim();
@@ -602,6 +621,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ctchungtu.CatNK_HoTen5 = txtHoTen_Cat_YCC5.Text.Trim();
                                         ctchungtu.CatNK_DiaChi5 = txtDiaChiKH_Cat_YCC5.Text.Trim();
                                         ctchungtu.CatNK_SoNKCat5 = int.Parse(txtSoNKCat_YCC5.Text.Trim());
+                                        ctchungtu.CatNK_HoTens5 = txtHoTensCat_YCC5.Text.Trim();
                                         ctchungtu.SoLuongDC_YCC = 5;
                                     }
                                 }
@@ -769,6 +789,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         _lichsuchungtu.CatNK_HoTen = txtHoTen_Cat_YCC1.Text.Trim();
                                         _lichsuchungtu.CatNK_DiaChi = txtDiaChiKH_Cat_YCC1.Text.Trim();
                                         _lichsuchungtu.SoNK = int.Parse(txtSoNKCat_YCC1.Text.Trim());
+                                        _lichsuchungtu.CatNK_HoTens = txtHoTensCat_YCC1.Text.Trim();
                                         if (_cChungTu.SuaLichSuChungTu(_lichsuchungtu))
                                         {
                                             _ctchungtu.SoPhieu = _lichsuchungtu.SoPhieu;
@@ -778,6 +799,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             _ctchungtu.CatNK_HoTen = txtHoTen_Cat_YCC1.Text.Trim();
                                             _ctchungtu.CatNK_DiaChi = txtDiaChiKH_Cat_YCC1.Text.Trim();
                                             _ctchungtu.CatNK_SoNKCat = int.Parse(txtSoNKCat_YCC1.Text.Trim());
+                                            _ctchungtu.CatNK_HoTens = txtHoTensCat_YCC1.Text.Trim();
                                             _ctchungtu.SoLuongDC_YCC = 1;
                                         }
                                     }
@@ -795,6 +817,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ///
                                         lichsuchungtu1.YeuCauCat = true;
                                         lichsuchungtu1.SoNK = int.Parse(txtSoNKCat_YCC1.Text.Trim());
+                                        lichsuchungtu1.CatNK_HoTens = txtHoTensCat_YCC1.Text.Trim();
                                         ///
                                         lichsuchungtu1.CatNK_MaCN = int.Parse(cmbChiNhanh_YCC1.SelectedValue.ToString());
                                         lichsuchungtu1.CatNK_DanhBo = txtDanhBo_Cat_YCC1.Text.Trim();
@@ -818,6 +841,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             _ctchungtu.CatNK_HoTen = txtHoTen_Cat_YCC1.Text.Trim();
                                             _ctchungtu.CatNK_DiaChi = txtDiaChiKH_Cat_YCC1.Text.Trim();
                                             _ctchungtu.CatNK_SoNKCat = int.Parse(txtSoNKCat_YCC1.Text.Trim());
+                                            _ctchungtu.CatNK_HoTens = txtHoTensCat_YCC1.Text.Trim();
                                             _ctchungtu.SoLuongDC_YCC = 1;
                                         }
                                     }
@@ -835,6 +859,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         _ctchungtu.CatNK_HoTen = null;
                                         _ctchungtu.CatNK_DiaChi = null;
                                         _ctchungtu.CatNK_SoNKCat = null;
+                                        _ctchungtu.CatNK_HoTens = null;
                                     }
                                 }
                                 if (chkYCCat2.Checked)
@@ -847,6 +872,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         _lichsuchungtu.CatNK_HoTen = txtHoTen_Cat_YCC2.Text.Trim();
                                         _lichsuchungtu.CatNK_DiaChi = txtDiaChiKH_Cat_YCC2.Text.Trim();
                                         _lichsuchungtu.SoNK = int.Parse(txtSoNKCat_YCC2.Text.Trim());
+                                        _lichsuchungtu.CatNK_HoTens = txtHoTensCat_YCC2.Text.Trim();
                                         if (_cChungTu.SuaLichSuChungTu(_lichsuchungtu))
                                         {
                                             _ctchungtu.SoPhieu2 = _lichsuchungtu.SoPhieu;
@@ -856,6 +882,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             _ctchungtu.CatNK_HoTen2 = txtHoTen_Cat_YCC2.Text.Trim();
                                             _ctchungtu.CatNK_DiaChi2 = txtDiaChiKH_Cat_YCC2.Text.Trim();
                                             _ctchungtu.CatNK_SoNKCat2 = int.Parse(txtSoNKCat_YCC2.Text.Trim());
+                                            _ctchungtu.CatNK_HoTens2 = txtHoTensCat_YCC2.Text.Trim();
                                             _ctchungtu.SoLuongDC_YCC = 2;
                                         }
                                     }
@@ -873,6 +900,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ///
                                         lichsuchungtu1.YeuCauCat = true;
                                         lichsuchungtu1.SoNK = int.Parse(txtSoNKCat_YCC2.Text.Trim());
+                                        lichsuchungtu1.CatNK_HoTens = txtHoTensCat_YCC2.Text.Trim();
                                         ///
                                         lichsuchungtu1.CatNK_MaCN = int.Parse(cmbChiNhanh_YCC2.SelectedValue.ToString());
                                         lichsuchungtu1.CatNK_DanhBo = txtDanhBo_Cat_YCC2.Text.Trim();
@@ -896,6 +924,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             _ctchungtu.CatNK_HoTen2 = txtHoTen_Cat_YCC2.Text.Trim();
                                             _ctchungtu.CatNK_DiaChi2 = txtDiaChiKH_Cat_YCC2.Text.Trim();
                                             _ctchungtu.CatNK_SoNKCat2 = int.Parse(txtSoNKCat_YCC2.Text.Trim());
+                                            _ctchungtu.CatNK_HoTens2 = txtHoTensCat_YCC2.Text.Trim();
                                             _ctchungtu.SoLuongDC_YCC = 2;
                                         }
                                     }
@@ -913,6 +942,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         _ctchungtu.CatNK_HoTen2 = null;
                                         _ctchungtu.CatNK_DiaChi2 = null;
                                         _ctchungtu.CatNK_SoNKCat2 = null;
+                                        _ctchungtu.CatNK_HoTen2 = null;
                                     }
                                 }
                                 if (chkYCCat3.Checked)
@@ -925,6 +955,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         _lichsuchungtu.CatNK_HoTen = txtHoTen_Cat_YCC3.Text.Trim();
                                         _lichsuchungtu.CatNK_DiaChi = txtDiaChiKH_Cat_YCC3.Text.Trim();
                                         _lichsuchungtu.SoNK = int.Parse(txtSoNKCat_YCC3.Text.Trim());
+                                        _lichsuchungtu.CatNK_HoTens = txtHoTensCat_YCC3.Text.Trim();
                                         if (_cChungTu.SuaLichSuChungTu(_lichsuchungtu))
                                         {
                                             _ctchungtu.SoPhieu3 = _lichsuchungtu.SoPhieu;
@@ -934,6 +965,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             _ctchungtu.CatNK_HoTen3 = txtHoTen_Cat_YCC3.Text.Trim();
                                             _ctchungtu.CatNK_DiaChi3 = txtDiaChiKH_Cat_YCC3.Text.Trim();
                                             _ctchungtu.CatNK_SoNKCat3 = int.Parse(txtSoNKCat_YCC3.Text.Trim());
+                                            _ctchungtu.CatNK_HoTens3 = txtHoTensCat_YCC3.Text.Trim();
                                             _ctchungtu.SoLuongDC_YCC = 3;
                                         }
                                     }
@@ -951,6 +983,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ///
                                         lichsuchungtu1.YeuCauCat = true;
                                         lichsuchungtu1.SoNK = int.Parse(txtSoNKCat_YCC3.Text.Trim());
+                                        lichsuchungtu1.CatNK_HoTens = txtHoTensCat_YCC3.Text.Trim();
                                         ///
                                         lichsuchungtu1.CatNK_MaCN = int.Parse(cmbChiNhanh_YCC3.SelectedValue.ToString());
                                         lichsuchungtu1.CatNK_DanhBo = txtDanhBo_Cat_YCC3.Text.Trim();
@@ -974,6 +1007,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             _ctchungtu.CatNK_HoTen3 = txtHoTen_Cat_YCC3.Text.Trim();
                                             _ctchungtu.CatNK_DiaChi3 = txtDiaChiKH_Cat_YCC3.Text.Trim();
                                             _ctchungtu.CatNK_SoNKCat3 = int.Parse(txtSoNKCat_YCC3.Text.Trim());
+                                            _ctchungtu.CatNK_HoTens3 = txtHoTensCat_YCC3.Text.Trim();
                                             _ctchungtu.SoLuongDC_YCC = 3;
                                         }
                                     }
@@ -991,6 +1025,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         _ctchungtu.CatNK_HoTen3 = null;
                                         _ctchungtu.CatNK_DiaChi3 = null;
                                         _ctchungtu.CatNK_SoNKCat3 = null;
+                                        _ctchungtu.CatNK_HoTen3 = null;
                                     }
                                 }
                                 if (chkYCCat4.Checked)
@@ -1003,6 +1038,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         _lichsuchungtu.CatNK_HoTen = txtHoTen_Cat_YCC4.Text.Trim();
                                         _lichsuchungtu.CatNK_DiaChi = txtDiaChiKH_Cat_YCC4.Text.Trim();
                                         _lichsuchungtu.SoNK = int.Parse(txtSoNKCat_YCC4.Text.Trim());
+                                        _lichsuchungtu.CatNK_HoTens = txtHoTensCat_YCC4.Text.Trim();
                                         if (_cChungTu.SuaLichSuChungTu(_lichsuchungtu))
                                         {
                                             _ctchungtu.SoPhieu4 = _lichsuchungtu.SoPhieu;
@@ -1012,6 +1048,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             _ctchungtu.CatNK_HoTen4 = txtHoTen_Cat_YCC4.Text.Trim();
                                             _ctchungtu.CatNK_DiaChi4 = txtDiaChiKH_Cat_YCC4.Text.Trim();
                                             _ctchungtu.CatNK_SoNKCat4 = int.Parse(txtSoNKCat_YCC4.Text.Trim());
+                                            _ctchungtu.CatNK_HoTens4 = txtHoTensCat_YCC4.Text.Trim();
                                             _ctchungtu.SoLuongDC_YCC = 4;
                                         }
                                     }
@@ -1029,6 +1066,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ///
                                         lichsuchungtu1.YeuCauCat = true;
                                         lichsuchungtu1.SoNK = int.Parse(txtSoNKCat_YCC4.Text.Trim());
+                                        lichsuchungtu1.CatNK_HoTens = txtHoTensCat_YCC4.Text.Trim();
                                         ///
                                         lichsuchungtu1.CatNK_MaCN = int.Parse(cmbChiNhanh_YCC4.SelectedValue.ToString());
                                         lichsuchungtu1.CatNK_DanhBo = txtDanhBo_Cat_YCC4.Text.Trim();
@@ -1052,6 +1090,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             _ctchungtu.CatNK_HoTen4 = txtHoTen_Cat_YCC4.Text.Trim();
                                             _ctchungtu.CatNK_DiaChi4 = txtDiaChiKH_Cat_YCC4.Text.Trim();
                                             _ctchungtu.CatNK_SoNKCat4 = int.Parse(txtSoNKCat_YCC4.Text.Trim());
+                                            _ctchungtu.CatNK_HoTens4 = txtHoTensCat_YCC4.Text.Trim();
                                             _ctchungtu.SoLuongDC_YCC = 4;
                                         }
                                     }
@@ -1069,6 +1108,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         _ctchungtu.CatNK_HoTen4 = null;
                                         _ctchungtu.CatNK_DiaChi4 = null;
                                         _ctchungtu.CatNK_SoNKCat4 = null;
+                                        _ctchungtu.CatNK_HoTen4 = null;
                                     }
                                 }
                                 if (chkYCCat5.Checked)
@@ -1081,6 +1121,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         _lichsuchungtu.CatNK_HoTen = txtHoTen_Cat_YCC5.Text.Trim();
                                         _lichsuchungtu.CatNK_DiaChi = txtDiaChiKH_Cat_YCC5.Text.Trim();
                                         _lichsuchungtu.SoNK = int.Parse(txtSoNKCat_YCC5.Text.Trim());
+                                        _lichsuchungtu.CatNK_HoTens = txtHoTensCat_YCC5.Text.Trim();
                                         if (_cChungTu.SuaLichSuChungTu(_lichsuchungtu))
                                         {
                                             _ctchungtu.SoPhieu5 = _lichsuchungtu.SoPhieu;
@@ -1090,6 +1131,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             _ctchungtu.CatNK_HoTen5 = txtHoTen_Cat_YCC5.Text.Trim();
                                             _ctchungtu.CatNK_DiaChi5 = txtDiaChiKH_Cat_YCC5.Text.Trim();
                                             _ctchungtu.CatNK_SoNKCat5 = int.Parse(txtSoNKCat_YCC5.Text.Trim());
+                                            _ctchungtu.CatNK_HoTens5 = txtHoTensCat_YCC5.Text.Trim();
                                             _ctchungtu.SoLuongDC_YCC = 5;
                                         }
                                     }
@@ -1107,6 +1149,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ///
                                         lichsuchungtu1.YeuCauCat = true;
                                         lichsuchungtu1.SoNK = int.Parse(txtSoNKCat_YCC5.Text.Trim());
+                                        lichsuchungtu1.CatNK_HoTens = txtHoTensCat_YCC5.Text.Trim();
                                         ///
                                         lichsuchungtu1.CatNK_MaCN = int.Parse(cmbChiNhanh_YCC5.SelectedValue.ToString());
                                         lichsuchungtu1.CatNK_DanhBo = txtDanhBo_Cat_YCC5.Text.Trim();
@@ -1130,6 +1173,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             _ctchungtu.CatNK_HoTen5 = txtHoTen_Cat_YCC5.Text.Trim();
                                             _ctchungtu.CatNK_DiaChi5 = txtDiaChiKH_Cat_YCC5.Text.Trim();
                                             _ctchungtu.CatNK_SoNKCat5 = int.Parse(txtSoNKCat_YCC5.Text.Trim());
+                                            _ctchungtu.CatNK_HoTens5 = txtHoTensCat_YCC5.Text.Trim();
                                             _ctchungtu.SoLuongDC_YCC = 5;
                                         }
                                     }
@@ -1147,6 +1191,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         _ctchungtu.CatNK_HoTen5 = null;
                                         _ctchungtu.CatNK_DiaChi5 = null;
                                         _ctchungtu.CatNK_SoNKCat5 = null;
+                                        _ctchungtu.CatNK_HoTen5 = null;
                                     }
                                 }
 
@@ -1375,26 +1420,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (!panel_YCCat2.Visible)
             {
                 panel_YCCat2.Visible = true;
-                this.Size = new Size(1370, 478);
+                this.Size = new Size(1323, 540);
                 this.Location = new Point(10, 70);
             }
             else
                 if (!panel_YCCat3.Visible)
                 {
                     panel_YCCat3.Visible = true;
-                    this.Size = new Size(1370, 478);
+                    this.Size = new Size(1323, 540);
                 }
                 else
                     if (!panel_YCCat4.Visible)
                     {
                         panel_YCCat4.Visible = true;
-                        this.Size = new Size(1370, 478);
+                        this.Size = new Size(1323, 540);
                     }
                     else
                         if (!panel_YCCat5.Visible)
                         {
                             panel_YCCat5.Visible = true;
-                            this.Size = new Size(1370, 692);
+                            this.Size = new Size(1323, 788);
                         }
                         else
                         {
@@ -1402,7 +1447,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             panel_YCCat3.Visible = false;
                             panel_YCCat4.Visible = false;
                             panel_YCCat5.Visible = false;
-                            this.Size = new Size(919, 510);
+                            this.Size = new Size(893, 479);
                             this.Location = new Point(70, 70);
                         }
 
@@ -1427,6 +1472,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             B.SoNKDangKy = A.SoNKDangKy;
             B.ThoiHan = A.ThoiHan;
             B.NgayHetHan = A.NgayHetHan;
+            B.CatNK_HoTens = A.CatNK_HoTens;
             B.GhiChu = A.GhiChu;
             B.Lo = A.Lo;
             B.Phong = A.Phong;

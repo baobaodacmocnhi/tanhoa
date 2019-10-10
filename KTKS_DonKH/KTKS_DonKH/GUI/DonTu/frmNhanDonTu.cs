@@ -277,7 +277,7 @@ namespace KTKS_DonKH.GUI.DonTu
             else
             {
                 dgvDanhBo.Rows.Clear();
-                dgvDanhBo.Rows.Add();
+                //dgvDanhBo.Rows.Add();
             }
 
             chkCT_HoaDon.Checked = false;

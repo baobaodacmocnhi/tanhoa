@@ -11864,6 +11864,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _CatNK_HoTen;
 		
+		private string _CatNK_HoTens;
+		
 		private string _CatNK_DiaChi;
 		
 		private System.Nullable<int> _CatNK_SoNKCat;
@@ -11877,6 +11879,8 @@ namespace KTKS_DonKH.LinQ
 		private string _CatNK_DanhBo2;
 		
 		private string _CatNK_HoTen2;
+		
+		private string _CatNK_HoTens2;
 		
 		private string _CatNK_DiaChi2;
 		
@@ -11892,6 +11896,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _CatNK_HoTen3;
 		
+		private string _CatNK_HoTens3;
+		
 		private string _CatNK_DiaChi3;
 		
 		private System.Nullable<int> _CatNK_SoNKCat3;
@@ -11906,6 +11912,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _CatNK_HoTen4;
 		
+		private string _CatNK_HoTens4;
+		
 		private string _CatNK_DiaChi4;
 		
 		private System.Nullable<int> _CatNK_SoNKCat4;
@@ -11919,6 +11927,8 @@ namespace KTKS_DonKH.LinQ
 		private string _CatNK_DanhBo5;
 		
 		private string _CatNK_HoTen5;
+		
+		private string _CatNK_HoTens5;
 		
 		private string _CatNK_DiaChi5;
 		
@@ -11978,6 +11988,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCatNK_DanhBoChanged();
     partial void OnCatNK_HoTenChanging(string value);
     partial void OnCatNK_HoTenChanged();
+    partial void OnCatNK_HoTensChanging(string value);
+    partial void OnCatNK_HoTensChanged();
     partial void OnCatNK_DiaChiChanging(string value);
     partial void OnCatNK_DiaChiChanged();
     partial void OnCatNK_SoNKCatChanging(System.Nullable<int> value);
@@ -11992,6 +12004,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCatNK_DanhBo2Changed();
     partial void OnCatNK_HoTen2Changing(string value);
     partial void OnCatNK_HoTen2Changed();
+    partial void OnCatNK_HoTens2Changing(string value);
+    partial void OnCatNK_HoTens2Changed();
     partial void OnCatNK_DiaChi2Changing(string value);
     partial void OnCatNK_DiaChi2Changed();
     partial void OnCatNK_SoNKCat2Changing(System.Nullable<int> value);
@@ -12006,6 +12020,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCatNK_DanhBo3Changed();
     partial void OnCatNK_HoTen3Changing(string value);
     partial void OnCatNK_HoTen3Changed();
+    partial void OnCatNK_HoTens3Changing(string value);
+    partial void OnCatNK_HoTens3Changed();
     partial void OnCatNK_DiaChi3Changing(string value);
     partial void OnCatNK_DiaChi3Changed();
     partial void OnCatNK_SoNKCat3Changing(System.Nullable<int> value);
@@ -12020,6 +12036,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCatNK_DanhBo4Changed();
     partial void OnCatNK_HoTen4Changing(string value);
     partial void OnCatNK_HoTen4Changed();
+    partial void OnCatNK_HoTens4Changing(string value);
+    partial void OnCatNK_HoTens4Changed();
     partial void OnCatNK_DiaChi4Changing(string value);
     partial void OnCatNK_DiaChi4Changed();
     partial void OnCatNK_SoNKCat4Changing(System.Nullable<int> value);
@@ -12034,6 +12052,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCatNK_DanhBo5Changed();
     partial void OnCatNK_HoTen5Changing(string value);
     partial void OnCatNK_HoTen5Changed();
+    partial void OnCatNK_HoTens5Changing(string value);
+    partial void OnCatNK_HoTens5Changed();
     partial void OnCatNK_DiaChi5Changing(string value);
     partial void OnCatNK_DiaChi5Changed();
     partial void OnCatNK_SoNKCat5Changing(System.Nullable<int> value);
@@ -12444,6 +12464,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_HoTens", DbType="NVarChar(MAX)")]
+		public string CatNK_HoTens
+		{
+			get
+			{
+				return this._CatNK_HoTens;
+			}
+			set
+			{
+				if ((this._CatNK_HoTens != value))
+				{
+					this.OnCatNK_HoTensChanging(value);
+					this.SendPropertyChanging();
+					this._CatNK_HoTens = value;
+					this.SendPropertyChanged("CatNK_HoTens");
+					this.OnCatNK_HoTensChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_DiaChi", DbType="NVarChar(MAX)")]
 		public string CatNK_DiaChi
 		{
@@ -12580,6 +12620,26 @@ namespace KTKS_DonKH.LinQ
 					this._CatNK_HoTen2 = value;
 					this.SendPropertyChanged("CatNK_HoTen2");
 					this.OnCatNK_HoTen2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_HoTens2", DbType="NVarChar(MAX)")]
+		public string CatNK_HoTens2
+		{
+			get
+			{
+				return this._CatNK_HoTens2;
+			}
+			set
+			{
+				if ((this._CatNK_HoTens2 != value))
+				{
+					this.OnCatNK_HoTens2Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_HoTens2 = value;
+					this.SendPropertyChanged("CatNK_HoTens2");
+					this.OnCatNK_HoTens2Changed();
 				}
 			}
 		}
@@ -12724,6 +12784,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_HoTens3", DbType="NVarChar(MAX)")]
+		public string CatNK_HoTens3
+		{
+			get
+			{
+				return this._CatNK_HoTens3;
+			}
+			set
+			{
+				if ((this._CatNK_HoTens3 != value))
+				{
+					this.OnCatNK_HoTens3Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_HoTens3 = value;
+					this.SendPropertyChanged("CatNK_HoTens3");
+					this.OnCatNK_HoTens3Changed();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_DiaChi3", DbType="NVarChar(MAX)")]
 		public string CatNK_DiaChi3
 		{
@@ -12864,6 +12944,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_HoTens4", DbType="NVarChar(MAX)")]
+		public string CatNK_HoTens4
+		{
+			get
+			{
+				return this._CatNK_HoTens4;
+			}
+			set
+			{
+				if ((this._CatNK_HoTens4 != value))
+				{
+					this.OnCatNK_HoTens4Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_HoTens4 = value;
+					this.SendPropertyChanged("CatNK_HoTens4");
+					this.OnCatNK_HoTens4Changed();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_DiaChi4", DbType="NVarChar(MAX)")]
 		public string CatNK_DiaChi4
 		{
@@ -13000,6 +13100,26 @@ namespace KTKS_DonKH.LinQ
 					this._CatNK_HoTen5 = value;
 					this.SendPropertyChanged("CatNK_HoTen5");
 					this.OnCatNK_HoTen5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_HoTens5", DbType="NVarChar(MAX)")]
+		public string CatNK_HoTens5
+		{
+			get
+			{
+				return this._CatNK_HoTens5;
+			}
+			set
+			{
+				if ((this._CatNK_HoTens5 != value))
+				{
+					this.OnCatNK_HoTens5Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_HoTens5 = value;
+					this.SendPropertyChanged("CatNK_HoTens5");
+					this.OnCatNK_HoTens5Changed();
 				}
 			}
 		}
@@ -13259,6 +13379,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _CatNK_HoTen;
 		
+		private string _CatNK_HoTens;
+		
 		private string _CatNK_DiaChi;
 		
 		private string _CatNK_GhiChu;
@@ -13347,6 +13469,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCatNK_DanhBoChanged();
     partial void OnCatNK_HoTenChanging(string value);
     partial void OnCatNK_HoTenChanged();
+    partial void OnCatNK_HoTensChanging(string value);
+    partial void OnCatNK_HoTensChanged();
     partial void OnCatNK_DiaChiChanging(string value);
     partial void OnCatNK_DiaChiChanged();
     partial void OnCatNK_GhiChuChanging(string value);
@@ -13901,6 +14025,26 @@ namespace KTKS_DonKH.LinQ
 					this._CatNK_HoTen = value;
 					this.SendPropertyChanged("CatNK_HoTen");
 					this.OnCatNK_HoTenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_HoTens", DbType="NVarChar(MAX)")]
+		public string CatNK_HoTens
+		{
+			get
+			{
+				return this._CatNK_HoTens;
+			}
+			set
+			{
+				if ((this._CatNK_HoTens != value))
+				{
+					this.OnCatNK_HoTensChanging(value);
+					this.SendPropertyChanging();
+					this._CatNK_HoTens = value;
+					this.SendPropertyChanged("CatNK_HoTens");
+					this.OnCatNK_HoTensChanged();
 				}
 			}
 		}

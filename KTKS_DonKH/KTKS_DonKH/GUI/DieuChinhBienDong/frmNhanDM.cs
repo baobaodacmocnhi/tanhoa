@@ -87,6 +87,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
             if (e.KeyChar == 13)
+                txtHoTens_Cat.Focus();
+        }
+
+        private void txtHoTens_Cat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
                 txtGhiChu.Focus();
         }
 
@@ -184,6 +190,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
                                         ctchungtu.NgayHetHan = DateTime.Now.AddMonths(int.Parse(txtThoiHan.Text.Trim()));
                                     }
+                                    ctchungtu.CatNK_HoTens = txtHoTens_Cat.Text.Trim();
                                     ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                                     ctchungtu.Lo = txtLo.Text.Trim();
                                     ctchungtu.Phong = txtPhong.Text.Trim();
@@ -219,6 +226,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         lichsuchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
                                         lichsuchungtu.NgayHetHan = DateTime.Now.AddMonths(int.Parse(txtThoiHan.Text.Trim()));
                                     }
+                                    lichsuchungtu.CatNK_HoTens = txtHoTens_Cat.Text.Trim();
                                     lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
                                     lichsuchungtu.Lo = txtLo.Text.Trim();
                                     lichsuchungtu.Phong = txtPhong.Text.Trim();
@@ -241,6 +249,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         lichsuchungtuCat.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
                                         lichsuchungtuCat.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
                                         lichsuchungtuCat.SoNK = int.Parse(txtSoNKNhan.Text.Trim());
+                                        lichsuchungtuCat.CatNK_HoTens = txtHoTens_Cat.Text.Trim();
                                         lichsuchungtuCat.CatNK_GhiChu = txtGhiChu.Text.Trim();
                                         ///Ký Tên
                                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -302,6 +311,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         lichsuchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
                                         lichsuchungtu.NgayHetHan = DateTime.Now.AddMonths(int.Parse(txtThoiHan.Text.Trim()));
                                     }
+                                    lichsuchungtu.CatNK_HoTens = txtHoTens_Cat.Text.Trim();
                                     lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
                                     lichsuchungtu.Lo = txtLo.Text.Trim();
                                     lichsuchungtu.Phong = txtPhong.Text.Trim();
@@ -324,6 +334,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         lichsuchungtuCat.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
                                         lichsuchungtuCat.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
                                         lichsuchungtuCat.SoNK = int.Parse(txtSoNKNhan.Text.Trim());
+                                        lichsuchungtuCat.CatNK_HoTens = txtHoTens_Cat.Text.Trim();
                                         lichsuchungtuCat.CatNK_GhiChu = txtGhiChu.Text.Trim();
                                         ///Ký Tên
                                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -441,6 +452,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             B.SoNKDangKy = A.SoNKDangKy;
             B.ThoiHan = A.ThoiHan;
             B.NgayHetHan = A.NgayHetHan;
+            B.CatNK_HoTens = A.CatNK_HoTens;
             B.GhiChu = A.GhiChu;
             B.Lo = A.Lo;
             B.Phong = A.Phong;
@@ -460,5 +472,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     MessageBox.Show("Số đăng ký này đã có đăng ký trước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             dgvDSDanhBo.DataSource = _cChungTu.GetDSCT(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
         }
+
+        
     }
 }

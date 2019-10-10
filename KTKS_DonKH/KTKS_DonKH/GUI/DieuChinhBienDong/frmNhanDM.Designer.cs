@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmbLoaiCT = new System.Windows.Forms.ComboBox();
             this.cmbChiNhanh = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -68,6 +68,8 @@
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoNKDangKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtHoTens_Cat = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDanhBo)).BeginInit();
@@ -296,6 +298,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.txtHoTens_Cat);
             this.groupBox2.Controls.Add(this.txtPhong);
             this.groupBox2.Controls.Add(this.label35);
             this.groupBox2.Controls.Add(this.txtLo);
@@ -324,14 +328,14 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(447, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(430, 348);
+            this.groupBox2.Size = new System.Drawing.Size(430, 393);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nơi Cắt/Chuyển:";
             // 
             // txtPhong
             // 
-            this.txtPhong.Location = new System.Drawing.Point(127, 315);
+            this.txtPhong.Location = new System.Drawing.Point(127, 364);
             this.txtPhong.Name = "txtPhong";
             this.txtPhong.Size = new System.Drawing.Size(194, 22);
             this.txtPhong.TabIndex = 34;
@@ -339,7 +343,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(14, 317);
+            this.label35.Location = new System.Drawing.Point(14, 366);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(50, 16);
             this.label35.TabIndex = 33;
@@ -347,7 +351,7 @@
             // 
             // txtLo
             // 
-            this.txtLo.Location = new System.Drawing.Point(127, 285);
+            this.txtLo.Location = new System.Drawing.Point(127, 334);
             this.txtLo.Name = "txtLo";
             this.txtLo.Size = new System.Drawing.Size(194, 22);
             this.txtLo.TabIndex = 32;
@@ -355,7 +359,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(14, 288);
+            this.label34.Location = new System.Drawing.Point(14, 337);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(26, 16);
             this.label34.TabIndex = 31;
@@ -363,7 +367,7 @@
             // 
             // txtGhiChu
             // 
-            this.txtGhiChu.Location = new System.Drawing.Point(127, 256);
+            this.txtGhiChu.Location = new System.Drawing.Point(127, 305);
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.Size = new System.Drawing.Size(290, 22);
             this.txtGhiChu.TabIndex = 21;
@@ -372,7 +376,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(14, 259);
+            this.label14.Location = new System.Drawing.Point(14, 308);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 16);
             this.label14.TabIndex = 20;
@@ -397,7 +401,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(802, 367);
+            this.btnThem.Location = new System.Drawing.Point(802, 412);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 2;
@@ -409,14 +413,14 @@
             // 
             this.dgvDSDanhBo.AllowUserToAddRows = false;
             this.dgvDSDanhBo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDSDanhBo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDanhBo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DanhBo,
@@ -445,12 +449,30 @@
             this.CreateDate.HeaderText = "Ngày Lập";
             this.CreateDate.Name = "CreateDate";
             // 
+            // txtHoTens_Cat
+            // 
+            this.txtHoTens_Cat.Location = new System.Drawing.Point(127, 255);
+            this.txtHoTens_Cat.Multiline = true;
+            this.txtHoTens_Cat.Name = "txtHoTens_Cat";
+            this.txtHoTens_Cat.Size = new System.Drawing.Size(290, 44);
+            this.txtHoTens_Cat.TabIndex = 35;
+            this.txtHoTens_Cat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTens_Cat_KeyPress);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(14, 258);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(101, 16);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "DS Họ Tên Cắt:";
+            // 
             // frmNhanDM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(890, 401);
+            this.ClientSize = new System.Drawing.Size(881, 442);
             this.Controls.Add(this.dgvDSDanhBo);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.groupBox2);
@@ -511,5 +533,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNKDangKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtHoTens_Cat;
     }
 }
