@@ -3107,6 +3107,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnSoNKCat;
             
+            private global::System.Data.DataColumn columnHoTensCat;
+            
             private global::System.Data.DataColumn columnHoTenNhan;
             
             private global::System.Data.DataColumn columnDiaChiNhan;
@@ -3211,6 +3213,14 @@ namespace KTKS_DonKH.BaoCao {
             public global::System.Data.DataColumn SoNKCatColumn {
                 get {
                     return this.columnSoNKCat;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HoTensCatColumn {
+                get {
+                    return this.columnHoTensCat;
                 }
             }
             
@@ -3331,6 +3341,7 @@ namespace KTKS_DonKH.BaoCao {
                         string HoTenCat, 
                         string DiaChiCat, 
                         string SoNKCat, 
+                        string HoTensCat, 
                         string HoTenNhan, 
                         string DiaChiNhan, 
                         string DanhBoNhan, 
@@ -3349,6 +3360,7 @@ namespace KTKS_DonKH.BaoCao {
                         HoTenCat,
                         DiaChiCat,
                         SoNKCat,
+                        HoTensCat,
                         HoTenNhan,
                         DiaChiNhan,
                         DanhBoNhan,
@@ -3387,6 +3399,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnHoTenCat = base.Columns["HoTenCat"];
                 this.columnDiaChiCat = base.Columns["DiaChiCat"];
                 this.columnSoNKCat = base.Columns["SoNKCat"];
+                this.columnHoTensCat = base.Columns["HoTensCat"];
                 this.columnHoTenNhan = base.Columns["HoTenNhan"];
                 this.columnDiaChiNhan = base.Columns["DiaChiNhan"];
                 this.columnDanhBoNhan = base.Columns["DanhBoNhan"];
@@ -3415,6 +3428,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnDiaChiCat);
                 this.columnSoNKCat = new global::System.Data.DataColumn("SoNKCat", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSoNKCat);
+                this.columnHoTensCat = new global::System.Data.DataColumn("HoTensCat", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHoTensCat);
                 this.columnHoTenNhan = new global::System.Data.DataColumn("HoTenNhan", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHoTenNhan);
                 this.columnDiaChiNhan = new global::System.Data.DataColumn("DiaChiNhan", typeof(string), null, global::System.Data.MappingType.Element);
@@ -21500,6 +21515,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HoTensCat {
+                get {
+                    try {
+                        return ((string)(this[this.tablePhieuCatChuyenDM.HoTensCatColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HoTensCat\' in table \'PhieuCatChuyenDM\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePhieuCatChuyenDM.HoTensCatColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string HoTenNhan {
                 get {
                     try {
@@ -21724,6 +21755,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetSoNKCatNull() {
                 this[this.tablePhieuCatChuyenDM.SoNKCatColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHoTensCatNull() {
+                return this.IsNull(this.tablePhieuCatChuyenDM.HoTensCatColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHoTensCatNull() {
+                this[this.tablePhieuCatChuyenDM.HoTensCatColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

@@ -117,6 +117,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             dr["Lan"] = dgvDSThu["Lan", i].Value.ToString();
                             dr["Luuy"] = dgvDSThu["Luuy", i].Value.ToString();
                             dr["NoiNhan"] = dgvDSThu["NoiNhan", i].Value.ToString() + "(" + dgvDSThu["IDCT", i].Value.ToString() + ")";
+                            dr["TenPhong"] = CTaiKhoan.TenPhong;
+                            dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
                             dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
@@ -128,7 +130,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                                     rpt = new rptThuMoiChuyenDe();
                                 else
                                     if (radRong.Checked == true)
-                                        rpt = new rptThuMoiChuyenDe();
+                                        rpt = new rptThuMoiChuyenDe_Rong();
                             rpt.SetDataSource(dsBaoCao);
 
                             printDialog.AllowSomePages = true;

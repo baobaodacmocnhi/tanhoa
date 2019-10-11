@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1221</ApplicationRevision>
+    <ApplicationRevision>1222</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -276,8 +276,8 @@
       <DependentUpon>rptDSDCHD.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuYCCatDMA4.cs">
-      <DependentUpon>rptPhieuYCCatDMA4.rpt</DependentUpon>
+    <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuYCCatDM_A4.cs">
+      <DependentUpon>rptPhieuYCCatDM_A4.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -1505,9 +1505,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSDCHD.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptPhieuYCCatDMA4.rpt">
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptPhieuYCCatDM_A4.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptPhieuYCCatDMA4.cs</LastGenOutput>
+      <LastGenOutput>rptPhieuYCCatDM_A4.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptThuBaoDCBD.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
