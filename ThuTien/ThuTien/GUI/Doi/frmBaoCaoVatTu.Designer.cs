@@ -53,8 +53,8 @@
             this.ChiSoDN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KhoaTu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.KhoaKhac = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.NhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.To = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBamChi)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,8 +134,8 @@
             this.ChiSoDN1,
             this.KhoaTu,
             this.KhoaKhac,
-            this.NhanVien,
-            this.To});
+            this.To,
+            this.NhanVien});
             this.dgvBamChi.Location = new System.Drawing.Point(12, 38);
             this.dgvBamChi.MultiSelect = false;
             this.dgvBamChi.Name = "dgvBamChi";
@@ -267,19 +267,19 @@
             this.KhoaKhac.Name = "KhoaKhac";
             this.KhoaKhac.Width = 40;
             // 
-            // NhanVien
-            // 
-            this.NhanVien.DataPropertyName = "NhanVien";
-            this.NhanVien.HeaderText = "Nhân Viên";
-            this.NhanVien.Name = "NhanVien";
-            this.NhanVien.Width = 80;
-            // 
             // To
             // 
             this.To.DataPropertyName = "To";
             this.To.HeaderText = "Tổ";
             this.To.Name = "To";
             this.To.Width = 40;
+            // 
+            // NhanVien
+            // 
+            this.NhanVien.DataPropertyName = "NhanVien";
+            this.NhanVien.HeaderText = "Nhân Viên";
+            this.NhanVien.Name = "NhanVien";
+            this.NhanVien.Width = 80;
             // 
             // frmBaoCaoVatTu
             // 
@@ -327,7 +327,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSoDN1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn KhoaTu;
         private System.Windows.Forms.DataGridViewCheckBoxColumn KhoaKhac;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn To;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NhanVien;
     }
 }
