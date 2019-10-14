@@ -494,7 +494,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.NgayKy,
                             itemKQ.Duyet,
                         };
-            dt.Merge(LINQToDataTable(query));
+            dt.Merge(LINQToDataTable(query.Distinct()));
             var query2 = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
                         join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
@@ -531,7 +531,7 @@ namespace ThuTien.DAL.DongNuoc
                              itemKQ.NgayKy,
                              itemKQ.Duyet,
                          };
-            dt.Merge(LINQToDataTable(query2));
+            dt.Merge(LINQToDataTable(query2.Distinct()));
             return dt;
         }
 
