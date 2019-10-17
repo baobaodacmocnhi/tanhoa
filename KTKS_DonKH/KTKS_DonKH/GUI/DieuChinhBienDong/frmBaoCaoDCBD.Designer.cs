@@ -79,12 +79,21 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnXuatExcel_DSDCBD = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dateTu_ThongKeDMNT = new System.Windows.Forms.DateTimePicker();
+            this.dateDen_ThongKeDMNT = new System.Windows.Forms.DateTimePicker();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btnXuatExcel_ThongKeDMNT = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox_DSChungCu.SuspendLayout();
             this.groupBox_ThongKeDC.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_KhoangThoiGian
@@ -593,12 +602,81 @@
             this.btnXuatExcel_DSDCBD.UseVisualStyleBackColor = true;
             this.btnXuatExcel_DSDCBD.Click += new System.EventHandler(this.btnXuatExcel_DSDCBD_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.panel3);
+            this.groupBox2.Controls.Add(this.btnXuatExcel_ThongKeDMNT);
+            this.groupBox2.Location = new System.Drawing.Point(577, 195);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(276, 90);
+            this.groupBox2.TabIndex = 24;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Thống Kê Định Mức Nhà Trọ (gửi Tổng)";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dateTu_ThongKeDMNT);
+            this.panel3.Controls.Add(this.dateDen_ThongKeDMNT);
+            this.panel3.Controls.Add(this.label18);
+            this.panel3.Controls.Add(this.label19);
+            this.panel3.Location = new System.Drawing.Point(6, 21);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(175, 60);
+            this.panel3.TabIndex = 13;
+            // 
+            // dateTu_ThongKeDMNT
+            // 
+            this.dateTu_ThongKeDMNT.CustomFormat = "dd/MM/yyyy";
+            this.dateTu_ThongKeDMNT.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu_ThongKeDMNT.Location = new System.Drawing.Point(80, 5);
+            this.dateTu_ThongKeDMNT.Name = "dateTu_ThongKeDMNT";
+            this.dateTu_ThongKeDMNT.Size = new System.Drawing.Size(90, 22);
+            this.dateTu_ThongKeDMNT.TabIndex = 13;
+            // 
+            // dateDen_ThongKeDMNT
+            // 
+            this.dateDen_ThongKeDMNT.CustomFormat = "dd/MM/yyyy";
+            this.dateDen_ThongKeDMNT.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen_ThongKeDMNT.Location = new System.Drawing.Point(80, 33);
+            this.dateDen_ThongKeDMNT.Name = "dateDen_ThongKeDMNT";
+            this.dateDen_ThongKeDMNT.Size = new System.Drawing.Size(90, 22);
+            this.dateDen_ThongKeDMNT.TabIndex = 14;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(3, 8);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(63, 16);
+            this.label18.TabIndex = 15;
+            this.label18.Text = "Từ Ngày:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(3, 36);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(71, 16);
+            this.label19.TabIndex = 16;
+            this.label19.Text = "Đến Ngày:";
+            // 
+            // btnXuatExcel_ThongKeDMNT
+            // 
+            this.btnXuatExcel_ThongKeDMNT.Location = new System.Drawing.Point(187, 36);
+            this.btnXuatExcel_ThongKeDMNT.Name = "btnXuatExcel_ThongKeDMNT";
+            this.btnXuatExcel_ThongKeDMNT.Size = new System.Drawing.Size(80, 25);
+            this.btnXuatExcel_ThongKeDMNT.TabIndex = 12;
+            this.btnXuatExcel_ThongKeDMNT.Text = "Xuất Excel";
+            this.btnXuatExcel_ThongKeDMNT.UseVisualStyleBackColor = true;
+            this.btnXuatExcel_ThongKeDMNT.Click += new System.EventHandler(this.btnXuatExcel_ThongKeDMNT_Click);
+            // 
             // frmBaoCaoDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1321, 563);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox_ThongKeDC);
             this.Controls.Add(this.groupBox_DSChungCu);
@@ -634,6 +712,9 @@
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -692,5 +773,12 @@
         private System.Windows.Forms.RadioButton radHoaDon;
         private System.Windows.Forms.RadioButton radBienDong;
         private System.Windows.Forms.Button btnInDS_DSDCBD;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DateTimePicker dateTu_ThongKeDMNT;
+        private System.Windows.Forms.DateTimePicker dateDen_ThongKeDMNT;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btnXuatExcel_ThongKeDMNT;
     }
 }

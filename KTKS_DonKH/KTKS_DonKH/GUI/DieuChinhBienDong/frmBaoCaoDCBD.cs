@@ -1615,6 +1615,353 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void btnXuatExcel_ThongKeDMNT_Click(object sender, EventArgs e)
+        {
+            //Tạo các đối tượng Excel
+            Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbooks oBooks;
+            Microsoft.Office.Interop.Excel.Sheets oSheets;
+            Microsoft.Office.Interop.Excel.Workbook oBook;
+            Microsoft.Office.Interop.Excel.Worksheet oSheet;
+            //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
+
+            //Tạo mới một Excel WorkBook 
+            oExcel.Visible = true;
+            oExcel.DisplayAlerts = false;
+            //khai báo số lượng sheet
+            oExcel.Application.SheetsInNewWorkbook = 1;
+            oBooks = oExcel.Workbooks;
+
+            oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+            oSheets = oBook.Worksheets;
+            oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+
+            oSheet.Name = "Sheet1";
+
+            // Tạo phần đầu nếu muốn
+            Microsoft.Office.Interop.Excel.Range head = oSheet.get_Range("A1", "M1");
+            head.MergeCells = true;
+            head.Value2 = "TỔNG HỢP SỐ LIỆU CẤP ĐỊNH MỨC NƯỚC SINH HOẠT\r\nCHO ĐỐI TƯỢNG THUÊ NHÀ THEO CÔNG TY CP CN TÂN HÒA";
+            head.Font.Bold = true;
+            head.Font.Name = "Times New Roman";
+            head.Font.Size = "20";
+            head.RowHeight = 60;
+            head.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            //
+
+            oSheet.Columns[1].ColumnWidth = 10;
+            Microsoft.Office.Interop.Excel.Range head1 = oSheet.get_Range("A3", "A6");
+            head1.MergeCells = true;
+            head1.Value2 = "Số liệu tính đến tháng";
+            head1.Font.Bold = true;
+            head1.Font.Name = "Times New Roman";
+            head1.Font.Size = "12";
+            head1.WrapText = true;
+            head1.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head1.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            //
+
+            oSheet.Columns[2].ColumnWidth = 10;
+            Microsoft.Office.Interop.Excel.Range head2 = oSheet.get_Range("B3", "B6");
+            head2.MergeCells = true;
+            head2.Value2 = "QUẬN";
+            head2.Font.Bold = true;
+            head2.Font.Name = "Times New Roman";
+            head2.Font.Size = "12";
+            head2.WrapText = true;
+            head2.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head2.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            //
+
+            Microsoft.Office.Interop.Excel.Range head3 = oSheet.get_Range("C3", "E3");
+            head3.MergeCells = true;
+            head3.Value2 = "Số liệu lũy tiến kỳ trước";
+            head3.Font.Bold = true;
+            head3.Font.Name = "Times New Roman";
+            head3.Font.Size = "12";
+            head3.WrapText = true;
+            head3.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head3.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            oSheet.Columns[3].ColumnWidth = 10;
+            Microsoft.Office.Interop.Excel.Range head3a = oSheet.get_Range("C4", "C5");
+            head3a.MergeCells = true;
+            head3a.Value2 = "Số lượng nhà trọ đã cấp định mức nước sinh hoạt";
+            head3a.Font.Bold = true;
+            head3a.Font.Name = "Times New Roman";
+            head3a.Font.Size = "12";
+            head3a.WrapText = true;
+            head3a.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head3aa = oSheet.get_Range("C6", "C6");
+            head3aa.MergeCells = true;
+            head3aa.Value2 = "1";
+            head3aa.Font.Italic = true;
+            head3aa.Font.Name = "Times New Roman";
+            head3aa.Font.Size = "12";
+            head3aa.WrapText = true;
+            head3aa.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head3aa.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            oSheet.Columns[4].ColumnWidth = 10;
+            Microsoft.Office.Interop.Excel.Range head3b = oSheet.get_Range("D4", "D5");
+            head3b.MergeCells = true;
+            head3b.Value2 = "Số lượng nhân khẩu đã cấp định mức nước sinh hoạt";
+            head3b.Font.Bold = true;
+            head3b.Font.Name = "Times New Roman";
+            head3b.Font.Size = "12";
+            head3b.WrapText = true;
+            head3b.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head3bb = oSheet.get_Range("D6", "D6");
+            head3bb.MergeCells = true;
+            head3bb.Value2 = "2";
+            head3bb.Font.Italic = true;
+            head3bb.Font.Name = "Times New Roman";
+            head3bb.Font.Size = "12";
+            head3bb.WrapText = true;
+            head3bb.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head3bb.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            oSheet.Columns[5].ColumnWidth = 10;
+            Microsoft.Office.Interop.Excel.Range head3c = oSheet.get_Range("E4", "E5");
+            head3c.MergeCells = true;
+            head3c.Value2 = "Lượng nước tiêu thụ bình quân trong kỳ";
+            head3c.Font.Bold = true;
+            head3c.Font.Name = "Times New Roman";
+            head3c.Font.Size = "12";
+            head3c.WrapText = true;
+            head3c.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head3c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head3cc = oSheet.get_Range("E6", "E6");
+            head3cc.MergeCells = true;
+            head3cc.Value2 = "3";
+            head3cc.Font.Italic = true;
+            head3cc.Font.Name = "Times New Roman";
+            head3cc.Font.Size = "12";
+            head3cc.WrapText = true;
+            head3cc.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head3cc.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            //
+
+            Microsoft.Office.Interop.Excel.Range head4 = oSheet.get_Range("F3", "J3");
+            head4.MergeCells = true;
+            head4.Value2 = "Số liệu phát sinh trong kỳ";
+            head4.Font.Bold = true;
+            head4.Font.Name = "Times New Roman";
+            head4.Font.Size = "12";
+            head4.WrapText = true;
+            head4.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head4.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head4a = oSheet.get_Range("F4", "G4");
+            head4a.MergeCells = true;
+            head4a.Value2 = "Số lượng nhà trọ đã cấp định mức nước sinh hoạt";
+            head4a.Font.Bold = true;
+            head4a.Font.Name = "Times New Roman";
+            head4a.Font.Size = "12";
+            head4a.WrapText = true;
+            head4a.RowHeight = 100;
+            head4a.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head4a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head4aa = oSheet.get_Range("F5", "F5");
+            head4aa.MergeCells = true;
+            head4aa.Value2 = "Tăng";
+            head4aa.Font.Bold = true;
+            head4aa.Font.Name = "Times New Roman";
+            head4aa.Font.Size = "12";
+            head4aa.WrapText = true;
+            head4aa.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head4aa.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head4aaa = oSheet.get_Range("F6", "F6");
+            head4aaa.MergeCells = true;
+            head4aaa.Value2 = "4";
+            head4aaa.Font.Italic = true;
+            head4aaa.Font.Name = "Times New Roman";
+            head4aaa.Font.Size = "12";
+            head4aaa.WrapText = true;
+            head4aaa.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head4aaa.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head4ab = oSheet.get_Range("G5", "G5");
+            head4ab.MergeCells = true;
+            head4ab.Value2 = "Giảm";
+            head4ab.Font.Bold = true;
+            head4ab.Font.Name = "Times New Roman";
+            head4ab.Font.Size = "12";
+            head4ab.WrapText = true;
+            head4ab.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head4ab.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head4abb = oSheet.get_Range("G6", "G6");
+            head4abb.MergeCells = true;
+            head4abb.Value2 = "5";
+            head4abb.Font.Italic = true;
+            head4abb.Font.Name = "Times New Roman";
+            head4abb.Font.Size = "12";
+            head4abb.WrapText = true;
+            head4abb.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head4abb.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head4b = oSheet.get_Range("H4", "I4");
+            head4b.MergeCells = true;
+            head4b.Value2 = "Số lượng nhân khẩu đã cấp định mức nước sinh hoạt";
+            head4b.Font.Bold = true;
+            head4b.Font.Name = "Times New Roman";
+            head4b.Font.Size = "12";
+            head4b.WrapText = true;
+            head4b.RowHeight = 100;
+            head4b.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head4b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head4ba = oSheet.get_Range("H5", "H5");
+            head4ba.MergeCells = true;
+            head4ba.Value2 = "Tăng";
+            head4ba.Font.Bold = true;
+            head4ba.Font.Name = "Times New Roman";
+            head4ba.Font.Size = "12";
+            head4ba.WrapText = true;
+            head4ba.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head4ba.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head4baa = oSheet.get_Range("H6", "H6");
+            head4baa.MergeCells = true;
+            head4baa.Value2 = "6";
+            head4baa.Font.Italic = true;
+            head4baa.Font.Name = "Times New Roman";
+            head4baa.Font.Size = "12";
+            head4baa.WrapText = true;
+            head4baa.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head4baa.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head4bb = oSheet.get_Range("I5", "I5");
+            head4bb.MergeCells = true;
+            head4bb.Value2 = "Giảm";
+            head4bb.Font.Bold = true;
+            head4bb.Font.Name = "Times New Roman";
+            head4bb.Font.Size = "12";
+            head4bb.WrapText = true;
+            head4bb.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head4bb.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head4bbb = oSheet.get_Range("I6", "I6");
+            head4bbb.MergeCells = true;
+            head4bbb.Value2 = "7";
+            head4bbb.Font.Italic = true;
+            head4bbb.Font.Name = "Times New Roman";
+            head4bbb.Font.Size = "12";
+            head4bbb.WrapText = true;
+            head4bbb.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head4bbb.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head4c = oSheet.get_Range("J4", "J5");
+            head4c.MergeCells = true;
+            head4c.Value2 = "Lượng nước tiêu thụ bình quân trong kỳ";
+            head4c.Font.Bold = true;
+            head4c.Font.Name = "Times New Roman";
+            head4c.Font.Size = "12";
+            head4c.WrapText = true;
+            head4c.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head4c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head4ca = oSheet.get_Range("J6", "J6");
+            head4ca.MergeCells = true;
+            head4ca.Value2 = "8";
+            head4ca.Font.Italic = true;
+            head4ca.Font.Name = "Times New Roman";
+            head4ca.Font.Size = "12";
+            head4ca.WrapText = true;
+            head4ca.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head4ca.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            //
+
+            Microsoft.Office.Interop.Excel.Range head5 = oSheet.get_Range("K3", "M3");
+            head5.MergeCells = true;
+            head5.Value2 = "Số liệu lũy tiến đến kỳ hiện tại";
+            head5.Font.Bold = true;
+            head5.Font.Name = "Times New Roman";
+            head5.Font.Size = "12";
+            head5.WrapText = true;
+            head5.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head5.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            oSheet.Columns[11].ColumnWidth = 10;
+            Microsoft.Office.Interop.Excel.Range head5a = oSheet.get_Range("K4", "K5");
+            head5a.MergeCells = true;
+            head5a.Value2 = "Số lượng nhà trọ đã cấp định mức nước sinh hoạt";
+            head5a.Font.Bold = true;
+            head5a.Font.Name = "Times New Roman";
+            head5a.Font.Size = "12";
+            head5a.WrapText = true;
+            head5a.RowHeight = 40;
+            head5a.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head5a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head5aa = oSheet.get_Range("K6", "K6");
+            head5aa.MergeCells = true;
+            head5aa.Value2 = "(9=1+4-5)";
+            head5aa.Font.Italic = true;
+            head5aa.Font.Name = "Times New Roman";
+            head5aa.Font.Size = "12";
+            head5aa.WrapText = true;
+            head5aa.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head5aa.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            oSheet.Columns[12].ColumnWidth = 10;
+            Microsoft.Office.Interop.Excel.Range head5b = oSheet.get_Range("L4", "L5");
+            head5b.MergeCells = true;
+            head5b.Value2 = "Số lượng nhân khẩu đã cấp định mức nước sinh hoạt";
+            head5b.Font.Bold = true;
+            head5b.Font.Name = "Times New Roman";
+            head5b.Font.Size = "12";
+            head5b.WrapText = true;
+            head5b.RowHeight = 40;
+            head5b.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head5b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head5bb = oSheet.get_Range("L6", "L6");
+            head5bb.MergeCells = true;
+            head5bb.Value2 = "(10=2+6-7)";
+            head5bb.Font.Italic = true;
+            head5bb.Font.Name = "Times New Roman";
+            head5bb.Font.Size = "12";
+            head5bb.WrapText = true;
+            head5bb.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head5bb.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            oSheet.Columns[13].ColumnWidth = 10;
+            Microsoft.Office.Interop.Excel.Range head5c = oSheet.get_Range("M4", "M5");
+            head5c.MergeCells = true;
+            head5c.Value2 = "Lượng nước tiêu thụ bình quân trong kỳ";
+            head5c.Font.Bold = true;
+            head5c.Font.Name = "Times New Roman";
+            head5c.Font.Size = "12";
+            head5c.WrapText = true;
+            head5c.RowHeight = 40;
+            head5c.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head5c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head5cc = oSheet.get_Range("M6", "M6");
+            head5cc.MergeCells = true;
+            head5cc.Value2 = "(11=3+8)";
+            head5cc.Font.Italic = true;
+            head5cc.Font.Name = "Times New Roman";
+            head5cc.Font.Size = "12";
+            head5cc.WrapText = true;
+            head5cc.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head5cc.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+        }
+
 
     }
 }
