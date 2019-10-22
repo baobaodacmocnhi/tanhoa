@@ -139,7 +139,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head6b = oSheetMucLuc.get_Range("C9", "R9");
             head6b.MergeCells = true;
-            head6b.Value2 = "PHÒNG KỶ THUẬT CÔNG NGHỆ ()";
+            head6b.Value2 = "PHÒNG KỸ THUẬT CÔNG NGHỆ ()";
             head6b.Font.Name = "Times New Roman";
             head6b.Font.Size = "20";
             head6b.Font.Bold = true;
@@ -153,7 +153,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head7b = oSheetMucLuc.get_Range("C10", "R10");
             head7b.MergeCells = true;
-            head7b.Value2 = "PHÒNG KINH DOANH ()";
+            head7b.Value2 = "PHÒNG THƯƠNG VỤ ()";
             head7b.Font.Name = "Times New Roman";
             head7b.Font.Size = "20";
             head7b.Font.Bold = true;
@@ -1423,7 +1423,7 @@ namespace QLVanThu
                         a[2].ImportRow(dr);
                     if (dr["SoKyHieuVB"].ToString().Contains("KTCN"))
                         a[3].ImportRow(dr);
-                    if (dr["SoKyHieuVB"].ToString().Contains("KTKS") || dr["SoKyHieuVB"].ToString().Contains("KD") && !dr["SoKyHieuVB"].ToString().Contains("GNKDT"))
+                    if (dr["SoKyHieuVB"].ToString().Contains("KTKS") || dr["SoKyHieuVB"].ToString().Contains("KD") || dr["SoKyHieuVB"].ToString().Contains("TV") && !dr["SoKyHieuVB"].ToString().Contains("GNKDT"))
                         a[4].ImportRow(dr);
                     //if (dr["SoKyHieuVB"].ToString().Contains("QLDA"))
                     //    a[5].ImportRow(dr);
@@ -1472,7 +1472,7 @@ namespace QLVanThu
                             ExportToExcelChiTiet(a[i], oSheetKTCN, "KTCN", "PHÒNG KỸ THUẬT CÔNG NGHỆ");
                             break;
                         case 4:
-                            ExportToExcelChiTiet(a[i], oSheetKTKS, "KD", "PHÒNG KINH DOANH");
+                            ExportToExcelChiTiet(a[i], oSheetKTKS, "TV", "PHÒNG THƯƠNG VỤ");
                             break;
                         //case 5:
                         //    ExportToExcelChiTiet(a[i], oSheetQLDA, "QLDA","QUẢN LÝ DỰ ÁN");
@@ -1638,7 +1638,7 @@ namespace QLVanThu
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
             {
                 if (bool.Parse(dgvDSVanThuDi["File", e.RowIndex].Value.ToString())==true)
-                    System.Diagnostics.Process.Start(@"\\server06\WorkflowData$\" + dgvDSVanThuDi["PathFile", e.RowIndex].Value.ToString());
+                    System.Diagnostics.Process.Start(@"\\serverg8-01\WorkflowData$\" + dgvDSVanThuDi["PathFile", e.RowIndex].Value.ToString());
             }
         }
 

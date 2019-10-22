@@ -375,7 +375,7 @@
             "KTTC",
             "KHĐT",
             "Kỹ Thuật",
-            "KD",
+            "TV",
             "QLDA",
             "QLĐHN",
             "Đội Thu Tiền",
