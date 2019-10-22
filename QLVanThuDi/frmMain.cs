@@ -906,7 +906,7 @@ namespace QLVanThu
                 oSheetTongHop.get_Range(c3b, c4b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 oSheetTongHop.get_Range(c3b, c4b).Font.Name = "Times New Roman";
                 oSheetTongHop.get_Range(c3b, c4b).Font.Size = 12;
-                c4b.NumberFormat = "@";
+                c4b.NumberFormat = "dd/mm/yyyy";
                 // Căn trái cột Số Ký Hiệu A
                 Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheetTongHop.Cells[rowStart, 3];
                 Microsoft.Office.Interop.Excel.Range c3c = (Microsoft.Office.Interop.Excel.Range)oSheetTongHop.Cells[rowEnd, 3];
@@ -1160,7 +1160,7 @@ namespace QLVanThu
                 oSheet.get_Range(c3b, c4b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 oSheet.get_Range(c3b, c4b).Font.Name = "Times New Roman";
                 oSheet.get_Range(c3b, c4b).Font.Size = 12;
-                c4b.NumberFormat = "@";
+                c4b.NumberFormat = "dd/mm/yyyy";
                 // Căn trái cột Số Ký Hiệu A
                 Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
                 Microsoft.Office.Interop.Excel.Range c3c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
@@ -1423,7 +1423,7 @@ namespace QLVanThu
                         a[2].ImportRow(dr);
                     if (dr["SoKyHieuVB"].ToString().Contains("KTCN"))
                         a[3].ImportRow(dr);
-                    if (dr["SoKyHieuVB"].ToString().Contains("KTKS") || dr["SoKyHieuVB"].ToString().Contains("KD") || dr["SoKyHieuVB"].ToString().Contains("TV") && !dr["SoKyHieuVB"].ToString().Contains("GNKDT"))
+                    if ((dr["SoKyHieuVB"].ToString().Contains("KTKS") || dr["SoKyHieuVB"].ToString().Contains("KD") || dr["SoKyHieuVB"].ToString().Contains("TV")) && !dr["SoKyHieuVB"].ToString().Contains("GNKDT"))
                         a[4].ImportRow(dr);
                     //if (dr["SoKyHieuVB"].ToString().Contains("QLDA"))
                     //    a[5].ImportRow(dr);
