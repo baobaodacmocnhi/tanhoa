@@ -26,8 +26,8 @@ namespace ThuTien.DAL.TongHop
                 }
                 else
                     en.ID = int.Parse("1" + DateTime.Now.ToString("yy"));
-                en.CreateDate = DateTime.Now;
                 en.CreateBy = CNguoiDung.MaND;
+                en.CreateDate = DateTime.Now;
                 _db.TT_ToTrinhDCHDs.InsertOnSubmit(en);
                 _db.SubmitChanges();
                 return true;
@@ -43,8 +43,8 @@ namespace ThuTien.DAL.TongHop
         {
             try
             {
-                en.ModifyDate = DateTime.Now;
                 en.ModifyBy = CNguoiDung.MaND;
+                en.ModifyDate = DateTime.Now;
                 _db.SubmitChanges();
                 return true;
             }

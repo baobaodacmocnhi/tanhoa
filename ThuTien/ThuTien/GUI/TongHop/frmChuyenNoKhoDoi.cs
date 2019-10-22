@@ -99,7 +99,7 @@ namespace ThuTien.GUI.TongHop
                             item.Focused = true;
                             return;
                         }
-                        if (_cCNKD.CheckExistCT(item.ToString()))
+                        if (_cCNKD.CheckExistCT(item.Text))
                         {
                             MessageBox.Show("Hóa Đơn đã có trong Chuyển Nợ Khó Đòi: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             item.Selected = true;
@@ -112,7 +112,7 @@ namespace ThuTien.GUI.TongHop
                 else
                     foreach (DataGridViewRow item in dgvHoaDon_Chon.Rows)
                     {
-                        if (_cCNKD.CheckExistCT(item.ToString()))
+                        if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon_Chon"].ToString()))
                         {
                             MessageBox.Show("Hóa Đơn đã có trong Chuyển Nợ Khó Đòi: " + item.Cells["SoHoaDon_Chon"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
