@@ -100,7 +100,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         {
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
-                            
+
                             dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                             dr["SoPhieu"] = dgvDSThu["MaDon", i].Value.ToString();
 
@@ -110,7 +110,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                                 dr["DanhBo"] = dgvDSThu["DanhBo", i].Value.ToString().Insert(7, " ").Insert(4, " ");
                             dr["GiaBieu"] = dgvDSThu["GiaBieu", i].Value.ToString();
                             if (dgvDSThu["DinhMuc", i].Value != null)
-                            dr["DinhMuc"] = dgvDSThu["DinhMuc", i].Value.ToString();
+                                dr["DinhMuc"] = dgvDSThu["DinhMuc", i].Value.ToString();
                             dr["CanCu"] = dgvDSThu["CanCu", i].Value.ToString();
                             dr["VaoLuc"] = dgvDSThu["VaoLuc", i].Value.ToString();
                             dr["VeViec"] = dgvDSThu["VeViec", i].Value.ToString();
@@ -188,7 +188,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     dr["LoaiBaoCao"] = "GỬI THƯ MỜI";
                     dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                    dr["MaDon"] = dgvDSThu["MaDon", i].Value.ToString().Insert(dgvDSThu["MaDon", i].Value.ToString().Length-2,"-");
+                    dr["MaDon"] = dgvDSThu["MaDon", i].Value.ToString().Insert(dgvDSThu["MaDon", i].Value.ToString().Length - 2, "-");
                     if (string.IsNullOrEmpty(dgvDSThu["DanhBo", i].Value.ToString()) == false && dgvDSThu["DanhBo", i].Value.ToString().Length == 11)
                         dr["DanhBo"] = dgvDSThu["DanhBo", i].Value.ToString().Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = dgvDSThu["HoTen", i].Value.ToString();
@@ -231,15 +231,16 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             dr["DiaChi"] = en.DiaChi;
                             if (en.ThuMoi.MaDonMoi != null)
                                 dr["SoPhieu"] = en.ThuMoi.MaDonMoi.ToString() + "/TB";
-                            if (en.ThuMoi.MaDonTKH != null)
-                                dr["SoPhieu"] = "TKH" + en.ThuMoi.MaDonTKH.ToString().Insert(en.ThuMoi.MaDonTKH.ToString().Length - 2, "-") + "/TB";
                             else
-                                if (en.ThuMoi.MaDonTXL != null)
-                                    dr["SoPhieu"] = "TXL" + en.ThuMoi.MaDonTXL.ToString().Insert(en.ThuMoi.MaDonTXL.ToString().Length - 2, "-") + "/TB";
+                                if (en.ThuMoi.MaDonTKH != null)
+                                    dr["SoPhieu"] = "TKH" + en.ThuMoi.MaDonTKH.ToString().Insert(en.ThuMoi.MaDonTKH.ToString().Length - 2, "-") + "/TB";
                                 else
-                                    if (en.ThuMoi.MaDonTBC != null)
-                                        dr["SoPhieu"] = "TBC" + en.ThuMoi.MaDonTBC.ToString().Insert(en.ThuMoi.MaDonTBC.ToString().Length - 2, "-") + "/TB";
-
+                                    if (en.ThuMoi.MaDonTXL != null)
+                                        dr["SoPhieu"] = "TXL" + en.ThuMoi.MaDonTXL.ToString().Insert(en.ThuMoi.MaDonTXL.ToString().Length - 2, "-") + "/TB";
+                                    else
+                                        if (en.ThuMoi.MaDonTBC != null)
+                                            dr["SoPhieu"] = "TBC" + en.ThuMoi.MaDonTBC.ToString().Insert(en.ThuMoi.MaDonTBC.ToString().Length - 2, "-") + "/TB";
+                            dr["DanhBo"] = en.DanhBo;
                             dsBaoCao1.Tables["ThaoThuTraLoi"].Rows.Add(dr);
                             flag = false;
                         }
@@ -251,15 +252,16 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             dr["DiaChi"] = en.DiaChi;
                             if (en.ThuMoi.MaDonMoi != null)
                                 dr["SoPhieu"] = en.ThuMoi.MaDonMoi.ToString() + "/TB";
-                            if (en.ThuMoi.MaDonTKH != null)
-                                dr["SoPhieu"] = "TKH" + en.ThuMoi.MaDonTKH.ToString().Insert(en.ThuMoi.MaDonTKH.ToString().Length - 2, "-") + "/TB";
                             else
-                                if (en.ThuMoi.MaDonTXL != null)
-                                    dr["SoPhieu"] = "TXL" + en.ThuMoi.MaDonTXL.ToString().Insert(en.ThuMoi.MaDonTXL.ToString().Length - 2, "-") + "/TB";
+                                if (en.ThuMoi.MaDonTKH != null)
+                                    dr["SoPhieu"] = "TKH" + en.ThuMoi.MaDonTKH.ToString().Insert(en.ThuMoi.MaDonTKH.ToString().Length - 2, "-") + "/TB";
                                 else
-                                    if (en.ThuMoi.MaDonTBC != null)
-                                        dr["SoPhieu"] = "TBC" + en.ThuMoi.MaDonTBC.ToString().Insert(en.ThuMoi.MaDonTBC.ToString().Length - 2, "-") + "/TB";
-
+                                    if (en.ThuMoi.MaDonTXL != null)
+                                        dr["SoPhieu"] = "TXL" + en.ThuMoi.MaDonTXL.ToString().Insert(en.ThuMoi.MaDonTXL.ToString().Length - 2, "-") + "/TB";
+                                    else
+                                        if (en.ThuMoi.MaDonTBC != null)
+                                            dr["SoPhieu"] = "TBC" + en.ThuMoi.MaDonTBC.ToString().Insert(en.ThuMoi.MaDonTBC.ToString().Length - 2, "-") + "/TB";
+                            dr["DanhBo"] = en.DanhBo;
                             dsBaoCao2.Tables["ThaoThuTraLoi"].Rows.Add(dr);
                             flag = true;
                         }
