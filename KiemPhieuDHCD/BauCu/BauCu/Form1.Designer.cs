@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.radQuanTri = new System.Windows.Forms.RadioButton();
             this.radKiemSoat = new System.Windows.Forms.RadioButton();
             this.dgvUngVien = new System.Windows.Forms.DataGridView();
@@ -104,6 +104,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnInDSCD = new System.Windows.Forms.Button();
+            this.btnThemChiaDoi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUngVien)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBauCu)).BeginInit();
@@ -306,7 +307,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(350, 147);
+            this.btnThem.Location = new System.Drawing.Point(660, 147);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(80, 35);
             this.btnThem.TabIndex = 13;
@@ -549,9 +550,9 @@
             // Dat_KQ
             // 
             this.Dat_KQ.DataPropertyName = "Dat";
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Dat_KQ.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Dat_KQ.DefaultCellStyle = dataGridViewCellStyle3;
             this.Dat_KQ.HeaderText = "Đạt";
             this.Dat_KQ.Name = "Dat_KQ";
             this.Dat_KQ.Width = 50;
@@ -742,7 +743,6 @@
             this.btnInsertCD.TabIndex = 44;
             this.btnInsertCD.Text = "Insert CĐ";
             this.btnInsertCD.UseVisualStyleBackColor = true;
-            this.btnInsertCD.Visible = false;
             this.btnInsertCD.Click += new System.EventHandler(this.btnInsertCD_Click);
             // 
             // label12
@@ -783,12 +783,23 @@
             this.btnInDSCD.UseVisualStyleBackColor = true;
             this.btnInDSCD.Click += new System.EventHandler(this.btnInDSCD_Click);
             // 
+            // btnThemChiaDoi
+            // 
+            this.btnThemChiaDoi.Location = new System.Drawing.Point(350, 147);
+            this.btnThemChiaDoi.Name = "btnThemChiaDoi";
+            this.btnThemChiaDoi.Size = new System.Drawing.Size(80, 35);
+            this.btnThemChiaDoi.TabIndex = 49;
+            this.btnThemChiaDoi.Text = "Thêm Chia Đôi";
+            this.btnThemChiaDoi.UseVisualStyleBackColor = true;
+            this.btnThemChiaDoi.Click += new System.EventHandler(this.btnThemChiaDoi_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1680, 714);
+            this.Controls.Add(this.btnThemChiaDoi);
             this.Controls.Add(this.btnInDSCD);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -831,10 +842,12 @@
             this.Controls.Add(this.dgvUngVien);
             this.Controls.Add(this.radKiemSoat);
             this.Controls.Add(this.radQuanTri);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Phần mềm Bầu Cử";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUngVien)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -924,6 +937,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Dat_KQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dat2;
         private System.Windows.Forms.Button btnInDSCD;
+        private System.Windows.Forms.Button btnThemChiaDoi;
     }
 }
 

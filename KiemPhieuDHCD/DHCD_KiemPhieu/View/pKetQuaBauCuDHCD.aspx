@@ -166,7 +166,7 @@
                                                     Text="0" Font-Size="XX-Large"></asp:Label>
                                             &nbsp;phiếu, tương ứng&nbsp;--%>
                             <asp:Label ID="txtPhieuKhongTinNhiem_CP" runat="server" Font-Bold="True" ForeColor="Red"
-                                Text="0" Font-Size="X-Large"></asp:Label>
+                                Text="0" Font-Size="XX-Large"></asp:Label>
                             &nbsp;cổ phần (<asp:Label ID="txtTyLePhieuKhongTinNhiem" runat="server" Font-Bold="True"
                                 ForeColor="Red" Text="0" Font-Size="X-Large"></asp:Label>)
                         </td>
