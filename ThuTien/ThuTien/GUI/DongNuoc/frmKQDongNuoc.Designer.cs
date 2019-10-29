@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtKhoaKhac_GhiChu = new System.Windows.Forms.TextBox();
+            this.chkKhoaKhac = new System.Windows.Forms.CheckBox();
             this.chkButChi = new System.Windows.Forms.CheckBox();
             this.chkKhoaTu = new System.Windows.Forms.CheckBox();
             this.txtNiemChi = new System.Windows.Forms.TextBox();
@@ -138,8 +140,8 @@
             this.btnInDS = new System.Windows.Forms.Button();
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.lbTo = new System.Windows.Forms.Label();
-            this.chkKhoaKhac = new System.Windows.Forms.CheckBox();
-            this.txtKhoaKhac_GhiChu = new System.Windows.Forms.TextBox();
+            this.cmbViTri = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
@@ -148,6 +150,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbViTri);
+            this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.txtKhoaKhac_GhiChu);
             this.groupBox2.Controls.Add(this.chkKhoaKhac);
             this.groupBox2.Controls.Add(this.chkButChi);
@@ -179,17 +183,36 @@
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.txtChiSoDN);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Location = new System.Drawing.Point(1, 184);
+            this.groupBox2.Location = new System.Drawing.Point(1, 174);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(401, 285);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả Đóng Nước";
             // 
+            // txtKhoaKhac_GhiChu
+            // 
+            this.txtKhoaKhac_GhiChu.Location = new System.Drawing.Point(297, 171);
+            this.txtKhoaKhac_GhiChu.Name = "txtKhoaKhac_GhiChu";
+            this.txtKhoaKhac_GhiChu.ReadOnly = true;
+            this.txtKhoaKhac_GhiChu.Size = new System.Drawing.Size(100, 20);
+            this.txtKhoaKhac_GhiChu.TabIndex = 46;
+            // 
+            // chkKhoaKhac
+            // 
+            this.chkKhoaKhac.AutoSize = true;
+            this.chkKhoaKhac.Location = new System.Drawing.Point(212, 172);
+            this.chkKhoaKhac.Name = "chkKhoaKhac";
+            this.chkKhoaKhac.Size = new System.Drawing.Size(79, 17);
+            this.chkKhoaKhac.TabIndex = 45;
+            this.chkKhoaKhac.Text = "Khóa Khác";
+            this.chkKhoaKhac.UseVisualStyleBackColor = true;
+            this.chkKhoaKhac.CheckedChanged += new System.EventHandler(this.chkKhoaKhac_CheckedChanged);
+            // 
             // chkButChi
             // 
             this.chkButChi.AutoSize = true;
-            this.chkButChi.Location = new System.Drawing.Point(212, 173);
+            this.chkButChi.Location = new System.Drawing.Point(285, 149);
             this.chkButChi.Name = "chkButChi";
             this.chkButChi.Size = new System.Drawing.Size(60, 17);
             this.chkButChi.TabIndex = 44;
@@ -199,7 +222,7 @@
             // chkKhoaTu
             // 
             this.chkKhoaTu.AutoSize = true;
-            this.chkKhoaTu.Location = new System.Drawing.Point(212, 150);
+            this.chkKhoaTu.Location = new System.Drawing.Point(212, 149);
             this.chkKhoaTu.Name = "chkKhoaTu";
             this.chkKhoaTu.Size = new System.Drawing.Size(67, 17);
             this.chkKhoaTu.TabIndex = 43;
@@ -245,7 +268,7 @@
             // chkKhongThuTienMoNuoc
             // 
             this.chkKhongThuTienMoNuoc.AutoSize = true;
-            this.chkKhongThuTienMoNuoc.Location = new System.Drawing.Point(212, 127);
+            this.chkKhongThuTienMoNuoc.Location = new System.Drawing.Point(212, 126);
             this.chkKhongThuTienMoNuoc.Name = "chkKhongThuTienMoNuoc";
             this.chkKhongThuTienMoNuoc.Size = new System.Drawing.Size(150, 17);
             this.chkKhongThuTienMoNuoc.TabIndex = 38;
@@ -321,7 +344,7 @@
             // 
             this.txtLyDo.Location = new System.Drawing.Point(91, 230);
             this.txtLyDo.Name = "txtLyDo";
-            this.txtLyDo.Size = new System.Drawing.Size(260, 20);
+            this.txtLyDo.Size = new System.Drawing.Size(200, 20);
             this.txtLyDo.TabIndex = 31;
             // 
             // cmbChiKhoaGoc
@@ -470,7 +493,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtDanhBo);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(1, 77);
+            this.groupBox1.Location = new System.Drawing.Point(1, 67);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(359, 101);
             this.groupBox1.TabIndex = 6;
@@ -878,7 +901,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(365, 151);
+            this.btnXoa.Location = new System.Drawing.Point(365, 144);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 33;
@@ -888,7 +911,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(365, 122);
+            this.btnSua.Location = new System.Drawing.Point(365, 115);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 32;
@@ -898,7 +921,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(365, 93);
+            this.btnThem.Location = new System.Drawing.Point(365, 86);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 31;
@@ -1183,24 +1206,28 @@
             this.lbTo.TabIndex = 47;
             this.lbTo.Text = "Tổ:";
             // 
-            // chkKhoaKhac
+            // cmbViTri
             // 
-            this.chkKhoaKhac.AutoSize = true;
-            this.chkKhoaKhac.Location = new System.Drawing.Point(184, 205);
-            this.chkKhoaKhac.Name = "chkKhoaKhac";
-            this.chkKhoaKhac.Size = new System.Drawing.Size(79, 17);
-            this.chkKhoaKhac.TabIndex = 45;
-            this.chkKhoaKhac.Text = "Khóa Khác";
-            this.chkKhoaKhac.UseVisualStyleBackColor = true;
-            this.chkKhoaKhac.CheckedChanged += new System.EventHandler(this.chkKhoaKhac_CheckedChanged);
+            this.cmbViTri.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbViTri.FormattingEnabled = true;
+            this.cmbViTri.Items.AddRange(new object[] {
+            "",
+            "Trong",
+            "Ngoài"});
+            this.cmbViTri.Location = new System.Drawing.Point(205, 203);
+            this.cmbViTri.MaxDropDownItems = 50;
+            this.cmbViTri.Name = "cmbViTri";
+            this.cmbViTri.Size = new System.Drawing.Size(70, 21);
+            this.cmbViTri.TabIndex = 48;
             // 
-            // txtKhoaKhac_GhiChu
+            // label27
             // 
-            this.txtKhoaKhac_GhiChu.Location = new System.Drawing.Point(269, 203);
-            this.txtKhoaKhac_GhiChu.Name = "txtKhoaKhac_GhiChu";
-            this.txtKhoaKhac_GhiChu.ReadOnly = true;
-            this.txtKhoaKhac_GhiChu.Size = new System.Drawing.Size(119, 20);
-            this.txtKhoaKhac_GhiChu.TabIndex = 46;
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(167, 206);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(32, 13);
+            this.label27.TabIndex = 47;
+            this.label27.Text = "Vị trí:";
             // 
             // frmKQDongNuoc
             // 
@@ -1360,5 +1387,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
         private System.Windows.Forms.TextBox txtKhoaKhac_GhiChu;
         private System.Windows.Forms.CheckBox chkKhoaKhac;
+        private System.Windows.Forms.ComboBox cmbViTri;
+        private System.Windows.Forms.Label label27;
     }
 }

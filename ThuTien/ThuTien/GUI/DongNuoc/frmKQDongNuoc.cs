@@ -74,6 +74,7 @@ namespace ThuTien.GUI.DongNuoc
             txtSoThan.Text = "";
             cmbChiMatSo.SelectedIndex = -1;
             cmbChiKhoaGoc.SelectedIndex = -1;
+            cmbViTri.SelectedIndex = -1;
             txtLyDo.Text = "";
             chkMoNuoc.Checked = false;
             dateMoNuoc.Value = DateTime.Now;
@@ -112,6 +113,7 @@ namespace ThuTien.GUI.DongNuoc
             txtSoThan.Text = entity.SoThan;
             cmbChiMatSo.SelectedItem = entity.ChiMatSo;
             cmbChiKhoaGoc.SelectedItem = entity.ChiKhoaGoc;
+            cmbViTri.SelectedItem = entity.ViTri;
             txtLyDo.Text = entity.LyDo;
             chkKhoaTu.Checked = entity.KhoaTu;
             chkButChi.Checked = entity.ButChi;
@@ -248,6 +250,8 @@ namespace ThuTien.GUI.DongNuoc
                             _kqdongnuoc.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
                         if (cmbChiKhoaGoc.SelectedItem != null)
                             _kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+                        if (cmbViTri.SelectedItem != null)
+                            _kqdongnuoc.ViTri = cmbViTri.SelectedItem.ToString();
                         _kqdongnuoc.LyDo = txtLyDo.Text.Trim();
                         _kqdongnuoc.KhoaTu = chkKhoaTu.Checked;
                         _kqdongnuoc.ButChi = chkButChi.Checked;
@@ -443,6 +447,8 @@ namespace ThuTien.GUI.DongNuoc
                                 kqdongnuoc.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
                             if (cmbChiKhoaGoc.SelectedItem != null)
                                 kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+                            if (cmbViTri.SelectedItem != null)
+                                kqdongnuoc.ViTri = cmbViTri.SelectedItem.ToString();
                             kqdongnuoc.LyDo = txtLyDo.Text.Trim();
                             kqdongnuoc.KhoaTu = chkKhoaTu.Checked;
                             kqdongnuoc.ButChi = chkButChi.Checked;
