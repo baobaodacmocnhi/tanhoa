@@ -52,6 +52,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Danh Bộ":
+                case "Số Tiền":
                     txtNoiDungTimKiem.Visible = true;
                     //txtNoiDungTimKiem2.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
@@ -85,6 +86,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                         break;
                     case "Ngày":
                         dgvDSTruyThuTienNuoc.DataSource = _cTTTN.getDS(dateTu.Value, dateDen.Value);
+                        break;
+                    case "Số Tiền":
+                        dgvDSTruyThuTienNuoc.DataSource = _cTTTN.getDS_SoTien(int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                         break;
                     default:
                         break;
@@ -189,6 +193,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         //TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSTruyThuTienNuoc["MaCTTTTL", i].Value.ToString()));
 
+                        dr["DanhBo"] = dgvDSTruyThuTienNuoc["DanhBo", i].Value.ToString();
                         dr["HoTen"] = dgvDSTruyThuTienNuoc["HoTen", i].Value.ToString();
                         dr["DiaChi"] = dgvDSTruyThuTienNuoc["DiaChi", i].Value.ToString();
                         dr["SoPhieu"] = dgvDSTruyThuTienNuoc["DienThoai", i].Value.ToString();
@@ -202,6 +207,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         //TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSTruyThuTienNuoc["MaCTTTTL", i].Value.ToString()));
 
+                        dr["DanhBo"] = dgvDSTruyThuTienNuoc["DanhBo", i].Value.ToString();
                         dr["HoTen"] = dgvDSTruyThuTienNuoc["HoTen", i].Value.ToString();
                         dr["DiaChi"] = dgvDSTruyThuTienNuoc["DiaChi", i].Value.ToString();
                         dr["SoPhieu"] = dgvDSTruyThuTienNuoc["DienThoai", i].Value.ToString();
@@ -216,6 +222,12 @@ namespace KTKS_DonKH.GUI.TruyThu
             frm.Show();
         }
 
-        
+        private void txtNoiDungTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtNoiDungTimKiem.Text.Trim() != "")
+                btnXem.PerformClick();
+        }
+
+
     }
 }

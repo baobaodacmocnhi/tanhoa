@@ -226,18 +226,47 @@ namespace KTKS_DonKH.GUI.DonTu
 
             //        dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             //}
-            foreach (DataRow item in dt.Rows)
+
+            //foreach (DataRow item in dt.Rows)
+            //{
+            //    DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
+
+            //    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
+            //    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
+            //    dr["Ma"] = item["MaDon"].ToString();
+            //    dr["CreateDate"] = item["CreateDate"].ToString();
+            //    if (item["DanhBo"].ToString().Length == 11)
+            //        dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+            //    dr["DiaChi"] = item["DiaChi"].ToString();
+            //    dr["NoiDung"] = item["NoiDung"].ToString();
+            //    dr["GhiChu"] = item["SoCongVan"].ToString();
+            //    if (CTaiKhoan.MaPhong == 1)
+            //    {
+            //        dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
+            //        dr["VisibleNoiNhan"] = true;
+            //    }
+            //    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+            //    dr["NguoiLap"] = CTaiKhoan.HoTen;
+            //    dr["NguoiKy"] = CTaiKhoan.NguoiKy;
+
+            //    dsBaoCao.Tables["CongVan"].Rows.Add(dr);
+            //}
+
+            for (int i = 0; i < gridViewDon.DataRowCount; i++)
             {
+                DataRow row = gridViewDon.GetDataRow(i);
+
                 DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
 
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
-                dr["Ma"] = item["MaDon"].ToString();
-                dr["CreateDate"] = item["CreateDate"].ToString();
-                if (item["DanhBo"].ToString().Length == 11)
-                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                dr["DiaChi"] = item["DiaChi"].ToString();
-                dr["NoiDung"] = item["NoiDung"].ToString();
+                dr["Ma"] = row["MaDon"].ToString();
+                dr["CreateDate"] = row["CreateDate"].ToString();
+                if (row["DanhBo"].ToString().Length == 11)
+                    dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = row["DiaChi"].ToString();
+                dr["NoiDung"] = row["NoiDung"].ToString();
+                dr["GhiChu"] = row["SoCongVan"].ToString();
                 if (CTaiKhoan.MaPhong == 1)
                 {
                     dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);

@@ -312,6 +312,35 @@ namespace KTKS_DonKH.DAL.TruyThu
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_SoTien(int SoTien)
+        {
+            var query = from item in db.TruyThuTienNuoc_ChiTiets
+                        where item.TongTien == SoTien
+                        select new
+                        {
+                            MaDon = item.TruyThuTienNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TruyThuTienNuoc.MaDonMoi).Count() == 1 ? item.TruyThuTienNuoc.MaDonMoi.Value.ToString() : item.TruyThuTienNuoc.MaDonMoi + "." + item.STT
+                                    : item.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc.MaDon
+                                    : item.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc.MaDonTXL
+                                    : item.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc.MaDonTBC : null,
+                            SoCongVan = item.TruyThuTienNuoc.MaDonMoi != null ? item.TruyThuTienNuoc.DonTu.SoCongVan
+                                    : item.TruyThuTienNuoc.MaDon != null ? item.TruyThuTienNuoc.DonKH.SoCongVan
+                                    : item.TruyThuTienNuoc.MaDonTXL != null ? item.TruyThuTienNuoc.DonTXL.SoCongVan
+                                    : item.TruyThuTienNuoc.MaDonTBC != null ? item.TruyThuTienNuoc.DonTBC.SoCongVan : null,
+                            item.IDCT,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.NoiDung,
+                            item.DienThoai,
+                            //item.TongTien,
+                            //item.Tongm3BinhQuan,
+                            TongTien = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value : 0,
+                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? (item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / item.SoTien1m3 : 0,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable getDS(DateTime FromNgayTinhTrang, DateTime ToNgayTinhTrang)
         {
             var query = from item in db.TruyThuTienNuoc_ChiTiets

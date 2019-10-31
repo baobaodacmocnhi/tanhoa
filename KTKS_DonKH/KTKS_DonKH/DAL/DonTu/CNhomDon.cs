@@ -75,6 +75,21 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
+        public List<NhomDon> getDS_List(string Loai)
+        {
+            switch (Loai)
+            {
+                case "DieuChinh":
+                    return db.NhomDons.Where(item => item.DieuChinh == true).OrderBy(item => item.STT).ToList();
+                case "KhieuNai":
+                    return db.NhomDons.Where(item => item.KhieuNai == true).OrderBy(item => item.STT).ToList();
+                case "DHN":
+                    return db.NhomDons.Where(item => item.DHN == true).OrderBy(item => item.STT).ToList();
+                default:
+                    return null;
+            }
+        }
+
         public DataTable getDS(string Loai)
         {
             switch (Loai)

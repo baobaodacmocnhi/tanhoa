@@ -136,7 +136,8 @@
             "",
             "Số Phiếu",
             "Danh Bộ",
-            "Ngày"});
+            "Ngày",
+            "Số Tiền"});
             this.cmbTimTheo.Location = new System.Drawing.Point(334, 11);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(100, 24);
@@ -159,6 +160,7 @@
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(100, 22);
             this.txtNoiDungTimKiem.TabIndex = 21;
             this.txtNoiDungTimKiem.Visible = false;
+            this.txtNoiDungTimKiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoiDungTimKiem_KeyPress);
             // 
             // dgvDSTruyThuTienNuoc
             // 
