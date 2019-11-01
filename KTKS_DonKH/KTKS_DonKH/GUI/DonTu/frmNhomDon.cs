@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
@@ -18,7 +19,7 @@ namespace KTKS_DonKH.GUI.DonTu
         BindingList<NhomDon> _bSourceKhieuNai;
         BindingList<NhomDon> _bSourceDHN;
         CNhomDon _cNhomDon = new CNhomDon();
-
+        string _actionDieuChinh = "", _actionKhieuNai = "", _actionDHN = "";
         public frmNhomDon()
         {
             InitializeComponent();
@@ -33,6 +34,16 @@ namespace KTKS_DonKH.GUI.DonTu
             _bSourceKhieuNai = new BindingList<NhomDon>(_cNhomDon.getDS_List("KhieuNai"));
             dgvKhieuNai.DataSource = _bSourceKhieuNai;
             dgvDHN.AutoGenerateColumns = false;
+            _bSourceDHN = new BindingList<NhomDon>(_cNhomDon.getDS_List("DHN"));
+            dgvDHN.DataSource = _bSourceDHN;
+        }
+
+        public void loaddgv()
+        {
+            _bSourceDieuChinh = new BindingList<NhomDon>(_cNhomDon.getDS_List("DieuChinh"));
+            dgvDieuChinh.DataSource = _bSourceDieuChinh;
+            _bSourceKhieuNai = new BindingList<NhomDon>(_cNhomDon.getDS_List("KhieuNai"));
+            dgvKhieuNai.DataSource = _bSourceKhieuNai;
             _bSourceDHN = new BindingList<NhomDon>(_cNhomDon.getDS_List("DHN"));
             dgvDHN.DataSource = _bSourceDHN;
         }
@@ -195,17 +206,103 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void dgvDieuChinh_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
-            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            _actionDieuChinh = "add";
+        }
+
+        private void dgvDieuChinh_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDieuChinh.CurrentRow.Cells["ID_DieuChinh"].Value.ToString() != "0")
+                _actionDieuChinh = "edit";
+        }
+
+        private void dgvDieuChinh_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            string sql = "";
+            switch (_actionDieuChinh)
+            {
+                case "add":
+                    sql = "insert into NhomDon(ID,STT,Name,DieuChinh,CreateBy,CreateDate)values((select max(id)+1 from NhomDon)," + dgvDieuChinh.CurrentRow.Cells["STT_DieuChinh"].Value.ToString() + ",N'" + dgvDieuChinh.CurrentRow.Cells["Name_DieuChinh"].Value.ToString() + "',1," + CTaiKhoan.MaUser + ",getdate())";
+                    break;
+                case "edit":
+                    sql = "update NhomDon set STT=" + dgvDieuChinh.CurrentRow.Cells["STT_DieuChinh"].Value.ToString() + ",Name=N'" + dgvDieuChinh.CurrentRow.Cells["Name_DieuChinh"].Value.ToString() + "',ModifyBy=" + CTaiKhoan.MaUser + ",ModifyDate=getdate() where ID=" + dgvDieuChinh.CurrentRow.Cells["ID_DieuChinh"].Value.ToString();
+                    break;
+                default:
+                    break;
+            }
+            if (sql != "")
+                if (_cNhomDon.ExecuteNonQuery(sql) == true)
+                {
+                    _actionDieuChinh = "";
+                    loaddgv();
+                }
         }
 
         private void dgvKhieuNai_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
+            _actionKhieuNai = "add";
+        }
 
+        private void dgvKhieuNai_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvKhieuNai.CurrentRow.Cells["ID_KhieuNai"].Value.ToString() != "0")
+                _actionKhieuNai = "edit";
+        }
+
+        private void dgvKhieuNai_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            string sql = "";
+            switch (_actionKhieuNai)
+            {
+                case "add":
+                    sql = "insert into NhomDon(ID,STT,Name,KhieuNai,CreateBy,CreateDate)values((select max(id)+1 from NhomDon)," + dgvKhieuNai.CurrentRow.Cells["STT_KhieuNai"].Value.ToString() + ",N'" + dgvKhieuNai.CurrentRow.Cells["Name_KhieuNai"].Value.ToString() + "',1," + CTaiKhoan.MaUser + ",getdate())";
+                    break;
+                case "edit":
+                    sql = "update NhomDon set STT=" + dgvKhieuNai.CurrentRow.Cells["STT_KhieuNai"].Value.ToString() + ",Name=N'" + dgvKhieuNai.CurrentRow.Cells["Name_KhieuNai"].Value.ToString() + "',ModifyBy=" + CTaiKhoan.MaUser + ",ModifyDate=getdate() where ID=" + dgvKhieuNai.CurrentRow.Cells["ID_KhieuNai"].Value.ToString();
+                    break;
+                default:
+                    break;
+            }
+            if (sql != "")
+                if (_cNhomDon.ExecuteNonQuery(sql) == true)
+                {
+                    _actionKhieuNai = "";
+                    loaddgv();
+                }
         }
 
         private void dgvDHN_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
-
+            _actionDHN = "add";
         }
+
+        private void dgvDHN_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDHN.CurrentRow.Cells["ID_DHN"].Value.ToString() != "0")
+                _actionDHN = "edit";
+        }
+
+        private void dgvDHN_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            string sql = "";
+            switch (_actionDHN)
+            {
+                case "add":
+                    sql = "insert into NhomDon(ID,STT,Name,DHN,CreateBy,CreateDate)values((select max(id)+1 from NhomDon)," + dgvDHN.CurrentRow.Cells["STT_DHN"].Value.ToString() + ",N'" + dgvDHN.CurrentRow.Cells["Name_DHN"].Value.ToString() + "',1," + CTaiKhoan.MaUser + ",getdate())";
+                    break;
+                case "edit":
+                    sql = "update NhomDon set STT=" + dgvDHN.CurrentRow.Cells["STT_DHN"].Value.ToString() + ",Name=N'" + dgvDHN.CurrentRow.Cells["Name_DHN"].Value.ToString() + "',ModifyBy=" + CTaiKhoan.MaUser + ",ModifyDate=getdate() where ID=" + dgvDHN.CurrentRow.Cells["ID_KhieuNai"].Value.ToString();
+                    break;
+                default:
+                    break;
+            }
+            if (sql != "")
+                if (_cNhomDon.ExecuteNonQuery(sql) == true)
+                {
+                    _actionDHN = "";
+                    loaddgv();
+                }
+        }
+
+
     }
 }

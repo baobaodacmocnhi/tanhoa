@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HOADON_TA" Class="dbThuTienDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=server9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="HOADON_TAConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.TT_HoaDonCu" Member="TT_HoaDonCus">
-    <Type Name="TT_HoaDonCu">
+  <Table Name="dbo.HOADON" Member="HOADONs">
+    <Type Name="HOADON">
       <Column Name="ID_HOADON" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DOT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DANHBA" Type="System.String" DbType="NVarChar(11) NOT NULL" CanBeNull="false" />
@@ -12,6 +12,7 @@
       <Column Name="TILEHCSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TILESX" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TILEDV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMucHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DM" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CODE" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
       <Column Name="CSCU" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
@@ -86,12 +87,16 @@
       <Column Name="Name_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="IP_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DangNgan_DienThoai" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="InPhieuBao_Ngay_DienThoai" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="XoaDangNgan_Ngay_DienThoai" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InPhieuBao_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InPhieuBao2_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InPhieuBao2_NgayHen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TBDongNuoc_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TBDongNuoc_NgayHen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.HOADON" Member="HOADONs">
-    <Type Name="HOADON">
+  <Table Name="dbo.TT_HoaDonCu" Member="TT_HoaDonCus">
+    <Type Name="TT_HoaDonCu">
       <Column Name="ID_HOADON" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DOT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DANHBA" Type="System.String" DbType="NVarChar(11) NOT NULL" CanBeNull="false" />
@@ -102,6 +107,7 @@
       <Column Name="TILEHCSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TILESX" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TILEDV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMucHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DM" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CODE" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
       <Column Name="CSCU" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />

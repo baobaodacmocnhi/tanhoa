@@ -482,6 +482,7 @@
       <Column Name="SoNKDangKy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ThoiHan" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NgayHetHan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NgayHetHanHN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Lo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Phong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -674,6 +675,7 @@
       <Column Name="MaQuanPhuong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MSThue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="GiaBieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMucHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SX" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -689,6 +691,7 @@
       <Column Name="DiaChi_BD" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="MSThue_BD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="GiaBieu_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMucHN_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMuc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SH_BD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SX_BD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -756,9 +759,11 @@
       <Column Name="SoHD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ChuyenNhap" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="GiaBieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMucHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GiaBieu_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMucHN_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMuc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TieuThu_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TienNuoc_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />

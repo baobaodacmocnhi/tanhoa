@@ -30,14 +30,17 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDieuChinh = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgvKhieuNai = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dgvDHN = new System.Windows.Forms.DataGridView();
+            this.ID_DieuChinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.STT_DieuChinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name_DieuChinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgvKhieuNai = new System.Windows.Forms.DataGridView();
+            this.ID_KhieuNai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.STT_KhieuNai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name_KhieuNai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dgvDHN = new System.Windows.Forms.DataGridView();
+            this.ID_DHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.STT_DHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name_DHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
@@ -62,6 +65,7 @@
             // 
             this.dgvDieuChinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDieuChinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID_DieuChinh,
             this.STT_DieuChinh,
             this.Name_DieuChinh});
             this.dgvDieuChinh.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -70,67 +74,20 @@
             this.dgvDieuChinh.Name = "dgvDieuChinh";
             this.dgvDieuChinh.Size = new System.Drawing.Size(364, 531);
             this.dgvDieuChinh.TabIndex = 0;
+            this.dgvDieuChinh.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDieuChinh_CellEndEdit);
+            this.dgvDieuChinh.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDieuChinh_RowEnter);
             this.dgvDieuChinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDieuChinh_RowPostPaint);
             this.dgvDieuChinh.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDieuChinh_UserAddedRow);
             this.dgvDieuChinh.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvDieuChinh_DragDrop);
             this.dgvDieuChinh.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDieuChinh_DragEnter);
             this.dgvDieuChinh.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDieuChinh_MouseClick);
             // 
-            // groupBox2
+            // ID_DieuChinh
             // 
-            this.groupBox2.Controls.Add(this.dgvKhieuNai);
-            this.groupBox2.Location = new System.Drawing.Point(388, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(370, 550);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Khiếu Nại";
-            // 
-            // dgvKhieuNai
-            // 
-            this.dgvKhieuNai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKhieuNai.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT_KhieuNai,
-            this.Name_KhieuNai});
-            this.dgvKhieuNai.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvKhieuNai.Location = new System.Drawing.Point(3, 16);
-            this.dgvKhieuNai.MultiSelect = false;
-            this.dgvKhieuNai.Name = "dgvKhieuNai";
-            this.dgvKhieuNai.Size = new System.Drawing.Size(364, 531);
-            this.dgvKhieuNai.TabIndex = 0;
-            this.dgvKhieuNai.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvKhieuNai_RowPostPaint);
-            this.dgvKhieuNai.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvKhieuNai_UserAddedRow);
-            this.dgvKhieuNai.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvKhieuNai_DragDrop);
-            this.dgvKhieuNai.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvKhieuNai_DragEnter);
-            this.dgvKhieuNai.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvKhieuNai_MouseClick);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.dgvDHN);
-            this.groupBox3.Location = new System.Drawing.Point(764, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(370, 550);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Sự Cố ĐHN";
-            // 
-            // dgvDHN
-            // 
-            this.dgvDHN.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDHN.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT_DHN,
-            this.Name_DHN});
-            this.dgvDHN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDHN.Location = new System.Drawing.Point(3, 16);
-            this.dgvDHN.MultiSelect = false;
-            this.dgvDHN.Name = "dgvDHN";
-            this.dgvDHN.Size = new System.Drawing.Size(364, 531);
-            this.dgvDHN.TabIndex = 0;
-            this.dgvDHN.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDHN_RowPostPaint);
-            this.dgvDHN.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDHN_UserAddedRow);
-            this.dgvDHN.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvDHN_DragDrop);
-            this.dgvDHN.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDHN_DragEnter);
-            this.dgvDHN.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDHN_MouseClick);
+            this.ID_DieuChinh.DataPropertyName = "ID";
+            this.ID_DieuChinh.HeaderText = "ID";
+            this.ID_DieuChinh.Name = "ID_DieuChinh";
+            this.ID_DieuChinh.Visible = false;
             // 
             // STT_DieuChinh
             // 
@@ -146,6 +103,44 @@
             this.Name_DieuChinh.Name = "Name_DieuChinh";
             this.Name_DieuChinh.Width = 250;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvKhieuNai);
+            this.groupBox2.Location = new System.Drawing.Point(388, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(370, 550);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Khiếu Nại";
+            // 
+            // dgvKhieuNai
+            // 
+            this.dgvKhieuNai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKhieuNai.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID_KhieuNai,
+            this.STT_KhieuNai,
+            this.Name_KhieuNai});
+            this.dgvKhieuNai.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvKhieuNai.Location = new System.Drawing.Point(3, 16);
+            this.dgvKhieuNai.MultiSelect = false;
+            this.dgvKhieuNai.Name = "dgvKhieuNai";
+            this.dgvKhieuNai.Size = new System.Drawing.Size(364, 531);
+            this.dgvKhieuNai.TabIndex = 0;
+            this.dgvKhieuNai.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhieuNai_CellEndEdit);
+            this.dgvKhieuNai.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhieuNai_RowEnter);
+            this.dgvKhieuNai.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvKhieuNai_RowPostPaint);
+            this.dgvKhieuNai.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvKhieuNai_UserAddedRow);
+            this.dgvKhieuNai.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvKhieuNai_DragDrop);
+            this.dgvKhieuNai.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvKhieuNai_DragEnter);
+            this.dgvKhieuNai.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvKhieuNai_MouseClick);
+            // 
+            // ID_KhieuNai
+            // 
+            this.ID_KhieuNai.DataPropertyName = "ID";
+            this.ID_KhieuNai.HeaderText = "ID";
+            this.ID_KhieuNai.Name = "ID_KhieuNai";
+            this.ID_KhieuNai.Visible = false;
+            // 
             // STT_KhieuNai
             // 
             this.STT_KhieuNai.DataPropertyName = "STT";
@@ -159,6 +154,44 @@
             this.Name_KhieuNai.HeaderText = "Tên";
             this.Name_KhieuNai.Name = "Name_KhieuNai";
             this.Name_KhieuNai.Width = 250;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dgvDHN);
+            this.groupBox3.Location = new System.Drawing.Point(764, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(370, 550);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Sự Cố ĐHN";
+            // 
+            // dgvDHN
+            // 
+            this.dgvDHN.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDHN.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID_DHN,
+            this.STT_DHN,
+            this.Name_DHN});
+            this.dgvDHN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDHN.Location = new System.Drawing.Point(3, 16);
+            this.dgvDHN.MultiSelect = false;
+            this.dgvDHN.Name = "dgvDHN";
+            this.dgvDHN.Size = new System.Drawing.Size(364, 531);
+            this.dgvDHN.TabIndex = 0;
+            this.dgvDHN.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDHN_CellEndEdit);
+            this.dgvDHN.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDHN_RowEnter);
+            this.dgvDHN.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDHN_RowPostPaint);
+            this.dgvDHN.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDHN_UserAddedRow);
+            this.dgvDHN.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvDHN_DragDrop);
+            this.dgvDHN.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDHN_DragEnter);
+            this.dgvDHN.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDHN_MouseClick);
+            // 
+            // ID_DHN
+            // 
+            this.ID_DHN.DataPropertyName = "ID";
+            this.ID_DHN.HeaderText = "ID";
+            this.ID_DHN.Name = "ID_DHN";
+            this.ID_DHN.Visible = false;
             // 
             // STT_DHN
             // 
@@ -203,10 +236,13 @@
         private System.Windows.Forms.DataGridView dgvKhieuNai;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvDHN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_DieuChinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn STT_DieuChinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_DieuChinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_KhieuNai;
         private System.Windows.Forms.DataGridViewTextBoxColumn STT_KhieuNai;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_KhieuNai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_DHN;
         private System.Windows.Forms.DataGridViewTextBoxColumn STT_DHN;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_DHN;
     }

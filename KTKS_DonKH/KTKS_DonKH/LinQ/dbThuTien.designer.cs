@@ -30,12 +30,12 @@ namespace KTKS_DonKH.LinQ
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertTT_HoaDonCu(TT_HoaDonCu instance);
-    partial void UpdateTT_HoaDonCu(TT_HoaDonCu instance);
-    partial void DeleteTT_HoaDonCu(TT_HoaDonCu instance);
     partial void InsertHOADON(HOADON instance);
     partial void UpdateHOADON(HOADON instance);
     partial void DeleteHOADON(HOADON instance);
+    partial void InsertTT_HoaDonCu(TT_HoaDonCu instance);
+    partial void UpdateTT_HoaDonCu(TT_HoaDonCu instance);
+    partial void DeleteTT_HoaDonCu(TT_HoaDonCu instance);
     #endregion
 		
 		public dbThuTienDataContext() : 
@@ -68,14 +68,6 @@ namespace KTKS_DonKH.LinQ
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<TT_HoaDonCu> TT_HoaDonCus
-		{
-			get
-			{
-				return this.GetTable<TT_HoaDonCu>();
-			}
-		}
-		
 		public System.Data.Linq.Table<HOADON> HOADONs
 		{
 			get
@@ -83,10 +75,18 @@ namespace KTKS_DonKH.LinQ
 				return this.GetTable<HOADON>();
 			}
 		}
+		
+		public System.Data.Linq.Table<TT_HoaDonCu> TT_HoaDonCus
+		{
+			get
+			{
+				return this.GetTable<TT_HoaDonCu>();
+			}
+		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_HoaDonCu")]
-	public partial class TT_HoaDonCu : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HOADON")]
+	public partial class HOADON : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -110,6 +110,8 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<int> _TILESX;
 		
 		private System.Nullable<int> _TILEDV;
+		
+		private System.Nullable<int> _DinhMucHN;
 		
 		private System.Nullable<decimal> _DM;
 		
@@ -259,9 +261,17 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _DangNgan_DienThoai;
 		
-		private System.Nullable<System.DateTime> _InPhieuBao_Ngay_DienThoai;
-		
 		private System.Nullable<System.DateTime> _XoaDangNgan_Ngay_DienThoai;
+		
+		private System.Nullable<System.DateTime> _InPhieuBao_Ngay;
+		
+		private System.Nullable<System.DateTime> _InPhieuBao2_Ngay;
+		
+		private System.Nullable<System.DateTime> _InPhieuBao2_NgayHen;
+		
+		private System.Nullable<System.DateTime> _TBDongNuoc_Ngay;
+		
+		private System.Nullable<System.DateTime> _TBDongNuoc_NgayHen;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -287,6 +297,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTILESXChanged();
     partial void OnTILEDVChanging(System.Nullable<int> value);
     partial void OnTILEDVChanged();
+    partial void OnDinhMucHNChanging(System.Nullable<int> value);
+    partial void OnDinhMucHNChanged();
     partial void OnDMChanging(System.Nullable<decimal> value);
     partial void OnDMChanged();
     partial void OnCODEChanging(string value);
@@ -435,13 +447,21 @@ namespace KTKS_DonKH.LinQ
     partial void OnIP_PCChanged();
     partial void OnDangNgan_DienThoaiChanging(bool value);
     partial void OnDangNgan_DienThoaiChanged();
-    partial void OnInPhieuBao_Ngay_DienThoaiChanging(System.Nullable<System.DateTime> value);
-    partial void OnInPhieuBao_Ngay_DienThoaiChanged();
     partial void OnXoaDangNgan_Ngay_DienThoaiChanging(System.Nullable<System.DateTime> value);
     partial void OnXoaDangNgan_Ngay_DienThoaiChanged();
+    partial void OnInPhieuBao_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnInPhieuBao_NgayChanged();
+    partial void OnInPhieuBao2_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnInPhieuBao2_NgayChanged();
+    partial void OnInPhieuBao2_NgayHenChanging(System.Nullable<System.DateTime> value);
+    partial void OnInPhieuBao2_NgayHenChanged();
+    partial void OnTBDongNuoc_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnTBDongNuoc_NgayChanged();
+    partial void OnTBDongNuoc_NgayHenChanging(System.Nullable<System.DateTime> value);
+    partial void OnTBDongNuoc_NgayHenChanged();
     #endregion
 		
-		public TT_HoaDonCu()
+		public HOADON()
 		{
 			OnCreated();
 		}
@@ -642,6 +662,26 @@ namespace KTKS_DonKH.LinQ
 					this._TILEDV = value;
 					this.SendPropertyChanged("TILEDV");
 					this.OnTILEDVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMucHN", DbType="Int")]
+		public System.Nullable<int> DinhMucHN
+		{
+			get
+			{
+				return this._DinhMucHN;
+			}
+			set
+			{
+				if ((this._DinhMucHN != value))
+				{
+					this.OnDinhMucHNChanging(value);
+					this.SendPropertyChanging();
+					this._DinhMucHN = value;
+					this.SendPropertyChanged("DinhMucHN");
+					this.OnDinhMucHNChanged();
 				}
 			}
 		}
@@ -2126,26 +2166,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InPhieuBao_Ngay_DienThoai", DbType="DateTime")]
-		public System.Nullable<System.DateTime> InPhieuBao_Ngay_DienThoai
-		{
-			get
-			{
-				return this._InPhieuBao_Ngay_DienThoai;
-			}
-			set
-			{
-				if ((this._InPhieuBao_Ngay_DienThoai != value))
-				{
-					this.OnInPhieuBao_Ngay_DienThoaiChanging(value);
-					this.SendPropertyChanging();
-					this._InPhieuBao_Ngay_DienThoai = value;
-					this.SendPropertyChanged("InPhieuBao_Ngay_DienThoai");
-					this.OnInPhieuBao_Ngay_DienThoaiChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XoaDangNgan_Ngay_DienThoai", DbType="DateTime")]
 		public System.Nullable<System.DateTime> XoaDangNgan_Ngay_DienThoai
 		{
@@ -2162,6 +2182,106 @@ namespace KTKS_DonKH.LinQ
 					this._XoaDangNgan_Ngay_DienThoai = value;
 					this.SendPropertyChanged("XoaDangNgan_Ngay_DienThoai");
 					this.OnXoaDangNgan_Ngay_DienThoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InPhieuBao_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> InPhieuBao_Ngay
+		{
+			get
+			{
+				return this._InPhieuBao_Ngay;
+			}
+			set
+			{
+				if ((this._InPhieuBao_Ngay != value))
+				{
+					this.OnInPhieuBao_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._InPhieuBao_Ngay = value;
+					this.SendPropertyChanged("InPhieuBao_Ngay");
+					this.OnInPhieuBao_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InPhieuBao2_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> InPhieuBao2_Ngay
+		{
+			get
+			{
+				return this._InPhieuBao2_Ngay;
+			}
+			set
+			{
+				if ((this._InPhieuBao2_Ngay != value))
+				{
+					this.OnInPhieuBao2_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._InPhieuBao2_Ngay = value;
+					this.SendPropertyChanged("InPhieuBao2_Ngay");
+					this.OnInPhieuBao2_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InPhieuBao2_NgayHen", DbType="DateTime")]
+		public System.Nullable<System.DateTime> InPhieuBao2_NgayHen
+		{
+			get
+			{
+				return this._InPhieuBao2_NgayHen;
+			}
+			set
+			{
+				if ((this._InPhieuBao2_NgayHen != value))
+				{
+					this.OnInPhieuBao2_NgayHenChanging(value);
+					this.SendPropertyChanging();
+					this._InPhieuBao2_NgayHen = value;
+					this.SendPropertyChanged("InPhieuBao2_NgayHen");
+					this.OnInPhieuBao2_NgayHenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TBDongNuoc_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TBDongNuoc_Ngay
+		{
+			get
+			{
+				return this._TBDongNuoc_Ngay;
+			}
+			set
+			{
+				if ((this._TBDongNuoc_Ngay != value))
+				{
+					this.OnTBDongNuoc_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._TBDongNuoc_Ngay = value;
+					this.SendPropertyChanged("TBDongNuoc_Ngay");
+					this.OnTBDongNuoc_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TBDongNuoc_NgayHen", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TBDongNuoc_NgayHen
+		{
+			get
+			{
+				return this._TBDongNuoc_NgayHen;
+			}
+			set
+			{
+				if ((this._TBDongNuoc_NgayHen != value))
+				{
+					this.OnTBDongNuoc_NgayHenChanging(value);
+					this.SendPropertyChanging();
+					this._TBDongNuoc_NgayHen = value;
+					this.SendPropertyChanged("TBDongNuoc_NgayHen");
+					this.OnTBDongNuoc_NgayHenChanged();
 				}
 			}
 		}
@@ -2187,8 +2307,8 @@ namespace KTKS_DonKH.LinQ
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HOADON")]
-	public partial class HOADON : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_HoaDonCu")]
+	public partial class TT_HoaDonCu : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -2212,6 +2332,8 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<int> _TILESX;
 		
 		private System.Nullable<int> _TILEDV;
+		
+		private System.Nullable<int> _DinhMucHN;
 		
 		private System.Nullable<decimal> _DM;
 		
@@ -2397,6 +2519,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTILESXChanged();
     partial void OnTILEDVChanging(System.Nullable<int> value);
     partial void OnTILEDVChanged();
+    partial void OnDinhMucHNChanging(System.Nullable<int> value);
+    partial void OnDinhMucHNChanged();
     partial void OnDMChanging(System.Nullable<decimal> value);
     partial void OnDMChanged();
     partial void OnCODEChanging(string value);
@@ -2559,7 +2683,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnTBDongNuoc_NgayHenChanged();
     #endregion
 		
-		public HOADON()
+		public TT_HoaDonCu()
 		{
 			OnCreated();
 		}
@@ -2760,6 +2884,26 @@ namespace KTKS_DonKH.LinQ
 					this._TILEDV = value;
 					this.SendPropertyChanged("TILEDV");
 					this.OnTILEDVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMucHN", DbType="Int")]
+		public System.Nullable<int> DinhMucHN
+		{
+			get
+			{
+				return this._DinhMucHN;
+			}
+			set
+			{
+				if ((this._DinhMucHN != value))
+				{
+					this.OnDinhMucHNChanging(value);
+					this.SendPropertyChanging();
+					this._DinhMucHN = value;
+					this.SendPropertyChanged("DinhMucHN");
+					this.OnDinhMucHNChanged();
 				}
 			}
 		}
