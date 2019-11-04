@@ -672,6 +672,7 @@ namespace QLVanThuDen
                 oSheetTongHop.get_Range(c3b, c4b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 oSheetTongHop.get_Range(c3b, c4b).Font.Name = "Times New Roman";
                 oSheetTongHop.get_Range(c3b, c4b).Font.Size = 12;
+                c4b.NumberFormat = "dd/mm/yyyy";
                 // Căn giữ Số Đến
                 Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheetTongHop.Cells[rowStart, 3];
                 Microsoft.Office.Interop.Excel.Range c3c = (Microsoft.Office.Interop.Excel.Range)oSheetTongHop.Cells[rowEnd, 3];
@@ -943,6 +944,7 @@ namespace QLVanThuDen
                 oSheet.get_Range(c3b, c4b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 oSheet.get_Range(c3b, c4b).Font.Name = "Times New Roman";
                 oSheet.get_Range(c3b, c4b).Font.Size = 12;
+                c4b.NumberFormat = "dd/mm/yyyy";
                 // Căn giữ Số Đến
                 Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
                 Microsoft.Office.Interop.Excel.Range c3c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
