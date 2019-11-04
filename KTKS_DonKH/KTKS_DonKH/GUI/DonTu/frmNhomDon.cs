@@ -206,13 +206,37 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void dgvDieuChinh_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
-            _actionDieuChinh = "add";
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+                {
+                    _actionDieuChinh = "add";
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvDieuChinh_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvDieuChinh.CurrentRow.Cells["ID_DieuChinh"].Value.ToString() != "0")
-                _actionDieuChinh = "edit";
+                try
+                {
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                    {
+                        _actionDieuChinh = "edit";
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
         }
 
         private void dgvDieuChinh_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -239,13 +263,37 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void dgvKhieuNai_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
-            _actionKhieuNai = "add";
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+                {
+                    _actionKhieuNai = "add";
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvKhieuNai_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvKhieuNai.CurrentRow.Cells["ID_KhieuNai"].Value.ToString() != "0")
-                _actionKhieuNai = "edit";
+                try
+                {
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                    {
+                        _actionKhieuNai = "edit";
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
         }
 
         private void dgvKhieuNai_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -272,13 +320,37 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void dgvDHN_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
-            _actionDHN = "add";
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+                {
+                    _actionDHN = "add";
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvDHN_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvDHN.CurrentRow.Cells["ID_DHN"].Value.ToString() != "0")
-                _actionDHN = "edit";
+                try
+                {
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                    {
+                        _actionDHN = "edit";
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
         }
 
         private void dgvDHN_RowEnter(object sender, DataGridViewCellEventArgs e)

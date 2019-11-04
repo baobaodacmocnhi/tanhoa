@@ -74,10 +74,14 @@ namespace KTKS_DonKH.DAL
 
         public HOADON Get(string DanhBo,int Ky,int Nam)
         {
+            HOADON a = new HOADON();
             if (db.HOADONs.Any(item => item.DANHBA == DanhBo && item.KY==Ky && item.NAM==Nam))
                 return db.HOADONs.SingleOrDefault(item => item.DANHBA == DanhBo && item.KY == Ky && item.NAM == Nam);
             else
-                return null;
+                if (db.TT_HoaDonCus.Any(item => item.DANHBA == DanhBo && item.KY == Ky && item.NAM == Nam))
+                    return Copy(a, db.TT_HoaDonCus.SingleOrDefault(item => item.DANHBA == DanhBo && item.KY == Ky && item.NAM == Nam));
+                else
+                    return null;
         }
 
         public decimal GetTieuThuMoiNhat(string DanhBo)
@@ -118,6 +122,7 @@ namespace KTKS_DonKH.DAL
             a.DangNgan_Ton = b.DangNgan_Ton;
             a.DANHBA = b.DANHBA;
             a.DENNGAY = b.DENNGAY;
+            a.DinhMucHN = b.DinhMucHN;
             a.DM = b.DM;
             a.DOT = b.DOT;
             a.DOTCHIA = b.DOTCHIA;

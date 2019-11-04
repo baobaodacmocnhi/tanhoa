@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(639, 462);
             this.Name = "frmTinhTienNuoc";
             this.Text = "Tính Tiền Nước";
+            this.Load += new System.EventHandler(this.frmTinhTienNuoc_Load);
             this.ResumeLayout(false);
 
         }

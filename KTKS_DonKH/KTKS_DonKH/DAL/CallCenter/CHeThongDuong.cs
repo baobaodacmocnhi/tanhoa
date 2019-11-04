@@ -36,7 +36,7 @@ namespace KTKS_DonKH.DAL.CallCenter
         }
         public static ArrayList getPhuong()
         {
-            dbDocSoDataContext db = new dbDocSoDataContext();
+            dbDHNDataContext db = new dbDHNDataContext();
             var data = from phuong in db.PHUONGs select phuong;
             ArrayList list = new ArrayList();
             list.Add(new AddValueCombox("  Chọn Phường  ", ""));
@@ -48,7 +48,7 @@ namespace KTKS_DonKH.DAL.CallCenter
         }
         public static ArrayList getQuan()
         {
-            dbDocSoDataContext db = new dbDocSoDataContext();
+            dbDHNDataContext db = new dbDHNDataContext();
             var data = from quan in db.QUANs select quan;
             ArrayList list = new ArrayList();
             list.Add(new AddValueCombox("  Chọn Quận  ", ""));
@@ -175,25 +175,25 @@ namespace KTKS_DonKH.DAL.CallCenter
         }
         public static List<PHUONG> getListByQuan(int maquan)
         {
-            dbDocSoDataContext data = new dbDocSoDataContext();
+            dbDHNDataContext data = new dbDHNDataContext();
             var lisPhuong = from phuong in data.PHUONGs where phuong.MAQUAN == maquan select phuong;
             return lisPhuong.ToList();
         }
         public static List<PHUONG> getListPhuongAdmin()
         {
-            dbDocSoDataContext data = new dbDocSoDataContext();
+            dbDHNDataContext data = new dbDHNDataContext();
             var lisPhuong = from phuong in data.PHUONGs select phuong;
             return lisPhuong.ToList();
         }
         public static PHUONG finbyPhuong(int maquan, string maphuong)
         {
-            dbDocSoDataContext data = new dbDocSoDataContext();
+            dbDHNDataContext data = new dbDHNDataContext();
             var phuong = from p in data.PHUONGs where p.MAQUAN == maquan && p.MAPHUONG == maphuong select p;
             return phuong.SingleOrDefault();
         }
         public static PHUONG finbyTenPhuong(int maquan, string tenPhuong)
         {
-            dbDocSoDataContext data = new dbDocSoDataContext();
+            dbDHNDataContext data = new dbDHNDataContext();
             var phuong = from p in data.PHUONGs where p.MAQUAN == maquan && p.TENPHUONG == tenPhuong select p;
             return phuong.SingleOrDefault();
         }
@@ -201,7 +201,7 @@ namespace KTKS_DonKH.DAL.CallCenter
         public static ArrayList getListPhuong()
         {
             ArrayList list = new ArrayList();
-            dbDocSoDataContext data = new dbDocSoDataContext();
+            dbDHNDataContext data = new dbDHNDataContext();
             var lisPhuong = from phuong in data.PHUONGs select phuong;
             foreach (var a in lisPhuong)
             {
@@ -213,7 +213,7 @@ namespace KTKS_DonKH.DAL.CallCenter
         public static ArrayList getListPhuong(int quan)
         {
             ArrayList list = new ArrayList();
-            dbDocSoDataContext data = new dbDocSoDataContext();
+            dbDHNDataContext data = new dbDHNDataContext();
             var lisPhuong = from phuong in data.PHUONGs where phuong.MAQUAN == quan select phuong;
             foreach (var a in lisPhuong)
             {
@@ -225,7 +225,7 @@ namespace KTKS_DonKH.DAL.CallCenter
         public static ArrayList getListQUAN()
         {
             ArrayList list = new ArrayList();
-            dbDocSoDataContext data = new dbDocSoDataContext();
+            dbDHNDataContext data = new dbDHNDataContext();
             var lisPhuong = from phuong in data.QUANs select phuong;
             foreach (var a in lisPhuong)
             {
@@ -236,39 +236,39 @@ namespace KTKS_DonKH.DAL.CallCenter
 
         public static List<PHUONG> ListPhuongByTenPhuong(string tenPhuong)
         {
-            dbDocSoDataContext data = new dbDocSoDataContext();
+            dbDHNDataContext data = new dbDHNDataContext();
             var lisPhuong = from phuong in data.PHUONGs where phuong.TENPHUONG == tenPhuong select phuong;
             return lisPhuong.ToList();
         }
         public static List<QUAN> getListQuan()
         {
-            dbDocSoDataContext data = new dbDocSoDataContext();
+            dbDHNDataContext data = new dbDHNDataContext();
             var quan = from p in data.QUANs select p;
             return quan.ToList();
         }
         public static QUAN finByMaQuan(int maquan)
         {
-            dbDocSoDataContext data = new dbDocSoDataContext();
+            dbDHNDataContext data = new dbDHNDataContext();
             var quan = from q in data.QUANs where q.MAQUAN == maquan select q;
             return quan.SingleOrDefault();
         }
         public static QUAN finbyTenQuan(string tenquan)
         {
-            dbDocSoDataContext data = new dbDocSoDataContext();
+            dbDHNDataContext data = new dbDHNDataContext();
             var quan = from q in data.QUANs where q.TENQUAN == tenquan select q;
             return quan.SingleOrDefault();
         }
 
         public static List<QUAN> ListQuan()
         {
-            dbDocSoDataContext db = new dbDocSoDataContext();
+            dbDHNDataContext db = new dbDHNDataContext();
             var data = from phuong in db.QUANs select phuong;
 
             return data.ToList(); ;
         }
         public static List<PHUONG> ListPhuong(int quan)
         {
-            dbDocSoDataContext db = new dbDocSoDataContext();
+            dbDHNDataContext db = new dbDHNDataContext();
             var data = from phuong in db.PHUONGs where phuong.MAQUAN == quan select phuong;
 
             return data.ToList(); ;

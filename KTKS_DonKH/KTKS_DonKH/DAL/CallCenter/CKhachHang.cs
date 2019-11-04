@@ -11,7 +11,7 @@ namespace KTKS_DonKH.DAL.CallCenter
 {
     class CKhachHang  
     {
-        static dbDocSoDataContext db = new dbDocSoDataContext();
+        static dbDHNDataContext db = new dbDHNDataContext();
        
         public static DataTable getDataTable(string sql)
         {

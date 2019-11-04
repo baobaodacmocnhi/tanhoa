@@ -753,6 +753,7 @@
     <Compile Include="DAL\CallCenter\DateToString.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CCHDB_NoiDungXuLy.cs" />
     <Compile Include="DAL\CDHN.cs" />
+    <Compile Include="DAL\CDocSo.cs" />
     <Compile Include="DAL\CGanMoi.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDataTransfer.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CKhuCongNghiep.cs" />
@@ -1377,19 +1378,19 @@
       <DependentUpon>dbGanMoi.dbml</DependentUpon>
     </Compile>
     <Compile Include="LinQ\dbHandHeld.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>dbHandHeld.dbml</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="LinQ\dbThuTien.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dbThuTien.dbml</DependentUpon>
     </Compile>
-    <Compile Include="LinQ\dbDocSo.designer.cs">
+    <Compile Include="LinQ\dbDHN.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbDocSo.dbml</DependentUpon>
+      <DependentUpon>dbDHN.dbml</DependentUpon>
     </Compile>
     <Compile Include="LinQ\dbKinhDoanh.designer.cs">
       <AutoGen>True</AutoGen>
@@ -1418,18 +1419,21 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="LinQ\dbHandHeld.dbml">
+      <SubType>Designer</SubType>
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbHandHeld.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+    </None>
+    <None Include="LinQ\dbHandHeld.dbml.layout">
+      <DependentUpon>dbHandHeld.dbml</DependentUpon>
     </None>
     <None Include="LinQ\dbThuTien.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbThuTien.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="LinQ\dbDocSo.dbml">
+    <None Include="LinQ\dbDHN.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbDocSo.designer.cs</LastGenOutput>
+      <LastGenOutput>dbDHN.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="LinQ\dbKinhDoanh.dbml.layout">
@@ -2052,8 +2056,8 @@
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmDSKTXM.resx">
       <DependentUpon>frmDSKTXM.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="LinQ\dbDocSo.dbml.layout">
-      <DependentUpon>dbDocSo.dbml</DependentUpon>
+    <None Include="LinQ\dbDHN.dbml.layout">
+      <DependentUpon>dbDHN.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmKTXM.resx">
       <DependentUpon>frmKTXM.cs</DependentUpon>
@@ -2111,9 +2115,6 @@
     </EmbeddedResource>
     <None Include="LinQ\dbThuTien.dbml.layout">
       <DependentUpon>dbThuTien.dbml</DependentUpon>
-    </None>
-    <None Include="LinQ\dbHandHeld.dbml.layout">
-      <DependentUpon>dbHandHeld.dbml</DependentUpon>
     </None>
     <None Include="LinQ\dbGanMoi.dbml.layout">
       <DependentUpon>dbGanMoi.dbml</DependentUpon>

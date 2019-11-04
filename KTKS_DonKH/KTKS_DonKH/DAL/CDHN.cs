@@ -11,7 +11,7 @@ namespace KTKS_DonKH.DAL
 {
     class CDHN
     {
-        private dbDocSoDataContext db = new dbDocSoDataContext();
+        private dbDHNDataContext db = new dbDHNDataContext();
 
         protected static string _connectionString;
         protected SqlConnection connection;
@@ -34,7 +34,7 @@ namespace KTKS_DonKH.DAL
 
         public void Refresh()
         {
-            db = new dbDocSoDataContext();
+            db = new dbDHNDataContext();
         }
 
         public void Connect()

@@ -23,7 +23,7 @@ namespace KTKS_DonKH.LinQ
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="CAPNUOCTANHOA")]
-	public partial class dbDocSoDataContext : System.Data.Linq.DataContext
+	public partial class dbDHNDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -47,31 +47,31 @@ namespace KTKS_DonKH.LinQ
     partial void DeleteTB_GHICHU(TB_GHICHU instance);
     #endregion
 		
-		public dbDocSoDataContext() : 
+		public dbDHNDataContext() : 
 				base(global::KTKS_DonKH.Properties.Settings.Default.CAPNUOCTANHOAConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public dbDocSoDataContext(string connection) : 
+		public dbDHNDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public dbDocSoDataContext(System.Data.IDbConnection connection) : 
+		public dbDHNDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public dbDocSoDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public dbDHNDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public dbDocSoDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public dbDHNDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
