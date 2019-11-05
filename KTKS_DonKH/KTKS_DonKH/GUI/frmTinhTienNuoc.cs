@@ -21,7 +21,7 @@ namespace KTKS_DonKH.GUI
 
         private void frmTinhTienNuoc_Load(object sender, EventArgs e)
         {
-            _cGiaNuoc.TinhTienNuoc_Tang_Ky122019("",20,64,137);
+            _cGiaNuoc.TinhTienNuoc_Tang_Ky122019("",16,44,120);
         }
     }
 }
