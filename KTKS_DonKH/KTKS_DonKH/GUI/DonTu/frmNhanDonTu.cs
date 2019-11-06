@@ -403,7 +403,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         //        //MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //        return;
                         //}
-                        entity.VanPhong = chkVanPhong.Checked;
+                        
                         if (txtSoNK.Text.Trim() != "")
                         {
                             entity.SoNK = int.Parse(txtSoNK.Text.Trim());
@@ -574,6 +574,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     if (chkCT_GCNDTDHN.Checked)
                         entity.CT_GCNDTDHN = true;
 
+                    entity.VanPhong = chkVanPhong.Checked;
                     entity.MaPhong = CTaiKhoan.MaPhong;
                     ///
                     if (_cDonTu.Them(entity))

@@ -91,6 +91,10 @@
             this.dateDongTien = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
             this.dgvThanhToanTruyThuTienNuoc = new System.Windows.Forms.DataGridView();
+            this.ID_ThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayDong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DaThanhToan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtSoKy = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -123,6 +127,10 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.dgvThuMoi = new System.Windows.Forms.DataGridView();
+            this.ID_ThuMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkXepDon = new System.Windows.Forms.CheckBox();
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -138,14 +146,6 @@
             this.btnChonFile = new System.Windows.Forms.Button();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
-            this.ID_ThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayDong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DaThanhToan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ID_ThuMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTruyThuTienNuoc)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -639,7 +639,7 @@
             this.groupBox2.Controls.Add(this.dgvThanhToanTruyThuTienNuoc);
             this.groupBox2.Location = new System.Drawing.Point(488, 17);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(360, 223);
+            this.groupBox2.Size = new System.Drawing.Size(355, 223);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kế Hoạch Đóng Tiền";
@@ -726,6 +726,31 @@
             this.dgvThanhToanTruyThuTienNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvThanhToanTruyThuTienNuoc_CellFormatting);
             this.dgvThanhToanTruyThuTienNuoc.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvThanhToanTruyThuTienNuoc_CellValueChanged);
             this.dgvThanhToanTruyThuTienNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvThanhToanTruyThuTienNuoc_RowPostPaint);
+            // 
+            // ID_ThanhToan
+            // 
+            this.ID_ThanhToan.DataPropertyName = "ID";
+            this.ID_ThanhToan.HeaderText = "ID";
+            this.ID_ThanhToan.Name = "ID_ThanhToan";
+            this.ID_ThanhToan.Visible = false;
+            // 
+            // NgayDong
+            // 
+            this.NgayDong.DataPropertyName = "NgayDong";
+            this.NgayDong.HeaderText = "Ngày Đóng";
+            this.NgayDong.Name = "NgayDong";
+            // 
+            // SoTien
+            // 
+            this.SoTien.DataPropertyName = "SoTien";
+            this.SoTien.HeaderText = "Số Tiền";
+            this.SoTien.Name = "SoTien";
+            // 
+            // DaThanhToan
+            // 
+            this.DaThanhToan.DataPropertyName = "DaThanhToan";
+            this.DaThanhToan.HeaderText = "Thanh Toán";
+            this.DaThanhToan.Name = "DaThanhToan";
             // 
             // btnThem
             // 
@@ -920,9 +945,9 @@
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.label22);
             this.groupBox3.Controls.Add(this.dgvThuMoi);
-            this.groupBox3.Location = new System.Drawing.Point(859, 17);
+            this.groupBox3.Location = new System.Drawing.Point(849, 17);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(350, 223);
+            this.groupBox3.Size = new System.Drawing.Size(345, 223);
             this.groupBox3.TabIndex = 50;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thư Mời";
@@ -1015,6 +1040,34 @@
             this.dgvThuMoi.TabIndex = 29;
             this.dgvThuMoi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvThuMoi_CellContentClick);
             // 
+            // ID_ThuMoi
+            // 
+            this.ID_ThuMoi.DataPropertyName = "ID";
+            this.ID_ThuMoi.HeaderText = "ID";
+            this.ID_ThuMoi.Name = "ID_ThuMoi";
+            this.ID_ThuMoi.Visible = false;
+            // 
+            // Lan
+            // 
+            this.Lan.DataPropertyName = "STT";
+            this.Lan.HeaderText = "Lần";
+            this.Lan.Name = "Lan";
+            this.Lan.Width = 50;
+            // 
+            // VaoLuc
+            // 
+            this.VaoLuc.DataPropertyName = "VaoLuc";
+            this.VaoLuc.HeaderText = "Vào Lúc";
+            this.VaoLuc.Name = "VaoLuc";
+            this.VaoLuc.Width = 120;
+            // 
+            // VeViec
+            // 
+            this.VeViec.DataPropertyName = "VeViec";
+            this.VeViec.HeaderText = "Về Việc";
+            this.VeViec.Name = "VeViec";
+            this.VeViec.Width = 120;
+            // 
             // chkXepDon
             // 
             this.chkXepDon.AutoSize = true;
@@ -1068,7 +1121,7 @@
             this.groupBox4.Controls.Add(this.label32);
             this.groupBox4.Controls.Add(this.dgvHinh);
             this.groupBox4.Controls.Add(this.btnChonFile);
-            this.groupBox4.Location = new System.Drawing.Point(1215, 12);
+            this.groupBox4.Location = new System.Drawing.Point(1200, 17);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(274, 135);
             this.groupBox4.TabIndex = 139;
@@ -1166,66 +1219,13 @@
             this.xoaFile_dgvHinh.Text = "Xóa";
             this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
             // 
-            // ID_ThanhToan
-            // 
-            this.ID_ThanhToan.DataPropertyName = "ID";
-            this.ID_ThanhToan.HeaderText = "ID";
-            this.ID_ThanhToan.Name = "ID_ThanhToan";
-            this.ID_ThanhToan.Visible = false;
-            // 
-            // NgayDong
-            // 
-            this.NgayDong.DataPropertyName = "NgayDong";
-            this.NgayDong.HeaderText = "Ngày Đóng";
-            this.NgayDong.Name = "NgayDong";
-            // 
-            // SoTien
-            // 
-            this.SoTien.DataPropertyName = "SoTien";
-            this.SoTien.HeaderText = "Số Tiền";
-            this.SoTien.Name = "SoTien";
-            // 
-            // DaThanhToan
-            // 
-            this.DaThanhToan.DataPropertyName = "DaThanhToan";
-            this.DaThanhToan.HeaderText = "Thanh Toán";
-            this.DaThanhToan.Name = "DaThanhToan";
-            // 
-            // ID_ThuMoi
-            // 
-            this.ID_ThuMoi.DataPropertyName = "ID";
-            this.ID_ThuMoi.HeaderText = "ID";
-            this.ID_ThuMoi.Name = "ID_ThuMoi";
-            this.ID_ThuMoi.Visible = false;
-            // 
-            // Lan
-            // 
-            this.Lan.DataPropertyName = "STT";
-            this.Lan.HeaderText = "Lần";
-            this.Lan.Name = "Lan";
-            this.Lan.Width = 50;
-            // 
-            // VaoLuc
-            // 
-            this.VaoLuc.DataPropertyName = "VaoLuc";
-            this.VaoLuc.HeaderText = "Vào Lúc";
-            this.VaoLuc.Name = "VaoLuc";
-            this.VaoLuc.Width = 120;
-            // 
-            // VeViec
-            // 
-            this.VeViec.DataPropertyName = "VeViec";
-            this.VeViec.HeaderText = "Về Việc";
-            this.VeViec.Name = "VeViec";
-            this.VeViec.Width = 120;
-            // 
             // frmTruyThuTienNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1523, 602);
+            this.ClientSize = new System.Drawing.Size(1483, 590);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.btnInBia);
