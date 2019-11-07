@@ -20,7 +20,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
     public partial class frmNhapNhieuGB : Form
     {
         string _mnu = "mnuDCBD";
-        CDonTu _cDonTu=new CDonTu();
+        CDonTu _cDonTu = new CDonTu();
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
@@ -59,6 +59,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
                             dgvDanhBo["MSThue", e.RowIndex].Value = hoadon.MST;
                             dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
+                            dgvDanhBo["DinhMucHN", e.RowIndex].Value = hoadon.DinhMucHN;
                             dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
                             dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.ToString();
                             dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
@@ -85,13 +86,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             HOADON hoadon = _cThuTien.GetMoiNhat(dontxl.DanhBo);
                             if (hoadon != null)
-                            {  
+                            {
                                 dgvDanhBo["DanhBo", e.RowIndex].Value = hoadon.DANHBA;
                                 dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
                                 dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
                                 dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
                                 dgvDanhBo["MSThue", e.RowIndex].Value = hoadon.MST;
                                 dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
+                                dgvDanhBo["DinhMucHN", e.RowIndex].Value = hoadon.DinhMucHN;
                                 dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
                                 dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.ToString();
                                 dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
@@ -124,6 +126,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
                                     dgvDanhBo["MSThue", e.RowIndex].Value = hoadon.MST;
                                     dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
+                                    dgvDanhBo["DinhMucHN", e.RowIndex].Value = hoadon.DinhMucHN;
                                     dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
                                     dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.ToString();
                                     dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
@@ -166,6 +169,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
                                     dgvDanhBo["MSThue", e.RowIndex].Value = hoadon.MST;
                                     dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
+                                    dgvDanhBo["DinhMucHN", e.RowIndex].Value = hoadon.DinhMucHN;
                                     dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
                                     dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.ToString();
                                     dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
@@ -189,9 +193,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (dgvDanhBo["GBMoi", e.RowIndex].Value.ToString() == dgvDanhBo["GiaBieu", e.RowIndex].Value.ToString())
                     dgvDanhBo.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
-
             }
 
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DMHNMoi" && dgvDanhBo["DMHNMoi", e.RowIndex].Value != null)
+            {
+                if (dgvDanhBo["DMHNMoi", e.RowIndex].Value.ToString() == dgvDanhBo["DinhMucHN", e.RowIndex].Value.ToString())
+                    dgvDanhBo.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+            }
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DMDCMoi" && dgvDanhBo["DMDCMoi", e.RowIndex].Value != null)
+            {
+                if (dgvDanhBo["DMDCMoi", e.RowIndex].Value.ToString() == dgvDanhBo["DinhMuc", e.RowIndex].Value.ToString())
+                    dgvDanhBo.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+            }
             //if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DanhBo" && dgvDanhBo["DanhBo", e.RowIndex].Value != null)
             //{
             //    for (int i = 0; i < dgvDanhBo.Rows.Count - 2; i++)
@@ -304,21 +317,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     foreach (DataGridViewRow item in dgvDanhBo.Rows)
                         if (item.Cells["MaDon"].Value != null && item.Cells["DanhBo"].Value != null && item.Cells["GBMoi"].Value != null)
                         {
-                            DonTu_ChiTiet dontu_ChiTiet =null;
+                            DonTu_ChiTiet dontu_ChiTiet = null;
                             DCBD_ChiTietBienDong ctdcbd = new DCBD_ChiTietBienDong();
 
                             //Đơn Tổ Khách Hàng
                             if (item.Cells["MaDon"].Value.ToString().ToUpper().Contains("TKH"))
+                            {
+                                if (_cDCBD.CheckExist("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", ""))) == false)
                                 {
-                                    if (_cDCBD.CheckExist("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", ""))) == false)
-                                    {
-                                        DCBD dcbd = new DCBD();
-                                        dcbd.MaDon = decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", ""));
-                                        //dcbd.MaDonMoi = _dontkh.MaDonMoi;
-                                        _cDCBD.Them(dcbd);
-                                    }
-                                    ctdcbd.MaDCBD = _cDCBD.Get("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", ""))).MaDCBD;
+                                    DCBD dcbd = new DCBD();
+                                    dcbd.MaDon = decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", ""));
+                                    //dcbd.MaDonMoi = _dontkh.MaDonMoi;
+                                    _cDCBD.Them(dcbd);
                                 }
+                                ctdcbd.MaDCBD = _cDCBD.Get("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", ""))).MaDCBD;
+                            }
                             //Đơn Tổ Xử Lý
                             if (item.Cells["MaDon"].Value.ToString().ToUpper().Contains("TXL"))
                             {
@@ -347,7 +360,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 else
                                 {
                                     string MaDon = item.Cells["MaDon"].Value.ToString();
-                                    
+
                                     if (MaDon.Contains(".") == true)
                                     {
                                         string[] MaDons = MaDon.Split('.');
@@ -400,8 +413,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             if (item.Cells["GBMoi"].Value != null)
                             {
-                                ctdcbd.ThongTin = "GB. ";
+                                ctdcbd.ThongTin = "GB";
                                 ctdcbd.GiaBieu_BD = int.Parse(item.Cells["GBMoi"].Value.ToString());
+                            }
+
+                            if (item.Cells["DMHNMoi"].Value != null || item.Cells["DMDCMoi"].Value != null)
+                            {
+                                if (string.IsNullOrEmpty(ctdcbd.ThongTin) == true)
+                                    ctdcbd.ThongTin += "ĐM";
+                                else
+                                    ctdcbd.ThongTin += ". ĐM";
+                                if (item.Cells["DMHNMoi"].Value != null)
+                                    ctdcbd.DinhMucHN_BD = int.Parse(item.Cells["DMHNMoi"].Value.ToString());
+                                if (item.Cells["DMDCMoi"].Value != null)
+                                    ctdcbd.DinhMuc_BD = int.Parse(item.Cells["DMDCMoi"].Value.ToString());
                             }
 
                             if (item.Cells["HieuLucKy"].Value != null)

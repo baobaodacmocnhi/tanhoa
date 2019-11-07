@@ -30,8 +30,8 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                 else
                     en.ID = 1;
                 //en.ID = int.Parse("1" + DateTime.Now.ToString("yy"));
-                en.CreateDate = DateTime.Now;
                 en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
                 db.ToTrinhs.InsertOnSubmit(en);
                 db.SubmitChanges();
                 return true;
@@ -47,8 +47,8 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
         {
             try
             {
-                en.ModifyDate = DateTime.Now;
                 en.ModifyBy = CTaiKhoan.MaUser;
+                en.ModifyDate = DateTime.Now;
                 db.SubmitChanges();
                 return true;
             }

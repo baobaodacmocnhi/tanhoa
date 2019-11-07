@@ -174,7 +174,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 24:///SH + SX
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILESH == null && hoadon.TILESX == null)
+                            if ((hoadon.TILESH == null && hoadon.TILESX == null)||(hoadon.TILESH == 0 && hoadon.TILESX == 0))
                             {
                                 if (TieuThu <= DinhMuc)
                                 {
@@ -246,7 +246,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 25:///SH + DV
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILESH == null && hoadon.TILEDV == null)
+                            if ((hoadon.TILESH == null && hoadon.TILEDV == null)||(hoadon.TILESH == 0 && hoadon.TILEDV == 0))
                             {
                                 if (TieuThu <= DinhMuc)
                                 {
@@ -318,7 +318,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 26:///SH + SX + DV
                         if (hoadon != null)
                             ///Nếu chỉ có tỉ lệ SX + DV mà không có tỉ lệ SH, không xét Định Mức
-                            if (hoadon.TILESX != null && hoadon.TILEDV != null && hoadon.TILESH == null)
+                            if ((hoadon.TILESX != null && hoadon.TILEDV != null && hoadon.TILESH == null)||(hoadon.TILESX != 0 && hoadon.TILEDV != 0 && hoadon.TILESH == 0))
                             {
                                 int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
                                 int _DV = TieuThu - _SX;
@@ -391,7 +391,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 38:///SH + HCSN
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILESH == null && hoadon.TILEHCSN == null)
+                            if ((hoadon.TILESH == null && hoadon.TILEHCSN == null)||(hoadon.TILESH == 0&& hoadon.TILEHCSN ==0))
                             {
                                 if (TieuThu <= DinhMuc)
                                 {
@@ -573,7 +573,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 34:///HCSN + SX
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILEHCSN == null && hoadon.TILESX == null)
+                            if ((hoadon.TILEHCSN == null && hoadon.TILESX == null)||(hoadon.TILEHCSN == 0 && hoadon.TILESX == 0))
                             {
                                 TongTien = TieuThu * lstGiaNuoc[3].DonGia.Value;
                                 _chiTiet = TieuThu + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[3].DonGia.Value);
@@ -595,7 +595,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 35:///HCSN + DV
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILEHCSN == null && hoadon.TILESX == null)
+                            if ((hoadon.TILEHCSN == null && hoadon.TILESX == null)||(hoadon.TILEHCSN == 0 && hoadon.TILESX == 0))
                             {
                                 TongTien = TieuThu * lstGiaNuoc[5].DonGia.Value;
                                 _chiTiet = TieuThu + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[5].DonGia.Value);
@@ -998,7 +998,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 24:///SH + SX
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILESH == null && hoadon.TILESX == null)
+                            if ((hoadon.TILESH == null && hoadon.TILESX == null)||(hoadon.TILESH == 0 && hoadon.TILESX == 0))
                             {
                                 if (TieuThu <= DinhMuc)
                                 {
@@ -1065,7 +1065,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 25:///SH + DV
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILESH == null && hoadon.TILEDV == null)
+                            if ((hoadon.TILESH == null && hoadon.TILEDV == null)||(hoadon.TILESH == 0 && hoadon.TILEDV == 0))
                             {
                                 if (TieuThu <= DinhMuc)
                                 {
@@ -1134,7 +1134,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 26:///SH + SX + DV
                         if (hoadon != null)
                             ///Nếu chỉ có tỉ lệ SX + DV mà không có tỉ lệ SH, không xét Định Mức
-                            if (hoadon.TILESX != null && hoadon.TILEDV != null && hoadon.TILESH == null)
+                            if ((hoadon.TILESX != null && hoadon.TILEDV != null && hoadon.TILESH == null)||(hoadon.TILESX != 0 && hoadon.TILEDV != 0 && hoadon.TILESH == 0))
                             {
                                 int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
                                 int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
@@ -1202,7 +1202,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 38:///SH + HCSN
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILESH == null && hoadon.TILEHCSN == null)
+                            if ((hoadon.TILESH == null && hoadon.TILEHCSN == null)||(hoadon.TILESH == 0&& hoadon.TILEHCSN ==0))
                             {
                                 if (TieuThu <= DinhMuc)
                                 {
@@ -1375,7 +1375,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 34:///HCSN + SX
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILEHCSN == null && hoadon.TILESX == null)
+                            if ((hoadon.TILEHCSN == null && hoadon.TILESX == null)||(hoadon.TILEHCSN == 0 && hoadon.TILESX == 0))
                             {
                                 TongTien = TieuThu * lstGiaNuoc[3].DonGia.Value
                                             + TieuThu_GiaDieuChinh2 * GiaTien_GiaDieuChinh2;
@@ -1396,7 +1396,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 35:///HCSN + DV
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILEHCSN == null && hoadon.TILESX == null)
+                            if ((hoadon.TILEHCSN == null && hoadon.TILESX == null)||(hoadon.TILEHCSN == 0 && hoadon.TILESX == 0))
                             {
                                 TongTien = TieuThu * lstGiaNuoc[5].DonGia.Value
                                             + TieuThu_GiaDieuChinh2 * GiaTien_GiaDieuChinh2;
@@ -2552,7 +2552,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 24:///SH + SX
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILESH == null && hoadon.TILESX == null)
+                            if (((hoadon.TILESH == null && hoadon.TILESX == null)||(hoadon.TILESH == 0 && hoadon.TILESX == 0)) || (hoadon.TILESH == 0 && hoadon.TILESX == 0))
                             {
                                 if (TieuThu <= DinhMucHN)
                                 {
@@ -2643,7 +2643,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 25:///SH + DV
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILESH == null && hoadon.TILEDV == null)
+                            if (((hoadon.TILESH == null && hoadon.TILEDV == null)||(hoadon.TILESH == 0 && hoadon.TILEDV == 0)) || (hoadon.TILESH == 0 && hoadon.TILEDV == 0))
                             {
                                 if (TieuThu <= DinhMucHN)
                                 {
@@ -2734,7 +2734,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 26:///SH + SX + DV
                         if (hoadon != null)
                             ///Nếu chỉ có tỉ lệ SX + DV mà không có tỉ lệ SH, không xét Định Mức
-                            if (hoadon.TILESX != null && hoadon.TILEDV != null && hoadon.TILESH == null)
+                            if ((hoadon.TILESX != null && hoadon.TILEDV != null && hoadon.TILESH == null)||(hoadon.TILESX != 0 && hoadon.TILEDV != 0 && hoadon.TILESH == 0))
                             {
                                 int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
                                 int _DV = TieuThu - _SX;
@@ -2817,7 +2817,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 38:///SH + HCSN
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILESH == null && hoadon.TILEHCSN == null)
+                            if ((hoadon.TILESH == null && hoadon.TILEHCSN == null)||(hoadon.TILESH == 0&& hoadon.TILEHCSN ==0))
                             {
                                 if (TieuThu <= DinhMucHN)
                                 {
@@ -3028,7 +3028,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 34:///HCSN + SX
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILEHCSN == null && hoadon.TILESX == null)
+                            if ((hoadon.TILEHCSN == null && hoadon.TILESX == null)||(hoadon.TILEHCSN == 0 && hoadon.TILESX == 0))
                             {
                                 TongTien = TieuThu * lstGiaNuoc[3];
                                 _chiTiet = TieuThu + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[3]);
@@ -3050,7 +3050,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 35:///HCSN + DV
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILEHCSN == null && hoadon.TILESX == null)
+                            if ((hoadon.TILEHCSN == null && hoadon.TILESX == null)||(hoadon.TILEHCSN == 0 && hoadon.TILESX == 0))
                             {
                                 TongTien = TieuThu * lstGiaNuoc[5];
                                 _chiTiet = TieuThu + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[5]);
@@ -3522,7 +3522,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 24:///SH + SX
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILESH == null && hoadon.TILESX == null)
+                            if ((hoadon.TILESH == null && hoadon.TILESX == null)||(hoadon.TILESH == 0 && hoadon.TILESX == 0))
                             {
                                 if (TieuThu <= DinhMucHN)
                                 {
@@ -3624,7 +3624,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 25:///SH + DV
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILESH == null && hoadon.TILEDV == null)
+                            if ((hoadon.TILESH == null && hoadon.TILEDV == null)||(hoadon.TILESH == 0 && hoadon.TILEDV == 0))
                             {
                                 if (TieuThu <= DinhMucHN)
                                 {
@@ -3736,7 +3736,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 26:///SH + SX + DV
                         if (hoadon != null)
                             ///Nếu chỉ có tỉ lệ SX + DV mà không có tỉ lệ SH, không xét Định Mức
-                            if (hoadon.TILESX != null && hoadon.TILEDV != null && hoadon.TILESH == null)
+                            if ((hoadon.TILESX != null && hoadon.TILEDV != null && hoadon.TILESH == null)||(hoadon.TILESX != 0 && hoadon.TILEDV != 0 && hoadon.TILESH == 0))
                             {
                                 int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
                                 int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
@@ -3833,7 +3833,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 38:///SH + HCSN
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILESH == null && hoadon.TILEHCSN == null)
+                            if ((hoadon.TILESH == null && hoadon.TILEHCSN == null)||(hoadon.TILESH == 0&& hoadon.TILEHCSN ==0))
                             {
                                 if (TieuThu <= DinhMucHN)
                                 {
@@ -4078,7 +4078,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 34:///HCSN + SX
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILEHCSN == null && hoadon.TILESX == null)
+                            if ((hoadon.TILEHCSN == null && hoadon.TILESX == null)||(hoadon.TILEHCSN == 0 && hoadon.TILESX == 0))
                             {
                                 TongTien = TieuThu * lstGiaNuoc[3]
                                             + TieuThu_GiaDieuChinh2 * GiaTien_GiaDieuChinh2;
@@ -4099,7 +4099,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 35:///HCSN + DV
                         if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (hoadon.TILEHCSN == null && hoadon.TILESX == null)
+                            if ((hoadon.TILEHCSN == null && hoadon.TILESX == null)||(hoadon.TILEHCSN == 0 && hoadon.TILESX == 0))
                             {
                                 TongTien = TieuThu * lstGiaNuoc[5]
                                             + TieuThu_GiaDieuChinh2 * GiaTien_GiaDieuChinh2;
@@ -5364,6 +5364,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         List<int> lst2021 = new List<int> { 6300, 12100, 13600, 11400, 12300, 20100, 6000 };
         List<int> lst2022 = new List<int> { 6700, 12900, 14400, 12100, 13000, 21300, 6300 };
 
+        public int TinhTienNuoc(int GiaBieu, int DinhMucHN, int DinhMucDC,int TieuThu, out string ChiTiet)
+        {
+            int TieuThuMoi = 0;
+            return TinhTienNuoc(false, 0, lst2019, "", 12, 2019, GiaBieu, DinhMucHN, DinhMucDC, TieuThu, out ChiTiet, out TieuThuMoi);
+        }
+
         public int TruyThu(string DanhBo, int Ky, int Nam, int GiaBieu, int DinhMuc, int TieuThu, out string ChiTiet)
         {
             try
@@ -5506,7 +5512,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            case 24:///SH + SX
         //                if (hoadon != null)
         //                    ///Nếu không có tỉ lệ
-        //                    if (hoadon.TILESH == null && hoadon.TILESX == null)
+        //                    if ((hoadon.TILESH == null && hoadon.TILESX == null)||(hoadon.TILESH == 0 && hoadon.TILESX == 0))
         //                    {
         //                        if (TieuThu <= DinhMuc)
         //                        {
@@ -5567,7 +5573,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            case 25:///SH + DV
         //                if (hoadon != null)
         //                    ///Nếu không có tỉ lệ
-        //                    if (hoadon.TILESH == null && hoadon.TILEDV == null)
+        //                    if ((hoadon.TILESH == null && hoadon.TILEDV == null)||(hoadon.TILESH == 0 && hoadon.TILEDV == 0))
         //                    {
         //                        if (TieuThu <= DinhMuc)
         //                        {
@@ -5628,7 +5634,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            case 26:///SH + SX + DV
         //                if (hoadon != null)
         //                    ///Nếu chỉ có tỉ lệ SX + DV mà không có tỉ lệ SH, không xét Định Mức
-        //                    if (hoadon.TILESX != null && hoadon.TILEDV != null && hoadon.TILESH == null)
+        //                    if ((hoadon.TILESX != null && hoadon.TILEDV != null && hoadon.TILESH == null)||(hoadon.TILESX != 0 && hoadon.TILEDV != 0 && hoadon.TILESH == 0))
         //                    {
         //                        int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
         //                        int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
@@ -5692,7 +5698,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            case 38:///SH + HCSN
         //                if (hoadon != null)
         //                    ///Nếu không có tỉ lệ
-        //                    if (hoadon.TILESH == null && hoadon.TILEHCSN == null)
+        //                    if ((hoadon.TILESH == null && hoadon.TILEHCSN == null)||(hoadon.TILESH == 0&& hoadon.TILEHCSN ==0))
         //                    {
         //                        if (TieuThu <= DinhMuc)
         //                        {
@@ -5853,7 +5859,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            case 34:///HCSN + SX
         //                if (hoadon != null)
         //                    ///Nếu không có tỉ lệ
-        //                    if (hoadon.TILEHCSN == null && hoadon.TILESX == null)
+        //                    if ((hoadon.TILEHCSN == null && hoadon.TILESX == null)||(hoadon.TILEHCSN == 0 && hoadon.TILESX == 0))
         //                    {
         //                        _TongTien = TieuThu * lstGiaNuoc[3];
         //                        _chiTiet = TieuThu + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[3]);
@@ -5873,7 +5879,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         //                if (hoadon != null)
         //                    ///Nếu không có tỉ lệ
-        //                    if (hoadon.TILEHCSN == null && hoadon.TILESX == null)
+        //                    if ((hoadon.TILEHCSN == null && hoadon.TILESX == null)||(hoadon.TILEHCSN == 0 && hoadon.TILESX == 0))
         //                    {
         //                        _TongTien = TieuThu * lstGiaNuoc[5];
         //                        _chiTiet = TieuThu + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[5]);
@@ -6328,7 +6334,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            case 24:///SH + SX
         //                if (hoadon != null)
         //                    ///Nếu không có tỉ lệ
-        //                    if (hoadon.TILESH == null && hoadon.TILESX == null)
+        //                    if ((hoadon.TILESH == null && hoadon.TILESX == null)||(hoadon.TILESH == 0 && hoadon.TILESX == 0))
         //                    {
         //                        if (TieuThu <= DinhMucHN)
         //                        {
@@ -6416,7 +6422,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            case 25:///SH + DV
         //                if (hoadon != null)
         //                    ///Nếu không có tỉ lệ
-        //                    if (hoadon.TILESH == null && hoadon.TILEDV == null)
+        //                    if ((hoadon.TILESH == null && hoadon.TILEDV == null)||(hoadon.TILESH == 0 && hoadon.TILEDV == 0))
         //                    {
         //                        if (TieuThu <= DinhMucHN)
         //                        {
@@ -6504,7 +6510,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            case 26:///SH + SX + DV
         //                if (hoadon != null)
         //                    ///Nếu chỉ có tỉ lệ SX + DV mà không có tỉ lệ SH, không xét Định Mức
-        //                    if (hoadon.TILESX != null && hoadon.TILEDV != null && hoadon.TILESH == null)
+        //                    if ((hoadon.TILESX != null && hoadon.TILEDV != null && hoadon.TILESH == null)||(hoadon.TILESX != 0 && hoadon.TILEDV != 0 && hoadon.TILESH == 0))
         //                    {
         //                        int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
         //                        int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
@@ -6584,7 +6590,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            case 38:///SH + HCSN
         //                if (hoadon != null)
         //                    ///Nếu không có tỉ lệ
-        //                    if (hoadon.TILESH == null && hoadon.TILEHCSN == null)
+        //                    if ((hoadon.TILESH == null && hoadon.TILEHCSN == null)||(hoadon.TILESH == 0&& hoadon.TILEHCSN ==0))
         //                    {
         //                        if (TieuThu <= DinhMucHN)
         //                        {
@@ -6785,7 +6791,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            case 34:///HCSN + SX
         //                if (hoadon != null)
         //                    ///Nếu không có tỉ lệ
-        //                    if (hoadon.TILEHCSN == null && hoadon.TILESX == null)
+        //                    if ((hoadon.TILEHCSN == null && hoadon.TILESX == null)||(hoadon.TILEHCSN == 0 && hoadon.TILESX == 0))
         //                    {
         //                        _TongTien = TieuThu * lstGiaNuoc[3];
         //                        _chiTiet = TieuThu + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[3]);
@@ -6805,7 +6811,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         //                if (hoadon != null)
         //                    ///Nếu không có tỉ lệ
-        //                    if (hoadon.TILEHCSN == null && hoadon.TILESX == null)
+        //                    if ((hoadon.TILEHCSN == null && hoadon.TILESX == null)||(hoadon.TILEHCSN == 0 && hoadon.TILESX == 0))
         //                    {
         //                        _TongTien = TieuThu * lstGiaNuoc[5];
         //                        _chiTiet = TieuThu + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[5]);

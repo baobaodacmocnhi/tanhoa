@@ -537,11 +537,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["XoaDiaChiLienHe"] = "Xóa Địa Chỉ Liên Hệ";
                                 dr["MaQuanPhuong"] = ctdcbd.MaQuanPhuong;
                                 dr["GiaBieu"] = ctdcbd.GiaBieu;
+                                dr["DinhMucHN"] = ctdcbd.DinhMucHN;
                                 dr["DinhMuc"] = ctdcbd.DinhMuc;
                                 ///Biến Động
                                 dr["HoTenBD"] = ctdcbd.HoTen_BD;
                                 dr["DiaChiBD"] = ctdcbd.DiaChi_BD;
                                 dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
+                                dr["DinhMucHNBD"] = ctdcbd.DinhMucHN_BD;
                                 dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
                                 if (!string.IsNullOrEmpty(ctdcbd.SH_BD))
                                     dr["TyLe"] = "Tỷ Lệ SH: " + ctdcbd.SH_BD + "%";

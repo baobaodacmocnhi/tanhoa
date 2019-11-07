@@ -33,6 +33,8 @@
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HieuLucKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GBMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DMHNMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DMDCMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +42,7 @@
             this.HopDong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MSThue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMucHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +63,8 @@
             this.MaDon,
             this.HieuLucKy,
             this.GBMoi,
+            this.DMHNMoi,
+            this.DMDCMoi,
             this.Dot,
             this.DanhBo,
             this.HoTen,
@@ -67,6 +72,7 @@
             this.HopDong,
             this.MSThue,
             this.GiaBieu,
+            this.DinhMucHN,
             this.DinhMuc,
             this.Ky,
             this.Nam,
@@ -105,12 +111,25 @@
             // 
             this.HieuLucKy.HeaderText = "Hiệu Lực Kỳ";
             this.HieuLucKy.Name = "HieuLucKy";
+            this.HieuLucKy.Width = 70;
             // 
             // GBMoi
             // 
             this.GBMoi.HeaderText = "GB Mới";
             this.GBMoi.Name = "GBMoi";
             this.GBMoi.Width = 50;
+            // 
+            // DMHNMoi
+            // 
+            this.DMHNMoi.HeaderText = "ĐM HN Mới";
+            this.DMHNMoi.Name = "DMHNMoi";
+            this.DMHNMoi.Width = 50;
+            // 
+            // DMDCMoi
+            // 
+            this.DMDCMoi.HeaderText = "ĐM DC Mới";
+            this.DMDCMoi.Name = "DMDCMoi";
+            this.DMDCMoi.Width = 50;
             // 
             // Dot
             // 
@@ -152,6 +171,12 @@
             this.GiaBieu.HeaderText = "Giá Biểu";
             this.GiaBieu.Name = "GiaBieu";
             this.GiaBieu.Width = 50;
+            // 
+            // DinhMucHN
+            // 
+            this.DinhMucHN.HeaderText = "Định Mức HN";
+            this.DinhMucHN.Name = "DinhMucHN";
+            this.DinhMucHN.Width = 50;
             // 
             // DinhMuc
             // 
@@ -238,6 +263,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn HieuLucKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn GBMoi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DMHNMoi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DMDCMoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
@@ -245,6 +272,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HopDong;
         private System.Windows.Forms.DataGridViewTextBoxColumn MSThue;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMucHN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
