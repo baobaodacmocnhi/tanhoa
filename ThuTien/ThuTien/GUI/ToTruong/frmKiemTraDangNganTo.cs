@@ -13,6 +13,7 @@ using ThuTien.BaoCao;
 using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.Quay;
 using ThuTien.LinQ;
+using ThuTien.BaoCao.NhanVien;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -250,7 +251,7 @@ namespace ThuTien.GUI.ToTruong
             //            ds.Tables["DSHoaDon"].Rows.Add(dr);
             //        }
             //    }
-            rptDSHoaDon rpt = new rptDSHoaDon();
+            rptDSDangNgan_HoaDonDienTu rpt = new rptDSDangNgan_HoaDonDienTu();
             rpt.SetDataSource(ds);
             rpt.Subreports["DanhSachXoaDangNgan"].SetDataSource(ds2);
             frmBaoCao frm = new frmBaoCao(rpt);
