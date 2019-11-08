@@ -35,7 +35,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CThuTien _cThuTien = new CThuTien();
         CDCBD _cDCBD = new CDCBD();
         CKTXM _cKTXM = new CKTXM();
-        CDHN _cDocSo = new CDHN();
+        CDHN _cDHN = new CDHN();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;
@@ -104,7 +104,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDanhBo.Text = hoadon.DANHBA;
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             txtMSThue.Text = hoadon.MST;
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMucHN.Text = hoadon.DinhMucHN.ToString();
@@ -113,7 +113,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSX.Text = hoadon.TILESX.ToString();
             txtDV.Text = hoadon.TILEDV.ToString();
             txtHCSN.Text = hoadon.TILEHCSN.ToString();
-            txtDot.Text = _cDocSo.GetDot(hoadon.DANHBA);
+            txtDot.Text = _cDHN.GetDot(hoadon.DANHBA);
 
             if (hoadon.PHI == 0)
                 lbKhongTinhPhiBVMT.Visible = true;
@@ -1081,8 +1081,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         dr["HoTen"] = hoadon.TENKH;
                         dr["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
-                        dr["Phuong"] = _cDocSo.GetTenPhuong(int.Parse(hoadon.Quan), hoadon.Phuong);
-                        dr["Quan"] = _cDocSo.GetTenQuan(int.Parse(hoadon.Quan));
+                        dr["Phuong"] = _cDHN.GetTenPhuong(int.Parse(hoadon.Quan), hoadon.Phuong);
+                        dr["Quan"] = _cDHN.GetTenQuan(int.Parse(hoadon.Quan));
                     }
 
                     dr["MaLCT"] = itemRow["MaLCT"];
@@ -1224,9 +1224,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDSSoDangKy_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
                     ///Hiện tại nếu check Cat mà exit bằng X thì dữ liệu không được lưu
                     ///Sau khi check phải check qua chỗ khác mới lưu
@@ -1250,13 +1250,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     this.ControlBox = true;
                     contextMenuStrip1.Enabled = true;
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvDSSoDangKy_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1437,19 +1437,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtGiaBieu_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
-                txtDinhMucHN.Focus();
+                txtDinhMuc.Focus();
         }
 
         private void txtDinhMucHN_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
-                txtDinhMuc.Focus();
+                txtHoTen_BD.Focus();
         }
 
         private void txtDinhMuc_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
-                txtHoTen_BD.Focus();
+                txtDinhMuc.Focus();
         }
 
         private void txtHoTen_BD_KeyPress(object sender, KeyPressEventArgs e)
@@ -1473,19 +1473,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtGiaBieu_BD_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
-                txtDinhMucHN_BD.Focus();
+                txtDinhMuc_BD.Focus();
         }
 
         private void txtDinhMucHN_BD_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
-                txtDinhMuc_BD.Focus();
+                dgvDSSoDangKy.Focus();
         }
 
         private void txtDinhMuc_BD_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
-                dgvDSSoDangKy.Focus();
+                txtDinhMucHN_BD.Focus();
         }
 
         #endregion

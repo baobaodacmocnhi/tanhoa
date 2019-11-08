@@ -1362,6 +1362,24 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.GiaNuoc2" Member="GiaNuoc2s">
+    <Type Name="GiaNuoc2">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SHTM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SHVM1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SHVM2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SX" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HCSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KDDV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NgayTangGia" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.HoNgheo" Member="HoNgheos">
     <Type Name="HoNgheo">
       <Column Name="DanhBo" Type="System.String" DbType="Char(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />

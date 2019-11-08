@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
+using KTKS_DonKH.DAL;
+using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI
 {
     public partial class frmTinhTienNuoc : Form
     {
+        CThuTien _cThuTien = new CThuTien();
         CGiaNuoc _cGiaNuoc = new CGiaNuoc();
+        HOADON _hoadon = null;
 
         public frmTinhTienNuoc()
         {
@@ -26,21 +30,36 @@ namespace KTKS_DonKH.GUI
 
         private void btnTinhTienNuoc_Click(object sender, EventArgs e)
         {
-            double TyLe = Math.Round(double.Parse(txtDinhMucHN.Text.Trim()) / (int.Parse(txtDinhMucHN.Text.Trim()) + int.Parse(txtDinhMucDC.Text.Trim())), 2);
-            int TieuThuHN = 0, TieuThuDC = 0;
-            TieuThuHN = (int)Math.Round(int.Parse(txtTieuThu.Text.Trim()) * TyLe, 0, MidpointRounding.AwayFromZero);
-            TieuThuDC = int.Parse(txtTieuThu.Text.Trim()) - TieuThuHN;
-            txtTieuThuHN.Text = TieuThuHN.ToString();
-            txtTieuThuDC.Text = TieuThuDC.ToString();
-            string ChiTietHN;
-            int TienNuocHN = _cGiaNuoc.TinhTienNuoc(10, int.Parse(txtDinhMucHN.Text.Trim()), 0, TieuThuHN, out  ChiTietHN);
-            txtThanhTienHN.Text = TienNuocHN.ToString();
-            txtChiTietHN.Text = ChiTietHN;
-            string ChiTietDC;
-            int TienNuocDC = _cGiaNuoc.TinhTienNuoc(11, 0, int.Parse(txtDinhMucDC.Text.Trim()), TieuThuDC, out  ChiTietDC);
-            txtThanhTienDC.Text = TienNuocDC.ToString();
-            txtChiTietDC.Text = ChiTietDC;
-            txtTongCong.Text = (TienNuocHN + TienNuocDC).ToString();
+            int GiaBanCu = 0, GiaBanMoi = 0, ThueGTGT = 0, PhiBVMT = 0, TongCong = 0;
+            string ChiTiet;
+            GiaBanCu = _cGiaNuoc.TinhTienNuoc(int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtDinhMucDC.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out ChiTiet);
+            ThueGTGT = (GiaBanCu + GiaBanMoi) * 5 / 100;
+            PhiBVMT = (GiaBanCu + GiaBanMoi) * 10 / 100;
+            TongCong = (GiaBanCu + GiaBanMoi) + ThueGTGT + PhiBVMT;
+            txtGiaBanCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBanCu);
+            txtGiaBanMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBanMoi);
+            txtGiaBan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBanCu + GiaBanMoi));
+            txtThueGTGT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ThueGTGT);
+            txtPhiBVMT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", PhiBVMT);
+            txtTongCong.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+            txtChiTietCu.Text = ChiTiet;
+        }
+
+        private void txtNam_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                _hoadon = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(txtKy.Text.Trim()), int.Parse(txtNam.Text.Trim()));
+                if (_hoadon != null)
+                {
+                    dateTu.Value = _hoadon.TUNGAY.Value;
+                    dateDen.Value = _hoadon.DENNGAY.Value;
+                    txtGiaBieu.Text = _hoadon.GB.Value.ToString();
+                    txtDinhMucHN.Text = _hoadon.DinhMucHN.Value.ToString();
+                    txtDinhMucDC.Text = _hoadon.DM.Value.ToString();
+                    txtTieuThu.Text = _hoadon.TIEUTHU.Value.ToString();
+                }
+            }
         }
     }
 }

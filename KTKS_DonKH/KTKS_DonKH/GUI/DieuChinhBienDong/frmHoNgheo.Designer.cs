@@ -36,6 +36,7 @@
             this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMucHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMucDC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnIn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,6 +48,7 @@
             this.btnChonFile.TabIndex = 0;
             this.btnChonFile.Text = "Chọn File";
             this.btnChonFile.UseVisualStyleBackColor = true;
+            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
             // 
             // dgvDanhSach
             // 
@@ -60,8 +62,12 @@
             this.DinhMucDC});
             this.dgvDanhSach.Location = new System.Drawing.Point(12, 41);
             this.dgvDanhSach.Name = "dgvDanhSach";
-            this.dgvDanhSach.Size = new System.Drawing.Size(813, 150);
+            this.dgvDanhSach.Size = new System.Drawing.Size(813, 460);
             this.dgvDanhSach.TabIndex = 1;
+            this.dgvDanhSach.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellEndEdit);
+            this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
+            this.dgvDanhSach.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDanhSach_UserAddedRow);
+            this.dgvDanhSach.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvDanhSach_UserDeletingRow);
             // 
             // DanhBo
             // 
@@ -101,16 +107,27 @@
             this.DinhMucDC.HeaderText = "Định Mức DC";
             this.DinhMucDC.Name = "DinhMucDC";
             // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(93, 12);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 2;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // frmHoNgheo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1121, 513);
+            this.ClientSize = new System.Drawing.Size(835, 513);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.dgvDanhSach);
             this.Controls.Add(this.btnChonFile);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmHoNgheo";
             this.Text = "Hộ Nghèo";
             this.Load += new System.EventHandler(this.frmHoNgheo_Load);
@@ -129,5 +146,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMucHN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMucDC;
+        private System.Windows.Forms.Button btnIn;
     }
 }

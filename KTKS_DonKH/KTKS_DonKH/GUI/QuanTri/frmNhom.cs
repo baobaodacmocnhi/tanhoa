@@ -123,6 +123,7 @@ namespace KTKS_DonKH.GUI.QuanTri
             {
                 _selectedindex = e.RowIndex;
                 txtTenNhom.Text = dgvNhom["TenNhom", e.RowIndex].Value.ToString();
+                DataTable dt = _cPhanQuyenNhom.GetDSByMaNhom(true, int.Parse(dgvNhom["MaNhom", e.RowIndex].Value.ToString()));
                 if (CTaiKhoan.Admin)
                     gridControl.DataSource = _cPhanQuyenNhom.GetDSByMaNhom(true, int.Parse(dgvNhom["MaNhom", e.RowIndex].Value.ToString()));
                 else
