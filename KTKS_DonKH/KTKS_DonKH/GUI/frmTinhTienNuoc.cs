@@ -31,8 +31,8 @@ namespace KTKS_DonKH.GUI
         private void btnTinhTienNuoc_Click(object sender, EventArgs e)
         {
             int GiaBanCu = 0, GiaBanMoi = 0, ThueGTGT = 0, PhiBVMT = 0, TongCong = 0;
-            string ChiTiet;
-            GiaBanCu = _cGiaNuoc.TinhTienNuoc(int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtDinhMucDC.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out ChiTiet);
+            string ChiTietCu,ChiTietMoi;
+            _cGiaNuoc.TinhTienNuoc(txtDanhBo.Text.Trim(), int.Parse(txtKy.Text.Trim()), int.Parse(txtNam.Text.Trim()), dateTu.Value, dateDen.Value, int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtDinhMucDC.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out GiaBanCu, out ChiTietCu, out GiaBanMoi, out ChiTietMoi);
             ThueGTGT = (GiaBanCu + GiaBanMoi) * 5 / 100;
             PhiBVMT = (GiaBanCu + GiaBanMoi) * 10 / 100;
             TongCong = (GiaBanCu + GiaBanMoi) + ThueGTGT + PhiBVMT;
@@ -42,7 +42,8 @@ namespace KTKS_DonKH.GUI
             txtThueGTGT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ThueGTGT);
             txtPhiBVMT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", PhiBVMT);
             txtTongCong.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
-            txtChiTietCu.Text = ChiTiet;
+            txtChiTietCu.Text = ChiTietCu;
+            txtChiTietMoi.Text = ChiTietMoi;
         }
 
         private void txtNam_KeyPress(object sender, KeyPressEventArgs e)

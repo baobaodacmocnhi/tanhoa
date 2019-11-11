@@ -63,6 +63,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtPhiBVMT = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -385,12 +386,23 @@
             this.label17.TabIndex = 37;
             this.label17.Text = "Phí BVMT";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(409, 18);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(199, 16);
+            this.label18.TabIndex = 39;
+            this.label18.Text = "(enter để load thông tin hóa đơn)";
+            // 
             // frmTinhTienNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1047, 548);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.txtPhiBVMT);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txtThueGTGT);
@@ -473,5 +485,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtPhiBVMT;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
     }
 }
