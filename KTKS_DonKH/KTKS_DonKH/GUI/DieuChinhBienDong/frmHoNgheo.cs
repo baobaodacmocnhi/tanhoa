@@ -10,8 +10,9 @@ using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.BaoCao.DieuChinhBienDong;
+using KTKS_DonKH.BaoCao;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -37,7 +38,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         public void Clear()
         {
             _action = "";
-            dgvDanhSach.DataSource = _cHoNgheo.getDS(CTaiKhoan.MaUser);
+            if (cmbDot.SelectedIndex == 0)
+            {
+                dgvDanhSach.DataSource = _cHoNgheo.getDS(CTaiKhoan.MaUser);
+            }
+            else
+                if (cmbDot.SelectedIndex > 0)
+                {
+                    dgvDanhSach.DataSource = _cHoNgheo.getDS(CTaiKhoan.MaUser,int.Parse(cmbDot.SelectedItem.ToString()));
+                }
+            
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -72,6 +82,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         en.DinhMuc = (int)hoadon.DM;
                                     if (item[1].ToString() != "")
                                         en.DinhMucHN = int.Parse(item[1].ToString());
+                                    if (item[2].ToString() != "")
+                                        en.MaCT = item[2].ToString();
                                     _cHoNgheo.Them(en);
                                 }
                                 else
@@ -136,7 +148,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-            if (dgvDanhSach.Columns[e.ColumnIndex].Name == "DinhMuc" || dgvDanhSach.Columns[e.ColumnIndex].Name == "DinhMucHN" || dgvDanhSach.Columns[e.ColumnIndex].Name == "DinhMucDC")
+            if (dgvDanhSach.Columns[e.ColumnIndex].Name == "DinhMuc" || dgvDanhSach.Columns[e.ColumnIndex].Name == "DinhMucHN" || dgvDanhSach.Columns[e.ColumnIndex].Name == "DinhMucDC" || dgvDanhSach.Columns[e.ColumnIndex].Name == "MaCT")
             {
                 try
                 {
@@ -151,6 +163,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 en.DinhMucHN = int.Parse(dgvDanhSach["DinhMucHN", e.RowIndex].Value.ToString());
                             if (dgvDanhSach["DinhMucDC", e.RowIndex].Value.ToString() != "")
                                 en.DinhMucDC = int.Parse(dgvDanhSach["DinhMucDC", e.RowIndex].Value.ToString());
+                            if (dgvDanhSach["MaCT", e.RowIndex].Value.ToString() != "")
+                                en.MaCT = dgvDanhSach["MaCT", e.RowIndex].Value.ToString();
                             _cHoNgheo.Sua(en);
                         }
                     }
@@ -199,17 +213,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
                 if (item.Cells["DanhBo"].Value != null)
                 {
-                    DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
+                    DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
+                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                     if (item.Cells["DanhBo"].Value.ToString().Length == 11)
                         dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
                     dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
-                    dr["MaDon"] = "Định Mức HN: " + item.Cells["DinhMucHN"].Value.ToString();
+                    dr["GiaBieu"] = item.Cells["DinhMuc"].Value.ToString();
+                    dr["DinhMucHN"] = item.Cells["DinhMucHN"].Value.ToString();
+                    dr["DinhMuc"] = item.Cells["DinhMucDC"].Value.ToString();
 
-                    dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
+                    dsBaoCao.Tables["DCBD"].Rows.Add(dr);
                 }
-            rptDanhSach_Doc rpt = new rptDanhSach_Doc();
+            rptDSHoNgheo rpt = new rptDSHoNgheo();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
@@ -230,6 +247,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cmbDot_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Clear();
         }
     }
 

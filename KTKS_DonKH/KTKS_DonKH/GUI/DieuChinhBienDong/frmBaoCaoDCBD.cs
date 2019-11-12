@@ -12,6 +12,7 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -1065,6 +1066,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["DinhMucTruoc"] = itemRow["DinhMuc"];
                 dr["Quan"] = itemRow["Quan"];
                 dr["Phuong"] = itemRow["Phuong"];
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
             }

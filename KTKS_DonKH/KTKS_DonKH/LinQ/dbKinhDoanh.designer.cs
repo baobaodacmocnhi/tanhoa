@@ -32814,6 +32814,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _DinhMucDC;
 		
+		private string _MaCT;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -32844,6 +32846,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDinhMucHNChanged();
     partial void OnDinhMucDCChanging(System.Nullable<int> value);
     partial void OnDinhMucDCChanged();
+    partial void OnMaCTChanging(string value);
+    partial void OnMaCTChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -33035,6 +33039,26 @@ namespace KTKS_DonKH.LinQ
 					this._DinhMucDC = value;
 					this.SendPropertyChanged("DinhMucDC");
 					this.OnDinhMucDCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCT", DbType="VarChar(50)")]
+		public string MaCT
+		{
+			get
+			{
+				return this._MaCT;
+			}
+			set
+			{
+				if ((this._MaCT != value))
+				{
+					this.OnMaCTChanging(value);
+					this.SendPropertyChanging();
+					this._MaCT = value;
+					this.SendPropertyChanged("MaCT");
+					this.OnMaCTChanged();
 				}
 			}
 		}

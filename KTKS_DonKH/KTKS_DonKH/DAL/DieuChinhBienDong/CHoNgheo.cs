@@ -72,5 +72,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             return LINQToDataTable(db.HoNgheos.Where(item => item.CreateBy == CreateBy));
         }
+
+        public DataTable getDS(int CreateBy,int Dot)
+        {
+            return LINQToDataTable(db.HoNgheos.Where(item => item.CreateBy == CreateBy && item.Dot==Dot));
+        }
     }
 }
