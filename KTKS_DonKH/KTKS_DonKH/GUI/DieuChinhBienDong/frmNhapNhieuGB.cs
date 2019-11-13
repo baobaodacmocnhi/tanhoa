@@ -28,7 +28,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDHN _cDocSo = new CDHN();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CDCBD _cDCBD = new CDCBD();
-
+        CHoNgheo _cHoNgheo = new CHoNgheo();
 
         public frmNhapNhieuGB()
         {
@@ -473,6 +473,61 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //    {
             //        dgvDanhBo["GBMoi", e.RowIndex].Value = dgvDanhBo["GBMoi", e.RowIndex - 1].Value;
             //    }
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            if (cmbDot.SelectedIndex == 0)
+            {
+                dt = _cHoNgheo.getDS();
+            }
+            else
+                if (cmbDot.SelectedIndex > 0)
+                {
+                    dt = _cHoNgheo.getDS_Dot(int.Parse(cmbDot.SelectedItem.ToString()));
+                }
+
+            foreach (DataRow item in dt.Rows)
+            {
+                var index = dgvDanhBo.Rows.Add();
+                dgvDanhBo.Rows[index].Cells["MaDon"].Value = "19110518";
+                dgvDanhBo.Rows[index].Cells["HieuLucKy"].Value = "12/2019";
+                HOADON hoadon = _cThuTien.GetMoiNhat(item["DanhBo"].ToString());
+                if (hoadon != null)
+                {
+                    dgvDanhBo["DanhBo", index].Value = hoadon.DANHBA;
+                    dgvDanhBo["HopDong", index].Value = hoadon.HOPDONG;
+                    dgvDanhBo["HoTen", index].Value = hoadon.TENKH;
+                    dgvDanhBo["DiaChi", index].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                    dgvDanhBo["MSThue", index].Value = hoadon.MST;
+                    dgvDanhBo["GiaBieu", index].Value = hoadon.GB;
+                    dgvDanhBo["DinhMucHN", index].Value = hoadon.DinhMucHN;
+                    dgvDanhBo["DinhMuc", index].Value = hoadon.DM;
+                    dgvDanhBo["Dot", index].Value = hoadon.DOT.ToString();
+                    dgvDanhBo["Ky", index].Value = hoadon.KY.ToString();
+                    dgvDanhBo["Nam", index].Value = hoadon.NAM.ToString();
+                    dgvDanhBo["MLT", index].Value = hoadon.MALOTRINH.ToString();
+                    dgvDanhBo["SX", index].Value = hoadon.TILESX.ToString();
+                    dgvDanhBo["SH", index].Value = hoadon.TILESH.ToString();
+                    dgvDanhBo["DV", index].Value = hoadon.TILEDV.ToString();
+                    dgvDanhBo["HCSN", index].Value = hoadon.TILEHCSN.ToString();
+                    dgvDanhBo["MaQuanPhuong", index].Value = hoadon.Quan + " " + hoadon.Phuong;
+                }
+                if (int.Parse(dgvDanhBo["DinhMuc", index].Value.ToString()) <= (int.Parse(item["DinhMucHN"].ToString()) + int.Parse(item["DinhMucDC"].ToString())))
+                {
+                    dgvDanhBo["GBMoi", index].Value = "10";
+                    dgvDanhBo["DMHNMoi", index].Value = item["DinhMucHN"].ToString();
+                    dgvDanhBo["DMDCMoi", index].Value = item["DinhMucDC"].ToString();
+                }
+                else
+                    if (int.Parse(dgvDanhBo["DinhMuc", index].Value.ToString()) > (int.Parse(item["DinhMucHN"].ToString()) + int.Parse(item["DinhMucDC"].ToString())))
+                    {
+                        dgvDanhBo["DMHNMoi", index].Value = item["DinhMucHN"].ToString();
+                        dgvDanhBo["DMDCMoi", index].Value = int.Parse(dgvDanhBo["DinhMuc", index].Value.ToString()) - int.Parse(item["DinhMucHN"].ToString());
+                    }
+            }
+
         }
     }
 }

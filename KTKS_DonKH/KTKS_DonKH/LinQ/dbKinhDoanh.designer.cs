@@ -32816,6 +32816,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MaCT;
 		
+		private bool _DCBD;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -32848,6 +32850,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDinhMucDCChanged();
     partial void OnMaCTChanging(string value);
     partial void OnMaCTChanged();
+    partial void OnDCBDChanging(bool value);
+    partial void OnDCBDChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -33059,6 +33063,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaCT = value;
 					this.SendPropertyChanged("MaCT");
 					this.OnMaCTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DCBD", DbType="Bit NOT NULL")]
+		public bool DCBD
+		{
+			get
+			{
+				return this._DCBD;
+			}
+			set
+			{
+				if ((this._DCBD != value))
+				{
+					this.OnDCBDChanging(value);
+					this.SendPropertyChanging();
+					this._DCBD = value;
+					this.SendPropertyChanged("DCBD");
+					this.OnDCBDChanged();
 				}
 			}
 		}
@@ -50183,6 +50207,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _GiaBieu;
 		
+		private System.Nullable<int> _DinhMucHN;
+		
 		private System.Nullable<int> _DinhMuc;
 		
 		private string _Dot;
@@ -50251,6 +50277,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDiaChiChanged();
     partial void OnGiaBieuChanging(System.Nullable<int> value);
     partial void OnGiaBieuChanged();
+    partial void OnDinhMucHNChanging(System.Nullable<int> value);
+    partial void OnDinhMucHNChanged();
     partial void OnDinhMucChanging(System.Nullable<int> value);
     partial void OnDinhMucChanged();
     partial void OnDotChanging(string value);
@@ -50457,6 +50485,26 @@ namespace KTKS_DonKH.LinQ
 					this._GiaBieu = value;
 					this.SendPropertyChanged("GiaBieu");
 					this.OnGiaBieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMucHN", DbType="Int")]
+		public System.Nullable<int> DinhMucHN
+		{
+			get
+			{
+				return this._DinhMucHN;
+			}
+			set
+			{
+				if ((this._DinhMucHN != value))
+				{
+					this.OnDinhMucHNChanging(value);
+					this.SendPropertyChanging();
+					this._DinhMucHN = value;
+					this.SendPropertyChanged("DinhMucHN");
+					this.OnDinhMucHNChanged();
 				}
 			}
 		}
@@ -51237,6 +51285,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _GiaBieuCu;
 		
+		private System.Nullable<int> _DinhMucHNCu;
+		
 		private System.Nullable<int> _DinhMucCu;
 		
 		private System.Nullable<int> _TieuThuCu;
@@ -51250,6 +51300,8 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<int> _TongCongCu;
 		
 		private System.Nullable<int> _GiaBieuMoi;
+		
+		private System.Nullable<int> _DinhMucHNMoi;
 		
 		private System.Nullable<int> _DinhMucMoi;
 		
@@ -51289,6 +51341,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNamChanged();
     partial void OnGiaBieuCuChanging(System.Nullable<int> value);
     partial void OnGiaBieuCuChanged();
+    partial void OnDinhMucHNCuChanging(System.Nullable<int> value);
+    partial void OnDinhMucHNCuChanged();
     partial void OnDinhMucCuChanging(System.Nullable<int> value);
     partial void OnDinhMucCuChanged();
     partial void OnTieuThuCuChanging(System.Nullable<int> value);
@@ -51303,6 +51357,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTongCongCuChanged();
     partial void OnGiaBieuMoiChanging(System.Nullable<int> value);
     partial void OnGiaBieuMoiChanged();
+    partial void OnDinhMucHNMoiChanging(System.Nullable<int> value);
+    partial void OnDinhMucHNMoiChanged();
     partial void OnDinhMucMoiChanging(System.Nullable<int> value);
     partial void OnDinhMucMoiChanged();
     partial void OnTieuThuMoiChanging(System.Nullable<int> value);
@@ -51411,6 +51467,26 @@ namespace KTKS_DonKH.LinQ
 					this._GiaBieuCu = value;
 					this.SendPropertyChanged("GiaBieuCu");
 					this.OnGiaBieuCuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMucHNCu", DbType="Int")]
+		public System.Nullable<int> DinhMucHNCu
+		{
+			get
+			{
+				return this._DinhMucHNCu;
+			}
+			set
+			{
+				if ((this._DinhMucHNCu != value))
+				{
+					this.OnDinhMucHNCuChanging(value);
+					this.SendPropertyChanging();
+					this._DinhMucHNCu = value;
+					this.SendPropertyChanged("DinhMucHNCu");
+					this.OnDinhMucHNCuChanged();
 				}
 			}
 		}
@@ -51551,6 +51627,26 @@ namespace KTKS_DonKH.LinQ
 					this._GiaBieuMoi = value;
 					this.SendPropertyChanged("GiaBieuMoi");
 					this.OnGiaBieuMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMucHNMoi", DbType="Int")]
+		public System.Nullable<int> DinhMucHNMoi
+		{
+			get
+			{
+				return this._DinhMucHNMoi;
+			}
+			set
+			{
+				if ((this._DinhMucHNMoi != value))
+				{
+					this.OnDinhMucHNMoiChanging(value);
+					this.SendPropertyChanging();
+					this._DinhMucHNMoi = value;
+					this.SendPropertyChanged("DinhMucHNMoi");
+					this.OnDinhMucHNMoiChanged();
 				}
 			}
 		}

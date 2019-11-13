@@ -49,7 +49,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtTongCong = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtKy = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtNam = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -72,6 +71,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.txtSH = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
+            this.cmbKy = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -91,6 +91,7 @@
             this.txtDanhBo.Name = "txtDanhBo";
             this.txtDanhBo.Size = new System.Drawing.Size(100, 22);
             this.txtDanhBo.TabIndex = 1;
+            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
             // 
             // txtGiaBieu
             // 
@@ -274,14 +275,6 @@
             this.label12.TabIndex = 38;
             this.label12.Text = "Tổng Cộng";
             // 
-            // txtKy
-            // 
-            this.txtKy.Location = new System.Drawing.Point(248, 15);
-            this.txtKy.Margin = new System.Windows.Forms.Padding(4);
-            this.txtKy.Name = "txtKy";
-            this.txtKy.Size = new System.Drawing.Size(50, 22);
-            this.txtKy.TabIndex = 3;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -410,9 +403,9 @@
             this.label18.Location = new System.Drawing.Point(409, 18);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(199, 16);
+            this.label18.Size = new System.Drawing.Size(276, 16);
             this.label18.TabIndex = 6;
-            this.label18.Text = "(enter để load thông tin hóa đơn)";
+            this.label18.Text = "(enter để load thông tin hóa đơn hoặc đọc số)";
             // 
             // txtHCSN
             // 
@@ -482,12 +475,35 @@
             this.label27.TabIndex = 13;
             this.label27.Text = "%SH";
             // 
+            // cmbKy
+            // 
+            this.cmbKy.FormattingEnabled = true;
+            this.cmbKy.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cmbKy.Location = new System.Drawing.Point(247, 14);
+            this.cmbKy.Name = "cmbKy";
+            this.cmbKy.Size = new System.Drawing.Size(50, 24);
+            this.cmbKy.TabIndex = 44;
+            this.cmbKy.SelectedIndexChanged += new System.EventHandler(this.cmbKy_SelectedIndexChanged);
+            // 
             // frmTinhTienNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(678, 539);
+            this.ClientSize = new System.Drawing.Size(699, 539);
+            this.Controls.Add(this.cmbKy);
             this.Controls.Add(this.txtHCSN);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.txtDV);
@@ -509,7 +525,6 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtNam);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.txtKy);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtTongCong);
             this.Controls.Add(this.label12);
@@ -565,7 +580,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtTongCong;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtKy;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtNam;
         private System.Windows.Forms.Label label14;
@@ -588,5 +602,6 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtSH;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ComboBox cmbKy;
     }
 }

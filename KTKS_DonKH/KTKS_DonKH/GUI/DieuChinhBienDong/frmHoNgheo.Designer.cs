@@ -33,6 +33,10 @@
             this.btnIn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbDot = new System.Windows.Forms.ComboBox();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +61,7 @@
             // 
             this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Dot,
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
@@ -66,7 +71,7 @@
             this.MaCT});
             this.dgvDanhSach.Location = new System.Drawing.Point(12, 41);
             this.dgvDanhSach.Name = "dgvDanhSach";
-            this.dgvDanhSach.Size = new System.Drawing.Size(964, 460);
+            this.dgvDanhSach.Size = new System.Drawing.Size(1016, 460);
             this.dgvDanhSach.TabIndex = 1;
             this.dgvDanhSach.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellEndEdit);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
@@ -75,7 +80,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(93, 12);
+            this.btnIn.Location = new System.Drawing.Point(459, 12);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.TabIndex = 2;
@@ -86,7 +91,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(179, 14);
+            this.label1.Location = new System.Drawing.Point(288, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 16);
             this.label1.TabIndex = 3;
@@ -117,11 +122,67 @@
             "18",
             "19",
             "20"});
-            this.cmbDot.Location = new System.Drawing.Point(213, 11);
+            this.cmbDot.Location = new System.Drawing.Point(322, 12);
             this.cmbDot.Name = "cmbDot";
             this.cmbDot.Size = new System.Drawing.Size(50, 24);
             this.cmbDot.TabIndex = 4;
             this.cmbDot.SelectedIndexChanged += new System.EventHandler(this.cmbDot_SelectedIndexChanged);
+            // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Items.AddRange(new object[] {
+            "Tất Cả",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cmbTo.Location = new System.Drawing.Point(182, 12);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(100, 24);
+            this.cmbTo.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(151, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(25, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Tổ";
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(378, 12);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 7;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // Dot
+            // 
+            this.Dot.DataPropertyName = "Dot";
+            this.Dot.HeaderText = "Đợt";
+            this.Dot.Name = "Dot";
+            this.Dot.Width = 50;
             // 
             // DanhBo
             // 
@@ -173,7 +234,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(990, 513);
+            this.ClientSize = new System.Drawing.Size(1041, 513);
+            this.Controls.Add(this.btnXem);
+            this.Controls.Add(this.cmbTo);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbDot);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnIn);
@@ -197,6 +261,10 @@
         private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbDot;
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;

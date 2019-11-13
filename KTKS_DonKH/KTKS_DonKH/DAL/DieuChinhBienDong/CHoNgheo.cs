@@ -8,7 +8,7 @@ using System.Data;
 
 namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {
-    class CHoNgheo:CDAL
+    class CHoNgheo : CDAL
     {
         public bool Them(HoNgheo en)
         {
@@ -68,14 +68,24 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return db.HoNgheos.SingleOrDefault(item => item.DanhBo == DanhBo);
         }
 
-        public DataTable getDS(int CreateBy)
+        public DataTable getDS()
         {
-            return LINQToDataTable(db.HoNgheos.Where(item => item.CreateBy == CreateBy));
+            return LINQToDataTable(db.HoNgheos.OrderBy(item=>item.DanhBo).ToList());
         }
 
-        public DataTable getDS(int CreateBy,int Dot)
+        public DataTable getDS_To(int MaTo)
         {
-            return LINQToDataTable(db.HoNgheos.Where(item => item.CreateBy == CreateBy && item.Dot==Dot));
+            return LINQToDataTable(db.HoNgheos.Where(item => db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).MaTo == MaTo).OrderBy(item => item.DanhBo));
+        }
+
+        public DataTable getDS_Dot(int Dot)
+        {
+            return LINQToDataTable(db.HoNgheos.Where(item => item.Dot == Dot).OrderBy(item => item.DanhBo));
+        }
+
+        public DataTable getDS(int MaTo, int Dot)
+        {
+            return LINQToDataTable(db.HoNgheos.Where(item => db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).MaTo == MaTo && item.Dot == Dot).OrderBy(item => item.DanhBo));
         }
     }
 }

@@ -30,11 +30,14 @@
         {
             this.dgvDanhBo = new System.Windows.Forms.DataGridView();
             this.btnLuu = new System.Windows.Forms.Button();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.cmbDot = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HieuLucKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GBMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DMDCMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DMHNMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DMDCMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,8 +66,8 @@
             this.MaDon,
             this.HieuLucKy,
             this.GBMoi,
-            this.DMDCMoi,
             this.DMHNMoi,
+            this.DMDCMoi,
             this.Dot,
             this.DanhBo,
             this.HoTen,
@@ -102,6 +105,55 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(103, 12);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 29;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // cmbDot
+            // 
+            this.cmbDot.FormattingEnabled = true;
+            this.cmbDot.Items.AddRange(new object[] {
+            "Tất Cả",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cmbDot.Location = new System.Drawing.Point(47, 12);
+            this.cmbDot.Name = "cmbDot";
+            this.cmbDot.Size = new System.Drawing.Size(50, 24);
+            this.cmbDot.TabIndex = 28;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 16);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Đợt";
+            // 
             // MaDon
             // 
             this.MaDon.HeaderText = "Mã Đơn";
@@ -119,17 +171,17 @@
             this.GBMoi.Name = "GBMoi";
             this.GBMoi.Width = 50;
             // 
-            // DMDCMoi
-            // 
-            this.DMDCMoi.HeaderText = "ĐM DC Mới";
-            this.DMDCMoi.Name = "DMDCMoi";
-            this.DMDCMoi.Width = 50;
-            // 
             // DMHNMoi
             // 
             this.DMHNMoi.HeaderText = "ĐM HN Mới";
             this.DMHNMoi.Name = "DMHNMoi";
             this.DMHNMoi.Width = 50;
+            // 
+            // DMDCMoi
+            // 
+            this.DMDCMoi.HeaderText = "ĐM DC Mới";
+            this.DMDCMoi.Name = "DMDCMoi";
+            this.DMDCMoi.Width = 50;
             // 
             // Dot
             // 
@@ -244,6 +296,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1290, 493);
+            this.Controls.Add(this.btnXem);
+            this.Controls.Add(this.cmbDot);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.dgvDanhBo);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -253,6 +308,7 @@
             this.Load += new System.EventHandler(this.frmNhapNhieuGB_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -260,11 +316,14 @@
 
         private System.Windows.Forms.DataGridView dgvDanhBo;
         private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.ComboBox cmbDot;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn HieuLucKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn GBMoi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DMDCMoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn DMHNMoi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DMDCMoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;

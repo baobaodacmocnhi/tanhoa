@@ -22,6 +22,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CHoNgheo _cHoNgheo = new CHoNgheo();
         CThuTien _cThuTien = new CThuTien();
         CDHN _cDHN = new CDHN();
+        CTo _cTo = new CTo();
 
         public frmHoNgheo()
         {
@@ -31,23 +32,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmHoNgheo_Load(object sender, EventArgs e)
         {
             dgvDanhSach.AutoGenerateColumns = false;
-
+            List<To> lst = _cTo.getDS_KTXM();
+            To en = new To();
+            en.MaTo = 0;
+            en.TenTo = "Tất Cả";
+            lst.Insert(0, en);
+            cmbTo.DataSource = lst;
+            cmbTo.ValueMember = "MaTo";
+            cmbTo.DisplayMember = "TenTo";
+            cmbDot.SelectedIndex = 0;
             Clear();
         }
 
         public void Clear()
         {
             _action = "";
-            if (cmbDot.SelectedIndex == 0)
-            {
-                dgvDanhSach.DataSource = _cHoNgheo.getDS(CTaiKhoan.MaUser);
-            }
-            else
-                if (cmbDot.SelectedIndex > 0)
-                {
-                    dgvDanhSach.DataSource = _cHoNgheo.getDS(CTaiKhoan.MaUser,int.Parse(cmbDot.SelectedItem.ToString()));
-                }
-            
+            btnXem.PerformClick();
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -84,6 +84,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         en.DinhMucHN = int.Parse(item[1].ToString());
                                     if (item[2].ToString() != "")
                                         en.MaCT = item[2].ToString();
+                                    en.DinhMucDC = 0;
                                     _cHoNgheo.Them(en);
                                 }
                                 else
@@ -207,6 +208,36 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            if (cmbTo.SelectedIndex == 0)
+            {
+                if (cmbDot.SelectedIndex == 0)
+                {
+                    dgvDanhSach.DataSource = _cHoNgheo.getDS();
+                }
+                else
+                    if (cmbDot.SelectedIndex > 0)
+                    {
+                        dgvDanhSach.DataSource = _cHoNgheo.getDS_Dot(int.Parse(cmbDot.SelectedItem.ToString()));
+                    }
+            }
+            else
+                if (cmbTo.SelectedIndex > 0)
+                {
+                    if (cmbDot.SelectedIndex == 0)
+                    {
+                        dgvDanhSach.DataSource = _cHoNgheo.getDS_To(int.Parse(cmbTo.SelectedValue.ToString()));
+                    }
+                    else
+                        if (cmbDot.SelectedIndex > 0)
+                        {
+                            dgvDanhSach.DataSource = _cHoNgheo.getDS(int.Parse(cmbTo.SelectedValue.ToString()),int.Parse(cmbDot.SelectedItem.ToString()));
+                        }
+                }
+            
+        }
+
         private void btnIn_Click(object sender, EventArgs e)
         {
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -253,6 +284,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             Clear();
         }
+
+
     }
 
 }

@@ -1392,6 +1392,7 @@
       <Column Name="DinhMucHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMucDC" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaCT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DCBD" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -2191,6 +2192,7 @@
       <Column Name="HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="GiaBieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMucHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Dot" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -2234,6 +2236,7 @@
       <Column Name="Ky" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GiaBieuCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMucHNCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMucCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TieuThuCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GiaBanCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -2241,6 +2244,7 @@
       <Column Name="PhiBVMTCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TongCongCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GiaBieuMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMucHNMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMucMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TieuThuMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GiaBanMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
