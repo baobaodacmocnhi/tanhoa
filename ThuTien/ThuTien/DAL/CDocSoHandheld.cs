@@ -58,5 +58,10 @@ namespace ThuTien.DAL
         {
             return _db.DocSos.Where(item=>item.DanhBa==DanhBo).OrderByDescending(item=>item.DocSoID).FirstOrDefault();
         }
+
+        public DocSo get(string DanhBo, int Ky, int Nam)
+        {
+            return _db.DocSos.SingleOrDefault(item => item.DanhBa == DanhBo && Convert.ToInt32(item.Ky) == Ky && item.Nam == Nam);
+        }
     }
 }

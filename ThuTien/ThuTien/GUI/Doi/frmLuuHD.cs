@@ -188,6 +188,8 @@ namespace ThuTien.GUI.Doi
                         //    hoadon.NgayGanDHN = DateTime.ParseExact(contents[53], "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
                         //if (!string.IsNullOrWhiteSpace(contents[54]))
                         //    hoadon.SoHo = contents[54];
+                        if ((hoadon.NAM > 2019 || (hoadon.KY == 12 && hoadon.NAM == 2019)) && !string.IsNullOrWhiteSpace(contents[61]))
+                            hoadon.DinhMucHN = int.Parse(contents[61]);
                         hoadon.MALOTRINH = hoadon.DOT.Value.ToString("00") + hoadon.MAY + hoadon.STT;
 
                         //string Quan = "", Phuong = "", CoDH = "", MaDMA = "";
@@ -507,8 +509,8 @@ namespace ThuTien.GUI.Doi
             txtTongGiaBan_TyLeTon.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBan);
             txtTongHDTon_TyLeTon.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTon);
             txtTongGiaBanTon_TyLeTon.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBanTon);
-            txtTyLeTongHDTon.Text = Math.Round((double)TongHDTon / (double)TongHD * 100,2).ToString();
-            txtTyLeGiaBanTon.Text = Math.Round((double)TongGiaBanTon / (double)TongGiaBan * 100,2).ToString();
+            txtTyLeTongHDTon.Text = Math.Round((double)TongHDTon / (double)TongHD * 100, 2).ToString();
+            txtTyLeGiaBanTon.Text = Math.Round((double)TongGiaBanTon / (double)TongGiaBan * 100, 2).ToString();
         }
 
         private void dgvTyLeTon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
