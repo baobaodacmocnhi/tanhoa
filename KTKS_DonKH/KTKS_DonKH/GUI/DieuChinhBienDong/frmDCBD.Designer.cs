@@ -345,9 +345,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(910, 21);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 16);
+            this.label7.Size = new System.Drawing.Size(28, 16);
             this.label7.TabIndex = 12;
-            this.label7.Text = "ĐM DC";
+            this.label7.Text = "ĐM";
             // 
             // txtGiaBieu
             // 
@@ -575,9 +575,9 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(910, 21);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(61, 20);
+            this.label16.Size = new System.Drawing.Size(34, 20);
             this.label16.TabIndex = 12;
-            this.label16.Text = "ĐM DC";
+            this.label16.Text = "ĐM";
             // 
             // txtGiaBieu_BD
             // 

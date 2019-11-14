@@ -1390,7 +1390,6 @@
       <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMucHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DinhMucDC" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaCT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DCBD" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />

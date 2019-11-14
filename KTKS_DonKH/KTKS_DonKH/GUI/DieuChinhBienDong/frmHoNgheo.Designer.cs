@@ -42,7 +42,6 @@
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMucHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMucDC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
@@ -67,11 +66,10 @@
             this.DiaChi,
             this.DinhMuc,
             this.DinhMucHN,
-            this.DinhMucDC,
             this.MaCT});
             this.dgvDanhSach.Location = new System.Drawing.Point(12, 41);
             this.dgvDanhSach.Name = "dgvDanhSach";
-            this.dgvDanhSach.Size = new System.Drawing.Size(1016, 460);
+            this.dgvDanhSach.Size = new System.Drawing.Size(915, 460);
             this.dgvDanhSach.TabIndex = 1;
             this.dgvDanhSach.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellEndEdit);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
@@ -216,12 +214,6 @@
             this.DinhMucHN.HeaderText = "Định Mức HN";
             this.DinhMucHN.Name = "DinhMucHN";
             // 
-            // DinhMucDC
-            // 
-            this.DinhMucDC.DataPropertyName = "DinhMucDC";
-            this.DinhMucDC.HeaderText = "Định Mức DC";
-            this.DinhMucDC.Name = "DinhMucDC";
-            // 
             // MaCT
             // 
             this.MaCT.DataPropertyName = "MaCT";
@@ -234,7 +226,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1041, 513);
+            this.ClientSize = new System.Drawing.Size(943, 513);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.label2);
@@ -270,7 +262,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMucHN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMucDC;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCT;
     }
 }

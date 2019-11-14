@@ -222,8 +222,8 @@
       <DependentUpon>rptDSPhieuDCBD.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuDCBD_122019.cs">
-      <DependentUpon>rptPhieuDCBD_122019.rpt</DependentUpon>
+    <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuDCBD_15112019.cs">
+      <DependentUpon>rptPhieuDCBD_15112019.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -1510,9 +1510,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSPhieuDCBD.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptPhieuDCBD_122019.rpt">
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptPhieuDCBD_15112019.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptPhieuDCBD_122019.cs</LastGenOutput>
+      <LastGenOutput>rptPhieuDCBD_15112019.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\rptDanhSach_Doc_GroupNhomDon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

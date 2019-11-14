@@ -29,6 +29,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CDCBD _cDCBD = new CDCBD();
         CHoNgheo _cHoNgheo = new CHoNgheo();
+        CChungTu _cChungTu = new CChungTu();
 
         public frmNhapNhieuGB()
         {
@@ -200,9 +201,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (dgvDanhBo["DMHNMoi", e.RowIndex].Value.ToString() == dgvDanhBo["DinhMucHN", e.RowIndex].Value.ToString())
                     dgvDanhBo.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
             }
-            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DMDCMoi" && dgvDanhBo["DMDCMoi", e.RowIndex].Value != null)
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DMMoi" && dgvDanhBo["DMMoi", e.RowIndex].Value != null)
             {
-                if (dgvDanhBo["DMDCMoi", e.RowIndex].Value.ToString() == dgvDanhBo["DinhMuc", e.RowIndex].Value.ToString())
+                if (dgvDanhBo["DMMoi", e.RowIndex].Value.ToString() == dgvDanhBo["DinhMuc", e.RowIndex].Value.ToString())
                     dgvDanhBo.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
             }
             //if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DanhBo" && dgvDanhBo["DanhBo", e.RowIndex].Value != null)
@@ -315,7 +316,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     decimal min = 0, max = 0;
                     _cDCBD.beginTransaction();
                     foreach (DataGridViewRow item in dgvDanhBo.Rows)
-                        if (item.Cells["MaDon"].Value != null && item.Cells["DanhBo"].Value != null && item.Cells["GBMoi"].Value != null)
+                        if (item.Cells["MaDon"].Value != null && item.Cells["DanhBo"].Value != null && (item.Cells["GBMoi"].Value != null || item.Cells["DMMoi"].Value != null||item.Cells["DMHNMoi"].Value != null))
                         {
                             DonTu_ChiTiet dontu_ChiTiet = null;
                             DCBD_ChiTietBienDong ctdcbd = new DCBD_ChiTietBienDong();
@@ -417,7 +418,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ctdcbd.GiaBieu_BD = int.Parse(item.Cells["GBMoi"].Value.ToString());
                             }
 
-                            if (item.Cells["DMHNMoi"].Value != null || item.Cells["DMDCMoi"].Value != null)
+                            if (item.Cells["DMHNMoi"].Value != null || item.Cells["DMMoi"].Value != null)
                             {
                                 if (string.IsNullOrEmpty(ctdcbd.ThongTin) == true)
                                     ctdcbd.ThongTin += "ĐM";
@@ -425,8 +426,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ctdcbd.ThongTin += ". ĐM";
                                 if (item.Cells["DMHNMoi"].Value != null)
                                     ctdcbd.DinhMucHN_BD = int.Parse(item.Cells["DMHNMoi"].Value.ToString());
-                                if (item.Cells["DMDCMoi"].Value != null)
-                                    ctdcbd.DinhMuc_BD = int.Parse(item.Cells["DMDCMoi"].Value.ToString());
+                                if (item.Cells["DMMoi"].Value != null)
+                                    ctdcbd.DinhMuc_BD = int.Parse(item.Cells["DMMoi"].Value.ToString());
                             }
 
                             if (item.Cells["HieuLucKy"].Value != null)
@@ -445,8 +446,41 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             if (_cDCBD.ThemDCBD(ctdcbd))
                             {
-                                if (dontu_ChiTiet != null)
-                                    _cDonTu.Them_LichSu(ctdcbd.CreateDate.Value, "DCBD", "Đã Điều Chỉnh Biến Động, " + ctdcbd.ThongTin, (int)ctdcbd.MaCTDCBD, dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
+                                string[] MaCTs = item.Cells["MaCT"].Value.ToString().Split(',');
+                                int DinhMuc = (int)Math.Round((double)ctdcbd.DinhMucHN_BD.Value / MaCTs.Length, 0, MidpointRounding.AwayFromZero);
+                                int[] a = new int[MaCTs.Length];
+                                int temp = 0;
+                                for (int i = 0; i < MaCTs.Length; i++)
+                                    if (i + 1 == MaCTs.Length)
+                                    {
+                                        a[i] = ctdcbd.DinhMucHN_BD.Value - temp;
+                                    }
+                                    else
+                                    {
+                                        temp += DinhMuc;
+                                    }
+                                for (int i = 0; i < MaCTs.Length; i++)
+                                {
+                                    ChungTu chungtu = new ChungTu();
+                                    chungtu.MaCT = MaCTs[i];
+                                    chungtu.HoTen = item.Cells["HoTen"].Value.ToString();
+                                    chungtu.DiaChi = item.Cells["DiaChi"].Value.ToString();
+                                    chungtu.SoNKTong = a[i]/4;
+                                    chungtu.MaLCT = 9;
+                                    _cChungTu.Them(chungtu);
+
+                                    ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
+                                    ctchungtu.DanhBo = item.Cells["DanhBo"].Value.ToString();
+                                    ctchungtu.MaLCT = 9;
+                                    ctchungtu.MaCT = MaCTs[i];
+                                    ctchungtu.SoNKDangKy = a[i]/4;
+                                    ctchungtu.ThoiHan = 12;
+                                    ctchungtu.NgayHetHan = DateTime.Now.AddMonths(12);
+                                    _cChungTu.ThemCT(ctchungtu);
+                                }
+
+                                //if (dontu_ChiTiet != null)
+                                //    _cDonTu.Them_LichSu(ctdcbd.CreateDate.Value, "DCBD", "Đã Điều Chỉnh Biến Động, " + ctdcbd.ThongTin, (int)ctdcbd.MaCTDCBD, dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
                                 if (min == 0)
                                     min = ctdcbd.MaCTDCBD;
                                 max = ctdcbd.MaCTDCBD;
@@ -490,12 +524,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             foreach (DataRow item in dt.Rows)
             {
-                var index = dgvDanhBo.Rows.Add();
-                dgvDanhBo.Rows[index].Cells["MaDon"].Value = "19110518";
-                dgvDanhBo.Rows[index].Cells["HieuLucKy"].Value = "12/2019";
                 HOADON hoadon = _cThuTien.GetMoiNhat(item["DanhBo"].ToString());
                 if (hoadon != null)
                 {
+                    var index = dgvDanhBo.Rows.Add();
+                    dgvDanhBo["MaDon", index].Value = "19110518";
+                    dgvDanhBo["HieuLucKy", index].Value = "12/2019";
                     dgvDanhBo["DanhBo", index].Value = hoadon.DANHBA;
                     dgvDanhBo["HopDong", index].Value = hoadon.HOPDONG;
                     dgvDanhBo["HoTen", index].Value = hoadon.TENKH;
@@ -513,19 +547,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dgvDanhBo["DV", index].Value = hoadon.TILEDV.ToString();
                     dgvDanhBo["HCSN", index].Value = hoadon.TILEHCSN.ToString();
                     dgvDanhBo["MaQuanPhuong", index].Value = hoadon.Quan + " " + hoadon.Phuong;
-                }
-                if (int.Parse(dgvDanhBo["DinhMuc", index].Value.ToString()) <= (int.Parse(item["DinhMucHN"].ToString()) + int.Parse(item["DinhMucDC"].ToString())))
-                {
-                    dgvDanhBo["GBMoi", index].Value = "10";
-                    dgvDanhBo["DMHNMoi", index].Value = item["DinhMucHN"].ToString();
-                    dgvDanhBo["DMDCMoi", index].Value = item["DinhMucDC"].ToString();
-                }
-                else
-                    if (int.Parse(dgvDanhBo["DinhMuc", index].Value.ToString()) > (int.Parse(item["DinhMucHN"].ToString()) + int.Parse(item["DinhMucDC"].ToString())))
+                    dgvDanhBo["MaCT", index].Value = item["MaCT"].ToString();
+                    if (int.Parse(dgvDanhBo["DinhMuc", index].Value.ToString()) <= int.Parse(item["DinhMucHN"].ToString()))
                     {
-                        dgvDanhBo["DMHNMoi", index].Value = item["DinhMucHN"].ToString();
-                        dgvDanhBo["DMDCMoi", index].Value = int.Parse(dgvDanhBo["DinhMuc", index].Value.ToString()) - int.Parse(item["DinhMucHN"].ToString());
+                        dgvDanhBo["GBMoi", index].Value = "10";
+                        dgvDanhBo["DMMoi", index].Value = item["DinhMucHN"].ToString();
                     }
+                    else
+                        if (int.Parse(dgvDanhBo["DinhMuc", index].Value.ToString()) > int.Parse(item["DinhMucHN"].ToString()))
+                        {
+                            dgvDanhBo["DMHNMoi", index].Value = item["DinhMucHN"].ToString();
+                            dgvDanhBo["DMMoi", index].Value = int.Parse(dgvDanhBo["DinhMuc", index].Value.ToString());
+                        }
+                }
+
             }
 
         }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -260,7 +260,7 @@
             // 
             // txtDinhMuc_Cu
             // 
-            this.txtDinhMuc_Cu.Location = new System.Drawing.Point(117, 105);
+            this.txtDinhMuc_Cu.Location = new System.Drawing.Point(117, 77);
             this.txtDinhMuc_Cu.Name = "txtDinhMuc_Cu";
             this.txtDinhMuc_Cu.Size = new System.Drawing.Size(50, 22);
             this.txtDinhMuc_Cu.TabIndex = 3;
@@ -271,7 +271,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 108);
+            this.label6.Location = new System.Drawing.Point(5, 80);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 16);
             this.label6.TabIndex = 2;
@@ -279,7 +279,7 @@
             // 
             // txtTieuThu_Cu
             // 
-            this.txtTieuThu_Cu.Location = new System.Drawing.Point(117, 134);
+            this.txtTieuThu_Cu.Location = new System.Drawing.Point(117, 133);
             this.txtTieuThu_Cu.Name = "txtTieuThu_Cu";
             this.txtTieuThu_Cu.Size = new System.Drawing.Size(50, 22);
             this.txtTieuThu_Cu.TabIndex = 5;
@@ -290,7 +290,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 137);
+            this.label7.Location = new System.Drawing.Point(5, 136);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 16);
             this.label7.TabIndex = 4;
@@ -298,7 +298,7 @@
             // 
             // txtTieuThu_Moi
             // 
-            this.txtTieuThu_Moi.Location = new System.Drawing.Point(395, 134);
+            this.txtTieuThu_Moi.Location = new System.Drawing.Point(395, 133);
             this.txtTieuThu_Moi.Name = "txtTieuThu_Moi";
             this.txtTieuThu_Moi.Size = new System.Drawing.Size(50, 22);
             this.txtTieuThu_Moi.TabIndex = 13;
@@ -309,7 +309,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(279, 137);
+            this.label8.Location = new System.Drawing.Point(279, 136);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 16);
             this.label8.TabIndex = 12;
@@ -317,7 +317,7 @@
             // 
             // txtDinhMuc_Moi
             // 
-            this.txtDinhMuc_Moi.Location = new System.Drawing.Point(395, 105);
+            this.txtDinhMuc_Moi.Location = new System.Drawing.Point(395, 77);
             this.txtDinhMuc_Moi.Name = "txtDinhMuc_Moi";
             this.txtDinhMuc_Moi.Size = new System.Drawing.Size(50, 22);
             this.txtDinhMuc_Moi.TabIndex = 11;
@@ -328,7 +328,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(279, 108);
+            this.label9.Location = new System.Drawing.Point(279, 80);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 16);
             this.label9.TabIndex = 10;
@@ -711,7 +711,7 @@
             // 
             // txtDinhMucHN_Moi
             // 
-            this.txtDinhMucHN_Moi.Location = new System.Drawing.Point(395, 77);
+            this.txtDinhMucHN_Moi.Location = new System.Drawing.Point(395, 105);
             this.txtDinhMucHN_Moi.Name = "txtDinhMucHN_Moi";
             this.txtDinhMucHN_Moi.Size = new System.Drawing.Size(50, 22);
             this.txtDinhMucHN_Moi.TabIndex = 19;
@@ -722,7 +722,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(279, 80);
+            this.label35.Location = new System.Drawing.Point(279, 108);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(113, 16);
             this.label35.TabIndex = 18;
@@ -731,7 +731,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(6, 80);
+            this.label33.Location = new System.Drawing.Point(5, 108);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(105, 16);
             this.label33.TabIndex = 16;
@@ -739,7 +739,7 @@
             // 
             // txtDinhMucHN_Cu
             // 
-            this.txtDinhMucHN_Cu.Location = new System.Drawing.Point(117, 77);
+            this.txtDinhMucHN_Cu.Location = new System.Drawing.Point(117, 105);
             this.txtDinhMucHN_Cu.Name = "txtDinhMucHN_Cu";
             this.txtDinhMucHN_Cu.Size = new System.Drawing.Size(50, 22);
             this.txtDinhMucHN_Cu.TabIndex = 17;
@@ -1206,14 +1206,14 @@
             // 
             this.dgvHinh.AllowUserToAddRows = false;
             this.dgvHinh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Hinh,

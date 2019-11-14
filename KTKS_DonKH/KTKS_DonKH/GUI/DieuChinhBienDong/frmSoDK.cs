@@ -340,7 +340,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
                             {
                                 ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
-                                    ctchungtu.NgayHetHan = dateHetHan.Value;
+                                ctchungtu.NgayHetHan = dateHetHan.Value;
                             }
                             ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                             ctchungtu.Lo = txtLo.Text.Trim();
@@ -654,7 +654,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             ChungTu _chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                             ChungTu_ChiTiet _ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
-                            
+
                             _chungtu.HoTen = txtHoTen.Text.Trim();
                             _chungtu.DiaChi = txtDiaChi.Text.Trim();
                             _chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
@@ -1220,7 +1220,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 txtThoiHan.Text = ((LoaiChungTu)cmbLoaiCT.SelectedItem).ThoiHan.ToString();
                 if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
-                dateHetHan.Value = DateTime.Now.AddMonths(int.Parse(txtThoiHan.Text.Trim()));
+                    dateHetHan.Value = DateTime.Now.AddMonths(int.Parse(txtThoiHan.Text.Trim()));
                 if (cmbLoaiCT.SelectedValue.ToString() == "7")
                     txtGhiChu.Text = "DINH MUC NHAP CU";
                 else

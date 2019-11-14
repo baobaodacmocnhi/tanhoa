@@ -84,7 +84,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         en.DinhMucHN = int.Parse(item[1].ToString());
                                     if (item[2].ToString() != "")
                                         en.MaCT = item[2].ToString();
-                                    en.DinhMucDC = 0;
                                     _cHoNgheo.Them(en);
                                 }
                                 else
@@ -162,8 +161,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             //    en.DinhMuc = int.Parse(dgvDanhSach["DinhMuc", e.RowIndex].Value.ToString());
                             if (dgvDanhSach["DinhMucHN", e.RowIndex].Value.ToString() != "")
                                 en.DinhMucHN = int.Parse(dgvDanhSach["DinhMucHN", e.RowIndex].Value.ToString());
-                            if (dgvDanhSach["DinhMucDC", e.RowIndex].Value.ToString() != "")
-                                en.DinhMucDC = int.Parse(dgvDanhSach["DinhMucDC", e.RowIndex].Value.ToString());
                             if (dgvDanhSach["MaCT", e.RowIndex].Value.ToString() != "")
                                 en.MaCT = dgvDanhSach["MaCT", e.RowIndex].Value.ToString();
                             _cHoNgheo.Sua(en);

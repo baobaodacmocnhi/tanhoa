@@ -73,6 +73,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(db.HoNgheos.OrderBy(item=>item.DanhBo).ToList());
         }
 
+        public DataTable getDS(string DanhBo)
+        {
+            return LINQToDataTable(db.HoNgheos.Where(item => item.DanhBo==DanhBo).ToList());
+        }
+
         public DataTable getDS_To(int MaTo)
         {
             return LINQToDataTable(db.HoNgheos.Where(item => db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).MaTo == MaTo).OrderBy(item => item.DanhBo));

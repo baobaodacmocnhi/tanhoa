@@ -32812,8 +32812,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _DinhMucHN;
 		
-		private System.Nullable<int> _DinhMucDC;
-		
 		private string _MaCT;
 		
 		private bool _DCBD;
@@ -32846,8 +32844,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnDinhMucChanged();
     partial void OnDinhMucHNChanging(System.Nullable<int> value);
     partial void OnDinhMucHNChanged();
-    partial void OnDinhMucDCChanging(System.Nullable<int> value);
-    partial void OnDinhMucDCChanged();
     partial void OnMaCTChanging(string value);
     partial void OnMaCTChanged();
     partial void OnDCBDChanging(bool value);
@@ -33023,26 +33019,6 @@ namespace KTKS_DonKH.LinQ
 					this._DinhMucHN = value;
 					this.SendPropertyChanged("DinhMucHN");
 					this.OnDinhMucHNChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMucDC", DbType="Int")]
-		public System.Nullable<int> DinhMucDC
-		{
-			get
-			{
-				return this._DinhMucDC;
-			}
-			set
-			{
-				if ((this._DinhMucDC != value))
-				{
-					this.OnDinhMucDCChanging(value);
-					this.SendPropertyChanging();
-					this._DinhMucDC = value;
-					this.SendPropertyChanged("DinhMucDC");
-					this.OnDinhMucDCChanged();
 				}
 			}
 		}

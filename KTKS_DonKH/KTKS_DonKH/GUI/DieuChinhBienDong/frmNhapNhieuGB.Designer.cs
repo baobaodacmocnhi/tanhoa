@@ -36,8 +36,8 @@
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HieuLucKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GBMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DMMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DMHNMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DMDCMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +56,7 @@
             this.SX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,8 +67,8 @@
             this.MaDon,
             this.HieuLucKy,
             this.GBMoi,
+            this.DMMoi,
             this.DMHNMoi,
-            this.DMDCMoi,
             this.Dot,
             this.DanhBo,
             this.HoTen,
@@ -85,7 +86,8 @@
             this.HCSN,
             this.SX,
             this.DV,
-            this.GhiChu});
+            this.GhiChu,
+            this.MaCT});
             this.dgvDanhBo.Location = new System.Drawing.Point(12, 43);
             this.dgvDanhBo.Name = "dgvDanhBo";
             this.dgvDanhBo.Size = new System.Drawing.Size(1269, 441);
@@ -171,17 +173,17 @@
             this.GBMoi.Name = "GBMoi";
             this.GBMoi.Width = 50;
             // 
+            // DMMoi
+            // 
+            this.DMMoi.HeaderText = "ĐM Mới";
+            this.DMMoi.Name = "DMMoi";
+            this.DMMoi.Width = 50;
+            // 
             // DMHNMoi
             // 
             this.DMHNMoi.HeaderText = "ĐM HN Mới";
             this.DMHNMoi.Name = "DMHNMoi";
             this.DMHNMoi.Width = 50;
-            // 
-            // DMDCMoi
-            // 
-            this.DMDCMoi.HeaderText = "ĐM DC Mới";
-            this.DMDCMoi.Name = "DMDCMoi";
-            this.DMDCMoi.Width = 50;
             // 
             // Dot
             // 
@@ -290,6 +292,12 @@
             this.GhiChu.HeaderText = "Ghi Chú";
             this.GhiChu.Name = "GhiChu";
             // 
+            // MaCT
+            // 
+            this.MaCT.HeaderText = "MaCT";
+            this.MaCT.Name = "MaCT";
+            this.MaCT.Visible = false;
+            // 
             // frmNhapNhieuGB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -322,8 +330,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn HieuLucKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn GBMoi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DMMoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn DMHNMoi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DMDCMoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
@@ -342,5 +350,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SX;
         private System.Windows.Forms.DataGridViewTextBoxColumn DV;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaCT;
     }
 }

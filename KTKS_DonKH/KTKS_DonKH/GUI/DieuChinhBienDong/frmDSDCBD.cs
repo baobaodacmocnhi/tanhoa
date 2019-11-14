@@ -585,7 +585,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
-                                rptPhieuDCBD_122019 rpt = new rptPhieuDCBD_122019();
+                                rptPhieuDCBD_15112019 rpt = new rptPhieuDCBD_15112019();
                                 rpt.SetDataSource(dsBaoCao);
 
                                 printDialog.AllowSomePages = true;

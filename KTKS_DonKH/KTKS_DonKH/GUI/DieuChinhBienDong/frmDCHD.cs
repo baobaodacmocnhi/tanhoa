@@ -1461,16 +1461,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtGiaBieu_Cu_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
-                txtDinhMucHN_Cu.Focus();
-        }
-
-        private void txtDinhMucHN_Cu_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
                 txtDinhMuc_Cu.Focus();
         }
 
         private void txtDinhMuc_Cu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDinhMucHN_Cu.Focus();
+        }
+
+        private void txtDinhMucHN_Cu_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
                 txtTieuThu_Cu.Focus();
@@ -1497,16 +1497,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtGiaBieu_Moi_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
+                txtDinhMuc_Moi.Focus();
+        }
+
+        private void txtDinhMuc_Moi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
                 txtDinhMucHN_Moi.Focus();
         }
 
         private void txtDinhMucHN_Moi_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-                txtTieuThu_Moi.Focus();
-        }
-
-        private void txtDinhMuc_Moi_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
                 txtTieuThu_Moi.Focus();
@@ -1750,19 +1750,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //        {
             //            TongTienMoi = _cGiaNuoc.TinhTienNuoc(chkDieuChinhGia.Checked, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out ChiTietMoi, out _TieuThu_DieuChinhGia);
             //        }
-            _cGiaNuoc.TinhTienNuoc(false, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), _hoadon.KY, _hoadon.NAM.Value, _hoadon.TUNGAY.Value, _hoadon.DENNGAY.Value, int.Parse(txtGiaBieu_Cu.Text.Trim()), _hoadon.TILESH.Value, _hoadon.TILESX.Value, _hoadon.TILEDV.Value, _hoadon.TILEHCSN.Value, int.Parse(txtDinhMucHN_Cu.Text.Trim()), int.Parse(txtDinhMuc_Cu.Text.Trim()), int.Parse(txtTieuThu_Cu.Text.Trim()), out TongTienCuA, out ChiTietCuA, out TongTienCuB, out ChiTietCuB, out TieuThu_DieuChinhGia);
+            _cGiaNuoc.TinhTienNuoc(false, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), _hoadon.KY, _hoadon.NAM.Value, _hoadon.TUNGAY.Value, _hoadon.DENNGAY.Value, int.Parse(txtGiaBieu_Cu.Text.Trim()), _hoadon.TILESH.Value, _hoadon.TILESX.Value, _hoadon.TILEDV.Value, _hoadon.TILEHCSN.Value, int.Parse(txtDinhMucHN_Cu.Text.Trim()), int.Parse(txtDinhMuc_Cu.Text.Trim()) - int.Parse(txtDinhMucHN_Cu.Text.Trim()), int.Parse(txtTieuThu_Cu.Text.Trim()), out TongTienCuA, out ChiTietCuA, out TongTienCuB, out ChiTietCuB, out TieuThu_DieuChinhGia);
             if (chkDieuChinhGia2.Checked)
             {
-                _cGiaNuoc.TinhTienNuoc2(false, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), _hoadon.KY, _hoadon.NAM.Value, _hoadon.TUNGAY.Value, _hoadon.DENNGAY.Value, int.Parse(txtGiaBieu_Moi.Text.Trim()), _hoadon.TILESH.Value, _hoadon.TILESX.Value, _hoadon.TILEDV.Value, _hoadon.TILEHCSN.Value, int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()) - int.Parse(txtTieuThu_DieuChinhGia2.Text.Trim()), int.Parse(txtTieuThu_DieuChinhGia2.Text.Trim()), int.Parse(txtGiaDieuChinh2.Text.Trim()), out TongTienMoiA, out ChiTietMoiA, out TongTienMoiB, out ChiTietMoiB);
+                _cGiaNuoc.TinhTienNuoc2(false, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), _hoadon.KY, _hoadon.NAM.Value, _hoadon.TUNGAY.Value, _hoadon.DENNGAY.Value, int.Parse(txtGiaBieu_Moi.Text.Trim()), _hoadon.TILESH.Value, _hoadon.TILESX.Value, _hoadon.TILEDV.Value, _hoadon.TILEHCSN.Value, int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()) - int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()) - int.Parse(txtTieuThu_DieuChinhGia2.Text.Trim()), int.Parse(txtTieuThu_DieuChinhGia2.Text.Trim()), int.Parse(txtGiaDieuChinh2.Text.Trim()), out TongTienMoiA, out ChiTietMoiA, out TongTienMoiB, out ChiTietMoiB);
             }
             else
                 if (chkKhuCongNghiep.Checked)
                 {
-                    _cGiaNuoc.TinhTienNuoc_KhuCongNghiep(txtDanhBo.Text.Trim(), _hoadon.KY, _hoadon.NAM.Value, _hoadon.TUNGAY.Value, _hoadon.DENNGAY.Value, int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out TongTienCuA, out ChiTietCuA, out TongTienCuB, out ChiTietCuB, out _TyLeKhuCongNghiep);
+                    _cGiaNuoc.TinhTienNuoc_KhuCongNghiep(txtDanhBo.Text.Trim(), _hoadon.KY, _hoadon.NAM.Value, _hoadon.TUNGAY.Value, _hoadon.DENNGAY.Value, int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()) - int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out TongTienCuA, out ChiTietCuA, out TongTienCuB, out ChiTietCuB, out _TyLeKhuCongNghiep);
                 }
                 else
                 {
-                    _cGiaNuoc.TinhTienNuoc(false, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), _hoadon.KY, _hoadon.NAM.Value, _hoadon.TUNGAY.Value, _hoadon.DENNGAY.Value, int.Parse(txtGiaBieu_Moi.Text.Trim()), _hoadon.TILESH.Value, _hoadon.TILESX.Value, _hoadon.TILEDV.Value, _hoadon.TILEHCSN.Value, int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out TongTienMoiA, out ChiTietMoiA, out TongTienMoiB, out ChiTietMoiB, out _TieuThu_DieuChinhGia);
+                    _cGiaNuoc.TinhTienNuoc(false, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), _hoadon.KY, _hoadon.NAM.Value, _hoadon.TUNGAY.Value, _hoadon.DENNGAY.Value, int.Parse(txtGiaBieu_Moi.Text.Trim()), _hoadon.TILESH.Value, _hoadon.TILESX.Value, _hoadon.TILEDV.Value, _hoadon.TILEHCSN.Value, int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()) - int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out TongTienMoiA, out ChiTietMoiA, out TongTienMoiB, out ChiTietMoiB, out _TieuThu_DieuChinhGia);
                 }
 
             ///Chi Tiết
