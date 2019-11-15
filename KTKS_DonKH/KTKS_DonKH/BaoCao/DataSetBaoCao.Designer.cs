@@ -4007,7 +4007,7 @@ namespace KTKS_DonKH.BaoCao {
                         string MaDon, 
                         string SoPhieu, 
                         string HieuLucKy, 
-                        string Dot, 
+                        int Dot, 
                         string DanhBo, 
                         string HopDong, 
                         string HoTen, 
@@ -4146,7 +4146,7 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnSoPhieu);
                 this.columnHieuLucKy = new global::System.Data.DataColumn("HieuLucKy", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHieuLucKy);
-                this.columnDot = new global::System.Data.DataColumn("Dot", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDot = new global::System.Data.DataColumn("Dot", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDot);
                 this.columnDanhBo = new global::System.Data.DataColumn("DanhBo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDanhBo);
@@ -22064,10 +22064,10 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Dot {
+            public int Dot {
                 get {
                     try {
-                        return ((string)(this[this.tableDCBD.DotColumn]));
+                        return ((int)(this[this.tableDCBD.DotColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Dot\' in table \'DCBD\' is DBNull.", e);

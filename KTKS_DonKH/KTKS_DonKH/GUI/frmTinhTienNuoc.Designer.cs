@@ -34,7 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDinhMucHN = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDinhMucDC = new System.Windows.Forms.TextBox();
+            this.txtDinhMuc = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTieuThu = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -131,14 +131,14 @@
             this.label3.TabIndex = 23;
             this.label3.Text = "Định Mức HN";
             // 
-            // txtDinhMucDC
+            // txtDinhMuc
             // 
-            this.txtDinhMucDC.Location = new System.Drawing.Point(109, 134);
-            this.txtDinhMucDC.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDinhMucDC.Name = "txtDinhMucDC";
-            this.txtDinhMucDC.Size = new System.Drawing.Size(50, 22);
-            this.txtDinhMucDC.TabIndex = 22;
-            this.txtDinhMucDC.Text = "0";
+            this.txtDinhMuc.Location = new System.Drawing.Point(109, 134);
+            this.txtDinhMuc.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDinhMuc.Name = "txtDinhMuc";
+            this.txtDinhMuc.Size = new System.Drawing.Size(50, 22);
+            this.txtDinhMuc.TabIndex = 22;
+            this.txtDinhMuc.Text = "0";
             // 
             // label4
             // 
@@ -146,9 +146,9 @@
             this.label4.Location = new System.Drawing.Point(16, 137);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 16);
+            this.label4.Size = new System.Drawing.Size(62, 16);
             this.label4.TabIndex = 21;
-            this.label4.Text = "Định Mức DC";
+            this.label4.Text = "Định Mức";
             // 
             // txtTieuThu
             // 
@@ -539,7 +539,7 @@
             this.Controls.Add(this.txtChiTietCu);
             this.Controls.Add(this.txtTieuThu);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtDinhMucDC);
+            this.Controls.Add(this.txtDinhMuc);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtDinhMucHN);
             this.Controls.Add(this.label3);
@@ -565,7 +565,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDinhMucHN;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtDinhMucDC;
+        private System.Windows.Forms.TextBox txtDinhMuc;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTieuThu;
         private System.Windows.Forms.Label label5;

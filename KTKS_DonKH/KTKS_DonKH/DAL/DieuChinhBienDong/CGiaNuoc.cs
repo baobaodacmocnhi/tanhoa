@@ -2605,12 +2605,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         //tính giá nước 15/11/2019
 
-        public int TinhTienNuoc(bool DieuChinhGia, int GiaDieuChinh, List<int> lstGiaNuoc,  int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int DinhMucHN, int DinhMuc, int TieuThu, out string ChiTiet, out int TieuThu_DieuChinhGia)
+        public int TinhTienNuoc(bool DieuChinhGia, int GiaDieuChinh, List<int> lstGiaNuoc, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, out string ChiTiet, out int TieuThu_DieuChinhGia)
         {
             try
             {
                 string _chiTiet = "";
-                int _SH = 0, _SX = 0, _DV = 0, _HCSN = 0;
+                int DinhMuc = TongDinhMuc - DinhMucHN, _SH = 0, _SX = 0, _DV = 0, _HCSN = 0;
                 TieuThu_DieuChinhGia = 0;
                 //HOADON hoadon = _cThuTien.Get(DanhBo, Ky, Nam);
                 //List<GiaNuoc> lstGiaNuoc = db.GiaNuocs.ToList();
@@ -3455,10 +3455,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             int TieuThuHN = 0, TieuThuDC = 0;
                             TieuThuHN = (int)Math.Round(TieuThu * TyLe, 0, MidpointRounding.AwayFromZero);
                             TieuThuDC = TieuThu - TieuThuHN;
-                            TongTien = (TieuThuHN * lstGiaNuoc[6])
-                                        + (TieuThuDC * lstGiaNuoc[0]);
-                            _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]) + "\r\n"
-                                        + TieuThuDC + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[0]);
+                            TongTien = (TieuThuHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
+                                        + (TieuThuDC * (lstGiaNuoc[0] - lstGiaNuoc[0] * _GiamTienNuoc / 100));
+                            _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100)) + "\r\n"
+                                        + TieuThuDC + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[0] - lstGiaNuoc[0] * _GiamTienNuoc / 100));
                         }
                         else
                             if (!DieuChinhGia)
@@ -3579,10 +3579,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             int TieuThuHN = 0, TieuThuDC = 0;
                             TieuThuHN = (int)Math.Round(_SH * TyLe, 0, MidpointRounding.AwayFromZero);
                             TieuThuDC = _SH - TieuThuHN;
-                            TongTien = (TieuThuHN * lstGiaNuoc[6])
-                                        + (TieuThuDC * lstGiaNuoc[0]);
-                            _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]) + "\r\n"
-                                        + TieuThuDC + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[0]);
+                            TongTien = (TieuThuHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
+                                        + (TieuThuDC * (lstGiaNuoc[0] - lstGiaNuoc[0] * _GiamTienNuoc / 100));
+                            _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100)) + "\r\n"
+                                        + TieuThuDC + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[0] - lstGiaNuoc[0] * _GiamTienNuoc / 100));
                         }
                         else
                             if (!DieuChinhGia)
@@ -3642,10 +3642,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             int TieuThuHN = 0, TieuThuDC = 0;
                             TieuThuHN = (int)Math.Round(_SH * TyLe, 0, MidpointRounding.AwayFromZero);
                             TieuThuDC = _SH - TieuThuHN;
-                            TongTien = (TieuThuHN * lstGiaNuoc[6])
-                                        + (TieuThuDC * lstGiaNuoc[0]);
-                            _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]) + "\r\n"
-                                        + TieuThuDC + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[0]);
+                            TongTien = (TieuThuHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
+                                        + (TieuThuDC * (lstGiaNuoc[0] - lstGiaNuoc[0] * _GiamTienNuoc / 100));
+                            _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100)) + "\r\n"
+                                        + TieuThuDC + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[0] - lstGiaNuoc[0] * _GiamTienNuoc / 100));
                         }
                         else
                             if (!DieuChinhGia)
@@ -3696,12 +3696,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public int TinhTienNuoc2(bool DieuChinhGia, int GiaDieuChinh, List<int> lstGiaNuoc,  int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int DinhMucHN, int DinhMuc, int TieuThu, int TieuThu_GiaDieuChinh2, int GiaTien_GiaDieuChinh2, out string ChiTiet)
+        public int TinhTienNuoc2(bool DieuChinhGia, int GiaDieuChinh, List<int> lstGiaNuoc, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, int TieuThu_GiaDieuChinh2, int GiaTien_GiaDieuChinh2, out string ChiTiet)
         {
             try
             {
                 string _chiTiet = "";
-                int _SH = 0, _SX = 0, _DV = 0, _HCSN = 0;
+                int DinhMuc = TongDinhMuc - DinhMucHN, _SH = 0, _SX = 0, _DV = 0, _HCSN = 0;
                 //HOADON hoadon = _cThuTien.Get(DanhBo, Ky, Nam);
                 //List<GiaNuoc> lstGiaNuoc = db.GiaNuocs.ToList();
                 ///Table GiaNuoc được thiết lập theo bảng giá nước
@@ -4675,11 +4675,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             int TieuThuHN = 0, TieuThuDC = 0;
                             TieuThuHN = (int)Math.Round(TieuThu * TyLe, 0, MidpointRounding.AwayFromZero);
                             TieuThuDC = TieuThu - TieuThuHN;
-                            TongTien = (TieuThuHN * lstGiaNuoc[6])
-                                        + (TieuThuDC * lstGiaNuoc[0])
+                            TongTien = (TieuThuHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
+                                        + (TieuThuDC * (lstGiaNuoc[0] - lstGiaNuoc[0] * _GiamTienNuoc / 100))
                                         + TieuThu_GiaDieuChinh2 * GiaTien_GiaDieuChinh2;
-                            _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]) + "\r\n"
-                                        + TieuThuDC + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[0]) + "\r\n"
+                            _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100)) + "\r\n"
+                                        + TieuThuDC + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[0] - lstGiaNuoc[0] * _GiamTienNuoc / 100)) + "\r\n"
                                         + TieuThu_GiaDieuChinh2 + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaTien_GiaDieuChinh2);
                         }
                         else
@@ -4827,11 +4827,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 int TieuThuHN = 0, TieuThuDC = 0;
                                 TieuThuHN = (int)Math.Round(_SH * TyLe, 0, MidpointRounding.AwayFromZero);
                                 TieuThuDC = _SH - TieuThuHN;
-                                TongTien = (TieuThuHN * lstGiaNuoc[6])
-                                            + (TieuThuDC * lstGiaNuoc[0])
+                                TongTien = (TieuThuHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
+                                            + (TieuThuDC * (lstGiaNuoc[0] - lstGiaNuoc[0] * _GiamTienNuoc / 100))
                                             + TieuThu_GiaDieuChinh2 * GiaTien_GiaDieuChinh2;
-                                _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]) + "\r\n"
-                                            + TieuThuDC + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[0]) + "\r\n"
+                                _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100)) + "\r\n"
+                                            + TieuThuDC + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[0] - lstGiaNuoc[0] * _GiamTienNuoc / 100)) + "\r\n"
                                             + TieuThu_GiaDieuChinh2 + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaTien_GiaDieuChinh2);
                             }
                             else
@@ -4908,11 +4908,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 int TieuThuHN = 0, TieuThuDC = 0;
                                 TieuThuHN = (int)Math.Round(_SH * TyLe, 0, MidpointRounding.AwayFromZero);
                                 TieuThuDC = _SH - TieuThuHN;
-                                TongTien = (TieuThuHN * lstGiaNuoc[6])
-                                            + (TieuThuDC * lstGiaNuoc[0])
+                                TongTien = (TieuThuHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
+                                            + (TieuThuDC * (lstGiaNuoc[0] - lstGiaNuoc[0] * _GiamTienNuoc / 100))
                                             + TieuThu_GiaDieuChinh2 * GiaTien_GiaDieuChinh2;
-                                _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]) + "\r\n"
-                                            + TieuThuDC + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[0]) + "\r\n"
+                                _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100)) + "\r\n"
+                                            + TieuThuDC + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[0] - lstGiaNuoc[0] * _GiamTienNuoc / 100)) + "\r\n"
                                             + TieuThu_GiaDieuChinh2 + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaTien_GiaDieuChinh2);
                             }
                             else
@@ -4973,7 +4973,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public int TinhTienNuoc_KhuCongNghiep(List<int> lstGiaNuoc, int GiaBieu, int DinhMucHN, int DinhMuc, int TieuThu, out string ChiTiet, out float TyLe)
+        public int TinhTienNuoc_KhuCongNghiep(List<int> lstGiaNuoc, int GiaBieu, int TongDinhMuc, int DinhMucHN, int TieuThu, out string ChiTiet, out float TyLe)
         {
             try
             {
@@ -5018,41 +5018,41 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
                     //    break;
                     case 52:///sỉ khu công nghiệp
-                        if (TieuThu <= DinhMuc)
+                        if (TieuThu <= TongDinhMuc)
                         {
                             TongTien = TieuThu * GiaBan;
                             _chiTiet = TieuThu + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBan);
                         }
                         else
                         {
-                            TyLe = (float)(TieuThu - DinhMuc) / DinhMuc * 100;
+                            TyLe = (float)(TieuThu - TongDinhMuc) / TongDinhMuc * 100;
                             int TyLe2 = (int)TyLe;
-                            TongTien = DinhMuc * GiaBan;
-                            _chiTiet = DinhMuc + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBan);
+                            TongTien = TongDinhMuc * GiaBan;
+                            _chiTiet = TongDinhMuc + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBan);
                             if (0 < TyLe2 && TyLe2 <= 19)
                             {
-                                TongTien += (TieuThu - DinhMuc) * (GiaBan - GiaBan * 10 / 100);
-                                _chiTiet += "\n" + (TieuThu - DinhMuc) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 10 / 100));
+                                TongTien += (TieuThu - TongDinhMuc) * (GiaBan - GiaBan * 10 / 100);
+                                _chiTiet += "\n" + (TieuThu - TongDinhMuc) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 10 / 100));
                             }
                             else if (20 <= TyLe2 && TyLe2 <= 29)
                             {
-                                TongTien += (TieuThu - DinhMuc) * (GiaBan - GiaBan * 20 / 100);
-                                _chiTiet += "\n" + (TieuThu - DinhMuc) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 20 / 100));
+                                TongTien += (TieuThu - TongDinhMuc) * (GiaBan - GiaBan * 20 / 100);
+                                _chiTiet += "\n" + (TieuThu - TongDinhMuc) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 20 / 100));
                             }
                             else if (30 <= TyLe2 && TyLe2 <= 39)
                             {
-                                TongTien += (TieuThu - DinhMuc) * (GiaBan - GiaBan * 30 / 100);
-                                _chiTiet += "\n" + (TieuThu - DinhMuc) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 30 / 100));
+                                TongTien += (TieuThu - TongDinhMuc) * (GiaBan - GiaBan * 30 / 100);
+                                _chiTiet += "\n" + (TieuThu - TongDinhMuc) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 30 / 100));
                             }
                             else if (40 <= TyLe2 && TyLe2 <= 49)
                             {
-                                TongTien += (TieuThu - DinhMuc) * (GiaBan - GiaBan * 40 / 100);
-                                _chiTiet += "\n" + (TieuThu - DinhMuc) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 40 / 100));
+                                TongTien += (TieuThu - TongDinhMuc) * (GiaBan - GiaBan * 40 / 100);
+                                _chiTiet += "\n" + (TieuThu - TongDinhMuc) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 40 / 100));
                             }
                             else if (50 <= TyLe2)
                             {
-                                TongTien += (TieuThu - DinhMuc) * (GiaBan - GiaBan * 50 / 100);
-                                _chiTiet += "\n" + (TieuThu - DinhMuc) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 50 / 100));
+                                TongTien += (TieuThu - TongDinhMuc) * (GiaBan - GiaBan * 50 / 100);
+                                _chiTiet += "\n" + (TieuThu - TongDinhMuc) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 50 / 100));
                             }
                         }
                         break;
@@ -6101,7 +6101,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
 
 
-        public void TinhTienNuoc(bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int DinhMucHN, int DinhMucDC, int TieuThu, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi, out int TieuThu_DieuChinhGia)
+        public void TinhTienNuoc(bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi, out int TieuThu_DieuChinhGia)
         {
             List<GiaNuoc2> lst = getDS();
             int index = -1;
@@ -6124,7 +6124,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     //int TieuThu_DieuChinhGia;
                     List<int> lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
-                    TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuoc,  GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, 0, DinhMucDC, TieuThu, out ChiTietCu, out TieuThu_DieuChinhGia);
+                    TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuoc, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, 0, TieuThu, out ChiTietCu, out TieuThu_DieuChinhGia);
                 }
                 else
                     if (TuNgay.Date < lst[index].NgayTangGia.Value.Date && lst[index].NgayTangGia.Value.Date < DenNgay.Date)
@@ -6135,20 +6135,22 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         int SoNgayCu = (int)((lst[index].NgayTangGia.Value.Date.AddDays(-1) - TuNgay.Date).TotalDays);
                         int TieuThuCu = (int)Math.Round((double)TieuThu * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
                         int TieuThuMoi = TieuThu - TieuThuCu;
-                        int DinhMucCu = (int)Math.Round((double)(DinhMucHN + DinhMucDC) * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
-                        int DinhMucMoi = (DinhMucHN + DinhMucDC) - DinhMucCu;
-                        int DinhMucHN_B = (int)Math.Round((double)DinhMucMoi * DinhMucHN / (DinhMucHN + DinhMucDC), 0, MidpointRounding.AwayFromZero);
-                        int DinhMucDC_B = DinhMucMoi - DinhMucHN_B;
+                        int TongDinhMucCu = (int)Math.Round((double)TongDinhMuc * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+                        int TongDinhMucMoi = TongDinhMuc - TongDinhMucCu;
+                        int DinhMucHN_Cu = 0;
+                        if (TuNgay.Date > new DateTime(2019, 11, 15))
+                            DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
+                        int DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
                         List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
                         List<int> lstGiaNuocMoi = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
-                        TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocCu,  GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, 0, DinhMucCu, TieuThuCu, out ChiTietCu, out TieuThu_DieuChinhGia);
-                        TienNuocMoi = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocMoi,  GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMucHN_B, DinhMucDC_B, TieuThuMoi, out ChiTietMoi, out TieuThu_DieuChinhGia);
+                        TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocCu, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucCu, DinhMucHN_Cu, TieuThuCu, out ChiTietCu, out TieuThu_DieuChinhGia);
+                        TienNuocMoi = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocMoi, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucMoi, DinhMucHN_Moi, TieuThuMoi, out ChiTietMoi, out TieuThu_DieuChinhGia);
                     }
                     else
                     {
                         //int TieuThu_DieuChinhGia;
                         List<int> lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
-                        TienNuocCu = TinhTienNuoc(DieuChinhGia, 0, lstGiaNuoc,  GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMucHN, DinhMucDC, TieuThu, out ChiTietCu, out TieuThu_DieuChinhGia);
+                        TienNuocCu = TinhTienNuoc(DieuChinhGia, 0, lstGiaNuoc, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, out ChiTietCu, out TieuThu_DieuChinhGia);
                     }
             }
             else
@@ -6157,7 +6159,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public void TinhTienNuoc2(bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int DinhMucHN, int DinhMucDC, int TieuThu, int TieuThu_GiaDieuChinh2, int GiaTien_GiaDieuChinh2, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi)
+        public void TinhTienNuoc2(bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, int TieuThu_GiaDieuChinh2, int GiaTien_GiaDieuChinh2, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi)
         {
             List<GiaNuoc2> lst = getDS();
             int index = -1;
@@ -6178,7 +6180,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 if (DenNgay.Date < new DateTime(2019, 11, 15))
                 {
                     List<int> lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
-                    TienNuocCu = TinhTienNuoc2(DieuChinhGia, GiaDieuChinh, lstGiaNuoc,  GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, 0, DinhMucDC, TieuThu, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietCu);
+                    TienNuocCu = TinhTienNuoc2(DieuChinhGia, GiaDieuChinh, lstGiaNuoc, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, 0, TieuThu, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietCu);
                 }
                 else
                     if (TuNgay.Date < lst[index].NgayTangGia.Value.Date && lst[index].NgayTangGia.Value.Date < DenNgay.Date)
@@ -6188,19 +6190,21 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         int SoNgayCu = (int)((lst[index].NgayTangGia.Value.Date.AddDays(-1) - TuNgay.Date).TotalDays);
                         int TieuThuCu = (int)Math.Round((double)TieuThu * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
                         int TieuThuMoi = TieuThu - TieuThuCu;
-                        int DinhMucCu = (int)Math.Round((double)(DinhMucHN + DinhMucDC) * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
-                        int DinhMucMoi = (DinhMucHN + DinhMucDC) - DinhMucCu;
-                        int DinhMucHN_B = (int)Math.Round((double)DinhMucMoi * DinhMucHN / (DinhMucHN + DinhMucDC), 0, MidpointRounding.AwayFromZero);
-                        int DinhMucDC_B = DinhMucMoi - DinhMucHN_B;
+                        int TongDinhMucCu = (int)Math.Round((double)TongDinhMuc * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+                        int TongDinhMucMoi = TongDinhMuc - TongDinhMucCu;
+                        int DinhMucHN_Cu = 0;
+                        if (TuNgay.Date > new DateTime(2019, 11, 15))
+                            DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
+                        int DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
                         List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
                         List<int> lstGiaNuocMoi = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
-                        TienNuocCu = TinhTienNuoc2(DieuChinhGia, GiaDieuChinh, lstGiaNuocCu,  GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, 0, DinhMucCu, TieuThuCu, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietCu);
-                        TienNuocMoi = TinhTienNuoc2(DieuChinhGia, GiaDieuChinh, lstGiaNuocMoi,  GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMucHN_B, DinhMucDC_B, TieuThuMoi, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietMoi);
+                        TienNuocCu = TinhTienNuoc2(DieuChinhGia, GiaDieuChinh, lstGiaNuocCu, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucCu, DinhMucHN_Cu, TieuThuCu, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietCu);
+                        TienNuocMoi = TinhTienNuoc2(DieuChinhGia, GiaDieuChinh, lstGiaNuocMoi, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucMoi, DinhMucHN_Moi, TieuThuMoi, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietMoi);
                     }
                     else
                     {
                         List<int> lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
-                        TienNuocCu = TinhTienNuoc2(DieuChinhGia, GiaDieuChinh, lstGiaNuoc,  GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMucHN, DinhMucDC, TieuThu, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietCu);
+                        TienNuocCu = TinhTienNuoc2(DieuChinhGia, GiaDieuChinh, lstGiaNuoc, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietCu);
                     }
             }
             else
@@ -6209,7 +6213,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public void TinhTienNuoc_KhuCongNghiep(string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int DinhMucHN, int DinhMucDC, int TieuThu, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi, out float TyLe)
+        public void TinhTienNuoc_KhuCongNghiep(string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TongDinhMuc, int DinhMucHN, int TieuThu, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi, out float TyLe)
         {
             List<GiaNuoc2> lst = getDS();
             int index = -1;
@@ -6217,7 +6221,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             ChiTietCu = ChiTietMoi = "";
             TyLe = 0.0f;
             KhuCongNghiep kcn = _cKCN.get(DanhBo);
-            DinhMucDC = kcn.DinhMuc.Value;
+            TongDinhMuc = kcn.DinhMuc.Value;
             for (int i = 0; i < lst.Count; i++)
                 if (TuNgay.Date < lst[i].NgayTangGia.Value.Date && lst[i].NgayTangGia.Value.Date < DenNgay.Date)
                 {
@@ -6233,7 +6237,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 if (DenNgay.Date < new DateTime(2019, 11, 15))
                 {
                     List<int> lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
-                    TienNuocCu = TinhTienNuoc_KhuCongNghiep(lstGiaNuoc,  GiaBieu, DinhMucHN, DinhMucDC, TieuThu, out ChiTietCu, out TyLe);
+                    TienNuocCu = TinhTienNuoc_KhuCongNghiep(lstGiaNuoc, GiaBieu, TongDinhMuc, DinhMucHN, TieuThu, out ChiTietCu, out TyLe);
                 }
                 else
                     if (TuNgay.Date < lst[index].NgayTangGia.Value.Date && lst[index].NgayTangGia.Value.Date < DenNgay.Date)
@@ -6243,19 +6247,21 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         int SoNgayCu = (int)((lst[index].NgayTangGia.Value.Date.AddDays(-1) - TuNgay.Date).TotalDays);
                         int TieuThuCu = (int)Math.Round((double)TieuThu * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
                         int TieuThuMoi = TieuThu - TieuThuCu;
-                        int DinhMucCu = (int)Math.Round((double)(DinhMucHN + DinhMucDC) * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
-                        int DinhMucMoi = (DinhMucHN + DinhMucDC) - DinhMucCu;
-                        int DinhMucHN_B = (int)Math.Round((double)DinhMucMoi * DinhMucHN / (DinhMucHN + DinhMucDC), 0, MidpointRounding.AwayFromZero);
-                        int DinhMucDC_B = DinhMucMoi - DinhMucHN_B;
+                        int TongDinhMucCu = (int)Math.Round((double)TongDinhMuc * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+                        int TongDinhMucMoi = TongDinhMuc - TongDinhMucCu;
+                        int DinhMucHN_Cu = 0;
+                        if (TuNgay.Date > new DateTime(2019, 11, 15))
+                            DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
+                        int DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
                         List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
                         List<int> lstGiaNuocMoi = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
-                        TienNuocCu = TinhTienNuoc_KhuCongNghiep(lstGiaNuocCu,  GiaBieu, 0, DinhMucCu, TieuThuCu, out ChiTietCu, out TyLe);
-                        TienNuocMoi = TinhTienNuoc_KhuCongNghiep(lstGiaNuocMoi,  GiaBieu, DinhMucHN_B, DinhMucDC_B, TieuThuMoi, out ChiTietMoi, out TyLe);
+                        TienNuocCu = TinhTienNuoc_KhuCongNghiep(lstGiaNuocCu, GiaBieu, TongDinhMucCu, DinhMucHN_Cu, TieuThuCu, out ChiTietCu, out TyLe);
+                        TienNuocMoi = TinhTienNuoc_KhuCongNghiep(lstGiaNuocMoi, GiaBieu, TongDinhMucMoi, DinhMucHN_Moi, TieuThuMoi, out ChiTietMoi, out TyLe);
                     }
                     else
                     {
                         List<int> lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
-                        TienNuocCu = TinhTienNuoc_KhuCongNghiep(lstGiaNuoc,  GiaBieu, DinhMucHN, DinhMucDC, TieuThu, out ChiTietCu, out TyLe);
+                        TienNuocCu = TinhTienNuoc_KhuCongNghiep(lstGiaNuoc, GiaBieu, TongDinhMuc, DinhMucHN, TieuThu, out ChiTietCu, out TyLe);
                     }
             }
             else
@@ -6292,7 +6298,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         break;
                 }
 
-                _TongTien = TinhTienNuoc(false, 0, lstGiaNuoc,  GiaBieu, SH, SX, DV, HCSN, 0, DinhMuc, TieuThu, out _chiTiet, out _tieuthu);
+                _TongTien = TinhTienNuoc(false, 0, lstGiaNuoc, GiaBieu, SH, SX, DV, HCSN, 0, DinhMuc, TieuThu, out _chiTiet, out _tieuthu);
 
                 ChiTiet = _chiTiet;
                 return _TongTien;
@@ -7069,7 +7075,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         break;
                 }
 
-                _TongTien = TinhTienNuoc(false, 0, lstGiaNuoc,  GiaBieu, SH, SX, DV, HCSN, DinhMucHN, DinhMuc, TieuThu, out _chiTiet, out _tieuthu);
+                _TongTien = TinhTienNuoc(false, 0, lstGiaNuoc, GiaBieu, SH, SX, DV, HCSN, DinhMucHN, DinhMuc, TieuThu, out _chiTiet, out _tieuthu);
 
                 ChiTiet = _chiTiet;
                 return _TongTien;
