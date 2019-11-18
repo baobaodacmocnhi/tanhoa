@@ -113,6 +113,10 @@ namespace ThuTien.GUI.ToTruong
             col.DataType = System.Type.GetType("System.Int32");
             _dt.Columns.Add(col);
 
+            col = new DataColumn("DinhMucHN");
+            col.DataType = System.Type.GetType("System.Int32");
+            _dt.Columns.Add(col);
+
             col = new DataColumn("TieuThu");
             col.DataType = System.Type.GetType("System.Int32");
             _dt.Columns.Add(col);
@@ -143,6 +147,14 @@ namespace ThuTien.GUI.ToTruong
 
             col = new DataColumn("TienDu");
             col.DataType = System.Type.GetType("System.Int32");
+            _dt.Columns.Add(col);
+
+            col = new DataColumn("TuNgay");
+            col.DataType = System.Type.GetType("System.DateTime");
+            _dt.Columns.Add(col);
+
+            col = new DataColumn("DenNgay");
+            col.DataType = System.Type.GetType("System.DateTime");
             _dt.Columns.Add(col);
         }
 
@@ -211,14 +223,14 @@ namespace ThuTien.GUI.ToTruong
                 {
                     HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
                     int Ky = 0, Nam = 0;
-                    if (hoadon.KY == 1)
+                    if (hoadon.KY == 12)
                     {
-                        Ky = 12;
-                        Nam = hoadon.NAM.Value - 1;
+                        Ky = 1;
+                        Nam = hoadon.NAM.Value + 1;
                     }
                     else
                     {
-                        Ky = hoadon.KY - 1;
+                        Ky = hoadon.KY + 1;
                         Nam = hoadon.NAM.Value;
                     }
                     DocSo docso = _cDocSo.get(hoadon.DANHBA, Ky, Nam);
@@ -624,8 +636,9 @@ namespace ThuTien.GUI.ToTruong
                     int TienNuocA = 0, TienNuocB = 0,TieuThu_DieuChinhGia=0;
                     string ChiTietA = "", ChiTietB = "";
                     string[] Kys=dgvHoaDon["Ky", e.RowIndex].Value.ToString().Split('/');
-                    _cKinhDoanh.TinhTienNuoc(false, 0, dgvHoaDon["DanhBo", e.RowIndex].Value.ToString(), int.Parse(Kys[0]), int.Parse(Kys[1]), DateTime.Parse(dgvHoaDon["TuNgay", e.RowIndex].Value.ToString()), DateTime.Parse(dgvHoaDon["DenNgay", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["GiaBieu", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["DinhMuc", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["DinhMucHN", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString())
-                        , int.Parse(dgvHoaDon["TyLeSH", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeHCSN", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeSX", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeDV", e.RowIndex].Value.ToString()), out TienNuocA,out ChiTietA,out TienNuocB,out ChiTietB,out TieuThu_DieuChinhGia);
+                    _cKinhDoanh.TinhTienNuoc(false, 0, dgvHoaDon["DanhBo", e.RowIndex].Value.ToString(), int.Parse(Kys[0]), int.Parse(Kys[1]), DateTime.Parse(dgvHoaDon["TuNgay", e.RowIndex].Value.ToString()), DateTime.Parse(dgvHoaDon["DenNgay", e.RowIndex].Value.ToString())
+                        , int.Parse(dgvHoaDon["GiaBieu", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeSH", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeHCSN", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeSX", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeDV", e.RowIndex].Value.ToString())
+                        , int.Parse(dgvHoaDon["DinhMuc", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["DinhMucHN", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString()), out TienNuocA,out ChiTietA,out TienNuocB,out ChiTietB,out TieuThu_DieuChinhGia);
                     dgvHoaDon["GiaBan", e.RowIndex].Value = (TienNuocA+TienNuocB);
                     dgvHoaDon["ThueGTGT", e.RowIndex].Value = Math.Round((double)(TienNuocA + TienNuocB) * 5 / 100);
                     dgvHoaDon["PhiBVMT", e.RowIndex].Value = Math.Round((double)(TienNuocA + TienNuocB) * 10 / 100);
