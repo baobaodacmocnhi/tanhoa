@@ -43,6 +43,17 @@ namespace KTKS_DonKH.GUI
             txtDinhMucHN.Text = "0";
             txtDinhMuc.Text = "0";
             txtTieuThu.Text = "0";
+            //
+            txtTongSoNgay.Text = "0";
+            txtSoNgayCu.Text = "0";
+            txtSoNgayMoi.Text = "0";
+            txtDinhMucCu.Text = "0";
+            txtDinhMucMoi.Text = "0";
+            txtDinhMucHNCu.Text = "0";
+            txtDinhMucHNMoi.Text = "0";
+            txtTieuThuCu.Text = "0";
+            txtTieuThuMoi.Text = "0";
+            //
             txtChiTietCu.Text = "";
             txtChiTietMoi.Text = "";
             txtGiaBanCu.Text = "0";
@@ -124,6 +135,57 @@ namespace KTKS_DonKH.GUI
 
         private void btnTinhTienNuoc_Click(object sender, EventArgs e)
         {
+            List<GiaNuoc2> lst = _cGiaNuoc.getDS();
+            int index = -1;
+            for (int i = 0; i < lst.Count; i++)
+                if (dateTu.Value.Date < lst[i].NgayTangGia.Value.Date && lst[i].NgayTangGia.Value.Date < dateDen.Value.Date)
+                {
+                    index = i;
+                }
+                else
+                    if (dateTu.Value.Date >= lst[i].NgayTangGia.Value.Date)
+                    {
+                        index = i;
+                    }
+            if (index != -1)
+            {
+                if (dateDen.Value.Date < new DateTime(2019, 11, 15))
+                {
+                }
+                else
+                    if (dateTu.Value.Date < lst[index].NgayTangGia.Value.Date && lst[index].NgayTangGia.Value.Date < dateDen.Value.Date)
+                    {
+                        //int TieuThu_DieuChinhGia;
+                        int TongSoNgay = (int)((dateDen.Value.Date - dateTu.Value.Date).TotalDays);
+
+                        int SoNgayCu = (int)((lst[index].NgayTangGia.Value.Date.AddDays(-1) - dateTu.Value.Date).TotalDays);
+                        int TieuThuCu = (int)Math.Round(double.Parse(txtTieuThu.Text.Trim()) * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+                        int TieuThuMoi = int.Parse(txtTieuThu.Text.Trim()) - TieuThuCu;
+                        int TongDinhMucCu = (int)Math.Round(double.Parse(txtDinhMuc.Text.Trim()) * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+                        int TongDinhMucMoi = int.Parse(txtDinhMuc.Text.Trim()) - TongDinhMucCu;
+                        int DinhMucHN_Cu = 0;
+                        if (dateTu.Value.Date > new DateTime(2019, 11, 15))
+                            DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * int.Parse(txtDinhMucHN.Text.Trim()) / int.Parse(txtDinhMuc.Text.Trim()), 0, MidpointRounding.AwayFromZero);
+                        int DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * int.Parse(txtDinhMucHN.Text.Trim()) / int.Parse(txtDinhMuc.Text.Trim()), 0, MidpointRounding.AwayFromZero);
+                        
+                        txtTongSoNgay.Text = TongSoNgay.ToString();
+                        txtSoNgayCu.Text = SoNgayCu.ToString();
+                        txtSoNgayMoi.Text = (TongSoNgay - SoNgayCu).ToString();
+                        txtDinhMucCu.Text = TongDinhMucCu.ToString();
+                        txtDinhMucMoi.Text = TongDinhMucMoi.ToString();
+                        txtDinhMucHNCu.Text = DinhMucHN_Cu.ToString();
+                        txtDinhMucHNMoi.Text = DinhMucHN_Moi.ToString();
+                        txtTieuThuCu.Text = TieuThuCu.ToString();
+                        txtTieuThuMoi.Text = TieuThuMoi.ToString();
+                    }
+                    else
+                    {
+                    }
+            }
+            else
+            {
+            }
+
             int GiaBanCu = 0, GiaBanMoi = 0, ThueGTGT = 0, PhiBVMT = 0, TongCong = 0, TieuThu_DieuChinhGia = 0;
             string ChiTietCu, ChiTietMoi;
             _cGiaNuoc.TinhTienNuoc(false, 0, txtDanhBo.Text.Trim(), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()), dateTu.Value, dateDen.Value, int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtSH.Text.Trim()), int.Parse(txtSX.Text.Trim()), int.Parse(txtDV.Text.Trim()), int.Parse(txtHCSN.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out GiaBanCu, out ChiTietCu, out GiaBanMoi, out ChiTietMoi, out TieuThu_DieuChinhGia);

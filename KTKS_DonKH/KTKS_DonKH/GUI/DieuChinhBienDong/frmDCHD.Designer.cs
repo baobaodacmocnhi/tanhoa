@@ -158,7 +158,7 @@
             this.txtMaDonCu.Location = new System.Drawing.Point(222, 12);
             this.txtMaDonCu.Name = "txtMaDonCu";
             this.txtMaDonCu.Size = new System.Drawing.Size(75, 22);
-            this.txtMaDonCu.TabIndex = 1;
+            this.txtMaDonCu.TabIndex = 7;
             this.txtMaDonCu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonCu_KeyPress);
             // 
             // label21
@@ -167,7 +167,7 @@
             this.label21.Location = new System.Drawing.Point(140, 15);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(76, 16);
-            this.label21.TabIndex = 0;
+            this.label21.TabIndex = 6;
             this.label21.Text = "Mã Đơn Cũ:";
             // 
             // label1
@@ -599,7 +599,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 56);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(397, 198);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
             // 
@@ -705,7 +705,7 @@
             this.groupBox2.Location = new System.Drawing.Point(415, 56);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(559, 198);
-            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông Tin Điều Chỉnh";
             // 
@@ -794,7 +794,7 @@
             this.txtTieuThu_DieuChinhGia2.Name = "txtTieuThu_DieuChinhGia2";
             this.txtTieuThu_DieuChinhGia2.ReadOnly = true;
             this.txtTieuThu_DieuChinhGia2.Size = new System.Drawing.Size(50, 22);
-            this.txtTieuThu_DieuChinhGia2.TabIndex = 18;
+            this.txtTieuThu_DieuChinhGia2.TabIndex = 12;
             this.txtTieuThu_DieuChinhGia2.Text = "0";
             this.txtTieuThu_DieuChinhGia2.TextChanged += new System.EventHandler(this.txtTieuThu_GiaDieuChinh2_TextChanged);
             // 
@@ -804,7 +804,7 @@
             this.chkTyLe.Location = new System.Drawing.Point(980, 130);
             this.chkTyLe.Name = "chkTyLe";
             this.chkTyLe.Size = new System.Drawing.Size(64, 20);
-            this.chkTyLe.TabIndex = 17;
+            this.chkTyLe.TabIndex = 15;
             this.chkTyLe.Text = "Tỷ Lệ:";
             this.chkTyLe.UseVisualStyleBackColor = true;
             this.chkTyLe.CheckedChanged += new System.EventHandler(this.chkTyLe_CheckedChanged);
@@ -815,7 +815,7 @@
             this.chkDieuChinhGia2.Location = new System.Drawing.Point(980, 75);
             this.chkDieuChinhGia2.Name = "chkDieuChinhGia2";
             this.chkDieuChinhGia2.Size = new System.Drawing.Size(127, 20);
-            this.chkDieuChinhGia2.TabIndex = 16;
+            this.chkDieuChinhGia2.TabIndex = 10;
             this.chkDieuChinhGia2.Text = "Điều Chỉnh Giá 2:";
             this.chkDieuChinhGia2.UseVisualStyleBackColor = true;
             this.chkDieuChinhGia2.CheckedChanged += new System.EventHandler(this.chkGiaDieuChinh2_CheckedChanged);
@@ -848,7 +848,7 @@
             this.groupBox3.Location = new System.Drawing.Point(12, 288);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(632, 139);
-            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết Quả Điều Chỉnh";
             // 
@@ -857,7 +857,7 @@
             this.btnThem.Location = new System.Drawing.Point(650, 331);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
-            this.btnThem.TabIndex = 4;
+            this.btnThem.TabIndex = 30;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -868,7 +868,7 @@
             this.chkKhauTru.Location = new System.Drawing.Point(415, 262);
             this.chkKhauTru.Name = "chkKhauTru";
             this.chkKhauTru.Size = new System.Drawing.Size(83, 20);
-            this.chkKhauTru.TabIndex = 16;
+            this.chkKhauTru.TabIndex = 25;
             this.chkKhauTru.Text = "Khấu Trừ:";
             this.chkKhauTru.UseVisualStyleBackColor = true;
             this.chkKhauTru.CheckedChanged += new System.EventHandler(this.chkKhauTru_CheckedChanged);
@@ -879,7 +879,7 @@
             this.txtSoTienKhauTru.Name = "txtSoTienKhauTru";
             this.txtSoTienKhauTru.ReadOnly = true;
             this.txtSoTienKhauTru.Size = new System.Drawing.Size(84, 22);
-            this.txtSoTienKhauTru.TabIndex = 17;
+            this.txtSoTienKhauTru.TabIndex = 26;
             this.txtSoTienKhauTru.Text = "0";
             // 
             // btnIn
@@ -887,7 +887,7 @@
             this.btnIn.Location = new System.Drawing.Point(731, 362);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(86, 25);
-            this.btnIn.TabIndex = 18;
+            this.btnIn.TabIndex = 34;
             this.btnIn.Text = "In Chi Tiết";
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
@@ -898,7 +898,7 @@
             this.txtGiaDieuChinh2.Name = "txtGiaDieuChinh2";
             this.txtGiaDieuChinh2.ReadOnly = true;
             this.txtGiaDieuChinh2.Size = new System.Drawing.Size(84, 22);
-            this.txtGiaDieuChinh2.TabIndex = 16;
+            this.txtGiaDieuChinh2.TabIndex = 14;
             this.txtGiaDieuChinh2.Text = "0";
             this.txtGiaDieuChinh2.TextChanged += new System.EventHandler(this.txtGiaTien_GiaDieuChinh2_TextChanged);
             // 
@@ -908,7 +908,7 @@
             this.label22.Location = new System.Drawing.Point(1114, 52);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(64, 16);
-            this.label22.TabIndex = 16;
+            this.label22.TabIndex = 11;
             this.label22.Text = "Tiêu Thụ:";
             // 
             // label23
@@ -917,7 +917,7 @@
             this.label23.Location = new System.Drawing.Point(1194, 52);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(62, 16);
-            this.label23.TabIndex = 19;
+            this.label23.TabIndex = 13;
             this.label23.Text = "Giá Tiền:";
             // 
             // txtHCSN
@@ -926,7 +926,7 @@
             this.txtHCSN.Name = "txtHCSN";
             this.txtHCSN.ReadOnly = true;
             this.txtHCSN.Size = new System.Drawing.Size(35, 22);
-            this.txtHCSN.TabIndex = 29;
+            this.txtHCSN.TabIndex = 23;
             this.txtHCSN.Text = "0";
             this.txtHCSN.TextChanged += new System.EventHandler(this.txtHCSN_TextChanged);
             // 
@@ -936,7 +936,7 @@
             this.label24.Location = new System.Drawing.Point(1172, 109);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(58, 16);
-            this.label24.TabIndex = 28;
+            this.label24.TabIndex = 22;
             this.label24.Text = "%HCSN";
             // 
             // txtDV
@@ -945,7 +945,7 @@
             this.txtDV.Name = "txtDV";
             this.txtDV.ReadOnly = true;
             this.txtDV.Size = new System.Drawing.Size(35, 22);
-            this.txtDV.TabIndex = 27;
+            this.txtDV.TabIndex = 21;
             this.txtDV.Text = "0";
             this.txtDV.TextChanged += new System.EventHandler(this.txtDV_TextChanged);
             // 
@@ -955,7 +955,7 @@
             this.label25.Location = new System.Drawing.Point(1131, 109);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(39, 16);
-            this.label25.TabIndex = 26;
+            this.label25.TabIndex = 20;
             this.label25.Text = "%DV";
             // 
             // txtSX
@@ -964,7 +964,7 @@
             this.txtSX.Name = "txtSX";
             this.txtSX.ReadOnly = true;
             this.txtSX.Size = new System.Drawing.Size(35, 22);
-            this.txtSX.TabIndex = 25;
+            this.txtSX.TabIndex = 19;
             this.txtSX.Text = "0";
             this.txtSX.TextChanged += new System.EventHandler(this.txtSX_TextChanged);
             // 
@@ -974,7 +974,7 @@
             this.label26.Location = new System.Drawing.Point(1090, 109);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(37, 16);
-            this.label26.TabIndex = 24;
+            this.label26.TabIndex = 18;
             this.label26.Text = "%SX";
             // 
             // txtSH
@@ -983,7 +983,7 @@
             this.txtSH.Name = "txtSH";
             this.txtSH.ReadOnly = true;
             this.txtSH.Size = new System.Drawing.Size(35, 22);
-            this.txtSH.TabIndex = 23;
+            this.txtSH.TabIndex = 17;
             this.txtSH.Text = "0";
             this.txtSH.TextChanged += new System.EventHandler(this.txtSH_TextChanged);
             // 
@@ -993,7 +993,7 @@
             this.label27.Location = new System.Drawing.Point(1049, 109);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(39, 16);
-            this.label27.TabIndex = 22;
+            this.label27.TabIndex = 16;
             this.label27.Text = "%SH";
             // 
             // btnInA4
@@ -1001,7 +1001,7 @@
             this.btnInA4.Location = new System.Drawing.Point(731, 393);
             this.btnInA4.Name = "btnInA4";
             this.btnInA4.Size = new System.Drawing.Size(86, 25);
-            this.btnInA4.TabIndex = 88;
+            this.btnInA4.TabIndex = 35;
             this.btnInA4.Text = "In Phiếu A4";
             this.btnInA4.UseVisualStyleBackColor = true;
             this.btnInA4.Click += new System.EventHandler(this.btnInA4_Click);
@@ -1022,7 +1022,7 @@
             this.dgvLichSu.Location = new System.Drawing.Point(12, 433);
             this.dgvLichSu.Name = "dgvLichSu";
             this.dgvLichSu.Size = new System.Drawing.Size(805, 141);
-            this.dgvLichSu.TabIndex = 89;
+            this.dgvLichSu.TabIndex = 37;
             // 
             // MaCTDCHD
             // 
@@ -1073,7 +1073,7 @@
             this.btnSua.Location = new System.Drawing.Point(650, 362);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
-            this.btnSua.TabIndex = 90;
+            this.btnSua.TabIndex = 31;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -1083,7 +1083,7 @@
             this.btnXoa.Location = new System.Drawing.Point(650, 393);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
-            this.btnXoa.TabIndex = 91;
+            this.btnXoa.TabIndex = 32;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -1094,7 +1094,7 @@
             this.chkCodeF2.Location = new System.Drawing.Point(624, 14);
             this.chkCodeF2.Name = "chkCodeF2";
             this.chkCodeF2.Size = new System.Drawing.Size(98, 20);
-            this.chkCodeF2.TabIndex = 92;
+            this.chkCodeF2.TabIndex = 4;
             this.chkCodeF2.Text = "Code F2 = 0";
             this.chkCodeF2.UseVisualStyleBackColor = true;
             this.chkCodeF2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.chkCodeF2_KeyPress);
@@ -1104,7 +1104,7 @@
             this.txtSoPhieu.Location = new System.Drawing.Point(558, 12);
             this.txtSoPhieu.Name = "txtSoPhieu";
             this.txtSoPhieu.Size = new System.Drawing.Size(60, 22);
-            this.txtSoPhieu.TabIndex = 94;
+            this.txtSoPhieu.TabIndex = 3;
             this.txtSoPhieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoPhieu_KeyPress);
             // 
             // label28
@@ -1113,7 +1113,7 @@
             this.label28.Location = new System.Drawing.Point(487, 15);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(65, 16);
-            this.label28.TabIndex = 93;
+            this.label28.TabIndex = 2;
             this.label28.Text = "Số Phiếu:";
             // 
             // txtMaDonMoi
@@ -1121,7 +1121,7 @@
             this.txtMaDonMoi.Location = new System.Drawing.Point(401, 12);
             this.txtMaDonMoi.Name = "txtMaDonMoi";
             this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
-            this.txtMaDonMoi.TabIndex = 117;
+            this.txtMaDonMoi.TabIndex = 1;
             this.txtMaDonMoi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonMoi_KeyPress);
             // 
             // label29
@@ -1130,7 +1130,7 @@
             this.label29.Location = new System.Drawing.Point(303, 15);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(92, 16);
-            this.label29.TabIndex = 116;
+            this.label29.TabIndex = 0;
             this.label29.Text = "Mã Đơn(New):";
             // 
             // txtLyDoDieuChinh
@@ -1138,7 +1138,7 @@
             this.txtLyDoDieuChinh.Location = new System.Drawing.Point(756, 260);
             this.txtLyDoDieuChinh.Name = "txtLyDoDieuChinh";
             this.txtLyDoDieuChinh.Size = new System.Drawing.Size(200, 22);
-            this.txtLyDoDieuChinh.TabIndex = 119;
+            this.txtLyDoDieuChinh.TabIndex = 28;
             this.txtLyDoDieuChinh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLyDoDieuChinh_KeyPress);
             // 
             // label30
@@ -1147,7 +1147,7 @@
             this.label30.Location = new System.Drawing.Point(638, 265);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(112, 16);
-            this.label30.TabIndex = 118;
+            this.label30.TabIndex = 27;
             this.label30.Text = "Lý Do Điều Chỉnh:";
             // 
             // chkKhuCongNghiep
@@ -1156,7 +1156,7 @@
             this.chkKhuCongNghiep.Location = new System.Drawing.Point(980, 170);
             this.chkKhuCongNghiep.Name = "chkKhuCongNghiep";
             this.chkKhuCongNghiep.Size = new System.Drawing.Size(131, 20);
-            this.chkKhuCongNghiep.TabIndex = 16;
+            this.chkKhuCongNghiep.TabIndex = 24;
             this.chkKhuCongNghiep.Text = "Khu Công Nghiệp";
             this.chkKhuCongNghiep.UseVisualStyleBackColor = true;
             // 
@@ -1165,7 +1165,7 @@
             this.btnInPhieu.Location = new System.Drawing.Point(731, 331);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(86, 25);
-            this.btnInPhieu.TabIndex = 120;
+            this.btnInPhieu.TabIndex = 33;
             this.btnInPhieu.Text = "In Phiếu";
             this.btnInPhieu.UseVisualStyleBackColor = true;
             this.btnInPhieu.Click += new System.EventHandler(this.btnInPhieu_Click);
@@ -1177,7 +1177,7 @@
             this.label34.Location = new System.Drawing.Point(400, 37);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(168, 16);
-            this.label34.TabIndex = 125;
+            this.label34.TabIndex = 5;
             this.label34.Text = "Ctrl+T: Cập Nhật Tiến Trình";
             // 
             // groupBox4
@@ -1188,7 +1188,7 @@
             this.groupBox4.Location = new System.Drawing.Point(823, 288);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(274, 135);
-            this.groupBox4.TabIndex = 126;
+            this.groupBox4.TabIndex = 36;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "File Scan";
             // 
