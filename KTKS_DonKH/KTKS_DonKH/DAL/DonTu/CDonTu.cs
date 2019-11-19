@@ -351,19 +351,37 @@ namespace KTKS_DonKH.DAL.DonTu
 
         }
 
+        public List<LinQ.DonTu> getDS_GridControl_Ton(string Loai, DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            List<LinQ.DonTu> lst = new List<LinQ.DonTu>();
+            switch (Loai)
+            {
+                case "Quầy":
+                    lst = db.DonTus.Where(item => item.TinhTrang != "Hoàn Thành" && item.CreateDate.Value <= ToCreateDate && item.VanPhong == false).OrderBy(item=>item.CreateDate).ToList();
+                    break;
+                case "Văn Phòng":
+                    lst = db.DonTus.Where(item => item.TinhTrang != "Hoàn Thành" && item.CreateDate.Value <= ToCreateDate && item.VanPhong == true).OrderBy(item => item.CreateDate).ToList();
+                    break;
+                default:
+                    lst = db.DonTus.Where(item => item.TinhTrang != "Hoàn Thành" && item.CreateDate.Value <= ToCreateDate).OrderBy(item => item.CreateDate).ToList();
+                    break;
+            }
+            return lst;
+        }
+
         public DataSet getDS_GridControl(string Loai, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             List<LinQ.DonTu> lst = new List<LinQ.DonTu>();
             switch (Loai)
             {
                 case "Quầy":
-                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.VanPhong == false).ToList();
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.VanPhong == false).OrderBy(item => item.CreateDate).ToList();
                     break;
                 case "Văn Phòng":
-                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.VanPhong == true).ToList();
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.VanPhong == true).OrderBy(item => item.CreateDate).ToList();
                     break;
                 default:
-                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate).ToList();
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate).OrderBy(item => item.CreateDate).ToList();
                     break;
             }
             return EntityToDataset(lst);
@@ -375,13 +393,13 @@ namespace KTKS_DonKH.DAL.DonTu
             switch (Loai)
             {
                 case "Quầy":
-                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == false).ToList();
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == false).OrderBy(item => item.CreateDate).ToList();
                     break;
                 case "Văn Phòng":
-                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == true).ToList();
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == true).OrderBy(item => item.CreateDate).ToList();
                     break;
                 default:
-                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong).ToList();
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong).OrderBy(item => item.CreateDate).ToList();
                     break;
             }
             return EntityToDataset(lst);
@@ -423,7 +441,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         dr["DanhBo"] = item.DonTu_ChiTiets.SingleOrDefault().DanhBo;
                         dr["HoTen"] = item.DonTu_ChiTiets.SingleOrDefault().HoTen;
                         dr["DiaChi"] = item.DonTu_ChiTiets.SingleOrDefault().DiaChi;
-                        dr["TinhTrang"] = item.DonTu_ChiTiets.SingleOrDefault().TinhTrang;
+                        //dr["TinhTrang"] = item.DonTu_ChiTiets.SingleOrDefault().TinhTrang;
                     }
                     else
                     {
@@ -441,11 +459,12 @@ namespace KTKS_DonKH.DAL.DonTu
                             drCT["TinhTrang"] = itemCT.TinhTrang;
                             dtDonTuChiTiet.Rows.Add(drCT);
                         }
-                        if (item.DonTu_ChiTiets.Count == int.Parse(dtDonTuChiTiet.Compute("count(DanhBo)", "MaDon=" + item.MaDon + " and TinhTrang like '%Hoàn Thành%'").ToString()))
-                            dr["TinhTrang"] = "Hoàn Thành";
-                        else
-                            dr["TinhTrang"] = "Tồn";
+                        //if (item.DonTu_ChiTiets.Count == int.Parse(dtDonTuChiTiet.Compute("count(DanhBo)", "MaDon=" + item.MaDon + " and TinhTrang like '%Hoàn Thành%'").ToString()))
+                        //    dr["TinhTrang"] = "Hoàn Thành";
+                        //else
+                        //    dr["TinhTrang"] = "Tồn";
                     }
+                    dr["TinhTrang"] = item.TinhTrang;
                     dr["NoiDung"] = item.Name_NhomDon;
                     dr["CreateBy"] = db.Users.SingleOrDefault(itemR => itemR.MaU == item.CreateBy).HoTen;
 
@@ -518,6 +537,21 @@ namespace KTKS_DonKH.DAL.DonTu
         public bool checkExist_ChiTiet(string DanhBo, string HoTen, string DiaChi, DateTime CreateDate)
         {
             return db.DonTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.HoTen == HoTen && item.DiaChi == DiaChi && item.CreateDate.Value.Date == CreateDate.Date);
+        }
+
+        public bool checkExist_ChuyenDeDinhMuc_ChuaKTXM(string DanhBo, out string TinhTrang)
+        {
+            if (db.DonTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.DonTu.ID_NhomDon.Contains("22") == true && db.KTXM_ChiTiets.Any(itemA => itemA.KTXM.MaDonMoi == item.MaDon && itemA.STT == item.STT) == false))
+            {
+                DonTu_ChiTiet en = db.DonTu_ChiTiets.FirstOrDefault(item => item.DanhBo == DanhBo && item.DonTu.ID_NhomDon.Contains("22") == true && db.KTXM_ChiTiets.Any(itemA => itemA.KTXM.MaDonMoi == item.MaDon && itemA.STT == item.STT) == false);
+                TinhTrang = "có Chuyên Đề (" + en.MaDon.Value.ToString() + ")";
+                return true;
+            }
+            else
+            {
+                TinhTrang = "";
+                return false;
+            }
         }
 
         public DonTu_ChiTiet get_ChiTiet(int ID)
@@ -871,7 +905,7 @@ namespace KTKS_DonKH.DAL.DonTu
             //8 - truy thu
             List<DonTu_LichSu> lst = db.DonTu_LichSus.Where(item => item.MaDon == MaDon && item.STT == STT).OrderBy(item => item.NgayChuyen).ThenBy(item => item.ID).ToList();
             string flag = "Tồn";
-            for (int i = 0; i < lst.Count-1; i++)
+            for (int i = 0; i < lst.Count - 1; i++)
             {
                 if (lst[i].ID_NoiNhan != null && db.NoiChuyens.SingleOrDefault(item => item.ID == lst[i].ID_NoiNhan).KiemTra == true)
                 {
@@ -880,7 +914,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     {
                         if (lst[j].ID_NoiChuyen == 7 && lst[j].ID_NoiChuyen == lst[i].ID_NoiNhan && lst[j].TableName != null)
                         {
-                            string result = ExecuteQuery_ReturnOneValue("select dbo.fnCheckTinhTrangCatHuy_Ton('" + lst[j] .TableName+ "'," + lst[j].IDCT + ")").ToString();
+                            string result = ExecuteQuery_ReturnOneValue("select dbo.fnCheckTinhTrangCatHuy_Ton('" + lst[j].TableName + "'," + lst[j].IDCT + ")").ToString();
                             if (result == "")
                                 flag = "Hoàn Thành";
                             else

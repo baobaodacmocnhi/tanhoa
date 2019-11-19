@@ -144,6 +144,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 txtDinhMucMoi.Text = ctktxm.DinhMucMoi.Value.ToString();
             if (ctktxm.DinhMuc_KhongDangKy!= null)
                 txtDinhMuc_KhongDangKy.Text = ctktxm.DinhMuc_KhongDangKy.Value.ToString();
+            chkKhongLienHe.Checked = ctktxm.KhongLienHe;
             ///
             chkNgayKTXMTruocNgayGiao.Checked = ctktxm.NgayKTXM_Truoc_NgayGiao;
             dateKTXM.Value = ctktxm.NgayKTXM.Value;
@@ -203,6 +204,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDinhMuc.Text = "";
             txtDinhMucMoi.Text = "";
             txtDinhMuc_KhongDangKy.Text = "";
+            chkKhongLienHe.Checked = false;
             ///
             chkNgayKTXMTruocNgayGiao.Checked = false;
             //dateKTXM.Value = DateTime.Now;
@@ -251,6 +253,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDinhMuc.Text = "";
             txtDinhMucMoi.Text = "";
             txtDinhMuc_KhongDangKy.Text = "";
+            chkKhongLienHe.Checked = false;
             ///
             //dateKTXM.Value = DateTime.Now;
             //cmbTinhTrangKiemTra.SelectedIndex = -1;
@@ -518,6 +521,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         ctktxm.DinhMucMoi = int.Parse(txtDinhMucMoi.Text.Trim());
                     if (txtDinhMuc_KhongDangKy.Text.Trim() != "")
                         ctktxm.DinhMuc_KhongDangKy = int.Parse(txtDinhMuc_KhongDangKy.Text.Trim());
+                    ctktxm.KhongLienHe = chkKhongLienHe.Checked;
                     if (_hoadon != null)
                     {
                         ctktxm.Dot = _hoadon.DOT.ToString();
@@ -644,6 +648,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             _ctktxm.DinhMucMoi = int.Parse(txtDinhMucMoi.Text.Trim());
                         if (txtDinhMuc_KhongDangKy.Text.Trim() != "")
                             _ctktxm.DinhMuc_KhongDangKy = int.Parse(txtDinhMuc_KhongDangKy.Text.Trim());
+                        _ctktxm.KhongLienHe = chkKhongLienHe.Checked;
                         if (_hoadon != null)
                         {
                             _ctktxm.Dot = _hoadon.DOT.ToString();

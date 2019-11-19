@@ -26027,6 +26027,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _MaPhong;
 		
+		private string _TinhTrang;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -26147,6 +26149,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCT_Khac_GhiChuChanged();
     partial void OnMaPhongChanging(System.Nullable<int> value);
     partial void OnMaPhongChanged();
+    partial void OnTinhTrangChanging(string value);
+    partial void OnTinhTrangChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -26991,6 +26995,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaPhong = value;
 					this.SendPropertyChanged("MaPhong");
 					this.OnMaPhongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinhTrang", DbType="NVarChar(100)")]
+		public string TinhTrang
+		{
+			get
+			{
+				return this._TinhTrang;
+			}
+			set
+			{
+				if ((this._TinhTrang != value))
+				{
+					this.OnTinhTrangChanging(value);
+					this.SendPropertyChanging();
+					this._TinhTrang = value;
+					this.SendPropertyChanged("TinhTrang");
+					this.OnTinhTrangChanged();
 				}
 			}
 		}

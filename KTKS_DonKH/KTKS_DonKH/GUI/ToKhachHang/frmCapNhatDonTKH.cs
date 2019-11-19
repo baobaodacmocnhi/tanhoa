@@ -519,10 +519,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                             if (MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                 return;
                         }
-
-                       if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
+                        string TinhTrang = "";
+                        if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
                         {
-                            if (MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                            if (MessageBox.Show(TinhTrang + "\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                             //MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 return;
                         }

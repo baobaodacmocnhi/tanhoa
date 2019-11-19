@@ -173,9 +173,32 @@ namespace KTKS_DonKH.DAL.ThuMoi
             }
         }
 
-        public bool checkKhongLienHe(string DanhBo)
+        public bool checkKhongLienHe(string DanhBo, out string TinhTrang)
         {
-            return db.ThuMoi_ChiTiets.Any(item => item.DanhBo == DanhBo && item.KhachHangDaLienHe == false);
+            if (db.ThuMoi_ChiTiets.Any(item => item.DanhBo == DanhBo && item.KhachHangDaLienHe == false))
+            {
+                TinhTrang = "có Thư Mời";
+                ThuMoi_ChiTiet en = db.ThuMoi_ChiTiets.FirstOrDefault(item => item.DanhBo == DanhBo && item.KhachHangDaLienHe == false);
+                if (en.ThuMoi.MaDonMoi != null)
+                    TinhTrang += " (" + en.ThuMoi.MaDonMoi.Value.ToString() + ")";
+                else
+                    if (en.ThuMoi.MaDonTKH != null)
+                        TinhTrang += " (TKH" + en.ThuMoi.MaDonTKH.Value.ToString() + ")";
+                    else
+                        if (en.ThuMoi.MaDonTXL != null)
+                            TinhTrang += " (TXL" + en.ThuMoi.MaDonTXL.Value.ToString() + ")";
+                        else
+                            if (en.ThuMoi.MaDonTBC != null)
+                                TinhTrang += " (TBC" + en.ThuMoi.MaDonTBC.Value.ToString() + ")";
+                            else
+                                TinhTrang += "";
+                return true;
+            }
+            else
+            {
+                TinhTrang = "";
+                return false;
+            }
         }
 
         public int maxLan_ChiTiet(string Loai, decimal MaDon, string DanhBo)
@@ -221,7 +244,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                     item.Luuy,
                                     item.NoiNhan,
                                     item.CreateDate,
-                                    CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
+                                    CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
@@ -243,7 +266,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 item.Luuy,
                                 item.NoiNhan,
                                 item.CreateDate,
-                                CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
+                                CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                             };
                     return LINQToDataTable(query);
                 case "TBC":
@@ -265,7 +288,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 item.Luuy,
                                 item.NoiNhan,
                                 item.CreateDate,
-                                CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
+                                CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                             };
                     return LINQToDataTable(query);
                 default:
@@ -287,7 +310,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 item.Luuy,
                                 item.NoiNhan,
                                 item.CreateDate,
-                                CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
+                                CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                             };
                     return LINQToDataTable(query);
             }
@@ -316,7 +339,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.Luuy,
                             item.NoiNhan,
                             item.CreateDate,
-                            CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -344,7 +367,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.Luuy,
                             item.NoiNhan,
                             item.CreateDate,
-                            CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -372,7 +395,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.Luuy,
                             item.NoiNhan,
                             item.CreateDate,
-                            CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                         };
             return LINQToDataTable(query);
         }

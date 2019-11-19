@@ -11,6 +11,7 @@ using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DonTu;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
@@ -419,6 +420,104 @@ namespace KTKS_DonKH.GUI.DonTu
                 frmNhanDonTu frm = new frmNhanDonTu(int.Parse(MaDon));
                 frm.ShowDialog();
             }
+        }
+
+        private void btnInThongKeTon_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            List<LinQ.DonTu>lst = _cDonTu.getDS_GridControl_Ton(cmbLoai.Text, dateTu.Value, dateDen.Value);
+            foreach (LinQ.DonTu item in lst)
+            {
+                if (item.DonTu_ChiTiets.Count() == 1)
+                {
+                    DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
+                    //dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
+                    //dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
+                    dr["LoaiVanBan"] = "TỒN";
+                    dr["Ma"] =item.MaDon;
+                    dr["MaChiTiet"] = item.MaDon;
+                    if (item.DonTu_ChiTiets.SingleOrDefault().DanhBo!=null&&item.DonTu_ChiTiets.SingleOrDefault().DanhBo.Length == 11)
+                        dr["DanhBo"] = item.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
+                    dr["DiaChi"] = item.DonTu_ChiTiets.SingleOrDefault().DiaChi;
+                    dr["CreateDate"] = item.CreateDate;
+                    if (item.CreateDate.Value.Month == 12)
+                    {
+                        if (item.CreateDate.Value.Day <= 20)
+                            dr["NoiDung"] = item.CreateDate.Value.Month.ToString("00") + "/" + item.CreateDate.Value.Year;
+                        else
+                            dr["NoiDung"] = "01/" + item.CreateDate.Value.Year + 1;
+                    }
+                    else
+                    {
+                        if (item.CreateDate.Value.Day <= 20)
+                            dr["NoiDung"] = item.CreateDate.Value.Month.ToString("00") + "/" + item.CreateDate.Value.Year;
+                        else
+                            dr["NoiDung"] = (item.CreateDate.Value.Month + 1).ToString("00") + "/" + item.CreateDate.Value.Year;
+                    }
+                    //mượn đỡ 2 cột để xét tình trạng
+                    dr["GhiChu"] = item.TinhTrang;
+                    dr["NoiNhan"] = item.TinhTrang;
+                    if (CTaiKhoan.MaPhong == 1)
+                    {
+                        dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
+                        dr["VisibleNoiNhan"] = true;
+                    }
+                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                    dr["NguoiLap"] = CTaiKhoan.HoTen;
+                    dr["NguoiKy"] = CTaiKhoan.NguoiKy;
+
+                    dsBaoCao.Tables["CongVan"].Rows.Add(dr);
+                }
+                else
+                {
+                    foreach (DonTu_ChiTiet itemCT in item.DonTu_ChiTiets)
+                    {
+                        DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
+                        //dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
+                        //dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
+                        dr["LoaiVanBan"] = "TỒN";
+                        dr["Ma"] = itemCT.MaDon;
+                        dr["MaChiTiet"] = itemCT.MaDon + "." + itemCT.STT;
+                        if (itemCT.DanhBo!=null&&itemCT.DanhBo.Length == 11)
+                            dr["DanhBo"] = itemCT.DanhBo.Insert(7, " ").Insert(4, " ");
+                        dr["DiaChi"] = itemCT.DiaChi;
+                        dr["CreateDate"] = itemCT.CreateDate;
+
+                        if (item.CreateDate.Value.Month == 12)
+                        {
+                            if (item.CreateDate.Value.Day <= 20)
+                                dr["NoiDung"] = item.CreateDate.Value.Month.ToString("00") + "/" + item.CreateDate.Value.Year;
+                            else
+                                dr["NoiDung"] = "01/" + item.CreateDate.Value.Year + 1;
+                        }
+                        else
+                        {
+                            if (item.CreateDate.Value.Day <= 20)
+                                dr["NoiDung"] = item.CreateDate.Value.Month.ToString("00") + "/" + item.CreateDate.Value.Year;
+                            else
+                                dr["NoiDung"] = (item.CreateDate.Value.Month + 1).ToString("00") + "/" + item.CreateDate.Value.Year;
+                        }
+                        //mượn đỡ 2 cột để xét tình trạng
+                        dr["GhiChu"] = itemCT.TinhTrang;
+                        dr["NoiNhan"] = item.TinhTrang;
+                        if (CTaiKhoan.MaPhong == 1)
+                        {
+                            dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
+                            dr["VisibleNoiNhan"] = true;
+                        }
+                        dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                        dr["NguoiLap"] = CTaiKhoan.HoTen;
+                        dr["NguoiKy"] = CTaiKhoan.NguoiKy;
+
+                        dsBaoCao.Tables["CongVan"].Rows.Add(dr);
+                    }
+                }
+
+            }
+            rptDonTu_GroupNoiDung rpt = new rptDonTu_GroupNoiDung();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
         }
 
 

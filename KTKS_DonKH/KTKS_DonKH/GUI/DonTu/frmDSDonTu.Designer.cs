@@ -74,6 +74,7 @@
             this.lbPhong = new System.Windows.Forms.Label();
             this.btnInThongKe = new System.Windows.Forms.Button();
             this.cmbLoai = new System.Windows.Forms.ComboBox();
+            this.btnInThongKeTon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDonChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDon)).BeginInit();
@@ -538,6 +539,16 @@
             this.cmbLoai.Size = new System.Drawing.Size(138, 24);
             this.cmbLoai.TabIndex = 43;
             // 
+            // btnInThongKeTon
+            // 
+            this.btnInThongKeTon.Location = new System.Drawing.Point(1025, 4);
+            this.btnInThongKeTon.Name = "btnInThongKeTon";
+            this.btnInThongKeTon.Size = new System.Drawing.Size(120, 25);
+            this.btnInThongKeTon.TabIndex = 45;
+            this.btnInThongKeTon.Text = "In Thống Kê Tồn";
+            this.btnInThongKeTon.UseVisualStyleBackColor = true;
+            this.btnInThongKeTon.Click += new System.EventHandler(this.btnInThongKeTon_Click);
+            // 
             // frmDSDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -545,6 +556,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1444, 727);
+            this.Controls.Add(this.btnInThongKeTon);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.cmbLoai);
             this.Controls.Add(this.btnInThongKe);
@@ -621,5 +633,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private System.Windows.Forms.Button btnInThongKeTon;
     }
 }

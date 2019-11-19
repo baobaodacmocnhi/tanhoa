@@ -152,8 +152,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             else
                 lbTruyThu.Text = "";
 
-          string  strDuongCamDao = _cGanMoi.getDuongCamDao(hoadon.SO , hoadon.DUONG);
-            if(strDuongCamDao!="")
+            string strDuongCamDao = _cGanMoi.getDuongCamDao(hoadon.SO, hoadon.DUONG);
+            if (strDuongCamDao != "")
                 MessageBox.Show(strDuongCamDao, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
@@ -200,7 +200,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
             txtLyDoKhac.Text = entity.LyDoLoaiKhac;
             if (entity.DanhBo.Length == 11)
-            txtDanhBo.Text = entity.DanhBo.Insert(7, " ").Insert(4, " ");
+                txtDanhBo.Text = entity.DanhBo.Insert(7, " ").Insert(4, " ");
             else
                 txtDanhBo.Text = entity.DanhBo;
             txtHopDong.Text = entity.HopDong;
@@ -549,14 +549,14 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     {
                         if (txtDanhBo.Text.Trim().Replace(" ", "") != "" && _cDonKH.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
                         {
-                             if (MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                            if (MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                 return;
                         }
-
-                        if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
+                        string TinhTrang = "";
+                        if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
                         {
-                            if (MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                            //MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (MessageBox.Show(TinhTrang + "\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                //MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 return;
                         }
 
@@ -565,7 +565,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         donkh.SoCongVan = txtSoCongVan.Text.Trim();
                         donkh.NoiDung = txtNoiDung.Text.Trim();
 
-                        donkh.DanhBo = txtDanhBo.Text.Trim().Replace(" ","");
+                        donkh.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                         donkh.HopDong = txtHopDong.Text.Trim();
                         donkh.HoTen = txtHoTen.Text.Trim();
                         donkh.DiaChi = txtDiaChi.Text.Trim();
@@ -605,7 +605,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         if (chkThayDoiTenHopDong.Checked)
                         {
                             donkh.SangTen = true;
-                            donkh.NgayGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày "+GetToDate(DateTime.Now,30).ToString("dd/MM/yyyy")+". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
+                            donkh.NgayGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + GetToDate(DateTime.Now, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
                         }
 
                         if (chkCapDM.Checked)
@@ -679,7 +679,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                             _cDonKH.commitTransaction();
                             Clear();
                             MessageBox.Show("Thành công/n Mã Đơn:" + donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            if (chkKhongInBienNhan.Checked==false)
+                            if (chkKhongInBienNhan.Checked == false)
                             {
                                 InBienNhan(donkh);
                             }
@@ -902,7 +902,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             }
         }
 
-        public DateTime GetToDate(DateTime FromDate,int SoNgayCongThem)
+        public DateTime GetToDate(DateTime FromDate, int SoNgayCongThem)
         {
             while (SoNgayCongThem > 0)
             {

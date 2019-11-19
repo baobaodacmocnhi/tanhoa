@@ -102,23 +102,28 @@ namespace KTKS_DonKH.GUI.DonTu
             txtDinhMuc.Text = entity.DM.ToString();
             dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(entity.DANHBA);
 
-            string str = "";
+            string str, TinhTrang = "";
             str = _cTTTN.check_TinhTrang_Ton(entity.DANHBA);
             if (str == "")
             {
-                if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
-                    str = "Kiểm Tra Xác Minh có Thư Mời";
+                if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
+                    str = TinhTrang;
             }
             if (str == "")
             {
-                if (_cThuMoi.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
-                    str = "có Thư Mời";
+                if (_cThuMoi.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
+                    str = TinhTrang;
+            }
+            if (str == "")
+            {
+                if (_cDonTu.checkExist_ChuyenDeDinhMuc_ChuaKTXM(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
+                    str = TinhTrang;
             }
             //hiện thị
             if (str != "")
             {
                 lbTruyThu.Text = str;
-                MessageBox.Show("Danh Bộ này đang có Đơn Tồn", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                MessageBox.Show("Danh Bộ này đang có Đơn Tồn\n" + str, "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
             else
                 lbTruyThu.Text = "";
@@ -403,7 +408,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         //        //MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //        return;
                         //}
-                        
+
                         if (txtSoNK.Text.Trim() != "")
                         {
                             entity.SoNK = int.Parse(txtSoNK.Text.Trim());
