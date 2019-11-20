@@ -6101,7 +6101,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
 
 
-        public void TinhTienNuoc(bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi, out int TieuThu_DieuChinhGia)
+        public void TinhTienNuoc(bool ApGiaNuocCu,bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi, out int TieuThu_DieuChinhGia)
         {
             List<GiaNuoc2> lst = getDS();
             int index = -1;
@@ -6129,22 +6129,30 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 else
                     if (TuNgay.Date < lst[index].NgayTangGia.Value.Date && lst[index].NgayTangGia.Value.Date < DenNgay.Date)
                     {
-                        //int TieuThu_DieuChinhGia;
-                        int TongSoNgay = (int)((DenNgay.Date - TuNgay.Date).TotalDays);
+                        if (ApGiaNuocCu == false)
+                        {
+                            //int TieuThu_DieuChinhGia;
+                            int TongSoNgay = (int)((DenNgay.Date - TuNgay.Date).TotalDays);
 
-                        int SoNgayCu = (int)((lst[index].NgayTangGia.Value.Date.AddDays(-1) - TuNgay.Date).TotalDays);
-                        int TieuThuCu = (int)Math.Round((double)TieuThu * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
-                        int TieuThuMoi = TieuThu - TieuThuCu;
-                        int TongDinhMucCu = (int)Math.Round((double)TongDinhMuc * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
-                        int TongDinhMucMoi = TongDinhMuc - TongDinhMucCu;
-                        int DinhMucHN_Cu = 0;
-                        if (TuNgay.Date > new DateTime(2019, 11, 15))
-                            DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
-                        int DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
-                        List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
-                        List<int> lstGiaNuocMoi = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
-                        TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocCu, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucCu, DinhMucHN_Cu, TieuThuCu, out ChiTietCu, out TieuThu_DieuChinhGia);
-                        TienNuocMoi = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocMoi, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucMoi, DinhMucHN_Moi, TieuThuMoi, out ChiTietMoi, out TieuThu_DieuChinhGia);
+                            int SoNgayCu = (int)((lst[index].NgayTangGia.Value.Date.AddDays(-1) - TuNgay.Date).TotalDays);
+                            int TieuThuCu = (int)Math.Round((double)TieuThu * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+                            int TieuThuMoi = TieuThu - TieuThuCu;
+                            int TongDinhMucCu = (int)Math.Round((double)TongDinhMuc * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+                            int TongDinhMucMoi = TongDinhMuc - TongDinhMucCu;
+                            int DinhMucHN_Cu = 0;
+                            if (TuNgay.Date > new DateTime(2019, 11, 15))
+                                DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
+                            int DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
+                            List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
+                            List<int> lstGiaNuocMoi = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
+                            TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocCu, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucCu, DinhMucHN_Cu, TieuThuCu, out ChiTietCu, out TieuThu_DieuChinhGia);
+                            TienNuocMoi = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocMoi, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucMoi, DinhMucHN_Moi, TieuThuMoi, out ChiTietMoi, out TieuThu_DieuChinhGia);
+                        }
+                        else
+                        {
+                            List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
+                            TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocCu, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, out ChiTietCu, out TieuThu_DieuChinhGia);
+                        }
                     }
                     else
                     {
@@ -6159,7 +6167,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public void TinhTienNuoc2(bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, int TieuThu_GiaDieuChinh2, int GiaTien_GiaDieuChinh2, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi)
+        public void TinhTienNuoc2(bool ApGiaNuocCu, bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, int TieuThu_GiaDieuChinh2, int GiaTien_GiaDieuChinh2, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi)
         {
             List<GiaNuoc2> lst = getDS();
             int index = -1;
@@ -6185,21 +6193,29 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 else
                     if (TuNgay.Date < lst[index].NgayTangGia.Value.Date && lst[index].NgayTangGia.Value.Date < DenNgay.Date)
                     {
-                        int TongSoNgay = (int)((DenNgay.Date - TuNgay.Date).TotalDays);
+                        if (ApGiaNuocCu == false)
+                        {
+                            int TongSoNgay = (int)((DenNgay.Date - TuNgay.Date).TotalDays);
 
-                        int SoNgayCu = (int)((lst[index].NgayTangGia.Value.Date.AddDays(-1) - TuNgay.Date).TotalDays);
-                        int TieuThuCu = (int)Math.Round((double)TieuThu * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
-                        int TieuThuMoi = TieuThu - TieuThuCu;
-                        int TongDinhMucCu = (int)Math.Round((double)TongDinhMuc * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
-                        int TongDinhMucMoi = TongDinhMuc - TongDinhMucCu;
-                        int DinhMucHN_Cu = 0;
-                        if (TuNgay.Date > new DateTime(2019, 11, 15))
-                            DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
-                        int DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
-                        List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
-                        List<int> lstGiaNuocMoi = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
-                        TienNuocCu = TinhTienNuoc2(DieuChinhGia, GiaDieuChinh, lstGiaNuocCu, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucCu, DinhMucHN_Cu, TieuThuCu, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietCu);
-                        TienNuocMoi = TinhTienNuoc2(DieuChinhGia, GiaDieuChinh, lstGiaNuocMoi, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucMoi, DinhMucHN_Moi, TieuThuMoi, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietMoi);
+                            int SoNgayCu = (int)((lst[index].NgayTangGia.Value.Date.AddDays(-1) - TuNgay.Date).TotalDays);
+                            int TieuThuCu = (int)Math.Round((double)TieuThu * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+                            int TieuThuMoi = TieuThu - TieuThuCu;
+                            int TongDinhMucCu = (int)Math.Round((double)TongDinhMuc * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+                            int TongDinhMucMoi = TongDinhMuc - TongDinhMucCu;
+                            int DinhMucHN_Cu = 0;
+                            if (TuNgay.Date > new DateTime(2019, 11, 15))
+                                DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
+                            int DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
+                            List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
+                            List<int> lstGiaNuocMoi = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
+                            TienNuocCu = TinhTienNuoc2(DieuChinhGia, GiaDieuChinh, lstGiaNuocCu, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucCu, DinhMucHN_Cu, TieuThuCu, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietCu);
+                            TienNuocMoi = TinhTienNuoc2(DieuChinhGia, GiaDieuChinh, lstGiaNuocMoi, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucMoi, DinhMucHN_Moi, TieuThuMoi, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietMoi);
+                        }
+                        else
+                        {
+                            List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
+                            TienNuocCu = TinhTienNuoc2(DieuChinhGia, GiaDieuChinh, lstGiaNuocCu, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietCu);
+                        }
                     }
                     else
                     {
@@ -6213,7 +6229,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public void TinhTienNuoc_KhuCongNghiep(string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TongDinhMuc, int DinhMucHN, int TieuThu, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi, out float TyLe)
+        public void TinhTienNuoc_KhuCongNghiep(bool ApGiaNuocCu, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TongDinhMuc, int DinhMucHN, int TieuThu, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi, out float TyLe)
         {
             List<GiaNuoc2> lst = getDS();
             int index = -1;
@@ -6242,21 +6258,29 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 else
                     if (TuNgay.Date < lst[index].NgayTangGia.Value.Date && lst[index].NgayTangGia.Value.Date < DenNgay.Date)
                     {
-                        int TongSoNgay = (int)((DenNgay.Date - TuNgay.Date).TotalDays);
+                        if (ApGiaNuocCu == false)
+                        {
+                            int TongSoNgay = (int)((DenNgay.Date - TuNgay.Date).TotalDays);
 
-                        int SoNgayCu = (int)((lst[index].NgayTangGia.Value.Date.AddDays(-1) - TuNgay.Date).TotalDays);
-                        int TieuThuCu = (int)Math.Round((double)TieuThu * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
-                        int TieuThuMoi = TieuThu - TieuThuCu;
-                        int TongDinhMucCu = (int)Math.Round((double)TongDinhMuc * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
-                        int TongDinhMucMoi = TongDinhMuc - TongDinhMucCu;
-                        int DinhMucHN_Cu = 0;
-                        if (TuNgay.Date > new DateTime(2019, 11, 15))
-                            DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
-                        int DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
-                        List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
-                        List<int> lstGiaNuocMoi = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
-                        TienNuocCu = TinhTienNuoc_KhuCongNghiep(lstGiaNuocCu, GiaBieu, TongDinhMucCu, DinhMucHN_Cu, TieuThuCu, out ChiTietCu, out TyLe);
-                        TienNuocMoi = TinhTienNuoc_KhuCongNghiep(lstGiaNuocMoi, GiaBieu, TongDinhMucMoi, DinhMucHN_Moi, TieuThuMoi, out ChiTietMoi, out TyLe);
+                            int SoNgayCu = (int)((lst[index].NgayTangGia.Value.Date.AddDays(-1) - TuNgay.Date).TotalDays);
+                            int TieuThuCu = (int)Math.Round((double)TieuThu * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+                            int TieuThuMoi = TieuThu - TieuThuCu;
+                            int TongDinhMucCu = (int)Math.Round((double)TongDinhMuc * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+                            int TongDinhMucMoi = TongDinhMuc - TongDinhMucCu;
+                            int DinhMucHN_Cu = 0;
+                            if (TuNgay.Date > new DateTime(2019, 11, 15))
+                                DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
+                            int DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
+                            List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
+                            List<int> lstGiaNuocMoi = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
+                            TienNuocCu = TinhTienNuoc_KhuCongNghiep(lstGiaNuocCu, GiaBieu, TongDinhMucCu, DinhMucHN_Cu, TieuThuCu, out ChiTietCu, out TyLe);
+                            TienNuocMoi = TinhTienNuoc_KhuCongNghiep(lstGiaNuocMoi, GiaBieu, TongDinhMucMoi, DinhMucHN_Moi, TieuThuMoi, out ChiTietMoi, out TyLe);
+                        }
+                        else
+                        {
+                            List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
+                            TienNuocCu = TinhTienNuoc_KhuCongNghiep(lstGiaNuocCu, GiaBieu, TongDinhMuc, DinhMucHN, TieuThu, out ChiTietCu, out TyLe);
+                        }
                     }
                     else
                     {

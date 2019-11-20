@@ -323,10 +323,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     {
                         string ID = "MaCTDCBD";
                         string Table = "DCBD_ChiTietBienDong";
-                        decimal MaCTDCBD = db.ExecuteQuery<decimal>("declare @Ma int " +
-                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
-                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                        ctdcbd.MaCTDCBD = getMaxNextIDTable(MaCTDCBD);
+                        //decimal MaCTDCBD = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        //    "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        //    "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //ctdcbd.MaCTDCBD = getMaxNextIDTable(MaCTDCBD);
+                        decimal result = (decimal)ExecuteQuery_ReturnOneValue("declare @Ma int"
+                               + " set @Ma=" + HieuLucKys[1].ToString().Substring(HieuLucKys[1].ToString().Length - 2, 2)
+                               + " select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma");
+                        string Ma = result.ToString();
+                        string nam = Ma.ToString().Substring(Ma.ToString().Length - 2, 2);
+                        string stt = Ma.ToString().Substring(0, Ma.ToString().Length - 2);
+                        stt = (decimal.Parse(stt) + 1).ToString();
+                        ctdcbd.MaCTDCBD = decimal.Parse(stt + nam);
                     }
                     //khác năm
                     else
@@ -350,6 +358,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         else
                             ctdcbd.MaCTDCBD = decimal.Parse("1" + HieuLucKys[1].ToString().Substring(HieuLucKys[1].ToString().Length - 2, 2));
                     }
+
                 }
                 else
                     ctdcbd.MaCTDCBD = decimal.Parse("1" + DateTime.Now.ToString("yy"));

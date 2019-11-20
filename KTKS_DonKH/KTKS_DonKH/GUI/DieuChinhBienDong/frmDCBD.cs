@@ -172,6 +172,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtDinhMuc.Text = ctdcbd.DinhMuc.Value.ToString();
             else
                 txtDinhMuc.Text = "";
+            if (ctdcbd.DinhMucHN != null)
+                txtDinhMucHN.Text = ctdcbd.DinhMucHN.Value.ToString();
+            else
+                txtDinhMucHN.Text = "";
             txtSH.Text = ctdcbd.SH;
             txtSX.Text = ctdcbd.SX;
             txtDV.Text = ctdcbd.DV;
@@ -184,14 +188,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtGiaBieu_BD.Text = ctdcbd.GiaBieu_BD.Value.ToString();
             else
                 txtGiaBieu_BD.Text = "";
-            if (ctdcbd.DinhMucHN_BD != null)
-                txtDinhMucHN_BD.Text = ctdcbd.DinhMucHN_BD.Value.ToString();
-            else
-                txtDinhMucHN_BD.Text = "";
             if (ctdcbd.DinhMuc_BD != null)
                 txtDinhMuc_BD.Text = ctdcbd.DinhMuc_BD.Value.ToString();
             else
                 txtDinhMuc_BD.Text = "";
+            if (ctdcbd.DinhMucHN_BD != null)
+                txtDinhMucHN_BD.Text = ctdcbd.DinhMucHN_BD.Value.ToString();
+            else
+                txtDinhMucHN_BD.Text = "";
             txtSH_BD.Text = ctdcbd.SH_BD;
             txtSX_BD.Text = ctdcbd.SX_BD;
             txtDV_BD.Text = ctdcbd.DV_BD;
@@ -569,6 +573,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdcbd.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                     else
                         ctdcbd.DinhMuc = null;
+                    if (!string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()))
+                        ctdcbd.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
+                    else
+                        ctdcbd.DinhMucHN = null;
                     ctdcbd.SH = txtSH.Text.Trim();
                     ctdcbd.SX = txtSX.Text.Trim();
                     ctdcbd.DV = txtDV.Text.Trim();
@@ -629,16 +637,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdcbd.GiaBieu_BD = int.Parse(txtGiaBieu_BD.Text.Trim());
                     }
                     ///Định Mức
-                    if (txtDinhMucHN_BD.Text.Trim() != "" || txtDinhMuc_BD.Text.Trim() != "")
+                    if (txtDinhMuc_BD.Text.Trim() != "" || txtDinhMucHN_BD.Text.Trim() != "")
                     {
                         if (string.IsNullOrEmpty(ThongTin) == true)
                             ThongTin += "Định Mức";
                         else
                             ThongTin += ". Định Mức";
-                        if (txtDinhMucHN_BD.Text.Trim() != "")
-                            ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
                         if (txtDinhMuc_BD.Text.Trim() != "")
                             ctdcbd.DinhMuc_BD = int.Parse(txtDinhMuc_BD.Text.Trim());
+                        if (txtDinhMucHN_BD.Text.Trim() != "")
+                            ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
                     }
                     if (txtSH_BD.Text.Trim() != "" || txtSX_BD.Text.Trim() != "" || txtDV_BD.Text.Trim() != "" || txtHCSN_BD.Text.Trim() != "")
                     {
@@ -759,6 +767,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _ctdcbd.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         else
                             _ctdcbd.DinhMuc = null;
+                        if (!string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()))
+                            _ctdcbd.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
+                        else
+                            _ctdcbd.DinhMucHN = null;
                         _ctdcbd.SH = txtSH.Text.Trim();
                         _ctdcbd.SX = txtSX.Text.Trim();
                         _ctdcbd.DV = txtDV.Text.Trim();
@@ -831,19 +843,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             _ctdcbd.GiaBieu_BD = null;
                         ///Định Mức
-                        if (txtDinhMucHN_BD.Text.Trim() != "" || txtDinhMuc_BD.Text.Trim() != "")
+                        if (txtDinhMuc_BD.Text.Trim() != "" || txtDinhMucHN_BD.Text.Trim() != "")
                         {
                             if (string.IsNullOrEmpty(ThongTin) == true)
                                 ThongTin += "Định Mức";
                             else
                                 ThongTin += ". Định Mức";
-                            if (txtDinhMucHN_BD.Text.Trim() != "")
-                                _ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
                             if (txtDinhMuc_BD.Text.Trim() != "")
                                 _ctdcbd.DinhMuc_BD = int.Parse(txtDinhMuc_BD.Text.Trim());
+                            else
+                                _ctdcbd.DinhMuc_BD = null;
+                            if (txtDinhMucHN_BD.Text.Trim() != "")
+                                _ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
+                            else
+                                _ctdcbd.DinhMucHN_BD = null;
                         }
-                        else
-                            _ctdcbd.DinhMuc_BD = null;
+                        //tỷ lệ
                         if (txtSH_BD.Text.Trim() != "" || txtSX_BD.Text.Trim() != "" || txtDV_BD.Text.Trim() != "" || txtHCSN_BD.Text.Trim() != "")
                         {
                             if (string.IsNullOrEmpty(ThongTin) == true)

@@ -18071,6 +18071,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<double> _TyLeKhuCongNghiep;
 		
+		private bool _ApGiaNuocCu;
+		
 		private System.Nullable<int> _TienNuoc_BD;
 		
 		private System.Nullable<int> _ThueGTGT_BD;
@@ -18219,6 +18221,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnKhuCongNghiepChanged();
     partial void OnTyLeKhuCongNghiepChanging(System.Nullable<double> value);
     partial void OnTyLeKhuCongNghiepChanged();
+    partial void OnApGiaNuocCuChanging(bool value);
+    partial void OnApGiaNuocCuChanged();
     partial void OnTienNuoc_BDChanging(System.Nullable<int> value);
     partial void OnTienNuoc_BDChanged();
     partial void OnThueGTGT_BDChanging(System.Nullable<int> value);
@@ -19174,6 +19178,26 @@ namespace KTKS_DonKH.LinQ
 					this._TyLeKhuCongNghiep = value;
 					this.SendPropertyChanged("TyLeKhuCongNghiep");
 					this.OnTyLeKhuCongNghiepChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApGiaNuocCu", DbType="Bit NOT NULL")]
+		public bool ApGiaNuocCu
+		{
+			get
+			{
+				return this._ApGiaNuocCu;
+			}
+			set
+			{
+				if ((this._ApGiaNuocCu != value))
+				{
+					this.OnApGiaNuocCuChanging(value);
+					this.SendPropertyChanging();
+					this._ApGiaNuocCu = value;
+					this.SendPropertyChanged("ApGiaNuocCu");
+					this.OnApGiaNuocCuChanged();
 				}
 			}
 		}

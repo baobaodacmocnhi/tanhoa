@@ -789,6 +789,7 @@
       <Column Name="HCSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="KhuCongNghiep" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TyLeKhuCongNghiep" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ApGiaNuocCu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TienNuoc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ThueGTGT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhiBVMT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
