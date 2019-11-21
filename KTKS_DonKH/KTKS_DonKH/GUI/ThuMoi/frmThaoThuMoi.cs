@@ -136,7 +136,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
             txtVeViec.Text = en.VeViec;
             txtLuuy.Text = en.Luuy;
             txtNoiNhan.Text = en.NoiNhan;
-            chkKhachHangDaLienHe.Checked = en.KhachHangDaLienHe;
+            chkCanKhachHangLienHe.Checked = en.CanKhachHangLienHe;
 
             dgvHinh.Rows.Clear();
             foreach (ThuMoi_ChiTiet_Hinh item in en.ThuMoi_ChiTiet_Hinhs.ToList())
@@ -168,7 +168,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
             txtVeViec.Text = "";
             txtLuuy.Text = "Nếu quá thời hạn trên, Ông (Bà) không đến liên hệ. Công ty Cổ phần Cấp nước Tân Hòa sẽ giải quyết theo quy định: điều chỉnh định mức = 0 và tạm ngưng cung cấp nước.";
             txtNoiNhan.Text = CTaiKhoan.HoTen;
-            chkKhachHangDaLienHe.Checked = false;
+            chkCanKhachHangLienHe.Checked = false;
 
             dgvDSThu.DataSource = null;
             _dontu_ChiTiet = null;
@@ -431,6 +431,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     entity.VeViec = txtVeViec.Text.Trim();
                     entity.Luuy = txtLuuy.Text.Trim();
                     entity.NoiNhan = txtNoiNhan.Text.Trim();
+                    entity.CanKhachHangLienHe = true;
 
                     using (TransactionScope scope = new TransactionScope())
                         if (_cThuMoi.them_ChiTiet(entity))
@@ -487,7 +488,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         _thumoi.VeViec = txtVeViec.Text.Trim();
                         _thumoi.Luuy = txtLuuy.Text.Trim();
                         _thumoi.NoiNhan = txtNoiNhan.Text.Trim();
-                        _thumoi.KhachHangDaLienHe = chkKhachHangDaLienHe.Checked;
+                        _thumoi.CanKhachHangLienHe = chkCanKhachHangLienHe.Checked;
 
                         if (_cThuMoi.sua_ChiTiet(_thumoi))
                         {

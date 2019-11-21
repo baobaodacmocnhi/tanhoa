@@ -126,7 +126,7 @@
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.txtDinhMuc_KhongDangKy = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.chkKhongLienHe = new System.Windows.Forms.CheckBox();
+            this.chkCanKhachHangLienHe = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -1094,15 +1094,15 @@
             this.label31.TabIndex = 33;
             this.label31.Text = "Định Mức Không Đăng Ký";
             // 
-            // chkKhongLienHe
+            // chkCanKhachHangLienHe
             // 
-            this.chkKhongLienHe.AutoSize = true;
-            this.chkKhongLienHe.Location = new System.Drawing.Point(627, 102);
-            this.chkKhongLienHe.Name = "chkKhongLienHe";
-            this.chkKhongLienHe.Size = new System.Drawing.Size(190, 20);
-            this.chkKhongLienHe.TabIndex = 111;
-            this.chkKhongLienHe.Text = "Khách Hàng Không Liên Hệ";
-            this.chkKhongLienHe.UseVisualStyleBackColor = true;
+            this.chkCanKhachHangLienHe.AutoSize = true;
+            this.chkCanKhachHangLienHe.Location = new System.Drawing.Point(627, 102);
+            this.chkCanKhachHangLienHe.Name = "chkCanKhachHangLienHe";
+            this.chkCanKhachHangLienHe.Size = new System.Drawing.Size(176, 20);
+            this.chkCanKhachHangLienHe.TabIndex = 111;
+            this.chkCanKhachHangLienHe.Text = "Cần Khách Hàng Liên Hệ";
+            this.chkCanKhachHangLienHe.UseVisualStyleBackColor = true;
             // 
             // frmKTXM
             // 
@@ -1110,7 +1110,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1115, 650);
-            this.Controls.Add(this.chkKhongLienHe);
+            this.Controls.Add(this.chkCanKhachHangLienHe);
             this.Controls.Add(this.txtDinhMuc_KhongDangKy);
             this.Controls.Add(this.label31);
             this.Controls.Add(this.groupBox4);
@@ -1249,6 +1249,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
         private System.Windows.Forms.TextBox txtDinhMuc_KhongDangKy;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.CheckBox chkKhongLienHe;
+        private System.Windows.Forms.CheckBox chkCanKhachHangLienHe;
     }
 }

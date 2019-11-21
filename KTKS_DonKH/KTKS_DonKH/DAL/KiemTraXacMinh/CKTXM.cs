@@ -181,12 +181,12 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool checkKhongLienHe(string DanhBo, out string TinhTrang)
+        public bool checkCanKhachHangLienHe(string DanhBo, out string TinhTrang)
         {
-            if (db.KTXM_ChiTiets.Any(item => item.DanhBo == DanhBo && item.KhongLienHe == true))
+            if (db.KTXM_ChiTiets.Any(item => item.DanhBo == DanhBo && item.CanKhachHangLienHe == true))
             {
                 TinhTrang = "có Kiểm Tra Xác Minh";
-                KTXM_ChiTiet en = db.KTXM_ChiTiets.FirstOrDefault(item => item.DanhBo == DanhBo && item.KhongLienHe == true);
+                KTXM_ChiTiet en = db.KTXM_ChiTiets.FirstOrDefault(item => item.DanhBo == DanhBo && item.CanKhachHangLienHe == true);
                 if (en.KTXM.MaDonMoi != null)
                     TinhTrang += " (" + en.KTXM.MaDonMoi.Value.ToString() + ")";
                 else

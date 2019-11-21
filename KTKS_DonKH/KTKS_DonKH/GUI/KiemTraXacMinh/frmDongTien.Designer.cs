@@ -58,6 +58,10 @@
             this.txtHieu = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtDinhMuc_KhongDangKy = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtDinhMucMoi = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.txtSoTienDongTien = new System.Windows.Forms.TextBox();
             this.chkMoNuoc = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -66,7 +70,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNoiDungKiemTra = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.chkKhongLienHe = new System.Windows.Forms.CheckBox();
+            this.chkCanKhachHangLienHe = new System.Windows.Forms.CheckBox();
             this.label21 = new System.Windows.Forms.Label();
             this.dgvDSKetQuaKiemTra = new System.Windows.Forms.DataGridView();
             this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,10 +104,6 @@
             this.Namee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkLapTruyThu = new System.Windows.Forms.CheckBox();
-            this.txtDinhMucMoi = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtDinhMuc_KhongDangKy = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgvHinh = new System.Windows.Forms.DataGridView();
             this.ID_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -441,6 +441,38 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
             // 
+            // txtDinhMuc_KhongDangKy
+            // 
+            this.txtDinhMuc_KhongDangKy.Location = new System.Drawing.Point(318, 155);
+            this.txtDinhMuc_KhongDangKy.Name = "txtDinhMuc_KhongDangKy";
+            this.txtDinhMuc_KhongDangKy.Size = new System.Drawing.Size(50, 22);
+            this.txtDinhMuc_KhongDangKy.TabIndex = 61;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(156, 158);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(156, 16);
+            this.label10.TabIndex = 60;
+            this.label10.Text = "Định Mức Không Đăng Ký";
+            // 
+            // txtDinhMucMoi
+            // 
+            this.txtDinhMucMoi.Location = new System.Drawing.Point(100, 155);
+            this.txtDinhMucMoi.Name = "txtDinhMucMoi";
+            this.txtDinhMucMoi.Size = new System.Drawing.Size(50, 22);
+            this.txtDinhMucMoi.TabIndex = 59;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(7, 158);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 16);
+            this.label9.TabIndex = 58;
+            this.label9.Text = "Định Mức Mới";
+            // 
             // txtSoTienDongTien
             // 
             this.txtSoTienDongTien.Location = new System.Drawing.Point(607, 127);
@@ -513,15 +545,15 @@
             this.label11.TabIndex = 22;
             this.label11.Text = "Điện Thoại:";
             // 
-            // chkKhongLienHe
+            // chkCanKhachHangLienHe
             // 
-            this.chkKhongLienHe.AutoSize = true;
-            this.chkKhongLienHe.Location = new System.Drawing.Point(909, 385);
-            this.chkKhongLienHe.Name = "chkKhongLienHe";
-            this.chkKhongLienHe.Size = new System.Drawing.Size(190, 20);
-            this.chkKhongLienHe.TabIndex = 110;
-            this.chkKhongLienHe.Text = "Khách Hàng Không Liên Hệ";
-            this.chkKhongLienHe.UseVisualStyleBackColor = true;
+            this.chkCanKhachHangLienHe.AutoSize = true;
+            this.chkCanKhachHangLienHe.Location = new System.Drawing.Point(909, 385);
+            this.chkCanKhachHangLienHe.Name = "chkCanKhachHangLienHe";
+            this.chkCanKhachHangLienHe.Size = new System.Drawing.Size(176, 20);
+            this.chkCanKhachHangLienHe.TabIndex = 110;
+            this.chkCanKhachHangLienHe.Text = "Cần Khách Hàng Liên Hệ";
+            this.chkCanKhachHangLienHe.UseVisualStyleBackColor = true;
             // 
             // label21
             // 
@@ -856,38 +888,6 @@
             this.chkLapTruyThu.Text = "Lập Truy Thu";
             this.chkLapTruyThu.UseVisualStyleBackColor = true;
             // 
-            // txtDinhMucMoi
-            // 
-            this.txtDinhMucMoi.Location = new System.Drawing.Point(100, 155);
-            this.txtDinhMucMoi.Name = "txtDinhMucMoi";
-            this.txtDinhMucMoi.Size = new System.Drawing.Size(50, 22);
-            this.txtDinhMucMoi.TabIndex = 59;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 158);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 16);
-            this.label9.TabIndex = 58;
-            this.label9.Text = "Định Mức Mới";
-            // 
-            // txtDinhMuc_KhongDangKy
-            // 
-            this.txtDinhMuc_KhongDangKy.Location = new System.Drawing.Point(318, 155);
-            this.txtDinhMuc_KhongDangKy.Name = "txtDinhMuc_KhongDangKy";
-            this.txtDinhMuc_KhongDangKy.Size = new System.Drawing.Size(50, 22);
-            this.txtDinhMuc_KhongDangKy.TabIndex = 61;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(156, 158);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(156, 16);
-            this.label10.TabIndex = 60;
-            this.label10.Text = "Định Mức Không Đăng Ký";
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dgvHinh);
@@ -961,7 +961,7 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.chkLapTruyThu);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.chkKhongLienHe);
+            this.Controls.Add(this.chkCanKhachHangLienHe);
             this.Controls.Add(this.txtGhiChuNoiDungXuLy);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -1065,7 +1065,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtGhiChuNoiDungXuLy;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox chkKhongLienHe;
+        private System.Windows.Forms.CheckBox chkCanKhachHangLienHe;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvBangGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCTKTXM;

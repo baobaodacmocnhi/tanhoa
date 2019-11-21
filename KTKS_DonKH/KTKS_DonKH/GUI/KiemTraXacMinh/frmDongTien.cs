@@ -79,7 +79,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 txtDinhMuc_KhongDangKy.Text = ctktxm.DinhMuc_KhongDangKy.Value.ToString();
             chkDutChiGoc.Checked = ctktxm.DutChiGoc;
             chkMoNuoc.Checked = ctktxm.MoNuoc;
-            chkKhongLienHe.Checked = ctktxm.KhongLienHe;
+            chkCanKhachHangLienHe.Checked = ctktxm.CanKhachHangLienHe;
             if (ctktxm.NoiDungXuLy != null)
             {
                 cmbNoiDungXuLy.SelectedValue = ctktxm.NoiDungXuLy;
@@ -166,7 +166,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 chkMoNuoc.Checked = false; 
                 cmbNoiDungXuLy.SelectedIndex = -1;
                 txtGhiChuNoiDungXuLy.Text = "";
-                chkKhongLienHe.Checked = false;
+                chkCanKhachHangLienHe.Checked = false;
                 ///
                 chkLapBangGia.Checked = false;
                 dateLapBangGia.Value = DateTime.Now;
@@ -216,7 +216,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                         ctktxm.DutChiGoc = chkDutChiGoc.Checked;
                         ctktxm.MoNuoc = chkMoNuoc.Checked;
-                        ctktxm.KhongLienHe = chkKhongLienHe.Checked;
+                        ctktxm.CanKhachHangLienHe = chkCanKhachHangLienHe.Checked;
                         ctktxm.LapTruyThu = chkLapTruyThu.Checked;
                         if (cmbNoiDungXuLy.SelectedIndex >-1)
                         {

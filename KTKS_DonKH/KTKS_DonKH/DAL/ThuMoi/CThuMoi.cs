@@ -173,12 +173,12 @@ namespace KTKS_DonKH.DAL.ThuMoi
             }
         }
 
-        public bool checkKhongLienHe(string DanhBo, out string TinhTrang)
+        public bool checkCanKhachHangLienHe(string DanhBo, out string TinhTrang)
         {
-            if (db.ThuMoi_ChiTiets.Any(item => item.DanhBo == DanhBo && item.KhachHangDaLienHe == false))
+            if (db.ThuMoi_ChiTiets.Any(item => item.DanhBo == DanhBo && item.CanKhachHangLienHe == true))
             {
                 TinhTrang = "có Thư Mời";
-                ThuMoi_ChiTiet en = db.ThuMoi_ChiTiets.FirstOrDefault(item => item.DanhBo == DanhBo && item.KhachHangDaLienHe == false);
+                ThuMoi_ChiTiet en = db.ThuMoi_ChiTiets.FirstOrDefault(item => item.DanhBo == DanhBo && item.CanKhachHangLienHe == true);
                 if (en.ThuMoi.MaDonMoi != null)
                     TinhTrang += " (" + en.ThuMoi.MaDonMoi.Value.ToString() + ")";
                 else

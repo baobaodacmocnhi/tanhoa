@@ -106,12 +106,12 @@ namespace KTKS_DonKH.GUI.DonTu
             str = _cTTTN.check_TinhTrang_Ton(entity.DANHBA);
             if (str == "")
             {
-                if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
+                if (_cKTXM.checkCanKhachHangLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
                     str = TinhTrang;
             }
             if (str == "")
             {
-                if (_cThuMoi.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
+                if (_cThuMoi.checkCanKhachHangLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
                     str = TinhTrang;
             }
             if (str == "")

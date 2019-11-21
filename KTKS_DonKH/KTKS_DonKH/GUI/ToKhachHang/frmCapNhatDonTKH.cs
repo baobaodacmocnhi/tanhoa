@@ -520,7 +520,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                 return;
                         }
                         string TinhTrang = "";
-                        if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
+                        if (_cKTXM.checkCanKhachHangLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
                         {
                             if (MessageBox.Show(TinhTrang + "\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                             //MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

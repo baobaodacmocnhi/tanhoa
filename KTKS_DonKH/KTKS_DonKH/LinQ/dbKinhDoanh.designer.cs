@@ -34384,7 +34384,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _GhiChuNoiDungBaoThay;
 		
-		private bool _KhongLienHe;
+		private bool _CanKhachHangLienHe;
 		
 		private bool _LapTruyThu;
 		
@@ -34516,8 +34516,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNoiDungBaoThayChanged();
     partial void OnGhiChuNoiDungBaoThayChanging(string value);
     partial void OnGhiChuNoiDungBaoThayChanged();
-    partial void OnKhongLienHeChanging(bool value);
-    partial void OnKhongLienHeChanged();
+    partial void OnCanKhachHangLienHeChanging(bool value);
+    partial void OnCanKhachHangLienHeChanged();
     partial void OnLapTruyThuChanging(bool value);
     partial void OnLapTruyThuChanged();
     partial void OnDinhMuc_KhongDangKyChanging(System.Nullable<int> value);
@@ -35476,22 +35476,22 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KhongLienHe", DbType="Bit NOT NULL")]
-		public bool KhongLienHe
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CanKhachHangLienHe", DbType="Bit NOT NULL")]
+		public bool CanKhachHangLienHe
 		{
 			get
 			{
-				return this._KhongLienHe;
+				return this._CanKhachHangLienHe;
 			}
 			set
 			{
-				if ((this._KhongLienHe != value))
+				if ((this._CanKhachHangLienHe != value))
 				{
-					this.OnKhongLienHeChanging(value);
+					this.OnCanKhachHangLienHeChanging(value);
 					this.SendPropertyChanging();
-					this._KhongLienHe = value;
-					this.SendPropertyChanged("KhongLienHe");
-					this.OnKhongLienHeChanged();
+					this._CanKhachHangLienHe = value;
+					this.SendPropertyChanged("CanKhachHangLienHe");
+					this.OnCanKhachHangLienHeChanged();
 				}
 			}
 		}
@@ -44440,7 +44440,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiNhan;
 		
-		private bool _KhachHangDaLienHe;
+		private bool _CanKhachHangLienHe;
 		
 		private int _ID;
 		
@@ -44496,8 +44496,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnLuuyChanged();
     partial void OnNoiNhanChanging(string value);
     partial void OnNoiNhanChanged();
-    partial void OnKhachHangDaLienHeChanging(bool value);
-    partial void OnKhachHangDaLienHeChanged();
+    partial void OnCanKhachHangLienHeChanging(bool value);
+    partial void OnCanKhachHangLienHeChanged();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
@@ -44859,22 +44859,22 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KhachHangDaLienHe", DbType="Bit NOT NULL")]
-		public bool KhachHangDaLienHe
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CanKhachHangLienHe", DbType="Bit NOT NULL")]
+		public bool CanKhachHangLienHe
 		{
 			get
 			{
-				return this._KhachHangDaLienHe;
+				return this._CanKhachHangLienHe;
 			}
 			set
 			{
-				if ((this._KhachHangDaLienHe != value))
+				if ((this._CanKhachHangLienHe != value))
 				{
-					this.OnKhachHangDaLienHeChanging(value);
+					this.OnCanKhachHangLienHeChanging(value);
 					this.SendPropertyChanging();
-					this._KhachHangDaLienHe = value;
-					this.SendPropertyChanged("KhachHangDaLienHe");
-					this.OnKhachHangDaLienHeChanged();
+					this._CanKhachHangLienHe = value;
+					this.SendPropertyChanged("CanKhachHangLienHe");
+					this.OnCanKhachHangLienHeChanged();
 				}
 			}
 		}

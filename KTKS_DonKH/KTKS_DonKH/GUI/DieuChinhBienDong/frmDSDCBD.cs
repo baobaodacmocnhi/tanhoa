@@ -1642,7 +1642,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         dr["ChucVu"] = "PHÓ";
                                         dr["NguoiKy"] = radPhoPhong.Text;
                                     }
-
+                                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
                                 rptThuBaoDCBD rpt = new rptThuBaoDCBD();
