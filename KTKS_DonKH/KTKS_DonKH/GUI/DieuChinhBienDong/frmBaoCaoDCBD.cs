@@ -1962,6 +1962,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             head5cc.WrapText = true;
             head5cc.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             head5cc.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            select DanhBo,CreateDate=CAST(CreateDate as date),SoNK=sum(SoNKDangKy),DinhMuc=sum(SoNKDangKy)*4 from ChungTu_ChiTiet where (MaLCT=7 or MaLCT=8) and YEAR(CreateDate)=2019 group by DanhBo,CreateDate
+
         }
 
 
