@@ -2767,10 +2767,12 @@ namespace ThuTien.DAL
                         int TieuThuMoi = TieuThu - TieuThuCu;
                         int TongDinhMucCu = (int)Math.Round((double)TongDinhMuc * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
                         int TongDinhMucMoi = TongDinhMuc - TongDinhMucCu;
-                        int DinhMucHN_Cu = 0;
+                        int DinhMucHN_Cu = 0, DinhMucHN_Moi = 0;
                         if (TuNgay.Date > new DateTime(2019, 11, 15))
-                            DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
-                        int DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
+                            if (TongDinhMucCu != 0 && DinhMucHN != 0 && TongDinhMuc != 0)
+                                DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
+                        if (TongDinhMucMoi != 0 && DinhMucHN != 0 && TongDinhMuc != 0)
+                            DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
                         List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
                         List<int> lstGiaNuocMoi = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
                         TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocCu, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucCu, DinhMucHN_Cu, TieuThuCu, out ChiTietCu, out TieuThu_DieuChinhGia);
@@ -2812,7 +2814,7 @@ namespace ThuTien.DAL
 
         public string getDanhBo_CatTam(int ID)
         {
-            return (string)ExecuteQuery_ReturnOneValue("select DanhBo from CHDB_ChiTietCatTam where MaCTCTDB="+ID);
+            return (string)ExecuteQuery_ReturnOneValue("select DanhBo from CHDB_ChiTietCatTam where MaCTCTDB=" + ID);
         }
 
         public string getDanhBo_CatHuy(int ID)
