@@ -7834,6 +7834,7 @@ namespace ThuTien.DAL.Doi
                             TyLeHCSN = itemHD.TILEHCSN,
                             TyLeSX = itemHD.TILESX,
                             TyLeDV = itemHD.TILEDV,
+                            itemHD.DinhMucHN,
                             DinhMuc = itemHD.DM,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,

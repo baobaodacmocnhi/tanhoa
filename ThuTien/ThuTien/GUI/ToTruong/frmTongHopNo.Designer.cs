@@ -92,8 +92,8 @@
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMucHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMucHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TyLeSH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TyLeHCSN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TyLeSX = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -167,8 +167,8 @@
             this.Ky,
             this.SoHoaDon,
             this.GiaBieu,
-            this.DinhMucHN,
             this.DinhMuc,
+            this.DinhMucHN,
             this.TyLeSH,
             this.TyLeHCSN,
             this.TyLeSX,
@@ -679,19 +679,19 @@
             this.GiaBieu.Name = "GiaBieu";
             this.GiaBieu.Width = 50;
             // 
-            // DinhMucHN
-            // 
-            this.DinhMucHN.DataPropertyName = "DinhMucHN";
-            this.DinhMucHN.HeaderText = "Định Mức HN";
-            this.DinhMucHN.Name = "DinhMucHN";
-            this.DinhMucHN.Width = 50;
-            // 
             // DinhMuc
             // 
             this.DinhMuc.DataPropertyName = "DinhMuc";
             this.DinhMuc.HeaderText = "Định Mức";
             this.DinhMuc.Name = "DinhMuc";
             this.DinhMuc.Width = 50;
+            // 
+            // DinhMucHN
+            // 
+            this.DinhMucHN.DataPropertyName = "DinhMucHN";
+            this.DinhMucHN.HeaderText = "Định Mức HN";
+            this.DinhMucHN.Name = "DinhMucHN";
+            this.DinhMucHN.Width = 50;
             // 
             // TyLeSH
             // 
@@ -909,8 +909,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMucHN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMucHN;
         private System.Windows.Forms.DataGridViewTextBoxColumn TyLeSH;
         private System.Windows.Forms.DataGridViewTextBoxColumn TyLeHCSN;
         private System.Windows.Forms.DataGridViewTextBoxColumn TyLeSX;
