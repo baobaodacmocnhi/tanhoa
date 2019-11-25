@@ -777,6 +777,7 @@
             this.txtChiTietMoi.Location = new System.Drawing.Point(451, 49);
             this.txtChiTietMoi.Multiline = true;
             this.txtChiTietMoi.Name = "txtChiTietMoi";
+            this.txtChiTietMoi.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtChiTietMoi.Size = new System.Drawing.Size(100, 113);
             this.txtChiTietMoi.TabIndex = 15;
             // 
@@ -786,6 +787,7 @@
             this.txtChiTietCu.Location = new System.Drawing.Point(173, 49);
             this.txtChiTietCu.Multiline = true;
             this.txtChiTietCu.Name = "txtChiTietCu";
+            this.txtChiTietCu.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtChiTietCu.Size = new System.Drawing.Size(100, 113);
             this.txtChiTietCu.TabIndex = 14;
             // 

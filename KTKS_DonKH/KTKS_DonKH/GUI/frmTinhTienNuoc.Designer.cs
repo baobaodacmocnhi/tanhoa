@@ -197,6 +197,7 @@
             this.txtChiTietCu.Margin = new System.Windows.Forms.Padding(4);
             this.txtChiTietCu.Multiline = true;
             this.txtChiTietCu.Name = "txtChiTietCu";
+            this.txtChiTietCu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtChiTietCu.Size = new System.Drawing.Size(150, 100);
             this.txtChiTietCu.TabIndex = 43;
             // 
@@ -226,6 +227,7 @@
             this.txtChiTietMoi.Margin = new System.Windows.Forms.Padding(4);
             this.txtChiTietMoi.Multiline = true;
             this.txtChiTietMoi.Name = "txtChiTietMoi";
+            this.txtChiTietMoi.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtChiTietMoi.Size = new System.Drawing.Size(150, 100);
             this.txtChiTietMoi.TabIndex = 45;
             // 

@@ -158,7 +158,7 @@ namespace KTKS_DonKH.GUI
                         //int TieuThu_DieuChinhGia;
                         int TongSoNgay = (int)((dateDen.Value.Date - dateTu.Value.Date).TotalDays);
 
-                        int SoNgayCu = (int)((lst[index].NgayTangGia.Value.Date.AddDays(-1) - dateTu.Value.Date).TotalDays);
+                        int SoNgayCu = (int)((lst[index].NgayTangGia.Value.Date - dateTu.Value.Date).TotalDays);
                         int TieuThuCu = (int)Math.Round(double.Parse(txtTieuThu.Text.Trim()) * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
                         int TieuThuMoi = int.Parse(txtTieuThu.Text.Trim()) - TieuThuCu;
                         int TongDinhMucCu = (int)Math.Round(double.Parse(txtDinhMuc.Text.Trim()) * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
@@ -191,8 +191,8 @@ namespace KTKS_DonKH.GUI
             int GiaBanCu = 0, GiaBanMoi = 0, ThueGTGT = 0, PhiBVMT = 0, TongCong = 0, TieuThu_DieuChinhGia = 0;
             string ChiTietCu, ChiTietMoi;
             _cGiaNuoc.TinhTienNuoc(false, false, 0, txtDanhBo.Text.Trim(), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()), dateTu.Value, dateDen.Value, int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtSH.Text.Trim()), int.Parse(txtSX.Text.Trim()), int.Parse(txtDV.Text.Trim()), int.Parse(txtHCSN.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out GiaBanCu, out ChiTietCu, out GiaBanMoi, out ChiTietMoi, out TieuThu_DieuChinhGia);
-            ThueGTGT = (GiaBanCu + GiaBanMoi) * 5 / 100;
-            PhiBVMT = (GiaBanCu + GiaBanMoi) * 10 / 100;
+            ThueGTGT = (int)Math.Round((double)(GiaBanCu + GiaBanMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+            PhiBVMT = (int)Math.Round((double)(GiaBanCu + GiaBanMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
             TongCong = (GiaBanCu + GiaBanMoi) + ThueGTGT + PhiBVMT;
             txtGiaBanCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBanCu);
             txtGiaBanMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBanMoi);
