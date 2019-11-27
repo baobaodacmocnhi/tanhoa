@@ -194,6 +194,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                                     ctchungtu.Lo = txtLo.Text.Trim();
                                     ctchungtu.Phong = txtPhong.Text.Trim();
+                                    ctchungtu.Quan = _dataT.Quan;
+                                    ctchungtu.Phuong = _dataT.Phuong;
                                     ///Ghi thông tin Lịch Sử chung
                                     ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
                                     switch (_dataT.Loai)
@@ -230,7 +232,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
                                     lichsuchungtu.Lo = txtLo.Text.Trim();
                                     lichsuchungtu.Phong = txtPhong.Text.Trim();
-
+                                    
                                     if (_cChungTu.ThemCT(ctchungtu))
                                     {
                                         ///Thêm Lịch Sử đầu tiên
@@ -456,6 +458,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             B.GhiChu = A.GhiChu;
             B.Lo = A.Lo;
             B.Phong = A.Phong;
+            B.Quan = A.Quan;
+            B.Phuong = A.Phuong;
         }
 
         private void cmbLoaiCT_SelectedIndexChanged(object sender, EventArgs e)

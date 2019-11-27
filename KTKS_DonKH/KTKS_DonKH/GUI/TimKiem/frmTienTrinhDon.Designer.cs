@@ -87,6 +87,7 @@
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn91 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -689,6 +690,7 @@
             this.gridColumn23,
             this.gridColumn24,
             this.gridColumn25,
+            this.gridColumn91,
             this.gridColumn27,
             this.gridColumn28,
             this.gridColumn29,
@@ -849,6 +851,18 @@
             this.gridColumn25.VisibleIndex = 7;
             this.gridColumn25.Width = 100;
             // 
+            // gridColumn91
+            // 
+            this.gridColumn91.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gridColumn91.AppearanceCell.Options.UseBackColor = true;
+            this.gridColumn91.Caption = "Định Mức HN BĐ";
+            this.gridColumn91.FieldName = "DinhMucHN_BD";
+            this.gridColumn91.Name = "gridColumn91";
+            this.gridColumn91.OptionsColumn.AllowEdit = false;
+            this.gridColumn91.Visible = true;
+            this.gridColumn91.VisibleIndex = 8;
+            this.gridColumn91.Width = 150;
+            // 
             // gridColumn27
             // 
             this.gridColumn27.Caption = "Tiêu Thụ Cũ";
@@ -912,7 +926,7 @@
             this.gridColumn121.Name = "gridColumn121";
             this.gridColumn121.OptionsColumn.AllowEdit = false;
             this.gridColumn121.Visible = true;
-            this.gridColumn121.VisibleIndex = 8;
+            this.gridColumn121.VisibleIndex = 9;
             this.gridColumn121.Width = 200;
             // 
             // gridViewCHDB
@@ -2685,5 +2699,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn88;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn89;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn90;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn91;
     }
 }

@@ -78,7 +78,14 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             txtGiaBieu.Text = hoadon.GB.ToString();
-            txtDinhMuc.Text = hoadon.DM.ToString();
+            if (hoadon.DM != null)
+                txtDinhMuc.Text = hoadon.DM.Value.ToString();
+            else
+                txtDinhMuc.Text = "";
+            if (hoadon.DinhMucHN != null)
+                txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
+            else
+                txtDinhMucHN.Text = "";
         }
 
         public void LoadTT(ToTrinh_ChiTiet en)
@@ -114,8 +121,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtDanhBo.Text = en.DanhBo;
             txtHoTen.Text = en.HoTen;
             txtDiaChi.Text = en.DiaChi;
-            txtGiaBieu.Text = en.GiaBieu;
-            txtDinhMuc.Text = en.DinhMuc;
+            txtGiaBieu.Text = en.GiaBieu.Value.ToString();
+            if (en.DinhMuc != null)
+                txtDinhMuc.Text = en.DinhMuc.Value.ToString();
+            if (en.DinhMucHN != null)
+                txtDinhMucHN.Text = en.DinhMucHN.Value.ToString();
             txtVeViec.Text = en.VeViec;
             txtKinhTrinh.Text = en.KinhTrinh;
             txtNoiDung.Text = en.NoiDung;
@@ -140,6 +150,9 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtDanhBo.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
+            txtGiaBieu.Text = "";
+            txtDinhMuc.Text = "";
+            txtDinhMucHN.Text = "";
             ///
             txtVeViec.Text = "";
             txtKinhTrinh.Text = "";
@@ -285,8 +298,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 Clear();
                 txtMaCTTT.Text = MaDon;
                 _cttt = _cTT.get_ChiTiet(int.Parse(txtMaCTTT.Text.Trim().Replace("-", "")));
-                if(_cttt!=null)
-                LoadTT(_cttt);
+                if (_cttt != null)
+                    LoadTT(_cttt);
                 else
                     MessageBox.Show("Mã này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -373,42 +386,45 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     cttt.DanhBo = txtDanhBo.Text.Trim();
                     cttt.HoTen = txtHoTen.Text.Trim();
                     cttt.DiaChi = txtDiaChi.Text.Trim();
-                    cttt.GiaBieu = txtGiaBieu.Text.Trim();
-                    cttt.DinhMuc = txtDinhMuc.Text.Trim();
+                    cttt.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                    if (string.IsNullOrEmpty(txtDinhMuc.Text.Trim()) == false)
+                        cttt.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                    if (string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()) == false)
+                        cttt.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                     cttt.VeViec = txtVeViec.Text.Trim();
                     cttt.KinhTrinh = txtKinhTrinh.Text.Trim();
                     cttt.NoiDung = txtNoiDung.Text;
                     cttt.NoiNhan = txtNoiNhan.Text.Trim();
                     if (_hoadon != null)
                     {
-                        cttt.Dot = _hoadon.DOT.ToString();
-                        cttt.Ky = _hoadon.KY.ToString();
-                        cttt.Nam = _hoadon.NAM.ToString();
+                        cttt.Dot = _hoadon.DOT.Value;
+                        cttt.Ky = _hoadon.KY;
+                        cttt.Nam = _hoadon.NAM.Value;
                         cttt.Phuong = _hoadon.Phuong;
                         cttt.Quan = _hoadon.Quan;
                     }
 
                     using (TransactionScope scope = new TransactionScope())
-                    if (_cTT.Them_ChiTiet(cttt))
-                    {
-                        foreach (DataGridViewRow item in dgvHinh.Rows)
+                        if (_cTT.Them_ChiTiet(cttt))
                         {
-                            ToTrinh_ChiTiet_Hinh en = new ToTrinh_ChiTiet_Hinh();
-                            en.IDToTrinh_ChiTiet = cttt.IDCT;
-                            en.Name = item.Cells["Name_Hinh"].Value.ToString();
-                            en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
-                            _cTT.Them_Hinh(en);
-                        }
-                        if (_dontu_ChiTiet != null)
-                        {
-                            if(_cDonTu.Them_LichSu(cttt.CreateDate.Value, "ToTrinh", "Đã Lập Tờ Trình, " + cttt.VeViec, cttt.IDCT, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value)==true)
+                            foreach (DataGridViewRow item in dgvHinh.Rows)
+                            {
+                                ToTrinh_ChiTiet_Hinh en = new ToTrinh_ChiTiet_Hinh();
+                                en.IDToTrinh_ChiTiet = cttt.IDCT;
+                                en.Name = item.Cells["Name_Hinh"].Value.ToString();
+                                en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
+                                _cTT.Them_Hinh(en);
+                            }
+                            if (_dontu_ChiTiet != null)
+                            {
+                                if (_cDonTu.Them_LichSu(cttt.CreateDate.Value, "ToTrinh", "Đã Lập Tờ Trình, " + cttt.VeViec, cttt.IDCT, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
+                                    scope.Complete();
+                            }
+                            else
                                 scope.Complete();
+                            MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear();
                         }
-                        else
-                            scope.Complete();
-                        MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Clear();
-                    }
 
                 }
                 catch (Exception ex)
@@ -431,17 +447,24 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         _cttt.DanhBo = txtDanhBo.Text.Trim();
                         _cttt.HoTen = txtHoTen.Text.Trim();
                         _cttt.DiaChi = txtDiaChi.Text.Trim();
-                        _cttt.GiaBieu = txtGiaBieu.Text.Trim();
-                        _cttt.DinhMuc = txtDinhMuc.Text.Trim();
+                        _cttt.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                        if (string.IsNullOrEmpty(txtDinhMuc.Text.Trim()) == false)
+                            _cttt.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                        else
+                            _cttt.DinhMuc = null;
+                        if (string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()) == false)
+                            _cttt.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
+                        else
+                            _cttt.DinhMucHN = null;
                         _cttt.VeViec = txtVeViec.Text.Trim();
                         _cttt.KinhTrinh = txtKinhTrinh.Text.Trim();
                         _cttt.NoiDung = txtNoiDung.Text;
                         _cttt.NoiNhan = txtNoiNhan.Text.Trim();
                         if (_hoadon != null)
                         {
-                            _cttt.Dot = _hoadon.DOT.ToString();
-                            _cttt.Ky = _hoadon.KY.ToString();
-                            _cttt.Nam = _hoadon.NAM.ToString();
+                            _cttt.Dot = _hoadon.DOT.Value;
+                            _cttt.Ky = _hoadon.KY;
+                            _cttt.Nam = _hoadon.NAM.Value;
                             _cttt.Phuong = _hoadon.Phuong;
                             _cttt.Quan = _hoadon.Quan;
                         }
@@ -550,7 +573,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 if (!string.IsNullOrEmpty(_cttt.DanhBo) && _cttt.DanhBo.Length == 11)
                     dr["DanhBo"] = _cttt.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["GiaBieu"] = _cttt.GiaBieu;
-                dr["DinhMuc"] = _cttt.DinhMuc;
+                if (_cttt.DinhMuc != null)
+                    dr["DinhMuc"] = _cttt.DinhMuc.Value;
+                if (_cttt.DinhMucHN != null)
+                    dr["DinhMucHN"] = _cttt.DinhMucHN.Value;
 
                 dr["VeViec"] = _cttt.VeViec;
                 dr["KinhTrinh"] = _cttt.KinhTrinh;
@@ -625,7 +651,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             if (!string.IsNullOrEmpty(cttt.DanhBo) && cttt.DanhBo.Length == 11)
                                 dr["DanhBo"] = cttt.DanhBo.Insert(7, " ").Insert(4, " ");
                             dr["GiaBieu"] = cttt.GiaBieu;
-                            dr["DinhMuc"] = cttt.DinhMuc;
+                            if (cttt.DinhMuc != null)
+                                dr["DinhMuc"] = cttt.DinhMuc;
+                            if (cttt.DinhMuc != null)
+                                dr["DinhMucHN"] = cttt.DinhMucHN;
 
                             dr["VeViec"] = cttt.VeViec;
                             dr["KinhTrinh"] = cttt.KinhTrinh;

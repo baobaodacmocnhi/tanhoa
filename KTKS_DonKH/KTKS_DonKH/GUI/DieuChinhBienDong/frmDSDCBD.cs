@@ -537,14 +537,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["XoaDiaChiLienHe"] = "Xóa Địa Chỉ Liên Hệ";
                                 dr["MaQuanPhuong"] = ctdcbd.MaQuanPhuong;
                                 dr["GiaBieu"] = ctdcbd.GiaBieu;
-                                dr["DinhMucHN"] = ctdcbd.DinhMucHN;
                                 dr["DinhMuc"] = ctdcbd.DinhMuc;
+                                dr["DinhMucHN"] = ctdcbd.DinhMucHN;
                                 ///Biến Động
                                 dr["HoTenBD"] = ctdcbd.HoTen_BD;
                                 dr["DiaChiBD"] = ctdcbd.DiaChi_BD;
                                 dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
-                                dr["DinhMucHNBD"] = ctdcbd.DinhMucHN_BD;
                                 dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
+                                dr["DinhMucHNBD"] = ctdcbd.DinhMucHN_BD;
                                 if (!string.IsNullOrEmpty(ctdcbd.SH_BD))
                                     dr["TyLe"] = "Tỷ Lệ SH: " + ctdcbd.SH_BD + "%";
 
@@ -905,6 +905,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         {
                                             _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUC=" + ctdcbd.DinhMuc_BD.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
                                         }
+                                        if (!string.IsNullOrEmpty(ctdcbd.DinhMucHN_BD.ToString()))
+                                        {
+                                            _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUCHN=" + ctdcbd.DinhMucHN_BD.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
+                                        }
                                         if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
                                         {
                                             _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + ctdcbd.GiaBieu_BD.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
@@ -947,6 +951,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
                                         {
                                             ghichu.NOIDUNG += " Định Mức Từ " + ctdcbd.DinhMuc + " -> " + ctdcbd.DinhMuc_BD + ",";
+                                        }
+                                        if (!string.IsNullOrEmpty(ctdcbd.DinhMucHN_BD.ToString()))
+                                        {
+                                            ghichu.NOIDUNG += " Định Mức Hộ Nghèo Từ " + ctdcbd.DinhMucHN + " -> " + ctdcbd.DinhMucHN_BD + ",";
                                         }
 
                                         string sqlGhiChu = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ghichu.DANHBO + "','" + ghichu.DONVI + "',N'" + ghichu.NOIDUNG + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',N'" + CTaiKhoan.HoTen + "')";
@@ -1003,6 +1011,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
                                     {
                                         _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUC=" + ctdcbd.DinhMuc.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
+                                    }
+                                    if (!string.IsNullOrEmpty(ctdcbd.DinhMucHN_BD.ToString()))
+                                    {
+                                        _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUCHN=" + ctdcbd.DinhMucHN.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
                                     {

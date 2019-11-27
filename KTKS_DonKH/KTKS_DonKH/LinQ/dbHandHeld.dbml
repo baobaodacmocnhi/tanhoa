@@ -281,19 +281,6 @@
       <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Phuong" Member="Phuongs">
-    <Type Name="Phuong">
-      <Column Name="Phuong" Member="Phuong1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TenPhuong" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Quan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Quan" Member="Quans">
-    <Type Name="Quan">
-      <Column Name="Quan" Member="Quan1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TenQuan" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.ThamSo" Member="ThamSos">
     <Type Name="ThamSo">
       <Column Name="Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />

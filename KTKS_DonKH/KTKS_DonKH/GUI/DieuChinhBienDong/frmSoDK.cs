@@ -345,6 +345,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                             ctchungtu.Lo = txtLo.Text.Trim();
                             ctchungtu.Phong = txtPhong.Text.Trim();
+                            ctchungtu.Phuong = _dataT.Phuong;
+                            ctchungtu.Quan = _dataT.Quan;
                             #region Yêu Cầu Cắt
                             if (chkYCCat1.Checked)
                                 if (txtSoNKCat_YCC1.Text.Trim() == "")
@@ -675,6 +677,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _ctchungtu.Lo = txtLo.Text.Trim();
                             _ctchungtu.Phong = txtPhong.Text.Trim();
                             _ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                            _ctchungtu.Quan = _dataT.Quan;
+                            _ctchungtu.Phuong = _dataT.Phuong;
                             ///
                             if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
                             {

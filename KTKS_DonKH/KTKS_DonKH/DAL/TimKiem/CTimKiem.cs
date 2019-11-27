@@ -29,6 +29,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDon.DiaChi,
                                    itemDon.GiaBieu,
                                    itemDon.DinhMuc,
+                                   itemDon.DinhMucHN,
                                    NoiDung = itemDon.DonTu.Name_NhomDon,
                                    itemDon.DienThoai,
                                };
@@ -120,11 +121,13 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCBD.MSThue_BD,
                                       itemCTDCBD.GiaBieu_BD,
                                       itemCTDCBD.DinhMuc_BD,
+                                      itemCTDCBD.DinhMucHN_BD,
                                       itemCTDCBD.HoTen,
                                       itemCTDCBD.DiaChi,
                                       itemCTDCBD.MSThue,
                                       itemCTDCBD.GiaBieu,
                                       itemCTDCBD.DinhMuc,
+                                      itemCTDCBD.DinhMucHN,
                                       CreateBy = itemUser.HoTen,
                                   };
                 ///Bảng CTDCHD
@@ -144,6 +147,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCHD.GiaBieu_BD,
                                       itemCTDCHD.DinhMuc,
                                       itemCTDCHD.DinhMuc_BD,
+                                      itemCTDCHD.DinhMucHN,
+                                      itemCTDCHD.DinhMucHN_BD,
                                       itemCTDCHD.TieuThu,
                                       itemCTDCHD.TieuThu_BD,
                                       itemCTDCHD.TongCong_Start,
@@ -403,6 +408,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDon.DiaChi,
                                    itemDon.GiaBieu,
                                    itemDon.DinhMuc,
+                                   itemDon.DinhMucHN,
                                    NoiDung = itemDon.DonTu.Name_NhomDon,
                                    itemDon.DienThoai,
                                };
@@ -494,11 +500,13 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCBD.MSThue_BD,
                                       itemCTDCBD.GiaBieu_BD,
                                       itemCTDCBD.DinhMuc_BD,
+                                      itemCTDCBD.DinhMucHN_BD,
                                       itemCTDCBD.HoTen,
                                       itemCTDCBD.DiaChi,
                                       itemCTDCBD.MSThue,
                                       itemCTDCBD.GiaBieu,
                                       itemCTDCBD.DinhMuc,
+                                      itemCTDCBD.DinhMucHN,
                                       CreateBy = itemUser.HoTen,
                                   };
                 ///Bảng CTDCHD
@@ -518,6 +526,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCHD.GiaBieu_BD,
                                       itemCTDCHD.DinhMuc,
                                       itemCTDCHD.DinhMuc_BD,
+                                      itemCTDCHD.DinhMucHN,
+                                      itemCTDCHD.DinhMucHN_BD,
                                       itemCTDCHD.TieuThu,
                                       itemCTDCHD.TieuThu_BD,
                                       itemCTDCHD.TongCong_Start,
@@ -777,6 +787,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDon.DiaChi,
                                    itemDon.GiaBieu,
                                    itemDon.DinhMuc,
+                                   itemDon.DinhMucHN,
                                    itemDon.NoiDung,
                                    itemDon.DienThoai,
                                };
@@ -868,11 +879,13 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCBD.MSThue_BD,
                                       itemCTDCBD.GiaBieu_BD,
                                       itemCTDCBD.DinhMuc_BD,
+                                      itemCTDCBD.DinhMucHN_BD,
                                       itemCTDCBD.HoTen,
                                       itemCTDCBD.DiaChi,
                                       itemCTDCBD.MSThue,
                                       itemCTDCBD.GiaBieu,
                                       itemCTDCBD.DinhMuc,
+                                      itemCTDCBD.DinhMucHN,
                                       CreateBy = itemUser.HoTen,
                                   };
                 ///Bảng CTDCHD
@@ -892,6 +905,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCHD.GiaBieu_BD,
                                       itemCTDCHD.DinhMuc,
                                       itemCTDCHD.DinhMuc_BD,
+                                      itemCTDCHD.DinhMucHN,
+                                      itemCTDCHD.DinhMucHN_BD,
                                       itemCTDCHD.TieuThu,
                                       itemCTDCHD.TieuThu_BD,
                                       itemCTDCHD.TongCong_Start,
@@ -1130,6 +1145,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDonTXL.DiaChi,
                                    itemDonTXL.GiaBieu,
                                    itemDonTXL.DinhMuc,
+                                   itemDonTXL.DinhMucHN,
                                    itemDonTXL.NoiDung,
                                    itemDonTXL.DienThoai,
                                };
@@ -1221,11 +1237,13 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCBD.MSThue_BD,
                                       itemCTDCBD.GiaBieu_BD,
                                       itemCTDCBD.DinhMuc_BD,
+                                      itemCTDCBD.DinhMucHN_BD,
                                       itemCTDCBD.HoTen,
                                       itemCTDCBD.DiaChi,
                                       itemCTDCBD.MSThue,
                                       itemCTDCBD.GiaBieu,
                                       itemCTDCBD.DinhMuc,
+                                      itemCTDCBD.DinhMucHN,
                                       CreateBy = itemUser.HoTen,
                                   };
                 ///Bảng CTDCHD
@@ -1245,6 +1263,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCHD.GiaBieu_BD,
                                       itemCTDCHD.DinhMuc,
                                       itemCTDCHD.DinhMuc_BD,
+                                      itemCTDCHD.DinhMucHN,
+                                      itemCTDCHD.DinhMucHN_BD,
                                       itemCTDCHD.TieuThu,
                                       itemCTDCHD.TieuThu_BD,
                                       itemCTDCHD.TongCong_Start,
@@ -1483,6 +1503,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDon.DiaChi,
                                    itemDon.GiaBieu,
                                    itemDon.DinhMuc,
+                                   itemDon.DinhMucHN,
                                    itemDon.NoiDung,
                                    itemDon.DienThoai,
                                };
@@ -1574,11 +1595,13 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCBD.MSThue_BD,
                                       itemCTDCBD.GiaBieu_BD,
                                       itemCTDCBD.DinhMuc_BD,
+                                      itemCTDCBD.DinhMucHN_BD,
                                       itemCTDCBD.HoTen,
                                       itemCTDCBD.DiaChi,
                                       itemCTDCBD.MSThue,
                                       itemCTDCBD.GiaBieu,
                                       itemCTDCBD.DinhMuc,
+                                      itemCTDCBD.DinhMucHN,
                                       CreateBy = itemUser.HoTen,
                                   };
                 ///Bảng CTDCHD
@@ -1598,6 +1621,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCHD.GiaBieu_BD,
                                       itemCTDCHD.DinhMuc,
                                       itemCTDCHD.DinhMuc_BD,
+                                      itemCTDCHD.DinhMucHN,
+                                      itemCTDCHD.DinhMucHN_BD,
                                       itemCTDCHD.TieuThu,
                                       itemCTDCHD.TieuThu_BD,
                                       itemCTDCHD.TongCong_Start,
@@ -8112,6 +8137,7 @@ namespace KTKS_DonKH.DAL.TimKiem
             dtDon.Columns.Add("DiaChi", typeof(string));
             dtDon.Columns.Add("GiaBieu", typeof(string));
             dtDon.Columns.Add("DinhMuc", typeof(string));
+            dtDon.Columns.Add("DinhMucHN", typeof(string));
             dtDon.Columns.Add("NoiDung", typeof(string));
             dtDon.Columns.Add("DienThoai", typeof(string));
             dtDon.TableName = "DonTu";
@@ -8186,6 +8212,7 @@ namespace KTKS_DonKH.DAL.TimKiem
             dtDon.Columns.Add("DiaChi", typeof(string));
             dtDon.Columns.Add("GiaBieu", typeof(string));
             dtDon.Columns.Add("DinhMuc", typeof(string));
+            dtDon.Columns.Add("DinhMucHN", typeof(string));
             dtDon.Columns.Add("NoiDung", typeof(string));
             dtDon.Columns.Add("DienThoai", typeof(string));
             dtDon.TableName = "DonTu";
@@ -8260,6 +8287,7 @@ namespace KTKS_DonKH.DAL.TimKiem
             dtDon.Columns.Add("DiaChi", typeof(string));
             dtDon.Columns.Add("GiaBieu", typeof(string));
             dtDon.Columns.Add("DinhMuc", typeof(string));
+            dtDon.Columns.Add("DinhMucHN", typeof(string));
             dtDon.Columns.Add("NoiDung", typeof(string));
             dtDon.Columns.Add("DienThoai", typeof(string));
             dtDon.TableName = "DonTu";
@@ -8341,6 +8369,7 @@ namespace KTKS_DonKH.DAL.TimKiem
             dtDon.Columns.Add("DiaChi", typeof(string));
             dtDon.Columns.Add("GiaBieu", typeof(string));
             dtDon.Columns.Add("DinhMuc", typeof(string));
+            dtDon.Columns.Add("DinhMucHN", typeof(string));
             dtDon.Columns.Add("NoiDung", typeof(string));
             dtDon.Columns.Add("DienThoai", typeof(string));
             dtDon.TableName = "DonTu";
@@ -8422,6 +8451,7 @@ namespace KTKS_DonKH.DAL.TimKiem
             dtDon.Columns.Add("DiaChi", typeof(string));
             dtDon.Columns.Add("GiaBieu", typeof(string));
             dtDon.Columns.Add("DinhMuc", typeof(string));
+            dtDon.Columns.Add("DinhMucHN", typeof(string));
             dtDon.Columns.Add("NoiDung", typeof(string));
             dtDon.Columns.Add("DienThoai", typeof(string));
             dtDon.TableName = "DonTu";

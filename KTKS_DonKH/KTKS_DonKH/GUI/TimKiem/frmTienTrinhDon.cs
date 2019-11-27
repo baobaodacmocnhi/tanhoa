@@ -292,7 +292,8 @@ namespace KTKS_DonKH.GUI.TimKiem
                 view.Columns["GiaBieu_BD"].VisibleIndex = 9;
                 //view.Columns["DinhMuc"].VisibleIndex = 12;
                 view.Columns["DinhMuc_BD"].VisibleIndex = 10;
-                view.Columns["CreateBy"].VisibleIndex = 11;
+                view.Columns["DinhMucHN_BD"].VisibleIndex = 11;
+                view.Columns["CreateBy"].VisibleIndex = 12;
             }
             if (view.GetRowCellDisplayText(0, "DieuChinh") == "Hóa Đơn")
             {

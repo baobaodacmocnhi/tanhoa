@@ -1074,7 +1074,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["DenNgay"] = "";
                     if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                     {
-                        string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                        string a = _cDCBD.getMaBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                         dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                     }
                     else
@@ -1580,14 +1580,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["XoaDiaChiLienHe"] = "Xóa Địa Chỉ Liên Hệ";
             dr["MaQuanPhuong"] = _ctdcbd.MaQuanPhuong;
             dr["GiaBieu"] = _ctdcbd.GiaBieu;
-            dr["DinhMucHN"] = _ctdcbd.DinhMucHN;
             dr["DinhMuc"] = _ctdcbd.DinhMuc;
+            dr["DinhMucHN"] = _ctdcbd.DinhMucHN;
             ///Biến Động
             dr["HoTenBD"] = _ctdcbd.HoTen_BD;
             dr["DiaChiBD"] = _ctdcbd.DiaChi_BD;
             dr["GiaBieuBD"] = _ctdcbd.GiaBieu_BD;
-            dr["DinhMucHNBD"] = _ctdcbd.DinhMucHN_BD;
             dr["DinhMucBD"] = _ctdcbd.DinhMuc_BD;
+            dr["DinhMucHNBD"] = _ctdcbd.DinhMucHN_BD;
             if (!string.IsNullOrEmpty(_ctdcbd.SH_BD))
                 dr["TyLe"] = "Tỷ Lệ SH: " + _ctdcbd.SH_BD + "%";
 

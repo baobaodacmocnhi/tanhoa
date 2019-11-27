@@ -65,7 +65,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["LoaiBaoCao"] = "CÓ THỜI HẠN";
                         if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                         {
-                            string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                            string a = _cDCBD.getMaBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                             dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                         }
                         else
@@ -111,7 +111,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["LoaiBaoCao"] = "CÓ THỜI HẠN";
                                 if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
-                                    string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                                    string a = _cDCBD.getMaBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                                     dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                                 }
                                 else
@@ -157,7 +157,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["LoaiBaoCao"] = "CÓ THỜI HẠN";
                                 if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
-                                    string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                                    string a = _cDCBD.getMaBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                                     dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                                 }
                                 else
@@ -223,7 +223,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["LoaiBaoCao"] = "KHÔNG THỜI HẠN";
                         if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                         {
-                            string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                            string a = _cDCBD.getMaBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                             dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                         }
                         else
@@ -263,7 +263,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["LoaiBaoCao"] = "KHÔNG THỜI HẠN";
                                 if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
-                                    string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                                    string a = _cDCBD.getMaBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                                     dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                                 }
                                 else
@@ -303,7 +303,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["LoaiBaoCao"] = "KHÔNG THỜI HẠN";
                                 if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
-                                    string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                                    string a = _cDCBD.getMaBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                                     dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                                 }
                                 else
@@ -362,7 +362,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["LoaiBaoCao"] = "SẮP HẾT HẠN";
                         if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                         {
-                            string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                            string a = _cDCBD.getMaBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                             dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                         }
                         else
@@ -409,7 +409,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["LoaiBaoCao"] = "SẮP HẾT HẠN";
                                 if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
-                                    string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                                    string a = _cDCBD.getMaBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                                     dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                                 }
                                 else
@@ -456,7 +456,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["LoaiBaoCao"] = "SẮP HẾT HẠN";
                                 if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
-                                    string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                                    string a = _cDCBD.getMaBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                                     dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                                 }
                                 else
@@ -557,7 +557,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         dr["TuNgay"] = "";
                         dr["DenNgay"] = "";
-                        DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong_Last(itemRow["DanhBo"].ToString());
+                        DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDongDinhMuc_Last(itemRow["DanhBo"].ToString());
                         if (ctdcbd != null)
                         {
                             dr["SoPhieu"] = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
@@ -605,7 +605,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
                         dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
 
-                        DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong_Last(itemRow["DanhBo"].ToString());
+                        DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDongDinhMuc_Last(itemRow["DanhBo"].ToString());
                         if (ctdcbd != null)
                         {
                             if (ctdcbd.DinhMuc_BD != null)
@@ -637,7 +637,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
                                 dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
 
-                                DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong_Last(itemRow["DanhBo"].ToString());
+                                DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDongDinhMuc_Last(itemRow["DanhBo"].ToString());
                                 if (ctdcbd != null)
                                 {
                                     if (ctdcbd.DinhMuc_BD != null)
@@ -669,7 +669,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
                                 dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
 
-                                DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong_Last(itemRow["DanhBo"].ToString());
+                                DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDongDinhMuc_Last(itemRow["DanhBo"].ToString());
                                 if (ctdcbd != null)
                                 {
                                     dr["DinhMucCap"] = ctdcbd.DinhMuc_BD;
@@ -727,7 +727,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                         dr["HoTen"] = itemRow["HoTen"];
                         dr["DiaChi"] = itemRow["DiaChi"];
-                        
+
 
                         dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                     }
@@ -750,7 +750,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 }
                                 dr["HoTen"] = itemRow["HoTen"];
                                 dr["DiaChi"] = itemRow["DiaChi"];
-                                
+
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
                         }
@@ -772,7 +772,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 }
                                 dr["HoTen"] = itemRow["HoTen"];
                                 dr["DiaChi"] = itemRow["DiaChi"];
-                                
+
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
                         }
@@ -1162,7 +1162,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["DV"] = itemRow["DV_BD"];
                     dr["HCSN"] = itemRow["HCSN_BD"];
                     if (string.IsNullOrEmpty(itemRow["GhiChu"].ToString()) == false)
-                    dr["GuiThongBao"] = itemRow["GhiChu"];
+                        dr["GuiThongBao"] = itemRow["GhiChu"];
                     dr["NhaTro"] = _cChungTu.CheckDinhMucNhaTro(itemRow["DanhBo"].ToString());
 
                     if (!string.IsNullOrEmpty(itemRow["DinhMuc_BD"].ToString()))
@@ -1261,8 +1261,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["SX"] = itemRow["SX_BD"];
                                 dr["DV"] = itemRow["DV_BD"];
                                 dr["HCSN"] = itemRow["HCSN_BD"];
-                                if (string.IsNullOrEmpty(itemRow["GhiChu"].ToString())==false)
-                                dr["GuiThongBao"] = itemRow["GhiChu"];
+                                if (string.IsNullOrEmpty(itemRow["GhiChu"].ToString()) == false)
+                                    dr["GuiThongBao"] = itemRow["GhiChu"];
                                 dr["NhaTro"] = _cChungTu.CheckDinhMucNhaTro(itemRow["DanhBo"].ToString());
 
                                 if (!string.IsNullOrEmpty(itemRow["DinhMuc_BD"].ToString()))
@@ -1327,7 +1327,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["LoaiBaoCao"] = "KHÔNG THUỘC HIỆU LỰC KỲ";
                                     if (_cDCBD.checkExist_BienDong(rowTemp["DanhBo"].ToString(), DateTime.Parse(rowTemp["CreateDate"].ToString())))
                                     {
-                                        string a = _cDCBD.getBienDong(rowTemp["DanhBo"].ToString(), DateTime.Parse(rowTemp["CreateDate"].ToString())).ToString();
+                                        string a = _cDCBD.getMaBienDong(rowTemp["DanhBo"].ToString(), DateTime.Parse(rowTemp["CreateDate"].ToString())).ToString();
                                         dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                                     }
                                     else
@@ -1452,12 +1452,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             String strName = "";
             if (radBienDong.Checked)
             {
-                strName="DANH SÁCH ĐIỀU CHỈNH BIẾN ĐỘNG";
+                strName = "DANH SÁCH ĐIỀU CHỈNH BIẾN ĐỘNG";
                 dt = _cDCBD.getDS_BienDong_CreateDate(dateTu_DSDCBD.Value, dateDen_DSDCBD.Value);
             }
             else
             {
-                strName="DANH SÁCH ĐIỀU CHỈNH HÓA ĐƠN";
+                strName = "DANH SÁCH ĐIỀU CHỈNH HÓA ĐƠN";
                 dt = _cDCBD.getDS_HoaDon_CreateDate(dateTu_DSDCBD.Value, dateDen_DSDCBD.Value);
             }
             if (dt == null)
@@ -1532,7 +1532,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //cl3.Value2 = "Địa Chỉ";
             //cl3.ColumnWidth = 30;
 
-           
+
             //Thiết lập vùng điền dữ liệu
             int columnStart = 1;
             int columnEnd = dt.Columns.Count;
@@ -1963,8 +1963,91 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             head5cc.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             head5cc.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
-            //select DanhBo,CreateDate=CAST(CreateDate as date),SoNK=sum(SoNKDangKy),DinhMuc=sum(SoNKDangKy)*4 from ChungTu_ChiTiet where (MaLCT=7 or MaLCT=8) and YEAR(CreateDate)=2019 group by DanhBo,CreateDate
+            DataTable dt = _cChungTu.getBaoCaoNhaTroGuiTong(dateTu_ThongKeDMNT.Value, dateDen_ThongKeDMNT.Value);
+            DataTable dtExcel = new DataTable();
+            DataColumn col = new DataColumn("Ky");
+            col.DataType = System.Type.GetType("System.String");
+            dtExcel.Columns.Add(col);
 
+            col = new DataColumn("Quan");
+            col.DataType = System.Type.GetType("System.String");
+            dtExcel.Columns.Add(col);
+
+            col = new DataColumn("SoLuongDC");
+            col.DataType = System.Type.GetType("System.Int32");
+            dtExcel.Columns.Add(col);
+
+            col = new DataColumn("SoLuongNK");
+            col.DataType = System.Type.GetType("System.Int32");
+            dtExcel.Columns.Add(col);
+
+            col = new DataColumn("SoLuongDM");
+            col.DataType = System.Type.GetType("System.Int32");
+            dtExcel.Columns.Add(col);
+
+            col = new DataColumn("SoLuongDCTang");
+            col.DataType = System.Type.GetType("System.Int32");
+            dtExcel.Columns.Add(col);
+
+            col = new DataColumn("SoLuongDCGiam");
+            col.DataType = System.Type.GetType("System.Int32");
+            dtExcel.Columns.Add(col);
+
+            col = new DataColumn("SoLuongNKTang");
+            col.DataType = System.Type.GetType("System.Int32");
+            dtExcel.Columns.Add(col);
+
+            col = new DataColumn("SoLuongDCCuoi");
+            col.DataType = System.Type.GetType("System.Int32");
+            dtExcel.Columns.Add(col);
+
+            col = new DataColumn("SoLuongNKCuoi");
+            col.DataType = System.Type.GetType("System.Int32");
+            dtExcel.Columns.Add(col);
+
+            col = new DataColumn("SoLuongDMCuoi");
+            col.DataType = System.Type.GetType("System.Int32");
+            dtExcel.Columns.Add(col);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                string Ky = "";
+                DateTime date = DateTime.Parse(item["CreateDate"].ToString());
+                if (date.Month == 12)
+                {
+                    if (date.Day <= 20)
+                        Ky = date.Month.ToString("00") + "/" + date.Year;
+                    else
+                        Ky = "01/" + date.Year + 1;
+                }
+                else
+                {
+                    if (date.Day <= 20)
+                        Ky = date.Month.ToString("00") + "/" + date.Year;
+                    else
+                        Ky = (date.Month + 1).ToString("00") + "/" + date.Year;
+                }
+                bool exists = false;
+                for (int i = 0; i < dtExcel.Rows.Count; i++)
+                    if (dtExcel.Rows[i]["Ky"].ToString() == Ky && dtExcel.Rows[i]["Quan"].ToString() == item["Quan"].ToString())
+                    {
+                        exists = true;
+                        //row["SoLuongDC"] = 1;
+                        //row["SoLuongNK"] = item["SoNK"];
+                        //row["SoLuongDM"] = item["DinhMuc"];
+                    }
+                if (exists == false)
+                {
+                    DataRow row = dtExcel.NewRow();
+                    row["Ky"] = Ky;
+                    row["Quan"] = item["Quan"];
+                    row["SoLuongDC"] = 1;
+                    row["SoLuongNK"] = item["SoNK"];
+                    row["SoLuongDM"] = item["DinhMuc"];
+                    dtExcel.Rows.Add(row);
+                }
+
+            }
         }
 
 

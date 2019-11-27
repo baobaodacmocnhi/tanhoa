@@ -92,7 +92,14 @@ namespace KTKS_DonKH.GUI.ThuMoi
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             txtGiaBieu.Text = hoadon.GB.ToString();
-            txtDinhMuc.Text = hoadon.DM.ToString();
+            if (hoadon.DM != null)
+                txtDinhMuc.Text = hoadon.DM.Value.ToString();
+            else
+                txtDinhMuc.Text = "";
+            if (hoadon.DinhMucHN != null)
+                txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
+            else
+                txtDinhMucHN.Text = "";
         }
 
         public void LoadEntity(LinQ.ThuMoi_ChiTiet en)
@@ -129,8 +136,11 @@ namespace KTKS_DonKH.GUI.ThuMoi
             //txtLoTrinh.Text = en.LoTrinh;
             txtHoTen.Text = en.HoTen;
             txtDiaChi.Text = en.DiaChi;
-            //txtGiaBieu.Text = en.GiaBieu;
-            //txtDinhMuc.Text = en.DinhMuc;
+            txtGiaBieu.Text = en.GiaBieu.Value.ToString();
+            if (en.DinhMuc != null)
+                txtDinhMuc.Text = en.DinhMuc.Value.ToString();
+            if (en.DinhMucHN != null)
+                txtDinhMucHN.Text = en.DinhMucHN.Value.ToString();
             txtCanCu.Text = en.CanCu;
             txtVaoLuc.Text = en.VaoLuc;
             txtVeViec.Text = en.VeViec;
@@ -160,6 +170,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
+            txtDinhMucHN.Text = "";
             ///
             //txtCanCu.Text = "Theo biên bản kiểm tra sử dụng nước";
             txtCanCu.Text = "";
@@ -415,9 +426,12 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     entity.DanhBo = txtDanhBo.Text.Trim();
                     entity.HoTen = txtHoTen.Text.Trim();
                     entity.DiaChi = txtDiaChi.Text.Trim();
-                    entity.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                    if (string.IsNullOrEmpty(txtGiaBieu.Text.Trim()) == false)
+                        entity.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                     if (string.IsNullOrEmpty(txtDinhMuc.Text.Trim()) == false)
                         entity.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                    if (string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()) == false)
+                        entity.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                     if (_hoadon != null)
                     {
                         entity.Nam = _hoadon.NAM;
@@ -475,6 +489,15 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         _thumoi.DanhBo = txtDanhBo.Text.Trim();
                         _thumoi.HoTen = txtHoTen.Text.Trim();
                         _thumoi.DiaChi = txtDiaChi.Text.Trim();
+                        _thumoi.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                        if (string.IsNullOrEmpty(txtDinhMuc.Text.Trim()) == false)
+                            _thumoi.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                        else
+                            _thumoi.DinhMuc = null;
+                        if (string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()) == false)
+                            _thumoi.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
+                        else
+                            _thumoi.DinhMucHN = null;
                         if (_hoadon != null)
                         {
                             _thumoi.Nam = _hoadon.NAM;
@@ -566,6 +589,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 dr["GiaBieu"] = _thumoi.GiaBieu.Value.ToString();
                 if (_thumoi.DinhMuc != null)
                     dr["DinhMuc"] = _thumoi.DinhMuc.Value.ToString();
+                if (_thumoi.DinhMucHN != null)
+                    dr["DinhMucHN"] = _thumoi.DinhMucHN.Value.ToString();
                 dr["CanCu"] = _thumoi.CanCu;
                 dr["VaoLuc"] = _thumoi.VaoLuc;
                 dr["VeViec"] = _thumoi.VeViec;

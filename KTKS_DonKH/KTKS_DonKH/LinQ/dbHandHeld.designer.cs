@@ -161,22 +161,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		public System.Data.Linq.Table<Phuong> Phuongs
-		{
-			get
-			{
-				return this.GetTable<Phuong>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Quan> Quans
-		{
-			get
-			{
-				return this.GetTable<Quan>();
-			}
-		}
-		
 		public System.Data.Linq.Table<ThamSo> ThamSos
 		{
 			get
@@ -6368,114 +6352,6 @@ namespace KTKS_DonKH.LinQ
 				if ((this._DienThoai != value))
 				{
 					this._DienThoai = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Phuong")]
-	public partial class Phuong
-	{
-		
-		private string _Phuong1;
-		
-		private string _TenPhuong;
-		
-		private string _Quan;
-		
-		public Phuong()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Phuong", Storage="_Phuong1", DbType="VarChar(50)")]
-		public string Phuong1
-		{
-			get
-			{
-				return this._Phuong1;
-			}
-			set
-			{
-				if ((this._Phuong1 != value))
-				{
-					this._Phuong1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenPhuong", DbType="NVarChar(500)")]
-		public string TenPhuong
-		{
-			get
-			{
-				return this._TenPhuong;
-			}
-			set
-			{
-				if ((this._TenPhuong != value))
-				{
-					this._TenPhuong = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quan", DbType="VarChar(50)")]
-		public string Quan
-		{
-			get
-			{
-				return this._Quan;
-			}
-			set
-			{
-				if ((this._Quan != value))
-				{
-					this._Quan = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Quan")]
-	public partial class Quan
-	{
-		
-		private string _Quan1;
-		
-		private string _TenQuan;
-		
-		public Quan()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Quan", Storage="_Quan1", DbType="VarChar(50)")]
-		public string Quan1
-		{
-			get
-			{
-				return this._Quan1;
-			}
-			set
-			{
-				if ((this._Quan1 != value))
-				{
-					this._Quan1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenQuan", DbType="NVarChar(500)")]
-		public string TenQuan
-		{
-			get
-			{
-				return this._TenQuan;
-			}
-			set
-			{
-				if ((this._TenQuan != value))
-				{
-					this._TenQuan = value;
 				}
 			}
 		}

@@ -64,6 +64,7 @@
             this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMucHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
@@ -162,6 +163,7 @@
             this.NoiNhan,
             this.GiaBieu,
             this.DinhMuc,
+            this.DinhMucHN,
             this.CreateBy});
             this.dgvDSThu.Location = new System.Drawing.Point(12, 68);
             this.dgvDSThu.Name = "dgvDSThu";
@@ -406,6 +408,13 @@
             this.DinhMuc.Name = "DinhMuc";
             this.DinhMuc.Visible = false;
             // 
+            // DinhMucHN
+            // 
+            this.DinhMucHN.DataPropertyName = "DinhMucHN";
+            this.DinhMucHN.HeaderText = "DinhMucHN";
+            this.DinhMucHN.Name = "DinhMucHN";
+            this.DinhMucHN.Visible = false;
+            // 
             // CreateBy
             // 
             this.CreateBy.DataPropertyName = "CreateBy";
@@ -485,6 +494,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMucHN;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
     }
 }

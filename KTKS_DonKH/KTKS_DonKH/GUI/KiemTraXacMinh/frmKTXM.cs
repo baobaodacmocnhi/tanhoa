@@ -98,7 +98,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG;
             //txtDienThoai.Text = _donkh.DienThoai;
             txtGiaBieu.Text = hoadon.GB.ToString();
-            txtDinhMuc.Text = hoadon.DM.ToString();
+            if (hoadon.DM != null)
+                txtDinhMuc.Text = hoadon.DM.Value.ToString();
+            else
+                txtDinhMuc.Text = "";
+            if (hoadon.DinhMucHN != null)
+                txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
+            else
+                txtDinhMucHN.Text = "";
             string a, b, c;
             _cDocSo.GetDHN(txtDanhBo.Text.Trim(), out a, out b, out c);
             txtHieu.Text = a;
@@ -139,7 +146,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtHoTen.Text = ctktxm.HoTen;
             txtDiaChi.Text = ctktxm.DiaChi;
             txtGiaBieu.Text = ctktxm.GiaBieu;
-            txtDinhMuc.Text = ctktxm.DinhMuc;
+            if (ctktxm.DinhMuc != null)
+                txtDinhMuc.Text = ctktxm.DinhMuc.Value.ToString();
+            if (ctktxm.DinhMucHN != null)
+                txtDinhMucHN.Text = ctktxm.DinhMucHN.Value.ToString();
             if (ctktxm.DinhMucMoi != null)
                 txtDinhMucMoi.Text = ctktxm.DinhMucMoi.Value.ToString();
             if (ctktxm.DinhMuc_KhongDangKy!= null)
@@ -202,6 +212,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
+            txtDinhMucHN.Text = "";
             txtDinhMucMoi.Text = "";
             txtDinhMuc_KhongDangKy.Text = "";
             chkCanKhachHangLienHe.Checked = false;
@@ -251,6 +262,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
+            txtDinhMucHN.Text = "";
             txtDinhMucMoi.Text = "";
             txtDinhMuc_KhongDangKy.Text = "";
             chkCanKhachHangLienHe.Checked = false;
@@ -516,7 +528,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     ctktxm.HoTen = txtHoTen.Text.Trim().ToUpper();
                     ctktxm.DiaChi = txtDiaChi.Text.Trim().ToUpper();
                     ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
-                    ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
+                    if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
+                        ctktxm.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                    if (!string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()))
+                        ctktxm.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                     if (txtDinhMucMoi.Text.Trim() != "")
                         ctktxm.DinhMucMoi = int.Parse(txtDinhMucMoi.Text.Trim());
                     if (txtDinhMuc_KhongDangKy.Text.Trim() != "")
@@ -643,11 +658,22 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _ctktxm.HoTen = txtHoTen.Text.Trim();
                         _ctktxm.DiaChi = txtDiaChi.Text.Trim();
                         _ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
-                        _ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
+                        if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
+                            _ctktxm.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                        else
+                            _ctktxm.DinhMuc = null;
+                        if (!string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()))
+                            _ctktxm.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
+                        else
+                            _ctktxm.DinhMucHN = null;
                         if (txtDinhMucMoi.Text.Trim() != "")
                             _ctktxm.DinhMucMoi = int.Parse(txtDinhMucMoi.Text.Trim());
+                        else
+                            _ctktxm.DinhMucMoi = null;
                         if (txtDinhMuc_KhongDangKy.Text.Trim() != "")
                             _ctktxm.DinhMuc_KhongDangKy = int.Parse(txtDinhMuc_KhongDangKy.Text.Trim());
+                        else
+                            _ctktxm.DinhMuc_KhongDangKy = null;
                         _ctktxm.CanKhachHangLienHe = chkCanKhachHangLienHe.Checked;
                         if (_hoadon != null)
                         {

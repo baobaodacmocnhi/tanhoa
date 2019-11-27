@@ -78,7 +78,14 @@ namespace KTKS_DonKH.GUI.BamChi
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG;
             txtGiaBieu.Text = hoadon.GB.ToString();
-            txtDinhMuc.Text = hoadon.DM.ToString();
+            if (hoadon.DM != null)
+                txtDinhMuc.Text = hoadon.DM.Value.ToString();
+            else
+                txtDinhMuc.Text = "";
+            if (hoadon.DinhMucHN != null)
+                txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
+            else
+                txtDinhMucHN.Text = "";
             string a, b, c;
             _cDocSo.GetDHN(txtDanhBo.Text.Trim(), out a, out b, out c);
             txtHieu.Text = a;
@@ -119,7 +126,10 @@ namespace KTKS_DonKH.GUI.BamChi
             txtHoTen.Text = ctbamchi.HoTen;
             txtDiaChi.Text = ctbamchi.DiaChi;
             txtGiaBieu.Text = ctbamchi.GiaBieu.ToString();
-            txtDinhMuc.Text = ctbamchi.DinhMuc.ToString();
+            if (ctbamchi.DinhMuc != null)
+                txtDinhMuc.Text = ctbamchi.DinhMuc.Value.ToString();
+            if (ctbamchi.DinhMucHN != null)
+                txtDinhMucHN.Text = ctbamchi.DinhMucHN.Value.ToString();
             ///
             chkNgayBCTruocNgayGiao.Checked = ctbamchi.NgayBC_Truoc_NgayGiao;
             dateBamChi.Value = ctbamchi.NgayBC.Value;
@@ -200,6 +210,7 @@ namespace KTKS_DonKH.GUI.BamChi
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
+            txtDinhMucHN.Text = "";
             ///
             //dateBamChi.Value = DateTime.Now;
             //cmbHienTrangKiemTra.SelectedIndex = -1;
@@ -251,6 +262,7 @@ namespace KTKS_DonKH.GUI.BamChi
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
+            txtDinhMucHN.Text = "";
             ///
             dateBamChi.Value = DateTime.Now;
             //cmbHienTrangKiemTra.SelectedIndex = -1;
@@ -525,6 +537,8 @@ namespace KTKS_DonKH.GUI.BamChi
                         ctbamchi.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                     if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
                         ctbamchi.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                    if (!string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()))
+                        ctbamchi.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                     if (_hoadon != null)
                     {
                         ctbamchi.Dot = _hoadon.DOT.ToString();
@@ -666,6 +680,12 @@ namespace KTKS_DonKH.GUI.BamChi
                             _ctbamchi.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                         if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
                             _ctbamchi.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                        else
+                            _ctbamchi.DinhMuc = null;
+                        if (!string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()))
+                            _ctbamchi.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
+                        else
+                            _ctbamchi.DinhMucHN = null;
                         if (_hoadon != null)
                         {
                             _ctbamchi.Dot = _hoadon.DOT.ToString();

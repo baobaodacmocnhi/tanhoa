@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -48,6 +48,8 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dateNhanDon = new System.Windows.Forms.DateTimePicker();
+            this.label19 = new System.Windows.Forms.Label();
             this.txtDienThoai = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtNguoiBao = new System.Windows.Forms.TextBox();
@@ -97,8 +99,8 @@
             this.btnChonFile = new System.Windows.Forms.Button();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateNhanDon = new System.Windows.Forms.DateTimePicker();
-            this.label19 = new System.Windows.Forms.Label();
+            this.txtDinhMucHN = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuTTTL)).BeginInit();
@@ -128,6 +130,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtDinhMucHN);
+            this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.txtLoTrinh);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtDinhMuc);
@@ -144,7 +148,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 46);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(760, 87);
+            this.groupBox1.Size = new System.Drawing.Size(897, 87);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Khách Hàng";
@@ -285,6 +289,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nội Dung Thư";
             // 
+            // dateNhanDon
+            // 
+            this.dateNhanDon.CustomFormat = "dd/MM/yyyy";
+            this.dateNhanDon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateNhanDon.Location = new System.Drawing.Point(613, 30);
+            this.dateNhanDon.Name = "dateNhanDon";
+            this.dateNhanDon.Size = new System.Drawing.Size(100, 22);
+            this.dateNhanDon.TabIndex = 19;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(610, 11);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(103, 16);
+            this.label19.TabIndex = 20;
+            this.label19.Text = "Ngày Nhận Đơn";
+            // 
             // txtDienThoai
             // 
             this.txtDienThoai.Location = new System.Drawing.Point(372, 233);
@@ -407,7 +429,7 @@
             this.MaCTTTTL,
             this.MaDon,
             this.VeViec});
-            this.dgvLichSuTTTL.Location = new System.Drawing.Point(778, 2);
+            this.dgvLichSuTTTL.Location = new System.Drawing.Point(778, 388);
             this.dgvLichSuTTTL.Name = "dgvLichSuTTTL";
             this.dgvLichSuTTTL.Size = new System.Drawing.Size(440, 150);
             this.dgvLichSuTTTL.TabIndex = 5;
@@ -654,14 +676,14 @@
             // 
             this.dgvHinh.AllowUserToAddRows = false;
             this.dgvHinh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Hinh,
@@ -731,23 +753,21 @@
             this.xoaFile_dgvHinh.Text = "Xóa";
             this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
             // 
-            // dateNhanDon
+            // txtDinhMucHN
             // 
-            this.dateNhanDon.CustomFormat = "dd/MM/yyyy";
-            this.dateNhanDon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateNhanDon.Location = new System.Drawing.Point(613, 30);
-            this.dateNhanDon.Name = "dateNhanDon";
-            this.dateNhanDon.Size = new System.Drawing.Size(100, 22);
-            this.dateNhanDon.TabIndex = 19;
+            this.txtDinhMucHN.Location = new System.Drawing.Point(853, 26);
+            this.txtDinhMucHN.Name = "txtDinhMucHN";
+            this.txtDinhMucHN.Size = new System.Drawing.Size(35, 22);
+            this.txtDinhMucHN.TabIndex = 17;
             // 
-            // label19
+            // label20
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(610, 11);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(103, 16);
-            this.label19.TabIndex = 20;
-            this.label19.Text = "Ngày Nhận Đơn";
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(759, 27);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(88, 16);
+            this.label20.TabIndex = 16;
+            this.label20.Text = "Định Mức HN:";
             // 
             // frmTTTL
             // 
@@ -874,5 +894,7 @@
         private System.Windows.Forms.ToolStripMenuItem xoaFile_dgvHinh;
         private System.Windows.Forms.DateTimePicker dateNhanDon;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtDinhMucHN;
+        private System.Windows.Forms.Label label20;
     }
 }

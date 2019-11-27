@@ -98,7 +98,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["DenNgay"] = _DenNgay;
                         if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                         {
-                            string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                            string a = _cDCBD.getMaBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                             dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                         }
                         else
@@ -137,7 +137,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["DenNgay"] = _DenNgay;
                                 if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
-                                    string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                                    string a = _cDCBD.getMaBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                                     dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                                 }
                                 else
@@ -176,7 +176,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["DenNgay"] = _DenNgay;
                                 if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
-                                    string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                                    string a = _cDCBD.getMaBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                                     dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                                 }
                                 else

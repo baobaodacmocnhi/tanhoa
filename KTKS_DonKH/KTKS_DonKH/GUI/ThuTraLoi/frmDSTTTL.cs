@@ -102,7 +102,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 dr["DanhBo"] = cttttl.DanhBo.Insert(7, " ").Insert(4, " ");
                             dr["HopDong"] = cttttl.HopDong;
                             dr["GiaBieu"] = cttttl.GiaBieu;
-                            dr["DinhMuc"] = cttttl.DinhMuc;
+                            if (cttttl.DinhMuc != null)
+                                dr["DinhMuc"] = cttttl.DinhMuc;
+                            if (cttttl.DinhMucHN != null)
+                                dr["DinhMucHN"] = cttttl.DinhMucHN;
                             if (cttttl.ThuTraLoi.MaDon!=null)
                                 dr["NgayNhanDon"] = cttttl.ThuTraLoi.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
                             else

@@ -434,7 +434,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return db.DCBD_ChiTietBienDongs.SingleOrDefault(item => item.MaCTDCBD == MaCTDCBD);
         }
 
-        public DCBD_ChiTietBienDong getBienDong_Last(string DanhBo)
+        public DCBD_ChiTietBienDong getBienDongDinhMuc_Last(string DanhBo)
         {
             try
             {
@@ -450,7 +450,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public decimal getBienDong(string DanhBo, DateTime CreateDate)
+        public DCBD_ChiTietBienDong getBienDong(string DanhBo, DateTime CreateDate)
+        {
+            return db.DCBD_ChiTietBienDongs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.CreateDate.Value.Date == CreateDate.Date);
+        }
+
+        public decimal getMaBienDong(string DanhBo, DateTime CreateDate)
         {
             try
             {
