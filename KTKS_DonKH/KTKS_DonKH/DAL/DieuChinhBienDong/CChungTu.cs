@@ -3561,11 +3561,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable getBaoCaoNhaTroGuiTong(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            string sql = "select DanhBo,CreateDate=CAST(CreateDate as date),SoNK=sum(SoNKDangKy),DinhMuc=sum(SoNKDangKy)*4"
-                        + " ,Quan=(select Name2 from Quan where ID=Quan)"
-                        + " from ChungTu_ChiTiet"
-                        + " where (MaLCT=7 or MaLCT=8) and CAST(CreateDate as date)>='" + new DateTime(ToCreateDate.Year-1,11,21).ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
-                        + " group by DanhBo,CreateDate,Quan";
+            string sql = "select dcbd.DanhBo,CreateDate=CAST(dcbd.CreateDate as date),Quan=(select Name2 from Quan where ID=dcbd.Quan),DinhMuc=SUM(DinhMuc),DinhMuc_BD=SUM(DinhMuc_BD)"
+                        + " from DCBD_ChiTietBienDong dcbd,ChungTu_ChiTiet ctct"
+                        + " where CAST(dcbd.CreateDate as date)>='" + new DateTime(ToCreateDate.Year - 1, 11, 21).ToString("yyyyMMdd") + "' and CAST(dcbd.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and DinhMuc_BD is not null and (MaLCT=7 or MaLCT=8) and dcbd.DanhBo=ctct.DanhBo"
+                        + " group by dcbd.DanhBo,CAST(dcbd.CreateDate as date),dcbd.Quan";
+                
             return ExecuteQuery_DataTable(sql);
         }
 

@@ -1973,15 +1973,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             col.DataType = System.Type.GetType("System.String");
             dtExcel.Columns.Add(col);
 
-            col = new DataColumn("SoLuongDC");
+            col = new DataColumn("SoLuongDCDau");
             col.DataType = System.Type.GetType("System.Int32");
             dtExcel.Columns.Add(col);
 
-            col = new DataColumn("SoLuongNK");
+            col = new DataColumn("SoLuongNKDau");
             col.DataType = System.Type.GetType("System.Int32");
             dtExcel.Columns.Add(col);
 
-            col = new DataColumn("SoLuongDM");
+            col = new DataColumn("SoLuongDMDau");
             col.DataType = System.Type.GetType("System.Int32");
             dtExcel.Columns.Add(col);
 
@@ -1994,6 +1994,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dtExcel.Columns.Add(col);
 
             col = new DataColumn("SoLuongNKTang");
+            col.DataType = System.Type.GetType("System.Int32");
+            dtExcel.Columns.Add(col);
+
+            col = new DataColumn("SoLuongDM");
+            col.DataType = System.Type.GetType("System.Int32");
+            dtExcel.Columns.Add(col);
+
+            col = new DataColumn("SoLuongNKGiam");
             col.DataType = System.Type.GetType("System.Int32");
             dtExcel.Columns.Add(col);
 
@@ -2018,7 +2026,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (date.Day <= 20)
                         Ky = date.Month.ToString("00") + "/" + date.Year;
                     else
-                        Ky = "01/" + date.Year + 1;
+                        Ky = "01/" + (date.Year + 1);
                 }
                 else
                 {
@@ -2032,22 +2040,108 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (dtExcel.Rows[i]["Ky"].ToString() == Ky && dtExcel.Rows[i]["Quan"].ToString() == item["Quan"].ToString())
                     {
                         exists = true;
-                        //row["SoLuongDC"] = 1;
-                        //row["SoLuongNK"] = item["SoNK"];
-                        //row["SoLuongDM"] = item["DinhMuc"];
+                        int DinhMuc = 0, DinhMucBD = 0;
+                        if (item["DinhMuc"].ToString() != "")
+                            DinhMuc = int.Parse(item["DinhMuc"].ToString());
+                        if (item["DinhMuc_BD"].ToString() != "")
+                            DinhMucBD = int.Parse(item["DinhMuc_BD"].ToString());
+                        if (DinhMuc > DinhMucBD)
+                        {
+                            dtExcel.Rows[i]["SoLuongDCGiam"] = int.Parse(dtExcel.Rows[i]["SoLuongDCGiam"].ToString()) + 1;
+                            dtExcel.Rows[i]["SoLuongNKGiam"] = int.Parse(dtExcel.Rows[i]["SoLuongNKGiam"].ToString()) + ((DinhMuc - DinhMucBD) / 4);
+                        }
+                        else
+                            if (DinhMuc < DinhMucBD)
+                            {
+                                dtExcel.Rows[i]["SoLuongDCTang"] = int.Parse(dtExcel.Rows[i]["SoLuongDCTang"].ToString()) + 1;
+                                dtExcel.Rows[i]["SoLuongNKTang"] = int.Parse(dtExcel.Rows[i]["SoLuongNKTang"].ToString()) + ((DinhMucBD - DinhMuc) / 4);
+                            }
                     }
                 if (exists == false)
                 {
                     DataRow row = dtExcel.NewRow();
                     row["Ky"] = Ky;
                     row["Quan"] = item["Quan"];
-                    row["SoLuongDC"] = 1;
-                    row["SoLuongNK"] = item["SoNK"];
-                    row["SoLuongDM"] = item["DinhMuc"];
+                    int DinhMuc = 0, DinhMucBD = 0;
+                    if (item["DinhMuc"].ToString() != "")
+                        DinhMuc = int.Parse(item["DinhMuc"].ToString());
+                    if (item["DinhMuc_BD"].ToString() != "")
+                        DinhMucBD = int.Parse(item["DinhMuc_BD"].ToString());
+                    if (DinhMuc > DinhMucBD)
+                    {
+                        row["SoLuongDCTang"] = 0;
+                        row["SoLuongNKTang"] = 0;
+                        row["SoLuongDCGiam"] = 1;
+                        row["SoLuongNKGiam"] = (DinhMuc - DinhMucBD) / 4;
+                    }
+                    else
+                        if (DinhMuc < DinhMucBD)
+                        {
+                            row["SoLuongDCTang"] = 1;
+                            row["SoLuongNKTang"] = (DinhMucBD - DinhMuc) / 4;
+                            row["SoLuongDCGiam"] = 0;
+                            row["SoLuongNKGiam"] = 0;
+                        }
                     dtExcel.Rows.Add(row);
                 }
-
             }
+
+            //Thiết lập vùng điền dữ liệu
+            int columnStart = 1;
+            int columnEnd = dtExcel.Columns.Count;
+            int rowStart = 7;
+            int rowEnd = rowStart + dtExcel.Rows.Count - 1;
+
+            // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+            // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+            object[,] arr = new object[dtExcel.Rows.Count, columnEnd];
+
+            //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+            for (int i = 0; i < dtExcel.Rows.Count; i++)
+            {
+                DataRow dr = dtExcel.Rows[i];
+
+                arr[i, 0] = dr["Ky"].ToString();
+                arr[i, 1] = dr["Quan"].ToString();
+                arr[i, 2] = "";
+                arr[i, 3] = "";
+                arr[i, 4] = "";
+                arr[i, 5] = dr["SoLuongDCTang"].ToString();
+                arr[i, 6] = dr["SoLuongDCGiam"].ToString();
+                arr[i, 7] = dr["SoLuongNKTang"].ToString();
+                arr[i, 8] = dr["SoLuongNKGiam"].ToString();
+                arr[i, 9] = "";
+                arr[i, 10] = "";
+                arr[i, 11] = "";
+                arr[i, 12] = "";
+            }
+
+            // Ô bắt đầu điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+            // Ô kết thúc điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+            // Lấy về vùng điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+            range.NumberFormat = "@";
+            //Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
+            //Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
+            //Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+            //c3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            //Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
+            //Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
+            //Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
+            //c3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+            //c3b.NumberFormat = "#,##0";
+
+            //Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+            //Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+            //Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
+            //c3c.NumberFormat = "@";
+            //c3c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            //Điền dữ liệu vào vùng đã thiết lập
+            range.Value2 = arr;
         }
 
 
