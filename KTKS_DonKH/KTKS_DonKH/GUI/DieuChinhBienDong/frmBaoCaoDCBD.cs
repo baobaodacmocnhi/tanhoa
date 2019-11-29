@@ -1665,7 +1665,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             //
 
-            oSheet.Columns[2].ColumnWidth = 10;
+            oSheet.Columns[2].ColumnWidth = 12;
             Microsoft.Office.Interop.Excel.Range head2 = oSheet.get_Range("B3", "B6");
             head2.MergeCells = true;
             head2.Value2 = "QUẬN";
@@ -2069,21 +2069,93 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         DinhMucBD = int.Parse(item["DinhMuc_BD"].ToString());
                     if (DinhMuc > DinhMucBD)
                     {
+                        row["SoLuongDCDau"] = 0;
+                        row["SoLuongNKDau"] = 0;
+                        row["SoLuongDMDau"] = 0;
+
                         row["SoLuongDCTang"] = 0;
                         row["SoLuongNKTang"] = 0;
                         row["SoLuongDCGiam"] = 1;
                         row["SoLuongNKGiam"] = (DinhMuc - DinhMucBD) / 4;
+                        row["SoLuongDM"] = 0;
+
+                        row["SoLuongDCCuoi"] = 0;
+                        row["SoLuongNKCuoi"] = 0;
+                        row["SoLuongDMCuoi"] = 0;
                     }
                     else
                         if (DinhMuc < DinhMucBD)
                         {
+                            row["SoLuongDCDau"] = 0;
+                            row["SoLuongNKDau"] = 0;
+                            row["SoLuongDMDau"] = 0;
+
                             row["SoLuongDCTang"] = 1;
                             row["SoLuongNKTang"] = (DinhMucBD - DinhMuc) / 4;
                             row["SoLuongDCGiam"] = 0;
                             row["SoLuongNKGiam"] = 0;
+                            row["SoLuongDM"] = 0;
+
+                            row["SoLuongDCCuoi"] = 0;
+                            row["SoLuongNKCuoi"] = 0;
+                            row["SoLuongDMCuoi"] = 0;
+                        }
+                        else
+                        {
+                            row["SoLuongDCDau"] = 0;
+                            row["SoLuongNKDau"] = 0;
+                            row["SoLuongDMDau"] = 0;
+
+                            row["SoLuongDCTang"] = 0;
+                            row["SoLuongNKTang"] = 0;
+                            row["SoLuongDCGiam"] = 0;
+                            row["SoLuongNKGiam"] = 0;
+                            row["SoLuongDM"] = 0;
+
+                            row["SoLuongDCCuoi"] = 0;
+                            row["SoLuongNKCuoi"] = 0;
+                            row["SoLuongDMCuoi"] = 0;
                         }
                     dtExcel.Rows.Add(row);
                 }
+            }
+
+            for (int i = 0; i < dtExcel.Rows.Count; i++)
+            {
+                dtExcel.Rows[i]["SoLuongDM"] = (int.Parse(dtExcel.Rows[i]["SoLuongNKTang"].ToString()) - int.Parse(dtExcel.Rows[i]["SoLuongNKGiam"].ToString())) * 4;
+
+                dtExcel.Rows[i]["SoLuongDCCuoi"] = int.Parse(dtExcel.Rows[i]["SoLuongDCDau"].ToString()) + int.Parse(dtExcel.Rows[i]["SoLuongDCTang"].ToString()) - int.Parse(dtExcel.Rows[i]["SoLuongDCGiam"].ToString());
+                dtExcel.Rows[i]["SoLuongNKCuoi"] = int.Parse(dtExcel.Rows[i]["SoLuongNKDau"].ToString()) + int.Parse(dtExcel.Rows[i]["SoLuongNKTang"].ToString()) - int.Parse(dtExcel.Rows[i]["SoLuongNKGiam"].ToString());
+                dtExcel.Rows[i]["SoLuongDMCuoi"] = int.Parse(dtExcel.Rows[i]["SoLuongDMDau"].ToString()) + int.Parse(dtExcel.Rows[i]["SoLuongDM"].ToString());
+
+                string[] Kys = dtExcel.Rows[i]["Ky"].ToString().Split('/');
+                for (int j = i + 1; j < dtExcel.Rows.Count - 1; j++)
+                {
+                    int Ky = 0, Nam = 0;
+                    if (int.Parse(Kys[0]) == 12 && int.Parse(Kys[1]) == dateDen_ThongKeDMNT.Value.Year - 1)
+                    {
+                        Ky = 1;
+                        Nam = int.Parse(Kys[1]) + 1;
+                    }
+                    else
+                    {
+                        Ky = int.Parse(Kys[0])+1;
+                        Nam = dateDen_ThongKeDMNT.Value.Year;
+                    }
+                    if (dtExcel.Rows[j]["Ky"].ToString() == Ky+ "/" + Nam && dtExcel.Rows[i]["Quan"].ToString() == dtExcel.Rows[j]["Quan"].ToString())
+                    {
+                        dtExcel.Rows[j]["SoLuongDCDau"] = dtExcel.Rows[i]["SoLuongDCCuoi"];
+                        dtExcel.Rows[j]["SoLuongNKDau"] = dtExcel.Rows[i]["SoLuongNKCuoi"];
+                        dtExcel.Rows[j]["SoLuongDMDau"] = dtExcel.Rows[i]["SoLuongDMCuoi"];
+                    }
+                }
+            }
+            //xóa dòng đầu kỳ 12 nằm trước
+            for (int i = dtExcel.Rows.Count - 1; i >= 0; i--)
+            {
+                string Ky = "12/" + (dateDen_ThongKeDMNT.Value.Year - 1);
+                if (dtExcel.Rows[i]["Ky"].ToString() == Ky)
+                    dtExcel.Rows.RemoveAt(i);
             }
 
             //Thiết lập vùng điền dữ liệu
@@ -2096,24 +2168,28 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
             object[,] arr = new object[dtExcel.Rows.Count, columnEnd];
 
+            string Temp = "";
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dtExcel.Rows.Count; i++)
             {
                 DataRow dr = dtExcel.Rows[i];
-
-                arr[i, 0] = dr["Ky"].ToString();
+                if (Temp != dr["Ky"].ToString())
+                {
+                    Temp = dr["Ky"].ToString();
+                    arr[i, 0] = dr["Ky"].ToString();
+                }
                 arr[i, 1] = dr["Quan"].ToString();
-                arr[i, 2] = "";
-                arr[i, 3] = "";
-                arr[i, 4] = "";
+                arr[i, 2] = dr["SoLuongDCDau"].ToString();
+                arr[i, 3] = dr["SoLuongNKDau"].ToString();
+                arr[i, 4] = dr["SoLuongDMDau"].ToString();
                 arr[i, 5] = dr["SoLuongDCTang"].ToString();
                 arr[i, 6] = dr["SoLuongDCGiam"].ToString();
                 arr[i, 7] = dr["SoLuongNKTang"].ToString();
                 arr[i, 8] = dr["SoLuongNKGiam"].ToString();
-                arr[i, 9] = "";
-                arr[i, 10] = "";
-                arr[i, 11] = "";
-                arr[i, 12] = "";
+                arr[i, 9] = dr["SoLuongDM"].ToString();
+                arr[i, 10] = dr["SoLuongDCCuoi"].ToString();
+                arr[i, 11] = dr["SoLuongNKCuoi"].ToString();
+                arr[i, 12] = dr["SoLuongDMCuoi"].ToString();
             }
 
             // Ô bắt đầu điền dữ liệu

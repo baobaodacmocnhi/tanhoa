@@ -234,6 +234,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 chkCT_HK_KT3.Checked = entity.CT_HK_KT3;
                 chkCT_STT_GXNTT.Checked = entity.CT_STT_GXNTT;
                 chkCT_GDKKD.Checked = entity.CT_GDKKD;
+                chkCT_HoNgheo.Checked = entity.CT_HoNgheo;
 
                 chkCT_GC_SDSN.Checked = entity.CT_GC_SDSN;
                 chkCT_GXN2SN.Checked = entity.CT_GXN2SN;
@@ -306,6 +307,7 @@ namespace KTKS_DonKH.GUI.DonTu
             chkCT_HK_KT3.Checked = false;
             chkCT_STT_GXNTT.Checked = false;
             chkCT_GDKKD.Checked = false;
+            chkCT_HoNgheo.Checked = false;
 
             chkCT_GC_SDSN.Checked = false;
             chkCT_GXN2SN.Checked = false;
@@ -581,7 +583,8 @@ namespace KTKS_DonKH.GUI.DonTu
                         entity.CT_STT_GXNTT = true;
                     if (chkCT_GDKKD.Checked)
                         entity.CT_GDKKD = true;
-
+                    if (chkCT_HoNgheo.Checked)
+                        entity.CT_HoNgheo = true;
 
                     if (chkCT_GC_SDSN.Checked)
                         entity.CT_GC_SDSN = true;
@@ -782,6 +785,10 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.CT_GDKKD = true;
                         else
                             _dontu.CT_GDKKD = false;
+                        if (chkCT_HoNgheo.Checked)
+                            _dontu.CT_HoNgheo = true;
+                        else
+                            _dontu.CT_HoNgheo = false;
 
                         //
 
@@ -978,6 +985,15 @@ namespace KTKS_DonKH.GUI.DonTu
                 else
                 {
                     dr["CT_GDKKD"] = false;
+                }
+
+                if (entity.CT_HoNgheo)
+                {
+                    dr["CT_HoNgheo"] = true;
+                }
+                else
+                {
+                    dr["CT_HoNgheo"] = false;
                 }
 
                 //
