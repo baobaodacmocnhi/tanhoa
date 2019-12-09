@@ -115,7 +115,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHCSN.Text = hoadon.TILEHCSN.ToString();
             txtDot.Text = _cDHN.GetDot(hoadon.DANHBA);
 
-            if (hoadon.PHI == 0)
+            if (hoadon.PHI.Value == 0 && hoadon.TIEUTHU.Value != 0)
                 lbKhongTinhPhiBVMT.Visible = true;
             else
                 lbKhongTinhPhiBVMT.Visible = false;

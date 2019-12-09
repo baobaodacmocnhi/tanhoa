@@ -2129,7 +2129,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dtExcel.Rows[i]["SoLuongDMCuoi"] = int.Parse(dtExcel.Rows[i]["SoLuongDMDau"].ToString()) + int.Parse(dtExcel.Rows[i]["SoLuongDM"].ToString());
 
                 string[] Kys = dtExcel.Rows[i]["Ky"].ToString().Split('/');
-                for (int j = i + 1; j < dtExcel.Rows.Count - 1; j++)
+                for (int j = i + 1; j < dtExcel.Rows.Count; j++)
                 {
                     int Ky = 0, Nam = 0;
                     if (int.Parse(Kys[0]) == 12 && int.Parse(Kys[1]) == dateDen_ThongKeDMNT.Value.Year - 1)
@@ -2139,10 +2139,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                     else
                     {
-                        Ky = int.Parse(Kys[0])+1;
+                        Ky = int.Parse(Kys[0]) + 1;
                         Nam = dateDen_ThongKeDMNT.Value.Year;
                     }
-                    if (dtExcel.Rows[j]["Ky"].ToString() == Ky+ "/" + Nam && dtExcel.Rows[i]["Quan"].ToString() == dtExcel.Rows[j]["Quan"].ToString())
+                    if (dtExcel.Rows[j]["Ky"].ToString() == Ky.ToString("00") + "/" + Nam && dtExcel.Rows[i]["Quan"].ToString() == dtExcel.Rows[j]["Quan"].ToString())
                     {
                         dtExcel.Rows[j]["SoLuongDCDau"] = dtExcel.Rows[i]["SoLuongDCCuoi"];
                         dtExcel.Rows[j]["SoLuongNKDau"] = dtExcel.Rows[i]["SoLuongNKCuoi"];
@@ -2218,6 +2218,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
+
+            oSheet.Cells[rowEnd + 2, 5].Font.Bold = true;
+            oSheet.Cells[rowEnd + 2, 5].Font.Name = "Times New Roman";
+            oSheet.Cells[rowEnd + 2, 5].Font.Size = "13";
+            oSheet.Cells[rowEnd + 2, 5] = "PHÓ GIÁM ĐỐC KINH DOANH";
+
+            oSheet.Cells[rowEnd + 2, 11].Font.Bold = true;
+            oSheet.Cells[rowEnd + 2, 11].Font.Name = "Times New Roman";
+            oSheet.Cells[rowEnd + 2, 11].Font.Size = "13";
+            oSheet.Cells[rowEnd + 2, 11] = "TRƯỞNG PHÒNG";
+
+            oSheet.Cells[rowEnd + 4, 1].Font.Italic = true;
+            oSheet.Cells[rowEnd + 4, 1].Font.Underline = true;
+            oSheet.Cells[rowEnd + 4, 1].Font.Name = "Times New Roman";
+            oSheet.Cells[rowEnd + 4, 1].Font.Size = "11";
+            oSheet.Cells[rowEnd + 4, 1] = "Nơi nhận:";
+
+            oSheet.Cells[rowEnd + 5, 1].Font.Name = "Times New Roman";
+            oSheet.Cells[rowEnd + 5, 1].Font.Size = "11";
+            oSheet.Cells[rowEnd + 5, 1] = " - P. KDDVKH - Tổng Cty";
+
+            oSheet.Cells[rowEnd + 6, 1].Font.Name = "Times New Roman";
+            oSheet.Cells[rowEnd + 6, 1].Font.Size = "11";
+            oSheet.Cells[rowEnd + 6, 1] = " - Lưu.";
         }
 
 

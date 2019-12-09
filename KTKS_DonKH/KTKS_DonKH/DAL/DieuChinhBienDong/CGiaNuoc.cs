@@ -6305,6 +6305,76 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public void TinhTienNuoc_TheoSoNgay(bool ApGiaNuocCu, bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay,int SoNgayCu, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi, out int TieuThu_DieuChinhGia)
+        {
+            List<GiaNuoc2> lst = getDS();
+            int index = -1;
+            TienNuocCu = TienNuocMoi = 0;
+            ChiTietCu = ChiTietMoi = "";
+            TieuThu_DieuChinhGia = 0;
+            for (int i = 0; i < lst.Count; i++)
+                if (TuNgay.Date < lst[i].NgayTangGia.Value.Date && lst[i].NgayTangGia.Value.Date < DenNgay.Date)
+                {
+                    index = i;
+                }
+                else
+                    if (TuNgay.Date >= lst[i].NgayTangGia.Value.Date)
+                    {
+                        index = i;
+                    }
+            if (index != -1)
+            {
+                if (DenNgay.Date < new DateTime(2019, 11, 15))
+                {
+                    //int TieuThu_DieuChinhGia;
+                    List<int> lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
+                    TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuoc, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, 0, TieuThu, out ChiTietCu, out TieuThu_DieuChinhGia);
+                }
+                else
+                    if (TuNgay.Date < lst[index].NgayTangGia.Value.Date && lst[index].NgayTangGia.Value.Date < DenNgay.Date)
+                    {
+                        if (ApGiaNuocCu == false)
+                        {
+                            //int TieuThu_DieuChinhGia;
+                            int TongSoNgay = (int)((DenNgay.Date - TuNgay.Date).TotalDays);
+
+                            int TieuThuCu = (int)Math.Round((double)TieuThu * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+                            int TieuThuMoi = TieuThu - TieuThuCu;
+                            int TongDinhMucCu = (int)Math.Round((double)TongDinhMuc * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+                            int TongDinhMucMoi = TongDinhMuc - TongDinhMucCu;
+                            int DinhMucHN_Cu = 0, DinhMucHN_Moi = 0;
+                            if (TuNgay.Date > new DateTime(2019, 11, 15))
+                                if (TongDinhMucCu != 0 && DinhMucHN != 0 && TongDinhMuc != 0)
+                                    DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
+                            if (TongDinhMucMoi != 0 && DinhMucHN != 0 && TongDinhMuc != 0)
+                                DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * DinhMucHN / TongDinhMuc, 0, MidpointRounding.AwayFromZero);
+                            List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
+                            List<int> lstGiaNuocMoi = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
+                            //lần đầu áp dụng giá biểu 10, tổng áp giá mới luôn
+                            if (TuNgay.Date < new DateTime(2019, 11, 15) && new DateTime(2019, 11, 15) < DenNgay.Date && GiaBieu == 10)
+                                TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocMoi, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucCu, DinhMucHN_Cu, TieuThuCu, out ChiTietCu, out TieuThu_DieuChinhGia);
+                            else
+                                TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocCu, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucCu, DinhMucHN_Cu, TieuThuCu, out ChiTietCu, out TieuThu_DieuChinhGia);
+                            TienNuocMoi = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocMoi, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMucMoi, DinhMucHN_Moi, TieuThuMoi, out ChiTietMoi, out TieuThu_DieuChinhGia);
+                        }
+                        else
+                        {
+                            List<int> lstGiaNuocCu = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
+                            TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuocCu, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, out ChiTietCu, out TieuThu_DieuChinhGia);
+                        }
+                    }
+                    else
+                    {
+                        //int TieuThu_DieuChinhGia;
+                        List<int> lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
+                        TienNuocCu = TinhTienNuoc(DieuChinhGia, 0, lstGiaNuoc, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, out ChiTietCu, out TieuThu_DieuChinhGia);
+                    }
+            }
+            else
+            {
+
+            }
+        }
 
 
         public int TruyThu(string DanhBo, int Ky, int Nam, int GiaBieu, int SH, int SX, int DV, int HCSN, int DinhMuc, int TieuThu, out string ChiTiet)

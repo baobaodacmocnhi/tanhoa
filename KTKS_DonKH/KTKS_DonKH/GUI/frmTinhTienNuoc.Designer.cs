@@ -92,6 +92,7 @@
             this.label31 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnTinhTienNuoc_TheoSoNgay = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -734,6 +735,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tính Giá Mới";
             // 
+            // btnTinhTienNuoc_TheoSoNgay
+            // 
+            this.btnTinhTienNuoc_TheoSoNgay.Location = new System.Drawing.Point(608, 141);
+            this.btnTinhTienNuoc_TheoSoNgay.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTinhTienNuoc_TheoSoNgay.Name = "btnTinhTienNuoc_TheoSoNgay";
+            this.btnTinhTienNuoc_TheoSoNgay.Size = new System.Drawing.Size(80, 50);
+            this.btnTinhTienNuoc_TheoSoNgay.TabIndex = 64;
+            this.btnTinhTienNuoc_TheoSoNgay.Text = "Tính Theo Số Ngày";
+            this.btnTinhTienNuoc_TheoSoNgay.UseVisualStyleBackColor = true;
+            this.btnTinhTienNuoc_TheoSoNgay.Click += new System.EventHandler(this.btnTinhTienNuoc_TheoSoNgay_Click);
+            // 
             // frmTinhTienNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -741,6 +753,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(729, 644);
+            this.Controls.Add(this.btnTinhTienNuoc_TheoSoNgay);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtTongSoNgay);
@@ -861,5 +874,6 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnTinhTienNuoc_TheoSoNgay;
     }
 }

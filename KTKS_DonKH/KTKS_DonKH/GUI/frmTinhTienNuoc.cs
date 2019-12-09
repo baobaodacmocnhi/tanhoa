@@ -66,10 +66,10 @@ namespace KTKS_DonKH.GUI
 
         public void LoadTTKH()
         {
-            if (txtNam.Text.Trim() != "")
+            if (txtDanhBo.Text.Trim() != "" && txtNam.Text.Trim() != "")
             {
                 Clear();
-                _hoadon = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()));
+                _hoadon = _cThuTien.Get(txtDanhBo.Text.Trim().Replace(" ", ""), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()));
                 if (_hoadon != null)
                 {
                     dateTu.Value = _hoadon.TUNGAY.Value;
@@ -223,6 +223,78 @@ namespace KTKS_DonKH.GUI
             {
                 LoadTTKH();
             }
+        }
+
+        private void btnTinhTienNuoc_TheoSoNgay_Click(object sender, EventArgs e)
+        {
+            List<GiaNuoc2> lst = _cGiaNuoc.getDS();
+            int index = -1;
+            for (int i = 0; i < lst.Count; i++)
+                if (dateTu.Value.Date < lst[i].NgayTangGia.Value.Date && lst[i].NgayTangGia.Value.Date < dateDen.Value.Date)
+                {
+                    index = i;
+                }
+                else
+                    if (dateTu.Value.Date >= lst[i].NgayTangGia.Value.Date)
+                    {
+                        index = i;
+                    }
+            if (index != -1)
+            {
+                if (dateDen.Value.Date < new DateTime(2019, 11, 15))
+                {
+                }
+                else
+                    if (dateTu.Value.Date < lst[index].NgayTangGia.Value.Date && lst[index].NgayTangGia.Value.Date < dateDen.Value.Date)
+                    {
+                        //int TieuThu_DieuChinhGia;
+                        
+                    }
+                    else
+                    {
+                    }
+            }
+            else
+            {
+            }
+            int TongSoNgay = (int)((dateDen.Value.Date - dateTu.Value.Date).TotalDays);
+
+            int SoNgayCu = int.Parse(txtSoNgayCu.Text.Trim());
+            int TieuThuCu = (int)Math.Round(double.Parse(txtTieuThu.Text.Trim()) * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+            int TieuThuMoi = int.Parse(txtTieuThu.Text.Trim()) - TieuThuCu;
+            int TongDinhMucCu = (int)Math.Round(double.Parse(txtDinhMuc.Text.Trim()) * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
+            int TongDinhMucMoi = int.Parse(txtDinhMuc.Text.Trim()) - TongDinhMucCu;
+            int DinhMucHN_Cu = 0, DinhMucHN_Moi = 0;
+            if (dateTu.Value.Date > new DateTime(2019, 11, 15))
+                if (TongDinhMucCu != 0 && int.Parse(txtDinhMucHN.Text.Trim()) != 0 && int.Parse(txtDinhMuc.Text.Trim()) != 0)
+                    DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * int.Parse(txtDinhMucHN.Text.Trim()) / int.Parse(txtDinhMuc.Text.Trim()), 0, MidpointRounding.AwayFromZero);
+            if (TongDinhMucMoi != 0 && int.Parse(txtDinhMucHN.Text.Trim()) != 0 && int.Parse(txtDinhMuc.Text.Trim()) != 0)
+                DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * int.Parse(txtDinhMucHN.Text.Trim()) / int.Parse(txtDinhMuc.Text.Trim()), 0, MidpointRounding.AwayFromZero);
+
+            txtTongSoNgay.Text = TongSoNgay.ToString();
+            txtSoNgayCu.Text = SoNgayCu.ToString();
+            txtSoNgayMoi.Text = (TongSoNgay - SoNgayCu).ToString();
+            txtDinhMucCu.Text = TongDinhMucCu.ToString();
+            txtDinhMucMoi.Text = TongDinhMucMoi.ToString();
+            txtDinhMucHNCu.Text = DinhMucHN_Cu.ToString();
+            txtDinhMucHNMoi.Text = DinhMucHN_Moi.ToString();
+            txtTieuThuCu.Text = TieuThuCu.ToString();
+            txtTieuThuMoi.Text = TieuThuMoi.ToString();
+
+            int GiaBanCu = 0, GiaBanMoi = 0, ThueGTGT = 0, PhiBVMT = 0, TongCong = 0, TieuThu_DieuChinhGia = 0;
+            string ChiTietCu, ChiTietMoi;
+            _cGiaNuoc.TinhTienNuoc_TheoSoNgay(false, false, 0, txtDanhBo.Text.Trim(), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()), dateTu.Value, dateDen.Value, int.Parse(txtSoNgayCu.Text.Trim()), int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtSH.Text.Trim()), int.Parse(txtSX.Text.Trim()), int.Parse(txtDV.Text.Trim()), int.Parse(txtHCSN.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out GiaBanCu, out ChiTietCu, out GiaBanMoi, out ChiTietMoi, out TieuThu_DieuChinhGia);
+            ThueGTGT = (int)Math.Round((double)(GiaBanCu + GiaBanMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+            PhiBVMT = (int)Math.Round((double)(GiaBanCu + GiaBanMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+            TongCong = (GiaBanCu + GiaBanMoi) + ThueGTGT + PhiBVMT;
+            txtGiaBanCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBanCu);
+            txtGiaBanMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBanMoi);
+            txtGiaBan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBanCu + GiaBanMoi));
+            txtThueGTGT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ThueGTGT);
+            txtPhiBVMT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", PhiBVMT);
+            txtTongCong.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+            txtChiTietCu.Text = ChiTietCu;
+            txtChiTietMoi.Text = ChiTietMoi;
         }
 
 

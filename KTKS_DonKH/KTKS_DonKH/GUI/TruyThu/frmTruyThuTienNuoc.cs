@@ -88,8 +88,10 @@ namespace KTKS_DonKH.GUI.TruyThu
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             txtGiaBieu.Text = hoadon.GB.ToString();
-            txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
-            txtDinhMuc.Text = hoadon.DM.ToString();
+            if (hoadon.DM != null)
+                txtDinhMuc.Text = hoadon.DM.ToString();
+            if (hoadon.DinhMucHN != null)
+                txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
         }
 
         public void LoadTTTN(TruyThuTienNuoc_ChiTiet cttttn)
@@ -130,10 +132,10 @@ namespace KTKS_DonKH.GUI.TruyThu
             txtHopDong.Text = cttttn.HopDong;
             txtLoTrinh.Text = cttttn.LoTrinh;
             txtGiaBieu.Text = cttttn.GiaBieu.Value.ToString();
-            if (cttttn.DinhMucHN != null)
-                txtDinhMucHN.Text = cttttn.DinhMucHN.Value.ToString();
             if (cttttn.DinhMuc != null)
                 txtDinhMuc.Text = cttttn.DinhMuc.Value.ToString();
+            if (cttttn.DinhMucHN != null)
+                txtDinhMucHN.Text = cttttn.DinhMucHN.Value.ToString();
             txtHoTen.Text = cttttn.HoTen;
             txtDiaChi.Text = cttttn.DiaChi;
             txtDienThoai.Text = cttttn.DienThoai;
