@@ -28,7 +28,7 @@ namespace ThuTien.GUI.DongNuoc
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CDocSo _cDocSo = new CDocSo();
 
-        DataRowView _selectedRow=null;
+        DataRowView _selectedRow = null;
 
         public frmTBDongNuoc()
         {
@@ -101,6 +101,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (!_cHoaDon.CheckExist(item.Text))
                     {
                         MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.Focus();
                         item.Selected = true;
                         item.Focused = true;
                         return;
@@ -108,6 +109,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (_cHoaDon.CheckDangNganBySoHoaDon(item.Text))
                     {
                         MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.Focus();
                         item.Selected = true;
                         item.Focused = true;
                         return;
@@ -115,6 +117,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (_cDongNuoc.CheckExist_CTDongNuoc(item.Text))
                     {
                         MessageBox.Show("Hóa Đơn đã Lập TB Đóng Nước: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.Focus();
                         item.Selected = true;
                         item.Focused = true;
                         return;
@@ -132,6 +135,8 @@ namespace ThuTien.GUI.DongNuoc
                         dongnuoc.HoTen = lstHDTemp[0].TENKH;
                         dongnuoc.DiaChi = lstHDTemp[0].SO + " " + lstHDTemp[0].DUONG;
                         dongnuoc.MLT = lstHDTemp[0].MALOTRINH;
+                        //dongnuoc.CreateBy = lstHDTemp[0].MaNV_HanhThu;
+                        //dongnuoc.CreateDate = dateTu.Value;
 
                         TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
                         ctdongnuoc.MaDN = dongnuoc.MaDN;
@@ -145,6 +150,8 @@ namespace ThuTien.GUI.DongNuoc
                         ctdongnuoc.TongCong = (int)lstHDTemp[0].TONGCONG;
                         ctdongnuoc.CreateBy = CNguoiDung.MaND;
                         ctdongnuoc.CreateDate = DateTime.Now;
+                        //ctdongnuoc.CreateBy = lstHDTemp[0].MaNV_HanhThu;
+                        //ctdongnuoc.CreateDate = dateTu.Value;
 
                         dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
 
@@ -163,6 +170,8 @@ namespace ThuTien.GUI.DongNuoc
                                 ctdongnuoc2.TongCong = (int)lstHDTemp[j].TONGCONG;
                                 ctdongnuoc2.CreateBy = CNguoiDung.MaND;
                                 ctdongnuoc2.CreateDate = DateTime.Now;
+                                //ctdongnuoc2.CreateBy = lstHDTemp[j].MaNV_HanhThu;
+                                //ctdongnuoc2.CreateDate = dateTu.Value;
 
                                 dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc2);
                             }
@@ -275,8 +284,8 @@ namespace ThuTien.GUI.DongNuoc
                         {
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                             TB_DULIEUKHACHHANG ttkh = _cDocSo.GetTTKH(item["DanhBo"].ToString());
-                            if(ttkh!=null)
-                            dr["DiaChiDHN"] = ttkh.SONHA + " " + ttkh.TENDUONG;
+                            if (ttkh != null)
+                                dr["DiaChiDHN"] = ttkh.SONHA + " " + ttkh.TENDUONG;
                         }
                         dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                         dr["Ky"] = Ky;
@@ -523,7 +532,7 @@ namespace ThuTien.GUI.DongNuoc
 
         private void gridViewDN_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
-            if (gridViewDN.RowCount > 0&&e.RowHandle>=0)
+            if (gridViewDN.RowCount > 0 && e.RowHandle >= 0)
             {
                 if (bool.Parse(gridViewDN.GetRowCellValue(e.RowHandle, "ThemHoaDon").ToString()) == true)
                 {
@@ -535,7 +544,7 @@ namespace ThuTien.GUI.DongNuoc
                 }
 
                 //Override any other formatting
-                e.HighPriority = true;      
+                e.HighPriority = true;
             }
         }
 
@@ -556,12 +565,12 @@ namespace ThuTien.GUI.DongNuoc
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (MessageBox.Show("Bạn có chắc chắn xóa Hóa Đơn " + _selectedRow["Ky"].ToString()+"?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("Bạn có chắc chắn xóa Hóa Đơn " + _selectedRow["Ky"].ToString() + "?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         try
                         {
                             TT_CTDongNuoc en = _cDongNuoc.getCTDongNuoc(decimal.Parse(_selectedRow["MaDN"].ToString()), int.Parse(_selectedRow["MaHD"].ToString()));
-                            if(en!=null)
+                            if (en != null)
                                 if (_cDongNuoc.XoaCT(en) == true)
                                 {
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

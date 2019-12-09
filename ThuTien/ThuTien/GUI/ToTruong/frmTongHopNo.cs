@@ -640,9 +640,9 @@ namespace ThuTien.GUI.ToTruong
                         , int.Parse(dgvHoaDon["GiaBieu", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeSH", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeHCSN", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeSX", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeDV", e.RowIndex].Value.ToString())
                         , int.Parse(dgvHoaDon["DinhMuc", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["DinhMucHN", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString()), out TienNuocA,out ChiTietA,out TienNuocB,out ChiTietB,out TieuThu_DieuChinhGia);
                     dgvHoaDon["GiaBan", e.RowIndex].Value = (TienNuocA+TienNuocB);
-                    dgvHoaDon["ThueGTGT", e.RowIndex].Value = Math.Round((double)(TienNuocA + TienNuocB) * 5 / 100);
-                    dgvHoaDon["PhiBVMT", e.RowIndex].Value = Math.Round((double)(TienNuocA + TienNuocB) * 10 / 100);
-                    dgvHoaDon["TongCong", e.RowIndex].Value = (TienNuocA + TienNuocB) * 1.15;
+                    dgvHoaDon["ThueGTGT", e.RowIndex].Value = Math.Round((double)(TienNuocA + TienNuocB) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+                    dgvHoaDon["PhiBVMT", e.RowIndex].Value = Math.Round((double)(TienNuocA + TienNuocB) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                    dgvHoaDon["TongCong", e.RowIndex].Value = int.Parse(dgvHoaDon["GiaBan", e.RowIndex].Value.ToString()) + int.Parse(dgvHoaDon["ThueGTGT", e.RowIndex].Value.ToString()) + int.Parse(dgvHoaDon["PhiBVMT", e.RowIndex].Value.ToString());
                 }
         }
 
