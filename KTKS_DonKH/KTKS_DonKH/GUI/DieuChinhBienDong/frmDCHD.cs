@@ -1819,8 +1819,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
 
             ///Chi Tiết
-            txtChiTietCu.Text = ChiTietCuA + " \n " + ChiTietCuB;
-            txtChiTietMoi.Text = ChiTietMoiA + " \n " + ChiTietMoiB;
+            txtChiTietCu.Text = ChiTietCuA + "\r\n" + ChiTietCuB;
+            txtChiTietMoi.Text = ChiTietMoiA + "\r\n" + ChiTietMoiB;
             ///Tiêu Thụ
             txtTieuThu_Start.Text = txtTieuThu_Cu.Text.Trim();
             txtTieuThu_BD.Text = (int.Parse(txtTieuThu_Moi.Text.Trim()) - int.Parse(txtTieuThu_Cu.Text.Trim())).ToString();
