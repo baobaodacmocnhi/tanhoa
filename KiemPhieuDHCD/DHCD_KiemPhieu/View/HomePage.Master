@@ -1,54 +1,47 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HomePage.master.cs" Inherits="DHCD_KiemPhieu.View.HomePage" %>
+
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <asp:ContentPlaceHolder id="head" runat="server">
-    </asp:ContentPlaceHolder>       
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
     <link href="../StyleSheet/Menu.css" rel="stylesheet" type="text/css" />
     <link href="../StyleSheet/StyleSheet.css" rel="stylesheet" type="text/css" />
     <script src="../JavaScript/transmenu.js" type="text/javascript"></script>
 </head>
 <body>
     <form id="form1" runat="server">
-<div id="Home">
-     <div class="Header" 
-         style="background-image: url('../Image/bg_head.jpg'); text-align: center;">
-       &nbsp;
-       <div style="vertical-align:middle;"><asp:Label ID="Label1"  runat="server" 
-               Font-Bold="True" Font-Size="X-Large" 
-             ForeColor="Yellow" Text="CÔNG TY CỔ PHẦN CẤP NƯỚC TÂN HÒA - CHƯƠNG TRÌNH KIỂM PHIẾU"></asp:Label></div>
-     </div>
-     <div class="Menu">
- 	 <div style="width:100%">
- 		<ul class="menuhead">
- 			<li id="mnHome" class="current"><a class="current_link" id="HOME" href="Home.aspx"><span>TRANG CHỦ</span></a></li>
-            <%--cổ đông--%>
-              <li id="mnKinhDoanh" class="top"><a href="pDanhSachCoDong.aspx" id="CODONG" class="top_link" ><span>DANH SÁCH CỔ ĐÔNG</span></a>
-               <ul class="sub_gioithieu">
-                 <li >
-                      <a href="pDanhSachCoDongThamDu.aspx" class="">CỔ ĐÔNG THAM DỰ </a>
-                 </li>    
-                 <li >
-                      <a href="pInCoDong.aspx" class="">IN DANH SÁCH CỔ ĐÔNG </a>
-                 </li>
-                  <li >
-                      <a href="Print.aspx?page=HD" class="">IN PHIẾU BẦU CỬ HĐQT</a>
-                 </li> 
-                 <li >
-                      <a href="Print.aspx?page=BC" class="">IN PHIẾU BẦU CỬ BKS  </a>
-                 </li>      
-               </ul>
-            </li> 
- 		   <li id="mnGioithieu" class="top"><a href="pBieuQuyetDHCD_TIEUCHI.aspx" id="KIEMPHIEU" class="top_link" ><span>BIỂU QUYẾT NGHỊ QUYẾT </span></a></li>
-           <li id="mnBieuQuyet" class="top"><a href="pKetQuaBauCuDHCD.aspx" id="BIEUQUYET" class="top_link" ><span>BẦU CỬ HỘI ĐỒNG QUẢN TRỊ</span></a></li>
-            
-            
-            <%--<li id="mnGioithieu" class="top"><a href="pBieuQuyetDHCD_2.aspx" id="KIEMPHIEU" class="top_link" ><span>KIỂM PHIẾU</span></a></li>   
+    <div id="Home">
+        <div class="Header" style="background-image: url('../Image/bg_head.jpg'); text-align: center;">
+            &nbsp;
+            <div style="vertical-align: middle;">
+                <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="X-Large" ForeColor="Yellow"
+                    Text="CÔNG TY CỔ PHẦN CẤP NƯỚC TÂN HÒA - CHƯƠNG TRÌNH KIỂM PHIẾU"></asp:Label></div>
+        </div>
+        <div class="Menu">
+            <div style="width: 100%">
+                <ul class="menuhead">
+                    <li id="mnHome" class="current"><a class="current_link" id="HOME" href="Home.aspx"><span>
+                        TRANG CHỦ</span></a></li>
+                    <%--cổ đông--%>
+                    <li id="mnKinhDoanh" class="top"><a href="pDanhSachCoDong.aspx" id="CODONG" class="top_link">
+                        <span>DANH SÁCH CỔ ĐÔNG</span></a>
+                        <ul class="sub_gioithieu">
+                            <li><a href="pDanhSachCoDongThamDu.aspx" class="">CỔ ĐÔNG THAM DỰ </a></li>
+                            <li><a href="pInCoDong.aspx" class="">IN DANH SÁCH CỔ ĐÔNG </a></li>
+                            <li><a href="Print.aspx?page=HD" class="">IN PHIẾU BẦU CỬ HĐQT</a> </li>
+                            <li><a href="Print.aspx?page=BC" class="">IN PHIẾU BẦU CỬ BKS </a></li>
+                        </ul>
+                    </li>
+                    <li id="mnGioithieu" class="top"><a href="pBieuQuyetDHCD_TIEUCHI.aspx" id="KIEMPHIEU"
+                        class="top_link"><span>BIỂU QUYẾT NGHỊ QUYẾT </span></a></li>
+                    <li id="mnBieuQuyet" class="top"><a href="pKetQuaBauCuDHCD.aspx" id="BIEUQUYET" class="top_link">
+                        <span>BẦU CỬ HỘI ĐỒNG QUẢN TRỊ</span></a></li>
+                    <%--<li id="mnGioithieu" class="top"><a href="pBieuQuyetDHCD_2.aspx" id="KIEMPHIEU" class="top_link" ><span>KIỂM PHIẾU</span></a></li>   
            <li id="mnBieuQuyet" class="top"><a href="pBauCuDHCD.aspx" id="BIEUQUYET" class="top_link" ><span>BẦU CỬ</span></a>
             <ul class="sub_gioithieu">
                  <li >
@@ -56,187 +49,177 @@
                  </li>    
                </ul>
             </li> --%>
-             
-             <%--người lao động--%>
-            <li id="mnBauCuNLD" class="top"><a href="pBauCuDHCD.aspx" id="BauCuNLD" class="top_link" ><span>BẦU CỬ NLĐ</span></a></li>
-  			
- 		 
-  			
- 		</ul>
- 	</div>
-</div>
-       <script language="javascript" type="text/javascript">
-           window.document.getElementById("HOME").className = "current_link";
-          // window.document.getElementById("CODONG").className = "top_link";
-          /// window.document.getElementById("KIEMPHIEU").className = "top_link";
-           window.document.getElementById("BIEUQUYET").className = "top_link"; 
-          // window.document.getElementById("BAUCU").className = "top_link"; 
-    </script>
- <!--		END MENU	-->
-<!-- Content -->
-<div class="Content">
-<table width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr align="justify">
-
-<td valign="top" style="width: 100%;">
-    
-   <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">     	
-   
-   </asp:ContentPlaceHolder>
-</td>
-
-
-</tr>
-</table>
-   <!--<div id="subwrap">  -->
-
- <!--  </div>   -->
-</div>
-<!-- End Content -->
-  <!--		START FOOTER	-->
-<div class="Foot clear">
-    <div class="copyright">
-      © Copyright  2016 - Tan Hoa Water Supply JSC.<br />
+                    <%--người lao động--%>
+                    <li id="mnBauCuNLD" class="top"><a href="pBauCuDHCD.aspx" id="BauCuNLD" class="top_link">
+                        <span>BẦU CỬ NLĐ</span></a></li>
+                    <li id="mnBauCuCongDoan" class="top"><a href="pBauCuCongDoan.aspx" id="BauCuCongDoan"
+                        class="top_link"><span>BẦU CỬ CÔNG ĐOÀN</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <script language="javascript" type="text/javascript">
+            window.document.getElementById("HOME").className = "current_link";
+            window.document.getElementById("CODONG").className = "top_link";
+            window.document.getElementById("KIEMPHIEU").className = "top_link";
+            window.document.getElementById("BIEUQUYET").className = "top_link";
+            window.document.getElementById("BauCuNLD").className = "top_link";
+            window.document.getElementById("BauCuCongDoan").className = "top_link"; 
+        </script>
+        <!--		END MENU	-->
+        <!-- Content -->
+        <div class="Content">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr align="justify">
+                    <td valign="top" style="width: 100%;">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+            </table>
+            <!--<div id="subwrap">  -->
+            <!--  </div>   -->
+        </div>
+        <!-- End Content -->
+        <!--		START FOOTER	-->
+        <div class="Foot clear">
+            <div class="copyright">
+                © Copyright 2016 - Tan Hoa Water Supply JSC.<br />
+            </div>
+        </div>
+        <!--		END FOOTER	-->
     </div>
-</div>
-  <!--		END FOOTER	-->   
-     
-</div>
-<script language="javascript">
-    title_tmp1 = document.title
-    if (title_tmp1.indexOf(">>") != -1) {
-        title_tmp2 = title_tmp1.split(">>");
-        title_last = "*~*" + title_tmp2[1];
-        title_last = title_last + "*~*" + title_tmp2[2];
-    } else {
-
-        if (title_tmp1.indexOf("*~*") != -1) {
-            title_tmp2 = title_tmp1.split("*~*");
+    <script language="javascript">
+        title_tmp1 = document.title
+        if (title_tmp1.indexOf(">>") != -1) {
+            title_tmp2 = title_tmp1.split(">>");
             title_last = "*~*" + title_tmp2[1];
-            if (title_last == "*~*") { title_last = "*~*" };
-            if (title_last == "*~*") { title_last = "*~*" };
+            title_last = title_last + "*~*" + title_tmp2[2];
+        } else {
+
+            if (title_tmp1.indexOf("*~*") != -1) {
+                title_tmp2 = title_tmp1.split("*~*");
+                title_last = "*~*" + title_tmp2[1];
+                if (title_last == "*~*") { title_last = "*~*" };
+                if (title_last == "*~*") { title_last = "*~*" };
+            }
+            else { title_last = " ĐẠI HỘI " }
         }
-        else { title_last = " ĐẠI HỘI " }
-    }
 
 
-    title_new = "" + title_last + ""
-    step = 0
+        title_new = "" + title_last + ""
+        step = 0
 
-    function flash_title() {
-        step++
-        if (step == 8) { step = 1 }
-        if (step == 1) { document.title = '[----*' + title_new + '*----]' }
-        if (step == 2) { document.title = '[---*-' + title_new + '-*---]' }
-        if (step == 3) { document.title = '[--*--' + title_new + '--*--]' }
-        if (step == 4) { document.title = '[-*---' + title_new + '---*-]' }
-        if (step == 5) { document.title = '[--*--' + title_new + '--*--]' }
-        if (step == 6) { document.title = '[---*-' + title_new + '-*---]' }
-        if (step == 7) { document.title = '[----*' + title_new + '*----]' }
-        setTimeout("flash_title()", 180);
-    }
-    flash_title()
-
-    function HamThoiGian() {
-        var ThoiGian = new Date();
-        var Gio = ThoiGian.getHours();
-        var Phut = ThoiGian.getMinutes();
-        var Giay = ThoiGian.getSeconds();
-        if (Gio < 10) {
-            Gio = "0" + Gio;
+        function flash_title() {
+            step++
+            if (step == 8) { step = 1 }
+            if (step == 1) { document.title = '[----*' + title_new + '*----]' }
+            if (step == 2) { document.title = '[---*-' + title_new + '-*---]' }
+            if (step == 3) { document.title = '[--*--' + title_new + '--*--]' }
+            if (step == 4) { document.title = '[-*---' + title_new + '---*-]' }
+            if (step == 5) { document.title = '[--*--' + title_new + '--*--]' }
+            if (step == 6) { document.title = '[---*-' + title_new + '-*---]' }
+            if (step == 7) { document.title = '[----*' + title_new + '*----]' }
+            setTimeout("flash_title()", 180);
         }
-        if (Phut < 10) {
-            Phut = "0" + Phut;
-        }
-        if (Giay < 10) {
-            Giay = "0" + Giay;
-        }
-        var ngay = ThoiGian.getDate();
-        var thang = ThoiGian.getMonth() + 1;
-        var nam = ThoiGian.getFullYear();
-        if (ngay < 10)
-            ngay = "0" + ngay;
-        if (thang < 10)
-            thang = "0" + thang;
+        flash_title()
 
-        document.getElementById("clock").innerHTML = ngay + "/" + thang + "/" + nam + "  " + Gio + ":" + Phut + ":" + Giay;
-       
-    }
-    setInterval("HamThoiGian()", 1000); // S? d?ng setInterval d? g?i l?p di l?p l?i hàm HamThoiGian sau 1 giây.
-</script>
-<script type="text/javascript">
+        function HamThoiGian() {
+            var ThoiGian = new Date();
+            var Gio = ThoiGian.getHours();
+            var Phut = ThoiGian.getMinutes();
+            var Giay = ThoiGian.getSeconds();
+            if (Gio < 10) {
+                Gio = "0" + Gio;
+            }
+            if (Phut < 10) {
+                Phut = "0" + Phut;
+            }
+            if (Giay < 10) {
+                Giay = "0" + Giay;
+            }
+            var ngay = ThoiGian.getDate();
+            var thang = ThoiGian.getMonth() + 1;
+            var nam = ThoiGian.getFullYear();
+            if (ngay < 10)
+                ngay = "0" + ngay;
+            if (thang < 10)
+                thang = "0" + thang;
+
+            document.getElementById("clock").innerHTML = ngay + "/" + thang + "/" + nam + "  " + Gio + ":" + Phut + ":" + Giay;
+
+        }
+        setInterval("HamThoiGian()", 1000); // S? d?ng setInterval d? g?i l?p di l?p l?i hàm HamThoiGian sau 1 giây.
+    </script>
+    <script type="text/javascript">
             <!--
-    if (TransMenu.isSupported()) {
-        var ms = new TransMenuSet(TransMenu.direction.right, 0, 0, TransMenu.reference.topRight);
-        var menu4 = ms.addMenu(document.getElementById("A55"));
-        menu4.addItem("&nbsp;&nbsp; SỐ LIỆU CÔNG TÁC GIẢM HÓA ĐƠN = 0M3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ", "tab_TheoDoiCongTacHD0.aspx?page=DHN", "0");
-        menu4.addItem("&nbsp;&nbsp; PHÂN TÍCH HÓA ĐƠN = 0M3 ", "tab_PhanTichHoaDon0.aspx?page=DHN", "0");
-        /* menu4.addItem("&nbsp;&nbsp; SỐ LIỆU CÔNG TÁC GIẢM HÓA ĐƠN = 0M3 ", "tab_PhanTichHoaDon0.aspx?page=DHN", "0");     
+        if (TransMenu.isSupported()) {
+            var ms = new TransMenuSet(TransMenu.direction.right, 0, 0, TransMenu.reference.topRight);
+            var menu4 = ms.addMenu(document.getElementById("A55"));
+            menu4.addItem("&nbsp;&nbsp; SỐ LIỆU CÔNG TÁC GIẢM HÓA ĐƠN = 0M3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ", "tab_TheoDoiCongTacHD0.aspx?page=DHN", "0");
+            menu4.addItem("&nbsp;&nbsp; PHÂN TÍCH HÓA ĐƠN = 0M3 ", "tab_PhanTichHoaDon0.aspx?page=DHN", "0");
+            /* menu4.addItem("&nbsp;&nbsp; SỐ LIỆU CÔNG TÁC GIẢM HÓA ĐƠN = 0M3 ", "tab_PhanTichHoaDon0.aspx?page=DHN", "0");     
        
-        var menu46 = ms.addMenu(document.getElementById("menu46"));
-        menu46.addItem("Menu 7.1", "#", "0");
-        menu46.addItem("Menu 7.2", "#", "1");
-        menu46.addItem("Menu 7.3", "#", "0");
-        menu46.addItem("Menu 7.4", "#", "0");
-        menu46.addItem("Menu 7.5", "#", "0");
-        var menu7 = ms.addMenu(document.getElementById("menu7"));
-        menu7.addItem("Menu 8.1", "javascript:void(0);", "0");
-        /* Level 2 */
-        /*  var menu47 = menu7.addMenu(menu7.items[0], 0, 0);
-        menu47.addItem("Menu 8.1.1", "#", "0");
-        menu47.addItem("Menu 8.1.2", "#", "0");
-        menu47.addItem("Menu 8.1.3", "#", "0");
-        menu47.addItem("Menu 8.1.4", "#", "0");
+            var menu46 = ms.addMenu(document.getElementById("menu46"));
+            menu46.addItem("Menu 7.1", "#", "0");
+            menu46.addItem("Menu 7.2", "#", "1");
+            menu46.addItem("Menu 7.3", "#", "0");
+            menu46.addItem("Menu 7.4", "#", "0");
+            menu46.addItem("Menu 7.5", "#", "0");
+            var menu7 = ms.addMenu(document.getElementById("menu7"));
+            menu7.addItem("Menu 8.1", "javascript:void(0);", "0");
+            /* Level 2 */
+            /*  var menu47 = menu7.addMenu(menu7.items[0], 0, 0);
+            menu47.addItem("Menu 8.1.1", "#", "0");
+            menu47.addItem("Menu 8.1.2", "#", "0");
+            menu47.addItem("Menu 8.1.3", "#", "0");
+            menu47.addItem("Menu 8.1.4", "#", "0");
                     
-        menu7.addItem("Menu 9.1", "javascript:void(0);", "0");
-        var menu51 = menu7.addMenu(menu7.items[1], 0, 0);
-        menu51.addItem("Menu 9.1.1", "#", "0");
-        menu51.addItem("Menu 9.1.2", "#", "0");
-        */
-        function init() {
-            if (TransMenu.isSupported()) {
-                TransMenu.initialize();
+            menu7.addItem("Menu 9.1", "javascript:void(0);", "0");
+            var menu51 = menu7.addMenu(menu7.items[1], 0, 0);
+            menu51.addItem("Menu 9.1.1", "#", "0");
+            menu51.addItem("Menu 9.1.2", "#", "0");
+            */
+            function init() {
+                if (TransMenu.isSupported()) {
+                    TransMenu.initialize();
 
-                menu4.onactivate = function () { document.getElementById("A55").className = "hover"; };
-                menu4.ondeactivate = function () { document.getElementById("A55").className = ""; };                
+                    menu4.onactivate = function () { document.getElementById("A55").className = "hover"; };
+                    menu4.ondeactivate = function () { document.getElementById("A55").className = ""; };
+                }
+            }
+            TransMenu.dingbatSize = 0;
+            TransMenu.spacerGif = "";
+            TransMenu.dingbatOn = "";
+            TransMenu.dingbatOff = "";
+            TransMenu.sub_indicator = false;
+            TransMenu.menuPadding = 0;
+            TransMenu.itemPadding = 0;
+            TransMenu.shadowSize = 2;
+            TransMenu.shadowOffset = 3;
+            TransMenu.shadowColor = "#888";
+            TransMenu.backgroundColor = "#4180b5";
+            TransMenu.hideDelay = 600;
+            TransMenu.slideTime = 300;
+            TransMenu.selecthack = 0;
+            TransMenu.autoposition = 0;
+            TransMenu.renderAll();
+            if (typeof window.addEventListener != "undefined")
+                window.addEventListener("load", init, false);
+            else if (typeof window.attachEvent != "undefined") {
+                window.attachEvent("onload", init);
+            } else {
+                if (window.onload != null) {
+                    var oldOnload = window.onload;
+                    window.onload = function (e) {
+                        oldOnload(e);
+                        init();
+                    }
+                } else
+                    window.onload = init();
             }
         }
-        TransMenu.dingbatSize = 0;
-        TransMenu.spacerGif = "";
-        TransMenu.dingbatOn = "";
-        TransMenu.dingbatOff = "";
-        TransMenu.sub_indicator = false;
-        TransMenu.menuPadding = 0;
-        TransMenu.itemPadding = 0;
-        TransMenu.shadowSize = 2;
-        TransMenu.shadowOffset = 3;
-        TransMenu.shadowColor = "#888";
-        TransMenu.backgroundColor = "#4180b5";
-        TransMenu.hideDelay = 600;
-        TransMenu.slideTime = 300;
-        TransMenu.selecthack = 0;
-        TransMenu.autoposition = 0;
-        TransMenu.renderAll();
-        if (typeof window.addEventListener != "undefined")
-            window.addEventListener("load", init, false);
-        else if (typeof window.attachEvent != "undefined") {
-            window.attachEvent("onload", init);
-        } else {
-            if (window.onload != null) {
-                var oldOnload = window.onload;
-                window.onload = function (e) {
-                    oldOnload(e);
-                    init();
-                }
-            } else
-                window.onload = init();
-        }
-    }
             -->
- </script>
-
-</form>
+    </script>
+    </form>
 </body>
 </html>
-
-
