@@ -71,7 +71,7 @@ namespace DHCD_KiemPhieu.View
             string sql = " SELECT STT,  TENBC,SUM(SLDY) AS DY, ";
             sql += " ROUND(100.0*((SUM(SLDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLDY ,";
             sql += " SUM(SLKDY) AS KDY ,  ";
-            sql += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY1 ";
+            sql += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY ";
             sql += " FROM BAUCU WHERE (STT > 0 AND STT <= " + DropDownList2.SelectedValue.ToString() + "  ) AND LANBC= " + DropDownList1.SelectedValue.ToString() + " AND CONVERT(VARCHAR(50),NGAYBC,103)='" + this.tungay.Text + "' ";
             sql += " GROUP BY STT,TENBC ORDER BY STT ASC  ";
 
@@ -83,7 +83,7 @@ namespace DHCD_KiemPhieu.View
             //string sqlSort = " SELECT   STT,  TENBC,TENBC2,SUM(SLDY) AS DY, ";
             //sqlSort += " ROUND(100.0*((SUM(SLDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLDY ,";
             //sqlSort += " SUM(SLKDY) AS KDY ,  ";
-            //sqlSort += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY1 ";
+            //sqlSort += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY ";
             //sqlSort += " FROM BAUCU WHERE STT > 0 AND LANBC= " + DropDownList1.SelectedValue.ToString() + " AND CONVERT(VARCHAR(50),NGAYBC,103)='" + this.tungay.Text + "' ";
             //sqlSort += " GROUP BY STT,TENBC,TENBC2 ORDER BY SUM(SLDY) DESC,TENBC2 ASC ";
             //Session["SQL2"] = sqlSort;
@@ -147,7 +147,7 @@ namespace DHCD_KiemPhieu.View
             string sql = " SELECT   STT,  TENBC,TENBC2,SUM(SLDY) AS DY, ";
             sql += " ROUND(100.0*((SUM(SLDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLDY ,";
             sql += " SUM(SLKDY) AS KDY ,  ";
-            sql += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY1 ";
+            sql += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY ";
             sql += " FROM BAUCU WHERE STT > 0 AND LANBC= " + DropDownList1.SelectedValue.ToString() + " AND CONVERT(VARCHAR(50),NGAYBC,103)='" + this.tungay.Text + "' ";
             sql += " GROUP BY STT,TENBC,TENBC2 ORDER BY SUM(SLDY) DESC,TENBC2 ASC ";
 
@@ -170,7 +170,7 @@ namespace DHCD_KiemPhieu.View
             string sql = " SELECT TOP(" + DropDownList3.SelectedValue.ToString() + ")   STT,  TENBC,TENBC2,SUM(SLDY) AS DY, ";
             sql += " ROUND(100.0*((SUM(SLDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLDY ,";
             sql += " SUM(SLKDY) AS KDY ,  ";
-            sql += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY1 ";
+            sql += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY ";
             sql += " FROM BAUCU WHERE STT > 0 AND LANBC= " + DropDownList1.SelectedValue.ToString() + " AND CONVERT(VARCHAR(50),NGAYBC,103)='" + this.tungay.Text + "' ";
             sql += " GROUP BY STT,TENBC,TENBC2 ORDER BY SUM(SLDY) DESC,TENBC2 ASC ";
 
@@ -187,7 +187,7 @@ namespace DHCD_KiemPhieu.View
                 string sql = " SELECT TOP(" + DropDownList3.SelectedValue.ToString() + ")   STT,  TENBC,TENBC2,SUM(SLDY) AS DY, ";
                 sql += " ROUND(100.0*((SUM(SLDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLDY ,";
                 sql += " SUM(SLKDY) AS KDY ,  ";
-                sql += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY1 ";
+                sql += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY ";
                 sql += " FROM BAUCU WHERE STT > 0 AND LANBC= " + DropDownList1.SelectedValue.ToString() + " AND CONVERT(VARCHAR(50),NGAYBC,103)='" + this.tungay.Text + "' ";
                 sql += " GROUP BY STT,TENBC,TENBC2 ORDER BY SUM(SLDY) DESC,TENBC2 ASC ";
 
@@ -198,7 +198,7 @@ namespace DHCD_KiemPhieu.View
                 string sqlSort = " SELECT TOP(" + DropDownList3.SelectedValue.ToString() + ")  STT,  TENBC,TENBC2,SUM(SLDY) AS DY, ";
                 sqlSort += " ROUND(100.0*((SUM(SLDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLDY ,";
                 sqlSort += " SUM(SLKDY) AS KDY ,  ";
-                sqlSort += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY1 ";
+                sqlSort += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY ";
                 sqlSort += " FROM BAUCU WHERE STT > 0 AND LANBC= " + DropDownList1.SelectedValue.ToString() + " AND CONVERT(VARCHAR(50),NGAYBC,103)='" + this.tungay.Text + "' ";
                 sqlSort += " GROUP BY STT,TENBC,TENBC2 ORDER BY SUM(SLDY) DESC,TENBC2 ASC ";
                 Session["SQL2"] = sqlSort;

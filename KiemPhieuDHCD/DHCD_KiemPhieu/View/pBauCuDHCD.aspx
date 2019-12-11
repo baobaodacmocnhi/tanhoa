@@ -276,10 +276,10 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Tỷ lệ">
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("TLKDY1") %>'></asp:TextBox>
+                                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("TLKDY") %>'></asp:TextBox>
                                 </EditItemTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("TLKDY1","{0:0.##}") %>' 
+                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("TLKDY","{0:0.##}") %>' 
                                         Font-Bold="True" Font-Size="Large" ForeColor="Red"></asp:Label>
                                     <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Overline="False" 
                                         Font-Size="Large" ForeColor="Red" Text="%"></asp:Label>

@@ -127,15 +127,29 @@
                         <tr>
                             <td>
                                 <asp:Button ID="btnDanhSachDaNhap" runat="server" Text="Danh Sách Đã Nhập" OnClick="btnDanhSachDaNhap_Click" />
-                                <asp:GridView ID="dgvDaBau" runat="server" onrowdeleting="dgvDaBau_RowDeleting">
-                                    <Columns>
-                                        <asp:BoundField DataField="ID" HeaderText="STT" />
-                                        <asp:BoundField DataField="CreateDate" HeaderText="CreateDate" />
-                                        <asp:CheckBoxField DataField="KhongHopLe" HeaderText="Không Hợp Lệ" />
-                                        <asp:BoundField DataField="SoLuong" HeaderText="Số Lượng" />
-                                        <asp:CommandField ShowDeleteButton="True" />
-                                    </Columns>
-                                </asp:GridView>
+                                <div style="height: 150px; width: 500px; overflow: scroll;">
+                                    <asp:GridView ID="dgvDaBau" runat="server" OnRowDeleting="dgvDaBau_RowDeleting" CellPadding="4"
+                                        ForeColor="#333333" GridLines="None">
+                                        <AlternatingRowStyle BackColor="White" />
+                                        <Columns>
+                                            <asp:BoundField DataField="STT" HeaderText="STT" />
+                                            <asp:BoundField DataField="CreateDate" HeaderText="CreateDate" />
+                                            <asp:CheckBoxField DataField="KhongHopLe" HeaderText="Không Hợp Lệ" />
+                                            <asp:BoundField DataField="SoLuong" HeaderText="Số Lượng" />
+                                            <asp:BoundField DataField="ID" HeaderText="ID" />
+                                            <asp:CommandField ShowDeleteButton="True" />
+                                        </Columns>
+                                        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                                        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                                        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                                        <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                                        <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                                        <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                                        <SortedDescendingHeaderStyle BackColor="#820000" />
+                                    </asp:GridView>
+                                </div>
                             </td>
                         </tr>
                     </table>

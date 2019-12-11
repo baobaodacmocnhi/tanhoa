@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Transactions;
 
 namespace DHCD_KiemPhieu.View
 {
@@ -66,7 +67,7 @@ namespace DHCD_KiemPhieu.View
         public void LoadDSDaNhap()
         {
             //load danh sách đã nhập
-            DataTable dt = Class.LinQConnection.getDataTable("select ID,CreateDate,KHONGHOPLE,SoLuong=COUNT(*) from BB_KETQUABAUCU where CreateBy=1 group by ID,CreateDate,KHONGHOPLE");
+            DataTable dt = Class.LinQConnection.getDataTable("select ID,STT=ROW_NUMBER() OVER(ORDER BY ID ASC),CreateDate,KHONGHOPLE,SoLuong=COUNT(*) from BB_KETQUABAUCU where CreateBy=1 group by ID,CreateDate,KHONGHOPLE order by ID desc");
             dgvDaBau.DataSource = dt;
             dgvDaBau.DataBind();
         }
@@ -135,7 +136,11 @@ namespace DHCD_KiemPhieu.View
                 {
                     sql += " insert into BB_KETQUABAUCU(ID,IDUNGVIEN,KHONGHOPLE,DONGY,KHONGDONGY,CREATEBY,CREATEDATE)values(@ID," + checkName.Items[i].Value + ",1,0,0," + Session["login"] + ",'" + date.ToString("yyyyMMdd HH:mm:ss") + "')";
                 }
-                Class.LinQConnection.ExecuteCommand(sql);
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    if (Class.LinQConnection.ExecuteCommand(sql) > 0)
+                        scope.Complete();
+                }
                 checkName.Items[0].Selected = false;
             }
             else
@@ -154,7 +159,11 @@ namespace DHCD_KiemPhieu.View
                         sql += " insert into BB_KETQUABAUCU(ID,IDUNGVIEN,DONGY,KHONGDONGY,CREATEBY,CREATEDATE)values(@ID," + checkName.Items[i].Value + ",1,0," + Session["login"] + ",'" + date.ToString("yyyyMMdd HH:mm:ss") + "')";
                     }
                 }
-                Class.LinQConnection.ExecuteCommand(sql);
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    if (Class.LinQConnection.ExecuteCommand(sql) > 0)
+                        scope.Complete();
+                }
             }
             Binddata();
         }
@@ -184,12 +193,13 @@ namespace DHCD_KiemPhieu.View
 
         protected void btKetQua_Click(object sender, EventArgs e)
         {
-            string sql = " SELECT TOP(" + DropDownList3.SelectedValue.ToString() + ")   STT,  TENBC,TENBC2,SUM(SLDY) AS DY, ";
-            sql += " ROUND(100.0*((SUM(SLDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLDY ,";
-            sql += " SUM(SLKDY) AS KDY ,  ";
-            sql += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY1 ";
-            sql += " FROM BAUCU WHERE STT > 0 AND LANBC= " + DropDownList1.SelectedValue.ToString() + " AND CONVERT(VARCHAR(50),NGAYBC,103)='" + this.tungay.Text + "' ";
-            sql += " GROUP BY STT,TENBC,TENBC2 ORDER BY SUM(SLDY) DESC,TENBC2 ASC ";
+            string sql = "select TOP(" + DropDownList3.SelectedValue.ToString() + ") STT=IDUngVien,TenBC=(select TenBC from BB_THANHVIENBAUCU where ID=IDUngVien)"
+                        + " ,DY=SUM(CASE WHEN DongY=1 THEN 1 else 0 END)"
+                        + " ,TLDY=ROUND(100.0*((SUM(CASE WHEN DongY=1 THEN 1 else 0 END)*1.0)/(SUM(CASE WHEN DongY=1 THEN 1 else 0 END)+SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END) )),2)"
+                        + " ,KDY=SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END)"
+                        + " ,TLKDY=ROUND(100.0*((SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END)*1.0)/(SUM(CASE WHEN DongY=1 THEN 1 else 0 END)+SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END) )),2)"
+                        + " from BB_KETQUABAUCU where (IDUngVien > 0 AND IDUngVien <= " + DropDownList2.SelectedValue.ToString() + "  ) and KHONGHOPLE=0 group by IDUngVien"
+                        + " order by SUM(CASE WHEN DongY=1 THEN 1 else 0 END) desc";
 
             gTK.DataSource = Class.LinQConnection.getDataTable(sql);
             gTK.DataBind();
@@ -251,8 +261,12 @@ namespace DHCD_KiemPhieu.View
 
         protected void dgvDaBau_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            Class.LinQConnection.ExecuteCommand("delete BB_KETQUABAUCU where ID="+e.Values[0]);
-            LoadDSDaNhap();
+            using (TransactionScope scope = new TransactionScope())
+            {
+                if (Class.LinQConnection.ExecuteCommand("delete BB_KETQUABAUCU where ID=" + e.Values[4]) > 0)
+                    scope.Complete();
+            }
+            loadKQ();
         }
     }
 }
