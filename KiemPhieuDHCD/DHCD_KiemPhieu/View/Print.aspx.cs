@@ -39,7 +39,7 @@ namespace DHCD_KiemPhieu.View
                 CrystalReportSource1.ReportDocument.SetParameterValue("TT", Session["TT"] + "");
 
                 CrystalReportSource1.ReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "THE_BIEU_QUYET");
-            }  
+            }
             if ("BC".Equals(Request.Params["page"] + ""))
             {
                 CrystalReportSource1.Report.FileName = "inTheBauCu.rpt";
@@ -73,26 +73,17 @@ namespace DHCD_KiemPhieu.View
 
                 if ("1".Equals(Session["LoaiBaoCao"].ToString()))
                 {
-                    CrystalReportSource1.Report.FileName = "inKQBauCu_TDT.rpt";
+                    CrystalReportSource1.Report.FileName = "inKQBauCu_CongDoan.rpt";
                     CrystalReportSource1.ReportDocument.SetDataSource(ds);
                     CrystalReportSource1.ReportDocument.SetParameterValue("TV", Session["TV"] + "");
                     CrystalReportSource1.ReportDocument.SetParameterValue("HL", Session["HL"] + "");
                     CrystalReportSource1.ReportDocument.SetParameterValue("KHL", Session["KHL"] + "");
                     CrystalReportSource1.ReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "THE_BIEU_QUYET");
                 }
-                else
-                    if ("2".Equals(Session["LoaiBaoCao"].ToString()))
-                    {
-                        CrystalReportSource1.Report.FileName = "inKQBauCu_BTT.rpt";
-                        CrystalReportSource1.ReportDocument.SetDataSource(ds);
-                        CrystalReportSource1.ReportDocument.SetParameterValue("TV", Session["TV"] + "");
-                        CrystalReportSource1.ReportDocument.SetParameterValue("HL", Session["HL"] + "");
-                        CrystalReportSource1.ReportDocument.SetParameterValue("KHL", Session["KHL"] + "");
-                        CrystalReportSource1.ReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "THE_BIEU_QUYET");
-                    }
+                
             }
         }
-    
+
 
         private void LoadImage(DataRow objDataRow, string strImageField, string FilePath)
         {
@@ -105,9 +96,9 @@ namespace DHCD_KiemPhieu.View
                 fs.Close();
                 objDataRow[strImageField] = Image;
             }
-            catch (Exception )
+            catch (Exception)
             {
-                
+
             }
         }
         public DataTable Img()
@@ -138,7 +129,7 @@ namespace DHCD_KiemPhieu.View
                 }
             }
             return tb;
-        
+
         }
     }
 }

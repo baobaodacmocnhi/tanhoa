@@ -391,6 +391,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\inKQBauCu_CongDoan.cs">
+      <DependentUpon>inKQBauCu_CongDoan.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="View\pBauCuCongDoan.aspx.cs">
       <DependentUpon>pBauCuCongDoan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -577,6 +583,10 @@
     <Content Include="View\inKQBauCu_BTT.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inKQBauCu_BTT.cs</LastGenOutput>
+    </Content>
+    <Content Include="View\inKQBauCu_CongDoan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inKQBauCu_CongDoan.cs</LastGenOutput>
     </Content>
     <EmbeddedResource Include="View\inTheBauCuHDQT_1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

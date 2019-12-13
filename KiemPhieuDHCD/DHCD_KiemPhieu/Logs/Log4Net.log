@@ -1504,3 +1504,5 @@ The statement has been terminated.
 2019-12-10 15:01:31,301 [8692] ERROR File LinQConnection getDataTableIncorrect syntax near 'KHONGHOPLE'.
 2019-12-10 16:28:10,857 [11004] ERROR File LinQConnection getDataTableIncorrect syntax near 'KHONGHOPLE'.
 2019-12-10 16:39:24,315 [15192] ERROR File LinQConnection getDataTableColumn "BB_KETQUABAUCU.ID" is invalid in the ORDER BY clause because it is not contained in either an aggregate function or the GROUP BY clause.
+2019-12-13 13:19:06,431 [2120] ERROR File LinQConnection getDataTableDivide by zero error encountered.
+2019-12-13 13:20:26,635 [1076] ERROR File LinQConnection getDataTableDivide by zero error encountered.
