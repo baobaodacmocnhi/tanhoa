@@ -44868,6 +44868,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _VaoLuc;
 		
+		private System.Nullable<System.DateTime> _TuNgay;
+		
+		private System.Nullable<System.DateTime> _DenNgay;
+		
 		private string _VeViec;
 		
 		private string _Luuy;
@@ -44926,6 +44930,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnCanCuChanged();
     partial void OnVaoLucChanging(string value);
     partial void OnVaoLucChanged();
+    partial void OnTuNgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnTuNgayChanged();
+    partial void OnDenNgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnDenNgayChanged();
     partial void OnVeViecChanging(string value);
     partial void OnVeViecChanged();
     partial void OnLuuyChanging(string value);
@@ -45251,6 +45259,46 @@ namespace KTKS_DonKH.LinQ
 					this._VaoLuc = value;
 					this.SendPropertyChanged("VaoLuc");
 					this.OnVaoLucChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TuNgay", DbType="Date")]
+		public System.Nullable<System.DateTime> TuNgay
+		{
+			get
+			{
+				return this._TuNgay;
+			}
+			set
+			{
+				if ((this._TuNgay != value))
+				{
+					this.OnTuNgayChanging(value);
+					this.SendPropertyChanging();
+					this._TuNgay = value;
+					this.SendPropertyChanged("TuNgay");
+					this.OnTuNgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DenNgay", DbType="Date")]
+		public System.Nullable<System.DateTime> DenNgay
+		{
+			get
+			{
+				return this._DenNgay;
+			}
+			set
+			{
+				if ((this._DenNgay != value))
+				{
+					this.OnDenNgayChanging(value);
+					this.SendPropertyChanging();
+					this._DenNgay = value;
+					this.SendPropertyChanged("DenNgay");
+					this.OnDenNgayChanged();
 				}
 			}
 		}

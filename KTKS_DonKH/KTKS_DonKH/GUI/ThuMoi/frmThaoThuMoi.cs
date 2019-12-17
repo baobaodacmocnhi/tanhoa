@@ -142,6 +142,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
             if (en.DinhMucHN != null)
                 txtDinhMucHN.Text = en.DinhMucHN.Value.ToString();
             txtCanCu.Text = en.CanCu;
+            dateTu.Value = en.TuNgay.Value;
+            dateDen.Value = en.DenNgay.Value;
             txtVaoLuc.Text = en.VaoLuc;
             txtVeViec.Text = en.VeViec;
             txtLuuy.Text = en.Luuy;
@@ -174,6 +176,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
             ///
             //txtCanCu.Text = "Theo biên bản kiểm tra sử dụng nước";
             txtCanCu.Text = "";
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
             txtVaoLuc.Text = "";
             //txtVeViec.Text = "Thanh toán chi phí (đồng hồ nước) đứt chì góc theo biên bản số";
             txtVeViec.Text = "";
@@ -441,6 +445,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         entity.Phuong = _hoadon.Phuong;
                     }
                     entity.CanCu = txtCanCu.Text.Trim();
+                    entity.TuNgay = dateTu.Value;
+                    entity.DenNgay = dateDen.Value;
                     entity.VaoLuc = txtVaoLuc.Text.Trim();
                     entity.VeViec = txtVeViec.Text.Trim();
                     entity.Luuy = txtLuuy.Text.Trim();
@@ -507,6 +513,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             _thumoi.Phuong = _hoadon.Phuong;
                         }
                         _thumoi.CanCu = txtCanCu.Text.Trim();
+                        _thumoi.TuNgay = dateTu.Value;
+                        _thumoi.DenNgay = dateDen.Value;
                         _thumoi.VaoLuc = txtVaoLuc.Text.Trim();
                         _thumoi.VeViec = txtVeViec.Text.Trim();
                         _thumoi.Luuy = txtLuuy.Text.Trim();
@@ -772,6 +780,11 @@ namespace KTKS_DonKH.GUI.ThuMoi
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dateDen_ValueChanged(object sender, EventArgs e)
+        {
+            txtVaoLuc.Text = "9 giờ 00 từ ngày " + dateTu.Value.ToString("dd/MM/yyyy") + " đến ngày " + dateDen.Value.ToString("dd/MM/yyyy");
         }
 
     }

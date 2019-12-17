@@ -1965,6 +1965,8 @@
       <Column Name="Phuong" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="CanCu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="VaoLuc" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TuNgay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DenNgay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="VeViec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Luuy" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="NoiNhan" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />

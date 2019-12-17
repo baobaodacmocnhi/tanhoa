@@ -224,7 +224,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void btnChotQuyetToan_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.ToTruong == true)
+            if (CTaiKhoan.Admin == true || CTaiKhoan.ToTruong == true)
             {
                 foreach (DataGridViewRow item in dgvDSCTBamChi.Rows)
                     if (item.Cells["NgayQuyetToan"].Value.ToString() != "")
@@ -236,6 +236,30 @@ namespace KTKS_DonKH.GUI.BamChi
                 {
                     BamChi_ChiTiet en = _cBamChi.GetCT(decimal.Parse(item.Cells["MaCTBC"].Value.ToString()));
                     en.NgayQuyetToan = dateQuyetToan.Value;
+                    _cBamChi.SuaCT(en);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void btnHuyChotQuyetToan_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.Admin == true || CTaiKhoan.ToTruong == true)
+            {
+                foreach (DataGridViewRow item in dgvDSCTBamChi.Rows)
+                    if (item.Cells["NgayQuyetToan"].Value.ToString() == "")
+                    {
+                        MessageBox.Show("BB Chưa Chốt Quyết Toán", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                foreach (DataGridViewRow item in dgvDSCTBamChi.Rows)
+                {
+                    BamChi_ChiTiet en = _cBamChi.GetCT(decimal.Parse(item.Cells["MaCTBC"].Value.ToString()));
+                    en.NgayQuyetToan = null;
                     _cBamChi.SuaCT(en);
                 }
             }

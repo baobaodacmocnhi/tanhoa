@@ -63,6 +63,7 @@
             this.btnXem = new System.Windows.Forms.Button();
             this.btnChotQuyetToan = new System.Windows.Forms.Button();
             this.dateQuyetToan = new System.Windows.Forms.DateTimePicker();
+            this.btnHuyChotQuyetToan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCTBamChi)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -380,6 +381,16 @@
             this.dateQuyetToan.Size = new System.Drawing.Size(90, 22);
             this.dateQuyetToan.TabIndex = 17;
             // 
+            // btnHuyChotQuyetToan
+            // 
+            this.btnHuyChotQuyetToan.Location = new System.Drawing.Point(1084, 32);
+            this.btnHuyChotQuyetToan.Name = "btnHuyChotQuyetToan";
+            this.btnHuyChotQuyetToan.Size = new System.Drawing.Size(120, 25);
+            this.btnHuyChotQuyetToan.TabIndex = 29;
+            this.btnHuyChotQuyetToan.Text = "Hủy Quyết Toán";
+            this.btnHuyChotQuyetToan.UseVisualStyleBackColor = true;
+            this.btnHuyChotQuyetToan.Click += new System.EventHandler(this.btnHuyChotQuyetToan_Click);
+            // 
             // frmDSBamChi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -387,6 +398,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1366, 611);
+            this.Controls.Add(this.btnHuyChotQuyetToan);
             this.Controls.Add(this.dateQuyetToan);
             this.Controls.Add(this.btnChotQuyetToan);
             this.Controls.Add(this.btnXem);
@@ -447,5 +459,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayQuyetToan;
         private System.Windows.Forms.Button btnChotQuyetToan;
         private System.Windows.Forms.DateTimePicker dateQuyetToan;
+        private System.Windows.Forms.Button btnHuyChotQuyetToan;
     }
 }
