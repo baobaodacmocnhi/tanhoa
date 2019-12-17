@@ -67,7 +67,7 @@ namespace DHCD_KiemPhieu.View
         public void LoadDSDaNhap()
         {
             //load danh sách đã nhập
-            DataTable dt = Class.LinQConnection.getDataTable("select ID,STT=ROW_NUMBER() OVER(ORDER BY ID ASC),CreateDate,KHONGHOPLE,SoLuong=COUNT(*) from BB_KETQUABAUCU where CreateBy=1 group by ID,CreateDate,KHONGHOPLE order by ID desc");
+            DataTable dt = Class.LinQConnection.getDataTable("select ID,STT=ROW_NUMBER() OVER(ORDER BY ID ASC),CreateDate,KHONGHOPLE,SoLuong=COUNT(*) from BB_KETQUABAUCU where CreateBy=" + Session["login"] + " group by ID,CreateDate,KHONGHOPLE order by ID desc");
             dgvDaBau.DataSource = dt;
             dgvDaBau.DataBind();
         }
@@ -78,7 +78,7 @@ namespace DHCD_KiemPhieu.View
 
             this.tc_thuvao.Text = "0";
 
-            string sql = "select STT=IDUngVien,TenBC=(select TenBC from BB_THANHVIENBAUCU where ID=IDUngVien)"
+            string sql = "select STT=ROW_NUMBER() OVER(ORDER BY IDUngVien ASC),TenBC=(select TenBC from BB_THANHVIENBAUCU where ID=IDUngVien)"
                         + " ,DY=SUM(CASE WHEN DongY=1 THEN 1 else 0 END)"
                         + " ,TLDY=ROUND(100.0*((SUM(CASE WHEN DongY=1 THEN 1 else 0 END)*1.0)/(SUM(CASE WHEN DongY=1 THEN 1 else 0 END)+SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END) )),2)"
                         + " ,KDY=SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END)"
@@ -201,6 +201,8 @@ namespace DHCD_KiemPhieu.View
                         + " from BB_KETQUABAUCU where (IDUngVien > 0 AND IDUngVien <= " + DropDownList2.SelectedValue.ToString() + "  ) group by IDUngVien"
                         + " order by SUM(CASE WHEN DongY=1 THEN 1 else 0 END) desc";
 
+
+
             gTK.DataSource = Class.LinQConnection.getDataTable(sql);
             gTK.DataBind();
         }
@@ -226,7 +228,13 @@ namespace DHCD_KiemPhieu.View
                         + " from BB_KETQUABAUCU where (IDUngVien > 0 AND IDUngVien <= " + DropDownList2.SelectedValue.ToString() + "  ) group by IDUngVien"
                         + " order by SUM(CASE WHEN DongY=1 THEN 1 else 0 END) desc";
 
-                gTK.DataSource = Class.LinQConnection.getDataTable(sql);
+                DataTable dt = Class.LinQConnection.getDataTable(sql);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    dt.Rows[i]["STT"] = i + 1;
+                }
+
+                gTK.DataSource = dt;
                 gTK.DataBind();
 
                 // sort

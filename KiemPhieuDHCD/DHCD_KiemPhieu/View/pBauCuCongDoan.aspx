@@ -344,7 +344,7 @@
                                 <asp:ListItem>11</asp:ListItem>
                                 <asp:ListItem>12</asp:ListItem>
                             </asp:DropDownList>
-                            <b><a href="Print.aspx?page=TDT">
+                            <b><a href="Print.aspx?page=CongDoan">
                                 <asp:Label ID="lbTongCong" Text="IN KẾT QUẢ" runat="server" Font-Size="Large" Style="text-align: left"></asp:Label>
                             </a></b>
                         </td>

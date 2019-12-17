@@ -73,6 +73,45 @@ namespace DHCD_KiemPhieu.View
 
                 if ("1".Equals(Session["LoaiBaoCao"].ToString()))
                 {
+                    CrystalReportSource1.Report.FileName = "inKQBauCu_TDT.rpt";
+                    CrystalReportSource1.ReportDocument.SetDataSource(ds);
+                    CrystalReportSource1.ReportDocument.SetParameterValue("TV", Session["TV"] + "");
+                    CrystalReportSource1.ReportDocument.SetParameterValue("HL", Session["HL"] + "");
+                    CrystalReportSource1.ReportDocument.SetParameterValue("KHL", Session["KHL"] + "");
+                    CrystalReportSource1.ReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "THE_BIEU_QUYET");
+                }
+                else
+                    if ("2".Equals(Session["LoaiBaoCao"].ToString()))
+                    {
+                        CrystalReportSource1.Report.FileName = "inKQBauCu_BTT.rpt";
+                        CrystalReportSource1.ReportDocument.SetDataSource(ds);
+                        CrystalReportSource1.ReportDocument.SetParameterValue("TV", Session["TV"] + "");
+                        CrystalReportSource1.ReportDocument.SetParameterValue("HL", Session["HL"] + "");
+                        CrystalReportSource1.ReportDocument.SetParameterValue("KHL", Session["KHL"] + "");
+                        CrystalReportSource1.ReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "THE_BIEU_QUYET");
+                    }
+            }
+            if ("CongDoan".Equals(Request.Params["page"] + ""))
+            {
+                sql = Session["SQL"] + "";
+                string sql2 = Session["SQL2"] + "";
+                TanHoaDataContext db = new TanHoaDataContext();
+
+                DataSet ds = new DataSet();
+                if (db.Connection.State == ConnectionState.Open)
+                {
+                    db.Connection.Close();
+                }
+                db.Connection.Open();
+
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, db.Connection.ConnectionString);
+                adapter.Fill(ds, "KQBAUCU");
+
+                adapter = new SqlDataAdapter(sql2, db.Connection.ConnectionString);
+                adapter.Fill(ds, "KQTRUNGCU");
+
+                if ("1".Equals(Session["LoaiBaoCao"].ToString()))
+                {
                     CrystalReportSource1.Report.FileName = "inKQBauCu_CongDoan.rpt";
                     CrystalReportSource1.ReportDocument.SetDataSource(ds);
                     CrystalReportSource1.ReportDocument.SetParameterValue("TV", Session["TV"] + "");
@@ -80,7 +119,6 @@ namespace DHCD_KiemPhieu.View
                     CrystalReportSource1.ReportDocument.SetParameterValue("KHL", Session["KHL"] + "");
                     CrystalReportSource1.ReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "THE_BIEU_QUYET");
                 }
-                
             }
         }
 
