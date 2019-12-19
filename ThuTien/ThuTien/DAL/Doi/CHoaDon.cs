@@ -5808,7 +5808,11 @@ namespace ThuTien.DAL.Doi
                         + " group by CAST(NGAYGIAITRACH as date)"
                         + " union all"
                         + " select PhanKy=N'Khác Kỳ',NgayGiaiTrach=CAST(NGAYGIAITRACH as date),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
-                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and (NAM!=YEAR(@FromNgayGiaiTrach) or (KY!=MONTH(@FromNgayGiaiTrach) and NAM=YEAR(@FromNgayGiaiTrach)))"
+                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and KY!=MONTH(@FromNgayGiaiTrach) and NAM=YEAR(@FromNgayGiaiTrach)"
+                        + " group by CAST(NGAYGIAITRACH as date)"
+                        + " union all"
+                        + " select PhanKy=N'Khác Kỳ Năm',NgayGiaiTrach=CAST(NGAYGIAITRACH as date),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
+                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and NAM!=YEAR(@FromNgayGiaiTrach)"
                         + " group by CAST(NGAYGIAITRACH as date)"
                         + " order by PhanKy,NgayGiaiTrach";
             return ExecuteQuery_DataTable(sql);

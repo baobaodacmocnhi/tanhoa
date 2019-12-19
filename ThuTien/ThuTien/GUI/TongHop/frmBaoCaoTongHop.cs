@@ -1668,12 +1668,15 @@ namespace ThuTien.GUI.TongHop
                         dr["PhanKy"] = "của Kỳ " + dateTu_KeToan.Value.Month.ToString();
                         break;
                     case "Khác Kỳ":
-                        dr["PhanKy"] = "của Kỳ " + dateTu_KeToan.Value.Month.ToString()+" trở về trước";
+                        dr["PhanKy"] = "của Kỳ " + (dateTu_KeToan.Value.Month - 1).ToString() + " trở về trước";
+                        break;
+                    case "Khác Kỳ Năm":
+                        dr["PhanKy"] = "của Kỳ 12 năm " + (dateTu_KeToan.Value.Year - 1).ToString() + " trở về trước";
                         break;
                     default:
                         break;
                 }
-                
+
                 dr["Ngay"] = item["NgayGiaiTrach"];
                 dr["TongGiaBan"] = item["GiaBan"];
                 dr["TongThueGTGT"] = item["ThueGTGT"];
@@ -1765,7 +1768,7 @@ namespace ThuTien.GUI.TongHop
             {
                 DataRow dr = dt.Rows[i];
 
-                arr[i, 0] = DateTime.Parse( dr["NgayGiaiTrach"].ToString()).ToString("dd/MM/yyyy");
+                arr[i, 0] = DateTime.Parse(dr["NgayGiaiTrach"].ToString()).ToString("dd/MM/yyyy");
                 arr[i, 1] = dr["Loai"].ToString();
                 arr[i, 2] = dr["GiaBan"].ToString();
                 arr[i, 3] = dr["ThueGTGT"].ToString();
@@ -1849,7 +1852,7 @@ namespace ThuTien.GUI.TongHop
             oSheet.Cells[rowEnd + 3, 6] = dt.Compute("sum(TongCong)", "Loai like 'Chuyển Khoản'");
             //tổng cộng cuối
             oSheet.Cells[rowEnd + 4, 2] = "Tổng Cộng";
-            oSheet.Cells[rowEnd + 4, 3] = dt.Compute("sum(GiaBan)","");
+            oSheet.Cells[rowEnd + 4, 3] = dt.Compute("sum(GiaBan)", "");
             oSheet.Cells[rowEnd + 4, 4] = dt.Compute("sum(ThueGTGT)", "");
             oSheet.Cells[rowEnd + 4, 5] = dt.Compute("sum(PhiBVMT)", "");
             oSheet.Cells[rowEnd + 4, 6] = dt.Compute("sum(TongCong)", "");
