@@ -142,8 +142,10 @@ namespace KTKS_DonKH.GUI.ThuMoi
             if (en.DinhMucHN != null)
                 txtDinhMucHN.Text = en.DinhMucHN.Value.ToString();
             txtCanCu.Text = en.CanCu;
-            dateTu.Value = en.TuNgay.Value;
-            dateDen.Value = en.DenNgay.Value;
+            if (en.TuNgay != null)
+                dateTu.Value = en.TuNgay.Value;
+            if (en.DenNgay != null)
+                dateDen.Value = en.DenNgay.Value;
             txtVaoLuc.Text = en.VaoLuc;
             txtVeViec.Text = en.VeViec;
             txtLuuy.Text = en.Luuy;

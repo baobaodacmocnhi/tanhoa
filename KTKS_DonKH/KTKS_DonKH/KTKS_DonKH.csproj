@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1284</ApplicationRevision>
+    <ApplicationRevision>1286</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -790,6 +790,7 @@
     <Compile Include="DAL\KiemTraXacMinh\CChuyenDe.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CDongTienNoiDung.cs" />
     <Compile Include="DAL\PhongKhachHang\CCongVanDi_PKH.cs" />
+    <Compile Include="DAL\PhongKhachHang\CGuiTinNhanZalo.cs" />
     <Compile Include="DAL\PhongKhachHang\CTraHopDong.cs" />
     <Compile Include="DAL\ThuMoi\CThuMoi.cs" />
     <Compile Include="DAL\ThuTraLoi\CToTrinh_VeViec.cs" />
@@ -999,6 +1000,12 @@
     </Compile>
     <Compile Include="GUI\PhongKhachHang\frmTraHopDong.Designer.cs">
       <DependentUpon>frmTraHopDong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PhongKhachHang\frmGuiTinNhanZalo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PhongKhachHang\frmGuiTinNhanZalo.Designer.cs">
+      <DependentUpon>frmGuiTinNhanZalo.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThuTraLoi\frmToTrinhVeViec.cs">
       <SubType>Form</SubType>
@@ -1426,6 +1433,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dbKinhDoanh.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="LinQ\dbTrungTamKhachHang.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbTrungTamKhachHang.dbml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1961,6 +1973,9 @@
     <EmbeddedResource Include="GUI\PhongKhachHang\frmTraHopDong.resx">
       <DependentUpon>frmTraHopDong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PhongKhachHang\frmGuiTinNhanZalo.resx">
+      <DependentUpon>frmGuiTinNhanZalo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThuTraLoi\frmToTrinhVeViec.resx">
       <DependentUpon>frmToTrinhVeViec.cs</DependentUpon>
     </EmbeddedResource>
@@ -2171,6 +2186,9 @@
     <EmbeddedResource Include="GUI\TruyThu\frmTruyThuTienNuoc.resx">
       <DependentUpon>frmTruyThuTienNuoc.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LinQ\dbTrungTamKhachHang.dbml.layout">
+      <DependentUpon>dbTrungTamKhachHang.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -2182,6 +2200,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="LinQ\dbTrungTamKhachHang.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbTrungTamKhachHang.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="web.config">
       <SubType>Designer</SubType>
     </None>

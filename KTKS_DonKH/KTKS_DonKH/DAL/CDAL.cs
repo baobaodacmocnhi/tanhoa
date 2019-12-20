@@ -219,6 +219,7 @@ namespace KTKS_DonKH.DAL
                 this.Connect();
                 DataTable dt = new DataTable();
                 command = new SqlCommand(sql, connection);
+                command.CommandTimeout = 60; 
                 adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
                 this.Disconnect();

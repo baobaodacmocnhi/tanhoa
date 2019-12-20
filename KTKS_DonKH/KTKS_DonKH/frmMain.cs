@@ -1059,18 +1059,18 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuGuiTinNhanZalo_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuGuiTinNhanZalo", "Xem"))
+            {
+                frmGuiTinNhanZalo frm = new frmGuiTinNhanZalo();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
-
-        
-
-        
-
-        
-
-        
-
-
-
 
 
 

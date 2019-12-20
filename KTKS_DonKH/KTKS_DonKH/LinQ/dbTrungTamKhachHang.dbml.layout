@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="dbTrungTamKhachHang">
+  <DataContextMoniker Name="/dbTrungTamKhachHangDataContext" />
+  <nestedChildShapes>
+    <classShape Id="7fe41207-1166-4329-842e-22944d25c5ef" absoluteBounds="6.125, 6.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/dbTrungTamKhachHangDataContext/Zalo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2aec8307-f194-4bae-820d-6d9c8cf1f31c" absoluteBounds="6.14, 6.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
