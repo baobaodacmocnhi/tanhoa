@@ -41,12 +41,13 @@
             this.dateGiaiTrachTongHopDangNgan = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnXuatExcel_KeToan = new System.Windows.Forms.Button();
             this.btnIn_KeToan = new System.Windows.Forms.Button();
             this.dateTu_KeToan = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.dateDen_KeToan = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnXuatExcel_KeToan = new System.Windows.Forms.Button();
+            this.chkTheoThang = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -191,6 +192,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkTheoThang);
             this.groupBox2.Controls.Add(this.btnXuatExcel_KeToan);
             this.groupBox2.Controls.Add(this.btnIn_KeToan);
             this.groupBox2.Controls.Add(this.dateTu_KeToan);
@@ -199,10 +201,20 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(12, 95);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(544, 49);
+            this.groupBox2.Size = new System.Drawing.Size(602, 49);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tổng Hợp Tiền Nước Thu Được gửi Kế Toán";
+            // 
+            // btnXuatExcel_KeToan
+            // 
+            this.btnXuatExcel_KeToan.Location = new System.Drawing.Point(423, 17);
+            this.btnXuatExcel_KeToan.Name = "btnXuatExcel_KeToan";
+            this.btnXuatExcel_KeToan.Size = new System.Drawing.Size(75, 23);
+            this.btnXuatExcel_KeToan.TabIndex = 34;
+            this.btnXuatExcel_KeToan.Text = "Xuất Excel";
+            this.btnXuatExcel_KeToan.UseVisualStyleBackColor = true;
+            this.btnXuatExcel_KeToan.Click += new System.EventHandler(this.btnXuatExcel_KeToan_Click);
             // 
             // btnIn_KeToan
             // 
@@ -250,15 +262,15 @@
             this.label5.TabIndex = 29;
             this.label5.Text = "Đến Ngày:";
             // 
-            // btnXuatExcel_KeToan
+            // chkTheoThang
             // 
-            this.btnXuatExcel_KeToan.Location = new System.Drawing.Point(423, 17);
-            this.btnXuatExcel_KeToan.Name = "btnXuatExcel_KeToan";
-            this.btnXuatExcel_KeToan.Size = new System.Drawing.Size(75, 23);
-            this.btnXuatExcel_KeToan.TabIndex = 34;
-            this.btnXuatExcel_KeToan.Text = "Xuất Excel";
-            this.btnXuatExcel_KeToan.UseVisualStyleBackColor = true;
-            this.btnXuatExcel_KeToan.Click += new System.EventHandler(this.btnXuatExcel_KeToan_Click);
+            this.chkTheoThang.AutoSize = true;
+            this.chkTheoThang.Location = new System.Drawing.Point(504, 21);
+            this.chkTheoThang.Name = "chkTheoThang";
+            this.chkTheoThang.Size = new System.Drawing.Size(85, 17);
+            this.chkTheoThang.TabIndex = 35;
+            this.chkTheoThang.Text = "Theo Tháng";
+            this.chkTheoThang.UseVisualStyleBackColor = true;
             // 
             // frmBaoCaoTongHop
             // 
@@ -299,5 +311,6 @@
         private System.Windows.Forms.DateTimePicker dateDen_KeToan;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnXuatExcel_KeToan;
+        private System.Windows.Forms.CheckBox chkTheoThang;
     }
 }

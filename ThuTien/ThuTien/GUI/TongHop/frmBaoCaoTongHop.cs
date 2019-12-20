@@ -1654,7 +1654,11 @@ namespace ThuTien.GUI.TongHop
         private void btnIn_KeToan_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
-            DataTable dt = _cHoaDon.getTongHopDangNgan_KeToan(dateTu_KeToan.Value, dateDen_KeToan.Value);
+            DataTable dt = new DataTable();
+            if(chkTheoThang.Checked==true)
+             dt = _cHoaDon.getTongHopDangNgan_KeToan_TheoThang(dateTu_KeToan.Value, dateDen_KeToan.Value);
+            else
+                dt = _cHoaDon.getTongHopDangNgan_KeToan_TheoNgay(dateTu_KeToan.Value, dateDen_KeToan.Value);
 
             foreach (DataRow item in dt.Rows)
             {

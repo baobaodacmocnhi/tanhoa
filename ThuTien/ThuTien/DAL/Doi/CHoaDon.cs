@@ -5767,7 +5767,7 @@ namespace ThuTien.DAL.Doi
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getTongHopDangNgan_KeToan(DateTime FromNgayGiaiTrach, DateTime ToNgayGiaiTrach)
+        public DataTable getTongHopDangNgan_KeToan_TheoNgay(DateTime FromNgayGiaiTrach, DateTime ToNgayGiaiTrach)
         {
             //string sql = "declare @FromNgayGiaiTrach date"
             //            + " declare @ToNgayGiaiTrach date"
@@ -5814,6 +5814,27 @@ namespace ThuTien.DAL.Doi
                         + " select PhanKy=N'Khác Kỳ Năm',NgayGiaiTrach=CAST(NGAYGIAITRACH as date),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
                         + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and NAM!=YEAR(@FromNgayGiaiTrach)"
                         + " group by CAST(NGAYGIAITRACH as date)"
+                        + " order by PhanKy,NgayGiaiTrach";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getTongHopDangNgan_KeToan_TheoThang(DateTime FromNgayGiaiTrach, DateTime ToNgayGiaiTrach)
+        {
+            string sql = "declare @FromNgayGiaiTrach date"
+                        + " declare @ToNgayGiaiTrach date"
+                        + " set @FromNgayGiaiTrach='" + FromNgayGiaiTrach.ToString("yyyyMMdd") + "'"
+                        + " set @ToNgayGiaiTrach='" + ToNgayGiaiTrach.ToString("yyyyMMdd") + "'"
+                        + " select PhanKy=N'Cùng Kỳ',NgayGiaiTrach=RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH)),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
+                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and KY=MONTH(@FromNgayGiaiTrach) and NAM=YEAR(@FromNgayGiaiTrach)"
+                        + " group by RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH))"
+                        + " union all"
+                        + " select PhanKy=N'Khác Kỳ',NgayGiaiTrach=RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH)),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
+                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and KY!=MONTH(@FromNgayGiaiTrach) and NAM=YEAR(@FromNgayGiaiTrach)"
+                        + " group by RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH))"
+                        + " union all"
+                        + " select PhanKy=N'Khác Kỳ Năm',NgayGiaiTrach=RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH)),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
+                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and NAM!=YEAR(@FromNgayGiaiTrach)"
+                        + " group by RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH))"
                         + " order by PhanKy,NgayGiaiTrach";
             return ExecuteQuery_DataTable(sql);
         }
