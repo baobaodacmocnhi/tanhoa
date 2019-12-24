@@ -44,5 +44,10 @@ namespace KTKS_DonKH.DAL.PhongKhachHang
                    .ToList();
             return LINQToDataTable(result);
         }
+
+        public void excute(string sql)
+        {
+            dbTTKH.ExecuteCommand(sql);
+        }
     }
 }
