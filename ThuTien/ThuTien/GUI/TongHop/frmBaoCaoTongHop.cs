@@ -1669,13 +1669,13 @@ namespace ThuTien.GUI.TongHop
                 switch (item["PhanKy"].ToString())
                 {
                     case "Cùng Kỳ":
-                        dr["PhanKy"] = "của Kỳ " + dateTu_KeToan.Value.Month.ToString();
+                        dr["PhanKy"] = "của Kỳ " + dateDen_KeToan.Value.Month.ToString();
                         break;
                     case "Khác Kỳ":
-                        dr["PhanKy"] = "của Kỳ " + (dateTu_KeToan.Value.Month - 1).ToString() + " trở về trước";
+                        dr["PhanKy"] = "từ Kỳ 1 - " + (dateDen_KeToan.Value.Month - 1).ToString() ;
                         break;
                     case "Khác Kỳ Năm":
-                        dr["PhanKy"] = "của Kỳ 12 năm " + (dateTu_KeToan.Value.Year - 1).ToString() + " trở về trước";
+                        dr["PhanKy"] = "của Kỳ 12 năm " + (dateDen_KeToan.Value.Year - 1).ToString() + " trở về trước";
                         break;
                     default:
                         break;
@@ -1691,7 +1691,7 @@ namespace ThuTien.GUI.TongHop
                 //add page tổng cộng
                 DataRow drTC = ds.Tables["TongHopDangNgan"].NewRow();
 
-                drTC["TuNgay"] = dateTu_KeToan.Value.Month.ToString("00");
+                drTC["TuNgay"] = dateDen_KeToan.Value.Month.ToString("00");
                 drTC["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
                 drTC["PhanKy"] = "";
                 drTC["Ngay"] = item["NgayGiaiTrach"];
