@@ -320,6 +320,32 @@ namespace KTKS_DonKH.DAL.ThuMoi
             }
         }
 
+        public DataTable getDS_ChiTiet(int MaDon, int STT)
+        {
+            var query = from item in db.ThuMoi_ChiTiets
+                        where item.ThuMoi.MaDonMoi == MaDon && item.STT==STT
+                        select new
+                        {
+                            MaDon = item.ThuMoi.DonTu.DonTu_ChiTiets.Count == 1 ? item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi.Value.ToString() + "." + item.STT.Value.ToString(),
+                            item.IDCT,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.GiaBieu,
+                            item.DinhMuc,
+                            item.DinhMucHN,
+                            item.Lan,
+                            item.CanCu,
+                            item.VaoLuc,
+                            item.VeViec,
+                            item.Luuy,
+                            item.NoiNhan,
+                            item.CreateDate,
+                            CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable getDS_ChiTiet(string DanhBo)
         {
             var query = from item in db.ThuMoi_ChiTiets

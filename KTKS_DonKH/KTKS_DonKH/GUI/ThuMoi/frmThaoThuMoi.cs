@@ -320,7 +320,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
                     else
                         txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();
-                    dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("", (int)_dontu_ChiTiet.MaDon);
+                    dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet(_dontu_ChiTiet.MaDon.Value,_dontu_ChiTiet.STT.Value);
 
                     _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
                     if (_hoadon != null)
