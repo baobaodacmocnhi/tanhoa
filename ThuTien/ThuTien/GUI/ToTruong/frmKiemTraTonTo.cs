@@ -17,6 +17,10 @@ using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.ChuyenKhoan;
 using ThuTien.BaoCao.ToTruong;
 using ThuTien.DAL.HanhThu;
+using System.Net;
+using System.Web.Script.Serialization;
+using System.Xml;
+using System.IO;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -1383,18 +1387,73 @@ namespace ThuTien.GUI.ToTruong
                                     DataTable dt = _cHoaDon.GetDSTonDenKy_NV(int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDTuGia.SelectedRows[0].Cells["Dot_TG"].Value.ToString()), int.Parse(txtSoKy.Text.Trim()));
                                     foreach (DataRow item in dt.Rows)
                                         if (int.Parse(dt.Compute("sum(TongCong)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString()) >= int.Parse(txtTongTien.Text.Trim()))
-                                        if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()) == false)
-                                            if (_cQuetTam.CheckExist(item["SoHoaDon"].ToString(), CNguoiDung.MaND, DateTime.Now) == false)
-                                            {
-                                                TT_QuetTam quettam = new TT_QuetTam();
-                                                quettam.MaHD = int.Parse(item["MaHD"].ToString());
-                                                quettam.SoHoaDon = item["SoHoaDon"].ToString();
-                                                _cQuetTam.Them(quettam);
-                                            }
+                                            if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()) == false)
+                                                if (_cQuetTam.CheckExist(item["SoHoaDon"].ToString(), CNguoiDung.MaND, DateTime.Now) == false)
+                                                {
+                                                    TT_QuetTam quettam = new TT_QuetTam();
+                                                    quettam.MaHD = int.Parse(item["MaHD"].ToString());
+                                                    quettam.SoHoaDon = item["SoHoaDon"].ToString();
+                                                    _cQuetTam.Them(quettam);
+                                                }
                                 }
                         }
                         else
                             MessageBox.Show("Thông tin chọn sai", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnTaoFileDienThoai_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                {
+                    string path = @"D:\ThuTien";
+                    if (!File.Exists(path))
+                    {
+                        System.IO.Directory.CreateDirectory(path);
+                    }
+                    XmlDocument xmlDoc = new XmlDocument();
+                    foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                    {
+                        string WebServiceUrl = "http://192.168.90.11:81/wsThuTien.asmx";
+                        WebClient client = new WebClient();
+                        client.Headers.Add("Content-Type", "text/xml; charset=utf-8");
+                        client.Headers.Add("SOAPAction", "http://tempuri.org/GetDSHoaDonTon_Dot_HoaDonDienTu");
+
+                        string payload = @"<?xml version=""1.0"" encoding=""utf-8""?>"
+                        + @"<soap:Envelope xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/"">"
+                        + "<soap:Body>"
+                        + @"<GetDSHoaDonTon_Dot_HoaDonDienTu xmlns=""http://tempuri.org/"">"
+                        + "<MaNV>" + item.Cells["MaNV_TG"].Value.ToString() + "</MaNV>"
+                        + "<Nam>" + cmbNam.SelectedValue.ToString() + "</Nam>"
+                        + "<Ky>" + cmbKy.SelectedItem.ToString() + "</Ky>"
+                        + "<FromDot>" + cmbFromDot.SelectedItem.ToString() + "</FromDot>"
+                        + "<ToDot>" + cmbToDot.SelectedItem.ToString() + "</ToDot>"
+                        + "</GetDSHoaDonTon_Dot_HoaDonDienTu>"
+                        + "</soap:Body>"
+                        + "</soap:Envelope>";
+
+                        var data = Encoding.UTF8.GetBytes(payload);
+                        var result = client.UploadData(WebServiceUrl, data);
+                        string ResponseText = Encoding.Default.GetString(result);
+
+                        xmlDoc.LoadXml(ResponseText);
+
+                        String filepath = path + @"\" + item.Cells["HoTen_TG"].Value.ToString() + "." + cmbNam.SelectedValue.ToString() + "." + cmbKy.SelectedItem.ToString() + "." + cmbFromDot.SelectedItem.ToString() + "." + cmbToDot.SelectedItem.ToString() + ".txt";
+                        FileStream fs = new FileStream(filepath, FileMode.Create);
+                        StreamWriter sWriter = new StreamWriter(fs, Encoding.UTF8);
+                        sWriter.WriteLine(xmlDoc.InnerText);
+                        sWriter.Flush();
+                        sWriter.Close();
                     }
                 }
                 else

@@ -115,6 +115,7 @@
             this.btnChuyenQuetTam = new System.Windows.Forms.Button();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnTaoFileDienThoai = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabCoQuan.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -971,11 +972,22 @@
             this.label5.TabIndex = 102;
             this.label5.Text = "Tổng Tiền >";
             // 
+            // btnTaoFileDienThoai
+            // 
+            this.btnTaoFileDienThoai.Location = new System.Drawing.Point(784, 39);
+            this.btnTaoFileDienThoai.Name = "btnTaoFileDienThoai";
+            this.btnTaoFileDienThoai.Size = new System.Drawing.Size(75, 37);
+            this.btnTaoFileDienThoai.TabIndex = 104;
+            this.btnTaoFileDienThoai.Text = "Tạo File Điện Thoại";
+            this.btnTaoFileDienThoai.UseVisualStyleBackColor = true;
+            this.btnTaoFileDienThoai.Click += new System.EventHandler(this.btnTaoFileDienThoai_Click);
+            // 
             // frmKiemTraTonTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1500, 476);
+            this.ClientSize = new System.Drawing.Size(1310, 476);
+            this.Controls.Add(this.btnTaoFileDienThoai);
             this.Controls.Add(this.txtTongTien);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnChuyenQuetTam);
@@ -1099,5 +1111,6 @@
         private System.Windows.Forms.Button btnChuyenQuetTam;
         private System.Windows.Forms.TextBox txtTongTien;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnTaoFileDienThoai;
     }
 }

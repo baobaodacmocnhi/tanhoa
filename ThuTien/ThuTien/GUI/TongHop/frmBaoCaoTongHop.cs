@@ -1664,7 +1664,7 @@ namespace ThuTien.GUI.TongHop
             {
                 DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
 
-                dr["TuNgay"] = dateTu_KeToan.Value.Month.ToString("00");
+                dr["TuNgay"] = dateDen_KeToan.Value.Month.ToString("00");
                 dr["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
                 switch (item["PhanKy"].ToString())
                 {
