@@ -34,7 +34,7 @@ namespace KTKS_DonKH.GUI.DonTu
             _bSourceKhieuNai = new BindingList<NhomDon>(_cNhomDon.getDS_List("KhieuNai"));
             dgvKhieuNai.DataSource = _bSourceKhieuNai;
             dgvDHN.AutoGenerateColumns = false;
-            _bSourceDHN = new BindingList<NhomDon>(_cNhomDon.getDS_List("DHN"));
+            _bSourceDHN = new BindingList<NhomDon>(_cNhomDon.getDS_List("SuCo"));
             dgvDHN.DataSource = _bSourceDHN;
         }
 
@@ -44,7 +44,7 @@ namespace KTKS_DonKH.GUI.DonTu
             dgvDieuChinh.DataSource = _bSourceDieuChinh;
             _bSourceKhieuNai = new BindingList<NhomDon>(_cNhomDon.getDS_List("KhieuNai"));
             dgvKhieuNai.DataSource = _bSourceKhieuNai;
-            _bSourceDHN = new BindingList<NhomDon>(_cNhomDon.getDS_List("DHN"));
+            _bSourceDHN = new BindingList<NhomDon>(_cNhomDon.getDS_List("SuCo"));
             dgvDHN.DataSource = _bSourceDHN;
         }
 

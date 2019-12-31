@@ -981,7 +981,7 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnuNhanDonTu", "Xem"))
             {
-                frmNhanDonTu frm = new frmNhanDonTu();
+                frmNhanDonTuTest frm = new frmNhanDonTuTest();
                 OpenForm(frm);
             }
             else
@@ -1003,7 +1003,7 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnuCapNhatDonTu", "Xem"))
             {
-                frmCapNhatDonTu frm = new frmCapNhatDonTu();
+                frmCapNhatDonTuTest frm = new frmCapNhatDonTuTest();
                 OpenForm(frm);
             }
             else

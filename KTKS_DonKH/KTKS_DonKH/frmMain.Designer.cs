@@ -123,11 +123,11 @@
             this.mnuPhongKhachHang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTraHopDong = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCongVanDi_PKH = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGuiTinNhanZalo = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mnuGuiTinNhanZalo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -286,6 +286,7 @@
             this.mnuNhomDon.Name = "mnuNhomDon";
             this.mnuNhomDon.Size = new System.Drawing.Size(169, 22);
             this.mnuNhomDon.Text = "Nhóm Đơn";
+            this.mnuNhomDon.Visible = false;
             this.mnuNhomDon.Click += new System.EventHandler(this.mnuNhomDon_Click);
             // 
             // mnuToKhachHang
@@ -891,6 +892,13 @@
             this.mnuCongVanDi_PKH.Visible = false;
             this.mnuCongVanDi_PKH.Click += new System.EventHandler(this.mnuCongVanDi_PKH_Click);
             // 
+            // mnuGuiTinNhanZalo
+            // 
+            this.mnuGuiTinNhanZalo.Name = "mnuGuiTinNhanZalo";
+            this.mnuGuiTinNhanZalo.Size = new System.Drawing.Size(183, 22);
+            this.mnuGuiTinNhanZalo.Text = "Gửi Tin Nhắn Zalo";
+            this.mnuGuiTinNhanZalo.Click += new System.EventHandler(this.mnuGuiTinNhanZalo_Click);
+            // 
             // tabControl
             // 
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Top;
@@ -924,13 +932,6 @@
             this.StripStatus_HoTen.Name = "StripStatus_HoTen";
             this.StripStatus_HoTen.Size = new System.Drawing.Size(205, 17);
             this.StripStatus_HoTen.Text = "                                                 Xin Chào:";
-            // 
-            // mnuGuiTinNhanZalo
-            // 
-            this.mnuGuiTinNhanZalo.Name = "mnuGuiTinNhanZalo";
-            this.mnuGuiTinNhanZalo.Size = new System.Drawing.Size(183, 22);
-            this.mnuGuiTinNhanZalo.Text = "Gửi Tin Nhắn Zalo";
-            this.mnuGuiTinNhanZalo.Click += new System.EventHandler(this.mnuGuiTinNhanZalo_Click);
             // 
             // frmMain
             // 

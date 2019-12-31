@@ -8,7 +8,7 @@ using System.Data;
 
 namespace KTKS_DonKH.DAL.DonTu
 {
-    class CNhomDon:CDAL
+    class CNhomDon : CDAL
     {
         public bool Them(NhomDon entity)
         {
@@ -23,8 +23,8 @@ namespace KTKS_DonKH.DAL.DonTu
                         if (entity.KhieuNai == true)
                             entity.STT = db.NhomDons.Where(item => item.KhieuNai == true).Max(item => item.STT) + 1;
                         else
-                            if (entity.DHN == true)
-                                entity.STT = db.NhomDons.Where(item => item.DHN == true).Max(item => item.STT) + 1;
+                            if (entity.SuCo == true)
+                                entity.STT = db.NhomDons.Where(item => item.SuCo == true).Max(item => item.STT) + 1;
                 }
                 else
                 {
@@ -75,6 +75,23 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
+        public DataTable getDSGroup(string Loai)
+        {
+            switch (Loai)
+            {
+                case "DieuChinh":
+                    return LINQToDataTable(db.NhomDons.Where(item => item.DieuChinh == true).GroupBy(item => new { item.STTGroup, item.NameGroup }).Select(item => new { ID = item.Key.STTGroup, Name = item.Key.NameGroup }).OrderBy(item => item.ID).ToList());
+                case "KhieuNai":
+                    return LINQToDataTable(db.NhomDons.Where(item => item.KhieuNai == true).GroupBy(item => new { item.STTGroup, item.NameGroup }).Select(item => new { ID = item.Key.STTGroup, Name = item.Key.NameGroup }).OrderBy(item => item.ID).ToList());
+                case "SuCo":
+                    return LINQToDataTable(db.NhomDons.Where(item => item.SuCo == true).GroupBy(item => new { item.STTGroup, item.NameGroup }).Select(item => new { ID = item.Key.STTGroup, Name = item.Key.NameGroup }).OrderBy(item => item.ID).ToList());
+                case "QuanLy":
+                    return LINQToDataTable(db.NhomDons.Where(item => item.QuanLy == true).GroupBy(item => new { item.STTGroup, item.NameGroup }).Select(item => new { ID = item.Key.STTGroup, Name = item.Key.NameGroup }).OrderBy(item => item.ID).ToList());
+                default:
+                    return null;
+            }
+        }
+
         public List<NhomDon> getDS_List(string Loai)
         {
             switch (Loai)
@@ -83,8 +100,10 @@ namespace KTKS_DonKH.DAL.DonTu
                     return db.NhomDons.Where(item => item.DieuChinh == true).OrderBy(item => item.STT).ToList();
                 case "KhieuNai":
                     return db.NhomDons.Where(item => item.KhieuNai == true).OrderBy(item => item.STT).ToList();
-                case "DHN":
-                    return db.NhomDons.Where(item => item.DHN == true).OrderBy(item => item.STT).ToList();
+                case "SuCo":
+                    return db.NhomDons.Where(item => item.SuCo == true).OrderBy(item => item.STT).ToList();
+                case "QuanLy":
+                    return db.NhomDons.Where(item => item.QuanLy == true).OrderBy(item => item.STT).ToList();
                 default:
                     return null;
             }
@@ -95,11 +114,13 @@ namespace KTKS_DonKH.DAL.DonTu
             switch (Loai)
             {
                 case "DieuChinh":
-                    return LINQToDataTable(db.NhomDons.Where(item => item.DieuChinh == true).OrderBy(item=>item.STT).ToList());
+                    return LINQToDataTable(db.NhomDons.Where(item => item.DieuChinh == true).OrderBy(item => item.STT).ToList());
                 case "KhieuNai":
                     return LINQToDataTable(db.NhomDons.Where(item => item.KhieuNai == true).OrderBy(item => item.STT).ToList());
-                case "DHN":
-                    return LINQToDataTable(db.NhomDons.Where(item => item.DHN == true).OrderBy(item => item.STT).ToList());
+                case "SuCo":
+                    return LINQToDataTable(db.NhomDons.Where(item => item.SuCo == true).OrderBy(item => item.STT).ToList());
+                case "QuanLy":
+                    return LINQToDataTable(db.NhomDons.Where(item => item.QuanLy == true).OrderBy(item => item.STT).ToList());
                 default:
                     return null;
             }

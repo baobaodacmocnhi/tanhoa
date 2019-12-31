@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1290</ApplicationRevision>
+    <ApplicationRevision>1292</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -119,28 +119,18 @@
       <HintPath>Sources\String_Indentity.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Design" />
-    <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Transactions" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.Windows.Forms.Ribbon35">
-      <HintPath>..\..\..\Sources\Ribbon\10May2013\System.Windows.Forms.Ribbon35.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -940,6 +930,18 @@
     </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmNhapNhieuGB.Designer.cs">
       <DependentUpon>frmNhapNhieuGB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DonTu\frmCapNhatDonTuTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DonTu\frmCapNhatDonTuTest.Designer.cs">
+      <DependentUpon>frmCapNhatDonTuTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DonTu\frmNhanDonTuTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DonTu\frmNhanDonTuTest.Designer.cs">
+      <DependentUpon>frmNhanDonTuTest.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DonTu\frmBaoCaoDonTu.cs">
       <SubType>Form</SubType>
@@ -1942,6 +1944,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmNhapNhieuGB.resx">
       <DependentUpon>frmNhapNhieuGB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DonTu\frmCapNhatDonTuTest.resx">
+      <DependentUpon>frmCapNhatDonTuTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DonTu\frmNhanDonTuTest.resx">
+      <DependentUpon>frmNhanDonTuTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DonTu\frmBaoCaoDonTu.resx">
       <DependentUpon>frmBaoCaoDonTu.cs</DependentUpon>
