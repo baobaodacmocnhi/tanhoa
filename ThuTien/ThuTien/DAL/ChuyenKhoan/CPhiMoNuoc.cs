@@ -8,9 +8,9 @@ using System.Data;
 
 namespace ThuTien.DAL.ChuyenKhoan
 {
-    class CPhiMoNuoc:CDAL
+    class CPhiMoNuoc : CDAL
     {
-        public bool Them(TT_PhiMoNuoc phimonuoc,DateTime CreateDate)
+        public bool Them(TT_PhiMoNuoc phimonuoc, DateTime CreateDate)
         {
             try
             {
@@ -78,7 +78,10 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return LINQToDataTable(_db.TT_PhiMoNuocs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date).ToList().OrderByDescending(item=>item.CreateDate));
+            //return LINQToDataTable(_db.TT_PhiMoNuocs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date).ToList().OrderByDescending(item=>item.CreateDate));
+            string sql = "select a.*,CoDHN=b.Co from TT_PhiMoNuoc a left join TT_KQDongNuoc b on a.MaKQDN=b.MaKQDN"
+                        + " where CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' order by a.CreateDate desc";
+            return ExecuteQuery_DataTable(sql);
         }
 
         public int getPhiMoNuoc_Chot(bool Chot)

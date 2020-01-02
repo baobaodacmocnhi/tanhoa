@@ -263,7 +263,7 @@ namespace ThuTien.GUI.DongNuoc
                         if (chkDongNuoc2.Checked)
                         {
                             _kqdongnuoc.DongNuoc2 = true;
-                            _kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc() * 2;
+                            _kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc(int.Parse(txtCo.Text.Trim())) * 2;
 
                             if (_kqdongnuoc.HinhDN1 == null)
                                 _kqdongnuoc.HinhDN1 = _kqdongnuoc.HinhDN;
@@ -456,7 +456,7 @@ namespace ThuTien.GUI.DongNuoc
                             kqdongnuoc.KhoaKhac_GhiChu = txtKhoaKhac_GhiChu.Text.Trim();
                             kqdongnuoc.KhongThuPhi = chkKhongThuTienMoNuoc.Checked;
 
-                            kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc();
+                            kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc(int.Parse(txtCo.Text.Trim()));
 
                             //if (chkMoNuoc.Checked)
                             //{

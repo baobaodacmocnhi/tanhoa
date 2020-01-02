@@ -49,7 +49,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             foreach (DataGridViewRow item in dgvPhiMoNuoc.Rows)
             {
-                if(int.Parse(item.Cells["PhiMoNuoc"].Value.ToString())/_cDongNuoc.GetPhiMoNuoc()>1)
+                if (int.Parse(item.Cells["PhiMoNuoc"].Value.ToString()) / _cDongNuoc.GetPhiMoNuoc(int.Parse(item.Cells["CoDHN"].Value.ToString())) > 1)
                     item.DefaultCellStyle.BackColor = Color.Orange;
             }
         }
@@ -60,7 +60,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
-            if (dgvPhiMoNuoc.Columns[e.ColumnIndex].Name == "DanhBo_PMN" && e.Value != null && e.Value.ToString().Length==11)
+            if (dgvPhiMoNuoc.Columns[e.ColumnIndex].Name == "DanhBo_PMN" && e.Value != null && e.Value.ToString().Length == 11)
             {
                 e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }
@@ -92,7 +92,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
                     TT_PhiMoNuoc phimonuoc = _cPhiMoNuoc.Get(decimal.Parse(dgvPhiMoNuoc["MaPMN", e.RowIndex].Value.ToString()));
-                    if (bool.Parse(e.FormattedValue.ToString())==true)
+                    if (bool.Parse(e.FormattedValue.ToString()) == true)
                     {
                         phimonuoc.Chot = bool.Parse(e.FormattedValue.ToString());
                         phimonuoc.NgayChot = DateTime.Now;
@@ -257,7 +257,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 arr[i, 0] = dgvPhiMoNuoc["DanhBo_PMN", i].Value.ToString();
                 string SoPhieuThu = _cBangKe.get(dgvPhiMoNuoc["DanhBo_PMN", i].Value.ToString(), DateTime.Parse(dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString())).SoPhieuThu;
-                if(SoPhieuThu!=null)
+                if (SoPhieuThu != null)
                     arr[i, 1] = _cBangKe.getTongSoTien(SoPhieuThu);
                 arr[i, 2] = dgvPhiMoNuoc["TongCong_PMN", i].Value.ToString();
                 arr[i, 3] = dgvPhiMoNuoc["PhiMoNuoc", i].Value.ToString();
@@ -305,7 +305,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void chkChotTatCa_CheckedChanged(object sender, EventArgs e)
         {
-            if (dgvPhiMoNuoc.RowCount > 0&&chkChotTatCa.Checked==true)
+            if (dgvPhiMoNuoc.RowCount > 0 && chkChotTatCa.Checked == true)
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
@@ -322,6 +322,6 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
         }
 
-        
+
     }
 }

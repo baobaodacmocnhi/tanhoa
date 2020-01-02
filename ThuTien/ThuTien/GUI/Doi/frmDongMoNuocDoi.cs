@@ -38,7 +38,7 @@ namespace ThuTien.GUI.Doi
 
             foreach (DataGridViewRow item in dgvPhiMoNuoc.Rows)
             {
-                if (int.Parse(item.Cells["PhiMoNuoc"].Value.ToString()) / _cDongNuoc.GetPhiMoNuoc() > 1)
+                if (int.Parse(item.Cells["PhiMoNuoc"].Value.ToString()) / _cDongNuoc.GetPhiMoNuoc(int.Parse(item.Cells["CoDHN"].Value.ToString())) > 1)
                     item.DefaultCellStyle.BackColor = Color.Orange;
             }
 
