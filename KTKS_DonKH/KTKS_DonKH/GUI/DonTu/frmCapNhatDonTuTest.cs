@@ -80,15 +80,14 @@ namespace KTKS_DonKH.GUI.DonTu
                 txtMaDon.Text = entity.MaDon.ToString();
                 dateCreateDate.Value = entity.CreateDate.Value;
                 txtNguoiLap.Text = _cTaiKhoan.GetHoTen(entity.CreateBy.Value);
-
+                if (entity.SoCongVan_PhongBanDoi != null)
+                    txtPhongBanDoi.Text = entity.SoCongVan_PhongBanDoi;
                 if (entity.SoCongVan != null)
                 {
                     txtSoCongVan.Text = entity.SoCongVan;
                     txtTongDB.Text = entity.TongDB.ToString();
                 }
-                txtNoiDungKhachHang.Text = entity.Name_NhomDon_PKH;
-                txtNoiDungThuongVu.Text = entity.Name_NhomDon;
-                txtVanDeKhac.Text = entity.VanDeKhac;
+                
                 if (entity.ID_NhomDon_PKH != null && entity.ID_NhomDon_PKH.Contains("7"))
                     panel1.Visible = true;
                 else
@@ -100,7 +99,9 @@ namespace KTKS_DonKH.GUI.DonTu
                     chkcmbDHN.SetEditValue(entity.ID_NhomDon);
                     chkcmbQuanLy.SetEditValue(entity.ID_NhomDon);
                 }
-
+                txtNoiDungKhachHang.Text = entity.Name_NhomDon_PKH;
+                txtNoiDungThuongVu.Text = entity.Name_NhomDon;
+                txtVanDeKhac.Text = entity.VanDeKhac;
                 if (entity.DonTu_ChiTiets.Count == 1)
                 {
                     tabControl.SelectTab("tabTTKH");
@@ -191,14 +192,33 @@ namespace KTKS_DonKH.GUI.DonTu
 
         public void Clear()
         {
+            txtPhongBanDoi.Text.Trim();
             txtSoCongVan.Text = "";
             txtTongDB.Text = "";
             txtMaDon.Text = "";
             txtNguoiLap.Text = "";
 
+            for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
+            {
+                chkcmbDieuChinh.Properties.Items[i].CheckState = CheckState.Unchecked;
+            }
+            for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
+            {
+                chkcmbKhieuNai.Properties.Items[i].CheckState = CheckState.Unchecked;
+            }
+            for (int i = 0; i < chkcmbDHN.Properties.Items.Count; i++)
+            {
+                chkcmbDHN.Properties.Items[i].CheckState = CheckState.Unchecked;
+            }
+            for (int i = 0; i < chkcmbQuanLy.Properties.Items.Count; i++)
+            {
+                chkcmbQuanLy.Properties.Items[i].CheckState = CheckState.Unchecked;
+            }
+
             txtSoNK.Text = "";
             txtHieuLucKy.Text = "";
             txtDM.Text = "";
+            txtNoiDungKhachHang.Text = "";
             txtNoiDungThuongVu.Text = "";
             txtVanDeKhac.Text = "";
 

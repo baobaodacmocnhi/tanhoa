@@ -267,6 +267,11 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     chkcmbDHN.Properties.Items[i].CheckState = CheckState.Unchecked;
                 }
+                for (int i = 0; i < chkcmbQuanLy.Properties.Items.Count; i++)
+                {
+                    chkcmbQuanLy.Properties.Items[i].CheckState = CheckState.Unchecked;
+                }
+                txtNoiDungKhachHang.Text = "";
                 txtNoiDungThuongVu.Text = "";
                 txtVanDeKhac.Text = "";
             }
@@ -1124,6 +1129,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH;
                         dgvDanhBo["Quan", e.RowIndex].Value = hoadon.Quan;
                         dgvDanhBo["Phuong", e.RowIndex].Value = hoadon.Phuong;
+                        dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(hoadon.DANHBA);
                     }
                     else
                     {
