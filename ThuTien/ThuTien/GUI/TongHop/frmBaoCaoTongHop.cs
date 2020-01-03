@@ -1681,7 +1681,8 @@ namespace ThuTien.GUI.TongHop
                         break;
                 }
 
-                dr["Ngay"] = item["NgayGiaiTrach"];
+                dr["Ngay"] =item["NgayGiaiTrach"];
+                dr["STT"] = item["STT"];
                 dr["TongGiaBan"] = item["GiaBan"];
                 dr["TongThueGTGT"] = item["ThueGTGT"];
                 dr["TongPhiBVMT"] = item["PhiBVMT"];
@@ -1695,6 +1696,7 @@ namespace ThuTien.GUI.TongHop
                 drTC["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
                 drTC["PhanKy"] = "";
                 drTC["Ngay"] = item["NgayGiaiTrach"];
+                drTC["STT"] = item["STT"];
                 drTC["TongGiaBan"] = item["GiaBan"];
                 drTC["TongThueGTGT"] = item["ThueGTGT"];
                 drTC["TongPhiBVMT"] = item["PhiBVMT"];

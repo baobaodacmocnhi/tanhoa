@@ -5803,7 +5803,8 @@ namespace ThuTien.DAL.Doi
                         + " declare @ToNgayGiaiTrach date"
                         + " set @FromNgayGiaiTrach='" + FromNgayGiaiTrach.ToString("yyyyMMdd") + "'"
                         + " set @ToNgayGiaiTrach='" + ToNgayGiaiTrach.ToString("yyyyMMdd") + "'"
-                        + " select PhanKy=N'Cùng Kỳ',NgayGiaiTrach=CAST(NGAYGIAITRACH as date),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
+                        + " select *,STT=CONVERT(varchar(8),NgayGiaiTrach,112) from"
+                        + " (select PhanKy=N'Cùng Kỳ',NgayGiaiTrach=CAST(NGAYGIAITRACH as date),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
                         + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and KY=MONTH(@ToNgayGiaiTrach) and NAM=YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
                         + " group by CAST(NGAYGIAITRACH as date)"
                         + " union all"
@@ -5813,7 +5814,7 @@ namespace ThuTien.DAL.Doi
                         + " union all"
                         + " select PhanKy=N'Khác Kỳ Năm',NgayGiaiTrach=CAST(NGAYGIAITRACH as date),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
                         + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and NAM<YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
-                        + " group by CAST(NGAYGIAITRACH as date)"
+                        + " group by CAST(NGAYGIAITRACH as date))t1"
                         + " order by PhanKy,NgayGiaiTrach";
             return ExecuteQuery_DataTable(sql);
         }
@@ -5824,7 +5825,8 @@ namespace ThuTien.DAL.Doi
                         + " declare @ToNgayGiaiTrach date"
                         + " set @FromNgayGiaiTrach='" + FromNgayGiaiTrach.ToString("yyyyMMdd") + "'"
                         + " set @ToNgayGiaiTrach='" + ToNgayGiaiTrach.ToString("yyyyMMdd") + "'"
-                        + " select PhanKy=N'Cùng Kỳ',NgayGiaiTrach=RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH)),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
+                        + " select *,STT=CONVERT(varchar(8),NgayGiaiTrach,112) from"
+                        + " (select PhanKy=N'Cùng Kỳ',NgayGiaiTrach=RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH)),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
                         + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and KY=MONTH(@ToNgayGiaiTrach) and NAM=YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
                         + " group by RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH))"
                         + " union all"
@@ -5834,7 +5836,7 @@ namespace ThuTien.DAL.Doi
                         + " union all"
                         + " select PhanKy=N'Khác Kỳ Năm',NgayGiaiTrach=RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH)),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
                         + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and NAM<YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
-                        + " group by RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH))"
+                        + " group by RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH)))t1"
                         + " order by PhanKy,NgayGiaiTrach";
             return ExecuteQuery_DataTable(sql);
         }
