@@ -1462,6 +1462,7 @@
     <Type Name="KTXM_BangGia">
       <Column Name="IDCTKTXM" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="IDDonGia" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="KTXM_ChiTiet_KTXM_BangGia" Member="KTXM_ChiTiet" ThisKey="IDCTKTXM" OtherKey="MaCTKTXM" Type="KTXM_ChiTiet" IsForeignKey="true" />

@@ -337,6 +337,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                     _dontu.ID_NhomDon += ";" + chkcmbQuanLy.Properties.Items[i].Value.ToString();
                             }
                         _dontu.Name_NhomDon = txtNoiDungThuongVu.Text.Trim();
+                        _cDonTu.SubmitChanges();
                     }
                     //cập nhật
                     if (_dontu_LichSu != null)
@@ -391,11 +392,12 @@ namespace KTKS_DonKH.GUI.DonTu
                                 _cDonTu.SubmitChanges();
                             }
                         }
-                        else
-                        {
-                            MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        //else
+                        //{
+                        //    MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    return;
+                        //}
+
                         //else
                         //{
                         //    _dontu_LichSu.NgayChuyen = dateChuyen.Value;
@@ -476,11 +478,11 @@ namespace KTKS_DonKH.GUI.DonTu
                                         _cDonTu.Them_LichSu(entity);
                                     }
                                 }
-                                else
-                                {
-                                    MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
+                                //else
+                                //{
+                                //    MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //    return;
+                                //}
                             }
                             else
                                 //đơn công văn
@@ -545,11 +547,11 @@ namespace KTKS_DonKH.GUI.DonTu
                                                 _cDonTu.Them_LichSu(entity);
                                             }
                                         }
-                                        else
-                                        {
-                                            MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            return;
-                                        }
+                                        //else
+                                        //{
+                                        //    MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        //    return;
+                                        //}
                                     }
                                     else
                                         //nhập nhiều
@@ -614,11 +616,11 @@ namespace KTKS_DonKH.GUI.DonTu
                                                     _cDonTu.Them_LichSu(entity);
                                                 }
                                             }
-                                            else
-                                            {
-                                                MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                                return;
-                                            }
+                                            //else
+                                            //{
+                                            //    MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            //    return;
+                                            //}
                                         }
                                 }
                         }

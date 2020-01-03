@@ -34484,6 +34484,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _IDDonGia;
 		
+		private System.Nullable<int> _SoTien;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -34500,6 +34502,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnIDCTKTXMChanged();
     partial void OnIDDonGiaChanging(int value);
     partial void OnIDDonGiaChanged();
+    partial void OnSoTienChanging(System.Nullable<int> value);
+    partial void OnSoTienChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -34557,6 +34561,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDDonGia = value;
 					this.SendPropertyChanged("IDDonGia");
 					this.OnIDDonGiaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoTien", DbType="Int")]
+		public System.Nullable<int> SoTien
+		{
+			get
+			{
+				return this._SoTien;
+			}
+			set
+			{
+				if ((this._SoTien != value))
+				{
+					this.OnSoTienChanging(value);
+					this.SendPropertyChanging();
+					this._SoTien = value;
+					this.SendPropertyChanged("SoTien");
+					this.OnSoTienChanged();
 				}
 			}
 		}

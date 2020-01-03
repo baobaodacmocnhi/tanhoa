@@ -189,7 +189,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dgvBangGia.Rows[index].Cells["IDCTKTXM"].Value = item.IDCTKTXM;
                 dgvBangGia.Rows[index].Cells["IDDonGia"].Value = item.IDDonGia;
                 dgvBangGia.Rows[index].Cells["Namee"].Value = item.KTXM_DonGia.Name;
-                dgvBangGia.Rows[index].Cells["SoTien"].Value = item.KTXM_DonGia.SoTien;
+                dgvBangGia.Rows[index].Cells["SoTien"].Value = item.SoTien;
             }
             LoaddgvBangGia();
             dgvHinh.Rows.Clear();
@@ -594,6 +594,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 KTXM_BangGia banggia = new KTXM_BangGia();
                                 banggia.IDCTKTXM = ctktxm.MaCTKTXM;
                                 banggia.IDDonGia = int.Parse(item.Cells["IDDonGia"].Value.ToString());
+                                banggia.SoTien = int.Parse(item.Cells["SoTien"].Value.ToString());
                                 _cKTXM.Them_BangGia(banggia);
                             }
                             foreach (DataGridViewRow item in dgvHinh.Rows)
