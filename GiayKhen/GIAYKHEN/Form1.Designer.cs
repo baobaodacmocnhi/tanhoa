@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.cmbGiayKhen = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtQuyetDinhTapThe = new System.Windows.Forms.TextBox();
             this.txtQDNm = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbNhom = new System.Windows.Forms.ComboBox();
             this.btXem = new System.Windows.Forms.Button();
             this.txtNguoiKy = new System.Windows.Forms.TextBox();
             this.txtNgay = new System.Windows.Forms.DateTimePicker();
@@ -56,10 +58,12 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.cmbGiayKhen);
+            this.splitContainer1.Panel1.Controls.Add(this.label6);
             this.splitContainer1.Panel1.Controls.Add(this.txtQuyetDinhTapThe);
             this.splitContainer1.Panel1.Controls.Add(this.txtQDNm);
             this.splitContainer1.Panel1.Controls.Add(this.label5);
-            this.splitContainer1.Panel1.Controls.Add(this.comboBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.cmbNhom);
             this.splitContainer1.Panel1.Controls.Add(this.btXem);
             this.splitContainer1.Panel1.Controls.Add(this.txtNguoiKy);
             this.splitContainer1.Panel1.Controls.Add(this.txtNgay);
@@ -76,13 +80,33 @@
             this.splitContainer1.SplitterDistance = 76;
             this.splitContainer1.TabIndex = 2;
             // 
+            // cmbGiayKhen
+            // 
+            this.cmbGiayKhen.FormattingEnabled = true;
+            this.cmbGiayKhen.Items.AddRange(new object[] {
+            "Công ty",
+            "Công đoàn"});
+            this.cmbGiayKhen.Location = new System.Drawing.Point(83, 8);
+            this.cmbGiayKhen.Name = "cmbGiayKhen";
+            this.cmbGiayKhen.Size = new System.Drawing.Size(165, 27);
+            this.cmbGiayKhen.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 14);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 19);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Loại GK:";
+            // 
             // txtQuyetDinhTapThe
             // 
             this.txtQuyetDinhTapThe.Location = new System.Drawing.Point(490, 47);
             this.txtQuyetDinhTapThe.Name = "txtQuyetDinhTapThe";
             this.txtQuyetDinhTapThe.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhTapThe.TabIndex = 11;
-            this.txtQuyetDinhTapThe.Text = "0216/QĐ-TH-TCHC";
+            this.txtQuyetDinhTapThe.Text = "116/QĐ-TH-CĐ";
             // 
             // txtQDNm
             // 
@@ -101,16 +125,16 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Năm :";
             // 
-            // comboBox1
+            // cmbNhom
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbNhom.FormattingEnabled = true;
+            this.cmbNhom.Items.AddRange(new object[] {
             "Công Đoàn - Cá Nhân",
             "Công Đoàn - Tập Thể"});
-            this.comboBox1.Location = new System.Drawing.Point(84, 10);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(165, 27);
-            this.comboBox1.TabIndex = 1;
+            this.cmbNhom.Location = new System.Drawing.Point(83, 41);
+            this.cmbNhom.Name = "cmbNhom";
+            this.cmbNhom.Size = new System.Drawing.Size(165, 27);
+            this.cmbNhom.TabIndex = 1;
             // 
             // btXem
             // 
@@ -128,7 +152,7 @@
             this.txtNguoiKy.Name = "txtNguoiKy";
             this.txtNguoiKy.Size = new System.Drawing.Size(166, 26);
             this.txtNguoiKy.TabIndex = 5;
-            this.txtNguoiKy.Text = "TRẦM THỊ CẨM VÂN";
+            this.txtNguoiKy.Text = "HỒ THỊ QUÝ BÌNH";
             // 
             // txtNgay
             // 
@@ -145,16 +169,16 @@
             this.txtQuyetDinhCaNhan.Name = "txtQuyetDinhCaNhan";
             this.txtQuyetDinhCaNhan.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhCaNhan.TabIndex = 3;
-            this.txtQuyetDinhCaNhan.Text = "0216/QĐ-TH-TCHC";
+            this.txtQuyetDinhCaNhan.Text = "115/QĐ-TH-CĐ";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 16);
+            this.label4.Location = new System.Drawing.Point(11, 47);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 19);
+            this.label4.Size = new System.Drawing.Size(47, 19);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Loại GK:";
+            this.label4.Text = "Nhóm";
             // 
             // label3
             // 
@@ -228,11 +252,13 @@
         private System.Windows.Forms.DateTimePicker txtNgay;
         private System.Windows.Forms.TextBox txtQuyetDinhCaNhan;
         private System.Windows.Forms.Button btXem;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbNhom;
         private System.Windows.Forms.TextBox txtQDNm;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtNguoiKy;
         private System.Windows.Forms.TextBox txtQuyetDinhTapThe;
+        private System.Windows.Forms.ComboBox cmbGiayKhen;
+        private System.Windows.Forms.Label label6;
 
     }
 }

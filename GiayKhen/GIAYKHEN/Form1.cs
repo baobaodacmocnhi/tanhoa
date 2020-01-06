@@ -25,10 +25,10 @@ namespace GIAYKHEN
             DataSet ds = new DataSet();
 
             string query = "";
-            if (comboBox1.SelectedIndex == 0)
+            if (cmbNhom.SelectedIndex == 0)
                 query = "select * FROM GIAYKHEN WHERE TAPTHE=0 ";
-            if (comboBox1.SelectedIndex == 1)
-                query = "select * FROM GIAYKHEN WHERE TAPTHE=1 ";
+            if (cmbNhom.SelectedIndex == 1)
+                query = "select * FROM GIAYKHEN WHERE TAPTHE=1 AND NAME=1 ";
             SqlDataAdapter adapter = new SqlDataAdapter(query, db.Connection.ConnectionString);
 
             adapter.Fill(ds, "GIAYKHEN");
@@ -45,18 +45,31 @@ namespace GIAYKHEN
             //    item["PHONGBAN"] = UNI_2_TCVN3(item["PHONGBAN"].ToString());
             //}
             ReportDocument rp = new ReportDocument();
-            if (comboBox1.SelectedIndex == 0)
-                rp = new DanVanKheo_CANHAN_A3();
+            if (cmbGiayKhen.SelectedItem.ToString() == "Công ty")
+            {
+                if (cmbNhom.SelectedIndex == 0)
+                    rp = new ChinhQuyen_CANHAN_A3();
+                else
+                    if (cmbNhom.SelectedIndex == 1)
+                        rp = new ChinhQuyen_TAPTHE_A3();
+            }
             else
-                if (comboBox1.SelectedIndex == 1)
-                    rp = new DanVanKheo_TAPTHE_A3();
+                if (cmbGiayKhen.SelectedItem.ToString() == "Công đoàn")
+                {
+                    if (cmbNhom.SelectedIndex == 0)
+                        rp = new TLD_GKCongDoan_CANHAN();
+                    else
+                        if (cmbNhom.SelectedIndex == 1)
+                            rp = new TLD_GKCongDoan_TAPTHE_2name();
+                }
+           
             //ReportDocument rp = new GKCongDoan_CANHAN();
             rp.SetDataSource(dt);
             rp.SetParameterValue("qdNam", this.txtQDNm.Text);
-            if (comboBox1.SelectedIndex == 0)
+            if (cmbNhom.SelectedIndex == 0)
                 rp.SetParameterValue("qd", this.txtQuyetDinhCaNhan.Text);
             else
-                if (comboBox1.SelectedIndex == 1)
+                if (cmbNhom.SelectedIndex == 1)
                     rp.SetParameterValue("qd", this.txtQuyetDinhTapThe.Text);
             rp.SetParameterValue("ngay", this.txtNgay.Value.ToString("dd"));
             rp.SetParameterValue("thang", this.txtNgay.Value.ToString("MM"));
@@ -80,8 +93,8 @@ namespace GIAYKHEN
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            comboBox1.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2019, 10, 02);
+            cmbNhom.SelectedIndex = 0;
+            txtNgay.Value = new DateTime(2019, 12, 30);
         }
 
     }
