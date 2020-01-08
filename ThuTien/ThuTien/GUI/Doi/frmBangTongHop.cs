@@ -139,12 +139,12 @@ namespace ThuTien.GUI.Doi
                     dtDCHDChuanThu.Merge(_cDCHD.GetChuanThu("TG", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
                     dtDCHDChuanThu.Merge(_cDCHD.GetChuanThu("CQ", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
 
-                    dtDCHDTonCuKy.Merge(_cDCHD.GetChuanThuTonDenKyDenNgay("TG",lstTo[i].MaTo,int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())-1,NgayGiaiTrachOld));
+                    dtDCHDTonCuKy.Merge(_cDCHD.GetChuanThuTonDenKyDenNgay("TG", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()) - 1, NgayGiaiTrachOld));
                     dtDCHDTonCuKy.Merge(_cDCHD.GetChuanThuTonDenKyDenNgay("CQ", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()) - 1, NgayGiaiTrachOld));
-                    
+
                     dtDCHDTonTrongKy.Merge(_cDCHD.GetChuanThuTonTrongKyDenNgay("TG", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow));
                     dtDCHDTonTrongKy.Merge(_cDCHD.GetChuanThuTonTrongKyDenNgay("CQ", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow));
-                    
+
                     dtDCHDTongTon.Merge(_cDCHD.GetChuanThuTonDenKyDenNgay("TG", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow));
                     dtDCHDTongTon.Merge(_cDCHD.GetChuanThuTonDenKyDenNgay("CQ", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow));
                 }
@@ -206,7 +206,7 @@ namespace ThuTien.GUI.Doi
                     dr["TyLeTonCu"] = "100";
                     dr["ChuanThu"] = drBangTinh["ChuanThu"] = item["HDChuanThu"];
                     dr["TyLeChuanThu"] = "100";
-                    dr["TonThu"]  = item["HDTonThu"];
+                    dr["TonThu"] = item["HDTonThu"];
                     dr["TyLeTonThu"] = 100 - Math.Round(double.Parse(item["HDTonThu"].ToString()) / double.Parse(item["HDChuanThu"].ToString()) * 100, 2);
                     dr["TongTon"] = drBangTinh["TongTon"] = item["HDTongTon"];
                     dr["TyLeTongTon"] = "100";
@@ -289,6 +289,6 @@ namespace ThuTien.GUI.Doi
             }
         }
 
-        
+
     }
 }

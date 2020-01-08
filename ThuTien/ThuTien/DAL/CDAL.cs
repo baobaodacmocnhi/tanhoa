@@ -12,7 +12,7 @@ namespace ThuTien.DAL
     class CDAL
     {
         protected static dbThuTienDataContext _db = new dbThuTienDataContext();
-
+        
         public void BeginTransaction()
         {
             if (_db.Connection.State == System.Data.ConnectionState.Closed)
@@ -120,6 +120,7 @@ namespace ThuTien.DAL
                 //_connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
                 _connectionString = ThuTien.Properties.Settings.Default.HOADON_TAConnectionString;
                 connection = new SqlConnection(_connectionString);
+                _db.CommandTimeout = 60;
             }
             catch (Exception)
             {
@@ -242,7 +243,7 @@ namespace ThuTien.DAL
                 this.Connect();
                 DataTable dt = new DataTable();
                 command = new SqlCommand(sql, connection);
-                command.CommandTimeout = 0;
+                command.CommandTimeout = 60;
                 adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
                 this.Disconnect();
