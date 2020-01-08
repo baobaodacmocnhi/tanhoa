@@ -58,62 +58,100 @@ namespace KTKS_DonKH.DAL
             return dt;
         }
 
+        public string convertToUnSign(string s)
+        {
+            string stFormD = s.Normalize(NormalizationForm.FormD);
+            StringBuilder sb = new StringBuilder();
+            for (int ich = 0; ich < stFormD.Length; ich++)
+            {
+                System.Globalization.UnicodeCategory uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+                if (uc != System.Globalization.UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(stFormD[ich]);
+                }
+            }
+            sb = sb.Replace('Đ', 'D');
+            sb = sb.Replace('đ', 'd');
+            return (sb.ToString().Normalize(NormalizationForm.FormD)).ToUpper();
+        }
+        //code moi
+        private DataTable getDuongCamDao(string tenduong)
+        {
+            return ExecuteQuery_DataTable(" SELECT [GIOIHAN],[NAMKETTHUC],[QUANLY],[LOAI] FROM [DUONGCAMDAO] WHERE [TENDUONG] = '" + tenduong + "' ORDER BY [LOAI]");
+        }
+
         public string getDuongCamDao(string SoNha, string TenDuong)
         {
             string leDuong = "";
+            TenDuong = convertToUnSign(Regex.Replace(TenDuong.Trim(), @"  +", " ").ToUpper()); //, @"(^ +)|(( ) +)|( +$)", "$2"
             if (TenDuong == "") return "";
             SoNha = Regex.Replace(SoNha, @"[^0-9/]", "");
             bool duongCamDao = false;
-            DataTable tbTenDuong = ExecuteQuery_DataTable("SELECT [GIOIHAN],[NAMKETTHUC],[QUANLY] FROM [DUONGCAMDAO] WHERE [TenDuong] = '" + TenDuong + "'");
+            DataTable tbTenDuong = getDuongCamDao(TenDuong);
             if (tbTenDuong.Rows.Count > 0)
             {
                 if (SoNha.Contains("/"))
                 {
-                    string SoNha1 = Regex.Replace(SoNha, @"(.*/)\d+", @"$1");
-                    string SoNha2 = Regex.Replace(SoNha, @".*/(\d+)", @"$1");
-                    tbTenDuong.DefaultView.RowFilter = "GIOIHAN like '" + SoNha1 + "%'";
+                    string soNha1 = Regex.Replace(SoNha, @"(.*/)\d+", @"$1");
+                    string soNha2 = Regex.Replace(SoNha, @".*/(\d+)", @"$1");
+                    tbTenDuong.DefaultView.RowFilter = "GIOIHAN like '" + soNha1 + "%'";
                     if (tbTenDuong.DefaultView.Count > 0)
                     {
-                        int SoNhaInt = Int32.Parse(SoNha2);
-                        int SoNhaOdd = SoNhaInt % 2;
-                        if (SoNhaOdd == 0)
+                        int soNhaInt = Int32.Parse(soNha2);
+                        int soNhaOdd = soNhaInt % 2;
+                        if (soNhaOdd == 0)
                             leDuong = "Số chẵn";
                         else
                             leDuong = "Số lẻ";
+                        string filter = "";
                         for (int i = 0; i < tbTenDuong.DefaultView.Count; i++)
                         {
                             string[] dauCuoi = Regex.Replace(tbTenDuong.DefaultView[i][0].ToString(), @"[^0-9-/]", "").Split('-');
                             int dauInt = Int32.Parse(dauCuoi[0]);
                             int cuoiInt = Int32.Parse(dauCuoi[1]);
-                            if (dauInt % 2 == SoNhaOdd && SoNhaInt >= dauInt && SoNhaInt <= cuoiInt)
+                            int namKetThuc = (int)tbTenDuong.DefaultView[i][1];
+                            if (namKetThuc >= DateTime.Now.Year && dauInt % 2 == soNhaOdd && soNhaInt >= dauInt && soNhaInt <= cuoiInt)
                             {
                                 duongCamDao = true;
-                                tbTenDuong.DefaultView.RowFilter = "GIOIHAN='" + tbTenDuong.DefaultView[i][0].ToString() + "'";
-                                break;
+                                if (filter == "")
+                                    filter = "GIOIHAN='" + tbTenDuong.DefaultView[i][0].ToString() + "'";
+                                else
+                                    filter += " OR GIOIHAN='" + tbTenDuong.DefaultView[i][0].ToString() + "'";
+                                //break;
                             }
                         }
+                        tbTenDuong.DefaultView.RowFilter = filter;
                     }
                 }
                 else if (SoNha != "")
                 {
-                    int SoNhaInt = Int32.Parse(SoNha);
-                    int SoNhaOdd = SoNhaInt % 2;
-                    if (SoNhaOdd == 0)
+                    int soNhaInt = Int32.Parse(SoNha);
+                    int soNhaOdd = soNhaInt % 2;
+                    if (soNhaOdd == 0)
                         leDuong = "Số chẵn";
                     else
                         leDuong = "Số lẻ";
-                    for (int i = 0; i < tbTenDuong.DefaultView.Count && !tbTenDuong.DefaultView[i][0].ToString().Contains("/"); i++)
+                    string filter = "";
+                    for (int i = 0; i < tbTenDuong.DefaultView.Count; i++)
                     {
-                        string[] dauCuoi = Regex.Replace(tbTenDuong.DefaultView[i][0].ToString(), @"[^0-9-/]", "").Split('-');
-                        int dauInt = Int32.Parse(dauCuoi[0]);
-                        int cuoiInt = Int32.Parse(dauCuoi[1]);
-                        if (dauInt % 2 == SoNhaOdd && SoNhaInt >= dauInt && SoNhaInt <= cuoiInt)
+                        if (!tbTenDuong.DefaultView[i][0].ToString().Contains("/"))
                         {
-                            duongCamDao = true;
-                            tbTenDuong.DefaultView.RowFilter = "GIOIHAN='" + tbTenDuong.DefaultView[i][0].ToString() + "'";
-                            break;
+                            string[] dauCuoi = Regex.Replace(tbTenDuong.DefaultView[i][0].ToString(), @"[^0-9-/]", "").Split('-');
+                            int dauInt = Int32.Parse(dauCuoi[0]);
+                            int cuoiInt = Int32.Parse(dauCuoi[1]);
+                            int namKetThuc = (int)tbTenDuong.DefaultView[i][1];
+                            if (namKetThuc >= DateTime.Now.Year && dauInt % 2 == soNhaOdd && soNhaInt >= dauInt && soNhaInt <= cuoiInt)
+                            {
+                                duongCamDao = true;
+                                if (filter == "")
+                                    filter = "GIOIHAN='" + tbTenDuong.DefaultView[i][0].ToString() + "'";
+                                else
+                                    filter += " OR GIOIHAN='" + tbTenDuong.DefaultView[i][0].ToString() + "'";
+                                //break;
+                            }
                         }
                     }
+                    tbTenDuong.DefaultView.RowFilter = filter;
                 }
                 else //khong co dia chi
                 {
@@ -122,9 +160,39 @@ namespace KTKS_DonKH.DAL
             }
             if (duongCamDao)
             {
-                string docContent = "ĐƯỜNG CẤM ĐÀO\r\n";
-                docContent += String.Format("{0} từ nhà số {1}, kết thúc năm {2}, quản lý {3}", leDuong, tbTenDuong.DefaultView[0][0].ToString().Replace("-", " đến nhà số "), tbTenDuong.DefaultView[0][1].ToString(), tbTenDuong.DefaultView[0][2].ToString());
-                return docContent;
+                var sb = new StringBuilder();
+                for (int i = 0; i < tbTenDuong.DefaultView.Count; i++)
+                {
+                    string loai = tbTenDuong.DefaultView[i][3].ToString();
+                    string loaiString;
+                    switch (loai)
+                    {
+                        case "0":
+                            loaiString = "ĐƯỜNG CẤM ĐÀO";
+                            break;
+                        case "1":
+                            loaiString = "ĐƯỜNG HẠN CHẾ THI CÔNG (CẤM ĐÀO)\r\nTheo Thông báo số 6215/TB-SGTVT\r\n";
+                            break;
+                        case "2":
+                            loaiString = "ĐƯỜNG HẠN CHẾ THI CÔNG BAN NGÀY (PHÉP KHU)\r\nTheo Thông báo số 6214/TB-SGTVT\r\n";
+                            break;
+                        default:
+                            loaiString = "";
+                            break;
+                    }
+                    //sb.Append("<font size='4' color='red'><b>").Append(loaiString).Append("</b></font></br>");
+                    sb.Append(loaiString);
+                    string gioiHan = tbTenDuong.DefaultView[i][0].ToString();
+                    if (gioiHan == "1-9999" || gioiHan == "2-10000")
+                        sb.Append("Suốt tuyến");
+                    else
+                        sb.Append(leDuong).Append(" từ nhà số ").Append(gioiHan.Replace("-", " đến nhà số "));
+                    string namKetThuc = tbTenDuong.DefaultView[i][1].ToString();
+                    if (namKetThuc != "9999")
+                        sb.Append(", kết thúc năm ").Append(namKetThuc);
+                    sb.Append(", quản lý ").Append(tbTenDuong.DefaultView[i][2].ToString());
+                }
+                return sb.ToString();
             }
             else
                 return "";

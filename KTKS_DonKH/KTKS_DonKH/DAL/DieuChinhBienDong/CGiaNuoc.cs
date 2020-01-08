@@ -6166,7 +6166,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     {
                         //int TieuThu_DieuChinhGia;
                         List<int> lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
-                        TienNuocCu = TinhTienNuoc(DieuChinhGia, 0, lstGiaNuoc, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, out ChiTietCu, out TieuThu_DieuChinhGia);
+                        TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuoc, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, out ChiTietCu, out TieuThu_DieuChinhGia);
                     }
             }
             else
