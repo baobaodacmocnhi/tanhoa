@@ -13,23 +13,20 @@ namespace GIAYKHEN
 {
     public partial class Form1 : Form
     {
+        GKDataContext db = new GKDataContext();
+
         public Form1()
         {
             InitializeComponent();
             this.txtQDNm.Focus();
 
         }
-        private DataSet getData()
+        private DataSet getData(string sql)
         {
-            GKDataContext db = new GKDataContext();
+
             DataSet ds = new DataSet();
 
-            string query = "";
-            if (cmbNhom.SelectedIndex == 0)
-                query = "select * FROM GIAYKHEN WHERE TAPTHE=0 ";
-            if (cmbNhom.SelectedIndex == 1)
-                query = "select * FROM GIAYKHEN WHERE TAPTHE=1 AND NAME=1 ";
-            SqlDataAdapter adapter = new SqlDataAdapter(query, db.Connection.ConnectionString);
+            SqlDataAdapter adapter = new SqlDataAdapter(sql, db.Connection.ConnectionString);
 
             adapter.Fill(ds, "GIAYKHEN");
             return ds;
@@ -37,7 +34,7 @@ namespace GIAYKHEN
 
         private void btXem_Click(object sender, EventArgs e)
         {
-            DataTable dt = getData().Tables[0];
+            string sql = "";
             //foreach (DataRow item in dt.Rows)
             //{
             //    item["HOTEN"] = UNI_2_TCVN3(item["HOTEN"].ToString());
@@ -48,21 +45,48 @@ namespace GIAYKHEN
             if (cmbGiayKhen.SelectedItem.ToString() == "Công ty")
             {
                 if (cmbNhom.SelectedIndex == 0)
+                {
+                    sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and CongDoan=0 and DoanThanhNien=0 and DangBo=0";
                     rp = new ChinhQuyen_CANHAN_A3();
+                }
                 else
                     if (cmbNhom.SelectedIndex == 1)
+                    {
+                        sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and CongDoan=0 and DoanThanhNien=0 and DangBo=0";
                         rp = new ChinhQuyen_TAPTHE_A3();
+                    }
             }
             else
                 if (cmbGiayKhen.SelectedItem.ToString() == "Công đoàn")
                 {
                     if (cmbNhom.SelectedIndex == 0)
+                    {
+                        sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and CongDoan=1";
                         rp = new TLD_GKCongDoan_CANHAN();
+                    }
                     else
                         if (cmbNhom.SelectedIndex == 1)
+                        {
+                            sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and CongDoan=1";
                             rp = new TLD_GKCongDoan_TAPTHE_2name();
+                        }
                 }
-           
+                else
+                    if (cmbGiayKhen.SelectedItem.ToString() == "Đảng")
+                    {
+                        if (cmbNhom.SelectedIndex == 0)
+                        {
+                            sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and DangBo=1";
+                            rp = new DangBo_CANHAN_A3();
+                        }
+                        else
+                            if (cmbNhom.SelectedIndex == 1)
+                            {
+                                sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and DangBo=1";
+                                rp = new DangBo_TAPTHE_A3();
+                            }
+                    }
+            DataTable dt = getData(sql).Tables[0];
             //ReportDocument rp = new GKCongDoan_CANHAN();
             rp.SetDataSource(dt);
             rp.SetParameterValue("qdNam", this.txtQDNm.Text);

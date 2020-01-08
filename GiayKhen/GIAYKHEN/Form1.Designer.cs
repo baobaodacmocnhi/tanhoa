@@ -85,7 +85,8 @@
             this.cmbGiayKhen.FormattingEnabled = true;
             this.cmbGiayKhen.Items.AddRange(new object[] {
             "Công ty",
-            "Công đoàn"});
+            "Công đoàn",
+            "Đảng"});
             this.cmbGiayKhen.Location = new System.Drawing.Point(83, 8);
             this.cmbGiayKhen.Name = "cmbGiayKhen";
             this.cmbGiayKhen.Size = new System.Drawing.Size(165, 27);
