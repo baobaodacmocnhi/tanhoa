@@ -86,6 +86,37 @@ namespace GIAYKHEN
                                 rp = new DangBo_TAPTHE_A3();
                             }
                     }
+                    else
+                        if (cmbGiayKhen.SelectedItem.ToString() == "Đoàn thanh niên")
+                        {
+                            if (cmbNhom.SelectedIndex == 0)
+                            {
+                                sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and DoanThanhNien=1";
+                                rp = new DoanThanhNien_BT_CANHAN_A4_FormNho();
+                            }
+                            else
+                                if (cmbNhom.SelectedIndex == 1)
+                                {
+                                    sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and DoanThanhNien=1";
+                                    rp = new DoanThanhNien_SoQD_PBT_CANHAN_A4();
+                                }
+                        }
+                        else
+                            if (cmbGiayKhen.SelectedItem.ToString() == "Gương 5 năm")
+                            {
+                                if (cmbNhom.SelectedIndex == 0)
+                                {
+                                    sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and Guong=1";
+                                    rp = new GuongDienHinh5nam_CANHAN_A3();
+                                }
+                                else
+                                    if (cmbNhom.SelectedIndex == 1)
+                                    {
+                                        sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and Guong=1";
+                                        rp = new GuongDienHinh5nam_TAPTHE_A3();
+                                    }
+                            }
+
             DataTable dt = getData(sql).Tables[0];
             //ReportDocument rp = new GKCongDoan_CANHAN();
             rp.SetDataSource(dt);
@@ -118,7 +149,7 @@ namespace GIAYKHEN
         private void Form1_Load(object sender, EventArgs e)
         {
             cmbNhom.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2019, 12, 30);
+            txtNgay.Value = new DateTime(2020, 01, 07);
         }
 
     }

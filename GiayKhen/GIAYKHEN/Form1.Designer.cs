@@ -86,7 +86,9 @@
             this.cmbGiayKhen.Items.AddRange(new object[] {
             "Công ty",
             "Công đoàn",
-            "Đảng"});
+            "Đảng",
+            "Đoàn thanh niên",
+            "Gương 5 năm"});
             this.cmbGiayKhen.Location = new System.Drawing.Point(83, 8);
             this.cmbGiayKhen.Name = "cmbGiayKhen";
             this.cmbGiayKhen.Size = new System.Drawing.Size(165, 27);
@@ -107,7 +109,7 @@
             this.txtQuyetDinhTapThe.Name = "txtQuyetDinhTapThe";
             this.txtQuyetDinhTapThe.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhTapThe.TabIndex = 11;
-            this.txtQuyetDinhTapThe.Text = "116/QĐ-TH-CĐ";
+            this.txtQuyetDinhTapThe.Text = "0003/QĐ-TH-TCHC";
             // 
             // txtQDNm
             // 
@@ -115,7 +117,7 @@
             this.txtQDNm.Name = "txtQDNm";
             this.txtQDNm.Size = new System.Drawing.Size(68, 26);
             this.txtQDNm.TabIndex = 2;
-            this.txtQDNm.Text = "2019";
+            this.txtQDNm.Text = "2015 - 2019";
             // 
             // label5
             // 
@@ -153,7 +155,7 @@
             this.txtNguoiKy.Name = "txtNguoiKy";
             this.txtNguoiKy.Size = new System.Drawing.Size(166, 26);
             this.txtNguoiKy.TabIndex = 5;
-            this.txtNguoiKy.Text = "HỒ THỊ QUÝ BÌNH";
+            this.txtNguoiKy.Text = "TRẦM THỊ CẨM VÂN";
             // 
             // txtNgay
             // 
@@ -170,7 +172,7 @@
             this.txtQuyetDinhCaNhan.Name = "txtQuyetDinhCaNhan";
             this.txtQuyetDinhCaNhan.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhCaNhan.TabIndex = 3;
-            this.txtQuyetDinhCaNhan.Text = "115/QĐ-TH-CĐ";
+            this.txtQuyetDinhCaNhan.Text = "0003/QĐ-TH-TCHC";
             // 
             // label4
             // 
