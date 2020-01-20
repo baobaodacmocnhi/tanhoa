@@ -92,7 +92,7 @@ namespace GIAYKHEN
                             if (cmbNhom.SelectedIndex == 0)
                             {
                                 sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and DoanThanhNien=1";
-                                rp = new DoanThanhNien_BT_CANHAN_A4_FormNho();
+                                rp = new DoanThanhNien_SoQD_BT_CANHAN_A4_FormNho();
                             }
                             else
                                 if (cmbNhom.SelectedIndex == 1)
@@ -149,7 +149,7 @@ namespace GIAYKHEN
         private void Form1_Load(object sender, EventArgs e)
         {
             cmbNhom.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2020, 01, 07);
+            txtNgay.Value = new DateTime(2020, 01, 09);
         }
 
     }

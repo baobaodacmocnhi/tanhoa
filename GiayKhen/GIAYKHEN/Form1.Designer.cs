@@ -117,7 +117,7 @@
             this.txtQDNm.Name = "txtQDNm";
             this.txtQDNm.Size = new System.Drawing.Size(68, 26);
             this.txtQDNm.TabIndex = 2;
-            this.txtQDNm.Text = "2015 - 2019";
+            this.txtQDNm.Text = "2019";
             // 
             // label5
             // 
@@ -155,7 +155,7 @@
             this.txtNguoiKy.Name = "txtNguoiKy";
             this.txtNguoiKy.Size = new System.Drawing.Size(166, 26);
             this.txtNguoiKy.TabIndex = 5;
-            this.txtNguoiKy.Text = "TRẦM THỊ CẨM VÂN";
+            this.txtNguoiKy.Text = "NGUYỄN TRẦN LAM";
             // 
             // txtNgay
             // 
@@ -172,7 +172,7 @@
             this.txtQuyetDinhCaNhan.Name = "txtQuyetDinhCaNhan";
             this.txtQuyetDinhCaNhan.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhCaNhan.TabIndex = 3;
-            this.txtQuyetDinhCaNhan.Text = "0003/QĐ-TH-TCHC";
+            this.txtQuyetDinhCaNhan.Text = "33";
             // 
             // label4
             // 
