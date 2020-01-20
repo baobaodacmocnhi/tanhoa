@@ -38,8 +38,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnBaoCao_ThongKeTruyThu = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbTinhTrang_TheoTinhTrang = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnIn_TheoTinhTrang = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -154,12 +159,66 @@
             this.btnBaoCao_ThongKeTruyThu.UseVisualStyleBackColor = true;
             this.btnBaoCao_ThongKeTruyThu.Click += new System.EventHandler(this.btnBaoCao_ThongKeTruyThu_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.cmbTinhTrang_TheoTinhTrang);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.btnIn_TheoTinhTrang);
+            this.groupBox2.Location = new System.Drawing.Point(295, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(270, 81);
+            this.groupBox2.TabIndex = 27;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Thống Kê Truy Thu (theo Tình Trạng)";
+            // 
+            // cmbTinhTrang_TheoTinhTrang
+            // 
+            this.cmbTinhTrang_TheoTinhTrang.FormattingEnabled = true;
+            this.cmbTinhTrang_TheoTinhTrang.Items.AddRange(new object[] {
+            "",
+            "Đang gửi thư mời",
+            "Đang lập bảng giá",
+            "Đang trình ký",
+            "Chưa thanh toán",
+            "Đã thanh toán",
+            "Trả góp",
+            "Điều chỉnh không phát sinh truy thu",
+            "Miễn truy thu",
+            "Đã gửi TB tạm ngưng cung cấp nước",
+            "Chuyển lập TB cắt tạm",
+            "Chuyển lập TB hủy",
+            "Giữ nguyên"});
+            this.cmbTinhTrang_TheoTinhTrang.Location = new System.Drawing.Point(89, 21);
+            this.cmbTinhTrang_TheoTinhTrang.Name = "cmbTinhTrang_TheoTinhTrang";
+            this.cmbTinhTrang_TheoTinhTrang.Size = new System.Drawing.Size(172, 24);
+            this.cmbTinhTrang_TheoTinhTrang.TabIndex = 30;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 16);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Tình Trạng:";
+            // 
+            // btnIn_TheoTinhTrang
+            // 
+            this.btnIn_TheoTinhTrang.Location = new System.Drawing.Point(89, 51);
+            this.btnIn_TheoTinhTrang.Name = "btnIn_TheoTinhTrang";
+            this.btnIn_TheoTinhTrang.Size = new System.Drawing.Size(75, 25);
+            this.btnIn_TheoTinhTrang.TabIndex = 28;
+            this.btnIn_TheoTinhTrang.Text = "In DS";
+            this.btnIn_TheoTinhTrang.UseVisualStyleBackColor = true;
+            this.btnIn_TheoTinhTrang.Click += new System.EventHandler(this.btnIn_TheoTinhTrang_Click);
+            // 
             // frmBaoCaoTruyThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(969, 545);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -170,6 +229,8 @@
             this.groupBox1.PerformLayout();
             this.panel_KhoangThoiGian.ResumeLayout(false);
             this.panel_KhoangThoiGian.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -186,5 +247,9 @@
         private System.Windows.Forms.Button btnInDS;
         private System.Windows.Forms.ComboBox cmbTinhTrang;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox cmbTinhTrang_TheoTinhTrang;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnIn_TheoTinhTrang;
     }
 }

@@ -88,5 +88,40 @@ namespace KTKS_DonKH.GUI.TruyThu
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
+
+        private void btnIn_TheoTinhTrang_Click(object sender, EventArgs e)
+        {
+            if (cmbTinhTrang_TheoTinhTrang.SelectedIndex == -1)
+                return;
+            DataTable dt = _cTTTN.getDS_TinhTrang( cmbTinhTrang_TheoTinhTrang.SelectedItem.ToString());
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow item in dt.Rows)
+            //if (item["TinhTrang"].ToString() ==cmbTinhTrang.SelectedItem.ToString() )
+            {
+                DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
+
+                dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
+                dr["LoaiBaoCao"] = cmbTinhTrang_TheoTinhTrang.Text.ToUpper();
+                dr["MaDon"] = item["MaDon"].ToString();
+                dr["SoCongVan"] = item["SoCongVan"];
+                dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = item["HoTen"];
+                dr["DiaChi"] = item["DiaChi"];
+                dr["NoiDung"] = item["NoiDung"];
+
+                dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
+                dr["TongCongMoi"] = item["TongTien"];
+                dr["NhanVien"] = CTaiKhoan.HoTen;
+
+                dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
+            }
+
+            rptDSTruyThuTienNuoc rpt = new rptDSTruyThuTienNuoc();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
+        }
     }
 }
