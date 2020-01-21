@@ -58,7 +58,12 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (cmbTinhTrang.SelectedIndex == -1)
                 return;
-            DataTable dt = _cTTTN.getDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value, cmbTinhTrang.SelectedItem.ToString());
+            DataTable dt = new DataTable();
+            if (cmbTinhTrang.SelectedIndex == 0)
+                dt = _cTTTN.getDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value);
+            else
+                if (cmbTinhTrang.SelectedIndex > 0)
+                    dt = _cTTTN.getDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value, cmbTinhTrang.Text);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
@@ -93,7 +98,12 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (cmbTinhTrang_TheoTinhTrang.SelectedIndex == -1)
                 return;
-            DataTable dt = _cTTTN.getDS_TinhTrang( cmbTinhTrang_TheoTinhTrang.SelectedItem.ToString());
+            DataTable dt = new DataTable();
+            if (cmbTinhTrang_TheoTinhTrang.SelectedIndex == 0)
+                dt = _cTTTN.getDS();
+            else
+                if (cmbTinhTrang_TheoTinhTrang.SelectedIndex > 0)
+                    dt = _cTTTN.getDS_TinhTrang(cmbTinhTrang_TheoTinhTrang.Text);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
@@ -119,6 +129,32 @@ namespace KTKS_DonKH.GUI.TruyThu
             }
 
             rptDSTruyThuTienNuoc rpt = new rptDSTruyThuTienNuoc();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
+        private void btnBaoCao_TheoTinhTrang_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cTTTN.getDS();
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
+
+                dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
+                dr["MaDon"] = item["MaDon"];
+                dr["NoiDung"] = item["TinhTrang"];
+                dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
+                dr["TongCongMoi"] = item["TongTien"];
+                dr["NhanVien"] = CTaiKhoan.HoTen;
+
+                dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
+            }
+
+            rptThongKeTruyThu rpt = new rptThongKeTruyThu();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();

@@ -42,6 +42,7 @@
             this.cmbTinhTrang_TheoTinhTrang = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnIn_TheoTinhTrang = new System.Windows.Forms.Button();
+            this.btnBaoCao_TheoTinhTrang = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -65,6 +66,7 @@
             // 
             this.cmbTinhTrang.FormattingEnabled = true;
             this.cmbTinhTrang.Items.AddRange(new object[] {
+            "Tất cả",
             "",
             "Đang gửi thư mời",
             "Đang lập bảng giá",
@@ -161,6 +163,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnBaoCao_TheoTinhTrang);
             this.groupBox2.Controls.Add(this.cmbTinhTrang_TheoTinhTrang);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.btnIn_TheoTinhTrang);
@@ -175,6 +178,7 @@
             // 
             this.cmbTinhTrang_TheoTinhTrang.FormattingEnabled = true;
             this.cmbTinhTrang_TheoTinhTrang.Items.AddRange(new object[] {
+            "Tất cả",
             "",
             "Đang gửi thư mời",
             "Đang lập bảng giá",
@@ -211,6 +215,16 @@
             this.btnIn_TheoTinhTrang.Text = "In DS";
             this.btnIn_TheoTinhTrang.UseVisualStyleBackColor = true;
             this.btnIn_TheoTinhTrang.Click += new System.EventHandler(this.btnIn_TheoTinhTrang_Click);
+            // 
+            // btnBaoCao_TheoTinhTrang
+            // 
+            this.btnBaoCao_TheoTinhTrang.Location = new System.Drawing.Point(170, 51);
+            this.btnBaoCao_TheoTinhTrang.Name = "btnBaoCao_TheoTinhTrang";
+            this.btnBaoCao_TheoTinhTrang.Size = new System.Drawing.Size(75, 25);
+            this.btnBaoCao_TheoTinhTrang.TabIndex = 31;
+            this.btnBaoCao_TheoTinhTrang.Text = "Báo Cáo";
+            this.btnBaoCao_TheoTinhTrang.UseVisualStyleBackColor = true;
+            this.btnBaoCao_TheoTinhTrang.Click += new System.EventHandler(this.btnBaoCao_TheoTinhTrang_Click);
             // 
             // frmBaoCaoTruyThu
             // 
@@ -251,5 +265,6 @@
         private System.Windows.Forms.ComboBox cmbTinhTrang_TheoTinhTrang;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnIn_TheoTinhTrang;
+        private System.Windows.Forms.Button btnBaoCao_TheoTinhTrang;
     }
 }
