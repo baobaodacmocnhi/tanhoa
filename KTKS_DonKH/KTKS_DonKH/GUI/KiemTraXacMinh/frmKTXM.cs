@@ -115,90 +115,97 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         public void LoadCTKTXM(KTXM_ChiTiet ctktxm)
         {
-            if (ctktxm.KTXM.MaDonMoi != null)
+            try
             {
-                _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctktxm.KTXM.MaDonMoi.Value, ctktxm.STT.Value);
-                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
-                    txtMaDonMoi.Text = ctktxm.KTXM.MaDonMoi.ToString();
-                else
-                    txtMaDonMoi.Text = ctktxm.KTXM.MaDonMoi.Value.ToString() + "." + ctktxm.STT.Value.ToString();
-            }
-            else
-                if (ctktxm.KTXM.MaDon != null)
+                if (ctktxm.KTXM.MaDonMoi != null)
                 {
-                    _dontkh = _cDonKH.Get(ctktxm.KTXM.MaDon.Value);
-                    txtMaDonCu.Text = ctktxm.KTXM.MaDon.ToString().Insert(ctktxm.KTXM.MaDon.ToString().Length - 2, "-");
+                    _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctktxm.KTXM.MaDonMoi.Value, ctktxm.STT.Value);
+                    if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                        txtMaDonMoi.Text = ctktxm.KTXM.MaDonMoi.ToString();
+                    else
+                        txtMaDonMoi.Text = ctktxm.KTXM.MaDonMoi.Value.ToString() + "." + ctktxm.STT.Value.ToString();
                 }
                 else
-                    if (ctktxm.KTXM.MaDonTXL != null)
+                    if (ctktxm.KTXM.MaDon != null)
                     {
-                        _dontxl = _cDonTXL.Get(ctktxm.KTXM.MaDonTXL.Value);
-                        txtMaDonCu.Text = "TXL" + ctktxm.KTXM.MaDonTXL.ToString().Insert(ctktxm.KTXM.MaDonTXL.ToString().Length - 2, "-");
+                        _dontkh = _cDonKH.Get(ctktxm.KTXM.MaDon.Value);
+                        txtMaDonCu.Text = ctktxm.KTXM.MaDon.ToString().Insert(ctktxm.KTXM.MaDon.ToString().Length - 2, "-");
                     }
                     else
-                        if (ctktxm.KTXM.MaDonTBC != null)
+                        if (ctktxm.KTXM.MaDonTXL != null)
                         {
-                            _dontbc = _cDonTBC.Get(ctktxm.KTXM.MaDonTBC.Value);
-                            txtMaDonCu.Text = "TBC" + ctktxm.KTXM.MaDonTBC.ToString().Insert(ctktxm.KTXM.MaDonTBC.ToString().Length - 2, "-");
+                            _dontxl = _cDonTXL.Get(ctktxm.KTXM.MaDonTXL.Value);
+                            txtMaDonCu.Text = "TXL" + ctktxm.KTXM.MaDonTXL.ToString().Insert(ctktxm.KTXM.MaDonTXL.ToString().Length - 2, "-");
                         }
-            txtDanhBo.Text = ctktxm.DanhBo;
-            txtHopDong.Text = ctktxm.HopDong;
-            txtHoTen.Text = ctktxm.HoTen;
-            txtDiaChi.Text = ctktxm.DiaChi;
-            txtGiaBieu.Text = ctktxm.GiaBieu;
-            if (ctktxm.DinhMuc != null)
-                txtDinhMuc.Text = ctktxm.DinhMuc.Value.ToString();
-            if (ctktxm.DinhMucHN != null)
-                txtDinhMucHN.Text = ctktxm.DinhMucHN.Value.ToString();
-            if (ctktxm.DinhMucMoi != null)
-                txtDinhMucMoi.Text = ctktxm.DinhMucMoi.Value.ToString();
-            if (ctktxm.DinhMuc_KhongDangKy!= null)
-                txtDinhMuc_KhongDangKy.Text = ctktxm.DinhMuc_KhongDangKy.Value.ToString();
-            chkCanKhachHangLienHe.Checked = ctktxm.CanKhachHangLienHe;
-            ///
-            chkNgayKTXMTruocNgayGiao.Checked = ctktxm.NgayKTXM_Truoc_NgayGiao;
-            dateKTXM.Value = ctktxm.NgayKTXM.Value;
-            if (ctktxm.HienTrangKiemTra != null)
-                cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
-            cmbViTriDHN1.SelectedItem = ctktxm.ViTriDHN1;
-            cmbViTriDHN2.SelectedItem = ctktxm.ViTriDHN2;
-            ///
-            txtHieu.Text = ctktxm.Hieu;
-            txtCo.Text = ctktxm.Co;
-            txtSoThan.Text = ctktxm.SoThan;
-            txtChiSo.Text = ctktxm.ChiSo;
-            cmbTinhTrangChiSo.SelectedItem = ctktxm.TinhTrangChiSo;
-            cmbChiMatSo.SelectedItem = ctktxm.ChiMatSo;
-            cmbChiKhoaGoc.SelectedItem = ctktxm.ChiKhoaGoc;
-            txtMucDichSuDung.Text = ctktxm.MucDichSuDung;
-            txtDienThoai.Text = ctktxm.DienThoai;
-            txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
-            txtTheoYeuCau.Text = ctktxm.TheoYeuCau;
-            txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
-            if (ctktxm.TieuThuTrungBinh != null)
-                txtTieuThuTrungBinh.Text = ctktxm.TieuThuTrungBinh.Value.ToString();
-            if (ctktxm.NoiDungBaoThay != null)
-            {
-                cmbNoiDungBaoThay.SelectedText = ctktxm.NoiDungBaoThay;
-                txtGhiChuNoiDungBaoThay.Text = ctktxm.GhiChuNoiDungBaoThay;
+                        else
+                            if (ctktxm.KTXM.MaDonTBC != null)
+                            {
+                                _dontbc = _cDonTBC.Get(ctktxm.KTXM.MaDonTBC.Value);
+                                txtMaDonCu.Text = "TBC" + ctktxm.KTXM.MaDonTBC.ToString().Insert(ctktxm.KTXM.MaDonTBC.ToString().Length - 2, "-");
+                            }
+                txtDanhBo.Text = ctktxm.DanhBo;
+                txtHopDong.Text = ctktxm.HopDong;
+                txtHoTen.Text = ctktxm.HoTen;
+                txtDiaChi.Text = ctktxm.DiaChi;
+                txtGiaBieu.Text = ctktxm.GiaBieu;
+                if (ctktxm.DinhMuc != null)
+                    txtDinhMuc.Text = ctktxm.DinhMuc.Value.ToString();
+                if (ctktxm.DinhMucHN != null)
+                    txtDinhMucHN.Text = ctktxm.DinhMucHN.Value.ToString();
+                if (ctktxm.DinhMucMoi != null)
+                    txtDinhMucMoi.Text = ctktxm.DinhMucMoi.Value.ToString();
+                if (ctktxm.DinhMuc_KhongDangKy != null)
+                    txtDinhMuc_KhongDangKy.Text = ctktxm.DinhMuc_KhongDangKy.Value.ToString();
+                chkCanKhachHangLienHe.Checked = ctktxm.CanKhachHangLienHe;
+                ///
+                chkNgayKTXMTruocNgayGiao.Checked = ctktxm.NgayKTXM_Truoc_NgayGiao;
+                dateKTXM.Value = ctktxm.NgayKTXM.Value;
+                if (ctktxm.HienTrangKiemTra != null)
+                    cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
+                cmbViTriDHN1.SelectedItem = ctktxm.ViTriDHN1;
+                cmbViTriDHN2.SelectedItem = ctktxm.ViTriDHN2;
+                ///
+                txtHieu.Text = ctktxm.Hieu;
+                txtCo.Text = ctktxm.Co;
+                txtSoThan.Text = ctktxm.SoThan;
+                txtChiSo.Text = ctktxm.ChiSo;
+                cmbTinhTrangChiSo.SelectedItem = ctktxm.TinhTrangChiSo;
+                cmbChiMatSo.SelectedItem = ctktxm.ChiMatSo;
+                cmbChiKhoaGoc.SelectedItem = ctktxm.ChiKhoaGoc;
+                txtMucDichSuDung.Text = ctktxm.MucDichSuDung;
+                txtDienThoai.Text = ctktxm.DienThoai;
+                txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
+                txtTheoYeuCau.Text = ctktxm.TheoYeuCau;
+                txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
+                if (ctktxm.TieuThuTrungBinh != null)
+                    txtTieuThuTrungBinh.Text = ctktxm.TieuThuTrungBinh.Value.ToString();
+                if (ctktxm.NoiDungBaoThay != null)
+                {
+                    cmbNoiDungBaoThay.SelectedText = ctktxm.NoiDungBaoThay;
+                    txtGhiChuNoiDungBaoThay.Text = ctktxm.GhiChuNoiDungBaoThay;
+                }
+                dgvBangGia.Rows.Clear();
+                foreach (KTXM_BangGia item in ctktxm.KTXM_BangGias.ToList())
+                {
+                    var index = dgvBangGia.Rows.Add();
+                    dgvBangGia.Rows[index].Cells["IDCTKTXM"].Value = item.IDCTKTXM;
+                    dgvBangGia.Rows[index].Cells["IDDonGia"].Value = item.IDDonGia;
+                    dgvBangGia.Rows[index].Cells["Namee"].Value = item.KTXM_DonGia.Name;
+                    dgvBangGia.Rows[index].Cells["SoTien"].Value = item.SoTien;
+                }
+                LoaddgvBangGia();
+                dgvHinh.Rows.Clear();
+                foreach (KTXM_ChiTiet_Hinh item in ctktxm.KTXM_ChiTiet_Hinhs.ToList())
+                {
+                    var index = dgvHinh.Rows.Add();
+                    dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
+                    dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
+                    dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
+                }
             }
-            dgvBangGia.Rows.Clear();
-            foreach (KTXM_BangGia item in ctktxm.KTXM_BangGias.ToList())
+            catch (Exception ex)
             {
-                var index = dgvBangGia.Rows.Add();
-                dgvBangGia.Rows[index].Cells["IDCTKTXM"].Value = item.IDCTKTXM;
-                dgvBangGia.Rows[index].Cells["IDDonGia"].Value = item.IDDonGia;
-                dgvBangGia.Rows[index].Cells["Namee"].Value = item.KTXM_DonGia.Name;
-                dgvBangGia.Rows[index].Cells["SoTien"].Value = item.SoTien;
-            }
-            LoaddgvBangGia();
-            dgvHinh.Rows.Clear();
-            foreach (KTXM_ChiTiet_Hinh item in ctktxm.KTXM_ChiTiet_Hinhs.ToList())
-            {
-                var index = dgvHinh.Rows.Add();
-                dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
-                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
-                dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -607,7 +614,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             }
                             if (_dontu_ChiTiet != null)
                             {
-                                if (_cDonTu.Them_LichSu(ctktxm.NgayKTXM.Value,"KTXM", "Đã Kiểm Tra, " + ctktxm.NoiDungKiemTra, (int)ctktxm.MaCTKTXM, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
+                                if (_cDonTu.Them_LichSu(ctktxm.NgayKTXM.Value, "KTXM", "Đã Kiểm Tra, " + ctktxm.NoiDungKiemTra, (int)ctktxm.MaCTKTXM, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
                                     scope.Complete();
                             }
                             else
@@ -994,7 +1001,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     {
                         if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                            if (CTaiKhoan.Admin == false && CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                                 if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
                                 {
                                     MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1123,7 +1130,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     {
                         if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                            if (CTaiKhoan.Admin == false && CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                                 if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
                                 {
                                     MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
