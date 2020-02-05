@@ -1655,8 +1655,8 @@ namespace ThuTien.GUI.TongHop
         {
             dsBaoCao ds = new dsBaoCao();
             DataTable dt = new DataTable();
-            if(chkTheoThang.Checked==true)
-             dt = _cHoaDon.getTongHopDangNgan_KeToan_TheoThang(dateTu_KeToan.Value, dateDen_KeToan.Value);
+            if (chkTheoThang.Checked == true)
+                dt = _cHoaDon.getTongHopDangNgan_KeToan_TheoThang(dateTu_KeToan.Value, dateDen_KeToan.Value);
             else
                 dt = _cHoaDon.getTongHopDangNgan_KeToan_TheoNgay(dateTu_KeToan.Value, dateDen_KeToan.Value);
 
@@ -1672,7 +1672,7 @@ namespace ThuTien.GUI.TongHop
                         dr["PhanKy"] = "của Kỳ " + dateDen_KeToan.Value.Month.ToString();
                         break;
                     case "Khác Kỳ":
-                        dr["PhanKy"] = "từ Kỳ 1 - " + (dateDen_KeToan.Value.Month - 1).ToString() ;
+                        dr["PhanKy"] = "từ Kỳ 1 - " + (dateDen_KeToan.Value.Month - 1).ToString();
                         break;
                     case "Khác Kỳ Năm":
                         dr["PhanKy"] = "của Kỳ 12 năm " + (dateDen_KeToan.Value.Year - 1).ToString() + " trở về trước";
@@ -1681,7 +1681,7 @@ namespace ThuTien.GUI.TongHop
                         break;
                 }
 
-                dr["Ngay"] =item["NgayGiaiTrach"];
+                dr["Ngay"] = item["NgayGiaiTrach"];
                 dr["STT"] = item["STT"];
                 dr["TongGiaBan"] = item["GiaBan"];
                 dr["TongThueGTGT"] = item["ThueGTGT"];
@@ -1862,6 +1862,11 @@ namespace ThuTien.GUI.TongHop
             oSheet.Cells[rowEnd + 4, 4] = dt.Compute("sum(ThueGTGT)", "");
             oSheet.Cells[rowEnd + 4, 5] = dt.Compute("sum(PhiBVMT)", "");
             oSheet.Cells[rowEnd + 4, 6] = dt.Compute("sum(TongCong)", "");
+        }
+
+        private void btnIn_KeToan_Chot2019_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

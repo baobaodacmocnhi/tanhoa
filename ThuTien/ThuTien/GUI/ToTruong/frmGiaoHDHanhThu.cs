@@ -75,11 +75,11 @@ namespace ThuTien.GUI.ToTruong
             int TongGiaBan = 0;
             int TongThueGTGT = 0;
             int TongPhiBVMT = 0;
-            int TongCong = 0;
+            long TongCong = 0;
             int TongHDTruoc = 0;
-            int TongCongTruoc = 0;
+            long TongCongTruoc = 0;
             int TongHDCuoi = 0;
-            int TongCongCuoi = 0;
+            long TongCongCuoi = 0;
             if (dgvHDTuGia.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
@@ -98,8 +98,8 @@ namespace ThuTien.GUI.ToTruong
                         TongPhiBVMT += int.Parse(item.Cells["TongPhiBVMT_TG"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCong_TG"].Value.ToString()))
                     {
-                        TongCong += int.Parse(item.Cells["TongCong_TG"].Value.ToString());
-                        TongCongCuoi += int.Parse(item.Cells["TongCong_TG"].Value.ToString());
+                        TongCong += long.Parse(item.Cells["TongCong_TG"].Value.ToString());
+                        TongCongCuoi += long.Parse(item.Cells["TongCong_TG"].Value.ToString());
                         item.Cells["TongCongCuoi_TG"].Value = item.Cells["TongCong_TG"].Value;
                     }
                     if (!string.IsNullOrEmpty(item.Cells["TongHDTruoc_TG"].Value.ToString()))
@@ -110,8 +110,8 @@ namespace ThuTien.GUI.ToTruong
                     }
                     if (!string.IsNullOrEmpty(item.Cells["TongCongTruoc_TG"].Value.ToString()))
                     {
-                        TongCongTruoc += int.Parse(item.Cells["TongCongTruoc_TG"].Value.ToString());
-                        TongCongCuoi += int.Parse(item.Cells["TongCongTruoc_TG"].Value.ToString());
+                        TongCongTruoc += long.Parse(item.Cells["TongCongTruoc_TG"].Value.ToString());
+                        TongCongCuoi += long.Parse(item.Cells["TongCongTruoc_TG"].Value.ToString());
                         item.Cells["TongCongCuoi_TG"].Value = int.Parse(item.Cells["TongCongCuoi_TG"].Value.ToString()) + int.Parse(item.Cells["TongCongTruoc_TG"].Value.ToString());
                     }
                 }

@@ -90,6 +90,8 @@
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TuNgay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DenNgay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,8 +108,6 @@
             this.DinhMuc_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMuc_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TuNgay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DenNgay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHopNo)).BeginInit();
             this.panel1.SuspendLayout();
@@ -165,6 +165,8 @@
             this.HoTen,
             this.DiaChi,
             this.Ky,
+            this.TuNgay,
+            this.DenNgay,
             this.SoHoaDon,
             this.GiaBieu,
             this.DinhMuc,
@@ -180,9 +182,7 @@
             this.TongCong,
             this.DinhMuc_Cu,
             this.DinhMuc_Moi,
-            this.TienDu,
-            this.TuNgay,
-            this.DenNgay});
+            this.TienDu});
             this.dgvHoaDon.Location = new System.Drawing.Point(0, 64);
             this.dgvHoaDon.Name = "dgvHoaDon";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -666,6 +666,20 @@
             this.Ky.Name = "Ky";
             this.Ky.Width = 50;
             // 
+            // TuNgay
+            // 
+            this.TuNgay.DataPropertyName = "TuNgay";
+            this.TuNgay.HeaderText = "Từ Ngày";
+            this.TuNgay.Name = "TuNgay";
+            this.TuNgay.Width = 80;
+            // 
+            // DenNgay
+            // 
+            this.DenNgay.DataPropertyName = "DenNgay";
+            this.DenNgay.HeaderText = "Đến Ngày";
+            this.DenNgay.Name = "DenNgay";
+            this.DenNgay.Width = 80;
+            // 
             // SoHoaDon
             // 
             this.SoHoaDon.DataPropertyName = "SoHoaDon";
@@ -776,20 +790,6 @@
             this.TienDu.HeaderText = "Tiền Dư";
             this.TienDu.Name = "TienDu";
             this.TienDu.Width = 70;
-            // 
-            // TuNgay
-            // 
-            this.TuNgay.DataPropertyName = "TuNgay";
-            this.TuNgay.HeaderText = "TuNgay";
-            this.TuNgay.Name = "TuNgay";
-            this.TuNgay.Visible = false;
-            // 
-            // DenNgay
-            // 
-            this.DenNgay.DataPropertyName = "DenNgay";
-            this.DenNgay.HeaderText = "DenNgay";
-            this.DenNgay.Name = "DenNgay";
-            this.DenNgay.Visible = false;
             // 
             // frmTongHopNo
             // 
@@ -907,6 +907,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TuNgay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DenNgay;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
@@ -923,7 +925,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc_Cu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc_Moi;
         private System.Windows.Forms.DataGridViewTextBoxColumn TienDu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TuNgay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DenNgay;
     }
 }

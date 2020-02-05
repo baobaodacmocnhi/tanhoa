@@ -41,15 +41,24 @@
             this.dateGiaiTrachTongHopDangNgan = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkTheoThang = new System.Windows.Forms.CheckBox();
             this.btnXuatExcel_KeToan = new System.Windows.Forms.Button();
             this.btnIn_KeToan = new System.Windows.Forms.Button();
             this.dateTu_KeToan = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.dateDen_KeToan = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.chkTheoThang = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chkTheoThang_Chot2019 = new System.Windows.Forms.CheckBox();
+            this.btnXuatExcel_KeToan_Chot2019 = new System.Windows.Forms.Button();
+            this.btnIn_KeToan_Chot2019 = new System.Windows.Forms.Button();
+            this.dateTu_KeToan_Chot2019 = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateDen_KeToan_Chot2019 = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -206,6 +215,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tổng Hợp Tiền Nước Thu Được gửi Kế Toán";
             // 
+            // chkTheoThang
+            // 
+            this.chkTheoThang.AutoSize = true;
+            this.chkTheoThang.Location = new System.Drawing.Point(504, 21);
+            this.chkTheoThang.Name = "chkTheoThang";
+            this.chkTheoThang.Size = new System.Drawing.Size(85, 17);
+            this.chkTheoThang.TabIndex = 35;
+            this.chkTheoThang.Text = "Theo Tháng";
+            this.chkTheoThang.UseVisualStyleBackColor = true;
+            // 
             // btnXuatExcel_KeToan
             // 
             this.btnXuatExcel_KeToan.Location = new System.Drawing.Point(423, 17);
@@ -262,21 +281,93 @@
             this.label5.TabIndex = 29;
             this.label5.Text = "Đến Ngày:";
             // 
-            // chkTheoThang
+            // groupBox3
             // 
-            this.chkTheoThang.AutoSize = true;
-            this.chkTheoThang.Location = new System.Drawing.Point(504, 21);
-            this.chkTheoThang.Name = "chkTheoThang";
-            this.chkTheoThang.Size = new System.Drawing.Size(85, 17);
-            this.chkTheoThang.TabIndex = 35;
-            this.chkTheoThang.Text = "Theo Tháng";
-            this.chkTheoThang.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.chkTheoThang_Chot2019);
+            this.groupBox3.Controls.Add(this.btnXuatExcel_KeToan_Chot2019);
+            this.groupBox3.Controls.Add(this.btnIn_KeToan_Chot2019);
+            this.groupBox3.Controls.Add(this.dateTu_KeToan_Chot2019);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.dateDen_KeToan_Chot2019);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Location = new System.Drawing.Point(12, 150);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(602, 49);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tổng Hợp Tiền Nước Thu Được gửi Kế Toán (chốt 2019)";
+            // 
+            // chkTheoThang_Chot2019
+            // 
+            this.chkTheoThang_Chot2019.AutoSize = true;
+            this.chkTheoThang_Chot2019.Location = new System.Drawing.Point(504, 21);
+            this.chkTheoThang_Chot2019.Name = "chkTheoThang_Chot2019";
+            this.chkTheoThang_Chot2019.Size = new System.Drawing.Size(85, 17);
+            this.chkTheoThang_Chot2019.TabIndex = 35;
+            this.chkTheoThang_Chot2019.Text = "Theo Tháng";
+            this.chkTheoThang_Chot2019.UseVisualStyleBackColor = true;
+            // 
+            // btnXuatExcel_KeToan_Chot2019
+            // 
+            this.btnXuatExcel_KeToan_Chot2019.Location = new System.Drawing.Point(423, 17);
+            this.btnXuatExcel_KeToan_Chot2019.Name = "btnXuatExcel_KeToan_Chot2019";
+            this.btnXuatExcel_KeToan_Chot2019.Size = new System.Drawing.Size(75, 23);
+            this.btnXuatExcel_KeToan_Chot2019.TabIndex = 34;
+            this.btnXuatExcel_KeToan_Chot2019.Text = "Xuất Excel";
+            this.btnXuatExcel_KeToan_Chot2019.UseVisualStyleBackColor = true;
+            // 
+            // btnIn_KeToan_Chot2019
+            // 
+            this.btnIn_KeToan_Chot2019.Location = new System.Drawing.Point(342, 17);
+            this.btnIn_KeToan_Chot2019.Name = "btnIn_KeToan_Chot2019";
+            this.btnIn_KeToan_Chot2019.Size = new System.Drawing.Size(75, 23);
+            this.btnIn_KeToan_Chot2019.TabIndex = 33;
+            this.btnIn_KeToan_Chot2019.Text = "In";
+            this.btnIn_KeToan_Chot2019.UseVisualStyleBackColor = true;
+            this.btnIn_KeToan_Chot2019.Click += new System.EventHandler(this.btnIn_KeToan_Chot2019_Click);
+            // 
+            // dateTu_KeToan_Chot2019
+            // 
+            this.dateTu_KeToan_Chot2019.CustomFormat = "dd/MM/yyyy";
+            this.dateTu_KeToan_Chot2019.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu_KeToan_Chot2019.Location = new System.Drawing.Point(66, 19);
+            this.dateTu_KeToan_Chot2019.Name = "dateTu_KeToan_Chot2019";
+            this.dateTu_KeToan_Chot2019.Size = new System.Drawing.Size(100, 20);
+            this.dateTu_KeToan_Chot2019.TabIndex = 32;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 13);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Từ Ngày:";
+            // 
+            // dateDen_KeToan_Chot2019
+            // 
+            this.dateDen_KeToan_Chot2019.CustomFormat = "dd/MM/yyyy";
+            this.dateDen_KeToan_Chot2019.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen_KeToan_Chot2019.Location = new System.Drawing.Point(236, 19);
+            this.dateDen_KeToan_Chot2019.Name = "dateDen_KeToan_Chot2019";
+            this.dateDen_KeToan_Chot2019.Size = new System.Drawing.Size(100, 20);
+            this.dateDen_KeToan_Chot2019.TabIndex = 30;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(172, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "Đến Ngày:";
             // 
             // frmBaoCaoTongHop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 404);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmBaoCaoTongHop";
@@ -286,6 +377,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -312,5 +405,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnXuatExcel_KeToan;
         private System.Windows.Forms.CheckBox chkTheoThang;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox chkTheoThang_Chot2019;
+        private System.Windows.Forms.Button btnXuatExcel_KeToan_Chot2019;
+        private System.Windows.Forms.Button btnIn_KeToan_Chot2019;
+        private System.Windows.Forms.DateTimePicker dateTu_KeToan_Chot2019;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dateDen_KeToan_Chot2019;
+        private System.Windows.Forms.Label label7;
     }
 }
