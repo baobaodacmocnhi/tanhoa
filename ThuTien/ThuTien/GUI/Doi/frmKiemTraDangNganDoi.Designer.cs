@@ -100,6 +100,7 @@
             this.txtTongCong_TC = new System.Windows.Forms.TextBox();
             this.txtTongHD_TC = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnXuatExcel = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -747,11 +748,22 @@
             this.label3.TabIndex = 21;
             this.label3.Text = "Double click để xem danh sách";
             // 
+            // btnXuatExcel
+            // 
+            this.btnXuatExcel.Location = new System.Drawing.Point(670, 9);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnXuatExcel.TabIndex = 22;
+            this.btnXuatExcel.Text = "Xuất Excel";
+            this.btnXuatExcel.UseVisualStyleBackColor = true;
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
+            // 
             // frmKiemTraDangNganDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1463, 681);
+            this.Controls.Add(this.btnXuatExcel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtTongGiaBan_TC);
             this.Controls.Add(this.dgvNhanVien_TC);
@@ -851,5 +863,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_TC;
         private System.Windows.Forms.DataGridViewTextBoxColumn FromNgayGiaiTrach;
         private System.Windows.Forms.DataGridViewTextBoxColumn ToNgayGiaiTrach;
+        private System.Windows.Forms.Button btnXuatExcel;
     }
 }

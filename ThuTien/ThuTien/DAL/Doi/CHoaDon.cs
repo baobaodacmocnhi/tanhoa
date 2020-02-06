@@ -6097,6 +6097,36 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public DataTable GetDSDangNgan(DateTime FromNgayGiaiTrach, DateTime ToNgayGiaiTrach)
+        {
+            var query = from item in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on item.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where item.NGAYGIAITRACH.Value.Date >= FromNgayGiaiTrach.Date && item.NGAYGIAITRACH.Value.Date <= ToNgayGiaiTrach.Date
+                        orderby item.MALOTRINH ascending
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.SOHOADON,
+                            Ky = item.KY + "/" + item.NAM,
+                            Ky2 = item.KY,
+                            Nam2 = item.NAM,
+                            MLT = item.MALOTRINH,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            HoTen = item.TENKH,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = item.GB,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSDangNgan(string Loai, int MaNV_DangNgan, DateTime NgayGiaiTrach)
         {
             if (Loai == "TG")
@@ -6169,24 +6199,24 @@ namespace ThuTien.DAL.Doi
 
         public DataTable getDSXoaDangNgan_HoaDonDienTu(int MaNV_DangNgan, DateTime NgayXoaDangNgan)
         {
-                        var query = from item in _db.HOADONs
-                                    where item.XoaDangNgan_Ngay_DienThoai.Value.Date == NgayXoaDangNgan.Date && item.MaNV_DangNgan == MaNV_DangNgan
-                                    orderby item.MALOTRINH ascending
-                                    select new
-                                    {
-                                        item.NGAYGIAITRACH,
-                                        item.SOHOADON,
-                                        Ky = item.KY + "/" + item.NAM,
-                                        MLT = item.MALOTRINH,
-                                        item.SOPHATHANH,
-                                        DanhBo = item.DANHBA,
-                                        item.TIEUTHU,
-                                        item.GIABAN,
-                                        ThueGTGT = item.THUE,
-                                        PhiBVMT = item.PHI,
-                                        item.TONGCONG,
-                                    };
-                        return LINQToDataTable(query);
+            var query = from item in _db.HOADONs
+                        where item.XoaDangNgan_Ngay_DienThoai.Value.Date == NgayXoaDangNgan.Date && item.MaNV_DangNgan == MaNV_DangNgan
+                        orderby item.MALOTRINH ascending
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.SOHOADON,
+                            Ky = item.KY + "/" + item.NAM,
+                            MLT = item.MALOTRINH,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDSDangNgan_To(string Loai, int MaTo, DateTime NgayGiaiTrach)

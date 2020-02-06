@@ -1866,7 +1866,66 @@ namespace ThuTien.GUI.TongHop
 
         private void btnIn_KeToan_Chot2019_Click(object sender, EventArgs e)
         {
+            if (dateTu_KeToan_Chot2019.Value.Year < 2020)
+            {
+                MessageBox.Show("Chạy từ 2020", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            dsBaoCao ds = new dsBaoCao();
+            DataTable dt = new DataTable();
+            dt = _cHoaDon.GetDSDangNgan(dateTu_KeToan_Chot2019.Value, dateDen_KeToan_Chot2019.Value);
+            foreach (DataRow item in dt.Rows)
+            {
+                if (int.Parse(item["Nam2"].ToString()) == 2019)
+                {
+                    DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
+                    dr["TuNgay"] = dateDen_KeToan.Value.Month.ToString("00");
+                    dr["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
+                    dr["PhanKy"] = "Năm 2019";
+                    if (chkTheoThang_Chot2019.Checked == true)
+                    {
+                        dr["Ngay"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("MMyyyy");
+                        dr["STT"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMM");
+                    }
+                    else
+                    {
+                        dr["Ngay"] = item["NgayGiaiTrach"];
+                        dr["STT"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd");
+                    }
+                    dr["TongGiaBan"] = item["GiaBan"];
+                    dr["TongThueGTGT"] = item["ThueGTGT"];
+                    dr["TongPhiBVMT"] = item["PhiBVMT"];
+                    dr["TongCong"] = item["TongCong"];
+                    ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+                }
+                if (int.Parse(item["Ky2"].ToString()) == dateTu_KeToan_Chot2019.Value.Month && int.Parse(item["Nam2"].ToString()) == 2020)
+                {
+                    DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
+                    dr["TuNgay"] = dateDen_KeToan.Value.Month.ToString("00");
+                    dr["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
+                    dr["PhanKy"] = "của Kỳ " + dateDen_KeToan_Chot2019.Value.Month.ToString();
+                    if (chkTheoThang_Chot2019.Checked == true)
+                    {
+                        dr["Ngay"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("MMyyyy");
+                        dr["STT"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMM");
+                    }
+                    else
+                    {
+                        dr["Ngay"] = item["NgayGiaiTrach"];
+                        dr["STT"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd");
+                    }
+                    dr["TongGiaBan"] = item["GiaBan"];
+                    dr["TongThueGTGT"] = item["ThueGTGT"];
+                    dr["TongPhiBVMT"] = item["PhiBVMT"];
+                    dr["TongCong"] = item["TongCong"];
+                    ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+                }
 
+            }
+            rptTongHopDangNgan_KeToan rpt = new rptTongHopDangNgan_KeToan();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
     }
 }
