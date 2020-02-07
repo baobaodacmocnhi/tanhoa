@@ -1881,7 +1881,7 @@ namespace ThuTien.GUI.TongHop
                     DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
                     dr["TuNgay"] = dateDen_KeToan.Value.Month.ToString("00");
                     dr["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
-                    dr["PhanKy"] = "Năm 2019";
+                    dr["PhanKy"] = "II. Số tiền nước thu được của năm 2019 chưa thu được (tồn thu)";
                     if (chkTheoThang_Chot2019.Checked == true)
                     {
                         dr["Ngay"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("MMyyyy");
@@ -1903,7 +1903,7 @@ namespace ThuTien.GUI.TongHop
                     DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
                     dr["TuNgay"] = dateDen_KeToan.Value.Month.ToString("00");
                     dr["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
-                    dr["PhanKy"] = "của Kỳ " + dateDen_KeToan_Chot2019.Value.Month.ToString();
+                    dr["PhanKy"] = "I. Số tiền nước thu được từ chuẩn thu 2 của Kỳ " + dateDen_KeToan_Chot2019.Value.Month.ToString() + " năm " + dateDen_KeToan_Chot2019.Value.Year.ToString();
                     if (chkTheoThang_Chot2019.Checked == true)
                     {
                         dr["Ngay"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("MMyyyy");
@@ -1922,7 +1922,7 @@ namespace ThuTien.GUI.TongHop
                 }
 
             }
-            rptTongHopDangNgan_KeToan rpt = new rptTongHopDangNgan_KeToan();
+            rptTongHopDangNgan_KeToan_Chot2019 rpt = new rptTongHopDangNgan_KeToan_Chot2019();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();

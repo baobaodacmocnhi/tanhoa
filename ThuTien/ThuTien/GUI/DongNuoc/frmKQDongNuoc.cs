@@ -467,9 +467,9 @@ namespace ThuTien.GUI.DongNuoc
 
                             if (_cDongNuoc.ThemKQ(kqdongnuoc))
                             {
-                                TT_KQDongNuoc_Hinh en = new TT_KQDongNuoc_Hinh();
-                                en.MaKQDN = kqdongnuoc.MaKQDN;
-                                _cDongNuoc.ThemKQ_Hinh(en);
+                                //TT_KQDongNuoc_Hinh en = new TT_KQDongNuoc_Hinh();
+                                //en.MaKQDN = kqdongnuoc.MaKQDN;
+                                //_cDongNuoc.ThemKQ_Hinh(en);
                                 Clear();
                                 btnXem.PerformClick();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1104,25 +1104,40 @@ namespace ThuTien.GUI.DongNuoc
 
         private void btnHinhDongNuoc_Click(object sender, EventArgs e)
         {
-            if (_kqdongnuoc != null && _kqdongnuoc.HinhDN != null)
+            //if (_kqdongnuoc != null && _kqdongnuoc.HinhDN != null)
+            //{
+            //    LoadImageView(_kqdongnuoc.HinhDN.ToArray());
+            //}
+            if (_kqdongnuoc != null)
             {
-                LoadImageView(_kqdongnuoc.HinhDN.ToArray());
+                frmHinhDongMoNuoc frm = new frmHinhDongMoNuoc("DongNuoc",_kqdongnuoc);
+                frm.Show();
             }
         }
 
         private void btnHinhMoNuoc_Click(object sender, EventArgs e)
         {
-            if (_kqdongnuoc != null && _kqdongnuoc.HinhMN != null)
+            //if (_kqdongnuoc != null && _kqdongnuoc.HinhMN != null)
+            //{
+            //    LoadImageView(_kqdongnuoc.HinhMN.ToArray());
+            //}
+            if (_kqdongnuoc != null)
             {
-                LoadImageView(_kqdongnuoc.HinhMN.ToArray());
+                frmHinhDongMoNuoc frm = new frmHinhDongMoNuoc("MoNuoc", _kqdongnuoc);
+                frm.Show();
             }
         }
 
         private void btnHinhDongNuoc2_Click(object sender, EventArgs e)
         {
-            if (_kqdongnuoc != null && _kqdongnuoc.HinhDN1 != null)
+            //if (_kqdongnuoc != null && _kqdongnuoc.HinhDN1 != null)
+            //{
+            //    LoadImageView(_kqdongnuoc.HinhDN1.ToArray());
+            //}
+            if (_kqdongnuoc != null)
             {
-                LoadImageView(_kqdongnuoc.HinhDN1.ToArray());
+                frmHinhDongMoNuoc frm = new frmHinhDongMoNuoc("DongNuoc2", _kqdongnuoc);
+                frm.Show();
             }
         }
 

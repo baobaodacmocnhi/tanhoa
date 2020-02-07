@@ -210,9 +210,6 @@ namespace ThuTien.LinQ
     partial void InsertTT_XacNhanThanhToan_ChiTiet(TT_XacNhanThanhToan_ChiTiet instance);
     partial void UpdateTT_XacNhanThanhToan_ChiTiet(TT_XacNhanThanhToan_ChiTiet instance);
     partial void DeleteTT_XacNhanThanhToan_ChiTiet(TT_XacNhanThanhToan_ChiTiet instance);
-    partial void InsertTT_KQDongNuoc_Hinh(TT_KQDongNuoc_Hinh instance);
-    partial void UpdateTT_KQDongNuoc_Hinh(TT_KQDongNuoc_Hinh instance);
-    partial void DeleteTT_KQDongNuoc_Hinh(TT_KQDongNuoc_Hinh instance);
     partial void InsertTT_TongHopNo(TT_TongHopNo instance);
     partial void UpdateTT_TongHopNo(TT_TongHopNo instance);
     partial void DeleteTT_TongHopNo(TT_TongHopNo instance);
@@ -231,6 +228,9 @@ namespace ThuTien.LinQ
     partial void InsertTT_HoaDonCu(TT_HoaDonCu instance);
     partial void UpdateTT_HoaDonCu(TT_HoaDonCu instance);
     partial void DeleteTT_HoaDonCu(TT_HoaDonCu instance);
+    partial void InsertTT_KQDongNuoc_Hinh(TT_KQDongNuoc_Hinh instance);
+    partial void UpdateTT_KQDongNuoc_Hinh(TT_KQDongNuoc_Hinh instance);
+    partial void DeleteTT_KQDongNuoc_Hinh(TT_KQDongNuoc_Hinh instance);
     #endregion
 		
 		public dbThuTienDataContext() : 
@@ -775,14 +775,6 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		public System.Data.Linq.Table<TT_KQDongNuoc_Hinh> TT_KQDongNuoc_Hinhs
-		{
-			get
-			{
-				return this.GetTable<TT_KQDongNuoc_Hinh>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TT_TongHopNo> TT_TongHopNos
 		{
 			get
@@ -828,6 +820,14 @@ namespace ThuTien.LinQ
 			get
 			{
 				return this.GetTable<TT_HoaDonCu>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TT_KQDongNuoc_Hinh> TT_KQDongNuoc_Hinhs
+		{
+			get
+			{
+				return this.GetTable<TT_KQDongNuoc_Hinh>();
 			}
 		}
 		
@@ -22124,277 +22124,6 @@ namespace ThuTien.LinQ
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_KQDongNuoc_Hinh")]
-	public partial class TT_KQDongNuoc_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaKQDN;
-		
-		private System.Data.Linq.Binary _HinhDN;
-		
-		private System.Data.Linq.Binary _HinhDN1;
-		
-		private System.Data.Linq.Binary _HinhMN;
-		
-		private System.Nullable<int> _CreateBy;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<int> _ModifyBy;
-		
-		private System.Nullable<System.DateTime> _ModifyDate;
-		
-		private EntityRef<TT_KQDongNuoc> _TT_KQDongNuoc;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaKQDNChanging(int value);
-    partial void OnMaKQDNChanged();
-    partial void OnHinhDNChanging(System.Data.Linq.Binary value);
-    partial void OnHinhDNChanged();
-    partial void OnHinhDN1Changing(System.Data.Linq.Binary value);
-    partial void OnHinhDN1Changed();
-    partial void OnHinhMNChanging(System.Data.Linq.Binary value);
-    partial void OnHinhMNChanged();
-    partial void OnCreateByChanging(System.Nullable<int> value);
-    partial void OnCreateByChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnModifyByChanging(System.Nullable<int> value);
-    partial void OnModifyByChanged();
-    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifyDateChanged();
-    #endregion
-		
-		public TT_KQDongNuoc_Hinh()
-		{
-			this._TT_KQDongNuoc = default(EntityRef<TT_KQDongNuoc>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKQDN", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaKQDN
-		{
-			get
-			{
-				return this._MaKQDN;
-			}
-			set
-			{
-				if ((this._MaKQDN != value))
-				{
-					if (this._TT_KQDongNuoc.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaKQDNChanging(value);
-					this.SendPropertyChanging();
-					this._MaKQDN = value;
-					this.SendPropertyChanged("MaKQDN");
-					this.OnMaKQDNChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhDN", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary HinhDN
-		{
-			get
-			{
-				return this._HinhDN;
-			}
-			set
-			{
-				if ((this._HinhDN != value))
-				{
-					this.OnHinhDNChanging(value);
-					this.SendPropertyChanging();
-					this._HinhDN = value;
-					this.SendPropertyChanged("HinhDN");
-					this.OnHinhDNChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhDN1", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary HinhDN1
-		{
-			get
-			{
-				return this._HinhDN1;
-			}
-			set
-			{
-				if ((this._HinhDN1 != value))
-				{
-					this.OnHinhDN1Changing(value);
-					this.SendPropertyChanging();
-					this._HinhDN1 = value;
-					this.SendPropertyChanged("HinhDN1");
-					this.OnHinhDN1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhMN", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary HinhMN
-		{
-			get
-			{
-				return this._HinhMN;
-			}
-			set
-			{
-				if ((this._HinhMN != value))
-				{
-					this.OnHinhMNChanging(value);
-					this.SendPropertyChanging();
-					this._HinhMN = value;
-					this.SendPropertyChanged("HinhMN");
-					this.OnHinhMNChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
-		public System.Nullable<int> CreateBy
-		{
-			get
-			{
-				return this._CreateBy;
-			}
-			set
-			{
-				if ((this._CreateBy != value))
-				{
-					this.OnCreateByChanging(value);
-					this.SendPropertyChanging();
-					this._CreateBy = value;
-					this.SendPropertyChanged("CreateBy");
-					this.OnCreateByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
-		public System.Nullable<int> ModifyBy
-		{
-			get
-			{
-				return this._ModifyBy;
-			}
-			set
-			{
-				if ((this._ModifyBy != value))
-				{
-					this.OnModifyByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyBy = value;
-					this.SendPropertyChanged("ModifyBy");
-					this.OnModifyByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifyDate
-		{
-			get
-			{
-				return this._ModifyDate;
-			}
-			set
-			{
-				if ((this._ModifyDate != value))
-				{
-					this.OnModifyDateChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyDate = value;
-					this.SendPropertyChanged("ModifyDate");
-					this.OnModifyDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TT_KQDongNuoc_TT_KQDongNuoc_Hinh", Storage="_TT_KQDongNuoc", ThisKey="MaKQDN", OtherKey="MaKQDN", IsForeignKey=true)]
-		public TT_KQDongNuoc TT_KQDongNuoc
-		{
-			get
-			{
-				return this._TT_KQDongNuoc.Entity;
-			}
-			set
-			{
-				TT_KQDongNuoc previousValue = this._TT_KQDongNuoc.Entity;
-				if (((previousValue != value) 
-							|| (this._TT_KQDongNuoc.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TT_KQDongNuoc.Entity = null;
-						previousValue.TT_KQDongNuoc_Hinh = null;
-					}
-					this._TT_KQDongNuoc.Entity = value;
-					if ((value != null))
-					{
-						value.TT_KQDongNuoc_Hinh = this;
-						this._MaKQDN = value.MaKQDN;
-					}
-					else
-					{
-						this._MaKQDN = default(int);
-					}
-					this.SendPropertyChanged("TT_KQDongNuoc");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_TongHopNo")]
 	public partial class TT_TongHopNo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -23744,7 +23473,7 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
-		private EntityRef<TT_KQDongNuoc_Hinh> _TT_KQDongNuoc_Hinh;
+		private EntitySet<TT_KQDongNuoc_Hinh> _TT_KQDongNuoc_Hinhs;
 		
 		private EntityRef<TT_DongNuoc> _TT_DongNuoc;
 		
@@ -23884,7 +23613,7 @@ namespace ThuTien.LinQ
 		
 		public TT_KQDongNuoc()
 		{
-			this._TT_KQDongNuoc_Hinh = default(EntityRef<TT_KQDongNuoc_Hinh>);
+			this._TT_KQDongNuoc_Hinhs = new EntitySet<TT_KQDongNuoc_Hinh>(new Action<TT_KQDongNuoc_Hinh>(this.attach_TT_KQDongNuoc_Hinhs), new Action<TT_KQDongNuoc_Hinh>(this.detach_TT_KQDongNuoc_Hinhs));
 			this._TT_DongNuoc = default(EntityRef<TT_DongNuoc>);
 			OnCreated();
 		}
@@ -25173,32 +24902,16 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TT_KQDongNuoc_TT_KQDongNuoc_Hinh", Storage="_TT_KQDongNuoc_Hinh", ThisKey="MaKQDN", OtherKey="MaKQDN", IsUnique=true, IsForeignKey=false)]
-		public TT_KQDongNuoc_Hinh TT_KQDongNuoc_Hinh
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TT_KQDongNuoc_TT_KQDongNuoc_Hinh", Storage="_TT_KQDongNuoc_Hinhs", ThisKey="MaKQDN", OtherKey="MaKQDN")]
+		public EntitySet<TT_KQDongNuoc_Hinh> TT_KQDongNuoc_Hinhs
 		{
 			get
 			{
-				return this._TT_KQDongNuoc_Hinh.Entity;
+				return this._TT_KQDongNuoc_Hinhs;
 			}
 			set
 			{
-				TT_KQDongNuoc_Hinh previousValue = this._TT_KQDongNuoc_Hinh.Entity;
-				if (((previousValue != value) 
-							|| (this._TT_KQDongNuoc_Hinh.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TT_KQDongNuoc_Hinh.Entity = null;
-						previousValue.TT_KQDongNuoc = null;
-					}
-					this._TT_KQDongNuoc_Hinh.Entity = value;
-					if ((value != null))
-					{
-						value.TT_KQDongNuoc = this;
-					}
-					this.SendPropertyChanged("TT_KQDongNuoc_Hinh");
-				}
+				this._TT_KQDongNuoc_Hinhs.Assign(value);
 			}
 		}
 		
@@ -25254,6 +24967,18 @@ namespace ThuTien.LinQ
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_TT_KQDongNuoc_Hinhs(TT_KQDongNuoc_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.TT_KQDongNuoc = this;
+		}
+		
+		private void detach_TT_KQDongNuoc_Hinhs(TT_KQDongNuoc_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.TT_KQDongNuoc = null;
 		}
 	}
 	
@@ -29676,6 +29401,397 @@ namespace ThuTien.LinQ
 					this._TBDongNuoc_NgayHen = value;
 					this.SendPropertyChanged("TBDongNuoc_NgayHen");
 					this.OnTBDongNuoc_NgayHenChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_KQDongNuoc_Hinh")]
+	public partial class TT_KQDongNuoc_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _MaKQDN;
+		
+		private bool _DongNuoc;
+		
+		private System.Data.Linq.Binary _HinhDN;
+		
+		private bool _DongNuoc2;
+		
+		private System.Data.Linq.Binary _HinhDN1;
+		
+		private bool _MoNuoc;
+		
+		private System.Data.Linq.Binary _HinhMN;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private EntityRef<TT_KQDongNuoc> _TT_KQDongNuoc;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnMaKQDNChanging(int value);
+    partial void OnMaKQDNChanged();
+    partial void OnDongNuocChanging(bool value);
+    partial void OnDongNuocChanged();
+    partial void OnHinhDNChanging(System.Data.Linq.Binary value);
+    partial void OnHinhDNChanged();
+    partial void OnDongNuoc2Changing(bool value);
+    partial void OnDongNuoc2Changed();
+    partial void OnHinhDN1Changing(System.Data.Linq.Binary value);
+    partial void OnHinhDN1Changed();
+    partial void OnMoNuocChanging(bool value);
+    partial void OnMoNuocChanged();
+    partial void OnHinhMNChanging(System.Data.Linq.Binary value);
+    partial void OnHinhMNChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    #endregion
+		
+		public TT_KQDongNuoc_Hinh()
+		{
+			this._TT_KQDongNuoc = default(EntityRef<TT_KQDongNuoc>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKQDN", DbType="Int NOT NULL")]
+		public int MaKQDN
+		{
+			get
+			{
+				return this._MaKQDN;
+			}
+			set
+			{
+				if ((this._MaKQDN != value))
+				{
+					if (this._TT_KQDongNuoc.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaKQDNChanging(value);
+					this.SendPropertyChanging();
+					this._MaKQDN = value;
+					this.SendPropertyChanged("MaKQDN");
+					this.OnMaKQDNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DongNuoc", DbType="Bit NOT NULL")]
+		public bool DongNuoc
+		{
+			get
+			{
+				return this._DongNuoc;
+			}
+			set
+			{
+				if ((this._DongNuoc != value))
+				{
+					this.OnDongNuocChanging(value);
+					this.SendPropertyChanging();
+					this._DongNuoc = value;
+					this.SendPropertyChanged("DongNuoc");
+					this.OnDongNuocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhDN", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary HinhDN
+		{
+			get
+			{
+				return this._HinhDN;
+			}
+			set
+			{
+				if ((this._HinhDN != value))
+				{
+					this.OnHinhDNChanging(value);
+					this.SendPropertyChanging();
+					this._HinhDN = value;
+					this.SendPropertyChanged("HinhDN");
+					this.OnHinhDNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DongNuoc2", DbType="Bit NOT NULL")]
+		public bool DongNuoc2
+		{
+			get
+			{
+				return this._DongNuoc2;
+			}
+			set
+			{
+				if ((this._DongNuoc2 != value))
+				{
+					this.OnDongNuoc2Changing(value);
+					this.SendPropertyChanging();
+					this._DongNuoc2 = value;
+					this.SendPropertyChanged("DongNuoc2");
+					this.OnDongNuoc2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhDN1", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary HinhDN1
+		{
+			get
+			{
+				return this._HinhDN1;
+			}
+			set
+			{
+				if ((this._HinhDN1 != value))
+				{
+					this.OnHinhDN1Changing(value);
+					this.SendPropertyChanging();
+					this._HinhDN1 = value;
+					this.SendPropertyChanged("HinhDN1");
+					this.OnHinhDN1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoNuoc", DbType="Bit NOT NULL")]
+		public bool MoNuoc
+		{
+			get
+			{
+				return this._MoNuoc;
+			}
+			set
+			{
+				if ((this._MoNuoc != value))
+				{
+					this.OnMoNuocChanging(value);
+					this.SendPropertyChanging();
+					this._MoNuoc = value;
+					this.SendPropertyChanged("MoNuoc");
+					this.OnMoNuocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhMN", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary HinhMN
+		{
+			get
+			{
+				return this._HinhMN;
+			}
+			set
+			{
+				if ((this._HinhMN != value))
+				{
+					this.OnHinhMNChanging(value);
+					this.SendPropertyChanging();
+					this._HinhMN = value;
+					this.SendPropertyChanged("HinhMN");
+					this.OnHinhMNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TT_KQDongNuoc_TT_KQDongNuoc_Hinh", Storage="_TT_KQDongNuoc", ThisKey="MaKQDN", OtherKey="MaKQDN", IsForeignKey=true)]
+		public TT_KQDongNuoc TT_KQDongNuoc
+		{
+			get
+			{
+				return this._TT_KQDongNuoc.Entity;
+			}
+			set
+			{
+				TT_KQDongNuoc previousValue = this._TT_KQDongNuoc.Entity;
+				if (((previousValue != value) 
+							|| (this._TT_KQDongNuoc.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TT_KQDongNuoc.Entity = null;
+						previousValue.TT_KQDongNuoc_Hinhs.Remove(this);
+					}
+					this._TT_KQDongNuoc.Entity = value;
+					if ((value != null))
+					{
+						value.TT_KQDongNuoc_Hinhs.Add(this);
+						this._MaKQDN = value.MaKQDN;
+					}
+					else
+					{
+						this._MaKQDN = default(int);
+					}
+					this.SendPropertyChanged("TT_KQDongNuoc");
 				}
 			}
 		}

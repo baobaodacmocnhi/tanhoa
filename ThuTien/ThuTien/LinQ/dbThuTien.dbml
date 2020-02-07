@@ -1035,19 +1035,6 @@
       <Association Name="TT_XacNhanThanhToan_TT_XacNhanThanhToan_ChiTiet" Member="TT_XacNhanThanhToan" ThisKey="ID" OtherKey="ID" Type="TT_XacNhanThanhToan" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TT_KQDongNuoc_Hinh" Member="TT_KQDongNuoc_Hinhs">
-    <Type Name="TT_KQDongNuoc_Hinh">
-      <Column Name="MaKQDN" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="HinhDN" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="HinhDN1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="HinhMN" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="TT_KQDongNuoc_TT_KQDongNuoc_Hinh" Member="TT_KQDongNuoc" ThisKey="MaKQDN" OtherKey="MaKQDN" Type="TT_KQDongNuoc" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.TT_TongHopNo" Member="TT_TongHopNos">
     <Type Name="TT_TongHopNo">
       <Column Name="MaTHN" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1171,7 +1158,7 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TT_KQDongNuoc_TT_KQDongNuoc_Hinh" Member="TT_KQDongNuoc_Hinh" ThisKey="MaKQDN" OtherKey="MaKQDN" Type="TT_KQDongNuoc_Hinh" Cardinality="One" />
+      <Association Name="TT_KQDongNuoc_TT_KQDongNuoc_Hinh" Member="TT_KQDongNuoc_Hinhs" ThisKey="MaKQDN" OtherKey="MaKQDN" Type="TT_KQDongNuoc_Hinh" />
       <Association Name="TT_DongNuoc_TT_KQDongNuoc" Member="TT_DongNuoc" ThisKey="MaDN" OtherKey="MaDN" Type="TT_DongNuoc" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1363,6 +1350,24 @@
       <Column Name="InPhieuBao2_NgayHen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="TBDongNuoc_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="TBDongNuoc_NgayHen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_KQDongNuoc_Hinh" Member="TT_KQDongNuoc_Hinhs">
+    <Type Name="TT_KQDongNuoc_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaKQDN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DongNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HinhDN" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DongNuoc2" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HinhDN1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MoNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HinhMN" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TT_KQDongNuoc_TT_KQDongNuoc_Hinh" Member="TT_KQDongNuoc" ThisKey="MaKQDN" OtherKey="MaKQDN" Type="TT_KQDongNuoc" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">

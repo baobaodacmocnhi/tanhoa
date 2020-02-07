@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1186</ApplicationRevision>
+    <ApplicationRevision>1188</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -324,6 +324,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptPhieuBaoGiaoTon.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\TongHop\rptTongHopDangNgan_KeToan_Chot2019.cs">
+      <DependentUpon>rptTongHopDangNgan_KeToan_Chot2019.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BaoCao\TongHop\rptTongHopDangNgan_KeToan.cs">
       <DependentUpon>rptTongHopDangNgan_KeToan.rpt</DependentUpon>
@@ -871,6 +877,12 @@
     <Compile Include="GUI\Doi\frmXemTBDongNuoc.Designer.cs">
       <DependentUpon>frmXemTBDongNuoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DongNuoc\frmHinhDongMoNuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DongNuoc\frmHinhDongMoNuoc.Designer.cs">
+      <DependentUpon>frmHinhDongMoNuoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DongNuoc\frmPhoiHop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1374,6 +1386,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuBaoGiaoTon.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\TongHop\rptTongHopDangNgan_KeToan_Chot2019.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTongHopDangNgan_KeToan_Chot2019.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\TongHop\rptTongHopDangNgan_KeToan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTongHopDangNgan_KeToan.cs</LastGenOutput>
@@ -1696,6 +1712,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmXemTBDongNuoc.resx">
       <DependentUpon>frmXemTBDongNuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DongNuoc\frmHinhDongMoNuoc.resx">
+      <DependentUpon>frmHinhDongMoNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DongNuoc\frmPhoiHop.resx">
       <DependentUpon>frmPhoiHop.cs</DependentUpon>

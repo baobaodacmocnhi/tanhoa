@@ -146,9 +146,28 @@ namespace ThuTien.DAL.DongNuoc
         {
             try
             {
+                if (_db.TT_KQDongNuoc_Hinhs.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = _db.TT_KQDongNuoc_Hinhs.Max(item => item.ID) + 1;
                 en.CreateDate = DateTime.Now;
                 en.CreateBy = CNguoiDung.MaND;
                 _db.TT_KQDongNuoc_Hinhs.InsertOnSubmit(en);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool XoaKQ_Hinh(TT_KQDongNuoc_Hinh en)
+        {
+            try
+            {
+                _db.TT_KQDongNuoc_Hinhs.DeleteOnSubmit(en);
                 _db.SubmitChanges();
                 return true;
             }
@@ -207,7 +226,7 @@ namespace ThuTien.DAL.DongNuoc
         {
             try
             {
-                _db.TT_KQDongNuoc_Hinhs.DeleteOnSubmit(kqdongnuoc.TT_KQDongNuoc_Hinh);
+                _db.TT_KQDongNuoc_Hinhs.DeleteAllOnSubmit(kqdongnuoc.TT_KQDongNuoc_Hinhs);
                 _db.TT_KQDongNuocs.DeleteOnSubmit(kqdongnuoc);
                 _db.SubmitChanges();
                 return true;
@@ -1509,5 +1528,11 @@ namespace ThuTien.DAL.DongNuoc
 
         //                  };
         //}
+
+        //table hình đóng mở nước
+        public TT_KQDongNuoc_Hinh getHinh(int ID)
+        {
+            return _db.TT_KQDongNuoc_Hinhs.SingleOrDefault(item => item.ID == ID);
+        }
     }
 }
