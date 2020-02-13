@@ -114,12 +114,6 @@
         <elementListCompartment Id="3137f1e7-b64f-4692-bd1a-2774706dbc1a" absoluteBounds="20.14, 3.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="2e056f6c-fb83-4d28-aaf8-f08a4ec40fa3" absoluteBounds="3.375, 16.875, 2, 1.0016910807291668">
-      <DataClassMoniker Name="/dbThuTienDataContext/TT_CacLoaiPhi" />
-      <nestedChildShapes>
-        <elementListCompartment Id="72a3e9a8-92bd-4d4e-a74f-5befc450890c" absoluteBounds="3.3899999999999997, 17.335, 1.9700000000000002, 0.44169108072916669" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="e2100b32-d3f9-476e-bfa1-e518de7703af" absoluteBounds="4.125, 0.75, 2, 8.3091455078125">
       <DataClassMoniker Name="/dbThuTienDataContext/TT_CTChamCong" />
       <nestedChildShapes>
@@ -554,12 +548,18 @@
         <elementListCompartment Id="173be24d-9e72-442b-8cd6-2b5a92976822" absoluteBounds="8.015, 19.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(7.625 : 21.0296541341146); (8 : 21.0296541341146)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.625 : 21.0296541341146); (8 : 21.0296541341146)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbThuTienDataContext/TT_KQDongNuoc/TT_KQDongNuoc_TT_KQDongNuoc_Hinh" />
       <nodes>
         <classShapeMoniker Id="574e5fa9-d7d6-456a-bc18-ed3a1ac265f4" />
         <classShapeMoniker Id="6e68fe86-d897-4f68-9ec6-10c4616e0155" />
       </nodes>
     </associationConnector>
+    <classShape Id="4a22a7d0-2384-4751-8a11-05a514973edf" absoluteBounds="3.125, 16.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/dbThuTienDataContext/TT_CacLoaiPhi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="113cd8c1-47bf-4be8-9574-17256518b160" absoluteBounds="3.14, 16.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

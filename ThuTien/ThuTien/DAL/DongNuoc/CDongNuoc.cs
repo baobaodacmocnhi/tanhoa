@@ -1478,7 +1478,7 @@ namespace ThuTien.DAL.DongNuoc
 
         public int GetPhiMoNuoc(int CoDHN)
         {
-            return _db.TT_CacLoaiPhis.SingleOrDefault(item => item.PhiMoNuoc.Value.ToString().Contains(CoDHN.ToString())).PhiMoNuoc.Value;
+            return _db.TT_CacLoaiPhis.SingleOrDefault(item => item.CoDHN.Contains(CoDHN.ToString())).PhiMoNuoc.Value;
         }
 
         public decimal GetNextSoPhieuDN()

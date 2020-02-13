@@ -34,6 +34,7 @@
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hinh = new System.Windows.Forms.DataGridViewImageColumn();
             this.Bytes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHinh)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,11 +97,21 @@
             this.Bytes.Name = "Bytes";
             this.Bytes.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(174, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(133, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "(Double-click để xem hình)";
+            // 
             // frmHinhDongMoNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(290, 555);
+            this.ClientSize = new System.Drawing.Size(318, 555);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvHinh);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnThem);
@@ -109,6 +120,7 @@
             this.Load += new System.EventHandler(this.frmHinhDongMoNuoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHinh)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -120,5 +132,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewImageColumn Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes;
+        private System.Windows.Forms.Label label1;
     }
 }

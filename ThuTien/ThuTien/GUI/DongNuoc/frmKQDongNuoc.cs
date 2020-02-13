@@ -136,8 +136,7 @@ namespace ThuTien.GUI.DongNuoc
                     txtChiSoDN2.Text = entity.ChiSoDN.Value.ToString();
                 if (entity.NiemChi != null)
                     txtNiemChi2.Text = entity.NiemChi.Value.ToString();
-
-                dateDongNuoc1.Value = entity.NgayDN1.Value;
+                                dateDongNuoc1.Value = entity.NgayDN1.Value;
                 if (entity.ChiSoDN1 != null)
                     txtChiSoDN1.Text = entity.ChiSoDN1.Value.ToString();
                 if (entity.NiemChi1 != null)
@@ -435,8 +434,7 @@ namespace ThuTien.GUI.DongNuoc
                                         MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
-                                    kqdongnuoc.NiemChi = int.Parse(txtNiemChi.Text.Trim());
-                                    _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
+                                    
                                 }
                             }
                             kqdongnuoc.Hieu = txtHieu.Text.Trim();
@@ -470,6 +468,9 @@ namespace ThuTien.GUI.DongNuoc
                                 //TT_KQDongNuoc_Hinh en = new TT_KQDongNuoc_Hinh();
                                 //en.MaKQDN = kqdongnuoc.MaKQDN;
                                 //_cDongNuoc.ThemKQ_Hinh(en);
+                                kqdongnuoc.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                                _cDongNuoc.SubmitChanges();
+                                _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                                 Clear();
                                 btnXem.PerformClick();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

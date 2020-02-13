@@ -231,6 +231,9 @@ namespace ThuTien.LinQ
     partial void InsertTT_KQDongNuoc_Hinh(TT_KQDongNuoc_Hinh instance);
     partial void UpdateTT_KQDongNuoc_Hinh(TT_KQDongNuoc_Hinh instance);
     partial void DeleteTT_KQDongNuoc_Hinh(TT_KQDongNuoc_Hinh instance);
+    partial void InsertTT_CacLoaiPhi(TT_CacLoaiPhi instance);
+    partial void UpdateTT_CacLoaiPhi(TT_CacLoaiPhi instance);
+    partial void DeleteTT_CacLoaiPhi(TT_CacLoaiPhi instance);
     #endregion
 		
 		public dbThuTienDataContext() : 
@@ -372,14 +375,6 @@ namespace ThuTien.LinQ
 			get
 			{
 				return this.GetTable<TT_DuLieuKhachHang_DanhBo>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TT_CacLoaiPhi> TT_CacLoaiPhis
-		{
-			get
-			{
-				return this.GetTable<TT_CacLoaiPhi>();
 			}
 		}
 		
@@ -828,6 +823,14 @@ namespace ThuTien.LinQ
 			get
 			{
 				return this.GetTable<TT_KQDongNuoc_Hinh>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TT_CacLoaiPhi> TT_CacLoaiPhis
+		{
+			get
+			{
+				return this.GetTable<TT_CacLoaiPhi>();
 			}
 		}
 		
@@ -5401,33 +5404,6 @@ namespace ThuTien.LinQ
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_CacLoaiPhi")]
-	public partial class TT_CacLoaiPhi
-	{
-		
-		private System.Nullable<int> _PhiMoNuoc;
-		
-		public TT_CacLoaiPhi()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiMoNuoc", DbType="Int")]
-		public System.Nullable<int> PhiMoNuoc
-		{
-			get
-			{
-				return this._PhiMoNuoc;
-			}
-			set
-			{
-				if ((this._PhiMoNuoc != value))
-				{
-					this._PhiMoNuoc = value;
-				}
 			}
 		}
 	}
@@ -29792,6 +29768,116 @@ namespace ThuTien.LinQ
 						this._MaKQDN = default(int);
 					}
 					this.SendPropertyChanged("TT_KQDongNuoc");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_CacLoaiPhi")]
+	public partial class TT_CacLoaiPhi : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _CoDHN;
+		
+		private System.Nullable<int> _PhiMoNuoc;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnCoDHNChanging(string value);
+    partial void OnCoDHNChanged();
+    partial void OnPhiMoNuocChanging(System.Nullable<int> value);
+    partial void OnPhiMoNuocChanged();
+    #endregion
+		
+		public TT_CacLoaiPhi()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CoDHN", DbType="VarChar(50)")]
+		public string CoDHN
+		{
+			get
+			{
+				return this._CoDHN;
+			}
+			set
+			{
+				if ((this._CoDHN != value))
+				{
+					this.OnCoDHNChanging(value);
+					this.SendPropertyChanging();
+					this._CoDHN = value;
+					this.SendPropertyChanged("CoDHN");
+					this.OnCoDHNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiMoNuoc", DbType="Int")]
+		public System.Nullable<int> PhiMoNuoc
+		{
+			get
+			{
+				return this._PhiMoNuoc;
+			}
+			set
+			{
+				if ((this._PhiMoNuoc != value))
+				{
+					this.OnPhiMoNuocChanging(value);
+					this.SendPropertyChanging();
+					this._PhiMoNuoc = value;
+					this.SendPropertyChanged("PhiMoNuoc");
+					this.OnPhiMoNuocChanged();
 				}
 			}
 		}
