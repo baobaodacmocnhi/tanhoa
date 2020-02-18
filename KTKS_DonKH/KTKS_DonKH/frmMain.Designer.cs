@@ -128,6 +128,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mnuInBienBan = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -780,7 +781,8 @@
             // 
             this.mnuThuMoi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuThaoThuMoi,
-            this.mnuDSThuMoi});
+            this.mnuDSThuMoi,
+            this.mnuInBienBan});
             this.mnuThuMoi.Name = "mnuThuMoi";
             this.mnuThuMoi.Size = new System.Drawing.Size(68, 20);
             this.mnuThuMoi.Text = "Thư Mời";
@@ -933,6 +935,13 @@
             this.StripStatus_HoTen.Size = new System.Drawing.Size(205, 17);
             this.StripStatus_HoTen.Text = "                                                 Xin Chào:";
             // 
+            // mnuInBienBan
+            // 
+            this.mnuInBienBan.Name = "mnuInBienBan";
+            this.mnuInBienBan.Size = new System.Drawing.Size(168, 22);
+            this.mnuInBienBan.Text = "In Biên Bản";
+            this.mnuInBienBan.Click += new System.EventHandler(this.mnuInBienBan_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1061,5 +1070,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuNhomDon;
         private System.Windows.Forms.ToolStripMenuItem mnuHoNgheo;
         private System.Windows.Forms.ToolStripMenuItem mnuGuiTinNhanZalo;
+        private System.Windows.Forms.ToolStripMenuItem mnuInBienBan;
     }
 }

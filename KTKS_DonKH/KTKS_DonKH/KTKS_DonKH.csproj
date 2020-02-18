@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1301</ApplicationRevision>
+    <ApplicationRevision>1302</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -476,6 +476,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="BaoCao\ThuMoi\rptBBBanGiaoNapHopBV.cs">
+      <DependentUpon>rptBBBanGiaoNapHopBV.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\ThuMoi\rptThuMoiChuyenDe_Rong.cs">
       <DependentUpon>rptThuMoiChuyenDe_Rong.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -616,6 +622,7 @@
     </Compile>
     <Compile Include="BaoCao\DataSetBaoCao.cs">
       <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\DataSetBaoCao.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -782,6 +789,7 @@
     <Compile Include="DAL\PhongKhachHang\CCongVanDi_PKH.cs" />
     <Compile Include="DAL\PhongKhachHang\CGuiTinNhanZalo.cs" />
     <Compile Include="DAL\PhongKhachHang\CTraHopDong.cs" />
+    <Compile Include="DAL\ThuMoi\CInBienBan.cs" />
     <Compile Include="DAL\ThuMoi\CThuMoi.cs" />
     <Compile Include="DAL\ThuTraLoi\CToTrinh_VeViec.cs" />
     <Compile Include="DAL\ThuTraLoi\CToTrinh.cs" />
@@ -1008,6 +1016,12 @@
     </Compile>
     <Compile Include="GUI\PhongKhachHang\frmGuiTinNhanZalo.Designer.cs">
       <DependentUpon>frmGuiTinNhanZalo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThuMoi\frmInBienBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThuMoi\frmInBienBan.Designer.cs">
+      <DependentUpon>frmInBienBan.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThuTraLoi\frmToTrinhVeViec.cs">
       <SubType>Form</SubType>
@@ -1411,6 +1425,11 @@
     <Compile Include="GUI\TruyThu\frmTruyThuTienNuoc.Designer.cs">
       <DependentUpon>frmTruyThuTienNuoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="LinQ\dbDHN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbDHN.dbml</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\dbGanMoi.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1425,11 +1444,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dbThuTien.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="LinQ\dbDHN.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbDHN.dbml</DependentUpon>
     </Compile>
     <Compile Include="LinQ\dbKinhDoanh.designer.cs">
       <AutoGen>True</AutoGen>
@@ -1457,6 +1471,11 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="LinQ\dbDHN.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbDHN.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="LinQ\dbGanMoi.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbGanMoi.designer.cs</LastGenOutput>
@@ -1473,11 +1492,6 @@
     <None Include="LinQ\dbThuTien.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbThuTien.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="LinQ\dbDHN.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbDHN.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="LinQ\dbKinhDoanh.dbml.layout">
@@ -1706,6 +1720,10 @@
     <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptKTXMcoTruyThu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptKTXMcoTruyThu.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ThuMoi\rptBBBanGiaoNapHopBV.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBBBanGiaoNapHopBV.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ThuMoi\rptThuMoiChuyenDe_Rong.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1984,6 +2002,9 @@
     <EmbeddedResource Include="GUI\PhongKhachHang\frmGuiTinNhanZalo.resx">
       <DependentUpon>frmGuiTinNhanZalo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThuMoi\frmInBienBan.resx">
+      <DependentUpon>frmInBienBan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThuTraLoi\frmToTrinhVeViec.resx">
       <DependentUpon>frmToTrinhVeViec.cs</DependentUpon>
     </EmbeddedResource>
@@ -2128,9 +2149,6 @@
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmDSKTXM.resx">
       <DependentUpon>frmDSKTXM.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="LinQ\dbDHN.dbml.layout">
-      <DependentUpon>dbDHN.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmKTXM.resx">
       <DependentUpon>frmKTXM.cs</DependentUpon>
     </EmbeddedResource>
@@ -2196,6 +2214,9 @@
     </EmbeddedResource>
     <None Include="LinQ\dbTrungTamKhachHang.dbml.layout">
       <DependentUpon>dbTrungTamKhachHang.dbml</DependentUpon>
+    </None>
+    <None Include="LinQ\dbDHN.dbml.layout">
+      <DependentUpon>dbDHN.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

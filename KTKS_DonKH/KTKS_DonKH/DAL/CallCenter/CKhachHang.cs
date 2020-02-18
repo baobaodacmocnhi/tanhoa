@@ -179,17 +179,17 @@ namespace KTKS_DonKH.DAL.CallCenter
             return false;
         }
 
-        public static HOSOGOC findByHoSoGoc(string danhbo)
+        public static HOSOPDF findByHoSoGoc(string danhbo)
         {
-            try
-            {
-                var query = from q in db.HOSOGOCs where q.DBDongHoNuoc == danhbo orderby q.NgayCapNhat descending select q;
-                return query.First();
-            }
-            catch (Exception)
-            {
+            //try
+            //{
+            //    var query = from q in db.HOSOGOCs where q.DBDongHoNuoc == danhbo orderby q.NgayCapNhat descending select q;
+            //    return query.First();
+            //}
+            //catch (Exception)
+            //{
 
-            }
+            //}
             return null;
         }
 
