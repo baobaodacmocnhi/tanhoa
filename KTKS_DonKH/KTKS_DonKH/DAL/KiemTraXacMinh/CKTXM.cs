@@ -1152,6 +1152,15 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         #region Đơn Giá
 
+        public KTXM_DonGia get_DonGia(int ID)
+        {
+            return db.KTXM_DonGias.SingleOrDefault(item => item.ID == ID );
+        }
+
+        #endregion
+
+        #region Bảng Giá
+
         public bool Them_BangGia(KTXM_BangGia en)
         {
             try

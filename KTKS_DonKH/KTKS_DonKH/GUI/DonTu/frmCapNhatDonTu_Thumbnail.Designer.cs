@@ -47,6 +47,7 @@
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkHoanThanh = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDonTu)).BeginInit();
             this.SuspendLayout();
@@ -228,12 +229,23 @@
             this.CreateBy.ReadOnly = true;
             this.CreateBy.Width = 120;
             // 
+            // chkHoanThanh
+            // 
+            this.chkHoanThanh.AutoSize = true;
+            this.chkHoanThanh.Location = new System.Drawing.Point(560, 14);
+            this.chkHoanThanh.Name = "chkHoanThanh";
+            this.chkHoanThanh.Size = new System.Drawing.Size(101, 20);
+            this.chkHoanThanh.TabIndex = 94;
+            this.chkHoanThanh.Text = "Hoàn Thành";
+            this.chkHoanThanh.UseVisualStyleBackColor = true;
+            // 
             // frmCapNhatDonTu_Thumbnail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1070, 268);
+            this.Controls.Add(this.chkHoanThanh);
             this.Controls.Add(this.dgvLichSuDonTu);
             this.Controls.Add(this.chkcmbNoiNhan);
             this.Controls.Add(this.btnCapNhat);
@@ -280,5 +292,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn KTXM;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
+        private System.Windows.Forms.CheckBox chkHoanThanh;
     }
 }

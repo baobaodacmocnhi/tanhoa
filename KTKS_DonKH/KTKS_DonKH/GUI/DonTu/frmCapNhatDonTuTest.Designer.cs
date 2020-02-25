@@ -134,6 +134,7 @@
             this.txtNoiDungKhachHang = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.txtPhongBanDoi = new System.Windows.Forms.TextBox();
+            this.chkHoanThanh = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.tabTTKH.SuspendLayout();
             this.tabCongVan.SuspendLayout();
@@ -1140,6 +1141,16 @@
             this.txtPhongBanDoi.Size = new System.Drawing.Size(100, 22);
             this.txtPhongBanDoi.TabIndex = 92;
             // 
+            // chkHoanThanh
+            // 
+            this.chkHoanThanh.AutoSize = true;
+            this.chkHoanThanh.Location = new System.Drawing.Point(726, 346);
+            this.chkHoanThanh.Name = "chkHoanThanh";
+            this.chkHoanThanh.Size = new System.Drawing.Size(101, 20);
+            this.chkHoanThanh.TabIndex = 93;
+            this.chkHoanThanh.Text = "Hoàn Thành";
+            this.chkHoanThanh.UseVisualStyleBackColor = true;
+            // 
             // frmCapNhatDonTuTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1147,6 +1158,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1457, 617);
+            this.Controls.Add(this.chkHoanThanh);
             this.Controls.Add(this.txtPhongBanDoi);
             this.Controls.Add(this.txtNoiDungKhachHang);
             this.Controls.Add(this.label25);
@@ -1323,6 +1335,7 @@
         private System.Windows.Forms.TextBox txtDinhMucHN;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox txtPhongBanDoi;
+        private System.Windows.Forms.CheckBox chkHoanThanh;
 
     }
 }

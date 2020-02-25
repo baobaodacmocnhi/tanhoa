@@ -121,6 +121,7 @@
             this.dateFromNgayChuyen = new System.Windows.Forms.DateTimePicker();
             this.txtNguoiLap = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
+            this.chkHoanThanh = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.tabTTKH.SuspendLayout();
             this.tabCongVan.SuspendLayout();
@@ -970,6 +971,16 @@
             this.label24.TabIndex = 75;
             this.label24.Text = "Người lập";
             // 
+            // chkHoanThanh
+            // 
+            this.chkHoanThanh.AutoSize = true;
+            this.chkHoanThanh.Location = new System.Drawing.Point(725, 340);
+            this.chkHoanThanh.Name = "chkHoanThanh";
+            this.chkHoanThanh.Size = new System.Drawing.Size(101, 20);
+            this.chkHoanThanh.TabIndex = 77;
+            this.chkHoanThanh.Text = "Hoàn Thành";
+            this.chkHoanThanh.UseVisualStyleBackColor = true;
+            // 
             // frmCapNhatDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -977,6 +988,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1457, 628);
+            this.Controls.Add(this.chkHoanThanh);
             this.Controls.Add(this.txtNguoiLap);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.groupBox1);
@@ -1125,6 +1137,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.TextBox txtNguoiLap;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.CheckBox chkHoanThanh;
 
     }
 }

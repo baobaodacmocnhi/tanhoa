@@ -936,6 +936,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 KTXM_BangGia banggia = new KTXM_BangGia();
                                 banggia.IDCTKTXM = _ctktxm.MaCTKTXM;
                                 banggia.IDDonGia = dongia.ID;
+                                banggia.SoTien = dongia.SoTien;
                                 if (_cKTXM.Them_BangGia(banggia) == true)
                                 {
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
