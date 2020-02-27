@@ -740,5 +740,82 @@ namespace ThuTien.GUI.ToTruong
             }
         }
 
+        private void btnInTBTrang_Click(object sender, EventArgs e)
+        {
+            dsBaoCao dsBaoCao = new dsBaoCao();
+            DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
+            foreach (DataRow item in dt.Rows)
+                if (bool.Parse(item["In"].ToString()))
+                {
+                    DataRow[] childRows = item.GetChildRows("Chi Tiết Đóng Nước");
+                    string Ky = "";
+                    int TongCong = 0; ;
+                    foreach (DataRow itemChild in childRows)
+                    {
+                        Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
+                        TongCong += int.Parse(itemChild["TongCong"].ToString());
+                    }
+
+                    DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                    dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-");
+                    dr["ThemHoaDon"] = item["ThemHoaDon"];
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
+                    dr["DienThoai"] = _cDocSo.GetDienThoai(item["DanhBo"].ToString());
+                    if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                    {
+                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        TB_DULIEUKHACHHANG ttkh = _cDocSo.GetTTKH(item["DanhBo"].ToString());
+                        if (ttkh != null)
+                        {
+                            dr["DiaChiDHN"] = ttkh.SONHA + " " + ttkh.TENDUONG;
+                            dr["SoTien"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cDongNuoc.GetPhiMoNuoc(int.Parse(ttkh.CODH)));
+                        }
+                    }
+                    dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
+                    dr["Ky"] = Ky;
+                    dr["TongCong"] = TongCong;
+                    dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(int.Parse(item["CreateBy"].ToString()));
+                    if (!string.IsNullOrEmpty(item["CreateBy"].ToString()))
+                        dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["CreateBy"].ToString()));
+                    if (!string.IsNullOrEmpty(item["MaNV_DongNuoc"].ToString()))
+                        dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["MaNV_DongNuoc"].ToString()));
+                    if (chkChuKy.Checked)
+                        dr["ChuKy"] = true;
+                    if (chkCoTenNguoiKy.Checked)
+                        dr["NguoiKy"] = "Nguyễn Ngọc Ẩn";
+
+                    dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+
+                    //ReportDocument rpt = new ReportDocument();
+                    //if(radA4.Checked==true)
+                    // rpt = new rptTBDongNuocPhotoA4();
+                    //else
+                    //    if(radA5.Checked==true)
+                    //        rpt = new rptTBDongNuocPhotoA5();
+                    //rpt.SetDataSource(dsBaoCao);
+
+                    //printDialog.AllowSomePages = true;
+                    //printDialog.ShowHelp = true;
+
+                    //rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
+                    //rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
+                    //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+
+                    //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, true, 0, 0);
+                    //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                }
+            ReportDocument rpt = new ReportDocument();
+            if (radA4.Checked == true)
+                rpt = new rptTBDongNuocA4();
+            else
+                if (radA5.Checked == true)
+                    rpt = new rptTBDongNuocA5();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
+
     }
 }

@@ -90,6 +90,7 @@
             this.cmbToCapNhat = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.btnInTBTrang = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -529,7 +530,7 @@
             // 
             // btnInTB
             // 
-            this.btnInTB.Location = new System.Drawing.Point(1086, 10);
+            this.btnInTB.Location = new System.Drawing.Point(1001, 10);
             this.btnInTB.Name = "btnInTB";
             this.btnInTB.Size = new System.Drawing.Size(75, 23);
             this.btnInTB.TabIndex = 35;
@@ -571,7 +572,7 @@
             // 
             // btnXuatExcel
             // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(1167, 10);
+            this.btnXuatExcel.Location = new System.Drawing.Point(1193, 10);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
             this.btnXuatExcel.TabIndex = 98;
@@ -680,11 +681,22 @@
             this.cmbTo.Visible = false;
             this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged_1);
             // 
+            // btnInTBTrang
+            // 
+            this.btnInTBTrang.Location = new System.Drawing.Point(1082, 10);
+            this.btnInTBTrang.Name = "btnInTBTrang";
+            this.btnInTBTrang.Size = new System.Drawing.Size(105, 23);
+            this.btnInTBTrang.TabIndex = 109;
+            this.btnInTBTrang.Text = "In Giấy TB (Trắng)";
+            this.btnInTBTrang.UseVisualStyleBackColor = true;
+            this.btnInTBTrang.Click += new System.EventHandler(this.btnInTBTrang_Click);
+            // 
             // frmGiaoTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1309, 666);
+            this.Controls.Add(this.btnInTBTrang);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.radA5);
@@ -790,5 +802,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn TongCongLenh;
+        private System.Windows.Forms.Button btnInTBTrang;
     }
 }
