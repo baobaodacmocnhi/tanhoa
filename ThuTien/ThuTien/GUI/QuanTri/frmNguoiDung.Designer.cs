@@ -74,6 +74,7 @@
             this.chkPhoGiamDoc = new System.Windows.Forms.CheckBox();
             this.chkAn = new System.Windows.Forms.CheckBox();
             this.chkHanhThuVanPhong = new System.Windows.Forms.CheckBox();
+            this.chkTestApp = new System.Windows.Forms.CheckBox();
             this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,6 +94,7 @@
             this.DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChamCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TestApp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -211,7 +213,8 @@
             this.HanhThuVanPhong,
             this.DongNuoc,
             this.VanPhong,
-            this.ChamCong});
+            this.ChamCong,
+            this.TestApp});
             this.dgvNguoiDung.Location = new System.Drawing.Point(12, 144);
             this.dgvNguoiDung.MultiSelect = false;
             this.dgvNguoiDung.Name = "dgvNguoiDung";
@@ -556,6 +559,17 @@
             this.chkHanhThuVanPhong.Text = "Hành Thu Văn Phòng";
             this.chkHanhThuVanPhong.UseVisualStyleBackColor = true;
             // 
+            // chkTestApp
+            // 
+            this.chkTestApp.AutoSize = true;
+            this.chkTestApp.Location = new System.Drawing.Point(501, 98);
+            this.chkTestApp.Name = "chkTestApp";
+            this.chkTestApp.Size = new System.Drawing.Size(69, 17);
+            this.chkTestApp.TabIndex = 29;
+            this.chkTestApp.Text = "Test App";
+            this.chkTestApp.UseVisualStyleBackColor = true;
+            this.chkTestApp.Visible = false;
+            // 
             // MaND
             // 
             this.MaND.DataPropertyName = "MaND";
@@ -687,11 +701,19 @@
             this.ChamCong.Name = "ChamCong";
             this.ChamCong.Visible = false;
             // 
+            // TestApp
+            // 
+            this.TestApp.DataPropertyName = "TestApp";
+            this.TestApp.HeaderText = "TestApp";
+            this.TestApp.Name = "TestApp";
+            this.TestApp.Visible = false;
+            // 
             // frmNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 666);
+            this.Controls.Add(this.chkTestApp);
             this.Controls.Add(this.chkHanhThuVanPhong);
             this.Controls.Add(this.chkAn);
             this.Controls.Add(this.chkPhoGiamDoc);
@@ -786,6 +808,7 @@
         private System.Windows.Forms.CheckBox chkPhoGiamDoc;
         private System.Windows.Forms.CheckBox chkAn;
         private System.Windows.Forms.CheckBox chkHanhThuVanPhong;
+        private System.Windows.Forms.CheckBox chkTestApp;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaND;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
@@ -805,5 +828,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DongNuoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn VanPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChamCong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TestApp;
     }
 }

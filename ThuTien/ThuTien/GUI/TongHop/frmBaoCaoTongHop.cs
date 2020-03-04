@@ -1873,7 +1873,7 @@ namespace ThuTien.GUI.TongHop
             }
             dsBaoCao ds = new dsBaoCao();
             DataTable dt = new DataTable();
-            dt = _cHoaDon.GetDSDangNgan(dateTu_KeToan_Chot2019.Value, dateDen_KeToan_Chot2019.Value);
+            dt = _cHoaDon.GetDSDangNgan_KeToan_Chot2019(dateTu_KeToan_Chot2019.Value, dateDen_KeToan_Chot2019.Value);
             foreach (DataRow item in dt.Rows)
             {
                 if (int.Parse(item["Nam2"].ToString()) == 2019)

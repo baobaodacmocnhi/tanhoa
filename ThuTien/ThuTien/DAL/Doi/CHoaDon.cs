@@ -3975,15 +3975,15 @@ namespace ThuTien.DAL.Doi
                         + " group by MaNV_HanhThu) toncuoi on nv.MaNV=toncuoi.MaNV_HanhThu"
                         + " left join"
                         + " (select MaNV_HanhThu,TongHDInPhieuBao=COUNT(ID_HOADON) from HOADON"
-                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and InPhieuBao_Ngay is not null and MaNV_HanhThu=@MaNV"
+                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and CAST(InPhieuBao_Ngay as date)=@NgayGiaiTrach and MaNV_HanhThu=@MaNV"
                         + " group by MaNV_HanhThu) inphieubao on nv.MaNV=inphieubao.MaNV_HanhThu"
                         + " left join"
                         + " (select MaNV_HanhThu,TongHDTBDongNuoc=COUNT(ID_HOADON) from HOADON"
-                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and TBDongNuoc_Ngay is not null and MaNV_HanhThu=@MaNV"
+                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and CAST(TBDongNuoc_Ngay as date)=@NgayGiaiTrach and MaNV_HanhThu=@MaNV"
                         + " group by MaNV_HanhThu) tbdongnuoc on nv.MaNV=tbdongnuoc.MaNV_HanhThu"
                         + " left join"
                         + " (select MaNV_HanhThu,TongHDXoa=COUNT(ID_HOADON),TongCongXoa=SUM(TONGCONG) from HOADON"
-                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and XoaDangNgan_Ngay_DienThoai is not null and MaNV_HanhThu=@MaNV"
+                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and CAST(XoaDangNgan_Ngay_DienThoai as date)=@NgayGiaiTrach and MaNV_HanhThu=@MaNV"
                         + " group by MaNV_HanhThu) xoa on nv.MaNV=xoa.MaNV_HanhThu"
                         + " order by STT";
             return ExecuteQuery_DataTable(sql);
@@ -4033,15 +4033,15 @@ namespace ThuTien.DAL.Doi
                         + " group by MaNV_HanhThu) toncuoi on nv.MaNV=toncuoi.MaNV_HanhThu"
                         + " left join"
                         + " (select MaNV_HanhThu,TongHDInPhieuBao=COUNT(ID_HOADON) from HOADON"
-                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and InPhieuBao_Ngay is not null and MaNV_HanhThu=@MaNV"
+                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and CAST(InPhieuBao_Ngay as date)=@NgayGiaiTrach and MaNV_HanhThu=@MaNV"
                         + " group by MaNV_HanhThu) inphieubao on nv.MaNV=inphieubao.MaNV_HanhThu"
                         + " left join"
                         + " (select MaNV_HanhThu,TongHDTBDongNuoc=COUNT(ID_HOADON) from HOADON"
-                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and TBDongNuoc_Ngay is not null and MaNV_HanhThu=@MaNV"
+                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and CAST(TBDongNuoc_Ngay as date)=@NgayGiaiTrach and MaNV_HanhThu=@MaNV"
                         + " group by MaNV_HanhThu) tbdongnuoc on nv.MaNV=tbdongnuoc.MaNV_HanhThu"
                         + " left join"
                         + " (select MaNV_HanhThu,TongHDXoa=COUNT(ID_HOADON),TongCongXoa=SUM(TONGCONG) from HOADON"
-                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and XoaDangNgan_Ngay_DienThoai is not null and MaNV_HanhThu=@MaNV"
+                        + " where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and CAST(XoaDangNgan_Ngay_DienThoai as date)=@NgayGiaiTrach and MaNV_HanhThu=@MaNV"
                         + " group by MaNV_HanhThu) xoa on nv.MaNV=xoa.MaNV_HanhThu"
                         + " order by STT";
             return ExecuteQuery_DataTable(sql);
@@ -6097,6 +6097,36 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public DataTable GetDSDangNgan_KeToan_Chot2019(DateTime FromNgayGiaiTrach, DateTime ToNgayGiaiTrach)
+        {
+            var query = from item in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on item.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where item.NGAYGIAITRACH.Value.Date >= FromNgayGiaiTrach.Date && item.NGAYGIAITRACH.Value.Date <= ToNgayGiaiTrach.Date && item.ChuyenNoKhoDoi==false
+                        orderby item.MALOTRINH ascending
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.SOHOADON,
+                            Ky = item.KY + "/" + item.NAM,
+                            Ky2 = item.KY,
+                            Nam2 = item.NAM,
+                            MLT = item.MALOTRINH,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            HoTen = item.TENKH,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = item.GB,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSDangNgan(DateTime FromNgayGiaiTrach, DateTime ToNgayGiaiTrach)
         {
             var query = from item in _db.HOADONs
@@ -6197,10 +6227,55 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable getDSXoaDangNgan_HoaDonDienTu(int MaNV_DangNgan, DateTime NgayXoaDangNgan)
+        public DataTable getDSXoaDangNgan_HoaDonDienTu(int MaNV_HanhThu, DateTime NgayXoaDangNgan)
         {
             var query = from item in _db.HOADONs
-                        where item.XoaDangNgan_Ngay_DienThoai.Value.Date == NgayXoaDangNgan.Date && item.MaNV_DangNgan == MaNV_DangNgan
+                        where item.XoaDangNgan_Ngay_DienThoai.Value.Date == NgayXoaDangNgan.Date && item.MaNV_HanhThu == MaNV_HanhThu
+                        orderby item.MALOTRINH ascending
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.SOHOADON,
+                            Ky = item.KY + "/" + item.NAM,
+                            MLT = item.MALOTRINH,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                            item.XoaDangNgan_Ngay_DienThoai,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDSInPhieuBao_HoaDonDienTu(int MaNV_HanhThu, DateTime NgayInPhieuBao)
+        {
+            var query = from item in _db.HOADONs
+                        where item.InPhieuBao_Ngay.Value.Date == NgayInPhieuBao.Date && item.MaNV_HanhThu == MaNV_HanhThu
+                        orderby item.MALOTRINH ascending
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.SOHOADON,
+                            Ky = item.KY + "/" + item.NAM,
+                            MLT = item.MALOTRINH,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDSInTBDongNuoc_HoaDonDienTu(int MaNV_HanhThu, DateTime NgayInTBDongNuoc)
+        {
+            var query = from item in _db.HOADONs
+                        where item.TBDongNuoc_Ngay.Value.Date == NgayInTBDongNuoc.Date && item.MaNV_HanhThu == MaNV_HanhThu
                         orderby item.MALOTRINH ascending
                         select new
                         {
@@ -10132,7 +10207,7 @@ namespace ThuTien.DAL.Doi
             {
                 string sql = "";
                 if (Loai == "")
-                    sql = "update HOADON set MaNV_DangNgan=null,NGAYGIAITRACH=null,DangNgan_HanhThu=0,DangNgan_Quay=0,DangNgan_ChuyenKhoan=0,DangNgan_Ton=0,ModifyBy=" + CNguoiDung.MaND + ",Name_PC='" + CNguoiDung.Name_PC + "',IP_PC='" + CNguoiDung.IP_PC + "',ModifyDate=getdate() "
+                    sql = "update HOADON set MaNV_DangNgan=null,NGAYGIAITRACH=null,DangNgan_DienThoai=0,DangNgan_HanhThu=0,DangNgan_Quay=0,DangNgan_ChuyenKhoan=0,DangNgan_Ton=0,ModifyBy=" + CNguoiDung.MaND + ",Name_PC='" + CNguoiDung.Name_PC + "',IP_PC='" + CNguoiDung.IP_PC + "',ModifyDate=getdate() "
                            + "where SOHOADON='" + SoHoaDon + "' and MaNV_DangNgan=" + MaNV_DangNgan;
                 else
                     if (Loai == "HanhThu")
@@ -10180,7 +10255,7 @@ namespace ThuTien.DAL.Doi
             try
             {
                 string sql = "";
-                sql = "update HOADON set DangNgan_HanhThu=0,DangNgan_Quay=0,DangNgan_ChuyenKhoan=0,DangNgan_Ton=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,Name_PC='" + CNguoiDung.Name_PC + "',IP_PC='" + CNguoiDung.IP_PC + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getdate() "
+                sql = "update HOADON set DangNgan_DienThoai=0,DangNgan_HanhThu=0,DangNgan_Quay=0,DangNgan_ChuyenKhoan=0,DangNgan_Ton=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,Name_PC='" + CNguoiDung.Name_PC + "',IP_PC='" + CNguoiDung.IP_PC + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getdate() "
                        + "where SOHOADON='" + SoHoaDon + "'";
                 return LinQ_ExecuteNonQuery(sql);
             }
