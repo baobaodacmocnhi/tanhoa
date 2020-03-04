@@ -878,5 +878,54 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             }
         }
 
+        private void btnInhotline_Click(object sender, EventArgs e)
+        {
+            if (_cttttl != null)
+            {
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+
+                //dr["SoPhieu"] = _cttttl.MaCTTTTL.ToString().Insert(_cttttl.MaCTTTTL.ToString().Length - 2, "-");
+                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+                dr["LoTrinh"] = _cttttl.LoTrinh;
+                dr["HoTen"] = _cttttl.HoTen;
+                dr["DiaChi"] = _cttttl.DiaChi;
+                if (!string.IsNullOrEmpty(_cttttl.DanhBo) && _cttttl.DanhBo.Length == 11)
+                    dr["DanhBo"] = _cttttl.DanhBo.Insert(7, " ").Insert(4, " ");
+
+                dr["HopDong"] = _cttttl.HopDong;
+                dr["GiaBieu"] = _cttttl.GiaBieu;
+                if (_cttttl.DinhMuc != null)
+                    dr["DinhMuc"] = _cttttl.DinhMuc;
+                if (_cttttl.DinhMucHN != null)
+                    dr["DinhMucHN"] = _cttttl.DinhMucHN;
+                //if (_cttttl.ThuTraLoi.MaDonMoi != null)
+                //    dr["NgayNhanDon"] = _cDonTu.get(_cttttl.ThuTraLoi.MaDonMoi.Value).CreateDate.Value.ToString("dd/MM/yyyy");
+                //else
+                //    if (_cttttl.ThuTraLoi.MaDon != null)
+                //        dr["NgayNhanDon"] = _cttttl.ThuTraLoi.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
+                //    else
+                //        if (_cttttl.ThuTraLoi.MaDonTXL != null)
+                //            dr["NgayNhanDon"] = _cttttl.ThuTraLoi.DonTXL.CreateDate.Value.ToString("dd/MM/yyyy");
+                //        else
+                //            if (_cttttl.ThuTraLoi.MaDonTBC != null)
+                //                dr["NgayNhanDon"] = _cttttl.ThuTraLoi.DonTBC.CreateDate.Value.ToString("dd/MM/yyyy");
+                dr["NgayNhanDon"] = _cttttl.NgayTiepNhan.Value.ToString("dd/MM/yyyy");
+
+                dr["VeViec"] = _cttttl.VeViec;
+                dr["NoiDung"] = _cttttl.NoiDung;
+                dr["NoiNhan"] = _cttttl.NoiNhan + "\r\nTTL" + _cttttl.MaCTTTTL.ToString().Insert(_cttttl.MaCTTTTL.ToString().Length - 2, "-");
+                dr["ChucVu"] = _cttttl.ChucVu;
+                dr["NguoiKy"] = _cttttl.NguoiKy;
+
+                dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+
+                rptThaoThuTraLoi_hotline rpt = new rptThaoThuTraLoi_hotline();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
+            }
+        }
+
     }
 }

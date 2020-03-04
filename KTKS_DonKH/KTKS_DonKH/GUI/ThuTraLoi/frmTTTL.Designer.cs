@@ -33,6 +33,8 @@
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDinhMucHN = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.txtLoTrinh = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtDinhMuc = new System.Windows.Forms.TextBox();
@@ -99,8 +101,7 @@
             this.btnChonFile = new System.Windows.Forms.Button();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtDinhMucHN = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
+            this.btnInhotline = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuTTTL)).BeginInit();
@@ -152,6 +153,22 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Khách Hàng";
+            // 
+            // txtDinhMucHN
+            // 
+            this.txtDinhMucHN.Location = new System.Drawing.Point(853, 26);
+            this.txtDinhMucHN.Name = "txtDinhMucHN";
+            this.txtDinhMucHN.Size = new System.Drawing.Size(35, 22);
+            this.txtDinhMucHN.TabIndex = 17;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(759, 27);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(88, 16);
+            this.label20.TabIndex = 16;
+            this.label20.Text = "Định Mức HN:";
             // 
             // txtLoTrinh
             // 
@@ -753,21 +770,15 @@
             this.xoaFile_dgvHinh.Text = "Xóa";
             this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
             // 
-            // txtDinhMucHN
+            // btnInhotline
             // 
-            this.txtDinhMucHN.Location = new System.Drawing.Point(853, 26);
-            this.txtDinhMucHN.Name = "txtDinhMucHN";
-            this.txtDinhMucHN.Size = new System.Drawing.Size(35, 22);
-            this.txtDinhMucHN.TabIndex = 17;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(759, 27);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(88, 16);
-            this.label20.TabIndex = 16;
-            this.label20.Text = "Định Mức HN:";
+            this.btnInhotline.Location = new System.Drawing.Point(859, 329);
+            this.btnInhotline.Name = "btnInhotline";
+            this.btnInhotline.Size = new System.Drawing.Size(105, 25);
+            this.btnInhotline.TabIndex = 139;
+            this.btnInhotline.Text = "In Thư (hotline)";
+            this.btnInhotline.UseVisualStyleBackColor = true;
+            this.btnInhotline.Click += new System.EventHandler(this.btnInhotline_Click);
             // 
             // frmTTTL
             // 
@@ -776,6 +787,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1230, 593);
+            this.Controls.Add(this.btnInhotline);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.txtTCHC);
@@ -896,5 +908,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtDinhMucHN;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btnInhotline;
     }
 }
