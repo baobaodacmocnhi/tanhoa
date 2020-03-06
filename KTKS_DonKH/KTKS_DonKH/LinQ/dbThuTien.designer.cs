@@ -261,13 +261,21 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _DangNgan_DienThoai;
 		
+		private System.Nullable<int> _XoaDangNgan_MaNV_DienThoai;
+		
 		private System.Nullable<System.DateTime> _XoaDangNgan_Ngay_DienThoai;
 		
+		private System.Nullable<int> _InPhieuBao_MaNV;
+		
 		private System.Nullable<System.DateTime> _InPhieuBao_Ngay;
+		
+		private System.Nullable<int> _InPhieuBao2_MaNV;
 		
 		private System.Nullable<System.DateTime> _InPhieuBao2_Ngay;
 		
 		private System.Nullable<System.DateTime> _InPhieuBao2_NgayHen;
+		
+		private System.Nullable<int> _TBDongNuoc_MaNV;
 		
 		private System.Nullable<System.DateTime> _TBDongNuoc_Ngay;
 		
@@ -447,14 +455,22 @@ namespace KTKS_DonKH.LinQ
     partial void OnIP_PCChanged();
     partial void OnDangNgan_DienThoaiChanging(bool value);
     partial void OnDangNgan_DienThoaiChanged();
+    partial void OnXoaDangNgan_MaNV_DienThoaiChanging(System.Nullable<int> value);
+    partial void OnXoaDangNgan_MaNV_DienThoaiChanged();
     partial void OnXoaDangNgan_Ngay_DienThoaiChanging(System.Nullable<System.DateTime> value);
     partial void OnXoaDangNgan_Ngay_DienThoaiChanged();
+    partial void OnInPhieuBao_MaNVChanging(System.Nullable<int> value);
+    partial void OnInPhieuBao_MaNVChanged();
     partial void OnInPhieuBao_NgayChanging(System.Nullable<System.DateTime> value);
     partial void OnInPhieuBao_NgayChanged();
+    partial void OnInPhieuBao2_MaNVChanging(System.Nullable<int> value);
+    partial void OnInPhieuBao2_MaNVChanged();
     partial void OnInPhieuBao2_NgayChanging(System.Nullable<System.DateTime> value);
     partial void OnInPhieuBao2_NgayChanged();
     partial void OnInPhieuBao2_NgayHenChanging(System.Nullable<System.DateTime> value);
     partial void OnInPhieuBao2_NgayHenChanged();
+    partial void OnTBDongNuoc_MaNVChanging(System.Nullable<int> value);
+    partial void OnTBDongNuoc_MaNVChanged();
     partial void OnTBDongNuoc_NgayChanging(System.Nullable<System.DateTime> value);
     partial void OnTBDongNuoc_NgayChanged();
     partial void OnTBDongNuoc_NgayHenChanging(System.Nullable<System.DateTime> value);
@@ -2166,6 +2182,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XoaDangNgan_MaNV_DienThoai", DbType="Int")]
+		public System.Nullable<int> XoaDangNgan_MaNV_DienThoai
+		{
+			get
+			{
+				return this._XoaDangNgan_MaNV_DienThoai;
+			}
+			set
+			{
+				if ((this._XoaDangNgan_MaNV_DienThoai != value))
+				{
+					this.OnXoaDangNgan_MaNV_DienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._XoaDangNgan_MaNV_DienThoai = value;
+					this.SendPropertyChanged("XoaDangNgan_MaNV_DienThoai");
+					this.OnXoaDangNgan_MaNV_DienThoaiChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XoaDangNgan_Ngay_DienThoai", DbType="DateTime")]
 		public System.Nullable<System.DateTime> XoaDangNgan_Ngay_DienThoai
 		{
@@ -2186,6 +2222,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InPhieuBao_MaNV", DbType="Int")]
+		public System.Nullable<int> InPhieuBao_MaNV
+		{
+			get
+			{
+				return this._InPhieuBao_MaNV;
+			}
+			set
+			{
+				if ((this._InPhieuBao_MaNV != value))
+				{
+					this.OnInPhieuBao_MaNVChanging(value);
+					this.SendPropertyChanging();
+					this._InPhieuBao_MaNV = value;
+					this.SendPropertyChanged("InPhieuBao_MaNV");
+					this.OnInPhieuBao_MaNVChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InPhieuBao_Ngay", DbType="DateTime")]
 		public System.Nullable<System.DateTime> InPhieuBao_Ngay
 		{
@@ -2202,6 +2258,26 @@ namespace KTKS_DonKH.LinQ
 					this._InPhieuBao_Ngay = value;
 					this.SendPropertyChanged("InPhieuBao_Ngay");
 					this.OnInPhieuBao_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InPhieuBao2_MaNV", DbType="Int")]
+		public System.Nullable<int> InPhieuBao2_MaNV
+		{
+			get
+			{
+				return this._InPhieuBao2_MaNV;
+			}
+			set
+			{
+				if ((this._InPhieuBao2_MaNV != value))
+				{
+					this.OnInPhieuBao2_MaNVChanging(value);
+					this.SendPropertyChanging();
+					this._InPhieuBao2_MaNV = value;
+					this.SendPropertyChanged("InPhieuBao2_MaNV");
+					this.OnInPhieuBao2_MaNVChanged();
 				}
 			}
 		}
@@ -2242,6 +2318,26 @@ namespace KTKS_DonKH.LinQ
 					this._InPhieuBao2_NgayHen = value;
 					this.SendPropertyChanged("InPhieuBao2_NgayHen");
 					this.OnInPhieuBao2_NgayHenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TBDongNuoc_MaNV", DbType="Int")]
+		public System.Nullable<int> TBDongNuoc_MaNV
+		{
+			get
+			{
+				return this._TBDongNuoc_MaNV;
+			}
+			set
+			{
+				if ((this._TBDongNuoc_MaNV != value))
+				{
+					this.OnTBDongNuoc_MaNVChanging(value);
+					this.SendPropertyChanging();
+					this._TBDongNuoc_MaNV = value;
+					this.SendPropertyChanged("TBDongNuoc_MaNV");
+					this.OnTBDongNuoc_MaNVChanged();
 				}
 			}
 		}
@@ -2483,13 +2579,21 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _DangNgan_DienThoai;
 		
+		private System.Nullable<int> _XoaDangNgan_MaNV_DienThoai;
+		
 		private System.Nullable<System.DateTime> _XoaDangNgan_Ngay_DienThoai;
 		
+		private System.Nullable<int> _InPhieuBao_MaNV;
+		
 		private System.Nullable<System.DateTime> _InPhieuBao_Ngay;
+		
+		private System.Nullable<int> _InPhieuBao2_MaNV;
 		
 		private System.Nullable<System.DateTime> _InPhieuBao2_Ngay;
 		
 		private System.Nullable<System.DateTime> _InPhieuBao2_NgayHen;
+		
+		private System.Nullable<int> _TBDongNuoc_MaNV;
 		
 		private System.Nullable<System.DateTime> _TBDongNuoc_Ngay;
 		
@@ -2669,14 +2773,22 @@ namespace KTKS_DonKH.LinQ
     partial void OnIP_PCChanged();
     partial void OnDangNgan_DienThoaiChanging(bool value);
     partial void OnDangNgan_DienThoaiChanged();
+    partial void OnXoaDangNgan_MaNV_DienThoaiChanging(System.Nullable<int> value);
+    partial void OnXoaDangNgan_MaNV_DienThoaiChanged();
     partial void OnXoaDangNgan_Ngay_DienThoaiChanging(System.Nullable<System.DateTime> value);
     partial void OnXoaDangNgan_Ngay_DienThoaiChanged();
+    partial void OnInPhieuBao_MaNVChanging(System.Nullable<int> value);
+    partial void OnInPhieuBao_MaNVChanged();
     partial void OnInPhieuBao_NgayChanging(System.Nullable<System.DateTime> value);
     partial void OnInPhieuBao_NgayChanged();
+    partial void OnInPhieuBao2_MaNVChanging(System.Nullable<int> value);
+    partial void OnInPhieuBao2_MaNVChanged();
     partial void OnInPhieuBao2_NgayChanging(System.Nullable<System.DateTime> value);
     partial void OnInPhieuBao2_NgayChanged();
     partial void OnInPhieuBao2_NgayHenChanging(System.Nullable<System.DateTime> value);
     partial void OnInPhieuBao2_NgayHenChanged();
+    partial void OnTBDongNuoc_MaNVChanging(System.Nullable<int> value);
+    partial void OnTBDongNuoc_MaNVChanged();
     partial void OnTBDongNuoc_NgayChanging(System.Nullable<System.DateTime> value);
     partial void OnTBDongNuoc_NgayChanged();
     partial void OnTBDongNuoc_NgayHenChanging(System.Nullable<System.DateTime> value);
@@ -4388,6 +4500,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XoaDangNgan_MaNV_DienThoai", DbType="Int")]
+		public System.Nullable<int> XoaDangNgan_MaNV_DienThoai
+		{
+			get
+			{
+				return this._XoaDangNgan_MaNV_DienThoai;
+			}
+			set
+			{
+				if ((this._XoaDangNgan_MaNV_DienThoai != value))
+				{
+					this.OnXoaDangNgan_MaNV_DienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._XoaDangNgan_MaNV_DienThoai = value;
+					this.SendPropertyChanged("XoaDangNgan_MaNV_DienThoai");
+					this.OnXoaDangNgan_MaNV_DienThoaiChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XoaDangNgan_Ngay_DienThoai", DbType="DateTime")]
 		public System.Nullable<System.DateTime> XoaDangNgan_Ngay_DienThoai
 		{
@@ -4408,6 +4540,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InPhieuBao_MaNV", DbType="Int")]
+		public System.Nullable<int> InPhieuBao_MaNV
+		{
+			get
+			{
+				return this._InPhieuBao_MaNV;
+			}
+			set
+			{
+				if ((this._InPhieuBao_MaNV != value))
+				{
+					this.OnInPhieuBao_MaNVChanging(value);
+					this.SendPropertyChanging();
+					this._InPhieuBao_MaNV = value;
+					this.SendPropertyChanged("InPhieuBao_MaNV");
+					this.OnInPhieuBao_MaNVChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InPhieuBao_Ngay", DbType="DateTime")]
 		public System.Nullable<System.DateTime> InPhieuBao_Ngay
 		{
@@ -4424,6 +4576,26 @@ namespace KTKS_DonKH.LinQ
 					this._InPhieuBao_Ngay = value;
 					this.SendPropertyChanged("InPhieuBao_Ngay");
 					this.OnInPhieuBao_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InPhieuBao2_MaNV", DbType="Int")]
+		public System.Nullable<int> InPhieuBao2_MaNV
+		{
+			get
+			{
+				return this._InPhieuBao2_MaNV;
+			}
+			set
+			{
+				if ((this._InPhieuBao2_MaNV != value))
+				{
+					this.OnInPhieuBao2_MaNVChanging(value);
+					this.SendPropertyChanging();
+					this._InPhieuBao2_MaNV = value;
+					this.SendPropertyChanged("InPhieuBao2_MaNV");
+					this.OnInPhieuBao2_MaNVChanged();
 				}
 			}
 		}
@@ -4464,6 +4636,26 @@ namespace KTKS_DonKH.LinQ
 					this._InPhieuBao2_NgayHen = value;
 					this.SendPropertyChanged("InPhieuBao2_NgayHen");
 					this.OnInPhieuBao2_NgayHenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TBDongNuoc_MaNV", DbType="Int")]
+		public System.Nullable<int> TBDongNuoc_MaNV
+		{
+			get
+			{
+				return this._TBDongNuoc_MaNV;
+			}
+			set
+			{
+				if ((this._TBDongNuoc_MaNV != value))
+				{
+					this.OnTBDongNuoc_MaNVChanging(value);
+					this.SendPropertyChanging();
+					this._TBDongNuoc_MaNV = value;
+					this.SendPropertyChanged("TBDongNuoc_MaNV");
+					this.OnTBDongNuoc_MaNVChanged();
 				}
 			}
 		}

@@ -87,10 +87,14 @@
       <Column Name="Name_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="IP_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DangNgan_DienThoai" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="XoaDangNgan_MaNV_DienThoai" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="XoaDangNgan_Ngay_DienThoai" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InPhieuBao_MaNV" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="InPhieuBao_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InPhieuBao2_MaNV" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="InPhieuBao2_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="InPhieuBao2_NgayHen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TBDongNuoc_MaNV" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TBDongNuoc_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="TBDongNuoc_NgayHen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
@@ -182,10 +186,14 @@
       <Column Name="Name_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="IP_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DangNgan_DienThoai" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="XoaDangNgan_MaNV_DienThoai" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="XoaDangNgan_Ngay_DienThoai" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InPhieuBao_MaNV" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="InPhieuBao_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InPhieuBao2_MaNV" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="InPhieuBao2_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="InPhieuBao2_NgayHen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TBDongNuoc_MaNV" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TBDongNuoc_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="TBDongNuoc_NgayHen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>

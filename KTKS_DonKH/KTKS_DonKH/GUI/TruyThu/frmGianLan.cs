@@ -116,6 +116,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         _dontbc = _cDonTBC.Get(entity.GianLan.MaDonTBC.Value);
                         txtMaDonCu.Text = "TBC" + entity.GianLan.MaDonTBC.Value.ToString().Insert(entity.GianLan.MaDonTBC.Value.ToString().Length - 2, "-");
                     }
+            txtMaCTGL.Text = entity.MaCTGL.ToString().Insert(entity.MaCTGL.ToString().Length - 2, "-");
             chkXepDon.Checked = entity.XepDon;
             txtDanhBo.Text = entity.DanhBo;
             txtHoTen.Text = entity.HoTen;
@@ -214,6 +215,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         public void Clear()
         {
+            txtMaCTGL.Text = "";
             chkXepDon.Checked = false;
             ///
             txtMaDonCu.Text = "";

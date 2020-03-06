@@ -475,10 +475,10 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewGianLan_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-            //if (e.Column.FieldName == "ID" && e.Value != null)
-            //{
-            //    e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            //}
+            if (e.Column.FieldName == "ID" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
         }
 
         private void gridViewGianLan_RowCellClick(object sender, RowCellClickEventArgs e)

@@ -188,8 +188,11 @@ namespace KTKS_DonKH.GUI.DonTu
                     {
                         DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
 
-                        dr["TuNgay"] = dateTu_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
-                        dr["DenNgay"] = dateDen_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                        if (cmbTimTheo_DSChuyenKTXM.SelectedItem.ToString() == "Ngày")
+                        {
+                            dr["TuNgay"] = dateTu_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                            dr["DenNgay"] = dateDen_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                        }
                         dr["MaDon"] = itemRow["MaDon"].ToString();
                         //dr["STT"] = itemRow["STT"].ToString();
                         //dr["TenLD"] = itemRow["TenLD"];
@@ -210,8 +213,11 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
 
-                    dr["TuNgay"] = dateTu_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
-                    dr["DenNgay"] = dateDen_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                    if (cmbTimTheo_DSChuyenKTXM.SelectedItem.ToString() == "Ngày")
+                    {
+                        dr["TuNgay"] = dateTu_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateDen_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                    }
                     dr["MaDon"] = itemRow["MaDon"].ToString();
                     //dr["STT"] = itemRow["STT"].ToString();
                     //dr["TenLD"] = itemRow["TenLD"];
