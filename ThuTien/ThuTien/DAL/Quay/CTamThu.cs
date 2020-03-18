@@ -154,6 +154,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             MaTT = itemTT.ID_TAMTHU,
+                            MaHD=itemHD.ID_HOADON,
                             itemTT.SoPhieu,
                             itemHD.NGAYGIAITRACH,
                             itemTT.CreateDate,

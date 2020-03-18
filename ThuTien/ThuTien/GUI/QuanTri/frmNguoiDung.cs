@@ -67,12 +67,13 @@ namespace ThuTien.GUI.QuanTri
                 {
                     chkAn.Visible = true;
                     _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND_Doi(CNguoiDung.MaND));
-                }else
-            {
-                chkPhoGiamDoc.Visible = false;
-                chkAn.Visible = false;
-                _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
-            }
+                }
+                else
+                {
+                    chkPhoGiamDoc.Visible = false;
+                    chkAn.Visible = false;
+                    _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
+                }
             dgvNguoiDung.AutoGenerateColumns = false;
 
             cmbTo.DataSource = _cTo.GetDS();
@@ -84,7 +85,7 @@ namespace ThuTien.GUI.QuanTri
             cmbNhom.DisplayMember = "TenNhom";
             cmbNhom.ValueMember = "MaNhom";
             //cmbNhom.SelectedIndex = -1;
-            
+
             dgvNguoiDung.DataSource = _blNguoiDung;
         }
 
@@ -99,7 +100,7 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.DienThoai = txtDienThoai.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
-                    nguoidung.STT = _cNguoiDung.GetMaxSTT()+1;
+                    nguoidung.STT = _cNguoiDung.GetMaxSTT() + 1;
                     if (!string.IsNullOrEmpty(txtNam.Text.Trim()))
                     {
                         nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
@@ -379,8 +380,8 @@ namespace ThuTien.GUI.QuanTri
             {
                 var item = this._blNguoiDung[rowIndexFromMouseDown];
                 _blNguoiDung.RemoveAt(rowIndexFromMouseDown);
-                _blNguoiDung.Insert(rowIndexOfItemUnderMouseToDrop,item);
-                
+                _blNguoiDung.Insert(rowIndexOfItemUnderMouseToDrop, item);
+
                 ///update STT dô database
                 for (int i = 0; i < _blNguoiDung.Count; i++)
                 {

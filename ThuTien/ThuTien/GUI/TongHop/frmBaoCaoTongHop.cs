@@ -1881,7 +1881,7 @@ namespace ThuTien.GUI.TongHop
                     DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
                     dr["TuNgay"] = dateDen_KeToan.Value.Month.ToString("00");
                     dr["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
-                    dr["PhanKy"] = "II. Số tiền nước thu được của năm 2019 chưa thu được (tồn thu)";
+                    dr["PhanKy"] = "II. Số tiền nước thu được của năm 2019 (tồn thu)";
                     if (chkTheoThang_Chot2019.Checked == true)
                     {
                         dr["Ngay"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("MMyyyy");
