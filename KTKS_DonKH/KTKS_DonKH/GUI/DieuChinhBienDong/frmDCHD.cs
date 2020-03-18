@@ -190,6 +190,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHoTen.Text = ctdchd.HoTen;
             txtDiaChi.Text = ctdchd.DiaChi;
             ///
+            string[] KyHD = txtKyHD.Text.Trim().Split('/');
+            _hoadon = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(KyHD[0]), int.Parse(KyHD[1]));
+            if (_hoadon != null)
+            {
+            }
+            else
+            {
+                _docso = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(KyHD[0]), int.Parse(KyHD[1]));
+            }
+            ///
             txtGiaBieu_Cu.Text = ctdchd.GiaBieu.Value.ToString();
             txtDinhMucHN_Cu.Text = ctdchd.DinhMucHN.Value.ToString();
             txtDinhMuc_Cu.Text = ctdchd.DinhMuc.Value.ToString();
@@ -1819,6 +1829,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
 
             ///Chi Tiết
+            while(ChiTietCuA.IndexOf("0 x")>=0)
+                ChiTietCuA = ChiTietCuA.Substring(ChiTietCuA.IndexOf("\r\n") + 1,ChiTietCuA.Length- ChiTietCuA.IndexOf("\r\n")-1);
+            while (ChiTietCuB.IndexOf("0 x") >= 0)
+                ChiTietCuB = ChiTietCuB.Substring(ChiTietCuB.IndexOf("\r\n") + 1, ChiTietCuB.Length - ChiTietCuB.IndexOf("\r\n") - 1);
+            while (ChiTietMoiA.IndexOf("0 x") >= 0)
+                ChiTietMoiA = ChiTietMoiA.Substring(ChiTietMoiA.IndexOf("\r\n") + 1, ChiTietMoiA.Length - ChiTietMoiA.IndexOf("\r\n") - 1);
+            while (ChiTietMoiB.IndexOf("0 x") >= 0)
+                ChiTietMoiB = ChiTietMoiB.Substring(ChiTietMoiB.IndexOf("\r\n") + 1, ChiTietMoiB.Length - ChiTietMoiB.IndexOf("\r\n") - 1);
             txtChiTietCu.Text = ChiTietCuA + "\r\n" + ChiTietCuB;
             txtChiTietMoi.Text = ChiTietMoiA + "\r\n" + ChiTietMoiB;
             ///Tiêu Thụ
