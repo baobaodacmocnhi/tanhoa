@@ -462,5 +462,19 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(_db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Loai.Contains(Loai)));
         }
 
+        public DataTable getThongKe(DateTime NgayGiaiTrach)
+        {
+            string sql = "declare @Ngay date"
+                    + " set @Ngay='" + NgayGiaiTrach.ToString("yyyyMMdd")+ "'"
+                    + " select"
+                    + " TienDau=(select SUM(cast(SoTien as numeric(12, 0))) from TT_TienDu)-(select SUM(cast(SoTien as numeric(12, 0))) from TT_TienDuLichSu where CAST(CreateDate as date)>=(select DATEADD(DAY, -1, @Ngay)))"
+                    + " ,BangKe=(select SUM(cast(SoTien as numeric(12, 0))) from TT_BangKe where CAST(CreateDate as date)=@Ngay)"
+                    + " ,GiaiTrach=(select SUM(cast(TongCong as numeric(12, 0))) from HOADON where CAST(NGAYGIAITRACH as date)=@Ngay and DangNgan_ChuyenKhoan=1)"
+                    + " ,TienMat=(select SUM(cast(TienMat as numeric(12, 0))) from HOADON where CAST(NGAYGIAITRACH as date)=@Ngay and DangNgan_ChuyenKhoan=1)"
+                    + " ,PhiMoNuoc=(select SUM(cast(PhiMoNuoc as numeric(12, 0))) from TT_PhiMoNuoc where CAST(CreateDate as date)=@Ngay)"
+                    + " ,TienCuoi=(select SUM(cast(SoTien as numeric(12, 0))) from TT_TienDu)";
+            return ExecuteQuery_DataTable(sql);
+        }
+
     }
 }

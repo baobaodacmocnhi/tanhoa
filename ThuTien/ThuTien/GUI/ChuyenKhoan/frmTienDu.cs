@@ -811,5 +811,22 @@ namespace ThuTien.GUI.ChuyenKhoan
                 MessageBox.Show("Bạn không có quyền Thêm Form Tạm Thu Chuyển Khoản", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void btnXem_ThongKe_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cTienDu.getThongKe(dateThongKe.Value);
+            if (dt.Rows[0]["TienDau"].ToString()!="")
+            txtTienDau.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienDau"].ToString()));
+            if (dt.Rows[0]["BangKe"].ToString() != "")
+            txtBangKe.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["BangKe"].ToString()));
+            if (dt.Rows[0]["GiaiTrach"].ToString() != "")
+            txtGiaiTrach.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["GiaiTrach"].ToString()));
+            if (dt.Rows[0]["TienMat"].ToString() != "")
+            txtTienMat.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienMat"].ToString()));
+            if (dt.Rows[0]["PhiMoNuoc"].ToString() != "")
+            txtPhiMoNuoc.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["PhiMoNuoc"].ToString()));
+            if (dt.Rows[0]["TienCuoi"].ToString() != "")
+            txtTienCuoi.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienCuoi"].ToString()));
+        }
+
     }
 }
