@@ -330,7 +330,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["NoiDung"] = item["NoiDung"].ToString();
                     //mượn đỡ 2 cột để xét tình trạng
                     dr["GhiChu"] = item["TinhTrang"].ToString();
-                    dr["NoiNhan"] = item["TinhTrang"].ToString();
+                    dr["NguoiNhan"] = item["TinhTrang"].ToString();
                     if (CTaiKhoan.MaPhong == 1)
                     {
                         dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
@@ -358,7 +358,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         dr["NoiDung"] = item["NoiDung"].ToString();
                         //mượn đỡ 2 cột để xét tình trạng
                         dr["GhiChu"] = itemChild["TinhTrang"].ToString();
-                        dr["NoiNhan"] = item["TinhTrang"].ToString();
+                        dr["NguoiNhan"] = item["TinhTrang"].ToString();
                         if (CTaiKhoan.MaPhong == 1)
                         {
                             dr["NoiNhan"] = _cPhongBanDoi.getTenPhong_ConfigChuongTrinh(2);
