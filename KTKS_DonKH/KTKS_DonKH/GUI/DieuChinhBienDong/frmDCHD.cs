@@ -1829,26 +1829,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
 
             ///Chi Tiết
-            while (ChiTietCuA.IndexOf("0 x") >= 0)
-                if (ChiTietCuA.IndexOf("\r\n") >= 0)
-                    ChiTietCuA = ChiTietCuA.Substring(ChiTietCuA.IndexOf("\r\n") + 2, ChiTietCuA.Length - ChiTietCuA.IndexOf("\r\n") - 2);
-                else
-                    ChiTietCuA = "";
-            while (ChiTietCuB.IndexOf("0 x") >= 0)
-                if (ChiTietCuB.IndexOf("\r\n") >= 0)
-                    ChiTietCuB = ChiTietCuB.Substring(ChiTietCuB.IndexOf("\r\n") + 2, ChiTietCuB.Length - ChiTietCuB.IndexOf("\r\n") - 2);
-                else
-                    ChiTietCuB = "";
-            while (ChiTietMoiA.IndexOf("0 x") >= 0)
-                if (ChiTietMoiA.IndexOf("\r\n") >= 0)
-                    ChiTietMoiA = ChiTietMoiA.Substring(ChiTietMoiA.IndexOf("\r\n") + 2, ChiTietMoiA.Length - ChiTietMoiA.IndexOf("\r\n") - 2);
-                else
-                    ChiTietMoiA = "";
-            while (ChiTietMoiB.IndexOf("0 x") >= 0)
-                if (ChiTietMoiB.IndexOf("\r\n") >= 0)
-                    ChiTietMoiB = ChiTietMoiB.Substring(ChiTietMoiB.IndexOf("\r\n") + 2, ChiTietMoiB.Length - ChiTietMoiB.IndexOf("\r\n") - 2);
-                else
-                    ChiTietMoiB = "";
+            //while (ChiTietCuA.IndexOf("0 x") >= 0)
+            //    if (ChiTietCuA.IndexOf("\r\n") >= 0)
+            //        ChiTietCuA = ChiTietCuA.Substring(ChiTietCuA.IndexOf("\r\n") + 2, ChiTietCuA.Length - ChiTietCuA.IndexOf("\r\n") - 2);
+            //    else
+            //        ChiTietCuA = "";
+            //while (ChiTietCuB.IndexOf("0 x") >= 0)
+            //    if (ChiTietCuB.IndexOf("\r\n") >= 0)
+            //        ChiTietCuB = ChiTietCuB.Substring(ChiTietCuB.IndexOf("\r\n") + 2, ChiTietCuB.Length - ChiTietCuB.IndexOf("\r\n") - 2);
+            //    else
+            //        ChiTietCuB = "";
+            //while (ChiTietMoiA.IndexOf("0 x") >= 0)
+            //    if (ChiTietMoiA.IndexOf("\r\n") >= 0)
+            //        ChiTietMoiA = ChiTietMoiA.Substring(ChiTietMoiA.IndexOf("\r\n") + 2, ChiTietMoiA.Length - ChiTietMoiA.IndexOf("\r\n") - 2);
+            //    else
+            //        ChiTietMoiA = "";
+            //while (ChiTietMoiB.IndexOf("0 x") >= 0)
+            //    if (ChiTietMoiB.IndexOf("\r\n") >= 0)
+            //        ChiTietMoiB = ChiTietMoiB.Substring(ChiTietMoiB.IndexOf("\r\n") + 2, ChiTietMoiB.Length - ChiTietMoiB.IndexOf("\r\n") - 2);
+            //    else
+            //        ChiTietMoiB = "";
             txtChiTietCu.Text = ChiTietCuA + "\r\n" + ChiTietCuB;
             txtChiTietMoi.Text = ChiTietMoiA + "\r\n" + ChiTietMoiB;
             ///Tiêu Thụ
