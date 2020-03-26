@@ -83,6 +83,12 @@
             this.radA5 = new System.Windows.Forms.RadioButton();
             this.radA4 = new System.Windows.Forms.RadioButton();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.btnInTBTrang = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -90,6 +96,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.groupBox_ThemDN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridViewCTDN
@@ -319,7 +326,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(679, 10);
+            this.btnXem.Location = new System.Drawing.Point(692, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 24;
@@ -331,7 +338,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(573, 12);
+            this.dateDen.Location = new System.Drawing.Point(586, 12);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 23;
@@ -339,7 +346,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(509, 14);
+            this.label4.Location = new System.Drawing.Point(522, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 22;
@@ -349,7 +356,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(403, 12);
+            this.dateTu.Location = new System.Drawing.Point(416, 12);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 21;
@@ -357,7 +364,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(346, 15);
+            this.label3.Location = new System.Drawing.Point(359, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 20;
@@ -413,11 +420,11 @@
             // 
             // btnInTB
             // 
-            this.btnInTB.Location = new System.Drawing.Point(760, 10);
+            this.btnInTB.Location = new System.Drawing.Point(773, 10);
             this.btnInTB.Name = "btnInTB";
             this.btnInTB.Size = new System.Drawing.Size(75, 23);
             this.btnInTB.TabIndex = 26;
-            this.btnInTB.Text = "In Giấy TB";
+            this.btnInTB.Text = "In TB";
             this.btnInTB.UseVisualStyleBackColor = true;
             this.btnInTB.Click += new System.EventHandler(this.btnInTB_Click);
             // 
@@ -434,7 +441,7 @@
             // 
             // btnDSTB
             // 
-            this.btnDSTB.Location = new System.Drawing.Point(952, 10);
+            this.btnDSTB.Location = new System.Drawing.Point(945, 10);
             this.btnDSTB.Name = "btnDSTB";
             this.btnDSTB.Size = new System.Drawing.Size(75, 23);
             this.btnDSTB.TabIndex = 28;
@@ -536,7 +543,7 @@
             // 
             // btnInGiayXN
             // 
-            this.btnInGiayXN.Location = new System.Drawing.Point(1033, 10);
+            this.btnInGiayXN.Location = new System.Drawing.Point(1026, 10);
             this.btnInGiayXN.Name = "btnInGiayXN";
             this.btnInGiayXN.Size = new System.Drawing.Size(95, 23);
             this.btnInGiayXN.TabIndex = 73;
@@ -547,7 +554,7 @@
             // chkChuKy
             // 
             this.chkChuKy.AutoSize = true;
-            this.chkChuKy.Location = new System.Drawing.Point(1134, 14);
+            this.chkChuKy.Location = new System.Drawing.Point(1127, 10);
             this.chkChuKy.Name = "chkChuKy";
             this.chkChuKy.Size = new System.Drawing.Size(76, 17);
             this.chkChuKy.TabIndex = 96;
@@ -558,7 +565,7 @@
             // chkCoTenNguoiKy
             // 
             this.chkCoTenNguoiKy.AutoSize = true;
-            this.chkCoTenNguoiKy.Location = new System.Drawing.Point(1134, 37);
+            this.chkCoTenNguoiKy.Location = new System.Drawing.Point(1127, 33);
             this.chkCoTenNguoiKy.Name = "chkCoTenNguoiKy";
             this.chkCoTenNguoiKy.Size = new System.Drawing.Size(107, 17);
             this.chkCoTenNguoiKy.TabIndex = 97;
@@ -568,7 +575,7 @@
             // radA5
             // 
             this.radA5.AutoSize = true;
-            this.radA5.Location = new System.Drawing.Point(1247, 36);
+            this.radA5.Location = new System.Drawing.Point(1240, 32);
             this.radA5.Name = "radA5";
             this.radA5.Size = new System.Drawing.Size(38, 17);
             this.radA5.TabIndex = 103;
@@ -579,7 +586,7 @@
             // 
             this.radA4.AutoSize = true;
             this.radA4.Checked = true;
-            this.radA4.Location = new System.Drawing.Point(1247, 13);
+            this.radA4.Location = new System.Drawing.Point(1240, 9);
             this.radA4.Name = "radA4";
             this.radA4.Size = new System.Drawing.Size(38, 17);
             this.radA4.TabIndex = 102;
@@ -589,15 +596,64 @@
             // 
             // popupMenu1
             // 
+            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Xóa";
+            this.barButtonItem1.Id = 0;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barManager1
+            // 
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 1;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1286, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 666);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1286, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 666);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1286, 0);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 666);
             // 
             // btnInTBTrang
             // 
-            this.btnInTBTrang.Location = new System.Drawing.Point(841, 10);
+            this.btnInTBTrang.Location = new System.Drawing.Point(854, 10);
             this.btnInTBTrang.Name = "btnInTBTrang";
-            this.btnInTBTrang.Size = new System.Drawing.Size(105, 23);
+            this.btnInTBTrang.Size = new System.Drawing.Size(85, 23);
             this.btnInTBTrang.TabIndex = 108;
-            this.btnInTBTrang.Text = "In Giấy TB (Trắng)";
+            this.btnInTBTrang.Text = "In TB (Trắng)";
             this.btnInTBTrang.UseVisualStyleBackColor = true;
             this.btnInTBTrang.Click += new System.EventHandler(this.btnInTBTrang_Click);
             // 
@@ -605,7 +661,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1296, 666);
+            this.ClientSize = new System.Drawing.Size(1286, 666);
             this.Controls.Add(this.btnInTBTrang);
             this.Controls.Add(this.radA5);
             this.Controls.Add(this.radA4);
@@ -632,6 +688,10 @@
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.txtSoHoaDon);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Name = "frmTBDongNuoc";
             this.Text = "Lập Thông Báo Đóng Nước";
             this.Load += new System.EventHandler(this.frmLenhDongNuoc_Load);
@@ -642,6 +702,7 @@
             this.groupBox_ThemDN.ResumeLayout(false);
             this.groupBox_ThemDN.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -699,6 +760,12 @@
         private System.Windows.Forms.RadioButton radA4;
         private DevExpress.XtraGrid.Columns.GridColumn ThemHoaDon;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn TongCongLenh;
