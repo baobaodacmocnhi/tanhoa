@@ -16424,6 +16424,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _GhiChu;
 		
+		private bool _ChuaKTXM;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -16552,6 +16554,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNguoiChuyenDocSoChanged();
     partial void OnGhiChuChanging(string value);
     partial void OnGhiChuChanged();
+    partial void OnChuaKTXMChanging(bool value);
+    partial void OnChuaKTXMChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -17581,6 +17585,26 @@ namespace KTKS_DonKH.LinQ
 					this._GhiChu = value;
 					this.SendPropertyChanged("GhiChu");
 					this.OnGhiChuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChuaKTXM", DbType="Bit NOT NULL")]
+		public bool ChuaKTXM
+		{
+			get
+			{
+				return this._ChuaKTXM;
+			}
+			set
+			{
+				if ((this._ChuaKTXM != value))
+				{
+					this.OnChuaKTXMChanging(value);
+					this.SendPropertyChanging();
+					this._ChuaKTXM = value;
+					this.SendPropertyChanged("ChuaKTXM");
+					this.OnChuaKTXMChanged();
 				}
 			}
 		}

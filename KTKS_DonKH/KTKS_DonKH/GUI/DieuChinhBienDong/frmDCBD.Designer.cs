@@ -188,6 +188,7 @@
             this.chkKhongTinhPhiBVMT = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkChuaKTXM = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox_DSSoDangKy.SuspendLayout();
@@ -1663,6 +1664,16 @@
             this.xoaFile_dgvHinh.Size = new System.Drawing.Size(100, 22);
             this.xoaFile_dgvHinh.Text = "Xóa";
             // 
+            // chkChuaKTXM
+            // 
+            this.chkChuaKTXM.AutoSize = true;
+            this.chkChuaKTXM.Location = new System.Drawing.Point(1122, 315);
+            this.chkChuaKTXM.Name = "chkChuaKTXM";
+            this.chkChuaKTXM.Size = new System.Drawing.Size(97, 20);
+            this.chkChuaKTXM.TabIndex = 126;
+            this.chkChuaKTXM.Text = "Chưa KTXM";
+            this.chkChuaKTXM.UseVisualStyleBackColor = true;
+            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1670,6 +1681,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1320, 659);
+            this.Controls.Add(this.chkChuaKTXM);
             this.Controls.Add(this.chkKhongTinhPhiBVMT);
             this.Controls.Add(this.chkTinhPhiBVMT);
             this.Controls.Add(this.label34);
@@ -1894,6 +1906,7 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox txtDinhMuc_BD;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.CheckBox chkChuaKTXM;
         
     }
 }
