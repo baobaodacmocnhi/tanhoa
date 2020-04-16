@@ -1140,5 +1140,37 @@ namespace ThuTien.GUI.HanhThu
             frm.Show();
         }
 
+        private void btnInTieuDe_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                {
+                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = txtTieuDe.Text.Trim();
+                    dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["Ky"] = item.Cells["Ky_TG"].Value;
+                    dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                    dr["TongCong"] = item.Cells["TongCong_TG"].Value;
+                    dr["GiaBieu"] = item.Cells["GiaBieu"].Value;
+                    dr["DinhMuc"] = item.Cells["DinhMuc"].Value;
+                    dr["DinhMucHN"] = item.Cells["DinhMucHN"].Value;
+                    dr["TieuThu"] = item.Cells["TieuThu"].Value;
+                    if (int.Parse(item.Cells["GiaBieu_TG"].Value.ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
+                        dr["NhanVien"] = CNguoiDung.HoTen;
+                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                }
+            }
+
+            rptDSHoaDon_TieuDe rpt = new rptDSHoaDon_TieuDe();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
+
     }
 }

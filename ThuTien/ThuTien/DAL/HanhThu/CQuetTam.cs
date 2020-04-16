@@ -150,6 +150,9 @@ namespace ThuTien.DAL.HanhThu
                                 HanhThu = itemtableND.HoTen,
                                 To = itemtableND.TT_To.TenTo,
                                 itemHD.NGAYGIAITRACH,
+                                DinhMuc=itemHD.DM,
+                                itemHD.DinhMucHN,
+                                itemHD.TIEUTHU,
                             };
                 return LINQToDataTable(query);
             }
@@ -180,6 +183,9 @@ namespace ThuTien.DAL.HanhThu
                                     HanhThu = itemtableND.HoTen,
                                     To = itemtableND.TT_To.TenTo,
                                     itemHD.NGAYGIAITRACH,
+                                    DinhMuc = itemHD.DM,
+                                    itemHD.DinhMucHN,
+                                    itemHD.TIEUTHU,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -210,6 +216,9 @@ namespace ThuTien.DAL.HanhThu
                                         HanhThu = itemtableND.HoTen,
                                         To = itemtableND.TT_To.TenTo,
                                         itemHD.NGAYGIAITRACH,
+                                        DinhMuc = itemHD.DM,
+                                        itemHD.DinhMucHN,
+                                        itemHD.TIEUTHU,
                                     };
                         return LINQToDataTable(query);
                     }

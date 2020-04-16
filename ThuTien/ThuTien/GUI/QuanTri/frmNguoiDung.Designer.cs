@@ -39,26 +39,6 @@
             this.cmbNhom = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvNguoiDung = new System.Windows.Forms.DataGridView();
-            this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NamVaoLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoGiamDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.An = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ToTruong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanhThuVanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChamCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TestApp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -95,6 +75,29 @@
             this.chkAn = new System.Windows.Forms.CheckBox();
             this.chkHanhThuVanPhong = new System.Windows.Forms.CheckBox();
             this.chkTestApp = new System.Windows.Forms.CheckBox();
+            this.txtIMEI = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NamVaoLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoGiamDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.An = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToTruong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThuVanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChamCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TestApp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IMEI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -214,7 +217,8 @@
             this.DongNuoc,
             this.VanPhong,
             this.ChamCong,
-            this.TestApp});
+            this.TestApp,
+            this.IMEI});
             this.dgvNguoiDung.Location = new System.Drawing.Point(12, 144);
             this.dgvNguoiDung.MultiSelect = false;
             this.dgvNguoiDung.Name = "dgvNguoiDung";
@@ -227,147 +231,9 @@
             this.dgvNguoiDung.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvNguoiDung_DragEnter);
             this.dgvNguoiDung.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvNguoiDung_MouseClick);
             // 
-            // MaND
-            // 
-            this.MaND.DataPropertyName = "MaND";
-            this.MaND.HeaderText = "MaND";
-            this.MaND.Name = "MaND";
-            this.MaND.Visible = false;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            // 
-            // DienThoai
-            // 
-            this.DienThoai.DataPropertyName = "DienThoai";
-            this.DienThoai.HeaderText = "Điện Thoại";
-            this.DienThoai.Name = "DienThoai";
-            // 
-            // TaiKhoan
-            // 
-            this.TaiKhoan.DataPropertyName = "TaiKhoan";
-            this.TaiKhoan.HeaderText = "Tài Khoản";
-            this.TaiKhoan.Name = "TaiKhoan";
-            // 
-            // NamVaoLam
-            // 
-            this.NamVaoLam.DataPropertyName = "NamVaoLam";
-            this.NamVaoLam.HeaderText = "Năm Vào Làm";
-            this.NamVaoLam.Name = "NamVaoLam";
-            // 
-            // MatKhau
-            // 
-            this.MatKhau.DataPropertyName = "MatKhau";
-            this.MatKhau.HeaderText = "Mật Khẩu";
-            this.MatKhau.Name = "MatKhau";
-            // 
-            // MaTo
-            // 
-            this.MaTo.DataPropertyName = "MaTo";
-            this.MaTo.HeaderText = "MaTo";
-            this.MaTo.Name = "MaTo";
-            this.MaTo.Visible = false;
-            // 
-            // TenTo
-            // 
-            this.TenTo.DataPropertyName = "TenTo";
-            this.TenTo.HeaderText = "Tổ";
-            this.TenTo.Name = "TenTo";
-            this.TenTo.Width = 50;
-            // 
-            // MaNhom
-            // 
-            this.MaNhom.DataPropertyName = "MaNhom";
-            this.MaNhom.HeaderText = "MaNhom";
-            this.MaNhom.Name = "MaNhom";
-            this.MaNhom.Visible = false;
-            this.MaNhom.Width = 70;
-            // 
-            // TenNhom
-            // 
-            this.TenNhom.DataPropertyName = "TenNhom";
-            this.TenNhom.HeaderText = "Nhóm";
-            this.TenNhom.Name = "TenNhom";
-            this.TenNhom.Width = 70;
-            // 
-            // PhoGiamDoc
-            // 
-            this.PhoGiamDoc.DataPropertyName = "PhoGiamDoc";
-            this.PhoGiamDoc.HeaderText = "PhoGiamDoc";
-            this.PhoGiamDoc.Name = "PhoGiamDoc";
-            this.PhoGiamDoc.Visible = false;
-            // 
-            // An
-            // 
-            this.An.DataPropertyName = "An";
-            this.An.HeaderText = "Ẩn";
-            this.An.Name = "An";
-            this.An.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.An.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.An.Width = 30;
-            // 
-            // Doi
-            // 
-            this.Doi.DataPropertyName = "Doi";
-            this.Doi.HeaderText = "Doi";
-            this.Doi.Name = "Doi";
-            this.Doi.Visible = false;
-            // 
-            // ToTruong
-            // 
-            this.ToTruong.DataPropertyName = "ToTruong";
-            this.ToTruong.HeaderText = "ToTruong";
-            this.ToTruong.Name = "ToTruong";
-            this.ToTruong.Visible = false;
-            // 
-            // HanhThu
-            // 
-            this.HanhThu.DataPropertyName = "HanhThu";
-            this.HanhThu.HeaderText = "HanhThu";
-            this.HanhThu.Name = "HanhThu";
-            this.HanhThu.Visible = false;
-            // 
-            // HanhThuVanPhong
-            // 
-            this.HanhThuVanPhong.DataPropertyName = "HanhThuVanPhong";
-            this.HanhThuVanPhong.HeaderText = "HanhThuVanPhong";
-            this.HanhThuVanPhong.Name = "HanhThuVanPhong";
-            this.HanhThuVanPhong.Visible = false;
-            // 
-            // DongNuoc
-            // 
-            this.DongNuoc.DataPropertyName = "DongNuoc";
-            this.DongNuoc.HeaderText = "DongNuoc";
-            this.DongNuoc.Name = "DongNuoc";
-            this.DongNuoc.Visible = false;
-            // 
-            // VanPhong
-            // 
-            this.VanPhong.DataPropertyName = "VanPhong";
-            this.VanPhong.HeaderText = "VanPhong";
-            this.VanPhong.Name = "VanPhong";
-            this.VanPhong.Visible = false;
-            // 
-            // ChamCong
-            // 
-            this.ChamCong.DataPropertyName = "ChamCong";
-            this.ChamCong.HeaderText = "ChamCong";
-            this.ChamCong.Name = "ChamCong";
-            this.ChamCong.Visible = false;
-            // 
-            // TestApp
-            // 
-            this.TestApp.DataPropertyName = "TestApp";
-            this.TestApp.HeaderText = "TestApp";
-            this.TestApp.Name = "TestApp";
-            this.TestApp.Visible = false;
-            // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(404, 70);
+            this.btnXoa.Location = new System.Drawing.Point(647, 70);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 14;
@@ -377,7 +243,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(404, 41);
+            this.btnSua.Location = new System.Drawing.Point(647, 41);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 13;
@@ -387,7 +253,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(404, 12);
+            this.btnThem.Location = new System.Drawing.Point(647, 12);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 12;
@@ -707,11 +573,173 @@
             this.chkTestApp.Text = "Test App";
             this.chkTestApp.UseVisualStyleBackColor = true;
             // 
+            // txtIMEI
+            // 
+            this.txtIMEI.Location = new System.Drawing.Point(431, 38);
+            this.txtIMEI.Name = "txtIMEI";
+            this.txtIMEI.Size = new System.Drawing.Size(121, 20);
+            this.txtIMEI.TabIndex = 31;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(396, 41);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 13);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "IMEI";
+            // 
+            // MaND
+            // 
+            this.MaND.DataPropertyName = "MaND";
+            this.MaND.HeaderText = "MaND";
+            this.MaND.Name = "MaND";
+            this.MaND.Visible = false;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            // 
+            // DienThoai
+            // 
+            this.DienThoai.DataPropertyName = "DienThoai";
+            this.DienThoai.HeaderText = "Điện Thoại";
+            this.DienThoai.Name = "DienThoai";
+            // 
+            // TaiKhoan
+            // 
+            this.TaiKhoan.DataPropertyName = "TaiKhoan";
+            this.TaiKhoan.HeaderText = "Tài Khoản";
+            this.TaiKhoan.Name = "TaiKhoan";
+            // 
+            // NamVaoLam
+            // 
+            this.NamVaoLam.DataPropertyName = "NamVaoLam";
+            this.NamVaoLam.HeaderText = "Năm Vào Làm";
+            this.NamVaoLam.Name = "NamVaoLam";
+            // 
+            // MatKhau
+            // 
+            this.MatKhau.DataPropertyName = "MatKhau";
+            this.MatKhau.HeaderText = "Mật Khẩu";
+            this.MatKhau.Name = "MatKhau";
+            // 
+            // MaTo
+            // 
+            this.MaTo.DataPropertyName = "MaTo";
+            this.MaTo.HeaderText = "MaTo";
+            this.MaTo.Name = "MaTo";
+            this.MaTo.Visible = false;
+            // 
+            // TenTo
+            // 
+            this.TenTo.DataPropertyName = "TenTo";
+            this.TenTo.HeaderText = "Tổ";
+            this.TenTo.Name = "TenTo";
+            this.TenTo.Width = 50;
+            // 
+            // MaNhom
+            // 
+            this.MaNhom.DataPropertyName = "MaNhom";
+            this.MaNhom.HeaderText = "MaNhom";
+            this.MaNhom.Name = "MaNhom";
+            this.MaNhom.Visible = false;
+            this.MaNhom.Width = 70;
+            // 
+            // TenNhom
+            // 
+            this.TenNhom.DataPropertyName = "TenNhom";
+            this.TenNhom.HeaderText = "Nhóm";
+            this.TenNhom.Name = "TenNhom";
+            this.TenNhom.Width = 70;
+            // 
+            // PhoGiamDoc
+            // 
+            this.PhoGiamDoc.DataPropertyName = "PhoGiamDoc";
+            this.PhoGiamDoc.HeaderText = "PhoGiamDoc";
+            this.PhoGiamDoc.Name = "PhoGiamDoc";
+            this.PhoGiamDoc.Visible = false;
+            // 
+            // An
+            // 
+            this.An.DataPropertyName = "An";
+            this.An.HeaderText = "Ẩn";
+            this.An.Name = "An";
+            this.An.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.An.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.An.Width = 30;
+            // 
+            // Doi
+            // 
+            this.Doi.DataPropertyName = "Doi";
+            this.Doi.HeaderText = "Doi";
+            this.Doi.Name = "Doi";
+            this.Doi.Visible = false;
+            // 
+            // ToTruong
+            // 
+            this.ToTruong.DataPropertyName = "ToTruong";
+            this.ToTruong.HeaderText = "ToTruong";
+            this.ToTruong.Name = "ToTruong";
+            this.ToTruong.Visible = false;
+            // 
+            // HanhThu
+            // 
+            this.HanhThu.DataPropertyName = "HanhThu";
+            this.HanhThu.HeaderText = "HanhThu";
+            this.HanhThu.Name = "HanhThu";
+            this.HanhThu.Visible = false;
+            // 
+            // HanhThuVanPhong
+            // 
+            this.HanhThuVanPhong.DataPropertyName = "HanhThuVanPhong";
+            this.HanhThuVanPhong.HeaderText = "HanhThuVanPhong";
+            this.HanhThuVanPhong.Name = "HanhThuVanPhong";
+            this.HanhThuVanPhong.Visible = false;
+            // 
+            // DongNuoc
+            // 
+            this.DongNuoc.DataPropertyName = "DongNuoc";
+            this.DongNuoc.HeaderText = "DongNuoc";
+            this.DongNuoc.Name = "DongNuoc";
+            this.DongNuoc.Visible = false;
+            // 
+            // VanPhong
+            // 
+            this.VanPhong.DataPropertyName = "VanPhong";
+            this.VanPhong.HeaderText = "VanPhong";
+            this.VanPhong.Name = "VanPhong";
+            this.VanPhong.Visible = false;
+            // 
+            // ChamCong
+            // 
+            this.ChamCong.DataPropertyName = "ChamCong";
+            this.ChamCong.HeaderText = "ChamCong";
+            this.ChamCong.Name = "ChamCong";
+            this.ChamCong.Visible = false;
+            // 
+            // TestApp
+            // 
+            this.TestApp.DataPropertyName = "TestApp";
+            this.TestApp.HeaderText = "TestApp";
+            this.TestApp.Name = "TestApp";
+            this.TestApp.Visible = false;
+            // 
+            // IMEI
+            // 
+            this.IMEI.DataPropertyName = "IMEI";
+            this.IMEI.HeaderText = "IMEI";
+            this.IMEI.Name = "IMEI";
+            // 
             // frmNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 666);
+            this.Controls.Add(this.txtIMEI);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.chkTestApp);
             this.Controls.Add(this.chkHanhThuVanPhong);
             this.Controls.Add(this.chkAn);
@@ -828,5 +856,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VanPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChamCong;
         private System.Windows.Forms.DataGridViewTextBoxColumn TestApp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IMEI;
+        private System.Windows.Forms.TextBox txtIMEI;
+        private System.Windows.Forms.Label label8;
     }
 }
