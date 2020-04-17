@@ -37,7 +37,7 @@ namespace ThuTien.GUI.QuanTri
             txtMatKhau.Text = "";
             txtDienThoai.Text = "";
             txtNam.Text = "";
-            txtIMEI.Text = "";
+            txtIDMobile.Text = "";
             chkPhoGiamDoc.Checked = false;
             chkDoi.Checked = false;
             chkToTruong.Checked = false;
@@ -103,8 +103,8 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.DienThoai = txtDienThoai.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
-                    if (txtIMEI.Text.Trim()!="")
-                    nguoidung.IMEI = long.Parse(txtIMEI.Text.Trim());
+                    if (txtIDMobile.Text.Trim()!="")
+                        nguoidung.IDMobile = txtIDMobile.Text.Trim();
                     nguoidung.STT = _cNguoiDung.GetMaxSTT() + 1;
                     if (!string.IsNullOrEmpty(txtNam.Text.Trim()))
                     {
@@ -163,10 +163,10 @@ namespace ThuTien.GUI.QuanTri
                         nguoidung.DienThoai = txtDienThoai.Text.Trim();
                         nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                         nguoidung.MatKhau = txtMatKhau.Text.Trim();
-                        if (txtIMEI.Text.Trim() != "")
-                            nguoidung.IMEI = long.Parse(txtIMEI.Text.Trim());
+                        if (txtIDMobile.Text.Trim() != "")
+                            nguoidung.IDMobile = txtIDMobile.Text.Trim();
                         else
-                            nguoidung.IMEI = null;
+                            nguoidung.IDMobile = null;
                         if (!string.IsNullOrEmpty(txtNam.Text.Trim()))
                             nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
                         nguoidung.MaTo = (int)cmbTo.SelectedValue;
@@ -256,10 +256,10 @@ namespace ThuTien.GUI.QuanTri
                 chkVanPhong.Checked = bool.Parse(dgvNguoiDung["VanPhong", e.RowIndex].Value.ToString());
                 chkChamCong.Checked = bool.Parse(dgvNguoiDung["ChamCong", e.RowIndex].Value.ToString());
                 chkTestApp.Checked = bool.Parse(dgvNguoiDung["TestApp", e.RowIndex].Value.ToString());
-                if (dgvNguoiDung["IMEI", e.RowIndex].Value != null)
-                    txtIMEI.Text = dgvNguoiDung["IMEI", e.RowIndex].Value.ToString();
+                if (dgvNguoiDung["IDMobile", e.RowIndex].Value != null)
+                    txtIDMobile.Text = dgvNguoiDung["IDMobile", e.RowIndex].Value.ToString();
                 else
-                    txtIMEI.Text = "";
+                    txtIDMobile.Text = "";
                 if (CNguoiDung.Admin)
                     gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(true, int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
                 else

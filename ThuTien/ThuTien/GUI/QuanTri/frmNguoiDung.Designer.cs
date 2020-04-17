@@ -75,7 +75,7 @@
             this.chkAn = new System.Windows.Forms.CheckBox();
             this.chkHanhThuVanPhong = new System.Windows.Forms.CheckBox();
             this.chkTestApp = new System.Windows.Forms.CheckBox();
-            this.txtIMEI = new System.Windows.Forms.TextBox();
+            this.txtIDMobile = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,7 +97,7 @@
             this.VanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChamCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TestApp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IMEI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDMobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -218,7 +218,7 @@
             this.VanPhong,
             this.ChamCong,
             this.TestApp,
-            this.IMEI});
+            this.IDMobile});
             this.dgvNguoiDung.Location = new System.Drawing.Point(12, 144);
             this.dgvNguoiDung.MultiSelect = false;
             this.dgvNguoiDung.Name = "dgvNguoiDung";
@@ -573,21 +573,21 @@
             this.chkTestApp.Text = "Test App";
             this.chkTestApp.UseVisualStyleBackColor = true;
             // 
-            // txtIMEI
+            // txtIDMobile
             // 
-            this.txtIMEI.Location = new System.Drawing.Point(431, 38);
-            this.txtIMEI.Name = "txtIMEI";
-            this.txtIMEI.Size = new System.Drawing.Size(121, 20);
-            this.txtIMEI.TabIndex = 31;
+            this.txtIDMobile.Location = new System.Drawing.Point(454, 38);
+            this.txtIDMobile.Name = "txtIDMobile";
+            this.txtIDMobile.Size = new System.Drawing.Size(121, 20);
+            this.txtIDMobile.TabIndex = 31;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(396, 41);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 13);
+            this.label8.Size = new System.Drawing.Size(52, 13);
             this.label8.TabIndex = 30;
-            this.label8.Text = "IMEI";
+            this.label8.Text = "ID Mobile";
             // 
             // MaND
             // 
@@ -727,18 +727,18 @@
             this.TestApp.Name = "TestApp";
             this.TestApp.Visible = false;
             // 
-            // IMEI
+            // IDMobile
             // 
-            this.IMEI.DataPropertyName = "IMEI";
-            this.IMEI.HeaderText = "IMEI";
-            this.IMEI.Name = "IMEI";
+            this.IDMobile.DataPropertyName = "IDMobile";
+            this.IDMobile.HeaderText = "IDMobile";
+            this.IDMobile.Name = "IDMobile";
             // 
             // frmNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 666);
-            this.Controls.Add(this.txtIMEI);
+            this.Controls.Add(this.txtIDMobile);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.chkTestApp);
             this.Controls.Add(this.chkHanhThuVanPhong);
@@ -836,6 +836,8 @@
         private System.Windows.Forms.CheckBox chkAn;
         private System.Windows.Forms.CheckBox chkHanhThuVanPhong;
         private System.Windows.Forms.CheckBox chkTestApp;
+        private System.Windows.Forms.TextBox txtIDMobile;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaND;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
@@ -856,8 +858,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VanPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChamCong;
         private System.Windows.Forms.DataGridViewTextBoxColumn TestApp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IMEI;
-        private System.Windows.Forms.TextBox txtIMEI;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDMobile;
     }
 }

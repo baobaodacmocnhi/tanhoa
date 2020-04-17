@@ -367,7 +367,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                     foreach (DataRow item in dtExcel.Rows)
                         if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
                         {
-                            dt.Merge(_cHoaDon.GetDSTonByDanhBo(item[0].ToString().Replace(" ", "")));
+                            if (chkGB10.Checked == true)
+                                dt.Merge(_cHoaDon.GetDSTonByDanhBo(item[0].ToString().Replace(" ", ""), 10));
+                            else
+                                dt.Merge(_cHoaDon.GetDSTonByDanhBo(item[0].ToString().Replace(" ", "")));
                         }
                     dgvHoaDon.DataSource = dt;
 
@@ -805,7 +808,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             try
             {
-                _cTamThu.ExecuteNonQuery("exec spSendNotificationToClient 'TamThu','true'," + dgvTamThu["MaHD_TT",1].Value.ToString());
+                _cTamThu.ExecuteNonQuery("exec spSendNotificationToClient 'TamThu','true'," + dgvTamThu["MaHD_TT", 1].Value.ToString());
                 //foreach (DataGridViewRow item in dgvTamThu.Rows)
                 //{
                 //    _cTamThu.ExecuteNonQuery("exec spSendNotificationToClient 'TamThu','true'," + item.Cells["MaHD_TT"].Value.ToString());

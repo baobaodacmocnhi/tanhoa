@@ -1367,7 +1367,7 @@
       <Column Name="HanhThuVanPhong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="ChamCong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TestApp" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IMEI" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="IDMobile" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="An" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MaTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaNhom" Type="System.Int32" DbType="Int" CanBeNull="true" />

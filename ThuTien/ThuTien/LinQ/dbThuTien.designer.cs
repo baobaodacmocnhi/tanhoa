@@ -29295,7 +29295,7 @@ namespace ThuTien.LinQ
 		
 		private bool _TestApp;
 		
-		private System.Nullable<decimal> _IMEI;
+		private string _IDMobile;
 		
 		private bool _An;
 		
@@ -29367,8 +29367,8 @@ namespace ThuTien.LinQ
     partial void OnChamCongChanged();
     partial void OnTestAppChanging(bool value);
     partial void OnTestAppChanged();
-    partial void OnIMEIChanging(System.Nullable<decimal> value);
-    partial void OnIMEIChanged();
+    partial void OnIDMobileChanging(string value);
+    partial void OnIDMobileChanged();
     partial void OnAnChanging(bool value);
     partial void OnAnChanged();
     partial void OnMaToChanging(System.Nullable<int> value);
@@ -29816,22 +29816,22 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IMEI", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> IMEI
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMobile", DbType="VarChar(50)")]
+		public string IDMobile
 		{
 			get
 			{
-				return this._IMEI;
+				return this._IDMobile;
 			}
 			set
 			{
-				if ((this._IMEI != value))
+				if ((this._IDMobile != value))
 				{
-					this.OnIMEIChanging(value);
+					this.OnIDMobileChanging(value);
 					this.SendPropertyChanging();
-					this._IMEI = value;
-					this.SendPropertyChanged("IMEI");
-					this.OnIMEIChanged();
+					this._IDMobile = value;
+					this.SendPropertyChanged("IDMobile");
+					this.OnIDMobileChanged();
 				}
 			}
 		}
