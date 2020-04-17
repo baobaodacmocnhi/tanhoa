@@ -125,7 +125,7 @@ namespace KTKS_DonKH.DAL.TruyThu
                 }
                 else
                     cttttn.IDCT = int.Parse("1" + DateTime.Now.ToString("yy"));
-                cttttn.SoTien1m3 = SoTien1m3;//lưu lại số tiền trong quá khứ do có thể thay đổi trong tương lai
+                //cttttn.SoTien1m3 = SoTien1m3;//lưu lại số tiền trong quá khứ do có thể thay đổi trong tương lai
                 cttttn.CreateDate = DateTime.Now;
                 cttttn.CreateBy = CTaiKhoan.MaUser;
                 db.TruyThuTienNuoc_ChiTiets.InsertOnSubmit(cttttn);

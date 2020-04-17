@@ -52567,6 +52567,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TangGiam;
 		
+		private int _SoTien1m3;
+		
+		private int _m3BinhQuan;
+		
 		private System.Nullable<int> _IDCT;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -52623,6 +52627,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnTongCongMoiChanged();
     partial void OnTangGiamChanging(string value);
     partial void OnTangGiamChanged();
+    partial void OnSoTien1m3Changing(int value);
+    partial void OnSoTien1m3Changed();
+    partial void Onm3BinhQuanChanging(int value);
+    partial void Onm3BinhQuanChanged();
     partial void OnIDCTChanging(System.Nullable<int> value);
     partial void OnIDCTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -53037,6 +53045,46 @@ namespace KTKS_DonKH.LinQ
 					this._TangGiam = value;
 					this.SendPropertyChanged("TangGiam");
 					this.OnTangGiamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoTien1m3", DbType="Int NOT NULL")]
+		public int SoTien1m3
+		{
+			get
+			{
+				return this._SoTien1m3;
+			}
+			set
+			{
+				if ((this._SoTien1m3 != value))
+				{
+					this.OnSoTien1m3Changing(value);
+					this.SendPropertyChanging();
+					this._SoTien1m3 = value;
+					this.SendPropertyChanged("SoTien1m3");
+					this.OnSoTien1m3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_m3BinhQuan", DbType="Int NOT NULL")]
+		public int m3BinhQuan
+		{
+			get
+			{
+				return this._m3BinhQuan;
+			}
+			set
+			{
+				if ((this._m3BinhQuan != value))
+				{
+					this.Onm3BinhQuanChanging(value);
+					this.SendPropertyChanging();
+					this._m3BinhQuan = value;
+					this.SendPropertyChanged("m3BinhQuan");
+					this.Onm3BinhQuanChanged();
 				}
 			}
 		}

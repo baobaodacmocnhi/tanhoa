@@ -151,7 +151,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         txtSoNK.Text = entity.SoNK.Value.ToString();
                         txtHieuLucKy.Text = entity.HieuLucKy;
                     }
-                    if (entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Length == 11)
+                    if (entity.DonTu_ChiTiets.SingleOrDefault().DanhBo != null && entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Length == 11)
                         txtDanhBo.Text = entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
                     txtHopDong.Text = entity.DonTu_ChiTiets.SingleOrDefault().HopDong;
                     txtDienThoai.Text = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;

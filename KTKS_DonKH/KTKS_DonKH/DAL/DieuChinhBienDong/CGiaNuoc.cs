@@ -7696,5 +7696,69 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             else
                 main_value += "\r\n" + update_value;
         }
+
+        public int getDonGiaCaoNhat(List<int> lstGiaNuoc, int GiaBieu)
+        {
+            try
+            {
+                switch (GiaBieu)
+                {
+                    case 10:
+                    case 11:
+                        return lstGiaNuoc[2];
+                    case 12:
+                    case 14:
+                    case 32:
+                        return lstGiaNuoc[3];
+                    case 15:
+                        return lstGiaNuoc[5];
+                    default:
+                        return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
+        public int getDonGiaCaoNhat(DateTime TuNgay, DateTime DenNgay, int GiaBieu)
+        {
+            List<GiaNuoc2> lst = getDS();
+            int index = -1;
+            for (int i = 0; i < lst.Count; i++)
+                if (TuNgay.Date < lst[i].NgayTangGia.Value.Date && lst[i].NgayTangGia.Value.Date < DenNgay.Date)
+                {
+                    index = i;
+                }
+                else
+                    if (TuNgay.Date >= lst[i].NgayTangGia.Value.Date)
+                    {
+                        index = i;
+                    }
+            if (index != -1)
+            {
+                List<int> lstGiaNuoc = new List<int>();
+                if (DenNgay.Date < new DateTime(2019, 11, 15))
+                {
+                    lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
+                }
+                else
+                    if (TuNgay.Date < lst[index].NgayTangGia.Value.Date && lst[index].NgayTangGia.Value.Date < DenNgay.Date)
+                    {
+                        lstGiaNuoc = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
+                    }
+                    else
+                    {
+                        lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
+                    }
+                return getDonGiaCaoNhat(lstGiaNuoc, GiaBieu);
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

@@ -769,6 +769,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             }
                         }
                         _cGiaNuoc.TinhTienNuoc(false, false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), TuNgay, DenNgay, int.Parse(dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value.ToString()), TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, DinhMucHN, TieuThu, out  TienNuocMoiA, out ChiTietMoiA, out  TienNuocMoiB, out  ChiTietMoiB, out  TieuThu_DieuChinhGia);
+                        dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, int.Parse(dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value.ToString()));
                     }
                     int PhiBVMT = _cGiaNuoc.TinhPhiBMVT2010(int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value.ToString()), DinhMuc, TieuThu);
 
@@ -834,6 +835,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             }
                         }
                         _cGiaNuoc.TinhTienNuoc(false, false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), TuNgay, DenNgay, GiaBieu, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, int.Parse(dgvTruyThuTienNuoc["DinhMucHN_Moi", e.RowIndex].Value.ToString()), TieuThu, out  TienNuocMoiA, out ChiTietMoiA, out  TienNuocMoiB, out  ChiTietMoiB, out  TieuThu_DieuChinhGia);
+                        dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, GiaBieu);
                     }
                     int PhiBVMT = _cGiaNuoc.TinhPhiBMVT2010(int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, TieuThu);
 
@@ -899,6 +901,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             }
                         }
                         _cGiaNuoc.TinhTienNuoc(false, false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), TuNgay, DenNgay, GiaBieu, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, int.Parse(dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex].Value.ToString()), DinhMucHN, TieuThu, out  TienNuocMoiA, out ChiTietMoiA, out  TienNuocMoiB, out  ChiTietMoiB, out  TieuThu_DieuChinhGia);
+                        dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, GiaBieu);
                     }
                     int PhiBVMT = _cGiaNuoc.TinhPhiBMVT2010(int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, int.Parse(dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex].Value.ToString()), TieuThu);
 
@@ -964,6 +967,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             }
                         }
                         _cGiaNuoc.TinhTienNuoc(false, false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), TuNgay, DenNgay, GiaBieu, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, DinhMucHN, int.Parse(dgvTruyThuTienNuoc["TieuThu_Moi", e.RowIndex].Value.ToString()), out  TienNuocMoiA, out ChiTietMoiA, out  TienNuocMoiB, out  ChiTietMoiB, out  TieuThu_DieuChinhGia);
+                        dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, GiaBieu);
                     }
                     int PhiBVMT = _cGiaNuoc.TinhPhiBMVT2010(int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, int.Parse(dgvTruyThuTienNuoc["TieuThu_Moi", e.RowIndex].Value.ToString()));
 
@@ -987,6 +991,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 dgvTruyThuTienNuoc["TangGiam", e.RowIndex].Value = "Giảm";
                             else
                                 dgvTruyThuTienNuoc["TangGiam", e.RowIndex].Value = "";
+                    
                 }
             }
         }
@@ -1221,6 +1226,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 cttttn_hoadon.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
                                 cttttn_hoadon.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
                                 cttttn_hoadon.TangGiam = item.Cells["TangGiam"].Value.ToString();
+                                cttttn_hoadon.SoTien1m3 = int.Parse(item.Cells["SoTien1m3"].Value.ToString());
+                                cttttn_hoadon.m3BinhQuan = (int)Math.Round((double)(cttttn_hoadon.TongCongMoi.Value - cttttn_hoadon.TongCongCu.Value) / cttttn_hoadon.SoTien1m3, 0, MidpointRounding.AwayFromZero);
 
                                 _cTTTN.Them_HoaDon(cttttn_hoadon);
                                 //cttttn_hoadon.CreateBy = CTaiKhoan.MaUser;
@@ -1231,7 +1238,8 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     cttttn = _cTTTN.get_ChiTiet(cttttn.IDCT);
                     cttttn.TongTien = cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongMoi.Value) - cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongCu.Value);
-                    cttttn.Tongm3BinhQuan = (int)Math.Round((double)cttttn.TongTien / cttttn.SoTien1m3);
+                    //cttttn.Tongm3BinhQuan = (int)Math.Round((double)cttttn.TongTien / cttttn.SoTien1m3);
+                    cttttn.Tongm3BinhQuan = cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.m3BinhQuan);
                     _cTTTN.SubmitChanges();
 
                     if (_dontu_ChiTiet != null)
@@ -1314,6 +1322,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     cttttn_hoadon.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
                                     cttttn_hoadon.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
                                     cttttn_hoadon.TangGiam = item.Cells["TangGiam"].Value.ToString();
+                                    cttttn_hoadon.SoTien1m3 = int.Parse(item.Cells["SoTien1m3"].Value.ToString());
+                                    cttttn_hoadon.m3BinhQuan = (int)Math.Round((double)(cttttn_hoadon.TongCongMoi.Value - cttttn_hoadon.TongCongCu.Value) / cttttn_hoadon.SoTien1m3, 0, MidpointRounding.AwayFromZero);
 
                                     _cTTTN.Them_HoaDon(cttttn_hoadon);
                                     //cttttn_hoadon.CreateBy = CTaiKhoan.MaUser;
@@ -1345,6 +1355,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     cttttn_hoadon.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
                                     cttttn_hoadon.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
                                     cttttn_hoadon.TangGiam = item.Cells["TangGiam"].Value.ToString();
+                                    cttttn_hoadon.SoTien1m3 = int.Parse(item.Cells["SoTien1m3"].Value.ToString());
+                                    cttttn_hoadon.m3BinhQuan = (int)Math.Round((double)(cttttn_hoadon.TongCongMoi.Value - cttttn_hoadon.TongCongCu.Value) / cttttn_hoadon.SoTien1m3, 0, MidpointRounding.AwayFromZero);
 
                                     _cTTTN.Sua_HoaDon(cttttn_hoadon);
                                 }
@@ -1353,7 +1365,8 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         _cttttn = _cTTTN.get_ChiTiet(_cttttn.IDCT);
                         _cttttn.TongTien = _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongMoi.Value) - _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongCu.Value);
-                        _cttttn.Tongm3BinhQuan = (int)Math.Round((double)_cttttn.TongTien / _cttttn.SoTien1m3);
+                        //_cttttn.Tongm3BinhQuan = (int)Math.Round((double)_cttttn.TongTien / _cttttn.SoTien1m3);
+                        _cttttn.Tongm3BinhQuan = _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.m3BinhQuan);
                         _cTTTN.SubmitChanges();
 
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -150,6 +150,7 @@
             this.PhiBVMT_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TangGiam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTien1m3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTruyThuTienNuoc)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -446,7 +447,8 @@
             this.ThueGTGT_Moi,
             this.PhiBVMT_Moi,
             this.TongCong_Moi,
-            this.TangGiam});
+            this.TangGiam,
+            this.SoTien1m3});
             this.dgvTruyThuTienNuoc.Location = new System.Drawing.Point(0, 269);
             this.dgvTruyThuTienNuoc.Name = "dgvTruyThuTienNuoc";
             this.dgvTruyThuTienNuoc.Size = new System.Drawing.Size(1132, 295);
@@ -1260,6 +1262,13 @@
             this.TangGiam.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.TangGiam.Width = 60;
             // 
+            // SoTien1m3
+            // 
+            this.SoTien1m3.DataPropertyName = "SoTien1m3";
+            this.SoTien1m3.HeaderText = "SoTien1m3";
+            this.SoTien1m3.Name = "SoTien1m3";
+            this.SoTien1m3.Visible = false;
+            // 
             // frmTruyThuTienNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1444,5 +1453,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_Moi;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_Moi;
         private System.Windows.Forms.DataGridViewTextBoxColumn TangGiam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoTien1m3;
     }
 }

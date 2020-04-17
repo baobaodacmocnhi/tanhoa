@@ -2314,6 +2314,8 @@
       <Column Name="PhiBVMTMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TongCongMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TangGiam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoTien1m3" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="m3BinhQuan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="IDCT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
