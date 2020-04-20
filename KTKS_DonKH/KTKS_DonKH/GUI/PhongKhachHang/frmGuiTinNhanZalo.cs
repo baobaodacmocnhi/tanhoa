@@ -47,9 +47,9 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
 
                         //4276209776391262580
                         DataTable dt = _cGTNZ.getDS_Zalo();
-                        foreach (DataRow item in dt.Rows)
+                        //foreach (DataRow item in dt.Rows)
                         {
-                            string apiUrl = "http://192.168.90.11:1010/api/Zalo/sendMessageCupNuoc?IDZalo=" + item["IDZalo"] + "&message=" + en.NoiDung;
+                            string apiUrl = "http://192.168.90.11:1010/api/Zalo/sendMessageCupNuoc?IDZalo=4276209776391262580&message=" + en.NoiDung;
                             WebClient client = new WebClient();
                             client.Headers["Content-type"] = "application/xml";
                             client.Encoding = Encoding.UTF8;
