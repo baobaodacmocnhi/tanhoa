@@ -97,7 +97,7 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.btnChonFile = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.chkGB10 = new System.Windows.Forms.CheckBox();
+            this.chkTruHoNgheo = new System.Windows.Forms.CheckBox();
             this.tabTamThu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTamThu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
@@ -738,22 +738,22 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "(Enter)";
             // 
-            // chkGB10
+            // chkTruHoNgheo
             // 
-            this.chkGB10.AutoSize = true;
-            this.chkGB10.Location = new System.Drawing.Point(113, 14);
-            this.chkGB10.Name = "chkGB10";
-            this.chkGB10.Size = new System.Drawing.Size(71, 17);
-            this.chkGB10.TabIndex = 23;
-            this.chkGB10.Text = "trừ GB 10";
-            this.chkGB10.UseVisualStyleBackColor = true;
+            this.chkTruHoNgheo.AutoSize = true;
+            this.chkTruHoNgheo.Location = new System.Drawing.Point(94, 14);
+            this.chkTruHoNgheo.Name = "chkTruHoNgheo";
+            this.chkTruHoNgheo.Size = new System.Drawing.Size(90, 17);
+            this.chkTruHoNgheo.TabIndex = 23;
+            this.chkTruHoNgheo.Text = "trừ Hộ Nghèo";
+            this.chkTruHoNgheo.UseVisualStyleBackColor = true;
             // 
             // frmTamThuChuyenKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 666);
-            this.Controls.Add(this.chkGB10);
+            this.Controls.Add(this.chkTruHoNgheo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnChonFile);
             this.Controls.Add(this.label1);
@@ -842,6 +842,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TienDu_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_TT;
-        private System.Windows.Forms.CheckBox chkGB10;
+        private System.Windows.Forms.CheckBox chkTruHoNgheo;
     }
 }

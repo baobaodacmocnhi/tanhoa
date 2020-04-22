@@ -551,6 +551,14 @@ namespace ThuTien.DAL.Doi
                 return null;
         }
 
+        public List<HOADON> GetDSTon_CoChanTienDu_TruHoNgheo(string DanhBo)
+        {
+            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true&&item.DinhMucHN==null)).Count() > 0)
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true&&item.DinhMucHN==null)).ToList().OrderByDescending(item => item.ID_HOADON).ToList();
+            else
+                return null;
+        }
+
         public DataTable GetTongTon_GroupKy(int Nam)
         {
             var query = from item in _db.HOADONs
@@ -6102,7 +6110,7 @@ namespace ThuTien.DAL.Doi
             var query = from item in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on item.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where item.NGAYGIAITRACH.Value.Date >= FromNgayGiaiTrach.Date && item.NGAYGIAITRACH.Value.Date <= ToNgayGiaiTrach.Date && item.ChuyenNoKhoDoi==false
+                        where item.NGAYGIAITRACH.Value.Date >= FromNgayGiaiTrach.Date && item.NGAYGIAITRACH.Value.Date <= ToNgayGiaiTrach.Date && item.ChuyenNoKhoDoi == false
                         orderby item.MALOTRINH ascending
                         select new
                         {
@@ -7983,12 +7991,12 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSTonByDanhBo(string DanhBo,int TruGB)
+        public DataTable GetDSTonByDanhBo_TruHoNgheo(string DanhBo)
         {
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && itemHD.GB.Value!=TruGB
+                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && itemHD.DinhMucHN == null
                         orderby itemHD.ID_HOADON descending
                         select new
                         {

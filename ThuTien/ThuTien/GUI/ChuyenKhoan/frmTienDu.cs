@@ -248,7 +248,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                 }
                 else
                 {
-                    List<HOADON> lstHD = _cHoaDon.GetDSTon_CoChanTienDu(item.Cells["DanhBo_TienDu"].Value.ToString());
+                    List<HOADON> lstHD;
+                    if (chkTruHoNgheo.Checked)
+                        lstHD = _cHoaDon.GetDSTon_CoChanTienDu_TruHoNgheo(item.Cells["DanhBo_TienDu"].Value.ToString());
+                    else
+                        lstHD = _cHoaDon.GetDSTon_CoChanTienDu(item.Cells["DanhBo_TienDu"].Value.ToString());
 
                     if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
                     {
@@ -319,7 +323,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                         }
                         else
                         {
-                            List<HOADON> lstHD = _cHoaDon.GetDSTon_CoChanTienDu(item.Cells["DanhBo_TienDu"].Value.ToString());
+                            List<HOADON> lstHD;
+                            if (chkTruHoNgheo.Checked)
+                                lstHD = _cHoaDon.GetDSTon_CoChanTienDu_TruHoNgheo(item.Cells["DanhBo_TienDu"].Value.ToString());
+                            else
+                                lstHD = _cHoaDon.GetDSTon_CoChanTienDu(item.Cells["DanhBo_TienDu"].Value.ToString());
                             if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
                             {
                                 foreach (HOADON itemHD in lstHD)
@@ -814,18 +822,18 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void btnXem_ThongKe_Click(object sender, EventArgs e)
         {
             DataTable dt = _cTienDu.getThongKe(dateThongKe.Value);
-            if (dt.Rows[0]["TienDau"].ToString()!="")
-            txtTienDau.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienDau"].ToString()));
+            if (dt.Rows[0]["TienDau"].ToString() != "")
+                txtTienDau.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienDau"].ToString()));
             if (dt.Rows[0]["BangKe"].ToString() != "")
-            txtBangKe.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["BangKe"].ToString()));
+                txtBangKe.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["BangKe"].ToString()));
             if (dt.Rows[0]["GiaiTrach"].ToString() != "")
-            txtGiaiTrach.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["GiaiTrach"].ToString()));
+                txtGiaiTrach.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["GiaiTrach"].ToString()));
             if (dt.Rows[0]["TienMat"].ToString() != "")
-            txtTienMat.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienMat"].ToString()));
+                txtTienMat.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienMat"].ToString()));
             if (dt.Rows[0]["PhiMoNuoc"].ToString() != "")
-            txtPhiMoNuoc.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["PhiMoNuoc"].ToString()));
+                txtPhiMoNuoc.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["PhiMoNuoc"].ToString()));
             if (dt.Rows[0]["TienCuoi"].ToString() != "")
-            txtTienCuoi.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienCuoi"].ToString()));
+                txtTienCuoi.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienCuoi"].ToString()));
         }
 
     }

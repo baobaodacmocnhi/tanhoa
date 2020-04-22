@@ -367,8 +367,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                     foreach (DataRow item in dtExcel.Rows)
                         if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
                         {
-                            if (chkGB10.Checked == true)
-                                dt.Merge(_cHoaDon.GetDSTonByDanhBo(item[0].ToString().Replace(" ", ""), 10));
+                            if (chkTruHoNgheo.Checked == true)
+                                dt.Merge(_cHoaDon.GetDSTonByDanhBo_TruHoNgheo(item[0].ToString().Replace(" ", "")));
                             else
                                 dt.Merge(_cHoaDon.GetDSTonByDanhBo(item[0].ToString().Replace(" ", "")));
                         }
