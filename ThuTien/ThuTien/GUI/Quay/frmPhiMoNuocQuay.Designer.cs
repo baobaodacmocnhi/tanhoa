@@ -284,7 +284,7 @@
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.dgvKQDongNuoc);
             this.Name = "frmPhiMoNuocQuay";
-            this.Text = "Phí Mở Nước";
+            this.Text = "Phí Mở Nước Quầy";
             this.Load += new System.EventHandler(this.frmPhiMoNuoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).EndInit();
             this.ResumeLayout(false);

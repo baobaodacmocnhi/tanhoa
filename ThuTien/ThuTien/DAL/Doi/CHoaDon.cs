@@ -553,8 +553,8 @@ namespace ThuTien.DAL.Doi
 
         public List<HOADON> GetDSTon_CoChanTienDu_TruHoNgheo(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true&&item.DinhMucHN==null)).Count() > 0)
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true&&item.DinhMucHN==null)).ToList().OrderByDescending(item => item.ID_HOADON).ToList();
+            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true && (item.GB != 10 && item.DinhMucHN == null))).Count() > 0)
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true && (item.GB != 10 && item.DinhMucHN == null))).ToList().OrderByDescending(item => item.ID_HOADON).ToList();
             else
                 return null;
         }
@@ -7996,7 +7996,7 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && itemHD.DinhMucHN == null
+                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && (itemHD.GB != 10 && itemHD.DinhMucHN == null)
                         orderby itemHD.ID_HOADON descending
                         select new
                         {

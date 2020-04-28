@@ -492,7 +492,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.DiaChi,
                             itemKQ.MLT,
                             itemKQ.Hieu,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                             itemKQ.SoThan,
                             itemKQ.NgayDN,
                             itemKQ.ChiSoDN,
@@ -529,7 +529,7 @@ namespace ThuTien.DAL.DongNuoc
                              itemKQ.DiaChi,
                              itemKQ.MLT,
                              itemKQ.Hieu,
-                             CoDHH = itemKQ.Co,
+                             CoDHN = itemKQ.Co,
                              itemKQ.SoThan,
                              NgayDN = itemKQ.NgayDN1,
                              ChiSoDN = itemKQ.ChiSoDN1,
@@ -735,7 +735,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.DongNuoc,
                             itemKQ.NgayDN,
                             itemKQ.Hieu,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                             itemKQ.SoThan,
                             itemKQ.ChiSoDN,
                             itemKQ.NiemChi,
@@ -820,7 +820,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.DiaChi,
                             itemKQ.NgayDN,
                             itemHD.NGAYGIAITRACH,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                             itemKQ.GhiChuTroNgai,
                             itemKQ.TroNgaiMN,
                             MaNV_DongNuoc = itemtableND.HoTen,
@@ -848,7 +848,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.DiaChi,
                             itemKQ.NgayDN,
                             itemHD.NGAYGIAITRACH,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                             itemKQ.GhiChuTroNgai,
                             itemKQ.TroNgaiMN,
                             MaNV_DongNuoc = itemtableND.HoTen,
@@ -876,7 +876,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.NgayDongPhi,
                             itemKQ.ChuyenKhoan,
                             itemHD.NGAYGIAITRACH,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                         };
             return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
         }
@@ -901,7 +901,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.NgayDongPhi,
                             itemKQ.ChuyenKhoan,
                             itemHD.NGAYGIAITRACH,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                         };
             return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
         }
@@ -926,7 +926,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.NgayDongPhi,
                             itemKQ.ChuyenKhoan,
                             itemHD.NGAYGIAITRACH,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                         };
             return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
         }
@@ -951,7 +951,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.NgayDongPhi,
                             itemKQ.ChuyenKhoan,
                             itemHD.NGAYGIAITRACH,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                         };
             return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
         }
@@ -976,7 +976,36 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.NgayDongPhi,
                             itemKQ.ChuyenKhoan,
                             itemHD.NGAYGIAITRACH,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
+                        };
+            return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
+        }
+
+        public DataTable GetDSKQDongNuoc_DongPhi(int MaNV_DongPhi, DateTime FromNgayDongPhi, DateTime ToNgayDongPhi)
+        {
+            var query = from itemKQ in _db.TT_KQDongNuocs
+                        join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
+                        where itemKQ.NgayDongPhi.Value.Date >= FromNgayDongPhi && itemKQ.NgayDongPhi.Value.Date <= ToNgayDongPhi && itemKQ.MaNV_DongPhi == MaNV_DongPhi
+                        select new
+                        {
+                            itemKQ.MaDN,
+                            itemKQ.MaKQDN,
+                            itemKQ.CreateDate,
+                            itemKQ.DanhBo,
+                            itemKQ.HoTen,
+                            itemKQ.DiaChi,
+                            itemKQ.NgayDN,
+                            itemKQ.PhiMoNuoc,
+                            itemKQ.DongPhi,
+                            itemKQ.NgayDongPhi,
+                            itemKQ.ChuyenKhoan,
+                            itemHD.NGAYGIAITRACH,
+                            itemKQ.Co,
+                            itemKQ.Hieu,
+                            itemKQ.SoThan,
+                            itemKQ.ChiSoDN,
+                            itemKQ.LyDo,
                         };
             return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
         }
@@ -1154,7 +1183,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.DiaChi,
                             itemKQ.NgayDN,
                             itemHD.NGAYGIAITRACH,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                             itemKQ.GhiChuTroNgai,
                             itemKQ.TroNgaiMN,
                             MaNV_DongNuoc = itemtableND.HoTen,
@@ -1182,7 +1211,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.DiaChi,
                             itemKQ.NgayDN,
                             itemHD.NGAYGIAITRACH,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                             itemKQ.GhiChuTroNgai,
                             itemKQ.TroNgaiMN,
                             MaNV_DongNuoc = itemtableND.HoTen,
@@ -1209,7 +1238,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.DiaChi,
                             itemKQ.NgayDN,
                             itemHD.NGAYGIAITRACH,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                             itemKQ.GhiChuTroNgai,
                             itemKQ.TroNgaiMN,
                             MaNV_DongNuoc = itemtableND.HoTen,
@@ -1237,7 +1266,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.DiaChi,
                             itemKQ.NgayDN,
                             itemHD.NGAYGIAITRACH,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                             itemKQ.GhiChuTroNgai,
                             itemKQ.TroNgaiMN,
                             MaNV_DongNuoc = itemtableND.HoTen,
@@ -1264,7 +1293,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.DiaChi,
                             itemKQ.NgayDN,
                             itemHD.NGAYGIAITRACH,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                             itemKQ.GhiChuTroNgai,
                             itemKQ.TroNgaiMN,
                             MaNV_DongNuoc = itemtableND.HoTen,
@@ -1292,7 +1321,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.DiaChi,
                             itemKQ.NgayDN,
                             itemHD.NGAYGIAITRACH,
-                            CoDHH = itemKQ.Co,
+                            CoDHN = itemKQ.Co,
                             itemKQ.GhiChuTroNgai,
                             itemKQ.TroNgaiMN,
                             MaNV_DongNuoc = itemtableND.HoTen,

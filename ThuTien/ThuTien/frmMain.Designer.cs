@@ -140,6 +140,7 @@
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.mnuPhiMoNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -585,6 +586,7 @@
             this.mnuDongNuoc.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuTBDongNuoc,
             this.mnuKQDongNuoc,
+            this.mnuPhiMoNuoc,
             this.mnuVanTu,
             this.mnuThongKeDongMoNuoc,
             this.mnuPhoiHop});
@@ -1027,6 +1029,12 @@
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // mnuPhiMoNuoc
+            // 
+            this.mnuPhiMoNuoc.Name = "mnuPhiMoNuoc";
+            this.mnuPhiMoNuoc.Size = new System.Drawing.Size(211, 22);
+            this.mnuPhiMoNuoc.Text = "Phí Mở Nước";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1168,6 +1176,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuXacNhanThanhToan;
         private System.Windows.Forms.ToolStripMenuItem mnuPhoiHop;
         private System.Windows.Forms.ToolStripMenuItem mnuGhiChu;
+        private System.Windows.Forms.ToolStripMenuItem mnuPhiMoNuoc;
     }
 }
 
