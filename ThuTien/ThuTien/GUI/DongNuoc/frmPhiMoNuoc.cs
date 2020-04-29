@@ -17,7 +17,7 @@ namespace ThuTien.GUI.DongNuoc
 {
     public partial class frmPhiMoNuoc : Form
     {
-        string _mnu = "mnuPhiMoNuoc";
+        //string _mnu = "mnuPhiMoNuoc";
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CTo _cTo = new CTo();
         CNguoiDung _cNguoiDung = new CNguoiDung();

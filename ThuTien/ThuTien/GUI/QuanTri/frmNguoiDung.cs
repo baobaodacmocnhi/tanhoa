@@ -59,6 +59,24 @@ namespace ThuTien.GUI.QuanTri
 
         private void frmNguoiDung_Load(object sender, EventArgs e)
         {
+            loaddgv();
+            dgvNguoiDung.AutoGenerateColumns = false;
+
+            cmbTo.DataSource = _cTo.GetDS();
+            cmbTo.DisplayMember = "TenTo";
+            cmbTo.ValueMember = "MaTo";
+            //cmbTo.SelectedIndex = -1;
+
+            cmbNhom.DataSource = _cNhom.GetDS();
+            cmbNhom.DisplayMember = "TenNhom";
+            cmbNhom.ValueMember = "MaNhom";
+            //cmbNhom.SelectedIndex = -1;
+
+            dgvNguoiDung.DataSource = _blNguoiDung;
+        }
+
+        public void loaddgv()
+        {
             if (CNguoiDung.Admin)
             {
                 chkPhoGiamDoc.Visible = true;
@@ -77,19 +95,6 @@ namespace ThuTien.GUI.QuanTri
                     chkAn.Visible = false;
                     _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
                 }
-            dgvNguoiDung.AutoGenerateColumns = false;
-
-            cmbTo.DataSource = _cTo.GetDS();
-            cmbTo.DisplayMember = "TenTo";
-            cmbTo.ValueMember = "MaTo";
-            //cmbTo.SelectedIndex = -1;
-
-            cmbNhom.DataSource = _cNhom.GetDS();
-            cmbNhom.DisplayMember = "TenNhom";
-            cmbNhom.ValueMember = "MaNhom";
-            //cmbNhom.SelectedIndex = -1;
-
-            dgvNguoiDung.DataSource = _blNguoiDung;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -103,7 +108,7 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.DienThoai = txtDienThoai.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
-                    if (txtIDMobile.Text.Trim()!="")
+                    if (txtIDMobile.Text.Trim() != "")
                         nguoidung.IDMobile = txtIDMobile.Text.Trim();
                     nguoidung.STT = _cNguoiDung.GetMaxSTT() + 1;
                     if (!string.IsNullOrEmpty(txtNam.Text.Trim()))
@@ -423,6 +428,32 @@ namespace ThuTien.GUI.QuanTri
                     dgvNguoiDung.DoDragDrop(rw, DragDropEffects.Move);
                 }
             }
+        }
+
+        private void chkAll_CheckedChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < _blNguoiDung.Count; i++)
+            {
+                _blNguoiDung[i].ActiveMobile = chkAll.Checked;
+            }
+            _cNguoiDung.SubmitChanges();
+            loaddgv();
+        }
+
+        private void dgvNguoiDung_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "ActiveMobile")
+                {
+                    TT_NguoiDung en = _cNguoiDung.GetByMaND(int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
+                    en.ActiveMobile = bool.Parse(dgvNguoiDung["ActiveMobile", e.RowIndex].Value.ToString());
+                    _cNguoiDung.Sua(en);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
     }
 }
