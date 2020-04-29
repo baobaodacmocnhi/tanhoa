@@ -560,6 +560,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                     if (_gianlan != null)
                     {
                         _gianlan.XepDon = chkXepDon.Checked;
+                        _gianlan.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
+                        _gianlan.HoTen = txtHoTen.Text.Trim();
+                        _gianlan.DiaChi = txtDiaChi.Text.Trim();
                         _gianlan.NgayKTXM = dateKTXM.Value;
                         _gianlan.NoiDungViPham = txtNoiDungViPham.Text.Trim();
                         if (!string.IsNullOrEmpty(txtTienDHN.Text.Trim()))
@@ -1092,6 +1095,15 @@ namespace KTKS_DonKH.GUI.TruyThu
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Length == 11)
+            {
+                _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                LoadTTKH(_hoadon);
             }
         }
 

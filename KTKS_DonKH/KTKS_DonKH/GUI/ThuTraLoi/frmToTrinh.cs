@@ -24,7 +24,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 {
     public partial class frmToTrinh : Form
     {
-        string _mnu = "mnuTTTL";
+        string _mnu = "mnuToTrinh";
         CDonTu _cDonTu = new CDonTu();
         CThuTien _cThuTien = new CThuTien();
         CDonKH _cDonKH = new CDonKH();
