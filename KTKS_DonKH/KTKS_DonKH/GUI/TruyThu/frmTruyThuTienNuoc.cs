@@ -1481,7 +1481,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["TongCongMoi"] = item.TongCongMoi;
                     dr["TangGiam"] = item.TangGiam;
 
-                    dr["SoTien1m3"] = _cttttn.SoTien1m3;
+                    //dr["SoTien1m3"] = _cttttn.SoTien1m3;
+                    dr["m3BinhQuan"] = item.m3BinhQuan;
                     dr["NhanVien"] = CTaiKhoan.HoTen;
 
                     dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
