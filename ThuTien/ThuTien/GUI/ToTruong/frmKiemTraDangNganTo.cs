@@ -215,9 +215,9 @@ namespace ThuTien.GUI.ToTruong
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                     dr["SoHoaDon"] = item["SoHoaDon"];
                     dr["Ky"] = item["Ky"];
-                    //dr["GiaBan"] = item["GiaBan"];
-                    //dr["ThueGTGT"] = item["ThueGTGT"];
-                    //dr["PhiBVMT"] = item["PhiBVMT"];
+                    dr["GiaBan"] = item["GiaBan"];
+                    dr["ThueGTGT"] = item["ThueGTGT"];
+                    dr["PhiBVMT"] = item["PhiBVMT"];
                     dr["TongCong"] = item["TongCong"];
                     dr["NgayLap"]=item["NgayGiaiTrach"];
                     dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen"].Value.ToString();
@@ -231,9 +231,9 @@ namespace ThuTien.GUI.ToTruong
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                     dr["SoHoaDon"] = item["SoHoaDon"];
                     dr["Ky"] = item["Ky"];
-                    //dr["GiaBan"] = item["GiaBan"];
-                    //dr["ThueGTGT"] = item["ThueGTGT"];
-                    //dr["PhiBVMT"] = item["PhiBVMT"];
+                    dr["GiaBan"] = item["GiaBan"];
+                    dr["ThueGTGT"] = item["ThueGTGT"];
+                    dr["PhiBVMT"] = item["PhiBVMT"];
                     dr["TongCong"] = item["TongCong"];
                     dr["NgayLap"] = item["XoaDangNgan_Ngay_DienThoai"];
                     ds2.Tables["DSHoaDon"].Rows.Add(dr);
