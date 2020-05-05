@@ -1037,19 +1037,6 @@
       <Association Name="TT_TongHopNo_TT_TongHopNo_ChiTiet" Member="TT_TongHopNo" ThisKey="MaTHN" OtherKey="MaTHN" Type="TT_TongHopNo" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TT_GhiChu" Member="TT_GhiChus">
-    <Type Name="TT_GhiChu">
-      <Column Name="DanhBo" Type="System.String" DbType="Char(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="DienThoai" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="GiaBieu" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="NiemChi" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="DiemBe" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.TT_KQDongNuoc_Hinh" Member="TT_KQDongNuoc_Hinhs">
     <Type Name="TT_KQDongNuoc_Hinh">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1380,6 +1367,25 @@
       <Association Name="TT_NguoiDung_TT_PhanQuyenNguoiDung" Member="TT_PhanQuyenNguoiDungs" ThisKey="MaND" OtherKey="MaND" Type="TT_PhanQuyenNguoiDung" />
       <Association Name="TT_NguoiDung_TT_CTChamCong" Member="TT_CTChamCongs" ThisKey="MaND" OtherKey="MaND" Type="TT_CTChamCong" />
       <Association Name="TT_To_TT_NguoiDung" Member="TT_To" ThisKey="MaTo" OtherKey="MaTo" Type="TT_To" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_GhiChu" Member="TT_GhiChus">
+    <Type Name="TT_GhiChu">
+      <Column Name="DanhBo" Type="System.String" DbType="Char(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DienThoai" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="GiaBieu" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="GiaBieu_CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaBieu_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NiemChi" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="NiemChi_CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NiemChi_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DiemBe" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DiemBe_CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiemBe_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">
