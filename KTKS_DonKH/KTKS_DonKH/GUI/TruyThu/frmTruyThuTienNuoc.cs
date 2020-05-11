@@ -746,6 +746,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     if (dgvTruyThuTienNuoc["Ky", e.RowIndex].Value != null)
                     {
                         HOADON hd = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                        DocSo ds = null;
                         int TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0;
                         DateTime TuNgay = DateTime.Now, DenNgay = DateTime.Now;
                         if (hd != null)
@@ -763,7 +764,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         }
                         else
                         {
-                            DocSo ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                            ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
                             if (ds != null)
                             {
                                 TuNgay = ds.TuNgay.Value;
@@ -771,7 +772,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                             }
                         }
                         _cGiaNuoc.TinhTienNuoc(false, false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), TuNgay, DenNgay, int.Parse(dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value.ToString()), TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, DinhMucHN, TieuThu, out  TienNuocMoiA, out ChiTietMoiA, out  TienNuocMoiB, out  ChiTietMoiB, out  TieuThu_DieuChinhGia);
-                        dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, int.Parse(dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value.ToString()));
+                        if (hd == null && ds == null)
+                            dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value.ToString()));
+                        else
+                            dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, int.Parse(dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value.ToString()));
                     }
                     int PhiBVMT = _cGiaNuoc.TinhPhiBMVT2010(int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value.ToString()), DinhMuc, TieuThu);
 
@@ -812,6 +816,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     if (dgvTruyThuTienNuoc["Ky", e.RowIndex].Value != null)
                     {
                         HOADON hd = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                        DocSo ds = null;
                         int TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0;
                         DateTime TuNgay = DateTime.Now, DenNgay = DateTime.Now;
                         if (hd != null)
@@ -829,7 +834,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         }
                         else
                         {
-                            DocSo ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                            ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
                             if (ds != null)
                             {
                                 TuNgay = ds.TuNgay.Value;
@@ -837,7 +842,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                             }
                         }
                         _cGiaNuoc.TinhTienNuoc(false, false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), TuNgay, DenNgay, GiaBieu, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, int.Parse(dgvTruyThuTienNuoc["DinhMucHN_Moi", e.RowIndex].Value.ToString()), TieuThu, out  TienNuocMoiA, out ChiTietMoiA, out  TienNuocMoiB, out  ChiTietMoiB, out  TieuThu_DieuChinhGia);
-                        dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, GiaBieu);
+                        if (hd == null && ds == null)
+                            dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu);
+                        else
+                            dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, GiaBieu);
                     }
                     int PhiBVMT = _cGiaNuoc.TinhPhiBMVT2010(int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, TieuThu);
 
@@ -878,6 +886,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     if (dgvTruyThuTienNuoc["Ky", e.RowIndex].Value != null)
                     {
                         HOADON hd = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                        DocSo ds = null;
                         int TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0;
                         DateTime TuNgay = DateTime.Now, DenNgay = DateTime.Now;
                         if (hd != null)
@@ -895,7 +904,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         }
                         else
                         {
-                            DocSo ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                            ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
                             if (ds != null)
                             {
                                 TuNgay = ds.TuNgay.Value;
@@ -903,7 +912,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                             }
                         }
                         _cGiaNuoc.TinhTienNuoc(false, false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), TuNgay, DenNgay, GiaBieu, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, int.Parse(dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex].Value.ToString()), DinhMucHN, TieuThu, out  TienNuocMoiA, out ChiTietMoiA, out  TienNuocMoiB, out  ChiTietMoiB, out  TieuThu_DieuChinhGia);
-                        dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, GiaBieu);
+                        if (hd == null && ds == null)
+                            dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu);
+                        else
+                            dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, GiaBieu);
                     }
                     int PhiBVMT = _cGiaNuoc.TinhPhiBMVT2010(int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, int.Parse(dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex].Value.ToString()), TieuThu);
 
@@ -944,6 +956,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     if (dgvTruyThuTienNuoc["Ky", e.RowIndex].Value != null)
                     {
                         HOADON hd = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                        DocSo ds = null;
                         int TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0;
                         DateTime TuNgay = DateTime.Now, DenNgay = DateTime.Now;
                         if (hd != null)
@@ -961,7 +974,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         }
                         else
                         {
-                            DocSo ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                            ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
                             if (ds != null)
                             {
                                 TuNgay = ds.TuNgay.Value;
@@ -969,7 +982,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                             }
                         }
                         _cGiaNuoc.TinhTienNuoc(false, false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), TuNgay, DenNgay, GiaBieu, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, DinhMucHN, int.Parse(dgvTruyThuTienNuoc["TieuThu_Moi", e.RowIndex].Value.ToString()), out  TienNuocMoiA, out ChiTietMoiA, out  TienNuocMoiB, out  ChiTietMoiB, out  TieuThu_DieuChinhGia);
-                        dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, GiaBieu);
+                        if (hd == null && ds == null)
+                             dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu);
+                        else
+                            dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, GiaBieu);
                     }
                     int PhiBVMT = _cGiaNuoc.TinhPhiBMVT2010(int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, int.Parse(dgvTruyThuTienNuoc["TieuThu_Moi", e.RowIndex].Value.ToString()));
 
@@ -1240,8 +1256,8 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     cttttn = _cTTTN.get_ChiTiet(cttttn.IDCT);
                     cttttn.TongTien = cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongMoi.Value) - cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongCu.Value);
-                    //cttttn.Tongm3BinhQuan = (int)Math.Round((double)cttttn.TongTien / cttttn.SoTien1m3);
-                    cttttn.Tongm3BinhQuan = cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.m3BinhQuan);
+                    cttttn.Tongm3BinhQuan = (int)Math.Round((double)cttttn.TongTien / (cttttn.SoTien1m3 * 1.15));
+                    //cttttn.Tongm3BinhQuan = cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.m3BinhQuan);
                     _cTTTN.SubmitChanges();
 
                     if (_dontu_ChiTiet != null)
@@ -1260,7 +1276,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            string ky = "";
+            //string ky = "";
             try
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
@@ -1361,6 +1377,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     if (item.Cells["SoTien1m3"].Value == null || item.Cells["SoTien1m3"].Value.ToString() == "" || item.Cells["SoTien1m3"].Value.ToString() == "0")
                                     {
                                         HOADON hd = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(item.Cells["Ky"].Value.ToString()), int.Parse(item.Cells["Nam"].Value.ToString()));
+                                        DocSo ds = null;
                                         int TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0;
                                         DateTime TuNgay = DateTime.Now, DenNgay = DateTime.Now;
                                         if (hd != null)
@@ -1378,14 +1395,17 @@ namespace KTKS_DonKH.GUI.TruyThu
                                         }
                                         else
                                         {
-                                            DocSo ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(item.Cells["Ky"].Value.ToString()), int.Parse(item.Cells["Nam"].Value.ToString()));
+                                            ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(item.Cells["Ky"].Value.ToString()), int.Parse(item.Cells["Nam"].Value.ToString()));
                                             if (ds != null)
                                             {
                                                 TuNgay = ds.TuNgay.Value;
                                                 DenNgay = ds.DenNgay.Value;
                                             }
                                         }
-                                        cttttn_hoadon.SoTien1m3 = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString()));
+                                        if (hd == null && ds == null)
+                                            cttttn_hoadon.SoTien1m3 = _cGiaNuoc.getDonGiaCaoNhat(int.Parse(item.Cells["Ky"].Value.ToString()), int.Parse(item.Cells["Nam"].Value.ToString()), int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString()));
+                                        else
+                                            cttttn_hoadon.SoTien1m3 = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString()));
                                     }
                                     else
                                         cttttn_hoadon.SoTien1m3 = int.Parse(item.Cells["SoTien1m3"].Value.ToString());
@@ -1398,8 +1418,8 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         _cttttn = _cTTTN.get_ChiTiet(_cttttn.IDCT);
                         _cttttn.TongTien = _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongMoi.Value) - _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongCu.Value);
-                        //_cttttn.Tongm3BinhQuan = (int)Math.Round((double)_cttttn.TongTien / _cttttn.SoTien1m3);
-                        _cttttn.Tongm3BinhQuan = _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.m3BinhQuan);
+                        _cttttn.Tongm3BinhQuan = (int)Math.Round((double)_cttttn.TongTien / (_cttttn.SoTien1m3 * 1.15));
+                        //_cttttn.Tongm3BinhQuan = _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.m3BinhQuan);
                         _cTTTN.SubmitChanges();
 
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1481,7 +1501,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["TongCongMoi"] = item.TongCongMoi;
                     dr["TangGiam"] = item.TangGiam;
 
-                    //dr["SoTien1m3"] = _cttttn.SoTien1m3;
+                    dr["SoTien1m3"] = _cttttn.SoTien1m3 * 1.15;
                     dr["m3BinhQuan"] = item.m3BinhQuan;
                     dr["NhanVien"] = CTaiKhoan.HoTen;
 
@@ -1589,6 +1609,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["PhiBVMTMoi"] = item.PhiBVMTMoi;
                     dr["TongCongMoi"] = item.TongCongMoi;
                     dr["TangGiam"] = item.TangGiam;
+                    dr["SoTien1m3"] = item.TruyThuTienNuoc_ChiTiet.SoTien1m3 * 1.15;
 
                     dr["NhanVien"] = CTaiKhoan.HoTen;
                     dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
@@ -1634,6 +1655,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                         dr["TongCongMoi"] = item.Cells["TongCong_Moi"].Value.ToString();
                         if (item.Cells["TangGiam"].Value != null)
                             dr["TangGiam"] = item.Cells["TangGiam"].Value.ToString();
+                        //if (item.Cells["SoTien1m3"].Value != null)
+                        //    dr["SoTien1m3"] = item.Cells["SoTien1m3"].Value.ToString();
                         dr["NhanVien"] = CTaiKhoan.HoTen;
                         dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                     }
@@ -1972,7 +1995,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             _cttttn = _cTTTN.get_ChiTiet(_cttttn.IDCT);
                             _cttttn.TongTien = _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongMoi.Value) - _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongCu.Value);
-                            _cttttn.Tongm3BinhQuan = (int)Math.Round((double)_cttttn.TongTien / _cttttn.SoTien1m3);
+                            _cttttn.Tongm3BinhQuan = (int)Math.Round((double)_cttttn.TongTien / (_cttttn.SoTien1m3 * 1.15));
                             _cTTTN.SubmitChanges();
                         }
                     }

@@ -7723,6 +7723,36 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public int getDonGiaCaoNhat(int Ky, int Nam, int GiaBieu)
+        {
+            List<GiaNuoc2> lst = getDS();
+            int index = -1;
+            for (int i = 0; i < lst.Count; i++)
+                if (Nam == 2019)
+                {
+                    if (Ky == 12)
+                        index = i;
+                    else
+                        index = i - 1;
+                }
+                else
+                    if (Nam == lst[i].Name)
+                    {
+                        index = i;
+                    }
+
+            if (index != -1)
+            {
+                List<int> lstGiaNuoc = new List<int>();
+                lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
+                return getDonGiaCaoNhat(lstGiaNuoc, GiaBieu);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         public int getDonGiaCaoNhat(DateTime TuNgay, DateTime DenNgay, int GiaBieu)
         {
             List<GiaNuoc2> lst = getDS();
