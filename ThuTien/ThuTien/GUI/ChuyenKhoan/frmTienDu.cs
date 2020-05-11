@@ -406,7 +406,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     int TienDu = int.Parse(item["SoTien"].ToString());
                     int TienBK = int.Parse(dtBK.Rows[0]["SoTien"].ToString());
                     int k = 1;
-                    while (TienBK < TienDu && k <= dtBK.Rows.Count)
+                    while (TienBK < TienDu && k < dtBK.Rows.Count)
                     {
                         TienBK += int.Parse(dtBK.Rows[k]["SoTien"].ToString());
                         k++;
@@ -422,7 +422,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dtTD.Rows.Add(drTD);
                         TienBK = 0;
                         k = 0;
-                        while (TienBK < TienDu && k <= dtBK.Rows.Count)
+                        while (TienBK < TienDu && k < dtBK.Rows.Count)
                         {
                             DataRow drTD_extra = dtTD.NewRow();
                             drTD_extra["DanhBo"] = item["DanhBo"];
@@ -824,16 +824,28 @@ namespace ThuTien.GUI.ChuyenKhoan
             DataTable dt = _cTienDu.getThongKe(dateThongKe.Value);
             if (dt.Rows[0]["TienDau"].ToString() != "")
                 txtTienDau.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienDau"].ToString()));
+            else
+                txtTienDau.Text = "";
             if (dt.Rows[0]["BangKe"].ToString() != "")
                 txtBangKe.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["BangKe"].ToString()));
+            else
+                txtBangKe.Text = "";
             if (dt.Rows[0]["GiaiTrach"].ToString() != "")
                 txtGiaiTrach.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["GiaiTrach"].ToString()));
+            else
+                txtGiaiTrach.Text = "";
             if (dt.Rows[0]["TienMat"].ToString() != "")
                 txtTienMat.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienMat"].ToString()));
+            else
+                txtTienMat.Text = "";
             if (dt.Rows[0]["PhiMoNuoc"].ToString() != "")
                 txtPhiMoNuoc.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["PhiMoNuoc"].ToString()));
+            else
+                txtPhiMoNuoc.Text = "";
             if (dt.Rows[0]["TienCuoi"].ToString() != "")
                 txtTienCuoi.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienCuoi"].ToString()));
+            else
+                txtTienCuoi.Text = "";
         }
 
     }

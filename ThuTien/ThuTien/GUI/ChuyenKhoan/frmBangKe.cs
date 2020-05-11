@@ -76,7 +76,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                             MessageBox.Show("Lỗi Tên Ngân Hàng tại Danh Bộ: " + bangke.DanhBo + "\nBảng Kê đã lưu được tới đây", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
-                                        
+
                                         bangke.CreateBy = CNguoiDung.MaND;
                                         bangke.CreateDate2 = DateTime.Now;
                                         if (chkNgayLap.Checked == true)
@@ -94,6 +94,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                                     scope.Complete();
                                         }
                                     }
+                            //_cBangKe.LinQ_ExecuteNonQuery("update TT_TienDu set SoTien=SoTien-" + item[1].ToString().Trim() + " where DanhBo='" + item[0].ToString().Trim().Replace(" ", "") + "'");
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
                         }
