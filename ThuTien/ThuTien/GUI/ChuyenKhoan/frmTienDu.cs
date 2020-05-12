@@ -825,27 +825,31 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (dt.Rows[0]["TienDau"].ToString() != "")
                 txtTienDau.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienDau"].ToString()));
             else
-                txtTienDau.Text = "";
+                txtTienDau.Text = "0";
             if (dt.Rows[0]["BangKe"].ToString() != "")
                 txtBangKe.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["BangKe"].ToString()));
             else
-                txtBangKe.Text = "";
+                txtBangKe.Text = "0";
             if (dt.Rows[0]["GiaiTrach"].ToString() != "")
                 txtGiaiTrach.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["GiaiTrach"].ToString()));
             else
-                txtGiaiTrach.Text = "";
+                txtGiaiTrach.Text = "0";
             if (dt.Rows[0]["TienMat"].ToString() != "")
                 txtTienMat.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienMat"].ToString()));
             else
-                txtTienMat.Text = "";
+                txtTienMat.Text = "0";
             if (dt.Rows[0]["PhiMoNuoc"].ToString() != "")
                 txtPhiMoNuoc.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["PhiMoNuoc"].ToString()));
             else
-                txtPhiMoNuoc.Text = "";
+                txtPhiMoNuoc.Text = "0";
+            if (dt.Rows[0]["DieuChinh"].ToString() != "")
+                txtDieuChinh.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["DieuChinh"].ToString()));
+            else
+                txtDieuChinh.Text = "0";
             if (dt.Rows[0]["TienCuoi"].ToString() != "")
                 txtTienCuoi.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dt.Rows[0]["TienCuoi"].ToString()));
             else
-                txtTienCuoi.Text = "";
+                txtTienCuoi.Text = "0";
         }
 
     }

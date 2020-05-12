@@ -473,6 +473,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " ,GiaiTrach=(select SUM(cast(TongCong as numeric(12, 0))) from HOADON where CAST(NGAYGIAITRACH as date)=@Ngay and DangNgan_ChuyenKhoan=1)"
                     + " ,TienMat=(select SUM(cast(TienMat as numeric(12, 0))) from HOADON where CAST(NGAYGIAITRACH as date)=@Ngay and DangNgan_ChuyenKhoan=1)"
                     + " ,PhiMoNuoc=(select SUM(cast(PhiMoNuoc as numeric(12, 0))) from TT_PhiMoNuoc where CAST(CreateDate as date)=@Ngay)"
+                    + " ,DieuChinh=(select SUM(cast(SoTien as numeric(12, 0))) from TT_TienDuLichSu where Loai like N'%Điều Chỉnh%' and GhiChu not like N'%Phí Mở Nước%' and CAST(CreateDate as date)=@Ngay)"
                     + " ,TienCuoi=(select SUM(cast(SoTien as numeric(12, 0))) from TT_TienDu)-(select SUM(cast(SoTien as numeric(12, 0))) from TT_TienDuLichSu where CAST(CreateDate as date)>@Ngay)";
             return ExecuteQuery_DataTable(sql);
         }
