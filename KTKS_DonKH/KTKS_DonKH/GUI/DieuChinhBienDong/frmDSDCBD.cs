@@ -923,7 +923,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         }
                                         if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                         {
-                                            _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set MSTHUE=" + ctdcbd.MSThue_BD.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
+                                            _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set MSTHUE='" + ctdcbd.MSThue_BD.ToString() + "' where DANHBO='" + ctdcbd.DanhBo + "'");
                                         }
 
                                         TB_GHICHU ghichu = new TB_GHICHU();
@@ -1030,7 +1030,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                     {
-                                        _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set MSTHUE=" + ctdcbd.MSThue.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
+                                        _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set MSTHUE='" + ctdcbd.MSThue.ToString() + "' where DANHBO='" + ctdcbd.DanhBo + "'");
                                     }
 
                                     string sqlGhiChu = "delete from TB_GHICHU where DONVI='KTKS' and DANHBO='" + ctdcbd.DanhBo + "' and NOIDUNG like 'PYC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-") + "%'";

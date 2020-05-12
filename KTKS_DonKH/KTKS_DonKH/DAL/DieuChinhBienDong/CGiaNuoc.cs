@@ -43,6 +43,23 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return db.GiaNuoc2s.ToList();
         }
 
+        public GiaNuoc2 getGiaNuoc(DateTime TuNgay, DateTime DenNgay)
+        {
+            List<GiaNuoc2> lst = getDS();
+            int index = -1;
+            for (int i = 0; i < lst.Count; i++)
+                if (TuNgay.Date < lst[i].NgayTangGia.Value.Date && lst[i].NgayTangGia.Value.Date < DenNgay.Date)
+                {
+                    index = i;
+                }
+                else
+                    if (TuNgay.Date >= lst[i].NgayTangGia.Value.Date)
+                    {
+                        index = i;
+                    }
+            return lst[index];
+        }
+
         public bool Them(GiaNuoc gianuoc)
         {
             try
