@@ -111,7 +111,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void btnIn_Click(object sender, EventArgs e)
+        private void btnInKhongDongY_Click(object sender, EventArgs e)
         {
             if (_selectedindex != -1)
             {
@@ -240,6 +240,45 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 //}
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
+            }
+        }
+
+        private void btnInCapDinhMuc_Click(object sender, EventArgs e)
+        {
+            if (_selectedindex != -1)
+            {
+                TBKetQuaYCCatDM tb = _cTB.GetTBKetQuaYCCatDMByID(decimal.Parse(dgvDSTBKetQuaYCCatDM["SoPhieu", _selectedindex].Value.ToString()));
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
+
+                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+
+
+                dr["SoPhieu"] = tb.SoPhieu.ToString().Insert(tb.SoPhieu.ToString().Length - 2, "-");
+                dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(tb.NhanNK_MaCN.Value);
+                
+                if (!string.IsNullOrEmpty(tb.NhanNK_DanhBo))
+                    dr["DanhBoCat"] = tb.CatNK_DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["HoTenCat"] = tb.CatNK_HoTen;
+                dr["DiaChiCat"] = tb.CatNK_DiaChi;
+                
+                if (!string.IsNullOrEmpty(tb.CatNK_DanhBo))
+                    dr["DanhBoNhan"] = tb.NhanNK_DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["HoTenNhan"] = tb.NhanNK_HoTen;
+                dr["DiaChiNhan"] = tb.NhanNK_DiaChi;
+
+                dr["SoNKCat"] = tb.SoNKCat + " nhân khẩu (HK: " + tb.MaCT + ")";
+
+                dr["ChucVu"] = tb.ChucVu;
+                dr["NguoiKy"] = tb.NguoiKy;
+
+                dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
+
+                rptPhieuYCCatDM_A4 rpt = new rptPhieuYCCatDM_A4();
+                rpt.SetDataSource(dsBaoCao);
+
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
         }
     }

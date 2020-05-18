@@ -80,7 +80,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                return db.TBKetQuaYCCatDMs.OrderBy(item=>item.CreateDate).ToList();
+                return db.TBKetQuaYCCatDMs.OrderBy(item => item.CreateDate).OrderByDescending(item => item.CreateDate).ToList();
             }
             catch (Exception ex)
             {

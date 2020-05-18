@@ -273,8 +273,9 @@ namespace KTKS_DonKH.GUI.DonTu
                 }
                 txtNoiDungKhachHang.Text = "";
                 txtNoiDungThuongVu.Text = "";
-                txtVanDeKhac.Text = "";
+                
             }
+            txtVanDeKhac.Text = "";
             txtMaDon.Text = "";
             lbTruyThu.Text = "";
             txtNguoiLap.Text = "";

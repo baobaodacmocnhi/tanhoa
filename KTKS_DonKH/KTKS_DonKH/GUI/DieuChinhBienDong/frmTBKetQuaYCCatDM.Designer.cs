@@ -75,10 +75,11 @@
             this.NgayNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PYC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnIn = new System.Windows.Forms.Button();
+            this.btnInKhongDongY = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnInDongY = new System.Windows.Forms.Button();
+            this.btnInCapDinhMuc = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTBKetQuaYCCatDM)).BeginInit();
@@ -507,15 +508,15 @@
             this.PYC.Name = "PYC";
             this.PYC.Visible = false;
             // 
-            // btnIn
+            // btnInKhongDongY
             // 
-            this.btnIn.Location = new System.Drawing.Point(1010, 220);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(126, 25);
-            this.btnIn.TabIndex = 39;
-            this.btnIn.Text = "In Không Đồng Ý";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            this.btnInKhongDongY.Location = new System.Drawing.Point(982, 220);
+            this.btnInKhongDongY.Name = "btnInKhongDongY";
+            this.btnInKhongDongY.Size = new System.Drawing.Size(126, 25);
+            this.btnInKhongDongY.TabIndex = 39;
+            this.btnInKhongDongY.Text = "In Không Đồng Ý";
+            this.btnInKhongDongY.UseVisualStyleBackColor = true;
+            this.btnInKhongDongY.Click += new System.EventHandler(this.btnInKhongDongY_Click);
             // 
             // btnXoa
             // 
@@ -539,13 +540,23 @@
             // 
             // btnInDongY
             // 
-            this.btnInDongY.Location = new System.Drawing.Point(1167, 220);
+            this.btnInDongY.Location = new System.Drawing.Point(1114, 220);
             this.btnInDongY.Name = "btnInDongY";
             this.btnInDongY.Size = new System.Drawing.Size(86, 25);
             this.btnInDongY.TabIndex = 42;
             this.btnInDongY.Text = "In Đồng Ý";
             this.btnInDongY.UseVisualStyleBackColor = true;
             this.btnInDongY.Click += new System.EventHandler(this.btnInDongY_Click);
+            // 
+            // btnInCapDinhMuc
+            // 
+            this.btnInCapDinhMuc.Location = new System.Drawing.Point(1206, 220);
+            this.btnInCapDinhMuc.Name = "btnInCapDinhMuc";
+            this.btnInCapDinhMuc.Size = new System.Drawing.Size(86, 25);
+            this.btnInCapDinhMuc.TabIndex = 43;
+            this.btnInCapDinhMuc.Text = "In Cấp ĐM";
+            this.btnInCapDinhMuc.UseVisualStyleBackColor = true;
+            this.btnInCapDinhMuc.Click += new System.EventHandler(this.btnInCapDinhMuc_Click);
             // 
             // frmTBKetQuaYCCatDM
             // 
@@ -554,10 +565,11 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1304, 654);
+            this.Controls.Add(this.btnInCapDinhMuc);
             this.Controls.Add(this.btnInDongY);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
-            this.Controls.Add(this.btnIn);
+            this.Controls.Add(this.btnInKhongDongY);
             this.Controls.Add(this.dgvDSTBKetQuaYCCatDM);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.groupBox2);
@@ -605,7 +617,7 @@
         private System.Windows.Forms.TextBox txtDanhBo_Cat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvDSTBKetQuaYCCatDM;
-        private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.Button btnInKhongDongY;
         private System.Windows.Forms.TextBox txtSoPhieuNhan;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dateNhan;
@@ -628,5 +640,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn PYC;
+        private System.Windows.Forms.Button btnInCapDinhMuc;
     }
 }

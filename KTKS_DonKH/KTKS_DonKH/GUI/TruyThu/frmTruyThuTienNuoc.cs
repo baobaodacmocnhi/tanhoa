@@ -124,6 +124,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             txtMaDonCu.Text = "TBC" + cttttn.TruyThuTienNuoc.MaDonTBC.Value.ToString().Insert(cttttn.TruyThuTienNuoc.MaDonTBC.Value.ToString().Length - 2, "-");
                         }
             txtMaCTTTTN.Text = cttttn.IDCT.ToString().Insert(cttttn.IDCT.ToString().Length - 2, "-");
+            txtSoTien1m3.Text = cttttn.SoTien1m3.ToString();
             //chkXepDon.Checked = cttttn.XepDon;
             if (cttttn.NgayTinhTrang != null)
                 dateTinhTrang.Value = cttttn.NgayTinhTrang.Value;
@@ -216,6 +217,7 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             txtMaDonCu.Text = "";
             txtMaCTTTTN.Text = "";
+            txtSoTien1m3.Text = "";
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtLoTrinh.Text = "";
@@ -1283,6 +1285,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_cttttn != null)
                     {
+                        _cttttn.SoTien1m3 = int.Parse(txtSoTien1m3.Text.Trim());
                         //_cttttn.XepDon = chkXepDon.Checked;
                         _cttttn.DanhBo = txtDanhBo.Text.Trim();
                         _cttttn.HopDong = txtHopDong.Text.Trim();
