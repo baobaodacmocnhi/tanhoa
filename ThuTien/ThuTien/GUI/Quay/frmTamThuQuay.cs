@@ -106,12 +106,12 @@ namespace ThuTien.GUI.Quay
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                    if (item.Cells["Chon"].Value!=null && bool.Parse(item.Cells["Chon"].Value.ToString()))
+                    if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                     {
                         string loai = "";
                         if (_cTamThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString(), out loai))
                         {
-                            MessageBox.Show("Hóa Đơn này đã có Tạm Thu("+loai+")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Hóa Đơn này đã có Tạm Thu(" + loai + ")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
                             item.Selected = true;
                             return;
@@ -131,7 +131,7 @@ namespace ThuTien.GUI.Quay
                     _cTamThu.BeginTransaction();
                     decimal SoPhieu = _cTamThu.GetMaxSoPhieu();
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                        if (item.Cells["Chon"].Value!=null&&bool.Parse(item.Cells["Chon"].Value.ToString()))
+                        if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                         {
                             TAMTHU tamthu = new TAMTHU();
                             tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
@@ -176,7 +176,7 @@ namespace ThuTien.GUI.Quay
                 foreach (var item in lstTamThu)
                 {
                     HOADON hd = _cHoaDon.Get(item.SoHoaDon);
-                    if(Ky=="")
+                    if (Ky == "")
                         Ky += hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG);
                     else
                         Ky += ", " + hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG);
@@ -384,13 +384,13 @@ namespace ThuTien.GUI.Quay
                 TongCongSo += Int32.Parse(item.Cells["TongCong"].Value.ToString());
             }
 
-            if (_cXacNhanNo.CheckExist(txtDanhBo.Text.Trim(), DateTime.Now))
+            if (_cXacNhanNo.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now))
             {
                 MessageBox.Show("Danh Bộ này đã có Xác Nhận Nợ trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim());
+            HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
             TT_XacNhanNo xacnhanno = new TT_XacNhanNo();
             xacnhanno.TinhDenKy = "Tính đến Kỳ " + hoadon.KY + "/" + hoadon.NAM;
             if (_cLenhHuy.GetCatByDanhBo(hoadon.DANHBA))
@@ -451,7 +451,7 @@ namespace ThuTien.GUI.Quay
                 rptXacNhanNo rpt = new rptXacNhanNo();
                 rpt.SetDataSource(ds);
                 frmInQuay frm = new frmInQuay(rpt);
-                frm.Show();  
+                frm.Show();
             }
             while (dgvHoaDon.Rows.Count > 0)
             {
@@ -462,43 +462,43 @@ namespace ThuTien.GUI.Quay
         private void btnInTamThu_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow item in dgvTamThu.SelectedRows)
+            {
+                string Ky = "";
+                Int32 TongCongSo = 0;
+                List<TAMTHU> lstTamThu = _cTamThu.GetDSBySoPhieu(decimal.Parse(item.Cells["SoPhieu_TT"].Value.ToString()));
+                foreach (var itemTT in lstTamThu)
                 {
-                    string Ky = "";
-                    Int32 TongCongSo = 0;
-                    List<TAMTHU> lstTamThu = _cTamThu.GetDSBySoPhieu(decimal.Parse(item.Cells["SoPhieu_TT"].Value.ToString()));
-                    foreach (var itemTT in lstTamThu)
-                    {
-                        HOADON hd = _cHoaDon.Get(itemTT.SoHoaDon);
-                        Ky += hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG) + ", ";
-                        TongCongSo += (Int32)hd.TONGCONG;
-                    }
-
-                    dsBaoCao ds = new dsBaoCao();
-                    HOADON hdIn = _cHoaDon.Get(lstTamThu[0].SoHoaDon);
-                    DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
-                    dr["SoPhieu"] = lstTamThu[0].SoPhieu.ToString().Insert(lstTamThu[0].SoPhieu.ToString().Length - 2, "-");
-                    dr["DanhBo"] = lstTamThu[0].DANHBA.Insert(4, " ").Insert(8, " ");
-                    dr["HoTen"] = hdIn.TENKH;
-                    dr["DiaChi"] = hdIn.SO + " " + hdIn.DUONG;
-                    dr["MLT"] = hdIn.MALOTRINH.Insert(4, " ").Insert(2, " ");
-                    dr["GiaBieu"] = hdIn.GB;
-                    dr["DinhMuc"] = hdIn.DM;
-                    dr["Ky"] = Ky;
-                    dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongSo);
-                    dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
-                    if (hdIn.MaNV_HanhThu != null)
-                        dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hdIn.MaNV_HanhThu.Value);
-                    //dr["NhanVienQuay"] = CNguoiDung.HoTen;
-                    if (chkChuKy.Checked)
-                        dr["ChuKy"] = true;
-
-                    ds.Tables["PhieuTamThu"].Rows.Add(dr);
-
-                    rptPhieuTamThu rpt = new rptPhieuTamThu();
-                    rpt.SetDataSource(ds);
-                    frmInQuay frm = new frmInQuay(rpt);
-                    frm.Show();
+                    HOADON hd = _cHoaDon.Get(itemTT.SoHoaDon);
+                    Ky += hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG) + ", ";
+                    TongCongSo += (Int32)hd.TONGCONG;
                 }
+
+                dsBaoCao ds = new dsBaoCao();
+                HOADON hdIn = _cHoaDon.Get(lstTamThu[0].SoHoaDon);
+                DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
+                dr["SoPhieu"] = lstTamThu[0].SoPhieu.ToString().Insert(lstTamThu[0].SoPhieu.ToString().Length - 2, "-");
+                dr["DanhBo"] = lstTamThu[0].DANHBA.Insert(4, " ").Insert(8, " ");
+                dr["HoTen"] = hdIn.TENKH;
+                dr["DiaChi"] = hdIn.SO + " " + hdIn.DUONG;
+                dr["MLT"] = hdIn.MALOTRINH.Insert(4, " ").Insert(2, " ");
+                dr["GiaBieu"] = hdIn.GB;
+                dr["DinhMuc"] = hdIn.DM;
+                dr["Ky"] = Ky;
+                dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongSo);
+                dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
+                if (hdIn.MaNV_HanhThu != null)
+                    dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hdIn.MaNV_HanhThu.Value);
+                //dr["NhanVienQuay"] = CNguoiDung.HoTen;
+                if (chkChuKy.Checked)
+                    dr["ChuKy"] = true;
+
+                ds.Tables["PhieuTamThu"].Rows.Add(dr);
+
+                rptPhieuTamThu rpt = new rptPhieuTamThu();
+                rpt.SetDataSource(ds);
+                frmInQuay frm = new frmInQuay(rpt);
+                frm.Show();
+            }
         }
 
         private void btnInDSTamThu_Click(object sender, EventArgs e)
@@ -522,7 +522,7 @@ namespace ThuTien.GUI.Quay
                     dr["Loai"] = "CQ";
                 else
                     dr["Loai"] = "TG";
-                
+
                 ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
             }
             rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
@@ -585,11 +585,11 @@ namespace ThuTien.GUI.Quay
                     {
                         TT_XacNhanNo xacnhanno = _cXacNhanNo.GetBySoPhieu(int.Parse(item.Cells["SoPhieu_XacNhanNo"].Value.ToString()));
                         if (!_cXacNhanNo.Xoa(xacnhanno))
-                            {
-                                _cXacNhanNo.Rollback();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                        {
+                            _cXacNhanNo.Rollback();
+                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
                     _cXacNhanNo.CommitTransaction();
                     btnXem_XacNhanNo.PerformClick();
@@ -604,7 +604,7 @@ namespace ThuTien.GUI.Quay
         {
             if (dgvXacNhanNo.Columns[e.ColumnIndex].Name == "SoPhieu_XacNhanNo" && e.Value != null)
             {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length-2, "-");
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
             if (dgvXacNhanNo.Columns[e.ColumnIndex].Name == "DanhBo_XacNhanNo" && e.Value != null)
             {
@@ -804,6 +804,48 @@ namespace ThuTien.GUI.Quay
             //                dgvXacNhanNo.DataSource = _cXacNhanNo.GetDS(txtDanhBo.Text.Trim().Replace(" ", ""));
             //            }
             //}
+        }
+
+        private void btnChuyenDangNgan_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen("mnuDangNganQuay", "Them"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn Đăng Ngân?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        foreach (DataGridViewRow item in dgvTamThu.Rows)
+                            if (item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
+                            {
+                                if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                                {
+                                    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    item.Selected = true;
+                                    return;
+                                }
+                                if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                                {
+                                    MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    item.Selected = true;
+                                    return;
+                                }
+                            }
+                        foreach (DataGridViewRow item in dgvTamThu.Rows)
+                            if (item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
+                            {
+                                _cHoaDon.DangNgan("Quay", item.Cells["NgayGiaiTrach_TT"].Value.ToString(), CNguoiDung.MaND);
+                            }
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnXem.PerformClick();
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Đăng Ngân Quầy Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

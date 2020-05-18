@@ -92,7 +92,7 @@ namespace ThuTien.DAL.Quay
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
         }
 
-        public TT_LenhHuy getMoiNhat(string DanhBo) 
+        public TT_LenhHuy getMoiNhat(string DanhBo)
         {
             if (_db.TT_LenhHuys.Any(item => item.DanhBo == DanhBo) == true)
                 return _db.TT_LenhHuys.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).First();
@@ -244,7 +244,7 @@ namespace ThuTien.DAL.Quay
                         join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.NAM==Nam && itemHD.NGAYGIAITRACH == null
+                        where itemHD.NAM == Nam && itemHD.NGAYGIAITRACH == null
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
@@ -304,7 +304,7 @@ namespace ThuTien.DAL.Quay
                         from itemtableND in tableND.DefaultIfEmpty()
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                            && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                           && itemHD.NAM==Nam && itemHD.NGAYGIAITRACH == null
+                           && itemHD.NAM == Nam && itemHD.NGAYGIAITRACH == null
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
@@ -390,7 +390,7 @@ namespace ThuTien.DAL.Quay
                         from itemtableND in tableND.DefaultIfEmpty()
                         join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
                         from itemtableDN in tableDN.DefaultIfEmpty()
-                        where itemHD.NAM==Nam && itemHD.NGAYGIAITRACH != null
+                        where itemHD.NAM == Nam && itemHD.NGAYGIAITRACH != null
                         orderby itemHD.NGAYGIAITRACH descending
                         select new
                         {
@@ -456,7 +456,7 @@ namespace ThuTien.DAL.Quay
                         from itemtableDN in tableDN.DefaultIfEmpty()
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                            && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                           && itemHD.NAM==Nam && itemHD.NGAYGIAITRACH != null
+                           && itemHD.NAM == Nam && itemHD.NGAYGIAITRACH != null
                         orderby itemHD.NGAYGIAITRACH descending
                         select new
                         {
@@ -512,11 +512,12 @@ namespace ThuTien.DAL.Quay
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).TinhTrang;
         }
 
+        //thời hạn lùi 7 ngày
         public bool GetCatByDanhBo(string DanhBo)
         {
             var query = from itemLH in _db.TT_LenhHuys
                         join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
-                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH==null
+                        where itemHD.DANHBA == DanhBo && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.AddDays(7).Date >= DateTime.Now.Date)
                         orderby itemHD.ID_HOADON descending
                         select new
                         {

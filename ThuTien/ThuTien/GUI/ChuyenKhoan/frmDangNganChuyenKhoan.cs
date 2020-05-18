@@ -213,7 +213,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     }
                     if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Text))
                     {
-                        MessageBox.Show("Hóa Đơn đã DCHD Tiền Dư " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         lstHD.Focus();
                         item.Selected = true;
                         item.Focused = true;

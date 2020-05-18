@@ -771,52 +771,79 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnChuyenChanTienDu_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuChanTienDu", "Them"))
+            try
             {
-                if (MessageBox.Show("Bạn có chắc chắn Chuyển Chặn Tiền Dư từ Đợt " + cmbFromDot.SelectedItem.ToString() + " -> " + cmbToDot.SelectedItem.ToString() + " ?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (CNguoiDung.CheckQuyen("mnuChanTienDu", "Them"))
                 {
-                    foreach (DataGridViewRow item in dgvTienDu.Rows)
+                    if (MessageBox.Show("Bạn có chắc chắn Chuyển Chặn Tiền Dư từ Đợt " + cmbFromDot.SelectedItem.ToString() + " -> " + cmbToDot.SelectedItem.ToString() + " ?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        List<HOADON> lstHD = _cHoaDon.getDSTon_KhongChanTienDu_KhongDCHD(item.Cells["DanhBo_TienDu"].Value.ToString());
-                        if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()))
-                            //số tiền dư > tổng cộng => thêm vào chặn tiền
-                            if (int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
-                            {
-                                foreach (HOADON itemHD in lstHD)
+                        foreach (DataGridViewRow item in dgvTienDu.Rows)
+                        {
+                            List<HOADON> lstHD = _cHoaDon.getDSTon_KhongChanTienDu_KhongDCHD(item.Cells["DanhBo_TienDu"].Value.ToString());
+                            if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()))
+                                //số tiền dư > tổng cộng => thêm vào chặn tiền
+                                if (int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
                                 {
-                                    itemHD.KhoaTienDu = true;
-                                    itemHD.ChanTienDu = true;
-                                    itemHD.NgayChanTienDu = DateTime.Now;
-                                    itemHD.NGAYGIAITRACH = DateTime.Now;
-                                    itemHD.Name_PC = CNguoiDung.Name_PC;
-                                    itemHD.IP_PC = CNguoiDung.IP_PC;
-                                    _cHoaDon.Sua(itemHD);
-                                }
+                                    foreach (HOADON itemHD in lstHD)
+                                    {
+                                        itemHD.KhoaTienDu = true;
+                                        itemHD.ChanTienDu = true;
+                                        itemHD.NgayChanTienDu = DateTime.Now;
+                                        itemHD.NGAYGIAITRACH = DateTime.Now;
+                                        itemHD.Name_PC = CNguoiDung.Name_PC;
+                                        itemHD.IP_PC = CNguoiDung.IP_PC;
+                                        _cHoaDon.Sua(itemHD);
+                                    }
 
-                            }
-                            //số tiền dư < tổng cộng => thêm vào điều chỉnh tiền
-                            else
-                            {
-                                foreach (HOADON itemHD in lstHD)
-                                    if (itemHD.DCHD == false)
-                                        using (TransactionScope scope = new TransactionScope())
-                                        {
-                                            itemHD.DCHD = true;
-                                            itemHD.Ngay_DCHD = DateTime.Now;
-                                            itemHD.TongCongTruoc_DCHD = (int)itemHD.TONGCONG.Value;
-                                            itemHD.TienDuTruoc_DCHD = _cTienDu.GetTienDu(itemHD.DANHBA);
-                                            itemHD.TONGCONG -= itemHD.TienDuTruoc_DCHD;
-                                            itemHD.Name_PC = CNguoiDung.Name_PC;
-                                            itemHD.IP_PC = CNguoiDung.IP_PC;
-                                            if (_cHoaDon.Sua(itemHD))
-                                                scope.Complete();
-                                        }
-                            }
+                                }
+                                //số tiền dư < tổng cộng => thêm vào điều chỉnh tiền
+                                else
+                                {
+                                    using (TransactionScope scope = new TransactionScope())
+                                    {
+                                        int TienDu = _cTienDu.GetTienDu(lstHD[0].DANHBA);
+                                        foreach (HOADON itemHD in lstHD)
+                                            if (itemHD.DCHD == false)
+                                            {
+                                                if (TienDu > 0 && TienDu >= (int)itemHD.TONGCONG.Value)
+                                                {
+                                                    itemHD.DCHD = true;
+                                                    itemHD.Ngay_DCHD = DateTime.Now;
+                                                    itemHD.TongCongTruoc_DCHD = (int)itemHD.TONGCONG.Value;
+                                                    itemHD.TienDuTruoc_DCHD = (int)itemHD.TONGCONG.Value;
+                                                    itemHD.TONGCONG -= TienDu;
+                                                    itemHD.Name_PC = CNguoiDung.Name_PC;
+                                                    itemHD.IP_PC = CNguoiDung.IP_PC;
+                                                    _cHoaDon.Sua(itemHD);
+                                                    TienDu -= itemHD.TongCongTruoc_DCHD.Value;
+                                                }
+                                                else
+                                                    if (TienDu > 0)
+                                                    {
+                                                        itemHD.DCHD = true;
+                                                        itemHD.Ngay_DCHD = DateTime.Now;
+                                                        itemHD.TongCongTruoc_DCHD = (int)itemHD.TONGCONG.Value;
+                                                        itemHD.TienDuTruoc_DCHD = TienDu;
+                                                        itemHD.TONGCONG -= TienDu;
+                                                        itemHD.Name_PC = CNguoiDung.Name_PC;
+                                                        itemHD.IP_PC = CNguoiDung.IP_PC;
+                                                        _cHoaDon.Sua(itemHD);
+                                                        TienDu -= TienDu;
+                                                    }
+                                            }
+                                        scope.Complete();
+                                    }
+                                }
+                        }
                     }
                 }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form Tạm Thu Chuyển Khoản", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form Tạm Thu Chuyển Khoản", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXem_ThongKe_Click(object sender, EventArgs e)

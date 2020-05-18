@@ -51,7 +51,7 @@ namespace ThuTien.GUI.ToTruong
             dateGiaiTrach.Value = DateTime.Now;
 
             tabTuGia.Text = "Hóa Đơn";
-            tabControl.TabPages.Remove(tabCoQuan);
+            //tabControl.TabPages.Remove(tabTienDu);
         }
 
         public void CountdgvHDTuGia()
@@ -112,9 +112,9 @@ namespace ThuTien.GUI.ToTruong
                 CountdgvHDTuGia();
             }
             else
-                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                if (tabControl.SelectedTab.Name == "tabTienDu")
                 {
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNgan("CQ", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                    dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_CoDCHD( (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
                     CoungdgvHDCoQuan();
                 }
         }
@@ -216,7 +216,7 @@ namespace ThuTien.GUI.ToTruong
                         }
                         if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Text))
                         {
-                            MessageBox.Show("Hóa Đơn đã DCHD Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             lstHD.Focus();
                             item.Selected = true;
                             item.Focused = true;
@@ -413,6 +413,11 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnInPhieu_Click(object sender, EventArgs e)
         {
+            //if (_cHoaDon.checkExist_DangNganCoDCHD(CNguoiDung.MaND, dateGiaiTrach.Value) == true)
+            //{
+            //    MessageBox.Show("Có Hóa Đơn Điều Chỉnh,\nVui lòng chuyển cho Chuyển Khoản đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
             dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
@@ -451,7 +456,6 @@ namespace ThuTien.GUI.ToTruong
                         ds.Tables["PhieuDangNgan"].Rows.Add(dr);
                     }
                 }
-            
 
             rptPhieuDangNgan rpt = new rptPhieuDangNgan();
             rpt.SetDataSource(ds);

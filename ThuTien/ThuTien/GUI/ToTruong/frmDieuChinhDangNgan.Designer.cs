@@ -60,7 +60,7 @@
             this.ThueGTGT_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhiBVMT_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabCoQuan = new System.Windows.Forms.TabPage();
+            this.tabTienDu = new System.Windows.Forms.TabPage();
             this.txtTongHD_CQ = new System.Windows.Forms.TextBox();
             this.txtTongGiaBan_CQ = new System.Windows.Forms.TextBox();
             this.txtTongThueGTGT_CQ = new System.Windows.Forms.TextBox();
@@ -94,7 +94,7 @@
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
-            this.tabCoQuan.SuspendLayout();
+            this.tabTienDu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,7 +177,7 @@
             // tabControl
             // 
             this.tabControl.Controls.Add(this.tabTuGia);
-            this.tabControl.Controls.Add(this.tabCoQuan);
+            this.tabControl.Controls.Add(this.tabTienDu);
             this.tabControl.Location = new System.Drawing.Point(258, 39);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -371,21 +371,21 @@
             this.TongCong_TG.Name = "TongCong_TG";
             this.TongCong_TG.ReadOnly = true;
             // 
-            // tabCoQuan
+            // tabTienDu
             // 
-            this.tabCoQuan.Controls.Add(this.txtTongHD_CQ);
-            this.tabCoQuan.Controls.Add(this.txtTongGiaBan_CQ);
-            this.tabCoQuan.Controls.Add(this.txtTongThueGTGT_CQ);
-            this.tabCoQuan.Controls.Add(this.txtTongPhiBVMT_CQ);
-            this.tabCoQuan.Controls.Add(this.dgvHDCoQuan);
-            this.tabCoQuan.Controls.Add(this.txtTongCong_CQ);
-            this.tabCoQuan.Location = new System.Drawing.Point(4, 22);
-            this.tabCoQuan.Name = "tabCoQuan";
-            this.tabCoQuan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCoQuan.Size = new System.Drawing.Size(838, 570);
-            this.tabCoQuan.TabIndex = 1;
-            this.tabCoQuan.Text = "Cơ Quan";
-            this.tabCoQuan.UseVisualStyleBackColor = true;
+            this.tabTienDu.Controls.Add(this.txtTongHD_CQ);
+            this.tabTienDu.Controls.Add(this.txtTongGiaBan_CQ);
+            this.tabTienDu.Controls.Add(this.txtTongThueGTGT_CQ);
+            this.tabTienDu.Controls.Add(this.txtTongPhiBVMT_CQ);
+            this.tabTienDu.Controls.Add(this.dgvHDCoQuan);
+            this.tabTienDu.Controls.Add(this.txtTongCong_CQ);
+            this.tabTienDu.Location = new System.Drawing.Point(4, 22);
+            this.tabTienDu.Name = "tabTienDu";
+            this.tabTienDu.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTienDu.Size = new System.Drawing.Size(838, 570);
+            this.tabTienDu.TabIndex = 1;
+            this.tabTienDu.Text = "Tiền Dư";
+            this.tabTienDu.UseVisualStyleBackColor = true;
             // 
             // txtTongHD_CQ
             // 
@@ -699,8 +699,8 @@
             this.tabTuGia.ResumeLayout(false);
             this.tabTuGia.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).EndInit();
-            this.tabCoQuan.ResumeLayout(false);
-            this.tabCoQuan.PerformLayout();
+            this.tabTienDu.ResumeLayout(false);
+            this.tabTienDu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -721,7 +721,7 @@
         private System.Windows.Forms.TabPage tabTuGia;
         private System.Windows.Forms.TextBox txtTongCong_TG;
         private System.Windows.Forms.DataGridView dgvHDTuGia;
-        private System.Windows.Forms.TabPage tabCoQuan;
+        private System.Windows.Forms.TabPage tabTienDu;
         private System.Windows.Forms.TextBox txtTongCong_CQ;
         private System.Windows.Forms.DateTimePicker dateGiaiTrachSua;
         private System.Windows.Forms.Label label7;

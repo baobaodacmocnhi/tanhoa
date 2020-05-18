@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1215</ApplicationRevision>
+    <ApplicationRevision>1216</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -623,6 +623,7 @@
     <Compile Include="DAL\Doi\CHoaDon.cs" />
     <Compile Include="DAL\Doi\CHoaDonTon.cs" />
     <Compile Include="DAL\Doi\CDangKy.cs" />
+    <Compile Include="DAL\Doi\CChotDangNgan.cs" />
     <Compile Include="DAL\Doi\CNguoiKy.cs" />
     <Compile Include="DAL\Doi\CNiemChi.cs" />
     <Compile Include="DAL\Doi\CPhiMoNuocDoi.cs" />
