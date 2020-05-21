@@ -331,11 +331,11 @@ namespace ThuTien.GUI.HanhThu
 
         private void btnInPhieu_Click(object sender, EventArgs e)
         {
-            //if (_cHoaDon.checkExist_DangNganCoDCHD(CNguoiDung.MaND, dateGiaiTrach.Value) == true)
-            //{
-            //    MessageBox.Show("Có Hóa Đơn Điều Chỉnh,\nVui lòng chuyển cho Chuyển Khoản đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+            if (_cHoaDon.checkExist_DangNganCoDCHD(CNguoiDung.MaND, dateGiaiTrach.Value) == true)
+            {
+                MessageBox.Show("Có Hóa Đơn Điều Chỉnh,\nVui lòng chuyển cho Chuyển Khoản đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             dsBaoCao ds = new dsBaoCao();
             dsBaoCao dsPhanKyLon = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")

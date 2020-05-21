@@ -135,6 +135,7 @@ namespace ThuTien.GUI.DongNuoc
                         dongnuoc.HoTen = lstHDTemp[0].TENKH;
                         dongnuoc.DiaChi = lstHDTemp[0].SO + " " + lstHDTemp[0].DUONG;
                         dongnuoc.MLT = lstHDTemp[0].MALOTRINH;
+                        //dongnuoc.MaNV_DongNuoc = 0;
                         //dongnuoc.CreateBy = lstHDTemp[0].MaNV_HanhThu;
                         //dongnuoc.CreateDate = dateTu.Value;
 
