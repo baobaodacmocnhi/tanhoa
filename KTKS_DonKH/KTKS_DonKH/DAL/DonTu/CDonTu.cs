@@ -57,7 +57,7 @@ namespace KTKS_DonKH.DAL.DonTu
         {
             try
             {
-
+                db.DonTu_LichSus.DeleteAllOnSubmit(entity.DonTu_LichSus.ToList());
                 db.DonTu_ChiTiets.DeleteAllOnSubmit(entity.DonTu_ChiTiets.ToList());
                 db.DonTus.DeleteOnSubmit(entity);
                 db.SubmitChanges();
