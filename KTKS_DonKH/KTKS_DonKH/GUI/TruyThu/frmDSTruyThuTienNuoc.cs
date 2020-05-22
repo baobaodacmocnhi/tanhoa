@@ -35,6 +35,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             int TongTien = 0;
             foreach (DataGridViewRow item in dgvDSTruyThuTienNuoc.Rows)
             {
+                if (item.Cells["Tongm3"].Value.ToString()!="")
                 Tongm3 += int.Parse(item.Cells["Tongm3"].Value.ToString());
                 TongTien += int.Parse(item.Cells["TongTien"].Value.ToString());
             }

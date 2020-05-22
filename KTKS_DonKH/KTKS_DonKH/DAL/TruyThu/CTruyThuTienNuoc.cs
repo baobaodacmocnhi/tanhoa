@@ -278,7 +278,7 @@ namespace KTKS_DonKH.DAL.TruyThu
                             //item.TongTien,
                             //item.Tongm3BinhQuan,
                             TongTien = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value : 0,
-                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? (item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3*1.15) : 0,
+                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? Math.Round((item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3 * 1.15), MidpointRounding.AwayFromZero) : 0,
                             Tongm3BinhQuanM = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.m3BinhQuan) : 0,
                         };
             return LINQToDataTable(query);
@@ -308,7 +308,7 @@ namespace KTKS_DonKH.DAL.TruyThu
                             //item.TongTien,
                             //item.Tongm3BinhQuan,
                             TongTien = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value : 0,
-                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? (item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3*1.15) : 0,
+                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? Math.Round((item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3 * 1.15), MidpointRounding.AwayFromZero) : 0,
                             Tongm3BinhQuanM = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.m3BinhQuan) : 0,
                         };
             return LINQToDataTable(query);
@@ -338,7 +338,7 @@ namespace KTKS_DonKH.DAL.TruyThu
                             //item.TongTien,
                             //item.Tongm3BinhQuan,
                             TongTien = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value : 0,
-                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? (item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3*1.15) : 0,
+                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? Math.Round((item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3 * 1.15), MidpointRounding.AwayFromZero) : 0,
                             Tongm3BinhQuanM = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.m3BinhQuan) : 0,
                         };
             return LINQToDataTable(query);
@@ -368,7 +368,7 @@ namespace KTKS_DonKH.DAL.TruyThu
                             //item.TongTien,
                             //item.Tongm3BinhQuan,
                             TongTien = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value : 0,
-                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? (item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3*1.15) : 0,
+                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? Math.Round((item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3 * 1.15), MidpointRounding.AwayFromZero) : 0,
                             Tongm3BinhQuanM = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.m3BinhQuan) : 0,
                             //XepDon = item.TinhTrang != null ? item.TinhTrang != "" ? item.TinhTrang != "Đang gửi thư mời" ? true : false : false : false,
                             item.TinhTrang,
@@ -400,7 +400,7 @@ namespace KTKS_DonKH.DAL.TruyThu
                             //item.TongTien,
                             //item.Tongm3BinhQuan,
                             TongTien = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value : 0,
-                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? (item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3*1.15) : 0,
+                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? Math.Round((item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3 * 1.15), MidpointRounding.AwayFromZero) : 0,
                             Tongm3BinhQuanM = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.m3BinhQuan) : 0,
                             //XepDon = item.TinhTrang != null ? item.TinhTrang != "" ? item.TinhTrang != "Đang gửi thư mời" ? true : false : false : false,
                             item.TinhTrang,
@@ -431,7 +431,7 @@ namespace KTKS_DonKH.DAL.TruyThu
                             //item.TongTien,
                             //item.Tongm3BinhQuan,
                             TongTien = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value : 0,
-                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? (item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3*1.15) : 0,
+                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? Math.Round((item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3 * 1.15), MidpointRounding.AwayFromZero) : 0,
                             Tongm3BinhQuanM = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.m3BinhQuan) : 0,
                             //XepDon = item.TinhTrang != null ? item.TinhTrang != "" ? item.TinhTrang != "Đang gửi thư mời" ? true : false : false : false,
                             item.TinhTrang,
@@ -463,7 +463,7 @@ namespace KTKS_DonKH.DAL.TruyThu
                             //item.TongTien,
                             //item.Tongm3BinhQuan,
                             TongTien = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value : 0,
-                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? (item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3*1.15) : 0,
+                            Tongm3BinhQuan = item.TruyThuTienNuoc_HoaDons.Count > 0 ? Math.Round((item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.SoTien1m3 * 1.15), MidpointRounding.AwayFromZero) : 0,
                             Tongm3BinhQuanM = item.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.m3BinhQuan) : 0,
                             //XepDon = item.TinhTrang != null ? item.TinhTrang != "" ? item.TinhTrang != "Đang gửi thư mời" ? true : false : false : false,
                             item.TinhTrang,
@@ -716,7 +716,7 @@ namespace KTKS_DonKH.DAL.TruyThu
                             //item.TongTien,
                             //item.Tongm3BinhQuan,
                             TongTien = item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc_HoaDons.Count > 0 ? item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value : 0,
-                            Tongm3BinhQuan = item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc_HoaDons.Count > 0 ? (item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.TruyThuTienNuoc_ChiTiet.SoTien1m3*1.15) : 0,
+                            Tongm3BinhQuan = item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc_HoaDons.Count > 0 ? (item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongMoi).Value - item.TruyThuTienNuoc_ChiTiet.TruyThuTienNuoc_HoaDons.Sum(itemCT => itemCT.TongCongCu).Value) / (item.TruyThuTienNuoc_ChiTiet.SoTien1m3 * 1.15) : 0,
                             //XepDon = item.TinhTrang != null ? item.TinhTrang != "" ? item.TinhTrang != "Đang gửi thư mời" ? true : false : false : false,
                             //item.TinhTrang,
                         };
