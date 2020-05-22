@@ -598,9 +598,9 @@
             this.chkAll.AutoSize = true;
             this.chkAll.Location = new System.Drawing.Point(74, 132);
             this.chkAll.Name = "chkAll";
-            this.chkAll.Size = new System.Drawing.Size(125, 17);
+            this.chkAll.Size = new System.Drawing.Size(183, 17);
             this.chkAll.TabIndex = 32;
-            this.chkAll.Text = "Active Tất Cả Mobile";
+            this.chkAll.Text = "Active Tất Cả Đăng Ngân Mobile";
             this.chkAll.UseVisualStyleBackColor = true;
             this.chkAll.CheckedChanged += new System.EventHandler(this.chkAll_CheckedChanged);
             // 
@@ -614,7 +614,7 @@
             // ActiveMobile
             // 
             this.ActiveMobile.DataPropertyName = "ActiveMobile";
-            this.ActiveMobile.HeaderText = "Mobile";
+            this.ActiveMobile.HeaderText = "ĐN Mobile";
             this.ActiveMobile.Name = "ActiveMobile";
             this.ActiveMobile.Width = 40;
             // 
