@@ -44,6 +44,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
                 dr["TongCongMoi"] = item["TongTien"];
                 dr["NhanVien"] = CTaiKhoan.HoTen;
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
             }
@@ -75,6 +76,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
                 dr["LoaiBaoCao"] = cmbTinhTrang.Text.ToUpper();
                 dr["MaDon"] = item["MaDon"].ToString();
+                dr["ID"] = item["IDCT"].ToString().Insert(item["IDCT"].ToString().Length - 2, "-");
                 dr["SoCongVan"] = item["SoCongVan"];
                 dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = item["HoTen"];
@@ -84,6 +86,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
                 dr["TongCongMoi"] = item["TongTien"];
                 dr["NhanVien"] = CTaiKhoan.HoTen;
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
             }
@@ -115,6 +118,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
                 dr["LoaiBaoCao"] = cmbTinhTrang_TheoTinhTrang.Text.ToUpper();
                 dr["MaDon"] = item["MaDon"].ToString();
+                dr["ID"] = item["IDCT"].ToString().Insert(item["IDCT"].ToString().Length-2, "-");
                 dr["SoCongVan"] = item["SoCongVan"];
                 dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = item["HoTen"];
@@ -124,6 +128,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
                 dr["TongCongMoi"] = item["TongTien"];
                 dr["NhanVien"] = CTaiKhoan.HoTen;
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
             }
@@ -150,6 +155,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
                 dr["TongCongMoi"] = item["TongTien"];
                 dr["NhanVien"] = CTaiKhoan.HoTen;
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
             }

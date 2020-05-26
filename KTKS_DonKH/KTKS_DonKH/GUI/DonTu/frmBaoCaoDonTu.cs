@@ -195,7 +195,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         }
                         dr["MaDon"] = itemRow["MaDon"].ToString();
                         //dr["STT"] = itemRow["STT"].ToString();
-                        //dr["TenLD"] = itemRow["TenLD"];
+                        dr["NgayNhan"] = itemRow["NgayChuyen"];
                         dr["SoCongVan"] = itemRow["SoCongVan"];
                         if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
                             dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
@@ -204,6 +204,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         dr["NoiDung"] = itemRow["NoiDung"];
                         dr["GhiChuChuyenKT"] = itemRow["GhiChu"];
                         dr["NguoiDi"] = itemRow["NguoiDi"];
+                        dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                         dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
                     }
@@ -220,7 +221,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     }
                     dr["MaDon"] = itemRow["MaDon"].ToString();
                     //dr["STT"] = itemRow["STT"].ToString();
-                    //dr["TenLD"] = itemRow["TenLD"];
+                    dr["NgayNhan"] = itemRow["NgayChuyen"];
                     dr["SoCongVan"] = itemRow["SoCongVan"];
                     if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
                         dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
@@ -231,6 +232,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["NguoiDi"] = itemRow["NguoiDi"];
                     dr["DaGiaiQuyet"] = itemRow["GiaiQuyet"];
                     dr["NgayGiaiQuyet"] = itemRow["NgayGiaiQuyet"];
+                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                     dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
                 }
@@ -301,6 +303,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["DanhBo"] = item["DanhBo"];
                     dr["HoTen"] = item["HoTen"];
                     dr["DiaChi"] = item["DiaChi"];
+                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                     dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
                 }
@@ -369,6 +372,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["TuNgay"] = dateTu_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = dateDen_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
                     dr["MaDon"] = item["MaDonChiTiet"];
+                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                     dsBaoCao.Tables["DanhSachDonKH"].Rows.Add(dr);
                 }
@@ -399,6 +403,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["TuNgay"] = dateTu_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = dateDen_ThongKeNhomDon_3To.Value.ToString("dd/MM/yyyy");
                     dr["MaDon"] = item["MaDonChiTiet"];
+                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                     dsBaoCao.Tables["DanhSachDonKH"].Rows.Add(dr);
                 }
@@ -428,6 +433,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 //dr["ChuyenKhac"] = item["ChuyenTrucTiep"];
                 dr["DaKTXM"] = item["DaKTXM"];
                 dr["NguoiLap"] = CTaiKhoan.HoTen;
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                 dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
             }
@@ -455,6 +461,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["DanhBo"] = item["DanhBo"];
                     dr["HoTen"] = item["HoTen"];
                     dr["DiaChi"] = item["DiaChi"];
+                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                     dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
                 }
@@ -492,6 +499,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["HoTen"] = item["HoTen"];
                     dr["DiaChi"] = item["DiaChi"];
                     dr["NhomDon"] = item["NhomDon"];
+                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
                     dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
                 }
