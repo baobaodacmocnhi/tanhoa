@@ -357,7 +357,7 @@ namespace KTKS_DonKH.DAL.DonTu
             switch (Loai)
             {
                 case "Quầy":
-                    lst = db.DonTus.Where(item => item.TinhTrang != "Hoàn Thành" && item.CreateDate.Value <= ToCreateDate && item.VanPhong == false).OrderBy(item=>item.CreateDate).ToList();
+                    lst = db.DonTus.Where(item => item.TinhTrang != "Hoàn Thành" && item.CreateDate.Value <= ToCreateDate && item.VanPhong == false).OrderBy(item => item.CreateDate).ToList();
                     break;
                 case "Văn Phòng":
                     lst = db.DonTus.Where(item => item.TinhTrang != "Hoàn Thành" && item.CreateDate.Value <= ToCreateDate && item.VanPhong == true).OrderBy(item => item.CreateDate).ToList();
@@ -988,6 +988,8 @@ namespace KTKS_DonKH.DAL.DonTu
                             itemDon.DanhBo,
                             itemDon.DiaChi,
                             NoiDungDon = itemDon.DonTu.Name_NhomDon != "" ? itemDon.DonTu.Name_NhomDon : itemDon.DonTu.VanDeKhac,
+                            item.Nhan,
+                            item.NgayNhan,
                         };
             return LINQToDataTable(query);
         }
@@ -1850,7 +1852,6 @@ namespace KTKS_DonKH.DAL.DonTu
 
         public DataTable getDS_ChuyenKTXM(string KyHieuTo, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
         {
-            DataTable dt = new DataTable();
             string sql = "select MaDon=case when (select COUNT(MaDon) from DonTu_ChiTiet where MaDon=dt.MaDon)=1 then convert(char(8),dtct.MaDon) else convert(char(8),dtct.MaDon)+'.'+convert(varchar(3),dtct.STT) end,"
                         + " dt.SoCongVan,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,dtls.NgayChuyen,GhiChu=dtls.NoiDung,"
                         + " NoiDung=case when dt.Name_NhomDon != '' then dt.Name_NhomDon else dt.VanDeKhac end,"
@@ -1883,7 +1884,6 @@ namespace KTKS_DonKH.DAL.DonTu
 
         public DataTable getDS_ChuyenKTXM(string KyHieuTo, string SoCongVan)
         {
-            DataTable dt = new DataTable();
             string sql = "select MaDon=case when (select COUNT(MaDon) from DonTu_ChiTiet where MaDon=dt.MaDon)=1 then convert(char(8),dtct.MaDon) else convert(char(8),dtct.MaDon)+'.'+convert(varchar(3),dtct.STT) end,"
                         + " dt.SoCongVan,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,dtls.NgayChuyen,GhiChu=dtls.NoiDung,"
                         + " NoiDung=case when dt.Name_NhomDon != '' then dt.Name_NhomDon else dt.VanDeKhac end,"
@@ -1911,6 +1911,21 @@ namespace KTKS_DonKH.DAL.DonTu
             }
             sql += " and dt.SoCongVan like N'%" + SoCongVan + "%'";
             sql += " order by dtct.MaDon,dtct.STT";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getDS_ChuyenKTXM_KyNhan(int MaNV, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
+        {
+            string sql = "select MaDon=case when (select COUNT(MaDon) from DonTu_ChiTiet where MaDon=dt.MaDon)=1 then convert(char(8),dtct.MaDon) else convert(char(8),dtct.MaDon)+'.'+convert(varchar(3),dtct.STT) end,"
+                        + " dt.SoCongVan,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,dtls.NgayChuyen,GhiChu=dtls.NoiDung,"
+                        + " NoiDung=case when dt.Name_NhomDon != '' then dt.Name_NhomDon else dt.VanDeKhac end,"
+                        + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM),Nhan,NgayNhan,dtls.ID"
+                        + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
+                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5"
+                        + " and dtls.ID_KTXM=" + MaNV
+                        + " and CAST(dtls.NgayChuyen as date)>='" + FromNgayChuyen.ToString("yyyyMMdd") + "' and CAST(dtls.NgayChuyen as date)<='" + ToNgayChuyen.ToString("yyyyMMdd") + "'"
+                        + " order by dtct.MaDon,dtct.STT";
+
             return ExecuteQuery_DataTable(sql);
         }
     }

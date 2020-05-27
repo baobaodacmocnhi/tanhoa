@@ -18,6 +18,7 @@ using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.BaoCao.KiemTraXacMinh;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
@@ -26,15 +27,16 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CKTXM _cKTXM = new CKTXM();
         CDonKH _cDonKH = new CDonKH();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
+        CDonTu _cDonTu = new CDonTu();
 
         public frmDSKTXM()
         {
             InitializeComponent();
         }
-        
+
         private void frmKTXM_Load(object sender, EventArgs e)
         {
-            dgvDSCTKTXM.AutoGenerateColumns = false;
+            dgvDanhSach.AutoGenerateColumns = false;
 
             cmbTimTheo.SelectedItem = "Ngày";
         }
@@ -61,82 +63,86 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     panel_KhoangThoiGian.Visible = false;
                     break;
             }
-            dgvDSCTKTXM.DataSource = null;
+            dgvDanhSach.DataSource = null;
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.TruongPhong == true || CTaiKhoan.ToTruong == true || CTaiKhoan.ThuKy == true)
-                switch (cmbTimTheo.SelectedItem.ToString())
-                {
-                    case "Mã Đơn":
-                        if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                            MessageBox.Show("Liên hệ BảoBảo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        else
-                            if (txtNoiDungTimKiem.Text.Trim() != "")
-                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                    dgvDSCTKTXM.DataSource = _cKTXM.getDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                else
-                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                        dgvDSCTKTXM.DataSource = _cKTXM.getDS("TXL",  decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                    else
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                            dgvDSCTKTXM.DataSource = _cKTXM.getDS("TBC",  decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                        else
-                                            dgvDSCTKTXM.DataSource = _cKTXM.getDS("",  decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
-                        break;
-                    case "Danh Bộ":
-                        if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSCTKTXM.DataSource = _cKTXM.getDS_ByDanhBo( txtNoiDungTimKiem.Text.Trim());
-                        break;
-                    case "Số Công Văn":
-                        if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSCTKTXM.DataSource = _cKTXM.getDS_BySoCongVan( txtNoiDungTimKiem.Text.Trim());
-                        break;
-                    case "Ngày":
-                        dgvDSCTKTXM.DataSource = _cKTXM.getDS( dateTu.Value, dateDen.Value);
-                        break;
-                    default:
-                        break;
-                }
-            else
-            switch (cmbTimTheo.SelectedItem.ToString())
-            {
-                case "Mã Đơn":
-                    if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                        MessageBox.Show("Liên hệ BảoBảo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    else
-                        if (txtNoiDungTimKiem.Text.Trim() != "")
-                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                dgvDSCTKTXM.DataSource = _cKTXM.getDS("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                else
-                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                dgvDSCTKTXM.DataSource = _cKTXM.getDS("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+            if (radKTXM.Checked == true)
+                if (CTaiKhoan.TruongPhong == true || CTaiKhoan.ToTruong == true || CTaiKhoan.ThuKy == true)
+                    switch (cmbTimTheo.SelectedItem.ToString())
+                    {
+                        case "Mã Đơn":
+                            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                                MessageBox.Show("Liên hệ BảoBảo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             else
-                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                    dgvDSCTKTXM.DataSource = _cKTXM.getDS("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                else
-                                    dgvDSCTKTXM.DataSource = _cKTXM.getDS("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
-                    break;
-                case "Danh Bộ":
-                    if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSCTKTXM.DataSource = _cKTXM.getDS_ByDanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
-                    break;
-                case "Số Công Văn":
-                    if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSCTKTXM.DataSource = _cKTXM.getDS_BySoCongVan(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
-                    break;
-                case "Ngày":
-                        dgvDSCTKTXM.DataSource = _cKTXM.getDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
-                    break;
-                default:
-                    break;
-            }
+                                if (txtNoiDungTimKiem.Text.Trim() != "")
+                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                        dgvDanhSach.DataSource = _cKTXM.getDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    else
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                            dgvDanhSach.DataSource = _cKTXM.getDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        else
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                dgvDanhSach.DataSource = _cKTXM.getDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                dgvDanhSach.DataSource = _cKTXM.getDS("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                            break;
+                        case "Danh Bộ":
+                            if (txtNoiDungTimKiem.Text.Trim() != "")
+                                dgvDanhSach.DataSource = _cKTXM.getDS_ByDanhBo(txtNoiDungTimKiem.Text.Trim());
+                            break;
+                        case "Số Công Văn":
+                            if (txtNoiDungTimKiem.Text.Trim() != "")
+                                dgvDanhSach.DataSource = _cKTXM.getDS_BySoCongVan(txtNoiDungTimKiem.Text.Trim());
+                            break;
+                        case "Ngày":
+                            dgvDanhSach.DataSource = _cKTXM.getDS(dateTu.Value, dateDen.Value);
+                            break;
+                        default:
+                            break;
+                    }
+                else
+                    switch (cmbTimTheo.SelectedItem.ToString())
+                    {
+                        case "Mã Đơn":
+                            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                                MessageBox.Show("Liên hệ BảoBảo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            else
+                                if (txtNoiDungTimKiem.Text.Trim() != "")
+                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                        dgvDanhSach.DataSource = _cKTXM.getDS("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    else
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                            dgvDanhSach.DataSource = _cKTXM.getDS("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        else
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                dgvDanhSach.DataSource = _cKTXM.getDS("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                dgvDanhSach.DataSource = _cKTXM.getDS("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                            break;
+                        case "Danh Bộ":
+                            if (txtNoiDungTimKiem.Text.Trim() != "")
+                                dgvDanhSach.DataSource = _cKTXM.getDS_ByDanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
+                            break;
+                        case "Số Công Văn":
+                            if (txtNoiDungTimKiem.Text.Trim() != "")
+                                dgvDanhSach.DataSource = _cKTXM.getDS_BySoCongVan(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
+                            break;
+                        case "Ngày":
+                            dgvDanhSach.DataSource = _cKTXM.getDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                            break;
+                        default:
+                            break;
+                    }
+            else
+                if (radNhanDon.Checked == true)
+                    dgvDanhSach.DataSource = _cDonTu.getDS_ChuyenKTXM_KyNhan(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
         }
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            DataTable dt = ((DataTable)dgvDSCTKTXM.DataSource).DefaultView.ToTable();
+            DataTable dt = ((DataTable)dgvDanhSach.DataSource).DefaultView.ToTable();
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow itemRow in dt.Rows)
             {
@@ -162,27 +168,62 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             frm.ShowDialog();
         }
 
-        private void dgvDSDonKH_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            using (SolidBrush b = new SolidBrush(dgvDSCTKTXM.RowHeadersDefaultCellStyle.ForeColor))
+            using (SolidBrush b = new SolidBrush(dgvDanhSach.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
         }
 
-        private void dgvDSKTXM_KeyDown(object sender, KeyEventArgs e)
+        private void dgvDanhSach_KeyDown(object sender, KeyEventArgs e)
         {
-            if (dgvDSCTKTXM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            if (dgvDanhSach.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmKTXM frm = new frmKTXM(decimal.Parse(dgvDSCTKTXM["MaCTKTXM", dgvDSCTKTXM.CurrentRow.Index].Value.ToString()));
+                frmKTXM frm = new frmKTXM(decimal.Parse(dgvDanhSach["MaCTKTXM", dgvDanhSach.CurrentRow.Index].Value.ToString()));
                 frm.ShowDialog();
             }
         }
 
-        private void dgvDSKTXM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void dgvDanhSach_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             //if (dgvDSCTKTXM.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
             //    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+        }
+
+        private void radKTXM_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radKTXM.Checked == true)
+            {
+                dgvDanhSach.Columns["NgayKTXM"].Visible = true;
+                dgvDanhSach.Columns["NoiDungKiemTra"].Visible = true;
+                dgvDanhSach.Columns["CreateBy"].Visible = true;
+                dgvDanhSach.Columns["Nhan"].Visible = false;
+                dgvDanhSach.Columns["NgayNhan"].Visible = false;
+            }
+        }
+
+        private void radNhanDon_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radNhanDon.Checked == true)
+            {
+                dgvDanhSach.Columns["NgayKTXM"].Visible = false;
+                dgvDanhSach.Columns["NoiDungKiemTra"].Visible = false;
+                dgvDanhSach.Columns["CreateBy"].Visible = false;
+                dgvDanhSach.Columns["Nhan"].Visible = true;
+                dgvDanhSach.Columns["NgayNhan"].Visible = true;
+            }
+        }
+
+        private void dgvDanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDanhSach.Columns[e.ColumnIndex].Name == "Nhan")
+            {
+                if (bool.Parse(dgvDanhSach["Nhan", e.RowIndex].Value.ToString()) == true)
+                    _cDonTu.ExecuteNonQuery("update DonTu_LichSu set Nhan=1,NgayNhan=getdate() where ID=" + dgvDanhSach["ID", e.RowIndex].Value.ToString());
+                else
+                    _cDonTu.ExecuteNonQuery("update DonTu_LichSu set Nhan=0,NgayNhan=NULL where ID=" + dgvDanhSach["ID", e.RowIndex].Value.ToString());
+            }
         }
 
 
