@@ -281,6 +281,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _TBDongNuoc_NgayHen;
 		
+		private bool _SyncThanhToan;
+		
+		private bool _SyncNopTien;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -475,6 +479,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnTBDongNuoc_NgayChanged();
     partial void OnTBDongNuoc_NgayHenChanging(System.Nullable<System.DateTime> value);
     partial void OnTBDongNuoc_NgayHenChanged();
+    partial void OnSyncThanhToanChanging(bool value);
+    partial void OnSyncThanhToanChanged();
+    partial void OnSyncNopTienChanging(bool value);
+    partial void OnSyncNopTienChanged();
     #endregion
 		
 		public HOADON()
@@ -2382,6 +2390,46 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SyncThanhToan", DbType="Bit NOT NULL")]
+		public bool SyncThanhToan
+		{
+			get
+			{
+				return this._SyncThanhToan;
+			}
+			set
+			{
+				if ((this._SyncThanhToan != value))
+				{
+					this.OnSyncThanhToanChanging(value);
+					this.SendPropertyChanging();
+					this._SyncThanhToan = value;
+					this.SendPropertyChanged("SyncThanhToan");
+					this.OnSyncThanhToanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SyncNopTien", DbType="Bit NOT NULL")]
+		public bool SyncNopTien
+		{
+			get
+			{
+				return this._SyncNopTien;
+			}
+			set
+			{
+				if ((this._SyncNopTien != value))
+				{
+					this.OnSyncNopTienChanging(value);
+					this.SendPropertyChanging();
+					this._SyncNopTien = value;
+					this.SendPropertyChanged("SyncNopTien");
+					this.OnSyncNopTienChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2599,6 +2647,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _TBDongNuoc_NgayHen;
 		
+		private bool _SyncThanhToan;
+		
+		private bool _SyncNopTien;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2793,6 +2845,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnTBDongNuoc_NgayChanged();
     partial void OnTBDongNuoc_NgayHenChanging(System.Nullable<System.DateTime> value);
     partial void OnTBDongNuoc_NgayHenChanged();
+    partial void OnSyncThanhToanChanging(bool value);
+    partial void OnSyncThanhToanChanged();
+    partial void OnSyncNopTienChanging(bool value);
+    partial void OnSyncNopTienChanged();
     #endregion
 		
 		public TT_HoaDonCu()
@@ -4696,6 +4752,46 @@ namespace KTKS_DonKH.LinQ
 					this._TBDongNuoc_NgayHen = value;
 					this.SendPropertyChanged("TBDongNuoc_NgayHen");
 					this.OnTBDongNuoc_NgayHenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SyncThanhToan", DbType="Bit NOT NULL")]
+		public bool SyncThanhToan
+		{
+			get
+			{
+				return this._SyncThanhToan;
+			}
+			set
+			{
+				if ((this._SyncThanhToan != value))
+				{
+					this.OnSyncThanhToanChanging(value);
+					this.SendPropertyChanging();
+					this._SyncThanhToan = value;
+					this.SendPropertyChanged("SyncThanhToan");
+					this.OnSyncThanhToanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SyncNopTien", DbType="Bit NOT NULL")]
+		public bool SyncNopTien
+		{
+			get
+			{
+				return this._SyncNopTien;
+			}
+			set
+			{
+				if ((this._SyncNopTien != value))
+				{
+					this.OnSyncNopTienChanging(value);
+					this.SendPropertyChanging();
+					this._SyncNopTien = value;
+					this.SendPropertyChanged("SyncNopTien");
+					this.OnSyncNopTienChanged();
 				}
 			}
 		}

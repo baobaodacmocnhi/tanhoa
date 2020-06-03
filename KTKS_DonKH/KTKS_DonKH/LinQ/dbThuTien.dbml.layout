@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 21.5" name="dbThuTien">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 20.5" name="dbThuTien">
   <DataContextMoniker Name="/dbThuTienDataContext" />
   <nestedChildShapes>
-    <classShape Id="7d44a676-c274-4848-bf84-303dffdf9552" absoluteBounds="3.25, 2.125, 2, 19.078025716145834">
+    <classShape Id="4e62ec75-b437-415d-8301-dab9fabae933" absoluteBounds="0.75, 0.75, 2, 19.462628580729167">
       <DataClassMoniker Name="/dbThuTienDataContext/HOADON" />
       <nestedChildShapes>
-        <elementListCompartment Id="9742c21f-d953-457d-abee-aa8ff41ad53d" absoluteBounds="3.265, 2.585, 1.9700000000000002, 18.518025716145832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="836f2f47-36a2-43c5-a12c-ed2606619e2d" absoluteBounds="0.765, 1.21, 1.9700000000000002, 18.902628580729164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="a403f428-e554-476d-885a-dbb739e0c2ae" absoluteBounds="6.875, 2.125, 2, 19.078025716145834">
+    <classShape Id="293dcc8b-9143-4846-8d38-b6e900205804" absoluteBounds="3.75, 0.75, 2, 19.462628580729167">
       <DataClassMoniker Name="/dbThuTienDataContext/TT_HoaDonCu" />
       <nestedChildShapes>
-        <elementListCompartment Id="262932d6-ec6a-490a-8b62-c740be1c88a0" absoluteBounds="6.89, 2.585, 1.9700000000000002, 18.518025716145832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f9a78aea-a4ef-4bb6-a47c-ddb3deda7fbd" absoluteBounds="3.765, 1.21, 1.9700000000000002, 18.902628580729164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
