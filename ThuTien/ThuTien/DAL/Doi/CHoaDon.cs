@@ -5948,6 +5948,35 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_HoaDonDienTu(int MaNV_HanhThu, int Nam, int Ky, int FromDot, int ToDot)
+        {
+            var query = from item in _db.HOADONs
+                        where (item.NAM < Nam || (item.NAM == Nam && item.KY <= Ky)) && item.DOT >= FromDot && item.DOT <= ToDot && item.MaNV_HanhThu == MaNV_HanhThu
+                        && (item.NGAYGIAITRACH == null || item.NGAYGIAITRACH.Value.Date == DateTime.Now.Date)
+                        orderby item.MALOTRINH ascending
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.SOHOADON,
+                            Ky = item.KY + "/" + item.NAM,
+                            MLT = item.MALOTRINH,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            HoTen = item.TENKH,
+                            DiaChi = item.SO + " " + item.DUONG,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                            item.DangNgan_DienThoai,
+                            item.InPhieuBao_Ngay,
+                            item.InPhieuBao2_Ngay,
+                            item.XoaDangNgan_Ngay_DienThoai,
+                        };
+            return LINQToDataTable(query);
+        }
+
         /// <summary>
         /// Lấy danh sách hóa đơn được giao & đã đăng ngân bởi anh/em cụ thể
         /// </summary>
@@ -6337,6 +6366,8 @@ namespace ThuTien.DAL.Doi
                             ThueGTGT = item.THUE,
                             PhiBVMT = item.PHI,
                             item.TONGCONG,
+                            item.TienDu,
+                            item.TienMat,
                         };
             return LINQToDataTable(query);
         }

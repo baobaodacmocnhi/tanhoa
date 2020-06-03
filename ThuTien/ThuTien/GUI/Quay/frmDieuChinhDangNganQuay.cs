@@ -23,6 +23,7 @@ namespace ThuTien.GUI.Quay
         CHoaDon _cHoaDon = new CHoaDon();
         CDCHD _cDCHD = new CDCHD();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CChotDangNgan _cChotDangNgan = new CChotDangNgan();
 
         public frmDieuChinhDangNganQuay()
         {
@@ -152,6 +153,11 @@ namespace ThuTien.GUI.Quay
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
+                if (_cChotDangNgan.checkExist_ChotDangNgan(dateGiaiTrachSua.Value) == true)
+                {
+                    MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (dateGiaiTrachSua.Value.Date != DateTime.Now.Date)
                 {
                     MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -237,6 +243,12 @@ namespace ThuTien.GUI.Quay
                         //_cHoaDon.SqlBeginTransaction();
                         if (tabControl.SelectedTab.Name == "tabTuGia")
                         {
+                            foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                                if (_cChotDangNgan.checkExist_ChotDangNgan(_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString())) == true)
+                                {
+                                    MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                             {
                                 if (!_cHoaDon.XoaDangNgan("Quay", item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))

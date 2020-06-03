@@ -256,9 +256,9 @@ namespace ThuTien.GUI.ChuyenKhoan
             for (int i = 0; i < dgvPhiMoNuoc.Rows.Count; i++)
             {
                 arr[i, 0] = dgvPhiMoNuoc["DanhBo_PMN", i].Value.ToString();
-                string SoPhieuThu = _cBangKe.get(dgvPhiMoNuoc["DanhBo_PMN", i].Value.ToString(), DateTime.Parse(dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString())).SoPhieuThu;
-                if (SoPhieuThu != null)
-                    arr[i, 1] = _cBangKe.getTongSoTien(SoPhieuThu);
+                TT_BangKe bk = _cBangKe.get(dgvPhiMoNuoc["DanhBo_PMN", i].Value.ToString(), DateTime.Parse(dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString()));
+                if (bk != null && bk.SoPhieuThu != null && bk.SoPhieuThu != "")
+                    arr[i, 1] = _cBangKe.getTongSoTien(bk.SoPhieuThu);
                 arr[i, 2] = dgvPhiMoNuoc["TongCong_PMN", i].Value.ToString();
                 arr[i, 3] = dgvPhiMoNuoc["PhiMoNuoc", i].Value.ToString();
                 arr[i, 4] = dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString();

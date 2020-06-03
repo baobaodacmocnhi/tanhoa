@@ -28,6 +28,7 @@ namespace ThuTien.GUI.HanhThu
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CTienDuQuay _cTienDuQuay = new CTienDuQuay();
+        CChotDangNgan _cChotDangNgan = new CChotDangNgan();
         //int _selectedindexDaThu = -1;
 
         public frmDangNganHanhThu()
@@ -172,6 +173,11 @@ namespace ThuTien.GUI.HanhThu
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
+                if (_cChotDangNgan.checkExist_ChotDangNgan(DateTime.Now) == true)
+                {
+                    MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 bool flagThem = false;
                 if (radDaThu.Checked)
                 {
@@ -388,6 +394,11 @@ namespace ThuTien.GUI.HanhThu
 
                     foreach (DataGridViewRow item in dgvHDDaThu.SelectedRows)
                     {
+                        if (_cChotDangNgan.checkExist_ChotDangNgan(_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_DT"].Value.ToString())) == true)
+                        {
+                            MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_DT"].Value.ToString()).Date != DateTime.Now.Date)
                         {
                             MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

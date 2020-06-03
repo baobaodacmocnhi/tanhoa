@@ -26,6 +26,7 @@ namespace ThuTien.GUI.HanhThu
         CDCHD _cDCHD = new CDCHD();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CTienDuQuay _cTienDuQuay = new CTienDuQuay();
+        CChotDangNgan _cChotDangNgan = new CChotDangNgan();
 
         public frmDangNganTon()
         {
@@ -49,18 +50,18 @@ namespace ThuTien.GUI.HanhThu
 
         public void CountdgvHDTuGia()
         {
-            int TongGiaBan = 0;
-            int TongThueGTGT = 0;
-            int TongPhiBVMT = 0;
-            int TongCong = 0;
+            long TongGiaBan = 0;
+            long TongThueGTGT = 0;
+            long TongPhiBVMT = 0;
+            long TongCong = 0;
             if (dgvHDTuGia.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
-                    TongGiaBan += int.Parse(item.Cells["GiaBan_TG"].Value.ToString());
-                    TongThueGTGT += int.Parse(item.Cells["ThueGTGT_TG"].Value.ToString());
-                    TongPhiBVMT += int.Parse(item.Cells["PhiBVMT_TG"].Value.ToString());
-                    TongCong += int.Parse(item.Cells["TongCong_TG"].Value.ToString());
+                    TongGiaBan += long.Parse(item.Cells["GiaBan_TG"].Value.ToString());
+                    TongThueGTGT += long.Parse(item.Cells["ThueGTGT_TG"].Value.ToString());
+                    TongPhiBVMT += long.Parse(item.Cells["PhiBVMT_TG"].Value.ToString());
+                    TongCong += long.Parse(item.Cells["TongCong_TG"].Value.ToString());
                 }
                 txtTongHD_TG.Text = dgvHDTuGia.RowCount.ToString();
                 txtTongGiaBan_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBan);
@@ -72,24 +73,30 @@ namespace ThuTien.GUI.HanhThu
 
         public void CountdgvHDCoQuan()
         {
-            int TongGiaBan = 0;
-            int TongThueGTGT = 0;
-            int TongPhiBVMT = 0;
-            int TongCong = 0;
+            long TongGiaBan = 0;
+            long TongThueGTGT = 0;
+            long TongPhiBVMT = 0;
+            long TongCong = 0;
+            long TongTienDu = 0;
+            long TongTienMat = 0;
             if (dgvHDCoQuan.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                 {
-                    TongGiaBan += int.Parse(item.Cells["GiaBan_CQ"].Value.ToString());
-                    TongThueGTGT += int.Parse(item.Cells["ThueGTGT_CQ"].Value.ToString());
-                    TongPhiBVMT += int.Parse(item.Cells["PhiBVMT_CQ"].Value.ToString());
-                    TongCong += int.Parse(item.Cells["TongCong_CQ"].Value.ToString());
+                    TongGiaBan += long.Parse(item.Cells["GiaBan_CQ"].Value.ToString());
+                    TongThueGTGT += long.Parse(item.Cells["ThueGTGT_CQ"].Value.ToString());
+                    TongPhiBVMT += long.Parse(item.Cells["PhiBVMT_CQ"].Value.ToString());
+                    TongCong += long.Parse(item.Cells["TongCong_CQ"].Value.ToString());
+                    TongTienDu += long.Parse(item.Cells["TienDu_CQ"].Value.ToString());
+                    TongTienMat += long.Parse(item.Cells["TienMat_CQ"].Value.ToString());
                 }
                 txtTongHD_CQ.Text = dgvHDCoQuan.RowCount.ToString();
                 txtTongGiaBan_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBan);
                 txtTongThueGTGT_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongThueGTGT);
                 txtTongPhiBVMT_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT);
                 txtTongCong_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+                txtTongTienDu_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongTienDu);
+                txtTongTienMat_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongTienMat);
             }
         }
 
@@ -157,9 +164,13 @@ namespace ThuTien.GUI.HanhThu
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
+                if (_cChotDangNgan.checkExist_ChotDangNgan(DateTime.Now) == true)
+                {
+                    MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (lstHD.Items.Count > 0)
                 {
-                    //string loai;
                     foreach (ListViewItem item in lstHD.Items)
                     {
                         if (!_cHoaDon.CheckExist(item.Text))
@@ -266,6 +277,11 @@ namespace ThuTien.GUI.HanhThu
                     {
                         foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                         {
+                            if (_cChotDangNgan.checkExist_ChotDangNgan(_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString())) == true)
+                            {
+                                MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                             if (_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString()).Date != DateTime.Now.Date)
                             {
                                 MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

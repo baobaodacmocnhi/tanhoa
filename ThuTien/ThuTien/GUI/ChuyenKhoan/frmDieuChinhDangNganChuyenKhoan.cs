@@ -27,6 +27,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CDCHD _cDCHD = new CDCHD();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CTienDu _cTienDu = new CTienDu();
+        CChotDangNgan _cChotDangNgan = new CChotDangNgan();
 
         public frmDieuChinhDangNganChuyenKhoan()
         {
@@ -156,6 +157,11 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
+                if (_cChotDangNgan.checkExist_ChotDangNgan(dateGiaiTrachSua.Value) == true)
+                {
+                    MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 //if (dateGiaiTrachSua.Value.Date != DateTime.Now.Date)
                 //{
                 //    MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -235,10 +241,16 @@ namespace ThuTien.GUI.ChuyenKhoan
                         if (tabControl.SelectedTab.Name == "tabTuGia")
                         {
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                                if (_cChotDangNgan.checkExist_ChotDangNgan(_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString())) == true)
+                                {
+                                    MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                                 using (var scope = new TransactionScope())
                                 {
                                     if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
-                                        if (_cTienDu.UpdateXoa(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                                        if (_cTienDu.UpdateXoa_Doi(item.Cells["SoHoaDon_TG"].Value.ToString(),dateGiaiTrach.Value))
                                             scope.Complete();
                                 }
                         }
@@ -249,7 +261,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     using (var scope = new TransactionScope())
                                     {
                                         if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
-                                            if (_cTienDu.UpdateXoa(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                                            if (_cTienDu.UpdateXoa_Doi(item.Cells["SoHoaDon_CQ"].Value.ToString(), dateGiaiTrach.Value))
                                                 scope.Complete();
                                     }
                             }

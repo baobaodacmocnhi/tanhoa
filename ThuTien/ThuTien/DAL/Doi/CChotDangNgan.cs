@@ -67,14 +67,25 @@ namespace ThuTien.DAL.Doi
             return _db.TT_ChotDangNgans.Any(item => item.NgayChot.Value.Date == NgayChot.Date);
         }
 
+        public bool checkExist_ChotDangNgan(DateTime NgayChot)
+        {
+            return _db.TT_ChotDangNgans.Any(item => item.NgayChot.Value.Date == NgayChot.Date && item.Chot == true);
+        }
+
         public TT_ChotDangNgan get(int ID)
         {
             return _db.TT_ChotDangNgans.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DataTable getDS()
+        public DataTable getDS(DateTime FromNgayChot, DateTime ToNgayChot)
         {
-            return LINQToDataTable(_db.TT_ChotDangNgans.OrderByDescending(item => item.ID).ToList());
+            string sql = "select ID,NgayChot,Chot,"
+                        + " SLDangNgan=(select COUNT(ID_HOADON) from HOADON where CAST(NGAYGIAITRACH as date)=CAST(NgayChot as date)),"
+                        + " SLThanhToan=(select COUNT(ID_HOADON) from HOADON where CAST(NGAYGIAITRACH as date)=CAST(NgayChot as date) and SyncThanhToan=1),"
+                        + " SLNopTien=(select COUNT(ID_HOADON) from HOADON where CAST(NGAYGIAITRACH as date)=CAST(NgayChot as date) and SyncNopTien=1)"
+                        + " from TT_ChotDangNgan where CAST(NgayChot as date)>='" + FromNgayChot.ToString("yyyyMMdd") + "' and CAST(NgayChot as date)<='" + ToNgayChot.ToString("yyyyMMdd") + "'"
+                        + " group by ID,NgayChot,Chot order by ID desc";
+            return ExecuteQuery_DataTable(sql);
         }
 
     }

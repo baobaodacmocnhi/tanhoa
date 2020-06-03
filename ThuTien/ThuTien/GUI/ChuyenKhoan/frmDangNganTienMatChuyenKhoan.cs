@@ -19,6 +19,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         string _mnu = "mnuDangNganTienMatChuyenKhoan";
         CHoaDon _cHoaDon = new CHoaDon();
         CTienDu _cTienDu = new CTienDu();
+        CChotDangNgan _cChotDangNgan = new CChotDangNgan();
 
         public frmDangNganTienMatChuyenKhoan()
         {
@@ -161,10 +162,15 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            try
+                {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                try
-                {
+                    if (_cChotDangNgan.checkExist_ChotDangNgan(DateTime.Now) == true)
+                    {
+                        MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     foreach (ListViewItem item in lstHD.Items)
                     {
                         if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Text))
@@ -197,14 +203,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                     lstHD.Items.Clear();
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -217,6 +223,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                     {
                         foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                         {
+                            if (_cChotDangNgan.checkExist_ChotDangNgan(_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString())) == true)
+                            {
+                                MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                             if (_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString()).Date != DateTime.Now.Date)
                             {
                                 MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
