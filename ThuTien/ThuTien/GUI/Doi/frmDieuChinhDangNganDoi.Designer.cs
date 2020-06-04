@@ -114,8 +114,11 @@
             this.NgayChot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Chot = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SLDangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCDangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SLThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SLNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SyncNopTien = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabTienDu.SuspendLayout();
@@ -770,8 +773,11 @@
             this.NgayChot,
             this.Chot,
             this.SLDangNgan,
+            this.TCDangNgan,
             this.SLThanhToan,
+            this.TCThanhToan,
             this.SLNopTien,
+            this.TCNopTien,
             this.SyncNopTien});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
@@ -785,7 +791,7 @@
             this.dgvChotDangNgan.Name = "dgvChotDangNgan";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvChotDangNgan.RowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvChotDangNgan.Size = new System.Drawing.Size(612, 536);
+            this.dgvChotDangNgan.Size = new System.Drawing.Size(909, 536);
             this.dgvChotDangNgan.TabIndex = 55;
             this.dgvChotDangNgan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChotDangNgan_CellClick);
             this.dgvChotDangNgan.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChotDangNgan_CellValueChanged);
@@ -903,17 +909,35 @@
             this.SLDangNgan.HeaderText = "SL Đăng Ngân";
             this.SLDangNgan.Name = "SLDangNgan";
             // 
+            // TCDangNgan
+            // 
+            this.TCDangNgan.DataPropertyName = "TCDangNgan";
+            this.TCDangNgan.HeaderText = "TC Đăng Ngân";
+            this.TCDangNgan.Name = "TCDangNgan";
+            // 
             // SLThanhToan
             // 
             this.SLThanhToan.DataPropertyName = "SLThanhToan";
             this.SLThanhToan.HeaderText = "SL Thanh Toán";
             this.SLThanhToan.Name = "SLThanhToan";
             // 
+            // TCThanhToan
+            // 
+            this.TCThanhToan.DataPropertyName = "TCThanhToan";
+            this.TCThanhToan.HeaderText = "TC Thanh Toán";
+            this.TCThanhToan.Name = "TCThanhToan";
+            // 
             // SLNopTien
             // 
             this.SLNopTien.DataPropertyName = "SLNopTien";
             this.SLNopTien.HeaderText = "SL Nộp Tiền";
             this.SLNopTien.Name = "SLNopTien";
+            // 
+            // TCNopTien
+            // 
+            this.TCNopTien.DataPropertyName = "TCNopTien";
+            this.TCNopTien.HeaderText = "TC Nộp Tiền";
+            this.TCNopTien.Name = "TCNopTien";
             // 
             // SyncNopTien
             // 
@@ -1046,8 +1070,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayChot;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Chot;
         private System.Windows.Forms.DataGridViewTextBoxColumn SLDangNgan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TCDangNgan;
         private System.Windows.Forms.DataGridViewTextBoxColumn SLThanhToan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TCThanhToan;
         private System.Windows.Forms.DataGridViewTextBoxColumn SLNopTien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TCNopTien;
         private System.Windows.Forms.DataGridViewButtonColumn SyncNopTien;
     }
 }

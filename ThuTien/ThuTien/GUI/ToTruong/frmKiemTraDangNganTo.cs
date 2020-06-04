@@ -150,7 +150,9 @@ namespace ThuTien.GUI.ToTruong
         {
             long TongCong = 0;
             long TongGiaiTrach = 0;
+            long TongCongGiaiTrach = 0;
             long TongDienThoai = 0;
+            long TongCongDienThoai = 0;
             long TongPhieuBao = 0;
             long TongPhieuBao2 = 0;
             long TongXoa = 0;
@@ -161,9 +163,15 @@ namespace ThuTien.GUI.ToTruong
                 {
                     TongCong += long.Parse(item.Cells["TongCong_CQ"].Value.ToString());
                     if (item.Cells["NgayGiaiTrach"].Value.ToString() != "")
+                    {
                         TongGiaiTrach++;
-                    if (bool.Parse(item.Cells["DangNgan_DienThoai"].Value.ToString() )== true)
+                        TongCongGiaiTrach += long.Parse(item.Cells["TongCong_CQ"].Value.ToString());
+                    }
+                    if (bool.Parse(item.Cells["DangNgan_DienThoai"].Value.ToString()) == true)
+                    {
                         TongDienThoai++;
+                        TongCongDienThoai += long.Parse(item.Cells["TongCong_CQ"].Value.ToString());
+                    }
                     if (item.Cells["InPhieuBao_Ngay"].Value.ToString() != "")
                         TongPhieuBao++;
                     if (item.Cells["InPhieuBao2_Ngay"].Value.ToString() != "")
@@ -174,7 +182,9 @@ namespace ThuTien.GUI.ToTruong
                 txtTongHD_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvHDCoQuan.RowCount);
                 txtTongCong_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
                 txtTongGiaiTrach_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaiTrach);
+                txtTongCongGiaiTrach_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongGiaiTrach);
                 txtTongDienThoai_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDienThoai);
+                txtTongCongDienThoai_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongDienThoai);
                 txtTongPhieuBao_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhieuBao);
                 txtTongPhieuBao2_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhieuBao2);
                 txtTongXoa_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongXoa);
