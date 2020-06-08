@@ -347,6 +347,7 @@ namespace ThuTien.GUI.Quay
                         DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
                         dr["To"] = CNguoiDung.TenTo;
                         dr["Loai"] = "";
+                        dr["LoaiHoaDon"] = item["LoaiHoaDon"].ToString();
                         dr["NgayDangNgan"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                         dr["TongHD"] = item["TongHD"].ToString();
                         dr["TongGiaBan"] = item["TongGiaBan"].ToString();

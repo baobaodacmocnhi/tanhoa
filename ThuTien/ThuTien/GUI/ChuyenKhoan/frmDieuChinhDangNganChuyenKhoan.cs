@@ -362,6 +362,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
                     dr["To"] = CNguoiDung.TenTo;
                     dr["Loai"] = "";
+                    dr["LoaiHoaDon"] = item["LoaiHoaDon"].ToString();
                     dr["NgayDangNgan"] = dateGiaiTrach.Value.Date.ToString("dd/MM/yyyy");
                     dr["TongHD"] = item["TongHD"].ToString();
                     dr["TongGiaBan"] = item["TongGiaBan"].ToString();
