@@ -318,6 +318,7 @@ namespace KTKS_DonKH.DAL.TruyThu
         {
             var query = from item in db.TruyThuTienNuoc_ChiTiets
                         where item.TongTien == SoTien
+                        orderby item.CreateDate ascending
                         select new
                         {
                             MaDon = item.TruyThuTienNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TruyThuTienNuoc.MaDonMoi).Count() == 1 ? item.TruyThuTienNuoc.MaDonMoi.Value.ToString() : item.TruyThuTienNuoc.MaDonMoi + "." + item.STT
@@ -348,6 +349,7 @@ namespace KTKS_DonKH.DAL.TruyThu
         {
             var query = from item in db.TruyThuTienNuoc_ChiTiets
                         where item.NgayTinhTrang.Value.Date >= FromNgayTinhTrang.Date && item.NgayTinhTrang.Value.Date <= ToNgayTinhTrang.Date
+                        orderby item.CreateDate ascending
                         select new
                         {
                             MaDon = item.TruyThuTienNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TruyThuTienNuoc.MaDonMoi).Count() == 1 ? item.TruyThuTienNuoc.MaDonMoi.Value.ToString() : item.TruyThuTienNuoc.MaDonMoi + "." + item.STT
@@ -380,6 +382,7 @@ namespace KTKS_DonKH.DAL.TruyThu
         {
             var query = from item in db.TruyThuTienNuoc_ChiTiets
                         where item.NgayTinhTrang.Value.Date >= FromNgayTinhTrang.Date && item.NgayTinhTrang.Value.Date <= ToNgayTinhTrang.Date && item.TinhTrang.ToString() == TinhTrang
+                        orderby item.CreateDate ascending
                         select new
                         {
                             MaDon = item.TruyThuTienNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TruyThuTienNuoc.MaDonMoi).Count() == 1 ? item.TruyThuTienNuoc.MaDonMoi.Value.ToString() : item.TruyThuTienNuoc.MaDonMoi + "." + item.STT
@@ -411,6 +414,7 @@ namespace KTKS_DonKH.DAL.TruyThu
         public DataTable getDS()
         {
             var query = from item in db.TruyThuTienNuoc_ChiTiets
+                        orderby item.CreateDate ascending
                         select new
                         {
                             MaDon = item.TruyThuTienNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TruyThuTienNuoc.MaDonMoi).Count() == 1 ? item.TruyThuTienNuoc.MaDonMoi.Value.ToString() : item.TruyThuTienNuoc.MaDonMoi + "." + item.STT
@@ -443,6 +447,7 @@ namespace KTKS_DonKH.DAL.TruyThu
         {
             var query = from item in db.TruyThuTienNuoc_ChiTiets
                         where item.TinhTrang.ToString() == TinhTrang
+                        orderby item.CreateDate ascending
                         select new
                         {
                             MaDon = item.TruyThuTienNuoc.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.TruyThuTienNuoc.MaDonMoi).Count() == 1 ? item.TruyThuTienNuoc.MaDonMoi.Value.ToString() : item.TruyThuTienNuoc.MaDonMoi + "." + item.STT

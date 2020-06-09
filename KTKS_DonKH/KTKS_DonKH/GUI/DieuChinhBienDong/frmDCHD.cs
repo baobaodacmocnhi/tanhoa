@@ -1777,7 +1777,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 Ky = _hoadon.KY;
                 Nam = _hoadon.NAM.Value;
-                TuNgay = _hoadon.TUNGAY.Value;
+                if (_hoadon.TUNGAY != null)
+                    TuNgay = _hoadon.TUNGAY.Value;
+                else
+                {
+                    _docso = _cDocSo.get(txtDanhBo.Text.Trim(), Ky, Nam);
+                    TuNgay = _docso.TuNgay.Value;
+                }
                 DenNgay = _hoadon.DENNGAY.Value;
                 if (_hoadon.TILESH != null && _hoadon.TILESH.Value != 0)
                     TyleSH = _hoadon.TILESH.Value;
