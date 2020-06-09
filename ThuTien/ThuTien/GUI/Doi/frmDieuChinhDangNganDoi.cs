@@ -556,6 +556,46 @@ namespace ThuTien.GUI.Doi
             }
         }
 
+        private void dgvChotDangNgan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SLDangNgan" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "TCDangNgan" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SLHDDT" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SLThanhToan" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "TCThanhToan" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SLNopTien" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "TCNopTien" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvChotDangNgan_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvChotDangNgan.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
 
 
     }

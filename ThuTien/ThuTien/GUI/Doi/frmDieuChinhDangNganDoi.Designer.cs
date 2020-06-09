@@ -115,6 +115,7 @@
             this.Chot = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SLDangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TCDangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLHDDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SLThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TCThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SLNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -774,6 +775,7 @@
             this.Chot,
             this.SLDangNgan,
             this.TCDangNgan,
+            this.SLHDDT,
             this.SLThanhToan,
             this.TCThanhToan,
             this.SLNopTien,
@@ -791,10 +793,12 @@
             this.dgvChotDangNgan.Name = "dgvChotDangNgan";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvChotDangNgan.RowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvChotDangNgan.Size = new System.Drawing.Size(909, 536);
+            this.dgvChotDangNgan.Size = new System.Drawing.Size(1016, 536);
             this.dgvChotDangNgan.TabIndex = 55;
             this.dgvChotDangNgan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChotDangNgan_CellClick);
+            this.dgvChotDangNgan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvChotDangNgan_CellFormatting);
             this.dgvChotDangNgan.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChotDangNgan_CellValueChanged);
+            this.dgvChotDangNgan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvChotDangNgan_RowPostPaint);
             // 
             // btnThemChot
             // 
@@ -914,6 +918,12 @@
             this.TCDangNgan.DataPropertyName = "TCDangNgan";
             this.TCDangNgan.HeaderText = "TC Đăng Ngân";
             this.TCDangNgan.Name = "TCDangNgan";
+            // 
+            // SLHDDT
+            // 
+            this.SLHDDT.DataPropertyName = "SLHDDT";
+            this.SLHDDT.HeaderText = "SL HĐĐT";
+            this.SLHDDT.Name = "SLHDDT";
             // 
             // SLThanhToan
             // 
@@ -1071,6 +1081,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Chot;
         private System.Windows.Forms.DataGridViewTextBoxColumn SLDangNgan;
         private System.Windows.Forms.DataGridViewTextBoxColumn TCDangNgan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SLHDDT;
         private System.Windows.Forms.DataGridViewTextBoxColumn SLThanhToan;
         private System.Windows.Forms.DataGridViewTextBoxColumn TCThanhToan;
         private System.Windows.Forms.DataGridViewTextBoxColumn SLNopTien;
