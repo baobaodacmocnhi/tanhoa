@@ -4806,14 +4806,14 @@ namespace ThuTien.DAL.Doi
                         DataTable dt = new DataTable();
                         var query = from item in _db.HOADONs
                                     where item.MaNV_DangNgan == MaNV_DangNgan && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
-                                    && item.NAM<=2020 && item.KY<=6
+                                    && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <= 6))
                                     orderby item.MaNV_DangNgan ascending
                                     group item by item.MaNV_DangNgan into itemGroup
                                     select new
                                     {
                                         MaNV = itemGroup.Key,
                                         _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
-                                        LoaiHoaDon="Giấy",
+                                        LoaiHoaDon = "Giấy",
                                         TongHD = itemGroup.Count(),
                                         TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
                                         TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
@@ -4822,26 +4822,26 @@ namespace ThuTien.DAL.Doi
                                         TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
                                         TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
                                     };
-                        dt.Merge( LINQToDataTable(query));
+                        dt.Merge(LINQToDataTable(query));
 
                         var query2 = from item in _db.HOADONs
-                                    where item.MaNV_DangNgan == MaNV_DangNgan && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
-                                    && item.NAM >= 2020 && item.KY >= 7
-                                    orderby item.MaNV_DangNgan ascending
-                                    group item by item.MaNV_DangNgan into itemGroup
-                                    select new
-                                    {
-                                        MaNV = itemGroup.Key,
-                                        _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
-                                        LoaiHoaDon = "Điện Tử",
-                                        TongHD = itemGroup.Count(),
-                                        TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                                        TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
-                                        TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
-                                        TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                        TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
-                                        TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
-                                    };
+                                     where item.MaNV_DangNgan == MaNV_DangNgan && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                     && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7))
+                                     orderby item.MaNV_DangNgan ascending
+                                     group item by item.MaNV_DangNgan into itemGroup
+                                     select new
+                                     {
+                                         MaNV = itemGroup.Key,
+                                         _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
+                                         LoaiHoaDon = "Điện Tử",
+                                         TongHD = itemGroup.Count(),
+                                         TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                                         TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                                         TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+                                         TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                                         TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
+                                         TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
+                                     };
                         dt.Merge(LINQToDataTable(query2));
 
                         return dt;

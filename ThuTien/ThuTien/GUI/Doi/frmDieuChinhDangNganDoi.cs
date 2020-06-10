@@ -50,7 +50,7 @@ namespace ThuTien.GUI.Doi
             dateGiaiTrach.Value = DateTime.Now;
 
             tabTuGia.Text = "Hóa Đơn";
-            //tabControl.TabPages.Remove(tabTienDu);
+            tabControl.TabPages.Remove(tabChotDangNgan);
             _flagLoadFirst = true;
         }
 
@@ -110,8 +110,10 @@ namespace ThuTien.GUI.Doi
                     TongThueGTGT += long.Parse(item.Cells["ThueGTGT_CQ"].Value.ToString());
                     TongPhiBVMT += long.Parse(item.Cells["PhiBVMT_CQ"].Value.ToString());
                     TongCong += long.Parse(item.Cells["TongCong_CQ"].Value.ToString());
-                    TongTienDu += long.Parse(item.Cells["TienDu_CQ"].Value.ToString());
-                    TongTienMat += long.Parse(item.Cells["TienMat_CQ"].Value.ToString());
+                    if (item.Cells["TienDu_CQ"].Value.ToString() != "")
+                        TongTienDu += long.Parse(item.Cells["TienDu_CQ"].Value.ToString());
+                    if (item.Cells["TienMat_CQ"].Value.ToString() != "")
+                        TongTienMat += long.Parse(item.Cells["TienMat_CQ"].Value.ToString());
                 }
                 txtTongHD_CQ.Text = dgvHDCoQuan.RowCount.ToString();
                 txtTongCong_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvHDCoQuan.RowCount);
@@ -433,6 +435,14 @@ namespace ThuTien.GUI.Doi
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
+            if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "TienDu_CQ" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "TienMat_CQ" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
         }
 
         private void dgvHDCoQuan_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -537,14 +547,17 @@ namespace ThuTien.GUI.Doi
                 {
                     if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                     {
-
-                        TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
-                        if (_cChotDangNgan.checkExist_ChotDangNgan(en.NgayChot.Value) == true)
+                        if (MessageBox.Show("Bạn có chắc chắn Nộp Tiền?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
+                            if (_cChotDangNgan.checkExist_ChotDangNgan(en.NgayChot.Value) == true)
+                            {
+                                MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            wsThuTien.wsThuTien wsThuTien = new wsThuTien.wsThuTien();
+                            wsThuTien.syncNopTienLo(en.NgayChot.Value.ToString("dd/MM/yyyy"));
                         }
-                        
                     }
                     else
                         MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
