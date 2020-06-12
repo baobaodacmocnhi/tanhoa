@@ -42,10 +42,18 @@ namespace ThuTien.GUI.Doi
             dgvHDCoQuan.AutoGenerateColumns = false;
             dgvChotDangNgan.AutoGenerateColumns = false;
 
-            cmbTo.DataSource = _cTo.GetDS();
+            //cmbTo.DataSource = _cTo.GetDS();
+            //cmbTo.DisplayMember = "TenTo";
+            //cmbTo.ValueMember = "MaTo";
+            //cmbTo.SelectedIndex = -1;
+            List<TT_To> lst = _cTo.GetDS();
+            TT_To to = new TT_To();
+            to.MaTo = 0;
+            to.TenTo = "Tất Cả";
+            lst.Insert(0, to);
+            cmbTo.DataSource = lst;
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
-            cmbTo.SelectedIndex = -1;
 
             dateGiaiTrach.Value = DateTime.Now;
 
@@ -137,7 +145,11 @@ namespace ThuTien.GUI.Doi
                 else
                     if (tabControl.SelectedTab.Name == "tabTienDu")
                     {
-                        dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_CoDCHD((int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                        if (cmbTo.SelectedIndex == 0)
+                            dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_CoDCHD(dateGiaiTrach.Value);
+                        else
+                            if (cmbTo.SelectedIndex > 0)
+                                dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_CoDCHD((int)cmbTo.SelectedValue, dateGiaiTrach.Value);
                         CoungdgvHDCoQuan();
                     }
         }

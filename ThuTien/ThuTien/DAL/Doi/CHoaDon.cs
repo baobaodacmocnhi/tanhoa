@@ -6373,10 +6373,34 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public DataTable getDSDangNgan_CoDCHD(int MaNV_DangNgan, DateTime NgayGiaiTrach)
+        public DataTable getDSDangNgan_CoDCHD(DateTime NgayGiaiTrach)
         {
             var query = from item in _db.HOADONs
-                        where item.DCHD == true && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan == MaNV_DangNgan
+                        where item.DCHD == true && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                        orderby item.MALOTRINH ascending
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.SOHOADON,
+                            Ky = item.KY + "/" + item.NAM,
+                            MLT = item.MALOTRINH,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                            item.TienDu,
+                            item.TienMat,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDSDangNgan_CoDCHD(int MaTo, DateTime NgayGiaiTrach)
+        {
+            var query = from item in _db.HOADONs
+                        where item.DCHD == true && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == item.MaNV_DangNgan).MaTo == MaTo
                         orderby item.MALOTRINH ascending
                         select new
                         {
