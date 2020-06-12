@@ -179,6 +179,9 @@
   <ItemGroup>
     <None Include="Resources\2b238e6804d9e687bfc8.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0e43acdbe1de1c8045cf.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

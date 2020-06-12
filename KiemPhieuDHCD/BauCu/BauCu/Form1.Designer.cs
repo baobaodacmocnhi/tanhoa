@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.radQuanTri = new System.Windows.Forms.RadioButton();
             this.radKiemSoat = new System.Windows.Forms.RadioButton();
             this.dgvUngVien = new System.Windows.Forms.DataGridView();
@@ -105,6 +105,9 @@
             this.label14 = new System.Windows.Forms.Label();
             this.btnInDSCD = new System.Windows.Forms.Button();
             this.btnThemChiaDoi = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUngVien)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBauCu)).BeginInit();
@@ -147,7 +150,7 @@
             this.SoPhieu});
             this.dgvUngVien.Location = new System.Drawing.Point(350, 41);
             this.dgvUngVien.Name = "dgvUngVien";
-            this.dgvUngVien.Size = new System.Drawing.Size(390, 100);
+            this.dgvUngVien.Size = new System.Drawing.Size(390, 135);
             this.dgvUngVien.TabIndex = 9;
             this.dgvUngVien.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUngVien_CellValueChanged);
             // 
@@ -307,7 +310,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(660, 147);
+            this.btnThem.Location = new System.Drawing.Point(660, 182);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(80, 35);
             this.btnThem.TabIndex = 13;
@@ -326,9 +329,9 @@
             this.TenCD,
             this.TenUV,
             this.SoPhieu_BC});
-            this.dgvBauCu.Location = new System.Drawing.Point(350, 188);
+            this.dgvBauCu.Location = new System.Drawing.Point(350, 223);
             this.dgvBauCu.Name = "dgvBauCu";
-            this.dgvBauCu.Size = new System.Drawing.Size(493, 466);
+            this.dgvBauCu.Size = new System.Drawing.Size(493, 431);
             this.dgvBauCu.TabIndex = 14;
             // 
             // ID_BC
@@ -368,7 +371,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(768, 159);
+            this.btnXoa.Location = new System.Drawing.Point(768, 194);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 15;
@@ -515,7 +518,7 @@
             this.Dat2});
             this.dgvUngVien_KQ.Location = new System.Drawing.Point(750, 41);
             this.dgvUngVien_KQ.Name = "dgvUngVien_KQ";
-            this.dgvUngVien_KQ.Size = new System.Drawing.Size(540, 101);
+            this.dgvUngVien_KQ.Size = new System.Drawing.Size(540, 135);
             this.dgvUngVien_KQ.TabIndex = 31;
             this.dgvUngVien_KQ.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvUngVien_KQ_CellFormatting);
             // 
@@ -550,9 +553,9 @@
             // Dat_KQ
             // 
             this.Dat_KQ.DataPropertyName = "Dat";
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Dat_KQ.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Dat_KQ.DefaultCellStyle = dataGridViewCellStyle5;
             this.Dat_KQ.HeaderText = "Đạt";
             this.Dat_KQ.Name = "Dat_KQ";
             this.Dat_KQ.Width = 50;
@@ -574,9 +577,9 @@
             this.LoaiBC,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn5});
-            this.dgvKhongHopLe.Location = new System.Drawing.Point(849, 188);
+            this.dgvKhongHopLe.Location = new System.Drawing.Point(849, 223);
             this.dgvKhongHopLe.Name = "dgvKhongHopLe";
-            this.dgvKhongHopLe.Size = new System.Drawing.Size(339, 466);
+            this.dgvKhongHopLe.Size = new System.Drawing.Size(339, 431);
             this.dgvKhongHopLe.TabIndex = 32;
             // 
             // STTCD_KHL
@@ -609,7 +612,7 @@
             // 
             // btnXoaKhongHopLe
             // 
-            this.btnXoaKhongHopLe.Location = new System.Drawing.Point(1113, 159);
+            this.btnXoaKhongHopLe.Location = new System.Drawing.Point(1113, 194);
             this.btnXoaKhongHopLe.Name = "btnXoaKhongHopLe";
             this.btnXoaKhongHopLe.Size = new System.Drawing.Size(75, 23);
             this.btnXoaKhongHopLe.TabIndex = 33;
@@ -785,20 +788,50 @@
             // 
             // btnThemChiaDoi
             // 
-            this.btnThemChiaDoi.Location = new System.Drawing.Point(350, 147);
+            this.btnThemChiaDoi.Location = new System.Drawing.Point(350, 182);
             this.btnThemChiaDoi.Name = "btnThemChiaDoi";
             this.btnThemChiaDoi.Size = new System.Drawing.Size(80, 35);
             this.btnThemChiaDoi.TabIndex = 49;
-            this.btnThemChiaDoi.Text = "Thêm Chia Đôi";
+            this.btnThemChiaDoi.Text = "Thêm ALL";
             this.btnThemChiaDoi.UseVisualStyleBackColor = true;
             this.btnThemChiaDoi.Click += new System.EventHandler(this.btnThemChiaDoi_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(891, 207);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(124, 13);
+            this.label15.TabIndex = 50;
+            this.label15.Text = "Danh sách không hợp lệ";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(448, 207);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(103, 13);
+            this.label16.TabIndex = 51;
+            this.label16.Text = "Danh sách bỏ phiếu";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(436, 182);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(59, 13);
+            this.label17.TabIndex = 52;
+            this.label17.Text = "Ctrl+Space";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1680, 714);
+            this.ClientSize = new System.Drawing.Size(1312, 714);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.btnThemChiaDoi);
             this.Controls.Add(this.btnInDSCD);
             this.Controls.Add(this.label14);
@@ -938,6 +971,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Dat2;
         private System.Windows.Forms.Button btnInDSCD;
         private System.Windows.Forms.Button btnThemChiaDoi;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
     }
 }
 

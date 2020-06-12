@@ -34,6 +34,7 @@ namespace BauCu
             cmbLan.SelectedIndex = 0;
             dtQuanTri = LINQToDataTable(db.UNGVIENs.Where(item => item.LoaiBC == 1).ToList());
             dtKiemSoat = LINQToDataTable(db.UNGVIENs.Where(item => item.LoaiBC == 2).ToList());
+            radQuanTri.Checked = true;
         }
 
         public DataTable LINQToDataTable<T>(IEnumerable<T> varlist)
@@ -320,6 +321,10 @@ namespace BauCu
                     txtHoTenCD.Text = codong.TENCD;
                     txtTongSoCoPhan.Text = codong.TONGCD.Value.ToString();
                     txtTongSoPhieuBau.Text = (codong.TONGCD.Value * TongUV).ToString();
+                    foreach (DataGridViewRow item in dgvUngVien.Rows)
+                    {
+                        item.Cells["Chon"].Value = true;
+                    }
                 }
             }
             else
