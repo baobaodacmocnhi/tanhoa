@@ -15,16 +15,16 @@ namespace DHCD_KiemPhieu.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["login"] == null)
-            //{
-            //    Response.Redirect("Login.aspx");
-            //}
+            if (Session["login"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
             MaintainScrollPositionOnPostBack = true;
             if (IsPostBack)
                 return;
             Binddata();
-          //  this.txtCoDong.Text = "";
-         
+            //  this.txtCoDong.Text = "";
+
             // this.tungay.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
         }
         public DataTable LINQToDataTable<T>(IEnumerable<T> varlist)
@@ -159,14 +159,14 @@ namespace DHCD_KiemPhieu.View
                              //Dat=0.0,
                              Dat = Math.Round(((double)(itemGroup.Sum(item => item.TONGCD.Value)) / (double)(db.DSCODONG_THAMDUs.Sum(item => item.TONGCD.Value)) * 100), 2, MidpointRounding.AwayFromZero),
                          };
-           
+
             DataTable tb = LINQToDataTable(query2);
 
             if (tb.Rows.Count > 0)
             {
                 Session["BAUCU"] = tb;
                 //TongUV = tb.Rows.Count;
-                TongUV = db.UNGVIENs.Count();
+                TongUV = db.UNGVIENs.Where(item => item.LoaiBC == int.Parse(DropDownList1.SelectedValue.ToString())).Count();
                 Count();
             }
             else
@@ -186,7 +186,7 @@ namespace DHCD_KiemPhieu.View
             //        item["Dat"] = Math.Round(200 - Sum - TyLeKhongBoPhieu - TyLeKhongHopLe - TyLePhieuKhongTinNhiem, 2);
             //    }
 
-            
+
         }
 
         public void Count()
@@ -252,7 +252,7 @@ namespace DHCD_KiemPhieu.View
                 //    txtCDKhongBoPhieu_CP.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (db.DSCODONG_THAMDUs.Sum(item => item.TONGCD.Value) - ((db.KIEMPHIEU_BAUCUs.Where(item => item.UNGVIEN.LoaiBC == LoaiBC).Count() > 0 ? int.Parse(ExecuteQuery_SqlDataAdapter_DataTable(sql).Rows[0][0].ToString()) : 0) + (db.KHONGHOPLEs.Where(item => item.LoaiBC == LoaiBC).Count() > 0 ? db.KHONGHOPLEs.Where(item => item.LoaiBC == LoaiBC).Sum(item => item.TONGCD.Value) : 0))) * TongUV);
                 //else
                 //    txtCDKhongBoPhieu_CP.Text = "0";
-               
+
                 //cổ đông tham dự
                 if (db.DSCODONG_THAMDUs.Count() > 0)
                     txtCDThamDu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", db.DSCODONG_THAMDUs.Count());
@@ -281,7 +281,7 @@ namespace DHCD_KiemPhieu.View
                     txtCDBoPhieu_CP.Text = "0";
 
                 TyLeBoPhieu = Math.Round((double.Parse(txtCDBoPhieu_CP.Text.Trim().Replace(".", "")) / double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", "")) * 100), 2);
-                txtTyLeCDBoPhieu.Text = TyLeBoPhieu.ToString().Replace(".",",")+"%";
+                txtTyLeCDBoPhieu.Text = TyLeBoPhieu.ToString().Replace(".", ",") + "%";
 
                 //cổ đông hợp lệ
                 if (db.KIEMPHIEU_BAUCUs.Where(item => item.UNGVIEN.LoaiBC == LoaiBC).Select(item => item.STTCD).Distinct().Count() > 0)
@@ -300,7 +300,7 @@ namespace DHCD_KiemPhieu.View
                     txtPhieuHopLe_CP.Text = "0";
 
                 TyLeBoPhieuHopLe = Math.Round((double.Parse(txtPhieuHopLe_CP.Text.Trim().Replace(".", "")) / double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", "")) * 100), 2);
-                txtTyLePhieuHopLe.Text = TyLeBoPhieuHopLe.ToString().Replace(".",",")+"%";
+                txtTyLePhieuHopLe.Text = TyLeBoPhieuHopLe.ToString().Replace(".", ",") + "%";
 
                 //cổ đông không tín nhiệm
                 if (db.BAUSOPHIEUDUs.Where(item => item.LoaiBC == LoaiBC).Count() > 0)
@@ -308,8 +308,8 @@ namespace DHCD_KiemPhieu.View
                 else
                     txtPhieuKhongTinNhiem_CP.Text = "0";
 
-                TyLePhieuKhongTinNhiem = Math.Round((double.Parse(txtPhieuKhongTinNhiem_CP.Text.Trim().Replace(".", "")) / (double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", "")) / TongUV) * 100), 2);
-                txtTyLePhieuKhongTinNhiem.Text = TyLePhieuKhongTinNhiem.ToString().Replace(".",",")+"%";
+                TyLePhieuKhongTinNhiem = Math.Round((double.Parse(txtPhieuKhongTinNhiem_CP.Text.Trim().Replace(".", "")) / (double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", "")) / 1) * 100), 2);
+                txtTyLePhieuKhongTinNhiem.Text = TyLePhieuKhongTinNhiem.ToString().Replace(".", ",") + "%";
 
                 //cổ đông không hợp lệ
                 if (db.KHONGHOPLEs.Where(item => item.LoaiBC == LoaiBC).Count() > 0)
@@ -322,8 +322,8 @@ namespace DHCD_KiemPhieu.View
                 else
                     txtPhieuKhongHopLe_CP.Text = "0";
 
-                TyLeKhongHopLe = Math.Round((double.Parse(txtPhieuKhongHopLe_CP.Text.Trim().Replace(".", "")) / (double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", "")) / TongUV) * 100), 2);
-                txtTyLeKhongHopLe.Text = TyLeKhongHopLe.ToString().Replace(".",",")+"%";
+                TyLeKhongHopLe = Math.Round((double.Parse(txtPhieuKhongHopLe_CP.Text.Trim().Replace(".", "")) / (double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", "")) / 1) * 100), 2);
+                txtTyLeKhongHopLe.Text = TyLeKhongHopLe.ToString().Replace(".", ",") + "%";
 
                 //cổ đông không bỏ phiếu
                 if (db.DSCODONG_THAMDUs.Count() - (db.KIEMPHIEU_BAUCUs.Where(item => item.UNGVIEN.LoaiBC == LoaiBC).Select(item => item.STTCD).Distinct().Count() + db.KHONGHOPLEs.Where(item => item.LoaiBC == LoaiBC).Count()) > 0)
@@ -350,19 +350,35 @@ namespace DHCD_KiemPhieu.View
                 else
                     txtCDKhongBoPhieu_CP.Text = "0";
 
-                TyLeKhongBoPhieu = Math.Round((double.Parse(txtCDKhongBoPhieu_CP.Text.Trim().Replace(".", "")) / (double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", "")) / TongUV) * 100), 2);
-                txtTyLeKhongBoPhieu.Text = TyLeKhongBoPhieu.ToString().Replace(".",",")+"%";
+                double a = double.Parse(txtCDKhongBoPhieu_CP.Text.Trim().Replace(".", ""));
+                double b = double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", ""));
+                double c = a / b;
+                TyLeKhongBoPhieu = (double.Parse(txtCDKhongBoPhieu_CP.Text.Trim().Replace(".", "")) / (double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", "")) / TongUV) * 100);
+                txtTyLeKhongBoPhieu.Text = TyLeKhongBoPhieu.ToString().Replace(".", ",") + "%";
+
+                if (TyLeKhongBoPhieu != 0)
+                    txtTyLeKhongBoPhieu.Text = Math.Round((100 - double.Parse(txtTyLeCDBoPhieu.Text.Trim().Replace(",", ".").Replace("%", ""))), 2).ToString() + "%";
 
                 if (TyLeKhongHopLe != 0)
-                    txtTyLeKhongHopLe.Text = Math.Round((TyLeBoPhieu - TyLeBoPhieuHopLe - TyLePhieuKhongTinNhiem), 2).ToString().Replace(".",",");
+                    txtTyLeKhongHopLe.Text = Math.Round((TyLeBoPhieu - TyLeBoPhieuHopLe - TyLePhieuKhongTinNhiem), 2).ToString().Replace(".", ",") + "%";
                 else
-                    if (TyLePhieuKhongTinNhiem!= 0)
-                        txtTyLePhieuKhongTinNhiem.Text = Math.Round((TyLeBoPhieu - TyLeBoPhieuHopLe), 2).ToString().Replace(".", ",");
+                    if (TyLePhieuKhongTinNhiem != 0)
+                        txtTyLePhieuKhongTinNhiem.Text = Math.Round((TyLeBoPhieu - TyLeBoPhieuHopLe), 2).ToString().Replace(".", ",") + "%";
+
+                
             }
         }
 
 
 
+        protected void an_CheckedChanged(object sender, EventArgs e)
+        {
+            if (an.Checked)
+                this.Panel1.Visible = false;
+            else
+                this.Panel1.Visible = true;
+
+        }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -373,7 +389,7 @@ namespace DHCD_KiemPhieu.View
                 title.Text = "..: KẾT QUẢ BẦU CỬ THÀNH VIÊN BAN KIỂM SOÁT:..";
             else
                 title.Text = "..: KẾT QUẢ BẦU CỬ CÔNG TY CP CẤP NƯỚC TÂN HÒA :..";
-          
+
         }
 
         protected void btCapNhat2_Click(object sender, EventArgs e)

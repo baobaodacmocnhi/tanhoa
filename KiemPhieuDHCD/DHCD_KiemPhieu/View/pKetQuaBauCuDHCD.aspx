@@ -100,6 +100,8 @@
                             <asp:ListItem>8</asp:ListItem>
                         </asp:DropDownList>
                     </td>
+                    <td>
+                     <asp:CheckBox ID="an" runat="server" AutoPostBack="True" OnCheckedChanged="an_CheckedChanged" /></td>
             </tr>
         </tbody>
     </table>
@@ -122,6 +124,8 @@
         %>
         <tr>
             <td>
+                <asp:Panel ID="Panel1" runat="server">
+               
                 <table cellpadding="0" cellspacing="0" class="table_list_1" style="font-family: Times New Roman;
                     color: Blue; margin-left: 20px;">
                     <tr class="head1">
@@ -166,7 +170,7 @@
                                                     Text="0" Font-Size="XX-Large"></asp:Label>
                                             &nbsp;phiếu, tương ứng&nbsp;--%>
                             <asp:Label ID="txtPhieuKhongTinNhiem_CP" runat="server" Font-Bold="True" ForeColor="Red"
-                                Text="0" Font-Size="XX-Large"></asp:Label>
+                                Text="0" Font-Size="X-Large"></asp:Label>
                             &nbsp;cổ phần (<asp:Label ID="txtTyLePhieuKhongTinNhiem" runat="server" Font-Bold="True"
                                 ForeColor="Red" Text="0" Font-Size="X-Large"></asp:Label>)
                         </td>
@@ -184,7 +188,7 @@
                         </td>
                     </tr>
                     <tr class="head1">
-                        <td class="style5" style="border-right: 2px #FF0000 solid; font-size: 20px; border-bottom: 1px solid;">
+                        <td class="style5" style="border-right: 2px #FF0000 solid; font-size: 22px; border-bottom: 1px solid;">
                             - Tổng số cổ đông không tham gia bầu cử:
                             <asp:Label ID="txtCDKhongBoPhieu" runat="server" Font-Bold="True" ForeColor="Red"
                                 Text="0" Font-Size="XX-Large"></asp:Label>
@@ -196,6 +200,7 @@
                         </td>
                     </tr>
                 </table>
+            </asp:Panel>
             </td>
         </tr>
         <tr>
@@ -238,33 +243,33 @@ foreach (DataRow row in table.Rows)
     stt++;
                     %>
                     <tr class="head1">
-                        <td style="width: 20px; border-right: 2px #0000FF solid; text-align: center; color: Red;
+                        <td style="width: 20px; border-right: 2px #0000FF solid; text-align: center; color: Blue;
                             font-size: 35px; text-align: center; border-bottom-style: solid; border-bottom-color: inherit;
                             border-bottom-width: 1px;" class="style1">
                             <a onclick="showhide(<%=stt%>);" href="#">
                                 <%=stt%></a>
                         </td>
-                        <td style="border-right: 2px #0000FF solid; text-align: center; color: Red; font-size: 35px;
+                        <td style="border-right: 2px #0000FF solid; text-align: center; color: #0033CC; font-size: 25px;
                             text-align: center; border-bottom-style: solid; border-bottom-color: inherit;
                             border-bottom-width: 1px;" class="style1">
                             <div id='name<%=stt%>' style="display: none;">
                                 <%=row["Name"].ToString()%></div>
                         </td>
-                        <td class="style1" style="border-right: 2px #0000FF solid; color: Red; font-size: 35px;
+                        <td class="style1" style="border-right: 2px #0000FF solid; color: #0033CC; font-size: 35px;
                             text-align: center; border-bottom-style: solid; border-bottom-color: inherit;
                             border-bottom-width: 1px;">
                             <div id='sl<%=stt%>' style="display: none;">
                                 <%=row["SoPhieu"].ToString()%>
                             </div>
                         </td>
-                        <td class="style1" style="border-right: 2px #0000FF solid; color: Red; font-size: 35px;
+                        <td class="style1" style="border-right: 2px #0000FF solid; color: #0033CC; font-size: 35px;
                             text-align: center; border-bottom-style: solid; border-bottom-color: inherit;
                             border-bottom-width: 1px;">
                             <div id='cp<%=stt%>' style="display: none;">
                                 <%=String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", row["CoPhan"])%>
                             </div>
                         </td>
-                        <td class="style1" style="border-right: 2px #0000FF solid; color: Red; font-size: 35px;
+                        <td class="style1" style="border-right: 2px #0000FF solid; color: #0033CC; font-size: 35px;
                             text-align: center; border-bottom-style: solid; border-bottom-color: inherit;
                             border-bottom-width: 1px;">
                             <div id='tl<%=stt%>' style="display: none;">

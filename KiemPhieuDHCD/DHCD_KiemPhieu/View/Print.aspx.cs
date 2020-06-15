@@ -34,7 +34,7 @@ namespace DHCD_KiemPhieu.View
 
             } if ("IN".Equals(Request.Params["page"] + ""))
             {
-                CrystalReportSource1.Report.FileName = "inTheBieuQuyet.rpt";
+                CrystalReportSource1.Report.FileName = "inTheBieuQuyet_N.rpt";
                 CrystalReportSource1.ReportDocument.SetDataSource(Img());
                 CrystalReportSource1.ReportDocument.SetParameterValue("TT", Session["TT"] + "");
 
@@ -42,13 +42,13 @@ namespace DHCD_KiemPhieu.View
             }
             if ("BC".Equals(Request.Params["page"] + ""))
             {
-                CrystalReportSource1.Report.FileName = "inTheBauCu.rpt";
+                CrystalReportSource1.Report.FileName = "inTheBauCuBKS_3.rpt";
                 CrystalReportSource1.ReportDocument.SetDataSource(Img());
                 CrystalReportSource1.ReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "THE_BIEU_QUYET");
             }
             if ("HD".Equals(Request.Params["page"] + ""))
             {
-                CrystalReportSource1.Report.FileName = "inTheBauCuHDQT_1.rpt";
+                CrystalReportSource1.Report.FileName = "inTheBieuQuyetHDQT_1.rpt";
                 CrystalReportSource1.ReportDocument.SetDataSource(Img());
                 CrystalReportSource1.ReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "THE_BIEU_QUYET");
             }

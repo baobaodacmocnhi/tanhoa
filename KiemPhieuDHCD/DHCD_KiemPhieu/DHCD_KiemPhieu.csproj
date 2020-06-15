@@ -391,6 +391,30 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\inTheBieuQuyet_N.cs">
+      <DependentUpon>inTheBieuQuyet_N.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="View\inTheBieuQuyetHDQT_1.cs">
+      <DependentUpon>inTheBieuQuyetHDQT_1.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="View\inTheBauCuBKS_3.cs">
+      <DependentUpon>inTheBauCuBKS_3.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="View\inTheBauCuHDQT_5.cs">
+      <DependentUpon>inTheBauCuHDQT_5.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="View\inKQBauCu_CongDoan.cs">
       <DependentUpon>inKQBauCu_CongDoan.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -461,12 +485,6 @@
     </Compile>
     <Compile Include="View\pKetQuaBauCuDHCD.aspx.designer.cs">
       <DependentUpon>pKetQuaBauCuDHCD.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\inTheBauCuBKS.cs">
-      <DependentUpon>inTheBauCuBKS.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="View\pInCoDong.aspx.cs">
       <DependentUpon>pInCoDong.aspx</DependentUpon>
@@ -588,6 +606,22 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inKQBauCu_CongDoan.cs</LastGenOutput>
     </Content>
+    <Content Include="View\inTheBieuQuyet_N.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inTheBieuQuyet_N.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="View\inTheBieuQuyetHDQT_1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inTheBieuQuyetHDQT_1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\inTheBauCuBKS_3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inTheBauCuBKS_3.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\inTheBauCuHDQT_5.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inTheBauCuHDQT_5.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\inTheBauCuHDQT_1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBauCuHDQT_1.cs</LastGenOutput>
@@ -603,10 +637,6 @@
     <EmbeddedResource Include="View\inTheBauCuHDQT_3.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBauCuHDQT_3.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\inTheBauCuBKS.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>inTheBauCuBKS.cs</LastGenOutput>
     </EmbeddedResource>
     <Content Include="View\inTheBieuQuyet.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

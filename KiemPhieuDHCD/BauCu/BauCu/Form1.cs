@@ -88,6 +88,10 @@ namespace BauCu
             txtTongSoPhieuBau.Text = "";
             chkKhongHopLe.Checked = false;
             checkAll.Checked = false;
+            foreach (DataGridViewRow item in dgvUngVien.Rows)
+            {
+                item.Cells["Chon"].Value = false;
+            }
         }
 
         public void LoadDSBauCu()
@@ -155,7 +159,7 @@ namespace BauCu
                 else
                     txtPhieuKhongTinNhiem_CP.Text = "0";
 
-                txtTyLePhieuKhongTinNhiem.Text = Math.Round((double.Parse(txtPhieuKhongTinNhiem_CP.Text.Trim().Replace(".", "")) / (double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", "")) / TongUV) * 100), 2).ToString();
+                txtTyLePhieuKhongTinNhiem.Text = Math.Round((double.Parse(txtPhieuKhongTinNhiem_CP.Text.Trim().Replace(".", "")) / (double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", "")) / 1) * 100), 2).ToString();
 
                 //cổ đông không hợp lệ
                 if (db.KHONGHOPLEs.Where(item => item.LoaiBC == LoaiBC).Count() > 0)
@@ -168,7 +172,7 @@ namespace BauCu
                 else
                     txtPhieuKhongHopLe_CP.Text = "0";
 
-                txtTyLeKhongHopLe.Text = Math.Round((double.Parse(txtPhieuKhongHopLe_CP.Text.Trim().Replace(".", "")) / (double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", "")) / TongUV) * 100), 2).ToString();
+                txtTyLeKhongHopLe.Text = Math.Round((double.Parse(txtPhieuKhongHopLe_CP.Text.Trim().Replace(".", "")) / (double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", "")) / 1) * 100), 2).ToString();
 
                 //cổ đông không bỏ phiếu
                 if (db.DSCODONG_THAMDUs.Count() - (db.KIEMPHIEU_BAUCUs.Where(item => item.UNGVIEN.LoaiBC == LoaiBC).Select(item => item.STTCD).Distinct().Count() + db.KHONGHOPLEs.Where(item => item.LoaiBC == LoaiBC).Count()) > 0)
@@ -198,12 +202,14 @@ namespace BauCu
                 txtTyLeKhongBoPhieu.Text = Math.Round((double.Parse(txtCDKhongBoPhieu_CP.Text.Trim().Replace(".", "")) / (double.Parse(txtCDThamDu_CP.Text.Trim().Replace(".", "")) / TongUV) * 100), 2).ToString();
                 //txtTyLeKhongBoPhieu.Text = (100- double.Parse(txtCDThamDu_CP.Text.Trim())).ToString();
 
-                if (double.Parse(txtTyLeKhongHopLe.Text.Trim()) != 0)
+                if (txtTyLeKhongBoPhieu.Text.Trim() != "0")
+                    txtTyLeKhongBoPhieu.Text = Math.Round((100 - double.Parse(txtTyLeBoPhieu.Text.Trim())), 2).ToString();
+
+                if (txtTyLeKhongHopLe.Text.Trim() != "0")
                     txtTyLeKhongHopLe.Text = Math.Round((double.Parse(txtTyLeBoPhieu.Text.Trim()) - double.Parse(txtTyLeHopLe.Text.Trim()) - double.Parse(txtTyLePhieuKhongTinNhiem.Text.Trim())), 2).ToString();
                 else
-                    if (double.Parse(txtTyLePhieuKhongTinNhiem.Text.Trim()) != 0)
+                    if (txtTyLePhieuKhongTinNhiem.Text.Trim() != "0")
                         txtTyLePhieuKhongTinNhiem.Text = Math.Round((double.Parse(txtTyLeBoPhieu.Text.Trim()) - double.Parse(txtTyLeHopLe.Text.Trim())), 2).ToString();
-
                 ///
 
                 var query = from itemBC in db.KIEMPHIEU_BAUCUs
@@ -431,19 +437,19 @@ namespace BauCu
                     return;
                 }
                 foreach (DataGridViewRow item in dgvUngVien.Rows)
-                        if (db.KIEMPHIEU_BAUCUs.Any(itemA => itemA.ID_UngCu == int.Parse(item.Cells["ID"].Value.ToString().Trim()) && itemA.STTCD == codong.STTCD) == false)
-                        {
-                            KIEMPHIEU_BAUCU entity = new KIEMPHIEU_BAUCU();
-                            entity.LANBQ = int.Parse(cmbLan.SelectedItem.ToString());
-                            entity.NGAYBQ = DateTime.Now;
-                            entity.STTCD = codong.STTCD;
-                            entity.MACD = codong.MACD;
-                            entity.TONGCD = int.Parse(txtTongSoCoPhan.Text.Trim().Replace(".",""));
-                            entity.ID_UngCu = int.Parse(item.Cells["ID"].Value.ToString().Trim());
-                            entity.CREATEDATE = DateTime.Now;
-                            db.KIEMPHIEU_BAUCUs.InsertOnSubmit(entity);
-                            db.SubmitChanges();
-                        }
+                    if (db.KIEMPHIEU_BAUCUs.Any(itemA => itemA.ID_UngCu == int.Parse(item.Cells["ID"].Value.ToString().Trim()) && itemA.STTCD == codong.STTCD) == false)
+                    {
+                        KIEMPHIEU_BAUCU entity = new KIEMPHIEU_BAUCU();
+                        entity.LANBQ = int.Parse(cmbLan.SelectedItem.ToString());
+                        entity.NGAYBQ = DateTime.Now;
+                        entity.STTCD = codong.STTCD;
+                        entity.MACD = codong.MACD;
+                        entity.TONGCD = int.Parse(txtTongSoCoPhan.Text.Trim().Replace(".", ""));
+                        entity.ID_UngCu = int.Parse(item.Cells["ID"].Value.ToString().Trim());
+                        entity.CREATEDATE = DateTime.Now;
+                        db.KIEMPHIEU_BAUCUs.InsertOnSubmit(entity);
+                        db.SubmitChanges();
+                    }
 
                 LoadDSBauCu();
                 txtSTTCD.Focus();
@@ -756,6 +762,6 @@ namespace BauCu
                 }
         }
 
-        
+
     }
 }
