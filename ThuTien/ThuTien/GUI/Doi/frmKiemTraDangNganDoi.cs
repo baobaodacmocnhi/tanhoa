@@ -21,6 +21,7 @@ namespace ThuTien.GUI.Doi
         CTo _cTo = new CTo();
         CHoaDon _cHoaDon = new CHoaDon();
         CChotDangNgan _cChotDangNgan = new CChotDangNgan();
+        frmLoading frm;
 
         public frmKiemTraDangNganDoi()
         {
@@ -582,13 +583,19 @@ namespace ThuTien.GUI.Doi
                             //{
                             //    _cHoaDon.ExecuteNonQuery("insert into Temp_SyncHoaDon(ID,[Action],Name,Value,MaHD)values((select ID=case when not exists (select ID from Temp_SyncHoaDon) then 1 else MAX(ID)+1 end from Temp_SyncHoaDon),'NopTien','',''," + item["MaHD"] + ")");
                             //}
-                            wsThuTien.wsThuTien wsThuTien = new wsThuTien.wsThuTien();
-                            string result= wsThuTien.syncNopTienLo(en.NgayChot.Value.ToString("dd/MM/yyyy"));
-                            string[] results = result.Split(';');
-                            if (bool.Parse(results[0]) == true)
+
+                            //DataTable dt = _cHoaDon.GetDSDangNgan(DateTime.Parse(dgvChotDangNgan["NgayChot", e.RowIndex].Value.ToString()), DateTime.Parse(dgvChotDangNgan["NgayChot", e.RowIndex].Value.ToString()));
+                            //int SL = (int)Math.Ceiling((double)dt.Rows.Count / 1000);
+
+                            if (backgroundWorker_NopTien.IsBusy)
+                                backgroundWorker_NopTien.CancelAsync();
+                            else
                             {
-                                MessageBox.Show("Thành công Nộp Tiền 1000 hóa đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                frm = new frmLoading();
+                                frm.ShowDialog();
+                                backgroundWorker_NopTien.RunWorkerAsync();
                             }
+
                         }
                     }
                     else
@@ -640,5 +647,26 @@ namespace ThuTien.GUI.Doi
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
+
+        private void backgroundWorker_NopTien_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+            wsThuTien.wsThuTien wsThuTien = new wsThuTien.wsThuTien();
+            TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan.CurrentRow.Cells["ID"].Value.ToString()));
+            string result = wsThuTien.syncNopTienLo(en.NgayChot.Value.ToString("dd/MM/yyyy"));
+            string[] results = result.Split(';');
+            if (bool.Parse(results[0]) == true)
+            {
+                //MessageBox.Show("Thành công Nộp Tiền ngày " + en.NgayChot.Value.ToString("dd/MM/yyyy"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void backgroundWorker_NopTien_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (frm != null)
+                frm.Close();
+            MessageBox.Show("Hoàn Tất Nộp Tiền ngày " + dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString() + "\nVui lòng kiểm tra lại số liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
     }
 }
