@@ -154,7 +154,7 @@
                     <tr id="" class="head1" style="height: 17px;">
                         <td class="style5" colspan="2" style="border-right: 1px #FF0000 solid; color: Red;
                             background-color: #FFFF99; font-size: 20px; border-bottom: 2px #FF0000	 solid;">
-                            CỔ ĐÔNG KHÔNG ĐỒNG Ý
+                            CỔ ĐÔNG ĐỒNG Ý
                         </td>
                     </tr>
                     <tr class="head1">
@@ -236,7 +236,7 @@
                         <tr class="head1" style="height: 17px;">
                             <td class="style5" style="border-right: 1px #FF0000 solid; background-color: #CCFFFF;
                                 font-size: 22px; border-bottom: 2px #FF0000	 solid;" colspan="2">
-                                <center> CỔ ĐÔNG ĐỒNG Ý</center>
+                                <center> CỔ ĐÔNG KHÔNG BỎ PHIẾU</center>
                             </td>
                         </tr>
                         <tr class="head1">
