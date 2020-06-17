@@ -493,7 +493,13 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 TyLeDV = hd.TILEDV.Value;
                             if (hd.TILEHCSN != null && hd.TILEHCSN.Value != 0)
                                 TyLeHCSN = hd.TILEHCSN.Value;
-                            TuNgay = hd.TUNGAY.Value;
+                            if (hd.TUNGAY != null)
+                                TuNgay = hd.TUNGAY.Value;
+                            else
+                            {
+                                DocSo ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                                TuNgay = ds.TuNgay.Value;
+                            }
                             DenNgay = hd.DENNGAY.Value;
                         }
                         else
@@ -560,7 +566,13 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 TyLeDV = hd.TILEDV.Value;
                             if (hd.TILEHCSN != null && hd.TILEHCSN.Value != 0)
                                 TyLeHCSN = hd.TILEHCSN.Value;
-                            TuNgay = hd.TUNGAY.Value;
+                            if (hd.TUNGAY != null)
+                                TuNgay = hd.TUNGAY.Value;
+                            else
+                            {
+                                DocSo ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                                TuNgay = ds.TuNgay.Value;
+                            }
                             DenNgay = hd.DENNGAY.Value;
                         }
                         else
@@ -627,7 +639,13 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 TyLeDV = hd.TILEDV.Value;
                             if (hd.TILEHCSN != null && hd.TILEHCSN.Value != 0)
                                 TyLeHCSN = hd.TILEHCSN.Value;
-                            TuNgay = hd.TUNGAY.Value;
+                            if (hd.TUNGAY != null)
+                                TuNgay = hd.TUNGAY.Value;
+                            else
+                            {
+                                DocSo ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                                TuNgay = ds.TuNgay.Value;
+                            }
                             DenNgay = hd.DENNGAY.Value;
                         }
                         else
@@ -694,7 +712,13 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 TyLeDV = hd.TILEDV.Value;
                             if (hd.TILEHCSN != null && hd.TILEHCSN.Value != 0)
                                 TyLeHCSN = hd.TILEHCSN.Value;
-                            TuNgay = hd.TUNGAY.Value;
+                            if (hd.TUNGAY != null)
+                                TuNgay = hd.TUNGAY.Value;
+                            else
+                            {
+                                DocSo ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                                TuNgay = ds.TuNgay.Value;
+                            }
                             DenNgay = hd.DENNGAY.Value;
                         }
                         else
@@ -761,7 +785,13 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 TyLeDV = hd.TILEDV.Value;
                             if (hd.TILEHCSN != null && hd.TILEHCSN.Value != 0)
                                 TyLeHCSN = hd.TILEHCSN.Value;
-                            TuNgay = hd.TUNGAY.Value;
+                            if (hd.TUNGAY != null)
+                                TuNgay = hd.TUNGAY.Value;
+                            else
+                            {
+                                ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                                TuNgay = ds.TuNgay.Value;
+                            }
                             DenNgay = hd.DENNGAY.Value;
                         }
                         else
@@ -831,7 +861,13 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 TyLeDV = hd.TILEDV.Value;
                             if (hd.TILEHCSN != null && hd.TILEHCSN.Value != 0)
                                 TyLeHCSN = hd.TILEHCSN.Value;
-                            TuNgay = hd.TUNGAY.Value;
+                            if (hd.TUNGAY != null)
+                                TuNgay = hd.TUNGAY.Value;
+                            else
+                            {
+                                ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                                TuNgay = ds.TuNgay.Value;
+                            }
                             DenNgay = hd.DENNGAY.Value;
                         }
                         else
@@ -901,7 +937,13 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 TyLeDV = hd.TILEDV.Value;
                             if (hd.TILEHCSN != null && hd.TILEHCSN.Value != 0)
                                 TyLeHCSN = hd.TILEHCSN.Value;
-                            TuNgay = hd.TUNGAY.Value;
+                            if (hd.TUNGAY != null)
+                                TuNgay = hd.TUNGAY.Value;
+                            else
+                            {
+                                ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                                TuNgay = ds.TuNgay.Value;
+                            }
                             DenNgay = hd.DENNGAY.Value;
                         }
                         else
@@ -971,7 +1013,13 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 TyLeDV = hd.TILEDV.Value;
                             if (hd.TILEHCSN != null && hd.TILEHCSN.Value != 0)
                                 TyLeHCSN = hd.TILEHCSN.Value;
-                            TuNgay = hd.TUNGAY.Value;
+                            if (hd.TUNGAY != null)
+                                TuNgay = hd.TUNGAY.Value;
+                            else
+                            {
+                                ds = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                                TuNgay = ds.TuNgay.Value;
+                            }
                             DenNgay = hd.DENNGAY.Value;
                         }
                         else
@@ -985,7 +1033,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         }
                         _cGiaNuoc.TinhTienNuoc(false, false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), TuNgay, DenNgay, GiaBieu, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, DinhMucHN, int.Parse(dgvTruyThuTienNuoc["TieuThu_Moi", e.RowIndex].Value.ToString()), out  TienNuocMoiA, out ChiTietMoiA, out  TienNuocMoiB, out  ChiTietMoiB, out  TieuThu_DieuChinhGia);
                         if (hd == null && ds == null)
-                             dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu);
+                            dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu);
                         else
                             dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, GiaBieu);
                     }

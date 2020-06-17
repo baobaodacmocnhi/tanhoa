@@ -215,6 +215,29 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
 
         }
+
+        public DataTable getDS_ChiTiet()
+        {
+            var query = from item in db.GianLan_ChiTiets
+                        select new
+                        {
+                            MaDon = item.GianLan.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.GianLan.MaDonMoi).Count() == 1 ? item.GianLan.MaDonMoi.Value.ToString() : item.GianLan.MaDonMoi + "." + item.STT
+                                    : item.GianLan.MaDon != null ? "TKH" + item.GianLan.MaDon
+                                    : item.GianLan.MaDonTXL != null ? "TXL" + item.GianLan.MaDonTXL
+                                    : item.GianLan.MaDonTBC != null ? "TBC" + item.GianLan.MaDonTBC : null,
+                            ID = item.MaCTGL,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.NoiDungViPham,
+                            item.TinhTrang,
+                            item.XepDon,
+                            item.CreateDate,
+                            item.GianLan.MaDonTXL,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable getDS_ChiTiet(string DanhBo)
         {
             var query = from item in db.GianLan_ChiTiets
@@ -244,6 +267,29 @@ namespace KTKS_DonKH.DAL.TruyThu
                         select new
                         {
                             MaDon = item.GianLan.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.GianLan.MaDonMoi).Count() == 1 ?  item.GianLan.MaDonMoi.Value.ToString() : item.GianLan.MaDonMoi + "." + item.STT
+                                    : item.GianLan.MaDon != null ? "TKH" + item.GianLan.MaDon
+                                    : item.GianLan.MaDonTXL != null ? "TXL" + item.GianLan.MaDonTXL
+                                    : item.GianLan.MaDonTBC != null ? "TBC" + item.GianLan.MaDonTBC : null,
+                            ID = item.MaCTGL,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.NoiDungViPham,
+                            item.TinhTrang,
+                            item.XepDon,
+                            item.CreateDate,
+                            item.GianLan.MaDonTXL,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_TinhTrang(string TinhTrang)
+        {
+            var query = from item in db.GianLan_ChiTiets
+                        where item.TinhTrang==TinhTrang
+                        select new
+                        {
+                            MaDon = item.GianLan.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.GianLan.MaDonMoi).Count() == 1 ? item.GianLan.MaDonMoi.Value.ToString() : item.GianLan.MaDonMoi + "." + item.STT
                                     : item.GianLan.MaDon != null ? "TKH" + item.GianLan.MaDon
                                     : item.GianLan.MaDonTXL != null ? "TXL" + item.GianLan.MaDonTXL
                                     : item.GianLan.MaDonTBC != null ? "TBC" + item.GianLan.MaDonTBC : null,

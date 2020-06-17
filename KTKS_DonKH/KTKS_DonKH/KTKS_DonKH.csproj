@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1343</ApplicationRevision>
+    <ApplicationRevision>1346</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -500,14 +500,20 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="BaoCao\ThuTraLoi\rptToTrinh.cs">
+      <DependentUpon>rptToTrinh.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\ThuTraLoi\rptThaoThuTraLoi_hotline.cs">
       <DependentUpon>rptThaoThuTraLoi_hotline.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\ThuTraLoi\rptToTrinh.cs">
-      <DependentUpon>rptToTrinh.rpt</DependentUpon>
+    <Compile Include="BaoCao\ThuTraLoi\rptToTrinh_KhongNgayThang.cs">
+      <DependentUpon>rptToTrinh_KhongNgayThang.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -1743,13 +1749,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThuMoiDutChi.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ThuTraLoi\rptToTrinh.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToTrinh.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ThuTraLoi\rptThaoThuTraLoi_hotline.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThaoThuTraLoi_hotline.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\ThuTraLoi\rptToTrinh.rpt">
+    <EmbeddedResource Include="BaoCao\ThuTraLoi\rptToTrinh_KhongNgayThang.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptToTrinh.cs</LastGenOutput>
+      <LastGenOutput>rptToTrinh_KhongNgayThang.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ThuTraLoi\rptThaoThuTraLoi_KhongDanhBo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

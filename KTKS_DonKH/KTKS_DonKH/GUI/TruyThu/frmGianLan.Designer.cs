@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,7 +56,6 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.txtNhanVien = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.txtTinhTrang = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtTienDHN = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -135,6 +134,8 @@
             this.label34 = new System.Windows.Forms.Label();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmbTinhTrang = new System.Windows.Forms.ComboBox();
+            this.cmbTinhTrang_TimKiem = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -232,6 +233,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbTinhTrang);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.btnXoa);
             this.groupBox2.Controls.Add(this.dateKTXM);
@@ -240,7 +242,6 @@
             this.groupBox2.Controls.Add(this.btnThem);
             this.groupBox2.Controls.Add(this.txtNhanVien);
             this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.txtTinhTrang);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.txtTienDHN);
             this.groupBox2.Controls.Add(this.label17);
@@ -289,14 +290,14 @@
             // 
             this.dgvHinh.AllowUserToAddRows = false;
             this.dgvHinh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvHinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Hinh,
@@ -415,19 +416,10 @@
             this.label19.TabIndex = 6;
             this.label19.Text = "Nhân Viên Phát Hiện:";
             // 
-            // txtTinhTrang
-            // 
-            this.txtTinhTrang.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtTinhTrang.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtTinhTrang.Location = new System.Drawing.Point(849, 22);
-            this.txtTinhTrang.Name = "txtTinhTrang";
-            this.txtTinhTrang.Size = new System.Drawing.Size(134, 22);
-            this.txtTinhTrang.TabIndex = 5;
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(768, 26);
+            this.label18.Location = new System.Drawing.Point(675, 25);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(76, 16);
             this.label18.TabIndex = 4;
@@ -435,7 +427,7 @@
             // 
             // txtTienDHN
             // 
-            this.txtTienDHN.Location = new System.Drawing.Point(662, 22);
+            this.txtTienDHN.Location = new System.Drawing.Point(569, 21);
             this.txtTienDHN.Name = "txtTienDHN";
             this.txtTienDHN.Size = new System.Drawing.Size(100, 22);
             this.txtTienDHN.TabIndex = 3;
@@ -443,7 +435,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(583, 26);
+            this.label17.Location = new System.Drawing.Point(490, 25);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(70, 16);
             this.label17.TabIndex = 2;
@@ -869,7 +861,7 @@
             // 
             this.txtNoiDungViPham.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtNoiDungViPham.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtNoiDungViPham.Location = new System.Drawing.Point(427, 22);
+            this.txtNoiDungViPham.Location = new System.Drawing.Point(334, 21);
             this.txtNoiDungViPham.Name = "txtNoiDungViPham";
             this.txtNoiDungViPham.Size = new System.Drawing.Size(150, 22);
             this.txtNoiDungViPham.TabIndex = 1;
@@ -877,7 +869,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(298, 26);
+            this.label4.Location = new System.Drawing.Point(205, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 16);
             this.label4.TabIndex = 0;
@@ -887,14 +879,14 @@
             // 
             this.dgvGianLan.AllowUserToAddRows = false;
             this.dgvGianLan.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGianLan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGianLan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvGianLan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGianLan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -1009,7 +1001,8 @@
             this.cmbTimTheo.Items.AddRange(new object[] {
             "",
             "Danh Bộ",
-            "Ngày"});
+            "Ngày",
+            "Tình Trạng"});
             this.cmbTimTheo.Location = new System.Drawing.Point(166, 338);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(100, 24);
@@ -1150,6 +1143,56 @@
             this.xoaFile_dgvHinh.Text = "Xóa";
             this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
             // 
+            // cmbTinhTrang
+            // 
+            this.cmbTinhTrang.FormattingEnabled = true;
+            this.cmbTinhTrang.Items.AddRange(new object[] {
+            "",
+            "Đang gửi thư mời",
+            "Đang lập bảng giá",
+            "Đang trình ký",
+            "Đang giải quyết",
+            "Chưa thanh toán",
+            "Đã thanh toán",
+            "Đã giải quyết",
+            "Trả góp",
+            "Điều chỉnh không phát sinh truy thu",
+            "Miễn truy thu",
+            "Đã gửi TB tạm ngưng cung cấp nước",
+            "Chuyển lập TB cắt tạm",
+            "Chuyển lập TB hủy",
+            "Giữ nguyên"});
+            this.cmbTinhTrang.Location = new System.Drawing.Point(757, 22);
+            this.cmbTinhTrang.Name = "cmbTinhTrang";
+            this.cmbTinhTrang.Size = new System.Drawing.Size(172, 24);
+            this.cmbTinhTrang.TabIndex = 141;
+            // 
+            // cmbTinhTrang_TimKiem
+            // 
+            this.cmbTinhTrang_TimKiem.FormattingEnabled = true;
+            this.cmbTinhTrang_TimKiem.Items.AddRange(new object[] {
+            "Tất cả",
+            "",
+            "Đang gửi thư mời",
+            "Đang lập bảng giá",
+            "Đang trình ký",
+            "Đang giải quyết",
+            "Chưa thanh toán",
+            "Đã thanh toán",
+            "Đã giải quyết",
+            "Trả góp",
+            "Điều chỉnh không phát sinh truy thu",
+            "Miễn truy thu",
+            "Đã gửi TB tạm ngưng cung cấp nước",
+            "Chuyển lập TB cắt tạm",
+            "Chuyển lập TB hủy",
+            "Giữ nguyên"});
+            this.cmbTinhTrang_TimKiem.Location = new System.Drawing.Point(346, 338);
+            this.cmbTinhTrang_TimKiem.Name = "cmbTinhTrang_TimKiem";
+            this.cmbTinhTrang_TimKiem.Size = new System.Drawing.Size(172, 24);
+            this.cmbTinhTrang_TimKiem.TabIndex = 142;
+            this.cmbTinhTrang_TimKiem.Visible = false;
+            // 
             // frmGianLan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1157,6 +1200,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1291, 650);
+            this.Controls.Add(this.cmbTinhTrang_TimKiem);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.txtMaCTGL);
             this.Controls.Add(this.label32);
@@ -1258,7 +1302,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtNhanVien;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox txtTinhTrang;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtTienDHN;
         private System.Windows.Forms.Label label17;
@@ -1314,5 +1357,7 @@
         private System.Windows.Forms.Button btnChonFile;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem xoaFile_dgvHinh;
+        private System.Windows.Forms.ComboBox cmbTinhTrang;
+        private System.Windows.Forms.ComboBox cmbTinhTrang_TimKiem;
     }
 }

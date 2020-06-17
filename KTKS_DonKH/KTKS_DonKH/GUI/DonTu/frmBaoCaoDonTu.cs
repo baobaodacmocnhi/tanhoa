@@ -195,7 +195,8 @@ namespace KTKS_DonKH.GUI.DonTu
                         }
                         dr["MaDon"] = itemRow["MaDon"].ToString();
                         //dr["STT"] = itemRow["STT"].ToString();
-                        dr["NgayNhan"] = itemRow["NgayChuyen"];
+                        dr["NgayChuyen"] = itemRow["NgayChuyen"];
+                        dr["NgayNhan"] = itemRow["NgayNhan"];
                         dr["SoCongVan"] = itemRow["SoCongVan"];
                         if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
                             dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
@@ -221,7 +222,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     }
                     dr["MaDon"] = itemRow["MaDon"].ToString();
                     //dr["STT"] = itemRow["STT"].ToString();
-                    dr["NgayNhan"] = itemRow["NgayChuyen"];
+                    dr["NgayChuyen"] = itemRow["NgayChuyen"];
+                    dr["NgayNhan"] = itemRow["NgayNhan"];
                     dr["SoCongVan"] = itemRow["SoCongVan"];
                     if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
                         dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
