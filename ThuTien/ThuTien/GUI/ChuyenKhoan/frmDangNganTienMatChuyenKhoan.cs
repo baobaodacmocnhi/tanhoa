@@ -11,6 +11,7 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.ChuyenKhoan;
 using System.Globalization;
 using System.Transactions;
+using ThuTien.DAL.TongHop;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -20,6 +21,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CHoaDon _cHoaDon = new CHoaDon();
         CTienDu _cTienDu = new CTienDu();
         CChotDangNgan _cChotDangNgan = new CChotDangNgan();
+        CDCHD _cDCHD = new CDCHD();
 
         public frmDangNganTienMatChuyenKhoan()
         {
@@ -184,6 +186,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                         if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Text))
                         {
                             MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            lstHD.Focus();
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
+                        if (_cDCHD.CheckExist_UpdatedHDDT(item.Text) == false)
+                        {
+                            MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             lstHD.Focus();
                             item.Selected = true;
                             item.Focused = true;

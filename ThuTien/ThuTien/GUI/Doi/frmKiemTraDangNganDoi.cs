@@ -618,15 +618,19 @@ namespace ThuTien.GUI.Doi
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SLGiay" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "TCGiay" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
             if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SLHDDT" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SLThanhToan" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "TCThanhToan" && e.Value != null)
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "TCHDDT" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }

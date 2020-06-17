@@ -221,6 +221,14 @@ namespace ThuTien.GUI.HanhThu
                             item.Focused = true;
                             return;
                         }
+                        if (_cDCHD.CheckExist_UpdatedHDDT(item.Text) == false)
+                        {
+                            MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            lstHD.Focus();
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
                     }
                     try
                     {

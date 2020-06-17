@@ -11,6 +11,7 @@ using System.Globalization;
 using ThuTien.DAL.QuanTri;
 using System.Transactions;
 using ThuTien.DAL.Quay;
+using ThuTien.DAL.TongHop;
 
 namespace ThuTien.GUI.Quay
 {
@@ -19,6 +20,8 @@ namespace ThuTien.GUI.Quay
         CHoaDon _cHoaDon = new CHoaDon();
         CTienDuQuay _cTienDuQuay = new CTienDuQuay();
         CChotDangNgan _cChotDangNgan = new CChotDangNgan();
+        CDCHD _cDCHD = new CDCHD();
+
         string _mnu = "mnuDangNganTienDuQuay";
 
         public frmDangNganTienDuQuay()
@@ -267,6 +270,30 @@ namespace ThuTien.GUI.Quay
                     //    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //    return;
                     //}
+                    if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Text))
+                    {
+                        MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.Focus();
+                        item.Selected = true;
+                        item.Focused = true;
+                        return;
+                    }
+                    if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Text))
+                    {
+                        MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.Focus();
+                        item.Selected = true;
+                        item.Focused = true;
+                        return;
+                    }
+                    if (_cDCHD.CheckExist_UpdatedHDDT(item.Text) == false)
+                    {
+                        MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.Focus();
+                        item.Selected = true;
+                        item.Focused = true;
+                        return;
+                    }
                 }
                 try
                 {

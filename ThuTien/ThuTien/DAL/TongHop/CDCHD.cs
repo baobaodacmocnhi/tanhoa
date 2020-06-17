@@ -105,6 +105,30 @@ namespace ThuTien.DAL.TongHop
             return _db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == MaHD && item.ChuanThu1 == false);
         }
 
+        public bool CheckExist_UpdatedHDDT(int MaHD)
+        {
+            //hóa đơn giấy
+            if (_db.HOADONs.Any(item => item.ID_HOADON == MaHD && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <= 6)))==true)
+                return true;
+            else//hóa đơn điện tử
+                if (_db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == MaHD) == false)
+                    return true;
+                else
+                    return _db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == MaHD && item.UpdatedHDDT == true);
+        }
+
+        public bool CheckExist_UpdatedHDDT(string SoHoaDon)
+        {
+            //hóa đơn giấy
+            if (_db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <= 6)))==true)
+                return true;
+            else//hóa đơn điện tử
+                if (_db.DIEUCHINH_HDs.Any(item => item.SoHoaDon == SoHoaDon) == false)
+                    return true;
+                else
+                    return _db.DIEUCHINH_HDs.Any(item => item.SoHoaDon == SoHoaDon && item.UpdatedHDDT == true);
+        }
+
         public DIEUCHINH_HD Get(int MaHD)
         {
             return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.FK_HOADON == MaHD);
@@ -1311,6 +1335,7 @@ namespace ThuTien.DAL.TongHop
                             HanhThu = itemtableND.HoTen,
                             itemDC.ChuanThu1,
                             itemHD.NGAYGIAITRACH,
+                            itemDC.UpdatedHDDT,
                         };
             return LINQToDataTable(query);
         }
@@ -1343,6 +1368,7 @@ namespace ThuTien.DAL.TongHop
                             HanhThu = itemtableND.HoTen,
                             itemDC.ChuanThu1,
                             itemHD.NGAYGIAITRACH,
+                            itemDC.UpdatedHDDT,
                         };
             return LINQToDataTable(query);
         }
