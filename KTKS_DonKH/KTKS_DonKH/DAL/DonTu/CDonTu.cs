@@ -357,13 +357,13 @@ namespace KTKS_DonKH.DAL.DonTu
             switch (Loai)
             {
                 case "Quầy":
-                    lst = db.DonTus.Where(item => item.TinhTrang != "Hoàn Thành" && item.CreateDate.Value <= ToCreateDate && item.VanPhong == false).OrderBy(item => item.CreateDate).ToList();
+                    lst = db.DonTus.Where(item => item.TinhTrang != "Hoàn Thành" && item.CreateDate.Value <= ToCreateDate && item.VanPhong == false).OrderBy(item => item.MaDon).ToList();
                     break;
                 case "Văn Phòng":
-                    lst = db.DonTus.Where(item => item.TinhTrang != "Hoàn Thành" && item.CreateDate.Value <= ToCreateDate && item.VanPhong == true).OrderBy(item => item.CreateDate).ToList();
+                    lst = db.DonTus.Where(item => item.TinhTrang != "Hoàn Thành" && item.CreateDate.Value <= ToCreateDate && item.VanPhong == true).OrderBy(item => item.MaDon).ToList();
                     break;
                 default:
-                    lst = db.DonTus.Where(item => item.TinhTrang != "Hoàn Thành" && item.CreateDate.Value <= ToCreateDate).OrderBy(item => item.CreateDate).ToList();
+                    lst = db.DonTus.Where(item => item.TinhTrang != "Hoàn Thành" && item.CreateDate.Value <= ToCreateDate).OrderBy(item => item.MaDon).ToList();
                     break;
             }
             return lst;
@@ -375,13 +375,13 @@ namespace KTKS_DonKH.DAL.DonTu
             switch (Loai)
             {
                 case "Quầy":
-                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.VanPhong == false).OrderBy(item => item.CreateDate).ToList();
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.VanPhong == false).OrderBy(item => item.MaDon).ToList();
                     break;
                 case "Văn Phòng":
-                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.VanPhong == true).OrderBy(item => item.CreateDate).ToList();
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.VanPhong == true).OrderBy(item => item.MaDon).ToList();
                     break;
                 default:
-                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate).OrderBy(item => item.CreateDate).ToList();
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate).OrderBy(item => item.MaDon).ToList();
                     break;
             }
             return EntityToDataset(lst);
@@ -393,13 +393,13 @@ namespace KTKS_DonKH.DAL.DonTu
             switch (Loai)
             {
                 case "Quầy":
-                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == false).OrderBy(item => item.CreateDate).ToList();
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == false).OrderBy(item => item.MaDon).ToList();
                     break;
                 case "Văn Phòng":
-                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == true).OrderBy(item => item.CreateDate).ToList();
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == true).OrderBy(item => item.MaDon).ToList();
                     break;
                 default:
-                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong).OrderBy(item => item.CreateDate).ToList();
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong).OrderBy(item => item.MaDon).ToList();
                     break;
             }
             return EntityToDataset(lst);
