@@ -51,6 +51,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmLoading";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Đang Xử Lý";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

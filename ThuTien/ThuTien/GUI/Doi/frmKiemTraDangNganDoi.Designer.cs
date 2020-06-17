@@ -79,6 +79,18 @@
             this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabChotDangNgan = new System.Windows.Forms.TabPage();
             this.dgvChotDangNgan = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayChot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Chot = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SLDangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCDangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLGiay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCGiay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLHDDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCHDDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SyncNopTien = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnXemChot = new System.Windows.Forms.Button();
             this.dateTu_ChotDangNgan = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
@@ -113,18 +125,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnXuatExcel = new System.Windows.Forms.Button();
             this.backgroundWorker_NopTien = new System.ComponentModel.BackgroundWorker();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayChot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Chot = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SLDangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TCDangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLGiay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TCGiay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLHDDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TCHDDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TCNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SyncNopTien = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -204,10 +204,10 @@
             this.tabControl.Controls.Add(this.tabTuGia);
             this.tabControl.Controls.Add(this.tabCoQuan);
             this.tabControl.Controls.Add(this.tabChotDangNgan);
-            this.tabControl.Location = new System.Drawing.Point(12, 31);
+            this.tabControl.Location = new System.Drawing.Point(0, 31);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(661, 307);
+            this.tabControl.Size = new System.Drawing.Size(723, 307);
             this.tabControl.TabIndex = 19;
             // 
             // tabTuGia
@@ -221,7 +221,7 @@
             this.tabTuGia.Location = new System.Drawing.Point(4, 22);
             this.tabTuGia.Name = "tabTuGia";
             this.tabTuGia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTuGia.Size = new System.Drawing.Size(653, 281);
+            this.tabTuGia.Size = new System.Drawing.Size(699, 281);
             this.tabTuGia.TabIndex = 0;
             this.tabTuGia.Text = "Tư Gia";
             this.tabTuGia.UseVisualStyleBackColor = true;
@@ -375,7 +375,7 @@
             this.tabCoQuan.Location = new System.Drawing.Point(4, 22);
             this.tabCoQuan.Name = "tabCoQuan";
             this.tabCoQuan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCoQuan.Size = new System.Drawing.Size(653, 281);
+            this.tabCoQuan.Size = new System.Drawing.Size(699, 281);
             this.tabCoQuan.TabIndex = 1;
             this.tabCoQuan.Text = "Cơ Quan";
             this.tabCoQuan.UseVisualStyleBackColor = true;
@@ -529,7 +529,7 @@
             this.tabChotDangNgan.Controls.Add(this.btnThemChot);
             this.tabChotDangNgan.Location = new System.Drawing.Point(4, 22);
             this.tabChotDangNgan.Name = "tabChotDangNgan";
-            this.tabChotDangNgan.Size = new System.Drawing.Size(653, 281);
+            this.tabChotDangNgan.Size = new System.Drawing.Size(715, 281);
             this.tabChotDangNgan.TabIndex = 2;
             this.tabChotDangNgan.Text = "Chốt Đăng Ngân";
             this.tabChotDangNgan.UseVisualStyleBackColor = true;
@@ -572,12 +572,97 @@
             this.dgvChotDangNgan.Name = "dgvChotDangNgan";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvChotDangNgan.RowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvChotDangNgan.Size = new System.Drawing.Size(645, 247);
+            this.dgvChotDangNgan.Size = new System.Drawing.Size(709, 247);
             this.dgvChotDangNgan.TabIndex = 67;
             this.dgvChotDangNgan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChotDangNgan_CellClick);
             this.dgvChotDangNgan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvChotDangNgan_CellFormatting);
             this.dgvChotDangNgan.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChotDangNgan_CellValueChanged);
             this.dgvChotDangNgan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvChotDangNgan_RowPostPaint);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // NgayChot
+            // 
+            this.NgayChot.DataPropertyName = "NgayChot";
+            this.NgayChot.HeaderText = "Ngày Chốt";
+            this.NgayChot.Name = "NgayChot";
+            this.NgayChot.Width = 70;
+            // 
+            // Chot
+            // 
+            this.Chot.DataPropertyName = "Chot";
+            this.Chot.HeaderText = "Chốt";
+            this.Chot.Name = "Chot";
+            this.Chot.Width = 40;
+            // 
+            // SLDangNgan
+            // 
+            this.SLDangNgan.DataPropertyName = "SLDangNgan";
+            this.SLDangNgan.HeaderText = "SL Đăng Ngân";
+            this.SLDangNgan.Name = "SLDangNgan";
+            this.SLDangNgan.Width = 50;
+            // 
+            // TCDangNgan
+            // 
+            this.TCDangNgan.DataPropertyName = "TCDangNgan";
+            this.TCDangNgan.HeaderText = "TC Đăng Ngân";
+            this.TCDangNgan.Name = "TCDangNgan";
+            this.TCDangNgan.Width = 80;
+            // 
+            // SLGiay
+            // 
+            this.SLGiay.DataPropertyName = "SLGiay";
+            this.SLGiay.HeaderText = "SL Giấy";
+            this.SLGiay.Name = "SLGiay";
+            this.SLGiay.Width = 50;
+            // 
+            // TCGiay
+            // 
+            this.TCGiay.DataPropertyName = "TCGiay";
+            this.TCGiay.HeaderText = "TC Giấy";
+            this.TCGiay.Name = "TCGiay";
+            this.TCGiay.Width = 80;
+            // 
+            // SLHDDT
+            // 
+            this.SLHDDT.DataPropertyName = "SLHDDT";
+            this.SLHDDT.HeaderText = "SL HĐĐT";
+            this.SLHDDT.Name = "SLHDDT";
+            this.SLHDDT.Width = 50;
+            // 
+            // TCHDDT
+            // 
+            this.TCHDDT.DataPropertyName = "TCHDDT";
+            this.TCHDDT.HeaderText = "TC HĐĐT";
+            this.TCHDDT.Name = "TCHDDT";
+            this.TCHDDT.Width = 80;
+            // 
+            // SLNopTien
+            // 
+            this.SLNopTien.DataPropertyName = "SLNopTien";
+            this.SLNopTien.HeaderText = "SL Nộp Tiền";
+            this.SLNopTien.Name = "SLNopTien";
+            this.SLNopTien.Width = 50;
+            // 
+            // TCNopTien
+            // 
+            this.TCNopTien.DataPropertyName = "TCNopTien";
+            this.TCNopTien.HeaderText = "TC Nộp Tiền";
+            this.TCNopTien.Name = "TCNopTien";
+            this.TCNopTien.Width = 80;
+            // 
+            // SyncNopTien
+            // 
+            this.SyncNopTien.HeaderText = "Gửi Tổng";
+            this.SyncNopTien.Name = "SyncNopTien";
+            this.SyncNopTien.Text = "Nộp Tiền";
+            this.SyncNopTien.UseColumnTextForButtonValue = true;
+            this.SyncNopTien.Width = 60;
             // 
             // btnXemChot
             // 
@@ -657,7 +742,7 @@
             this.TongThueGTGT_NV,
             this.TongPhiBVMT_NV,
             this.TongCong_NV});
-            this.dgvNhanVien.Location = new System.Drawing.Point(24, 344);
+            this.dgvNhanVien.Location = new System.Drawing.Point(12, 344);
             this.dgvNhanVien.MultiSelect = false;
             this.dgvNhanVien.Name = "dgvNhanVien";
             this.dgvNhanVien.ReadOnly = true;
@@ -751,7 +836,7 @@
             this.TongCong_TC,
             this.FromNgayGiaiTrach,
             this.ToNgayGiaiTrach});
-            this.dgvNhanVien_TC.Location = new System.Drawing.Point(679, 53);
+            this.dgvNhanVien_TC.Location = new System.Drawing.Point(722, 53);
             this.dgvNhanVien_TC.MultiSelect = false;
             this.dgvNhanVien_TC.Name = "dgvNhanVien_TC";
             this.dgvNhanVien_TC.ReadOnly = true;
@@ -841,7 +926,7 @@
             // txtTongGiaBan_TC
             // 
             this.txtTongGiaBan_TC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongGiaBan_TC.Location = new System.Drawing.Point(901, 594);
+            this.txtTongGiaBan_TC.Location = new System.Drawing.Point(944, 594);
             this.txtTongGiaBan_TC.Name = "txtTongGiaBan_TC";
             this.txtTongGiaBan_TC.Size = new System.Drawing.Size(100, 20);
             this.txtTongGiaBan_TC.TabIndex = 11;
@@ -850,7 +935,7 @@
             // txtTongThueGTGT_TC
             // 
             this.txtTongThueGTGT_TC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongThueGTGT_TC.Location = new System.Drawing.Point(1001, 594);
+            this.txtTongThueGTGT_TC.Location = new System.Drawing.Point(1044, 594);
             this.txtTongThueGTGT_TC.Name = "txtTongThueGTGT_TC";
             this.txtTongThueGTGT_TC.Size = new System.Drawing.Size(100, 20);
             this.txtTongThueGTGT_TC.TabIndex = 10;
@@ -859,7 +944,7 @@
             // txtTongPhiBVMT_TC
             // 
             this.txtTongPhiBVMT_TC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongPhiBVMT_TC.Location = new System.Drawing.Point(1101, 594);
+            this.txtTongPhiBVMT_TC.Location = new System.Drawing.Point(1144, 594);
             this.txtTongPhiBVMT_TC.Name = "txtTongPhiBVMT_TC";
             this.txtTongPhiBVMT_TC.Size = new System.Drawing.Size(100, 20);
             this.txtTongPhiBVMT_TC.TabIndex = 9;
@@ -868,7 +953,7 @@
             // txtTongCong_TC
             // 
             this.txtTongCong_TC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongCong_TC.Location = new System.Drawing.Point(1201, 594);
+            this.txtTongCong_TC.Location = new System.Drawing.Point(1244, 594);
             this.txtTongCong_TC.Name = "txtTongCong_TC";
             this.txtTongCong_TC.Size = new System.Drawing.Size(100, 20);
             this.txtTongCong_TC.TabIndex = 8;
@@ -877,7 +962,7 @@
             // txtTongHD_TC
             // 
             this.txtTongHD_TC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongHD_TC.Location = new System.Drawing.Point(821, 594);
+            this.txtTongHD_TC.Location = new System.Drawing.Point(864, 594);
             this.txtTongHD_TC.Name = "txtTongHD_TC";
             this.txtTongHD_TC.Size = new System.Drawing.Size(80, 20);
             this.txtTongHD_TC.TabIndex = 7;
@@ -886,7 +971,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(679, 37);
+            this.label3.Location = new System.Drawing.Point(729, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(157, 13);
             this.label3.TabIndex = 21;
@@ -906,91 +991,6 @@
             // 
             this.backgroundWorker_NopTien.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_NopTien_DoWork);
             this.backgroundWorker_NopTien.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_NopTien_RunWorkerCompleted);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // NgayChot
-            // 
-            this.NgayChot.DataPropertyName = "NgayChot";
-            this.NgayChot.HeaderText = "Ngày Chốt";
-            this.NgayChot.Name = "NgayChot";
-            this.NgayChot.Width = 70;
-            // 
-            // Chot
-            // 
-            this.Chot.DataPropertyName = "Chot";
-            this.Chot.HeaderText = "Chốt";
-            this.Chot.Name = "Chot";
-            this.Chot.Width = 40;
-            // 
-            // SLDangNgan
-            // 
-            this.SLDangNgan.DataPropertyName = "SLDangNgan";
-            this.SLDangNgan.HeaderText = "SL Đăng Ngân";
-            this.SLDangNgan.Name = "SLDangNgan";
-            this.SLDangNgan.Width = 50;
-            // 
-            // TCDangNgan
-            // 
-            this.TCDangNgan.DataPropertyName = "TCDangNgan";
-            this.TCDangNgan.HeaderText = "TC Đăng Ngân";
-            this.TCDangNgan.Name = "TCDangNgan";
-            this.TCDangNgan.Width = 80;
-            // 
-            // SLGiay
-            // 
-            this.SLGiay.DataPropertyName = "SLGiay";
-            this.SLGiay.HeaderText = "SL Giấy";
-            this.SLGiay.Name = "SLGiay";
-            this.SLGiay.Width = 50;
-            // 
-            // TCGiay
-            // 
-            this.TCGiay.DataPropertyName = "TCGiay";
-            this.TCGiay.HeaderText = "TC Giấy";
-            this.TCGiay.Name = "TCGiay";
-            this.TCGiay.Width = 80;
-            // 
-            // SLHDDT
-            // 
-            this.SLHDDT.DataPropertyName = "SLHDDT";
-            this.SLHDDT.HeaderText = "SL HĐĐT";
-            this.SLHDDT.Name = "SLHDDT";
-            this.SLHDDT.Width = 50;
-            // 
-            // TCHDDT
-            // 
-            this.TCHDDT.DataPropertyName = "TCHDDT";
-            this.TCHDDT.HeaderText = "TC HĐĐT";
-            this.TCHDDT.Name = "TCHDDT";
-            this.TCHDDT.Width = 80;
-            // 
-            // SLNopTien
-            // 
-            this.SLNopTien.DataPropertyName = "SLNopTien";
-            this.SLNopTien.HeaderText = "SL Nộp Tiền";
-            this.SLNopTien.Name = "SLNopTien";
-            this.SLNopTien.Width = 50;
-            // 
-            // TCNopTien
-            // 
-            this.TCNopTien.DataPropertyName = "TCNopTien";
-            this.TCNopTien.HeaderText = "TC Nộp Tiền";
-            this.TCNopTien.Name = "TCNopTien";
-            this.TCNopTien.Width = 80;
-            // 
-            // SyncNopTien
-            // 
-            this.SyncNopTien.HeaderText = "Gửi Tổng";
-            this.SyncNopTien.Name = "SyncNopTien";
-            this.SyncNopTien.Text = "Nộp Tiền";
-            this.SyncNopTien.UseColumnTextForButtonValue = true;
-            this.SyncNopTien.Width = 60;
             // 
             // frmKiemTraDangNganDoi
             // 

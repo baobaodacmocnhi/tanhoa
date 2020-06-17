@@ -591,9 +591,9 @@ namespace ThuTien.GUI.Doi
                                 backgroundWorker_NopTien.CancelAsync();
                             else
                             {
+                                backgroundWorker_NopTien.RunWorkerAsync();
                                 frm = new frmLoading();
                                 frm.ShowDialog();
-                                backgroundWorker_NopTien.RunWorkerAsync();
                             }
 
                         }
@@ -654,7 +654,6 @@ namespace ThuTien.GUI.Doi
 
         private void backgroundWorker_NopTien_DoWork(object sender, DoWorkEventArgs e)
         {
-            
             wsThuTien.wsThuTien wsThuTien = new wsThuTien.wsThuTien();
             TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan.CurrentRow.Cells["ID"].Value.ToString()));
             string result = wsThuTien.syncNopTienLo(en.NgayChot.Value.ToString("dd/MM/yyyy"));
@@ -670,6 +669,7 @@ namespace ThuTien.GUI.Doi
             if (frm != null)
                 frm.Close();
             MessageBox.Show("Hoàn Tất Nộp Tiền ngày " + dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString() + "\nVui lòng kiểm tra lại số liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnXemChot.PerformClick();
         }
 
     }

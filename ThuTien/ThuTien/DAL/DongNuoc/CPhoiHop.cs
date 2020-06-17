@@ -40,7 +40,7 @@ namespace ThuTien.DAL.DongNuoc
             }
         }
 
-        public bool Them(TT_DongNuoc_PhoiHop en,int CreateBy)
+        public bool Them(TT_DongNuoc_PhoiHop en, int CreateBy)
         {
             try
             {
@@ -99,17 +99,116 @@ namespace ThuTien.DAL.DongNuoc
 
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return LINQToDataTable(_db.TT_DongNuoc_PhoiHops.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date).ToList());
+            DataTable dt = new DataTable();
+            var query = from item in _db.TT_DongNuoc_PhoiHops
+                        join itemU in _db.TT_NguoiDungs on item.CreateBy equals itemU.MaND
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            item.ID,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.Loai,
+                            item.NoiDung,
+                            item.CreateDate,
+                            CreateBy = itemU.HoTen,
+                        };
+            dt.Merge(LINQToDataTable(query.ToList()));
+
+            var query2 = from item in _db.TT_TongHopNos
+                         join itemU in _db.TT_NguoiDungs on item.CreateBy equals itemU.MaND
+                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                         select new
+                         {
+                             ID = item.MaTHN,
+                             item.DanhBo,
+                             HoTen = item.KinhGui,
+                             item.TT_TongHopNo_ChiTiets.FirstOrDefault(itemA => itemA.DanhBo == item.DanhBo).DiaChi,
+                             Loai = "Tổng Hợp Nợ",
+                             NoiDung = "",
+                             item.CreateDate,
+                             CreateBy = itemU.HoTen,
+                         };
+            dt.Merge(LINQToDataTable(query2.ToList()));
+
+            return dt;
         }
 
         public DataTable getDS_To(int MaTo, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return LINQToDataTable(_db.TT_DongNuoc_PhoiHops.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == item.CreateBy).MaTo == MaTo).ToList());
+            DataTable dt = new DataTable();
+            var query = from item in _db.TT_DongNuoc_PhoiHops
+                        join itemU in _db.TT_NguoiDungs on item.CreateBy equals itemU.MaND
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == item.CreateBy).MaTo == MaTo
+                        select new
+                        {
+                            item.ID,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.Loai,
+                            item.NoiDung,
+                            item.CreateDate,
+                            CreateBy = itemU.HoTen,
+                        };
+            dt.Merge(LINQToDataTable(query.ToList()));
+
+            var query2 = from item in _db.TT_TongHopNos
+                         join itemU in _db.TT_NguoiDungs on item.CreateBy equals itemU.MaND
+                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == item.CreateBy).MaTo == MaTo
+                         select new
+                         {
+                             ID = item.MaTHN,
+                             item.DanhBo,
+                             HoTen = item.KinhGui,
+                             item.TT_TongHopNo_ChiTiets.FirstOrDefault(itemA => itemA.DanhBo == item.DanhBo).DiaChi,
+                             Loai = "Tổng Hợp Nợ",
+                             NoiDung = "",
+                             item.CreateDate,
+                             CreateBy = itemU.HoTen,
+                         };
+            dt.Merge(LINQToDataTable(query2.ToList()));
+
+            return dt;
         }
 
         public DataTable getDS_NV(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return LINQToDataTable(_db.TT_DongNuoc_PhoiHops.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.CreateBy == CreateBy).ToList());
+            DataTable dt = new DataTable();
+            var query = from item in _db.TT_DongNuoc_PhoiHops
+                        join itemU in _db.TT_NguoiDungs on item.CreateBy equals itemU.MaND
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
+                        select new
+                        {
+                            item.ID,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.Loai,
+                            item.NoiDung,
+                            item.CreateDate,
+                            CreateBy = itemU.HoTen,
+                        };
+            dt.Merge(LINQToDataTable(query.ToList()));
+
+            var query2 = from item in _db.TT_TongHopNos
+                         join itemU in _db.TT_NguoiDungs on item.CreateBy equals itemU.MaND
+                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
+                         select new
+                         {
+                             ID = item.MaTHN,
+                             item.DanhBo,
+                             HoTen = item.KinhGui,
+                             item.TT_TongHopNo_ChiTiets.FirstOrDefault(itemA => itemA.DanhBo == item.DanhBo).DiaChi,
+                             Loai = "Tổng Hợp Nợ",
+                             NoiDung = "",
+                             item.CreateDate,
+                             CreateBy = itemU.HoTen,
+                         };
+            dt.Merge(LINQToDataTable(query2.ToList()));
+
+            return dt;
         }
     }
 }
