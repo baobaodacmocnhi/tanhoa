@@ -37,6 +37,7 @@ namespace KTKS_DonKH.DAL.PhongKhachHang
         }
 
         dbTrungTamKhachHangDataContext dbTTKH = new dbTrungTamKhachHangDataContext();
+
         public DataTable getDS_Zalo()
         {
             var result = dbTTKH.Zalos.GroupBy(test => test.IDZalo)

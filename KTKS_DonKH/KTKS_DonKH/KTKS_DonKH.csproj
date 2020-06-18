@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1347</ApplicationRevision>
+    <ApplicationRevision>1348</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -787,6 +787,7 @@
     <Compile Include="DAL\CDHN.cs" />
     <Compile Include="DAL\CDocSo.cs" />
     <Compile Include="DAL\CGanMoi.cs" />
+    <Compile Include="DAL\CTTKH.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDataTransfer.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CHoNgheo.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CKhuCongNghiep.cs" />

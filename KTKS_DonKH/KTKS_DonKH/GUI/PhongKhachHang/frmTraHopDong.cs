@@ -10,6 +10,7 @@ using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.PhongKhachHang;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL;
+using System.IO;
 
 namespace KTKS_DonKH.GUI.PhongKhachHang
 {
@@ -29,6 +30,8 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
         {
             dgvDanhBo.AutoGenerateColumns = false;
             Clear();
+            txtNam.Text = DateTime.Now.Year.ToString();
+            txtKy.Text = DateTime.Now.Month.ToString();
         }
 
         public void LoadEntity(KH_HopDong en)
@@ -177,6 +180,54 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
                     }
                     else
                         MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXuatTXT_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                //saveFileDialog1.init = @ "C:\";      
+                saveFileDialog1.Title = "Save text Files";
+                //saveFileDialog1.CheckFileExists = true;
+                saveFileDialog1.CheckPathExists = true;
+                saveFileDialog1.DefaultExt = "txt";
+                saveFileDialog1.Filter = "Text files (*.txt)|*.txt";
+                //saveFileDialog1.FilterIndex = 2;
+                saveFileDialog1.RestoreDirectory = true;
+                saveFileDialog1.FileName = "lichdocso." + txtKy.Text.Trim() + "." + txtNam.Text.Trim();
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = saveFileDialog1.FileName;
+                    // Check if file already exists. If yes, delete it.     
+                    if (File.Exists(fileName))
+                    {
+                        File.Delete(fileName);
+                    }
+                    CTTKH _cTTKH = new CTTKH();
+                    string sql = "select Nam,Ky,Dot=RIGHT('0' + CAST(d.ID AS VARCHAR(2)), 2),s8.May,NgayDoc=CONVERT(varchar(10),NgayDoc,103),s8.NhanVienID,DienThoai=REPLACE(s8.DienThoai,'.','')"
+                                    + " from Lich_DocSo ds,Lich_DocSo_ChiTiet ctds,Lich_Dot d,server8.docsoth.dbo.MayDS s8"
+                                    + " where ds.ID=ctds.IDDocSo and d.ID=ctds.IDDot and Nam="+txtNam.Text.Trim()+" and Ky="+txtKy.Text.Trim()+" and s8.NhanVienID!=''"
+                                    + " and ((s8.May>=SUBSTRING(d.TB1_From,3,2) and s8.May<=SUBSTRING(d.TB1_To,3,2)) "
+                                    + " or (s8.May>=SUBSTRING(d.TB2_From,3,2) and s8.May<=SUBSTRING(d.TB2_To,3,2)) "
+                                    + " or (s8.May>=SUBSTRING(d.TP1_From,3,2) and s8.May<=SUBSTRING(d.TP1_To,3,2)) "
+                                    + " or (s8.May>=SUBSTRING(d.TP2_From,3,2) and s8.May<=SUBSTRING(d.TP2_To,3,2)))";
+                    DataTable dt = _cTTKH.ExecuteQuery_DataTable(sql);
+                    // Create a new file     
+                    using (StreamWriter sw = File.CreateText(fileName))
+                    {
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            sw.WriteLine(item["Nam"] + "," + item["Ky"] + "," + item["Dot"] + "," + item["May"] + "," + item["NgayDoc"] + "," + item["NhanVienID"] + "," + item["DienThoai"].ToString().Split('-')[0]);
+                        }
+                    }
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
