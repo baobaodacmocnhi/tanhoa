@@ -437,7 +437,7 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnInPhieu_Click(object sender, EventArgs e)
         {
-            if (_cHoaDon.checkExist_DangNganCoDCHD(CNguoiDung.MaND, dateGiaiTrach.Value) == true)
+            if (_cHoaDon.checkExist_DangNganCoDCHD((int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value) == true)
             {
                 MessageBox.Show("Có Hóa Đơn Điều Chỉnh,\nVui lòng chuyển cho Chuyển Khoản đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
