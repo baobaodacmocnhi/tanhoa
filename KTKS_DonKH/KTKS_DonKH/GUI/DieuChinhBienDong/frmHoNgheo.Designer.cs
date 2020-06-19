@@ -30,12 +30,6 @@
         {
             this.btnChonFile = new System.Windows.Forms.Button();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbDot = new System.Windows.Forms.ComboBox();
-            this.cmbTo = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnXem = new System.Windows.Forms.Button();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +37,17 @@
             this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMucHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbDot = new System.Windows.Forms.ComboBox();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtNam = new System.Windows.Forms.TextBox();
+            this.txtKy = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnInMien = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,6 +80,52 @@
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
             this.dgvDanhSach.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDanhSach_UserAddedRow);
             this.dgvDanhSach.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvDanhSach_UserDeletingRow);
+            // 
+            // Dot
+            // 
+            this.Dot.DataPropertyName = "Dot";
+            this.Dot.HeaderText = "Đợt";
+            this.Dot.Name = "Dot";
+            this.Dot.Width = 50;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 150;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 200;
+            // 
+            // DinhMuc
+            // 
+            this.DinhMuc.DataPropertyName = "DinhMuc";
+            this.DinhMuc.HeaderText = "Định Mức";
+            this.DinhMuc.Name = "DinhMuc";
+            // 
+            // DinhMucHN
+            // 
+            this.DinhMucHN.DataPropertyName = "DinhMucHN";
+            this.DinhMucHN.HeaderText = "Định Mức HN";
+            this.DinhMucHN.Name = "DinhMucHN";
+            // 
+            // MaCT
+            // 
+            this.MaCT.DataPropertyName = "MaCT";
+            this.MaCT.HeaderText = "Mã Chứng Từ";
+            this.MaCT.Name = "MaCT";
+            this.MaCT.Width = 150;
             // 
             // btnIn
             // 
@@ -175,51 +226,46 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
-            // Dot
+            // label3
             // 
-            this.Dot.DataPropertyName = "Dot";
-            this.Dot.HeaderText = "Đợt";
-            this.Dot.Name = "Dot";
-            this.Dot.Width = 50;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(576, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 16);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Năm";
             // 
-            // DanhBo
+            // txtNam
             // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
+            this.txtNam.Location = new System.Drawing.Point(619, 9);
+            this.txtNam.Name = "txtNam";
+            this.txtNam.Size = new System.Drawing.Size(50, 22);
+            this.txtNam.TabIndex = 9;
             // 
-            // HoTen
+            // txtKy
             // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
+            this.txtKy.Location = new System.Drawing.Point(704, 9);
+            this.txtKy.Name = "txtKy";
+            this.txtKy.Size = new System.Drawing.Size(50, 22);
+            this.txtKy.TabIndex = 11;
             // 
-            // DiaChi
+            // label4
             // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 200;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(675, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 16);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Kỳ";
             // 
-            // DinhMuc
+            // btnInMien
             // 
-            this.DinhMuc.DataPropertyName = "DinhMuc";
-            this.DinhMuc.HeaderText = "Định Mức";
-            this.DinhMuc.Name = "DinhMuc";
-            // 
-            // DinhMucHN
-            // 
-            this.DinhMucHN.DataPropertyName = "DinhMucHN";
-            this.DinhMucHN.HeaderText = "Định Mức HN";
-            this.DinhMucHN.Name = "DinhMucHN";
-            // 
-            // MaCT
-            // 
-            this.MaCT.DataPropertyName = "MaCT";
-            this.MaCT.HeaderText = "Mã Chứng Từ";
-            this.MaCT.Name = "MaCT";
-            this.MaCT.Width = 150;
+            this.btnInMien.Location = new System.Drawing.Point(760, 9);
+            this.btnInMien.Name = "btnInMien";
+            this.btnInMien.Size = new System.Drawing.Size(75, 23);
+            this.btnInMien.TabIndex = 12;
+            this.btnInMien.Text = "In Miễn";
+            this.btnInMien.UseVisualStyleBackColor = true;
             // 
             // frmHoNgheo
             // 
@@ -227,6 +273,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(943, 513);
+            this.Controls.Add(this.btnInMien);
+            this.Controls.Add(this.txtKy);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtNam);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.label2);
@@ -263,5 +314,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMucHN;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCT;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtNam;
+        private System.Windows.Forms.TextBox txtKy;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnInMien;
     }
 }

@@ -31,13 +31,13 @@ namespace KTKS_DonKH.GUI.QuanTri
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
+        //protected override void OnLoad(EventArgs e)
+        //{
+        //    base.OnLoad(e);
+        //    this.ControlBox = false;
+        //    this.WindowState = FormWindowState.Maximized;
+        //    this.BringToFront();
+        //}
 
         public void Clear()
         {
@@ -54,10 +54,14 @@ namespace KTKS_DonKH.GUI.QuanTri
         {
             dgvDSBanGiamDoc.AutoGenerateColumns = false;
             dgvDSBanGiamDoc.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSBanGiamDoc.Font, FontStyle.Bold);
-            dgvDSBanGiamDoc.DataSource = _cBanGiamDoc.getDS();
 
             dgvDanhSach.AutoGenerateColumns = false;
             dgvDanhSach.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDanhSach.Font, FontStyle.Bold);
+
+            if (CTaiKhoan.Admin == true)
+                dgvDSBanGiamDoc.DataSource = _cBanGiamDoc.getDS_Admin();
+            else
+                dgvDSBanGiamDoc.DataSource = _cBanGiamDoc.getDS();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
