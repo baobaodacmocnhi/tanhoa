@@ -169,8 +169,8 @@ namespace ThuTien.DAL.Doi
             catch (Exception ex)
             {
                 //this.Rollback();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -187,8 +187,8 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -201,8 +201,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -260,8 +259,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -276,8 +274,8 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -290,8 +288,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -348,8 +345,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10290,8 +10286,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10327,8 +10322,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10343,8 +10337,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10359,8 +10352,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10393,8 +10385,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10408,8 +10399,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10424,8 +10414,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10439,8 +10428,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10454,8 +10442,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10469,8 +10456,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10484,8 +10470,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10499,8 +10484,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10515,8 +10499,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10531,8 +10514,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10547,8 +10529,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10562,8 +10543,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -10577,8 +10557,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 

@@ -300,6 +300,7 @@
             this.radPhoGiamDoc.TabStop = true;
             this.radPhoGiamDoc.Text = "Phó Giám Đốc";
             this.radPhoGiamDoc.UseVisualStyleBackColor = true;
+            this.radPhoGiamDoc.Visible = false;
             // 
             // radGiamDoc
             // 
@@ -310,6 +311,7 @@
             this.radGiamDoc.TabIndex = 49;
             this.radGiamDoc.Text = "Giám Đốc";
             this.radGiamDoc.UseVisualStyleBackColor = true;
+            this.radGiamDoc.Visible = false;
             // 
             // panel1
             // 
@@ -319,6 +321,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(53, 45);
             this.panel1.TabIndex = 51;
+            this.panel1.Visible = false;
             // 
             // radBa
             // 

@@ -1717,7 +1717,7 @@ namespace ThuTien.DAL
                         //    }
                         if (TieuThu <= DinhMucHN + DinhMuc)
                         {
-                            double TyLe = Math.Round((double)DinhMucHN / (DinhMucHN + DinhMuc), 2);
+                            double TyLe = (double)DinhMucHN / (DinhMucHN + DinhMuc);
                             int TieuThuHN = 0, TieuThuDC = 0;
                             TieuThuHN = (int)Math.Round(TieuThu * TyLe, 0, MidpointRounding.AwayFromZero);
                             TieuThuDC = TieuThu - TieuThuHN;
@@ -1812,7 +1812,7 @@ namespace ThuTien.DAL
                             //    }
                             if (TieuThu <= DinhMucHN + DinhMuc)
                             {
-                                double TyLe = Math.Round((double)DinhMucHN / (DinhMucHN + DinhMuc), 2);
+                                double TyLe = (double)DinhMucHN / (DinhMucHN + DinhMuc);
                                 int TieuThuHN = 0, TieuThuDC = 0;
                                 TieuThuHN = (int)Math.Round(TieuThu * TyLe, 0, MidpointRounding.AwayFromZero);
                                 TieuThuDC = TieuThu - TieuThuHN;
@@ -1863,7 +1863,7 @@ namespace ThuTien.DAL
                             //    }
                             if (_SH <= DinhMucHN + DinhMuc)
                             {
-                                double TyLe = Math.Round((double)DinhMucHN / (DinhMucHN + DinhMuc), 2);
+                                double TyLe = (double)DinhMucHN / (DinhMucHN + DinhMuc);
                                 int TieuThuHN = 0, TieuThuDC = 0;
                                 TieuThuHN = (int)Math.Round(_SH * TyLe, 0, MidpointRounding.AwayFromZero);
                                 TieuThuDC = _SH - TieuThuHN;
@@ -1923,7 +1923,7 @@ namespace ThuTien.DAL
                             //    }
                             if (TieuThu <= DinhMucHN + DinhMuc)
                             {
-                                double TyLe = Math.Round((double)DinhMucHN / (DinhMucHN + DinhMuc), 2);
+                                double TyLe = (double)DinhMucHN / (DinhMucHN + DinhMuc);
                                 int TieuThuHN = 0, TieuThuDC = 0;
                                 TieuThuHN = (int)Math.Round(TieuThu * TyLe, 0, MidpointRounding.AwayFromZero);
                                 TieuThuDC = TieuThu - TieuThuHN;
@@ -1974,7 +1974,7 @@ namespace ThuTien.DAL
                             //    }
                             if (_SH <= DinhMucHN + DinhMuc)
                             {
-                                double TyLe = Math.Round((double)DinhMucHN / (DinhMucHN + DinhMuc), 2);
+                                double TyLe = (double)DinhMucHN / (DinhMucHN + DinhMuc);
                                 int TieuThuHN = 0, TieuThuDC = 0;
                                 TieuThuHN = (int)Math.Round(_SH * TyLe, 0, MidpointRounding.AwayFromZero);
                                 TieuThuDC = _SH - TieuThuHN;
@@ -2051,7 +2051,7 @@ namespace ThuTien.DAL
                             //    }
                             if (_SH <= DinhMucHN + DinhMuc)
                             {
-                                double TyLe = Math.Round((double)DinhMucHN / (DinhMucHN + DinhMuc), 2);
+                                double TyLe = (double)DinhMucHN / (DinhMucHN + DinhMuc);
                                 int TieuThuHN = 0, TieuThuDC = 0;
                                 TieuThuHN = (int)Math.Round(_SH * TyLe, 0, MidpointRounding.AwayFromZero);
                                 TieuThuDC = _SH - TieuThuHN;
@@ -2127,7 +2127,7 @@ namespace ThuTien.DAL
                             //    }
                             if (TieuThu <= DinhMucHN + DinhMuc)
                             {
-                                double TyLe = Math.Round((double)DinhMucHN / (DinhMucHN + DinhMuc), 2);
+                                double TyLe = (double)DinhMucHN / (DinhMucHN + DinhMuc);
                                 int TieuThuHN = 0, TieuThuDC = 0;
                                 TieuThuHN = (int)Math.Round(TieuThu * TyLe, 0, MidpointRounding.AwayFromZero);
                                 TieuThuDC = TieuThu - TieuThuHN;
@@ -2178,7 +2178,7 @@ namespace ThuTien.DAL
                             //    }
                             if (_SH <= DinhMucHN + DinhMuc)
                             {
-                                double TyLe = Math.Round((double)DinhMucHN / (DinhMucHN + DinhMuc), 2);
+                                double TyLe = (double)DinhMucHN / (DinhMucHN + DinhMuc);
                                 int TieuThuHN = 0, TieuThuDC = 0;
                                 TieuThuHN = (int)Math.Round(_SH * TyLe, 0, MidpointRounding.AwayFromZero);
                                 TieuThuDC = _SH - TieuThuHN;
@@ -2245,7 +2245,7 @@ namespace ThuTien.DAL
                         //    }
                         if (_SH <= DinhMucHN + DinhMuc)
                         {
-                            double TyLe = Math.Round((double)DinhMucHN / (DinhMucHN + DinhMuc), 2);
+                            double TyLe = (double)DinhMucHN / (DinhMucHN + DinhMuc);
                             int TieuThuHN = 0, TieuThuDC = 0;
                             TieuThuHN = (int)Math.Round(_SH * TyLe, 0, MidpointRounding.AwayFromZero);
                             TieuThuDC = _SH - TieuThuHN;
@@ -2488,7 +2488,7 @@ namespace ThuTien.DAL
                         //    }
                         if (TieuThu <= DinhMucHN + DinhMuc)
                         {
-                            double TyLe = Math.Round((double)DinhMucHN / (DinhMucHN + DinhMuc), 2);
+                            double TyLe = (double)DinhMucHN / (DinhMucHN + DinhMuc);
                             int TieuThuHN = 0, TieuThuDC = 0;
                             TieuThuHN = (int)Math.Round(TieuThu * TyLe, 0, MidpointRounding.AwayFromZero);
                             TieuThuDC = TieuThu - TieuThuHN;
@@ -2612,7 +2612,7 @@ namespace ThuTien.DAL
                         //    }
                         if (_SH <= DinhMucHN + DinhMuc)
                         {
-                            double TyLe = Math.Round((double)DinhMucHN / (DinhMucHN + DinhMuc), 2);
+                            double TyLe = (double)DinhMucHN / (DinhMucHN + DinhMuc);
                             int TieuThuHN = 0, TieuThuDC = 0;
                             TieuThuHN = (int)Math.Round(_SH * TyLe, 0, MidpointRounding.AwayFromZero);
                             TieuThuDC = _SH - TieuThuHN;
@@ -2675,7 +2675,7 @@ namespace ThuTien.DAL
                         //    }
                         if (_SH <= DinhMucHN + DinhMuc)
                         {
-                            double TyLe = Math.Round((double)DinhMucHN / (DinhMucHN + DinhMuc), 2);
+                            double TyLe = (double)DinhMucHN / (DinhMucHN + DinhMuc);
                             int TieuThuHN = 0, TieuThuDC = 0;
                             TieuThuHN = (int)Math.Round(_SH * TyLe, 0, MidpointRounding.AwayFromZero);
                             TieuThuDC = _SH - TieuThuHN;
