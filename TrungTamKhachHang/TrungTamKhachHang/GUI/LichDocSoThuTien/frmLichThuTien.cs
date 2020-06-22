@@ -281,14 +281,22 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                         dr["NgayDocSoThuTien"] = item.NgayThuTien_From.Value.Day.ToString("00") + "-" + item.NgayThuTien_To.Value.ToString("dd/MM/yyyy");
                     else
                         dr["NgayDocSoThuTien"] = item.NgayThuTien_From.Value.ToString("dd/MM/yyyy");
-                    dr["TB1_From"] = item.Lich_Dot.TB1_From.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
-                    dr["TB1_To"] = item.Lich_Dot.TB1_To.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
-                    dr["TB2_From"] = item.Lich_Dot.TB2_From.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
-                    dr["TB2_To"] = item.Lich_Dot.TB2_To.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
-                    dr["TP1_From"] = item.Lich_Dot.TP1_From.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
-                    dr["TP1_To"] = item.Lich_Dot.TP1_To.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
-                    dr["TP2_From"] = item.Lich_Dot.TP2_From.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
-                    dr["TP2_To"] = item.Lich_Dot.TP2_To.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    //dr["TB1_From"] = item.Lich_Dot.TB1_From.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    //dr["TB1_To"] = item.Lich_Dot.TB1_To.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    //dr["TB2_From"] = item.Lich_Dot.TB2_From.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    //dr["TB2_To"] = item.Lich_Dot.TB2_To.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    //dr["TP1_From"] = item.Lich_Dot.TP1_From.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    //dr["TP1_To"] = item.Lich_Dot.TP1_To.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    //dr["TP2_From"] = item.Lich_Dot.TP2_From.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    //dr["TP2_To"] = item.Lich_Dot.TP2_To.Value.ToString("000000000").Insert(4, ".").Insert(2, ".");
+                    dr["TB1_From"] = item.Lich_Dot.TB1_From.Insert(4, ".").Insert(2, ".");
+                    dr["TB1_To"] = item.Lich_Dot.TB1_To.Insert(4, ".").Insert(2, ".");
+                    dr["TB2_From"] = item.Lich_Dot.TB2_From.Insert(4, ".").Insert(2, ".");
+                    dr["TB2_To"] = item.Lich_Dot.TB2_To.Insert(4, ".").Insert(2, ".");
+                    dr["TP1_From"] = item.Lich_Dot.TP1_From.Insert(4, ".").Insert(2, ".");
+                    dr["TP1_To"] = item.Lich_Dot.TP1_To.Insert(4, ".").Insert(2, ".");
+                    dr["TP2_From"] = item.Lich_Dot.TP2_From.Insert(4, ".").Insert(2, ".");
+                    dr["TP2_To"] = item.Lich_Dot.TP2_To.Insert(4, ".").Insert(2, ".");
                     dsBaoCao.Tables["LichDocSoThuTien"].Rows.Add(dr);
                 }
 
