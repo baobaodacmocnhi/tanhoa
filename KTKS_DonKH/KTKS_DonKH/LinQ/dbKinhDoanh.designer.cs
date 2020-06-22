@@ -30,12 +30,12 @@ namespace KTKS_DonKH.LinQ
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertUser(User instance);
-    partial void UpdateUser(User instance);
-    partial void DeleteUser(User instance);
     partial void InsertBamChi(BamChi instance);
     partial void UpdateBamChi(BamChi instance);
     partial void DeleteBamChi(BamChi instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
     partial void InsertBamChi_ChiTiet(BamChi_ChiTiet instance);
     partial void UpdateBamChi_ChiTiet(BamChi_ChiTiet instance);
     partial void DeleteBamChi_ChiTiet(BamChi_ChiTiet instance);
@@ -368,19 +368,19 @@ namespace KTKS_DonKH.LinQ
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<User> Users
-		{
-			get
-			{
-				return this.GetTable<User>();
-			}
-		}
-		
 		public System.Data.Linq.Table<BamChi> BamChis
 		{
 			get
 			{
 				return this.GetTable<BamChi>();
+			}
+		}
+		
+		public System.Data.Linq.Table<User> Users
+		{
+			get
+			{
+				return this.GetTable<User>();
 			}
 		}
 		
@@ -1190,6 +1190,452 @@ namespace KTKS_DonKH.LinQ
 			{
 				return this.GetTable<TTKH_TiepNhan>();
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BamChi")]
+	public partial class BamChi : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _MaBC;
+		
+		private System.Nullable<decimal> _MaDon;
+		
+		private System.Nullable<decimal> _MaDonTXL;
+		
+		private System.Nullable<decimal> _MaDonTBC;
+		
+		private System.Nullable<int> _MaDonMoi;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private EntitySet<BamChi_ChiTiet> _BamChi_ChiTiets;
+		
+		private EntityRef<DonKH> _DonKH;
+		
+		private EntityRef<DonTBC> _DonTBC;
+		
+		private EntityRef<DonTu> _DonTu;
+		
+		private EntityRef<DonTXL> _DonTXL;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaBCChanging(decimal value);
+    partial void OnMaBCChanged();
+    partial void OnMaDonChanging(System.Nullable<decimal> value);
+    partial void OnMaDonChanged();
+    partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
+    partial void OnMaDonTXLChanged();
+    partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
+    partial void OnMaDonTBCChanged();
+    partial void OnMaDonMoiChanging(System.Nullable<int> value);
+    partial void OnMaDonMoiChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    #endregion
+		
+		public BamChi()
+		{
+			this._BamChi_ChiTiets = new EntitySet<BamChi_ChiTiet>(new Action<BamChi_ChiTiet>(this.attach_BamChi_ChiTiets), new Action<BamChi_ChiTiet>(this.detach_BamChi_ChiTiets));
+			this._DonKH = default(EntityRef<DonKH>);
+			this._DonTBC = default(EntityRef<DonTBC>);
+			this._DonTu = default(EntityRef<DonTu>);
+			this._DonTXL = default(EntityRef<DonTXL>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaBC", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal MaBC
+		{
+			get
+			{
+				return this._MaBC;
+			}
+			set
+			{
+				if ((this._MaBC != value))
+				{
+					this.OnMaBCChanging(value);
+					this.SendPropertyChanging();
+					this._MaBC = value;
+					this.SendPropertyChanged("MaBC");
+					this.OnMaBCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaDon
+		{
+			get
+			{
+				return this._MaDon;
+			}
+			set
+			{
+				if ((this._MaDon != value))
+				{
+					if (this._DonKH.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaDonChanging(value);
+					this.SendPropertyChanging();
+					this._MaDon = value;
+					this.SendPropertyChanged("MaDon");
+					this.OnMaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonTXL", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaDonTXL
+		{
+			get
+			{
+				return this._MaDonTXL;
+			}
+			set
+			{
+				if ((this._MaDonTXL != value))
+				{
+					if (this._DonTXL.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaDonTXLChanging(value);
+					this.SendPropertyChanging();
+					this._MaDonTXL = value;
+					this.SendPropertyChanged("MaDonTXL");
+					this.OnMaDonTXLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonTBC", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaDonTBC
+		{
+			get
+			{
+				return this._MaDonTBC;
+			}
+			set
+			{
+				if ((this._MaDonTBC != value))
+				{
+					if (this._DonTBC.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaDonTBCChanging(value);
+					this.SendPropertyChanging();
+					this._MaDonTBC = value;
+					this.SendPropertyChanged("MaDonTBC");
+					this.OnMaDonTBCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="Int")]
+		public System.Nullable<int> MaDonMoi
+		{
+			get
+			{
+				return this._MaDonMoi;
+			}
+			set
+			{
+				if ((this._MaDonMoi != value))
+				{
+					if (this._DonTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaDonMoiChanging(value);
+					this.SendPropertyChanging();
+					this._MaDonMoi = value;
+					this.SendPropertyChanged("MaDonMoi");
+					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BamChi_BamChi_ChiTiet", Storage="_BamChi_ChiTiets", ThisKey="MaBC", OtherKey="MaBC")]
+		public EntitySet<BamChi_ChiTiet> BamChi_ChiTiets
+		{
+			get
+			{
+				return this._BamChi_ChiTiets;
+			}
+			set
+			{
+				this._BamChi_ChiTiets.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_BamChi", Storage="_DonKH", ThisKey="MaDon", OtherKey="MaDon", IsForeignKey=true)]
+		public DonKH DonKH
+		{
+			get
+			{
+				return this._DonKH.Entity;
+			}
+			set
+			{
+				DonKH previousValue = this._DonKH.Entity;
+				if (((previousValue != value) 
+							|| (this._DonKH.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonKH.Entity = null;
+						previousValue.BamChis.Remove(this);
+					}
+					this._DonKH.Entity = value;
+					if ((value != null))
+					{
+						value.BamChis.Add(this);
+						this._MaDon = value.MaDon;
+					}
+					else
+					{
+						this._MaDon = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonKH");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_BamChi", Storage="_DonTBC", ThisKey="MaDonTBC", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTBC DonTBC
+		{
+			get
+			{
+				return this._DonTBC.Entity;
+			}
+			set
+			{
+				DonTBC previousValue = this._DonTBC.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTBC.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTBC.Entity = null;
+						previousValue.BamChis.Remove(this);
+					}
+					this._DonTBC.Entity = value;
+					if ((value != null))
+					{
+						value.BamChis.Add(this);
+						this._MaDonTBC = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTBC = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTBC");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_BamChi", Storage="_DonTu", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu
+		{
+			get
+			{
+				return this._DonTu.Entity;
+			}
+			set
+			{
+				DonTu previousValue = this._DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu.Entity = null;
+						previousValue.BamChis.Remove(this);
+					}
+					this._DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.BamChis.Add(this);
+						this._MaDonMoi = value.MaDon;
+					}
+					else
+					{
+						this._MaDonMoi = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_BamChi", Storage="_DonTXL", ThisKey="MaDonTXL", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTXL DonTXL
+		{
+			get
+			{
+				return this._DonTXL.Entity;
+			}
+			set
+			{
+				DonTXL previousValue = this._DonTXL.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTXL.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTXL.Entity = null;
+						previousValue.BamChis.Remove(this);
+					}
+					this._DonTXL.Entity = value;
+					if ((value != null))
+					{
+						value.BamChis.Add(this);
+						this._MaDonTXL = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTXL = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTXL");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_BamChi_ChiTiets(BamChi_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.BamChi = this;
+		}
+		
+		private void detach_BamChi_ChiTiets(BamChi_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.BamChi = null;
 		}
 	}
 	
@@ -2171,452 +2617,6 @@ namespace KTKS_DonKH.LinQ
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BamChi")]
-	public partial class BamChi : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private decimal _MaBC;
-		
-		private System.Nullable<decimal> _MaDon;
-		
-		private System.Nullable<decimal> _MaDonTXL;
-		
-		private System.Nullable<decimal> _MaDonTBC;
-		
-		private System.Nullable<int> _MaDonMoi;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<int> _CreateBy;
-		
-		private System.Nullable<System.DateTime> _ModifyDate;
-		
-		private System.Nullable<int> _ModifyBy;
-		
-		private EntitySet<BamChi_ChiTiet> _BamChi_ChiTiets;
-		
-		private EntityRef<DonKH> _DonKH;
-		
-		private EntityRef<DonTBC> _DonTBC;
-		
-		private EntityRef<DonTu> _DonTu;
-		
-		private EntityRef<DonTXL> _DonTXL;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaBCChanging(decimal value);
-    partial void OnMaBCChanged();
-    partial void OnMaDonChanging(System.Nullable<decimal> value);
-    partial void OnMaDonChanged();
-    partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
-    partial void OnMaDonTXLChanged();
-    partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
-    partial void OnMaDonTBCChanged();
-    partial void OnMaDonMoiChanging(System.Nullable<int> value);
-    partial void OnMaDonMoiChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnCreateByChanging(System.Nullable<int> value);
-    partial void OnCreateByChanged();
-    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifyDateChanged();
-    partial void OnModifyByChanging(System.Nullable<int> value);
-    partial void OnModifyByChanged();
-    #endregion
-		
-		public BamChi()
-		{
-			this._BamChi_ChiTiets = new EntitySet<BamChi_ChiTiet>(new Action<BamChi_ChiTiet>(this.attach_BamChi_ChiTiets), new Action<BamChi_ChiTiet>(this.detach_BamChi_ChiTiets));
-			this._DonKH = default(EntityRef<DonKH>);
-			this._DonTBC = default(EntityRef<DonTBC>);
-			this._DonTu = default(EntityRef<DonTu>);
-			this._DonTXL = default(EntityRef<DonTXL>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaBC", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
-		public decimal MaBC
-		{
-			get
-			{
-				return this._MaBC;
-			}
-			set
-			{
-				if ((this._MaBC != value))
-				{
-					this.OnMaBCChanging(value);
-					this.SendPropertyChanging();
-					this._MaBC = value;
-					this.SendPropertyChanged("MaBC");
-					this.OnMaBCChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaDon
-		{
-			get
-			{
-				return this._MaDon;
-			}
-			set
-			{
-				if ((this._MaDon != value))
-				{
-					if (this._DonKH.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaDonChanging(value);
-					this.SendPropertyChanging();
-					this._MaDon = value;
-					this.SendPropertyChanged("MaDon");
-					this.OnMaDonChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonTXL", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaDonTXL
-		{
-			get
-			{
-				return this._MaDonTXL;
-			}
-			set
-			{
-				if ((this._MaDonTXL != value))
-				{
-					if (this._DonTXL.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaDonTXLChanging(value);
-					this.SendPropertyChanging();
-					this._MaDonTXL = value;
-					this.SendPropertyChanged("MaDonTXL");
-					this.OnMaDonTXLChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonTBC", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaDonTBC
-		{
-			get
-			{
-				return this._MaDonTBC;
-			}
-			set
-			{
-				if ((this._MaDonTBC != value))
-				{
-					if (this._DonTBC.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaDonTBCChanging(value);
-					this.SendPropertyChanging();
-					this._MaDonTBC = value;
-					this.SendPropertyChanged("MaDonTBC");
-					this.OnMaDonTBCChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="Int")]
-		public System.Nullable<int> MaDonMoi
-		{
-			get
-			{
-				return this._MaDonMoi;
-			}
-			set
-			{
-				if ((this._MaDonMoi != value))
-				{
-					if (this._DonTu.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaDonMoiChanging(value);
-					this.SendPropertyChanging();
-					this._MaDonMoi = value;
-					this.SendPropertyChanged("MaDonMoi");
-					this.OnMaDonMoiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
-		public System.Nullable<int> CreateBy
-		{
-			get
-			{
-				return this._CreateBy;
-			}
-			set
-			{
-				if ((this._CreateBy != value))
-				{
-					this.OnCreateByChanging(value);
-					this.SendPropertyChanging();
-					this._CreateBy = value;
-					this.SendPropertyChanged("CreateBy");
-					this.OnCreateByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifyDate
-		{
-			get
-			{
-				return this._ModifyDate;
-			}
-			set
-			{
-				if ((this._ModifyDate != value))
-				{
-					this.OnModifyDateChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyDate = value;
-					this.SendPropertyChanged("ModifyDate");
-					this.OnModifyDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
-		public System.Nullable<int> ModifyBy
-		{
-			get
-			{
-				return this._ModifyBy;
-			}
-			set
-			{
-				if ((this._ModifyBy != value))
-				{
-					this.OnModifyByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyBy = value;
-					this.SendPropertyChanged("ModifyBy");
-					this.OnModifyByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BamChi_BamChi_ChiTiet", Storage="_BamChi_ChiTiets", ThisKey="MaBC", OtherKey="MaBC")]
-		public EntitySet<BamChi_ChiTiet> BamChi_ChiTiets
-		{
-			get
-			{
-				return this._BamChi_ChiTiets;
-			}
-			set
-			{
-				this._BamChi_ChiTiets.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_BamChi", Storage="_DonKH", ThisKey="MaDon", OtherKey="MaDon", IsForeignKey=true)]
-		public DonKH DonKH
-		{
-			get
-			{
-				return this._DonKH.Entity;
-			}
-			set
-			{
-				DonKH previousValue = this._DonKH.Entity;
-				if (((previousValue != value) 
-							|| (this._DonKH.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DonKH.Entity = null;
-						previousValue.BamChis.Remove(this);
-					}
-					this._DonKH.Entity = value;
-					if ((value != null))
-					{
-						value.BamChis.Add(this);
-						this._MaDon = value.MaDon;
-					}
-					else
-					{
-						this._MaDon = default(Nullable<decimal>);
-					}
-					this.SendPropertyChanged("DonKH");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_BamChi", Storage="_DonTBC", ThisKey="MaDonTBC", OtherKey="MaDon", IsForeignKey=true)]
-		public DonTBC DonTBC
-		{
-			get
-			{
-				return this._DonTBC.Entity;
-			}
-			set
-			{
-				DonTBC previousValue = this._DonTBC.Entity;
-				if (((previousValue != value) 
-							|| (this._DonTBC.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DonTBC.Entity = null;
-						previousValue.BamChis.Remove(this);
-					}
-					this._DonTBC.Entity = value;
-					if ((value != null))
-					{
-						value.BamChis.Add(this);
-						this._MaDonTBC = value.MaDon;
-					}
-					else
-					{
-						this._MaDonTBC = default(Nullable<decimal>);
-					}
-					this.SendPropertyChanged("DonTBC");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_BamChi", Storage="_DonTu", ThisKey="MaDonMoi", OtherKey="MaDon", IsForeignKey=true)]
-		public DonTu DonTu
-		{
-			get
-			{
-				return this._DonTu.Entity;
-			}
-			set
-			{
-				DonTu previousValue = this._DonTu.Entity;
-				if (((previousValue != value) 
-							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DonTu.Entity = null;
-						previousValue.BamChis.Remove(this);
-					}
-					this._DonTu.Entity = value;
-					if ((value != null))
-					{
-						value.BamChis.Add(this);
-						this._MaDonMoi = value.MaDon;
-					}
-					else
-					{
-						this._MaDonMoi = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("DonTu");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_BamChi", Storage="_DonTXL", ThisKey="MaDonTXL", OtherKey="MaDon", IsForeignKey=true)]
-		public DonTXL DonTXL
-		{
-			get
-			{
-				return this._DonTXL.Entity;
-			}
-			set
-			{
-				DonTXL previousValue = this._DonTXL.Entity;
-				if (((previousValue != value) 
-							|| (this._DonTXL.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DonTXL.Entity = null;
-						previousValue.BamChis.Remove(this);
-					}
-					this._DonTXL.Entity = value;
-					if ((value != null))
-					{
-						value.BamChis.Add(this);
-						this._MaDonTXL = value.MaDon;
-					}
-					else
-					{
-						this._MaDonTXL = default(Nullable<decimal>);
-					}
-					this.SendPropertyChanged("DonTXL");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_BamChi_ChiTiets(BamChi_ChiTiet entity)
-		{
-			this.SendPropertyChanging();
-			entity.BamChi = this;
-		}
-		
-		private void detach_BamChi_ChiTiets(BamChi_ChiTiet entity)
-		{
-			this.SendPropertyChanging();
-			entity.BamChi = null;
 		}
 	}
 	
@@ -18210,6 +18210,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _ApGiaNuocCu;
 		
+		private bool _HoNgheo;
+		
 		private System.Nullable<int> _TienNuoc_BD;
 		
 		private System.Nullable<int> _ThueGTGT_BD;
@@ -18360,6 +18362,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTyLeKhuCongNghiepChanged();
     partial void OnApGiaNuocCuChanging(bool value);
     partial void OnApGiaNuocCuChanged();
+    partial void OnHoNgheoChanging(bool value);
+    partial void OnHoNgheoChanged();
     partial void OnTienNuoc_BDChanging(System.Nullable<int> value);
     partial void OnTienNuoc_BDChanged();
     partial void OnThueGTGT_BDChanging(System.Nullable<int> value);
@@ -19335,6 +19339,26 @@ namespace KTKS_DonKH.LinQ
 					this._ApGiaNuocCu = value;
 					this.SendPropertyChanged("ApGiaNuocCu");
 					this.OnApGiaNuocCuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoNgheo", DbType="Bit NOT NULL")]
+		public bool HoNgheo
+		{
+			get
+			{
+				return this._HoNgheo;
+			}
+			set
+			{
+				if ((this._HoNgheo != value))
+				{
+					this.OnHoNgheoChanging(value);
+					this.SendPropertyChanging();
+					this._HoNgheo = value;
+					this.SendPropertyChanged("HoNgheo");
+					this.OnHoNgheoChanged();
 				}
 			}
 		}

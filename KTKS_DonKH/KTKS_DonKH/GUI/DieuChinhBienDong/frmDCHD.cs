@@ -1178,8 +1178,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dr["DieuChinh"] = dr["DieuChinh"] + ", Tiêu Thụ từ " + _ctdchd.TieuThu.Value.ToString() + " -> " + _ctdchd.TieuThu_BD.Value.ToString();
                     if (_ctdchd.DieuChinhGia == true)
                     {
-                        HOADON hd = _cThuTien.Get(_ctdchd.DanhBo,_ctdchd.Ky.Value,_ctdchd.Nam.Value);
-                        GiaNuoc2 gn = _cGiaNuoc.getGiaNuoc(hd.TUNGAY.Value,hd.DENNGAY.Value);
+                        HOADON hd = _cThuTien.Get(_ctdchd.DanhBo, _ctdchd.Ky.Value, _ctdchd.Nam.Value);
+                        GiaNuoc2 gn = _cGiaNuoc.getGiaNuoc(hd.TUNGAY.Value, hd.DENNGAY.Value);
                         switch (int.Parse(txtGiaBieu_Moi.Text.Trim()))
                         {
                             case 51:
@@ -1831,9 +1831,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _cGiaNuoc.TinhTienNuoc_KhuCongNghiep(chkApGiaNuocCu.Checked, txtDanhBo.Text.Trim(), Ky, Nam, TuNgay, DenNgay, int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out TongTienMoiA, out ChiTietMoiA, out TongTienMoiB, out ChiTietMoiB, out _TyLeKhuCongNghiep);
                     }
                     else
-                    {
-                        _cGiaNuoc.TinhTienNuoc(chkApGiaNuocCu.Checked, chkDieuChinhGia.Checked, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), Ky, Nam, TuNgay, DenNgay, int.Parse(txtGiaBieu_Moi.Text.Trim()), TyleSH, TyLeSX, TyLeDV, TyLeHCSN, int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out TongTienMoiA, out ChiTietMoiA, out TongTienMoiB, out ChiTietMoiB, out _TieuThu_DieuChinhGia);
-                    }
+                        if (chkHoNgheo.Checked)
+                        {
+
+                        }
+                        else
+                        {
+                            _cGiaNuoc.TinhTienNuoc(chkApGiaNuocCu.Checked, chkDieuChinhGia.Checked, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), Ky, Nam, TuNgay, DenNgay, int.Parse(txtGiaBieu_Moi.Text.Trim()), TyleSH, TyLeSX, TyLeDV, TyLeHCSN, int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out TongTienMoiA, out ChiTietMoiA, out TongTienMoiB, out ChiTietMoiB, out _TieuThu_DieuChinhGia);
+                        }
 
             ///Chi Tiết
             //while (ChiTietCuA.IndexOf("0 x") >= 0)

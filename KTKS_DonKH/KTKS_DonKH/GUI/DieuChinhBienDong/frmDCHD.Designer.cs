@@ -145,6 +145,7 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.chkApGiaNuocCu = new System.Windows.Forms.CheckBox();
+            this.chkHoNgheo = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1296,12 +1297,23 @@
             this.chkApGiaNuocCu.Text = "Áp Giá Nước Cũ";
             this.chkApGiaNuocCu.UseVisualStyleBackColor = true;
             // 
+            // chkHoNgheo
+            // 
+            this.chkHoNgheo.AutoSize = true;
+            this.chkHoNgheo.Location = new System.Drawing.Point(1020, 222);
+            this.chkHoNgheo.Name = "chkHoNgheo";
+            this.chkHoNgheo.Size = new System.Drawing.Size(121, 20);
+            this.chkHoNgheo.TabIndex = 39;
+            this.chkHoNgheo.Text = "Miễn Hộ Nghèo";
+            this.chkHoNgheo.UseVisualStyleBackColor = true;
+            // 
             // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1303, 582);
+            this.Controls.Add(this.chkHoNgheo);
             this.Controls.Add(this.chkApGiaNuocCu);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label34);
@@ -1481,5 +1493,6 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox txtDinhMucHN_Cu;
         private System.Windows.Forms.CheckBox chkApGiaNuocCu;
+        private System.Windows.Forms.CheckBox chkHoNgheo;
     }
 }
