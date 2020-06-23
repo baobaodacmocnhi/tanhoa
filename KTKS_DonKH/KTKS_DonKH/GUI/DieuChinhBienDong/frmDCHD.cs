@@ -684,6 +684,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdchd.KhuCongNghiep = true;
                         ctdchd.TyLeKhuCongNghiep = _TyLeKhuCongNghiep;
                     }
+                    ///
+                    if (chkHoNgheo.Checked)
+                    {
+                        if (string.IsNullOrEmpty(ThongTin) == true)
+                            ThongTin += "Hộ Nghèo";
+                        else
+                            ThongTin += ". Hộ Nghèo";
+                        ctdchd.HoNgheo = true;
+                    }
                     ctdchd.ApGiaNuocCu = chkApGiaNuocCu.Checked;
                     ctdchd.ThongTin = ThongTin;
                     ctdchd.LyDoDieuChinh = txtLyDoDieuChinh.Text.Trim();
@@ -1831,15 +1840,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _cGiaNuoc.TinhTienNuoc_KhuCongNghiep(chkApGiaNuocCu.Checked, txtDanhBo.Text.Trim(), Ky, Nam, TuNgay, DenNgay, int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out TongTienMoiA, out ChiTietMoiA, out TongTienMoiB, out ChiTietMoiB, out _TyLeKhuCongNghiep);
                     }
                     else
-                        if (chkHoNgheo.Checked)
-                        {
-
-                        }
-                        else
-                        {
-                            _cGiaNuoc.TinhTienNuoc(chkApGiaNuocCu.Checked, chkDieuChinhGia.Checked, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), Ky, Nam, TuNgay, DenNgay, int.Parse(txtGiaBieu_Moi.Text.Trim()), TyleSH, TyLeSX, TyLeDV, TyLeHCSN, int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out TongTienMoiA, out ChiTietMoiA, out TongTienMoiB, out ChiTietMoiB, out _TieuThu_DieuChinhGia);
-                        }
-
+                    {
+                        _cGiaNuoc.TinhTienNuoc(chkApGiaNuocCu.Checked, chkDieuChinhGia.Checked, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), Ky, Nam, TuNgay, DenNgay, int.Parse(txtGiaBieu_Moi.Text.Trim()), TyleSH, TyLeSX, TyLeDV, TyLeHCSN, int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out TongTienMoiA, out ChiTietMoiA, out TongTienMoiB, out ChiTietMoiB, out _TieuThu_DieuChinhGia);
+                    }
+            string ChiTietMoiA_HoNgheo = "", ChiTietMoiB_HoNgheo = "";
+            int TongTienMoiA_HoNgheo = 0, TongTienMoiB_HoNgheo = 0, TieuThu_DieuChinhGia_HoNgheo = 0;
+            if (chkHoNgheo.Checked)
+            {
+                _cGiaNuoc.TinhTienNuoc_HoNgheo(chkApGiaNuocCu.Checked, chkDieuChinhGia.Checked, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), Ky, Nam, TuNgay, DenNgay, int.Parse(txtGiaBieu_Moi.Text.Trim()), TyleSH, TyLeSX, TyLeDV, TyLeHCSN, int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out TongTienMoiA_HoNgheo, out ChiTietMoiA_HoNgheo, out TongTienMoiB_HoNgheo, out ChiTietMoiB_HoNgheo, out TieuThu_DieuChinhGia_HoNgheo);
+            }
             ///Chi Tiết
             //while (ChiTietCuA.IndexOf("0 x") >= 0)
             //    if (ChiTietCuA.IndexOf("\r\n") >= 0)
@@ -1951,6 +1960,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     lbTangGiam.Text = "Tăng:";
                 else
                     lbTangGiam.Text = "Giảm:";
+
+            if (chkHoNgheo.Checked)
+            {
+                txtTienNuoc_End.Text = (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".","")) - (TongTienMoiA_HoNgheo + TongTienMoiB_HoNgheo)).ToString();
+            }
         }
 
         private void txtTienNuoc_Start_TextChanged(object sender, EventArgs e)
@@ -2251,6 +2265,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvLichSu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvLichSu.Columns[e.ColumnIndex].Name == "TienNuoc_End" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvLichSu.Columns[e.ColumnIndex].Name == "ThueGTGT_End" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvLichSu.Columns[e.ColumnIndex].Name == "PhiBVMT_End" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvLichSu.Columns[e.ColumnIndex].Name == "TongCong_End" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
 
