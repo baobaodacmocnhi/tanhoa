@@ -189,10 +189,9 @@ namespace ThuTien.DAL
                 else
                     return false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
-                throw;
+                throw ex;
             }
         }
 
@@ -234,8 +233,7 @@ namespace ThuTien.DAL
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 

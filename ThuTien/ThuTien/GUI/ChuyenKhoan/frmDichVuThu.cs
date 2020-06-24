@@ -16,6 +16,7 @@ using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.Quay;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.Doi;
+using System.Transactions;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -272,7 +273,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void btnInDS_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
-            if (cmbNhanVien.SelectedIndex > 0&&((TT_NguoiDung)(cmbNhanVien.SelectedItem)).DongNuoc == true)
+            if (cmbNhanVien.SelectedIndex > 0 && ((TT_NguoiDung)(cmbNhanVien.SelectedItem)).DongNuoc == true)
             {
                 foreach (DataGridViewRow item in dgvDichVuThu.Rows)
                     if (string.IsNullOrEmpty(item.Cells["NgayGiaiTrach"].Value.ToString()))
@@ -354,11 +355,11 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvDichVuThu.Rows)
-                if (!string.IsNullOrEmpty(item.Cells["NgayGiaiTrach"].Value.ToString()) && !bool.Parse(item.Cells["DangNgan_ChuyenKhoan"].Value.ToString()) && !bool.Parse(item.Cells["DangNgan_Quay"].Value.ToString()) && int.Parse(item.Cells["TieuThu"].Value.ToString())!=0)
+                if (!string.IsNullOrEmpty(item.Cells["NgayGiaiTrach"].Value.ToString()) && !bool.Parse(item.Cells["DangNgan_ChuyenKhoan"].Value.ToString()) && !bool.Parse(item.Cells["DangNgan_Quay"].Value.ToString()) && int.Parse(item.Cells["TieuThu"].Value.ToString()) != 0)
                 {
                     DateTime NgayThu = new DateTime();
                     DateTime NgayGiaiTrach = new DateTime();
-                    DateTime.TryParse(item.Cells["CreateDate"].Value.ToString(),out NgayThu);
+                    DateTime.TryParse(item.Cells["CreateDate"].Value.ToString(), out NgayThu);
                     DateTime.TryParse(item.Cells["NgayGiaiTrach"].Value.ToString(), out NgayGiaiTrach);
                     if (NgayThu.Date != NgayGiaiTrach.Date)
                     {
@@ -398,28 +399,28 @@ namespace ThuTien.GUI.ChuyenKhoan
             foreach (DataGridViewRow item in dgvDichVuThu.Rows)
                 if (!string.IsNullOrEmpty(item.Cells["NgayGiaiTrach"].Value.ToString()) && !bool.Parse(item.Cells["DangNgan_ChuyenKhoan"].Value.ToString()) && !bool.Parse(item.Cells["DangNgan_Quay"].Value.ToString()) && int.Parse(item.Cells["TieuThu"].Value.ToString()) != 0)
                 {
-                        DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                        dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                        dr["LoaiBaoCao"] = "KIỂM TRA DỊCH VỤ THU HỘ";
-                        dr["GhiChu"] = "ĐỂ BIẾT, KHÔNG THU";
-                        dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                        dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
-                        dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
-                        dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
-                        dr["Ky"] = item.Cells["Ky"].Value.ToString();
-                        dr["TongCong"] = item.Cells["SoTien"].Value.ToString();
-                        dr["HanhThu"] = item.Cells["HanhThu"].Value.ToString();
-                        dr["To"] = item.Cells["To"].Value.ToString();
-                        if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
-                            dr["Loai"] = "CQ";
-                        else
-                            dr["Loai"] = "TG";
-                        dr["NganHang"] = item.Cells["TenDichVu"].Value.ToString();
+                    DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                    dr["LoaiBaoCao"] = "KIỂM TRA DỊCH VỤ THU HỘ";
+                    dr["GhiChu"] = "ĐỂ BIẾT, KHÔNG THU";
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
+                    dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                    dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                    dr["Ky"] = item.Cells["Ky"].Value.ToString();
+                    dr["TongCong"] = item.Cells["SoTien"].Value.ToString();
+                    dr["HanhThu"] = item.Cells["HanhThu"].Value.ToString();
+                    dr["To"] = item.Cells["To"].Value.ToString();
+                    if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
+                    dr["NganHang"] = item.Cells["TenDichVu"].Value.ToString();
 
-                        if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
-                            dr["LenhHuy"] = true;
-                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                        dr["LenhHuy"] = true;
+                    ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }
             rptDSDichVuThu rpt = new rptDSDichVuThu();
             rpt.SetDataSource(ds);
@@ -446,29 +447,38 @@ namespace ThuTien.GUI.ChuyenKhoan
                             {
                                 //MessageBox.Show("Xóa cơ chế cũ, Liên hệ BảoBảo để xóa tiếp", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 TT_DichVuThu dvt = _cDichVuThu.Get(item.Cells["SoHoaDon"].Value.ToString());
-                                if (dvt.TenDichVu == "PAYOO")
-                                {
-                                    _cDichVuThu.ExecuteNonQuery("delete BGW_HOADON where ID_HOADON="+dvt.MaHD);
-                                    _cDichVuThu.ExecuteNonQuery("delete BGW_DANGNGAN_UNC where FK_HOADON=" + dvt.MaHD);
-                                }
+                                //if (dvt.TenDichVu == "PAYOO")
+                                //{
+                                //    _cDichVuThu.ExecuteNonQuery("delete BGW_HOADON where ID_HOADON="+dvt.MaHD);
+                                //    _cDichVuThu.ExecuteNonQuery("delete BGW_DANGNGAN_UNC where FK_HOADON=" + dvt.MaHD);
+                                //}
                                 _cDichVuThu.Xoa(dvt);
                             }
                             else
                             {
-                                _cDichVuThu.BeginTransaction();
-                                _cDichVuThu.ExecuteNonQuery_Transaction("insert TT_DichVuThu_Huy select * from TT_DichVuThu where TenDichVu=N'" + item.Cells["TenDichVu"].Value.ToString() + "' and IDGiaoDich='" + item.Cells["IDGiaoDich"].Value.ToString() + "'");
-                                _cDichVuThu.ExecuteNonQuery_Transaction("delete TT_DichVuThu where TenDichVu=N'" + item.Cells["TenDichVu"].Value.ToString() + "' and IDGiaoDich='" + item.Cells["IDGiaoDich"].Value.ToString() + "'");
-                                _cDichVuThu.ExecuteNonQuery_Transaction("insert TT_DichVuThuTong_Huy select * from TT_DichVuThuTong where TenDichVu=N'" + item.Cells["TenDichVu"].Value.ToString() + "' and IDGiaoDich='" + item.Cells["IDGiaoDich"].Value.ToString() + "'");
-                                _cDichVuThu.ExecuteNonQuery_Transaction("delete TT_DichVuThuTong where TenDichVu=N'" + item.Cells["TenDichVu"].Value.ToString() + "' and IDGiaoDich='" + item.Cells["IDGiaoDich"].Value.ToString() + "'");
-                                _cDichVuThu.CommitTransaction();
+                                using (var scope = new TransactionScope())
+                                {
+                                    try
+                                    {
+                                        _cDichVuThu.ExecuteNonQuery("insert TT_DichVuThu_Huy select * from TT_DichVuThu where TenDichVu=N'" + item.Cells["TenDichVu"].Value.ToString() + "' and IDGiaoDich='" + item.Cells["IDGiaoDich"].Value.ToString() + "'");
+                                        _cDichVuThu.ExecuteNonQuery("delete TT_DichVuThu where TenDichVu=N'" + item.Cells["TenDichVu"].Value.ToString() + "' and IDGiaoDich='" + item.Cells["IDGiaoDich"].Value.ToString() + "'");
+                                        _cDichVuThu.ExecuteNonQuery("insert TT_DichVuThuTong_Huy select * from TT_DichVuThuTong where TenDichVu=N'" + item.Cells["TenDichVu"].Value.ToString() + "' and IDGiaoDich='" + item.Cells["IDGiaoDich"].Value.ToString() + "'");
+                                        _cDichVuThu.ExecuteNonQuery("delete TT_DichVuThuTong where TenDichVu=N'" + item.Cells["TenDichVu"].Value.ToString() + "' and IDGiaoDich='" + item.Cells["IDGiaoDich"].Value.ToString() + "'");
+                                        scope.Complete();
+                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
                             }
                         }
                         btnXem.PerformClick();
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Lỗi, Vui lòng thử lại\n"+ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
             }
             else

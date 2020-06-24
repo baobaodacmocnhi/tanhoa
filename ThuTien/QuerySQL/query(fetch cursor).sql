@@ -15,6 +15,5 @@ begin
 	from @getCursor into @ID
 	set @STT+=1
 end
-
 close @getCursor
 deallocate @getCursor
