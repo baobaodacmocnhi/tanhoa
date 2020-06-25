@@ -29745,6 +29745,8 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<decimal> _TONGCONG_END;
 		
+		private string _SoHoaDonMoi;
+		
 		private bool _ChuanThu1;
 		
 		private bool _UpdatedHDDT;
@@ -29823,6 +29825,8 @@ namespace ThuTien.LinQ
     partial void OnPHI_ENDChanged();
     partial void OnTONGCONG_ENDChanging(System.Nullable<decimal> value);
     partial void OnTONGCONG_ENDChanged();
+    partial void OnSoHoaDonMoiChanging(string value);
+    partial void OnSoHoaDonMoiChanged();
     partial void OnChuanThu1Changing(bool value);
     partial void OnChuanThu1Changed();
     partial void OnUpdatedHDDTChanging(bool value);
@@ -30458,6 +30462,26 @@ namespace ThuTien.LinQ
 					this._TONGCONG_END = value;
 					this.SendPropertyChanged("TONGCONG_END");
 					this.OnTONGCONG_ENDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoHoaDonMoi", DbType="NVarChar(20)")]
+		public string SoHoaDonMoi
+		{
+			get
+			{
+				return this._SoHoaDonMoi;
+			}
+			set
+			{
+				if ((this._SoHoaDonMoi != value))
+				{
+					this.OnSoHoaDonMoiChanging(value);
+					this.SendPropertyChanging();
+					this._SoHoaDonMoi = value;
+					this.SendPropertyChanged("SoHoaDonMoi");
+					this.OnSoHoaDonMoiChanged();
 				}
 			}
 		}

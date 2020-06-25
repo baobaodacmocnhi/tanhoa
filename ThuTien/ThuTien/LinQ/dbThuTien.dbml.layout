@@ -554,10 +554,10 @@
         <elementListCompartment Id="d7348517-3928-4993-bed6-2e6102846da7" absoluteBounds="25.765, 8.585, 1.9700000000000002, 18.902628580729164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="1d4b7284-857d-4723-8e0f-9ed77764cfb4" absoluteBounds="8.125, 11, 2, 7.9245426432291648">
+    <classShape Id="ff2edc68-28f7-46c5-a112-7b47ca742775" absoluteBounds="7.875, 11, 2, 8.1168440755208326">
       <DataClassMoniker Name="/dbThuTienDataContext/DIEUCHINH_HD" />
       <nestedChildShapes>
-        <elementListCompartment Id="4b53e5c8-0ade-438f-ba4d-38d94186dbfa" absoluteBounds="8.14, 11.46, 1.9700000000000002, 7.3645426432291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="85732dc6-781f-40d3-bde6-17687c39089e" absoluteBounds="7.8900000000000006, 11.46, 1.9700000000000002, 7.556844075520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

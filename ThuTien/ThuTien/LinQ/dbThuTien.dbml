@@ -1396,6 +1396,7 @@
       <Column Name="THUE_END" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="PHI_END" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="TONGCONG_END" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SoHoaDonMoi" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="ChuanThu1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="UpdatedHDDT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />

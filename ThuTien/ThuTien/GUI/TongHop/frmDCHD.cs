@@ -14,6 +14,8 @@ using System.Globalization;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.TongHop;
 using ThuTien.GUI.BaoCao;
+using ThuTien.DAL.ChuyenKhoan;
+using System.Transactions;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -316,6 +318,234 @@ namespace ThuTien.GUI.TongHop
                 panel1.Enabled = true;
             else
                 panel1.Enabled = false;
+        }
+
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+
+                //Tạo các đối tượng Excel
+                Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbooks oBooks;
+                Microsoft.Office.Interop.Excel.Sheets oSheets;
+                Microsoft.Office.Interop.Excel.Workbook oBook;
+                Microsoft.Office.Interop.Excel.Worksheet oSheet;
+                //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
+
+                //Tạo mới một Excel WorkBook 
+                oExcel.Visible = true;
+                oExcel.DisplayAlerts = false;
+                //khai báo số lượng sheet
+                oExcel.Application.SheetsInNewWorkbook = 1;
+                oBooks = oExcel.Workbooks;
+
+                oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                oSheets = oBook.Worksheets;
+                oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+
+                oSheet.Name = "Sheet1";
+                // Tạo tiêu đề cột 
+                Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
+                cl1.Value2 = "Đợt";
+                cl1.ColumnWidth = 5;
+
+                Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B1", "B1");
+                cl2.Value2 = "Kỳ";
+                cl2.ColumnWidth = 5;
+
+                Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C1", "C1");
+                cl3.Value2 = "Năm";
+                cl3.ColumnWidth = 5;
+
+                Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D1", "D1");
+                cl4.Value2 = "Danh Bộ";
+                cl4.ColumnWidth = 12;
+
+                Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("E1", "E1");
+                cl5.Value2 = "Số Phát Hành";
+                cl5.ColumnWidth = 10;
+
+                Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("F1", "F1");
+                cl6.Value2 = "Số Hóa Đơn Cũ";
+                cl6.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("G1", "G1");
+                cl7.Value2 = "Giá Biểu Cũ";
+                cl7.ColumnWidth = 11;
+
+                Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("H1", "H1");
+                cl8.Value2 = "Định Mức Cũ";
+                cl8.ColumnWidth = 11;
+
+                Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("I1", "I1");
+                cl9.Value2 = "Tiêu Thụ Cũ";
+                cl9.ColumnWidth = 11;
+
+                Microsoft.Office.Interop.Excel.Range cl10 = oSheet.get_Range("J1", "J1");
+                cl10.Value2 = "Tiền Nước Cũ";
+                cl10.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl11 = oSheet.get_Range("K1", "K1");
+                cl11.Value2 = "Thuế GTGT Cũ";
+                cl11.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("L1", "L1");
+                cl12.Value2 = "Phí BVMT Cũ";
+                cl12.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl13 = oSheet.get_Range("M1", "M1");
+                cl13.Value2 = "Tổng Cộng Cũ";
+                cl13.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl14 = oSheet.get_Range("N1", "N1");
+                cl14.Value2 = "Giá Biểu Mới";
+                cl14.ColumnWidth = 11;
+
+                Microsoft.Office.Interop.Excel.Range cl15 = oSheet.get_Range("O1", "O1");
+                cl15.Value2 = "Định Mức Mới";
+                cl15.ColumnWidth = 11;
+
+                Microsoft.Office.Interop.Excel.Range cl16 = oSheet.get_Range("P1", "P1");
+                cl16.Value2 = "Tiêu Thụ Mới";
+                cl16.ColumnWidth = 11;
+
+                Microsoft.Office.Interop.Excel.Range cl17 = oSheet.get_Range("Q1", "Q1");
+                cl17.Value2 = "Tiền Nước Mới";
+                cl17.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl18 = oSheet.get_Range("R1", "R1");
+                cl18.Value2 = "Thuế GTGT Mới";
+                cl18.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl19 = oSheet.get_Range("S1", "S1");
+                cl19.Value2 = "Phí BVMT Mới";
+                cl19.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl20 = oSheet.get_Range("T1", "T1");
+                cl20.Value2 = "Tổng Cộng Mới";
+                cl20.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl21 = oSheet.get_Range("U1", "U1");
+                cl21.Value2 = "Số Hóa Đơn Mới";
+                cl21.ColumnWidth = 15;
+
+                // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+                // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+                object[,] arr = new object[dt.Rows.Count, 20];
+
+                //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+
+                    arr[i, 0] = dr["Dot"].ToString();
+                    arr[i, 1] = dr["Ky2"].ToString();
+                    arr[i, 2] = dr["Nam"].ToString();
+                    arr[i, 3] = dr["DanhBo"].ToString();
+                    arr[i, 4] = dr["SoPhatHanh"].ToString();
+                    arr[i, 5] = dr["SoHoaDon"].ToString();
+                    arr[i, 6] = dr["GiaBieuCu"].ToString();
+                    arr[i, 7] = dr["DinhMucCu"].ToString();
+                    arr[i, 8] = dr["TieuThuCu"].ToString();
+                    arr[i, 9] = dr["GiaBan_Start"].ToString();
+                    arr[i, 10] = dr["ThueGTGT_Start"].ToString();
+                    arr[i, 11] = dr["PhiBVMT_Start"].ToString();
+                    arr[i, 12] = dr["TongCong_Start"].ToString();
+                    arr[i, 13] = dr["GiaBieuMoi"].ToString();
+                    arr[i, 14] = dr["DinhMucMoi"].ToString();
+                    arr[i, 15] = dr["TieuThuMoi"].ToString();
+                    arr[i, 16] = dr["GiaBan_End"].ToString();
+                    arr[i, 17] = dr["ThueGTGT_End"].ToString();
+                    arr[i, 18] = dr["PhiBVMT_End"].ToString();
+                    arr[i, 19] = dr["TongCong_End"].ToString();
+                }
+
+                //Thiết lập vùng điền dữ liệu
+                int rowStart = 2;
+                int columnStart = 1;
+
+                int rowEnd = rowStart + dt.Rows.Count - 1;
+                int columnEnd = 20;
+
+                // Ô bắt đầu điền dữ liệu
+                Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+                // Ô kết thúc điền dữ liệu
+                Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+                // Lấy về vùng điền dữ liệu
+                Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+                Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
+                Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
+                Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+                c3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
+                Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
+                Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
+                c3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                c3b.NumberFormat = "@";
+
+                Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+                Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+                Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
+                c3c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
+                Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
+                Microsoft.Office.Interop.Excel.Range c3d = oSheet.get_Range(c1d, c2d);
+                c3d.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                //Điền dữ liệu vào vùng đã thiết lập
+                range.Value2 = arr;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnImportExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                    dialog.Multiselect = false;
+
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn Import?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            CExcel fileExcel = new CExcel(dialog.FileName);
+                            DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+
+                            foreach (DataRow item in dtExcel.Rows)
+                                if (string.IsNullOrEmpty(item[20].ToString()) == false && item[20].ToString() != "")
+                                    using (TransactionScope scope = new TransactionScope())
+                                    {
+                                        DIEUCHINH_HD dchd = _cDCHD.get(item[5].ToString());
+                                        if (dchd != null & dchd.UpdatedHDDT == false)
+                                        {
+                                            dchd.UpdatedHDDT = true;
+                                            dchd.SoHoaDonMoi = item[20].ToString();
+                                            if (_cDCHD.Sua(dchd) == true)
+                                                if (_cDCHD.ExecuteNonQuery("update HOADON set SoHoaDonCu=SoHoaDon,SoHoaDon='" + dchd.SoHoaDonMoi + "' where ID_HOADON=" + dchd.FK_HOADON) == true)
+                                                    scope.Complete();
+                                        }
+                                    }
+                            MessageBox.Show("Đã xử lý xong, Vui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

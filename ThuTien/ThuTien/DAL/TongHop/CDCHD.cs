@@ -108,7 +108,7 @@ namespace ThuTien.DAL.TongHop
         public bool CheckExist_UpdatedHDDT(int MaHD)
         {
             //hóa đơn giấy
-            if (_db.HOADONs.Any(item => item.ID_HOADON == MaHD && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <= 6)))==true)
+            if (_db.HOADONs.Any(item => item.ID_HOADON == MaHD && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <= 6))) == true)
                 return true;
             else//hóa đơn điện tử
                 if (_db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == MaHD) == false)
@@ -120,7 +120,7 @@ namespace ThuTien.DAL.TongHop
         public bool CheckExist_UpdatedHDDT(string SoHoaDon)
         {
             //hóa đơn giấy
-            if (_db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <= 6)))==true)
+            if (_db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <= 6))) == true)
                 return true;
             else//hóa đơn điện tử
                 if (_db.DIEUCHINH_HDs.Any(item => item.SoHoaDon == SoHoaDon) == false)
@@ -137,6 +137,11 @@ namespace ThuTien.DAL.TongHop
         public DIEUCHINH_HD GetByMaDC(int MaDC)
         {
             return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.ID_DIEUCHINH_HD == MaDC);
+        }
+
+        public DIEUCHINH_HD get(string SoHoaDon)
+        {
+            return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
         }
 
         public List<DIEUCHINH_HD> GetDS()
@@ -1336,6 +1341,19 @@ namespace ThuTien.DAL.TongHop
                             itemDC.ChuanThu1,
                             itemHD.NGAYGIAITRACH,
                             itemDC.UpdatedHDDT,
+                            itemHD.DOT,
+                            Ky2 = itemHD.KY,
+                            itemHD.NAM,
+                            itemHD.SOPHATHANH,
+                            GiaBieuCu = itemDC.GiaBieu,
+                            DinhMucCu = itemDC.DinhMuc,
+                            TieuThuCu = itemDC.TIEUTHU_BD,
+                            GiaBieuMoi = itemDC.GB_DC,
+                            DinhMucMoi = itemDC.DM_DC,
+                            TieuThuMoi = itemDC.TIEUTHU_DC,
+                            GiaBan_Start = itemDC.GIABAN_BD,
+                            ThueGTGT_Start = itemDC.THUE_BD,
+                            PhiBVMT_Start = itemDC.PHI_BD,
                         };
             return LINQToDataTable(query);
         }

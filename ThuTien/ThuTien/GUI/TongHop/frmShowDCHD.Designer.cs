@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chkChuanThu1 = new System.Windows.Forms.CheckBox();
             this.txtSoHoaDonMoi = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -73,7 +74,6 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.chkChuanThu1 = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,10 +112,21 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết Quả Điều Chỉnh";
             // 
+            // chkChuanThu1
+            // 
+            this.chkChuanThu1.AutoSize = true;
+            this.chkChuanThu1.Location = new System.Drawing.Point(349, 17);
+            this.chkChuanThu1.Name = "chkChuanThu1";
+            this.chkChuanThu1.Size = new System.Drawing.Size(88, 17);
+            this.chkChuanThu1.TabIndex = 29;
+            this.chkChuanThu1.Text = "Chuẩn Thu 1";
+            this.chkChuanThu1.UseVisualStyleBackColor = true;
+            // 
             // txtSoHoaDonMoi
             // 
             this.txtSoHoaDonMoi.Location = new System.Drawing.Point(243, 15);
             this.txtSoHoaDonMoi.Name = "txtSoHoaDonMoi";
+            this.txtSoHoaDonMoi.ReadOnly = true;
             this.txtSoHoaDonMoi.Size = new System.Drawing.Size(100, 20);
             this.txtSoHoaDonMoi.TabIndex = 30;
             // 
@@ -512,16 +523,6 @@
             this.textBox5.Size = new System.Drawing.Size(80, 20);
             this.textBox5.TabIndex = 27;
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // chkChuanThu1
-            // 
-            this.chkChuanThu1.AutoSize = true;
-            this.chkChuanThu1.Location = new System.Drawing.Point(349, 17);
-            this.chkChuanThu1.Name = "chkChuanThu1";
-            this.chkChuanThu1.Size = new System.Drawing.Size(88, 17);
-            this.chkChuanThu1.TabIndex = 29;
-            this.chkChuanThu1.Text = "Chuẩn Thu 1";
-            this.chkChuanThu1.UseVisualStyleBackColor = true;
             // 
             // frmShowDCHD
             // 

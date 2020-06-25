@@ -235,26 +235,27 @@ namespace ThuTien.GUI.TongHop
                             _dchd.TIEUTHU_DC = _ctdchd.TieuThu_BD;
                         }
                         ///không có phiếu điều chỉnh hóa đơn bên P.Kinh Doanh
-                        else
-                        {
-                            _dchd.GIABAN_DC = decimal.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
-                            _dchd.GIABAN_END = decimal.Parse(txtTienNuoc_End.Text.Trim().Replace(".", ""));
+                        ///hóa đơn điện tử k áp dụng
+                        //else
+                        //{
+                        //    _dchd.GIABAN_DC = decimal.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
+                        //    _dchd.GIABAN_END = decimal.Parse(txtTienNuoc_End.Text.Trim().Replace(".", ""));
 
-                            _dchd.THUE_DC = decimal.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
-                            _dchd.THUE_END = decimal.Parse(txtThueGTGT_End.Text.Trim().Replace(".", ""));
+                        //    _dchd.THUE_DC = decimal.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
+                        //    _dchd.THUE_END = decimal.Parse(txtThueGTGT_End.Text.Trim().Replace(".", ""));
 
-                            _dchd.PHI_DC = decimal.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
-                            _dchd.PHI_END = decimal.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
+                        //    _dchd.PHI_DC = decimal.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
+                        //    _dchd.PHI_END = decimal.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
 
-                            _dchd.TONGCONG_DC = decimal.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
-                            _dchd.TONGCONG_END = decimal.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
+                        //    _dchd.TONGCONG_DC = decimal.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
+                        //    _dchd.TONGCONG_END = decimal.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
 
-                            if (_dchd.TONGCONG_BD.Value > _dchd.TONGCONG_END.Value)
-                                _dchd.TangGiam = "Giảm";
-                            else
-                                if (_dchd.TONGCONG_BD.Value < _dchd.TONGCONG_END.Value)
-                                    _dchd.TangGiam = "Tăng";
-                        }
+                        //    if (_dchd.TONGCONG_BD.Value > _dchd.TONGCONG_END.Value)
+                        //        _dchd.TangGiam = "Giảm";
+                        //    else
+                        //        if (_dchd.TONGCONG_BD.Value < _dchd.TONGCONG_END.Value)
+                        //            _dchd.TangGiam = "Tăng";
+                        //}
 
                         if (_cDCHD.Sua(_dchd))
                         {
@@ -343,26 +344,27 @@ namespace ThuTien.GUI.TongHop
                             dchd.TIEUTHU_DC = _ctdchd.TieuThu_BD;
                         }
                         ///không có phiếu điều chỉnh hóa đơn bên P.Kinh Doanh
-                        else
-                        {
-                            dchd.GIABAN_DC = decimal.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
-                            dchd.GIABAN_END = decimal.Parse(txtTienNuoc_End.Text.Trim().Replace(".", ""));
+                        ///hóa đơn điện tử k áp dụng
+                        //else
+                        //{
+                        //    dchd.GIABAN_DC = decimal.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
+                        //    dchd.GIABAN_END = decimal.Parse(txtTienNuoc_End.Text.Trim().Replace(".", ""));
 
-                            dchd.THUE_DC = decimal.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
-                            dchd.THUE_END = decimal.Parse(txtThueGTGT_End.Text.Trim().Replace(".", ""));
+                        //    dchd.THUE_DC = decimal.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
+                        //    dchd.THUE_END = decimal.Parse(txtThueGTGT_End.Text.Trim().Replace(".", ""));
 
-                            dchd.PHI_DC = decimal.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
-                            dchd.PHI_END = decimal.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
+                        //    dchd.PHI_DC = decimal.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
+                        //    dchd.PHI_END = decimal.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
 
-                            dchd.TONGCONG_DC = decimal.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
-                            dchd.TONGCONG_END = decimal.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
+                        //    dchd.TONGCONG_DC = decimal.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
+                        //    dchd.TONGCONG_END = decimal.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
 
-                            if (dchd.TONGCONG_BD.Value > dchd.TONGCONG_END.Value)
-                                dchd.TangGiam = "Giảm";
-                            else
-                                if (dchd.TONGCONG_BD.Value < dchd.TONGCONG_END.Value)
-                                    dchd.TangGiam = "Tăng";
-                        }
+                        //    if (dchd.TONGCONG_BD.Value > dchd.TONGCONG_END.Value)
+                        //        dchd.TangGiam = "Giảm";
+                        //    else
+                        //        if (dchd.TONGCONG_BD.Value < dchd.TONGCONG_END.Value)
+                        //            dchd.TangGiam = "Tăng";
+                        //}
 
                         if (_cDCHD.Them(dchd))
                         {
