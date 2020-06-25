@@ -266,7 +266,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 if (row["DanhBo"].ToString().Length == 11)
                     dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["DiaChi"] = row["DiaChi"].ToString();
-                dr["NoiDung"] = row["NoiDung"].ToString();
+                dr["NoiDung"] = row["NoiDungPKH"].ToString();
                 dr["GhiChu"] = row["SoCongVan"].ToString();
                 if (CTaiKhoan.MaPhong == 1)
                 {
