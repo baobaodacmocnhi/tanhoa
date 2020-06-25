@@ -183,8 +183,10 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn125 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn126 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn92 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn90 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn93 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn102 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn110 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -445,7 +447,7 @@
             this.repositoryItemCheckEdit4,
             this.repositoryItemCheckEdit5,
             this.repositoryItemCheckEdit6});
-            this.gridControl.Size = new System.Drawing.Size(1378, 552);
+            this.gridControl.Size = new System.Drawing.Size(1378, 539);
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewBamChi,
@@ -1851,7 +1853,9 @@
             this.gridColumn6,
             this.gridColumn125,
             this.gridColumn126,
+            this.gridColumn92,
             this.gridColumn12,
+            this.gridColumn93,
             this.gridColumn90});
             this.gridViewDon.GridControl = this.gridControl;
             this.gridViewDon.IndicatorWidth = 41;
@@ -1874,7 +1878,7 @@
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 120;
+            this.gridColumn1.Width = 110;
             // 
             // gridColumn2
             // 
@@ -1914,7 +1918,7 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 180;
+            this.gridColumn5.Width = 130;
             // 
             // gridColumn6
             // 
@@ -1924,7 +1928,7 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
-            this.gridColumn6.Width = 280;
+            this.gridColumn6.Width = 230;
             // 
             // gridColumn125
             // 
@@ -1933,7 +1937,7 @@
             this.gridColumn125.Name = "gridColumn125";
             this.gridColumn125.Visible = true;
             this.gridColumn125.VisibleIndex = 6;
-            this.gridColumn125.Width = 50;
+            this.gridColumn125.Width = 40;
             // 
             // gridColumn126
             // 
@@ -1942,17 +1946,26 @@
             this.gridColumn126.Name = "gridColumn126";
             this.gridColumn126.Visible = true;
             this.gridColumn126.VisibleIndex = 7;
-            this.gridColumn126.Width = 50;
+            this.gridColumn126.Width = 40;
+            // 
+            // gridColumn92
+            // 
+            this.gridColumn92.Caption = "Nội Dung PKH";
+            this.gridColumn92.FieldName = "NoiDungPKH";
+            this.gridColumn92.Name = "gridColumn92";
+            this.gridColumn92.Visible = true;
+            this.gridColumn92.VisibleIndex = 8;
+            this.gridColumn92.Width = 150;
             // 
             // gridColumn12
             // 
-            this.gridColumn12.Caption = "Nội Dung";
+            this.gridColumn12.Caption = "Nội Dung PTV";
             this.gridColumn12.FieldName = "NoiDung";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsColumn.AllowEdit = false;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 8;
-            this.gridColumn12.Width = 200;
+            this.gridColumn12.VisibleIndex = 9;
+            this.gridColumn12.Width = 150;
             // 
             // gridColumn90
             // 
@@ -1961,8 +1974,17 @@
             this.gridColumn90.Name = "gridColumn90";
             this.gridColumn90.OptionsColumn.AllowEdit = false;
             this.gridColumn90.Visible = true;
-            this.gridColumn90.VisibleIndex = 9;
+            this.gridColumn90.VisibleIndex = 11;
             this.gridColumn90.Width = 100;
+            // 
+            // gridColumn93
+            // 
+            this.gridColumn93.Caption = "Tình Trạng";
+            this.gridColumn93.FieldName = "TinhTrang";
+            this.gridColumn93.Name = "gridColumn93";
+            this.gridColumn93.Visible = true;
+            this.gridColumn93.VisibleIndex = 10;
+            this.gridColumn93.Width = 100;
             // 
             // repositoryItemCheckEdit3
             // 
@@ -2700,5 +2722,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn89;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn90;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn91;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn92;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn93;
     }
 }

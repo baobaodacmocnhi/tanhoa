@@ -414,7 +414,8 @@ namespace KTKS_DonKH.DAL.DonTu
             dtDonTu.Columns.Add("DanhBo", typeof(string));
             dtDonTu.Columns.Add("HoTen", typeof(string));
             dtDonTu.Columns.Add("DiaChi", typeof(string));
-            dtDonTu.Columns.Add("NoiDung", typeof(string));
+            dtDonTu.Columns.Add("NoiDungPKH", typeof(string));
+            dtDonTu.Columns.Add("NoiDungPTV", typeof(string));
             dtDonTu.Columns.Add("CreateBy", typeof(string));
             dtDonTu.Columns.Add("TinhTrang", typeof(string));
             dtDonTu.TableName = "DonTu";
@@ -465,7 +466,8 @@ namespace KTKS_DonKH.DAL.DonTu
                         //    dr["TinhTrang"] = "Tồn";
                     }
                     dr["TinhTrang"] = item.TinhTrang;
-                    dr["NoiDung"] = item.Name_NhomDon;
+                    dr["NoiDungPKH"] = item.Name_NhomDon_PKH ;
+                    dr["NoiDungPTV"] =  item.Name_NhomDon;
                     dr["CreateBy"] = db.Users.SingleOrDefault(itemR => itemR.MaU == item.CreateBy).HoTen;
 
                     dtDonTu.Rows.Add(dr);

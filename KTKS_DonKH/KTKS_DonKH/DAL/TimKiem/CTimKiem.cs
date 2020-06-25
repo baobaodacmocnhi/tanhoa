@@ -22,7 +22,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                select new
                                {
                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count == 1 ? itemDon.MaDon.Value.ToString() : itemDon.MaDon.Value.ToString() + "." + itemDon.STT.Value.ToString(),
-                                   //itemDon.LoaiDon.TenLD,
+                                   TenLD = itemDon.DonTu.SoCongVan_PhongBanDoi + ": " + itemDon.DonTu.SoCongVan,
                                    itemDon.CreateDate,
                                    itemDon.DanhBo,
                                    itemDon.HoTen,
@@ -30,8 +30,10 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDon.GiaBieu,
                                    itemDon.DinhMuc,
                                    itemDon.DinhMucHN,
+                                   NoiDungPKH = itemDon.DonTu.Name_NhomDon_PKH,
                                    NoiDung = itemDon.DonTu.Name_NhomDon,
                                    itemDon.DienThoai,
+                                   itemDon.TinhTrang,
                                };
                 DataTable dtDon = new DataTable();
                 dtDon = LINQToDataTable(queryDon);
@@ -401,7 +403,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                select new
                                {
                                    MaDon = itemDon.MaDon.Value.ToString() + "." + itemDon.STT.Value.ToString(),
-                                   //itemDon.LoaiDon.TenLD,
+                                   TenLD = itemDon.DonTu.SoCongVan_PhongBanDoi+": "+itemDon.DonTu.SoCongVan,
                                    itemDon.CreateDate,
                                    itemDon.DanhBo,
                                    itemDon.HoTen,
@@ -409,8 +411,10 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDon.GiaBieu,
                                    itemDon.DinhMuc,
                                    itemDon.DinhMucHN,
+                                   NoiDungPKH = itemDon.DonTu.Name_NhomDon_PKH,
                                    NoiDung = itemDon.DonTu.Name_NhomDon,
                                    itemDon.DienThoai,
+                                   itemDon.TinhTrang,
                                };
                 DataTable dtDon = new DataTable();
                 dtDon = LINQToDataTable(queryDon);
@@ -8138,8 +8142,10 @@ namespace KTKS_DonKH.DAL.TimKiem
             dtDon.Columns.Add("GiaBieu", typeof(string));
             dtDon.Columns.Add("DinhMuc", typeof(string));
             dtDon.Columns.Add("DinhMucHN", typeof(string));
+            dtDon.Columns.Add("NoiDungPKH", typeof(string));
             dtDon.Columns.Add("NoiDung", typeof(string));
             dtDon.Columns.Add("DienThoai", typeof(string));
+            dtDon.Columns.Add("TinhTrang", typeof(string));
             dtDon.TableName = "DonTu";
 
             foreach (DataRow itemRow in dt.Rows)
@@ -8213,8 +8219,10 @@ namespace KTKS_DonKH.DAL.TimKiem
             dtDon.Columns.Add("GiaBieu", typeof(string));
             dtDon.Columns.Add("DinhMuc", typeof(string));
             dtDon.Columns.Add("DinhMucHN", typeof(string));
+            dtDon.Columns.Add("NoiDungPKH", typeof(string));
             dtDon.Columns.Add("NoiDung", typeof(string));
             dtDon.Columns.Add("DienThoai", typeof(string));
+            dtDon.Columns.Add("TinhTrang", typeof(string));
             dtDon.TableName = "DonTu";
 
             foreach (DataRow itemRow in dt.Rows)
@@ -8288,8 +8296,10 @@ namespace KTKS_DonKH.DAL.TimKiem
             dtDon.Columns.Add("GiaBieu", typeof(string));
             dtDon.Columns.Add("DinhMuc", typeof(string));
             dtDon.Columns.Add("DinhMucHN", typeof(string));
+            dtDon.Columns.Add("NoiDungPKH", typeof(string));
             dtDon.Columns.Add("NoiDung", typeof(string));
             dtDon.Columns.Add("DienThoai", typeof(string));
+            dtDon.Columns.Add("TinhTrang", typeof(string));
             dtDon.TableName = "DonTu";
 
             foreach (DataRow itemRow in dt.Rows)
@@ -8370,8 +8380,10 @@ namespace KTKS_DonKH.DAL.TimKiem
             dtDon.Columns.Add("GiaBieu", typeof(string));
             dtDon.Columns.Add("DinhMuc", typeof(string));
             dtDon.Columns.Add("DinhMucHN", typeof(string));
+            dtDon.Columns.Add("NoiDungPKH", typeof(string));
             dtDon.Columns.Add("NoiDung", typeof(string));
             dtDon.Columns.Add("DienThoai", typeof(string));
+            dtDon.Columns.Add("TinhTrang", typeof(string));
             dtDon.TableName = "DonTu";
 
             foreach (DataRow itemRow in dt.Rows)
@@ -8452,8 +8464,10 @@ namespace KTKS_DonKH.DAL.TimKiem
             dtDon.Columns.Add("GiaBieu", typeof(string));
             dtDon.Columns.Add("DinhMuc", typeof(string));
             dtDon.Columns.Add("DinhMucHN", typeof(string));
+            dtDon.Columns.Add("NoiDungPKH", typeof(string));
             dtDon.Columns.Add("NoiDung", typeof(string));
             dtDon.Columns.Add("DienThoai", typeof(string));
+            dtDon.Columns.Add("TinhTrang", typeof(string));
             dtDon.TableName = "DonTu";
 
             foreach (DataRow itemRow in dt.Rows)

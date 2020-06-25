@@ -75,6 +75,7 @@
             this.btnInThongKe = new System.Windows.Forms.Button();
             this.cmbLoai = new System.Windows.Forms.ComboBox();
             this.btnInThongKeTon = new System.Windows.Forms.Button();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDonChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDon)).BeginInit();
@@ -186,6 +187,7 @@
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
+            this.gridColumn15,
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9});
@@ -245,7 +247,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 200;
+            this.gridColumn5.Width = 150;
             // 
             // gridColumn6
             // 
@@ -254,16 +256,16 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
-            this.gridColumn6.Width = 250;
+            this.gridColumn6.Width = 200;
             // 
             // gridColumn7
             // 
-            this.gridColumn7.Caption = "Nội Dung";
-            this.gridColumn7.FieldName = "NoiDung";
+            this.gridColumn7.Caption = "Nội Dung PTV";
+            this.gridColumn7.FieldName = "NoiDungPTV";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
-            this.gridColumn7.Width = 200;
+            this.gridColumn7.VisibleIndex = 7;
+            this.gridColumn7.Width = 150;
             // 
             // gridColumn8
             // 
@@ -271,7 +273,7 @@
             this.gridColumn8.FieldName = "CreateBy";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.VisibleIndex = 8;
             this.gridColumn8.Width = 100;
             // 
             // gridColumn9
@@ -280,7 +282,7 @@
             this.gridColumn9.FieldName = "TinhTrang";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.VisibleIndex = 9;
             this.gridColumn9.Width = 100;
             // 
             // repositoryItemCheckEdit1
@@ -549,6 +551,15 @@
             this.btnInThongKeTon.UseVisualStyleBackColor = true;
             this.btnInThongKeTon.Click += new System.EventHandler(this.btnInThongKeTon_Click);
             // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Nội Dung PKH";
+            this.gridColumn15.FieldName = "NoiDungPKH";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 6;
+            this.gridColumn15.Width = 150;
+            // 
             // frmDSDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -634,5 +645,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private System.Windows.Forms.Button btnInThongKeTon;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
     }
 }

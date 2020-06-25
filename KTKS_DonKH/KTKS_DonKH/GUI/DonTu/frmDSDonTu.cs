@@ -323,11 +323,11 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
                     dr["Ma"] = item["MaDon"].ToString();
                     dr["MaChiTiet"] = item["MaDon"].ToString();
-                    if (item["DanhBo"].ToString().Length == 11)
-                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                    dr["DiaChi"] = item["DiaChi"].ToString();
+                    //if (item["DanhBo"].ToString().Length == 11)
+                    //    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["DiaChi"] = item["NoiDungPKH"].ToString();
                     dr["CreateDate"] = item["CreateDate"].ToString();
-                    dr["NoiDung"] = item["NoiDung"].ToString();
+                    dr["NoiDung"] = item["NoiDungPTV"].ToString();
                     //mượn đỡ 2 cột để xét tình trạng
                     dr["GhiChu"] = item["TinhTrang"].ToString();
                     dr["NguoiNhan"] = item["TinhTrang"].ToString();
@@ -351,11 +351,11 @@ namespace KTKS_DonKH.GUI.DonTu
                         dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
                         dr["Ma"] = itemChild["MaDon"].ToString();
                         dr["MaChiTiet"] = item["MaDon"].ToString() + "." + itemChild["STT"].ToString();
-                        if (itemChild["DanhBo"].ToString().Length == 11)
-                            dr["DanhBo"] = itemChild["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        dr["DiaChi"] = itemChild["DiaChi"].ToString();
+                        //if (itemChild["DanhBo"].ToString().Length == 11)
+                        //    dr["DanhBo"] = itemChild["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["DiaChi"] = item["NoiDungPKH"].ToString();
                         dr["CreateDate"] = item["CreateDate"].ToString();
-                        dr["NoiDung"] = item["NoiDung"].ToString();
+                        dr["NoiDung"] = item["NoiDungPTV"].ToString();
                         //mượn đỡ 2 cột để xét tình trạng
                         dr["GhiChu"] = itemChild["TinhTrang"].ToString();
                         dr["NguoiNhan"] = item["TinhTrang"].ToString();

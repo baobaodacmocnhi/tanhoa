@@ -772,7 +772,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                 else
                                     _dontu.ID_NhomDon_PKH += ";" + chkcmbQuanLy.Properties.Items[i].Value.ToString();
                             }
-                        _dontu.Name_NhomDon = txtNoiDungKhachHang.Text.Trim();
+                        _dontu.Name_NhomDon_PKH = txtNoiDungKhachHang.Text.Trim();
                         if (txtVanDeKhac.Text.Trim() != "")
                             _dontu.VanDeKhac = txtVanDeKhac.Text.Trim();
                         //if (cmbNhomDon_ChiTiet.SelectedIndex > -1)
