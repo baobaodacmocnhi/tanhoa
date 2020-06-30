@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1239</ApplicationRevision>
+    <ApplicationRevision>1241</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -197,6 +197,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptBBDongNuoc.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\Quay\rptPhieuTamThu_HDDT.cs">
+      <DependentUpon>rptPhieuTamThu_HDDT.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BaoCao\rptDSHoaDon_TieuDe.cs">
       <DependentUpon>rptDSHoaDon_TieuDe.rpt</DependentUpon>
@@ -1341,6 +1347,10 @@
     <EmbeddedResource Include="BaoCao\DongNuoc\rptBBDongNuoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptBBDongNuoc.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\Quay\rptPhieuTamThu_HDDT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuTamThu_HDDT.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\rptDSHoaDon_TieuDe.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

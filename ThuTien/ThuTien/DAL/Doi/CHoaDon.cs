@@ -5741,6 +5741,114 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public DataTable GetTongHopDangNganChiTiet_Giay(int MaTo, DateTime NgayGiaiTrach)
+        {
+            ///Tổ Văn Phòng
+            if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+            {
+                var query = from item in _db.HOADONs
+                            where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
+                                && item.ChuyenNoKhoDoi == false && (item.NAM < 2020 || (item.NAM == 2020 && item.KY < 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                && item.KhoaTienDu == false
+                            //orderby item.STT ascending
+                            group item by item.MaNV_DangNgan into itemGroup
+                            select new
+                            {
+                                MaNV = itemGroup.Key,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).STT,
+                                ChuyenKhoan = itemGroup.FirstOrDefault().DangNgan_ChuyenKhoan,
+                                TongHD = itemGroup.Count(),
+                                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+                                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                                TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
+                                TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
+                            };
+                return LINQToDataTable(query.OrderBy(item => item.STT));
+            }
+            ///Tổ Hành Thu
+            else
+            {
+                var query = from item in _db.HOADONs
+                            where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
+                                && item.ChuyenNoKhoDoi == false && (item.NAM < 2020 || (item.NAM == 2020 && item.KY < 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                && item.KhoaTienDu == false
+                            orderby item.STT ascending
+                            group item by item.MaNV_DangNgan into itemGroup
+                            select new
+                            {
+                                MaNV = itemGroup.Key,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).STT,
+                                ChuyenKhoan = itemGroup.FirstOrDefault().DangNgan_ChuyenKhoan,
+                                TongHD = itemGroup.Count(),
+                                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+                                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                            };
+                return LINQToDataTable(query.OrderBy(item => item.STT));
+            }
+        }
+
+        public DataTable GetTongHopDangNganChiTiet_DienTu(int MaTo, DateTime NgayGiaiTrach)
+        {
+            ///Tổ Văn Phòng
+            if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+            {
+                var query = from item in _db.HOADONs
+                            where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
+                                && item.ChuyenNoKhoDoi == false && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                && item.KhoaTienDu == false
+                            //orderby item.STT ascending
+                            group item by item.MaNV_DangNgan into itemGroup
+                            select new
+                            {
+                                MaNV = itemGroup.Key,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).STT,
+                                ChuyenKhoan = itemGroup.FirstOrDefault().DangNgan_ChuyenKhoan,
+                                TongHD = itemGroup.Count(),
+                                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+                                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                                TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
+                                TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
+                            };
+                return LINQToDataTable(query.OrderBy(item => item.STT));
+            }
+            ///Tổ Hành Thu
+            else
+            {
+                var query = from item in _db.HOADONs
+                            where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
+                                && item.ChuyenNoKhoDoi == false && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                && item.KhoaTienDu == false
+                            orderby item.STT ascending
+                            group item by item.MaNV_DangNgan into itemGroup
+                            select new
+                            {
+                                MaNV = itemGroup.Key,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).STT,
+                                ChuyenKhoan = itemGroup.FirstOrDefault().DangNgan_ChuyenKhoan,
+                                TongHD = itemGroup.Count(),
+                                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+                                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                            };
+                return LINQToDataTable(query.OrderBy(item => item.STT));
+            }
+        }
+
         public DataTable GetTongHopDangNganChiTiet_HanhThuTG(DateTime NgayGiaiTrach)
         {
             string sql = "select MaND as MaNV,STT,HoTen,CAST(0 as bit) as ChuyenKhoan,TongHD,TongGiaBan,TongThueGTGT,TongPhiBVMT,TongCong from"
@@ -5803,6 +5911,28 @@ namespace ThuTien.DAL.Doi
                         + " left join"
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
                         + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<" + Ky + ")) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " order by nd.STT asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongHopDangNganChiTiet_HanhThu_Giay(DateTime NgayGiaiTrach)
+        {
+            string sql = "select MaND as MaNV,STT,HoTen,CAST(0 as bit) as ChuyenKhoan,TongHD,TongGiaBan,TongThueGTGT,TongPhiBVMT,TongCong from"
+                        + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
+                        + " left join"
+                        + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and (NAM<2020 or (NAM=2020 and KY<7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " order by nd.STT asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongHopDangNganChiTiet_HanhThu_DienTu(DateTime NgayGiaiTrach)
+        {
+            string sql = "select MaND as MaNV,STT,HoTen,CAST(0 as bit) as ChuyenKhoan,TongHD,TongGiaBan,TongThueGTGT,TongPhiBVMT,TongCong from"
+                        + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
+                        + " left join"
+                        + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and (NAM>2020 or (NAM=2020 and KY>=7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
                         + " order by nd.STT asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -6413,6 +6543,31 @@ namespace ThuTien.DAL.Doi
                             item.TONGCONG,
                             item.TienDu,
                             item.TienMat,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSDangNgan_ChuaNopTien(DateTime NgayGiaiTrach)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.SyncNopTien == false && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7))
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            itemHD.NGAYGIAITRACH,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
                         };
             return LINQToDataTable(query);
         }

@@ -1443,6 +1443,24 @@ namespace ThuTien.DAL.DongNuoc
                 return false;
         }
 
+        public bool CheckExist_CTDongNuoc_Ton(string DanhBo, int Nam, int Ky)
+        {
+            var query = from itemDN in _db.TT_DongNuocs
+                        join itemCT in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCT.MaDN
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
+                        where itemDN.Huy == false && itemHD.NGAYGIAITRACH == null && itemHD.DANHBA == DanhBo && itemHD.NAM == Nam && itemHD.KY == Ky
+                        select new
+                        {
+                            itemHD.ID_HOADON,
+                        };
+            if (query.Count() > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
         public bool CheckPhiMoNuoc(string DanhBo)
         {
             return _db.TT_KQDongNuocs.Any(item => item.DanhBo == DanhBo && item.DongNuoc == true && item.MoNuoc == false && item.TroNgaiMN == false && item.TT_DongNuoc.Huy == false);
@@ -1464,6 +1482,16 @@ namespace ThuTien.DAL.DongNuoc
         public TT_DongNuoc GetDongNuocBySoHoaDon(string SoHoaDon)
         {
             return _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc;
+        }
+
+        public TT_DongNuoc getDongNuoc_MoiNhat(string DanhBo, int Nam, int Ky)
+        {
+            var query = from itemDN in _db.TT_DongNuocs
+                        join itemCT in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCT.MaDN
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
+                        where itemDN.Huy == false && itemHD.NGAYGIAITRACH == null && itemHD.DANHBA == DanhBo && itemHD.NAM == Nam && itemHD.KY == Ky
+                        select itemDN;
+            return query.SingleOrDefault();
         }
 
         public TT_CTDongNuoc getCTDongNuoc(decimal MaDN, int MaHD)

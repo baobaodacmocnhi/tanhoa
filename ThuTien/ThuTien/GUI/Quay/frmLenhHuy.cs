@@ -132,10 +132,9 @@ namespace ThuTien.GUI.Quay
                 }
                 try
                 {
-                    _cLenhHuy.BeginTransaction();
+                    //_cLenhHuy.BeginTransaction();
                     foreach (ListViewItem item in lstHD.Items)
                     {
-
                         TT_LenhHuy lenhhuy = new TT_LenhHuy();
                         HOADON hd = _cHoaDon.Get(item.Text);
                         lenhhuy.MaHD = hd.ID_HOADON;
@@ -149,18 +148,18 @@ namespace ThuTien.GUI.Quay
                         }
                         if (!_cLenhHuy.Them(lenhhuy))
                         {
-                            _cLenhHuy.Rollback();
+                            //_cLenhHuy.Rollback();
                             MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    _cLenhHuy.CommitTransaction();
+                    //_cLenhHuy.CommitTransaction();
                     lstHD.Items.Clear();
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
                 {
-                    _cLenhHuy.Rollback();
+                    //_cLenhHuy.Rollback();
                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

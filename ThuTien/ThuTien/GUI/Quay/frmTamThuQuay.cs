@@ -19,6 +19,7 @@ using ThuTien.GUI.TimKiem;
 using ThuTien.BaoCao.ChuyenKhoan;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.ChuyenKhoan;
+using System.Transactions;
 
 namespace ThuTien.GUI.Quay
 {
@@ -33,6 +34,7 @@ namespace ThuTien.GUI.Quay
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CDichVuThu _cDichVuThu = new CDichVuThu();
+        CChotDangNgan _cChotDangNgan = new CChotDangNgan();
 
         public frmTamThuQuay()
         {
@@ -128,45 +130,72 @@ namespace ThuTien.GUI.Quay
                 List<TAMTHU> lstTamThu = new List<TAMTHU>();
                 try
                 {
-                    _cTamThu.BeginTransaction();
-                    decimal SoPhieu = _cTamThu.GetMaxSoPhieu();
-                    foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                        if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
-                        {
-                            TAMTHU tamthu = new TAMTHU();
-                            tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
-                            tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());
-                            tamthu.SoHoaDon = item.Cells["SoHoaDon"].Value.ToString();
-                            tamthu.SoPhieu = SoPhieu;
-                            if (_cTamThu.Them(tamthu))
-                            {
-                                lstTamThu.Add(tamthu);
-                            }
-                            else
-                            {
-                                _cTamThu.Rollback();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                        }
-                    ///ghi nhận đóng phí mở nước
-                    DataTable dt = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc(false, lstTamThu[0].DANHBA);
-                    if (dt != null && dt.Rows.Count > 0)
+                    using (var scope = new TransactionScope())
                     {
-                        TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dt.Rows[0]["MaKQDN"].ToString()));
-                        if (kqdongnuoc.DongPhi != true && kqdongnuoc.ChuyenKhoan != true)
+                        decimal SoPhieu = _cTamThu.GetMaxSoPhieu();
+                        foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                            if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
+                            {
+                                TAMTHU tamthu = new TAMTHU();
+                                tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
+                                tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());
+                                tamthu.SoHoaDon = item.Cells["SoHoaDon"].Value.ToString();
+                                tamthu.SoPhieu = SoPhieu;
+                                if (_cChotDangNgan.checkExist_ChotDangNgan(DateTime.Now) == true)
+                                {
+                                    DateTime NgayGiaiTrach = new DateTime();
+                                    NgayGiaiTrach = NgayGiaiTrach.AddDays(1);
+                                    TimeSpan ts = new TimeSpan(01, 0, 0);
+                                    NgayGiaiTrach = NgayGiaiTrach.Date + ts;
+                                    if (_cTamThu.Them(tamthu, NgayGiaiTrach) == true)
+                                    {
+                                        if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND, NgayGiaiTrach) == true)
+                                            lstTamThu.Add(tamthu);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    MessageBox.Show("Ngày Đăng Ngân đã Chốt\nHóa Đơn đã được Đăng Ngân ngày hôm sau", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                else
+                                    if (_cTamThu.Them(tamthu) == true)
+                                    {
+                                        if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND) == true)
+                                            lstTamThu.Add(tamthu);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                            }
+                        ///ghi nhận đóng phí mở nước
+                        DataTable dt = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc(false, lstTamThu[0].DANHBA);
+                        if (dt != null && dt.Rows.Count > 0)
                         {
-                            kqdongnuoc.DongPhi = true;
-                            kqdongnuoc.NgayDongPhi = DateTime.Now;
-                            _cDongNuoc.SuaKQ(kqdongnuoc);
+                            TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dt.Rows[0]["MaKQDN"].ToString()));
+                            if (kqdongnuoc.DongPhi != true && kqdongnuoc.ChuyenKhoan != true)
+                            {
+                                kqdongnuoc.DongPhi = true;
+                                kqdongnuoc.NgayDongPhi = DateTime.Now;
+                                if (_cDongNuoc.SuaKQ(kqdongnuoc) == true)
+                                    scope.Complete();
+                                else
+                                {
+                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
                         }
-                    }
+                        else
+                            scope.Complete();
 
-                    _cTamThu.CommitTransaction();
+                    }
                 }
                 catch (Exception)
                 {
-                    _cTamThu.Rollback();
                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -205,7 +234,7 @@ namespace ThuTien.GUI.Quay
                         dr["ChuKy"] = true;
                     ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
-                    rptPhieuTamThu rpt = new rptPhieuTamThu();
+                    rptPhieuTamThu_HDDT rpt = new rptPhieuTamThu_HDDT();
                     rpt.SetDataSource(ds);
                     frmInQuay frm = new frmInQuay(rpt);
                     frm.ShowDialog();

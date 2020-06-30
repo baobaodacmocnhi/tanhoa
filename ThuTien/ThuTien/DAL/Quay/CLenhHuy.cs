@@ -82,6 +82,23 @@ namespace ThuTien.DAL.Quay
                 return false;
         }
 
+        public bool CheckExist_Ton(string DanhBo,int Nam,int Ky)
+        {
+            var query = from item in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on item.MaHD equals itemHD.ID_HOADON
+                        where itemHD.NGAYGIAITRACH == null && itemHD.DANHBA == DanhBo && itemHD.NAM == Nam && itemHD.KY == Ky
+                        select new
+                        {
+                            itemHD.ID_HOADON,
+                        };
+            if (query.Count() > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
         //public bool CheckExist(string SoHoaDon,int Nam,int Ky)
         //{
         //    return _db.TT_LenhHuys.Any(item => item.SoHoaDon == SoHoaDon && item.CreateDate.Value.Year == Nam && item.CreateDate.Value.Month == Ky);

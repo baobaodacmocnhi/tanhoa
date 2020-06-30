@@ -15,6 +15,8 @@ using ThuTien.BaoCao;
 using ThuTien.BaoCao.Doi;
 using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.TongHop;
+using ThuTien.DAL.DongNuoc;
+using ThuTien.DAL.Quay;
 
 namespace ThuTien.GUI.Doi
 {
@@ -26,6 +28,8 @@ namespace ThuTien.GUI.Doi
         CHoaDon _cHoaDon = new CHoaDon();
         CDocSo _cCapNuocTanHoa = new CDocSo();
         CDCHD _cDCHD = new CDCHD();
+        CDongNuoc _cDongNuoc = new CDongNuoc();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmLuuHD()
         {
@@ -210,7 +214,45 @@ namespace ThuTien.GUI.Doi
                             ///Nếu chưa có hóa đơn
                             if (!_cHoaDon.CheckExist(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY, hoadon.DOT.Value))
                             {
-                                _cHoaDon.Them(hoadon);
+                                if (_cHoaDon.Them(hoadon) == true)
+                                {
+                                    if (_cLenhHuy.CheckExist_Ton(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1) == true)
+                                    {
+                                        TT_LenhHuy lenhhuy = new TT_LenhHuy();
+                                        lenhhuy.MaHD = hoadon.ID_HOADON;
+                                        lenhhuy.SoHoaDon = hoadon.SOHOADON;
+                                        lenhhuy.DanhBo = hoadon.DANHBA;
+                                        TT_LenhHuy lhMoiNhat = _cLenhHuy.getMoiNhat(hoadon.DANHBA);
+                                        if (lhMoiNhat != null)
+                                        {
+                                            lenhhuy.TinhTrang = lhMoiNhat.TinhTrang;
+                                            lenhhuy.Cat = lhMoiNhat.Cat;
+                                        }
+                                        _cLenhHuy.Them(lenhhuy);
+                                    }
+                                    else
+                                        if (_cDongNuoc.CheckExist_CTDongNuoc_Ton(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1) == true)
+                                        {
+                                            TT_DongNuoc dongnuoc = _cDongNuoc.getDongNuoc_MoiNhat(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1);
+                                            
+                                            TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
+                                            ctdongnuoc.MaDN = dongnuoc.MaDN;
+                                            ctdongnuoc.MaHD = hoadon.ID_HOADON;
+                                            ctdongnuoc.SoHoaDon = hoadon.SOHOADON;
+                                            ctdongnuoc.Ky = hoadon.KY + "/" + hoadon.NAM;
+                                            ctdongnuoc.TieuThu = (int)hoadon.TIEUTHU;
+                                            ctdongnuoc.GiaBan = (int)hoadon.GIABAN;
+                                            ctdongnuoc.ThueGTGT = (int)hoadon.THUE;
+                                            ctdongnuoc.PhiBVMT = (int)hoadon.PHI;
+                                            ctdongnuoc.TongCong = (int)hoadon.TONGCONG;
+                                            ctdongnuoc.CreateBy = CNguoiDung.MaND;
+                                            ctdongnuoc.CreateDate = DateTime.Now;
+
+                                            dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
+
+                                            _cDongNuoc.SuaDN(dongnuoc);
+                                        }
+                                }
                             }
                             ///Nếu đã có hóa đơn
                             else

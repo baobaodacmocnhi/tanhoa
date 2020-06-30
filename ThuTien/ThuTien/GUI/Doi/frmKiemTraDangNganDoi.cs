@@ -601,6 +601,29 @@ namespace ThuTien.GUI.Doi
                     else
                         MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+                if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "ShowError")
+                {
+                    TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
+                    DataTable dt = _cHoaDon.GetDSDangNgan_ChuaNopTien(en.NgayChot.Value);
+                    dsBaoCao ds = new dsBaoCao();
+                    foreach (DataRow item in dt.Rows)
+                        {
+                            DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                            dr["LoaiBaoCao"] = "LỖI NỘP TIỀN";
+                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                            dr["Ky"] = item["Ky"];
+                            dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
+                            dr["TongCong"] = item["TongCong"];
+                            dr["NhanVien"] = CNguoiDung.HoTen;
+                            ds.Tables["DSHoaDon"].Rows.Add(dr);
+                        }
+
+                    rptDSHoaDon_TieuDe rpt = new rptDSHoaDon_TieuDe();
+                    rpt.SetDataSource(ds);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.Show();
+                }
             }
             catch (Exception ex)
             {
