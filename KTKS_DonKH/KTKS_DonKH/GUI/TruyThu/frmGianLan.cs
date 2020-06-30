@@ -131,8 +131,10 @@ namespace KTKS_DonKH.GUI.TruyThu
             if (entity.ToTrinh1)
             {
                 chkToTrinh1.Checked = true;
-                txtTieuThu1.Text = entity.TieuThu1.Value.ToString();
-                txtGiaBan1.Text = entity.GiaBan1.Value.ToString();
+                if (entity.TieuThu1 != null)
+                    txtTieuThu1.Text = entity.TieuThu1.Value.ToString();
+                if (entity.GiaBan1 != null)
+                    txtGiaBan1.Text = entity.GiaBan1.Value.ToString();
                 txtSoThongBao1.Text = entity.SoThongBao1;
             }
             else
@@ -146,8 +148,10 @@ namespace KTKS_DonKH.GUI.TruyThu
             if (entity.ToTrinh2)
             {
                 chkToTrinh2.Checked = true;
-                txtTieuThu2.Text = entity.TieuThu2.Value.ToString();
-                txtGiaBan2.Text = entity.GiaBan2.Value.ToString();
+                if (entity.TieuThu2 != null)
+                    txtTieuThu2.Text = entity.TieuThu2.Value.ToString();
+                if (entity.GiaBan2 != null)
+                    txtGiaBan2.Text = entity.GiaBan2.Value.ToString();
                 txtSoThongBao2.Text = entity.SoThongBao2;
             }
             else
@@ -162,7 +166,8 @@ namespace KTKS_DonKH.GUI.TruyThu
             {
                 chkThanhToan1.Checked = true;
                 dateThanhToan1.Value = entity.Ngay1.Value;
-                txtSoTien1.Text = entity.SoTien1.Value.ToString();
+                if (entity.SoTien1 != null)
+                    txtSoTien1.Text = entity.SoTien1.Value.ToString();
                 txtSoPhieu1.Text = entity.SoPhieu1;
             }
             else
@@ -177,7 +182,8 @@ namespace KTKS_DonKH.GUI.TruyThu
             {
                 chkThanhToan2.Checked = true;
                 dateThanhToan2.Value = entity.Ngay2.Value;
-                txtSoTien2.Text = entity.SoTien2.Value.ToString();
+                if (entity.SoTien2 != null)
+                    txtSoTien2.Text = entity.SoTien2.Value.ToString();
                 txtSoPhieu2.Text = entity.SoPhieu2;
             }
             else
@@ -192,7 +198,8 @@ namespace KTKS_DonKH.GUI.TruyThu
             {
                 chkThanhToan3.Checked = true;
                 dateThanhToan3.Value = entity.Ngay3.Value;
-                txtSoTien3.Text = entity.SoTien3.Value.ToString();
+                if (entity.SoTien2 != null)
+                    txtSoTien3.Text = entity.SoTien3.Value.ToString();
                 txtSoPhieu3.Text = entity.SoPhieu3;
             }
             else
@@ -588,8 +595,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                         if (chkToTrinh1.Checked)
                         {
                             _gianlan.ToTrinh1 = true;
-                            _gianlan.TieuThu1 = int.Parse(txtTieuThu1.Text.Trim());
-                            _gianlan.GiaBan1 = int.Parse(txtGiaBan1.Text.Trim());
+                            if (txtTieuThu1.Text.Trim() != "")
+                                _gianlan.TieuThu1 = int.Parse(txtTieuThu1.Text.Trim());
+                            if (txtGiaBan1.Text.Trim() != "")
+                                _gianlan.GiaBan1 = int.Parse(txtGiaBan1.Text.Trim());
                             if (_file1 != null)
                             {
                                 _gianlan.File1 = _file1;
@@ -606,8 +615,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                         if (chkToTrinh2.Checked)
                         {
                             _gianlan.ToTrinh2 = true;
-                            _gianlan.TieuThu2 = int.Parse(txtTieuThu2.Text.Trim());
-                            _gianlan.GiaBan2 = int.Parse(txtGiaBan2.Text.Trim());
+                            if (txtTieuThu2.Text.Trim() != "")
+                                _gianlan.TieuThu2 = int.Parse(txtTieuThu2.Text.Trim());
+                            if (txtGiaBan2.Text.Trim() != "")
+                                _gianlan.GiaBan2 = int.Parse(txtGiaBan2.Text.Trim());
                             if (_file2 != null)
                             {
                                 _gianlan.File2 = _file2;
@@ -625,7 +636,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             _gianlan.ThanhToan1 = true;
                             _gianlan.Ngay1 = dateThanhToan1.Value;
-                            _gianlan.SoTien1 = int.Parse(txtSoTien1.Text.Trim().Replace(".", ""));
+                            if (txtSoTien1.Text.Trim() != "")
+                                _gianlan.SoTien1 = int.Parse(txtSoTien1.Text.Trim().Replace(".", ""));
                         }
                         else
                         {
@@ -638,7 +650,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             _gianlan.ThanhToan2 = true;
                             _gianlan.Ngay2 = dateThanhToan2.Value;
-                            _gianlan.SoTien2 = int.Parse(txtSoTien2.Text.Trim().Replace(".", ""));
+                            if (txtSoTien2.Text.Trim() != "")
+                                _gianlan.SoTien2 = int.Parse(txtSoTien2.Text.Trim().Replace(".", ""));
                         }
                         else
                         {
@@ -651,7 +664,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             _gianlan.ThanhToan3 = true;
                             _gianlan.Ngay3 = dateThanhToan3.Value;
-                            _gianlan.SoTien3 = int.Parse(txtSoTien3.Text.Trim().Replace(".", ""));
+                            if (txtSoTien3.Text.Trim() != "")
+                                _gianlan.SoTien3 = int.Parse(txtSoTien3.Text.Trim().Replace(".", ""));
                         }
                         else
                         {
@@ -861,8 +875,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                 if (entity.Ngay2 != null)
                 {
                     dr["Ngay2"] = entity.Ngay2.Value.ToString("dd/MM/yyyy");
-                    if (entity.SoTien2!=null)
-                    dr["SoTien2"] = entity.SoTien2;
+                    if (entity.SoTien2 != null)
+                        dr["SoTien2"] = entity.SoTien2;
                 }
                 if (entity.Ngay3 != null)
                 {
