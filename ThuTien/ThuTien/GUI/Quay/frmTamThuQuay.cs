@@ -261,8 +261,11 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            bool HDDT = false;
+            if (radDienTu.Checked == true)
+                HDDT = true;
             if (dateDen.Value >= dateTu.Value)
-                dgvTamThu.DataSource = _cTamThu.getDS(false, dateTu.Value, dateDen.Value);
+                dgvTamThu.DataSource = _cTamThu.getDS(HDDT, false, dateTu.Value, dateDen.Value);
             string HoTen = "", TenTo = "";
             foreach (DataGridViewRow item in dgvTamThu.Rows)
             {
@@ -523,7 +526,7 @@ namespace ThuTien.GUI.Quay
 
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
-                rptPhieuTamThu rpt = new rptPhieuTamThu();
+                rptPhieuTamThu_HDDT rpt = new rptPhieuTamThu_HDDT();
                 rpt.SetDataSource(ds);
                 frmInQuay frm = new frmInQuay(rpt);
                 frm.Show();

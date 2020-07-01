@@ -34,6 +34,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CToTrinhCatHuy _cTTCH = new CToTrinhCatHuy();
         CTienDu _cTienDu = new CTienDu();
+        frmLoading frm;
 
         public frmTamThuChuyenKhoan()
         {
@@ -176,8 +177,11 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            bool HDDT = false;
+            if (radDienTu.Checked == true)
+                HDDT = true;
             if (dateDen.Value >= dateTu.Value)
-                dgvTamThu.DataSource = _cTamThu.getDS(true, dateTu.Value, dateDen.Value);
+                dgvTamThu.DataSource = _cTamThu.getDS(HDDT, true, dateTu.Value, dateDen.Value);
             //string HoTen = "", TenTo = "";
             foreach (DataGridViewRow item in dgvTamThu.Rows)
             {
@@ -846,18 +850,26 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     return;
                                 }
                             }
-                        foreach (DataGridViewRow item in dgvTamThu.Rows)
-                            if (item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
-                            {
-                                using (var scope = new TransactionScope())
-                                {
-                                    if (_cHoaDon.DangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TT"].Value.ToString(), CNguoiDung.MaND))
-                                        if (_cTienDu.UpdateThem(item.Cells["SoHoaDon_TT"].Value.ToString()))
-                                            scope.Complete();
-                                }
-                            }
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        btnXem.PerformClick();
+                        if (backgroundWorker.IsBusy)
+                            backgroundWorker.CancelAsync();
+                        else
+                        {
+                            backgroundWorker.RunWorkerAsync();
+                            frm = new frmLoading();
+                            frm.ShowDialog();
+                        }
+                        //foreach (DataGridViewRow item in dgvTamThu.Rows)
+                        //    if (item.Cells["NgayGiaiTrach_TT"].Value==null||item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
+                        //    {
+                        //        using (var scope = new TransactionScope())
+                        //        {
+                        //            if (_cHoaDon.DangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TT"].Value.ToString(), CNguoiDung.MaND))
+                        //                if (_cTienDu.UpdateThem(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                        //                    scope.Complete();
+                        //        }
+                        //    }
+                        //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //btnXem.PerformClick();
                     }
                 }
                 else
@@ -869,5 +881,35 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
 
         }
+
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow item in dgvTamThu.Rows)
+                    if (item.Cells["NgayGiaiTrach_TT"].Value == null || item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
+                    {
+                        using (var scope = new TransactionScope())
+                        {
+                            if (_cHoaDon.DangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TT"].Value.ToString(), CNguoiDung.MaND))
+                                if (_cTienDu.UpdateThem(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                                    scope.Complete();
+                        }
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (frm != null)
+                frm.Close();
+            MessageBox.Show("Xử lý thành công\nVui lòng kiểm tra lại số liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
     }
 }

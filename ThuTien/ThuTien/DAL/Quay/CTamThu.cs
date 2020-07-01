@@ -8,7 +8,7 @@ using System.Data;
 
 namespace ThuTien.DAL.Quay
 {
-    class CTamThu:CDAL
+    class CTamThu : CDAL
     {
         public bool Them(TAMTHU tamthu)
         {
@@ -32,7 +32,7 @@ namespace ThuTien.DAL.Quay
             }
         }
 
-        public bool Them(TAMTHU tamthu,DateTime CreateDate)
+        public bool Them(TAMTHU tamthu, DateTime CreateDate)
         {
             try
             {
@@ -115,7 +115,7 @@ namespace ThuTien.DAL.Quay
             if (_db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon))
             {
                 if (_db.TAMTHUs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).ChuyenKhoan)
-                    Loai = "Chuyển Khoản, ngày "+_db.TAMTHUs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).CreateDate.Value.ToString("dd/MM/yyyy");
+                    Loai = "Chuyển Khoản, ngày " + _db.TAMTHUs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).CreateDate.Value.ToString("dd/MM/yyyy");
                 else
                     Loai = "Quầy, ngày " + _db.TAMTHUs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).CreateDate.Value.ToString("dd/MM/yyyy");
                 return true;
@@ -139,49 +139,98 @@ namespace ThuTien.DAL.Quay
             return _db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon && item.ChuyenKhoan == false);
         }
 
-        public DataTable getDS(bool ChuyenKhoan, DateTime TuNgay, DateTime DenNgay)
+        public DataTable getDS(bool HDDT, bool ChuyenKhoan, DateTime TuNgay, DateTime DenNgay)
         {
-            var query = from itemTT in _db.TAMTHUs
-                        join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
-                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
-                        from itemtableND in tableND.DefaultIfEmpty()
-                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-                        from itemtableDN in tableDN.DefaultIfEmpty()
-                        join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG into tableNH
-                        from itemtableNH in tableNH.DefaultIfEmpty()
-                        where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.ChuyenKhoan == ChuyenKhoan
-                        orderby itemHD.MALOTRINH ascending
-                        select new
-                        {
-                            MaTT = itemTT.ID_TAMTHU,
-                            MaHD=itemHD.ID_HOADON,
-                            itemTT.SoPhieu,
-                            itemHD.NGAYGIAITRACH,
-                            itemTT.CreateDate,
-                            itemHD.SOHOADON,
-                            itemHD.SOPHATHANH,
-                            Ky = itemHD.KY + "/" + itemHD.NAM,
-                            MLT = itemHD.MALOTRINH,
-                            DanhBo = itemHD.DANHBA,
-                            HoTen = itemHD.TENKH,
-                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
-                            itemHD.TIEUTHU,
-                            itemHD.GIABAN,
-                            ThueGTGT = itemHD.THUE,
-                            PhiBVMT = itemHD.PHI,
-                            itemHD.TONGCONG,
-                            HanhThu = _db.TT_CTDongNuocs.Any(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false&&item.TT_DongNuoc.MaNV_DongNuoc!=null) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-                            To = _db.TT_CTDongNuocs.Any(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false && item.TT_DongNuoc.MaNV_DongNuoc != null) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-                            itemTT.MaNH,
-                            TenNH = itemtableNH.NGANHANG1,
-                            GiaBieu = itemHD.GB,
-                            itemTT.TienDu,
-                            itemTT.Tra,
-                            itemTT.NgayTra,
-                            itemTT.GhiChuTra,
-                            DangNgan = itemtableDN.HoTen,
-                        };
-            return LINQToDataTable(query);
+            if (HDDT == false)
+            {
+                var query = from itemTT in _db.TAMTHUs
+                            join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
+                            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                            from itemtableDN in tableDN.DefaultIfEmpty()
+                            join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG into tableNH
+                            from itemtableNH in tableNH.DefaultIfEmpty()
+                            where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.ChuyenKhoan == ChuyenKhoan
+                            && (itemHD.NAM < 2020 || (itemHD.NAM == 2020 && itemHD.KY < 7))
+                            orderby itemHD.MALOTRINH ascending
+                            select new
+                            {
+                                MaTT = itemTT.ID_TAMTHU,
+                                MaHD = itemHD.ID_HOADON,
+                                itemTT.SoPhieu,
+                                itemHD.NGAYGIAITRACH,
+                                itemTT.CreateDate,
+                                itemHD.SOHOADON,
+                                itemHD.SOPHATHANH,
+                                Ky = itemHD.KY + "/" + itemHD.NAM,
+                                MLT = itemHD.MALOTRINH,
+                                DanhBo = itemHD.DANHBA,
+                                HoTen = itemHD.TENKH,
+                                DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                itemHD.TIEUTHU,
+                                itemHD.GIABAN,
+                                ThueGTGT = itemHD.THUE,
+                                PhiBVMT = itemHD.PHI,
+                                itemHD.TONGCONG,
+                                HanhThu = _db.TT_CTDongNuocs.Any(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false && item.TT_DongNuoc.MaNV_DongNuoc != null) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
+                                To = _db.TT_CTDongNuocs.Any(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false && item.TT_DongNuoc.MaNV_DongNuoc != null) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
+                                itemTT.MaNH,
+                                TenNH = itemtableNH.NGANHANG1,
+                                GiaBieu = itemHD.GB,
+                                itemTT.TienDu,
+                                itemTT.Tra,
+                                itemTT.NgayTra,
+                                itemTT.GhiChuTra,
+                                DangNgan = itemtableDN.HoTen,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+            {
+                var query2 = from itemTT in _db.TAMTHUs
+                             join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
+                             join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                             from itemtableND in tableND.DefaultIfEmpty()
+                             join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                             from itemtableDN in tableDN.DefaultIfEmpty()
+                             join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG into tableNH
+                             from itemtableNH in tableNH.DefaultIfEmpty()
+                             where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.ChuyenKhoan == ChuyenKhoan
+                              && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7))
+                             orderby itemHD.MALOTRINH ascending
+                             select new
+                             {
+                                 MaTT = itemTT.ID_TAMTHU,
+                                 MaHD = itemHD.ID_HOADON,
+                                 itemTT.SoPhieu,
+                                 itemHD.NGAYGIAITRACH,
+                                 itemTT.CreateDate,
+                                 itemHD.SOHOADON,
+                                 itemHD.SOPHATHANH,
+                                 Ky = itemHD.KY + "/" + itemHD.NAM,
+                                 MLT = itemHD.MALOTRINH,
+                                 DanhBo = itemHD.DANHBA,
+                                 HoTen = itemHD.TENKH,
+                                 DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                 itemHD.TIEUTHU,
+                                 itemHD.GIABAN,
+                                 ThueGTGT = itemHD.THUE,
+                                 PhiBVMT = itemHD.PHI,
+                                 itemHD.TONGCONG,
+                                 HanhThu = _db.TT_CTDongNuocs.Any(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false && item.TT_DongNuoc.MaNV_DongNuoc != null) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
+                                 To = _db.TT_CTDongNuocs.Any(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false && item.TT_DongNuoc.MaNV_DongNuoc != null) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == itemHD.ID_HOADON && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
+                                 itemTT.MaNH,
+                                 TenNH = itemtableNH.NGANHANG1,
+                                 GiaBieu = itemHD.GB,
+                                 itemTT.TienDu,
+                                 itemTT.Tra,
+                                 itemTT.NgayTra,
+                                 itemTT.GhiChuTra,
+                                 DangNgan = itemtableDN.HoTen,
+                             };
+                return LINQToDataTable(query2);
+            }
         }
 
         public DataTable GetDS(bool ChuyenKhoan, string DanhBo)
@@ -192,7 +241,7 @@ namespace ThuTien.DAL.Quay
                         from itemtableND in tableND.DefaultIfEmpty()
                         join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
-                        where itemTT.Xoa == false && itemTT.DANHBA== DanhBo && itemTT.ChuyenKhoan == ChuyenKhoan
+                        where itemTT.Xoa == false && itemTT.DANHBA == DanhBo && itemTT.ChuyenKhoan == ChuyenKhoan
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
@@ -248,13 +297,13 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSTon(int MaTo,bool ChuyenKhoan)
+        public DataTable GetDSTon(int MaTo, bool ChuyenKhoan)
         {
             var query = from itemTT in _db.TAMTHUs
                         join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemTT.Xoa == false && itemTT.ChuyenKhoan == ChuyenKhoan && itemHD.NGAYGIAITRACH==null
+                        where itemTT.Xoa == false && itemTT.ChuyenKhoan == ChuyenKhoan && itemHD.NGAYGIAITRACH == null
                         && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         orderby itemHD.MALOTRINH ascending
