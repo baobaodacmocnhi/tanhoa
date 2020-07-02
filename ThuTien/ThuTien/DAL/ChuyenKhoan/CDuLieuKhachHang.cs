@@ -101,7 +101,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             //         + " left  join"
             //         + " (select DANHBA,SOHOADON,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
             //         + " from HOADON where NAM=" + Nam + " and KY=" + Ky + " and DOT="+Dot+") dlkhHD on dlkhHD.DANHBA=dlkhDB.DanhBo";
-            string sql = "select dlkhDB.DanhBo,dlkhDB.HoTen,SoTaiKhoan,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,"
+            string sql = "select dlkhDB.DanhBo,dlkhDB.HoTen,SoTaiKhoan,MaHD=hd.ID_HOADON,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,"
                         + "nd.HoTen as HanhThu,tto.TenTo as 'To',GB as GiaBieu,MALOTRINH as MLT"
                         + " from TT_DuLieuKhachHang_DanhBo dlkhDB,HOADON hd"
                         + " left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
@@ -121,7 +121,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             //         + " left  join"
             //         + " (select DANHBA,SOHOADON,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
             //         + " from HOADON where NAM=" + Nam + " and KY=" + Ky + " and DOT="+Dot+") dlkhHD on dlkhHD.DANHBA=dlkhDB.DanhBo";
-            string sql = "select dlkhDB.DanhBo,dlkhDB.HoTen,SoTaiKhoan,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,"
+            string sql = "select dlkhDB.DanhBo,dlkhDB.HoTen,SoTaiKhoan,MaHD=hd.ID_HOADON,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,"
                         + "nd.HoTen as HanhThu,tto.TenTo as 'To',GB as GiaBieu,MALOTRINH as MLT"
                         + " from TT_DuLieuKhachHang_DanhBo dlkhDB,HOADON hd"
                         + " left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
@@ -133,7 +133,7 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable GetDSDanhBoTon()
         {
-            string sql = "select dlkhDB.DanhBo,dlkhDB.HoTen,SoTaiKhoan,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,"
+            string sql = "select dlkhDB.DanhBo,dlkhDB.HoTen,SoTaiKhoan,MaHD=hd.ID_HOADON,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,"
                         + "nd.HoTen as HanhThu,tto.TenTo as 'To',GB as GiaBieu,MALOTRINH as MLT"
                         + " from TT_DuLieuKhachHang_DanhBo dlkhDB,HOADON hd"
                         + " left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"

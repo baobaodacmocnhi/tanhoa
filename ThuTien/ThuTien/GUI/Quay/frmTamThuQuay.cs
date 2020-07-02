@@ -160,16 +160,34 @@ namespace ThuTien.GUI.Quay
                                     MessageBox.Show("Ngày Đăng Ngân đã Chốt\nHóa Đơn đã được Đăng Ngân ngày hôm sau", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                                 else
-                                    if (_cTamThu.Them(tamthu) == true)
+                                    if (chkChotDangNgan.Checked == true)
                                     {
-                                        if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND) == true)
-                                            lstTamThu.Add(tamthu);
+                                        DateTime NgayGiaiTrach = new DateTime();
+                                        NgayGiaiTrach = NgayGiaiTrach.AddDays(1);
+                                        TimeSpan ts = new TimeSpan(01, 0, 0);
+                                        NgayGiaiTrach = NgayGiaiTrach.Date + ts;
+                                        if (_cTamThu.Them(tamthu, NgayGiaiTrach) == true)
+                                        {
+                                            if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND, NgayGiaiTrach) == true)
+                                                lstTamThu.Add(tamthu);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
                                     }
                                     else
-                                    {
-                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
+                                        if (_cTamThu.Them(tamthu) == true)
+                                        {
+                                            if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND) == true)
+                                                lstTamThu.Add(tamthu);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
                             }
                         ///ghi nhận đóng phí mở nước
                         DataTable dt = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc(false, lstTamThu[0].DANHBA);
@@ -191,7 +209,6 @@ namespace ThuTien.GUI.Quay
                         }
                         else
                             scope.Complete();
-
                     }
                 }
                 catch (Exception)
@@ -206,9 +223,15 @@ namespace ThuTien.GUI.Quay
                 {
                     HOADON hd = _cHoaDon.Get(item.SoHoaDon);
                     if (Ky == "")
-                        Ky += hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG);
+                    {
+                        Ky += hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG)
+                            + "     CSC: " + hd.CSCU.Value.ToString() + "     CSM: " + hd.CSMOI.Value.ToString() + "     Tiêu Thụ: " + hd.TIEUTHU.Value.ToString() + "m3";
+                    }
                     else
-                        Ky += ", " + hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG);
+                    {
+                        Ky += ", " + hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG)
+                            + "     CSC: " + hd.CSCU.Value.ToString() + "     CSM: " + hd.CSMOI.Value.ToString() + "     Tiêu Thụ: " + hd.TIEUTHU.Value.ToString() + "m3";
+                    }
                     TongCongSo += (Int32)hd.TONGCONG;
                 }
 
@@ -501,7 +524,16 @@ namespace ThuTien.GUI.Quay
                 foreach (var itemTT in lstTamThu)
                 {
                     HOADON hd = _cHoaDon.Get(itemTT.SoHoaDon);
-                    Ky += hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG) + ", ";
+                    if (Ky == "")
+                    {
+                        Ky += hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG)
+                            + "     CSC: " + hd.CSCU.Value.ToString() + "     CSM: " + hd.CSMOI.Value.ToString() + "     Tiêu Thụ: " + hd.TIEUTHU.Value.ToString() + "m3";
+                    }
+                    else
+                    {
+                        Ky += ", " + hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG)
+                            + "     CSC: " + hd.CSCU.Value.ToString() + "     CSM: " + hd.CSMOI.Value.ToString() + "     Tiêu Thụ: " + hd.TIEUTHU.Value.ToString() + "m3";
+                    }
                     TongCongSo += (Int32)hd.TONGCONG;
                 }
 

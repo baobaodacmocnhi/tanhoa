@@ -46,21 +46,21 @@ namespace ThuTien.GUI.ChuyenKhoan
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
 
-            cmbDot.SelectedIndex = 0;
+            cmbToDot.SelectedIndex = 0;
             cmbDenDot.SelectedIndex = 0;
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (cmbDot.SelectedIndex == 0)
+            if (cmbToDot.SelectedIndex == 0)
                 dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon();
             else
-                if (cmbDot.SelectedIndex > 0)
+                if (cmbToDot.SelectedIndex > 0)
                     if (cmbDenDot.SelectedIndex == 0)
-                        dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon(int.Parse(cmbDot.SelectedItem.ToString()));
+                        dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon(int.Parse(cmbToDot.SelectedItem.ToString()));
                     else
                         if (cmbDenDot.SelectedIndex > 0)
-                            dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon(int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbDenDot.SelectedItem.ToString()));
+                            dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon(int.Parse(cmbToDot.SelectedItem.ToString()), int.Parse(cmbDenDot.SelectedItem.ToString()));
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -358,7 +358,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i, 6] = dr["HoTen"].ToString();
                 arr[i, 7] = int.Parse(dr["SoPhatHanh"].ToString()).ToString("00000000");
                 arr[i, 8] = dr["SoTaiKhoan"].ToString();
-                int TienDu=_cTienDu.GetTienDu(dr["DanhBo"].ToString());
+                int TienDu = _cTienDu.GetTienDu(dr["DanhBo"].ToString());
                 if (TienDu > 0)
                 {
                     arr[i, 14] = "Có";
@@ -770,7 +770,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (dateTu.Value <= dateDen.Value)
             {
                 List<TT_To> lstTo = _cTo.GetDSHanhThu();
-                
+
                 //Tạo các đối tượng Excel
                 Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
                 Microsoft.Office.Interop.Excel.Workbooks oBooks;
@@ -791,7 +791,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 for (int i = 0; i < lstTo.Count; i++)
                 {
                     dtoSheet[i] = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(i + 1);
-                    XuatExcelBaoCao(_cDLKH.GetTongQuet(lstTo[i].MaTo, dateTu.Value, dateDen.Value), dtoSheet[i],"BÁO CÁO SỐ LIỆU UNC QUÉT", lstTo[i].TenTo, dateDen.Value.Month.ToString() + "/" + dateDen.Value.Year.ToString());
+                    XuatExcelBaoCao(_cDLKH.GetTongQuet(lstTo[i].MaTo, dateTu.Value, dateDen.Value), dtoSheet[i], "BÁO CÁO SỐ LIỆU UNC QUÉT", lstTo[i].TenTo, dateDen.Value.Month.ToString() + "/" + dateDen.Value.Year.ToString());
                 }
             }
         }
@@ -858,14 +858,14 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
         }
 
-        private void XuatExcelBaoCao(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet,string TieuDe, string SheetName, string Ky)
+        private void XuatExcelBaoCao(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string TieuDe, string SheetName, string Ky)
         {
             oSheet.Name = SheetName;
 
             // Tạo phần đầu nếu muốn
             Microsoft.Office.Interop.Excel.Range head = oSheet.get_Range("A1", "C1");
             head.MergeCells = true;
-            head.Value2 = TieuDe+" \r\n " + Ky + " - TỔ " + SheetName;
+            head.Value2 = TieuDe + " \r\n " + Ky + " - TỔ " + SheetName;
             head.Font.Bold = true;
             head.Font.Name = "Times New Roman";
             head.Font.Size = "20";
@@ -1024,6 +1024,38 @@ namespace ThuTien.GUI.ChuyenKhoan
             Clipboard.SetText(str);
         }
 
-        
+        private void btnLayHoaDon_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn Lấy Hóa Đơn?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    try
+                    {
+                        foreach (DataGridViewRow item in dgvDanhBo.Rows)
+                        {
+                            if (!_cDLKH.CheckExist2(item.Cells["SoHoaDon_DB"].Value.ToString()))
+                            {
+                                TT_DuLieuKhachHang_SoHoaDon dlkh = new TT_DuLieuKhachHang_SoHoaDon();
+                                dlkh.MaHD = int.Parse(item.Cells["MaHD_DB"].Value.ToString());
+                                dlkh.SoHoaDon = item.Cells["SoHoaDon_DB"].Value.ToString();
+                                if (!_cDLKH.Them2(dlkh))
+                                {
+                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+
     }
 }

@@ -62,6 +62,8 @@
             this.btnXacNhanNo = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.tabTamThu = new System.Windows.Forms.TabPage();
+            this.radDienTu = new System.Windows.Forms.RadioButton();
+            this.radGiay = new System.Windows.Forms.RadioButton();
             this.btnChuyenDangNgan = new System.Windows.Forms.Button();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -116,8 +118,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnInTamThuKhong = new System.Windows.Forms.Button();
             this.chkChuKy = new System.Windows.Forms.CheckBox();
-            this.radDienTu = new System.Windows.Forms.RadioButton();
-            this.radGiay = new System.Windows.Forms.RadioButton();
+            this.chkChotDangNgan = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabThongTin.SuspendLayout();
@@ -326,6 +327,7 @@
             // 
             // tabThongTin
             // 
+            this.tabThongTin.Controls.Add(this.chkChotDangNgan);
             this.tabThongTin.Controls.Add(this.label7);
             this.tabThongTin.Controls.Add(this.label5);
             this.tabThongTin.Controls.Add(this.btnXacNhanNo);
@@ -371,7 +373,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(98, 6);
+            this.btnThem.Location = new System.Drawing.Point(120, 6);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 15;
@@ -400,6 +402,28 @@
             this.tabTamThu.TabIndex = 1;
             this.tabTamThu.Text = "Danh Sách Tạm Thu";
             this.tabTamThu.UseVisualStyleBackColor = true;
+            // 
+            // radDienTu
+            // 
+            this.radDienTu.AutoSize = true;
+            this.radDienTu.Checked = true;
+            this.radDienTu.Location = new System.Drawing.Point(5, 29);
+            this.radDienTu.Name = "radDienTu";
+            this.radDienTu.Size = new System.Drawing.Size(63, 17);
+            this.radDienTu.TabIndex = 32;
+            this.radDienTu.TabStop = true;
+            this.radDienTu.Text = "Điện Tử";
+            this.radDienTu.UseVisualStyleBackColor = true;
+            // 
+            // radGiay
+            // 
+            this.radGiay.AutoSize = true;
+            this.radGiay.Location = new System.Drawing.Point(5, 6);
+            this.radGiay.Name = "radGiay";
+            this.radGiay.Size = new System.Drawing.Size(46, 17);
+            this.radGiay.TabIndex = 31;
+            this.radGiay.Text = "Giấy";
+            this.radGiay.UseVisualStyleBackColor = true;
             // 
             // btnChuyenDangNgan
             // 
@@ -902,27 +926,16 @@
             this.chkChuKy.UseVisualStyleBackColor = true;
             this.chkChuKy.Visible = false;
             // 
-            // radDienTu
+            // chkChotDangNgan
             // 
-            this.radDienTu.AutoSize = true;
-            this.radDienTu.Checked = true;
-            this.radDienTu.Location = new System.Drawing.Point(5, 29);
-            this.radDienTu.Name = "radDienTu";
-            this.radDienTu.Size = new System.Drawing.Size(63, 17);
-            this.radDienTu.TabIndex = 32;
-            this.radDienTu.TabStop = true;
-            this.radDienTu.Text = "Điện Tử";
-            this.radDienTu.UseVisualStyleBackColor = true;
-            // 
-            // radGiay
-            // 
-            this.radGiay.AutoSize = true;
-            this.radGiay.Location = new System.Drawing.Point(5, 6);
-            this.radGiay.Name = "radGiay";
-            this.radGiay.Size = new System.Drawing.Size(46, 17);
-            this.radGiay.TabIndex = 31;
-            this.radGiay.Text = "Giấy";
-            this.radGiay.UseVisualStyleBackColor = true;
+            this.chkChotDangNgan.AutoSize = true;
+            this.chkChotDangNgan.Location = new System.Drawing.Point(8, 10);
+            this.chkChotDangNgan.Name = "chkChotDangNgan";
+            this.chkChotDangNgan.Size = new System.Drawing.Size(106, 17);
+            this.chkChotDangNgan.TabIndex = 98;
+            this.chkChotDangNgan.Text = "Chốt Đăng Ngân";
+            this.chkChotDangNgan.UseVisualStyleBackColor = true;
+            this.chkChotDangNgan.Visible = false;
             // 
             // frmTamThuQuay
             // 
@@ -1041,5 +1054,6 @@
         private System.Windows.Forms.Button btnChuyenDangNgan;
         private System.Windows.Forms.RadioButton radDienTu;
         private System.Windows.Forms.RadioButton radGiay;
+        private System.Windows.Forms.CheckBox chkChotDangNgan;
     }
 }

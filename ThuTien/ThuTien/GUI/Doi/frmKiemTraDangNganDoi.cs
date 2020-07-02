@@ -516,7 +516,7 @@ namespace ThuTien.GUI.Doi
             {
                 if (CNguoiDung.CheckQuyen("mnuDieuChinhDangNganDoi", "Them"))
                 {
-                    if (_cChotDangNgan.checkExist(dateTu.Value) == true)
+                    if (_cChotDangNgan.checkExist(dateTu_ChotDangNgan.Value) == true)
                     {
                         MessageBox.Show("Ngày Chốt đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -539,11 +539,11 @@ namespace ThuTien.GUI.Doi
             }
         }
 
-        private void dgvChotDangNgan_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void dgvChotDangNgan_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (CNguoiDung.CheckQuyen("mnuDieuChinhDangNganDoi", "Sua"))
+                if ((CNguoiDung.MaND == 0 || CNguoiDung.MaND == 1) && CNguoiDung.CheckQuyen("mnuDieuChinhDangNganDoi", "Sua"))
                 {
                     if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "Chot")
                     {
@@ -566,9 +566,9 @@ namespace ThuTien.GUI.Doi
         {
             try
             {
-                if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SyncNopTien")
+                if ((CNguoiDung.MaND == 0 || CNguoiDung.MaND == 1) && CNguoiDung.CheckQuyen("mnuDieuChinhDangNganDoi", "Sua"))
                 {
-                    if (CNguoiDung.CheckQuyen("mnuDieuChinhDangNganDoi", "Sua"))
+                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SyncNopTien")
                     {
                         if (MessageBox.Show("Bạn có chắc chắn Nộp Tiền?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
@@ -595,19 +595,15 @@ namespace ThuTien.GUI.Doi
                                 frm = new frmLoading();
                                 frm.ShowDialog();
                             }
-
                         }
                     }
-                    else
-                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
 
-                if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "ShowError")
-                {
-                    TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
-                    DataTable dt = _cHoaDon.GetDSDangNgan_ChuaNopTien(en.NgayChot.Value);
-                    dsBaoCao ds = new dsBaoCao();
-                    foreach (DataRow item in dt.Rows)
+                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "ShowError")
+                    {
+                        TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
+                        DataTable dt = _cHoaDon.GetDSDangNgan_ChuaNopTien(en.NgayChot.Value);
+                        dsBaoCao ds = new dsBaoCao();
+                        foreach (DataRow item in dt.Rows)
                         {
                             DataRow dr = ds.Tables["DSHoaDon"].NewRow();
                             dr["LoaiBaoCao"] = "LỖI NỘP TIỀN";
@@ -619,11 +615,14 @@ namespace ThuTien.GUI.Doi
                             ds.Tables["DSHoaDon"].Rows.Add(dr);
                         }
 
-                    rptDSHoaDon_TieuDe rpt = new rptDSHoaDon_TieuDe();
-                    rpt.SetDataSource(ds);
-                    frmBaoCao frm = new frmBaoCao(rpt);
-                    frm.Show();
+                        rptDSHoaDon_TieuDe rpt = new rptDSHoaDon_TieuDe();
+                        rpt.SetDataSource(ds);
+                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frm.Show();
+                    }
                 }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -694,6 +693,8 @@ namespace ThuTien.GUI.Doi
             MessageBox.Show("Hoàn Tất Nộp Tiền ngày " + dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString() + "\nVui lòng kiểm tra lại số liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnXemChot.PerformClick();
         }
+
+
 
     }
 }
