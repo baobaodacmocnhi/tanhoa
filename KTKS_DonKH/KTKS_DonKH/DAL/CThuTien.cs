@@ -79,7 +79,7 @@ namespace KTKS_DonKH.DAL
                 return db.HOADONs.SingleOrDefault(item => item.DANHBA == DanhBo && item.KY == Ky && item.NAM == Nam);
             else
                 if (db.TT_HoaDonCus.Any(item => item.DANHBA == DanhBo && item.KY == Ky && item.NAM == Nam))
-                    return Copy(a, db.TT_HoaDonCus.SingleOrDefault(item => item.DANHBA == DanhBo && item.KY == Ky && item.NAM == Nam));
+                    return Copy(a, db.TT_HoaDonCus.FirstOrDefault(item => item.DANHBA == DanhBo && item.KY == Ky && item.NAM == Nam));
                 else
                     return null;
         }
