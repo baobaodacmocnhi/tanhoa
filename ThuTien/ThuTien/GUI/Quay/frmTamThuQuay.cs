@@ -229,7 +229,7 @@ namespace ThuTien.GUI.Quay
                     }
                     else
                     {
-                        Ky += ", " + hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG)
+                        Ky += "\n" + hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG)
                             + "     CSC: " + hd.CSCU.Value.ToString() + "     CSM: " + hd.CSMOI.Value.ToString() + "     Tiêu Thụ: " + hd.TIEUTHU.Value.ToString() + "m3";
                     }
                     TongCongSo += (Int32)hd.TONGCONG;
@@ -531,7 +531,7 @@ namespace ThuTien.GUI.Quay
                     }
                     else
                     {
-                        Ky += ", " + hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG)
+                        Ky += "\n" + hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG)
                             + "     CSC: " + hd.CSCU.Value.ToString() + "     CSM: " + hd.CSMOI.Value.ToString() + "     Tiêu Thụ: " + hd.TIEUTHU.Value.ToString() + "m3";
                     }
                     TongCongSo += (Int32)hd.TONGCONG;
