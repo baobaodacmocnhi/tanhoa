@@ -57,6 +57,7 @@
             this.DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabThongTin = new System.Windows.Forms.TabPage();
+            this.chkChotDangNgan = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnXacNhanNo = new System.Windows.Forms.Button();
@@ -118,7 +119,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnInTamThuKhong = new System.Windows.Forms.Button();
             this.chkChuKy = new System.Windows.Forms.CheckBox();
-            this.chkChotDangNgan = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabThongTin.SuspendLayout();
@@ -340,6 +340,16 @@
             this.tabThongTin.TabIndex = 0;
             this.tabThongTin.Text = "Thông Tin";
             this.tabThongTin.UseVisualStyleBackColor = true;
+            // 
+            // chkChotDangNgan
+            // 
+            this.chkChotDangNgan.AutoSize = true;
+            this.chkChotDangNgan.Location = new System.Drawing.Point(8, 10);
+            this.chkChotDangNgan.Name = "chkChotDangNgan";
+            this.chkChotDangNgan.Size = new System.Drawing.Size(106, 17);
+            this.chkChotDangNgan.TabIndex = 98;
+            this.chkChotDangNgan.Text = "Chốt Đăng Ngân";
+            this.chkChotDangNgan.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -925,17 +935,6 @@
             this.chkChuKy.Text = "Có Chữ Ký";
             this.chkChuKy.UseVisualStyleBackColor = true;
             this.chkChuKy.Visible = false;
-            // 
-            // chkChotDangNgan
-            // 
-            this.chkChotDangNgan.AutoSize = true;
-            this.chkChotDangNgan.Location = new System.Drawing.Point(8, 10);
-            this.chkChotDangNgan.Name = "chkChotDangNgan";
-            this.chkChotDangNgan.Size = new System.Drawing.Size(106, 17);
-            this.chkChotDangNgan.TabIndex = 98;
-            this.chkChotDangNgan.Text = "Chốt Đăng Ngân";
-            this.chkChotDangNgan.UseVisualStyleBackColor = true;
-            this.chkChotDangNgan.Visible = false;
             // 
             // frmTamThuQuay
             // 

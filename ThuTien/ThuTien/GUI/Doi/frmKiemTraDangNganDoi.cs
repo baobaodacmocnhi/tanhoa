@@ -611,11 +611,12 @@ namespace ThuTien.GUI.Doi
                             dr["Ky"] = item["Ky"];
                             dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                             dr["TongCong"] = item["TongCong"];
+                            dr["GiaBieu"] = _cChotDangNgan.ExecuteQuery_ReturnOneValue("select Result from Temp_SyncHoaDon where SoHoaDon='" + item["SoHoaDon"].ToString() + "'");
                             dr["NhanVien"] = CNguoiDung.HoTen;
                             ds.Tables["DSHoaDon"].Rows.Add(dr);
                         }
 
-                        rptDSHoaDon_TieuDe rpt = new rptDSHoaDon_TieuDe();
+                        rptDSHoaDon_SyncError rpt = new rptDSHoaDon_SyncError();
                         rpt.SetDataSource(ds);
                         frmBaoCao frm = new frmBaoCao(rpt);
                         frm.Show();
@@ -637,6 +638,14 @@ namespace ThuTien.GUI.Doi
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
             if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "TCDangNgan" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SLCNKD" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "TCCNKD" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }

@@ -629,6 +629,51 @@ namespace ThuTien.GUI.Doi
             }
         }
 
+        private void btnChuyenNgayGiaiTrach_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        try
+                        {
+                            if (tabControl.SelectedTab.Name == "tabTuGia")
+                            {
+                                foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                                {
+                                    if (_cChotDangNgan.checkExist_ChotDangNgan(_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString())) == true)
+                                    {
+                                        MessageBox.Show("Ngày Đăng Ngân Xóa đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    if (_cChotDangNgan.checkExist_ChotDangNgan(dateGiaiTrachSua.Value) == true)
+                                    {
+                                        MessageBox.Show("Ngày Đăng Ngân Sửa đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    _cHoaDon.ExecuteNonQuery("update HOADON set NGAYGIAITRACH='" + dateGiaiTrachSua.Value.ToString("yyyyMMdd HH:mm:ss") + "' where SoHoaDon='" + item.Cells["SoHoaDon_TG"].Value.ToString() + "'");
+                                }
+                            }
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnXem.PerformClick();
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
 
     }

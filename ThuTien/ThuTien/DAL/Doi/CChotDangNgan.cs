@@ -82,6 +82,8 @@ namespace ThuTien.DAL.Doi
             string sql = "select ID,NgayChot,Chot,"
                         + " SLDangNgan=(select COUNT(ID_HOADON) from HOADON where CAST(NGAYGIAITRACH as date)=CAST(NgayChot as date) and MaNV_DangNgan is not null),"
                         + " TCDangNgan=(select SUM(TONGCONG) from HOADON where CAST(NGAYGIAITRACH as date)=CAST(NgayChot as date) and MaNV_DangNgan is not null),"
+                        + " SLCNKD=(select COUNT(ID_HOADON) from HOADON where CAST(NGAYGIAITRACH as date)=CAST(NgayChot as date) and ChuyenNoKhoDoi=1),"
+                        + " TCCNKD=(select SUM(TONGCONG) from HOADON where CAST(NGAYGIAITRACH as date)=CAST(NgayChot as date) and ChuyenNoKhoDoi=1),"
                         + " SLGiay=(select COUNT(ID_HOADON) from HOADON where CAST(NGAYGIAITRACH as date)=CAST(NgayChot as date) and (NAM<2020 or (NAM=2020 and KY<7)) and MaNV_DangNgan is not null),"
                         + " TCGiay=(select SUM(TONGCONG) from HOADON where CAST(NGAYGIAITRACH as date)=CAST(NgayChot as date) and (NAM<2020 or (NAM=2020 and KY<7)) and MaNV_DangNgan is not null),"
                         + " SLHDDT=(select COUNT(ID_HOADON) from HOADON where CAST(NGAYGIAITRACH as date)=CAST(NgayChot as date) and (NAM>2020 or (NAM=2020 and KY>=7)) and MaNV_DangNgan is not null),"

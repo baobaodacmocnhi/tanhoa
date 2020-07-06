@@ -4802,7 +4802,7 @@ namespace ThuTien.DAL.Doi
                         DataTable dt = new DataTable();
                         var query = from item in _db.HOADONs
                                     where item.MaNV_DangNgan == MaNV_DangNgan && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
-                                    && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <= 6))
+                                    && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <7))
                                     orderby item.MaNV_DangNgan ascending
                                     group item by item.MaNV_DangNgan into itemGroup
                                     select new
@@ -4815,8 +4815,8 @@ namespace ThuTien.DAL.Doi
                                         TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                         TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                         TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                        TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
-                                        TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
+                                        TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TienDu),
+                                        TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TienMat),
                                     };
                         dt.Merge(LINQToDataTable(query));
 
@@ -4835,8 +4835,8 @@ namespace ThuTien.DAL.Doi
                                          TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                          TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                          TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                         TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
-                                         TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
+                                         TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TienDu),
+                                         TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TienMat),
                                      };
                         dt.Merge(LINQToDataTable(query2));
 
@@ -9253,6 +9253,30 @@ namespace ThuTien.DAL.Doi
                             NgayTra = itemHD.Thu2Lan_NgayTra,
                             GhiChu = itemHD.Thu2Lan_GhiChu,
                             To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDSHoaDon0_Ton(int Nam, int Ky, int Dot)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.NGAYGIAITRACH == null
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            GiaBieu = itemHD.GB,
+                            DinhMuc = itemHD.DM,
+                            itemHD.CODE,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
                             HanhThu = itemtableND.HoTen,
                         };
             return LINQToDataTable(query);

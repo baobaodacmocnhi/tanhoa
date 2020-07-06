@@ -51,14 +51,20 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            try
             {
-                try
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
+
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                         if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                         {
                             HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_HD"].Value.ToString());
+                            if (hoadon.MaNV_DangNgan != null)
+                            {
+                                MessageBox.Show("Danh Bộ " + hoadon.DANHBA + " kỳ " + hoadon.KY + "/" + hoadon.NAM + " đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                             hoadon.KhoaTienDu = true;
                             hoadon.ChanTienDu = true;
                             hoadon.NgayChanTienDu = DateTime.Now;
@@ -69,25 +75,31 @@ namespace ThuTien.GUI.ChuyenKhoan
                         }
                     dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            try
             {
-                try
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
                     foreach (DataGridViewRow item in dgvDSChanTienDu.SelectedRows)
                     {
                         HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_Chan"].Value.ToString());
+                        if (hoadon.MaNV_DangNgan != null)
+                        {
+                            MessageBox.Show("Danh Bộ " + hoadon.DANHBA + " kỳ " + hoadon.KY + "/" + hoadon.NAM + " đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         hoadon.KhoaTienDu = false;
                         hoadon.ChanTienDu = false;
                         hoadon.NGAYGIAITRACH = null;
@@ -98,13 +110,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -265,6 +277,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                         if (item.Cells["Chon_DCHD"].Value != null && bool.Parse(item.Cells["Chon_DCHD"].Value.ToString()))
                         {
                             HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_HD_DCHD"].Value.ToString());
+                            if (hoadon.NGAYGIAITRACH != null)
+                            {
+                                MessageBox.Show("Danh Bộ " + hoadon.DANHBA + " kỳ " + hoadon.KY + "/" + hoadon.NAM + " đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                             if (hoadon.DCHD == false)
                                 using (TransactionScope scope = new TransactionScope())
                                 {
@@ -300,6 +317,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                     foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
                     {
                         HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_DCHD"].Value.ToString());
+                        if (hoadon.NGAYGIAITRACH != null)
+                        {
+                            MessageBox.Show("Danh Bộ " + hoadon.DANHBA + " kỳ " + hoadon.KY + "/" + hoadon.NAM + " đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (hoadon.DCHD == true)
                             using (var scope = new TransactionScope())
                             {
@@ -350,7 +372,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         #endregion
 
-        
+
 
 
     }

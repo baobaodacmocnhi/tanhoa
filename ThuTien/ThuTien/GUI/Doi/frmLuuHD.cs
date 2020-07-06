@@ -234,7 +234,7 @@ namespace ThuTien.GUI.Doi
                                         if (_cDongNuoc.CheckExist_CTDongNuoc_Ton(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1) == true)
                                         {
                                             TT_DongNuoc dongnuoc = _cDongNuoc.getDongNuoc_MoiNhat(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1);
-                                            
+
                                             TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
                                             ctdongnuoc.MaDN = dongnuoc.MaDN;
                                             ctdongnuoc.MaHD = hoadon.ID_HOADON;
@@ -578,6 +578,35 @@ namespace ThuTien.GUI.Doi
             if (dgvTyLeTon.Columns[e.ColumnIndex].Name == "TongGiaBanTon_TyLeTon" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen("mnuDangNganChuyenKhoan", "Them"))
+                {
+                    if (dgvHoaDon.Columns[e.ColumnIndex].Name == "DangNganHD0")
+                    {
+                        if (MessageBox.Show("Bạn có chắc chắn Đăng Ngân HĐ=0 Đợt " + cmbKy.SelectedItem.ToString() + " Kỳ " + dgvHoaDon["Dot", e.RowIndex].Value.ToString() + "?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            DataTable dt = _cHoaDon.getDSHoaDon0_Ton(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHoaDon["Dot", e.RowIndex].Value.ToString()));
+                            foreach (DataRow item in dt.Rows)
+                            {
+                                _cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND);
+                            }
+                            MessageBox.Show("Xử Lý Hoàn Tất, Vui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Đăng Ngân Chuyển Khoản Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

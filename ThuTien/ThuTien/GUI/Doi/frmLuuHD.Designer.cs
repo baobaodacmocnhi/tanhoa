@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDuongDan = new System.Windows.Forms.TextBox();
             this.btnChonFile = new System.Windows.Forms.Button();
@@ -47,15 +47,6 @@
             this.txtTongTieuThu = new System.Windows.Forms.TextBox();
             this.txtTongHD = new System.Windows.Forms.TextBox();
             this.dgvHoaDon = new System.Windows.Forms.DataGridView();
-            this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongTieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongGiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongThueGTGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongPhiBVMT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HD0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem = new System.Windows.Forms.Button();
             this.cmbKy = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -69,9 +60,6 @@
             this.txtTongGiaBan_TyLeTon = new System.Windows.Forms.TextBox();
             this.txtTongHD_TyLeTon = new System.Windows.Forms.TextBox();
             this.dgvTyLeTon = new System.Windows.Forms.DataGridView();
-            this.btnXem_TyLeTon = new System.Windows.Forms.Button();
-            this.cmbNam_TyLeTon = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.Ky_TyLeTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHD_TyLeTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongGiaBan_TyLeTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +67,19 @@
             this.TongGiaBanTon_TyLeTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TyLeTongHDTon_TyLeTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TyLeGiaBanTon_TyLeTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXem_TyLeTon = new System.Windows.Forms.Button();
+            this.cmbNam_TyLeTon = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongTieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongGiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongThueGTGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongPhiBVMT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HD0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DangNganHD0 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -88,7 +89,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Location = new System.Drawing.Point(12, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 0;
@@ -96,7 +97,7 @@
             // 
             // txtDuongDan
             // 
-            this.txtDuongDan.Location = new System.Drawing.Point(83, 12);
+            this.txtDuongDan.Location = new System.Drawing.Point(83, 3);
             this.txtDuongDan.Name = "txtDuongDan";
             this.txtDuongDan.ReadOnly = true;
             this.txtDuongDan.Size = new System.Drawing.Size(300, 20);
@@ -105,7 +106,7 @@
             // 
             // btnChonFile
             // 
-            this.btnChonFile.Location = new System.Drawing.Point(389, 10);
+            this.btnChonFile.Location = new System.Drawing.Point(389, 1);
             this.btnChonFile.Name = "btnChonFile";
             this.btnChonFile.Size = new System.Drawing.Size(75, 23);
             this.btnChonFile.TabIndex = 2;
@@ -115,7 +116,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(470, 10);
+            this.btnThem.Location = new System.Drawing.Point(470, 1);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 3;
@@ -140,9 +141,9 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cmbNam);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 56);
+            this.groupBox1.Location = new System.Drawing.Point(1, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(824, 550);
+            this.groupBox1.Size = new System.Drawing.Size(820, 567);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
@@ -160,7 +161,7 @@
             // txtTongHD0
             // 
             this.txtTongHD0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongHD0.Location = new System.Drawing.Point(762, 519);
+            this.txtTongHD0.Location = new System.Drawing.Point(762, 539);
             this.txtTongHD0.Name = "txtTongHD0";
             this.txtTongHD0.Size = new System.Drawing.Size(50, 20);
             this.txtTongHD0.TabIndex = 13;
@@ -176,7 +177,7 @@
             // txtTongCong
             // 
             this.txtTongCong.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongCong.Location = new System.Drawing.Point(561, 519);
+            this.txtTongCong.Location = new System.Drawing.Point(561, 539);
             this.txtTongCong.Name = "txtTongCong";
             this.txtTongCong.Size = new System.Drawing.Size(100, 20);
             this.txtTongCong.TabIndex = 11;
@@ -185,7 +186,7 @@
             // txtTongPhiBVMT
             // 
             this.txtTongPhiBVMT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongPhiBVMT.Location = new System.Drawing.Point(461, 519);
+            this.txtTongPhiBVMT.Location = new System.Drawing.Point(461, 539);
             this.txtTongPhiBVMT.Name = "txtTongPhiBVMT";
             this.txtTongPhiBVMT.Size = new System.Drawing.Size(100, 20);
             this.txtTongPhiBVMT.TabIndex = 10;
@@ -194,7 +195,7 @@
             // txtTongThueGTGT
             // 
             this.txtTongThueGTGT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongThueGTGT.Location = new System.Drawing.Point(361, 519);
+            this.txtTongThueGTGT.Location = new System.Drawing.Point(361, 539);
             this.txtTongThueGTGT.Name = "txtTongThueGTGT";
             this.txtTongThueGTGT.Size = new System.Drawing.Size(100, 20);
             this.txtTongThueGTGT.TabIndex = 9;
@@ -203,7 +204,7 @@
             // txtTongGiaBan
             // 
             this.txtTongGiaBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongGiaBan.Location = new System.Drawing.Point(261, 519);
+            this.txtTongGiaBan.Location = new System.Drawing.Point(261, 539);
             this.txtTongGiaBan.Name = "txtTongGiaBan";
             this.txtTongGiaBan.Size = new System.Drawing.Size(100, 20);
             this.txtTongGiaBan.TabIndex = 8;
@@ -212,7 +213,7 @@
             // txtTongTieuThu
             // 
             this.txtTongTieuThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongTieuThu.Location = new System.Drawing.Point(181, 519);
+            this.txtTongTieuThu.Location = new System.Drawing.Point(181, 539);
             this.txtTongTieuThu.Name = "txtTongTieuThu";
             this.txtTongTieuThu.Size = new System.Drawing.Size(80, 20);
             this.txtTongTieuThu.TabIndex = 7;
@@ -221,7 +222,7 @@
             // txtTongHD
             // 
             this.txtTongHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongHD.Location = new System.Drawing.Point(101, 519);
+            this.txtTongHD.Location = new System.Drawing.Point(101, 539);
             this.txtTongHD.Name = "txtTongHD";
             this.txtTongHD.Size = new System.Drawing.Size(80, 20);
             this.txtTongHD.TabIndex = 6;
@@ -231,14 +232,14 @@
             // 
             this.dgvHoaDon.AllowUserToAddRows = false;
             this.dgvHoaDon.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Dot,
@@ -249,73 +250,17 @@
             this.TongPhiBVMT,
             this.TongCong,
             this.CreateDate,
-            this.HD0});
+            this.HD0,
+            this.DangNganHD0});
             this.dgvHoaDon.Location = new System.Drawing.Point(9, 54);
             this.dgvHoaDon.MultiSelect = false;
             this.dgvHoaDon.Name = "dgvHoaDon";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvHoaDon.Size = new System.Drawing.Size(805, 465);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvHoaDon.Size = new System.Drawing.Size(805, 485);
             this.dgvHoaDon.TabIndex = 5;
+            this.dgvHoaDon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDon_CellClick);
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
-            // 
-            // Dot
-            // 
-            this.Dot.DataPropertyName = "Dot";
-            this.Dot.HeaderText = "Đợt";
-            this.Dot.Name = "Dot";
-            this.Dot.Width = 50;
-            // 
-            // TongHD
-            // 
-            this.TongHD.DataPropertyName = "TongHD";
-            this.TongHD.HeaderText = "Tổng HĐ";
-            this.TongHD.Name = "TongHD";
-            this.TongHD.Width = 80;
-            // 
-            // TongTieuThu
-            // 
-            this.TongTieuThu.DataPropertyName = "TongTieuThu";
-            this.TongTieuThu.HeaderText = "Tiêu Thụ";
-            this.TongTieuThu.Name = "TongTieuThu";
-            this.TongTieuThu.Width = 80;
-            // 
-            // TongGiaBan
-            // 
-            this.TongGiaBan.DataPropertyName = "TongGiaBan";
-            this.TongGiaBan.HeaderText = "Giá Bán";
-            this.TongGiaBan.Name = "TongGiaBan";
-            // 
-            // TongThueGTGT
-            // 
-            this.TongThueGTGT.DataPropertyName = "TongThueGTGT";
-            this.TongThueGTGT.HeaderText = "Thuế GTGT";
-            this.TongThueGTGT.Name = "TongThueGTGT";
-            // 
-            // TongPhiBVMT
-            // 
-            this.TongPhiBVMT.DataPropertyName = "TongPhiBVMT";
-            this.TongPhiBVMT.HeaderText = "Phí BVMT";
-            this.TongPhiBVMT.Name = "TongPhiBVMT";
-            // 
-            // TongCong
-            // 
-            this.TongCong.DataPropertyName = "TongCong";
-            this.TongCong.HeaderText = "Tổng Cộng";
-            this.TongCong.Name = "TongCong";
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Tạo";
-            this.CreateDate.Name = "CreateDate";
-            // 
-            // HD0
-            // 
-            this.HD0.DataPropertyName = "HD0";
-            this.HD0.HeaderText = "HĐ=0";
-            this.HD0.Name = "HD0";
-            this.HD0.Width = 50;
             // 
             // btnXem
             // 
@@ -386,7 +331,7 @@
             this.groupBox2.Controls.Add(this.btnXem_TyLeTon);
             this.groupBox2.Controls.Add(this.cmbNam_TyLeTon);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(842, 56);
+            this.groupBox2.Location = new System.Drawing.Point(827, 55);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(532, 423);
             this.groupBox2.TabIndex = 5;
@@ -451,14 +396,14 @@
             // 
             this.dgvTyLeTon.AllowUserToAddRows = false;
             this.dgvTyLeTon.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTyLeTon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTyLeTon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTyLeTon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTyLeTon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ky_TyLeTon,
@@ -471,38 +416,11 @@
             this.dgvTyLeTon.Location = new System.Drawing.Point(9, 54);
             this.dgvTyLeTon.MultiSelect = false;
             this.dgvTyLeTon.Name = "dgvTyLeTon";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvTyLeTon.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvTyLeTon.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTyLeTon.Size = new System.Drawing.Size(515, 340);
             this.dgvTyLeTon.TabIndex = 5;
             this.dgvTyLeTon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTyLeTon_CellFormatting);
-            // 
-            // btnXem_TyLeTon
-            // 
-            this.btnXem_TyLeTon.Location = new System.Drawing.Point(115, 25);
-            this.btnXem_TyLeTon.Name = "btnXem_TyLeTon";
-            this.btnXem_TyLeTon.Size = new System.Drawing.Size(75, 23);
-            this.btnXem_TyLeTon.TabIndex = 4;
-            this.btnXem_TyLeTon.Text = "Xem";
-            this.btnXem_TyLeTon.UseVisualStyleBackColor = true;
-            this.btnXem_TyLeTon.Click += new System.EventHandler(this.btnXem_TyLeTon_Click);
-            // 
-            // cmbNam_TyLeTon
-            // 
-            this.cmbNam_TyLeTon.FormattingEnabled = true;
-            this.cmbNam_TyLeTon.Location = new System.Drawing.Point(44, 25);
-            this.cmbNam_TyLeTon.Name = "cmbNam_TyLeTon";
-            this.cmbNam_TyLeTon.Size = new System.Drawing.Size(65, 21);
-            this.cmbNam_TyLeTon.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 28);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Năm:";
             // 
             // Ky_TyLeTon
             // 
@@ -551,6 +469,99 @@
             this.TyLeGiaBanTon_TyLeTon.Name = "TyLeGiaBanTon_TyLeTon";
             this.TyLeGiaBanTon_TyLeTon.Width = 50;
             // 
+            // btnXem_TyLeTon
+            // 
+            this.btnXem_TyLeTon.Location = new System.Drawing.Point(115, 25);
+            this.btnXem_TyLeTon.Name = "btnXem_TyLeTon";
+            this.btnXem_TyLeTon.Size = new System.Drawing.Size(75, 23);
+            this.btnXem_TyLeTon.TabIndex = 4;
+            this.btnXem_TyLeTon.Text = "Xem";
+            this.btnXem_TyLeTon.UseVisualStyleBackColor = true;
+            this.btnXem_TyLeTon.Click += new System.EventHandler(this.btnXem_TyLeTon_Click);
+            // 
+            // cmbNam_TyLeTon
+            // 
+            this.cmbNam_TyLeTon.FormattingEnabled = true;
+            this.cmbNam_TyLeTon.Location = new System.Drawing.Point(44, 25);
+            this.cmbNam_TyLeTon.Name = "cmbNam_TyLeTon";
+            this.cmbNam_TyLeTon.Size = new System.Drawing.Size(65, 21);
+            this.cmbNam_TyLeTon.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 28);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Năm:";
+            // 
+            // Dot
+            // 
+            this.Dot.DataPropertyName = "Dot";
+            this.Dot.HeaderText = "Đợt";
+            this.Dot.Name = "Dot";
+            this.Dot.Width = 50;
+            // 
+            // TongHD
+            // 
+            this.TongHD.DataPropertyName = "TongHD";
+            this.TongHD.HeaderText = "Tổng HĐ";
+            this.TongHD.Name = "TongHD";
+            this.TongHD.Width = 80;
+            // 
+            // TongTieuThu
+            // 
+            this.TongTieuThu.DataPropertyName = "TongTieuThu";
+            this.TongTieuThu.HeaderText = "Tiêu Thụ";
+            this.TongTieuThu.Name = "TongTieuThu";
+            this.TongTieuThu.Width = 80;
+            // 
+            // TongGiaBan
+            // 
+            this.TongGiaBan.DataPropertyName = "TongGiaBan";
+            this.TongGiaBan.HeaderText = "Giá Bán";
+            this.TongGiaBan.Name = "TongGiaBan";
+            // 
+            // TongThueGTGT
+            // 
+            this.TongThueGTGT.DataPropertyName = "TongThueGTGT";
+            this.TongThueGTGT.HeaderText = "Thuế GTGT";
+            this.TongThueGTGT.Name = "TongThueGTGT";
+            // 
+            // TongPhiBVMT
+            // 
+            this.TongPhiBVMT.DataPropertyName = "TongPhiBVMT";
+            this.TongPhiBVMT.HeaderText = "Phí BVMT";
+            this.TongPhiBVMT.Name = "TongPhiBVMT";
+            // 
+            // TongCong
+            // 
+            this.TongCong.DataPropertyName = "TongCong";
+            this.TongCong.HeaderText = "Tổng Cộng";
+            this.TongCong.Name = "TongCong";
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Tạo";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // HD0
+            // 
+            this.HD0.DataPropertyName = "HD0";
+            this.HD0.HeaderText = "HĐ=0";
+            this.HD0.Name = "HD0";
+            this.HD0.Width = 50;
+            // 
+            // DangNganHD0
+            // 
+            this.DangNganHD0.HeaderText = "HĐ=0";
+            this.DangNganHD0.Name = "DangNganHD0";
+            this.DangNganHD0.Text = "Đăng Ngân";
+            this.DangNganHD0.UseColumnTextForButtonValue = true;
+            this.DangNganHD0.Width = 70;
+            // 
             // frmLuuHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -597,15 +608,6 @@
         private System.Windows.Forms.TextBox txtTongTieuThu;
         private System.Windows.Forms.TextBox txtTongHD;
         private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongHD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongTieuThu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongThueGTGT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongPhiBVMT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HD0;
         private System.Windows.Forms.TextBox txtTongHD0;
         private System.Windows.Forms.Button btnSoSanhKyTruoc;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -626,5 +628,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBanTon_TyLeTon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TyLeTongHDTon_TyLeTon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TyLeGiaBanTon_TyLeTon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongTieuThu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongThueGTGT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongPhiBVMT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HD0;
+        private System.Windows.Forms.DataGridViewButtonColumn DangNganHD0;
     }
 }

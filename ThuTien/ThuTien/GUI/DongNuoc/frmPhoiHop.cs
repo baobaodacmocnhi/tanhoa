@@ -10,6 +10,9 @@ using ThuTien.DAL.Doi;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
+using ThuTien.BaoCao;
+using ThuTien.BaoCao.DongNuoc;
+using ThuTien.GUI.BaoCao;
 
 namespace ThuTien.GUI.DongNuoc
 {
@@ -90,8 +93,8 @@ namespace ThuTien.GUI.DongNuoc
             if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11 && e.KeyChar == 13)
             {
                 _hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
-                if(_hoadon!=null)
-                FillHoaDon(_hoadon);
+                if (_hoadon != null)
+                    FillHoaDon(_hoadon);
             }
         }
 
@@ -107,7 +110,7 @@ namespace ThuTien.GUI.DongNuoc
                     en.DiaChi = txtDiaChi.Text.Trim();
                     en.Loai = cmbLoaiPhoiHop.SelectedValue.ToString();
                     en.NoiDung = txtNoiDung.Text.Trim();
-                    if (_cPhoiHop.Them(en,int.Parse(cmbDongNuoc.SelectedValue.ToString())) == true)
+                    if (_cPhoiHop.Them(en, int.Parse(cmbDongNuoc.SelectedValue.ToString())) == true)
                     {
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
@@ -177,7 +180,7 @@ namespace ThuTien.GUI.DongNuoc
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            
+
             if (CNguoiDung.Doi)
             {
                 if (cmbTo.SelectedIndex == 0)
@@ -198,8 +201,8 @@ namespace ThuTien.GUI.DongNuoc
             try
             {
                 _phoihop = _cPhoiHop.get(int.Parse(dgvPhoiHop.CurrentRow.Cells["ID"].Value.ToString()));
-                if(_phoihop!=null)
-                FillEntity(_phoihop);
+                if (_phoihop != null)
+                    FillEntity(_phoihop);
             }
             catch
             {
@@ -212,6 +215,27 @@ namespace ThuTien.GUI.DongNuoc
             {
                 e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvPhoiHop.Rows)
+            {
+                DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                dr["LoaiBaoCao"] = "CÔNG TÁC PHỐI HỢP";
+                if (item.Cells["DanhBo"].Value.ToString() != "")
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                dr["HoTen"] = item.Cells["HoTen"].Value;
+                dr["DiaChi"] = item.Cells["DiaChi"].Value;
+                dr["Loai"] = item.Cells["Loai"].Value;
+                dr["NgayLap"] = item.Cells["CreateBy"].Value;
+                ds.Tables["DSHoaDon"].Rows.Add(dr);
+            }
+            rptPhoiHop rpt = new rptPhoiHop();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
     }
 }
