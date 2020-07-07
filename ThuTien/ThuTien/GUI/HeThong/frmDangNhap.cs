@@ -59,6 +59,7 @@ namespace ThuTien.GUI.HeThong
                         CNguoiDung.PhoGiamDoc = nguoidung.PhoGiamDoc;
                         CNguoiDung.Doi = nguoidung.Doi;
                         CNguoiDung.ToTruong = nguoidung.ToTruong;
+                        CNguoiDung.SyncNopTien = nguoidung.SyncNopTien;
                         if (nguoidung.MaTo != null)
                         {
                             CNguoiDung.MaTo = nguoidung.MaTo.Value;

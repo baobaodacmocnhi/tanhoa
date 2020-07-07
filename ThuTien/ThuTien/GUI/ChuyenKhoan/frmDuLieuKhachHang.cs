@@ -28,6 +28,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CTienDu _cTienDu = new CTienDu();
+        CDichVuThu _cDichVuThu = new CDichVuThu();
 
         public frmDuLieuKhachHang()
         {
@@ -1033,7 +1034,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     {
                         foreach (DataGridViewRow item in dgvDanhBo.Rows)
                         {
-                            if (!_cDLKH.CheckExist2(item.Cells["SoHoaDon_DB"].Value.ToString()))
+                            if (_cDichVuThu.CheckExist(item.Cells["SoHoaDon_DB"].Value.ToString()) == false && _cDLKH.CheckExist2(item.Cells["SoHoaDon_DB"].Value.ToString()) == false)
                             {
                                 TT_DuLieuKhachHang_SoHoaDon dlkh = new TT_DuLieuKhachHang_SoHoaDon();
                                 dlkh.MaHD = int.Parse(item.Cells["MaHD_DB"].Value.ToString());

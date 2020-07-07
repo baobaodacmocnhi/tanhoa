@@ -224,6 +224,8 @@ namespace ThuTien.GUI.DongNuoc
             {
                 DataRow dr = ds.Tables["DSHoaDon"].NewRow();
                 dr["LoaiBaoCao"] = "CÔNG TÁC PHỐI HỢP";
+                dr["TuNgay"]=dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 if (item.Cells["DanhBo"].Value.ToString() != "")
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = item.Cells["HoTen"].Value;

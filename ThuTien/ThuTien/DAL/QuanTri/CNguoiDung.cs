@@ -65,6 +65,13 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._ToTruong = value; }
         }
 
+        static bool _SyncNopTien;
+        public static bool SyncNopTien
+        {
+            get { return CNguoiDung._SyncNopTien; }
+            set { CNguoiDung._SyncNopTien = value; }
+        }
+
         static System.Data.DataTable _dtQuyenNhom;
         public static System.Data.DataTable dtQuyenNhom
         {

@@ -121,7 +121,7 @@ namespace ThuTien.DAL.DongNuoc
                          where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                          select new
                          {
-                             ID = item.MaTHN,
+                              ID =(int) item.MaTHN,
                              item.DanhBo,
                              HoTen = item.KinhGui,
                              item.TT_TongHopNo_ChiTiets.FirstOrDefault(itemA => itemA.DanhBo == item.DanhBo).DiaChi,
@@ -159,7 +159,7 @@ namespace ThuTien.DAL.DongNuoc
                          where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == item.CreateBy).MaTo == MaTo
                          select new
                          {
-                             ID = item.MaTHN,
+                             ID =(int) item.MaTHN,
                              item.DanhBo,
                              HoTen = item.KinhGui,
                              item.TT_TongHopNo_ChiTiets.FirstOrDefault(itemA => itemA.DanhBo == item.DanhBo).DiaChi,
@@ -197,7 +197,7 @@ namespace ThuTien.DAL.DongNuoc
                          where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
                          select new
                          {
-                             ID = item.MaTHN,
+                              ID =(int) item.MaTHN,
                              item.DanhBo,
                              HoTen = item.KinhGui,
                              item.TT_TongHopNo_ChiTiets.FirstOrDefault(itemA => itemA.DanhBo == item.DanhBo).DiaChi,
