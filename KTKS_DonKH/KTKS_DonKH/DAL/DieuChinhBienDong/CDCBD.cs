@@ -501,6 +501,17 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public string getDiaChiXuatHoaDon(string DanhBo)
+        {
+            DCBD_ChiTietBienDong dcbd = db.DCBD_ChiTietBienDongs.Where(item => item.DanhBo == DanhBo && item.DiaChi_BD != null).OrderByDescending(item => item.CreateDate).FirstOrDefault();
+            if (dcbd != null && dcbd.DiaChi_BD.Contains("("))
+            {
+                return dcbd.DiaChi_BD.Substring(dcbd.DiaChi_BD.IndexOf("("), dcbd.DiaChi_BD.Length - dcbd.DiaChi_BD.IndexOf("("));
+            }
+            else
+                return "";
+        }
+
         public DataTable getDS_BienDong_MaDon(string To, decimal MaDon)
         {
             switch (To)
@@ -1864,6 +1875,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 orderby itemCTDCHD.CreateDate ascending
                                 select new
                                 {
+                                    itemCTDCHD.ChuyenThuTien,
                                     ID = itemCTDCHD.MaCTDCHD,
                                     DieuChinh = "Hóa Đơn",
                                     itemCTDCHD.ThongTin,
@@ -1894,6 +1906,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -1924,6 +1937,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -1954,6 +1968,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -1992,6 +2007,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 orderby itemCTDCHD.CreateDate ascending
                                 select new
                                 {
+                                    itemCTDCHD.ChuyenThuTien,
                                     ID = itemCTDCHD.MaCTDCHD,
                                     DieuChinh = "Hóa Đơn",
                                     itemCTDCHD.ThongTin,
@@ -2023,6 +2039,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2054,6 +2071,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2084,6 +2102,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2121,6 +2140,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 orderby itemCTDCHD.CreateDate ascending
                                 select new
                                 {
+                                    itemCTDCHD.ChuyenThuTien,
                                     ID = itemCTDCHD.MaCTDCHD,
                                     DieuChinh = "Hóa Đơn",
                                     itemCTDCHD.ThongTin,
@@ -2151,6 +2171,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2181,6 +2202,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2211,6 +2233,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2249,6 +2272,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 orderby itemCTDCHD.CreateDate ascending
                                 select new
                                 {
+                                    itemCTDCHD.ChuyenThuTien,
                                     ID = itemCTDCHD.MaCTDCHD,
                                     DieuChinh = "Hóa Đơn",
                                     itemCTDCHD.ThongTin,
@@ -2280,6 +2304,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2311,6 +2336,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2341,6 +2367,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2377,6 +2404,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2420,6 +2448,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2461,6 +2490,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2504,6 +2534,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2545,6 +2576,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2586,6 +2618,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2628,6 +2661,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,
@@ -2669,6 +2703,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {
+                                itemCTDCHD.ChuyenThuTien,
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.ThongTin,

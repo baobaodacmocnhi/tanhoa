@@ -30,6 +30,10 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,15 +44,29 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSDCBD = new System.Windows.Forms.DataGridView();
             this.radDSDCBD = new System.Windows.Forms.RadioButton();
             this.radDSDCHD = new System.Windows.Forms.RadioButton();
             this.radDSCatChuyenDM = new System.Windows.Forms.RadioButton();
             this.dgvDSCatChuyenDM = new System.Windows.Forms.DataGridView();
+            this.MaLSCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.In_CC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PhieuDuocKy_CC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SoPhieu_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaCTDCBD_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaCT_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loai_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoNK_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CatNK_MaCN_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CatNK_DanhBo_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CatNK_HoTen_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CatNK_DiaChi_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NhanNK_MaCN_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NhanNK_DanhBo_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NhanNK_HoTen_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NhanNK_DiaChi_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
@@ -74,6 +92,7 @@
             this.radTruongPhong = new System.Windows.Forms.RadioButton();
             this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ChuyenDocSo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ChuyenThuTien = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PhieuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DieuChinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,24 +116,7 @@
             this.TangGiam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaLSCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.In_CC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PhieuDuocKy_CC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SoPhieu_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaCTDCBD_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaCT_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Loai_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoNK_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CatNK_MaCN_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CatNK_DanhBo_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CatNK_HoTen_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CatNK_DiaChi_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NhanNK_MaCN_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NhanNK_DanhBo_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NhanNK_HoTen_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NhanNK_DiaChi_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateBy_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCapNhatThuTien = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDCBD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCatChuyenDM)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
@@ -137,6 +139,7 @@
             this.dgvDSDCBD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.In,
             this.ChuyenDocSo,
+            this.ChuyenThuTien,
             this.PhieuDuocKy,
             this.SoPhieu,
             this.DieuChinh,
@@ -246,6 +249,156 @@
             this.dgvDSCatChuyenDM.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSCatChuyenDM_CellValueChanged);
             this.dgvDSCatChuyenDM.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSCatChuyenDM_RowPostPaint);
             this.dgvDSCatChuyenDM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSCatChuyenDM_KeyDown);
+            // 
+            // MaLSCT
+            // 
+            this.MaLSCT.DataPropertyName = "MaLSCT";
+            this.MaLSCT.HeaderText = "Mã LSCT";
+            this.MaLSCT.Name = "MaLSCT";
+            this.MaLSCT.Visible = false;
+            // 
+            // In_CC
+            // 
+            this.In_CC.DataPropertyName = "In";
+            this.In_CC.FalseValue = "False";
+            this.In_CC.HeaderText = "In";
+            this.In_CC.IndeterminateValue = "False";
+            this.In_CC.Name = "In_CC";
+            this.In_CC.TrueValue = "True";
+            this.In_CC.Width = 30;
+            // 
+            // PhieuDuocKy_CC
+            // 
+            this.PhieuDuocKy_CC.DataPropertyName = "PhieuDuocKy";
+            this.PhieuDuocKy_CC.HeaderText = "Phiếu Được Ký";
+            this.PhieuDuocKy_CC.Name = "PhieuDuocKy_CC";
+            this.PhieuDuocKy_CC.Width = 80;
+            // 
+            // SoPhieu_CC
+            // 
+            this.SoPhieu_CC.DataPropertyName = "SoPhieu";
+            this.SoPhieu_CC.HeaderText = "Số Phiếu";
+            this.SoPhieu_CC.Name = "SoPhieu_CC";
+            this.SoPhieu_CC.ReadOnly = true;
+            this.SoPhieu_CC.Width = 90;
+            // 
+            // CreateDate_CC
+            // 
+            this.CreateDate_CC.DataPropertyName = "CreateDate";
+            this.CreateDate_CC.HeaderText = "Ngày Lập";
+            this.CreateDate_CC.Name = "CreateDate_CC";
+            this.CreateDate_CC.ReadOnly = true;
+            // 
+            // MaCTDCBD_CC
+            // 
+            this.MaCTDCBD_CC.DataPropertyName = "MaCTDCBD";
+            this.MaCTDCBD_CC.HeaderText = "Số Phiếu ĐCBD";
+            this.MaCTDCBD_CC.Name = "MaCTDCBD_CC";
+            this.MaCTDCBD_CC.ReadOnly = true;
+            // 
+            // MaCT_CC
+            // 
+            this.MaCT_CC.DataPropertyName = "MaCT";
+            this.MaCT_CC.HeaderText = "Số Chứng Từ";
+            this.MaCT_CC.Name = "MaCT_CC";
+            this.MaCT_CC.ReadOnly = true;
+            // 
+            // Loai_CC
+            // 
+            this.Loai_CC.DataPropertyName = "Loai";
+            this.Loai_CC.HeaderText = "Cắt/Nhận";
+            this.Loai_CC.Name = "Loai_CC";
+            this.Loai_CC.ReadOnly = true;
+            this.Loai_CC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Loai_CC.Width = 80;
+            // 
+            // SoNK_CC
+            // 
+            this.SoNK_CC.DataPropertyName = "SoNK";
+            this.SoNK_CC.HeaderText = "Số NK";
+            this.SoNK_CC.Name = "SoNK_CC";
+            this.SoNK_CC.ReadOnly = true;
+            this.SoNK_CC.Width = 50;
+            // 
+            // CatNK_MaCN_CC
+            // 
+            this.CatNK_MaCN_CC.DataPropertyName = "CatNK_MaCN";
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.CatNK_MaCN_CC.DefaultCellStyle = dataGridViewCellStyle13;
+            this.CatNK_MaCN_CC.HeaderText = "Chi Nhánh Cắt";
+            this.CatNK_MaCN_CC.Name = "CatNK_MaCN_CC";
+            this.CatNK_MaCN_CC.ReadOnly = true;
+            this.CatNK_MaCN_CC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CatNK_MaCN_CC.Width = 200;
+            // 
+            // CatNK_DanhBo_CC
+            // 
+            this.CatNK_DanhBo_CC.DataPropertyName = "CatNK_DanhBo";
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.CatNK_DanhBo_CC.DefaultCellStyle = dataGridViewCellStyle14;
+            this.CatNK_DanhBo_CC.HeaderText = "Danh Bộ Cắt";
+            this.CatNK_DanhBo_CC.Name = "CatNK_DanhBo_CC";
+            this.CatNK_DanhBo_CC.ReadOnly = true;
+            this.CatNK_DanhBo_CC.Width = 90;
+            // 
+            // CatNK_HoTen_CC
+            // 
+            this.CatNK_HoTen_CC.DataPropertyName = "CatNK_HoTen";
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.CatNK_HoTen_CC.DefaultCellStyle = dataGridViewCellStyle15;
+            this.CatNK_HoTen_CC.HeaderText = "Khách Hàng Cắt";
+            this.CatNK_HoTen_CC.Name = "CatNK_HoTen_CC";
+            this.CatNK_HoTen_CC.ReadOnly = true;
+            this.CatNK_HoTen_CC.Width = 150;
+            // 
+            // CatNK_DiaChi_CC
+            // 
+            this.CatNK_DiaChi_CC.DataPropertyName = "CatNK_DiaChi";
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.CatNK_DiaChi_CC.DefaultCellStyle = dataGridViewCellStyle16;
+            this.CatNK_DiaChi_CC.HeaderText = "Địa Chỉ Cắt";
+            this.CatNK_DiaChi_CC.Name = "CatNK_DiaChi_CC";
+            this.CatNK_DiaChi_CC.ReadOnly = true;
+            this.CatNK_DiaChi_CC.Width = 200;
+            // 
+            // NhanNK_MaCN_CC
+            // 
+            this.NhanNK_MaCN_CC.DataPropertyName = "NhanNK_MaCN";
+            this.NhanNK_MaCN_CC.HeaderText = "Chi Nhánh Nhận";
+            this.NhanNK_MaCN_CC.Name = "NhanNK_MaCN_CC";
+            this.NhanNK_MaCN_CC.ReadOnly = true;
+            this.NhanNK_MaCN_CC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NhanNK_MaCN_CC.Width = 200;
+            // 
+            // NhanNK_DanhBo_CC
+            // 
+            this.NhanNK_DanhBo_CC.DataPropertyName = "NhanNK_DanhBo";
+            this.NhanNK_DanhBo_CC.HeaderText = "Danh Bộ Nhận";
+            this.NhanNK_DanhBo_CC.Name = "NhanNK_DanhBo_CC";
+            this.NhanNK_DanhBo_CC.ReadOnly = true;
+            this.NhanNK_DanhBo_CC.Width = 90;
+            // 
+            // NhanNK_HoTen_CC
+            // 
+            this.NhanNK_HoTen_CC.DataPropertyName = "NhanNK_HoTen";
+            this.NhanNK_HoTen_CC.HeaderText = "Khách Hàng Nhận";
+            this.NhanNK_HoTen_CC.Name = "NhanNK_HoTen_CC";
+            this.NhanNK_HoTen_CC.ReadOnly = true;
+            this.NhanNK_HoTen_CC.Width = 150;
+            // 
+            // NhanNK_DiaChi_CC
+            // 
+            this.NhanNK_DiaChi_CC.DataPropertyName = "NhanNK_DiaChi";
+            this.NhanNK_DiaChi_CC.HeaderText = "Địa Chỉ Nhận";
+            this.NhanNK_DiaChi_CC.Name = "NhanNK_DiaChi_CC";
+            this.NhanNK_DiaChi_CC.ReadOnly = true;
+            this.NhanNK_DiaChi_CC.Width = 200;
+            // 
+            // CreateBy_CC
+            // 
+            this.CreateBy_CC.DataPropertyName = "CreateBy";
+            this.CreateBy_CC.HeaderText = "Người Lập";
+            this.CreateBy_CC.Name = "CreateBy_CC";
             // 
             // label2
             // 
@@ -510,6 +663,14 @@
             this.ChuyenDocSo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ChuyenDocSo.Width = 70;
             // 
+            // ChuyenThuTien
+            // 
+            this.ChuyenThuTien.DataPropertyName = "ChuyenThuTien";
+            this.ChuyenThuTien.HeaderText = "Chuyển Thu Tiền";
+            this.ChuyenThuTien.Name = "ChuyenThuTien";
+            this.ChuyenThuTien.Visible = false;
+            this.ChuyenThuTien.Width = 70;
+            // 
             // PhieuDuocKy
             // 
             this.PhieuDuocKy.DataPropertyName = "PhieuDuocKy";
@@ -723,155 +884,16 @@
             this.CreateBy.HeaderText = "Người Lập";
             this.CreateBy.Name = "CreateBy";
             // 
-            // MaLSCT
+            // btnCapNhatThuTien
             // 
-            this.MaLSCT.DataPropertyName = "MaLSCT";
-            this.MaLSCT.HeaderText = "Mã LSCT";
-            this.MaLSCT.Name = "MaLSCT";
-            this.MaLSCT.Visible = false;
-            // 
-            // In_CC
-            // 
-            this.In_CC.DataPropertyName = "In";
-            this.In_CC.FalseValue = "False";
-            this.In_CC.HeaderText = "In";
-            this.In_CC.IndeterminateValue = "False";
-            this.In_CC.Name = "In_CC";
-            this.In_CC.TrueValue = "True";
-            this.In_CC.Width = 30;
-            // 
-            // PhieuDuocKy_CC
-            // 
-            this.PhieuDuocKy_CC.DataPropertyName = "PhieuDuocKy";
-            this.PhieuDuocKy_CC.HeaderText = "Phiếu Được Ký";
-            this.PhieuDuocKy_CC.Name = "PhieuDuocKy_CC";
-            this.PhieuDuocKy_CC.Width = 80;
-            // 
-            // SoPhieu_CC
-            // 
-            this.SoPhieu_CC.DataPropertyName = "SoPhieu";
-            this.SoPhieu_CC.HeaderText = "Số Phiếu";
-            this.SoPhieu_CC.Name = "SoPhieu_CC";
-            this.SoPhieu_CC.ReadOnly = true;
-            this.SoPhieu_CC.Width = 90;
-            // 
-            // CreateDate_CC
-            // 
-            this.CreateDate_CC.DataPropertyName = "CreateDate";
-            this.CreateDate_CC.HeaderText = "Ngày Lập";
-            this.CreateDate_CC.Name = "CreateDate_CC";
-            this.CreateDate_CC.ReadOnly = true;
-            // 
-            // MaCTDCBD_CC
-            // 
-            this.MaCTDCBD_CC.DataPropertyName = "MaCTDCBD";
-            this.MaCTDCBD_CC.HeaderText = "Số Phiếu ĐCBD";
-            this.MaCTDCBD_CC.Name = "MaCTDCBD_CC";
-            this.MaCTDCBD_CC.ReadOnly = true;
-            // 
-            // MaCT_CC
-            // 
-            this.MaCT_CC.DataPropertyName = "MaCT";
-            this.MaCT_CC.HeaderText = "Số Chứng Từ";
-            this.MaCT_CC.Name = "MaCT_CC";
-            this.MaCT_CC.ReadOnly = true;
-            // 
-            // Loai_CC
-            // 
-            this.Loai_CC.DataPropertyName = "Loai";
-            this.Loai_CC.HeaderText = "Cắt/Nhận";
-            this.Loai_CC.Name = "Loai_CC";
-            this.Loai_CC.ReadOnly = true;
-            this.Loai_CC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Loai_CC.Width = 80;
-            // 
-            // SoNK_CC
-            // 
-            this.SoNK_CC.DataPropertyName = "SoNK";
-            this.SoNK_CC.HeaderText = "Số NK";
-            this.SoNK_CC.Name = "SoNK_CC";
-            this.SoNK_CC.ReadOnly = true;
-            this.SoNK_CC.Width = 50;
-            // 
-            // CatNK_MaCN_CC
-            // 
-            this.CatNK_MaCN_CC.DataPropertyName = "CatNK_MaCN";
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.CatNK_MaCN_CC.DefaultCellStyle = dataGridViewCellStyle13;
-            this.CatNK_MaCN_CC.HeaderText = "Chi Nhánh Cắt";
-            this.CatNK_MaCN_CC.Name = "CatNK_MaCN_CC";
-            this.CatNK_MaCN_CC.ReadOnly = true;
-            this.CatNK_MaCN_CC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CatNK_MaCN_CC.Width = 200;
-            // 
-            // CatNK_DanhBo_CC
-            // 
-            this.CatNK_DanhBo_CC.DataPropertyName = "CatNK_DanhBo";
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.CatNK_DanhBo_CC.DefaultCellStyle = dataGridViewCellStyle14;
-            this.CatNK_DanhBo_CC.HeaderText = "Danh Bộ Cắt";
-            this.CatNK_DanhBo_CC.Name = "CatNK_DanhBo_CC";
-            this.CatNK_DanhBo_CC.ReadOnly = true;
-            this.CatNK_DanhBo_CC.Width = 90;
-            // 
-            // CatNK_HoTen_CC
-            // 
-            this.CatNK_HoTen_CC.DataPropertyName = "CatNK_HoTen";
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.CatNK_HoTen_CC.DefaultCellStyle = dataGridViewCellStyle15;
-            this.CatNK_HoTen_CC.HeaderText = "Khách Hàng Cắt";
-            this.CatNK_HoTen_CC.Name = "CatNK_HoTen_CC";
-            this.CatNK_HoTen_CC.ReadOnly = true;
-            this.CatNK_HoTen_CC.Width = 150;
-            // 
-            // CatNK_DiaChi_CC
-            // 
-            this.CatNK_DiaChi_CC.DataPropertyName = "CatNK_DiaChi";
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.CatNK_DiaChi_CC.DefaultCellStyle = dataGridViewCellStyle16;
-            this.CatNK_DiaChi_CC.HeaderText = "Địa Chỉ Cắt";
-            this.CatNK_DiaChi_CC.Name = "CatNK_DiaChi_CC";
-            this.CatNK_DiaChi_CC.ReadOnly = true;
-            this.CatNK_DiaChi_CC.Width = 200;
-            // 
-            // NhanNK_MaCN_CC
-            // 
-            this.NhanNK_MaCN_CC.DataPropertyName = "NhanNK_MaCN";
-            this.NhanNK_MaCN_CC.HeaderText = "Chi Nhánh Nhận";
-            this.NhanNK_MaCN_CC.Name = "NhanNK_MaCN_CC";
-            this.NhanNK_MaCN_CC.ReadOnly = true;
-            this.NhanNK_MaCN_CC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NhanNK_MaCN_CC.Width = 200;
-            // 
-            // NhanNK_DanhBo_CC
-            // 
-            this.NhanNK_DanhBo_CC.DataPropertyName = "NhanNK_DanhBo";
-            this.NhanNK_DanhBo_CC.HeaderText = "Danh Bộ Nhận";
-            this.NhanNK_DanhBo_CC.Name = "NhanNK_DanhBo_CC";
-            this.NhanNK_DanhBo_CC.ReadOnly = true;
-            this.NhanNK_DanhBo_CC.Width = 90;
-            // 
-            // NhanNK_HoTen_CC
-            // 
-            this.NhanNK_HoTen_CC.DataPropertyName = "NhanNK_HoTen";
-            this.NhanNK_HoTen_CC.HeaderText = "Khách Hàng Nhận";
-            this.NhanNK_HoTen_CC.Name = "NhanNK_HoTen_CC";
-            this.NhanNK_HoTen_CC.ReadOnly = true;
-            this.NhanNK_HoTen_CC.Width = 150;
-            // 
-            // NhanNK_DiaChi_CC
-            // 
-            this.NhanNK_DiaChi_CC.DataPropertyName = "NhanNK_DiaChi";
-            this.NhanNK_DiaChi_CC.HeaderText = "Địa Chỉ Nhận";
-            this.NhanNK_DiaChi_CC.Name = "NhanNK_DiaChi_CC";
-            this.NhanNK_DiaChi_CC.ReadOnly = true;
-            this.NhanNK_DiaChi_CC.Width = 200;
-            // 
-            // CreateBy_CC
-            // 
-            this.CreateBy_CC.DataPropertyName = "CreateBy";
-            this.CreateBy_CC.HeaderText = "Người Lập";
-            this.CreateBy_CC.Name = "CreateBy_CC";
+            this.btnCapNhatThuTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapNhatThuTien.ForeColor = System.Drawing.Color.Red;
+            this.btnCapNhatThuTien.Location = new System.Drawing.Point(1314, 12);
+            this.btnCapNhatThuTien.Name = "btnCapNhatThuTien";
+            this.btnCapNhatThuTien.Size = new System.Drawing.Size(130, 25);
+            this.btnCapNhatThuTien.TabIndex = 93;
+            this.btnCapNhatThuTien.Text = "Cập Nhật Thu Tiền";
+            this.btnCapNhatThuTien.UseVisualStyleBackColor = true;
             // 
             // frmDSDCBD
             // 
@@ -880,6 +902,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1360, 647);
+            this.Controls.Add(this.btnCapNhatThuTien);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnInNhan);
             this.Controls.Add(this.btnInThuBao);
@@ -900,8 +923,8 @@
             this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.txtNoiDungTimKiem2);
-            this.Controls.Add(this.dgvDSCatChuyenDM);
             this.Controls.Add(this.dgvDSDCBD);
+            this.Controls.Add(this.dgvDSCatChuyenDM);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frmDSDCBD";
@@ -949,8 +972,27 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton radTruongPhong;
         private System.Windows.Forms.RadioButton radPhoPhong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaLSCT;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn In_CC;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn PhieuDuocKy_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTDCBD_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaCT_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loai_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoNK_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CatNK_MaCN_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CatNK_DanhBo_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CatNK_HoTen_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CatNK_DiaChi_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NhanNK_MaCN_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NhanNK_DanhBo_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NhanNK_HoTen_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NhanNK_DiaChi_CC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_CC;
         private System.Windows.Forms.DataGridViewCheckBoxColumn In;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ChuyenDocSo;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ChuyenThuTien;
         private System.Windows.Forms.DataGridViewCheckBoxColumn PhieuDuocKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DieuChinh;
@@ -974,23 +1016,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TangGiam;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_BD;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaLSCT;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn In_CC;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn PhieuDuocKy_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTDCBD_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaCT_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loai_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoNK_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CatNK_MaCN_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CatNK_DanhBo_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CatNK_HoTen_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CatNK_DiaChi_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NhanNK_MaCN_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NhanNK_DanhBo_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NhanNK_HoTen_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NhanNK_DiaChi_CC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_CC;
+        private System.Windows.Forms.Button btnCapNhatThuTien;
     }
 }

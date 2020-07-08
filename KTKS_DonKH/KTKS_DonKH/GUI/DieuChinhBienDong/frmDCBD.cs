@@ -105,6 +105,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi_XuatHoaDon.Text = _cDCBD.getDiaChiXuatHoaDon(hoadon.DANHBA);
             txtMSThue.Text = hoadon.MST;
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMucHN.Text = hoadon.DinhMucHN.ToString();
@@ -239,6 +240,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHopDong.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
+            txtDiaChi_XuatHoaDon.Text = "";
             txtMSThue.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMucHN.Text = "";
@@ -1004,14 +1006,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _flagCtrl3 = true;
                             groupBox_DSSoDangKy.Height = 358;
                             dgvDSSoDangKy.Height = 330;
-                            panel_LichSuDieuChinh.Location = new Point(0, 560);
+                            panel_LichSuDieuChinh.Location = new Point(0, 581);
                         }
                         else
                         {
                             _flagCtrl3 = false;
                             groupBox_DSSoDangKy.Height = 229;
                             dgvDSSoDangKy.Height = 200;
-                            panel_LichSuDieuChinh.Location = new Point(0, 434);
+                            panel_LichSuDieuChinh.Location = new Point(0, 455);
                         }
                         break;
                     case Keys.D4://mở form tìm kiếm chung cư

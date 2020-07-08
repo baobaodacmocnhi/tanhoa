@@ -75,6 +75,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         public void LoadTTKH(HOADON hoadon)
         {
             txtDanhBo.Text = hoadon.DANHBA;
+            txtMLT.Text = hoadon.MALOTRINH;
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             txtGiaBieu.Text = hoadon.GB.ToString();
@@ -119,6 +120,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
             txtMaCTTT.Text = en.IDCT.ToString().Insert(en.IDCT.ToString().Length - 2, "-");
             txtDanhBo.Text = en.DanhBo;
+            txtMLT.Text = en.LoTrinh;
             txtHoTen.Text = en.HoTen;
             txtDiaChi.Text = en.DiaChi;
             txtGiaBieu.Text = en.GiaBieu.Value.ToString();
@@ -384,6 +386,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 }
 
                     cttt.DanhBo = txtDanhBo.Text.Trim();
+                    cttt.LoTrinh = txtMLT.Text.Trim();
                     cttt.HoTen = txtHoTen.Text.Trim();
                     cttt.DiaChi = txtDiaChi.Text.Trim();
                     cttt.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
@@ -445,6 +448,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     if (_cttt != null)
                     {
                         _cttt.DanhBo = txtDanhBo.Text.Trim();
+                        _cttt.LoTrinh = txtMLT.Text.Trim();
                         _cttt.HoTen = txtHoTen.Text.Trim();
                         _cttt.DiaChi = txtDiaChi.Text.Trim();
                         _cttt.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
@@ -572,6 +576,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 dr["DiaChi"] = _cttt.DiaChi;
                 if (!string.IsNullOrEmpty(_cttt.DanhBo) && _cttt.DanhBo.Length == 11)
                     dr["DanhBo"] = _cttt.DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["LoTrinh"] = _cttt.LoTrinh;
                 dr["GiaBieu"] = _cttt.GiaBieu;
                 if (_cttt.DinhMuc != null)
                     dr["DinhMuc"] = _cttt.DinhMuc.Value;
@@ -650,6 +655,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             dr["DiaChi"] = cttt.DiaChi;
                             if (!string.IsNullOrEmpty(cttt.DanhBo) && cttt.DanhBo.Length == 11)
                                 dr["DanhBo"] = cttt.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["LoTrinh"] = cttt.LoTrinh;
                             dr["GiaBieu"] = cttt.GiaBieu;
                             if (cttt.DinhMuc != null)
                                 dr["DinhMuc"] = cttt.DinhMuc;

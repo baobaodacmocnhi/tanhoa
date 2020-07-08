@@ -77,6 +77,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["DinhMuc"].Visible = true;
                 dgvDSDCBD.Columns["DinhMuc_BD"].Visible = true;
                 ///
+                dgvDSDCBD.Columns["ChuyenThuTien"].Visible = false;
                 dgvDSDCBD.Columns["CodeF2"].Visible = false;
                 dgvDSDCBD.Columns["TieuThu"].Visible = false;
                 dgvDSDCBD.Columns["TieuThu_BD"].Visible = false;
@@ -102,6 +103,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["MSThue"].Visible = false;
                 dgvDSDCBD.Columns["MSThue_BD"].Visible = false;
                 ///
+                dgvDSDCBD.Columns["ChuyenThuTien"].Visible = true;
                 dgvDSDCBD.Columns["CodeF2"].Visible = true;
                 dgvDSDCBD.Columns["GiaBieu"].Visible = true;
                 dgvDSDCBD.Columns["GiaBieu_BD"].Visible = true;
