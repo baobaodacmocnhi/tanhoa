@@ -7900,6 +7900,8 @@ namespace ThuTien.LinQ
 		
 		private bool _ApGiaNuocCu;
 		
+		private bool _HoNgheo;
+		
 		private System.Nullable<int> _TienNuoc_BD;
 		
 		private System.Nullable<int> _ThueGTGT_BD;
@@ -7929,6 +7931,12 @@ namespace ThuTien.LinQ
 		private bool _PhieuDuocKy;
 		
 		private bool _CodeF2;
+		
+		private bool _ChuyenThuTien;
+		
+		private System.Nullable<System.DateTime> _NgayChuyenThuTien;
+		
+		private System.Nullable<int> _NguoiChuyenThuTien;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -8048,6 +8056,8 @@ namespace ThuTien.LinQ
     partial void OnTyLeKhuCongNghiepChanged();
     partial void OnApGiaNuocCuChanging(bool value);
     partial void OnApGiaNuocCuChanged();
+    partial void OnHoNgheoChanging(bool value);
+    partial void OnHoNgheoChanged();
     partial void OnTienNuoc_BDChanging(System.Nullable<int> value);
     partial void OnTienNuoc_BDChanged();
     partial void OnThueGTGT_BDChanging(System.Nullable<int> value);
@@ -8078,6 +8088,12 @@ namespace ThuTien.LinQ
     partial void OnPhieuDuocKyChanged();
     partial void OnCodeF2Changing(bool value);
     partial void OnCodeF2Changed();
+    partial void OnChuyenThuTienChanging(bool value);
+    partial void OnChuyenThuTienChanged();
+    partial void OnNgayChuyenThuTienChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayChuyenThuTienChanged();
+    partial void OnNguoiChuyenThuTienChanging(System.Nullable<int> value);
+    partial void OnNguoiChuyenThuTienChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -9026,6 +9042,26 @@ namespace ThuTien.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoNgheo", DbType="Bit NOT NULL")]
+		public bool HoNgheo
+		{
+			get
+			{
+				return this._HoNgheo;
+			}
+			set
+			{
+				if ((this._HoNgheo != value))
+				{
+					this.OnHoNgheoChanging(value);
+					this.SendPropertyChanging();
+					this._HoNgheo = value;
+					this.SendPropertyChanged("HoNgheo");
+					this.OnHoNgheoChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienNuoc_BD", DbType="Int")]
 		public System.Nullable<int> TienNuoc_BD
 		{
@@ -9326,6 +9362,66 @@ namespace ThuTien.LinQ
 					this._CodeF2 = value;
 					this.SendPropertyChanged("CodeF2");
 					this.OnCodeF2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChuyenThuTien", DbType="Bit NOT NULL")]
+		public bool ChuyenThuTien
+		{
+			get
+			{
+				return this._ChuyenThuTien;
+			}
+			set
+			{
+				if ((this._ChuyenThuTien != value))
+				{
+					this.OnChuyenThuTienChanging(value);
+					this.SendPropertyChanging();
+					this._ChuyenThuTien = value;
+					this.SendPropertyChanged("ChuyenThuTien");
+					this.OnChuyenThuTienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChuyenThuTien", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayChuyenThuTien
+		{
+			get
+			{
+				return this._NgayChuyenThuTien;
+			}
+			set
+			{
+				if ((this._NgayChuyenThuTien != value))
+				{
+					this.OnNgayChuyenThuTienChanging(value);
+					this.SendPropertyChanging();
+					this._NgayChuyenThuTien = value;
+					this.SendPropertyChanged("NgayChuyenThuTien");
+					this.OnNgayChuyenThuTienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NguoiChuyenThuTien", DbType="Int")]
+		public System.Nullable<int> NguoiChuyenThuTien
+		{
+			get
+			{
+				return this._NguoiChuyenThuTien;
+			}
+			set
+			{
+				if ((this._NguoiChuyenThuTien != value))
+				{
+					this.OnNguoiChuyenThuTienChanging(value);
+					this.SendPropertyChanging();
+					this._NguoiChuyenThuTien = value;
+					this.SendPropertyChanged("NguoiChuyenThuTien");
+					this.OnNguoiChuyenThuTienChanged();
 				}
 			}
 		}

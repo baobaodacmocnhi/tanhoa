@@ -382,6 +382,7 @@
       <Column Name="KhuCongNghiep" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TyLeKhuCongNghiep" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="ApGiaNuocCu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HoNgheo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TienNuoc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ThueGTGT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhiBVMT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -397,6 +398,9 @@
       <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CodeF2" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ChuyenThuTien" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayChuyenThuTien" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NguoiChuyenThuTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
