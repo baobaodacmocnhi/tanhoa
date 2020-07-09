@@ -54,7 +54,7 @@ namespace ThuTien.GUI.DongNuoc
             cmbLoaiPhoiHop.DisplayMember = "Name";
             cmbLoaiPhoiHop.ValueMember = "Name";
 
-            cmbDongNuoc.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(CNguoiDung.MaTo);
+            cmbDongNuoc.DataSource = _cNguoiDung.GetDSDongNuocToTruongByMaTo(CNguoiDung.MaTo);
             cmbDongNuoc.DisplayMember = "HoTen";
             cmbDongNuoc.ValueMember = "MaND";
         }

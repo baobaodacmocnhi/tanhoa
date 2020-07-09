@@ -74,6 +74,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.btnThem = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -524,11 +525,22 @@
             this.textBox5.TabIndex = 27;
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(525, 115);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 29;
+            this.btnThem.Text = "Chặn";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
             // frmShowDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 265);
+            this.Controls.Add(this.btnThem);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox2);
@@ -610,5 +622,6 @@
         private System.Windows.Forms.TextBox txtSoHoaDonMoi;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox chkChuanThu1;
+        private System.Windows.Forms.Button btnThem;
     }
 }

@@ -143,9 +143,9 @@ namespace ThuTien.GUI.Quay
                                 tamthu.SoPhieu = SoPhieu;
                                 if (_cChotDangNgan.checkExist_ChotDangNgan(DateTime.Now) == true)
                                 {
-                                    DateTime NgayGiaiTrach = new DateTime();
+                                    DateTime NgayGiaiTrach = DateTime.Now;
                                     NgayGiaiTrach = NgayGiaiTrach.AddDays(1);
-                                    TimeSpan ts = new TimeSpan(01, 0, 0);
+                                    TimeSpan ts = new TimeSpan(1, 0, 0);
                                     NgayGiaiTrach = NgayGiaiTrach.Date + ts;
                                     if (_cTamThu.Them(tamthu, NgayGiaiTrach) == true)
                                     {

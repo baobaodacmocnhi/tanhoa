@@ -93,10 +93,13 @@ namespace ThuTien.GUI.TongHop
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (chkTrongKy.Checked)
-                dgvDCHD.DataSource = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+            if (chkChuaCapNhat.Checked == true)
+                dgvDCHD.DataSource = _cDCHD.getDS_ChuaCapNhat();
             else
-                dgvDCHD.DataSource = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+                if (chkTrongKy.Checked)
+                    dgvDCHD.DataSource = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                else
+                    dgvDCHD.DataSource = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
