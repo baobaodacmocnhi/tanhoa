@@ -755,6 +755,7 @@
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SoVB" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NgayKy" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Dot" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Ky" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Quan" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -813,6 +814,7 @@
       <Column Name="ChuyenThuTien" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="NgayChuyenThuTien" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NguoiChuyenThuTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaToTrinh" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />

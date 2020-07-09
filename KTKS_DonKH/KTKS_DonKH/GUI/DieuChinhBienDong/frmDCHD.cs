@@ -582,6 +582,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     ctdchd.KyHD = txtKyHD.Text.Trim();
                     string[] KyHD = txtKyHD.Text.Trim().Split('/');
+                    if (_hoadon != null)
+                        ctdchd.Dot = _hoadon.DOT;
+                    else
+                        if (_docso != null)
+                            ctdchd.Dot = int.Parse(_docso.Dot);
                     ctdchd.Ky = int.Parse(KyHD[0]);
                     ctdchd.Nam = int.Parse(KyHD[1]);
                     if (_hoadon != null)
@@ -1963,7 +1968,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             if (chkHoNgheo.Checked)
             {
-                txtTienNuoc_End.Text = (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".","")) - (TongTienMoiA_HoNgheo + TongTienMoiB_HoNgheo)).ToString();
+                txtTienNuoc_End.Text = (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - (TongTienMoiA_HoNgheo + TongTienMoiB_HoNgheo)).ToString();
             }
         }
 

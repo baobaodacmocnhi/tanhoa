@@ -14,5 +14,11 @@
         <elementListCompartment Id="f9a78aea-a4ef-4bb6-a47c-ddb3deda7fbd" absoluteBounds="3.765, 1.21, 1.9700000000000002, 18.902628580729164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="e9a34186-ce2b-4f81-8b81-aea77786f087" absoluteBounds="6.625, 0.875, 2, 8.1168440755208326">
+      <DataClassMoniker Name="/dbThuTienDataContext/DIEUCHINH_HD" />
+      <nestedChildShapes>
+        <elementListCompartment Id="65a7487b-30cc-4ca4-9222-2c4b17e4cafa" absoluteBounds="6.64, 1.335, 1.9700000000000002, 7.556844075520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

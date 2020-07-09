@@ -18132,6 +18132,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _NgayKy;
 		
+		private System.Nullable<int> _Dot;
+		
 		private System.Nullable<int> _Ky;
 		
 		private System.Nullable<int> _Nam;
@@ -18248,6 +18250,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _NguoiChuyenThuTien;
 		
+		private System.Nullable<int> _MaToTrinh;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -18290,6 +18294,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnSoVBChanged();
     partial void OnNgayKyChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayKyChanged();
+    partial void OnDotChanging(System.Nullable<int> value);
+    partial void OnDotChanged();
     partial void OnKyChanging(System.Nullable<int> value);
     partial void OnKyChanged();
     partial void OnNamChanging(System.Nullable<int> value);
@@ -18406,6 +18412,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNgayChuyenThuTienChanged();
     partial void OnNguoiChuyenThuTienChanging(System.Nullable<int> value);
     partial void OnNguoiChuyenThuTienChanged();
+    partial void OnMaToTrinhChanging(System.Nullable<int> value);
+    partial void OnMaToTrinhChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -18571,6 +18579,26 @@ namespace KTKS_DonKH.LinQ
 					this._NgayKy = value;
 					this.SendPropertyChanged("NgayKy");
 					this.OnNgayKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dot", DbType="Int")]
+		public System.Nullable<int> Dot
+		{
+			get
+			{
+				return this._Dot;
+			}
+			set
+			{
+				if ((this._Dot != value))
+				{
+					this.OnDotChanging(value);
+					this.SendPropertyChanging();
+					this._Dot = value;
+					this.SendPropertyChanged("Dot");
+					this.OnDotChanged();
 				}
 			}
 		}
@@ -19735,6 +19763,26 @@ namespace KTKS_DonKH.LinQ
 					this._NguoiChuyenThuTien = value;
 					this.SendPropertyChanged("NguoiChuyenThuTien");
 					this.OnNguoiChuyenThuTienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaToTrinh", DbType="Int")]
+		public System.Nullable<int> MaToTrinh
+		{
+			get
+			{
+				return this._MaToTrinh;
+			}
+			set
+			{
+				if ((this._MaToTrinh != value))
+				{
+					this.OnMaToTrinhChanging(value);
+					this.SendPropertyChanging();
+					this._MaToTrinh = value;
+					this.SendPropertyChanged("MaToTrinh");
+					this.OnMaToTrinhChanged();
 				}
 			}
 		}
