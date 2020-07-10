@@ -2675,6 +2675,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCHD.DinhMuc_BD,
                                 itemCTDCHD.TieuThu,
                                 itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TienNuoc_Start,
+                                itemCTDCHD.TienNuoc_End,
+                                itemCTDCHD.ThueGTGT_Start,
+                                itemCTDCHD.ThueGTGT_End,
+                                itemCTDCHD.PhiBVMT_Start,
+                                itemCTDCHD.PhiBVMT_End,
                                 itemCTDCHD.TongCong_Start,
                                 itemCTDCHD.TongCong_End,
                                 itemCTDCHD.TongCong_BD,
@@ -2682,6 +2688,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCHD.PhieuDuocKy,
                                 itemCTDCHD.NguoiKy,
                                 CreateBy = itemtableND.HoTen,
+                                itemCTDCHD.Dot,
+                                itemCTDCHD.Ky,
+                                itemCTDCHD.Nam,
+                                SoPhatHanh=itemCTDCHD.SoHD,
+                                itemCTDCHD.SoHoaDon,
                             };
                 return LINQToDataTable(query);
             }

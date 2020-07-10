@@ -623,7 +623,7 @@
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Khách Hàng"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Xử Lý"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Bấm Chì"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Giao Dịch Khách Hàng"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Tổng Hợp"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "c.Trân (Điều Chỉnh)"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "P. Khách Hàng")});
             this.chkcmbNoiNhan.Properties.PopupFormSize = new System.Drawing.Size(0, 500);

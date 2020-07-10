@@ -27,7 +27,7 @@ namespace KTKS_DonKH.DAL
             catch (Exception)
             {
             }
-            
+
         }
 
         public void Connect()
@@ -40,6 +40,11 @@ namespace KTKS_DonKH.DAL
         {
             if (connection.State == ConnectionState.Open)
                 connection.Close();
+        }
+
+        public void SubmitChanges()
+        {
+            db.SubmitChanges();
         }
 
         public DataTable ExecuteQuery_DataTable(string sql)
@@ -72,14 +77,26 @@ namespace KTKS_DonKH.DAL
                     return null;
         }
 
-        public HOADON Get(string DanhBo,int Ky,int Nam)
+        public HOADON Get(string DanhBo, int Ky, int Nam)
         {
             HOADON a = new HOADON();
-            if (db.HOADONs.Any(item => item.DANHBA == DanhBo && item.KY==Ky && item.NAM==Nam))
+            if (db.HOADONs.Any(item => item.DANHBA == DanhBo && item.KY == Ky && item.NAM == Nam))
                 return db.HOADONs.SingleOrDefault(item => item.DANHBA == DanhBo && item.KY == Ky && item.NAM == Nam);
             else
                 if (db.TT_HoaDonCus.Any(item => item.DANHBA == DanhBo && item.KY == Ky && item.NAM == Nam))
                     return Copy(a, db.TT_HoaDonCus.FirstOrDefault(item => item.DANHBA == DanhBo && item.KY == Ky && item.NAM == Nam));
+                else
+                    return null;
+        }
+
+        public HOADON get(string SoHoaDon)
+        {
+            HOADON a = new HOADON();
+            if (db.HOADONs.Any(item => item.SOHOADON == SoHoaDon))
+                return db.HOADONs.SingleOrDefault(item => item.SOHOADON == SoHoaDon);
+            else
+                if (db.TT_HoaDonCus.Any(item => item.SOHOADON == SoHoaDon))
+                    return Copy(a, db.TT_HoaDonCus.FirstOrDefault(item => item.SOHOADON == SoHoaDon));
                 else
                     return null;
         }
@@ -92,9 +109,9 @@ namespace KTKS_DonKH.DAL
                 return 0;
         }
 
-        public DataTable GetDSTimKiem(string DanhBo,string MLT)
+        public DataTable GetDSTimKiem(string DanhBo, string MLT)
         {
-            string sql = "select * from fnTimKiem('" + DanhBo + "','"+MLT+"') order by MaHD desc";
+            string sql = "select * from fnTimKiem('" + DanhBo + "','" + MLT + "') order by MaHD desc";
 
             return ExecuteQuery_DataTable(sql);
         }
@@ -197,5 +214,61 @@ namespace KTKS_DonKH.DAL
             a.TUNGAY = b.TUNGAY;
             return a;
         }
+
+        public DIEUCHINH_HD get_DCHD(string SoHoaDon)
+        {
+            return db.DIEUCHINH_HDs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
+        }
+
+        public void LuuLichSuDC(DIEUCHINH_HD dchd)
+        {
+            TT_LichSuDieuChinhHD lsdc = new TT_LichSuDieuChinhHD();
+
+            lsdc.FK_HOADON = dchd.FK_HOADON;
+            lsdc.SoHoaDon = dchd.SoHoaDon;
+            lsdc.GiaBieu = dchd.GiaBieu;
+            lsdc.DinhMuc = dchd.DinhMuc;
+            lsdc.TIEUTHU_BD = dchd.TIEUTHU_BD;
+            lsdc.GIABAN_BD = dchd.GIABAN_BD;
+            lsdc.PHI_BD = dchd.PHI_BD;
+            lsdc.THUE_BD = dchd.THUE_BD;
+            lsdc.TONGCONG_BD = dchd.TONGCONG_BD;
+
+            lsdc.PHIEU_DC = dchd.PHIEU_DC;
+            lsdc.NGAY_VB = dchd.NGAY_VB;
+            lsdc.NGAY_DC = dchd.NGAY_DC;
+            lsdc.SoPhieu = dchd.SoPhieu;
+            lsdc.TangGiam = dchd.TangGiam;
+
+            lsdc.GIABAN_DC = dchd.GIABAN_DC;
+            lsdc.GIABAN_END = dchd.GIABAN_END;
+
+            lsdc.THUE_DC = dchd.THUE_DC;
+            lsdc.THUE_END = dchd.THUE_END;
+
+            lsdc.PHI_DC = dchd.PHI_DC;
+            lsdc.PHI_END = dchd.PHI_END;
+
+            lsdc.TONGCONG_DC = dchd.TONGCONG_DC;
+            lsdc.TONGCONG_END = dchd.TONGCONG_END;
+
+            lsdc.GB_DC = dchd.GB_DC;
+            lsdc.DM_DC = dchd.DM_DC;
+            lsdc.TIEUTHU_DC = dchd.TIEUTHU_DC;
+
+            if (db.TT_LichSuDieuChinhHDs.Count() > 0)
+                lsdc.ID = db.TT_LichSuDieuChinhHDs.Max(item => item.ID) + 1;
+            else
+                lsdc.ID = 1;
+            lsdc.CreateDate = DateTime.Now;
+            db.TT_LichSuDieuChinhHDs.InsertOnSubmit(lsdc);
+            db.SubmitChanges();
+        }
+
+        public bool checkDangNgan(int MaHD)
+        {
+            return db.HOADONs.Any(item => item.ID_HOADON == MaHD && item.NGAYGIAITRACH != null);
+        }
+
     }
 }

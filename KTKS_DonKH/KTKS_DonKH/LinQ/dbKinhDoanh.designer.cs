@@ -18142,6 +18142,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _Phuong;
 		
+		private string _SoHoaDon;
+		
 		private string _KyHD;
 		
 		private string _SoHD;
@@ -18304,6 +18306,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnQuanChanged();
     partial void OnPhuongChanging(string value);
     partial void OnPhuongChanged();
+    partial void OnSoHoaDonChanging(string value);
+    partial void OnSoHoaDonChanged();
     partial void OnKyHDChanging(string value);
     partial void OnKyHDChanged();
     partial void OnSoHDChanging(string value);
@@ -18679,6 +18683,26 @@ namespace KTKS_DonKH.LinQ
 					this._Phuong = value;
 					this.SendPropertyChanged("Phuong");
 					this.OnPhuongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoHoaDon", DbType="VarChar(50)")]
+		public string SoHoaDon
+		{
+			get
+			{
+				return this._SoHoaDon;
+			}
+			set
+			{
+				if ((this._SoHoaDon != value))
+				{
+					this.OnSoHoaDonChanging(value);
+					this.SendPropertyChanging();
+					this._SoHoaDon = value;
+					this.SendPropertyChanged("SoHoaDon");
+					this.OnSoHoaDonChanged();
 				}
 			}
 		}

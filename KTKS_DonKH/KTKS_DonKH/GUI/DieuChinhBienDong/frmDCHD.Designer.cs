@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -76,6 +76,8 @@
             this.txtTieuThu_End = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtMaToTrinh = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.txtMLT = new System.Windows.Forms.TextBox();
             this.chkChuyenNhap = new System.Windows.Forms.CheckBox();
@@ -146,6 +148,7 @@
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.chkApGiaNuocCu = new System.Windows.Forms.CheckBox();
             this.chkHoNgheo = new System.Windows.Forms.CheckBox();
+            this.lbDangNgan = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -581,6 +584,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label36);
+            this.groupBox1.Controls.Add(this.txtMaToTrinh);
             this.groupBox1.Controls.Add(this.label31);
             this.groupBox1.Controls.Add(this.txtMLT);
             this.groupBox1.Controls.Add(this.chkChuyenNhap);
@@ -605,6 +610,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(203, 82);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(80, 16);
+            this.label36.TabIndex = 17;
+            this.label36.Text = "Mã Tờ Trình";
+            // 
+            // txtMaToTrinh
+            // 
+            this.txtMaToTrinh.Location = new System.Drawing.Point(291, 80);
+            this.txtMaToTrinh.Name = "txtMaToTrinh";
+            this.txtMaToTrinh.Size = new System.Drawing.Size(100, 22);
+            this.txtMaToTrinh.TabIndex = 18;
+            this.txtMaToTrinh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaToTrinh_KeyPress);
+            // 
             // label31
             // 
             this.label31.AutoSize = true;
@@ -624,7 +646,7 @@
             // chkChuyenNhap
             // 
             this.chkChuyenNhap.AutoSize = true;
-            this.chkChuyenNhap.Location = new System.Drawing.Point(283, 80);
+            this.chkChuyenNhap.Location = new System.Drawing.Point(283, 108);
             this.chkChuyenNhap.Name = "chkChuyenNhap";
             this.chkChuyenNhap.Size = new System.Drawing.Size(108, 20);
             this.chkChuyenNhap.TabIndex = 14;
@@ -684,6 +706,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lbDangNgan);
             this.groupBox2.Controls.Add(this.txtDinhMucHN_Moi);
             this.groupBox2.Controls.Add(this.label35);
             this.groupBox2.Controls.Add(this.label33);
@@ -1211,14 +1234,14 @@
             // 
             this.dgvHinh.AllowUserToAddRows = false;
             this.dgvHinh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Hinh,
@@ -1307,6 +1330,16 @@
             this.chkHoNgheo.TabIndex = 39;
             this.chkHoNgheo.Text = "Miễn Hộ Nghèo";
             this.chkHoNgheo.UseVisualStyleBackColor = true;
+            // 
+            // lbDangNgan
+            // 
+            this.lbDangNgan.AutoSize = true;
+            this.lbDangNgan.ForeColor = System.Drawing.Color.Red;
+            this.lbDangNgan.Location = new System.Drawing.Point(149, 25);
+            this.lbDangNgan.Name = "lbDangNgan";
+            this.lbDangNgan.Size = new System.Drawing.Size(144, 16);
+            this.lbDangNgan.TabIndex = 20;
+            this.lbDangNgan.Text = "Tình Trạng Đăng Ngân";
             // 
             // frmDCHD
             // 
@@ -1495,5 +1528,8 @@
         private System.Windows.Forms.TextBox txtDinhMucHN_Cu;
         private System.Windows.Forms.CheckBox chkApGiaNuocCu;
         private System.Windows.Forms.CheckBox chkHoNgheo;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox txtMaToTrinh;
+        private System.Windows.Forms.Label lbDangNgan;
     }
 }

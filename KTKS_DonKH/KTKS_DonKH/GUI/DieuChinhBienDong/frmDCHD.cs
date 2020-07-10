@@ -85,10 +85,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dateNgayKy.Value = DateTime.Now;
             txtKyHD.Text = "";
             txtSoHD.Text = "";
+            txtMaToTrinh.Text = "";
             chkChuyenNhap.Checked = false;
             txtDanhBo.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
+            lbDangNgan.Text = "Tình Trạng Đăng Ngân";
             ///
             txtGiaBieu_Cu.Text = "0";
             txtDinhMucHN_Cu.Text = "0";
@@ -183,6 +185,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dateNgayKy.Value = ctdchd.NgayKy.Value;
             txtKyHD.Text = ctdchd.KyHD;
             txtSoHD.Text = ctdchd.SoHD;
+            if (ctdchd.MaToTrinh != null)
+                txtMaToTrinh.Text = ctdchd.MaToTrinh.Value.ToString().Insert(ctdchd.MaToTrinh.Value.ToString().Length - 2, "-");
             chkChuyenNhap.Checked = ctdchd.ChuyenNhap;
             txtDanhBo.Text = ctdchd.DanhBo;
             txtHoTen.Text = ctdchd.HoTen;
@@ -419,6 +423,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_hoadon != null)
                 {
                     LoadTTKH(_hoadon);
+                    txtKyHD.Focus();
                 }
                 else
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -441,10 +446,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtThueGTGT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.THUE.Value);
                     txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.PHI.Value);
                     txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.TONGCONG.Value);
+                    txtSoHD.Text = _hoadon.SOPHATHANH.ToString("00000000");
+                    if (_hoadon.NGAYGIAITRACH == null)
+                        lbDangNgan.Text = "Hóa Đơn Tồn";
+                    else
+                        lbDangNgan.Text = "Hóa Đơn Đã Đăng Ngân";
                 }
                 else
                 {
                     _docso = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(KyHD[0]), int.Parse(KyHD[1]));
+                    MessageBox.Show("Hóa Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 if (txtDanhBo.Text.Trim().Length == 11 && txtKyHD.Text.Trim() != "")
                 {
@@ -591,10 +602,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdchd.Nam = int.Parse(KyHD[1]);
                     if (_hoadon != null)
                     {
+                        ctdchd.SoHoaDon = _hoadon.SOHOADON;
                         ctdchd.Phuong = _hoadon.Phuong;
                         ctdchd.Quan = _hoadon.Quan;
                     }
                     ctdchd.SoHD = txtSoHD.Text.Trim();
+                    if (txtMaToTrinh.Text.Trim() != "")
+                        ctdchd.MaToTrinh = int.Parse(txtMaToTrinh.Text.Trim().Replace("-", ""));
                     ctdchd.ChuyenNhap = chkChuyenNhap.Checked;
                     ///
                     ctdchd.GiaBieu = int.Parse(txtGiaBieu_Cu.Text.Trim().Replace(".", ""));
@@ -783,11 +797,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdchd.Nam = int.Parse(KyHD[1]);
                         if (_hoadon != null)
                         {
+                            _ctdchd.SoHoaDon = _hoadon.SOHOADON;
                             _ctdchd.Phuong = _hoadon.Phuong;
                             _ctdchd.Quan = _hoadon.Quan;
                         }
 
                         _ctdchd.SoHD = txtSoHD.Text.Trim();
+                        if (txtMaToTrinh.Text.Trim() != "")
+                            _ctdchd.MaToTrinh = int.Parse(txtMaToTrinh.Text.Trim().Replace("-", ""));
                         _ctdchd.ChuyenNhap = chkChuyenNhap.Checked;
                         ///
                         _ctdchd.GiaBieu = int.Parse(txtGiaBieu_Cu.Text.Trim().Replace(".", ""));
@@ -1569,16 +1586,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void dateNgayKy_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
-                txtKyHD.Focus();
+                txtDanhBo.Focus();
         }
 
         private void txtKyHD_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
-                txtSoHD.Focus();
+                txtMaToTrinh.Focus();
         }
 
         private void txtSoHD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtGiaBieu_Cu.Focus();
+        }
+
+        private void txtMaToTrinh_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
                 txtGiaBieu_Cu.Focus();
@@ -2292,6 +2315,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
+
+
 
 
 
