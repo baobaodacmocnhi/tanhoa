@@ -240,7 +240,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                         {
                             if (_cHoaDon.DangNgan("ChuyenKhoan", item.Text, CNguoiDung.MaND))
                                 if (_cTienDu.UpdateThem(item.Text))
+                                {
                                     scope.Complete();
+                                    scope.Dispose();
+                                }
                         }
                     lstHD.Items.Clear();
                     btnXem.PerformClick();
@@ -299,7 +302,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 {
                                     if (_cTienDu.UpdateXoa(item.Cells["SoHoaDon_TG"].Value.ToString()))
                                         if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
+                                        {
                                             scope.Complete();
+                                            scope.Dispose();
+                                        }
                                 }
                         }
                         else
@@ -310,7 +316,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     {
                                         if (_cTienDu.UpdateXoa(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                                             if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
+                                            {
                                                 scope.Complete();
+                                                scope.Dispose();
+                                            }
                                     }
                             }
                         btnXem.PerformClick();

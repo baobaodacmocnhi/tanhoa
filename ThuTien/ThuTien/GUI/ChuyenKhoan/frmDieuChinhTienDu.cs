@@ -88,6 +88,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 if (_cTienDu.Update(txtDanhBoCTB.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()), "Nhận Tiền", txtGhiChuChuyen.Text.Trim(), txtDanhBoCTA.Text.Trim().Replace(" ", "")))
                                 {
                                     scope.Complete();
+                                    scope.Dispose();
                                     this.DialogResult = System.Windows.Forms.DialogResult.OK;
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     this.Close();
@@ -109,6 +110,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienMoi.Text.Trim()), "Điều Chỉnh Tiền", txtGhiChuSua.Text.Trim()))
                             {
                                 scope.Complete();
+                                scope.Dispose();
                                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.Close();
@@ -168,7 +170,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                             //if (_cDongNuoc.LinQ_ExecuteNonQuery("update TT_KQDongNuoc set DongPhi=1,ChuyenKhoan=1,NgayDongPhi=getdate() where MaKQDN=" + kqdongnuoc.MaKQDN))
                                             {
                                                 scope.Complete();
-
+                                                scope.Dispose();
                                                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                                 this.Close();

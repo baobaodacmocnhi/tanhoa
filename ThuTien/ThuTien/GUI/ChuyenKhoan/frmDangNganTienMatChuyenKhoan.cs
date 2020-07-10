@@ -206,7 +206,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                             {
                                 if (_cHoaDon.DangNganTienMatChuyenKhoan(item.Text, CNguoiDung.MaND))
                                     if (_cTienDu.UpdateThemTienMat(item.Text))
+                                    {
                                         scope.Complete();
+                                        scope.Dispose();
+                                    }
                             }
                         else
                             MessageBox.Show("Lỗi, Danh Bộ không có Tiền Dư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

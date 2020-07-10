@@ -889,11 +889,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                 foreach (DataGridViewRow item in dgvTamThu.Rows)
                     if (item.Cells["NgayGiaiTrach_TT"].Value == null || item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
                     {
-                        using (var scope = new TransactionScope())
+                        using (TransactionScope scope = new TransactionScope())
                         {
                             if (_cHoaDon.DangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TT"].Value.ToString(), CNguoiDung.MaND))
                                 if (_cTienDu.UpdateThem(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                                {
                                     scope.Complete();
+                                    scope.Dispose();
+                                }
                         }
                     }
             }

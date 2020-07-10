@@ -222,7 +222,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                             {
                                 if (_cHoaDon.DangNgan("ChuyenKhoan", item.Text, CNguoiDung.MaND, dateGiaiTrachSua.Value))
                                     if (_cTienDu.UpdateThem_Doi(item.Text, dateGiaiTrachSua.Value))
+                                    {
                                         scope.Complete();
+                                        scope.Dispose();
+                                    }
                             }
                         btnXem.PerformClick();
                         lstHD.Items.Clear();
@@ -258,8 +261,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 using (var scope = new TransactionScope())
                                 {
                                     if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
-                                        if (_cTienDu.UpdateXoa_Doi(item.Cells["SoHoaDon_TG"].Value.ToString(),dateGiaiTrach.Value))
+                                        if (_cTienDu.UpdateXoa_Doi(item.Cells["SoHoaDon_TG"].Value.ToString(), dateGiaiTrach.Value))
+                                        {
                                             scope.Complete();
+                                            scope.Dispose();
+                                        }
                                 }
                         }
                         else
@@ -270,7 +276,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     {
                                         if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
                                             if (_cTienDu.UpdateXoa_Doi(item.Cells["SoHoaDon_CQ"].Value.ToString(), dateGiaiTrach.Value))
+                                            {
                                                 scope.Complete();
+                                                scope.Dispose();
+                                            }
                                     }
                             }
                         btnXem.PerformClick();

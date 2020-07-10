@@ -238,10 +238,10 @@ namespace ThuTien.DAL.TongHop
                             {
                                 Loai = "TG",
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -255,10 +255,10 @@ namespace ThuTien.DAL.TongHop
                                 {
                                     Loai = "CQ",
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -281,10 +281,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -303,10 +303,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -330,10 +330,10 @@ namespace ThuTien.DAL.TongHop
                 //                MaNV = itemHD.MaNV_HanhThu,
                 //                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                 //                itemHD.NGAYGIAITRACH,
-                //                itemDC.GIABAN_BD,
-                //                itemDC.TONGCONG_BD,
-                //                itemDC.GIABAN_END,
-                //                itemDC.TONGCONG_END,
+                //                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                //                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                //                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                //                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                 //            };
                 //return LINQToDataTable(query);
                 string sql = "select Loai='TG',MaTo=" + MaTo + ",TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MaNV=hd.MaNV_HanhThu,HoTen=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_HanhThu)"
@@ -359,10 +359,10 @@ namespace ThuTien.DAL.TongHop
                     //                MaNV = itemHD.MaNV_HanhThu,
                     //                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                     //                itemHD.NGAYGIAITRACH,
-                    //                itemDC.GIABAN_BD,
-                    //                itemDC.TONGCONG_BD,
-                    //                itemDC.GIABAN_END,
-                    //                itemDC.TONGCONG_END,
+                    //                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                    //                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                    //                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                    //                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                     //            };
                     //return LINQToDataTable(query);
                     string sql = "select Loai='CQ',MaTo=" + MaTo + ",TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MaNV=hd.MaNV_HanhThu,HoTen=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_HanhThu)"
@@ -391,10 +391,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -413,10 +413,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -439,10 +439,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -461,10 +461,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -478,14 +478,14 @@ namespace ThuTien.DAL.TongHop
                         where itemDC.SoHoaDon == SoHoaDon && itemDC.ChuanThu1 == false
                         select new
                         {
-                            itemDC.GIABAN_BD,
+                            GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                             THUEGTGT_BD = itemDC.THUE_BD,
                             PHIBVMT_BD = itemDC.PHI_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
+                            TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             THUEGTGT_END = itemDC.THUE_END,
                             PHIBVMT_END = itemDC.PHI_END,
-                            itemDC.TONGCONG_END,
+                            TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
             return LINQToDataTable(query);
         }
@@ -503,10 +503,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -522,10 +522,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -546,10 +546,10 @@ namespace ThuTien.DAL.TongHop
                             MaNV = itemHD.MaNV_HanhThu,
                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                             itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
+                            GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                            TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                            TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
             return LINQToDataTable(query);
         }
@@ -568,10 +568,10 @@ namespace ThuTien.DAL.TongHop
                             MaNV = itemHD.MaNV_HanhThu,
                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                             itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
+                            GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                            TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                            TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
             return LINQToDataTable(query);
         }
@@ -590,10 +590,10 @@ namespace ThuTien.DAL.TongHop
                             MaNV = itemHD.MaNV_HanhThu,
                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                             itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
+                            GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                            TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                            TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
             return LINQToDataTable(query);
         }
@@ -613,10 +613,10 @@ namespace ThuTien.DAL.TongHop
                             MaNV = itemHD.MaNV_HanhThu,
                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                             itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
+                            GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                            TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                            TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
             return LINQToDataTable(query);
         }
@@ -636,10 +636,10 @@ namespace ThuTien.DAL.TongHop
                             MaNV = itemHD.MaNV_HanhThu,
                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                             itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
+                            GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                            TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                            TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
             return LINQToDataTable(query);
         }
@@ -658,10 +658,10 @@ namespace ThuTien.DAL.TongHop
                             MaNV = itemHD.MaNV_HanhThu,
                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                             itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
+                            GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                            TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                            TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
             return LINQToDataTable(query);
         }
@@ -680,10 +680,10 @@ namespace ThuTien.DAL.TongHop
                             MaNV = itemHD.MaNV_HanhThu,
                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                             itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
+                            GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                            TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                            TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
             return LINQToDataTable(query);
         }
@@ -703,10 +703,10 @@ namespace ThuTien.DAL.TongHop
                             MaNV = itemHD.MaNV_HanhThu,
                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                             itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
+                            GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                            TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                            TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
             return LINQToDataTable(query);
         }
@@ -726,10 +726,10 @@ namespace ThuTien.DAL.TongHop
                             MaNV = itemHD.MaNV_HanhThu,
                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                             itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
+                            GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                            TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                            TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
             return LINQToDataTable(query);
         }
@@ -749,10 +749,10 @@ namespace ThuTien.DAL.TongHop
                             MaNV = itemHD.MaNV_HanhThu,
                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                             itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
+                            GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                            TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                            TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
             return LINQToDataTable(query);
         }
@@ -776,10 +776,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -801,10 +801,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -826,10 +826,10 @@ namespace ThuTien.DAL.TongHop
                             MaNV = itemHD.MaNV_HanhThu,
                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                             itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
+                            GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                            TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                            TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
             return LINQToDataTable(query);
         }
@@ -849,10 +849,10 @@ namespace ThuTien.DAL.TongHop
                             MaNV = itemHD.MaNV_HanhThu,
                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                             itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
+                            GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                            TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                            TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
             return LINQToDataTable(query);
         }
@@ -876,10 +876,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -901,10 +901,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -924,10 +924,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -943,10 +943,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -966,10 +966,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -985,10 +985,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -1008,10 +1008,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -1027,10 +1027,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -1050,10 +1050,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -1069,10 +1069,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -1092,10 +1092,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -1111,10 +1111,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -1134,10 +1134,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -1153,10 +1153,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -1179,10 +1179,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -1201,10 +1201,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -1227,10 +1227,10 @@ namespace ThuTien.DAL.TongHop
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
-                                itemDC.GIABAN_BD,
-                                itemDC.TONGCONG_BD,
-                                itemDC.GIABAN_END,
-                                itemDC.TONGCONG_END,
+                                GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
                 return LINQToDataTable(query);
             }
@@ -1249,10 +1249,10 @@ namespace ThuTien.DAL.TongHop
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,
-                                    itemDC.GIABAN_BD,
-                                    itemDC.TONGCONG_BD,
-                                    itemDC.GIABAN_END,
-                                    itemDC.TONGCONG_END,
+                                    GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
+                                    TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
+                                    TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -1334,7 +1334,7 @@ namespace ThuTien.DAL.TongHop
                             TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start = itemDC.TONGCONG_BD,
+                            TongCong_Start =  itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
@@ -1374,13 +1374,13 @@ namespace ThuTien.DAL.TongHop
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBan_End = itemDC.GIABAN_END,
+                            GiaBan_End =  itemDC.GIABAN_END,
                             ThueGTGT_End = itemDC.THUE_END,
                             PhiBVMT_End = itemDC.PHI_END,
-                            TongCong_End = itemDC.TONGCONG_END,
+                            TongCong_End =  itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start = itemDC.TONGCONG_BD,
+                            TongCong_Start =  itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
@@ -1420,13 +1420,13 @@ namespace ThuTien.DAL.TongHop
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBan_End = itemDC.GIABAN_END,
+                            GiaBan_End =  itemDC.GIABAN_END,
                             ThueGTGT_End = itemDC.THUE_END,
                             PhiBVMT_End = itemDC.PHI_END,
                             TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start = itemDC.TONGCONG_BD,
+                            TongCong_Start =  itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
@@ -1452,13 +1452,13 @@ namespace ThuTien.DAL.TongHop
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBan_End = itemDC.GIABAN_END,
+                            GiaBan_End =  itemDC.GIABAN_END,
                             ThueGTGT_End = itemDC.THUE_END,
                             PhiBVMT_End = itemDC.PHI_END,
                             TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start = itemDC.TONGCONG_BD,
+                            TongCong_Start =  itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
@@ -1481,13 +1481,13 @@ namespace ThuTien.DAL.TongHop
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBan_End = itemDC.GIABAN_END,
+                            GiaBan_End =  itemDC.GIABAN_END,
                             ThueGTGT_End = itemDC.THUE_END,
                             PhiBVMT_End = itemDC.PHI_END,
                             TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start = itemDC.TONGCONG_BD,
+                            TongCong_Start =  itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
@@ -1510,13 +1510,13 @@ namespace ThuTien.DAL.TongHop
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBan_End = itemDC.GIABAN_END,
+                            GiaBan_End =  itemDC.GIABAN_END,
                             ThueGTGT_End = itemDC.THUE_END,
                             PhiBVMT_End = itemDC.PHI_END,
                             TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start = itemDC.TONGCONG_BD,
+                            TongCong_Start =  itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
@@ -1539,13 +1539,13 @@ namespace ThuTien.DAL.TongHop
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBan_End = itemDC.GIABAN_END,
+                            GiaBan_End =  itemDC.GIABAN_END,
                             ThueGTGT_End = itemDC.THUE_END,
                             PhiBVMT_End = itemDC.PHI_END,
                             TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start = itemDC.TONGCONG_BD,
+                            TongCong_Start =  itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,

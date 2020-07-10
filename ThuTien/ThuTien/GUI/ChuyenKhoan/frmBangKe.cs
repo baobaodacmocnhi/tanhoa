@@ -84,14 +84,20 @@ namespace ThuTien.GUI.ChuyenKhoan
                                             bangke.CreateDate = dateNgayLap.Value;
                                             if (_cBangKe.Them(bangke))
                                                 if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value, dateNgayLap.Value))
+                                                {
                                                     scope.Complete();
+                                                    scope.Dispose();
+                                                }
                                         }
                                         else
                                         {
                                             bangke.CreateDate = DateTime.Now;
                                             if (_cBangKe.Them(bangke))
                                                 if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value))
+                                                {
                                                     scope.Complete();
+                                                    scope.Dispose();
+                                                }
                                         }
                                     }
                             //_cBangKe.LinQ_ExecuteNonQuery("update TT_TienDu set SoTien=SoTien-" + item[1].ToString().Trim() + " where DanhBo='" + item[0].ToString().Trim().Replace(" ", "") + "'");
@@ -167,12 +173,18 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     if (flagLuiNgay == true)
                                     {
                                         if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê", "Xóa", CreateDate))
+                                        {
                                             scope.Complete();
+                                            scope.Dispose();
+                                        }
                                     }
                                     else
                                     {
                                         if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê", "Xóa"))
+                                        {
                                             scope.Complete();
+                                            scope.Dispose();
+                                        }
                                     }
                             }
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
