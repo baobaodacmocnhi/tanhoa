@@ -131,17 +131,54 @@ namespace ThuTien.DAL.TongHop
 
         public DIEUCHINH_HD Get(int MaHD)
         {
-            return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.FK_HOADON == MaHD);
+            DIEUCHINH_HD dchd = _db.DIEUCHINH_HDs.SingleOrDefault(item => item.FK_HOADON == MaHD);
+            if (dchd != null)
+            {
+                if (dchd.GIABAN_DC == null)
+                    dchd.GIABAN_DC = 0;
+                if (dchd.THUE_DC == null)
+                    dchd.THUE_DC = 0;
+                if (dchd.PHI_DC == null)
+                    dchd.PHI_DC = 0;
+                if (dchd.TONGCONG_DC == null)
+                    dchd.TONGCONG_DC = 0;
+
+                if (dchd.GIABAN_END == null)
+                    dchd.GIABAN_END = 0;
+                if (dchd.THUE_END == null)
+                    dchd.THUE_END = 0;
+                if (dchd.PHI_END == null)
+                    dchd.PHI_END = 0;
+                if (dchd.TONGCONG_END == null)
+                    dchd.TONGCONG_END = 0;
+                return dchd;
+            }
+            else
+                return null;
         }
 
         public DIEUCHINH_HD GetByMaDC(int MaDC)
         {
-            return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.ID_DIEUCHINH_HD == MaDC);
+            DIEUCHINH_HD dchd = _db.DIEUCHINH_HDs.SingleOrDefault(item => item.ID_DIEUCHINH_HD == MaDC);
+            if (dchd != null)
+            {
+
+                return dchd;
+            }
+            else
+                return null;
         }
 
         public DIEUCHINH_HD get(string SoHoaDon)
         {
-            return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
+            DIEUCHINH_HD dchd = _db.DIEUCHINH_HDs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
+            if (dchd != null)
+            {
+
+                return dchd;
+            }
+            else
+                return null;
         }
 
         public List<DIEUCHINH_HD> GetDS()
@@ -158,14 +195,14 @@ namespace ThuTien.DAL.TongHop
                         select new
                         {
                             Ky = Ky,
-                            GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
-                            ThueGTGT_BD = itemGroup.Sum(groupItem => groupItem.THUE_BD),
-                            PhiBVMT_BD = itemGroup.Sum(groupItem => groupItem.PHI_BD),
-                            TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
-                            GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END),
-                            ThueGTGT_End = itemGroup.Sum(groupItem => groupItem.THUE_END),
-                            PhiBVMT_End = itemGroup.Sum(groupItem => groupItem.PHI_END),
-                            TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
+                            GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
+                            ThueGTGT_BD = itemGroup.Sum(groupItem => groupItem.THUE_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_BD),
+                            PhiBVMT_BD = itemGroup.Sum(groupItem => groupItem.PHI_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_BD),
+                            TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
+                            GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_END),
+                            ThueGTGT_End = itemGroup.Sum(groupItem => groupItem.THUE_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_END),
+                            PhiBVMT_End = itemGroup.Sum(groupItem => groupItem.PHI_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_END),
+                            TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
                         };
             return LINQToDataTable(query);
         }
@@ -178,14 +215,14 @@ namespace ThuTien.DAL.TongHop
                         group itemDC by itemHD.DOT into itemGroup
                         select new
                         {
-                            GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
-                            ThueGTGT_BD = itemGroup.Sum(groupItem => groupItem.THUE_BD),
-                            PhiBVMT_BD = itemGroup.Sum(groupItem => groupItem.PHI_BD),
-                            TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
-                            GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END),
-                            ThueGTGT_End = itemGroup.Sum(groupItem => groupItem.THUE_END),
-                            PhiBVMT_End = itemGroup.Sum(groupItem => groupItem.PHI_END),
-                            TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
+                            GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
+                            ThueGTGT_BD = itemGroup.Sum(groupItem => groupItem.THUE_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_BD),
+                            PhiBVMT_BD = itemGroup.Sum(groupItem => groupItem.PHI_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_BD),
+                            TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
+                            GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_END),
+                            ThueGTGT_End = itemGroup.Sum(groupItem => groupItem.THUE_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_END),
+                            PhiBVMT_End = itemGroup.Sum(groupItem => groupItem.PHI_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_END),
+                            TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
                         };
             return LINQToDataTable(query);
         }
@@ -202,10 +239,10 @@ namespace ThuTien.DAL.TongHop
                         {
                             MaTo = MaTo,
                             _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
-                            GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
-                            TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
-                            GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END),
-                            TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
+                            GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
+                            TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
+                            GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_END),
+                            TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
                         };
             return LINQToDataTable(query);
         }
@@ -219,10 +256,10 @@ namespace ThuTien.DAL.TongHop
                         select new
                         {
                             Ky = Ky,
-                            GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
-                            TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
-                            GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END),
-                            TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
+                            GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
+                            TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
+                            GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_END),
+                            TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
                         };
             return LINQToDataTable(query);
         }
@@ -1334,7 +1371,7 @@ namespace ThuTien.DAL.TongHop
                             TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start =  itemDC.TONGCONG_BD,
+                            TongCong_Start = itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
@@ -1374,13 +1411,13 @@ namespace ThuTien.DAL.TongHop
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBan_End =  itemDC.GIABAN_END,
+                            GiaBan_End = itemDC.GIABAN_END,
                             ThueGTGT_End = itemDC.THUE_END,
                             PhiBVMT_End = itemDC.PHI_END,
-                            TongCong_End =  itemDC.TONGCONG_END,
+                            TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start =  itemDC.TONGCONG_BD,
+                            TongCong_Start = itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
@@ -1420,13 +1457,13 @@ namespace ThuTien.DAL.TongHop
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBan_End =  itemDC.GIABAN_END,
+                            GiaBan_End = itemDC.GIABAN_END,
                             ThueGTGT_End = itemDC.THUE_END,
                             PhiBVMT_End = itemDC.PHI_END,
                             TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start =  itemDC.TONGCONG_BD,
+                            TongCong_Start = itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
@@ -1452,13 +1489,13 @@ namespace ThuTien.DAL.TongHop
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBan_End =  itemDC.GIABAN_END,
+                            GiaBan_End = itemDC.GIABAN_END,
                             ThueGTGT_End = itemDC.THUE_END,
                             PhiBVMT_End = itemDC.PHI_END,
                             TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start =  itemDC.TONGCONG_BD,
+                            TongCong_Start = itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
@@ -1481,13 +1518,13 @@ namespace ThuTien.DAL.TongHop
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBan_End =  itemDC.GIABAN_END,
+                            GiaBan_End = itemDC.GIABAN_END,
                             ThueGTGT_End = itemDC.THUE_END,
                             PhiBVMT_End = itemDC.PHI_END,
                             TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start =  itemDC.TONGCONG_BD,
+                            TongCong_Start = itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
@@ -1510,13 +1547,13 @@ namespace ThuTien.DAL.TongHop
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBan_End =  itemDC.GIABAN_END,
+                            GiaBan_End = itemDC.GIABAN_END,
                             ThueGTGT_End = itemDC.THUE_END,
                             PhiBVMT_End = itemDC.PHI_END,
                             TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start =  itemDC.TONGCONG_BD,
+                            TongCong_Start = itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
@@ -1539,13 +1576,13 @@ namespace ThuTien.DAL.TongHop
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBan_End =  itemDC.GIABAN_END,
+                            GiaBan_End = itemDC.GIABAN_END,
                             ThueGTGT_End = itemDC.THUE_END,
                             PhiBVMT_End = itemDC.PHI_END,
                             TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
-                            TongCong_Start =  itemDC.TONGCONG_BD,
+                            TongCong_Start = itemDC.TONGCONG_BD,
                             TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
