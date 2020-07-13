@@ -42,6 +42,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CGiaNuoc _cGiaNuoc = new CGiaNuoc();
         CDHN _cDocSo = new CDHN();
         CThuTien _cThuTien = new CThuTien();
+        CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         string _mnu = "mnuDSDCBD";
         List<GiaNuoc> _lstGiaNuoc;
 
@@ -79,6 +80,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["DinhMuc_BD"].Visible = true;
                 ///
                 dgvDSDCBD.Columns["ChuyenThuTien"].Visible = false;
+                dgvDSDCBD.Columns["Ky"].Visible = false;
                 dgvDSDCBD.Columns["CodeF2"].Visible = false;
                 dgvDSDCBD.Columns["TieuThu"].Visible = false;
                 dgvDSDCBD.Columns["TieuThu_BD"].Visible = false;
@@ -105,6 +107,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["MSThue_BD"].Visible = false;
                 ///
                 dgvDSDCBD.Columns["ChuyenThuTien"].Visible = true;
+                dgvDSDCBD.Columns["Ky"].Visible = true;
                 dgvDSDCBD.Columns["CodeF2"].Visible = true;
                 dgvDSDCBD.Columns["GiaBieu"].Visible = true;
                 dgvDSDCBD.Columns["GiaBieu_BD"].Visible = true;
@@ -1163,6 +1166,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
+                                dr["MaDon"] = ctdchd.MaCTDCHD.ToString();
                                 dr["SoPhieu"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                                 dr["DanhBo"] = ctdchd.DanhBo;
 
@@ -1243,12 +1247,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 if (ctdchd.MaToTrinh != null)
                                     dr["MaToTrinh"] = ctdchd.MaToTrinh.Value.ToString().Insert(ctdchd.MaToTrinh.Value.ToString().Length - 2, "-");
+                                BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                                if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                    dr["ChucVu"] = "GIÁM ĐỐC";
+                                else
+                                    dr["ChucVu"] = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                                dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
                                 dsBaoCao.Tables["DCHD"].Rows.Add(dr);
                             }
                             else
                             {
                                 DataRow dr = dsBaoCao_KhauTru.Tables["DCHD"].NewRow();
 
+                                dr["MaDon"] = ctdchd.MaCTDCHD.ToString();
                                 dr["SoPhieu"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                                 dr["DanhBo"] = ctdchd.DanhBo;
 
@@ -1329,6 +1340,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 if (ctdchd.MaToTrinh != null)
                                     dr["MaToTrinh"] = ctdchd.MaToTrinh.Value.ToString().Insert(ctdchd.MaToTrinh.Value.ToString().Length - 2, "-");
+                                BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                                if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                    dr["ChucVu"] = "GIÁM ĐỐC";
+                                else
+                                    dr["ChucVu"] = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                                dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
                                 dsBaoCao_KhauTru.Tables["DCHD"].Rows.Add(dr);
                             }
                         }
