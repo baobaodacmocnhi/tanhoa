@@ -100,7 +100,7 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._IP_PC = value; }
         }
 
-        static int _ID_DangNhap=-1;
+        static int _ID_DangNhap = -1;
         public static int ID_DangNhap
         {
             get { return CNguoiDung._ID_DangNhap; }
@@ -159,6 +159,24 @@ namespace ThuTien.DAL.QuanTri
                 }
                 else
                     return false;
+        }
+
+        public static void initial()
+        {
+            CNguoiDung.MaND = -1;
+            CNguoiDung.HoTen = "";
+            CNguoiDung.Admin = false;
+            CNguoiDung.PhoGiamDoc = false;
+            CNguoiDung.Doi = false;
+            CNguoiDung.ToTruong = false;
+            CNguoiDung.SyncNopTien = false;
+            CNguoiDung.MaTo = -1;
+            CNguoiDung.TenTo = "";
+            CNguoiDung.dtQuyenNhom = null;
+            CNguoiDung.dtQuyenNguoiDung = null;
+            CNguoiDung.Name_PC = "";
+            CNguoiDung.IP_PC = "";
+            CNguoiDung.ID_DangNhap = -1;
         }
 
         public bool Them(TT_NguoiDung nguoidung)
@@ -234,7 +252,7 @@ namespace ThuTien.DAL.QuanTri
 
         public List<TT_NguoiDung> GetDSChamCong()
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaND != 0 && item.ChamCong == true && item.An==false).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaND != 0 && item.ChamCong == true && item.An == false).OrderBy(item => item.STT).ToList();
         }
 
         /// <summary>
@@ -284,7 +302,7 @@ namespace ThuTien.DAL.QuanTri
 
         public List<TT_NguoiDung> GetDSDongNuocToTruongByMaTo(int MaTo)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && (item.DongNuoc == true||item.ToTruong==true)).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && (item.DongNuoc == true || item.ToTruong == true)).OrderBy(item => item.STT).ToList();
         }
 
         public TT_NguoiDung GetByMaND(int MaND)
@@ -308,7 +326,7 @@ namespace ThuTien.DAL.QuanTri
 
         public TT_NguoiDung getChuyenKhoan()
         {
-            return _db.TT_NguoiDungs.FirstOrDefault(item=>item.HoTen.Contains("Chuyển Khoản"));
+            return _db.TT_NguoiDungs.FirstOrDefault(item => item.HoTen.Contains("Chuyển Khoản"));
         }
 
         public bool DangNhap(string TaiKhoan, string MatKhau)

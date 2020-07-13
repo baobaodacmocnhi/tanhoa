@@ -170,11 +170,15 @@ namespace ThuTien
 
         private void mnuDangXuat_Click(object sender, EventArgs e)
         {
+            CNguoiDung.initial();
             CNguoiDung.DangXuat();
             foreach (Form item in this.MdiChildren)
             {
                 this.ActiveMdiChild.Close();
             }
+            mnuDangNhap.Enabled = true;
+            mnuDoiMatKhau.Enabled = false;
+            mnuDangXuat.Enabled = false;
             StripStatus_HoTen.Text = "";
             mnuPhoGiamDoc.Visible = false;
             mnuDangNhap_Click(sender, e);
