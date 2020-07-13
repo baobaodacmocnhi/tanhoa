@@ -450,7 +450,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (_hoadon.NGAYGIAITRACH == null)
                         lbDangNgan.Text = "Hóa Đơn Tồn";
                     else
+                    {
                         lbDangNgan.Text = "Hóa Đơn Đã Đăng Ngân";
+                        MessageBox.Show("Hóa Đơn Đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {

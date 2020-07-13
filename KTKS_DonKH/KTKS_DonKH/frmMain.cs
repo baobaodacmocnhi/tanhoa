@@ -183,10 +183,14 @@ namespace KTKS_DonKH
 
         private void mnuDangXuat_Click(object sender, EventArgs e)
         {
+            CTaiKhoan.DangXuat();
             foreach (Form item in this.MdiChildren)
             {
                 this.ActiveMdiChild.Close();
             }
+            mnuDangNhap.Enabled = true;
+            mnuDoiMatKhau.Enabled = false;
+            mnuDangXuat.Enabled = false;
             StripStatus_HoTen.Text = "                                                 Xin Chào: ";
             //mnuPhoGiamDoc.Visible = false;
             mnuDangNhap_Click(sender, e);

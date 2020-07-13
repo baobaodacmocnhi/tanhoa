@@ -184,7 +184,7 @@ namespace KTKS_DonKH.DAL.QuanTri
             }
         }
 
-        public void DangXuat()
+        public static void DangXuat()
         {
             if (_taiKhoan != "")
             {
