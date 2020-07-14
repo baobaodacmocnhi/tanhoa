@@ -165,6 +165,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       itemCTDCBD.MSThue_BD,
                                       itemCTDCBD.GiaBieu_BD,
                                       itemCTDCBD.DinhMuc_BD,
+                                      itemCTDCBD.DinhMucHN_BD,
                                       itemCTDCBD.DMGiuNguyen,
                                       itemCTDCBD.GBGiuNguyen,
                                       GiaHan = itemCTDCBD.GiaHanKT3 == true ? true : itemCTDCBD.GiaHanNhapCu == true ? true : false,
