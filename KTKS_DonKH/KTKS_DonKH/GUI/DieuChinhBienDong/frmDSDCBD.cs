@@ -78,6 +78,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["GiaBieu_BD"].Visible = true;
                 dgvDSDCBD.Columns["DinhMuc"].Visible = true;
                 dgvDSDCBD.Columns["DinhMuc_BD"].Visible = true;
+                dgvDSDCBD.Columns["DinhMucHN"].Visible = true;
+                dgvDSDCBD.Columns["DinhMucHN_BD"].Visible = true;
                 ///
                 dgvDSDCBD.Columns["ChuyenThuTien"].Visible = false;
                 dgvDSDCBD.Columns["Ky"].Visible = false;
@@ -113,6 +115,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["GiaBieu_BD"].Visible = true;
                 dgvDSDCBD.Columns["DinhMuc"].Visible = true;
                 dgvDSDCBD.Columns["DinhMuc_BD"].Visible = true;
+                dgvDSDCBD.Columns["DinhMucHN"].Visible = true;
+                dgvDSDCBD.Columns["DinhMucHN_BD"].Visible = true;
                 dgvDSDCBD.Columns["TieuThu"].Visible = true;
                 dgvDSDCBD.Columns["TieuThu_BD"].Visible = true;
                 dgvDSDCBD.Columns["TongCong_Start"].Visible = true;
