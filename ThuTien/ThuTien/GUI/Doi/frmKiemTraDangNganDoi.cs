@@ -699,7 +699,7 @@ namespace ThuTien.GUI.Doi
         {
             if (frm != null)
                 frm.Close();
-            MessageBox.Show("Hoàn Tất Nộp Tiền ngày " + dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString() + "\nVui lòng kiểm tra lại số liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Hoàn Tất Nộp Tiền ngày " + dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString().Substring(0, dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString().IndexOf(" ")) + "\nVui lòng kiểm tra lại số liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnXemChot.PerformClick();
         }
 

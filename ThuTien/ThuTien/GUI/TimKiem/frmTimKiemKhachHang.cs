@@ -86,8 +86,12 @@ namespace ThuTien.GUI.TimKiem
                         {
                             item.DefaultCellStyle.BackColor = Color.Green;
                         }
+                    //điều chỉnh tiền dư chuyển khoản
                     if (bool.Parse(item.Cells["DCHD"].Value.ToString()) == true)
                         item.DefaultCellStyle.BackColor = Color.Fuchsia;
+                    //điều chỉnh hóa đơn thương vụ
+                    if (bool.Parse(item.Cells["ChanDCHD"].Value.ToString()) == false)
+                        item.DefaultCellStyle.BackColor = Color.Blue;
                     //if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()) == true)
                     //{
                     //TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
@@ -190,11 +194,15 @@ namespace ThuTien.GUI.TimKiem
                 dr["Co"] = ttkh.CODH;
                 dr["SoThan"] = ttkh.SOTHANDH;
                 dr["ViTri"] = ttkh.VITRIDHN;
-                dr["HoTen"] = ttkh.HOTEN;
-                dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG;
+                //dr["HoTen"] = ttkh.HOTEN;
+                //dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG;
                 dr["DienThoai"] = ttkh.DIENTHOAI;
                 if (dgvHoaDon.Rows.Count > 0)
+                {
+                    dr["HoTen"] = dgvHoaDon["HoTen", 0].Value.ToString();
+                    dr["DiaChi"] = dgvHoaDon["DiaChi", 0].Value.ToString();
                     dr["HanhThu"] = dgvHoaDon["HanhThu", 0].Value.ToString();
+                }
                 ds.Tables["PhieuTieuThu"].Rows.Add(dr);
             }
 
