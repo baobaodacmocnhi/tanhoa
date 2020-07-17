@@ -849,6 +849,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     item.Selected = true;
                                     return;
                                 }
+                                if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon_TT"].Value.ToString()) == false)
+                                {
+                                    MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    item.Selected = true;
+                                    return;
+                                }
                             }
                         if (backgroundWorker.IsBusy)
                             backgroundWorker.CancelAsync();
@@ -889,7 +895,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                 foreach (DataGridViewRow item in dgvTamThu.Rows)
                     if (item.Cells["NgayGiaiTrach_TT"].Value == null || item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
                     {
-                        using (TransactionScope scope = new TransactionScope())
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
                             if (_cHoaDon.DangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TT"].Value.ToString(), CNguoiDung.MaND))
                                 if (_cTienDu.UpdateThem(item.Cells["SoHoaDon_TT"].Value.ToString()))
@@ -911,6 +919,17 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (frm != null)
                 frm.Close();
             MessageBox.Show("Xử lý thành công\nVui lòng kiểm tra lại số liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnKiemTraSaiSot_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cTamThu.getDSSaiSot_ChuyenKhoan(dateTu.Value, dateDen.Value);
+            string str = "";
+            foreach (DataRow item in dt.Rows)
+            {
+                str += item["DanhBo"].ToString() + " === Tạm Thu: " + item["SLTamThu"].ToString() + " === Tồn: " + item["SLTon"].ToString() + "\n";
+            }
+            MessageBox.Show(str, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 

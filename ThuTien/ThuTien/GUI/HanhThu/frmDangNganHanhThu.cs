@@ -250,14 +250,18 @@ namespace ThuTien.GUI.HanhThu
                                 ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
                                 bool ChuyenKhoan = false;
                                 if (_cTamThu.CheckExist_Quay(item.Text))
-                                    using (var scope = new TransactionScope())
+                                {
+                                    var transactionOptions = new TransactionOptions();
+                                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                     {
                                         if (_cHoaDon.DangNgan("HanhThu", item.Text, CNguoiDung.MaND))
                                             if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
                                                 if (_cTamThu.XoaAn(item.Text))
                                                     if (_cTienDuQuay.UpdateXoa(item.Text, "Thu 2 Lần", "Thêm"))
-                                                        scope.Complete();
+                                                    { scope.Complete(); scope.Dispose(); }
                                     }
+                                }
                                 else
                                 {
                                     _cHoaDon.DangNgan("HanhThu", item.Text, CNguoiDung.MaND);
@@ -349,14 +353,18 @@ namespace ThuTien.GUI.HanhThu
                                         ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
                                         bool ChuyenKhoan = false;
                                         if (_cTamThu.CheckExist_Quay(item["SoHoaDon"].ToString()))
-                                            using (var scope = new TransactionScope())
+                                        {
+                                            var transactionOptions = new TransactionOptions();
+                                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                             {
                                                 if (_cHoaDon.DangNgan("HanhThu", item["SoHoaDon"].ToString(), CNguoiDung.MaND))
                                                     if (_cHoaDon.Thu2Lan(item["SoHoaDon"].ToString(), ChuyenKhoan))
                                                         if (_cTamThu.XoaAn(item["SoHoaDon"].ToString()))
                                                             if (_cTienDuQuay.UpdateXoa(item["SoHoaDon"].ToString(), "Thu 2 Lần", "Thêm"))
-                                                                scope.Complete();
+                                                            { scope.Complete(); scope.Dispose(); }
                                             }
+                                        }
                                         else
                                         {
                                             _cHoaDon.DangNgan("HanhThu", item["SoHoaDon"].ToString(), CNguoiDung.MaND);

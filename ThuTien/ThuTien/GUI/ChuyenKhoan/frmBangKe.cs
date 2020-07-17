@@ -59,7 +59,10 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                             foreach (DataRow item in dtExcel.Rows)
                                 if ((string.IsNullOrEmpty(item[0].ToString()) || item[0].ToString().Replace(" ", "").Length == 11) && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
-                                    using (TransactionScope scope = new TransactionScope())
+                                {
+                                    var transactionOptions = new TransactionOptions();
+                                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                     {
                                         //if (item[0].ToString().Length == 11 && _cBangKe.CheckExist(item[0].ToString(), DateTime.Now))
                                         //{
@@ -100,6 +103,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                                 }
                                         }
                                     }
+                                }
                             //_cBangKe.LinQ_ExecuteNonQuery("update TT_TienDu set SoTien=SoTien-" + item[1].ToString().Trim() + " where DanhBo='" + item[0].ToString().Trim().Replace(" ", "") + "'");
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
@@ -159,7 +163,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                             }
                         }
                         foreach (DataGridViewRow item in dgvBangKe.SelectedRows)
-                            using (var scope = new TransactionScope())
+                        {
+                            var transactionOptions = new TransactionOptions();
+                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                             {
                                 TT_BangKe bangke = _cBangKe.get(int.Parse(item.Cells["MaBK"].Value.ToString()));
                                 bool flagLuiNgay = false;
@@ -187,6 +194,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         }
                                     }
                             }
+                        }
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnXem.PerformClick();
                     }
@@ -273,7 +281,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 return;
                             }
                         }
-                        using (var scope = new TransactionScope())
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
                             TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
                             int SoTien = bangke.SoTien.Value;
@@ -382,7 +392,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 MessageBox.Show("2 Danh Sách Khác Nhau", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            using (var scope = new TransactionScope())
+                            var transactionOptions = new TransactionOptions();
+                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                             {
                                 for (int i = 0; i < dgvBangKe.Rows.Count; i++)
                                     //if (dgvBangKe.Rows[i].Cells["DanhBo"].Value.ToString() == "13152203536")

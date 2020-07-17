@@ -17,6 +17,7 @@ using System.Globalization;
 using ThuTien.DAL;
 using CrystalDecisions.CrystalReports.Engine;
 using DevExpress.XtraGrid.Views.Grid;
+using System.Transactions;
 
 namespace ThuTien.GUI.DongNuoc
 {
@@ -127,73 +128,80 @@ namespace ThuTien.GUI.DongNuoc
 
                 try
                 {
-                    _cHoaDon.BeginTransaction();
-                    while (lstHDTemp.Count > 0)
+                    //_cHoaDon.BeginTransaction();
+                    var transactionOptions = new TransactionOptions();
+                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
+                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                     {
-                        TT_DongNuoc dongnuoc = new TT_DongNuoc();
-                        dongnuoc.DanhBo = lstHDTemp[0].DANHBA;
-                        dongnuoc.HoTen = lstHDTemp[0].TENKH;
-                        dongnuoc.DiaChi = lstHDTemp[0].SO + " " + lstHDTemp[0].DUONG;
-                        dongnuoc.MLT = lstHDTemp[0].MALOTRINH;
-                        //dongnuoc.MaNV_DongNuoc = 0;
-                        //dongnuoc.CreateBy = lstHDTemp[0].MaNV_HanhThu;
-                        //dongnuoc.CreateDate = dateTu.Value;
-
-                        TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
-                        ctdongnuoc.MaDN = dongnuoc.MaDN;
-                        ctdongnuoc.MaHD = lstHDTemp[0].ID_HOADON;
-                        ctdongnuoc.SoHoaDon = lstHDTemp[0].SOHOADON;
-                        ctdongnuoc.Ky = lstHDTemp[0].KY + "/" + lstHDTemp[0].NAM;
-                        ctdongnuoc.TieuThu = (int)lstHDTemp[0].TIEUTHU;
-                        ctdongnuoc.GiaBan = (int)lstHDTemp[0].GIABAN;
-                        ctdongnuoc.ThueGTGT = (int)lstHDTemp[0].THUE;
-                        ctdongnuoc.PhiBVMT = (int)lstHDTemp[0].PHI;
-                        ctdongnuoc.TongCong = (int)lstHDTemp[0].TONGCONG;
-                        ctdongnuoc.CreateBy = CNguoiDung.MaND;
-                        ctdongnuoc.CreateDate = DateTime.Now;
-                        //ctdongnuoc.CreateBy = lstHDTemp[0].MaNV_HanhThu;
-                        //ctdongnuoc.CreateDate = dateTu.Value;
-
-                        dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
-
-                        for (int j = 1; j < lstHDTemp.Count; j++)
-                            if (lstHDTemp[0].DANHBA == lstHDTemp[j].DANHBA)
-                            {
-                                TT_CTDongNuoc ctdongnuoc2 = new TT_CTDongNuoc();
-                                ctdongnuoc2.MaDN = dongnuoc.MaDN;
-                                ctdongnuoc2.MaHD = lstHDTemp[j].ID_HOADON;
-                                ctdongnuoc2.SoHoaDon = lstHDTemp[j].SOHOADON;
-                                ctdongnuoc2.Ky = lstHDTemp[j].KY + "/" + lstHDTemp[j].NAM;
-                                ctdongnuoc2.TieuThu = (int)lstHDTemp[j].TIEUTHU;
-                                ctdongnuoc2.GiaBan = (int)lstHDTemp[j].GIABAN;
-                                ctdongnuoc2.ThueGTGT = (int)lstHDTemp[j].THUE;
-                                ctdongnuoc2.PhiBVMT = (int)lstHDTemp[j].PHI;
-                                ctdongnuoc2.TongCong = (int)lstHDTemp[j].TONGCONG;
-                                ctdongnuoc2.CreateBy = CNguoiDung.MaND;
-                                ctdongnuoc2.CreateDate = DateTime.Now;
-                                //ctdongnuoc2.CreateBy = lstHDTemp[j].MaNV_HanhThu;
-                                //ctdongnuoc2.CreateDate = dateTu.Value;
-
-                                dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc2);
-                            }
-
-                        if (_cDongNuoc.ThemDN(dongnuoc))
+                        while (lstHDTemp.Count > 0)
                         {
-                            for (int i = lstHDTemp.Count - 1; i >= 0; i--)
-                                if (lstHDTemp[i].DANHBA == dongnuoc.DanhBo)
+                            TT_DongNuoc dongnuoc = new TT_DongNuoc();
+                            dongnuoc.DanhBo = lstHDTemp[0].DANHBA;
+                            dongnuoc.HoTen = lstHDTemp[0].TENKH;
+                            dongnuoc.DiaChi = lstHDTemp[0].SO + " " + lstHDTemp[0].DUONG;
+                            dongnuoc.MLT = lstHDTemp[0].MALOTRINH;
+                            //dongnuoc.MaNV_DongNuoc = 0;
+                            //dongnuoc.CreateBy = lstHDTemp[0].MaNV_HanhThu;
+                            //dongnuoc.CreateDate = dateTu.Value;
+
+                            TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
+                            ctdongnuoc.MaDN = dongnuoc.MaDN;
+                            ctdongnuoc.MaHD = lstHDTemp[0].ID_HOADON;
+                            ctdongnuoc.SoHoaDon = lstHDTemp[0].SOHOADON;
+                            ctdongnuoc.Ky = lstHDTemp[0].KY + "/" + lstHDTemp[0].NAM;
+                            ctdongnuoc.TieuThu = (int)lstHDTemp[0].TIEUTHU;
+                            ctdongnuoc.GiaBan = (int)lstHDTemp[0].GIABAN;
+                            ctdongnuoc.ThueGTGT = (int)lstHDTemp[0].THUE;
+                            ctdongnuoc.PhiBVMT = (int)lstHDTemp[0].PHI;
+                            ctdongnuoc.TongCong = (int)lstHDTemp[0].TONGCONG;
+                            ctdongnuoc.CreateBy = CNguoiDung.MaND;
+                            ctdongnuoc.CreateDate = DateTime.Now;
+                            //ctdongnuoc.CreateBy = lstHDTemp[0].MaNV_HanhThu;
+                            //ctdongnuoc.CreateDate = dateTu.Value;
+
+                            dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
+
+                            for (int j = 1; j < lstHDTemp.Count; j++)
+                                if (lstHDTemp[0].DANHBA == lstHDTemp[j].DANHBA)
                                 {
-                                    lstHDTemp.RemoveAt(i);
+                                    TT_CTDongNuoc ctdongnuoc2 = new TT_CTDongNuoc();
+                                    ctdongnuoc2.MaDN = dongnuoc.MaDN;
+                                    ctdongnuoc2.MaHD = lstHDTemp[j].ID_HOADON;
+                                    ctdongnuoc2.SoHoaDon = lstHDTemp[j].SOHOADON;
+                                    ctdongnuoc2.Ky = lstHDTemp[j].KY + "/" + lstHDTemp[j].NAM;
+                                    ctdongnuoc2.TieuThu = (int)lstHDTemp[j].TIEUTHU;
+                                    ctdongnuoc2.GiaBan = (int)lstHDTemp[j].GIABAN;
+                                    ctdongnuoc2.ThueGTGT = (int)lstHDTemp[j].THUE;
+                                    ctdongnuoc2.PhiBVMT = (int)lstHDTemp[j].PHI;
+                                    ctdongnuoc2.TongCong = (int)lstHDTemp[j].TONGCONG;
+                                    ctdongnuoc2.CreateBy = CNguoiDung.MaND;
+                                    ctdongnuoc2.CreateDate = DateTime.Now;
+                                    //ctdongnuoc2.CreateBy = lstHDTemp[j].MaNV_HanhThu;
+                                    //ctdongnuoc2.CreateDate = dateTu.Value;
+
+                                    dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc2);
                                 }
+
+                            if (_cDongNuoc.ThemDN(dongnuoc))
+                            {
+                                for (int i = lstHDTemp.Count - 1; i >= 0; i--)
+                                    if (lstHDTemp[i].DANHBA == dongnuoc.DanhBo)
+                                    {
+                                        lstHDTemp.RemoveAt(i);
+                                    }
+                            }
+                            scope.Complete();
+                            scope.Dispose();
                         }
                     }
-                    _cHoaDon.CommitTransaction();
+                    //_cHoaDon.CommitTransaction();
                     lstHD.Items.Clear();
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    _cHoaDon.Rollback();
+                    //_cHoaDon.Rollback();
                     MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

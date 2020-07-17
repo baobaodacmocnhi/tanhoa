@@ -23,7 +23,7 @@ namespace ThuTien.GUI.ToTruong
     {
         ///Load tất cả hóa đơn đăng ngân hành thu & tồn nên hàm DangNgan & XoaDangNgan có chút thay đổi
         ///Xóa người đăng ngân nhưng vẫn giữ hình thức đăng ngân
-        
+
         string _mnu = "mnuDieuChinhDangNgan";
         CHoaDon _cHoaDon = new CHoaDon();
         CNguoiDung _cNguoiDung = new CNguoiDung();
@@ -120,7 +120,7 @@ namespace ThuTien.GUI.ToTruong
             else
                 if (tabControl.SelectedTab.Name == "tabTienDu")
                 {
-                    dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_CoDCHD( (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                    dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_CoDCHD((int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
                     CoungdgvHDCoQuan();
                 }
         }
@@ -249,14 +249,18 @@ namespace ThuTien.GUI.ToTruong
                             ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
                             bool ChuyenKhoan = false;
                             if (_cTamThu.CheckExist_Quay(item.Text))
-                                using (var scope = new TransactionScope())
+                            {
+                                var transactionOptions = new TransactionOptions();
+                                transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                 {
                                     if (_cHoaDon.DangNgan("HanhThu", item.Text, (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
                                         if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
                                             if (_cTamThu.XoaAn(item.Text))
                                                 if (_cTienDuQuay.UpdateXoa(item.Text, "Thu 2 Lần", "Thêm"))
-                                                    scope.Complete();
+                                                { scope.Complete(); scope.Dispose(); }
                                 }
+                            }
                             else
                             {
                                 _cHoaDon.DangNgan("HanhThu", item.Text, (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value);
@@ -346,7 +350,7 @@ namespace ThuTien.GUI.ToTruong
                                     }
                                 }
                             }
-                        
+
                         //_cHoaDon.SqlCommitTransaction();
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -356,7 +360,7 @@ namespace ThuTien.GUI.ToTruong
                         //_cHoaDon.SqlRollbackTransaction();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
+
                 }
             }
             else

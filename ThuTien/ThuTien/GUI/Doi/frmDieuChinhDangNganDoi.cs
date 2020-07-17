@@ -260,22 +260,30 @@ namespace ThuTien.GUI.Doi
                         {
                             if (chkChuyenKhoanBinhThuong.Checked)
                                 foreach (ListViewItem item in lstHD.Items)
-                                    using (var scope = new TransactionScope())
+                                {
+                                    var transactionOptions = new TransactionOptions();
+                                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                     {
                                         if (_cHoaDon.DangNgan("ChuyenKhoan", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
                                             if (_cTienDu.UpdateThem_Doi(item.Text, dateGiaiTrachSua.Value))
                                                 scope.Complete();
                                     }
+                                }
                             else
                                 if (chkChuyenKhoanTienMat.Checked)
                                     foreach (ListViewItem item in lstHD.Items)
                                         if (_cTienDu.GetTienDu_SoHoaDon(item.Text) > 0)
-                                            using (var scope = new TransactionScope())
+                                        {
+                                            var transactionOptions = new TransactionOptions();
+                                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                             {
                                                 if (_cHoaDon.DangNganTienMatChuyenKhoan(item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
                                                     if (_cTienDu.UpdateThemTienMat_Doi(item.Text, dateGiaiTrachSua.Value))
                                                         scope.Complete();
                                             }
+                                        }
                                         else
                                             MessageBox.Show("Lỗi, Danh Bộ không có Tiền Dư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -285,17 +293,21 @@ namespace ThuTien.GUI.Doi
                                 ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
                                 bool ChuyenKhoan = false;
                                 if (_cTamThu.CheckExist_Quay(item.Text))
-                                    using (var scope = new TransactionScope())
+                                {
+                                    var transactionOptions = new TransactionOptions();
+                                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                     {
-                                        if (_cHoaDon.DangNgan("HanhThu", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
+                                        if (_cHoaDon.DangNgan("Ton", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
                                             if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
                                                 if (_cTamThu.XoaAn(item.Text))
                                                     if (_cTienDuQuay.UpdateXoa(item.Text, "Thu 2 Lần", "Thêm"))
                                                         scope.Complete();
                                     }
+                                }
                                 else
                                 {
-                                    _cHoaDon.DangNgan("HanhThu", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value);
+                                    _cHoaDon.DangNgan("Ton", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value);
                                 }
                             }
                         btnXem.PerformClick();
@@ -332,20 +344,28 @@ namespace ThuTien.GUI.Doi
                                 foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                                     ///đăng ngân tiền mặt
                                     if (_cHoaDon.CheckDangNganChuyenKhoanTienMat(item.Cells["SoHoaDon_TG"].Value.ToString()))
-                                        using (var scope = new TransactionScope())
+                                    {
+                                        var transactionOptions = new TransactionOptions();
+                                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                         {
                                             if (_cTienDu.UpdateXoaTienMat_Doi(item.Cells["SoHoaDon_TG"].Value.ToString(), dateGiaiTrachSua.Value))
                                                 if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_TG"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                                     scope.Complete();
                                         }
+                                    }
                                     ///đăng ngân bình thường
                                     else
-                                        using (var scope = new TransactionScope())
+                                    {
+                                        var transactionOptions = new TransactionOptions();
+                                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                         {
                                             if (_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_TG"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                                 if (_cTienDu.UpdateXoa_Doi(item.Cells["SoHoaDon_TG"].Value.ToString(), dateGiaiTrachSua.Value))
                                                     scope.Complete();
                                         }
+                                    }
                             ///nhân viên khác
                             else
                                 foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
@@ -360,20 +380,28 @@ namespace ThuTien.GUI.Doi
                                     foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
                                         ///đăng ngân tiền mặt
                                         if (_cHoaDon.CheckDangNganChuyenKhoanTienMat(item.Cells["SoHoaDon_CQ"].Value.ToString()))
-                                            using (var scope = new TransactionScope())
+                                        {
+                                            var transactionOptions = new TransactionOptions();
+                                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                             {
                                                 if (_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                                                     if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_CQ"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                                         scope.Complete();
                                             }
+                                        }
                                         ///đăng ngân bình thường
                                         else
-                                            using (var scope = new TransactionScope())
+                                        {
+                                            var transactionOptions = new TransactionOptions();
+                                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                             {
                                                 if (_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_CQ"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                                     if (_cTienDu.UpdateXoa(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                                                         scope.Complete();
                                             }
+                                        }
                                 else
                                     foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
                                         if (!_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_CQ"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))

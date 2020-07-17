@@ -237,18 +237,22 @@ namespace ThuTien.GUI.HanhThu
                             ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
                             bool ChuyenKhoan = false;
                             if (_cTamThu.CheckExist_Quay(item.Text))
-                                using (var scope = new TransactionScope())
+                            {
+                                var transactionOptions = new TransactionOptions();
+                                transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                 {
                                     if (_cHoaDon.DangNgan("Ton", item.Text, CNguoiDung.MaND))
                                         if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
                                         {
                                             if (_cTamThu.XoaAn(item.Text))
                                                 if (_cTienDuQuay.UpdateXoa(item.Text, "Thu 2 Lần", "Thêm"))
-                                                    scope.Complete();
+                                                { scope.Complete(); scope.Dispose(); }
                                         }
                                         else
                                             MessageBox.Show("Lỗi thu 2 lần, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
+                            }
                             else
                             {
                                 _cHoaDon.DangNgan("Ton", item.Text, CNguoiDung.MaND);

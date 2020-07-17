@@ -456,7 +456,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             }
                             else
                             {
-                                using (var scope = new TransactionScope())
+                                using (TransactionScope scope = new TransactionScope())
                                 {
                                     try
                                     {

@@ -283,7 +283,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 return;
                             }
                             if (hoadon.DCHD == false)
-                                using (TransactionScope scope = new TransactionScope())
+                            {
+                                var transactionOptions = new TransactionOptions();
+                                transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                 {
                                     hoadon.DCHD = true;
                                     hoadon.Ngay_DCHD = DateTime.Now;
@@ -295,6 +298,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     if (_cHoaDon.Sua(hoadon))
                                         scope.Complete();
                                 }
+                            }
                         }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
@@ -323,7 +327,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                             return;
                         }
                         if (hoadon.DCHD == true)
-                            using (var scope = new TransactionScope())
+                        {
+                            var transactionOptions = new TransactionOptions();
+                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                             {
                                 hoadon.DCHD = false;
                                 hoadon.TONGCONG = (decimal)hoadon.TongCongTruoc_DCHD;
@@ -332,6 +339,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 if (_cHoaDon.Sua(hoadon))
                                     scope.Complete();
                             }
+                        }
                     }
                     dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

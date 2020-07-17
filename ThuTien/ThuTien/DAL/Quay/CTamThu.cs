@@ -322,6 +322,14 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query);
         }
 
+        public DataTable getDSSaiSot_ChuyenKhoan(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return ExecuteQuery_DataTable("select DanhBo=DANHBA,SLTamThu=COUNT(DANHBA),SLTon=(select SoLuong=COUNT(DANHBA) from HOADON where NGAYGIAITRACH is null and DANHBA=TAMTHU.DANHBA group by DANHBA)"
+                    + " from TAMTHU where CAST(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and ChuyenKhoan=1"
+                    + " group by DANHBA"
+                    + " having COUNT(DANHBA)!=(select SoLuong=COUNT(DANHBA) from HOADON where NGAYGIAITRACH is null and DANHBA=TAMTHU.DANHBA group by DANHBA)");
+        }
+
         public List<TAMTHU> GetDSBySoPhieu(decimal SoPhieu)
         {
             return _db.TAMTHUs.Where(item => item.SoPhieu == SoPhieu).ToList();

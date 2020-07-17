@@ -218,7 +218,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                     try
                     {
                         foreach (ListViewItem item in lstHD.Items)
-                            using (var scope = new TransactionScope())
+                        {
+                            var transactionOptions = new TransactionOptions();
+                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                             {
                                 if (_cHoaDon.DangNgan("ChuyenKhoan", item.Text, CNguoiDung.MaND, dateGiaiTrachSua.Value))
                                     if (_cTienDu.UpdateThem_Doi(item.Text, dateGiaiTrachSua.Value))
@@ -227,6 +230,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         scope.Dispose();
                                     }
                             }
+                        }
                         btnXem.PerformClick();
                         lstHD.Items.Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -258,7 +262,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     return;
                                 }
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
-                                using (var scope = new TransactionScope())
+                            {
+                                var transactionOptions = new TransactionOptions();
+                                transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                 {
                                     if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
                                         if (_cTienDu.UpdateXoa_Doi(item.Cells["SoHoaDon_TG"].Value.ToString(), dateGiaiTrach.Value))
@@ -267,12 +274,16 @@ namespace ThuTien.GUI.ChuyenKhoan
                                             scope.Dispose();
                                         }
                                 }
+                            }
                         }
                         else
                             if (tabControl.SelectedTab.Name == "tabCoQuan")
                             {
                                 foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
-                                    using (var scope = new TransactionScope())
+                                {
+                                    var transactionOptions = new TransactionOptions();
+                                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                     {
                                         if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
                                             if (_cTienDu.UpdateXoa_Doi(item.Cells["SoHoaDon_CQ"].Value.ToString(), dateGiaiTrach.Value))
@@ -281,6 +292,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                                 scope.Dispose();
                                             }
                                     }
+                                }
                             }
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
