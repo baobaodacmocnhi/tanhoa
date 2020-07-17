@@ -1363,7 +1363,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (dsBaoCao_KhauTru.Tables["DCHD"].Rows.Count > 0)
                     {
                         rptDSPhieuDCBD_HDDT_KhauTru rpt = new rptDSPhieuDCBD_HDDT_KhauTru();
-                        rpt.SetDataSource(dsBaoCao);
+                        rpt.SetDataSource(dsBaoCao_KhauTru);
                         frmShowBaoCao frm = new frmShowBaoCao(rpt);
                         frm.Show();
                     }
