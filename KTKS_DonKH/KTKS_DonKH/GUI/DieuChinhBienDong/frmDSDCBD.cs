@@ -1974,7 +1974,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
-                DataTable dt = _cDCBD.getDS_HoaDon_CreateDate(dateTu.Value, dateDen.Value);
+                DataTable dt = _cDCBD.getDS_HoaDonDienTuExcel_CreateDate(dateTu.Value, dateDen.Value);
 
                 //Tạo các đối tượng Excel
                 Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
@@ -2089,7 +2089,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
-                    if (bool.Parse(dr["PhieuDuocKy"].ToString()) == true && ((int.Parse(dr["Nam"].ToString()) > 2020) || (int.Parse(dr["Nam"].ToString()) == 2020 && int.Parse(dr["Ky"].ToString()) >= 7)))
+                    //if (bool.Parse(dr["PhieuDuocKy"].ToString()) == true && ((int.Parse(dr["Nam"].ToString()) > 2020) || (int.Parse(dr["Nam"].ToString()) == 2020 && int.Parse(dr["Ky"].ToString()) >= 7)))
                     {
                         arr[i, 0] = dr["Dot"].ToString();
                         arr[i, 1] = dr["Ky"].ToString();
@@ -2170,7 +2170,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                                 if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenThuTien", i].Value.ToString()) == false)
                                 {
-                                    using (TransactionScope scope = new TransactionScope())
+                                    //using (TransactionScope scope = new TransactionScope())
                                     {
                                         DCBD_ChiTietHoaDon ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                                         if (ctdchd != null)
@@ -2236,7 +2236,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 ctdchd.ModifyDate = DateTime.Now;
                                                 _cDCBD.SubmitChanges();
 
-                                                scope.Complete();
+                                                //scope.Complete();
                                             }
                                             else
                                             {
@@ -2307,7 +2307,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 ctdchd.ModifyDate = DateTime.Now;
                                                 _cDCBD.SubmitChanges();
 
-                                                scope.Complete();
+                                                //scope.Complete();
                                             }
                                         }
 
