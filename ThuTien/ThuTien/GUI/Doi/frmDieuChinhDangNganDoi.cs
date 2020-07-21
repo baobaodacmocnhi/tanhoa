@@ -240,9 +240,10 @@ namespace ThuTien.GUI.Doi
                             item.Focused = true;
                             return;
                         }
-                        if (_cDCHD.CheckExist_UpdatedHDDT(item.Text) == false)
+                        string DanhBo = "";
+                        if (_cDCHD.CheckExist_UpdatedHDDT(item.Text, ref DanhBo) == false)
                         {
-                            MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             lstHD.Focus();
                             item.Selected = true;
                             item.Focused = true;
@@ -661,9 +662,9 @@ namespace ThuTien.GUI.Doi
         {
             try
             {
-                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("Bạn có chắc chắn chuyển?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         try
                         {
@@ -673,7 +674,7 @@ namespace ThuTien.GUI.Doi
                                 {
                                     if (_cChotDangNgan.checkExist_ChotDangNgan(_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString())) == true)
                                     {
-                                        MessageBox.Show("Ngày Đăng Ngân Xóa đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Ngày Đăng Ngân Sửa đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
                                     if (_cChotDangNgan.checkExist_ChotDangNgan(dateGiaiTrachSua.Value) == true)
@@ -694,7 +695,7 @@ namespace ThuTien.GUI.Doi
                     }
                 }
                 else
-                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

@@ -849,9 +849,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     item.Selected = true;
                                     return;
                                 }
-                                if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon_TT"].Value.ToString()) == false)
+                                string DanhBo = "";
+                                if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon_TT"].Value.ToString(),ref DanhBo) == false)
                                 {
-                                    MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " +DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     item.Selected = true;
                                     return;
                                 }

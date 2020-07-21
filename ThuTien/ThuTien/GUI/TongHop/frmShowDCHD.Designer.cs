@@ -533,6 +533,7 @@
             this.btnThem.TabIndex = 29;
             this.btnThem.Text = "Chặn";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Visible = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // frmShowDCHD

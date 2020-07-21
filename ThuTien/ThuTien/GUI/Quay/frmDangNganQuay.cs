@@ -219,9 +219,10 @@ namespace ThuTien.GUI.Quay
                         item.Focused = true;
                         return;
                     }
-                    if (_cDCHD.CheckExist_UpdatedHDDT(item.Text) == false)
+                    string DanhBo = "";
+                    if (_cDCHD.CheckExist_UpdatedHDDT(item.Text, ref DanhBo) == false)
                     {
-                        MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         lstHD.Focus();
                         item.Selected = true;
                         item.Focused = true;

@@ -126,6 +126,29 @@ namespace ThuTien.GUI.Quay
                         //    item.Selected = true;
                         //    return;
                         //}
+
+                        if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                        {
+                            MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
+                            item.Selected = true;
+                            return;
+                        }
+                        if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                        {
+                            MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item.Cells["SoHoaDon"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
+                            item.Selected = true;
+                            return;
+                        }
+                        string DanhBo = "";
+                        if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon"].Value.ToString(), ref DanhBo) == false)
+                        {
+                            MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
+                            item.Selected = true;
+                            return;
+                        }
                     }
                 List<TAMTHU> lstTamThu = new List<TAMTHU>();
                 try

@@ -117,7 +117,7 @@ namespace ThuTien.DAL.TongHop
                     return _db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == MaHD && item.UpdatedHDDT == true);
         }
 
-        public bool CheckExist_UpdatedHDDT(string SoHoaDon)
+        public bool CheckExist_UpdatedHDDT(string SoHoaDon, ref string DanhBo)
         {
             //hóa đơn giấy
             if (_db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <= 6))) == true)
@@ -126,7 +126,10 @@ namespace ThuTien.DAL.TongHop
                 if (_db.DIEUCHINH_HDs.Any(item => item.SoHoaDon == SoHoaDon) == false)
                     return true;
                 else
+                {
+                    DanhBo = _db.HOADONs.SingleOrDefault(itemHD => itemHD.ID_HOADON == _db.DIEUCHINH_HDs.FirstOrDefault(item => item.SoHoaDon == SoHoaDon && item.UpdatedHDDT == true).FK_HOADON).DANHBA;
                     return _db.DIEUCHINH_HDs.Any(item => item.SoHoaDon == SoHoaDon && item.UpdatedHDDT == true);
+                }
         }
 
         public DIEUCHINH_HD Get(int MaHD)
