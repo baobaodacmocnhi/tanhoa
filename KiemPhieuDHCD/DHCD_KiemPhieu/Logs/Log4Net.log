@@ -1506,3 +1506,6 @@ The statement has been terminated.
 2019-12-10 16:39:24,315 [15192] ERROR File LinQConnection getDataTableColumn "BB_KETQUABAUCU.ID" is invalid in the ORDER BY clause because it is not contained in either an aggregate function or the GROUP BY clause.
 2019-12-13 13:19:06,431 [2120] ERROR File LinQConnection getDataTableDivide by zero error encountered.
 2019-12-13 13:20:26,635 [1076] ERROR File LinQConnection getDataTableDivide by zero error encountered.
+2020-06-26 10:43:33,800 [12044] ERROR File LinQConnection ExecuteCommand : SELECT SUM(SLKDY)  FROM BAUCU WHERE STT= 0 AND LANBC= 1 AND CONVERT(VARCHAR(50),NGAYBC,103)='26/06/2020' 
+2020-06-26 10:43:33,819 [12044] ERROR File LinQConnection ExecuteCommand : Object cannot be cast from DBNull to other types.
+2020-06-26 10:53:21,840 [10792] ERROR File LinQConnection getDataTableDivide by zero error encountered.

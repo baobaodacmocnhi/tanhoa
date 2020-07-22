@@ -201,8 +201,6 @@ namespace DHCD_KiemPhieu.View
                         + " from BB_KETQUABAUCU where (IDUngVien > 0 AND IDUngVien <= " + DropDownList2.SelectedValue.ToString() + "  ) group by IDUngVien"
                         + " order by SUM(CASE WHEN DongY=1 THEN 1 else 0 END) desc";
 
-
-
             gTK.DataSource = Class.LinQConnection.getDataTable(sql);
             gTK.DataBind();
         }

@@ -37,8 +37,8 @@ namespace DHCD_KiemPhieu.View
             Binddata();
             if (DropDownList1.SelectedIndex == 1)
             {
-                title.Text  = "..: KIỂM PHIẾU BẦU ĐẠI BIỂU THAM GIA TỔ ĐỐI THOẠI ĐỊNH KỲ NĂM 2019 :..";
-                lbKetqua.Text = "KẾT QUẢ BẦU ĐẠI BIỂU THAM GIA TỔ ĐỐI THOẠI ĐỊNH KỲ NĂM 2019";
+                title.Text  = "..: KIỂM PHIẾU BẦU ĐẠI BIỂU THAM GIA TỔ ĐỐI THOẠI ĐỊNH KỲ NĂM 2020 :..";
+                lbKetqua.Text = "KẾT QUẢ BẦU ĐẠI BIỂU THAM GIA TỔ ĐỐI THOẠI ĐỊNH KỲ NĂM 2020";
             }
             else if (DropDownList1.SelectedIndex == 2)
             {

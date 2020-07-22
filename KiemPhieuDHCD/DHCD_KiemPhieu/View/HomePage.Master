@@ -18,9 +18,8 @@
     <div id="Home">
         <div class="Header" style="background-image: url('../Image/bg_head.jpg'); text-align: center;">
             &nbsp;
-            <div style="vertical-align: middle; font-size:22px">
-                <asp:Label ID="Label1" runat="server" Font-Bold="True"  ForeColor="Yellow"
-                    Text="CÔNG TY CỔ PHẦN CẤP NƯỚC TÂN HÒA - CHƯƠNG TRÌNH KIỂM PHIẾU"></asp:Label></div>
+            <div style="vertical-align: middle; font-size: 22px">
+                <asp:Label ID="Label1" runat="server" Font-Bold="True" ForeColor="Yellow" Text="CÔNG TY CỔ PHẦN CẤP NƯỚC TÂN HÒA - CHƯƠNG TRÌNH KIỂM PHIẾU"></asp:Label></div>
         </div>
         <div class="Menu">
             <div style="width: 100%">
@@ -51,9 +50,11 @@
             </li> --%>
                     <%--người lao động--%>
                     <%--<li id="mnBauCuNLD" class="top"><a href="pBauCuDHCD.aspx" id="BauCuNLD" class="top_link">
+                        <span>BẦU CỬ NLĐ</span></a></li>--%>
+                    <li id="mnBauCuNLD" class="top"><a href="pBauCuNLD.aspx" id="BauCuNLD" class="top_link">
                         <span>BẦU CỬ NLĐ</span></a></li>
                     <li id="mnBauCuCongDoan" class="top"><a href="pBauCuCongDoan.aspx" id="BauCuCongDoan"
-                        class="top_link"><span>BẦU CỬ CÔNG ĐOÀN</span></a></li>--%>
+                        class="top_link"><span>BẦU CỬ CÔNG ĐOÀN</span></a></li>
                 </ul>
             </div>
         </div>
