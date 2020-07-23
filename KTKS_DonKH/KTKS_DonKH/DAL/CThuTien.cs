@@ -215,6 +215,27 @@ namespace KTKS_DonKH.DAL
             return a;
         }
 
+        public bool Them(DIEUCHINH_HD dchd)
+        {
+            try
+            {
+                //if (_db.DIEUCHINH_HDs.Count() > 0)
+                //    hoadon.ID_DIEUCHINH_HD = _db.DIEUCHINH_HDs.Max(item => item.ID_DIEUCHINH_HD) + 1;
+                //else
+                //    hoadon.ID_DIEUCHINH_HD = 1;
+                dchd.CreateDate = DateTime.Now;
+                db.DIEUCHINH_HDs.InsertOnSubmit(dchd);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                db = new dbThuTienDataContext();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public DIEUCHINH_HD get_DCHD(string SoHoaDon)
         {
             return db.DIEUCHINH_HDs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);

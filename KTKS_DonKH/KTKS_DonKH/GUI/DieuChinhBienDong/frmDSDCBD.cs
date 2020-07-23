@@ -2290,6 +2290,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 dchd1.TIEUTHU_DC = ctdchd.TieuThu_BD;
 
                                                 dchd1.CreateDate = DateTime.Now;
+                                                _cThuTien.Them(dchd1);
                                                 ///lưu lịch sử
                                                 _cThuTien.LuuLichSuDC(dchd1); ;
 
