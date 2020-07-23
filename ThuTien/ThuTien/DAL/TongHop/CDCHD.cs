@@ -127,7 +127,9 @@ namespace ThuTien.DAL.TongHop
                     return true;
                 else
                 {
-                    DanhBo = _db.HOADONs.SingleOrDefault(itemHD => itemHD.ID_HOADON == _db.DIEUCHINH_HDs.FirstOrDefault(item => item.SoHoaDon == SoHoaDon && item.UpdatedHDDT == true).FK_HOADON).DANHBA;
+                    HOADON hd = _db.HOADONs.SingleOrDefault(itemHD => itemHD.ID_HOADON == _db.DIEUCHINH_HDs.FirstOrDefault(item => item.SoHoaDon == SoHoaDon && item.UpdatedHDDT == true).FK_HOADON);
+                    if (hd != null)
+                        DanhBo = hd.DANHBA + " " + hd.KY + "/" + hd.NAM;
                     return _db.DIEUCHINH_HDs.Any(item => item.SoHoaDon == SoHoaDon && item.UpdatedHDDT == true);
                 }
         }
@@ -177,7 +179,6 @@ namespace ThuTien.DAL.TongHop
             DIEUCHINH_HD dchd = _db.DIEUCHINH_HDs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
             if (dchd != null)
             {
-
                 return dchd;
             }
             else

@@ -392,9 +392,12 @@ namespace ThuTien.GUI.ToTruong
                     //    if (radPhoGiamDoc.Checked)
                     //        dr1["NguoiKy"] = "P.GIÁM ĐỐC";
                     if (chkChuKy.Checked == true)
+                    {
                         dr1["ChuKy"] = true;
+                        dr1["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                    }
                     if (chkTenKy.Checked == true)
-                        dr1["NguoiKy"] = "Nguyễn Ngọc Ẩn";
+                        dr1["NguoiKy"] =CNguoiKy.getNguoiKy();
 
                     ds.Tables["TongHopNo"].Rows.Add(dr1);
                     if (radA4.Checked)
@@ -570,9 +573,12 @@ namespace ThuTien.GUI.ToTruong
             //    if (radPhoGiamDoc.Checked)
             //        dr1["NguoiKy"] = "P.GIÁM ĐỐC";
             if (chkChuKy.Checked == true)
+            {
                 dr1["ChuKy"] = true;
+                dr1["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+            }
             if (chkTenKy.Checked == true)
-                dr1["NguoiKy"] = "Nguyễn Ngọc Ẩn";
+                dr1["NguoiKy"] = CNguoiKy.getNguoiKy();
 
             ds.Tables["TongHopNo"].Rows.Add(dr1);
             if (radA4.Checked)

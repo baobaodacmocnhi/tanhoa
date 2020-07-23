@@ -179,7 +179,10 @@ namespace ThuTien.GUI.Quay
                 dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hd.MaNV_HanhThu.Value);
             dr["NhanVienQuay"] = CNguoiDung.HoTen;
             if (chkChuKy.Checked)
+            {
                 dr["ChuKy"] = true;
+                dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+            }
 
             ds.Tables["PhieuTamThu"].Rows.Add(dr);
 

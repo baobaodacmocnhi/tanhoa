@@ -16,6 +16,7 @@ using ThuTien.GUI.BaoCao;
 using ThuTien.DAL;
 using ThuTien.DAL.Quay;
 using CrystalDecisions.CrystalReports.Engine;
+using ThuTien.DAL.Doi;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -455,9 +456,12 @@ namespace ThuTien.GUI.ToTruong
                         if (!string.IsNullOrEmpty(item["MaNV_DongNuoc"].ToString()))
                             dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["MaNV_DongNuoc"].ToString()));
                         if (chkChuKy.Checked)
+                        {
                             dr["ChuKy"] = true;
+                            dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                        }
                         if (chkCoTenNguoiKy.Checked)
-                            dr["NguoiKy"] = "Nguyễn Ngọc Ẩn";
+                            dr["NguoiKy"] = CNguoiKy.getNguoiKy();
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
@@ -781,9 +785,12 @@ namespace ThuTien.GUI.ToTruong
                     if (!string.IsNullOrEmpty(item["MaNV_DongNuoc"].ToString()))
                         dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["MaNV_DongNuoc"].ToString()));
                     if (chkChuKy.Checked)
+                    {
                         dr["ChuKy"] = true;
+                        dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                    }
                     if (chkCoTenNguoiKy.Checked)
-                        dr["NguoiKy"] = "Nguyễn Ngọc Ẩn";
+                        dr["NguoiKy"] =CNguoiKy.getNguoiKy();
 
                     dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 

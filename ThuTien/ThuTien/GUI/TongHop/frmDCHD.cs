@@ -526,19 +526,30 @@ namespace ThuTien.GUI.TongHop
                             DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
                             foreach (DataRow item in dtExcel.Rows)
+                            {
                                 if (string.IsNullOrEmpty(item[20].ToString()) == false && item[20].ToString() != "")
-                                    using (TransactionScope scope = new TransactionScope())
-                                    {
-                                        DIEUCHINH_HD dchd = _cDCHD.get(item[5].ToString());
-                                        if (dchd != null & dchd.UpdatedHDDT == false)
+                                {
+                                    DIEUCHINH_HD dchd = _cDCHD.get(item[5].ToString());
+                                    if (dchd != null & dchd.UpdatedHDDT == false)
+                                        using (TransactionScope scope = new TransactionScope())
                                         {
                                             dchd.UpdatedHDDT = true;
                                             dchd.SoHoaDonMoi = item[20].ToString();
                                             if (_cDCHD.Sua(dchd) == true)
-                                                if (_cDCHD.ExecuteNonQuery("update HOADON set SoHoaDonCu=SoHoaDon,SoHoaDon='" + dchd.SoHoaDonMoi + "' where ID_HOADON=" + dchd.FK_HOADON) == true)
+                                            //if (_cDCHD.ExecuteNonQuery("update HOADON set SoHoaDonCu=SoHoaDon,SoHoaDon='" + dchd.SoHoaDonMoi + "' where ID_HOADON=" + dchd.FK_HOADON) == true)
+                                            {
+                                                HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
+                                                hd.SoHoaDonCu = hd.SOHOADON;
+                                                hd.SOHOADON = dchd.SoHoaDonMoi;
+                                                if (_cHoaDon.Sua(hd) == true)
+                                                {
                                                     scope.Complete();
+                                                    scope.Dispose();
+                                                }
+                                            }
                                         }
-                                    }
+                                }
+                            }
                             MessageBox.Show("Đã xử lý xong, Vui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                 }

@@ -42,6 +42,28 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvHDTuGia = new System.Windows.Forms.DataGridView();
+            this.In_TG = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ID_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoHoaDon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoPhieu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MLT_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoPhatHanh_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HopDong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.To_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phuong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quan_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMucHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem = new System.Windows.Forms.Button();
             this.btnIn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -92,28 +114,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtTieuDe = new System.Windows.Forms.TextBox();
             this.btnInTieuDe = new System.Windows.Forms.Button();
-            this.In_TG = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ID_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoHoaDon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoPhieu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ky_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MLT_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoPhatHanh_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HopDong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBieu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanhThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.To_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phuong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quan_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayGiaiTrach_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMucHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
@@ -229,6 +229,160 @@
             this.dgvHDTuGia.TabIndex = 11;
             this.dgvHDTuGia.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDTuGia_CellFormatting);
             this.dgvHDTuGia.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDTuGia_RowPostPaint);
+            // 
+            // In_TG
+            // 
+            this.In_TG.DataPropertyName = "In";
+            this.In_TG.FalseValue = "false";
+            this.In_TG.HeaderText = "In";
+            this.In_TG.IndeterminateValue = "false";
+            this.In_TG.Name = "In_TG";
+            this.In_TG.TrueValue = "true";
+            this.In_TG.Visible = false;
+            this.In_TG.Width = 30;
+            // 
+            // ID_TG
+            // 
+            this.ID_TG.DataPropertyName = "ID";
+            this.ID_TG.HeaderText = "MaQT";
+            this.ID_TG.Name = "ID_TG";
+            this.ID_TG.Visible = false;
+            // 
+            // SoHoaDon_TG
+            // 
+            this.SoHoaDon_TG.DataPropertyName = "SoHoaDon";
+            this.SoHoaDon_TG.HeaderText = "Số Hóa Đơn";
+            this.SoHoaDon_TG.Name = "SoHoaDon_TG";
+            // 
+            // SoPhieu_TG
+            // 
+            this.SoPhieu_TG.DataPropertyName = "SoPhieu";
+            this.SoPhieu_TG.HeaderText = "SoPhieu";
+            this.SoPhieu_TG.Name = "SoPhieu_TG";
+            this.SoPhieu_TG.Visible = false;
+            // 
+            // Ky_TG
+            // 
+            this.Ky_TG.DataPropertyName = "Ky";
+            this.Ky_TG.HeaderText = "Kỳ";
+            this.Ky_TG.Name = "Ky_TG";
+            this.Ky_TG.Width = 50;
+            // 
+            // MLT_TG
+            // 
+            this.MLT_TG.DataPropertyName = "MLT";
+            this.MLT_TG.HeaderText = "MLT";
+            this.MLT_TG.Name = "MLT_TG";
+            this.MLT_TG.Width = 80;
+            // 
+            // SoPhatHanh_TG
+            // 
+            this.SoPhatHanh_TG.DataPropertyName = "SoPhatHanh";
+            this.SoPhatHanh_TG.HeaderText = "Số Phát Hành";
+            this.SoPhatHanh_TG.Name = "SoPhatHanh_TG";
+            // 
+            // DanhBo_TG
+            // 
+            this.DanhBo_TG.DataPropertyName = "DanhBo";
+            this.DanhBo_TG.HeaderText = "Danh Bộ";
+            this.DanhBo_TG.Name = "DanhBo_TG";
+            // 
+            // HoTen_TG
+            // 
+            this.HoTen_TG.DataPropertyName = "HoTen";
+            this.HoTen_TG.HeaderText = "Khách Hàng";
+            this.HoTen_TG.Name = "HoTen_TG";
+            this.HoTen_TG.Width = 150;
+            // 
+            // DiaChi_TG
+            // 
+            this.DiaChi_TG.DataPropertyName = "DiaChi";
+            this.DiaChi_TG.HeaderText = "Địa Chỉ";
+            this.DiaChi_TG.Name = "DiaChi_TG";
+            this.DiaChi_TG.Width = 200;
+            // 
+            // HopDong_TG
+            // 
+            this.HopDong_TG.DataPropertyName = "HopDong";
+            this.HopDong_TG.HeaderText = "HopDong";
+            this.HopDong_TG.Name = "HopDong_TG";
+            this.HopDong_TG.Visible = false;
+            // 
+            // TongCong_TG
+            // 
+            this.TongCong_TG.DataPropertyName = "TongCong";
+            this.TongCong_TG.HeaderText = "Tổng Cộng";
+            this.TongCong_TG.Name = "TongCong_TG";
+            // 
+            // GiaBieu_TG
+            // 
+            this.GiaBieu_TG.DataPropertyName = "GiaBieu";
+            this.GiaBieu_TG.HeaderText = "GiaBieu";
+            this.GiaBieu_TG.Name = "GiaBieu_TG";
+            this.GiaBieu_TG.Visible = false;
+            // 
+            // HanhThu_TG
+            // 
+            this.HanhThu_TG.DataPropertyName = "HanhThu";
+            this.HanhThu_TG.HeaderText = "HanhThu";
+            this.HanhThu_TG.Name = "HanhThu_TG";
+            this.HanhThu_TG.Visible = false;
+            // 
+            // To_TG
+            // 
+            this.To_TG.DataPropertyName = "To";
+            this.To_TG.HeaderText = "To";
+            this.To_TG.Name = "To_TG";
+            this.To_TG.Visible = false;
+            // 
+            // Phuong_TG
+            // 
+            this.Phuong_TG.DataPropertyName = "Phuong";
+            this.Phuong_TG.HeaderText = "Phuong";
+            this.Phuong_TG.Name = "Phuong_TG";
+            this.Phuong_TG.Visible = false;
+            // 
+            // Quan_TG
+            // 
+            this.Quan_TG.DataPropertyName = "Quan";
+            this.Quan_TG.HeaderText = "Quan";
+            this.Quan_TG.Name = "Quan_TG";
+            this.Quan_TG.Visible = false;
+            // 
+            // NgayGiaiTrach_TG
+            // 
+            this.NgayGiaiTrach_TG.DataPropertyName = "NgayGiaiTrach";
+            this.NgayGiaiTrach_TG.HeaderText = "NgayGiaiTrach";
+            this.NgayGiaiTrach_TG.Name = "NgayGiaiTrach_TG";
+            this.NgayGiaiTrach_TG.Visible = false;
+            // 
+            // GiaBieu
+            // 
+            this.GiaBieu.DataPropertyName = "GiaBieu";
+            this.GiaBieu.HeaderText = "GiaBieu";
+            this.GiaBieu.Name = "GiaBieu";
+            this.GiaBieu.Visible = false;
+            // 
+            // DinhMuc
+            // 
+            this.DinhMuc.DataPropertyName = "DinhMuc";
+            this.DinhMuc.HeaderText = "DinhMuc";
+            this.DinhMuc.Name = "DinhMuc";
+            this.DinhMuc.Visible = false;
+            // 
+            // DinhMucHN
+            // 
+            this.DinhMucHN.DataPropertyName = "DinhMucHN";
+            this.DinhMucHN.HeaderText = "DinhMucHN";
+            this.DinhMucHN.Name = "DinhMucHN";
+            this.DinhMucHN.Visible = false;
+            // 
+            // TieuThu
+            // 
+            this.TieuThu.DataPropertyName = "TieuThu";
+            this.TieuThu.HeaderText = "TieuThu";
+            this.TieuThu.Name = "TieuThu";
+            this.TieuThu.Visible = false;
             // 
             // btnXem
             // 
@@ -714,160 +868,6 @@
             this.btnInTieuDe.Text = "In";
             this.btnInTieuDe.UseVisualStyleBackColor = true;
             this.btnInTieuDe.Click += new System.EventHandler(this.btnInTieuDe_Click);
-            // 
-            // In_TG
-            // 
-            this.In_TG.DataPropertyName = "In";
-            this.In_TG.FalseValue = "false";
-            this.In_TG.HeaderText = "In";
-            this.In_TG.IndeterminateValue = "false";
-            this.In_TG.Name = "In_TG";
-            this.In_TG.TrueValue = "true";
-            this.In_TG.Visible = false;
-            this.In_TG.Width = 30;
-            // 
-            // ID_TG
-            // 
-            this.ID_TG.DataPropertyName = "ID";
-            this.ID_TG.HeaderText = "MaQT";
-            this.ID_TG.Name = "ID_TG";
-            this.ID_TG.Visible = false;
-            // 
-            // SoHoaDon_TG
-            // 
-            this.SoHoaDon_TG.DataPropertyName = "SoHoaDon";
-            this.SoHoaDon_TG.HeaderText = "Số Hóa Đơn";
-            this.SoHoaDon_TG.Name = "SoHoaDon_TG";
-            // 
-            // SoPhieu_TG
-            // 
-            this.SoPhieu_TG.DataPropertyName = "SoPhieu";
-            this.SoPhieu_TG.HeaderText = "SoPhieu";
-            this.SoPhieu_TG.Name = "SoPhieu_TG";
-            this.SoPhieu_TG.Visible = false;
-            // 
-            // Ky_TG
-            // 
-            this.Ky_TG.DataPropertyName = "Ky";
-            this.Ky_TG.HeaderText = "Kỳ";
-            this.Ky_TG.Name = "Ky_TG";
-            this.Ky_TG.Width = 50;
-            // 
-            // MLT_TG
-            // 
-            this.MLT_TG.DataPropertyName = "MLT";
-            this.MLT_TG.HeaderText = "MLT";
-            this.MLT_TG.Name = "MLT_TG";
-            this.MLT_TG.Width = 80;
-            // 
-            // SoPhatHanh_TG
-            // 
-            this.SoPhatHanh_TG.DataPropertyName = "SoPhatHanh";
-            this.SoPhatHanh_TG.HeaderText = "Số Phát Hành";
-            this.SoPhatHanh_TG.Name = "SoPhatHanh_TG";
-            // 
-            // DanhBo_TG
-            // 
-            this.DanhBo_TG.DataPropertyName = "DanhBo";
-            this.DanhBo_TG.HeaderText = "Danh Bộ";
-            this.DanhBo_TG.Name = "DanhBo_TG";
-            // 
-            // HoTen_TG
-            // 
-            this.HoTen_TG.DataPropertyName = "HoTen";
-            this.HoTen_TG.HeaderText = "Khách Hàng";
-            this.HoTen_TG.Name = "HoTen_TG";
-            this.HoTen_TG.Width = 150;
-            // 
-            // DiaChi_TG
-            // 
-            this.DiaChi_TG.DataPropertyName = "DiaChi";
-            this.DiaChi_TG.HeaderText = "Địa Chỉ";
-            this.DiaChi_TG.Name = "DiaChi_TG";
-            this.DiaChi_TG.Width = 200;
-            // 
-            // HopDong_TG
-            // 
-            this.HopDong_TG.DataPropertyName = "HopDong";
-            this.HopDong_TG.HeaderText = "HopDong";
-            this.HopDong_TG.Name = "HopDong_TG";
-            this.HopDong_TG.Visible = false;
-            // 
-            // TongCong_TG
-            // 
-            this.TongCong_TG.DataPropertyName = "TongCong";
-            this.TongCong_TG.HeaderText = "Tổng Cộng";
-            this.TongCong_TG.Name = "TongCong_TG";
-            // 
-            // GiaBieu_TG
-            // 
-            this.GiaBieu_TG.DataPropertyName = "GiaBieu";
-            this.GiaBieu_TG.HeaderText = "GiaBieu";
-            this.GiaBieu_TG.Name = "GiaBieu_TG";
-            this.GiaBieu_TG.Visible = false;
-            // 
-            // HanhThu_TG
-            // 
-            this.HanhThu_TG.DataPropertyName = "HanhThu";
-            this.HanhThu_TG.HeaderText = "HanhThu";
-            this.HanhThu_TG.Name = "HanhThu_TG";
-            this.HanhThu_TG.Visible = false;
-            // 
-            // To_TG
-            // 
-            this.To_TG.DataPropertyName = "To";
-            this.To_TG.HeaderText = "To";
-            this.To_TG.Name = "To_TG";
-            this.To_TG.Visible = false;
-            // 
-            // Phuong_TG
-            // 
-            this.Phuong_TG.DataPropertyName = "Phuong";
-            this.Phuong_TG.HeaderText = "Phuong";
-            this.Phuong_TG.Name = "Phuong_TG";
-            this.Phuong_TG.Visible = false;
-            // 
-            // Quan_TG
-            // 
-            this.Quan_TG.DataPropertyName = "Quan";
-            this.Quan_TG.HeaderText = "Quan";
-            this.Quan_TG.Name = "Quan_TG";
-            this.Quan_TG.Visible = false;
-            // 
-            // NgayGiaiTrach_TG
-            // 
-            this.NgayGiaiTrach_TG.DataPropertyName = "NgayGiaiTrach";
-            this.NgayGiaiTrach_TG.HeaderText = "NgayGiaiTrach";
-            this.NgayGiaiTrach_TG.Name = "NgayGiaiTrach_TG";
-            this.NgayGiaiTrach_TG.Visible = false;
-            // 
-            // GiaBieu
-            // 
-            this.GiaBieu.DataPropertyName = "GiaBieu";
-            this.GiaBieu.HeaderText = "GiaBieu";
-            this.GiaBieu.Name = "GiaBieu";
-            this.GiaBieu.Visible = false;
-            // 
-            // DinhMuc
-            // 
-            this.DinhMuc.DataPropertyName = "DinhMuc";
-            this.DinhMuc.HeaderText = "DinhMuc";
-            this.DinhMuc.Name = "DinhMuc";
-            this.DinhMuc.Visible = false;
-            // 
-            // DinhMucHN
-            // 
-            this.DinhMucHN.DataPropertyName = "DinhMucHN";
-            this.DinhMucHN.HeaderText = "DinhMucHN";
-            this.DinhMucHN.Name = "DinhMucHN";
-            this.DinhMucHN.Visible = false;
-            // 
-            // TieuThu
-            // 
-            this.TieuThu.DataPropertyName = "TieuThu";
-            this.TieuThu.HeaderText = "TieuThu";
-            this.TieuThu.Name = "TieuThu";
-            this.TieuThu.Visible = false;
             // 
             // frmQuetTam
             // 

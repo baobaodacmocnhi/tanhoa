@@ -80,6 +80,8 @@
             this.TongHDXoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCongXoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCoQuan = new System.Windows.Forms.TabPage();
+            this.txtTongCongDienThoai_CQ = new System.Windows.Forms.TextBox();
+            this.txtTongCongGiaiTrach_CQ = new System.Windows.Forms.TextBox();
             this.txtTongXoa_CQ = new System.Windows.Forms.TextBox();
             this.txtTongPhieuBao2_CQ = new System.Windows.Forms.TextBox();
             this.btnTheoDoi = new System.Windows.Forms.Button();
@@ -119,8 +121,6 @@
             this.InPhieuBao_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InPhieuBao2_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.XoaDangNgan_Ngay_DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtTongCongGiaiTrach_CQ = new System.Windows.Forms.TextBox();
-            this.txtTongCongDienThoai_CQ = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -180,7 +180,7 @@
             this.tabTuGia.Location = new System.Drawing.Point(4, 22);
             this.tabTuGia.Name = "tabTuGia";
             this.tabTuGia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTuGia.Size = new System.Drawing.Size(1182, 429);
+            this.tabTuGia.Size = new System.Drawing.Size(1267, 448);
             this.tabTuGia.TabIndex = 0;
             this.tabTuGia.Text = "Hóa Đơn";
             this.tabTuGia.UseVisualStyleBackColor = true;
@@ -554,6 +554,24 @@
             this.tabCoQuan.TabIndex = 1;
             this.tabCoQuan.Text = "Theo Dõi Điện Thoại";
             this.tabCoQuan.UseVisualStyleBackColor = true;
+            // 
+            // txtTongCongDienThoai_CQ
+            // 
+            this.txtTongCongDienThoai_CQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongCongDienThoai_CQ.Location = new System.Drawing.Point(907, 423);
+            this.txtTongCongDienThoai_CQ.Name = "txtTongCongDienThoai_CQ";
+            this.txtTongCongDienThoai_CQ.Size = new System.Drawing.Size(100, 20);
+            this.txtTongCongDienThoai_CQ.TabIndex = 42;
+            this.txtTongCongDienThoai_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTongCongGiaiTrach_CQ
+            // 
+            this.txtTongCongGiaiTrach_CQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongCongGiaiTrach_CQ.Location = new System.Drawing.Point(807, 423);
+            this.txtTongCongGiaiTrach_CQ.Name = "txtTongCongGiaiTrach_CQ";
+            this.txtTongCongGiaiTrach_CQ.Size = new System.Drawing.Size(100, 20);
+            this.txtTongCongGiaiTrach_CQ.TabIndex = 41;
+            this.txtTongCongGiaiTrach_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongXoa_CQ
             // 
@@ -951,6 +969,7 @@
             this.DangNgan_DienThoai.HeaderText = "Điện Thoại";
             this.DangNgan_DienThoai.Name = "DangNgan_DienThoai";
             this.DangNgan_DienThoai.ReadOnly = true;
+            this.DangNgan_DienThoai.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.DangNgan_DienThoai.Width = 50;
             // 
             // InPhieuBao_Ngay
@@ -960,7 +979,6 @@
             this.InPhieuBao_Ngay.Name = "InPhieuBao_Ngay";
             this.InPhieuBao_Ngay.ReadOnly = true;
             this.InPhieuBao_Ngay.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.InPhieuBao_Ngay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // InPhieuBao2_Ngay
             // 
@@ -975,24 +993,6 @@
             this.XoaDangNgan_Ngay_DienThoai.HeaderText = "Xóa Điện Thoại";
             this.XoaDangNgan_Ngay_DienThoai.Name = "XoaDangNgan_Ngay_DienThoai";
             this.XoaDangNgan_Ngay_DienThoai.ReadOnly = true;
-            // 
-            // txtTongCongGiaiTrach_CQ
-            // 
-            this.txtTongCongGiaiTrach_CQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongCongGiaiTrach_CQ.Location = new System.Drawing.Point(807, 423);
-            this.txtTongCongGiaiTrach_CQ.Name = "txtTongCongGiaiTrach_CQ";
-            this.txtTongCongGiaiTrach_CQ.Size = new System.Drawing.Size(100, 20);
-            this.txtTongCongGiaiTrach_CQ.TabIndex = 41;
-            this.txtTongCongGiaiTrach_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtTongCongDienThoai_CQ
-            // 
-            this.txtTongCongDienThoai_CQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongCongDienThoai_CQ.Location = new System.Drawing.Point(907, 423);
-            this.txtTongCongDienThoai_CQ.Name = "txtTongCongDienThoai_CQ";
-            this.txtTongCongDienThoai_CQ.Size = new System.Drawing.Size(100, 20);
-            this.txtTongCongDienThoai_CQ.TabIndex = 42;
-            this.txtTongCongDienThoai_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmKiemTraDangNganTo
             // 
@@ -1100,6 +1100,8 @@
         private System.Windows.Forms.TextBox txtTongXoa_CQ;
         private System.Windows.Forms.TextBox txtTongPhieuBao2_CQ;
         private System.Windows.Forms.DataGridView dgvHDCoQuan;
+        private System.Windows.Forms.TextBox txtTongCongDienThoai_CQ;
+        private System.Windows.Forms.TextBox txtTongCongGiaiTrach_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
@@ -1113,7 +1115,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn InPhieuBao_Ngay;
         private System.Windows.Forms.DataGridViewTextBoxColumn InPhieuBao2_Ngay;
         private System.Windows.Forms.DataGridViewTextBoxColumn XoaDangNgan_Ngay_DienThoai;
-        private System.Windows.Forms.TextBox txtTongCongDienThoai_CQ;
-        private System.Windows.Forms.TextBox txtTongCongGiaiTrach_CQ;
     }
 }
