@@ -55,6 +55,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnInDS_ThongKeNhomDon_3To = new System.Windows.Forms.Button();
             this.panelTo = new System.Windows.Forms.Panel();
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -82,7 +83,8 @@
             this.dateDen_ThongKeNhomDon_Phong = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.btnInDS_ThongKeNhomDon_3To = new System.Windows.Forms.Button();
+            this.cmbNhanVienKiemTra = new System.Windows.Forms.ComboBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian_LichSuChuyenDon.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -244,6 +246,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cmbNhanVienKiemTra);
+            this.groupBox3.Controls.Add(this.label32);
             this.groupBox3.Controls.Add(this.chkChuaKT_DSChuyenKTXM);
             this.groupBox3.Controls.Add(this.btnBaoCao_DSChuyenKTXM);
             this.groupBox3.Controls.Add(this.cmbTimTheo_DSChuyenKTXM);
@@ -253,7 +257,7 @@
             this.groupBox3.Controls.Add(this.panel_KhoangThoiGian_DSChuyenKTXM);
             this.groupBox3.Location = new System.Drawing.Point(12, 107);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(523, 89);
+            this.groupBox3.Size = new System.Drawing.Size(778, 89);
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh Sách Chuyển KTXM (ngày chuyển)";
@@ -270,7 +274,7 @@
             // 
             // btnBaoCao_DSChuyenKTXM
             // 
-            this.btnBaoCao_DSChuyenKTXM.Location = new System.Drawing.Point(442, 32);
+            this.btnBaoCao_DSChuyenKTXM.Location = new System.Drawing.Point(598, 37);
             this.btnBaoCao_DSChuyenKTXM.Name = "btnBaoCao_DSChuyenKTXM";
             this.btnBaoCao_DSChuyenKTXM.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_DSChuyenKTXM.TabIndex = 37;
@@ -380,6 +384,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thống Kê Theo Nhóm Đơn (ngày nhận) - Tổ GD, Tổ Tân Bình, Tân Phú, Bấm Chì - Chuyể" +
                 "n Đơn";
+            // 
+            // btnInDS_ThongKeNhomDon_3To
+            // 
+            this.btnInDS_ThongKeNhomDon_3To.Location = new System.Drawing.Point(189, 40);
+            this.btnInDS_ThongKeNhomDon_3To.Name = "btnInDS_ThongKeNhomDon_3To";
+            this.btnInDS_ThongKeNhomDon_3To.Size = new System.Drawing.Size(75, 25);
+            this.btnInDS_ThongKeNhomDon_3To.TabIndex = 29;
+            this.btnInDS_ThongKeNhomDon_3To.Text = "In DS";
+            this.btnInDS_ThongKeNhomDon_3To.UseVisualStyleBackColor = true;
+            this.btnInDS_ThongKeNhomDon_3To.Click += new System.EventHandler(this.btnInDS_ThongKeNhomDon_3To_Click);
             // 
             // panelTo
             // 
@@ -642,15 +656,23 @@
             this.label16.TabIndex = 16;
             this.label16.Text = "Đến Ngày:";
             // 
-            // btnInDS_ThongKeNhomDon_3To
+            // cmbNhanVienKiemTra
             // 
-            this.btnInDS_ThongKeNhomDon_3To.Location = new System.Drawing.Point(189, 40);
-            this.btnInDS_ThongKeNhomDon_3To.Name = "btnInDS_ThongKeNhomDon_3To";
-            this.btnInDS_ThongKeNhomDon_3To.Size = new System.Drawing.Size(75, 25);
-            this.btnInDS_ThongKeNhomDon_3To.TabIndex = 29;
-            this.btnInDS_ThongKeNhomDon_3To.Text = "In DS";
-            this.btnInDS_ThongKeNhomDon_3To.UseVisualStyleBackColor = true;
-            this.btnInDS_ThongKeNhomDon_3To.Click += new System.EventHandler(this.btnInDS_ThongKeNhomDon_3To_Click);
+            this.cmbNhanVienKiemTra.FormattingEnabled = true;
+            this.cmbNhanVienKiemTra.Location = new System.Drawing.Point(442, 37);
+            this.cmbNhanVienKiemTra.MaxDropDownItems = 10;
+            this.cmbNhanVienKiemTra.Name = "cmbNhanVienKiemTra";
+            this.cmbNhanVienKiemTra.Size = new System.Drawing.Size(150, 24);
+            this.cmbNhanVienKiemTra.TabIndex = 41;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(442, 18);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(127, 16);
+            this.label32.TabIndex = 40;
+            this.label32.Text = "Nhân Viên Kiểm Tra";
             // 
             // frmBaoCaoDonTu
             // 
@@ -747,5 +769,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnInDS_ThongKeNhomDon_3To;
+        private System.Windows.Forms.ComboBox cmbNhanVienKiemTra;
+        private System.Windows.Forms.Label label32;
     }
 }
