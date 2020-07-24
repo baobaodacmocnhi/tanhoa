@@ -52,6 +52,7 @@ namespace ThuTien.GUI.TongHop
             if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
             {
                 dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim());
+                dgvDCHD.DataSource = _cDCHD.getDS_DanhBo(txtDanhBo.Text.Trim());
             }
         }
 
@@ -93,13 +94,53 @@ namespace ThuTien.GUI.TongHop
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (chkChuaCapNhat.Checked == true)
-                dgvDCHD.DataSource = _cDCHD.getDS_ChuaCapNhat();
-            else
-                if (chkTrongKy.Checked)
-                    dgvDCHD.DataSource = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+            DataTable dt = new DataTable();
+
+            if (radGiay.Checked == true)
+            {
+                if (chkTV.Checked == true && chkTong.Checked == true)
+                {
+                    dt = _cDCHD.getDS_Giay_TV_Tong_ChuaCapNhat();
+                }
                 else
-                    dgvDCHD.DataSource = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+                    if (chkTV.Checked == true)
+                    {
+                        dt = _cDCHD.getDS_Giay_TV_ChuaCapNhat();
+                    }
+                    else if (chkTong.Checked == true)
+                    {
+                        dt = _cDCHD.getDS_Giay_Tong_ChuaCapNhat();
+                    }
+                    else
+                        if (chkTrongKy.Checked)
+                            dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        else
+                            dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+            }
+            else
+                if (radDienTu.Checked == true)
+                {
+                    if (chkTV.Checked == true && chkTong.Checked == true)
+                    {
+                        dt = _cDCHD.getDS_HDDT_TV_Tong_ChuaCapNhat();
+                    }
+                    else
+                        if (chkTV.Checked == true)
+                        {
+                            dt = _cDCHD.getDS_HDDT_TV_ChuaCapNhat();
+                        }
+                        else if (chkTong.Checked == true)
+                        {
+                            dt = _cDCHD.getDS_HDDT_Tong_ChuaCapNhat();
+                        }
+                        else
+                            if (chkTrongKy.Checked)
+                                dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                            else
+                                dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+                }
+
+            dgvDCHD.DataSource = dt;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -561,6 +602,51 @@ namespace ThuTien.GUI.TongHop
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void chkTV_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkTV.Checked == true)
+            {
+                dateTu.Enabled = false;
+                dateDen.Enabled = false;
+            }
+            else
+                if (chkTong.Checked == true)
+                {
+                    dateTu.Enabled = false;
+                    dateDen.Enabled = false;
+                }
+                else
+                {
+                    dateTu.Enabled = true;
+                    dateDen.Enabled = true;
+                }
+        }
+
+
+        private void chkTong_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkTong.Checked == true)
+            {
+                dateTu.Enabled = false;
+                dateDen.Enabled = false;
+            }
+            else
+                if (chkTV.Checked == true )
+                {
+                    dateTu.Enabled = false;
+                    dateDen.Enabled = false;
+                }
+                else
+                {
+                    dateTu.Enabled = true;
+                    dateDen.Enabled = true;
+                }
+        }
+
+
+
+
 
     }
 }
