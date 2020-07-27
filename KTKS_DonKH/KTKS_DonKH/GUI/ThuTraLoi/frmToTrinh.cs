@@ -19,6 +19,7 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.GUI.DonTu;
 using System.Transactions;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace KTKS_DonKH.GUI.ThuTraLoi
 {
@@ -33,6 +34,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         CToTrinh _cTT = new CToTrinh();
         CDHN _cDocSo = new CDHN();
         CToTrinh_VeViec _cVeViecToTrinh = new CToTrinh_VeViec();
+        CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;
         DonKH _dontkh = null;
@@ -588,10 +590,24 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 dr["ThongQua"] = _cttt.ThongQua;
                 dr["NoiDung"] = _cttt.NoiDung;
                 dr["NoiNhan"] = _cttt.NoiNhan;
+                BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                    dr["ChucVu"] = "GIÁM ĐỐC";
+                else
+                    dr["ChucVu"] = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
 
                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
-                rptToTrinh rpt = new rptToTrinh();
+                ReportDocument rpt;
+                if (_cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
+                {
+                    rpt = new rptToTrinh_PGD();
+                }
+                else
+                {
+                    rpt = new rptToTrinh();
+                }
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.Show();
@@ -640,6 +656,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 PrintDialog printDialog = new PrintDialog();
                 if (printDialog.ShowDialog() == DialogResult.OK)
                 {
+                    BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                     for (int i = 0; i < dgvToTrinh.Rows.Count; i++)
                         if (dgvToTrinh["In", i].Value != null && bool.Parse(dgvToTrinh["In", i].Value.ToString()) == true)
                         {
@@ -667,10 +684,24 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             dr["ThongQua"] = cttt.ThongQua;
                             dr["NoiDung"] = cttt.NoiDung;
                             dr["NoiNhan"] = cttt.NoiNhan;
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                dr["ChucVu"] = "GIÁM ĐỐC";
+                            else
+                                dr["ChucVu"] = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
 
                             dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
-                            rptToTrinh rpt = new rptToTrinh();
+                            ReportDocument rpt;
+                            if (cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
+                            {
+                                rpt = new rptToTrinh_PGD();
+                            }
+                            else
+                            {
+                                rpt = new rptToTrinh();
+                            }
+
                             rpt.SetDataSource(dsBaoCao);
 
                             printDialog.AllowSomePages = true;
