@@ -147,6 +147,17 @@ namespace KTCN_CongVan.DAL.QuanTri
                     return false;
         }
 
+        public static void initial()
+        {
+            CUser.ID = -1;
+            CUser.HoTen = "";
+            CUser.Admin = false;
+            CUser.IDPhong = -1;
+            CUser.IDNhom = -1;
+            CUser.dtQuyenNguoiDung = null;
+            CUser.dtQuyenNhom = null;
+        }
+
         public bool Them(User en)
         {
             try

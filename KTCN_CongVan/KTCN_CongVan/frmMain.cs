@@ -174,16 +174,15 @@ namespace KTCN_CongVan
 
         private void mnuDangXuat_Click(object sender, EventArgs e)
         {
+            CUser.initial();
             foreach (Form item in this.MdiChildren)
             {
                 this.ActiveMdiChild.Close();
             }
+            mnuDangNhap.Enabled = true;
+            mnuDoiMatKhau.Enabled = false;
+            mnuDangXuat.Enabled = false;
             StripStatus_HoTen.Text = "";
-            CUser.ID = -1;
-            CUser.HoTen = "";
-            CUser.Admin = false;
-            CUser.IDPhong = -1;
-            CUser.IDNhom = -1;
             mnuDangNhap_Click(sender, e);
         }
 
