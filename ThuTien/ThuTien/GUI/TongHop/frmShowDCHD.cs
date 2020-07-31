@@ -191,8 +191,11 @@ namespace ThuTien.GUI.TongHop
                                     hd.SoHoaDonCu = txtSoHoaDon.Text.Trim();
                                 hd.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
                                 _cHoaDon.Sua(hd);
-                                //_dchd.SoHoaDon = txtSoHoaDonMoi.Text.Trim().ToUpper();
-                                _cDCHD.Refresh(_dchd);
+                                //
+                                _dchd.UpdatedHDDT = true;
+                                _dchd.SoHoaDonMoi = txtSoHoaDonMoi.Text.Trim().ToUpper();
+                                _cDCHD.Sua(_dchd);
+                                //_cDCHD.Refresh(_dchd);
                             }
                             _dchd.ChuanThu1 = chkChuanThu1.Checked;
                             if (_ctdchd != null)
@@ -238,26 +241,26 @@ namespace ThuTien.GUI.TongHop
                             }
                             ///không có phiếu điều chỉnh hóa đơn bên P.Kinh Doanh
                             ///hóa đơn điện tử k áp dụng
-                            //else
-                            //{
-                            //    _dchd.GIABAN_DC = decimal.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
-                            //    _dchd.GIABAN_END = decimal.Parse(txtTienNuoc_End.Text.Trim().Replace(".", ""));
+                            else
+                            {
+                                _dchd.GIABAN_DC = decimal.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
+                                _dchd.GIABAN_END = decimal.Parse(txtTienNuoc_End.Text.Trim().Replace(".", ""));
 
-                            //    _dchd.THUE_DC = decimal.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
-                            //    _dchd.THUE_END = decimal.Parse(txtThueGTGT_End.Text.Trim().Replace(".", ""));
+                                _dchd.THUE_DC = decimal.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
+                                _dchd.THUE_END = decimal.Parse(txtThueGTGT_End.Text.Trim().Replace(".", ""));
 
-                            //    _dchd.PHI_DC = decimal.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
-                            //    _dchd.PHI_END = decimal.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
+                                _dchd.PHI_DC = decimal.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
+                                _dchd.PHI_END = decimal.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
 
-                            //    _dchd.TONGCONG_DC = decimal.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
-                            //    _dchd.TONGCONG_END = decimal.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
+                                _dchd.TONGCONG_DC = decimal.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
+                                _dchd.TONGCONG_END = decimal.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
 
-                            //    if (_dchd.TONGCONG_BD.Value > _dchd.TONGCONG_END.Value)
-                            //        _dchd.TangGiam = "Giảm";
-                            //    else
-                            //        if (_dchd.TONGCONG_BD.Value < _dchd.TONGCONG_END.Value)
-                            //            _dchd.TangGiam = "Tăng";
-                            //}
+                                if (_dchd.TONGCONG_BD.Value > _dchd.TONGCONG_END.Value)
+                                    _dchd.TangGiam = "Giảm";
+                                else
+                                    if (_dchd.TONGCONG_BD.Value < _dchd.TONGCONG_END.Value)
+                                        _dchd.TangGiam = "Tăng";
+                            }
 
                             if (_cDCHD.Sua(_dchd))
                             {
@@ -287,7 +290,7 @@ namespace ThuTien.GUI.TongHop
                                 MessageBox.Show("Hóa Đơn này đã Tạm Thu(" + loai + ")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-
+                            DIEUCHINH_HD dchd = new DIEUCHINH_HD();
                             ///sửa số hóa đơn
                             if (!string.IsNullOrEmpty(txtSoHoaDonMoi.Text.Trim()) && txtSoHoaDon.Text.Trim() != txtSoHoaDonMoi.Text.Trim())
                             {
@@ -295,9 +298,12 @@ namespace ThuTien.GUI.TongHop
                                     _hoadon.SoHoaDonCu = txtSoHoaDon.Text.Trim();
                                 _hoadon.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
                                 _cHoaDon.Sua(_hoadon);
+                                //
+                                dchd.UpdatedHDDT = true;
+                                dchd.SoHoaDonMoi = txtSoHoaDonMoi.Text.Trim().ToUpper();
+                                _cDCHD.Sua(dchd);
                             }
 
-                            DIEUCHINH_HD dchd = new DIEUCHINH_HD();
                             dchd.FK_HOADON = _hoadon.ID_HOADON;
                             dchd.SoHoaDon = _hoadon.SOHOADON;
                             dchd.GiaBieu = _hoadon.GB;
@@ -350,26 +356,26 @@ namespace ThuTien.GUI.TongHop
                             }
                             ///không có phiếu điều chỉnh hóa đơn bên P.Kinh Doanh
                             ///hóa đơn điện tử k áp dụng
-                            //else
-                            //{
-                            //    dchd.GIABAN_DC = decimal.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
-                            //    dchd.GIABAN_END = decimal.Parse(txtTienNuoc_End.Text.Trim().Replace(".", ""));
+                            else
+                            {
+                                dchd.GIABAN_DC = decimal.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
+                                dchd.GIABAN_END = decimal.Parse(txtTienNuoc_End.Text.Trim().Replace(".", ""));
 
-                            //    dchd.THUE_DC = decimal.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
-                            //    dchd.THUE_END = decimal.Parse(txtThueGTGT_End.Text.Trim().Replace(".", ""));
+                                dchd.THUE_DC = decimal.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
+                                dchd.THUE_END = decimal.Parse(txtThueGTGT_End.Text.Trim().Replace(".", ""));
 
-                            //    dchd.PHI_DC = decimal.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
-                            //    dchd.PHI_END = decimal.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
+                                dchd.PHI_DC = decimal.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
+                                dchd.PHI_END = decimal.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
 
-                            //    dchd.TONGCONG_DC = decimal.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
-                            //    dchd.TONGCONG_END = decimal.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
+                                dchd.TONGCONG_DC = decimal.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
+                                dchd.TONGCONG_END = decimal.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
 
-                            //    if (dchd.TONGCONG_BD.Value > dchd.TONGCONG_END.Value)
-                            //        dchd.TangGiam = "Giảm";
-                            //    else
-                            //        if (dchd.TONGCONG_BD.Value < dchd.TONGCONG_END.Value)
-                            //            dchd.TangGiam = "Tăng";
-                            //}
+                                if (dchd.TONGCONG_BD.Value > dchd.TONGCONG_END.Value)
+                                    dchd.TangGiam = "Giảm";
+                                else
+                                    if (dchd.TONGCONG_BD.Value < dchd.TONGCONG_END.Value)
+                                        dchd.TangGiam = "Tăng";
+                            }
 
                             if (_cDCHD.Them(dchd))
                             {

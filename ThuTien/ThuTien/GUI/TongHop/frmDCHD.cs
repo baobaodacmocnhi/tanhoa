@@ -571,7 +571,7 @@ namespace ThuTien.GUI.TongHop
                                 if (string.IsNullOrEmpty(item[20].ToString()) == false && item[20].ToString() != "")
                                 {
                                     DIEUCHINH_HD dchd = _cDCHD.get(item[5].ToString());
-                                    if (dchd != null & dchd.UpdatedHDDT == false)
+                                    if (dchd != null && dchd.UpdatedHDDT == false && dchd.TONGCONG_END != null)
                                         using (TransactionScope scope = new TransactionScope())
                                         {
                                             dchd.UpdatedHDDT = true;
@@ -632,7 +632,7 @@ namespace ThuTien.GUI.TongHop
                 dateDen.Enabled = false;
             }
             else
-                if (chkTV.Checked == true )
+                if (chkTV.Checked == true)
                 {
                     dateTu.Enabled = false;
                     dateDen.Enabled = false;
