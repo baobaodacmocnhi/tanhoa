@@ -104,6 +104,16 @@ namespace TrungTamKhachHang.DAL.QuanTri
                     return false;
         }
 
+        public static void initial()
+        {
+            CUser.MaUser = -1;
+            CUser.Name = "";
+            CUser.Admin = false;
+            CUser.MaNhom = -1;
+            CUser.dtQuyenNhom = null;
+            CUser.dtQuyenNguoiDung = null;
+        }
+
         public bool Them(User entity)
         {
             try
@@ -112,7 +122,7 @@ namespace TrungTamKhachHang.DAL.QuanTri
                     entity.ID = _db.Users.Max(item => item.ID) + 1;
                 else
                     entity.ID = 1;
-                
+
                 entity.CreateBy = CUser.MaUser;
                 entity.CreateDate = DateTime.Now;
                 _db.Users.InsertOnSubmit(entity);
@@ -189,12 +199,12 @@ namespace TrungTamKhachHang.DAL.QuanTri
 
         public bool DangNhap(string Username, string Password)
         {
-                return _db.Users.Any(item => item.Username == Username && item.Password == Password);
+            return _db.Users.Any(item => item.Username == Username && item.Password == Password);
         }
 
         public bool CheckExist(string Username)
         {
-                return _db.Users.Any(item => item.Username == Username);
+            return _db.Users.Any(item => item.Username == Username);
         }
 
     }
