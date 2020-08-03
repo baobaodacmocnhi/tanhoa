@@ -594,7 +594,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                     dr["ChucVu"] = "GIÁM ĐỐC";
                 else
-                    dr["ChucVu"] = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                    dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
                 dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
 
                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
@@ -602,7 +602,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 ReportDocument rpt;
                 if (_cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
                 {
-                    rpt = new rptToTrinh_PGD();
+                    rpt = new rptToTrinh_ThongQuaPGD();
                 }
                 else
                 {
@@ -687,7 +687,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 dr["ChucVu"] = "GIÁM ĐỐC";
                             else
-                                dr["ChucVu"] = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                                dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
                             dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
 
                             dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
@@ -695,7 +695,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             ReportDocument rpt;
                             if (cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
                             {
-                                rpt = new rptToTrinh_PGD();
+                                rpt = new rptToTrinh_ThongQuaPGD();
                             }
                             else
                             {

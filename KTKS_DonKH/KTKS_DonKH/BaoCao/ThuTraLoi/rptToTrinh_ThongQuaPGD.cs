@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.ThuTraLoi {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptToTrinh_PGD : ReportClass {
+    public class rptToTrinh_ThongQuaPGD : ReportClass {
         
-        public rptToTrinh_PGD() {
+        public rptToTrinh_ThongQuaPGD() {
         }
         
         public override string ResourceName {
             get {
-                return "rptToTrinh_PGD.rpt";
+                return "rptToTrinh_ThongQuaPGD.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.ThuTraLoi {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.ThuTraLoi.rptToTrinh_PGD.rpt";
+                return "KTKS_DonKH.BaoCao.ThuTraLoi.rptToTrinh_ThongQuaPGD.rpt";
             }
             set {
                 // Do nothing
@@ -98,9 +98,9 @@ namespace KTKS_DonKH.BaoCao.ThuTraLoi {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptToTrinh_PGD : Component, ICachedReport {
+    public class CachedrptToTrinh_ThongQuaPGD : Component, ICachedReport {
         
-        public CachedrptToTrinh_PGD() {
+        public CachedrptToTrinh_ThongQuaPGD() {
         }
         
         [Browsable(false)]
@@ -137,7 +137,7 @@ namespace KTKS_DonKH.BaoCao.ThuTraLoi {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptToTrinh_PGD rpt = new rptToTrinh_PGD();
+            rptToTrinh_ThongQuaPGD rpt = new rptToTrinh_ThongQuaPGD();
             rpt.Site = this.Site;
             return rpt;
         }
