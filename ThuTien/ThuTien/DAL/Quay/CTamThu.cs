@@ -270,6 +270,51 @@ namespace ThuTien.DAL.Quay
                             itemTT.Tra,
                             itemTT.NgayTra,
                             itemTT.GhiChuTra,
+                            Ky2=itemHD.KY,
+                            itemHD.NAM,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDS(bool ChuyenKhoan, string DanhBo, DateTime TuNgay, DateTime DenNgay)
+        {
+            var query = from itemTT in _db.TAMTHUs
+                        join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG into tableNH
+                        from itemtableNH in tableNH.DefaultIfEmpty()
+                        where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.Xoa == false && itemTT.DANHBA == DanhBo && itemTT.ChuyenKhoan == ChuyenKhoan
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            MaTT = itemTT.ID_TAMTHU,
+                            itemTT.SoPhieu,
+                            itemHD.NGAYGIAITRACH,
+                            itemTT.CreateDate,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            itemTT.MaNH,
+                            TenNH = itemtableNH.NGANHANG1,
+                            GiaBieu = itemHD.GB,
+                            itemTT.TienDu,
+                            itemTT.Tra,
+                            itemTT.NgayTra,
+                            itemTT.GhiChuTra,
+                            Ky2 = itemHD.KY,
+                            itemHD.NAM,
                         };
             return LINQToDataTable(query);
         }
@@ -324,10 +369,10 @@ namespace ThuTien.DAL.Quay
 
         public DataTable getDSSaiSot_ChuyenKhoan(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return ExecuteQuery_DataTable("select DanhBo=DANHBA,SLTamThu=COUNT(DANHBA),SLTon=(select SoLuong=COUNT(DANHBA) from HOADON where NGAYGIAITRACH is null and DANHBA=TAMTHU.DANHBA group by DANHBA)"
+            return ExecuteQuery_DataTable("select DanhBo=DANHBA,SLTamThu=COUNT(DANHBA),SLTon=(select SoLuong=COUNT(DANHBA) from HOADON where (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(NGAYGIAITRACH as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "')) and DANHBA=TAMTHU.DANHBA group by DANHBA)"
                     + " from TAMTHU where CAST(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and ChuyenKhoan=1"
                     + " group by DANHBA"
-                    + " having COUNT(DANHBA)!=(select SoLuong=COUNT(DANHBA) from HOADON where NGAYGIAITRACH is null and DANHBA=TAMTHU.DANHBA group by DANHBA)");
+                    + " having COUNT(DANHBA)!=(select SoLuong=COUNT(DANHBA) from HOADON where (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(NGAYGIAITRACH as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "')) and DANHBA=TAMTHU.DANHBA group by DANHBA)");
         }
 
         public List<TAMTHU> GetDSBySoPhieu(decimal SoPhieu)

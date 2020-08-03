@@ -850,9 +850,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     return;
                                 }
                                 string DanhBo = "";
-                                if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon_TT"].Value.ToString(),ref DanhBo) == false)
+                                if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon_TT"].Value.ToString(), ref DanhBo) == false)
                                 {
-                                    MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " +DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     item.Selected = true;
                                     return;
                                 }
@@ -928,7 +928,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             string str = "";
             foreach (DataRow item in dt.Rows)
             {
-                str += item["DanhBo"].ToString() + " === Tạm Thu: " + item["SLTamThu"].ToString() + " === Tồn: " + item["SLTon"].ToString() + "\n";
+                DataTable dtTT = _cTamThu.GetDS(true, item["DanhBo"].ToString(), dateTu.Value, dateDen.Value);
+                DataTable dtTon = _cHoaDon.GetDSTonByDanhBo(item["DanhBo"].ToString());
+                if (dtTon.Rows.Count > 0 && int.Parse(dtTT.Rows[0]["Nam"].ToString()) == int.Parse(dtTon.Rows[0]["Nam"].ToString()) && int.Parse(dtTT.Rows[0]["Ky2"].ToString()) == int.Parse(dtTon.Rows[0]["Ky2"].ToString()))
+                    str += item["DanhBo"].ToString() + " === Tạm Thu: " + item["SLTamThu"].ToString() + " === Tồn: " + item["SLTon"].ToString() + "\n";
             }
             MessageBox.Show(str, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

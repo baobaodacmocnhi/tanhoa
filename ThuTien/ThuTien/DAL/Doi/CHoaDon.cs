@@ -8251,6 +8251,8 @@ namespace ThuTien.DAL.Doi
                             HanhThu = itemtableND.HoTen,
                             itemHD.TUNGAY,
                             itemHD.DENNGAY,
+                            Ky2=itemHD.KY,
+                            itemHD.NAM,
                         };
             return LINQToDataTable(query);
         }
