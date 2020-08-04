@@ -34,6 +34,8 @@ namespace ThuTien.GUI.ToTruong
         {
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
+            dgvLichSuDangNganA.AutoGenerateColumns = false;
+            dgvLichSuDangNganB.AutoGenerateColumns = false;
 
             if (CNguoiDung.Doi)
             {
@@ -521,5 +523,36 @@ namespace ThuTien.GUI.ToTruong
             else
                 MessageBox.Show("Chọn Từ Đợt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtDanhBo.Text.Trim().Replace(" ", "") != "" && e.KeyChar == 13)
+            {
+                dgvLichSuDangNganA.DataSource = _cHoaDon.GetDSByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
+            }
+        }
+
+        private void dgvLichSuDangNganA_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvLichSuDangNganB.DataSource = _cHoaDon.getDS_LichSuDangNgan(int.Parse(dgvLichSuDangNganA.CurrentRow.Cells["MaHD"].Value.ToString())) ;
+        }
+
+        private void dgvLichSuDangNganA_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvLichSuDangNganA.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvLichSuDangNganB_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvLichSuDangNganB.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        
     }
 }

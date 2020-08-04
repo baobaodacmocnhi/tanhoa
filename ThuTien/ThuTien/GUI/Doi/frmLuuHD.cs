@@ -216,7 +216,28 @@ namespace ThuTien.GUI.Doi
                             {
                                 if (_cHoaDon.Them(hoadon) == true)
                                 {
-                                    if (_cLenhHuy.CheckExist_Ton(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1) == true)
+                                    if (hoadon.TIEUTHU != 0 && _cDongNuoc.CheckExist_CTDongNuoc_Ton(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1) == true)
+                                    {
+                                        TT_DongNuoc dongnuoc = _cDongNuoc.getDongNuoc_MoiNhat(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1);
+
+                                        TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
+                                        ctdongnuoc.MaDN = dongnuoc.MaDN;
+                                        ctdongnuoc.MaHD = hoadon.ID_HOADON;
+                                        ctdongnuoc.SoHoaDon = hoadon.SOHOADON;
+                                        ctdongnuoc.Ky = hoadon.KY + "/" + hoadon.NAM;
+                                        ctdongnuoc.TieuThu = (int)hoadon.TIEUTHU;
+                                        ctdongnuoc.GiaBan = (int)hoadon.GIABAN;
+                                        ctdongnuoc.ThueGTGT = (int)hoadon.THUE;
+                                        ctdongnuoc.PhiBVMT = (int)hoadon.PHI;
+                                        ctdongnuoc.TongCong = (int)hoadon.TONGCONG;
+                                        ctdongnuoc.CreateBy = CNguoiDung.MaND;
+                                        ctdongnuoc.CreateDate = DateTime.Now;
+
+                                        dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
+
+                                        _cDongNuoc.SuaDN(dongnuoc);
+                                    }
+                                    if (hoadon.TIEUTHU != 0 && _cLenhHuy.CheckExist_Ton(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1) == true)
                                     {
                                         TT_LenhHuy lenhhuy = new TT_LenhHuy();
                                         lenhhuy.MaHD = hoadon.ID_HOADON;
@@ -230,28 +251,6 @@ namespace ThuTien.GUI.Doi
                                         }
                                         _cLenhHuy.Them(lenhhuy);
                                     }
-                                    else
-                                        if (_cDongNuoc.CheckExist_CTDongNuoc_Ton(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1) == true)
-                                        {
-                                            TT_DongNuoc dongnuoc = _cDongNuoc.getDongNuoc_MoiNhat(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1);
-
-                                            TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
-                                            ctdongnuoc.MaDN = dongnuoc.MaDN;
-                                            ctdongnuoc.MaHD = hoadon.ID_HOADON;
-                                            ctdongnuoc.SoHoaDon = hoadon.SOHOADON;
-                                            ctdongnuoc.Ky = hoadon.KY + "/" + hoadon.NAM;
-                                            ctdongnuoc.TieuThu = (int)hoadon.TIEUTHU;
-                                            ctdongnuoc.GiaBan = (int)hoadon.GIABAN;
-                                            ctdongnuoc.ThueGTGT = (int)hoadon.THUE;
-                                            ctdongnuoc.PhiBVMT = (int)hoadon.PHI;
-                                            ctdongnuoc.TongCong = (int)hoadon.TONGCONG;
-                                            ctdongnuoc.CreateBy = CNguoiDung.MaND;
-                                            ctdongnuoc.CreateDate = DateTime.Now;
-
-                                            dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
-
-                                            _cDongNuoc.SuaDN(dongnuoc);
-                                        }
                                 }
                             }
                             ///Nếu đã có hóa đơn

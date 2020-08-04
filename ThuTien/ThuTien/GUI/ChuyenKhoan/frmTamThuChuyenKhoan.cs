@@ -65,7 +65,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (tabControl.SelectedTab.Name == "tabThongTin")
             {
-                if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
+                if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ","")) && e.KeyChar == 13)
                 {
                     DataTable dt = (DataTable)dgvHoaDon.DataSource;
                     foreach (string item in txtDanhBo.Lines)
@@ -86,7 +86,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             else
                 if (tabControl.SelectedTab.Name == "tabTamThu")
                 {
-                    if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
+                    if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) && e.KeyChar == 13)
                     {
                         DataTable dt = new DataTable();
                         foreach (string item in txtDanhBo.Lines)

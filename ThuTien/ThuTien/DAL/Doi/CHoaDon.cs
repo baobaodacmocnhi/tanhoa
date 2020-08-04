@@ -6001,7 +6001,7 @@ namespace ThuTien.DAL.Doi
                         + " group by RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH))"
                         + " union all"
                         + " select PhanKy=N'Khác Kỳ',NgayGiaiTrach=RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH)),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
-                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and KY<MONTH(@NGAYGIAITRACH) and NAM=YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
+                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and KY<MONTH(NGAYGIAITRACH) and NAM=YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
                         + " group by RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH))"
                         + " union all"
                         + " select PhanKy=N'Khác Kỳ Năm',NgayGiaiTrach=RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH)),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
@@ -10762,6 +10762,22 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Any(item => item.DANHBA == DanhBo && item.DCHD == true);
         }
 
+        //lịch sử đăng ngân
+        public DataTable getDS_LichSuDangNgan(int MaHD)
+        {
+            var query = from item in _db.TT_LichSuDangNgans
+                        join itemND in _db.TT_NguoiDungs on item.CreateBy equals itemND.MaND
+                        where item.MaHD == MaHD
+                        select new
+                        {
+                            item.GhiChu,
+                            item.Name_PC,
+                            item.IP_PC,
+                            CreateBy=itemND.HoTen,
+                            item.CreateDate,
+                        };
+            return LINQToDataTable(query);
+        }
     }
 
 }

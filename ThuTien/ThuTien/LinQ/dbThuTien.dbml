@@ -1406,6 +1406,17 @@
       <Association Name="TT_To_TT_NguoiDung" Member="TT_To" ThisKey="MaTo" OtherKey="MaTo" Type="TT_To" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TT_LichSuDangNgan" Member="TT_LichSuDangNgans">
+    <Type Name="TT_LichSuDangNgan">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Name_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IP_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">
     <Parameter Name="DanhBo" Parameter="danhBo" Type="System.String" DbType="VarChar(11)" />
     <Parameter Name="MLT" Parameter="mLT" Type="System.String" DbType="VarChar(11)" />
