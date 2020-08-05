@@ -264,6 +264,16 @@ namespace ThuTien.GUI.Doi
 
                         try
                         {
+                            _cHoaDon.ExecuteNonQuery("exec spUpdateHoaDonFromDHN " + Dot + "," + Ky + "," + Nam);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi spUpdateHoaDonFromDHN\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
                             //string lineR_Test = lines[0].Replace("\",\"", "$").Replace("\"", "");
                             //string[] contents_Test = lineR_Test.Split('$');
                             //int Nam = int.Parse("20" + contents_Test[19]);
