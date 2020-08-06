@@ -1,0 +1,103 @@
+﻿@model IEnumerable<DangBoWeb.Database.CongVanDen>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Công Văn Đến</h6>
+        <a href="@Url.Action("Create", "CongVanDen")" class="btn btn-primary btn-icon-split">
+            <span class="text">Thêm</span>
+        </a>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DonVi.TenDonVi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LoaiCongVan.LoaiCV)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SoCV)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TieuDe)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NgayHetHan)
+                        </th>
+                        <th>
+                            Xử Lý
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DonVi.TenDonVi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LoaiCongVan.LoaiCV)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SoCV)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TieuDe)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NgayHetHan)
+                        </th>
+                        <th>
+                            Xử Lý
+                        </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DonVi.TenDonVi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LoaiCongVan.LoaiCV)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SoCV)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TieuDe)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoiDung)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NgayHetHan)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", "CongVanDen",new { ID = item.ID })" class="btn btn-warning">
+                                    Sửa
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
