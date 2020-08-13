@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DangBoWeb.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Người Dùng</h6>
+        <a href="@Url.Action("Create", "User")" class="btn btn-primary btn-icon-split">
+            <span class="text">Thêm</span>
+        </a>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HoTen)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TaiKhoan)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MatKhau)
+                        </th>
+                        <th>
+                            Xử Lý
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HoTen)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TaiKhoan)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MatKhau)
+                        </th>
+                        <th>
+                            Xử Lý
+                        </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HoTen)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TaiKhoan)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MatKhau)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", "User",new { MaU = item.MaU })" class="btn btn-warning">
+                                    Sửa
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

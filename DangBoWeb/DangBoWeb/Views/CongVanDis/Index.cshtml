@@ -1,0 +1,105 @@
+﻿@model IEnumerable<DangBoWeb.Models.CongVanDi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DonVi.TenDonVi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiCongVan.LoaiCV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoCV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Khan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HetHan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayHetHan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifyBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifyDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonVi.TenDonVi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiCongVan.LoaiCV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoCV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TieuDe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoiDung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Khan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HetHan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayHetHan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifyBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifyDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
