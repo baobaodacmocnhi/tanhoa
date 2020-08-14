@@ -182,6 +182,7 @@ namespace ThuTien.DAL
             {
                 Connect();
                 command = new SqlCommand(sql, connection);
+                command.CommandTimeout = 600;
                 int rowsAffected = command.ExecuteNonQuery();
                 Disconnect();
                 if (rowsAffected >= 1)

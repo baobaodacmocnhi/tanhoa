@@ -1484,14 +1484,15 @@ namespace ThuTien.DAL.DongNuoc
             return _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc;
         }
 
-        public TT_DongNuoc getDongNuoc_MoiNhat(string DanhBo, int Nam, int Ky)
+        public TT_DongNuoc getDongNuoc_MoiNhat_Ton(string DanhBo, int Nam, int Ky)
         {
             var query = from itemDN in _db.TT_DongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCT.MaDN
                         join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
-                        where itemDN.Huy == false && itemHD.NGAYGIAITRACH == null && itemHD.DANHBA == DanhBo && itemHD.NAM == Nam && itemHD.KY == Ky
+                        where itemDN.Huy == false && itemHD.NGAYGIAITRACH == null && itemHD.DANHBA == DanhBo && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky))
+                        orderby itemDN.CreateDate descending
                         select itemDN;
-            return query.SingleOrDefault();
+            return query.FirstOrDefault();
         }
 
         public TT_CTDongNuoc getCTDongNuoc(decimal MaDN, int MaHD)

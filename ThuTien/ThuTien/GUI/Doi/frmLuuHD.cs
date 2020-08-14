@@ -64,6 +64,8 @@ namespace ThuTien.GUI.Doi
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            //TT_DongNuoc dn= _cDongNuoc.getDongNuoc_MoiNhat_Ton("13162310349",2020,7);
+            //return;
             try
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
@@ -218,7 +220,7 @@ namespace ThuTien.GUI.Doi
                                 {
                                     if (hoadon.TIEUTHU != 0 && _cDongNuoc.CheckExist_CTDongNuoc_Ton(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1) == true)
                                     {
-                                        TT_DongNuoc dongnuoc = _cDongNuoc.getDongNuoc_MoiNhat(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1);
+                                        TT_DongNuoc dongnuoc = _cDongNuoc.getDongNuoc_MoiNhat_Ton(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1);
 
                                         TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
                                         ctdongnuoc.MaDN = dongnuoc.MaDN;

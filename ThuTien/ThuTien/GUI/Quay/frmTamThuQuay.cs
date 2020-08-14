@@ -246,7 +246,7 @@ namespace ThuTien.GUI.Quay
                         if (dt != null && dt.Rows.Count > 0)
                         {
                             TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dt.Rows[0]["MaKQDN"].ToString()));
-                            if (kqdongnuoc.DongPhi != true && kqdongnuoc.ChuyenKhoan != true)
+                            if (kqdongnuoc.DongPhi == false && kqdongnuoc.ChuyenKhoan == false)
                             {
                                 kqdongnuoc.DongPhi = true;
                                 kqdongnuoc.NgayDongPhi = DateTime.Now;
@@ -258,6 +258,8 @@ namespace ThuTien.GUI.Quay
                                     return;
                                 }
                             }
+                            else
+                                scope.Complete();
                         }
                         else
                             scope.Complete();

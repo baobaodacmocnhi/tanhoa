@@ -954,7 +954,7 @@
             this.TCDangNgan.DataPropertyName = "TCDangNgan";
             this.TCDangNgan.HeaderText = "TC Đăng Ngân";
             this.TCDangNgan.Name = "TCDangNgan";
-            this.TCDangNgan.Width = 70;
+            this.TCDangNgan.Width = 80;
             // 
             // SLCNKD
             // 
@@ -996,7 +996,7 @@
             this.TCHDDT.DataPropertyName = "TCHDDT";
             this.TCHDDT.HeaderText = "TC HĐĐT";
             this.TCHDDT.Name = "TCHDDT";
-            this.TCHDDT.Width = 70;
+            this.TCHDDT.Width = 80;
             // 
             // SLHDDTDC
             // 
@@ -1024,7 +1024,7 @@
             this.TCHDDTSach.DataPropertyName = "TCHDDTSach";
             this.TCHDDTSach.HeaderText = "TC Sạch";
             this.TCHDDTSach.Name = "TCHDDTSach";
-            this.TCHDDTSach.Width = 70;
+            this.TCHDDTSach.Width = 80;
             // 
             // SLNopTien
             // 
@@ -1038,7 +1038,7 @@
             this.TCNopTien.DataPropertyName = "TCNopTien";
             this.TCNopTien.HeaderText = "TC Nộp Tiền";
             this.TCNopTien.Name = "TCNopTien";
-            this.TCNopTien.Width = 70;
+            this.TCNopTien.Width = 80;
             // 
             // SyncNopTien
             // 

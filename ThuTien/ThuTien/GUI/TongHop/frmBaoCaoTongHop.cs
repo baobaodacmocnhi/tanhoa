@@ -1419,7 +1419,7 @@ namespace ThuTien.GUI.TongHop
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.Show();
             }
-            /////Phân kỳ
+            ///Phân kỳ
             //else
             //{
             //    ///Lớn
@@ -2107,51 +2107,39 @@ namespace ThuTien.GUI.TongHop
             dt = _cHoaDon.GetDSDangNgan_KeToan_Chot2019(dateTu_KeToan_Chot2019.Value, dateDen_KeToan_Chot2019.Value);
             foreach (DataRow item in dt.Rows)
             {
+                DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
+                dr["TuNgay"] = dateDen_KeToan.Value.Month.ToString("00");
+                dr["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
+                if (chkTheoThang_Chot2019.Checked == true)
+                {
+                    dr["Ngay"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("MM/yyyy");
+                    dr["STT"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMM");
+                }
+                else
+                {
+                    dr["Ngay"] = item["NgayGiaiTrach"];
+                    dr["STT"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd");
+                }
+                dr["TongGiaBan"] = item["GiaBan"];
+                dr["TongThueGTGT"] = item["ThueGTGT"];
+                dr["TongPhiBVMT"] = item["PhiBVMT"];
+                dr["TongCong"] = item["TongCong"];
+
+                if (int.Parse(item["Ky2"].ToString()) == dateDen_KeToan_Chot2019.Value.Month && int.Parse(item["Nam2"].ToString()) == dateDen_KeToan_Chot2019.Value.Year)
+                {
+                    dr["PhanKy"] = "I. Số tiền nước thu được từ chuẩn thu 2 của kỳ " + dateDen_KeToan_Chot2019.Value.Month.ToString() + " năm " + dateDen_KeToan_Chot2019.Value.Year.ToString();
+                    ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+                }
+                if (int.Parse(item["Ky2"].ToString()) < dateDen_KeToan_Chot2019.Value.Month && int.Parse(item["Nam2"].ToString()) == dateDen_KeToan_Chot2019.Value.Year)
+                {
+                    dr["PhanKy"] = "II. Số tiền nước thu được từ chuẩn thu 2 của các kỳ cũ năm " + dateDen_KeToan_Chot2019.Value.Year.ToString() ;
+                    ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+                }
                 if (int.Parse(item["Nam2"].ToString()) == 2019)
                 {
-                    DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
-                    dr["TuNgay"] = dateDen_KeToan.Value.Month.ToString("00");
-                    dr["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
-                    dr["PhanKy"] = "II. Số tiền nước thu được của năm 2019 (tồn thu)";
-                    if (chkTheoThang_Chot2019.Checked == true)
-                    {
-                        dr["Ngay"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("MMyyyy");
-                        dr["STT"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMM");
-                    }
-                    else
-                    {
-                        dr["Ngay"] = item["NgayGiaiTrach"];
-                        dr["STT"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd");
-                    }
-                    dr["TongGiaBan"] = item["GiaBan"];
-                    dr["TongThueGTGT"] = item["ThueGTGT"];
-                    dr["TongPhiBVMT"] = item["PhiBVMT"];
-                    dr["TongCong"] = item["TongCong"];
+                    dr["PhanKy"] = "III. Số tiền nước thu được của năm 2019";
                     ds.Tables["TongHopDangNgan"].Rows.Add(dr);
                 }
-                if (int.Parse(item["Ky2"].ToString()) == dateTu_KeToan_Chot2019.Value.Month && int.Parse(item["Nam2"].ToString()) == 2020)
-                {
-                    DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
-                    dr["TuNgay"] = dateDen_KeToan.Value.Month.ToString("00");
-                    dr["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
-                    dr["PhanKy"] = "I. Số tiền nước thu được từ chuẩn thu 2 của Kỳ " + dateDen_KeToan_Chot2019.Value.Month.ToString() + " năm " + dateDen_KeToan_Chot2019.Value.Year.ToString();
-                    if (chkTheoThang_Chot2019.Checked == true)
-                    {
-                        dr["Ngay"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("MMyyyy");
-                        dr["STT"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMM");
-                    }
-                    else
-                    {
-                        dr["Ngay"] = item["NgayGiaiTrach"];
-                        dr["STT"] = DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd");
-                    }
-                    dr["TongGiaBan"] = item["GiaBan"];
-                    dr["TongThueGTGT"] = item["ThueGTGT"];
-                    dr["TongPhiBVMT"] = item["PhiBVMT"];
-                    dr["TongCong"] = item["TongCong"];
-                    ds.Tables["TongHopDangNgan"].Rows.Add(dr);
-                }
-
             }
             rptTongHopDangNgan_KeToan_Chot2019 rpt = new rptTongHopDangNgan_KeToan_Chot2019();
             rpt.SetDataSource(ds);
