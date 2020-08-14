@@ -1,4 +1,4 @@
-﻿@model DangBoWeb.Models.CongVanDen
+﻿@model DangBoWeb.Models.CongVanDi
 
 @{
     ViewBag.Title = "Edit";
@@ -55,14 +55,14 @@
 
 }
 
-@using (Html.BeginForm("Edit", "CongVanDen", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "CongVanDi", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary">Sửa Công Văn Đến</h6>
-            <a href="@Url.Action("Index", "CongVanDen")" class="btn btn-danger">
+            <a href="@Url.Action("Index", "CongVanDi")" class="btn btn-danger">
                 Hủy
             </a>
         </div>
@@ -185,15 +185,15 @@
                 </div>
                 @*Show File*@
                 <table>
-                    @foreach (var itemA in Model.CongVanDen_Hinh)
+                    @foreach (var itemA in Model.CongVanDi_Hinh)
                     {
                         <tr>
                                 <td style="max-width:250px">
-                                    <a href="@Url.Action("viewFile", "CongVanDen",new { ID = itemA.ID })">@itemA.FileName</a>
+                                    <a href="@Url.Action("viewFile", "CongVanDi",new { ID = itemA.ID })">@itemA.FileName</a>
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("downloadFile", "CongVanDen",new { ID = itemA.ID })" class="btn btn-info">Tải</a>
-                                    <a href="@Url.Action("deleteFile", "CongVanDen",new { ID = itemA.ID })" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn xóa?');">Xóa</a>
+                                    <a href="@Url.Action("downloadFile", "CongVanDi",new { ID = itemA.ID })" class="btn btn-info">Tải</a>
+                                    <a href="@Url.Action("deleteFile", "CongVanDi",new { ID = itemA.ID })" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn xóa?');">Xóa</a>
                                 </td>
                         </tr>
                     }

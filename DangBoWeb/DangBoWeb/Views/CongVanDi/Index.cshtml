@@ -1,8 +1,135 @@
-﻿@model DangBoWeb.Models.CongVanDi
+﻿@model IEnumerable<DangBoWeb.Models.CongVanDi>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Công Văn Đến</h6>
+        <a href="@Url.Action("Create", "CongVanDi")" class="btn btn-primary btn-icon-split">
+            <span class="text">Thêm</span>
+        </a>
+    </div>
 
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" >
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreateDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DonVi.TenDonVi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LoaiCongVan.LoaiCV)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SoCV)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TieuDe)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NgayHetHan)
+                        </th>
+                        <th>
+                            File
+                        </th>
+                        <th>
+                            Xử Lý
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreateDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DonVi.TenDonVi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LoaiCongVan.LoaiCV)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SoCV)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TieuDe)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NgayHetHan)
+                        </th>
+                        <th>
+                            File
+                        </th>
+                        <th>
+                            Xử Lý
+                        </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreateDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DonVi.TenDonVi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LoaiCongVan.LoaiCV)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SoCV)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TieuDe)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoiDung)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NgayHetHan)
+                            </td>
+                            <td>
+                                <table class="table table-bordered" >
+                                    @foreach (var itemA in item.CongVanDi_Hinh)
+                                    {
+                                        <tr>
+                                            <td style="max-width:150px">
+                                                <a href="@Url.Action("viewFile", "CongVanDi", new { ID = itemA.ID })" tar target="_blank">@itemA.FileName</a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("downloadFile", "CongVanDi",new { ID = itemA.ID })" class="btn btn-info">Tải</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </td>
+                            <td>
+                                    <a href="@Url.Action("Edit", "CongVanDi",new { ID = item.ID })" class="btn btn-warning">
+                                        Sửa
+                                    </a>
+                                    <a href="@Url.Action("Delete", "CongVanDi",new { ID = item.ID })" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn xóa?');">
+                                        Xóa
+                                    </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

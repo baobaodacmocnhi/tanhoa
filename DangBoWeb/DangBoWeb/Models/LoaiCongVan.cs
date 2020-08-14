@@ -1,4 +1,4 @@
-namespace DangBoWeb.Models
+﻿namespace DangBoWeb.Models
 {
     using System;
     using System.Collections.Generic;
@@ -21,6 +21,7 @@ namespace DangBoWeb.Models
 
         public int? STT { get; set; }
 
+        [Display(Name = "Loại Công Văn")]
         [StringLength(50)]
         public string LoaiCV { get; set; }
 

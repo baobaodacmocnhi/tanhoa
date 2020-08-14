@@ -15,9 +15,12 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTable" >
                 <thead>
                     <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreateDate)
+                        </th>
                         <th>
                             @Html.DisplayNameFor(model => model.DonVi.TenDonVi)
                         </th>
@@ -46,6 +49,9 @@
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreateDate)
+                        </th>
                         <th>
                             @Html.DisplayNameFor(model => model.DonVi.TenDonVi)
                         </th>
@@ -77,6 +83,9 @@
                     {
                         <tr>
                             <td>
+                                @Html.DisplayFor(modelItem => item.CreateDate)
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.DonVi.TenDonVi)
                             </td>
                             <td>
@@ -94,23 +103,28 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.NgayHetHan)
                             </td>
-                            <td style="width:200px; max-width: 200px;">
-                                @foreach (var itemA in item.CongVanDen_Hinh)
-                                {
-                                    <div>
-                                        <a href="@Url.Action("viewFile", "CongVanDen", new { ID = itemA.ID })" tar target="_blank">@itemA.FileName</a>
-                                        <a href="@Url.Action("downloadFile", "CongVanDen",new { ID = itemA.ID })">Tải</a>
-                                    </div>
-                                }
+                            <td>
+                                <table class="table table-bordered" >
+                                    @foreach (var itemA in item.CongVanDen_Hinh)
+                                    {
+                                        <tr>
+                                            <td style="max-width:150px">
+                                                <a href="@Url.Action("viewFile", "CongVanDen", new { ID = itemA.ID })" tar target="_blank">@itemA.FileName</a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("downloadFile", "CongVanDen",new { ID = itemA.ID })" class="btn btn-info">Tải</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
                             </td>
                             <td>
-                                <a href="@Url.Action("Edit", "CongVanDen",new { ID = item.ID })" class="btn btn-warning">
-                                    Sửa
-                                </a>
-                                <a href="@Url.Action("Delete", "CongVanDen",new { ID = item.ID })" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn xóa?');">
-                                    Xóa
-                                </a>
-
+                                    <a href="@Url.Action("Edit", "CongVanDen",new { ID = item.ID })" class="btn btn-warning">
+                                        Sửa
+                                    </a>
+                                    <a href="@Url.Action("Delete", "CongVanDen",new { ID = item.ID })" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn xóa?');">
+                                        Xóa
+                                    </a>
                             </td>
                         </tr>
                     }

@@ -1,4 +1,4 @@
-namespace DangBoWeb.Models
+﻿namespace DangBoWeb.Models
 {
     using System;
     using System.Collections.Generic;
@@ -22,12 +22,15 @@ namespace DangBoWeb.Models
 
         public int? IDLoaiCV { get; set; }
 
+        [Display(Name = "Số CV")]
         [StringLength(50)]
         public string SoCV { get; set; }
 
+        [Display(Name = "Tiêu Đề")]
         [StringLength(50)]
         public string TieuDe { get; set; }
 
+        [Display(Name = "Nội Dung")]
         [StringLength(50)]
         public string NoiDung { get; set; }
 
@@ -37,12 +40,14 @@ namespace DangBoWeb.Models
 
         public bool HetHan { get; set; }
 
+        [Display(Name = "Ngày Hết Hạn")]
         [DataType(DataType.Date)]
         [Column(TypeName = "date")]
         public DateTime? NgayHetHan { get; set; }
 
         public int? CreateBy { get; set; }
 
+        [Display(Name = "Ngày Lập")]
         public DateTime? CreateDate { get; set; }
 
         public int? ModifyBy { get; set; }

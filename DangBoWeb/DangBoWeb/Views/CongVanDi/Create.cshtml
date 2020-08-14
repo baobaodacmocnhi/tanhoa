@@ -1,7 +1,7 @@
-﻿@model DangBoWeb.Models.CongVanDen
+﻿@model DangBoWeb.Models.CongVanDi
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create";
 }
 @section Scripts {
 
@@ -55,26 +55,24 @@
 
 }
 
-@using (Html.BeginForm("Edit", "CongVanDen", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "CongVanDi", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Sửa Công Văn Đến</h6>
-            <a href="@Url.Action("Index", "CongVanDen")" class="btn btn-danger">
+            <h6 class="m-0 font-weight-bold text-primary">Thêm Công Văn Đến</h6>
+            <a href="@Url.Action("Index", "CongVanDi")" class="btn btn-danger">
                 Hủy
             </a>
         </div>
 
         <div class="card-body">
             <div class="user">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.ID)
 
                 <div class="form-group">
                     <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                        <a class="navbar-brand" id="TenDonVi">@Html.DisplayFor(model => model.DonVi.TenDonVi)</a>
+                        <a class="navbar-brand" id="TenDonVi">@Html.DisplayNameFor(model => model.DonVi.TenDonVi)</a>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -89,13 +87,13 @@
                             </li>
                         </ul>
                     </nav>
-                    <input hidden="hidden" type="text" class="form-control form-control-user" id="IDDonVi" name="IDDonVi" placeholder="@Html.DisplayNameFor(model=>model.IDDonVi)" value="@Html.DisplayFor(model => model.IDDonVi)">
+                    <input hidden="hidden" type="text" class="form-control form-control-user" id="IDDonVi" name="IDDonVi" placeholder="@Html.DisplayNameFor(model=>model.IDDonVi)">
                     @Html.ValidationMessageFor(model => model.IDDonVi, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
                     <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                        <a class="navbar-brand" id="LoaiCV">@Html.DisplayFor(model => model.LoaiCongVan.LoaiCV)</a>
+                        <a class="navbar-brand" id="LoaiCV">@Html.DisplayNameFor(model => model.LoaiCongVan.LoaiCV)</a>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -110,50 +108,32 @@
                             </li>
                         </ul>
                     </nav>
-                    <input hidden="hidden" type="text" class="form-control form-control-user" id="IDLoaiCV" name="IDLoaiCV" placeholder="@Html.DisplayNameFor(model=>model.IDLoaiCV)" value="@Html.DisplayFor(model => model.IDLoaiCV)">
+                    <input hidden="hidden" type="text" class="form-control form-control-user" id="IDLoaiCV" name="IDLoaiCV" placeholder="@Html.DisplayNameFor(model=>model.IDLoaiCV)">
                     @Html.ValidationMessageFor(model => model.IDLoaiCV, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="SoCV" name="SoCV" placeholder="@Html.DisplayNameFor(model => model.SoCV)" value="@Html.DisplayFor(model => model.SoCV)">
+                    <input type="text" class="form-control form-control-user" id="SoCV" name="SoCV" placeholder="@Html.DisplayNameFor(model=>model.SoCV)">
                     @Html.ValidationMessageFor(model => model.SoCV, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="TieuDe" name="TieuDe" placeholder="@Html.DisplayNameFor(model => model.TieuDe)" value="@Html.DisplayFor(model => model.TieuDe)">
+                    <input type="text" class="form-control form-control-user" id="TieuDe" name="TieuDe" placeholder="@Html.DisplayNameFor(model=>model.TieuDe)">
                     @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="NoiDung" name="NoiDung" placeholder="@Html.DisplayNameFor(model => model.NoiDung)" value="@Html.DisplayFor(model => model.NoiDung)">
+                    <input type="text" class="form-control form-control-user" id="NoiDung" name="NoiDung" placeholder="@Html.DisplayNameFor(model=>model.NoiDung)">
                     @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
-                </div>
-                <div hidden="hidden">
-                    <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="CreateBy" name="CreateBy" placeholder="@Html.DisplayNameFor(model => model.CreateBy)" value="@Html.DisplayFor(model => model.CreateBy)">
-                        @Html.ValidationMessageFor(model => model.CreateBy, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="CreateDate" name="CreateDate" placeholder="@Html.DisplayNameFor(model => model.CreateDate)" value="@Html.DisplayFor(model => model.CreateDate)">
-                        @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="ModifyBy" name="ModifyBy" placeholder="@Html.DisplayNameFor(model => model.ModifyBy)" value="@Html.DisplayFor(model => model.ModifyBy)">
-                        @Html.ValidationMessageFor(model => model.ModifyBy, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="ModifyDate" name="ModifyDate" placeholder="@Html.DisplayNameFor(model => model.ModifyDate)" value="@Html.DisplayFor(model => model.ModifyDate)">
-                        @Html.ValidationMessageFor(model => model.ModifyDate, "", new { @class = "text-danger" })
-                    </div>
                 </div>
                 @*checkbox ngày hết hạn*@
                 <div class="form-group row">
                     <div class="col-sm-auto">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1" name="HetHan" value="true" @(Model.HetHan ? "checked=\"checked\"" : "")>
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" name="HetHan" value="true">
                             <label class="custom-control-label" for="customCheck1">Ngày Hết Hạn</label>
                         </div>
                     </div>
                     <div class="col-sm-auto">
-                        <input type="text" class="form-control form-control-user" id="NgayHetHan" name="NgayHetHan" placeholder="@Html.DisplayNameFor(model=>model.NgayHetHan)" disabled="disabled" value="@Html.DisplayFor(model => model.NgayHetHan)">
+                        <input type="text" class="form-control form-control-user" id="NgayHetHan" name="NgayHetHan" placeholder="@Html.DisplayNameFor(model=>model.NgayHetHan)" disabled="disabled">
                         <span>@Html.ValidationMessageFor(model => model.NgayHetHan, "", new { @class = "text-danger" })</span>
                     </div>
 
@@ -163,11 +143,11 @@
                     <div class="custom-control custom-checkbox">
                         <div>
                             <div style="float: left;">
-                                <input type="checkbox" class="custom-control-input" id="customCheck21" name="Mat" value="true" @(Model.Mat ? "checked=\"checked\"" : "")>
+                                <input type="checkbox" class="custom-control-input" id="customCheck21" name="Mat" value="true" />
                                 <label class="custom-control-label" for="customCheck21">Mật</label>
                             </div>
                             <div style="float: right;">
-                                <input type="checkbox" class="custom-control-input" id="customCheck22" name="Khan" value="true" @(Model.Khan ? "checked=\"checked\"" : "")>
+                                <input type="checkbox" class="custom-control-input" id="customCheck22" name="Khan" value="true" />
                                 <label class="custom-control-label" for="customCheck22">Khẩn</label>
                             </div>
                         </div>
@@ -183,26 +163,13 @@
                         </div>
                     </div>
                 </div>
-                @*Show File*@
-                <table>
-                    @foreach (var itemA in Model.CongVanDen_Hinh)
-                    {
-                        <tr>
-                                <td style="max-width:250px">
-                                    <a href="@Url.Action("viewFile", "CongVanDen",new { ID = itemA.ID })">@itemA.FileName</a>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("downloadFile", "CongVanDen",new { ID = itemA.ID })" class="btn btn-info">Tải</a>
-                                    <a href="@Url.Action("deleteFile", "CongVanDen",new { ID = itemA.ID })" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn xóa?');">Xóa</a>
-                                </td>
-                        </tr>
-                    }
-                </table>
-                <br />
-                <div class="text-center">
-                    <input type="submit" value="Lưu" class="btn btn-success" />
-                </div>
+                
+            </div>
+
+            <div class="text-center">
+                <input type="submit" value="Lưu" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
+
