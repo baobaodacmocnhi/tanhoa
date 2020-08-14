@@ -94,10 +94,10 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(241, 70);
+            this.btnSua.Location = new System.Drawing.Point(252, 70);
             this.btnSua.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(86, 27);
+            this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 16;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -105,10 +105,10 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(146, 70);
+            this.btnThem.Location = new System.Drawing.Point(167, 70);
             this.btnThem.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(86, 27);
+            this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 15;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;

@@ -14,6 +14,7 @@ using KTKS_DonKH.BaoCao.ToXuLy;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao.ToKhachHang;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
@@ -23,6 +24,8 @@ namespace KTKS_DonKH.GUI.DonTu
         CNoiChuyen _cNoiChuyen = new CNoiChuyen();
         CTo _cTo = new CTo();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
+        CThuTien _cThuTien = new CThuTien();
+        CDHN _cDocSo = new CDHN();
 
         public frmBaoCaoDonTu()
         {
@@ -56,13 +59,16 @@ namespace KTKS_DonKH.GUI.DonTu
             //Danh Sách Chuyển KTXM (ngày chuyển)
             DataTable dt = new DataTable();
             dt = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
-            DataRow dr = dt.NewRow();
-            dr["MaU"] = 0;
-            dr["HoTen"] = "Tất Cả";
-            dt.Rows.InsertAt(dr, 0);
-            cmbNhanVienKiemTra.DataSource = dt;
-            cmbNhanVienKiemTra.ValueMember = "MaU";
-            cmbNhanVienKiemTra.DisplayMember = "HoTen";
+            if (dt != null)
+            {
+                DataRow dr = dt.NewRow();
+                dr["MaU"] = 0;
+                dr["HoTen"] = "Tất Cả";
+                dt.Rows.InsertAt(dr, 0);
+                cmbNhanVienKiemTra.DataSource = dt;
+                cmbNhanVienKiemTra.ValueMember = "MaU";
+                cmbNhanVienKiemTra.DisplayMember = "HoTen";
+            }
         }
 
         private void cmbTimTheo_LichSuChuyenDon_SelectedIndexChanged(object sender, EventArgs e)
@@ -188,7 +194,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     if (cmbNhanVienKiemTra.SelectedIndex == 0)
                         dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                     else
-                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo,int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                     break;
                 case "Số Công Văn":
                     if (cmbNhanVienKiemTra.SelectedIndex == 0)
@@ -531,7 +537,154 @@ namespace KTKS_DonKH.GUI.DonTu
             frm.Show();
         }
 
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                dialog.Multiselect = false;
 
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    DataTable dtExport = new DataTable();
+                    dtExport.Columns.Add("DanhBo", typeof(String));
+                    dtExport.Columns.Add("HoTen", typeof(String));
+                    dtExport.Columns.Add("DiaChi", typeof(String));
+                    dtExport.Columns.Add("Phuong", typeof(String));
+                    dtExport.Columns.Add("Quan", typeof(String));
+
+                    CExcel fileExcel = new CExcel(dialog.FileName);
+                    DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                    foreach (DataRow item in dtExcel.Rows)
+                        if (!string.IsNullOrEmpty(item[0].ToString()) && item[0].ToString().Replace(" ", "").Length == 11)
+                        {
+                            HOADON hd = _cThuTien.GetMoiNhat(item[0].ToString().Replace(" ", ""));
+                            if (hd != null)
+                            {
+                                DataRow dr = dtExport.NewRow();
+                                dr["DanhBo"] = hd.DANHBA;
+                                dr["HoTen"] = hd.TENKH;
+                                dr["DiaChi"] = hd.SO + " " + hd.DUONG;
+                                dr["Phuong"] = _cDocSo.GetTenPhuong(int.Parse(hd.Quan),hd.Phuong);
+                                dr["Quan"] = _cDocSo.GetTenQuan(int.Parse(hd.Quan));
+
+                                dtExport.Rows.Add(dr);
+                            }
+                        }
+                    //Tạo các đối tượng Excel
+                    Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                    Microsoft.Office.Interop.Excel.Workbooks oBooks;
+                    Microsoft.Office.Interop.Excel.Sheets oSheets;
+                    Microsoft.Office.Interop.Excel.Workbook oBook;
+                    Microsoft.Office.Interop.Excel.Worksheet oSheet;
+                    //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
+
+                    //Tạo mới một Excel WorkBook 
+                    oExcel.Visible = true;
+                    oExcel.DisplayAlerts = false;
+                    //khai báo số lượng sheet
+                    oExcel.Application.SheetsInNewWorkbook = 1;
+                    oBooks = oExcel.Workbooks;
+
+                    oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                    oSheets = oBook.Worksheets;
+                    oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+                    //oSheetCQ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
+
+                    XuatExcel(dtExport, oSheet, "Thông Tin Khách Hàng");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void XuatExcel(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName)
+        {
+            oSheet.Name = SheetName;
+            // Tạo tiêu đề cột 
+            Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
+            cl1.Value2 = "Danh Bộ";
+            cl1.ColumnWidth = 15;
+
+            Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B1", "B1");
+            cl2.Value2 = "Khách Hàng";
+            cl2.ColumnWidth = 30;
+
+            Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C1", "C1");
+            cl3.Value2 = "Địa Chỉ";
+            cl3.ColumnWidth = 50;
+
+            Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D1", "D1");
+            cl4.Value2 = "Phường";
+            cl4.ColumnWidth = 15;
+
+            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("E1", "E1");
+            cl5.Value2 = "Quận";
+            cl5.ColumnWidth = 15;
+
+            // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+            // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+            object[,] arr = new object[dt.Rows.Count, 5];
+
+            //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+
+                arr[i, 0] = dr["DanhBo"].ToString();
+                arr[i, 1] = dr["HoTen"].ToString();
+                arr[i, 2] = dr["DiaChi"].ToString();
+                arr[i, 3] = dr["Phuong"].ToString();
+                arr[i, 4] = dr["Quan"].ToString();
+            }
+
+            //Thiết lập vùng điền dữ liệu
+            int rowStart = 2;
+            int columnStart = 1;
+
+            int rowEnd = rowStart + dt.Rows.Count - 1;
+            int columnEnd = 5;
+
+            // Ô bắt đầu điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+            // Ô kết thúc điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+            // Lấy về vùng điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+            Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
+            Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
+            Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+            c3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
+            Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
+            Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
+            c3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            c3b.NumberFormat = "@";
+
+            Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+            Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+            Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
+            c3c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
+            Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
+            Microsoft.Office.Interop.Excel.Range c3d = oSheet.get_Range(c1d, c2d);
+            c3d.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 5];
+            Microsoft.Office.Interop.Excel.Range c2e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 5];
+            Microsoft.Office.Interop.Excel.Range c3e = oSheet.get_Range(c1e, c2e);
+            c3e.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            c3e.NumberFormat = "@";
+
+            //Điền dữ liệu vào vùng đã thiết lập
+            range.Value2 = arr;
+        }
 
 
     }

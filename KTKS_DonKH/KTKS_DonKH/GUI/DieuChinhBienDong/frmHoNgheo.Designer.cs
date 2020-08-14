@@ -55,7 +55,7 @@
             // 
             this.btnChonFile.Location = new System.Drawing.Point(12, 12);
             this.btnChonFile.Name = "btnChonFile";
-            this.btnChonFile.Size = new System.Drawing.Size(75, 23);
+            this.btnChonFile.Size = new System.Drawing.Size(75, 25);
             this.btnChonFile.TabIndex = 0;
             this.btnChonFile.Text = "Chọn File";
             this.btnChonFile.UseVisualStyleBackColor = true;
@@ -131,7 +131,7 @@
             // 
             this.btnIn.Location = new System.Drawing.Point(459, 12);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.Size = new System.Drawing.Size(75, 25);
             this.btnIn.TabIndex = 2;
             this.btnIn.Text = "In";
             this.btnIn.UseVisualStyleBackColor = true;
@@ -220,7 +220,7 @@
             // 
             this.btnXem.Location = new System.Drawing.Point(378, 12);
             this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.Size = new System.Drawing.Size(75, 25);
             this.btnXem.TabIndex = 7;
             this.btnXem.Text = "Xem";
             this.btnXem.UseVisualStyleBackColor = true;
@@ -262,7 +262,7 @@
             // 
             this.btnInMien.Location = new System.Drawing.Point(760, 9);
             this.btnInMien.Name = "btnInMien";
-            this.btnInMien.Size = new System.Drawing.Size(75, 23);
+            this.btnInMien.Size = new System.Drawing.Size(75, 25);
             this.btnInMien.TabIndex = 12;
             this.btnInMien.Text = "In Miễn";
             this.btnInMien.UseVisualStyleBackColor = true;

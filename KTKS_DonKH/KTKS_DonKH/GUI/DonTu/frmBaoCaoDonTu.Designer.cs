@@ -43,6 +43,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cmbNhanVienKiemTra = new System.Windows.Forms.ComboBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.chkChuaKT_DSChuyenKTXM = new System.Windows.Forms.CheckBox();
             this.btnBaoCao_DSChuyenKTXM = new System.Windows.Forms.Button();
             this.cmbTimTheo_DSChuyenKTXM = new System.Windows.Forms.ComboBox();
@@ -83,8 +85,9 @@
             this.dateDen_ThongKeNhomDon_Phong = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.cmbNhanVienKiemTra = new System.Windows.Forms.ComboBox();
-            this.label32 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian_LichSuChuyenDon.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -96,6 +99,7 @@
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -261,6 +265,24 @@
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh Sách Chuyển KTXM (ngày chuyển)";
+            // 
+            // cmbNhanVienKiemTra
+            // 
+            this.cmbNhanVienKiemTra.FormattingEnabled = true;
+            this.cmbNhanVienKiemTra.Location = new System.Drawing.Point(442, 37);
+            this.cmbNhanVienKiemTra.MaxDropDownItems = 10;
+            this.cmbNhanVienKiemTra.Name = "cmbNhanVienKiemTra";
+            this.cmbNhanVienKiemTra.Size = new System.Drawing.Size(150, 24);
+            this.cmbNhanVienKiemTra.TabIndex = 41;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(442, 18);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(127, 16);
+            this.label32.TabIndex = 40;
+            this.label32.Text = "Nhân Viên Kiểm Tra";
             // 
             // chkChuaKT_DSChuyenKTXM
             // 
@@ -656,30 +678,43 @@
             this.label16.TabIndex = 16;
             this.label16.Text = "Đến Ngày:";
             // 
-            // cmbNhanVienKiemTra
+            // groupBox6
             // 
-            this.cmbNhanVienKiemTra.FormattingEnabled = true;
-            this.cmbNhanVienKiemTra.Location = new System.Drawing.Point(442, 37);
-            this.cmbNhanVienKiemTra.MaxDropDownItems = 10;
-            this.cmbNhanVienKiemTra.Name = "cmbNhanVienKiemTra";
-            this.cmbNhanVienKiemTra.Size = new System.Drawing.Size(150, 24);
-            this.cmbNhanVienKiemTra.TabIndex = 41;
+            this.groupBox6.Controls.Add(this.label17);
+            this.groupBox6.Controls.Add(this.btnImport);
+            this.groupBox6.Location = new System.Drawing.Point(12, 481);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(465, 84);
+            this.groupBox6.TabIndex = 34;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Chức Năng Xử Lý Chung";
             // 
-            // label32
+            // btnImport
             // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(442, 18);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(127, 16);
-            this.label32.TabIndex = 40;
-            this.label32.Text = "Nhân Viên Kiểm Tra";
+            this.btnImport.Location = new System.Drawing.Point(9, 46);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(75, 25);
+            this.btnImport.TabIndex = 0;
+            this.btnImport.Text = "Import";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 27);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(286, 16);
+            this.label17.TabIndex = 16;
+            this.label17.Text = "Từ Danh Bộ lấy Họ Tên, Địa Chỉ, Quận, Phường";
             // 
             // frmBaoCaoDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(928, 574);
+            this.ClientSize = new System.Drawing.Size(928, 591);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
@@ -708,6 +743,8 @@
             this.groupBox5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -771,5 +808,8 @@
         private System.Windows.Forms.Button btnInDS_ThongKeNhomDon_3To;
         private System.Windows.Forms.ComboBox cmbNhanVienKiemTra;
         private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button btnImport;
     }
 }
