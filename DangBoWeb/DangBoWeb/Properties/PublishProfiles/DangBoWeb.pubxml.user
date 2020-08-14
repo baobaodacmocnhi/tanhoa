@@ -6,14 +6,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\BaoBao\Desktop\WebSite</_PublishTargetUrl>
+    <_PublishTargetUrl>\\192.168.90.11\DangBoWeb$</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>08/13/2020 13:49:02</publishTime>
     </File>
     <File Include="bin/DangBoWeb.dll">
-      <publishTime>08/13/2020 15:53:08</publishTime>
+      <publishTime>08/14/2020 16:46:12</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>08/13/2020 13:49:30</publishTime>
@@ -661,7 +661,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2020 13:48:19</publishTime>
     </File>
     <File Include="Template/SBAdmin2/vendor/datatables/jquery.dataTables.min.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>08/13/2020 15:52:00</publishTime>
     </File>
     <File Include="Template/SBAdmin2/vendor/fontawesome-free/css/all.css">
       <publishTime>08/13/2020 13:48:19</publishTime>
@@ -5785,7 +5785,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2020 13:48:59</publishTime>
     </File>
     <File Include="Views/CongVanDen/Create.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>08/13/2020 13:49:00</publishTime>
     </File>
     <File Include="Views/CongVanDen/Edit.cshtml">
       <publishTime>08/13/2020 14:46:30</publishTime>
@@ -5803,31 +5803,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2020 15:09:07</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>08/13/2020 13:49:00</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>08/13/2020 13:49:00</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>08/14/2020 16:45:38</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>08/13/2020 13:49:00</publishTime>
     </File>
     <File Include="Views/Manage/ChangePassword.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>08/13/2020 13:49:00</publishTime>
     </File>
     <File Include="Views/Manage/Index.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>08/13/2020 13:49:00</publishTime>
     </File>
     <File Include="Views/Manage/ManageLogins.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>08/13/2020 13:49:00</publishTime>
     </File>
     <File Include="Views/Manage/SetPassword.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>08/13/2020 13:49:00</publishTime>
     </File>
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>08/13/2020 13:49:00</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>08/13/2020 13:49:01</publishTime>
