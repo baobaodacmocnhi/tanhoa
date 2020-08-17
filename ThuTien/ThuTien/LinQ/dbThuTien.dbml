@@ -1367,6 +1367,17 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TT_LichSuDangNgan" Member="TT_LichSuDangNgans">
+    <Type Name="TT_LichSuDangNgan">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Name_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IP_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.TT_NguoiDung" Member="TT_NguoiDungs">
     <Type Name="TT_NguoiDung">
       <Column Name="MaND" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1389,6 +1400,7 @@
       <Column Name="VanPhong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="HanhThuVanPhong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="ChamCong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="InPhieuBao" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TestApp" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IDMobile" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="UID" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
@@ -1404,17 +1416,6 @@
       <Association Name="TT_NguoiDung_TT_PhanQuyenNguoiDung" Member="TT_PhanQuyenNguoiDungs" ThisKey="MaND" OtherKey="MaND" Type="TT_PhanQuyenNguoiDung" />
       <Association Name="TT_NguoiDung_TT_CTChamCong" Member="TT_CTChamCongs" ThisKey="MaND" OtherKey="MaND" Type="TT_CTChamCong" />
       <Association Name="TT_To_TT_NguoiDung" Member="TT_To" ThisKey="MaTo" OtherKey="MaTo" Type="TT_To" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TT_LichSuDangNgan" Member="TT_LichSuDangNgans">
-    <Type Name="TT_LichSuDangNgan">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MaHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Name_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="IP_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">

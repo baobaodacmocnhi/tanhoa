@@ -78,6 +78,7 @@
             this.txtIDMobile = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.chkAll = new System.Windows.Forms.CheckBox();
+            this.chkInPhieuBao = new System.Windows.Forms.CheckBox();
             this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ActiveMobile = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,6 +100,7 @@
             this.VanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChamCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TestApp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InPhieuBao = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.IDMobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -221,6 +223,7 @@
             this.VanPhong,
             this.ChamCong,
             this.TestApp,
+            this.InPhieuBao,
             this.IDMobile});
             this.dgvNguoiDung.Location = new System.Drawing.Point(12, 155);
             this.dgvNguoiDung.MultiSelect = false;
@@ -502,7 +505,7 @@
             // chkChamCong
             // 
             this.chkChamCong.AutoSize = true;
-            this.chkChamCong.Location = new System.Drawing.Point(586, 109);
+            this.chkChamCong.Location = new System.Drawing.Point(594, 109);
             this.chkChamCong.Name = "chkChamCong";
             this.chkChamCong.Size = new System.Drawing.Size(81, 17);
             this.chkChamCong.TabIndex = 22;
@@ -549,7 +552,7 @@
             // chkAn
             // 
             this.chkAn.AutoSize = true;
-            this.chkAn.Location = new System.Drawing.Point(586, 86);
+            this.chkAn.Location = new System.Drawing.Point(594, 86);
             this.chkAn.Name = "chkAn";
             this.chkAn.Size = new System.Drawing.Size(39, 17);
             this.chkAn.TabIndex = 27;
@@ -570,7 +573,7 @@
             // chkTestApp
             // 
             this.chkTestApp.AutoSize = true;
-            this.chkTestApp.Location = new System.Drawing.Point(501, 86);
+            this.chkTestApp.Location = new System.Drawing.Point(501, 64);
             this.chkTestApp.Name = "chkTestApp";
             this.chkTestApp.Size = new System.Drawing.Size(69, 17);
             this.chkTestApp.TabIndex = 29;
@@ -603,6 +606,16 @@
             this.chkAll.Text = "Active Tất Cả Đăng Ngân Mobile";
             this.chkAll.UseVisualStyleBackColor = true;
             this.chkAll.CheckedChanged += new System.EventHandler(this.chkAll_CheckedChanged);
+            // 
+            // chkInPhieuBao
+            // 
+            this.chkInPhieuBao.AutoSize = true;
+            this.chkInPhieuBao.Location = new System.Drawing.Point(501, 87);
+            this.chkInPhieuBao.Name = "chkInPhieuBao";
+            this.chkInPhieuBao.Size = new System.Drawing.Size(87, 17);
+            this.chkInPhieuBao.TabIndex = 33;
+            this.chkInPhieuBao.Text = "In Phiếu Báo";
+            this.chkInPhieuBao.UseVisualStyleBackColor = true;
             // 
             // MaND
             // 
@@ -749,6 +762,13 @@
             this.TestApp.Name = "TestApp";
             this.TestApp.Visible = false;
             // 
+            // InPhieuBao
+            // 
+            this.InPhieuBao.DataPropertyName = "InPhieuBao";
+            this.InPhieuBao.HeaderText = "InPhieuBao";
+            this.InPhieuBao.Name = "InPhieuBao";
+            this.InPhieuBao.Visible = false;
+            // 
             // IDMobile
             // 
             this.IDMobile.DataPropertyName = "IDMobile";
@@ -760,6 +780,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 666);
+            this.Controls.Add(this.chkInPhieuBao);
             this.Controls.Add(this.chkAll);
             this.Controls.Add(this.txtIDMobile);
             this.Controls.Add(this.label8);
@@ -862,6 +883,7 @@
         private System.Windows.Forms.TextBox txtIDMobile;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox chkAll;
+        private System.Windows.Forms.CheckBox chkInPhieuBao;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaND;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ActiveMobile;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
@@ -883,6 +905,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VanPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChamCong;
         private System.Windows.Forms.DataGridViewTextBoxColumn TestApp;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn InPhieuBao;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDMobile;
     }
 }

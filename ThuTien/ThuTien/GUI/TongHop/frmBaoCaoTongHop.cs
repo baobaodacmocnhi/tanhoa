@@ -1966,7 +1966,7 @@ namespace ThuTien.GUI.TongHop
             oSheetKhacKy = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
 
             XuatExcel(dtCungKy, oSheetCungKy, "Tiền Nước thu được Cùng kỳ");
-            XuatExcel(dtKhacKy, oSheetKhacKy, "Tiền Nước thu được Khác kỳ");
+            //XuatExcel(dtKhacKy, oSheetKhacKy, "Tiền Nước thu được Khác kỳ");
         }
 
         private void XuatExcel(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName)
@@ -2145,6 +2145,11 @@ namespace ThuTien.GUI.TongHop
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
+        }
+
+        private void btnXuatExcel_KeToan_Chot2019_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

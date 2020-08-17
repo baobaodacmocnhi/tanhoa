@@ -129,6 +129,7 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.DongNuoc = chkDongNuoc.Checked;
                     nguoidung.VanPhong = chkVanPhong.Checked;
                     nguoidung.ChamCong = chkChamCong.Checked;
+                    nguoidung.InPhieuBao = chkInPhieuBao.Checked;
                     nguoidung.TestApp = chkTestApp.Checked;
                     ///tự động thêm quyền cho người mới
                     foreach (var item in _cMenu.GetDS())
@@ -185,6 +186,7 @@ namespace ThuTien.GUI.QuanTri
                         nguoidung.DongNuoc = chkDongNuoc.Checked;
                         nguoidung.VanPhong = chkVanPhong.Checked;
                         nguoidung.ChamCong = chkChamCong.Checked;
+                        nguoidung.InPhieuBao = chkInPhieuBao.Checked;
                         nguoidung.TestApp = chkTestApp.Checked;
 
                         _cNguoiDung.Sua(nguoidung);
@@ -260,6 +262,7 @@ namespace ThuTien.GUI.QuanTri
                 chkDongNuoc.Checked = bool.Parse(dgvNguoiDung["DongNuoc", e.RowIndex].Value.ToString());
                 chkVanPhong.Checked = bool.Parse(dgvNguoiDung["VanPhong", e.RowIndex].Value.ToString());
                 chkChamCong.Checked = bool.Parse(dgvNguoiDung["ChamCong", e.RowIndex].Value.ToString());
+                chkInPhieuBao.Checked = bool.Parse(dgvNguoiDung["InPhieuBao", e.RowIndex].Value.ToString());
                 chkTestApp.Checked = bool.Parse(dgvNguoiDung["TestApp", e.RowIndex].Value.ToString());
                 if (dgvNguoiDung["IDMobile", e.RowIndex].Value != null)
                     txtIDMobile.Text = dgvNguoiDung["IDMobile", e.RowIndex].Value.ToString();

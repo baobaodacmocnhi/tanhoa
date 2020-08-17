@@ -315,6 +315,7 @@
             this.btnXuatExcel_KeToan_Chot2019.TabIndex = 34;
             this.btnXuatExcel_KeToan_Chot2019.Text = "Xuất Excel";
             this.btnXuatExcel_KeToan_Chot2019.UseVisualStyleBackColor = true;
+            this.btnXuatExcel_KeToan_Chot2019.Click += new System.EventHandler(this.btnXuatExcel_KeToan_Chot2019_Click);
             // 
             // btnIn_KeToan_Chot2019
             // 
