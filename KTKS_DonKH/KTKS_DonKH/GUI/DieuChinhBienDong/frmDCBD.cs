@@ -642,7 +642,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdcbd.GiaBieu_BD = int.Parse(txtGiaBieu_BD.Text.Trim());
                     }
                     ///Định Mức
-                    if (txtDinhMuc_BD.Text.Trim() != "" || txtDinhMucHN_BD.Text.Trim() != "")
+                    if ((txtDinhMuc_BD.Text.Trim() != "" && txtDinhMuc.Text.Trim() != txtDinhMuc_BD.Text.Trim()) || (txtDinhMucHN_BD.Text.Trim() != "" && txtDinhMucHN_BD.Text.Trim() != txtDinhMucHN.Text.Trim()))
                     {
                         if (string.IsNullOrEmpty(ThongTin) == true)
                             ThongTin += "Định Mức";
@@ -867,6 +867,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             else
                                 _ctdcbd.DinhMucHN_BD = null;
+                        }
+                        else
+                        {
+                            _ctdcbd.DinhMucHN = null;
+                            _ctdcbd.DinhMucHN_BD = null;
                         }
                         //tỷ lệ
                         if (txtSH_BD.Text.Trim() != "" || txtSX_BD.Text.Trim() != "" || txtDV_BD.Text.Trim() != "" || txtHCSN_BD.Text.Trim() != "")
