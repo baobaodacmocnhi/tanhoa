@@ -870,7 +870,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                         else
                         {
-                            _ctdcbd.DinhMucHN = null;
+                            _ctdcbd.DinhMuc_BD = null;
                             _ctdcbd.DinhMucHN_BD = null;
                         }
                         //tỷ lệ
