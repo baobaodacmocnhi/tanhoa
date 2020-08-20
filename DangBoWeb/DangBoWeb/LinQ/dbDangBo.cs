@@ -28,18 +28,6 @@ namespace DangBoWeb.LinQ
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CongVanDen>()
-                .Property(e => e.SoCV)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CongVanDen>()
-                .Property(e => e.TieuDe)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CongVanDen>()
-                .Property(e => e.NoiDung)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CongVanDen>()
                 .HasMany(e => e.CongVanDen_Hinh)
                 .WithOptional(e => e.CongVanDen)
                 .HasForeignKey(e => e.IDCongVanDen);
@@ -54,18 +42,6 @@ namespace DangBoWeb.LinQ
 
             modelBuilder.Entity<CongVanDen_Hinh>()
                 .Property(e => e.FileExtention)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CongVanDi>()
-                .Property(e => e.SoCV)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CongVanDi>()
-                .Property(e => e.TieuDe)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CongVanDi>()
-                .Property(e => e.NoiDung)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CongVanDi>()

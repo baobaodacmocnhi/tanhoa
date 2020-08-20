@@ -126,6 +126,10 @@
                     <input type="text" class="form-control form-control-user" id="NoiDung" name="NoiDung" placeholder="@Html.DisplayNameFor(model => model.NoiDung)" value="@Html.DisplayFor(model => model.NoiDung)">
                     @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
                 </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="ButPhe" name="ButPhe" placeholder="@Html.DisplayNameFor(model => model.ButPhe)" value="@Html.DisplayFor(model => model.ButPhe)">
+                    @Html.ValidationMessageFor(model => model.ButPhe, "", new { @class = "text-danger" })
+                </div>
                 <div hidden="hidden">
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" id="CreateBy" name="CreateBy" placeholder="@Html.DisplayNameFor(model => model.CreateBy)" value="@Html.DisplayFor(model => model.CreateBy)">

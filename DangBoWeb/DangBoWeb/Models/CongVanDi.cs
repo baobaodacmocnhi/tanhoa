@@ -27,12 +27,16 @@
         public string SoCV { get; set; }
 
         [Display(Name = "Tiêu Đề")]
-        [StringLength(50)]
+        [StringLength(100)]
         public string TieuDe { get; set; }
 
         [Display(Name = "Nội Dung")]
-        [StringLength(50)]
+        [StringLength(200)]
         public string NoiDung { get; set; }
+
+        [Display(Name = "Bút Phê")]
+        [StringLength(100)]
+        public string ButPhe { get; set; }
 
         public bool Mat { get; set; }
 

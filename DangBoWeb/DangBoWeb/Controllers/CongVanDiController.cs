@@ -25,7 +25,7 @@ namespace DangBoWeb.Controllers
         // GET: CongVanDi
         public async Task<ActionResult> Index()
         {
-            return View(await _db.CongVanDis.OrderBy(item => item.ID).ToListAsync());
+            return View(await _db.CongVanDis.OrderByDescending(item => item.CreateDate).ToListAsync());
         }
 
         public ActionResult Create()

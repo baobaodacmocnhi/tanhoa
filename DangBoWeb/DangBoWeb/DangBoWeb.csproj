@@ -179,9 +179,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LinQ\dbDangBo.cs" />
     <Compile Include="Models\CongVanDen_Hinh.cs" />
     <Compile Include="Models\CongVanDi_Hinh.cs" />
-    <Compile Include="LinQ\dbDangBo.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CongVanDen.cs" />
     <Compile Include="Models\CongVanDi.cs" />
