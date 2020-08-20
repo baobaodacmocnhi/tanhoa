@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1294</ApplicationRevision>
+    <ApplicationRevision>1295</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1098,6 +1098,12 @@
     <Compile Include="GUI\TongHop\frmDCHD.Designer.cs">
       <DependentUpon>frmDCHD.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\TongHop\frmHoaDonChoDieuChinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TongHop\frmHoaDonChoDieuChinh.Designer.cs">
+      <DependentUpon>frmHoaDonChoDieuChinh.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\TongHop\frmShowChuyenNoKhoDoi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1889,6 +1895,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TongHop\frmDCHD.resx">
       <DependentUpon>frmDCHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TongHop\frmHoaDonChoDieuChinh.resx">
+      <DependentUpon>frmHoaDonChoDieuChinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TongHop\frmShowChuyenNoKhoDoi.resx">
       <DependentUpon>frmShowChuyenNoKhoDoi.cs</DependentUpon>

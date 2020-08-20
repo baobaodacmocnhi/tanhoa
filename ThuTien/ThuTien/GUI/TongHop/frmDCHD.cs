@@ -644,6 +644,12 @@ namespace ThuTien.GUI.TongHop
                 }
         }
 
+        private void btnHDChoDieuChinh_Click(object sender, EventArgs e)
+        {
+            frmHoaDonChoDieuChinh frm = new frmHoaDonChoDieuChinh();
+            frm.ShowDialog();
+        }
+
 
 
 

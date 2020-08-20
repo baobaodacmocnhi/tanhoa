@@ -854,6 +854,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 {
                                     MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     item.Selected = true;
+                                    dgvTamThu.CurrentCell = item.Cells[0];
                                     return;
                                 }
                             }

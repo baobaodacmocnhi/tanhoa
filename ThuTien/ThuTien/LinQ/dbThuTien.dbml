@@ -1418,6 +1418,17 @@
       <Association Name="TT_To_TT_NguoiDung" Member="TT_To" ThisKey="MaTo" OtherKey="MaTo" Type="TT_To" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TT_HoaDonChoDieuChinh" Member="TT_HoaDonChoDieuChinhs">
+    <Type Name="TT_HoaDonChoDieuChinh">
+      <Column Name="DanhBo" Type="System.String" DbType="Char(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nam" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Ky" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">
     <Parameter Name="DanhBo" Parameter="danhBo" Type="System.String" DbType="VarChar(11)" />
     <Parameter Name="MLT" Parameter="mLT" Type="System.String" DbType="VarChar(11)" />

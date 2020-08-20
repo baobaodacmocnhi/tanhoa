@@ -218,6 +218,7 @@ namespace ThuTien.GUI.Doi
                             {
                                 if (_cHoaDon.Them(hoadon) == true)
                                 {
+                                    //thêm hóa đơn mới vào lệnh đóng nước
                                     if (hoadon.TIEUTHU != 0 && _cDongNuoc.CheckExist_CTDongNuoc_Ton(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1) == true)
                                     {
                                         TT_DongNuoc dongnuoc = _cDongNuoc.getDongNuoc_MoiNhat_Ton(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1);
@@ -239,6 +240,7 @@ namespace ThuTien.GUI.Doi
 
                                         _cDongNuoc.SuaDN(dongnuoc);
                                     }
+                                    //thêm hóa đơn mới vào lệnh hủy
                                     if (hoadon.TIEUTHU != 0 && _cLenhHuy.CheckExist_Ton(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY - 1) == true)
                                     {
                                         TT_LenhHuy lenhhuy = new TT_LenhHuy();
@@ -252,6 +254,27 @@ namespace ThuTien.GUI.Doi
                                             lenhhuy.Cat = lhMoiNhat.Cat;
                                         }
                                         _cLenhHuy.Them(lenhhuy);
+                                    }
+                                    //check hóa đơn chờ điều chỉnh
+                                    if (_cDCHD.checkExist_HDChoDC(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY) == true)
+                                    {
+                                        DIEUCHINH_HD dchd = new DIEUCHINH_HD();
+                                        dchd.FK_HOADON = hoadon.ID_HOADON;
+                                        dchd.SoHoaDon = hoadon.SOHOADON;
+                                        dchd.GiaBieu = hoadon.GB;
+                                        if (hoadon.DM != null)
+                                            dchd.DinhMuc = (int)hoadon.DM;
+                                        dchd.TIEUTHU_BD = (int)hoadon.TIEUTHU;
+                                        dchd.GIABAN_BD = hoadon.GIABAN;
+                                        dchd.PHI_BD = hoadon.PHI;
+                                        dchd.THUE_BD = hoadon.THUE;
+                                        dchd.TONGCONG_BD = hoadon.TONGCONG;
+                                        dchd.NGAY_DC = DateTime.Now;
+
+                                        if (_cDCHD.Them(dchd))
+                                        {
+                                            _cDCHD.Xoa_HDChoDC(_cDCHD.get_HDChoDC(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY));
+                                        }
                                     }
                                 }
                             }

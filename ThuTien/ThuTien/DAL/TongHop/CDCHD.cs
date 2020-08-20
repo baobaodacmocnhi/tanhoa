@@ -54,8 +54,7 @@ namespace ThuTien.DAL.TongHop
             catch (Exception ex)
             {
                 _db = new dbThuTienDataContext();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -70,8 +69,8 @@ namespace ThuTien.DAL.TongHop
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                _db = new dbThuTienDataContext();
+                throw ex;
             }
         }
 
@@ -85,8 +84,8 @@ namespace ThuTien.DAL.TongHop
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                _db = new dbThuTienDataContext();
+                throw ex;
             }
         }
 
@@ -1872,6 +1871,55 @@ namespace ThuTien.DAL.TongHop
         public DCBD_ChiTietHoaDon GetCTDCHDBySoPhieu(decimal SoPhieu)
         {
             return _dbKTKS_DonKH.DCBD_ChiTietHoaDons.SingleOrDefault(item => item.MaCTDCHD == SoPhieu);
+        }
+
+        //hóa đơn chờ điều chỉnh
+
+        public bool Them_HDChoDC(TT_HoaDonChoDieuChinh en)
+        {
+            try
+            {
+                en.CreateDate = DateTime.Now;
+                en.CreateBy = CNguoiDung.MaND;
+                _db.TT_HoaDonChoDieuChinhs.InsertOnSubmit(en);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _db = new dbThuTienDataContext();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_HDChoDC(TT_HoaDonChoDieuChinh en)
+        {
+            try
+            {
+                _db.TT_HoaDonChoDieuChinhs.DeleteOnSubmit(en);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _db = new dbThuTienDataContext();
+                throw ex;
+            }
+        }
+
+        public bool checkExist_HDChoDC(string DanhBo, int Nam, int Ky)
+        {
+            return _db.TT_HoaDonChoDieuChinhs.Any(item => item.DanhBo == DanhBo && item.Nam == Nam && item.Ky == Ky);
+        }
+
+        public TT_HoaDonChoDieuChinh get_HDChoDC(string DanhBo, int Nam, int Ky)
+        {
+            return _db.TT_HoaDonChoDieuChinhs.SingleOrDefault(item => item.DanhBo == DanhBo && item.Nam == Nam && item.Ky == Ky);
+        }
+
+        public DataTable getDS_HDChoDC()
+        {
+            return LINQToDataTable(_db.TT_HoaDonChoDieuChinhs.ToList());
         }
 
     }

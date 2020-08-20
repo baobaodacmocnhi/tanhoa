@@ -1897,20 +1897,36 @@ namespace ThuTien.GUI.TongHop
 
                 dr["TuNgay"] = dateDen_KeToan.Value.Month.ToString("00");
                 dr["DenNgay"] = dateDen_KeToan.Value.Year.ToString("0000");
-                switch (item["PhanKy"].ToString())
-                {
-                    case "Cùng Kỳ":
-                        dr["PhanKy"] = "của Kỳ " + dateDen_KeToan.Value.Month.ToString();
-                        break;
-                    case "Khác Kỳ":
-                        dr["PhanKy"] = "từ Kỳ 1 - " + (dateDen_KeToan.Value.Month - 1).ToString();
-                        break;
-                    case "Khác Kỳ Năm":
-                        dr["PhanKy"] = "của Kỳ 12 năm " + (dateDen_KeToan.Value.Year - 1).ToString() + " trở về trước";
-                        break;
-                    default:
-                        break;
-                }
+                if (chkTheoThang.Checked == true)
+                    switch (item["PhanKy"].ToString())
+                    {
+                        case "Cùng Kỳ":
+                            dr["PhanKy"] = "của Kỳ " + dateDen_KeToan.Value.Month.ToString() + " nộp về Tổng Công ty trong tháng " + dr["TuNgay"] + " năm " + dr["DenNgay"];
+                            break;
+                        case "Khác Kỳ":
+                            dr["PhanKy"] = "từ Kỳ 1 - " + (dateDen_KeToan.Value.Month - 1).ToString() + " nộp về Tổng Công ty trong tháng " + dr["TuNgay"] + " năm " + dr["DenNgay"];
+                            break;
+                        case "Khác Kỳ Năm":
+                            dr["PhanKy"] = "của Kỳ 12 năm " + (dateDen_KeToan.Value.Year - 1).ToString() + " trở về trước" + " nộp về Tổng Công ty trong tháng " + dr["TuNgay"] + " năm " + dr["DenNgay"];
+                            break;
+                        default:
+                            break;
+                    }
+                else
+                    switch (item["PhanKy"].ToString())
+                    {
+                        case "Cùng Kỳ":
+                            dr["PhanKy"] = "của Kỳ " + dateDen_KeToan.Value.Month.ToString() + " nộp về Tổng Công ty đến tháng " + dr["TuNgay"] + " năm " + dr["DenNgay"];
+                            break;
+                        case "Khác Kỳ":
+                            dr["PhanKy"] = "từ Kỳ 1 - " + (dateDen_KeToan.Value.Month - 1).ToString() + " nộp về Tổng Công ty đến tháng " + dr["TuNgay"] + " năm " + dr["DenNgay"];
+                            break;
+                        case "Khác Kỳ Năm":
+                            dr["PhanKy"] = "của năm " + (dateDen_KeToan.Value.Year - 1).ToString() + " trở về trước" + " nộp về Tổng Công ty đến tháng " + dr["TuNgay"] + " năm " + dr["DenNgay"];
+                            break;
+                        default:
+                            break;
+                    }
 
                 dr["Ngay"] = item["NgayGiaiTrach"];
                 dr["STT"] = item["STT"];
@@ -2132,7 +2148,7 @@ namespace ThuTien.GUI.TongHop
                 }
                 if (int.Parse(item["Ky2"].ToString()) < dateDen_KeToan_Chot2019.Value.Month && int.Parse(item["Nam2"].ToString()) == dateDen_KeToan_Chot2019.Value.Year)
                 {
-                    dr["PhanKy"] = "II. Số tiền nước thu được từ chuẩn thu 2 của các kỳ cũ năm " + dateDen_KeToan_Chot2019.Value.Year.ToString() ;
+                    dr["PhanKy"] = "II. Số tiền nước thu được từ chuẩn thu 2 của các kỳ cũ năm " + dateDen_KeToan_Chot2019.Value.Year.ToString();
                     ds.Tables["TongHopDangNgan"].Rows.Add(dr);
                 }
                 if (int.Parse(item["Nam2"].ToString()) == 2019)
