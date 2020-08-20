@@ -941,15 +941,19 @@ namespace KTKS_DonKH.GUI.DonTu
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                 dr["MaDon"] = entity.MaDon.ToString();
-                dr["KhachHang"] = entity.DonTu_ChiTiets.SingleOrDefault().HoTen;
-                if (entity.DonTu_ChiTiets.SingleOrDefault().DanhBo != "")
-                    dr["DanhBo"] = entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
-                dr["DiaChi"] = entity.DonTu_ChiTiets.SingleOrDefault().DiaChi;
-                dr["HopDong"] = entity.DonTu_ChiTiets.SingleOrDefault().HopDong;
-                dr["GiaBieu"] = entity.DonTu_ChiTiets.SingleOrDefault().GiaBieu;
-                dr["DinhMuc"] = entity.DonTu_ChiTiets.SingleOrDefault().DinhMuc;
-                dr["DinhMucHN"] = entity.DonTu_ChiTiets.SingleOrDefault().DinhMucHN;
-                dr["DienThoai"] = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
+
+                if (entity.DonTu_ChiTiets.Count == 1)
+                {
+                    dr["KhachHang"] = entity.DonTu_ChiTiets.SingleOrDefault().HoTen;
+                    if (entity.DonTu_ChiTiets.SingleOrDefault().DanhBo != "")
+                        dr["DanhBo"] = entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
+                    dr["DiaChi"] = entity.DonTu_ChiTiets.SingleOrDefault().DiaChi;
+                    dr["HopDong"] = entity.DonTu_ChiTiets.SingleOrDefault().HopDong;
+                    dr["GiaBieu"] = entity.DonTu_ChiTiets.SingleOrDefault().GiaBieu;
+                    dr["DinhMuc"] = entity.DonTu_ChiTiets.SingleOrDefault().DinhMuc;
+                    dr["DinhMucHN"] = entity.DonTu_ChiTiets.SingleOrDefault().DinhMucHN;
+                    dr["DienThoai"] = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
+                }
                 dr["NoiDung"] = entity.Name_NhomDon_PKH;
                 dr["LyDoLoaiKhac"] = entity.VanDeKhac;
 
