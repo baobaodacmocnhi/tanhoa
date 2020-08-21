@@ -243,6 +243,9 @@ namespace ThuTien.LinQ
     partial void InsertTT_HoaDonChoDieuChinh(TT_HoaDonChoDieuChinh instance);
     partial void UpdateTT_HoaDonChoDieuChinh(TT_HoaDonChoDieuChinh instance);
     partial void DeleteTT_HoaDonChoDieuChinh(TT_HoaDonChoDieuChinh instance);
+    partial void InsertTT_ThoatNgheo(TT_ThoatNgheo instance);
+    partial void UpdateTT_ThoatNgheo(TT_ThoatNgheo instance);
+    partial void DeleteTT_ThoatNgheo(TT_ThoatNgheo instance);
     #endregion
 		
 		public dbThuTienDataContext() : 
@@ -864,6 +867,14 @@ namespace ThuTien.LinQ
 			get
 			{
 				return this.GetTable<TT_HoaDonChoDieuChinh>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TT_ThoatNgheo> TT_ThoatNgheos
+		{
+			get
+			{
+				return this.GetTable<TT_ThoatNgheo>();
 			}
 		}
 		
@@ -31044,6 +31055,116 @@ namespace ThuTien.LinQ
 					this._DiaChi = value;
 					this.SendPropertyChanged("DiaChi");
 					this.OnDiaChiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_ThoatNgheo")]
+	public partial class TT_ThoatNgheo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _DanhBo;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDanhBoChanging(string value);
+    partial void OnDanhBoChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public TT_ThoatNgheo()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="Char(11) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string DanhBo
+		{
+			get
+			{
+				return this._DanhBo;
+			}
+			set
+			{
+				if ((this._DanhBo != value))
+				{
+					this.OnDanhBoChanging(value);
+					this.SendPropertyChanging();
+					this._DanhBo = value;
+					this.SendPropertyChanged("DanhBo");
+					this.OnDanhBoChanged();
 				}
 			}
 		}

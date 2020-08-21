@@ -61,12 +61,17 @@ namespace ThuTien.GUI.TongHop
             dgvDanhSach.DataSource = _cDCHD.getDS_HDChoDC();
         }
 
-        private void btnXem_Click(object sender, EventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
             try
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
+                    if (_cHoaDon.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), int.Parse(txtNam.Text.Trim()), int.Parse(cmbKy.SelectedItem.ToString())) == true)
+                    {
+                        MessageBox.Show("Hóa Đơn Đã Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     if (_cDCHD.checkExist_HDChoDC(txtDanhBo.Text.Trim().Replace(" ", ""), int.Parse(txtNam.Text.Trim()), int.Parse(cmbKy.SelectedItem.ToString())) == true)
                     {
                         MessageBox.Show("Đã Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

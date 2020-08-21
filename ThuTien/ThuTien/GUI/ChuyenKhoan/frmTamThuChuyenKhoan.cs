@@ -65,7 +65,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (tabControl.SelectedTab.Name == "tabThongTin")
             {
-                if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ","")) && e.KeyChar == 13)
+                if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) && e.KeyChar == 13)
                 {
                     DataTable dt = (DataTable)dgvHoaDon.DataSource;
                     foreach (string item in txtDanhBo.Lines)
@@ -929,9 +929,9 @@ namespace ThuTien.GUI.ChuyenKhoan
             string str = "";
             foreach (DataRow item in dt.Rows)
             {
-                DataTable dtTT = _cTamThu.GetDS(true, item["DanhBo"].ToString(), dateTu.Value, dateDen.Value);
+                DataTable dtTT = _cTamThu.getDS(true, item["DanhBo"].ToString(), dateTu.Value, dateDen.Value);
                 DataTable dtTon = _cHoaDon.GetDSTonByDanhBo(item["DanhBo"].ToString());
-                if (dtTon.Rows.Count > 0 && int.Parse(dtTT.Rows[0]["Nam"].ToString()) == int.Parse(dtTon.Rows[0]["Nam"].ToString()) && int.Parse(dtTT.Rows[0]["Ky2"].ToString()) == int.Parse(dtTon.Rows[0]["Ky2"].ToString()))
+                if (dtTon.Rows.Count > 0 && (int.Parse(dtTT.Rows[0]["Nam"].ToString()) < int.Parse(dtTon.Rows[0]["Nam"].ToString()) || (int.Parse(dtTT.Rows[0]["Nam"].ToString()) == int.Parse(dtTon.Rows[0]["Nam"].ToString()) && int.Parse(dtTT.Rows[0]["Ky2"].ToString()) < int.Parse(dtTon.Rows[0]["Ky2"].ToString()))))
                     str += item["DanhBo"].ToString() + " === Tạm Thu: " + item["SLTamThu"].ToString() + " === Tồn: " + item["SLTon"].ToString() + "\n";
             }
             MessageBox.Show(str, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

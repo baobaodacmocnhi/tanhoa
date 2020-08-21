@@ -123,6 +123,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.cmbFromDot = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnInDSTonHoNgheo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -1047,11 +1048,22 @@
             this.label7.TabIndex = 100;
             this.label7.Text = "Từ Đợt:";
             // 
+            // btnInDSTonHoNgheo
+            // 
+            this.btnInDSTonHoNgheo.Location = new System.Drawing.Point(573, 40);
+            this.btnInDSTonHoNgheo.Name = "btnInDSTonHoNgheo";
+            this.btnInDSTonHoNgheo.Size = new System.Drawing.Size(120, 23);
+            this.btnInDSTonHoNgheo.TabIndex = 104;
+            this.btnInDSTonHoNgheo.Text = "In DS Tồn Hộ Nghèo";
+            this.btnInDSTonHoNgheo.UseVisualStyleBackColor = true;
+            this.btnInDSTonHoNgheo.Click += new System.EventHandler(this.btnInDSTonHoNgheo_Click);
+            // 
             // frmKiemTraTonDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1258, 629);
+            this.Controls.Add(this.btnInDSTonHoNgheo);
             this.Controls.Add(this.cmbToDot);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cmbFromDot);
@@ -1183,5 +1195,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbFromDot;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnInDSTonHoNgheo;
     }
 }

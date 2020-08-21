@@ -349,6 +349,11 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public bool CheckExist(string DanhBo, int Nam, int Ky)
+        {
+            return _db.HOADONs.Any(item => item.DANHBA == DanhBo && item.NAM == Nam && item.KY == Ky);
+        }
+
         /// <summary>
         /// Kiểm tra tồn tại
         /// </summary>
@@ -8404,6 +8409,21 @@ namespace ThuTien.DAL.Doi
                             HanhThu = itemtableND.HoTen,
                         };
             return LINQToDataTable(query);
+        }
+
+        public DataTable getDSTon_ThoatNgheo()
+        {
+            string sql ="select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To',GiaBieu=GB,DinhMuc=DM,DinhMucHN"
+                        + " from HOADON hd"
+                        + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                        + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                        + " where (KhoaTienDu=1 or NGAYGIAITRACH is null) and NAM=2020 and (KY=4 or KY=5 or KY=6) and DANHBA in"
+                        + " (select DanhBo from TT_ThoatNgheo)"
+                        + " order by MLT,Ky asc";
+
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDSGiaoTonByToDates(int MaTo, DateTime TuNgay, DateTime DenNgay)

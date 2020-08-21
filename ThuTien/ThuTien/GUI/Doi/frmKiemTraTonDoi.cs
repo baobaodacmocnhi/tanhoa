@@ -17,6 +17,7 @@ using ThuTien.DAL.Quay;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.ChuyenKhoan;
 using ThuTien.BaoCao.ToTruong;
+using ThuTien.BaoCao.ChuyenKhoan;
 
 namespace ThuTien.GUI.Doi
 {
@@ -2129,6 +2130,34 @@ namespace ThuTien.GUI.Doi
                 dsBaoCao.Tables["BaoCaoTon"].Rows.Add(dr);
             }
             rptBaoCaoTon rpt = new rptBaoCaoTon();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
+
+        private void btnInDSTonHoNgheo_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cHoaDon.getDSTon_ThoatNgheo();
+            dsBaoCao dsBaoCao = new dsBaoCao();
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
+                dr["LoaiBaoCao"] = "";
+                dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                dr["Ky"] = item["Ky"];
+                dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
+                dr["TongCong"] = item["TongCong"];
+                dr["SoPhatHanh"] = item["SoPhatHanh"];
+                dr["SoHoaDon"] = item["SoHoaDon"];
+                if (int.Parse(item["GiaBieu"].ToString()) > 20)
+                    dr["Loai"] = "CQ";
+                else
+                    dr["Loai"] = "TG";
+                dr["NhanVien"] = CNguoiDung.HoTen;
+                dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr);
+            }
+
+            rptDSHoaDon rpt = new rptDSHoaDon();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();

@@ -56,6 +56,15 @@ namespace ThuTien.GUI.ChuyenKhoan
                         {
                             CExcel fileExcel = new CExcel(dialog.FileName);
                             DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                            //foreach (DataRow item in dtExcel.Rows)
+                            //    if ((!string.IsNullOrEmpty(item[1].ToString()) && item[1].ToString().Replace(" ", "").Length == 11))
+                            //    {
+                            //        dbThuTienDataContext db = new dbThuTienDataContext();
+                            //        TT_ThoatNgheo en = new TT_ThoatNgheo();
+                            //        en.DanhBo = item[1].ToString().Replace(" ", "");
+                            //        db.TT_ThoatNgheos.InsertOnSubmit(en);
+                            //        db.SubmitChanges();
+                            //    }
 
                             foreach (DataRow item in dtExcel.Rows)
                                 if ((string.IsNullOrEmpty(item[0].ToString()) || item[0].ToString().Replace(" ", "").Length == 11) && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
@@ -104,7 +113,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         }
                                     }
                                 }
-                            //_cBangKe.LinQ_ExecuteNonQuery("update TT_TienDu set SoTien=SoTien-" + item[1].ToString().Trim() + " where DanhBo='" + item[0].ToString().Trim().Replace(" ", "") + "'");
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
                         }
