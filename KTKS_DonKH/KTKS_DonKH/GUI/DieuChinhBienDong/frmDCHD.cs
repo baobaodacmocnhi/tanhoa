@@ -92,6 +92,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDiaChi.Text = "";
             lbDangNgan.Text = "Tình Trạng Đăng Ngân";
             ///
+            txtHoTen_BD.Text = "";
+            txtDiaChi_BD.Text = "";
+            txtLyDoDieuChinh.Text = "";
+            txtGhiChu.Text = "";
             txtGiaBieu_Cu.Text = "0";
             txtDinhMucHN_Cu.Text = "0";
             txtDinhMuc_Cu.Text = "0";
@@ -214,6 +218,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             else
                 txtGiaDieuChinh.Text = "0";
             ///
+            txtHoTen_BD.Text = ctdchd.HoTen_BD;
+            txtDiaChi_BD.Text = ctdchd.DiaChi_BD;
             txtGiaBieu_Moi.Text = ctdchd.GiaBieu_BD.Value.ToString();
             txtDinhMucHN_Moi.Text = ctdchd.DinhMucHN_BD.Value.ToString();
             txtDinhMuc_Moi.Text = ctdchd.DinhMuc_BD.Value.ToString();
@@ -258,6 +264,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             chkApGiaNuocCu.Checked = ctdchd.ApGiaNuocCu;
             ///
             txtLyDoDieuChinh.Text = _ctdchd.LyDoDieuChinh;
+            txtGhiChu.Text = _ctdchd.GhiChu;
             ///
             txtTieuThu_Start.Text = _ctdchd.TieuThu.Value.ToString();
             txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TienNuoc_Start);
@@ -614,6 +621,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdchd.MaToTrinh = int.Parse(txtMaToTrinh.Text.Trim().Replace("-", ""));
                     ctdchd.ChuyenNhap = chkChuyenNhap.Checked;
                     ///
+                    ctdchd.HoTen_BD = txtHoTen_BD.Text.Trim();
+                    ctdchd.DiaChi_BD = txtDiaChi_BD.Text.Trim();
                     ctdchd.GiaBieu = int.Parse(txtGiaBieu_Cu.Text.Trim().Replace(".", ""));
                     ctdchd.DinhMucHN = int.Parse(txtDinhMucHN_Cu.Text.Trim().Replace(".", ""));
                     ctdchd.DinhMuc = int.Parse(txtDinhMuc_Cu.Text.Trim().Replace(".", ""));
@@ -718,6 +727,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdchd.ApGiaNuocCu = chkApGiaNuocCu.Checked;
                     ctdchd.ThongTin = ThongTin;
                     ctdchd.LyDoDieuChinh = txtLyDoDieuChinh.Text.Trim();
+                    ctdchd.GhiChu = txtGhiChu.Text.Trim();
 
                     ctdchd.TienNuoc_BD = int.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
                     ctdchd.ThueGTGT_BD = int.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
@@ -815,6 +825,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdchd.DinhMuc = int.Parse(txtDinhMuc_Cu.Text.Trim().Replace(".", ""));
                         _ctdchd.TieuThu = int.Parse(txtTieuThu_Cu.Text.Trim().Replace(".", ""));
                         ///
+                        _ctdchd.HoTen_BD = txtHoTen_BD.Text.Trim();
+                        _ctdchd.DiaChi_BD = txtDiaChi_BD.Text.Trim();
                         _ctdchd.GiaBieu_BD = int.Parse(txtGiaBieu_Moi.Text.Trim().Replace(".", ""));
                         _ctdchd.DinhMucHN_BD = int.Parse(txtDinhMucHN_Moi.Text.Trim().Replace(".", ""));
                         _ctdchd.DinhMuc_BD = int.Parse(txtDinhMuc_Moi.Text.Trim().Replace(".", ""));
@@ -935,6 +947,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdchd.ApGiaNuocCu = chkApGiaNuocCu.Checked;
                         _ctdchd.ThongTin = ThongTin;
                         _ctdchd.LyDoDieuChinh = txtLyDoDieuChinh.Text.Trim();
+                        _ctdchd.GhiChu = txtGhiChu.Text.Trim();
 
                         _ctdchd.TienNuoc_BD = int.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
                         _ctdchd.ThueGTGT_BD = int.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
@@ -2318,14 +2331,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
-
-
-
-
-
-
-
-
 
 
     }

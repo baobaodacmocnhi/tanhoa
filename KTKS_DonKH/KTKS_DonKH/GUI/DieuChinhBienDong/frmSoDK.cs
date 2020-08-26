@@ -109,6 +109,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
 
                             txtGhiChu.Text = ctchungtu.GhiChu;
+                            txtHoTenCat.Text = ctchungtu.HoTenCat;
 
                             if (ctchungtu.YeuCauCat)
                             {
@@ -216,6 +217,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
 
                         txtGhiChu.Text = ctchungtu.GhiChu;
+                        txtHoTenCat.Text = ctchungtu.HoTenCat;
 
                         if (ctchungtu.YeuCauCat)
                         {
@@ -343,6 +345,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ctchungtu.NgayHetHan = dateHetHan.Value;
                             }
                             ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                            ctchungtu.HoTenCat = txtHoTenCat.Text.Trim();
                             ctchungtu.Lo = txtLo.Text.Trim();
                             ctchungtu.Phong = txtPhong.Text.Trim();
                             ctchungtu.Phuong = _dataT.Phuong;
@@ -677,6 +680,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _ctchungtu.Lo = txtLo.Text.Trim();
                             _ctchungtu.Phong = txtPhong.Text.Trim();
                             _ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                            _ctchungtu.HoTenCat = txtHoTenCat.Text.Trim();
                             _ctchungtu.Quan = _dataT.Quan;
                             _ctchungtu.Phuong = _dataT.Phuong;
                             ///
@@ -1451,7 +1455,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             panel_YCCat3.Visible = false;
                             panel_YCCat4.Visible = false;
                             panel_YCCat5.Visible = false;
-                            this.Size = new Size(893, 479);
+                            this.Size = new Size(893, 540);
                             this.Location = new Point(70, 70);
                         }
 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,6 +46,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.txtHoTensCat_YCC1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtSoNKCat_YCC1 = new System.Windows.Forms.TextBox();
             this.cmbChiNhanh_YCC1 = new System.Windows.Forms.ComboBox();
@@ -62,6 +64,8 @@
             this.panel_YCCat3 = new System.Windows.Forms.Panel();
             this.chkYCCat3 = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.txtHoTensCat_YCC3 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtSoNKCat_YCC3 = new System.Windows.Forms.TextBox();
             this.cmbChiNhanh_YCC3 = new System.Windows.Forms.ComboBox();
@@ -75,6 +79,8 @@
             this.panel_YCCat2 = new System.Windows.Forms.Panel();
             this.chkYCCat2 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label64 = new System.Windows.Forms.Label();
+            this.txtHoTensCat_YCC2 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txtSoNKCat_YCC2 = new System.Windows.Forms.TextBox();
             this.cmbChiNhanh_YCC2 = new System.Windows.Forms.ComboBox();
@@ -88,6 +94,8 @@
             this.panel_YCCat4 = new System.Windows.Forms.Panel();
             this.chkYCCat4 = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.txtHoTensCat_YCC4 = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.txtSoNKCat_YCC4 = new System.Windows.Forms.TextBox();
             this.cmbChiNhanh_YCC4 = new System.Windows.Forms.ComboBox();
@@ -102,6 +110,8 @@
             this.panel_YCCat5 = new System.Windows.Forms.Panel();
             this.chkYCCat5 = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.txtHoTensCat_YCC5 = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.txtSoNKCat_YCC5 = new System.Windows.Forms.TextBox();
             this.cmbChiNhanh_YCC5 = new System.Windows.Forms.ComboBox();
@@ -152,16 +162,8 @@
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label58 = new System.Windows.Forms.Label();
             this.chkKhacDiaBan = new System.Windows.Forms.CheckBox();
-            this.label63 = new System.Windows.Forms.Label();
-            this.txtHoTensCat_YCC1 = new System.Windows.Forms.TextBox();
-            this.label64 = new System.Windows.Forms.Label();
-            this.txtHoTensCat_YCC2 = new System.Windows.Forms.TextBox();
-            this.label65 = new System.Windows.Forms.Label();
-            this.txtHoTensCat_YCC3 = new System.Windows.Forms.TextBox();
-            this.label66 = new System.Windows.Forms.Label();
-            this.txtHoTensCat_YCC4 = new System.Windows.Forms.TextBox();
-            this.label67 = new System.Windows.Forms.Label();
-            this.txtHoTensCat_YCC5 = new System.Windows.Forms.TextBox();
+            this.txtHoTenCat = new System.Windows.Forms.TextBox();
+            this.label68 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel_YCCat3.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -339,6 +341,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nơi Cắt/Chuyển:";
             // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(6, 166);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(101, 16);
+            this.label63.TabIndex = 10;
+            this.label63.Text = "DS Họ Tên Cắt:";
+            // 
+            // txtHoTensCat_YCC1
+            // 
+            this.txtHoTensCat_YCC1.Location = new System.Drawing.Point(118, 164);
+            this.txtHoTensCat_YCC1.Multiline = true;
+            this.txtHoTensCat_YCC1.Name = "txtHoTensCat_YCC1";
+            this.txtHoTensCat_YCC1.Size = new System.Drawing.Size(290, 44);
+            this.txtHoTensCat_YCC1.TabIndex = 11;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -495,6 +514,23 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Nơi Cắt/Chuyển:";
             // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(5, 168);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(101, 16);
+            this.label65.TabIndex = 14;
+            this.label65.Text = "DS Họ Tên Cắt:";
+            // 
+            // txtHoTensCat_YCC3
+            // 
+            this.txtHoTensCat_YCC3.Location = new System.Drawing.Point(117, 166);
+            this.txtHoTensCat_YCC3.Multiline = true;
+            this.txtHoTensCat_YCC3.Name = "txtHoTensCat_YCC3";
+            this.txtHoTensCat_YCC3.Size = new System.Drawing.Size(290, 44);
+            this.txtHoTensCat_YCC3.TabIndex = 15;
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -623,6 +659,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nơi Cắt/Chuyển:";
             // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(6, 168);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(101, 16);
+            this.label64.TabIndex = 12;
+            this.label64.Text = "DS Họ Tên Cắt:";
+            // 
+            // txtHoTensCat_YCC2
+            // 
+            this.txtHoTensCat_YCC2.Location = new System.Drawing.Point(118, 166);
+            this.txtHoTensCat_YCC2.Multiline = true;
+            this.txtHoTensCat_YCC2.Name = "txtHoTensCat_YCC2";
+            this.txtHoTensCat_YCC2.Size = new System.Drawing.Size(290, 44);
+            this.txtHoTensCat_YCC2.TabIndex = 13;
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -750,6 +803,23 @@
             this.groupBox4.TabIndex = 22;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Nơi Cắt/Chuyển:";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(6, 168);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(101, 16);
+            this.label66.TabIndex = 14;
+            this.label66.Text = "DS Họ Tên Cắt:";
+            // 
+            // txtHoTensCat_YCC4
+            // 
+            this.txtHoTensCat_YCC4.Location = new System.Drawing.Point(118, 166);
+            this.txtHoTensCat_YCC4.Multiline = true;
+            this.txtHoTensCat_YCC4.Name = "txtHoTensCat_YCC4";
+            this.txtHoTensCat_YCC4.Size = new System.Drawing.Size(290, 44);
+            this.txtHoTensCat_YCC4.TabIndex = 15;
             // 
             // label24
             // 
@@ -885,6 +955,23 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Nơi Cắt/Chuyển:";
             // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(6, 168);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(101, 16);
+            this.label67.TabIndex = 14;
+            this.label67.Text = "DS Họ Tên Cắt:";
+            // 
+            // txtHoTensCat_YCC5
+            // 
+            this.txtHoTensCat_YCC5.Location = new System.Drawing.Point(118, 166);
+            this.txtHoTensCat_YCC5.Multiline = true;
+            this.txtHoTensCat_YCC5.Name = "txtHoTensCat_YCC5";
+            this.txtHoTensCat_YCC5.Size = new System.Drawing.Size(290, 44);
+            this.txtHoTensCat_YCC5.TabIndex = 15;
+            // 
             // label29
             // 
             this.label29.AutoSize = true;
@@ -970,20 +1057,20 @@
             // 
             this.dgvDSDanhBo.AllowUserToAddRows = false;
             this.dgvDSDanhBo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSDanhBo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDanhBo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DanhBo,
             this.SoNKDangKy,
             this.CreateDate});
-            this.dgvDSDanhBo.Location = new System.Drawing.Point(11, 275);
+            this.dgvDSDanhBo.Location = new System.Drawing.Point(12, 323);
             this.dgvDSDanhBo.Name = "dgvDSDanhBo";
             this.dgvDSDanhBo.Size = new System.Drawing.Size(357, 160);
             this.dgvDSDanhBo.TabIndex = 26;
@@ -1364,97 +1451,31 @@
             this.chkKhacDiaBan.Text = "Khác Địa Bàn";
             this.chkKhacDiaBan.UseVisualStyleBackColor = true;
             // 
-            // label63
+            // txtHoTenCat
             // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(6, 166);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(101, 16);
-            this.label63.TabIndex = 10;
-            this.label63.Text = "DS Họ Tên Cắt:";
+            this.txtHoTenCat.Location = new System.Drawing.Point(125, 273);
+            this.txtHoTenCat.Multiline = true;
+            this.txtHoTenCat.Name = "txtHoTenCat";
+            this.txtHoTenCat.Size = new System.Drawing.Size(285, 44);
+            this.txtHoTenCat.TabIndex = 39;
             // 
-            // txtHoTensCat_YCC1
+            // label68
             // 
-            this.txtHoTensCat_YCC1.Location = new System.Drawing.Point(118, 164);
-            this.txtHoTensCat_YCC1.Multiline = true;
-            this.txtHoTensCat_YCC1.Name = "txtHoTensCat_YCC1";
-            this.txtHoTensCat_YCC1.Size = new System.Drawing.Size(290, 44);
-            this.txtHoTensCat_YCC1.TabIndex = 11;
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Location = new System.Drawing.Point(6, 168);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(101, 16);
-            this.label64.TabIndex = 12;
-            this.label64.Text = "DS Họ Tên Cắt:";
-            // 
-            // txtHoTensCat_YCC2
-            // 
-            this.txtHoTensCat_YCC2.Location = new System.Drawing.Point(118, 166);
-            this.txtHoTensCat_YCC2.Multiline = true;
-            this.txtHoTensCat_YCC2.Name = "txtHoTensCat_YCC2";
-            this.txtHoTensCat_YCC2.Size = new System.Drawing.Size(290, 44);
-            this.txtHoTensCat_YCC2.TabIndex = 13;
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.Location = new System.Drawing.Point(5, 168);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(101, 16);
-            this.label65.TabIndex = 14;
-            this.label65.Text = "DS Họ Tên Cắt:";
-            // 
-            // txtHoTensCat_YCC3
-            // 
-            this.txtHoTensCat_YCC3.Location = new System.Drawing.Point(117, 166);
-            this.txtHoTensCat_YCC3.Multiline = true;
-            this.txtHoTensCat_YCC3.Name = "txtHoTensCat_YCC3";
-            this.txtHoTensCat_YCC3.Size = new System.Drawing.Size(290, 44);
-            this.txtHoTensCat_YCC3.TabIndex = 15;
-            // 
-            // label66
-            // 
-            this.label66.AutoSize = true;
-            this.label66.Location = new System.Drawing.Point(6, 168);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(101, 16);
-            this.label66.TabIndex = 14;
-            this.label66.Text = "DS Họ Tên Cắt:";
-            // 
-            // txtHoTensCat_YCC4
-            // 
-            this.txtHoTensCat_YCC4.Location = new System.Drawing.Point(118, 166);
-            this.txtHoTensCat_YCC4.Multiline = true;
-            this.txtHoTensCat_YCC4.Name = "txtHoTensCat_YCC4";
-            this.txtHoTensCat_YCC4.Size = new System.Drawing.Size(290, 44);
-            this.txtHoTensCat_YCC4.TabIndex = 15;
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(6, 168);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(101, 16);
-            this.label67.TabIndex = 14;
-            this.label67.Text = "DS Họ Tên Cắt:";
-            // 
-            // txtHoTensCat_YCC5
-            // 
-            this.txtHoTensCat_YCC5.Location = new System.Drawing.Point(118, 166);
-            this.txtHoTensCat_YCC5.Multiline = true;
-            this.txtHoTensCat_YCC5.Name = "txtHoTensCat_YCC5";
-            this.txtHoTensCat_YCC5.Size = new System.Drawing.Size(290, 44);
-            this.txtHoTensCat_YCC5.TabIndex = 15;
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(9, 277);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(76, 16);
+            this.label68.TabIndex = 38;
+            this.label68.Text = "Họ Tên Cắt";
             // 
             // frmSoDK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(877, 440);
+            this.ClientSize = new System.Drawing.Size(877, 501);
+            this.Controls.Add(this.txtHoTenCat);
+            this.Controls.Add(this.label68);
             this.Controls.Add(this.chkKhacDiaBan);
             this.Controls.Add(this.txtHoTen);
             this.Controls.Add(this.label58);
@@ -1661,5 +1682,7 @@
         private System.Windows.Forms.TextBox txtHoTensCat_YCC4;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.TextBox txtHoTensCat_YCC5;
+        private System.Windows.Forms.TextBox txtHoTenCat;
+        private System.Windows.Forms.Label label68;
     }
 }
