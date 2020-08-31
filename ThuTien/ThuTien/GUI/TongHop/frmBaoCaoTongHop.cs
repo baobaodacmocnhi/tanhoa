@@ -1420,236 +1420,236 @@ namespace ThuTien.GUI.TongHop
                 frm.Show();
             }
             ///Phân kỳ
-            //else
-            //{
-            //    ///Lớn
-            //    List<TT_To> lst = _cTo.GetDS();
-            //    DataTable dt = new DataTable();
-            //    DataTable dtCNKD = new DataTable();
-            //    long TongGiaBanTM = 0;
-            //    long TongThueGTGTTM = 0;
-            //    long TongPhiBVMTTM = 0;
-            //    long TongCongTM = 0;
-            //    long TongGiaBanCK = 0;
-            //    long TongThueGTGTCK = 0;
-            //    long TongPhiBVMTCK = 0;
-            //    long TongCongCK = 0;
-            //    long TongTienMat = 0;
+            else
+            {
+                ///Lớn
+                List<TT_To> lst = _cTo.GetDS();
+                DataTable dt = new DataTable();
+                DataTable dtCNKD = new DataTable();
+                long TongGiaBanTM = 0;
+                long TongThueGTGTTM = 0;
+                long TongPhiBVMTTM = 0;
+                long TongCongTM = 0;
+                long TongGiaBanCK = 0;
+                long TongThueGTGTCK = 0;
+                long TongPhiBVMTCK = 0;
+                long TongCongCK = 0;
+                long TongTienMat = 0;
 
-            //    dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyLon(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
-            //    for (int i = 0; i < lst.Count; i++)
-            //        if (lst[i].HanhThu == false)
-            //        {
-            //            dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyLon("", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
-            //        }
+                dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyLon(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
+                for (int i = 0; i < lst.Count; i++)
+                    if (lst[i].HanhThu == false)
+                    {
+                        dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyLon("", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
+                    }
 
-            //    dtCNKD = _cCNKD.GetTongHopDangNgan_PhanKyLon("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
+                dtCNKD = _cCNKD.GetTongHopDangNgan_PhanKyLon("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
 
-            //    DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyLon("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
-            //    if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
-            //    {
-            //        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-            //        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-            //        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
-            //        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
-            //    }
+                DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyLon("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
+                if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
+                {
+                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
+                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                }
 
-            //    foreach (DataRow item in dt.Rows)
-            //    {
-            //        if (bool.Parse(item["ChuyenKhoan"].ToString()))
-            //        {
-            //            TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
-            //            TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-            //            TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
-            //            TongCongCK += long.Parse(item["TongCong"].ToString());
-            //            if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
-            //                TongTienMat += long.Parse(item["TongTienMat"].ToString());
-            //        }
-            //        else
-            //        {
-            //            if (!string.IsNullOrEmpty(item["TongGiaBan"].ToString()))
-            //                TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
-            //            if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
-            //                TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-            //            if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-            //                TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
-            //            if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
-            //                TongCongTM += long.Parse(item["TongCong"].ToString());
-            //        }
-            //    }
+                foreach (DataRow item in dt.Rows)
+                {
+                    if (bool.Parse(item["ChuyenKhoan"].ToString()))
+                    {
+                        TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
+                        TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongCongCK += long.Parse(item["TongCong"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
+                            TongTienMat += long.Parse(item["TongTienMat"].ToString());
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(item["TongGiaBan"].ToString()))
+                            TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
+                            TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
+                            TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
+                            TongCongTM += long.Parse(item["TongCong"].ToString());
+                    }
+                }
 
-            //    dsBaoCao ds = new dsBaoCao();
-            //    foreach (DataRow item in dt.Rows)
-            //    {
-            //        DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
-            //        dr["Ngay"] = "Ngày " + dateGiaiTrachTongHopDangNgan.Value.Day + " tháng " + dateGiaiTrachTongHopDangNgan.Value.Month + " năm " + dateGiaiTrachTongHopDangNgan.Value.Year;
-            //        dr["LoaiBaoCao"] = "THU TIỀN";
-            //        dr["HoTen"] = item["HoTen"];
+                dsBaoCao ds = new dsBaoCao();
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
+                    dr["Ngay"] = "Ngày " + dateGiaiTrachTongHopDangNgan.Value.Day + " tháng " + dateGiaiTrachTongHopDangNgan.Value.Month + " năm " + dateGiaiTrachTongHopDangNgan.Value.Year;
+                    dr["LoaiBaoCao"] = "THU TIỀN";
+                    dr["HoTen"] = item["HoTen"];
 
-            //        dr["PhanKy"] = "Kỳ " + cmbKy.SelectedItem.ToString();
+                    dr["PhanKy"] = "Kỳ " + cmbKy.SelectedItem.ToString();
 
-            //        dr["TongGiaBanCK"] = TongGiaBanCK;
-            //        dr["TongThueGTGTCK"] = TongThueGTGTCK;
-            //        dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
-            //        dr["TongCongCK"] = TongCongCK;
-            //        dr["TongTienMat"] = TongTienMat;
+                    dr["TongGiaBanCK"] = TongGiaBanCK;
+                    dr["TongThueGTGTCK"] = TongThueGTGTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongCongCK"] = TongCongCK;
+                    dr["TongTienMat"] = TongTienMat;
 
-            //        dr["TongGiaBanTM"] = TongGiaBanTM;
-            //        dr["TongThueGTGTTM"] = TongThueGTGTTM;
-            //        dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
-            //        dr["TongCongTM"] = TongCongTM;
+                    dr["TongGiaBanTM"] = TongGiaBanTM;
+                    dr["TongThueGTGTTM"] = TongThueGTGTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongCongTM"] = TongCongTM;
 
-            //        dr["TongHD"] = item["TongHD"];
-            //        dr["TongGiaBan"] = item["TongGiaBan"];
-            //        dr["TongThueGTGT"] = item["TongThueGTGT"];
-            //        dr["TongPhiBVMT"] = item["TongPhiBVMT"];
-            //        dr["TongCong"] = item["TongCong"];
+                    dr["TongHD"] = item["TongHD"];
+                    dr["TongGiaBan"] = item["TongGiaBan"];
+                    dr["TongThueGTGT"] = item["TongThueGTGT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongCong"] = item["TongCong"];
 
-            //        if (dtCNKD.Rows.Count > 0)
-            //        {
-            //            dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
-            //            dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
-            //            dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-            //            dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
-            //            dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
-            //        }
-            //        dr["NhanVien"] = CNguoiDung.HoTen;
-            //        ds.Tables["TongHopDangNgan"].Rows.Add(dr);
-            //    }
+                    if (dtCNKD.Rows.Count > 0)
+                    {
+                        dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
+                        dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
+                        dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
+                    }
+                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+                }
 
-            //    if (dt.Rows.Count == 0)
-            //        if (dtCNKD.Rows.Count > 0)
-            //        {
-            //            DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
-            //            dr["LoaiBaoCao"] = "THU TIỀN";
+                if (dt.Rows.Count == 0)
+                    if (dtCNKD.Rows.Count > 0)
+                    {
+                        DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
+                        dr["LoaiBaoCao"] = "THU TIỀN";
 
-            //            dr["PhanKy"] = "Kỳ " + cmbKy.SelectedItem.ToString();
+                        dr["PhanKy"] = "Kỳ " + cmbKy.SelectedItem.ToString();
 
-            //            dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
-            //            dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
-            //            dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-            //            dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
-            //            dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
+                        dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
+                        dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
+                        dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
-            //            dr["NhanVien"] = CNguoiDung.HoTen;
-            //            ds.Tables["TongHopDangNgan"].Rows.Add(dr);
-            //        }
-            //    ///Nhỏ
-            //    //List<TT_To> lst = _cTo.GetDS();
-            //    dt = new DataTable();
-            //    dtCNKD = new DataTable();
-            //    TongGiaBanTM = 0;
-            //    TongThueGTGTTM = 0;
-            //    TongPhiBVMTTM = 0;
-            //    TongCongTM = 0;
-            //    TongGiaBanCK = 0;
-            //    TongThueGTGTCK = 0;
-            //    TongPhiBVMTCK = 0;
-            //    TongCongCK = 0;
-            //    TongTienMat = 0;
+                        dr["NhanVien"] = CNguoiDung.HoTen;
+                        ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+                    }
+                ///Nhỏ
+                //List<TT_To> lst = _cTo.GetDS();
+                dt = new DataTable();
+                dtCNKD = new DataTable();
+                TongGiaBanTM = 0;
+                TongThueGTGTTM = 0;
+                TongPhiBVMTTM = 0;
+                TongCongTM = 0;
+                TongGiaBanCK = 0;
+                TongThueGTGTCK = 0;
+                TongPhiBVMTCK = 0;
+                TongCongCK = 0;
+                TongTienMat = 0;
 
-            //    dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyNho(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
-            //    for (int i = 0; i < lst.Count; i++)
-            //        if (lst[i].HanhThu == false)
-            //        {
-            //            dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyNho("", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
-            //        }
+                dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyNho(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
+                for (int i = 0; i < lst.Count; i++)
+                    if (lst[i].HanhThu == false)
+                    {
+                        dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyNho("", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
+                    }
 
-            //    dtCNKD = _cCNKD.GetTongHopDangNgan_PhanKyNho("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
+                dtCNKD = _cCNKD.GetTongHopDangNgan_PhanKyNho("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
 
-            //    dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyNho("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
-            //    if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
-            //    {
-            //        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-            //        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-            //        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
-            //        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
-            //    }
+                dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyNho("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
+                if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
+                {
+                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
+                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                }
 
-            //    foreach (DataRow item in dt.Rows)
-            //    {
-            //        if (bool.Parse(item["ChuyenKhoan"].ToString()))
-            //        {
-            //            TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
-            //            TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-            //            TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
-            //            TongCongCK += long.Parse(item["TongCong"].ToString());
-            //            if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
-            //                TongTienMat += long.Parse(item["TongTienMat"].ToString());
-            //        }
-            //        else
-            //        {
-            //            if (!string.IsNullOrEmpty(item["TongGiaBan"].ToString()))
-            //                TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
-            //            if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
-            //                TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-            //            if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-            //                TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
-            //            if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
-            //                TongCongTM += long.Parse(item["TongCong"].ToString());
-            //        }
-            //    }
+                foreach (DataRow item in dt.Rows)
+                {
+                    if (bool.Parse(item["ChuyenKhoan"].ToString()))
+                    {
+                        TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
+                        TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongCongCK += long.Parse(item["TongCong"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
+                            TongTienMat += long.Parse(item["TongTienMat"].ToString());
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(item["TongGiaBan"].ToString()))
+                            TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
+                            TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
+                            TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
+                            TongCongTM += long.Parse(item["TongCong"].ToString());
+                    }
+                }
 
-            //    foreach (DataRow item in dt.Rows)
-            //    {
-            //        DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
-            //        dr["Ngay"] = "Ngày " + dateGiaiTrachTongHopDangNgan.Value.Day + " tháng " + dateGiaiTrachTongHopDangNgan.Value.Month + " năm " + dateGiaiTrachTongHopDangNgan.Value.Year;
-            //        dr["LoaiBaoCao"] = "THU TIỀN";
-            //        dr["HoTen"] = item["HoTen"];
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
+                    dr["Ngay"] = "Ngày " + dateGiaiTrachTongHopDangNgan.Value.Day + " tháng " + dateGiaiTrachTongHopDangNgan.Value.Month + " năm " + dateGiaiTrachTongHopDangNgan.Value.Year;
+                    dr["LoaiBaoCao"] = "THU TIỀN";
+                    dr["HoTen"] = item["HoTen"];
 
-            //        dr["PhanKy"] = "Kỳ <" + cmbKy.SelectedItem.ToString();
+                    dr["PhanKy"] = "Kỳ <" + cmbKy.SelectedItem.ToString();
 
-            //        dr["TongGiaBanCK"] = TongGiaBanCK;
-            //        dr["TongThueGTGTCK"] = TongThueGTGTCK;
-            //        dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
-            //        dr["TongCongCK"] = TongCongCK;
-            //        dr["TongTienMat"] = TongTienMat;
+                    dr["TongGiaBanCK"] = TongGiaBanCK;
+                    dr["TongThueGTGTCK"] = TongThueGTGTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongCongCK"] = TongCongCK;
+                    dr["TongTienMat"] = TongTienMat;
 
-            //        dr["TongGiaBanTM"] = TongGiaBanTM;
-            //        dr["TongThueGTGTTM"] = TongThueGTGTTM;
-            //        dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
-            //        dr["TongCongTM"] = TongCongTM;
+                    dr["TongGiaBanTM"] = TongGiaBanTM;
+                    dr["TongThueGTGTTM"] = TongThueGTGTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongCongTM"] = TongCongTM;
 
-            //        dr["TongHD"] = item["TongHD"];
-            //        dr["TongGiaBan"] = item["TongGiaBan"];
-            //        dr["TongThueGTGT"] = item["TongThueGTGT"];
-            //        dr["TongPhiBVMT"] = item["TongPhiBVMT"];
-            //        dr["TongCong"] = item["TongCong"];
+                    dr["TongHD"] = item["TongHD"];
+                    dr["TongGiaBan"] = item["TongGiaBan"];
+                    dr["TongThueGTGT"] = item["TongThueGTGT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongCong"] = item["TongCong"];
 
-            //        if (dtCNKD.Rows.Count > 0)
-            //        {
-            //            dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
-            //            dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
-            //            dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-            //            dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
-            //            dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
-            //        }
-            //        dr["NhanVien"] = CNguoiDung.HoTen;
-            //        ds.Tables["TongHopDangNgan"].Rows.Add(dr);
-            //    }
+                    if (dtCNKD.Rows.Count > 0)
+                    {
+                        dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
+                        dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
+                        dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
+                    }
+                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+                }
 
-            //    if (dt.Rows.Count == 0)
-            //        if (dtCNKD.Rows.Count > 0)
-            //        {
-            //            DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
-            //            dr["LoaiBaoCao"] = "THU TIỀN";
+                if (dt.Rows.Count == 0)
+                    if (dtCNKD.Rows.Count > 0)
+                    {
+                        DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
+                        dr["LoaiBaoCao"] = "THU TIỀN";
 
-            //            dr["PhanKy"] = "Kỳ <" + cmbKy.SelectedItem.ToString();
+                        dr["PhanKy"] = "Kỳ <" + cmbKy.SelectedItem.ToString();
 
-            //            dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
-            //            dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
-            //            dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-            //            dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
-            //            dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
+                        dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
+                        dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
+                        dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
-            //            dr["NhanVien"] = CNguoiDung.HoTen;
-            //            ds.Tables["TongHopDangNgan"].Rows.Add(dr);
-            //        }
-            //    rptTongHopDangNgan_PhanKy rpt = new rptTongHopDangNgan_PhanKy();
-            //    rpt.SetDataSource(ds);
-            //    frmBaoCao frm = new frmBaoCao(rpt);
-            //    frm.Show();
-            //}
+                        dr["NhanVien"] = CNguoiDung.HoTen;
+                        ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+                    }
+                rptTongHopDangNgan_PhanKy rpt = new rptTongHopDangNgan_PhanKy();
+                rpt.SetDataSource(ds);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.Show();
+            }
         }
 
         public void InTongHopDangNgan_DienTu()
@@ -2148,7 +2148,7 @@ namespace ThuTien.GUI.TongHop
                 }
                 if (int.Parse(item["Ky2"].ToString()) < dateDen_KeToan_Chot2019.Value.Month && int.Parse(item["Nam2"].ToString()) == dateDen_KeToan_Chot2019.Value.Year)
                 {
-                    dr["PhanKy"] = "II. Số tiền nước thu được từ chuẩn thu 2 của các kỳ cũ năm " + dateDen_KeToan_Chot2019.Value.Year.ToString();
+                    dr["PhanKy"] = "II. Số tiền nước thu được từ các kỳ hóa đơn trước đó của năm " + dateDen_KeToan_Chot2019.Value.Year.ToString();
                     ds.Tables["TongHopDangNgan"].Rows.Add(dr);
                 }
                 if (int.Parse(item["Nam2"].ToString()) == 2019)
