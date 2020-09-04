@@ -42,6 +42,7 @@ namespace GIAYKHEN
             //    item["PHONGBAN"] = UNI_2_TCVN3(item["PHONGBAN"].ToString());
             //}
             ReportDocument rp = new ReportDocument();
+            if(cmbGiayKhen.SelectedIndex>-1)
             if (cmbGiayKhen.SelectedItem.ToString() == "Công ty")
             {
                 if (cmbNhom.SelectedIndex == 0)
@@ -116,6 +117,21 @@ namespace GIAYKHEN
                                         rp = new GuongDienHinh5nam_TAPTHE_A3();
                                     }
                             }
+                            else
+                                if (cmbGiayKhen.SelectedItem.ToString() == "HCM")
+                                {
+                                    if (cmbNhom.SelectedIndex == 0)
+                                    {
+                                        sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and HCM=1";
+                                        rp = new HCM_CANHAN_A3();
+                                    }
+                                    else
+                                        if (cmbNhom.SelectedIndex == 1)
+                                        {
+                                            sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and HCM=1";
+                                            rp = new HCM_TAPTHE_A3();
+                                        }
+                                }
 
             DataTable dt = getData(sql).Tables[0];
             //ReportDocument rp = new GKCongDoan_CANHAN();
@@ -149,7 +165,7 @@ namespace GIAYKHEN
         private void Form1_Load(object sender, EventArgs e)
         {
             cmbNhom.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2020, 01, 09);
+            txtNgay.Value = new DateTime(2020, 09, 03);
         }
 
     }
