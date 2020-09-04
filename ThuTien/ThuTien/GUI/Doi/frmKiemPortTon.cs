@@ -187,7 +187,7 @@ namespace ThuTien.GUI.Doi
             catch (Exception ex)
             {
                 _db = new dbThuTienDataContext();
-                MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + k.ToString() + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi, Vui lòng thử lại \r\n Dòng: " + k.ToString()+" --- " + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
