@@ -330,7 +330,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                             {
                                 _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
-                                LoadTTKH(_hoadon);
+                                //LoadTTKH(_hoadon);
                                 chkCodeF2.Focus();
                             }
                             else
@@ -350,7 +350,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
                                 {
                                     _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
-                                    LoadTTKH(_hoadon);
+                                    //LoadTTKH(_hoadon);
                                     chkCodeF2.Focus();
                                 }
                                 else
@@ -369,7 +369,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                                 {
                                     _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
-                                    LoadTTKH(_hoadon);
+                                    //LoadTTKH(_hoadon);
                                     chkCodeF2.Focus();
                                 }
                                 else
@@ -409,7 +409,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
                         if (_hoadon != null)
                         {
-                            LoadTTKH(_hoadon);
+                            //LoadTTKH(_hoadon);
                             chkCodeF2.Focus();
                         }
                         else
@@ -429,7 +429,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                 if (_hoadon != null)
                 {
-                    LoadTTKH(_hoadon);
+                    //LoadTTKH(_hoadon);
                     txtKyHD.Focus();
                 }
                 else
@@ -445,9 +445,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 _hoadon = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(KyHD[0]), int.Parse(KyHD[1]));
                 if (_hoadon != null)
                 {
-                    txtGiaBieu_Cu.Text = _hoadon.GB.Value.ToString();
-                    if (_hoadon.DM != null)
-                        txtDinhMuc_Cu.Text = _hoadon.DM.Value.ToString();
+                    LoadTTKH(_hoadon);
+                    //txtGiaBieu_Cu.Text = _hoadon.GB.Value.ToString();
+                    //if (_hoadon.DM != null)
+                    //    txtDinhMuc_Cu.Text = _hoadon.DM.Value.ToString();
                     txtTieuThu_Cu.Text = _hoadon.TIEUTHU.Value.ToString();
                     txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.GIABAN.Value);
                     txtThueGTGT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.THUE.Value);
