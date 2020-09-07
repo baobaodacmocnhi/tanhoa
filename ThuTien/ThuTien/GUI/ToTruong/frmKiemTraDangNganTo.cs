@@ -534,7 +534,7 @@ namespace ThuTien.GUI.ToTruong
 
         private void dgvLichSuDangNganA_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvLichSuDangNganB.DataSource = _cHoaDon.getDS_LichSuDangNgan(int.Parse(dgvLichSuDangNganA.CurrentRow.Cells["MaHD"].Value.ToString())) ;
+            dgvLichSuDangNganB.DataSource = _cHoaDon.getDS_LichSuDangNgan(int.Parse(dgvLichSuDangNganA.CurrentRow.Cells["MaHD"].Value.ToString()));
         }
 
         private void dgvLichSuDangNganA_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -553,6 +553,57 @@ namespace ThuTien.GUI.ToTruong
             }
         }
 
-        
+        private void dgvHDCoQuan_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "btnLocation_DangNgan")
+                {
+                    if (dgvHDCoQuan.CurrentRow.Cells["DangNgan_DienThoai_Location"].Value.ToString() != "")
+                        System.Diagnostics.Process.Start("https://maps.google.com?q=" + dgvHDCoQuan.CurrentRow.Cells["DangNgan_DienThoai_Location"].Value.ToString());
+                    else
+                        MessageBox.Show("Không có Vị Trí", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "btnLocation_InPhieuBao")
+                    {
+                        if (dgvHDCoQuan.CurrentRow.Cells["InPhieuBao_Location"].Value.ToString() != "")
+                            System.Diagnostics.Process.Start("https://maps.google.com?q=" + dgvHDCoQuan.CurrentRow.Cells["InPhieuBao_Location"].Value.ToString());
+                        else
+                            MessageBox.Show("Không có Vị Trí", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                        if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "btnLocation_InPhieuBao2")
+                        {
+                            if (dgvHDCoQuan.CurrentRow.Cells["InPhieuBao2_Location"].Value.ToString() != "")
+                                System.Diagnostics.Process.Start("https://maps.google.com?q=" + dgvHDCoQuan.CurrentRow.Cells["InPhieuBao2_Location"].Value.ToString());
+                            else
+                                MessageBox.Show("Không có Vị Trí", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                            if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "btnLocation_TBDongNuoc")
+                            {
+                                if (dgvHDCoQuan.CurrentRow.Cells["TBDongNuoc_Location"].Value.ToString() != "")
+                                    System.Diagnostics.Process.Start("https://maps.google.com?q=" + dgvHDCoQuan.CurrentRow.Cells["TBDongNuoc_Location"].Value.ToString());
+                                else
+                                    MessageBox.Show("Không có Vị Trí", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                                if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "btnLocation_XoaDangNgan")
+                                {
+                                    if (dgvHDCoQuan.CurrentRow.Cells["XoaDangNgan_Location_DienThoai"].Value.ToString() != "")
+                                        System.Diagnostics.Process.Start("https://maps.google.com?q=" + dgvHDCoQuan.CurrentRow.Cells["XoaDangNgan_Location_DienThoai"].Value.ToString());
+                                    else
+                                        MessageBox.Show("Không có Vị Trí", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
     }
 }

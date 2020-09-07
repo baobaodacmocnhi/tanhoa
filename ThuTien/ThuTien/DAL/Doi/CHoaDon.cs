@@ -6130,6 +6130,11 @@ namespace ThuTien.DAL.Doi
                             item.InPhieuBao2_Ngay,
                             item.XoaDangNgan_Ngay_DienThoai,
                             item.TBDongNuoc_Ngay,
+                            item.DangNgan_DienThoai_Location,
+                            item.InPhieuBao_Location,
+                            item.InPhieuBao2_Location,
+                            item.TBDongNuoc_Location,
+                            item.XoaDangNgan_Location_DienThoai,
                         };
             return LINQToDataTable(query);
         }
