@@ -853,8 +853,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon_TT"].Value.ToString(), ref DanhBo) == false)
                                 {
                                     MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    item.Selected = true;
-                                    dgvTamThu.CurrentCell = item.Cells[0];
+                                    dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
+                                    dgvTamThu.Rows[item.Index].Selected = true;
                                     return;
                                 }
                             }
@@ -927,14 +927,18 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             DataTable dt = _cTamThu.getDSSaiSot_ChuyenKhoan(dateTu.Value, dateDen.Value);
             string str = "";
+            DataTable dtTemp = new DataTable();
+            dtTemp.Columns.Add("DanhBo", typeof(string));
             foreach (DataRow item in dt.Rows)
             {
                 DataTable dtTT = _cTamThu.getDS(true, item["DanhBo"].ToString(), dateTu.Value, dateDen.Value);
                 DataTable dtTon = _cHoaDon.GetDSTonByDanhBo(item["DanhBo"].ToString());
                 if (dtTon.Rows.Count > 0 && (int.Parse(dtTT.Rows[0]["Nam"].ToString()) < int.Parse(dtTon.Rows[0]["Nam"].ToString()) || (int.Parse(dtTT.Rows[0]["Nam"].ToString()) == int.Parse(dtTon.Rows[0]["Nam"].ToString()) && int.Parse(dtTT.Rows[0]["Ky2"].ToString()) < int.Parse(dtTon.Rows[0]["Ky2"].ToString()))))
-                    str += item["DanhBo"].ToString() + " === Tạm Thu: " + item["SLTamThu"].ToString() + " === Tồn: " + item["SLTon"].ToString() + "\n";
+                    //str += item["DanhBo"].ToString() + " === Tạm Thu: " + item["SLTamThu"].ToString() + " === Tồn: " + item["SLTon"].ToString() + "\n";
+                    dtTemp.Rows.Add(item["DanhBo"].ToString());
             }
-            MessageBox.Show(str, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            dgvTamThu.DataSource = dtTemp;
+            //MessageBox.Show(str, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 

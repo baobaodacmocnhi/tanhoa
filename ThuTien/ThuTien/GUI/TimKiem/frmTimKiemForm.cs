@@ -27,7 +27,14 @@ namespace ThuTien.GUI.TimKiem
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtNoiDung.Text.Trim()))
-                MyGetNoiDung(txtNoiDung.Text.Trim());
+            {
+                string str = "";
+                if (txtNoiDung.Text.Trim().Replace(" ", "").Length == 11)
+                    str = txtNoiDung.Text.Trim().Replace(" ", "");
+                else
+                    str = txtNoiDung.Text.Trim();
+                MyGetNoiDung(str);
+            }
         }
 
         private void txtNoiDung_KeyPress(object sender, KeyPressEventArgs e)
