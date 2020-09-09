@@ -5699,6 +5699,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiDung;
 		
+		private bool _Code68;
+		
 		private string _ViTriDHN1;
 		
 		private string _ViTriDHN2;
@@ -5821,6 +5823,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnSoTienChanged();
     partial void OnNoiDungChanging(string value);
     partial void OnNoiDungChanged();
+    partial void OnCode68Changing(bool value);
+    partial void OnCode68Changed();
     partial void OnViTriDHN1Changing(string value);
     partial void OnViTriDHN1Changed();
     partial void OnViTriDHN2Changing(string value);
@@ -6190,6 +6194,26 @@ namespace KTKS_DonKH.LinQ
 					this._NoiDung = value;
 					this.SendPropertyChanged("NoiDung");
 					this.OnNoiDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Code68", DbType="Bit NOT NULL")]
+		public bool Code68
+		{
+			get
+			{
+				return this._Code68;
+			}
+			set
+			{
+				if ((this._Code68 != value))
+				{
+					this.OnCode68Changing(value);
+					this.SendPropertyChanging();
+					this._Code68 = value;
+					this.SendPropertyChanged("Code68");
+					this.OnCode68Changed();
 				}
 			}
 		}
@@ -7405,6 +7429,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiDung;
 		
+		private bool _Code68;
+		
 		private string _ViTriDHN1;
 		
 		private string _ViTriDHN2;
@@ -7515,6 +7541,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnSoTienChanged();
     partial void OnNoiDungChanging(string value);
     partial void OnNoiDungChanged();
+    partial void OnCode68Changing(bool value);
+    partial void OnCode68Changed();
     partial void OnViTriDHN1Changing(string value);
     partial void OnViTriDHN1Changed();
     partial void OnViTriDHN2Changing(string value);
@@ -7872,6 +7900,26 @@ namespace KTKS_DonKH.LinQ
 					this._NoiDung = value;
 					this.SendPropertyChanged("NoiDung");
 					this.OnNoiDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Code68", DbType="Bit NOT NULL")]
+		public bool Code68
+		{
+			get
+			{
+				return this._Code68;
+			}
+			set
+			{
+				if ((this._Code68 != value))
+				{
+					this.OnCode68Changing(value);
+					this.SendPropertyChanging();
+					this._Code68 = value;
+					this.SendPropertyChanged("Code68");
+					this.OnCode68Changed();
 				}
 			}
 		}

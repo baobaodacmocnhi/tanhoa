@@ -177,6 +177,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtDiaChi.Text = ctchdb.DiaChi;
 
             ///Nội Dung Xử Lý
+            chkCode68.Checked = ctchdb.Code68;
             cmbLyDo.SelectedValue = ctchdb.LyDo;
             txtNoiDung.Text = ctchdb.NoiDung;
             txtGhiChu.Text = ctchdb.GhiChuLyDo;
@@ -260,6 +261,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtDiaChi.Text = ctctdb.DiaChi;
 
             ///Nguyên Nhân Xử Lý
+            chkCode68.Checked = ctctdb.Code68;
             cmbLyDo.SelectedValue = ctctdb.LyDo;
             txtGhiChu.Text = ctctdb.GhiChuLyDo;
             if (ctctdb.SoTien != null)
@@ -281,6 +283,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
             ///
+            chkCode68.Checked = false;
             cmbLyDo.SelectedIndex = -1;
             txtSoTien.Text = "";
             txtGhiChu.Text = "";
@@ -590,6 +593,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         ctchdb.Phuong = _hoadon.Phuong;
                         ctchdb.Quan = _hoadon.Quan;
                     }
+                    ctchdb.Code68 = chkCode68.Checked;
                     ctchdb.LyDo = cmbLyDo.SelectedValue.ToString();
                     ctchdb.GhiChuLyDo = txtGhiChu.Text.Trim();
                     ctchdb.NoiDung = txtNoiDung.Text;
@@ -688,6 +692,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         if (txtMaThongBaoCT.Text.Trim().Replace("-", "") != "")
                             _ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
 
+                        _ctchdb.Code68 = chkCode68.Checked;
                         if (!string.IsNullOrEmpty(cmbLyDo.SelectedValue.ToString()))
                             _ctchdb.LyDo = cmbLyDo.SelectedValue.ToString();
                         _ctchdb.GhiChuLyDo = txtGhiChu.Text.Trim();
@@ -1236,6 +1241,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     ctchdb.Ky = hoadon.KY.ToString();
                                     ctchdb.Nam = hoadon.NAM.ToString();
                                 }
+                                ctchdb.Code68 = chkCode68.Checked;
                                 ctchdb.LyDo = cmbLyDo.SelectedValue.ToString();
                                 ctchdb.GhiChuLyDo = txtGhiChu.Text.Trim();
                                 if (txtSoTien.Text.Trim() != "")

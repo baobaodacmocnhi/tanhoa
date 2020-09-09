@@ -174,6 +174,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtDiaChi.Text = ctctdb.DiaChi;
 
             ///Nội Dung Xử Lý
+            chkCode68.Checked = ctctdb.Code68;
             cmbLyDo.SelectedValue = ctctdb.LyDo;
             txtNoiDung.Text = ctctdb.NoiDung;
             txtGhiChu.Text = ctctdb.GhiChuLyDo;
@@ -234,6 +235,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
             ///
+            chkCode68.Checked = false;
             cmbLyDo.SelectedIndex = -1;
             txtSoTien.Text = "";
             txtGhiChu.Text = "";
@@ -524,6 +526,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         ctctdb.Phuong = _hoadon.Phuong;
                         ctctdb.Quan = _hoadon.Quan;
                     }
+                    ctctdb.Code68 = chkCode68.Checked;
                     ctctdb.LyDo = cmbLyDo.SelectedValue.ToString();
                     ctctdb.GhiChuLyDo = txtGhiChu.Text.Trim();
                     ctctdb.NoiDung = txtNoiDung.Text;
@@ -598,6 +601,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _ctctdb.Quan = _hoadon.Quan;
                         }
 
+                        _ctctdb.Code68 = chkCode68.Checked;
                         if (!string.IsNullOrEmpty(cmbLyDo.SelectedValue.ToString()))
                             _ctctdb.LyDo = cmbLyDo.SelectedValue.ToString();
                         _ctctdb.GhiChuLyDo = txtGhiChu.Text.Trim();
@@ -1128,6 +1132,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     ctctdb.Ky = hoadon.KY.ToString();
                                     ctctdb.Nam = hoadon.NAM.ToString();
                                 }
+                                ctctdb.Code68 = chkCode68.Checked;
                                 ctctdb.LyDo = cmbLyDo.SelectedValue.ToString();
                                 ctctdb.GhiChuLyDo = txtGhiChu.Text.Trim();
                                 if (txtSoTien.Text.Trim() != "")

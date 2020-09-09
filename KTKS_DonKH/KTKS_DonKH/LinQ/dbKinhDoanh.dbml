@@ -211,6 +211,7 @@
       <Column Name="GhiChuLyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Code68" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="ViTriDHN1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ViTriDHN2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="TCTBXuLy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
@@ -285,6 +286,7 @@
       <Column Name="GhiChuLyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Code68" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="ViTriDHN1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ViTriDHN2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="TCTBXuLy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
