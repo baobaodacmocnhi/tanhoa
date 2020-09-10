@@ -126,6 +126,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return db.ChungTu_ChiTiets.Any(itemCT => itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT);
         }
 
+        public bool CheckExist_CT_Ngheo(string MaCT, int MaLCT)
+        {
+            return db.ChungTu_ChiTiets.Any(itemCT => itemCT.MaCT == MaCT && (MaLCT == 1 || MaLCT == 10));
+        }
+
         public bool CheckDinhMucNhaTro(string DanhBo)
         {
             return db.ChungTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.Cat == false && (item.ChungTu.LoaiChungTu.MaLCT == 7 || item.ChungTu.LoaiChungTu.MaLCT == 8));
@@ -3566,7 +3571,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " where CAST(dcbd.CreateDate as date)>='" + new DateTime(ToCreateDate.Year - 1, 11, 21).ToString("yyyyMMdd") + "' and CAST(dcbd.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and DinhMuc_BD is not null and (MaLCT=7 or MaLCT=8) and dcbd.DanhBo=ctct.DanhBo"
                         + " group by dcbd.DanhBo,CAST(dcbd.CreateDate as date),dcbd.Quan"
                         + " order by CreateDate,Quan";
-                
+
             return ExecuteQuery_DataTable(sql);
         }
 

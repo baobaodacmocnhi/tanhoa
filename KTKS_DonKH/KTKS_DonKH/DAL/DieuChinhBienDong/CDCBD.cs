@@ -1922,6 +1922,55 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public DataTable getHoaDon_DataTable(decimal MaCTDCHD)
+        {
+            var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
+                        join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemCTDCHD.MaCTDCHD == MaCTDCHD
+                        && (itemCTDCHD.Nam > 2020 || (itemCTDCHD.Nam == 2020 && itemCTDCHD.Ky >= 7)) && itemCTDCHD.PhieuDuocKy == true
+                        orderby itemCTDCHD.CreateDate ascending
+                        select new
+                        {
+                            itemCTDCHD.ChuyenThuTien,
+                            ID = itemCTDCHD.MaCTDCHD,
+                            DieuChinh = "Hóa Đơn",
+                            itemCTDCHD.KyHD,
+                            itemCTDCHD.ThongTin,
+                            itemCTDCHD.LyDoDieuChinh,
+                            itemCTDCHD.CreateDate,
+                            itemCTDCHD.CodeF2,
+                            itemCTDCHD.DanhBo,
+                            itemCTDCHD.GiaBieu,
+                            itemCTDCHD.GiaBieu_BD,
+                            itemCTDCHD.DinhMuc,
+                            itemCTDCHD.DinhMuc_BD,
+                            itemCTDCHD.DinhMucHN,
+                            itemCTDCHD.DinhMucHN_BD,
+                            itemCTDCHD.TieuThu,
+                            itemCTDCHD.TieuThu_BD,
+                            itemCTDCHD.TienNuoc_Start,
+                            itemCTDCHD.TienNuoc_End,
+                            itemCTDCHD.ThueGTGT_Start,
+                            itemCTDCHD.ThueGTGT_End,
+                            itemCTDCHD.PhiBVMT_Start,
+                            itemCTDCHD.PhiBVMT_End,
+                            itemCTDCHD.TongCong_Start,
+                            itemCTDCHD.TongCong_End,
+                            itemCTDCHD.TongCong_BD,
+                            itemCTDCHD.TangGiam,
+                            itemCTDCHD.PhieuDuocKy,
+                            itemCTDCHD.NguoiKy,
+                            CreateBy = itemtableND.HoTen,
+                            itemCTDCHD.Dot,
+                            itemCTDCHD.Ky,
+                            itemCTDCHD.Nam,
+                            SoPhatHanh = itemCTDCHD.SoHD,
+                            itemCTDCHD.SoHoaDon,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable getDS_HoaDon_MaDon(string To, decimal MaDon)
         {
             switch (To)
@@ -2839,7 +2888,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCHD.CreateDate.Value.Date >= FromCreateDate.Date && itemCTDCHD.CreateDate.Value.Date <= ToCreateDate.Date
-                            && (itemCTDCHD.Nam > 2020 || (itemCTDCHD.Nam == 2020 && itemCTDCHD.Ky >= 7))&& itemCTDCHD.PhieuDuocKy==true
+                            && (itemCTDCHD.Nam > 2020 || (itemCTDCHD.Nam == 2020 && itemCTDCHD.Ky >= 7)) && itemCTDCHD.PhieuDuocKy == true
                             orderby itemCTDCHD.CreateDate ascending
                             select new
                             {

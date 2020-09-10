@@ -642,16 +642,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdcbd.GiaBieu_BD = int.Parse(txtGiaBieu_BD.Text.Trim());
                     }
                     ///Định Mức
-                    if ((txtDinhMuc_BD.Text.Trim() != "" && txtDinhMuc.Text.Trim() != txtDinhMuc_BD.Text.Trim()) || (txtDinhMucHN_BD.Text.Trim() != "" && txtDinhMucHN_BD.Text.Trim() != txtDinhMucHN.Text.Trim()))
+                    if (txtDinhMuc_BD.Text.Trim() != "" && txtDinhMuc.Text.Trim() != txtDinhMuc_BD.Text.Trim())
                     {
                         if (string.IsNullOrEmpty(ThongTin) == true)
                             ThongTin += "Định Mức";
                         else
                             ThongTin += ". Định Mức";
-                        if (txtDinhMuc_BD.Text.Trim() != "")
-                            ctdcbd.DinhMuc_BD = int.Parse(txtDinhMuc_BD.Text.Trim());
-                        if (txtDinhMucHN_BD.Text.Trim() != "")
-                            ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
+                        ctdcbd.DinhMuc_BD = int.Parse(txtDinhMuc_BD.Text.Trim());
+                    }
+                    if (txtDinhMucHN_BD.Text.Trim() != "" && txtDinhMucHN_BD.Text.Trim() != txtDinhMucHN.Text.Trim())
+                    {
+                        if (string.IsNullOrEmpty(ThongTin) == true)
+                            ThongTin += "Định Mức Nghèo";
+                        else
+                            ThongTin += ". Định Mức Nghèo";
+                        ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
                     }
                     if (txtSH_BD.Text.Trim() != "" || txtSX_BD.Text.Trim() != "" || txtDV_BD.Text.Trim() != "" || txtHCSN_BD.Text.Trim() != "")
                     {
@@ -849,30 +854,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             _ctdcbd.GiaBieu_BD = null;
                         ///Định Mức
-                        if (txtDinhMuc_BD.Text.Trim() != "" || txtDinhMucHN_BD.Text.Trim() != "")
+                        if (txtDinhMuc_BD.Text.Trim() != "")
                         {
                             if (string.IsNullOrEmpty(ThongTin) == true)
                                 ThongTin += "Định Mức";
                             else
                                 ThongTin += ". Định Mức";
-                            if (txtDinhMuc_BD.Text.Trim() != "")
-                            {
-                                _ctdcbd.DinhMuc_BD = int.Parse(txtDinhMuc_BD.Text.Trim());
-                            }
-                            else
-                                _ctdcbd.DinhMuc_BD = null;
-                            if (txtDinhMucHN_BD.Text.Trim() != "")
-                            {
-                                _ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
-                            }
-                            else
-                                _ctdcbd.DinhMucHN_BD = null;
+                            _ctdcbd.DinhMuc_BD = int.Parse(txtDinhMuc_BD.Text.Trim());
                         }
                         else
-                        {
                             _ctdcbd.DinhMuc_BD = null;
-                            _ctdcbd.DinhMucHN_BD = null;
+                        if (txtDinhMucHN_BD.Text.Trim() != "")
+                        {
+                            if (string.IsNullOrEmpty(ThongTin) == true)
+                                ThongTin += "Định Mức Nghèo";
+                            else
+                                ThongTin += ". Định Mức Nghèo";
+                            _ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
                         }
+                        else
+                            _ctdcbd.DinhMucHN_BD = null;
                         //tỷ lệ
                         if (txtSH_BD.Text.Trim() != "" || txtSX_BD.Text.Trim() != "" || txtDV_BD.Text.Trim() != "" || txtHCSN_BD.Text.Trim() != "")
                         {
