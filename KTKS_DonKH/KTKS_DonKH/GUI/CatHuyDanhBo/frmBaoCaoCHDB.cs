@@ -98,7 +98,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         case "DS Cắt Tạm Chưa Xử Lý":
                             dt = _cCHDB.GetDSCatTam_NgayLap_ChuaXuLy(dateTu.Value, dateDen.Value);
                             break;
-                        default:
+                        case "DS Cắt Tạm Code 68":
+                            dt = _cCHDB.GetDSCatTam_NgayLap_Code68(dateTu.Value, dateDen.Value);
+                            break;
+                        case "DS Cắt Hủy Code 68":
+                            dt = _cCHDB.GetDSCatHuy_NgayLap_Code68(dateTu.Value, dateDen.Value);
                             break;
                     }
                 }
@@ -119,7 +123,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             case "DS Cắt Tạm Chưa Xử Lý":
                                 dt = _cCHDB.GetDSCatTam_NgayLap_LyDo_ChuaXuLy(dateTu.Value, dateDen.Value, cmbLyDo_TheoNgayLap.SelectedValue.ToString());
                                 break;
-                            default:
+                            case "DS Cắt Tạm Code 68":
+                                dt = _cCHDB.GetDSCatTam_NgayLap_LyDo_Code68(dateTu.Value, dateDen.Value, cmbLyDo_TheoNgayLap.SelectedValue.ToString());
+                                break;
+                            case "DS Cắt Hủy Code 68":
+                                dt = _cCHDB.GetDSCatHuy_NgayLap_LyDo_Code68(dateTu.Value, dateDen.Value, cmbLyDo_TheoNgayLap.SelectedValue.ToString());
                                 break;
                         }
                     }
@@ -143,7 +151,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             case "DS Cắt Tạm Chưa Xử Lý":
                                 dt = _cCHDB.GetDSCatTam_NgayLap_Quan_ChuaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString());
                                 break;
-                            default:
+                            case "DS Cắt Tạm Code 68":
+                                dt = _cCHDB.GetDSCatTam_NgayLap_Quan_Code68(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString());
+                                break;
+                            case "DS Cắt Hủy Code 68":
+                                dt = _cCHDB.GetDSCatHuy_NgayLap_Quan_Code68(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString());
                                 break;
                         }
                     }
@@ -164,7 +176,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 case "DS Cắt Tạm Chưa Xử Lý":
                                     dt = _cCHDB.GetDSCatTam_NgayLap_ChuaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString(), cmbLyDo_TheoNgayLap.SelectedValue.ToString());
                                     break;
-                                default:
+                                case "DS Cắt Tạm Code 68":
+                                    dt = _cCHDB.GetDSCatTam_NgayLap_Code68(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString(), cmbLyDo_TheoNgayLap.SelectedValue.ToString());
+                                    break;
+                                case "DS Cắt Hủy Code 68":
+                                    dt = _cCHDB.GetDSCatHuy_NgayLap_Code68(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayLap.SelectedValue.ToString(), cmbLyDo_TheoNgayLap.SelectedValue.ToString());
                                     break;
                             }
                         }
@@ -194,7 +210,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             dr["LoaiBaoCao"] = "TB CẮT TẠM CHƯA XỬ LÝ";
                             dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
                             break;
-                        default:
+                        case "DS Cắt Tạm Code 68":
+                            dr["LoaiBaoCao"] = "TB CẮT TẠM CODE 68 " + cmbQuan_TheoNgayLap.Text;
+                            dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
+                            break;
+                        case "DS Cắt Hủy Code 68":
+                            dr["LoaiBaoCao"] = "TB CẮT HỦY CODE 68 " + cmbQuan_TheoNgayLap.Text;
+                            dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
                             break;
                     }
                 else
@@ -217,7 +239,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["LoaiBaoCao"] = "TB CẮT TẠM CHƯA XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
                                 dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
                                 break;
-                            default:
+                            case "DS Cắt Tạm Code 68":
+                                dr["LoaiBaoCao"] = "TB CẮT TẠM CODE 68 " + cmbQuan_TheoNgayLap.Text;
+                                dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
+                                break;
+                            case "DS Cắt Hủy Code 68":
+                                dr["LoaiBaoCao"] = "TB CẮT HỦY CODE 68 " + cmbQuan_TheoNgayLap.Text;
+                                dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
                                 break;
                         }
 
@@ -255,7 +283,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         case "DS Cắt Tạm":
                             dt = _cCHDB.GetDSCatTam_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value);
                             break;
-                        default:
+                        case "DS Cắt Tạm Code 68":
+                            dt = _cCHDB.GetDSCatTam_NgayXuLy_DaXuLy_Code68(dateTu.Value, dateDen.Value);
+                            break;
+                        case "DS Cắt Hủy Code 68":
+                            dt = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy_Code68(dateTu.Value, dateDen.Value);
                             break;
                     }
                 else
@@ -268,7 +300,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             case "DS Cắt Tạm":
                                 dt = _cCHDB.GetDSCatTam_NgayXuLy_NoiDung_DaXuLy(dateTu.Value, dateDen.Value, cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
                                 break;
-                            default:
+                            case "DS Cắt Tạm Code 68":
+                                dt = _cCHDB.GetDSCatTam_NgayXuLy_NoiDung_DaXuLy_Code68(dateTu.Value, dateDen.Value, cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
+                                break;
+                            case "DS Cắt Hủy Code 68":
+                                dt = _cCHDB.GetDSCatHuy_NgayXuLy_NoiDung_DaXuLy_Code68(dateTu.Value, dateDen.Value, cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
                                 break;
                         }
             }
@@ -284,7 +320,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             case "DS Cắt Tạm":
                                 dt = _cCHDB.GetDSCatTam_NgayXuLy_Quan_DaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayXuLy.SelectedValue.ToString());
                                 break;
-                            default:
+                            case "DS Cắt Tạm Code 68":
+                                dt = _cCHDB.GetDSCatTam_NgayXuLy_Quan_DaXuLy_Code68(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayXuLy.SelectedValue.ToString());
+                                break;
+                            case "DS Cắt Hủy Code 68":
+                                dt = _cCHDB.GetDSCatHuy_NgayXuLy_Quan_DaXuLy_Code68(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayXuLy.SelectedValue.ToString());
                                 break;
                         }
                     else
@@ -297,7 +337,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 case "DS Cắt Tạm":
                                     dt = _cCHDB.GetDSCatTam_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayXuLy.SelectedValue.ToString(), cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
                                     break;
-                                default:
+                                case "DS Cắt Tạm Code 68":
+                                    dt = _cCHDB.GetDSCatTam_NgayXuLy_DaXuLy_Code68(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayXuLy.SelectedValue.ToString(), cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
+                                    break;
+                                case "DS Cắt Hủy Code 68":
+                                    dt = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy_Code68(dateTu.Value, dateDen.Value, cmbQuan_TheoNgayXuLy.SelectedValue.ToString(), cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
                                     break;
                             }
                 }
@@ -311,14 +355,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     switch (cmbLoaiBaoCao_TheoNgayXuLy.SelectedItem.ToString())
                     {
                         case "DS Cắt Hủy":
-                            dr["LoaiBaoCao"] = "CẮT HỦY ĐÃ XỬ LÝ";
+                            dr["LoaiBaoCao"] = "TB CẮT HỦY ĐÃ XỬ LÝ";
                             dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
                             break;
                         case "DS Cắt Tạm":
-                            dr["LoaiBaoCao"] = "CẮT TẠM ĐÃ XỬ LÝ";
+                            dr["LoaiBaoCao"] = "TB CẮT TẠM ĐÃ XỬ LÝ";
                             dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
                             break;
-                        default:
+                        case "DS Cắt Tạm Code 68":
+                            dr["LoaiBaoCao"] = "TB CẮT TẠM CODE 68";
+                            dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
+                            break;
+                        case "DS Cắt Hủy Code 68":
+                            dr["LoaiBaoCao"] = "TB CẮT HỦY CODE 68";
+                            dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
                             break;
                     }
                 else
@@ -326,14 +376,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         switch (cmbLoaiBaoCao_TheoNgayXuLy.SelectedItem.ToString())
                         {
                             case "DS Cắt Hủy":
-                                dr["LoaiBaoCao"] = "CẮT HỦY ĐÃ XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
+                                dr["LoaiBaoCao"] = "TB CẮT HỦY ĐÃ XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
                                 dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
                                 break;
                             case "DS Cắt Tạm":
-                                dr["LoaiBaoCao"] = "CẮT TẠM ĐÃ XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
+                                dr["LoaiBaoCao"] = "TB CẮT TẠM ĐÃ XỬ LÝ " + cmbQuan_TheoNgayLap.Text;
                                 dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
                                 break;
-                            default:
+                            case "DS Cắt Tạm Code 68":
+                                dr["LoaiBaoCao"] = "TB CẮT TẠM CODE 68 " + cmbQuan_TheoNgayLap.Text;
+                                dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
+                                break;
+                            case "DS Cắt Hủy Code 68":
+                                dr["LoaiBaoCao"] = "TB CẮT HỦY CODE 68 " + cmbQuan_TheoNgayLap.Text;
+                                dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
                                 break;
                         }
 
@@ -458,7 +514,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dtExport.Columns.Add("ID", typeof(String));
                     dtExport.Columns.Add("LyDo", typeof(String));
                     dtExport.Columns.Add("NoiDungXuLy", typeof(String));
-                    
+
                     CExcel fileExcel = new CExcel(dialog.FileName);
                     DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                     foreach (DataRow item in dtExcel.Rows)
@@ -473,7 +529,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 if (dr["ID"].ToString() == "")
                                 {
                                     if (itemTemp["ID"].ToString() != "")
-                                        dr["ID"] = itemTemp["ID"].ToString().Insert(itemTemp["ID"].ToString().Length-2,"-");
+                                        dr["ID"] = itemTemp["ID"].ToString().Insert(itemTemp["ID"].ToString().Length - 2, "-");
                                 }
                                 else
                                 {
@@ -717,7 +773,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void btnBaoCao_CatTam_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cCHDB.getDS_CatTam_LyDo_NoiDungXuLy(cmbLyDo.SelectedValue.ToString(),cmbNoiDung.SelectedValue.ToString());
+            DataTable dt = _cCHDB.getDS_CatTam_LyDo_NoiDungXuLy(cmbLyDo.SelectedValue.ToString(), cmbNoiDung.SelectedValue.ToString());
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow item in dt.Rows)
             {

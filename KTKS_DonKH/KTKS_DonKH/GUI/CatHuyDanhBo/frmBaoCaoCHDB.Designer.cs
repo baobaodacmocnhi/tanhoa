@@ -55,12 +55,12 @@
             this.btnImportExcelCatHuy = new System.Windows.Forms.Button();
             this.btnImportExcelCatTam = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnBaoCao_CatHuy = new System.Windows.Forms.Button();
             this.btnBaoCao_CatTam = new System.Windows.Forms.Button();
             this.cmbNoiDung = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbLyDo = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnBaoCao_CatHuy = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -203,7 +203,9 @@
             "DS Cắt Hủy Đã Xử Lý",
             "DS Cắt Hủy Chưa Xử Lý",
             "DS Cắt Tạm Đã Xử Lý",
-            "DS Cắt Tạm Chưa Xử Lý"});
+            "DS Cắt Tạm Chưa Xử Lý",
+            "DS Cắt Tạm Code 68",
+            "DS Cắt Hủy Code 68"});
             this.cmbLoaiBaoCao_TheoNgayLap.Location = new System.Drawing.Point(105, 21);
             this.cmbLoaiBaoCao_TheoNgayLap.Name = "cmbLoaiBaoCao_TheoNgayLap";
             this.cmbLoaiBaoCao_TheoNgayLap.Size = new System.Drawing.Size(150, 24);
@@ -276,7 +278,9 @@
             this.cmbLoaiBaoCao_TheoNgayXuLy.FormattingEnabled = true;
             this.cmbLoaiBaoCao_TheoNgayXuLy.Items.AddRange(new object[] {
             "DS Cắt Hủy",
-            "DS Cắt Tạm"});
+            "DS Cắt Tạm",
+            "DS Cắt Tạm Code 68",
+            "DS Cắt Hủy Code 68"});
             this.cmbLoaiBaoCao_TheoNgayXuLy.Location = new System.Drawing.Point(105, 21);
             this.cmbLoaiBaoCao_TheoNgayXuLy.Name = "cmbLoaiBaoCao_TheoNgayXuLy";
             this.cmbLoaiBaoCao_TheoNgayXuLy.Size = new System.Drawing.Size(150, 24);
@@ -346,6 +350,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Theo Lý Do - Nội Dung Xử Lý";
             // 
+            // btnBaoCao_CatHuy
+            // 
+            this.btnBaoCao_CatHuy.Location = new System.Drawing.Point(361, 50);
+            this.btnBaoCao_CatHuy.Name = "btnBaoCao_CatHuy";
+            this.btnBaoCao_CatHuy.Size = new System.Drawing.Size(130, 25);
+            this.btnBaoCao_CatHuy.TabIndex = 38;
+            this.btnBaoCao_CatHuy.Text = "Báo Cáo Cắt Hủy";
+            this.btnBaoCao_CatHuy.UseVisualStyleBackColor = true;
+            this.btnBaoCao_CatHuy.Click += new System.EventHandler(this.btnBaoCao_CatHuy_Click);
+            // 
             // btnBaoCao_CatTam
             // 
             this.btnBaoCao_CatTam.Location = new System.Drawing.Point(361, 21);
@@ -395,16 +409,6 @@
             this.label10.Size = new System.Drawing.Size(43, 16);
             this.label10.TabIndex = 33;
             this.label10.Text = "Lý Do";
-            // 
-            // btnBaoCao_CatHuy
-            // 
-            this.btnBaoCao_CatHuy.Location = new System.Drawing.Point(361, 50);
-            this.btnBaoCao_CatHuy.Name = "btnBaoCao_CatHuy";
-            this.btnBaoCao_CatHuy.Size = new System.Drawing.Size(130, 25);
-            this.btnBaoCao_CatHuy.TabIndex = 38;
-            this.btnBaoCao_CatHuy.Text = "Báo Cáo Cắt Hủy";
-            this.btnBaoCao_CatHuy.UseVisualStyleBackColor = true;
-            this.btnBaoCao_CatHuy.Click += new System.EventHandler(this.btnBaoCao_CatHuy_Click);
             // 
             // frmBaoCaoCHDB
             // 
