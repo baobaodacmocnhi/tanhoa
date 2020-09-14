@@ -118,7 +118,6 @@ namespace ThuTien.GUI.Quay
                             item.Selected = true;
                             return;
                         }
-
                         //if (_cDCHD.CheckExistByDangRutDC(item.Cells["SoHoaDon"].Value.ToString()))
                         //{
                         //    MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -126,7 +125,6 @@ namespace ThuTien.GUI.Quay
                         //    item.Selected = true;
                         //    return;
                         //}
-
                         if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
                         {
                             MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
