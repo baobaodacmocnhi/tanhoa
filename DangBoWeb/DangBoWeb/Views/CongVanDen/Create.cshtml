@@ -33,7 +33,7 @@
                 $(this).attr("autocomplete", "off");
             });
             //date
-            $("input[name='NgayHetHan']").datepicker({
+            $("input[name*='Ngay']").datepicker({
                 dateFormat: "dd/mm/yy",
                 changeMonth: true,
                 changeYear: true,
@@ -69,7 +69,7 @@
 
         <div class="card-body">
             <div class="user">
-
+                @*=====*@
                 <div class="form-group">
                     <nav class="navbar navbar-expand navbar-light bg-light mb-4">
                         <a class="navbar-brand" id="TenDonVi">@Html.DisplayNameFor(model => model.DonVi.TenDonVi)</a>
@@ -90,7 +90,7 @@
                     <input hidden="hidden" type="text" class="form-control form-control-user" id="IDDonVi" name="IDDonVi" placeholder="@Html.DisplayNameFor(model=>model.IDDonVi)">
                     @Html.ValidationMessageFor(model => model.IDDonVi, "", new { @class = "text-danger" })
                 </div>
-
+                @*=====*@
                 <div class="form-group">
                     <nav class="navbar navbar-expand navbar-light bg-light mb-4">
                         <a class="navbar-brand" id="LoaiCV">@Html.DisplayNameFor(model => model.LoaiCongVan.LoaiCV)</a>
@@ -111,22 +111,34 @@
                     <input hidden="hidden" type="text" class="form-control form-control-user" id="IDLoaiCV" name="IDLoaiCV" placeholder="@Html.DisplayNameFor(model=>model.IDLoaiCV)">
                     @Html.ValidationMessageFor(model => model.IDLoaiCV, "", new { @class = "text-danger" })
                 </div>
-
+                @*=====*@
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="NgayDen" name="NgayDen" placeholder="@Html.DisplayNameFor(model=>model.NgayDen)">
+                    <span>@Html.ValidationMessageFor(model => model.NgayDen, "", new { @class = "text-danger" })</span>
+                </div>
                 <div class="form-group">
                     <input type="text" class="form-control form-control-user" id="SoCV" name="SoCV" placeholder="@Html.DisplayNameFor(model=>model.SoCV)">
                     @Html.ValidationMessageFor(model => model.SoCV, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="TieuDe" name="TieuDe" placeholder="@Html.DisplayNameFor(model=>model.TieuDe)">
-                    @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
+                    <input type="text" class="form-control form-control-user" id="SoCVGoc" name="SoCVGoc" placeholder="@Html.DisplayNameFor(model=>model.SoCVGoc)">
+                    @Html.ValidationMessageFor(model => model.SoCVGoc, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="NoiDung" name="NoiDung" placeholder="@Html.DisplayNameFor(model=>model.NoiDung)">
-                    @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+                    <input type="text" class="form-control form-control-user" id="NgayCVGoc" name="NgayCVGoc" placeholder="@Html.DisplayNameFor(model=>model.NgayCVGoc)">
+                    <span>@Html.ValidationMessageFor(model => model.NgayCVGoc, "", new { @class = "text-danger" })</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="NoiDung" name="NoiDung" placeholder="@Html.DisplayNameFor(model=>model.TrichYeuNoiDung)">
+                    @Html.ValidationMessageFor(model => model.TrichYeuNoiDung, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control form-control-user" id="ButPhe" name="ButPhe" placeholder="@Html.DisplayNameFor(model=>model.ButPhe)">
                     @Html.ValidationMessageFor(model => model.ButPhe, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="GhiChu" name="GhiChu" placeholder="@Html.DisplayNameFor(model=>model.GhiChu)">
+                    @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
                 </div>
                 @*checkbox ngày hết hạn*@
                 <div class="form-group row">

@@ -19,7 +19,7 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.CreateDate)
+                            @Html.DisplayNameFor(model => model.NgayDen)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.DonVi.TenDonVi)
@@ -31,10 +31,13 @@
                             @Html.DisplayNameFor(model => model.SoCV)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.TieuDe)
+                            @Html.DisplayNameFor(model => model.SoCVGoc)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.NoiDung)
+                            @Html.DisplayNameFor(model => model.NgayCVGoc)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TrichYeuNoiDung)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.NgayHetHan)
@@ -50,7 +53,7 @@
                 <tfoot>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.CreateDate)
+                            @Html.DisplayNameFor(model => model.NgayDen)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.DonVi.TenDonVi)
@@ -62,10 +65,13 @@
                             @Html.DisplayNameFor(model => model.SoCV)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.TieuDe)
+                            @Html.DisplayNameFor(model => model.SoCVGoc)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.NoiDung)
+                            @Html.DisplayNameFor(model => model.NgayCVGoc)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TrichYeuNoiDung)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.NgayHetHan)
@@ -83,7 +89,7 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.CreateDate)
+                                @Html.DisplayFor(modelItem => item.NgayDen)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.DonVi.TenDonVi)
@@ -95,10 +101,13 @@
                                 @Html.DisplayFor(modelItem => item.SoCV)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.TieuDe)
+                                @Html.DisplayFor(modelItem => item.SoCVGoc)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.NoiDung)
+                                @Html.DisplayFor(modelItem => item.NgayCVGoc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TrichYeuNoiDung)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.NgayHetHan)
