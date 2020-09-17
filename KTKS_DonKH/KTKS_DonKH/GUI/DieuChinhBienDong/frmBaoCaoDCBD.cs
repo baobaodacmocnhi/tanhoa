@@ -2021,11 +2021,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 string Ky = "";
                 DateTime date = DateTime.Parse(item["CreateDate"].ToString());
+                if (date.Date < dateTu_ThongKeDMNT.Value.Date)
+                    Ky = "12/" + dateTu_ThongKeDMNT.Value.Year;
+                else
                 if (date.Month == 12)
                 {
-                    if (date.Day <= 20)
-                        Ky = date.Month.ToString("00") + "/" + date.Year;
-                    else
+                    //if (date.Day <= 20)
+                    //    Ky = date.Month.ToString("00") + "/" + date.Year;
+                    //else
                         Ky = "01/" + (date.Year + 1);
                 }
                 else

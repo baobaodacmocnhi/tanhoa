@@ -3568,10 +3568,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             string sql = "select dcbd.DanhBo,CreateDate=CAST(dcbd.CreateDate as date),Quan=(select Name2 from Quan where ID=dcbd.Quan),DinhMuc=SUM(DinhMuc),DinhMuc_BD=SUM(DinhMuc_BD)"
                         + " from DCBD_ChiTietBienDong dcbd,ChungTu_ChiTiet ctct"
-                        + " where CAST(dcbd.CreateDate as date)>='" + new DateTime(ToCreateDate.Year - 1, 11, 21).ToString("yyyyMMdd") + "' and CAST(dcbd.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and DinhMuc_BD is not null and (MaLCT=7 or MaLCT=8) and dcbd.DanhBo=ctct.DanhBo"
+                        + " where CAST(dcbd.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and DinhMuc_BD is not null and ctct.Cat=0 and (MaLCT=7 or MaLCT=8) and dcbd.DanhBo=ctct.DanhBo"
                         + " group by dcbd.DanhBo,CAST(dcbd.CreateDate as date),dcbd.Quan"
                         + " order by CreateDate,Quan";
-
+            //string sql = "select dcbd.DanhBo,CreateDate=CAST(dcbd.CreateDate as date),Quan=(select Name2 from Quan where ID=dcbd.Quan),DinhMuc=SUM(DinhMuc),DinhMuc_BD=SUM(DinhMuc_BD)"
+            //            + " from DCBD_ChiTietBienDong dcbd,ChungTu_ChiTiet ctct"
+            //            + " where CAST(dcbd.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(dcbd.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and DinhMuc_BD is not null and (MaLCT=7 or MaLCT=8) and dcbd.DanhBo=ctct.DanhBo"
+            //            + " group by dcbd.DanhBo,CAST(dcbd.CreateDate as date),dcbd.Quan"
+            //            + " order by CreateDate,Quan";
             return ExecuteQuery_DataTable(sql);
         }
 
