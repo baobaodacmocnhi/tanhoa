@@ -1628,6 +1628,52 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_HD0_Ton()
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemDC.TONGCONG_END == 0 && itemHD.NGAYGIAITRACH == null && itemDC.UpdatedHDDT==true
+                        select new
+                        {
+                            NgayDC = itemDC.NGAY_DC,
+                            MaDCHD = itemDC.ID_DIEUCHINH_HD,
+                            MaHD = itemDC.FK_HOADON,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            GiaBan_End = itemDC.GIABAN_END,
+                            ThueGTGT_End = itemDC.THUE_END,
+                            PhiBVMT_End = itemDC.PHI_END,
+                            TongCong_End = itemDC.TONGCONG_END,
+                            itemDC.TangGiam,
+                            TongCong_BD = itemDC.TONGCONG_DC,
+                            TongCong_Start = itemDC.TONGCONG_BD,
+                            TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                            itemDC.ChuanThu1,
+                            itemHD.NGAYGIAITRACH,
+                            itemDC.UpdatedHDDT,
+                            itemHD.DOT,
+                            Ky2 = itemHD.KY,
+                            itemHD.NAM,
+                            itemHD.SOPHATHANH,
+                            GiaBieuCu = itemDC.GiaBieu,
+                            DinhMucCu = itemDC.DinhMuc,
+                            TieuThuCu = itemDC.TIEUTHU_BD,
+                            GiaBieuMoi = itemDC.GB_DC,
+                            DinhMucMoi = itemDC.DM_DC,
+                            TieuThuMoi = itemDC.TIEUTHU_DC,
+                            GiaBan_Start = itemDC.GIABAN_BD,
+                            ThueGTGT_Start = itemDC.THUE_BD,
+                            PhiBVMT_Start = itemDC.PHI_BD,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable getDS_DanhBo(string DanhBo)
         {
             var query = from itemDC in _db.DIEUCHINH_HDs

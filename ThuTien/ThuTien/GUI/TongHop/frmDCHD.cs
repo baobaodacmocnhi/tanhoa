@@ -45,6 +45,17 @@ namespace ThuTien.GUI.TongHop
             cmbNam.DataSource = dtNam;
             cmbNam.DisplayMember = "ID";
             cmbNam.ValueMember = "Nam";
+
+            loadHD0Ton();
+        }
+
+        public void loadHD0Ton()
+        {
+            DataTable dt = _cDCHD.getDS_HD0_Ton();
+            if (dt != null && dt.Rows.Count > 0)
+                lbHD0.Text = dt.Rows.Count+" Hóa Đơn = 0 chưa Đăng Ngân";
+            else
+                lbHD0.Text = "";
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -565,6 +576,7 @@ namespace ThuTien.GUI.TongHop
                         {
                             CExcel fileExcel = new CExcel(dialog.FileName);
                             DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                            string SoHoaDon = (string)_cHoaDon.ExecuteQuery_ReturnOneValue("select SoHoaDon from TT_DeviceConfig");
 
                             foreach (DataRow item in dtExcel.Rows)
                             {
@@ -575,7 +587,10 @@ namespace ThuTien.GUI.TongHop
                                         using (TransactionScope scope = new TransactionScope())
                                         {
                                             dchd.UpdatedHDDT = true;
-                                            dchd.SoHoaDonMoi = item[20].ToString();
+                                            if (item[20].ToString().Contains(SoHoaDon) == true)
+                                                dchd.SoHoaDonMoi = item[20].ToString();
+                                            else
+                                                dchd.SoHoaDonMoi = SoHoaDon + item[20].ToString();
                                             if (_cDCHD.Sua(dchd) == true)
                                             //if (_cDCHD.ExecuteNonQuery("update HOADON set SoHoaDonCu=SoHoaDon,SoHoaDon='" + dchd.SoHoaDonMoi + "' where ID_HOADON=" + dchd.FK_HOADON) == true)
                                             {
@@ -592,6 +607,7 @@ namespace ThuTien.GUI.TongHop
                                 }
                             }
                             MessageBox.Show("Đã xử lý xong, Vui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadHD0Ton();
                         }
                 }
                 else

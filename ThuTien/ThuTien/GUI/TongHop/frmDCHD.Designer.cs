@@ -98,6 +98,7 @@
             this.radGiay = new System.Windows.Forms.RadioButton();
             this.chkTong = new System.Windows.Forms.CheckBox();
             this.btnHDChoDieuChinh = new System.Windows.Forms.Button();
+            this.lbHD0 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDCHD)).BeginInit();
             this.panel1.SuspendLayout();
@@ -701,12 +702,23 @@
             this.btnHDChoDieuChinh.UseVisualStyleBackColor = true;
             this.btnHDChoDieuChinh.Click += new System.EventHandler(this.btnHDChoDieuChinh_Click);
             // 
+            // lbHD0
+            // 
+            this.lbHD0.AutoSize = true;
+            this.lbHD0.ForeColor = System.Drawing.Color.Red;
+            this.lbHD0.Location = new System.Drawing.Point(1229, 205);
+            this.lbHD0.Name = "lbHD0";
+            this.lbHD0.Size = new System.Drawing.Size(35, 13);
+            this.lbHD0.TabIndex = 52;
+            this.lbHD0.Text = "label7";
+            // 
             // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1440, 662);
+            this.Controls.Add(this.lbHD0);
             this.Controls.Add(this.btnHDChoDieuChinh);
             this.Controls.Add(this.chkTong);
             this.Controls.Add(this.radDienTu);
@@ -806,5 +818,6 @@
         private System.Windows.Forms.RadioButton radGiay;
         private System.Windows.Forms.CheckBox chkTong;
         private System.Windows.Forms.Button btnHDChoDieuChinh;
+        private System.Windows.Forms.Label lbHD0;
     }
 }
