@@ -511,10 +511,12 @@ namespace ThuTien.GUI.Quay
                 xacnhanno.DanhBo = dgvHoaDon["DanhBo", 0].Value.ToString();
                 xacnhanno.HoTen = dgvHoaDon["HoTen", 0].Value.ToString();
                 xacnhanno.DiaChi = dgvHoaDon["DiaChi", 0].Value.ToString();
-                xacnhanno.MLT = dgvHoaDon["MLT", 0].Value.ToString().Insert(4, " ").Insert(2, " ");
+                xacnhanno.MLT = dgvHoaDon["MLT", 0].Value.ToString();
                 xacnhanno.GiaBieu = int.Parse(dgvHoaDon["GiaBieu", 0].Value.ToString());
                 if (!string.IsNullOrEmpty(dgvHoaDon["DinhMuc", 0].Value.ToString()))
                     xacnhanno.DinhMuc = int.Parse(dgvHoaDon["DinhMuc", 0].Value.ToString());
+                if (!string.IsNullOrEmpty(dgvHoaDon["DinhMucHN", 0].Value.ToString()))
+                    xacnhanno.DinhMucHN = int.Parse(dgvHoaDon["DinhMucHN", 0].Value.ToString());
                 xacnhanno.Ky = Ky;
                 xacnhanno.TongCong = TongCongSo;
                 //xacnhanno.CreateBy = CNguoiDung.MaND;
@@ -528,6 +530,8 @@ namespace ThuTien.GUI.Quay
                 xacnhanno.GiaBieu = hoadon.GB;
                 if (hoadon.DM != null)
                     xacnhanno.DinhMuc = (int)hoadon.DM;
+                if (hoadon.DinhMucHN != null)
+                    xacnhanno.DinhMucHN = (int)hoadon.DinhMucHN;
                 xacnhanno.Ky = Ky;
                 xacnhanno.TongCong = TongCongSo;
                 //xacnhanno.CreateBy = CNguoiDung.MaND;
@@ -547,6 +551,10 @@ namespace ThuTien.GUI.Quay
                     dr["DinhMuc"] = 0;
                 else
                     dr["DinhMuc"] = xacnhanno.DinhMuc;
+                if (xacnhanno.DinhMucHN == null)
+                    dr["DinhMucHN"] = 0;
+                else
+                    dr["DinhMucHN"] = xacnhanno.DinhMucHN;
                 dr["Ky"] = Ky;
                 dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đồng", TongCongSo);
                 dr["TinhDenKy"] = xacnhanno.TinhDenKy;
@@ -677,6 +685,10 @@ namespace ThuTien.GUI.Quay
                     dr["DinhMuc"] = 0;
                 else
                     dr["DinhMuc"] = item.Cells["DinhMuc_XacNhanNo"].Value.ToString();
+                if (item.Cells["DinhMucHN_XacNhanNo"].Value == null)
+                    dr["DinhMucHN"] = 0;
+                else
+                    dr["DinhMucHN"] = item.Cells["DinhMucHN_XacNhanNo"].Value.ToString();
                 if (item.Cells["Ky_XacNhanNo"].Value != null)
                     dr["Ky"] = item.Cells["Ky_XacNhanNo"].Value.ToString();
                 if (item.Cells["TongCong_XacNhanNo"].Value != null)
