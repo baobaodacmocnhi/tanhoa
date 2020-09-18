@@ -570,6 +570,7 @@ namespace KTKS_DonKH.DAL.DonTu
         {
             var query = from item in db.DonTu_ChiTiets
                         where item.DanhBo == DanhBo
+                        orderby item.CreateDate descending
                         select new
                         {
                             item.MaDon,
