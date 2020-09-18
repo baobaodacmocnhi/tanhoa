@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CongVanDenController.cs" />
     <Compile Include="Controllers\CongVanDiController.cs" />
+    <Compile Include="Controllers\HeThongController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -245,6 +246,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\loginx256.png" />
+    <Content Include="Images\logoutx256.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\DangBoWeb.pubxml" />
@@ -2115,6 +2118,8 @@
     <Content Include="Views\CongVanDi\Create.cshtml" />
     <Content Include="Views\CongVanDi\Edit.cshtml" />
     <Content Include="Views\CongVanDi\Index.cshtml" />
+    <Content Include="Views\HeThong\DangNhap.cshtml" />
+    <Content Include="Views\HeThong\DoiMatKhau.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

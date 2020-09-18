@@ -1,4 +1,4 @@
-namespace DangBoWeb.Models
+﻿namespace DangBoWeb.Models
 {
     using System;
     using System.Collections.Generic;
@@ -40,4 +40,6 @@ namespace DangBoWeb.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhanQuyenNguoiDung> PhanQuyenNguoiDungs { get; set; }
     }
+
+
 }
