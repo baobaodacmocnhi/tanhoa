@@ -479,6 +479,11 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Any(item => item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan == MaNV_DangNgan && item.DCHD == true);
         }
 
+        public bool checkExist_ThoatNgheo(string DanhBo)
+        {
+            return _db.TT_ThoatNgheos.Any(item => item.DanhBo == DanhBo);
+        }
+
         public HOADON Get(int MaHD)
         {
             return _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == MaHD);

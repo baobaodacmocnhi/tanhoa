@@ -369,7 +369,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         if (cmbKy_PhanTich.SelectedIndex == 0)
                         {
                             for (int i = 1; i < cmbTo_PhanTich.Items.Count; i++)
-                                dt.Merge(_cDichVuThu.GetPhanTichChuyenKhoan("TG",int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), ((TT_To)cmbTo_PhanTich.Items[i]).MaTo, int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), dateGiaiTrach.Value));
+                                dt.Merge(_cDichVuThu.GetPhanTichChuyenKhoan("TG", int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), ((TT_To)cmbTo_PhanTich.Items[i]).MaTo, int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), dateGiaiTrach.Value));
                         }
                         else
                             ///chọn 1 kỳ
@@ -504,7 +504,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     ///chọn tất cả kỳ
                     if (cmbKy_PhanTich.SelectedIndex == 0)
-                        dgvNhanVien_TuGia_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan_NV("TG",int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), int.Parse(dgvTo_TuGia_PhanTich.CurrentRow.Cells["MaTo"].Value.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), dateGiaiTrach.Value);
+                        dgvNhanVien_TuGia_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan_NV("TG", int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), int.Parse(dgvTo_TuGia_PhanTich.CurrentRow.Cells["MaTo"].Value.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), dateGiaiTrach.Value);
                     else
                         ///chọn 1 kỳ
                         if (cmbKy_PhanTich.SelectedIndex > 0)
@@ -1136,9 +1136,12 @@ namespace ThuTien.GUI.ChuyenKhoan
             cl16.Value2 = "Định Mức HN";
             cl16.ColumnWidth = 10;
 
+            Microsoft.Office.Interop.Excel.Range cl17 = oSheet.get_Range("Q1", "Q1");
+            cl17.Value2 = "Thoát Nghèo";
+            cl17.ColumnWidth = 10;
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 16];
+            object[,] arr = new object[dt.Rows.Count, 17];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -1161,6 +1164,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i, 13] = dr["TieuThu"].ToString();
                 arr[i, 14] = dr["DinhMuc"].ToString();
                 arr[i, 15] = dr["DinhMucHN"].ToString();
+                if (_cHoaDon.checkExist_ThoatNgheo(dr["DanhBo"].ToString()) == true)
+                    arr[i, 16] = "X";
             }
 
             //Thiết lập vùng điền dữ liệu
@@ -1168,7 +1173,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             int columnStart = 1;
 
             int rowEnd = rowStart + dt.Rows.Count - 1;
-            int columnEnd = 16;
+            int columnEnd = 17;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
@@ -1203,6 +1208,6 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         }
 
-       
+
     }
 }
