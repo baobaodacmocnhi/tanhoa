@@ -425,7 +425,7 @@ namespace KTKS_DonKH.GUI.DonTu
         private void btnInThongKeTon_Click(object sender, EventArgs e)
         {
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-            List<LinQ.DonTu>lst = _cDonTu.getDS_GridControl_Ton(cmbLoai.Text, dateTu.Value, dateDen.Value);
+            List<LinQ.DonTu> lst = _cDonTu.getDS_GridControl_Ton(cmbLoai.Text, dateTu.Value, dateDen.Value);
             foreach (LinQ.DonTu item in lst)
             {
                 if (item.DonTu_ChiTiets.Count() == 1)
@@ -434,9 +434,9 @@ namespace KTKS_DonKH.GUI.DonTu
                     //dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
                     //dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
                     dr["LoaiVanBan"] = "TỒN";
-                    dr["Ma"] =item.MaDon;
+                    dr["Ma"] = item.MaDon;
                     dr["MaChiTiet"] = item.MaDon;
-                    if (item.DonTu_ChiTiets.SingleOrDefault().DanhBo!=null&&item.DonTu_ChiTiets.SingleOrDefault().DanhBo.Length == 11)
+                    if (item.DonTu_ChiTiets.SingleOrDefault().DanhBo != null && item.DonTu_ChiTiets.SingleOrDefault().DanhBo.Length == 11)
                         dr["DanhBo"] = item.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["DiaChi"] = item.DonTu_ChiTiets.SingleOrDefault().DiaChi;
                     dr["CreateDate"] = item.CreateDate;
@@ -478,7 +478,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         dr["LoaiVanBan"] = "TỒN";
                         dr["Ma"] = itemCT.MaDon;
                         dr["MaChiTiet"] = itemCT.MaDon + "." + itemCT.STT;
-                        if (itemCT.DanhBo!=null&&itemCT.DanhBo.Length == 11)
+                        if (itemCT.DanhBo != null && itemCT.DanhBo.Length == 11)
                             dr["DanhBo"] = itemCT.DanhBo.Insert(7, " ").Insert(4, " ");
                         dr["DiaChi"] = itemCT.DiaChi;
                         dr["CreateDate"] = itemCT.CreateDate;

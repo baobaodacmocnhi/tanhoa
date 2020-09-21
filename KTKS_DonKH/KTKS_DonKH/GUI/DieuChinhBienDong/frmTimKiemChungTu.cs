@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtMaCT_TextChanged(object sender, EventArgs e)
         {
-            dgvDSChungTu.DataSource = _cChungTu.GetDSCT(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
+            dgvDSChungTu.DataSource = _cChungTu.getDS_ChiTiet(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
         }
 
         

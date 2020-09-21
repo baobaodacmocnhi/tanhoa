@@ -126,9 +126,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return db.ChungTu_ChiTiets.Any(itemCT => itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT);
         }
 
-        public bool CheckExist_CT_Ngheo(string MaCT, int MaLCT)
+        public bool CheckExist_CT_HoKhau_HoKhauNgheo(string MaCT, int MaLCT)
         {
             return db.ChungTu_ChiTiets.Any(itemCT => itemCT.MaCT == MaCT && (MaLCT == 1 || MaLCT == 10));
+        }
+
+        public bool CheckExist_CT_HoKhau_HoKhauNgheo(string DanhBo, string MaCT, int MaLCT)
+        {
+            return db.ChungTu_ChiTiets.Any(itemCT => itemCT.DanhBo == DanhBo && itemCT.MaCT == MaCT && (MaLCT == 1 || MaLCT == 10));
         }
 
         public bool CheckDinhMucNhaTro(string DanhBo)
@@ -146,12 +151,17 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// </summary>
         /// <param name="MaCT"></param>
         /// <returns></returns>
-        public List<ChungTu_ChiTiet> GetDSCT(string MaCT, int MaLCT)
+        public DataTable getDS_ChiTiet(string MaCT, int MaLCT)
         {
-            return db.ChungTu_ChiTiets.Where(itemCTChungTu => itemCTChungTu.MaCT == MaCT && itemCTChungTu.MaLCT == MaLCT).ToList();
+            return LINQToDataTable(db.ChungTu_ChiTiets.Where(itemCTChungTu => itemCTChungTu.MaCT == MaCT && itemCTChungTu.MaLCT == MaLCT).ToList());
         }
 
-        public DataTable GetDSCT(string DanhBo)
+        public DataTable getDS_ChiTiet_HoKhau_HoKhauNgheo(string MaCT)
+        {
+            return LINQToDataTable(db.ChungTu_ChiTiets.Where(itemCTChungTu => itemCTChungTu.MaCT == MaCT && (itemCTChungTu.MaLCT == 1 || itemCTChungTu.MaLCT == 10)).ToList());
+        }
+
+        public DataTable getDS_ChiTiet_DanhBo(string DanhBo)
         {
             var query = from itemCTCT in db.ChungTu_ChiTiets
                         join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }

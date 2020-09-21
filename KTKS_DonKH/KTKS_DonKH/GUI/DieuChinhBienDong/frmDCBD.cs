@@ -121,7 +121,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             else
                 lbKhongTinhPhiBVMT.Visible = false;
 
-            dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(hoadon.DANHBA);
+            dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(hoadon.DANHBA);
             dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(hoadon.DANHBA);
             LoadTongNK();
         }
@@ -213,7 +213,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             chkKhongTinhPhiBVMT.Checked = ctdcbd.KhongTinhPhiBVMT;
             chkChuaKTXM.Checked = ctdcbd.ChuaKTXM;
             ///
-            dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(ctdcbd.DanhBo);
+            dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(ctdcbd.DanhBo);
             dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(ctdcbd.DanhBo);
             LoadTongNK();
 
@@ -1189,7 +1189,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString(), int.Parse(dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString()));
                         if (_cChungTu.XoaCT(ctchungtu))
                         {
-                            dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(txtDanhBo.Text.Trim());
+                            dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
                             LoadTongNK();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -1294,7 +1294,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
-                dgvDSChungTu.DataSource = _cChungTu.GetDSCT(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), int.Parse(dgvDSSoDangKy["MaLCT", e.RowIndex].Value.ToString()));
+                dgvDSChungTu.DataSource = _cChungTu.getDS_ChiTiet(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), int.Parse(dgvDSSoDangKy["MaLCT", e.RowIndex].Value.ToString()));
                 dgvLichSuChungTu.DataSource = _cChungTu.LoadDSLichSuChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), int.Parse(dgvDSSoDangKy["MaLCT", e.RowIndex].Value.ToString()));
             }
             catch (Exception)
@@ -1707,7 +1707,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frmSoDK frm = new frmSoDK(dataT);
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(txtDanhBo.Text.Trim());
+                dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
                 LoadTongNK();
             }
         }
@@ -1755,7 +1755,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frmSoDK frm = new frmSoDK(dataT);
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(txtDanhBo.Text.Trim());
+                dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
                 LoadTongNK();
             }
         }
@@ -1808,7 +1808,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frmNhanDM frm = new frmNhanDM(dataT);
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(txtDanhBo.Text.Trim());
+                dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
                 LoadTongNK();
             }
         }
@@ -1858,7 +1858,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frmCatChuyenDM frm = new frmCatChuyenDM(dataT);
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(txtDanhBo.Text.Trim());
+                dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
                 LoadTongNK();
             }
         }
