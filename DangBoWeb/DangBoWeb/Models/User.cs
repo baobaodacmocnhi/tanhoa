@@ -20,12 +20,15 @@
 
         public int? STT { get; set; }
 
+        [Display(Name = "Họ Tên")]
         [StringLength(100)]
         public string HoTen { get; set; }
 
+        [Display(Name = "Tài Khoản")]
         [StringLength(50)]
         public string TaiKhoan { get; set; }
 
+        [Display(Name = "Mật Khẩu")]
         [StringLength(50)]
         public string MatKhau { get; set; }
 

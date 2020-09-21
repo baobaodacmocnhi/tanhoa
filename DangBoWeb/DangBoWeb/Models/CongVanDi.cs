@@ -26,7 +26,7 @@
         [StringLength(50)]
         public string SoCV { get; set; }
 
-        [Display(Name = "TrichYeuNoiDung")]
+        [Display(Name = "Trích Yếu Nội Dung")]
         [StringLength(500)]
         public string TrichYeuNoiDung { get; set; }
 
