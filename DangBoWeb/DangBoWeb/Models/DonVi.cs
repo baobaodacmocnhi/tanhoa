@@ -19,8 +19,10 @@
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
+        [Display(Name = "STT")]
         public int? STT { get; set; }
 
+        [Required]
         [Display(Name = "Tên Đơn Vị")]
         [StringLength(50)]
         public string TenDonVi { get; set; }

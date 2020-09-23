@@ -11,9 +11,10 @@ using System.Web.Mvc;
 
 namespace DangBoWeb.Controllers
 {
-    public class CongVanDenController : Controller
+    public class CongVanDenController : BaseController
     {
         private dbDangBo _db = new dbDangBo();
+        private string _mnu="mnuCongVanDen";
 
         public void getListForCombobox()
         {
@@ -24,11 +25,15 @@ namespace DangBoWeb.Controllers
         // GET: CongVanDen
         public async Task<ActionResult> Index()
         {
+            if(CUserSession.CheckQuyen(_mnu,"Xem")==false)
+                return RedirectToAction("PermissionDenied", "User");
             return View(await _db.CongVanDens.OrderByDescending(item => item.CreateDate).ToListAsync());
         }
 
         public ActionResult Create()
         {
+            if (CUserSession.CheckQuyen(_mnu, "Them") == false)
+                return RedirectToAction("PermissionDenied", "User");
             getListForCombobox();
             return View();
         }
@@ -37,6 +42,8 @@ namespace DangBoWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(CongVanDen model)
         {
+            if (CUserSession.CheckQuyen(_mnu, "Them") == false)
+                return RedirectToAction("PermissionDenied", "User");
             if (ModelState.IsValid || model.HetHan == true)
             {
                 if (_db.CongVanDens.Count() > 0)
@@ -50,7 +57,7 @@ namespace DangBoWeb.Controllers
                         ModelState.AddModelError("NgayHetHan", "Thiếu Ngày Hết Hạn");
                         return View(model);
                     }
-                //model.CreateBy = CUserSession.getUser().MaU;
+                model.CreateBy = CUserSession.getMaUserSession();
                 model.CreateDate = DateTime.Now;
                 _db.CongVanDens.Add(model);
                 await _db.SaveChangesAsync();
@@ -86,6 +93,8 @@ namespace DangBoWeb.Controllers
 
         public async Task<ActionResult> Edit(int? ID)
         {
+            if (CUserSession.CheckQuyen(_mnu, "Sua") == false)
+                return RedirectToAction("PermissionDenied", "User");
             if (ID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -103,6 +112,8 @@ namespace DangBoWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(CongVanDen model)
         {
+            if (CUserSession.CheckQuyen(_mnu, "Sua") == false)
+                return RedirectToAction("PermissionDenied", "User");
             if (ModelState.IsValid)
             {
                 if (Request.Files.Count > 0)
@@ -123,7 +134,7 @@ namespace DangBoWeb.Controllers
                             BinaryReader br = new BinaryReader(Request.Files[i].InputStream);
                             byte[] buffer = br.ReadBytes(Request.Files[i].ContentLength);
                             en.FileContent = buffer;
-                            //en.CreateBy = CUserSession.getUser().MaU;
+                            en.CreateBy = CUserSession.getMaUserSession();
                             en.CreateDate = DateTime.Now;
                             _db.CongVanDen_Hinh.Add(en);
                             await _db.SaveChangesAsync();
@@ -131,7 +142,7 @@ namespace DangBoWeb.Controllers
                 }
                 if (model.HetHan == false)
                     model.NgayHetHan = null;
-                //model.ModifyBy = CUserSession.getUser().MaU;
+                model.ModifyBy = CUserSession.getMaUserSession();
                 model.ModifyDate = DateTime.Now;
                 _db.Entry(model).State = EntityState.Modified;
                 await _db.SaveChangesAsync();
@@ -142,6 +153,8 @@ namespace DangBoWeb.Controllers
 
         public async Task<ActionResult> Delete(int? id)
         {
+            if (CUserSession.CheckQuyen(_mnu, "Xoa") == false)
+                return RedirectToAction("PermissionDenied", "User");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

@@ -3,7 +3,16 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "order": [[0, "desc"]]
+            });
+        });
+    </script>
+}
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">

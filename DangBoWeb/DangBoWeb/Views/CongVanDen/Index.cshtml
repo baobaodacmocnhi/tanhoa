@@ -3,6 +3,16 @@
 @{
     ViewBag.Title = "Index";
 }
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "order": [[0, "desc"]]
+            });
+        });
+    </script>
+}
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -15,7 +25,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" >
+            <table class="table table-bordered" id="dataTable">
                 <thead>
                     <tr>
                         <th>
@@ -113,7 +123,7 @@
                                 @Html.DisplayFor(modelItem => item.NgayHetHan)
                             </td>
                             <td>
-                                <table class="table table-bordered" >
+                                <table class="table table-bordered">
                                     @foreach (var itemA in item.CongVanDen_Hinh)
                                     {
                                         <tr>
@@ -128,12 +138,12 @@
                                 </table>
                             </td>
                             <td>
-                                    <a href="@Url.Action("Edit", "CongVanDen",new { ID = item.ID })" class="btn btn-warning">
-                                        Sửa
-                                    </a>
-                                    <a href="@Url.Action("Delete", "CongVanDen",new { ID = item.ID })" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn xóa?');">
-                                        Xóa
-                                    </a>
+                                <a href="@Url.Action("Edit", "CongVanDen",new { ID = item.ID })" class="btn btn-warning">
+                                    Sửa
+                                </a>
+                                <a href="@Url.Action("Delete", "CongVanDen",new { ID = item.ID })" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn xóa?');">
+                                    Xóa
+                                </a>
                             </td>
                         </tr>
                     }

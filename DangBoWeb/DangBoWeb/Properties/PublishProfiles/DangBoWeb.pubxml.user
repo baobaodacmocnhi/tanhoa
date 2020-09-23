@@ -13,7 +13,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2020 13:49:02</publishTime>
     </File>
     <File Include="bin/DangBoWeb.dll">
-      <publishTime>08/20/2020 14:12:33</publishTime>
+      <publishTime>09/23/2020 15:22:04</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>08/13/2020 13:49:30</publishTime>
@@ -278,6 +278,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Global.asax">
       <publishTime>08/13/2020 13:48:16</publishTime>
+    </File>
+    <File Include="Images/loginx256.png">
+      <publishTime>09/18/2020 15:13:01</publishTime>
+    </File>
+    <File Include="Images/logoutx256.png">
+      <publishTime>09/18/2020 15:13:01</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>08/13/2020 13:49:01</publishTime>
@@ -5785,22 +5791,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2020 13:48:59</publishTime>
     </File>
     <File Include="Views/CongVanDen/Create.cshtml">
-      <publishTime>08/20/2020 13:41:47</publishTime>
+      <publishTime>09/15/2020 11:02:46</publishTime>
     </File>
     <File Include="Views/CongVanDen/Edit.cshtml">
-      <publishTime>08/20/2020 13:48:10</publishTime>
+      <publishTime>09/15/2020 11:02:46</publishTime>
     </File>
     <File Include="Views/CongVanDen/Index.cshtml">
-      <publishTime>08/20/2020 14:08:06</publishTime>
+      <publishTime>09/23/2020 14:09:03</publishTime>
     </File>
     <File Include="Views/CongVanDi/Create.cshtml">
-      <publishTime>08/20/2020 13:42:51</publishTime>
+      <publishTime>09/15/2020 10:56:43</publishTime>
     </File>
     <File Include="Views/CongVanDi/Edit.cshtml">
-      <publishTime>08/20/2020 13:48:18</publishTime>
+      <publishTime>09/23/2020 15:11:40</publishTime>
     </File>
     <File Include="Views/CongVanDi/Index.cshtml">
-      <publishTime>08/13/2020 15:09:07</publishTime>
+      <publishTime>09/23/2020 14:08:59</publishTime>
+    </File>
+    <File Include="Views/DonVi/Create.cshtml">
+      <publishTime>09/23/2020 14:40:27</publishTime>
+    </File>
+    <File Include="Views/DonVi/Edit.cshtml">
+      <publishTime>09/23/2020 14:46:00</publishTime>
+    </File>
+    <File Include="Views/DonVi/Index.cshtml">
+      <publishTime>09/23/2020 14:25:31</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -5809,7 +5824,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>08/14/2020 16:45:38</publishTime>
+      <publishTime>09/21/2020 11:11:11</publishTime>
+    </File>
+    <File Include="Views/LoaiCongVan/Create.cshtml">
+      <publishTime>09/23/2020 14:48:14</publishTime>
+    </File>
+    <File Include="Views/LoaiCongVan/Edit.cshtml">
+      <publishTime>09/23/2020 14:47:02</publishTime>
+    </File>
+    <File Include="Views/LoaiCongVan/Index.cshtml">
+      <publishTime>09/23/2020 14:48:06</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -5829,6 +5853,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="Views/Nhom/Create.cshtml">
+      <publishTime>09/23/2020 14:55:00</publishTime>
+    </File>
+    <File Include="Views/Nhom/Edit.cshtml">
+      <publishTime>09/23/2020 14:55:56</publishTime>
+    </File>
+    <File Include="Views/Nhom/Index.cshtml">
+      <publishTime>09/23/2020 14:56:52</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>08/13/2020 13:49:01</publishTime>
     </File>
@@ -5836,7 +5869,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2020 13:49:01</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/20/2020 14:08:12</publishTime>
+      <publishTime>09/23/2020 15:14:17</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutOld.cshtml">
       <publishTime>08/13/2020 13:49:01</publishTime>
@@ -5845,16 +5878,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2020 13:49:01</publishTime>
     </File>
     <File Include="Views/User/Create.cshtml">
-      <publishTime>08/13/2020 13:49:01</publishTime>
+      <publishTime>09/23/2020 15:19:23</publishTime>
+    </File>
+    <File Include="Views/User/DangNhap.cshtml">
+      <publishTime>09/22/2020 15:41:52</publishTime>
+    </File>
+    <File Include="Views/User/DoiMatKhau.cshtml">
+      <publishTime>09/22/2020 15:42:32</publishTime>
     </File>
     <File Include="Views/User/Edit.cshtml">
-      <publishTime>08/13/2020 13:49:01</publishTime>
+      <publishTime>09/23/2020 15:16:53</publishTime>
     </File>
     <File Include="Views/User/Index.cshtml">
-      <publishTime>08/13/2020 13:49:01</publishTime>
+      <publishTime>09/23/2020 14:09:36</publishTime>
     </File>
     <File Include="Views/User/Login.cshtml">
       <publishTime>08/13/2020 13:49:01</publishTime>
+    </File>
+    <File Include="Views/User/PermissionDenied.cshtml">
+      <publishTime>09/23/2020 10:03:45</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>08/13/2020 13:49:01</publishTime>
@@ -5863,7 +5905,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2020 13:49:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/13/2020 15:33:26</publishTime>
+      <publishTime>09/23/2020 15:22:21</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -65,7 +65,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         @*<h6 class="collapse-header">Custom Components:</h6>*@
 
-                        <a class="collapse-item active" href="@Url.Action("Index", "Home")">Nhóm</a>
+                        <a class="collapse-item active" href="@Url.Action("Index", "Nhom")">Nhóm</a>
                         <a class="collapse-item active" href="@Url.Action("Index", "User")">Người Dùng</a>
                     </div>
                 </div>
@@ -73,6 +73,22 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "DonVi")">
+                    @*<i class="fas fa-fw fa-chart-area"></i>*@
+                    <span>Đơn Vị</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "LoaiCongVan")">
+                    @*<i class="fas fa-fw fa-chart-area"></i>*@
+                    <span>Loại Công Văn</span>
+                </a>
+            </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item active">
@@ -256,23 +272,38 @@
                             <div class="topbar-divider d-none d-sm-block"></div>*@
 
                         <!-- Nav Item - User Information -->
+                        @if (CUserSession.getAdminUserSession() == true)
+                        {
+                            <li class="nav-item dropdown no-arrow">
+                                <a href="@Url.Action("UpdateMenu", "User")" class="btn btn-primary btn-icon-split">
+                                    <span class="text">Update Menu</span>
+                                </a>
+                            </li>
+                        }
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bảo Bảo</span>
-                                <img class="img-profile rounded-circle" src="~/Images/loginx256.png">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@CUserSession.getHotTenUserSession()</span>
+                                @if (CUserSession.checkExistsUserSession() == true)
+                                {
+                                    <img class="img-profile rounded-circle" src="~/Images/loginx256.png">
+                                }
+                                else
+                                {
+                                    <img class="img-profile rounded-circle" src="~/Images/logoutx256.png">
+                                }
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" @*href="@Url.Action("DangNhap", "HeThong")"*@ data-toggle="modal" data-target="#popupDangNhap" data-backdrop="static">
+                                <a class="dropdown-item" href="@Url.Action("DangNhap", "User")" @*data-toggle="modal" data-target="#popupDangNhap" data-backdrop="static"*@>
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Đăng Nhập
                                 </a>
-                                <a class="dropdown-item" @*href="@Url.Action("DoiMatKhau", "HeThong")"*@ data-toggle="modal" data-target="#popupDoiMatKhau" data-backdrop="static">
+                                <a class="dropdown-item" href="@Url.Action("DoiMatKhau", "User")" @*data-toggle="modal" data-target="#popupDoiMatKhau" data-backdrop="static"*@>
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Đổi Mật Khẩu
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="@Url.Action("DangXuat", "HeThong")">
+                                <a class="dropdown-item" href="@Url.Action("DangXuat", "User")">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Đăng Xuất
                                 </a>
@@ -419,12 +450,12 @@
     <script src="~/Template/SBAdmin2/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="~/Template/SBAdmin2/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <!-- Page level custom scripts -->
-    <script src="~/Template/SBAdmin2/js/demo/datatables-demo.js"></script>
+    @*<script src="~/Template/SBAdmin2/js/demo/datatables-demo.js"></script>*@
 
     @Scripts.Render("~/bundles/jqueryui")
     @RenderSection("scripts", required: false)
 </body>
 </html>
 
-@RenderPage("~/Views/HeThong/DangNhap.cshtml")
-@RenderPage("~/Views/HeThong/DoiMatKhau.cshtml")
+@*@RenderPage("~/Views/User/DangNhap.cshtml")*@
+@*@RenderPage("~/Views/User/DoiMatKhau.cshtml")*@

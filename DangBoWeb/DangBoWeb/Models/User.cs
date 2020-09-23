@@ -32,6 +32,11 @@
         [StringLength(50)]
         public string MatKhau { get; set; }
 
+        public bool Admin { get; set; }
+
+        [Display(Name = "Nhóm")]
+        public int? MaNhom { get; set; }
+
         public DateTime? CreateDate { get; set; }
 
         public int? CreateBy { get; set; }
@@ -39,6 +44,8 @@
         public DateTime? ModifyDate { get; set; }
 
         public int? ModifyBy { get; set; }
+
+        public virtual Nhom Nhom { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhanQuyenNguoiDung> PhanQuyenNguoiDungs { get; set; }

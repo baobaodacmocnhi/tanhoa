@@ -1,0 +1,57 @@
+﻿@model DangBoWeb.Models.DonVi
+@{
+    ViewBag.Title = "Edit";
+}
+@using (Html.BeginForm("Edit", "DonVi", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Sửa Đơn Vị</h6>
+            <a href="@Url.Action("Index", "DonVi")" class="btn btn-danger">
+                Hủy
+            </a>
+        </div>
+
+        <div class="card-body">
+            <div class="user">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ID)
+                @*=====*@
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="STT" name="STT" placeholder="@Html.DisplayNameFor(model=>model.STT)" value="@Html.DisplayFor(model => model.STT)">
+                    <span>@Html.ValidationMessageFor(model => model.STT, "", new { @class = "text-danger" })</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="TenDonVi" name="TenDonVi" placeholder="@Html.DisplayNameFor(model => model.TenDonVi)" value="@Html.DisplayFor(model => model.TenDonVi)">
+                    @Html.ValidationMessageFor(model => model.TenDonVi, "", new { @class = "text-danger" })
+                </div>
+                <div hidden="hidden">
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="CreateBy" name="CreateBy" placeholder="@Html.DisplayNameFor(model => model.CreateBy)" value="@Html.DisplayFor(model => model.CreateBy)">
+                        @Html.ValidationMessageFor(model => model.CreateBy, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="CreateDate" name="CreateDate" placeholder="@Html.DisplayNameFor(model => model.CreateDate)" value="@Html.DisplayFor(model => model.CreateDate)">
+                        @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="ModifyBy" name="ModifyBy" placeholder="@Html.DisplayNameFor(model => model.ModifyBy)" value="@Html.DisplayFor(model => model.ModifyBy)">
+                        @Html.ValidationMessageFor(model => model.ModifyBy, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="ModifyDate" name="ModifyDate" placeholder="@Html.DisplayNameFor(model => model.ModifyDate)" value="@Html.DisplayFor(model => model.ModifyDate)">
+                        @Html.ValidationMessageFor(model => model.ModifyDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <input type="submit" value="Lưu" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

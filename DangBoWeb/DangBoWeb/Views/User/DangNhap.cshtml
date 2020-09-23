@@ -1,0 +1,84 @@
+﻿@model DangBoWeb.DangNhapModel
+@{
+    ViewBag.Title = "DangNhap";
+}
+
+@*<div class="modal fade" id="popupDangNhap" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                @using (Html.BeginForm("DangNhap", "User", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="card-header">
+                        <h4>Đăng Nhập</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="card-body">
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.TaiKhoan, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.TaiKhoan, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.TaiKhoan, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.MatKhau, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <input type="submit" value="Đăng Nhập" class="btn btn-success" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>*@
+
+@using (Html.BeginForm("DangNhap", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Đăng Nhập</h6>
+        </div>
+
+        <div class="card-body">
+            <div class="user">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.TaiKhoan, new { @class = "col-md-auto control-label" })
+                    <div class="col-md-auto">
+                        @Html.TextBoxFor(m => m.TaiKhoan, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.TaiKhoan, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MatKhau, new { @class = "col-md-auto control-label" })
+                    <div class="col-md-auto">
+                        @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @*<div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
+                        </div>
+                    </div>*@
+                <div class="form-group">
+                    <div class="text-center">
+                        <input type="submit" value="Đăng Nhập" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+

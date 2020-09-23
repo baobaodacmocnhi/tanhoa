@@ -4,12 +4,9 @@
     ViewBag.Title = "Edit";
 }
 @section Scripts {
-
     @Scripts.Render("~/bundles/jqueryui")
     @Styles.Render("~/Content/cssjqryUi")
-
     <script type="text/javascript">
-
         $(document).ready(function () {
             //combobox
             $('#navbarDropdownDonVi a').on('click', function () {
@@ -52,7 +49,6 @@
             });
         });
     </script>
-
 }
 
 @using (Html.BeginForm("Edit", "CongVanDi", FormMethod.Post, new { enctype = "multipart/form-data" }))

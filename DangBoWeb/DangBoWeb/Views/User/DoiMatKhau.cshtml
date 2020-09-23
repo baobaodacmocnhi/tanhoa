@@ -1,0 +1,86 @@
+﻿@model DangBoWeb.DoiMatKhauModel
+@{
+    ViewBag.Title = "DoiMatKhau";
+}
+
+@*<div class="modal fade" id="popupDoiMatKhau" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @using (Html.BeginForm("DoiMatKhau", "User", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="card-header">
+                    <h4>Đổi Mật Khẩu</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="card-body">
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.MatKhauCu, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.MatKhauCu, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.MatKhauMoi, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.MatKhauMoi, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmMatKhauMoi, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.ConfirmMatKhauMoi, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <input type="submit" value="Đổi" class="btn btn-success" />
+                </div>
+            }
+        </div>
+    </div>
+</div>*@
+
+@using (Html.BeginForm("DoiMatKhau", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Đổi Mật Khẩu</h6>
+        </div>
+
+        <div class="card-body">
+            <div class="user">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MatKhauCu, new { @class = "col-md-auto control-label" })
+                    <div class="col-md-auto">
+                        @Html.TextBoxFor(m => m.MatKhauCu, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.MatKhauCu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MatKhauMoi, new { @class = "col-md-auto control-label" })
+                    <div class="col-md-auto">
+                        @Html.PasswordFor(m => m.MatKhauMoi, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.MatKhauMoi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmMatKhauMoi, new { @class = "col-md-auto control-label" })
+                    <div class="col-md-auto">
+                        @Html.PasswordFor(m => m.ConfirmMatKhauMoi, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ConfirmMatKhauMoi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="text-center">
+                        <input type="submit" value="Đổi" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

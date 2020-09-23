@@ -1,5 +1,4 @@
-﻿@model IEnumerable<DangBoWeb.Models.User>
-
+﻿@model IEnumerable < DangBoWeb.Models.Nhom>
 @{
     ViewBag.Title = "Index";
 }
@@ -13,29 +12,24 @@
         });
     </script>
 }
+
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">Người Dùng</h6>
-        <a href="@Url.Action("Create", "User")" class="btn btn-primary btn-icon-split">
+        <h6 class="m-0 font-weight-bold text-primary">Loại Công Văn</h6>
+        <a href="@Url.Action("Create", "Nhom")" class="btn btn-primary btn-icon-split">
             <span class="text">Thêm</span>
         </a>
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTable">
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.HoTen)
+                            @Html.DisplayNameFor(model => model.TenNhom)
                         </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.TaiKhoan)
-                        </th>
-                        @*<th>
-                            @Html.DisplayNameFor(model => model.MatKhau)
-                        </th>*@
                         <th>
                             Xử Lý
                         </th>
@@ -44,14 +38,8 @@
                 <tfoot>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.HoTen)
+                            @Html.DisplayNameFor(model => model.TenNhom)
                         </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.TaiKhoan)
-                        </th>
-                        @*<th>
-                            @Html.DisplayNameFor(model => model.MatKhau)
-                        </th>*@
                         <th>
                             Xử Lý
                         </th>
@@ -62,17 +50,14 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.HoTen)
+                                @Html.DisplayFor(modelItem => item.TenNhom)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.TaiKhoan)
-                            </td>
-                            @*<td>
-                                @Html.DisplayFor(modelItem => item.MatKhau)
-                            </td>*@
-                            <td>
-                                <a href="@Url.Action("Edit", "User",new { MaU = item.MaU })" class="btn btn-warning">
+                                <a href="@Url.Action("Edit", "LoaiCongVan",new { ID = item.MaNhom })" class="btn btn-warning">
                                     Sửa
+                                </a>
+                                <a href="@Url.Action("Delete", "LoaiCongVan",new { ID = item.MaNhom })" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn xóa?');">
+                                    Xóa
                                 </a>
                             </td>
                         </tr>
@@ -82,3 +67,4 @@
         </div>
     </div>
 </div>
+

@@ -1,0 +1,30 @@
+﻿@model DangBoWeb.Models.DonVi
+@{
+    ViewBag.Title = "Create";
+}
+@using (Html.BeginForm("Create", "DonVi", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Thêm Đơn Vị</h6>
+            <a href="@Url.Action("Index", "DonVi")" class="btn btn-danger">
+                Hủy
+            </a>
+        </div>
+
+        <div class="card-body">
+            <div class="user">
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="TenDonVi" name="TenDonVi" placeholder="@Html.DisplayNameFor(model=>model.TenDonVi)">
+                    <span>@Html.ValidationMessageFor(model => model.TenDonVi, "", new { @class = "text-danger" })</span>
+                </div>
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Lưu" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
