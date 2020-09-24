@@ -175,6 +175,7 @@
     <Compile Include="Controllers\DonViController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoaiCongVanController.cs" />
+    <Compile Include="Controllers\NhiemKyController.cs" />
     <Compile Include="Controllers\NhomController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="CHeThong.cs" />
@@ -182,6 +183,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="LinQ\dbDangBo.cs" />
+    <Compile Include="Models\NhiemKy.cs" />
     <Compile Include="Models\CongVanDen_Hinh.cs" />
     <Compile Include="Models\CongVanDi_Hinh.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -2130,6 +2132,9 @@
     <Content Include="Views\Nhom\Index.cshtml" />
     <Content Include="Views\Nhom\Create.cshtml" />
     <Content Include="Views\Nhom\Edit.cshtml" />
+    <Content Include="Views\NhiemKie\Index.cshtml" />
+    <Content Include="Views\NhiemKie\Create.cshtml" />
+    <Content Include="Views\NhiemKie\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />

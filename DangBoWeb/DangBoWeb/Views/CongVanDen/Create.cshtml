@@ -4,10 +4,8 @@
     ViewBag.Title = "Create";
 }
 @section Scripts {
-
     @Scripts.Render("~/bundles/jqueryui")
     @Styles.Render("~/Content/cssjqryUi")
-
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -52,7 +50,6 @@
             });
         });
     </script>
-
 }
 
 @using (Html.BeginForm("Create", "CongVanDen", FormMethod.Post, new { enctype = "multipart/form-data" }))

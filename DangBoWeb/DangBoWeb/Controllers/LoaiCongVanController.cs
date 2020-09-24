@@ -40,9 +40,15 @@ namespace DangBoWeb.Controllers
             if (ModelState.IsValid)
             {
                 if (_db.LoaiCongVans.Count() > 0)
+                {
                     model.ID = _db.LoaiCongVans.Max(item => item.ID) + 1;
+                    model.STT = _db.LoaiCongVans.Max(item => item.STT) + 1;
+                }
                 else
+                {
                     model.ID = 1;
+                    model.STT = 1;
+                }
                 model.CreateBy = CUserSession.getMaUserSession();
                 model.CreateDate = DateTime.Now;
                 _db.LoaiCongVans.Add(model);

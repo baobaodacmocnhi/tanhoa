@@ -27,6 +27,10 @@
                     <input type="text" class="form-control form-control-user" id="TenDonVi" name="TenDonVi" placeholder="@Html.DisplayNameFor(model => model.TenDonVi)" value="@Html.DisplayFor(model => model.TenDonVi)">
                     @Html.ValidationMessageFor(model => model.TenDonVi, "", new { @class = "text-danger" })
                 </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="KyHieu" name="KyHieu" placeholder="@Html.DisplayNameFor(model => model.KyHieu)" value="@Html.DisplayFor(model => model.KyHieu)">
+                    @Html.ValidationMessageFor(model => model.KyHieu, "", new { @class = "text-danger" })
+                </div>
                 <div hidden="hidden">
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" id="CreateBy" name="CreateBy" placeholder="@Html.DisplayNameFor(model => model.CreateBy)" value="@Html.DisplayFor(model => model.CreateBy)">

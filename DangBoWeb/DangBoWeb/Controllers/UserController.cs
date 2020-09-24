@@ -172,8 +172,8 @@ namespace DangBoWeb.Controllers
 
         public async Task<ActionResult> UpdateMenu()
         {
-            string[] lstTenMenu = new string[] { "mnuNhom", "mnuNguoiDung","mnuDonVi","mnuLoaiCongVan", "mnuCongVanDen", "mnuCongVanDi" };
-            string[] lstTextMenu = new string[] { "Nhóm", "Người Dùng","Đơn Vị","Loại Công Văn", "Công Văn Đến", "Công Văn Đi" };
+            string[] lstTenMenu = new string[] { "mnuNhom", "mnuNguoiDung","mnuNhiemKy","mnuDonVi","mnuLoaiCongVan", "mnuCongVanDen", "mnuCongVanDi" };
+            string[] lstTextMenu = new string[] { "Nhóm", "Người Dùng","Nhiệm Kỳ","Đơn Vị","Loại Công Văn", "Công Văn Đến", "Công Văn Đi" };
             int STT = 1;
             for (int i = 0; i < lstTenMenu.Count(); i++)
             {

@@ -11,17 +11,18 @@ using System.Web.Mvc;
 
 namespace DangBoWeb.Controllers
 {
-    public class DonViController : BaseController
+    public class NhiemKieController : BaseController
     {
+        // GET: NhiemKy
         private dbDangBo _db = new dbDangBo();
-        private string _mnu = "mnuDonVi";
+        private string _mnu = "mnuNhiemKy";
 
-        // GET: DonVi
+        // GET: NhiemKy
         public async Task<ActionResult> Index()
         {
             if (CUserSession.CheckQuyen(_mnu, "Xem") == false)
                 return RedirectToAction("PermissionDenied", "User");
-            return View(await _db.DonVis.ToListAsync());
+            return View(await _db.NhiemKies.ToListAsync());
         }
 
         public ActionResult Create()
@@ -33,25 +34,23 @@ namespace DangBoWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(DonVi model)
+        public async Task<ActionResult> Create(NhiemKy model)
         {
             if (CUserSession.CheckQuyen(_mnu, "Them") == false)
                 return RedirectToAction("PermissionDenied", "User");
             if (ModelState.IsValid)
             {
-                if (_db.DonVis.Count() > 0)
+                if (_db.NhiemKies.Count() > 0)
                 {
-                    model.ID = _db.DonVis.Max(item => item.ID) + 1;
-                    model.STT = _db.DonVis.Max(item => item.STT) + 1;
+                    model.ID = _db.NhiemKies.Max(item => item.ID) + 1;
                 }
                 else
                 {
                     model.ID = 1;
-                    model.STT = 1;
                 }
                 model.CreateBy = CUserSession.getMaUserSession();
                 model.CreateDate = DateTime.Now;
-                _db.DonVis.Add(model);
+                _db.NhiemKies.Add(model);
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -67,7 +66,7 @@ namespace DangBoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DonVi model = await _db.DonVis.FindAsync(ID);
+            NhiemKy model = await _db.NhiemKies.FindAsync(ID);
             if (model == null)
             {
                 return HttpNotFound();
@@ -77,7 +76,7 @@ namespace DangBoWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(DonVi model)
+        public async Task<ActionResult> Edit(NhiemKy model)
         {
             if (CUserSession.CheckQuyen(_mnu, "Sua") == false)
                 return RedirectToAction("PermissionDenied", "User");
@@ -100,18 +99,17 @@ namespace DangBoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DonVi model = await _db.DonVis.FindAsync(id);
+            NhiemKy model = await _db.NhiemKies.FindAsync(id);
             if (model == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                _db.DonVis.Remove(model);
+                _db.NhiemKies.Remove(model);
                 _db.SaveChanges();
             }
             return RedirectToAction("Index");
         }
-
     }
 }

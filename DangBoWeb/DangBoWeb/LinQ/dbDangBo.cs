@@ -20,6 +20,7 @@ namespace DangBoWeb.LinQ
         public virtual DbSet<DonVi> DonVis { get; set; }
         public virtual DbSet<LoaiCongVan> LoaiCongVans { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
+        public virtual DbSet<NhiemKy> NhiemKies { get; set; }
         public virtual DbSet<Nhom> Nhoms { get; set; }
         public virtual DbSet<PhanQuyenNguoiDung> PhanQuyenNguoiDungs { get; set; }
         public virtual DbSet<PhanQuyenNhom> PhanQuyenNhoms { get; set; }
@@ -62,6 +63,10 @@ namespace DangBoWeb.LinQ
                 .IsUnicode(false);
 
             modelBuilder.Entity<DonVi>()
+                .Property(e => e.KyHieu)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DonVi>()
                 .HasMany(e => e.CongVanDens)
                 .WithOptional(e => e.DonVi)
                 .HasForeignKey(e => e.IDDonVi);
@@ -70,6 +75,10 @@ namespace DangBoWeb.LinQ
                 .HasMany(e => e.CongVanDis)
                 .WithOptional(e => e.DonVi)
                 .HasForeignKey(e => e.IDDonVi);
+
+            modelBuilder.Entity<LoaiCongVan>()
+                .Property(e => e.KyHieu)
+                .IsUnicode(false);
 
             modelBuilder.Entity<LoaiCongVan>()
                 .HasMany(e => e.CongVanDens)

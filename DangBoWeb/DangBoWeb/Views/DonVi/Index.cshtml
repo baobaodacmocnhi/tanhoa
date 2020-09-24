@@ -34,6 +34,9 @@
                             @Html.DisplayNameFor(model => model.TenDonVi)
                         </th>
                         <th>
+                            @Html.DisplayNameFor(model => model.KyHieu)
+                        </th>
+                        <th>
                             Xử Lý
                         </th>
                     </tr>
@@ -45,6 +48,9 @@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.TenDonVi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.KyHieu)
                         </th>
                         <th>
                             Xử Lý
@@ -60,6 +66,9 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.TenDonVi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.KyHieu)
                             </td>
                             <td>
                                 <a href="@Url.Action("Edit", "DonVi",new { ID = item.ID })" class="btn btn-warning">

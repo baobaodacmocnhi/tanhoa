@@ -1,0 +1,54 @@
+﻿@model DangBoWeb.Models.NhiemKy
+@{
+    ViewBag.Title = "Create";
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //date
+            $("input[name*='Ngay']").datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-5:+5"
+            });
+        });
+    </script>
+}
+@using (Html.BeginForm("Create", "NhiemKy", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Thêm Nhiệm Kỳ</h6>
+            <a href="@Url.Action("Index", "NhiemKy")" class="btn btn-danger">
+                Hủy
+            </a>
+        </div>
+
+        <div class="card-body">
+            <div class="user">
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="Name" name="Name" placeholder="@Html.DisplayNameFor(model=>model.Name)">
+                    <span>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="TuNgay" name="TuNgay" placeholder="@Html.DisplayNameFor(model=>model.TuNgay)">
+                    <span>@Html.ValidationMessageFor(model => model.TuNgay, "", new { @class = "text-danger" })</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="DenNgay" name="DenNgay" placeholder="@Html.DisplayNameFor(model=>model.DenNgay)">
+                    <span>@Html.ValidationMessageFor(model => model.DenNgay, "", new { @class = "text-danger" })</span>
+                </div>
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Lưu" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+

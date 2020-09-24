@@ -1,15 +1,30 @@
-﻿@model DangBoWeb.Models.LoaiCongVan
+﻿@model DangBoWeb.Models.NhiemKy
 @{
     ViewBag.Title = "Edit";
 }
-@using (Html.BeginForm("Edit", "LoaiCongVan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //date
+            $("input[name*='Ngay']").datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-5:+5"
+            });
+        });
+    </script>
+}
+@using (Html.BeginForm("Edit", "NhiemKy", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Sửa Loại Công Văn</h6>
-            <a href="@Url.Action("Index", "LoaiCongVan")" class="btn btn-danger">
+            <h6 class="m-0 font-weight-bold text-primary">Sửa Nhiệm Kỳ</h6>
+            <a href="@Url.Action("Index", "NhiemKy")" class="btn btn-danger">
                 Hủy
             </a>
         </div>
@@ -20,16 +35,16 @@
                 @Html.HiddenFor(model => model.ID)
                 @*=====*@
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="STT" name="STT" placeholder="@Html.DisplayNameFor(model=>model.STT)" value="@Html.DisplayFor(model => model.STT)">
-                    <span>@Html.ValidationMessageFor(model => model.STT, "", new { @class = "text-danger" })</span>
+                    <input type="text" class="form-control form-control-user" id="Name" name="Name" placeholder="@Html.DisplayNameFor(model => model.Name)" value="@Html.DisplayFor(model => model.Name)">
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="LoaiCV" name="LoaiCV" placeholder="@Html.DisplayNameFor(model => model.LoaiCV)" value="@Html.DisplayFor(model => model.LoaiCV)">
-                    @Html.ValidationMessageFor(model => model.LoaiCV, "", new { @class = "text-danger" })
+                    <input type="text" class="form-control form-control-user" id="TuNgay" name="TuNgay" placeholder="@Html.DisplayNameFor(model=>model.TuNgay)" value="@Html.DisplayFor(model => model.TuNgay)">
+                    <span>@Html.ValidationMessageFor(model => model.TuNgay, "", new { @class = "text-danger" })</span>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="KyHieu" name="KyHieu" placeholder="@Html.DisplayNameFor(model => model.KyHieu)" value="@Html.DisplayFor(model => model.KyHieu)">
-                    @Html.ValidationMessageFor(model => model.KyHieu, "", new { @class = "text-danger" })
+                    <input type="text" class="form-control form-control-user" id="DenNgay" name="DenNgay" placeholder="@Html.DisplayNameFor(model=>model.DenNgay)" value="@Html.DisplayFor(model => model.DenNgay)">
+                    <span>@Html.ValidationMessageFor(model => model.DenNgay, "", new { @class = "text-danger" })</span>
                 </div>
                 <div hidden="hidden">
                     <div class="form-group">

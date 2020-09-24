@@ -27,6 +27,11 @@
         [StringLength(50)]
         public string LoaiCV { get; set; }
 
+        [Required]
+        [Display(Name = "Ký Hiệu")]
+        [StringLength(50)]
+        public string KyHieu { get; set; }
+
         public int? CreateBy { get; set; }
 
         public DateTime? CreateDate { get; set; }

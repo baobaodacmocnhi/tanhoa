@@ -31,11 +31,11 @@
         [StringLength(50)]
         public string SoCV { get; set; }
 
-        [Display(Name = "Số CV Góc")]
+        [Display(Name = "Số CV Gốc")]
         [StringLength(50)]
         public string SoCVGoc { get; set; }
 
-        [Display(Name = "Ngày CV Góc")]
+        [Display(Name = "Ngày CV Gốc")]
         [DataType(DataType.Date)]
         [Column(TypeName = "date")]
         public DateTime? NgayCVGoc { get; set; }
