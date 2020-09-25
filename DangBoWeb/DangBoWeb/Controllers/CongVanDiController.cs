@@ -92,6 +92,20 @@ namespace DangBoWeb.Controllers
                 return Create();
         }
 
+        [HttpPost]
+        public JsonResult getSoCV(int IDDonVi, int IDLoaiCV)
+        {
+            NhiemKy nhiemky = _db.NhiemKies.OrderByDescending(item => item.CreateDate).First();
+            LoaiCongVan loaiCV = _db.LoaiCongVans.SingleOrDefault(item => item.ID == IDLoaiCV);
+            DonVi donvi = _db.DonVis.SingleOrDefault(item => item.ID == IDDonVi);
+            int id = -1;
+            if (_db.CongVanDis.Any(item => item.IDLoaiCV == IDLoaiCV && DbFunctions.TruncateTime(item.CreateDate.Value) >= DbFunctions.TruncateTime(nhiemky.TuNgay.Value)) == true)
+                id = _db.CongVanDis.Where(item => item.IDLoaiCV == IDLoaiCV && DbFunctions.TruncateTime(item.CreateDate.Value) >= DbFunctions.TruncateTime(nhiemky.TuNgay.Value)).Max(item => item.SoCV1).Value + 1;
+            else
+                id = 1;
+            return Json(new { SoCV1 = id, SoCV = id + "-" + loaiCV.KyHieu + "/" + donvi.KyHieu }, JsonRequestBehavior.AllowGet);
+        }
+
         public async Task<ActionResult> Edit(int? ID)
         {
             if (CUserSession.CheckQuyen(_mnu, "Sua") == false)

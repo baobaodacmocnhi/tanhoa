@@ -27,6 +27,8 @@
         [Column(TypeName = "date")]
         public DateTime? NgayDen { get; set; }
 
+        public int? SoCV1 { get; set; }
+
         [Display(Name = "Số CV")]
         [StringLength(50)]
         public string SoCV { get; set; }

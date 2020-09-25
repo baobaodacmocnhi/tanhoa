@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace DangBoWeb.Controllers
 {
-    public class NhiemKieController : BaseController
+    public class NhiemKyController : BaseController
     {
         // GET: NhiemKy
         private dbDangBo _db = new dbDangBo();

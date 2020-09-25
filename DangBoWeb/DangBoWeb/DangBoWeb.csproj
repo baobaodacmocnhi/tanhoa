@@ -2132,13 +2132,11 @@
     <Content Include="Views\Nhom\Index.cshtml" />
     <Content Include="Views\Nhom\Create.cshtml" />
     <Content Include="Views\Nhom\Edit.cshtml" />
-    <Content Include="Views\NhiemKie\Index.cshtml" />
-    <Content Include="Views\NhiemKie\Create.cshtml" />
-    <Content Include="Views\NhiemKie\Edit.cshtml" />
+    <Content Include="Views\NhiemKy\Index.cshtml" />
+    <Content Include="Views\NhiemKy\Create.cshtml" />
+    <Content Include="Views\NhiemKy\Edit.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Base\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

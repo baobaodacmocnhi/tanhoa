@@ -1,4 +1,4 @@
-namespace DangBoWeb.Models
+﻿namespace DangBoWeb.Models
 {
     using System;
     using System.Collections.Generic;
@@ -12,12 +12,19 @@ namespace DangBoWeb.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
+        [Required]
+        [Display(Name = "Nhiệm Kỳ")]
         [StringLength(50)]
         public string Name { get; set; }
 
+        [Required]
+        [Display(Name = "Từ Ngày")]
+        [DataType(DataType.Date)]
         [Column(TypeName = "date")]
         public DateTime? TuNgay { get; set; }
 
+        [Display(Name = "Đến Ngày")]
+        [DataType(DataType.Date)]
         [Column(TypeName = "date")]
         public DateTime? DenNgay { get; set; }
 

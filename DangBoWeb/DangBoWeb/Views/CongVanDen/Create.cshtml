@@ -7,7 +7,6 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Styles.Render("~/Content/cssjqryUi")
     <script type="text/javascript">
-
         $(document).ready(function () {
             //combobox
             $('#navbarDropdownDonVi a').on('click', function () {
@@ -18,6 +17,20 @@
             $('#navbarDropdownLoaiCV a').on('click', function () {
                 $('#IDLoaiCV').val($(this).attr('name'));
                 $('#LoaiCV').text($(this).text());
+                $.ajax({
+                    url: '@Url.Action("getSoCV", "CongVanDen")',
+                    type: 'POST',
+                    dataType: 'json',
+                    cache: false,
+                    data: { 'IDLoaiCV': $('#IDLoaiCV').val() },
+                    success: function (results) {
+                        $('#SoCV1').val(results.SoCV1);
+                        $('#SoCV').val(results.SoCV);
+                    },
+                    error: function () {
+                        alert('Error occured');
+                    }
+                });
             });
             //checkbox
             $("input[name*='HetHan']").on('click', function () {
@@ -51,7 +64,6 @@
         });
     </script>
 }
-
 @using (Html.BeginForm("Create", "CongVanDen", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -114,6 +126,7 @@
                     <span>@Html.ValidationMessageFor(model => model.NgayDen, "", new { @class = "text-danger" })</span>
                 </div>
                 <div class="form-group">
+                    <input hidden="hidden" type="text" class="form-control form-control-user" id="SoCV1" name="SoCV1" placeholder="@Html.DisplayNameFor(model=>model.SoCV1)">
                     <input type="text" class="form-control form-control-user" id="SoCV" name="SoCV" placeholder="@Html.DisplayNameFor(model=>model.SoCV)">
                     @Html.ValidationMessageFor(model => model.SoCV, "", new { @class = "text-danger" })
                 </div>
@@ -176,7 +189,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
 
             <div class="text-center">

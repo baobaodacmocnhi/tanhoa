@@ -14,7 +14,8 @@ namespace DangBoWeb.Controllers
     public class CongVanDenController : BaseController
     {
         private dbDangBo _db = new dbDangBo();
-        private string _mnu="mnuCongVanDen";
+        private string _mnu = "mnuCongVanDen";
+        public static string KyHieuCongVanDen = "/ĐƯ";
 
         public void getListForCombobox()
         {
@@ -25,7 +26,7 @@ namespace DangBoWeb.Controllers
         // GET: CongVanDen
         public async Task<ActionResult> Index()
         {
-            if(CUserSession.CheckQuyen(_mnu,"Xem")==false)
+            if (CUserSession.CheckQuyen(_mnu, "Xem") == false)
                 return RedirectToAction("PermissionDenied", "User");
             return View(await _db.CongVanDens.OrderByDescending(item => item.CreateDate).ToListAsync());
         }
@@ -89,6 +90,17 @@ namespace DangBoWeb.Controllers
             }
             else
                 return Create();
+        }
+
+        [HttpPost]
+        public JsonResult getSoCV(int IDLoaiCV)
+        {
+            int id = -1;
+            if (_db.CongVanDens.Any(item => item.IDLoaiCV == IDLoaiCV && item.CreateDate.Value.Year == DateTime.Now.Year) == true)
+                id = _db.CongVanDens.Where(item => item.IDLoaiCV == IDLoaiCV && item.CreateDate.Value.Year == DateTime.Now.Year).Max(item => item.SoCV1).Value + 1;
+            else
+                id = 1;
+            return Json(new { SoCV1 = id, SoCV = id + KyHieuCongVanDen }, JsonRequestBehavior.AllowGet);
         }
 
         public async Task<ActionResult> Edit(int? ID)

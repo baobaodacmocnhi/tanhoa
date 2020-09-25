@@ -13,7 +13,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2020 13:49:02</publishTime>
     </File>
     <File Include="bin/DangBoWeb.dll">
-      <publishTime>09/23/2020 15:22:04</publishTime>
+      <publishTime>09/25/2020 14:44:33</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>08/13/2020 13:49:30</publishTime>
@@ -5791,31 +5791,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2020 13:48:59</publishTime>
     </File>
     <File Include="Views/CongVanDen/Create.cshtml">
-      <publishTime>09/15/2020 11:02:46</publishTime>
+      <publishTime>09/25/2020 14:01:54</publishTime>
     </File>
     <File Include="Views/CongVanDen/Edit.cshtml">
-      <publishTime>09/15/2020 11:02:46</publishTime>
+      <publishTime>09/25/2020 13:51:24</publishTime>
     </File>
     <File Include="Views/CongVanDen/Index.cshtml">
       <publishTime>09/23/2020 14:09:03</publishTime>
     </File>
     <File Include="Views/CongVanDi/Create.cshtml">
-      <publishTime>09/15/2020 10:56:43</publishTime>
+      <publishTime>09/25/2020 14:29:37</publishTime>
     </File>
     <File Include="Views/CongVanDi/Edit.cshtml">
-      <publishTime>09/23/2020 15:11:40</publishTime>
+      <publishTime>09/25/2020 13:51:10</publishTime>
     </File>
     <File Include="Views/CongVanDi/Index.cshtml">
       <publishTime>09/23/2020 14:08:59</publishTime>
     </File>
     <File Include="Views/DonVi/Create.cshtml">
-      <publishTime>09/23/2020 14:40:27</publishTime>
+      <publishTime>09/24/2020 10:43:15</publishTime>
     </File>
     <File Include="Views/DonVi/Edit.cshtml">
-      <publishTime>09/23/2020 14:46:00</publishTime>
+      <publishTime>09/24/2020 10:42:56</publishTime>
     </File>
     <File Include="Views/DonVi/Index.cshtml">
-      <publishTime>09/23/2020 14:25:31</publishTime>
+      <publishTime>09/24/2020 10:42:33</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -5827,13 +5827,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2020 11:11:11</publishTime>
     </File>
     <File Include="Views/LoaiCongVan/Create.cshtml">
-      <publishTime>09/23/2020 14:48:14</publishTime>
+      <publishTime>09/24/2020 10:43:57</publishTime>
     </File>
     <File Include="Views/LoaiCongVan/Edit.cshtml">
-      <publishTime>09/23/2020 14:47:02</publishTime>
+      <publishTime>09/24/2020 10:44:25</publishTime>
     </File>
     <File Include="Views/LoaiCongVan/Index.cshtml">
-      <publishTime>09/23/2020 14:48:06</publishTime>
+      <publishTime>09/24/2020 10:43:43</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -5853,14 +5853,23 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="Views/NhiemKy/Create.cshtml">
+      <publishTime>09/24/2020 11:13:38</publishTime>
+    </File>
+    <File Include="Views/NhiemKy/Edit.cshtml">
+      <publishTime>09/24/2020 11:15:27</publishTime>
+    </File>
+    <File Include="Views/NhiemKy/Index.cshtml">
+      <publishTime>09/24/2020 11:15:46</publishTime>
+    </File>
     <File Include="Views/Nhom/Create.cshtml">
-      <publishTime>09/23/2020 14:55:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Nhom/Edit.cshtml">
       <publishTime>09/23/2020 14:55:56</publishTime>
     </File>
     <File Include="Views/Nhom/Index.cshtml">
-      <publishTime>09/23/2020 14:56:52</publishTime>
+      <publishTime>09/24/2020 11:02:29</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>08/13/2020 13:49:01</publishTime>
@@ -5869,7 +5878,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2020 13:49:01</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>09/23/2020 15:14:17</publishTime>
+      <publishTime>09/25/2020 14:44:22</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutOld.cshtml">
       <publishTime>08/13/2020 13:49:01</publishTime>

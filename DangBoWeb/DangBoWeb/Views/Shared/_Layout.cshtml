@@ -47,9 +47,6 @@
                 </a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
             <!-- Heading -->
             @*<div class="sidebar-heading">
                     Interface
@@ -74,29 +71,25 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Charts -->
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link" href="@Url.Action("Index", "NhiemKy")">
-                    @*<i class="fas fa-fw fa-chart-area"></i>*@
-                    <span>Nhiệm Kỳ</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                    @*<i class="fas fa-fw fa-cog"></i>*@
+                    <span>Cấu Hình Công Văn</span>
                 </a>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        @*<h6 class="collapse-header">Custom Components:</h6>*@
+
+                        <a class="collapse-item active" href="@Url.Action("Index", "NhiemKy")">Nhiệm Kỳ</a>
+                        <a class="collapse-item active" href="@Url.Action("Index", "DonVi")">Đơn Vị</a>
+                        <a class="collapse-item active" href="@Url.Action("Index", "LoaiCongVan")">Loại Công Văn</a>
+                    </div>
+                </div>
             </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item active">
-                <a class="nav-link" href="@Url.Action("Index", "DonVi")">
-                    @*<i class="fas fa-fw fa-chart-area"></i>*@
-                    <span>Đơn Vị</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item active">
-                <a class="nav-link" href="@Url.Action("Index", "LoaiCongVan")">
-                    @*<i class="fas fa-fw fa-chart-area"></i>*@
-                    <span>Loại Công Văn</span>
-                </a>
-            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
             <!-- Nav Item - Charts -->
             <li class="nav-item active">

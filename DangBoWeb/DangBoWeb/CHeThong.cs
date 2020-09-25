@@ -9,6 +9,7 @@ using DangBoWeb.LinQ;
 
 namespace DangBoWeb
 {
+    
     public class DangNhapModel
     {
         [Required]
