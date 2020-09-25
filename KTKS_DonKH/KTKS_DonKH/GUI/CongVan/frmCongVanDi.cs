@@ -517,7 +517,7 @@ namespace KTKS_DonKH.GUI.CongVan
                                         lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
                                     break;
                                 case "Điều Chỉnh Hóa Đơn":
-                                    if (_cDCBD.CheckExist_HoaDon(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                    if (_cDCBD.checkExist_HoaDon(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
                                         lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
                                     break;
                                 case "Cắt Tạm Danh Bộ":

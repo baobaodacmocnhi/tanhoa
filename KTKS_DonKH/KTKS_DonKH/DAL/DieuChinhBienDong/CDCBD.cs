@@ -1902,9 +1902,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public bool CheckExist_HoaDon(decimal MaCTDCHD)
+        public bool checkExist_HoaDon(decimal MaCTDCHD)
         {
             return db.DCBD_ChiTietHoaDons.Any(item => item.MaCTDCHD == MaCTDCHD);
+        }
+        
+        public bool checkExist_HoaDon(string SoHoaDon)
+        {
+            return db.DCBD_ChiTietHoaDons.Any(item => item.SoHoaDon == SoHoaDon);
         }
 
         public bool CheckExist_HoaDon(string Loai, decimal MaDon, string DanhBo, string KyHD)

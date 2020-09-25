@@ -116,7 +116,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHCSN.Text = hoadon.TILEHCSN.ToString();
             txtDot.Text = _cDHN.GetDot(hoadon.DANHBA);
 
-            if (hoadon.PHI.Value == 0 && hoadon.TIEUTHU.Value != 0)
+            //kiểm tra phí bvmt
+            string sohoadon = "";
+            if (hoadon.SoHoaDonCu != null)
+                sohoadon = hoadon.SoHoaDonCu;
+            else
+                sohoadon = hoadon.SOHOADON;
+            if (hoadon.PHI.Value == 0 && hoadon.TIEUTHU.Value != 0 && _cDCBD.checkExist_HoaDon(sohoadon)==false)
                 lbKhongTinhPhiBVMT.Visible = true;
             else
                 lbKhongTinhPhiBVMT.Visible = false;
