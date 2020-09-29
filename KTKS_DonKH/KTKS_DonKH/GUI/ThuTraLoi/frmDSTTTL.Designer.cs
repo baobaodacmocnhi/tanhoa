@@ -47,6 +47,7 @@
             this.btnXem = new System.Windows.Forms.Button();
             this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ThuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TraTrinhKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaCTTTTL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -197,6 +198,7 @@
             this.dgvDSThu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.In,
             this.ThuDuocKy,
+            this.TraTrinhKy,
             this.MaCTTTTL,
             this.CreateDate,
             this.MaDon,
@@ -209,7 +211,7 @@
             this.dgvDSThu.Location = new System.Drawing.Point(12, 68);
             this.dgvDSThu.Name = "dgvDSThu";
             this.dgvDSThu.RowHeadersWidth = 60;
-            this.dgvDSThu.Size = new System.Drawing.Size(1311, 551);
+            this.dgvDSThu.Size = new System.Drawing.Size(1311, 540);
             this.dgvDSThu.TabIndex = 11;
             this.dgvDSThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSThu_CellFormatting);
             this.dgvDSThu.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvDSThu_CellValidating);
@@ -253,6 +255,13 @@
             this.ThuDuocKy.HeaderText = "Được Ký";
             this.ThuDuocKy.Name = "ThuDuocKy";
             this.ThuDuocKy.Width = 50;
+            // 
+            // TraTrinhKy
+            // 
+            this.TraTrinhKy.DataPropertyName = "TraTrinhKy";
+            this.TraTrinhKy.HeaderText = "Trả Trình Ký";
+            this.TraTrinhKy.Name = "TraTrinhKy";
+            this.TraTrinhKy.Width = 50;
             // 
             // MaCTTTTL
             // 
@@ -368,6 +377,7 @@
         private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.DataGridViewCheckBoxColumn In;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ThuDuocKy;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn TraTrinhKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCTTTTL;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;

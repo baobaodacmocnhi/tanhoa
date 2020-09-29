@@ -47745,6 +47745,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _ThuDuocKy;
 		
+		private bool _TraTrinhKy;
+		
 		private string _GhiChu;
 		
 		private string _TCHC;
@@ -47841,6 +47843,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnChucVuChanged();
     partial void OnThuDuocKyChanging(bool value);
     partial void OnThuDuocKyChanged();
+    partial void OnTraTrinhKyChanging(bool value);
+    partial void OnTraTrinhKyChanged();
     partial void OnGhiChuChanging(string value);
     partial void OnGhiChuChanged();
     partial void OnTCHCChanging(string value);
@@ -48514,6 +48518,26 @@ namespace KTKS_DonKH.LinQ
 					this._ThuDuocKy = value;
 					this.SendPropertyChanged("ThuDuocKy");
 					this.OnThuDuocKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TraTrinhKy", DbType="Bit NOT NULL")]
+		public bool TraTrinhKy
+		{
+			get
+			{
+				return this._TraTrinhKy;
+			}
+			set
+			{
+				if ((this._TraTrinhKy != value))
+				{
+					this.OnTraTrinhKyChanging(value);
+					this.SendPropertyChanging();
+					this._TraTrinhKy = value;
+					this.SendPropertyChanged("TraTrinhKy");
+					this.OnTraTrinhKyChanged();
 				}
 			}
 		}
@@ -50327,6 +50351,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _ThuDuocKy;
 		
+		private bool _TraTrinhKy;
+		
 		private string _GhiChu;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -50405,6 +50431,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnChucVuChanged();
     partial void OnThuDuocKyChanging(bool value);
     partial void OnThuDuocKyChanged();
+    partial void OnTraTrinhKyChanging(bool value);
+    partial void OnTraTrinhKyChanged();
     partial void OnGhiChuChanging(string value);
     partial void OnGhiChuChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -50916,6 +50944,26 @@ namespace KTKS_DonKH.LinQ
 					this._ThuDuocKy = value;
 					this.SendPropertyChanged("ThuDuocKy");
 					this.OnThuDuocKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TraTrinhKy", DbType="Bit NOT NULL")]
+		public bool TraTrinhKy
+		{
+			get
+			{
+				return this._TraTrinhKy;
+			}
+			set
+			{
+				if ((this._TraTrinhKy != value))
+				{
+					this.OnTraTrinhKyChanging(value);
+					this.SendPropertyChanging();
+					this._TraTrinhKy = value;
+					this.SendPropertyChanged("TraTrinhKy");
+					this.OnTraTrinhKyChanged();
 				}
 			}
 		}

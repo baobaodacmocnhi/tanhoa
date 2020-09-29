@@ -24,6 +24,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 {
     public partial class frmDSTTTL : Form
     {
+        string _mnu = "mnuDSTTTL";
         CTTTL _cTTTL = new CTTTL();
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();
@@ -86,7 +87,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 if (printDialog.ShowDialog() == DialogResult.OK)
                 {
                     for (int i = 0; i < dgvDSThu.Rows.Count; i++)
-                        if (dgvDSThu["In", i].Value!=null&&bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
+                        if (dgvDSThu["In", i].Value != null && bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
                         {
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
@@ -106,12 +107,12 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 dr["DinhMuc"] = cttttl.DinhMuc;
                             if (cttttl.DinhMucHN != null)
                                 dr["DinhMucHN"] = cttttl.DinhMucHN;
-                            if (cttttl.ThuTraLoi.MaDon!=null)
+                            if (cttttl.ThuTraLoi.MaDon != null)
                                 dr["NgayNhanDon"] = cttttl.ThuTraLoi.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
                             else
                                 if (cttttl.ThuTraLoi.MaDonTXL != null)
-                                dr["NgayNhanDon"] = cttttl.ThuTraLoi.DonTXL.CreateDate.Value.ToString("dd/MM/yyyy");
-                            else
+                                    dr["NgayNhanDon"] = cttttl.ThuTraLoi.DonTXL.CreateDate.Value.ToString("dd/MM/yyyy");
+                                else
                                     if (cttttl.ThuTraLoi.MaDonTBC != null)
                                         dr["NgayNhanDon"] = cttttl.ThuTraLoi.DonTBC.CreateDate.Value.ToString("dd/MM/yyyy");
 
@@ -163,10 +164,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             DataSetBaoCao dsBaoCao1 = new DataSetBaoCao();
             DataSetBaoCao dsBaoCao2 = new DataSetBaoCao();
             bool flag = true;///in 2 bên
-            
+
             for (int i = 0; i < dgvDSThu.Rows.Count; i++)
                 if (dgvDSThu["In", i].Value != null && bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
-                    if (flag==true)
+                    if (flag == true)
                     {
                         DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
 
@@ -205,15 +206,15 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     if (txtNoiDungTimKiem.Text.Trim() != "")
                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
                             dgvDSThu.DataSource = _cTTTL.GetDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                else
-
-                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                            dgvDSThu.DataSource = _cTTTL.GetDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                         else
-                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                dgvDSThu.DataSource = _cTTTL.GetDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+
+                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                dgvDSThu.DataSource = _cTTTL.GetDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                             else
-                                dgvDSThu.DataSource = _cTTTL.GetDS("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                    dgvDSThu.DataSource = _cTTTL.GetDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                else
+                                    dgvDSThu.DataSource = _cTTTL.GetDS("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
                     break;
                 case "Mã Thư":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
@@ -235,11 +236,29 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
         private void dgvDSThu_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dgvDSThu.Columns[e.ColumnIndex].Name == "ThuDuocKy" && e.FormattedValue.ToString() != dgvDSThu[e.ColumnIndex, e.RowIndex].Value.ToString())
+            try
             {
-                ThuTraLoi_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", e.RowIndex].Value.ToString()));
-                cttttl.ThuDuocKy = bool.Parse(e.FormattedValue.ToString());
-                _cTTTL.SuaCT(cttttl);
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (dgvDSThu.Columns[e.ColumnIndex].Name == "ThuDuocKy" && e.FormattedValue.ToString() != dgvDSThu[e.ColumnIndex, e.RowIndex].Value.ToString())
+                    {
+                        ThuTraLoi_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", e.RowIndex].Value.ToString()));
+                        cttttl.ThuDuocKy = bool.Parse(e.FormattedValue.ToString());
+                        _cTTTL.SuaCT(cttttl);
+                    }
+                    if (dgvDSThu.Columns[e.ColumnIndex].Name == "TraTrinhKy" && e.FormattedValue.ToString() != dgvDSThu[e.ColumnIndex, e.RowIndex].Value.ToString())
+                    {
+                        ThuTraLoi_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", e.RowIndex].Value.ToString()));
+                        cttttl.TraTrinhKy = bool.Parse(e.FormattedValue.ToString());
+                        _cTTTL.SuaCT(cttttl);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

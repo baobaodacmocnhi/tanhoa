@@ -47,6 +47,8 @@
             this.txtVeViec = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtMLT = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.txtDinhMucHN = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtDinhMuc = new System.Windows.Forms.TextBox();
@@ -74,6 +76,8 @@
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvToTrinh = new System.Windows.Forms.DataGridView();
             this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ThuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TraTrinhKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,8 +100,6 @@
             this.btnChonFile = new System.Windows.Forms.Button();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtMLT = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
@@ -270,6 +272,22 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Khách Hàng";
+            // 
+            // txtMLT
+            // 
+            this.txtMLT.Location = new System.Drawing.Point(245, 24);
+            this.txtMLT.Name = "txtMLT";
+            this.txtMLT.Size = new System.Drawing.Size(100, 22);
+            this.txtMLT.TabIndex = 13;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(204, 27);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(35, 16);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "MLT";
             // 
             // txtDinhMucHN
             // 
@@ -511,6 +529,8 @@
             this.dgvToTrinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvToTrinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.In,
+            this.ThuDuocKy,
+            this.TraTrinhKy,
             this.IDCT,
             this.MaDon,
             this.DanhBo,
@@ -518,12 +538,13 @@
             this.DiaChi,
             this.VeViec,
             this.NoiDung});
-            this.dgvToTrinh.Location = new System.Drawing.Point(1, 428);
+            this.dgvToTrinh.Location = new System.Drawing.Point(1, 423);
             this.dgvToTrinh.Name = "dgvToTrinh";
-            this.dgvToTrinh.Size = new System.Drawing.Size(1121, 180);
+            this.dgvToTrinh.Size = new System.Drawing.Size(1222, 180);
             this.dgvToTrinh.TabIndex = 19;
             this.dgvToTrinh.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToTrinh_CellContentClick);
             this.dgvToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvToTrinh_CellFormatting);
+            this.dgvToTrinh.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvToTrinh_CellValidating);
             this.dgvToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvToTrinh_RowPostPaint);
             // 
             // In
@@ -534,6 +555,20 @@
             this.In.Name = "In";
             this.In.TrueValue = "true";
             this.In.Width = 30;
+            // 
+            // ThuDuocKy
+            // 
+            this.ThuDuocKy.DataPropertyName = "ThuDuocKy";
+            this.ThuDuocKy.HeaderText = "Được Ký";
+            this.ThuDuocKy.Name = "ThuDuocKy";
+            this.ThuDuocKy.Width = 50;
+            // 
+            // TraTrinhKy
+            // 
+            this.TraTrinhKy.DataPropertyName = "TraTrinhKy";
+            this.TraTrinhKy.HeaderText = "Trả Trình Ký";
+            this.TraTrinhKy.Name = "TraTrinhKy";
+            this.TraTrinhKy.Width = 50;
             // 
             // IDCT
             // 
@@ -732,29 +767,13 @@
             this.xoaFile_dgvHinh.Text = "Xóa";
             this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
             // 
-            // txtMLT
-            // 
-            this.txtMLT.Location = new System.Drawing.Point(245, 24);
-            this.txtMLT.Name = "txtMLT";
-            this.txtMLT.Size = new System.Drawing.Size(100, 22);
-            this.txtMLT.TabIndex = 13;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(204, 27);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(35, 16);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "MLT";
-            // 
             // frmToTrinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1130, 647);
+            this.ClientSize = new System.Drawing.Size(1381, 647);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.btnInDS);
@@ -844,14 +863,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtMaDonMoi;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn In;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDCT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.Button btnInDS;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -868,5 +879,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtMLT;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn In;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ThuDuocKy;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn TraTrinhKy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDCT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
     }
 }

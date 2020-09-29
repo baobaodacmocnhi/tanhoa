@@ -408,6 +408,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         cttt.Phuong = _hoadon.Phuong;
                         cttt.Quan = _hoadon.Quan;
                     }
+                    cttt.ThuDuocKy = true;
 
                     using (TransactionScope scope = new TransactionScope())
                         if (_cTT.Them_ChiTiet(cttt))
@@ -628,6 +629,34 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             }
         }
 
+        private void dgvToTrinh_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (dgvToTrinh.Columns[e.ColumnIndex].Name == "ThuDuocKy" && e.FormattedValue.ToString() != dgvToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString())
+                    {
+                        ToTrinh_ChiTiet tt = _cTT.get_ChiTiet(int.Parse(dgvToTrinh["IDCT", e.RowIndex].Value.ToString()));
+                        tt.ThuDuocKy = bool.Parse(e.FormattedValue.ToString());
+                        _cTT.Sua_ChiTiet(tt);
+                    }
+                    if (dgvToTrinh.Columns[e.ColumnIndex].Name == "TraTrinhKy" && e.FormattedValue.ToString() != dgvToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString())
+                    {
+                        ToTrinh_ChiTiet tt = _cTT.get_ChiTiet(int.Parse(dgvToTrinh["IDCT", e.RowIndex].Value.ToString()));
+                        tt.TraTrinhKy = bool.Parse(e.FormattedValue.ToString());
+                        _cTT.Sua_ChiTiet(tt);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void cmbVeViec_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbVeViec.SelectedIndex != -1)
@@ -827,6 +856,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
 
 
     }
