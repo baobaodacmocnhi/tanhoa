@@ -30,7 +30,7 @@
     <PublisherName>Phòng Kỹ Thuật Công Nghiệp</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>39</ApplicationRevision>
+    <ApplicationRevision>44</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -121,6 +121,18 @@
       <DependentUpon>rptBienLaiThuTienA4.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\NhapLieu\rptSLCT_A4.cs">
+      <DependentUpon>rptSLCT_A4.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\NhapLieu\rptSLCT_A5.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSLCT_A5.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DAL\CapNhat\CDoiTuong.cs" />
     <Compile Include="DAL\CapNhat\CNganHang.cs" />
     <Compile Include="DAL\CDAL.cs" />
@@ -193,6 +205,12 @@
     <Compile Include="GUI\NhapLieu\frmPhieuThu.Designer.cs">
       <DependentUpon>frmPhieuThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\NhapLieu\frmSoLieuChungTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhapLieu\frmSoLieuChungTu.Designer.cs">
+      <DependentUpon>frmSoLieuChungTu.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QuanTri\frmUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +237,14 @@
     <EmbeddedResource Include="BaoCao\HoaDonDienTu\rptBienLaiThuTienA4.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptBienLaiThuTienA4.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\NhapLieu\rptSLCT_A4.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSLCT_A4.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\NhapLieu\rptSLCT_A5.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSLCT_A5.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\BaoCao\frmBaoCao.resx">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
@@ -266,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhapLieu\frmPhieuThu.resx">
       <DependentUpon>frmPhieuThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhapLieu\frmSoLieuChungTu.resx">
+      <DependentUpon>frmSoLieuChungTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanTri\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
@@ -458,6 +487,7 @@
   <ItemGroup>
     <None Include="Resources\report.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

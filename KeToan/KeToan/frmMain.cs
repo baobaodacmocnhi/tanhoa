@@ -252,6 +252,17 @@ namespace KeToan
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuSoLieuChungTu_Click(object sender, EventArgs e)
+        {
+            if (CUser.CheckQuyen("mnuSoLieuChungTu", "Xem"))
+            {
+                frmSoLieuChungTu frm = new frmSoLieuChungTu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Hoa Đơn Điện Tử
@@ -268,6 +279,8 @@ namespace KeToan
         }
 
         #endregion
+
+        
 
 
         

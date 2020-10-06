@@ -45,6 +45,7 @@
             this.mnuNhapLieu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPhieuThu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPhieuChi = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSoLieuChungTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHoaDonDienTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBienLaiThuTien = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
@@ -81,7 +82,7 @@
             this.mnuDangXuat,
             this.mnuAdmin});
             this.mnuHeThong.Name = "mnuHeThong";
-            this.mnuHeThong.Size = new System.Drawing.Size(72, 20);
+            this.mnuHeThong.Size = new System.Drawing.Size(71, 20);
             this.mnuHeThong.Text = "Hệ Thống";
             // 
             // mnuDangNhap
@@ -119,7 +120,7 @@
             this.mnuNhom,
             this.mnuUser});
             this.mnuQuanTri.Name = "mnuQuanTri";
-            this.mnuQuanTri.Size = new System.Drawing.Size(64, 20);
+            this.mnuQuanTri.Size = new System.Drawing.Size(63, 20);
             this.mnuQuanTri.Text = "Quản Trị";
             // 
             // mnuNhom
@@ -148,14 +149,14 @@
             // mnuNganHang
             // 
             this.mnuNganHang.Name = "mnuNganHang";
-            this.mnuNganHang.Size = new System.Drawing.Size(135, 22);
+            this.mnuNganHang.Size = new System.Drawing.Size(152, 22);
             this.mnuNganHang.Text = "Ngân Hàng";
             this.mnuNganHang.Click += new System.EventHandler(this.mnuNganHang_Click);
             // 
             // mnuDoiTuong
             // 
             this.mnuDoiTuong.Name = "mnuDoiTuong";
-            this.mnuDoiTuong.Size = new System.Drawing.Size(135, 22);
+            this.mnuDoiTuong.Size = new System.Drawing.Size(152, 22);
             this.mnuDoiTuong.Text = "Đối Tượng";
             this.mnuDoiTuong.Click += new System.EventHandler(this.mnuDoiTuong_Click);
             // 
@@ -163,7 +164,8 @@
             // 
             this.mnuNhapLieu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuPhieuThu,
-            this.mnuPhieuChi});
+            this.mnuPhieuChi,
+            this.mnuSoLieuChungTu});
             this.mnuNhapLieu.Name = "mnuNhapLieu";
             this.mnuNhapLieu.Size = new System.Drawing.Size(73, 20);
             this.mnuNhapLieu.Text = "Nhập Liệu";
@@ -171,29 +173,36 @@
             // mnuPhieuThu
             // 
             this.mnuPhieuThu.Name = "mnuPhieuThu";
-            this.mnuPhieuThu.Size = new System.Drawing.Size(128, 22);
+            this.mnuPhieuThu.Size = new System.Drawing.Size(167, 22);
             this.mnuPhieuThu.Text = "Phiếu Thu";
             this.mnuPhieuThu.Click += new System.EventHandler(this.mnuPhieuThu_Click);
             // 
             // mnuPhieuChi
             // 
             this.mnuPhieuChi.Name = "mnuPhieuChi";
-            this.mnuPhieuChi.Size = new System.Drawing.Size(128, 22);
+            this.mnuPhieuChi.Size = new System.Drawing.Size(167, 22);
             this.mnuPhieuChi.Text = "Phiếu Chi";
             this.mnuPhieuChi.Click += new System.EventHandler(this.mnuPhieuChi_Click);
+            // 
+            // mnuSoLieuChungTu
+            // 
+            this.mnuSoLieuChungTu.Name = "mnuSoLieuChungTu";
+            this.mnuSoLieuChungTu.Size = new System.Drawing.Size(167, 22);
+            this.mnuSoLieuChungTu.Text = "Số Liệu Chứng Từ";
+            this.mnuSoLieuChungTu.Click += new System.EventHandler(this.mnuSoLieuChungTu_Click);
             // 
             // mnuHoaDonDienTu
             // 
             this.mnuHoaDonDienTu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuBienLaiThuTien});
             this.mnuHoaDonDienTu.Name = "mnuHoaDonDienTu";
-            this.mnuHoaDonDienTu.Size = new System.Drawing.Size(110, 20);
+            this.mnuHoaDonDienTu.Size = new System.Drawing.Size(109, 20);
             this.mnuHoaDonDienTu.Text = "Hóa Đơn Điện Tử";
             // 
             // mnuBienLaiThuTien
             // 
             this.mnuBienLaiThuTien.Name = "mnuBienLaiThuTien";
-            this.mnuBienLaiThuTien.Size = new System.Drawing.Size(165, 22);
+            this.mnuBienLaiThuTien.Size = new System.Drawing.Size(163, 22);
             this.mnuBienLaiThuTien.Text = "Biên Lai Thu Tiền";
             this.mnuBienLaiThuTien.Click += new System.EventHandler(this.mnuBienLaiThuTien_Click);
             // 
@@ -223,7 +232,7 @@
             // StripStatus_Version
             // 
             this.StripStatus_Version.Name = "StripStatus_Version";
-            this.StripStatus_Version.Size = new System.Drawing.Size(535, 17);
+            this.StripStatus_Version.Size = new System.Drawing.Size(533, 17);
             this.StripStatus_Version.Text = "Bản quyền(2018) thuộc Công ty CP Cấp Nước Tân Hòa. Được Phòng Kỹ Thuật Công Nghệ " +
                 "phát triển";
             // 
@@ -304,6 +313,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDoiTuong;
         private System.Windows.Forms.ToolStripMenuItem mnuHoaDonDienTu;
         private System.Windows.Forms.ToolStripMenuItem mnuBienLaiThuTien;
+        private System.Windows.Forms.ToolStripMenuItem mnuSoLieuChungTu;
     }
 }
 
