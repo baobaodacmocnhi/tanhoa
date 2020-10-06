@@ -12,6 +12,7 @@ using System.Net;
 using System.IO;
 using ThuTien.DAL.QuanTri;
 using System.Runtime.InteropServices;
+using ThuTien.LinQ;
 
 namespace ThuTien.GUI.Doi
 {
@@ -19,7 +20,8 @@ namespace ThuTien.GUI.Doi
     {
         string _mnu = "mnuCuaHangThuHo";
         CHoaDon _cHoaDon = new CHoaDon();
-        int _selectedintdex = -1;
+        CCuaHangThuHo _cCHTH = new CCuaHangThuHo();
+        TT_DichVuThu_CuaHang _en = null;
 
         public frmCuaHangThuHo()
         {
@@ -37,8 +39,8 @@ namespace ThuTien.GUI.Doi
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
             txtDanhBo.Text = "";
-            _selectedintdex = -1;
-            dgvCuaHangThuHo.DataSource = _cHoaDon.ExecuteQuery_DataTable("select * from TT_DichVuThu_CuaHang");
+            _en = null;
+            dgvCuaHangThuHo.DataSource = _cCHTH.getDS();
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -52,30 +54,6 @@ namespace ThuTien.GUI.Doi
                 if (dialog.ShowDialog() == DialogResult.OK)
                     if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        //CExcel fileExcel = new CExcel(dialog.FileName);
-                        //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1]");
-
-                        //foreach (DataRow item in dtExcel.Rows)
-                        //{
-                        //    string sql = "INSERT INTO TT_DichVuThu_CuaHang"
-                        //               + "([ID]"
-                        //               + ",[Name]"
-                        //               + ",[DiaChi]"
-                        //               + ",[GioHoatDong]"
-                        //               + ",[TenDichVu]"
-                        //               + ",[CreateBy]"
-                        //               + ",[CreateDate])"
-                        //               + "VALUES"
-                        //               + "((select max(ID) from TT_DichVuThu_CuaHang)+1"
-                        //               + ",N'" + item[0].ToString().Substring(item[0].ToString().IndexOf(" ")+1) + "'"
-                        //               + ",N'" + item[1].ToString() + "'"
-                        //               + ",'" + item[2].ToString() + "'"
-                        //               + ",'PAYOO'"
-                        //               + ",0"
-                        //               + ",getDate())";
-                        //    _cHoaDon.ExecuteNonQuery(sql);
-                        //}
-
                         //Create COM Objects. Create a COM object for everything that is referenced
                         Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
                         Microsoft.Office.Interop.Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(dialog.FileName);
@@ -87,25 +65,26 @@ namespace ThuTien.GUI.Doi
 
                         //iterate over the rows and columns and print to the console as it appears in the file
                         //excel is not zero based!!
-                        for (int i = 1; i <= rowCount; i++)
+                        for (int i = 3; i <= rowCount; i++)
                         {
-                            if (xlRange.Cells[i, 1] != null && xlRange.Cells[i, 1].Value2 != null && !string.IsNullOrEmpty(xlRange.Cells[i, 1].Value2.ToString()))
+                            if (xlRange.Cells[i, 2] != null && xlRange.Cells[i, 2].Value2 != null && !string.IsNullOrEmpty(xlRange.Cells[i, 2].Value2.ToString())
+                                && xlRange.Cells[i, 3] != null && xlRange.Cells[i, 3].Value2 != null && !string.IsNullOrEmpty(xlRange.Cells[i, 3].Value2.ToString()))
                             {
-                                string sql = "INSERT INTO TT_DichVuThu_CuaHang"
-                                           + "([ID]"
-                                           + ",[Name]"
-                                           + ",[DiaChi]"
-                                           + ",[DanhBo]"
-                                           + ",[CreateBy]"
-                                           + ",[CreateDate])"
-                                           + "VALUES"
-                                           + "((select case when not exists(select * from TT_DichVuThu_CuaHang) then 1 else (select max(ID)+1 from TT_DichVuThu_CuaHang) end)"
-                                           + ",N'" + xlRange.Cells[i, 1].Value2.ToString() + "'"
-                                           + ",N'" + xlRange.Cells[i, 2].Value2.ToString() + "'"
-                                           + ",'" + xlRange.Cells[i, 3].Value2.ToString() + "'"
-                                           + "," + CNguoiDung.MaND + ""
-                                           + ",getDate())";
-                                _cHoaDon.ExecuteNonQuery(sql);
+                                if (_cCHTH.checkExists_DiaChi(xlRange.Cells[i, 3].Value2.ToString()) == true)
+                                {
+                                    MessageBox.Show("Địa chỉ: " + xlRange.Cells[i, 3].Value2.ToString() + " đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                else
+                                {
+                                    TT_DichVuThu_CuaHang en = new TT_DichVuThu_CuaHang();
+                                    en.Name = xlRange.Cells[i, 2].Value2.ToString().Trim().Replace("'", "");
+                                    en.DiaChi = xlRange.Cells[i, 3].Value2.ToString().Trim();
+                                    if (xlRange.Cells[i, 6] != null && xlRange.Cells[i, 6].Value2 != null && !string.IsNullOrEmpty(xlRange.Cells[i, 6].Value2.ToString()))
+                                        en.DanhBo = xlRange.Cells[i, 6].Value2.ToString().Trim().Replace(" ", "");
+                                    if (_cCHTH.Them(en) == true)
+                                    {
+                                    }
+                                }
                             }
                         }
 
@@ -139,10 +118,13 @@ namespace ThuTien.GUI.Doi
         {
             try
             {
-                _selectedintdex = e.RowIndex;
-                txtHoTen.Text = dgvCuaHangThuHo.CurrentRow.Cells["Name1"].Value.ToString();
-                txtDiaChi.Text = dgvCuaHangThuHo.CurrentRow.Cells["DiaChi"].Value.ToString();
-                txtDanhBo.Text = dgvCuaHangThuHo.CurrentRow.Cells["DanhBo"].Value.ToString();
+                _en = _cCHTH.get(int.Parse(dgvCuaHangThuHo.CurrentRow.Cells["ID"].Value.ToString()));
+                if (_en != null)
+                {
+                    txtHoTen.Text = _en.Name;
+                    txtDiaChi.Text = _en.DiaChi;
+                    txtDanhBo.Text = _en.DanhBo;
+                }
             }
             catch (Exception)
             {
@@ -156,23 +138,18 @@ namespace ThuTien.GUI.Doi
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
-                    if (txtHoTen.Text.Trim() != "")
+                    if (txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "")
                     {
-                        string sql = "INSERT INTO TT_DichVuThu_CuaHang"
-                                          + "([ID]"
-                                          + ",[Name]"
-                                          + ",[DiaChi]"
-                                          + ",[DanhBo]"
-                                          + ",[CreateBy]"
-                                          + ",[CreateDate])"
-                                          + "VALUES"
-                                          + "((select case when not exists(select * from TT_DichVuThu_CuaHang) then 1 else (select max(ID)+1 from TT_DichVuThu_CuaHang) end)"
-                                          + ",N'" + txtHoTen.Text.Trim() + "'"
-                                          + ",N'" + txtDiaChi.Text.Trim() + "'"
-                                          + ",'" + txtDanhBo.Text.Trim() + "'"
-                                          + "," + CNguoiDung.MaND + ""
-                                          + ",getDate())";
-                        if (_cHoaDon.ExecuteNonQuery(sql) == true)
+                        if (_cCHTH.checkExists_DiaChi(txtDiaChi.Text.Trim()) == true)
+                        {
+                            MessageBox.Show("Địa chỉ đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        TT_DichVuThu_CuaHang en = new TT_DichVuThu_CuaHang();
+                        en.Name = txtHoTen.Text.Trim();
+                        en.DiaChi = txtDiaChi.Text.Trim();
+                        en.DanhBo = txtDanhBo.Text.Trim();
+                        if (_cCHTH.Them(en) == true)
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
@@ -194,16 +171,17 @@ namespace ThuTien.GUI.Doi
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    if (_selectedintdex > -1)
+                    if (_en != null)
                     {
-                        string sql = "update TT_DichVuThu_CuaHang set"
-                            + " [Name]=" + txtHoTen.Text.Trim()
-                            + " ,DiaChi=" + txtDiaChi.Text.Trim()
-                            + " ,DanhBo=" + txtDanhBo.Text.Trim()
-                            + " ,ModifyBy=" + CNguoiDung.MaND
-                            + " ,ModifyDate=getDate()"
-                            + " where ID=" + dgvCuaHangThuHo["ID", _selectedintdex].Value.ToString();
-                        if (_cHoaDon.ExecuteNonQuery(sql) == true)
+                        if (_cCHTH.checkExists_DiaChi(txtDiaChi.Text.Trim()) == true)
+                        {
+                            MessageBox.Show("Địa chỉ đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        _en.Name = txtHoTen.Text.Trim();
+                        _en.DiaChi = txtDiaChi.Text.Trim();
+                        _en.DanhBo = txtDanhBo.Text.Trim();
+                        if (_cCHTH.Sua(_en) == true)
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
@@ -225,9 +203,9 @@ namespace ThuTien.GUI.Doi
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (_selectedintdex > -1 && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (_en != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        if (_cHoaDon.ExecuteNonQuery("delete TT_DichVuThu_CuaHang where ID=" + dgvCuaHangThuHo["ID", _selectedintdex].Value.ToString()) == true)
+                        if (_cCHTH.Xoa(_en) == true)
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
@@ -240,6 +218,14 @@ namespace ThuTien.GUI.Doi
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvCuaHangThuHo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvCuaHangThuHo.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
 

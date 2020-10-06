@@ -926,7 +926,6 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void btnKiemTraSaiSot_Click(object sender, EventArgs e)
         {
             DataTable dt = _cTamThu.getDSSaiSot_ChuyenKhoan(dateTu.Value, dateDen.Value);
-            string str = "";
             DataTable dtTemp = new DataTable();
             dtTemp.Columns.Add("DanhBo", typeof(string));
             foreach (DataRow item in dt.Rows)
