@@ -86,6 +86,14 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.btnXuatExcel_ThongKeDMNT = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnHoNgheo = new System.Windows.Forms.Button();
+            this.cmbFromKy = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cmbNam = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cmbToKy = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox_DSChungCu.SuspendLayout();
             this.groupBox_ThongKeDC.SuspendLayout();
@@ -94,6 +102,7 @@
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_KhoangThoiGian
@@ -670,12 +679,116 @@
             this.btnXuatExcel_ThongKeDMNT.UseVisualStyleBackColor = true;
             this.btnXuatExcel_ThongKeDMNT.Click += new System.EventHandler(this.btnXuatExcel_ThongKeDMNT_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cmbToKy);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.cmbFromKy);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Controls.Add(this.cmbNam);
+            this.groupBox3.Controls.Add(this.label16);
+            this.groupBox3.Controls.Add(this.btnHoNgheo);
+            this.groupBox3.Location = new System.Drawing.Point(859, 195);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(239, 90);
+            this.groupBox3.TabIndex = 25;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Thống Kê Hộ Nghèo";
+            // 
+            // btnHoNgheo
+            // 
+            this.btnHoNgheo.Location = new System.Drawing.Point(141, 54);
+            this.btnHoNgheo.Name = "btnHoNgheo";
+            this.btnHoNgheo.Size = new System.Drawing.Size(80, 25);
+            this.btnHoNgheo.TabIndex = 12;
+            this.btnHoNgheo.Text = "Xuất Excel";
+            this.btnHoNgheo.UseVisualStyleBackColor = true;
+            this.btnHoNgheo.Click += new System.EventHandler(this.btnHoNgheo_Click);
+            // 
+            // cmbFromKy
+            // 
+            this.cmbFromKy.FormattingEnabled = true;
+            this.cmbFromKy.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cmbFromKy.Location = new System.Drawing.Point(59, 22);
+            this.cmbFromKy.Name = "cmbFromKy";
+            this.cmbFromKy.Size = new System.Drawing.Size(50, 24);
+            this.cmbFromKy.TabIndex = 39;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(11, 25);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(42, 16);
+            this.label15.TabIndex = 38;
+            this.label15.Text = "Từ Kỳ";
+            // 
+            // cmbNam
+            // 
+            this.cmbNam.FormattingEnabled = true;
+            this.cmbNam.Location = new System.Drawing.Point(49, 52);
+            this.cmbNam.Name = "cmbNam";
+            this.cmbNam.Size = new System.Drawing.Size(60, 24);
+            this.cmbNam.TabIndex = 37;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(11, 55);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(40, 16);
+            this.label16.TabIndex = 36;
+            this.label16.Text = "Năm:";
+            // 
+            // cmbToKy
+            // 
+            this.cmbToKy.FormattingEnabled = true;
+            this.cmbToKy.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cmbToKy.Location = new System.Drawing.Point(171, 22);
+            this.cmbToKy.Name = "cmbToKy";
+            this.cmbToKy.Size = new System.Drawing.Size(50, 24);
+            this.cmbToKy.TabIndex = 41;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(115, 25);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(50, 16);
+            this.label17.TabIndex = 40;
+            this.label17.Text = "Đến Kỳ";
+            // 
             // frmBaoCaoDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1321, 563);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox_ThongKeDC);
@@ -715,6 +828,8 @@
             this.groupBox2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -780,5 +895,13 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btnXuatExcel_ThongKeDMNT;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnHoNgheo;
+        private System.Windows.Forms.ComboBox cmbFromKy;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox cmbNam;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox cmbToKy;
+        private System.Windows.Forms.Label label17;
     }
 }

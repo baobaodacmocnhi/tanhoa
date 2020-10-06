@@ -291,5 +291,9 @@ namespace KTKS_DonKH.DAL
             return db.HOADONs.Any(item => item.ID_HOADON == MaHD && item.NGAYGIAITRACH != null);
         }
 
+        public DataTable GetNam()
+        {
+            return ExecuteQuery_DataTable("select * from ViewGetNamHD order by ID desc");
+        }
     }
 }
