@@ -78,6 +78,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cmbNoiDungThuongVu = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.btnInDSChuaChuyen_ThongKeNhomDon_Phong = new System.Windows.Forms.Button();
             this.btnBaoCao_ThongKeNhomDon_Phong = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -86,8 +88,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.btnImport = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
+            this.btnImport = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian_LichSuChuyenDon.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -401,7 +403,7 @@
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Location = new System.Drawing.Point(12, 295);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(853, 87);
+            this.groupBox2.Size = new System.Drawing.Size(778, 87);
             this.groupBox2.TabIndex = 31;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thống Kê Theo Nhóm Đơn (ngày nhận) - Tổ GD, Tổ Tân Bình, Tân Phú, Bấm Chì - Chuyể" +
@@ -601,15 +603,38 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.cmbNoiDungThuongVu);
+            this.groupBox5.Controls.Add(this.label18);
             this.groupBox5.Controls.Add(this.btnInDSChuaChuyen_ThongKeNhomDon_Phong);
             this.groupBox5.Controls.Add(this.btnBaoCao_ThongKeNhomDon_Phong);
             this.groupBox5.Controls.Add(this.panel3);
             this.groupBox5.Location = new System.Drawing.Point(12, 388);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(465, 87);
+            this.groupBox5.Size = new System.Drawing.Size(762, 87);
             this.groupBox5.TabIndex = 33;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Thống Kê Theo Nhóm Đơn (ngày nhận) - Phòng";
+            // 
+            // cmbNoiDungThuongVu
+            // 
+            this.cmbNoiDungThuongVu.FormattingEnabled = true;
+            this.cmbNoiDungThuongVu.Items.AddRange(new object[] {
+            "Tất Cả",
+            "ĐCMS - Trở Ngại Thay ĐHN"});
+            this.cmbNoiDungThuongVu.Location = new System.Drawing.Point(366, 41);
+            this.cmbNoiDungThuongVu.MaxDropDownItems = 10;
+            this.cmbNoiDungThuongVu.Name = "cmbNoiDungThuongVu";
+            this.cmbNoiDungThuongVu.Size = new System.Drawing.Size(150, 24);
+            this.cmbNoiDungThuongVu.TabIndex = 43;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(366, 22);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(132, 16);
+            this.label18.TabIndex = 42;
+            this.label18.Text = "Nội Dung Thương Vụ";
             // 
             // btnInDSChuaChuyen_ThongKeNhomDon_Phong
             // 
@@ -689,6 +714,15 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Chức Năng Xử Lý Chung";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 27);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(286, 16);
+            this.label17.TabIndex = 16;
+            this.label17.Text = "Từ Danh Bộ lấy Họ Tên, Địa Chỉ, Quận, Phường";
+            // 
             // btnImport
             // 
             this.btnImport.Location = new System.Drawing.Point(9, 46);
@@ -698,15 +732,6 @@
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 27);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(286, 16);
-            this.label17.TabIndex = 16;
-            this.label17.Text = "Từ Danh Bộ lấy Họ Tên, Địa Chỉ, Quận, Phường";
             // 
             // frmBaoCaoDonTu
             // 
@@ -741,6 +766,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -811,5 +837,7 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.ComboBox cmbNoiDungThuongVu;
+        private System.Windows.Forms.Label label18;
     }
 }

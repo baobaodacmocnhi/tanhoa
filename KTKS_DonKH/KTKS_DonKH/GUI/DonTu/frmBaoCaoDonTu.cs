@@ -473,7 +473,12 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnInDSChuaChuyen_ThongKeNhomDon_Phong_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cDonTu.getDS_ThongKeNhomDon(dateTu_ThongKeNhomDon_Phong.Value, dateDen_ThongKeNhomDon_Phong.Value);
+            DataTable dt;
+            if (cmbNoiDungThuongVu.SelectedIndex == 0)
+                dt = _cDonTu.getDS_ThongKeNhomDon(dateTu_ThongKeNhomDon_Phong.Value, dateDen_ThongKeNhomDon_Phong.Value);
+            else
+                dt = _cDonTu.getDS_ThongKeNhomDon_DCMS_TroNgayThayDHN(dateTu_ThongKeNhomDon_Phong.Value, dateDen_ThongKeNhomDon_Phong.Value);
+
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
@@ -572,7 +577,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     //            dtExport.Rows.Add(dr);
                     //        }
                     //    }
-                    
+
                     //Create COM Objects. Create a COM object for everything that is referenced
                     Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
                     Microsoft.Office.Interop.Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(dialog.FileName);

@@ -466,8 +466,8 @@ namespace KTKS_DonKH.DAL.DonTu
                         //    dr["TinhTrang"] = "Tồn";
                     }
                     dr["TinhTrang"] = item.TinhTrang;
-                    dr["NoiDungPKH"] = item.Name_NhomDon_PKH ;
-                    dr["NoiDungPTV"] =  item.Name_NhomDon;
+                    dr["NoiDungPKH"] = item.Name_NhomDon_PKH;
+                    dr["NoiDungPTV"] = item.Name_NhomDon;
                     dr["CreateBy"] = db.Users.SingleOrDefault(itemR => itemR.MaU == item.CreateBy).HoTen;
 
                     dtDonTu.Rows.Add(dr);
@@ -626,6 +626,23 @@ namespace KTKS_DonKH.DAL.DonTu
                         + " else case when exists(select ktxm.MaKTXM from KTXM ktxm, KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT) then 'true'"
                         + " else case when exists(select bc.MaBC from BamChi bc, BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT) then 'true' else 'false' end end end"
                         + " from DonTu dt,DonTu_ChiTiet dtct where CAST(dt.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(dt.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and dt.MaDon=dtct.MaDon"
+                        + " order by dtct.MaDon,dtct.STT asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getDS_ThongKeNhomDon_DCMS_TroNgayThayDHN(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            string sql = "select dt.MaDon,dt.TongDB,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,"
+                        + " NhomDon=case when dt.Name_NhomDon != '' then dt.Name_NhomDon else dt.VanDeKhac end,"
+                        + " MaDonChiTiet=case when dt.TongDB=0 then CONVERT(varchar(8),dtct.MaDon)"
+                        + " when dt.TongDB=1 then CONVERT(varchar(8),dtct.MaDon)"
+                        + " when dt.TongDB>=2 then CONVERT(varchar(8),dtct.MaDon)+'.'+CONVERT(varchar(3),dtct.STT) end,"
+                        + " DaKTXM=case when exists(select ID from DonTu_LichSu dtls where dtls.MaDon=dtct.MaDon and dtls.STT=dtct.STT and ID_NoiNhan=6) then 'true'"
+                        + " else case when exists(select ktxm.MaKTXM from KTXM ktxm, KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT) then 'true'"
+                        + " else case when exists(select bc.MaBC from BamChi bc, BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT) then 'true' else 'false' end end end"
+                        + " from DonTu dt,DonTu_ChiTiet dtct where CAST(dt.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(dt.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and dt.MaDon=dtct.MaDon"
+                        + " and (dt.Name_NhomDon like N'%đứt chì mặt số%'"
+                        + " or dt.Name_NhomDon like N'%trở ngại thay ĐHN%')"
                         + " order by dtct.MaDon,dtct.STT asc";
             return ExecuteQuery_DataTable(sql);
         }
