@@ -1461,6 +1461,7 @@
       <Column Name="GioHoatDong" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="TenDichVu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DanhBo" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="[In]" Member="In" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />

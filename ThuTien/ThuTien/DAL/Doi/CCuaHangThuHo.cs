@@ -79,7 +79,12 @@ namespace ThuTien.DAL.Doi
 
         public DataTable getDS()
         {
-            return LINQToDataTable(_db.TT_DichVuThu_CuaHangs.ToList());
+            string sql = "select *,Dot=(select top 1 Dot from HOADON where DANHBA=DanhBo order by CreateDate desc)"
+                        + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=(select top 1 MaNV_HanhThu from HOADON where DANHBA=DanhBo order by CreateDate desc)))"
+                        + " ,'HanhThu'=(select HoTen from TT_NguoiDung where MaND=(select top 1 MaNV_HanhThu from HOADON where DANHBA=DanhBo order by CreateDate desc))"
+                        + " from TT_DichVuThu_CuaHang"
+                        + " order by Dot asc";
+            return ExecuteQuery_DataTable(sql);
         }
 
     }

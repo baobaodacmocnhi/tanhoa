@@ -761,9 +761,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                     if (bk.NgayPhieuThu != null)
                         dr["NgayPhieuThu"] = bk.NgayPhieuThu;
                     dr["CreateDate"] = bk.CreateDate;
-                    dr["MaNH"] = bk.MaNH;
-                    dr["NganHang"] = _cNganHang.GetByMaNH(bk.MaNH.Value).NGANHANG1;
-
+                    if (bk.MaNH != null)
+                    {
+                        dr["MaNH"] = bk.MaNH;
+                        dr["NganHang"] = _cNganHang.GetByMaNH(bk.MaNH.Value).NGANHANG1;
+                    }
                     dr["DanhBo"] = item["DanhBo"];
                     dr["HoTen"] = item["HoTen"];
                     dr["Ky"] = item["Ky"];

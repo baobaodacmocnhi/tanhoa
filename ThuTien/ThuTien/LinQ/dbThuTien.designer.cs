@@ -31667,6 +31667,8 @@ namespace ThuTien.LinQ
 		
 		private string _DanhBo;
 		
+		private bool _In;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -31691,6 +31693,8 @@ namespace ThuTien.LinQ
     partial void OnTenDichVuChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
+    partial void OnInChanging(bool value);
+    partial void OnInChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -31822,6 +31826,26 @@ namespace ThuTien.LinQ
 					this._DanhBo = value;
 					this.SendPropertyChanged("DanhBo");
 					this.OnDanhBoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[In]", Storage="_In", DbType="Bit NOT NULL")]
+		public bool In
+		{
+			get
+			{
+				return this._In;
+			}
+			set
+			{
+				if ((this._In != value))
+				{
+					this.OnInChanging(value);
+					this.SendPropertyChanging();
+					this._In = value;
+					this.SendPropertyChanged("In");
+					this.OnInChanged();
 				}
 			}
 		}

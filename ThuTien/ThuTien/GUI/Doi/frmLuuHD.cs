@@ -286,8 +286,6 @@ namespace ThuTien.GUI.Doi
                                 _cHoaDon.Sua(hoadonCN);
                             }
                         }
-                        //insert update at 20h
-                        _cHoaDon.ExecuteNonQuery("INSERT INTO [dbo].[TT_DichVuThu_CuaHang_Temp]([Nam],[Ky],[Dot])VALUES(" + Nam + "," + Ky + "," + Dot + ")");
                         try
                         {
                             _cHoaDon.ExecuteNonQuery("exec spUpdateHoaDonFromDHN " + Dot + "," + Ky + "," + Nam);

@@ -31,7 +31,7 @@ namespace ThuTien.GUI.Doi
         private void frmCuaHangThuHo_Load(object sender, EventArgs e)
         {
             dgvCuaHangThuHo.AutoGenerateColumns = false;
-            dgvCuaHangThuHo.DataSource = _cHoaDon.ExecuteQuery_DataTable("select * from TT_DichVuThu_CuaHang");
+            Clear();
         }
 
         public void Clear()
@@ -226,6 +226,34 @@ namespace ThuTien.GUI.Doi
             using (SolidBrush b = new SolidBrush(dgvCuaHangThuHo.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvCuaHangThuHo_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvCuaHangThuHo.Columns[e.ColumnIndex].Name == "In")
+                {
+                    if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                    {
+                        if (_en != null)
+                        {
+                            _en.In = bool.Parse(dgvCuaHangThuHo["In",e.RowIndex].Value.ToString());
+                            if (_cCHTH.Sua(_en) == true)
+                            {
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear();
+                            }
+                        }
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
