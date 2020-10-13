@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -42,6 +42,7 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxNoiDungXuLy = new System.Windows.Forms.GroupBox();
+            this.chkCode68 = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label30 = new System.Windows.Forms.Label();
             this.dgvHinh = new System.Windows.Forms.DataGridView();
@@ -120,7 +121,7 @@
             this.label34 = new System.Windows.Forms.Label();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
-            this.chkCode68 = new System.Windows.Forms.CheckBox();
+            this.btnInThongBaoMoi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxNoiDungXuLy.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -263,6 +264,16 @@
             this.groupBoxNoiDungXuLy.TabStop = false;
             this.groupBoxNoiDungXuLy.Text = "Nội Dung Xử Lý";
             // 
+            // chkCode68
+            // 
+            this.chkCode68.AutoSize = true;
+            this.chkCode68.Location = new System.Drawing.Point(706, 23);
+            this.chkCode68.Name = "chkCode68";
+            this.chkCode68.Size = new System.Drawing.Size(77, 20);
+            this.chkCode68.TabIndex = 127;
+            this.chkCode68.Text = "Code 68";
+            this.chkCode68.UseVisualStyleBackColor = true;
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label30);
@@ -289,14 +300,14 @@
             // 
             this.dgvHinh.AllowUserToAddRows = false;
             this.dgvHinh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Hinh,
@@ -1023,15 +1034,15 @@
             this.xoaFile_dgvHinh.Text = "Xóa";
             this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
             // 
-            // chkCode68
+            // btnInThongBaoMoi
             // 
-            this.chkCode68.AutoSize = true;
-            this.chkCode68.Location = new System.Drawing.Point(706, 23);
-            this.chkCode68.Name = "chkCode68";
-            this.chkCode68.Size = new System.Drawing.Size(77, 20);
-            this.chkCode68.TabIndex = 127;
-            this.chkCode68.Text = "Code 68";
-            this.chkCode68.UseVisualStyleBackColor = true;
+            this.btnInThongBaoMoi.Location = new System.Drawing.Point(954, 292);
+            this.btnInThongBaoMoi.Name = "btnInThongBaoMoi";
+            this.btnInThongBaoMoi.Size = new System.Drawing.Size(121, 25);
+            this.btnInThongBaoMoi.TabIndex = 126;
+            this.btnInThongBaoMoi.Text = "In Thông Báo Mới";
+            this.btnInThongBaoMoi.UseVisualStyleBackColor = true;
+            this.btnInThongBaoMoi.Click += new System.EventHandler(this.btnInThongBaoMoi_Click);
             // 
             // frmCTDB
             // 
@@ -1040,6 +1051,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1445, 667);
+            this.Controls.Add(this.btnInThongBaoMoi);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.txtTCHC);
             this.Controls.Add(this.label13);
@@ -1187,5 +1199,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem xoaFile_dgvHinh;
         private System.Windows.Forms.CheckBox chkCode68;
+        private System.Windows.Forms.Button btnInThongBaoMoi;
     }
 }

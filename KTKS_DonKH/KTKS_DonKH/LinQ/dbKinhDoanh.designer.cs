@@ -5677,6 +5677,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _HopDong;
 		
+		private string _MLT;
+		
 		private string _HoTen;
 		
 		private string _DiaChi;
@@ -5801,6 +5803,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDanhBoChanged();
     partial void OnHopDongChanging(string value);
     partial void OnHopDongChanged();
+    partial void OnMLTChanging(string value);
+    partial void OnMLTChanged();
     partial void OnHoTenChanging(string value);
     partial void OnHoTenChanged();
     partial void OnDiaChiChanging(string value);
@@ -5974,6 +5978,26 @@ namespace KTKS_DonKH.LinQ
 					this._HopDong = value;
 					this.SendPropertyChanged("HopDong");
 					this.OnHopDongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MLT", DbType="VarChar(10)")]
+		public string MLT
+		{
+			get
+			{
+				return this._MLT;
+			}
+			set
+			{
+				if ((this._MLT != value))
+				{
+					this.OnMLTChanging(value);
+					this.SendPropertyChanging();
+					this._MLT = value;
+					this.SendPropertyChanged("MLT");
+					this.OnMLTChanged();
 				}
 			}
 		}
@@ -7407,6 +7431,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _HopDong;
 		
+		private string _MLT;
+		
 		private string _HoTen;
 		
 		private string _DiaChi;
@@ -7519,6 +7545,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDanhBoChanged();
     partial void OnHopDongChanging(string value);
     partial void OnHopDongChanged();
+    partial void OnMLTChanging(string value);
+    partial void OnMLTChanged();
     partial void OnHoTenChanging(string value);
     partial void OnHoTenChanged();
     partial void OnDiaChiChanging(string value);
@@ -7680,6 +7708,26 @@ namespace KTKS_DonKH.LinQ
 					this._HopDong = value;
 					this.SendPropertyChanged("HopDong");
 					this.OnHopDongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MLT", DbType="VarChar(10)")]
+		public string MLT
+		{
+			get
+			{
+				return this._MLT;
+			}
+			set
+			{
+				if ((this._MLT != value))
+				{
+					this.OnMLTChanging(value);
+					this.SendPropertyChanging();
+					this._MLT = value;
+					this.SendPropertyChanged("MLT");
+					this.OnMLTChanged();
 				}
 			}
 		}

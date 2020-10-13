@@ -21,6 +21,7 @@ using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.GUI.DonTu;
 using System.Transactions;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -148,23 +149,23 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     txtMaDonMoi.Text = ctchdb.CHDB.MaDonMoi.Value.ToString() + "." + ctchdb.STT.Value.ToString();
             }
             else
-            if (ctchdb.CHDB.MaDon != null)
-            {
-                _dontkh = _cDonKH.Get(ctchdb.CHDB.MaDon.Value);
-                txtMaDonCu.Text = ctchdb.CHDB.MaDon.ToString().Insert(ctchdb.CHDB.MaDon.ToString().Length - 2, "-");
-            }
-            else
-                if (ctchdb.CHDB.MaDonTXL != null)
+                if (ctchdb.CHDB.MaDon != null)
                 {
-                    _dontxl = _cDonTXL.Get(ctchdb.CHDB.MaDonTXL.Value);
-                    txtMaDonCu.Text = "TXL" + ctchdb.CHDB.MaDonTXL.ToString().Insert(ctchdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
+                    _dontkh = _cDonKH.Get(ctchdb.CHDB.MaDon.Value);
+                    txtMaDonCu.Text = ctchdb.CHDB.MaDon.ToString().Insert(ctchdb.CHDB.MaDon.ToString().Length - 2, "-");
                 }
                 else
-                    if (ctchdb.CHDB.MaDonTBC != null)
+                    if (ctchdb.CHDB.MaDonTXL != null)
                     {
-                        _dontbc = _cDonTBC.Get(ctchdb.CHDB.MaDonTBC.Value);
-                        txtMaDonCu.Text = "TBC" + ctchdb.CHDB.MaDonTBC.ToString().Insert(ctchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
+                        _dontxl = _cDonTXL.Get(ctchdb.CHDB.MaDonTXL.Value);
+                        txtMaDonCu.Text = "TXL" + ctchdb.CHDB.MaDonTXL.ToString().Insert(ctchdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
                     }
+                    else
+                        if (ctchdb.CHDB.MaDonTBC != null)
+                        {
+                            _dontbc = _cDonTBC.Get(ctchdb.CHDB.MaDonTBC.Value);
+                            txtMaDonCu.Text = "TBC" + ctchdb.CHDB.MaDonTBC.ToString().Insert(ctchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
+                        }
             txtMaThongBaoCH.Text = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
             txtTCHC.Text = ctchdb.TCHC;
 
@@ -236,23 +237,23 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     txtMaDonMoi.Text = ctctdb.CHDB.MaDonMoi.Value.ToString() + "." + ctctdb.STT.Value.ToString();
             }
             else
-            if (ctctdb.CHDB.MaDon != null)
-            {
-                _dontkh = _cDonKH.Get(ctctdb.CHDB.MaDon.Value);
-                txtMaDonCu.Text = ctctdb.CHDB.MaDon.ToString().Insert(ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
-            }
-            else
-                if (ctctdb.CHDB.MaDonTXL != null)
+                if (ctctdb.CHDB.MaDon != null)
                 {
-                    _dontxl = _cDonTXL.Get(ctctdb.CHDB.MaDonTXL.Value);
-                    txtMaDonCu.Text = "TXL" + ctctdb.CHDB.MaDonTXL.ToString().Insert(ctctdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
+                    _dontkh = _cDonKH.Get(ctctdb.CHDB.MaDon.Value);
+                    txtMaDonCu.Text = ctctdb.CHDB.MaDon.ToString().Insert(ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
                 }
                 else
-                    if (ctctdb.CHDB.MaDonTBC != null)
+                    if (ctctdb.CHDB.MaDonTXL != null)
                     {
-                        _dontbc = _cDonTBC.Get(ctctdb.CHDB.MaDonTBC.Value);
-                        txtMaDonCu.Text = "TBC" + ctctdb.CHDB.MaDonTBC.ToString().Insert(ctctdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
+                        _dontxl = _cDonTXL.Get(ctctdb.CHDB.MaDonTXL.Value);
+                        txtMaDonCu.Text = "TXL" + ctctdb.CHDB.MaDonTXL.ToString().Insert(ctctdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
                     }
+                    else
+                        if (ctctdb.CHDB.MaDonTBC != null)
+                        {
+                            _dontbc = _cDonTBC.Get(ctctdb.CHDB.MaDonTBC.Value);
+                            txtMaDonCu.Text = "TBC" + ctctdb.CHDB.MaDonTBC.ToString().Insert(ctctdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
+                        }
             txtMaThongBaoCT.Text = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
 
             txtDanhBo.Text = ctctdb.DanhBo;
@@ -451,7 +452,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void txtMaThongBaoCT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtMaThongBaoCT.Text.Trim()!="")
+            if (e.KeyChar == 13 && txtMaThongBaoCT.Text.Trim() != "")
             {
                 string MaDon = txtMaThongBaoCT.Text.Trim();
                 Clear();
@@ -587,6 +588,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     ctchdb.DiaChi = txtDiaChi.Text.Trim();
                     if (_hoadon != null)
                     {
+                        ctchdb.MLT = _hoadon.MALOTRINH;
                         ctchdb.Dot = _hoadon.DOT.ToString();
                         ctchdb.Ky = _hoadon.KY.ToString();
                         ctchdb.Nam = _hoadon.NAM.ToString();
@@ -608,6 +610,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     ///Đã lập Cắt Tạm
                     if (_ctctdb != null)
                     {
+                        ctchdb.MLT = _ctctdb.MLT;
+                        ctchdb.Dot = _ctctdb.Dot;
+                        ctchdb.Ky = _ctctdb.Ky;
+                        ctchdb.Nam = _ctctdb.Nam;
+                        ctchdb.Phuong = _ctctdb.Phuong;
+                        ctchdb.Quan = _ctctdb.Quan;
+
                         ctchdb.DaLapCatTam = true;
                         ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
 
@@ -636,27 +645,27 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     ctchdb.ThongBaoDuocKy = true;
 
                     using (TransactionScope scope = new TransactionScope())
-                    if (_cCHDB.ThemCTCHDB(ctchdb))
-                    {
-                        foreach (DataGridViewRow item in dgvHinh.Rows)
+                        if (_cCHDB.ThemCTCHDB(ctchdb))
                         {
-                            CHDB_ChiTietCatHuy_Hinh en = new CHDB_ChiTietCatHuy_Hinh();
-                            en.IDCHDB_ChiTietCatHuy = ctchdb.MaCTCHDB;
-                            en.Name = item.Cells["Name_Hinh"].Value.ToString();
-                            en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
-                            _cCHDB.Them_Hinh(en);
-                        }
-                        if (_dontu_ChiTiet != null)
-                        {
-                            if (_cDonTu.Them_LichSu(ctchdb.CreateDate.Value, "CHDB", "Đã Lập Thông Báo Cắt Hủy, " + ctchdb.LyDo, (int)ctchdb.MaCTCHDB, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
+                            foreach (DataGridViewRow item in dgvHinh.Rows)
+                            {
+                                CHDB_ChiTietCatHuy_Hinh en = new CHDB_ChiTietCatHuy_Hinh();
+                                en.IDCHDB_ChiTietCatHuy = ctchdb.MaCTCHDB;
+                                en.Name = item.Cells["Name_Hinh"].Value.ToString();
+                                en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
+                                _cCHDB.Them_Hinh(en);
+                            }
+                            if (_dontu_ChiTiet != null)
+                            {
+                                if (_cDonTu.Them_LichSu(ctchdb.CreateDate.Value, "CHDB", "Đã Lập Thông Báo Cắt Hủy, " + ctchdb.LyDo, (int)ctchdb.MaCTCHDB, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
+                                    scope.Complete();
+                            }
+                            else
                                 scope.Complete();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear();
+
                         }
-                        else
-                            scope.Complete();
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Clear();
-                       
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -682,6 +691,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _ctchdb.DiaChi = txtDiaChi.Text.Trim();
                         if (_hoadon != null)
                         {
+                            _ctchdb.MLT = _hoadon.MALOTRINH;
                             _ctchdb.Dot = _hoadon.DOT.ToString();
                             _ctchdb.Ky = _hoadon.KY.ToString();
                             _ctchdb.Nam = _hoadon.NAM.ToString();
@@ -723,7 +733,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _ctchdb.NoiDungXuLy = cmbNoiDung.SelectedValue.ToString();
                             _ctchdb.CreateDate_NgayXuLy = DateTime.Now;
                             if (_dontu_ChiTiet != null)
-                                _cDonTu.Them_LichSu(_ctchdb.NgayXuLy.Value, "CHDB", _ctchdb.NoiDungXuLy, (int)_ctchdb.MaCTCHDB, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);   
+                                _cDonTu.Them_LichSu(_ctchdb.NgayXuLy.Value, "CHDB", _ctchdb.NoiDungXuLy, (int)_ctchdb.MaCTCHDB, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         }
                         else
                         {
@@ -745,7 +755,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                           
+
                         }
                     }
                 }
@@ -775,7 +785,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                           
+
                         }
                     }
                 }
@@ -794,7 +804,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 try
                 {
-                    if (_ctchdb != null&&_dontu_ChiTiet==null)
+                    if (_ctchdb != null && _dontu_ChiTiet == null)
                     {
                         CHDB_GhiChu item = new CHDB_GhiChu();
                         item.NgayLap = dateLap.Value;
@@ -874,7 +884,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 if (_cCHDB.ThemPhieuHuy(ycchdb))
                                 {
                                     if (_dontu_ChiTiet != null)
-                                        _cDonTu.Them_LichSu(ycchdb.CreateDate.Value,"PhieuCHDB", "Đã Lập Phiếu Hủy, " + ycchdb.LyDo, (int)ycchdb.MaYCCHDB, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                                        _cDonTu.Them_LichSu(ycchdb.CreateDate.Value, "PhieuCHDB", "Đã Lập Phiếu Hủy, " + ycchdb.LyDo, (int)ycchdb.MaYCCHDB, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
 
                                     _ctchdb.DaLapPhieu = true;
                                     _ctchdb.SoPhieu = ycchdb.MaYCCHDB;
@@ -925,10 +935,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     else
                                         if (ycchdb.CHDB.MaDon != null)
                                             dr["MaDon"] = ycchdb.CHDB.MaDon.ToString().Insert(ycchdb.CHDB.MaDon.ToString().Length - 2, "-");
-                                    else
+                                        else
                                             if (ycchdb.CHDB.MaDonTXL != null)
                                                 dr["MaDon"] = "TXL" + ycchdb.CHDB.MaDonTXL.ToString().Insert(ycchdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
-                                        else
+                                            else
                                                 if (ycchdb.CHDB.MaDonTBC != null)
                                                     dr["MaDon"] = "TBC" + ycchdb.CHDB.MaDonTBC.ToString().Insert(ycchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
 
@@ -1033,14 +1043,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                         if (ycchdb.CHDB.MaDonMoi != null)
                                             dr["MaDon"] = ycchdb.CHDB.MaDonMoi.ToString();
                                         else
-                                        if (ycchdb.CHDB.MaDon != null)
-                                            dr["MaDon"] = ycchdb.CHDB.MaDon.ToString().Insert(ycchdb.CHDB.MaDon.ToString().Length - 2, "-");
-                                        else
-                                            if (ycchdb.CHDB.MaDonTXL != null)
-                                                dr["MaDon"] = "TXL" + ycchdb.CHDB.MaDonTXL.ToString().Insert(ycchdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
+                                            if (ycchdb.CHDB.MaDon != null)
+                                                dr["MaDon"] = ycchdb.CHDB.MaDon.ToString().Insert(ycchdb.CHDB.MaDon.ToString().Length - 2, "-");
                                             else
-                                                if (ycchdb.CHDB.MaDonTBC != null)
-                                                    dr["MaDon"] = "TBC" + ycchdb.CHDB.MaDonTBC.ToString().Insert(ycchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
+                                                if (ycchdb.CHDB.MaDonTXL != null)
+                                                    dr["MaDon"] = "TXL" + ycchdb.CHDB.MaDonTXL.ToString().Insert(ycchdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
+                                                else
+                                                    if (ycchdb.CHDB.MaDonTBC != null)
+                                                        dr["MaDon"] = "TBC" + ycchdb.CHDB.MaDonTBC.ToString().Insert(ycchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
 
                                         dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 
@@ -1090,14 +1100,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 if (ycchdb.CHDB.MaDonMoi != null)
                                     dr["MaDon"] = ycchdb.CHDB.MaDonMoi.ToString();
                                 else
-                                if (ycchdb.CHDB.MaDon != null)
-                                    dr["MaDon"] = ycchdb.CHDB.MaDon.ToString().Insert(ycchdb.CHDB.MaDon.ToString().Length - 2, "-");
-                                else
-                                    if (ycchdb.CHDB.MaDonTXL != null)
-                                        dr["MaDon"] = "TXL" + ycchdb.CHDB.MaDonTXL.ToString().Insert(ycchdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
+                                    if (ycchdb.CHDB.MaDon != null)
+                                        dr["MaDon"] = ycchdb.CHDB.MaDon.ToString().Insert(ycchdb.CHDB.MaDon.ToString().Length - 2, "-");
                                     else
-                                        if (ycchdb.CHDB.MaDonTBC != null)
-                                            dr["MaDon"] = "TBC" + ycchdb.CHDB.MaDonTBC.ToString().Insert(ycchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
+                                        if (ycchdb.CHDB.MaDonTXL != null)
+                                            dr["MaDon"] = "TXL" + ycchdb.CHDB.MaDonTXL.ToString().Insert(ycchdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
+                                        else
+                                            if (ycchdb.CHDB.MaDonTBC != null)
+                                                dr["MaDon"] = "TBC" + ycchdb.CHDB.MaDonTBC.ToString().Insert(ycchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
 
                                 dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 
@@ -1394,7 +1404,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 dr["NoiNhan"] = _ctchdb.NoiNhan + "\r\nTB" + _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length - 2, "-");
 
-                if (_ctchdb.NgayXuLy!=null)
+                if (_ctchdb.NgayXuLy != null)
                     dr["NgayXuLy"] = _ctchdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + _ctchdb.NoiDungXuLy;
 
                 dr["ChucVu"] = _ctchdb.ChucVu;
@@ -1522,6 +1532,55 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
         }
 
-        
+        private void btnInThongBaoMoi_Click(object sender, EventArgs e)
+        {
+            if (_ctchdb != null)
+            {
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
+
+                //dr["SoPhieu"] = _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length - 2, "-");
+                dr["HoTen"] = _ctchdb.HoTen;
+                dr["DiaChi"] = _ctchdb.DiaChi;
+                if (!string.IsNullOrEmpty(_ctchdb.DanhBo))
+                    dr["DanhBo"] = _ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["HopDong"] = _ctchdb.HopDong;
+                dr["MLT"] = _ctchdb.MLT;
+                dr["Quan"] = _cCHDB.getTenQuan(int.Parse(_ctchdb.Quan));
+                dr["Phuong"] = _cCHDB.getTenPhuong(int.Parse(_ctchdb.Quan), int.Parse(_ctchdb.Phuong));
+
+                dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + _ctchdb.ViTriDHN1 + ", " + _ctchdb.ViTriDHN2;
+
+                if (_ctchdb.LyDo != "Vấn Đề Khác")
+                    dr["LyDo"] = _ctchdb.LyDo + ". ";
+                if (_ctchdb.GhiChuLyDo != "")
+                    dr["LyDo"] += _ctchdb.GhiChuLyDo + ". ";
+                if (_ctchdb.SoTien.ToString() != "")
+                    dr["LyDo"] += "Tổng Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctchdb.SoTien);
+                dr["NoiDung"] = _ctchdb.NoiDung;
+
+                dr["NoiNhan"] = _ctchdb.NoiNhan + "\r\nTB" + _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length - 2, "-");
+
+                if (_ctchdb.NgayXuLy != null)
+                    dr["NgayXuLy"] = _ctchdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + _ctchdb.NoiDungXuLy;
+
+                dr["ChucVu"] = _ctchdb.ChucVu;
+                dr["NguoiKy"] = _ctchdb.NguoiKy;
+                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+
+                dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
+
+                ReportDocument rpt;
+                if (_ctchdb.LyDo.Contains("Nhiều Kỳ") == true)
+                    rpt = new rptThongBaoCHDB_NoNhieuKy();
+                else
+                    rpt = new rptThongBaoCHDB_PHT();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.ShowDialog();
+            }
+        }
+
+
     }
 }

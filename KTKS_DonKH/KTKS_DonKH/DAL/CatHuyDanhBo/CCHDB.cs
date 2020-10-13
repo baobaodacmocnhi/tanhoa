@@ -394,7 +394,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             where item.CHDB.MaDonMoi == MaDon
                             select new
                             {
-                                MaDon= db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ?  item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT,
+                                MaDon = db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT,
                                 item.PhieuDuocKy,
                                 item.DaLapPhieu,
                                 item.SoPhieu,
@@ -548,11 +548,11 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_CatTam(string MaQuan,DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_CatTam(string MaQuan, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.CHDB_ChiTietCatTams
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
-                        && item.Quan==MaQuan
+                        && item.Quan == MaQuan
                         select new
                         {
                             MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
@@ -576,9 +576,9 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_CatTam_LyDo_NoiDungXuLy(string LyDo,string NoiDungXuLy)
+        public DataTable getDS_CatTam_LyDo_NoiDungXuLy(string LyDo, string NoiDungXuLy)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.LyDo==LyDo&&item.NoiDungXuLy==NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.LyDo == LyDo && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
         }
 
         public DataTable GetDSCatTam_NgayLap_ChuaXuLy(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -588,7 +588,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatTam_NgayLap_Code68(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Code68==true).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Code68 == true).OrderBy(item => item.CreateDate).ToList());
         }
 
         public DataTable GetDSCatTam_NgayLap_LyDo_ChuaXuLy(DateTime FromCreateDate, DateTime ToCreateDate, string LyDo)
@@ -598,12 +598,12 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatTam_NgayLap_LyDo_Code68(DateTime FromCreateDate, DateTime ToCreateDate, string LyDo)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Code68==true && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Code68 == true && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
         }
 
         public DataTable GetDSCatTam_NgayLap_Quan_ChuaXuLy(DateTime FromCreateDate, DateTime ToCreateDate, string MaQuan)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date &&item.Quan==MaQuan && item.NgayXuLy == null).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.NgayXuLy == null).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatTam t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -616,7 +616,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatTam_NgayLap_Quan_Code68(DateTime FromCreateDate, DateTime ToCreateDate, string MaQuan)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.Code68==true).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.Code68 == true).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatTam t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -629,7 +629,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatTam_NgayLap_ChuaXuLy(DateTime FromCreateDate, DateTime ToCreateDate, string MaQuan, string LyDo)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date&&item.Quan==MaQuan && item.NgayXuLy == null && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.NgayXuLy == null && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatTam t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -642,7 +642,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatTam_NgayLap_Code68(DateTime FromCreateDate, DateTime ToCreateDate, string MaQuan, string LyDo)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.Code68==true && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.Code68 == true && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatTam t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -665,7 +665,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatTam_NgayLap_Quan_DaXuLy(DateTime FromCreateDate, DateTime ToCreateDate, string MaQuan)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date &&item.Quan==MaQuan&& item.NgayXuLy != null).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.NgayXuLy != null).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatTam t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -678,7 +678,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatTam_NgayLap_DaXuLy(DateTime FromCreateDate, DateTime ToCreateDate, string MaQuan, string LyDo)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date &&item.Quan==MaQuan&& item.NgayXuLy != null && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.NgayXuLy != null && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatTam t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -696,12 +696,12 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatTam_NgayXuLy_DaXuLy_Code68(DateTime FromNgayXuLy, DateTime ToNgayXuLy)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.Code68==true&& item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.Code68 == true && item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date).OrderBy(item => item.CreateDate).ToList());
         }
 
         public DataTable GetDSCatTam_NgayXuLy_Quan_DaXuLy(DateTime FromNgayXuLy, DateTime ToNgayXuLy, string MaQuan)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date&&item.Quan==MaQuan).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.Quan == MaQuan).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatTam t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -714,7 +714,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatTam_NgayXuLy_Quan_DaXuLy_Code68(DateTime FromNgayXuLy, DateTime ToNgayXuLy, string MaQuan)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item =>item.Code68==true&& item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.Quan == MaQuan).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.Code68 == true && item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.Quan == MaQuan).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatTam t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -725,19 +725,19 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             //return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetDSCatTam_NgayXuLy_NoiDung_DaXuLy(DateTime FromNgayXuLy, DateTime ToNgayXuLy,string NoiDungXuLy)
+        public DataTable GetDSCatTam_NgayXuLy_NoiDung_DaXuLy(DateTime FromNgayXuLy, DateTime ToNgayXuLy, string NoiDungXuLy)
         {
             return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
         }
 
         public DataTable GetDSCatTam_NgayXuLy_NoiDung_DaXuLy_Code68(DateTime FromNgayXuLy, DateTime ToNgayXuLy, string NoiDungXuLy)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item =>item.Code68==true&& item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.Code68 == true && item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
         }
 
         public DataTable GetDSCatTam_NgayXuLy_DaXuLy(DateTime FromNgayXuLy, DateTime ToNgayXuLy, string MaQuan, string NoiDungXuLy)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date &&item.Quan==MaQuan&& item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.Quan == MaQuan && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatTam t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -750,7 +750,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatTam_NgayXuLy_DaXuLy_Code68(DateTime FromNgayXuLy, DateTime ToNgayXuLy, string MaQuan, string NoiDungXuLy)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item =>item.Code68==true&& item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.Quan == MaQuan && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatTams.Where(item => item.Code68 == true && item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.Quan == MaQuan && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatTam t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -777,7 +777,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getCatTam_BaoCao(DateTime FromDate, DateTime ToDate,string MaQuan)
+        public DataTable getCatTam_BaoCao(DateTime FromDate, DateTime ToDate, string MaQuan)
         {
             string sql = "declare @FromDate datetime"
                         + " declare @ToDate datetime"
@@ -786,7 +786,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         + " declare @LuyKe int"
                         + " declare @Nhan int"
                         + " declare @XuLy int"
-                        + " set @LuyKe=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatTam where CAST(CreateDate as date)<@FromDate and (NgayXuLy is null or CAST(NgayXuLy as date)>@ToDate) and Quan='"+MaQuan+"')"
+                        + " set @LuyKe=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatTam where CAST(CreateDate as date)<@FromDate and (NgayXuLy is null or CAST(NgayXuLy as date)>@ToDate) and Quan='" + MaQuan + "')"
                         + " set @Nhan=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatTam where CAST(CreateDate as date)>=@FromDate and CAST(CreateDate as date)<=@ToDate and Quan='" + MaQuan + "')"
                         + " set @XuLy=(select COUNT(MaCTCTDB) from CHDB_ChiTietCatTam where CAST(NgayXuLy as date)>=@FromDate and CAST(NgayXuLy as date)<=@ToDate and Quan='" + MaQuan + "')"
                         + " select LuyKe=@LuyKe,Nhan=@Nhan,XuLy=@XuLy,Ton=@LuyKe+@Nhan-@XuLy";
@@ -1132,11 +1132,11 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_CatHuy(string MaQuan,DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_CatHuy(string MaQuan, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.CHDB_ChiTietCatHuys
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
-                        && item.Quan==MaQuan
+                        && item.Quan == MaQuan
                         select new
                         {
                             MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
@@ -1216,7 +1216,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatHuy_NgayLap_Code68(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Code68==true).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Code68 == true).OrderBy(item => item.CreateDate).ToList());
         }
 
         public DataTable GetDSCatHuy_NgayLap_LyDo_ChuaXuLy(DateTime FromCreateDate, DateTime ToCreateDate, string LyDo)
@@ -1226,12 +1226,12 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatHuy_NgayLap_LyDo_Code68(DateTime FromCreateDate, DateTime ToCreateDate, string LyDo)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Code68==true && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Code68 == true && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
         }
 
         public DataTable GetDSCatHuy_NgayLap_Quan_ChuaXuLy(DateTime FromCreateDate, DateTime ToCreateDate, string MaQuan)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date &&item.Quan==MaQuan&& item.NgayXuLy == null).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.NgayXuLy == null).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatHuy t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -1244,7 +1244,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatHuy_NgayLap_Quan_Code68(DateTime FromCreateDate, DateTime ToCreateDate, string MaQuan)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.Code68==true).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.Code68 == true).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatHuy t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -1257,7 +1257,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatHuy_NgayLap_ChuaXuLy(DateTime FromCreateDate, DateTime ToCreateDate, string MaQuan, string LyDo)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date &&item.Quan==MaQuan && item.NgayXuLy == null && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.NgayXuLy == null && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatHuy t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -1270,7 +1270,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatHuy_NgayLap_Code68(DateTime FromCreateDate, DateTime ToCreateDate, string MaQuan, string LyDo)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.Code68==true && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.Code68 == true && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatHuy t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -1293,7 +1293,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatHuy_NgayLap_Quan_DaXuLy(DateTime FromCreateDate, DateTime ToCreateDate, string MaQuan)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan==MaQuan && item.NgayXuLy != null).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.NgayXuLy != null).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatHuy t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -1306,7 +1306,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatHuy_NgayLap_DaXuLy(DateTime FromCreateDate, DateTime ToCreateDate, string MaQuan, string LyDo)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date &&item.Quan==MaQuan && item.NgayXuLy != null && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Quan == MaQuan && item.NgayXuLy != null && item.LyDo.Contains(LyDo)).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatHuy t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -1324,12 +1324,12 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatHuy_NgayXuLy_DaXuLy_Code68(DateTime FromNgayXuLy, DateTime ToNgayXuLy)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item =>item.Code68==true&& item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.Code68 == true && item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date).OrderBy(item => item.CreateDate).ToList());
         }
 
-        public DataTable GetDSCatHuy_NgayXuLy_Quan_DaXuLy(DateTime FromNgayXuLy, DateTime ToNgayXuLy,string MaQuan)
+        public DataTable GetDSCatHuy_NgayXuLy_Quan_DaXuLy(DateTime FromNgayXuLy, DateTime ToNgayXuLy, string MaQuan)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.Quan==MaQuan).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.Quan == MaQuan).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatHuy t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -1342,7 +1342,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatHuy_NgayXuLy_Quan_DaXuLy_Code68(DateTime FromNgayXuLy, DateTime ToNgayXuLy, string MaQuan)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item =>item.Code68==true&& item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.Quan == MaQuan).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.Code68 == true && item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.Quan == MaQuan).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatHuy t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -1360,12 +1360,12 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatHuy_NgayXuLy_NoiDung_DaXuLy_Code68(DateTime FromNgayXuLy, DateTime ToNgayXuLy, string NoiDungXuLy)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item =>item.Code68==true&& item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.Code68 == true && item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
         }
 
         public DataTable GetDSCatHuy_NgayXuLy_DaXuLy(DateTime FromNgayXuLy, DateTime ToNgayXuLy, string MaQuan, string NoiDungXuLy)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date&&item.Quan==MaQuan && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.Quan == MaQuan && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatHuy t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -1378,7 +1378,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public DataTable GetDSCatHuy_NgayXuLy_DaXuLy_Code68(DateTime FromNgayXuLy, DateTime ToNgayXuLy, string MaQuan, string NoiDungXuLy)
         {
-            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item =>item.Code68==true&& item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.Quan == MaQuan && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
+            return LINQToDataTable(db.CHDB_ChiTietCatHuys.Where(item => item.Code68 == true && item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date && item.Quan == MaQuan && item.NoiDungXuLy == NoiDungXuLy).OrderBy(item => item.CreateDate).ToList());
             //string sql = "select t1.*,t3.TenQuan from CHDB_ChiTietCatHuy t1"
             //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
             //            + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
@@ -1405,7 +1405,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getCatHuy_BaoCao(DateTime FromDate, DateTime ToDate,string MaQuan)
+        public DataTable getCatHuy_BaoCao(DateTime FromDate, DateTime ToDate, string MaQuan)
         {
             string sql = "declare @FromDate datetime"
                         + " declare @ToDate datetime"
@@ -1664,7 +1664,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             };
                     return LINQToDataTable(query);
                 default:
-                   query = from item in db.CHDB_Phieus
+                    query = from item in db.CHDB_Phieus
                             where item.CHDB.MaDonMoi == MaDon
                             select new
                             {
@@ -1777,11 +1777,11 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_PhieuHuy(DateTime FromCreateDate, DateTime ToCreateDate,string MaQuan)
+        public DataTable getDS_PhieuHuy(DateTime FromCreateDate, DateTime ToCreateDate, string MaQuan)
         {
             var query = from item in db.CHDB_Phieus
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
-                        && item.Quan==MaQuan
+                        && item.Quan == MaQuan
                         select new
                         {
                             MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
@@ -2112,6 +2112,16 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         public CHDB get(int MaDon)
         {
             return db.CHDBs.SingleOrDefault(item => item.MaDonMoi == MaDon);
+        }
+
+        public string getTenQuan(int MaQuan)
+        {
+            return db.Quans.SingleOrDefault(item => item.ID == MaQuan).Name2;
+        }
+
+        public string getTenPhuong(int MaQuan, int MaPhuong)
+        {
+            return db.Phuongs.SingleOrDefault(item => item.IDQuan == MaQuan && item.IDPhuong == MaPhuong).Name2;
         }
 
         #region Hình
