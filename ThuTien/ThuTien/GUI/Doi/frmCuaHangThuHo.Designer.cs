@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnChonFile = new System.Windows.Forms.Button();
             this.dgvCuaHangThuHo = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,6 +49,11 @@
             this.To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.lbTo = new System.Windows.Forms.Label();
+            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
+            this.lbNhanVien = new System.Windows.Forms.Label();
+            this.btnXem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuaHangThuHo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,14 +71,14 @@
             // 
             this.dgvCuaHangThuHo.AllowUserToAddRows = false;
             this.dgvCuaHangThuHo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCuaHangThuHo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuaHangThuHo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCuaHangThuHo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCuaHangThuHo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -87,8 +92,8 @@
             this.dgvCuaHangThuHo.Location = new System.Drawing.Point(12, 99);
             this.dgvCuaHangThuHo.MultiSelect = false;
             this.dgvCuaHangThuHo.Name = "dgvCuaHangThuHo";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvCuaHangThuHo.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvCuaHangThuHo.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCuaHangThuHo.Size = new System.Drawing.Size(828, 465);
             this.dgvCuaHangThuHo.TabIndex = 72;
             this.dgvCuaHangThuHo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCuaHangThuHo_CellContentClick);
@@ -202,6 +207,7 @@
             // 
             // Dot
             // 
+            this.Dot.DataPropertyName = "Dot";
             this.Dot.HeaderText = "Đợt";
             this.Dot.Name = "Dot";
             this.Dot.Width = 50;
@@ -227,11 +233,65 @@
             this.In.Name = "In";
             this.In.Width = 30;
             // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(122, 38);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(50, 21);
+            this.cmbTo.TabIndex = 85;
+            this.cmbTo.Visible = false;
+            this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
+            // 
+            // lbTo
+            // 
+            this.lbTo.AutoSize = true;
+            this.lbTo.Location = new System.Drawing.Point(93, 41);
+            this.lbTo.Name = "lbTo";
+            this.lbTo.Size = new System.Drawing.Size(23, 13);
+            this.lbTo.TabIndex = 84;
+            this.lbTo.Text = "Tổ:";
+            this.lbTo.Visible = false;
+            // 
+            // cmbNhanVien
+            // 
+            this.cmbNhanVien.FormattingEnabled = true;
+            this.cmbNhanVien.Location = new System.Drawing.Point(244, 38);
+            this.cmbNhanVien.Name = "cmbNhanVien";
+            this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
+            this.cmbNhanVien.TabIndex = 83;
+            this.cmbNhanVien.Visible = false;
+            // 
+            // lbNhanVien
+            // 
+            this.lbNhanVien.AutoSize = true;
+            this.lbNhanVien.Location = new System.Drawing.Point(178, 41);
+            this.lbNhanVien.Name = "lbNhanVien";
+            this.lbNhanVien.Size = new System.Drawing.Size(60, 13);
+            this.lbNhanVien.TabIndex = 82;
+            this.lbNhanVien.Text = "Nhân Viên:";
+            this.lbNhanVien.Visible = false;
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(368, 36);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 86;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
             // frmCuaHangThuHo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 578);
+            this.ClientSize = new System.Drawing.Size(1254, 578);
+            this.Controls.Add(this.btnXem);
+            this.Controls.Add(this.cmbTo);
+            this.Controls.Add(this.lbTo);
+            this.Controls.Add(this.cmbNhanVien);
+            this.Controls.Add(this.lbNhanVien);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
@@ -273,5 +333,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn To;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
         private System.Windows.Forms.DataGridViewCheckBoxColumn In;
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label lbTo;
+        private System.Windows.Forms.ComboBox cmbNhanVien;
+        private System.Windows.Forms.Label lbNhanVien;
+        private System.Windows.Forms.Button btnXem;
     }
 }

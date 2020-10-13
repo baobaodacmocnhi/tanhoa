@@ -286,10 +286,12 @@ namespace ThuTien.GUI.Doi
                                 _cHoaDon.Sua(hoadonCN);
                             }
                         }
+
+                        _cHoaDon.ExecuteNonQuery("insert into Temp_Insert_HoaDon(Nam,Ky,Dot)values(" + Nam + "," + Ky + "," + Dot + ")");
+
                         try
                         {
                             _cHoaDon.ExecuteNonQuery("exec spUpdateHoaDonFromDHN " + Dot + "," + Ky + "," + Nam);
-
                         }
                         catch (Exception ex)
                         {

@@ -21,7 +21,10 @@ namespace ThuTien.GUI.Doi
         string _mnu = "mnuCuaHangThuHo";
         CHoaDon _cHoaDon = new CHoaDon();
         CCuaHangThuHo _cCHTH = new CCuaHangThuHo();
+        CTo _cTo = new CTo();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
         TT_DichVuThu_CuaHang _en = null;
+        bool _flagLoadFirst = false;
 
         public frmCuaHangThuHo()
         {
@@ -32,6 +35,41 @@ namespace ThuTien.GUI.Doi
         {
             dgvCuaHangThuHo.AutoGenerateColumns = false;
             Clear();
+
+            if (CNguoiDung.Doi == true)
+            {
+                lbTo.Visible = true;
+                cmbTo.Visible = true;
+                lbNhanVien.Visible = true;
+                cmbNhanVien.Visible = true;
+                List<TT_To> lst = _cTo.GetDSHanhThu();
+                TT_To to = new TT_To();
+                to.MaTo = 0;
+                to.TenTo = "Tất Cả";
+                lst.Insert(0, to);
+                cmbTo.DataSource = lst;
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+            }
+            else
+                if (CNguoiDung.ToTruong == true)
+                {
+                    lbNhanVien.Visible = true;
+                    cmbNhanVien.Visible = true;
+                    List<TT_NguoiDung> lst = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+                    TT_NguoiDung to = new TT_NguoiDung();
+                    to.MaND = 0;
+                    to.HoTen = "Tất Cả";
+                    lst.Insert(0, to);
+                    cmbNhanVien.DataSource = lst;
+                    cmbNhanVien.DisplayMember = "HoTen";
+                    cmbNhanVien.ValueMember = "MaND";
+                }
+                else
+                {
+
+                }
+            _flagLoadFirst = true;
         }
 
         public void Clear()
@@ -239,11 +277,11 @@ namespace ThuTien.GUI.Doi
                     {
                         if (_en != null)
                         {
-                            _en.In = bool.Parse(dgvCuaHangThuHo["In",e.RowIndex].Value.ToString());
+                            _en.In = bool.Parse(dgvCuaHangThuHo["In", e.RowIndex].Value.ToString());
                             if (_cCHTH.Sua(_en) == true)
                             {
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Clear();
+                                //Clear();
                             }
                         }
                     }
@@ -255,6 +293,47 @@ namespace ThuTien.GUI.Doi
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_flagLoadFirst == true && cmbTo.SelectedIndex != -1)
+            {
+                List<TT_NguoiDung> lst = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
+                TT_NguoiDung to = new TT_NguoiDung();
+                to.MaND = 0;
+                to.HoTen = "Tất Cả";
+                lst.Insert(0, to);
+                cmbNhanVien.DataSource = lst;
+                cmbNhanVien.DisplayMember = "HoTen";
+                cmbNhanVien.ValueMember = "MaND";
+            }
+            else
+                cmbNhanVien.DataSource = null;
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.Doi == true)
+            {
+                if (cmbTo.SelectedIndex == 0)
+                    dgvCuaHangThuHo.DataSource = _cCHTH.getDS();
+                else
+                    if (cmbNhanVien.SelectedIndex == 0)
+                        dgvCuaHangThuHo.DataSource = _cCHTH.getDS_To(int.Parse(cmbTo.SelectedValue.ToString()));
+                    else
+                        dgvCuaHangThuHo.DataSource = _cCHTH.getDS_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()));
+            }
+            else
+                if (CNguoiDung.ToTruong == true)
+                {
+                    if (cmbNhanVien.SelectedIndex == 0)
+                        dgvCuaHangThuHo.DataSource = _cCHTH.getDS_To(CNguoiDung.MaTo);
+                    else
+                        dgvCuaHangThuHo.DataSource = _cCHTH.getDS_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()));
+                }
+                else
+                    dgvCuaHangThuHo.DataSource = _cCHTH.getDS_NV(CNguoiDung.MaND);
         }
 
 
