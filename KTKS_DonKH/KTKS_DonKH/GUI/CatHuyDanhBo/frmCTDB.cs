@@ -1456,7 +1456,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (_ctctdb.LyDo.Contains("Nhiều Kỳ") == true)
                     rpt = new rptThongBaoCHDB_NoNhieuKy();
                 else
-                    rpt = new rptThongBaoCHDB_PHT();
+                    rpt = new rptThongBaoCTDB_PHT();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
