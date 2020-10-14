@@ -287,7 +287,14 @@ namespace ThuTien.GUI.Doi
                             }
                         }
 
-                        _cHoaDon.ExecuteNonQuery("insert into Temp_Insert_HoaDon(Nam,Ky,Dot)values(" + Nam + "," + Ky + "," + Dot + ")");
+                        try
+                        {
+                            _cHoaDon.ExecuteNonQuery("insert into Temp_Insert_HoaDon(Nam,Ky,Dot)values(" + Nam + "," + Ky + "," + Dot + ")");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi Temp_Insert_HoaDon\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
 
                         try
                         {

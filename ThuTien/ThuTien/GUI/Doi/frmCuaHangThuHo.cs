@@ -211,7 +211,7 @@ namespace ThuTien.GUI.Doi
                 {
                     if (_en != null)
                     {
-                        if (_cCHTH.checkExists_DiaChi(txtDiaChi.Text.Trim()) == true)
+                        if (txtDiaChi.Text.Trim() != _en.DiaChi && _cCHTH.checkExists_DiaChi(txtDiaChi.Text.Trim()) == true)
                         {
                             MessageBox.Show("Địa chỉ đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
