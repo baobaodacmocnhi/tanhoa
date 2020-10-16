@@ -17,6 +17,13 @@ namespace KTKS_DonKH.DAL.QuanTri
             set { CTaiKhoan._maUser = value; }
         }
 
+        private static int _maTo = -1;
+        public static int MaTo
+        {
+            get { return CTaiKhoan._maTo; }
+            set { CTaiKhoan._maTo = value; }
+        }
+     
         private static int _maNhom = -1;
         public static int MaNhom
         {
@@ -176,7 +183,7 @@ namespace KTKS_DonKH.DAL.QuanTri
         {
             try
             {
-                return db.Users.Any(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau&&item.An==false);
+                return db.Users.Any(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau && item.An == false);
             }
             catch (Exception)
             {
@@ -192,6 +199,7 @@ namespace KTKS_DonKH.DAL.QuanTri
                 //db.SubmitChanges();
             }
             _maUser = -1;
+            _maTo = -1;
             _maNhom = -1;
             _taiKhoan = "";
             _hoTen = "";
@@ -322,7 +330,7 @@ namespace KTKS_DonKH.DAL.QuanTri
 
         public List<User> GetDS_Admin(int MaPhong)
         {
-            return db.Users.Where(item=>item.MaU!=0).Where(item=>item.MaPhong==MaPhong).OrderBy(item => item.STT).ToList();
+            return db.Users.Where(item => item.MaU != 0).Where(item => item.MaPhong == MaPhong).OrderBy(item => item.STT).ToList();
         }
 
         public List<User> GetDSExceptMaND(int MaND)
@@ -369,7 +377,7 @@ namespace KTKS_DonKH.DAL.QuanTri
             return db.Users.SingleOrDefault(item => item.MaU == MaU).HoTen;
         }
 
-        public static bool  CheckQuyen(string TenMenu, string LoaiQuyen)
+        public static bool CheckQuyen(string TenMenu, string LoaiQuyen)
         {
             string query = "";
             switch (LoaiQuyen)
@@ -423,7 +431,7 @@ namespace KTKS_DonKH.DAL.QuanTri
                     return false;
         }
 
-        public static bool checkPhong(int MaU,int MaPhong)
+        public static bool checkPhong(int MaU, int MaPhong)
         {
             return db.Users.Any(item => item.MaU == MaU && item.MaPhong == MaPhong);
         }

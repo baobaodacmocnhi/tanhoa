@@ -33,6 +33,8 @@ namespace KTKS_DonKH.GUI.HeThong
                     CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
 
                     CTaiKhoan.MaUser = nguoidung.MaU;
+                    if (nguoidung.MaTo != null)
+                        CTaiKhoan.MaTo = nguoidung.MaTo.Value;
                     if (nguoidung.MaNhom != null)
                         CTaiKhoan.MaNhom = nguoidung.MaNhom.Value;
                     CTaiKhoan.TaiKhoan = nguoidung.TaiKhoan;

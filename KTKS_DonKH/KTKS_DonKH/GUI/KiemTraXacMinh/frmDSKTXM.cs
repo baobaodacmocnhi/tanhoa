@@ -25,6 +25,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
     public partial class frmDSKTXM : Form
     {
         CKTXM _cKTXM = new CKTXM();
+        CTo _cTo = new CTo();
         CDonKH _cDonKH = new CDonKH();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CDonTu _cDonTu = new CDonTu();
@@ -39,6 +40,25 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             dgvDanhSach.AutoGenerateColumns = false;
 
             cmbTimTheo.SelectedItem = "Ngày";
+
+            if (CTaiKhoan.TruongPhong == true)
+            {
+                lbTo.Visible = true;
+                cmbTo.Visible = true;
+                List<To> lst = _cTo.getDS_KTXM();
+                To to = new To();
+                to.MaTo = 0;
+                to.TenTo = "Tất Cả";
+                lst.Insert(0, to);
+                cmbTo.DataSource = lst;
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+            }
+            else
+            {
+                lbTo.Visible = false;
+                cmbTo.Visible = false;
+            }
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,7 +89,73 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void btnXem_Click(object sender, EventArgs e)
         {
             if (radKTXM.Checked == true)
-                if (CTaiKhoan.TruongPhong == true || CTaiKhoan.ToTruong == true || CTaiKhoan.ThuKy == true)
+                if (CTaiKhoan.TruongPhong == true)
+                {
+                    if (cmbTo.SelectedIndex == 0)
+                        switch (cmbTimTheo.SelectedItem.ToString())
+                        {
+                            case "Mã Đơn":
+                                if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                                    MessageBox.Show("Liên hệ BảoBảo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                else
+                                    if (txtNoiDungTimKiem.Text.Trim() != "")
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                            dgvDanhSach.DataSource = _cKTXM.getDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        else
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                                dgvDanhSach.DataSource = _cKTXM.getDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                    dgvDanhSach.DataSource = _cKTXM.getDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                else
+                                                    dgvDanhSach.DataSource = _cKTXM.getDS("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                                break;
+                            case "Danh Bộ":
+                                if (txtNoiDungTimKiem.Text.Trim() != "")
+                                    dgvDanhSach.DataSource = _cKTXM.getDS_ByDanhBo(txtNoiDungTimKiem.Text.Trim());
+                                break;
+                            case "Số Công Văn":
+                                if (txtNoiDungTimKiem.Text.Trim() != "")
+                                    dgvDanhSach.DataSource = _cKTXM.getDS_BySoCongVan(txtNoiDungTimKiem.Text.Trim());
+                                break;
+                            case "Ngày":
+                                dgvDanhSach.DataSource = _cKTXM.getDS(dateTu.Value, dateDen.Value);
+                                break;
+                        }
+                    else
+                        switch (cmbTimTheo.SelectedItem.ToString())
+                        {
+                            case "Mã Đơn":
+                                if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                                    MessageBox.Show("Liên hệ BảoBảo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                else
+                                    if (txtNoiDungTimKiem.Text.Trim() != "")
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                            dgvDanhSach.DataSource = _cKTXM.getDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        else
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                                dgvDanhSach.DataSource = _cKTXM.getDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                    dgvDanhSach.DataSource = _cKTXM.getDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                else
+                                                    dgvDanhSach.DataSource = _cKTXM.getDS("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                                break;
+                            case "Danh Bộ":
+                                if (txtNoiDungTimKiem.Text.Trim() != "")
+                                    dgvDanhSach.DataSource = _cKTXM.getDS_To_ByDanhBo(int.Parse(cmbTo.SelectedValue.ToString()), txtNoiDungTimKiem.Text.Trim());
+                                break;
+                            case "Số Công Văn":
+                                if (txtNoiDungTimKiem.Text.Trim() != "")
+                                    dgvDanhSach.DataSource = _cKTXM.getDS_To_BySoCongVan(int.Parse(cmbTo.SelectedValue.ToString()), txtNoiDungTimKiem.Text.Trim());
+                                break;
+                            case "Ngày":
+                                dgvDanhSach.DataSource = _cKTXM.getDS_To(int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                                break;
+                        }
+                }
+                else if (CTaiKhoan.ToTruong == true || CTaiKhoan.ThuKy == true)
+                {
                     switch (cmbTimTheo.SelectedItem.ToString())
                     {
                         case "Mã Đơn":
@@ -90,19 +176,19 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             break;
                         case "Danh Bộ":
                             if (txtNoiDungTimKiem.Text.Trim() != "")
-                                dgvDanhSach.DataSource = _cKTXM.getDS_ByDanhBo(txtNoiDungTimKiem.Text.Trim());
+                                dgvDanhSach.DataSource = _cKTXM.getDS_To_ByDanhBo(CTaiKhoan.MaTo, txtNoiDungTimKiem.Text.Trim());
                             break;
                         case "Số Công Văn":
                             if (txtNoiDungTimKiem.Text.Trim() != "")
-                                dgvDanhSach.DataSource = _cKTXM.getDS_BySoCongVan(txtNoiDungTimKiem.Text.Trim());
+                                dgvDanhSach.DataSource = _cKTXM.getDS_To_BySoCongVan(CTaiKhoan.MaTo, txtNoiDungTimKiem.Text.Trim());
                             break;
                         case "Ngày":
-                            dgvDanhSach.DataSource = _cKTXM.getDS(dateTu.Value, dateDen.Value);
-                            break;
-                        default:
+                            dgvDanhSach.DataSource = _cKTXM.getDS_To(CTaiKhoan.MaTo, dateTu.Value, dateDen.Value);
                             break;
                     }
+                }
                 else
+                {
                     switch (cmbTimTheo.SelectedItem.ToString())
                     {
                         case "Mã Đơn":
@@ -132,9 +218,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         case "Ngày":
                             dgvDanhSach.DataSource = _cKTXM.getDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                             break;
-                        default:
-                            break;
                     }
+                }
             else
                 if (radNhanDon.Checked == true)
                     dgvDanhSach.DataSource = _cDonTu.getDS_ChuyenKTXM_KyNhan(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
