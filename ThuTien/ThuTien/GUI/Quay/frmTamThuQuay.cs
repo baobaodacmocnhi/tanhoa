@@ -192,7 +192,7 @@ namespace ThuTien.GUI.Quay
                                 }
                                 else
                                     //chốt đăng ngân quầy
-                                    if (chkChotDangNgan.Checked == true)
+                                    if ((DateTime.Now.Hour == 15 && DateTime.Now.Minute > 0) || DateTime.Now.Hour > 15)
                                     {
                                         DateTime NgayGiaiTrach = DateTime.Now;
                                         NgayGiaiTrach = NgayGiaiTrach.AddDays(1);
