@@ -1443,8 +1443,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 dr["NoiNhan"] = _ctctdb.NoiNhan + "\r\nTB" + _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
 
-                if (_ctctdb.NgayXuLy != null)
-                    dr["NgayXuLy"] = _ctctdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + _ctctdb.NoiDungXuLy;
+                dr["NgayXuLy"] = _cDonTu.GetToDate(_ctctdb.CreateDate.Value, 10).ToString("dd/MM/yyyy");
 
                 dr["ChucVu"] = _ctctdb.ChucVu;
                 dr["NguoiKy"] = _ctctdb.NguoiKy;
@@ -1453,9 +1452,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
 
                 ReportDocument rpt;
-                if (_ctctdb.LyDo.Contains("Nhiều Kỳ") == true)
-                    rpt = new rptThongBaoCHDB_NoNhieuKy();
-                else
+                //if (_ctctdb.LyDo.Contains("Nhiều Kỳ") == true)
+                //    rpt = new rptThongBaoCHDB_NoNhieuKy();
+                //else
                     rpt = new rptThongBaoCTDB_PHT();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);

@@ -1552,7 +1552,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + _ctchdb.ViTriDHN1 + ", " + _ctchdb.ViTriDHN2;
 
                 if (_ctchdb.LyDo != "Vấn Đề Khác")
-                    dr["LyDo"] = _ctchdb.LyDo + ". ";
+                    dr["LyDo"] = _ctchdb.LyDo + " ";
                 if (_ctchdb.GhiChuLyDo != "")
                     dr["LyDo"] += _ctchdb.GhiChuLyDo + ". ";
                 if (_ctchdb.SoTien.ToString() != "")
@@ -1561,8 +1561,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 dr["NoiNhan"] = _ctchdb.NoiNhan + "\r\nTB" + _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length - 2, "-");
 
-                if (_ctchdb.NgayXuLy != null)
-                    dr["NgayXuLy"] = _ctchdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + _ctchdb.NoiDungXuLy;
+                dr["NgayXuLy"] = _cDonTu.GetToDate(_ctchdb.CreateDate.Value, 10).ToString("dd/MM/yyyy");
 
                 dr["ChucVu"] = _ctchdb.ChucVu;
                 dr["NguoiKy"] = _ctchdb.NguoiKy;
@@ -1571,9 +1570,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
 
                 ReportDocument rpt;
-                if (_ctchdb.LyDo.Contains("Nhiều Kỳ") == true)
-                    rpt = new rptThongBaoCHDB_NoNhieuKy();
-                else
+                //if (_ctchdb.LyDo.Contains("Nhiều Kỳ") == true)
+                //    rpt = new rptThongBaoCHDB_NoNhieuKy();
+                //else
                     rpt = new rptThongBaoCHDB_PHT();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);

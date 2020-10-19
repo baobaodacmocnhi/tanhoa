@@ -77,6 +77,7 @@
             this.btnXem = new System.Windows.Forms.Button();
             this.cmbQuan = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnInDS = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCTCHDB)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSYCCHDB)).BeginInit();
@@ -535,6 +536,15 @@
             this.label9.TabIndex = 31;
             this.label9.Text = "Quận";
             // 
+            // btnInDS
+            // 
+            this.btnInDS.Location = new System.Drawing.Point(1070, 18);
+            this.btnInDS.Name = "btnInDS";
+            this.btnInDS.Size = new System.Drawing.Size(75, 25);
+            this.btnInDS.TabIndex = 33;
+            this.btnInDS.Text = "In DS";
+            this.btnInDS.UseVisualStyleBackColor = true;
+            // 
             // frmDSCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -542,6 +552,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1404, 619);
+            this.Controls.Add(this.btnInDS);
             this.Controls.Add(this.cmbQuan);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnXem);
@@ -621,5 +632,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn YC_GhiChuLyDo;
         private System.Windows.Forms.ComboBox cmbQuan;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnInDS;
     }
 }

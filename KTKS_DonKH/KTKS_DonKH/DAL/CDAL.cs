@@ -329,6 +329,21 @@ namespace KTKS_DonKH.DAL
             }
         }
 
-       
+        public DateTime GetToDate(DateTime FromDate, int SoNgayCongThem)
+        {
+            while (SoNgayCongThem > 0)
+            {
+                if (FromDate.DayOfWeek == DayOfWeek.Friday)
+                    FromDate = FromDate.AddDays(3);
+                else
+                    if (FromDate.DayOfWeek == DayOfWeek.Saturday)
+                        FromDate = FromDate.AddDays(2);
+                    else
+                        FromDate = FromDate.AddDays(1);
+                SoNgayCongThem--;
+            }
+            return FromDate;
+        }
+
     }
 }

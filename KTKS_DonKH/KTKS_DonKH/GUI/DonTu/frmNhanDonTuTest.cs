@@ -563,7 +563,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             else
                                 entity.ID_NhomDon_PKH += ";" + chkcmbDieuChinh.Properties.Items[i].Value.ToString();
                             if (chkcmbDieuChinh.Properties.Items[i].Value.ToString() == "9")
-                                entity.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + GetToDate(DateTime.Now, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết. ";
+                                entity.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " +_cDonTu.GetToDate(DateTime.Now, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết. ";
                         }
                     for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
                         if (chkcmbKhieuNai.Properties.Items[i].CheckState == CheckState.Checked)
@@ -746,7 +746,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                 else
                                     _dontu.ID_NhomDon_PKH += ";" + chkcmbDieuChinh.Properties.Items[i].Value.ToString();
                                 if (chkcmbDieuChinh.Properties.Items[i].Value.ToString() == "9")
-                                    _dontu.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + GetToDate(_dontu.CreateDate.Value, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
+                                    _dontu.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + _cDonTu.GetToDate(_dontu.CreateDate.Value, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
                             }
                         for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
                             if (chkcmbKhieuNai.Properties.Items[i].CheckState == CheckState.Checked)
@@ -1089,22 +1089,6 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        public DateTime GetToDate(DateTime FromDate, int SoNgayCongThem)
-        {
-            while (SoNgayCongThem > 0)
-            {
-                if (FromDate.DayOfWeek == DayOfWeek.Friday)
-                    FromDate = FromDate.AddDays(3);
-                else
-                    if (FromDate.DayOfWeek == DayOfWeek.Saturday)
-                        FromDate = FromDate.AddDays(2);
-                    else
-                        FromDate = FromDate.AddDays(1);
-                SoNgayCongThem--;
-            }
-            return FromDate;
         }
 
         private void dgvDanhBo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
