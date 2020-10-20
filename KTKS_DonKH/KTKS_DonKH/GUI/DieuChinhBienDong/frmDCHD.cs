@@ -536,8 +536,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                         if (_cDCBD.checkExist_HoaDon(_dontu_ChiTiet.MaDon.Value, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
                         {
-                            MessageBox.Show("Danh Bộ này đã Lập ĐCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            if (MessageBox.Show("Danh Bộ này đã Lập ĐCHD\nBạn có chắc chắn Thêm?", "Xác nhận thêm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                                return;
                         }
                         ctdchd.MaDCBD = _cDCBD.get(_dontu_ChiTiet.MaDon.Value).MaDCBD;
                         ctdchd.STT = _dontu_ChiTiet.STT.Value;
@@ -553,8 +553,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             if (_cDCBD.CheckExist_HoaDon("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
                             {
-                                MessageBox.Show("Danh Bộ này đã Lập ĐCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                if (MessageBox.Show("Danh Bộ này đã Lập ĐCHD\nBạn có chắc chắn Thêm?", "Xác nhận thêm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                                    return;
                             }
                             ctdchd.MaDCBD = _cDCBD.Get("TKH", _dontkh.MaDon).MaDCBD;
                         }
@@ -569,8 +569,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 }
                                 if (_cDCBD.CheckExist_HoaDon("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
                                 {
-                                    MessageBox.Show("Danh Bộ này đã Lập ĐCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
+                                    if (MessageBox.Show("Danh Bộ này đã Lập ĐCHD\nBạn có chắc chắn Thêm?", "Xác nhận thêm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                                        return;
                                 }
                                 ctdchd.MaDCBD = _cDCBD.Get("TXL", _dontxl.MaDon).MaDCBD;
                             }
@@ -585,8 +585,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     }
                                     if (_cDCBD.CheckExist_HoaDon("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
                                     {
-                                        MessageBox.Show("Danh Bộ này đã Lập ĐCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
+                                        if (MessageBox.Show("Danh Bộ này đã Lập ĐCHD\nBạn có chắc chắn Thêm?", "Xác nhận thêm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                                            return;
                                     }
                                     ctdchd.MaDCBD = _cDCBD.Get("TBC", _dontbc.MaDon).MaDCBD;
                                 }
