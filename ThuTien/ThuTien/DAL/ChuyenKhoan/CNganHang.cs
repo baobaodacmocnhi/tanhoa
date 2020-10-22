@@ -94,5 +94,6 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             return LINQToDataTable(_db.NGANHANGs.Select(item => new { MaNH = item.ID_NGANHANG,item.KyHieu ,TenNH = item.NGANHANG1,item.SoTK }).ToList());
         }
+
     }
 }

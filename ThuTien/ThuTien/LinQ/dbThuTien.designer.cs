@@ -249,6 +249,9 @@ namespace ThuTien.LinQ
     partial void InsertTT_DichVuThu_CuaHang(TT_DichVuThu_CuaHang instance);
     partial void UpdateTT_DichVuThu_CuaHang(TT_DichVuThu_CuaHang instance);
     partial void DeleteTT_DichVuThu_CuaHang(TT_DichVuThu_CuaHang instance);
+    partial void InsertTT_HoaDon_KhongThu(TT_HoaDon_KhongThu instance);
+    partial void UpdateTT_HoaDon_KhongThu(TT_HoaDon_KhongThu instance);
+    partial void DeleteTT_HoaDon_KhongThu(TT_HoaDon_KhongThu instance);
     #endregion
 		
 		public dbThuTienDataContext() : 
@@ -886,6 +889,14 @@ namespace ThuTien.LinQ
 			get
 			{
 				return this.GetTable<TT_DichVuThu_CuaHang>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TT_HoaDon_KhongThu> TT_HoaDon_KhongThus
+		{
+			get
+			{
+				return this.GetTable<TT_HoaDon_KhongThu>();
 			}
 		}
 		
@@ -31926,6 +31937,68 @@ namespace ThuTien.LinQ
 					this._ModifyDate = value;
 					this.SendPropertyChanged("ModifyDate");
 					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_HoaDon_KhongThu")]
+	public partial class TT_HoaDon_KhongThu : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _SoHoaDon;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSoHoaDonChanging(string value);
+    partial void OnSoHoaDonChanged();
+    #endregion
+		
+		public TT_HoaDon_KhongThu()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoHoaDon", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string SoHoaDon
+		{
+			get
+			{
+				return this._SoHoaDon;
+			}
+			set
+			{
+				if ((this._SoHoaDon != value))
+				{
+					this.OnSoHoaDonChanging(value);
+					this.SendPropertyChanging();
+					this._SoHoaDon = value;
+					this.SendPropertyChanged("SoHoaDon");
+					this.OnSoHoaDonChanged();
 				}
 			}
 		}

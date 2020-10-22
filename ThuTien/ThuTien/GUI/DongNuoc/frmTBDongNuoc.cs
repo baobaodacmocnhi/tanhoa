@@ -279,7 +279,7 @@ namespace ThuTien.GUI.DongNuoc
                         int TongCong = 0; ;
                         foreach (DataRow itemChild in childRows)
                         {
-                            Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
+                            Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "; ";
                             TongCong += int.Parse(itemChild["TongCong"].ToString());
                         }
 
@@ -612,7 +612,7 @@ namespace ThuTien.GUI.DongNuoc
                     int TongCong = 0; ;
                     foreach (DataRow itemChild in childRows)
                     {
-                        Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
+                        Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "; ";
                         TongCong += int.Parse(itemChild["TongCong"].ToString());
                     }
 
