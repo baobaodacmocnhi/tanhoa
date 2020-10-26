@@ -544,6 +544,7 @@
             this.btnInDS.TabIndex = 33;
             this.btnInDS.Text = "In DS";
             this.btnInDS.UseVisualStyleBackColor = true;
+            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click_1);
             // 
             // frmDSCHDB
             // 
