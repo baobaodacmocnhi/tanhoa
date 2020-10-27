@@ -261,7 +261,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy HH:mm");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy HH:mm");
-                dr["Ma"] = row["MaDon"].ToString();
+                dr["MaChiTiet"] = row["MaDon"].ToString();
                 dr["CreateDate"] = row["CreateDate"].ToString();
                 if (row["DanhBo"].ToString().Length == 11)
                     dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
