@@ -227,25 +227,25 @@ namespace KTKS_DonKH.DAL
 
         }
 
-        public List<QUAN> GetDSQuan()
-        {
-            return db.QUANs.ToList();
-        }
+        //public List<QUAN> GetDSQuan()
+        //{
+        //    return db.QUANs.ToList();
+        //}
 
-        public List<PHUONG> GetDSPhuong(int MaQuan)
-        {
-            return db.PHUONGs.Where(item => item.MAQUAN == MaQuan).ToList();
-        }
+        //public List<PHUONG> GetDSPhuong(int MaQuan)
+        //{
+        //    return db.PHUONGs.Where(item => item.MAQUAN == MaQuan).ToList();
+        //}
 
-        public string GetTenQuan(int MaQuan)
-        {
-            return db.QUANs.SingleOrDefault(item => item.MAQUAN == MaQuan).TENQUAN;
-        }
+        //public string GetTenQuan(int MaQuan)
+        //{
+        //    return db.QUANs.SingleOrDefault(item => item.MAQUAN == MaQuan).TENQUAN;
+        //}
 
-        public string GetTenPhuong(int MaQuan, string MaPhuong)
-        {
-            return db.PHUONGs.SingleOrDefault(item => item.MAQUAN == MaQuan && item.MAPHUONG == MaPhuong).TENPHUONG;
-        }
+        //public string GetTenPhuong(int MaQuan, string MaPhuong)
+        //{
+        //    return db.PHUONGs.SingleOrDefault(item => item.MAQUAN == MaQuan && item.MAPHUONG == MaPhuong).TENPHUONG;
+        //}
 
         public List<TB_DULIEUKHACHHANG> GetDS(string SoThanDHN)
         {

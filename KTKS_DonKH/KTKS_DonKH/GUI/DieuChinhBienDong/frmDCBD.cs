@@ -1118,8 +1118,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         dr["HoTen"] = hoadon.TENKH;
                         dr["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
-                        dr["Phuong"] = _cDHN.GetTenPhuong(int.Parse(hoadon.Quan), hoadon.Phuong);
-                        dr["Quan"] = _cDHN.GetTenQuan(int.Parse(hoadon.Quan));
+                        dr["Phuong"] = _cDonTu.getTenPhuong(int.Parse(hoadon.Quan), int.Parse(hoadon.Phuong));
+                        dr["Quan"] = _cDonTu.getTenQuan(int.Parse(hoadon.Quan));
                     }
 
                     dr["MaLCT"] = itemRow["MaLCT"];

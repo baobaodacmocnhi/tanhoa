@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridViewDonChiTiet = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -45,6 +45,7 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -75,7 +76,10 @@
             this.btnInThongKe = new System.Windows.Forms.Button();
             this.cmbLoai = new System.Windows.Forms.ComboBox();
             this.btnInThongKeTon = new System.Windows.Forms.Button();
-            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cmbPhuong = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbQuan = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDonChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDon)).BeginInit();
@@ -258,6 +262,15 @@
             this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 200;
             // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Nội Dung PKH";
+            this.gridColumn15.FieldName = "NoiDungPKH";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 6;
+            this.gridColumn15.Width = 150;
+            // 
             // gridColumn7
             // 
             this.gridColumn7.Caption = "Nội Dung PTV";
@@ -412,14 +425,14 @@
             // 
             this.dgvDSDonTu.AllowUserToAddRows = false;
             this.dgvDSDonTu.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSDonTu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDonTu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDSDonTu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDonTu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaDon,
@@ -442,8 +455,8 @@
             // MaDon
             // 
             this.MaDon.DataPropertyName = "MaDon";
-            dataGridViewCellStyle2.NullValue = null;
-            this.MaDon.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.NullValue = null;
+            this.MaDon.DefaultCellStyle = dataGridViewCellStyle6;
             this.MaDon.HeaderText = "Mã Đơn";
             this.MaDon.Name = "MaDon";
             this.MaDon.ReadOnly = true;
@@ -503,7 +516,7 @@
             // cmbPhong
             // 
             this.cmbPhong.FormattingEnabled = true;
-            this.cmbPhong.Location = new System.Drawing.Point(59, 12);
+            this.cmbPhong.Location = new System.Drawing.Point(1204, 6);
             this.cmbPhong.Name = "cmbPhong";
             this.cmbPhong.Size = new System.Drawing.Size(138, 24);
             this.cmbPhong.TabIndex = 41;
@@ -512,7 +525,7 @@
             // lbPhong
             // 
             this.lbPhong.AutoSize = true;
-            this.lbPhong.Location = new System.Drawing.Point(6, 15);
+            this.lbPhong.Location = new System.Drawing.Point(1151, 9);
             this.lbPhong.Name = "lbPhong";
             this.lbPhong.Size = new System.Drawing.Size(47, 16);
             this.lbPhong.TabIndex = 40;
@@ -551,14 +564,40 @@
             this.btnInThongKeTon.UseVisualStyleBackColor = true;
             this.btnInThongKeTon.Click += new System.EventHandler(this.btnInThongKeTon_Click);
             // 
-            // gridColumn15
+            // cmbPhuong
             // 
-            this.gridColumn15.Caption = "Nội Dung PKH";
-            this.gridColumn15.FieldName = "NoiDungPKH";
-            this.gridColumn15.Name = "gridColumn15";
-            this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 6;
-            this.gridColumn15.Width = 150;
+            this.cmbPhuong.FormattingEnabled = true;
+            this.cmbPhuong.Location = new System.Drawing.Point(68, 39);
+            this.cmbPhuong.Name = "cmbPhuong";
+            this.cmbPhuong.Size = new System.Drawing.Size(100, 24);
+            this.cmbPhuong.TabIndex = 49;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 42);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 16);
+            this.label5.TabIndex = 48;
+            this.label5.Text = "Phường:";
+            // 
+            // cmbQuan
+            // 
+            this.cmbQuan.FormattingEnabled = true;
+            this.cmbQuan.Location = new System.Drawing.Point(68, 10);
+            this.cmbQuan.Name = "cmbQuan";
+            this.cmbQuan.Size = new System.Drawing.Size(100, 24);
+            this.cmbQuan.TabIndex = 47;
+            this.cmbQuan.SelectedIndexChanged += new System.EventHandler(this.cmbQuan_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 16);
+            this.label6.TabIndex = 46;
+            this.label6.Text = "Quận:";
             // 
             // frmDSDonTu
             // 
@@ -567,6 +606,10 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1444, 727);
+            this.Controls.Add(this.cmbPhuong);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cmbQuan);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnInThongKeTon);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.cmbLoai);
@@ -646,5 +689,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private System.Windows.Forms.Button btnInThongKeTon;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private System.Windows.Forms.ComboBox cmbPhuong;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbQuan;
+        private System.Windows.Forms.Label label6;
     }
 }

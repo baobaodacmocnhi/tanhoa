@@ -601,8 +601,8 @@ namespace KTKS_DonKH.GUI.DonTu
                                 dr["DanhBo"] = hd.DANHBA;
                                 dr["HoTen"] = hd.TENKH;
                                 dr["DiaChi"] = hd.SO + " " + hd.DUONG;
-                                dr["Phuong"] = _cDocSo.GetTenPhuong(int.Parse(hd.Quan), hd.Phuong);
-                                dr["Quan"] = _cDocSo.GetTenQuan(int.Parse(hd.Quan));
+                                dr["Phuong"] = _cDonTu.getTenPhuong(int.Parse(hd.Quan), int.Parse(hd.Phuong));
+                                dr["Quan"] = _cDonTu.getTenQuan(int.Parse(hd.Quan));
                                 dtExport.Rows.Add(dr);
                             }
                         }

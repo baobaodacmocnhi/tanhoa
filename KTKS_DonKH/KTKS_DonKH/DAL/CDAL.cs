@@ -345,5 +345,25 @@ namespace KTKS_DonKH.DAL
             return FromDate;
         }
 
+        public List<Quan> GetDSQuan()
+        {
+            return db.Quans.ToList();
+        }
+
+        public List<Phuong> GetDSPhuong(int MaQuan)
+        {
+            return db.Phuongs.Where(item => item.IDQuan == MaQuan).ToList();
+        }
+
+        public string getTenQuan(int MaQuan)
+        {
+            return db.Quans.SingleOrDefault(item => item.ID == MaQuan).Name2;
+        }
+
+        public string getTenPhuong(int MaQuan, int MaPhuong)
+        {
+            return db.Phuongs.SingleOrDefault(item => item.IDQuan == MaQuan && item.IDPhuong == MaPhuong).Name2;
+        }
+
     }
 }

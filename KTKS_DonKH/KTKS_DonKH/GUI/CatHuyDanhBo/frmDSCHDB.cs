@@ -50,14 +50,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
             cmbTimTheo.SelectedItem = "Ngày";
 
-            List<QUAN> lst = _cDocSo.GetDSQuan();
-            QUAN quan = new QUAN();
-            quan.MAQUAN = 0;
-            quan.TENQUAN = "Tất Cả";
+            List<Quan> lst = _cCHDB.GetDSQuan();
+            Quan quan = new Quan();
+            quan.ID = 0;
+            quan.Name2 = "Tất Cả";
             lst.Insert(0, quan);
             cmbQuan.DataSource = lst;
-            cmbQuan.DisplayMember = "TenQuan";
-            cmbQuan.ValueMember = "MaQuan";
+            cmbQuan.DisplayMember = "Name2";
+            cmbQuan.ValueMember = "ID";
         }
 
         private void radDSCatTamDanhBo_CheckedChanged(object sender, EventArgs e)

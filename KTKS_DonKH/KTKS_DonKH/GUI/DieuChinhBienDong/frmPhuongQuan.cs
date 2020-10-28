@@ -48,26 +48,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmPhuongQuan_Load(object sender, EventArgs e)
         {
             this.Location = new Point(200,200);
-            List<QUAN> lst = _cDocSo.GetDSQuan();
-            QUAN quan = new QUAN();
-            quan.MAQUAN = 0;
-            quan.TENQUAN = "Tất Cả";
+            List<Quan> lst = _cDCBD.GetDSQuan();
+            Quan quan = new Quan();
+            quan.ID = 0;
+            quan.Name2 = "Tất Cả";
             lst.Insert(0, quan);
             cmbQuan.DataSource = lst;
-            cmbQuan.DisplayMember = "TenQuan";
-            cmbQuan.ValueMember = "MaQuan";
+            cmbQuan.DisplayMember = "Name2";
+            cmbQuan.ValueMember = "ID";
         }
 
         private void cmbQuan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<PHUONG> lst = ((QUAN)cmbQuan.SelectedItem).PHUONGs.ToList();
-            PHUONG phuong = new PHUONG();
-            phuong.MAPHUONG = "0";
-            phuong.TENPHUONG = "Tất Cả";
+            List<Phuong> lst = _cDCBD.GetDSPhuong(((Quan)cmbQuan.SelectedItem).ID.Value);
+            Phuong phuong = new Phuong();
+            phuong.IDPhuong = 0;
+            phuong.Name2 = "Tất Cả";
             lst.Insert(0, phuong);
             cmbPhuong.DataSource = lst;
-            cmbPhuong.DisplayMember = "TenPhuong";
-            cmbPhuong.ValueMember = "MaPhuong";
+            cmbPhuong.DisplayMember = "Name2";
+            cmbPhuong.ValueMember = "IDPhuong";
         }
 
         private void btnBaoCao_Click(object sender, EventArgs e)

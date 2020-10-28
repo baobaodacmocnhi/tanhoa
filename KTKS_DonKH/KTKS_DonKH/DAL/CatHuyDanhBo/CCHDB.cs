@@ -2114,16 +2114,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return db.CHDBs.SingleOrDefault(item => item.MaDonMoi == MaDon);
         }
 
-        public string getTenQuan(int MaQuan)
-        {
-            return db.Quans.SingleOrDefault(item => item.ID == MaQuan).Name2;
-        }
-
-        public string getTenPhuong(int MaQuan, int MaPhuong)
-        {
-            return db.Phuongs.SingleOrDefault(item => item.IDQuan == MaQuan && item.IDPhuong == MaPhuong).Name2;
-        }
-
         #region Hình
 
         public bool Them_Hinh(CHDB_ChiTietCatTam_Hinh en)

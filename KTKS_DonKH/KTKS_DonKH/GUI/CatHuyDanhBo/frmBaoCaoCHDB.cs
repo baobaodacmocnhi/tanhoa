@@ -30,23 +30,23 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void frmBaoCaoCHDB_Load(object sender, EventArgs e)
         {
-            List<QUAN> lst = _cDocSo.GetDSQuan();
-            QUAN quan = new QUAN();
-            quan.MAQUAN = 0;
-            quan.TENQUAN = "Tất Cả";
+            List<Quan> lst = _cCHDB.GetDSQuan();
+            Quan quan = new Quan();
+            quan.ID = 0;
+            quan.Name2 = "Tất Cả";
             lst.Insert(0, quan);
 
             cmbQuan.DataSource = lst;
-            cmbQuan.DisplayMember = "TenQuan";
-            cmbQuan.ValueMember = "MaQuan";
+            cmbQuan.DisplayMember = "Name2";
+            cmbQuan.ValueMember = "ID";
 
             cmbQuan_TheoNgayLap.DataSource = lst;
-            cmbQuan_TheoNgayLap.DisplayMember = "TenQuan";
-            cmbQuan_TheoNgayLap.ValueMember = "MaQuan";
+            cmbQuan_TheoNgayLap.DisplayMember = "Name2";
+            cmbQuan_TheoNgayLap.ValueMember = "ID";
 
             cmbQuan_TheoNgayXuLy.DataSource = lst;
-            cmbQuan_TheoNgayXuLy.DisplayMember = "TenQuan";
-            cmbQuan_TheoNgayXuLy.ValueMember = "MaQuan";
+            cmbQuan_TheoNgayXuLy.DisplayMember = "Name2";
+            cmbQuan_TheoNgayXuLy.ValueMember = "ID";
 
             List<CHDB_LyDo> lst2 = _cLyDoCHDB.GetDS();
             CHDB_LyDo item2 = new CHDB_LyDo();

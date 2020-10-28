@@ -50,6 +50,15 @@ namespace KTKS_DonKH.GUI.DonTu
                 cmbPhong.Visible = false;
             }
 
+            List<Quan> lst = _cDonTu.GetDSQuan();
+            Quan quan = new Quan();
+            quan.ID = 0;
+            quan.Name2 = "Tất Cả";
+            lst.Insert(0, quan);
+            cmbQuan.DataSource = lst;
+            cmbQuan.DisplayMember = "Name2";
+            cmbQuan.ValueMember = "ID";
+
             cmbTimTheo.SelectedItem = "Ngày";
             cmbLoai.SelectedIndex = 0;
             gridControl.LevelTree.Nodes.Add("Chi Tiết Đơn", gridViewDonChiTiet);
@@ -137,7 +146,14 @@ namespace KTKS_DonKH.GUI.DonTu
                         break;
                     case "Ngày":
                         //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbPhong.SelectedValue.ToString()));
-                        gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
+                        if (cmbQuan.SelectedIndex == 0)
+                            gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
+                        else
+                            if (cmbQuan.SelectedIndex > 0)
+                                if (cmbPhuong.SelectedIndex == 0)
+                                    gridControl.DataSource = _cDonTu.getDS_GridControl_Quan(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString())).Tables["DonTu"];
+                                else
+                                    gridControl.DataSource = _cDonTu.getDS_GridControl_QuanPhuong(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString()), int.Parse(cmbPhuong.SelectedValue.ToString())).Tables["DonTu"];
                         break;
                     default:
                         break;
@@ -167,7 +183,14 @@ namespace KTKS_DonKH.GUI.DonTu
                         break;
                     case "Ngày":
                         //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, CTaiKhoan.MaPhong);
-                        gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
+                        if (cmbQuan.SelectedIndex == 0)
+                            gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
+                        else
+                            if (cmbQuan.SelectedIndex > 0)
+                                if (cmbPhuong.SelectedIndex == 0)
+                                    gridControl.DataSource = _cDonTu.getDS_GridControl_Quan(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString())).Tables["DonTu"];
+                                else
+                                    gridControl.DataSource = _cDonTu.getDS_GridControl_QuanPhuong(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString()), int.Parse(cmbPhuong.SelectedValue.ToString())).Tables["DonTu"];
                         break;
                     default:
                         break;
@@ -518,6 +541,18 @@ namespace KTKS_DonKH.GUI.DonTu
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
+        }
+
+        private void cmbQuan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Phuong> lst = _cDonTu.GetDSPhuong(((Quan)cmbQuan.SelectedItem).ID.Value);
+            Phuong phuong = new Phuong();
+            phuong.IDPhuong = 0;
+            phuong.Name2 = "Tất Cả";
+            lst.Insert(0, phuong);
+            cmbPhuong.DataSource = lst;
+            cmbPhuong.DisplayMember = "Name2";
+            cmbPhuong.ValueMember = "IDPhuong";
         }
 
 
