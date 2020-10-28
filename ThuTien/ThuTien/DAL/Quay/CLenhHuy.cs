@@ -523,6 +523,34 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query.Distinct());
         }
 
+        public DataTable getDS_DangNgan(DateTime NgayGiaiTrach)
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
+                        where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                        select new
+                        {
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                        };
+            return LINQToDataTable(query.Distinct());
+        }
+
+        public DataTable getDS_DangNgan(DateTime FromNgayGiaiTrach,DateTime ToNgayGiaiTrach)
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
+                        where itemHD.NGAYGIAITRACH.Value.Date >= FromNgayGiaiTrach.Date && itemHD.NGAYGIAITRACH.Value.Date <= ToNgayGiaiTrach.Date
+                        select new
+                        {
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                        };
+            return LINQToDataTable(query.Distinct());
+        }
+
         public string GetTinhTrang(string SoHoaDon)
         {
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).TinhTrang;

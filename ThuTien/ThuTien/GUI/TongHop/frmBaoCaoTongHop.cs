@@ -14,6 +14,7 @@ using ThuTien.BaoCao.TongHop;
 using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.TongHop;
 using CrystalDecisions.CrystalReports.Engine;
+using ThuTien.DAL.Quay;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -22,7 +23,7 @@ namespace ThuTien.GUI.TongHop
         CTo _cTo = new CTo();
         CHoaDon _cHoaDon = new CHoaDon();
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
-
+        CLenhHuy _cLenhHuy = new CLenhHuy();
         public frmBaoCaoTongHop()
         {
             InitializeComponent();
@@ -1649,6 +1650,25 @@ namespace ThuTien.GUI.TongHop
                 rpt.SetDataSource(ds);
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.Show();
+            }
+            dsBaoCao dsLH = new dsBaoCao();
+            DataTable dtLH = _cLenhHuy.getDS_DangNgan(dateGiaiTrachTongHopDangNgan.Value);
+            foreach (DataRow item in dtLH.Rows)
+            {
+                DataRow dr = dsLH.Tables["DSHoaDon"].NewRow();
+                dr["LoaiBaoCao"] = "ĐĂNG NGÂN CÓ LỆNH HỦY";
+                dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                dr["HoTen"] = item["HoTen"];
+                dr["DiaChi"] = item["DiaChi"];
+
+                dsLH.Tables["DSHoaDon"].Rows.Add(dr);
+            }
+            if (dtLH.Rows.Count > 0)
+            {
+                rptDSHoaDon rptLH = new rptDSHoaDon();
+                rptLH.SetDataSource(dsLH);
+                frmBaoCao frmLH = new frmBaoCao(rptLH);
+                frmLH.Show();
             }
         }
 
