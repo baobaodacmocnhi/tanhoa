@@ -82,7 +82,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) then 'true' else 'false' end"
                         + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD) then 'true' else 'false' end"
                         + " from TT_DichVuThu dvt,HOADON hd where dvt.DanhBo='"+DanhBo+"' and dvt.MaHD=hd.ID_HOADON"
-                        + " order by dvt.CreateDate asc";
+                        + " order by hd.CreateDate desc";
             return ExecuteQuery_DataTable(sql);
         }
 
