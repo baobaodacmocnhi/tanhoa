@@ -87,13 +87,13 @@
             this.label19 = new System.Windows.Forms.Label();
             this.btnXuatExcel_ThongKeDMNT = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnHoNgheo = new System.Windows.Forms.Button();
+            this.cmbToKy = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.cmbFromKy = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.cmbToKy = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.btnHoNgheo = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox_DSChungCu.SuspendLayout();
             this.groupBox_ThongKeDC.SuspendLayout();
@@ -695,15 +695,35 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thống Kê Hộ Nghèo";
             // 
-            // btnHoNgheo
+            // cmbToKy
             // 
-            this.btnHoNgheo.Location = new System.Drawing.Point(141, 54);
-            this.btnHoNgheo.Name = "btnHoNgheo";
-            this.btnHoNgheo.Size = new System.Drawing.Size(80, 25);
-            this.btnHoNgheo.TabIndex = 12;
-            this.btnHoNgheo.Text = "Xuất Excel";
-            this.btnHoNgheo.UseVisualStyleBackColor = true;
-            this.btnHoNgheo.Click += new System.EventHandler(this.btnHoNgheo_Click);
+            this.cmbToKy.FormattingEnabled = true;
+            this.cmbToKy.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cmbToKy.Location = new System.Drawing.Point(171, 22);
+            this.cmbToKy.Name = "cmbToKy";
+            this.cmbToKy.Size = new System.Drawing.Size(50, 24);
+            this.cmbToKy.TabIndex = 41;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(115, 25);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(50, 16);
+            this.label17.TabIndex = 40;
+            this.label17.Text = "Đến Kỳ";
             // 
             // cmbFromKy
             // 
@@ -752,35 +772,15 @@
             this.label16.TabIndex = 36;
             this.label16.Text = "Năm:";
             // 
-            // cmbToKy
+            // btnHoNgheo
             // 
-            this.cmbToKy.FormattingEnabled = true;
-            this.cmbToKy.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.cmbToKy.Location = new System.Drawing.Point(171, 22);
-            this.cmbToKy.Name = "cmbToKy";
-            this.cmbToKy.Size = new System.Drawing.Size(50, 24);
-            this.cmbToKy.TabIndex = 41;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(115, 25);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(50, 16);
-            this.label17.TabIndex = 40;
-            this.label17.Text = "Đến Kỳ";
+            this.btnHoNgheo.Location = new System.Drawing.Point(141, 54);
+            this.btnHoNgheo.Name = "btnHoNgheo";
+            this.btnHoNgheo.Size = new System.Drawing.Size(80, 25);
+            this.btnHoNgheo.TabIndex = 12;
+            this.btnHoNgheo.Text = "Xuất Excel";
+            this.btnHoNgheo.UseVisualStyleBackColor = true;
+            this.btnHoNgheo.Click += new System.EventHandler(this.btnHoNgheo_Click);
             // 
             // frmBaoCaoDCBD
             // 

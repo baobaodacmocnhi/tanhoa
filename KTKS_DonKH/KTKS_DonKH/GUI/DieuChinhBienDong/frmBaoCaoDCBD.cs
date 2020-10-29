@@ -936,14 +936,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void cmbQuan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<PHUONG> lst = ((QUAN)cmbQuan.SelectedItem).PHUONGs.ToList();
-            PHUONG phuong = new PHUONG();
-            phuong.MAPHUONG = "0";
-            phuong.TENPHUONG = "Tất Cả";
+            List<Phuong> lst = _cDCBD.GetDSPhuong(((Quan)cmbQuan.SelectedItem).ID.Value);
+            Phuong phuong = new Phuong();
+            phuong.IDPhuong = 0;
+            phuong.Name2 = "Tất Cả";
             lst.Insert(0, phuong);
             cmbPhuong.DataSource = lst;
-            cmbPhuong.DisplayMember = "TenPhuong";
-            cmbPhuong.ValueMember = "MaPhuong";
+            cmbPhuong.DisplayMember = "Name2";
+            cmbPhuong.ValueMember = "IDPhuong";
         }
 
         private void radDSDanhBoDMCap_CheckedChanged(object sender, EventArgs e)
@@ -1443,14 +1443,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void cmbQuan_ThongKeDC_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<PHUONG> lst = ((QUAN)cmbQuan_ThongKeDC.SelectedItem).PHUONGs.ToList();
-            PHUONG phuong = new PHUONG();
-            phuong.MAPHUONG = "0";
-            phuong.TENPHUONG = "Tất Cả";
+            List<Phuong> lst = _cDCBD.GetDSPhuong(((Quan)cmbQuan_ThongKeDC.SelectedItem).ID.Value);
+            Phuong phuong = new Phuong();
+            phuong.IDPhuong = 0;
+            phuong.Name2 = "Tất Cả";
             lst.Insert(0, phuong);
             cmbPhuong_ThongKeDC.DataSource = lst;
-            cmbPhuong_ThongKeDC.DisplayMember = "TenPhuong";
-            cmbPhuong_ThongKeDC.ValueMember = "MaPhuong";
+            cmbPhuong_ThongKeDC.DisplayMember = "Name2";
+            cmbPhuong_ThongKeDC.ValueMember = "IDPhuong";
         }
 
         private void btnXuatExcel_DSDCBD_Click(object sender, EventArgs e)
