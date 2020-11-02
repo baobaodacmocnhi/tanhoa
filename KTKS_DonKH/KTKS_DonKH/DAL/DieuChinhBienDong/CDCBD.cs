@@ -170,6 +170,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       itemCTDCBD.DMGiuNguyen,
                                       itemCTDCBD.GBGiuNguyen,
                                       GiaHan = itemCTDCBD.GiaHanKT3 == true ? true : itemCTDCBD.GiaHanNhapCu == true ? true : false,
+                                      File = itemCTDCBD.DCBD_ChiTietBienDong_Hinhs.Count > 0 ? true : false,
                                       //itemCTDCBD.GiaHanKT3,
                                       //itemCTDCBD.GiaHanNhapCu,
                                   };
@@ -186,6 +187,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       DieuChinh = "Hóa Đơn",
                                       itemCTDCHD.KyHD,
                                       itemCTDCHD.CreateDate,
+                                      File = itemCTDCHD.DCBD_ChiTietHoaDon_Hinhs.Count > 0 ? true : false,
                                   };
                 DataTable tableCTDCBD = LINQToDataTable(queryCTDCBD);
                 DataTable tableCTDCHD = LINQToDataTable(queryCTDCHD);

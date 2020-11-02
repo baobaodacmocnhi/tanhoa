@@ -90,6 +90,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.btnImport = new System.Windows.Forms.Button();
+            this.btnInDSTong_DSChuyenKTXM = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian_LichSuChuyenDon.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -252,6 +253,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnInDSTong_DSChuyenKTXM);
             this.groupBox3.Controls.Add(this.cmbNhanVienKiemTra);
             this.groupBox3.Controls.Add(this.label32);
             this.groupBox3.Controls.Add(this.chkChuaKT_DSChuyenKTXM);
@@ -733,6 +735,16 @@
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
+            // btnInDSTong_DSChuyenKTXM
+            // 
+            this.btnInDSTong_DSChuyenKTXM.Location = new System.Drawing.Point(679, 37);
+            this.btnInDSTong_DSChuyenKTXM.Name = "btnInDSTong_DSChuyenKTXM";
+            this.btnInDSTong_DSChuyenKTXM.Size = new System.Drawing.Size(83, 25);
+            this.btnInDSTong_DSChuyenKTXM.TabIndex = 42;
+            this.btnInDSTong_DSChuyenKTXM.Text = "In DS Tổng";
+            this.btnInDSTong_DSChuyenKTXM.UseVisualStyleBackColor = true;
+            this.btnInDSTong_DSChuyenKTXM.Click += new System.EventHandler(this.btnInDSTong_DSChuyenKTXM_Click);
+            // 
             // frmBaoCaoDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -839,5 +851,6 @@
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.ComboBox cmbNoiDungThuongVu;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btnInDSTong_DSChuyenKTXM;
     }
 }

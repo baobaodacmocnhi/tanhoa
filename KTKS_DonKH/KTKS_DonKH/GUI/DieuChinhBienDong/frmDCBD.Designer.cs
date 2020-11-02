@@ -191,6 +191,7 @@
             this.DMGiuNguyen = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.GBGiuNguyen = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.GiaHan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.File = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox_DSSoDangKy.SuspendLayout();
@@ -1124,7 +1125,8 @@
             this.MaDon,
             this.DMGiuNguyen,
             this.GBGiuNguyen,
-            this.GiaHan});
+            this.GiaHan,
+            this.File});
             this.dgvDSDieuChinh.Location = new System.Drawing.Point(5, 5);
             this.dgvDSDieuChinh.MultiSelect = false;
             this.dgvDSDieuChinh.Name = "dgvDSDieuChinh";
@@ -1413,14 +1415,14 @@
             // 
             // txtCapNhat
             // 
-            this.txtCapNhat.Location = new System.Drawing.Point(1172, 458);
+            this.txtCapNhat.Location = new System.Drawing.Point(1179, 474);
             this.txtCapNhat.Name = "txtCapNhat";
             this.txtCapNhat.Size = new System.Drawing.Size(100, 22);
             this.txtCapNhat.TabIndex = 22;
             // 
             // btnCapNhat
             // 
-            this.btnCapNhat.Location = new System.Drawing.Point(1172, 486);
+            this.btnCapNhat.Location = new System.Drawing.Point(1179, 502);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(75, 25);
             this.btnCapNhat.TabIndex = 29;
@@ -1431,7 +1433,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(1169, 439);
+            this.label32.Location = new System.Drawing.Point(1176, 455);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(137, 16);
             this.label32.TabIndex = 22;
@@ -1506,7 +1508,7 @@
             // 
             // btnNhapNhieuGB
             // 
-            this.btnNhapNhieuGB.Location = new System.Drawing.Point(1172, 517);
+            this.btnNhapNhieuGB.Location = new System.Drawing.Point(1179, 533);
             this.btnNhapNhieuGB.Name = "btnNhapNhieuGB";
             this.btnNhapNhieuGB.Size = new System.Drawing.Size(110, 25);
             this.btnNhapNhieuGB.TabIndex = 122;
@@ -1631,31 +1633,31 @@
             this.MSThue_BD.HeaderText = "MSThuế BĐ";
             this.MSThue_BD.Name = "MSThue_BD";
             this.MSThue_BD.ReadOnly = true;
-            this.MSThue_BD.Width = 70;
+            this.MSThue_BD.Width = 60;
             // 
             // GiaBieu_BD
             // 
             this.GiaBieu_BD.DataPropertyName = "GiaBieu_BD";
-            this.GiaBieu_BD.HeaderText = "Giá Biểu BĐ";
+            this.GiaBieu_BD.HeaderText = "GB BĐ";
             this.GiaBieu_BD.Name = "GiaBieu_BD";
             this.GiaBieu_BD.ReadOnly = true;
-            this.GiaBieu_BD.Width = 60;
+            this.GiaBieu_BD.Width = 50;
             // 
             // DinhMuc_BD
             // 
             this.DinhMuc_BD.DataPropertyName = "DinhMuc_BD";
-            this.DinhMuc_BD.HeaderText = "Định Mức BĐ";
+            this.DinhMuc_BD.HeaderText = "ĐM BĐ";
             this.DinhMuc_BD.Name = "DinhMuc_BD";
             this.DinhMuc_BD.ReadOnly = true;
-            this.DinhMuc_BD.Width = 60;
+            this.DinhMuc_BD.Width = 50;
             // 
             // DinhMucHN_BD
             // 
             this.DinhMucHN_BD.DataPropertyName = "DinhMucHN_BD";
-            this.DinhMucHN_BD.HeaderText = "Định Mức HN BĐ";
+            this.DinhMucHN_BD.HeaderText = "ĐM HN BĐ";
             this.DinhMucHN_BD.Name = "DinhMucHN_BD";
             this.DinhMucHN_BD.ReadOnly = true;
-            this.DinhMucHN_BD.Width = 80;
+            this.DinhMucHN_BD.Width = 75;
             // 
             // MaDon
             // 
@@ -1693,13 +1695,21 @@
             this.GiaHan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.GiaHan.Width = 40;
             // 
+            // File
+            // 
+            this.File.DataPropertyName = "File";
+            this.File.HeaderText = "File";
+            this.File.Name = "File";
+            this.File.ReadOnly = true;
+            this.File.Width = 30;
+            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1320, 659);
+            this.ClientSize = new System.Drawing.Size(1420, 659);
             this.Controls.Add(this.chkChuaKTXM);
             this.Controls.Add(this.chkKhongTinhPhiBVMT);
             this.Controls.Add(this.chkTinhPhiBVMT);
@@ -1928,6 +1938,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn DMGiuNguyen;
         private System.Windows.Forms.DataGridViewCheckBoxColumn GBGiuNguyen;
         private System.Windows.Forms.DataGridViewCheckBoxColumn GiaHan;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn File;
         
     }
 }

@@ -193,13 +193,13 @@ namespace KTKS_DonKH.GUI.DonTu
             switch (cmbTimTheo_DSChuyenKTXM.SelectedItem.ToString())
             {
                 case "Ngày":
-                    if (cmbNhanVienKiemTra.SelectedIndex == 0)
+                    if (CTaiKhoan.TruongPhong==true||cmbNhanVienKiemTra.SelectedIndex == 0)
                         dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                     else
                         dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                     break;
                 case "Số Công Văn":
-                    if (cmbNhanVienKiemTra.SelectedIndex == 0)
+                    if (CTaiKhoan.TruongPhong == true || cmbNhanVienKiemTra.SelectedIndex == 0)
                         dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
                     else
                         dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
@@ -269,6 +269,91 @@ namespace KTKS_DonKH.GUI.DonTu
             rpt.SetDataSource(dsBaoCao);
             rpt.Subreports[0].SetDataSource(dsBaoCao);
             rpt.Subreports[1].SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
+        }
+
+        private void btnInDSTong_DSChuyenKTXM_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+
+            switch (cmbTimTheo_DSChuyenKTXM.SelectedItem.ToString())
+            {
+                case "Ngày":
+                    if (CTaiKhoan.TruongPhong == true || cmbNhanVienKiemTra.SelectedIndex == 0)
+                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                    else
+                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                    break;
+                case "Số Công Văn":
+                    if (CTaiKhoan.TruongPhong == true || cmbNhanVienKiemTra.SelectedIndex == 0)
+                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
+                    else
+                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
+                    break;
+            }
+
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            if (chkChuaKT_DSChuyenKTXM.Checked)
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    if (bool.Parse(itemRow["GiaiQuyet"].ToString()) == false)
+                    {
+                        DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
+
+                        if (cmbTimTheo_DSChuyenKTXM.SelectedItem.ToString() == "Ngày")
+                        {
+                            dr["TuNgay"] = dateTu_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                            dr["DenNgay"] = dateDen_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                        }
+                        dr["MaDon"] = itemRow["MaDon"].ToString();
+                        //dr["STT"] = itemRow["STT"].ToString();
+                        dr["NgayChuyen"] = itemRow["NgayChuyen"];
+                        dr["NgayNhan"] = itemRow["NgayNhan"];
+                        dr["SoCongVan"] = itemRow["SoCongVan"];
+                        if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
+                            dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["HoTen"] = itemRow["HoTen"];
+                        dr["DiaChi"] = itemRow["DiaChi"];
+                        dr["NoiDung"] = itemRow["NoiDung"];
+                        dr["GhiChuChuyenKT"] = itemRow["GhiChu"];
+                        dr["NguoiDi"] = itemRow["NguoiDi"];
+                        dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+
+                        dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
+                    }
+                }
+            else
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
+
+                    if (cmbTimTheo_DSChuyenKTXM.SelectedItem.ToString() == "Ngày")
+                    {
+                        dr["TuNgay"] = dateTu_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateDen_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                    }
+                    dr["MaDon"] = itemRow["MaDon"].ToString();
+                    //dr["STT"] = itemRow["STT"].ToString();
+                    dr["NgayChuyen"] = itemRow["NgayChuyen"];
+                    dr["NgayNhan"] = itemRow["NgayNhan"];
+                    dr["SoCongVan"] = itemRow["SoCongVan"];
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
+                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                    dr["NoiDung"] = itemRow["NoiDung"];
+                    dr["GhiChuChuyenKT"] = itemRow["GhiChu"];
+                    dr["NguoiDi"] = itemRow["NguoiDi"];
+                    dr["DaGiaiQuyet"] = itemRow["GiaiQuyet"];
+                    dr["NgayGiaiQuyet"] = itemRow["NgayGiaiQuyet"];
+                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+
+                    dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
+                }
+
+            rptDSDonChuyenKTXM_Tong rpt = new rptDSDonChuyenKTXM_Tong();
+            rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
         }
@@ -737,6 +822,8 @@ namespace KTKS_DonKH.GUI.DonTu
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
         }
+
+
 
 
     }

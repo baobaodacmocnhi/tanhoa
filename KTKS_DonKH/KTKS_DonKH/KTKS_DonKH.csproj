@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1423</ApplicationRevision>
+    <ApplicationRevision>1424</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -556,6 +556,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="BaoCao\ThuTraLoi\rptToTrinh_DCMS.cs">
+      <DependentUpon>rptToTrinh_DCMS.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\ThuTraLoi\rptToTrinh_ThongQuaPGD.cs">
       <DependentUpon>rptToTrinh_ThongQuaPGD.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -725,6 +731,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptKetQuaTimKiembyDanhBo.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\ToXuLy\rptDSDonChuyenKTXM_Tong.cs">
+      <DependentUpon>rptDSDonChuyenKTXM_Tong.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BaoCao\ToXuLy\rptDonDienThoai.cs">
       <AutoGen>True</AutoGen>
@@ -1843,6 +1855,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThuMoiDutChi.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ThuTraLoi\rptToTrinh_DCMS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToTrinh_DCMS.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ThuTraLoi\rptToTrinh_ThongQuaPGD.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptToTrinh_ThongQuaPGD.cs</LastGenOutput>
@@ -1954,6 +1970,10 @@
     <EmbeddedResource Include="BaoCao\TimKiem\rptKetQuaTimKiembyDanhBo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptKetQuaTimKiembyDanhBo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ToXuLy\rptDSDonChuyenKTXM_Tong.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDSDonChuyenKTXM_Tong.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ToXuLy\rptDonDienThoai.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

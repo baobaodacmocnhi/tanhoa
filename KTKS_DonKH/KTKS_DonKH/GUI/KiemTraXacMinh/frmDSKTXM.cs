@@ -222,7 +222,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 }
             else
                 if (radNhanDon.Checked == true)
-                    dgvDanhSach.DataSource = _cDonTu.getDS_ChuyenKTXM_KyNhan(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                    if (CTaiKhoan.TruongPhong == true)
+                        dgvDanhSach.DataSource = _cDonTu.getDS_ChuyenKTXM_KyNhan_Phong(dateTu.Value, dateDen.Value);
+                    else if (CTaiKhoan.ToTruong == true || CTaiKhoan.ThuKy == true)
+                        dgvDanhSach.DataSource = _cDonTu.getDS_ChuyenKTXM_KyNhan_To(CTaiKhoan.MaTo, dateTu.Value, dateDen.Value);
+                    else
+                        dgvDanhSach.DataSource = _cDonTu.getDS_ChuyenKTXM_KyNhan_NV(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -282,7 +287,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 dgvDanhSach.Columns["NgayKTXM"].Visible = true;
                 dgvDanhSach.Columns["NoiDungKiemTra"].Visible = true;
-                dgvDanhSach.Columns["CreateBy"].Visible = true;
+                //dgvDanhSach.Columns["CreateBy"].Visible = true;
                 dgvDanhSach.Columns["Nhan"].Visible = false;
                 dgvDanhSach.Columns["NgayNhan"].Visible = false;
             }
@@ -292,9 +297,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (radNhanDon.Checked == true)
             {
+                dgvDanhSach.DataSource = null;
                 dgvDanhSach.Columns["NgayKTXM"].Visible = false;
                 dgvDanhSach.Columns["NoiDungKiemTra"].Visible = false;
-                dgvDanhSach.Columns["CreateBy"].Visible = false;
+                //dgvDanhSach.Columns["CreateBy"].Visible = false;
                 dgvDanhSach.Columns["Nhan"].Visible = true;
                 dgvDanhSach.Columns["NgayNhan"].Visible = true;
             }
@@ -304,6 +310,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (dgvDanhSach.Columns[e.ColumnIndex].Name == "Nhan")
             {
+                dgvDanhSach.DataSource = null;
                 if (bool.Parse(dgvDanhSach["Nhan", e.RowIndex].Value.ToString()) == true)
                     _cDonTu.ExecuteNonQuery("update DonTu_LichSu set Nhan=1,NgayNhan=getdate() where ID=" + dgvDanhSach["ID", e.RowIndex].Value.ToString());
                 else
