@@ -311,9 +311,9 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
                     ToTrinh_ChiTiet cttt = new ToTrinh_ChiTiet();
 
@@ -407,6 +407,9 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         cttt.Nam = _hoadon.NAM.Value;
                         cttt.Phuong = _hoadon.Phuong;
                         cttt.Quan = _hoadon.Quan;
+                        cttt.Hieu = _hoadon.HIEUDH;
+                        cttt.Co = _hoadon.CoDH;
+                        cttt.SoThan = _hoadon.SoThanDHN;
                     }
                     cttt.ThuDuocKy = true;
 
@@ -431,22 +434,21 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
                         }
-
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
                     if (_cttt != null)
                     {
@@ -474,6 +476,9 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             _cttt.Nam = _hoadon.NAM.Value;
                             _cttt.Phuong = _hoadon.Phuong;
                             _cttt.Quan = _hoadon.Quan;
+                            _cttt.Hieu = _hoadon.HIEUDH;
+                            _cttt.Co = _hoadon.CoDH;
+                            _cttt.SoThan = _hoadon.SoThanDHN;
                         }
 
                         if (_cTT.Sua_ChiTiet(_cttt))
@@ -483,20 +488,20 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                 {
                     if (_cttt != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
@@ -507,13 +512,13 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -857,7 +862,41 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             }
         }
 
-       
+        private void btnLapSoPhieu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXoaSoPhieu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
 
 
     }

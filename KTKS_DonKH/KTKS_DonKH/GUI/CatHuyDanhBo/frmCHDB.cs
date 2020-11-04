@@ -594,6 +594,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         ctchdb.Nam = _hoadon.NAM.ToString();
                         ctchdb.Phuong = _hoadon.Phuong;
                         ctchdb.Quan = _hoadon.Quan;
+                        ctchdb.Hieu = _hoadon.HIEUDH;
+                        ctchdb.Co = _hoadon.CoDH;
+                        ctchdb.SoThan = _hoadon.SoThanDHN;
                     }
                     ctchdb.Code68 = chkCode68.Checked;
                     ctchdb.LyDo = cmbLyDo.SelectedValue.ToString();
@@ -697,6 +700,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _ctchdb.Nam = _hoadon.NAM.ToString();
                             _ctchdb.Phuong = _hoadon.Phuong;
                             _ctchdb.Quan = _hoadon.Quan;
+                            _ctchdb.Hieu = _hoadon.HIEUDH;
+                            _ctchdb.Co = _hoadon.CoDH;
+                            _ctchdb.SoThan = _hoadon.SoThanDHN;
                         }
 
                         if (txtMaThongBaoCT.Text.Trim().Replace("-", "") != "")

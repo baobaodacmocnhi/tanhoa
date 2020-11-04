@@ -527,6 +527,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         ctctdb.Nam = _hoadon.NAM.ToString();
                         ctctdb.Phuong = _hoadon.Phuong;
                         ctctdb.Quan = _hoadon.Quan;
+                        ctctdb.Hieu = _hoadon.HIEUDH;
+                        ctctdb.Co = _hoadon.CoDH;
+                        ctctdb.SoThan = _hoadon.SoThanDHN;
                     }
                     ctctdb.Code68 = chkCode68.Checked;
                     ctctdb.LyDo = cmbLyDo.SelectedValue.ToString();
@@ -602,6 +605,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _ctctdb.Nam = _hoadon.NAM.ToString();
                             _ctctdb.Phuong = _hoadon.Phuong;
                             _ctctdb.Quan = _hoadon.Quan;
+                            _ctctdb.Hieu = _hoadon.HIEUDH;
+                            _ctctdb.Co = _hoadon.CoDH;
+                            _ctctdb.SoThan = _hoadon.SoThanDHN;
                         }
 
                         _ctctdb.Code68 = chkCode68.Checked;

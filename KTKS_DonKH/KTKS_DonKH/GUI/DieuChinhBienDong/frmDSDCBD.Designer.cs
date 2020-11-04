@@ -931,6 +931,7 @@
             this.btnCapNhatThuTien.TabIndex = 93;
             this.btnCapNhatThuTien.Text = "Cập Nhật Thu Tiền";
             this.btnCapNhatThuTien.UseVisualStyleBackColor = true;
+            this.btnCapNhatThuTien.Visible = false;
             this.btnCapNhatThuTien.Click += new System.EventHandler(this.btnCapNhatThuTien_Click);
             // 
             // btnExcelHDDT

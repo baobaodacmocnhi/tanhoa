@@ -5693,6 +5693,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _Phuong;
 		
+		private string _Hieu;
+		
+		private string _Co;
+		
+		private string _SoThan;
+		
 		private string _LyDo;
 		
 		private string _GhiChuLyDo;
@@ -5819,6 +5825,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnQuanChanged();
     partial void OnPhuongChanging(string value);
     partial void OnPhuongChanged();
+    partial void OnHieuChanging(string value);
+    partial void OnHieuChanged();
+    partial void OnCoChanging(string value);
+    partial void OnCoChanged();
+    partial void OnSoThanChanging(string value);
+    partial void OnSoThanChanged();
     partial void OnLyDoChanging(string value);
     partial void OnLyDoChanged();
     partial void OnGhiChuLyDoChanging(string value);
@@ -6138,6 +6150,66 @@ namespace KTKS_DonKH.LinQ
 					this._Phuong = value;
 					this.SendPropertyChanged("Phuong");
 					this.OnPhuongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hieu", DbType="VarChar(50)")]
+		public string Hieu
+		{
+			get
+			{
+				return this._Hieu;
+			}
+			set
+			{
+				if ((this._Hieu != value))
+				{
+					this.OnHieuChanging(value);
+					this.SendPropertyChanging();
+					this._Hieu = value;
+					this.SendPropertyChanged("Hieu");
+					this.OnHieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Co", DbType="VarChar(50)")]
+		public string Co
+		{
+			get
+			{
+				return this._Co;
+			}
+			set
+			{
+				if ((this._Co != value))
+				{
+					this.OnCoChanging(value);
+					this.SendPropertyChanging();
+					this._Co = value;
+					this.SendPropertyChanged("Co");
+					this.OnCoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoThan", DbType="VarChar(50)")]
+		public string SoThan
+		{
+			get
+			{
+				return this._SoThan;
+			}
+			set
+			{
+				if ((this._SoThan != value))
+				{
+					this.OnSoThanChanging(value);
+					this.SendPropertyChanging();
+					this._SoThan = value;
+					this.SendPropertyChanged("SoThan");
+					this.OnSoThanChanged();
 				}
 			}
 		}
@@ -7447,6 +7519,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _Phuong;
 		
+		private string _Hieu;
+		
+		private string _Co;
+		
+		private string _SoThan;
+		
 		private string _LyDo;
 		
 		private string _GhiChuLyDo;
@@ -7561,6 +7639,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnQuanChanged();
     partial void OnPhuongChanging(string value);
     partial void OnPhuongChanged();
+    partial void OnHieuChanging(string value);
+    partial void OnHieuChanged();
+    partial void OnCoChanging(string value);
+    partial void OnCoChanged();
+    partial void OnSoThanChanging(string value);
+    partial void OnSoThanChanged();
     partial void OnLyDoChanging(string value);
     partial void OnLyDoChanged();
     partial void OnGhiChuLyDoChanging(string value);
@@ -7868,6 +7952,66 @@ namespace KTKS_DonKH.LinQ
 					this._Phuong = value;
 					this.SendPropertyChanged("Phuong");
 					this.OnPhuongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hieu", DbType="VarChar(50)")]
+		public string Hieu
+		{
+			get
+			{
+				return this._Hieu;
+			}
+			set
+			{
+				if ((this._Hieu != value))
+				{
+					this.OnHieuChanging(value);
+					this.SendPropertyChanging();
+					this._Hieu = value;
+					this.SendPropertyChanged("Hieu");
+					this.OnHieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Co", DbType="VarChar(50)")]
+		public string Co
+		{
+			get
+			{
+				return this._Co;
+			}
+			set
+			{
+				if ((this._Co != value))
+				{
+					this.OnCoChanging(value);
+					this.SendPropertyChanging();
+					this._Co = value;
+					this.SendPropertyChanged("Co");
+					this.OnCoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoThan", DbType="VarChar(50)")]
+		public string SoThan
+		{
+			get
+			{
+				return this._SoThan;
+			}
+			set
+			{
+				if ((this._SoThan != value))
+				{
+					this.OnSoThanChanging(value);
+					this.SendPropertyChanging();
+					this._SoThan = value;
+					this.SendPropertyChanged("SoThan");
+					this.OnSoThanChanged();
 				}
 			}
 		}
@@ -50379,6 +50523,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _Phuong;
 		
+		private string _Hieu;
+		
+		private string _Co;
+		
+		private string _SoThan;
+		
 		private string _VeViec;
 		
 		private string _KinhTrinh;
@@ -50402,6 +50552,8 @@ namespace KTKS_DonKH.LinQ
 		private bool _TraTrinhKy;
 		
 		private string _GhiChu;
+		
+		private System.Nullable<int> _SoPhieuTong;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -50459,6 +50611,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnQuanChanged();
     partial void OnPhuongChanging(string value);
     partial void OnPhuongChanged();
+    partial void OnHieuChanging(string value);
+    partial void OnHieuChanged();
+    partial void OnCoChanging(string value);
+    partial void OnCoChanged();
+    partial void OnSoThanChanging(string value);
+    partial void OnSoThanChanged();
     partial void OnVeViecChanging(string value);
     partial void OnVeViecChanged();
     partial void OnKinhTrinhChanging(string value);
@@ -50483,6 +50641,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTraTrinhKyChanged();
     partial void OnGhiChuChanging(string value);
     partial void OnGhiChuChanged();
+    partial void OnSoPhieuTongChanging(System.Nullable<int> value);
+    partial void OnSoPhieuTongChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -50792,6 +50952,66 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hieu", DbType="VarChar(50)")]
+		public string Hieu
+		{
+			get
+			{
+				return this._Hieu;
+			}
+			set
+			{
+				if ((this._Hieu != value))
+				{
+					this.OnHieuChanging(value);
+					this.SendPropertyChanging();
+					this._Hieu = value;
+					this.SendPropertyChanged("Hieu");
+					this.OnHieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Co", DbType="VarChar(50)")]
+		public string Co
+		{
+			get
+			{
+				return this._Co;
+			}
+			set
+			{
+				if ((this._Co != value))
+				{
+					this.OnCoChanging(value);
+					this.SendPropertyChanging();
+					this._Co = value;
+					this.SendPropertyChanged("Co");
+					this.OnCoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoThan", DbType="VarChar(50)")]
+		public string SoThan
+		{
+			get
+			{
+				return this._SoThan;
+			}
+			set
+			{
+				if ((this._SoThan != value))
+				{
+					this.OnSoThanChanging(value);
+					this.SendPropertyChanging();
+					this._SoThan = value;
+					this.SendPropertyChanged("SoThan");
+					this.OnSoThanChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VeViec", DbType="NVarChar(MAX)")]
 		public string VeViec
 		{
@@ -51032,6 +51252,26 @@ namespace KTKS_DonKH.LinQ
 					this._GhiChu = value;
 					this.SendPropertyChanged("GhiChu");
 					this.OnGhiChuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhieuTong", DbType="Int")]
+		public System.Nullable<int> SoPhieuTong
+		{
+			get
+			{
+				return this._SoPhieuTong;
+			}
+			set
+			{
+				if ((this._SoPhieuTong != value))
+				{
+					this.OnSoPhieuTongChanging(value);
+					this.SendPropertyChanging();
+					this._SoPhieuTong = value;
+					this.SendPropertyChanged("SoPhieuTong");
+					this.OnSoPhieuTongChanged();
 				}
 			}
 		}
