@@ -207,6 +207,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             item.DiaChi,
                             item.VeViec,
                             item.NoiDung,
+                            item.SoPhieuTong,
                         };
             return LINQToDataTable(query);
         }
@@ -228,6 +229,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             item.DiaChi,
                             item.VeViec,
                             item.NoiDung,
+                            item.SoPhieuTong,
                         };
             return LINQToDataTable(query);
         }
@@ -249,6 +251,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             item.DiaChi,
                             item.VeViec,
                             item.NoiDung,
+                            item.SoPhieuTong,
                         };
             return LINQToDataTable(query);
         }
@@ -270,8 +273,29 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             item.DiaChi,
                             item.VeViec,
                             item.NoiDung,
+                            item.SoPhieuTong,
                         };
             return LINQToDataTable(query);
+        }
+
+        public decimal getNextSoPhieuTong()
+        {
+            if (db.ToTrinh_ChiTiets.Max(item => item.SoPhieuTong) == null)
+                return int.Parse("1" + DateTime.Now.ToString("yy"));
+            else
+            {
+                string ID = "SoPhieuTong";
+                string Table = "ToTrinh_ChiTiet";
+                int SoPhieu = db.ExecuteQuery<int>("declare @Ma int " +
+                    "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                    "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                return getMaxNextIDTable(SoPhieu);
+            }
+        }
+
+        public List<ToTrinh_ChiTiet> getDS_ChiTiet_SoPhieuTong(int SoPhieuTong)
+        {
+            return db.ToTrinh_ChiTiets.Where(item => item.SoPhieuTong == SoPhieuTong).ToList();
         }
 
         #endregion

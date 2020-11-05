@@ -16669,6 +16669,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _HieuLucKy;
 		
+		private string _DienThoai;
+		
 		private System.Nullable<decimal> _MaDCBD;
 		
 		private System.Nullable<int> _STT;
@@ -16799,6 +16801,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnKhongTinhPhiBVMTChanged();
     partial void OnHieuLucKyChanging(string value);
     partial void OnHieuLucKyChanged();
+    partial void OnDienThoaiChanging(string value);
+    partial void OnDienThoaiChanged();
     partial void OnMaDCBDChanging(System.Nullable<decimal> value);
     partial void OnMaDCBDChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
@@ -17556,6 +17560,26 @@ namespace KTKS_DonKH.LinQ
 					this._HieuLucKy = value;
 					this.SendPropertyChanged("HieuLucKy");
 					this.OnHieuLucKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DienThoai", DbType="VarChar(50)")]
+		public string DienThoai
+		{
+			get
+			{
+				return this._DienThoai;
+			}
+			set
+			{
+				if ((this._DienThoai != value))
+				{
+					this.OnDienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._DienThoai = value;
+					this.SendPropertyChanged("DienThoai");
+					this.OnDienThoaiChanged();
 				}
 			}
 		}
@@ -50555,6 +50579,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _SoPhieuTong;
 		
+		private System.Nullable<System.DateTime> _NgaySoPhieuTong;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -50643,6 +50669,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnGhiChuChanged();
     partial void OnSoPhieuTongChanging(System.Nullable<int> value);
     partial void OnSoPhieuTongChanged();
+    partial void OnNgaySoPhieuTongChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgaySoPhieuTongChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -51272,6 +51300,26 @@ namespace KTKS_DonKH.LinQ
 					this._SoPhieuTong = value;
 					this.SendPropertyChanged("SoPhieuTong");
 					this.OnSoPhieuTongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgaySoPhieuTong", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgaySoPhieuTong
+		{
+			get
+			{
+				return this._NgaySoPhieuTong;
+			}
+			set
+			{
+				if ((this._NgaySoPhieuTong != value))
+				{
+					this.OnNgaySoPhieuTongChanging(value);
+					this.SendPropertyChanging();
+					this._NgaySoPhieuTong = value;
+					this.SendPropertyChanged("NgaySoPhieuTong");
+					this.OnNgaySoPhieuTongChanged();
 				}
 			}
 		}

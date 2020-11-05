@@ -166,6 +166,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDot.Text = ctdcbd.Dot;
             txtHieuLucKy.Text = ctdcbd.HieuLucKy;
             txtGhiChu.Text = ctdcbd.GhiChu;
+            txtDienThoai.Text = ctdcbd.DienThoai;
             txtDanhBo.Text = ctdcbd.DanhBo;
             txtHopDong.Text = ctdcbd.HopDong;
             txtHoTen.Text = ctdcbd.HoTen;
@@ -594,6 +595,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdcbd.Dot = txtDot.Text.Trim();
                     ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
                     ctdcbd.GhiChu = txtGhiChu.Text.Trim();
+                    ctdcbd.DienThoai = txtDienThoai.Text.Trim();
                     ctdcbd.ChuaKTXM = chkChuaKTXM.Checked;
 
                     ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)
@@ -794,6 +796,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdcbd.Dot = txtDot.Text.Trim();
                         _ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
                         _ctdcbd.GhiChu = txtGhiChu.Text.Trim();
+                        _ctdcbd.DienThoai = txtDienThoai.Text.Trim();
                         _ctdcbd.ChuaKTXM = chkChuaKTXM.Checked;
 
                         ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)

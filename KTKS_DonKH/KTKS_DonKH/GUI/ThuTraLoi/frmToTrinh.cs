@@ -868,7 +868,66 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
+                    int SoPhieuTong = (int)_cTT.getNextSoPhieuTong();
+                    List<ToTrinh_ChiTiet> lst = new List<ToTrinh_ChiTiet>();
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    foreach (DataGridViewRow item in dgvToTrinh.Rows)
+                        if (item.Cells["In"].Value != null && bool.Parse(item.Cells["In"].Value.ToString()) == true)
+                        {
+                            if (string.IsNullOrEmpty(item.Cells["SoPhieuTong"].Value.ToString()))
+                            {
+                                ToTrinh_ChiTiet cttt = _cTT.get_ChiTiet(int.Parse(item.Cells["IDCT"].Value.ToString()));
+                                cttt.SoPhieuTong = (int)SoPhieuTong;
+                                cttt.NgaySoPhieuTong = DateTime.Now;
+                                _cTT.Sua_ChiTiet(cttt);
+                            }
+                            else
+                                if (!lst.Any(itemlst => itemlst.SoPhieuTong == int.Parse(item.Cells["SoPhieuTong"].Value.ToString())))
+                                    lst = lst.Concat(_cTT.getDS_ChiTiet_SoPhieuTong(int.Parse(item.Cells["SoPhieuTong"].Value.ToString()))).ToList();
+                        }
 
+                    lst = lst.Concat(_cTT.getDS_ChiTiet_SoPhieuTong(SoPhieuTong)).ToList();
+                    BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                    foreach (ToTrinh_ChiTiet item in lst)
+                    {
+                        DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+
+                        dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+                        dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                        dr["SoPhieu"] = item.SoPhieuTong.ToString().Insert(item.SoPhieuTong.ToString().Length - 2, "-");
+
+                        dr["VeViec"] = item.VeViec;
+                        dr["KinhTrinh"] = item.KinhTrinh;
+                        dr["ThongQua"] = item.ThongQua;
+                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                            dr["ChucVu"] = "GIÁM ĐỐC";
+                        else
+                            dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
+                        dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
+
+                        dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                        //
+                        DataRow dr2 = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
+
+                        if (item.DanhBo.Length == 11)
+                            dr2["DanhBo"] = item.DanhBo.Insert(7, " ").Insert(4, " ");
+                        dr2["HoTen"] = item.HoTen;
+                        dr2["DiaChi"] = item.DiaChi;
+                        dr2["Hieu"] = item.Hieu;
+                        dr2["Co"] = item.Co;
+                        dr2["SoThan"] = item.SoThan;
+
+                        dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr2);
+                    }
+
+                    rptToTrinh_DCMS rpt1 = new rptToTrinh_DCMS();
+                    rpt1.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm1 = new frmShowBaoCao(rpt1);
+                    frm1.Show();
+                    rptToTrinh_DCMS_DinhKem rpt2 = new rptToTrinh_DCMS_DinhKem();
+                    rpt2.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
+                    frm2.Show();
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -885,7 +944,17 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
-
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        foreach (DataGridViewRow item in dgvToTrinh.Rows)
+                            if (item.Cells["In"].Value != null && bool.Parse(item.Cells["In"].Value.ToString()) == true && !string.IsNullOrEmpty(item.Cells["SoPhieuTong"].Value.ToString()))
+                            {
+                                ToTrinh_ChiTiet cttt = _cTT.get_ChiTiet(int.Parse(item.Cells["IDCT"].Value.ToString()));
+                                cttt.SoPhieuTong = null;
+                                cttt.NgaySoPhieuTong = null;
+                                _cTT.Sua_ChiTiet(cttt);
+                            }
+                    }
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -894,6 +963,22 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSelectAll.Checked)
+            {
+                for (int i = 0; i < dgvToTrinh.Rows.Count; i++)
+                {
+                    dgvToTrinh["In", i].Value = true;
+                }
+            }
+            else
+                for (int i = 0; i < dgvToTrinh.Rows.Count; i++)
+                {
+                    dgvToTrinh["In", i].Value = false;
+                }
         }
 
 

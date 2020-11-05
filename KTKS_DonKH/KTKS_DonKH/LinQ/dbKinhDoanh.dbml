@@ -716,6 +716,7 @@
       <Column Name="TinhPhiBVMT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="KhongTinhPhiBVMT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="HieuLucKy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DienThoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MaDCBD" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
@@ -2234,6 +2235,7 @@
       <Column Name="TraTrinhKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SoPhieuTong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NgaySoPhieuTong" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
