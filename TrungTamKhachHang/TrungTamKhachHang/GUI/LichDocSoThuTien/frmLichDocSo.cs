@@ -42,64 +42,70 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
             {
                 DateTime NgayDoc = _dtp.Value,
                     NgayKiemSoat_From = NgayDoc.AddDays(1),
-                    NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1),
+                    NgayKiemSoat_To = NgayKiemSoat_From,
+                    //NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1),
                     NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
                 //edit row 0
                 if (NgayDoc.DayOfWeek == DayOfWeek.Saturday)
                 {
                     NgayKiemSoat_From = NgayDoc.AddDays(2);
-                    NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
+                    NgayKiemSoat_To = NgayKiemSoat_From;
+                    //NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
                     NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
                 }
                 if (NgayKiemSoat_From.DayOfWeek == DayOfWeek.Saturday)
                 {
-                    NgayKiemSoat_From=NgayKiemSoat_From.AddDays(2);
-                    NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
+                    NgayKiemSoat_From = NgayKiemSoat_From.AddDays(2);
+                    NgayKiemSoat_To = NgayKiemSoat_From;
+                    //NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
                     NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
                 }
                 if (NgayKiemSoat_To.DayOfWeek == DayOfWeek.Saturday)
                 {
-                    NgayKiemSoat_To=NgayKiemSoat_To.AddDays(2);
+                    NgayKiemSoat_To = NgayKiemSoat_To.AddDays(2);
                     NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
                 }
                 if (NgayChuyenListing.DayOfWeek == DayOfWeek.Saturday)
                 {
-                    NgayChuyenListing=NgayChuyenListing.AddDays(2);
+                    NgayChuyenListing = NgayChuyenListing.AddDays(2);
                 }
                 int i = dgvDot.CurrentRow.Index;
                 dgvDot["NgayKiemSoat_From", i].Value = NgayKiemSoat_From.ToString("dd/MM/yyyy");
                 dgvDot["NgayKiemSoat_To", i].Value = NgayKiemSoat_To.ToString("dd/MM/yyyy");
                 dgvDot["NgayChuyenListing", i].Value = NgayChuyenListing.ToString("dd/MM/yyyy");
-                
+
                 //edit row 1++
                 while (i < dgvDot.RowCount - 1)
                 {
                     DateTime date = DateTime.Parse(dgvDot.Rows[i].Cells["NgayDoc"].Value.ToString());
                     NgayDoc = date.AddDays(1);
                     NgayKiemSoat_From = NgayDoc.AddDays(1);
-                    NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
+                    NgayKiemSoat_To = NgayKiemSoat_From;
+                    //NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
                     NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
                     if (NgayDoc.DayOfWeek == DayOfWeek.Saturday)
                     {
-                       NgayDoc= NgayDoc.AddDays(2);
-                        NgayKiemSoat_From=NgayDoc.AddDays(1);
-                        NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
+                        NgayDoc = NgayDoc.AddDays(2);
+                        NgayKiemSoat_From = NgayDoc.AddDays(1);
+                        NgayKiemSoat_To = NgayKiemSoat_From;
+                        //NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
                         NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
                     }
                     if (NgayKiemSoat_From.DayOfWeek == DayOfWeek.Saturday)
                     {
-                       NgayKiemSoat_From= NgayKiemSoat_From.AddDays(2);
-                        NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
+                        NgayKiemSoat_From = NgayKiemSoat_From.AddDays(2);
+                        NgayKiemSoat_To = NgayKiemSoat_From;
+                        //NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
                         NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
                     }
                     if (NgayKiemSoat_To.DayOfWeek == DayOfWeek.Saturday)
                     {
-                       NgayKiemSoat_To= NgayKiemSoat_To.AddDays(2);
+                        NgayKiemSoat_To = NgayKiemSoat_To.AddDays(2);
                         NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
                     }
                     if (NgayChuyenListing.DayOfWeek == DayOfWeek.Saturday)
                     {
-                       NgayChuyenListing= NgayChuyenListing.AddDays(2);
+                        NgayChuyenListing = NgayChuyenListing.AddDays(2);
                     }
                     dgvDot["NgayDoc", i + 1].Value = NgayDoc.ToString("dd/MM/yyyy");
                     dgvDot["NgayKiemSoat_From", i + 1].Value = NgayKiemSoat_From.ToString("dd/MM/yyyy");
@@ -294,7 +300,7 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                 foreach (Lich_DocSo_ChiTiet item in _docso.Lich_DocSo_ChiTiets.ToList())
                 {
                     DataRow dr = dsBaoCao.Tables["LichDocSoThuTien"].NewRow();
-                    dr["LoaiBaoCao"] = "LỊCH ĐỌC SỐ VÀ GIAO LISTING KỲ "+_docso.Ky+" NĂM "+_docso.Nam;
+                    dr["LoaiBaoCao"] = "LỊCH ĐỌC SỐ VÀ GIAO LISTING KỲ " + _docso.Ky + " NĂM " + _docso.Nam;
                     dr["TuNgay"] = _docso.TuNgay.Value.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = _docso.DenNgay.Value.ToString("dd/MM/yyyy");
                     dr["Dot"] = item.Lich_Dot.Name;
@@ -322,7 +328,7 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                     dr["TP2_To"] = item.Lich_Dot.TP2_To.Insert(4, ".").Insert(2, ".");
                     dsBaoCao.Tables["LichDocSoThuTien"].Rows.Add(dr);
                 }
-                
+
                 rptLichDocSo rpt = new rptLichDocSo();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
