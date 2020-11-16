@@ -152,37 +152,37 @@ namespace ThuTien.GUI.Doi
                 foreach (DataRow item in dtDCHDChuanThu.Rows)
                 {
                     DataRow[] drDoi = dtDoi.Select("Loai='" + item["Loai"] + "'");
-                    drDoi[0]["GTChuanThu"] = long.Parse(drDoi[0]["GTChuanThu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                    drDoi[0]["GTChuanThu"] = long.Parse(drDoi[0]["GTChuanThu"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString()) ;
 
                     DataRow[] drTo = dtTo.Select("TenTo='" + item["TenTo"] + "' and Loai='" + item["Loai"] + "'");
-                    drTo[0]["GTChuanThu"] = long.Parse(drTo[0]["GTChuanThu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                    drTo[0]["GTChuanThu"] = long.Parse(drTo[0]["GTChuanThu"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString()) ;
                 }
 
                 foreach (DataRow item in dtDCHDTonCuKy.Rows)
                 {
                     DataRow[] drDoi = dtDoi.Select("Loai='" + item["Loai"] + "'");
-                    drDoi[0]["GTTonCu"] = long.Parse(drDoi[0]["GTTonCu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                    drDoi[0]["GTTonCu"] = long.Parse(drDoi[0]["GTTonCu"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString()) ;
 
                     DataRow[] drTo = dtTo.Select("TenTo='" + item["TenTo"] + "' and Loai='" + item["Loai"] + "'");
-                    drTo[0]["GTTonCu"] = long.Parse(drTo[0]["GTTonCu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                    drTo[0]["GTTonCu"] = long.Parse(drTo[0]["GTTonCu"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString());
                 }
 
                 foreach (DataRow item in dtDCHDTonTrongKy.Rows)
                 {
                     DataRow[] drDoi = dtDoi.Select("Loai='" + item["Loai"] + "'");
-                    drDoi[0]["GTTonThu"] = long.Parse(drDoi[0]["GTTonThu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                    drDoi[0]["GTTonThu"] = long.Parse(drDoi[0]["GTTonThu"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString()) ;
 
                     DataRow[] drTo = dtTo.Select("TenTo='" + item["TenTo"] + "' and Loai='" + item["Loai"] + "'");
-                    drTo[0]["GTTonThu"] = long.Parse(drTo[0]["GTTonThu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                    drTo[0]["GTTonThu"] = long.Parse(drTo[0]["GTTonThu"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString()) ;
                 }
 
                 foreach (DataRow item in dtDCHDTongTon.Rows)
                 {
                     DataRow[] drDoi = dtDoi.Select("Loai='" + item["Loai"] + "'");
-                    drDoi[0]["GTTongTon"] = long.Parse(drDoi[0]["GTTongTon"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                    drDoi[0]["GTTongTon"] = long.Parse(drDoi[0]["GTTongTon"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString()) ;
 
                     DataRow[] drTo = dtTo.Select("TenTo='" + item["TenTo"] + "' and Loai='" + item["Loai"] + "'");
-                    drTo[0]["GTTongTon"] = long.Parse(drTo[0]["GTTongTon"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                    drTo[0]["GTTongTon"] = long.Parse(drTo[0]["GTTongTon"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString()) ;
                 }
 
                 foreach (DataRow item in dtDoi.Rows)

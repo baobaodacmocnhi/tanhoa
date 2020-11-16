@@ -396,10 +396,10 @@ namespace ThuTien.GUI.Doi
                     DataTable dtDCHD = _cDCHD.GetTongChuanThu(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(item.Cells["Dot"].Value.ToString()));
                     if (dtDCHD != null && dtDCHD.Rows.Count > 0)
                     {
-                        item.Cells["TongGiaBan"].Value = long.Parse(item.Cells["TongGiaBan"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["GIABAN_BD"].ToString());
-                        item.Cells["TongThueGTGT"].Value = long.Parse(item.Cells["TongThueGTGT"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["ThueGTGT_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["ThueGTGT_BD"].ToString());
-                        item.Cells["TongPhiBVMT"].Value = long.Parse(item.Cells["TongPhiBVMT"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["PhiBVMT_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["PhiBVMT_BD"].ToString());
-                        item.Cells["TongCong"].Value = long.Parse(item.Cells["TongCong"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["TONGCONG_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["TONGCONG_BD"].ToString());
+                        item.Cells["TongGiaBan"].Value = long.Parse(item.Cells["TongGiaBan"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_DC"].ToString()) ;
+                        item.Cells["TongThueGTGT"].Value = long.Parse(item.Cells["TongThueGTGT"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["ThueGTGT_DC"].ToString()) ;
+                        item.Cells["TongPhiBVMT"].Value = long.Parse(item.Cells["TongPhiBVMT"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["PhiBVMT_DC"].ToString()) ;
+                        item.Cells["TongCong"].Value = long.Parse(item.Cells["TongCong"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["TONGCONG_DC"].ToString()) ;
                     }
 
                     TongHD += int.Parse(item.Cells["TongHD"].Value.ToString());
@@ -520,19 +520,19 @@ namespace ThuTien.GUI.Doi
                 DataTable dtDCHD = _cDCHD.GetTongChuanThu(Nam, Ky);
                 if (dtDCHD != null && dtDCHD.Rows.Count > 0)
                 {
-                    dt.Rows[0]["TongGiaBan"] = long.Parse(dt.Rows[0]["TongGiaBan"].ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["GIABAN_BD"].ToString());
-                    dt.Rows[0]["TongThueGTGT"] = long.Parse(dt.Rows[0]["TongThueGTGT"].ToString()) - long.Parse(dtDCHD.Rows[0]["ThueGTGT_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["ThueGTGT_BD"].ToString());
-                    dt.Rows[0]["TongPhiBVMT"] = long.Parse(dt.Rows[0]["TongPhiBVMT"].ToString()) - long.Parse(dtDCHD.Rows[0]["PhiBVMT_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["PhiBVMT_BD"].ToString());
-                    dt.Rows[0]["TongCong"] = long.Parse(dt.Rows[0]["TongCong"].ToString()) - long.Parse(dtDCHD.Rows[0]["TONGCONG_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["TONGCONG_BD"].ToString());
+                    dt.Rows[0]["TongGiaBan"] = long.Parse(dt.Rows[0]["TongGiaBan"].ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_DC"].ToString()) ;
+                    dt.Rows[0]["TongThueGTGT"] = long.Parse(dt.Rows[0]["TongThueGTGT"].ToString()) - long.Parse(dtDCHD.Rows[0]["ThueGTGT_DC"].ToString()) ;
+                    dt.Rows[0]["TongPhiBVMT"] = long.Parse(dt.Rows[0]["TongPhiBVMT"].ToString()) - long.Parse(dtDCHD.Rows[0]["PhiBVMT_DC"].ToString());
+                    dt.Rows[0]["TongCong"] = long.Parse(dt.Rows[0]["TongCong"].ToString()) - long.Parse(dtDCHD.Rows[0]["TONGCONG_DC"].ToString());
                 }
                 DataTable dtTruoc = _cHoaDon.GetTongByNamKy(NamTruoc, KyTruoc);
                 dtDCHD = _cDCHD.GetTongChuanThu(NamTruoc, KyTruoc);
                 if (dtDCHD != null && dtDCHD.Rows.Count > 0)
                 {
-                    dtTruoc.Rows[0]["TongGiaBan"] = long.Parse(dtTruoc.Rows[0]["TongGiaBan"].ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["GIABAN_BD"].ToString());
-                    dtTruoc.Rows[0]["TongThueGTGT"] = long.Parse(dtTruoc.Rows[0]["TongThueGTGT"].ToString()) - long.Parse(dtDCHD.Rows[0]["ThueGTGT_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["ThueGTGT_BD"].ToString());
-                    dtTruoc.Rows[0]["TongPhiBVMT"] = long.Parse(dtTruoc.Rows[0]["TongPhiBVMT"].ToString()) - long.Parse(dtDCHD.Rows[0]["PhiBVMT_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["PhiBVMT_BD"].ToString());
-                    dtTruoc.Rows[0]["TongCong"] = long.Parse(dtTruoc.Rows[0]["TongCong"].ToString()) - long.Parse(dtDCHD.Rows[0]["TONGCONG_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["TONGCONG_BD"].ToString());
+                    dtTruoc.Rows[0]["TongGiaBan"] = long.Parse(dtTruoc.Rows[0]["TongGiaBan"].ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_DC"].ToString());
+                    dtTruoc.Rows[0]["TongThueGTGT"] = long.Parse(dtTruoc.Rows[0]["TongThueGTGT"].ToString()) - long.Parse(dtDCHD.Rows[0]["ThueGTGT_DC"].ToString()) ;
+                    dtTruoc.Rows[0]["TongPhiBVMT"] = long.Parse(dtTruoc.Rows[0]["TongPhiBVMT"].ToString()) - long.Parse(dtDCHD.Rows[0]["PhiBVMT_DC"].ToString()) ;
+                    dtTruoc.Rows[0]["TongCong"] = long.Parse(dtTruoc.Rows[0]["TongCong"].ToString()) - long.Parse(dtDCHD.Rows[0]["TONGCONG_DC"].ToString()) ;
                 }
                 dsBaoCao ds = new dsBaoCao();
                 for (int i = 0; i < dtTruoc.Rows.Count; i++)
@@ -577,13 +577,13 @@ namespace ThuTien.GUI.Doi
                 DataTable dtDCHD = _cDCHD.GetTongChuanThu(int.Parse(cmbNam_TyLeTon.SelectedValue.ToString()), int.Parse(item.Cells["Ky_TyLeTon"].Value.ToString()));
                 if (dtDCHD != null && dtDCHD.Rows.Count > 0)
                 {
-                    item.Cells["TongGiaBan_TyLeTon"].Value = long.Parse(item.Cells["TongGiaBan_TyLeTon"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["GIABAN_BD"].ToString());
+                    item.Cells["TongGiaBan_TyLeTon"].Value = long.Parse(item.Cells["TongGiaBan_TyLeTon"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_DC"].ToString()) ;
                 }
 
                 DataTable dtDCHDTon = _cDCHD.GetTongChuanThuTon(int.Parse(cmbNam_TyLeTon.SelectedValue.ToString()), int.Parse(item.Cells["Ky_TyLeTon"].Value.ToString()));
                 if (dtDCHDTon != null && dtDCHDTon.Rows.Count > 0)
                 {
-                    item.Cells["TongGiaBanTon_TyLeTon"].Value = long.Parse(item.Cells["TongGiaBanTon_TyLeTon"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["GIABAN_BD"].ToString());
+                    item.Cells["TongGiaBanTon_TyLeTon"].Value = long.Parse(item.Cells["TongGiaBanTon_TyLeTon"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_DC"].ToString()) ;
                 }
 
                 item.Cells["TyLeTongHDTon_TyLeTon"].Value = Math.Round(double.Parse(item.Cells["TongHDTon_TyLeTon"].Value.ToString()) / double.Parse(item.Cells["TongHD_TyLeTon"].Value.ToString()) * 100, 2);

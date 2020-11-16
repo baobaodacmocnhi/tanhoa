@@ -159,9 +159,9 @@ namespace ThuTien.GUI.Doi
                     txtTongA.Text = dtExcel.Rows.Count.ToString();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi, Vui lòng thử lại "+ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

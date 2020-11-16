@@ -454,7 +454,7 @@ namespace ThuTien.GUI.ToTruong
                         if (_cDCHD.CheckExist_ChuanThu(int.Parse(item["MaHD"].ToString())))
                         {
                             DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(item["MaHD"].ToString()));
-                            item["TongCong"] = long.Parse(item["TongCong"].ToString()) - dchd.TONGCONG_END + dchd.TONGCONG_BD;
+                            item["TongCong"] = long.Parse(item["TongCong"].ToString()) - dchd.TONGCONG_DC ;
                         }
                     lstND = _cNguoiDung.GetDSHanhThuByMaTo((int)cmbTo.SelectedValue);
                 }
@@ -469,7 +469,7 @@ namespace ThuTien.GUI.ToTruong
                         if (_cDCHD.CheckExist_ChuanThu(int.Parse(item["MaHD"].ToString())))
                         {
                             DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(item["MaHD"].ToString()));
-                            item["TongCong"] = long.Parse(item["TongCong"].ToString()) - dchd.TONGCONG_END + dchd.TONGCONG_BD;
+                            item["TongCong"] = long.Parse(item["TongCong"].ToString()) - dchd.TONGCONG_DC;
                         }
                     lstND = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
                 }
@@ -500,25 +500,25 @@ namespace ThuTien.GUI.ToTruong
                 foreach (DataRow item in dtDCHDChuanThu.Rows)
                 {
                     DataRow[] drTo = dtNV.Select("MaNV=" + item["MaNV"] + " and Loai='" + item["Loai"] + "'");
-                    drTo[0]["GTChuanThu"] = long.Parse(drTo[0]["GTChuanThu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                    drTo[0]["GTChuanThu"] = long.Parse(drTo[0]["GTChuanThu"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString()) ;
                 }
 
                 foreach (DataRow item in dtDCHDTonCuKy.Rows)
                 {
                     DataRow[] drTo = dtNV.Select("MaNV='" + item["MaNV"] + "' and Loai='" + item["Loai"] + "'");
-                    drTo[0]["GTTonCu"] = long.Parse(drTo[0]["GTTonCu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                    drTo[0]["GTTonCu"] = long.Parse(drTo[0]["GTTonCu"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString());
                 }
 
                 foreach (DataRow item in dtDCHDTonTrongKy.Rows)
                 {
                     DataRow[] drTo = dtNV.Select("MaNV='" + item["MaNV"] + "' and Loai='" + item["Loai"] + "'");
-                    drTo[0]["GTTonThu"] = long.Parse(drTo[0]["GTTonThu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                    drTo[0]["GTTonThu"] = long.Parse(drTo[0]["GTTonThu"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString());
                 }
 
                 foreach (DataRow item in dtDCHDTongTon.Rows)
                 {
                     DataRow[] drTo = dtNV.Select("MaNV='" + item["MaNV"] + "' and Loai='" + item["Loai"] + "'");
-                    drTo[0]["GTTongTon"] = long.Parse(drTo[0]["GTTongTon"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                    drTo[0]["GTTongTon"] = long.Parse(drTo[0]["GTTongTon"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString());
                 }
 
                 foreach (DataRow item in dtNV.Rows)

@@ -202,6 +202,10 @@ namespace ThuTien.DAL.TongHop
                             ThueGTGT_BD = itemGroup.Sum(groupItem => groupItem.THUE_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_BD),
                             PhiBVMT_BD = itemGroup.Sum(groupItem => groupItem.PHI_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_BD),
                             TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
+                            GIABAN_DC = itemGroup.Sum(groupItem => groupItem.GIABAN_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_DC),
+                            ThueGTGT_DC = itemGroup.Sum(groupItem => groupItem.THUE_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_DC),
+                            PhiBVMT_DC = itemGroup.Sum(groupItem => groupItem.PHI_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_DC),
+                            TONGCONG_DC = itemGroup.Sum(groupItem => groupItem.TONGCONG_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_DC),
                             GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_END),
                             ThueGTGT_End = itemGroup.Sum(groupItem => groupItem.THUE_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_END),
                             PhiBVMT_End = itemGroup.Sum(groupItem => groupItem.PHI_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_END),
@@ -222,6 +226,10 @@ namespace ThuTien.DAL.TongHop
                             ThueGTGT_BD = itemGroup.Sum(groupItem => groupItem.THUE_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_BD),
                             PhiBVMT_BD = itemGroup.Sum(groupItem => groupItem.PHI_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_BD),
                             TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
+                            GIABAN_DC = itemGroup.Sum(groupItem => groupItem.GIABAN_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_DC),
+                            ThueGTGT_DC = itemGroup.Sum(groupItem => groupItem.THUE_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_DC),
+                            PhiBVMT_DC = itemGroup.Sum(groupItem => groupItem.PHI_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_DC),
+                            TONGCONG_DC = itemGroup.Sum(groupItem => groupItem.TONGCONG_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_DC),
                             GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_END),
                             ThueGTGT_End = itemGroup.Sum(groupItem => groupItem.THUE_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_END),
                             PhiBVMT_End = itemGroup.Sum(groupItem => groupItem.PHI_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_END),
@@ -244,6 +252,8 @@ namespace ThuTien.DAL.TongHop
                             _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
                             GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
                             TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
+                            GIABAN_DC = itemGroup.Sum(groupItem => groupItem.GIABAN_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_DC),
+                            TONGCONG_DC = itemGroup.Sum(groupItem => groupItem.TONGCONG_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_DC),
                             GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_END),
                             TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
                         };
@@ -261,6 +271,8 @@ namespace ThuTien.DAL.TongHop
                             Ky = Ky,
                             GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
                             TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
+                            GIABAN_DC = itemGroup.Sum(groupItem => groupItem.GIABAN_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_DC),
+                            TONGCONG_DC = itemGroup.Sum(groupItem => groupItem.TONGCONG_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_DC),
                             GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_END),
                             TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
                         };
@@ -280,6 +292,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -297,6 +311,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -323,6 +339,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -345,6 +363,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -377,7 +397,13 @@ namespace ThuTien.DAL.TongHop
                 //            };
                 //return LINQToDataTable(query);
                 string sql = "select Loai='TG',MaTo=" + MaTo + ",TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MaNV=hd.MaNV_HanhThu,HoTen=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_HanhThu)"
-                        + " ,hd.NGAYGIAITRACH,GIABAN_BD=case when dchd.GIABAN_BD is null then 0 else dchd.GIABAN_BD end,TONGCONG_BD=case when dchd.TONGCONG_BD is null then 0 else dchd.TONGCONG_BD end,GIABAN_END=case when dchd.GIABAN_END is null then 0 else dchd.GIABAN_END end,TONGCONG_END=case when dchd.TONGCONG_END is null then 0 else dchd.TONGCONG_END end"
+                        + " ,hd.NGAYGIAITRACH"
+                        + " ,GIABAN_BD=case when dchd.GIABAN_BD is null then 0 else dchd.GIABAN_BD end"
+                        + " ,TONGCONG_BD=case when dchd.TONGCONG_BD is null then 0 else dchd.TONGCONG_BD end"
+                        + " ,GIABAN_DC=case when dchd.GIABAN_DC is null then 0 else dchd.GIABAN_DC end"
+                        + " ,TONGCONG_DC=case when dchd.TONGCONG_DC is null then 0 else dchd.TONGCONG_DC end"
+                        + " ,GIABAN_END=case when dchd.GIABAN_END is null then 0 else dchd.GIABAN_END end"
+                        + " ,TONGCONG_END=case when dchd.TONGCONG_END is null then 0 else dchd.TONGCONG_END end"
                         + " from DIEUCHINH_HD dchd,HOADON hd where dchd.FK_HOADON=hd.ID_HOADON"
                         + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ") and dchd.ChuanThu1=0 and hd.NAM=" + Nam + " and hd.KY=" + Ky
                         + " and hd.GB>=10 and hd.GB <= 20";
@@ -406,7 +432,13 @@ namespace ThuTien.DAL.TongHop
                     //            };
                     //return LINQToDataTable(query);
                     string sql = "select Loai='CQ',MaTo=" + MaTo + ",TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MaNV=hd.MaNV_HanhThu,HoTen=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_HanhThu)"
-                        + " ,hd.NGAYGIAITRACH,GIABAN_BD=case when dchd.GIABAN_BD is null then 0 else dchd.GIABAN_BD end,TONGCONG_BD=case when dchd.TONGCONG_BD is null then 0 else dchd.TONGCONG_BD end,GIABAN_END=case when dchd.GIABAN_END is null then 0 else dchd.GIABAN_END end,TONGCONG_END=case when dchd.TONGCONG_END is null then 0 else dchd.TONGCONG_END end"
+                        + " ,hd.NGAYGIAITRACH"
+                        + " ,GIABAN_BD=case when dchd.GIABAN_BD is null then 0 else dchd.GIABAN_BD end"
+                        + " ,TONGCONG_BD=case when dchd.TONGCONG_BD is null then 0 else dchd.TONGCONG_BD end"
+                        + " ,GIABAN_DC=case when dchd.GIABAN_DC is null then 0 else dchd.GIABAN_DC end"
+                        + " ,TONGCONG_DC=case when dchd.TONGCONG_DC is null then 0 else dchd.TONGCONG_DC end"
+                        + " ,GIABAN_END=case when dchd.GIABAN_END is null then 0 else dchd.GIABAN_END end"
+                        + " ,TONGCONG_END=case when dchd.TONGCONG_END is null then 0 else dchd.TONGCONG_END end"
                         + " from DIEUCHINH_HD dchd,HOADON hd where dchd.FK_HOADON=hd.ID_HOADON"
                         + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ") and dchd.ChuanThu1=0 and hd.NAM=" + Nam + " and hd.KY=" + Ky
                         + " and hd.GB > 20";
@@ -433,6 +465,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -455,6 +489,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -481,6 +517,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -503,6 +541,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -522,6 +562,8 @@ namespace ThuTien.DAL.TongHop
                             THUEGTGT_BD = itemDC.THUE_BD,
                             PHIBVMT_BD = itemDC.PHI_BD,
                             TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                            TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                             GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             THUEGTGT_END = itemDC.THUE_END,
                             PHIBVMT_END = itemDC.PHI_END,
@@ -545,6 +587,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -564,6 +608,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -588,6 +634,8 @@ namespace ThuTien.DAL.TongHop
                             itemHD.NGAYGIAITRACH,
                             GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                             TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                            TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                             GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
@@ -610,6 +658,8 @@ namespace ThuTien.DAL.TongHop
                             itemHD.NGAYGIAITRACH,
                             GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                             TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                            TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                             GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
@@ -632,6 +682,8 @@ namespace ThuTien.DAL.TongHop
                             itemHD.NGAYGIAITRACH,
                             GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                             TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                            TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                             GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
@@ -655,6 +707,8 @@ namespace ThuTien.DAL.TongHop
                             itemHD.NGAYGIAITRACH,
                             GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                             TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                            TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                             GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
@@ -678,6 +732,8 @@ namespace ThuTien.DAL.TongHop
                             itemHD.NGAYGIAITRACH,
                             GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                             TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                            TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                             GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
@@ -700,6 +756,8 @@ namespace ThuTien.DAL.TongHop
                             itemHD.NGAYGIAITRACH,
                             GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                             TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                            TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                             GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
@@ -722,6 +780,8 @@ namespace ThuTien.DAL.TongHop
                             itemHD.NGAYGIAITRACH,
                             GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                             TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                            TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                             GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
@@ -745,6 +805,8 @@ namespace ThuTien.DAL.TongHop
                             itemHD.NGAYGIAITRACH,
                             GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                             TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                            TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                             GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
@@ -768,6 +830,8 @@ namespace ThuTien.DAL.TongHop
                             itemHD.NGAYGIAITRACH,
                             GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                             TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                            TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                             GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
@@ -791,6 +855,8 @@ namespace ThuTien.DAL.TongHop
                             itemHD.NGAYGIAITRACH,
                             GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                             TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                            TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                             GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
@@ -818,6 +884,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -843,6 +911,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -868,6 +938,8 @@ namespace ThuTien.DAL.TongHop
                             itemHD.NGAYGIAITRACH,
                             GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                             TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                            TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                             GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
@@ -891,6 +963,8 @@ namespace ThuTien.DAL.TongHop
                             itemHD.NGAYGIAITRACH,
                             GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                             TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                            GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                            TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                             GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                             TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                         };
@@ -918,6 +992,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -943,6 +1019,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -966,6 +1044,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -985,6 +1065,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -1008,6 +1090,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -1027,6 +1111,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -1050,6 +1136,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -1069,6 +1157,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -1092,6 +1182,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -1111,6 +1203,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -1134,6 +1228,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -1153,6 +1249,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -1176,6 +1274,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -1195,6 +1295,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -1221,6 +1323,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -1243,6 +1347,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };
@@ -1269,6 +1375,8 @@ namespace ThuTien.DAL.TongHop
                                 itemHD.NGAYGIAITRACH,
                                 GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                 TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                 GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                 TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                             };
@@ -1291,6 +1399,8 @@ namespace ThuTien.DAL.TongHop
                                     itemHD.NGAYGIAITRACH,
                                     GIABAN_BD = itemDC.GIABAN_BD == null ? 0 : itemDC.GIABAN_BD,
                                     TONGCONG_BD = itemDC.TONGCONG_BD == null ? 0 : itemDC.TONGCONG_BD,
+                                    GIABAN_DC = itemDC.GIABAN_DC == null ? 0 : itemDC.GIABAN_DC,
+                                    TONGCONG_DC = itemDC.TONGCONG_DC == null ? 0 : itemDC.TONGCONG_DC,
                                     GIABAN_END = itemDC.GIABAN_END == null ? 0 : itemDC.GIABAN_END,
                                     TONGCONG_END = itemDC.TONGCONG_END == null ? 0 : itemDC.TONGCONG_END,
                                 };

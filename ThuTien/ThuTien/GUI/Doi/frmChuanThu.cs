@@ -247,29 +247,29 @@ namespace ThuTien.GUI.Doi
                             {
                                 DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                             }
                             else
                             {
                                 DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                             }
                         }
                         else
                         {
                             DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         }
                     }
                 }
@@ -318,19 +318,19 @@ namespace ThuTien.GUI.Doi
                         {
                             DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         }
                         else
                         {
                             DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         }
                     }
                 }
@@ -364,29 +364,29 @@ namespace ThuTien.GUI.Doi
                                 {
                                     DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                                 }
                                 else
                                 {
                                     DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                                 }
                             }
                             else
                             {
                                 DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString());
                             }
                         }
                     }
@@ -436,19 +436,19 @@ namespace ThuTien.GUI.Doi
                             {
                                 DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                             }
                             else
                             {
                                 DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                             }
                         }
                     }
@@ -688,29 +688,29 @@ namespace ThuTien.GUI.Doi
                         {
                             DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         }
                         else
                         {
                             DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         }
                     }
                     else
                     {
                         DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                     }
                 }
             }
@@ -744,19 +744,19 @@ namespace ThuTien.GUI.Doi
                     {
                         DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                     }
                     else
                     {
                         DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                     }
                 }
             }
@@ -787,29 +787,29 @@ namespace ThuTien.GUI.Doi
                         {
                             DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         }
                         else
                         {
                             DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         }
                     }
                     else
                     {
                         DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                     }
                 }
             }
@@ -844,19 +844,19 @@ namespace ThuTien.GUI.Doi
                     {
                         DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongThu"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                     }
                     else
                     {
                         DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTon"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                     }
                 }
             }
@@ -941,7 +941,7 @@ namespace ThuTien.GUI.Doi
                 {
                     DataRow[] drTemp = dtTemp.Select("MaTo=" + item["MaTo"].ToString());
 
-                    dtTemp.Rows[dtTemp.Rows.IndexOf(drTemp[0])]["TongCong"] = long.Parse(dtTemp.Rows[dtTemp.Rows.IndexOf(drTemp[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                    dtTemp.Rows[dtTemp.Rows.IndexOf(drTemp[0])]["TongCong"] = long.Parse(dtTemp.Rows[dtTemp.Rows.IndexOf(drTemp[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                 }
 
                 DataRow dr = dt.NewRow();

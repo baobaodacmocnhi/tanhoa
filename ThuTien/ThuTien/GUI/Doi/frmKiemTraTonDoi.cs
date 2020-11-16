@@ -210,7 +210,7 @@ namespace ThuTien.GUI.Doi
                             {
                                 DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                             }
                             else
                             {
@@ -224,7 +224,7 @@ namespace ThuTien.GUI.Doi
                                 {
                                     DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString());
                                 }
                             }
                         }
@@ -251,7 +251,7 @@ namespace ThuTien.GUI.Doi
                                 {
                                     DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString());
                                 }
                             }
                         }
@@ -271,7 +271,7 @@ namespace ThuTien.GUI.Doi
                                     {
                                         DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString());
                                     }
                                     else
                                     {
@@ -285,7 +285,7 @@ namespace ThuTien.GUI.Doi
                                         {
                                             DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                                         }
                                     }
                                 }
@@ -334,7 +334,7 @@ namespace ThuTien.GUI.Doi
                                     {
                                         DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                                     }
                                 }
                             }
@@ -379,7 +379,7 @@ namespace ThuTien.GUI.Doi
                             {
                                 DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                             }
                             else
                             {
@@ -393,7 +393,7 @@ namespace ThuTien.GUI.Doi
                                 {
                                     DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                                 }
                             }
                         }
@@ -418,7 +418,7 @@ namespace ThuTien.GUI.Doi
                                 {
                                     DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                                 }
                             }
                         }
@@ -433,7 +433,7 @@ namespace ThuTien.GUI.Doi
                                     {
                                         DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString());
                                     }
                                     else
                                     {
@@ -447,7 +447,7 @@ namespace ThuTien.GUI.Doi
                                         {
                                             DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                                         }
                                     }
                                 }
@@ -492,7 +492,7 @@ namespace ThuTien.GUI.Doi
                                     {
                                         DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString());
                                     }
                                 }
                             }
@@ -1311,7 +1311,7 @@ namespace ThuTien.GUI.Doi
                     {
                         DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                     }
                     else
                     {
@@ -1325,7 +1325,7 @@ namespace ThuTien.GUI.Doi
                         {
                             DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString());
                         }
                     }
                 }
@@ -1349,7 +1349,7 @@ namespace ThuTien.GUI.Doi
                         {
                             DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         }
                     }
                 }
@@ -1364,7 +1364,7 @@ namespace ThuTien.GUI.Doi
                             {
                                 DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString());
                             }
                             else
                             {
@@ -1378,7 +1378,7 @@ namespace ThuTien.GUI.Doi
                                 {
                                     DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                    dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString());
                                 }
                             }
                         }
@@ -1417,7 +1417,7 @@ namespace ThuTien.GUI.Doi
                             {
                                 DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
 
-                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_END"].ToString()) + int.Parse(item["TONGCONG_BD"].ToString());
+                                dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCongTonBilling"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                             }
                         }
                     }
@@ -1730,10 +1730,10 @@ namespace ThuTien.GUI.Doi
                     if (_cDCHD.CheckExist_ChuanThu(int.Parse(item["MaHD"].ToString())))
                     {
                         DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(item["MaHD"].ToString()));
-                        item["GiaBan"] = long.Parse(item["GiaBan"].ToString()) - dchd.GIABAN_END + dchd.GIABAN_BD;
-                        item["ThueGTGT"] = long.Parse(item["ThueGTGT"].ToString()) - dchd.THUE_END + dchd.THUE_BD;
-                        item["PhiBVMT"] = long.Parse(item["PhiBVMT"].ToString()) - dchd.PHI_END + dchd.PHI_BD;
-                        item["TongCong"] = long.Parse(item["TongCong"].ToString()) - dchd.TONGCONG_END + dchd.TONGCONG_BD;
+                        item["GiaBan"] = long.Parse(item["GiaBan"].ToString()) - dchd.GIABAN_DC;
+                        item["ThueGTGT"] = long.Parse(item["ThueGTGT"].ToString()) - dchd.THUE_DC;
+                        item["PhiBVMT"] = long.Parse(item["PhiBVMT"].ToString()) - dchd.PHI_DC;
+                        item["TongCong"] = long.Parse(item["TongCong"].ToString()) - dchd.TONGCONG_DC;
                     }
                 }
 
