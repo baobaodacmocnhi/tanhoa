@@ -260,6 +260,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
         {
             var query = from item in db.ToTrinh_ChiTiets
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        orderby item.CreateDate descending
                         select new
                         {
                             MaDon = item.ToTrinh.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ToTrinh.MaDonMoi).Count() == 1 ?  item.ToTrinh.MaDonMoi.Value.ToString() : item.ToTrinh.MaDonMoi + "." + item.STT

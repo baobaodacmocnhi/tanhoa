@@ -468,6 +468,8 @@ namespace KTKS_DonKH.GUI.DonTu
                             entityCT.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                         if (txtDinhMuc.Text.Trim() != "")
                             entityCT.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                        if (txtDinhMucHN.Text.Trim() != "")
+                            entityCT.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                         if (_hoadon != null)
                         {
                             entityCT.MLT = _hoadon.MALOTRINH;
@@ -525,6 +527,8 @@ namespace KTKS_DonKH.GUI.DonTu
                                     entityCT.GiaBieu = int.Parse(item.Cells["GiaBieu"].Value.ToString());
                                 if (item.Cells["DinhMuc"].Value != null && item.Cells["DinhMuc"].Value.ToString() != "")
                                     entityCT.DinhMuc = int.Parse(item.Cells["DinhMuc"].Value.ToString());
+                                if (item.Cells["DinhMucHN"].Value != null && item.Cells["DinhMucHN"].Value.ToString() != "")
+                                    entityCT.DinhMucHN = int.Parse(item.Cells["DinhMucHN"].Value.ToString());
                                 if (item.Cells["Dot"].Value != null && item.Cells["Dot"].Value.ToString() != "")
                                     entityCT.Dot = int.Parse(item.Cells["Dot"].Value.ToString());
                                 if (item.Cells["Ky"].Value != null && item.Cells["Ky"].Value.ToString() != "")

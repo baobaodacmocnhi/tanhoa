@@ -566,8 +566,15 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
         private void dgvToTrinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            _cttt = _cTT.get_ChiTiet(int.Parse(dgvToTrinh["IDCT", e.RowIndex].Value.ToString()));
-            LoadTT(_cttt);
+            try
+            {
+                _cttt = _cTT.get_ChiTiet(int.Parse(dgvToTrinh["IDCT", e.RowIndex].Value.ToString()));
+                LoadTT(_cttt);
+            }
+            catch (Exception)
+            {
+            }
+            
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -879,6 +886,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 ToTrinh_ChiTiet cttt = _cTT.get_ChiTiet(int.Parse(item.Cells["IDCT"].Value.ToString()));
                                 cttt.SoPhieuTong = (int)SoPhieuTong;
                                 cttt.NgaySoPhieuTong = DateTime.Now;
+                                cttt.NoiDungSoPhieuTong = txtNoiDungSoPhieuTong.Text.Trim();
                                 _cTT.Sua_ChiTiet(cttt);
                             }
                             else
@@ -899,6 +907,13 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dr["VeViec"] = item.VeViec;
                         dr["KinhTrinh"] = item.KinhTrinh;
                         dr["ThongQua"] = item.ThongQua;
+                        dr["NoiDung"] = item.NoiDungSoPhieuTong;
+                        dr["NoiNhan"] = item.NoiNhan.Substring(0,item.NoiNhan.LastIndexOf("("));
+                        if(item.VeViec.ToLower().Contains("nắp hộp bv"))
+                            dr["Luuy"] = "+nắp hộp BV";
+                        else
+                            if (item.VeViec.ToLower().Contains("hộp bv"))
+                                dr["Luuy"] = "+hộp BV";
                         if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                             dr["ChucVu"] = "GIÁM ĐỐC";
                         else
@@ -909,6 +924,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         //
                         DataRow dr2 = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
+                        dr2["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length-2,"-");
                         if (item.DanhBo.Length == 11)
                             dr2["DanhBo"] = item.DanhBo.Insert(7, " ").Insert(4, " ");
                         dr2["HoTen"] = item.HoTen;
@@ -916,18 +932,22 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dr2["Hieu"] = item.Hieu;
                         dr2["Co"] = item.Co;
                         dr2["SoThan"] = item.SoThan;
+                        dr2["Quan"] = item.Quan;
 
                         dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr2);
                     }
 
-                    rptToTrinh_DCMS rpt1 = new rptToTrinh_DCMS();
-                    rpt1.SetDataSource(dsBaoCao);
-                    frmShowBaoCao frm1 = new frmShowBaoCao(rpt1);
-                    frm1.Show();
+                    
                     rptToTrinh_DCMS_DinhKem rpt2 = new rptToTrinh_DCMS_DinhKem();
                     rpt2.SetDataSource(dsBaoCao);
                     frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
                     frm2.Show();
+                    rptToTrinh_DCMS rpt1 = new rptToTrinh_DCMS();
+                    rpt1.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm1 = new frmShowBaoCao(rpt1);
+                    frm1.Show();
+
+                    btnXem.PerformClick();
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -952,8 +972,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 ToTrinh_ChiTiet cttt = _cTT.get_ChiTiet(int.Parse(item.Cells["IDCT"].Value.ToString()));
                                 cttt.SoPhieuTong = null;
                                 cttt.NgaySoPhieuTong = null;
+                                cttt.NoiDungSoPhieuTong = null;
                                 _cTT.Sua_ChiTiet(cttt);
                             }
+                        btnXem.PerformClick();
                     }
                 }
                 else

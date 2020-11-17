@@ -50581,6 +50581,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _NgaySoPhieuTong;
 		
+		private string _NoiDungSoPhieuTong;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -50671,6 +50673,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnSoPhieuTongChanged();
     partial void OnNgaySoPhieuTongChanging(System.Nullable<System.DateTime> value);
     partial void OnNgaySoPhieuTongChanged();
+    partial void OnNoiDungSoPhieuTongChanging(string value);
+    partial void OnNoiDungSoPhieuTongChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -51264,7 +51268,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(500)")]
 		public string GhiChu
 		{
 			get
@@ -51320,6 +51324,26 @@ namespace KTKS_DonKH.LinQ
 					this._NgaySoPhieuTong = value;
 					this.SendPropertyChanged("NgaySoPhieuTong");
 					this.OnNgaySoPhieuTongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDungSoPhieuTong", DbType="NVarChar(500)")]
+		public string NoiDungSoPhieuTong
+		{
+			get
+			{
+				return this._NoiDungSoPhieuTong;
+			}
+			set
+			{
+				if ((this._NoiDungSoPhieuTong != value))
+				{
+					this.OnNoiDungSoPhieuTongChanging(value);
+					this.SendPropertyChanging();
+					this._NoiDungSoPhieuTong = value;
+					this.SendPropertyChanged("NoiDungSoPhieuTong");
+					this.OnNoiDungSoPhieuTongChanged();
 				}
 			}
 		}

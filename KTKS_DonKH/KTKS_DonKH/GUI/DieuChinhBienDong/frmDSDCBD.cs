@@ -1997,6 +1997,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["HoTen"] = ctdcbd.HoTen;
                                 dr["DiaChi"] = ctdcbd.DiaChi;
                                 dr["ThongTin"] = ctdcbd.GhiChu;
+                                string[] HieuLucKys = ctdcbd.HieuLucKy.Split('/');
+                                GiaNuoc2 gn = _cGiaNuoc.getGiaNuoc(int.Parse(HieuLucKys[1]));
+                                dr["TienNuocSH"] = gn.SHTM;
+                                dr["TienNuocSHVuot"] = gn.KDDV;
                                 if (ctdcbd.DCBD.MaDon != null)
                                     dr["MaDon"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
                                 else
@@ -2021,7 +2025,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 rptThuBaoDCBD rpt = new rptThuBaoDCBD();
                                 rpt.SetDataSource(dsBaoCao);
-
+                                //frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                                //frm.Show();
                                 printDialog.AllowSomePages = true;
                                 printDialog.ShowHelp = true;
 

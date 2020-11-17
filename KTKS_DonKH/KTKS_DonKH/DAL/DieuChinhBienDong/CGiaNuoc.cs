@@ -29,9 +29,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         List<int> lst2013 = new List<int> { 5300, 10200, 11400, 9600, 10300, 16900, 0 };
 
         List<int> lst2019 = new List<int> { 5600, 10800, 12100, 10200, 10900, 17900, 5300 };
-        List<int> lst2020 = new List<int> { 6000, 11500, 12800, 10800, 11600, 19000, 5600 };
-        List<int> lst2021 = new List<int> { 6300, 12100, 13600, 11400, 12300, 20100, 6000 };
-        List<int> lst2022 = new List<int> { 6700, 12900, 14400, 12100, 13000, 21300, 6300 };
+        //List<int> lst2020 = new List<int> { 6000, 11500, 12800, 10800, 11600, 19000, 5600 };
+        //List<int> lst2021 = new List<int> { 6300, 12100, 13600, 11400, 12300, 20100, 6000 };
+        //List<int> lst2022 = new List<int> { 6700, 12900, 14400, 12100, 13000, 21300, 6300 };
 
         public List<GiaNuoc> LoadDSGiaNuoc()
         {
@@ -58,6 +58,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         index = i;
                     }
             return lst[index];
+        }
+
+        public GiaNuoc2 getGiaNuoc(int Nam)
+        {
+          return  db.GiaNuoc2s.SingleOrDefault(item => item.Name == Nam);
         }
 
         public bool Them(GiaNuoc gianuoc)
