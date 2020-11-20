@@ -1,11 +1,11 @@
 ﻿USE [msdb]
 GO
 
-/****** Object:  Job [runRemindNopTien]    Script Date: 28/10/2020 1:57:28 PM ******/
+/****** Object:  Job [runRemindNopTien]    Script Date: 19/11/2020 9:52:56 AM ******/
 BEGIN TRANSACTION
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 28/10/2020 1:57:28 PM ******/
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 19/11/2020 9:52:56 AM ******/
 IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
 BEGIN
 EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
@@ -25,7 +25,7 @@ EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'runRemindNopTien',
 		@category_name=N'[Uncategorized (Local)]', 
 		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [run]    Script Date: 28/10/2020 1:57:28 PM ******/
+/****** Object:  Step [run]    Script Date: 19/11/2020 9:52:56 AM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'run', 
 		@step_id=1, 
 		@cmdexec_success_code=0, 
@@ -36,7 +36,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'run',
 		@retry_attempts=0, 
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'declare@Count int=(select COUNT(ID_HOADON) from HOADON where CAST(NGAYGIAITRACH as date)=CAST(GETDATE() as date) and MaNV_DangNgan is not null and SyncNopTien=0)
+		@command=N'declare @Count int=(select COUNT(ID_HOADON) from HOADON where (NAM>2020 or (NAM=2020 and KY>=7)) and CAST(NGAYGIAITRACH as date)=CAST(GETDATE() as date) and MaNV_DangNgan is not null and SyncNopTien=0)
 if(@Count>0)
 begin
 declare @MaNV int
