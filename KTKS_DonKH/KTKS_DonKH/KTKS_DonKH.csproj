@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1436</ApplicationRevision>
+    <ApplicationRevision>1439</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -604,14 +604,26 @@
       <DependentUpon>rptPhieuTieuThu.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\ToKhachHang\rptToTrinhDCHD_A4.cs">
+      <DependentUpon>rptToTrinhDCHD_A4.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\ToKhachHang\rptToTrinh_A4.cs">
+      <DependentUpon>rptToTrinh_A4.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\ToKhachHang\rptThongKeDonTKH.cs">
       <DependentUpon>rptThongKeDonTKH.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\ToKhachHang\rptToTrinh.cs">
-      <DependentUpon>rptToTrinh.rpt</DependentUpon>
+    <Compile Include="BaoCao\ToKhachHang\rptToTrinh_A5.cs">
+      <DependentUpon>rptToTrinh_A5.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -634,10 +646,10 @@
       <DependentUpon>rptDSDonKH.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\ToKhachHang\rptToTrinhDCHD.cs">
+    <Compile Include="BaoCao\ToKhachHang\rptToTrinhDCHD_A5.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rptToTrinhDCHD.rpt</DependentUpon>
+      <DependentUpon>rptToTrinhDCHD_A5.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\KiemTraXacMinh\rptThongKeDSKTXM.cs">
@@ -1894,13 +1906,21 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuTieuThu.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ToKhachHang\rptToTrinhDCHD_A4.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToTrinhDCHD_A4.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ToKhachHang\rptToTrinh_A4.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToTrinh_A4.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ToKhachHang\rptThongKeDonTKH.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeDonTKH.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\ToKhachHang\rptToTrinh.rpt">
+    <EmbeddedResource Include="BaoCao\ToKhachHang\rptToTrinh_A5.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptToTrinh.cs</LastGenOutput>
+      <LastGenOutput>rptToTrinh_A5.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ToKhachHang\rptDSDonDienThoai.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1914,9 +1934,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSDonKH.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\ToKhachHang\rptToTrinhDCHD.rpt">
+    <EmbeddedResource Include="BaoCao\ToKhachHang\rptToTrinhDCHD_A5.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptToTrinhDCHD.cs</LastGenOutput>
+      <LastGenOutput>rptToTrinhDCHD_A5.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptThongKeDSKTXM.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

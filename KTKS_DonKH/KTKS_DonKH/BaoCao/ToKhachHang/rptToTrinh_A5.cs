@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.ToKhachHang {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptToTrinhDCHD : ReportClass {
+    public class rptToTrinh_A5 : ReportClass {
         
-        public rptToTrinhDCHD() {
+        public rptToTrinh_A5() {
         }
         
         public override string ResourceName {
             get {
-                return "rptToTrinhDCHD.rpt";
+                return "rptToTrinh_A5.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.ToKhachHang {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.ToKhachHang.rptToTrinhDCHD.rpt";
+                return "KTKS_DonKH.BaoCao.ToKhachHang.rptToTrinh_A5.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace KTKS_DonKH.BaoCao.ToKhachHang {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptToTrinhDCHD : Component, ICachedReport {
+    public class CachedrptToTrinh_A5 : Component, ICachedReport {
         
-        public CachedrptToTrinhDCHD() {
+        public CachedrptToTrinh_A5() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace KTKS_DonKH.BaoCao.ToKhachHang {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptToTrinhDCHD rpt = new rptToTrinhDCHD();
+            rptToTrinh_A5 rpt = new rptToTrinh_A5();
             rpt.Site = this.Site;
             return rpt;
         }

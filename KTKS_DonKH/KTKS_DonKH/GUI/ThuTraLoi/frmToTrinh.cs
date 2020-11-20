@@ -574,7 +574,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             catch (Exception)
             {
             }
-            
+
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -908,11 +908,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dr["KinhTrinh"] = item.KinhTrinh;
                         dr["ThongQua"] = item.ThongQua;
                         dr["NoiDung"] = item.NoiDungSoPhieuTong;
-                        dr["NoiNhan"] = item.NoiNhan.Substring(0,item.NoiNhan.LastIndexOf("("));
-                        if(item.VeViec.ToLower().Contains("nắp hộp bv"))
+                        dr["NoiNhan"] = item.NoiNhan.Substring(0, item.NoiNhan.LastIndexOf("("));
+                        if (item.VeViec.ToLower().Contains("nắp hộp bv") || item.VeViec.ToLower().Contains("nắp hộp bảo vệ"))
                             dr["Luuy"] = "+nắp hộp BV";
                         else
-                            if (item.VeViec.ToLower().Contains("hộp bv"))
+                            if (item.VeViec.ToLower().Contains("hộp bv") || item.VeViec.ToLower().Contains("hộp bảo vệ"))
                                 dr["Luuy"] = "+hộp BV";
                         if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                             dr["ChucVu"] = "GIÁM ĐỐC";
@@ -924,7 +924,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         //
                         DataRow dr2 = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
-                        dr2["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length-2,"-");
+                        dr2["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                        dr2["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
                         if (item.DanhBo.Length == 11)
                             dr2["DanhBo"] = item.DanhBo.Insert(7, " ").Insert(4, " ");
                         dr2["HoTen"] = item.HoTen;
@@ -933,11 +934,16 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dr2["Co"] = item.Co;
                         dr2["SoThan"] = item.SoThan;
                         dr2["Quan"] = item.Quan;
+                        dr2["NoiDung"] = item.SoPhieuTong.ToString().Insert(item.SoPhieuTong.ToString().Length - 2, "-");
+                        if (item.ToTrinh.ToTrinh_ChiTiets.Count == 1)
+                            dr2["NoiNhan"] = item.ToTrinh.MaDonMoi;
+                        else
+                            dr2["NoiNhan"] = item.ToTrinh.MaDonMoi + "." + item.STT;
 
                         dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr2);
                     }
 
-                    
+
                     rptToTrinh_DCMS_DinhKem rpt2 = new rptToTrinh_DCMS_DinhKem();
                     rpt2.SetDataSource(dsBaoCao);
                     frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);

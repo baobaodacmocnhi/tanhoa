@@ -108,7 +108,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             dr["HD0"] = false;
 
             dsBaoCao.Tables["ToTrinhDCHD"].Rows.Add(dr);
-            rptToTrinhDCHD rpt=new rptToTrinhDCHD();
+            rptToTrinhDCHD_A4 rpt = new rptToTrinhDCHD_A4();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
@@ -142,7 +142,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             dr["HD0"] = true;
 
             dsBaoCao.Tables["ToTrinhDCHD"].Rows.Add(dr);
-            rptToTrinhDCHD rpt = new rptToTrinhDCHD();
+            rptToTrinhDCHD_A4 rpt = new rptToTrinhDCHD_A4();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
@@ -170,7 +170,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             dr["HD0"] = false;
 
             dsBaoCao.Tables["ToTrinhDCHD"].Rows.Add(dr);
-            rptToTrinh rpt = new rptToTrinh();
+            rptToTrinh_A4 rpt = new rptToTrinh_A4();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();

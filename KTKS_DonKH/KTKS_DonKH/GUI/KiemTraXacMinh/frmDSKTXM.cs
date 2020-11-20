@@ -308,9 +308,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void dgvDanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvDanhSach.Columns[e.ColumnIndex].Name == "Nhan")
+            if (dgvDanhSach.Columns[e.ColumnIndex].Name == "Nhan" && CTaiKhoan.TruongPhong == false && CTaiKhoan.ToTruong == false)
             {
-                dgvDanhSach.DataSource = null;
                 if (bool.Parse(dgvDanhSach["Nhan", e.RowIndex].Value.ToString()) == true)
                     _cDonTu.ExecuteNonQuery("update DonTu_LichSu set Nhan=1,NgayNhan=getdate() where ID=" + dgvDanhSach["ID", e.RowIndex].Value.ToString());
                 else
