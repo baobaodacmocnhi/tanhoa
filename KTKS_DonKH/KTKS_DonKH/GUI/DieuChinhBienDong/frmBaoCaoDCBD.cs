@@ -1380,7 +1380,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 DataRow dr = dsBaoCao.Tables["ThongKeDCHD"].NewRow();
                 dr["DanhBo"] = itemRow["DanhBo"];
-                dr["TangGiam"] = itemRow["TangGiam"];
+                if (itemRow["TangGiam"].ToString() == "")
+                    dr["TangGiam"] = itemRow["ThongTin"];
+                else
+                    dr["TangGiam"] = itemRow["TangGiam"];
                 dr["SoTien"] = itemRow["TongCong_BD"];
 
                 dsBaoCao.Tables["ThongKeDCHD"].Rows.Add(dr);

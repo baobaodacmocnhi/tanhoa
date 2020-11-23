@@ -1908,7 +1908,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             return db.DCBD_ChiTietHoaDons.Any(item => item.MaCTDCHD == MaCTDCHD);
         }
-        
+
         public bool checkExist_HoaDon(string SoHoaDon)
         {
             return db.DCBD_ChiTietHoaDons.Any(item => item.SoHoaDon == SoHoaDon);
@@ -3092,18 +3092,13 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable getDSHoaDon(string DanhBo, int Nam, int Ky)
         {
-            try
-            {
-                return LINQToDataTable(db.DCBD_ChiTietHoaDons.Where(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky).ToList());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            return LINQToDataTable(db.DCBD_ChiTietHoaDons.Where(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky).ToList());
         }
 
-
+        public DCBD_ChiTietHoaDon getHoaDon_Last(string DanhBo, int Nam, int Ky)
+        {
+            return db.DCBD_ChiTietHoaDons.Where(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky).OrderByDescending(item => item.CreateDate).First();
+        }
 
         #endregion
 

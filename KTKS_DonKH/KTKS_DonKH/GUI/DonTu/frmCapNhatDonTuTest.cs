@@ -475,6 +475,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                             {
                                                 //cập nhật tình trạng
                                                 _dontu.DonTu_ChiTiets.SingleOrDefault().HoanThanh = chkHoanThanh.Checked;
+                                                _dontu.DonTu_ChiTiets.SingleOrDefault().HoanThanh_Ngay = DateTime.Now;
                                                 _dontu.DonTu_ChiTiets.SingleOrDefault().HoanThanh_GhiChu = txtNoiDung_LichSu.Text.Trim();
                                                 _cDonTu.SubmitChanges();
                                                 //
@@ -570,6 +571,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                                     {
                                                         //cập nhật tình trạng
                                                         _dontu_ChiTiet.HoanThanh = chkHoanThanh.Checked;
+                                                        _dontu_ChiTiet.HoanThanh_Ngay = DateTime.Now;
                                                         _dontu_ChiTiet.HoanThanh_GhiChu = txtNoiDung_LichSu.Text.Trim();
                                                         _cDonTu.SubmitChanges();
                                                         //
@@ -665,6 +667,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                                             DonTu_ChiTiet dontu_chitiet = _cDonTu.get_ChiTiet(int.Parse(item.Cells["ID_CongVan"].Value.ToString()));
                                                             //cập nhật tình trạng
                                                             dontu_chitiet.HoanThanh = chkHoanThanh.Checked;
+                                                            dontu_chitiet.HoanThanh_Ngay = DateTime.Now;
                                                             dontu_chitiet.HoanThanh_GhiChu = txtNoiDung_LichSu.Text.Trim();
                                                             _cDonTu.SubmitChanges();
                                                             //

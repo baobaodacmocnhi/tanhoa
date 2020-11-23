@@ -45,7 +45,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
         DocSo _docso = null;
-        DCBD_ChiTietHoaDon _ctdchd = null;
+        DCBD_ChiTietHoaDon _ctdchd = null, _dchdLast = null;
         int _TieuThu_DieuChinhGia = 0;
         float _TyLeKhuCongNghiep = 0.0f;
         decimal _MaCTDCHD = -1;
@@ -127,6 +127,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             _hoadon = null;
             _docso = null;
             _ctdchd = null;
+            _dchdLast = null;
             _MaCTDCHD = -1;
             dgvHinh.Rows.Clear();
 
@@ -139,18 +140,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtMLT.Text = hoadon.MALOTRINH;
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
-            if (hoadon.GB != null)
-                txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = hoadon.GB.ToString();
-            else
-                txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = "0";
-            if (hoadon.DinhMucHN != null)
-                txtDinhMucHN_Cu.Text = txtDinhMucHN_Moi.Text = hoadon.DinhMucHN.ToString();
-            else
-                txtDinhMucHN_Cu.Text = txtDinhMucHN_Moi.Text = "0";
-            if (hoadon.DM != null)
-                txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = hoadon.DM.ToString();
-            else
-                txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = "0";
+            //if (hoadon.GB != null)
+            //    txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = hoadon.GB.ToString();
+            //else
+            //    txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = "0";
+            //if (hoadon.DinhMucHN != null)
+            //    txtDinhMucHN_Cu.Text = txtDinhMucHN_Moi.Text = hoadon.DinhMucHN.ToString();
+            //else
+            //    txtDinhMucHN_Cu.Text = txtDinhMucHN_Moi.Text = "0";
+            //if (hoadon.DM != null)
+            //    txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = hoadon.DM.ToString();
+            //else
+            //    txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = "0";
+            //if (hoadon.TIEUTHU != null)
+            //    txtTieuThu_Cu.Text = txtTieuThu_Moi.Text = _hoadon.TIEUTHU.Value.ToString();
+            //else
+            //    txtTieuThu_Cu.Text = txtTieuThu_Moi.Text = "0";
         }
 
         public void LoadDCHD(DCBD_ChiTietHoaDon ctdchd)
@@ -426,7 +431,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Length == 11)
             {
-                _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                //_hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                 if (_hoadon != null)
                 {
                     //LoadTTKH(_hoadon);
@@ -446,14 +451,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_hoadon != null)
                 {
                     LoadTTKH(_hoadon);
-                    //txtGiaBieu_Cu.Text = _hoadon.GB.Value.ToString();
-                    //if (_hoadon.DM != null)
-                    //    txtDinhMuc_Cu.Text = _hoadon.DM.Value.ToString();
-                    txtTieuThu_Cu.Text = _hoadon.TIEUTHU.Value.ToString();
-                    txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.GIABAN.Value);
-                    txtThueGTGT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.THUE.Value);
-                    txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.PHI.Value);
-                    txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.TONGCONG.Value);
+                    _dchdLast = _cDCBD.getHoaDon_Last(_hoadon.DANHBA, _hoadon.NAM.Value, _hoadon.KY);
+                    if (_dchdLast != null)
+                    {
+                        txtGiaBieu_Cu.Text = _dchdLast.GiaBieu_BD.Value.ToString();
+                        txtDinhMucHN_Cu.Text = _dchdLast.DinhMucHN_BD.Value.ToString();
+                        txtDinhMuc_Cu.Text = _dchdLast.DinhMuc_BD.Value.ToString();
+                        txtTieuThu_Cu.Text = _dchdLast.TieuThu_BD.Value.ToString();
+                        txtChiTietCu.Text = _dchdLast.ChiTietMoi;
+                        txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchdLast.TienNuoc_End.Value);
+                        txtThueGTGT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchdLast.ThueGTGT_End.Value);
+                        txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchdLast.PhiBVMT_End.Value);
+                        txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchdLast.TongCong_End.Value);
+                    }
+                    else
+                    {
+                        txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _hoadon.GB.Value.ToString();
+                        txtDinhMucHN_Cu.Text = txtDinhMucHN_Moi.Text = _hoadon.DinhMucHN.Value.ToString();
+                        txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = _hoadon.DM.Value.ToString();
+                        txtTieuThu_Cu.Text = txtTieuThu_Moi.Text = _hoadon.TIEUTHU.Value.ToString();
+                        txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.GIABAN.Value);
+                        txtThueGTGT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.THUE.Value);
+                        txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.PHI.Value);
+                        txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.TONGCONG.Value);
+                    }
                     txtSoHD.Text = _hoadon.SOPHATHANH.ToString("00000000");
                     if (_hoadon.NGAYGIAITRACH == null)
                         lbDangNgan.Text = "Hóa Đơn Tồn";
@@ -724,6 +745,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             ThongTin += ". Hộ Nghèo";
                         ctdchd.HoNgheo = true;
+                    }
+                    //
+                    if (ctdchd.HoTen_BD != "" && ctdchd.HoTen_BD != ctdchd.HoTen)
+                    {
+                        if (string.IsNullOrEmpty(ThongTin) == true)
+                            ThongTin += "Họ Tên";
+                        else
+                            ThongTin += ". Họ Tên";
+                    }
+                    if (ctdchd.DiaChi_BD != "" && ctdchd.DiaChi_BD != ctdchd.DiaChi)
+                    {
+                        if (string.IsNullOrEmpty(ThongTin) == true)
+                            ThongTin += "Địa Chỉ";
+                        else
+                            ThongTin += ". Địa Chỉ";
                     }
                     ctdchd.ApGiaNuocCu = chkApGiaNuocCu.Checked;
                     ctdchd.ThongTin = ThongTin;
@@ -1869,7 +1905,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (hoadon.TILEHCSN != null && hoadon.TILEHCSN.Value != 0)
                         TyLeHCSN = hoadon.TILEHCSN.Value;
                 }
-            _cGiaNuoc.TinhTienNuoc(chkApGiaNuocCu.Checked, false, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), Ky, Nam, TuNgay, DenNgay, int.Parse(txtGiaBieu_Cu.Text.Trim()), TyleSH, TyLeSX, TyLeDV, TyLeHCSN, int.Parse(txtDinhMuc_Cu.Text.Trim()), int.Parse(txtDinhMucHN_Cu.Text.Trim()), int.Parse(txtTieuThu_Cu.Text.Trim()), out TongTienCuA, out ChiTietCuA, out TongTienCuB, out ChiTietCuB, out TieuThu_DieuChinhGia);
+            if (_dchdLast != null)
+            {
+                TongTienCuA = _dchdLast.TienNuoc_End.Value;
+                ChiTietCuA = _dchdLast.ChiTietMoi;
+                TongTienCuB = 0;
+                ChiTietCuB = "";
+                TieuThu_DieuChinhGia = 0;
+            }
+            else
+                _cGiaNuoc.TinhTienNuoc(chkApGiaNuocCu.Checked, false, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), Ky, Nam, TuNgay, DenNgay, int.Parse(txtGiaBieu_Cu.Text.Trim()), TyleSH, TyLeSX, TyLeDV, TyLeHCSN, int.Parse(txtDinhMuc_Cu.Text.Trim()), int.Parse(txtDinhMucHN_Cu.Text.Trim()), int.Parse(txtTieuThu_Cu.Text.Trim()), out TongTienCuA, out ChiTietCuA, out TongTienCuB, out ChiTietCuB, out TieuThu_DieuChinhGia);
             if (chkDieuChinhGia2.Checked)
             {
                 _cGiaNuoc.TinhTienNuoc2(chkApGiaNuocCu.Checked, chkDieuChinhGia.Checked, int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", "")), txtDanhBo.Text.Trim(), Ky, Nam, TuNgay, DenNgay, int.Parse(txtGiaBieu_Moi.Text.Trim()), TyleSH, TyLeSX, TyLeDV, TyLeHCSN, int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtDinhMucHN_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()) - int.Parse(txtTieuThu_DieuChinhGia2.Text.Trim()), int.Parse(txtTieuThu_DieuChinhGia2.Text.Trim()), int.Parse(txtGiaDieuChinh2.Text.Trim()), out TongTienMoiA, out ChiTietMoiA, out TongTienMoiB, out ChiTietMoiB);

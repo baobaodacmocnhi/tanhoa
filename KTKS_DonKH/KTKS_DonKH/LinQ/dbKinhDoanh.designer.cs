@@ -26785,6 +26785,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _HoanThanh;
 		
+		private System.Nullable<System.DateTime> _HoanThanh_Ngay;
+		
 		private string _HoanThanh_GhiChu;
 		
 		private System.Nullable<int> _CreateBy;
@@ -26917,6 +26919,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTinhTrangChanged();
     partial void OnHoanThanhChanging(bool value);
     partial void OnHoanThanhChanged();
+    partial void OnHoanThanh_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnHoanThanh_NgayChanged();
     partial void OnHoanThanh_GhiChuChanging(string value);
     partial void OnHoanThanh_GhiChuChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -27867,6 +27871,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoanThanh_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> HoanThanh_Ngay
+		{
+			get
+			{
+				return this._HoanThanh_Ngay;
+			}
+			set
+			{
+				if ((this._HoanThanh_Ngay != value))
+				{
+					this.OnHoanThanh_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._HoanThanh_Ngay = value;
+					this.SendPropertyChanged("HoanThanh_Ngay");
+					this.OnHoanThanh_NgayChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoanThanh_GhiChu", DbType="NVarChar(200)")]
 		public string HoanThanh_GhiChu
 		{
@@ -28359,6 +28383,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _HoanThanh;
 		
+		private System.Nullable<System.DateTime> _HoanThanh_Ngay;
+		
 		private string _HoanThanh_GhiChu;
 		
 		private System.Nullable<int> _CreateBy;
@@ -28415,6 +28441,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTinhTrangChanged();
     partial void OnHoanThanhChanging(bool value);
     partial void OnHoanThanhChanged();
+    partial void OnHoanThanh_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnHoanThanh_NgayChanged();
     partial void OnHoanThanh_GhiChuChanging(string value);
     partial void OnHoanThanh_GhiChuChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -28833,6 +28861,26 @@ namespace KTKS_DonKH.LinQ
 					this._HoanThanh = value;
 					this.SendPropertyChanged("HoanThanh");
 					this.OnHoanThanhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoanThanh_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> HoanThanh_Ngay
+		{
+			get
+			{
+				return this._HoanThanh_Ngay;
+			}
+			set
+			{
+				if ((this._HoanThanh_Ngay != value))
+				{
+					this.OnHoanThanh_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._HoanThanh_Ngay = value;
+					this.SendPropertyChanged("HoanThanh_Ngay");
+					this.OnHoanThanh_NgayChanged();
 				}
 			}
 		}

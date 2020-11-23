@@ -108,6 +108,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                 {
                                     //cập nhật tình trạng
                                     _dontu_ChiTiet.HoanThanh = chkHoanThanh.Checked;
+                                    _dontu_ChiTiet.HoanThanh_Ngay = DateTime.Now;
                                     _dontu_ChiTiet.HoanThanh_GhiChu = txtNoiDung_LichSu.Text.Trim();
                                     _cDonTu.SubmitChanges();
                                     //
