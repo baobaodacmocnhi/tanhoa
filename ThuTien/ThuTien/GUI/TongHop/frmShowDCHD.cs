@@ -478,30 +478,49 @@ namespace ThuTien.GUI.TongHop
                         MessageBox.Show("Hóa Đơn này đã Tạm Thu(" + loai + ")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
-                    DIEUCHINH_HD dchd = new DIEUCHINH_HD();
-                    dchd.FK_HOADON = _hoadon.ID_HOADON;
-                    dchd.SoHoaDon = _hoadon.SOHOADON;
-                    dchd.GiaBieu = _hoadon.GB;
-                    if (_hoadon.DM != null)
-                        dchd.DinhMuc = (int)_hoadon.DM;
-                    dchd.TIEUTHU_BD = (int)_hoadon.TIEUTHU;
-                    dchd.GIABAN_BD = _hoadon.GIABAN;
-                    dchd.PHI_BD = _hoadon.PHI;
-                    dchd.THUE_BD = _hoadon.THUE;
-                    dchd.TONGCONG_BD = _hoadon.TONGCONG;
-                    dchd.NGAY_DC = DateTime.Now;
-
-                    if (_cDCHD.Them(dchd))
+                    if (_dchd != null)
                     {
-                        ///lưu lịch sử
-                        LuuLichSuDC(dchd);
-
-                        if (_cHoaDon.Sua(_hoadon))
+                        if (MessageBox.Show("Hóa Đơn này đã có Điều Chỉnh\nBạn có muốn chặn tiếp không?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                            Close();
+                            _dchd.UpdatedHDDT = false;
+
+                            if (_cDCHD.Sua(_dchd))
+                            {
+                                ///lưu lịch sử
+                                LuuLichSuDC(_dchd);
+
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                                Close();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        DIEUCHINH_HD dchd = new DIEUCHINH_HD();
+                        dchd.FK_HOADON = _hoadon.ID_HOADON;
+                        dchd.SoHoaDon = _hoadon.SOHOADON;
+                        dchd.GiaBieu = _hoadon.GB;
+                        if (_hoadon.DM != null)
+                            dchd.DinhMuc = (int)_hoadon.DM;
+                        dchd.TIEUTHU_BD = (int)_hoadon.TIEUTHU;
+                        dchd.GIABAN_BD = _hoadon.GIABAN;
+                        dchd.PHI_BD = _hoadon.PHI;
+                        dchd.THUE_BD = _hoadon.THUE;
+                        dchd.TONGCONG_BD = _hoadon.TONGCONG;
+                        dchd.NGAY_DC = DateTime.Now;
+
+                        if (_cDCHD.Them(dchd))
+                        {
+                            ///lưu lịch sử
+                            LuuLichSuDC(dchd);
+
+                            if (_cHoaDon.Sua(_hoadon))
+                            {
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                                Close();
+                            }
                         }
                     }
                 }
