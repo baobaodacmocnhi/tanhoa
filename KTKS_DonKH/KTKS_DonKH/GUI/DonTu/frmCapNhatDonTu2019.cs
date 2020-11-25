@@ -12,7 +12,7 @@ using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
-    public partial class frmCapNhatDonTuTest : Form
+    public partial class frmCapNhatDonTu2019 : Form
     {
         string _mnu = "mnuCapNhatDonTu";
         CDonTu _cDonTu = new CDonTu();
@@ -26,7 +26,7 @@ namespace KTKS_DonKH.GUI.DonTu
         DonTu_ChiTiet _dontu_ChiTiet = null;
         DonTu_LichSu _dontu_LichSu = null;
 
-        public frmCapNhatDonTuTest()
+        public frmCapNhatDonTu2019()
         {
             InitializeComponent();
         }

@@ -467,7 +467,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     else
                     {
                         txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _hoadon.GB.Value.ToString();
-                        txtDinhMucHN_Cu.Text = txtDinhMucHN_Moi.Text = _hoadon.DinhMucHN.Value.ToString();
+                        if (_hoadon.DinhMucHN != null)
+                            txtDinhMucHN_Cu.Text = txtDinhMucHN_Moi.Text = _hoadon.DinhMucHN.Value.ToString();
+                        else
+                            txtDinhMucHN_Cu.Text = txtDinhMucHN_Moi.Text = "0";
                         txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = _hoadon.DM.Value.ToString();
                         txtTieuThu_Cu.Text = txtTieuThu_Moi.Text = _hoadon.TIEUTHU.Value.ToString();
                         txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.GIABAN.Value);

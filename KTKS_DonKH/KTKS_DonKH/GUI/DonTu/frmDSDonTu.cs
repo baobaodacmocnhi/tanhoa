@@ -440,7 +440,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 if (MaDon.Contains(".") == true)
                     MaDon = MaDon.Substring(0, MaDon.IndexOf("."));
 
-                frmNhanDonTuTest frm = new frmNhanDonTuTest(int.Parse(MaDon));
+                frmNhanDonTu2019 frm = new frmNhanDonTu2019(int.Parse(MaDon));
                 frm.ShowDialog();
             }
         }

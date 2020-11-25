@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.DonTu
 {
-    partial class frmNhanDonTuTest
+    partial class frmNhanDonTu2019
     {
         /// <summary>
         /// Required designer variable.

@@ -3097,7 +3097,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DCBD_ChiTietHoaDon getHoaDon_Last(string DanhBo, int Nam, int Ky)
         {
-            return db.DCBD_ChiTietHoaDons.Where(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky).OrderByDescending(item => item.CreateDate).First();
+            if (db.DCBD_ChiTietHoaDons.Any(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky) == true)
+                return db.DCBD_ChiTietHoaDons.Where(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky).OrderByDescending(item => item.CreateDate).First();
+            else
+                return null;
         }
 
         #endregion

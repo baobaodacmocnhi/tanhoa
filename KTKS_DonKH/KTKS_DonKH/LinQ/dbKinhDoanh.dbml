@@ -2249,8 +2249,31 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="ToTrinh_ChiTiet_ToTrinh_ChiTiet_DanhSach" Member="ToTrinh_ChiTiet_DanhSaches" ThisKey="IDCT" OtherKey="IDCT" Type="ToTrinh_ChiTiet_DanhSach" />
       <Association Name="ToTrinh_ChiTiet_ToTrinh_ChiTiet_Hinh" Member="ToTrinh_ChiTiet_Hinhs" ThisKey="IDCT" OtherKey="IDToTrinh_ChiTiet" Type="ToTrinh_ChiTiet_Hinh" />
       <Association Name="ToTrinh_ToTrinh_ChiTiet" Member="ToTrinh" ThisKey="ID" OtherKey="ID" Type="ToTrinh" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ToTrinh_ChiTiet_DanhSach" Member="ToTrinh_ChiTiet_DanhSaches">
+    <Type Name="ToTrinh_ChiTiet_DanhSach">
+      <Column Name="IDCT" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="Char(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HopDong" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LoTrinh" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="GiaBieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMucHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Dot" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ky" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quan" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Phuong" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Hieu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Co" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SoThan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ToTrinh_ChiTiet_ToTrinh_ChiTiet_DanhSach" Member="ToTrinh_ChiTiet" ThisKey="IDCT" OtherKey="IDCT" Type="ToTrinh_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ToTrinh_ChiTiet_Hinh" Member="ToTrinh_ChiTiet_Hinhs">
