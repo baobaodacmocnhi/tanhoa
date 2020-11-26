@@ -4812,7 +4812,7 @@ namespace ThuTien.DAL.Doi
                         DataTable dt = new DataTable();
                         var query = from item in _db.HOADONs
                                     where item.MaNV_DangNgan == MaNV_DangNgan && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
-                                    && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <7))
+                                    && (item.NAM < 2020 || (item.NAM == 2020 && item.KY < 7))
                                     orderby item.MaNV_DangNgan ascending
                                     group item by item.MaNV_DangNgan into itemGroup
                                     select new
@@ -4857,20 +4857,34 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetTongDangNgan_PhanKyLon(int MaNV_DangNgan, int Nam, int Ky, DateTime NgayGiaiTrach)
         {
-            string sql = "select MaNV=MaNV_DangNgan,HoTen=(select HoTen from TT_NguoiDung where MaND=MaNV_DangNgan),TongHD=COUNT(ID_HOADON),SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong,"
+            DataTable dt = new DataTable();
+            string sql = "select MaNV=MaNV_DangNgan,HoTen=(select HoTen from TT_NguoiDung where MaND=MaNV_DangNgan),'LoaiHoaDon'=N'Giấy',TongHD=COUNT(ID_HOADON),SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong,"
                         + " TongTienDu=SUM(TienDu),TongTienMat=SUM(TienMat)"
-                        + " from HOADON where MaNV_DangNgan=" + MaNV_DangNgan + " and NAM=" + Nam + " and KY=" + Ky + " and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
+                        + " from HOADON where MaNV_DangNgan=" + MaNV_DangNgan + " and NAM=" + Nam + " and KY=" + Ky + " and (NAM<2020 or(NAM=2020 and KY<7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
                         + " group by MaNV_DangNgan";
-            return ExecuteQuery_DataTable(sql);
+            dt.Merge(ExecuteQuery_DataTable(sql));
+            sql = "select MaNV=MaNV_DangNgan,HoTen=(select HoTen from TT_NguoiDung where MaND=MaNV_DangNgan),'LoaiHoaDon'=N'Điện Tử',TongHD=COUNT(ID_HOADON),SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong,"
+                        + " TongTienDu=SUM(TienDu),TongTienMat=SUM(TienMat)"
+                        + " from HOADON where MaNV_DangNgan=" + MaNV_DangNgan + " and NAM=" + Nam + " and KY=" + Ky + " and (NAM>2020 or(NAM=2020 and KY>=7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
+                        + " group by MaNV_DangNgan";
+            dt.Merge(ExecuteQuery_DataTable(sql));
+            return dt;
         }
 
         public DataTable GetTongDangNgan_PhanKyNho(int MaNV_DangNgan, int Nam, int Ky, DateTime NgayGiaiTrach)
         {
-            string sql = "select MaNV=MaNV_DangNgan,HoTen=(select HoTen from TT_NguoiDung where MaND=MaNV_DangNgan),TongHD=COUNT(ID_HOADON),SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong,"
+            DataTable dt = new DataTable();
+            string sql = "select MaNV=MaNV_DangNgan,HoTen=(select HoTen from TT_NguoiDung where MaND=MaNV_DangNgan),'LoaiHoaDon'=N'Giấy',TongHD=COUNT(ID_HOADON),SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong,"
                         + " TongTienDu=SUM(TienDu),TongTienMat=SUM(TienMat)"
-                        + " from HOADON where MaNV_DangNgan=" + MaNV_DangNgan + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<" + Ky + ")) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
+                        + " from HOADON where MaNV_DangNgan=" + MaNV_DangNgan + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<" + Ky + ")) and (NAM<2020 or(NAM=2020 and KY<7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
                         + " group by MaNV_DangNgan";
-            return ExecuteQuery_DataTable(sql);
+            dt.Merge(ExecuteQuery_DataTable(sql));
+            sql = "select MaNV=MaNV_DangNgan,HoTen=(select HoTen from TT_NguoiDung where MaND=MaNV_DangNgan),'LoaiHoaDon'=N'Điện Tử',TongHD=COUNT(ID_HOADON),SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong,"
+                        + " TongTienDu=SUM(TienDu),TongTienMat=SUM(TienMat)"
+                        + " from HOADON where MaNV_DangNgan=" + MaNV_DangNgan + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<" + Ky + ")) and (NAM>2020 or(NAM=2020 and KY>=7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
+                        + " group by MaNV_DangNgan";
+            dt.Merge(ExecuteQuery_DataTable(sql));
+            return dt;
         }
 
         public DataTable GetTongDangNgan(string Loai, int MaNV_DangNgan, DateTime TuNgay, DateTime DenNgay)
@@ -6144,6 +6158,32 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS(int MaTo, int Nam, int Ky, int Dot)
+        {
+            var query = from item in _db.HOADONs
+                        where item.NAM == Nam && item.KY == Ky && item.DOT == Dot
+                        && Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                        && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        orderby item.MALOTRINH ascending
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.SOHOADON,
+                            Ky = item.KY + "/" + item.NAM,
+                            MLT = item.MALOTRINH,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            HoTen = item.TENKH,
+                            DiaChi = item.SO + " " + item.DUONG,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                        };
+            return LINQToDataTable(query);
+        }
+
         /// <summary>
         /// Lấy danh sách hóa đơn được giao & đã đăng ngân bởi anh/em cụ thể
         /// </summary>
@@ -6568,7 +6608,7 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.SyncNopTien == false && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7)) && itemHD.MaNV_DangNgan!=null
+                        where itemHD.SyncNopTien == false && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7)) && itemHD.MaNV_DangNgan != null
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
@@ -8267,7 +8307,7 @@ namespace ThuTien.DAL.Doi
                             HanhThu = itemtableND.HoTen,
                             itemHD.TUNGAY,
                             itemHD.DENNGAY,
-                            Ky2=itemHD.KY,
+                            Ky2 = itemHD.KY,
                             itemHD.NAM,
                         };
             return LINQToDataTable(query);
@@ -8424,7 +8464,7 @@ namespace ThuTien.DAL.Doi
 
         public DataTable getDSTon_ThoatNgheo()
         {
-            string sql ="select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+            string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                         + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                         + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To',GiaBieu=GB,DinhMuc=DM,DinhMucHN"
                         + " from HOADON hd"
@@ -10804,7 +10844,7 @@ namespace ThuTien.DAL.Doi
                             item.GhiChu,
                             item.Name_PC,
                             item.IP_PC,
-                            CreateBy=itemND.HoTen,
+                            CreateBy = itemND.HoTen,
                             item.CreateDate,
                         };
             return LINQToDataTable(query);

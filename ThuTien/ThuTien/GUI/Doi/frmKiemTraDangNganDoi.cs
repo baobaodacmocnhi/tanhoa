@@ -22,6 +22,7 @@ namespace ThuTien.GUI.Doi
         CHoaDon _cHoaDon = new CHoaDon();
         CChotDangNgan _cChotDangNgan = new CChotDangNgan();
         frmLoading frm;
+        string _actionNopTien = "";
 
         public frmKiemTraDangNganDoi()
         {
@@ -566,7 +567,7 @@ namespace ThuTien.GUI.Doi
         {
             try
             {
-                if (CNguoiDung.SyncNopTien == true  && CNguoiDung.CheckQuyen("mnuDieuChinhDangNganDoi", "Sua"))
+                if (CNguoiDung.SyncNopTien == true && CNguoiDung.CheckQuyen("mnuDieuChinhDangNganDoi", "Sua"))
                 {
                     if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SyncNopTien")
                     {
@@ -586,7 +587,7 @@ namespace ThuTien.GUI.Doi
 
                             //DataTable dt = _cHoaDon.GetDSDangNgan(DateTime.Parse(dgvChotDangNgan["NgayChot", e.RowIndex].Value.ToString()), DateTime.Parse(dgvChotDangNgan["NgayChot", e.RowIndex].Value.ToString()));
                             //int SL = (int)Math.Ceiling((double)dt.Rows.Count / 1000);
-
+                            _actionNopTien = "NopTien";
                             if (backgroundWorker_NopTien.IsBusy)
                                 backgroundWorker_NopTien.CancelAsync();
                             else
@@ -620,6 +621,50 @@ namespace ThuTien.GUI.Doi
                         rpt.SetDataSource(ds);
                         frmBaoCao frm = new frmBaoCao(rpt);
                         frm.Show();
+                    }
+
+                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SyncNopTien_Except12")
+                    {
+                        if (MessageBox.Show("Bạn có chắc chắn Nộp Tiền TRỪ Kỳ 12?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
+                            if (_cChotDangNgan.checkExist_ChotDangNgan(en.NgayChot.Value) == true)
+                            {
+                                MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            _actionNopTien = "NopTien_Except12";
+                            if (backgroundWorker_NopTien.IsBusy)
+                                backgroundWorker_NopTien.CancelAsync();
+                            else
+                            {
+                                backgroundWorker_NopTien.RunWorkerAsync();
+                                frm = new frmLoading();
+                                frm.ShowDialog();
+                            }
+                        }
+                    }
+
+                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SyncNopTien_12")
+                    {
+                        if (MessageBox.Show("Bạn có chắc chắn Nộp Tiền BÙ Kỳ 12?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
+                            if (_cChotDangNgan.checkExist_ChotDangNgan(en.NgayChot.Value) == true)
+                            {
+                                MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            _actionNopTien = "NopTien_12";
+                            if (backgroundWorker_NopTien.IsBusy)
+                                backgroundWorker_NopTien.CancelAsync();
+                            else
+                            {
+                                backgroundWorker_NopTien.RunWorkerAsync();
+                                frm = new frmLoading();
+                                frm.ShowDialog();
+                            }
+                        }
                     }
                 }
                 else
@@ -703,7 +748,20 @@ namespace ThuTien.GUI.Doi
         {
             wsThuTien.wsThuTien wsThuTien = new wsThuTien.wsThuTien();
             TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan.CurrentRow.Cells["ID"].Value.ToString()));
-            string result = wsThuTien.syncNopTienLo(en.NgayChot.Value.ToString("dd/MM/yyyy"));
+            string result = "";
+            switch (_actionNopTien)
+            {
+                case "NopTien":
+                    result = wsThuTien.syncNopTienLo(en.NgayChot.Value.ToString("dd/MM/yyyy"));
+                    break;
+                case "NopTien_Except12":
+                    result = wsThuTien.syncNopTienLo_Except12(en.NgayChot.Value.ToString("dd/MM/yyyy"));
+                    break;
+                case "NopTien_12":
+                    result = wsThuTien.syncNopTienLo_12(en.NgayChot.Value.ToString("dd/MM/yyyy"));
+                    break;
+            }
+
             string[] results = result.Split(';');
             if (bool.Parse(results[0]) == true)
             {
@@ -715,7 +773,19 @@ namespace ThuTien.GUI.Doi
         {
             if (frm != null)
                 frm.Close();
-            MessageBox.Show("Hoàn Tất Nộp Tiền ngày " + dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString().Substring(0, dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString().IndexOf(" ")) + "\nVui lòng kiểm tra lại số liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            switch (_actionNopTien)
+            {
+                case "NopTien_Except12":
+                    MessageBox.Show("Hoàn Tất Nộp Tiền TRỪ Kỳ 12 ngày " + dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString().Substring(0, dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString().IndexOf(" ")) + "\nVui lòng kiểm tra lại số liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case "NopTien_12":
+                    MessageBox.Show("Hoàn Tất Nộp Tiền BÙ Kỳ 12 ngày " + dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString().Substring(0, dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString().IndexOf(" ")) + "\nVui lòng kiểm tra lại số liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                default:
+                    MessageBox.Show("Hoàn Tất Nộp Tiền ngày " + dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString().Substring(0, dgvChotDangNgan.CurrentRow.Cells["NgayChot"].Value.ToString().IndexOf(" ")) + "\nVui lòng kiểm tra lại số liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+            }
+            
             btnXemChot.PerformClick();
         }
 

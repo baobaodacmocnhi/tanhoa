@@ -35,9 +35,15 @@ namespace ThuTien.wsThuTien {
         
         private System.Threading.SendOrPostCallback DangNhapsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DangNhaps_AdminOperationCompleted;
+        
         private System.Threading.SendOrPostCallback DangXuatOperationCompleted;
         
         private System.Threading.SendOrPostCallback DangXuatsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DangXuats_PersonOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DangXuats_AdminOperationCompleted;
         
         private System.Threading.SendOrPostCallback updateLoginOperationCompleted;
         
@@ -62,6 +68,8 @@ namespace ThuTien.wsThuTien {
         private System.Threading.SendOrPostCallback get_GhiChuOperationCompleted;
         
         private System.Threading.SendOrPostCallback update_GhiChuOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback update_DiaChiDHNOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetDSTamThuOperationCompleted;
         
@@ -97,7 +105,9 @@ namespace ThuTien.wsThuTien {
         
         private System.Threading.SendOrPostCallback GetTongDangNganOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetTongTonOperationCompleted;
+        private System.Threading.SendOrPostCallback GetTongTon_DenKyOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetTongTon_TrongKyOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetTongDongMoNuoc_TongOperationCompleted;
         
@@ -107,15 +117,35 @@ namespace ThuTien.wsThuTien {
         
         private System.Threading.SendOrPostCallback GetTongThuHo_ChiTietOperationCompleted;
         
+        private System.Threading.SendOrPostCallback truyvanOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback capnhatOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetDSHoaDon_LenhHuyOperationCompleted;
         
         private System.Threading.SendOrPostCallback Sua_LenhHuyOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getDS_ChotDangNganOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback them_ChotDangNganOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback chotDangNganOperationCompleted;
+        
         private System.Threading.SendOrPostCallback syncThanhToanOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback syncThanhToan_ThuHoOperationCompleted;
         
         private System.Threading.SendOrPostCallback syncNopTienOperationCompleted;
         
         private System.Threading.SendOrPostCallback syncNopTienLoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback syncNopTienLo_Except12OperationCompleted;
+        
+        private System.Threading.SendOrPostCallback syncNopTienLo_12OperationCompleted;
+        
+        private System.Threading.SendOrPostCallback showError_NopTienOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback updateChiTietTienNuocOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -165,10 +195,19 @@ namespace ThuTien.wsThuTien {
         public event DangNhapsCompletedEventHandler DangNhapsCompleted;
         
         /// <remarks/>
+        public event DangNhaps_AdminCompletedEventHandler DangNhaps_AdminCompleted;
+        
+        /// <remarks/>
         public event DangXuatCompletedEventHandler DangXuatCompleted;
         
         /// <remarks/>
         public event DangXuatsCompletedEventHandler DangXuatsCompleted;
+        
+        /// <remarks/>
+        public event DangXuats_PersonCompletedEventHandler DangXuats_PersonCompleted;
+        
+        /// <remarks/>
+        public event DangXuats_AdminCompletedEventHandler DangXuats_AdminCompleted;
         
         /// <remarks/>
         public event updateLoginCompletedEventHandler updateLoginCompleted;
@@ -205,6 +244,9 @@ namespace ThuTien.wsThuTien {
         
         /// <remarks/>
         public event update_GhiChuCompletedEventHandler update_GhiChuCompleted;
+        
+        /// <remarks/>
+        public event update_DiaChiDHNCompletedEventHandler update_DiaChiDHNCompleted;
         
         /// <remarks/>
         public event GetDSTamThuCompletedEventHandler GetDSTamThuCompleted;
@@ -258,7 +300,10 @@ namespace ThuTien.wsThuTien {
         public event GetTongDangNganCompletedEventHandler GetTongDangNganCompleted;
         
         /// <remarks/>
-        public event GetTongTonCompletedEventHandler GetTongTonCompleted;
+        public event GetTongTon_DenKyCompletedEventHandler GetTongTon_DenKyCompleted;
+        
+        /// <remarks/>
+        public event GetTongTon_TrongKyCompletedEventHandler GetTongTon_TrongKyCompleted;
         
         /// <remarks/>
         public event GetTongDongMoNuoc_TongCompletedEventHandler GetTongDongMoNuoc_TongCompleted;
@@ -273,19 +318,49 @@ namespace ThuTien.wsThuTien {
         public event GetTongThuHo_ChiTietCompletedEventHandler GetTongThuHo_ChiTietCompleted;
         
         /// <remarks/>
+        public event truyvanCompletedEventHandler truyvanCompleted;
+        
+        /// <remarks/>
+        public event capnhatCompletedEventHandler capnhatCompleted;
+        
+        /// <remarks/>
         public event GetDSHoaDon_LenhHuyCompletedEventHandler GetDSHoaDon_LenhHuyCompleted;
         
         /// <remarks/>
         public event Sua_LenhHuyCompletedEventHandler Sua_LenhHuyCompleted;
         
         /// <remarks/>
+        public event getDS_ChotDangNganCompletedEventHandler getDS_ChotDangNganCompleted;
+        
+        /// <remarks/>
+        public event them_ChotDangNganCompletedEventHandler them_ChotDangNganCompleted;
+        
+        /// <remarks/>
+        public event chotDangNganCompletedEventHandler chotDangNganCompleted;
+        
+        /// <remarks/>
         public event syncThanhToanCompletedEventHandler syncThanhToanCompleted;
+        
+        /// <remarks/>
+        public event syncThanhToan_ThuHoCompletedEventHandler syncThanhToan_ThuHoCompleted;
         
         /// <remarks/>
         public event syncNopTienCompletedEventHandler syncNopTienCompleted;
         
         /// <remarks/>
         public event syncNopTienLoCompletedEventHandler syncNopTienLoCompleted;
+        
+        /// <remarks/>
+        public event syncNopTienLo_Except12CompletedEventHandler syncNopTienLo_Except12Completed;
+        
+        /// <remarks/>
+        public event syncNopTienLo_12CompletedEventHandler syncNopTienLo_12Completed;
+        
+        /// <remarks/>
+        public event showError_NopTienCompletedEventHandler showError_NopTienCompleted;
+        
+        /// <remarks/>
+        public event updateChiTietTienNuocCompletedEventHandler updateChiTietTienNuocCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateUID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -387,6 +462,41 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DangNhaps_Admin", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string DangNhaps_Admin(string Username, string Password, string IDMobile, string UID) {
+            object[] results = this.Invoke("DangNhaps_Admin", new object[] {
+                        Username,
+                        Password,
+                        IDMobile,
+                        UID});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DangNhaps_AdminAsync(string Username, string Password, string IDMobile, string UID) {
+            this.DangNhaps_AdminAsync(Username, Password, IDMobile, UID, null);
+        }
+        
+        /// <remarks/>
+        public void DangNhaps_AdminAsync(string Username, string Password, string IDMobile, string UID, object userState) {
+            if ((this.DangNhaps_AdminOperationCompleted == null)) {
+                this.DangNhaps_AdminOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDangNhaps_AdminOperationCompleted);
+            }
+            this.InvokeAsync("DangNhaps_Admin", new object[] {
+                        Username,
+                        Password,
+                        IDMobile,
+                        UID}, this.DangNhaps_AdminOperationCompleted, userState);
+        }
+        
+        private void OnDangNhaps_AdminOperationCompleted(object arg) {
+            if ((this.DangNhaps_AdminCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DangNhaps_AdminCompleted(this, new DangNhaps_AdminCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DangXuat", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool DangXuat(string Username) {
             object[] results = this.Invoke("DangXuat", new object[] {
@@ -443,6 +553,68 @@ namespace ThuTien.wsThuTien {
             if ((this.DangXuatsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.DangXuatsCompleted(this, new DangXuatsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DangXuats_Person", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string DangXuats_Person(string Username, string UID) {
+            object[] results = this.Invoke("DangXuats_Person", new object[] {
+                        Username,
+                        UID});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DangXuats_PersonAsync(string Username, string UID) {
+            this.DangXuats_PersonAsync(Username, UID, null);
+        }
+        
+        /// <remarks/>
+        public void DangXuats_PersonAsync(string Username, string UID, object userState) {
+            if ((this.DangXuats_PersonOperationCompleted == null)) {
+                this.DangXuats_PersonOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDangXuats_PersonOperationCompleted);
+            }
+            this.InvokeAsync("DangXuats_Person", new object[] {
+                        Username,
+                        UID}, this.DangXuats_PersonOperationCompleted, userState);
+        }
+        
+        private void OnDangXuats_PersonOperationCompleted(object arg) {
+            if ((this.DangXuats_PersonCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DangXuats_PersonCompleted(this, new DangXuats_PersonCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DangXuats_Admin", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string DangXuats_Admin(string Username, string UID) {
+            object[] results = this.Invoke("DangXuats_Admin", new object[] {
+                        Username,
+                        UID});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DangXuats_AdminAsync(string Username, string UID) {
+            this.DangXuats_AdminAsync(Username, UID, null);
+        }
+        
+        /// <remarks/>
+        public void DangXuats_AdminAsync(string Username, string UID, object userState) {
+            if ((this.DangXuats_AdminOperationCompleted == null)) {
+                this.DangXuats_AdminOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDangXuats_AdminOperationCompleted);
+            }
+            this.InvokeAsync("DangXuats_Admin", new object[] {
+                        Username,
+                        UID}, this.DangXuats_AdminOperationCompleted, userState);
+        }
+        
+        private void OnDangXuats_AdminOperationCompleted(object arg) {
+            if ((this.DangXuats_AdminCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DangXuats_AdminCompleted(this, new DangXuats_AdminCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -735,7 +907,7 @@ namespace ThuTien.wsThuTien {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/XuLy_HoaDonDienTu", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string XuLy_HoaDonDienTu(string LoaiXuLy, string MaNV, string MaHDs, string Ngay, string NgayHen, string MaKQDN, string XoaDCHD) {
+        public string XuLy_HoaDonDienTu(string LoaiXuLy, string MaNV, string MaHDs, string Ngay, string NgayHen, string MaKQDN, string XoaDCHD, string Location) {
             object[] results = this.Invoke("XuLy_HoaDonDienTu", new object[] {
                         LoaiXuLy,
                         MaNV,
@@ -743,17 +915,18 @@ namespace ThuTien.wsThuTien {
                         Ngay,
                         NgayHen,
                         MaKQDN,
-                        XoaDCHD});
+                        XoaDCHD,
+                        Location});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void XuLy_HoaDonDienTuAsync(string LoaiXuLy, string MaNV, string MaHDs, string Ngay, string NgayHen, string MaKQDN, string XoaDCHD) {
-            this.XuLy_HoaDonDienTuAsync(LoaiXuLy, MaNV, MaHDs, Ngay, NgayHen, MaKQDN, XoaDCHD, null);
+        public void XuLy_HoaDonDienTuAsync(string LoaiXuLy, string MaNV, string MaHDs, string Ngay, string NgayHen, string MaKQDN, string XoaDCHD, string Location) {
+            this.XuLy_HoaDonDienTuAsync(LoaiXuLy, MaNV, MaHDs, Ngay, NgayHen, MaKQDN, XoaDCHD, Location, null);
         }
         
         /// <remarks/>
-        public void XuLy_HoaDonDienTuAsync(string LoaiXuLy, string MaNV, string MaHDs, string Ngay, string NgayHen, string MaKQDN, string XoaDCHD, object userState) {
+        public void XuLy_HoaDonDienTuAsync(string LoaiXuLy, string MaNV, string MaHDs, string Ngay, string NgayHen, string MaKQDN, string XoaDCHD, string Location, object userState) {
             if ((this.XuLy_HoaDonDienTuOperationCompleted == null)) {
                 this.XuLy_HoaDonDienTuOperationCompleted = new System.Threading.SendOrPostCallback(this.OnXuLy_HoaDonDienTuOperationCompleted);
             }
@@ -764,7 +937,8 @@ namespace ThuTien.wsThuTien {
                         Ngay,
                         NgayHen,
                         MaKQDN,
-                        XoaDCHD}, this.XuLy_HoaDonDienTuOperationCompleted, userState);
+                        XoaDCHD,
+                        Location}, this.XuLy_HoaDonDienTuOperationCompleted, userState);
         }
         
         private void OnXuLy_HoaDonDienTuOperationCompleted(object arg) {
@@ -805,7 +979,7 @@ namespace ThuTien.wsThuTien {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/update_GhiChu", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool update_GhiChu(string MaNV, string DanhBo, string DienThoai, string GiaBieu, string NiemChi, string DiemBe) {
+        public string update_GhiChu(string MaNV, string DanhBo, string DienThoai, string GiaBieu, string NiemChi, string DiemBe) {
             object[] results = this.Invoke("update_GhiChu", new object[] {
                         MaNV,
                         DanhBo,
@@ -813,7 +987,7 @@ namespace ThuTien.wsThuTien {
                         GiaBieu,
                         NiemChi,
                         DiemBe});
-            return ((bool)(results[0]));
+            return ((string)(results[0]));
         }
         
         /// <remarks/>
@@ -839,6 +1013,39 @@ namespace ThuTien.wsThuTien {
             if ((this.update_GhiChuCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.update_GhiChuCompleted(this, new update_GhiChuCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/update_DiaChiDHN", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string update_DiaChiDHN(string MaNV, string DanhBo, string DiaChiDHN) {
+            object[] results = this.Invoke("update_DiaChiDHN", new object[] {
+                        MaNV,
+                        DanhBo,
+                        DiaChiDHN});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void update_DiaChiDHNAsync(string MaNV, string DanhBo, string DiaChiDHN) {
+            this.update_DiaChiDHNAsync(MaNV, DanhBo, DiaChiDHN, null);
+        }
+        
+        /// <remarks/>
+        public void update_DiaChiDHNAsync(string MaNV, string DanhBo, string DiaChiDHN, object userState) {
+            if ((this.update_DiaChiDHNOperationCompleted == null)) {
+                this.update_DiaChiDHNOperationCompleted = new System.Threading.SendOrPostCallback(this.Onupdate_DiaChiDHNOperationCompleted);
+            }
+            this.InvokeAsync("update_DiaChiDHN", new object[] {
+                        MaNV,
+                        DanhBo,
+                        DiaChiDHN}, this.update_DiaChiDHNOperationCompleted, userState);
+        }
+        
+        private void Onupdate_DiaChiDHNOperationCompleted(object arg) {
+            if ((this.update_DiaChiDHNCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.update_DiaChiDHNCompleted(this, new update_DiaChiDHNCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -879,28 +1086,24 @@ namespace ThuTien.wsThuTien {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDSDongNuoc", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetDSDongNuoc(string MaNV_DongNuoc, string FromNgayGiao, string ToNgayGiao) {
+        public string GetDSDongNuoc(string MaNV_DongNuoc) {
             object[] results = this.Invoke("GetDSDongNuoc", new object[] {
-                        MaNV_DongNuoc,
-                        FromNgayGiao,
-                        ToNgayGiao});
+                        MaNV_DongNuoc});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetDSDongNuocAsync(string MaNV_DongNuoc, string FromNgayGiao, string ToNgayGiao) {
-            this.GetDSDongNuocAsync(MaNV_DongNuoc, FromNgayGiao, ToNgayGiao, null);
+        public void GetDSDongNuocAsync(string MaNV_DongNuoc) {
+            this.GetDSDongNuocAsync(MaNV_DongNuoc, null);
         }
         
         /// <remarks/>
-        public void GetDSDongNuocAsync(string MaNV_DongNuoc, string FromNgayGiao, string ToNgayGiao, object userState) {
+        public void GetDSDongNuocAsync(string MaNV_DongNuoc, object userState) {
             if ((this.GetDSDongNuocOperationCompleted == null)) {
                 this.GetDSDongNuocOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDSDongNuocOperationCompleted);
             }
             this.InvokeAsync("GetDSDongNuoc", new object[] {
-                        MaNV_DongNuoc,
-                        FromNgayGiao,
-                        ToNgayGiao}, this.GetDSDongNuocOperationCompleted, userState);
+                        MaNV_DongNuoc}, this.GetDSDongNuocOperationCompleted, userState);
         }
         
         private void OnGetDSDongNuocOperationCompleted(object arg) {
@@ -912,28 +1115,24 @@ namespace ThuTien.wsThuTien {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDSCTDongNuoc", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetDSCTDongNuoc(string MaNV_DongNuoc, string FromNgayGiao, string ToNgayGiao) {
+        public string GetDSCTDongNuoc(string MaNV_DongNuoc) {
             object[] results = this.Invoke("GetDSCTDongNuoc", new object[] {
-                        MaNV_DongNuoc,
-                        FromNgayGiao,
-                        ToNgayGiao});
+                        MaNV_DongNuoc});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetDSCTDongNuocAsync(string MaNV_DongNuoc, string FromNgayGiao, string ToNgayGiao) {
-            this.GetDSCTDongNuocAsync(MaNV_DongNuoc, FromNgayGiao, ToNgayGiao, null);
+        public void GetDSCTDongNuocAsync(string MaNV_DongNuoc) {
+            this.GetDSCTDongNuocAsync(MaNV_DongNuoc, null);
         }
         
         /// <remarks/>
-        public void GetDSCTDongNuocAsync(string MaNV_DongNuoc, string FromNgayGiao, string ToNgayGiao, object userState) {
+        public void GetDSCTDongNuocAsync(string MaNV_DongNuoc, object userState) {
             if ((this.GetDSCTDongNuocOperationCompleted == null)) {
                 this.GetDSCTDongNuocOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDSCTDongNuocOperationCompleted);
             }
             this.InvokeAsync("GetDSCTDongNuoc", new object[] {
-                        MaNV_DongNuoc,
-                        FromNgayGiao,
-                        ToNgayGiao}, this.GetDSCTDongNuocOperationCompleted, userState);
+                        MaNV_DongNuoc}, this.GetDSCTDongNuocOperationCompleted, userState);
         }
         
         private void OnGetDSCTDongNuocOperationCompleted(object arg) {
@@ -1522,9 +1721,9 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTongTon", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetTongTon(string MaTo, string Nam, string Ky, string FromDot, string ToDot) {
-            object[] results = this.Invoke("GetTongTon", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTongTon_DenKy", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetTongTon_DenKy(string MaTo, string Nam, string Ky, string FromDot, string ToDot) {
+            object[] results = this.Invoke("GetTongTon_DenKy", new object[] {
                         MaTo,
                         Nam,
                         Ky,
@@ -1534,27 +1733,64 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
-        public void GetTongTonAsync(string MaTo, string Nam, string Ky, string FromDot, string ToDot) {
-            this.GetTongTonAsync(MaTo, Nam, Ky, FromDot, ToDot, null);
+        public void GetTongTon_DenKyAsync(string MaTo, string Nam, string Ky, string FromDot, string ToDot) {
+            this.GetTongTon_DenKyAsync(MaTo, Nam, Ky, FromDot, ToDot, null);
         }
         
         /// <remarks/>
-        public void GetTongTonAsync(string MaTo, string Nam, string Ky, string FromDot, string ToDot, object userState) {
-            if ((this.GetTongTonOperationCompleted == null)) {
-                this.GetTongTonOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTongTonOperationCompleted);
+        public void GetTongTon_DenKyAsync(string MaTo, string Nam, string Ky, string FromDot, string ToDot, object userState) {
+            if ((this.GetTongTon_DenKyOperationCompleted == null)) {
+                this.GetTongTon_DenKyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTongTon_DenKyOperationCompleted);
             }
-            this.InvokeAsync("GetTongTon", new object[] {
+            this.InvokeAsync("GetTongTon_DenKy", new object[] {
                         MaTo,
                         Nam,
                         Ky,
                         FromDot,
-                        ToDot}, this.GetTongTonOperationCompleted, userState);
+                        ToDot}, this.GetTongTon_DenKyOperationCompleted, userState);
         }
         
-        private void OnGetTongTonOperationCompleted(object arg) {
-            if ((this.GetTongTonCompleted != null)) {
+        private void OnGetTongTon_DenKyOperationCompleted(object arg) {
+            if ((this.GetTongTon_DenKyCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetTongTonCompleted(this, new GetTongTonCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetTongTon_DenKyCompleted(this, new GetTongTon_DenKyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTongTon_TrongKy", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetTongTon_TrongKy(string MaTo, string Nam, string Ky, string FromDot, string ToDot) {
+            object[] results = this.Invoke("GetTongTon_TrongKy", new object[] {
+                        MaTo,
+                        Nam,
+                        Ky,
+                        FromDot,
+                        ToDot});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTongTon_TrongKyAsync(string MaTo, string Nam, string Ky, string FromDot, string ToDot) {
+            this.GetTongTon_TrongKyAsync(MaTo, Nam, Ky, FromDot, ToDot, null);
+        }
+        
+        /// <remarks/>
+        public void GetTongTon_TrongKyAsync(string MaTo, string Nam, string Ky, string FromDot, string ToDot, object userState) {
+            if ((this.GetTongTon_TrongKyOperationCompleted == null)) {
+                this.GetTongTon_TrongKyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTongTon_TrongKyOperationCompleted);
+            }
+            this.InvokeAsync("GetTongTon_TrongKy", new object[] {
+                        MaTo,
+                        Nam,
+                        Ky,
+                        FromDot,
+                        ToDot}, this.GetTongTon_TrongKyOperationCompleted, userState);
+        }
+        
+        private void OnGetTongTon_TrongKyOperationCompleted(object arg) {
+            if ((this.GetTongTon_TrongKyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTongTon_TrongKyCompleted(this, new GetTongTon_TrongKyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1699,6 +1935,64 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/truyvan", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string truyvan(string sql) {
+            object[] results = this.Invoke("truyvan", new object[] {
+                        sql});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void truyvanAsync(string sql) {
+            this.truyvanAsync(sql, null);
+        }
+        
+        /// <remarks/>
+        public void truyvanAsync(string sql, object userState) {
+            if ((this.truyvanOperationCompleted == null)) {
+                this.truyvanOperationCompleted = new System.Threading.SendOrPostCallback(this.OntruyvanOperationCompleted);
+            }
+            this.InvokeAsync("truyvan", new object[] {
+                        sql}, this.truyvanOperationCompleted, userState);
+        }
+        
+        private void OntruyvanOperationCompleted(object arg) {
+            if ((this.truyvanCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.truyvanCompleted(this, new truyvanCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/capnhat", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string capnhat(string sql) {
+            object[] results = this.Invoke("capnhat", new object[] {
+                        sql});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void capnhatAsync(string sql) {
+            this.capnhatAsync(sql, null);
+        }
+        
+        /// <remarks/>
+        public void capnhatAsync(string sql, object userState) {
+            if ((this.capnhatOperationCompleted == null)) {
+                this.capnhatOperationCompleted = new System.Threading.SendOrPostCallback(this.OncapnhatOperationCompleted);
+            }
+            this.InvokeAsync("capnhat", new object[] {
+                        sql}, this.capnhatOperationCompleted, userState);
+        }
+        
+        private void OncapnhatOperationCompleted(object arg) {
+            if ((this.capnhatCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.capnhatCompleted(this, new capnhatCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDSHoaDon_LenhHuy", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string GetDSHoaDon_LenhHuy(string LoaiCat, string ID) {
             object[] results = this.Invoke("GetDSHoaDon_LenhHuy", new object[] {
@@ -1765,6 +2059,101 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_ChotDangNgan", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getDS_ChotDangNgan(string FromNgayGiaiTrach, string ToNgayGiaiTrach) {
+            object[] results = this.Invoke("getDS_ChotDangNgan", new object[] {
+                        FromNgayGiaiTrach,
+                        ToNgayGiaiTrach});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDS_ChotDangNganAsync(string FromNgayGiaiTrach, string ToNgayGiaiTrach) {
+            this.getDS_ChotDangNganAsync(FromNgayGiaiTrach, ToNgayGiaiTrach, null);
+        }
+        
+        /// <remarks/>
+        public void getDS_ChotDangNganAsync(string FromNgayGiaiTrach, string ToNgayGiaiTrach, object userState) {
+            if ((this.getDS_ChotDangNganOperationCompleted == null)) {
+                this.getDS_ChotDangNganOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_ChotDangNganOperationCompleted);
+            }
+            this.InvokeAsync("getDS_ChotDangNgan", new object[] {
+                        FromNgayGiaiTrach,
+                        ToNgayGiaiTrach}, this.getDS_ChotDangNganOperationCompleted, userState);
+        }
+        
+        private void OngetDS_ChotDangNganOperationCompleted(object arg) {
+            if ((this.getDS_ChotDangNganCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDS_ChotDangNganCompleted(this, new getDS_ChotDangNganCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/them_ChotDangNgan", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string them_ChotDangNgan(string NgayGiaiTrach, string CreateBy) {
+            object[] results = this.Invoke("them_ChotDangNgan", new object[] {
+                        NgayGiaiTrach,
+                        CreateBy});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void them_ChotDangNganAsync(string NgayGiaiTrach, string CreateBy) {
+            this.them_ChotDangNganAsync(NgayGiaiTrach, CreateBy, null);
+        }
+        
+        /// <remarks/>
+        public void them_ChotDangNganAsync(string NgayGiaiTrach, string CreateBy, object userState) {
+            if ((this.them_ChotDangNganOperationCompleted == null)) {
+                this.them_ChotDangNganOperationCompleted = new System.Threading.SendOrPostCallback(this.Onthem_ChotDangNganOperationCompleted);
+            }
+            this.InvokeAsync("them_ChotDangNgan", new object[] {
+                        NgayGiaiTrach,
+                        CreateBy}, this.them_ChotDangNganOperationCompleted, userState);
+        }
+        
+        private void Onthem_ChotDangNganOperationCompleted(object arg) {
+            if ((this.them_ChotDangNganCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.them_ChotDangNganCompleted(this, new them_ChotDangNganCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/chotDangNgan", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string chotDangNgan(string ID, string Chot, string CreateBy) {
+            object[] results = this.Invoke("chotDangNgan", new object[] {
+                        ID,
+                        Chot,
+                        CreateBy});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void chotDangNganAsync(string ID, string Chot, string CreateBy) {
+            this.chotDangNganAsync(ID, Chot, CreateBy, null);
+        }
+        
+        /// <remarks/>
+        public void chotDangNganAsync(string ID, string Chot, string CreateBy, object userState) {
+            if ((this.chotDangNganOperationCompleted == null)) {
+                this.chotDangNganOperationCompleted = new System.Threading.SendOrPostCallback(this.OnchotDangNganOperationCompleted);
+            }
+            this.InvokeAsync("chotDangNgan", new object[] {
+                        ID,
+                        Chot,
+                        CreateBy}, this.chotDangNganOperationCompleted, userState);
+        }
+        
+        private void OnchotDangNganOperationCompleted(object arg) {
+            if ((this.chotDangNganCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.chotDangNganCompleted(this, new chotDangNganCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/syncThanhToan", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string syncThanhToan(int MaHD, bool GiaiTrach, int IDTemp_SyncHoaDon) {
             object[] results = this.Invoke("syncThanhToan", new object[] {
@@ -1794,6 +2183,39 @@ namespace ThuTien.wsThuTien {
             if ((this.syncThanhToanCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.syncThanhToanCompleted(this, new syncThanhToanCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/syncThanhToan_ThuHo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string syncThanhToan_ThuHo(int MaHD, bool GiaiTrach, int IDTemp_SyncHoaDon) {
+            object[] results = this.Invoke("syncThanhToan_ThuHo", new object[] {
+                        MaHD,
+                        GiaiTrach,
+                        IDTemp_SyncHoaDon});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void syncThanhToan_ThuHoAsync(int MaHD, bool GiaiTrach, int IDTemp_SyncHoaDon) {
+            this.syncThanhToan_ThuHoAsync(MaHD, GiaiTrach, IDTemp_SyncHoaDon, null);
+        }
+        
+        /// <remarks/>
+        public void syncThanhToan_ThuHoAsync(int MaHD, bool GiaiTrach, int IDTemp_SyncHoaDon, object userState) {
+            if ((this.syncThanhToan_ThuHoOperationCompleted == null)) {
+                this.syncThanhToan_ThuHoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsyncThanhToan_ThuHoOperationCompleted);
+            }
+            this.InvokeAsync("syncThanhToan_ThuHo", new object[] {
+                        MaHD,
+                        GiaiTrach,
+                        IDTemp_SyncHoaDon}, this.syncThanhToan_ThuHoOperationCompleted, userState);
+        }
+        
+        private void OnsyncThanhToan_ThuHoOperationCompleted(object arg) {
+            if ((this.syncThanhToan_ThuHoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.syncThanhToan_ThuHoCompleted(this, new syncThanhToan_ThuHoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1852,6 +2274,126 @@ namespace ThuTien.wsThuTien {
             if ((this.syncNopTienLoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.syncNopTienLoCompleted(this, new syncNopTienLoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/syncNopTienLo_Except12", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string syncNopTienLo_Except12(string NgayGiaiTrach) {
+            object[] results = this.Invoke("syncNopTienLo_Except12", new object[] {
+                        NgayGiaiTrach});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void syncNopTienLo_Except12Async(string NgayGiaiTrach) {
+            this.syncNopTienLo_Except12Async(NgayGiaiTrach, null);
+        }
+        
+        /// <remarks/>
+        public void syncNopTienLo_Except12Async(string NgayGiaiTrach, object userState) {
+            if ((this.syncNopTienLo_Except12OperationCompleted == null)) {
+                this.syncNopTienLo_Except12OperationCompleted = new System.Threading.SendOrPostCallback(this.OnsyncNopTienLo_Except12OperationCompleted);
+            }
+            this.InvokeAsync("syncNopTienLo_Except12", new object[] {
+                        NgayGiaiTrach}, this.syncNopTienLo_Except12OperationCompleted, userState);
+        }
+        
+        private void OnsyncNopTienLo_Except12OperationCompleted(object arg) {
+            if ((this.syncNopTienLo_Except12Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.syncNopTienLo_Except12Completed(this, new syncNopTienLo_Except12CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/syncNopTienLo_12", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string syncNopTienLo_12(string NgayGiaiTrach) {
+            object[] results = this.Invoke("syncNopTienLo_12", new object[] {
+                        NgayGiaiTrach});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void syncNopTienLo_12Async(string NgayGiaiTrach) {
+            this.syncNopTienLo_12Async(NgayGiaiTrach, null);
+        }
+        
+        /// <remarks/>
+        public void syncNopTienLo_12Async(string NgayGiaiTrach, object userState) {
+            if ((this.syncNopTienLo_12OperationCompleted == null)) {
+                this.syncNopTienLo_12OperationCompleted = new System.Threading.SendOrPostCallback(this.OnsyncNopTienLo_12OperationCompleted);
+            }
+            this.InvokeAsync("syncNopTienLo_12", new object[] {
+                        NgayGiaiTrach}, this.syncNopTienLo_12OperationCompleted, userState);
+        }
+        
+        private void OnsyncNopTienLo_12OperationCompleted(object arg) {
+            if ((this.syncNopTienLo_12Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.syncNopTienLo_12Completed(this, new syncNopTienLo_12CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/showError_NopTien", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string showError_NopTien(string NgayGiaiTrach) {
+            object[] results = this.Invoke("showError_NopTien", new object[] {
+                        NgayGiaiTrach});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void showError_NopTienAsync(string NgayGiaiTrach) {
+            this.showError_NopTienAsync(NgayGiaiTrach, null);
+        }
+        
+        /// <remarks/>
+        public void showError_NopTienAsync(string NgayGiaiTrach, object userState) {
+            if ((this.showError_NopTienOperationCompleted == null)) {
+                this.showError_NopTienOperationCompleted = new System.Threading.SendOrPostCallback(this.OnshowError_NopTienOperationCompleted);
+            }
+            this.InvokeAsync("showError_NopTien", new object[] {
+                        NgayGiaiTrach}, this.showError_NopTienOperationCompleted, userState);
+        }
+        
+        private void OnshowError_NopTienOperationCompleted(object arg) {
+            if ((this.showError_NopTienCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.showError_NopTienCompleted(this, new showError_NopTienCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/updateChiTietTienNuoc", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string updateChiTietTienNuoc(string Nam, string Ky, string Dot) {
+            object[] results = this.Invoke("updateChiTietTienNuoc", new object[] {
+                        Nam,
+                        Ky,
+                        Dot});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void updateChiTietTienNuocAsync(string Nam, string Ky, string Dot) {
+            this.updateChiTietTienNuocAsync(Nam, Ky, Dot, null);
+        }
+        
+        /// <remarks/>
+        public void updateChiTietTienNuocAsync(string Nam, string Ky, string Dot, object userState) {
+            if ((this.updateChiTietTienNuocOperationCompleted == null)) {
+                this.updateChiTietTienNuocOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateChiTietTienNuocOperationCompleted);
+            }
+            this.InvokeAsync("updateChiTietTienNuoc", new object[] {
+                        Nam,
+                        Ky,
+                        Dot}, this.updateChiTietTienNuocOperationCompleted, userState);
+        }
+        
+        private void OnupdateChiTietTienNuocOperationCompleted(object arg) {
+            if ((this.updateChiTietTienNuocCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.updateChiTietTienNuocCompleted(this, new updateChiTietTienNuocCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1954,6 +2496,32 @@ namespace ThuTien.wsThuTien {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void DangNhaps_AdminCompletedEventHandler(object sender, DangNhaps_AdminCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DangNhaps_AdminCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DangNhaps_AdminCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DangXuatCompletedEventHandler(object sender, DangXuatCompletedEventArgs e);
     
     /// <remarks/>
@@ -1991,6 +2559,58 @@ namespace ThuTien.wsThuTien {
         private object[] results;
         
         internal DangXuatsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void DangXuats_PersonCompletedEventHandler(object sender, DangXuats_PersonCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DangXuats_PersonCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DangXuats_PersonCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void DangXuats_AdminCompletedEventHandler(object sender, DangXuats_AdminCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DangXuats_AdminCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DangXuats_AdminCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2308,10 +2928,36 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
-        public bool Result {
+        public string Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void update_DiaChiDHNCompletedEventHandler(object sender, update_DiaChiDHNCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class update_DiaChiDHNCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal update_DiaChiDHNCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }
@@ -2760,17 +3406,43 @@ namespace ThuTien.wsThuTien {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void GetTongTonCompletedEventHandler(object sender, GetTongTonCompletedEventArgs e);
+    public delegate void GetTongTon_DenKyCompletedEventHandler(object sender, GetTongTon_DenKyCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetTongTonCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetTongTon_DenKyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetTongTonCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetTongTon_DenKyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void GetTongTon_TrongKyCompletedEventHandler(object sender, GetTongTon_TrongKyCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTongTon_TrongKyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTongTon_TrongKyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2890,6 +3562,58 @@ namespace ThuTien.wsThuTien {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void truyvanCompletedEventHandler(object sender, truyvanCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class truyvanCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal truyvanCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void capnhatCompletedEventHandler(object sender, capnhatCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class capnhatCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal capnhatCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void GetDSHoaDon_LenhHuyCompletedEventHandler(object sender, GetDSHoaDon_LenhHuyCompletedEventArgs e);
     
     /// <remarks/>
@@ -2942,6 +3666,84 @@ namespace ThuTien.wsThuTien {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void getDS_ChotDangNganCompletedEventHandler(object sender, getDS_ChotDangNganCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getDS_ChotDangNganCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getDS_ChotDangNganCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void them_ChotDangNganCompletedEventHandler(object sender, them_ChotDangNganCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class them_ChotDangNganCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal them_ChotDangNganCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void chotDangNganCompletedEventHandler(object sender, chotDangNganCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class chotDangNganCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal chotDangNganCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void syncThanhToanCompletedEventHandler(object sender, syncThanhToanCompletedEventArgs e);
     
     /// <remarks/>
@@ -2953,6 +3755,32 @@ namespace ThuTien.wsThuTien {
         private object[] results;
         
         internal syncThanhToanCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void syncThanhToan_ThuHoCompletedEventHandler(object sender, syncThanhToan_ThuHoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class syncThanhToan_ThuHoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal syncThanhToan_ThuHoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -3005,6 +3833,110 @@ namespace ThuTien.wsThuTien {
         private object[] results;
         
         internal syncNopTienLoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void syncNopTienLo_Except12CompletedEventHandler(object sender, syncNopTienLo_Except12CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class syncNopTienLo_Except12CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal syncNopTienLo_Except12CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void syncNopTienLo_12CompletedEventHandler(object sender, syncNopTienLo_12CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class syncNopTienLo_12CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal syncNopTienLo_12CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void showError_NopTienCompletedEventHandler(object sender, showError_NopTienCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class showError_NopTienCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal showError_NopTienCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void updateChiTietTienNuocCompletedEventHandler(object sender, updateChiTietTienNuocCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class updateChiTietTienNuocCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal updateChiTietTienNuocCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

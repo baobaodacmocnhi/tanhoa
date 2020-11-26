@@ -33,6 +33,7 @@ namespace ThuTien.GUI.ToTruong
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
         CQuetTam _cQuetTam = new CQuetTam();
+        CTo _cTo = new CTo();
 
         public frmKiemTraTonTo()
         {
@@ -44,14 +45,26 @@ namespace ThuTien.GUI.ToTruong
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
 
-            TT_NguoiDung nguoidung = new TT_NguoiDung();
-            nguoidung.MaND = -1;
-            nguoidung.HoTen = "Tất cả";
-            List<TT_NguoiDung> lst = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
-            lst.Insert(0, nguoidung);
-            cmbNhanVien.DataSource = lst;
-            cmbNhanVien.DisplayMember = "HoTen";
-            cmbNhanVien.ValueMember = "MaND";
+            if (CNguoiDung.Doi == true)
+            {
+                cmbTo.Visible = true;
+
+                cmbTo.DataSource = _cTo.GetDSHanhThu();
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+            }
+            else
+            {
+                lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
+                TT_NguoiDung nguoidung = new TT_NguoiDung();
+                nguoidung.MaND = -1;
+                nguoidung.HoTen = "Tất cả";
+                List<TT_NguoiDung> lst = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+                lst.Insert(0, nguoidung);
+                cmbNhanVien.DataSource = lst;
+                cmbNhanVien.DisplayMember = "HoTen";
+                cmbNhanVien.ValueMember = "MaND";
+            }
 
             DataTable dtNam = _cHoaDon.GetNam();
             DataRow dr = dtNam.NewRow();
@@ -60,8 +73,6 @@ namespace ThuTien.GUI.ToTruong
             cmbNam.DataSource = dtNam;
             cmbNam.DisplayMember = "ID";
             cmbNam.ValueMember = "Nam";
-
-            lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
 
             dateGiaiTrach.Value = DateTime.Now;
 
@@ -171,125 +182,250 @@ namespace ThuTien.GUI.ToTruong
             DataTable dt = new DataTable();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                ///chọn tất cả nhân viên trong tổ
-                if (cmbNhanVien.SelectedIndex == 0)
+                if (CNguoiDung.Doi == true)
                 {
-                    if ((chkDenKy.Checked || chkTrongKy.Checked) && chkNgayKiemTra.Checked)
-                    {
-                        if (chkDenKy.Checked)
-                        {
-                            if (cmbFromDot.SelectedIndex == 0)
-                                dt = _cHoaDon.GetTongTonDenKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
-                            else
-                                if (cmbFromDot.SelectedIndex > 0)
-                                    dt = _cHoaDon.GetTongTonDenKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
-                        }
-                        else
-                            if (chkTrongKy.Checked)
-                                if (cmbFromDot.SelectedIndex == 0)
-                                    dt = _cHoaDon.GetTongTonTrongKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
-                                else
-                                    if (cmbFromDot.SelectedIndex > 0)
-                                        dt = _cHoaDon.GetTongTonTrongKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
-                    }
-                    else
-                        if (chkDenKy.Checked)
-                        {
-                            if (cmbFromDot.SelectedIndex == 0)
-                                dt = _cHoaDon.GetTongTonDenKy_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                            else
-                                if (cmbFromDot.SelectedIndex > 0)
-                                    dt = _cHoaDon.GetTongTonDenKy_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
-                        }
-                        else
-                            if (chkNgayKiemTra.Checked)
-                                dt = _cHoaDon.GetTongTon_To(CNguoiDung.MaTo, dateGiaiTrach.Value);
-                            else
-                                ///chọn tất cả các năm
-                                if (cmbNam.SelectedIndex == 0)
-                                    dt = _cHoaDon.GetTongTon_To(CNguoiDung.MaTo);
-                                else
-                                    ///chọn 1 năm cụ thể
-                                    if (cmbNam.SelectedIndex > 0)
-                                        ///chọn tất cả các kỳ
-                                        if (cmbKy.SelectedIndex == 0)
-                                            dt = _cHoaDon.GetTongTon_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
-                                        else
-                                            ///chọn 1 kỳ cụ thể
-                                            if (cmbKy.SelectedIndex > 0)
-                                                ///chọn tất cả đợt
-                                                if (cmbFromDot.SelectedIndex == 0)
-                                                    dt = _cHoaDon.GetTongTon_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                                                else
-                                                    ///chọn từ đợt đến đợt
-                                                    if (cmbFromDot.SelectedIndex > 0)
-                                                        dt = _cHoaDon.GetTongTon_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
-                }
-                else
-                    ///chọn 1 nhân viên cụ thể
-                    if (cmbNhanVien.SelectedIndex > 0)
+                    ///chọn tất cả nhân viên trong tổ
+                    if (cmbNhanVien.SelectedIndex == 0)
                     {
                         if ((chkDenKy.Checked || chkTrongKy.Checked) && chkNgayKiemTra.Checked)
                         {
                             if (chkDenKy.Checked)
                             {
                                 if (cmbFromDot.SelectedIndex == 0)
-                                    for (int i = 1; i <= 20; i++)
-                                        dt.Merge(_cHoaDon.GetTongTonDenKyDenNgay_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, dateGiaiTrach.Value));
+                                    dt = _cHoaDon.GetTongTonDenKyDenNgay_To((int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
                                 else
                                     if (cmbFromDot.SelectedIndex > 0)
-                                        for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
-                                            dt.Merge(_cHoaDon.GetTongTonDenKyDenNgay_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, dateGiaiTrach.Value));
+                                        dt = _cHoaDon.GetTongTonDenKyDenNgay_To((int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
                             }
                             else
                                 if (chkTrongKy.Checked)
-                                {
                                     if (cmbFromDot.SelectedIndex == 0)
-                                        for (int i = 1; i <= 20; i++)
-                                            dt.Merge(_cHoaDon.GetTongTonTrongKyDenNgay_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, dateGiaiTrach.Value));
+                                        dt = _cHoaDon.GetTongTonTrongKyDenNgay_To((int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
                                     else
                                         if (cmbFromDot.SelectedIndex > 0)
-                                            for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
-                                                dt.Merge(_cHoaDon.GetTongTonTrongKyDenNgay_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, dateGiaiTrach.Value));
-                                }
+                                            dt = _cHoaDon.GetTongTonTrongKyDenNgay_To((int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
                         }
                         else
                             if (chkDenKy.Checked)
                             {
                                 if (cmbFromDot.SelectedIndex == 0)
-                                    for (int i = 1; i <= 20; i++)
-                                        dt.Merge(_cHoaDon.GetTongTonDenKy_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                    dt = _cHoaDon.GetTongTonDenKy_To((int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                                 else
                                     if (cmbFromDot.SelectedIndex > 0)
-                                        for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
-                                            dt.Merge(_cHoaDon.GetTongTonDenKy_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                        dt = _cHoaDon.GetTongTonDenKy_To((int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
                             }
                             else
                                 if (chkNgayKiemTra.Checked)
-                                    dt = _cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
+                                    dt = _cHoaDon.GetTongTon_To((int)cmbTo.SelectedValue, dateGiaiTrach.Value);
                                 else
                                     ///chọn tất cả các năm
                                     if (cmbNam.SelectedIndex == 0)
-                                        dt = _cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()));
+                                        dt = _cHoaDon.GetTongTon_To((int)cmbTo.SelectedValue);
                                     else
                                         ///chọn 1 năm cụ thể
                                         if (cmbNam.SelectedIndex > 0)
                                             ///chọn tất cả các kỳ
                                             if (cmbKy.SelectedIndex == 0)
-                                                dt = _cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                                                dt = _cHoaDon.GetTongTon_To((int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()));
                                             else
                                                 ///chọn 1 kỳ cụ thể
                                                 if (cmbKy.SelectedIndex > 0)
                                                     ///chọn tất cả đợt
                                                     if (cmbFromDot.SelectedIndex == 0)
-                                                        for (int i = 1; i <= 20; i++)
-                                                            dt.Merge(_cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                                        dt = _cHoaDon.GetTongTon_To((int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                                                     else
                                                         ///chọn từ đợt đến đợt
                                                         if (cmbFromDot.SelectedIndex > 0)
-                                                            for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
-                                                                dt.Merge(_cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                                            dt = _cHoaDon.GetTongTon_To((int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
                     }
+                    else
+                        ///chọn 1 nhân viên cụ thể
+                        if (cmbNhanVien.SelectedIndex > 0)
+                        {
+                            if ((chkDenKy.Checked || chkTrongKy.Checked) && chkNgayKiemTra.Checked)
+                            {
+                                if (chkDenKy.Checked)
+                                {
+                                    if (cmbFromDot.SelectedIndex == 0)
+                                        for (int i = 1; i <= 20; i++)
+                                            dt.Merge(_cHoaDon.GetTongTonDenKyDenNgay_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, dateGiaiTrach.Value));
+                                    else
+                                        if (cmbFromDot.SelectedIndex > 0)
+                                            for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                dt.Merge(_cHoaDon.GetTongTonDenKyDenNgay_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, dateGiaiTrach.Value));
+                                }
+                                else
+                                    if (chkTrongKy.Checked)
+                                    {
+                                        if (cmbFromDot.SelectedIndex == 0)
+                                            for (int i = 1; i <= 20; i++)
+                                                dt.Merge(_cHoaDon.GetTongTonTrongKyDenNgay_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, dateGiaiTrach.Value));
+                                        else
+                                            if (cmbFromDot.SelectedIndex > 0)
+                                                for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                    dt.Merge(_cHoaDon.GetTongTonTrongKyDenNgay_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, dateGiaiTrach.Value));
+                                    }
+                            }
+                            else
+                                if (chkDenKy.Checked)
+                                {
+                                    if (cmbFromDot.SelectedIndex == 0)
+                                        for (int i = 1; i <= 20; i++)
+                                            dt.Merge(_cHoaDon.GetTongTonDenKy_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                    else
+                                        if (cmbFromDot.SelectedIndex > 0)
+                                            for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                dt.Merge(_cHoaDon.GetTongTonDenKy_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                }
+                                else
+                                    if (chkNgayKiemTra.Checked)
+                                        dt = _cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
+                                    else
+                                        ///chọn tất cả các năm
+                                        if (cmbNam.SelectedIndex == 0)
+                                            dt = _cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()));
+                                        else
+                                            ///chọn 1 năm cụ thể
+                                            if (cmbNam.SelectedIndex > 0)
+                                                ///chọn tất cả các kỳ
+                                                if (cmbKy.SelectedIndex == 0)
+                                                    dt = _cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                                                else
+                                                    ///chọn 1 kỳ cụ thể
+                                                    if (cmbKy.SelectedIndex > 0)
+                                                        ///chọn tất cả đợt
+                                                        if (cmbFromDot.SelectedIndex == 0)
+                                                            for (int i = 1; i <= 20; i++)
+                                                                dt.Merge(_cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                                        else
+                                                            ///chọn từ đợt đến đợt
+                                                            if (cmbFromDot.SelectedIndex > 0)
+                                                                for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                                    dt.Merge(_cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                        }
+                }
+                else
+                {
+                    ///chọn tất cả nhân viên trong tổ
+                    if (cmbNhanVien.SelectedIndex == 0)
+                    {
+                        if ((chkDenKy.Checked || chkTrongKy.Checked) && chkNgayKiemTra.Checked)
+                        {
+                            if (chkDenKy.Checked)
+                            {
+                                if (cmbFromDot.SelectedIndex == 0)
+                                    dt = _cHoaDon.GetTongTonDenKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
+                                else
+                                    if (cmbFromDot.SelectedIndex > 0)
+                                        dt = _cHoaDon.GetTongTonDenKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
+                            }
+                            else
+                                if (chkTrongKy.Checked)
+                                    if (cmbFromDot.SelectedIndex == 0)
+                                        dt = _cHoaDon.GetTongTonTrongKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
+                                    else
+                                        if (cmbFromDot.SelectedIndex > 0)
+                                            dt = _cHoaDon.GetTongTonTrongKyDenNgay_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
+                        }
+                        else
+                            if (chkDenKy.Checked)
+                            {
+                                if (cmbFromDot.SelectedIndex == 0)
+                                    dt = _cHoaDon.GetTongTonDenKy_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                else
+                                    if (cmbFromDot.SelectedIndex > 0)
+                                        dt = _cHoaDon.GetTongTonDenKy_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                            }
+                            else
+                                if (chkNgayKiemTra.Checked)
+                                    dt = _cHoaDon.GetTongTon_To(CNguoiDung.MaTo, dateGiaiTrach.Value);
+                                else
+                                    ///chọn tất cả các năm
+                                    if (cmbNam.SelectedIndex == 0)
+                                        dt = _cHoaDon.GetTongTon_To(CNguoiDung.MaTo);
+                                    else
+                                        ///chọn 1 năm cụ thể
+                                        if (cmbNam.SelectedIndex > 0)
+                                            ///chọn tất cả các kỳ
+                                            if (cmbKy.SelectedIndex == 0)
+                                                dt = _cHoaDon.GetTongTon_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                                            else
+                                                ///chọn 1 kỳ cụ thể
+                                                if (cmbKy.SelectedIndex > 0)
+                                                    ///chọn tất cả đợt
+                                                    if (cmbFromDot.SelectedIndex == 0)
+                                                        dt = _cHoaDon.GetTongTon_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                                    else
+                                                        ///chọn từ đợt đến đợt
+                                                        if (cmbFromDot.SelectedIndex > 0)
+                                                            dt = _cHoaDon.GetTongTon_To(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                    }
+                    else
+                        ///chọn 1 nhân viên cụ thể
+                        if (cmbNhanVien.SelectedIndex > 0)
+                        {
+                            if ((chkDenKy.Checked || chkTrongKy.Checked) && chkNgayKiemTra.Checked)
+                            {
+                                if (chkDenKy.Checked)
+                                {
+                                    if (cmbFromDot.SelectedIndex == 0)
+                                        for (int i = 1; i <= 20; i++)
+                                            dt.Merge(_cHoaDon.GetTongTonDenKyDenNgay_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, dateGiaiTrach.Value));
+                                    else
+                                        if (cmbFromDot.SelectedIndex > 0)
+                                            for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                dt.Merge(_cHoaDon.GetTongTonDenKyDenNgay_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, dateGiaiTrach.Value));
+                                }
+                                else
+                                    if (chkTrongKy.Checked)
+                                    {
+                                        if (cmbFromDot.SelectedIndex == 0)
+                                            for (int i = 1; i <= 20; i++)
+                                                dt.Merge(_cHoaDon.GetTongTonTrongKyDenNgay_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, dateGiaiTrach.Value));
+                                        else
+                                            if (cmbFromDot.SelectedIndex > 0)
+                                                for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                    dt.Merge(_cHoaDon.GetTongTonTrongKyDenNgay_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, dateGiaiTrach.Value));
+                                    }
+                            }
+                            else
+                                if (chkDenKy.Checked)
+                                {
+                                    if (cmbFromDot.SelectedIndex == 0)
+                                        for (int i = 1; i <= 20; i++)
+                                            dt.Merge(_cHoaDon.GetTongTonDenKy_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                    else
+                                        if (cmbFromDot.SelectedIndex > 0)
+                                            for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                dt.Merge(_cHoaDon.GetTongTonDenKy_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                }
+                                else
+                                    if (chkNgayKiemTra.Checked)
+                                        dt = _cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
+                                    else
+                                        ///chọn tất cả các năm
+                                        if (cmbNam.SelectedIndex == 0)
+                                            dt = _cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()));
+                                        else
+                                            ///chọn 1 năm cụ thể
+                                            if (cmbNam.SelectedIndex > 0)
+                                                ///chọn tất cả các kỳ
+                                                if (cmbKy.SelectedIndex == 0)
+                                                    dt = _cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                                                else
+                                                    ///chọn 1 kỳ cụ thể
+                                                    if (cmbKy.SelectedIndex > 0)
+                                                        ///chọn tất cả đợt
+                                                        if (cmbFromDot.SelectedIndex == 0)
+                                                            for (int i = 1; i <= 20; i++)
+                                                                dt.Merge(_cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                                        else
+                                                            ///chọn từ đợt đến đợt
+                                                            if (cmbFromDot.SelectedIndex > 0)
+                                                                for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                                    dt.Merge(_cHoaDon.GetTongTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                        }
+                }
                 dgvHDTuGia.DataSource = dt;
                 CountdgvHDTuGia();
             }
@@ -1462,6 +1598,21 @@ namespace ThuTien.GUI.ToTruong
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTo.Items.Count > 0 && cmbTo.SelectedIndex > -1)
+            {
+                TT_NguoiDung nguoidung = new TT_NguoiDung();
+                nguoidung.MaND = -1;
+                nguoidung.HoTen = "Tất cả";
+                List<TT_NguoiDung> lst = _cNguoiDung.GetDSHanhThuByMaTo(((TT_To)(cmbTo.SelectedItem)).MaTo);
+                lst.Insert(0, nguoidung);
+                cmbNhanVien.DataSource = lst;
+                cmbNhanVien.DisplayMember = "HoTen";
+                cmbNhanVien.ValueMember = "MaND";
             }
         }
     }

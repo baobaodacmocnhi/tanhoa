@@ -50,6 +50,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="DangNhaps_Admin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IDMobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DangNhaps_AdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DangNhaps_AdminResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="DangXuat">
         <s:complexType>
           <s:sequence>
@@ -76,6 +93,36 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="DangXuatsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DangXuats_Person">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DangXuats_PersonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DangXuats_PersonResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DangXuats_Admin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DangXuats_AdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DangXuats_AdminResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -219,6 +266,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="NgayHen" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="MaKQDN" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="XoaDCHD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -258,7 +306,23 @@
       <s:element name="update_GhiChuResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="update_GhiChuResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="update_GhiChuResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="update_DiaChiDHN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MaNV" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DiaChiDHN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="update_DiaChiDHNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="update_DiaChiDHNResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -283,8 +347,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="MaNV_DongNuoc" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="FromNgayGiao" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="ToNgayGiao" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -299,8 +361,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="MaNV_DongNuoc" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="FromNgayGiao" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="ToNgayGiao" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -561,7 +621,7 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetTongTon">
+      <s:element name="GetTongTon_DenKy">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="MaTo" type="s:string" />
@@ -572,10 +632,28 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetTongTonResponse">
+      <s:element name="GetTongTon_DenKyResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetTongTonResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetTongTon_DenKyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTongTon_TrongKy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MaTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nam" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ky" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FromDot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToDot" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTongTon_TrongKyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTongTon_TrongKyResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -647,6 +725,34 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="truyvan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="truyvanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="truyvanResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="capnhat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="capnhatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="capnhatResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetDSHoaDon_LenhHuy">
         <s:complexType>
           <s:sequence>
@@ -679,6 +785,52 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getDS_ChotDangNgan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FromNgayGiaiTrach" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToNgayGiaiTrach" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDS_ChotDangNganResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDS_ChotDangNganResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="them_ChotDangNgan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NgayGiaiTrach" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CreateBy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="them_ChotDangNganResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="them_ChotDangNganResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="chotDangNgan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Chot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CreateBy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="chotDangNganResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="chotDangNganResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="syncThanhToan">
         <s:complexType>
           <s:sequence>
@@ -692,6 +844,22 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="syncThanhToanResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="syncThanhToan_ThuHo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MaHD" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="GiaiTrach" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDTemp_SyncHoaDon" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="syncThanhToan_ThuHoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="syncThanhToan_ThuHoResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -723,6 +891,64 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="syncNopTienLo_Except12">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NgayGiaiTrach" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="syncNopTienLo_Except12Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="syncNopTienLo_Except12Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="syncNopTienLo_12">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NgayGiaiTrach" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="syncNopTienLo_12Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="syncNopTienLo_12Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="showError_NopTien">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NgayGiaiTrach" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="showError_NopTienResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="showError_NopTienResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateChiTietTienNuoc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Nam" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ky" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dot" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateChiTietTienNuocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateChiTietTienNuocResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="UpdateUIDSoapIn">
@@ -743,6 +969,12 @@
   <wsdl:message name="DangNhapsSoapOut">
     <wsdl:part name="parameters" element="tns:DangNhapsResponse" />
   </wsdl:message>
+  <wsdl:message name="DangNhaps_AdminSoapIn">
+    <wsdl:part name="parameters" element="tns:DangNhaps_Admin" />
+  </wsdl:message>
+  <wsdl:message name="DangNhaps_AdminSoapOut">
+    <wsdl:part name="parameters" element="tns:DangNhaps_AdminResponse" />
+  </wsdl:message>
   <wsdl:message name="DangXuatSoapIn">
     <wsdl:part name="parameters" element="tns:DangXuat" />
   </wsdl:message>
@@ -754,6 +986,18 @@
   </wsdl:message>
   <wsdl:message name="DangXuatsSoapOut">
     <wsdl:part name="parameters" element="tns:DangXuatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DangXuats_PersonSoapIn">
+    <wsdl:part name="parameters" element="tns:DangXuats_Person" />
+  </wsdl:message>
+  <wsdl:message name="DangXuats_PersonSoapOut">
+    <wsdl:part name="parameters" element="tns:DangXuats_PersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="DangXuats_AdminSoapIn">
+    <wsdl:part name="parameters" element="tns:DangXuats_Admin" />
+  </wsdl:message>
+  <wsdl:message name="DangXuats_AdminSoapOut">
+    <wsdl:part name="parameters" element="tns:DangXuats_AdminResponse" />
   </wsdl:message>
   <wsdl:message name="updateLoginSoapIn">
     <wsdl:part name="parameters" element="tns:updateLogin" />
@@ -826,6 +1070,12 @@
   </wsdl:message>
   <wsdl:message name="update_GhiChuSoapOut">
     <wsdl:part name="parameters" element="tns:update_GhiChuResponse" />
+  </wsdl:message>
+  <wsdl:message name="update_DiaChiDHNSoapIn">
+    <wsdl:part name="parameters" element="tns:update_DiaChiDHN" />
+  </wsdl:message>
+  <wsdl:message name="update_DiaChiDHNSoapOut">
+    <wsdl:part name="parameters" element="tns:update_DiaChiDHNResponse" />
   </wsdl:message>
   <wsdl:message name="GetDSTamThuSoapIn">
     <wsdl:part name="parameters" element="tns:GetDSTamThu" />
@@ -929,11 +1179,17 @@
   <wsdl:message name="GetTongDangNganSoapOut">
     <wsdl:part name="parameters" element="tns:GetTongDangNganResponse" />
   </wsdl:message>
-  <wsdl:message name="GetTongTonSoapIn">
-    <wsdl:part name="parameters" element="tns:GetTongTon" />
+  <wsdl:message name="GetTongTon_DenKySoapIn">
+    <wsdl:part name="parameters" element="tns:GetTongTon_DenKy" />
   </wsdl:message>
-  <wsdl:message name="GetTongTonSoapOut">
-    <wsdl:part name="parameters" element="tns:GetTongTonResponse" />
+  <wsdl:message name="GetTongTon_DenKySoapOut">
+    <wsdl:part name="parameters" element="tns:GetTongTon_DenKyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTongTon_TrongKySoapIn">
+    <wsdl:part name="parameters" element="tns:GetTongTon_TrongKy" />
+  </wsdl:message>
+  <wsdl:message name="GetTongTon_TrongKySoapOut">
+    <wsdl:part name="parameters" element="tns:GetTongTon_TrongKyResponse" />
   </wsdl:message>
   <wsdl:message name="GetTongDongMoNuoc_TongSoapIn">
     <wsdl:part name="parameters" element="tns:GetTongDongMoNuoc_Tong" />
@@ -959,6 +1215,18 @@
   <wsdl:message name="GetTongThuHo_ChiTietSoapOut">
     <wsdl:part name="parameters" element="tns:GetTongThuHo_ChiTietResponse" />
   </wsdl:message>
+  <wsdl:message name="truyvanSoapIn">
+    <wsdl:part name="parameters" element="tns:truyvan" />
+  </wsdl:message>
+  <wsdl:message name="truyvanSoapOut">
+    <wsdl:part name="parameters" element="tns:truyvanResponse" />
+  </wsdl:message>
+  <wsdl:message name="capnhatSoapIn">
+    <wsdl:part name="parameters" element="tns:capnhat" />
+  </wsdl:message>
+  <wsdl:message name="capnhatSoapOut">
+    <wsdl:part name="parameters" element="tns:capnhatResponse" />
+  </wsdl:message>
   <wsdl:message name="GetDSHoaDon_LenhHuySoapIn">
     <wsdl:part name="parameters" element="tns:GetDSHoaDon_LenhHuy" />
   </wsdl:message>
@@ -971,11 +1239,35 @@
   <wsdl:message name="Sua_LenhHuySoapOut">
     <wsdl:part name="parameters" element="tns:Sua_LenhHuyResponse" />
   </wsdl:message>
+  <wsdl:message name="getDS_ChotDangNganSoapIn">
+    <wsdl:part name="parameters" element="tns:getDS_ChotDangNgan" />
+  </wsdl:message>
+  <wsdl:message name="getDS_ChotDangNganSoapOut">
+    <wsdl:part name="parameters" element="tns:getDS_ChotDangNganResponse" />
+  </wsdl:message>
+  <wsdl:message name="them_ChotDangNganSoapIn">
+    <wsdl:part name="parameters" element="tns:them_ChotDangNgan" />
+  </wsdl:message>
+  <wsdl:message name="them_ChotDangNganSoapOut">
+    <wsdl:part name="parameters" element="tns:them_ChotDangNganResponse" />
+  </wsdl:message>
+  <wsdl:message name="chotDangNganSoapIn">
+    <wsdl:part name="parameters" element="tns:chotDangNgan" />
+  </wsdl:message>
+  <wsdl:message name="chotDangNganSoapOut">
+    <wsdl:part name="parameters" element="tns:chotDangNganResponse" />
+  </wsdl:message>
   <wsdl:message name="syncThanhToanSoapIn">
     <wsdl:part name="parameters" element="tns:syncThanhToan" />
   </wsdl:message>
   <wsdl:message name="syncThanhToanSoapOut">
     <wsdl:part name="parameters" element="tns:syncThanhToanResponse" />
+  </wsdl:message>
+  <wsdl:message name="syncThanhToan_ThuHoSoapIn">
+    <wsdl:part name="parameters" element="tns:syncThanhToan_ThuHo" />
+  </wsdl:message>
+  <wsdl:message name="syncThanhToan_ThuHoSoapOut">
+    <wsdl:part name="parameters" element="tns:syncThanhToan_ThuHoResponse" />
   </wsdl:message>
   <wsdl:message name="syncNopTienSoapIn">
     <wsdl:part name="parameters" element="tns:syncNopTien" />
@@ -988,6 +1280,30 @@
   </wsdl:message>
   <wsdl:message name="syncNopTienLoSoapOut">
     <wsdl:part name="parameters" element="tns:syncNopTienLoResponse" />
+  </wsdl:message>
+  <wsdl:message name="syncNopTienLo_Except12SoapIn">
+    <wsdl:part name="parameters" element="tns:syncNopTienLo_Except12" />
+  </wsdl:message>
+  <wsdl:message name="syncNopTienLo_Except12SoapOut">
+    <wsdl:part name="parameters" element="tns:syncNopTienLo_Except12Response" />
+  </wsdl:message>
+  <wsdl:message name="syncNopTienLo_12SoapIn">
+    <wsdl:part name="parameters" element="tns:syncNopTienLo_12" />
+  </wsdl:message>
+  <wsdl:message name="syncNopTienLo_12SoapOut">
+    <wsdl:part name="parameters" element="tns:syncNopTienLo_12Response" />
+  </wsdl:message>
+  <wsdl:message name="showError_NopTienSoapIn">
+    <wsdl:part name="parameters" element="tns:showError_NopTien" />
+  </wsdl:message>
+  <wsdl:message name="showError_NopTienSoapOut">
+    <wsdl:part name="parameters" element="tns:showError_NopTienResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateChiTietTienNuocSoapIn">
+    <wsdl:part name="parameters" element="tns:updateChiTietTienNuoc" />
+  </wsdl:message>
+  <wsdl:message name="updateChiTietTienNuocSoapOut">
+    <wsdl:part name="parameters" element="tns:updateChiTietTienNuocResponse" />
   </wsdl:message>
   <wsdl:portType name="wsThuTienSoap">
     <wsdl:operation name="UpdateUID">
@@ -1002,6 +1318,10 @@
       <wsdl:input message="tns:DangNhapsSoapIn" />
       <wsdl:output message="tns:DangNhapsSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="DangNhaps_Admin">
+      <wsdl:input message="tns:DangNhaps_AdminSoapIn" />
+      <wsdl:output message="tns:DangNhaps_AdminSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="DangXuat">
       <wsdl:input message="tns:DangXuatSoapIn" />
       <wsdl:output message="tns:DangXuatSoapOut" />
@@ -1009,6 +1329,14 @@
     <wsdl:operation name="DangXuats">
       <wsdl:input message="tns:DangXuatsSoapIn" />
       <wsdl:output message="tns:DangXuatsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DangXuats_Person">
+      <wsdl:input message="tns:DangXuats_PersonSoapIn" />
+      <wsdl:output message="tns:DangXuats_PersonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DangXuats_Admin">
+      <wsdl:input message="tns:DangXuats_AdminSoapIn" />
+      <wsdl:output message="tns:DangXuats_AdminSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="updateLogin">
       <wsdl:input message="tns:updateLoginSoapIn" />
@@ -1057,6 +1385,10 @@
     <wsdl:operation name="update_GhiChu">
       <wsdl:input message="tns:update_GhiChuSoapIn" />
       <wsdl:output message="tns:update_GhiChuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="update_DiaChiDHN">
+      <wsdl:input message="tns:update_DiaChiDHNSoapIn" />
+      <wsdl:output message="tns:update_DiaChiDHNSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetDSTamThu">
       <wsdl:input message="tns:GetDSTamThuSoapIn" />
@@ -1126,9 +1458,13 @@
       <wsdl:input message="tns:GetTongDangNganSoapIn" />
       <wsdl:output message="tns:GetTongDangNganSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetTongTon">
-      <wsdl:input message="tns:GetTongTonSoapIn" />
-      <wsdl:output message="tns:GetTongTonSoapOut" />
+    <wsdl:operation name="GetTongTon_DenKy">
+      <wsdl:input message="tns:GetTongTon_DenKySoapIn" />
+      <wsdl:output message="tns:GetTongTon_DenKySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTongTon_TrongKy">
+      <wsdl:input message="tns:GetTongTon_TrongKySoapIn" />
+      <wsdl:output message="tns:GetTongTon_TrongKySoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetTongDongMoNuoc_Tong">
       <wsdl:input message="tns:GetTongDongMoNuoc_TongSoapIn" />
@@ -1146,6 +1482,14 @@
       <wsdl:input message="tns:GetTongThuHo_ChiTietSoapIn" />
       <wsdl:output message="tns:GetTongThuHo_ChiTietSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="truyvan">
+      <wsdl:input message="tns:truyvanSoapIn" />
+      <wsdl:output message="tns:truyvanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="capnhat">
+      <wsdl:input message="tns:capnhatSoapIn" />
+      <wsdl:output message="tns:capnhatSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetDSHoaDon_LenhHuy">
       <wsdl:input message="tns:GetDSHoaDon_LenhHuySoapIn" />
       <wsdl:output message="tns:GetDSHoaDon_LenhHuySoapOut" />
@@ -1154,9 +1498,25 @@
       <wsdl:input message="tns:Sua_LenhHuySoapIn" />
       <wsdl:output message="tns:Sua_LenhHuySoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getDS_ChotDangNgan">
+      <wsdl:input message="tns:getDS_ChotDangNganSoapIn" />
+      <wsdl:output message="tns:getDS_ChotDangNganSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="them_ChotDangNgan">
+      <wsdl:input message="tns:them_ChotDangNganSoapIn" />
+      <wsdl:output message="tns:them_ChotDangNganSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="chotDangNgan">
+      <wsdl:input message="tns:chotDangNganSoapIn" />
+      <wsdl:output message="tns:chotDangNganSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="syncThanhToan">
       <wsdl:input message="tns:syncThanhToanSoapIn" />
       <wsdl:output message="tns:syncThanhToanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="syncThanhToan_ThuHo">
+      <wsdl:input message="tns:syncThanhToan_ThuHoSoapIn" />
+      <wsdl:output message="tns:syncThanhToan_ThuHoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="syncNopTien">
       <wsdl:input message="tns:syncNopTienSoapIn" />
@@ -1165,6 +1525,22 @@
     <wsdl:operation name="syncNopTienLo">
       <wsdl:input message="tns:syncNopTienLoSoapIn" />
       <wsdl:output message="tns:syncNopTienLoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="syncNopTienLo_Except12">
+      <wsdl:input message="tns:syncNopTienLo_Except12SoapIn" />
+      <wsdl:output message="tns:syncNopTienLo_Except12SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="syncNopTienLo_12">
+      <wsdl:input message="tns:syncNopTienLo_12SoapIn" />
+      <wsdl:output message="tns:syncNopTienLo_12SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="showError_NopTien">
+      <wsdl:input message="tns:showError_NopTienSoapIn" />
+      <wsdl:output message="tns:showError_NopTienSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateChiTietTienNuoc">
+      <wsdl:input message="tns:updateChiTietTienNuocSoapIn" />
+      <wsdl:output message="tns:updateChiTietTienNuocSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsThuTienSoap" type="tns:wsThuTienSoap">
@@ -1196,6 +1572,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DangNhaps_Admin">
+      <soap:operation soapAction="http://tempuri.org/DangNhaps_Admin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DangXuat">
       <soap:operation soapAction="http://tempuri.org/DangXuat" style="document" />
       <wsdl:input>
@@ -1207,6 +1592,24 @@
     </wsdl:operation>
     <wsdl:operation name="DangXuats">
       <soap:operation soapAction="http://tempuri.org/DangXuats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DangXuats_Person">
+      <soap:operation soapAction="http://tempuri.org/DangXuats_Person" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DangXuats_Admin">
+      <soap:operation soapAction="http://tempuri.org/DangXuats_Admin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1315,6 +1718,15 @@
     </wsdl:operation>
     <wsdl:operation name="update_GhiChu">
       <soap:operation soapAction="http://tempuri.org/update_GhiChu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update_DiaChiDHN">
+      <soap:operation soapAction="http://tempuri.org/update_DiaChiDHN" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1475,8 +1887,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetTongTon">
-      <soap:operation soapAction="http://tempuri.org/GetTongTon" style="document" />
+    <wsdl:operation name="GetTongTon_DenKy">
+      <soap:operation soapAction="http://tempuri.org/GetTongTon_DenKy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTongTon_TrongKy">
+      <soap:operation soapAction="http://tempuri.org/GetTongTon_TrongKy" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1520,6 +1941,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="truyvan">
+      <soap:operation soapAction="http://tempuri.org/truyvan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="capnhat">
+      <soap:operation soapAction="http://tempuri.org/capnhat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetDSHoaDon_LenhHuy">
       <soap:operation soapAction="http://tempuri.org/GetDSHoaDon_LenhHuy" style="document" />
       <wsdl:input>
@@ -1538,8 +1977,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getDS_ChotDangNgan">
+      <soap:operation soapAction="http://tempuri.org/getDS_ChotDangNgan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="them_ChotDangNgan">
+      <soap:operation soapAction="http://tempuri.org/them_ChotDangNgan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="chotDangNgan">
+      <soap:operation soapAction="http://tempuri.org/chotDangNgan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="syncThanhToan">
       <soap:operation soapAction="http://tempuri.org/syncThanhToan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="syncThanhToan_ThuHo">
+      <soap:operation soapAction="http://tempuri.org/syncThanhToan_ThuHo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1558,6 +2033,42 @@
     </wsdl:operation>
     <wsdl:operation name="syncNopTienLo">
       <soap:operation soapAction="http://tempuri.org/syncNopTienLo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="syncNopTienLo_Except12">
+      <soap:operation soapAction="http://tempuri.org/syncNopTienLo_Except12" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="syncNopTienLo_12">
+      <soap:operation soapAction="http://tempuri.org/syncNopTienLo_12" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="showError_NopTien">
+      <soap:operation soapAction="http://tempuri.org/showError_NopTien" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateChiTietTienNuoc">
+      <soap:operation soapAction="http://tempuri.org/updateChiTietTienNuoc" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1595,6 +2106,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DangNhaps_Admin">
+      <soap12:operation soapAction="http://tempuri.org/DangNhaps_Admin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DangXuat">
       <soap12:operation soapAction="http://tempuri.org/DangXuat" style="document" />
       <wsdl:input>
@@ -1606,6 +2126,24 @@
     </wsdl:operation>
     <wsdl:operation name="DangXuats">
       <soap12:operation soapAction="http://tempuri.org/DangXuats" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DangXuats_Person">
+      <soap12:operation soapAction="http://tempuri.org/DangXuats_Person" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DangXuats_Admin">
+      <soap12:operation soapAction="http://tempuri.org/DangXuats_Admin" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1714,6 +2252,15 @@
     </wsdl:operation>
     <wsdl:operation name="update_GhiChu">
       <soap12:operation soapAction="http://tempuri.org/update_GhiChu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update_DiaChiDHN">
+      <soap12:operation soapAction="http://tempuri.org/update_DiaChiDHN" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1874,8 +2421,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetTongTon">
-      <soap12:operation soapAction="http://tempuri.org/GetTongTon" style="document" />
+    <wsdl:operation name="GetTongTon_DenKy">
+      <soap12:operation soapAction="http://tempuri.org/GetTongTon_DenKy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTongTon_TrongKy">
+      <soap12:operation soapAction="http://tempuri.org/GetTongTon_TrongKy" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1919,6 +2475,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="truyvan">
+      <soap12:operation soapAction="http://tempuri.org/truyvan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="capnhat">
+      <soap12:operation soapAction="http://tempuri.org/capnhat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetDSHoaDon_LenhHuy">
       <soap12:operation soapAction="http://tempuri.org/GetDSHoaDon_LenhHuy" style="document" />
       <wsdl:input>
@@ -1937,8 +2511,44 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getDS_ChotDangNgan">
+      <soap12:operation soapAction="http://tempuri.org/getDS_ChotDangNgan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="them_ChotDangNgan">
+      <soap12:operation soapAction="http://tempuri.org/them_ChotDangNgan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="chotDangNgan">
+      <soap12:operation soapAction="http://tempuri.org/chotDangNgan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="syncThanhToan">
       <soap12:operation soapAction="http://tempuri.org/syncThanhToan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="syncThanhToan_ThuHo">
+      <soap12:operation soapAction="http://tempuri.org/syncThanhToan_ThuHo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1957,6 +2567,42 @@
     </wsdl:operation>
     <wsdl:operation name="syncNopTienLo">
       <soap12:operation soapAction="http://tempuri.org/syncNopTienLo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="syncNopTienLo_Except12">
+      <soap12:operation soapAction="http://tempuri.org/syncNopTienLo_Except12" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="syncNopTienLo_12">
+      <soap12:operation soapAction="http://tempuri.org/syncNopTienLo_12" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="showError_NopTien">
+      <soap12:operation soapAction="http://tempuri.org/showError_NopTien" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateChiTietTienNuoc">
+      <soap12:operation soapAction="http://tempuri.org/updateChiTietTienNuoc" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

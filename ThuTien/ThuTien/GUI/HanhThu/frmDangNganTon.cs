@@ -396,6 +396,7 @@ namespace ThuTien.GUI.HanhThu
                         DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
                         dr["To"] = CNguoiDung.TenTo;
                         dr["Loai"] = "Kỳ <" + cmbKy.SelectedItem.ToString();
+                        dr["LoaiHoaDon"] = item["LoaiHoaDon"].ToString();
                         dr["NgayDangNgan"] = dateGiaiTrach.Value.Date.ToString("dd/MM/yyyy");
                         dr["TongHD"] = item["TongHD"].ToString();
                         dr["TongGiaBan"] = item["TongGiaBan"].ToString();
@@ -412,6 +413,7 @@ namespace ThuTien.GUI.HanhThu
                         DataRow dr = dsPhanKyLon.Tables["PhieuDangNgan"].NewRow();
                         dr["To"] = CNguoiDung.TenTo;
                         dr["Loai"] = "Kỳ " + cmbKy.SelectedItem.ToString();
+                        dr["LoaiHoaDon"] = item["LoaiHoaDon"].ToString();
                         dr["NgayDangNgan"] = dateGiaiTrach.Value.Date.ToString("dd/MM/yyyy");
                         dr["TongHD"] = item["TongHD"].ToString();
                         dr["TongGiaBan"] = item["TongGiaBan"].ToString();
