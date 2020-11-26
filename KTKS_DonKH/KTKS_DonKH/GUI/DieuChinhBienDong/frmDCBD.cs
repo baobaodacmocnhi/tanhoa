@@ -242,6 +242,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDot.Text = "";
             txtHieuLucKy.Text = "";
             txtGhiChu.Text = "";
+            txtDienThoai.Text = "";
             ///
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
