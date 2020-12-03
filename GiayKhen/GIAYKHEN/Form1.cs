@@ -132,6 +132,21 @@ namespace GIAYKHEN
                                             rp = new HCM_TAPTHE_A3();
                                         }
                                 }
+                                else
+                                    if (cmbGiayKhen.SelectedItem.ToString() == "Dân vận khéo")
+                                    {
+                                        if (cmbNhom.SelectedIndex == 0)
+                                        {
+                                            sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and DanVanKheo=1";
+                                            rp = new DanVanKheo_CANHAN_A3_2020();
+                                        }
+                                        else
+                                            if (cmbNhom.SelectedIndex == 1)
+                                            {
+                                                sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and DanVanKheo=1";
+                                                rp = new DanVanKheo_TAPTHE_A3_2020();
+                                            }
+                                    }
 
             DataTable dt = getData(sql).Tables[0];
             //ReportDocument rp = new GKCongDoan_CANHAN();
@@ -165,7 +180,7 @@ namespace GIAYKHEN
         private void Form1_Load(object sender, EventArgs e)
         {
             cmbNhom.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2020, 09, 03);
+            txtNgay.Value = new DateTime(2020, 11, 24);
         }
 
     }
