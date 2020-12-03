@@ -130,7 +130,7 @@ namespace ThuTien.GUI.ToTruong
 
         public void CountdgvHDCoQuan()
         {
-            int TongHD = 0;
+            //int TongHD = 0;
             int TongGiaBan = 0;
             int TongThueGTGT = 0;
             int TongPhiBVMT = 0;

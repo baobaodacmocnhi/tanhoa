@@ -515,12 +515,9 @@ namespace ThuTien.GUI.TongHop
                             ///lưu lịch sử
                             LuuLichSuDC(dchd);
 
-                            if (_cHoaDon.Sua(_hoadon))
-                            {
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                                Close();
-                            }
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                            Close();
                         }
                     }
                 }

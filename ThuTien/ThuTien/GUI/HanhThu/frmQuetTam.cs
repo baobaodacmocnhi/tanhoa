@@ -17,6 +17,7 @@ using System.Globalization;
 using ThuTien.BaoCao.DongNuoc;
 using ThuTien.DAL.ChuyenKhoan;
 using ThuTien.DAL;
+using ThuTien.DAL.TongHop;
 
 namespace ThuTien.GUI.HanhThu
 {
@@ -1182,6 +1183,44 @@ namespace ThuTien.GUI.HanhThu
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
+        }
+
+        private void btnChuyenCodeF2toDCHD_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuDCHD", "Them"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn chuyển?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    CDCHD _cDCHD = new CDCHD();
+                    foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                    {
+                        HOADON hd = _cHoaDon.GetMoiNhat(item.Cells["DanhBo_TG"].Value.ToString());
+                        if (_cDCHD.CheckExist(hd.ID_HOADON) == false)
+                        {
+                            DIEUCHINH_HD dchd = new DIEUCHINH_HD();
+                            dchd.FK_HOADON = hd.ID_HOADON;
+                            dchd.SoHoaDon = hd.SOHOADON;
+                            dchd.GiaBieu = hd.GB;
+                            if (hd.DM != null)
+                                dchd.DinhMuc = (int)hd.DM;
+                            dchd.TIEUTHU_BD = (int)hd.TIEUTHU;
+                            dchd.GIABAN_BD = hd.GIABAN;
+                            dchd.PHI_BD = hd.PHI;
+                            dchd.THUE_BD = hd.THUE;
+                            dchd.TONGCONG_BD = hd.TONGCONG;
+                            dchd.NGAY_DC = DateTime.Now;
+                            dchd.CodeF2 = true;
+
+                            if (_cDCHD.Them(dchd))
+                            {
+
+                            }
+                        }
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
     }
