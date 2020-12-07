@@ -51721,7 +51721,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _IDCT;
+		private int _IDDanhSach;
 		
 		private string _DanhBo;
 		
@@ -51755,14 +51755,28 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _SoThan;
 		
+		private System.Nullable<int> _MaDon;
+		
+		private System.Nullable<int> _STT;
+		
+		private int _IDCT;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
 		private EntityRef<ToTrinh_ChiTiet> _ToTrinh_ChiTiet;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIDCTChanging(int value);
-    partial void OnIDCTChanged();
+    partial void OnIDDanhSachChanging(int value);
+    partial void OnIDDanhSachChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
     partial void OnHopDongChanging(string value);
@@ -51795,6 +51809,20 @@ namespace KTKS_DonKH.LinQ
     partial void OnCoChanged();
     partial void OnSoThanChanging(string value);
     partial void OnSoThanChanged();
+    partial void OnMaDonChanging(System.Nullable<int> value);
+    partial void OnMaDonChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
+    partial void OnIDCTChanging(int value);
+    partial void OnIDCTChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
     #endregion
 		
 		public ToTrinh_ChiTiet_DanhSach()
@@ -51803,31 +51831,27 @@ namespace KTKS_DonKH.LinQ
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCT", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDCT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDanhSach", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDDanhSach
 		{
 			get
 			{
-				return this._IDCT;
+				return this._IDDanhSach;
 			}
 			set
 			{
-				if ((this._IDCT != value))
+				if ((this._IDDanhSach != value))
 				{
-					if (this._ToTrinh_ChiTiet.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDCTChanging(value);
+					this.OnIDDanhSachChanging(value);
 					this.SendPropertyChanging();
-					this._IDCT = value;
-					this.SendPropertyChanged("IDCT");
-					this.OnIDCTChanged();
+					this._IDDanhSach = value;
+					this.SendPropertyChanged("IDDanhSach");
+					this.OnIDDanhSachChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="Char(11) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="Char(11)")]
 		public string DanhBo
 		{
 			get
@@ -52143,6 +52167,150 @@ namespace KTKS_DonKH.LinQ
 					this._SoThan = value;
 					this.SendPropertyChanged("SoThan");
 					this.OnSoThanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="Int")]
+		public System.Nullable<int> MaDon
+		{
+			get
+			{
+				return this._MaDon;
+			}
+			set
+			{
+				if ((this._MaDon != value))
+				{
+					this.OnMaDonChanging(value);
+					this.SendPropertyChanging();
+					this._MaDon = value;
+					this.SendPropertyChanged("MaDon");
+					this.OnMaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCT", DbType="Int NOT NULL")]
+		public int IDCT
+		{
+			get
+			{
+				return this._IDCT;
+			}
+			set
+			{
+				if ((this._IDCT != value))
+				{
+					if (this._ToTrinh_ChiTiet.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDCTChanging(value);
+					this.SendPropertyChanging();
+					this._IDCT = value;
+					this.SendPropertyChanged("IDCT");
+					this.OnIDCTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
 				}
 			}
 		}

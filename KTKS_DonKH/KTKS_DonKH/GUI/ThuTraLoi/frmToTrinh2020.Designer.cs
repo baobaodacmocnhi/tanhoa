@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaCTTT = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
@@ -80,6 +80,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.tabCongVan = new System.Windows.Forms.TabPage();
             this.dgvDanhBo = new System.Windows.Forms.DataGridView();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,6 +95,11 @@
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Co = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoThan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDonTong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHinh)).BeginInit();
@@ -338,14 +344,14 @@
             // 
             this.dgvHinh.AllowUserToAddRows = false;
             this.dgvHinh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Hinh,
@@ -451,7 +457,7 @@
             // 
             // txtDinhMucHN
             // 
-            this.txtDinhMucHN.Location = new System.Drawing.Point(597, 90);
+            this.txtDinhMucHN.Location = new System.Drawing.Point(624, 62);
             this.txtDinhMucHN.Name = "txtDinhMucHN";
             this.txtDinhMucHN.Size = new System.Drawing.Size(50, 22);
             this.txtDinhMucHN.TabIndex = 17;
@@ -459,7 +465,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(503, 92);
+            this.label25.Location = new System.Drawing.Point(530, 64);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(88, 16);
             this.label25.TabIndex = 16;
@@ -467,7 +473,7 @@
             // 
             // txtDinhMuc
             // 
-            this.txtDinhMuc.Location = new System.Drawing.Point(597, 62);
+            this.txtDinhMuc.Location = new System.Drawing.Point(624, 34);
             this.txtDinhMuc.Name = "txtDinhMuc";
             this.txtDinhMuc.Size = new System.Drawing.Size(50, 22);
             this.txtDinhMuc.TabIndex = 13;
@@ -475,7 +481,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(526, 65);
+            this.label3.Location = new System.Drawing.Point(553, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 16);
             this.label3.TabIndex = 12;
@@ -515,7 +521,7 @@
             // 
             // txtGiaBieu
             // 
-            this.txtGiaBieu.Location = new System.Drawing.Point(597, 34);
+            this.txtGiaBieu.Location = new System.Drawing.Point(624, 6);
             this.txtGiaBieu.Name = "txtGiaBieu";
             this.txtGiaBieu.Size = new System.Drawing.Size(50, 22);
             this.txtGiaBieu.TabIndex = 9;
@@ -523,7 +529,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(526, 36);
+            this.label7.Location = new System.Drawing.Point(553, 8);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 16);
             this.label7.TabIndex = 8;
@@ -575,6 +581,7 @@
             // 
             this.dgvDanhBo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhBo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaDon,
             this.ID,
             this.DanhBo,
             this.MLT,
@@ -588,12 +595,24 @@
             this.Ky,
             this.Nam,
             this.Quan,
-            this.Phuong});
+            this.Phuong,
+            this.Hieu,
+            this.Co,
+            this.SoThan,
+            this.MaDonTong,
+            this.STT});
             this.dgvDanhBo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDanhBo.Location = new System.Drawing.Point(0, 0);
             this.dgvDanhBo.Name = "dgvDanhBo";
             this.dgvDanhBo.Size = new System.Drawing.Size(752, 194);
             this.dgvDanhBo.TabIndex = 0;
+            this.dgvDanhBo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBo_CellEndEdit);
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
             // 
             // ID
             // 
@@ -634,7 +653,7 @@
             this.DiaChi.DataPropertyName = "DiaChi";
             this.DiaChi.HeaderText = "Địa Chỉ";
             this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 250;
+            this.DiaChi.Width = 200;
             // 
             // GiaBieu
             // 
@@ -692,13 +711,48 @@
             this.Phuong.Name = "Phuong";
             this.Phuong.Visible = false;
             // 
+            // Hieu
+            // 
+            this.Hieu.DataPropertyName = "Hieu";
+            this.Hieu.HeaderText = "Hieu";
+            this.Hieu.Name = "Hieu";
+            this.Hieu.Visible = false;
+            // 
+            // Co
+            // 
+            this.Co.DataPropertyName = "Co";
+            this.Co.HeaderText = "Co";
+            this.Co.Name = "Co";
+            this.Co.Visible = false;
+            // 
+            // SoThan
+            // 
+            this.SoThan.DataPropertyName = "SoThan";
+            this.SoThan.HeaderText = "SoThan";
+            this.SoThan.Name = "SoThan";
+            this.SoThan.Visible = false;
+            // 
+            // MaDonTong
+            // 
+            this.MaDonTong.DataPropertyName = "MaDonTong";
+            this.MaDonTong.HeaderText = "MaDonTong";
+            this.MaDonTong.Name = "MaDonTong";
+            this.MaDonTong.Visible = false;
+            // 
+            // STT
+            // 
+            this.STT.DataPropertyName = "STT";
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.Visible = false;
+            // 
             // frmToTrinh2020
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1368, 647);
+            this.ClientSize = new System.Drawing.Size(1061, 524);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label34);
@@ -787,6 +841,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TabPage tabCongVan;
         private System.Windows.Forms.DataGridView dgvDanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
@@ -801,5 +856,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quan;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phuong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Co;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoThan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDonTong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
     }
 }

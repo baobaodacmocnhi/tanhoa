@@ -152,6 +152,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                 _cDonTu.Xoa_LichSu("ToTrinh_ChiTiet", (int)en.IDCT);
                 decimal ID = en.ID;
                 db.ToTrinh_ChiTiet_Hinhs.DeleteAllOnSubmit(en.ToTrinh_ChiTiet_Hinhs.ToList());
+                db.ToTrinh_ChiTiet_DanhSaches.DeleteAllOnSubmit(en.ToTrinh_ChiTiet_DanhSaches.ToList());
                 db.ToTrinh_ChiTiets.DeleteOnSubmit(en);
                 db.SubmitChanges();
                 if (db.ToTrinh_ChiTiets.Any(item => item.ID == ID) == false)
@@ -218,7 +219,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                         where item.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = item.ToTrinh.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ToTrinh.MaDonMoi).Count() == 1 ?  item.ToTrinh.MaDonMoi.Value.ToString() : item.ToTrinh.MaDonMoi + "." + item.STT
+                            MaDon = item.ToTrinh.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ToTrinh.MaDonMoi).Count() == 1 ? item.ToTrinh.MaDonMoi.Value.ToString() : item.ToTrinh.MaDonMoi + "." + item.STT
                                     : item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
                                     : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
                                     : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
@@ -240,7 +241,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                         where item.VeViec.Contains(VeViec)
                         select new
                         {
-                            MaDon = item.ToTrinh.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ToTrinh.MaDonMoi).Count() == 1 ?  item.ToTrinh.MaDonMoi.Value.ToString() : item.ToTrinh.MaDonMoi + "." + item.STT
+                            MaDon = item.ToTrinh.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ToTrinh.MaDonMoi).Count() == 1 ? item.ToTrinh.MaDonMoi.Value.ToString() : item.ToTrinh.MaDonMoi + "." + item.STT
                                     : item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
                                     : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
                                     : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
@@ -263,7 +264,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                         orderby item.CreateDate descending
                         select new
                         {
-                            MaDon = item.ToTrinh.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ToTrinh.MaDonMoi).Count() == 1 ?  item.ToTrinh.MaDonMoi.Value.ToString() : item.ToTrinh.MaDonMoi + "." + item.STT
+                            MaDon = item.ToTrinh.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ToTrinh.MaDonMoi).Count() == 1 ? item.ToTrinh.MaDonMoi.Value.ToString() : item.ToTrinh.MaDonMoi + "." + item.STT
                                     : item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
                                     : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
                                     : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
@@ -301,6 +302,63 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 
         #endregion
 
+        #region ToTrinh_ChiTiet_DanhSach (Chi Tiết Tờ Trình Danh Sách)
+
+        public bool Them_ChiTiet_DanhSach(ToTrinh_ChiTiet_DanhSach en)
+        {
+            try
+            {
+                if (db.ToTrinh_ChiTiet_DanhSaches.Count() > 0)
+                {
+                    en.IDDanhSach = db.ToTrinh_ChiTiet_DanhSaches.Max(item => item.IDDanhSach) + 1;
+                }
+                else
+                {
+                    en.IDDanhSach = 1;
+                }
+                en.CreateDate = DateTime.Now;
+                en.CreateBy = CTaiKhoan.MaUser;
+                db.ToTrinh_ChiTiet_DanhSaches.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Sua_ChiTiet_DanhSach(ToTrinh_ChiTiet en)
+        {
+            try
+            {
+                en.ModifyDate = DateTime.Now;
+                en.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public int get_IDDanhSach_Max()
+        {
+            if (db.ToTrinh_ChiTiet_DanhSaches.Count() > 0)
+            {
+                return db.ToTrinh_ChiTiet_DanhSaches.Max(item => item.IDDanhSach);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        #endregion
+
         //MaDonMoi
 
         public bool checkExist(int MaDon)
@@ -310,7 +368,10 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 
         public bool checkExist_ChiTiet(int MaDon, string DanhBo, DateTime CreateDate)
         {
-            return db.ToTrinh_ChiTiets.Any(item => item.ToTrinh.MaDonMoi == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+            if (db.ToTrinh_ChiTiets.Any(item => item.ToTrinh.MaDonMoi == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date) == true)
+                return true;
+            else
+                return db.ToTrinh_ChiTiet_DanhSaches.Any(item => item.MaDon == MaDon && item.DanhBo == DanhBo && item.ToTrinh_ChiTiet.CreateDate.Value.Date == CreateDate.Date);
         }
 
         public ToTrinh get(int MaDon)

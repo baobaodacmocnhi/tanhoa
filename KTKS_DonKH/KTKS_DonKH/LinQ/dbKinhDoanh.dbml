@@ -2256,8 +2256,8 @@
   </Table>
   <Table Name="dbo.ToTrinh_ChiTiet_DanhSach" Member="ToTrinh_ChiTiet_DanhSaches">
     <Type Name="ToTrinh_ChiTiet_DanhSach">
-      <Column Name="IDCT" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="DanhBo" Type="System.String" DbType="Char(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDDanhSach" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="Char(11)" CanBeNull="true" />
       <Column Name="HopDong" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="LoTrinh" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="HoTen" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
@@ -2273,6 +2273,13 @@
       <Column Name="Hieu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Co" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="SoThan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDCT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="ToTrinh_ChiTiet_ToTrinh_ChiTiet_DanhSach" Member="ToTrinh_ChiTiet" ThisKey="IDCT" OtherKey="IDCT" Type="ToTrinh_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
