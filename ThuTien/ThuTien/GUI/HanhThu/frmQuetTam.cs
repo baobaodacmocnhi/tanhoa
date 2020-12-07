@@ -718,7 +718,7 @@ namespace ThuTien.GUI.HanhThu
                             if (chkChuKy.Checked)
                             {
                                 dr["ChuKy"] = true;
-                                dr["ChuKyImage"] = Application.StartupPath.ToString() +@"\Resources\chuky.png";
+                                dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                             }
                             if (chkCoTenNguoiKy.Checked)
                                 dr["NguoiKy"] = CNguoiKy.getNguoiKy();
@@ -1107,25 +1107,25 @@ namespace ThuTien.GUI.HanhThu
             {
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                     if (item.Cells["NgayGiaiTrach_TG"].Value == null || item.Cells["NgayGiaiTrach_TG"].Value.ToString() == "")
-                {
-                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                    dr["LoaiBaoCao"] = item.Cells["MLT_TG"].Value.ToString().Substring(0,2);
-                    dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                    dr["Ky"] = item.Cells["Ky_TG"].Value;
-                    dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
-                    dr["TongCong"] = item.Cells["TongCong_TG"].Value;
-                    dr["SoPhatHanh"] = item.Cells["SoPhatHanh_TG"].Value;
-                    dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
-                    if (int.Parse(item.Cells["GiaBieu_TG"].Value.ToString()) > 20)
-                        dr["Loai"] = "CQ";
-                    else
-                        dr["Loai"] = "TG";
-                    //if (CNguoiDung.ToTruong)
-                    //    dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
-                    //else
-                    //    dr["NhanVien"] = CNguoiDung.HoTen;
-                    ds.Tables["DSHoaDon"].Rows.Add(dr);
-                }
+                    {
+                        DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                        dr["LoaiBaoCao"] = item.Cells["MLT_TG"].Value.ToString().Substring(0, 2);
+                        dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["Ky"] = item.Cells["Ky_TG"].Value;
+                        dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                        dr["TongCong"] = item.Cells["TongCong_TG"].Value;
+                        dr["SoPhatHanh"] = item.Cells["SoPhatHanh_TG"].Value;
+                        dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
+                        if (int.Parse(item.Cells["GiaBieu_TG"].Value.ToString()) > 20)
+                            dr["Loai"] = "CQ";
+                        else
+                            dr["Loai"] = "TG";
+                        //if (CNguoiDung.ToTruong)
+                        //    dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                        //else
+                        //    dr["NhanVien"] = CNguoiDung.HoTen;
+                        ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    }
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
@@ -1174,7 +1174,7 @@ namespace ThuTien.GUI.HanhThu
                         dr["Loai"] = "CQ";
                     else
                         dr["Loai"] = "TG";
-                        dr["NhanVien"] = CNguoiDung.HoTen;
+                    dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
                 }
             }
@@ -1193,30 +1193,31 @@ namespace ThuTien.GUI.HanhThu
                 {
                     CDCHD _cDCHD = new CDCHD();
                     foreach (DataGridViewRow item in dgvHDTuGia.Rows)
-                    {
-                        HOADON hd = _cHoaDon.GetMoiNhat(item.Cells["DanhBo_TG"].Value.ToString());
-                        if (_cDCHD.CheckExist(hd.ID_HOADON) == false)
+                        if (item.Cells["NgayGiaiTrach_TG"].Value == null || item.Cells["NgayGiaiTrach_TG"].Value.ToString() == "")
                         {
-                            DIEUCHINH_HD dchd = new DIEUCHINH_HD();
-                            dchd.FK_HOADON = hd.ID_HOADON;
-                            dchd.SoHoaDon = hd.SOHOADON;
-                            dchd.GiaBieu = hd.GB;
-                            if (hd.DM != null)
-                                dchd.DinhMuc = (int)hd.DM;
-                            dchd.TIEUTHU_BD = (int)hd.TIEUTHU;
-                            dchd.GIABAN_BD = hd.GIABAN;
-                            dchd.PHI_BD = hd.PHI;
-                            dchd.THUE_BD = hd.THUE;
-                            dchd.TONGCONG_BD = hd.TONGCONG;
-                            dchd.NGAY_DC = DateTime.Now;
-                            dchd.CodeF2 = true;
-
-                            if (_cDCHD.Them(dchd))
+                            HOADON hd = _cHoaDon.GetMoiNhat(item.Cells["DanhBo_TG"].Value.ToString());
+                            if (_cDCHD.CheckExist(hd.ID_HOADON) == false)
                             {
+                                DIEUCHINH_HD dchd = new DIEUCHINH_HD();
+                                dchd.FK_HOADON = hd.ID_HOADON;
+                                dchd.SoHoaDon = hd.SOHOADON;
+                                dchd.GiaBieu = hd.GB;
+                                if (hd.DM != null)
+                                    dchd.DinhMuc = (int)hd.DM;
+                                dchd.TIEUTHU_BD = (int)hd.TIEUTHU;
+                                dchd.GIABAN_BD = hd.GIABAN;
+                                dchd.PHI_BD = hd.PHI;
+                                dchd.THUE_BD = hd.THUE;
+                                dchd.TONGCONG_BD = hd.TONGCONG;
+                                dchd.NGAY_DC = DateTime.Now;
+                                dchd.CodeF2 = true;
 
+                                if (_cDCHD.Them(dchd))
+                                {
+
+                                }
                             }
                         }
-                    }
                 }
             }
             else
