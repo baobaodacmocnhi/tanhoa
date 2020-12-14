@@ -89,7 +89,7 @@ namespace ThuTien.GUI.TongHop
         {
             if (dgvDCHD.RowCount > 0 && e.Button == MouseButtons.Left)
             {
-                frmShowDCHD frm = new frmShowDCHD(int.Parse(dgvDCHD.SelectedRows[0].Cells["MaHD_DC"].Value.ToString()), dgvDCHD.SelectedRows[0].Cells["SoHoaDon_DC"].Value.ToString());
+                frmShowDCHD frm = new frmShowDCHD(int.Parse(dgvDCHD.CurrentRow.Cells["MaHD_DC"].Value.ToString()), dgvDCHD.CurrentRow.Cells["SoHoaDon_DC"].Value.ToString());
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     _cDCHD.Refresh();
