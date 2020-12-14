@@ -943,7 +943,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr2);
                     }
 
-
                     rptToTrinh_DCMS_DinhKem rpt2 = new rptToTrinh_DCMS_DinhKem();
                     rpt2.SetDataSource(dsBaoCao);
                     frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);

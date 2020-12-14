@@ -91,43 +91,81 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
         public void LoadTT(ToTrinh_ChiTiet en)
         {
-            if (en.ToTrinh.MaDonMoi != null)
+               if (en.ToTrinh_ChiTiet_DanhSaches.Count == 0)
             {
-                _dontu_ChiTiet = _cDonTu.get_ChiTiet(en.ToTrinh.MaDonMoi.Value, en.STT.Value);
-                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
-                    txtMaDonMoi.Text = en.ToTrinh.MaDonMoi.ToString();
-                else
-                    txtMaDonMoi.Text = en.ToTrinh.MaDonMoi.Value.ToString() + "." + en.STT.Value.ToString();
-            }
-            else
-                if (en.ToTrinh.MaDon != null)
+                tabControl.SelectTab("tabTTKH");
+                if (en.ToTrinh.MaDonMoi != null)
                 {
-                    _dontkh = _cDonKH.Get(en.ToTrinh.MaDon.Value);
-                    txtMaDonCu.Text = en.ToTrinh.MaDon.Value.ToString().Insert(en.ToTrinh.MaDon.Value.ToString().Length - 2, "-");
+                    _dontu_ChiTiet = _cDonTu.get_ChiTiet(en.ToTrinh.MaDonMoi.Value, en.STT.Value);
+                    if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                        txtMaDonMoi.Text = en.ToTrinh.MaDonMoi.ToString();
+                    else
+                        txtMaDonMoi.Text = en.ToTrinh.MaDonMoi.Value.ToString() + "." + en.STT.Value.ToString();
                 }
                 else
-                    if (en.ToTrinh.MaDonTXL != null)
+                    if (en.ToTrinh.MaDon != null)
                     {
-                        _dontxl = _cDonTXL.Get(en.ToTrinh.MaDonTXL.Value);
-                        txtMaDonCu.Text = "TXL" + en.ToTrinh.MaDonTXL.Value.ToString().Insert(en.ToTrinh.MaDonTXL.Value.ToString().Length - 2, "-");
+                        _dontkh = _cDonKH.Get(en.ToTrinh.MaDon.Value);
+                        txtMaDonCu.Text = en.ToTrinh.MaDon.Value.ToString().Insert(en.ToTrinh.MaDon.Value.ToString().Length - 2, "-");
                     }
                     else
-                        if (en.ToTrinh.MaDonTBC != null)
+                        if (en.ToTrinh.MaDonTXL != null)
                         {
-                            _dontbc = _cDonTBC.Get(en.ToTrinh.MaDonTBC.Value);
-                            txtMaDonCu.Text = "TBC" + en.ToTrinh.MaDonTBC.Value.ToString().Insert(en.ToTrinh.MaDonTBC.Value.ToString().Length - 2, "-");
+                            _dontxl = _cDonTXL.Get(en.ToTrinh.MaDonTXL.Value);
+                            txtMaDonCu.Text = "TXL" + en.ToTrinh.MaDonTXL.Value.ToString().Insert(en.ToTrinh.MaDonTXL.Value.ToString().Length - 2, "-");
                         }
+                        else
+                            if (en.ToTrinh.MaDonTBC != null)
+                            {
+                                _dontbc = _cDonTBC.Get(en.ToTrinh.MaDonTBC.Value);
+                                txtMaDonCu.Text = "TBC" + en.ToTrinh.MaDonTBC.Value.ToString().Insert(en.ToTrinh.MaDonTBC.Value.ToString().Length - 2, "-");
+                            }
 
-            txtMaCTTT.Text = en.IDCT.ToString().Insert(en.IDCT.ToString().Length - 2, "-");
-            txtDanhBo.Text = en.DanhBo;
-            txtMLT.Text = en.LoTrinh;
-            txtHoTen.Text = en.HoTen;
-            txtDiaChi.Text = en.DiaChi;
-            txtGiaBieu.Text = en.GiaBieu.Value.ToString();
-            if (en.DinhMuc != null)
-                txtDinhMuc.Text = en.DinhMuc.Value.ToString();
-            if (en.DinhMucHN != null)
-                txtDinhMucHN.Text = en.DinhMucHN.Value.ToString();
+                txtMaCTTT.Text = en.IDCT.ToString().Insert(en.IDCT.ToString().Length - 2, "-");
+                txtDanhBo.Text = en.DanhBo;
+                txtMLT.Text = en.LoTrinh;
+                txtHoTen.Text = en.HoTen;
+                txtDiaChi.Text = en.DiaChi;
+                if (en.GiaBieu != null)
+                txtGiaBieu.Text = en.GiaBieu.Value.ToString();
+                if (en.DinhMuc != null)
+                    txtDinhMuc.Text = en.DinhMuc.Value.ToString();
+                if (en.DinhMucHN != null)
+                    txtDinhMucHN.Text = en.DinhMucHN.Value.ToString();
+            }
+            else
+            {
+                tabControl.SelectTab("tabCongVan");
+                foreach (ToTrinh_ChiTiet_DanhSach item in en.ToTrinh_ChiTiet_DanhSaches.ToList())
+                {
+                    dgvDanhBo.Rows.Insert(dgvDanhBo.RowCount - 1, 1);
+
+                    LinQ.DonTu dt = _cDonTu.get(item.MaDon.Value);
+                    if (dt.DonTu_ChiTiets.Count == 1)
+                        dgvDanhBo["MaDon", dgvDanhBo.RowCount - 2].Value = item.MaDon.Value.ToString() ;
+                    else
+                        dgvDanhBo["MaDon", dgvDanhBo.RowCount - 2].Value = item.MaDon.Value.ToString() + "." + item.STT.Value.ToString();
+                    dgvDanhBo["DanhBo", dgvDanhBo.RowCount - 2].Value = item.DanhBo;
+                    dgvDanhBo["HoTen", dgvDanhBo.RowCount - 2].Value = item.HoTen;
+                    dgvDanhBo["DiaChi", dgvDanhBo.RowCount - 2].Value = item.DiaChi;
+                    dgvDanhBo["MLT", dgvDanhBo.RowCount - 2].Value = item.LoTrinh;
+                    dgvDanhBo["GiaBieu", dgvDanhBo.RowCount - 2].Value = item.GiaBieu.Value.ToString();
+                    if (item.DinhMucHN != null)
+                        dgvDanhBo["DinhMucHN", dgvDanhBo.RowCount - 2].Value = item.DinhMucHN.Value.ToString();
+                    dgvDanhBo["DinhMuc", dgvDanhBo.RowCount - 2].Value = item.DinhMuc.Value.ToString();
+                    dgvDanhBo["Dot", dgvDanhBo.RowCount - 2].Value = item.Dot.Value.ToString();
+                    dgvDanhBo["Ky", dgvDanhBo.RowCount - 2].Value = item.Ky.ToString();
+                    dgvDanhBo["Nam", dgvDanhBo.RowCount - 2].Value = item.Nam.Value.ToString();
+                    dgvDanhBo["Phuong", dgvDanhBo.RowCount - 2].Value = item.Phuong;
+                    dgvDanhBo["Quan", dgvDanhBo.RowCount - 2].Value = item.Quan;
+                    dgvDanhBo["Hieu", dgvDanhBo.RowCount - 2].Value = item.Hieu;
+                    dgvDanhBo["Co", dgvDanhBo.RowCount - 2].Value = item.Co;
+                    dgvDanhBo["SoThan", dgvDanhBo.RowCount - 2].Value = item.SoThan;
+                    dgvDanhBo["MaDonTong", dgvDanhBo.RowCount - 2].Value = item.MaDon.Value.ToString();
+                    dgvDanhBo["STT", dgvDanhBo.RowCount - 2].Value = item.STT.Value.ToString();
+                }
+            }
+
             txtVeViec.Text = en.VeViec;
             txtKinhTrinh.Text = en.KinhTrinh;
             txtNoiDung.Text = en.NoiDung;
@@ -407,43 +445,15 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             cttt.SoThan = _hoadon.SoThanDHN;
                         }
                     }
-                    //else if (tabControl.SelectedTab.Name == "tabCongVan")
-                    //{
-                    //    foreach (DataGridViewRow item in dgvDanhBo.Rows)
-                    //    {
-                    //        if (item.Cells["MaDon"].Value != null || item.Cells["DanhBo"].Value != null)
-                    //        {
-                    //            ToTrinh_ChiTiet_DanhSach ttds = new ToTrinh_ChiTiet_DanhSach();
-                    //            ttds.DanhBo = item.Cells["DanhBo"].Value.ToString();
-                    //            ttds.HoTen = item.Cells["HoTen"].Value.ToString();
-                    //            ttds.DiaChi = item.Cells["DiaChi"].Value.ToString();
-                    //            ttds.LoTrinh = item.Cells["MLT"].Value.ToString();
-                    //            if (item.Cells["GiaBieu"].Value != null)
-                    //                ttds.GiaBieu = int.Parse(item.Cells["GiaBieu"].Value.ToString());
-                    //            if (item.Cells["DinhMuc"].Value != null)
-                    //                ttds.DinhMuc = int.Parse(item.Cells["DinhMuc"].Value.ToString());
-                    //            if (item.Cells["DinhMucHN"].Value != null)
-                    //                ttds.DinhMucHN = int.Parse(item.Cells["DinhMucHN"].Value.ToString());
-                    //            if (item.Cells["Dot"].Value != null)
-                    //                ttds.Dot = int.Parse(item.Cells["Dot"].Value.ToString());
-                    //            if (item.Cells["Ky"].Value != null)
-                    //                ttds.Ky = int.Parse(item.Cells["Ky"].Value.ToString());
-                    //            if (item.Cells["Nam"].Value != null)
-                    //                ttds.Nam = int.Parse(item.Cells["Nam"].Value.ToString());
-                    //            ttds.Quan = item.Cells["Quan"].Value.ToString();
-                    //            ttds.Phuong = item.Cells["Phuong"].Value.ToString();
-                    //            ttds.Hieu = item.Cells["Hieu"].Value.ToString();
-                    //            ttds.Co = item.Cells["Co"].Value.ToString();
-                    //            ttds.SoThan = item.Cells["SoThan"].Value.ToString();
-                    //            if (item.Cells["MaDonTong"].Value != null)
-                    //                ttds.MaDon = int.Parse(item.Cells["MaDonTong"].Value.ToString());
-                    //            if (item.Cells["STT"].Value != null)
-                    //                ttds.STT = int.Parse(item.Cells["STT"].Value.ToString());
-                    //            cttt.ToTrinh_ChiTiet_DanhSaches.Add(ttds);
-                    //            _cTT.Them_ChiTiet_DanhSach(ttds);
-                    //        }
-                    //    }
-                    //}
+                    else
+                        if (tabControl.SelectedTab.Name == "tabCongVan")
+                        {
+                            ToTrinh tt = new ToTrinh();
+                            if (_cTT.Them(tt) == true)
+                            {
+                                cttt.ID = tt.ID;
+                            }
+                        }
 
                     cttt.VeViec = txtVeViec.Text.Trim();
                     cttt.KinhTrinh = txtKinhTrinh.Text.Trim();
@@ -511,7 +521,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                             ttds.CreateBy = CTaiKhoan.MaUser;
                                             ttds.CreateDate = DateTime.Now;
                                             cttt.ToTrinh_ChiTiet_DanhSaches.Add(ttds);
-                                            _cDonTu.Them_LichSu(cttt.CreateDate.Value, "ToTrinh", "Đã Lập Tờ Trình, " + cttt.VeViec, cttt.IDCT, ttds.MaDon.Value, ttds.STT.Value);
+                                            _cTT.SubmitChanges();
+                                            //_cDonTu.Them_LichSu(cttt.CreateDate.Value, "ToTrinh", "Đã Lập Tờ Trình, " + cttt.VeViec, cttt.IDCT, ttds.MaDon.Value, ttds.STT.Value);
                                         }
                                     }
                                     scope.Complete();
@@ -611,49 +622,111 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         {
             if (_cttt != null)
             {
-                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
-
-                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
-                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
-                dr["SoPhieu"] = _cttt.IDCT.ToString().Insert(_cttt.IDCT.ToString().Length - 2, "-");
-                dr["HoTen"] = _cttt.HoTen;
-                dr["DiaChi"] = _cttt.DiaChi;
-                if (!string.IsNullOrEmpty(_cttt.DanhBo) && _cttt.DanhBo.Length == 11)
-                    dr["DanhBo"] = _cttt.DanhBo.Insert(7, " ").Insert(4, " ");
-                dr["LoTrinh"] = _cttt.LoTrinh;
-                dr["GiaBieu"] = _cttt.GiaBieu;
-                if (_cttt.DinhMuc != null)
-                    dr["DinhMuc"] = _cttt.DinhMuc.Value;
-                if (_cttt.DinhMucHN != null)
-                    dr["DinhMucHN"] = _cttt.DinhMucHN.Value;
-
-                dr["VeViec"] = _cttt.VeViec;
-                dr["KinhTrinh"] = _cttt.KinhTrinh;
-                dr["ThongQua"] = _cttt.ThongQua;
-                dr["NoiDung"] = _cttt.NoiDung;
-                dr["NoiNhan"] = _cttt.NoiNhan;
                 BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                    dr["ChucVu"] = "GIÁM ĐỐC";
-                else
-                    dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
-                dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
-                dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                if (tabControl.SelectedTab.Name == "tabTTKH")
+                {
+                    DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+                    dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                    dr["SoPhieu"] = _cttt.IDCT.ToString().Insert(_cttt.IDCT.ToString().Length - 2, "-");
+                    dr["HoTen"] = _cttt.HoTen;
+                    dr["DiaChi"] = _cttt.DiaChi;
+                    if (!string.IsNullOrEmpty(_cttt.DanhBo) && _cttt.DanhBo.Length == 11)
+                        dr["DanhBo"] = _cttt.DanhBo.Insert(7, " ").Insert(4, " ");
+                    dr["LoTrinh"] = _cttt.LoTrinh;
+                    dr["GiaBieu"] = _cttt.GiaBieu;
+                    if (_cttt.DinhMuc != null)
+                        dr["DinhMuc"] = _cttt.DinhMuc.Value;
+                    if (_cttt.DinhMucHN != null)
+                        dr["DinhMucHN"] = _cttt.DinhMucHN.Value;
 
-                ReportDocument rpt;
-                if (_cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
-                {
-                    rpt = new rptToTrinh_ThongQuaPGD();
+                    dr["VeViec"] = _cttt.VeViec;
+                    dr["KinhTrinh"] = _cttt.KinhTrinh;
+                    dr["ThongQua"] = _cttt.ThongQua;
+                    dr["NoiDung"] = _cttt.NoiDung;
+                    dr["NoiNhan"] = _cttt.NoiNhan;
+
+                    if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                        dr["ChucVu"] = "GIÁM ĐỐC";
+                    else
+                        dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
+                    dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
+
+                    dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+
+                    ReportDocument rpt;
+                    if (_cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
+                    {
+                        rpt = new rptToTrinh_ThongQuaPGD();
+                    }
+                    else
+                    {
+                        rpt = new rptToTrinh();
+                    }
+                    rpt.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.Show();
                 }
-                else
+                else if (tabControl.SelectedTab.Name == "tabCongVan")
                 {
-                    rpt = new rptToTrinh();
+                    foreach (ToTrinh_ChiTiet_DanhSach item in _cttt.ToTrinh_ChiTiet_DanhSaches.ToList())
+                    {
+                        DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+
+                        dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+                        dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                        dr["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
+                        dr["VeViec"] = item.ToTrinh_ChiTiet.VeViec;
+                        dr["KinhTrinh"] = item.ToTrinh_ChiTiet.KinhTrinh;
+                        dr["ThongQua"] = item.ToTrinh_ChiTiet.ThongQua;
+                        dr["NoiDung"] = item.ToTrinh_ChiTiet.NoiDung;
+                        dr["NoiNhan"] = item.ToTrinh_ChiTiet.NoiNhan;
+                        if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bảo vệ"))
+                            dr["Luuy"] = "+nắp hộp BV";
+                        else
+                            if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bảo vệ"))
+                                dr["Luuy"] = "+hộp BV";
+                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                            dr["ChucVu"] = "GIÁM ĐỐC";
+                        else
+                            dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
+                        dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
+
+                        dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                        //
+                        DataRow dr2 = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
+
+                        dr2["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                        //dr2["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
+                        if (item.DanhBo.Length == 11)
+                            dr2["DanhBo"] = item.DanhBo.Insert(7, " ").Insert(4, " ");
+                        dr2["HoTen"] = item.HoTen;
+                        dr2["DiaChi"] = item.DiaChi;
+                        dr2["Hieu"] = item.Hieu;
+                        dr2["Co"] = item.Co;
+                        dr2["SoThan"] = item.SoThan;
+                        dr2["Quan"] = item.Quan;
+                        dr2["NoiDung"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
+                        LinQ.DonTu dontu = _cDonTu.get(item.MaDon.Value);
+                        if (dontu.DonTu_ChiTiets.Count == 1)
+                            dr2["NoiNhan"] = item.MaDon.Value;
+                        else
+                            dr2["NoiNhan"] = item.MaDon.Value + "." + item.STT;
+
+                        dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr2);
+                    }
+
+                    rptToTrinh_DCMS_DinhKem rpt2 = new rptToTrinh_DCMS_DinhKem();
+                    rpt2.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
+                    frm2.Show();
+                    rptToTrinh_DCMS rpt1 = new rptToTrinh_DCMS();
+                    rpt1.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm1 = new frmShowBaoCao(rpt1);
+                    frm1.Show();
                 }
-                rpt.SetDataSource(dsBaoCao);
-                frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                frm.Show();
             }
         }
 
@@ -663,12 +736,21 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 ToTrinh_VeViec vv = (ToTrinh_VeViec)cmbVeViec.SelectedItem;
                 txtVeViec.Text = vv.Name;
-                txtNoiDung.Text = vv.NoiDung;
-                if (txtMaDonMoi.Text.Trim() != "")
-                    txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonMoi.Text.Trim() + ")";
-                else
-                    if (txtMaDonCu.Text.Trim() != "")
-                        txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonCu.Text.Trim() + ")";
+
+                if (tabControl.SelectedTab.Name == "tabTTKH")
+                {
+                    txtNoiDung.Text = vv.NoiDung;
+                    if (txtMaDonMoi.Text.Trim() != "")
+                        txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonMoi.Text.Trim() + ")";
+                    else
+                        if (txtMaDonCu.Text.Trim() != "")
+                            txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonCu.Text.Trim() + ")";
+                }
+                else if (tabControl.SelectedTab.Name == "tabCongVan")
+                {
+                    txtNoiNhan.Text = vv.NoiNhan;
+                }
+
             }
             else
             {
@@ -827,7 +909,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
                         dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH;
                         dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB.Value.ToString();
-                        dgvDanhBo["DinhMucHN", e.RowIndex].Value = hoadon.DinhMucHN.Value.ToString();
+                        if (hoadon.DinhMucHN != null)
+                            dgvDanhBo["DinhMucHN", e.RowIndex].Value = hoadon.DinhMucHN.Value.ToString();
                         dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM.Value.ToString();
                         dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.Value.ToString();
                         dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
