@@ -229,7 +229,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         dr["HoTen"] = itemRow["HoTen"];
                         dr["DiaChi"] = itemRow["DiaChi"];
                         dr["NoiDung"] = itemRow["NoiDung"];
-                        dr["GhiChuChuyenKT"] = itemRow["GhiChu"];
+                        dr["GhiChuChuyenKT"] = itemRow["NoiDungKTXM"];
                         dr["NguoiDi"] = itemRow["NguoiDi"];
                         dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
@@ -256,7 +256,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["HoTen"] = itemRow["HoTen"];
                     dr["DiaChi"] = itemRow["DiaChi"];
                     dr["NoiDung"] = itemRow["NoiDung"];
-                    dr["GhiChuChuyenKT"] = itemRow["GhiChu"];
+                    dr["GhiChuChuyenKT"] = itemRow["NoiDungKTXM"];
                     dr["NguoiDi"] = itemRow["NguoiDi"];
                     dr["DaGiaiQuyet"] = itemRow["GiaiQuyet"];
                     dr["NgayGiaiQuyet"] = itemRow["NgayGiaiQuyet"];
