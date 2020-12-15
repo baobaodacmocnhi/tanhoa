@@ -586,7 +586,7 @@ namespace ThuTien.GUI.DongNuoc
                         if (_kqdongnuoc != null)
                             kqdongnuoc = _kqdongnuoc;
                         else
-                            kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
+                            kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.CurrentRow.Cells["MaKQDN"].Value.ToString()));
 
                         if (CNguoiDung.Doi)
                         {
@@ -609,7 +609,7 @@ namespace ThuTien.GUI.DongNuoc
                         else
                         {
                             DateTime date = new DateTime();
-                            DateTime.TryParse(dgvKQDongNuoc.SelectedRows[0].Cells["CreateDate"].Value.ToString(), out date);
+                            DateTime.TryParse(dgvKQDongNuoc.CurrentRow.Cells["CreateDate"].Value.ToString(), out date);
                             if (date.Date != DateTime.Now.Date)
                             {
                                 MessageBox.Show("Chỉ được Xóa trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

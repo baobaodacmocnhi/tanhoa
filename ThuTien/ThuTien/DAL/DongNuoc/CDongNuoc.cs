@@ -430,6 +430,7 @@ namespace ThuTien.DAL.DongNuoc
                             item.KhoaKhac,
                             To = _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == itemtableND.MaTo).TenTo,
                             NhanVien = itemtableND.HoTen,
+                            item.CreateDate,
                         };
             dt.Merge(LINQToDataTable(query));
             var query2 = from item in _db.TT_KQDongNuocs
@@ -469,6 +470,7 @@ namespace ThuTien.DAL.DongNuoc
                              item.KhoaKhac,
                              To = _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == itemtableND.MaTo).TenTo,
                              NhanVien = itemtableND.HoTen,
+                             item.CreateDate,
                          };
             dt.Merge(LINQToDataTable(query2));
             return dt;
@@ -512,6 +514,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.DaKy,
                             itemKQ.NgayKy,
                             itemKQ.Duyet,
+                            itemKQ.CreateDate,
                         };
             dt.Merge(LINQToDataTable(query.Distinct()));
             var query2 = from itemKQ in _db.TT_KQDongNuocs
@@ -549,6 +552,7 @@ namespace ThuTien.DAL.DongNuoc
                              itemKQ.DaKy,
                              itemKQ.NgayKy,
                              itemKQ.Duyet,
+                             itemKQ.CreateDate,
                          };
             dt.Merge(LINQToDataTable(query2.Distinct()));
             return dt;
@@ -589,6 +593,7 @@ namespace ThuTien.DAL.DongNuoc
                             item.DaKy,
                             item.NgayKy,
                             item.Duyet,
+                            item.CreateDate,
                         };
             dt.Merge(LINQToDataTable(query));
             var query2 = from item in _db.TT_KQDongNuocs
@@ -623,6 +628,7 @@ namespace ThuTien.DAL.DongNuoc
                              item.DaKy,
                              item.NgayKy,
                              item.Duyet,
+                             item.CreateDate,
                          };
             dt.Merge(LINQToDataTable(query2));
             return dt;
@@ -712,6 +718,7 @@ namespace ThuTien.DAL.DongNuoc
                             item.DaKy,
                             item.NgayKy,
                             item.Duyet,
+                            item.CreateDate,
                         };
             return LINQToDataTable(query);
         }
@@ -757,6 +764,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.DaKy,
                             itemKQ.NgayKy,
                             itemKQ.Duyet,
+                            itemKQ.CreateDate,
                         };
             return LINQToDataTable(query.Distinct());
         }
@@ -798,6 +806,7 @@ namespace ThuTien.DAL.DongNuoc
                             item.DaKy,
                             item.NgayKy,
                             item.Duyet,
+                            item.CreateDate,
                         };
             return LINQToDataTable(query);
         }
