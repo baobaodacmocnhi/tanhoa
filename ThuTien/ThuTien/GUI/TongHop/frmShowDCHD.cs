@@ -177,6 +177,11 @@ namespace ThuTien.GUI.TongHop
                         MessageBox.Show("Hóa đơn đã đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(_SoHoaDon))
+                    {
+                        MessageBox.Show("Hóa Đơn này đã ĐCHĐ Tiền Dư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     try
                     {
                         _cDCHD.BeginTransaction();
@@ -476,6 +481,11 @@ namespace ThuTien.GUI.TongHop
                     if (_cTamThu.CheckExist(_SoHoaDon, out loai))
                     {
                         MessageBox.Show("Hóa Đơn này đã Tạm Thu(" + loai + ")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(_SoHoaDon))
+                    {
+                        MessageBox.Show("Hóa Đơn này đã ĐCHĐ Tiền Dư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     if (_dchd != null)
