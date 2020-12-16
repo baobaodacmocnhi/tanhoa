@@ -984,6 +984,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _ctdchd.KhuCongNghiep = false;
                             _ctdchd.TyLeKhuCongNghiep = null;
                         }
+                        if (chkHoNgheo.Checked)
+                        {
+                            if (string.IsNullOrEmpty(ThongTin) == true)
+                                ThongTin += "Hộ Nghèo";
+                            else
+                                ThongTin += ". Hộ Nghèo";
+                            _ctdchd.HoNgheo = true;
+                        }
+                        //
+                        if (_ctdchd.HoTen_BD != "" && _ctdchd.HoTen_BD != _ctdchd.HoTen)
+                        {
+                            if (string.IsNullOrEmpty(ThongTin) == true)
+                                ThongTin += "Họ Tên";
+                            else
+                                ThongTin += ". Họ Tên";
+                        }
+                        if (_ctdchd.DiaChi_BD != "" && _ctdchd.DiaChi_BD != _ctdchd.DiaChi)
+                        {
+                            if (string.IsNullOrEmpty(ThongTin) == true)
+                                ThongTin += "Địa Chỉ";
+                            else
+                                ThongTin += ". Địa Chỉ";
+                        }
                         _ctdchd.ApGiaNuocCu = chkApGiaNuocCu.Checked;
                         _ctdchd.ThongTin = ThongTin;
                         _ctdchd.LyDoDieuChinh = txtLyDoDieuChinh.Text.Trim();

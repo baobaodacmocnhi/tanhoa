@@ -2000,7 +2000,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 string[] HieuLucKys = ctdcbd.HieuLucKy.Split('/');
                                 GiaNuoc2 gn = _cGiaNuoc.getGiaNuoc(int.Parse(HieuLucKys[1]));
                                 dr["TienNuocSH"] = gn.SHTM;
-                                dr["TienNuocSHVuot"] = gn.KDDV;
+                                dr["TienNuocSHVuot1"] = gn.SHVM1;
+                                dr["TienNuocSHVuot2"] = gn.SHVM2;
+                                dr["TienNuocKDDV"] = gn.KDDV;
                                 if (ctdcbd.DCBD.MaDon != null)
                                     dr["MaDon"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
                                 else
@@ -2023,21 +2025,40 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
-                                rptThuBaoDCBD rpt = new rptThuBaoDCBD();
-                                rpt.SetDataSource(dsBaoCao);
-                                //frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                                //frm.Show();
-                                printDialog.AllowSomePages = true;
-                                printDialog.ShowHelp = true;
+                                if (ctdcbd.GiaBieu == 68 || ctdcbd.GiaBieu_BD == 68)
+                                {
+                                    rptThuBaoDCBD_ChungCu rpt = new rptThuBaoDCBD_ChungCu();
+                                    rpt.SetDataSource(dsBaoCao);
+                                    //frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                                    //frm.Show();
+                                    printDialog.AllowSomePages = true;
+                                    printDialog.ShowHelp = true;
 
-                                //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
-                                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 0,0);
-                                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
-                                rpt.Clone();
-                                rpt.Dispose();
+                                    //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                    //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
+                                    rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                    //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 0,0);
+                                    rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                    rpt.Clone();
+                                    rpt.Dispose();
+                                }
+                                else
+                                {
+                                    rptThuBaoDCBD rpt = new rptThuBaoDCBD();
+                                    rpt.SetDataSource(dsBaoCao);
+                                    //frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                                    //frm.Show();
+                                    printDialog.AllowSomePages = true;
+                                    printDialog.ShowHelp = true;
 
+                                    //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                    //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
+                                    rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                    //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 0,0);
+                                    rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                    rpt.Clone();
+                                    rpt.Dispose();
+                                }
                             }
                         }
                 }

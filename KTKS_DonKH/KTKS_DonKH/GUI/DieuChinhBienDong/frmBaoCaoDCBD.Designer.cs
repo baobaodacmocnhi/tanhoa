@@ -94,6 +94,7 @@
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.btnHoNgheo = new System.Windows.Forms.Button();
+            this.chkChiLayTrongKy_ThongKeDC = new System.Windows.Forms.CheckBox();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox_DSChungCu.SuspendLayout();
             this.groupBox_ThongKeDC.SuspendLayout();
@@ -323,6 +324,7 @@
             // 
             // groupBox_ThongKeDC
             // 
+            this.groupBox_ThongKeDC.Controls.Add(this.chkChiLayTrongKy_ThongKeDC);
             this.groupBox_ThongKeDC.Controls.Add(this.cmbPhuong_ThongKeDC);
             this.groupBox_ThongKeDC.Controls.Add(this.label5);
             this.groupBox_ThongKeDC.Controls.Add(this.cmbQuan_ThongKeDC);
@@ -333,7 +335,7 @@
             this.groupBox_ThongKeDC.Controls.Add(this.btnBaoCao_ThongKeDC);
             this.groupBox_ThongKeDC.Location = new System.Drawing.Point(12, 195);
             this.groupBox_ThongKeDC.Name = "groupBox_ThongKeDC";
-            this.groupBox_ThongKeDC.Size = new System.Drawing.Size(276, 149);
+            this.groupBox_ThongKeDC.Size = new System.Drawing.Size(318, 149);
             this.groupBox_ThongKeDC.TabIndex = 22;
             this.groupBox_ThongKeDC.TabStop = false;
             this.groupBox_ThongKeDC.Text = "Thống Kê Điều Chỉnh";
@@ -438,7 +440,7 @@
             // 
             // btnBaoCao_ThongKeDC
             // 
-            this.btnBaoCao_ThongKeDC.Location = new System.Drawing.Point(187, 65);
+            this.btnBaoCao_ThongKeDC.Location = new System.Drawing.Point(187, 91);
             this.btnBaoCao_ThongKeDC.Name = "btnBaoCao_ThongKeDC";
             this.btnBaoCao_ThongKeDC.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_ThongKeDC.TabIndex = 12;
@@ -459,7 +461,7 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.btnXuatExcel_DSDCBD);
-            this.groupBox1.Location = new System.Drawing.Point(295, 195);
+            this.groupBox1.Location = new System.Drawing.Point(336, 195);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(276, 176);
             this.groupBox1.TabIndex = 23;
@@ -615,7 +617,7 @@
             // 
             this.groupBox2.Controls.Add(this.panel3);
             this.groupBox2.Controls.Add(this.btnXuatExcel_ThongKeDMNT);
-            this.groupBox2.Location = new System.Drawing.Point(577, 195);
+            this.groupBox2.Location = new System.Drawing.Point(618, 195);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(276, 90);
             this.groupBox2.TabIndex = 24;
@@ -688,7 +690,7 @@
             this.groupBox3.Controls.Add(this.cmbNam);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.btnHoNgheo);
-            this.groupBox3.Location = new System.Drawing.Point(859, 195);
+            this.groupBox3.Location = new System.Drawing.Point(900, 195);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(239, 90);
             this.groupBox3.TabIndex = 25;
@@ -781,6 +783,16 @@
             this.btnHoNgheo.Text = "Xuất Excel";
             this.btnHoNgheo.UseVisualStyleBackColor = true;
             this.btnHoNgheo.Click += new System.EventHandler(this.btnHoNgheo_Click);
+            // 
+            // chkChiLayTrongKy_ThongKeDC
+            // 
+            this.chkChiLayTrongKy_ThongKeDC.AutoSize = true;
+            this.chkChiLayTrongKy_ThongKeDC.Location = new System.Drawing.Point(187, 65);
+            this.chkChiLayTrongKy_ThongKeDC.Name = "chkChiLayTrongKy_ThongKeDC";
+            this.chkChiLayTrongKy_ThongKeDC.Size = new System.Drawing.Size(128, 20);
+            this.chkChiLayTrongKy_ThongKeDC.TabIndex = 24;
+            this.chkChiLayTrongKy_ThongKeDC.Text = "Chỉ Lấy Trong Kỳ";
+            this.chkChiLayTrongKy_ThongKeDC.UseVisualStyleBackColor = true;
             // 
             // frmBaoCaoDCBD
             // 
@@ -903,5 +915,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox cmbToKy;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox chkChiLayTrongKy_ThongKeDC;
     }
 }
