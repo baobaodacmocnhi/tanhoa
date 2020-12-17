@@ -130,5 +130,10 @@ namespace KTKS_DonKH.DAL.DonTu
         {
             return LINQToDataTable(db.NhomDon_ChiTiets.ToList());
         }
+
+        public DataTable getDS()
+        {
+            return LINQToDataTable(db.NhomDons.Where(item => item.DieuChinh == true || item.KhieuNai == true || item.SuCo == true || item.QuanLy == true).OrderBy(item => item.Name).ToList());
+        }
     }
 }

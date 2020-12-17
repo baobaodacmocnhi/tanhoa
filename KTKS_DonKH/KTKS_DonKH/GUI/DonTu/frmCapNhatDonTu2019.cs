@@ -809,7 +809,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 }
         }
 
-        private void dgvLichSuDonTu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvLichSuDonTu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -818,9 +818,13 @@ namespace KTKS_DonKH.GUI.DonTu
             }
             catch (Exception)
             {
-
-                throw;
+                
             }
+        }
+
+        private void dgvLichSuDonTu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
         }
 
         private void dgvDanhBo_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -970,6 +974,30 @@ namespace KTKS_DonKH.GUI.DonTu
                         }
             }
         }
+
+        private void dgvLichSuDonTu_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (dgvLichSuDonTu.Columns[e.ColumnIndex].Name == "Huy")
+                    {
+                        _dontu_LichSu.Huy = bool.Parse(dgvLichSuDonTu["Huy", e.RowIndex].Value.ToString());
+                        _dontu_LichSu.NgayHuy = DateTime.Now;
+                        _cDonTu.SubmitChanges();
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+       
 
     }
 }

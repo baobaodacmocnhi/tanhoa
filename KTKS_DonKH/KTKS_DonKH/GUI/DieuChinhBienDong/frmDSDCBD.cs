@@ -2003,6 +2003,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["TienNuocSHVuot1"] = gn.SHVM1;
                                 dr["TienNuocSHVuot2"] = gn.SHVM2;
                                 dr["TienNuocKDDV"] = gn.KDDV;
+
+                                if (ctdcbd.SH_BD != "")
+                                    dr["SH"] = ctdcbd.SH_BD;
+                                else
+                                    if (ctdcbd.SH != "")
+                                        dr["SH"] = ctdcbd.SH;
+
+                                if (ctdcbd.DV_BD != "")
+                                    dr["DV"] = ctdcbd.DV_BD;
+                                else
+                                    if (ctdcbd.DV != "")
+                                        dr["DV"] = ctdcbd.DV;
+
                                 if (ctdcbd.DCBD.MaDon != null)
                                     dr["MaDon"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
                                 else
@@ -2029,18 +2042,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 {
                                     rptThuBaoDCBD_ChungCu rpt = new rptThuBaoDCBD_ChungCu();
                                     rpt.SetDataSource(dsBaoCao);
-                                    //frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                                    //frm.Show();
-                                    printDialog.AllowSomePages = true;
-                                    printDialog.ShowHelp = true;
+                                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                                    frm.Show();
+                                    //printDialog.AllowSomePages = true;
+                                    //printDialog.ShowHelp = true;
 
-                                    //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                    //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
-                                    rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                    //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 0,0);
-                                    rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
-                                    rpt.Clone();
-                                    rpt.Dispose();
+                                    ////rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                    ////rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
+                                    //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                    ////rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 0,0);
+                                    //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                    //rpt.Clone();
+                                    //rpt.Dispose();
                                 }
                                 else
                                 {

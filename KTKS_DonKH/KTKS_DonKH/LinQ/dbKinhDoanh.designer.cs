@@ -29087,6 +29087,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _NgayNhan;
 		
+		private bool _Huy;
+		
+		private System.Nullable<System.DateTime> _NgayHuy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -29127,6 +29131,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnNhanChanged();
     partial void OnNgayNhanChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayNhanChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
+    partial void OnNgayHuyChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -29439,6 +29447,46 @@ namespace KTKS_DonKH.LinQ
 					this._NgayNhan = value;
 					this.SendPropertyChanged("NgayNhan");
 					this.OnNgayNhanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayHuy", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayHuy
+		{
+			get
+			{
+				return this._NgayHuy;
+			}
+			set
+			{
+				if ((this._NgayHuy != value))
+				{
+					this.OnNgayHuyChanging(value);
+					this.SendPropertyChanging();
+					this._NgayHuy = value;
+					this.SendPropertyChanged("NgayHuy");
+					this.OnNgayHuyChanged();
 				}
 			}
 		}

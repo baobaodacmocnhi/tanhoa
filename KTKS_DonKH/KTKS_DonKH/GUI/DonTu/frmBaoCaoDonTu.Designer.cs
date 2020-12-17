@@ -43,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnInDSTong_DSChuyenKTXM = new System.Windows.Forms.Button();
             this.cmbNhanVienKiemTra = new System.Windows.Forms.ComboBox();
             this.label32 = new System.Windows.Forms.Label();
             this.chkChuaKT_DSChuyenKTXM = new System.Windows.Forms.CheckBox();
@@ -90,7 +91,8 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.btnImport = new System.Windows.Forms.Button();
-            this.btnInDSTong_DSChuyenKTXM = new System.Windows.Forms.Button();
+            this.cmbNoiDungThuongVu_DSChuyenKTXM = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian_LichSuChuyenDon.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -253,6 +255,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cmbNoiDungThuongVu_DSChuyenKTXM);
+            this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.btnInDSTong_DSChuyenKTXM);
             this.groupBox3.Controls.Add(this.cmbNhanVienKiemTra);
             this.groupBox3.Controls.Add(this.label32);
@@ -265,10 +269,20 @@
             this.groupBox3.Controls.Add(this.panel_KhoangThoiGian_DSChuyenKTXM);
             this.groupBox3.Location = new System.Drawing.Point(12, 107);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(778, 89);
+            this.groupBox3.Size = new System.Drawing.Size(935, 89);
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh Sách Chuyển KTXM (ngày chuyển)";
+            // 
+            // btnInDSTong_DSChuyenKTXM
+            // 
+            this.btnInDSTong_DSChuyenKTXM.Location = new System.Drawing.Point(835, 37);
+            this.btnInDSTong_DSChuyenKTXM.Name = "btnInDSTong_DSChuyenKTXM";
+            this.btnInDSTong_DSChuyenKTXM.Size = new System.Drawing.Size(83, 25);
+            this.btnInDSTong_DSChuyenKTXM.TabIndex = 42;
+            this.btnInDSTong_DSChuyenKTXM.Text = "In DS Tổng";
+            this.btnInDSTong_DSChuyenKTXM.UseVisualStyleBackColor = true;
+            this.btnInDSTong_DSChuyenKTXM.Click += new System.EventHandler(this.btnInDSTong_DSChuyenKTXM_Click);
             // 
             // cmbNhanVienKiemTra
             // 
@@ -300,7 +314,7 @@
             // 
             // btnBaoCao_DSChuyenKTXM
             // 
-            this.btnBaoCao_DSChuyenKTXM.Location = new System.Drawing.Point(598, 37);
+            this.btnBaoCao_DSChuyenKTXM.Location = new System.Drawing.Point(754, 37);
             this.btnBaoCao_DSChuyenKTXM.Name = "btnBaoCao_DSChuyenKTXM";
             this.btnBaoCao_DSChuyenKTXM.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_DSChuyenKTXM.TabIndex = 37;
@@ -735,22 +749,30 @@
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
-            // btnInDSTong_DSChuyenKTXM
+            // cmbNoiDungThuongVu_DSChuyenKTXM
             // 
-            this.btnInDSTong_DSChuyenKTXM.Location = new System.Drawing.Point(679, 37);
-            this.btnInDSTong_DSChuyenKTXM.Name = "btnInDSTong_DSChuyenKTXM";
-            this.btnInDSTong_DSChuyenKTXM.Size = new System.Drawing.Size(83, 25);
-            this.btnInDSTong_DSChuyenKTXM.TabIndex = 42;
-            this.btnInDSTong_DSChuyenKTXM.Text = "In DS Tổng";
-            this.btnInDSTong_DSChuyenKTXM.UseVisualStyleBackColor = true;
-            this.btnInDSTong_DSChuyenKTXM.Click += new System.EventHandler(this.btnInDSTong_DSChuyenKTXM_Click);
+            this.cmbNoiDungThuongVu_DSChuyenKTXM.FormattingEnabled = true;
+            this.cmbNoiDungThuongVu_DSChuyenKTXM.Location = new System.Drawing.Point(598, 37);
+            this.cmbNoiDungThuongVu_DSChuyenKTXM.MaxDropDownItems = 10;
+            this.cmbNoiDungThuongVu_DSChuyenKTXM.Name = "cmbNoiDungThuongVu_DSChuyenKTXM";
+            this.cmbNoiDungThuongVu_DSChuyenKTXM.Size = new System.Drawing.Size(150, 24);
+            this.cmbNoiDungThuongVu_DSChuyenKTXM.TabIndex = 44;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(598, 18);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(132, 16);
+            this.label19.TabIndex = 43;
+            this.label19.Text = "Nội Dung Thương Vụ";
             // 
             // frmBaoCaoDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(928, 591);
+            this.ClientSize = new System.Drawing.Size(1308, 591);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -852,5 +874,7 @@
         private System.Windows.Forms.ComboBox cmbNoiDungThuongVu;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnInDSTong_DSChuyenKTXM;
+        private System.Windows.Forms.ComboBox cmbNoiDungThuongVu_DSChuyenKTXM;
+        private System.Windows.Forms.Label label19;
     }
 }

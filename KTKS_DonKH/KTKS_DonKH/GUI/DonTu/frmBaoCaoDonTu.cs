@@ -27,6 +27,7 @@ namespace KTKS_DonKH.GUI.DonTu
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CThuTien _cThuTien = new CThuTien();
         CDHN _cDocSo = new CDHN();
+        CNhomDon _cNhomDon = new CNhomDon();
 
         public frmBaoCaoDonTu()
         {
@@ -69,6 +70,18 @@ namespace KTKS_DonKH.GUI.DonTu
                 cmbNhanVienKiemTra.DataSource = dt;
                 cmbNhanVienKiemTra.ValueMember = "MaU";
                 cmbNhanVienKiemTra.DisplayMember = "HoTen";
+            }
+
+            DataTable dt2 = new DataTable();
+            dt2 = _cNhomDon.getDS();
+            if (dt2 != null)
+            {
+                DataRow dr = dt2.NewRow();
+                dr["Name"] = "Tất Cả";
+                dt2.Rows.InsertAt(dr, 0);
+                cmbNoiDungThuongVu_DSChuyenKTXM.DataSource = dt2;
+                cmbNoiDungThuongVu_DSChuyenKTXM.ValueMember = "Name";
+                cmbNoiDungThuongVu_DSChuyenKTXM.DisplayMember = "Name";
             }
         }
 
@@ -193,16 +206,28 @@ namespace KTKS_DonKH.GUI.DonTu
             switch (cmbTimTheo_DSChuyenKTXM.SelectedItem.ToString())
             {
                 case "Ngày":
-                    if (CTaiKhoan.TruongPhong==true||cmbNhanVienKiemTra.SelectedIndex == 0)
-                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                    if (cmbNhanVienKiemTra.SelectedIndex == 0)
+                        if (cmbNoiDungThuongVu_DSChuyenKTXM.SelectedIndex == 0)
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                        else
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, cmbNoiDungThuongVu_DSChuyenKTXM.SelectedValue.ToString(), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                     else
-                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                        if (cmbNoiDungThuongVu_DSChuyenKTXM.SelectedIndex == 0)
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                        else
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), cmbNoiDungThuongVu_DSChuyenKTXM.SelectedValue.ToString(), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                     break;
                 case "Số Công Văn":
-                    if (CTaiKhoan.TruongPhong == true || cmbNhanVienKiemTra.SelectedIndex == 0)
-                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
+                    if (cmbNhanVienKiemTra.SelectedIndex == 0)
+                        if (cmbNoiDungThuongVu_DSChuyenKTXM.SelectedIndex == 0)
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
+                        else
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, cmbNoiDungThuongVu_DSChuyenKTXM.SelectedValue.ToString(), txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
                     else
-                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
+                        if (cmbNoiDungThuongVu_DSChuyenKTXM.SelectedIndex == 0)
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
+                        else
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), cmbNoiDungThuongVu_DSChuyenKTXM.SelectedValue.ToString(), txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
                     break;
             }
 
@@ -281,15 +306,27 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 case "Ngày":
                     if (CTaiKhoan.TruongPhong == true || cmbNhanVienKiemTra.SelectedIndex == 0)
-                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                        if (cmbNoiDungThuongVu_DSChuyenKTXM.SelectedIndex == 0)
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                        else
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, cmbNoiDungThuongVu_DSChuyenKTXM.SelectedValue.ToString(), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                     else
-                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                        if (cmbNoiDungThuongVu_DSChuyenKTXM.SelectedIndex == 0)
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                        else
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), cmbNoiDungThuongVu_DSChuyenKTXM.SelectedValue.ToString(), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                     break;
                 case "Số Công Văn":
                     if (CTaiKhoan.TruongPhong == true || cmbNhanVienKiemTra.SelectedIndex == 0)
-                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
+                        if (cmbNoiDungThuongVu_DSChuyenKTXM.SelectedIndex == 0)
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
+                        else
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, cmbNoiDungThuongVu_DSChuyenKTXM.SelectedValue.ToString(), txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
                     else
-                        dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
+                        if (cmbNoiDungThuongVu_DSChuyenKTXM.SelectedIndex == 0)
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
+                        else
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), cmbNoiDungThuongVu_DSChuyenKTXM.SelectedValue.ToString(), txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
                     break;
             }
 
@@ -316,7 +353,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         dr["HoTen"] = itemRow["HoTen"];
                         dr["DiaChi"] = itemRow["DiaChi"];
                         dr["NoiDung"] = itemRow["NoiDung"];
-                        dr["GhiChuChuyenKT"] = itemRow["GhiChu"];
+                        dr["GhiChuChuyenKT"] = itemRow["NoiDungKTXM"];
                         dr["NguoiDi"] = itemRow["NguoiDi"];
                         dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
@@ -343,7 +380,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["HoTen"] = itemRow["HoTen"];
                     dr["DiaChi"] = itemRow["DiaChi"];
                     dr["NoiDung"] = itemRow["NoiDung"];
-                    dr["GhiChuChuyenKT"] = itemRow["GhiChu"];
+                    dr["GhiChuChuyenKT"] = itemRow["NoiDungKTXM"];
                     dr["NguoiDi"] = itemRow["NguoiDi"];
                     dr["DaGiaiQuyet"] = itemRow["GiaiQuyet"];
                     dr["NgayGiaiQuyet"] = itemRow["NgayGiaiQuyet"];
