@@ -1960,7 +1960,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 bcct.TrangThaiBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))) else null end,"
                         + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
                         + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
-                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5";
+                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5 and dtls.Huy=0";
             switch (KyHieuTo)
             {
                 case "ToGD":
@@ -1994,7 +1994,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 bcct.TrangThaiBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))) else null end,"
                         + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
                         + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
-                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5";
+                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5 and dtls.Huy=0";
             switch (KyHieuTo)
             {
                 case "ToGD":
@@ -2029,7 +2029,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 bcct.TrangThaiBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))) else null end,"
                         + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
                         + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
-                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5";
+                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5 and dtls.Huy=0";
             switch (KyHieuTo)
             {
                 case "ToGD":
@@ -2063,7 +2063,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 bcct.TrangThaiBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))) else null end,"
                         + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
                         + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
-                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5";
+                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5 and dtls.Huy=0";
             switch (KyHieuTo)
             {
                 case "ToGD":
@@ -2098,7 +2098,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 bcct.TrangThaiBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))) else null end,"
                         + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
                         + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
-                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5";
+                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5 and dtls.Huy=0";
             switch (KyHieuTo)
             {
                 case "ToGD":
@@ -2132,7 +2132,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 bcct.TrangThaiBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))) else null end,"
                         + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
                         + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
-                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5";
+                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5 and dtls.Huy=0";
             switch (KyHieuTo)
             {
                 case "ToGD":
@@ -2167,7 +2167,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 bcct.TrangThaiBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))) else null end,"
                         + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
                         + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
-                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5";
+                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5 and dtls.Huy=0";
             switch (KyHieuTo)
             {
                 case "ToGD":
@@ -2201,7 +2201,7 @@ namespace KTKS_DonKH.DAL.DonTu
                         + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 bcct.TrangThaiBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and (bcct.NgayBC_Truoc_NgayGiao=1 or cast(bcct.NgayBC as date)>=cast(dtls.NgayChuyen as date))) else null end,"
                         + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
                         + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
-                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5";
+                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=5 and dtls.Huy=0";
             switch (KyHieuTo)
             {
                 case "ToGD":

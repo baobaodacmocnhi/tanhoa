@@ -206,7 +206,7 @@ namespace KTKS_DonKH.GUI.DonTu
             switch (cmbTimTheo_DSChuyenKTXM.SelectedItem.ToString())
             {
                 case "Ngày":
-                    if (cmbNhanVienKiemTra.SelectedIndex == 0)
+                    if (CTaiKhoan.TruongPhong == true || cmbNhanVienKiemTra.SelectedIndex == 0)
                         if (cmbNoiDungThuongVu_DSChuyenKTXM.SelectedIndex == 0)
                             dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                         else
@@ -218,7 +218,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), cmbNoiDungThuongVu_DSChuyenKTXM.SelectedValue.ToString(), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                     break;
                 case "Số Công Văn":
-                    if (cmbNhanVienKiemTra.SelectedIndex == 0)
+                    if (CTaiKhoan.TruongPhong == true || cmbNhanVienKiemTra.SelectedIndex == 0)
                         if (cmbNoiDungThuongVu_DSChuyenKTXM.SelectedIndex == 0)
                             dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
                         else
