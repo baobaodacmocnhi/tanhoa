@@ -86,6 +86,7 @@
             this.mnuDongNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTBDongNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKQDongNuoc = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPhiMoNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuVanTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuThongKeDongMoNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPhoiHop = new System.Windows.Forms.ToolStripMenuItem();
@@ -140,7 +141,6 @@
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.mnuPhiMoNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -608,6 +608,13 @@
             this.mnuKQDongNuoc.Text = "Kết Quả Đóng Nước";
             this.mnuKQDongNuoc.Click += new System.EventHandler(this.mnuKQDongNuoc_Click);
             // 
+            // mnuPhiMoNuoc
+            // 
+            this.mnuPhiMoNuoc.Name = "mnuPhiMoNuoc";
+            this.mnuPhiMoNuoc.Size = new System.Drawing.Size(211, 22);
+            this.mnuPhiMoNuoc.Text = "Phí Mở Nước";
+            this.mnuPhiMoNuoc.Click += new System.EventHandler(this.mnuPhiMoNuoc_Click);
+            // 
             // mnuVanTu
             // 
             this.mnuVanTu.Name = "mnuVanTu";
@@ -1028,12 +1035,6 @@
             // 
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // mnuPhiMoNuoc
-            // 
-            this.mnuPhiMoNuoc.Name = "mnuPhiMoNuoc";
-            this.mnuPhiMoNuoc.Size = new System.Drawing.Size(211, 22);
-            this.mnuPhiMoNuoc.Text = "Phí Mở Nước";
             // 
             // frmMain
             // 

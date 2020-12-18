@@ -102,16 +102,16 @@ namespace ThuTien.GUI.DongNuoc
                 {
                     DataRow dr = dsBaoCao.Tables["KQDongNuoc"].NewRow();
                     dr["NhanVien"] = CNguoiDung.HoTen;
-                    dr["STT"] = item.Cells["MaKQDN"];
-                    dr["DanhBo"] = item.Cells["DanhBo"];
-                    dr["HoTen"] = item.Cells["HoTen"];
-                    dr["DiaChi"] = item.Cells["DiaChi"];
-                    dr["Co"] = item.Cells["Co"];
-                    dr["Hieu"] = item.Cells["Hieu"];
-                    dr["SoThan"] = item.Cells["SoThan"];
-                    dr["ChiSo"] = item.Cells["ChiSoDN"];
-                    dr["GhiChu"] = item.Cells["LyDo"];
-                    dr["PhiMoNuoc"] = item.Cells["PhiMoNuoc"];
+                    dr["STT"] = item.Cells["MaKQDN"].Value;
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value;
+                    dr["HoTen"] = item.Cells["HoTen"].Value;
+                    dr["DiaChi"] = item.Cells["DiaChi"].Value;
+                    dr["Co"] = item.Cells["Co"].Value;
+                    dr["Hieu"] = item.Cells["Hieu"].Value;
+                    dr["SoThan"] = item.Cells["SoThan"].Value;
+                    dr["ChiSo"] = item.Cells["ChiSoDN"].Value;
+                    dr["GhiChu"] = item.Cells["LyDo"].Value;
+                    dr["PhiMoNuoc"] = item.Cells["PhiMoNuoc"].Value;
 
                     dsBaoCao.Tables["KQDongNuoc"].Rows.Add(dr);
                 }

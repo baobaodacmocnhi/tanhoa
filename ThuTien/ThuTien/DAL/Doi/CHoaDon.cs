@@ -361,14 +361,19 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public bool CheckExist(string DanhBo, int Nam, int Ky, int Dot)
-        {
-            return _db.HOADONs.Any(item => item.DANHBA == DanhBo && item.NAM == Nam && item.KY == Ky && item.DOT == Dot);
-        }
+        //public bool CheckExist(string DanhBo, int Nam, int Ky, int Dot)
+        //{
+        //    return _db.HOADONs.Any(item => item.DANHBA == DanhBo && item.NAM == Nam && item.KY == Ky && item.DOT == Dot);
+        //}
 
         public bool CheckExist(string SoHoaDon)
         {
             return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon);
+        }
+
+        public bool CheckExist_HD0(string DanhBo, int Nam, int Ky)
+        {
+            return _db.HOADONs.Any(item => item.DANHBA == DanhBo && item.NAM == Nam && item.KY == Ky && item.TIEUTHU == 0);
         }
 
         /// <summary>
