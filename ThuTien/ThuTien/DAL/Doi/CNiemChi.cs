@@ -8,7 +8,7 @@ using System.Data;
 
 namespace ThuTien.DAL.Doi
 {
-    class CNiemChi:CDAL
+    class CNiemChi : CDAL
     {
         public bool Them(TT_NiemChi en)
         {
@@ -95,7 +95,7 @@ namespace ThuTien.DAL.Doi
 
         public bool checkGiao(int FromID, int ToID)
         {
-            return _db.TT_NiemChis.Any(item => item.ID>=FromID && item.ID<=ToID && item.MaNV!=null);
+            return _db.TT_NiemChis.Any(item => item.ID >= FromID && item.ID <= ToID && item.MaNV != null);
         }
 
         public bool checkGiao(DateTime CreateDate)
@@ -155,11 +155,11 @@ namespace ThuTien.DAL.Doi
                         group item by item.CreateDate.Value.Date into itemGroup
                         select new
                         {
-                            CreateDate=itemGroup.Key,
+                            CreateDate = itemGroup.Key,
                             TuSo = itemGroup.Min(groupItem => groupItem.ID),
                             DenSo = itemGroup.Max(groupItem => groupItem.ID),
                             SLNhap = itemGroup.Count(),
-                            SLSuDung = itemGroup.Count(groupItem => groupItem.SuDung==true),
+                            SLSuDung = itemGroup.Count(groupItem => groupItem.SuDung == true),
                             SLHuHong = itemGroup.Count(groupItem => groupItem.HuHong == true),
                             SLTon = itemGroup.Count() - itemGroup.Count(groupItem => groupItem.SuDung == true) - itemGroup.Count(groupItem => groupItem.HuHong == true),
                         };
@@ -170,7 +170,7 @@ namespace ThuTien.DAL.Doi
         {
             var query = from item in _db.TT_NiemChis
                         where item.CreateDate.Value.Date == CreateDate.Date
-                        group item by new { item.CreateDate.Value.Date ,item.MaTo,item.MaNV} into itemGroup
+                        group item by new { item.CreateDate.Value.Date, item.MaTo, item.MaNV } into itemGroup
                         select new
                         {
                             itemGroup.Key.MaTo,
@@ -191,7 +191,22 @@ namespace ThuTien.DAL.Doi
         public DataTable getDSHuHong()
         {
             var query = from item in _db.TT_NiemChis
-                        where item.HuHong==true
+                        where item.HuHong == true
+                        select new
+                        {
+                            item.MaTo,
+                            TenTo = _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == item.MaTo).TenTo,
+                            item.MaNV,
+                            HoTen = _db.TT_NguoiDungs.SingleOrDefault(itemT => itemT.MaND == item.MaNV).HoTen,
+                            item.ID,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDSHuHong_ChuaQyetToan()
+        {
+            var query = from item in _db.TT_NiemChis
+                        where item.HuHong == true && item.QuyetToan == false
                         select new
                         {
                             item.MaTo,
@@ -212,6 +227,11 @@ namespace ThuTien.DAL.Doi
                 str += item["ID"].ToString() + "\r\n";
             }
             return str;
+        }
+
+        public int countHuHong_ChuQuyetToan()
+        {
+            return _db.TT_NiemChis.Count(item => item.HuHong == true && item.QuyetToan == false);
         }
 
     }

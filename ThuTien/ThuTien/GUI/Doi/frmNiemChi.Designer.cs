@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtSLHuHong_Nhap = new System.Windows.Forms.TextBox();
             this.txtSLTon_Nhap = new System.Windows.Forms.TextBox();
@@ -91,6 +91,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cmbTo_Giao = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnChotQuyetToan_HuHong = new System.Windows.Forms.Button();
+            this.chkXemAll_HuHong = new System.Windows.Forms.CheckBox();
             this.btnXoa_HuHong = new System.Windows.Forms.Button();
             this.picNiemChi_HuHong = new System.Windows.Forms.PictureBox();
             this.btnChonFile_HuHong = new System.Windows.Forms.Button();
@@ -103,6 +105,7 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_HuHong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuyetToan_HuHong = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiemChi_Nhap)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -128,37 +131,37 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtTuSo_Nhap);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(1, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(513, 633);
+            this.groupBox1.Size = new System.Drawing.Size(496, 633);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nhập Kho";
             // 
             // txtSLHuHong_Nhap
             // 
-            this.txtSLHuHong_Nhap.Location = new System.Drawing.Point(388, 604);
+            this.txtSLHuHong_Nhap.Location = new System.Drawing.Point(370, 604);
             this.txtSLHuHong_Nhap.Name = "txtSLHuHong_Nhap";
             this.txtSLHuHong_Nhap.Size = new System.Drawing.Size(50, 20);
             this.txtSLHuHong_Nhap.TabIndex = 13;
             // 
             // txtSLTon_Nhap
             // 
-            this.txtSLTon_Nhap.Location = new System.Drawing.Point(438, 604);
+            this.txtSLTon_Nhap.Location = new System.Drawing.Point(420, 604);
             this.txtSLTon_Nhap.Name = "txtSLTon_Nhap";
             this.txtSLTon_Nhap.Size = new System.Drawing.Size(50, 20);
             this.txtSLTon_Nhap.TabIndex = 12;
             // 
             // txtSLSuDung_Nhap
             // 
-            this.txtSLSuDung_Nhap.Location = new System.Drawing.Point(338, 604);
+            this.txtSLSuDung_Nhap.Location = new System.Drawing.Point(320, 604);
             this.txtSLSuDung_Nhap.Name = "txtSLSuDung_Nhap";
             this.txtSLSuDung_Nhap.Size = new System.Drawing.Size(50, 20);
             this.txtSLSuDung_Nhap.TabIndex = 11;
             // 
             // txtSLNhap_Nhap
             // 
-            this.txtSLNhap_Nhap.Location = new System.Drawing.Point(288, 604);
+            this.txtSLNhap_Nhap.Location = new System.Drawing.Point(270, 604);
             this.txtSLNhap_Nhap.Name = "txtSLNhap_Nhap";
             this.txtSLNhap_Nhap.Size = new System.Drawing.Size(50, 20);
             this.txtSLNhap_Nhap.TabIndex = 10;
@@ -197,14 +200,14 @@
             // 
             this.dgvNiemChi_Nhap.AllowUserToAddRows = false;
             this.dgvNiemChi_Nhap.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvNiemChi_Nhap.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNiemChi_Nhap.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvNiemChi_Nhap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNiemChi_Nhap.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CreateDate_Nhap,
@@ -214,25 +217,25 @@
             this.SLSuDung_Nhap,
             this.SLHuHong_Nhap,
             this.SLTon_Nhap});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvNiemChi_Nhap.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNiemChi_Nhap.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvNiemChi_Nhap.Location = new System.Drawing.Point(6, 104);
             this.dgvNiemChi_Nhap.Name = "dgvNiemChi_Nhap";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvNiemChi_Nhap.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvNiemChi_Nhap.Size = new System.Drawing.Size(501, 500);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNiemChi_Nhap.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvNiemChi_Nhap.Size = new System.Drawing.Size(482, 500);
             this.dgvNiemChi_Nhap.TabIndex = 6;
             // 
             // CreateDate_Nhap
@@ -247,14 +250,14 @@
             this.TuSo_Nhap.DataPropertyName = "TuSo";
             this.TuSo_Nhap.HeaderText = "Từ Số";
             this.TuSo_Nhap.Name = "TuSo_Nhap";
-            this.TuSo_Nhap.Width = 80;
+            this.TuSo_Nhap.Width = 70;
             // 
             // DenSo_Nhap
             // 
             this.DenSo_Nhap.DataPropertyName = "DenSo";
             this.DenSo_Nhap.HeaderText = "Đến Số";
             this.DenSo_Nhap.Name = "DenSo_Nhap";
-            this.DenSo_Nhap.Width = 80;
+            this.DenSo_Nhap.Width = 70;
             // 
             // SLNhap_Nhap
             // 
@@ -360,9 +363,9 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.cmbTo_Giao);
-            this.groupBox2.Location = new System.Drawing.Point(531, 12);
+            this.groupBox2.Location = new System.Drawing.Point(503, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(582, 633);
+            this.groupBox2.Size = new System.Drawing.Size(543, 633);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Giao Tổ";
@@ -370,7 +373,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(448, 16);
+            this.label11.Location = new System.Drawing.Point(408, 16);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(128, 13);
             this.label11.TabIndex = 73;
@@ -378,7 +381,7 @@
             // 
             // txtSLHuHong_Giao
             // 
-            this.txtSLHuHong_Giao.Location = new System.Drawing.Point(460, 604);
+            this.txtSLHuHong_Giao.Location = new System.Drawing.Point(417, 604);
             this.txtSLHuHong_Giao.Name = "txtSLHuHong_Giao";
             this.txtSLHuHong_Giao.Size = new System.Drawing.Size(50, 20);
             this.txtSLHuHong_Giao.TabIndex = 68;
@@ -394,7 +397,7 @@
             // 
             // txtNiemChiTon
             // 
-            this.txtNiemChiTon.Location = new System.Drawing.Point(463, 32);
+            this.txtNiemChiTon.Location = new System.Drawing.Point(423, 32);
             this.txtNiemChiTon.Multiline = true;
             this.txtNiemChiTon.Name = "txtNiemChiTon";
             this.txtNiemChiTon.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -411,21 +414,21 @@
             // 
             // txtSLTon_Giao
             // 
-            this.txtSLTon_Giao.Location = new System.Drawing.Point(510, 604);
+            this.txtSLTon_Giao.Location = new System.Drawing.Point(467, 604);
             this.txtSLTon_Giao.Name = "txtSLTon_Giao";
             this.txtSLTon_Giao.Size = new System.Drawing.Size(50, 20);
             this.txtSLTon_Giao.TabIndex = 65;
             // 
             // txtSLSuDung_Giao
             // 
-            this.txtSLSuDung_Giao.Location = new System.Drawing.Point(410, 604);
+            this.txtSLSuDung_Giao.Location = new System.Drawing.Point(367, 604);
             this.txtSLSuDung_Giao.Name = "txtSLSuDung_Giao";
             this.txtSLSuDung_Giao.Size = new System.Drawing.Size(50, 20);
             this.txtSLSuDung_Giao.TabIndex = 64;
             // 
             // txtSLNhap_Giao
             // 
-            this.txtSLNhap_Giao.Location = new System.Drawing.Point(360, 604);
+            this.txtSLNhap_Giao.Location = new System.Drawing.Point(317, 604);
             this.txtSLNhap_Giao.Name = "txtSLNhap_Giao";
             this.txtSLNhap_Giao.Size = new System.Drawing.Size(50, 20);
             this.txtSLNhap_Giao.TabIndex = 63;
@@ -434,14 +437,14 @@
             // 
             this.dgvNiemChi_Giao.AllowUserToAddRows = false;
             this.dgvNiemChi_Giao.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvNiemChi_Giao.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNiemChi_Giao.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvNiemChi_Giao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNiemChi_Giao.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaTo_Giao,
@@ -454,25 +457,25 @@
             this.SLSuDung_Giao,
             this.SLHuHong_Giao,
             this.SLTon_Giao});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvNiemChi_Giao.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNiemChi_Giao.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvNiemChi_Giao.Location = new System.Drawing.Point(6, 160);
             this.dgvNiemChi_Giao.Name = "dgvNiemChi_Giao";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvNiemChi_Giao.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgvNiemChi_Giao.Size = new System.Drawing.Size(570, 444);
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNiemChi_Giao.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvNiemChi_Giao.Size = new System.Drawing.Size(530, 444);
             this.dgvNiemChi_Giao.TabIndex = 62;
             this.dgvNiemChi_Giao.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNiemChi_Giao_CellContentClick);
             // 
@@ -502,20 +505,21 @@
             this.NhanVien_Giao.DataPropertyName = "NhanVien";
             this.NhanVien_Giao.HeaderText = "Nhân Viên";
             this.NhanVien_Giao.Name = "NhanVien_Giao";
+            this.NhanVien_Giao.Width = 80;
             // 
             // TuSo_Giao
             // 
             this.TuSo_Giao.DataPropertyName = "TuSo";
             this.TuSo_Giao.HeaderText = "Từ Số";
             this.TuSo_Giao.Name = "TuSo_Giao";
-            this.TuSo_Giao.Width = 80;
+            this.TuSo_Giao.Width = 70;
             // 
             // DenSo_Giao
             // 
             this.DenSo_Giao.DataPropertyName = "DenSo";
             this.DenSo_Giao.HeaderText = "Đến Số";
             this.DenSo_Giao.Name = "DenSo_Giao";
-            this.DenSo_Giao.Width = 80;
+            this.DenSo_Giao.Width = 70;
             // 
             // SLNhap_Giao
             // 
@@ -674,6 +678,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnChotQuyetToan_HuHong);
+            this.groupBox3.Controls.Add(this.chkXemAll_HuHong);
             this.groupBox3.Controls.Add(this.btnXoa_HuHong);
             this.groupBox3.Controls.Add(this.picNiemChi_HuHong);
             this.groupBox3.Controls.Add(this.btnChonFile_HuHong);
@@ -681,12 +687,33 @@
             this.groupBox3.Controls.Add(this.txtID_HuHong);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.dgvNiemChi_HuHong);
-            this.groupBox3.Location = new System.Drawing.Point(1119, 12);
+            this.groupBox3.Location = new System.Drawing.Point(1052, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(304, 633);
+            this.groupBox3.Size = new System.Drawing.Size(326, 633);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chì Hư Hỏng";
+            // 
+            // btnChotQuyetToan_HuHong
+            // 
+            this.btnChotQuyetToan_HuHong.Location = new System.Drawing.Point(221, 164);
+            this.btnChotQuyetToan_HuHong.Name = "btnChotQuyetToan_HuHong";
+            this.btnChotQuyetToan_HuHong.Size = new System.Drawing.Size(75, 23);
+            this.btnChotQuyetToan_HuHong.TabIndex = 71;
+            this.btnChotQuyetToan_HuHong.Text = "Quyết Toán";
+            this.btnChotQuyetToan_HuHong.UseVisualStyleBackColor = true;
+            this.btnChotQuyetToan_HuHong.Click += new System.EventHandler(this.btnChotQuyetToan_HuHong_Click);
+            // 
+            // chkXemAll_HuHong
+            // 
+            this.chkXemAll_HuHong.AutoSize = true;
+            this.chkXemAll_HuHong.Location = new System.Drawing.Point(9, 170);
+            this.chkXemAll_HuHong.Name = "chkXemAll_HuHong";
+            this.chkXemAll_HuHong.Size = new System.Drawing.Size(82, 17);
+            this.chkXemAll_HuHong.TabIndex = 70;
+            this.chkXemAll_HuHong.Text = "Xem Tất Cả";
+            this.chkXemAll_HuHong.UseVisualStyleBackColor = true;
+            this.chkXemAll_HuHong.CheckedChanged += new System.EventHandler(this.chkXemAll_HuHong_CheckedChanged);
             // 
             // btnXoa_HuHong
             // 
@@ -753,11 +780,13 @@
             this.Column2,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn3,
-            this.ID_HuHong});
+            this.ID_HuHong,
+            this.QuyetToan_HuHong});
             this.dgvNiemChi_HuHong.Location = new System.Drawing.Point(6, 193);
             this.dgvNiemChi_HuHong.Name = "dgvNiemChi_HuHong";
-            this.dgvNiemChi_HuHong.Size = new System.Drawing.Size(290, 411);
+            this.dgvNiemChi_HuHong.Size = new System.Drawing.Size(310, 411);
             this.dgvNiemChi_HuHong.TabIndex = 63;
+            this.dgvNiemChi_HuHong.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvNiemChi_HuHong_RowPostPaint);
             // 
             // Column1
             // 
@@ -785,20 +814,28 @@
             this.dataGridViewTextBoxColumn3.DataPropertyName = "HoTen";
             this.dataGridViewTextBoxColumn3.HeaderText = "Nhân Viên";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 80;
             // 
             // ID_HuHong
             // 
             this.ID_HuHong.DataPropertyName = "ID";
             this.ID_HuHong.HeaderText = "Mã Số";
             this.ID_HuHong.Name = "ID_HuHong";
-            this.ID_HuHong.Width = 80;
+            this.ID_HuHong.Width = 70;
+            // 
+            // QuyetToan_HuHong
+            // 
+            this.QuyetToan_HuHong.DataPropertyName = "QuyetToan";
+            this.QuyetToan_HuHong.HeaderText = "Quyết Toán";
+            this.QuyetToan_HuHong.Name = "QuyetToan_HuHong";
+            this.QuyetToan_HuHong.Width = 50;
             // 
             // frmNiemChi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1433, 657);
+            this.ClientSize = new System.Drawing.Size(1397, 657);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -857,24 +894,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbNhanVien_Giao;
         private System.Windows.Forms.TextBox txtSLHuHong_Nhap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_Nhap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TuSo_Nhap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DenSo_Nhap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SLNhap_Nhap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SLSuDung_Nhap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SLHuHong_Nhap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SLTon_Nhap;
         private System.Windows.Forms.TextBox txtSLHuHong_Giao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaTo_Giao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenTo_Giao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaNV_Giao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NhanVien_Giao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TuSo_Giao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DenSo_Giao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SLNhap_Giao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SLSuDung_Giao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SLHuHong_Giao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SLTon_Giao;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtNiemChiTon;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -885,10 +905,30 @@
         private System.Windows.Forms.TextBox txtID_HuHong;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridView dgvNiemChi_HuHong;
+        private System.Windows.Forms.Button btnChotQuyetToan_HuHong;
+        private System.Windows.Forms.CheckBox chkXemAll_HuHong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_Nhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TuSo_Nhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DenSo_Nhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SLNhap_Nhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SLSuDung_Nhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SLHuHong_Nhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SLTon_Nhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaTo_Giao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenTo_Giao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaNV_Giao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NhanVien_Giao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TuSo_Giao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DenSo_Giao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SLNhap_Giao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SLSuDung_Giao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SLHuHong_Giao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SLTon_Giao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_HuHong;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn QuyetToan_HuHong;
     }
 }

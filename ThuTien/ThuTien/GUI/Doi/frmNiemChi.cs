@@ -65,7 +65,7 @@ namespace ThuTien.GUI.Doi
             txtSLHuHong_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLHuHong);
             txtSLTon_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLTon);
 
-            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong();
+            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan();
         }
 
         private void btnThem_Nhap_Click(object sender, EventArgs e)
@@ -92,7 +92,7 @@ namespace ThuTien.GUI.Doi
                             //TT_NiemChi en = new TT_NiemChi();
                             //en.ID = i;
                             //_cNiemChi.Them(en);
-                            sql += " insert into TT_NiemChi(ID,CreateBy,CreateDate)values(" + i + "," + CNguoiDung.MaND + ",getDate())";   
+                            sql += " insert into TT_NiemChi(ID,CreateBy,CreateDate)values(" + i + "," + CNguoiDung.MaND + ",getDate())";
                         }
                         _cNiemChi.SqlBeginTransaction();
                         _cNiemChi.ExecuteNonQuery_Transaction(sql);
@@ -174,7 +174,7 @@ namespace ThuTien.GUI.Doi
         private void txtDenSo_Nhap_TextChanged(object sender, EventArgs e)
         {
             if (txtDenSo_Nhap.Text.Trim() != "" && txtTuSo_Nhap.Text.Trim() != "")
-                txtSoLuong_Nhap.Text = (int.Parse(txtDenSo_Nhap.Text.Trim()) - int.Parse(txtTuSo_Nhap.Text.Trim())+1).ToString();
+                txtSoLuong_Nhap.Text = (int.Parse(txtDenSo_Nhap.Text.Trim()) - int.Parse(txtTuSo_Nhap.Text.Trim()) + 1).ToString();
         }
 
         ////////////////////////////////////
@@ -218,7 +218,7 @@ namespace ThuTien.GUI.Doi
         private void txtDenSo_Giao_TextChanged(object sender, EventArgs e)
         {
             if (txtDenSo_Giao.Text.Trim() != "" && txtTuSo_Giao.Text.Trim() != "")
-                txtSoLuong_Giao.Text = (int.Parse(txtDenSo_Giao.Text.Trim()) - int.Parse(txtTuSo_Giao.Text.Trim())+1).ToString();
+                txtSoLuong_Giao.Text = (int.Parse(txtDenSo_Giao.Text.Trim()) - int.Parse(txtTuSo_Giao.Text.Trim()) + 1).ToString();
         }
 
         private void btnXem_Giao_Click(object sender, EventArgs e)
@@ -321,7 +321,7 @@ namespace ThuTien.GUI.Doi
 
         private void cmbTo_Giao_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_flagFirstLoad==true&&cmbTo_Giao.Items.Count > 0 && cmbTo_Giao.SelectedIndex > -1)
+            if (_flagFirstLoad == true && cmbTo_Giao.Items.Count > 0 && cmbTo_Giao.SelectedIndex > -1)
             {
                 List<TT_NguoiDung> lst = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo_Giao.SelectedValue.ToString()));
                 cmbNhanVien_Giao.DataSource = lst;
@@ -362,7 +362,7 @@ namespace ThuTien.GUI.Doi
                         {
                             MessageBox.Show("Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
-                        }  
+                        }
                         if (en.HuHong == true)
                         {
                             MessageBox.Show("Niêm Chì đã Nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -371,11 +371,12 @@ namespace ThuTien.GUI.Doi
                         if (_imgHuHong != null)
                             en.imgHuHong = _imgHuHong;
                         en.HuHong = true;
+                        en.HuHong_Ngay = DateTime.Now;
                         if (_cNiemChi.Sua(en) == true)
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             _imgHuHong = null;
-                            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong();
+                            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan();
                         }
                     }
                 }
@@ -399,11 +400,12 @@ namespace ThuTien.GUI.Doi
                     {
                         en.imgHuHong = null;
                         en.HuHong = false;
+                        en.HuHong_Ngay = null;
                         if (_cNiemChi.Sua(en) == true)
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             _imgHuHong = null;
-                            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong();
+                            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan();
                         }
                     }
                 }
@@ -414,6 +416,51 @@ namespace ThuTien.GUI.Doi
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnChotQuyetToan_HuHong_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    foreach (DataGridViewRow item in dgvNiemChi_HuHong.Rows)
+                    {
+                        TT_NiemChi en = _cNiemChi.get(int.Parse(item.Cells["ID_HuHong"].Value.ToString()));
+                        if (en != null && en.QuyetToan == false)
+                        {
+                            en.QuyetToan = true;
+                            if (_cNiemChi.Sua(en) == true)
+                            {
+
+                            }
+                        }
+                    }
+                    dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan();
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void chkXemAll_HuHong_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkXemAll_HuHong.Checked == true)
+                dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong();
+            else
+                dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan();
+        }
+
+        private void dgvNiemChi_HuHong_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvNiemChi_HuHong.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
         }
 
 

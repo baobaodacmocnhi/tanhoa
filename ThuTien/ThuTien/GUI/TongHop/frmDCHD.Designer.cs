@@ -99,6 +99,7 @@
             this.chkTong = new System.Windows.Forms.CheckBox();
             this.btnHDChoDieuChinh = new System.Windows.Forms.Button();
             this.lbHD0 = new System.Windows.Forms.Label();
+            this.btnDangNganHD0 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDCHD)).BeginInit();
             this.panel1.SuspendLayout();
@@ -712,12 +713,23 @@
             this.lbHD0.TabIndex = 52;
             this.lbHD0.Text = "label7";
             // 
+            // btnDangNganHD0
+            // 
+            this.btnDangNganHD0.Location = new System.Drawing.Point(1229, 156);
+            this.btnDangNganHD0.Name = "btnDangNganHD0";
+            this.btnDangNganHD0.Size = new System.Drawing.Size(75, 46);
+            this.btnDangNganHD0.TabIndex = 53;
+            this.btnDangNganHD0.Text = "Đăng Ngân HĐ=0";
+            this.btnDangNganHD0.UseVisualStyleBackColor = true;
+            this.btnDangNganHD0.Click += new System.EventHandler(this.btnDangNganHD0_Click);
+            // 
             // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1440, 662);
+            this.Controls.Add(this.btnDangNganHD0);
             this.Controls.Add(this.lbHD0);
             this.Controls.Add(this.btnHDChoDieuChinh);
             this.Controls.Add(this.chkTong);
@@ -819,5 +831,6 @@
         private System.Windows.Forms.CheckBox chkTong;
         private System.Windows.Forms.Button btnHDChoDieuChinh;
         private System.Windows.Forms.Label lbHD0;
+        private System.Windows.Forms.Button btnDangNganHD0;
     }
 }

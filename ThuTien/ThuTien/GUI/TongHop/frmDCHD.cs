@@ -158,7 +158,7 @@ namespace ThuTien.GUI.TongHop
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
-                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
                         if (_cHoaDon.CheckDangNganBySoHoaDon(item.Cells["SoHoaDon_DC"].Value.ToString()))
@@ -664,6 +664,32 @@ namespace ThuTien.GUI.TongHop
         {
             frmHoaDonChoDieuChinh frm = new frmHoaDonChoDieuChinh();
             frm.ShowDialog();
+        }
+
+        private void btnDangNganHD0_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen("mnuDangNganChuyenKhoan", "Them"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        CNguoiDung _cNguoiDung = new CNguoiDung();
+                        DataTable dt = _cDCHD.getDS_HD0_Ton();
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            _cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND);
+                        }
+                        MessageBox.Show("Xử Lý Hoàn Tất, Vui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Đăng Ngân Chuyển Khoản", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

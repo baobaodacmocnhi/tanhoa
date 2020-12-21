@@ -31,7 +31,8 @@ namespace ThuTien.GUI.DongNuoc
         private void frmPhiMoNuoc_Load(object sender, EventArgs e)
         {
             dgvKQDongNuoc.AutoGenerateColumns = false;
-            if (CNguoiDung.Doi == true)
+
+            if (CNguoiDung.Doi == true || _cNguoiDung.GetByMaND(CNguoiDung.MaND).TT_To.HanhThu==false)
             {
                 panel_To.Visible = true;
                 panel_NhanVien.Visible = true;

@@ -20,6 +20,8 @@ namespace ThuTien.GUI.Doi
     {
         string _mnu = "mnuBaoCaoVatTu";
         CDongNuoc _cDongNuoc = new CDongNuoc();
+        CNiemChi _cNiemChi = new CNiemChi();
+        CHoaDon _cHoaDon = new CHoaDon();
 
         public frmBaoCaoVatTu()
         {
@@ -121,6 +123,36 @@ namespace ThuTien.GUI.Doi
                     }
                 }
 
+            object soluong = _cNiemChi.countHuHong_ChuQuyetToan();
+            if (soluong != null && int.Parse(soluong.ToString()) > 0)
+            {
+                DataTable dtHD = _cHoaDon.getDS(soluong.ToString());
+                DataTable dtNC = _cNiemChi.getDSHuHong_ChuaQyetToan();
+
+                for (int i = 0; i < dtNC.Rows.Count; i++)
+                {
+                    DataRow dr = ds.Tables["KQDongNuoc"].NewRow();
+
+                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                    dr["DanhBo"] = dtHD.Rows[i]["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = dtHD.Rows[i]["HoTen"].ToString();
+                    dr["DiaChi"] = dtHD.Rows[i]["DiaChi"].ToString();
+                    dr["Hieu"] = dtHD.Rows[i]["Hieu"].ToString();
+                    dr["Co"] = dtHD.Rows[i]["Co"].ToString();
+
+                    dr["To"] = dtNC.Rows[i]["TenTo"].ToString();
+                    dr["NhanVien"] = dtNC.Rows[i]["HoTen"].ToString();
+
+                    dr["NiemChi"] = dtNC.Rows[i]["ID"].ToString();
+                    dr["DayDong"] = "0.6";
+
+                    dr["ChucVu"] = CNguoiKy.getChucVu();
+                    dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+
+                    ds.Tables["KQDongNuoc"].Rows.Add(dr);
+                }
+            }
             rptBaoCaoVatTu_NiemChi rpt = new rptBaoCaoVatTu_NiemChi();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
