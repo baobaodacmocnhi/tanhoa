@@ -388,8 +388,8 @@ namespace KTKS_DonKH.DAL.DonTu
             try
             {
                 DataSet ds = new DataSet();
-                
-                string sqlDonTu = "select MaDon,SoCongVan,CreateDate"
+
+                string sqlDonTu = "select MaDon,SoCongVan,CreateDate=CONVERT(varchar(10),CreateDate,103)+' '+CONVERT(varchar(10),CreateDate,108)"
                             + " ,DanhBo=case when (select COUNT(ID) from DonTu_ChiTiet where MaDon=DonTu.MaDon)=1 then (select DanhBo from DonTu_ChiTiet where MaDon=DonTu.MaDon) else '' end"
                             + " ,HoTen=case when (select COUNT(ID) from DonTu_ChiTiet where MaDon=DonTu.MaDon)=1 then (select HoTen from DonTu_ChiTiet where MaDon=DonTu.MaDon) else '' end"
                             + " ,DiaChi=case when (select COUNT(ID) from DonTu_ChiTiet where MaDon=DonTu.MaDon)=1 then (select DiaChi from DonTu_ChiTiet where MaDon=DonTu.MaDon) else N'Số: ' + SoCongVan + N' gồm ' + CAST(TongDB as varchar(3)) + N' địa chỉ' end"
@@ -417,7 +417,8 @@ namespace KTKS_DonKH.DAL.DonTu
                 DataTable dtDonTu = new DataTable();
                 dtDonTu = ExecuteQuery_DataTable(sqlDonTu);
                 dtDonTu.TableName = "DonTu";
-                ds.Tables.Add(dtDonTu);
+                dtDonTu.DefaultView.Sort = "CreateDate ASC";
+                ds.Tables.Add(dtDonTu.DefaultView.ToTable());
 
                 DataTable dtDonTuChiTiet = new DataTable();
                 dtDonTuChiTiet = ExecuteQuery_DataTable(sqlDonTuChiTiet);
