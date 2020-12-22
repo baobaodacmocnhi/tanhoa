@@ -26,7 +26,7 @@ namespace ThuTien.GUI.Doi
         string _mnu = "mnuLuuHD";
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CHoaDon _cHoaDon = new CHoaDon();
-        CDocSo _cCapNuocTanHoa = new CDocSo();
+        CDHN _cCapNuocTanHoa = new CDHN();
         CDCHD _cDCHD = new CDCHD();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CLenhHuy _cLenhHuy = new CLenhHuy();

@@ -27,7 +27,7 @@ namespace ThuTien.GUI.DongNuoc
         CDongNuoc _cDongNuoc = new CDongNuoc();
         TT_DongNuoc _dongnuoc = null;
         TT_KQDongNuoc _kqdongnuoc = null;
-        CDocSo _cCapNuocTanHoa = new CDocSo();
+        CDHN _cCapNuocTanHoa = new CDHN();
         CNiemChi _cNiemChi = new CNiemChi();
 
         public frmKQDongNuoc()

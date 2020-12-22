@@ -31,7 +31,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CTamThu _cTamThu = new CTamThu();
         CBangKe _cBangKe = new CBangKe();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CNganHang _cNganHang = new CNganHang();
 
         public frmTienDu()

@@ -17,7 +17,7 @@ namespace ThuTien.GUI.PhoGiamDoc
     {
         CHoaDon _cHoaDon = new CHoaDon();
         CDichVuThu _cDichVuThu = new CDichVuThu();
-        CDocSo _cCapNuocTanHoa = new CDocSo();
+        CDHN _cCapNuocTanHoa = new CDHN();
 
         public frmKiemTraThu2Lan()
         {

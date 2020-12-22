@@ -99,6 +99,7 @@
             this.mnuDieuChinhDangNganChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDichVuThu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBangKe = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBangKePhiMoNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTienDu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLichSuDieuChinhTienDu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPhiMoNuocChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
@@ -647,6 +648,7 @@
             this.mnuDieuChinhDangNganChuyenKhoan,
             this.mnuDichVuThu,
             this.mnuBangKe,
+            this.mnuBangKePhiMoNuoc,
             this.mnuTienDu,
             this.mnuLichSuDieuChinhTienDu,
             this.mnuPhiMoNuocChuyenKhoan,
@@ -713,6 +715,13 @@
             this.mnuBangKe.Size = new System.Drawing.Size(264, 22);
             this.mnuBangKe.Text = "Bảng Kê";
             this.mnuBangKe.Click += new System.EventHandler(this.mnuBangKe_Click);
+            // 
+            // mnuBangKePhiMoNuoc
+            // 
+            this.mnuBangKePhiMoNuoc.Name = "mnuBangKePhiMoNuoc";
+            this.mnuBangKePhiMoNuoc.Size = new System.Drawing.Size(264, 22);
+            this.mnuBangKePhiMoNuoc.Text = "Bảng Kê Phí Mở Nước";
+            this.mnuBangKePhiMoNuoc.Click += new System.EventHandler(this.mnuBangKePhiMoNuoc_Click);
             // 
             // mnuTienDu
             // 
@@ -1178,6 +1187,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuPhoiHop;
         private System.Windows.Forms.ToolStripMenuItem mnuGhiChu;
         private System.Windows.Forms.ToolStripMenuItem mnuPhiMoNuoc;
+        private System.Windows.Forms.ToolStripMenuItem mnuBangKePhiMoNuoc;
     }
 }
 

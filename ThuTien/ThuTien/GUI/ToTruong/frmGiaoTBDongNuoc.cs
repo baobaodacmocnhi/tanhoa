@@ -27,7 +27,7 @@ namespace ThuTien.GUI.ToTruong
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         List<TT_NguoiDung> _lstND = new List<TT_NguoiDung>();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmGiaoTBDongNuoc()

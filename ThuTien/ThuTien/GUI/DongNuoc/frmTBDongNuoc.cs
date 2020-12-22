@@ -27,7 +27,7 @@ namespace ThuTien.GUI.DongNuoc
         CHoaDon _cHoaDon = new CHoaDon();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CNguoiDung _cNguoiDung = new CNguoiDung();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
 
         DataRowView _selectedRow = null;
 
@@ -138,7 +138,7 @@ namespace ThuTien.GUI.DongNuoc
                             TT_DongNuoc dongnuoc = new TT_DongNuoc();
                             dongnuoc.DanhBo = lstHDTemp[0].DANHBA;
                             dongnuoc.HoTen = lstHDTemp[0].TENKH;
-                            dongnuoc.DiaChi = lstHDTemp[0].SO + " " + lstHDTemp[0].DUONG;
+                            dongnuoc.DiaChi = lstHDTemp[0].SO + " " + lstHDTemp[0].DUONG + _cDocSo.GetPhuongQuan(lstHDTemp[0].DANHBA);
                             dongnuoc.MLT = lstHDTemp[0].MALOTRINH;
                             //dongnuoc.MaNV_DongNuoc = 0;
                             //dongnuoc.CreateBy = lstHDTemp[0].MaNV_HanhThu;

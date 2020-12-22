@@ -22,7 +22,7 @@ namespace ThuTien.GUI.TongHop
     {
         string _mnu = "mnuToTrinhDCHD";
         CHoaDon _cHoaDon = new CHoaDon();
-        CDocSo _cCapNuocTanHoa = new CDocSo();
+        CDHN _cCapNuocTanHoa = new CDHN();
         CToTrinhDCHD _cToTrinhDCHD = new CToTrinhDCHD();
         CLenhHuy _cLenhHuy = new CLenhHuy();
 

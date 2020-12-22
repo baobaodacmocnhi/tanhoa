@@ -9,7 +9,7 @@ using System.Reflection;
 
 namespace ThuTien.DAL
 {
-    class CDocSo
+    class CDHN
     {
         protected static string _connectionString;  // Chuỗi kết nối
         protected SqlConnection connection;         // Đối tượng kết nối
@@ -17,7 +17,7 @@ namespace ThuTien.DAL
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
         dbCAPNUOCTANHOADataContext _db = new dbCAPNUOCTANHOADataContext();
 
-        public CDocSo()
+        public CDHN()
         {
             try
             {
@@ -243,7 +243,7 @@ namespace ThuTien.DAL
                         };
             if (query.Count() > 0)
             {
-                return "P."+query.FirstOrDefault().TENPHUONG + ", Q."+query.FirstOrDefault().TENQUAN;
+                return " P."+query.FirstOrDefault().TENPHUONG + ", Q."+query.FirstOrDefault().TENQUAN;
             }
             else
                 return "";

@@ -353,7 +353,7 @@
             this.dgvDCHD.Name = "dgvDCHD";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDCHD.RowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvDCHD.Size = new System.Drawing.Size(1411, 370);
+            this.dgvDCHD.Size = new System.Drawing.Size(1411, 360);
             this.dgvDCHD.TabIndex = 34;
             this.dgvDCHD.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDCHD_CellFormatting);
             this.dgvDCHD.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvDCHD_CellValidating);

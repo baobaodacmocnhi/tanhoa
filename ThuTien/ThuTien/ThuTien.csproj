@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1344</ApplicationRevision>
+    <ApplicationRevision>1345</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -627,9 +627,10 @@
       <DependentUpon>rptTongHopNoA4.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DAL\CDocSo.cs" />
+    <Compile Include="DAL\CDHN.cs" />
     <Compile Include="DAL\CDocSoHandheld.cs" />
     <Compile Include="DAL\ChuyenKhoan\CBangKe.cs" />
+    <Compile Include="DAL\ChuyenKhoan\CBangKe_PhiMoNuoc.cs" />
     <Compile Include="DAL\ChuyenKhoan\CDichVuThu.cs" />
     <Compile Include="DAL\ChuyenKhoan\CPhiMoNuoc.cs" />
     <Compile Include="DAL\ChuyenKhoan\CTienDu.cs" />
@@ -702,6 +703,12 @@
     </Compile>
     <Compile Include="GUI\ChuyenKhoan\frmBangKe.Designer.cs">
       <DependentUpon>frmBangKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmBangKe_PhiMoNuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmBangKe_PhiMoNuoc.Designer.cs">
+      <DependentUpon>frmBangKe_PhiMoNuoc.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ChuyenKhoan\frmBaoCaoChuyenKhoan.cs">
       <SubType>Form</SubType>
@@ -1698,6 +1705,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmBangKe.resx">
       <DependentUpon>frmBangKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChuyenKhoan\frmBangKe_PhiMoNuoc.resx">
+      <DependentUpon>frmBangKe_PhiMoNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmBaoCaoChuyenKhoan.resx">
       <DependentUpon>frmBaoCaoChuyenKhoan.cs</DependentUpon>

@@ -25,7 +25,7 @@ namespace ThuTien.GUI.Quay
         CTienDuQuay _cTienDuQuay = new CTienDuQuay();
         CHoaDon _cHoaDon = new CHoaDon();
         CDichVuThu _cDichVuThu = new CDichVuThu();
-        CDocSo _cDocSo = new CDocSo();
+        CDHN _cDocSo = new CDHN();
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CLenhHuy _cLenhHuy = new CLenhHuy();
 

@@ -33,19 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvKQDongNuoc = new System.Windows.Forms.DataGridView();
-            this.dateTu = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateDen = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.chkAll = new System.Windows.Forms.CheckBox();
-            this.cmbTo = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel_To = new System.Windows.Forms.Panel();
-            this.panel_NhanVien = new System.Windows.Forms.Panel();
             this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaKQDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +50,19 @@
             this.ChiSoDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhiMoNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTu = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateDen = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.chkAll = new System.Windows.Forms.CheckBox();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel_To = new System.Windows.Forms.Panel();
+            this.panel_NhanVien = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
             this.panel_To.SuspendLayout();
             this.panel_NhanVien.SuspendLayout();
@@ -123,6 +123,125 @@
             this.dgvKQDongNuoc.TabIndex = 33;
             this.dgvKQDongNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvKQDongNuoc_CellFormatting);
             this.dgvKQDongNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvKQDongNuoc_RowPostPaint);
+            // 
+            // In
+            // 
+            this.In.DataPropertyName = "In";
+            this.In.HeaderText = "In";
+            this.In.Name = "In";
+            this.In.Width = 30;
+            // 
+            // MaDN
+            // 
+            this.MaDN.DataPropertyName = "MaDN";
+            this.MaDN.HeaderText = "Mã TB";
+            this.MaDN.Name = "MaDN";
+            this.MaDN.Width = 70;
+            // 
+            // MaKQDN
+            // 
+            this.MaKQDN.DataPropertyName = "MaKQDN";
+            this.MaKQDN.HeaderText = "MaKQDN";
+            this.MaKQDN.Name = "MaKQDN";
+            this.MaKQDN.Visible = false;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.Width = 80;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 150;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 200;
+            // 
+            // NgayDN
+            // 
+            this.NgayDN.DataPropertyName = "NgayDN";
+            this.NgayDN.HeaderText = "Đóng Nước";
+            this.NgayDN.Name = "NgayDN";
+            this.NgayDN.Width = 80;
+            // 
+            // DongPhi
+            // 
+            this.DongPhi.DataPropertyName = "DongPhi";
+            this.DongPhi.HeaderText = "Đóng Phí";
+            this.DongPhi.Name = "DongPhi";
+            this.DongPhi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DongPhi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DongPhi.Width = 50;
+            // 
+            // NgayDongPhi
+            // 
+            this.NgayDongPhi.DataPropertyName = "NgayDongPhi";
+            this.NgayDongPhi.HeaderText = "Ngày Đóng Phí";
+            this.NgayDongPhi.Name = "NgayDongPhi";
+            this.NgayDongPhi.Width = 80;
+            // 
+            // MaNV_DongPhi
+            // 
+            this.MaNV_DongPhi.DataPropertyName = "MaNV_DongPhi";
+            this.MaNV_DongPhi.HeaderText = "Nhân Viên";
+            this.MaNV_DongPhi.Name = "MaNV_DongPhi";
+            // 
+            // Hieu
+            // 
+            this.Hieu.DataPropertyName = "Hieu";
+            this.Hieu.HeaderText = "Hieu";
+            this.Hieu.Name = "Hieu";
+            this.Hieu.Visible = false;
+            // 
+            // Co
+            // 
+            this.Co.DataPropertyName = "Co";
+            this.Co.HeaderText = "Co";
+            this.Co.Name = "Co";
+            this.Co.Visible = false;
+            // 
+            // SoThan
+            // 
+            this.SoThan.DataPropertyName = "SoThan";
+            this.SoThan.HeaderText = "SoThan";
+            this.SoThan.Name = "SoThan";
+            this.SoThan.Visible = false;
+            // 
+            // ChiSoDN
+            // 
+            this.ChiSoDN.DataPropertyName = "ChiSoDN";
+            this.ChiSoDN.HeaderText = "ChiSoDN";
+            this.ChiSoDN.Name = "ChiSoDN";
+            this.ChiSoDN.Visible = false;
+            // 
+            // LyDo
+            // 
+            this.LyDo.DataPropertyName = "LyDo";
+            this.LyDo.HeaderText = "LyDo";
+            this.LyDo.Name = "LyDo";
+            this.LyDo.Visible = false;
+            // 
+            // PhiMoNuoc
+            // 
+            this.PhiMoNuoc.DataPropertyName = "PhiMoNuoc";
+            this.PhiMoNuoc.HeaderText = "PhiMoNuoc";
+            this.PhiMoNuoc.Name = "PhiMoNuoc";
+            this.PhiMoNuoc.Visible = false;
             // 
             // dateTu
             // 
@@ -246,130 +365,11 @@
             this.panel_NhanVien.TabIndex = 59;
             this.panel_NhanVien.Visible = false;
             // 
-            // In
-            // 
-            this.In.DataPropertyName = "In";
-            this.In.HeaderText = "In";
-            this.In.Name = "In";
-            this.In.Width = 30;
-            // 
-            // MaDN
-            // 
-            this.MaDN.DataPropertyName = "MaDN";
-            this.MaDN.HeaderText = "Mã TB";
-            this.MaDN.Name = "MaDN";
-            this.MaDN.Width = 70;
-            // 
-            // MaKQDN
-            // 
-            this.MaKQDN.DataPropertyName = "MaKQDN";
-            this.MaKQDN.HeaderText = "MaKQDN";
-            this.MaKQDN.Name = "MaKQDN";
-            this.MaKQDN.Visible = false;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.Width = 80;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 200;
-            // 
-            // NgayDN
-            // 
-            this.NgayDN.DataPropertyName = "NgayDN";
-            this.NgayDN.HeaderText = "Đóng Nước";
-            this.NgayDN.Name = "NgayDN";
-            this.NgayDN.Width = 80;
-            // 
-            // DongPhi
-            // 
-            this.DongPhi.DataPropertyName = "DongPhi";
-            this.DongPhi.HeaderText = "Đóng Phí";
-            this.DongPhi.Name = "DongPhi";
-            this.DongPhi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DongPhi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DongPhi.Width = 50;
-            // 
-            // NgayDongPhi
-            // 
-            this.NgayDongPhi.DataPropertyName = "NgayDongPhi";
-            this.NgayDongPhi.HeaderText = "Ngày Đóng Phí";
-            this.NgayDongPhi.Name = "NgayDongPhi";
-            this.NgayDongPhi.Width = 80;
-            // 
-            // MaNV_DongPhi
-            // 
-            this.MaNV_DongPhi.DataPropertyName = "MaNV_DongPhi";
-            this.MaNV_DongPhi.HeaderText = "Nhân Viên";
-            this.MaNV_DongPhi.Name = "MaNV_DongPhi";
-            // 
-            // Hieu
-            // 
-            this.Hieu.DataPropertyName = "Hieu";
-            this.Hieu.HeaderText = "Hieu";
-            this.Hieu.Name = "Hieu";
-            this.Hieu.Visible = false;
-            // 
-            // Co
-            // 
-            this.Co.DataPropertyName = "Co";
-            this.Co.HeaderText = "Co";
-            this.Co.Name = "Co";
-            this.Co.Visible = false;
-            // 
-            // SoThan
-            // 
-            this.SoThan.DataPropertyName = "SoThan";
-            this.SoThan.HeaderText = "SoThan";
-            this.SoThan.Name = "SoThan";
-            this.SoThan.Visible = false;
-            // 
-            // ChiSoDN
-            // 
-            this.ChiSoDN.DataPropertyName = "ChiSoDN";
-            this.ChiSoDN.HeaderText = "ChiSoDN";
-            this.ChiSoDN.Name = "ChiSoDN";
-            this.ChiSoDN.Visible = false;
-            // 
-            // LyDo
-            // 
-            this.LyDo.DataPropertyName = "LyDo";
-            this.LyDo.HeaderText = "LyDo";
-            this.LyDo.Name = "LyDo";
-            this.LyDo.Visible = false;
-            // 
-            // PhiMoNuoc
-            // 
-            this.PhiMoNuoc.DataPropertyName = "PhiMoNuoc";
-            this.PhiMoNuoc.HeaderText = "PhiMoNuoc";
-            this.PhiMoNuoc.Name = "PhiMoNuoc";
-            this.PhiMoNuoc.Visible = false;
-            // 
             // frmPhiMoNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1358, 665);
+            this.ClientSize = new System.Drawing.Size(1053, 631);
             this.Controls.Add(this.panel_NhanVien);
             this.Controls.Add(this.panel_To);
             this.Controls.Add(this.chkAll);

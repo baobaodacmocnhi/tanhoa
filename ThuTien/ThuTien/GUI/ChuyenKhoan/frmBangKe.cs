@@ -22,7 +22,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CBangKe _cBangKe = new CBangKe();
         CNganHang _cNganHang = new CNganHang();
         CTienDu _cTienDu = new CTienDu();
-        CDocSo _cCapNuocTanHoa = new CDocSo();
+        CDHN _cDHN = new CDHN();
 
         public frmBangKe()
         {
@@ -368,7 +368,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             foreach (DataGridViewRow item in dgvBangKe.Rows)
             {
-                if (!string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString()) && !_cCapNuocTanHoa.CheckExist(item.Cells["DanhBo"].Value.ToString()))
+                if (!string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString()) && !_cDHN.CheckExist(item.Cells["DanhBo"].Value.ToString()))
                     item.DefaultCellStyle.BackColor = Color.Red;
             }
         }
