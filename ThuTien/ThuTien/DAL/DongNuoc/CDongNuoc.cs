@@ -970,7 +970,7 @@ namespace ThuTien.DAL.DongNuoc
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
                         join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
-                        where itemKQ.NgayDongPhi.Value.Date >= FromNgayDongPhi && itemKQ.NgayDongPhi.Value.Date <= ToNgayDongPhi
+                        where itemKQ.NgayDongPhi.Value.Date >= FromNgayDongPhi.Date && itemKQ.NgayDongPhi.Value.Date <= ToNgayDongPhi.Date
                         select new
                         {
                             itemKQ.MaDN,
@@ -995,7 +995,7 @@ namespace ThuTien.DAL.DongNuoc
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
                         join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
-                        where itemKQ.NgayDongPhi.Value.Date >= FromNgayDongPhi && itemKQ.NgayDongPhi.Value.Date <= ToNgayDongPhi && itemKQ.MaNV_DongPhi == MaNV_DongPhi
+                        where itemKQ.NgayDongPhi.Value.Date >= FromNgayDongPhi.Date && itemKQ.NgayDongPhi.Value.Date <= ToNgayDongPhi.Date && itemKQ.MaNV_DongPhi == MaNV_DongPhi
                         select new
                         {
                             itemKQ.MaDN,

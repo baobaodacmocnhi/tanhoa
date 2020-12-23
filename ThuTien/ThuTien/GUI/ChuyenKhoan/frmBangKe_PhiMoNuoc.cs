@@ -13,6 +13,7 @@ using System.Globalization;
 using ThuTien.GUI.TimKiem;
 using System.Transactions;
 using ThuTien.DAL;
+using ThuTien.DAL.DongNuoc;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -22,6 +23,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CBangKe_PhiMoNuoc _cBangKe_PMN = new CBangKe_PhiMoNuoc();
         CNganHang _cNganHang = new CNganHang();
         CDHN _cDHN = new CDHN();
+        CDongNuoc _cDongNuoc = new CDongNuoc();
 
         public frmBangKe_PhiMoNuoc()
         {
@@ -77,7 +79,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         MessageBox.Show("Lỗi Tên Ngân Hàng tại Danh Bộ: " + bangke.DanhBo + "\nBảng Kê đã lưu được tới đây", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
-
+                                    TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByDanhBo_Last(bangke.DanhBo);
+                                    if (kqdongnuoc != null)
+                                        bangke.MaKQDN = kqdongnuoc.MaKQDN;
+                                    else
+                                    {
+                                        MessageBox.Show("Không có Kết Quả Đóng Nước tại Danh Bộ: " + bangke.DanhBo + "\nBảng Kê đã lưu được tới đây", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
                                     bangke.CreateBy = CNguoiDung.MaND;
                                     bangke.CreateDate2 = DateTime.Now;
                                     if (chkNgayLap.Checked == true)

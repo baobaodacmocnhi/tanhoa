@@ -42,6 +42,16 @@
             this.Phi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvPhiMoNuoc = new System.Windows.Forms.DataGridView();
+            this.dateTu = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateDen = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnXuatExcel = new System.Windows.Forms.Button();
+            this.chkChotTatCa = new System.Windows.Forms.CheckBox();
+            this.radPhiMoNuocChung = new System.Windows.Forms.RadioButton();
+            this.radPhiMoNuocRieng = new System.Windows.Forms.RadioButton();
             this.MaPMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_PMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,16 +66,12 @@
             this.PhiMoNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTK_PMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CoDHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTu = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateDen = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnXuatExcel = new System.Windows.Forms.Button();
-            this.chkChotTatCa = new System.Windows.Forms.CheckBox();
-            this.radPhiMoNuocChung = new System.Windows.Forms.RadioButton();
-            this.radPhiMoNuocRieng = new System.Windows.Forms.RadioButton();
+            this.Co = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoThan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChiSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTienDu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhiMoNuoc)).BeginInit();
             this.SuspendLayout();
@@ -73,7 +79,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 21);
+            this.label5.Location = new System.Drawing.Point(9, 35);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(202, 13);
             this.label5.TabIndex = 5;
@@ -103,7 +109,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTienDu.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvTienDu.Location = new System.Drawing.Point(12, 41);
+            this.dgvTienDu.Location = new System.Drawing.Point(12, 51);
             this.dgvTienDu.Name = "dgvTienDu";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -115,7 +121,7 @@
             this.dgvTienDu.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvTienDu.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvTienDu.Size = new System.Drawing.Size(237, 580);
+            this.dgvTienDu.Size = new System.Drawing.Size(237, 570);
             this.dgvTienDu.TabIndex = 6;
             this.dgvTienDu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTienDu_CellContentClick);
             // 
@@ -134,7 +140,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(589, 13);
+            this.btnXem.Location = new System.Drawing.Point(725, 22);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 7;
@@ -169,7 +175,13 @@
             this.TongCong_PMN,
             this.PhiMoNuoc,
             this.SoTK_PMN,
-            this.CoDHN});
+            this.CoDHN,
+            this.Co,
+            this.Hieu,
+            this.SoThan,
+            this.ChiSo,
+            this.NgayDN,
+            this.CreateBy});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -178,7 +190,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPhiMoNuoc.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvPhiMoNuoc.Location = new System.Drawing.Point(255, 41);
+            this.dgvPhiMoNuoc.Location = new System.Drawing.Point(255, 51);
             this.dgvPhiMoNuoc.Name = "dgvPhiMoNuoc";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
@@ -190,11 +202,110 @@
             this.dgvPhiMoNuoc.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvPhiMoNuoc.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvPhiMoNuoc.Size = new System.Drawing.Size(952, 580);
+            this.dgvPhiMoNuoc.Size = new System.Drawing.Size(952, 570);
             this.dgvPhiMoNuoc.TabIndex = 8;
             this.dgvPhiMoNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPhiMoNuoc_CellFormatting);
             this.dgvPhiMoNuoc.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvPhiMoNuoc_CellValidating);
             this.dgvPhiMoNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvPhiMoNuoc_RowPostPaint);
+            // 
+            // dateTu
+            // 
+            this.dateTu.CustomFormat = "dd/MM/yyyy";
+            this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu.Location = new System.Drawing.Point(449, 24);
+            this.dateTu.Name = "dateTu";
+            this.dateTu.Size = new System.Drawing.Size(100, 20);
+            this.dateTu.TabIndex = 31;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(392, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Từ Ngày:";
+            // 
+            // dateDen
+            // 
+            this.dateDen.CustomFormat = "dd/MM/yyyy";
+            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen.Location = new System.Drawing.Point(619, 24);
+            this.dateDen.Name = "dateDen";
+            this.dateDen.Size = new System.Drawing.Size(100, 20);
+            this.dateDen.TabIndex = 29;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(555, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Đến Ngày:";
+            // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(806, 22);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 32;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(887, 22);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 33;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnXuatExcel
+            // 
+            this.btnXuatExcel.Location = new System.Drawing.Point(968, 22);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnXuatExcel.TabIndex = 34;
+            this.btnXuatExcel.Text = "Xuất Excel";
+            this.btnXuatExcel.UseVisualStyleBackColor = true;
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
+            // 
+            // chkChotTatCa
+            // 
+            this.chkChotTatCa.AutoSize = true;
+            this.chkChotTatCa.Location = new System.Drawing.Point(1127, 28);
+            this.chkChotTatCa.Name = "chkChotTatCa";
+            this.chkChotTatCa.Size = new System.Drawing.Size(83, 17);
+            this.chkChotTatCa.TabIndex = 35;
+            this.chkChotTatCa.Text = "Chốt Tất Cả";
+            this.chkChotTatCa.UseVisualStyleBackColor = true;
+            this.chkChotTatCa.CheckedChanged += new System.EventHandler(this.chkChotTatCa_CheckedChanged);
+            // 
+            // radPhiMoNuocChung
+            // 
+            this.radPhiMoNuocChung.AutoSize = true;
+            this.radPhiMoNuocChung.Checked = true;
+            this.radPhiMoNuocChung.Location = new System.Drawing.Point(255, 2);
+            this.radPhiMoNuocChung.Name = "radPhiMoNuocChung";
+            this.radPhiMoNuocChung.Size = new System.Drawing.Size(123, 17);
+            this.radPhiMoNuocChung.TabIndex = 36;
+            this.radPhiMoNuocChung.TabStop = true;
+            this.radPhiMoNuocChung.Text = "Phí Mở Nước Chung";
+            this.radPhiMoNuocChung.UseVisualStyleBackColor = true;
+            // 
+            // radPhiMoNuocRieng
+            // 
+            this.radPhiMoNuocRieng.AutoSize = true;
+            this.radPhiMoNuocRieng.Location = new System.Drawing.Point(255, 25);
+            this.radPhiMoNuocRieng.Name = "radPhiMoNuocRieng";
+            this.radPhiMoNuocRieng.Size = new System.Drawing.Size(120, 17);
+            this.radPhiMoNuocRieng.TabIndex = 37;
+            this.radPhiMoNuocRieng.Text = "Phí Mở Nước Riêng";
+            this.radPhiMoNuocRieng.UseVisualStyleBackColor = true;
             // 
             // MaPMN
             // 
@@ -294,104 +405,47 @@
             this.CoDHN.Name = "CoDHN";
             this.CoDHN.Visible = false;
             // 
-            // dateTu
+            // Co
             // 
-            this.dateTu.CustomFormat = "dd/MM/yyyy";
-            this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(313, 15);
-            this.dateTu.Name = "dateTu";
-            this.dateTu.Size = new System.Drawing.Size(100, 20);
-            this.dateTu.TabIndex = 31;
+            this.Co.DataPropertyName = "Co";
+            this.Co.HeaderText = "Co";
+            this.Co.Name = "Co";
+            this.Co.Visible = false;
             // 
-            // label2
+            // Hieu
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(256, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "Từ Ngày:";
+            this.Hieu.DataPropertyName = "Hieu";
+            this.Hieu.HeaderText = "Hieu";
+            this.Hieu.Name = "Hieu";
+            this.Hieu.Visible = false;
             // 
-            // dateDen
+            // SoThan
             // 
-            this.dateDen.CustomFormat = "dd/MM/yyyy";
-            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(483, 15);
-            this.dateDen.Name = "dateDen";
-            this.dateDen.Size = new System.Drawing.Size(100, 20);
-            this.dateDen.TabIndex = 29;
+            this.SoThan.DataPropertyName = "SoThan";
+            this.SoThan.HeaderText = "SoThan";
+            this.SoThan.Name = "SoThan";
+            this.SoThan.Visible = false;
             // 
-            // label3
+            // ChiSo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(419, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "Đến Ngày:";
+            this.ChiSo.DataPropertyName = "ChiSo";
+            this.ChiSo.HeaderText = "ChiSo";
+            this.ChiSo.Name = "ChiSo";
+            this.ChiSo.Visible = false;
             // 
-            // btnIn
+            // NgayDN
             // 
-            this.btnIn.Location = new System.Drawing.Point(670, 13);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
-            this.btnIn.TabIndex = 32;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            this.NgayDN.DataPropertyName = "NgayDN";
+            this.NgayDN.HeaderText = "NgayDN";
+            this.NgayDN.Name = "NgayDN";
+            this.NgayDN.Visible = false;
             // 
-            // btnXoa
+            // CreateBy
             // 
-            this.btnXoa.Location = new System.Drawing.Point(751, 13);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 33;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnXuatExcel
-            // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(832, 13);
-            this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
-            this.btnXuatExcel.TabIndex = 34;
-            this.btnXuatExcel.Text = "Xuất Excel";
-            this.btnXuatExcel.UseVisualStyleBackColor = true;
-            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
-            // 
-            // chkChotTatCa
-            // 
-            this.chkChotTatCa.AutoSize = true;
-            this.chkChotTatCa.Location = new System.Drawing.Point(1127, 18);
-            this.chkChotTatCa.Name = "chkChotTatCa";
-            this.chkChotTatCa.Size = new System.Drawing.Size(83, 17);
-            this.chkChotTatCa.TabIndex = 35;
-            this.chkChotTatCa.Text = "Chốt Tất Cả";
-            this.chkChotTatCa.UseVisualStyleBackColor = true;
-            this.chkChotTatCa.CheckedChanged += new System.EventHandler(this.chkChotTatCa_CheckedChanged);
-            // 
-            // radPhiMoNuocChung
-            // 
-            this.radPhiMoNuocChung.AutoSize = true;
-            this.radPhiMoNuocChung.Location = new System.Drawing.Point(1213, 91);
-            this.radPhiMoNuocChung.Name = "radPhiMoNuocChung";
-            this.radPhiMoNuocChung.Size = new System.Drawing.Size(123, 17);
-            this.radPhiMoNuocChung.TabIndex = 36;
-            this.radPhiMoNuocChung.TabStop = true;
-            this.radPhiMoNuocChung.Text = "Phí Mở Nước Chung";
-            this.radPhiMoNuocChung.UseVisualStyleBackColor = true;
-            // 
-            // radPhiMoNuocRieng
-            // 
-            this.radPhiMoNuocRieng.AutoSize = true;
-            this.radPhiMoNuocRieng.Location = new System.Drawing.Point(1213, 114);
-            this.radPhiMoNuocRieng.Name = "radPhiMoNuocRieng";
-            this.radPhiMoNuocRieng.Size = new System.Drawing.Size(120, 17);
-            this.radPhiMoNuocRieng.TabIndex = 37;
-            this.radPhiMoNuocRieng.TabStop = true;
-            this.radPhiMoNuocRieng.Text = "Phí Mở Nước Riêng";
-            this.radPhiMoNuocRieng.UseVisualStyleBackColor = true;
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "CreateBy";
+            this.CreateBy.Name = "CreateBy";
+            this.CreateBy.Visible = false;
             // 
             // frmPhiMoNuocChuyenKhoan
             // 
@@ -438,6 +492,8 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnXuatExcel;
         private System.Windows.Forms.CheckBox chkChotTatCa;
+        private System.Windows.Forms.RadioButton radPhiMoNuocChung;
+        private System.Windows.Forms.RadioButton radPhiMoNuocRieng;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaPMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_PMN;
@@ -452,7 +508,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PhiMoNuoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTK_PMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn CoDHN;
-        private System.Windows.Forms.RadioButton radPhiMoNuocChung;
-        private System.Windows.Forms.RadioButton radPhiMoNuocRieng;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Co;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoThan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChiSo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayDN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
     }
 }

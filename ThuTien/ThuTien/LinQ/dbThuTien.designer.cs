@@ -32145,6 +32145,8 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _MaNH;
 		
+		private System.Nullable<int> _MaKQDN;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -32167,6 +32169,8 @@ namespace ThuTien.LinQ
     partial void OnSoTienChanged();
     partial void OnMaNHChanging(System.Nullable<int> value);
     partial void OnMaNHChanged();
+    partial void OnMaKQDNChanging(System.Nullable<int> value);
+    partial void OnMaKQDNChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -32260,6 +32264,26 @@ namespace ThuTien.LinQ
 					this._MaNH = value;
 					this.SendPropertyChanged("MaNH");
 					this.OnMaNHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKQDN", DbType="Int")]
+		public System.Nullable<int> MaKQDN
+		{
+			get
+			{
+				return this._MaKQDN;
+			}
+			set
+			{
+				if ((this._MaKQDN != value))
+				{
+					this.OnMaKQDNChanging(value);
+					this.SendPropertyChanging();
+					this._MaKQDN = value;
+					this.SendPropertyChanged("MaKQDN");
+					this.OnMaKQDNChanged();
 				}
 			}
 		}

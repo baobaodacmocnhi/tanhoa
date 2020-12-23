@@ -15,6 +15,7 @@ using ThuTien.GUI.BaoCao;
 using System.Transactions;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.Doi;
+using ThuTien.BaoCao.DongNuoc;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -45,7 +46,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             dgvTienDu.DataSource = _cTienDu.GetDSPhiMoNuoc();
 
             if (dateTu.Value <= dateDen.Value)
-                dgvPhiMoNuoc.DataSource = _cPhiMoNuoc.GetDS(dateTu.Value, dateDen.Value);
+                if (radPhiMoNuocChung.Checked)
+                    dgvPhiMoNuoc.DataSource = _cPhiMoNuoc.getDS_Chung(dateTu.Value, dateDen.Value);
+                else if (radPhiMoNuocRieng.Checked)
+                    dgvPhiMoNuoc.DataSource = _cPhiMoNuoc.getDS_Rieng(dateTu.Value, dateDen.Value);
 
             foreach (DataGridViewRow item in dgvPhiMoNuoc.Rows)
             {
@@ -134,40 +138,68 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void btnIn_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
-
-            foreach (DataGridViewRow item in dgvPhiMoNuoc.SelectedRows)
+            if (radPhiMoNuocChung.Checked)
             {
-                DataRow dr = ds.Tables["PhiMoNuoc"].NewRow();
-                dr["SoPhieu"] = item.Cells["MaPMN"].Value.ToString().Insert(item.Cells["MaPMN"].Value.ToString().Length - 2, "-");
-                dr["DanhBo"] = item.Cells["DanhBo_PMN"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                dr["HoTen"] = item.Cells["HoTen_PMN"].Value.ToString();
-                dr["DiaChi"] = item.Cells["DiaChi_PMN"].Value.ToString();
-                DateTime NgayBK = new DateTime();
-                DateTime.TryParse(item.Cells["NgayBK_PMN"].Value.ToString(), out NgayBK);
-                dr["NgayBK"] = NgayBK.ToString("dd/MM/yyyy");
-                dr["NgayGiaiTrach"] = NgayBK.ToString("dd/MM/yyyy");
-                dr["SoTien"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["SoTien_PMN"].Value.ToString()));
-                dr["TongCong"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["TongCong_PMN"].Value.ToString()));
-                if (item.Cells["PhiMoNuoc"].Value.ToString() != "")
+                foreach (DataGridViewRow item in dgvPhiMoNuoc.SelectedRows)
                 {
-                    dr["PhiMoNuoc"] = int.Parse(item.Cells["PhiMoNuoc"].Value.ToString());
-                    dr["PhiMoNuocChu"] = _cPhiMoNuoc.ConvertMoneyToWord(item.Cells["PhiMoNuoc"].Value.ToString());
+                    DataRow dr = ds.Tables["PhiMoNuoc"].NewRow();
+                    dr["SoPhieu"] = item.Cells["MaPMN"].Value.ToString().Insert(item.Cells["MaPMN"].Value.ToString().Length - 2, "-");
+                    dr["DanhBo"] = item.Cells["DanhBo_PMN"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = item.Cells["HoTen_PMN"].Value.ToString();
+                    dr["DiaChi"] = item.Cells["DiaChi_PMN"].Value.ToString();
+                    DateTime NgayBK = new DateTime();
+                    DateTime.TryParse(item.Cells["NgayBK_PMN"].Value.ToString(), out NgayBK);
+                    dr["NgayBK"] = NgayBK.ToString("dd/MM/yyyy");
+                    dr["NgayGiaiTrach"] = NgayBK.ToString("dd/MM/yyyy");
+                    dr["SoTien"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["SoTien_PMN"].Value.ToString()));
+                    dr["TongCong"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["TongCong_PMN"].Value.ToString()));
+                    if (item.Cells["PhiMoNuoc"].Value.ToString() != "")
+                    {
+                        dr["PhiMoNuoc"] = int.Parse(item.Cells["PhiMoNuoc"].Value.ToString());
+                        dr["PhiMoNuocChu"] = _cPhiMoNuoc.ConvertMoneyToWord(item.Cells["PhiMoNuoc"].Value.ToString());
+                    }
+                    else
+                    {
+                        dr["PhiMoNuoc"] = 50000;
+                        dr["PhiMoNuocChu"] = _cPhiMoNuoc.ConvertMoneyToWord(dr["PhiMoNuoc"].ToString());
+                    }
+                    dr["SoTK"] = item.Cells["SoTK_PMN"].Value.ToString();
+                    dr["ChucVu"] = CNguoiKy.getChucVu();
+                    dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+                    ds.Tables["PhiMoNuoc"].Rows.Add(dr);
                 }
-                else
-                {
-                    dr["PhiMoNuoc"] = 50000;
-                    dr["PhiMoNuocChu"] = _cPhiMoNuoc.ConvertMoneyToWord(dr["PhiMoNuoc"].ToString());
-                }
-                dr["SoTK"] = item.Cells["SoTK_PMN"].Value.ToString();
-                dr["ChucVu"] = CNguoiKy.getChucVu();
-                dr["NguoiKy"] = CNguoiKy.getNguoiKy();
-                ds.Tables["PhiMoNuoc"].Rows.Add(dr);
+                rptChuyenPhiMoNuoc rpt = new rptChuyenPhiMoNuoc();
+                rpt.SetDataSource(ds);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.Show();
             }
+            else if (radPhiMoNuocRieng.Checked)
+            {
+                foreach (DataGridViewRow item in dgvPhiMoNuoc.SelectedRows)
+                {
+                    DataRow dr = ds.Tables["KQDongNuoc"].NewRow();
+                    dr["NhanVien"] = item.Cells["CreateBy"].Value;
+                    dr["STT"] = item.Cells["MaKQDN"].Value;
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value;
+                    dr["HoTen"] = item.Cells["HoTen"].Value;
+                    dr["DiaChi"] = item.Cells["DiaChi"].Value;
+                    dr["Co"] = item.Cells["Co"].Value;
+                    dr["Hieu"] = item.Cells["Hieu"].Value;
+                    dr["SoThan"] = item.Cells["SoThan"].Value;
+                    dr["ChiSo"] = item.Cells["ChiSoDN"].Value;
+                    dr["GhiChu"] = item.Cells["LyDo"].Value;
+                    dr["PhiMoNuoc"] = item.Cells["PhiMoNuoc"].Value;
+                    DateTime NgayDN = new DateTime();
+                    DateTime.TryParse(item.Cells["NgayDN"].Value.ToString(), out NgayDN);
+                    dr["NgayDN"] = " " + NgayDN.Hour + " giờ " + NgayDN.Minute + " phút, ngày " + NgayDN.Day + " tháng " + NgayDN.Month + " năm " + NgayDN.Year;
 
-            rptChuyenPhiMoNuoc rpt = new rptChuyenPhiMoNuoc();
-            rpt.SetDataSource(ds);
-            frmBaoCao frm = new frmBaoCao(rpt);
-            frm.Show();
+                    ds.Tables["KQDongNuoc"].Rows.Add(dr);
+                }
+                rptBBDongNuoc rpt = new rptBBDongNuoc();
+                rpt.SetDataSource(ds);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

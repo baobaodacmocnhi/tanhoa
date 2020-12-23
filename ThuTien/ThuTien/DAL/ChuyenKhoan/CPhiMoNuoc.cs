@@ -76,12 +76,41 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.TT_PhiMoNuocs.SingleOrDefault(item => item.MaPMN == MaPMN);
         }
 
-        public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_Chung(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             //return LINQToDataTable(_db.TT_PhiMoNuocs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date).ToList().OrderByDescending(item=>item.CreateDate));
             string sql = "select a.*,CoDHN=b.Co from TT_PhiMoNuoc a left join TT_KQDongNuoc b on a.MaKQDN=b.MaKQDN"
                         + " where CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' order by a.CreateDate desc";
             return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getDS_Rieng(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from itemP in _db.TT_BangKe_PhiMoNuocs
+                        join itemKQ in _db.TT_KQDongNuocs on itemP.MaKQDN equals itemKQ.MaKQDN
+                        join itemND in _db.TT_NguoiDungs on itemKQ.CreateBy equals itemND.CreateBy
+                        where itemP.CreateDate.Value.Date >= FromCreateDate.Date && itemKQ.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            itemKQ.MaDN,
+                            itemKQ.MaKQDN,
+                            itemKQ.CreateDate,
+                            itemKQ.DanhBo,
+                            itemKQ.HoTen,
+                            itemKQ.DiaChi,
+                            itemKQ.NgayDN,
+                            itemKQ.PhiMoNuoc,
+                            itemKQ.DongPhi,
+                            itemKQ.NgayDongPhi,
+                            itemKQ.ChuyenKhoan,
+                            itemKQ.Co,
+                            itemKQ.Hieu,
+                            itemKQ.SoThan,
+                            itemKQ.ChiSoDN,
+                            itemKQ.LyDo,
+                            CreateBy=itemND.HoTen,
+                        };
+            return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
         }
 
         public int getPhiMoNuoc_Chot(bool Chot)

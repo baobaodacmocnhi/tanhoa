@@ -614,6 +614,7 @@
             this.mnuPhiMoNuoc.Name = "mnuPhiMoNuoc";
             this.mnuPhiMoNuoc.Size = new System.Drawing.Size(211, 22);
             this.mnuPhiMoNuoc.Text = "Phí Mở Nước";
+            this.mnuPhiMoNuoc.Visible = false;
             this.mnuPhiMoNuoc.Click += new System.EventHandler(this.mnuPhiMoNuoc_Click);
             // 
             // mnuVanTu
