@@ -19,7 +19,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 {
     public partial class frmBangKe_PhiMoNuoc : Form
     {
-        string _mnu = "mnuBangKe_PhiMoNuoc";
+        string _mnu = "mnuBangKePhiMoNuoc";
         CBangKe_PhiMoNuoc _cBangKe_PMN = new CBangKe_PhiMoNuoc();
         CNganHang _cNganHang = new CNganHang();
         CDHN _cDHN = new CDHN();
