@@ -75,6 +75,17 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvToTrinh = new System.Windows.Forms.DataGridView();
+            this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ThuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TraTrinhKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoPhieuTong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnIn = new System.Windows.Forms.Button();
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -95,17 +106,6 @@
             this.chkSelectAll = new System.Windows.Forms.CheckBox();
             this.txtNoiDungSoPhieuTong = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ThuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.TraTrinhKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoPhieuTong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
@@ -381,6 +381,7 @@
             this.txtDanhBo.Name = "txtDanhBo";
             this.txtDanhBo.Size = new System.Drawing.Size(100, 22);
             this.txtDanhBo.TabIndex = 1;
+            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
             // 
             // label1
             // 
@@ -553,6 +554,84 @@
             this.dgvToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvToTrinh_CellFormatting);
             this.dgvToTrinh.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvToTrinh_CellValidating);
             this.dgvToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvToTrinh_RowPostPaint);
+            // 
+            // In
+            // 
+            this.In.FalseValue = "false";
+            this.In.HeaderText = "In";
+            this.In.IndeterminateValue = "false";
+            this.In.Name = "In";
+            this.In.TrueValue = "true";
+            this.In.Width = 30;
+            // 
+            // ThuDuocKy
+            // 
+            this.ThuDuocKy.DataPropertyName = "ThuDuocKy";
+            this.ThuDuocKy.HeaderText = "Được Ký";
+            this.ThuDuocKy.Name = "ThuDuocKy";
+            this.ThuDuocKy.Width = 50;
+            // 
+            // TraTrinhKy
+            // 
+            this.TraTrinhKy.DataPropertyName = "TraTrinhKy";
+            this.TraTrinhKy.HeaderText = "Trả Trình Ký";
+            this.TraTrinhKy.Name = "TraTrinhKy";
+            this.TraTrinhKy.Width = 50;
+            // 
+            // IDCT
+            // 
+            this.IDCT.DataPropertyName = "IDCT";
+            this.IDCT.HeaderText = "Mã TT";
+            this.IDCT.Name = "IDCT";
+            this.IDCT.Width = 80;
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            this.MaDon.Width = 80;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 150;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 200;
+            // 
+            // VeViec
+            // 
+            this.VeViec.DataPropertyName = "VeViec";
+            this.VeViec.HeaderText = "Về Việc";
+            this.VeViec.Name = "VeViec";
+            this.VeViec.Width = 200;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.Width = 200;
+            // 
+            // SoPhieuTong
+            // 
+            this.SoPhieuTong.DataPropertyName = "SoPhieuTong";
+            this.SoPhieuTong.HeaderText = "Số Phiếu Tổng";
+            this.SoPhieuTong.Name = "SoPhieuTong";
+            this.SoPhieuTong.Width = 50;
             // 
             // btnIn
             // 
@@ -752,84 +831,6 @@
             this.label14.Size = new System.Drawing.Size(112, 16);
             this.label14.TabIndex = 24;
             this.label14.Text = "Nội Dung In Tổng";
-            // 
-            // In
-            // 
-            this.In.FalseValue = "false";
-            this.In.HeaderText = "In";
-            this.In.IndeterminateValue = "false";
-            this.In.Name = "In";
-            this.In.TrueValue = "true";
-            this.In.Width = 30;
-            // 
-            // ThuDuocKy
-            // 
-            this.ThuDuocKy.DataPropertyName = "ThuDuocKy";
-            this.ThuDuocKy.HeaderText = "Được Ký";
-            this.ThuDuocKy.Name = "ThuDuocKy";
-            this.ThuDuocKy.Width = 50;
-            // 
-            // TraTrinhKy
-            // 
-            this.TraTrinhKy.DataPropertyName = "TraTrinhKy";
-            this.TraTrinhKy.HeaderText = "Trả Trình Ký";
-            this.TraTrinhKy.Name = "TraTrinhKy";
-            this.TraTrinhKy.Width = 50;
-            // 
-            // IDCT
-            // 
-            this.IDCT.DataPropertyName = "IDCT";
-            this.IDCT.HeaderText = "Mã TT";
-            this.IDCT.Name = "IDCT";
-            this.IDCT.Width = 80;
-            // 
-            // MaDon
-            // 
-            this.MaDon.DataPropertyName = "MaDon";
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            this.MaDon.Width = 80;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 200;
-            // 
-            // VeViec
-            // 
-            this.VeViec.DataPropertyName = "VeViec";
-            this.VeViec.HeaderText = "Về Việc";
-            this.VeViec.Name = "VeViec";
-            this.VeViec.Width = 200;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.Width = 200;
-            // 
-            // SoPhieuTong
-            // 
-            this.SoPhieuTong.DataPropertyName = "SoPhieuTong";
-            this.SoPhieuTong.HeaderText = "Số Phiếu Tổng";
-            this.SoPhieuTong.Name = "SoPhieuTong";
-            this.SoPhieuTong.Width = 50;
             // 
             // frmToTrinh
             // 

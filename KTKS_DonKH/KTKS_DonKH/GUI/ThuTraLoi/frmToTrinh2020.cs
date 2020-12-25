@@ -345,6 +345,20 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             }
         }
 
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtDanhBo.Text.Trim() != "" && e.KeyChar == 13)
+            {
+                _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ",""));
+                if (_hoadon != null)
+                {
+                    LoadTTKH(_hoadon);
+                }
+                else
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
@@ -930,6 +944,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 }
             }
         }
+
+       
 
 
     }
