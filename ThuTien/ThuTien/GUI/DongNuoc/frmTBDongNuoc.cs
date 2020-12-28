@@ -27,7 +27,7 @@ namespace ThuTien.GUI.DongNuoc
         CHoaDon _cHoaDon = new CHoaDon();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CNguoiDung _cNguoiDung = new CNguoiDung();
-        CDHN _cDocSo = new CDHN();
+        CDHN _cDHN = new CDHN();
 
         DataRowView _selectedRow = null;
 
@@ -138,7 +138,7 @@ namespace ThuTien.GUI.DongNuoc
                             TT_DongNuoc dongnuoc = new TT_DongNuoc();
                             dongnuoc.DanhBo = lstHDTemp[0].DANHBA;
                             dongnuoc.HoTen = lstHDTemp[0].TENKH;
-                            dongnuoc.DiaChi = lstHDTemp[0].SO + " " + lstHDTemp[0].DUONG + _cDocSo.GetPhuongQuan(lstHDTemp[0].DANHBA);
+                            dongnuoc.DiaChi = lstHDTemp[0].SO + " " + lstHDTemp[0].DUONG + _cDHN.GetPhuongQuan(lstHDTemp[0].DANHBA);
                             dongnuoc.MLT = lstHDTemp[0].MALOTRINH;
                             //dongnuoc.MaNV_DongNuoc = 0;
                             //dongnuoc.CreateBy = lstHDTemp[0].MaNV_HanhThu;
@@ -288,11 +288,11 @@ namespace ThuTien.GUI.DongNuoc
                         dr["ThemHoaDon"] = item["ThemHoaDon"];
                         dr["HoTen"] = item["HoTen"];
                         dr["DiaChi"] = item["DiaChi"];
-                        dr["DienThoai"] = _cDocSo.GetDienThoai(item["DanhBo"].ToString());
+                        dr["DienThoai"] = _cDHN.GetDienThoai(item["DanhBo"].ToString());
                         if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
                         {
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                            TB_DULIEUKHACHHANG ttkh = _cDocSo.GetTTKH(item["DanhBo"].ToString());
+                            TB_DULIEUKHACHHANG ttkh = _cDHN.GetTTKH(item["DanhBo"].ToString());
                             if (ttkh != null)
                                 dr["DiaChiDHN"] = ttkh.SONHA + " " + ttkh.TENDUONG;
                         }
@@ -621,11 +621,11 @@ namespace ThuTien.GUI.DongNuoc
                     dr["ThemHoaDon"] = item["ThemHoaDon"];
                     dr["HoTen"] = item["HoTen"];
                     dr["DiaChi"] = item["DiaChi"];
-                    dr["DienThoai"] = _cDocSo.GetDienThoai(item["DanhBo"].ToString());
+                    dr["DienThoai"] = _cDHN.GetDienThoai(item["DanhBo"].ToString());
                     if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
                     {
                         dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        TB_DULIEUKHACHHANG ttkh = _cDocSo.GetTTKH(item["DanhBo"].ToString());
+                        TB_DULIEUKHACHHANG ttkh = _cDHN.GetTTKH(item["DanhBo"].ToString());
                         if (ttkh != null)
                         {
                             dr["DiaChiDHN"] = ttkh.SONHA + " " + ttkh.TENDUONG;

@@ -79,7 +79,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         public DataTable getDS_Chung(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             //return LINQToDataTable(_db.TT_PhiMoNuocs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date).ToList().OrderByDescending(item=>item.CreateDate));
-            string sql = "select a.*,CoDHN=b.Co from TT_PhiMoNuoc a left join TT_KQDongNuoc b on a.MaKQDN=b.MaKQDN"
+            string sql = "select a.*,b.Co from TT_PhiMoNuoc a left join TT_KQDongNuoc b on a.MaKQDN=b.MaKQDN"
                         + " where CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' order by a.CreateDate desc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -88,8 +88,8 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             var query = from itemP in _db.TT_BangKe_PhiMoNuocs
                         join itemKQ in _db.TT_KQDongNuocs on itemP.MaKQDN equals itemKQ.MaKQDN
-                        join itemND in _db.TT_NguoiDungs on itemKQ.CreateBy equals itemND.CreateBy
-                        where itemP.CreateDate.Value.Date >= FromCreateDate.Date && itemKQ.CreateDate.Value.Date <= ToCreateDate.Date
+                        join itemND in _db.TT_NguoiDungs on itemKQ.CreateBy equals itemND.MaND
+                        where itemP.CreateDate.Value.Date >= FromCreateDate.Date && itemP.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
                             itemKQ.MaDN,
@@ -110,7 +110,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             itemKQ.LyDo,
                             CreateBy=itemND.HoTen,
                         };
-            return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
+            return LINQToDataTable(query.ToList());
         }
 
         public int getPhiMoNuoc_Chot(bool Chot)

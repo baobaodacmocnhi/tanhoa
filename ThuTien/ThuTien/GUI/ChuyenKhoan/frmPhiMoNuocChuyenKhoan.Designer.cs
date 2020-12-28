@@ -69,9 +69,11 @@
             this.Co = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoThan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChiSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChiSoDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaKQDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTienDu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhiMoNuoc)).BeginInit();
             this.SuspendLayout();
@@ -179,9 +181,11 @@
             this.Co,
             this.Hieu,
             this.SoThan,
-            this.ChiSo,
+            this.ChiSoDN,
             this.NgayDN,
-            this.CreateBy});
+            this.CreateBy,
+            this.LyDo,
+            this.MaKQDN});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -426,12 +430,12 @@
             this.SoThan.Name = "SoThan";
             this.SoThan.Visible = false;
             // 
-            // ChiSo
+            // ChiSoDN
             // 
-            this.ChiSo.DataPropertyName = "ChiSo";
-            this.ChiSo.HeaderText = "ChiSo";
-            this.ChiSo.Name = "ChiSo";
-            this.ChiSo.Visible = false;
+            this.ChiSoDN.DataPropertyName = "ChiSoDN";
+            this.ChiSoDN.HeaderText = "ChiSo";
+            this.ChiSoDN.Name = "ChiSoDN";
+            this.ChiSoDN.Visible = false;
             // 
             // NgayDN
             // 
@@ -447,11 +451,25 @@
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.Visible = false;
             // 
+            // LyDo
+            // 
+            this.LyDo.DataPropertyName = "LyDo";
+            this.LyDo.HeaderText = "LyDo";
+            this.LyDo.Name = "LyDo";
+            this.LyDo.Visible = false;
+            // 
+            // MaKQDN
+            // 
+            this.MaKQDN.DataPropertyName = "MaKQDN";
+            this.MaKQDN.HeaderText = "MaKQDN";
+            this.MaKQDN.Name = "MaKQDN";
+            this.MaKQDN.Visible = false;
+            // 
             // frmPhiMoNuocChuyenKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1369, 657);
+            this.ClientSize = new System.Drawing.Size(1368, 657);
             this.Controls.Add(this.radPhiMoNuocRieng);
             this.Controls.Add(this.radPhiMoNuocChung);
             this.Controls.Add(this.chkChotTatCa);
@@ -511,8 +529,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Co;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoThan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ChiSo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChiSoDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LyDo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaKQDN;
     }
 }

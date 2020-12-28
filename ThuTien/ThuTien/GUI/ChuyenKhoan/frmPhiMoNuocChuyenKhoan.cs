@@ -16,6 +16,7 @@ using System.Transactions;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.Doi;
 using ThuTien.BaoCao.DongNuoc;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -26,6 +27,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CPhiMoNuoc _cPhiMoNuoc = new CPhiMoNuoc();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CBangKe _cBangKe = new CBangKe();
+        CDHN _cDHN = new CDHN();
 
         public frmPhiMoNuocChuyenKhoan()
         {
@@ -53,8 +55,9 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             foreach (DataGridViewRow item in dgvPhiMoNuoc.Rows)
             {
-                if (int.Parse(item.Cells["PhiMoNuoc"].Value.ToString()) / _cDongNuoc.GetPhiMoNuoc(int.Parse(item.Cells["CoDHN"].Value.ToString())) > 1)
-                    item.DefaultCellStyle.BackColor = Color.Orange;
+                if (item.Cells["PhiMoNuoc"].Value != null && item.Cells["PhiMoNuoc"].Value.ToString() != "")
+                    if (int.Parse(item.Cells["PhiMoNuoc"].Value.ToString()) / _cDongNuoc.GetPhiMoNuoc(int.Parse(item.Cells["Co"].Value.ToString())) > 1)
+                        item.DefaultCellStyle.BackColor = Color.Orange;
             }
         }
 
@@ -140,7 +143,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             dsBaoCao ds = new dsBaoCao();
             if (radPhiMoNuocChung.Checked)
             {
-                foreach (DataGridViewRow item in dgvPhiMoNuoc.SelectedRows)
+                foreach (DataGridViewRow item in dgvPhiMoNuoc.Rows)
                 {
                     DataRow dr = ds.Tables["PhiMoNuoc"].NewRow();
                     dr["SoPhieu"] = item.Cells["MaPMN"].Value.ToString().Insert(item.Cells["MaPMN"].Value.ToString().Length - 2, "-");
@@ -175,14 +178,14 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
             else if (radPhiMoNuocRieng.Checked)
             {
-                foreach (DataGridViewRow item in dgvPhiMoNuoc.SelectedRows)
+                foreach (DataGridViewRow item in dgvPhiMoNuoc.Rows)
                 {
                     DataRow dr = ds.Tables["KQDongNuoc"].NewRow();
                     dr["NhanVien"] = item.Cells["CreateBy"].Value;
                     dr["STT"] = item.Cells["MaKQDN"].Value;
-                    dr["DanhBo"] = item.Cells["DanhBo"].Value;
-                    dr["HoTen"] = item.Cells["HoTen"].Value;
-                    dr["DiaChi"] = item.Cells["DiaChi"].Value;
+                    dr["DanhBo"] = item.Cells["DanhBo_PMN"].Value;
+                    dr["HoTen"] = item.Cells["HoTen_PMN"].Value;
+                    dr["DiaChi"] = item.Cells["DiaChi_PMN"].Value + _cDHN.GetPhuongQuan(item.Cells["DanhBo_PMN"].Value.ToString());
                     dr["Co"] = item.Cells["Co"].Value;
                     dr["Hieu"] = item.Cells["Hieu"].Value;
                     dr["SoThan"] = item.Cells["SoThan"].Value;
@@ -191,7 +194,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["PhiMoNuoc"] = item.Cells["PhiMoNuoc"].Value;
                     DateTime NgayDN = new DateTime();
                     DateTime.TryParse(item.Cells["NgayDN"].Value.ToString(), out NgayDN);
-                    dr["NgayDN"] = " " + NgayDN.Hour + " giờ " + NgayDN.Minute + " phút, ngày " + NgayDN.Day + " tháng " + NgayDN.Month + " năm " + NgayDN.Year;
+                    dr["NgayDN"] = NgayDN;
 
                     ds.Tables["KQDongNuoc"].Rows.Add(dr);
                 }
