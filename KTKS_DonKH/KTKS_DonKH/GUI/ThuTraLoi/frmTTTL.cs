@@ -529,7 +529,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             }
                             if (_dontu_ChiTiet != null)
                             {
-                                if (_cDonTu.Them_LichSu(cttttl.CreateDate.Value, "ThuTraLoi", "Đã Gửi Thư Trả Lời, " + cttttl.VeViec, (int)cttttl.MaCTTTTL, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
+                                if (_cDonTu.Them_LichSu(cttttl.CreateDate.Value, "TTTL", "Đã Lập Thư Trả Lời, " + cttttl.VeViec, (int)cttttl.MaCTTTTL, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
                                     scope.Complete();
                             }
                             else

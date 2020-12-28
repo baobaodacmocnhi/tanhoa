@@ -313,7 +313,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         {
             if (txtDanhBo.Text.Trim() != "" && e.KeyChar == 13)
             {
-                _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
+                _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                 if (_hoadon != null)
                 {
                     LoadTTKH(_hoadon);
