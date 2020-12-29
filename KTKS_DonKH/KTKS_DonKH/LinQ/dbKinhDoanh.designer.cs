@@ -26790,6 +26790,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _CT_HoNgheo;
 		
+		private bool _CT_HopDongNganHang;
+		
 		private System.Nullable<int> _MaPhong;
 		
 		private string _TinhTrang;
@@ -26924,6 +26926,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCT_Khac_GhiChuChanged();
     partial void OnCT_HoNgheoChanging(bool value);
     partial void OnCT_HoNgheoChanged();
+    partial void OnCT_HopDongNganHangChanging(bool value);
+    partial void OnCT_HopDongNganHangChanged();
     partial void OnMaPhongChanging(System.Nullable<int> value);
     partial void OnMaPhongChanged();
     partial void OnTinhTrangChanging(string value);
@@ -27818,6 +27822,26 @@ namespace KTKS_DonKH.LinQ
 					this._CT_HoNgheo = value;
 					this.SendPropertyChanged("CT_HoNgheo");
 					this.OnCT_HoNgheoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_HopDongNganHang", DbType="Bit NOT NULL")]
+		public bool CT_HopDongNganHang
+		{
+			get
+			{
+				return this._CT_HopDongNganHang;
+			}
+			set
+			{
+				if ((this._CT_HopDongNganHang != value))
+				{
+					this.OnCT_HopDongNganHangChanging(value);
+					this.SendPropertyChanging();
+					this._CT_HopDongNganHang = value;
+					this.SendPropertyChanged("CT_HopDongNganHang");
+					this.OnCT_HopDongNganHangChanged();
 				}
 			}
 		}

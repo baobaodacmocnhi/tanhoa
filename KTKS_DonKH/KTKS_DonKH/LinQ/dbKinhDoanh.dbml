@@ -1158,6 +1158,7 @@
       <Column Name="CT_Khac" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CT_Khac_GhiChu" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="CT_HoNgheo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CT_HopDongNganHang" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MaPhong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TinhTrang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="HoanThanh" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />

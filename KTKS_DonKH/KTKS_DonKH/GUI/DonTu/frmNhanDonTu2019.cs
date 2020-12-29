@@ -171,6 +171,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         dgvDanhBo.Rows.Insert(dgvDanhBo.RowCount - 1, 1);
 
                         dgvDanhBo["ID", dgvDanhBo.RowCount - 2].Value = item.ID;
+                        dgvDanhBo["STT", dgvDanhBo.RowCount - 2].Value = item.STT;
                         dgvDanhBo["DanhBo", dgvDanhBo.RowCount - 2].Value = item.DanhBo;
                         dgvDanhBo["HopDong", dgvDanhBo.RowCount - 2].Value = item.HopDong;
                         dgvDanhBo["HoTen", dgvDanhBo.RowCount - 2].Value = item.HoTen;
@@ -216,7 +217,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 txtNoiDungThuongVu.Text = entity.Name_NhomDon;
                 txtVanDeKhac.Text = entity.VanDeKhac;
 
-                chkCT_HoaDon.Checked = entity.CT_HoaDon;
+                chkCT_HopDongNganHang.Checked = entity.CT_HopDongNganHang;
                 chkCT_GiayBao.Checked = entity.CT_GiayBao;
                 chkCT_HDTN_CQN.Checked = entity.CT_HDTN_CQN;
                 chkCT_CQN.Checked = entity.CT_CQN;
@@ -302,7 +303,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 //dgvDanhBo.Rows.Add();
             }
 
-            chkCT_HoaDon.Checked = false;
+            chkCT_HopDongNganHang.Checked = false;
             chkCT_GiayBao.Checked = false;
             chkCT_HDTN_CQN.Checked = false;
             chkCT_CQN.Checked = false;
@@ -602,8 +603,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     //    entity.Name_NhomDon_ChiTiet = cmbNhomDon_ChiTiet.Text;
                     //}
                     ///
-                    if (chkCT_HoaDon.Checked)
-                        entity.CT_HoaDon = true;
+                    if (chkCT_HopDongNganHang.Checked)
+                        entity.CT_HopDongNganHang = true;
                     if (chkCT_GiayBao.Checked)
                         entity.CT_GiayBao = true;
                     if (chkCT_HDTN_CQN.Checked)
@@ -785,10 +786,10 @@ namespace KTKS_DonKH.GUI.DonTu
                         //    _dontu.Name_NhomDon_ChiTiet = cmbNhomDon_ChiTiet.Text;
                         //}
                         ///
-                        if (chkCT_HoaDon.Checked)
-                            _dontu.CT_HoaDon = true;
+                        if (chkCT_HopDongNganHang.Checked)
+                            _dontu.CT_HopDongNganHang = true;
                         else
-                            _dontu.CT_HoaDon = false;
+                            _dontu.CT_HopDongNganHang = false;
 
                         if (chkCT_GiayBao.Checked)
                             _dontu.CT_GiayBao = true;
@@ -963,13 +964,13 @@ namespace KTKS_DonKH.GUI.DonTu
 
                 #region CheckBox
 
-                if (entity.CT_HoaDon)
+                if (entity.CT_HopDongNganHang)
                 {
-                    dr["CT_HoaDon"] = true;
+                    dr["CT_HopDongNganHang"] = true;
                 }
                 else
                 {
-                    dr["CT_HoaDon"] = false;
+                    dr["CT_HopDongNganHang"] = false;
                 }
 
                 if (entity.CT_GiayBao)
