@@ -180,6 +180,9 @@ namespace ThuTien.GUI.TongHop
                                 hd.SOHOADON = hd.SoHoaDonCu;
                                 hd.SoHoaDonCu = null;
                             }
+                            hd.GB = dchd.GiaBieu;
+                            hd.DM = dchd.DinhMuc;
+                            hd.TIEUTHU = dchd.TIEUTHU_BD;
                             hd.GIABAN = dchd.GIABAN_BD;
                             hd.THUE = dchd.THUE_BD;
                             hd.PHI = dchd.PHI_BD;

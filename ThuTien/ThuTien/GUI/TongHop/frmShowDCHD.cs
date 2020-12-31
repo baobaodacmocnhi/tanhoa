@@ -272,6 +272,9 @@ namespace ThuTien.GUI.TongHop
                                 ///lưu lịch sử
                                 LuuLichSuDC(_dchd);
 
+                                hd.GB = _dchd.GB_DC;
+                                hd.DM = _dchd.DM_DC;
+                                hd.TIEUTHU = _dchd.TIEUTHU_DC;
                                 hd.GIABAN = _dchd.GIABAN_END;
                                 hd.THUE = _dchd.THUE_END;
                                 hd.PHI = _dchd.PHI_END;
@@ -363,23 +366,25 @@ namespace ThuTien.GUI.TongHop
                             ///hóa đơn điện tử k áp dụng
                             else
                             {
-                                dchd.GIABAN_DC = decimal.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
-                                dchd.GIABAN_END = decimal.Parse(txtTienNuoc_End.Text.Trim().Replace(".", ""));
+                                //dchd.GIABAN_DC = decimal.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
+                                //dchd.GIABAN_END = decimal.Parse(txtTienNuoc_End.Text.Trim().Replace(".", ""));
 
-                                dchd.THUE_DC = decimal.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
-                                dchd.THUE_END = decimal.Parse(txtThueGTGT_End.Text.Trim().Replace(".", ""));
+                                //dchd.THUE_DC = decimal.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
+                                //dchd.THUE_END = decimal.Parse(txtThueGTGT_End.Text.Trim().Replace(".", ""));
 
-                                dchd.PHI_DC = decimal.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
-                                dchd.PHI_END = decimal.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
+                                //dchd.PHI_DC = decimal.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
+                                //dchd.PHI_END = decimal.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
 
-                                dchd.TONGCONG_DC = decimal.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
-                                dchd.TONGCONG_END = decimal.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
+                                //dchd.TONGCONG_DC = decimal.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
+                                //dchd.TONGCONG_END = decimal.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
 
-                                if (dchd.TONGCONG_BD.Value > dchd.TONGCONG_END.Value)
-                                    dchd.TangGiam = "Giảm";
-                                else
-                                    if (dchd.TONGCONG_BD.Value < dchd.TONGCONG_END.Value)
-                                        dchd.TangGiam = "Tăng";
+                                //if (dchd.TONGCONG_BD.Value > dchd.TONGCONG_END.Value)
+                                //    dchd.TangGiam = "Giảm";
+                                //else
+                                //    if (dchd.TONGCONG_BD.Value < dchd.TONGCONG_END.Value)
+                                //        dchd.TangGiam = "Tăng";
+                                MessageBox.Show("Liên hệ Bảo Bảo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return;
                             }
 
                             if (_cDCHD.Them(dchd))
@@ -387,6 +392,9 @@ namespace ThuTien.GUI.TongHop
                                 ///lưu lịch sử
                                 LuuLichSuDC(dchd);
 
+                                _hoadon.GB = dchd.GB_DC;
+                                _hoadon.DM = dchd.DM_DC;
+                                _hoadon.TIEUTHU = dchd.TIEUTHU_DC;
                                 _hoadon.GIABAN = dchd.GIABAN_END;
                                 _hoadon.THUE = dchd.THUE_END;
                                 _hoadon.PHI = dchd.PHI_END;
