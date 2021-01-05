@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.ThuTraLoi
 {
-    partial class frmDSToTrinh2020
+    partial class frmDSToTrinh2021
     {
         /// <summary>
         /// Required designer variable.
@@ -193,6 +193,7 @@
             this.dgvToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvToTrinh_CellFormatting);
             this.dgvToTrinh.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvToTrinh_CellValidating);
             this.dgvToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvToTrinh_RowPostPaint);
+            this.dgvToTrinh.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvToTrinh_KeyDown);
             // 
             // In
             // 
@@ -287,7 +288,12 @@
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.xoaFile_dgvHinh});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(101, 26);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(68, 26);
+            // 
+            // xoaFile_dgvHinh
+            // 
+            this.xoaFile_dgvHinh.Name = "xoaFile_dgvHinh";
+            this.xoaFile_dgvHinh.Size = new System.Drawing.Size(67, 22);
             // 
             // chkSelectAll
             // 
@@ -301,7 +307,7 @@
             this.chkSelectAll.UseVisualStyleBackColor = true;
             this.chkSelectAll.CheckedChanged += new System.EventHandler(this.chkSelectAll_CheckedChanged);
             // 
-            // frmDSToTrinh
+            // frmDSToTrinh2021
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -319,7 +325,7 @@
             this.Controls.Add(this.dgvToTrinh);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
-            this.Name = "frmDSToTrinh";
+            this.Name = "frmDSToTrinh2021";
             this.Text = "Tờ Trình";
             this.Load += new System.EventHandler(this.frmToTrinh_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmToTrinh_KeyUp);

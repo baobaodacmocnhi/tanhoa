@@ -842,7 +842,18 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnuToTrinh", "Xem"))
             {
-                frmToTrinh frm = new frmToTrinh();
+                frmToTrinh2021 frm = new frmToTrinh2021();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuDSToTrinh_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuDSToTrinh", "Xem"))
+            {
+                frmDSToTrinh2021 frm = new frmDSToTrinh2021();
                 OpenForm(frm);
             }
             else
@@ -1086,6 +1097,8 @@ namespace KTKS_DonKH
         }
 
         #endregion
+
+        
 
         
 

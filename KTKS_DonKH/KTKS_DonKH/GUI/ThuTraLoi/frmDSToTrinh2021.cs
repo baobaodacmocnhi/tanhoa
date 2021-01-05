@@ -23,7 +23,7 @@ using CrystalDecisions.CrystalReports.Engine;
 
 namespace KTKS_DonKH.GUI.ThuTraLoi
 {
-    public partial class frmDSToTrinh2020 : Form
+    public partial class frmDSToTrinh2021 : Form
     {
         string _mnu = "mnuToTrinh";
         CDonTu _cDonTu = new CDonTu();
@@ -40,12 +40,12 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         ToTrinh_ChiTiet _cttt = null;
         int _IDCT = -1;
 
-        public frmDSToTrinh2020()
+        public frmDSToTrinh2021()
         {
             InitializeComponent();
         }
 
-        public frmDSToTrinh2020(int IDCT)
+        public frmDSToTrinh2021(int IDCT)
         {
             _IDCT = IDCT;
             InitializeComponent();
@@ -298,6 +298,15 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 {
                     dgvToTrinh["In", i].Value = false;
                 }
+        }
+
+        private void dgvToTrinh_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvToTrinh.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                frmToTrinh2021 frm = new frmToTrinh2021(int.Parse(dgvToTrinh["IDCT", dgvToTrinh.CurrentRow.Index].Value.ToString()));
+                frm.ShowDialog();
+            }
         }
 
 

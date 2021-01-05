@@ -329,7 +329,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public bool Sua_ChiTiet_DanhSach(ToTrinh_ChiTiet en)
+        public bool Sua_ChiTiet_DanhSach(ToTrinh_ChiTiet_DanhSach en)
         {
             try
             {
@@ -343,6 +343,26 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                 Refresh();
                 throw ex;
             }
+        }
+
+        public bool Xoa_ChiTiet_DanhSach(ToTrinh_ChiTiet_DanhSach en)
+        {
+            try
+            {
+                db.ToTrinh_ChiTiet_DanhSaches.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public ToTrinh_ChiTiet_DanhSach get_ChiTiet_DanhSach(int ID)
+        {
+            return db.ToTrinh_ChiTiet_DanhSaches.SingleOrDefault(item=>item.IDDanhSach==ID);
         }
 
         public int get_IDDanhSach_Max()

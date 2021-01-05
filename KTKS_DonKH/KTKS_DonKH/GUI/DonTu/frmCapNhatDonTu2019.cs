@@ -130,8 +130,13 @@ namespace KTKS_DonKH.GUI.DonTu
                     if (en_ChiTiet != null)
                     {
                         txtMaDon.Text += "." + en_ChiTiet.STT;
-                        dgvDanhBo.Rows[en_ChiTiet.STT.Value - 1].Selected = true;
-                        dgvDanhBo.CurrentCell = dgvDanhBo.Rows[en_ChiTiet.STT.Value - 1].Cells["DanhBo"];
+                        foreach (DataGridViewRow item in dgvDanhBo.Rows)
+                            if (int.Parse(item.Cells["STT"].Value.ToString()) == en_ChiTiet.STT)
+                            {
+                                item.Selected = true;
+                                dgvDanhBo.CurrentCell = item.Cells["DanhBo"];
+                            }
+                        
                         chkHoanThanh.Checked = en_ChiTiet.HoanThanh;
                     }
                 }
@@ -340,6 +345,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                     _dontu.ID_NhomDon += ";" + chkcmbQuanLy.Properties.Items[i].Value.ToString();
                             }
                         _dontu.Name_NhomDon = txtNoiDungThuongVu.Text.Trim();
+                        _dontu.VanDeKhac = txtVanDeKhac.Text.Trim();
                         _cDonTu.SubmitChanges();
                     }
                     //cập nhật
@@ -818,13 +824,13 @@ namespace KTKS_DonKH.GUI.DonTu
             }
             catch (Exception)
             {
-                
+
             }
         }
 
         private void dgvLichSuDonTu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
 
         private void dgvDanhBo_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -997,7 +1003,7 @@ namespace KTKS_DonKH.GUI.DonTu
             }
         }
 
-       
+
 
     }
 }

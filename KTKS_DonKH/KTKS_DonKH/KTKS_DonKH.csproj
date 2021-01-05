@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1463</ApplicationRevision>
+    <ApplicationRevision>1472</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1134,17 +1134,17 @@
     <Compile Include="GUI\ThuMoi\frmInBienBan.Designer.cs">
       <DependentUpon>frmInBienBan.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ThuTraLoi\frmToTrinh2020.cs">
+    <Compile Include="GUI\ThuTraLoi\frmToTrinh2021.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ThuTraLoi\frmToTrinh2020.Designer.cs">
-      <DependentUpon>frmToTrinh2020.cs</DependentUpon>
+    <Compile Include="GUI\ThuTraLoi\frmToTrinh2021.Designer.cs">
+      <DependentUpon>frmToTrinh2021.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ThuTraLoi\frmDSToTrinh2020.cs">
+    <Compile Include="GUI\ThuTraLoi\frmDSToTrinh2021.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ThuTraLoi\frmDSToTrinh2020.Designer.cs">
-      <DependentUpon>frmDSToTrinh2020.cs</DependentUpon>
+    <Compile Include="GUI\ThuTraLoi\frmDSToTrinh2021.Designer.cs">
+      <DependentUpon>frmDSToTrinh2021.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThuTraLoi\frmToTrinhVeViec.cs">
       <SubType>Form</SubType>
@@ -2196,11 +2196,11 @@
     <EmbeddedResource Include="GUI\ThuMoi\frmInBienBan.resx">
       <DependentUpon>frmInBienBan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThuTraLoi\frmToTrinh2020.resx">
-      <DependentUpon>frmToTrinh2020.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ThuTraLoi\frmToTrinh2021.resx">
+      <DependentUpon>frmToTrinh2021.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThuTraLoi\frmDSToTrinh2020.resx">
-      <DependentUpon>frmDSToTrinh2020.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ThuTraLoi\frmDSToTrinh2021.resx">
+      <DependentUpon>frmDSToTrinh2021.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThuTraLoi\frmToTrinhVeViec.resx">
       <DependentUpon>frmToTrinhVeViec.cs</DependentUpon>
