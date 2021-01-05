@@ -596,7 +596,7 @@ namespace ThuTien.GUI.TongHop
         {
             if (!chkPhanKy.Checked)
             {
-                List<TT_To> lst = _cTo.GetDS();
+                List<TT_To> lst = _cTo.getDS();
                 DataTable dt = new DataTable();
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
@@ -717,7 +717,7 @@ namespace ThuTien.GUI.TongHop
             else
             {
                 ///Lớn
-                List<TT_To> lst = _cTo.GetDS();
+                List<TT_To> lst = _cTo.getDS();
                 DataTable dt = new DataTable();
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
@@ -960,7 +960,7 @@ namespace ThuTien.GUI.TongHop
         {
             if (!chkPhanKy.Checked)
             {
-                List<TT_To> lst = _cTo.GetDS();
+                List<TT_To> lst = _cTo.getDS();
                 DataTable dt = new DataTable();
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
@@ -1071,7 +1071,7 @@ namespace ThuTien.GUI.TongHop
             else
             {
                 ///Lớn
-                List<TT_To> lst = _cTo.GetDS();
+                List<TT_To> lst = _cTo.getDS();
                 DataTable dt = new DataTable();
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
@@ -1308,7 +1308,7 @@ namespace ThuTien.GUI.TongHop
             if (!chkPhanKy.Checked)
             {
                 InTongHopDangNgan_DienTu();
-                List<TT_To> lst = _cTo.GetDS();
+                List<TT_To> lst = _cTo.getDS();
                 DataTable dt = new DataTable();
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
@@ -1424,7 +1424,7 @@ namespace ThuTien.GUI.TongHop
             else
             {
                 ///Lớn
-                List<TT_To> lst = _cTo.GetDS();
+                List<TT_To> lst = _cTo.getDS();
                 DataTable dt = new DataTable();
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
@@ -1785,7 +1785,7 @@ namespace ThuTien.GUI.TongHop
 
         public void InTongHopDangNgan_DienTu()
         {
-            List<TT_To> lst = _cTo.GetDS();
+            List<TT_To> lst = _cTo.getDS();
             DataTable dt = new DataTable();
             DataTable dtCNKD = new DataTable();
             long TongGiaBanTM = 0;

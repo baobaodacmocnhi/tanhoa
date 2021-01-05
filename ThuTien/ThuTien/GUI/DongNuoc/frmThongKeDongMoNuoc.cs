@@ -33,7 +33,7 @@ namespace ThuTien.GUI.DongNuoc
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            List<TT_To> lstTo = _cTo.GetDSHanhThu();
+            List<TT_To> lstTo = _cTo.getDS_HanhThu();
             DataTable dt = new DataTable();
 
             for (int i = 0; i < lstTo.Count; i++)

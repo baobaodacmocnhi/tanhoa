@@ -58,7 +58,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 //if (_cTienDu.CheckExist(txtDanhBoCTB.Text.Trim().Replace(" ", "")))
                 //{
-                    txtSoTienCTB.Text = _cTienDu.GetTienDu(txtDanhBoCTB.Text.Trim().Replace(" ", "")).ToString();
+                txtSoTienCTB.Text = _cTienDu.GetTienDu(txtDanhBoCTB.Text.Trim().Replace(" ", "")).ToString();
                 //}
                 //else
                 //    MessageBox.Show("Danh Bộ này chưa được Thêm vào Tiền Dư, Xin liên hệ T.CNTT", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -127,11 +127,12 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (MessageBox.Show("Bạn có chắc chắn Chuyển Phí Mở Nước?", "Xác nhận sửa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    if (txtSoTien.Text.Trim() == "" || int.Parse(txtSoTien.Text.Trim()) == 0)
-                    {
-                        MessageBox.Show("Chưa chọn Ngày Bảng Kê", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                    if (chkKhongBangKe.Checked == false)
+                        if (txtSoTien.Text.Trim() == "" || int.Parse(txtSoTien.Text.Trim()) == 0)
+                        {
+                            MessageBox.Show("Chưa chọn Ngày Bảng Kê", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByDanhBo_Last(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
                     if (kqdongnuoc != null)
                     {
@@ -144,7 +145,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             }
                             using (var scope = new TransactionScope())
                             {
-                                if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), -kqdongnuoc.PhiMoNuoc.Value, "Điều Chỉnh Tiền", "Thêm Chuyển Phí Mở Nước",dateLap.Value))
+                                if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), -kqdongnuoc.PhiMoNuoc.Value, "Điều Chỉnh Tiền", "Thêm Chuyển Phí Mở Nước", dateLap.Value))
                                 {
                                     HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
 
@@ -152,14 +153,17 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     phimonuoc.DanhBo = hoadon.DANHBA;
                                     phimonuoc.HoTen = hoadon.TENKH;
                                     phimonuoc.DiaChi = hoadon.SO + " " + hoadon.DUONG;
-                                    phimonuoc.NgayBK = dateBangKe.Value;
-                                    phimonuoc.SoTien = _cBangKe.getSoTien(hoadon.DANHBA, dateBangKe.Value);
-                                    phimonuoc.SoTK = _cBangKe.GetSoTK(hoadon.DANHBA, dateBangKe.Value);
+                                    if (chkKhongBangKe.Checked == false)
+                                    {
+                                        phimonuoc.NgayBK = dateBangKe.Value;
+                                        phimonuoc.SoTien = _cBangKe.getSoTien(hoadon.DANHBA, dateBangKe.Value);
+                                        phimonuoc.SoTK = _cBangKe.GetSoTK(hoadon.DANHBA, dateBangKe.Value);
+                                    }
                                     phimonuoc.TongCong = phimonuoc.SoTien - kqdongnuoc.PhiMoNuoc.Value;
                                     phimonuoc.PhiMoNuoc = kqdongnuoc.PhiMoNuoc;
                                     phimonuoc.MaKQDN = kqdongnuoc.MaKQDN;
 
-                                    if (_cPhiMoNuoc.Them(phimonuoc,dateLap.Value))
+                                    if (_cPhiMoNuoc.Them(phimonuoc, dateLap.Value))
                                     {
                                         if (_cTienDu.LinQ_ExecuteNonQuery("update TT_TienDu set ChoXuLy=0 where DanhBo='" + hoadon.DANHBA + "'"))
                                         {
@@ -184,7 +188,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             MessageBox.Show("Đóng Phí rồi, " + kqdongnuoc.NgayDongPhi.Value.ToString("dd/MM/yyyy"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
-                        MessageBox.Show("Không có Kết Quả Đóng Nước","Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Không có Kết Quả Đóng Nước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -193,7 +197,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dateBangKe_ValueChanged(object sender, EventArgs e)
         {
-            txtSoTien.Text = _cBangKe.getSoTien(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), dateBangKe.Value).ToString() ;
+            txtSoTien.Text = _cBangKe.getSoTien(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), dateBangKe.Value).ToString();
         }
 
         private void txtDanhBoSuaTien_KeyPress(object sender, KeyPressEventArgs e)
@@ -206,8 +210,8 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void txtSoTienDieuChinh_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar)&&e.KeyChar!='-')
-            e.Handled = true;
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar) && e.KeyChar != '-')
+                e.Handled = true;
         }
 
         private void txtSoTienDieuChinh_TextChanged(object sender, EventArgs e)

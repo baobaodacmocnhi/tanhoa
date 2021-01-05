@@ -51,7 +51,7 @@ namespace ThuTien.GUI.ToTruong
                 lbTo.Visible = true;
                 cmbTo.Visible = true;
 
-                List<TT_To> lstTo = _cTo.GetDSHanhThu();
+                List<TT_To> lstTo = _cTo.getDS_HanhThu();
                 TT_To to = new TT_To();
                 to.MaTo = 0;
                 to.TenTo = "Tất Cả";

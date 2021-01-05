@@ -813,56 +813,64 @@ namespace ThuTien.DAL.DongNuoc
 
         public DataTable GetDSCanMoNuoc()
         {
-            var query = from itemKQ in _db.TT_KQDongNuocs
-                        join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
-                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
-                        join itemND in _db.TT_NguoiDungs on itemKQ.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
-                        from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.NGAYGIAITRACH != null && itemKQ.NgayDN != null && itemKQ.NgayMN == null && itemHD.ChuyenNoKhoDoi == false
-                        select new
-                        {
-                            itemKQ.MaKQDN,
-                            itemKQ.MaDN,
-                            itemKQ.CreateDate,
-                            itemKQ.DanhBo,
-                            itemKQ.HoTen,
-                            itemKQ.DiaChi,
-                            itemKQ.NgayDN,
-                            itemHD.NGAYGIAITRACH,
-                            CoDHN = itemKQ.Co,
-                            itemKQ.GhiChuTroNgai,
-                            itemKQ.TroNgaiMN,
-                            MaNV_DongNuoc = itemtableND.HoTen,
-                        };
-            return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
+            //var query = from itemKQ in _db.TT_KQDongNuocs
+            //            join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
+            //            join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
+            //            join itemND in _db.TT_NguoiDungs on itemKQ.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
+            //            from itemtableND in tableND.DefaultIfEmpty()
+            //            where itemHD.NGAYGIAITRACH != null && itemKQ.NgayDN != null && itemKQ.NgayMN == null && itemHD.ChuyenNoKhoDoi == false
+            //            select new
+            //            {
+            //                itemKQ.MaKQDN,
+            //                itemKQ.MaDN,
+            //                itemKQ.CreateDate,
+            //                itemKQ.DanhBo,
+            //                itemKQ.HoTen,
+            //                itemKQ.DiaChi,
+            //                itemKQ.NgayDN,
+            //                itemHD.NGAYGIAITRACH,
+            //                CoDHN = itemKQ.Co,
+            //                itemKQ.GhiChuTroNgai,
+            //                itemKQ.TroNgaiMN,
+            //                MaNV_DongNuoc = itemtableND.HoTen,
+            //            };
+            //return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
+            string sql = "select MaKQDN,kqdn.MaDN,kqdn.CreateDate,kqdn.DanhBo,kqdn.HoTen,kqdn.DiaChi,NgayDN,CoDHN=Co,kqdn.GhiChuTroNgai,TroNgaiMN,MaNV_DongNuoc=(select HoTen from TT_NguoiDung where MaND=dn.MaNV_DongNuoc)"
+                        + " from TT_DongNuoc dn,TT_KQDongNuoc kqdn where dn.MaDN=kqdn.MaDN and NgayDN is not null and NgayMN is null"
+                        + " and (select COUNT(MaHD) from TT_CTDongNuoc ctdn,HOADON hd where ctdn.MaHD=hd.ID_HOADON and NGAYGIAITRACH is not null and ChuyenNoKhoDoi=0 and kqdn.MaDN=ctdn.MaDN)=(select COUNT(MaHD) from TT_CTDongNuoc ctdn where kqdn.MaDN=ctdn.MaDN)";
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDSCanMoNuoc(int MaTo)
         {
-            var query = from itemKQ in _db.TT_KQDongNuocs
-                        join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
-                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
-                        join itemND in _db.TT_NguoiDungs on itemKQ.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
-                        from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.NGAYGIAITRACH != null && itemKQ.NgayDN != null && itemKQ.NgayMN == null && itemHD.ChuyenNoKhoDoi == false
-                                && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                        select new
-                        {
-                            itemKQ.MaKQDN,
-                            itemKQ.MaDN,
-                            itemKQ.CreateDate,
-                            itemKQ.DanhBo,
-                            itemKQ.HoTen,
-                            itemKQ.DiaChi,
-                            itemKQ.NgayDN,
-                            itemHD.NGAYGIAITRACH,
-                            CoDHN = itemKQ.Co,
-                            itemKQ.GhiChuTroNgai,
-                            itemKQ.TroNgaiMN,
-                            MaNV_DongNuoc = itemtableND.HoTen,
-                        };
-            return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
+            //var query = from itemKQ in _db.TT_KQDongNuocs
+            //            join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
+            //            join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
+            //            join itemND in _db.TT_NguoiDungs on itemKQ.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
+            //            from itemtableND in tableND.DefaultIfEmpty()
+            //            where itemHD.NGAYGIAITRACH != null && itemKQ.NgayDN != null && itemKQ.NgayMN == null && itemHD.ChuyenNoKhoDoi == false
+            //                    && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+            //                    && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+            //            select new
+            //            {
+            //                itemKQ.MaKQDN,
+            //                itemKQ.MaDN,
+            //                itemKQ.CreateDate,
+            //                itemKQ.DanhBo,
+            //                itemKQ.HoTen,
+            //                itemKQ.DiaChi,
+            //                itemKQ.NgayDN,
+            //                itemHD.NGAYGIAITRACH,
+            //                CoDHN = itemKQ.Co,
+            //                itemKQ.GhiChuTroNgai,
+            //                itemKQ.TroNgaiMN,
+            //                MaNV_DongNuoc = itemtableND.HoTen,
+            //            };
+            //return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
+            string sql = "select MaKQDN,kqdn.MaDN,kqdn.CreateDate,kqdn.DanhBo,kqdn.HoTen,kqdn.DiaChi,NgayDN,CoDHN=Co,kqdn.GhiChuTroNgai,TroNgaiMN,MaNV_DongNuoc=(select HoTen from TT_NguoiDung where MaND=dn.MaNV_DongNuoc)"
+                        + " from TT_DongNuoc dn,TT_KQDongNuoc kqdn where dn.MaDN=kqdn.MaDN and NgayDN is not null and NgayMN is null"
+                        + " and (select COUNT(MaHD) from TT_CTDongNuoc ctdn,HOADON hd where ctdn.MaHD=hd.ID_HOADON and NGAYGIAITRACH is not null and ChuyenNoKhoDoi=0 and kqdn.MaDN=ctdn.MaDN)=(select COUNT(MaHD) from TT_CTDongNuoc ctdn where kqdn.MaDN=ctdn.MaDN)";
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDSKQDongNuoc_PhiMoNuoc_All(bool ChuyenKhoan, string DanhBo)

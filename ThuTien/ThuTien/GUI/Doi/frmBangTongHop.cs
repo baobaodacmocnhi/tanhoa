@@ -33,7 +33,7 @@ namespace ThuTien.GUI.Doi
         {
             dgvHoaDon.AutoGenerateColumns = false;
 
-            List<TT_To> lst = _cTo.GetDSHanhThu();
+            List<TT_To> lst = _cTo.getDS_HanhThu();
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";
@@ -70,7 +70,7 @@ namespace ThuTien.GUI.Doi
         private void btnXem_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            List<TT_To> lst = _cTo.GetDSHanhThu();
+            List<TT_To> lst = _cTo.getDS_HanhThu();
 
             dt = _cHoaDon.GetBangTongHop(lst[0].MaTo, dateTu.Value, dateDen.Value);
             for (int i = 1; i < lst.Count; i++)
@@ -128,7 +128,7 @@ namespace ThuTien.GUI.Doi
                 DataTable dtDCHDTonCuKy = new DataTable();
                 DataTable dtDCHDTonTrongKy = new DataTable();
                 DataTable dtDCHDTongTon = new DataTable();
-                List<TT_To> lstTo = _cTo.GetDSHanhThu();
+                List<TT_To> lstTo = _cTo.getDS_HanhThu();
 
                 DataTable dtTo = new DataTable();
                 for (int i = 0; i < lstTo.Count; i++)

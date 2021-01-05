@@ -28,7 +28,7 @@ namespace ThuTien.GUI.Doi
 
         private void frmXemTBDongNuoc_Load(object sender, EventArgs e)
         {
-            List<TT_To> lst = _cTo.GetDSHanhThu();
+            List<TT_To> lst = _cTo.getDS_HanhThu();
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";
@@ -95,7 +95,7 @@ namespace ThuTien.GUI.Doi
             ///tất cả các tổ
             if (cmbTo.SelectedIndex == 0)
             {
-                List<TT_To> lstTo = _cTo.GetDSHanhThu();
+                List<TT_To> lstTo = _cTo.getDS_HanhThu();
                 DataSet ds = new DataSet();
 
                 foreach (TT_To item in lstTo)

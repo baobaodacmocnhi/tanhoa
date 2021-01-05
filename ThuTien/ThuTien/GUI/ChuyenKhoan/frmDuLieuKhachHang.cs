@@ -770,7 +770,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (dateTu.Value <= dateDen.Value)
             {
-                List<TT_To> lstTo = _cTo.GetDSHanhThu();
+                List<TT_To> lstTo = _cTo.getDS_HanhThu();
 
                 //Tạo các đối tượng Excel
                 Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
@@ -801,7 +801,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (dateTu.Value <= dateDen.Value)
             {
-                List<TT_To> lstTo = _cTo.GetDSHanhThu();
+                List<TT_To> lstTo = _cTo.getDS_HanhThu();
 
                 //Tạo các đối tượng Excel
                 Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
@@ -832,7 +832,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (dateTu.Value <= dateDen.Value)
             {
-                List<TT_To> lstTo = _cTo.GetDSHanhThu();
+                List<TT_To> lstTo = _cTo.getDS_HanhThu();
 
                 //Tạo các đối tượng Excel
                 Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();

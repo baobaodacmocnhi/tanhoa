@@ -41,7 +41,7 @@ namespace ThuTien.GUI.Doi
             cmbNam.DisplayMember = "ID";
             cmbNam.ValueMember = "Nam";
 
-            _lstTo = _cTo.GetDSHanhThu();
+            _lstTo = _cTo.getDS_HanhThu();
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";

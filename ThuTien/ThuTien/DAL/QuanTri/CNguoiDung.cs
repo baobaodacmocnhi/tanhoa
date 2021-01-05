@@ -300,6 +300,11 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.DongNuoc == true).OrderBy(item => item.STT).ToList();
         }
 
+        public List<TT_NguoiDung> getDS_DongNuoc()
+        {
+            return _db.TT_NguoiDungs.Where(item => item.TT_To.DongNuoc == true && item.DongNuoc == true).OrderBy(item => item.STT).ToList();
+        }
+
         public List<TT_NguoiDung> GetDSDongNuocToTruongByMaTo(int MaTo)
         {
             return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && (item.DongNuoc == true || item.ToTruong == true)).OrderBy(item => item.STT).ToList();

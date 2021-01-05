@@ -46,7 +46,7 @@ namespace ThuTien.GUI.Doi
             //cmbTo.DisplayMember = "TenTo";
             //cmbTo.ValueMember = "MaTo";
             //cmbTo.SelectedIndex = -1;
-            List<TT_To> lst = _cTo.GetDS();
+            List<TT_To> lst = _cTo.getDS();
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";
@@ -66,7 +66,7 @@ namespace ThuTien.GUI.Doi
         {
             if (_flagLoadFirst == true && cmbTo.SelectedIndex != -1)
             {
-                if ((_cTo.CheckHanhThu(int.Parse(cmbTo.SelectedValue.ToString()))))
+                if ((_cTo.checkHanhThu(int.Parse(cmbTo.SelectedValue.ToString()))))
                     cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
                 else
                     cmbNhanVien.DataSource = _cNguoiDung.GetDSByToVanPhong(int.Parse(cmbTo.SelectedValue.ToString()));

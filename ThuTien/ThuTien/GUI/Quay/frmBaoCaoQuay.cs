@@ -31,7 +31,7 @@ namespace ThuTien.GUI.Quay
         {
             if (dateTu.Value <= dateDen.Value)
             {
-                List<TT_To> lstTo = _cTo.GetDSHanhThu();
+                List<TT_To> lstTo = _cTo.getDS_HanhThu();
                 //DataTable[] dtTo = new DataTable[lstTo.Count];
 
                 //dtTo[0] = _cHoaDon.GetTongDangNganQuayByMaToNgayGiaiTrachs(lstTo[0].MaTo, dateTu.Value, dateDen.Value);

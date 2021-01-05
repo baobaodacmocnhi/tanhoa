@@ -215,7 +215,7 @@ namespace ThuTien.GUI.Doi
         private void btnXem_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            List<TT_To> _lstTo = _cTo.GetDSHanhThu();
+            List<TT_To> _lstTo = _cTo.getDS_HanhThu();
 
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {

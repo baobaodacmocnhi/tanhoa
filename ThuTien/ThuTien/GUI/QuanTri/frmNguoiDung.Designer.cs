@@ -660,6 +660,7 @@
             this.MatKhau.DataPropertyName = "MatKhau";
             this.MatKhau.HeaderText = "Mật Khẩu";
             this.MatKhau.Name = "MatKhau";
+            this.MatKhau.Width = 80;
             // 
             // MaTo
             // 
@@ -673,7 +674,7 @@
             this.TenTo.DataPropertyName = "TenTo";
             this.TenTo.HeaderText = "Tổ";
             this.TenTo.Name = "TenTo";
-            this.TenTo.Width = 50;
+            this.TenTo.Width = 80;
             // 
             // MaNhom
             // 

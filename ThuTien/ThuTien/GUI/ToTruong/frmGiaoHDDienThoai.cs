@@ -37,7 +37,7 @@ namespace ThuTien.GUI.ToTruong
             {
                 cmbTo.Visible = true;
 
-                cmbTo.DataSource = _cTo.GetDSHanhThu();
+                cmbTo.DataSource = _cTo.getDS_HanhThu();
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
             }

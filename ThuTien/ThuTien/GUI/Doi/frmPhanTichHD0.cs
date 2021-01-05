@@ -38,7 +38,7 @@ namespace ThuTien.GUI.Doi
             dgvDanhBoDK.AutoGenerateColumns = false;
             dgvDanhBoDK2.AutoGenerateColumns = false;
 
-            _lstTo = _cTo.GetDS();
+            _lstTo = _cTo.getDS();
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";
@@ -292,7 +292,7 @@ namespace ThuTien.GUI.Doi
             if (cmbToDK.SelectedIndex > 0)
             {
                 List<TT_NguoiDung> lstND = null;
-                if ((_cTo.CheckHanhThu(int.Parse(cmbToDK.SelectedValue.ToString()))))
+                if ((_cTo.checkHanhThu(int.Parse(cmbToDK.SelectedValue.ToString()))))
                 {
                     lstND = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbToDK.SelectedValue.ToString()));
                     TT_NguoiDung nguoidung = new TT_NguoiDung();
@@ -625,7 +625,7 @@ namespace ThuTien.GUI.Doi
             if (cmbToDK2.SelectedIndex > 0)
             {
                 List<TT_NguoiDung> lstND = null;
-                if ((_cTo.CheckHanhThu(int.Parse(cmbToDK2.SelectedValue.ToString()))))
+                if ((_cTo.checkHanhThu(int.Parse(cmbToDK2.SelectedValue.ToString()))))
                 {
                     lstND = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbToDK2.SelectedValue.ToString()));
                     TT_NguoiDung nguoidung = new TT_NguoiDung();

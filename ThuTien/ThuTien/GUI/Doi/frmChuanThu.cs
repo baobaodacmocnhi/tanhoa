@@ -39,7 +39,7 @@ namespace ThuTien.GUI.Doi
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
 
-            _lstTo = _cTo.GetDSHanhThu();
+            _lstTo = _cTo.getDS_HanhThu();
         }
 
         public void CountdgvHDTuGia()

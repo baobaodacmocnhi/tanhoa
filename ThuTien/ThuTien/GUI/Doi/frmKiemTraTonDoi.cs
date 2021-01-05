@@ -42,7 +42,7 @@ namespace ThuTien.GUI.Doi
             dgvHDCoQuan.AutoGenerateColumns = false;
             dgvNhanVien.AutoGenerateColumns = false;
 
-            List<TT_To> lstTo = _cTo.GetDSHanhThu();
+            List<TT_To> lstTo = _cTo.getDS_HanhThu();
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";
@@ -59,7 +59,7 @@ namespace ThuTien.GUI.Doi
             cmbNam.DisplayMember = "ID";
             cmbNam.ValueMember = "Nam";
 
-            _lstTo = _cTo.GetDSHanhThu();
+            _lstTo = _cTo.getDS_HanhThu();
 
             cmbNam.SelectedValue = DateTime.Now.Year.ToString();
             cmbKy.SelectedItem = DateTime.Now.Month.ToString();

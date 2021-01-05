@@ -27,7 +27,7 @@ namespace ThuTien.GUI.Doi
 
         private void frmKiemTraSaiViec_Load(object sender, EventArgs e)
         {
-            cmbTo.DataSource = _cTo.GetDS();
+            cmbTo.DataSource = _cTo.getDS();
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
             cmbTo.SelectedIndex = -1;
@@ -39,7 +39,7 @@ namespace ThuTien.GUI.Doi
         {
             if (_flagLoadFirst == true && cmbTo.SelectedIndex != -1)
             {
-                if ((_cTo.CheckHanhThu(int.Parse(cmbTo.SelectedValue.ToString()))))
+                if ((_cTo.checkHanhThu(int.Parse(cmbTo.SelectedValue.ToString()))))
                     cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
                 else
                     cmbNhanVien.DataSource = _cNguoiDung.GetDSByToVanPhong(int.Parse(cmbTo.SelectedValue.ToString()));

@@ -10,15 +10,15 @@ using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 
-namespace ThuTien.GUI.ToTruong
+namespace ThuTien.GUI.DongNuoc
 {
-    public partial class frmMoNuoc : Form
+    public partial class frmMoNuoc2020 : Form
     {
         string _mnu = "mnuMoNuoc";
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CTo _cTo = new CTo();
 
-        public frmMoNuoc()
+        public frmMoNuoc2020()
         {
             InitializeComponent();
         }
@@ -29,16 +29,16 @@ namespace ThuTien.GUI.ToTruong
 
             if (CNguoiDung.Doi)
             {
-                cmbTo.Visible = true;
+                //cmbTo.Visible = true;
 
-                List<TT_To> lstTo = _cTo.getDS_HanhThu();
-                TT_To to = new TT_To();
-                to.MaTo = 0;
-                to.TenTo = "Tất Cả";
-                lstTo.Insert(0, to);
-                cmbTo.DataSource = lstTo;
-                cmbTo.DisplayMember = "TenTo";
-                cmbTo.ValueMember = "MaTo";
+                //List<TT_To> lstTo = _cTo.getDS_HanhThu();
+                //TT_To to = new TT_To();
+                //to.MaTo = 0;
+                //to.TenTo = "Tất Cả";
+                //lstTo.Insert(0, to);
+                //cmbTo.DataSource = lstTo;
+                //cmbTo.DisplayMember = "TenTo";
+                //cmbTo.ValueMember = "MaTo";
             }
             else
                 lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
@@ -50,16 +50,16 @@ namespace ThuTien.GUI.ToTruong
         {
             if (CNguoiDung.Doi)
             {
-                ///chọn tất cả các tổ
-                if (cmbTo.SelectedIndex == 0)
-                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc();
-                else
-                    ///chọn 1 tổ cụ thể
-                    if (cmbTo.SelectedIndex > 0)
-                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc(int.Parse(cmbTo.SelectedValue.ToString()));
+                /////chọn tất cả các tổ
+                //if (cmbTo.SelectedIndex == 0)
+                //    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc();
+                //else
+                //    ///chọn 1 tổ cụ thể
+                //    if (cmbTo.SelectedIndex > 0)
+                //        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc(int.Parse(cmbTo.SelectedValue.ToString()));
             }
             else
-                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc(CNguoiDung.MaTo);
+                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc();
         }
 
         private void dgvKQDongNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

@@ -41,7 +41,7 @@ namespace ThuTien.GUI.ToTruong
             {
                 cmbTo.Visible = true;
 
-                cmbTo.DataSource = _cTo.GetDSHanhThu();
+                cmbTo.DataSource = _cTo.getDS_HanhThu();
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
                 cmbTo.SelectedIndex = -1;
@@ -502,7 +502,7 @@ namespace ThuTien.GUI.ToTruong
             if (CNguoiDung.Doi == true)
                 if (_flagLoadFirst == true && cmbTo.SelectedIndex != -1)
                 {
-                    if ((_cTo.CheckHanhThu(int.Parse(cmbTo.SelectedValue.ToString()))))
+                    if ((_cTo.checkHanhThu(int.Parse(cmbTo.SelectedValue.ToString()))))
                         cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
                     else
                         cmbNhanVien.DataSource = _cNguoiDung.GetDSByToVanPhong(int.Parse(cmbTo.SelectedValue.ToString()));

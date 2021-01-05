@@ -36,7 +36,7 @@ namespace ThuTien.GUI.Doi
             dgvNhanVien_TC.AutoGenerateColumns = false;
             dgvChotDangNgan.AutoGenerateColumns = false;
 
-            List<TT_To> lst = _cTo.GetDS();
+            List<TT_To> lst = _cTo.getDS();
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";
@@ -130,7 +130,7 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            List<TT_To> lst = _cTo.GetDS();
+            List<TT_To> lst = _cTo.getDS();
             dgvNhanVien_TC.DataSource = _cHoaDon.GetTongDangNgan_Doi(dateTu.Value, dateDen.Value);
             CountdgvNhanVien_TC();
             if (tabControl.SelectedTab.Name == "tabTuGia")

@@ -521,11 +521,11 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuGiaoTBDongNuoc_Click_1(object sender, EventArgs e)
+        private void mnuGiaoTBDongNuoc_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.CheckQuyen("mnuGiaoTBDongNuoc", "Xem"))
             {
-                frmGiaoTBDongNuoc frm = new frmGiaoTBDongNuoc();
+                frmGiaoTBDongNuoc2020 frm = new frmGiaoTBDongNuoc2020();
                 OpenForm(frm);
             }
             else
@@ -591,7 +591,7 @@ namespace ThuTien
         {
             if (CNguoiDung.CheckQuyen("mnuMoNuoc", "Xem"))
             {
-                frmMoNuoc frm = new frmMoNuoc();
+                frmMoNuoc2020 frm = new frmMoNuoc2020();
                 OpenForm(frm);
             }
             else

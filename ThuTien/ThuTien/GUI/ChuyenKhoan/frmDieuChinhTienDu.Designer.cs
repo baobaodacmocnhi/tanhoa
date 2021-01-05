@@ -60,13 +60,14 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnChuyenPhiMoNuoc = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dateLap = new System.Windows.Forms.DateTimePicker();
+            this.label16 = new System.Windows.Forms.Label();
             this.chkDongNuoc2 = new System.Windows.Forms.CheckBox();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dateBangKe = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
-            this.dateLap = new System.Windows.Forms.DateTimePicker();
-            this.label16 = new System.Windows.Forms.Label();
+            this.chkKhongBangKe = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -375,6 +376,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.chkKhongBangKe);
             this.groupBox5.Controls.Add(this.dateLap);
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.chkDongNuoc2);
@@ -389,6 +391,24 @@
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Chuyển Phí Mở Nước";
+            // 
+            // dateLap
+            // 
+            this.dateLap.CustomFormat = "dd/MM/yyyy";
+            this.dateLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateLap.Location = new System.Drawing.Point(95, 74);
+            this.dateLap.Name = "dateLap";
+            this.dateLap.Size = new System.Drawing.Size(100, 20);
+            this.dateLap.TabIndex = 39;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(10, 78);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(56, 13);
+            this.label16.TabIndex = 38;
+            this.label16.Text = "Ngày Lập:";
             // 
             // chkDongNuoc2
             // 
@@ -437,23 +457,15 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Ngày Bảng Kê:";
             // 
-            // dateLap
+            // chkKhongBangKe
             // 
-            this.dateLap.CustomFormat = "dd/MM/yyyy";
-            this.dateLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateLap.Location = new System.Drawing.Point(95, 74);
-            this.dateLap.Name = "dateLap";
-            this.dateLap.Size = new System.Drawing.Size(100, 20);
-            this.dateLap.TabIndex = 39;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(10, 78);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(56, 13);
-            this.label16.TabIndex = 38;
-            this.label16.Text = "Ngày Lập:";
+            this.chkKhongBangKe.AutoSize = true;
+            this.chkKhongBangKe.Location = new System.Drawing.Point(201, 46);
+            this.chkKhongBangKe.Name = "chkKhongBangKe";
+            this.chkKhongBangKe.Size = new System.Drawing.Size(101, 17);
+            this.chkKhongBangKe.TabIndex = 40;
+            this.chkKhongBangKe.Text = "Không Bảng Kê";
+            this.chkKhongBangKe.UseVisualStyleBackColor = true;
             // 
             // frmDieuChinhTienDu
             // 
@@ -521,5 +533,6 @@
         private System.Windows.Forms.CheckBox chkDongNuoc2;
         private System.Windows.Forms.DateTimePicker dateLap;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.CheckBox chkKhongBangKe;
     }
 }

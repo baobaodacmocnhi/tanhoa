@@ -37,7 +37,7 @@ namespace ThuTien.GUI.Quay
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
 
-            List<TT_To> _lstTo = _cTo.GetDSHanhThu();
+            List<TT_To> _lstTo = _cTo.getDS_HanhThu();
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";
@@ -435,7 +435,7 @@ namespace ThuTien.GUI.Quay
             if (_flagLoadFirst == true && cmbTo.SelectedIndex > 0)
             {
                 List<TT_NguoiDung> _lstND = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
-                if ((_cTo.CheckHanhThu(int.Parse(cmbTo.SelectedValue.ToString()))))
+                if ((_cTo.checkHanhThu(int.Parse(cmbTo.SelectedValue.ToString()))))
                     _lstND = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
                 else
                     _lstND = _cNguoiDung.GetDSByToVanPhong(int.Parse(cmbTo.SelectedValue.ToString()));

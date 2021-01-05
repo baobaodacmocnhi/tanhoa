@@ -6,7 +6,7 @@ using ThuTien.LinQ;
 
 namespace ThuTien.DAL.QuanTri
 {
-    class CTo:CDAL
+    class CTo : CDAL
     {
         public bool Them(TT_To to)
         {
@@ -61,29 +61,44 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public List<TT_To> GetDS()
+        public List<TT_To> getDS_All()
         {
             return _db.TT_Tos.ToList();
         }
 
-        public List<TT_To> GetDSHanhThu()
+        public List<TT_To> getDS()
         {
-            return _db.TT_Tos.Where(item => item.HanhThu == true).ToList();
+            return _db.TT_Tos.Where(item => item.An == false).ToList();
         }
 
-        public TT_To GetByMaTo(int MaTo)
+        public List<TT_To> getDS_HanhThu()
+        {
+            return _db.TT_Tos.Where(item => item.HanhThu == true && item.An == false).ToList();
+        }
+
+        public List<TT_To> getDS_DongNuoc()
+        {
+            return _db.TT_Tos.Where(item => item.DongNuoc == true && item.An == false).ToList();
+        }
+
+        public TT_To get(int MaTo)
         {
             return _db.TT_Tos.SingleOrDefault(item => item.MaTo == MaTo);
         }
 
-        public string GetTenToByMaTo(int MaTo)
+        public string getHoTen(int MaTo)
         {
             return _db.TT_Tos.SingleOrDefault(item => item.MaTo == MaTo).TenTo;
         }
 
-        public bool CheckHanhThu(int MaTo)
+        public bool checkHanhThu(int MaTo)
         {
             return _db.TT_Tos.Any(item => item.MaTo == MaTo && item.HanhThu == true);
+        }
+
+        public bool checkDongNuoc(int MaTo)
+        {
+            return _db.TT_Tos.Any(item => item.MaTo == MaTo && item.DongNuoc == true);
         }
     }
 }

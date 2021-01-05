@@ -36,7 +36,7 @@ namespace ThuTien.GUI.DongNuoc
             {
                 panel_To.Visible = true;
                 panel_NhanVien.Visible = true;
-                cmbTo.DataSource = _cTo.GetDSHanhThu();
+                cmbTo.DataSource = _cTo.getDS_HanhThu();
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
                 cmbTo.SelectedIndex = -1;

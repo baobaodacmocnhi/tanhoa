@@ -38,12 +38,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDenCuonGCS = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.chkHanhThu = new System.Windows.Forms.CheckBox();
+            this.chkDongNuoc = new System.Windows.Forms.CheckBox();
+            this.chkAn = new System.Windows.Forms.CheckBox();
             this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HanhThu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.DongNuoc = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TuCuonGCS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DenCuonGCS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chkHanhThu = new System.Windows.Forms.CheckBox();
+            this.An = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,15 +76,17 @@
             this.MaTo,
             this.TenTo,
             this.HanhThu,
+            this.DongNuoc,
             this.TuCuonGCS,
-            this.DenCuonGCS});
+            this.DenCuonGCS,
+            this.An});
             this.dgvTo.Location = new System.Drawing.Point(15, 99);
             this.dgvTo.MultiSelect = false;
             this.dgvTo.Name = "dgvTo";
             this.dgvTo.ReadOnly = true;
-            this.dgvTo.Size = new System.Drawing.Size(467, 319);
+            this.dgvTo.Size = new System.Drawing.Size(491, 319);
             this.dgvTo.TabIndex = 9;
-            this.dgvTo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTo_CellContentClick);
+            this.dgvTo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTo_CellClick);
             this.dgvTo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTo_RowPostPaint);
             // 
             // btnThem
@@ -147,6 +153,36 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Đến CuonGCS:";
             // 
+            // chkHanhThu
+            // 
+            this.chkHanhThu.AutoSize = true;
+            this.chkHanhThu.Location = new System.Drawing.Point(91, 38);
+            this.chkHanhThu.Name = "chkHanhThu";
+            this.chkHanhThu.Size = new System.Drawing.Size(74, 17);
+            this.chkHanhThu.TabIndex = 10;
+            this.chkHanhThu.Text = "Hành Thu";
+            this.chkHanhThu.UseVisualStyleBackColor = true;
+            // 
+            // chkDongNuoc
+            // 
+            this.chkDongNuoc.AutoSize = true;
+            this.chkDongNuoc.Location = new System.Drawing.Point(171, 38);
+            this.chkDongNuoc.Name = "chkDongNuoc";
+            this.chkDongNuoc.Size = new System.Drawing.Size(81, 17);
+            this.chkDongNuoc.TabIndex = 11;
+            this.chkDongNuoc.Text = "Đóng Nước";
+            this.chkDongNuoc.UseVisualStyleBackColor = true;
+            // 
+            // chkAn
+            // 
+            this.chkAn.AutoSize = true;
+            this.chkAn.Location = new System.Drawing.Point(258, 38);
+            this.chkAn.Name = "chkAn";
+            this.chkAn.Size = new System.Drawing.Size(39, 17);
+            this.chkAn.TabIndex = 12;
+            this.chkAn.Text = "Ẩn";
+            this.chkAn.UseVisualStyleBackColor = true;
+            // 
             // MaTo
             // 
             this.MaTo.DataPropertyName = "MaTo";
@@ -168,6 +204,15 @@
             this.HanhThu.HeaderText = "Hành Thu";
             this.HanhThu.Name = "HanhThu";
             this.HanhThu.ReadOnly = true;
+            this.HanhThu.Width = 50;
+            // 
+            // DongNuoc
+            // 
+            this.DongNuoc.DataPropertyName = "DongNuoc";
+            this.DongNuoc.HeaderText = "Đóng Nước";
+            this.DongNuoc.Name = "DongNuoc";
+            this.DongNuoc.ReadOnly = true;
+            this.DongNuoc.Width = 50;
             // 
             // TuCuonGCS
             // 
@@ -183,21 +228,21 @@
             this.DenCuonGCS.Name = "DenCuonGCS";
             this.DenCuonGCS.ReadOnly = true;
             // 
-            // chkHanhThu
+            // An
             // 
-            this.chkHanhThu.AutoSize = true;
-            this.chkHanhThu.Location = new System.Drawing.Point(91, 38);
-            this.chkHanhThu.Name = "chkHanhThu";
-            this.chkHanhThu.Size = new System.Drawing.Size(74, 17);
-            this.chkHanhThu.TabIndex = 10;
-            this.chkHanhThu.Text = "Hành Thu";
-            this.chkHanhThu.UseVisualStyleBackColor = true;
+            this.An.DataPropertyName = "An";
+            this.An.HeaderText = "Ẩn";
+            this.An.Name = "An";
+            this.An.ReadOnly = true;
+            this.An.Width = 30;
             // 
             // frmTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 430);
+            this.ClientSize = new System.Drawing.Size(561, 430);
+            this.Controls.Add(this.chkAn);
+            this.Controls.Add(this.chkDongNuoc);
             this.Controls.Add(this.chkHanhThu);
             this.Controls.Add(this.txtDenCuonGCS);
             this.Controls.Add(this.label3);
@@ -230,11 +275,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDenCuonGCS;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chkHanhThu;
+        private System.Windows.Forms.CheckBox chkDongNuoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTo;
         private System.Windows.Forms.DataGridViewCheckBoxColumn HanhThu;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn DongNuoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn TuCuonGCS;
         private System.Windows.Forms.DataGridViewTextBoxColumn DenCuonGCS;
-        private System.Windows.Forms.CheckBox chkHanhThu;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn An;
+        private System.Windows.Forms.CheckBox chkAn;
     }
 }

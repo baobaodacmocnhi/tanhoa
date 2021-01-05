@@ -36,7 +36,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXuatExcelTongHopDangNgan_Click(object sender, EventArgs e)
         {
-            List<TT_To> lstTo = _cTo.GetDSHanhThu();
+            List<TT_To> lstTo = _cTo.getDS_HanhThu();
             //DataTable[] dtTo = new DataTable[lstTo.Count];
 
             //dtTo[0] = _cHoaDon.GetTongDangNganChuyenKhoanByMaToNgayGiaiTrachs(lstTo[0].MaTo, dateTu.Value, dateDen.Value);

@@ -42,7 +42,7 @@ namespace ThuTien.GUI.Doi
                 cmbTo.Visible = true;
                 lbNhanVien.Visible = true;
                 cmbNhanVien.Visible = true;
-                List<TT_To> lst = _cTo.GetDSHanhThu();
+                List<TT_To> lst = _cTo.getDS_HanhThu();
                 TT_To to = new TT_To();
                 to.MaTo = 0;
                 to.TenTo = "Tất Cả";

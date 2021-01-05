@@ -32,7 +32,7 @@ namespace ThuTien.GUI.Doi
             dgvNiemChi_Nhap.AutoGenerateColumns = false;
             dgvNiemChi_Giao.AutoGenerateColumns = false;
 
-            cmbTo_Giao.DataSource = _cTo.GetDSHanhThu();
+            cmbTo_Giao.DataSource = _cTo.getDS_HanhThu();
             cmbTo_Giao.DisplayMember = "TenTo";
             cmbTo_Giao.ValueMember = "MaTo";
 

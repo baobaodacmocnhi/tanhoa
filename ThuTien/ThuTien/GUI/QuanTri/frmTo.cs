@@ -27,15 +27,17 @@ namespace ThuTien.GUI.QuanTri
             _selectedindex = -1;
             txtTenTo.Text = "";
             chkHanhThu.Checked = false;
+            chkDongNuoc.Checked = false;
+            chkAn.Checked = false;
             txtTuCuonGCS.Text = "";
             txtDenCuonGCS.Text = "";
-            dgvTo.DataSource = _cTo.GetDS();
+            dgvTo.DataSource = _cTo.getDS_All();
         }
 
         private void frmTo_Load(object sender, EventArgs e)
         {
             dgvTo.AutoGenerateColumns = false;
-            dgvTo.DataSource = _cTo.GetDS();
+            dgvTo.DataSource = _cTo.getDS();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -47,6 +49,8 @@ namespace ThuTien.GUI.QuanTri
                     TT_To to = new TT_To();
                     to.TenTo = txtTenTo.Text.Trim();
                     to.HanhThu = chkHanhThu.Checked;
+                    to.DongNuoc = chkDongNuoc.Checked;
+                    to.An = chkAn.Checked;
                     if (!string.IsNullOrEmpty(txtTuCuonGCS.Text.Trim()))
                         to.TuCuonGCS = int.Parse(txtTuCuonGCS.Text.Trim());
                     if (!string.IsNullOrEmpty(txtDenCuonGCS.Text.Trim()))
@@ -66,9 +70,11 @@ namespace ThuTien.GUI.QuanTri
             {
                 if (_selectedindex != -1)
                 {
-                    TT_To to = _cTo.GetByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
+                    TT_To to = _cTo.get(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
                     to.TenTo = txtTenTo.Text.Trim();
                     to.HanhThu = chkHanhThu.Checked;
+                    to.DongNuoc = chkDongNuoc.Checked;
+                    to.An = chkAn.Checked;
                     if (!string.IsNullOrEmpty(txtTuCuonGCS.Text.Trim()))
                         to.TuCuonGCS = int.Parse(txtTuCuonGCS.Text.Trim());
                     else
@@ -93,7 +99,7 @@ namespace ThuTien.GUI.QuanTri
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     if (_selectedindex != -1)
                     {
-                        TT_To to = _cTo.GetByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
+                        TT_To to = _cTo.get(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
                         _cTo.Xoa(to);
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -105,20 +111,21 @@ namespace ThuTien.GUI.QuanTri
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void dgvTo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvTo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 _selectedindex = e.RowIndex;
                 txtTenTo.Text = dgvTo["TenTo", e.RowIndex].Value.ToString();
                 chkHanhThu.Checked = bool.Parse(dgvTo["HanhThu", e.RowIndex].Value.ToString());
+                chkDongNuoc.Checked = bool.Parse(dgvTo["DongNuoc", e.RowIndex].Value.ToString());
+                chkAn.Checked = bool.Parse(dgvTo["An", e.RowIndex].Value.ToString());
                 txtTuCuonGCS.Text = dgvTo["TuCuonGCS", e.RowIndex].Value.ToString();
                 txtDenCuonGCS.Text = dgvTo["DenCuonGCS", e.RowIndex].Value.ToString();
             }
-            catch(Exception)
+            catch (Exception)
             {
             }
-            
         }
 
         private void dgvTo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -141,6 +148,8 @@ namespace ThuTien.GUI.QuanTri
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
+
+        
 
 
     }

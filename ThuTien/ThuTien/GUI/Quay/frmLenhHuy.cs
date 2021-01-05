@@ -39,7 +39,7 @@ namespace ThuTien.GUI.Quay
 
             dateLap.Value = DateTime.Now;
 
-            List<TT_To> lstTo = _cTo.GetDSHanhThu();
+            List<TT_To> lstTo = _cTo.getDS_HanhThu();
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";
