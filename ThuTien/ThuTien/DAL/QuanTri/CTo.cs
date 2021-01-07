@@ -81,6 +81,11 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_Tos.Where(item => item.DongNuoc == true && item.An == false).ToList();
         }
 
+        public List<TT_To> getDS_HanhThu_DongNuoc()
+        {
+            return _db.TT_Tos.Where(item => (item.HanhThu == true || item.DongNuoc == true) && item.An == false).ToList();
+        }
+
         public TT_To get(int MaTo)
         {
             return _db.TT_Tos.SingleOrDefault(item => item.MaTo == MaTo);

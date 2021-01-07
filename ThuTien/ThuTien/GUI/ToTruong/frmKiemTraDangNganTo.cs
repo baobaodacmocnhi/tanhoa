@@ -36,6 +36,7 @@ namespace ThuTien.GUI.ToTruong
             dgvHDCoQuan.AutoGenerateColumns = false;
             dgvLichSuDangNganA.AutoGenerateColumns = false;
             dgvLichSuDangNganB.AutoGenerateColumns = false;
+            dgvCongViec.AutoGenerateColumns = false;
 
             if (CNguoiDung.Doi)
             {
@@ -52,6 +53,10 @@ namespace ThuTien.GUI.ToTruong
                 cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
                 cmbNhanVien.DisplayMember = "HoTen";
                 cmbNhanVien.ValueMember = "MaND";
+
+                cmbNhanVien_CongViec.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+                cmbNhanVien_CongViec.DisplayMember = "HoTen";
+                cmbNhanVien_CongViec.ValueMember = "MaND";
             }
 
             DataTable dtNam = _cHoaDon.GetNam();
@@ -503,11 +508,18 @@ namespace ThuTien.GUI.ToTruong
                 if (_flagLoadFirst == true && cmbTo.SelectedIndex != -1)
                 {
                     if ((_cTo.checkHanhThu(int.Parse(cmbTo.SelectedValue.ToString()))))
+                    {
                         cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
-                    else
-                        cmbNhanVien.DataSource = _cNguoiDung.GetDSByToVanPhong(int.Parse(cmbTo.SelectedValue.ToString()));
+                        cmbNhanVien_CongViec.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
+                    }
+                    //else
+                    //{
+                    //    cmbNhanVien.DataSource = _cNguoiDung.GetDSByToVanPhong(int.Parse(cmbTo.SelectedValue.ToString()));
+                    //}
                     cmbNhanVien.DisplayMember = "HoTen";
                     cmbNhanVien.ValueMember = "MaND";
+                    cmbNhanVien_CongViec.DisplayMember = "HoTen";
+                    cmbNhanVien_CongViec.ValueMember = "MaND";
                 }
                 else
                     cmbNhanVien.DataSource = null;
@@ -602,6 +614,16 @@ namespace ThuTien.GUI.ToTruong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnXem_CongViec_Click(object sender, EventArgs e)
+        {
+            if (cmbFromDot.SelectedIndex > 0)
+            {
+                dgvCongViec.DataSource = _cHoaDon.getCount_CongViec(int.Parse(cmbNhanVien_CongViec.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()),dateGiaiTrach.Value);
+            }
+            else
+                MessageBox.Show("Chọn Từ Đợt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 

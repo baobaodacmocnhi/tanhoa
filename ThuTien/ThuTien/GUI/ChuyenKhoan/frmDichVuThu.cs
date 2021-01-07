@@ -48,7 +48,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             cmbDichVuThu.DisplayMember = "TenDichVu";
             cmbDichVuThu.ValueMember = "ID";
 
-            List<TT_To> lstTo = _cTo.getDS_HanhThu();
+            List<TT_To> lstTo = _cTo.getDS_HanhThu_DongNuoc();
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";

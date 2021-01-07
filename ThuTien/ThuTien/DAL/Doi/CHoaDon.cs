@@ -6663,6 +6663,19 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable getCount_CongViec(int MaNV_HanhThu, int Nam, int Ky, int FromDot, int ToDot, DateTime Ngay)
+        {
+            string sql = "declare @Ngay date"
+                        + " set @Ngay='" + Ngay.ToString("yyyyMMdd") + "'"
+                        + " select Dot,TongCong=FORMAT(COUNT(ID_HOADON), '#,#')+' - '+ FORMAT(SUM(TONGCONG), '#,#')"
+                        + " ,NhacNo=FORMAT(COUNT(case when (CAST(InPhieuBao_Ngay as date)=@Ngay or CAST(InPhieuBao2_Ngay as date)=@Ngay) then 1 else null end), '#,#')+' - '+FORMAT(SUM(case when (CAST(InPhieuBao_Ngay as date)=@Ngay or CAST(InPhieuBao2_Ngay as date)=@Ngay) then TONGCONG else null end), '#,#')"
+                        + " ,ThuHo=FORMAT(COUNT(case when (dvt.MaHD is not null and CAST(dvt.CreateDate as date)=@Ngay) then 1 else null end), '#,#')+' - '+FORMAT(SUM(case when (dvt.MaHD is not null and CAST(dvt.CreateDate as date)=@Ngay) then TONGCONG else null end), '#,#')"
+                        + " ,ChuaDi=FORMAT(COUNT(case when (InPhieuBao_Ngay is null and InPhieuBao2_Ngay is null) then 1 else null end), '#,#')+' - '+FORMAT(SUM(case when (InPhieuBao_Ngay is null and InPhieuBao2_Ngay is null) then TONGCONG else null end), '#,#')"
+                        + " from HOADON hd left join TT_DichVuThu dvt on dvt.MaHD=hd.ID_HOADON"
+                        + " where hd.NAM=" + Nam + " and hd.KY=" + Ky + " and DOT>=" + FromDot + " and DOT<=" + ToDot + " and MaNV_HanhThu=" + MaNV_HanhThu + " group by DOT";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         public DataTable getDS(int MaTo, int Nam, int Ky, int Dot)
         {
             var query = from item in _db.HOADONs

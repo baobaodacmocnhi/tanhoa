@@ -81,12 +81,12 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                         + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) then 'true' else 'false' end"
                         + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD) then 'true' else 'false' end"
-                        + " from TT_DichVuThu dvt,HOADON hd where dvt.DanhBo='"+DanhBo+"' and dvt.MaHD=hd.ID_HOADON"
+                        + " from TT_DichVuThu dvt,HOADON hd where dvt.DanhBo='" + DanhBo + "' and dvt.MaHD=hd.ID_HOADON"
                         + " order by hd.CreateDate desc";
             return ExecuteQuery_DataTable(sql);
         }
 
-         public DataTable getDS(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             //var query = from itemDV in _db.TT_DichVuThus
             //            join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
@@ -181,7 +181,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                         + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                         + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
-                        + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and (hd.NAM<"+Nam+" or (hd.NAM="+Nam+" and hd.KY<="+Ky+"))"
+                        + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + "))"
                         + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -281,51 +281,15 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                         + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                         + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
-                        + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and and (hd.NAM<"+Nam+" or (hd.NAM="+Nam+" and hd.KY<="+Ky+")) and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot
+                        + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot
                         + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS(string TenDichVu, int MaTo, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            //var query = from itemDV in _db.TT_DichVuThus
-            //            join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
-            //            from itemtableND in tableND.DefaultIfEmpty()
-            //            join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //            from itemtableDN in tableDN.DefaultIfEmpty()
-            //            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-            //                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //            orderby itemDV.CreateDate ascending
-            //            select new
-            //            {
-            //                itemDV.SoHoaDon,
-            //                itemDV.SoTien,
-            //                Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                itemDV.TenDichVu,
-            //                itemDV.IDGiaoDich,
-            //                itemDV.CreateDate,
-            //                itemHD.NGAYGIAITRACH,
-            //                itemHD.DangNgan_Quay,
-            //                itemHD.DangNgan_ChuyenKhoan,
-            //                itemHD.TIEUTHU,
-            //                Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                MLT = itemHD.MALOTRINH,
-            //                DanhBo = itemHD.DANHBA,
-            //                HoTen = itemHD.TENKH,
-            //                DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                GiaBieu = itemHD.GB,
-            //                HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                //HanhThu = itemtableND.HoTen,
-            //                //To = itemtableND.TT_To.TenTo,
-            //                To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                DangNgan = itemtableDN.HoTen,
-            //                DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //            };
-            //return LINQToDataTable(query);
-            string sql = "select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
+            string sql = "if ((select DongNuoc from TT_To where MaTo=" + MaTo + ")=0)"
+                        + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
                         + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
                         + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
                         + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
@@ -333,50 +297,24 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                         + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
                         + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " order by dvt.CreateDate asc"
+                        + " else"
+                        + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
+                        + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
+                        + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
+                        + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
+                        + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
+                        + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
+                        + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
+                        + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc in (select MaND from TT_NguoiDung where MaTo=" + MaTo + ") and ctdn.MaHD=dvt.MaHD and dn.Huy=0 and dn.MaDN=ctdn.MaDN and dvt.MaHD=hd.ID_HOADON"
                         + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_DenKy(string TenDichVu, int MaTo, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky)
         {
-            //var query = from itemDV in _db.TT_DichVuThus
-            //            join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
-            //            from itemtableND in tableND.DefaultIfEmpty()
-            //            join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //            from itemtableDN in tableDN.DefaultIfEmpty()
-            //            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-            //                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu) && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky))
-            //            orderby itemDV.CreateDate ascending
-            //            select new
-            //            {
-            //                itemDV.SoHoaDon,
-            //                itemDV.SoTien,
-            //                Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                itemDV.TenDichVu,
-            //                itemDV.IDGiaoDich,
-            //                itemDV.CreateDate,
-            //                itemHD.NGAYGIAITRACH,
-            //                itemHD.DangNgan_Quay,
-            //                itemHD.DangNgan_ChuyenKhoan,
-            //                itemHD.TIEUTHU,
-            //                Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                MLT = itemHD.MALOTRINH,
-            //                DanhBo = itemHD.DANHBA,
-            //                HoTen = itemHD.TENKH,
-            //                DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                GiaBieu = itemHD.GB,
-            //                HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                //HanhThu = itemtableND.HoTen,
-            //                //To = itemtableND.TT_To.TenTo,
-            //                To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                DangNgan = itemtableDN.HoTen,
-            //                DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //            };
-            //return LINQToDataTable(query);
-            string sql = "select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
+            string sql = "if ((select DongNuoc from TT_To where MaTo=" + MaTo + ")=0)"
+                        + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
                         + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
                         + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
                         + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
@@ -384,51 +322,24 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                         + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
                         + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " order by dvt.CreateDate asc"
+                        + " else"
+                        + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
+                        + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
+                        + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
+                        + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
+                        + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
+                        + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
+                        + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
+                        + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc in (select MaND from TT_NguoiDung where MaTo=" + MaTo + ") and ctdn.MaHD=dvt.MaHD and dn.Huy=0 and dn.MaDN=ctdn.MaDN and dvt.MaHD=hd.ID_HOADON and (hd.NAM<2021 or (hd.NAM=2021  and hd.KY<=1 ))"
                         + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_Dot(string TenDichVu, int MaTo, DateTime FromCreateDate, DateTime ToCreateDate, int FromDot, int ToDot)
         {
-            //var query = from itemDV in _db.TT_DichVuThus
-            //            join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
-            //            from itemtableND in tableND.DefaultIfEmpty()
-            //            join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //            from itemtableDN in tableDN.DefaultIfEmpty()
-            //            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-            //                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //                && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
-            //            orderby itemDV.CreateDate ascending
-            //            select new
-            //            {
-            //                itemDV.SoHoaDon,
-            //                itemDV.SoTien,
-            //                Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                itemDV.TenDichVu,
-            //                itemDV.IDGiaoDich,
-            //                itemDV.CreateDate,
-            //                itemHD.NGAYGIAITRACH,
-            //                itemHD.DangNgan_Quay,
-            //                itemHD.DangNgan_ChuyenKhoan,
-            //                itemHD.TIEUTHU,
-            //                Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                MLT = itemHD.MALOTRINH,
-            //                DanhBo = itemHD.DANHBA,
-            //                HoTen = itemHD.TENKH,
-            //                DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                GiaBieu = itemHD.GB,
-            //                HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                //HanhThu = itemtableND.HoTen,
-            //                //To = itemtableND.TT_To.TenTo,
-            //                To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                DangNgan = itemtableDN.HoTen,
-            //                DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //            };
-            //return LINQToDataTable(query);
-            string sql = "select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
+            string sql = "if ((select DongNuoc from TT_To where MaTo=" + MaTo + ")=0)"
+                        + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
                         + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
                         + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
                         + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
@@ -436,51 +347,24 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                         + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
                         + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " order by dvt.CreateDate asc"
+                        + " else"
+                        + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
+                        + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
+                        + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
+                        + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
+                        + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
+                        + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
+                        + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
+                        + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc in (select MaND from TT_NguoiDung where MaTo=" + MaTo + ") and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN and dn.Huy=0 and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot
                         + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_DenKy_Dot(string TenDichVu, int MaTo, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky, int FromDot, int ToDot)
         {
-            //var query = from itemDV in _db.TT_DichVuThus
-            //            join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
-            //            from itemtableND in tableND.DefaultIfEmpty()
-            //            join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //            from itemtableDN in tableDN.DefaultIfEmpty()
-            //            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-            //                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //                && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
-            //            orderby itemDV.CreateDate ascending
-            //            select new
-            //            {
-            //                itemDV.SoHoaDon,
-            //                itemDV.SoTien,
-            //                Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                itemDV.TenDichVu,
-            //                itemDV.IDGiaoDich,
-            //                itemDV.CreateDate,
-            //                itemHD.NGAYGIAITRACH,
-            //                itemHD.DangNgan_Quay,
-            //                itemHD.DangNgan_ChuyenKhoan,
-            //                itemHD.TIEUTHU,
-            //                Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                MLT = itemHD.MALOTRINH,
-            //                DanhBo = itemHD.DANHBA,
-            //                HoTen = itemHD.TENKH,
-            //                DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                GiaBieu = itemHD.GB,
-            //                HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                //HanhThu = itemtableND.HoTen,
-            //                //To = itemtableND.TT_To.TenTo,
-            //                To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                DangNgan = itemtableDN.HoTen,
-            //                DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //            };
-            //return LINQToDataTable(query);
-            string sql = "select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
+            string sql = "if ((select DongNuoc from TT_To where MaTo=" + MaTo + ")=0)"
+                        + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
                         + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
                         + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
                         + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
@@ -488,109 +372,43 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                         + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
                         + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " order by dvt.CreateDate asc"
+                        + " else"
+                        + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
+                        + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
+                        + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
+                        + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
+                        + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
+                        + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
+                        + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
+                        + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc in (select MaND from TT_NguoiDung where MaTo=" + MaTo + ") and ctdn.MaHD=dvt.MaHD and dn.Huy=0 and dn.MaDN=ctdn.MaDN and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot
                         + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_NV(string TenDichVu, int MaNV_HanhThu, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            //DataTable dt = new DataTable();
-            //var query = from itemDV in _db.TT_DichVuThus
-            //            join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
-            //            from itemtableND in tableND.DefaultIfEmpty()
-            //            join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //            from itemtableDN in tableDN.DefaultIfEmpty()
-            //            where itemHD.MaNV_HanhThu == MaNV_HanhThu
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //                && !(from itemCTDN in _db.TT_CTDongNuocs where itemCTDN.TT_DongNuoc.Huy == false select itemCTDN.SoHoaDon).Contains(itemHD.SOHOADON)
-            //            select new
-            //            {
-            //                itemDV.SoHoaDon,
-            //                itemDV.SoTien,
-            //                Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                itemDV.TenDichVu,
-            //                itemDV.IDGiaoDich,
-            //                itemDV.CreateDate,
-            //                itemHD.NGAYGIAITRACH,
-            //                itemHD.DangNgan_Quay,
-            //                itemHD.DangNgan_ChuyenKhoan,
-            //                itemHD.TIEUTHU,
-            //                Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                MLT = itemHD.MALOTRINH,
-            //                DanhBo = itemHD.DANHBA,
-            //                HoTen = itemHD.TENKH,
-            //                DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                GiaBieu = itemHD.GB,
-            //                HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                //HanhThu = itemtableND.HoTen,
-            //                //To = itemtableND.TT_To.TenTo,
-            //                To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                DangNgan = itemtableDN.HoTen,
-            //                DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //            };
-            //dt = LINQToDataTable(query);
-
-            //var queryDN = from itemDV in _db.TT_DichVuThus
-            //              join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //              join itemCTDN in _db.TT_CTDongNuocs on itemDV.SoHoaDon equals itemCTDN.SoHoaDon
-            //              join itemND in _db.TT_NguoiDungs on itemCTDN.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
-            //              from itemtableND in tableND.DefaultIfEmpty()
-            //              join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //              from itemtableDN in tableDN.DefaultIfEmpty()
-            //              where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu && itemCTDN.TT_DongNuoc.Huy == false
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //              select new
-            //              {
-            //                  itemDV.SoHoaDon,
-            //                  itemDV.SoTien,
-            //                  Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                  itemDV.TenDichVu,
-            //                  itemDV.CreateDate,
-            //                  itemHD.NGAYGIAITRACH,
-            //                  itemHD.DangNgan_ChuyenKhoan,
-            //                  Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                  MLT = itemHD.MALOTRINH,
-            //                  DanhBo = itemHD.DANHBA,
-            //                  HoTen = itemHD.TENKH,
-            //                  DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                  GiaBieu = itemHD.GB,
-            //                  HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                  //HanhThu = itemtableND.HoTen,
-            //                  //To = itemtableND.TT_To.TenTo,
-            //                  To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                  DangNgan = itemtableDN.HoTen,
-            //                  DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                  LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //              };
-            //dt.Merge(LINQToDataTable(queryDN));
-            //if (dt.Rows.Count > 0)
-            //    dt.DefaultView.Sort = "CreateDate ASC";
-            //dt = dt.DefaultView.ToTable();
-
-            //return dt;
-            string sql="if ((select DongNuoc from TT_NguoiDung where MaND="+MaNV_HanhThu+")=0)"
+            string sql = "if ((select DongNuoc from TT_NguoiDung where MaND=" + MaNV_HanhThu + ")=0)"
                             + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
-	                        + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
+                            + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
                             + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
                             + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
-	                        + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
-	                        + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
-	                        + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
+                            + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
+                            + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
+                            + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
                             + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.MaNV_HanhThu=" + MaNV_HanhThu + " and not exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) and dvt.MaHD=hd.ID_HOADON"
-	                        + " order by dvt.CreateDate asc"
+                            + " order by dvt.CreateDate asc"
                         + " else"
                             + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
-	                        + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
+                            + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
                             + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
                             + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
-	                        + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
-	                        + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
-	                        + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
+                            + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
+                            + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
+                            + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
                             + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc=" + MaNV_HanhThu + " and ctdn.MaHD=dvt.MaHD and dn.Huy=0 and dn.MaDN=ctdn.MaDN and dvt.MaHD=hd.ID_HOADON"
-	                        + " order by dvt.CreateDate asc";
-        return ExecuteQuery_DataTable(sql);
+                            + " order by dvt.CreateDate asc";
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_DenKy_NV(string TenDichVu, int MaNV_HanhThu, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky)
@@ -696,84 +514,6 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable getDS_NV_Dot(string TenDichVu, int MaNV_HanhThu, DateTime FromCreateDate, DateTime ToCreateDate, int FromDot, int ToDot)
         {
-            //DataTable dt = new DataTable();
-            //var query = from itemDV in _db.TT_DichVuThus
-            //            join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
-            //            from itemtableND in tableND.DefaultIfEmpty()
-            //            join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //            from itemtableDN in tableDN.DefaultIfEmpty()
-            //            where itemHD.MaNV_HanhThu == MaNV_HanhThu
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //                && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
-            //                && !(from itemCTDN in _db.TT_CTDongNuocs where itemCTDN.TT_DongNuoc.Huy == false select itemCTDN.SoHoaDon).Contains(itemHD.SOHOADON)
-            //            select new
-            //            {
-            //                itemDV.SoHoaDon,
-            //                itemDV.SoTien,
-            //                Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                itemDV.TenDichVu,
-            //                itemDV.IDGiaoDich,
-            //                itemDV.CreateDate,
-            //                itemHD.NGAYGIAITRACH,
-            //                itemHD.DangNgan_Quay,
-            //                itemHD.DangNgan_ChuyenKhoan,
-            //                itemHD.TIEUTHU,
-            //                Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                MLT = itemHD.MALOTRINH,
-            //                DanhBo = itemHD.DANHBA,
-            //                HoTen = itemHD.TENKH,
-            //                DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                GiaBieu = itemHD.GB,
-            //                HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                //HanhThu = itemtableND.HoTen,
-            //                //To = itemtableND.TT_To.TenTo,
-            //                To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                DangNgan = itemtableDN.HoTen,
-            //                DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //            };
-            //dt = LINQToDataTable(query);
-
-            //var queryDN = from itemDV in _db.TT_DichVuThus
-            //              join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //              join itemCTDN in _db.TT_CTDongNuocs on itemDV.SoHoaDon equals itemCTDN.SoHoaDon
-            //              join itemND in _db.TT_NguoiDungs on itemCTDN.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
-            //              from itemtableND in tableND.DefaultIfEmpty()
-            //              join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //              from itemtableDN in tableDN.DefaultIfEmpty()
-            //              where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu && itemCTDN.TT_DongNuoc.Huy == false
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //                && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
-            //              select new
-            //              {
-            //                  itemDV.SoHoaDon,
-            //                  itemDV.SoTien,
-            //                  Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                  itemDV.TenDichVu,
-            //                  itemDV.CreateDate,
-            //                  itemHD.NGAYGIAITRACH,
-            //                  itemHD.DangNgan_ChuyenKhoan,
-            //                  Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                  MLT = itemHD.MALOTRINH,
-            //                  DanhBo = itemHD.DANHBA,
-            //                  HoTen = itemHD.TENKH,
-            //                  DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                  GiaBieu = itemHD.GB,
-            //                  HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                  //HanhThu = itemtableND.HoTen,
-            //                  //To = itemtableND.TT_To.TenTo,
-            //                  To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                  DangNgan = itemtableDN.HoTen,
-            //                  DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                  LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //              };
-            //dt.Merge(LINQToDataTable(queryDN));
-            //if (dt.Rows.Count > 0)
-            //    dt.DefaultView.Sort = "CreateDate ASC";
-            //dt = dt.DefaultView.ToTable();
-
-            //return dt;
             string sql = "if ((select DongNuoc from TT_NguoiDung where MaND=" + MaNV_HanhThu + ")=0)"
                             + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
                             + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
@@ -782,7 +522,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                             + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                             + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
-                            + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.MaNV_HanhThu=" + MaNV_HanhThu + " and not exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot 
+                            + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.MaNV_HanhThu=" + MaNV_HanhThu + " and not exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot
                             + " order by dvt.CreateDate asc"
                         + " else"
                             + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
@@ -792,91 +532,13 @@ namespace ThuTien.DAL.ChuyenKhoan
                             + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                             + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                             + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
-                            + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc=" + MaNV_HanhThu + " and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN and dn.Huy=0 and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot 
+                            + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc=" + MaNV_HanhThu + " and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN and dn.Huy=0 and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot
                             + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_DenKy_NV_Dot(string TenDichVu, int MaNV_HanhThu, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky, int FromDot, int ToDot)
         {
-            //DataTable dt = new DataTable();
-            //var query = from itemDV in _db.TT_DichVuThus
-            //            join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
-            //            from itemtableND in tableND.DefaultIfEmpty()
-            //            join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //            from itemtableDN in tableDN.DefaultIfEmpty()
-            //            where itemHD.MaNV_HanhThu == MaNV_HanhThu
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //                && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
-            //                && !(from itemCTDN in _db.TT_CTDongNuocs where itemCTDN.TT_DongNuoc.Huy == false select itemCTDN.SoHoaDon).Contains(itemHD.SOHOADON)
-            //            select new
-            //            {
-            //                itemDV.SoHoaDon,
-            //                itemDV.SoTien,
-            //                Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                itemDV.TenDichVu,
-            //                itemDV.IDGiaoDich,
-            //                itemDV.CreateDate,
-            //                itemHD.NGAYGIAITRACH,
-            //                itemHD.DangNgan_Quay,
-            //                itemHD.DangNgan_ChuyenKhoan,
-            //                itemHD.TIEUTHU,
-            //                Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                MLT = itemHD.MALOTRINH,
-            //                DanhBo = itemHD.DANHBA,
-            //                HoTen = itemHD.TENKH,
-            //                DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                GiaBieu = itemHD.GB,
-            //                HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                //HanhThu = itemtableND.HoTen,
-            //                //To = itemtableND.TT_To.TenTo,
-            //                To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                DangNgan = itemtableDN.HoTen,
-            //                DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //            };
-            //dt = LINQToDataTable(query);
-
-            //var queryDN = from itemDV in _db.TT_DichVuThus
-            //              join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //              join itemCTDN in _db.TT_CTDongNuocs on itemDV.SoHoaDon equals itemCTDN.SoHoaDon
-            //              join itemND in _db.TT_NguoiDungs on itemCTDN.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
-            //              from itemtableND in tableND.DefaultIfEmpty()
-            //              join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //              from itemtableDN in tableDN.DefaultIfEmpty()
-            //              where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu && itemCTDN.TT_DongNuoc.Huy == false
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //                && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
-            //              select new
-            //              {
-            //                  itemDV.SoHoaDon,
-            //                  itemDV.SoTien,
-            //                  Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                  itemDV.TenDichVu,
-            //                  itemDV.CreateDate,
-            //                  itemHD.NGAYGIAITRACH,
-            //                  itemHD.DangNgan_ChuyenKhoan,
-            //                  Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                  MLT = itemHD.MALOTRINH,
-            //                  DanhBo = itemHD.DANHBA,
-            //                  HoTen = itemHD.TENKH,
-            //                  DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                  GiaBieu = itemHD.GB,
-            //                  HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                  //HanhThu = itemtableND.HoTen,
-            //                  //To = itemtableND.TT_To.TenTo,
-            //                  To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                  DangNgan = itemtableDN.HoTen,
-            //                  DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                  LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //              };
-            //dt.Merge(LINQToDataTable(queryDN));
-            //if (dt.Rows.Count > 0)
-            //    dt.DefaultView.Sort = "CreateDate ASC";
-            //dt = dt.DefaultView.ToTable();
-
-            //return dt;
             string sql = "if ((select DongNuoc from TT_NguoiDung where MaND=" + MaNV_HanhThu + ")=0)"
                             + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
                             + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
@@ -885,7 +547,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                             + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                             + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
-                            + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.MaNV_HanhThu=" + MaNV_HanhThu + " and not exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot 
+                            + " from TT_DichVuThu dvt,HOADON hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.MaNV_HanhThu=" + MaNV_HanhThu + " and not exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot
                             + " order by dvt.CreateDate asc"
                         + " else"
                             + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
@@ -895,7 +557,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                             + " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                             + " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
-                            + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc=" + MaNV_HanhThu + " and ctdn.MaHD=dvt.MaHD and dn.Huy=0 and dn.MaDN=ctdn.MaDN and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot 
+                            + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc=" + MaNV_HanhThu + " and ctdn.MaHD=dvt.MaHD and dn.Huy=0 and dn.MaDN=ctdn.MaDN and dvt.MaHD=hd.ID_HOADON and (hd.NAM<" + Nam + " or (hd.NAM=" + Nam + " and hd.KY<=" + Ky + ")) and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot
                             + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -1208,8 +870,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                             + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
                             + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
                             + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
-                            //+ " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
-                            //+ " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
+                //+ " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
+                //+ " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
                             + " from TT_DichVuThu dvt,HOADON hd,TT_LenhHuy lh where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and hd.ID_HOADON=lh.MaHD"
                             + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
@@ -1217,45 +879,8 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable getDS_LenhHuy(string TenDichVu, int MaTo, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            //var query = from itemDV in _db.TT_DichVuThus
-            //            join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //            join itemLH in _db.TT_LenhHuys on itemDV.SoHoaDon equals itemLH.SoHoaDon
-            //            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
-            //            from itemtableND in tableND.DefaultIfEmpty()
-            //            join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //            from itemtableDN in tableDN.DefaultIfEmpty()
-            //            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-            //                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //            orderby itemDV.CreateDate ascending
-            //            select new
-            //            {
-            //                itemDV.SoHoaDon,
-            //                itemDV.SoTien,
-            //                Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                itemDV.TenDichVu,
-            //                itemDV.IDGiaoDich,
-            //                itemDV.CreateDate,
-            //                itemHD.NGAYGIAITRACH,
-            //                itemHD.DangNgan_Quay,
-            //                itemHD.DangNgan_ChuyenKhoan,
-            //                itemHD.TIEUTHU,
-            //                Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                MLT = itemHD.MALOTRINH,
-            //                DanhBo = itemHD.DANHBA,
-            //                HoTen = itemHD.TENKH,
-            //                DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                GiaBieu = itemHD.GB,
-            //                HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                //HanhThu = itemtableND.HoTen,
-            //                //To = itemtableND.TT_To.TenTo,
-            //                To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                DangNgan = itemtableDN.HoTen,
-            //                //DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                //LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //            };
-            //return LINQToDataTable(query);
-            string sql = "select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
+            string sql = "if ((select DongNuoc from TT_To where MaTo=" + MaTo + ")=0)"
+                            + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
                             + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
                             + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
                             + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
@@ -1263,98 +888,30 @@ namespace ThuTien.DAL.ChuyenKhoan
                 //+ " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                 //+ " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
                             + " from TT_DichVuThu dvt,HOADON hd,TT_LenhHuy lh where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and hd.ID_HOADON=lh.MaHD and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " order by dvt.CreateDate asc"
+                            + " else"
+                            + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
+                            + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
+                            + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
+                            + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
+                            + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
+                //+ " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
+                //+ " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
+                            + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn,TT_LenhHuy hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc in (select MaND from TT_NguoiDung where MaTo=" + MaTo + ") and ctdn.MaHD=dvt.MaHD and dn.Huy=0 and dn.MaDN=ctdn.MaDN and dvt.MaHD=hd.ID_HOADON and hd.ID_HOADON=lh.MaHD"
                             + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_NV_LenhHuy(string TenDichVu, int MaNV_HanhThu, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            //DataTable dt = new DataTable();
-            //var query = from itemDV in _db.TT_DichVuThus
-            //            join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //            join itemLH in _db.TT_LenhHuys on itemDV.SoHoaDon equals itemLH.SoHoaDon
-            //            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
-            //            from itemtableND in tableND.DefaultIfEmpty()
-            //            join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //            from itemtableDN in tableDN.DefaultIfEmpty()
-            //            where itemHD.MaNV_HanhThu == MaNV_HanhThu
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //                && !(from itemCTDN in _db.TT_CTDongNuocs where itemCTDN.TT_DongNuoc.Huy == false select itemCTDN.SoHoaDon).Contains(itemHD.SOHOADON)
-            //            select new
-            //            {
-            //                itemDV.SoHoaDon,
-            //                itemDV.SoTien,
-            //                Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                itemDV.TenDichVu,
-            //                itemDV.IDGiaoDich,
-            //                itemDV.CreateDate,
-            //                itemHD.NGAYGIAITRACH,
-            //                itemHD.DangNgan_Quay,
-            //                itemHD.DangNgan_ChuyenKhoan,
-            //                itemHD.TIEUTHU,
-            //                Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                MLT = itemHD.MALOTRINH,
-            //                DanhBo = itemHD.DANHBA,
-            //                HoTen = itemHD.TENKH,
-            //                DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                GiaBieu = itemHD.GB,
-            //                HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                //HanhThu = itemtableND.HoTen,
-            //                //To = itemtableND.TT_To.TenTo,
-            //                To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                DangNgan = itemtableDN.HoTen,
-            //                //DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                //LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //            };
-            //dt = LINQToDataTable(query);
-
-            //var queryDN = from itemDV in _db.TT_DichVuThus
-            //              join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //              join itemLH in _db.TT_LenhHuys on itemDV.SoHoaDon equals itemLH.SoHoaDon
-            //              join itemCTDN in _db.TT_CTDongNuocs on itemDV.SoHoaDon equals itemCTDN.SoHoaDon
-            //              join itemND in _db.TT_NguoiDungs on itemCTDN.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
-            //              from itemtableND in tableND.DefaultIfEmpty()
-            //              join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //              from itemtableDN in tableDN.DefaultIfEmpty()
-            //              where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu && itemCTDN.TT_DongNuoc.Huy == false
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //              select new
-            //              {
-            //                  itemDV.SoHoaDon,
-            //                  itemDV.SoTien,
-            //                  Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                  itemDV.TenDichVu,
-            //                  itemDV.CreateDate,
-            //                  itemHD.NGAYGIAITRACH,
-            //                  itemHD.DangNgan_ChuyenKhoan,
-            //                  Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                  MLT = itemHD.MALOTRINH,
-            //                  DanhBo = itemHD.DANHBA,
-            //                  HoTen = itemHD.TENKH,
-            //                  DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                  GiaBieu = itemHD.GB,
-            //                  HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                  //HanhThu = itemtableND.HoTen,
-            //                  //To = itemtableND.TT_To.TenTo,
-            //                  To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                  DangNgan = itemtableDN.HoTen,
-            //                  //DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                  //LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //              };
-            //dt.Merge(LINQToDataTable(queryDN));
-            //if (dt.Rows.Count > 0)
-            //    dt.DefaultView.Sort = "CreateDate ASC";
-            //dt = dt.DefaultView.ToTable();
-
-            //return dt;
             string sql = "if ((select DongNuoc from TT_NguoiDung where MaND=" + MaNV_HanhThu + ")=0)"
                             + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
                             + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
                             + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
                             + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
                             + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
-                            //+ " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
-                            //+ " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
+                //+ " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
+                //+ " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
                             + " from TT_DichVuThu dvt,HOADON hd,TT_LenhHuy hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.MaNV_HanhThu=" + MaNV_HanhThu + " and not exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) and dvt.MaHD=hd.ID_HOADON and hd.ID_HOADON=lh.MaHD"
                             + " order by dvt.CreateDate asc"
                         + " else"
@@ -1363,8 +920,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                             + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
                             + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
                             + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
-                            //+ " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
-                            //+ " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
+                //+ " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
+                //+ " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
                             + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn,TT_LenhHuy hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc=" + MaNV_HanhThu + " and ctdn.MaHD=dvt.MaHD and dn.Huy=0 and dn.MaDN=ctdn.MaDN and dvt.MaHD=hd.ID_HOADON and hd.ID_HOADON=lh.MaHD"
                             + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
@@ -1416,53 +973,15 @@ namespace ThuTien.DAL.ChuyenKhoan
                             + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
                 //+ " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                 //+ " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
-                            + " from TT_DichVuThu dvt,HOADON hd,TT_LenhHuy lh where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and hd.DOT>="+FromDot+" and hd.DOT<="+ToDot+" hd.ID_HOADON=lh.MaHD"
+                            + " from TT_DichVuThu dvt,HOADON hd,TT_LenhHuy lh where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot + " hd.ID_HOADON=lh.MaHD"
                             + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_Dot_LenhHuy(string TenDichVu, int MaTo, DateTime FromCreateDate, DateTime ToCreateDate, int FromDot, int ToDot)
         {
-            //var query = from itemDV in _db.TT_DichVuThus
-            //            join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //            join itemLH in _db.TT_LenhHuys on itemDV.SoHoaDon equals itemLH.SoHoaDon
-            //            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
-            //            from itemtableND in tableND.DefaultIfEmpty()
-            //            join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //            from itemtableDN in tableDN.DefaultIfEmpty()
-            //            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-            //                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //                && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
-            //            orderby itemDV.CreateDate ascending
-            //            select new
-            //            {
-            //                itemDV.SoHoaDon,
-            //                itemDV.SoTien,
-            //                Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                itemDV.TenDichVu,
-            //                itemDV.IDGiaoDich,
-            //                itemDV.CreateDate,
-            //                itemHD.NGAYGIAITRACH,
-            //                itemHD.DangNgan_Quay,
-            //                itemHD.DangNgan_ChuyenKhoan,
-            //                itemHD.TIEUTHU,
-            //                Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                MLT = itemHD.MALOTRINH,
-            //                DanhBo = itemHD.DANHBA,
-            //                HoTen = itemHD.TENKH,
-            //                DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                GiaBieu = itemHD.GB,
-            //                HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                //HanhThu = itemtableND.HoTen,
-            //                //To = itemtableND.TT_To.TenTo,
-            //                To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                DangNgan = itemtableDN.HoTen,
-            //                //DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                //LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //            };
-            //return LINQToDataTable(query);
-            string sql = "select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
+            string sql = "if ((select DongNuoc from TT_To where MaTo=" + MaTo + ")=0)"
+                            + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
                             + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
                             + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
                             + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
@@ -1470,92 +989,22 @@ namespace ThuTien.DAL.ChuyenKhoan
                 //+ " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
                 //+ " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
                             + " from TT_DichVuThu dvt,HOADON hd,TT_LenhHuy lh where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dvt.MaHD=hd.ID_HOADON and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ") and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot + " hd.ID_HOADON=lh.MaHD"
+                            + " order by dvt.CreateDate asc"
+                            + " else"
+                            + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
+                            + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
+                            + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end)"
+                            + " ,'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and MaNV_DongNuoc is not null and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then (select top 1 dn.MaNV_DongNuoc from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN) else hd.MaNV_HanhThu end))"
+                            + " ,DangNgan=(select HoTen from TT_NguoiDung where MaND=hd.MaNV_DangNgan)"
+                //+ " ,DongNuoc=case when exists (select top 1 dn.MaDN from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.Huy=0 and ctdn.MaHD=dvt.MaHD and dn.MaDN=ctdn.MaDN)then 'true' else 'false' end"
+                //+ " ,LenhHuy=case when exists (select top 1 MaHD from TT_LenhHuy where MaHD=dvt.MaHD)then 'true' else 'false' end"
+                            + " from TT_DichVuThu dvt,HOADON hd,TT_DongNuoc dn,TT_CTDongNuoc ctdn,TT_LenhHuy hd where dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%' and dn.MaNV_DongNuoc in (select MaND from TT_NguoiDung where MaTo=" + MaTo + ") and ctdn.MaHD=dvt.MaHD and dn.Huy=0 and dn.MaDN=ctdn.MaDN and dvt.MaHD=hd.ID_HOADON and hd.DOT>=" + FromDot + " and hd.DOT<=" + ToDot + " and hd.ID_HOADON=lh.MaHD"
                             + " order by dvt.CreateDate asc";
             return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_NV_Dot_LenhHuy(string TenDichVu, int MaNV_HanhThu, DateTime FromCreateDate, DateTime ToCreateDate, int FromDot, int ToDot)
         {
-            //DataTable dt = new DataTable();
-            //var query = from itemDV in _db.TT_DichVuThus
-            //            join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //            join itemLH in _db.TT_LenhHuys on itemDV.SoHoaDon equals itemLH.SoHoaDon
-            //            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
-            //            from itemtableND in tableND.DefaultIfEmpty()
-            //            join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //            from itemtableDN in tableDN.DefaultIfEmpty()
-            //            where itemHD.MaNV_HanhThu == MaNV_HanhThu
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //                && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
-            //                && !(from itemCTDN in _db.TT_CTDongNuocs where itemCTDN.TT_DongNuoc.Huy == false select itemCTDN.SoHoaDon).Contains(itemHD.SOHOADON)
-            //            select new
-            //            {
-            //                itemDV.SoHoaDon,
-            //                itemDV.SoTien,
-            //                Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                itemDV.TenDichVu,
-            //                itemDV.IDGiaoDich,
-            //                itemDV.CreateDate,
-            //                itemHD.NGAYGIAITRACH,
-            //                itemHD.DangNgan_Quay,
-            //                itemHD.DangNgan_ChuyenKhoan,
-            //                itemHD.TIEUTHU,
-            //                Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                MLT = itemHD.MALOTRINH,
-            //                DanhBo = itemHD.DANHBA,
-            //                HoTen = itemHD.TENKH,
-            //                DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                GiaBieu = itemHD.GB,
-            //                HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                //HanhThu = itemtableND.HoTen,
-            //                //To = itemtableND.TT_To.TenTo,
-            //                To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                DangNgan = itemtableDN.HoTen,
-            //                //DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                //LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //            };
-            //dt = LINQToDataTable(query);
-
-            //var queryDN = from itemDV in _db.TT_DichVuThus
-            //              join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
-            //              join itemLH in _db.TT_LenhHuys on itemDV.SoHoaDon equals itemLH.SoHoaDon
-            //              join itemCTDN in _db.TT_CTDongNuocs on itemDV.SoHoaDon equals itemCTDN.SoHoaDon
-            //              join itemND in _db.TT_NguoiDungs on itemCTDN.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
-            //              from itemtableND in tableND.DefaultIfEmpty()
-            //              join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
-            //              from itemtableDN in tableDN.DefaultIfEmpty()
-            //              where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu && itemCTDN.TT_DongNuoc.Huy == false
-            //                && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-            //                && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
-            //              select new
-            //              {
-            //                  itemDV.SoHoaDon,
-            //                  itemDV.SoTien,
-            //                  Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
-            //                  itemDV.TenDichVu,
-            //                  itemDV.CreateDate,
-            //                  itemHD.NGAYGIAITRACH,
-            //                  itemHD.DangNgan_ChuyenKhoan,
-            //                  Ky = itemHD.KY + "/" + itemHD.NAM,
-            //                  MLT = itemHD.MALOTRINH,
-            //                  DanhBo = itemHD.DANHBA,
-            //                  HoTen = itemHD.TENKH,
-            //                  DiaChi = itemHD.SO + " " + itemHD.DUONG,
-            //                  GiaBieu = itemHD.GB,
-            //                  HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
-            //                  //HanhThu = itemtableND.HoTen,
-            //                  //To = itemtableND.TT_To.TenTo,
-            //                  To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
-            //                  DangNgan = itemtableDN.HoTen,
-            //                  //DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
-            //                  //LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
-            //              };
-            //dt.Merge(LINQToDataTable(queryDN));
-            //if (dt.Rows.Count > 0)
-            //    dt.DefaultView.Sort = "CreateDate ASC";
-            //dt = dt.DefaultView.ToTable();
-
-            //return dt;
             string sql = "if ((select DongNuoc from TT_NguoiDung where MaND=" + MaNV_HanhThu + ")=0)"
                             + " select dvt.MaHD,dvt.SoHoaDon,dvt.DanhBo,Ky=CONVERT(char(2),dvt.Ky)+'/'+CONVERT(char(4),dvt.Nam),dvt.SoTien,dvt.TenDichVu,dvt.IDGiaoDich,dvt.CreateDate,Phi=(select PhiMoNuoc from TT_DichVuThuTong where ID=dvt.IDDichVu)"
                             + " ,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,MLT=hd.MALOTRINH,hd.TIEUTHU,GiaBieu=hd.GB,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
@@ -1771,7 +1220,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
+                            Phi = itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.CreateDate,
                             itemHD.NGAYGIAITRACH,
@@ -1805,7 +1254,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemDV.SoHoaDon,
                             itemDV.SoTien,
-                            Phi=itemDV.TT_DichVuThuTong.PhiMoNuoc,
+                            Phi = itemDV.TT_DichVuThuTong.PhiMoNuoc,
                             itemDV.TenDichVu,
                             itemDV.CreateDate,
                             itemHD.NGAYGIAITRACH,
@@ -2699,14 +2148,14 @@ namespace ThuTien.DAL.ChuyenKhoan
             return null;
         }
 
-        public DataTable GetDS_XuatExcel(int MaTo,int Nam)
+        public DataTable GetDS_XuatExcel(int MaTo, int Nam)
         {
             string sql = "declare @Nam int;"
                         + " declare @MaTo int;"
                         + " declare @TuCuonGCS int;"
                         + " declare @DenCuonGCS int;"
                         + " set @Nam=" + Nam + ";"
-                        + " set @MaTo="+MaTo+";"
+                        + " set @MaTo=" + MaTo + ";"
                         + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=@MaTo);"
                         + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=@MaTo);"
                         + " select MLT=MALOTRINH,hd.SoHoaDon,Ky=CONVERT(varchar(2),hd.Ky)+'/'+CONVERT(varchar(4),hd.Nam),DanhBo=hd.DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,NGAYGIAITRACH,"
