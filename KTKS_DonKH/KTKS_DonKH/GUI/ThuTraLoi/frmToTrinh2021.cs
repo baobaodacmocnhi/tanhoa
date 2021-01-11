@@ -538,7 +538,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                             ttds.CreateDate = DateTime.Now;
                                             cttt.ToTrinh_ChiTiet_DanhSaches.Add(ttds);
                                             _cTT.SubmitChanges();
-                                            //_cDonTu.Them_LichSu(cttt.CreateDate.Value, "ToTrinh", "Đã Lập Tờ Trình, " + cttt.VeViec, cttt.IDCT, ttds.MaDon.Value, ttds.STT.Value);
+                                            _cDonTu.Them_LichSu(cttt.CreateDate.Value, "ToTrinh", "Đã Lập Tờ Trình, " + cttt.VeViec, cttt.IDCT, ttds.MaDon.Value, ttds.STT.Value);
                                         }
                                     }
                                     scope.Complete();

@@ -216,7 +216,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
         public DataTable getDS_ChiTiet_DanhBo(string DanhBo)
         {
             var query = from item in db.ToTrinh_ChiTiets
-                        where item.DanhBo == DanhBo
+                        where item.DanhBo == DanhBo || item.ToTrinh_ChiTiet_DanhSaches.Any(itemA => itemA.DanhBo == DanhBo)
                         select new
                         {
                             MaDon = item.ToTrinh.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ToTrinh.MaDonMoi).Count() == 1 ? item.ToTrinh.MaDonMoi.Value.ToString() : item.ToTrinh.MaDonMoi + "." + item.STT
@@ -362,7 +362,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 
         public ToTrinh_ChiTiet_DanhSach get_ChiTiet_DanhSach(int ID)
         {
-            return db.ToTrinh_ChiTiet_DanhSaches.SingleOrDefault(item=>item.IDDanhSach==ID);
+            return db.ToTrinh_ChiTiet_DanhSaches.SingleOrDefault(item => item.IDDanhSach == ID);
         }
 
         public int get_IDDanhSach_Max()
