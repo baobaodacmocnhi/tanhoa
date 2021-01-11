@@ -612,7 +612,7 @@ namespace ThuTien.GUI.TongHop
                 //in kể cả người nghỉ phép
                 dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThuTG(dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
-                    if (lst[i].HanhThu == false)
+                    if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                     {
                         dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet("TG", lst[i].MaTo, dateGiaiTrachTongHopDangNgan.Value));
                     }
@@ -733,7 +733,7 @@ namespace ThuTien.GUI.TongHop
                 //in kể cả người nghỉ phép
                 dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThuTG_PhanKyLon(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
-                    if (lst[i].HanhThu == false)
+                    if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                     {
                         dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyLon("TG", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
                     }
@@ -850,7 +850,7 @@ namespace ThuTien.GUI.TongHop
                 //in kể cả người nghỉ phép
                 dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThuTG_PhanKyNho(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
-                    if (lst[i].HanhThu == false)
+                    if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                     {
                         dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyNho("TG", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
                     }
@@ -1323,7 +1323,7 @@ namespace ThuTien.GUI.TongHop
 
                 dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu(dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
-                    if (lst[i].HanhThu == false)
+                    if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                     {
                         dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet("", lst[i].MaTo, dateGiaiTrachTongHopDangNgan.Value));
                     }
@@ -1439,7 +1439,7 @@ namespace ThuTien.GUI.TongHop
 
                 dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyLon(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
-                    if (lst[i].HanhThu == false)
+                    if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                     {
                         dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyLon("", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
                     }
@@ -1552,7 +1552,7 @@ namespace ThuTien.GUI.TongHop
 
                 dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyNho_Giay(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
-                    if (lst[i].HanhThu == false)
+                    if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                     {
                         dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyNho_Giay("", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
                     }
@@ -1662,7 +1662,7 @@ namespace ThuTien.GUI.TongHop
 
                 dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyNho_DienTu(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
-                    if (lst[i].HanhThu == false)
+                    if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                     {
                         dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyNho_DienTu("", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
                     }
@@ -1800,7 +1800,7 @@ namespace ThuTien.GUI.TongHop
 
             dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_Giay(dateGiaiTrachTongHopDangNgan.Value);
             for (int i = 0; i < lst.Count; i++)
-                if (lst[i].HanhThu == false)
+                if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                 {
                     dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_Giay(lst[i].MaTo, dateGiaiTrachTongHopDangNgan.Value));
                 }
@@ -1912,7 +1912,7 @@ namespace ThuTien.GUI.TongHop
 
             dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_DienTu(dateGiaiTrachTongHopDangNgan.Value);
             for (int i = 0; i < lst.Count; i++)
-                if (lst[i].HanhThu == false)
+                if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                 {
                     dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_DienTu(lst[i].MaTo, dateGiaiTrachTongHopDangNgan.Value));
                 }

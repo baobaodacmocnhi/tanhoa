@@ -4089,7 +4089,7 @@ namespace ThuTien.DAL.Doi
             if (Loai == "TG")
             {
                 ///Tổ Văn Phòng
-                if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                 {
                     var query = from item in _db.HOADONs
                                 where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -4151,7 +4151,7 @@ namespace ThuTien.DAL.Doi
                 if (Loai == "CQ")
                 {
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -4225,7 +4225,7 @@ namespace ThuTien.DAL.Doi
             if (Loai == "TG")
             {
                 ///Tổ Văn Phòng
-                if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                 {
                     var query = from item in _db.HOADONs
                                 where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -4287,7 +4287,7 @@ namespace ThuTien.DAL.Doi
                 if (Loai == "CQ")
                 {
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -4349,7 +4349,7 @@ namespace ThuTien.DAL.Doi
                     if (Loai == "")
                     {
                         ///Tổ Văn Phòng
-                        if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                        if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                         {
                             var query = from item in _db.HOADONs
                                         where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -4487,7 +4487,7 @@ namespace ThuTien.DAL.Doi
             if (Loai == "TG")
             {
                 ///Tổ Văn Phòng
-                if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                 {
                     var query = from item in _db.HOADONs
                                 where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -4549,7 +4549,7 @@ namespace ThuTien.DAL.Doi
                 if (Loai == "CQ")
                 {
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan) ///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -4611,7 +4611,7 @@ namespace ThuTien.DAL.Doi
                     if (Loai == "")
                     {
                         ///Tổ Văn Phòng
-                        if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                        if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                         {
                             var query = from item in _db.HOADONs
                                         where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan) ///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5298,7 +5298,7 @@ namespace ThuTien.DAL.Doi
             {
                 case "TG":
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5349,7 +5349,7 @@ namespace ThuTien.DAL.Doi
                     }
                 case "CQ":
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5399,7 +5399,7 @@ namespace ThuTien.DAL.Doi
                     }
                 default:
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5456,7 +5456,7 @@ namespace ThuTien.DAL.Doi
             {
                 case "TG":
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5507,7 +5507,7 @@ namespace ThuTien.DAL.Doi
                     }
                 case "CQ":
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5557,7 +5557,7 @@ namespace ThuTien.DAL.Doi
                     }
                 default:
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5614,7 +5614,7 @@ namespace ThuTien.DAL.Doi
             {
                 case "TG":
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5665,7 +5665,7 @@ namespace ThuTien.DAL.Doi
                     }
                 case "CQ":
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5716,7 +5716,7 @@ namespace ThuTien.DAL.Doi
                     }
                 default:
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5774,7 +5774,7 @@ namespace ThuTien.DAL.Doi
             {
                 case "TG":
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5825,7 +5825,7 @@ namespace ThuTien.DAL.Doi
                     }
                 case "CQ":
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5876,7 +5876,7 @@ namespace ThuTien.DAL.Doi
                     }
                 default:
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5934,7 +5934,7 @@ namespace ThuTien.DAL.Doi
             {
                 case "TG":
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -5985,7 +5985,7 @@ namespace ThuTien.DAL.Doi
                     }
                 case "CQ":
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -6036,7 +6036,7 @@ namespace ThuTien.DAL.Doi
                     }
                 default:
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -6094,7 +6094,7 @@ namespace ThuTien.DAL.Doi
             {
                 case "TG":
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -6145,7 +6145,7 @@ namespace ThuTien.DAL.Doi
                     }
                 case "CQ":
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -6196,7 +6196,7 @@ namespace ThuTien.DAL.Doi
                     }
                 default:
                     ///Tổ Văn Phòng
-                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+                    if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -6251,7 +6251,7 @@ namespace ThuTien.DAL.Doi
         public DataTable GetTongHopDangNganChiTiet_Giay(int MaTo, DateTime NgayGiaiTrach)
         {
             ///Tổ Văn Phòng
-            if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+            if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
             {
                 var query = from item in _db.HOADONs
                             where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -6305,7 +6305,7 @@ namespace ThuTien.DAL.Doi
         public DataTable GetTongHopDangNganChiTiet_DienTu(int MaTo, DateTime NgayGiaiTrach)
         {
             ///Tổ Văn Phòng
-            if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu != true)
+            if (_db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).HanhThu == false && _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DongNuoc == false)
             {
                 var query = from item in _db.HOADONs
                             where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
@@ -6630,49 +6630,95 @@ namespace ThuTien.DAL.Doi
 
         public DataTable getDS_HoaDonDienTu(int MaNV_HanhThu, int Nam, int Ky, int FromDot, int ToDot)
         {
-            var query = from item in _db.HOADONs
-                        where (item.NAM < Nam || (item.NAM == Nam && item.KY <= Ky)) && item.DOT >= FromDot && item.DOT <= ToDot && item.MaNV_HanhThu == MaNV_HanhThu
-                        && (item.NGAYGIAITRACH == null || item.NGAYGIAITRACH.Value.Date == DateTime.Now.Date)
-                        orderby item.MALOTRINH ascending
-                        select new
-                        {
-                            item.NGAYGIAITRACH,
-                            item.SOHOADON,
-                            Ky = item.KY + "/" + item.NAM,
-                            MLT = item.MALOTRINH,
-                            item.SOPHATHANH,
-                            DanhBo = item.DANHBA,
-                            HoTen = item.TENKH,
-                            DiaChi = item.SO + " " + item.DUONG,
-                            item.TIEUTHU,
-                            item.GIABAN,
-                            ThueGTGT = item.THUE,
-                            PhiBVMT = item.PHI,
-                            item.TONGCONG,
-                            item.DangNgan_DienThoai,
-                            item.InPhieuBao_Ngay,
-                            item.InPhieuBao2_Ngay,
-                            item.XoaDangNgan_Ngay_DienThoai,
-                            item.TBDongNuoc_Ngay,
-                            item.DangNgan_DienThoai_Location,
-                            item.InPhieuBao_Location,
-                            item.InPhieuBao2_Location,
-                            item.TBDongNuoc_Location,
-                            item.XoaDangNgan_Location_DienThoai,
-                        };
-            return LINQToDataTable(query);
+            if (_db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == MaNV_HanhThu).DongNuoc == false)
+            {
+                var query = from item in _db.HOADONs
+                            where (item.NAM < Nam || (item.NAM == Nam && item.KY <= Ky)) && item.DOT >= FromDot && item.DOT <= ToDot && item.MaNV_HanhThu == MaNV_HanhThu
+                            && (item.NGAYGIAITRACH == null || item.NGAYGIAITRACH.Value.Date == DateTime.Now.Date)
+                            orderby item.MALOTRINH ascending
+                            select new
+                            {
+                                item.NGAYGIAITRACH,
+                                item.SOHOADON,
+                                Ky = item.KY + "/" + item.NAM,
+                                MLT = item.MALOTRINH,
+                                item.SOPHATHANH,
+                                DanhBo = item.DANHBA,
+                                HoTen = item.TENKH,
+                                DiaChi = item.SO + " " + item.DUONG,
+                                item.TIEUTHU,
+                                item.GIABAN,
+                                ThueGTGT = item.THUE,
+                                PhiBVMT = item.PHI,
+                                item.TONGCONG,
+                                item.DangNgan_DienThoai,
+                                item.InPhieuBao_Ngay,
+                                item.InPhieuBao2_Ngay,
+                                item.XoaDangNgan_Ngay_DienThoai,
+                                item.TBDongNuoc_Ngay,
+                                item.DangNgan_DienThoai_Location,
+                                item.InPhieuBao_Location,
+                                item.InPhieuBao2_Location,
+                                item.TBDongNuoc_Location,
+                                item.XoaDangNgan_Location_DienThoai,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+            {
+                var query = from item in _db.HOADONs
+                            where (item.NAM < Nam || (item.NAM == Nam && item.KY <= Ky)) && item.DOT >= FromDot && item.DOT <= ToDot
+                            && (item.InPhieuBao_MaNV == MaNV_HanhThu || item.InPhieuBao2_MaNV == MaNV_HanhThu || item.TBDongNuoc_MaNV == MaNV_HanhThu)
+                            && (item.NGAYGIAITRACH == null || item.NGAYGIAITRACH.Value.Date == DateTime.Now.Date)
+                            orderby item.MALOTRINH ascending
+                            select new
+                            {
+                                item.NGAYGIAITRACH,
+                                item.SOHOADON,
+                                Ky = item.KY + "/" + item.NAM,
+                                MLT = item.MALOTRINH,
+                                item.SOPHATHANH,
+                                DanhBo = item.DANHBA,
+                                HoTen = item.TENKH,
+                                DiaChi = item.SO + " " + item.DUONG,
+                                item.TIEUTHU,
+                                item.GIABAN,
+                                ThueGTGT = item.THUE,
+                                PhiBVMT = item.PHI,
+                                item.TONGCONG,
+                                item.DangNgan_DienThoai,
+                                item.InPhieuBao_Ngay,
+                                item.InPhieuBao2_Ngay,
+                                item.XoaDangNgan_Ngay_DienThoai,
+                                item.TBDongNuoc_Ngay,
+                                item.DangNgan_DienThoai_Location,
+                                item.InPhieuBao_Location,
+                                item.InPhieuBao2_Location,
+                                item.TBDongNuoc_Location,
+                                item.XoaDangNgan_Location_DienThoai,
+                            };
+                return LINQToDataTable(query);
+            }
         }
 
         public DataTable getCount_CongViec(int MaNV_HanhThu, int Nam, int Ky, int FromDot, int ToDot, DateTime Ngay)
         {
             string sql = "declare @Ngay date"
                         + " set @Ngay='" + Ngay.ToString("yyyyMMdd") + "'"
+                        + " if ((select DongNuoc from TT_NguoiDung where MaND=" + MaNV_HanhThu + ")=0)"
                         + " select Dot,TongCong=FORMAT(COUNT(ID_HOADON), '#,#')+' - '+ FORMAT(SUM(TONGCONG), '#,#')"
                         + " ,NhacNo=FORMAT(COUNT(case when (CAST(InPhieuBao_Ngay as date)=@Ngay or CAST(InPhieuBao2_Ngay as date)=@Ngay) then 1 else null end), '#,#')+' - '+FORMAT(SUM(case when (CAST(InPhieuBao_Ngay as date)=@Ngay or CAST(InPhieuBao2_Ngay as date)=@Ngay) then TONGCONG else null end), '#,#')"
                         + " ,ThuHo=FORMAT(COUNT(case when (dvt.MaHD is not null and CAST(dvt.CreateDate as date)=@Ngay) then 1 else null end), '#,#')+' - '+FORMAT(SUM(case when (dvt.MaHD is not null and CAST(dvt.CreateDate as date)=@Ngay) then TONGCONG else null end), '#,#')"
                         + " ,ChuaDi=FORMAT(COUNT(case when (InPhieuBao_Ngay is null and InPhieuBao2_Ngay is null) then 1 else null end), '#,#')+' - '+FORMAT(SUM(case when (InPhieuBao_Ngay is null and InPhieuBao2_Ngay is null) then TONGCONG else null end), '#,#')"
                         + " from HOADON hd left join TT_DichVuThu dvt on dvt.MaHD=hd.ID_HOADON"
-                        + " where hd.NAM=" + Nam + " and hd.KY=" + Ky + " and DOT>=" + FromDot + " and DOT<=" + ToDot + " and MaNV_HanhThu=" + MaNV_HanhThu + " group by DOT";
+                        + " where hd.NAM=" + Nam + " and hd.KY=" + Ky + " and DOT>=" + FromDot + " and DOT<=" + ToDot + " and MaNV_HanhThu=" + MaNV_HanhThu + " group by DOT"
+                        + " else"
+                        + " select Dot,TongCong=FORMAT(COUNT(ID_HOADON), '#,#')+' - '+ FORMAT(SUM(TONGCONG), '#,#')"
+                        + " ,NhacNo=FORMAT(COUNT(case when (CAST(InPhieuBao_Ngay as date)=@Ngay or CAST(InPhieuBao2_Ngay as date)=@Ngay) then 1 else null end), '#,#')+' - '+FORMAT(SUM(case when (CAST(InPhieuBao_Ngay as date)=@Ngay or CAST(InPhieuBao2_Ngay as date)=@Ngay) then TONGCONG else null end), '#,#')"
+                        + " ,ThuHo=FORMAT(COUNT(case when (dvt.MaHD is not null and CAST(dvt.CreateDate as date)=@Ngay) then 1 else null end), '#,#')+' - '+FORMAT(SUM(case when (dvt.MaHD is not null and CAST(dvt.CreateDate as date)=@Ngay) then TONGCONG else null end), '#,#')"
+                        + " ,ChuaDi=FORMAT(COUNT(case when (InPhieuBao_Ngay is null and InPhieuBao2_Ngay is null) then 1 else null end), '#,#')+' - '+FORMAT(SUM(case when (InPhieuBao_Ngay is null and InPhieuBao2_Ngay is null) then TONGCONG else null end), '#,#')"
+                        + " from HOADON hd left join TT_DichVuThu dvt on dvt.MaHD=hd.ID_HOADON"
+                        + " where hd.NAM=" + Nam + " and hd.KY=" + Ky + " and DOT>=" + FromDot + " and DOT<=" + ToDot + " and (InPhieuBao_MaNV=" + MaNV_HanhThu + " or InPhieuBao2_MaNV=" + MaNV_HanhThu + " or TBDongNuoc_MaNV=" + MaNV_HanhThu + ") group by DOT";
             return ExecuteQuery_DataTable(sql);
         }
 

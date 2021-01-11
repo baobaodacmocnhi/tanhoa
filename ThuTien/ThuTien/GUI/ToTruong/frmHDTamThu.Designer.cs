@@ -54,6 +54,11 @@
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.lbTo = new System.Windows.Forms.Label();
             this.dgvHoaDon_LH = new System.Windows.Forms.DataGridView();
+            this.MLT_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbDot = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbKy = new System.Windows.Forms.ComboBox();
@@ -64,11 +69,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvHoaDon_LL = new System.Windows.Forms.DataGridView();
-            this.MLT_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ky_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanhThu_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT_LL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_LL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky_LL = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,7 +81,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(117, 11);
+            this.btnXem.Location = new System.Drawing.Point(127, 11);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 34;
@@ -259,6 +259,39 @@
             this.dgvHoaDon_LH.TabIndex = 49;
             this.dgvHoaDon_LH.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_LH_CellFormatting);
             // 
+            // MLT_LH
+            // 
+            this.MLT_LH.DataPropertyName = "MLT";
+            this.MLT_LH.HeaderText = "MLT";
+            this.MLT_LH.Name = "MLT_LH";
+            this.MLT_LH.Width = 80;
+            // 
+            // DanhBo_LH
+            // 
+            this.DanhBo_LH.DataPropertyName = "DanhBo";
+            this.DanhBo_LH.HeaderText = "Danh Bộ";
+            this.DanhBo_LH.Name = "DanhBo_LH";
+            // 
+            // Ky_LH
+            // 
+            this.Ky_LH.DataPropertyName = "Ky";
+            this.Ky_LH.HeaderText = "Kỳ";
+            this.Ky_LH.Name = "Ky_LH";
+            this.Ky_LH.Width = 50;
+            // 
+            // TongCong_LH
+            // 
+            this.TongCong_LH.DataPropertyName = "TongCong";
+            this.TongCong_LH.HeaderText = "Tổng Cộng";
+            this.TongCong_LH.Name = "TongCong_LH";
+            this.TongCong_LH.Width = 90;
+            // 
+            // HanhThu_LH
+            // 
+            this.HanhThu_LH.DataPropertyName = "HanhThu";
+            this.HanhThu_LH.HeaderText = "Hành Thu";
+            this.HanhThu_LH.Name = "HanhThu_LH";
+            // 
             // cmbDot
             // 
             this.cmbDot.FormattingEnabled = true;
@@ -415,39 +448,6 @@
             this.dgvHoaDon_LL.Size = new System.Drawing.Size(447, 335);
             this.dgvHoaDon_LL.TabIndex = 65;
             this.dgvHoaDon_LL.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_LL_CellFormatting);
-            // 
-            // MLT_LH
-            // 
-            this.MLT_LH.DataPropertyName = "MLT";
-            this.MLT_LH.HeaderText = "MLT";
-            this.MLT_LH.Name = "MLT_LH";
-            this.MLT_LH.Width = 80;
-            // 
-            // DanhBo_LH
-            // 
-            this.DanhBo_LH.DataPropertyName = "DanhBo";
-            this.DanhBo_LH.HeaderText = "Danh Bộ";
-            this.DanhBo_LH.Name = "DanhBo_LH";
-            // 
-            // Ky_LH
-            // 
-            this.Ky_LH.DataPropertyName = "Ky";
-            this.Ky_LH.HeaderText = "Kỳ";
-            this.Ky_LH.Name = "Ky_LH";
-            this.Ky_LH.Width = 50;
-            // 
-            // TongCong_LH
-            // 
-            this.TongCong_LH.DataPropertyName = "TongCong";
-            this.TongCong_LH.HeaderText = "Tổng Cộng";
-            this.TongCong_LH.Name = "TongCong_LH";
-            this.TongCong_LH.Width = 90;
-            // 
-            // HanhThu_LH
-            // 
-            this.HanhThu_LH.DataPropertyName = "HanhThu";
-            this.HanhThu_LH.HeaderText = "Hành Thu";
-            this.HanhThu_LH.Name = "HanhThu_LH";
             // 
             // MLT_LL
             // 

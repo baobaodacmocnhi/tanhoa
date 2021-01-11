@@ -150,7 +150,7 @@
             "18",
             "19",
             "20"});
-            this.cmbToDot.Location = new System.Drawing.Point(647, 12);
+            this.cmbToDot.Location = new System.Drawing.Point(657, 12);
             this.cmbToDot.Name = "cmbToDot";
             this.cmbToDot.Size = new System.Drawing.Size(40, 21);
             this.cmbToDot.TabIndex = 109;
@@ -158,7 +158,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(591, 17);
+            this.label10.Location = new System.Drawing.Point(601, 17);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 13);
             this.label10.TabIndex = 108;
@@ -189,7 +189,7 @@
             "18",
             "19",
             "20"});
-            this.cmbFromDot.Location = new System.Drawing.Point(545, 12);
+            this.cmbFromDot.Location = new System.Drawing.Point(555, 12);
             this.cmbFromDot.Name = "cmbFromDot";
             this.cmbFromDot.Size = new System.Drawing.Size(40, 21);
             this.cmbFromDot.TabIndex = 107;
@@ -197,7 +197,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(496, 15);
+            this.label7.Location = new System.Drawing.Point(506, 15);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 106;
@@ -206,7 +206,7 @@
             // cmbNhanVien
             // 
             this.cmbNhanVien.FormattingEnabled = true;
-            this.cmbNhanVien.Location = new System.Drawing.Point(184, 12);
+            this.cmbNhanVien.Location = new System.Drawing.Point(194, 12);
             this.cmbNhanVien.Name = "cmbNhanVien";
             this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
             this.cmbNhanVien.TabIndex = 105;
@@ -214,7 +214,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(118, 15);
+            this.label4.Location = new System.Drawing.Point(128, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 104;
@@ -237,7 +237,7 @@
             "10",
             "11",
             "12"});
-            this.cmbKy.Location = new System.Drawing.Point(440, 12);
+            this.cmbKy.Location = new System.Drawing.Point(450, 12);
             this.cmbKy.Name = "cmbKy";
             this.cmbKy.Size = new System.Drawing.Size(50, 21);
             this.cmbKy.TabIndex = 103;
@@ -245,7 +245,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(412, 15);
+            this.label3.Location = new System.Drawing.Point(422, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 13);
             this.label3.TabIndex = 102;
@@ -254,7 +254,7 @@
             // cmbNam
             // 
             this.cmbNam.FormattingEnabled = true;
-            this.cmbNam.Location = new System.Drawing.Point(346, 12);
+            this.cmbNam.Location = new System.Drawing.Point(356, 12);
             this.cmbNam.Name = "cmbNam";
             this.cmbNam.Size = new System.Drawing.Size(60, 21);
             this.cmbNam.TabIndex = 101;
@@ -262,7 +262,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(308, 15);
+            this.label2.Location = new System.Drawing.Point(318, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 100;
@@ -270,7 +270,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(693, 11);
+            this.btnXem.Location = new System.Drawing.Point(703, 11);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 110;
