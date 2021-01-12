@@ -87,33 +87,33 @@ namespace KTKS_DonKH.DAL.QuanTri
             set { CTaiKhoan._ThuKy = value; }
         }
 
-        static bool _ToGD;
-        public static bool ToGD
-        {
-            get { return CTaiKhoan._ToGD; }
-            set { CTaiKhoan._ToGD = value; }
-        }
+        //static bool _ToGD;
+        //public static bool ToGD
+        //{
+        //    get { return CTaiKhoan._ToGD; }
+        //    set { CTaiKhoan._ToGD = value; }
+        //}
 
-        static bool _ToKH;
-        public static bool ToTB
-        {
-            get { return CTaiKhoan._ToKH; }
-            set { CTaiKhoan._ToKH = value; }
-        }
+        //static bool _ToKH;
+        //public static bool ToTB
+        //{
+        //    get { return CTaiKhoan._ToKH; }
+        //    set { CTaiKhoan._ToKH = value; }
+        //}
 
-        static bool _ToXL;
-        public static bool ToTP
-        {
-            get { return CTaiKhoan._ToXL; }
-            set { CTaiKhoan._ToXL = value; }
-        }
+        //static bool _ToXL;
+        //public static bool ToTP
+        //{
+        //    get { return CTaiKhoan._ToXL; }
+        //    set { CTaiKhoan._ToXL = value; }
+        //}
 
-        static bool _ToBC;
-        public static bool ToBC
-        {
-            get { return CTaiKhoan._ToBC; }
-            set { CTaiKhoan._ToBC = value; }
-        }
+        //static bool _ToBC;
+        //public static bool ToBC
+        //{
+        //    get { return CTaiKhoan._ToBC; }
+        //    set { CTaiKhoan._ToBC = value; }
+        //}
 
         static string _KyHieuMaTo = "";
         public static string KyHieuMaTo
@@ -209,10 +209,10 @@ namespace KTKS_DonKH.DAL.QuanTri
             _TruongPhong = false;
             _ToTruong = false;
             _ThuKy = false;
-            _ToGD = false;
-            _ToKH = false;
-            _ToXL = false;
-            _ToBC = false;
+            //_ToGD = false;
+            //_ToKH = false;
+            //_ToXL = false;
+            //_ToBC = false;
             _KyHieuMaTo = "";
             _TenTo = "";
             _MaPhong = -1;
@@ -340,37 +340,38 @@ namespace KTKS_DonKH.DAL.QuanTri
 
         public DataTable GetDS_KTXM(string KyHieuTo)
         {
-            switch (KyHieuTo)
-            {
-                case "ToGD":
-                    return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToGD == true && item.An == false).OrderBy(item => item.STT).ToList());
-                case "ToTB":
-                    return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToTB == true && item.An == false).OrderBy(item => item.STT).ToList());
-                case "ToTP":
-                    return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToTP == true && item.An == false).OrderBy(item => item.STT).ToList());
-                case "ToBC":
-                    return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
-                default:
-                    return null;
-            }
+            //switch (KyHieuTo)
+            //{
+            //    case "ToGD":
+            //        return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToGD == true && item.An == false).OrderBy(item => item.STT).ToList());
+            //    case "ToTB":
+            //        return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToTB == true && item.An == false).OrderBy(item => item.STT).ToList());
+            //    case "ToTP":
+            //        return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToTP == true && item.An == false).OrderBy(item => item.STT).ToList());
+            //    case "ToBC":
+            //        return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
+            //    default:
+            //        return null;
+            //}
+            return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.To.KyHieu == KyHieuTo && item.An == false).OrderBy(item => item.STT).ToList());
         }
 
-        public DataTable GetDS_ThuKy(string Loai)
-        {
-            switch (Loai)
-            {
-                case "TKH":
-                    return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToTB == true && item.An == false).OrderBy(item => item.STT).ToList());
-                case "TXL":
-                    return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToTP == true && item.An == false).OrderBy(item => item.STT).ToList());
-                case "TBC":
-                    return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
-                case "TVP":
-                    return LINQToDataTable(db.Users.Where(item => item.ToVP == true && item.An == false).OrderBy(item => item.STT).ToList());
-                default:
-                    return null;
-            }
-        }
+        //public DataTable GetDS_ThuKy(string Loai)
+        //{
+            //switch (Loai)
+            //{
+            //    case "TKH":
+            //        return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToTB == true && item.An == false).OrderBy(item => item.STT).ToList());
+            //    case "TXL":
+            //        return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToTP == true && item.An == false).OrderBy(item => item.STT).ToList());
+            //    case "TBC":
+            //        return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
+            //    case "TVP":
+            //        return LINQToDataTable(db.Users.Where(item => item.ToVP == true && item.An == false).OrderBy(item => item.STT).ToList());
+            //    default:
+            //        return null;
+            //}
+        //}
 
         public string GetHoTen(int MaU)
         {

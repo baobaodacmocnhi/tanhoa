@@ -65,7 +65,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             this.dgvDanhBoChuyenVanPhong.Controls.Add(cellDateTimePickerVP);
 
             DataGridViewComboBoxColumn cmbColumnVP = (DataGridViewComboBoxColumn)dgvDanhBoChuyenVanPhong.Columns["NguoiDiVP"];
-            cmbColumnVP.DataSource = _cTaiKhoan.GetDS_ThuKy("TVP");
+            //cmbColumnVP.DataSource = _cTaiKhoan.GetDS_ThuKy("TVP");
             cmbColumnVP.DisplayMember = "HoTen";
             cmbColumnVP.ValueMember = "MaU";
         }

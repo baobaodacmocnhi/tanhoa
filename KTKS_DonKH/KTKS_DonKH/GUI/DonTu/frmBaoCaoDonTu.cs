@@ -44,7 +44,7 @@ namespace KTKS_DonKH.GUI.DonTu
             cmbNoiNhan_LichSuChuyenDon.DataSource = lstNoiChuyen;
             cmbNoiNhan_LichSuChuyenDon.ValueMember = "ID";
             cmbNoiNhan_LichSuChuyenDon.DisplayMember = "Name";
-            cmbNoiNhan_LichSuChuyenDon.SelectedIndex = -1;
+            cmbNoiNhan_LichSuChuyenDon.SelectedIndex = 0;
 
             if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.ToTruong)
             {
@@ -61,7 +61,7 @@ namespace KTKS_DonKH.GUI.DonTu
             //Danh Sách Chuyển KTXM (ngày chuyển)
             DataTable dt = new DataTable();
             dt = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
-            if (dt != null)
+            if (dt != null && dt.Rows.Count > 0)
             {
                 DataRow dr = dt.NewRow();
                 dr["MaU"] = 0;
@@ -70,6 +70,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 cmbNhanVienKiemTra.DataSource = dt;
                 cmbNhanVienKiemTra.ValueMember = "MaU";
                 cmbNhanVienKiemTra.DisplayMember = "HoTen";
+                cmbNhanVienKiemTra.SelectedIndex = 0;
             }
 
             DataTable dt2 = new DataTable();
@@ -176,6 +177,7 @@ namespace KTKS_DonKH.GUI.DonTu
             }
             rptDSChuyenDonTu rpt = new rptDSChuyenDonTu();
             rpt.SetDataSource(dsBaoCao);
+            rpt.Subreports[0].SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
         }

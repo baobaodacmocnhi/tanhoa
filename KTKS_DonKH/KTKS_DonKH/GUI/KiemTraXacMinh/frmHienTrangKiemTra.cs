@@ -47,14 +47,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         public void LoadDataTable()
         {
-            string To = "";
-            if (CTaiKhoan.ToTB == true)
-                To = "ToTB";
-            else if (CTaiKhoan.ToTP == true)
-                To = "ToTP";
-            else if (CTaiKhoan.ToBC == true)
-                To = "ToBC";
-            _blHienTrangKiemTra = new BindingList<KTXM_HienTrang>(_cHienTrangKiemTra.getDS(To));
+            //string To = "";
+            //if (CTaiKhoan.ToTB == true)
+            //    To = "ToTB";
+            //else if (CTaiKhoan.ToTP == true)
+            //    To = "ToTP";
+            //else if (CTaiKhoan.ToBC == true)
+            //    To = "ToBC";
+            _blHienTrangKiemTra = new BindingList<KTXM_HienTrang>(_cHienTrangKiemTra.getDS(CTaiKhoan.KyHieuMaTo));
             dgvDSHienTrangKT.DataSource = _blHienTrangKiemTra;
         }
 
@@ -90,11 +90,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         KTXM_HienTrang hientrangkiemtra = new KTXM_HienTrang();
                         hientrangkiemtra.TenHTKT = txtHienTrangKT.Text.Trim();
                         hientrangkiemtra.STT = _cHienTrangKiemTra.GetMaxSTT() + 1;
-                        if (CTaiKhoan.ToTB == true)
+                        if ("ToTB" == CTaiKhoan.KyHieuMaTo)
                             hientrangkiemtra.ToTB = true;
-                        else if (CTaiKhoan.ToTP == true)
+                        else if ("ToTP" == CTaiKhoan.KyHieuMaTo)
                             hientrangkiemtra.ToTP = true;
-                        else if (CTaiKhoan.ToBC == true)
+                        else if ("ToBC" == CTaiKhoan.KyHieuMaTo)
                             hientrangkiemtra.ToBC = true;
                         if (_cHienTrangKiemTra.Them(hientrangkiemtra))
                         {
@@ -178,11 +178,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 ///update STT dô database
                 for (int i = 0; i < _blHienTrangKiemTra.Count; i++)
                 {
-                    if (CTaiKhoan.ToTB == true)
+                    if ("ToTB" == CTaiKhoan.KyHieuMaTo)
                         _blHienTrangKiemTra[i].STT_ToTB = i + 1;
-                    else if (CTaiKhoan.ToTP == true)
+                    else if ("ToTP" == CTaiKhoan.KyHieuMaTo)
                         _blHienTrangKiemTra[i].STT_ToTP = i + 1;
-                    else if (CTaiKhoan.ToBC == true)
+                    else if ("ToBC" == CTaiKhoan.KyHieuMaTo)
                         _blHienTrangKiemTra[i].STT_ToBC = i + 1;
                 }
                 _cHienTrangKiemTra.SubmitChanges();

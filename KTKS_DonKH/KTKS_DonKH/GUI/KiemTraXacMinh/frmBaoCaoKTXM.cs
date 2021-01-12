@@ -158,14 +158,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 DataRow dr = dsBaoCao.Tables["DSKTXM"].NewRow();
 
-                if (CTaiKhoan.ToTB)
-                    dr["To"] = "TỔ KHÁCH HÀNG";
-                else
-                    if (CTaiKhoan.ToTP)
-                        dr["To"] = "TỔ XỬ LÝ";
-                    else
-                        if (CTaiKhoan.ToBC)
-                            dr["To"] = "TỔ BẤM CHÌ";
+                //if (CTaiKhoan.ToTB)
+                //    dr["To"] = "TỔ KHÁCH HÀNG";
+                //else
+                //    if (CTaiKhoan.ToTP)
+                //        dr["To"] = "TỔ XỬ LÝ";
+                //    else
+                //        if (CTaiKhoan.ToBC)
+                //            dr["To"] = "TỔ BẤM CHÌ";
                 dr["TuNgay"] = dateTu_ThongKeHienTrangKiemTra.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeHienTrangKiemTra.Value.ToString("dd/MM/yyyy");
                 dr["MaCTKTXM"] = itemRow["MaCTKTXM"];

@@ -61,14 +61,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             dgvDSKetQuaKiemTra.AutoGenerateColumns = false;
             dgvBangGia.AutoGenerateColumns = false;
             dgvHinh.AutoGenerateColumns = false;
-            string To = "";
-            if (CTaiKhoan.ToTB == true)
-                To = "ToTB";
-            else if (CTaiKhoan.ToTP == true)
-                To = "ToTP";
-            else if (CTaiKhoan.ToBC == true)
-                To = "ToBC";
-            cmbHienTrangKiemTra.DataSource = _cHienTrangKiemTra.getDS(To);
+            //string To = "";
+            //if (CTaiKhoan.ToTB == true)
+            //    To = "ToTB";
+            //else if (CTaiKhoan.ToTP == true)
+            //    To = "ToTP";
+            //else if (CTaiKhoan.ToBC == true)
+            //    To = "ToBC";
+            cmbHienTrangKiemTra.DataSource = _cHienTrangKiemTra.getDS(CTaiKhoan.KyHieuMaTo);
             cmbHienTrangKiemTra.DisplayMember = "TenHTKT";
             cmbHienTrangKiemTra.ValueMember = "TenHTKT";
             cmbHienTrangKiemTra.SelectedIndex = -1;
@@ -693,6 +693,16 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         }
                         ///
                         _ctktxm.NgayKTXM_Truoc_NgayGiao = chkNgayKTXMTruocNgayGiao.Checked;
+                        //cập nhật lại thời gian bên lịch sử chuyển đơn
+                        if (_ctktxm.NgayKTXM.Value.Date != dateKTXM.Value.Date)
+                        {
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("KTXM_ChiTiet", (int)_ctktxm.MaCTKTXM);
+                            if (dtls != null)
+                            {
+                                dtls.NgayChuyen = dateKTXM.Value;
+                                _cDonTu.SubmitChanges();
+                            }
+                        }
                         _ctktxm.NgayKTXM = dateKTXM.Value;
 
                         if (cmbHienTrangKiemTra.SelectedValue != null && cmbHienTrangKiemTra.SelectedValue.ToString() != "")
@@ -763,11 +773,21 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                        if (_cKTXM.XoaCT(_ctktxm))
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            Clear();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtMaDonCu.Focus();
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("KTXM_ChiTiet", (int)_ctktxm.MaCTKTXM);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls);
+                            }
+                            if (_cKTXM.XoaCT(_ctktxm))
+                            {
+                                Clear();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtMaDonCu.Focus();
+                            }
                         }
                     }
                 }

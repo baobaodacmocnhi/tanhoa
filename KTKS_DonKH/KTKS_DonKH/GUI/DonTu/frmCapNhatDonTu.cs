@@ -752,16 +752,16 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnXem_Update_Click(object sender, EventArgs e)
         {
-            string To = "";
-            if (CTaiKhoan.ToGD == true)
-                To = "TGD";
-            else if (CTaiKhoan.ToTB == true)
-                To = "TKH";
-            else if (CTaiKhoan.ToTP == true)
-                To = "TXL";
-            else if (CTaiKhoan.ToBC == true)
-                To = "TBC";
-            dgvLichSuDonTu_Update.DataSource = _cDonTu.getDS_LichSu(To, CTaiKhoan.MaUser, dateFromNgayChuyen.Value, dateToNgayChuyen.Value);
+            //string To = "";
+            //if (CTaiKhoan.ToGD == true)
+            //    To = "TGD";
+            //else if (CTaiKhoan.ToTB == true)
+            //    To = "TKH";
+            //else if (CTaiKhoan.ToTP == true)
+            //    To = "TXL";
+            //else if (CTaiKhoan.ToBC == true)
+            //    To = "TBC";
+            dgvLichSuDonTu_Update.DataSource = _cDonTu.getDS_LichSu(CTaiKhoan.KyHieuMaTo, CTaiKhoan.MaUser, dateFromNgayChuyen.Value, dateToNgayChuyen.Value);
         }
 
         private void btnXoa_Update_Click(object sender, EventArgs e)

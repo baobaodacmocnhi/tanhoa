@@ -1683,15 +1683,15 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _BamChi;
 		
-		private bool _ToGD;
+		private bool _ToGD1;
 		
-		private bool _ToTB;
+		private bool _ToTB1;
 		
-		private bool _ToTP;
+		private bool _ToTP1;
 		
-		private bool _ToBC;
+		private bool _ToBC1;
 		
-		private bool _ToVP;
+		private bool _ToVP1;
 		
 		private bool _TruyThu;
 		
@@ -1761,16 +1761,16 @@ namespace KTKS_DonKH.LinQ
     partial void OnKTXMChanged();
     partial void OnBamChiChanging(bool value);
     partial void OnBamChiChanged();
-    partial void OnToGDChanging(bool value);
-    partial void OnToGDChanged();
-    partial void OnToTBChanging(bool value);
-    partial void OnToTBChanged();
-    partial void OnToTPChanging(bool value);
-    partial void OnToTPChanged();
-    partial void OnToBCChanging(bool value);
-    partial void OnToBCChanged();
-    partial void OnToVPChanging(bool value);
-    partial void OnToVPChanged();
+    partial void OnToGD1Changing(bool value);
+    partial void OnToGD1Changed();
+    partial void OnToTB1Changing(bool value);
+    partial void OnToTB1Changed();
+    partial void OnToTP1Changing(bool value);
+    partial void OnToTP1Changed();
+    partial void OnToBC1Changing(bool value);
+    partial void OnToBC1Changed();
+    partial void OnToVP1Changing(bool value);
+    partial void OnToVP1Changed();
     partial void OnTruyThuChanging(bool value);
     partial void OnTruyThuChanged();
     partial void OnDieuChinhChanging(bool value);
@@ -1982,102 +1982,102 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToGD", DbType="Bit NOT NULL")]
-		public bool ToGD
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToGD1", DbType="Bit NOT NULL")]
+		public bool ToGD1
 		{
 			get
 			{
-				return this._ToGD;
+				return this._ToGD1;
 			}
 			set
 			{
-				if ((this._ToGD != value))
+				if ((this._ToGD1 != value))
 				{
-					this.OnToGDChanging(value);
+					this.OnToGD1Changing(value);
 					this.SendPropertyChanging();
-					this._ToGD = value;
-					this.SendPropertyChanged("ToGD");
-					this.OnToGDChanged();
+					this._ToGD1 = value;
+					this.SendPropertyChanged("ToGD1");
+					this.OnToGD1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToTB", DbType="Bit NOT NULL")]
-		public bool ToTB
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToTB1", DbType="Bit NOT NULL")]
+		public bool ToTB1
 		{
 			get
 			{
-				return this._ToTB;
+				return this._ToTB1;
 			}
 			set
 			{
-				if ((this._ToTB != value))
+				if ((this._ToTB1 != value))
 				{
-					this.OnToTBChanging(value);
+					this.OnToTB1Changing(value);
 					this.SendPropertyChanging();
-					this._ToTB = value;
-					this.SendPropertyChanged("ToTB");
-					this.OnToTBChanged();
+					this._ToTB1 = value;
+					this.SendPropertyChanged("ToTB1");
+					this.OnToTB1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToTP", DbType="Bit NOT NULL")]
-		public bool ToTP
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToTP1", DbType="Bit NOT NULL")]
+		public bool ToTP1
 		{
 			get
 			{
-				return this._ToTP;
+				return this._ToTP1;
 			}
 			set
 			{
-				if ((this._ToTP != value))
+				if ((this._ToTP1 != value))
 				{
-					this.OnToTPChanging(value);
+					this.OnToTP1Changing(value);
 					this.SendPropertyChanging();
-					this._ToTP = value;
-					this.SendPropertyChanged("ToTP");
-					this.OnToTPChanged();
+					this._ToTP1 = value;
+					this.SendPropertyChanged("ToTP1");
+					this.OnToTP1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToBC", DbType="Bit NOT NULL")]
-		public bool ToBC
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToBC1", DbType="Bit NOT NULL")]
+		public bool ToBC1
 		{
 			get
 			{
-				return this._ToBC;
+				return this._ToBC1;
 			}
 			set
 			{
-				if ((this._ToBC != value))
+				if ((this._ToBC1 != value))
 				{
-					this.OnToBCChanging(value);
+					this.OnToBC1Changing(value);
 					this.SendPropertyChanging();
-					this._ToBC = value;
-					this.SendPropertyChanged("ToBC");
-					this.OnToBCChanged();
+					this._ToBC1 = value;
+					this.SendPropertyChanged("ToBC1");
+					this.OnToBC1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToVP", DbType="Bit NOT NULL")]
-		public bool ToVP
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToVP1", DbType="Bit NOT NULL")]
+		public bool ToVP1
 		{
 			get
 			{
-				return this._ToVP;
+				return this._ToVP1;
 			}
 			set
 			{
-				if ((this._ToVP != value))
+				if ((this._ToVP1 != value))
 				{
-					this.OnToVPChanging(value);
+					this.OnToVP1Changing(value);
 					this.SendPropertyChanging();
-					this._ToVP = value;
-					this.SendPropertyChanged("ToVP");
-					this.OnToVPChanged();
+					this._ToVP1 = value;
+					this.SendPropertyChanged("ToVP1");
+					this.OnToVP1Changed();
 				}
 			}
 		}

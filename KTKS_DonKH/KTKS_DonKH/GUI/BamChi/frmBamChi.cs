@@ -696,6 +696,16 @@ namespace KTKS_DonKH.GUI.BamChi
                         }
                         ///
                         _ctbamchi.NgayBC_Truoc_NgayGiao = chkNgayBCTruocNgayGiao.Checked;
+                        //cập nhật lại thời gian bên lịch sử chuyển đơn
+                        if (_ctbamchi.NgayBC.Value.Date != dateBamChi.Value.Date)
+                        {
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("BamChi_ChiTiet", (int)_ctbamchi.MaCTBC);
+                            if (dtls != null)
+                            {
+                                dtls.NgayChuyen = dateBamChi.Value;
+                                _cDonTu.SubmitChanges();
+                            }
+                        }
                         _ctbamchi.NgayBC = dateBamChi.Value;
 
                         if (cmbHienTrangKiemTra.SelectedItem != null)
@@ -798,11 +808,21 @@ namespace KTKS_DonKH.GUI.BamChi
                             }
                         if (_ctbamchi.NiemChi != null)
                             _cNiemChi.traSuDung(_ctbamchi.NiemChi.Value);
-                        if (_cBamChi.XoaCT(_ctbamchi))
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            Clear2();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtMaDonCu.Focus();
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("BamChi_ChiTiet", (int)_ctbamchi.MaCTBC);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls);
+                            }
+                            if (_cBamChi.XoaCT(_ctbamchi))
+                            {
+                                Clear2();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtMaDonCu.Focus();
+                            }
                         }
                     }
                 }

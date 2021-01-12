@@ -122,6 +122,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     if (entity.DinhMuc != null)
                         txtDinhMuc.Text = entity.DonTu_ChiTiets.SingleOrDefault().DinhMuc.Value.ToString();
                     chkHoanThanh.Checked = entity.DonTu_ChiTiets.SingleOrDefault().HoanThanh;
+                    lbTinhTrang.Text = "Tình Trạng: " + entity.DonTu_ChiTiets.SingleOrDefault().TinhTrang;
                 }
                 else
                 {
@@ -136,11 +137,10 @@ namespace KTKS_DonKH.GUI.DonTu
                                 item.Selected = true;
                                 dgvDanhBo.CurrentCell = item.Cells["DanhBo"];
                             }
-
                         chkHoanThanh.Checked = en_ChiTiet.HoanThanh;
+                        lbTinhTrang.Text = "Tình Trạng: " + en_ChiTiet.TinhTrang;
                     }
                 }
-
                 LoadLichSu();
             }
             catch (Exception ex)
@@ -173,6 +173,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, dgvDanhBo.CurrentRow.Index);
                     else
                         dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+
         }
 
         public void FillLichSu(DonTu_LichSu en)
@@ -253,6 +254,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 chkcmbNoiNhanKTXM.Properties.Items[i].CheckState = CheckState.Unchecked;
             }
             chkHoanThanh.Checked = false;
+            lbTinhTrang.Text = "Tình Trạng";
         }
 
         public void ClearChuyenDon()
@@ -267,6 +269,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 chkcmbNoiNhanKTXM.Properties.Items[i].CheckState = CheckState.Unchecked;
             }
             txtNoiDung_LichSu.Text = "";
+            _dontu_LichSu = null;
         }
 
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -719,8 +722,10 @@ namespace KTKS_DonKH.GUI.DonTu
                                 }
                         }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearChuyenDon();
-                    LoadLichSu();
+                    //ClearChuyenDon();
+                    //LoadLichSu();
+                    KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
+                    txtMaDon_KeyPress(sender, arg);
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -880,16 +885,16 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnXem_Update_Click(object sender, EventArgs e)
         {
-            string To = "";
-            if (CTaiKhoan.ToGD == true)
-                To = "TGD";
-            else if (CTaiKhoan.ToTB == true)
-                To = "TKH";
-            else if (CTaiKhoan.ToTP == true)
-                To = "TXL";
-            else if (CTaiKhoan.ToBC == true)
-                To = "TBC";
-            dgvLichSuDonTu_Update.DataSource = _cDonTu.getDS_LichSu(To, CTaiKhoan.MaUser, dateFromNgayChuyen.Value, dateToNgayChuyen.Value);
+            //string To = "";
+            //if (CTaiKhoan.ToGD == true)
+            //    To = "TGD";
+            //else if (CTaiKhoan.ToTB == true)
+            //    To = "TKH";
+            //else if (CTaiKhoan.ToTP == true)
+            //    To = "TXL";
+            //else if (CTaiKhoan.ToBC == true)
+            //    To = "TBC";
+            dgvLichSuDonTu_Update.DataSource = _cDonTu.getDS_LichSu(CTaiKhoan.KyHieuMaTo, CTaiKhoan.MaUser, dateFromNgayChuyen.Value, dateToNgayChuyen.Value);
         }
 
         private void btnXoa_Update_Click(object sender, EventArgs e)

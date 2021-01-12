@@ -43,31 +43,30 @@ namespace KTKS_DonKH.GUI.HeThong
                     CTaiKhoan.Admin = nguoidung.Admin;
                     CTaiKhoan.ThuKy = nguoidung.ThuKy;
 
-                    if (nguoidung.ToGD == true)
-                    {
-                        CTaiKhoan.ToGD = nguoidung.ToGD;
-                        CTaiKhoan.KyHieuMaTo = "ToGD";
-                    }
-                    else
-                        if (nguoidung.ToTB == true)
-                        {
-                            CTaiKhoan.ToTB = nguoidung.ToTB;
-                            CTaiKhoan.KyHieuMaTo = "ToTB";
-                        }
-                        else
-                            if (nguoidung.ToTP == true)
-                            {
-                                CTaiKhoan.ToTP = nguoidung.ToTP;
-                                CTaiKhoan.KyHieuMaTo = "ToTP";
-                            }
-                            else
-                                if (nguoidung.ToBC == true)
-                                {
-                                    CTaiKhoan.ToBC = nguoidung.ToBC;
-                                    CTaiKhoan.KyHieuMaTo = "ToBC";
-                                }
                     if (nguoidung.MaTo != null)
+                    {
+                        //if ("ToGD" == nguoidung.To.KyHieu)
+                        //{
+                        //    CTaiKhoan.ToGD = true;
+                        //}
+                        //else
+                        //    if ("ToTB" == nguoidung.To.KyHieu)
+                        //    {
+                        //        CTaiKhoan.ToTB = true;
+                        //    }
+                        //    else
+                        //        if ("ToTP" == nguoidung.To.KyHieu)
+                        //        {
+                        //            CTaiKhoan.ToTP = true;
+                        //        }
+                        //        else
+                        //            if ("ToBC" == nguoidung.To.KyHieu)
+                        //            {
+                        //                CTaiKhoan.ToBC = true;
+                        //            }
+                        CTaiKhoan.KyHieuMaTo = nguoidung.To.KyHieu;
                         CTaiKhoan.TenTo = nguoidung.To.TenTo;
+                    }
                     CTaiKhoan.ToTruong = nguoidung.ToTruong;
                     CTaiKhoan.PhoGiamDoc = nguoidung.PhoGiamDoc;
                     CTaiKhoan.TruongPhong = nguoidung.TruongPhong;
