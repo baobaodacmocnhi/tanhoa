@@ -20,3 +20,8 @@ where CAST(NGAYGIAITRACH as date)>='20201201' and (hd.NAM>2020 or (hd.NAM=2020 a
 and hd.SoHoaDonCu=dc.SoHoaDon
 order by NGAYGIAITRACH
 --update HOADON set SyncNopTien=1 where ID_HOADON=22022393
+
+--update TT_DichVuThu set SoHoaDon=(select SoHoaDon from HOADON where ID_HOADON=MaHD) where Nam=2021 and ky=1 and SOHOADON like 'CT/21E%'
+
+--select SOHOADON,SUBSTRING(SOHOADON,1,6),SUBSTRING(SOHOADON,7,7) from hoadon where nam=2021 and SOHOADON like 'CT/21E%'
+--update HOADON set SOHOADON='CT/20E'+SUBSTRING(SOHOADON,7,7) where nam=2021 and SOHOADON like 'CT/21E%'

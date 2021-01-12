@@ -8,7 +8,7 @@ using System.Data;
 
 namespace ThuTien.DAL.ToTruong
 {
-    class CTongHopNo:CDAL
+    class CTongHopNo : CDAL
     {
         public bool Them(TT_TongHopNo tonghopno)
         {
@@ -57,7 +57,7 @@ namespace ThuTien.DAL.ToTruong
             }
         }
 
-        public bool CheckExist(string KinhGui,DateTime CreateDate)
+        public bool CheckExist(string KinhGui, DateTime CreateDate)
         {
             return _db.TT_TongHopNos.Any(item => item.KinhGui == KinhGui && item.CreateDate.Value.Date == CreateDate.Date);
         }
@@ -95,12 +95,13 @@ namespace ThuTien.DAL.ToTruong
             //                //KyHD = itemHD.KY + "/" + itemHD.NAM,
             //            };
             //return LINQToDataTable(query);
+
             string sql = "select MaTHN,DanhBo,KinhGui,ChiSoCu,ChiSoMoi,NgayThanhToan,CreateDate,TieuThu,DinhMuc,"
                         + " TongCong=(select SUM(TongCong) from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN)"
-                        //+ " TieuThu=(select top 1 TieuThu from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc),"
-                        //+ " DinhMuc=(select top 1 DinhMuc from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc)"
-                        //+ " --TieuThuHD=(select TieuThu from HOADON hd where (convert(varchar(2),hd.KY)+'/'+convert(varchar(4),hd.NAM))=(select top 1 Ky from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc) and DANHBA=thn.DanhBo),"
-                        //+ " --KyHD=''"
+                //+ " TieuThu=(select top 1 TieuThu from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc),"
+                //+ " DinhMuc=(select top 1 DinhMuc from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc)"
+                //+ " --TieuThuHD=(select TieuThu from HOADON hd where (convert(varchar(2),hd.KY)+'/'+convert(varchar(4),hd.NAM))=(select top 1 Ky from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc) and DANHBA=thn.DanhBo),"
+                //+ " --KyHD=''"
                         + " from TT_TongHopNo thn"
                         + " where CAST(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'";
             return ExecuteQuery_DataTable(sql);
@@ -141,19 +142,32 @@ namespace ThuTien.DAL.ToTruong
             //            + " from TT_TongHopNo thn"
             //            + " where CAST(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
             //            + " and (select MaTo from TT_NguoiDung where MaND=thn.CreateBy)="+MaTo;
+
+            //2020
+            //string sql = "select MaTHN,DanhBo,KinhGui,ChiSoCu,ChiSoMoi,NgayThanhToan,CreateDate,TieuThu,DinhMuc,"
+            //            + " TongCong=(select SUM(TongCong) from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN)"
+            //    //+ " TieuThu=(select top 1 TieuThu from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc),"
+            //    //+ " DinhMuc=(select top 1 DinhMuc from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc)"
+            //    //+ " --TieuThuHD=(select TieuThu from HOADON hd where (convert(varchar(2),hd.KY)+'/'+convert(varchar(4),hd.NAM))=(select top 1 Ky from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc) and DANHBA=thn.DanhBo),"
+            //    //+ " --KyHD=''"
+            //            + " from TT_TongHopNo thn"
+            //            + " where CAST(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
+            //            + " and MaTo=" + MaTo;
+            //return ExecuteQuery_DataTable(sql);
+
+            //2021
             string sql = "select MaTHN,DanhBo,KinhGui,ChiSoCu,ChiSoMoi,NgayThanhToan,CreateDate,TieuThu,DinhMuc,"
                         + " TongCong=(select SUM(TongCong) from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN)"
-                //+ " TieuThu=(select top 1 TieuThu from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc),"
-                //+ " DinhMuc=(select top 1 DinhMuc from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc)"
-                //+ " --TieuThuHD=(select TieuThu from HOADON hd where (convert(varchar(2),hd.KY)+'/'+convert(varchar(4),hd.NAM))=(select top 1 Ky from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc) and DANHBA=thn.DanhBo),"
-                //+ " --KyHD=''"
-                        + " from TT_TongHopNo thn"
-                        + " where CAST(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
-                        + " and MaTo=" + MaTo;
+                        + " from TT_TongHopNo thn where MaTHN in"
+                        + " (select distinct MaTHN"
+                        + " from TT_TongHopNo_ChiTiet thnct,HOADON hd"
+                        + " where"
+                        + " CAST(thnct.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(thnct.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
+                        + " and MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ") and thnct.DanhBo=hd.DANHBA)";
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetDS(int CreateBy,DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable GetDS(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             //var query = from item in _db.TT_TongHopNos
             //            //from itemHD in _db.HOADONs.Where(itemA => itemA.DANHBA == item.DanhBo).ToList().OrderByDescending(itemA => itemA.ID_HOADON).Take(1).DefaultIfEmpty()
@@ -180,10 +194,10 @@ namespace ThuTien.DAL.ToTruong
             //return LINQToDataTable(query);
             string sql = "select MaTHN,DanhBo,KinhGui,ChiSoCu,ChiSoMoi,NgayThanhToan,CreateDate,TieuThu,DinhMuc,"
                         + " TongCong=(select SUM(TongCong) from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN)"
-                        //+ " TieuThu=(select top 1 TieuThu from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc),"
-                        //+ " DinhMuc=(select top 1 DinhMuc from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc)"
-                        //+ " --TieuThuHD=(select TieuThu from HOADON hd where (convert(varchar(2),hd.KY)+'/'+convert(varchar(4),hd.NAM))=(select top 1 Ky from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc) and DANHBA=thn.DanhBo),"
-                        //+ " --KyHD=''"
+                //+ " TieuThu=(select top 1 TieuThu from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc),"
+                //+ " DinhMuc=(select top 1 DinhMuc from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc)"
+                //+ " --TieuThuHD=(select TieuThu from HOADON hd where (convert(varchar(2),hd.KY)+'/'+convert(varchar(4),hd.NAM))=(select top 1 Ky from TT_TongHopNo_ChiTiet ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc) and DANHBA=thn.DanhBo),"
+                //+ " --KyHD=''"
                         + " from TT_TongHopNo thn"
                         + " where CAST(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
                         + " and thn.CreateBy=" + CreateBy;

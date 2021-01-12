@@ -488,7 +488,7 @@ namespace ThuTien.GUI.ToTruong
                         dgvTongHopNo.DataSource = _cTHN.GetDS_To(int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
             }
             else
-                dgvTongHopNo.DataSource = _cTHN.GetDS(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                dgvTongHopNo.DataSource = _cTHN.GetDS_To(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
         }
 
         private void dgvTongHopNo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

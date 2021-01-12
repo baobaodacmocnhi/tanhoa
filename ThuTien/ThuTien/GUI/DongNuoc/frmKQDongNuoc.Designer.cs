@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbViTri = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.txtKhoaKhac_GhiChu = new System.Windows.Forms.TextBox();
             this.chkKhoaKhac = new System.Windows.Forms.CheckBox();
             this.chkButChi = new System.Windows.Forms.CheckBox();
@@ -140,8 +142,6 @@
             this.btnInDS = new System.Windows.Forms.Button();
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.lbTo = new System.Windows.Forms.Label();
-            this.cmbViTri = new System.Windows.Forms.ComboBox();
-            this.label27 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
@@ -189,6 +189,29 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả Đóng Nước";
+            // 
+            // cmbViTri
+            // 
+            this.cmbViTri.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbViTri.FormattingEnabled = true;
+            this.cmbViTri.Items.AddRange(new object[] {
+            "",
+            "Trong",
+            "Ngoài"});
+            this.cmbViTri.Location = new System.Drawing.Point(205, 203);
+            this.cmbViTri.MaxDropDownItems = 50;
+            this.cmbViTri.Name = "cmbViTri";
+            this.cmbViTri.Size = new System.Drawing.Size(70, 21);
+            this.cmbViTri.TabIndex = 48;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(167, 206);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(32, 13);
+            this.label27.TabIndex = 47;
+            this.label27.Text = "Vị trí:";
             // 
             // txtKhoaKhac_GhiChu
             // 
@@ -583,7 +606,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(938, 9);
+            this.btnXem.Location = new System.Drawing.Point(948, 9);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 29;
@@ -595,7 +618,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(832, 11);
+            this.dateDen.Location = new System.Drawing.Point(842, 11);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 28;
@@ -603,7 +626,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(768, 12);
+            this.label4.Location = new System.Drawing.Point(778, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 27;
@@ -613,7 +636,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(662, 11);
+            this.dateTu.Location = new System.Drawing.Point(672, 11);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 26;
@@ -621,7 +644,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(605, 12);
+            this.label5.Location = new System.Drawing.Point(615, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 25;
@@ -944,7 +967,7 @@
             // 
             this.radDongNuoc.AutoSize = true;
             this.radDongNuoc.Checked = true;
-            this.radDongNuoc.Location = new System.Drawing.Point(512, 2);
+            this.radDongNuoc.Location = new System.Drawing.Point(522, 2);
             this.radDongNuoc.Name = "radDongNuoc";
             this.radDongNuoc.Size = new System.Drawing.Size(80, 17);
             this.radDongNuoc.TabIndex = 35;
@@ -955,7 +978,7 @@
             // radMoNuoc
             // 
             this.radMoNuoc.AutoSize = true;
-            this.radMoNuoc.Location = new System.Drawing.Point(512, 25);
+            this.radMoNuoc.Location = new System.Drawing.Point(522, 25);
             this.radMoNuoc.Name = "radMoNuoc";
             this.radMoNuoc.Size = new System.Drawing.Size(69, 17);
             this.radMoNuoc.TabIndex = 36;
@@ -964,7 +987,7 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Location = new System.Drawing.Point(1019, 9);
+            this.btnInPhieu.Location = new System.Drawing.Point(1029, 9);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(75, 23);
             this.btnInPhieu.TabIndex = 37;
@@ -974,7 +997,7 @@
             // 
             // btnXoaPhieu
             // 
-            this.btnXoaPhieu.Location = new System.Drawing.Point(1100, 9);
+            this.btnXoaPhieu.Location = new System.Drawing.Point(1110, 9);
             this.btnXoaPhieu.Name = "btnXoaPhieu";
             this.btnXoaPhieu.Size = new System.Drawing.Size(75, 23);
             this.btnXoaPhieu.TabIndex = 38;
@@ -1179,7 +1202,7 @@
             // 
             // btnInDS
             // 
-            this.btnInDS.Location = new System.Drawing.Point(1181, 9);
+            this.btnInDS.Location = new System.Drawing.Point(1191, 9);
             this.btnInDS.Name = "btnInDS";
             this.btnInDS.Size = new System.Drawing.Size(75, 23);
             this.btnInDS.TabIndex = 45;
@@ -1205,29 +1228,6 @@
             this.lbTo.Size = new System.Drawing.Size(32, 19);
             this.lbTo.TabIndex = 47;
             this.lbTo.Text = "Tổ:";
-            // 
-            // cmbViTri
-            // 
-            this.cmbViTri.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbViTri.FormattingEnabled = true;
-            this.cmbViTri.Items.AddRange(new object[] {
-            "",
-            "Trong",
-            "Ngoài"});
-            this.cmbViTri.Location = new System.Drawing.Point(205, 203);
-            this.cmbViTri.MaxDropDownItems = 50;
-            this.cmbViTri.Name = "cmbViTri";
-            this.cmbViTri.Size = new System.Drawing.Size(70, 21);
-            this.cmbViTri.TabIndex = 48;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(167, 206);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(32, 13);
-            this.label27.TabIndex = 47;
-            this.label27.Text = "Vị trí:";
             // 
             // frmKQDongNuoc
             // 
