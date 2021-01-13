@@ -21,6 +21,7 @@ using KTKS_DonKH.BaoCao.TruyThu;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.BaoCao.ThuMoi;
 using KTKS_DonKH.GUI.DonTu;
+using System.Transactions;
 
 namespace KTKS_DonKH.GUI.TruyThu
 {
@@ -1493,11 +1494,21 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_cttttn != null && MessageBox.Show("Bạn có chắc chắn xóa Toàn Bộ Truy Thu?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        if (_cTTTN.Xoa_ChiTiet(_cttttn))
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            _cTTTN.Refresh();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Clear();
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("TruyThuTienNuoc_ChiTiet", (int)_cttttn.IDCT);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls);
+                            }
+                            if (_cTTTN.Xoa_ChiTiet(_cttttn))
+                            {
+                                _cTTTN.Refresh();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear();
+                            }
                         }
                     }
                 }
@@ -1944,12 +1955,21 @@ namespace KTKS_DonKH.GUI.TruyThu
                     if (_cttttn != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         TruyThuTienNuoc_ThuMoi entity = _cTTTN.get_ThuMoi(int.Parse(dgvThuMoi.SelectedRows[0].Cells["ID_ThuMoi"].Value.ToString()));
-
-                        if (_cTTTN.Xoa_ThuMoi(entity))
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ClearThuMoi();
-                            LoadDSThuMoi(_cttttn.IDCT);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("TruyThuTienNuoc_ThuMoi", (int)entity.IDCT);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls);
+                            }
+                            if (_cTTTN.Xoa_ThuMoi(entity))
+                            {
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                ClearThuMoi();
+                                LoadDSThuMoi(_cttttn.IDCT);
+                            }
                         }
                     }
                 }

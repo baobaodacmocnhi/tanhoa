@@ -549,10 +549,20 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 {
                     if (_thumoi != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if (_cThuMoi.xoa_ChiTiet(_thumoi))
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Clear();
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("ThuMoi_ChiTiet", (int)_thumoi.IDCT);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls);
+                            }
+                            if (_cThuMoi.xoa_ChiTiet(_thumoi))
+                            {
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear();
+                            }
                         }
                     }
                     else

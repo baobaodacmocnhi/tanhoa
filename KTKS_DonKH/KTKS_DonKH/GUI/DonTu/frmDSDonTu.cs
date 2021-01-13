@@ -304,6 +304,7 @@ namespace KTKS_DonKH.GUI.DonTu
             }
             rptDSChuyenDonTu rpt = new rptDSChuyenDonTu();
             rpt.SetDataSource(dsBaoCao);
+            rpt.Subreports[0].SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
         }

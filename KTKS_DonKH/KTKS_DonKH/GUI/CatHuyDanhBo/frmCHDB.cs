@@ -787,11 +787,21 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             MessageBox.Show("Đã Lập Phiếu Hủy, Không xóa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (_cCHDB.XoaCTCHDB(_ctchdb))
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            Clear();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("CHDB_ChiTietCatHuy", (int)_ctchdb.MaCTCHDB);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls);
+                            }
+                            if (_cCHDB.XoaCTCHDB(_ctchdb))
+                            {
+                                Clear();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                            }
                         }
                     }
                 }
@@ -1579,7 +1589,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 //if (_ctchdb.LyDo.Contains("Nhiều Kỳ") == true)
                 //    rpt = new rptThongBaoCHDB_NoNhieuKy();
                 //else
-                    rpt = new rptThongBaoCHDB_PHT();
+                rpt = new rptThongBaoCHDB_PHT();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();

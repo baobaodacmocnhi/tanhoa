@@ -519,10 +519,20 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 {
                     if (_cttt != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        if (_cTT.Xoa_ChiTiet(_cttt))
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Clear();
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("ToTrinh_ChiTiet", (int)_cttt.IDCT);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls);
+                            }
+                            if (_cTT.Xoa_ChiTiet(_cttt))
+                            {
+                                MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear();
+                            }
                         }
                     }
                 }
@@ -1022,7 +1032,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 }
         }
 
-       
+
 
 
 

@@ -983,10 +983,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             MessageBox.Show("Đã có Chuyển Đọc Số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (_cDCBD.XoaDCBD(_ctdcbd))
+                         var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            Clear();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("DCBD_ChiTietBienDong", (int)_ctdcbd.MaCTDCBD);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls);
+                            }
+                            if (_cDCBD.XoaDCBD(_ctdcbd))
+                            {
+                                Clear();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                     }
                 }

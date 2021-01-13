@@ -1117,11 +1117,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 try
                 {
                     if (_ctdchd != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                        if (_cDCBD.XoaDCHD(_ctdchd))
+                    {
+                      var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            Clear();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("DCBD_ChiTietHoaDon", (int)_ctdchd.MaCTDCHD);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls);
+                            }
+                            if (_cDCBD.XoaDCHD(_ctdchd))
+                            {
+                                Clear();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
+                    }
                 }
                 catch (Exception ex)
                 {

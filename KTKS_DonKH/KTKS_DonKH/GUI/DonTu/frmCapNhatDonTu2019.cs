@@ -254,6 +254,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 chkcmbNoiNhanKTXM.Properties.Items[i].CheckState = CheckState.Unchecked;
             }
             chkHoanThanh.Checked = false;
+            txtNoiDung_LichSu.Text = "";
             lbTinhTrang.Text = "Tình Trạng";
         }
 
@@ -724,6 +725,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //ClearChuyenDon();
                     //LoadLichSu();
+                    _cDonTu.Refresh();
                     KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
                     txtMaDon_KeyPress(sender, arg);
                 }
@@ -777,7 +779,10 @@ namespace KTKS_DonKH.GUI.DonTu
                                     _cDonTu.SubmitChanges();
                                 }
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                LoadLichSu();
+                                //LoadLichSu();
+                                _cDonTu.Refresh();
+                                KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
+                                txtMaDon_KeyPress(sender, arg);
                             }
                             else
                                 MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -798,7 +803,10 @@ namespace KTKS_DonKH.GUI.DonTu
                                     _cDonTu.SubmitChanges();
                                 }
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                LoadLichSu();
+                                //LoadLichSu();
+                                _cDonTu.Refresh();
+                                KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
+                                txtMaDon_KeyPress(sender, arg);
                             }
                             else
                                 MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1021,6 +1029,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         _dontu_LichSu.Huy = bool.Parse(dgvLichSuDonTu["Huy", e.RowIndex].Value.ToString());
                         _dontu_LichSu.NgayHuy = DateTime.Now;
                         _cDonTu.SubmitChanges();
+                        Clear();
                     }
                 }
                 else

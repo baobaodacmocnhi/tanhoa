@@ -687,12 +687,22 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         MessageBox.Show("Đã Lập Phiếu Hủy, Không xóa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (_cCHDB.XoaCTCTDB(_ctctdb))
-                    {
-                        Clear();
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-                    }
+                     var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                        {
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("CHDB_ChiTietCatTam", (int)_ctctdb.MaCTCTDB);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls);
+                            }
+                            if (_cCHDB.XoaCTCTDB(_ctctdb))
+                            {
+                                Clear();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            }
+                        }
                 }
             }
             else

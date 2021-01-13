@@ -341,6 +341,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                          item.NoiNhan,
                                          item.KTXM,
                                          item.NoiDung,
+                                         CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                                      };
                 DataTable dtTienTrinh = new DataTable();
                 dtTienTrinh = LINQToDataTable(queryTienTrinh);
@@ -722,6 +723,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                          item.NoiNhan,
                                          item.KTXM,
                                          item.NoiDung,
+                                         CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
                                      };
                 DataTable dtTienTrinh = new DataTable();
                 dtTienTrinh = LINQToDataTable(queryTienTrinh);
