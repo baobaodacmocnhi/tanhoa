@@ -94,13 +94,13 @@
             this.dateGiaiTrach = new System.Windows.Forms.DateTimePicker();
             this.btnBaoCao = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBaoCaoDongNuoc = new System.Windows.Forms.Button();
             this.btnInDSTon = new System.Windows.Forms.Button();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbTo = new System.Windows.Forms.ComboBox();
-            this.btnBaoCaoDongNuoc = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -121,7 +121,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(404, 10);
+            this.btnXem.Location = new System.Drawing.Point(414, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 33;
@@ -146,7 +146,7 @@
             "10",
             "11",
             "12"});
-            this.cmbKy.Location = new System.Drawing.Point(348, 12);
+            this.cmbKy.Location = new System.Drawing.Point(358, 12);
             this.cmbKy.Name = "cmbKy";
             this.cmbKy.Size = new System.Drawing.Size(50, 21);
             this.cmbKy.TabIndex = 32;
@@ -154,7 +154,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(320, 15);
+            this.label3.Location = new System.Drawing.Point(330, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 13);
             this.label3.TabIndex = 31;
@@ -163,7 +163,7 @@
             // cmbNam
             // 
             this.cmbNam.FormattingEnabled = true;
-            this.cmbNam.Location = new System.Drawing.Point(254, 12);
+            this.cmbNam.Location = new System.Drawing.Point(264, 12);
             this.cmbNam.Name = "cmbNam";
             this.cmbNam.Size = new System.Drawing.Size(60, 21);
             this.cmbNam.TabIndex = 30;
@@ -171,7 +171,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(216, 15);
+            this.label2.Location = new System.Drawing.Point(226, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 29;
@@ -679,7 +679,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(485, 10);
+            this.btnIn.Location = new System.Drawing.Point(495, 10);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.TabIndex = 36;
@@ -690,7 +690,7 @@
             // chkNgayKiemTra
             // 
             this.chkNgayKiemTra.AutoSize = true;
-            this.chkNgayKiemTra.Location = new System.Drawing.Point(323, 39);
+            this.chkNgayKiemTra.Location = new System.Drawing.Point(333, 39);
             this.chkNgayKiemTra.Name = "chkNgayKiemTra";
             this.chkNgayKiemTra.Size = new System.Drawing.Size(96, 17);
             this.chkNgayKiemTra.TabIndex = 47;
@@ -703,14 +703,14 @@
             this.dateGiaiTrach.CustomFormat = "dd/MM/yyyy";
             this.dateGiaiTrach.Enabled = false;
             this.dateGiaiTrach.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateGiaiTrach.Location = new System.Drawing.Point(425, 39);
+            this.dateGiaiTrach.Location = new System.Drawing.Point(435, 39);
             this.dateGiaiTrach.Name = "dateGiaiTrach";
             this.dateGiaiTrach.Size = new System.Drawing.Size(95, 20);
             this.dateGiaiTrach.TabIndex = 46;
             // 
             // btnBaoCao
             // 
-            this.btnBaoCao.Location = new System.Drawing.Point(566, 10);
+            this.btnBaoCao.Location = new System.Drawing.Point(576, 10);
             this.btnBaoCao.Name = "btnBaoCao";
             this.btnBaoCao.Size = new System.Drawing.Size(110, 23);
             this.btnBaoCao.TabIndex = 48;
@@ -726,12 +726,22 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dateDen);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(682, 6);
+            this.groupBox1.Location = new System.Drawing.Point(692, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(463, 72);
             this.groupBox1.TabIndex = 49;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ngày Lập Lệnh Đóng Nước";
+            // 
+            // btnBaoCaoDongNuoc
+            // 
+            this.btnBaoCaoDongNuoc.Location = new System.Drawing.Point(341, 16);
+            this.btnBaoCaoDongNuoc.Name = "btnBaoCaoDongNuoc";
+            this.btnBaoCaoDongNuoc.Size = new System.Drawing.Size(115, 23);
+            this.btnBaoCaoDongNuoc.TabIndex = 74;
+            this.btnBaoCaoDongNuoc.Text = "Báo Cáo Đóng Nước";
+            this.btnBaoCaoDongNuoc.UseVisualStyleBackColor = true;
+            this.btnBaoCaoDongNuoc.Click += new System.EventHandler(this.btnBaoCaoDongNuoc_Click);
             // 
             // btnInDSTon
             // 
@@ -787,16 +797,6 @@
             this.cmbTo.Size = new System.Drawing.Size(60, 21);
             this.cmbTo.TabIndex = 73;
             this.cmbTo.Visible = false;
-            // 
-            // btnBaoCaoDongNuoc
-            // 
-            this.btnBaoCaoDongNuoc.Location = new System.Drawing.Point(341, 16);
-            this.btnBaoCaoDongNuoc.Name = "btnBaoCaoDongNuoc";
-            this.btnBaoCaoDongNuoc.Size = new System.Drawing.Size(115, 23);
-            this.btnBaoCaoDongNuoc.TabIndex = 74;
-            this.btnBaoCaoDongNuoc.Text = "Báo Cáo Đóng Nước";
-            this.btnBaoCaoDongNuoc.UseVisualStyleBackColor = true;
-            this.btnBaoCaoDongNuoc.Click += new System.EventHandler(this.btnBaoCaoDongNuoc_Click);
             // 
             // frmNangSuatThuTienTo
             // 
