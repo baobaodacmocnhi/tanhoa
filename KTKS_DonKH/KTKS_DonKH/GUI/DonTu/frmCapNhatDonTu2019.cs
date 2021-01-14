@@ -1029,7 +1029,9 @@ namespace KTKS_DonKH.GUI.DonTu
                         _dontu_LichSu.Huy = bool.Parse(dgvLichSuDonTu["Huy", e.RowIndex].Value.ToString());
                         _dontu_LichSu.NgayHuy = DateTime.Now;
                         _cDonTu.SubmitChanges();
-                        Clear();
+                        _cDonTu.Refresh();
+                        KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
+                        txtMaDon_KeyPress(sender, arg);
                     }
                 }
                 else

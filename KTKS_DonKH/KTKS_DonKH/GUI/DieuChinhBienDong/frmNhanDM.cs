@@ -13,6 +13,7 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
 using System.Transactions;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -23,6 +24,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+        CThuTien _cThuTien = new CThuTien();
 
         CDataTransfer _dataT = new CDataTransfer();
 
@@ -168,10 +170,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     chungtu.KhacDiaBan = true;
                                     _cChungTu.Them(chungtu);
                                 }
-                                ///Lấy thông tin Chứng Từ để kiểm tra
+                                //Lấy thông tin Chứng Từ để kiểm tra
+                                
                                 ChungTu _chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                                 _chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
-
                                 if (_chungtu.SoNKTong - _chungtu.ChungTu_ChiTiets.Sum(item => item.SoNKDangKy) < int.Parse(txtSoNKNhan.Text.Trim()))
                                 {
                                     MessageBox.Show("Vượt Nhân Khẩu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -180,6 +182,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 //chưa có
                                 if (_cChungTu.CheckExist_CT(txtDanhBo_Nhan.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == false)
                                 {
+                                    HOADON hd = _cThuTien.GetMoiNhat(txtDanhBo_Nhan.Text.Trim());
                                     ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
                                     ctchungtu.DanhBo = txtDanhBo_Nhan.Text.Trim();
                                     ctchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
@@ -194,8 +197,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                                     ctchungtu.Lo = txtLo.Text.Trim();
                                     ctchungtu.Phong = txtPhong.Text.Trim();
-                                    ctchungtu.Quan = _dataT.Quan;
-                                    ctchungtu.Phuong = _dataT.Phuong;
+                                    if (hd != null)
+                                    {
+                                        ctchungtu.Phuong = hd.Phuong;
+                                        ctchungtu.Quan = hd.Quan;
+                                    }
                                     ///Ghi thông tin Lịch Sử chung
                                     ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
                                     switch (_dataT.Loai)
@@ -216,8 +222,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         default:
                                             break;
                                     }
-                                    lichsuchungtu.Quan = _dataT.Quan;
-                                    lichsuchungtu.Phuong = _dataT.Phuong;
+                                    if (hd != null)
+                                    {
+                                        lichsuchungtu.Phuong = hd.Phuong;
+                                        lichsuchungtu.Quan = hd.Quan;
+                                    }
                                     lichsuchungtu.DanhBo = txtDanhBo_Nhan.Text.Trim();
                                     lichsuchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                                     lichsuchungtu.MaCT = txtMaCT.Text.Trim();
@@ -279,6 +288,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 //đã có
                                 else
                                 {
+                                    HOADON hd = _cThuTien.GetMoiNhat(txtDanhBo_Nhan.Text.Trim());
                                     ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(txtDanhBo_Nhan.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                                     ctchungtu.SoNKDangKy += int.Parse(txtSoNKNhan.Text.Trim());
                                     ///Ghi thông tin Lịch Sử chung
@@ -301,8 +311,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         default:
                                             break;
                                     }
-                                    lichsuchungtu.Quan = _dataT.Quan;
-                                    lichsuchungtu.Phuong = _dataT.Phuong;
+                                    if (hd != null)
+                                    {
+                                        lichsuchungtu.Phuong = hd.Phuong;
+                                        lichsuchungtu.Quan = hd.Quan;
+                                    }
                                     lichsuchungtu.DanhBo = txtDanhBo_Nhan.Text.Trim();
                                     lichsuchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                                     lichsuchungtu.MaCT = txtMaCT.Text.Trim();

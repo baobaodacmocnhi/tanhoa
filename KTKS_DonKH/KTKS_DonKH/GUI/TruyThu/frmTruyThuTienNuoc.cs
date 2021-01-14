@@ -1148,6 +1148,13 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     if (_dontu_ChiTiet != null)
                     {
+                        //kiểm tra tình trạng tồn
+                        string str = _cTTTN.check_TinhTrang_Ton(_dontu_ChiTiet.DanhBo);
+                        if (str != "")
+                        {
+                            if (MessageBox.Show(str + "\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                return;
+                        }
                         if (_cTTTN.checkExist(_dontu_ChiTiet.MaDon.Value) == false)
                         {
                             TruyThuTienNuoc tttn = new TruyThuTienNuoc();
@@ -1349,6 +1356,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                             _cttttn.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         _cttttn.NoiDung = txtNoiDung.Text.Trim();
                         _cttttn.DienThoai = txtDienThoai.Text.Trim();
+
+                        if (_cttttn.TinhTrang != cmbTinhTrang.SelectedItem.ToString())
+                            _cDonTu.runUpdateTinhTrang(_cttttn.TruyThuTienNuoc.MaDonMoi.Value, _cttttn.STT.Value);
                         if (cmbTinhTrang.SelectedIndex != -1)
                         {
                             _cttttn.NgayTinhTrang = dateTinhTrang.Value;
@@ -1356,6 +1366,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         }
                         else
                             _cttttn.TinhTrang = "";
+
                         if (_hoadon != null && _hoadon.DANHBA != txtDanhBo.Text.Trim())
                         {
                             _cttttn.Dot = _hoadon.DOT.ToString();

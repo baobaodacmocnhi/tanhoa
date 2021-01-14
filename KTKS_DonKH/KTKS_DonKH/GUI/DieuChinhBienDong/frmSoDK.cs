@@ -13,6 +13,7 @@ using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Transactions;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -23,6 +24,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChungTu _cChungTu = new CChungTu();
         CChiNhanh _cChiNhanh = new CChiNhanh();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+        CThuTien _cThuTien = new CThuTien();
 
         ChungTu_LichSu _LSCT = null;
         CDataTransfer _dataT = new CDataTransfer();
@@ -341,6 +343,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 return;
                             }
                             ///
+                            HOADON hd = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                             ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
                             ctchungtu.DanhBo = txtDanhBo.Text.Trim();
                             ctchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
@@ -355,8 +358,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ctchungtu.HoTenCat = txtHoTenCat.Text.Trim();
                             ctchungtu.Lo = txtLo.Text.Trim();
                             ctchungtu.Phong = txtPhong.Text.Trim();
-                            ctchungtu.Phuong = _dataT.Phuong;
-                            ctchungtu.Quan = _dataT.Quan;
+                            if (hd != null)
+                            {
+                                ctchungtu.Phuong = hd.Phuong;
+                                ctchungtu.Quan = hd.Quan;
+                            }
                             #region Yêu Cầu Cắt
                             if (chkYCCat1.Checked)
                                 if (txtSoNKCat_YCC1.Text.Trim() == "")
@@ -409,8 +415,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 default:
                                     break;
                             }
-                            lichsuchungtu.Quan = _dataT.Quan;
-                            lichsuchungtu.Phuong = _dataT.Phuong;
+                            if (hd != null)
+                            {
+                                lichsuchungtu.Phuong = hd.Phuong;
+                                lichsuchungtu.Quan = hd.Quan;
+                            }
                             lichsuchungtu.DanhBo = ctchungtu.DanhBo;
                             lichsuchungtu.MaLCT = ctchungtu.MaLCT;
                             lichsuchungtu.MaCT = ctchungtu.MaCT;
@@ -667,6 +676,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             ChungTu _chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                             ChungTu_ChiTiet _ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
+                            HOADON hd = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
 
                             _chungtu.HoTen = txtHoTen.Text.Trim();
                             _chungtu.DiaChi = txtDiaChi.Text.Trim();
@@ -689,8 +699,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _ctchungtu.Phong = txtPhong.Text.Trim();
                             _ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                             _ctchungtu.HoTenCat = txtHoTenCat.Text.Trim();
-                            _ctchungtu.Quan = _dataT.Quan;
-                            _ctchungtu.Phuong = _dataT.Phuong;
+                            if (hd != null)
+                            {
+                                _ctchungtu.Phuong = hd.Phuong;
+                                _ctchungtu.Quan = hd.Quan;
+                            }
                             ///
                             if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
                             {
@@ -775,8 +788,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 default:
                                     break;
                             }
-                            lichsuchungtu.Quan = _dataT.Quan;
-                            lichsuchungtu.Phuong = _dataT.Phuong;
+                            if (hd != null)
+                            {
+                                lichsuchungtu.Phuong = hd.Phuong;
+                                lichsuchungtu.Quan = hd.Quan;
+                            }
                             lichsuchungtu.DanhBo = _ctchungtu.DanhBo;
                             lichsuchungtu.MaLCT = _ctchungtu.MaLCT;
                             lichsuchungtu.MaCT = _ctchungtu.MaCT;

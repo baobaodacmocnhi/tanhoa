@@ -395,7 +395,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             + " ,DiaChi=case when (select COUNT(ID) from DonTu_ChiTiet where MaDon=DonTu.MaDon)=1 then (select DiaChi from DonTu_ChiTiet where MaDon=DonTu.MaDon) else N'Số: ' + SoCongVan + N' gồm ' + CAST(TongDB as varchar(3)) + N' địa chỉ' end"
                             + " ,NoiDungPKH=Name_NhomDon_PKH,NoiDungPTV=Name_NhomDon,CreateBy=(select HoTen from Users where MaU=DonTu.CreateBy),TinhTrang"
                             + " from DonTu where CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm") + "' and CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm") + "'";
-                
+
                 string sqlDonTuChiTiet = "select dtct.STT,dtct.MaDon,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,dtct.TinhTrang"
                     + " from DonTu dt,DonTu_ChiTiet dtct where (select COUNT(ID) from DonTu_ChiTiet where MaDon=dt.MaDon)>1"
                     + " and dt.MaDon=dtct.MaDon and dt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm") + "' and dt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm") + "'";
@@ -1046,12 +1046,17 @@ namespace KTKS_DonKH.DAL.DonTu
             return flag;
         }
 
+        public void runUpdateTinhTrang(int MaDon, int STT)
+        {
+            ExecuteNonQuery("exec spUpdateTinhTrang " + MaDon + "," + STT);
+        }
+
         public DonTu_LichSu get_LichSu(int ID)
         {
             return db.DonTu_LichSus.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DonTu_LichSu get_LichSu(string TableName,int IDCT)
+        public DonTu_LichSu get_LichSu(string TableName, int IDCT)
         {
             return db.DonTu_LichSus.SingleOrDefault(item => item.TableName == TableName && item.IDCT == IDCT);
         }
