@@ -28,6 +28,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         ChungTu_LichSu _LSCT = null;
         CDataTransfer _dataT = new CDataTransfer();
+        HOADON _hd = null;
         bool _flagLoadFirst = false;
 
         public frmSoDK()
@@ -82,7 +83,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_LSCT == null)
                 {
                     txtDanhBo.Text = _dataT.DanhBo;
-
+                    _hd = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                     if (_dataT.MaCT != "")
                     {
                         if (_cChungTu.CheckExist_CT(_dataT.DanhBo, _dataT.MaCT, _dataT.MaLCT))
@@ -196,6 +197,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (_cChungTu.CheckExist_CT(_LSCT.DanhBo, _LSCT.MaCT, _LSCT.MaLCT.Value))
                     {
+                        _hd = _cThuTien.GetMoiNhat(_LSCT.DanhBo);
                         ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(_LSCT.DanhBo, _LSCT.MaCT, _LSCT.MaLCT.Value);
                         if (ctchungtu.YeuCauCat2)
                             this.Location = new Point(10, 70);
@@ -343,7 +345,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 return;
                             }
                             ///
-                            HOADON hd = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                            
                             ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
                             ctchungtu.DanhBo = txtDanhBo.Text.Trim();
                             ctchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
@@ -358,10 +360,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ctchungtu.HoTenCat = txtHoTenCat.Text.Trim();
                             ctchungtu.Lo = txtLo.Text.Trim();
                             ctchungtu.Phong = txtPhong.Text.Trim();
-                            if (hd != null)
+                            if (_hd != null)
                             {
-                                ctchungtu.Phuong = hd.Phuong;
-                                ctchungtu.Quan = hd.Quan;
+                                ctchungtu.Phuong = _hd.Phuong;
+                                ctchungtu.Quan = _hd.Quan;
                             }
                             #region Yêu Cầu Cắt
                             if (chkYCCat1.Checked)
@@ -415,10 +417,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 default:
                                     break;
                             }
-                            if (hd != null)
+                            if (_hd != null)
                             {
-                                lichsuchungtu.Phuong = hd.Phuong;
-                                lichsuchungtu.Quan = hd.Quan;
+                                lichsuchungtu.Phuong = _hd.Phuong;
+                                lichsuchungtu.Quan = _hd.Quan;
                             }
                             lichsuchungtu.DanhBo = ctchungtu.DanhBo;
                             lichsuchungtu.MaLCT = ctchungtu.MaLCT;
@@ -676,7 +678,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             ChungTu _chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                             ChungTu_ChiTiet _ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
-                            HOADON hd = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                            
 
                             _chungtu.HoTen = txtHoTen.Text.Trim();
                             _chungtu.DiaChi = txtDiaChi.Text.Trim();
@@ -699,10 +701,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _ctchungtu.Phong = txtPhong.Text.Trim();
                             _ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                             _ctchungtu.HoTenCat = txtHoTenCat.Text.Trim();
-                            if (hd != null)
+                            if (_hd != null)
                             {
-                                _ctchungtu.Phuong = hd.Phuong;
-                                _ctchungtu.Quan = hd.Quan;
+                                _ctchungtu.Phuong = _hd.Phuong;
+                                _ctchungtu.Quan = _hd.Quan;
                             }
                             ///
                             if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
@@ -788,10 +790,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 default:
                                     break;
                             }
-                            if (hd != null)
+                            if (_hd != null)
                             {
-                                lichsuchungtu.Phuong = hd.Phuong;
-                                lichsuchungtu.Quan = hd.Quan;
+                                lichsuchungtu.Phuong = _hd.Phuong;
+                                lichsuchungtu.Quan = _hd.Quan;
                             }
                             lichsuchungtu.DanhBo = _ctchungtu.DanhBo;
                             lichsuchungtu.MaLCT = _ctchungtu.MaLCT;
