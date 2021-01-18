@@ -106,6 +106,18 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="TLD_GKCongDoan_TAPTHE_2021.cs">
+      <DependentUpon>TLD_GKCongDoan_TAPTHE_2021.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="TLD_GKCongDoan_CANHAN_2021.cs">
+      <DependentUpon>TLD_GKCongDoan_CANHAN_2021.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DanVanKheo_TAPTHE_A3_2020.cs">
       <DependentUpon>DanVanKheo_TAPTHE_A3_2020.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -226,20 +238,20 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="TLD_GKCongDoan_CANHAN_KT.cs">
-      <DependentUpon>TLD_GKCongDoan_CANHAN_KT.rpt</DependentUpon>
+    <Compile Include="TLD_GKCongDoan_CANHAN_KhenThuong.cs">
+      <DependentUpon>TLD_GKCongDoan_CANHAN_KhenThuong.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="TLD_GKCongDoan_TAPTHE_KT.cs">
-      <DependentUpon>TLD_GKCongDoan_TAPTHE_KT.rpt</DependentUpon>
+    <Compile Include="TLD_GKCongDoan_TAPTHE_KhenThuong.cs">
+      <DependentUpon>TLD_GKCongDoan_TAPTHE_KhenThuong.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="TLD_GKCongDoan_TAPTHE_KT_2name.cs">
-      <DependentUpon>TLD_GKCongDoan_TAPTHE_KT_2name.rpt</DependentUpon>
+    <Compile Include="TLD_GKCongDoan_TAPTHE_KhenThuong_2name.cs">
+      <DependentUpon>TLD_GKCongDoan_TAPTHE_KhenThuong_2name.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -324,6 +336,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ChinhQuyen_TAPTHE_A3_Edit.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="TLD_GKCongDoan_TAPTHE_2021.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TLD_GKCongDoan_TAPTHE_2021.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TLD_GKCongDoan_CANHAN_2021.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TLD_GKCongDoan_CANHAN_2021.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="DanVanKheo_TAPTHE_A3_2020.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DanVanKheo_TAPTHE_A3_2020.cs</LastGenOutput>
@@ -404,17 +424,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>HCM_CANHAN.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TLD_GKCongDoan_CANHAN_KT.rpt">
+    <EmbeddedResource Include="TLD_GKCongDoan_CANHAN_KhenThuong.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>TLD_GKCongDoan_CANHAN_KT.cs</LastGenOutput>
+      <LastGenOutput>TLD_GKCongDoan_CANHAN_KhenThuong.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TLD_GKCongDoan_TAPTHE_KT.rpt">
+    <EmbeddedResource Include="TLD_GKCongDoan_TAPTHE_KhenThuong.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>TLD_GKCongDoan_TAPTHE_KT.cs</LastGenOutput>
+      <LastGenOutput>TLD_GKCongDoan_TAPTHE_KhenThuong.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TLD_GKCongDoan_TAPTHE_KT_2name.rpt">
+    <EmbeddedResource Include="TLD_GKCongDoan_TAPTHE_KhenThuong_2name.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>TLD_GKCongDoan_TAPTHE_KT_2name.cs</LastGenOutput>
+      <LastGenOutput>TLD_GKCongDoan_TAPTHE_KhenThuong_2name.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TLD_GKCongDoan_TAPTHE_2name.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

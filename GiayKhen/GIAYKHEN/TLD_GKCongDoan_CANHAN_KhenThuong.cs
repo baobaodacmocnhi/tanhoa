@@ -16,14 +16,14 @@ namespace GIAYKHEN {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class TLD_GKCongDoan_TAPTHE_KT_2name : ReportClass {
+    public class TLD_GKCongDoan_CANHAN_KhenThuong : ReportClass {
         
-        public TLD_GKCongDoan_TAPTHE_KT_2name() {
+        public TLD_GKCongDoan_CANHAN_KhenThuong() {
         }
         
         public override string ResourceName {
             get {
-                return "TLD_GKCongDoan_TAPTHE_KT_2name.rpt";
+                return "TLD_GKCongDoan_CANHAN_KhenThuong.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace GIAYKHEN {
         
         public override string FullResourceName {
             get {
-                return "GIAYKHEN.TLD_GKCongDoan_TAPTHE_KT_2name.rpt";
+                return "GIAYKHEN.TLD_GKCongDoan_CANHAN_KhenThuong.rpt";
             }
             set {
                 // Do nothing
@@ -138,9 +138,9 @@ namespace GIAYKHEN {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedTLD_GKCongDoan_TAPTHE_KT_2name : Component, ICachedReport {
+    public class CachedTLD_GKCongDoan_CANHAN_KhenThuong : Component, ICachedReport {
         
-        public CachedTLD_GKCongDoan_TAPTHE_KT_2name() {
+        public CachedTLD_GKCongDoan_CANHAN_KhenThuong() {
         }
         
         [Browsable(false)]
@@ -177,7 +177,7 @@ namespace GIAYKHEN {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            TLD_GKCongDoan_TAPTHE_KT_2name rpt = new TLD_GKCongDoan_TAPTHE_KT_2name();
+            TLD_GKCongDoan_CANHAN_KhenThuong rpt = new TLD_GKCongDoan_CANHAN_KhenThuong();
             rpt.Site = this.Site;
             return rpt;
         }

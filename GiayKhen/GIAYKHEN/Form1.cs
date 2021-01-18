@@ -63,13 +63,13 @@ namespace GIAYKHEN
                     if (cmbNhom.SelectedIndex == 0)
                     {
                         sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and CongDoan=1";
-                        rp = new TLD_GKCongDoan_CANHAN();
+                        rp = new TLD_GKCongDoan_CANHAN_2021();
                     }
                     else
                         if (cmbNhom.SelectedIndex == 1)
                         {
                             sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and CongDoan=1";
-                            rp = new TLD_GKCongDoan_TAPTHE_2name();
+                            rp = new TLD_GKCongDoan_TAPTHE_2021();
                         }
                 }
                 else
@@ -180,7 +180,7 @@ namespace GIAYKHEN
         private void Form1_Load(object sender, EventArgs e)
         {
             cmbNhom.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2020, 11, 24);
+            txtNgay.Value = new DateTime(2020, 12, 03);
         }
 
     }
