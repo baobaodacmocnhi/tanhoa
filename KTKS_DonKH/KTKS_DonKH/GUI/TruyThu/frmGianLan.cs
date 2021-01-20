@@ -698,10 +698,22 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_gianlan != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if (_cGianLan.Xoa_ChiTiet(_gianlan))
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Clear();
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("GianLan", (int)_gianlan.MaCTGL);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls);
+                            }
+                            if (_cGianLan.Xoa_ChiTiet(_gianlan))
+                            {
+                                scope.Complete();
+                                scope.Dispose();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear();
+                            }
                         }
                     }
                 }

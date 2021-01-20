@@ -698,9 +698,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             }
                             if (_cCHDB.XoaCTCTDB(_ctctdb))
                             {
-                                Clear();
+                                scope.Complete();
+                                scope.Dispose();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                                Clear();
                             }
                         }
                 }
@@ -857,6 +858,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 //    rpt.Subreports[j].SetDataSource(dsBaoCao);
                                 //}
                                 rptPhieuCHDB rpt = new rptPhieuCHDB();
+
+                                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                                dsBaoCao.Tables["DSHoaDon"].Rows.Add(drLogo);
+
                                 rpt.SetDataSource(dsBaoCao);
                                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                                 frm.ShowDialog();
@@ -964,6 +970,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     //{
                                     //    rpt.Subreports[j].SetDataSource(dsBaoCao);
                                     //}
+                                    DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                                    drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                                    dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
                                     rptPhieuCHDB rpt = new rptPhieuCHDB();
                                     rpt.SetDataSource(dsBaoCao);
                                     frmShowBaoCao frm = new frmShowBaoCao(rpt);
@@ -1021,6 +1031,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             //{
                             //    rpt.Subreports[j].SetDataSource(dsBaoCao);
                             //}
+                            DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                            drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                            dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
                             rptPhieuCHDB rpt = new rptPhieuCHDB();
                             rpt.SetDataSource(dsBaoCao);
                             frmShowBaoCao frm = new frmShowBaoCao(rpt);
@@ -1312,6 +1326,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
 
                 dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
+
+                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
 
                 rptThongBaoCTDB rpt = new rptThongBaoCTDB();
                 rpt.SetDataSource(dsBaoCao);

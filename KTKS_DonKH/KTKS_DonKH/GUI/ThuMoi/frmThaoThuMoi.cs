@@ -560,6 +560,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             }
                             if (_cThuMoi.xoa_ChiTiet(_thumoi))
                             {
+                                scope.Complete();
+                                scope.Dispose();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Clear();
                             }

@@ -561,8 +561,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             }
                             if (_cCHDB.XoaPhieuHuy(_ycchdb))
                             {
-                                Clear();
+                                scope.Complete();
+                                scope.Dispose();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear();
                             }
                         }
                     }
@@ -631,8 +633,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     //{
                     //    rpt.Subreports[j].SetDataSource(dsBaoCao);
                     //}
+
+                    DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                    drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                    dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
                     rptPhieuCHDB rpt = new rptPhieuCHDB();
-                    rpt.SetDataSource(dsBaoCao);
+                  rpt.SetDataSource(dsBaoCao);
                     frmShowBaoCao frm = new frmShowBaoCao(rpt);
                     frm.ShowDialog();
                 }

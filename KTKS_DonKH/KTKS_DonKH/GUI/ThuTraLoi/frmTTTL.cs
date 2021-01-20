@@ -629,6 +629,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             }
                             if (_cTTTL.XoaCT(_cttttl))
                             {
+                                scope.Complete();
+                                scope.Dispose();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Clear();
                             }
@@ -760,6 +762,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 dr["NguoiKy"] = _cttttl.NguoiKy;
 
                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+
+                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
 
                 if (!string.IsNullOrEmpty(_cttttl.DanhBo))
                 {
@@ -929,6 +935,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 dr["NguoiKy"] = _cttttl.NguoiKy;
 
                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+
+                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
 
                 rptThaoThuTraLoi_hotline rpt = new rptThaoThuTraLoi_hotline();
                 rpt.SetDataSource(dsBaoCao);

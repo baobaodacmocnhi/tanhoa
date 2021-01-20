@@ -140,6 +140,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 
+                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
                 rptPhieuTBYCNhanDMA4_N rpt = new rptPhieuTBYCNhanDMA4_N();
                 rpt.SetDataSource(dsBaoCao);
                 //rptPhieuTBYCNhanDMx2_N rpt = new rptPhieuTBYCNhanDMx2_N();
@@ -231,6 +235,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 
+                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
                 rptPhieuTBYCNhanDMA4_Y rpt = new rptPhieuTBYCNhanDMA4_Y();
                 rpt.SetDataSource(dsBaoCao);
                 //rptPhieuTBYCNhanDMx2_Y rpt = new rptPhieuTBYCNhanDMx2_Y();
@@ -273,6 +281,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["NguoiKy"] = tb.NguoiKy;
 
                 dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
+
+                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
 
                 rptPhieuYCCatDM_A4 rpt = new rptPhieuYCCatDM_A4();
                 rpt.SetDataSource(dsBaoCao);

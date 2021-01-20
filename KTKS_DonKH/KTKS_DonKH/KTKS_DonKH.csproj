@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1491</ApplicationRevision>
+    <ApplicationRevision>1493</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -2523,6 +2523,9 @@
     <None Include="Resources\email send 48.png" />
     <None Include="Resources\Treetog Documents.ico" />
     <None Include="Resources\file 24x24.png" />
+    <Content Include="Resources\logocongty.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sources\AxInterop.AcroPDFLib.dll" />
     <Content Include="Sources\DevComponents.DotNetBar2.dll" />
     <Content Include="Sources\IrisSkin2.dll" />

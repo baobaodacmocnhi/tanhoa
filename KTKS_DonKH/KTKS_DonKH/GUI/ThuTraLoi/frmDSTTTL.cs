@@ -124,6 +124,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
                             dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
+                            DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                            drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                            dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
                             if (!string.IsNullOrEmpty(cttttl.DanhBo))
                             {
                                 rptThaoThuTraLoi rpt = new rptThaoThuTraLoi();

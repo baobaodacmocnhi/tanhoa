@@ -530,6 +530,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             }
                             if (_cTT.Xoa_ChiTiet(_cttt))
                             {
+                                scope.Complete();
+                                scope.Dispose();
                                 MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Clear();
                             }

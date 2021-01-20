@@ -502,6 +502,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
 
+                                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
                                 rptThongBaoCTDB rpt = new rptThongBaoCTDB();
                                 rpt.SetDataSource(dsBaoCao);
 
@@ -552,6 +556,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
 
                                 dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
+
+                                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
 
                                 rptThongBaoCHDB rpt = new rptThongBaoCHDB();
                                 rpt.SetDataSource(dsBaoCao);
@@ -620,6 +628,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 //{
                                 //    rpt.Subreports[j].SetDataSource(dsBaoCao);
                                 //}
+                                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
                                 rptPhieuCHDB rpt = new rptPhieuCHDB();
                                 rpt.SetDataSource(dsBaoCao);
 

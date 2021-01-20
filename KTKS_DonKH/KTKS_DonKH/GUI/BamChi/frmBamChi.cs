@@ -819,8 +819,10 @@ namespace KTKS_DonKH.GUI.BamChi
                             }
                             if (_cBamChi.XoaCT(_ctbamchi))
                             {
-                                Clear2();
+                                scope.Complete();
+                                scope.Dispose();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear2();
                                 txtMaDonCu.Focus();
                             }
                         }

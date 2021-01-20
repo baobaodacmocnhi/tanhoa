@@ -115,6 +115,10 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 dr["SoThan"] = item.Cells["SoThan"].Value.ToString();
                 dsBaoCao.Tables["PhieuTieuThu"].Rows.Add(dr);
             }
+            DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+            drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+            dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
             rptBBBanGiaoNapHopBV rpt = new rptBBBanGiaoNapHopBV();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);

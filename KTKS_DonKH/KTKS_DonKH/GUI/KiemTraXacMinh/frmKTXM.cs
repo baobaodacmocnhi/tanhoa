@@ -784,8 +784,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             }
                             if (_cKTXM.XoaCT(_ctktxm))
                             {
-                                Clear();
+                                scope.Complete();
+                                scope.Dispose();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear();
                                 txtMaDonCu.Focus();
                             }
                         }

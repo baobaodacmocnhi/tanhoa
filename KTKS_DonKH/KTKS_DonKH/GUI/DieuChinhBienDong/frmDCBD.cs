@@ -994,8 +994,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             if (_cDCBD.XoaDCBD(_ctdcbd))
                             {
-                                Clear();
+                                scope.Complete();
+                                scope.Dispose();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear();
                             }
                         }
                     }

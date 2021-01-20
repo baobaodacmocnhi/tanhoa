@@ -1516,6 +1516,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                             }
                             if (_cTTTN.Xoa_ChiTiet(_cttttn))
                             {
+                                scope.Complete();
+                                scope.Dispose();
                                 _cTTTN.Refresh();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Clear();
@@ -2009,6 +2011,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["Lan"] = dgvThuMoi.SelectedRows[0].Cells["Lan"].Value;
 
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
+
+                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
 
                 rptThuMoiTruyThu rpt = new rptThuMoiTruyThu();
                 rpt.SetDataSource(dsBaoCao);

@@ -769,6 +769,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                             dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 
+                                            DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                                            drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                                            dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
                                             rptPhieuYCCatDM_A4 rpt = new rptPhieuYCCatDM_A4();
                                             rpt.SetDataSource(dsBaoCao);
                                             //for (int j = 0; j < rpt.Subreports.Count; j++)
@@ -1580,6 +1584,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
                                         }
                                 }
+                            DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                            drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                            dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
                             rptDSPhieuCatChuyen rpt = new rptDSPhieuCatChuyen();
                             rpt.SetDataSource(dsBaoCao);
                             frmShowBaoCao frm = new frmShowBaoCao(rpt);
@@ -2037,6 +2045,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     }
                                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
+
+                                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
 
                                 if (ctdcbd.GiaBieu == 68 || ctdcbd.GiaBieu_BD == 68)
                                 {
