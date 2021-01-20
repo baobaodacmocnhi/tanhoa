@@ -404,6 +404,12 @@ namespace ThuTien.GUI.ToTruong
                     {
                         rptTongHopNoA4 rpt = new rptTongHopNoA4();
                         rpt.SetDataSource(ds);
+
+                        DataRow drLogo = ds.Tables["DSHoaDon"].NewRow();
+                        drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                        ds.Tables["DSHoaDon"].Rows.Add(drLogo);
+                        rpt.Subreports[0].SetDataSource(ds);
+
                         frmBaoCao frm = new frmBaoCao(rpt);
                         frm.Show();
                     }
@@ -412,6 +418,12 @@ namespace ThuTien.GUI.ToTruong
                         {
                             rptTongHopNoA5 rpt = new rptTongHopNoA5();
                             rpt.SetDataSource(ds);
+
+                            DataRow drLogo = ds.Tables["DSHoaDon"].NewRow();
+                            drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                            ds.Tables["DSHoaDon"].Rows.Add(drLogo);
+                            rpt.Subreports[0].SetDataSource(ds);
+
                             frmBaoCao frm = new frmBaoCao(rpt);
                             frm.Show();
                         }
@@ -585,6 +597,12 @@ namespace ThuTien.GUI.ToTruong
             {
                 rptTongHopNoA4 rpt = new rptTongHopNoA4();
                 rpt.SetDataSource(ds);
+
+                DataRow drLogo = ds.Tables["DSHoaDon"].NewRow();
+                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                ds.Tables["DSHoaDon"].Rows.Add(drLogo);
+                rpt.Subreports[0].SetDataSource(ds);
+
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.Show();
             }
@@ -593,6 +611,12 @@ namespace ThuTien.GUI.ToTruong
                 {
                     rptTongHopNoA5 rpt = new rptTongHopNoA5();
                     rpt.SetDataSource(ds);
+
+                    DataRow drLogo = ds.Tables["DSHoaDon"].NewRow();
+                    drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                    ds.Tables["DSHoaDon"].Rows.Add(drLogo);
+                    rpt.Subreports[0].SetDataSource(ds);
+
                     frmBaoCao frm = new frmBaoCao(rpt);
                     frm.Show();
                 }

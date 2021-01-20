@@ -153,6 +153,12 @@ namespace ThuTien.GUI.Doi
                 _cGuiThongBao.Sua(entity);
             }
             rptGuiThongBao rpt = new rptGuiThongBao();
+
+            DataRow dr1 = ds.Tables["DSHoaDon"].NewRow();
+            dr1["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+            ds.Tables["DSHoaDon"].Rows.Add(dr1);
+            rpt.Subreports[0].SetDataSource(ds);
+
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
@@ -181,6 +187,11 @@ namespace ThuTien.GUI.Doi
         private void btnInToRoi_Click(object sender, EventArgs e)
         {
             rptGuiThongBaoToRoi rpt = new rptGuiThongBaoToRoi();
+            dsBaoCao ds = new dsBaoCao();
+            DataRow dr1 = ds.Tables["DSHoaDon"].NewRow();
+            dr1["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+            ds.Tables["DSHoaDon"].Rows.Add(dr1);
+            rpt.Subreports[0].SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
         }
@@ -188,6 +199,11 @@ namespace ThuTien.GUI.Doi
         private void btnInToRoi_PGD_Click(object sender, EventArgs e)
         {
             rptGuiThongBaoToRoi_PGD rpt = new rptGuiThongBaoToRoi_PGD();
+            dsBaoCao ds = new dsBaoCao();
+            DataRow dr1 = ds.Tables["DSHoaDon"].NewRow();
+            dr1["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+            ds.Tables["DSHoaDon"].Rows.Add(dr1);
+            rpt.Subreports[0].SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
         }

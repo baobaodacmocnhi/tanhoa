@@ -151,7 +151,9 @@ namespace ThuTien.GUI.Quay
                 List<TAMTHU> lstTamThu = new List<TAMTHU>();
                 try
                 {
-                    using (var scope = new TransactionScope())
+                    var transactionOptions = new TransactionOptions();
+                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                     {
                         decimal SoPhieu = _cTamThu.GetMaxSoPhieu();
                         foreach (DataGridViewRow item in dgvHoaDon.Rows)

@@ -669,11 +669,18 @@ namespace ThuTien.GUI.DongNuoc
                     //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                 }
             ReportDocument rpt = new ReportDocument();
+            rpt.SetParameterValue("PathLogo", Application.StartupPath.ToString() + @"\Resources\logocongty.png");
             if (radA4.Checked == true)
                 rpt = new rptTBDongNuocA4();
             else
                 if (radA5.Checked == true)
                     rpt = new rptTBDongNuocA5();
+
+            DataRow dr1 = dsBaoCao.Tables["DSHoaDon"].NewRow();
+            dr1["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+            dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr1);
+            rpt.Subreports[0].SetDataSource(dsBaoCao);
+
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();

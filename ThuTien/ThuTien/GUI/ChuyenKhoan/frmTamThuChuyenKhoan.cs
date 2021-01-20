@@ -834,30 +834,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     if (MessageBox.Show("Bạn có chắc chắn Đăng Ngân?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        foreach (DataGridViewRow item in dgvTamThu.Rows)
-                            if (item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
-                            {
-                                if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString()))
-                                {
-                                    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    item.Selected = true;
-                                    return;
-                                }
-                                if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString()))
-                                {
-                                    MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    item.Selected = true;
-                                    return;
-                                }
-                                string DanhBo = "";
-                                if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon_TT"].Value.ToString(), ref DanhBo) == false)
-                                {
-                                    MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
-                                    dgvTamThu.Rows[item.Index].Selected = true;
-                                    return;
-                                }
-                            }
+                        
                         if (backgroundWorker.IsBusy)
                             backgroundWorker.CancelAsync();
                         else
@@ -894,6 +871,30 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             try
             {
+                foreach (DataGridViewRow item in dgvTamThu.Rows)
+                    if (item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
+                    {
+                        if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                        {
+                            MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            item.Selected = true;
+                            return;
+                        }
+                        if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                        {
+                            MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            item.Selected = true;
+                            return;
+                        }
+                        string DanhBo = "";
+                        if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon_TT"].Value.ToString(), ref DanhBo) == false)
+                        {
+                            MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
+                            dgvTamThu.Rows[item.Index].Selected = true;
+                            return;
+                        }
+                    }
                 foreach (DataGridViewRow item in dgvTamThu.Rows)
                     if (item.Cells["NgayGiaiTrach_TT"].Value == null || item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
                     {

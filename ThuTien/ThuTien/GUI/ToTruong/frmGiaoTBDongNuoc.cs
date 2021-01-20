@@ -812,7 +812,7 @@ namespace ThuTien.GUI.ToTruong
                     //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, true, 0, 0);
                     //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                 }
-            ReportDocument rpt = new ReportDocument();
+            ReportDocument rpt = new ReportDocument();            
             if (radA4.Checked == true)
                 rpt = new rptTBDongNuocA4();
             else

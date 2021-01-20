@@ -252,6 +252,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                 }
                 rptXacNhanThanhToan rpt = new rptXacNhanThanhToan();
                 rpt.SetDataSource(ds);
+
+                DataRow dr1 = ds.Tables["DSHoaDon"].NewRow();
+                dr1["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                ds.Tables["DSHoaDon"].Rows.Add(dr1);
+                rpt.Subreports[0].SetDataSource(ds);
+
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.Show();
             }
