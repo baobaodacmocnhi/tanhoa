@@ -106,6 +106,18 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="DoanThanhNien_SoQD_BT_TAPTHE_A4.cs">
+      <DependentUpon>DoanThanhNien_SoQD_BT_TAPTHE_A4.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DoanThanhNien_SoQD_BT_TAPTHE_A4_FormNho.cs">
+      <DependentUpon>DoanThanhNien_SoQD_BT_TAPTHE_A4_FormNho.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="TLD_GKCongDoan_TAPTHE_2021.cs">
       <DependentUpon>TLD_GKCongDoan_TAPTHE_2021.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -335,6 +347,14 @@
     <EmbeddedResource Include="ChinhQuyen_TAPTHE_A3_Edit.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ChinhQuyen_TAPTHE_A3_Edit.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoanThanhNien_SoQD_BT_TAPTHE_A4.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DoanThanhNien_SoQD_BT_TAPTHE_A4.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoanThanhNien_SoQD_BT_TAPTHE_A4_FormNho.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DoanThanhNien_SoQD_BT_TAPTHE_A4_FormNho.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TLD_GKCongDoan_TAPTHE_2021.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

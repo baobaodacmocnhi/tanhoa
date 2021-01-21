@@ -47,13 +47,13 @@ namespace GIAYKHEN
             {
                 if (cmbNhom.SelectedIndex == 0)
                 {
-                    sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and CongDoan=0 and DoanThanhNien=0 and DangBo=0";
+                    sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and CongDoan=0 and DoanThanhNien=0 and DangBo=0 and DanVanKheo=0";
                     rp = new ChinhQuyen_CANHAN_A3();
                 }
                 else
                     if (cmbNhom.SelectedIndex == 1)
                     {
-                        sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and CongDoan=0 and DoanThanhNien=0 and DangBo=0";
+                        sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and CongDoan=0 and DoanThanhNien=0 and DangBo=0 and DanVanKheo=0";
                         rp = new ChinhQuyen_TAPTHE_A3();
                     }
             }
@@ -93,13 +93,13 @@ namespace GIAYKHEN
                             if (cmbNhom.SelectedIndex == 0)
                             {
                                 sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and DoanThanhNien=1";
-                                rp = new DoanThanhNien_SoQD_BT_CANHAN_A4_FormNho();
+                                rp = new DoanThanhNien_SoQD_BT_CANHAN_A4();
                             }
                             else
                                 if (cmbNhom.SelectedIndex == 1)
                                 {
                                     sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and DoanThanhNien=1";
-                                    rp = new DoanThanhNien_SoQD_PBT_CANHAN_A4();
+                                    rp = new DoanThanhNien_SoQD_BT_TAPTHE_A4();
                                 }
                         }
                         else
@@ -179,8 +179,9 @@ namespace GIAYKHEN
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            cmbGiayKhen.SelectedIndex = 0;
             cmbNhom.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2020, 12, 03);
+            txtNgay.Value = new DateTime(2021, 01, 14);
         }
 
     }
