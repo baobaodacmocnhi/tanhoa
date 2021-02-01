@@ -72,9 +72,9 @@ namespace ThuTien.GUI.ToTruong
         public void CountdgvHDTuGia()
         {
             int TongHD = 0;
-            int TongGiaBan = 0;
-            int TongThueGTGT = 0;
-            int TongPhiBVMT = 0;
+            long TongGiaBan = 0;
+            long TongThueGTGT = 0;
+            long TongPhiBVMT = 0;
             long TongCong = 0;
             int TongHDTruoc = 0;
             long TongCongTruoc = 0;
@@ -91,11 +91,11 @@ namespace ThuTien.GUI.ToTruong
                         item.Cells["TongHDCuoi_TG"].Value = item.Cells["TongHD_TG"].Value;
                     }
                     if (!string.IsNullOrEmpty(item.Cells["TongGiaBan_TG"].Value.ToString()))
-                        TongGiaBan += int.Parse(item.Cells["TongGiaBan_TG"].Value.ToString());
+                        TongGiaBan += long.Parse(item.Cells["TongGiaBan_TG"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongThueGTGT_TG"].Value.ToString()))
-                        TongThueGTGT += int.Parse(item.Cells["TongThueGTGT_TG"].Value.ToString());
+                        TongThueGTGT += long.Parse(item.Cells["TongThueGTGT_TG"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongPhiBVMT_TG"].Value.ToString()))
-                        TongPhiBVMT += int.Parse(item.Cells["TongPhiBVMT_TG"].Value.ToString());
+                        TongPhiBVMT += long.Parse(item.Cells["TongPhiBVMT_TG"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCong_TG"].Value.ToString()))
                     {
                         TongCong += long.Parse(item.Cells["TongCong_TG"].Value.ToString());

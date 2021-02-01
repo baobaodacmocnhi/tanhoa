@@ -157,7 +157,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     if (item.Cells["SoTien_PMN"].Value != null && item.Cells["SoTien_PMN"].Value.ToString() != "")
                         dr["SoTien"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["SoTien_PMN"].Value.ToString()));
                     if (item.Cells["TongCong_PMN"].Value != null && item.Cells["TongCong_PMN"].Value.ToString() != "")
-                    dr["TongCong"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["TongCong_PMN"].Value.ToString()));
+                        dr["TongCong"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["TongCong_PMN"].Value.ToString()));
                     if (item.Cells["PhiMoNuoc"].Value.ToString() != "")
                     {
                         dr["PhiMoNuoc"] = int.Parse(item.Cells["PhiMoNuoc"].Value.ToString());
@@ -293,12 +293,16 @@ namespace ThuTien.GUI.ChuyenKhoan
             for (int i = 0; i < dgvPhiMoNuoc.Rows.Count; i++)
             {
                 arr[i, 0] = dgvPhiMoNuoc["DanhBo_PMN", i].Value.ToString();
-                TT_BangKe bk = _cBangKe.get(dgvPhiMoNuoc["DanhBo_PMN", i].Value.ToString(), DateTime.Parse(dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString()));
-                if (bk != null && bk.SoPhieuThu != null && bk.SoPhieuThu != "")
-                    arr[i, 1] = _cBangKe.getTongSoTien(bk.SoPhieuThu);
+                if (dgvPhiMoNuoc["NgayBK_PMN", i].Value != null && dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString() != "")
+                {
+                    TT_BangKe bk = _cBangKe.get(dgvPhiMoNuoc["DanhBo_PMN", i].Value.ToString(), DateTime.Parse(dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString()));
+                    if (bk != null && bk.SoPhieuThu != null && bk.SoPhieuThu != "")
+                        arr[i, 1] = _cBangKe.getTongSoTien(bk.SoPhieuThu);
+                    arr[i, 4] = dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString();
+                }
                 arr[i, 2] = dgvPhiMoNuoc["TongCong_PMN", i].Value.ToString();
                 arr[i, 3] = dgvPhiMoNuoc["PhiMoNuoc", i].Value.ToString();
-                arr[i, 4] = dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString();
+                
             }
 
             //Thiết lập vùng điền dữ liệu

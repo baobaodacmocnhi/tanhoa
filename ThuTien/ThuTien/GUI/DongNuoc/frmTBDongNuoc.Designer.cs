@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -90,6 +90,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.btnInTBTrang = new System.Windows.Forms.Button();
+            this.chkNangSuat = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -189,10 +190,10 @@
             // 
             // gridControl
             // 
-            gridLevelNode2.LevelTemplate = this.gridViewCTDN;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.LevelTemplate = this.gridViewCTDN;
+            gridLevelNode1.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridControl.Location = new System.Drawing.Point(247, 40);
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
@@ -657,11 +658,23 @@
             this.btnInTBTrang.UseVisualStyleBackColor = true;
             this.btnInTBTrang.Click += new System.EventHandler(this.btnInTBTrang_Click);
             // 
+            // chkNangSuat
+            // 
+            this.chkNangSuat.AutoSize = true;
+            this.chkNangSuat.Location = new System.Drawing.Point(155, 163);
+            this.chkNangSuat.Name = "chkNangSuat";
+            this.chkNangSuat.Size = new System.Drawing.Size(77, 17);
+            this.chkNangSuat.TabIndex = 113;
+            this.chkNangSuat.Text = "Năng Suất";
+            this.chkNangSuat.UseVisualStyleBackColor = true;
+            this.chkNangSuat.Visible = false;
+            // 
             // frmTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1286, 666);
+            this.Controls.Add(this.chkNangSuat);
             this.Controls.Add(this.btnInTBTrang);
             this.Controls.Add(this.radA5);
             this.Controls.Add(this.radA4);
@@ -770,6 +783,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn TongCongLenh;
         private System.Windows.Forms.Button btnInTBTrang;
+        private System.Windows.Forms.CheckBox chkNangSuat;
 
     }
 }

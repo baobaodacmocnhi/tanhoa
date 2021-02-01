@@ -45,6 +45,35 @@ namespace ThuTien.DAL.DongNuoc
             }
         }
 
+        public bool ThemDN(TT_DongNuoc dongnuoc, int CreateBy, DateTime CreateDate)
+        {
+            try
+            {
+                if (_db.TT_DongNuocs.Count() > 0)
+                {
+                    string ID = "MaDN";
+                    string Table = "TT_DongNuoc";
+                    decimal MaDN = _db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    //decimal MaCHDB = db.CHDBs.Max(itemCHDB => itemCHDB.MaCHDB);
+                    dongnuoc.MaDN = getMaxNextIDTable(MaDN);
+                }
+                else
+                    dongnuoc.MaDN = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                dongnuoc.CreateDate = CreateDate;
+                dongnuoc.CreateBy = CreateBy;
+                _db.TT_DongNuocs.InsertOnSubmit(dongnuoc);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
         public bool ThemDN(TT_DongNuoc dongnuoc, int CreateBy)
         {
             try

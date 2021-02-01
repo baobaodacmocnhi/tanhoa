@@ -8845,7 +8845,7 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null
+                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && (itemHD.GB.Value != 10 || (itemHD.GB.Value == 10 && ((itemHD.KY != 4 && itemHD.KY != 5 && itemHD.KY != 6 && itemHD.NAM == 2020) || itemHD.NAM > 2020)))
                         orderby itemHD.ID_HOADON descending
                         select new
                         {
@@ -8883,7 +8883,7 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && (itemHD.GB != 10 && itemHD.DinhMucHN == null)
+                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && (itemHD.GB.Value != 10 && itemHD.DinhMucHN == null)
                         orderby itemHD.ID_HOADON descending
                         select new
                         {

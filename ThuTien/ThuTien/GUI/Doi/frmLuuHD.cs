@@ -317,7 +317,7 @@ namespace ThuTien.GUI.Doi
 
                         try
                         {
-                            _cHoaDon.ExecuteNonQuery("insert into Temp_Insert_HoaDon(Nam,Ky,Dot)values(" + Nam + "," + Ky + "," + Dot + ")");
+                            _cHoaDon.ExecuteNonQuery("if not exists (select * from Temp_Insert_HoaDon where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + ") insert into Temp_Insert_HoaDon(Nam,Ky,Dot)values(" + Nam + "," + Ky + "," + Dot + ")");
                         }
                         catch (Exception ex)
                         {

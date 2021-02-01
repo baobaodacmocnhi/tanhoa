@@ -45,6 +45,9 @@ namespace ThuTien.GUI.DongNuoc
 
             if (CNguoiDung.Doi || CNguoiDung.ToTruong)
                 groupBox_ThemDN.Visible = true;
+
+            if (CNguoiDung.Admin)
+                chkNangSuat.Visible = true;
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -99,39 +102,42 @@ namespace ThuTien.GUI.DongNuoc
                 List<HOADON> lstHDTemp = new List<HOADON>();
                 foreach (ListViewItem item in lstHD.Items)
                 {
-                    if (!_cHoaDon.CheckExist(item.Text))
+                    if (chkNangSuat.Checked == false)
                     {
-                        MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.Focus();
-                        item.Selected = true;
-                        item.Focused = true;
-                        return;
-                    }
-                    if (_cHoaDon.CheckDangNganBySoHoaDon(item.Text))
-                    {
-                        MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.Focus();
-                        item.Selected = true;
-                        item.Focused = true;
-                        return;
-                    }
-                    if (_cDongNuoc.CheckExist_CTDongNuoc(item.Text))
-                    {
-                        MessageBox.Show("Hóa Đơn đã Lập TB Đóng Nước: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.Focus();
-                        item.Selected = true;
-                        item.Focused = true;
-                        return;
+                        if (!_cHoaDon.CheckExist(item.Text))
+                        {
+                            MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            lstHD.Focus();
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
+                        if (_cHoaDon.CheckDangNganBySoHoaDon(item.Text))
+                        {
+                            MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            lstHD.Focus();
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
+                        if (_cDongNuoc.CheckExist_CTDongNuoc(item.Text))
+                        {
+                            MessageBox.Show("Hóa Đơn đã Lập TB Đóng Nước: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            lstHD.Focus();
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
                     }
                     lstHDTemp.Add(_cHoaDon.Get(item.Text));
                 }
 
                 try
                 {
-                    //_cHoaDon.BeginTransaction();
-                    var transactionOptions = new TransactionOptions();
-                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
-                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                    _cHoaDon.BeginTransaction();
+                    //var transactionOptions = new TransactionOptions();
+                    //transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                    //using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                     {
                         while (lstHDTemp.Count > 0)
                         {
@@ -140,9 +146,13 @@ namespace ThuTien.GUI.DongNuoc
                             dongnuoc.HoTen = lstHDTemp[0].TENKH;
                             dongnuoc.DiaChi = lstHDTemp[0].SO + " " + lstHDTemp[0].DUONG + _cDHN.GetPhuongQuan(lstHDTemp[0].DANHBA);
                             dongnuoc.MLT = lstHDTemp[0].MALOTRINH;
-                            //dongnuoc.MaNV_DongNuoc = 0;
-                            //dongnuoc.CreateBy = lstHDTemp[0].MaNV_HanhThu;
-                            //dongnuoc.CreateDate = dateTu.Value;
+                            if (chkNangSuat.Checked == true)
+                            {
+                                dongnuoc.MaNV_DongNuoc = 47;
+                                dongnuoc.NgayGiao = dateTu.Value;
+                                dongnuoc.CreateBy = lstHDTemp[0].MaNV_HanhThu;
+                                dongnuoc.CreateDate = dateTu.Value;
+                            }
 
                             TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
                             ctdongnuoc.MaDN = dongnuoc.MaDN;
@@ -154,10 +164,16 @@ namespace ThuTien.GUI.DongNuoc
                             ctdongnuoc.ThueGTGT = (int)lstHDTemp[0].THUE;
                             ctdongnuoc.PhiBVMT = (int)lstHDTemp[0].PHI;
                             ctdongnuoc.TongCong = (int)lstHDTemp[0].TONGCONG;
-                            ctdongnuoc.CreateBy = CNguoiDung.MaND;
-                            ctdongnuoc.CreateDate = DateTime.Now;
-                            //ctdongnuoc.CreateBy = lstHDTemp[0].MaNV_HanhThu;
-                            //ctdongnuoc.CreateDate = dateTu.Value;
+                            if (chkNangSuat.Checked == false)
+                            {
+                                ctdongnuoc.CreateBy = CNguoiDung.MaND;
+                                ctdongnuoc.CreateDate = DateTime.Now;
+                            }
+                            else
+                            {
+                                ctdongnuoc.CreateBy = lstHDTemp[0].MaNV_HanhThu;
+                                ctdongnuoc.CreateDate = dateTu.Value;
+                            }
 
                             dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
 
@@ -174,34 +190,54 @@ namespace ThuTien.GUI.DongNuoc
                                     ctdongnuoc2.ThueGTGT = (int)lstHDTemp[j].THUE;
                                     ctdongnuoc2.PhiBVMT = (int)lstHDTemp[j].PHI;
                                     ctdongnuoc2.TongCong = (int)lstHDTemp[j].TONGCONG;
-                                    ctdongnuoc2.CreateBy = CNguoiDung.MaND;
-                                    ctdongnuoc2.CreateDate = DateTime.Now;
-                                    //ctdongnuoc2.CreateBy = lstHDTemp[j].MaNV_HanhThu;
-                                    //ctdongnuoc2.CreateDate = dateTu.Value;
+                                    if (chkNangSuat.Checked == false)
+                                    {
+                                        ctdongnuoc2.CreateBy = CNguoiDung.MaND;
+                                        ctdongnuoc2.CreateDate = DateTime.Now;
+                                    }
+                                    else
+                                    {
+                                        ctdongnuoc2.CreateBy = lstHDTemp[j].MaNV_HanhThu;
+                                        ctdongnuoc2.CreateDate = dateTu.Value;
+                                    }
 
                                     dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc2);
                                 }
 
-                            if (_cDongNuoc.ThemDN(dongnuoc))
+                            if (chkNangSuat.Checked == false)
                             {
-                                for (int i = lstHDTemp.Count - 1; i >= 0; i--)
-                                    if (lstHDTemp[i].DANHBA == dongnuoc.DanhBo)
-                                    {
-                                        lstHDTemp.RemoveAt(i);
-                                    }
+                                if (_cDongNuoc.ThemDN(dongnuoc))
+                                {
+                                    for (int i = lstHDTemp.Count - 1; i >= 0; i--)
+                                        if (lstHDTemp[i].DANHBA == dongnuoc.DanhBo)
+                                        {
+                                            lstHDTemp.RemoveAt(i);
+                                        }
+                                }
                             }
-                            scope.Complete();
-                            scope.Dispose();
+                            else
+                            {
+                                if (_cDongNuoc.ThemDN(dongnuoc, lstHDTemp[0].MaNV_HanhThu.Value, dateTu.Value))
+                                {
+                                    for (int i = lstHDTemp.Count - 1; i >= 0; i--)
+                                        if (lstHDTemp[i].DANHBA == dongnuoc.DanhBo)
+                                        {
+                                            lstHDTemp.RemoveAt(i);
+                                        }
+                                }
+                            }
+                            //scope.Complete();
+                            //scope.Dispose();
                         }
                     }
-                    //_cHoaDon.CommitTransaction();
+                    _cHoaDon.CommitTransaction();
                     lstHD.Items.Clear();
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    //_cHoaDon.Rollback();
+                    _cHoaDon.Rollback();
                     MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -310,7 +346,7 @@ namespace ThuTien.GUI.DongNuoc
                             dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                         }
                         if (chkCoTenNguoiKy.Checked)
-                            dr["NguoiKy"] =CNguoiKy.getNguoiKy();
+                            dr["NguoiKy"] = CNguoiKy.getNguoiKy();
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
@@ -646,7 +682,7 @@ namespace ThuTien.GUI.DongNuoc
                         dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                     }
                     if (chkCoTenNguoiKy.Checked)
-                        dr["NguoiKy"] =CNguoiKy.getNguoiKy();
+                        dr["NguoiKy"] = CNguoiKy.getNguoiKy();
 
                     dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
