@@ -1333,6 +1333,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 rptThongBaoCTDB rpt = new rptThongBaoCTDB();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }
@@ -1485,12 +1486,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
 
+                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
                 ReportDocument rpt;
                 //if (_ctctdb.LyDo.Contains("Nhiều Kỳ") == true)
                 //    rpt = new rptThongBaoCHDB_NoNhieuKy();
                 //else
                     rpt = new rptThongBaoCTDB_PHT();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }

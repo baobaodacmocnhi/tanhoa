@@ -624,6 +624,10 @@ namespace KTKS_DonKH.GUI.ThuMoi
 
                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
+                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
                 ReportDocument rpt = new ReportDocument();
                 if (radDutChi.Checked == true)
                     rpt = new rptThuMoiDutChi();
@@ -634,6 +638,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         if (radRong.Checked == true)
                             rpt = new rptThuMoiChuyenDe_Rong();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.Show();
             }

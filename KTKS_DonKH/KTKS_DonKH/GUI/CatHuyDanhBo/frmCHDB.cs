@@ -972,6 +972,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                     rptPhieuCHDB rpt = new rptPhieuCHDB();
                                     rpt.SetDataSource(dsBaoCao);
+
                                     frmShowBaoCao frm = new frmShowBaoCao(rpt);
                                     frm.ShowDialog();
                                 }
@@ -1448,6 +1449,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 rptThongBaoCHDB rpt = new rptThongBaoCHDB();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }
@@ -1611,6 +1613,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
                 rpt = new rptThongBaoCHDB_PHT();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }

@@ -2018,6 +2018,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                 rptThuMoiTruyThu rpt = new rptThuMoiTruyThu();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.Show();
 

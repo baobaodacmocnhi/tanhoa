@@ -775,6 +775,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                             rptPhieuYCCatDM_A4 rpt = new rptPhieuYCCatDM_A4();
                                             rpt.SetDataSource(dsBaoCao);
+                                            rpt.Subreports[0].SetDataSource(dsBaoCao);
                                             //for (int j = 0; j < rpt.Subreports.Count; j++)
                                             //{
                                             //    rpt.Subreports[j].SetDataSource(dsBaoCao);
@@ -1590,6 +1591,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             rptDSPhieuCatChuyen rpt = new rptDSPhieuCatChuyen();
                             rpt.SetDataSource(dsBaoCao);
+                            rpt.Subreports[0].SetDataSource(dsBaoCao);
                             frmShowBaoCao frm = new frmShowBaoCao(rpt);
                             frm.ShowDialog();
                         }
@@ -2054,6 +2056,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 {
                                     rptThuBaoDCBD_ChungCu rpt = new rptThuBaoDCBD_ChungCu();
                                     rpt.SetDataSource(dsBaoCao);
+                                    rpt.Subreports[0].SetDataSource(dsBaoCao);
                                     frmShowBaoCao frm = new frmShowBaoCao(rpt);
                                     frm.Show();
                                     //printDialog.AllowSomePages = true;
@@ -2071,6 +2074,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 {
                                     rptThuBaoDCBD rpt = new rptThuBaoDCBD();
                                     rpt.SetDataSource(dsBaoCao);
+                                    rpt.Subreports[0].SetDataSource(dsBaoCao);
                                     //frmShowBaoCao frm = new frmShowBaoCao(rpt);
                                     //frm.Show();
                                     printDialog.AllowSomePages = true;

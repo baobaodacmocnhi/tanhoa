@@ -138,6 +138,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                                     if (radRong.Checked == true)
                                         rpt = new rptThuMoiChuyenDe_Rong();
                             rpt.SetDataSource(dsBaoCao);
+                            rpt.Subreports[0].SetDataSource(dsBaoCao);
 
                             printDialog.AllowSomePages = true;
                             printDialog.ShowHelp = true;

@@ -482,6 +482,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         }
                         entityCT.CreateBy = CTaiKhoan.MaUser;
                         entityCT.CreateDate = DateTime.Now;
+                        entityCT.TinhTrang = "Tồn";
 
                         entity.DonTu_ChiTiets.Add(entityCT);
                     }
@@ -543,6 +544,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
                                 entityCT.CreateBy = CTaiKhoan.MaUser;
                                 entityCT.CreateDate = DateTime.Now;
+                                entityCT.TinhTrang = "Tồn";
 
                                 entity.DonTu_ChiTiets.Add(entityCT);
                             }

@@ -146,6 +146,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 rptPhieuTBYCNhanDMA4_N rpt = new rptPhieuTBYCNhanDMA4_N();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
                 //rptPhieuTBYCNhanDMx2_N rpt = new rptPhieuTBYCNhanDMx2_N();
                 //for (int j = 0; j < rpt.Subreports.Count; j++)
                 //{
@@ -241,6 +242,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 rptPhieuTBYCNhanDMA4_Y rpt = new rptPhieuTBYCNhanDMA4_Y();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
                 //rptPhieuTBYCNhanDMx2_Y rpt = new rptPhieuTBYCNhanDMx2_Y();
                 //for (int j = 0; j < rpt.Subreports.Count; j++)
                 //{
@@ -288,6 +290,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 rptPhieuYCCatDM_A4 rpt = new rptPhieuYCCatDM_A4();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
 
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.Show();

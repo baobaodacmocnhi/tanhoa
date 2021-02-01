@@ -132,6 +132,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             {
                                 rptThaoThuTraLoi rpt = new rptThaoThuTraLoi();
                                 rpt.SetDataSource(dsBaoCao);
+                                rpt.Subreports[0].SetDataSource(dsBaoCao);
 
                                 printDialog.AllowSomePages = true;
                                 printDialog.ShowHelp = true;
@@ -147,6 +148,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             {
                                 rptThaoThuTraLoi_KhongDanhBo rpt = new rptThaoThuTraLoi_KhongDanhBo();
                                 rpt.SetDataSource(dsBaoCao);
+                                rpt.Subreports[0].SetDataSource(dsBaoCao);
 
                                 printDialog.AllowSomePages = true;
                                 printDialog.ShowHelp = true;
