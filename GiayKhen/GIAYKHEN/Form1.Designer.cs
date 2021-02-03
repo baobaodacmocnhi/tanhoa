@@ -157,7 +157,7 @@
             this.txtNguoiKy.Name = "txtNguoiKy";
             this.txtNguoiKy.Size = new System.Drawing.Size(166, 26);
             this.txtNguoiKy.TabIndex = 5;
-            this.txtNguoiKy.Text = "PHẠM KHƯƠNG THẢO";
+            this.txtNguoiKy.Text = "NGUYỄN NGỌC ÁNH HOA";
             // 
             // txtNgay
             // 
@@ -174,7 +174,7 @@
             this.txtQuyetDinhCaNhan.Name = "txtQuyetDinhCaNhan";
             this.txtQuyetDinhCaNhan.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhCaNhan.TabIndex = 3;
-            this.txtQuyetDinhCaNhan.Text = "0011/QĐ-TH-TCHC";
+            this.txtQuyetDinhCaNhan.Text = "153/QĐ-TH-CĐ";
             // 
             // label4
             // 

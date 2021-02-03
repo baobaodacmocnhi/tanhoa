@@ -78,7 +78,7 @@ namespace GIAYKHEN
                         if (cmbNhom.SelectedIndex == 0)
                         {
                             sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and DangBo=1";
-                            rp = new DangBo_CANHAN_A3();
+                            rp = new DangBo_CANHAN_A3_2021();
                         }
                         else
                             if (cmbNhom.SelectedIndex == 1)
@@ -181,7 +181,7 @@ namespace GIAYKHEN
         {
             cmbGiayKhen.SelectedIndex = 0;
             cmbNhom.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2021, 01, 14);
+            txtNgay.Value = new DateTime(2020, 12, 03);
         }
 
     }
