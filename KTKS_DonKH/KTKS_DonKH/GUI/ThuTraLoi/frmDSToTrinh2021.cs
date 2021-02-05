@@ -221,55 +221,149 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
                             ToTrinh_ChiTiet cttt = _cTT.get_ChiTiet(int.Parse(dgvToTrinh["IDCT", i].Value.ToString()));
-
-                            dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
-                            dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
-                            dr["SoPhieu"] = cttt.IDCT.ToString().Insert(cttt.IDCT.ToString().Length - 2, "-");
-                            dr["HoTen"] = cttt.HoTen;
-                            dr["DiaChi"] = cttt.DiaChi;
-                            if (!string.IsNullOrEmpty(cttt.DanhBo) && cttt.DanhBo.Length == 11)
-                                dr["DanhBo"] = cttt.DanhBo.Insert(7, " ").Insert(4, " ");
-                            dr["LoTrinh"] = cttt.LoTrinh;
-                            dr["GiaBieu"] = cttt.GiaBieu;
-                            if (cttt.DinhMuc != null)
-                                dr["DinhMuc"] = cttt.DinhMuc;
-                            if (cttt.DinhMuc != null)
-                                dr["DinhMucHN"] = cttt.DinhMucHN;
-
-                            dr["VeViec"] = cttt.VeViec;
-                            dr["KinhTrinh"] = cttt.KinhTrinh;
-                            dr["ThongQua"] = cttt.ThongQua;
-                            dr["NoiDung"] = cttt.NoiDung;
-                            dr["NoiNhan"] = cttt.NoiNhan;
-                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                dr["ChucVu"] = "GIÁM ĐỐC";
-                            else
-                                dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
-                            dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
-
-                            dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
-
-                            ReportDocument rpt;
-                            if (cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
+                            
+                            if (cttt.ToTrinh_ChiTiet_DanhSaches.Count == 0)
                             {
-                                rpt = new rptToTrinh_ThongQuaPGD();
+                                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+                                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                                dr["SoPhieu"] = cttt.IDCT.ToString().Insert(cttt.IDCT.ToString().Length - 2, "-");
+                                dr["HoTen"] = cttt.HoTen;
+                                dr["DiaChi"] = cttt.DiaChi;
+                                if (!string.IsNullOrEmpty(cttt.DanhBo) && cttt.DanhBo.Length == 11)
+                                    dr["DanhBo"] = cttt.DanhBo.Insert(7, " ").Insert(4, " ");
+                                dr["LoTrinh"] = cttt.LoTrinh;
+                                dr["GiaBieu"] = cttt.GiaBieu;
+                                if (cttt.DinhMuc != null)
+                                    dr["DinhMuc"] = cttt.DinhMuc;
+                                if (cttt.DinhMuc != null)
+                                    dr["DinhMucHN"] = cttt.DinhMucHN;
+
+                                dr["VeViec"] = cttt.VeViec;
+                                dr["KinhTrinh"] = cttt.KinhTrinh;
+                                dr["ThongQua"] = cttt.ThongQua;
+                                dr["NoiDung"] = cttt.NoiDung;
+                                dr["NoiNhan"] = cttt.NoiNhan;
+                                if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                    dr["ChucVu"] = "GIÁM ĐỐC";
+                                else
+                                    dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
+                                dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
+
+                                dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+
+                                ReportDocument rpt;
+                                if (cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
+                                {
+                                    rpt = new rptToTrinh_ThongQuaPGD();
+                                }
+                                else
+                                {
+                                    rpt = new rptToTrinh();
+                                }
+                                rpt.SetDataSource(dsBaoCao);
+
+                                printDialog.AllowSomePages = true;
+                                printDialog.ShowHelp = true;
+
+                                //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                rpt.Clone();
+                                rpt.Dispose();
                             }
                             else
                             {
-                                rpt = new rptToTrinh();
+                                foreach (ToTrinh_ChiTiet_DanhSach item in _cttt.ToTrinh_ChiTiet_DanhSaches.ToList())
+                                {
+                                    dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+
+                                    dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+                                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                                    dr["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
+                                    dr["VeViec"] = item.ToTrinh_ChiTiet.VeViec;
+                                    dr["KinhTrinh"] = item.ToTrinh_ChiTiet.KinhTrinh;
+                                    dr["ThongQua"] = item.ToTrinh_ChiTiet.ThongQua;
+                                    if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
+                                    {
+                                        dr["NoiDung"] = item.ToTrinh_ChiTiet.NoiDung;
+                                        dr["NoiDung2"] = "hộp bảo vệ, ngoài vỉa hè, chì mặt số đứt";
+
+                                        if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bảo vệ"))
+                                            dr["Luuy"] = "đồng hồ nước đứt chì+nắp hộp BV không do lỗi khách hàng";
+                                        else
+                                            if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bảo vệ"))
+                                                dr["Luuy"] = "đồng hồ nước đứt chì+hộp BV không do lỗi khách hàng";
+                                    }
+                                    else
+                                        if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))
+                                        {
+                                            dr["NoiDung"] = "hoạt động không ổn định, không có dấu hiệu tháo mở gian lận";
+                                            dr["NoiDung2"] = "nhà bị lỗi kỹ thuật";
+
+                                            dr["Luuy"] = "đồng hồ nước bị lỗi kỹ thuật";
+                                        }
+                                    if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                        dr["ChucVu"] = "GIÁM ĐỐC";
+                                    else
+                                        dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
+                                    dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
+
+                                    dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                                    //
+                                    DataRow dr2 = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
+
+                                    if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
+                                    {
+                                        dr2["LoaiBaoCao"] = "ĐỨT CHÌ MẶT SỐ NẰM NGOÀI BẤT ĐỘNG SẢN (VỈA HÈ)";
+                                    }
+                                    else
+                                        if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))
+                                        {
+                                            dr2["LoaiBaoCao"] = "LỖI KỸ THUẬT";
+                                        }
+                                    dr2["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                                    //dr2["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
+                                    if (item.DanhBo.Length == 11)
+                                        dr2["DanhBo"] = item.DanhBo.Insert(7, " ").Insert(4, " ");
+                                    dr2["HoTen"] = item.HoTen;
+                                    dr2["DiaChi"] = item.DiaChi;
+                                    dr2["Hieu"] = item.Hieu;
+                                    dr2["Co"] = item.Co;
+                                    dr2["SoThan"] = item.SoThan;
+                                    dr2["Quan"] = item.Quan;
+                                    dr2["NoiDung"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
+                                    LinQ.DonTu dontu = _cDonTu.get(item.MaDon.Value);
+                                    if (dontu.DonTu_ChiTiets.Count == 1)
+                                        dr2["NoiNhan"] = item.MaDon.Value;
+                                    else
+                                        dr2["NoiNhan"] = item.MaDon.Value + "." + item.STT;
+
+                                    dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr2);
+                                }
+
+                                rptToTrinh_DCMS_DinhKem rpt2 = new rptToTrinh_DCMS_DinhKem();
+                                rpt2.SetDataSource(dsBaoCao);
+                                frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
+                                rptToTrinh_DCMS rpt1 = new rptToTrinh_DCMS();
+                                rpt1.SetDataSource(dsBaoCao);
+                                frmShowBaoCao frm1 = new frmShowBaoCao(rpt1);
+
+                                printDialog.AllowSomePages = true;
+                                printDialog.ShowHelp = true;
+
+                                //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                rpt1.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                rpt1.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                rpt1.Clone();
+                                rpt1.Dispose();
+
+                                rpt2.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                rpt2.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                rpt2.Clone();
+                                rpt2.Dispose();
                             }
-
-                            rpt.SetDataSource(dsBaoCao);
-
-                            printDialog.AllowSomePages = true;
-                            printDialog.ShowHelp = true;
-
-                            //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                            //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
-                            rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                            rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
-                            rpt.Clone();
-                            rpt.Dispose();
                         }
                 }
             }

@@ -738,19 +738,34 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     {
                         DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
+
                         dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                         dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                         dr["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
                         dr["VeViec"] = item.ToTrinh_ChiTiet.VeViec;
                         dr["KinhTrinh"] = item.ToTrinh_ChiTiet.KinhTrinh;
                         dr["ThongQua"] = item.ToTrinh_ChiTiet.ThongQua;
-                        dr["NoiDung"] = item.ToTrinh_ChiTiet.NoiDung;
-                        dr["NoiNhan"] = item.ToTrinh_ChiTiet.NoiNhan;
-                        if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bảo vệ"))
-                            dr["Luuy"] = "+nắp hộp BV";
+                        if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
+                        {
+                            dr["NoiDung"] = item.ToTrinh_ChiTiet.NoiDung;
+                            dr["NoiDung2"] = "hộp bảo vệ, ngoài vỉa hè, chì mặt số đứt";
+
+                            if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bảo vệ"))
+                                dr["Luuy"] = "đồng hồ nước đứt chì+nắp hộp BV không do lỗi khách hàng";
+                            else
+                                if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bảo vệ"))
+                                    dr["Luuy"] = "đồng hồ nước đứt chì+hộp BV không do lỗi khách hàng";
+                        }
                         else
-                            if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bảo vệ"))
-                                dr["Luuy"] = "+hộp BV";
+                            if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))
+                            {
+                                dr["NoiDung"] = "hoạt động không ổn định, không có dấu hiệu tháo mở gian lận";
+                                dr["NoiDung2"] = "nhà bị lỗi kỹ thuật";
+
+                                dr["Luuy"] = "đồng hồ nước bị lỗi kỹ thuật";
+                            }
+                        dr["NoiNhan"] = item.ToTrinh_ChiTiet.NoiNhan;
+
                         if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                             dr["ChucVu"] = "GIÁM ĐỐC";
                         else
@@ -760,6 +775,16 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
                         //
                         DataRow dr2 = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
+
+                        if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
+                        {
+                            dr2["LoaiBaoCao"] = "ĐỨT CHÌ MẶT SỐ NẰM NGOÀI BẤT ĐỘNG SẢN (VỈA HÈ)";
+                        }
+                        else
+                            if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))
+                            {
+                                dr2["LoaiBaoCao"] = "LỖI KỸ THUẬT";
+                            }
 
                         dr2["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                         //dr2["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
