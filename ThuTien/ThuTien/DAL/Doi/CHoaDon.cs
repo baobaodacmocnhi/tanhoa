@@ -560,16 +560,16 @@ namespace ThuTien.DAL.Doi
 
         public List<HOADON> getDSTon_KhongChanTienDu_KhongDCHD(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false).Count() > 0)
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false).OrderBy(item => item.ID_HOADON).ToList();
+            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false &&  ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).Count() > 0)
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false &&  ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).OrderBy(item => item.ID_HOADON).ToList();
             else
                 return null;
         }
 
         public List<HOADON> GetDSTon_CoChanTienDu(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true)).Count() > 0)
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true)).ToList().OrderBy(item => item.ID_HOADON).ToList();
+            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true) &&  ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).Count() > 0)
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true) &&  ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).ToList().OrderBy(item => item.ID_HOADON).ToList();
             else
                 return null;
         }
@@ -8845,7 +8845,7 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && (itemHD.GB.Value != 10 || (itemHD.GB.Value == 10 && ((itemHD.KY != 4 && itemHD.KY != 5 && itemHD.KY != 6 && itemHD.NAM == 2020) || itemHD.NAM > 2020)))
+                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && ((itemHD.GB.Value != 10 && itemHD.DinhMucHN == null) || ((itemHD.GB.Value == 10 || (itemHD.GB.Value != 10 && itemHD.DinhMucHN != null)) && ((itemHD.KY != 4 && itemHD.KY != 5 && itemHD.KY != 6 && itemHD.NAM == 2020) || itemHD.NAM > 2020)))
                         orderby itemHD.ID_HOADON descending
                         select new
                         {
