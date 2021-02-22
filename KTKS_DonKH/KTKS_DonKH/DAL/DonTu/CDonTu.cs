@@ -806,6 +806,18 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
+        public DataTable getDS_ThongKeDonTu_Ton(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            string sql = "select dtct.MaDon,TinhTrang,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,"
+                         + " MaDonChiTiet=case when (select COUNT(*) from DonTu_ChiTiet where MaDon=dtct.MaDon)=0 then CONVERT(varchar(8),dtct.MaDon)"
+                         + " when (select COUNT(*) from DonTu_ChiTiet where MaDon=dtct.MaDon)=1 then CONVERT(varchar(8),dtct.MaDon)"
+                         + " when (select COUNT(*) from DonTu_ChiTiet where MaDon=dtct.MaDon)>=2 then CONVERT(varchar(8),dtct.MaDon)+'.'+CONVERT(varchar(3),dtct.STT) end"
+                         + " from DonTu_ChiTiet dtct where CAST(dtct.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(dtct.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
+                         + " and dtct.TinhTrang like N'Tồn%'"
+                         + " order by dtct.MaDon,dtct.STT asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         // lịch sử chuyển đơn
 
         public bool Them_LichSu(DonTu_LichSu entity)

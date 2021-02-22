@@ -862,6 +862,39 @@ namespace KTKS_DonKH.GUI.DonTu
             range.Value2 = arr;
         }
 
+        private void btnBaoCao_ThongKeDonTon_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cDonTu.getDS_ThongKeDonTu_Ton(dateTu_ThongKeDonTon.Value, dateDen_ThongKeDonTon.Value);
+
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
+
+                dr["TuNgay"] = dateTu_ThongKeNhomDon_Phong.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_ThongKeNhomDon_Phong.Value.ToString("dd/MM/yyyy");
+                dr["LoaiBaoCao"] = "TỒN";
+                dr["MaDonChiTiet"] = item["MaDonChiTiet"];
+                dr["MaDon"] = item["MaDon"];
+                dr["NhomDon"] = item["TinhTrang"];
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                dr["NguoiLap"] = CTaiKhoan.HoTen;
+
+                dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
+            }
+
+            rptDanhSach_Doc_GroupNhomDon rpt2 = new rptDanhSach_Doc_GroupNhomDon();
+            rpt2.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
+            frm2.Show();
+
+            rptThongKeDonTu_Ton rpt = new rptThongKeDonTu_Ton();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
+        }
+
 
 
 
