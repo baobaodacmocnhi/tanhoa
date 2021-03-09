@@ -6629,7 +6629,78 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_HoaDonDienTu(int MaNV_HanhThu, int Nam, int Ky, int FromDot, int ToDot)
+        public DataTable getDS_HoaDonDienTu_All(int MaNV_HanhThu, int Nam, int Ky, int FromDot, int ToDot)
+        {
+            if (_db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == MaNV_HanhThu).DongNuoc == false)
+            {
+                var query = from item in _db.HOADONs
+                            where (item.NAM < Nam || (item.NAM == Nam && item.KY <= Ky)) && item.DOT >= FromDot && item.DOT <= ToDot && item.MaNV_HanhThu == MaNV_HanhThu
+                            orderby item.MALOTRINH ascending
+                            select new
+                            {
+                                item.NGAYGIAITRACH,
+                                item.SOHOADON,
+                                Ky = item.KY + "/" + item.NAM,
+                                MLT = item.MALOTRINH,
+                                item.SOPHATHANH,
+                                DanhBo = item.DANHBA,
+                                HoTen = item.TENKH,
+                                DiaChi = item.SO + " " + item.DUONG,
+                                item.TIEUTHU,
+                                item.GIABAN,
+                                ThueGTGT = item.THUE,
+                                PhiBVMT = item.PHI,
+                                item.TONGCONG,
+                                item.DangNgan_DienThoai,
+                                item.InPhieuBao_Ngay,
+                                item.InPhieuBao2_Ngay,
+                                item.XoaDangNgan_Ngay_DienThoai,
+                                item.TBDongNuoc_Ngay,
+                                item.DangNgan_DienThoai_Location,
+                                item.InPhieuBao_Location,
+                                item.InPhieuBao2_Location,
+                                item.TBDongNuoc_Location,
+                                item.XoaDangNgan_Location_DienThoai,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+            {
+                var query = from item in _db.HOADONs
+                            where (item.NAM < Nam || (item.NAM == Nam && item.KY <= Ky)) && item.DOT >= FromDot && item.DOT <= ToDot
+                            && (item.InPhieuBao_MaNV == MaNV_HanhThu || item.InPhieuBao2_MaNV == MaNV_HanhThu || item.TBDongNuoc_MaNV == MaNV_HanhThu)
+                            orderby item.MALOTRINH ascending
+                            select new
+                            {
+                                item.NGAYGIAITRACH,
+                                item.SOHOADON,
+                                Ky = item.KY + "/" + item.NAM,
+                                MLT = item.MALOTRINH,
+                                item.SOPHATHANH,
+                                DanhBo = item.DANHBA,
+                                HoTen = item.TENKH,
+                                DiaChi = item.SO + " " + item.DUONG,
+                                item.TIEUTHU,
+                                item.GIABAN,
+                                ThueGTGT = item.THUE,
+                                PhiBVMT = item.PHI,
+                                item.TONGCONG,
+                                item.DangNgan_DienThoai,
+                                item.InPhieuBao_Ngay,
+                                item.InPhieuBao2_Ngay,
+                                item.XoaDangNgan_Ngay_DienThoai,
+                                item.TBDongNuoc_Ngay,
+                                item.DangNgan_DienThoai_Location,
+                                item.InPhieuBao_Location,
+                                item.InPhieuBao2_Location,
+                                item.TBDongNuoc_Location,
+                                item.XoaDangNgan_Location_DienThoai,
+                            };
+                return LINQToDataTable(query);
+            }
+        }
+
+        public DataTable getDS_HoaDonDienTu_Ton(int MaNV_HanhThu, int Nam, int Ky, int FromDot, int ToDot)
         {
             if (_db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == MaNV_HanhThu).DongNuoc == false)
             {

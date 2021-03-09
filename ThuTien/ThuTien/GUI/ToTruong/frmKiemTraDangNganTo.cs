@@ -529,7 +529,10 @@ namespace ThuTien.GUI.ToTruong
         {
             if (cmbFromDot.SelectedIndex > 0)
             {
-                dgvHDCoQuan.DataSource = _cHoaDon.getDS_HoaDonDienTu(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                if (chkAll_TheoDoi.Checked == true)
+                    dgvHDCoQuan.DataSource = _cHoaDon.getDS_HoaDonDienTu_All(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                else
+                    dgvHDCoQuan.DataSource = _cHoaDon.getDS_HoaDonDienTu_Ton(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
                 CountdgvHDCoQuan();
             }
             else
@@ -620,7 +623,7 @@ namespace ThuTien.GUI.ToTruong
         {
             if (cmbFromDot.SelectedIndex > 0)
             {
-                dgvCongViec.DataSource = _cHoaDon.getCount_CongViec(int.Parse(cmbNhanVien_CongViec.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()),dateGiaiTrach.Value);
+                dgvCongViec.DataSource = _cHoaDon.getCount_CongViec(int.Parse(cmbNhanVien_CongViec.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), dateGiaiTrach.Value);
             }
             else
                 MessageBox.Show("Chọn Từ Đợt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
