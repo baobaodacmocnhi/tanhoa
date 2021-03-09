@@ -274,7 +274,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 }
                 txtNoiDungKhachHang.Text = "";
                 txtNoiDungThuongVu.Text = "";
-                
+
             }
             txtVanDeKhac.Text = "";
             txtMaDon.Text = "";
@@ -570,7 +570,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             else
                                 entity.ID_NhomDon_PKH += ";" + chkcmbDieuChinh.Properties.Items[i].Value.ToString();
                             if (chkcmbDieuChinh.Properties.Items[i].Value.ToString() == "9")
-                                entity.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " +_cDonTu.GetToDate(DateTime.Now, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết. ";
+                                entity.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + _cDonTu.GetToDate(DateTime.Now, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết. ";
                         }
                     for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
                         if (chkcmbKhieuNai.Properties.Items[i].CheckState == CheckState.Checked)
@@ -1102,7 +1102,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if ((dgvDanhBo.Columns[e.ColumnIndex].Name == "DanhBo" && dgvDanhBo["DanhBo", e.RowIndex].Value != null) || (dgvDanhBo.Columns[e.ColumnIndex].Name == "DiaChi" && dgvDanhBo["DiaChi", e.RowIndex].Value != null))
             {
-                for (int i = 0; i < dgvDanhBo.Rows.Count - 2; i++)
+                for (int i = 0; i < dgvDanhBo.Rows.Count; i++)
                     if (i != e.RowIndex && dgvDanhBo["DanhBo", i].Value != null && dgvDanhBo["DanhBo", i].Value.ToString() != "" && dgvDanhBo["DanhBo", i].Value.ToString() == dgvDanhBo["DanhBo", e.RowIndex].Value.ToString())
                     {
                         MessageBox.Show("Danh Bộ đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1347,7 +1347,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     foreach (DataRow item in dtExcel.Rows)
                     {
                         bool exists = false;
-                        for (int i = 0; i < dgvDanhBo.Rows.Count - 2; i++)
+                        for (int i = 0; i < dgvDanhBo.Rows.Count; i++)
                             if (dgvDanhBo["DanhBo", i].Value != null && dgvDanhBo["DanhBo", i].Value.ToString() != "" && dgvDanhBo["DanhBo", i].Value.ToString() == item[0].ToString().Replace(" ", ""))
                             {
                                 exists = true;

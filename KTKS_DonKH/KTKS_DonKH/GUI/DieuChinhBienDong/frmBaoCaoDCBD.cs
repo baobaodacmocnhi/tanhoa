@@ -1046,6 +1046,110 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 range.Value2 = arr;
 
             }
+            else
+                if (radDSDMCapNgayHetHan.Checked)
+                {
+                    DataTable dt = _cChungTu.LoadDSCapDinhMucNgayHetHan(dateTu.Value, dateDen.Value);
+
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    foreach (DataRow itemRow in dt.Rows)
+                    {
+                        HOADON hoadon = _cThuTien.GetMoiNhat(itemRow["DanhBo"].ToString());
+                        if (cmbQuan.SelectedValue.ToString() == "0")
+                        {
+                            DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
+
+                            if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                                dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+
+                            dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
+                        }
+                        else
+                            if (cmbPhuong.SelectedValue.ToString() == "0")
+                            {
+                                if (int.Parse(cmbQuan.SelectedValue.ToString()) == int.Parse(hoadon.Quan))
+                                {
+                                    DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
+
+                                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+
+                                    dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
+                                }
+                            }
+                            else
+                            {
+                                if (int.Parse(cmbPhuong.SelectedValue.ToString()) == int.Parse(hoadon.Phuong) && int.Parse(cmbQuan.SelectedValue.ToString()) == int.Parse(hoadon.Quan))
+                                {
+                                    DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
+
+                                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+
+                                    dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
+                                }
+                            }
+                    }
+                    //Tạo các đối tượng Excel
+                    Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                    Microsoft.Office.Interop.Excel.Workbooks oBooks;
+                    Microsoft.Office.Interop.Excel.Sheets oSheets;
+                    Microsoft.Office.Interop.Excel.Workbook oBook;
+                    Microsoft.Office.Interop.Excel.Worksheet oSheet;
+                    //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
+
+                    //Tạo mới một Excel WorkBook 
+                    oExcel.Visible = true;
+                    oExcel.DisplayAlerts = false;
+                    //khai báo số lượng sheet
+                    oExcel.Application.SheetsInNewWorkbook = 1;
+                    oBooks = oExcel.Workbooks;
+
+                    oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                    oSheets = oBook.Worksheets;
+                    oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+
+                    oSheet.Name = "Sheet1";
+
+                    // Tạo tiêu đề cột 
+                    Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
+                    cl1.Value2 = "Danh Bộ";
+                    cl1.ColumnWidth = 15;
+
+                    // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+                    // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+                    object[,] arr = new object[dsBaoCao.Tables["DSCapDinhMuc"].Rows.Count, 1];
+
+                    //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+                    for (int i = 0; i < dsBaoCao.Tables["DSCapDinhMuc"].Rows.Count; i++)
+                    {
+                        DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].Rows[i];
+
+                        arr[i, 0] = dr["DanhBo"].ToString();
+                    }
+
+                    //Thiết lập vùng điền dữ liệu
+                    int rowStart = 2;
+                    int columnStart = 1;
+
+                    int rowEnd = rowStart + dsBaoCao.Tables["DSCapDinhMuc"].Rows.Count - 1;
+                    int columnEnd = 1;
+
+                    // Ô bắt đầu điền dữ liệu
+                    Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+                    // Ô kết thúc điền dữ liệu
+                    Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+                    // Lấy về vùng điền dữ liệu
+                    Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+                    Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
+                    Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
+                    Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+                    c3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                    //Điền dữ liệu vào vùng đã thiết lập
+                    range.Value2 = arr;
+                }
         }
 
         private void btnBaoCao_DSChungCu_Click(object sender, EventArgs e)
