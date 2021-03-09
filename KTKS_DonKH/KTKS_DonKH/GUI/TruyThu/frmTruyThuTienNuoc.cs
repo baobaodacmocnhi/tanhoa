@@ -1358,7 +1358,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                         _cttttn.DienThoai = txtDienThoai.Text.Trim();
 
                         if (_cttttn.TinhTrang != cmbTinhTrang.SelectedItem.ToString())
-                            _cDonTu.runUpdateTinhTrang(_cttttn.TruyThuTienNuoc.MaDonMoi.Value, _cttttn.STT.Value);
+                            if (_cttttn.TruyThuTienNuoc.MaDonMoi != null)
+                                _cDonTu.runUpdateTinhTrang(_cttttn.TruyThuTienNuoc.MaDonMoi.Value, _cttttn.STT.Value);
                         if (cmbTinhTrang.SelectedIndex != -1)
                         {
                             _cttttn.NgayTinhTrang = dateTinhTrang.Value;
