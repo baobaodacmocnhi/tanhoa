@@ -543,8 +543,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                     }
                                     scope.Complete();
                                 }
-
-                            MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Thành Công "+cttt.IDCT.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
                         }
                 }
