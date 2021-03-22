@@ -36,6 +36,7 @@ namespace KTKS_DonKH.GUI.DonTu
             dgvDanhBo.AutoGenerateColumns = false;
             dgvLichSuDonTu.AutoGenerateColumns = false;
             dgvLichSuDonTu_Update.AutoGenerateColumns = false;
+            dgvLichSuNhanDon.AutoGenerateColumns = false;
 
             DataTable dt = _cNhomDon.getDS("DieuChinh");
             chkcmbDieuChinh.Properties.DataSource = dt;
@@ -142,6 +143,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     }
                 }
                 LoadLichSu();
+                
             }
             catch (Exception ex)
             {
@@ -167,13 +169,18 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if (_dontu != null)
                 if (_dontu_ChiTiet == null)
+                {
                     dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu.MaDon, 1);
+                    dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(_dontu.DonTu_ChiTiets.FirstOrDefault().DanhBo);
+                }
                 else
+                {
                     if (dgvDanhBo.SelectedRows.Count > 1)
                         dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, dgvDanhBo.CurrentRow.Index);
                     else
                         dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
-
+                    dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(_dontu_ChiTiet.DanhBo);
+                }
         }
 
         public void FillLichSu(DonTu_LichSu en)
