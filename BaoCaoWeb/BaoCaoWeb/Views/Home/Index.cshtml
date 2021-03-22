@@ -1,4 +1,4 @@
-﻿
+﻿@model BaoCaoWeb.Models.ThongTin
 <div class="col-xl-3 col-md-6 mb-4">
     <div class="card border-left-info shadow h-100">
         <div class="card-body">
@@ -7,7 +7,7 @@
                     <div class="font-weight-bold text-info mb-1">
                         Số lượng khách hàng
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TongKhachHang.ToString("0,###").Replace(",",".")</div>
                 </div>
                 <div class="col-auto">
                     <i class="fas fa-user fa-2x text-info"></i>
@@ -26,7 +26,7 @@
                     <div class="font-weight-bold text-primary mb-1">
                         Tổng sản lượng năm 2021 (m<sup>3</sup>)
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TongSanLuong.ToString("0,###").Replace(",", ".")</div>
                 </div>
                 <div class="col-auto">
                     <span class="glyphicon glyphicon-tint fa-2x text-primary"></span>
@@ -45,7 +45,7 @@
                     <div class="font-weight-bold text-warning mb-1">
                         Tổng doanh thu năm 2021 (vnđ)
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TongDoanhThu.ToString("0,###").Replace(",", ".")</div>
                 </div>
                 <div class="col-auto">
                     <i class="fas fa-dollar-sign fa-2x text-warning"></i>
@@ -64,7 +64,7 @@
                     <div class="font-weight-bold text-danger mb-1">
                         Tổng thất thoát nước năm 2021 (%)
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TongThatThoatNuoc</div>
                 </div>
                 <div class="col-auto">
                     <i class="glyphicon glyphicon-sort-by-attributes-alt fa-2x text-danger"></i>
