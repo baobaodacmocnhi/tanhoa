@@ -590,7 +590,7 @@ namespace ThuTien.GUI.TongHop
                                         using (TransactionScope scope = new TransactionScope())
                                         {
                                             dchd.UpdatedHDDT = true;
-                                            if (item[20].ToString().Contains(SoHoaDon) == true)
+                                            if (item[20].ToString().Contains("CT/") == true)
                                                 dchd.SoHoaDonMoi = item[20].ToString();
                                             else
                                                 dchd.SoHoaDonMoi = SoHoaDon + item[20].ToString();
