@@ -77,5 +77,33 @@ namespace BaoCaoWeb.DAL
             this.Disconnect();
             return dt;
         }
+
+        public DataTable getDoanhThu()
+        {
+            string sql = "select t1.Ky,DoanhThuPrevious=t1.DoanhThu,DoanhThuPresent=t2.DoanhThu,ChenhLech=t2.DoanhThu-t1.DoanhThu from"
+                        + " (select Ky,DoanhThu=SUM(TongCong) from HOADON where Nam = " + (DateTime.Now.Year - 1) + " group by Ky)t1"
+                        + " left join"
+                        + " (select Ky,DoanhThu=SUM(TongCong) from HOADON where Nam = " + DateTime.Now.Year + " group by Ky)t2 on t1.Ky = t2.Ky"
+                        + " order by t1.Ky";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getGiaBanBinhQuan()
+        {
+            string sql = "select t1.Ky,DoanhThuPrevious=t1.DoanhThu,DoanhThuPresent=t2.DoanhThu,ChenhLech=t2.DoanhThu-t1.DoanhThu from"
+                        + " (select Ky,DoanhThu=SUM(GiaBanBinhQuan) from TT_GiaBanBinhQuan where Nam = " + (DateTime.Now.Year - 1) + " group by Ky)t1"
+                        + " left join"
+                        + " (select Ky,DoanhThu=SUM(GiaBanBinhQuan) from TT_GiaBanBinhQuan where Nam = " + DateTime.Now.Year + " group by Ky)t2 on t1.Ky = t2.Ky"
+                        + " order by t1.Ky";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getThuHo()
+        {
+            string sql = "select TenNH=(select NGANHANG from NGANHANG where ID_NGANHANG=MaNH),MaNH,TongCong=SUM(TONGCONG),HoaDon=COUNT(ID_HOADON)"
+                        + " from TAMTHU tt,HOADON hd where tt.FK_HOADON=hd.ID_HOADON and NGAYGIAITRACH is not null and YEAR(NGAYGIAITRACH)=" + DateTime.Now.Year + " and DangNgan_ChuyenKhoan=1"
+                        + " group by MaNH";
+            return ExecuteQuery_DataTable(sql);
+        }
     }
 }

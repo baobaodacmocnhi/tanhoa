@@ -77,5 +77,15 @@ namespace BaoCaoWeb.DAL
             this.Disconnect();
             return dt;
         }
+
+        public DataTable getSanLuong()
+        {
+            string sql = "select t1.Ky,SanLuongPrevious=t1.SanLuong,SanLuongPresent=t2.SanLuong,ChenhLech=t2.SanLuong-t1.SanLuong from"
+                        + " (select Ky, SanLuong = SUM(TieuThuMoi) from DocSo where Nam = " + (DateTime.Now.Year - 1) + " group by Ky)t1"
+                        + " left join"
+                        + " (select Ky, SanLuong = SUM(TieuThuMoi) from DocSo where Nam = " + DateTime.Now.Year + " group by Ky)t2 on t1.Ky = t2.Ky"
+                        + " order by t1.Ky";
+            return ExecuteQuery_DataTable(sql);
+        }
     }
 }

@@ -25,6 +25,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +45,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -51,17 +55,15 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -102,6 +104,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -184,6 +187,35 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\amcharts\charts.js" />
+    <Content Include="Scripts\amcharts\core.js" />
+    <Content Include="Scripts\amcharts\maps.js" />
+    <Content Include="Scripts\amcharts\plugins\annotation.js" />
+    <Content Include="Scripts\amcharts\plugins\bullets.js" />
+    <Content Include="Scripts\amcharts\plugins\forceDirected.js" />
+    <Content Include="Scripts\amcharts\plugins\overlapBuster.js" />
+    <Content Include="Scripts\amcharts\plugins\rangeSelector.js" />
+    <Content Include="Scripts\amcharts\plugins\regression.js" />
+    <Content Include="Scripts\amcharts\plugins\sliceGrouper.js" />
+    <Content Include="Scripts\amcharts\plugins\sunburst.js" />
+    <Content Include="Scripts\amcharts\plugins\timeline.js" />
+    <Content Include="Scripts\amcharts\plugins\venn.js" />
+    <Content Include="Scripts\amcharts\plugins\wordCloud.js" />
+    <Content Include="Scripts\amcharts\themes\amcharts.js" />
+    <Content Include="Scripts\amcharts\themes\amchartsdark.js" />
+    <Content Include="Scripts\amcharts\themes\animated.js" />
+    <Content Include="Scripts\amcharts\themes\dark.js" />
+    <Content Include="Scripts\amcharts\themes\dataviz.js" />
+    <Content Include="Scripts\amcharts\themes\frozen.js" />
+    <Content Include="Scripts\amcharts\themes\kelly.js" />
+    <Content Include="Scripts\amcharts\themes\material.js" />
+    <Content Include="Scripts\amcharts\themes\microchart.js" />
+    <Content Include="Scripts\amcharts\themes\moonrisekingdom.js" />
+    <Content Include="Scripts\amcharts\themes\patterns.js" />
+    <Content Include="Scripts\amcharts\themes\spiritedaway.js" />
+    <Content Include="Scripts\loadcharts\jschartDoanhThu.js" />
+    <Content Include="Scripts\loadcharts\jschartGiaBanBinhQuan.js" />
+    <Content Include="Scripts\loadcharts\jschartSanLuong.js" />
     <Content Include="Template\SBAdmin2\css\bootstrap-glyphicons.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -193,6 +225,36 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\amcharts\CHANGELOG.md" />
+    <Content Include="Scripts\amcharts\charts.js.map" />
+    <Content Include="Scripts\amcharts\core.js.map" />
+    <Content Include="Scripts\amcharts\LICENSE" />
+    <Content Include="Scripts\amcharts\LICENSE-3RD-PARTY.md" />
+    <Content Include="Scripts\amcharts\maps.js.map" />
+    <Content Include="Scripts\amcharts\README.md" />
+    <Content Include="Scripts\amcharts\themes\amcharts.js.map" />
+    <Content Include="Scripts\amcharts\themes\amchartsdark.js.map" />
+    <Content Include="Scripts\amcharts\themes\animated.js.map" />
+    <Content Include="Scripts\amcharts\themes\dark.js.map" />
+    <Content Include="Scripts\amcharts\themes\dataviz.js.map" />
+    <Content Include="Scripts\amcharts\themes\frozen.js.map" />
+    <Content Include="Scripts\amcharts\themes\kelly.js.map" />
+    <Content Include="Scripts\amcharts\themes\material.js.map" />
+    <Content Include="Scripts\amcharts\themes\microchart.js.map" />
+    <Content Include="Scripts\amcharts\themes\moonrisekingdom.js.map" />
+    <Content Include="Scripts\amcharts\themes\patterns.js.map" />
+    <Content Include="Scripts\amcharts\themes\spiritedaway.js.map" />
+    <Content Include="Scripts\amcharts\plugins\annotation.js.map" />
+    <Content Include="Scripts\amcharts\plugins\bullets.js.map" />
+    <Content Include="Scripts\amcharts\plugins\forceDirected.js.map" />
+    <Content Include="Scripts\amcharts\plugins\overlapBuster.js.map" />
+    <Content Include="Scripts\amcharts\plugins\rangeSelector.js.map" />
+    <Content Include="Scripts\amcharts\plugins\regression.js.map" />
+    <Content Include="Scripts\amcharts\plugins\sliceGrouper.js.map" />
+    <Content Include="Scripts\amcharts\plugins\sunburst.js.map" />
+    <Content Include="Scripts\amcharts\plugins\timeline.js.map" />
+    <Content Include="Scripts\amcharts\plugins\venn.js.map" />
+    <Content Include="Scripts\amcharts\plugins\wordCloud.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -204,7 +266,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
     <Content Include="Template\SBAdmin2\css\sb-admin-2.css" />
     <Content Include="Template\SBAdmin2\css\sb-admin-2.min.css" />
     <Content Include="Template\SBAdmin2\fontawesome\attribution.js" />
