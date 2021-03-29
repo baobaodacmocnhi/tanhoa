@@ -79,6 +79,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.chkAll = new System.Windows.Forms.CheckBox();
             this.chkInPhieuBao = new System.Windows.Forms.CheckBox();
+            this.txtZalo = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ActiveMobile = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,6 +104,7 @@
             this.TestApp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InPhieuBao = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.IDMobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Zalo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -224,7 +227,8 @@
             this.ChamCong,
             this.TestApp,
             this.InPhieuBao,
-            this.IDMobile});
+            this.IDMobile,
+            this.Zalo});
             this.dgvNguoiDung.Location = new System.Drawing.Point(12, 155);
             this.dgvNguoiDung.MultiSelect = false;
             this.dgvNguoiDung.Name = "dgvNguoiDung";
@@ -240,7 +244,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(647, 58);
+            this.btnXoa.Location = new System.Drawing.Point(742, 61);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 14;
@@ -250,7 +254,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(647, 29);
+            this.btnSua.Location = new System.Drawing.Point(742, 32);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 13;
@@ -260,7 +264,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(647, 0);
+            this.btnThem.Location = new System.Drawing.Point(742, 3);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 12;
@@ -582,7 +586,7 @@
             // 
             // txtIDMobile
             // 
-            this.txtIDMobile.Location = new System.Drawing.Point(454, 26);
+            this.txtIDMobile.Location = new System.Drawing.Point(615, 26);
             this.txtIDMobile.Name = "txtIDMobile";
             this.txtIDMobile.Size = new System.Drawing.Size(121, 20);
             this.txtIDMobile.TabIndex = 31;
@@ -590,7 +594,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(396, 29);
+            this.label8.Location = new System.Drawing.Point(557, 29);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 13);
             this.label8.TabIndex = 30;
@@ -616,6 +620,22 @@
             this.chkInPhieuBao.TabIndex = 33;
             this.chkInPhieuBao.Text = "In Phiếu Báo";
             this.chkInPhieuBao.UseVisualStyleBackColor = true;
+            // 
+            // txtZalo
+            // 
+            this.txtZalo.Location = new System.Drawing.Point(430, 26);
+            this.txtZalo.Name = "txtZalo";
+            this.txtZalo.Size = new System.Drawing.Size(121, 20);
+            this.txtZalo.TabIndex = 35;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(396, 29);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(28, 13);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Zalo";
             // 
             // MaND
             // 
@@ -776,11 +796,20 @@
             this.IDMobile.HeaderText = "IDMobile";
             this.IDMobile.Name = "IDMobile";
             // 
+            // Zalo
+            // 
+            this.Zalo.DataPropertyName = "Zalo";
+            this.Zalo.HeaderText = "Zalo";
+            this.Zalo.Name = "Zalo";
+            this.Zalo.Visible = false;
+            // 
             // frmNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 666);
+            this.Controls.Add(this.txtZalo);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.chkInPhieuBao);
             this.Controls.Add(this.chkAll);
             this.Controls.Add(this.txtIDMobile);
@@ -885,6 +914,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox chkAll;
         private System.Windows.Forms.CheckBox chkInPhieuBao;
+        private System.Windows.Forms.TextBox txtZalo;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaND;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ActiveMobile;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
@@ -908,5 +939,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TestApp;
         private System.Windows.Forms.DataGridViewCheckBoxColumn InPhieuBao;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDMobile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Zalo;
     }
 }
