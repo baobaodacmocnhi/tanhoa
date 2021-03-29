@@ -744,7 +744,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dr["VeViec"] = item.ToTrinh_ChiTiet.VeViec;
                         dr["KinhTrinh"] = item.ToTrinh_ChiTiet.KinhTrinh;
                         dr["ThongQua"] = item.ToTrinh_ChiTiet.ThongQua;
-                        if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
+                        if (item.ToTrinh_ChiTiet.VeViec.Contains(""))
                         {
                             dr["NoiDung"] = item.ToTrinh_ChiTiet.NoiDung;
                             dr["NoiDung2"] = "hộp bảo vệ, ngoài vỉa hè, chì mặt số đứt";
@@ -754,6 +754,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             else
                                 if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bảo vệ"))
                                     dr["Luuy"] = "đồng hồ nước đứt chì+hộp BV không do lỗi khách hàng";
+                                else
+                                    dr["Luuy"] = "đồng hồ nước đứt chì không do lỗi khách hàng";
                         }
                         else
                             if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))

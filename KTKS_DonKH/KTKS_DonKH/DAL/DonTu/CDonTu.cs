@@ -641,6 +641,14 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
+        public bool checkExist_TonCu(string DanhBo)
+        {
+            if (db.DonTu_ChiTiets.Count(item => item.DanhBo == DanhBo && item.TinhTrang.Contains("Tồn")) >= 2)
+                return true;
+            else
+                return false;
+        }
+
         public DonTu_ChiTiet get_ChiTiet(int ID)
         {
             return db.DonTu_ChiTiets.SingleOrDefault(item => item.ID == ID);
