@@ -187,6 +187,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\logocongty.png" />
+    <Content Include="Images\water-splash-wave.jpg" />
     <Content Include="Scripts\amcharts\charts.js" />
     <Content Include="Scripts\amcharts\core.js" />
     <Content Include="Scripts\amcharts\maps.js" />
@@ -255,6 +257,7 @@
     <Content Include="Scripts\amcharts\plugins\timeline.js.map" />
     <Content Include="Scripts\amcharts\plugins\venn.js.map" />
     <Content Include="Scripts\amcharts\plugins\wordCloud.js.map" />
+    <None Include="Properties\PublishProfiles\BaoCaoWeb.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

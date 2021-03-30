@@ -36,12 +36,12 @@ var CharHelperGiaBanBinhQuan = {
         am4core.ready(function () {
 
             // Themes begin
-
+            am4core.useTheme(am4themes_kelly);
             am4core.useTheme(am4themes_animated);
             // Themes end
 
             var chart = am4core.create('chartGiaBanBinhQuan', am4charts.XYChart);
-            chart.colors.step = 9;
+            chart.colors.step = 2;
 
             // Create Legend
             chart.legend = new am4charts.Legend();

@@ -37,11 +37,12 @@ var CharHelperDoanhThu = {
 
             // Themes begin
 
+            am4core.useTheme(am4themes_material);
             am4core.useTheme(am4themes_animated);
             // Themes end
 
             var chart = am4core.create('chartDoanhThu', am4charts.XYChart);
-            chart.colors.step = 9;
+            chart.colors.step = 2;
 
             // Create Legend
             chart.legend = new am4charts.Legend();

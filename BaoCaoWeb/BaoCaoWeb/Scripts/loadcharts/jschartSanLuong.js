@@ -41,7 +41,7 @@ var CharHelperSanLuong = {
             // Themes end
 
             var chart = am4core.create('chartSanLuong', am4charts.XYChart);
-            chart.colors.step = 9;
+            chart.colors.step = 8;
 
             // Create Legend
             chart.legend = new am4charts.Legend();
