@@ -326,7 +326,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
             this.Name = "frmDSToTrinh2021";
-            this.Text = "Tờ Trình";
+            this.Text = "Danh Sách Tờ Trình";
             this.Load += new System.EventHandler(this.frmToTrinh_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmToTrinh_KeyUp);
             this.panel_KhoangThoiGian.ResumeLayout(false);

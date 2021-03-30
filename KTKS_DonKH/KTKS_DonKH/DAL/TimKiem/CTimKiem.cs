@@ -307,6 +307,20 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    };
                 DataTable dtToTrinh = new DataTable();
                 dtToTrinh = LINQToDataTable(queryToTrinh);
+                var queryToTrinh2 = from itemCTTT in db.ToTrinh_ChiTiet_DanhSaches
+                                    where itemCTTT.MaDon == MaDon
+                                    select new
+                                    {
+                                        MaDon = db.DonTu_ChiTiets.Count(itemA => itemA.MaDon == itemCTTT.MaDon) == 1 ? itemCTTT.MaDon.Value.ToString() : itemCTTT.MaDon.Value.ToString() + "." + itemCTTT.STT.Value.ToString(),
+                                        itemCTTT.IDCT,
+                                        itemCTTT.DanhBo,
+                                        itemCTTT.HoTen,
+                                        itemCTTT.DiaChi,
+                                        itemCTTT.CreateDate,
+                                        itemCTTT.ToTrinh_ChiTiet.VeViec,
+                                        itemCTTT.ToTrinh_ChiTiet.NoiDung,
+                                    };
+                dtToTrinh.Merge(LINQToDataTable(queryToTrinh2));
                 dtToTrinh.TableName = "ToTrinh";
                 ds.Tables.Add(dtToTrinh);
 
@@ -404,7 +418,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                select new
                                {
                                    MaDon = itemDon.MaDon.Value.ToString() + "." + itemDon.STT.Value.ToString(),
-                                   TenLD = itemDon.DonTu.SoCongVan_PhongBanDoi+": "+itemDon.DonTu.SoCongVan,
+                                   TenLD = itemDon.DonTu.SoCongVan_PhongBanDoi + ": " + itemDon.DonTu.SoCongVan,
                                    itemDon.CreateDate,
                                    itemDon.DanhBo,
                                    itemDon.HoTen,
@@ -689,6 +703,21 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    };
                 DataTable dtToTrinh = new DataTable();
                 dtToTrinh = LINQToDataTable(queryToTrinh);
+                var queryToTrinh2 = from itemCTTT in db.ToTrinh_ChiTiet_DanhSaches
+                                    where itemCTTT.MaDon == MaDon && itemCTTT.STT == STT
+                                    select new
+                                    {
+                                        MaDon = itemCTTT.MaDon.Value.ToString() + "." + itemCTTT.STT.Value.ToString(),
+                                        itemCTTT.IDCT,
+                                        itemCTTT.DanhBo,
+                                        itemCTTT.HoTen,
+                                        itemCTTT.DiaChi,
+                                        itemCTTT.CreateDate,
+                                        itemCTTT.ToTrinh_ChiTiet.VeViec,
+                                        itemCTTT.ToTrinh_ChiTiet.NoiDung,
+                                    };
+                dtToTrinh.Merge(LINQToDataTable(queryToTrinh2));
+
                 dtToTrinh.TableName = "ToTrinh";
                 ds.Tables.Add(dtToTrinh);
 
@@ -723,7 +752,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                          item.NoiNhan,
                                          item.KTXM,
                                          item.NoiDung,
-                                         CreateBy=db.Users.SingleOrDefault(itemA=>itemA.MaU==item.CreateBy).HoTen,
+                                         CreateBy = db.Users.SingleOrDefault(itemA => itemA.MaU == item.CreateBy).HoTen,
                                      };
                 DataTable dtTienTrinh = new DataTable();
                 dtTienTrinh = LINQToDataTable(queryTienTrinh);
