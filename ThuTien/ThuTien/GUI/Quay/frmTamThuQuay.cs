@@ -181,7 +181,12 @@ namespace ThuTien.GUI.Quay
                                         }
                                         else
                                         {
-                                            if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND, NgayGiaiTrach) == true)
+                                            if (_cHoaDon.checkExists_KyMoi(item.Cells["Ky"].Value.ToString()) == false)
+                                            {
+                                                if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND, NgayGiaiTrach) == true)
+                                                    lstTamThu.Add(tamthu);
+                                            }
+                                            else
                                                 lstTamThu.Add(tamthu);
                                         }
                                     }
@@ -210,7 +215,12 @@ namespace ThuTien.GUI.Quay
                                             }
                                             else
                                             {
-                                                if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND, NgayGiaiTrach) == true)
+                                                if (_cHoaDon.checkExists_KyMoi(item.Cells["Ky"].Value.ToString()) == false)
+                                                {
+                                                    if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND, NgayGiaiTrach) == true)
+                                                        lstTamThu.Add(tamthu);
+                                                }
+                                                else
                                                     lstTamThu.Add(tamthu);
                                             }
                                         }
@@ -231,7 +241,12 @@ namespace ThuTien.GUI.Quay
                                             }
                                             else
                                             {
-                                                if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND) == true)
+                                                if (_cHoaDon.checkExists_KyMoi(item.Cells["Ky"].Value.ToString()) == false)
+                                                {
+                                                    if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND) == true)
+                                                        lstTamThu.Add(tamthu);
+                                                }
+                                                else
                                                     lstTamThu.Add(tamthu);
                                             }
                                         }
@@ -978,10 +993,46 @@ namespace ThuTien.GUI.Quay
                         foreach (DataGridViewRow item in dgvTamThu.Rows)
                             if (item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
                             {
-                                _cHoaDon.DangNgan("Quay", item.Cells["NgayGiaiTrach_TT"].Value.ToString(), CNguoiDung.MaND);
+                                _cHoaDon.DangNgan("Quay", item.Cells["SoHoaDon_TT"].Value.ToString(), CNguoiDung.MaND);
                             }
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnXem.PerformClick();
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Đăng Ngân Quầy Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnChuyenDangNganKyMoi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen("mnuDangNganQuay", "Them"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn Đăng Ngân?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        DataTable dt = _cTamThu.getDSTon_KyMoi(false);
+                        foreach (DataRow item in dt.Rows)
+                            {
+                                if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
+                                {
+                                    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
+                                {
+                                    MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        foreach (DataRow item in dt.Rows)
+                            _cHoaDon.DangNgan("Quay", item["SoHoaDon"].ToString(), CNguoiDung.MaND);
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else

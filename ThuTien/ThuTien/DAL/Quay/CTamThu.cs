@@ -270,7 +270,7 @@ namespace ThuTien.DAL.Quay
                             itemTT.Tra,
                             itemTT.NgayTra,
                             itemTT.GhiChuTra,
-                            Ky2=itemHD.KY,
+                            Ky2 = itemHD.KY,
                             itemHD.NAM,
                         };
             return LINQToDataTable(query);
@@ -338,6 +338,20 @@ namespace ThuTien.DAL.Quay
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
                             itemHD.TONGCONG,
                             HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDSTon_KyMoi(bool ChuyenKhoan)
+        {
+            var query = from itemTT in _db.TAMTHUs
+                        join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
+                        where itemTT.Xoa == false && itemTT.ChuyenKhoan == ChuyenKhoan && itemHD.NGAYGIAITRACH == null
+                        && itemHD.KY == DateTime.Now.Month && itemHD.NAM == DateTime.Now.Year
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            itemHD.SOHOADON,
                         };
             return LINQToDataTable(query);
         }

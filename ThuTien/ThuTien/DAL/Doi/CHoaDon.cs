@@ -490,6 +490,23 @@ namespace ThuTien.DAL.Doi
             return _db.TT_ThoatNgheos.Any(item => item.DanhBo == DanhBo);
         }
 
+        public bool checkExists_KyMoi(string Ky)
+        {
+            string[] Kys = Ky.Split('/');
+            if (int.Parse(Kys[1]) > DateTime.Now.Year)
+                return true;
+            else
+                if (int.Parse(Kys[1]) == DateTime.Now.Year)
+                {
+                    if (int.Parse(Kys[0]) > DateTime.Now.Month)
+                        return true;
+                    else
+                        return false;
+                }
+                else
+                    return false;
+        }
+
         public HOADON Get(int MaHD)
         {
             return _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == MaHD);

@@ -15,7 +15,7 @@ namespace ThuTien.DAL
     class CDAL
     {
         protected static dbThuTienDataContext _db = new dbThuTienDataContext();
-        
+
         public void BeginTransaction()
         {
             if (_db.Connection.State == System.Data.ConnectionState.Closed)
@@ -429,5 +429,8 @@ namespace ThuTien.DAL
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
+
+
+
     }
 }
