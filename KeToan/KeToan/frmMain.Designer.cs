@@ -48,6 +48,9 @@
             this.mnuSoLieuChungTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHoaDonDienTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBienLaiThuTien = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGiaiTrachTienNuoc = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGiaiTrachTienNuoc_Nhap = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGiaiTrachTienNuoc_Xuat = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.StripStatus_Version = new System.Windows.Forms.ToolStripStatusLabel();
@@ -67,7 +70,8 @@
             this.mnuQuanTri,
             this.mnuCapNhat,
             this.mnuNhapLieu,
-            this.mnuHoaDonDienTu});
+            this.mnuHoaDonDienTu,
+            this.mnuGiaiTrachTienNuoc});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1068, 24);
@@ -149,14 +153,14 @@
             // mnuNganHang
             // 
             this.mnuNganHang.Name = "mnuNganHang";
-            this.mnuNganHang.Size = new System.Drawing.Size(152, 22);
+            this.mnuNganHang.Size = new System.Drawing.Size(135, 22);
             this.mnuNganHang.Text = "Ngân Hàng";
             this.mnuNganHang.Click += new System.EventHandler(this.mnuNganHang_Click);
             // 
             // mnuDoiTuong
             // 
             this.mnuDoiTuong.Name = "mnuDoiTuong";
-            this.mnuDoiTuong.Size = new System.Drawing.Size(152, 22);
+            this.mnuDoiTuong.Size = new System.Drawing.Size(135, 22);
             this.mnuDoiTuong.Text = "Đối Tượng";
             this.mnuDoiTuong.Click += new System.EventHandler(this.mnuDoiTuong_Click);
             // 
@@ -205,6 +209,29 @@
             this.mnuBienLaiThuTien.Size = new System.Drawing.Size(163, 22);
             this.mnuBienLaiThuTien.Text = "Biên Lai Thu Tiền";
             this.mnuBienLaiThuTien.Click += new System.EventHandler(this.mnuBienLaiThuTien_Click);
+            // 
+            // mnuGiaiTrachTienNuoc
+            // 
+            this.mnuGiaiTrachTienNuoc.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuGiaiTrachTienNuoc_Nhap,
+            this.mnuGiaiTrachTienNuoc_Xuat});
+            this.mnuGiaiTrachTienNuoc.Name = "mnuGiaiTrachTienNuoc";
+            this.mnuGiaiTrachTienNuoc.Size = new System.Drawing.Size(127, 20);
+            this.mnuGiaiTrachTienNuoc.Text = "Giải Trách Tiền Nước";
+            // 
+            // mnuGiaiTrachTienNuoc_Nhap
+            // 
+            this.mnuGiaiTrachTienNuoc_Nhap.Name = "mnuGiaiTrachTienNuoc_Nhap";
+            this.mnuGiaiTrachTienNuoc_Nhap.Size = new System.Drawing.Size(152, 22);
+            this.mnuGiaiTrachTienNuoc_Nhap.Text = "Nhập";
+            this.mnuGiaiTrachTienNuoc_Nhap.Click += new System.EventHandler(this.mnuGiaiTrachTienNuoc_Nhap_Click);
+            // 
+            // mnuGiaiTrachTienNuoc_Xuat
+            // 
+            this.mnuGiaiTrachTienNuoc_Xuat.Name = "mnuGiaiTrachTienNuoc_Xuat";
+            this.mnuGiaiTrachTienNuoc_Xuat.Size = new System.Drawing.Size(152, 22);
+            this.mnuGiaiTrachTienNuoc_Xuat.Text = "Xuất";
+            this.mnuGiaiTrachTienNuoc_Xuat.Click += new System.EventHandler(this.mnuGiaiTrachTienNuoc_Xuat_Click);
             // 
             // tabControl
             // 
@@ -314,6 +341,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuHoaDonDienTu;
         private System.Windows.Forms.ToolStripMenuItem mnuBienLaiThuTien;
         private System.Windows.Forms.ToolStripMenuItem mnuSoLieuChungTu;
+        private System.Windows.Forms.ToolStripMenuItem mnuGiaiTrachTienNuoc;
+        private System.Windows.Forms.ToolStripMenuItem mnuGiaiTrachTienNuoc_Nhap;
+        private System.Windows.Forms.ToolStripMenuItem mnuGiaiTrachTienNuoc_Xuat;
     }
 }
 

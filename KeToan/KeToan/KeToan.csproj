@@ -144,6 +144,18 @@
     <Compile Include="GUI\BaoCao\frmBaoCao.designer.cs">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\GiaiTrachTienNuoc\frmGiaiTrachTienNuoc_Nhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\GiaiTrachTienNuoc\frmGiaiTrachTienNuoc_Nhap.Designer.cs">
+      <DependentUpon>frmGiaiTrachTienNuoc_Nhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\GiaiTrachTienNuoc\frmGiaiTrachTienNuoc_Xuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\GiaiTrachTienNuoc\frmGiaiTrachTienNuoc_Xuat.Designer.cs">
+      <DependentUpon>frmGiaiTrachTienNuoc_Xuat.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\HoaDonDienTu\frmBienLaiThuTien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +260,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\BaoCao\frmBaoCao.resx">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\GiaiTrachTienNuoc\frmGiaiTrachTienNuoc_Nhap.resx">
+      <DependentUpon>frmGiaiTrachTienNuoc_Nhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\GiaiTrachTienNuoc\frmGiaiTrachTienNuoc_Xuat.resx">
+      <DependentUpon>frmGiaiTrachTienNuoc_Xuat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HoaDonDienTu\frmBienLaiThuTien.resx">
       <DependentUpon>frmBienLaiThuTien.cs</DependentUpon>

@@ -12,6 +12,7 @@ using KeToan.GUI.QuanTri;
 using KeToan.GUI.NhapLieu;
 using KeToan.GUI.CapNhat;
 using KeToan.GUI.HoaDonDienTu;
+using KeToan.GUI.GiaiTrachTienNuoc;
 
 namespace KeToan
 {
@@ -280,11 +281,31 @@ namespace KeToan
 
         #endregion
 
-        
+        #region Giải Trách Tiền Nước
 
+        private void mnuGiaiTrachTienNuoc_Nhap_Click(object sender, EventArgs e)
+        {
+            if (CUser.CheckQuyen("mnuGiaiTrachTienNuoc_Nhap", "Xem"))
+            {
+                frmGiaiTrachTienNuoc_Nhap frm = new frmGiaiTrachTienNuoc_Nhap();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
-        
+        private void mnuGiaiTrachTienNuoc_Xuat_Click(object sender, EventArgs e)
+        {
+            if (CUser.CheckQuyen("mnuGiaiTrachTienNuoc_Xuat", "Xem"))
+            {
+                frmGiaiTrachTienNuoc_Xuat frm = new frmGiaiTrachTienNuoc_Xuat();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
-        
+        #endregion
+            
     }
 }
