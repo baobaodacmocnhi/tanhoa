@@ -53,7 +53,7 @@ namespace BaoCaoWeb.Controllers
         }
 
         [HttpGet]
-        public JsonResult getSanLuong()
+        public JsonResult getSanLuong_amcharts()
         {
             List<Chart> lstChart = new List<Chart>();
             DataTable dt = _cDocSo.getSanLuong();
@@ -67,6 +67,22 @@ namespace BaoCaoWeb.Controllers
                 else
                     enSL.NamPresent = 0;
                 lstChart.Add(enSL);
+            }
+
+            //return list as Json
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult getSanLuong_anycharts()
+        {
+            List< Array> lstChart = new List<Array>();
+            DataTable dt = _cDocSo.getSanLuong();
+            for (int i = 1; i <= 12; i++)
+            {
+                string[] a = new string[] {i.ToString(), dt.Rows[i - 1]["SanLuongPrevious"].ToString(), dt.Rows[i - 1]["SanLuongPresent"].ToString() };
+
+                lstChart.Add(a);
             }
 
             //return list as Json
@@ -96,7 +112,7 @@ namespace BaoCaoWeb.Controllers
         }
 
         [HttpGet]
-        public JsonResult getDoanhThu()
+        public JsonResult getDoanhThu_amcharts()
         {
             List<Chart> lstChart = new List<Chart>();
             DataTable dt = _cThuTien.getDoanhThu();
@@ -110,6 +126,22 @@ namespace BaoCaoWeb.Controllers
                 else
                     enSL.NamPresent = 0;
                 lstChart.Add(enSL);
+            }
+
+            //return list as Json
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult getDoanhThu_anycharts()
+        {
+            List<Array> lstChart = new List<Array>();
+            DataTable dt = _cThuTien.getDoanhThu();
+            for (int i = 1; i <= 12; i++)
+            {
+                string[] a = new string[] { i.ToString(), dt.Rows[i - 1]["DoanhThuPrevious"].ToString(), dt.Rows[i - 1]["DoanhThuPresent"].ToString() };
+
+                lstChart.Add(a);
             }
 
             //return list as Json
@@ -139,7 +171,7 @@ namespace BaoCaoWeb.Controllers
         }
 
         [HttpGet]
-        public JsonResult getGiaBanBinhQuan()
+        public JsonResult getGiaBanBinhQuan_amcharts()
         {
             List<Chart> lstChart = new List<Chart>();
             DataTable dt = _cThuTien.getGiaBanBinhQuan();
@@ -153,6 +185,22 @@ namespace BaoCaoWeb.Controllers
                 else
                     enSL.NamPresent = 0;
                 lstChart.Add(enSL);
+            }
+
+            //return list as Json
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult getGiaBanBinhQuan_anycharts()
+        {
+            List<Array> lstChart = new List<Array>();
+            DataTable dt = _cThuTien.getGiaBanBinhQuan();
+            for (int i = 1; i <= 12; i++)
+            {
+                string[] a = new string[] { i.ToString(), dt.Rows[i - 1]["DoanhThuPrevious"].ToString(), dt.Rows[i - 1]["DoanhThuPresent"].ToString() };
+
+                lstChart.Add(a);
             }
 
             //return list as Json

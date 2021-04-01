@@ -90,7 +90,7 @@ namespace BaoCaoWeb.DAL
 
         public DataTable getGiaBanBinhQuan()
         {
-            string sql = "select t1.Ky,DoanhThuPrevious=t1.DoanhThu,DoanhThuPresent=t2.DoanhThu,ChenhLech=t2.DoanhThu-t1.DoanhThu from"
+            string sql = "select t1.Ky,DoanhThuPrevious=ROUND(t1.DoanhThu,0),DoanhThuPresent=ROUND(t2.DoanhThu,0),ChenhLech=ROUND(t2.DoanhThu-t1.DoanhThu,0) from"
                         + " (select Ky,DoanhThu=SUM(GiaBanBinhQuan) from TT_GiaBanBinhQuan where Nam = " + (DateTime.Now.Year - 1) + " group by Ky)t1"
                         + " left join"
                         + " (select Ky,DoanhThu=SUM(GiaBanBinhQuan) from TT_GiaBanBinhQuan where Nam = " + DateTime.Now.Year + " group by Ky)t2 on t1.Ky = t2.Ky"
