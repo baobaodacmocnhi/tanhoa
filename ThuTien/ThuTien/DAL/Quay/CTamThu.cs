@@ -352,6 +352,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
                         };
             return LINQToDataTable(query);
         }
