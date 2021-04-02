@@ -3917,7 +3917,7 @@ namespace KeToan.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="NVarChar(200)")]
 		public string DanhBo
 		{
 			get
@@ -4092,7 +4092,17 @@ namespace KeToan.LinQ
 		
 		private string _DanhBo;
 		
-		private System.Nullable<decimal> _SoTien;
+		private System.Nullable<int> _Ky;
+		
+		private System.Nullable<decimal> _GiaBan;
+		
+		private System.Nullable<decimal> _ThueGTGT;
+		
+		private System.Nullable<decimal> _PhiBVMT;
+		
+		private System.Nullable<decimal> _TongCong;
+		
+		private System.Nullable<System.DateTime> _NgayGiaiTrach;
 		
 		private System.Nullable<int> _CreateBy;
 		
@@ -4114,8 +4124,18 @@ namespace KeToan.LinQ
     partial void OnNgayPhieuThuChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
-    partial void OnSoTienChanging(System.Nullable<decimal> value);
-    partial void OnSoTienChanged();
+    partial void OnKyChanging(System.Nullable<int> value);
+    partial void OnKyChanged();
+    partial void OnGiaBanChanging(System.Nullable<decimal> value);
+    partial void OnGiaBanChanged();
+    partial void OnThueGTGTChanging(System.Nullable<decimal> value);
+    partial void OnThueGTGTChanged();
+    partial void OnPhiBVMTChanging(System.Nullable<decimal> value);
+    partial void OnPhiBVMTChanged();
+    partial void OnTongCongChanging(System.Nullable<decimal> value);
+    partial void OnTongCongChanged();
+    partial void OnNgayGiaiTrachChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayGiaiTrachChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -4211,22 +4231,122 @@ namespace KeToan.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoTien", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> SoTien
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ky", DbType="Int")]
+		public System.Nullable<int> Ky
 		{
 			get
 			{
-				return this._SoTien;
+				return this._Ky;
 			}
 			set
 			{
-				if ((this._SoTien != value))
+				if ((this._Ky != value))
 				{
-					this.OnSoTienChanging(value);
+					this.OnKyChanging(value);
 					this.SendPropertyChanging();
-					this._SoTien = value;
-					this.SendPropertyChanged("SoTien");
-					this.OnSoTienChanged();
+					this._Ky = value;
+					this.SendPropertyChanged("Ky");
+					this.OnKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBan", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> GiaBan
+		{
+			get
+			{
+				return this._GiaBan;
+			}
+			set
+			{
+				if ((this._GiaBan != value))
+				{
+					this.OnGiaBanChanging(value);
+					this.SendPropertyChanging();
+					this._GiaBan = value;
+					this.SendPropertyChanged("GiaBan");
+					this.OnGiaBanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThueGTGT", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> ThueGTGT
+		{
+			get
+			{
+				return this._ThueGTGT;
+			}
+			set
+			{
+				if ((this._ThueGTGT != value))
+				{
+					this.OnThueGTGTChanging(value);
+					this.SendPropertyChanging();
+					this._ThueGTGT = value;
+					this.SendPropertyChanged("ThueGTGT");
+					this.OnThueGTGTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiBVMT", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> PhiBVMT
+		{
+			get
+			{
+				return this._PhiBVMT;
+			}
+			set
+			{
+				if ((this._PhiBVMT != value))
+				{
+					this.OnPhiBVMTChanging(value);
+					this.SendPropertyChanging();
+					this._PhiBVMT = value;
+					this.SendPropertyChanged("PhiBVMT");
+					this.OnPhiBVMTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongCong", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> TongCong
+		{
+			get
+			{
+				return this._TongCong;
+			}
+			set
+			{
+				if ((this._TongCong != value))
+				{
+					this.OnTongCongChanging(value);
+					this.SendPropertyChanging();
+					this._TongCong = value;
+					this.SendPropertyChanged("TongCong");
+					this.OnTongCongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayGiaiTrach", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayGiaiTrach
+		{
+			get
+			{
+				return this._NgayGiaiTrach;
+			}
+			set
+			{
+				if ((this._NgayGiaiTrach != value))
+				{
+					this.OnNgayGiaiTrachChanging(value);
+					this.SendPropertyChanging();
+					this._NgayGiaiTrach = value;
+					this.SendPropertyChanged("NgayGiaiTrach");
+					this.OnNgayGiaiTrachChanged();
 				}
 			}
 		}

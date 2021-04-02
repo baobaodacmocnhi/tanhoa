@@ -32,9 +32,9 @@ namespace KeToan.GUI.HoaDonDienTu
 
         private void btnChonFile_Click(object sender, EventArgs e)
         {
-            if (CUser.CheckQuyen(_mnu, "Them"))
+            try
             {
-                try
+                if (CUser.CheckQuyen(_mnu, "Them"))
                 {
                     OpenFileDialog dialog = new OpenFileDialog();
                     dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
@@ -54,13 +54,13 @@ namespace KeToan.GUI.HoaDonDienTu
                                         {
                                             LinQ.HoaDonDienTu en = new LinQ.HoaDonDienTu();
                                             en.HoTen = item[1].ToString().Trim();
-                                            en.DanhBo = item[18+3].ToString().Trim().Replace(" ", "").Replace(".", "");
+                                            en.DanhBo = item[18 + 3].ToString().Trim().Replace(" ", "").Replace(".", "");
                                             en.DiaChi = item[4].ToString().Trim();
                                             en.NoiDung = item[10].ToString().Trim();
                                             en.SoTien = int.Parse(item[17].ToString().Trim());
-                                            if (item[19+3].ToString().Trim() != "")
-                                                en.SoHoaDon = int.Parse(item[19+3].ToString().Trim());
-                                            en.MaTaiHoaDon = item[20+3].ToString().Trim();
+                                            if (item[19 + 3].ToString().Trim() != "")
+                                                en.SoHoaDon = int.Parse(item[19 + 3].ToString().Trim());
+                                            en.MaTaiHoaDon = item[20 + 3].ToString().Trim();
                                             _cHDDT.Them(en, dateNgayLap.Value);
                                         }
                                         else
@@ -77,13 +77,13 @@ namespace KeToan.GUI.HoaDonDienTu
                                         {
                                             LinQ.HoaDonDienTu en = new LinQ.HoaDonDienTu();
                                             en.HoTen = item[1].ToString().Trim();
-                                            en.DanhBo = item[18+3].ToString().Trim().Replace(" ", "").Replace(".", "");
+                                            en.DanhBo = item[18 + 3].ToString().Trim().Replace(" ", "").Replace(".", "");
                                             en.DiaChi = item[4].ToString().Trim();
                                             en.NoiDung = item[10].ToString().Trim();
                                             en.SoTien = int.Parse(item[17].ToString().Trim());
-                                            if (item[19+3].ToString().Trim() != "")
-                                                en.SoHoaDon = int.Parse(item[19+3].ToString().Trim());
-                                            en.MaTaiHoaDon = item[20+3].ToString().Trim();
+                                            if (item[19 + 3].ToString().Trim() != "")
+                                                en.SoHoaDon = int.Parse(item[19 + 3].ToString().Trim());
+                                            en.MaTaiHoaDon = item[20 + 3].ToString().Trim();
                                             _cHDDT.Them(en);
                                         }
                                         else
@@ -99,13 +99,13 @@ namespace KeToan.GUI.HoaDonDienTu
                             btnXem.PerformClick();
                         }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -147,8 +147,8 @@ namespace KeToan.GUI.HoaDonDienTu
                     string str = String.Format("{0:D6}", int.Parse(item.Cells["ID"].Value.ToString()));
                     dr["ID"] = str.Insert(str.Length - 2, "-");
                     dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
-                    if (item.Cells["DanhBo"].Value != null && item.Cells["DanhBo"].Value.ToString().Length==11)
-                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                    if (item.Cells["DanhBo"].Value != null && item.Cells["DanhBo"].Value.ToString().Length == 11)
+                        dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
                     dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
                     dr["NoiDung"] = item.Cells["NoiDung"].Value.ToString();
                     dr["SoTien"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["SoTien"].Value.ToString()));

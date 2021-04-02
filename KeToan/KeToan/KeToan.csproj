@@ -137,6 +137,8 @@
     <Compile Include="DAL\CapNhat\CNganHang.cs" />
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\CExcel.cs" />
+    <Compile Include="DAL\GiaiTrachTienNuoc\CGiaiTrachTienNuoc_Nhap.cs" />
+    <Compile Include="DAL\GiaiTrachTienNuoc\CGiaiTrachTienNuoc_Xuat.cs" />
     <Compile Include="DAL\HoaDonDienTu\CHoaDonDienTu.cs" />
     <Compile Include="GUI\BaoCao\frmBaoCao.cs">
       <SubType>Form</SubType>

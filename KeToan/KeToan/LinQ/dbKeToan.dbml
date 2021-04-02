@@ -175,7 +175,7 @@
       <Column Name="ID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="SoPhieuThu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="NgayPhieuThu" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DanhBo" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="SoTien" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="NganHang" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -190,7 +190,12 @@
       <Column Name="SoPhieuThu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="NgayPhieuThu" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="DanhBo" Type="System.String" DbType="Char(11)" CanBeNull="true" />
-      <Column Name="SoTien" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Ky" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaBan" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ThueGTGT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="PhiBVMT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TongCong" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="NgayGiaiTrach" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
