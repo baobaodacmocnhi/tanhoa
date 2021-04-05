@@ -35,6 +35,12 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
             try
             {
                 dgvHoaDon.DataSource = _cGTTN.getDS(dateTu.Value, dateDen.Value);
+                decimal TongCong = 0;
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                {
+                    TongCong += decimal.Parse(item.Cells["SoTien"].Value.ToString());
+                }
+                txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
             catch (Exception ex)
             {

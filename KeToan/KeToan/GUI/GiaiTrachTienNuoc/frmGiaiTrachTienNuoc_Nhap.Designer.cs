@@ -39,19 +39,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvHoaDon = new System.Windows.Forms.DataGridView();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayPhieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoPhieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NganHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.txtTongCong = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.SuspendLayout();
             // 
             // btnChonFile
             // 
-            this.btnChonFile.Location = new System.Drawing.Point(12, 12);
+            this.btnChonFile.Location = new System.Drawing.Point(12, 5);
             this.btnChonFile.Name = "btnChonFile";
             this.btnChonFile.Size = new System.Drawing.Size(75, 23);
             this.btnChonFile.TabIndex = 78;
@@ -63,7 +64,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(231, 12);
+            this.dateTu.Location = new System.Drawing.Point(175, 8);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 86;
@@ -71,7 +72,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(170, 14);
+            this.label4.Location = new System.Drawing.Point(121, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 85;
@@ -81,7 +82,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(231, 38);
+            this.dateDen.Location = new System.Drawing.Point(342, 8);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 84;
@@ -89,7 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(170, 40);
+            this.label3.Location = new System.Drawing.Point(281, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 83;
@@ -97,7 +98,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(337, 12);
+            this.btnXem.Location = new System.Drawing.Point(448, 5);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 82;
@@ -133,7 +134,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvHoaDon.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvHoaDon.Location = new System.Drawing.Point(12, 64);
+            this.dgvHoaDon.Location = new System.Drawing.Point(12, 34);
             this.dgvHoaDon.Name = "dgvHoaDon";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -149,16 +150,6 @@
             this.dgvHoaDon.TabIndex = 87;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHoaDon_RowPostPaint);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(418, 12);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 88;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // ID
             // 
@@ -199,11 +190,29 @@
             this.SoTien.HeaderText = "Số Tiền";
             this.SoTien.Name = "SoTien";
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(529, 5);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 88;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // txtTongCong
+            // 
+            this.txtTongCong.Location = new System.Drawing.Point(524, 609);
+            this.txtTongCong.Name = "txtTongCong";
+            this.txtTongCong.Size = new System.Drawing.Size(100, 20);
+            this.txtTongCong.TabIndex = 89;
+            // 
             // frmGiaiTrachTienNuoc_Nhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1375, 683);
+            this.ClientSize = new System.Drawing.Size(851, 683);
+            this.Controls.Add(this.txtTongCong);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.dgvHoaDon);
             this.Controls.Add(this.dateTu);
@@ -237,5 +246,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn NganHang;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTien;
+        private System.Windows.Forms.TextBox txtTongCong;
     }
 }

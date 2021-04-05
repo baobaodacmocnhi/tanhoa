@@ -35,6 +35,12 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
             try
             {
                 dgvHoaDon.DataSource = _cGTTN.getDS(dateTu.Value, dateDen.Value);
+                decimal TongCong = 0;
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                {
+                    TongCong += decimal.Parse(item.Cells["TongCong"].Value.ToString());
+                }
+                txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
             catch (Exception ex)
             {
@@ -76,19 +82,21 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
 
                             //access the cells
                             for (int row = 7; row <= worksheet.UsedRange.Rows.Count; ++row)
-                                if (valueArray[row, 1].ToString() != "")
+                                if (valueArray[row, 6].ToString() != "" && int.Parse(valueArray[row, 9].ToString()) > 0)
                                 {
                                     GiaiTrachTienNuoc_Xuat en = new GiaiTrachTienNuoc_Xuat();
 
                                     en.DanhBo = valueArray[row, 3].ToString();
                                     en.Ky = int.Parse(valueArray[row, 6].ToString());
-                                    en.NgayPhieuThu = DateTime.Parse(valueArray[row, 7].ToString());
-                                    en.SoPhieuThu = valueArray[row, 8].ToString();
+                                    if (valueArray[row, 7].ToString() != "")
+                                        en.NgayPhieuThu = DateTime.Parse(valueArray[row, 7].ToString());
+                                    if (valueArray[row, 8].ToString() != "")
+                                        en.SoPhieuThu = valueArray[row, 8].ToString();
                                     en.GiaBan = int.Parse(valueArray[row, 9].ToString());
                                     en.ThueGTGT = int.Parse(valueArray[row, 10].ToString());
                                     en.PhiBVMT = int.Parse(valueArray[row, 11].ToString());
                                     en.TongCong = int.Parse(valueArray[row, 12].ToString());
-                                    en.NgayGiaiTrach = DateTime.Parse(valueArray[1, 1].ToString().Substring(valueArray[1, 1].ToString().LastIndexOf(" "),10));
+                                    en.NgayGiaiTrach = DateTime.Parse(valueArray[1, 1].ToString().Substring(valueArray[1, 1].ToString().LastIndexOf(" "), 11));
 
                                     if (_cGTTN.checkExists(en.SoPhieuThu, en.NgayPhieuThu.Value, en.DanhBo, en.Ky.Value) == false)
                                         _cGTTN.Them(en);
@@ -141,7 +149,7 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
