@@ -325,7 +325,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                             dr2["LoaiBaoCao"] = "LỖI KỸ THUẬT";
                                         }
                                     dr2["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
-                                    //dr2["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
+                                    dr2["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
+                                    dr2["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                                     if (item.DanhBo.Length == 11)
                                         dr2["DanhBo"] = item.DanhBo.Insert(7, " ").Insert(4, " ");
                                     dr2["HoTen"] = item.HoTen;
@@ -334,7 +335,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                     dr2["Co"] = item.Co;
                                     dr2["SoThan"] = item.SoThan;
                                     dr2["Quan"] = item.Quan;
-                                    dr2["NoiDung"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
+                                    dr2["NoiDung"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-") + "/TTr-" + CTaiKhoan.KyHieuPhong;
                                     LinQ.DonTu dontu = _cDonTu.get(item.MaDon.Value);
                                     if (dontu.DonTu_ChiTiets.Count == 1)
                                         dr2["NoiNhan"] = item.MaDon.Value;
