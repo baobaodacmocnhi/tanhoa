@@ -129,6 +129,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(hoadon.DANHBA);
             dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(hoadon.DANHBA);
+            if (dgvDSDieuChinh.Rows.Count > 0)
+            {
+                dgvDSDieuChinh.Rows[0].DefaultCellStyle.ForeColor = Color.Red;
+                dgvDSDieuChinh.Rows[0].DefaultCellStyle.Font = new Font(dgvDSDieuChinh.DefaultCellStyle.Font, FontStyle.Bold);
+            }
             LoadTongNK();
         }
 
@@ -165,8 +170,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///
             txtDot.Text = ctdcbd.Dot;
             txtHieuLucKy.Text = ctdcbd.HieuLucKy;
-            txtGhiChu.Text = ctdcbd.GhiChu;
+            txtCongDung.Text = ctdcbd.CongDung;
             txtDienThoai.Text = ctdcbd.DienThoai;
+            txtGhiChu.Text = ctdcbd.GhiChu;
             txtDanhBo.Text = ctdcbd.DanhBo;
             txtHopDong.Text = ctdcbd.HopDong;
             txtHoTen.Text = ctdcbd.HoTen;
@@ -222,6 +228,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///
             dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(ctdcbd.DanhBo);
             dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(ctdcbd.DanhBo);
+            if (dgvDSDieuChinh.Rows.Count > 0)
+            {
+                dgvDSDieuChinh.Rows[0].DefaultCellStyle.ForeColor = Color.Red;
+                dgvDSDieuChinh.Rows[0].DefaultCellStyle.Font = new Font(dgvDSDieuChinh.DefaultCellStyle.Font, FontStyle.Bold);
+            }
             LoadTongNK();
 
             dgvHinh.Rows.Clear();
@@ -241,8 +252,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSoPhieu.Text = "";
             txtDot.Text = "";
             txtHieuLucKy.Text = "";
-            txtGhiChu.Text = "";
+            txtCongDung.Text = "";
             txtDienThoai.Text = "";
+            txtGhiChu.Text = "";
             ///
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
@@ -595,8 +607,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdcbd.HCSN = txtHCSN.Text.Trim();
                     ctdcbd.Dot = txtDot.Text.Trim();
                     ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
-                    ctdcbd.GhiChu = txtGhiChu.Text.Trim();
+                    ctdcbd.CongDung = txtCongDung.Text.Trim();
                     ctdcbd.DienThoai = txtDienThoai.Text.Trim();
+                    ctdcbd.GhiChu = txtGhiChu.Text.Trim();
                     ctdcbd.ChuaKTXM = chkChuaKTXM.Checked;
 
                     ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)
@@ -796,8 +809,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdcbd.HCSN = txtHCSN.Text.Trim();
                         _ctdcbd.Dot = txtDot.Text.Trim();
                         _ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
-                        _ctdcbd.GhiChu = txtGhiChu.Text.Trim();
+                        _ctdcbd.CongDung = txtCongDung.Text.Trim();
                         _ctdcbd.DienThoai = txtDienThoai.Text.Trim();
+                        _ctdcbd.GhiChu = txtGhiChu.Text.Trim();
                         _ctdcbd.ChuaKTXM = chkChuaKTXM.Checked;
 
                         ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)

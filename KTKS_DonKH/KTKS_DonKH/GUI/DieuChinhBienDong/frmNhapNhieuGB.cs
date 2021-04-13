@@ -433,8 +433,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (item.Cells["HieuLucKy"].Value != null)
                                 ctdcbd.HieuLucKy = item.Cells["HieuLucKy"].Value.ToString();
 
-                            if (item.Cells["GhiChu"].Value != null)
-                                ctdcbd.GhiChu = item.Cells["GhiChu"].Value.ToString();
+                            if (item.Cells["CongDung"].Value != null)
+                                ctdcbd.CongDung = item.Cells["CongDung"].Value.ToString();
 
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")

@@ -646,7 +646,11 @@ namespace KTKS_DonKH.DAL.DonTu
             if (db.DonTu_ChiTiets.Count(item => item.DanhBo == DanhBo && item.TinhTrang.Contains("Tồn")) >= 2)
                 return true;
             else
-                return false;
+                if (db.KTXM_ChiTiets.Any(item => item.DanhBo == DanhBo && db.DonTu_ChiTiets.Any(itemA => itemA.MaDon == item.KTXM.MaDonMoi && itemA.STT == item.STT && itemA.TinhTrang.Contains("Tồn")) == true) == true
+                    && db.DonTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.TinhTrang.Contains("Tồn")) == true)
+                    return true;
+                else
+                    return false;
         }
 
         public DonTu_ChiTiet get_ChiTiet(int ID)

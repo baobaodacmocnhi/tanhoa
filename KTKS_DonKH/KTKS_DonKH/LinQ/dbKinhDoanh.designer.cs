@@ -16710,6 +16710,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _NguoiChuyenDocSo;
 		
+		private string _CongDung;
+		
 		private string _GhiChu;
 		
 		private bool _ChuaKTXM;
@@ -16842,6 +16844,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNgayChuyenDocSoChanged();
     partial void OnNguoiChuyenDocSoChanging(System.Nullable<int> value);
     partial void OnNguoiChuyenDocSoChanged();
+    partial void OnCongDungChanging(string value);
+    partial void OnCongDungChanged();
     partial void OnGhiChuChanging(string value);
     partial void OnGhiChuChanged();
     partial void OnChuaKTXMChanging(bool value);
@@ -17879,7 +17883,27 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CongDung", DbType="NVarChar(500)")]
+		public string CongDung
+		{
+			get
+			{
+				return this._CongDung;
+			}
+			set
+			{
+				if ((this._CongDung != value))
+				{
+					this.OnCongDungChanging(value);
+					this.SendPropertyChanging();
+					this._CongDung = value;
+					this.SendPropertyChanged("CongDung");
+					this.OnCongDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(500)")]
 		public string GhiChu
 		{
 			get

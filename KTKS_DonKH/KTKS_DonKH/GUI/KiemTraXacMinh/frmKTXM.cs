@@ -111,6 +111,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtHieu.Text = a;
             txtCo.Text = b;
             txtSoThan.Text = c;
+            if (_cDonTu.checkExist_TonCu(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
+                MessageBox.Show("Danh Bộ này có đơn tồn cũ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadCTKTXM(KTXM_ChiTiet ctktxm)
@@ -468,7 +470,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             ktxm.MaDonMoi = _dontu_ChiTiet.MaDon.Value;
                             _cKTXM.Them(ktxm);
                         }
-                        if (txtDanhBo.Text.Trim() != "" && _cKTXM.checkExist_ChiTiet(CTaiKhoan.MaUser, _dontu_ChiTiet.MaDon.Value, txtDanhBo.Text.Trim(), dateKTXM.Value) == true)
+                        if (txtDanhBo.Text.Trim() != "" && _cKTXM.checkExist_ChiTiet(CTaiKhoan.MaUser, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value, txtDanhBo.Text.Trim(), dateKTXM.Value) == true)
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Nội Dung Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;

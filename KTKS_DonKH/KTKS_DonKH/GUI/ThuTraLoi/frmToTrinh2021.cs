@@ -1019,6 +1019,63 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     }
                 }
             }
+            if ((dgvDanhBo.Columns[e.ColumnIndex].Name == "DanhBo" && dgvDanhBo["DanhBo", e.RowIndex].Value != null))
+            {
+                for (int i = 0; i < dgvDanhBo.Rows.Count - 2; i++)
+                {
+                    if (i != e.RowIndex && dgvDanhBo["DanhBo", i].Value != null && dgvDanhBo["DanhBo", i].Value.ToString() != "" && dgvDanhBo["DanhBo", i].Value.ToString() == dgvDanhBo["DanhBo", e.RowIndex].Value.ToString())
+                    {
+                        MessageBox.Show("Danh Bộ đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    //if (_cTT.checkExist_ChiTiet(_dontu_ChiTiet.MaDon.Value, txtDanhBo.Text.Trim(), DateTime.Now) == true)
+                    //{
+                    //    MessageBox.Show("Danh Bộ " + item.Cells["DanhBo"].Value.ToString() + " đã Lập Tờ Trình trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    return;
+                    //}
+                }
+                string MaDon = dgvDanhBo["MaDon", e.RowIndex].Value.ToString();
+                DonTu_ChiTiet dontu_ChiTiet = null;
+                if (MaDon.Contains(".") == true)
+                {
+                    string[] MaDons = MaDon.Split('.');
+                    dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                }
+                else
+                {
+                    dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                }
+                //
+                if (dontu_ChiTiet != null)
+                {
+                    HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString());
+                    if (hoadon != null)
+                    {
+                        dgvDanhBo["DanhBo", e.RowIndex].Value = hoadon.DANHBA;
+                        dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
+                        dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                        dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH;
+                        dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB.Value.ToString();
+                        if (hoadon.DinhMucHN != null)
+                            dgvDanhBo["DinhMucHN", e.RowIndex].Value = hoadon.DinhMucHN.Value.ToString();
+                        dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM.Value.ToString();
+                        dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.Value.ToString();
+                        dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
+                        dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM.Value.ToString();
+                        dgvDanhBo["Phuong", e.RowIndex].Value = hoadon.Phuong;
+                        dgvDanhBo["Quan", e.RowIndex].Value = hoadon.Quan;
+                        dgvDanhBo["Hieu", e.RowIndex].Value = hoadon.HIEUDH;
+                        dgvDanhBo["Co", e.RowIndex].Value = hoadon.CoDH;
+                        dgvDanhBo["SoThan", e.RowIndex].Value = hoadon.SoThanDHN;
+                        dgvDanhBo["MaDonTong", e.RowIndex].Value = dontu_ChiTiet.MaDon.Value.ToString();
+                        dgvDanhBo["STT", e.RowIndex].Value = dontu_ChiTiet.STT.Value.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void dgvDanhBo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

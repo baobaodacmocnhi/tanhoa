@@ -30,7 +30,7 @@ namespace KTKS_DonKH.DAL.CongVan
             }
         }
 
-        public bool Them(CongVanDi item,DateTime CreateDate)
+        public bool Them(CongVanDi item, DateTime CreateDate)
         {
             try
             {
@@ -79,9 +79,9 @@ namespace KTKS_DonKH.DAL.CongVan
             }
         }
 
-        public bool CheckExist(string LoaiVanBan,string Ma,string NoiChuyen,DateTime CreateDate)
+        public bool CheckExist(string LoaiVanBan, string Ma, string NoiChuyen, DateTime CreateDate)
         {
-            return db.CongVanDis.Any(item => item.LoaiVanBan == LoaiVanBan && item.Ma == Ma &&item.NoiChuyen==NoiChuyen&& item.CreateDate.Value.Date == CreateDate.Date);
+            return db.CongVanDis.Any(item => item.LoaiVanBan == LoaiVanBan && item.Ma == Ma && item.NoiChuyen == NoiChuyen && item.CreateDate.Value.Date == CreateDate.Date);
         }
 
         public CongVanDi Get(int ID)
@@ -89,26 +89,26 @@ namespace KTKS_DonKH.DAL.CongVan
             return db.CongVanDis.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DataTable GetDS(DateTime FromCreateDate,int FromHour, DateTime ToCreateDate,int ToHour)
+        public DataTable GetDS(DateTime FromCreateDate, int FromHour, DateTime ToCreateDate, int ToHour)
         {
             DateTime FromDate = new DateTime(FromCreateDate.Year, FromCreateDate.Month, FromCreateDate.Day, FromHour, 0, 0);
             DateTime ToDate = new DateTime(ToCreateDate.Year, ToCreateDate.Month, ToCreateDate.Day, ToHour, 0, 0);
             return LINQToDataTable(db.CongVanDis.Where(item => item.CreateDate.Value >= FromDate && item.CreateDate.Value <= ToDate).ToList());
         }
 
-        public DataTable GetDS(int CreateBy,DateTime FromCreateDate, int FromHour, DateTime ToCreateDate, int ToHour)
+        public DataTable GetDS(int CreateBy, DateTime FromCreateDate, int FromHour, DateTime ToCreateDate, int ToHour)
         {
             DateTime FromDate = new DateTime(FromCreateDate.Year, FromCreateDate.Month, FromCreateDate.Day, FromHour, 0, 0);
             DateTime ToDate = new DateTime(ToCreateDate.Year, ToCreateDate.Month, ToCreateDate.Day, ToHour, 0, 0);
-            return LINQToDataTable(db.CongVanDis.Where(item => item.CreateBy==CreateBy && item.CreateDate.Value >= FromDate && item.CreateDate.Value <= ToDate).ToList());
+            return LINQToDataTable(db.CongVanDis.Where(item => item.CreateBy == CreateBy && item.CreateDate.Value >= FromDate && item.CreateDate.Value <= ToDate).ToList());
         }
 
         public DataTable GetDS(string DanhBo)
         {
-            return LINQToDataTable(db.CongVanDis.Where(item=>item.DanhBo==DanhBo).ToList());
+            return LINQToDataTable(db.CongVanDis.Where(item => item.DanhBo == DanhBo).ToList());
         }
 
-        public DataTable GetDS(int CreateBy,string DanhBo)
+        public DataTable GetDS(int CreateBy, string DanhBo)
         {
             return LINQToDataTable(db.CongVanDis.Where(item => item.CreateBy == CreateBy && item.DanhBo == DanhBo).ToList());
         }
@@ -121,6 +121,20 @@ namespace KTKS_DonKH.DAL.CongVan
         public DataTable GetDS_Ma(int CreateBy, string Ma)
         {
             return LINQToDataTable(db.CongVanDis.Where(item => item.CreateBy == CreateBy && item.Ma == Ma).ToList());
+        }
+
+        public DataTable GetDS_PhongDoi(DateTime FromCreateDate, int FromHour, DateTime ToCreateDate, int ToHour, string PhongDoi)
+        {
+            DateTime FromDate = new DateTime(FromCreateDate.Year, FromCreateDate.Month, FromCreateDate.Day, FromHour, 0, 0);
+            DateTime ToDate = new DateTime(ToCreateDate.Year, ToCreateDate.Month, ToCreateDate.Day, ToHour, 0, 0);
+            return LINQToDataTable(db.CongVanDis.Where(item => item.CreateDate.Value >= FromDate && item.CreateDate.Value <= ToDate && item.NoiChuyen == PhongDoi).ToList());
+        }
+
+        public DataTable GetDS_PhongDoi(int CreateBy, DateTime FromCreateDate, int FromHour, DateTime ToCreateDate, int ToHour, string PhongDoi)
+        {
+            DateTime FromDate = new DateTime(FromCreateDate.Year, FromCreateDate.Month, FromCreateDate.Day, FromHour, 0, 0);
+            DateTime ToDate = new DateTime(ToCreateDate.Year, ToCreateDate.Month, ToCreateDate.Day, ToHour, 0, 0);
+            return LINQToDataTable(db.CongVanDis.Where(item => item.CreateBy == CreateBy && item.CreateDate.Value >= FromDate && item.CreateDate.Value <= ToDate && item.NoiChuyen == PhongDoi).ToList());
         }
 
         public DataTable GetDSDonKH(decimal MaDon)

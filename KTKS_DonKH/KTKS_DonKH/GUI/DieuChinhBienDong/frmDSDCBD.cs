@@ -1994,7 +1994,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
                         {
                             DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
-                            if (ctdcbd.GhiChu != null && ctdcbd.GhiChu != "")
+                            if (ctdcbd.CongDung != null && ctdcbd.CongDung != "")
                             {
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
@@ -2006,7 +2006,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["HopDong"] = ctdcbd.HopDong;
                                 dr["HoTen"] = ctdcbd.HoTen;
                                 dr["DiaChi"] = ctdcbd.DiaChi;
-                                dr["ThongTin"] = ctdcbd.GhiChu;
+                                dr["ThongTin"] = ctdcbd.CongDung;
                                 string[] HieuLucKys = ctdcbd.HieuLucKy.Split('/');
                                 GiaNuoc2 gn = _cGiaNuoc.getGiaNuoc(int.Parse(HieuLucKys[1]));
                                 dr["TienNuocSH"] = gn.SHTM;
@@ -2106,7 +2106,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
                     {
                         DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
-                        if (ctdcbd.GhiChu != null && ctdcbd.GhiChu != "")
+                        if (ctdcbd.CongDung != null && ctdcbd.CongDung != "")
                         {
                             if (flag == true)
                             {
