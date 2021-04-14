@@ -103,10 +103,10 @@
         <elementListCompartment Id="69193ff6-7d15-4e82-a28e-d33bc010ae05" absoluteBounds="12.39, 1.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="50ebbc2b-df62-49ed-b26b-3dd6aa0370fc" absoluteBounds="12.375, 4.375, 2, 3.5016097005208326">
+    <classShape Id="ea7e4e55-e5be-415c-8417-14c73e201eec" absoluteBounds="12.375, 4.5, 2, 3.6939111328124996">
       <DataClassMoniker Name="/dbKeToanDataContext/GiaiTrachTienNuoc_Xuat" />
       <nestedChildShapes>
-        <elementListCompartment Id="9b051da7-6d49-43ee-b766-68f15198da83" absoluteBounds="12.39, 4.835, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="099b0ef6-6be6-4537-82cb-736fe2b8a6ca" absoluteBounds="12.39, 4.96, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

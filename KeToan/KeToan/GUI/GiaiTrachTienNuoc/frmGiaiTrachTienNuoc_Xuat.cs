@@ -40,6 +40,7 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
                 {
                     TongCong += decimal.Parse(item.Cells["TongCong"].Value.ToString());
                 }
+                txtTong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvHoaDon.RowCount);
                 txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
             catch (Exception ex)
@@ -82,10 +83,11 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
 
                             //access the cells
                             for (int row = 7; row <= worksheet.UsedRange.Rows.Count; ++row)
-                                if (valueArray[row, 6].ToString() != "" && int.Parse(valueArray[row, 9].ToString()) > 0)
+                                if (valueArray[row, 6] != null && valueArray[row, 6].ToString() != "" && valueArray[row, 9] != null && int.Parse(valueArray[row, 9].ToString()) > 0)
                                 {
                                     GiaiTrachTienNuoc_Xuat en = new GiaiTrachTienNuoc_Xuat();
 
+                                    en.HoTen = valueArray[row, 2].ToString();
                                     en.DanhBo = valueArray[row, 3].ToString();
                                     en.Ky = int.Parse(valueArray[row, 6].ToString());
                                     if (valueArray[row, 7].ToString() != "")

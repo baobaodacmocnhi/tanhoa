@@ -47,6 +47,7 @@
             this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXoa = new System.Windows.Forms.Button();
             this.txtTongCong = new System.Windows.Forms.TextBox();
+            this.txtTong = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -202,16 +203,26 @@
             // 
             // txtTongCong
             // 
+            this.txtTongCong.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTongCong.Location = new System.Drawing.Point(524, 609);
             this.txtTongCong.Name = "txtTongCong";
             this.txtTongCong.Size = new System.Drawing.Size(100, 20);
             this.txtTongCong.TabIndex = 89;
+            // 
+            // txtTong
+            // 
+            this.txtTong.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTong.Location = new System.Drawing.Point(12, 609);
+            this.txtTong.Name = "txtTong";
+            this.txtTong.Size = new System.Drawing.Size(50, 20);
+            this.txtTong.TabIndex = 90;
             // 
             // frmGiaiTrachTienNuoc_Nhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(851, 683);
+            this.Controls.Add(this.txtTong);
             this.Controls.Add(this.txtTongCong);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.dgvHoaDon);
@@ -247,5 +258,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NganHang;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTien;
         private System.Windows.Forms.TextBox txtTongCong;
+        private System.Windows.Forms.TextBox txtTong;
     }
 }

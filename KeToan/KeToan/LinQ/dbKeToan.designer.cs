@@ -4090,6 +4090,8 @@ namespace KeToan.LinQ
 		
 		private System.Nullable<System.DateTime> _NgayPhieuThu;
 		
+		private string _HoTen;
+		
 		private string _DanhBo;
 		
 		private System.Nullable<int> _Ky;
@@ -4122,6 +4124,8 @@ namespace KeToan.LinQ
     partial void OnSoPhieuThuChanged();
     partial void OnNgayPhieuThuChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayPhieuThuChanged();
+    partial void OnHoTenChanging(string value);
+    partial void OnHoTenChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
     partial void OnKyChanging(System.Nullable<int> value);
@@ -4207,6 +4211,26 @@ namespace KeToan.LinQ
 					this._NgayPhieuThu = value;
 					this.SendPropertyChanged("NgayPhieuThu");
 					this.OnNgayPhieuThuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(200)")]
+		public string HoTen
+		{
+			get
+			{
+				return this._HoTen;
+			}
+			set
+			{
+				if ((this._HoTen != value))
+				{
+					this.OnHoTenChanging(value);
+					this.SendPropertyChanging();
+					this._HoTen = value;
+					this.SendPropertyChanged("HoTen");
+					this.OnHoTenChanged();
 				}
 			}
 		}
