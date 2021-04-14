@@ -35,6 +35,7 @@
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnXuatExcelBangKeMoi = new System.Windows.Forms.Button();
             this.btnXuatExcelBangKe = new System.Windows.Forms.Button();
             this.dateGiaiTrach = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,6 +43,8 @@
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnXuatExcelDSChuyenKhoan = new System.Windows.Forms.Button();
+            this.backgroundWorker_BangKe = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker_BangKeMoi = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -109,15 +112,26 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnXuatExcelBangKeMoi);
             this.groupBox2.Controls.Add(this.btnXuatExcelBangKe);
             this.groupBox2.Controls.Add(this.dateGiaiTrach);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(12, 70);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(426, 52);
+            this.groupBox2.Size = new System.Drawing.Size(523, 52);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bảng Kê";
+            // 
+            // btnXuatExcelBangKeMoi
+            // 
+            this.btnXuatExcelBangKeMoi.Location = new System.Drawing.Point(422, 16);
+            this.btnXuatExcelBangKeMoi.Name = "btnXuatExcelBangKeMoi";
+            this.btnXuatExcelBangKeMoi.Size = new System.Drawing.Size(90, 23);
+            this.btnXuatExcelBangKeMoi.TabIndex = 29;
+            this.btnXuatExcelBangKeMoi.Text = "Xuất Excel 2";
+            this.btnXuatExcelBangKeMoi.UseVisualStyleBackColor = true;
+            this.btnXuatExcelBangKeMoi.Click += new System.EventHandler(this.btnXuatExcelBangKeMoi_Click);
             // 
             // btnXuatExcelBangKe
             // 
@@ -186,6 +200,16 @@
             this.btnXuatExcelDSChuyenKhoan.UseVisualStyleBackColor = true;
             this.btnXuatExcelDSChuyenKhoan.Click += new System.EventHandler(this.btnXuatExcelDSChuyenKhoan_Click);
             // 
+            // backgroundWorker_BangKe
+            // 
+            this.backgroundWorker_BangKe.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_BangKe_DoWork);
+            this.backgroundWorker_BangKe.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_BangKe_RunWorkerCompleted);
+            // 
+            // backgroundWorker_BangKeMoi
+            // 
+            this.backgroundWorker_BangKeMoi.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_BangKeMoi_DoWork);
+            this.backgroundWorker_BangKeMoi.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_BangKeMoi_RunWorkerCompleted);
+            // 
             // frmBaoCaoChuyenKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,5 +247,8 @@
         private System.Windows.Forms.Button btnXuatExcelDSChuyenKhoan;
         private System.Windows.Forms.ComboBox cmbNam;
         private System.Windows.Forms.Label label5;
+        private System.ComponentModel.BackgroundWorker backgroundWorker_BangKe;
+        private System.Windows.Forms.Button btnXuatExcelBangKeMoi;
+        private System.ComponentModel.BackgroundWorker backgroundWorker_BangKeMoi;
     }
 }

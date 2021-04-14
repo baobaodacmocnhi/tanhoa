@@ -577,16 +577,16 @@ namespace ThuTien.DAL.Doi
 
         public List<HOADON> getDSTon_KhongChanTienDu_KhongDCHD(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false &&  ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).Count() > 0)
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false &&  ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).OrderBy(item => item.ID_HOADON).ToList();
+            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false && ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).Count() > 0)
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false && ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).OrderBy(item => item.ID_HOADON).ToList();
             else
                 return null;
         }
 
         public List<HOADON> GetDSTon_CoChanTienDu(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true) &&  ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).Count() > 0)
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true) &&  ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).ToList().OrderBy(item => item.ID_HOADON).ToList();
+            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true) && ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).Count() > 0)
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true) && ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).ToList().OrderBy(item => item.ID_HOADON).ToList();
             else
                 return null;
         }
@@ -11125,6 +11125,19 @@ namespace ThuTien.DAL.Doi
         public DateTime GetNgayGiaiTrach(string SoHoaDon)
         {
             return _db.HOADONs.SingleOrDefault(item => item.SOHOADON == SoHoaDon).NGAYGIAITRACH.Value;
+        }
+
+        public DataTable getXuatExcelBangKe(DateTime NgayGiaiTrach)
+        {
+            string sql = "select bk.*,DanhBo=DANHBA,HoTen=TENKH,Ky,GIABAN,ThueGTGT=THUE,PhiBVMT=hd.PHI,TONGCONG,TienMat from HOADON hd"
+                        + " left join"
+                        + " ("
+                        + " 	select DanhBo,SoPhieuThu,NgayPhieuThu,SoTien,ROW_NUMBER() OVER (PARTITION BY DanhBo ORDER BY CreateDate desc) AS RowNum from TT_BangKe"
+                        + " 	where CAST(CreateDate as date)<='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
+                        + " ) bk on bk.DanhBo=hd.DANHBA and RowNum=1"
+                        + " where DangNgan_ChuyenKhoan=1 and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
+                        + " order by NGAYGIAITRACH asc";
+            return ExecuteQuery_DataTable(sql);
         }
 
         //public List<HOADON> GetDSBySoPhatHanhNamsKyDot(int MaTo, string loai, decimal tusophathanh, decimal densophathanh, int nam, int ky, int dot)
