@@ -181,7 +181,7 @@ namespace GIAYKHEN
         {
             cmbGiayKhen.SelectedIndex = 0;
             cmbNhom.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2020, 12, 03);
+            txtNgay.Value = new DateTime(2021, 04, 12);
         }
 
     }
