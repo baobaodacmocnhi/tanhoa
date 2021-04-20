@@ -1125,7 +1125,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             DonTu_LichSu dtls = _cDonTu.get_LichSu("DCBD_ChiTietHoaDon", (int)_ctdchd.MaCTDCHD);
                             if (dtls != null)
                             {
-                                _cDonTu.Xoa_LichSu(dtls);
+                                _cDonTu.Xoa_LichSu(dtls, true);
                             }
                             if (_cDCBD.XoaDCHD(_ctdchd))
                             {

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
+using System.Transactions;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
@@ -182,7 +183,7 @@ namespace KTKS_DonKH.GUI.DonTu
             if (txtDanhBo.Text.Trim() != "")
             {
                 dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
-                if(_cDonTu.checkExist_TonCu(txtDanhBo.Text.Trim().Replace(" ", ""))==true)
+                if (_cDonTu.checkExist_TonCu(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
                     MessageBox.Show("Danh Bộ này có đơn tồn cũ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -774,54 +775,59 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        if (CTaiKhoan.Admin == true || CTaiKhoan.TruongPhong == true)
+                        using (TransactionScope scope = new TransactionScope())
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()));
-                            int MaDon = dtls.MaDon.Value, STT = dtls.STT.Value;
-                            bool HoanThanh = dtls.HoanThanh;
-                            if (_cDonTu.Xoa_LichSu(dtls))
+                            if (CTaiKhoan.Admin == true || CTaiKhoan.TruongPhong == true)
                             {
-                                if (HoanThanh == true)
+                                DonTu_LichSu dtls = _cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()));
+                                int MaDon = dtls.MaDon.Value, STT = dtls.STT.Value;
+                                bool HoanThanh = dtls.HoanThanh;
+                                if (_cDonTu.Xoa_LichSu(dtls, false))
                                 {
-                                    DonTu_ChiTiet dtct = _cDonTu.get_ChiTiet(MaDon, STT);
-                                    dtct.HoanThanh = false;
-                                    dtct.HoanThanh_Ngay = null;
-                                    dtct.HoanThanh_GhiChu = null;
-                                    _cDonTu.SubmitChanges();
+                                    if (HoanThanh == true)
+                                    {
+                                        DonTu_ChiTiet dtct = _cDonTu.get_ChiTiet(MaDon, STT);
+                                        dtct.HoanThanh = false;
+                                        dtct.HoanThanh_Ngay = null;
+                                        dtct.HoanThanh_GhiChu = null;
+                                        _cDonTu.SubmitChanges();
+                                    }
+                                    scope.Complete();
+                                    //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    ////LoadLichSu();
+                                    //_cDonTu.Refresh();
+                                    //KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
+                                    //txtMaDon_KeyPress(sender, arg);
                                 }
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                //LoadLichSu();
-                                _cDonTu.Refresh();
-                                KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
-                                txtMaDon_KeyPress(sender, arg);
+                                else
+                                    MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             else
-                                MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()));
-                            int MaDon = dtls.MaDon.Value, STT = dtls.STT.Value;
-                            bool HoanThanh = dtls.HoanThanh;
-                            if (_cDonTu.Xoa_LichSu(dtls, CTaiKhoan.MaUser))
                             {
-                                if (HoanThanh == true)
+                                DonTu_LichSu dtls = _cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()));
+                                int MaDon = dtls.MaDon.Value, STT = dtls.STT.Value;
+                                bool HoanThanh = dtls.HoanThanh;
+                                if (_cDonTu.Xoa_LichSu(dtls, CTaiKhoan.MaUser))
                                 {
-                                    DonTu_ChiTiet dtct = _cDonTu.get_ChiTiet(MaDon, STT);
-                                    dtct.HoanThanh = false;
-                                    dtct.HoanThanh_Ngay = null;
-                                    dtct.HoanThanh_GhiChu = null;
-                                    _cDonTu.SubmitChanges();
+                                    if (HoanThanh == true)
+                                    {
+                                        DonTu_ChiTiet dtct = _cDonTu.get_ChiTiet(MaDon, STT);
+                                        dtct.HoanThanh = false;
+                                        dtct.HoanThanh_Ngay = null;
+                                        dtct.HoanThanh_GhiChu = null;
+                                        _cDonTu.SubmitChanges();
+                                    }
+                                    scope.Complete();
                                 }
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                //LoadLichSu();
-                                _cDonTu.Refresh();
-                                KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
-                                txtMaDon_KeyPress(sender, arg);
+                                else
+                                    MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                            else
-                                MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //LoadLichSu();
+                        _cDonTu.Refresh();
+                        KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
+                        txtMaDon_KeyPress(sender, arg);
                     }
                 }
                 else
@@ -925,7 +931,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     foreach (DataGridViewRow item in dgvLichSuDonTu_Update.SelectedRows)
                     {
                         DonTu_LichSu en = _cDonTu.get_LichSu(int.Parse(item.Cells["ID_Update"].Value.ToString()));
-                        _cDonTu.Xoa_LichSu(en);
+                        _cDonTu.Xoa_LichSu(en, true);
                     }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnXem_Update.PerformClick();

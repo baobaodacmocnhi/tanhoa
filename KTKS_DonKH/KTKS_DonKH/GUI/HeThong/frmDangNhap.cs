@@ -73,7 +73,8 @@ namespace KTKS_DonKH.GUI.HeThong
                     CTaiKhoan.MaPhong = nguoidung.MaPhong.Value;
                     CTaiKhoan.TenPhong = nguoidung.Phong.Name;
                     CTaiKhoan.KyHieuPhong = nguoidung.Phong.KyHieu;
-                    CTaiKhoan.NguoiKy = nguoidung.Phong.Users.SingleOrDefault(item => item.ChuKy == true).HoTen;
+                    CTaiKhoan.ChucVu = nguoidung.Phong.Users.SingleOrDefault(item => item.MaPhong.Value == nguoidung.MaPhong.Value && item.ChuKy == true).ChucVu;
+                    CTaiKhoan.NguoiKy = nguoidung.Phong.Users.SingleOrDefault(item => item.MaPhong.Value == nguoidung.MaPhong.Value && item.ChuKy == true).HoTen;
                     if (nguoidung.MaNhom != null)
                         CTaiKhoan.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(true, nguoidung.MaNhom.Value);
                     CTaiKhoan.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(true, nguoidung.MaU);

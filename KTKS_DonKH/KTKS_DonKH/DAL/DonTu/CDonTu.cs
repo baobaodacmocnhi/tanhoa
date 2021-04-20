@@ -977,12 +977,13 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public bool Xoa_LichSu(DonTu_LichSu entity)
+        public bool Xoa_LichSu(DonTu_LichSu entity, bool refresh)
         {
             try
             {
                 db.DonTu_LichSus.DeleteOnSubmit(entity);
-                db.SubmitChanges();
+                if (refresh == true)
+                    db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)

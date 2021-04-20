@@ -557,7 +557,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             DonTu_LichSu dtls = _cDonTu.get_LichSu("CHDB_Phieu", (int)_ycchdb.MaYCCHDB);
                             if (dtls != null)
                             {
-                                _cDonTu.Xoa_LichSu(dtls);
+                                _cDonTu.Xoa_LichSu(dtls, true);
                             }
                             if (_cCHDB.XoaPhieuHuy(_ycchdb))
                             {

@@ -782,7 +782,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             DonTu_LichSu dtls = _cDonTu.get_LichSu("KTXM_ChiTiet", (int)_ctktxm.MaCTKTXM);
                             if (dtls != null)
                             {
-                                _cDonTu.Xoa_LichSu(dtls);
+                                _cDonTu.Xoa_LichSu(dtls, true);
                             }
                             if (_cKTXM.XoaCT(_ctktxm))
                             {

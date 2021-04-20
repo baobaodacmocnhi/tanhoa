@@ -45,6 +45,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["TongCongMoi"] = item["TongTien"];
                 dr["NhanVien"] = CTaiKhoan.HoTen;
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
             }
@@ -87,6 +88,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["TongCongMoi"] = item["TongTien"];
                 dr["NhanVien"] = CTaiKhoan.HoTen;
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
             }
@@ -129,6 +131,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["TongCongMoi"] = item["TongTien"];
                 dr["NhanVien"] = CTaiKhoan.HoTen;
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
             }
@@ -156,6 +159,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["TongCongMoi"] = item["TongTien"];
                 dr["NhanVien"] = CTaiKhoan.HoTen;
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
             }

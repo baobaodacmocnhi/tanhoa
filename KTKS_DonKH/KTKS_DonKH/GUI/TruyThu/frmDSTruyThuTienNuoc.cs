@@ -11,6 +11,7 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.TruyThu;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.TruyThu
 {
@@ -156,6 +157,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                 dr["TieuThuMoi"] = item.Cells["Tongm3"].Value.ToString();
                 dr["TongCongMoi"] = item.Cells["TongTien"].Value.ToString();
+                dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
             }

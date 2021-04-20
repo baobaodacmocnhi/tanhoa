@@ -2034,17 +2034,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     else
                                         if (ctdcbd.DCBD.MaDonTBC != null)
                                             dr["MaDon"] = "TBC" + ctdcbd.DCBD.MaDonTBC.ToString().Insert(ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
-                                if (radTruongPhong.Checked == true)
-                                {
-                                    dr["ChucVu"] = "TRƯỞNG";
-                                    dr["NguoiKy"] = radTruongPhong.Text;
-                                }
-                                else
-                                    if (radPhoPhong.Checked == true)
-                                    {
-                                        dr["ChucVu"] = "PHÓ";
-                                        dr["NguoiKy"] = radPhoPhong.Text;
-                                    }
+                                //if (radTruongPhong.Checked == true)
+                                //{
+                                //    dr["ChucVu"] = "TRƯỞNG";
+                                //    dr["NguoiKy"] = radTruongPhong.Text;
+                                //}
+                                //else
+                                //    if (radPhoPhong.Checked == true)
+                                //    {
+                                //        dr["ChucVu"] = "PHÓ";
+                                //        dr["NguoiKy"] = radPhoPhong.Text;
+                                //    }
+                                dr["ChucVu"] = CTaiKhoan.ChucVu;
+                                dr["NguoiKy"] = CTaiKhoan.HoTen;
                                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 

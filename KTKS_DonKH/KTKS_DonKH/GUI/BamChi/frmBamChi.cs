@@ -815,7 +815,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             DonTu_LichSu dtls = _cDonTu.get_LichSu("BamChi_ChiTiet", (int)_ctbamchi.MaCTBC);
                             if (dtls != null)
                             {
-                                _cDonTu.Xoa_LichSu(dtls);
+                                _cDonTu.Xoa_LichSu(dtls, true);
                             }
                             if (_cBamChi.XoaCT(_ctbamchi))
                             {

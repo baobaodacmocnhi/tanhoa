@@ -526,7 +526,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             DonTu_LichSu dtls = _cDonTu.get_LichSu("ToTrinh_ChiTiet", (int)_cttt.IDCT);
                             if (dtls != null)
                             {
-                                _cDonTu.Xoa_LichSu(dtls);
+                                _cDonTu.Xoa_LichSu(dtls,true);
                             }
                             if (_cTT.Xoa_ChiTiet(_cttt))
                             {

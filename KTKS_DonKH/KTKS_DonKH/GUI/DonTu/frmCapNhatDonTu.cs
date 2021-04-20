@@ -656,7 +656,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     {
                         if (CTaiKhoan.TruongPhong == true || CTaiKhoan.TruongPhong == true)
                         {
-                            if (_cDonTu.Xoa_LichSu(_cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()))))
+                            if (_cDonTu.Xoa_LichSu(_cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString())), true))
                             {
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 LoadLichSu();
@@ -773,7 +773,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     foreach (DataGridViewRow item in dgvLichSuDonTu_Update.SelectedRows)
                     {
                         DonTu_LichSu en = _cDonTu.get_LichSu(int.Parse(item.Cells["ID_Update"].Value.ToString()));
-                        _cDonTu.Xoa_LichSu(en);
+                        _cDonTu.Xoa_LichSu(en, true);
                     }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnXem_Update.PerformClick();

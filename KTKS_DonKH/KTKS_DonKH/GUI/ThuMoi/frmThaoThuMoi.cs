@@ -556,7 +556,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             DonTu_LichSu dtls = _cDonTu.get_LichSu("ThuMoi_ChiTiet", (int)_thumoi.IDCT);
                             if (dtls != null)
                             {
-                                _cDonTu.Xoa_LichSu(dtls);
+                                _cDonTu.Xoa_LichSu(dtls, true);
                             }
                             if (_cThuMoi.xoa_ChiTiet(_thumoi))
                             {

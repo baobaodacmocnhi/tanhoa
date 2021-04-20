@@ -150,6 +150,13 @@ namespace KTKS_DonKH.DAL.QuanTri
             set { CTaiKhoan._KyHieuPhong = value; }
         }
 
+        static string _ChucVu = "";
+        public static string ChucVu
+        {
+            get { return CTaiKhoan._ChucVu; }
+            set { CTaiKhoan._ChucVu = value; }
+        }
+
         static string _NguoiKy = "";
         public static string NguoiKy
         {

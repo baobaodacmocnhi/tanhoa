@@ -1513,7 +1513,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             DonTu_LichSu dtls = _cDonTu.get_LichSu("TruyThuTienNuoc_ChiTiet", (int)_cttttn.IDCT);
                             if (dtls != null)
                             {
-                                _cDonTu.Xoa_LichSu(dtls);
+                                _cDonTu.Xoa_LichSu(dtls, true);
                             }
                             if (_cTTTN.Xoa_ChiTiet(_cttttn))
                             {
@@ -1580,6 +1580,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["SoTien1m3"] = _cttttn.SoTien1m3 * 1.15;
                     dr["m3BinhQuan"] = item.m3BinhQuan;
                     dr["NhanVien"] = CTaiKhoan.HoTen;
+                    dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
                     dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                 }
@@ -1620,6 +1621,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         dr["TongCongMoi"] = item.Cells["TongCong_Moi"].Value.ToString();
                         dr["TangGiam"] = item.Cells["TangGiam"].Value.ToString();
                         dr["NhanVien"] = CTaiKhoan.HoTen;
+                        dr["NguoiKy"] = CTaiKhoan.NguoiKy;
                         //TruyThuTienNuoc_ChiTiet cttttn = new TruyThuTienNuoc_ChiTiet();
                         //if (_dontu_ChiTiet != null)
                         //    cttttn = _cTTTN.get_ChiTiet(_dontu_ChiTiet.MaDon.Value);
@@ -1688,6 +1690,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["SoTien1m3"] = item.TruyThuTienNuoc_ChiTiet.SoTien1m3 * 1.15;
 
                     dr["NhanVien"] = CTaiKhoan.HoTen;
+                    dr["NguoiKy"] = CTaiKhoan.NguoiKy;
                     dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                 }
             }
@@ -1734,6 +1737,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         //if (item.Cells["SoTien1m3"].Value != null)
                         //    dr["SoTien1m3"] = item.Cells["SoTien1m3"].Value.ToString();
                         dr["NhanVien"] = CTaiKhoan.HoTen;
+                        dr["NguoiKy"] = CTaiKhoan.NguoiKy;
                         dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                     }
             }
@@ -1976,7 +1980,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             DonTu_LichSu dtls = _cDonTu.get_LichSu("TruyThuTienNuoc_ThuMoi", (int)entity.IDCT);
                             if (dtls != null)
                             {
-                                _cDonTu.Xoa_LichSu(dtls);
+                                _cDonTu.Xoa_LichSu(dtls, true);
                             }
                             if (_cTTTN.Xoa_ThuMoi(entity))
                             {
@@ -2010,6 +2014,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["VaoLuc"] = dgvThuMoi.SelectedRows[0].Cells["VaoLuc"].Value;
                 dr["VeViec"] = dgvThuMoi.SelectedRows[0].Cells["VeViec"].Value;
                 dr["Lan"] = dgvThuMoi.SelectedRows[0].Cells["Lan"].Value;
+                dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
 
