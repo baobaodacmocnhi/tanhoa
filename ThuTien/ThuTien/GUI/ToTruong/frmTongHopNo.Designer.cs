@@ -107,6 +107,7 @@
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMuc_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMuc_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HieuLucKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHopNo)).BeginInit();
@@ -182,6 +183,7 @@
             this.TongCong,
             this.DinhMuc_Cu,
             this.DinhMuc_Moi,
+            this.HieuLucKy,
             this.TienDu});
             this.dgvHoaDon.Location = new System.Drawing.Point(0, 64);
             this.dgvHoaDon.Name = "dgvHoaDon";
@@ -784,6 +786,13 @@
             this.DinhMuc_Moi.Name = "DinhMuc_Moi";
             this.DinhMuc_Moi.Width = 50;
             // 
+            // HieuLucKy
+            // 
+            this.HieuLucKy.DataPropertyName = "HieuLucKy";
+            this.HieuLucKy.HeaderText = "Hiệu Lực Kỳ";
+            this.HieuLucKy.Name = "HieuLucKy";
+            this.HieuLucKy.Width = 60;
+            // 
             // TienDu
             // 
             this.TienDu.DataPropertyName = "TienDu";
@@ -924,6 +933,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc_Cu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc_Moi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HieuLucKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn TienDu;
     }
 }

@@ -212,6 +212,8 @@ namespace ThuTien.GUI.ToTruong
                                 row["DinhMuc_Cu"] = dcbd.DinhMuc;
                             if (dcbd.DinhMuc_BD != null)
                                 row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
+                            if (dcbd.HieuLucKy != null)
+                                row["HieuLucKy"] = dcbd.HieuLucKy;
                         }
                         row["TienDu"] = _cTienDu.GetTienDu(item["DanhBo"].ToString()) * -1;
                         row["TuNgay"] = item["TuNgay"];
@@ -278,6 +280,8 @@ namespace ThuTien.GUI.ToTruong
                                 row["DinhMuc_Cu"] = dcbd.DinhMuc;
                             if (dcbd.DinhMuc_BD != null)
                                 row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
+                            if (dcbd.HieuLucKy != null)
+                                row["HieuLucKy"] = dcbd.HieuLucKy;
                         }
                         row["TienDu"] = _cTienDu.GetTienDu(hoadon.DANHBA) * -1;
                         row["TuNgay"] = docso.TuNgay.Value;

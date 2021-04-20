@@ -3347,6 +3347,8 @@ namespace ThuTien.BaoCao {
             
             private global::System.Data.DataColumn columnChuKyImage;
             
+            private global::System.Data.DataColumn columnNguoiKy;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PhieuTamThuDataTable() {
@@ -3518,6 +3520,14 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NguoiKyColumn {
+                get {
+                    return this.columnNguoiKy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3570,7 +3580,8 @@ namespace ThuTien.BaoCao {
                         string NhanVienThuTien, 
                         string Cat, 
                         bool ChuKy, 
-                        string ChuKyImage) {
+                        string ChuKyImage, 
+                        string NguoiKy) {
                 PhieuTamThuRow rowPhieuTamThuRow = ((PhieuTamThuRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SoPhieu,
@@ -3589,7 +3600,8 @@ namespace ThuTien.BaoCao {
                         NhanVienThuTien,
                         Cat,
                         ChuKy,
-                        ChuKyImage};
+                        ChuKyImage,
+                        NguoiKy};
                 rowPhieuTamThuRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPhieuTamThuRow);
                 return rowPhieuTamThuRow;
@@ -3629,6 +3641,7 @@ namespace ThuTien.BaoCao {
                 this.columnCat = base.Columns["Cat"];
                 this.columnChuKy = base.Columns["ChuKy"];
                 this.columnChuKyImage = base.Columns["ChuKyImage"];
+                this.columnNguoiKy = base.Columns["NguoiKy"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3668,6 +3681,8 @@ namespace ThuTien.BaoCao {
                 base.Columns.Add(this.columnChuKy);
                 this.columnChuKyImage = new global::System.Data.DataColumn("ChuKyImage", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnChuKyImage);
+                this.columnNguoiKy = new global::System.Data.DataColumn("NguoiKy", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNguoiKy);
                 this.columnChuKy.DefaultValue = ((bool)(false));
             }
             
@@ -15932,6 +15947,22 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NguoiKy {
+                get {
+                    try {
+                        return ((string)(this[this.tablePhieuTamThu.NguoiKyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NguoiKy\' in table \'PhieuTamThu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePhieuTamThu.NguoiKyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsSoPhieuNull() {
                 return this.IsNull(this.tablePhieuTamThu.SoPhieuColumn);
             }
@@ -16132,6 +16163,18 @@ namespace ThuTien.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetChuKyImageNull() {
                 this[this.tablePhieuTamThu.ChuKyImageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNguoiKyNull() {
+                return this.IsNull(this.tablePhieuTamThu.NguoiKyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNguoiKyNull() {
+                this[this.tablePhieuTamThu.NguoiKyColumn] = global::System.Convert.DBNull;
             }
         }
         
