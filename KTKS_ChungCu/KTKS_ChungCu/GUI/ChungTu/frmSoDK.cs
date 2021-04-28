@@ -100,6 +100,8 @@ namespace KTKS_ChungCu.GUI.ChungTu
                     txtHoTen_Cat_YCC1.Text = _dsct.CatNK_HoTen;
                     txtDiaChiKH_Cat_YCC1.Text = _dsct.CatNK_DiaChi;
                     txtSoNKCat_YCC1.Text = _dsct.CatNK_SoNKCat.ToString();
+                    txtMaCT_YCC1.Text = _dsct.CatNK_MaCT;
+                    txtGhiChu_YCC1.Text = _dsct.CatNK_GhiChu;
                 }
                 if (_dsct.YeuCauCat2)
                 {
@@ -113,6 +115,8 @@ namespace KTKS_ChungCu.GUI.ChungTu
                     txtHoTen_Cat_YCC2.Text = _dsct.CatNK_HoTen2;
                     txtDiaChiKH_Cat_YCC2.Text = _dsct.CatNK_DiaChi2;
                     txtSoNKCat_YCC2.Text = _dsct.CatNK_SoNKCat2.ToString();
+                    txtMaCT_YCC2.Text = _dsct.CatNK_MaCT2;
+                    txtGhiChu_YCC2.Text = _dsct.CatNK_GhiChu2;
                 }
                 if (_dsct.YeuCauCat3)
                 {
@@ -125,6 +129,8 @@ namespace KTKS_ChungCu.GUI.ChungTu
                     txtHoTen_Cat_YCC3.Text = _dsct.CatNK_HoTen3;
                     txtDiaChiKH_Cat_YCC3.Text = _dsct.CatNK_DiaChi3;
                     txtSoNKCat_YCC3.Text = _dsct.CatNK_SoNKCat3.ToString();
+                    txtMaCT_YCC3.Text = _dsct.CatNK_MaCT3;
+                    txtGhiChu_YCC3.Text = _dsct.CatNK_GhiChu3;
                 }
                 if (_dsct.YeuCauCat4)
                 {
@@ -137,6 +143,8 @@ namespace KTKS_ChungCu.GUI.ChungTu
                     txtHoTen_Cat_YCC4.Text = _dsct.CatNK_HoTen4;
                     txtDiaChiKH_Cat_YCC4.Text = _dsct.CatNK_DiaChi4;
                     txtSoNKCat_YCC4.Text = _dsct.CatNK_SoNKCat4.ToString();
+                    txtMaCT_YCC4.Text = _dsct.CatNK_MaCT4;
+                    txtGhiChu_YCC4.Text = _dsct.CatNK_GhiChu4;
                 }
                 if (_dsct.YeuCauCat5)
                 {
@@ -149,6 +157,8 @@ namespace KTKS_ChungCu.GUI.ChungTu
                     txtHoTen_Cat_YCC5.Text = _dsct.CatNK_HoTen5;
                     txtDiaChiKH_Cat_YCC5.Text = _dsct.CatNK_DiaChi5;
                     txtSoNKCat_YCC5.Text = _dsct.CatNK_SoNKCat5.ToString();
+                    txtMaCT_YCC5.Text = _dsct.CatNK_MaCT5;
+                    txtGhiChu_YCC5.Text = _dsct.CatNK_GhiChu5;
                 }
             }
             catch (Exception ex)

@@ -96,6 +96,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
+            this.chkAnGhiChu = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHangChungCu)).BeginInit();
@@ -561,7 +562,7 @@
             this.toolStripStatusLabel1.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripStatusLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(474, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(469, 17);
             this.toolStripStatusLabel1.Text = "Bản quyền(2014) thuộc Công ty TNHH MTV Cấp Nước Tân Hòa. Được P.CNTT phát triển";
             // 
             // txtNoiDungTimKiem
@@ -727,12 +728,23 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
+            // chkAnGhiChu
+            // 
+            this.chkAnGhiChu.AutoSize = true;
+            this.chkAnGhiChu.Location = new System.Drawing.Point(1248, 112);
+            this.chkAnGhiChu.Name = "chkAnGhiChu";
+            this.chkAnGhiChu.Size = new System.Drawing.Size(97, 21);
+            this.chkAnGhiChu.TabIndex = 26;
+            this.chkAnGhiChu.Text = "Ẩn Ghi Chú";
+            this.chkAnGhiChu.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1360, 710);
+            this.Controls.Add(this.chkAnGhiChu);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.cmbTimTheo);
@@ -838,6 +850,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.TextBox txtMLT;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.CheckBox chkAnGhiChu;
     }
 }
 

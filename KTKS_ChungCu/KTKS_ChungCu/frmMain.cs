@@ -341,6 +341,7 @@ namespace KTKS_ChungCu
                     dr["MaCT"] = dgvKhachHangChungCu["MaCT", i].Value.ToString();
                     dr["SoNKTong"] = _cDSCT.GetTongNKDangKy(txtDanhBo.Text.Trim());
                     dr["SoNKDangKy"] = dgvKhachHangChungCu["SoNKDangKy", i].Value.ToString();
+                    if(chkAnGhiChu.Checked==false)
                     dr["GhiChu"] = dgvKhachHangChungCu["GhiChu", i].Value.ToString();
                     dr["Lo"] = dgvKhachHangChungCu["Lo", i].Value.ToString();
                     dr["Phong"] = dgvKhachHangChungCu["Phong", i].Value.ToString();
