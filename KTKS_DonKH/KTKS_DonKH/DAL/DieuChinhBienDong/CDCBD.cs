@@ -1473,6 +1473,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCBD.PhieuDuocKy,
                                 itemCTDCBD.NguoiKy,
                                 itemCTDCBD.HieuLucKy,
+                                itemCTDCBD.GhiChu,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -1674,6 +1675,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCBD.PhieuDuocKy,
                                 itemCTDCBD.NguoiKy,
                                 itemCTDCBD.HieuLucKy,
+                                itemCTDCBD.GhiChu,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -1730,6 +1732,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCBD.PhieuDuocKy,
                                 itemCTDCBD.NguoiKy,
                                 itemCTDCBD.HieuLucKy,
+                                itemCTDCBD.GhiChu,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -1779,6 +1782,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCBD.PhieuDuocKy,
                                 itemCTDCBD.NguoiKy,
                                 itemCTDCBD.HieuLucKy,
+                                itemCTDCBD.GhiChu,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -1834,6 +1838,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCBD.PhieuDuocKy,
                                 itemCTDCBD.NguoiKy,
                                 itemCTDCBD.HieuLucKy,
+                                itemCTDCBD.GhiChu,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -1883,6 +1888,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCBD.PhieuDuocKy,
                                 itemCTDCBD.NguoiKy,
                                 itemCTDCBD.HieuLucKy,
+                                itemCTDCBD.GhiChu,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);

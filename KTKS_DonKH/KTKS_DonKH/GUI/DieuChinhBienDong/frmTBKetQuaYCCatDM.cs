@@ -70,6 +70,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             tb.NhanNK_HoTen = txtHoTen_Nhan.Text.Trim();
             tb.NhanNK_DiaChi = txtDiaChi_Nhan.Text.Trim();
             tb.SoNKCat = int.Parse(txtSoNK_Cat.Text.Trim());
+            tb.HoTenCat = txtHoTens_Cat.Text.Trim();
             tb.GhiChu = txtGhiChu.Text.Trim();
             ///Ký Tên
             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -98,6 +99,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtDiaChi_Cat.Text = dgvDSTBKetQuaYCCatDM["CatNK_DiaChi", e.RowIndex].Value.ToString();
                 txtMaCT_Cat.Text = dgvDSTBKetQuaYCCatDM["MaCT", e.RowIndex].Value.ToString();
                 txtSoNK_Cat.Text = dgvDSTBKetQuaYCCatDM["SoNKCat", e.RowIndex].Value.ToString();
+                txtHoTens_Cat.Text = dgvDSTBKetQuaYCCatDM["HoTenCat", e.RowIndex].Value.ToString();
                 cmbChiNhanh_Nhan.SelectedValue = int.Parse(dgvDSTBKetQuaYCCatDM["NhanNK_MaCN", e.RowIndex].Value.ToString());
                 txtDanhBo_Nhan.Text = dgvDSTBKetQuaYCCatDM["NhanNK_DanhBo", e.RowIndex].Value.ToString();
                 txtHoTen_Nhan.Text = dgvDSTBKetQuaYCCatDM["NhanNK_HoTen", e.RowIndex].Value.ToString();
@@ -131,6 +133,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["HoTenCat"] = tb.CatNK_HoTen;
                 dr["DiaChiCat"] = tb.CatNK_DiaChi;
                 dr["SoNKCat"] = tb.SoNKCat + " nhân khẩu (HK: " + tb.MaCT + ")";
+                dr["HoTensCat"] = tb.HoTenCat;
 
                 dr["SoPhieuNhan"] = tb.SoPhieuNhan;
                 dr["NgayNhan"] = tb.NgayNhan.Value.ToString("dd/MM/yyyy");
@@ -174,6 +177,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 tb.NhanNK_HoTen = txtHoTen_Nhan.Text.Trim();
                 tb.NhanNK_DiaChi = txtDiaChi_Nhan.Text.Trim();
                 tb.SoNKCat = int.Parse(txtSoNK_Cat.Text.Trim());
+                tb.HoTenCat = txtHoTens_Cat.Text.Trim();
                 tb.GhiChu = txtGhiChu.Text.Trim();
 
                 if (_cTB.SuaTBKetQuaYCCatDM(tb))
@@ -226,6 +230,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["HoTenNhan"] = tb.CatNK_HoTen;
                 dr["DiaChiNhan"] = tb.CatNK_DiaChi;
                 dr["SoNKCat"] = tb.SoNKCat + " nhân khẩu (HK: " + tb.MaCT + ")";
+                dr["HoTensCat"] = tb.HoTenCat;
 
                 dr["PYC"] = tb.PYC;
                 dr["SoPhieuNhan"] = tb.SoPhieuNhan;

@@ -465,6 +465,21 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (_flagLoad == false)
             {
+                if (dgvTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "Ky" && dgvTruyThuTienNuoc["Nam", e.RowIndex].Value != null && dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString() != "" && int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()) >= 2011)
+                {
+                    HOADON hd = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+                    if (hd != null)
+                    {
+                        if (hd.DinhMucHN != null)
+                            dgvTruyThuTienNuoc["DinhMucHN_Cu", e.RowIndex].Value = hd.DinhMucHN.Value;
+                        if (hd.DM != null)
+                            dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex].Value = hd.DM.Value;
+                        if (hd.TIEUTHU != null)
+                            dgvTruyThuTienNuoc["TieuThu_Cu", e.RowIndex].Value = hd.TIEUTHU.Value;
+                        if (hd.GB != null)
+                            dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value = hd.GB.Value;
+                    }
+                }
                 if (dgvTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "GiaBieu_Cu")
                 {
                     dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value = dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value;

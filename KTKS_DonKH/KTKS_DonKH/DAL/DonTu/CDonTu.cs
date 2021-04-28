@@ -393,7 +393,9 @@ namespace KTKS_DonKH.DAL.DonTu
                             + " ,DanhBo=case when (select COUNT(ID) from DonTu_ChiTiet where MaDon=DonTu.MaDon)=1 then (select DanhBo from DonTu_ChiTiet where MaDon=DonTu.MaDon) else '' end"
                             + " ,HoTen=case when (select COUNT(ID) from DonTu_ChiTiet where MaDon=DonTu.MaDon)=1 then (select HoTen from DonTu_ChiTiet where MaDon=DonTu.MaDon) else '' end"
                             + " ,DiaChi=case when (select COUNT(ID) from DonTu_ChiTiet where MaDon=DonTu.MaDon)=1 then (select DiaChi from DonTu_ChiTiet where MaDon=DonTu.MaDon) else N'Số: ' + SoCongVan + N' gồm ' + CAST(TongDB as varchar(3)) + N' địa chỉ' end"
-                            + " ,NoiDungPKH=Name_NhomDon_PKH,NoiDungPTV=Name_NhomDon,CreateBy=(select HoTen from Users where MaU=DonTu.CreateBy),TinhTrang"
+                            + " ,NoiDungPKH=Name_NhomDon_PKH"
+                            + " ,NoiDungPTV=case when VanDeKhac not like '' then case when Name_NhomDon not like '' then Name_NhomDon+'; '+VanDeKhac else VanDeKhac end else Name_NhomDon end"
+                            + " ,CreateBy=(select HoTen from Users where MaU=DonTu.CreateBy),TinhTrang"
                             + " from DonTu where CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm") + "' and CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm") + "'";
 
                 string sqlDonTuChiTiet = "select dtct.STT,dtct.MaDon,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,dtct.TinhTrang"
@@ -552,7 +554,13 @@ namespace KTKS_DonKH.DAL.DonTu
                     }
                     dr["TinhTrang"] = item.TinhTrang;
                     dr["NoiDungPKH"] = item.Name_NhomDon_PKH;
-                    dr["NoiDungPTV"] = item.Name_NhomDon;
+                    if (item.VanDeKhac != "")
+                        if (item.Name_NhomDon != "")
+                            dr["NoiDungPTV"] = item.Name_NhomDon + "; " + item.VanDeKhac;
+                        else
+                            dr["NoiDungPTV"] = item.VanDeKhac;
+                    else
+                        dr["NoiDungPTV"] = item.Name_NhomDon;
                     dr["CreateBy"] = db.Users.SingleOrDefault(itemR => itemR.MaU == item.CreateBy).HoTen;
 
                     dtDonTu.Rows.Add(dr);
@@ -2029,6 +2037,30 @@ namespace KTKS_DonKH.DAL.DonTu
                             };
                     return LINQToDataTable(query);
             }
+        }
+
+        public DataTable getDS_LichSu(DateTime FromCreateDate, DateTime ToCreateDate, int ID_NoiNhan)
+        {
+            var query = from item in db.DonTu_LichSus
+                        join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                        where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                        orderby item.NgayChuyen descending, item.ID descending
+                        select new
+                        {
+                            item.ID,
+                            item.NgayChuyen,
+                            item.NoiChuyen,
+                            item.NoiNhan,
+                            item.KTXM,
+                            item.NoiDung,
+                            CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                            MaDon = itemDon.MaDon,
+                            MaDonChiTiet = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                            itemDon.DanhBo,
+                            itemDon.DiaChi,
+                            NoiDungDon = itemDon.DonTu.Name_NhomDon != "" ? itemDon.DonTu.Name_NhomDon : itemDon.DonTu.VanDeKhac,
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable getDS_ChuyenKTXM(string KyHieuTo, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
