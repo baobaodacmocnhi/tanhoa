@@ -145,6 +145,10 @@ namespace ThuTien.GUI.ToTruong
             col.DataType = System.Type.GetType("System.Int32");
             _dt.Columns.Add(col);
 
+            col = new DataColumn("HieuLucKy");
+            col.DataType = System.Type.GetType("System.String");
+            _dt.Columns.Add(col);
+
             col = new DataColumn("TienDu");
             col.DataType = System.Type.GetType("System.Int32");
             _dt.Columns.Add(col);

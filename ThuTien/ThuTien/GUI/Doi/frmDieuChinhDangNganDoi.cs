@@ -289,28 +289,36 @@ namespace ThuTien.GUI.Doi
                                             MessageBox.Show("Lỗi, Danh Bộ không có Tiền Dư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
-                            foreach (ListViewItem item in lstHD.Items)
+                            if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 51)
                             {
-                                ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
-                                bool ChuyenKhoan = false;
-                                if (_cTamThu.CheckExist_Quay(item.Text))
+                                foreach (ListViewItem item in lstHD.Items)
                                 {
-                                    var transactionOptions = new TransactionOptions();
-                                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
-                                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
-                                    {
-                                        if (_cHoaDon.DangNgan("Ton", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
-                                            if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
-                                                if (_cTamThu.XoaAn(item.Text))
-                                                    if (_cTienDuQuay.UpdateXoa(item.Text, "Thu 2 Lần", "Thêm"))
-                                                        scope.Complete();
-                                    }
-                                }
-                                else
-                                {
-                                    _cHoaDon.DangNgan("Ton", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value);
+                                    _cHoaDon.DangNgan("Quay", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value);
                                 }
                             }
+                            else
+                                foreach (ListViewItem item in lstHD.Items)
+                                {
+                                    ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
+                                    bool ChuyenKhoan = false;
+                                    if (_cTamThu.CheckExist_Quay(item.Text))
+                                    {
+                                        var transactionOptions = new TransactionOptions();
+                                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                                        {
+                                            if (_cHoaDon.DangNgan("Ton", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
+                                                if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
+                                                    if (_cTamThu.XoaAn(item.Text))
+                                                        if (_cTienDuQuay.UpdateXoa(item.Text, "Thu 2 Lần", "Thêm"))
+                                                            scope.Complete();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        _cHoaDon.DangNgan("Ton", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value);
+                                    }
+                                }
                         btnXem.PerformClick();
                         lstHD.Items.Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

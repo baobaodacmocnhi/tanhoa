@@ -881,6 +881,7 @@ namespace ThuTien.GUI.Quay
             dr["DinhMuc"] = "";
             dr["Ky"] = "";
             dr["NhanVienThuTien"] = "";
+            dr["NguoiKy"] = CNguoiKy.getNguoiKy();
             if (chkChuKy.Checked)
             {
                 dr["ChuKy"] = true;

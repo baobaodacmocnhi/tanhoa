@@ -1,0 +1,1 @@
+select MALOTRINH,DANHBA,TENKH,SO,DUONG,GB,DM,DinhMucHN,TIEUTHU,GIABAN,THUE,PHI,TONGCONG,DOT,Ky,NAM,Phuong=(select tenphuong from server8.CAPNUOCTANHOA.dbo.Phuong where maquan=Quan and maphuong=phuong),Quan=(select tenquan from server8.CAPNUOCTANHOA.dbo.Quan where maquan=Quan),MaDMA from hoadon where nam=2021 and ky=4
