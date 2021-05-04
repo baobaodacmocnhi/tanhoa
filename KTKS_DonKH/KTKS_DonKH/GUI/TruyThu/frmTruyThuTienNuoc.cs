@@ -93,6 +93,13 @@ namespace KTKS_DonKH.GUI.TruyThu
                 txtDinhMuc.Text = hoadon.DM.ToString();
             if (hoadon.DinhMucHN != null)
                 txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
+            DataTable dt = _cThuTien.getDSAll(hoadon.DANHBA);
+            foreach (DataRow item in dt.Rows)
+            {
+                var index = dgvTruyThuTienNuoc.Rows.Add();
+                dgvTruyThuTienNuoc.Rows[index].Cells["Nam"].Value = item["Nam"];
+                dgvTruyThuTienNuoc.Rows[index].Cells["Ky"].Value = item["Ky"];
+            }
         }
 
         public void LoadTTTN(TruyThuTienNuoc_ChiTiet cttttn)
@@ -1300,7 +1307,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 cttttn_hoadon.Ky = int.Parse(item.Cells["Ky"].Value.ToString());
                                 cttttn_hoadon.Nam = int.Parse(item.Cells["Nam"].Value.ToString());
                                 cttttn_hoadon.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
-                                cttttn_hoadon.DinhMucHNCu = int.Parse(item.Cells["DinhMucHN_Cu"].Value.ToString());
+                                if (item.Cells["DinhMucHN_Cu"].Value != null)
+                                    cttttn_hoadon.DinhMucHNCu = int.Parse(item.Cells["DinhMucHN_Cu"].Value.ToString());
                                 cttttn_hoadon.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
                                 cttttn_hoadon.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
                                 cttttn_hoadon.GiaBanCu = int.Parse(item.Cells["GiaBan_Cu"].Value.ToString());
@@ -1309,7 +1317,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 cttttn_hoadon.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
                                 ///
                                 cttttn_hoadon.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
-                                cttttn_hoadon.DinhMucHNMoi = int.Parse(item.Cells["DinhMucHN_Moi"].Value.ToString());
+                                if (item.Cells["DinhMucHN_Moi"].Value != null)
+                                    cttttn_hoadon.DinhMucHNMoi = int.Parse(item.Cells["DinhMucHN_Moi"].Value.ToString());
                                 cttttn_hoadon.DinhMucMoi = int.Parse(item.Cells["DinhMuc_Moi"].Value.ToString());
                                 cttttn_hoadon.TieuThuMoi = int.Parse(item.Cells["TieuThu_Moi"].Value.ToString());
                                 cttttn_hoadon.GiaBanMoi = int.Parse(item.Cells["GiaBan_Moi"].Value.ToString());

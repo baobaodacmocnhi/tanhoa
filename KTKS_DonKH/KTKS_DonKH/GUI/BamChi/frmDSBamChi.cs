@@ -140,6 +140,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 dr["MaSoBC"] = itemRow["NiemChi"];
                 dr["NguoiBC"] = itemRow["CreateBy"];
                 dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
+                dr["NguoiKy"] = CTaiKhoan.NguoiKy;
                 dr["NguoiLap"] = CTaiKhoan.HoTen;
 
                 dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);

@@ -101,6 +101,15 @@ namespace KTKS_DonKH.DAL
                     return null;
         }
 
+        public DataTable getDSAll(string DanhBo)
+        {
+            string sql = "select Nam,Ky,GiaBieu=GB,DinhMuc=DM,DinhMucHN,TieuThu,TongCong from HOADON where DanhBa='" + DanhBo + "'"
+                        + " union"
+                        + " select Nam,Ky,GiaBieu=GB,DinhMuc=DM,DinhMucHN,TieuThu,TongCong from TT_HoaDonCu where DanhBa='" + DanhBo + "'"
+                        + " order by Nam,Ky";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         public decimal GetTieuThuMoiNhat(string DanhBo)
         {
             if (db.HOADONs.Any(item => item.DANHBA == DanhBo))
