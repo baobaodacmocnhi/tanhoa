@@ -27,21 +27,22 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
 
         private void frmGiaiTrachTienNuoc_Nhap_Load(object sender, EventArgs e)
         {
-            dgvHoaDon.AutoGenerateColumns = false;
+            gridControl.LevelTree.Nodes.Add("Chi Tiết", gridViewChiTiet);
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
             try
             {
-                dgvHoaDon.DataSource = _cGTTN.getDS(dateTu.Value, dateDen.Value);
-                decimal TongCong = 0;
-                foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                {
-                    TongCong += decimal.Parse(item.Cells["SoTien"].Value.ToString());
-                }
-                txtTong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvHoaDon.RowCount);
-                txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+                gridControl.DataSource = _cGTTN.getDS( dateTu.Value, dateDen.Value).Tables["PhieuThu"];
+                //dgvHoaDon.DataSource = _cGTTN.getDS(dateTu.Value, dateDen.Value);
+                //decimal TongCong = 0;
+                //foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                //{
+                //    TongCong += decimal.Parse(item.Cells["SoTien"].Value.ToString());
+                //}
+                //txtTong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvHoaDon.RowCount);
+                //txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
             catch (Exception ex)
             {
@@ -63,7 +64,7 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
                         if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             Microsoft.Office.Interop.Excel.Application _excelApp = new Microsoft.Office.Interop.Excel.Application();
-                            _excelApp.Visible = false;
+                            _excelApp.Visible = true;
 
                             //open the workbook
                             Workbook workbook = _excelApp.Workbooks.Open(dialog.FileName,
@@ -123,10 +124,10 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
                 {
                     if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
-                        {
-                            _cGTTN.Xoa(item.Cells["ID"].Value.ToString());
-                        }
+                        //foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
+                        //{
+                        //    _cGTTN.Xoa(item.Cells["ID"].Value.ToString());
+                        //}
                         MessageBox.Show("Đã xử lý xong, Vui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnXem.PerformClick();
                     }
@@ -142,18 +143,18 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
+            //if (dgvHoaDon.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
+            //{
+            //    e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            //}
         }
 
         private void dgvHoaDon_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            using (SolidBrush b = new SolidBrush(dgvHoaDon.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
-            }
+            //using (SolidBrush b = new SolidBrush(dgvHoaDon.RowHeadersDefaultCellStyle.ForeColor))
+            //{
+            //    e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            //}
         }
     }
 }
