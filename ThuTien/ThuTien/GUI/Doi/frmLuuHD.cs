@@ -213,26 +213,15 @@ namespace ThuTien.GUI.Doi
                             //    return false;
                             //}
 
-                            ///Nếu chưa có hóa đơn
-                            if (!_cHoaDon.CheckExist(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY))
-                            {
-                                if (_cHoaDon.Them(hoadon) == true)
+                            //Nếu chưa có hóa đơn
+                            if (hoadon.DANHBA == "13182498749")
+                                if (!_cHoaDon.CheckExist(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY))
                                 {
-                                    if (hoadon.TIEUTHU != 0)
+                                    if (_cHoaDon.Them(hoadon) == true)
                                     {
-                                        int NamTemp = hoadon.NAM.Value, KyTemp = hoadon.KY;
-                                        if (KyTemp == 1)
+                                        if (hoadon.TIEUTHU != 0)
                                         {
-                                            KyTemp = 12;
-                                            NamTemp--;
-                                        }
-                                        else
-                                        {
-                                            KyTemp--;
-                                        }
-
-                                        while (_cHoaDon.CheckExist_HD0(hoadon.DANHBA, NamTemp, KyTemp) == true)
-                                        {
+                                            int NamTemp = hoadon.NAM.Value, KyTemp = hoadon.KY;
                                             if (KyTemp == 1)
                                             {
                                                 KyTemp = 12;
@@ -242,77 +231,89 @@ namespace ThuTien.GUI.Doi
                                             {
                                                 KyTemp--;
                                             }
-                                        }
 
-                                        //thêm hóa đơn mới vào lệnh đóng nước
-                                        if (_cDongNuoc.CheckExist_CTDongNuoc_Ton(hoadon.DANHBA, NamTemp, KyTemp) == true)
-                                        {
-                                            TT_DongNuoc dongnuoc = _cDongNuoc.getDongNuoc_MoiNhat_Ton(hoadon.DANHBA, NamTemp, KyTemp);
-
-                                            TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
-                                            ctdongnuoc.MaDN = dongnuoc.MaDN;
-                                            ctdongnuoc.MaHD = hoadon.ID_HOADON;
-                                            ctdongnuoc.SoHoaDon = hoadon.SOHOADON;
-                                            ctdongnuoc.Ky = hoadon.KY + "/" + hoadon.NAM;
-                                            ctdongnuoc.TieuThu = (int)hoadon.TIEUTHU;
-                                            ctdongnuoc.GiaBan = (int)hoadon.GIABAN;
-                                            ctdongnuoc.ThueGTGT = (int)hoadon.THUE;
-                                            ctdongnuoc.PhiBVMT = (int)hoadon.PHI;
-                                            ctdongnuoc.TongCong = (int)hoadon.TONGCONG;
-                                            ctdongnuoc.CreateBy = CNguoiDung.MaND;
-                                            ctdongnuoc.CreateDate = DateTime.Now;
-
-                                            dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
-
-                                            _cDongNuoc.SuaDN(dongnuoc);
-                                        }
-                                        //thêm hóa đơn mới vào lệnh hủy
-                                        if (_cLenhHuy.CheckExist_Ton(hoadon.DANHBA, NamTemp, KyTemp) == true)
-                                        {
-                                            TT_LenhHuy lenhhuy = new TT_LenhHuy();
-                                            lenhhuy.MaHD = hoadon.ID_HOADON;
-                                            lenhhuy.SoHoaDon = hoadon.SOHOADON;
-                                            lenhhuy.DanhBo = hoadon.DANHBA;
-                                            TT_LenhHuy lhMoiNhat = _cLenhHuy.getMoiNhat(hoadon.DANHBA);
-                                            if (lhMoiNhat != null)
+                                            while (_cHoaDon.CheckExist_HD0(hoadon.DANHBA, NamTemp, KyTemp) == true)
                                             {
-                                                lenhhuy.TinhTrang = lhMoiNhat.TinhTrang;
-                                                lenhhuy.Cat = lhMoiNhat.Cat;
+                                                if (KyTemp == 1)
+                                                {
+                                                    KyTemp = 12;
+                                                    NamTemp--;
+                                                }
+                                                else
+                                                {
+                                                    KyTemp--;
+                                                }
                                             }
-                                            _cLenhHuy.Them(lenhhuy);
+
+                                            //thêm hóa đơn mới vào lệnh đóng nước
+                                            if (_cDongNuoc.CheckExist_CTDongNuoc_Ton(hoadon.DANHBA, NamTemp, KyTemp) == true)
+                                            {
+                                                TT_DongNuoc dongnuoc = _cDongNuoc.getDongNuoc_MoiNhat_Ton(hoadon.DANHBA, NamTemp, KyTemp);
+
+                                                TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
+                                                ctdongnuoc.MaDN = dongnuoc.MaDN;
+                                                ctdongnuoc.MaHD = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY).ID_HOADON;
+                                                ctdongnuoc.SoHoaDon = hoadon.SOHOADON;
+                                                ctdongnuoc.Ky = hoadon.KY + "/" + hoadon.NAM;
+                                                ctdongnuoc.TieuThu = (int)hoadon.TIEUTHU;
+                                                ctdongnuoc.GiaBan = (int)hoadon.GIABAN;
+                                                ctdongnuoc.ThueGTGT = (int)hoadon.THUE;
+                                                ctdongnuoc.PhiBVMT = (int)hoadon.PHI;
+                                                ctdongnuoc.TongCong = (int)hoadon.TONGCONG;
+                                                ctdongnuoc.CreateBy = CNguoiDung.MaND;
+                                                ctdongnuoc.CreateDate = DateTime.Now;
+
+                                                dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
+
+                                                _cDongNuoc.SuaDN(dongnuoc);
+                                            }
+                                            //thêm hóa đơn mới vào lệnh hủy
+                                            if (_cLenhHuy.CheckExist_Ton(hoadon.DANHBA, NamTemp, KyTemp) == true)
+                                            {
+                                                TT_LenhHuy lenhhuy = new TT_LenhHuy();
+                                                lenhhuy.MaHD = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY).ID_HOADON;
+                                                lenhhuy.SoHoaDon = hoadon.SOHOADON;
+                                                lenhhuy.DanhBo = hoadon.DANHBA;
+                                                TT_LenhHuy lhMoiNhat = _cLenhHuy.getMoiNhat(hoadon.DANHBA);
+                                                if (lhMoiNhat != null)
+                                                {
+                                                    lenhhuy.TinhTrang = lhMoiNhat.TinhTrang;
+                                                    lenhhuy.Cat = lhMoiNhat.Cat;
+                                                }
+                                                _cLenhHuy.Them(lenhhuy);
+                                            }
                                         }
-                                    }
 
-                                    //check hóa đơn chờ điều chỉnh
-                                    if (_cDCHD.checkExist_HDChoDC(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY) == true)
-                                    {
-                                        DIEUCHINH_HD dchd = new DIEUCHINH_HD();
-                                        dchd.FK_HOADON = hoadon.ID_HOADON;
-                                        dchd.SoHoaDon = hoadon.SOHOADON;
-                                        dchd.GiaBieu = hoadon.GB;
-                                        if (hoadon.DM != null)
-                                            dchd.DinhMuc = (int)hoadon.DM;
-                                        dchd.TIEUTHU_BD = (int)hoadon.TIEUTHU;
-                                        dchd.GIABAN_BD = hoadon.GIABAN;
-                                        dchd.PHI_BD = hoadon.PHI;
-                                        dchd.THUE_BD = hoadon.THUE;
-                                        dchd.TONGCONG_BD = hoadon.TONGCONG;
-                                        dchd.NGAY_DC = DateTime.Now;
-
-                                        if (_cDCHD.Them(dchd))
+                                        //check hóa đơn chờ điều chỉnh
+                                        if (_cDCHD.checkExist_HDChoDC(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY) == true)
                                         {
-                                            _cDCHD.Xoa_HDChoDC(_cDCHD.get_HDChoDC(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY));
+                                            DIEUCHINH_HD dchd = new DIEUCHINH_HD();
+                                            dchd.FK_HOADON = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY).ID_HOADON;
+                                            dchd.SoHoaDon = hoadon.SOHOADON;
+                                            dchd.GiaBieu = hoadon.GB;
+                                            if (hoadon.DM != null)
+                                                dchd.DinhMuc = (int)hoadon.DM;
+                                            dchd.TIEUTHU_BD = (int)hoadon.TIEUTHU;
+                                            dchd.GIABAN_BD = hoadon.GIABAN;
+                                            dchd.PHI_BD = hoadon.PHI;
+                                            dchd.THUE_BD = hoadon.THUE;
+                                            dchd.TONGCONG_BD = hoadon.TONGCONG;
+                                            dchd.NGAY_DC = DateTime.Now;
+
+                                            if (_cDCHD.Them(dchd))
+                                            {
+                                                _cDCHD.Xoa_HDChoDC(_cDCHD.get_HDChoDC(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY));
+                                            }
                                         }
                                     }
                                 }
-                            }
-                            ///Nếu đã có hóa đơn
-                            else
-                            {
-                                HOADON hoadonCN = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY, hoadon.DOT.Value);
-                                Copy(ref hoadonCN, hoadon);
-                                _cHoaDon.Sua(hoadonCN);
-                            }
+                                ///Nếu đã có hóa đơn
+                                else
+                                {
+                                    HOADON hoadonCN = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY, hoadon.DOT.Value);
+                                    Copy(ref hoadonCN, hoadon);
+                                    _cHoaDon.Sua(hoadonCN);
+                                }
                         }
 
                         try
