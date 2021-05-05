@@ -80,6 +80,51 @@ namespace KeToan.DAL.GiaiTrachTienNuoc
                 return _db.GiaiTrachTienNuoc_Nhaps.SingleOrDefault(item => item.SoPhieuThu == SoPhieuThu && item.NgayPhieuThu.Value.Date == NgayPhieuThu.Date);
         }
 
+        public DataSet getDS_Ton()
+        {
+            DataSet ds = new DataSet();
+
+            var query = from item in _db.GiaiTrachTienNuoc_Nhaps
+                        where _db.GiaiTrachTienNuoc_Xuats.Any(itemA => itemA.IDNhap == item.ID) == false || (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.TongCong)) != 0
+                        orderby item.ID ascending
+                        select new
+                        {
+                            item.ID,
+                            item.SoPhieuThu,
+                            item.NgayPhieuThu,
+                            item.DanhBo,
+                            item.SoTien,
+                            SoTienTon = _db.GiaiTrachTienNuoc_Xuats.Any(itemA => itemA.IDNhap == item.ID) == false ? 0 : (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.TongCong)),
+                            item.NganHang,
+                            TinhTrang = (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.TongCong)) == 0 ? "Hết" : "Tồn",
+                        };
+            DataTable dt = new DataTable();
+            dt = LINQToDataTable(query);
+            dt.TableName = "PhieuThu";
+            ds.Tables.Add(dt);
+
+            var queryCT = from itemXuat in _db.GiaiTrachTienNuoc_Xuats
+                          join itemNhap in _db.GiaiTrachTienNuoc_Nhaps on itemXuat.IDNhap equals itemNhap.ID
+                          where itemXuat.IDNhap == null || (itemNhap.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == itemNhap.ID).Sum(itemA => itemA.TongCong)) != 0
+                          select new
+                          {
+                              itemXuat.IDNhap,
+                              itemXuat.DanhBo,
+                              itemXuat.Ky,
+                              SoTien = itemXuat.TongCong,
+                              itemXuat.NgayGiaiTrach,
+                          };
+            DataTable dtCT = new DataTable();
+            dtCT = LINQToDataTable(queryCT);
+            dtCT.TableName = "ChiTiet";
+            ds.Tables.Add(dtCT);
+
+            if (dt.Rows.Count > 0 && dtCT.Rows.Count > 0)
+                ds.Relations.Add("Chi Tiết", ds.Tables["PhieuThu"].Columns["ID"], ds.Tables["ChiTiet"].Columns["IDNhap"]);
+
+            return ds;
+        }
+
         public DataSet getDS(DateTime FromNgayPhieuThu, DateTime ToNgayPhieuThu)
         {
             DataSet ds = new DataSet();
@@ -94,7 +139,9 @@ namespace KeToan.DAL.GiaiTrachTienNuoc
                             item.NgayPhieuThu,
                             item.DanhBo,
                             item.SoTien,
+                            SoTienTon = _db.GiaiTrachTienNuoc_Xuats.Any(itemA => itemA.IDNhap == item.ID) == false ? 0 : (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.TongCong)),
                             item.NganHang,
+                            TinhTrang = (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.TongCong)) == 0 ? "Hết" : "Tồn",
                         };
             DataTable dt = new DataTable();
             dt = LINQToDataTable(query);

@@ -19,6 +19,9 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
     {
         string _mnu = "mnuGiaiTrachTienNuoc_Nhap";
         CGiaiTrachTienNuoc_Nhap _cGTTN = new CGiaiTrachTienNuoc_Nhap();
+        Microsoft.Office.Interop.Excel.Application _excelApp;
+        Workbook workbook;
+        Worksheet worksheet;
 
         public frmGiaiTrachTienNuoc_Nhap()
         {
@@ -34,15 +37,27 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
         {
             try
             {
-                gridControl.DataSource = _cGTTN.getDS( dateTu.Value, dateDen.Value).Tables["PhieuThu"];
+                if (chkTon.Checked == true)
+                    gridControl.DataSource = _cGTTN.getDS_Ton().Tables["PhieuThu"];
+                else
+                    gridControl.DataSource = _cGTTN.getDS(dateTu.Value, dateDen.Value).Tables["PhieuThu"];
+                decimal TongCong = 0, TongCongTon = 0;
+                for (int i = 0; i < gridView.DataRowCount; i++)
+                {
+                    DataRow row = gridView.GetDataRow(i);
+                    TongCong += decimal.Parse(row["SoTien"].ToString());
+                    if(row["SoTien"]!=null && row["SoTien"].ToString()!="")
+                        TongCongTon += decimal.Parse(row["SoTienTon"].ToString());
+                }
                 //dgvHoaDon.DataSource = _cGTTN.getDS(dateTu.Value, dateDen.Value);
                 //decimal TongCong = 0;
                 //foreach (DataGridViewRow item in dgvHoaDon.Rows)
                 //{
                 //    TongCong += decimal.Parse(item.Cells["SoTien"].Value.ToString());
                 //}
-                //txtTong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvHoaDon.RowCount);
-                //txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+                txtTong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", gridView.DataRowCount);
+                txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+                txtTongCongTon.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongTon);
             }
             catch (Exception ex)
             {
@@ -63,18 +78,18 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
                     if (dialog.ShowDialog() == DialogResult.OK)
                         if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            Microsoft.Office.Interop.Excel.Application _excelApp = new Microsoft.Office.Interop.Excel.Application();
-                            _excelApp.Visible = true;
+                            _excelApp = new Microsoft.Office.Interop.Excel.Application();
+                            _excelApp.Visible = false;
 
                             //open the workbook
-                            Workbook workbook = _excelApp.Workbooks.Open(dialog.FileName,
-                                Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                                Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                                Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                                Type.Missing, Type.Missing);
+                            workbook = _excelApp.Workbooks.Open(dialog.FileName,
+                               Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                               Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                               Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                               Type.Missing, Type.Missing);
 
                             //select the first sheet        
-                            Worksheet worksheet = (Worksheet)workbook.Worksheets[1];
+                            worksheet = (Worksheet)workbook.Worksheets[1];
 
                             //find the used range in worksheet
                             Range excelRange = worksheet.UsedRange;
@@ -96,13 +111,6 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
                                         _cGTTN.Them(en);
                                 }
 
-                            //clean up stuffs
-                            workbook.Close(false, Type.Missing, Type.Missing);
-                            Marshal.ReleaseComObject(workbook);
-
-                            _excelApp.Quit();
-                            Marshal.FinalReleaseComObject(_excelApp);
-
                             MessageBox.Show("Đã xử lý xong, Vui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
                         }
@@ -113,6 +121,18 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                //clean up stuffs
+                Marshal.ReleaseComObject(worksheet);
+                workbook.Close(false, Type.Missing, Type.Missing);
+                Marshal.ReleaseComObject(workbook);
+
+                _excelApp.Quit();
+                Marshal.FinalReleaseComObject(_excelApp);
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
         }
 
@@ -156,5 +176,33 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
             //    e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             //}
         }
+
+        private void gridView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "SoTien" && e.Value != null)
+            {
+                e.DisplayText = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (e.Column.FieldName == "SoTienTon" && e.Value != null)
+            {
+                e.DisplayText = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void gridView_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+        }
+
+        private void gridViewChiTiet_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "SoTien_CT" && e.Value != null)
+            {
+                e.DisplayText = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+
     }
 }

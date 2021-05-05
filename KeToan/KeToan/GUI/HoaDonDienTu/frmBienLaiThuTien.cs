@@ -106,6 +106,7 @@ namespace KeToan.GUI.HoaDonDienTu
             {
                 MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void btnXem_Click(object sender, EventArgs e)

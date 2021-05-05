@@ -74,7 +74,7 @@ namespace KeToan.DAL.GiaiTrachTienNuoc
 
         public DataTable getDS(DateTime FromNgayGiaiTrach, DateTime ToNgayGiaiTrach)
         {
-            return LINQToDataTable(_db.GiaiTrachTienNuoc_Xuats.Where(item => item.NgayPhieuThu.Value.Date >= FromNgayGiaiTrach.Date && item.NgayPhieuThu.Value.Date <= ToNgayGiaiTrach.Date));
+            return LINQToDataTable(_db.GiaiTrachTienNuoc_Xuats.Where(item => item.NgayGiaiTrach.Value.Date >= FromNgayGiaiTrach.Date && item.NgayGiaiTrach.Value.Date <= ToNgayGiaiTrach.Date));
         }
 
     }

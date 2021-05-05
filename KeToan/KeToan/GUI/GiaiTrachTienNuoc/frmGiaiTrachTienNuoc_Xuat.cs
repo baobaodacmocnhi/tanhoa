@@ -20,6 +20,9 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
         string _mnu = "mnuGiaiTrachTienNuoc_Xuat";
         CGiaiTrachTienNuoc_Xuat _cGTTN_Xuat = new CGiaiTrachTienNuoc_Xuat();
         CGiaiTrachTienNuoc_Nhap _cGTTN_Nhap = new CGiaiTrachTienNuoc_Nhap();
+        Microsoft.Office.Interop.Excel.Application _excelApp;
+        Workbook workbook;
+        Worksheet worksheet;
 
         public frmGiaiTrachTienNuoc_Xuat()
         {
@@ -53,6 +56,7 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
         private void btnChonFile_Click(object sender, EventArgs e)
         {
             string error = "";
+
             try
             {
                 if (CUser.CheckQuyen(_mnu, "Them"))
@@ -64,18 +68,18 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
                     if (dialog.ShowDialog() == DialogResult.OK)
                         if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            Microsoft.Office.Interop.Excel.Application _excelApp = new Microsoft.Office.Interop.Excel.Application();
-                            _excelApp.Visible = true;
+                             _excelApp = new Microsoft.Office.Interop.Excel.Application();
+                            _excelApp.Visible = false;
 
                             //open the workbook
-                            Workbook workbook = _excelApp.Workbooks.Open(dialog.FileName,
-                                Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                                Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                                Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                                Type.Missing, Type.Missing);
+                             workbook = _excelApp.Workbooks.Open(dialog.FileName,
+                                 Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                                 Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                                 Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                                 Type.Missing, Type.Missing);
 
                             //select the first sheet        
-                            Worksheet worksheet = (Worksheet)workbook.Worksheets[1];
+                             worksheet = (Worksheet)workbook.Worksheets[1];
 
                             //find the used range in worksheet
                             Range excelRange = worksheet.UsedRange;
@@ -112,19 +116,9 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
                                     {
                                         throw new Exception("Không có SPT tại STT: " + valueArray[row, 1].ToString());
                                     }
-                                    //if (_cGTTN.checkExists(en.SoPhieuThu, en.NgayPhieuThu.Value, en.DanhBo, en.Ky.Value) == false)
-                                    _cGTTN_Xuat.Them(en);
+                                    if (_cGTTN_Xuat.checkExists(en.SoPhieuThu, en.NgayPhieuThu.Value, en.DanhBo, en.Ky.Value) == false)
+                                        _cGTTN_Xuat.Them(en);
                                 }
-
-                            //clean up stuffs
-                            workbook.Close(false, Type.Missing, Type.Missing);
-                            Marshal.ReleaseComObject(worksheet);
-                            Marshal.ReleaseComObject(workbook);
-
-                            _excelApp.Quit();
-                            Marshal.FinalReleaseComObject(_excelApp);
-                            GC.Collect();
-                            GC.WaitForPendingFinalizers();
 
                             MessageBox.Show("Đã xử lý xong, Vui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
@@ -135,7 +129,19 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + "\nLỗi tại STT: " +error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "\nLỗi tại STT: " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                //clean up stuffs
+                Marshal.ReleaseComObject(worksheet);
+                workbook.Close(false, Type.Missing, Type.Missing);
+                Marshal.ReleaseComObject(workbook);
+
+                _excelApp.Quit();
+                Marshal.FinalReleaseComObject(_excelApp);
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
         }
 
