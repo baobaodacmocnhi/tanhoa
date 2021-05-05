@@ -140,7 +140,7 @@
             this.groupBox1.Controls.Add(this.panel_KhoangThoiGian_LichSuChuyenDon);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(853, 89);
+            this.groupBox1.Size = new System.Drawing.Size(799, 89);
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lịch Sử Chuyển Đơn (ngày chuyển)";
@@ -164,7 +164,7 @@
             "Ngày"});
             this.cmbNoiNhan_LichSuChuyenDon.Location = new System.Drawing.Point(512, 31);
             this.cmbNoiNhan_LichSuChuyenDon.Name = "cmbNoiNhan_LichSuChuyenDon";
-            this.cmbNoiNhan_LichSuChuyenDon.Size = new System.Drawing.Size(250, 24);
+            this.cmbNoiNhan_LichSuChuyenDon.Size = new System.Drawing.Size(200, 24);
             this.cmbNoiNhan_LichSuChuyenDon.TabIndex = 41;
             // 
             // label9
@@ -217,7 +217,7 @@
             // 
             // btnBaoCao_LichSuChuyenDon
             // 
-            this.btnBaoCao_LichSuChuyenDon.Location = new System.Drawing.Point(768, 30);
+            this.btnBaoCao_LichSuChuyenDon.Location = new System.Drawing.Point(718, 30);
             this.btnBaoCao_LichSuChuyenDon.Name = "btnBaoCao_LichSuChuyenDon";
             this.btnBaoCao_LichSuChuyenDon.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_LichSuChuyenDon.TabIndex = 25;
@@ -861,9 +861,9 @@
             this.groupBox8.Controls.Add(this.label22);
             this.groupBox8.Controls.Add(this.btnIn_NhanDon);
             this.groupBox8.Controls.Add(this.panel5);
-            this.groupBox8.Location = new System.Drawing.Point(871, 12);
+            this.groupBox8.Location = new System.Drawing.Point(953, 12);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(602, 89);
+            this.groupBox8.Size = new System.Drawing.Size(290, 118);
             this.groupBox8.TabIndex = 36;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Danh Sách Nhận Đơn (ngày nhận)";
@@ -875,15 +875,15 @@
             "",
             "Số Công Văn",
             "Ngày"});
-            this.cmbNoiNhan_NhanDon.Location = new System.Drawing.Point(262, 31);
+            this.cmbNoiNhan_NhanDon.Location = new System.Drawing.Point(80, 87);
             this.cmbNoiNhan_NhanDon.Name = "cmbNoiNhan_NhanDon";
-            this.cmbNoiNhan_NhanDon.Size = new System.Drawing.Size(250, 24);
+            this.cmbNoiNhan_NhanDon.Size = new System.Drawing.Size(200, 24);
             this.cmbNoiNhan_NhanDon.TabIndex = 41;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(192, 36);
+            this.label22.Location = new System.Drawing.Point(10, 92);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(64, 16);
             this.label22.TabIndex = 40;
@@ -891,7 +891,7 @@
             // 
             // btnIn_NhanDon
             // 
-            this.btnIn_NhanDon.Location = new System.Drawing.Point(518, 30);
+            this.btnIn_NhanDon.Location = new System.Drawing.Point(205, 55);
             this.btnIn_NhanDon.Name = "btnIn_NhanDon";
             this.btnIn_NhanDon.Size = new System.Drawing.Size(75, 25);
             this.btnIn_NhanDon.TabIndex = 25;
@@ -950,6 +950,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1496, 588);
             this.Controls.Add(this.groupBox8);
