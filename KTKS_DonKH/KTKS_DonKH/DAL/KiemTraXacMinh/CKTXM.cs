@@ -1196,9 +1196,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             return db.KTXMs.Any(item => item.MaDonMoi == MaDon);
         }
 
-        public bool checkExist_ChiTiet(int CreateBy, int MaDon, int STT, string DanhBo, DateTime NgayKTXM)
+        public bool checkExist_ChiTiet(int CreateBy, int MaDon, int STT, string DanhBo, DateTime NgayKTXM, string HienTrangKiemTra)
         {
-            return db.KTXM_ChiTiets.Any(item => item.CreateBy == CreateBy && item.KTXM.MaDonMoi == MaDon && item.STT == STT && item.DanhBo == DanhBo && item.NgayKTXM == NgayKTXM);
+            return db.KTXM_ChiTiets.Any(item => item.CreateBy == CreateBy && item.KTXM.MaDonMoi == MaDon && item.STT == STT && item.DanhBo == DanhBo && item.NgayKTXM == NgayKTXM && item.HienTrangKiemTra == HienTrangKiemTra);
         }
 
         public KTXM get(int MaDon)

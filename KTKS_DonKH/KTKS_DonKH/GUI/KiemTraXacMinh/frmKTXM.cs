@@ -470,7 +470,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             ktxm.MaDonMoi = _dontu_ChiTiet.MaDon.Value;
                             _cKTXM.Them(ktxm);
                         }
-                        if (txtDanhBo.Text.Trim() != "" && _cKTXM.checkExist_ChiTiet(CTaiKhoan.MaUser, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value, txtDanhBo.Text.Trim(), dateKTXM.Value) == true)
+                        if (txtDanhBo.Text.Trim() != "" && _cKTXM.checkExist_ChiTiet(CTaiKhoan.MaUser, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value, txtDanhBo.Text.Trim(), dateKTXM.Value, cmbHienTrangKiemTra.SelectedValue.ToString()) == true)
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Nội Dung Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;

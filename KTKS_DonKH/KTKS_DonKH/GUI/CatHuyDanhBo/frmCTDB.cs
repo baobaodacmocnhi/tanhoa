@@ -1502,6 +1502,59 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
         }
 
+        private void btnInThongBaoMoi_BoQuan_Click(object sender, EventArgs e)
+        {
+            if (_ctctdb != null)
+            {
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
+
+                //dr["SoPhieu"] = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+                dr["HoTen"] = _ctctdb.HoTen;
+                dr["DiaChi"] = _ctctdb.DiaChi;
+                if (!string.IsNullOrEmpty(_ctctdb.DanhBo))
+                    dr["DanhBo"] = _ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["HopDong"] = _ctctdb.HopDong;
+                dr["MLT"] = _ctctdb.MLT;
+                dr["Quan"] = _cCHDB.getTenQuan(int.Parse(_ctctdb.Quan));
+                dr["Phuong"] = _cCHDB.getTenPhuong(int.Parse(_ctctdb.Quan), int.Parse(_ctctdb.Phuong));
+
+                dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + _ctctdb.ViTriDHN1 + ", " + _ctctdb.ViTriDHN2;
+
+                if (_ctctdb.LyDo != "Vấn Đề Khác")
+                    dr["LyDo"] = _ctctdb.LyDo + ". ";
+                if (_ctctdb.GhiChuLyDo != "")
+                    dr["LyDo"] += _ctctdb.GhiChuLyDo + ". ";
+                if (_ctctdb.SoTien.ToString() != "")
+                    dr["LyDo"] += "Tổng Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctctdb.SoTien);
+                dr["NoiDung"] = _ctctdb.NoiDung;
+
+                dr["NoiNhan"] = _ctctdb.NoiNhan + "\r\nTB" + _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+
+                dr["NgayXuLy"] = _cDonTu.GetToDate(_ctctdb.CreateDate.Value, 10).ToString("dd/MM/yyyy");
+
+                dr["ChucVu"] = _ctctdb.ChucVu;
+                dr["NguoiKy"] = _ctctdb.NguoiKy;
+                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+
+                dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
+
+                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
+                ReportDocument rpt;
+                //if (_ctctdb.LyDo.Contains("Nhiều Kỳ") == true)
+                //    rpt = new rptThongBaoCHDB_NoNhieuKy();
+                //else
+                rpt = new rptThongBaoCTDB_PHT_BoQuan();
+                rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.ShowDialog();
+            }
+        }
+
         
 
     }

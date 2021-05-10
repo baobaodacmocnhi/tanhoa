@@ -2046,7 +2046,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 //        dr["NguoiKy"] = radPhoPhong.Text;
                                 //    }
                                 dr["ChucVu"] = CTaiKhoan.ChucVu;
-                                dr["NguoiKy"] = CTaiKhoan.HoTen;
+                                dr["NguoiKy"] = CTaiKhoan.NguoiKy;
                                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 

@@ -122,6 +122,7 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.btnInThongBaoMoi = new System.Windows.Forms.Button();
+            this.btnInThongBaoMoi_BoQuan = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxNoiDungXuLy.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -1044,6 +1045,16 @@
             this.btnInThongBaoMoi.UseVisualStyleBackColor = true;
             this.btnInThongBaoMoi.Click += new System.EventHandler(this.btnInThongBaoMoi_Click);
             // 
+            // btnInThongBaoMoi_BoQuan
+            // 
+            this.btnInThongBaoMoi_BoQuan.Location = new System.Drawing.Point(1081, 275);
+            this.btnInThongBaoMoi_BoQuan.Name = "btnInThongBaoMoi_BoQuan";
+            this.btnInThongBaoMoi_BoQuan.Size = new System.Drawing.Size(121, 42);
+            this.btnInThongBaoMoi_BoQuan.TabIndex = 127;
+            this.btnInThongBaoMoi_BoQuan.Text = "In Thông Báo Mới (bỏ Quận)";
+            this.btnInThongBaoMoi_BoQuan.UseVisualStyleBackColor = true;
+            this.btnInThongBaoMoi_BoQuan.Click += new System.EventHandler(this.btnInThongBaoMoi_BoQuan_Click);
+            // 
             // frmCTDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1051,6 +1062,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1445, 667);
+            this.Controls.Add(this.btnInThongBaoMoi_BoQuan);
             this.Controls.Add(this.btnInThongBaoMoi);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.txtTCHC);
@@ -1200,5 +1212,6 @@
         private System.Windows.Forms.ToolStripMenuItem xoaFile_dgvHinh;
         private System.Windows.Forms.CheckBox chkCode68;
         private System.Windows.Forms.Button btnInThongBaoMoi;
+        private System.Windows.Forms.Button btnInThongBaoMoi_BoQuan;
     }
 }
