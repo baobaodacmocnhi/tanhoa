@@ -544,7 +544,7 @@ namespace ThuTien.GUI.Doi
         {
             try
             {
-                if ((CNguoiDung.MaND == 0 || CNguoiDung.MaND == 1) && CNguoiDung.CheckQuyen("mnuDieuChinhDangNganDoi", "Sua"))
+                if (CNguoiDung.CheckQuyen("mnuDieuChinhDangNganDoi", "Sua"))
                 {
                     if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "Chot")
                     {
