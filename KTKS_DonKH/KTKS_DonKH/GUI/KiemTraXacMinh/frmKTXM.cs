@@ -111,7 +111,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtHieu.Text = a;
             txtCo.Text = b;
             txtSoThan.Text = c;
-            if (_cDonTu.checkExist_TonCu(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
+            if (_cDonTu.checkExist_TonCu(txtDanhBo.Text.Trim().Replace(" ", ""), _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
                 MessageBox.Show("Danh Bộ này có đơn tồn cũ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 

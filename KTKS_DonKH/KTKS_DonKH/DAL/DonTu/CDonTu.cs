@@ -649,13 +649,13 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public bool checkExist_TonCu(string DanhBo)
+        public bool checkExist_TonCu(string DanhBo, int MaDon, int STT)
         {
             if (db.DonTu_ChiTiets.Count(item => item.DanhBo == DanhBo && item.TinhTrang.Contains("Tồn")) >= 2)
                 return true;
             else
-                if (db.KTXM_ChiTiets.Any(item => item.DanhBo == DanhBo && db.DonTu_ChiTiets.Any(itemA => itemA.MaDon == item.KTXM.MaDonMoi && itemA.STT == item.STT && itemA.TinhTrang.Contains("Tồn")) == true) == true
-                    && db.DonTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.TinhTrang.Contains("Tồn")) == true)
+                if (db.KTXM_ChiTiets.Any(item => item.DanhBo == DanhBo && db.DonTu_ChiTiets.Any(itemA => itemA.MaDon == MaDon && itemA.STT == STT && itemA.TinhTrang.Contains("Tồn")) == true) == true
+                    && db.DonTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.TinhTrang.Contains("Tồn") && item.MaDon != MaDon && item.STT != STT) == true)
                     return true;
                 else
                     return false;

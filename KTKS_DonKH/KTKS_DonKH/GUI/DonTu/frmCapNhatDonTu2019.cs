@@ -168,24 +168,32 @@ namespace KTKS_DonKH.GUI.DonTu
 
         public void LoadLichSu()
         {
+            bool flag = false;
             if (_dontu != null)
                 if (_dontu_ChiTiet == null)
                 {
                     dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu.MaDon, 1);
+                    flag = _cDonTu.checkExist_TonCu(txtDanhBo.Text.Trim().Replace(" ", ""), _dontu.MaDon, 1);
                 }
                 else
                 {
                     if (dgvDanhBo.SelectedRows.Count > 1)
+                    {
                         dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, dgvDanhBo.CurrentRow.Index);
+                        flag = _cDonTu.checkExist_TonCu(txtDanhBo.Text.Trim().Replace(" ", ""), _dontu_ChiTiet.MaDon.Value, dgvDanhBo.CurrentRow.Index);
+                    }
                     else
+                    {
                         dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                        flag = _cDonTu.checkExist_TonCu(txtDanhBo.Text.Trim().Replace(" ", ""), _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                    }
                 }
             if (txtDanhBo.Text.Trim() != "")
             {
                 dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
-                if (_cDonTu.checkExist_TonCu(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
-                    MessageBox.Show("Danh Bộ này có đơn tồn cũ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            if (flag == true)
+                MessageBox.Show("Danh Bộ này có đơn tồn cũ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void FillLichSu(DonTu_LichSu en)
