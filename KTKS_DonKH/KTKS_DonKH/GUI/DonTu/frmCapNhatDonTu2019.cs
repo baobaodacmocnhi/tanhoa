@@ -180,12 +180,12 @@ namespace KTKS_DonKH.GUI.DonTu
                     if (dgvDanhBo.SelectedRows.Count > 1)
                     {
                         dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, dgvDanhBo.CurrentRow.Index);
-                        flag = _cDonTu.checkExist_TonCu(txtDanhBo.Text.Trim().Replace(" ", ""), _dontu_ChiTiet.MaDon.Value, dgvDanhBo.CurrentRow.Index);
+                        flag = _cDonTu.checkExist_TonCu(dgvDanhBo.CurrentRow.Cells["DanhBo"].Value.ToString(), _dontu_ChiTiet.MaDon.Value, dgvDanhBo.CurrentRow.Index);
                     }
                     else
                     {
                         dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
-                        flag = _cDonTu.checkExist_TonCu(txtDanhBo.Text.Trim().Replace(" ", ""), _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                        flag = _cDonTu.checkExist_TonCu(_dontu_ChiTiet.DanhBo, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                     }
                 }
             if (txtDanhBo.Text.Trim() != "")

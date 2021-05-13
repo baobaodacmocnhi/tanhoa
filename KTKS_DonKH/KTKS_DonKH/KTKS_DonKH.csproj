@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1543</ApplicationRevision>
+    <ApplicationRevision>1545</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -186,6 +186,12 @@
     </Compile>
     <Compile Include="BaoCao\CatHuyDanhBo\rptCHDB_BienNhan.cs">
       <DependentUpon>rptCHDB_BienNhan.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\DieuChinhBienDong\rptDSPhieuDCBD_HDDT_SoTien_BaoCaoThue.cs">
+      <DependentUpon>rptDSPhieuDCBD_HDDT_SoTien_BaoCaoThue.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -1663,6 +1669,10 @@
     <EmbeddedResource Include="BaoCao\CatHuyDanhBo\rptCHDB_BienNhan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCHDB_BienNhan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptDSPhieuDCBD_HDDT_SoTien_BaoCaoThue.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDSPhieuDCBD_HDDT_SoTien_BaoCaoThue.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptThuBaoDCBD_ChungCu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

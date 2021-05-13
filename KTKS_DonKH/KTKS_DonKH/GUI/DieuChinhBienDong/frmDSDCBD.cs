@@ -1165,6 +1165,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (radDSDCHD.Checked)
                 {
                     DataSetBaoCao dsBaoCao_SoTien = new DataSetBaoCao();
+                    DataSetBaoCao dsBaoCao_SoTien_BaoCaoThue = new DataSetBaoCao();
                     DataSetBaoCao dsBaoCao_ThongTin = new DataSetBaoCao();
                     DataSetBaoCao dsBaoCao_KhauTru = new DataSetBaoCao();
                     for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
@@ -1265,7 +1266,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     else
                                         dr["ChucVu"] = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                                     dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
-                                    dsBaoCao_SoTien.Tables["DCHD"].Rows.Add(dr);
+                                    if (ctdchd.BaoCaoThue == true)
+                                        dsBaoCao_SoTien_BaoCaoThue.Tables["DCHD"].Rows.Add(dr);
+                                    else
+                                        dsBaoCao_SoTien.Tables["DCHD"].Rows.Add(dr);
                                 }
                                 else
                                 {
@@ -1470,6 +1474,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         rptDSPhieuDCBD_HDDT_SoTien rpt = new rptDSPhieuDCBD_HDDT_SoTien();
                         rpt.SetDataSource(dsBaoCao_SoTien);
+                        frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                        frm.Show();
+                    }
+                    if (dsBaoCao_SoTien_BaoCaoThue.Tables["DCHD"].Rows.Count > 0)
+                    {
+                        rptDSPhieuDCBD_HDDT_SoTien_BaoCaoThue rpt = new rptDSPhieuDCBD_HDDT_SoTien_BaoCaoThue();
+                        rpt.SetDataSource(dsBaoCao_SoTien_BaoCaoThue);
                         frmShowBaoCao frm = new frmShowBaoCao(rpt);
                         frm.Show();
                     }
@@ -2260,9 +2271,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     cl21.Value2 = "Số Hóa Đơn Mới";
                     cl21.ColumnWidth = 15;
 
+                    Microsoft.Office.Interop.Excel.Range cl22 = oSheet.get_Range("V1", "V1");
+                    cl21.Value2 = "Báo Cáo Thuế";
+                    cl21.ColumnWidth = 15;
+
                     // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
                     // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-                    object[,] arr = new object[dt.Rows.Count, 20];
+                    int numColumn = 21;
+                    object[,] arr = new object[dt.Rows.Count, numColumn];
 
                     //Chuyển dữ liệu từ DataTable vào mảng đối tượng
                     for (int i = 0; i < dt.Rows.Count; i++)
@@ -2290,6 +2306,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             arr[i, 17] = dr["ThueGTGT_End"].ToString();
                             arr[i, 18] = dr["PhiBVMT_End"].ToString();
                             arr[i, 19] = dr["TongCong_End"].ToString();
+                            arr[i, 20] = dr["BaoCaoThue"].ToString();
                         }
                     }
 
@@ -2298,7 +2315,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     int columnStart = 1;
 
                     int rowEnd = rowStart + dt.Rows.Count - 1;
-                    int columnEnd = 20;
+                    int columnEnd = numColumn;
 
                     // Ô bắt đầu điền dữ liệu
                     Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];

@@ -2106,6 +2106,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTDCHD.LyDoDieuChinh,
                             itemCTDCHD.CreateDate,
                             itemCTDCHD.CodeF2,
+                            itemCTDCHD.BaoCaoThue,
                             itemCTDCHD.DanhBo,
                             itemCTDCHD.GiaBieu,
                             itemCTDCHD.GiaBieu_BD,

@@ -80,6 +80,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //txtMaDon.Text = "";
             txtSoPhieu.Text = "";
             chkCodeF2.Checked = false;
+            chkBaoCaoThue.Checked = false;
             ///
             txtSoVB.Text = "";
             dateNgayKy.Value = DateTime.Now;
@@ -190,6 +191,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSoPhieu.Text = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
             ///
             chkCodeF2.Checked = ctdchd.CodeF2;
+            chkBaoCaoThue.Checked = ctdchd.BaoCaoThue;
             txtSoVB.Text = ctdchd.SoVB;
             dateNgayKy.Value = ctdchd.NgayKy.Value;
             txtKyHD.Text = ctdchd.KyHD;
@@ -796,8 +798,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
                     ctdchd.PhieuDuocKy = true;
 
-                    if (chkCodeF2.Checked)
-                        ctdchd.CodeF2 = true;
+                    ctdchd.CodeF2 = chkCodeF2.Checked;
+                    ctdchd.BaoCaoThue = chkBaoCaoThue.Checked;
 
                     using (TransactionScope scope = new TransactionScope())
                         if (_cDCBD.ThemDCHD(ctdchd))
@@ -1040,10 +1042,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
                         _ctdchd.PhieuDuocKy = true;
 
-                        if (chkCodeF2.Checked)
-                            _ctdchd.CodeF2 = true;
-                        else
-                            _ctdchd.CodeF2 = false;
+                            _ctdchd.CodeF2 = chkCodeF2.Checked;
+                            _ctdchd.BaoCaoThue = chkBaoCaoThue.Checked;
 
                         if (_cDCBD.SuaDCHD(_ctdchd))
                         {
@@ -1118,7 +1118,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (_ctdchd != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                      var transactionOptions = new TransactionOptions();
+                        var transactionOptions = new TransactionOptions();
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {

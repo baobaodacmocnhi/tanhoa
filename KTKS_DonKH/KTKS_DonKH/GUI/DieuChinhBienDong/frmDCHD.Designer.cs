@@ -76,6 +76,10 @@
             this.txtTieuThu_End = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.txtDiaChi_BD = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.txtHoTen_BD = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.txtMaToTrinh = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
@@ -151,10 +155,7 @@
             this.chkHoNgheo = new System.Windows.Forms.CheckBox();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.txtDiaChi_BD = new System.Windows.Forms.TextBox();
-            this.label39 = new System.Windows.Forms.Label();
-            this.txtHoTen_BD = new System.Windows.Forms.TextBox();
+            this.chkBaoCaoThue = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -619,6 +620,38 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(7, 227);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(71, 16);
+            this.label38.TabIndex = 21;
+            this.label38.Text = "Địa Chỉ BĐ";
+            // 
+            // txtDiaChi_BD
+            // 
+            this.txtDiaChi_BD.Location = new System.Drawing.Point(115, 225);
+            this.txtDiaChi_BD.Name = "txtDiaChi_BD";
+            this.txtDiaChi_BD.Size = new System.Drawing.Size(270, 22);
+            this.txtDiaChi_BD.TabIndex = 22;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(7, 198);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(102, 16);
+            this.label39.TabIndex = 19;
+            this.label39.Text = "Khách Hàng BĐ";
+            // 
+            // txtHoTen_BD
+            // 
+            this.txtHoTen_BD.Location = new System.Drawing.Point(115, 195);
+            this.txtHoTen_BD.Name = "txtHoTen_BD";
+            this.txtHoTen_BD.Size = new System.Drawing.Size(270, 22);
+            this.txtHoTen_BD.TabIndex = 20;
             // 
             // label36
             // 
@@ -1367,37 +1400,15 @@
             this.label37.TabIndex = 40;
             this.label37.Text = "Ghi Chú";
             // 
-            // label38
+            // chkBaoCaoThue
             // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(7, 227);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(71, 16);
-            this.label38.TabIndex = 21;
-            this.label38.Text = "Địa Chỉ BĐ";
-            // 
-            // txtDiaChi_BD
-            // 
-            this.txtDiaChi_BD.Location = new System.Drawing.Point(115, 225);
-            this.txtDiaChi_BD.Name = "txtDiaChi_BD";
-            this.txtDiaChi_BD.Size = new System.Drawing.Size(270, 22);
-            this.txtDiaChi_BD.TabIndex = 22;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(7, 198);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(102, 16);
-            this.label39.TabIndex = 19;
-            this.label39.Text = "Khách Hàng BĐ";
-            // 
-            // txtHoTen_BD
-            // 
-            this.txtHoTen_BD.Location = new System.Drawing.Point(115, 195);
-            this.txtHoTen_BD.Name = "txtHoTen_BD";
-            this.txtHoTen_BD.Size = new System.Drawing.Size(270, 22);
-            this.txtHoTen_BD.TabIndex = 20;
+            this.chkBaoCaoThue.AutoSize = true;
+            this.chkBaoCaoThue.Location = new System.Drawing.Point(740, 14);
+            this.chkBaoCaoThue.Name = "chkBaoCaoThue";
+            this.chkBaoCaoThue.Size = new System.Drawing.Size(134, 20);
+            this.chkBaoCaoThue.TabIndex = 42;
+            this.chkBaoCaoThue.Text = "Đã Báo Cáo Thuế";
+            this.chkBaoCaoThue.UseVisualStyleBackColor = true;
             // 
             // frmDCHD
             // 
@@ -1405,6 +1416,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1303, 640);
+            this.Controls.Add(this.chkBaoCaoThue);
             this.Controls.Add(this.txtGhiChu);
             this.Controls.Add(this.label37);
             this.Controls.Add(this.chkHoNgheo);
@@ -1597,5 +1609,6 @@
         private System.Windows.Forms.TextBox txtDiaChi_BD;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.TextBox txtHoTen_BD;
+        private System.Windows.Forms.CheckBox chkBaoCaoThue;
     }
 }
