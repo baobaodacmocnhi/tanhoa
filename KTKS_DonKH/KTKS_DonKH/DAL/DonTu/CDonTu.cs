@@ -651,14 +651,17 @@ namespace KTKS_DonKH.DAL.DonTu
 
         public bool checkExist_TonCu(string DanhBo, int MaDon, int STT)
         {
-            if (db.DonTu_ChiTiets.Count(item => item.DanhBo == DanhBo && item.TinhTrang.Contains("Tồn")) >= 2)
-                return true;
-            else
-                if (db.KTXM_ChiTiets.Any(item => item.DanhBo == DanhBo && db.DonTu_ChiTiets.Any(itemA => itemA.MaDon == MaDon && itemA.STT == STT && itemA.TinhTrang.Contains("Tồn")) == true) == true
-                    && db.DonTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.TinhTrang.Contains("Tồn") && item.MaDon != MaDon && item.STT != STT) == true)
+            if (DanhBo != "")
+                if (db.DonTu_ChiTiets.Count(item => item.DanhBo == DanhBo && item.TinhTrang.Contains("Tồn")) >= 2)
                     return true;
                 else
-                    return false;
+                    if (db.KTXM_ChiTiets.Any(item => item.DanhBo == DanhBo && db.DonTu_ChiTiets.Any(itemA => itemA.MaDon == MaDon && itemA.STT == STT && itemA.TinhTrang.Contains("Tồn")) == true) == true
+                        && db.DonTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.TinhTrang.Contains("Tồn") && item.MaDon != MaDon && item.STT != STT) == true)
+                        return true;
+                    else
+                        return false;
+            else
+                return false;
         }
 
         public DonTu_ChiTiet get_ChiTiet(int ID)
@@ -2380,6 +2383,14 @@ namespace KTKS_DonKH.DAL.DonTu
                         + " and CAST(dtls.NgayChuyen as date)>='" + FromNgayChuyen.ToString("yyyyMMdd") + "' and CAST(dtls.NgayChuyen as date)<='" + ToNgayChuyen.ToString("yyyyMMdd") + "'"
                         + " order by dtct.MaDon,dtct.STT";
 
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getDSDonChuyenDe(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            string sql = "select dtct.MaDon,dtct.STT,t1.CanKhachHangLienHe,t1.DinhMuc,t1.DinhMucMoi from DonTu dt,DonTu_ChiTiet dtct"
+                    + " left join (select MaDonMoi,STT,CanKhachHangLienHe,DinhMuc,DinhMucMoi from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM) t1 on t1.MaDonMoi=dtct.MaDon and t1.STT=dtct.STT"
+                    + " where dt.MaDon=dtct.MaDon and CAST(dt.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(dt.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and Name_NhomDon like N'%chuyên đề%'";
             return ExecuteQuery_DataTable(sql);
         }
     }

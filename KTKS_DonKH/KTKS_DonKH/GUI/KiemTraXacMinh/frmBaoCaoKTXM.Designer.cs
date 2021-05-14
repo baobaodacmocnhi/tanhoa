@@ -88,6 +88,13 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.btnBaoCao_BaoThay = new System.Windows.Forms.Button();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.dateTu_DonChuyenDe = new System.Windows.Forms.DateTimePicker();
+            this.dateDen_DonChuyenDe = new System.Windows.Forms.DateTimePicker();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btnBaoCao_DonChuyenDe = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -100,6 +107,8 @@
             this.panel4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // dateTu_ThongKeHienTrangKiemTra
@@ -308,12 +317,12 @@
             // 
             this.groupBox3.Controls.Add(this.panel2);
             this.groupBox3.Controls.Add(this.btnBaoCao_DScoTruyThu);
-            this.groupBox3.Location = new System.Drawing.Point(12, 204);
+            this.groupBox3.Location = new System.Drawing.Point(554, 202);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(536, 89);
+            this.groupBox3.Size = new System.Drawing.Size(402, 89);
             this.groupBox3.TabIndex = 27;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Danh Sách có Truy Thu (có nhập Định Mức Mới)";
+            this.groupBox3.Text = "Danh Sách Biên Bản có nhập Định Mức Mới (ngày lập Biên Bản)";
             // 
             // panel2
             // 
@@ -387,7 +396,7 @@
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.panel3);
             this.groupBox4.Controls.Add(this.btnBaoCao_ThongKeXuLyBB);
-            this.groupBox4.Location = new System.Drawing.Point(12, 299);
+            this.groupBox4.Location = new System.Drawing.Point(12, 204);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(536, 162);
             this.groupBox4.TabIndex = 28;
@@ -708,12 +717,80 @@
             this.btnBaoCao_BaoThay.UseVisualStyleBackColor = true;
             this.btnBaoCao_BaoThay.Click += new System.EventHandler(this.btnBaoCao_BaoThay_Click);
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.panel6);
+            this.groupBox7.Controls.Add(this.btnBaoCao_DonChuyenDe);
+            this.groupBox7.Location = new System.Drawing.Point(554, 297);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(402, 89);
+            this.groupBox7.TabIndex = 28;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Thông Kê Đơn Chuyên Đề Định Mức (ngày lập đơn)";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.dateTu_DonChuyenDe);
+            this.panel6.Controls.Add(this.dateDen_DonChuyenDe);
+            this.panel6.Controls.Add(this.label18);
+            this.panel6.Controls.Add(this.label19);
+            this.panel6.Location = new System.Drawing.Point(6, 21);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(180, 60);
+            this.panel6.TabIndex = 23;
+            // 
+            // dateTu_DonChuyenDe
+            // 
+            this.dateTu_DonChuyenDe.CustomFormat = "dd/MM/yyyy";
+            this.dateTu_DonChuyenDe.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu_DonChuyenDe.Location = new System.Drawing.Point(84, 4);
+            this.dateTu_DonChuyenDe.Name = "dateTu_DonChuyenDe";
+            this.dateTu_DonChuyenDe.Size = new System.Drawing.Size(90, 22);
+            this.dateTu_DonChuyenDe.TabIndex = 13;
+            // 
+            // dateDen_DonChuyenDe
+            // 
+            this.dateDen_DonChuyenDe.CustomFormat = "dd/MM/yyyy";
+            this.dateDen_DonChuyenDe.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen_DonChuyenDe.Location = new System.Drawing.Point(84, 32);
+            this.dateDen_DonChuyenDe.Name = "dateDen_DonChuyenDe";
+            this.dateDen_DonChuyenDe.Size = new System.Drawing.Size(90, 22);
+            this.dateDen_DonChuyenDe.TabIndex = 14;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(7, 7);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(63, 16);
+            this.label18.TabIndex = 15;
+            this.label18.Text = "Từ Ngày:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(7, 37);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(71, 16);
+            this.label19.TabIndex = 16;
+            this.label19.Text = "Đến Ngày:";
+            // 
+            // btnBaoCao_DonChuyenDe
+            // 
+            this.btnBaoCao_DonChuyenDe.Location = new System.Drawing.Point(192, 38);
+            this.btnBaoCao_DonChuyenDe.Name = "btnBaoCao_DonChuyenDe";
+            this.btnBaoCao_DonChuyenDe.Size = new System.Drawing.Size(75, 25);
+            this.btnBaoCao_DonChuyenDe.TabIndex = 24;
+            this.btnBaoCao_DonChuyenDe.Text = "Báo Cáo";
+            this.btnBaoCao_DonChuyenDe.UseVisualStyleBackColor = true;
+            // 
             // frmBaoCaoKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1174, 542);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -747,6 +824,9 @@
             this.groupBox6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -813,5 +893,12 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnBaoCao_BaoThay;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.DateTimePicker dateTu_DonChuyenDe;
+        private System.Windows.Forms.DateTimePicker dateDen_DonChuyenDe;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btnBaoCao_DonChuyenDe;
     }
 }

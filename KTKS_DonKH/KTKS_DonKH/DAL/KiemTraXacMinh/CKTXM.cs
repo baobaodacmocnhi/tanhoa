@@ -1187,6 +1187,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             return LINQToDataTable(db.KTXM_ChiTiets.Select(item => new { item.GhiChuNoiDungXuLy }).ToList().Distinct());
         }
 
+
+
         #endregion
 
         //MaDonMoi

@@ -935,6 +935,39 @@ namespace KTKS_DonKH.GUI.DonTu
             frm.Show();
         }
 
+        private void btnBaoCao_DonChuyenDe_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+
+            dt = _cDonTu.getDSDonChuyenDe(dateTu_DonChuyenDe.Value, dateDen_DonChuyenDe.Value);
+
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DanhSachDonKH"].NewRow();
+
+                dr["TuNgay"] = dateTu_LichSuChuyenDon.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_LichSuChuyenDon.Value.ToString("dd/MM/yyyy");
+                dr["Ma"] = item["MaDon"].ToString();
+                dr["MaChiTiet"] = item["MaDonChiTiet"].ToString();
+                dr["CreateDate"] = item["NgayChuyen"].ToString();
+                if (item["DanhBo"].ToString().Length == 11)
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = item["DiaChi"].ToString();
+                dr["NoiDung"] = item["NoiDungDon"].ToString();
+                dr["NoiNhan"] = item["NoiNhan"].ToString();
+                dr["GhiChu"] = item["NoiDung"].ToString();
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                dr["NguoiLap"] = CTaiKhoan.HoTen;
+
+                dsBaoCao.Tables["DanhSachDonKH"].Rows.Add(dr);
+            }
+            rptThongKeDonChuyenDe rpt = new rptThongKeDonChuyenDe();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
+        }
+
 
 
 
