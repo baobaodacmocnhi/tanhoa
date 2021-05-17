@@ -1509,3 +1509,7 @@ The statement has been terminated.
 2020-06-26 10:43:33,800 [12044] ERROR File LinQConnection ExecuteCommand : SELECT SUM(SLKDY)  FROM BAUCU WHERE STT= 0 AND LANBC= 1 AND CONVERT(VARCHAR(50),NGAYBC,103)='26/06/2020' 
 2020-06-26 10:43:33,819 [12044] ERROR File LinQConnection ExecuteCommand : Object cannot be cast from DBNull to other types.
 2020-06-26 10:53:21,840 [10792] ERROR File LinQConnection getDataTableDivide by zero error encountered.
+2021-04-26 10:18:21,690 [4360] ERROR File LinQConnection getDataTableConversion failed when converting the varchar value '----' to data type int.
+2021-04-26 10:18:21,797 [4360] ERROR File LinQConnection getDataTableIncorrect syntax near '='.
+2021-04-26 10:18:51,037 [2260] ERROR File LinQConnection getDataTableConversion failed when converting the varchar value '----' to data type int.
+2021-04-26 10:18:51,119 [2260] ERROR File LinQConnection getDataTableIncorrect syntax near '='.

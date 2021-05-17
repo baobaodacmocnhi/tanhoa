@@ -34,7 +34,7 @@ namespace DHCD_KiemPhieu.View
 
             } if ("IN".Equals(Request.Params["page"] + ""))
             {
-                CrystalReportSource1.Report.FileName = "inTheBieuQuyet_N.rpt";
+                CrystalReportSource1.Report.FileName = "inTheBieuQuyet.rpt";
                 CrystalReportSource1.ReportDocument.SetDataSource(Img());
                 CrystalReportSource1.ReportDocument.SetParameterValue("TT", Session["TT"] + "");
 

@@ -665,7 +665,7 @@ namespace BauCu
                         CExcel fileExcel = new CExcel(dialog.FileName);
                         DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
-                        foreach (DataRow item in dtExcel.Rows)
+                        for (int i = 7; i < dtExcel.Rows.Count; i++)
                         {
                             DSCODONG en = new DSCODONG();
                             if (db.DSCODONGs.Count() == 0)
@@ -680,17 +680,17 @@ namespace BauCu
                                 en.STTCD = en.STT;
                                 en.MACD = "THW " + en.STT.ToString("000");
                             }
-                            en.TENCD = ToFirstUpper(item[4].ToString());
-                            en.CMND = item[1].ToString();
-                            if (item[2].ToString() != "")
+                            en.TENCD = ToFirstUpper(dtExcel.Rows[i][1].ToString());
+                            en.CMND = dtExcel.Rows[i][5].ToString();
+                            if (dtExcel.Rows[i][6].ToString() != "")
                             {
-                                string[] date = item[2].ToString().Trim().Split('/');
+                                string[] date = dtExcel.Rows[i][6].ToString().Trim().Split('/');
                                 string[] year = date[2].Split(' ');
                                 en.NGAYCAP = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]));
                             }
                             en.CDGD = 0;
                             en.PHONGTOA = 0;
-                            en.TONGCD = int.Parse(item[3].ToString());
+                            en.TONGCD = int.Parse(dtExcel.Rows[i][4].ToString());
                             db.DSCODONGs.InsertOnSubmit(en);
                             db.SubmitChanges();
                         }
