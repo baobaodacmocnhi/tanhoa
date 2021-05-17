@@ -480,6 +480,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 if (!string.IsNullOrEmpty(ctctdb.DanhBo))
                                     dr["DanhBo"] = ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctctdb.HopDong;
+                                dr["Quan"] = _cCHDB.getTenQuan(int.Parse(ctctdb.Quan));
+                                dr["Phuong"] = _cCHDB.getTenPhuong(int.Parse(ctctdb.Quan), int.Parse(ctctdb.Phuong));
 
                                 dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctctdb.ViTriDHN1 + ", " + ctctdb.ViTriDHN2;
 
@@ -535,6 +537,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 if (!string.IsNullOrEmpty(ctchdb.DanhBo))
                                     dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctchdb.HopDong;
+                                dr["Quan"] = _cCHDB.getTenQuan(int.Parse(ctchdb.Quan));
+                                dr["Phuong"] = _cCHDB.getTenPhuong(int.Parse(ctchdb.Quan), int.Parse(ctchdb.Phuong));
 
                                 dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctchdb.ViTriDHN1 + ", " + ctchdb.ViTriDHN2;
 

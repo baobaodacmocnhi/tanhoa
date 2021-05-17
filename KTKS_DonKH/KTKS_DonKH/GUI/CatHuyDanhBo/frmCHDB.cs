@@ -1421,6 +1421,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (!string.IsNullOrEmpty(_ctchdb.DanhBo))
                     dr["DanhBo"] = _ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HopDong"] = _ctchdb.HopDong;
+                dr["Quan"] = _cCHDB.getTenQuan(int.Parse(_ctctdb.Quan));
+                dr["Phuong"] = _cCHDB.getTenPhuong(int.Parse(_ctctdb.Quan), int.Parse(_ctctdb.Phuong));
 
                 dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + _ctchdb.ViTriDHN1 + ", " + _ctchdb.ViTriDHN2;
 

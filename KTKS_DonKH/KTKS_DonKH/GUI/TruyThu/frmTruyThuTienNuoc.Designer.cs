@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -64,6 +64,28 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvTruyThuTienNuoc = new System.Windows.Forms.DataGridView();
+            this.ID_HoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMuc_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMucHN_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBan_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThueGTGT_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhiBVMT_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMuc_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMucHN_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBan_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThueGTGT_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhiBVMT_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TangGiam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTien1m3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m3BinhQuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -132,28 +154,6 @@
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSoTien1m3 = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.ID_HoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBieu_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMuc_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMucHN_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TieuThu_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBan_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThueGTGT_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhiBVMT_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBieu_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMuc_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMucHN_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TieuThu_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBan_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThueGTGT_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhiBVMT_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TangGiam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTien1m3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.m3BinhQuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTruyThuTienNuoc)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -265,6 +265,7 @@
             "Đã gửi TB tạm ngưng cung cấp nước",
             "Chuyển lập TB cắt tạm",
             "Chuyển lập TB hủy",
+            "Chuyển lập TB Đóng Nước",
             "Giữ nguyên"});
             this.cmbTinhTrang.Location = new System.Drawing.Point(286, 160);
             this.cmbTinhTrang.Name = "cmbTinhTrang";
@@ -465,6 +466,204 @@
             this.dgvTruyThuTienNuoc.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvTruyThuTienNuoc_UserDeletingRow);
             this.dgvTruyThuTienNuoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvTruyThuTienNuoc_KeyDown);
             this.dgvTruyThuTienNuoc.Leave += new System.EventHandler(this.dgvTruyThuTienNuoc_Leave);
+            // 
+            // ID_HoaDon
+            // 
+            this.ID_HoaDon.DataPropertyName = "ID";
+            this.ID_HoaDon.HeaderText = "ID";
+            this.ID_HoaDon.Name = "ID_HoaDon";
+            this.ID_HoaDon.Visible = false;
+            // 
+            // Nam
+            // 
+            this.Nam.DataPropertyName = "Nam";
+            this.Nam.HeaderText = "Năm";
+            this.Nam.Name = "Nam";
+            this.Nam.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Nam.Width = 50;
+            // 
+            // Ky
+            // 
+            this.Ky.DataPropertyName = "Ky";
+            this.Ky.HeaderText = "Kỳ";
+            this.Ky.Name = "Ky";
+            this.Ky.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Ky.Width = 50;
+            // 
+            // GiaBieu_Cu
+            // 
+            this.GiaBieu_Cu.DataPropertyName = "GiaBieuCu";
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red;
+            this.GiaBieu_Cu.DefaultCellStyle = dataGridViewCellStyle1;
+            this.GiaBieu_Cu.HeaderText = "GB";
+            this.GiaBieu_Cu.Name = "GiaBieu_Cu";
+            this.GiaBieu_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.GiaBieu_Cu.Width = 50;
+            // 
+            // DinhMuc_Cu
+            // 
+            this.DinhMuc_Cu.DataPropertyName = "DinhMucCu";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Green;
+            this.DinhMuc_Cu.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DinhMuc_Cu.HeaderText = "ĐM";
+            this.DinhMuc_Cu.Name = "DinhMuc_Cu";
+            this.DinhMuc_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DinhMuc_Cu.Width = 50;
+            // 
+            // DinhMucHN_Cu
+            // 
+            this.DinhMucHN_Cu.DataPropertyName = "DinhMucHNCu";
+            this.DinhMucHN_Cu.HeaderText = "ĐM HN";
+            this.DinhMucHN_Cu.Name = "DinhMucHN_Cu";
+            this.DinhMucHN_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DinhMucHN_Cu.Width = 50;
+            // 
+            // TieuThu_Cu
+            // 
+            this.TieuThu_Cu.DataPropertyName = "TieuThuCu";
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Blue;
+            this.TieuThu_Cu.DefaultCellStyle = dataGridViewCellStyle3;
+            this.TieuThu_Cu.HeaderText = "TT";
+            this.TieuThu_Cu.Name = "TieuThu_Cu";
+            this.TieuThu_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TieuThu_Cu.Width = 50;
+            // 
+            // GiaBan_Cu
+            // 
+            this.GiaBan_Cu.DataPropertyName = "GiaBanCu";
+            this.GiaBan_Cu.HeaderText = "Giá Bán";
+            this.GiaBan_Cu.Name = "GiaBan_Cu";
+            this.GiaBan_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.GiaBan_Cu.Visible = false;
+            // 
+            // ThueGTGT_Cu
+            // 
+            this.ThueGTGT_Cu.DataPropertyName = "ThueGTGTCu";
+            this.ThueGTGT_Cu.HeaderText = "Thuế GTGT";
+            this.ThueGTGT_Cu.Name = "ThueGTGT_Cu";
+            this.ThueGTGT_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ThueGTGT_Cu.Visible = false;
+            // 
+            // PhiBVMT_Cu
+            // 
+            this.PhiBVMT_Cu.DataPropertyName = "PhiBVMTCu";
+            this.PhiBVMT_Cu.HeaderText = "Phí BVMT";
+            this.PhiBVMT_Cu.Name = "PhiBVMT_Cu";
+            this.PhiBVMT_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PhiBVMT_Cu.Visible = false;
+            // 
+            // TongCong_Cu
+            // 
+            this.TongCong_Cu.DataPropertyName = "TongCongCu";
+            this.TongCong_Cu.HeaderText = "Tổng Cộng";
+            this.TongCong_Cu.Name = "TongCong_Cu";
+            this.TongCong_Cu.ReadOnly = true;
+            this.TongCong_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // GiaBieu_Moi
+            // 
+            this.GiaBieu_Moi.DataPropertyName = "GiaBieuMoi";
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Red;
+            this.GiaBieu_Moi.DefaultCellStyle = dataGridViewCellStyle4;
+            this.GiaBieu_Moi.HeaderText = "GB";
+            this.GiaBieu_Moi.Name = "GiaBieu_Moi";
+            this.GiaBieu_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.GiaBieu_Moi.Width = 50;
+            // 
+            // DinhMuc_Moi
+            // 
+            this.DinhMuc_Moi.DataPropertyName = "DinhMucMoi";
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Green;
+            this.DinhMuc_Moi.DefaultCellStyle = dataGridViewCellStyle5;
+            this.DinhMuc_Moi.HeaderText = "ĐM";
+            this.DinhMuc_Moi.Name = "DinhMuc_Moi";
+            this.DinhMuc_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DinhMuc_Moi.Width = 50;
+            // 
+            // DinhMucHN_Moi
+            // 
+            this.DinhMucHN_Moi.DataPropertyName = "DinhMucHNMoi";
+            this.DinhMucHN_Moi.HeaderText = "ĐM HN";
+            this.DinhMucHN_Moi.Name = "DinhMucHN_Moi";
+            this.DinhMucHN_Moi.Width = 50;
+            // 
+            // TieuThu_Moi
+            // 
+            this.TieuThu_Moi.DataPropertyName = "TieuThuMoi";
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Blue;
+            this.TieuThu_Moi.DefaultCellStyle = dataGridViewCellStyle6;
+            this.TieuThu_Moi.HeaderText = "TT";
+            this.TieuThu_Moi.Name = "TieuThu_Moi";
+            this.TieuThu_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TieuThu_Moi.Width = 50;
+            // 
+            // GiaBan_Moi
+            // 
+            this.GiaBan_Moi.DataPropertyName = "GiaBanMoi";
+            this.GiaBan_Moi.HeaderText = "Giá Bán";
+            this.GiaBan_Moi.Name = "GiaBan_Moi";
+            this.GiaBan_Moi.ReadOnly = true;
+            this.GiaBan_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ThueGTGT_Moi
+            // 
+            this.ThueGTGT_Moi.DataPropertyName = "ThueGTGTMoi";
+            this.ThueGTGT_Moi.HeaderText = "Thuế GTGT";
+            this.ThueGTGT_Moi.Name = "ThueGTGT_Moi";
+            this.ThueGTGT_Moi.ReadOnly = true;
+            this.ThueGTGT_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ThueGTGT_Moi.Width = 110;
+            // 
+            // PhiBVMT_Moi
+            // 
+            this.PhiBVMT_Moi.DataPropertyName = "PhiBVMTMoi";
+            this.PhiBVMT_Moi.HeaderText = "Phí BVMT";
+            this.PhiBVMT_Moi.Name = "PhiBVMT_Moi";
+            this.PhiBVMT_Moi.ReadOnly = true;
+            this.PhiBVMT_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TongCong_Moi
+            // 
+            this.TongCong_Moi.DataPropertyName = "TongCongMoi";
+            this.TongCong_Moi.HeaderText = "Tổng Cộng";
+            this.TongCong_Moi.Name = "TongCong_Moi";
+            this.TongCong_Moi.ReadOnly = true;
+            this.TongCong_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TangGiam
+            // 
+            this.TangGiam.DataPropertyName = "TangGiam";
+            this.TangGiam.HeaderText = "Tăng /Giảm";
+            this.TangGiam.Name = "TangGiam";
+            this.TangGiam.ReadOnly = true;
+            this.TangGiam.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TangGiam.Width = 60;
+            // 
+            // SoTien1m3
+            // 
+            this.SoTien1m3.DataPropertyName = "SoTien1m3";
+            this.SoTien1m3.HeaderText = "SoTien1m3";
+            this.SoTien1m3.Name = "SoTien1m3";
+            this.SoTien1m3.Width = 50;
+            // 
+            // m3BinhQuan
+            // 
+            this.m3BinhQuan.DataPropertyName = "m3BinhQuan";
+            this.m3BinhQuan.HeaderText = "m3BinhQuan";
+            this.m3BinhQuan.Name = "m3BinhQuan";
+            this.m3BinhQuan.Width = 50;
             // 
             // label4
             // 
@@ -1097,204 +1296,6 @@
             this.label27.Size = new System.Drawing.Size(83, 16);
             this.label27.TabIndex = 140;
             this.label27.Text = "Số Tiền 1m3";
-            // 
-            // ID_HoaDon
-            // 
-            this.ID_HoaDon.DataPropertyName = "ID";
-            this.ID_HoaDon.HeaderText = "ID";
-            this.ID_HoaDon.Name = "ID_HoaDon";
-            this.ID_HoaDon.Visible = false;
-            // 
-            // Nam
-            // 
-            this.Nam.DataPropertyName = "Nam";
-            this.Nam.HeaderText = "Năm";
-            this.Nam.Name = "Nam";
-            this.Nam.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Nam.Width = 50;
-            // 
-            // Ky
-            // 
-            this.Ky.DataPropertyName = "Ky";
-            this.Ky.HeaderText = "Kỳ";
-            this.Ky.Name = "Ky";
-            this.Ky.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Ky.Width = 50;
-            // 
-            // GiaBieu_Cu
-            // 
-            this.GiaBieu_Cu.DataPropertyName = "GiaBieuCu";
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red;
-            this.GiaBieu_Cu.DefaultCellStyle = dataGridViewCellStyle1;
-            this.GiaBieu_Cu.HeaderText = "GB";
-            this.GiaBieu_Cu.Name = "GiaBieu_Cu";
-            this.GiaBieu_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.GiaBieu_Cu.Width = 50;
-            // 
-            // DinhMuc_Cu
-            // 
-            this.DinhMuc_Cu.DataPropertyName = "DinhMucCu";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Green;
-            this.DinhMuc_Cu.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DinhMuc_Cu.HeaderText = "ĐM";
-            this.DinhMuc_Cu.Name = "DinhMuc_Cu";
-            this.DinhMuc_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DinhMuc_Cu.Width = 50;
-            // 
-            // DinhMucHN_Cu
-            // 
-            this.DinhMucHN_Cu.DataPropertyName = "DinhMucHNCu";
-            this.DinhMucHN_Cu.HeaderText = "ĐM HN";
-            this.DinhMucHN_Cu.Name = "DinhMucHN_Cu";
-            this.DinhMucHN_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DinhMucHN_Cu.Width = 50;
-            // 
-            // TieuThu_Cu
-            // 
-            this.TieuThu_Cu.DataPropertyName = "TieuThuCu";
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Blue;
-            this.TieuThu_Cu.DefaultCellStyle = dataGridViewCellStyle3;
-            this.TieuThu_Cu.HeaderText = "TT";
-            this.TieuThu_Cu.Name = "TieuThu_Cu";
-            this.TieuThu_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.TieuThu_Cu.Width = 50;
-            // 
-            // GiaBan_Cu
-            // 
-            this.GiaBan_Cu.DataPropertyName = "GiaBanCu";
-            this.GiaBan_Cu.HeaderText = "Giá Bán";
-            this.GiaBan_Cu.Name = "GiaBan_Cu";
-            this.GiaBan_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.GiaBan_Cu.Visible = false;
-            // 
-            // ThueGTGT_Cu
-            // 
-            this.ThueGTGT_Cu.DataPropertyName = "ThueGTGTCu";
-            this.ThueGTGT_Cu.HeaderText = "Thuế GTGT";
-            this.ThueGTGT_Cu.Name = "ThueGTGT_Cu";
-            this.ThueGTGT_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ThueGTGT_Cu.Visible = false;
-            // 
-            // PhiBVMT_Cu
-            // 
-            this.PhiBVMT_Cu.DataPropertyName = "PhiBVMTCu";
-            this.PhiBVMT_Cu.HeaderText = "Phí BVMT";
-            this.PhiBVMT_Cu.Name = "PhiBVMT_Cu";
-            this.PhiBVMT_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PhiBVMT_Cu.Visible = false;
-            // 
-            // TongCong_Cu
-            // 
-            this.TongCong_Cu.DataPropertyName = "TongCongCu";
-            this.TongCong_Cu.HeaderText = "Tổng Cộng";
-            this.TongCong_Cu.Name = "TongCong_Cu";
-            this.TongCong_Cu.ReadOnly = true;
-            this.TongCong_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // GiaBieu_Moi
-            // 
-            this.GiaBieu_Moi.DataPropertyName = "GiaBieuMoi";
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Red;
-            this.GiaBieu_Moi.DefaultCellStyle = dataGridViewCellStyle4;
-            this.GiaBieu_Moi.HeaderText = "GB";
-            this.GiaBieu_Moi.Name = "GiaBieu_Moi";
-            this.GiaBieu_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.GiaBieu_Moi.Width = 50;
-            // 
-            // DinhMuc_Moi
-            // 
-            this.DinhMuc_Moi.DataPropertyName = "DinhMucMoi";
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Green;
-            this.DinhMuc_Moi.DefaultCellStyle = dataGridViewCellStyle5;
-            this.DinhMuc_Moi.HeaderText = "ĐM";
-            this.DinhMuc_Moi.Name = "DinhMuc_Moi";
-            this.DinhMuc_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DinhMuc_Moi.Width = 50;
-            // 
-            // DinhMucHN_Moi
-            // 
-            this.DinhMucHN_Moi.DataPropertyName = "DinhMucHNMoi";
-            this.DinhMucHN_Moi.HeaderText = "ĐM HN";
-            this.DinhMucHN_Moi.Name = "DinhMucHN_Moi";
-            this.DinhMucHN_Moi.Width = 50;
-            // 
-            // TieuThu_Moi
-            // 
-            this.TieuThu_Moi.DataPropertyName = "TieuThuMoi";
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Blue;
-            this.TieuThu_Moi.DefaultCellStyle = dataGridViewCellStyle6;
-            this.TieuThu_Moi.HeaderText = "TT";
-            this.TieuThu_Moi.Name = "TieuThu_Moi";
-            this.TieuThu_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.TieuThu_Moi.Width = 50;
-            // 
-            // GiaBan_Moi
-            // 
-            this.GiaBan_Moi.DataPropertyName = "GiaBanMoi";
-            this.GiaBan_Moi.HeaderText = "Giá Bán";
-            this.GiaBan_Moi.Name = "GiaBan_Moi";
-            this.GiaBan_Moi.ReadOnly = true;
-            this.GiaBan_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ThueGTGT_Moi
-            // 
-            this.ThueGTGT_Moi.DataPropertyName = "ThueGTGTMoi";
-            this.ThueGTGT_Moi.HeaderText = "Thuế GTGT";
-            this.ThueGTGT_Moi.Name = "ThueGTGT_Moi";
-            this.ThueGTGT_Moi.ReadOnly = true;
-            this.ThueGTGT_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ThueGTGT_Moi.Width = 110;
-            // 
-            // PhiBVMT_Moi
-            // 
-            this.PhiBVMT_Moi.DataPropertyName = "PhiBVMTMoi";
-            this.PhiBVMT_Moi.HeaderText = "Phí BVMT";
-            this.PhiBVMT_Moi.Name = "PhiBVMT_Moi";
-            this.PhiBVMT_Moi.ReadOnly = true;
-            this.PhiBVMT_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TongCong_Moi
-            // 
-            this.TongCong_Moi.DataPropertyName = "TongCongMoi";
-            this.TongCong_Moi.HeaderText = "Tổng Cộng";
-            this.TongCong_Moi.Name = "TongCong_Moi";
-            this.TongCong_Moi.ReadOnly = true;
-            this.TongCong_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TangGiam
-            // 
-            this.TangGiam.DataPropertyName = "TangGiam";
-            this.TangGiam.HeaderText = "Tăng /Giảm";
-            this.TangGiam.Name = "TangGiam";
-            this.TangGiam.ReadOnly = true;
-            this.TangGiam.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.TangGiam.Width = 60;
-            // 
-            // SoTien1m3
-            // 
-            this.SoTien1m3.DataPropertyName = "SoTien1m3";
-            this.SoTien1m3.HeaderText = "SoTien1m3";
-            this.SoTien1m3.Name = "SoTien1m3";
-            this.SoTien1m3.Width = 50;
-            // 
-            // m3BinhQuan
-            // 
-            this.m3BinhQuan.DataPropertyName = "m3BinhQuan";
-            this.m3BinhQuan.HeaderText = "m3BinhQuan";
-            this.m3BinhQuan.Name = "m3BinhQuan";
-            this.m3BinhQuan.Width = 50;
             // 
             // frmTruyThuTienNuoc
             // 
