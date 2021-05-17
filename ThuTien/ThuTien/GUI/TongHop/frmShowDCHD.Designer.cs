@@ -75,11 +75,13 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.btnThem = new System.Windows.Forms.Button();
+            this.chkBaoCaoThue = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.chkBaoCaoThue);
             this.groupBox3.Controls.Add(this.chkChuanThu1);
             this.groupBox3.Controls.Add(this.txtSoHoaDonMoi);
             this.groupBox3.Controls.Add(this.label12);
@@ -116,7 +118,7 @@
             // chkChuanThu1
             // 
             this.chkChuanThu1.AutoSize = true;
-            this.chkChuanThu1.Location = new System.Drawing.Point(349, 17);
+            this.chkChuanThu1.Location = new System.Drawing.Point(309, 17);
             this.chkChuanThu1.Name = "chkChuanThu1";
             this.chkChuanThu1.Size = new System.Drawing.Size(88, 17);
             this.chkChuanThu1.TabIndex = 29;
@@ -125,7 +127,7 @@
             // 
             // txtSoHoaDonMoi
             // 
-            this.txtSoHoaDonMoi.Location = new System.Drawing.Point(243, 15);
+            this.txtSoHoaDonMoi.Location = new System.Drawing.Point(203, 15);
             this.txtSoHoaDonMoi.Name = "txtSoHoaDonMoi";
             this.txtSoHoaDonMoi.Size = new System.Drawing.Size(100, 20);
             this.txtSoHoaDonMoi.TabIndex = 30;
@@ -144,7 +146,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(148, 18);
+            this.label8.Location = new System.Drawing.Point(108, 18);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 13);
             this.label8.TabIndex = 29;
@@ -534,6 +536,16 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // chkBaoCaoThue
+            // 
+            this.chkBaoCaoThue.AutoSize = true;
+            this.chkBaoCaoThue.Location = new System.Drawing.Point(403, 17);
+            this.chkBaoCaoThue.Name = "chkBaoCaoThue";
+            this.chkBaoCaoThue.Size = new System.Drawing.Size(95, 17);
+            this.chkBaoCaoThue.TabIndex = 30;
+            this.chkBaoCaoThue.Text = "Báo Cáo Thuế";
+            this.chkBaoCaoThue.UseVisualStyleBackColor = true;
+            // 
             // frmShowDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -622,5 +634,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox chkChuanThu1;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.CheckBox chkBaoCaoThue;
     }
 }

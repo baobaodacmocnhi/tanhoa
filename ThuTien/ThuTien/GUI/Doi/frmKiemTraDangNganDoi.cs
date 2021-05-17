@@ -602,7 +602,7 @@ namespace ThuTien.GUI.Doi
                     if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "ShowError")
                     {
                         TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
-                        DataTable dt = _cHoaDon.GetDSDangNgan_ChuaNopTien(en.NgayChot.Value);
+                        DataTable dt = _cHoaDon.getDSDangNgan_ChuaNopTien(en.NgayChot.Value);
                         dsBaoCao ds = new dsBaoCao();
                         foreach (DataRow item in dt.Rows)
                         {
@@ -613,6 +613,30 @@ namespace ThuTien.GUI.Doi
                             dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                             dr["TongCong"] = item["TongCong"];
                             dr["GiaBieu"] = _cChotDangNgan.ExecuteQuery_ReturnOneValue("select Result from Temp_SyncHoaDon where SoHoaDon='" + item["SoHoaDon"].ToString() + "'");
+                            dr["NhanVien"] = CNguoiDung.HoTen;
+                            ds.Tables["DSHoaDon"].Rows.Add(dr);
+                        }
+
+                        rptDSHoaDon_SyncError rpt = new rptDSHoaDon_SyncError();
+                        rpt.SetDataSource(ds);
+                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frm.Show();
+                    }
+
+                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "ShowHDDTDCBCT")
+                    {
+                        TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
+                        DataTable dt = _cHoaDon.getDSDangNgan_HDDCBaoCaoThue(en.NgayChot.Value);
+                        dsBaoCao ds = new dsBaoCao();
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                            dr["LoaiBaoCao"] = "HÓA ĐƠN ĐIỀU CHỈNH ĐÃ BÁO CÁO THUẾ";
+                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                            dr["Ky"] = item["Ky"];
+                            dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
+                            dr["TongCong"] = item["TongCong"];
+                            //dr["GiaBieu"] = _cChotDangNgan.ExecuteQuery_ReturnOneValue("select Result from Temp_SyncHoaDon where SoHoaDon='" + item["SoHoaDon"].ToString() + "'");
                             dr["NhanVien"] = CNguoiDung.HoTen;
                             ds.Tables["DSHoaDon"].Rows.Add(dr);
                         }

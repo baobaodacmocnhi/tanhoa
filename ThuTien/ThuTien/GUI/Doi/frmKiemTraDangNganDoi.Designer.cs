@@ -126,12 +126,15 @@
             this.TCHDDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SLHDDTDC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TCHDDTDC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLHDDTDCBCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCHDDTDCBCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SLHDDTSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TCHDDTSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SLNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TCNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SyncNopTien = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ShowError = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ShowHDDTDCBCT = new System.Windows.Forms.DataGridViewButtonColumn();
             this.SyncNopTien_Except12 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.SyncNopTien_12 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl.SuspendLayout();
@@ -570,12 +573,15 @@
             this.TCHDDT,
             this.SLHDDTDC,
             this.TCHDDTDC,
+            this.SLHDDTDCBCT,
+            this.TCHDDTDCBCT,
             this.SLHDDTSach,
             this.TCHDDTSach,
             this.SLNopTien,
             this.TCNopTien,
             this.SyncNopTien,
             this.ShowError,
+            this.ShowHDDTDCBCT,
             this.SyncNopTien_Except12,
             this.SyncNopTien_12});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -969,7 +975,7 @@
             this.SLCNKD.DataPropertyName = "SLCNKD";
             this.SLCNKD.HeaderText = "SL CNKĐ";
             this.SLCNKD.Name = "SLCNKD";
-            this.SLCNKD.Width = 30;
+            this.SLCNKD.Width = 40;
             // 
             // TCCNKD
             // 
@@ -1020,6 +1026,20 @@
             this.TCHDDTDC.Name = "TCHDDTDC";
             this.TCHDDTDC.Width = 70;
             // 
+            // SLHDDTDCBCT
+            // 
+            this.SLHDDTDCBCT.DataPropertyName = "SLHDDTDCBCT";
+            this.SLHDDTDCBCT.HeaderText = "SL ĐC BCT";
+            this.SLHDDTDCBCT.Name = "SLHDDTDCBCT";
+            this.SLHDDTDCBCT.Width = 30;
+            // 
+            // TCHDDTDCBCT
+            // 
+            this.TCHDDTDCBCT.DataPropertyName = "TCHDDTDCBCT";
+            this.TCHDDTDCBCT.HeaderText = "TC ĐC BCT";
+            this.TCHDDTDCBCT.Name = "TCHDDTDCBCT";
+            this.TCHDDTDCBCT.Width = 70;
+            // 
             // SLHDDTSach
             // 
             this.SLHDDTSach.DataPropertyName = "SLHDDTSach";
@@ -1063,6 +1083,14 @@
             this.ShowError.Text = "Hiện Thị";
             this.ShowError.UseColumnTextForButtonValue = true;
             this.ShowError.Width = 60;
+            // 
+            // ShowHDDTDCBCT
+            // 
+            this.ShowHDDTDCBCT.HeaderText = "HĐ ĐC BCT";
+            this.ShowHDDTDCBCT.Name = "ShowHDDTDCBCT";
+            this.ShowHDDTDCBCT.Text = "Hiển Thị";
+            this.ShowHDDTDCBCT.UseColumnTextForButtonValue = true;
+            this.ShowHDDTDCBCT.Width = 60;
             // 
             // SyncNopTien_Except12
             // 
@@ -1211,12 +1239,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TCHDDT;
         private System.Windows.Forms.DataGridViewTextBoxColumn SLHDDTDC;
         private System.Windows.Forms.DataGridViewTextBoxColumn TCHDDTDC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SLHDDTDCBCT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TCHDDTDCBCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn SLHDDTSach;
         private System.Windows.Forms.DataGridViewTextBoxColumn TCHDDTSach;
         private System.Windows.Forms.DataGridViewTextBoxColumn SLNopTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn TCNopTien;
         private System.Windows.Forms.DataGridViewButtonColumn SyncNopTien;
         private System.Windows.Forms.DataGridViewButtonColumn ShowError;
+        private System.Windows.Forms.DataGridViewButtonColumn ShowHDDTDCBCT;
         private System.Windows.Forms.DataGridViewButtonColumn SyncNopTien_Except12;
         private System.Windows.Forms.DataGridViewButtonColumn SyncNopTien_12;
     }
