@@ -222,7 +222,7 @@
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(422, 52);
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(331, 22);
+            this.txtDiaChi.Size = new System.Drawing.Size(466, 22);
             this.txtDiaChi.TabIndex = 7;
             // 
             // label4

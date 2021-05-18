@@ -200,10 +200,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 cmbNoiDung.SelectedIndex = -1;
             }
 
-            dgvGhiChu.DataSource = _cCHDB.GetDSGhiChuByMaCTCTDB(ctctdb.MaCTCTDB);
-            dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(ctctdb.DanhBo);
-            CheckLichSuCHDB();
-
             ///Đã lấp Phiếu Yêu Cầu CHDB
             if (_cCHDB.CheckExist_PhieuHuyByMaCTCTDB(ctctdb.MaCTCTDB))
             {
@@ -222,6 +218,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
                 dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
             }
+
+            dgvGhiChu.DataSource = _cCHDB.GetDSGhiChuByMaCTCTDB(ctctdb.MaCTCTDB);
+            dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(ctctdb.DanhBo);
+            CheckLichSuCHDB();
         }
 
         public void Clear()
@@ -565,7 +565,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         }
                         if (_dontu_ChiTiet != null)
                         {
-                            if(_cDonTu.Them_LichSu(ctctdb.CreateDate.Value, "CTDB", "Đã Lập Thông Báo Cắt Tạm, " + ctctdb.LyDo, (int)ctctdb.MaCTCTDB, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value)==true)
+                            if(_cDonTu.Them_LichSu(ctctdb.CreateDate.Value, "CTDB", "Đã Lập Thông Báo Đóng Nước, " + ctctdb.LyDo, (int)ctctdb.MaCTCTDB, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value)==true)
                                 scope.Complete();
                         }
                         else

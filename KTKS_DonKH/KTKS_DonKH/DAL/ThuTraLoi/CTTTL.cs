@@ -40,8 +40,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             catch (Exception ex)
             {
                 Refresh();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -57,8 +56,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             catch (Exception ex)
             {
                 Refresh();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -125,8 +123,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             catch (Exception ex)
             {
                 Refresh();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -142,8 +139,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             catch (Exception ex)
             {
                 Refresh();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -165,8 +161,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             catch (Exception ex)
             {
                 Refresh();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 

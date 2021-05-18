@@ -28,6 +28,7 @@ using System.Deployment.Application;
 using KTKS_DonKH.GUI.ThuMoi;
 using KTKS_DonKH.GUI.PhongKhachHang;
 using KTKS_DonKH.GUI;
+using KTKS_DonKH.GUI.VanBan;
 
 namespace KTKS_DonKH
 {
@@ -871,6 +872,17 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuVanBan_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuVanBan", "Xem"))
+            {
+                frmVanBan frm = new frmVanBan();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Thư Mời
@@ -1097,6 +1109,8 @@ namespace KTKS_DonKH
         }
 
         #endregion
+
+        
 
         
 

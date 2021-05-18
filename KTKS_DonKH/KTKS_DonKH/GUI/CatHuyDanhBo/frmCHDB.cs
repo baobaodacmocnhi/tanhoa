@@ -202,10 +202,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 cmbNoiDung.SelectedIndex = -1;
             }
 
-            dgvGhiChu.DataSource = _cCHDB.GetDSGhiChuByMaCTCHDB(ctchdb.MaCTCHDB);
-            dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(ctchdb.DanhBo);
-            CheckLichSuCHDB();
-
             ///Đã lấp Phiếu Yêu Cầu CHDB
             if (_cCHDB.CheckExist_PhieuHuyByMaCTCHDB(ctchdb.MaCTCHDB))
             {
@@ -224,6 +220,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
                 dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
             }
+
+            dgvGhiChu.DataSource = _cCHDB.GetDSGhiChuByMaCTCHDB(ctchdb.MaCTCHDB);
+            dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(ctchdb.DanhBo);
+            CheckLichSuCHDB();
         }
 
         public void LoadCTDB(CHDB_ChiTietCatTam ctctdb)
@@ -1421,8 +1421,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (!string.IsNullOrEmpty(_ctchdb.DanhBo))
                     dr["DanhBo"] = _ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HopDong"] = _ctchdb.HopDong;
-                dr["Quan"] = _cCHDB.getTenQuan(int.Parse(_ctctdb.Quan));
-                dr["Phuong"] = _cCHDB.getTenPhuong(int.Parse(_ctctdb.Quan), int.Parse(_ctctdb.Phuong));
+                dr["Quan"] = _cCHDB.getTenQuan(int.Parse(_ctchdb.Quan));
+                dr["Phuong"] = _cCHDB.getTenPhuong(int.Parse(_ctchdb.Quan), int.Parse(_ctchdb.Phuong));
 
                 dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + _ctchdb.ViTriDHN1 + ", " + _ctchdb.ViTriDHN2;
 

@@ -2307,7 +2307,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             arr[i, 17] = dr["ThueGTGT_End"].ToString();
                             arr[i, 18] = dr["PhiBVMT_End"].ToString();
                             arr[i, 19] = dr["TongCong_End"].ToString();
-                            arr[i, 20] = dr["BaoCaoThue"].ToString();
+                            arr[i, 21] = dr["BaoCaoThue"].ToString();
                         }
                     }
 

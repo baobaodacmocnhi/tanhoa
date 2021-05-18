@@ -903,8 +903,8 @@ namespace KTKS_DonKH.DAL.DonTu
                         entity.IDCT = IDCT;
                         break;
                     case "CTDB":
-                        entity.ID_NoiChuyen = 7;
-                        entity.NoiChuyen = "Cắt Hủy";
+                        entity.ID_NoiChuyen = 37;
+                        entity.NoiChuyen = "TB Đóng Nước";
                         entity.NoiDung = NoiDung;
                         entity.TableName = "CHDB_ChiTietCatTam";
                         entity.IDCT = IDCT;
@@ -963,6 +963,13 @@ namespace KTKS_DonKH.DAL.DonTu
                         entity.NoiChuyen = "Tờ Trình";
                         entity.NoiDung = NoiDung;
                         entity.TableName = "ToTrinh_ChiTiet";
+                        entity.IDCT = IDCT;
+                        break;
+                    case "VanBan":
+                        entity.ID_NoiChuyen = 38;
+                        entity.NoiChuyen = "Văn Bản";
+                        entity.NoiDung = NoiDung;
+                        entity.TableName = "VanBan_ChiTiet";
                         entity.IDCT = IDCT;
                         break;
                     default:
