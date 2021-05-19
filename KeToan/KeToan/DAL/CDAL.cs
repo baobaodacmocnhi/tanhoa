@@ -319,6 +319,7 @@ namespace KeToan.DAL
             chuoi = chuoi.Replace("i năm", "i lăm");
             chuoi = chuoi.Replace("một mươi", "mười");
             chuoi = chuoi.Replace("mươi một", "mươi mốt");
+            chuoi = chuoi.Replace("không trăm đồng", "đồng");
             return chuoi;
         }
 
