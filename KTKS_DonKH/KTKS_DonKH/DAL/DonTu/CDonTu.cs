@@ -2395,8 +2395,8 @@ namespace KTKS_DonKH.DAL.DonTu
 
         public DataTable getDSDonChuyenDe(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            string sql = "select dtct.MaDon,dtct.STT,t1.CanKhachHangLienHe,t1.DinhMuc,t1.DinhMucMoi from DonTu dt,DonTu_ChiTiet dtct"
-                    + " left join (select MaDonMoi,STT,CanKhachHangLienHe,DinhMuc,DinhMucMoi from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM) t1 on t1.MaDonMoi=dtct.MaDon and t1.STT=dtct.STT"
+            string sql = "select dtct.MaDon,dtct.STT,t1.CanKhachHangLienHe,t1.DinhMuc,t1.DinhMucMoi,t1.LapTruyThu from DonTu dt,DonTu_ChiTiet dtct"
+                    + " left join (select MaDonMoi,STT,CanKhachHangLienHe,DinhMuc,DinhMucMoi,LapTruyThu from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM) t1 on t1.MaDonMoi=dtct.MaDon and t1.STT=dtct.STT"
                     + " where dt.MaDon=dtct.MaDon and CAST(dt.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(dt.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and Name_NhomDon like N'%chuyên đề%'";
             return ExecuteQuery_DataTable(sql);
         }

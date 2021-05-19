@@ -27,7 +27,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         private void frmVeViecTTTL_Load(object sender, EventArgs e)
         {
             dgvDSVeViecTTTL.AutoGenerateColumns = false;
-            _bSource = new BindingList<ThuTraLoi_VeViec>(_cVeViecTTTL.GetDS());
+            _bSource = new BindingList<ThuTraLoi_VeViec>(_cVeViecTTTL.getDS_TTL());
             dgvDSVeViecTTTL.DataSource = _bSource;
         }
 
@@ -37,7 +37,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             selectedindex = -1;
-            _bSource = new BindingList<ThuTraLoi_VeViec>(_cVeViecTTTL.GetDS());
+            _bSource = new BindingList<ThuTraLoi_VeViec>(_cVeViecTTTL.getDS_TTL());
             dgvDSVeViecTTTL.DataSource = _bSource;
         }
 

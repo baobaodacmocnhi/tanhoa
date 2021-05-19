@@ -13,6 +13,11 @@ using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Transactions;
 using KTKS_DonKH.GUI.DonTu;
+using KTKS_DonKH.BaoCao;
+using CrystalDecisions.CrystalReports.Engine;
+using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.BaoCao.VanBan;
+using KTKS_DonKH.DAL.ThuTraLoi;
 
 namespace KTKS_DonKH.GUI.VanBan
 {
@@ -24,6 +29,7 @@ namespace KTKS_DonKH.GUI.VanBan
         CThuTien _cThuTien = new CThuTien();
         CDHN _cDocSo = new CDHN();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+        CTTTL_VeViec _cVeViecTTTL = new CTTTL_VeViec();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;
         HOADON _hoadon = null;
@@ -38,6 +44,10 @@ namespace KTKS_DonKH.GUI.VanBan
         private void frmVanBan_Load(object sender, EventArgs e)
         {
             dgvHinh.AutoGenerateColumns = false;
+
+            cmbVeViec.DataSource = _cVeViecTTTL.getDS_VB();
+            cmbVeViec.DisplayMember = "TenVV";
+            cmbVeViec.SelectedIndex = -1;
         }
 
         public void LoadTTKH(HOADON hoadon)
@@ -264,7 +274,7 @@ namespace KTKS_DonKH.GUI.VanBan
                             foreach (DataGridViewRow item in dgvHinh.Rows)
                             {
                                 VanBan_ChiTiet_Hinh en = new VanBan_ChiTiet_Hinh();
-                                en.IDVanBani_ChiTiet = enCT.IDCT;
+                                en.IDVanBan_ChiTiet = enCT.IDCT;
                                 en.Name = item.Cells["Name_Hinh"].Value.ToString();
                                 en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
                                 _cVanBan.Them_Hinh(en);
@@ -387,28 +397,61 @@ namespace KTKS_DonKH.GUI.VanBan
 
         private void btnIn_Click(object sender, EventArgs e)
         {
+            if (_enCT != null)
+            {
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
+                //dr["SoPhieu"] = _cttttl.MaCTTTTL.ToString().Insert(_cttttl.MaCTTTTL.ToString().Length - 2, "-");
+                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+
+                dr["HoTen"] = _enCT.HoTen;
+                dr["DiaChi"] = _enCT.DiaChi;
+                if (!string.IsNullOrEmpty(_enCT.DanhBo) && _enCT.DanhBo.Length == 11)
+                    dr["DanhBo"] = _enCT.DanhBo.Insert(7, " ").Insert(4, " ");
+
+                dr["HopDong"] = _enCT.HopDong;
+
+                dr["VeViec"] = _enCT.VeViec;
+                dr["NoiDung"] = _enCT.NoiDung;
+                dr["NoiNhan"] = _enCT.NoiNhan + "\r\nVB" + _enCT.IDCT.ToString().Insert(_enCT.IDCT.ToString().Length - 2, "-");
+                dr["ChucVu"] = _enCT.ChucVu;
+                dr["NguoiKy"] = _enCT.NguoiKy;
+
+                dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+
+                DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
+                ReportDocument rpt = new ReportDocument();
+                switch (_enCT.VeViec)
+                {
+                    case "Thay hạ cỡ đồng hồ nước":
+                        rpt = new rptThayHaCoDHN();
+                        break;
+                    case "Phối hợp đóng nước niêm chì đồng hồ nước":
+                        rpt = new rptPhoiHopDongNuocNiemChiDHN();
+                        break;
+                }
+
+                rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
+            }
         }
 
         private void cmbVeViec_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbVeViec.SelectedIndex >= 0)
+            if (cmbVeViec.SelectedIndex != -1)
             {
-                switch (cmbVeViec.SelectedItem.ToString())
-                {
-                    case "Thay hạ cỡ đồng hồ nước":
-                        txtNoiDung.Text = "";
-                        txtNoiNhan.Text = "";
-                        break;
-
-                    case "Phối hợp đóng nước niêm chì đồng hồ nước":
-                        txtNoiDung.Text = "";
-                        txtNoiNhan.Text = "";
-                        break;
-                }
-
+                ThuTraLoi_VeViec vv = (ThuTraLoi_VeViec)cmbVeViec.SelectedItem;
+                txtNoiDung.Text = vv.NoiDung;
+                txtNoiNhan.Text = vv.NoiNhan;
                 if (txtMaDonMoi.Text.Trim() != "")
                     txtNoiNhan.Text += " (" + txtMaDonMoi.Text.Trim() + ")";
+
             }
             else
             {
@@ -528,6 +571,55 @@ namespace KTKS_DonKH.GUI.VanBan
             catch
             {
 
+            }
+        }
+
+        private void btnChonFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+            dialog.Multiselect = false;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    //ListViewItem item = new ListViewItem();
+                    //item.ImageKey = "file";
+                    //item.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                    //item.SubItems.Add(Convert.ToBase64String(bytes));
+                    //lstVFile.Items.Add(item);
+                    byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
+                    if (_enCT == null)
+                    {
+                        var index = dgvHinh.Rows.Add();
+                        dgvHinh.Rows[index].Cells["Name_Hinh"].Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                        dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                    }
+                    else
+                    {
+                        if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                        {
+                            VanBan_ChiTiet_Hinh en = new VanBan_ChiTiet_Hinh();
+                            en.IDVanBan_ChiTiet = _enCT.IDCT;
+                            en.Name = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                            en.Hinh = bytes;
+                            if (_cVanBan.Them_Hinh(en) == true)
+                            {
+                                _cVanBan.Refresh();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                var index = dgvHinh.Rows.Add();
+                                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
+                                dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                            }
+                        }
+                        else
+                            MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

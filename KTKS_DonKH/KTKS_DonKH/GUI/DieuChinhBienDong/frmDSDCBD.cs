@@ -2278,7 +2278,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
                     // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-                    int numColumn = 21;
+                    int numColumn = 22;
                     object[,] arr = new object[dt.Rows.Count, numColumn];
 
                     //Chuyển dữ liệu từ DataTable vào mảng đối tượng

@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1552</ApplicationRevision>
+    <ApplicationRevision>1556</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -894,6 +894,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptTruyThuTienNuocChiTiet.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\VanBan\rptPhoiHopDongNuocNiemChiDHN.cs">
+      <DependentUpon>rptPhoiHopDongNuocNiemChiDHN.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\VanBan\rptThayHaCoDHN.cs">
+      <DependentUpon>rptThayHaCoDHN.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="DAL\BamChi\CBamChi.cs" />
     <Compile Include="DAL\CallCenter\AddValueCombox.cs" />
@@ -2146,6 +2158,14 @@
     <EmbeddedResource Include="BaoCao\TruyThu\rptTruyThuTienNuocChiTiet.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTruyThuTienNuocChiTiet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\VanBan\rptPhoiHopDongNuocNiemChiDHN.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhoiHopDongNuocNiemChiDHN.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\VanBan\rptThayHaCoDHN.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThayHaCoDHN.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

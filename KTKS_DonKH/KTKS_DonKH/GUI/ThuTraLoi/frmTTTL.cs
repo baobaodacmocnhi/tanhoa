@@ -61,7 +61,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             dgvGhiChu.AutoGenerateColumns = false;
             dgvHinh.AutoGenerateColumns = false;
 
-            cmbVeViec.DataSource = _cVeViecTTTL.GetDS();
+            cmbVeViec.DataSource = _cVeViecTTTL.getDS_TTL();
             cmbVeViec.DisplayMember = "TenVV";
             cmbVeViec.SelectedIndex = -1;
 

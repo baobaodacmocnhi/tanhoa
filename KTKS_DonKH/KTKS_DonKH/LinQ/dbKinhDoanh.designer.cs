@@ -1706,7 +1706,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Data.Linq.Binary _Hinh;
 		
-		private System.Nullable<int> _IDVanBani_ChiTiet;
+		private System.Nullable<int> _IDVanBan_ChiTiet;
 		
 		private System.Nullable<int> _CreateBy;
 		
@@ -1724,8 +1724,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNameChanged();
     partial void OnHinhChanging(System.Data.Linq.Binary value);
     partial void OnHinhChanged();
-    partial void OnIDVanBani_ChiTietChanging(System.Nullable<int> value);
-    partial void OnIDVanBani_ChiTietChanged();
+    partial void OnIDVanBan_ChiTietChanging(System.Nullable<int> value);
+    partial void OnIDVanBan_ChiTietChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -1798,26 +1798,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDVanBani_ChiTiet", DbType="Int")]
-		public System.Nullable<int> IDVanBani_ChiTiet
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDVanBan_ChiTiet", DbType="Int")]
+		public System.Nullable<int> IDVanBan_ChiTiet
 		{
 			get
 			{
-				return this._IDVanBani_ChiTiet;
+				return this._IDVanBan_ChiTiet;
 			}
 			set
 			{
-				if ((this._IDVanBani_ChiTiet != value))
+				if ((this._IDVanBan_ChiTiet != value))
 				{
 					if (this._VanBan_ChiTiet.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnIDVanBani_ChiTietChanging(value);
+					this.OnIDVanBan_ChiTietChanging(value);
 					this.SendPropertyChanging();
-					this._IDVanBani_ChiTiet = value;
-					this.SendPropertyChanged("IDVanBani_ChiTiet");
-					this.OnIDVanBani_ChiTietChanged();
+					this._IDVanBan_ChiTiet = value;
+					this.SendPropertyChanged("IDVanBan_ChiTiet");
+					this.OnIDVanBan_ChiTietChanged();
 				}
 			}
 		}
@@ -1862,7 +1862,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="VanBan_ChiTiet_VanBan_ChiTiet_Hinh", Storage="_VanBan_ChiTiet", ThisKey="IDVanBani_ChiTiet", OtherKey="IDCT", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="VanBan_ChiTiet_VanBan_ChiTiet_Hinh", Storage="_VanBan_ChiTiet", ThisKey="IDVanBan_ChiTiet", OtherKey="IDCT", IsForeignKey=true)]
 		public VanBan_ChiTiet VanBan_ChiTiet
 		{
 			get
@@ -1885,11 +1885,11 @@ namespace KTKS_DonKH.LinQ
 					if ((value != null))
 					{
 						value.VanBan_ChiTiet_Hinhs.Add(this);
-						this._IDVanBani_ChiTiet = value.IDCT;
+						this._IDVanBan_ChiTiet = value.IDCT;
 					}
 					else
 					{
-						this._IDVanBani_ChiTiet = default(Nullable<int>);
+						this._IDVanBan_ChiTiet = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("VanBan_ChiTiet");
 				}
@@ -49077,6 +49077,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiNhan;
 		
+		private bool _VanBan;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -49099,6 +49101,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNoiDungChanged();
     partial void OnNoiNhanChanging(string value);
     partial void OnNoiNhanChanged();
+    partial void OnVanBanChanging(bool value);
+    partial void OnVanBanChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -49210,6 +49214,26 @@ namespace KTKS_DonKH.LinQ
 					this._NoiNhan = value;
 					this.SendPropertyChanged("NoiNhan");
 					this.OnNoiNhanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VanBan", DbType="Bit NOT NULL")]
+		public bool VanBan
+		{
+			get
+			{
+				return this._VanBan;
+			}
+			set
+			{
+				if ((this._VanBan != value))
+				{
+					this.OnVanBanChanging(value);
+					this.SendPropertyChanging();
+					this._VanBan = value;
+					this.SendPropertyChanged("VanBan");
+					this.OnVanBanChanged();
 				}
 			}
 		}
@@ -58171,7 +58195,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="VanBan_ChiTiet_VanBan_ChiTiet_Hinh", Storage="_VanBan_ChiTiet_Hinhs", ThisKey="IDCT", OtherKey="IDVanBani_ChiTiet")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="VanBan_ChiTiet_VanBan_ChiTiet_Hinh", Storage="_VanBan_ChiTiet_Hinhs", ThisKey="IDCT", OtherKey="IDVanBan_ChiTiet")]
 		public EntitySet<VanBan_ChiTiet_Hinh> VanBan_ChiTiet_Hinhs
 		{
 			get

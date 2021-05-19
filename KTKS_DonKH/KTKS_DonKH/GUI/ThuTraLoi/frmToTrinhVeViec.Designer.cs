@@ -30,6 +30,10 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSVeViecTTTL = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Namee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
@@ -39,10 +43,6 @@
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Namee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSVeViecTTTL)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,6 +74,37 @@
             this.dgvDSVeViecTTTL.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDSVeViecTTTL_DragEnter);
             this.dgvDSVeViecTTTL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSVeViecTTTL_MouseClick);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "MaVV";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Namee
+            // 
+            this.Namee.DataPropertyName = "Name";
+            this.Namee.HeaderText = "Về Việc";
+            this.Namee.Name = "Namee";
+            this.Namee.ReadOnly = true;
+            this.Namee.Width = 300;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.ReadOnly = true;
+            this.NoiDung.Width = 350;
+            // 
+            // NoiNhan
+            // 
+            this.NoiNhan.DataPropertyName = "NoiNhan";
+            this.NoiNhan.HeaderText = "Nơi Nhận";
+            this.NoiNhan.Name = "NoiNhan";
+            this.NoiNhan.ReadOnly = true;
+            this.NoiNhan.Width = 150;
+            // 
             // btnSua
             // 
             this.btnSua.Location = new System.Drawing.Point(783, 218);
@@ -99,6 +130,7 @@
             this.txtNoiDung.Location = new System.Drawing.Point(12, 62);
             this.txtNoiDung.Multiline = true;
             this.txtNoiDung.Name = "txtNoiDung";
+            this.txtNoiDung.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtNoiDung.Size = new System.Drawing.Size(610, 214);
             this.txtNoiDung.TabIndex = 3;
             // 
@@ -132,6 +164,7 @@
             this.txtNoiNhan.Location = new System.Drawing.Point(628, 62);
             this.txtNoiNhan.Multiline = true;
             this.txtNoiNhan.Name = "txtNoiNhan";
+            this.txtNoiNhan.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtNoiNhan.Size = new System.Drawing.Size(149, 214);
             this.txtNoiNhan.TabIndex = 5;
             // 
@@ -153,37 +186,6 @@
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "MaVV";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Namee
-            // 
-            this.Namee.DataPropertyName = "Name";
-            this.Namee.HeaderText = "Về Việc";
-            this.Namee.Name = "Namee";
-            this.Namee.ReadOnly = true;
-            this.Namee.Width = 300;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.ReadOnly = true;
-            this.NoiDung.Width = 350;
-            // 
-            // NoiNhan
-            // 
-            this.NoiNhan.DataPropertyName = "NoiNhan";
-            this.NoiNhan.HeaderText = "Nơi Nhận";
-            this.NoiNhan.Name = "NoiNhan";
-            this.NoiNhan.ReadOnly = true;
-            this.NoiNhan.Width = 150;
             // 
             // frmToTrinhVeViec
             // 

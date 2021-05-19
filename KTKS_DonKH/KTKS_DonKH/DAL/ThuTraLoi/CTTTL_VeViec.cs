@@ -65,9 +65,14 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public List<ThuTraLoi_VeViec> GetDS()
+        public List<ThuTraLoi_VeViec> getDS_TTL()
         {
-            return db.ThuTraLoi_VeViecs.OrderBy(item => item.STT).ToList();
+            return db.ThuTraLoi_VeViecs.Where(item=>item.VanBan==false).OrderBy(item => item.STT).ToList();
+        }
+
+        public List<ThuTraLoi_VeViec> getDS_VB()
+        {
+            return db.ThuTraLoi_VeViecs.Where(item => item.VanBan == true).OrderBy(item => item.STT).ToList();
         }
 
         public ThuTraLoi_VeViec Get(int MaVV)
