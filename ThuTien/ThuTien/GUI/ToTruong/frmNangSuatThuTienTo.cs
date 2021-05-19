@@ -532,7 +532,7 @@ namespace ThuTien.GUI.ToTruong
                             dr["To"] = ((TT_To)cmbTo.SelectedItem).TenTo;
                         else
                             dr["To"] = CNguoiDung.TenTo;
-                        dr["STT"] = item["STT"];
+                        dr["STT"] = (int)item["STT"];
                         dr["HanhThu"] = item["HoTen"];
                         dr["Loai"] = item["Loai"];
                         if (string.IsNullOrEmpty(item["HDTonCu"].ToString()))
