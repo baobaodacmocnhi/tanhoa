@@ -46,6 +46,7 @@ namespace KTKS_DonKH.GUI.VanBan
             dgvHinh.AutoGenerateColumns = false;
 
             cmbVeViec.DataSource = _cVeViecTTTL.getDS_VB();
+            cmbVeViec.ValueMember = "TenVV";
             cmbVeViec.DisplayMember = "TenVV";
             cmbVeViec.SelectedIndex = -1;
         }
@@ -94,7 +95,7 @@ namespace KTKS_DonKH.GUI.VanBan
             if (en.DinhMucHN != null)
                 txtDinhMucHN.Text = en.DinhMucHN.Value.ToString();
 
-            cmbVeViec.SelectedItem = en.VeViec;
+            cmbVeViec.SelectedValue = en.VeViec;
             txtNoiDung.Text = en.NoiDung;
             txtNoiNhan.Text = en.NoiNhan;
 
@@ -207,7 +208,7 @@ namespace KTKS_DonKH.GUI.VanBan
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
-                    if (cmbVeViec.SelectedIndex >= 0 || txtNoiDung.Text.Trim() == "" || txtNoiNhan.Text.Trim() == "")
+                    if (cmbVeViec.SelectedIndex < 0 || txtNoiDung.Text.Trim() == "" || txtNoiNhan.Text.Trim() == "")
                     {
                         MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -255,7 +256,7 @@ namespace KTKS_DonKH.GUI.VanBan
                         enCT.Phuong = _hoadon.Phuong;
                         enCT.Quan = _hoadon.Quan;
                     }
-                    enCT.VeViec = cmbVeViec.SelectedItem.ToString();
+                    enCT.VeViec = cmbVeViec.SelectedValue.ToString();
                     enCT.NoiDung = txtNoiDung.Text;
                     enCT.NoiNhan = txtNoiNhan.Text.Trim();
 
@@ -330,7 +331,7 @@ namespace KTKS_DonKH.GUI.VanBan
                             _enCT.Phuong = _hoadon.Phuong;
                             _enCT.Quan = _hoadon.Quan;
                         }
-                        _enCT.VeViec = cmbVeViec.SelectedItem.ToString();
+                        _enCT.VeViec = cmbVeViec.SelectedValue.ToString();
                         _enCT.NoiDung = txtNoiDung.Text;
                         _enCT.NoiNhan = txtNoiNhan.Text.Trim();
 

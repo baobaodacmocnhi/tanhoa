@@ -878,8 +878,8 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
 
-                dr["TuNgay"] = dateTu_ThongKeNhomDon_Phong.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen_ThongKeNhomDon_Phong.Value.ToString("dd/MM/yyyy");
+                dr["TuNgay"] = dateTu_ThongKeDonTon.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_ThongKeDonTon.Value.ToString("dd/MM/yyyy");
                 dr["LoaiBaoCao"] = "TỒN";
                 dr["MaDonChiTiet"] = item["MaDonChiTiet"];
                 dr["MaDon"] = item["MaDon"];
@@ -912,8 +912,8 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
 
-                dr["TuNgay"] = dateTu_LichSuChuyenDon.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen_LichSuChuyenDon.Value.ToString("dd/MM/yyyy");
+                dr["TuNgay"] = dateTu_NhanDon.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_NhanDon.Value.ToString("dd/MM/yyyy");
                 dr["Ma"] = item["MaDon"].ToString();
                 dr["MaChiTiet"] = item["MaDonChiTiet"].ToString();
                 dr["CreateDate"] = item["NgayChuyen"].ToString();
@@ -982,8 +982,8 @@ namespace KTKS_DonKH.GUI.DonTu
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataRow dr = dsBaoCao.Tables["DanhSachDonKH"].NewRow();
 
-            dr["TuNgay"] = dateTu_LichSuChuyenDon.Value.ToString("dd/MM/yyyy");
-            dr["DenNgay"] = dateDen_LichSuChuyenDon.Value.ToString("dd/MM/yyyy");
+            dr["TuNgay"] = dateTu_DonChuyenDe.Value.ToString("dd/MM/yyyy");
+            dr["DenNgay"] = dateDen_DonChuyenDe.Value.ToString("dd/MM/yyyy");
             dr["SLDon"] = countMaDon;
             dr["SLDanhBo"] = dt.Rows.Count;
             dr["SLThuMoi"] = SLThuMoi;
