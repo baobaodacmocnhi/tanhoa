@@ -594,8 +594,8 @@ namespace ThuTien.GUI.TongHop
                                                 dchd.SoHoaDonMoi = item[20].ToString();
                                             else
                                                 dchd.SoHoaDonMoi = SoHoaDon + item[20].ToString();
-                                            if (item["21"].ToString() != "")
-                                                dchd.BaoCaoThue = bool.Parse(item["21"].ToString());
+                                            if (item[21].ToString() != "")
+                                                dchd.BaoCaoThue = bool.Parse(item[21].ToString());
                                             if (_cDCHD.Sua(dchd) == true)
                                             //if (_cDCHD.ExecuteNonQuery("update HOADON set SoHoaDonCu=SoHoaDon,SoHoaDon='" + dchd.SoHoaDonMoi + "' where ID_HOADON=" + dchd.FK_HOADON) == true)
                                             {
