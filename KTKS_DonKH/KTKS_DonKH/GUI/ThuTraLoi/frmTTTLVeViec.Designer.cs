@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSVeViecTTTL = new System.Windows.Forms.DataGridView();
             this.MaVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +43,8 @@
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.radThuTraLoi = new System.Windows.Forms.RadioButton();
+            this.radVanBan = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSVeViecTTTL)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,14 +52,14 @@
             // 
             this.dgvDSVeViecTTTL.AllowDrop = true;
             this.dgvDSVeViecTTTL.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSVeViecTTTL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSVeViecTTTL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDSVeViecTTTL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSVeViecTTTL.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaVV,
@@ -187,12 +189,38 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
+            // radThuTraLoi
+            // 
+            this.radThuTraLoi.AutoSize = true;
+            this.radThuTraLoi.Checked = true;
+            this.radThuTraLoi.Location = new System.Drawing.Point(788, 14);
+            this.radThuTraLoi.Name = "radThuTraLoi";
+            this.radThuTraLoi.Size = new System.Drawing.Size(94, 20);
+            this.radThuTraLoi.TabIndex = 11;
+            this.radThuTraLoi.TabStop = true;
+            this.radThuTraLoi.Text = "Thư Trả Lời";
+            this.radThuTraLoi.UseVisualStyleBackColor = true;
+            this.radThuTraLoi.CheckedChanged += new System.EventHandler(this.radThuTraLoi_CheckedChanged);
+            // 
+            // radVanBan
+            // 
+            this.radVanBan.AutoSize = true;
+            this.radVanBan.Location = new System.Drawing.Point(788, 40);
+            this.radVanBan.Name = "radVanBan";
+            this.radVanBan.Size = new System.Drawing.Size(77, 20);
+            this.radVanBan.TabIndex = 12;
+            this.radVanBan.Text = "Văn Bản";
+            this.radVanBan.UseVisualStyleBackColor = true;
+            this.radVanBan.CheckedChanged += new System.EventHandler(this.radVanBan_CheckedChanged);
+            // 
             // frmTTTLVeViec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(919, 625);
+            this.Controls.Add(this.radVanBan);
+            this.Controls.Add(this.radThuTraLoi);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.txtNoiNhan);
             this.Controls.Add(this.label3);
@@ -230,6 +258,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.RadioButton radThuTraLoi;
+        private System.Windows.Forms.RadioButton radVanBan;
 
     }
 }

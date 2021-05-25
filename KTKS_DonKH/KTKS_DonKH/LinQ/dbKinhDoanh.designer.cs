@@ -49077,6 +49077,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiNhan;
 		
+		private bool _ThuTraLoi;
+		
 		private bool _VanBan;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -49101,6 +49103,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNoiDungChanged();
     partial void OnNoiNhanChanging(string value);
     partial void OnNoiNhanChanged();
+    partial void OnThuTraLoiChanging(bool value);
+    partial void OnThuTraLoiChanged();
     partial void OnVanBanChanging(bool value);
     partial void OnVanBanChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -49214,6 +49218,26 @@ namespace KTKS_DonKH.LinQ
 					this._NoiNhan = value;
 					this.SendPropertyChanged("NoiNhan");
 					this.OnNoiNhanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTraLoi", DbType="Bit NOT NULL")]
+		public bool ThuTraLoi
+		{
+			get
+			{
+				return this._ThuTraLoi;
+			}
+			set
+			{
+				if ((this._ThuTraLoi != value))
+				{
+					this.OnThuTraLoiChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTraLoi = value;
+					this.SendPropertyChanged("ThuTraLoi");
+					this.OnThuTraLoiChanged();
 				}
 			}
 		}

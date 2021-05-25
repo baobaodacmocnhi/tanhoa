@@ -127,7 +127,7 @@ namespace KTKS_DonKH.GUI.DonTu
             if (str != "")
             {
                 lbTruyThu.Text = str;
-                MessageBox.Show("Danh Bộ này đang có Đơn Tồn\n" + str, "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                MessageBox.Show("Danh Bộ này đang có Đơn Tồn\n" + str, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
                 lbTruyThu.Text = "";

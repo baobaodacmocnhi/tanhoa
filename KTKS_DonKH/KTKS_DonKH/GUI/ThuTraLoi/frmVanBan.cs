@@ -45,7 +45,7 @@ namespace KTKS_DonKH.GUI.VanBan
         {
             dgvHinh.AutoGenerateColumns = false;
 
-            cmbVeViec.DataSource = _cVeViecTTTL.getDS_VB();
+            cmbVeViec.DataSource = _cVeViecTTTL.getDS_VanBan();
             cmbVeViec.ValueMember = "TenVV";
             cmbVeViec.DisplayMember = "TenVV";
             cmbVeViec.SelectedIndex = -1;
@@ -621,6 +621,14 @@ namespace KTKS_DonKH.GUI.VanBan
                 {
                     MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void dgvHinh_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                dgvHinh.CurrentCell = dgvHinh.Rows[e.RowIndex].Cells[e.ColumnIndex];
             }
         }
     }

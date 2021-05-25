@@ -441,6 +441,7 @@
             this.dgvHinh.Name = "dgvHinh";
             this.dgvHinh.Size = new System.Drawing.Size(261, 86);
             this.dgvHinh.TabIndex = 10;
+            this.dgvHinh.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvHinh_CellMouseClick);
             // 
             // ID_Hinh
             // 

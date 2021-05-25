@@ -416,7 +416,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
                         if (_hoadon != null)
                         {
-                            //LoadTTKH(_hoadon);
+                            LoadTTKH(_hoadon);
                             chkCodeF2.Focus();
                         }
                         else
@@ -433,10 +433,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Length == 11)
             {
-                //_hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                 if (_hoadon != null)
                 {
-                    //LoadTTKH(_hoadon);
+                    LoadTTKH(_hoadon);
                     txtKyHD.Focus();
                 }
                 else

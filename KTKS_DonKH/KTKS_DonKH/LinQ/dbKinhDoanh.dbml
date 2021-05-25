@@ -2145,6 +2145,7 @@
       <Column Name="TenVV" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="NoiNhan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ThuTraLoi" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="VanBan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />

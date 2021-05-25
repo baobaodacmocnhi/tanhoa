@@ -27,8 +27,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         private void frmVeViecTTTL_Load(object sender, EventArgs e)
         {
             dgvDSVeViecTTTL.AutoGenerateColumns = false;
-            _bSource = new BindingList<ThuTraLoi_VeViec>(_cVeViecTTTL.getDS_TTL());
-            dgvDSVeViecTTTL.DataSource = _bSource;
+            LoadData();
         }
 
         public void Clear()
@@ -37,8 +36,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             selectedindex = -1;
-            _bSource = new BindingList<ThuTraLoi_VeViec>(_cVeViecTTTL.getDS_TTL());
-            dgvDSVeViecTTTL.DataSource = _bSource;
+            LoadData();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -52,7 +50,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     vv.TenVV = txtVeViec.Text.Trim();
                     vv.NoiDung = txtNoiDung.Text;
                     vv.NoiNhan = txtNoiNhan.Text.Trim();
-
+                    if (radThuTraLoi.Checked)
+                        vv.ThuTraLoi = true;
+                    else
+                        if (radVanBan.Checked == true)
+                            vv.VanBan = true;
                     if (_cVeViecTTTL.Them(vv))
                     {
                         Clear();
@@ -183,6 +185,33 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             }
         }
 
-        
+        private void radAll_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radThuTraLoi_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radVanBan_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public void LoadData()
+        {
+                if (radThuTraLoi.Checked)
+                {
+                    _bSource = new BindingList<ThuTraLoi_VeViec>(_cVeViecTTTL.getDS_ThuTraLoi());
+                }
+                else
+                    if (radVanBan.Checked)
+                    {
+                        _bSource = new BindingList<ThuTraLoi_VeViec>(_cVeViecTTTL.getDS_VanBan());
+                    }
+            dgvDSVeViecTTTL.DataSource = _bSource;
+        }
     }
 }
