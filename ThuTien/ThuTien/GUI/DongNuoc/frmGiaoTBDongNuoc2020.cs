@@ -57,38 +57,37 @@ namespace ThuTien.GUI.DongNuoc
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            DataSet ds = null;
+
             if (CNguoiDung.Doi == true)
             {
                 if (cmbNhanVienLap.SelectedIndex == 0 && dateTu.Value <= dateDen.Value)
                 {
-                    DataSet ds = null;
                     for (int i = 1; i < _lstND.Count; i++)
                         if (ds == null)
                             ds = _cDongNuoc.GetDSByCreateByCreateDates(((TT_To)cmbTo.SelectedItem).TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value);
                         else
                             ds.Merge(_cDongNuoc.GetDSByCreateByCreateDates(((TT_To)cmbTo.SelectedItem).TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value));
-                    gridControl.DataSource = ds.Tables["DongNuoc"];
                 }
                 else
                     if (cmbNhanVienLap.SelectedIndex > 0 && dateTu.Value <= dateDen.Value)
-                        gridControl.DataSource = _cDongNuoc.GetDSByCreateByCreateDates(((TT_To)cmbTo.SelectedItem).TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                        ds = _cDongNuoc.GetDSByCreateByCreateDates(((TT_To)cmbTo.SelectedItem).TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
             }
             else
             {
                 if (cmbNhanVienLap.SelectedIndex == 0 && dateTu.Value <= dateDen.Value)
                 {
-                    DataSet ds = null;
                     for (int i = 1; i < _lstND.Count; i++)
                         if (ds == null)
                             ds = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value);
                         else
                             ds.Merge(_cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value));
-                    gridControl.DataSource = ds.Tables["DongNuoc"];
                 }
                 else
                     if (cmbNhanVienLap.SelectedIndex > 0 && dateTu.Value <= dateDen.Value)
-                        gridControl.DataSource = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                        ds = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
             }
+            gridControl.DataSource = ds.Tables["DongNuoc"];
 
             ///Kiểm Tra Tình Trạng, Giải Trách hết Hóa Đơn trong Thông Báo Đóng Nước mới tính
             for (int i = 0; i < gridViewDN.DataRowCount; i++)

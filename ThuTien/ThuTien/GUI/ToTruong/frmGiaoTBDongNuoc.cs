@@ -80,11 +80,12 @@ namespace ThuTien.GUI.ToTruong
                 if (cmbNhanVienLap.SelectedIndex == 0 && dateTu.Value <= dateDen.Value)
                 {
                     DataSet ds = null;
-                    for (int i = 1; i < _lstND.Count; i++)
-                        if (ds == null)
-                            ds = _cDongNuoc.GetDSByCreateByCreateDates(((TT_To)cmbTo.SelectedItem).TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value);
-                        else
-                            ds.Merge(_cDongNuoc.GetDSByCreateByCreateDates(((TT_To)cmbTo.SelectedItem).TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value));
+                    if (chkTon.Checked == true)
+                        for (int i = 1; i < _lstND.Count; i++)
+                            if (ds == null)
+                                ds = _cDongNuoc.GetDSByCreateByCreateDates(((TT_To)cmbTo.SelectedItem).TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value);
+                            else
+                                ds.Merge(_cDongNuoc.GetDSByCreateByCreateDates(((TT_To)cmbTo.SelectedItem).TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value));
                     gridControl.DataSource = ds.Tables["DongNuoc"];
                 }
                 else
@@ -126,7 +127,7 @@ namespace ThuTien.GUI.ToTruong
                         //TinhTrang = "Đăng Ngân";
                         DangNgan++;
                     }
-                    if(DangNgan==childRows.Count())
+                    if (DangNgan == childRows.Count())
                         TinhTrang = "Đăng Ngân";
                     if (_cDongNuoc.CheckExist_KQDongNuoc(int.Parse(row["MaDN"].ToString()), dateDen.Value.Date))
                     {
@@ -216,7 +217,7 @@ namespace ThuTien.GUI.ToTruong
                     _cDongNuoc.SqlCommitTransaction();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     gridControl.DataSource = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -508,7 +509,7 @@ namespace ThuTien.GUI.ToTruong
                         DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
 
                         foreach (DataRow itemChild in childRows)
-                            if (string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()) && _cLenhHuy.CheckExist(itemChild["SoHoaDon"].ToString())==false)
+                            if (string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()) && _cLenhHuy.CheckExist(itemChild["SoHoaDon"].ToString()) == false)
                             {
                                 DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                                 dr["Loai"] = "CHUYỂN CÒN TỒN";
@@ -538,29 +539,29 @@ namespace ThuTien.GUI.ToTruong
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
             dsBaoCao dsBaoCao = new dsBaoCao();
-                for (int i = 0; i < gridViewDN.DataRowCount; i++)
+            for (int i = 0; i < gridViewDN.DataRowCount; i++)
+            {
+                DataRow row = gridViewDN.GetDataRow(i);
+                DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
+
+                foreach (DataRow itemChild in childRows)
                 {
-                    DataRow row = gridViewDN.GetDataRow(i);
-                    DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
+                    DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                    dr["SoHoaDon"] = itemChild["SoHoaDon"];
+                    dr["HoTen"] = row["HoTen"];
+                    dr["DiaChi"] = row["DiaChi"];
+                    if (!string.IsNullOrEmpty(row["DanhBo"].ToString()))
+                        dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["MLT"] = row["MLT"].ToString().Insert(4, " ").Insert(2, " ");
+                    dr["Ky"] = itemChild["Ky"];
+                    dr["TongCong"] = itemChild["TongCong"];
+                    dr["NhanVien"] = cmbNhanVienLap.Text;
+                    dr["HanhThu"] = row["HanhThu"];
+                    dr["To"] = row["TenTo"];
 
-                    foreach (DataRow itemChild in childRows)
-                    {
-                        DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
-                        dr["SoHoaDon"] = itemChild["SoHoaDon"];
-                        dr["HoTen"] = row["HoTen"];
-                        dr["DiaChi"] = row["DiaChi"];
-                        if (!string.IsNullOrEmpty(row["DanhBo"].ToString()))
-                            dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        dr["MLT"] = row["MLT"].ToString().Insert(4, " ").Insert(2, " ");
-                        dr["Ky"] = itemChild["Ky"];
-                        dr["TongCong"] = itemChild["TongCong"];
-                        dr["NhanVien"] = cmbNhanVienLap.Text;
-                        dr["HanhThu"] = row["HanhThu"];
-                        dr["To"] = row["TenTo"];
-
-                        dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
-                    }
+                    dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                 }
+            }
 
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
@@ -702,7 +703,7 @@ namespace ThuTien.GUI.ToTruong
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi, Vui lòng thử lại\n"+ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -790,7 +791,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                     }
                     if (chkCoTenNguoiKy.Checked)
-                        dr["NguoiKy"] =CNguoiKy.getNguoiKy();
+                        dr["NguoiKy"] = CNguoiKy.getNguoiKy();
 
                     dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
@@ -812,7 +813,7 @@ namespace ThuTien.GUI.ToTruong
                     //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, true, 0, 0);
                     //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                 }
-            ReportDocument rpt = new ReportDocument();            
+            ReportDocument rpt = new ReportDocument();
             if (radA4.Checked == true)
                 rpt = new rptTBDongNuocA4();
             else

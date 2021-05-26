@@ -268,6 +268,78 @@ namespace ThuTien.DAL.DongNuoc
             }
         }
 
+        public DataSet getDS_Ton(string Loai, int MaNV_DongNuoc)
+        {
+            DataSet ds = new DataSet();
+
+            string sql = "select dn.MaDN,dn.DanhBo,dn.HoTen,dn.DiaChi,dn.MLT,dn.CreateDate,CreateBy=(select HoTen from TT_NguoiDung where MaND=dn.CreateBy)"
+                            + " ,TongCongLenh=(select SUM(TongCong) from TT_CTDongNuoc where MaDN=dn.MaDN),TinhTrang=''"
+                            + " ,DongNuoc=case when kqdn.DongNuoc is null then 'false' else case when kqdn.DongNuoc=1 then 'true' else 'false' end end"
+                            + " ,DongNuoc2=case when kqdn.DongNuoc2 is null then 'false' else case when kqdn.DongNuoc2=1 then 'true' else 'false' end end"
+                            + " ,MoNuoc=case when kqdn.MoNuoc is null then 'false' else case when kqdn.MoNuoc=1 then 'true' else 'false' end end"
+                            + " ,DongPhi=case when kqdn.DongPhi is null then 'false' else case when kqdn.DongPhi=1 then 'true' else 'false' end end"
+                            + " ,ButChi=case when kqdn.ButChi is null then 'false' else case when kqdn.ButChi=1 then 'true' else 'false' end end"
+                            + " ,KhoaTu=case when kqdn.KhoaTu is null then 'false' else case when kqdn.KhoaTu=1 then 'true' else 'false' end end"
+                            + " ,KhoaKhac=case when kqdn.KhoaKhac is null then 'false' else case when kqdn.KhoaKhac=1 then 'true' else 'false' end end"
+                            + " ,kqdn.NgayDN,kqdn.ChiSoDN,kqdn.NiemChi,kqdn.KhoaKhac_GhiChu,kqdn.ChiMatSo,kqdn.ChiKhoaGoc,kqdn.ViTri,kqdn.LyDo,kqdn.NgayDN1,kqdn.ChiSoDN1,kqdn.NiemChi1,kqdn.NgayMN,kqdn.ChiSoMN,kqdn.MaKQDN"
+                            + " from TT_DongNuoc dn left join TT_KQDongNuoc kqdn on dn.MaDN=kqdn.MaDN"
+                            + " where Huy=0 and MaNV_DongNuoc=" + MaNV_DongNuoc;
+            switch (Loai)
+            {
+                case "Đã Đóng Nước":
+                    sql += " and kqdn.MaDN is not null and kqdn.DongNuoc=1 and kqdn.MoNuoc=0 and kqdn.TroNgaiMN=0";
+                    break;
+                case "Đã Mở Nước":
+                    sql += " and kqdn.MaDN is not null and kqdn.DongNuoc=1 and kqdn.MoNuoc=1";
+                    break;
+            }
+            sql += " and exists(select * from HOADON a,TT_CTDongNuoc b where a.ID_HOADON=b.MaHD and b.MaDN=dn.MaDN)"
+            + " and (select COUNT(MaHD) from TT_CTDongNuoc ctdn,HOADON hd where MaDN=dn.MaDN and ctdn.MaHD=hd.ID_HOADON and ChuyenNoKhoDoi=0 and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as DATE)=CAST(getdate() as DATE)))>0"
+            + " and (kqdn.MaDN is null or ((kqdn.DongNuoc=1 and kqdn.MoNuoc=0 and TroNgaiMN=0) or (CAST(kqdn.NgayMN as date)=CAST(GETDATE() as date))))"
+            + " order by dn.MLT";
+
+            DataTable dtDongNuoc = new DataTable();
+            dtDongNuoc = ExecuteQuery_DataTable(sql);
+            dtDongNuoc.TableName = "DongNuoc";
+            ds.Tables.Add(dtDongNuoc);
+
+            sql = "select dn.MaDN,MaHD,MLT=MALOTRINH,ctdn.Ky,DanhBo=hd.DANHBA,HoTen=hd.TENKH,DiaChi=hd.SO+' '+hd.DUONG"
+                            + " ,GiaBieu=GB,DinhMuc=DM,CSC=CSCU,CSM=CSMOI,hd.Code,hd.TieuThu,TuNgay=CONVERT(varchar(10),TUNGAY,103),DenNgay=CONVERT(varchar(10),DenNgay,103),hd.GiaBan,ThueGTGT=Thue,PhiBVMT=Phi,hd.TongCong,hd.DCHD,hd.TienDuTruoc_DCHD,hd.ChiTietTienNuoc"
+                            + " ,DangNgan_DienThoai,NgayGiaiTrach,XoaDangNgan_Ngay_DienThoai,InPhieuBao_Ngay,InPhieuBao2_Ngay,InPhieuBao2_NgayHen,TBDongNuoc_Ngay,TBDongNuoc_NgayHen"
+                            + " ,GiaiTrach=case when exists(select ID_HOADON from HOADON where NGAYGIAITRACH is not null and ID_HOADON=ctdn.MaHD) then 'true' else 'false' end"
+                            + " ,TamThu=case when exists(select ID_TAMTHU from TAMTHU where FK_HOADON=ctdn.MaHD) then 'true' else 'false' end"
+                            + " ,ThuHo=case when exists(select MaHD from TT_DichVuThu where MaHD=ctdn.MaHD) then 'true' else 'false' end"
+                            + " ,LenhHuy=case when exists(select MaHD from TT_LenhHuy where MaHD=ctdn.MaHD) then 'true' else 'false' end"
+                            + " from TT_DongNuoc dn"
+                            + " left join TT_CTDongNuoc ctdn on dn.MaDN=ctdn.MaDN"
+                            + " left join TT_KQDongNuoc kqdn on dn.MaDN=kqdn.MaDN"
+                            + " left join HOADON hd on hd.ID_HOADON=ctdn.MaHD"
+                            + " where Huy=0 and MaNV_DongNuoc=" + MaNV_DongNuoc;
+            switch (Loai)
+            {
+                case "Đã Đóng Nước":
+                    sql += " and kqdn.MaDN is not null and kqdn.DongNuoc=1 and kqdn.MoNuoc=0 and kqdn.TroNgaiMN=0";
+                    break;
+                case "Đã Mở Nước":
+                    sql += " and kqdn.MaDN is not null and kqdn.DongNuoc=1 and kqdn.MoNuoc=1";
+                    break;
+            }
+            sql += " and exists(select * from HOADON a,TT_CTDongNuoc b where a.ID_HOADON=b.MaHD and b.MaDN=dn.MaDN)"
+                            + " and (select COUNT(MaHD) from TT_CTDongNuoc ctdn,HOADON hd where MaDN=dn.MaDN and ctdn.MaHD=hd.ID_HOADON and ChuyenNoKhoDoi=0 and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as DATE)=CAST(getdate() as DATE)))>0"
+                            + " and (kqdn.MaDN is null or ((kqdn.DongNuoc=1 and kqdn.MoNuoc=0 and TroNgaiMN=0) or (CAST(kqdn.NgayMN as date)=CAST(GETDATE() as date))))" 
+                            + " order by dn.MLT asc,ctdn.MaHD desc";
+
+            DataTable dtCTDongNuoc = new DataTable();
+            dtCTDongNuoc = ExecuteQuery_DataTable(sql);
+            dtCTDongNuoc.TableName = "CTDongNuoc";
+            ds.Tables.Add(dtCTDongNuoc);
+
+            if (dtDongNuoc.Rows.Count > 0 && dtCTDongNuoc.Rows.Count > 0)
+                ds.Relations.Add("Chi Tiết Đóng Nước", ds.Tables["DongNuoc"].Columns["MaDN"], ds.Tables["CTDongNuoc"].Columns["MaDN"]);
+
+            return ds;
+        }
+
         /// <summary>
         /// Lấy Danh Sách Thông Báo Đóng Nước chưa bị Hủy
         /// </summary>
@@ -1747,6 +1819,7 @@ namespace ThuTien.DAL.DongNuoc
                         join itemCT in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCT.MaDN
                         join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
                         where itemDN.Huy == false && itemHD.NGAYGIAITRACH == null && itemHD.DANHBA == DanhBo && itemHD.NAM == Nam && itemHD.KY == Ky
+                        && _db.TT_DichVuThus.Any(item => item.MaHD == itemHD.ID_HOADON) == false
                         select new
                         {
                             itemHD.ID_HOADON,

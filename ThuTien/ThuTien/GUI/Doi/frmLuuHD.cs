@@ -249,6 +249,11 @@ namespace ThuTien.GUI.Doi
                                         if (_cDongNuoc.CheckExist_CTDongNuoc_Ton(hoadon.DANHBA, NamTemp, KyTemp) == true)
                                         {
                                             TT_DongNuoc dongnuoc = _cDongNuoc.getDongNuoc_MoiNhat_Ton(hoadon.DANHBA, NamTemp, KyTemp);
+                                            //update HOADON
+                                           HOADON hoadonLenh=_cHoaDon.Get(hoadon.DANHBA, NamTemp, KyTemp);
+                                           hoadon.TBDongNuoc_Ngay = hoadonLenh.TBDongNuoc_Ngay;
+                                           hoadon.TBDongNuoc_NgayHen = hoadonLenh.TBDongNuoc_NgayHen;
+                                           hoadon.TBDongNuoc_Location = hoadonLenh.TBDongNuoc_Location;
 
                                             TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
                                             ctdongnuoc.MaDN = dongnuoc.MaDN;

@@ -67,6 +67,11 @@ namespace ThuTien.GUI.TongHop
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
+                    if (txtDanhBo.Text.Trim().Replace(" ", "") == "")
+                    {
+                        MessageBox.Show("Nhập thiếu thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     if (_cHoaDon.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), int.Parse(txtNam.Text.Trim()), int.Parse(cmbKy.SelectedItem.ToString())) == true)
                     {
                         MessageBox.Show("Hóa Đơn Đã Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -122,7 +127,19 @@ namespace ThuTien.GUI.TongHop
             }
         }
 
-        private void dgvDanhSach_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtDanhBo.Text.Trim() != "" && txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
+            {
+                HOADON en = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
+                if (en != null)
+                    LoadTTKH(en);
+                else
+                    MessageBox.Show("Danh Bộ không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -133,18 +150,6 @@ namespace ThuTien.GUI.TongHop
             catch (Exception)
             {
 
-            }
-        }
-
-        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (txtDanhBo.Text.Trim() != "" && txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
-            {
-                HOADON en = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
-                if (en != null)
-                    LoadTTKH(en);
-                else
-                    MessageBox.Show("Danh Bộ không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

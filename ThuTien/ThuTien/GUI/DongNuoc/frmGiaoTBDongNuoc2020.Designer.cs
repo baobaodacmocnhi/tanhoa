@@ -380,7 +380,7 @@
             // cmbNhanVienLap
             // 
             this.cmbNhanVienLap.FormattingEnabled = true;
-            this.cmbNhanVienLap.Location = new System.Drawing.Point(341, 12);
+            this.cmbNhanVienLap.Location = new System.Drawing.Point(290, 12);
             this.cmbNhanVienLap.Name = "cmbNhanVienLap";
             this.cmbNhanVienLap.Size = new System.Drawing.Size(118, 21);
             this.cmbNhanVienLap.TabIndex = 12;
@@ -388,7 +388,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(253, 15);
+            this.label4.Location = new System.Drawing.Point(202, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 13);
             this.label4.TabIndex = 11;
@@ -398,7 +398,7 @@
             // 
             this.lbTo.AutoSize = true;
             this.lbTo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTo.Location = new System.Drawing.Point(149, 13);
+            this.lbTo.Location = new System.Drawing.Point(98, 13);
             this.lbTo.Name = "lbTo";
             this.lbTo.Size = new System.Drawing.Size(32, 19);
             this.lbTo.TabIndex = 10;
@@ -408,7 +408,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(691, 12);
+            this.dateDen.Location = new System.Drawing.Point(640, 12);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 16;
@@ -416,7 +416,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(627, 15);
+            this.label1.Location = new System.Drawing.Point(576, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 15;
@@ -426,7 +426,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(521, 12);
+            this.dateTu.Location = new System.Drawing.Point(470, 12);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 14;
@@ -434,7 +434,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(464, 14);
+            this.label3.Location = new System.Drawing.Point(413, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 13;
@@ -674,7 +674,7 @@
             // cmbTo
             // 
             this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Location = new System.Drawing.Point(187, 11);
+            this.cmbTo.Location = new System.Drawing.Point(136, 11);
             this.cmbTo.Name = "cmbTo";
             this.cmbTo.Size = new System.Drawing.Size(60, 21);
             this.cmbTo.TabIndex = 103;

@@ -81,13 +81,22 @@ namespace ThuTien.GUI.HeThong
                         _cMenu.Sua(menu);
                     }
                 }
-                     
+
             }
-            
+
         }
 
         private void btnCapNhatPhanQuyenNhom_Click(object sender, EventArgs e)
         {
+            //dbThuTienDataContext db = new dbThuTienDataContext();
+            //DateTime date = DateTime.Parse("01/04/2021");
+            //List<HOADON> lst = db.HOADONs.Where(item => item.TBDongNuoc_Ngay.Value.Date >= date).ToList();
+            //foreach (HOADON item in lst)
+            //{
+            //    DateTime dateHen = _cMenu.GetToDate(item.TBDongNuoc_Ngay.Value, 25);
+            //    item.TBDongNuoc_NgayHen = dateHen;
+            //    _cMenu.SubmitChanges();
+            //}
             foreach (var itemMenu in _cMenu.GetDS())
             {
                 foreach (var itemNhom in _cNhom.GetDS())
