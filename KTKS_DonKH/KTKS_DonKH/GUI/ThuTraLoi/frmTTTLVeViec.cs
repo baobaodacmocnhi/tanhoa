@@ -192,12 +192,12 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
         private void radThuTraLoi_CheckedChanged(object sender, EventArgs e)
         {
-
+            LoadData();
         }
 
         private void radVanBan_CheckedChanged(object sender, EventArgs e)
         {
-
+            LoadData();
         }
 
         public void LoadData()

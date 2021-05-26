@@ -631,5 +631,18 @@ namespace KTKS_DonKH.GUI.VanBan
                 dgvHinh.CurrentCell = dgvHinh.Rows[e.RowIndex].Cells[e.ColumnIndex];
             }
         }
+
+        private void dgvHinh_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip2.Show(dgvHinh, new Point(e.X, e.Y));
+            }
+        }
+
+        private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            _cVanBan.LoadImageView(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
+        }
     }
 }
