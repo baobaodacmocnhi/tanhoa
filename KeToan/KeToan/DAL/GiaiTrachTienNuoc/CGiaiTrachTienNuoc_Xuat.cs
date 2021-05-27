@@ -67,9 +67,9 @@ namespace KeToan.DAL.GiaiTrachTienNuoc
             return ExecuteNonQuery("delete GiaiTrachTienNuoc_Xuat where ID=" + ID);
         }
 
-        public bool checkExists(string SoPhieuThu, DateTime NgayGiaiTrach, string DanhBo, int Ky)
+        public bool checkExists(string SoPhieuThu, DateTime NgayPhieuThu, string DanhBo, int Ky, DateTime NgayGiaiTrach)
         {
-            return _db.GiaiTrachTienNuoc_Xuats.Any(item => item.SoPhieuThu == SoPhieuThu && item.NgayGiaiTrach.Value.Date == NgayGiaiTrach.Date && item.DanhBo == DanhBo && item.Ky == Ky);
+            return _db.GiaiTrachTienNuoc_Xuats.Any(item => item.SoPhieuThu == SoPhieuThu && item.NgayPhieuThu.Value.Date == NgayPhieuThu.Date && item.DanhBo == DanhBo && item.Ky == Ky && item.NgayGiaiTrach.Value.Date == NgayGiaiTrach.Date);
         }
 
         public DataTable getDS(DateTime FromNgayGiaiTrach, DateTime ToNgayGiaiTrach)

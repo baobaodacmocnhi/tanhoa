@@ -32,8 +32,12 @@
             this.gridViewChiTiet = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.DanhBo_CT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SoTien_CT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.GiaBan = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ThueGTGT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.PhiBVMT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TongCong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NgayGiaiTrach = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SoTienPhieuThu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -52,11 +56,15 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.txtTongCong = new System.Windows.Forms.TextBox();
             this.txtTong = new System.Windows.Forms.TextBox();
-            this.chkTon = new System.Windows.Forms.CheckBox();
             this.txtTongCongTon = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbTimTheo = new System.Windows.Forms.ComboBox();
+            this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
+            this.panelTime = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
+            this.panelTime.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridViewChiTiet
@@ -71,8 +79,12 @@
             this.gridViewChiTiet.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.DanhBo_CT,
             this.Ky,
-            this.SoTien_CT,
-            this.NgayGiaiTrach});
+            this.GiaBan,
+            this.ThueGTGT,
+            this.PhiBVMT,
+            this.TongCong,
+            this.NgayGiaiTrach,
+            this.SoTienPhieuThu});
             this.gridViewChiTiet.GridControl = this.gridControl;
             this.gridViewChiTiet.Name = "gridViewChiTiet";
             this.gridViewChiTiet.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -89,7 +101,7 @@
             this.DanhBo_CT.Name = "DanhBo_CT";
             this.DanhBo_CT.Visible = true;
             this.DanhBo_CT.VisibleIndex = 0;
-            this.DanhBo_CT.Width = 200;
+            this.DanhBo_CT.Width = 100;
             // 
             // Ky
             // 
@@ -98,16 +110,43 @@
             this.Ky.Name = "Ky";
             this.Ky.Visible = true;
             this.Ky.VisibleIndex = 1;
-            this.Ky.Width = 100;
+            this.Ky.Width = 50;
             // 
-            // SoTien_CT
+            // GiaBan
             // 
-            this.SoTien_CT.Caption = "Số Tiền";
-            this.SoTien_CT.FieldName = "SoTien";
-            this.SoTien_CT.Name = "SoTien_CT";
-            this.SoTien_CT.Visible = true;
-            this.SoTien_CT.VisibleIndex = 2;
-            this.SoTien_CT.Width = 100;
+            this.GiaBan.Caption = "Giá Bán";
+            this.GiaBan.FieldName = "GiaBan";
+            this.GiaBan.Name = "GiaBan";
+            this.GiaBan.Visible = true;
+            this.GiaBan.VisibleIndex = 2;
+            this.GiaBan.Width = 100;
+            // 
+            // ThueGTGT
+            // 
+            this.ThueGTGT.Caption = "Thuế GTGT";
+            this.ThueGTGT.FieldName = "ThueGTGT";
+            this.ThueGTGT.Name = "ThueGTGT";
+            this.ThueGTGT.Visible = true;
+            this.ThueGTGT.VisibleIndex = 3;
+            this.ThueGTGT.Width = 100;
+            // 
+            // PhiBVMT
+            // 
+            this.PhiBVMT.Caption = "Phí BVMT";
+            this.PhiBVMT.FieldName = "PhiBVMT";
+            this.PhiBVMT.Name = "PhiBVMT";
+            this.PhiBVMT.Visible = true;
+            this.PhiBVMT.VisibleIndex = 4;
+            this.PhiBVMT.Width = 100;
+            // 
+            // TongCong
+            // 
+            this.TongCong.Caption = "Tổng Cộng";
+            this.TongCong.FieldName = "TongCong";
+            this.TongCong.Name = "TongCong";
+            this.TongCong.Visible = true;
+            this.TongCong.VisibleIndex = 5;
+            this.TongCong.Width = 100;
             // 
             // NgayGiaiTrach
             // 
@@ -115,8 +154,17 @@
             this.NgayGiaiTrach.FieldName = "NgayGiaiTrach";
             this.NgayGiaiTrach.Name = "NgayGiaiTrach";
             this.NgayGiaiTrach.Visible = true;
-            this.NgayGiaiTrach.VisibleIndex = 3;
+            this.NgayGiaiTrach.VisibleIndex = 6;
             this.NgayGiaiTrach.Width = 120;
+            // 
+            // SoTienPhieuThu
+            // 
+            this.SoTienPhieuThu.Caption = "Số Tiền PT";
+            this.SoTienPhieuThu.FieldName = "SoTienPhieuThu";
+            this.SoTienPhieuThu.Name = "SoTienPhieuThu";
+            this.SoTienPhieuThu.Visible = true;
+            this.SoTienPhieuThu.VisibleIndex = 7;
+            this.SoTienPhieuThu.Width = 100;
             // 
             // gridControl
             // 
@@ -127,7 +175,7 @@
             this.gridControl.Location = new System.Drawing.Point(12, 34);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(810, 575);
+            this.gridControl.Size = new System.Drawing.Size(959, 575);
             this.gridControl.TabIndex = 91;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView,
@@ -236,7 +284,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(175, 8);
+            this.dateTu.Location = new System.Drawing.Point(57, 3);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 86;
@@ -244,7 +292,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(121, 10);
+            this.label4.Location = new System.Drawing.Point(3, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 85;
@@ -254,7 +302,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(342, 8);
+            this.dateDen.Location = new System.Drawing.Point(224, 3);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 84;
@@ -262,7 +310,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(281, 10);
+            this.label3.Location = new System.Drawing.Point(163, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 83;
@@ -270,7 +318,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(498, 6);
+            this.btnXem.Location = new System.Drawing.Point(629, 6);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 82;
@@ -280,7 +328,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(579, 6);
+            this.btnXoa.Location = new System.Drawing.Point(710, 6);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 88;
@@ -304,16 +352,6 @@
             this.txtTong.Size = new System.Drawing.Size(50, 20);
             this.txtTong.TabIndex = 90;
             // 
-            // chkTon
-            // 
-            this.chkTon.AutoSize = true;
-            this.chkTon.Location = new System.Drawing.Point(448, 10);
-            this.chkTon.Name = "chkTon";
-            this.chkTon.Size = new System.Drawing.Size(45, 17);
-            this.chkTon.TabIndex = 92;
-            this.chkTon.Text = "Tồn";
-            this.chkTon.UseVisualStyleBackColor = true;
-            // 
             // txtTongCongTon
             // 
             this.txtTongCongTon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -322,21 +360,62 @@
             this.txtTongCongTon.Size = new System.Drawing.Size(100, 20);
             this.txtTongCongTon.TabIndex = 93;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(110, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 94;
+            this.label1.Text = "Tìm Theo";
+            // 
+            // cmbTimTheo
+            // 
+            this.cmbTimTheo.FormattingEnabled = true;
+            this.cmbTimTheo.Items.AddRange(new object[] {
+            "Ngày Phiếu Thu",
+            "Danh Bộ - Họ Tên",
+            "Tồn"});
+            this.cmbTimTheo.Location = new System.Drawing.Point(168, 10);
+            this.cmbTimTheo.Name = "cmbTimTheo";
+            this.cmbTimTheo.Size = new System.Drawing.Size(121, 21);
+            this.cmbTimTheo.TabIndex = 95;
+            this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
+            // 
+            // txtNoiDungTimKiem
+            // 
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(295, 5);
+            this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
+            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(100, 20);
+            this.txtNoiDungTimKiem.TabIndex = 96;
+            this.txtNoiDungTimKiem.Visible = false;
+            // 
+            // panelTime
+            // 
+            this.panelTime.Controls.Add(this.dateTu);
+            this.panelTime.Controls.Add(this.label3);
+            this.panelTime.Controls.Add(this.dateDen);
+            this.panelTime.Controls.Add(this.label4);
+            this.panelTime.Location = new System.Drawing.Point(295, 5);
+            this.panelTime.Name = "panelTime";
+            this.panelTime.Size = new System.Drawing.Size(328, 26);
+            this.panelTime.TabIndex = 97;
+            this.panelTime.Visible = false;
+            // 
             // frmGiaiTrachTienNuoc_Nhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1587, 647);
+            this.Controls.Add(this.panelTime);
+            this.Controls.Add(this.txtNoiDungTimKiem);
+            this.Controls.Add(this.cmbTimTheo);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTongCongTon);
-            this.Controls.Add(this.chkTon);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.txtTong);
             this.Controls.Add(this.txtTongCong);
             this.Controls.Add(this.btnXoa);
-            this.Controls.Add(this.dateTu);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.dateDen);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.btnChonFile);
             this.Name = "frmGiaiTrachTienNuoc_Nhap";
@@ -345,6 +424,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
+            this.panelTime.ResumeLayout(false);
+            this.panelTime.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,7 +447,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
         private DevExpress.XtraGrid.Columns.GridColumn DanhBo_CT;
         private DevExpress.XtraGrid.Columns.GridColumn Ky;
-        private DevExpress.XtraGrid.Columns.GridColumn SoTien_CT;
+        private DevExpress.XtraGrid.Columns.GridColumn SoTienPhieuThu;
         private DevExpress.XtraGrid.Columns.GridColumn NgayGiaiTrach;
         private DevExpress.XtraGrid.Columns.GridColumn ID;
         private DevExpress.XtraGrid.Columns.GridColumn SoPhieuThu;
@@ -375,7 +456,14 @@
         private DevExpress.XtraGrid.Columns.GridColumn SoTien;
         private DevExpress.XtraGrid.Columns.GridColumn SoTienTon;
         private DevExpress.XtraGrid.Columns.GridColumn TinhTrang;
-        private System.Windows.Forms.CheckBox chkTon;
         private System.Windows.Forms.TextBox txtTongCongTon;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbTimTheo;
+        private System.Windows.Forms.TextBox txtNoiDungTimKiem;
+        private System.Windows.Forms.Panel panelTime;
+        private DevExpress.XtraGrid.Columns.GridColumn GiaBan;
+        private DevExpress.XtraGrid.Columns.GridColumn ThueGTGT;
+        private DevExpress.XtraGrid.Columns.GridColumn PhiBVMT;
+        private DevExpress.XtraGrid.Columns.GridColumn TongCong;
     }
 }

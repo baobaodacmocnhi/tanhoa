@@ -30,6 +30,7 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
 
         private void frmGiaiTrachTienNuoc_Nhap_Load(object sender, EventArgs e)
         {
+            cmbTimTheo.SelectedIndex = 0;
             gridControl.LevelTree.Nodes.Add("Chi Tiết", gridViewChiTiet);
         }
 
@@ -37,16 +38,25 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
         {
             try
             {
-                if (chkTon.Checked == true)
-                    gridControl.DataSource = _cGTTN.getDS_Ton().Tables["PhieuThu"];
-                else
-                    gridControl.DataSource = _cGTTN.getDS(dateTu.Value, dateDen.Value).Tables["PhieuThu"];
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Ngày Phiếu Thu":
+                        gridControl.DataSource = _cGTTN.getDS(dateTu.Value, dateDen.Value).Tables["PhieuThu"];
+                        break;
+                    case "Danh Bộ - Họ Tên":
+                        gridControl.DataSource = _cGTTN.getDS(txtNoiDungTimKiem.Text).Tables["PhieuThu"];
+                        break;
+                    default:
+                        gridControl.DataSource = _cGTTN.getDS_Ton().Tables["PhieuThu"];
+                        break;
+                }
+
                 decimal TongCong = 0, TongCongTon = 0;
                 for (int i = 0; i < gridView.DataRowCount; i++)
                 {
                     DataRow row = gridView.GetDataRow(i);
                     TongCong += decimal.Parse(row["SoTien"].ToString());
-                    if(row["SoTien"]!=null && row["SoTien"].ToString()!="")
+                    if (row["SoTien"] != null && row["SoTien"].ToString() != "")
                         TongCongTon += decimal.Parse(row["SoTienTon"].ToString());
                 }
                 //dgvHoaDon.DataSource = _cGTTN.getDS(dateTu.Value, dateDen.Value);
@@ -98,8 +108,9 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
                             object[,] valueArray = (object[,])excelRange.get_Value(XlRangeValueDataType.xlRangeValueDefault);
 
                             //access the cells
+                            //tuấn
                             for (int row = 8; row <= worksheet.UsedRange.Rows.Count; ++row)
-                                if (valueArray[row, 1] != null && valueArray[row, 1].ToString() != "")
+                                if (valueArray[row, 1] != null && valueArray[row, 1].ToString() != "" && valueArray[row, 6] != null && valueArray[row, 6].ToString() != "")
                                 {
                                     GiaiTrachTienNuoc_Nhap en = new GiaiTrachTienNuoc_Nhap();
                                     en.NgayPhieuThu = DateTime.Parse(valueArray[row, 1].ToString());
@@ -110,7 +121,21 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
                                     if (_cGTTN.checkExists(en.SoPhieuThu, en.NgayPhieuThu.Value, en.DanhBo) == false)
                                         _cGTTN.Them(en);
                                 }
-
+                            //khanh
+                            //for (int row = 4; row <= worksheet.UsedRange.Rows.Count; ++row)
+                            //    if (valueArray[row, 5] != null && valueArray[row, 5].ToString() != "")
+                            //    {
+                            //        GiaiTrachTienNuoc_Nhap en = new GiaiTrachTienNuoc_Nhap();
+                            //        en.NgayPhieuThu = DateTime.Parse(valueArray[row, 5].ToString());
+                            //        en.SoPhieuThu = valueArray[row, 4].ToString();
+                            //        if (valueArray[row, 3] != null)
+                            //            en.DanhBo = valueArray[row, 3].ToString();
+                            //        if (valueArray[row, 2] != null)
+                            //            en.HoTen = valueArray[row, 2].ToString();
+                            //        en.SoTien = int.Parse(valueArray[row, 6].ToString());
+                            //        if (_cGTTN.checkExists(en.SoPhieuThu, en.NgayPhieuThu.Value, en.DanhBo) == false)
+                            //            _cGTTN.Them(en);
+                            //    }
                             MessageBox.Show("Đã xử lý xong, Vui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
                         }
@@ -179,11 +204,7 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
 
         private void gridView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-            if (e.Column.FieldName == "SoTien" && e.Value != null)
-            {
-                e.DisplayText = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (e.Column.FieldName == "SoTienTon" && e.Value != null)
+            if ((e.Column.FieldName == "SoTien" || e.Column.FieldName == "SoTienTon") && e.Value != null)
             {
                 e.DisplayText = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
@@ -197,9 +218,29 @@ namespace KeToan.GUI.GiaiTrachTienNuoc
 
         private void gridViewChiTiet_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-            if (e.Column.FieldName == "SoTien_CT" && e.Value != null)
+            if ((e.Column.FieldName == "GiaBan" || e.Column.FieldName == "ThueGTGT" || e.Column.FieldName == "PhiBVMT" || e.Column.FieldName == "TongCong" || e.Column.FieldName == "SoTienPhieuThu")
+                && e.Value != null)
             {
                 e.DisplayText = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Ngày Phiếu Thu":
+                    panelTime.Visible = true;
+                    txtNoiDungTimKiem.Visible = false;
+                    break;
+                case "Danh Bộ - Họ Tên":
+                    panelTime.Visible = false;
+                    txtNoiDungTimKiem.Visible = true;
+                    break;
+                default:
+                    panelTime.Visible = false;
+                    txtNoiDungTimKiem.Visible = false;
+                    break;
             }
         }
 

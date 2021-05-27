@@ -213,7 +213,8 @@
             // 
             // txtTongCong
             // 
-            this.txtTongCong.Location = new System.Drawing.Point(359, 609);
+            this.txtTongCong.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongCong.Location = new System.Drawing.Point(364, 609);
             this.txtTongCong.Name = "txtTongCong";
             this.txtTongCong.Size = new System.Drawing.Size(100, 20);
             this.txtTongCong.TabIndex = 97;

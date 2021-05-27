@@ -808,6 +808,8 @@ namespace KeToan.LinQ
 		
 		private System.Nullable<System.DateTime> _NgayPhieuThu;
 		
+		private string _HoTen;
+		
 		private string _DanhBo;
 		
 		private System.Nullable<decimal> _SoTien;
@@ -832,6 +834,8 @@ namespace KeToan.LinQ
     partial void OnSoPhieuThuChanged();
     partial void OnNgayPhieuThuChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayPhieuThuChanged();
+    partial void OnHoTenChanging(string value);
+    partial void OnHoTenChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
     partial void OnSoTienChanging(System.Nullable<decimal> value);
@@ -909,6 +913,26 @@ namespace KeToan.LinQ
 					this._NgayPhieuThu = value;
 					this.SendPropertyChanged("NgayPhieuThu");
 					this.OnNgayPhieuThuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(200)")]
+		public string HoTen
+		{
+			get
+			{
+				return this._HoTen;
+			}
+			set
+			{
+				if ((this._HoTen != value))
+				{
+					this.OnHoTenChanging(value);
+					this.SendPropertyChanging();
+					this._HoTen = value;
+					this.SendPropertyChanged("HoTen");
+					this.OnHoTenChanged();
 				}
 			}
 		}
@@ -1086,6 +1110,8 @@ namespace KeToan.LinQ
 		
 		private System.Nullable<System.DateTime> _NgayPhieuThu;
 		
+		private System.Nullable<decimal> _SoTienPhieuThu;
+		
 		private string _HoTen;
 		
 		private string _DanhBo;
@@ -1122,6 +1148,8 @@ namespace KeToan.LinQ
     partial void OnSoPhieuThuChanged();
     partial void OnNgayPhieuThuChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayPhieuThuChanged();
+    partial void OnSoTienPhieuThuChanging(System.Nullable<decimal> value);
+    partial void OnSoTienPhieuThuChanged();
     partial void OnHoTenChanging(string value);
     partial void OnHoTenChanged();
     partial void OnDanhBoChanging(string value);
@@ -1211,6 +1239,26 @@ namespace KeToan.LinQ
 					this._NgayPhieuThu = value;
 					this.SendPropertyChanged("NgayPhieuThu");
 					this.OnNgayPhieuThuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoTienPhieuThu", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> SoTienPhieuThu
+		{
+			get
+			{
+				return this._SoTienPhieuThu;
+			}
+			set
+			{
+				if ((this._SoTienPhieuThu != value))
+				{
+					this.OnSoTienPhieuThuChanging(value);
+					this.SendPropertyChanging();
+					this._SoTienPhieuThu = value;
+					this.SendPropertyChanged("SoTienPhieuThu");
+					this.OnSoTienPhieuThuChanged();
 				}
 			}
 		}

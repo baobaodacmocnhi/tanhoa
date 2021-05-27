@@ -85,7 +85,7 @@ namespace KeToan.DAL.GiaiTrachTienNuoc
             DataSet ds = new DataSet();
 
             var query = from item in _db.GiaiTrachTienNuoc_Nhaps
-                        where _db.GiaiTrachTienNuoc_Xuats.Any(itemA => itemA.IDNhap == item.ID) == false || (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.TongCong)) != 0
+                        where _db.GiaiTrachTienNuoc_Xuats.Any(itemA => itemA.IDNhap == item.ID) == false || (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.SoTienPhieuThu)) != 0
                         orderby item.ID ascending
                         select new
                         {
@@ -94,9 +94,9 @@ namespace KeToan.DAL.GiaiTrachTienNuoc
                             item.NgayPhieuThu,
                             item.DanhBo,
                             item.SoTien,
-                            SoTienTon = _db.GiaiTrachTienNuoc_Xuats.Any(itemA => itemA.IDNhap == item.ID) == false ? 0 : (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.TongCong)),
+                            SoTienTon = _db.GiaiTrachTienNuoc_Xuats.Any(itemA => itemA.IDNhap == item.ID) == false ? 0 : (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.SoTienPhieuThu)),
                             item.NganHang,
-                            TinhTrang = (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.TongCong)) == 0 ? "Hết" : "Tồn",
+                            TinhTrang = (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.SoTienPhieuThu)) == 0 ? "Hết" : "Tồn",
                         };
             DataTable dt = new DataTable();
             dt = LINQToDataTable(query);
@@ -105,7 +105,7 @@ namespace KeToan.DAL.GiaiTrachTienNuoc
 
             var queryCT = from itemXuat in _db.GiaiTrachTienNuoc_Xuats
                           join itemNhap in _db.GiaiTrachTienNuoc_Nhaps on itemXuat.IDNhap equals itemNhap.ID
-                          where itemXuat.IDNhap == null || (itemNhap.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == itemNhap.ID).Sum(itemA => itemA.TongCong)) != 0
+                          where itemXuat.IDNhap == null || (itemNhap.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == itemNhap.ID).Sum(itemA => itemA.SoTienPhieuThu)) != 0
                           select new
                           {
                               itemXuat.IDNhap,
@@ -113,6 +113,55 @@ namespace KeToan.DAL.GiaiTrachTienNuoc
                               itemXuat.Ky,
                               SoTien = itemXuat.TongCong,
                               itemXuat.NgayGiaiTrach,
+                          };
+            DataTable dtCT = new DataTable();
+            dtCT = LINQToDataTable(queryCT);
+            dtCT.TableName = "ChiTiet";
+            ds.Tables.Add(dtCT);
+
+            if (dt.Rows.Count > 0 && dtCT.Rows.Count > 0)
+                ds.Relations.Add("Chi Tiết", ds.Tables["PhieuThu"].Columns["ID"], ds.Tables["ChiTiet"].Columns["IDNhap"]);
+
+            return ds;
+        }
+
+        public DataSet getDS(string NoiDungTimKiem)
+        {
+            DataSet ds = new DataSet();
+
+            var query = from item in _db.GiaiTrachTienNuoc_Nhaps
+                        where item.DanhBo.Contains(NoiDungTimKiem) || item.HoTen.Contains(NoiDungTimKiem)
+                        orderby item.ID ascending
+                        select new
+                        {
+                            item.ID,
+                            item.SoPhieuThu,
+                            item.NgayPhieuThu,
+                            item.DanhBo,
+                            item.SoTien,
+                            SoTienTon = _db.GiaiTrachTienNuoc_Xuats.Any(itemA => itemA.IDNhap == item.ID) == false ? 0 : (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.SoTienPhieuThu)),
+                            item.NganHang,
+                            TinhTrang = (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.SoTienPhieuThu)) == 0 ? "Hết" : "Tồn",
+                        };
+            DataTable dt = new DataTable();
+            dt = LINQToDataTable(query);
+            dt.TableName = "PhieuThu";
+            ds.Tables.Add(dt);
+
+            var queryCT = from itemXuat in _db.GiaiTrachTienNuoc_Xuats
+                          join itemNhap in _db.GiaiTrachTienNuoc_Nhaps on itemXuat.IDNhap equals itemNhap.ID
+                          where itemNhap.DanhBo.Contains(NoiDungTimKiem) || itemNhap.HoTen.Contains(NoiDungTimKiem)
+                          select new
+                          {
+                              itemXuat.IDNhap,
+                              itemXuat.DanhBo,
+                              itemXuat.Ky,
+                              itemXuat.GiaBan,
+                              itemXuat.ThueGTGT,
+                              itemXuat.PhiBVMT,
+                              itemXuat.TongCong,
+                              itemXuat.NgayGiaiTrach,
+                              itemXuat.SoTienPhieuThu,
                           };
             DataTable dtCT = new DataTable();
             dtCT = LINQToDataTable(queryCT);
@@ -139,9 +188,9 @@ namespace KeToan.DAL.GiaiTrachTienNuoc
                             item.NgayPhieuThu,
                             item.DanhBo,
                             item.SoTien,
-                            SoTienTon = _db.GiaiTrachTienNuoc_Xuats.Any(itemA => itemA.IDNhap == item.ID) == false ? 0 : (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.TongCong)),
+                            SoTienTon = _db.GiaiTrachTienNuoc_Xuats.Any(itemA => itemA.IDNhap == item.ID) == false ? 0 : (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.SoTienPhieuThu)),
                             item.NganHang,
-                            TinhTrang = (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.TongCong)) == 0 ? "Hết" : "Tồn",
+                            TinhTrang = (item.SoTien - _db.GiaiTrachTienNuoc_Xuats.Where(itemA => itemA.IDNhap == item.ID).Sum(itemA => itemA.SoTienPhieuThu)) == 0 ? "Hết" : "Tồn",
                         };
             DataTable dt = new DataTable();
             dt = LINQToDataTable(query);
@@ -150,13 +199,18 @@ namespace KeToan.DAL.GiaiTrachTienNuoc
 
             var queryCT = from itemXuat in _db.GiaiTrachTienNuoc_Xuats
                           join itemNhap in _db.GiaiTrachTienNuoc_Nhaps on itemXuat.IDNhap equals itemNhap.ID
+                          where itemNhap.NgayPhieuThu.Value.Date >= FromNgayPhieuThu.Date && itemNhap.NgayPhieuThu.Value.Date <= ToNgayPhieuThu.Date
                           select new
                           {
                               itemXuat.IDNhap,
                               itemXuat.DanhBo,
                               itemXuat.Ky,
-                              SoTien = itemXuat.TongCong,
+                              itemXuat.GiaBan,
+                              itemXuat.ThueGTGT,
+                              itemXuat.PhiBVMT,
+                              itemXuat.TongCong,
                               itemXuat.NgayGiaiTrach,
+                              itemXuat.SoTienPhieuThu,
                           };
             DataTable dtCT = new DataTable();
             dtCT = LINQToDataTable(queryCT);
