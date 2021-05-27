@@ -742,6 +742,14 @@ namespace ThuTien.GUI.Doi
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SLHDDTDCBCT" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "TCHDDTDCBCT" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
             if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "SLHDDTSach" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);

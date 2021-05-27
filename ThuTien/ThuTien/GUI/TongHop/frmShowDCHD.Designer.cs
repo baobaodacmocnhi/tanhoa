@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chkBaoCaoThue = new System.Windows.Forms.CheckBox();
             this.chkChuanThu1 = new System.Windows.Forms.CheckBox();
             this.txtSoHoaDonMoi = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -75,13 +76,12 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.btnThem = new System.Windows.Forms.Button();
-            this.chkBaoCaoThue = new System.Windows.Forms.CheckBox();
+            this.chkUpdatedHDDT = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.chkBaoCaoThue);
             this.groupBox3.Controls.Add(this.chkChuanThu1);
             this.groupBox3.Controls.Add(this.txtSoHoaDonMoi);
             this.groupBox3.Controls.Add(this.label12);
@@ -114,6 +114,16 @@
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết Quả Điều Chỉnh";
+            // 
+            // chkBaoCaoThue
+            // 
+            this.chkBaoCaoThue.AutoSize = true;
+            this.chkBaoCaoThue.Location = new System.Drawing.Point(509, 64);
+            this.chkBaoCaoThue.Name = "chkBaoCaoThue";
+            this.chkBaoCaoThue.Size = new System.Drawing.Size(95, 17);
+            this.chkBaoCaoThue.TabIndex = 30;
+            this.chkBaoCaoThue.Text = "Báo Cáo Thuế";
+            this.chkBaoCaoThue.UseVisualStyleBackColor = true;
             // 
             // chkChuanThu1
             // 
@@ -536,21 +546,23 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // chkBaoCaoThue
+            // chkUpdatedHDDT
             // 
-            this.chkBaoCaoThue.AutoSize = true;
-            this.chkBaoCaoThue.Location = new System.Drawing.Point(403, 17);
-            this.chkBaoCaoThue.Name = "chkBaoCaoThue";
-            this.chkBaoCaoThue.Size = new System.Drawing.Size(95, 17);
-            this.chkBaoCaoThue.TabIndex = 30;
-            this.chkBaoCaoThue.Text = "Báo Cáo Thuế";
-            this.chkBaoCaoThue.UseVisualStyleBackColor = true;
+            this.chkUpdatedHDDT.AutoSize = true;
+            this.chkUpdatedHDDT.Location = new System.Drawing.Point(509, 87);
+            this.chkUpdatedHDDT.Name = "chkUpdatedHDDT";
+            this.chkUpdatedHDDT.Size = new System.Drawing.Size(116, 17);
+            this.chkUpdatedHDDT.TabIndex = 31;
+            this.chkUpdatedHDDT.Text = "Tổng Đã Cập Nhật";
+            this.chkUpdatedHDDT.UseVisualStyleBackColor = true;
             // 
             // frmShowDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(611, 265);
+            this.ClientSize = new System.Drawing.Size(625, 265);
+            this.Controls.Add(this.chkBaoCaoThue);
+            this.Controls.Add(this.chkUpdatedHDDT);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label7);
@@ -635,5 +647,6 @@
         private System.Windows.Forms.CheckBox chkChuanThu1;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.CheckBox chkBaoCaoThue;
+        private System.Windows.Forms.CheckBox chkUpdatedHDDT;
     }
 }

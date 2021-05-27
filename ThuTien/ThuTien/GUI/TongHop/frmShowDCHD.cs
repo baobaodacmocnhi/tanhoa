@@ -206,6 +206,9 @@ namespace ThuTien.GUI.TongHop
                             _dchd.ChuanThu1 = chkChuanThu1.Checked;
                             _dchd.BaoCaoThue = chkBaoCaoThue.Checked;
                             hd.BaoCaoThue = chkBaoCaoThue.Checked;
+                            if (chkBaoCaoThue.Checked == true)
+                                _dchd.UpdatedHDDT = chkUpdatedHDDT.Checked;
+
                             if (_ctdchd != null)
                             {
                                 if (_ctdchd.DCBD.MaDon != null)

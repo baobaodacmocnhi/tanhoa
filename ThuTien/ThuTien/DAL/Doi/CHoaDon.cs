@@ -7262,6 +7262,7 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.SyncNopTien == false && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7)) && itemHD.MaNV_DangNgan != null
+                        && itemHD.BaoCaoThue == false
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
@@ -7286,8 +7287,8 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.SyncNopTien == false && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7)) && itemHD.MaNV_DangNgan != null
-                        && itemHD.BaoCaoThue==true
+                        where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7)) && itemHD.MaNV_DangNgan != null
+                        && itemHD.BaoCaoThue == true
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {

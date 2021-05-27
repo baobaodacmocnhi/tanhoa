@@ -954,6 +954,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             dt.Columns.Add("Lech", typeof(int));
             dt.Columns.Add("TienMat", typeof(int));
             //dt.Columns.Add("Loai", typeof(string));
+            dt.Columns.Add("BangKeCu", typeof(string));
 
             string SoPhieuThu = "";
             int count = 1, countSum = 1, SumSoTien = 0, SumGiaBan = 0, SumThueGTGT = 0, SumPhiBVMT = 0, SumTongCong = 0;
@@ -1147,6 +1148,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["MaBK"] = bk.MaBK;
                     dr["DanhBo"] = bk.DanhBo;
                     //dr["SoTien"] = bk.SoTien;
+                    //dr["BangKeCu"] = "X";
                     if (bk.SoPhieuThu != null)
                         dr["SoPhieuThu"] = bk.SoPhieuThu;
                     if (bk.NgayPhieuThu != null)
@@ -1298,7 +1300,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C5", "C5");
             cl3.Value2 = "DANH BỘ";
-            cl3.ColumnWidth = 12;
+            cl3.ColumnWidth = 15;
             cl3.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl3.Font.Bold = true;
             cl3.Font.Name = "Times New Roman";
@@ -1306,21 +1308,21 @@ namespace ThuTien.GUI.ChuyenKhoan
             Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D5", "E5");
             cl4.MergeCells = true;
             cl4.Value2 = "KHÁCH HÀNG CK";
-            cl4.ColumnWidth = 20;
+            cl4.ColumnWidth = 40;
             cl4.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl4.Font.Bold = true;
             cl4.Font.Name = "Times New Roman";
 
             Microsoft.Office.Interop.Excel.Range cl4a = oSheet.get_Range("D6", "D6");
             cl4a.Value2 = "PT";
-            cl4a.ColumnWidth = 8;
+            cl4a.ColumnWidth = 20;
             cl4a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl4a.Font.Bold = true;
             cl4a.Font.Name = "Times New Roman";
 
             Microsoft.Office.Interop.Excel.Range cl4b = oSheet.get_Range("E6", "E6");
             cl4b.Value2 = "SỐ TIỀN";
-            cl4b.ColumnWidth = 12;
+            cl4b.ColumnWidth = 20;
             cl4b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl4b.Font.Bold = true;
             cl4b.Font.Name = "Times New Roman";
@@ -1349,7 +1351,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             Microsoft.Office.Interop.Excel.Range cl5c = oSheet.get_Range("H6", "H6");
             cl5c.Value2 = "PT";
-            cl5c.ColumnWidth = 8;
+            cl5c.ColumnWidth = 20;
             cl5c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5c.Font.Bold = true;
             cl5c.Font.Name = "Times New Roman";
@@ -1410,10 +1412,16 @@ namespace ThuTien.GUI.ChuyenKhoan
             cl8.Font.Bold = true;
             cl8.Font.Name = "Times New Roman";
 
+            Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("Q5", "Q5");
+            cl9.Value2 = "BẢNG KÊ CŨ";
+            cl9.ColumnWidth = 10;
+            cl9.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl9.Font.Bold = true;
+            cl9.Font.Name = "Times New Roman";
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 16];
+            object[,] arr = new object[dt.Rows.Count, 17];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             //int STT = 1;
@@ -1448,6 +1456,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                 arr[i, 14] = dr["NganHang"];
                 arr[i, 15] = dr["TienMat"];
+                arr[i, 16] = dr["BangKeCu"];
                 //if (!string.IsNullOrEmpty(dr["TongBK"].ToString()))
                 //    if (int.Parse(dr["TongBK"].ToString()) > 1)
                 //        arr[i, 14] = "X";
@@ -1461,7 +1470,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             int columnStart = 1;
 
             int rowEnd = rowStart + dt.Rows.Count - 1;
-            int columnEnd = 16;
+            int columnEnd = 17;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
