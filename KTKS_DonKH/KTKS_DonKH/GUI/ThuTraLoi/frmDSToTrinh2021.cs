@@ -290,12 +290,12 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                         dr["NoiDung2"] = "hộp bảo vệ, ngoài vỉa hè, chì mặt số đứt";
 
                                         if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bảo vệ"))
-                                            dr["Luuy"] = "đồng hồ nước đứt chì+nắp hộp BV không do lỗi khách hàng";
+                                            dr["Luuy"] = "đồng hồ nước đứt chì+nắp hộp BV do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
                                         else
                                             if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bảo vệ"))
-                                                dr["Luuy"] = "đồng hồ nước đứt chì+hộp BV không do lỗi khách hàng";
+                                                dr["Luuy"] = "đồng hồ nước đứt chì+hộp BV do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
                                             else
-                                                dr["Luuy"] = "đồng hồ nước đứt chì không do lỗi khách hàng";
+                                                dr["Luuy"] = "đồng hồ nước đứt chì do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
                                     }
                                     else
                                         if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))
