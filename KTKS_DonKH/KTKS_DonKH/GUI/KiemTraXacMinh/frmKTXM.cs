@@ -644,7 +644,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 {
                     if (_ctktxm != null)
                     {
-                        if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                        if (CTaiKhoan.Admin == false && CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                             if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
                             {
                                 MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -769,7 +769,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 {
                     if (_ctktxm != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                        if (CTaiKhoan.Admin == false &&CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                             if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
                             {
                                 MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

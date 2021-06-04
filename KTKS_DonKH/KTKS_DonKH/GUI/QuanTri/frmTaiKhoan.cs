@@ -43,6 +43,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                 cmbPhong.ValueMember = "ID";
                 cmbPhong.DisplayMember = "Name";
                 btnXem.Visible = true;
+                cmbPhong.SelectedIndex = 1;
                 btnXem.PerformClick();
                 dgvDSTaiKhoan.Columns["MatKhau"].Visible = true;
             }
