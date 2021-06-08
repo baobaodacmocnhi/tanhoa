@@ -34,6 +34,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             txtTenNH.Text = "";
             txtKyHieu.Text = "";
             txtSoTK.Text = "";
+            txtGroupBank.Text = "";
             _selectedindex = -1;
             dgvNganHang.DataSource = _cNganHang.GetDS();
         }
@@ -48,6 +49,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     nganhang.KyHieu = txtKyHieu.Text.Trim();
                     nganhang.NGANHANG1 = txtTenNH.Text.Trim();
                     nganhang.SoTK = txtSoTK.Text.Trim();
+                    nganhang.GroupBank = txtGroupBank.Text.Trim();
                     if (_cNganHang.Them(nganhang))
                     {
                         Clear();
@@ -69,6 +71,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     nganhang.KyHieu = txtKyHieu.Text.Trim();
                     nganhang.NGANHANG1 = txtTenNH.Text.Trim();
                     nganhang.SoTK = txtSoTK.Text.Trim();
+                    nganhang.GroupBank = txtGroupBank.Text.Trim();
                     if (_cNganHang.Sua(nganhang))
                     {
                         Clear();
@@ -106,6 +109,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 txtKyHieu.Text = dgvNganHang["KyHieu", e.RowIndex].Value.ToString();
                 txtTenNH.Text = dgvNganHang["TenNH", e.RowIndex].Value.ToString();
                 txtSoTK.Text = dgvNganHang["SoTK", e.RowIndex].Value.ToString();
+                txtGroupBank.Text = dgvNganHang["GroupBank", e.RowIndex].Value.ToString();
             }
             catch
             {

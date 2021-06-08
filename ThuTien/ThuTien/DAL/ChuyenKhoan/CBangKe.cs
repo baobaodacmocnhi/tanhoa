@@ -112,7 +112,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         public DataTable getDS_XuatTienDu(string DanhBo, DateTime CreateDate)
         {
             var query = from itemBK in _db.TT_BangKes
-                        where itemBK.DanhBo==DanhBo&& itemBK.CreateDate.Value.Date <= CreateDate.Date
+                        where itemBK.DanhBo == DanhBo && itemBK.CreateDate.Value.Date <= CreateDate.Date
                         orderby itemBK.CreateDate descending
                         select new
                         {
@@ -223,33 +223,61 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable GetDS_Group3(DateTime TuNgay, DateTime DenNgay)
         {
+            //var query = from itemBK in _db.TT_BangKes
+            //            join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
+            //            from itemtableNH in tableNH.DefaultIfEmpty()
+            //            where itemBK.CreateDate.Value.Date >= TuNgay.Date && itemBK.CreateDate.Value.Date <= DenNgay.Date
+            //            && (itemtableNH.ID_NGANHANG == 3 || itemtableNH.ID_NGANHANG == 4 || itemtableNH.ID_NGANHANG == 9)
+            //            group itemBK by itemtableNH.NGANHANG1 into itemGroup
+            //            select new
+            //            {
+            //                TenNH = itemGroup.Key,
+            //                SoLuong = itemGroup.Count(),
+            //                TongCong = itemGroup.Sum(groupItem => (long)groupItem.SoTien),
+            //            };
+            //var queryVC = from itemBK in _db.TT_BangKes
+            //              join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
+            //              from itemtableNH in tableNH.DefaultIfEmpty()
+            //              where itemBK.CreateDate.Value.Date >= TuNgay.Date && itemBK.CreateDate.Value.Date <= DenNgay.Date
+            //              && (itemtableNH.ID_NGANHANG == 10 || itemtableNH.ID_NGANHANG == 13)
+            //              group itemBK by "VC" into itemGroup
+            //              select new
+            //              {
+            //                  TenNH = itemGroup.Key,
+            //                  SoLuong = itemGroup.Count(),
+            //                  TongCong = itemGroup.Sum(groupItem => (long)groupItem.SoTien),
+            //              };
+            //var queryAGR = from itemBK in _db.TT_BangKes
+            //               join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
+            //               from itemtableNH in tableNH.DefaultIfEmpty()
+            //               where itemBK.CreateDate.Value.Date >= TuNgay.Date && itemBK.CreateDate.Value.Date <= DenNgay.Date
+            //               && itemtableNH.ID_NGANHANG != 3 && itemtableNH.ID_NGANHANG != 4 && itemtableNH.ID_NGANHANG != 9 && itemtableNH.ID_NGANHANG != 10 && itemtableNH.ID_NGANHANG != 13
+            //               group itemBK by "AGR" into itemGroup
+            //               select new
+            //               {
+            //                   TenNH = itemGroup.Key,
+            //                   SoLuong = itemGroup.Count(),
+            //                   TongCong = itemGroup.Sum(groupItem => (long)groupItem.SoTien),
+            //               };
+            
+            //DataTable dt = LINQToDataTable(query);
+            //dt.Merge(LINQToDataTable(queryVC));
+            //dt.Merge(LINQToDataTable(queryAGR));
+            
+            //return dt;
+
             var query = from itemBK in _db.TT_BangKes
                         join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
                         where itemBK.CreateDate.Value.Date >= TuNgay.Date && itemBK.CreateDate.Value.Date <= DenNgay.Date
-                        && (itemtableNH.ID_NGANHANG == 3 || itemtableNH.ID_NGANHANG == 4 || itemtableNH.ID_NGANHANG == 9 || itemtableNH.ID_NGANHANG == 10)
-                        group itemBK by itemtableNH.NGANHANG1 into itemGroup
+                        group itemBK by itemtableNH.GroupBank into itemGroup
                         select new
                         {
                             TenNH = itemGroup.Key,
                             SoLuong = itemGroup.Count(),
                             TongCong = itemGroup.Sum(groupItem => (long)groupItem.SoTien),
                         };
-            var queryAGR = from itemBK in _db.TT_BangKes
-                           join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
-                           from itemtableNH in tableNH.DefaultIfEmpty()
-                           where itemBK.CreateDate.Value.Date >= TuNgay.Date && itemBK.CreateDate.Value.Date <= DenNgay.Date
-                           && itemtableNH.ID_NGANHANG != 3 && itemtableNH.ID_NGANHANG != 4 && itemtableNH.ID_NGANHANG != 9 && itemtableNH.ID_NGANHANG != 10
-                           group itemBK by "AGR" into itemGroup
-                           select new
-                           {
-                               TenNH = itemGroup.Key,
-                               SoLuong = itemGroup.Count(),
-                               TongCong = itemGroup.Sum(groupItem => (long)groupItem.SoTien),
-                           };
-            DataTable dt = LINQToDataTable(query);
-            dt.Merge(LINQToDataTable(queryAGR));
-            return dt;
+            return LINQToDataTable(query);
         }
 
         public int getSoTien(string DanhBo, DateTime CreateDate)

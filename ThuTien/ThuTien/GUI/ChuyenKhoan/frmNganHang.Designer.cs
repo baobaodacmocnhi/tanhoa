@@ -31,10 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtTenNH = new System.Windows.Forms.TextBox();
             this.dgvNganHang = new System.Windows.Forms.DataGridView();
-            this.MaNH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KyHieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -42,6 +38,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtSoTK = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.MaNH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KyHieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GroupBank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtGroupBank = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNganHang)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,45 +73,15 @@
             this.MaNH,
             this.KyHieu,
             this.TenNH,
-            this.SoTK});
-            this.dgvNganHang.Location = new System.Drawing.Point(12, 90);
+            this.SoTK,
+            this.GroupBank});
+            this.dgvNganHang.Location = new System.Drawing.Point(12, 116);
             this.dgvNganHang.MultiSelect = false;
             this.dgvNganHang.Name = "dgvNganHang";
             this.dgvNganHang.ReadOnly = true;
-            this.dgvNganHang.Size = new System.Drawing.Size(561, 378);
+            this.dgvNganHang.Size = new System.Drawing.Size(664, 378);
             this.dgvNganHang.TabIndex = 7;
             this.dgvNganHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNganHang_CellContentClick);
-            // 
-            // MaNH
-            // 
-            this.MaNH.DataPropertyName = "MaNH";
-            this.MaNH.HeaderText = "MaNH";
-            this.MaNH.Name = "MaNH";
-            this.MaNH.ReadOnly = true;
-            this.MaNH.Visible = false;
-            // 
-            // KyHieu
-            // 
-            this.KyHieu.DataPropertyName = "KyHieu";
-            this.KyHieu.HeaderText = "Ký Hiệu";
-            this.KyHieu.Name = "KyHieu";
-            this.KyHieu.ReadOnly = true;
-            // 
-            // TenNH
-            // 
-            this.TenNH.DataPropertyName = "TenNH";
-            this.TenNH.HeaderText = "Tên Ngân Hàng";
-            this.TenNH.Name = "TenNH";
-            this.TenNH.ReadOnly = true;
-            this.TenNH.Width = 200;
-            // 
-            // SoTK
-            // 
-            this.SoTK.DataPropertyName = "SoTK";
-            this.SoTK.HeaderText = "Số TK";
-            this.SoTK.Name = "SoTK";
-            this.SoTK.ReadOnly = true;
-            this.SoTK.Width = 200;
             // 
             // btnXoa
             // 
@@ -173,11 +146,67 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Số TK:";
             // 
+            // MaNH
+            // 
+            this.MaNH.DataPropertyName = "MaNH";
+            this.MaNH.HeaderText = "MaNH";
+            this.MaNH.Name = "MaNH";
+            this.MaNH.ReadOnly = true;
+            this.MaNH.Visible = false;
+            // 
+            // KyHieu
+            // 
+            this.KyHieu.DataPropertyName = "KyHieu";
+            this.KyHieu.HeaderText = "Ký Hiệu";
+            this.KyHieu.Name = "KyHieu";
+            this.KyHieu.ReadOnly = true;
+            // 
+            // TenNH
+            // 
+            this.TenNH.DataPropertyName = "TenNH";
+            this.TenNH.HeaderText = "Tên Ngân Hàng";
+            this.TenNH.Name = "TenNH";
+            this.TenNH.ReadOnly = true;
+            this.TenNH.Width = 200;
+            // 
+            // SoTK
+            // 
+            this.SoTK.DataPropertyName = "SoTK";
+            this.SoTK.HeaderText = "Số TK";
+            this.SoTK.Name = "SoTK";
+            this.SoTK.ReadOnly = true;
+            this.SoTK.Width = 200;
+            // 
+            // GroupBank
+            // 
+            this.GroupBank.DataPropertyName = "GroupBank";
+            this.GroupBank.HeaderText = "Group Bank";
+            this.GroupBank.Name = "GroupBank";
+            this.GroupBank.ReadOnly = true;
+            // 
+            // txtGroupBank
+            // 
+            this.txtGroupBank.Location = new System.Drawing.Point(103, 90);
+            this.txtGroupBank.Name = "txtGroupBank";
+            this.txtGroupBank.Size = new System.Drawing.Size(280, 20);
+            this.txtGroupBank.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(10, 93);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Group Bank";
+            // 
             // frmNganHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 479);
+            this.ClientSize = new System.Drawing.Size(753, 583);
+            this.Controls.Add(this.txtGroupBank);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtSoTK);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtKyHieu);
@@ -213,5 +242,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn KyHieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenNH;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GroupBank;
+        private System.Windows.Forms.TextBox txtGroupBank;
+        private System.Windows.Forms.Label label4;
     }
 }
