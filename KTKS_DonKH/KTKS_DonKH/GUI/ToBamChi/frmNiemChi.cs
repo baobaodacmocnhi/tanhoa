@@ -72,7 +72,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             {
                 try
                 {
-                    if (int.Parse(txtDenSo_Nhap.Text.Trim()) > int.Parse(txtTuSo_Nhap.Text.Trim()))
+                    if (int.Parse(txtDenSo_Nhap.Text.Trim()) >= int.Parse(txtTuSo_Nhap.Text.Trim()))
                     {
                         int TuSo = int.Parse(txtTuSo_Nhap.Text.Trim());
                         int DenSo = int.Parse(txtDenSo_Nhap.Text.Trim());
@@ -205,7 +205,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             {
                 try
                 {
-                    if (int.Parse(txtDenSo_Giao.Text.Trim()) > int.Parse(txtTuSo_Giao.Text.Trim()))
+                    if (int.Parse(txtDenSo_Giao.Text.Trim()) >= int.Parse(txtTuSo_Giao.Text.Trim()))
                     {
                         if (_cNiemChi.checkSuDung(int.Parse(txtTuSo_Giao.Text.Trim()), int.Parse(txtDenSo_Giao.Text.Trim())) == true)
                         {
