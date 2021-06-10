@@ -16,11 +16,11 @@ namespace KTKS_ChungCu.GUI.ChungTu
         //string _DanhBo = "", _MaCT = "";
         int _ID = 0;
         CChiNhanh _cChiNhanh = new CChiNhanh();
-        //CTChungTu _ctchungtu = new CTChungTu();
+        CTChungTu _ctchungtu = new CTChungTu();
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
-        CChungTu _cChungTu = new CChungTu();
         DanhSachChungTu _dsct = new DanhSachChungTu();
         CDanhSachChungTu _cDSCT = new CDanhSachChungTu();
+        CChungTu _cChungTu = new CChungTu();
 
         public frmSoDK()
         {

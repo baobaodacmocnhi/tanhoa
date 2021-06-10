@@ -18,10 +18,10 @@ namespace KTKS_ChungCu
         CTTKH _cTTKH = new CTTKH();
         HOADON _hoadon = new HOADON();
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
-        CChungTu _cChungTu = new CChungTu();
         int _selectedindex = -1;
         //BindingSource DSKHCC_BS = new BindingSource();
         CDanhSachChungTu _cDSCT = new CDanhSachChungTu();
+        CChungTu _cChungTu = new CChungTu();
 
         public frmMain()
         {

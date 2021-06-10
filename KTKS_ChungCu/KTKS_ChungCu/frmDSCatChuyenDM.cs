@@ -14,9 +14,9 @@ namespace KTKS_ChungCu
 {
     public partial class frmDSCatChuyenDM : Form
     {
-        CChungTu _cChungTu = new CChungTu();
         CChiNhanh _cChiNhanh = new CChiNhanh();
         CTTKH _cTTKH = new CTTKH();
+        CChungTu _cChungTu = new CChungTu();
 
         public frmDSCatChuyenDM()
         {
