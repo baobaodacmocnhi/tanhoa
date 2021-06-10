@@ -65,7 +65,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
             //Danh Sách Chuyển KTXM (ngày chuyển)
             DataTable dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
+            dt = _cTaiKhoan.getDS_KTXM(CTaiKhoan.KyHieuMaTo);
             if (dt != null && dt.Rows.Count > 0)
             {
                 DataRow dr = dt.NewRow();

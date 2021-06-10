@@ -870,7 +870,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     DataTable dt = new DataTable();
 
-                    dt = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
+                    dt = _cTaiKhoan.getDS_KTXM(CTaiKhoan.KyHieuMaTo);
                     chkcmbNoiNhanKTXM.Properties.DataSource = dt;
                     chkcmbNoiNhanKTXM.Properties.ValueMember = "MaU";
                     chkcmbNoiNhanKTXM.Properties.DisplayMember = "HoTen";

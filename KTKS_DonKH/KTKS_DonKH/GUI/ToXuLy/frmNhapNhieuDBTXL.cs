@@ -50,7 +50,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             cmbLD.SelectedIndex = -1;
 
             DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDanhBo.Columns["NguoiDi"];
-            cmbColumn.DataSource = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
+            cmbColumn.DataSource = _cTaiKhoan.getDS_KTXM(CTaiKhoan.KyHieuMaTo);
             cmbColumn.DisplayMember = "HoTen";
             cmbColumn.ValueMember = "MaU";
         }

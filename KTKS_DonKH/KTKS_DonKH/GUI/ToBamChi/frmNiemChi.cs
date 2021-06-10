@@ -31,9 +31,21 @@ namespace KTKS_DonKH.GUI.ToBamChi
             dgvNiemChi_Giao.AutoGenerateColumns = false;
             dgvNiemChiTong_Giao.AutoGenerateColumns = false;
 
-            cmbNhanVien_Giao.DataSource = _cTaiKhoan.GetDS_KTXM(CTaiKhoan.KyHieuMaTo);
+            DataTable dt = new DataTable();
+            if (CTaiKhoan.Admin == true || CTaiKhoan.TruongPhong == true)
+            {
+                dt = _cTaiKhoan.getDS_BamChi();
+            }
+            else
+            {
+                dt = _cTaiKhoan.getDS_KTXM(CTaiKhoan.KyHieuMaTo);
+            }
+            cmbNhanVien_Giao.DataSource = dt;
             cmbNhanVien_Giao.DisplayMember = "HoTen";
             cmbNhanVien_Giao.ValueMember = "MaU";
+            cmbNhanVien_Chuyen.DataSource = dt;
+            cmbNhanVien_Chuyen.DisplayMember = "HoTen";
+            cmbNhanVien_Chuyen.ValueMember = "MaU";
 
             cmbDotChia.SelectedIndex = 0;
 
@@ -392,6 +404,78 @@ namespace KTKS_DonKH.GUI.ToBamChi
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvNiemChi_Nhap_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvNiemChi_Nhap.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvNiemChi_Giao_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvNiemChi_Giao.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvNiemChiTong_Giao_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvNiemChiTong_Giao.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvNiemChi_HuHong_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvNiemChi_HuHong.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void btnChuyen_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            {
+                try
+                {
+                    NiemChi en = _cNiemChi.get(int.Parse(txtID_Chuyen.Text.Trim()));
+                    if (en != null)
+                    {
+                        if (en.MaNV == null)
+                        {
+                            MessageBox.Show("Niêm Chì chưa Giao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (en.SuDung == true)
+                        {
+                            MessageBox.Show("Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (en.HuHong == true)
+                        {
+                            MessageBox.Show("Niêm Chì đã Nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        en.MaNV = int.Parse(cmbNhanVien_Chuyen.SelectedValue.ToString());
+                        if (_cNiemChi.Sua(en) == true)
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 

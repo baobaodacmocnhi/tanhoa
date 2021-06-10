@@ -345,7 +345,7 @@ namespace KTKS_DonKH.DAL.QuanTri
             return db.Users.Where(item => item.MaU != MaND && item.MaU != 0 && item.An == false && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
         }
 
-        public DataTable GetDS_KTXM(string KyHieuTo)
+        public DataTable getDS_KTXM(string KyHieuTo)
         {
             //switch (KyHieuTo)
             //{
@@ -361,6 +361,11 @@ namespace KTKS_DonKH.DAL.QuanTri
             //        return null;
             //}
             return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.To.KyHieu == KyHieuTo && item.An == false).OrderBy(item => item.STT).ToList());
+        }
+
+        public DataTable getDS_BamChi()
+        {
+            return LINQToDataTable(db.Users.Where(item => item.BamChi == true && item.An == false).OrderBy(item => item.STT).ToList());
         }
 
         //public DataTable GetDS_ThuKy(string Loai)
