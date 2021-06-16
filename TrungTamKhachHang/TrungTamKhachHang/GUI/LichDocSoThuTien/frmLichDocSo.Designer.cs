@@ -38,6 +38,7 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnIn = new System.Windows.Forms.Button();
             this.txtNam = new System.Windows.Forms.TextBox();
             this.txtKy = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -54,7 +55,7 @@
             this.NgayKiemSoat_From = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayKiemSoat_To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayChuyenListing = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnIn = new System.Windows.Forms.Button();
+            this.NgayThuTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKy)).BeginInit();
@@ -167,6 +168,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tạo Kỳ Mới";
             // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(181, 98);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 13;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // txtNam
             // 
             this.txtNam.Location = new System.Drawing.Point(75, 47);
@@ -240,7 +251,7 @@
             this.groupBox3.Controls.Add(this.dgvDot);
             this.groupBox3.Location = new System.Drawing.Point(286, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(517, 521);
+            this.groupBox3.Size = new System.Drawing.Size(619, 521);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chi Tiết 20 Đợt Trong Kỳ";
@@ -256,11 +267,12 @@
             this.NgayDoc,
             this.NgayKiemSoat_From,
             this.NgayKiemSoat_To,
-            this.NgayChuyenListing});
+            this.NgayChuyenListing,
+            this.NgayThuTien});
             this.dgvDot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDot.Location = new System.Drawing.Point(3, 16);
             this.dgvDot.Name = "dgvDot";
-            this.dgvDot.Size = new System.Drawing.Size(511, 502);
+            this.dgvDot.Size = new System.Drawing.Size(613, 502);
             this.dgvDot.TabIndex = 1;
             this.dgvDot.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDot_CellClick);
             this.dgvDot.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvDot_ColumnWidthChanged);
@@ -304,21 +316,17 @@
             this.NgayChuyenListing.HeaderText = "Ngày Chuyển Listing";
             this.NgayChuyenListing.Name = "NgayChuyenListing";
             // 
-            // btnIn
+            // NgayThuTien
             // 
-            this.btnIn.Location = new System.Drawing.Point(181, 98);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
-            this.btnIn.TabIndex = 13;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            this.NgayThuTien.DataPropertyName = "NgayThuTien";
+            this.NgayThuTien.HeaderText = "Ngày Thu Tiền";
+            this.NgayThuTien.Name = "NgayThuTien";
             // 
             // frmLichDocSo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 545);
+            this.ClientSize = new System.Drawing.Size(1063, 545);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -357,12 +365,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDDocSo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDDot;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayKiemSoat_From;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayKiemSoat_To;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyenListing;
-        private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayThuTien;
     }
 }

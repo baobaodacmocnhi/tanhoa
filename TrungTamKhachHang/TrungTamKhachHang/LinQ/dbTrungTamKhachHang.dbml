@@ -11,11 +11,9 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Zalo_LichSuTruyVan" Member="Zalo_LichSuTruyVans">
-    <Type Name="Zalo_LichSuTruyVan">
-      <Column Name="ID" Type="System.Decimal" DbType="Decimal(20,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="IDZalo" Type="System.Decimal" DbType="Decimal(20,0)" CanBeNull="true" />
-      <Column Name="TruyVan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+  <Table Name="dbo.ZaloQuanTam" Member="ZaloQuanTams">
+    <Type Name="ZaloQuanTam">
+      <Column Name="IDZalo" Type="System.Decimal" DbType="Decimal(20,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
@@ -59,12 +57,33 @@
       <Column Name="NgayKiemSoat_From" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="NgayKiemSoat_To" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="NgayChuyenListing" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NgayThuTien" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="Lich_DocSo_Lich_DocSo_ChiTiet" Member="Lich_DocSo" ThisKey="IDDocSo" OtherKey="ID" Type="Lich_DocSo" IsForeignKey="true" />
       <Association Name="Lich_Dot_Lich_DocSo_ChiTiet" Member="Lich_Dot" ThisKey="IDDot" OtherKey="ID" Type="Lich_Dot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Lich_Dot" Member="Lich_Dots">
+    <Type Name="Lich_Dot">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TB1_From" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TB1_To" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TB2_From" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TB2_To" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TP1_From" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TP1_To" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TP2_From" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TP2_To" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Lich_Dot_Lich_DocSo_ChiTiet" Member="Lich_DocSo_ChiTiets" ThisKey="ID" OtherKey="IDDot" Type="Lich_DocSo_ChiTiet" />
+      <Association Name="Lich_Dot_Lich_ThuTien_ChiTiet" Member="Lich_ThuTien_ChiTiets" ThisKey="ID" OtherKey="IDDot" Type="Lich_ThuTien_ChiTiet" />
     </Type>
   </Table>
   <Table Name="dbo.Lich_ThuTien" Member="Lich_ThuTiens">
@@ -93,8 +112,8 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="Lich_ThuTien_Lich_ThuTien_ChiTiet" Member="Lich_ThuTien" ThisKey="IDThuTien" OtherKey="ID" Type="Lich_ThuTien" IsForeignKey="true" />
       <Association Name="Lich_Dot_Lich_ThuTien_ChiTiet" Member="Lich_Dot" ThisKey="IDDot" OtherKey="ID" Type="Lich_Dot" IsForeignKey="true" />
+      <Association Name="Lich_ThuTien_Lich_ThuTien_ChiTiet" Member="Lich_ThuTien" ThisKey="IDThuTien" OtherKey="ID" Type="Lich_ThuTien" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Menu" Member="Menus">
@@ -187,24 +206,12 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Lich_Dot" Member="Lich_Dots">
-    <Type Name="Lich_Dot">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TB1_From" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="TB1_To" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="TB2_From" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="TB2_To" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="TP1_From" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="TP1_To" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="TP2_From" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="TP2_To" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+  <Table Name="dbo.Zalo_LichSuTruyVan" Member="Zalo_LichSuTruyVans">
+    <Type Name="Zalo_LichSuTruyVan">
+      <Column Name="ID" Type="System.Decimal" DbType="Decimal(20,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDZalo" Type="System.Decimal" DbType="Decimal(20,0)" CanBeNull="true" />
+      <Column Name="TruyVan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="Lich_Dot_Lich_DocSo_ChiTiet" Member="Lich_DocSo_ChiTiets" ThisKey="ID" OtherKey="IDDot" Type="Lich_DocSo_ChiTiet" />
-      <Association Name="Lich_Dot_Lich_ThuTien_ChiTiet" Member="Lich_ThuTien_ChiTiets" ThisKey="ID" OtherKey="IDDot" Type="Lich_ThuTien_ChiTiet" />
     </Type>
   </Table>
 </Database>

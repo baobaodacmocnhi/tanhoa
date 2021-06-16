@@ -44,7 +44,8 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                     NgayKiemSoat_From = NgayDoc.AddDays(1),
                     NgayKiemSoat_To = NgayKiemSoat_From,
                     //NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1),
-                    NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
+                    NgayChuyenListing = NgayKiemSoat_To.AddDays(1),
+                    NgayThuTien = NgayChuyenListing.AddDays(1);
                 //edit row 0
                 if (NgayDoc.DayOfWeek == DayOfWeek.Saturday)
                 {
@@ -52,6 +53,7 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                     NgayKiemSoat_To = NgayKiemSoat_From;
                     //NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
                     NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
+                    NgayThuTien = NgayChuyenListing.AddDays(1);
                 }
                 if (NgayKiemSoat_From.DayOfWeek == DayOfWeek.Saturday)
                 {
@@ -59,20 +61,28 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                     NgayKiemSoat_To = NgayKiemSoat_From;
                     //NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
                     NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
+                    NgayThuTien = NgayChuyenListing.AddDays(1);
                 }
                 if (NgayKiemSoat_To.DayOfWeek == DayOfWeek.Saturday)
                 {
                     NgayKiemSoat_To = NgayKiemSoat_To.AddDays(2);
                     NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
+                    NgayThuTien = NgayChuyenListing.AddDays(1);
                 }
                 if (NgayChuyenListing.DayOfWeek == DayOfWeek.Saturday)
                 {
                     NgayChuyenListing = NgayChuyenListing.AddDays(2);
+                    NgayThuTien = NgayChuyenListing.AddDays(1);
+                }
+                if (NgayThuTien.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    NgayThuTien = NgayThuTien.AddDays(2);
                 }
                 int i = dgvDot.CurrentRow.Index;
                 dgvDot["NgayKiemSoat_From", i].Value = NgayKiemSoat_From.ToString("dd/MM/yyyy");
                 dgvDot["NgayKiemSoat_To", i].Value = NgayKiemSoat_To.ToString("dd/MM/yyyy");
                 dgvDot["NgayChuyenListing", i].Value = NgayChuyenListing.ToString("dd/MM/yyyy");
+                dgvDot["NgayThuTien", i].Value = NgayThuTien.ToString("dd/MM/yyyy");
 
                 //edit row 1++
                 while (i < dgvDot.RowCount - 1)
@@ -83,6 +93,7 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                     NgayKiemSoat_To = NgayKiemSoat_From;
                     //NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
                     NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
+                    NgayThuTien = NgayChuyenListing.AddDays(1);
                     if (NgayDoc.DayOfWeek == DayOfWeek.Saturday)
                     {
                         NgayDoc = NgayDoc.AddDays(2);
@@ -90,6 +101,7 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                         NgayKiemSoat_To = NgayKiemSoat_From;
                         //NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
                         NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
+                        NgayThuTien = NgayChuyenListing.AddDays(1);
                     }
                     if (NgayKiemSoat_From.DayOfWeek == DayOfWeek.Saturday)
                     {
@@ -97,20 +109,28 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                         NgayKiemSoat_To = NgayKiemSoat_From;
                         //NgayKiemSoat_To = NgayKiemSoat_From.AddDays(1);
                         NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
+                        NgayThuTien = NgayChuyenListing.AddDays(1);
                     }
                     if (NgayKiemSoat_To.DayOfWeek == DayOfWeek.Saturday)
                     {
                         NgayKiemSoat_To = NgayKiemSoat_To.AddDays(2);
                         NgayChuyenListing = NgayKiemSoat_To.AddDays(1);
+                        NgayThuTien = NgayChuyenListing.AddDays(1);
                     }
                     if (NgayChuyenListing.DayOfWeek == DayOfWeek.Saturday)
                     {
                         NgayChuyenListing = NgayChuyenListing.AddDays(2);
+                        NgayThuTien = NgayChuyenListing.AddDays(1);
+                    }
+                    if (NgayThuTien.DayOfWeek == DayOfWeek.Saturday)
+                    {
+                        NgayThuTien = NgayThuTien.AddDays(2);
                     }
                     dgvDot["NgayDoc", i + 1].Value = NgayDoc.ToString("dd/MM/yyyy");
                     dgvDot["NgayKiemSoat_From", i + 1].Value = NgayKiemSoat_From.ToString("dd/MM/yyyy");
                     dgvDot["NgayKiemSoat_To", i + 1].Value = NgayKiemSoat_To.ToString("dd/MM/yyyy");
                     dgvDot["NgayChuyenListing", i + 1].Value = NgayChuyenListing.ToString("dd/MM/yyyy");
+                    dgvDot["NgayThuTien", i + 1].Value = NgayThuTien.ToString("dd/MM/yyyy");
                     i++;
                 }
             }
@@ -229,6 +249,8 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                             enCT.NgayKiemSoat_To = DateTime.Parse(item.Cells["NgayKiemSoat_To"].Value.ToString());
                         if (item.Cells["NgayChuyenListing"].Value != null)
                             enCT.NgayChuyenListing = DateTime.Parse(item.Cells["NgayChuyenListing"].Value.ToString());
+                        if (item.Cells["NgayThuTien"].Value != null)
+                            enCT.NgayThuTien = DateTime.Parse(item.Cells["NgayThuTien"].Value.ToString());
                         enCT.ModifyBy = CUser.MaUser;
                         enCT.ModifyDate = DateTime.Now;
                         _cLDS.SubmitChanges();
@@ -273,6 +295,7 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                 case "NgayKiemSoat_From":
                 case "NgayKiemSoat_To":
                 case "NgayChuyenListing":
+                case "NgayThuTien":
                     _rectangle = dgvDot.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
                     _dtp.Size = new Size(_rectangle.Width, _rectangle.Height);
                     _dtp.Location = new Point(_rectangle.X, _rectangle.Y);
