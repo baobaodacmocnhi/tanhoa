@@ -50131,6 +50131,14 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _SoThan;
 		
+		private string _KyHD;
+		
+		private System.Nullable<int> _TieuThu;
+		
+		private System.Nullable<int> _ChiSoThucTe;
+		
+		private System.Nullable<int> _TieuThuThucTe;
+		
 		private string _VeViec;
 		
 		private string _KinhTrinh;
@@ -50225,6 +50233,14 @@ namespace KTKS_DonKH.LinQ
     partial void OnCoChanged();
     partial void OnSoThanChanging(string value);
     partial void OnSoThanChanged();
+    partial void OnKyHDChanging(string value);
+    partial void OnKyHDChanged();
+    partial void OnTieuThuChanging(System.Nullable<int> value);
+    partial void OnTieuThuChanged();
+    partial void OnChiSoThucTeChanging(System.Nullable<int> value);
+    partial void OnChiSoThucTeChanged();
+    partial void OnTieuThuThucTeChanging(System.Nullable<int> value);
+    partial void OnTieuThuThucTeChanged();
     partial void OnVeViecChanging(string value);
     partial void OnVeViecChanged();
     partial void OnKinhTrinhChanging(string value);
@@ -50621,6 +50637,86 @@ namespace KTKS_DonKH.LinQ
 					this._SoThan = value;
 					this.SendPropertyChanged("SoThan");
 					this.OnSoThanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KyHD", DbType="VarChar(10)")]
+		public string KyHD
+		{
+			get
+			{
+				return this._KyHD;
+			}
+			set
+			{
+				if ((this._KyHD != value))
+				{
+					this.OnKyHDChanging(value);
+					this.SendPropertyChanging();
+					this._KyHD = value;
+					this.SendPropertyChanged("KyHD");
+					this.OnKyHDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TieuThu", DbType="Int")]
+		public System.Nullable<int> TieuThu
+		{
+			get
+			{
+				return this._TieuThu;
+			}
+			set
+			{
+				if ((this._TieuThu != value))
+				{
+					this.OnTieuThuChanging(value);
+					this.SendPropertyChanging();
+					this._TieuThu = value;
+					this.SendPropertyChanged("TieuThu");
+					this.OnTieuThuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChiSoThucTe", DbType="Int")]
+		public System.Nullable<int> ChiSoThucTe
+		{
+			get
+			{
+				return this._ChiSoThucTe;
+			}
+			set
+			{
+				if ((this._ChiSoThucTe != value))
+				{
+					this.OnChiSoThucTeChanging(value);
+					this.SendPropertyChanging();
+					this._ChiSoThucTe = value;
+					this.SendPropertyChanged("ChiSoThucTe");
+					this.OnChiSoThucTeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TieuThuThucTe", DbType="Int")]
+		public System.Nullable<int> TieuThuThucTe
+		{
+			get
+			{
+				return this._TieuThuThucTe;
+			}
+			set
+			{
+				if ((this._TieuThuThucTe != value))
+				{
+					this.OnTieuThuThucTeChanging(value);
+					this.SendPropertyChanging();
+					this._TieuThuThucTe = value;
+					this.SendPropertyChanged("TieuThuThucTe");
+					this.OnTieuThuThucTeChanged();
 				}
 			}
 		}

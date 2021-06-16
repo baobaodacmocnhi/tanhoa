@@ -2204,6 +2204,10 @@
       <Column Name="Hieu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Co" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="SoThan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="KyHD" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChiSoThucTe" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TieuThuThucTe" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="VeViec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="KinhTrinh" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="ThongQua" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
