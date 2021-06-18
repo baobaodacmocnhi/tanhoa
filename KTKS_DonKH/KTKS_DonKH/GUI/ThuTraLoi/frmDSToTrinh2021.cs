@@ -221,7 +221,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
                             ToTrinh_ChiTiet cttt = _cTT.get_ChiTiet(int.Parse(dgvToTrinh["IDCT", i].Value.ToString()));
-                            
+
                             if (cttt.ToTrinh_ChiTiet_DanhSaches.Count == 0)
                             {
                                 dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
@@ -284,27 +284,32 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                     dr["VeViec"] = item.ToTrinh_ChiTiet.VeViec;
                                     dr["KinhTrinh"] = item.ToTrinh_ChiTiet.KinhTrinh;
                                     dr["ThongQua"] = item.ToTrinh_ChiTiet.ThongQua;
-                                    if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
+                                    if (item.ToTrinh_ChiTiet.VeViec.Contains("Điều chỉnh hóa đơn"))
                                     {
                                         dr["NoiDung"] = item.ToTrinh_ChiTiet.NoiDung;
-                                        dr["NoiDung2"] = "hộp bảo vệ, ngoài vỉa hè, chì mặt số đứt";
-
-                                        if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bảo vệ"))
-                                            dr["Luuy"] = "đồng hồ nước đứt chì+nắp hộp BV do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
-                                        else
-                                            if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bảo vệ"))
-                                                dr["Luuy"] = "đồng hồ nước đứt chì+hộp BV do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
-                                            else
-                                                dr["Luuy"] = "đồng hồ nước đứt chì do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
                                     }
                                     else
-                                        if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))
+                                        if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
                                         {
-                                            dr["NoiDung"] = "hoạt động không ổn định, không có dấu hiệu tháo mở gian lận";
-                                            dr["NoiDung2"] = "nhà bị lỗi kỹ thuật";
+                                            dr["NoiDung"] = item.ToTrinh_ChiTiet.NoiDung;
+                                            dr["NoiDung2"] = "hộp bảo vệ, ngoài vỉa hè, chì mặt số đứt";
 
-                                            dr["Luuy"] = "đồng hồ nước bị lỗi kỹ thuật";
+                                            if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bảo vệ"))
+                                                dr["Luuy"] = "đồng hồ nước đứt chì+nắp hộp BV do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
+                                            else
+                                                if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bảo vệ"))
+                                                    dr["Luuy"] = "đồng hồ nước đứt chì+hộp BV do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
+                                                else
+                                                    dr["Luuy"] = "đồng hồ nước đứt chì do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
                                         }
+                                        else
+                                            if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))
+                                            {
+                                                dr["NoiDung"] = "hoạt động không ổn định, không có dấu hiệu tháo mở gian lận";
+                                                dr["NoiDung2"] = "nhà bị lỗi kỹ thuật";
+
+                                                dr["Luuy"] = "đồng hồ nước bị lỗi kỹ thuật";
+                                            }
                                     if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                         dr["ChucVu"] = "GIÁM ĐỐC";
                                     else
@@ -345,12 +350,21 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                     dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr2);
                                 }
 
-                                rptToTrinh_DCMS_DinhKem rpt2 = new rptToTrinh_DCMS_DinhKem();
-                                rpt2.SetDataSource(dsBaoCao);
-                                frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
-                                rptToTrinh_DCMS rpt1 = new rptToTrinh_DCMS();
-                                rpt1.SetDataSource(dsBaoCao);
-                                frmShowBaoCao frm1 = new frmShowBaoCao(rpt1);
+                                ReportDocument rpt1, rpt2;
+                                if (_cttt.VeViec.Contains("Điều chỉnh hóa đơn") == true)
+                                {
+                                    rpt2 = new rptToTrinh_DCHD_DinhKem();
+                                    rpt2.SetDataSource(dsBaoCao);
+                                    rpt1 = new rptToTrinh_DCHD();
+                                    rpt1.SetDataSource(dsBaoCao);
+                                }
+                                else
+                                {
+                                    rpt2 = new rptToTrinh_DCMS_DinhKem();
+                                    rpt2.SetDataSource(dsBaoCao);
+                                    rpt1 = new rptToTrinh_DCMS();
+                                    rpt1.SetDataSource(dsBaoCao);
+                                }
 
                                 printDialog.AllowSomePages = true;
                                 printDialog.ShowHelp = true;

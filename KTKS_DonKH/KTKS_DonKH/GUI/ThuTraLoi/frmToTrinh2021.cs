@@ -532,6 +532,15 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                                 ttds.MaDon = int.Parse(item.Cells["MaDonTong"].Value.ToString());
                                             if (item.Cells["STT"].Value != null)
                                                 ttds.STT = int.Parse(item.Cells["STT"].Value.ToString());
+                                            //điều chỉnh hóa đơn
+                                            if (item.Cells["KyHD"].Value != null)
+                                                ttds.KyHD = item.Cells["STT"].Value.ToString();
+                                            if (item.Cells["TieuThu"].Value != null)
+                                                ttds.TieuThu = int.Parse(item.Cells["STT"].Value.ToString());
+                                            if (item.Cells["ChiSoThucTe"].Value != null)
+                                                ttds.ChiSoThucTe = int.Parse(item.Cells["STT"].Value.ToString());
+                                            if (item.Cells["TieuThuThucTe"].Value != null)
+                                                ttds.TieuThuThucTe = int.Parse(item.Cells["STT"].Value.ToString());
                                             ttds.IDDanhSach = ++ID;
                                             ttds.IDCT = cttt.IDCT;
                                             ttds.CreateBy = CTaiKhoan.MaUser;
@@ -737,34 +746,38 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     {
                         DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
-
                         dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                         dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                         dr["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
                         dr["VeViec"] = item.ToTrinh_ChiTiet.VeViec;
                         dr["KinhTrinh"] = item.ToTrinh_ChiTiet.KinhTrinh;
                         dr["ThongQua"] = item.ToTrinh_ChiTiet.ThongQua;
-                        if (item.ToTrinh_ChiTiet.VeViec.Contains(""))
+                        if (item.ToTrinh_ChiTiet.VeViec.Contains("Điều chỉnh hóa đơn"))
                         {
                             dr["NoiDung"] = item.ToTrinh_ChiTiet.NoiDung;
-                            dr["NoiDung2"] = "hộp bảo vệ, ngoài vỉa hè, chì mặt số đứt";
-
-                            if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bảo vệ"))
-                                dr["Luuy"] = "đồng hồ nước đứt chì+nắp hộp BV do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
-                            else
-                                if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bảo vệ"))
-                                    dr["Luuy"] = "đồng hồ nước đứt chì+hộp BV do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
-                                else
-                                    dr["Luuy"] = "đồng hồ nước đứt chì do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
                         }
                         else
-                            if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))
+                            if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
                             {
-                                dr["NoiDung"] = "hoạt động không ổn định, không có dấu hiệu tháo mở gian lận";
-                                dr["NoiDung2"] = "nhà bị lỗi kỹ thuật";
+                                dr["NoiDung"] = item.ToTrinh_ChiTiet.NoiDung;
+                                dr["NoiDung2"] = "hộp bảo vệ, ngoài vỉa hè, chì mặt số đứt";
 
-                                dr["Luuy"] = "đồng hồ nước bị lỗi kỹ thuật";
+                                if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("nắp hộp bảo vệ"))
+                                    dr["Luuy"] = "đồng hồ nước đứt chì+nắp hộp BV do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
+                                else
+                                    if (item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bv") || item.ToTrinh_ChiTiet.VeViec.ToLower().Contains("hộp bảo vệ"))
+                                        dr["Luuy"] = "đồng hồ nước đứt chì+hộp BV do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
+                                    else
+                                        dr["Luuy"] = "đồng hồ nước đứt chì do đồng hồ nước lắp đặt ở ngoài khu vực quản lý của khách hàng sử dụng nước";
                             }
+                            else
+                                if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))
+                                {
+                                    dr["NoiDung"] = "hoạt động không ổn định, không có dấu hiệu tháo mở gian lận";
+                                    dr["NoiDung2"] = "nhà bị lỗi kỹ thuật";
+
+                                    dr["Luuy"] = "đồng hồ nước bị lỗi kỹ thuật";
+                                }
                         dr["NoiNhan"] = item.ToTrinh_ChiTiet.NoiNhan;
 
                         if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
@@ -808,14 +821,28 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr2);
                     }
 
-                    rptToTrinh_DCMS_DinhKem rpt2 = new rptToTrinh_DCMS_DinhKem();
-                    rpt2.SetDataSource(dsBaoCao);
-                    frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
-                    frm2.Show();
-                    rptToTrinh_DCMS rpt1 = new rptToTrinh_DCMS();
-                    rpt1.SetDataSource(dsBaoCao);
-                    frmShowBaoCao frm1 = new frmShowBaoCao(rpt1);
-                    frm1.Show();
+                    if (_cttt.VeViec.Contains("Điều chỉnh hóa đơn") == true)
+                    {
+                        rptToTrinh_DCHD_DinhKem rpt2 = new rptToTrinh_DCHD_DinhKem();
+                        rpt2.SetDataSource(dsBaoCao);
+                        frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
+                        frm2.Show();
+                        rptToTrinh_DCHD rpt1 = new rptToTrinh_DCHD();
+                        rpt1.SetDataSource(dsBaoCao);
+                        frmShowBaoCao frm1 = new frmShowBaoCao(rpt1);
+                        frm1.Show();
+                    }
+                    else
+                    {
+                        rptToTrinh_DCMS_DinhKem rpt2 = new rptToTrinh_DCMS_DinhKem();
+                        rpt2.SetDataSource(dsBaoCao);
+                        frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
+                        frm2.Show();
+                        rptToTrinh_DCMS rpt1 = new rptToTrinh_DCMS();
+                        rpt1.SetDataSource(dsBaoCao);
+                        frmShowBaoCao frm1 = new frmShowBaoCao(rpt1);
+                        frm1.Show();
+                    }
                 }
             }
         }
@@ -1074,6 +1101,20 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     {
                         MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                }
+            }
+            //
+            if ((dgvDanhBo.Columns[e.ColumnIndex].Name == "KyHD" && dgvDanhBo["KyHD", e.RowIndex].Value != null))
+            {
+
+                HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString());
+                if (hoadon != null)
+                {
+                    dgvDanhBo["TieuThu", e.RowIndex].Value = hoadon.TIEUTHU;
+                }
+                else
+                {
+                    MessageBox.Show("Kỳ HĐ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
