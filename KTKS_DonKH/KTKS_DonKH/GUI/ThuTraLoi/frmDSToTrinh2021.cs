@@ -287,6 +287,16 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                     if (item.ToTrinh_ChiTiet.VeViec.Contains("Điều chỉnh hóa đơn"))
                                     {
                                         dr["NoiDung"] = item.ToTrinh_ChiTiet.NoiDung;
+                                        dr["Hieu"] = item.KyHD;
+                                        dr["LuyKe"] = item.ChiSoCu;
+                                        dr["Nhan"] = item.TieuThu;
+                                        dr["XuLy"] = item.ChiSoThucTe;
+                                        dr["Ton"] = item.TieuThuThucTe;
+                                        LinQ.DonTu dt = _cDonTu.get(item.MaDon.Value);
+                                        if (dt.DonTu_ChiTiets.Count == 1)
+                                            dr["MLT"] = item.MaDon.Value.ToString();
+                                        else
+                                            dr["MLT"] = item.MaDon.Value.ToString() + "." + item.STT.Value.ToString();
                                     }
                                     else
                                         if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))

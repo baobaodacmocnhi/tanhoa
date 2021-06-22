@@ -164,6 +164,14 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     dgvDanhBo["SoThan", dgvDanhBo.RowCount - 2].Value = item.SoThan;
                     dgvDanhBo["MaDonTong", dgvDanhBo.RowCount - 2].Value = item.MaDon.Value.ToString();
                     dgvDanhBo["STT", dgvDanhBo.RowCount - 2].Value = item.STT.Value.ToString();
+                    if (item.KyHD != null && item.KyHD != "")
+                    {
+                        dgvDanhBo["KyHD", dgvDanhBo.RowCount - 2].Value = item.KyHD;
+                        dgvDanhBo["ChiSoCu", dgvDanhBo.RowCount - 2].Value = item.ChiSoCu;
+                        dgvDanhBo["TieuThu", dgvDanhBo.RowCount - 2].Value = item.TieuThu;
+                        dgvDanhBo["ChiSoThucTe", dgvDanhBo.RowCount - 2].Value = item.ChiSoThucTe;
+                        dgvDanhBo["TieuThuThucTe", dgvDanhBo.RowCount - 2].Value = item.TieuThuThucTe;
+                    }
                 }
             }
 
@@ -755,6 +763,16 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         if (item.ToTrinh_ChiTiet.VeViec.Contains("Điều chỉnh hóa đơn"))
                         {
                             dr["NoiDung"] = item.ToTrinh_ChiTiet.NoiDung;
+                            dr["Hieu"] = item.KyHD;
+                            dr["LuyKe"] = item.ChiSoCu;
+                            dr["Nhan"] = item.TieuThu;
+                            dr["XuLy"] = item.ChiSoThucTe;
+                            dr["Ton"] = item.TieuThuThucTe;
+                            LinQ.DonTu dt = _cDonTu.get(item.MaDon.Value);
+                            if (dt.DonTu_ChiTiets.Count == 1)
+                                dr["MLT"] = item.MaDon.Value.ToString();
+                            else
+                                dr["MLT"] = item.MaDon.Value.ToString() + "." + item.STT.Value.ToString();
                         }
                         else
                             if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
@@ -1106,16 +1124,20 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             //
             if ((dgvDanhBo.Columns[e.ColumnIndex].Name == "KyHD" && dgvDanhBo["KyHD", e.RowIndex].Value != null))
             {
-
                 HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString());
                 if (hoadon != null)
                 {
+                    dgvDanhBo["ChiSoCu", e.RowIndex].Value = hoadon.CSCU;
                     dgvDanhBo["TieuThu", e.RowIndex].Value = hoadon.TIEUTHU;
                 }
                 else
                 {
                     MessageBox.Show("Kỳ HĐ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            if ((dgvDanhBo.Columns[e.ColumnIndex].Name == "ChiSoThucTe" && dgvDanhBo["ChiSoThucTe", e.RowIndex].Value != null && dgvDanhBo["ChiSoCu", e.RowIndex].Value != null))
+            {
+                dgvDanhBo["TieuThuThucTe", e.RowIndex].Value = int.Parse(dgvDanhBo["ChiSoThucTe", e.RowIndex].Value.ToString()) - int.Parse(dgvDanhBo["ChiSoCu", e.RowIndex].Value.ToString());
             }
         }
 

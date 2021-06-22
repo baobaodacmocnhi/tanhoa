@@ -149,7 +149,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             try
             {
                 CDonTu _cDonTu = new CDonTu();
-                _cDonTu.Xoa_LichSu("ToTrinh_ChiTiet", (int)en.IDCT);
+                _cDonTu.Xoa_LichSus("ToTrinh_ChiTiet", (int)en.IDCT);
                 decimal ID = en.ID;
                 db.ToTrinh_ChiTiet_Hinhs.DeleteAllOnSubmit(en.ToTrinh_ChiTiet_Hinhs.ToList());
                 db.ToTrinh_ChiTiet_DanhSaches.DeleteAllOnSubmit(en.ToTrinh_ChiTiet_DanhSaches.ToList());
@@ -349,6 +349,8 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
         {
             try
             {
+                CDonTu _cDonTu = new CDonTu();
+                _cDonTu.Xoa_LichSu("ToTrinh_ChiTiet", (int)en.IDCT, en.MaDon.Value, en.STT.Value);
                 db.ToTrinh_ChiTiet_DanhSaches.DeleteOnSubmit(en);
                 db.SubmitChanges();
                 return true;

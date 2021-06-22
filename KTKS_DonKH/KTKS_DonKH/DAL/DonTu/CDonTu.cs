@@ -1028,6 +1028,25 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
+        public bool Xoa_LichSu(string TableName, int IDCT, int MaDon, int STT)
+        {
+            try
+            {
+                DonTu_LichSu en = db.DonTu_LichSus.SingleOrDefault(item => item.TableName == TableName && item.IDCT == IDCT && item.MaDon == MaDon && item.STT == STT);
+                if (en != null)
+                {
+                    db.DonTu_LichSus.DeleteOnSubmit(en);
+                    db.SubmitChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
         public bool Xoa_LichSu(string TableName, int IDCT)
         {
             try
@@ -1036,6 +1055,25 @@ namespace KTKS_DonKH.DAL.DonTu
                 if (en != null)
                 {
                     db.DonTu_LichSus.DeleteOnSubmit(en);
+                    db.SubmitChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_LichSus(string TableName, int IDCT)
+        {
+            try
+            {
+                List<DonTu_LichSu> lsten = db.DonTu_LichSus.Where(item => item.TableName == TableName && item.IDCT == IDCT).ToList();
+                if (lsten != null && lsten.Count > 0)
+                {
+                    db.DonTu_LichSus.DeleteAllOnSubmit(lsten);
                     db.SubmitChanges();
                 }
                 return true;

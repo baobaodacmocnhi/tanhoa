@@ -51823,6 +51823,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _ModifyDate;
 		
+		private int _ChiSoCu;
+		
 		private EntityRef<ToTrinh_ChiTiet> _ToTrinh_ChiTiet;
 		
     #region Extensibility Method Definitions
@@ -51885,6 +51887,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnModifyByChanged();
     partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
     partial void OnModifyDateChanged();
+    partial void OnChiSoCuChanging(int value);
+    partial void OnChiSoCuChanged();
     #endregion
 		
 		public ToTrinh_ChiTiet_DanhSach()
@@ -52453,6 +52457,26 @@ namespace KTKS_DonKH.LinQ
 					this._ModifyDate = value;
 					this.SendPropertyChanged("ModifyDate");
 					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChiSoCu")]
+		public int ChiSoCu
+		{
+			get
+			{
+				return this._ChiSoCu;
+			}
+			set
+			{
+				if ((this._ChiSoCu != value))
+				{
+					this.OnChiSoCuChanging(value);
+					this.SendPropertyChanging();
+					this._ChiSoCu = value;
+					this.SendPropertyChanged("ChiSoCu");
+					this.OnChiSoCuChanged();
 				}
 			}
 		}
