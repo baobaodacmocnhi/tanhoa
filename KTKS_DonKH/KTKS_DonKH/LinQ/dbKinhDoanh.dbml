@@ -2279,6 +2279,7 @@
       <Column Name="Co" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="SoThan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="KyHD" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ChiSoCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ChiSoThucTe" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TieuThuThucTe" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -2289,7 +2290,6 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Member="ChiSoCu" Type="System.Int32" CanBeNull="false" />
       <Association Name="ToTrinh_ChiTiet_ToTrinh_ChiTiet_DanhSach" Member="ToTrinh_ChiTiet" ThisKey="IDCT" OtherKey="IDCT" Type="ToTrinh_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>

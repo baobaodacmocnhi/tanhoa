@@ -73,6 +73,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 txtSoPhieu_KeyPress(sender, arg);
             }
+
+            lbKhauTru.Text = _cKCN.getDSKhauTruCoHoaDonMoi();
         }
 
         public void Clear()
@@ -437,6 +439,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_hoadon != null)
                 {
                     LoadTTKH(_hoadon);
+                    txtSoTienKhauTruConLai.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cKCN.getSoTienKhauTruConLai(_hoadon.DANHBA));
                     txtKyHD.Focus();
                 }
                 else
@@ -804,6 +807,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     using (TransactionScope scope = new TransactionScope())
                         if (_cDCBD.ThemDCHD(ctdchd))
                         {
+                            if (_cKCN.checkExist_KhauTru(ctdchd.DanhBo) == true)
+                            {
+                                DCBD_KhauTru en = _cKCN.get_KhauTru(ctdchd.DanhBo);
+                                DCBD_KhauTru_LichSu enLS = new DCBD_KhauTru_LichSu();
+                                enLS.DanhBo = en.DanhBo;
+                                enLS.Ky = ctdchd.KyHD;
+                                enLS.SoTien = ctdchd.TongCong_End;
+                                enLS.IDKhauTru = en.ID;
+                                _cKCN.Them_KhauTruLichSu(enLS);
+                            }
                             foreach (DataGridViewRow item in dgvHinh.Rows)
                             {
                                 DCBD_ChiTietHoaDon_Hinh en = new DCBD_ChiTietHoaDon_Hinh();
@@ -1042,12 +1055,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
                         _ctdchd.PhieuDuocKy = true;
 
-                            _ctdchd.CodeF2 = chkCodeF2.Checked;
-                            _ctdchd.BaoCaoThue = chkBaoCaoThue.Checked;
+                        _ctdchd.CodeF2 = chkCodeF2.Checked;
+                        _ctdchd.BaoCaoThue = chkBaoCaoThue.Checked;
 
                         if (_cDCBD.SuaDCHD(_ctdchd))
                         {
-
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
                             txtMaDonCu.Focus();

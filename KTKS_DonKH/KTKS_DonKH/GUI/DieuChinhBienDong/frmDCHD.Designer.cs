@@ -156,6 +156,9 @@
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.chkBaoCaoThue = new System.Windows.Forms.CheckBox();
+            this.lbKhauTru = new System.Windows.Forms.Label();
+            this.txtSoTienKhauTruConLai = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -958,7 +961,7 @@
             this.txtSoTienKhauTru.Location = new System.Drawing.Point(504, 260);
             this.txtSoTienKhauTru.Name = "txtSoTienKhauTru";
             this.txtSoTienKhauTru.ReadOnly = true;
-            this.txtSoTienKhauTru.Size = new System.Drawing.Size(84, 22);
+            this.txtSoTienKhauTru.Size = new System.Drawing.Size(80, 22);
             this.txtSoTienKhauTru.TabIndex = 26;
             this.txtSoTienKhauTru.Text = "0";
             // 
@@ -1216,7 +1219,7 @@
             // 
             // txtLyDoDieuChinh
             // 
-            this.txtLyDoDieuChinh.Location = new System.Drawing.Point(712, 260);
+            this.txtLyDoDieuChinh.Location = new System.Drawing.Point(708, 260);
             this.txtLyDoDieuChinh.Name = "txtLyDoDieuChinh";
             this.txtLyDoDieuChinh.Size = new System.Drawing.Size(200, 22);
             this.txtLyDoDieuChinh.TabIndex = 28;
@@ -1225,7 +1228,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(594, 263);
+            this.label30.Location = new System.Drawing.Point(590, 263);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(112, 16);
             this.label30.TabIndex = 27;
@@ -1386,7 +1389,7 @@
             // 
             // txtGhiChu
             // 
-            this.txtGhiChu.Location = new System.Drawing.Point(978, 260);
+            this.txtGhiChu.Location = new System.Drawing.Point(974, 260);
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.Size = new System.Drawing.Size(200, 22);
             this.txtGhiChu.TabIndex = 41;
@@ -1394,7 +1397,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(918, 263);
+            this.label37.Location = new System.Drawing.Point(914, 263);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(54, 16);
             this.label37.TabIndex = 40;
@@ -1410,12 +1413,44 @@
             this.chkBaoCaoThue.Text = "Đã Báo Cáo Thuế";
             this.chkBaoCaoThue.UseVisualStyleBackColor = true;
             // 
+            // lbKhauTru
+            // 
+            this.lbKhauTru.AutoSize = true;
+            this.lbKhauTru.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbKhauTru.ForeColor = System.Drawing.Color.Red;
+            this.lbKhauTru.Location = new System.Drawing.Point(883, 9);
+            this.lbKhauTru.Name = "lbKhauTru";
+            this.lbKhauTru.Size = new System.Drawing.Size(69, 16);
+            this.lbKhauTru.TabIndex = 43;
+            this.lbKhauTru.Text = "Khấu Trừ";
+            // 
+            // txtSoTienKhauTruConLai
+            // 
+            this.txtSoTienKhauTruConLai.ForeColor = System.Drawing.Color.Red;
+            this.txtSoTienKhauTruConLai.Location = new System.Drawing.Point(577, 288);
+            this.txtSoTienKhauTruConLai.Name = "txtSoTienKhauTruConLai";
+            this.txtSoTienKhauTruConLai.Size = new System.Drawing.Size(80, 22);
+            this.txtSoTienKhauTruConLai.TabIndex = 45;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.ForeColor = System.Drawing.Color.Red;
+            this.label40.Location = new System.Drawing.Point(412, 291);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(159, 16);
+            this.label40.TabIndex = 44;
+            this.label40.Text = "Số Tiền Khấu Trừ Còn Lại";
+            // 
             // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1303, 640);
+            this.Controls.Add(this.txtSoTienKhauTruConLai);
+            this.Controls.Add(this.label40);
+            this.Controls.Add(this.lbKhauTru);
             this.Controls.Add(this.chkBaoCaoThue);
             this.Controls.Add(this.txtGhiChu);
             this.Controls.Add(this.label37);
@@ -1610,5 +1645,8 @@
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.TextBox txtHoTen_BD;
         private System.Windows.Forms.CheckBox chkBaoCaoThue;
+        private System.Windows.Forms.Label lbKhauTru;
+        private System.Windows.Forms.TextBox txtSoTienKhauTruConLai;
+        private System.Windows.Forms.Label label40;
     }
 }

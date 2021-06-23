@@ -121,7 +121,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 txtMaDonCu.Text = "TBC" + en.ToTrinh.MaDonTBC.Value.ToString().Insert(en.ToTrinh.MaDonTBC.Value.ToString().Length - 2, "-");
                             }
 
-                txtMaCTTT.Text = en.IDCT.ToString().Insert(en.IDCT.ToString().Length - 2, "-");
                 txtDanhBo.Text = en.DanhBo;
                 txtMLT.Text = en.LoTrinh;
                 txtHoTen.Text = en.HoTen;
@@ -174,7 +173,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     }
                 }
             }
-
+            txtMaCTTT.Text = en.IDCT.ToString().Insert(en.IDCT.ToString().Length - 2, "-");
             txtVeViec.Text = en.VeViec;
             txtKinhTrinh.Text = en.KinhTrinh;
             txtNoiDung.Text = en.NoiDung;
@@ -542,13 +541,15 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                                 ttds.STT = int.Parse(item.Cells["STT"].Value.ToString());
                                             //điều chỉnh hóa đơn
                                             if (item.Cells["KyHD"].Value != null)
-                                                ttds.KyHD = item.Cells["STT"].Value.ToString();
+                                                ttds.KyHD = item.Cells["KyHD"].Value.ToString();
+                                            if (item.Cells["ChiSoCu"].Value != null)
+                                                ttds.ChiSoCu = int.Parse(item.Cells["ChiSoCu"].Value.ToString());
                                             if (item.Cells["TieuThu"].Value != null)
-                                                ttds.TieuThu = int.Parse(item.Cells["STT"].Value.ToString());
+                                                ttds.TieuThu = int.Parse(item.Cells["TieuThu"].Value.ToString());
                                             if (item.Cells["ChiSoThucTe"].Value != null)
-                                                ttds.ChiSoThucTe = int.Parse(item.Cells["STT"].Value.ToString());
+                                                ttds.ChiSoThucTe = int.Parse(item.Cells["ChiSoThucTe"].Value.ToString());
                                             if (item.Cells["TieuThuThucTe"].Value != null)
-                                                ttds.TieuThuThucTe = int.Parse(item.Cells["STT"].Value.ToString());
+                                                ttds.TieuThuThucTe = int.Parse(item.Cells["TieuThuThucTe"].Value.ToString());
                                             ttds.IDDanhSach = ++ID;
                                             ttds.IDCT = cttt.IDCT;
                                             ttds.CreateBy = CTaiKhoan.MaUser;
@@ -643,13 +644,24 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                             ttds.MaDon = int.Parse(item.Cells["MaDonTong"].Value.ToString());
                                         if (item.Cells["STT"].Value != null)
                                             ttds.STT = int.Parse(item.Cells["STT"].Value.ToString());
+                                        //điều chỉnh hóa đơn
+                                        if (item.Cells["KyHD"].Value != null)
+                                            ttds.KyHD = item.Cells["KyHD"].Value.ToString();
+                                        if (item.Cells["ChiSoCu"].Value != null)
+                                            ttds.ChiSoCu = int.Parse(item.Cells["ChiSoCu"].Value.ToString());
+                                        if (item.Cells["TieuThu"].Value != null)
+                                            ttds.TieuThu = int.Parse(item.Cells["TieuThu"].Value.ToString());
+                                        if (item.Cells["ChiSoThucTe"].Value != null)
+                                            ttds.ChiSoThucTe = int.Parse(item.Cells["ChiSoThucTe"].Value.ToString());
+                                        if (item.Cells["TieuThuThucTe"].Value != null)
+                                            ttds.TieuThuThucTe = int.Parse(item.Cells["TieuThuThucTe"].Value.ToString());
                                         ttds.IDDanhSach = ++ID;
                                         ttds.IDCT = _cttt.IDCT;
                                         ttds.CreateBy = CTaiKhoan.MaUser;
                                         ttds.CreateDate = DateTime.Now;
                                         _cttt.ToTrinh_ChiTiet_DanhSaches.Add(ttds);
                                         _cTT.SubmitChanges();
-                                        //_cDonTu.Them_LichSu(cttt.CreateDate.Value, "ToTrinh", "Đã Lập Tờ Trình, " + cttt.VeViec, cttt.IDCT, ttds.MaDon.Value, ttds.STT.Value);
+                                        _cDonTu.Them_LichSu(ttds.CreateDate.Value, "ToTrinh", "Đã Lập Tờ Trình, " + _cttt.VeViec, _cttt.IDCT, ttds.MaDon.Value, ttds.STT.Value);
                                     }
                                 }
                             }
@@ -763,16 +775,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         if (item.ToTrinh_ChiTiet.VeViec.Contains("Điều chỉnh hóa đơn"))
                         {
                             dr["NoiDung"] = item.ToTrinh_ChiTiet.NoiDung;
-                            dr["Hieu"] = item.KyHD;
-                            dr["LuyKe"] = item.ChiSoCu;
-                            dr["Nhan"] = item.TieuThu;
-                            dr["XuLy"] = item.ChiSoThucTe;
-                            dr["Ton"] = item.TieuThuThucTe;
-                            LinQ.DonTu dt = _cDonTu.get(item.MaDon.Value);
-                            if (dt.DonTu_ChiTiets.Count == 1)
-                                dr["MLT"] = item.MaDon.Value.ToString();
-                            else
-                                dr["MLT"] = item.MaDon.Value.ToString() + "." + item.STT.Value.ToString();
                         }
                         else
                             if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
@@ -808,6 +810,20 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         //
                         DataRow dr2 = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
+                        if (item.ToTrinh_ChiTiet.VeViec.Contains("Điều chỉnh hóa đơn"))
+                        {
+                            dr2["NgayXuLy"] = item.KyHD;
+                            dr2["LuyKe"] = item.ChiSoCu;
+                            dr2["Nhan"] = item.TieuThu;
+                            dr2["XuLy"] = item.ChiSoThucTe;
+                            dr2["Ton"] = item.TieuThuThucTe;
+                            LinQ.DonTu dt = _cDonTu.get(item.MaDon.Value);
+                            if (dt.DonTu_ChiTiets.Count == 1)
+                                dr2["MLT"] = item.MaDon.Value.ToString();
+                            else
+                                dr2["MLT"] = item.MaDon.Value.ToString() + "." + item.STT.Value.ToString();
+                        }
+                        else
                         if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
                         {
                             dr2["LoaiBaoCao"] = "ĐỨT CHÌ MẶT SỐ NẰM NGOÀI BẤT ĐỘNG SẢN (VỈA HÈ)";
@@ -1160,7 +1176,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         if (_cTT.Xoa_ChiTiet_DanhSach(en))
                         {
                             MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Clear();
                         }
                     }
             }

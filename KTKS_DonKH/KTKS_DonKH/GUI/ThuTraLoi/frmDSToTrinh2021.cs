@@ -287,16 +287,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                     if (item.ToTrinh_ChiTiet.VeViec.Contains("Điều chỉnh hóa đơn"))
                                     {
                                         dr["NoiDung"] = item.ToTrinh_ChiTiet.NoiDung;
-                                        dr["Hieu"] = item.KyHD;
-                                        dr["LuyKe"] = item.ChiSoCu;
-                                        dr["Nhan"] = item.TieuThu;
-                                        dr["XuLy"] = item.ChiSoThucTe;
-                                        dr["Ton"] = item.TieuThuThucTe;
-                                        LinQ.DonTu dt = _cDonTu.get(item.MaDon.Value);
-                                        if (dt.DonTu_ChiTiets.Count == 1)
-                                            dr["MLT"] = item.MaDon.Value.ToString();
-                                        else
-                                            dr["MLT"] = item.MaDon.Value.ToString() + "." + item.STT.Value.ToString();
                                     }
                                     else
                                         if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
@@ -330,6 +320,20 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                     //
                                     DataRow dr2 = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
+                                    if (item.ToTrinh_ChiTiet.VeViec.Contains("Điều chỉnh hóa đơn"))
+                                    {
+                                        dr2["NgayXuLy"] = item.KyHD;
+                                        dr2["LuyKe"] = item.ChiSoCu;
+                                        dr2["Nhan"] = item.TieuThu;
+                                        dr2["XuLy"] = item.ChiSoThucTe;
+                                        dr2["Ton"] = item.TieuThuThucTe;
+                                        LinQ.DonTu dt = _cDonTu.get(item.MaDon.Value);
+                                        if (dt.DonTu_ChiTiets.Count == 1)
+                                            dr2["MLT"] = item.MaDon.Value.ToString();
+                                        else
+                                            dr2["MLT"] = item.MaDon.Value.ToString() + "." + item.STT.Value.ToString();
+                                    }
+                                    else
                                     if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
                                     {
                                         dr2["LoaiBaoCao"] = "ĐỨT CHÌ MẶT SỐ NẰM NGOÀI BẤT ĐỘNG SẢN (VỈA HÈ)";

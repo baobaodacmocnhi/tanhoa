@@ -10,6 +10,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {
     class CKhuCongNghiep : CDAL
     {
+        CThuTien _cThuTien = new CThuTien();
+
         public bool Them(KhuCongNghiep en)
         {
             try
@@ -126,6 +128,28 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(db.DCBD_KhauTrus.ToList());
         }
 
+        public string getDSKhauTruCoHoaDonMoi()
+        {
+            string str = "";
+            foreach (DCBD_KhauTru item in db.DCBD_KhauTrus.ToList())
+            {
+                HOADON hd = _cThuTien.GetMoiNhat(item.DanhBo);
+                if (db.DCBD_ChiTietHoaDons.Any(itemA => itemA.DanhBo == hd.DANHBA && itemA.KyHD.Contains(hd.KY + "/" + hd.NAM) == true) == false)
+                    str += hd.DANHBA + " có hóa đơn kỳ " + hd.KY + "/" + hd.NAM;
+            }
+            return str;
+        }
+
+        public int getSoTienKhauTruConLai(string DanhBo)
+        {
+            DCBD_KhauTru en = get_KhauTru(DanhBo);
+            if (en != null)
+            {
+                return en.SoTien.Value - en.DCBD_KhauTru_LichSus.Sum(item => item.SoTien).Value;
+            }
+            else return 0;
+        }
+
         //Khấu Trừ Lịch Sử
 
         public bool Them_KhauTruLichSu(DCBD_KhauTru_LichSu en)
@@ -168,6 +192,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             return LINQToDataTable(db.DCBD_KhauTru_LichSus.Where(item => item.IDKhauTru == IDKhauTru));
         }
+
+
 
     }
 }

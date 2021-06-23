@@ -51803,6 +51803,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _KyHD;
 		
+		private System.Nullable<int> _ChiSoCu;
+		
 		private System.Nullable<int> _TieuThu;
 		
 		private System.Nullable<int> _ChiSoThucTe;
@@ -51822,8 +51824,6 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<int> _ModifyBy;
 		
 		private System.Nullable<System.DateTime> _ModifyDate;
-		
-		private int _ChiSoCu;
 		
 		private EntityRef<ToTrinh_ChiTiet> _ToTrinh_ChiTiet;
 		
@@ -51867,6 +51867,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnSoThanChanged();
     partial void OnKyHDChanging(string value);
     partial void OnKyHDChanged();
+    partial void OnChiSoCuChanging(System.Nullable<int> value);
+    partial void OnChiSoCuChanged();
     partial void OnTieuThuChanging(System.Nullable<int> value);
     partial void OnTieuThuChanged();
     partial void OnChiSoThucTeChanging(System.Nullable<int> value);
@@ -51887,8 +51889,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnModifyByChanged();
     partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
     partial void OnModifyDateChanged();
-    partial void OnChiSoCuChanging(int value);
-    partial void OnChiSoCuChanged();
     #endregion
 		
 		public ToTrinh_ChiTiet_DanhSach()
@@ -52257,6 +52257,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChiSoCu", DbType="Int")]
+		public System.Nullable<int> ChiSoCu
+		{
+			get
+			{
+				return this._ChiSoCu;
+			}
+			set
+			{
+				if ((this._ChiSoCu != value))
+				{
+					this.OnChiSoCuChanging(value);
+					this.SendPropertyChanging();
+					this._ChiSoCu = value;
+					this.SendPropertyChanged("ChiSoCu");
+					this.OnChiSoCuChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TieuThu", DbType="Int")]
 		public System.Nullable<int> TieuThu
 		{
@@ -52457,26 +52477,6 @@ namespace KTKS_DonKH.LinQ
 					this._ModifyDate = value;
 					this.SendPropertyChanged("ModifyDate");
 					this.OnModifyDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChiSoCu")]
-		public int ChiSoCu
-		{
-			get
-			{
-				return this._ChiSoCu;
-			}
-			set
-			{
-				if ((this._ChiSoCu != value))
-				{
-					this.OnChiSoCuChanging(value);
-					this.SendPropertyChanging();
-					this._ChiSoCu = value;
-					this.SendPropertyChanged("ChiSoCu");
-					this.OnChiSoCuChanged();
 				}
 			}
 		}
