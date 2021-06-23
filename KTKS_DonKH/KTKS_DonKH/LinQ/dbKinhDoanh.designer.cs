@@ -17755,6 +17755,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MLT;
 		
+		private string _MST;
+		
 		private string _HoTen;
 		
 		private string _DiaChi;
@@ -17784,6 +17786,8 @@ namespace KTKS_DonKH.LinQ
 		private string _HoTen_BD;
 		
 		private string _DiaChi_BD;
+		
+		private string _MST_BD;
 		
 		private System.Nullable<int> _GiaBieu;
 		
@@ -17927,6 +17931,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDanhBoChanged();
     partial void OnMLTChanging(string value);
     partial void OnMLTChanged();
+    partial void OnMSTChanging(string value);
+    partial void OnMSTChanged();
     partial void OnHoTenChanging(string value);
     partial void OnHoTenChanged();
     partial void OnDiaChiChanging(string value);
@@ -17957,6 +17963,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHoTen_BDChanged();
     partial void OnDiaChi_BDChanging(string value);
     partial void OnDiaChi_BDChanged();
+    partial void OnMST_BDChanging(string value);
+    partial void OnMST_BDChanged();
     partial void OnGiaBieuChanging(System.Nullable<int> value);
     partial void OnGiaBieuChanged();
     partial void OnDinhMucHNChanging(System.Nullable<int> value);
@@ -18150,6 +18158,26 @@ namespace KTKS_DonKH.LinQ
 					this._MLT = value;
 					this.SendPropertyChanged("MLT");
 					this.OnMLTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MST", DbType="NVarChar(50)")]
+		public string MST
+		{
+			get
+			{
+				return this._MST;
+			}
+			set
+			{
+				if ((this._MST != value))
+				{
+					this.OnMSTChanging(value);
+					this.SendPropertyChanging();
+					this._MST = value;
+					this.SendPropertyChanged("MST");
+					this.OnMSTChanged();
 				}
 			}
 		}
@@ -18450,6 +18478,26 @@ namespace KTKS_DonKH.LinQ
 					this._DiaChi_BD = value;
 					this.SendPropertyChanged("DiaChi_BD");
 					this.OnDiaChi_BDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MST_BD", DbType="NVarChar(50)")]
+		public string MST_BD
+		{
+			get
+			{
+				return this._MST_BD;
+			}
+			set
+			{
+				if ((this._MST_BD != value))
+				{
+					this.OnMST_BDChanging(value);
+					this.SendPropertyChanging();
+					this._MST_BD = value;
+					this.SendPropertyChanged("MST_BD");
+					this.OnMST_BDChanged();
 				}
 			}
 		}

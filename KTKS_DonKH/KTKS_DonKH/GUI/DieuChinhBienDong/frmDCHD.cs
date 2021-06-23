@@ -97,6 +97,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///
             txtHoTen_BD.Text = "";
             txtDiaChi_BD.Text = "";
+            txtMST_BD.Text = "";
             txtLyDoDieuChinh.Text = "";
             txtGhiChu.Text = "";
             txtGiaBieu_Cu.Text = "0";
@@ -229,6 +230,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///
             txtHoTen_BD.Text = ctdchd.HoTen_BD;
             txtDiaChi_BD.Text = ctdchd.DiaChi_BD;
+            txtMST_BD.Text = ctdchd.MST_BD;
             txtGiaBieu_Moi.Text = ctdchd.GiaBieu_BD.Value.ToString();
             txtDinhMucHN_Moi.Text = ctdchd.DinhMucHN_BD.Value.ToString();
             txtDinhMuc_Moi.Text = ctdchd.DinhMuc_BD.Value.ToString();
@@ -642,6 +644,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdchd.Nam = int.Parse(KyHD[1]);
                     if (_hoadon != null)
                     {
+                        ctdchd.MST = _hoadon.MST;
                         ctdchd.SoHoaDon = _hoadon.SOHOADON;
                         ctdchd.Phuong = _hoadon.Phuong;
                         ctdchd.Quan = _hoadon.Quan;
@@ -653,6 +656,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ///
                     ctdchd.HoTen_BD = txtHoTen_BD.Text.Trim();
                     ctdchd.DiaChi_BD = txtDiaChi_BD.Text.Trim();
+                    ctdchd.MST_BD = txtMST_BD.Text.Trim();
                     ctdchd.GiaBieu = int.Parse(txtGiaBieu_Cu.Text.Trim().Replace(".", ""));
                     ctdchd.DinhMucHN = int.Parse(txtDinhMucHN_Cu.Text.Trim().Replace(".", ""));
                     ctdchd.DinhMuc = int.Parse(txtDinhMuc_Cu.Text.Trim().Replace(".", ""));
@@ -865,6 +869,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdchd.Nam = int.Parse(KyHD[1]);
                         if (_hoadon != null)
                         {
+                            _ctdchd.MST = _hoadon.MST;
                             _ctdchd.SoHoaDon = _hoadon.SOHOADON;
                             _ctdchd.Phuong = _hoadon.Phuong;
                             _ctdchd.Quan = _hoadon.Quan;
@@ -882,6 +887,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ///
                         _ctdchd.HoTen_BD = txtHoTen_BD.Text.Trim();
                         _ctdchd.DiaChi_BD = txtDiaChi_BD.Text.Trim();
+                        _ctdchd.MST_BD = txtMST_BD.Text.Trim();
                         _ctdchd.GiaBieu_BD = int.Parse(txtGiaBieu_Moi.Text.Trim().Replace(".", ""));
                         _ctdchd.DinhMucHN_BD = int.Parse(txtDinhMucHN_Moi.Text.Trim().Replace(".", ""));
                         _ctdchd.DinhMuc_BD = int.Parse(txtDinhMuc_Moi.Text.Trim().Replace(".", ""));

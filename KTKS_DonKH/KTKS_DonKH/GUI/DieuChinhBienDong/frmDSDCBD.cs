@@ -1296,6 +1296,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         dr["DiaChi"] = ctdchd.DiaChi;
                                         dr["DiaChiBD"] = ctdchd.DiaChi_BD;
                                     }
+                                    if (ctdchd.MST_BD != null && ctdchd.MST_BD != "")
+                                    {
+                                        dr["MST"] = ctdchd.MST;
+                                        dr["MSTBD"] = ctdchd.MST_BD;
+                                    }
                                     //
                                     //if (ctdchd.GiaBieu.Value != ctdchd.GiaBieu_BD.Value)
                                     //{
