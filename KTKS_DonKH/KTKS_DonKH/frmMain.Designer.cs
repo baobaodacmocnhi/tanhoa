@@ -651,7 +651,7 @@
             // 
             this.mnuKhuCongNghiep.Name = "mnuKhuCongNghiep";
             this.mnuKhuCongNghiep.Size = new System.Drawing.Size(231, 22);
-            this.mnuKhuCongNghiep.Text = "Khu Công Nghiệp";
+            this.mnuKhuCongNghiep.Text = "Khấu Trừ / Khu Công Nghiệp";
             this.mnuKhuCongNghiep.Click += new System.EventHandler(this.mnuKhuCongNghiep_Click);
             // 
             // mnuHoNgheo
@@ -764,7 +764,7 @@
             // 
             this.mnuVeViecTTTL.Name = "mnuVeViecTTTL";
             this.mnuVeViecTTTL.Size = new System.Drawing.Size(245, 22);
-            this.mnuVeViecTTTL.Text = "Về Việc Thảo Thư - Văn Bản";
+            this.mnuVeViecTTTL.Text = "Về Việc Thảo Thư / Văn Bản";
             this.mnuVeViecTTTL.Click += new System.EventHandler(this.mnuVeViecTTTL_Click);
             // 
             // mnuToTrinh

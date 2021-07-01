@@ -118,7 +118,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return db.DCBD_KhauTrus.Any(item => item.DanhBo == DanhBo && item.TatToan == false);
         }
 
-        public DCBD_KhauTru get_KhauTru(string DanhBo)
+        public DCBD_KhauTru get_KhauTru(int ID)
+        {
+            return db.DCBD_KhauTrus.SingleOrDefault(item => item.ID == ID );
+        }
+
+        public DCBD_KhauTru get_KhauTruTon(string DanhBo)
         {
             return db.DCBD_KhauTrus.SingleOrDefault(item => item.DanhBo == DanhBo && item.TatToan == false);
         }
@@ -140,9 +145,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return str;
         }
 
-        public int getSoTienKhauTruConLai(string DanhBo)
+        public int getSoTienKhauTruTon(string DanhBo)
         {
-            DCBD_KhauTru en = get_KhauTru(DanhBo);
+            DCBD_KhauTru en = get_KhauTruTon(DanhBo);
             if (en != null)
             {
                 return en.SoTien.Value - en.DCBD_KhauTru_LichSus.Sum(item => item.SoTien).Value;

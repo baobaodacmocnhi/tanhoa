@@ -203,7 +203,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void dgvDSTaiKhoan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvDSTaiKhoan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -324,6 +324,5 @@ namespace KTKS_DonKH.GUI.QuanTri
         }
 
         
-
     }
 }

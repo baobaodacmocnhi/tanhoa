@@ -17,6 +17,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         string _mnu = "mnuKhuCongNghiep";
         CKhuCongNghiep _cKCN = new CKhuCongNghiep();
 
+        DCBD_KhauTru _khautru = null;
+
         public frmKhuCongNghiep()
         {
             InitializeComponent();
@@ -33,13 +35,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         public void loaddgvDanhBo()
         {
+            txtDanhBo.Text = "";
+            txtDinhMuc.Text = "";
             dgvDanhBo.DataSource = _cKCN.getDS();
         }
 
         public void loaddgvKhauTru()
         {
+            txtDanhBo_KhauTru.Text = "";
+            txtSoTien_KhauTru.Text = "";
             dgvKhauTru.DataSource = _cKCN.getDS_KhauTru();
             dgvKhauTruLichSu.DataSource = null;
+            _khautru = null;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -48,7 +55,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 try
                 {
-                    if (txtDanhBo.Text.Trim().Replace(" ", "") == ""||txtDinhMuc.Text.Trim().Replace(" ", "") == "")
+                    if (txtDanhBo.Text.Trim().Replace(" ", "") == "" || txtDinhMuc.Text.Trim().Replace(" ", "") == "")
                     {
                         MessageBox.Show("Thông tin thiếu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -59,7 +66,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         return;
                     }
                     KhuCongNghiep en = new KhuCongNghiep();
-                    en.DanhBo=txtDanhBo.Text.Trim().Replace(" ", "");
+                    en.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                     en.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                     if (_cKCN.Them(en) == true)
                     {
@@ -116,6 +123,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void dgvDanhBo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert( 7, " ").Insert( 4, " ");
+            }
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DinhMuc" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
         private void btnThem_KhauTru_Click(object sender, EventArgs e)
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
@@ -161,16 +180,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 try
                 {
-                    DCBD_KhauTru en = _cKCN.get_KhauTru(txtDanhBo_KhauTru.Text.Trim().Replace(" ", ""));
-                    if (en != null)
-                        if (_cKCN.Xoa_KhauTru(en) == true)
+                    if (_khautru != null)
+                        if (_cKCN.Xoa_KhauTru(_khautru) == true)
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             loaddgvKhauTru();
                         }
                 }
                 catch (Exception ex)
-
                 {
                     MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -186,6 +203,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtDanhBo_KhauTru.Text = dgvKhauTru.CurrentRow.Cells["DanhBo_KhauTru"].Value.ToString();
                 txtSoTien_KhauTru.Text = dgvKhauTru.CurrentRow.Cells["SoTien_KhauTru"].Value.ToString();
                 dgvKhauTruLichSu.DataSource = _cKCN.getDS_KhauTruLichSu(int.Parse(dgvKhauTru["ID", e.RowIndex].Value.ToString()));
+                _khautru = _cKCN.get_KhauTru(int.Parse(dgvKhauTru["ID", e.RowIndex].Value.ToString()));
             }
             catch (Exception)
             {
@@ -216,11 +234,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     try
                     {
-                        DCBD_KhauTru en = _cKCN.get_KhauTru(txtDanhBo_KhauTru.Text.Trim().Replace(" ", ""));
-                        if (en != null)
+                        if (_khautru != null)
                         {
-                            en.TatToan = bool.Parse(dgvKhauTru["TatToan", e.RowIndex].Value.ToString());
-                            if (_cKCN.Sua_KhauTru(en) == true)
+                            _khautru.TatToan = bool.Parse(dgvKhauTru["TatToan", e.RowIndex].Value.ToString());
+                            if (_cKCN.Sua_KhauTru(_khautru) == true)
                             {
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 loaddgvKhauTru();
@@ -237,6 +254,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        
+        private void dgvKhauTru_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvKhauTru.Columns[e.ColumnIndex].Name == "DanhBo_KhauTru" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert( 7, " ").Insert( 4, " ");
+            }
+            if (dgvKhauTru.Columns[e.ColumnIndex].Name == "SoTien_KhauTru" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+
     }
 }

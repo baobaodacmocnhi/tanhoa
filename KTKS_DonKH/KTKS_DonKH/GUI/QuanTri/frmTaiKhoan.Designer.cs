@@ -38,6 +38,24 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.dgvDSTaiKhoan = new System.Windows.Forms.DataGridView();
+            this.MaU = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaKiemBamChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoGiamDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.An = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TruongPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToTruong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BamChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToGD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ToTB = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ToTP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ToBC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ThuKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtMaKiemBamChi = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -73,24 +91,6 @@
             this.cmbPhong = new System.Windows.Forms.ComboBox();
             this.lbPhong = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
-            this.MaU = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaKiemBamChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoGiamDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.An = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TruongPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ToTruong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BamChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ToGD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ToTB = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ToTP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ToBC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ThuKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTaiKhoan)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -106,7 +106,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 17);
+            this.label1.Location = new System.Drawing.Point(14, 8);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 16);
@@ -115,7 +115,7 @@
             // 
             // txtHoTen
             // 
-            this.txtHoTen.Location = new System.Drawing.Point(113, 14);
+            this.txtHoTen.Location = new System.Drawing.Point(113, 5);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(201, 22);
@@ -123,7 +123,7 @@
             // 
             // txtTaiKhoan
             // 
-            this.txtTaiKhoan.Location = new System.Drawing.Point(113, 45);
+            this.txtTaiKhoan.Location = new System.Drawing.Point(113, 36);
             this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(201, 22);
@@ -132,7 +132,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 48);
+            this.label2.Location = new System.Drawing.Point(14, 39);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 16);
@@ -141,7 +141,7 @@
             // 
             // txtMatKhau
             // 
-            this.txtMatKhau.Location = new System.Drawing.Point(113, 76);
+            this.txtMatKhau.Location = new System.Drawing.Point(113, 67);
             this.txtMatKhau.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
@@ -151,7 +151,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 79);
+            this.label3.Location = new System.Drawing.Point(14, 70);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 16);
@@ -160,7 +160,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(494, 13);
+            this.btnXoa.Location = new System.Drawing.Point(494, 4);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
@@ -171,7 +171,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(409, 13);
+            this.btnSua.Location = new System.Drawing.Point(409, 4);
             this.btnSua.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
@@ -212,22 +212,151 @@
             this.ToTP,
             this.ToBC,
             this.ThuKy});
-            this.dgvDSTaiKhoan.Location = new System.Drawing.Point(14, 167);
+            this.dgvDSTaiKhoan.Location = new System.Drawing.Point(14, 158);
             this.dgvDSTaiKhoan.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvDSTaiKhoan.MultiSelect = false;
             this.dgvDSTaiKhoan.Name = "dgvDSTaiKhoan";
-            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(745, 445);
+            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(803, 445);
             this.dgvDSTaiKhoan.TabIndex = 9;
-            this.dgvDSTaiKhoan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellContentClick);
+            this.dgvDSTaiKhoan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellClick);
             this.dgvDSTaiKhoan.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellValueChanged);
             this.dgvDSTaiKhoan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSTaiKhoan_RowPostPaint);
             this.dgvDSTaiKhoan.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvDSTaiKhoan_DragDrop);
             this.dgvDSTaiKhoan.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDSTaiKhoan_DragEnter);
             this.dgvDSTaiKhoan.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSTaiKhoan_MouseClick);
             // 
+            // MaU
+            // 
+            this.MaU.DataPropertyName = "MaU";
+            this.MaU.HeaderText = "Mã Tài Khoản";
+            this.MaU.Name = "MaU";
+            this.MaU.Visible = false;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 200;
+            // 
+            // TaiKhoan
+            // 
+            this.TaiKhoan.DataPropertyName = "TaiKhoan";
+            this.TaiKhoan.HeaderText = "Tài Khoản";
+            this.TaiKhoan.Name = "TaiKhoan";
+            this.TaiKhoan.ReadOnly = true;
+            // 
+            // MatKhau
+            // 
+            this.MatKhau.DataPropertyName = "MatKhau";
+            this.MatKhau.HeaderText = "Mật Khẩu";
+            this.MatKhau.Name = "MatKhau";
+            this.MatKhau.ReadOnly = true;
+            this.MatKhau.Visible = false;
+            // 
+            // MaKiemBamChi
+            // 
+            this.MaKiemBamChi.DataPropertyName = "MaKiemBamChi";
+            this.MaKiemBamChi.HeaderText = "Mã Kiềm";
+            this.MaKiemBamChi.Name = "MaKiemBamChi";
+            this.MaKiemBamChi.ReadOnly = true;
+            this.MaKiemBamChi.Width = 80;
+            // 
+            // MaNhom
+            // 
+            this.MaNhom.DataPropertyName = "MaNhom";
+            this.MaNhom.HeaderText = "MaNhom";
+            this.MaNhom.Name = "MaNhom";
+            this.MaNhom.Visible = false;
+            // 
+            // MaTo
+            // 
+            this.MaTo.DataPropertyName = "MaTo";
+            this.MaTo.HeaderText = "MaTo";
+            this.MaTo.Name = "MaTo";
+            this.MaTo.Visible = false;
+            // 
+            // PhoGiamDoc
+            // 
+            this.PhoGiamDoc.DataPropertyName = "PhoGiamDoc";
+            this.PhoGiamDoc.HeaderText = "PhoGiamDoc";
+            this.PhoGiamDoc.Name = "PhoGiamDoc";
+            this.PhoGiamDoc.Visible = false;
+            // 
+            // An
+            // 
+            this.An.DataPropertyName = "An";
+            this.An.HeaderText = "An";
+            this.An.Name = "An";
+            this.An.Visible = false;
+            // 
+            // TruongPhong
+            // 
+            this.TruongPhong.DataPropertyName = "TruongPhong";
+            this.TruongPhong.HeaderText = "TruongPhong";
+            this.TruongPhong.Name = "TruongPhong";
+            this.TruongPhong.Visible = false;
+            // 
+            // ToTruong
+            // 
+            this.ToTruong.DataPropertyName = "ToTruong";
+            this.ToTruong.HeaderText = "DoiTruong";
+            this.ToTruong.Name = "ToTruong";
+            this.ToTruong.Visible = false;
+            // 
+            // KTXM
+            // 
+            this.KTXM.DataPropertyName = "KTXM";
+            this.KTXM.HeaderText = "KTXM";
+            this.KTXM.Name = "KTXM";
+            this.KTXM.Visible = false;
+            // 
+            // BamChi
+            // 
+            this.BamChi.DataPropertyName = "BamChi";
+            this.BamChi.HeaderText = "BamChi";
+            this.BamChi.Name = "BamChi";
+            this.BamChi.Visible = false;
+            // 
+            // ToGD
+            // 
+            this.ToGD.DataPropertyName = "ToGD";
+            this.ToGD.HeaderText = "Tổ GD";
+            this.ToGD.Name = "ToGD";
+            this.ToGD.Width = 50;
+            // 
+            // ToTB
+            // 
+            this.ToTB.DataPropertyName = "ToTB";
+            this.ToTB.HeaderText = "Tổ TB";
+            this.ToTB.Name = "ToTB";
+            this.ToTB.Width = 50;
+            // 
+            // ToTP
+            // 
+            this.ToTP.DataPropertyName = "ToTP";
+            this.ToTP.HeaderText = "Tổ TP";
+            this.ToTP.Name = "ToTP";
+            this.ToTP.Width = 50;
+            // 
+            // ToBC
+            // 
+            this.ToBC.DataPropertyName = "ToBC";
+            this.ToBC.HeaderText = "Tổ BC";
+            this.ToBC.Name = "ToBC";
+            this.ToBC.Width = 50;
+            // 
+            // ThuKy
+            // 
+            this.ThuKy.DataPropertyName = "ThuKy";
+            this.ThuKy.HeaderText = "Thư Ký";
+            this.ThuKy.Name = "ThuKy";
+            this.ThuKy.Width = 50;
+            // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(324, 13);
+            this.btnThem.Location = new System.Drawing.Point(324, 4);
             this.btnThem.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
@@ -238,7 +367,7 @@
             // 
             // txtMaKiemBamChi
             // 
-            this.txtMaKiemBamChi.Location = new System.Drawing.Point(113, 107);
+            this.txtMaKiemBamChi.Location = new System.Drawing.Point(113, 98);
             this.txtMaKiemBamChi.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtMaKiemBamChi.Name = "txtMaKiemBamChi";
             this.txtMaKiemBamChi.Size = new System.Drawing.Size(201, 22);
@@ -247,17 +376,17 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 110);
+            this.label4.Location = new System.Drawing.Point(14, 101);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 16);
+            this.label4.Size = new System.Drawing.Size(76, 16);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Mã Kiềm BC:";
+            this.label4.Text = "Mã Kìm BC:";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.gridControl);
-            this.groupBox1.Location = new System.Drawing.Point(767, 167);
+            this.groupBox1.Location = new System.Drawing.Point(825, 158);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(527, 450);
             this.groupBox1.TabIndex = 16;
@@ -266,7 +395,7 @@
             // 
             // gridControl
             // 
-            this.gridControl.Location = new System.Drawing.Point(6, 21);
+            this.gridControl.Location = new System.Drawing.Point(6, 20);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -435,7 +564,7 @@
             // chkAn
             // 
             this.chkAn.AutoSize = true;
-            this.chkAn.Location = new System.Drawing.Point(443, 45);
+            this.chkAn.Location = new System.Drawing.Point(443, 36);
             this.chkAn.Name = "chkAn";
             this.chkAn.Size = new System.Drawing.Size(43, 20);
             this.chkAn.TabIndex = 31;
@@ -446,7 +575,7 @@
             // chkPhoGiamDoc
             // 
             this.chkPhoGiamDoc.AutoSize = true;
-            this.chkPhoGiamDoc.Location = new System.Drawing.Point(324, 45);
+            this.chkPhoGiamDoc.Location = new System.Drawing.Point(324, 36);
             this.chkPhoGiamDoc.Name = "chkPhoGiamDoc";
             this.chkPhoGiamDoc.Size = new System.Drawing.Size(113, 20);
             this.chkPhoGiamDoc.TabIndex = 30;
@@ -457,7 +586,7 @@
             // chkPhong
             // 
             this.chkPhong.AutoSize = true;
-            this.chkPhong.Location = new System.Drawing.Point(324, 78);
+            this.chkPhong.Location = new System.Drawing.Point(324, 69);
             this.chkPhong.Name = "chkPhong";
             this.chkPhong.Size = new System.Drawing.Size(66, 20);
             this.chkPhong.TabIndex = 29;
@@ -467,7 +596,7 @@
             // chkToTruong
             // 
             this.chkToTruong.AutoSize = true;
-            this.chkToTruong.Location = new System.Drawing.Point(396, 78);
+            this.chkToTruong.Location = new System.Drawing.Point(396, 69);
             this.chkToTruong.Name = "chkToTruong";
             this.chkToTruong.Size = new System.Drawing.Size(90, 20);
             this.chkToTruong.TabIndex = 28;
@@ -477,7 +606,7 @@
             // cmbNhom
             // 
             this.cmbNhom.FormattingEnabled = true;
-            this.cmbNhom.Location = new System.Drawing.Point(373, 136);
+            this.cmbNhom.Location = new System.Drawing.Point(373, 127);
             this.cmbNhom.Name = "cmbNhom";
             this.cmbNhom.Size = new System.Drawing.Size(138, 24);
             this.cmbNhom.TabIndex = 33;
@@ -485,7 +614,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(320, 140);
+            this.label5.Location = new System.Drawing.Point(320, 131);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 16);
             this.label5.TabIndex = 32;
@@ -494,7 +623,7 @@
             // cmbTo
             // 
             this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Location = new System.Drawing.Point(113, 136);
+            this.cmbTo.Location = new System.Drawing.Point(113, 127);
             this.cmbTo.Name = "cmbTo";
             this.cmbTo.Size = new System.Drawing.Size(201, 24);
             this.cmbTo.TabIndex = 35;
@@ -502,7 +631,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(77, 140);
+            this.label6.Location = new System.Drawing.Point(77, 131);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 16);
             this.label6.TabIndex = 34;
@@ -511,7 +640,7 @@
             // chkKTXM
             // 
             this.chkKTXM.AutoSize = true;
-            this.chkKTXM.Location = new System.Drawing.Point(324, 109);
+            this.chkKTXM.Location = new System.Drawing.Point(324, 100);
             this.chkKTXM.Name = "chkKTXM";
             this.chkKTXM.Size = new System.Drawing.Size(63, 20);
             this.chkKTXM.TabIndex = 36;
@@ -521,7 +650,7 @@
             // chkBamChi
             // 
             this.chkBamChi.AutoSize = true;
-            this.chkBamChi.Location = new System.Drawing.Point(393, 109);
+            this.chkBamChi.Location = new System.Drawing.Point(393, 100);
             this.chkBamChi.Name = "chkBamChi";
             this.chkBamChi.Size = new System.Drawing.Size(77, 20);
             this.chkBamChi.TabIndex = 37;
@@ -531,7 +660,7 @@
             // cmbPhong
             // 
             this.cmbPhong.FormattingEnabled = true;
-            this.cmbPhong.Location = new System.Drawing.Point(570, 137);
+            this.cmbPhong.Location = new System.Drawing.Point(570, 128);
             this.cmbPhong.Name = "cmbPhong";
             this.cmbPhong.Size = new System.Drawing.Size(138, 24);
             this.cmbPhong.TabIndex = 39;
@@ -540,7 +669,7 @@
             // lbPhong
             // 
             this.lbPhong.AutoSize = true;
-            this.lbPhong.Location = new System.Drawing.Point(517, 140);
+            this.lbPhong.Location = new System.Drawing.Point(517, 131);
             this.lbPhong.Name = "lbPhong";
             this.lbPhong.Size = new System.Drawing.Size(47, 16);
             this.lbPhong.TabIndex = 38;
@@ -549,7 +678,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(579, 13);
+            this.btnXem.Location = new System.Drawing.Point(579, 4);
             this.btnXem.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 25);
@@ -559,142 +688,12 @@
             this.btnXem.Visible = false;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
-            // MaU
-            // 
-            this.MaU.DataPropertyName = "MaU";
-            this.MaU.HeaderText = "Mã Tài Khoản";
-            this.MaU.Name = "MaU";
-            this.MaU.Visible = false;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 200;
-            // 
-            // TaiKhoan
-            // 
-            this.TaiKhoan.DataPropertyName = "TaiKhoan";
-            this.TaiKhoan.HeaderText = "Tài Khoản";
-            this.TaiKhoan.Name = "TaiKhoan";
-            this.TaiKhoan.ReadOnly = true;
-            // 
-            // MatKhau
-            // 
-            this.MatKhau.DataPropertyName = "MatKhau";
-            this.MatKhau.HeaderText = "Mật Khẩu";
-            this.MatKhau.Name = "MatKhau";
-            this.MatKhau.ReadOnly = true;
-            this.MatKhau.Visible = false;
-            // 
-            // MaKiemBamChi
-            // 
-            this.MaKiemBamChi.DataPropertyName = "MaKiemBamChi";
-            this.MaKiemBamChi.HeaderText = "Mã Kiềm";
-            this.MaKiemBamChi.Name = "MaKiemBamChi";
-            this.MaKiemBamChi.ReadOnly = true;
-            this.MaKiemBamChi.Visible = false;
-            this.MaKiemBamChi.Width = 80;
-            // 
-            // MaNhom
-            // 
-            this.MaNhom.DataPropertyName = "MaNhom";
-            this.MaNhom.HeaderText = "MaNhom";
-            this.MaNhom.Name = "MaNhom";
-            this.MaNhom.Visible = false;
-            // 
-            // MaTo
-            // 
-            this.MaTo.DataPropertyName = "MaTo";
-            this.MaTo.HeaderText = "MaTo";
-            this.MaTo.Name = "MaTo";
-            this.MaTo.Visible = false;
-            // 
-            // PhoGiamDoc
-            // 
-            this.PhoGiamDoc.DataPropertyName = "PhoGiamDoc";
-            this.PhoGiamDoc.HeaderText = "PhoGiamDoc";
-            this.PhoGiamDoc.Name = "PhoGiamDoc";
-            this.PhoGiamDoc.Visible = false;
-            // 
-            // An
-            // 
-            this.An.DataPropertyName = "An";
-            this.An.HeaderText = "An";
-            this.An.Name = "An";
-            this.An.Visible = false;
-            // 
-            // TruongPhong
-            // 
-            this.TruongPhong.DataPropertyName = "TruongPhong";
-            this.TruongPhong.HeaderText = "TruongPhong";
-            this.TruongPhong.Name = "TruongPhong";
-            this.TruongPhong.Visible = false;
-            // 
-            // ToTruong
-            // 
-            this.ToTruong.DataPropertyName = "ToTruong";
-            this.ToTruong.HeaderText = "DoiTruong";
-            this.ToTruong.Name = "ToTruong";
-            this.ToTruong.Visible = false;
-            // 
-            // KTXM
-            // 
-            this.KTXM.DataPropertyName = "KTXM";
-            this.KTXM.HeaderText = "KTXM";
-            this.KTXM.Name = "KTXM";
-            this.KTXM.Visible = false;
-            // 
-            // BamChi
-            // 
-            this.BamChi.DataPropertyName = "BamChi";
-            this.BamChi.HeaderText = "BamChi";
-            this.BamChi.Name = "BamChi";
-            this.BamChi.Visible = false;
-            // 
-            // ToGD
-            // 
-            this.ToGD.DataPropertyName = "ToGD";
-            this.ToGD.HeaderText = "Tổ GD";
-            this.ToGD.Name = "ToGD";
-            this.ToGD.Width = 50;
-            // 
-            // ToTB
-            // 
-            this.ToTB.DataPropertyName = "ToTB";
-            this.ToTB.HeaderText = "Tổ TB";
-            this.ToTB.Name = "ToTB";
-            this.ToTB.Width = 50;
-            // 
-            // ToTP
-            // 
-            this.ToTP.DataPropertyName = "ToTP";
-            this.ToTP.HeaderText = "Tổ TP";
-            this.ToTP.Name = "ToTP";
-            this.ToTP.Width = 50;
-            // 
-            // ToBC
-            // 
-            this.ToBC.DataPropertyName = "ToBC";
-            this.ToBC.HeaderText = "Tổ BC";
-            this.ToBC.Name = "ToBC";
-            this.ToBC.Width = 50;
-            // 
-            // ThuKy
-            // 
-            this.ThuKy.DataPropertyName = "ThuKy";
-            this.ThuKy.HeaderText = "Thư Ký";
-            this.ThuKy.Name = "ThuKy";
-            this.ThuKy.Width = 50;
-            // 
             // frmTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1328, 626);
+            this.ClientSize = new System.Drawing.Size(1359, 626);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.cmbPhong);
             this.Controls.Add(this.lbPhong);

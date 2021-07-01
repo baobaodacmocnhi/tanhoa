@@ -34,6 +34,8 @@
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDinhMucHN = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.txtDinhMuc = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
@@ -106,8 +108,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.chkNgayBCTruocNgayGiao = new System.Windows.Forms.CheckBox();
-            this.txtDinhMucHN = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSNhapBamChi)).BeginInit();
@@ -155,6 +155,22 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Khách Hàng";
+            // 
+            // txtDinhMucHN
+            // 
+            this.txtDinhMucHN.Location = new System.Drawing.Point(607, 48);
+            this.txtDinhMucHN.Name = "txtDinhMucHN";
+            this.txtDinhMucHN.Size = new System.Drawing.Size(50, 22);
+            this.txtDinhMucHN.TabIndex = 13;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(513, 51);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(88, 16);
+            this.label26.TabIndex = 12;
+            this.label26.Text = "Định Mức HN:";
             // 
             // txtDinhMuc
             // 
@@ -583,9 +599,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(395, 94);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(57, 16);
+            this.label11.Size = new System.Drawing.Size(52, 16);
             this.label11.TabIndex = 22;
-            this.label11.Text = "Mã Kềm";
+            this.label11.Text = "Mã Kìm";
             // 
             // dateBamChi
             // 
@@ -876,22 +892,6 @@
             this.chkNgayBCTruocNgayGiao.TabIndex = 34;
             this.chkNgayBCTruocNgayGiao.Text = "Ngày BC Trước Ngày Giao";
             this.chkNgayBCTruocNgayGiao.UseVisualStyleBackColor = true;
-            // 
-            // txtDinhMucHN
-            // 
-            this.txtDinhMucHN.Location = new System.Drawing.Point(607, 48);
-            this.txtDinhMucHN.Name = "txtDinhMucHN";
-            this.txtDinhMucHN.Size = new System.Drawing.Size(50, 22);
-            this.txtDinhMucHN.TabIndex = 13;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(513, 51);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(88, 16);
-            this.label26.TabIndex = 12;
-            this.label26.Text = "Định Mức HN:";
             // 
             // frmBamChi
             // 

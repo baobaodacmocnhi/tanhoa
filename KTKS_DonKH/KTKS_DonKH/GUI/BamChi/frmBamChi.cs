@@ -564,6 +564,12 @@ namespace KTKS_DonKH.GUI.BamChi
                     if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
                         ctbamchi.ChiSo = int.Parse(txtChiSo.Text.Trim());
 
+
+                    if (txtNiemChi.Text.Trim() == "")
+                    {
+                        MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()))
                     {
                         if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
@@ -721,6 +727,12 @@ namespace KTKS_DonKH.GUI.BamChi
                         if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
                             _ctbamchi.ChiSo = int.Parse(txtChiSo.Text.Trim());
 
+
+                        if (txtNiemChi.Text.Trim() == "")
+                        {
+                            MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && (_ctbamchi.NiemChi == null || _ctbamchi.NiemChi.Value != int.Parse(txtNiemChi.Text.Trim())))
                         {
                             if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)

@@ -1,0 +1,1 @@
+select DANHBA,SO,DUONG,MALOTRINH,GB,DM,Phuong=(SELECT TENPHUONG FROM [SERVER8].[CAPNUOCTANHOA].[dbo].[PHUONG] where maquan=Quan and maphuong=Phuong),Quan=(SELECT TENQUAN FROM [SERVER8].[CAPNUOCTANHOA].[dbo].[QUAN] where maquan=Quan) from HOADON where NAM=2021 and KY=6 and (GB=51 or GB=59 or GB=68)

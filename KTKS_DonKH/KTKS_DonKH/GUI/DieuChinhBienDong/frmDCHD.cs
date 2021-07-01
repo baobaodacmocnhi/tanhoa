@@ -441,7 +441,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_hoadon != null)
                 {
                     LoadTTKH(_hoadon);
-                    txtSoTienKhauTruConLai.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cKCN.getSoTienKhauTruConLai(_hoadon.DANHBA));
+                    txtSoTienKhauTruConLai.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cKCN.getSoTienKhauTruTon(_hoadon.DANHBA));
                     txtKyHD.Focus();
                 }
                 else
@@ -813,7 +813,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             if (_cKCN.checkExist_KhauTru(ctdchd.DanhBo) == true)
                             {
-                                DCBD_KhauTru en = _cKCN.get_KhauTru(ctdchd.DanhBo);
+                                DCBD_KhauTru en = _cKCN.get_KhauTruTon(ctdchd.DanhBo);
                                 DCBD_KhauTru_LichSu enLS = new DCBD_KhauTru_LichSu();
                                 enLS.DanhBo = en.DanhBo;
                                 enLS.Ky = ctdchd.KyHD;
