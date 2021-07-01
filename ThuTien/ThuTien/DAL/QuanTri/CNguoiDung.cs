@@ -37,6 +37,13 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._TenTo = value; }
         }
 
+        static string _MaKemBamChi;
+        public static string MaKemBamChi
+        {
+            get { return CNguoiDung._MaKemBamChi; }
+            set { CNguoiDung._MaKemBamChi = value; }
+        }
+
         static bool _Admin;
         public static bool Admin
         {
@@ -165,6 +172,7 @@ namespace ThuTien.DAL.QuanTri
         {
             CNguoiDung.MaND = -1;
             CNguoiDung.HoTen = "";
+            CNguoiDung.MaKemBamChi = "";
             CNguoiDung.Admin = false;
             CNguoiDung.PhoGiamDoc = false;
             CNguoiDung.Doi = false;

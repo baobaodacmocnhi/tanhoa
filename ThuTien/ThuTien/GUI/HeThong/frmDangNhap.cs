@@ -55,6 +55,7 @@ namespace ThuTien.GUI.HeThong
 
                         CNguoiDung.MaND = nguoidung.MaND;
                         CNguoiDung.HoTen = nguoidung.HoTen;
+                        CNguoiDung.MaKemBamChi = nguoidung.MaKemBamChi;
                         CNguoiDung.Admin = nguoidung.Admin;
                         CNguoiDung.PhoGiamDoc = nguoidung.PhoGiamDoc;
                         CNguoiDung.Doi = nguoidung.Doi;

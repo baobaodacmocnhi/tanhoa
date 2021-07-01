@@ -38,6 +38,7 @@ namespace ThuTien.GUI.QuanTri
             txtDienThoai.Text = "";
             txtZalo.Text = "";
             txtNam.Text = "";
+            txtMaKemBamChi.Text = "";
             txtIDMobile.Text = "";
             chkPhoGiamDoc.Checked = false;
             chkDoi.Checked = false;
@@ -118,6 +119,7 @@ namespace ThuTien.GUI.QuanTri
                         nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
                         nguoidung.NgayPhepNamCu = nguoidung.NgayPhepNamMoi = 0;
                     }
+                    nguoidung.MaKemBamChi = txtMaKemBamChi.Text.Trim();
                     if (cmbTo.SelectedIndex != -1)
                         nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     if (cmbNhom.SelectedIndex != -1)
@@ -178,6 +180,7 @@ namespace ThuTien.GUI.QuanTri
                             nguoidung.IDMobile = null;
                         if (!string.IsNullOrEmpty(txtNam.Text.Trim()))
                             nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
+                        nguoidung.MaKemBamChi = txtMaKemBamChi.Text.Trim();
                         nguoidung.MaTo = (int)cmbTo.SelectedValue;
                         nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
                         nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
@@ -254,6 +257,8 @@ namespace ThuTien.GUI.QuanTri
                 txtMatKhau.Text = dgvNguoiDung["MatKhau", e.RowIndex].Value.ToString();
                 if (dgvNguoiDung["NamVaoLam", e.RowIndex].Value != null)
                     txtNam.Text = dgvNguoiDung["NamVaoLam", e.RowIndex].Value.ToString();
+                if (dgvNguoiDung["MaKemBamChi", e.RowIndex].Value != null)
+                    txtMaKemBamChi.Text = dgvNguoiDung["MaKemBamChi", e.RowIndex].Value.ToString();
                 if (dgvNguoiDung["MaTo", e.RowIndex].Value != null)
                     cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());
                 if (dgvNguoiDung["MaNhom", e.RowIndex].Value != null)
