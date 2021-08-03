@@ -67,7 +67,7 @@
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTu.Location = new System.Drawing.Point(65, 20);
             this.dateTu.Name = "dateTu";
-            this.dateTu.Size = new System.Drawing.Size(100, 21);
+            this.dateTu.Size = new System.Drawing.Size(100, 24);
             this.dateTu.TabIndex = 27;
             // 
             // label2
@@ -75,7 +75,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(8, 22);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 15);
+            this.label2.Size = new System.Drawing.Size(67, 18);
             this.label2.TabIndex = 26;
             this.label2.Text = "Từ Ngày:";
             // 
@@ -85,7 +85,7 @@
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateDen.Location = new System.Drawing.Point(235, 20);
             this.dateDen.Name = "dateDen";
-            this.dateDen.Size = new System.Drawing.Size(100, 21);
+            this.dateDen.Size = new System.Drawing.Size(100, 24);
             this.dateDen.TabIndex = 25;
             // 
             // label3
@@ -93,14 +93,15 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(171, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 15);
+            this.label3.Size = new System.Drawing.Size(77, 18);
             this.label3.TabIndex = 24;
             this.label3.Text = "Đến Ngày:";
             // 
             // frmBaoCao
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(665, 366);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

@@ -322,6 +322,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
+                            NguoiKy=item.NguoiKy_DN,
                         };
             return LINQToDataTable(query);
         }
@@ -384,6 +385,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
+                            NguoiKy=item.NguoiKy_DN,
                         };
             return LINQToDataTable(query);
         }
@@ -480,6 +482,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
+                            NguoiKy=item.NguoiKy_MN,
                         };
             return LINQToDataTable(query);
         }
@@ -520,6 +523,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                 item.DanhBo,
                                 item.HoTen,
                                 item.DiaChi,
+                                NguoiKy=item.NguoiKy_MN,
                             };
                 return LINQToDataTable(query);
         }

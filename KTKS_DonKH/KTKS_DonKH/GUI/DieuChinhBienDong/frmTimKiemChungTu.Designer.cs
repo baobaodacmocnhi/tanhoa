@@ -44,7 +44,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 16);
+            this.label1.Size = new System.Drawing.Size(111, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Số Chứng Từ:";
             // 
@@ -52,7 +52,7 @@
             // 
             this.txtMaCT.Location = new System.Drawing.Point(112, 42);
             this.txtMaCT.Name = "txtMaCT";
-            this.txtMaCT.Size = new System.Drawing.Size(100, 22);
+            this.txtMaCT.Size = new System.Drawing.Size(100, 26);
             this.txtMaCT.TabIndex = 1;
             this.txtMaCT.TextChanged += new System.EventHandler(this.txtMaCT_TextChanged);
             // 
@@ -94,7 +94,7 @@
             this.cmbLoaiCT.FormattingEnabled = true;
             this.cmbLoaiCT.Location = new System.Drawing.Point(112, 12);
             this.cmbLoaiCT.Name = "cmbLoaiCT";
-            this.cmbLoaiCT.Size = new System.Drawing.Size(201, 24);
+            this.cmbLoaiCT.Size = new System.Drawing.Size(201, 28);
             this.cmbLoaiCT.TabIndex = 19;
             // 
             // label2
@@ -102,14 +102,15 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 16);
+            this.label2.Size = new System.Drawing.Size(123, 20);
             this.label2.TabIndex = 18;
             this.label2.Text = "Loại Chứng Từ:";
             // 
             // frmTimKiemChungTu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(326, 278);
             this.Controls.Add(this.cmbLoaiCT);

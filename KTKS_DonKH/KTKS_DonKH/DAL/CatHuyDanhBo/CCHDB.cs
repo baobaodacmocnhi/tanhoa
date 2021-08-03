@@ -1702,6 +1702,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.LyDo,
                             item.GhiChuLyDo,
                             item.SoTien,
+                            item.NguoiKy,
                         };
             return LINQToDataTable(query);
         }

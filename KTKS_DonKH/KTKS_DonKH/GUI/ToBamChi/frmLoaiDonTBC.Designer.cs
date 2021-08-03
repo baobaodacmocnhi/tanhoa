@@ -81,7 +81,7 @@
             this.txtKyHieuLD.Location = new System.Drawing.Point(176, 13);
             this.txtKyHieuLD.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtKyHieuLD.Name = "txtKyHieuLD";
-            this.txtKyHieuLD.Size = new System.Drawing.Size(165, 22);
+            this.txtKyHieuLD.Size = new System.Drawing.Size(165, 26);
             this.txtKyHieuLD.TabIndex = 97;
             // 
             // btnThem
@@ -121,7 +121,7 @@
             this.label3.Location = new System.Drawing.Point(47, 17);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 16);
+            this.label3.Size = new System.Drawing.Size(145, 20);
             this.label3.TabIndex = 96;
             this.label3.Text = "Ký Hiệu Loại Đơn:";
             // 
@@ -131,7 +131,7 @@
             this.label4.Location = new System.Drawing.Point(47, 49);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 16);
+            this.label4.Size = new System.Drawing.Size(114, 20);
             this.label4.TabIndex = 98;
             this.label4.Text = "Tên Loại Đơn:";
             // 
@@ -171,13 +171,14 @@
             this.txtTenLD.Location = new System.Drawing.Point(176, 45);
             this.txtTenLD.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtTenLD.Name = "txtTenLD";
-            this.txtTenLD.Size = new System.Drawing.Size(165, 22);
+            this.txtTenLD.Size = new System.Drawing.Size(165, 26);
             this.txtTenLD.TabIndex = 99;
             // 
             // frmLoaiDonTBC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(539, 629);
             this.Controls.Add(this.btnXoa);

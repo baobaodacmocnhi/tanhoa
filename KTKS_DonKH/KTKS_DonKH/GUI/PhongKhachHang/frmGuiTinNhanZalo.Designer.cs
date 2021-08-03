@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.dgvTinNhan = new System.Windows.Forms.DataGridView();
@@ -42,39 +42,42 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 15);
+            this.label1.Location = new System.Drawing.Point(7, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(67, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nội Dung";
             // 
             // txtNoiDung
             // 
-            this.txtNoiDung.Location = new System.Drawing.Point(63, 12);
+            this.txtNoiDung.Location = new System.Drawing.Point(84, 15);
+            this.txtNoiDung.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNoiDung.Name = "txtNoiDung";
-            this.txtNoiDung.Size = new System.Drawing.Size(500, 20);
+            this.txtNoiDung.Size = new System.Drawing.Size(665, 22);
             this.txtNoiDung.TabIndex = 1;
             // 
             // dgvTinNhan
             // 
             this.dgvTinNhan.AllowUserToAddRows = false;
             this.dgvTinNhan.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTinNhan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTinNhan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTinNhan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTinNhan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.NoiDung,
             this.CreateDate});
-            this.dgvTinNhan.Location = new System.Drawing.Point(12, 38);
+            this.dgvTinNhan.Location = new System.Drawing.Point(16, 47);
+            this.dgvTinNhan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvTinNhan.Name = "dgvTinNhan";
-            this.dgvTinNhan.Size = new System.Drawing.Size(461, 505);
+            this.dgvTinNhan.Size = new System.Drawing.Size(615, 622);
             this.dgvTinNhan.TabIndex = 15;
             // 
             // ID
@@ -99,9 +102,10 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(479, 38);
+            this.btnThem.Location = new System.Drawing.Point(639, 47);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.Size = new System.Drawing.Size(100, 28);
             this.btnThem.TabIndex = 16;
             this.btnThem.Text = "Gửi";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -109,13 +113,15 @@
             // 
             // frmGuiTinNhanZalo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(583, 557);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(777, 686);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.dgvTinNhan);
             this.Controls.Add(this.txtNoiDung);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmGuiTinNhanZalo";
             this.Text = "Gửi Tin Nhắn Zalo";
             this.Load += new System.EventHandler(this.frmZaloGuiTinNhan_Load);

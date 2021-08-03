@@ -44,7 +44,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(21, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 16);
+            this.label1.Size = new System.Drawing.Size(125, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên Chi Nhánh:";
             // 
@@ -52,7 +52,7 @@
             // 
             this.txtTenCN.Location = new System.Drawing.Point(127, 12);
             this.txtTenCN.Name = "txtTenCN";
-            this.txtTenCN.Size = new System.Drawing.Size(399, 22);
+            this.txtTenCN.Size = new System.Drawing.Size(399, 26);
             this.txtTenCN.TabIndex = 1;
             // 
             // btnThem
@@ -117,8 +117,9 @@
             // 
             // frmChiNhanh
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(555, 323);
             this.Controls.Add(this.dgvDSChiNhanh);

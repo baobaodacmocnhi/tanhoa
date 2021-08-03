@@ -44,7 +44,7 @@
             // 
             this.txtNoiDung.Location = new System.Drawing.Point(89, 12);
             this.txtNoiDung.Name = "txtNoiDung";
-            this.txtNoiDung.Size = new System.Drawing.Size(293, 22);
+            this.txtNoiDung.Size = new System.Drawing.Size(293, 26);
             this.txtNoiDung.TabIndex = 12;
             // 
             // label1
@@ -52,7 +52,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(16, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 16);
+            this.label1.Size = new System.Drawing.Size(84, 20);
             this.label1.TabIndex = 11;
             this.label1.Text = "Nội Dung:";
             // 
@@ -130,8 +130,9 @@
             // 
             // frmNoiDungXuLyCHDB
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(529, 518);
             this.Controls.Add(this.btnXoa);

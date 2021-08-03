@@ -73,7 +73,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 16);
+            this.label1.Size = new System.Drawing.Size(75, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Danh Bộ";
             // 
@@ -81,7 +81,7 @@
             // 
             this.txtDanhBo.Location = new System.Drawing.Point(75, 21);
             this.txtDanhBo.Name = "txtDanhBo";
-            this.txtDanhBo.Size = new System.Drawing.Size(100, 22);
+            this.txtDanhBo.Size = new System.Drawing.Size(100, 26);
             this.txtDanhBo.TabIndex = 1;
             // 
             // dgvDanhBo
@@ -142,7 +142,7 @@
             // 
             this.txtDinhMuc.Location = new System.Drawing.Point(75, 49);
             this.txtDinhMuc.Name = "txtDinhMuc";
-            this.txtDinhMuc.Size = new System.Drawing.Size(100, 22);
+            this.txtDinhMuc.Size = new System.Drawing.Size(100, 26);
             this.txtDinhMuc.TabIndex = 6;
             // 
             // label2
@@ -150,7 +150,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 16);
+            this.label2.Size = new System.Drawing.Size(80, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Định Mức";
             // 
@@ -221,9 +221,9 @@
             this.SoTien_KTLS,
             this.CreateDate_KTLS});
             this.dgvKhauTruLichSu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvKhauTruLichSu.Location = new System.Drawing.Point(3, 18);
+            this.dgvKhauTruLichSu.Location = new System.Drawing.Point(3, 22);
             this.dgvKhauTruLichSu.Name = "dgvKhauTruLichSu";
-            this.dgvKhauTruLichSu.Size = new System.Drawing.Size(462, 174);
+            this.dgvKhauTruLichSu.Size = new System.Drawing.Size(462, 170);
             this.dgvKhauTruLichSu.TabIndex = 11;
             this.dgvKhauTruLichSu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvKhauTruLichSu_RowPostPaint);
             // 
@@ -255,7 +255,7 @@
             // 
             this.txtDanhBo_KhauTru.Location = new System.Drawing.Point(75, 21);
             this.txtDanhBo_KhauTru.Name = "txtDanhBo_KhauTru";
-            this.txtDanhBo_KhauTru.Size = new System.Drawing.Size(100, 22);
+            this.txtDanhBo_KhauTru.Size = new System.Drawing.Size(100, 26);
             this.txtDanhBo_KhauTru.TabIndex = 9;
             // 
             // btnSua_KhauTru
@@ -274,7 +274,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(9, 24);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 16);
+            this.label3.Size = new System.Drawing.Size(75, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "Danh Bộ";
             // 
@@ -282,7 +282,7 @@
             // 
             this.txtSoTien_KhauTru.Location = new System.Drawing.Point(75, 49);
             this.txtSoTien_KhauTru.Name = "txtSoTien_KhauTru";
-            this.txtSoTien_KhauTru.Size = new System.Drawing.Size(100, 22);
+            this.txtSoTien_KhauTru.Size = new System.Drawing.Size(100, 26);
             this.txtSoTien_KhauTru.TabIndex = 14;
             // 
             // dgvKhauTru
@@ -342,7 +342,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(9, 52);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 16);
+            this.label4.Size = new System.Drawing.Size(66, 20);
             this.label4.TabIndex = 13;
             this.label4.Text = "Số Tiền";
             // 
@@ -368,8 +368,9 @@
             // 
             // frmKhuCongNghiep
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1134, 563);
             this.Controls.Add(this.groupBox2);

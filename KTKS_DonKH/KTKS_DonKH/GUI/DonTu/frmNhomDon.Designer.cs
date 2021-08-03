@@ -54,9 +54,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvDieuChinh);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(16, 15);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(370, 550);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(493, 677);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Điều Chỉnh";
@@ -69,10 +71,11 @@
             this.STT_DieuChinh,
             this.Name_DieuChinh});
             this.dgvDieuChinh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDieuChinh.Location = new System.Drawing.Point(3, 16);
+            this.dgvDieuChinh.Location = new System.Drawing.Point(4, 19);
+            this.dgvDieuChinh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvDieuChinh.MultiSelect = false;
             this.dgvDieuChinh.Name = "dgvDieuChinh";
-            this.dgvDieuChinh.Size = new System.Drawing.Size(364, 531);
+            this.dgvDieuChinh.Size = new System.Drawing.Size(485, 654);
             this.dgvDieuChinh.TabIndex = 0;
             this.dgvDieuChinh.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDieuChinh_CellEndEdit);
             this.dgvDieuChinh.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDieuChinh_RowEnter);
@@ -106,9 +109,11 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvKhieuNai);
-            this.groupBox2.Location = new System.Drawing.Point(388, 12);
+            this.groupBox2.Location = new System.Drawing.Point(517, 15);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(370, 550);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(493, 677);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Khiếu Nại";
@@ -121,10 +126,11 @@
             this.STT_KhieuNai,
             this.Name_KhieuNai});
             this.dgvKhieuNai.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvKhieuNai.Location = new System.Drawing.Point(3, 16);
+            this.dgvKhieuNai.Location = new System.Drawing.Point(4, 19);
+            this.dgvKhieuNai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvKhieuNai.MultiSelect = false;
             this.dgvKhieuNai.Name = "dgvKhieuNai";
-            this.dgvKhieuNai.Size = new System.Drawing.Size(364, 531);
+            this.dgvKhieuNai.Size = new System.Drawing.Size(485, 654);
             this.dgvKhieuNai.TabIndex = 0;
             this.dgvKhieuNai.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhieuNai_CellEndEdit);
             this.dgvKhieuNai.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhieuNai_RowEnter);
@@ -158,9 +164,11 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dgvDHN);
-            this.groupBox3.Location = new System.Drawing.Point(764, 12);
+            this.groupBox3.Location = new System.Drawing.Point(1019, 15);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(370, 550);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Size = new System.Drawing.Size(493, 677);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Sự Cố ĐHN";
@@ -173,10 +181,11 @@
             this.STT_DHN,
             this.Name_DHN});
             this.dgvDHN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDHN.Location = new System.Drawing.Point(3, 16);
+            this.dgvDHN.Location = new System.Drawing.Point(4, 19);
+            this.dgvDHN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvDHN.MultiSelect = false;
             this.dgvDHN.Name = "dgvDHN";
-            this.dgvDHN.Size = new System.Drawing.Size(364, 531);
+            this.dgvDHN.Size = new System.Drawing.Size(485, 654);
             this.dgvDHN.TabIndex = 0;
             this.dgvDHN.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDHN_CellEndEdit);
             this.dgvDHN.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDHN_RowEnter);
@@ -209,12 +218,14 @@
             // 
             // frmNhomDon
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1278, 656);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1704, 807);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmNhomDon";
             this.Text = "Nhóm Đơn";
             this.Load += new System.EventHandler(this.frmNhomDon_Load);

@@ -50,7 +50,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(139, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 16);
+            this.label1.Size = new System.Drawing.Size(150, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ký Hiệu Chứng Từ:";
             // 
@@ -58,14 +58,14 @@
             // 
             this.txtKyHieuLCT.Location = new System.Drawing.Point(270, 12);
             this.txtKyHieuLCT.Name = "txtKyHieuLCT";
-            this.txtKyHieuLCT.Size = new System.Drawing.Size(201, 22);
+            this.txtKyHieuLCT.Size = new System.Drawing.Size(201, 26);
             this.txtKyHieuLCT.TabIndex = 1;
             // 
             // txtTenLCT
             // 
             this.txtTenLCT.Location = new System.Drawing.Point(270, 41);
             this.txtTenLCT.Name = "txtTenLCT";
-            this.txtTenLCT.Size = new System.Drawing.Size(201, 22);
+            this.txtTenLCT.Size = new System.Drawing.Size(201, 26);
             this.txtTenLCT.TabIndex = 3;
             // 
             // label2
@@ -73,7 +73,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(139, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 16);
+            this.label2.Size = new System.Drawing.Size(119, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Tên Chứng Từ:";
             // 
@@ -82,7 +82,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(139, 73);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 16);
+            this.label3.Size = new System.Drawing.Size(140, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Thời Hạn (tháng):";
             // 
@@ -169,14 +169,15 @@
             // 
             this.txtThoiHan.Location = new System.Drawing.Point(270, 69);
             this.txtThoiHan.Name = "txtThoiHan";
-            this.txtThoiHan.Size = new System.Drawing.Size(201, 22);
+            this.txtThoiHan.Size = new System.Drawing.Size(201, 26);
             this.txtThoiHan.TabIndex = 5;
             this.txtThoiHan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThoiHan_KeyPress);
             // 
             // frmLoaiChungTu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(674, 435);
             this.Controls.Add(this.dgvDSChungTu);

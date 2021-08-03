@@ -140,7 +140,7 @@
             this.txtTrangThaiBC.Location = new System.Drawing.Point(147, 28);
             this.txtTrangThaiBC.Margin = new System.Windows.Forms.Padding(4);
             this.txtTrangThaiBC.Name = "txtTrangThaiBC";
-            this.txtTrangThaiBC.Size = new System.Drawing.Size(327, 22);
+            this.txtTrangThaiBC.Size = new System.Drawing.Size(327, 26);
             this.txtTrangThaiBC.TabIndex = 1;
             // 
             // label2
@@ -149,14 +149,15 @@
             this.label2.Location = new System.Drawing.Point(9, 31);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 16);
+            this.label2.Size = new System.Drawing.Size(164, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Trạng Thái Bấm Chì:";
             // 
             // frmTrangThaiBamChi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(529, 611);
             this.Controls.Add(this.groupBox2);

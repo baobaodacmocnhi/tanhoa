@@ -78,15 +78,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 33);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 496);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 35);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 494);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1184, 33);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 496);
+            this.barDockControlRight.Location = new System.Drawing.Point(1184, 35);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 494);
             // 
             // barDockControlBottom
             // 
@@ -100,7 +100,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1184, 33);
+            this.barDockControlTop.Size = new System.Drawing.Size(1184, 35);
             // 
             // barManager1
             // 
@@ -292,8 +292,9 @@
             // 
             // frmPDFViewer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1184, 529);
             this.Controls.Add(this.pdfViewer1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

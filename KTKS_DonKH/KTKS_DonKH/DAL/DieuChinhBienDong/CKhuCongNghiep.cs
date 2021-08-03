@@ -120,7 +120,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DCBD_KhauTru get_KhauTru(int ID)
         {
-            return db.DCBD_KhauTrus.SingleOrDefault(item => item.ID == ID );
+            return db.DCBD_KhauTrus.SingleOrDefault(item => item.ID == ID);
         }
 
         public DCBD_KhauTru get_KhauTruTon(string DanhBo)
@@ -135,7 +135,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public string getDSKhauTruCoHoaDonMoi()
         {
-            string str = "";
+            string str = "Khấu Trừ: ";
             foreach (DCBD_KhauTru item in db.DCBD_KhauTrus.ToList())
             {
                 HOADON hd = _cThuTien.GetMoiNhat(item.DanhBo);
@@ -150,7 +150,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             DCBD_KhauTru en = get_KhauTruTon(DanhBo);
             if (en != null)
             {
-                return en.SoTien.Value - en.DCBD_KhauTru_LichSus.Sum(item => item.SoTien).Value;
+                if (en.DCBD_KhauTru_LichSus.Count == 0)
+                    return en.SoTien.Value;
+                else
+                    return en.SoTien.Value - en.DCBD_KhauTru_LichSus.Sum(item => item.SoTien).Value;
             }
             else return 0;
         }

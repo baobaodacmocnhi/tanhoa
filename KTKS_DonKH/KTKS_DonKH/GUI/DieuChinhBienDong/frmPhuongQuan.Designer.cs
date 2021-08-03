@@ -41,7 +41,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 16);
+            this.label1.Size = new System.Drawing.Size(54, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Quận:";
             // 
@@ -50,7 +50,7 @@
             this.cmbQuan.FormattingEnabled = true;
             this.cmbQuan.Location = new System.Drawing.Point(75, 12);
             this.cmbQuan.Name = "cmbQuan";
-            this.cmbQuan.Size = new System.Drawing.Size(150, 24);
+            this.cmbQuan.Size = new System.Drawing.Size(150, 28);
             this.cmbQuan.TabIndex = 1;
             this.cmbQuan.SelectedIndexChanged += new System.EventHandler(this.cmbQuan_SelectedIndexChanged);
             // 
@@ -59,7 +59,7 @@
             this.cmbPhuong.FormattingEnabled = true;
             this.cmbPhuong.Location = new System.Drawing.Point(75, 41);
             this.cmbPhuong.Name = "cmbPhuong";
-            this.cmbPhuong.Size = new System.Drawing.Size(150, 24);
+            this.cmbPhuong.Size = new System.Drawing.Size(150, 28);
             this.cmbPhuong.TabIndex = 3;
             // 
             // label2
@@ -67,7 +67,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 16);
+            this.label2.Size = new System.Drawing.Size(70, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Phường:";
             // 
@@ -86,17 +86,18 @@
             this.chkKhongThoiHan.AutoSize = true;
             this.chkKhongThoiHan.Location = new System.Drawing.Point(239, 5);
             this.chkKhongThoiHan.Name = "chkKhongThoiHan";
-            this.chkKhongThoiHan.Size = new System.Drawing.Size(123, 20);
+            this.chkKhongThoiHan.Size = new System.Drawing.Size(151, 24);
             this.chkKhongThoiHan.TabIndex = 21;
             this.chkKhongThoiHan.Text = "Không Thời Hạn";
             this.chkKhongThoiHan.UseVisualStyleBackColor = true;
             // 
             // frmPhuongQuan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(377, 82);
+            this.ClientSize = new System.Drawing.Size(392, 84);
             this.Controls.Add(this.chkKhongThoiHan);
             this.Controls.Add(this.btnBaoCao);
             this.Controls.Add(this.cmbPhuong);

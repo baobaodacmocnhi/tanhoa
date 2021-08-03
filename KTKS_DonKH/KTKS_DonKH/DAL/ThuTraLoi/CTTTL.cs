@@ -279,6 +279,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             item.VeViec,
                             item.NoiDung,
                             item.NoiNhan,
+                            item.NguoiKy,
                             item.ThuDuocKy,
                         };
             return LINQToDataTable(query);
@@ -345,6 +346,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             item.VeViec,
                             item.NoiDung,
                             item.NoiNhan,
+                            item.NguoiKy,
                             item.ThuDuocKy,
                         };
             return LINQToDataTable(query);

@@ -142,7 +142,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(288, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 16);
+            this.label1.Size = new System.Drawing.Size(35, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Đợt";
             // 
@@ -173,7 +173,7 @@
             "20"});
             this.cmbDot.Location = new System.Drawing.Point(322, 12);
             this.cmbDot.Name = "cmbDot";
-            this.cmbDot.Size = new System.Drawing.Size(50, 24);
+            this.cmbDot.Size = new System.Drawing.Size(50, 28);
             this.cmbDot.TabIndex = 4;
             this.cmbDot.SelectedIndexChanged += new System.EventHandler(this.cmbDot_SelectedIndexChanged);
             // 
@@ -204,7 +204,7 @@
             "20"});
             this.cmbTo.Location = new System.Drawing.Point(182, 12);
             this.cmbTo.Name = "cmbTo";
-            this.cmbTo.Size = new System.Drawing.Size(100, 24);
+            this.cmbTo.Size = new System.Drawing.Size(100, 28);
             this.cmbTo.TabIndex = 6;
             // 
             // label2
@@ -212,7 +212,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(151, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(25, 16);
+            this.label2.Size = new System.Drawing.Size(28, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Tổ";
             // 
@@ -231,7 +231,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(576, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 16);
+            this.label3.Size = new System.Drawing.Size(44, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "Năm";
             // 
@@ -239,14 +239,14 @@
             // 
             this.txtNam.Location = new System.Drawing.Point(619, 9);
             this.txtNam.Name = "txtNam";
-            this.txtNam.Size = new System.Drawing.Size(50, 22);
+            this.txtNam.Size = new System.Drawing.Size(50, 26);
             this.txtNam.TabIndex = 9;
             // 
             // txtKy
             // 
             this.txtKy.Location = new System.Drawing.Point(704, 9);
             this.txtKy.Name = "txtKy";
-            this.txtKy.Size = new System.Drawing.Size(50, 22);
+            this.txtKy.Size = new System.Drawing.Size(50, 26);
             this.txtKy.TabIndex = 11;
             // 
             // label4
@@ -254,7 +254,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(675, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 16);
+            this.label4.Size = new System.Drawing.Size(28, 20);
             this.label4.TabIndex = 10;
             this.label4.Text = "Kỳ";
             // 
@@ -269,8 +269,9 @@
             // 
             // frmHoNgheo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(943, 513);
             this.Controls.Add(this.btnInMien);

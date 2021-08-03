@@ -141,7 +141,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 16);
+            this.label2.Size = new System.Drawing.Size(84, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Nội Dung:";
             // 
@@ -149,7 +149,7 @@
             // 
             this.txtVeViec.Location = new System.Drawing.Point(80, 2);
             this.txtVeViec.Name = "txtVeViec";
-            this.txtVeViec.Size = new System.Drawing.Size(542, 22);
+            this.txtVeViec.Size = new System.Drawing.Size(542, 26);
             this.txtVeViec.TabIndex = 1;
             // 
             // label1
@@ -157,7 +157,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 16);
+            this.label1.Size = new System.Drawing.Size(72, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Về Việc:";
             // 
@@ -175,7 +175,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(625, 34);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 16);
+            this.label3.Size = new System.Drawing.Size(83, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Nơi Nhận:";
             // 
@@ -195,7 +195,7 @@
             this.radThuTraLoi.Checked = true;
             this.radThuTraLoi.Location = new System.Drawing.Point(788, 4);
             this.radThuTraLoi.Name = "radThuTraLoi";
-            this.radThuTraLoi.Size = new System.Drawing.Size(94, 20);
+            this.radThuTraLoi.Size = new System.Drawing.Size(116, 24);
             this.radThuTraLoi.TabIndex = 11;
             this.radThuTraLoi.TabStop = true;
             this.radThuTraLoi.Text = "Thư Trả Lời";
@@ -207,7 +207,7 @@
             this.radVanBan.AutoSize = true;
             this.radVanBan.Location = new System.Drawing.Point(788, 30);
             this.radVanBan.Name = "radVanBan";
-            this.radVanBan.Size = new System.Drawing.Size(77, 20);
+            this.radVanBan.Size = new System.Drawing.Size(94, 24);
             this.radVanBan.TabIndex = 12;
             this.radVanBan.Text = "Văn Bản";
             this.radVanBan.UseVisualStyleBackColor = true;
@@ -215,8 +215,9 @@
             // 
             // frmTTTLVeViec
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(919, 625);
             this.Controls.Add(this.radVanBan);

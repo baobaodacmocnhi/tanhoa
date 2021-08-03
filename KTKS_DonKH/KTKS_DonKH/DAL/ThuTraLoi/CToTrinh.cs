@@ -201,6 +201,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             MaDon = item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
                                 : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
                                 : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
+                            ID = item.IDCT,
                             item.IDCT,
                             item.CreateDate,
                             item.DanhBo,
@@ -209,6 +210,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             item.VeViec,
                             item.NoiDung,
                             item.SoPhieuTong,
+                            item.NguoiKy,
                         };
             return LINQToDataTable(query);
         }
@@ -268,6 +270,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                                     : item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
                                     : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
                                     : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
+                            ID = item.IDCT,
                             item.IDCT,
                             item.CreateDate,
                             item.DanhBo,
@@ -276,6 +279,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             item.VeViec,
                             item.NoiDung,
                             item.SoPhieuTong,
+                            item.NguoiKy,
                         };
             return LINQToDataTable(query);
         }

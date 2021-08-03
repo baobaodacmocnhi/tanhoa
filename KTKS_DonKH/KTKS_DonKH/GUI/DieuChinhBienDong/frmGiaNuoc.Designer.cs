@@ -119,7 +119,7 @@
             // 
             this.txtGiaNuoc.Location = new System.Drawing.Point(126, 41);
             this.txtGiaNuoc.Name = "txtGiaNuoc";
-            this.txtGiaNuoc.Size = new System.Drawing.Size(201, 22);
+            this.txtGiaNuoc.Size = new System.Drawing.Size(201, 26);
             this.txtGiaNuoc.TabIndex = 12;
             this.txtGiaNuoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNuoc_KeyPress);
             // 
@@ -128,7 +128,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(45, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 16);
+            this.label2.Size = new System.Drawing.Size(84, 20);
             this.label2.TabIndex = 11;
             this.label2.Text = "Giá Nước:";
             // 
@@ -137,7 +137,7 @@
             this.txtDoiTuong.Location = new System.Drawing.Point(126, 12);
             this.txtDoiTuong.Name = "txtDoiTuong";
             this.txtDoiTuong.ReadOnly = true;
-            this.txtDoiTuong.Size = new System.Drawing.Size(201, 22);
+            this.txtDoiTuong.Size = new System.Drawing.Size(201, 26);
             this.txtDoiTuong.TabIndex = 10;
             // 
             // label1
@@ -145,14 +145,15 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(45, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 16);
+            this.label1.Size = new System.Drawing.Size(90, 20);
             this.label1.TabIndex = 9;
             this.label1.Text = "Đối Tượng:";
             // 
             // frmGiaNuoc
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(439, 305);
             this.Controls.Add(this.dgvDSGiaNuoc);

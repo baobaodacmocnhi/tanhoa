@@ -139,7 +139,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 16);
+            this.label2.Size = new System.Drawing.Size(84, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Nội Dung:";
             // 
@@ -147,7 +147,7 @@
             // 
             this.txtVeViec.Location = new System.Drawing.Point(80, 12);
             this.txtVeViec.Name = "txtVeViec";
-            this.txtVeViec.Size = new System.Drawing.Size(542, 22);
+            this.txtVeViec.Size = new System.Drawing.Size(542, 26);
             this.txtVeViec.TabIndex = 1;
             // 
             // label1
@@ -155,7 +155,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 16);
+            this.label1.Size = new System.Drawing.Size(72, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Về Việc:";
             // 
@@ -173,7 +173,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(625, 44);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 16);
+            this.label3.Size = new System.Drawing.Size(83, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Nơi Nhận:";
             // 
@@ -189,8 +189,9 @@
             // 
             // frmToTrinhVeViec
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(919, 625);
             this.Controls.Add(this.btnXoa);

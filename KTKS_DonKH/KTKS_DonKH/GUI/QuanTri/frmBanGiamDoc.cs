@@ -25,6 +25,7 @@ namespace KTKS_DonKH.GUI.QuanTri
         CCHDB _cCHDB = new CCHDB();
         CTTTL _cTTTL = new CTTTL();
         CDongNuoc _cDongNuoc = new CDongNuoc();
+        CToTrinh _cToTrinh = new CToTrinh();
 
         public frmBanGiamDoc()
         {
@@ -226,6 +227,9 @@ namespace KTKS_DonKH.GUI.QuanTri
                         case "Thảo Thư Trả Lời":
                             dgvDanhSach.DataSource = _cTTTL.GetDS(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
+                        case "Tờ Trình":
+                            dgvDanhSach.DataSource = _cToTrinh.getDS_ChiTiet(int.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            break;
                     }
                     break;
                 case "Ngày":
@@ -257,6 +261,9 @@ namespace KTKS_DonKH.GUI.QuanTri
                             break;
                         case "Thảo Thư Trả Lời":
                             dgvDanhSach.DataSource = _cTTTL.GetDS(dateTu.Value, dateDen.Value);
+                            break;
+                        case "Tờ Trình":
+                            dgvDanhSach.DataSource = _cToTrinh.getDS_ChiTiet(dateTu.Value, dateDen.Value);
                             break;
                     }
                     break;
@@ -394,7 +401,22 @@ namespace KTKS_DonKH.GUI.QuanTri
                             _cTTTL.SuaCT(cttttl);
                         }
                     break;
+                case "Tờ Trình":
+                    for (int i = 0; i < dgvDanhSach.RowCount; i++)
+                        if (dgvDanhSach["CapNhat", i].Value != null && bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        {
+                            ToTrinh_ChiTiet tt = _cToTrinh.get_ChiTiet(int.Parse(dgvDanhSach["ID", i].Value.ToString()));
+
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                tt.ChucVu = "GIÁM ĐỐC";
+                            else
+                                tt.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            tt.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            _cToTrinh.Sua_ChiTiet(tt);
+                        }
+                    break;
             }
+            MessageBox.Show("Đã xử lý, Vui lòng kiểm tra lại thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnXem.PerformClick();
         }
 
@@ -434,6 +456,12 @@ namespace KTKS_DonKH.GUI.QuanTri
                     panel_KhoangThoiGian.Visible = false;
                     break;
             }
+        }
+
+        private void txtNoiDung_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtNoiDung.Text.Trim().Length > 0 && e.KeyChar == 13)
+                btnXem.PerformClick();
         }
 
 
