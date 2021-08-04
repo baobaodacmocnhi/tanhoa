@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
       <LINK REL="SHORTCUT ICON"  HREF="Image/th.png">
-      <title>.:.BÁO BỂ.:.</title>
+      <title>.:.Thông Tin Khách Hàng.:.</title>
       <link href="StyleSheet/style.css" rel="stylesheet" type="text/css" />
       <link rel="stylesheet" type="text/css" href="css/font-awesome.css"/>
       <link rel="stylesheet" type="text/css" href="css/animate.css"/>
@@ -92,7 +92,7 @@ body {margin:0;}
       <!--Card-->
       <div class="card animated fadeIn">
         <div class="topnav" id="myTopnav">
-              <a id="HOME"  href="mHome.aspx">THÔNG TIN DANH BỘ</a>              
+              <a id="HOME"  href="index.aspx">THÔNG TIN KHÁCH HÀNG</a>              
               
               <!-- <a id="A1" href="LogOut2.aspx">THOÁT</a>-->
               <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
