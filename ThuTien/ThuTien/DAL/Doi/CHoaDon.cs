@@ -6,11 +6,14 @@ using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
 using System.Data;
 using System.Globalization;
+using ThuTien.DAL.ChuyenKhoan;
 
 namespace ThuTien.DAL.Doi
 {
     class CHoaDon : CDAL
     {
+        CChanHoaDonAuto _cChanHoaDonAuto = new CChanHoaDonAuto();
+
         /// <summary>
         /// Thêm hóa đơn mới từ billing (.dat)
         /// </summary>
@@ -483,11 +486,6 @@ namespace ThuTien.DAL.Doi
         public bool checkExist_DangNganCoDCHD(int MaNV_DangNgan, DateTime NgayGiaiTrach)
         {
             return _db.HOADONs.Any(item => item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan == MaNV_DangNgan && item.DCHD == true);
-        }
-
-        public bool checkExist_ThoatNgheo(string DanhBo)
-        {
-            return _db.TT_ThoatNgheos.Any(item => item.DanhBo == DanhBo);
         }
 
         public bool checkExists_KyMoi(string Ky)
@@ -10539,6 +10537,7 @@ namespace ThuTien.DAL.Doi
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
                             TienDu = itemtableTD.SoTien,
+                            ChanHoaDonAuto = _cChanHoaDonAuto.checkExists_ChanHoaDon(itemHD.DANHBA, itemHD.NAM.Value, itemHD.KY),
                         };
             return LINQToDataTable(query);
         }

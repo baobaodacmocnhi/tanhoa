@@ -20,6 +20,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         string _mnu = "mnuChanTienDu";
         CHoaDon _cHoaDon = new CHoaDon();
         CTienDu _cTienDu = new CTienDu();
+        CChanHoaDonAuto _cChanHoaDonAuto = new CChanHoaDonAuto();
 
         public frmChanTienDu()
         {
@@ -30,13 +31,27 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dgvHoaDon.AutoGenerateColumns = false;
             dgvDSChanTienDu.AutoGenerateColumns = false;
-
-            dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
+            loaddgvDSChanTienDu();
 
             dgvHoaDon_DCHD.AutoGenerateColumns = false;
             dgvDCHD.AutoGenerateColumns = false;
-
             dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
+
+            dgvAuto.AutoGenerateColumns = false;
+            dgvAuto.DataSource = _cChanHoaDonAuto.getDS();
+            cmbNam_Auto.DataSource = _cHoaDon.GetNam();
+            cmbNam_Auto.DisplayMember = "Nam";
+            cmbNam_Auto.ValueMember = "Nam";
+        }
+
+        public void loaddgvDSChanTienDu()
+        {
+            dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
+            foreach (DataGridViewRow item in dgvDSChanTienDu.Rows)
+            {
+                if (bool.Parse(item.Cells["ChanHoaDonAuto"].Value.ToString()) == true)
+                    item.DefaultCellStyle.BackColor = Color.Orange;
+            }
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -55,7 +70,6 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
-
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                         if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                         {
@@ -73,9 +87,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                             hoadon.IP_PC = CNguoiDung.IP_PC;
                             _cHoaDon.Sua(hoadon);
                         }
-                    dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    loaddgvDSChanTienDu();
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -107,8 +120,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                         hoadon.IP_PC = CNguoiDung.IP_PC;
                         _cHoaDon.Sua(hoadon);
                     }
-                    dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loaddgvDSChanTienDu();
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -380,8 +393,83 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         #endregion
 
+        #region Chặn Hóa Đơn Auto
 
+        public void ClearAuto()
+        {
+            txtDanhBo_Auto.Text = "";
+            cmbNam_Auto.SelectedIndex = -1;
+            cmbTuKy_Auto.SelectedIndex = -1;
+            cmbDenKy_Auto.SelectedIndex = -1;
+            dgvAuto.DataSource = _cChanHoaDonAuto.getDS();
+        }
 
+        private void btnThem_Auto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                {
+                    TT_ChanHoaDon_DanhBo en = new TT_ChanHoaDon_DanhBo();
+                    en.DanhBo = txtDanhBo_Auto.Text.Trim();
+                    en.Nam = int.Parse(cmbNam_Auto.SelectedValue.ToString());
+                    en.TuKy = int.Parse(cmbTuKy_Auto.SelectedItem.ToString());
+                    en.DenKy = int.Parse(cmbDenKy_Auto.SelectedItem.ToString());
+                    if (_cChanHoaDonAuto.Them(en) == true)
+                    {
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClearAuto();
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXoa_Auto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+                {
+                    TT_ChanHoaDon_DanhBo en = _cChanHoaDonAuto.get(dgvAuto.CurrentRow.Cells["DanhBo_Auto"].Value.ToString(), int.Parse(dgvAuto.CurrentRow.Cells["Nam_Auto"].Value.ToString()), int.Parse(dgvAuto.CurrentRow.Cells["TuKy_Auto"].Value.ToString()), int.Parse(dgvAuto.CurrentRow.Cells["DenKy_Auto"].Value.ToString()));
+
+                    if (en != null && _cChanHoaDonAuto.Xoa(en) == true)
+                    {
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClearAuto();
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvAuto_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvAuto.Columns[e.ColumnIndex].Name == "DanhBo_Auto" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            }
+        }
+
+        private void dgvAuto_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvAuto.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        #endregion
 
     }
 }

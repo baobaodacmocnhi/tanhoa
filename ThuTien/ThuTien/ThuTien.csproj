@@ -15,29 +15,29 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\server9\BaoBao%24\ThuTien\</PublishUrl>
+    <PublishUrl>C:\Users\Admin\Desktop\ThuTienWFH\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Unc</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>\\server9\BaoBao%24\ThuTien\</UpdateUrl>
     <TargetCulture>vi-VN</TargetCulture>
     <ProductName>Quản Lý Thu Ngân</ProductName>
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1413</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>1415</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <BootstrapperComponentsLocation>Absolute</BootstrapperComponentsLocation>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
     <BootstrapperComponentsUrl>\\server9\BaoBao%24\ThuTien</BootstrapperComponentsUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -631,6 +631,7 @@
     <Compile Include="DAL\CDocSoHandheld.cs" />
     <Compile Include="DAL\ChuyenKhoan\CBangKe.cs" />
     <Compile Include="DAL\ChuyenKhoan\CBangKe_PhiMoNuoc.cs" />
+    <Compile Include="DAL\ChuyenKhoan\CChanHoaDonAuto.cs" />
     <Compile Include="DAL\ChuyenKhoan\CDichVuThu.cs" />
     <Compile Include="DAL\ChuyenKhoan\CPhiMoNuoc.cs" />
     <Compile Include="DAL\ChuyenKhoan\CTienDu.cs" />
@@ -1684,9 +1685,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\wsThuTien\wsthutien.wsdl" />
-    <None Include="web.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="BaoCao\dsBaoCao.xsc">
       <DependentUpon>dsBaoCao.xsd</DependentUpon>
     </None>
@@ -1730,6 +1728,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmBaoCaoChuyenKhoan.resx">
       <DependentUpon>frmBaoCaoChuyenKhoan.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmChanTienDu.resx">
       <DependentUpon>frmChanTienDu.cs</DependentUpon>

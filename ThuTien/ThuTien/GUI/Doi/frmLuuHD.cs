@@ -17,6 +17,7 @@ using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.TongHop;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.Quay;
+using ThuTien.DAL.ChuyenKhoan;
 
 namespace ThuTien.GUI.Doi
 {
@@ -30,6 +31,7 @@ namespace ThuTien.GUI.Doi
         CDCHD _cDCHD = new CDCHD();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CChanHoaDonAuto _cChanHoaDonAuto = new CChanHoaDonAuto();
 
         public frmLuuHD()
         {
@@ -198,6 +200,7 @@ namespace ThuTien.GUI.Doi
                             //    hoadon.SoHo = contents[54];
                             if ((hoadon.NAM > 2019 || (hoadon.KY == 12 && hoadon.NAM == 2019)) && !string.IsNullOrWhiteSpace(contents[61]))
                                 hoadon.DinhMucHN = int.Parse(contents[61]);
+                          
                             hoadon.MALOTRINH = hoadon.DOT.Value.ToString("00") + hoadon.MAY + hoadon.STT;
 
                             //string Quan = "", Phuong = "", CoDH = "", MaDMA = "";
@@ -309,6 +312,18 @@ namespace ThuTien.GUI.Doi
                                         {
                                             _cDCHD.Xoa_HDChoDC(_cDCHD.get_HDChoDC(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY));
                                         }
+                                    }
+
+                                    //chặn hóa đơn auto
+                                    if (_cChanHoaDonAuto.checkExists_ChanHoaDon(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY) == true)
+                                    {
+                                        hoadon.KhoaTienDu = true;
+                                        hoadon.ChanTienDu = true;
+                                        hoadon.NgayChanTienDu = DateTime.Now;
+                                        hoadon.NGAYGIAITRACH = DateTime.Now;
+                                        hoadon.Name_PC = CNguoiDung.Name_PC;
+                                        hoadon.IP_PC = CNguoiDung.IP_PC;
+                                        _cHoaDon.Sua(hoadon);
                                     }
                                 }
                             }
@@ -531,6 +546,7 @@ namespace ThuTien.GUI.Doi
             hoadonCu.Phuong = hoadonMoi.Phuong;
             hoadonCu.MST = hoadonMoi.MST;
             hoadonCu.MALOTRINH = hoadonMoi.MALOTRINH;
+            hoadonCu.SoTienGiam = hoadonMoi.SoTienGiam;
         }
 
         private void btnSoSanhKyTruoc_Click(object sender, EventArgs e)

@@ -90,6 +90,7 @@
             this.mnuVanTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuThongKeDongMoNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPhoiHop = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTheoDoiDongNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDangNganChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDangNganTienMatChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
@@ -142,7 +143,6 @@
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.mnuTheoDoiDongNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -166,7 +166,7 @@
             this.menuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1184, 23);
+            this.menuStrip.Size = new System.Drawing.Size(1028, 23);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -640,6 +640,13 @@
             this.mnuPhoiHop.Text = "Phối Hợp";
             this.mnuPhoiHop.Click += new System.EventHandler(this.mnuPhoiHop_Click);
             // 
+            // mnuTheoDoiDongNuoc
+            // 
+            this.mnuTheoDoiDongNuoc.Name = "mnuTheoDoiDongNuoc";
+            this.mnuTheoDoiDongNuoc.Size = new System.Drawing.Size(222, 22);
+            this.mnuTheoDoiDongNuoc.Text = "Theo Dõi Đóng Nước";
+            this.mnuTheoDoiDongNuoc.Click += new System.EventHandler(this.mnuTheoDoiDongNuoc_Click);
+            // 
             // mnuChuyenKhoan
             // 
             this.mnuChuyenKhoan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1004,7 +1011,7 @@
             this.StripStatus_HoTen});
             this.statusStrip.Location = new System.Drawing.Point(0, 540);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1184, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1028, 22);
             this.statusStrip.TabIndex = 3;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -1039,7 +1046,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 23);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1184, 26);
+            this.tabControl.Size = new System.Drawing.Size(1028, 26);
             this.tabControl.TabIndex = 5;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -1048,19 +1055,12 @@
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // mnuTheoDoiDongNuoc
-            // 
-            this.mnuTheoDoiDongNuoc.Name = "mnuTheoDoiDongNuoc";
-            this.mnuTheoDoiDongNuoc.Size = new System.Drawing.Size(222, 22);
-            this.mnuTheoDoiDongNuoc.Text = "Theo Dõi Đóng Nước";
-            this.mnuTheoDoiDongNuoc.Click += new System.EventHandler(this.mnuTheoDoiDongNuoc_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1184, 562);
+            this.ClientSize = new System.Drawing.Size(1028, 562);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
