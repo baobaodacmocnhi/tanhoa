@@ -8304,7 +8304,7 @@ namespace ThuTien.DAL.Doi
                         + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                         + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                         + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To',GiaBieu=GB,DinhMuc=DM,DinhMucHN"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To',GiaBieu=GB,DinhMuc=DM,DinhMucHN"
                         + " from HOADON hd"
                         + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
                         + " left join TT_To tto on tto.MaTo=nd.MaTo"
@@ -8333,7 +8333,7 @@ namespace ThuTien.DAL.Doi
                         + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                         + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                         + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To',GiaBieu=GB,DinhMuc=DM,DinhMucHN"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To',GiaBieu=GB,DinhMuc=DM,DinhMucHN"
                         + " from HOADON hd"
                         + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
                         + " left join TT_To tto on tto.MaTo=nd.MaTo"
@@ -10507,14 +10507,14 @@ namespace ThuTien.DAL.Doi
         /// lấy danh sách chặn tiền dư
         /// </summary>
         /// <returns></returns>
-        public DataTable GetDSChanTienDu()
+        public DataTable GetDSChanTienDu(bool ChanHoaDonAuto)
         {
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         join itemTD in _db.TT_TienDus on itemHD.DANHBA equals itemTD.DanhBo into tableTD
                         from itemtableTD in tableTD.DefaultIfEmpty()
-                        where itemHD.KhoaTienDu == true
+                        where itemHD.KhoaTienDu == true && _db.TT_ChanHoaDon_DanhBos.Any(item => item.DanhBo == itemHD.DANHBA && item.Nam == itemHD.NAM && itemHD.KY >= item.TuKy && itemHD.KY <= item.DenKy) == ChanHoaDonAuto
                         orderby itemHD.NgayChanTienDu descending
                         select new
                         {
@@ -10537,7 +10537,6 @@ namespace ThuTien.DAL.Doi
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
                             TienDu = itemtableTD.SoTien,
-                            ChanHoaDonAuto = _cChanHoaDonAuto.checkExists_ChanHoaDon(itemHD.DANHBA, itemHD.NAM.Value, itemHD.KY),
                         };
             return LINQToDataTable(query);
         }

@@ -31,7 +31,6 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dgvHoaDon.AutoGenerateColumns = false;
             dgvDSChanTienDu.AutoGenerateColumns = false;
-            loaddgvDSChanTienDu();
 
             dgvHoaDon_DCHD.AutoGenerateColumns = false;
             dgvDCHD.AutoGenerateColumns = false;
@@ -46,12 +45,11 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         public void loaddgvDSChanTienDu()
         {
-            dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
-            foreach (DataGridViewRow item in dgvDSChanTienDu.Rows)
-            {
-                if (bool.Parse(item.Cells["ChanHoaDonAuto"].Value.ToString()) == true)
-                    item.DefaultCellStyle.BackColor = Color.Orange;
-            }
+            if (radChanThuong.Checked)
+                dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu(false);
+            else
+                if (radChanAuto.Checked)
+                    dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu(true);
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -219,7 +217,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         hoadon.ChanTienDu = false;
                         _cHoaDon.Sua(hoadon);
                     }
-                dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
+                loaddgvDSChanTienDu();
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -256,7 +254,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     }
                                 }
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
+                            loaddgvDSChanTienDu();
                         }
                 }
                 else
@@ -470,6 +468,22 @@ namespace ThuTien.GUI.ChuyenKhoan
         }
 
         #endregion
+
+        private void radChanThuong_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radChanThuong.Checked == true)
+            {
+                loaddgvDSChanTienDu();
+            }
+        }
+
+        private void radChanAuto_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radChanAuto.Checked == true)
+            {
+                loaddgvDSChanTienDu();
+            }
+        }
 
     }
 }
