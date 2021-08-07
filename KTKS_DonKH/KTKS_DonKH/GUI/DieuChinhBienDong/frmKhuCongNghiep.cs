@@ -127,7 +127,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
             {
-                e.Value = e.Value.ToString().Insert( 7, " ").Insert( 4, " ");
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }
             if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DinhMuc" && e.Value != null)
             {
@@ -204,6 +204,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtSoTien_KhauTru.Text = dgvKhauTru.CurrentRow.Cells["SoTien_KhauTru"].Value.ToString();
                 dgvKhauTruLichSu.DataSource = _cKCN.getDS_KhauTruLichSu(int.Parse(dgvKhauTru["ID", e.RowIndex].Value.ToString()));
                 _khautru = _cKCN.get_KhauTru(int.Parse(dgvKhauTru["ID", e.RowIndex].Value.ToString()));
+                int sotien = 0;
+                foreach (DataGridViewRow item in dgvKhauTruLichSu.Rows)
+                {
+                    sotien += int.Parse(item.Cells["SoTien_KTLS"].Value.ToString());
+                }
+                txtSoTienConLai_KhauTru.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(dgvKhauTru.CurrentRow.Cells["SoTien_KhauTru"].Value.ToString()) - sotien);
             }
             catch (Exception)
             {
@@ -213,14 +219,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void dgvKhauTru_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dgvKhauTru.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
-            }
-        }
-
-        private void dgvKhauTruLichSu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvKhauTruLichSu.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
@@ -258,7 +256,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvKhauTru.Columns[e.ColumnIndex].Name == "DanhBo_KhauTru" && e.Value != null)
             {
-                e.Value = e.Value.ToString().Insert( 7, " ").Insert( 4, " ");
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }
             if (dgvKhauTru.Columns[e.ColumnIndex].Name == "SoTien_KhauTru" && e.Value != null)
             {
@@ -266,6 +264,25 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void dgvKhauTruLichSu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvKhauTruLichSu.Columns[e.ColumnIndex].Name == "DanhBo_KTLS" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            }
+            if (dgvKhauTruLichSu.Columns[e.ColumnIndex].Name == "SoTien_KTLS" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvKhauTruLichSu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvKhauTruLichSu.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
 
     }
 }

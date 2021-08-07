@@ -196,6 +196,32 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public bool Sua_KhauTruLichSu(DCBD_KhauTru_LichSu en)
+        {
+            try
+            {
+                en.ModifyBy = CTaiKhoan.MaUser;
+                en.ModifyDate = DateTime.Now;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool checkExist_KhauTruLichSu(int IDDCHD)
+        {
+            return db.DCBD_KhauTru_LichSus.Any(item => item.IDDCHD == IDDCHD);
+        }
+
+        public DCBD_KhauTru_LichSu get_KhauTruLichSu(int IDDCHD)
+        {
+            return db.DCBD_KhauTru_LichSus.SingleOrDefault(item => item.IDDCHD == IDDCHD);
+        }
+
         public DataTable getDS_KhauTruLichSu(int IDKhauTru)
         {
             return LINQToDataTable(db.DCBD_KhauTru_LichSus.Where(item => item.IDKhauTru == IDKhauTru));

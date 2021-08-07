@@ -817,8 +817,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 DCBD_KhauTru_LichSu enLS = new DCBD_KhauTru_LichSu();
                                 enLS.DanhBo = en.DanhBo;
                                 enLS.Ky = ctdchd.KyHD;
-                                enLS.SoTien = ctdchd.TongCong_End;
+                                enLS.SoTien = ctdchd.SoTienKhauTru;
                                 enLS.IDKhauTru = en.ID;
+                                enLS.IDDCHD = (int)ctdchd.MaCTDCHD;
                                 _cKCN.Them_KhauTruLichSu(enLS);
                             }
                             foreach (DataGridViewRow item in dgvHinh.Rows)
@@ -1066,6 +1067,39 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         if (_cDCBD.SuaDCHD(_ctdchd))
                         {
+                            //có khẩu trừ lịch sử
+                            if (_cKCN.checkExist_KhauTruLichSu((int)_ctdchd.MaCTDCHD) == true)
+                            {
+                                DCBD_KhauTru_LichSu enLS = _cKCN.get_KhauTruLichSu((int)_ctdchd.MaCTDCHD);
+                                if (_cKCN.checkExist_KhauTru(_ctdchd.DanhBo) == true)//sửa thông tin khấu trừ
+                                {
+                                    DCBD_KhauTru en = _cKCN.get_KhauTruTon(_ctdchd.DanhBo);
+                                    enLS.DanhBo = _ctdchd.DanhBo;
+                                    enLS.Ky = _ctdchd.KyHD;
+                                    enLS.SoTien = _ctdchd.SoTienKhauTru;
+                                    enLS.IDKhauTru = en.ID;
+                                    enLS.IDDCHD = (int)_ctdchd.MaCTDCHD;
+                                    _cKCN.Sua_KhauTruLichSu(enLS);
+                                }
+                                else//bỏ khấu trừ
+                                {
+                                    _cKCN.Xoa_KhauTruLichSu(enLS);
+                                }
+                            }
+                            else //không có thêm mới
+                            {
+                                if (_cKCN.checkExist_KhauTru(_ctdchd.DanhBo) == true)
+                                {
+                                    DCBD_KhauTru en = _cKCN.get_KhauTruTon(_ctdchd.DanhBo);
+                                    DCBD_KhauTru_LichSu enLS = new DCBD_KhauTru_LichSu();
+                                    enLS.DanhBo = en.DanhBo;
+                                    enLS.Ky = _ctdchd.KyHD;
+                                    enLS.SoTien = _ctdchd.SoTienKhauTru;
+                                    enLS.IDKhauTru = en.ID;
+                                    enLS.IDDCHD = (int)_ctdchd.MaCTDCHD;
+                                    _cKCN.Them_KhauTruLichSu(enLS);
+                                }
+                            }
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
                             txtMaDonCu.Focus();
