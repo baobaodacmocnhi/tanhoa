@@ -158,6 +158,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             itemBK.CreateDate,
                             MaNH = itemtableNH.ID_NGANHANG,
                             TenNH = itemtableNH.NGANHANG1,
+                            itemtableNH.GroupBank,
                             itemBK.SoPhieuThu,
                             itemBK.NgayPhieuThu,
                         };

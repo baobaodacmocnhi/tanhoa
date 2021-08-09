@@ -1563,10 +1563,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheet.Cells[rowEnd + 5, 2] = "KHO BẠC";
             oSheet.Cells[rowEnd + 6, 2] = "VCB";
 
-            oSheet.Cells[rowEnd + 3, 3] = dtBK.Compute("sum(SoTien)", "MaNH <> 3 and MaNH <> 4 and MaNH <> 10 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
-            oSheet.Cells[rowEnd + 4, 3] = dtBK.Compute("sum(SoTien)", "MaNH = 4 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
-            oSheet.Cells[rowEnd + 5, 3] = dtBK.Compute("sum(SoTien)", "MaNH = 3 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
-            oSheet.Cells[rowEnd + 6, 3] = dtBK.Compute("sum(SoTien)", "MaNH = 10 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 3, 3] = dtBK.Compute("sum(SoTien)", "GroupBank='AGR' and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 4, 3] = dtBK.Compute("sum(SoTien)", "GroupBank='MB' and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 5, 3] = dtBK.Compute("sum(SoTien)", "GroupBank='KB' and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 6, 3] = dtBK.Compute("sum(SoTien)", "GroupBank='VCB' and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
             //format number
             Microsoft.Office.Interop.Excel.Range c1sum2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd + 3, 3];
             Microsoft.Office.Interop.Excel.Range c2sum2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd + 6, 3];
