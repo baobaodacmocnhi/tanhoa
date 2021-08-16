@@ -301,7 +301,7 @@
             // NgayKiemSoat_From
             // 
             this.NgayKiemSoat_From.DataPropertyName = "NgayKiemSoat_From";
-            this.NgayKiemSoat_From.HeaderText = "Từ Ngày Kiểm Soát";
+            this.NgayKiemSoat_From.HeaderText = "Ngày Kiểm Soát";
             this.NgayKiemSoat_From.Name = "NgayKiemSoat_From";
             // 
             // NgayKiemSoat_To
@@ -309,6 +309,7 @@
             this.NgayKiemSoat_To.DataPropertyName = "NgayKiemSoat_To";
             this.NgayKiemSoat_To.HeaderText = "Đến Ngày Kiểm Soát";
             this.NgayKiemSoat_To.Name = "NgayKiemSoat_To";
+            this.NgayKiemSoat_To.Visible = false;
             // 
             // NgayChuyenListing
             // 

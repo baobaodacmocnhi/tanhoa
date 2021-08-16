@@ -244,9 +244,11 @@ namespace TrungTamKhachHang.GUI.LichDocSoThuTien
                         if (item.Cells["NgayDoc"].Value != null)
                             enCT.NgayDoc = DateTime.Parse(item.Cells["NgayDoc"].Value.ToString());
                         if (item.Cells["NgayKiemSoat_From"].Value != null)
-                            enCT.NgayKiemSoat_From = DateTime.Parse(item.Cells["NgayKiemSoat_From"].Value.ToString());
-                        if (item.Cells["NgayKiemSoat_To"].Value != null)
-                            enCT.NgayKiemSoat_To = DateTime.Parse(item.Cells["NgayKiemSoat_To"].Value.ToString());
+                        {
+                            enCT.NgayKiemSoat_From = enCT.NgayKiemSoat_To = DateTime.Parse(item.Cells["NgayKiemSoat_From"].Value.ToString());
+                        }
+                        //if (item.Cells["NgayKiemSoat_To"].Value != null)
+                        //    enCT.NgayKiemSoat_To = DateTime.Parse(item.Cells["NgayKiemSoat_To"].Value.ToString());
                         if (item.Cells["NgayChuyenListing"].Value != null)
                             enCT.NgayChuyenListing = DateTime.Parse(item.Cells["NgayChuyenListing"].Value.ToString());
                         if (item.Cells["NgayThuTien"].Value != null)
