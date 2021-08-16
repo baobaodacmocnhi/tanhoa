@@ -576,9 +576,9 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                             donkh.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         if (_hoadon != null)
                         {
-                            donkh.Dot = _hoadon.DOT.Value.ToString();
+                            donkh.Dot = _hoadon.DOT.ToString();
                             donkh.Ky = _hoadon.KY.ToString();
-                            donkh.Nam = _hoadon.NAM.Value.ToString();
+                            donkh.Nam = _hoadon.NAM.ToString();
                             donkh.MLT = _hoadon.MALOTRINH;
                             donkh.Phuong = _hoadon.Phuong;
                             donkh.Quan = _hoadon.Quan;
@@ -707,9 +707,9 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     if (_donkh.DanhBo != txtDanhBo.Text.Trim().Replace(" ", ""))
                         if (_hoadon != null)
                         {
-                            _donkh.Dot = _hoadon.DOT.Value.ToString();
+                            _donkh.Dot = _hoadon.DOT.ToString();
                             _donkh.Ky = _hoadon.KY.ToString();
-                            _donkh.Nam = _hoadon.NAM.Value.ToString();
+                            _donkh.Nam = _hoadon.NAM.ToString();
                             _donkh.MLT = _hoadon.MALOTRINH;
                             _donkh.Phuong = _hoadon.Phuong;
                             _donkh.Quan = _hoadon.Quan;

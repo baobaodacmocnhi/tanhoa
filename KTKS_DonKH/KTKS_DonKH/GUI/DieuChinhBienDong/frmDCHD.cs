@@ -407,7 +407,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                     else
                     {
-                        _dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                        LinQ.DonTu dt = _cDonTu.get(int.Parse(MaDon));
+                        if (dt != null)
+                            _dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
                     }
                     //
                     if (_dontu_ChiTiet != null)
@@ -458,7 +460,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_hoadon != null)
                 {
                     LoadTTKH(_hoadon);
-                    _dchdLast = _cDCBD.getHoaDon_Last(_hoadon.DANHBA, _hoadon.NAM.Value, _hoadon.KY);
+                    _dchdLast = _cDCBD.getHoaDon_Last(_hoadon.DANHBA, _hoadon.NAM, _hoadon.KY);
                     if (_dchdLast != null)
                     {
                         txtGiaBieu_Cu.Text = _dchdLast.GiaBieu_BD.Value.ToString();
@@ -473,7 +475,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                     else
                     {
-                        txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _hoadon.GB.Value.ToString();
+                        txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _hoadon.GB.ToString();
                         if (_hoadon.DinhMucHN != null)
                             txtDinhMucHN_Cu.Text = txtDinhMucHN_Moi.Text = _hoadon.DinhMucHN.Value.ToString();
                         else
@@ -1958,7 +1960,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (_hoadon != null)
             {
                 Ky = _hoadon.KY;
-                Nam = _hoadon.NAM.Value;
+                Nam = _hoadon.NAM;
                 if (_hoadon.TUNGAY != null)
                     TuNgay = _hoadon.TUNGAY.Value;
                 else

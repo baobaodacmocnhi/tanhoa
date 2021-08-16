@@ -385,7 +385,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                 }
                 else
                 {
-                    _dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                    LinQ.DonTu dt = _cDonTu.get(int.Parse(MaDon));
+                    if (dt != null)
+                        _dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
                 }
                 //
                 if (_dontu_ChiTiet != null)
@@ -483,8 +485,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                             dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex].Value = hd.DM.Value;
                         if (hd.TIEUTHU != null)
                             dgvTruyThuTienNuoc["TieuThu_Cu", e.RowIndex].Value = hd.TIEUTHU.Value;
-                        if (hd.GB != null)
-                            dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value = hd.GB.Value;
+                        //if (hd.GB != null)
+                            dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value = hd.GB;
                     }
                 }
                 if (dgvTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "GiaBieu_Cu")

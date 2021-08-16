@@ -316,7 +316,9 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 }
                 else
                 {
-                    _dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                    LinQ.DonTu dt = _cDonTu.get(int.Parse(MaDon));
+                    if (dt != null)
+                        _dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
                 }
                 //
                 if (_dontu_ChiTiet != null)
@@ -458,9 +460,9 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
                         if (_hoadon != null)
                         {
-                            cttt.Dot = _hoadon.DOT.Value;
+                            cttt.Dot = _hoadon.DOT;
                             cttt.Ky = _hoadon.KY;
-                            cttt.Nam = _hoadon.NAM.Value;
+                            cttt.Nam = _hoadon.NAM;
                             cttt.Phuong = _hoadon.Phuong;
                             cttt.Quan = _hoadon.Quan;
                             cttt.Hieu = _hoadon.HIEUDH;
@@ -600,9 +602,9 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
                             if (_hoadon != null)
                             {
-                                _cttt.Dot = _hoadon.DOT.Value;
+                                _cttt.Dot = _hoadon.DOT;
                                 _cttt.Ky = _hoadon.KY;
-                                _cttt.Nam = _hoadon.NAM.Value;
+                                _cttt.Nam = _hoadon.NAM;
                                 _cttt.Phuong = _hoadon.Phuong;
                                 _cttt.Quan = _hoadon.Quan;
                                 _cttt.Hieu = _hoadon.HIEUDH;
@@ -824,15 +826,15 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 dr2["MLT"] = item.MaDon.Value.ToString() + "." + item.STT.Value.ToString();
                         }
                         else
-                        if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
-                        {
-                            dr2["LoaiBaoCao"] = "ĐỨT CHÌ MẶT SỐ NẰM NGOÀI BẤT ĐỘNG SẢN (VỈA HÈ)";
-                        }
-                        else
-                            if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))
+                            if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
                             {
-                                dr2["LoaiBaoCao"] = "LỖI KỸ THUẬT";
+                                dr2["LoaiBaoCao"] = "ĐỨT CHÌ MẶT SỐ NẰM NGOÀI BẤT ĐỘNG SẢN (VỈA HÈ)";
                             }
+                            else
+                                if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))
+                                {
+                                    dr2["LoaiBaoCao"] = "LỖI KỸ THUẬT";
+                                }
 
                         dr2["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                         dr2["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
@@ -1047,7 +1049,9 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 }
                 else
                 {
-                    dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                    LinQ.DonTu dt = _cDonTu.get(int.Parse(MaDon));
+                    if (dt != null)
+                        _dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
                 }
                 //
                 if (dontu_ChiTiet != null)
@@ -1059,13 +1063,13 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
                         dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
                         dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH;
-                        dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB.Value.ToString();
+                        dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB.ToString();
                         if (hoadon.DinhMucHN != null)
                             dgvDanhBo["DinhMucHN", e.RowIndex].Value = hoadon.DinhMucHN.Value.ToString();
                         dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM.Value.ToString();
-                        dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.Value.ToString();
+                        dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.ToString();
                         dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
-                        dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM.Value.ToString();
+                        dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM.ToString();
                         dgvDanhBo["Phuong", e.RowIndex].Value = hoadon.Phuong;
                         dgvDanhBo["Quan", e.RowIndex].Value = hoadon.Quan;
                         dgvDanhBo["Hieu", e.RowIndex].Value = hoadon.HIEUDH;
@@ -1104,7 +1108,9 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 }
                 else
                 {
-                    dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                    LinQ.DonTu dt = _cDonTu.get(int.Parse(MaDon));
+                    if (dt != null)
+                        _dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
                 }
                 //
                 if (dontu_ChiTiet != null)
@@ -1116,13 +1122,13 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
                         dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
                         dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH;
-                        dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB.Value.ToString();
+                        dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB.ToString();
                         if (hoadon.DinhMucHN != null)
                             dgvDanhBo["DinhMucHN", e.RowIndex].Value = hoadon.DinhMucHN.Value.ToString();
                         dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM.Value.ToString();
-                        dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.Value.ToString();
+                        dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.ToString();
                         dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
-                        dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM.Value.ToString();
+                        dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM.ToString();
                         dgvDanhBo["Phuong", e.RowIndex].Value = hoadon.Phuong;
                         dgvDanhBo["Quan", e.RowIndex].Value = hoadon.Quan;
                         dgvDanhBo["Hieu", e.RowIndex].Value = hoadon.HIEUDH;

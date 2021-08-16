@@ -311,7 +311,9 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 }
                 else
                 {
-                    _dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                    LinQ.DonTu dt = _cDonTu.get(int.Parse(MaDon));
+                    if (dt != null)
+                        _dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
                 }
                 //
                 if (_dontu_ChiTiet != null)

@@ -156,7 +156,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             else
                             {
-                                dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                                LinQ.DonTu dt = _cDonTu.get(int.Parse(MaDon));
+                                if (dt != null)
+                                    dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
                             }
                             //
                             if (dontu_ChiTiet != null)
@@ -303,7 +305,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         }
                                         else
                                         {
-                                            dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                                            LinQ.DonTu dt = _cDonTu.get(int.Parse(MaDon));
+                                            if (dt != null)
+                                                dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
                                         }
                                         if (_cDCBD.checkExist_BienDong(dontu_ChiTiet.MaDon.Value, item.Cells["DanhBo"].Value.ToString()) == true)
                                         {
@@ -369,7 +373,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     }
                                     else
                                     {
-                                        dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                                        LinQ.DonTu dt = _cDonTu.get(int.Parse(MaDon));
+                                        if (dt != null)
+                                            dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
                                     }
                                     if (_cDCBD.checkExist(dontu_ChiTiet.MaDon.Value) == false)
                                     {

@@ -164,7 +164,9 @@ namespace KTKS_DonKH.GUI.VanBan
                 }
                 else
                 {
-                    _dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                    LinQ.DonTu dt = _cDonTu.get(int.Parse(MaDon));
+                    if (dt != null)
+                        _dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
                 }
                 //
                 if (_dontu_ChiTiet != null)
@@ -250,9 +252,9 @@ namespace KTKS_DonKH.GUI.VanBan
                         enCT.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                     if (_hoadon != null)
                     {
-                        enCT.Dot = _hoadon.DOT.Value;
+                        enCT.Dot = _hoadon.DOT;
                         enCT.Ky = _hoadon.KY;
-                        enCT.Nam = _hoadon.NAM.Value;
+                        enCT.Nam = _hoadon.NAM;
                         enCT.Phuong = _hoadon.Phuong;
                         enCT.Quan = _hoadon.Quan;
                     }
@@ -325,9 +327,9 @@ namespace KTKS_DonKH.GUI.VanBan
                             _enCT.DinhMucHN = null;
                         if (_hoadon != null)
                         {
-                            _enCT.Dot = _hoadon.DOT.Value;
+                            _enCT.Dot = _hoadon.DOT;
                             _enCT.Ky = _hoadon.KY;
-                            _enCT.Nam = _hoadon.NAM.Value;
+                            _enCT.Nam = _hoadon.NAM;
                             _enCT.Phuong = _hoadon.Phuong;
                             _enCT.Quan = _hoadon.Quan;
                         }

@@ -74,7 +74,7 @@ namespace KTKS_DonKH.GUI
                 {
                     dateTu.Value = _hoadon.TUNGAY.Value;
                     dateDen.Value = _hoadon.DENNGAY.Value;
-                    txtGiaBieu.Text = _hoadon.GB.Value.ToString();
+                    txtGiaBieu.Text = _hoadon.GB.ToString();
                     if (_hoadon.TILESH != null)
                         txtSH.Text = _hoadon.TILESH.Value.ToString();
                     if (_hoadon.TILESX != null)
