@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 20.25, 20.625" name="dbKTKS_DonKH">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 20.375, 20.625" name="dbKTKS_DonKH">
   <DataContextMoniker Name="/dbKTKS_DonKHDataContext" />
   <nestedChildShapes>
     <classShape Id="ca0219e7-910b-4e09-8e17-50f81d042855" absoluteBounds="5.625, 4, 2, 8.8860498046875">
@@ -65,7 +65,7 @@
         <elementListCompartment Id="78ebd7d5-804c-4288-abd7-2e7d6d2de091" absoluteBounds="0.51500000000000057, 2.585, 1.9700000000000002, 11.7874755859375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.25 : 2.96875); (2.5 : 2.96875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 2.96875); (2.5 : 2.96875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbKTKS_DonKHDataContext/DCBD/DCBD_DCBD_ChiTietBienDong" />
       <nodes>
         <classShapeMoniker Id="da31a3be-b05b-487d-9557-fb2b8a3aae0f" />
@@ -84,12 +84,18 @@
         <elementListCompartment Id="685178c6-56d2-4c4b-81e4-587f2abea6f9" absoluteBounds="3.015, 4.085, 1.9700000000000002, 15.2489013671875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.25 : 3.78125); (5 : 3.78125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 3.78125); (5 : 3.78125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbKTKS_DonKHDataContext/DCBD/DCBD_DCBD_ChiTietHoaDon" />
       <nodes>
         <classShapeMoniker Id="da31a3be-b05b-487d-9557-fb2b8a3aae0f" />
         <classShapeMoniker Id="ed4ae1bd-418c-4482-b302-cc27595081fa" />
       </nodes>
     </associationConnector>
+    <classShape Id="368c23aa-3224-4d13-8ad9-a1c9e99a5664" absoluteBounds="18.125, 7, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/dbKTKS_DonKHDataContext/DCBD_KhauTru" />
+      <nestedChildShapes>
+        <elementListCompartment Id="54d4fdb9-61cf-4268-94bc-13eb3993bb2b" absoluteBounds="18.14, 7.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

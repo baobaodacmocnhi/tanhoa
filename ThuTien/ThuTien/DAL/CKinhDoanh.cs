@@ -2826,5 +2826,15 @@ namespace ThuTien.DAL
         {
             return (string)ExecuteQuery_ReturnOneValue("select DanhBo from CHDB_ChiTietCatHuy where MaCTCHDB=" + ID);
         }
+
+        public bool checkExists_KhauTru(string DanhBo)
+        {
+            return _dbKinhDoanh.DCBD_KhauTrus.Any(item => item.DanhBo == DanhBo && item.TatToan == false);
+            //int i = (int)ExecuteQuery_ReturnOneValue("select count (*) from DCBD_KhauTru where DanhBo='" + DanhBo + "' and TatToan=0");
+            //if (i == 0)
+            //    return false;
+            //else
+            //    return true;
+        }
     }
 }

@@ -232,17 +232,17 @@ namespace ThuTien.GUI.ToTruong
                     if (hoadon.KY == 12)
                     {
                         Ky = 1;
-                        Nam = hoadon.NAM.Value + 1;
+                        Nam = hoadon.NAM + 1;
                     }
                     else
                     {
                         Ky = hoadon.KY + 1;
-                        Nam = hoadon.NAM.Value;
+                        Nam = hoadon.NAM;
                     }
                     DocSo docso = new DocSo();
                     docso = _cDocSo.get(hoadon.DANHBA, Ky, Nam);
                     if (docso == null)
-                        docso = _cDocSo.get(hoadon.DANHBA, hoadon.KY, hoadon.NAM.Value);
+                        docso = _cDocSo.get(hoadon.DANHBA, hoadon.KY, hoadon.NAM);
                     if (hoadon != null && docso != null)
                     {
                         DataRow row = _dt.NewRow();

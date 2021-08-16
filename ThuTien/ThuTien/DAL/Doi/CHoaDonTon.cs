@@ -135,10 +135,10 @@ namespace ThuTien.DAL.Doi
                     hoadon.CreateBy = CNguoiDung.MaND;
                     hoadon.CreateDate = DateTime.Now;
                     hoadon.MALOTRINH = hoadon.DOT.Value.ToString("00") + hoadon.MAY + hoadon.STT;
-                    //if (CheckByNamKyDot(hoadon.NAM.Value, hoadon.KY, hoadon.DOT.Value))
+                    //if (CheckByNamKyDot(hoadon.NAM, hoadon.KY, hoadon.DOT.Value))
                     //{
                     //    this.Rollback();
-                    //    System.Windows.Forms.MessageBox.Show("Năm " + hoadon.NAM.Value + "; Kỳ " + hoadon.KY + "; Đợt " + hoadon.DOT.Value + " đã có rồi", "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    //    System.Windows.Forms.MessageBox.Show("Năm " + hoadon.NAM + "; Kỳ " + hoadon.KY + "; Đợt " + hoadon.DOT.Value + " đã có rồi", "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     //    return false;
                     //}
                     try
@@ -147,7 +147,7 @@ namespace ThuTien.DAL.Doi
                     }
                     catch (Exception)
                     {
-                        //_db.ExecuteCommand("update TT_HoaDonTon set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",DM=" + hoadon.DM.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "',SOHOADON='" + hoadon.SOHOADON + "' where NAM=" + hoadon.NAM.Value + " and KY=" + hoadon.KY + " and DOT=" + hoadon.DOT.Value);
+                        //_db.ExecuteCommand("update TT_HoaDonTon set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",DM=" + hoadon.DM.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "',SOHOADON='" + hoadon.SOHOADON + "' where NAM=" + hoadon.NAM + " and KY=" + hoadon.KY + " and DOT=" + hoadon.DOT.Value);
                     }
 
                 }

@@ -32,6 +32,7 @@ namespace ThuTien.GUI.Doi
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CChanHoaDonAuto _cChanHoaDonAuto = new CChanHoaDonAuto();
+        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
 
         public frmLuuHD()
         {
@@ -68,6 +69,7 @@ namespace ThuTien.GUI.Doi
         {
             //TT_DongNuoc dn= _cDongNuoc.getDongNuoc_MoiNhat_Ton("13162310349",2020,7);
             //return;
+            int i = 1;
             try
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
@@ -77,13 +79,14 @@ namespace ThuTien.GUI.Doi
                         string[] lines = System.IO.File.ReadAllLines(txtDuongDan.Text.Trim());
                         progressBar.Minimum = 0;
                         progressBar.Maximum = lines.Count();
-                        int i = 1;
                         int Nam = 0;
                         int Ky = 0;
                         int Dot = 0;
                         foreach (string line in lines)
                         {
                             progressBar.Value = i++;
+                            //if(i==67)
+                            //    MessageBox.Show("","Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             string lineR = line.Replace("\",\"", "$").Replace("\"", "");
                             string[] contents = lineR.Split('$');
                             //string[] contents = System.Text.RegularExpressions.Regex.Split(line, @"\W+");
@@ -200,8 +203,12 @@ namespace ThuTien.GUI.Doi
                             //    hoadon.SoHo = contents[54];
                             if ((hoadon.NAM > 2019 || (hoadon.KY == 12 && hoadon.NAM == 2019)) && !string.IsNullOrWhiteSpace(contents[61]))
                                 hoadon.DinhMucHN = int.Parse(contents[61]);
-                          
-                            hoadon.MALOTRINH = hoadon.DOT.Value.ToString("00") + hoadon.MAY + hoadon.STT;
+                            //cột 62 là của nước sạch nông thôn
+                            //cột 63 là số tiền giảm trừ covid19
+                            //if (contents.Length >= 64 && !string.IsNullOrWhiteSpace(contents[63]))
+                            //    hoadon.SoTienGiam = int.Parse(contents[63]);
+
+                            hoadon.MALOTRINH = hoadon.DOT.ToString("00") + hoadon.MAY + hoadon.STT;
 
                             //string Quan = "", Phuong = "", CoDH = "", MaDMA = "";
                             //_cCapNuocTanHoa.GetDMA(hoadon.DANHBA, out Quan, out Phuong, out CoDH, out MaDMA);
@@ -209,22 +216,23 @@ namespace ThuTien.GUI.Doi
                             //hoadon.Phuong = Phuong;
                             //hoadon.CoDH = CoDH;
                             //hoadon.MaDMA = MaDMA;
-                            //if (CheckByNamKyDot(hoadon.NAM.Value, hoadon.KY, hoadon.DOT.Value))
+                            //if (CheckByNamKyDot(hoadon.NAM, hoadon.KY, hoadon.DOT.Value))
                             //{
                             //    this.Rollback();
-                            //    System.Windows.Forms.MessageBox.Show("Năm " + hoadon.NAM.Value + "; Kỳ " + hoadon.KY + "; Đợt " + hoadon.DOT.Value + " đã có rồi", "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                            //    System.Windows.Forms.MessageBox.Show("Năm " + hoadon.NAM + "; Kỳ " + hoadon.KY + "; Đợt " + hoadon.DOT.Value + " đã có rồi", "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                             //    return false;
                             //}
 
                             //Nếu chưa có hóa đơn
                             //if (hoadon.DANHBA == "13182498749")
-                            if (!_cHoaDon.CheckExist(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY))
+                            if (!_cHoaDon.CheckExist(hoadon.DANHBA, hoadon.NAM, hoadon.KY))
                             {
                                 if (_cHoaDon.Them(hoadon) == true)
                                 {
+                                    //check thông báo đóng nước và lệnh hủy kỳ trước đó
                                     if (hoadon.TIEUTHU != 0)
                                     {
-                                        int NamTemp = hoadon.NAM.Value, KyTemp = hoadon.KY;
+                                        int NamTemp = hoadon.NAM, KyTemp = hoadon.KY;
                                         if (KyTemp == 1)
                                         {
                                             KyTemp = 12;
@@ -253,14 +261,14 @@ namespace ThuTien.GUI.Doi
                                         {
                                             TT_DongNuoc dongnuoc = _cDongNuoc.getDongNuoc_MoiNhat_Ton(hoadon.DANHBA, NamTemp, KyTemp);
                                             //update HOADON
-                                           HOADON hoadonLenh=_cHoaDon.Get(hoadon.DANHBA, NamTemp, KyTemp);
-                                           hoadon.TBDongNuoc_Ngay = hoadonLenh.TBDongNuoc_Ngay;
-                                           hoadon.TBDongNuoc_NgayHen = hoadonLenh.TBDongNuoc_NgayHen;
-                                           hoadon.TBDongNuoc_Location = hoadonLenh.TBDongNuoc_Location;
+                                            HOADON hoadonLenh = _cHoaDon.Get(hoadon.DANHBA, NamTemp, KyTemp);
+                                            hoadon.TBDongNuoc_Ngay = hoadonLenh.TBDongNuoc_Ngay;
+                                            hoadon.TBDongNuoc_NgayHen = hoadonLenh.TBDongNuoc_NgayHen;
+                                            hoadon.TBDongNuoc_Location = hoadonLenh.TBDongNuoc_Location;
 
                                             TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
                                             ctdongnuoc.MaDN = dongnuoc.MaDN;
-                                            ctdongnuoc.MaHD = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY).ID_HOADON;
+                                            ctdongnuoc.MaHD = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM, hoadon.KY).ID_HOADON;
                                             ctdongnuoc.SoHoaDon = hoadon.SOHOADON;
                                             ctdongnuoc.Ky = hoadon.KY + "/" + hoadon.NAM;
                                             ctdongnuoc.TieuThu = (int)hoadon.TIEUTHU;
@@ -279,7 +287,7 @@ namespace ThuTien.GUI.Doi
                                         if (_cLenhHuy.CheckExist_Ton(hoadon.DANHBA, NamTemp, KyTemp) == true)
                                         {
                                             TT_LenhHuy lenhhuy = new TT_LenhHuy();
-                                            lenhhuy.MaHD = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY).ID_HOADON;
+                                            lenhhuy.MaHD = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM, hoadon.KY).ID_HOADON;
                                             lenhhuy.SoHoaDon = hoadon.SOHOADON;
                                             lenhhuy.DanhBo = hoadon.DANHBA;
                                             TT_LenhHuy lhMoiNhat = _cLenhHuy.getMoiNhat(hoadon.DANHBA);
@@ -293,10 +301,11 @@ namespace ThuTien.GUI.Doi
                                     }
 
                                     //check hóa đơn chờ điều chỉnh
-                                    if (_cDCHD.checkExist_HDChoDC(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY) == true)
+                                    if (_cDCHD.checkExist_HDChoDC(hoadon.DANHBA, hoadon.NAM, hoadon.KY) == true
+                                        || _cKinhDoanh.checkExists_KhauTru(hoadon.DANHBA) == true)
                                     {
                                         DIEUCHINH_HD dchd = new DIEUCHINH_HD();
-                                        dchd.FK_HOADON = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY).ID_HOADON;
+                                        dchd.FK_HOADON = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM, hoadon.KY).ID_HOADON;
                                         dchd.SoHoaDon = hoadon.SOHOADON;
                                         dchd.GiaBieu = hoadon.GB;
                                         if (hoadon.DM != null)
@@ -310,12 +319,12 @@ namespace ThuTien.GUI.Doi
 
                                         if (_cDCHD.Them(dchd))
                                         {
-                                            _cDCHD.Xoa_HDChoDC(_cDCHD.get_HDChoDC(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY));
+                                            _cDCHD.Xoa_HDChoDC(_cDCHD.get_HDChoDC(hoadon.DANHBA, hoadon.NAM, hoadon.KY));
                                         }
                                     }
 
                                     //chặn hóa đơn auto
-                                    if (_cChanHoaDonAuto.checkExists_ChanHoaDon(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY) == true)
+                                    if (_cChanHoaDonAuto.checkExists_ChanHoaDon(hoadon.DANHBA, hoadon.NAM, hoadon.KY) == true)
                                     {
                                         hoadon.KhoaTienDu = true;
                                         hoadon.ChanTienDu = true;
@@ -330,7 +339,7 @@ namespace ThuTien.GUI.Doi
                             ///Nếu đã có hóa đơn
                             else
                             {
-                                HOADON hoadonCN = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY, hoadon.DOT.Value);
+                                HOADON hoadonCN = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM, hoadon.KY, hoadon.DOT);
                                 Copy(ref hoadonCN, hoadon);
                                 _cHoaDon.Sua(hoadonCN);
                             }
@@ -408,7 +417,7 @@ namespace ThuTien.GUI.Doi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("i=" + i + "\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

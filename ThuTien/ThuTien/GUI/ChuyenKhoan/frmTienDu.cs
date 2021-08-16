@@ -217,7 +217,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 drTT["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
                                 drTT["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
                             }
-                            if (itemHD.GB.Value > 20)
+                            if (itemHD.GB > 20)
                                 drTT["Loai"] = "CQ";
                             else
                                 drTT["Loai"] = "TG";
@@ -289,7 +289,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 drTT["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
                                 drTT["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
                             }
-                            if (itemHD.GB.Value > 20)
+                            if (itemHD.GB > 20)
                                 drTT["Loai"] = "CQ";
                             else
                                 drTT["Loai"] = "TG";

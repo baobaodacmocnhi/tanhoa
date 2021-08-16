@@ -278,7 +278,7 @@ namespace ThuTien.GUI.TongHop
                                 ///lưu lịch sử
                                 LuuLichSuDC(_dchd);
 
-                                hd.GB = _dchd.GB_DC;
+                                hd.GB = _dchd.GB_DC.Value;
                                 hd.DM = _dchd.DM_DC;
                                 hd.TIEUTHU = _dchd.TIEUTHU_DC;
                                 hd.GIABAN = _dchd.GIABAN_END;
@@ -400,7 +400,7 @@ namespace ThuTien.GUI.TongHop
                                 ///lưu lịch sử
                                 LuuLichSuDC(dchd);
 
-                                _hoadon.GB = dchd.GB_DC;
+                                _hoadon.GB = dchd.GB_DC.Value;
                                 _hoadon.DM = dchd.DM_DC;
                                 _hoadon.TIEUTHU = dchd.TIEUTHU_DC;
                                 _hoadon.GIABAN = dchd.GIABAN_END;

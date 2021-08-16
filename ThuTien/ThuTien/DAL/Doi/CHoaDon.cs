@@ -143,7 +143,7 @@ namespace ThuTien.DAL.Doi
                     //    hoadon.SoHo = contents[54];
                     hoadon.CreateBy = CNguoiDung.MaND;
                     hoadon.CreateDate = DateTime.Now;
-                    hoadon.MALOTRINH = hoadon.DOT.Value.ToString("00") + hoadon.MAY + hoadon.STT;
+                    hoadon.MALOTRINH = hoadon.DOT.ToString("00") + hoadon.MAY + hoadon.STT;
 
                     //string Quan = "", Phuong = "", CoDH = "", MaDMA = "";
                     //_cCapNuocTanHoa.GetDMA(hoadon.DANHBA, out Quan, out Phuong, out CoDH, out MaDMA);
@@ -151,15 +151,15 @@ namespace ThuTien.DAL.Doi
                     //hoadon.Phuong = Phuong;
                     //hoadon.CoDH = CoDH;
                     //hoadon.MaDMA = MaDMA;
-                    //if (CheckByNamKyDot(hoadon.NAM.Value, hoadon.KY, hoadon.DOT.Value))
+                    //if (CheckByNamKyDot(hoadon.NAM, hoadon.KY, hoadon.DOT.Value))
                     //{
                     //    this.Rollback();
-                    //    System.Windows.Forms.MessageBox.Show("Năm " + hoadon.NAM.Value + "; Kỳ " + hoadon.KY + "; Đợt " + hoadon.DOT.Value + " đã có rồi", "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    //    System.Windows.Forms.MessageBox.Show("Năm " + hoadon.NAM + "; Kỳ " + hoadon.KY + "; Đợt " + hoadon.DOT.Value + " đã có rồi", "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     //    return false;
                     //}
                     if (_db.HOADONs.Any(item => item.SOHOADON == hoadon.SOHOADON))
                     {
-                        _db.ExecuteCommand("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",DM=" + hoadon.DM.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "' where SOHOADON='" + hoadon.SOHOADON + "'");
+                        _db.ExecuteCommand("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB + ",DM=" + hoadon.DM.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "' where SOHOADON='" + hoadon.SOHOADON + "'");
                     }
                     else
                         _db.HOADONs.InsertOnSubmit(hoadon);
@@ -575,16 +575,16 @@ namespace ThuTien.DAL.Doi
 
         public List<HOADON> getDSTon_KhongChanTienDu_KhongDCHD(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false && ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).Count() > 0)
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false && ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).OrderBy(item => item.ID_HOADON).ToList();
+            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false && ((item.GB != 10 && item.DinhMucHN == null) || ((item.GB == 10 || (item.GB != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).Count() > 0)
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false && ((item.GB != 10 && item.DinhMucHN == null) || ((item.GB == 10 || (item.GB != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).OrderBy(item => item.ID_HOADON).ToList();
             else
                 return null;
         }
 
         public List<HOADON> GetDSTon_CoChanTienDu(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true) && ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).Count() > 0)
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true) && ((item.GB.Value != 10 && item.DinhMucHN == null) || ((item.GB.Value == 10 || (item.GB.Value != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).ToList().OrderBy(item => item.ID_HOADON).ToList();
+            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true) && ((item.GB != 10 && item.DinhMucHN == null) || ((item.GB == 10 || (item.GB != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).Count() > 0)
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true) && ((item.GB != 10 && item.DinhMucHN == null) || ((item.GB == 10 || (item.GB != 10 && item.DinhMucHN != null)) && ((item.KY != 4 && item.KY != 5 && item.KY != 6 && item.NAM == 2020) || item.NAM > 2020)))).ToList().OrderBy(item => item.ID_HOADON).ToList();
             else
                 return null;
         }
@@ -8958,7 +8958,7 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && ((itemHD.GB.Value != 10 && itemHD.DinhMucHN == null) || ((itemHD.GB.Value == 10 || (itemHD.GB.Value != 10 && itemHD.DinhMucHN != null)) && ((itemHD.KY != 4 && itemHD.KY != 5 && itemHD.KY != 6 && itemHD.NAM == 2020) || itemHD.NAM > 2020)))
+                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && ((itemHD.GB != 10 && itemHD.DinhMucHN == null) || ((itemHD.GB == 10 || (itemHD.GB != 10 && itemHD.DinhMucHN != null)) && ((itemHD.KY != 4 && itemHD.KY != 5 && itemHD.KY != 6 && itemHD.NAM == 2020) || itemHD.NAM > 2020)))
                         orderby itemHD.ID_HOADON descending
                         select new
                         {
@@ -8996,7 +8996,7 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && (itemHD.GB.Value != 10 && itemHD.DinhMucHN == null)
+                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && (itemHD.GB != 10 && itemHD.DinhMucHN == null)
                         orderby itemHD.ID_HOADON descending
                         select new
                         {
@@ -10039,7 +10039,7 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT >= TuDot && itemHD.DOT <= DenDot
-                            && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                            && itemHD.GB.ToString().Contains(GiaBieu.ToString())
                             && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                             && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
@@ -10067,7 +10067,7 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot
-                            && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                            && itemHD.GB.ToString().Contains(GiaBieu.ToString())
                             && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                             && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
@@ -10095,7 +10095,7 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky
-                            && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                            && itemHD.GB.ToString().Contains(GiaBieu.ToString())
                             && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                             && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
@@ -10123,7 +10123,7 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.TIEUTHU == 0 && itemHD.NAM == Nam
-                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && itemHD.GB.ToString().Contains(GiaBieu.ToString())
                         && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
@@ -10153,7 +10153,7 @@ namespace ThuTien.DAL.Doi
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                               && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam
-                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && itemHD.GB.ToString().Contains(GiaBieu.ToString())
                         && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
@@ -10183,7 +10183,7 @@ namespace ThuTien.DAL.Doi
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                               && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky
-                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && itemHD.GB.ToString().Contains(GiaBieu.ToString())
                         && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
@@ -10213,7 +10213,7 @@ namespace ThuTien.DAL.Doi
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                               && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT >= TuDot && itemHD.DOT <= DenDot
-                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && itemHD.GB.ToString().Contains(GiaBieu.ToString())
                         && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
@@ -10243,7 +10243,7 @@ namespace ThuTien.DAL.Doi
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                               && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot
-                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && itemHD.GB.ToString().Contains(GiaBieu.ToString())
                         && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
@@ -10271,7 +10271,7 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.MaNV_HanhThu == MaNV && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam
-                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && itemHD.GB.ToString().Contains(GiaBieu.ToString())
                         && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
@@ -10299,7 +10299,7 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.MaNV_HanhThu == MaNV && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky
-                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && itemHD.GB.ToString().Contains(GiaBieu.ToString())
                         && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
@@ -10327,7 +10327,7 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.MaNV_HanhThu == MaNV && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT >= TuDot && itemHD.DOT <= DenDot
-                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && itemHD.GB.ToString().Contains(GiaBieu.ToString())
                         && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
@@ -10355,7 +10355,7 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.MaNV_HanhThu == MaNV && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot
-                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && itemHD.GB.ToString().Contains(GiaBieu.ToString())
                         && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
@@ -10593,7 +10593,7 @@ namespace ThuTien.DAL.Doi
         {
             var query = from item in _db.HOADONs
                         where item.NAM == Nam
-                        group item by item.NAM.Value into itemGroup
+                        group item by item.NAM into itemGroup
                         select new
                         {
                             TongHD = itemGroup.Count(),
