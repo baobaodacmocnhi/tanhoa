@@ -60,6 +60,8 @@
             this.HanhThu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoTen_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -82,8 +84,6 @@
             this.TongThu_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongDN_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTon_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -322,6 +322,18 @@
             this.TinhTrang.Name = "TinhTrang";
             this.TinhTrang.Visible = true;
             this.TinhTrang.VisibleIndex = 11;
+            // 
+            // CreateBy
+            // 
+            this.CreateBy.Caption = "CreateBy";
+            this.CreateBy.FieldName = "CreateBy";
+            this.CreateBy.Name = "CreateBy";
+            // 
+            // MaNV_DongNuoc
+            // 
+            this.MaNV_DongNuoc.Caption = "MaNV_DongNuoc";
+            this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
+            this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             // 
             // repositoryItemCheckEdit1
             // 
@@ -580,22 +592,11 @@
             this.TongTon_NV.ReadOnly = true;
             this.TongTon_NV.Width = 50;
             // 
-            // CreateBy
-            // 
-            this.CreateBy.Caption = "CreateBy";
-            this.CreateBy.FieldName = "CreateBy";
-            this.CreateBy.Name = "CreateBy";
-            // 
-            // MaNV_DongNuoc
-            // 
-            this.MaNV_DongNuoc.Caption = "MaNV_DongNuoc";
-            this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
-            this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
-            // 
             // frmXemTBDongNuocDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1401, 666);
             this.Controls.Add(this.dgvTongDN_NV);
             this.Controls.Add(this.dgvTongDN_To);

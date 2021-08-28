@@ -31,6 +31,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtTenTo = new System.Windows.Forms.TextBox();
             this.dgvTo = new System.Windows.Forms.DataGridView();
+            this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.DongNuoc = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TuCuonGCS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DenCuonGCS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.An = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -41,13 +48,6 @@
             this.chkHanhThu = new System.Windows.Forms.CheckBox();
             this.chkDongNuoc = new System.Windows.Forms.CheckBox();
             this.chkAn = new System.Windows.Forms.CheckBox();
-            this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanhThu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.DongNuoc = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.TuCuonGCS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DenCuonGCS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.An = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,6 +88,59 @@
             this.dgvTo.TabIndex = 9;
             this.dgvTo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTo_CellClick);
             this.dgvTo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTo_RowPostPaint);
+            // 
+            // MaTo
+            // 
+            this.MaTo.DataPropertyName = "MaTo";
+            this.MaTo.HeaderText = "MaTo";
+            this.MaTo.Name = "MaTo";
+            this.MaTo.ReadOnly = true;
+            this.MaTo.Visible = false;
+            // 
+            // TenTo
+            // 
+            this.TenTo.DataPropertyName = "TenTo";
+            this.TenTo.HeaderText = "Tên Tổ";
+            this.TenTo.Name = "TenTo";
+            this.TenTo.ReadOnly = true;
+            // 
+            // HanhThu
+            // 
+            this.HanhThu.DataPropertyName = "HanhThu";
+            this.HanhThu.HeaderText = "Hành Thu";
+            this.HanhThu.Name = "HanhThu";
+            this.HanhThu.ReadOnly = true;
+            this.HanhThu.Width = 50;
+            // 
+            // DongNuoc
+            // 
+            this.DongNuoc.DataPropertyName = "DongNuoc";
+            this.DongNuoc.HeaderText = "Đóng Nước";
+            this.DongNuoc.Name = "DongNuoc";
+            this.DongNuoc.ReadOnly = true;
+            this.DongNuoc.Width = 50;
+            // 
+            // TuCuonGCS
+            // 
+            this.TuCuonGCS.DataPropertyName = "TuCuonGCS";
+            this.TuCuonGCS.HeaderText = "Từ CuonGCS";
+            this.TuCuonGCS.Name = "TuCuonGCS";
+            this.TuCuonGCS.ReadOnly = true;
+            // 
+            // DenCuonGCS
+            // 
+            this.DenCuonGCS.DataPropertyName = "DenCuonGCS";
+            this.DenCuonGCS.HeaderText = "Đến CuonGCS";
+            this.DenCuonGCS.Name = "DenCuonGCS";
+            this.DenCuonGCS.ReadOnly = true;
+            // 
+            // An
+            // 
+            this.An.DataPropertyName = "An";
+            this.An.HeaderText = "Ẩn";
+            this.An.Name = "An";
+            this.An.ReadOnly = true;
+            this.An.Width = 30;
             // 
             // btnThem
             // 
@@ -183,63 +236,11 @@
             this.chkAn.Text = "Ẩn";
             this.chkAn.UseVisualStyleBackColor = true;
             // 
-            // MaTo
-            // 
-            this.MaTo.DataPropertyName = "MaTo";
-            this.MaTo.HeaderText = "MaTo";
-            this.MaTo.Name = "MaTo";
-            this.MaTo.ReadOnly = true;
-            this.MaTo.Visible = false;
-            // 
-            // TenTo
-            // 
-            this.TenTo.DataPropertyName = "TenTo";
-            this.TenTo.HeaderText = "Tên Tổ";
-            this.TenTo.Name = "TenTo";
-            this.TenTo.ReadOnly = true;
-            // 
-            // HanhThu
-            // 
-            this.HanhThu.DataPropertyName = "HanhThu";
-            this.HanhThu.HeaderText = "Hành Thu";
-            this.HanhThu.Name = "HanhThu";
-            this.HanhThu.ReadOnly = true;
-            this.HanhThu.Width = 50;
-            // 
-            // DongNuoc
-            // 
-            this.DongNuoc.DataPropertyName = "DongNuoc";
-            this.DongNuoc.HeaderText = "Đóng Nước";
-            this.DongNuoc.Name = "DongNuoc";
-            this.DongNuoc.ReadOnly = true;
-            this.DongNuoc.Width = 50;
-            // 
-            // TuCuonGCS
-            // 
-            this.TuCuonGCS.DataPropertyName = "TuCuonGCS";
-            this.TuCuonGCS.HeaderText = "Từ CuonGCS";
-            this.TuCuonGCS.Name = "TuCuonGCS";
-            this.TuCuonGCS.ReadOnly = true;
-            // 
-            // DenCuonGCS
-            // 
-            this.DenCuonGCS.DataPropertyName = "DenCuonGCS";
-            this.DenCuonGCS.HeaderText = "Đến CuonGCS";
-            this.DenCuonGCS.Name = "DenCuonGCS";
-            this.DenCuonGCS.ReadOnly = true;
-            // 
-            // An
-            // 
-            this.An.DataPropertyName = "An";
-            this.An.HeaderText = "Ẩn";
-            this.An.Name = "An";
-            this.An.ReadOnly = true;
-            this.An.Width = 30;
-            // 
             // frmTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(561, 430);
             this.Controls.Add(this.chkAn);
             this.Controls.Add(this.chkDongNuoc);

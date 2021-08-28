@@ -86,6 +86,7 @@
             this.TongHDXoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCongXoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCoQuan = new System.Windows.Forms.TabPage();
+            this.chkAll_TheoDoi = new System.Windows.Forms.CheckBox();
             this.txtTongCongDienThoai_CQ = new System.Windows.Forms.TextBox();
             this.txtTongCongGiaiTrach_CQ = new System.Windows.Forms.TextBox();
             this.txtTongXoa_CQ = new System.Windows.Forms.TextBox();
@@ -165,7 +166,6 @@
             this.btnInDSCoThuHo = new System.Windows.Forms.Button();
             this.btnInDSPhieuBao = new System.Windows.Forms.Button();
             this.btnDSTBDongNuoc = new System.Windows.Forms.Button();
-            this.chkAll_TheoDoi = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -607,6 +607,16 @@
             this.tabCoQuan.TabIndex = 1;
             this.tabCoQuan.Text = "Theo Dõi Điện Thoại";
             this.tabCoQuan.UseVisualStyleBackColor = true;
+            // 
+            // chkAll_TheoDoi
+            // 
+            this.chkAll_TheoDoi.AutoSize = true;
+            this.chkAll_TheoDoi.Location = new System.Drawing.Point(127, 10);
+            this.chkAll_TheoDoi.Name = "chkAll_TheoDoi";
+            this.chkAll_TheoDoi.Size = new System.Drawing.Size(58, 17);
+            this.chkAll_TheoDoi.TabIndex = 43;
+            this.chkAll_TheoDoi.Text = "Tất Cả";
+            this.chkAll_TheoDoi.UseVisualStyleBackColor = true;
             // 
             // txtTongCongDienThoai_CQ
             // 
@@ -1438,20 +1448,11 @@
             this.btnDSTBDongNuoc.UseVisualStyleBackColor = true;
             this.btnDSTBDongNuoc.Click += new System.EventHandler(this.btnDSTBDongNuoc_Click);
             // 
-            // chkAll_TheoDoi
-            // 
-            this.chkAll_TheoDoi.AutoSize = true;
-            this.chkAll_TheoDoi.Location = new System.Drawing.Point(127, 10);
-            this.chkAll_TheoDoi.Name = "chkAll_TheoDoi";
-            this.chkAll_TheoDoi.Size = new System.Drawing.Size(58, 17);
-            this.chkAll_TheoDoi.TabIndex = 43;
-            this.chkAll_TheoDoi.Text = "Tất Cả";
-            this.chkAll_TheoDoi.UseVisualStyleBackColor = true;
-            // 
             // frmKiemTraDangNganTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1299, 651);
             this.Controls.Add(this.btnDSTBDongNuoc);
             this.Controls.Add(this.btnInDSPhieuBao);

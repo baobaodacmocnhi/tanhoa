@@ -694,6 +694,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1309, 666);
             this.Controls.Add(this.btnInTBTrang);
             this.Controls.Add(this.cmbTo);

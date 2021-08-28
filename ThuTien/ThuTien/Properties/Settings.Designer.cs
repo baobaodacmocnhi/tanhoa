@@ -70,7 +70,7 @@ namespace ThuTien.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=113.161.88.180,1133;Initial Catalog=KTKS_DonKH;Persist Security Info=" +
-            "True;User ID=sa")]
+            "True;User ID=sa;Password=db11@tanhoa")]
         public string KTKS_DonKHConnectionString {
             get {
                 return ((string)(this["KTKS_DonKHConnectionString"]));

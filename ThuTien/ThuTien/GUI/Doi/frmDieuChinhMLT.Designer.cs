@@ -33,14 +33,14 @@
             this.DanhBo_A = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.MLT_A = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lstView_B = new System.Windows.Forms.ListView();
+            this.SoHoaDon_B = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Ky_B = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DanhBo_B = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.MLT_B = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.MLT_B_Moi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCapNhat = new System.Windows.Forms.Button();
-            this.SoHoaDon_B = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Ky_B = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.MLT_B_Moi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnChonFile
@@ -90,6 +90,15 @@
             this.lstView_B.UseCompatibleStateImageBehavior = false;
             this.lstView_B.View = System.Windows.Forms.View.Details;
             // 
+            // SoHoaDon_B
+            // 
+            this.SoHoaDon_B.Text = "Số Hóa Đơn";
+            this.SoHoaDon_B.Width = 100;
+            // 
+            // Ky_B
+            // 
+            this.Ky_B.Text = "Kỳ";
+            // 
             // DanhBo_B
             // 
             this.DanhBo_B.Text = "Danh Bộ";
@@ -99,6 +108,11 @@
             // 
             this.MLT_B.Text = "MLT Cũ";
             this.MLT_B.Width = 100;
+            // 
+            // MLT_B_Moi
+            // 
+            this.MLT_B_Moi.Text = "MLT Mới";
+            this.MLT_B_Moi.Width = 100;
             // 
             // label1
             // 
@@ -128,24 +142,11 @@
             this.btnCapNhat.UseVisualStyleBackColor = true;
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
-            // SoHoaDon_B
-            // 
-            this.SoHoaDon_B.Text = "Số Hóa Đơn";
-            this.SoHoaDon_B.Width = 100;
-            // 
-            // Ky_B
-            // 
-            this.Ky_B.Text = "Kỳ";
-            // 
-            // MLT_B_Moi
-            // 
-            this.MLT_B_Moi.Text = "MLT Mới";
-            this.MLT_B_Moi.Width = 100;
-            // 
             // frmDieuChinhMLT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(873, 558);
             this.Controls.Add(this.btnCapNhat);
             this.Controls.Add(this.label2);

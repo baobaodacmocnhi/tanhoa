@@ -33,41 +33,6 @@
             this.dateChamCong = new System.Windows.Forms.DateTimePicker();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvChamCong = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtN1 = new System.Windows.Forms.TextBox();
-            this.txtN2 = new System.Windows.Forms.TextBox();
-            this.txtN3 = new System.Windows.Forms.TextBox();
-            this.txtN4 = new System.Windows.Forms.TextBox();
-            this.txtN5 = new System.Windows.Forms.TextBox();
-            this.txtN6 = new System.Windows.Forms.TextBox();
-            this.txtN7 = new System.Windows.Forms.TextBox();
-            this.txtN8 = new System.Windows.Forms.TextBox();
-            this.txtN9 = new System.Windows.Forms.TextBox();
-            this.txtN10 = new System.Windows.Forms.TextBox();
-            this.txtN11 = new System.Windows.Forms.TextBox();
-            this.txtN12 = new System.Windows.Forms.TextBox();
-            this.txtN13 = new System.Windows.Forms.TextBox();
-            this.txtN14 = new System.Windows.Forms.TextBox();
-            this.txtN15 = new System.Windows.Forms.TextBox();
-            this.txtN16 = new System.Windows.Forms.TextBox();
-            this.txtN17 = new System.Windows.Forms.TextBox();
-            this.txtN18 = new System.Windows.Forms.TextBox();
-            this.txtN19 = new System.Windows.Forms.TextBox();
-            this.txtN20 = new System.Windows.Forms.TextBox();
-            this.txtN21 = new System.Windows.Forms.TextBox();
-            this.txtN22 = new System.Windows.Forms.TextBox();
-            this.txtN23 = new System.Windows.Forms.TextBox();
-            this.txtN24 = new System.Windows.Forms.TextBox();
-            this.txtN25 = new System.Windows.Forms.TextBox();
-            this.txtN26 = new System.Windows.Forms.TextBox();
-            this.txtN27 = new System.Windows.Forms.TextBox();
-            this.txtN28 = new System.Windows.Forms.TextBox();
-            this.txtN29 = new System.Windows.Forms.TextBox();
-            this.txtN30 = new System.Windows.Forms.TextBox();
-            this.txtN31 = new System.Windows.Forms.TextBox();
-            this.btnInNam = new System.Windows.Forms.Button();
             this.MaCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.To = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,6 +75,41 @@
             this.NgayPhepNamCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayPhepNamMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongNgayPhep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtN1 = new System.Windows.Forms.TextBox();
+            this.txtN2 = new System.Windows.Forms.TextBox();
+            this.txtN3 = new System.Windows.Forms.TextBox();
+            this.txtN4 = new System.Windows.Forms.TextBox();
+            this.txtN5 = new System.Windows.Forms.TextBox();
+            this.txtN6 = new System.Windows.Forms.TextBox();
+            this.txtN7 = new System.Windows.Forms.TextBox();
+            this.txtN8 = new System.Windows.Forms.TextBox();
+            this.txtN9 = new System.Windows.Forms.TextBox();
+            this.txtN10 = new System.Windows.Forms.TextBox();
+            this.txtN11 = new System.Windows.Forms.TextBox();
+            this.txtN12 = new System.Windows.Forms.TextBox();
+            this.txtN13 = new System.Windows.Forms.TextBox();
+            this.txtN14 = new System.Windows.Forms.TextBox();
+            this.txtN15 = new System.Windows.Forms.TextBox();
+            this.txtN16 = new System.Windows.Forms.TextBox();
+            this.txtN17 = new System.Windows.Forms.TextBox();
+            this.txtN18 = new System.Windows.Forms.TextBox();
+            this.txtN19 = new System.Windows.Forms.TextBox();
+            this.txtN20 = new System.Windows.Forms.TextBox();
+            this.txtN21 = new System.Windows.Forms.TextBox();
+            this.txtN22 = new System.Windows.Forms.TextBox();
+            this.txtN23 = new System.Windows.Forms.TextBox();
+            this.txtN24 = new System.Windows.Forms.TextBox();
+            this.txtN25 = new System.Windows.Forms.TextBox();
+            this.txtN26 = new System.Windows.Forms.TextBox();
+            this.txtN27 = new System.Windows.Forms.TextBox();
+            this.txtN28 = new System.Windows.Forms.TextBox();
+            this.txtN29 = new System.Windows.Forms.TextBox();
+            this.txtN30 = new System.Windows.Forms.TextBox();
+            this.txtN31 = new System.Windows.Forms.TextBox();
+            this.btnInNam = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChamCong)).BeginInit();
             this.SuspendLayout();
             // 
@@ -197,6 +197,305 @@
             this.dgvChamCong.TabIndex = 35;
             this.dgvChamCong.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChamCong_CellEndEdit);
             this.dgvChamCong.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvChamCong_RowPostPaint);
+            // 
+            // MaCC
+            // 
+            this.MaCC.DataPropertyName = "MaCC";
+            this.MaCC.HeaderText = "MaCC";
+            this.MaCC.Name = "MaCC";
+            this.MaCC.Visible = false;
+            // 
+            // MaNV
+            // 
+            this.MaNV.DataPropertyName = "MaNV";
+            this.MaNV.HeaderText = "MaNV";
+            this.MaNV.Name = "MaNV";
+            this.MaNV.Visible = false;
+            // 
+            // To
+            // 
+            this.To.DataPropertyName = "To";
+            this.To.HeaderText = "Tổ";
+            this.To.Name = "To";
+            this.To.ReadOnly = true;
+            this.To.Width = 50;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            // 
+            // ToTruong
+            // 
+            this.ToTruong.DataPropertyName = "ToTruong";
+            this.ToTruong.HeaderText = "ToTruong";
+            this.ToTruong.Name = "ToTruong";
+            this.ToTruong.Visible = false;
+            // 
+            // N1
+            // 
+            this.N1.DataPropertyName = "N1";
+            this.N1.HeaderText = "1";
+            this.N1.Name = "N1";
+            this.N1.Width = 30;
+            // 
+            // N2
+            // 
+            this.N2.DataPropertyName = "N2";
+            this.N2.HeaderText = "2";
+            this.N2.Name = "N2";
+            this.N2.Width = 30;
+            // 
+            // N3
+            // 
+            this.N3.DataPropertyName = "N3";
+            this.N3.HeaderText = "3";
+            this.N3.Name = "N3";
+            this.N3.Width = 30;
+            // 
+            // N4
+            // 
+            this.N4.DataPropertyName = "N4";
+            this.N4.HeaderText = "4";
+            this.N4.Name = "N4";
+            this.N4.Width = 30;
+            // 
+            // N5
+            // 
+            this.N5.DataPropertyName = "N5";
+            this.N5.HeaderText = "5";
+            this.N5.Name = "N5";
+            this.N5.Width = 30;
+            // 
+            // N6
+            // 
+            this.N6.DataPropertyName = "N6";
+            this.N6.HeaderText = "6";
+            this.N6.Name = "N6";
+            this.N6.Width = 30;
+            // 
+            // N7
+            // 
+            this.N7.DataPropertyName = "N7";
+            this.N7.HeaderText = "7";
+            this.N7.Name = "N7";
+            this.N7.Width = 30;
+            // 
+            // N8
+            // 
+            this.N8.DataPropertyName = "N8";
+            this.N8.HeaderText = "8";
+            this.N8.Name = "N8";
+            this.N8.Width = 30;
+            // 
+            // N9
+            // 
+            this.N9.DataPropertyName = "N9";
+            this.N9.HeaderText = "9";
+            this.N9.Name = "N9";
+            this.N9.Width = 30;
+            // 
+            // N10
+            // 
+            this.N10.DataPropertyName = "N10";
+            this.N10.HeaderText = "10";
+            this.N10.Name = "N10";
+            this.N10.Width = 30;
+            // 
+            // N11
+            // 
+            this.N11.DataPropertyName = "N11";
+            this.N11.HeaderText = "11";
+            this.N11.Name = "N11";
+            this.N11.Width = 30;
+            // 
+            // N12
+            // 
+            this.N12.DataPropertyName = "N12";
+            this.N12.HeaderText = "12";
+            this.N12.Name = "N12";
+            this.N12.Width = 30;
+            // 
+            // N13
+            // 
+            this.N13.DataPropertyName = "N13";
+            this.N13.HeaderText = "13";
+            this.N13.Name = "N13";
+            this.N13.Width = 30;
+            // 
+            // N14
+            // 
+            this.N14.DataPropertyName = "N14";
+            this.N14.HeaderText = "14";
+            this.N14.Name = "N14";
+            this.N14.Width = 30;
+            // 
+            // N15
+            // 
+            this.N15.DataPropertyName = "N15";
+            this.N15.HeaderText = "15";
+            this.N15.Name = "N15";
+            this.N15.Width = 30;
+            // 
+            // N16
+            // 
+            this.N16.DataPropertyName = "N16";
+            this.N16.HeaderText = "16";
+            this.N16.Name = "N16";
+            this.N16.Width = 30;
+            // 
+            // N17
+            // 
+            this.N17.DataPropertyName = "N17";
+            this.N17.HeaderText = "17";
+            this.N17.Name = "N17";
+            this.N17.Width = 30;
+            // 
+            // N18
+            // 
+            this.N18.DataPropertyName = "N18";
+            this.N18.HeaderText = "18";
+            this.N18.Name = "N18";
+            this.N18.Width = 30;
+            // 
+            // N19
+            // 
+            this.N19.DataPropertyName = "N19";
+            this.N19.HeaderText = "19";
+            this.N19.Name = "N19";
+            this.N19.Width = 30;
+            // 
+            // N20
+            // 
+            this.N20.DataPropertyName = "N20";
+            this.N20.HeaderText = "20";
+            this.N20.Name = "N20";
+            this.N20.Width = 30;
+            // 
+            // N21
+            // 
+            this.N21.DataPropertyName = "N21";
+            this.N21.HeaderText = "21";
+            this.N21.Name = "N21";
+            this.N21.Width = 30;
+            // 
+            // N22
+            // 
+            this.N22.DataPropertyName = "N22";
+            this.N22.HeaderText = "22";
+            this.N22.Name = "N22";
+            this.N22.Width = 30;
+            // 
+            // N23
+            // 
+            this.N23.DataPropertyName = "N23";
+            this.N23.HeaderText = "23";
+            this.N23.Name = "N23";
+            this.N23.Width = 30;
+            // 
+            // N24
+            // 
+            this.N24.DataPropertyName = "N24";
+            this.N24.HeaderText = "24";
+            this.N24.Name = "N24";
+            this.N24.Width = 30;
+            // 
+            // N25
+            // 
+            this.N25.DataPropertyName = "N25";
+            this.N25.HeaderText = "25";
+            this.N25.Name = "N25";
+            this.N25.Width = 30;
+            // 
+            // N26
+            // 
+            this.N26.DataPropertyName = "N26";
+            this.N26.HeaderText = "26";
+            this.N26.Name = "N26";
+            this.N26.Width = 30;
+            // 
+            // N27
+            // 
+            this.N27.DataPropertyName = "N27";
+            this.N27.HeaderText = "27";
+            this.N27.Name = "N27";
+            this.N27.Width = 30;
+            // 
+            // N28
+            // 
+            this.N28.DataPropertyName = "N28";
+            this.N28.HeaderText = "28";
+            this.N28.Name = "N28";
+            this.N28.Width = 30;
+            // 
+            // N29
+            // 
+            this.N29.DataPropertyName = "N29";
+            this.N29.HeaderText = "29";
+            this.N29.Name = "N29";
+            this.N29.Width = 30;
+            // 
+            // N30
+            // 
+            this.N30.DataPropertyName = "N30";
+            this.N30.HeaderText = "30";
+            this.N30.Name = "N30";
+            this.N30.Width = 30;
+            // 
+            // N31
+            // 
+            this.N31.DataPropertyName = "N31";
+            this.N31.HeaderText = "31";
+            this.N31.Name = "N31";
+            this.N31.Width = 30;
+            // 
+            // Nghi
+            // 
+            this.Nghi.DataPropertyName = "Nghi";
+            this.Nghi.HeaderText = "Nghỉ";
+            this.Nghi.Name = "Nghi";
+            this.Nghi.ReadOnly = true;
+            this.Nghi.Width = 30;
+            // 
+            // XS
+            // 
+            this.XS.DataPropertyName = "XS";
+            this.XS.HeaderText = "1.1";
+            this.XS.Name = "XS";
+            this.XS.Width = 30;
+            // 
+            // KK
+            // 
+            this.KK.DataPropertyName = "KK";
+            this.KK.HeaderText = "KK";
+            this.KK.Name = "KK";
+            this.KK.Width = 30;
+            // 
+            // NgayPhepNamCu
+            // 
+            this.NgayPhepNamCu.DataPropertyName = "NgayPhepNamCu";
+            this.NgayPhepNamCu.HeaderText = "Năm Cũ";
+            this.NgayPhepNamCu.Name = "NgayPhepNamCu";
+            this.NgayPhepNamCu.ReadOnly = true;
+            this.NgayPhepNamCu.Width = 50;
+            // 
+            // NgayPhepNamMoi
+            // 
+            this.NgayPhepNamMoi.DataPropertyName = "NgayPhepNamMoi";
+            this.NgayPhepNamMoi.HeaderText = "Năm Mới";
+            this.NgayPhepNamMoi.Name = "NgayPhepNamMoi";
+            this.NgayPhepNamMoi.ReadOnly = true;
+            this.NgayPhepNamMoi.Width = 50;
+            // 
+            // TongNgayPhep
+            // 
+            this.TongNgayPhep.DataPropertyName = "TongNgayPhep";
+            this.TongNgayPhep.HeaderText = "Tổng";
+            this.TongNgayPhep.Name = "TongNgayPhep";
+            this.TongNgayPhep.ReadOnly = true;
+            this.TongNgayPhep.Width = 30;
             // 
             // label5
             // 
@@ -517,309 +816,11 @@
             this.btnInNam.UseVisualStyleBackColor = true;
             this.btnInNam.Click += new System.EventHandler(this.btnInNam_Click);
             // 
-            // MaCC
-            // 
-            this.MaCC.DataPropertyName = "MaCC";
-            this.MaCC.HeaderText = "MaCC";
-            this.MaCC.Name = "MaCC";
-            this.MaCC.Visible = false;
-            // 
-            // MaNV
-            // 
-            this.MaNV.DataPropertyName = "MaNV";
-            this.MaNV.HeaderText = "MaNV";
-            this.MaNV.Name = "MaNV";
-            this.MaNV.Visible = false;
-            // 
-            // To
-            // 
-            this.To.DataPropertyName = "To";
-            this.To.HeaderText = "Tổ";
-            this.To.Name = "To";
-            this.To.ReadOnly = true;
-            this.To.Width = 50;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            // 
-            // ToTruong
-            // 
-            this.ToTruong.DataPropertyName = "ToTruong";
-            this.ToTruong.HeaderText = "ToTruong";
-            this.ToTruong.Name = "ToTruong";
-            this.ToTruong.Visible = false;
-            // 
-            // N1
-            // 
-            this.N1.DataPropertyName = "N1";
-            this.N1.HeaderText = "1";
-            this.N1.Name = "N1";
-            this.N1.Width = 30;
-            // 
-            // N2
-            // 
-            this.N2.DataPropertyName = "N2";
-            this.N2.HeaderText = "2";
-            this.N2.Name = "N2";
-            this.N2.Width = 30;
-            // 
-            // N3
-            // 
-            this.N3.DataPropertyName = "N3";
-            this.N3.HeaderText = "3";
-            this.N3.Name = "N3";
-            this.N3.Width = 30;
-            // 
-            // N4
-            // 
-            this.N4.DataPropertyName = "N4";
-            this.N4.HeaderText = "4";
-            this.N4.Name = "N4";
-            this.N4.Width = 30;
-            // 
-            // N5
-            // 
-            this.N5.DataPropertyName = "N5";
-            this.N5.HeaderText = "5";
-            this.N5.Name = "N5";
-            this.N5.Width = 30;
-            // 
-            // N6
-            // 
-            this.N6.DataPropertyName = "N6";
-            this.N6.HeaderText = "6";
-            this.N6.Name = "N6";
-            this.N6.Width = 30;
-            // 
-            // N7
-            // 
-            this.N7.DataPropertyName = "N7";
-            this.N7.HeaderText = "7";
-            this.N7.Name = "N7";
-            this.N7.Width = 30;
-            // 
-            // N8
-            // 
-            this.N8.DataPropertyName = "N8";
-            this.N8.HeaderText = "8";
-            this.N8.Name = "N8";
-            this.N8.Width = 30;
-            // 
-            // N9
-            // 
-            this.N9.DataPropertyName = "N9";
-            this.N9.HeaderText = "9";
-            this.N9.Name = "N9";
-            this.N9.Width = 30;
-            // 
-            // N10
-            // 
-            this.N10.DataPropertyName = "N10";
-            this.N10.HeaderText = "10";
-            this.N10.Name = "N10";
-            this.N10.Width = 30;
-            // 
-            // N11
-            // 
-            this.N11.DataPropertyName = "N11";
-            this.N11.HeaderText = "11";
-            this.N11.Name = "N11";
-            this.N11.Width = 30;
-            // 
-            // N12
-            // 
-            this.N12.DataPropertyName = "N12";
-            this.N12.HeaderText = "12";
-            this.N12.Name = "N12";
-            this.N12.Width = 30;
-            // 
-            // N13
-            // 
-            this.N13.DataPropertyName = "N13";
-            this.N13.HeaderText = "13";
-            this.N13.Name = "N13";
-            this.N13.Width = 30;
-            // 
-            // N14
-            // 
-            this.N14.DataPropertyName = "N14";
-            this.N14.HeaderText = "14";
-            this.N14.Name = "N14";
-            this.N14.Width = 30;
-            // 
-            // N15
-            // 
-            this.N15.DataPropertyName = "N15";
-            this.N15.HeaderText = "15";
-            this.N15.Name = "N15";
-            this.N15.Width = 30;
-            // 
-            // N16
-            // 
-            this.N16.DataPropertyName = "N16";
-            this.N16.HeaderText = "16";
-            this.N16.Name = "N16";
-            this.N16.Width = 30;
-            // 
-            // N17
-            // 
-            this.N17.DataPropertyName = "N17";
-            this.N17.HeaderText = "17";
-            this.N17.Name = "N17";
-            this.N17.Width = 30;
-            // 
-            // N18
-            // 
-            this.N18.DataPropertyName = "N18";
-            this.N18.HeaderText = "18";
-            this.N18.Name = "N18";
-            this.N18.Width = 30;
-            // 
-            // N19
-            // 
-            this.N19.DataPropertyName = "N19";
-            this.N19.HeaderText = "19";
-            this.N19.Name = "N19";
-            this.N19.Width = 30;
-            // 
-            // N20
-            // 
-            this.N20.DataPropertyName = "N20";
-            this.N20.HeaderText = "20";
-            this.N20.Name = "N20";
-            this.N20.Width = 30;
-            // 
-            // N21
-            // 
-            this.N21.DataPropertyName = "N21";
-            this.N21.HeaderText = "21";
-            this.N21.Name = "N21";
-            this.N21.Width = 30;
-            // 
-            // N22
-            // 
-            this.N22.DataPropertyName = "N22";
-            this.N22.HeaderText = "22";
-            this.N22.Name = "N22";
-            this.N22.Width = 30;
-            // 
-            // N23
-            // 
-            this.N23.DataPropertyName = "N23";
-            this.N23.HeaderText = "23";
-            this.N23.Name = "N23";
-            this.N23.Width = 30;
-            // 
-            // N24
-            // 
-            this.N24.DataPropertyName = "N24";
-            this.N24.HeaderText = "24";
-            this.N24.Name = "N24";
-            this.N24.Width = 30;
-            // 
-            // N25
-            // 
-            this.N25.DataPropertyName = "N25";
-            this.N25.HeaderText = "25";
-            this.N25.Name = "N25";
-            this.N25.Width = 30;
-            // 
-            // N26
-            // 
-            this.N26.DataPropertyName = "N26";
-            this.N26.HeaderText = "26";
-            this.N26.Name = "N26";
-            this.N26.Width = 30;
-            // 
-            // N27
-            // 
-            this.N27.DataPropertyName = "N27";
-            this.N27.HeaderText = "27";
-            this.N27.Name = "N27";
-            this.N27.Width = 30;
-            // 
-            // N28
-            // 
-            this.N28.DataPropertyName = "N28";
-            this.N28.HeaderText = "28";
-            this.N28.Name = "N28";
-            this.N28.Width = 30;
-            // 
-            // N29
-            // 
-            this.N29.DataPropertyName = "N29";
-            this.N29.HeaderText = "29";
-            this.N29.Name = "N29";
-            this.N29.Width = 30;
-            // 
-            // N30
-            // 
-            this.N30.DataPropertyName = "N30";
-            this.N30.HeaderText = "30";
-            this.N30.Name = "N30";
-            this.N30.Width = 30;
-            // 
-            // N31
-            // 
-            this.N31.DataPropertyName = "N31";
-            this.N31.HeaderText = "31";
-            this.N31.Name = "N31";
-            this.N31.Width = 30;
-            // 
-            // Nghi
-            // 
-            this.Nghi.DataPropertyName = "Nghi";
-            this.Nghi.HeaderText = "Nghỉ";
-            this.Nghi.Name = "Nghi";
-            this.Nghi.ReadOnly = true;
-            this.Nghi.Width = 30;
-            // 
-            // XS
-            // 
-            this.XS.DataPropertyName = "XS";
-            this.XS.HeaderText = "1.1";
-            this.XS.Name = "XS";
-            this.XS.Width = 30;
-            // 
-            // KK
-            // 
-            this.KK.DataPropertyName = "KK";
-            this.KK.HeaderText = "KK";
-            this.KK.Name = "KK";
-            this.KK.Width = 30;
-            // 
-            // NgayPhepNamCu
-            // 
-            this.NgayPhepNamCu.DataPropertyName = "NgayPhepNamCu";
-            this.NgayPhepNamCu.HeaderText = "Năm Cũ";
-            this.NgayPhepNamCu.Name = "NgayPhepNamCu";
-            this.NgayPhepNamCu.ReadOnly = true;
-            this.NgayPhepNamCu.Width = 50;
-            // 
-            // NgayPhepNamMoi
-            // 
-            this.NgayPhepNamMoi.DataPropertyName = "NgayPhepNamMoi";
-            this.NgayPhepNamMoi.HeaderText = "Năm Mới";
-            this.NgayPhepNamMoi.Name = "NgayPhepNamMoi";
-            this.NgayPhepNamMoi.ReadOnly = true;
-            this.NgayPhepNamMoi.Width = 50;
-            // 
-            // TongNgayPhep
-            // 
-            this.TongNgayPhep.DataPropertyName = "TongNgayPhep";
-            this.TongNgayPhep.HeaderText = "Tổng";
-            this.TongNgayPhep.Name = "TongNgayPhep";
-            this.TongNgayPhep.ReadOnly = true;
-            this.TongNgayPhep.Width = 30;
-            // 
             // frmChamCong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1367, 642);
             this.Controls.Add(this.btnInNam);
             this.Controls.Add(this.txtN31);

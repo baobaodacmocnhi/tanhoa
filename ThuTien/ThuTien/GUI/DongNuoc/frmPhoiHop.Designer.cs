@@ -46,6 +46,7 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnIn = new System.Windows.Forms.Button();
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.lbTo = new System.Windows.Forms.Label();
             this.dgvPhoiHop = new System.Windows.Forms.DataGridView();
@@ -64,7 +65,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cmbDongNuoc = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnIn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhoiHop)).BeginInit();
             this.SuspendLayout();
@@ -198,6 +198,16 @@
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách";
+            // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(618, 17);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 51;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // cmbTo
             // 
@@ -383,20 +393,11 @@
             this.label8.TabIndex = 29;
             this.label8.Text = "Đóng Nước";
             // 
-            // btnIn
-            // 
-            this.btnIn.Location = new System.Drawing.Point(618, 17);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
-            this.btnIn.TabIndex = 51;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-            // 
             // frmPhoiHop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1130, 613);
             this.Controls.Add(this.cmbDongNuoc);
             this.Controls.Add(this.label8);

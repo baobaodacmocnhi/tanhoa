@@ -60,6 +60,7 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnChuyenPhiMoNuoc = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.chkKhongBangKe = new System.Windows.Forms.CheckBox();
             this.dateLap = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.chkDongNuoc2 = new System.Windows.Forms.CheckBox();
@@ -67,7 +68,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.dateBangKe = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
-            this.chkKhongBangKe = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -392,6 +392,16 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Chuyển Phí Mở Nước";
             // 
+            // chkKhongBangKe
+            // 
+            this.chkKhongBangKe.AutoSize = true;
+            this.chkKhongBangKe.Location = new System.Drawing.Point(201, 46);
+            this.chkKhongBangKe.Name = "chkKhongBangKe";
+            this.chkKhongBangKe.Size = new System.Drawing.Size(101, 17);
+            this.chkKhongBangKe.TabIndex = 40;
+            this.chkKhongBangKe.Text = "Không Bảng Kê";
+            this.chkKhongBangKe.UseVisualStyleBackColor = true;
+            // 
             // dateLap
             // 
             this.dateLap.CustomFormat = "dd/MM/yyyy";
@@ -457,20 +467,11 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Ngày Bảng Kê:";
             // 
-            // chkKhongBangKe
-            // 
-            this.chkKhongBangKe.AutoSize = true;
-            this.chkKhongBangKe.Location = new System.Drawing.Point(201, 46);
-            this.chkKhongBangKe.Name = "chkKhongBangKe";
-            this.chkKhongBangKe.Size = new System.Drawing.Size(101, 17);
-            this.chkKhongBangKe.TabIndex = 40;
-            this.chkKhongBangKe.Text = "Không Bảng Kê";
-            this.chkKhongBangKe.UseVisualStyleBackColor = true;
-            // 
             // frmDieuChinhTienDu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(817, 295);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);

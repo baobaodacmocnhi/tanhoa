@@ -51,6 +51,7 @@
             this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TongCongLenh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaKQDN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.cmbNhanVienDongNuoc = new System.Windows.Forms.ComboBox();
@@ -64,7 +65,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtTongCong = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.MaKQDN = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -287,6 +287,12 @@
             this.TinhTrang.Visible = true;
             this.TinhTrang.VisibleIndex = 8;
             // 
+            // MaKQDN
+            // 
+            this.MaKQDN.Caption = "MaKQDN";
+            this.MaKQDN.FieldName = "MaKQDN";
+            this.MaKQDN.Name = "MaKQDN";
+            // 
             // repositoryItemCheckEdit1
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
@@ -395,16 +401,11 @@
             this.label5.TabIndex = 35;
             this.label5.Text = "Tổng Cộng";
             // 
-            // MaKQDN
-            // 
-            this.MaKQDN.Caption = "MaKQDN";
-            this.MaKQDN.FieldName = "MaKQDN";
-            this.MaKQDN.Name = "MaKQDN";
-            // 
             // frmTheoDoiDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1262, 722);
             this.Controls.Add(this.txtTongCong);

@@ -51,6 +51,8 @@
             this.txtTCHC = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtNguoiDeNghi = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -68,8 +70,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtNguoiDeNghi = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
@@ -287,6 +287,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nhập Liệu";
             // 
+            // txtNguoiDeNghi
+            // 
+            this.txtNguoiDeNghi.Location = new System.Drawing.Point(90, 45);
+            this.txtNguoiDeNghi.Name = "txtNguoiDeNghi";
+            this.txtNguoiDeNghi.Size = new System.Drawing.Size(100, 20);
+            this.txtNguoiDeNghi.TabIndex = 5;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(7, 48);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(77, 13);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Người Đề Nghị";
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -481,26 +497,11 @@
             this.label11.TabIndex = 2;
             this.label11.Text = "Đến Ngày:";
             // 
-            // txtNguoiDeNghi
-            // 
-            this.txtNguoiDeNghi.Location = new System.Drawing.Point(90, 45);
-            this.txtNguoiDeNghi.Name = "txtNguoiDeNghi";
-            this.txtNguoiDeNghi.Size = new System.Drawing.Size(100, 20);
-            this.txtNguoiDeNghi.TabIndex = 5;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(7, 48);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(77, 13);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "Người Đề Nghị";
-            // 
             // frmXacNhanThanhToan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1025, 631);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

@@ -36,7 +36,6 @@
             this.btnXem = new System.Windows.Forms.Button();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.dgvBamChi = new System.Windows.Forms.DataGridView();
-            this.btnIn = new System.Windows.Forms.Button();
             this.MaKQDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Duyet = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -55,6 +54,7 @@
             this.KhoaKhac = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnIn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBamChi)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,16 +146,6 @@
             this.dgvBamChi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBamChi_CellFormatting);
             this.dgvBamChi.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvBamChi_CellValidating);
             this.dgvBamChi.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvBamChi_RowPostPaint);
-            // 
-            // btnIn
-            // 
-            this.btnIn.Location = new System.Drawing.Point(560, 10);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
-            this.btnIn.TabIndex = 21;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // MaKQDN
             // 
@@ -281,10 +271,21 @@
             this.NhanVien.Name = "NhanVien";
             this.NhanVien.Width = 80;
             // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(560, 10);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 21;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // frmBaoCaoVatTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1241, 640);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.dgvBamChi);

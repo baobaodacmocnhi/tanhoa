@@ -57,9 +57,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvDangNhap = new System.Windows.Forms.DataGridView();
-            this.btnXem_DangNhap = new System.Windows.Forms.Button();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name_PC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXem_DangNhap = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -357,16 +357,6 @@
             this.dgvDangNhap.TabIndex = 9;
             this.dgvDangNhap.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDangNhap_RowPostPaint);
             // 
-            // btnXem_DangNhap
-            // 
-            this.btnXem_DangNhap.Location = new System.Drawing.Point(46, 20);
-            this.btnXem_DangNhap.Name = "btnXem_DangNhap";
-            this.btnXem_DangNhap.Size = new System.Drawing.Size(75, 23);
-            this.btnXem_DangNhap.TabIndex = 0;
-            this.btnXem_DangNhap.Text = "Xem";
-            this.btnXem_DangNhap.UseVisualStyleBackColor = true;
-            this.btnXem_DangNhap.Click += new System.EventHandler(this.btnXem_DangNhap_Click);
-            // 
             // HoTen
             // 
             this.HoTen.DataPropertyName = "HoTen";
@@ -383,10 +373,21 @@
             this.Name_PC.ReadOnly = true;
             this.Name_PC.Width = 150;
             // 
+            // btnXem_DangNhap
+            // 
+            this.btnXem_DangNhap.Location = new System.Drawing.Point(46, 20);
+            this.btnXem_DangNhap.Name = "btnXem_DangNhap";
+            this.btnXem_DangNhap.Size = new System.Drawing.Size(75, 23);
+            this.btnXem_DangNhap.TabIndex = 0;
+            this.btnXem_DangNhap.Text = "Xem";
+            this.btnXem_DangNhap.UseVisualStyleBackColor = true;
+            this.btnXem_DangNhap.Click += new System.EventHandler(this.btnXem_DangNhap_Click);
+            // 
             // frmNhom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1741, 642);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

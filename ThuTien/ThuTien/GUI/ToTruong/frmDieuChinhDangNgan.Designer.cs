@@ -711,6 +711,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1449, 641);
             this.Controls.Add(this.btnCopyToClipboard);
             this.Controls.Add(this.lstHD);

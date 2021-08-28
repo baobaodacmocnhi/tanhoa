@@ -52,6 +52,12 @@
             this.radThoiGian_DongNuoc = new System.Windows.Forms.RadioButton();
             this.radTatCa_DongNuoc = new System.Windows.Forms.RadioButton();
             this.dgvDongNuoc = new System.Windows.Forms.DataGridView();
+            this.MaDN_DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo_DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen_DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi_DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayDN_DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNV_DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radTroNgaiMoNuoc_DongNuoc = new System.Windows.Forms.RadioButton();
             this.radCanMoNuoc_DongNuoc = new System.Windows.Forms.RadioButton();
             this.radChuaDongPhi_DongNuoc = new System.Windows.Forms.RadioButton();
@@ -64,17 +70,6 @@
             this.HoTen_Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi_Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPhiMoNuoc = new System.Windows.Forms.DataGridView();
-            this.dateTu = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateDen = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.MaDN_DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo_DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen_DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi_DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayDN_DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNV_DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayDongPhi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,6 +77,11 @@
             this.ChuyenKhoan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PhiMoNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CoDHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTu = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateDen = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnXem = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -255,6 +255,45 @@
             this.dgvDongNuoc.TabIndex = 46;
             this.dgvDongNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDongNuoc_CellFormatting);
             this.dgvDongNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDongNuoc_RowPostPaint);
+            // 
+            // MaDN_DongNuoc
+            // 
+            this.MaDN_DongNuoc.DataPropertyName = "MaDN";
+            this.MaDN_DongNuoc.HeaderText = "Mã Lệnh";
+            this.MaDN_DongNuoc.Name = "MaDN_DongNuoc";
+            this.MaDN_DongNuoc.Width = 80;
+            // 
+            // DanhBo_DongNuoc
+            // 
+            this.DanhBo_DongNuoc.DataPropertyName = "DanhBo";
+            this.DanhBo_DongNuoc.HeaderText = "Danh Bộ";
+            this.DanhBo_DongNuoc.Name = "DanhBo_DongNuoc";
+            // 
+            // HoTen_DongNuoc
+            // 
+            this.HoTen_DongNuoc.DataPropertyName = "HoTen";
+            this.HoTen_DongNuoc.HeaderText = "Khách Hàng";
+            this.HoTen_DongNuoc.Name = "HoTen_DongNuoc";
+            this.HoTen_DongNuoc.Width = 200;
+            // 
+            // DiaChi_DongNuoc
+            // 
+            this.DiaChi_DongNuoc.DataPropertyName = "DiaChi";
+            this.DiaChi_DongNuoc.HeaderText = "Địa Chỉ";
+            this.DiaChi_DongNuoc.Name = "DiaChi_DongNuoc";
+            this.DiaChi_DongNuoc.Width = 200;
+            // 
+            // NgayDN_DongNuoc
+            // 
+            this.NgayDN_DongNuoc.DataPropertyName = "NgayDN";
+            this.NgayDN_DongNuoc.HeaderText = "Đóng Nước";
+            this.NgayDN_DongNuoc.Name = "NgayDN_DongNuoc";
+            // 
+            // MaNV_DongNuoc
+            // 
+            this.MaNV_DongNuoc.DataPropertyName = "MaNV_DongNuoc";
+            this.MaNV_DongNuoc.HeaderText = "Nhân Viên";
+            this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             // 
             // radTroNgaiMoNuoc_DongNuoc
             // 
@@ -441,91 +480,6 @@
             this.dgvPhiMoNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPhiMoNuoc_CellFormatting);
             this.dgvPhiMoNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvPhiMoNuoc_RowPostPaint);
             // 
-            // dateTu
-            // 
-            this.dateTu.CustomFormat = "dd/MM/yyyy";
-            this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(108, 8);
-            this.dateTu.Name = "dateTu";
-            this.dateTu.Size = new System.Drawing.Size(100, 20);
-            this.dateTu.TabIndex = 44;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(51, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "Từ Ngày:";
-            // 
-            // dateDen
-            // 
-            this.dateDen.CustomFormat = "dd/MM/yyyy";
-            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(278, 8);
-            this.dateDen.Name = "dateDen";
-            this.dateDen.Size = new System.Drawing.Size(100, 20);
-            this.dateDen.TabIndex = 42;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(214, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 41;
-            this.label3.Text = "Đến Ngày:";
-            // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(384, 6);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 23);
-            this.btnXem.TabIndex = 40;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
-            // MaDN_DongNuoc
-            // 
-            this.MaDN_DongNuoc.DataPropertyName = "MaDN";
-            this.MaDN_DongNuoc.HeaderText = "Mã Lệnh";
-            this.MaDN_DongNuoc.Name = "MaDN_DongNuoc";
-            this.MaDN_DongNuoc.Width = 80;
-            // 
-            // DanhBo_DongNuoc
-            // 
-            this.DanhBo_DongNuoc.DataPropertyName = "DanhBo";
-            this.DanhBo_DongNuoc.HeaderText = "Danh Bộ";
-            this.DanhBo_DongNuoc.Name = "DanhBo_DongNuoc";
-            // 
-            // HoTen_DongNuoc
-            // 
-            this.HoTen_DongNuoc.DataPropertyName = "HoTen";
-            this.HoTen_DongNuoc.HeaderText = "Khách Hàng";
-            this.HoTen_DongNuoc.Name = "HoTen_DongNuoc";
-            this.HoTen_DongNuoc.Width = 200;
-            // 
-            // DiaChi_DongNuoc
-            // 
-            this.DiaChi_DongNuoc.DataPropertyName = "DiaChi";
-            this.DiaChi_DongNuoc.HeaderText = "Địa Chỉ";
-            this.DiaChi_DongNuoc.Name = "DiaChi_DongNuoc";
-            this.DiaChi_DongNuoc.Width = 200;
-            // 
-            // NgayDN_DongNuoc
-            // 
-            this.NgayDN_DongNuoc.DataPropertyName = "NgayDN";
-            this.NgayDN_DongNuoc.HeaderText = "Đóng Nước";
-            this.NgayDN_DongNuoc.Name = "NgayDN_DongNuoc";
-            // 
-            // MaNV_DongNuoc
-            // 
-            this.MaNV_DongNuoc.DataPropertyName = "MaNV_DongNuoc";
-            this.MaNV_DongNuoc.HeaderText = "Nhân Viên";
-            this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
-            // 
             // NgayDongPhi
             // 
             this.NgayDongPhi.DataPropertyName = "NgayDongPhi";
@@ -574,10 +528,57 @@
             this.CoDHN.Name = "CoDHN";
             this.CoDHN.Visible = false;
             // 
+            // dateTu
+            // 
+            this.dateTu.CustomFormat = "dd/MM/yyyy";
+            this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu.Location = new System.Drawing.Point(108, 8);
+            this.dateTu.Name = "dateTu";
+            this.dateTu.Size = new System.Drawing.Size(100, 20);
+            this.dateTu.TabIndex = 44;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(51, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Từ Ngày:";
+            // 
+            // dateDen
+            // 
+            this.dateDen.CustomFormat = "dd/MM/yyyy";
+            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen.Location = new System.Drawing.Point(278, 8);
+            this.dateDen.Name = "dateDen";
+            this.dateDen.Size = new System.Drawing.Size(100, 20);
+            this.dateDen.TabIndex = 42;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(214, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 41;
+            this.label3.Text = "Đến Ngày:";
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(384, 6);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 40;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
             // frmDongMoNuocDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1272, 668);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmDongMoNuocDoi";

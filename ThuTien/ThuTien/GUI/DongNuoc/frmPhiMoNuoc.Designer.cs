@@ -369,6 +369,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1053, 631);
             this.Controls.Add(this.panel_NhanVien);
             this.Controls.Add(this.panel_To);

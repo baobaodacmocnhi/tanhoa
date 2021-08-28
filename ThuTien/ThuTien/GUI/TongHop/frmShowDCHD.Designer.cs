@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chkBaoCaoThue = new System.Windows.Forms.CheckBox();
             this.chkChuanThu1 = new System.Windows.Forms.CheckBox();
             this.txtSoHoaDonMoi = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -56,6 +55,7 @@
             this.lbTangGiam = new System.Windows.Forms.Label();
             this.txtTienNuoc_BD = new System.Windows.Forms.TextBox();
             this.txtTieuThu_BD = new System.Windows.Forms.TextBox();
+            this.chkBaoCaoThue = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSoPhieu = new System.Windows.Forms.TextBox();
             this.txtMaDon = new System.Windows.Forms.TextBox();
@@ -114,16 +114,6 @@
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết Quả Điều Chỉnh";
-            // 
-            // chkBaoCaoThue
-            // 
-            this.chkBaoCaoThue.AutoSize = true;
-            this.chkBaoCaoThue.Location = new System.Drawing.Point(509, 64);
-            this.chkBaoCaoThue.Name = "chkBaoCaoThue";
-            this.chkBaoCaoThue.Size = new System.Drawing.Size(95, 17);
-            this.chkBaoCaoThue.TabIndex = 30;
-            this.chkBaoCaoThue.Text = "Báo Cáo Thuế";
-            this.chkBaoCaoThue.UseVisualStyleBackColor = true;
             // 
             // chkChuanThu1
             // 
@@ -372,6 +362,16 @@
             this.txtTieuThu_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTieuThu_BD.Visible = false;
             // 
+            // chkBaoCaoThue
+            // 
+            this.chkBaoCaoThue.AutoSize = true;
+            this.chkBaoCaoThue.Location = new System.Drawing.Point(509, 64);
+            this.chkBaoCaoThue.Name = "chkBaoCaoThue";
+            this.chkBaoCaoThue.Size = new System.Drawing.Size(95, 17);
+            this.chkBaoCaoThue.TabIndex = 30;
+            this.chkBaoCaoThue.Text = "Báo Cáo Thuế";
+            this.chkBaoCaoThue.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -560,6 +560,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(625, 265);
             this.Controls.Add(this.chkBaoCaoThue);
             this.Controls.Add(this.chkUpdatedHDDT);

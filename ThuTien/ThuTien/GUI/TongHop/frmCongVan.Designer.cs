@@ -888,6 +888,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1375, 626);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmCongVan";

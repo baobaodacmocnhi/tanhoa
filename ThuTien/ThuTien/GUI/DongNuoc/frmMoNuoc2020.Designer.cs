@@ -293,16 +293,17 @@
             this.lbTo.TabIndex = 45;
             this.lbTo.Text = "Tổ:";
             // 
-            // frmMoNuoc
+            // frmMoNuoc2020
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1259, 630);
             this.Controls.Add(this.lbTo);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.dgvKQDongNuoc);
-            this.Name = "frmMoNuoc";
+            this.Name = "frmMoNuoc2020";
             this.Text = "Danh Bộ Cần Mở Nước";
             this.Load += new System.EventHandler(this.frmMoNuoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).EndInit();
