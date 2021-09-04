@@ -161,7 +161,7 @@
             this.menuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1368, 44);
+            this.menuStrip.Size = new System.Drawing.Size(984, 44);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -594,70 +594,70 @@
             // mnuDCBD
             // 
             this.mnuDCBD.Name = "mnuDCBD";
-            this.mnuDCBD.Size = new System.Drawing.Size(231, 22);
+            this.mnuDCBD.Size = new System.Drawing.Size(243, 22);
             this.mnuDCBD.Text = "Điều Chỉnh Thông Tin";
             this.mnuDCBD.Click += new System.EventHandler(this.mnuDCBD_Click);
             // 
             // mnuDCHD
             // 
             this.mnuDCHD.Name = "mnuDCHD";
-            this.mnuDCHD.Size = new System.Drawing.Size(231, 22);
+            this.mnuDCHD.Size = new System.Drawing.Size(243, 22);
             this.mnuDCHD.Text = "Điều Chỉnh Hóa Đơn";
             this.mnuDCHD.Click += new System.EventHandler(this.mnuDCHD_Click);
             // 
             // mnuDSDCBD
             // 
             this.mnuDSDCBD.Name = "mnuDSDCBD";
-            this.mnuDSDCBD.Size = new System.Drawing.Size(231, 22);
+            this.mnuDSDCBD.Size = new System.Drawing.Size(243, 22);
             this.mnuDSDCBD.Text = "Danh Sách ĐCBD";
             this.mnuDSDCBD.Click += new System.EventHandler(this.mnuDSDCBD_Click);
             // 
             // mnuTBKQYCCatDM
             // 
             this.mnuTBKQYCCatDM.Name = "mnuTBKQYCCatDM";
-            this.mnuTBKQYCCatDM.Size = new System.Drawing.Size(231, 22);
+            this.mnuTBKQYCCatDM.Size = new System.Drawing.Size(243, 22);
             this.mnuTBKQYCCatDM.Text = "Thông Báo KQ YC Cắt ĐM";
             this.mnuTBKQYCCatDM.Click += new System.EventHandler(this.mnuTBKQYCCatDM_Click);
             // 
             // mnuLoaiChungTu
             // 
             this.mnuLoaiChungTu.Name = "mnuLoaiChungTu";
-            this.mnuLoaiChungTu.Size = new System.Drawing.Size(231, 22);
+            this.mnuLoaiChungTu.Size = new System.Drawing.Size(243, 22);
             this.mnuLoaiChungTu.Text = "Loại Chứng Từ";
             this.mnuLoaiChungTu.Click += new System.EventHandler(this.mnuLoaiChungTu_Click);
             // 
             // mnuGiaNuoc
             // 
             this.mnuGiaNuoc.Name = "mnuGiaNuoc";
-            this.mnuGiaNuoc.Size = new System.Drawing.Size(231, 22);
+            this.mnuGiaNuoc.Size = new System.Drawing.Size(243, 22);
             this.mnuGiaNuoc.Text = "Giá Nước";
             this.mnuGiaNuoc.Click += new System.EventHandler(this.mnuGiaNuoc_Click);
             // 
             // mnuChiNhanhCapNuoc
             // 
             this.mnuChiNhanhCapNuoc.Name = "mnuChiNhanhCapNuoc";
-            this.mnuChiNhanhCapNuoc.Size = new System.Drawing.Size(231, 22);
+            this.mnuChiNhanhCapNuoc.Size = new System.Drawing.Size(243, 22);
             this.mnuChiNhanhCapNuoc.Text = "Chi Nhánh Cấp Nước";
             this.mnuChiNhanhCapNuoc.Click += new System.EventHandler(this.mnuChiNhanhCapNuoc_Click);
             // 
             // mnuBaoCaoDCBD
             // 
             this.mnuBaoCaoDCBD.Name = "mnuBaoCaoDCBD";
-            this.mnuBaoCaoDCBD.Size = new System.Drawing.Size(231, 22);
+            this.mnuBaoCaoDCBD.Size = new System.Drawing.Size(243, 22);
             this.mnuBaoCaoDCBD.Text = "Báo Cáo";
             this.mnuBaoCaoDCBD.Click += new System.EventHandler(this.mnuBaoCaoDCBD_Click);
             // 
             // mnuKhuCongNghiep
             // 
             this.mnuKhuCongNghiep.Name = "mnuKhuCongNghiep";
-            this.mnuKhuCongNghiep.Size = new System.Drawing.Size(231, 22);
+            this.mnuKhuCongNghiep.Size = new System.Drawing.Size(243, 22);
             this.mnuKhuCongNghiep.Text = "Khấu Trừ / Khu Công Nghiệp";
             this.mnuKhuCongNghiep.Click += new System.EventHandler(this.mnuKhuCongNghiep_Click);
             // 
             // mnuHoNgheo
             // 
             this.mnuHoNgheo.Name = "mnuHoNgheo";
-            this.mnuHoNgheo.Size = new System.Drawing.Size(231, 22);
+            this.mnuHoNgheo.Size = new System.Drawing.Size(243, 22);
             this.mnuHoNgheo.Text = "Hộ Nghèo";
             this.mnuHoNgheo.Click += new System.EventHandler(this.mnuHoNgheo_Click);
             // 
@@ -933,7 +933,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 44);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1368, 26);
+            this.tabControl.Size = new System.Drawing.Size(984, 26);
             this.tabControl.TabIndex = 2;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -942,9 +942,9 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.StripStatus_HoTen});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 448);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1368, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(984, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -965,7 +965,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1368, 470);
+            this.ClientSize = new System.Drawing.Size(984, 561);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip);

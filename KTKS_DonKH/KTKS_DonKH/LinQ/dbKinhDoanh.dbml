@@ -2584,4 +2584,15 @@
       <Association Name="DCBD_KhauTru_DCBD_KhauTru_LichSu" Member="DCBD_KhauTru" ThisKey="IDKhauTru" OtherKey="ID" Type="DCBD_KhauTru" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.GiaNuoc_Giam" Member="GiaNuoc_Giams">
+    <Type Name="GiaNuoc_Giam">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nam" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ky" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GiaBieu" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="TyLeGiam" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LoaiGiam" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

@@ -40,6 +40,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public List<GiaNuoc2> getDS()
         {
+            Refresh();
             return db.GiaNuoc2s.ToList();
         }
 
@@ -62,7 +63,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public GiaNuoc2 getGiaNuoc(int Nam)
         {
-          return  db.GiaNuoc2s.SingleOrDefault(item => item.Name == Nam);
+            return db.GiaNuoc2s.SingleOrDefault(item => item.Name == Nam);
         }
 
         public bool Them(GiaNuoc gianuoc)
@@ -5766,13 +5767,13 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             else
                                 if (_SH - DinhMucHN - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
                                 {
-                                    TongTien = (DinhMucHN * lstGiaNuoc[6]) ;
+                                    TongTien = (DinhMucHN * lstGiaNuoc[6]);
                                     if (DinhMucHN > 0)
                                         _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
                                 }
                                 else
                                 {
-                                    TongTien = (DinhMucHN * lstGiaNuoc[6]) ;
+                                    TongTien = (DinhMucHN * lstGiaNuoc[6]);
                                     if (DinhMucHN > 0)
                                         _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
                                 }
@@ -5793,11 +5794,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
                             }
                             else
-                                {
-                                    TongTien = (DinhMucHN * lstGiaNuoc[6]) ;
-                                    if (DinhMucHN > 0)
-                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
-                                }
+                            {
+                                TongTien = (DinhMucHN * lstGiaNuoc[6]);
+                                if (DinhMucHN > 0)
+                                    _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
+                            }
                         }
                         else
                         ///Nếu có tỉ lệ SH + DV
@@ -5817,19 +5818,19 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
                             }
                             else
-                                    if (_SH - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
-                                    {
-                                        TongTien = (DinhMucHN * lstGiaNuoc[6]) ;
-                                        if (DinhMucHN > 0)
-                                            _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
-                                    }
-                                    else
-                                    {
-                                        TongTien = (DinhMucHN * lstGiaNuoc[6]) ;
-                                        if (DinhMucHN > 0)
-                                            _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
-                                    }
-                               
+                                if (_SH - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
+                                {
+                                    TongTien = (DinhMucHN * lstGiaNuoc[6]);
+                                    if (DinhMucHN > 0)
+                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
+                                }
+                                else
+                                {
+                                    TongTien = (DinhMucHN * lstGiaNuoc[6]);
+                                    if (DinhMucHN > 0)
+                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
+                                }
+
                         }
                         break;
                     case 16:
@@ -5866,18 +5867,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
                             }
                             else
-                                    if (_SH - DinhMucHN - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
-                                    {
-                                        TongTien = (DinhMucHN * lstGiaNuoc[6]) ;
-                                        if (DinhMucHN > 0)
-                                            _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
-                                    }
-                                    else
-                                    {
-                                        TongTien = (DinhMucHN * lstGiaNuoc[6]) ;
-                                        if (DinhMucHN > 0)
-                                            _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
-                                    }
+                                if (_SH - DinhMucHN - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
+                                {
+                                    TongTien = (DinhMucHN * lstGiaNuoc[6]);
+                                    if (DinhMucHN > 0)
+                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
+                                }
+                                else
+                                {
+                                    TongTien = (DinhMucHN * lstGiaNuoc[6]);
+                                    if (DinhMucHN > 0)
+                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
+                                }
                         }
                         break;
                     case 17:
@@ -5911,11 +5912,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
                             }
                             else
-                                {
-                                    TongTien = (DinhMucHN * lstGiaNuoc[6]);
-                                    if (DinhMucHN > 0)
-                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
-                                }
+                            {
+                                TongTien = (DinhMucHN * lstGiaNuoc[6]);
+                                if (DinhMucHN > 0)
+                                    _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
+                            }
                         }
                         else
                         ///Nếu có tỉ lệ SH + HCSN
@@ -5935,18 +5936,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
                             }
                             else
-                                    if (_SH - DinhMucHN - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
-                                    {
-                                        TongTien = (DinhMucHN * lstGiaNuoc[0]);
-                                        if (DinhMucHN > 0)
-                                            _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
-                                    }
-                                    else
-                                    {
-                                        TongTien = (DinhMucHN * lstGiaNuoc[6]) ;
-                                        if (DinhMucHN > 0)
-                                            _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
-                                    }
+                                if (_SH - DinhMucHN - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
+                                {
+                                    TongTien = (DinhMucHN * lstGiaNuoc[0]);
+                                    if (DinhMucHN > 0)
+                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
+                                }
+                                else
+                                {
+                                    TongTien = (DinhMucHN * lstGiaNuoc[6]);
+                                    if (DinhMucHN > 0)
+                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
+                                }
                         }
                         break;
                     case 19:
@@ -5971,18 +5972,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
                         }
                         else
-                                if (_SH - DinhMucHN - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
-                                {
-                                    TongTien = (DinhMucHN * lstGiaNuoc[6]) ;
-                                    if (DinhMucHN > 0)
-                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
-                                }
-                                else
-                                {
-                                    TongTien = (DinhMucHN * lstGiaNuoc[6]);
-                                    if (DinhMucHN > 0)
-                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
-                                }
+                            if (_SH - DinhMucHN - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
+                            {
+                                TongTien = (DinhMucHN * lstGiaNuoc[6]);
+                                if (DinhMucHN > 0)
+                                    _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
+                            }
+                            else
+                            {
+                                TongTien = (DinhMucHN * lstGiaNuoc[6]);
+                                if (DinhMucHN > 0)
+                                    _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[6]);
+                            }
                         break;
                     ///TẬP THỂ
                     //case 21:///SH thuần túy
@@ -6208,18 +6209,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
                         }
                         else
-                                if (TieuThu - DinhMucHN - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
-                                {
-                                    TongTien = (DinhMucHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100)) ;
-                                    if (DinhMucHN > 0)
-                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
-                                }
-                                else
-                                {
-                                    TongTien = (DinhMucHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100)) ;
-                                    if (DinhMucHN > 0)
-                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
-                                }
+                            if (TieuThu - DinhMucHN - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
+                            {
+                                TongTien = (DinhMucHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
+                                if (DinhMucHN > 0)
+                                    _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
+                            }
+                            else
+                            {
+                                TongTien = (DinhMucHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
+                                if (DinhMucHN > 0)
+                                    _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
+                            }
                         break;
                     case 52:///sỉ khu công nghiệp
                         if (!DieuChinhGia)
@@ -6319,20 +6320,20 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
                         }
                         else
-                                if (_SH - DinhMucHN - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
-                                {
-                                    TongTien = (DinhMucHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
-                                               ;
-                                    if (DinhMucHN > 0)
-                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
-                                }
-                                else
-                                {
-                                    TongTien = (DinhMucHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
-                                               ;
-                                    if (DinhMucHN > 0)
-                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
-                                }
+                            if (_SH - DinhMucHN - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
+                            {
+                                TongTien = (DinhMucHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
+                                           ;
+                                if (DinhMucHN > 0)
+                                    _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
+                            }
+                            else
+                            {
+                                TongTien = (DinhMucHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
+                                           ;
+                                if (DinhMucHN > 0)
+                                    _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
+                            }
                         break;
                     case 68:///SH giá sỉ - KD giá lẻ
                         if (TyLeSH != 0)
@@ -6350,20 +6351,20 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 _chiTiet = TieuThuHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
                         }
                         else
-                                if (_SH - DinhMucHN - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
-                                {
-                                    TongTien = (DinhMucHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
-                                               ;
-                                    if (DinhMucHN > 0)
-                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
-                                }
-                                else
-                                {
-                                    TongTien = (DinhMucHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
-                                               ;
-                                    if (DinhMucHN > 0)
-                                        _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
-                                }
+                            if (_SH - DinhMucHN - DinhMuc <= Math.Round((double)(DinhMucHN + DinhMuc) / 2, 0, MidpointRounding.AwayFromZero))
+                            {
+                                TongTien = (DinhMucHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
+                                           ;
+                                if (DinhMucHN > 0)
+                                    _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
+                            }
+                            else
+                            {
+                                TongTien = (DinhMucHN * (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100))
+                                           ;
+                                if (DinhMucHN > 0)
+                                    _chiTiet = DinhMucHN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[6] - lstGiaNuoc[6] * _GiamTienNuoc / 100));
+                            }
                         break;
                     default:
                         _chiTiet = "";
@@ -6386,6 +6387,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public void TinhTienNuoc(bool ApGiaNuocCu, bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi, out int TieuThu_DieuChinhGia)
         {
             List<GiaNuoc2> lst = getDS();
+            //check giảm giá
+            checkExists_GiamGiaNuoc(Nam, Ky, GiaBieu, ref lst);
+
             int index = -1;
             TienNuocCu = TienNuocMoi = 0;
             ChiTietCu = ChiTietMoi = "";
@@ -6458,6 +6462,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public void TinhTienNuoc2(bool ApGiaNuocCu, bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, int TieuThu_GiaDieuChinh2, int GiaTien_GiaDieuChinh2, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi)
         {
             List<GiaNuoc2> lst = getDS();
+            //check giảm giá
+            checkExists_GiamGiaNuoc(Nam, Ky, GiaBieu, ref lst);
+
             int index = -1;
             TienNuocCu = TienNuocMoi = 0;
             ChiTietCu = ChiTietMoi = "";
@@ -6522,6 +6529,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public void TinhTienNuoc_KhuCongNghiep(bool ApGiaNuocCu, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TongDinhMuc, int DinhMucHN, int TieuThu, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi, out float TyLe)
         {
             List<GiaNuoc2> lst = getDS();
+            //check giảm giá
+            checkExists_GiamGiaNuoc(Nam, Ky, GiaBieu, ref lst);
+
             int index = -1;
             TienNuocCu = TienNuocMoi = 0;
             ChiTietCu = ChiTietMoi = "";
@@ -6588,6 +6598,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public void TinhTienNuoc_HoNgheo(bool ApGiaNuocCu, bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi, out int TieuThu_DieuChinhGia)
         {
             List<GiaNuoc2> lst = getDS();
+            //check giảm giá
+            checkExists_GiamGiaNuoc(Nam, Ky, GiaBieu, ref lst);
+
             int index = -1;
             TienNuocCu = TienNuocMoi = 0;
             ChiTietCu = ChiTietMoi = "";
@@ -6659,7 +6672,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public void TinhTienNuoc_TheoSoNgay(bool ApGiaNuocCu, bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int SoNgayCu, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, out int TienNuocCu, out string ChiTietCu, out int TienNuocMoi, out string ChiTietMoi, out int TieuThu_DieuChinhGia)
         {
-            List<GiaNuoc2> lst = getDS();
+            List<GiaNuoc2> lst=getDS();
+            //check giảm giá
+            checkExists_GiamGiaNuoc(Nam, Ky, GiaBieu, ref lst);
+
             int index = -1;
             TienNuocCu = TienNuocMoi = 0;
             ChiTietCu = ChiTietMoi = "";
@@ -6728,6 +6744,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        //truy thu
 
         public int TruyThu(string DanhBo, int Ky, int Nam, int GiaBieu, int SH, int SX, int DV, int HCSN, int DinhMuc, int TieuThu, out string ChiTiet)
         {
@@ -8642,5 +8659,30 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 return 0;
             }
         }
+
+        //giảm giá nước
+
+        public bool checkExists_GiamGiaNuoc(int Nam, int Ky, int GiaBieu, ref List<GiaNuoc2> lst)
+        {
+            if (db.GiaNuoc_Giams.Any(item => item.Nam.Contains(Nam.ToString()) && item.Ky.Contains(Ky.ToString()) && item.GiaBieu.Contains(GiaBieu.ToString())) == true)
+            {
+                double TyLeGiam = db.GiaNuoc_Giams.SingleOrDefault(item => item.Nam.Contains(Nam.ToString()) && item.Ky.Contains(Ky.ToString()) && item.GiaBieu.Contains(GiaBieu.ToString())).TyLeGiam.Value;
+                foreach (GiaNuoc2 item in lst)
+                {
+                    item.SHN -= (int)(item.SHN.Value * TyLeGiam / 100);
+                    item.SHTM -= (int)(item.SHTM.Value * TyLeGiam / 100);
+                    item.SHVM1 -= (int)(item.SHVM1.Value * TyLeGiam / 100);
+                    item.SHVM2 -= (int)(item.SHVM2.Value * TyLeGiam / 100);
+                    item.SX -= (int)(item.SX.Value * TyLeGiam / 100);
+                    item.HCSN -= (int)(item.HCSN.Value * TyLeGiam / 100);
+                    item.KDDV -= (int)(item.KDDV.Value * TyLeGiam / 100);
+                }
+                return true;
+            }
+            else
+                return false;
+
+        }
+
     }
 }
