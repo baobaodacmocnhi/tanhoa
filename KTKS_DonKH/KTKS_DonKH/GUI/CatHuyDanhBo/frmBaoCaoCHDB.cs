@@ -515,8 +515,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dtExport.Columns.Add("LyDo", typeof(String));
                     dtExport.Columns.Add("NoiDungXuLy", typeof(String));
 
-                    CExcel fileExcel = new CExcel(dialog.FileName);
-                    DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                    DataTable dtExcel = _cCHDB.ExcelToDataTable(dialog.FileName);
+                    //CExcel fileExcel = new CExcel(dialog.FileName);
+                    //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                     foreach (DataRow item in dtExcel.Rows)
                         if (item[0].ToString().Replace(" ", "").Length == 11)
                         {
@@ -611,8 +612,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dtExport.Columns.Add("LyDo", typeof(String));
                     dtExport.Columns.Add("NoiDungXuLy", typeof(String));
 
-                    CExcel fileExcel = new CExcel(dialog.FileName);
-                    DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                    DataTable dtExcel = _cCHDB.ExcelToDataTable(dialog.FileName);
+                    //CExcel fileExcel = new CExcel(dialog.FileName);
+                    //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                     foreach (DataRow item in dtExcel.Rows)
                         if (string.IsNullOrEmpty(item[0].ToString()) && item[0].ToString().Replace(" ", "").Length == 11)
                         {

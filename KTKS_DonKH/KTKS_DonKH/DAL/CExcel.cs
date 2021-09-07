@@ -7,7 +7,7 @@ using System.Data;
 
 namespace KTKS_DonKH.DAL
 {
-    class CExcel
+    class CExcela
     {
         static OleDbConnection _con;
         //OleDbCommand _cmd;
@@ -16,7 +16,7 @@ namespace KTKS_DonKH.DAL
         String _cn;
         String pathFile;
 
-        public CExcel(String pathFile)
+        public CExcela(String pathFile)
         {
             this.pathFile = pathFile;
         }

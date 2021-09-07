@@ -786,8 +786,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             printDialog.AllowSomePages = true;
                                             printDialog.ShowHelp = true;
 
-                                            //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                            //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
+                                            rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                            rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                             rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
                                             rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                                             rpt.Clone();

@@ -1342,8 +1342,9 @@ namespace KTKS_DonKH.GUI.DonTu
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     tabControl.SelectTab("tabCongVan");
-                    CExcel fileExcel = new CExcel(dialog.FileName);
-                    DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                    DataTable dtExcel = _cDonTu.ExcelToDataTable(dialog.FileName);
+                    //CExcel fileExcel = new CExcel(dialog.FileName);
+                    //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                     foreach (DataRow item in dtExcel.Rows)
                     {
                         bool exists = false;
