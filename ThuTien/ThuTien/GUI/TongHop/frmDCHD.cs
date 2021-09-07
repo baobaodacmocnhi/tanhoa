@@ -577,8 +577,9 @@ namespace ThuTien.GUI.TongHop
                     if (dialog.ShowDialog() == DialogResult.OK)
                         if (MessageBox.Show("Bạn có chắc chắn Import?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            CExcel fileExcel = new CExcel(dialog.FileName);
-                            DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                            DataTable dtExcel = _cHoaDon.ExcelToDataTable(dialog.FileName);
+                            //CExcel fileExcel = new CExcel(dialog.FileName);
+                            //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                             string SoHoaDon = (string)_cHoaDon.ExecuteQuery_ReturnOneValue("select SoHoaDon from TT_DeviceConfig");
 
                             foreach (DataRow item in dtExcel.Rows)

@@ -340,8 +340,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                 string DanhBo = "";
                 try
                 {
-                    CExcel fileExcel = new CExcel(dialog.FileName);
-                    DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                    DataTable dtExcel = _cHoaDon.ExcelToDataTable(dialog.FileName);
+                    //CExcel fileExcel = new CExcel(dialog.FileName);
+                    //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
                     ///kiểm tra danh bộ chặn tiền dư
                     string strTienDu = "";

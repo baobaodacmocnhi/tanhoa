@@ -285,18 +285,25 @@ namespace ThuTien.DAL
         /// <returns></returns>
         public decimal getMaxNextIDTable(decimal id)
         {
-            string nam = id.ToString().Substring(id.ToString().Length - 2, 2);
-            string stt = id.ToString().Substring(0, id.ToString().Length - 2);
-            if (decimal.Parse(nam) == decimal.Parse(DateTime.Now.ToString("yy")))
+            try
             {
-                stt = (decimal.Parse(stt) + 1).ToString();
+                string nam = id.ToString().Substring(id.ToString().Length - 2, 2);
+                string stt = id.ToString().Substring(0, id.ToString().Length - 2);
+                if (decimal.Parse(nam) == decimal.Parse(DateTime.Now.ToString("yy")))
+                {
+                    stt = (decimal.Parse(stt) + 1).ToString();
+                }
+                else
+                {
+                    stt = "1";
+                    nam = DateTime.Now.ToString("yy");
+                }
+                return decimal.Parse(stt + nam);
             }
-            else
+            catch (Exception ex)
             {
-                stt = "1";
-                nam = DateTime.Now.ToString("yy");
+                throw ex;
             }
-            return decimal.Parse(stt + nam);
         }
 
         #region ConvertMoneyToWord
@@ -426,24 +433,104 @@ namespace ThuTien.DAL
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                throw ex;
             }
         }
 
         public DateTime GetToDate(DateTime FromDate, int SoNgayCongThem)
         {
-            while (SoNgayCongThem > 0)
+            try
             {
-                if (FromDate.DayOfWeek == DayOfWeek.Friday)
-                    FromDate = FromDate.AddDays(3);
-                else
-                    if (FromDate.DayOfWeek == DayOfWeek.Saturday)
-                        FromDate = FromDate.AddDays(2);
+                while (SoNgayCongThem > 0)
+                {
+                    if (FromDate.DayOfWeek == DayOfWeek.Friday)
+                        FromDate = FromDate.AddDays(3);
                     else
-                        FromDate = FromDate.AddDays(1);
-                SoNgayCongThem--;
+                        if (FromDate.DayOfWeek == DayOfWeek.Saturday)
+                            FromDate = FromDate.AddDays(2);
+                        else
+                            FromDate = FromDate.AddDays(1);
+                    SoNgayCongThem--;
+                }
+                return FromDate;
             }
-            return FromDate;
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable ExcelToDataTable(string path)
+        {
+            Microsoft.Office.Interop.Excel.Application xlApp = null;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkbook = null;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorksheet = null;
+            DataTable dt = new DataTable();
+            try
+            {
+                xlApp = new Microsoft.Office.Interop.Excel.Application();
+                xlWorkbook = xlApp.Workbooks.Open(path);
+                xlWorksheet = xlWorkbook.Worksheets[1];
+
+                int rows = xlWorksheet.UsedRange.Rows.Count;
+                int cols = xlWorksheet.UsedRange.Columns.Count;
+
+                int noofrow = 1;
+
+                for (int c = 1; c <= cols; c++)
+                {
+                    string colname = xlWorksheet.Cells[1, c].Text;
+                    dt.Columns.Add(colname);
+                    noofrow = 2;
+                }
+
+                for (int r = noofrow; r <= rows; r++)
+                {
+                    DataRow dr = dt.NewRow();
+                    for (int c = 1; c <= cols; c++)
+                    {
+                        dr[c - 1] = xlWorksheet.Cells[r, c].Text;
+                    }
+
+                    dt.Rows.Add(dr);
+                }
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+               
+                //release com objects to fully kill excel process from running in the background
+                //if (xlRange != null)
+                //{
+                //    Marshal.ReleaseComObject(xlRange);
+                //}
+
+                if (xlWorksheet != null)
+                {
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorksheet);
+                }
+
+                //close and release
+                if (xlWorkbook != null)
+                {
+                    xlWorkbook.Close();
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkbook);
+                }
+
+                //quit and release
+                if (xlApp != null)
+                {
+                    xlApp.Quit();
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp);
+                }
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
         }
 
     }

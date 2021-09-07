@@ -20,6 +20,7 @@ namespace ThuTien.GUI.Doi
         CHoaDon _cHoaDon = new CHoaDon();
         bool _flagLoadFirst = false;
 
+
         public frmKiemTraSaiBiet()
         {
             InitializeComponent();
@@ -145,8 +146,10 @@ namespace ThuTien.GUI.Doi
                 dialog.Multiselect = false;
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    CExcel fileExcel = new CExcel(dialog.FileName);
-                    DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                    lstViewA.Items.Clear();
+                    DataTable dtExcel = _cHoaDon.ExcelToDataTable(dialog.FileName);
+                    //CExcel fileExcel = new CExcel(dialog.FileName);
+                    //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                     foreach (DataRow item in dtExcel.Rows)
                         if (item[0].ToString().Trim() != "")
                         {
@@ -174,8 +177,10 @@ namespace ThuTien.GUI.Doi
                 dialog.Multiselect = false;
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    CExcel fileExcel = new CExcel(dialog.FileName);
-                    DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                    lstViewB.Items.Clear();
+                    DataTable dtExcel = _cHoaDon.ExcelToDataTable(dialog.FileName);
+                    //CExcel fileExcel = new CExcel(dialog.FileName);
+                    //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                     foreach (DataRow item in dtExcel.Rows)
                         if (item[0].ToString().Trim() != "")
                         {
@@ -294,6 +299,11 @@ namespace ThuTien.GUI.Doi
                 txtTongB.Text = lstViewB.Items.Count.ToString();
                 txtNoiDungB.Text = "";
             }
+        }
+
+        private void btnSoSanh_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

@@ -54,8 +54,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                     if (dialog.ShowDialog() == DialogResult.OK)
                         if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            CExcel fileExcel = new CExcel(dialog.FileName);
-                            DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                            DataTable dtExcel = _cBangKe.ExcelToDataTable(dialog.FileName);
+                            //CExcel fileExcel = new CExcel(dialog.FileName);
+                            //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                             //foreach (DataRow item in dtExcel.Rows)
                             //    if ((!string.IsNullOrEmpty(item[1].ToString()) && item[1].ToString().Replace(" ", "").Length == 11))
                             //    {
@@ -392,8 +393,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                     {
                         if (MessageBox.Show("Bạn có chắc chắn Cập nhật ngày " + dgvBangKe.Rows[0].Cells["CreateDate"].Value.ToString() + "?", "Xác nhận Cập nhật", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            CExcel fileExcel = new CExcel(dialog.FileName);
-                            DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                            DataTable dtExcel = _cBangKe.ExcelToDataTable(dialog.FileName);
+                            //CExcel fileExcel = new CExcel(dialog.FileName);
+                            //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                             //check 2 source
                             if (dgvBangKe.Rows.Count != dtExcel.Rows.Count)
                             {

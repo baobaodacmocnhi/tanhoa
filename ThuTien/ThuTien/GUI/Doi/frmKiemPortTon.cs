@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Excel;
 using ThuTien.LinQ;
 using ThuTien.DAL;
 using ThuTien.BaoCao;
@@ -55,7 +54,7 @@ namespace ThuTien.GUI.Doi
                             TongCong = item.GiaBan + item.ThueGTGT + item.PhiBVMT,
                             item.SoPhatHanh,
                             item.Xoa,
-                            HanhThu=itemtableND.HoTen,
+                            HanhThu = itemtableND.HoTen,
                         };
 
             dgvHoaDon.DataSource = _cDAL.LINQToDataTable(query);
@@ -118,67 +117,36 @@ namespace ThuTien.GUI.Doi
                 dialog.Multiselect = false;
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    Microsoft.Office.Interop.Excel.Application _excelApp = new Microsoft.Office.Interop.Excel.Application();
-                    _excelApp.Visible = false;
-
-                    //open the workbook
-                    Workbook workbook = _excelApp.Workbooks.Open(dialog.FileName,
-                        Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                        Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                        Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                        Type.Missing, Type.Missing);
-
-                    //select the first sheet        
-                    Worksheet worksheet = (Worksheet)workbook.Worksheets[1];
-
-                    //find the used range in worksheet
-                    Range excelRange = worksheet.UsedRange;
-
-                    //get an object array of all of the cells in the worksheet (their values)
-                    object[,] valueArray = (object[,])excelRange.get_Value(
-                                XlRangeValueDataType.xlRangeValueDefault);
-
-                    //access the cells
-                    for (int row = 2; row <= worksheet.UsedRange.Rows.Count; ++row)
+                    DataTable dtExcel = _cDAL.ExcelToDataTable(dialog.FileName);
+                    foreach (DataRow item in dtExcel.Rows)
                     {
                         k++;
-                        //for (int col = 1; col <= worksheet.UsedRange.Columns.Count; ++col)
-                        //{
-                        //access each cell
                         //if (!_db.TT_TestHoaDonTons.Any(itemHD => itemHD.SoHoaDon == valueArray[row, 14].ToString()))
                         //{
-                            TT_PortTon hoadon = new TT_PortTon();
-                            hoadon.MaHD = _db.TT_PortTons.Max(item => item.MaHD) + 1;
-                            hoadon.DanhBo = valueArray[row, 4].ToString();
-                            hoadon.Nam = int.Parse(valueArray[row, 5].ToString());
-                            hoadon.Ky = int.Parse(valueArray[row, 6].ToString());
-                            hoadon.Loai = valueArray[row, 7].ToString();
-                            hoadon.SoPhatHanh = valueArray[row, 8].ToString();
-                            hoadon.TieuThu = int.Parse(valueArray[row, 9].ToString());
-                            hoadon.GiaBan = int.Parse(valueArray[row, 10].ToString());
-                            hoadon.ThueGTGT = int.Parse(valueArray[row, 11].ToString());
-                            hoadon.PhiBVMT = int.Parse(valueArray[row, 12].ToString());
-                            hoadon.MLT = valueArray[row, 13].ToString();
-                            hoadon.SoHoaDon = valueArray[row, 14].ToString();
-                            hoadon.HoTen = valueArray[row, 15].ToString();
-                            if (valueArray[row, 16] != null)
-                                hoadon.SoNha = valueArray[row, 16].ToString();
-                            hoadon.Duong = valueArray[row, 17].ToString();
-                            hoadon.CreateBy = CNguoiDung.MaND;
-                            hoadon.CreateDate = dateNgayLap.Value;
+                        TT_PortTon hoadon = new TT_PortTon();
+                        hoadon.MaHD = _db.TT_PortTons.Max(itemA => itemA.MaHD) + 1;
+                        hoadon.DanhBo = item[4].ToString();
+                        hoadon.Nam = int.Parse(item[5].ToString());
+                        hoadon.Ky = int.Parse(item[6].ToString());
+                        hoadon.Loai = item[7].ToString();
+                        hoadon.SoPhatHanh = item[8].ToString();
+                        hoadon.TieuThu = int.Parse(item[9].ToString());
+                        hoadon.GiaBan = int.Parse(item[10].ToString());
+                        hoadon.ThueGTGT = int.Parse(item[11].ToString());
+                        hoadon.PhiBVMT = int.Parse(item[12].ToString());
+                        hoadon.MLT = item[13].ToString();
+                        hoadon.SoHoaDon = item[14].ToString();
+                        hoadon.HoTen = item[15].ToString();
+                        if (item[16] != null)
+                            hoadon.SoNha = item[16].ToString();
+                        hoadon.Duong = item[17].ToString();
+                        hoadon.CreateBy = CNguoiDung.MaND;
+                        hoadon.CreateDate = dateNgayLap.Value;
 
-                            _db.TT_PortTons.InsertOnSubmit(hoadon);
-                            _db.SubmitChanges();
-                        //}
+                        _db.TT_PortTons.InsertOnSubmit(hoadon);
+                        _db.SubmitChanges();
                         //}
                     }
-
-                    //clean up stuffs
-                    workbook.Close(false, Type.Missing, Type.Missing);
-                    Marshal.ReleaseComObject(workbook);
-
-                    _excelApp.Quit();
-                    Marshal.FinalReleaseComObject(_excelApp);
 
                     LoadDSHoaDon();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -187,7 +155,7 @@ namespace ThuTien.GUI.Doi
             catch (Exception ex)
             {
                 _db = new dbThuTienDataContext();
-                MessageBox.Show("Lỗi, Vui lòng thử lại \r\n Dòng: " + k.ToString()+" --- " + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi, Vui lòng thử lại \r\n Dòng: " + k.ToString() + " --- " + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -197,7 +165,7 @@ namespace ThuTien.GUI.Doi
         }
 
         private void btnThem_Click(object sender, EventArgs e)
-        {   
+        {
             try
             {
                 foreach (ListViewItem item in lstHD.Items)
