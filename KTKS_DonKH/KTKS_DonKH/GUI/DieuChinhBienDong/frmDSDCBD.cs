@@ -501,15 +501,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (MessageBox.Show("Bạn chắc chắn In những Phiếu trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                PrintDialog printDialog = new PrintDialog();
-                if (printDialog.ShowDialog() == DialogResult.OK)
+                //PrintDialog printDialog = new PrintDialog();
+                //if (printDialog.ShowDialog() == DialogResult.OK)
                 {
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     if (radDSDCBD.Checked)
                     {
                         for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                             if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
                             {
-                                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                                //DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
                                 DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
@@ -595,19 +596,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
-                                rptPhieuDCBD_15112019 rpt = new rptPhieuDCBD_15112019();
-                                rpt.SetDataSource(dsBaoCao);
+                                //rptPhieuDCBD_15112019 rpt = new rptPhieuDCBD_15112019();
+                                //rpt.SetDataSource(dsBaoCao);
 
-                                printDialog.AllowSomePages = true;
-                                printDialog.ShowHelp = true;
+                                //printDialog.AllowSomePages = true;
+                                //printDialog.ShowHelp = true;
 
-                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
-                                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
-                                rpt.Clone();
-                                rpt.Dispose();
+                                //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                //rpt.Clone();
+                                //rpt.Dispose();
                             }
+                        rptPhieuDCBD_15112019 rpt = new rptPhieuDCBD_15112019();
+                        rpt.SetDataSource(dsBaoCao);
+                        frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                        frm.Show();
                     }
                     else
                         if (radDSDCHD.Checked)
@@ -615,7 +620,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                                 if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
                                 {
-                                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                                    //DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                     DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
                                     DCBD_ChiTietHoaDon ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
@@ -704,19 +709,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                     dsBaoCao.Tables["DCHD"].Rows.Add(dr);
 
-                                    rptPhieuDCHD rpt = new rptPhieuDCHD();
-                                    rpt.SetDataSource(dsBaoCao);
+                                    //rptPhieuDCHD rpt = new rptPhieuDCHD();
+                                    //rpt.SetDataSource(dsBaoCao);
 
-                                    printDialog.AllowSomePages = true;
-                                    printDialog.ShowHelp = true;
+                                    //printDialog.AllowSomePages = true;
+                                    //printDialog.ShowHelp = true;
 
-                                    rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                    rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
-                                    rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                    rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
-                                    rpt.Clone();
-                                    rpt.Dispose();
+                                    //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                    //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                    //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                    //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                    //rpt.Clone();
+                                    //rpt.Dispose();
                                 }
+                            rptPhieuDCHD rpt = new rptPhieuDCHD();
+                            rpt.SetDataSource(dsBaoCao);
+                            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                            frm.Show();
                         }
                         else
                             if (radDSCatChuyenDM.Checked)
@@ -728,7 +737,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                         if (lichsuchungtu.YeuCauCat)
                                         {
-                                            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                                            //DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                             DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
                                             dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
@@ -773,25 +782,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
                                             dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
 
-                                            rptPhieuYCCatDM_A4 rpt = new rptPhieuYCCatDM_A4();
-                                            rpt.SetDataSource(dsBaoCao);
-                                            rpt.Subreports[0].SetDataSource(dsBaoCao);
-                                            //for (int j = 0; j < rpt.Subreports.Count; j++)
-                                            //{
-                                            //    rpt.Subreports[j].SetDataSource(dsBaoCao);
-                                            //}
+                                            //rptPhieuYCCatDM_A4 rpt = new rptPhieuYCCatDM_A4();
+                                            //rpt.SetDataSource(dsBaoCao);
+                                            //rpt.Subreports[0].SetDataSource(dsBaoCao);
+ 
+                                            //printDialog.AllowSomePages = true;
+                                            //printDialog.ShowHelp = true;
 
-                                            //frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                                            //frm.Show();
-                                            printDialog.AllowSomePages = true;
-                                            printDialog.ShowHelp = true;
-
-                                            rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                            rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
-                                            rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                            rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
-                                            rpt.Clone();
-                                            rpt.Dispose();
+                                            //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                            //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                            //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                            //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                            //rpt.Clone();
+                                            //rpt.Dispose();
                                         }
                                         else
                                             if (lichsuchungtu.CatDM)
@@ -889,6 +892,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     MessageBox.Show("Liện hệ BB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                 }
                                     }
+                                rptPhieuYCCatDM_A4 rpt = new rptPhieuYCCatDM_A4();
+                                rpt.SetDataSource(dsBaoCao);
+                                rpt.Subreports[0].SetDataSource(dsBaoCao);
+                                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                                frm.Show();
                             }
                 }
             }
@@ -1619,15 +1627,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (MessageBox.Show("Bạn chắc chắn In những Phiếu trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                PrintDialog printDialog = new PrintDialog();
-                if (printDialog.ShowDialog() == DialogResult.OK)
+                //PrintDialog printDialog = new PrintDialog();
+                //if (printDialog.ShowDialog() == DialogResult.OK)
                 {
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     if (radDSDCHD.Checked)
                     {
                         for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                             if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
                             {
-                                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                                //DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
                                 DCBD_ChiTietHoaDon ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
@@ -1796,27 +1805,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dsBaoCao.Tables["DCHD"].Rows.Add(dr);
 
-                                ReportDocument rpt;
-                                //if (ctdchd.KhuCongNghiep == true)
-                                //{
-                                rpt = new rptThongBaoDCHD_ChuKy();
-                                //}
-                                //else
-                                //{
-                                //    rpt = new rptThongBaoDCHD();
-                                //}
-                                rpt.SetDataSource(dsBaoCao);
+                                //ReportDocument rpt;
+                                ////if (ctdchd.KhuCongNghiep == true)
+                                ////{
+                                //rpt = new rptThongBaoDCHD_ChuKy();
+                                ////}
+                                ////else
+                                ////{
+                                ////    rpt = new rptThongBaoDCHD();
+                                ////}
+                                //rpt.SetDataSource(dsBaoCao);
 
-                                printDialog.AllowSomePages = true;
-                                printDialog.ShowHelp = true;
+                                //printDialog.AllowSomePages = true;
+                                //printDialog.ShowHelp = true;
 
-                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
-                                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
-                                rpt.Clone();
-                                rpt.Dispose();
+                                //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                //rpt.Clone();
+                                //rpt.Dispose();
                             }
+                        rptThongBaoDCHD_ChuKy rpt = new rptThongBaoDCHD_ChuKy();
+                        frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                        frm.Show();
                     }
 
                 }
@@ -2081,10 +2093,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     //printDialog.AllowSomePages = true;
                                     //printDialog.ShowHelp = true;
 
-                                    ////rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                    ////rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
+                                    //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                    //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                     //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                    ////rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 0,0);
                                     //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                                     //rpt.Clone();
                                     //rpt.Dispose();
@@ -2094,18 +2105,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     rptThuBaoDCBD rpt = new rptThuBaoDCBD();
                                     rpt.SetDataSource(dsBaoCao);
                                     rpt.Subreports[0].SetDataSource(dsBaoCao);
-                                    //frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                                    //frm.Show();
-                                    printDialog.AllowSomePages = true;
-                                    printDialog.ShowHelp = true;
+                                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                                    frm.Show();
+                                    //printDialog.AllowSomePages = true;
+                                    //printDialog.ShowHelp = true;
 
                                     //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                    //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
-                                    rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                    //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 0,0);
-                                    rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
-                                    rpt.Clone();
-                                    rpt.Dispose();
+                                    //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                    //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                    //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                                    //rpt.Clone();
+                                    //rpt.Dispose();
                                 }
                             }
                         }
