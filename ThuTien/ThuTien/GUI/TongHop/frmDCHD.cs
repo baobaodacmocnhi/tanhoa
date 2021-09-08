@@ -581,7 +581,7 @@ namespace ThuTien.GUI.TongHop
                             //CExcel fileExcel = new CExcel(dialog.FileName);
                             //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                             string SoHoaDon = (string)_cHoaDon.ExecuteQuery_ReturnOneValue("select SoHoaDon from TT_DeviceConfig");
-
+                            int count = 0;
                             foreach (DataRow item in dtExcel.Rows)
                             {
                                 if (string.IsNullOrEmpty(item[20].ToString()) == false && item[20].ToString() != "")
@@ -598,22 +598,25 @@ namespace ThuTien.GUI.TongHop
                                             if (item[21].ToString() != "")
                                                 dchd.BaoCaoThue = bool.Parse(item[21].ToString());
                                             if (_cDCHD.Sua(dchd) == true)
-                                            //if (_cDCHD.ExecuteNonQuery("update HOADON set SoHoaDonCu=SoHoaDon,SoHoaDon='" + dchd.SoHoaDonMoi + "' where ID_HOADON=" + dchd.FK_HOADON) == true)
                                             {
                                                 HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
-                                                hd.SoHoaDonCu = hd.SOHOADON;
-                                                hd.SOHOADON = dchd.SoHoaDonMoi;
+                                                if (hd.SOHOADON != dchd.SoHoaDonMoi)
+                                                {
+                                                    hd.SoHoaDonCu = hd.SOHOADON;
+                                                    hd.SOHOADON = dchd.SoHoaDonMoi;
+                                                }
                                                 hd.BaoCaoThue = dchd.BaoCaoThue;
                                                 if (_cHoaDon.Sua(hd) == true)
                                                 {
                                                     scope.Complete();
                                                     scope.Dispose();
+                                                    count++;
                                                 }
                                             }
                                         }
                                 }
                             }
-                            MessageBox.Show("Đã xử lý xong, Vui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Đã xử lý xong " + count + " hđ, Vui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             loadHD0Ton();
                         }
                 }
