@@ -528,7 +528,7 @@ namespace ThuTien.DAL.Doi
         public HOADON GetMoiNhat(string DanhBo)
         {
             if (_db.HOADONs.Any(item => item.DANHBA == DanhBo))
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo).ToList().OrderByDescending(item => item.ID_HOADON).First();
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo).OrderByDescending(item => item.ID_HOADON).First();
             else
                 return null;
         }
@@ -536,7 +536,7 @@ namespace ThuTien.DAL.Doi
         public HOADON GetMoiNhi(string DanhBo)
         {
             if (_db.HOADONs.Any(item => item.DANHBA == DanhBo))
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo).ToList().OrderByDescending(item => item.ID_HOADON).Skip(1).First();
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo).OrderByDescending(item => item.ID_HOADON).Skip(1).First();
             else
                 return null;
         }
@@ -544,7 +544,7 @@ namespace ThuTien.DAL.Doi
         public HOADON GetTonMoiNhat(string DanhBo)
         {
             if (_db.HOADONs.Any(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null))
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null).ToList().OrderByDescending(item => item.ID_HOADON).First();
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null).OrderByDescending(item => item.ID_HOADON).First();
             else
                 return null;
         }
