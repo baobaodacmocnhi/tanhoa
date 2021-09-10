@@ -83,9 +83,9 @@ namespace KTKS_ChungCu
         {
             if (e.KeyChar == 13)
             {
-                if (_cTTKH.GetMoiNhat(txtDanhBo.Text.Trim()) != null)
+                _hoadon = _cTTKH.GetMoiNhat(txtDanhBo.Text.Trim());
+                if (_hoadon != null)
                 {
-                    _hoadon = _cTTKH.GetMoiNhat(txtDanhBo.Text.Trim());
                     LoadTTKH(_hoadon);
                     if (string.IsNullOrEmpty(txtLo.Text.Trim()))
                         dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
@@ -332,7 +332,7 @@ namespace KTKS_ChungCu
                     dr["HoTen"] = txtHoTen.Text.Trim();
                     dr["DiaChi"] = txtDiaChi.Text.Trim();
                     dr["HopDong"] = _hoadon.HOPDONG;
-                    dr["Dot"] = _hoadon.DOT.Value.ToString();
+                    dr["Dot"] = _hoadon.DOT.ToString();
                     dr["GiaBieu"] = _hoadon.GB;
                     dr["DinhMuc"] = _hoadon.DM;
                     dr["LoTrinh"] = _hoadon.DOT + _hoadon.MAY + _hoadon.STT;
