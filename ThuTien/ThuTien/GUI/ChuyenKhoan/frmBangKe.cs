@@ -96,7 +96,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         {
                                             bangke.CreateDate = dateNgayLap.Value;
                                             if (_cBangKe.Them(bangke))
-                                                if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value, dateNgayLap.Value))
+                                                if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value, bangke.MaBK, dateNgayLap.Value))
                                                 {
                                                     scope.Complete();
                                                     scope.Dispose();
@@ -106,7 +106,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         {
                                             bangke.CreateDate = DateTime.Now;
                                             if (_cBangKe.Them(bangke))
-                                                if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value))
+                                                if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value, bangke.MaBK))
                                                 {
                                                     scope.Complete();
                                                     scope.Dispose();
@@ -298,15 +298,38 @@ namespace ThuTien.GUI.ChuyenKhoan
                             int SoTien = bangke.SoTien.Value;
                             bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
                             if (_cBangKe.Sua(bangke))
-                                if (_cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1), "Bảng Kê", "Sửa Đến Danh Bộ " + e.FormattedValue.ToString().Replace(" ", "").Insert(7, " ").Insert(4, " ")))
-                                    if (string.IsNullOrEmpty(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", "")))
-                                    {
-                                        if (_cTienDu.Update(bangke.DanhBo, SoTien, "Bảng Kê", "Sửa Từ Danh Bộ Rỗng"))
-                                            scope.Complete();
-                                    }
-                                    else
-                                        if (_cTienDu.Update(bangke.DanhBo, SoTien, "Bảng Kê", "Sửa Từ Danh Bộ " + dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", "").Insert(7, " ").Insert(4, " ")))
-                                            scope.Complete();
+                            {
+                                //if (_cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1), "Bảng Kê", "Sửa Đến Danh Bộ " + e.FormattedValue.ToString().Replace(" ", "").Insert(7, " ").Insert(4, " ")))
+                                //    if (string.IsNullOrEmpty(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", "")))
+                                //    {
+                                //        if (_cTienDu.Update(bangke.DanhBo, SoTien, "Bảng Kê", "Sửa Từ Danh Bộ Rỗng"))
+                                //            scope.Complete();
+                                //    }
+                                //    else
+                                //        if (_cTienDu.Update(bangke.DanhBo, SoTien, "Bảng Kê", "Sửa Từ Danh Bộ " + dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", "").Insert(7, " ").Insert(4, " ")))
+                                //            scope.Complete();
+                                TT_TienDu tdOld = _cTienDu.Get(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""));
+                                tdOld.SoTien -= bangke.SoTien;
+                                _cTienDu.Sua(tdOld);
+                                TT_TienDu tdNew = _cTienDu.Get(bangke.DanhBo);
+                                if (tdNew == null)
+                                {
+                                    TT_TienDu en = new TT_TienDu();
+                                    en.DanhBo = bangke.DanhBo;
+                                    en.MaNH = bangke.MaNH.Value;
+                                    en.SoTien = bangke.SoTien;
+                                    _cTienDu.Them(en);
+                                }
+                                else
+                                {
+                                    tdNew.SoTien += bangke.SoTien;
+                                    _cTienDu.Sua(tdNew);
+                                }
+                                TT_TienDuLichSu tdls = _cTienDu.get_LichSu(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value, bangke.CreateDate.Value, bangke.MaBK);
+                                tdls.DanhBo = bangke.DanhBo;
+                                _cTienDu.SubmitChanges();
+                                scope.Complete();
+                            }
                         }
                         _cTienDu.Refresh();
                     }
