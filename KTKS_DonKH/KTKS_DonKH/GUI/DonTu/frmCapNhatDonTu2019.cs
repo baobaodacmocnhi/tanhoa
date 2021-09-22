@@ -10,6 +10,7 @@ using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
 using System.Transactions;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
@@ -22,6 +23,7 @@ namespace KTKS_DonKH.GUI.DonTu
         CPhongBanDoi _cPhongBanDoi = new CPhongBanDoi();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
         CNhomDon _cNhomDon = new CNhomDon();
+        CDHN _cDHN = new CDHN();
 
         LinQ.DonTu _dontu = null;
         DonTu_ChiTiet _dontu_ChiTiet = null;
@@ -144,7 +146,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     }
                 }
                 LoadLichSu();
-
+               
             }
             catch (Exception ex)
             {
@@ -191,6 +193,8 @@ namespace KTKS_DonKH.GUI.DonTu
             if (txtDanhBo.Text.Trim() != "")
             {
                 dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
+                if (_cDHN.CheckExist(txtDanhBo.Text.Trim().Replace(" ", "")) == false)
+                    MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (flag == true)
                 MessageBox.Show("Danh Bộ này có đơn tồn cũ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

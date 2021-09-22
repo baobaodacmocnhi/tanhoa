@@ -34,7 +34,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
-        CDHN _cDocSo = new CDHN();
+        CDHN _cDHN = new CDHN();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CCHDB_LyDo _cLyDoCHDB = new CCHDB_LyDo();
         CCHDB_NoiDungXuLy _cNoiDungXuLyCHDB = new CCHDB_NoiDungXuLy();
@@ -106,10 +106,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtDanhBo.Text = hoadon.DANHBA;
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(hoadon.DANHBA);
             CheckLichSuCHDB();
-            dgvGhiChuDocSo.DataSource = _cDocSo.GetDSGhiChu(hoadon.DANHBA);
+            dgvGhiChuDocSo.DataSource = _cDHN.GetDSGhiChu(hoadon.DANHBA);
 
             KTXM_ChiTiet ctktxm = null;
             if (_dontu_ChiTiet != null)
@@ -136,6 +136,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 cmbViTriDHN1.SelectedItem = ctktxm.ViTriDHN1;
                 cmbViTriDHN2.SelectedItem = ctktxm.ViTriDHN2;
             }
+            if (_cDHN.CheckExist(hoadon.DANHBA) == false)
+                MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadCTDB(CHDB_ChiTietCatTam ctctdb)
@@ -1159,7 +1161,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 txtDanhBo.Text = hoadon.DANHBA;
                                 txtHopDong.Text = hoadon.HOPDONG;
                                 txtHoTen.Text = hoadon.TENKH;
-                                txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                                txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
 
                                 if (hoadon != null)
                                 {
@@ -1207,7 +1209,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     txtDanhBo.Text = hoadon.DANHBA;
                                     txtHopDong.Text = hoadon.HOPDONG;
                                     txtHoTen.Text = hoadon.TENKH;
-                                    txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                                    txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
 
                                     if (hoadon != null)
                                     {

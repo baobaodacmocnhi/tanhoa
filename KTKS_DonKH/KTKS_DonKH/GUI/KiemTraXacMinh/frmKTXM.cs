@@ -28,7 +28,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CDonTBC _cDonTBC = new CDonTBC();
         CThuTien _cThuTien = new CThuTien();
         CKTXM _cKTXM = new CKTXM();
-        CDHN _cDocSo = new CDHN();
+        CDHN _cDHN = new CDHN();
         CHienTrangKiemTra _cHienTrangKiemTra = new CHienTrangKiemTra();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;
@@ -107,12 +107,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             else
                 txtDinhMucHN.Text = "";
             string a, b, c;
-            _cDocSo.GetDHN(txtDanhBo.Text.Trim(), out a, out b, out c);
+            _cDHN.GetDHN(txtDanhBo.Text.Trim(), out a, out b, out c);
             txtHieu.Text = a;
             txtCo.Text = b;
             txtSoThan.Text = c;
             if (_cDonTu.checkExist_TonCu(txtDanhBo.Text.Trim().Replace(" ", ""), _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value) == true)
                 MessageBox.Show("Danh Bộ này có đơn tồn cũ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (_cDHN.CheckExist(hoadon.DANHBA) == false)
+                MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadCTKTXM(KTXM_ChiTiet ctktxm)

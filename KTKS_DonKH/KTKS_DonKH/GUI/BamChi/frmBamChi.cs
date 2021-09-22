@@ -27,7 +27,7 @@ namespace KTKS_DonKH.GUI.BamChi
         CDonTBC _cDonTBC = new CDonTBC();
         CThuTien _cThuTien = new CThuTien();
         CBamChi _cBamChi = new CBamChi();
-        CDHN _cDocSo = new CDHN();
+        CDHN _cDHN = new CDHN();
         CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
         CNiemChi _cNiemChi = new CNiemChi();
 
@@ -87,10 +87,12 @@ namespace KTKS_DonKH.GUI.BamChi
             else
                 txtDinhMucHN.Text = "";
             string a, b, c;
-            _cDocSo.GetDHN(txtDanhBo.Text.Trim(), out a, out b, out c);
+            _cDHN.GetDHN(txtDanhBo.Text.Trim(), out a, out b, out c);
             txtHieu.Text = a;
             txtCo.Text = b;
             txtSoThan.Text = c;
+            if (_cDHN.CheckExist(hoadon.DANHBA) == false)
+                MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadCTBamChi(BamChi_ChiTiet ctbamchi)

@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         CTTTL _cTTTL = new CTTTL();
         CTTTL_GhiChu _cGhiChuCTTTTL = new CTTTL_GhiChu();
         CThuTien _cThuTien = new CThuTien();
-        CDHN _cDocSo = new CDHN();
+        CDHN _cDHN = new CDHN();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CTTTL_VeViec _cVeViecTTTL = new CTTTL_VeViec();
 
@@ -80,7 +80,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtHopDong.Text = hoadon.HOPDONG;
             txtLoTrinh.Text = hoadon.DOT + hoadon.MAY + hoadon.STT;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             txtGiaBieu.Text = hoadon.GB.ToString();
             if (hoadon.DM != null)
                 txtDinhMuc.Text = hoadon.DM.Value.ToString();
@@ -104,6 +104,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     else
                         if (_dontbc != null)
                             dateNhanDon.Value = _dontbc.CreateDate.Value;
+            if (_cDHN.CheckExist(hoadon.DANHBA) == false)
+                MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadTTTL(ThuTraLoi_ChiTiet cttttl)

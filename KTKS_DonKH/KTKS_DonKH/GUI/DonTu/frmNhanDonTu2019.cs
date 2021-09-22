@@ -25,7 +25,7 @@ namespace KTKS_DonKH.GUI.DonTu
         CDonTu _cDonTu = new CDonTu();
         CNhomDon _cNhomDon = new CNhomDon();
         CThuTien _cThuTien = new CThuTien();
-        CDHN _cDocSo = new CDHN();
+        CDHN _cDHN = new CDHN();
         CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
         CGanMoi _cGanMoi = new CGanMoi();
         CKTXM _cKTXM = new CKTXM();
@@ -94,7 +94,7 @@ namespace KTKS_DonKH.GUI.DonTu
             txtDanhBo.Text = entity.DANHBA.Insert(7, " ").Insert(4, " ");
             txtHopDong.Text = entity.HOPDONG;
             txtHoTen.Text = entity.TENKH;
-            txtDiaChi.Text = entity.SO + " " + entity.DUONG + _cDocSo.GetPhuongQuan(entity.Quan, entity.Phuong);
+            txtDiaChi.Text = entity.SO + " " + entity.DUONG + _cDHN.GetPhuongQuan(entity.Quan, entity.Phuong);
             txtGiaBieu.Text = entity.GB.ToString();
             if (entity.DM != null)
                 txtDinhMuc.Text = entity.DM.ToString();
@@ -134,6 +134,8 @@ namespace KTKS_DonKH.GUI.DonTu
             string strDuongCamDao = _cGanMoi.getDuongCamDao(entity.SO, entity.DUONG);
             if (strDuongCamDao != "")
                 MessageBox.Show(strDuongCamDao, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (_cDHN.CheckExist(entity.DANHBA) == false)
+                MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadDonTu(LinQ.DonTu entity)
@@ -1115,7 +1117,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     {
                         dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
                         dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
-                        dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                        dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
                         dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
                         dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
                         dgvDanhBo["DinhMucHN", e.RowIndex].Value = hoadon.DinhMucHN;
@@ -1239,9 +1241,9 @@ namespace KTKS_DonKH.GUI.DonTu
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             if (txtDanhBo_TimKiem.Text.Trim() != "")
-                dgvDanhBoTimKiem.DataSource = _cDocSo.TimKiem(txtDanhBo_TimKiem.Text.Trim());
+                dgvDanhBoTimKiem.DataSource = _cDHN.TimKiem(txtDanhBo_TimKiem.Text.Trim());
             else
-                dgvDanhBoTimKiem.DataSource = _cDocSo.TimKiem(txtHoTen_TimKiem.Text.Trim(), txtSoNha_TimKiem.Text.Trim(), txtTenDuong_TimKiem.Text.Trim());
+                dgvDanhBoTimKiem.DataSource = _cDHN.TimKiem(txtHoTen_TimKiem.Text.Trim(), txtSoNha_TimKiem.Text.Trim(), txtTenDuong_TimKiem.Text.Trim());
         }
 
         private void dgvDanhBo_UserAddedRow(object sender, DataGridViewRowEventArgs e)
@@ -1362,7 +1364,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                 dgvDanhBo["DanhBo", dgvDanhBo.RowCount - 2].Value = hoadon.DANHBA;
                                 dgvDanhBo["HopDong", dgvDanhBo.RowCount - 2].Value = hoadon.HOPDONG;
                                 dgvDanhBo["HoTen", dgvDanhBo.RowCount - 2].Value = hoadon.TENKH;
-                                dgvDanhBo["DiaChi", dgvDanhBo.RowCount - 2].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                                dgvDanhBo["DiaChi", dgvDanhBo.RowCount - 2].Value = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
                                 dgvDanhBo["GiaBieu", dgvDanhBo.RowCount - 2].Value = hoadon.GB;
                                 dgvDanhBo["DinhMuc", dgvDanhBo.RowCount - 2].Value = hoadon.DM;
                                 dgvDanhBo["DinhMucHN", dgvDanhBo.RowCount - 2].Value = hoadon.DinhMucHN;

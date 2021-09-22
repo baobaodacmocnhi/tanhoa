@@ -161,6 +161,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //    txtTieuThu_Cu.Text = txtTieuThu_Moi.Text = _hoadon.TIEUTHU.Value.ToString();
             //else
             //    txtTieuThu_Cu.Text = txtTieuThu_Moi.Text = "0";
+            if (_cDHN.CheckExist(hoadon.DANHBA) == false)
+                MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadDCHD(DCBD_ChiTietHoaDon ctdchd)

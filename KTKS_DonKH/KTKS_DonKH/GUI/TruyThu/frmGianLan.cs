@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.TruyThu
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
         CThuTien _cThuTien = new CThuTien();
-        CDHN _cDocSo = new CDHN();
+        CDHN _cDHN = new CDHN();
         CGianLan _cGianLan = new CGianLan();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;
@@ -85,7 +85,9 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             txtDanhBo.Text = hoadon.DANHBA;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+            if (_cDHN.CheckExist(hoadon.DANHBA) == false)
+                MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadGianLan(GianLan_ChiTiet entity)

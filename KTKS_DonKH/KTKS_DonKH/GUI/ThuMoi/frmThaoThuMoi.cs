@@ -31,7 +31,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
         CThuMoi _cThuMoi = new CThuMoi();
-        CDHN _cDocSo = new CDHN();
+        CDHN _cDHN = new CDHN();
         CThuTien _cThuTien = new CThuTien();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
 
@@ -90,7 +90,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
             txtHopDong.Text = hoadon.HOPDONG;
             txtLoTrinh.Text = hoadon.DOT + hoadon.MAY + hoadon.STT;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             txtGiaBieu.Text = hoadon.GB.ToString();
             if (hoadon.DM != null)
                 txtDinhMuc.Text = hoadon.DM.Value.ToString();
@@ -100,6 +100,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
             else
                 txtDinhMucHN.Text = "";
+            if (_cDHN.CheckExist(hoadon.DANHBA) == false)
+                MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadEntity(LinQ.ThuMoi_ChiTiet en)

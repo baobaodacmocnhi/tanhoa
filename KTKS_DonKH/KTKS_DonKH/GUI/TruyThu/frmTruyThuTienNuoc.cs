@@ -100,6 +100,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dgvTruyThuTienNuoc.Rows[index].Cells["Nam"].Value = item["Nam"];
                 dgvTruyThuTienNuoc.Rows[index].Cells["Ky"].Value = item["Ky"];
             }
+            if (_cDHN.CheckExist(hoadon.DANHBA) == false)
+                MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadTTTN(TruyThuTienNuoc_ChiTiet cttttn)

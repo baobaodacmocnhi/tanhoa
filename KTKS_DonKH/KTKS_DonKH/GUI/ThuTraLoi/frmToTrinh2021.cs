@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
         CToTrinh _cTT = new CToTrinh();
-        CDHN _cDocSo = new CDHN();
+        CDHN _cDHN = new CDHN();
         CToTrinh_VeViec _cVeViecToTrinh = new CToTrinh_VeViec();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
@@ -77,7 +77,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtDanhBo.Text = hoadon.DANHBA;
             txtMLT.Text = hoadon.MALOTRINH;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             txtGiaBieu.Text = hoadon.GB.ToString();
             if (hoadon.DM != null)
                 txtDinhMuc.Text = hoadon.DM.Value.ToString();
@@ -87,6 +87,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
             else
                 txtDinhMucHN.Text = "";
+            if (_cDHN.CheckExist(hoadon.DANHBA) == false)
+                MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadTT(ToTrinh_ChiTiet en)
@@ -1061,7 +1063,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     {
                         dgvDanhBo["DanhBo", e.RowIndex].Value = hoadon.DANHBA;
                         dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
-                        dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                        dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
                         dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH;
                         dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB.ToString();
                         if (hoadon.DinhMucHN != null)
@@ -1120,7 +1122,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     {
                         dgvDanhBo["DanhBo", e.RowIndex].Value = hoadon.DANHBA;
                         dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
-                        dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                        dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
                         dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH;
                         dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB.ToString();
                         if (hoadon.DinhMucHN != null)

@@ -135,6 +135,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDieuChinh.Rows[0].DefaultCellStyle.Font = new Font(dgvDSDieuChinh.DefaultCellStyle.Font, FontStyle.Bold);
             }
             LoadTongNK();
+            if(_cDHN.CheckExist(hoadon.DANHBA)==false)
+                MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void LoadDCBD(DCBD_ChiTietBienDong ctdcbd)
