@@ -35,7 +35,7 @@
       <Value Profile="(Default)">Data Source=113.161.88.180,1133;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=db11@tanhoa</Value>
     </Setting>
     <Setting Name="ThuTien_wsThuTien_wsThuTien" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://113.161.88.180:1989/wsthutien.asmx</Value>
+      <Value Profile="(Default)">http://113.161.88.180:81/wsthutien.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -580,7 +580,7 @@ namespace ThuTien.GUI.TongHop
                             DataTable dtExcel = _cHoaDon.ExcelToDataTable(dialog.FileName);
                             //CExcel fileExcel = new CExcel(dialog.FileName);
                             //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
-                            string SoHoaDon = (string)_cHoaDon.ExecuteQuery_ReturnOneValue("select SoHoaDon from TT_DeviceConfig");
+                            string KyHieu = (string)_cHoaDon.ExecuteQuery_ReturnOneValue("select SoHoaDon from TT_DeviceConfig");
                             int count = 0;
                             foreach (DataRow item in dtExcel.Rows)
                             {
@@ -594,7 +594,7 @@ namespace ThuTien.GUI.TongHop
                                             if (item[20].ToString().Contains("CT/") == true)
                                                 dchd.SoHoaDonMoi = item[20].ToString();
                                             else
-                                                dchd.SoHoaDonMoi = SoHoaDon + item[20].ToString();
+                                                dchd.SoHoaDonMoi = KyHieu + item[20].ToString();
                                             if (item[21].ToString() != "")
                                                 dchd.BaoCaoThue = bool.Parse(item[21].ToString());
                                             if (_cDCHD.Sua(dchd) == true)

@@ -70,7 +70,7 @@ namespace ThuTien.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://113.161.88.180:1989/wsthutien.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://113.161.88.180:81/wsthutien.asmx")]
         public string ThuTien_wsThuTien_wsThuTien {
             get {
                 return ((string)(this["ThuTien_wsThuTien_wsThuTien"]));

@@ -30,7 +30,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1432</ApplicationRevision>
+    <ApplicationRevision>1433</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1696,8 +1696,11 @@
     <None Include="Web References\wsThuTien\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\wsThuTien\wsthutien.wsdl" />
+    <None Include="Web References\wsThuTien\wsthutien.wsdl">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="BaoCao\dsBaoCao.xsc">
       <DependentUpon>dsBaoCao.xsd</DependentUpon>
     </None>
@@ -2404,10 +2407,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.90.11:81/wsthutien.asmx">
+    <WebReferenceUrl Include="http://113.161.88.180:81/wsthutien.asmx">
       <UrlBehavior>Static</UrlBehavior>
       <RelPath>Web References\wsThuTien\</RelPath>
-      <UpdateFromURL>http://192.168.90.11:81/wsthutien.asmx</UpdateFromURL>
+      <UpdateFromURL>http://113.161.88.180:81/wsthutien.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2417,7 +2420,9 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\wsThuTien\wsthutien.disco" />
+    <None Include="Web References\wsThuTien\wsthutien.disco">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\loading.gif" />

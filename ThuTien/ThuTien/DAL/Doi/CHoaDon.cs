@@ -7264,6 +7264,7 @@ namespace ThuTien.DAL.Doi
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
+                            MaHD=itemHD.ID_HOADON,
                             itemHD.NGAYGIAITRACH,
                             itemHD.SOHOADON,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
