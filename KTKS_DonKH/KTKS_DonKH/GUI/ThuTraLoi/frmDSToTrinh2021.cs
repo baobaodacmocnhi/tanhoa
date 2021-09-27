@@ -81,23 +81,42 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            switch (cmbTimTheo.SelectedItem.ToString())
-            {
-                case "Mã TT":
-                    dgvToTrinh.DataSource = _cTT.get_ChiTiet(int.Parse(txtNoiDungTimKiem.Text.Trim().Replace(" ", "").Replace("-", "")));
-                    break;
-                case "Danh Bộ":
-                    dgvToTrinh.DataSource = _cTT.getDS_ChiTiet_DanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
-                    break;
-                case "Về Việc":
-                    dgvToTrinh.DataSource = _cTT.getDS_ChiTiet_VeViec(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
-                    break;
-                case "Ngày":
-                    dgvToTrinh.DataSource = _cTT.getDS_ChiTiet(dateTu.Value, dateDen.Value);
-                    break;
-                default:
-                    break;
-            }
+            if (chkCreateBy.Checked)
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã TT":
+                        dgvToTrinh.DataSource = _cTT.getDS_ChiTiet(int.Parse(txtNoiDungTimKiem.Text.Trim().Replace(" ", "").Replace("-", "")), CTaiKhoan.MaUser);
+                        break;
+                    case "Danh Bộ":
+                        dgvToTrinh.DataSource = _cTT.getDS_ChiTiet_DanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), CTaiKhoan.MaUser);
+                        break;
+                    case "Về Việc":
+                        dgvToTrinh.DataSource = _cTT.getDS_ChiTiet_VeViec(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), CTaiKhoan.MaUser);
+                        break;
+                    case "Ngày":
+                        dgvToTrinh.DataSource = _cTT.getDS_ChiTiet(dateTu.Value, dateDen.Value, CTaiKhoan.MaUser);
+                        break;
+                    default:
+                        break;
+                }
+            else
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã TT":
+                        dgvToTrinh.DataSource = _cTT.getDS_ChiTiet(int.Parse(txtNoiDungTimKiem.Text.Trim().Replace(" ", "").Replace("-", "")));
+                        break;
+                    case "Danh Bộ":
+                        dgvToTrinh.DataSource = _cTT.getDS_ChiTiet_DanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
+                        break;
+                    case "Về Việc":
+                        dgvToTrinh.DataSource = _cTT.getDS_ChiTiet_VeViec(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
+                        break;
+                    case "Ngày":
+                        dgvToTrinh.DataSource = _cTT.getDS_ChiTiet(dateTu.Value, dateDen.Value);
+                        break;
+                    default:
+                        break;
+                }
         }
 
         private void dgvToTrinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -334,15 +353,15 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                             dr2["MLT"] = item.MaDon.Value.ToString() + "." + item.STT.Value.ToString();
                                     }
                                     else
-                                    if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
-                                    {
-                                        dr2["LoaiBaoCao"] = "ĐỨT CHÌ MẶT SỐ NẰM NGOÀI BẤT ĐỘNG SẢN (VỈA HÈ)";
-                                    }
-                                    else
-                                        if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))
+                                        if (item.ToTrinh_ChiTiet.VeViec.Contains("đứt chì mặt số"))
                                         {
-                                            dr2["LoaiBaoCao"] = "LỖI KỸ THUẬT";
+                                            dr2["LoaiBaoCao"] = "ĐỨT CHÌ MẶT SỐ NẰM NGOÀI BẤT ĐỘNG SẢN (VỈA HÈ)";
                                         }
+                                        else
+                                            if (item.ToTrinh_ChiTiet.VeViec.Contains("lỗi kỹ thuật"))
+                                            {
+                                                dr2["LoaiBaoCao"] = "LỖI KỸ THUẬT";
+                                            }
                                     dr2["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                                     dr2["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
                                     dr2["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
