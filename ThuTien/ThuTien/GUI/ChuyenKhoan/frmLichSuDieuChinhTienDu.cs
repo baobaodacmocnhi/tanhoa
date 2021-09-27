@@ -93,7 +93,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
+            if (e.KeyChar == 13)
             {
                 dgvLichSuTienDu.DataSource = _cTienDu.GetDSLichSu(txtDanhBo.Text.Trim().Replace(" ", ""));
                 long TongCong = 0;
