@@ -178,14 +178,6 @@ namespace KTKS_DonKH.DAL.QuanTri
             set { CTaiKhoan._dtQuyenNguoiDung = value; }
         }
 
-        //get CurrencyDecimalSeparator
-        static string _decimalSeparator = System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator;
-        public static string DecimalSeparator
-        {
-            get { return CTaiKhoan._decimalSeparator; }
-            set { CTaiKhoan._decimalSeparator = value; }
-        }
-
         public bool DangNhap(string taikhoan, string matkhau)
         {
             try
@@ -457,15 +449,5 @@ namespace KTKS_DonKH.DAL.QuanTri
                 return db.Users.Max(item => item.STT).Value;
         }
 
-        public static double getDouble(string number)
-        {
-            if (DecimalSeparator == ".")
-                return double.Parse(number.Replace(",", "."));
-            else
-                if (DecimalSeparator == ",")
-                    return double.Parse(number.Replace(".", ","));
-                else
-                    return 0;
-        }
     }
 }

@@ -31,7 +31,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1591</ApplicationRevision>
+    <ApplicationRevision>1597</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1101,6 +1101,12 @@
     </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmNhapNhieuGB.Designer.cs">
       <DependentUpon>frmNhapNhieuGB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmSoDangKyDinhMuc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmSoDangKyDinhMuc.Designer.cs">
+      <DependentUpon>frmSoDangKyDinhMuc.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DonTu\frmCapNhatDonTu2019.cs">
       <SubType>Form</SubType>
@@ -2243,6 +2249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmNhapNhieuGB.resx">
       <DependentUpon>frmNhapNhieuGB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmSoDangKyDinhMuc.resx">
+      <DependentUpon>frmSoDangKyDinhMuc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DonTu\frmCapNhatDonTu2019.resx">
       <DependentUpon>frmCapNhatDonTu2019.cs</DependentUpon>

@@ -752,14 +752,14 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
                     ReportDocument rpt;
-                    if (_cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
-                    {
-                        rpt = new rptToTrinh_ThongQuaPGD();
-                    }
-                    else
-                    {
-                        rpt = new rptToTrinh();
-                    }
+                    //if (_cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
+                    //{
+                    rpt = new rptToTrinh_ThongQuaPGD();
+                    //}
+                    //else
+                    //{
+                    //    rpt = new rptToTrinh();
+                    //}
                     rpt.SetDataSource(dsBaoCao);
                     frmShowBaoCao frm = new frmShowBaoCao(rpt);
                     frm.Show();
@@ -1053,7 +1053,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 {
                     LinQ.DonTu dt = _cDonTu.get(int.Parse(MaDon));
                     if (dt != null)
-                        _dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
+                        dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
                 }
                 //
                 if (dontu_ChiTiet != null)
@@ -1112,7 +1112,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 {
                     LinQ.DonTu dt = _cDonTu.get(int.Parse(MaDon));
                     if (dt != null)
-                        _dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
+                        dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
                 }
                 //
                 if (dontu_ChiTiet != null)

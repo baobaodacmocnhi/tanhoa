@@ -394,7 +394,7 @@ namespace KTKS_DonKH.DAL
                     DataRow dr = dt.NewRow();
                     for (int c = 1; c <= cols; c++)
                     {
-                        dr[c - 1] = xlWorksheet.Cells[r, c].Text;
+                        dr[c - 1] = xlWorksheet.Cells[r, c].Value;
                     }
 
                     dt.Rows.Add(dr);
@@ -436,6 +436,13 @@ namespace KTKS_DonKH.DAL
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
+        }
+
+        public double convertToDouble(string number)
+        {
+            if (System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator == ".")
+                number.Replace(",", ".");
+            return double.Parse(number);
         }
     }
 }

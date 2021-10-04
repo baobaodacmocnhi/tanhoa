@@ -271,14 +271,14 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
                                 ReportDocument rpt;
-                                if (cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
-                                {
-                                    rpt = new rptToTrinh_ThongQuaPGD();
-                                }
-                                else
-                                {
-                                    rpt = new rptToTrinh();
-                                }
+                                //if (cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
+                                //{
+                                rpt = new rptToTrinh_ThongQuaPGD();
+                                //}
+                                //else
+                                //{
+                                //    rpt = new rptToTrinh();
+                                //}
                                 rpt.SetDataSource(dsBaoCao);
 
                                 printDialog.AllowSomePages = true;

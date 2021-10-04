@@ -616,7 +616,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         ctbamchi.VienChi = int.Parse(txtVienChi.Text.Trim());
 
                     if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
-                        ctbamchi.DayChi = CTaiKhoan.getDouble(txtDayChi.Text.Trim());
+                        ctbamchi.DayChi = _cBamChi.convertToDouble(txtDayChi.Text.Trim());
 
                     ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
 
@@ -782,7 +782,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             _ctbamchi.VienChi = int.Parse(txtVienChi.Text.Trim());
 
                         if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
-                            _ctbamchi.DayChi = CTaiKhoan.getDouble(txtDayChi.Text.Trim());
+                            _ctbamchi.DayChi = _cBamChi.convertToDouble(txtDayChi.Text.Trim());
 
                         _ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim();
 

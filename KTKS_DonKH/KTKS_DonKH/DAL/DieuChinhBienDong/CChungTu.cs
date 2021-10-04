@@ -3589,6 +3589,19 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return ExecuteQuery_DataTable(sql);
         }
 
+        public DataTable getTimKiemSoDangKyDinhMuc(string MaCT)
+        {
+            string sql = "select Loai=N'CT Đơn',TenLCT,ctct.MaCT,ct.SoNKTong,ctct.DanhBo,ctct.SoNKDangKy,ctct.CreateDate"
+                        + " from ChungTu ct,LoaiChungTu lct,ChungTu_ChiTiet ctct"
+                        + " where ct.MaLCT=lct.MaLCT and ct.MaCT=ctct.MaCT and ctct.MaCT like N'%" + MaCT + "%'"
+                        + " union"
+                        + " select Loai=N'CT Chung Cư',TenLCT=(select TenLCT from LoaiChungTu where MaLCT=ctct.MaLCT),MaCT,SoNKTong,DanhBo,SoNKDangKy,CreateDate"
+                        + " from ChungCu.dbo.DanhSachChungTu ctct"
+                        + " where ctct.MaCT like N'%" + MaCT + "%'"
+                        + " order by CreateDate";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         #endregion
 
         #region Hình
