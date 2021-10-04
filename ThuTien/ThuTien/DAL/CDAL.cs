@@ -489,12 +489,12 @@ namespace ThuTien.DAL
                     DataRow dr = dt.NewRow();
                     for (int c = 1; c <= cols; c++)
                     {
-                        dr[c - 1] = xlWorksheet.Cells[r, c].Text;
+                        dr[c - 1] = xlWorksheet.Cells[r, c].Value;
                     }
 
                     dt.Rows.Add(dr);
                 }
-                return dt;
+
             }
             catch (Exception ex)
             {
@@ -502,7 +502,7 @@ namespace ThuTien.DAL
             }
             finally
             {
-               
+
                 //release com objects to fully kill excel process from running in the background
                 //if (xlRange != null)
                 //{
@@ -531,7 +531,14 @@ namespace ThuTien.DAL
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
+            return dt;
         }
 
+        public double convertToDouble(string number)
+        {
+            if (System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator == ".")
+                number.Replace(",", ".");
+            return double.Parse(number);
+        }
     }
 }

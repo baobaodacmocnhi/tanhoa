@@ -575,16 +575,16 @@ namespace ThuTien.DAL.Doi
 
         public List<HOADON> getDSTon_KhongChanTienDu_KhongDCHD(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false ).Count() > 0)
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false ).OrderBy(item => item.ID_HOADON).ToList();
+            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false).Count() > 0)
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false).OrderBy(item => item.ID_HOADON).ToList();
             else
                 return null;
         }
 
         public List<HOADON> GetDSTon_CoChanTienDu(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true) ).Count() > 0)
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true) ).ToList().OrderBy(item => item.ID_HOADON).ToList();
+            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true)).Count() > 0)
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true)).ToList().OrderBy(item => item.ID_HOADON).ToList();
             else
                 return null;
         }
@@ -4109,7 +4109,7 @@ namespace ThuTien.DAL.Doi
                 {
                     var query = from item in _db.HOADONs
                                 where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                && item.KhoaTienDu == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                && item.KhoaTienDu == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                 orderby item.MaNV_DangNgan ascending
                                 group item by item.MaNV_DangNgan into itemGroup
                                 select new
@@ -4139,7 +4139,7 @@ namespace ThuTien.DAL.Doi
                                 where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                     //&& _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                    && item.KhoaTienDu == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                    && item.KhoaTienDu == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                 orderby item.MaNV_DangNgan ascending
                                 group item by item.MaNV_DangNgan into itemGroup
                                 select new
@@ -4171,7 +4171,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                    && item.KhoaTienDu == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                    && item.KhoaTienDu == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                     orderby item.MaNV_DangNgan ascending
                                     group item by item.MaNV_DangNgan into itemGroup
                                     select new
@@ -4201,7 +4201,7 @@ namespace ThuTien.DAL.Doi
                                     where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         //&& _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.KhoaTienDu == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.KhoaTienDu == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                     orderby item.MaNV_DangNgan ascending
                                     group item by item.MaNV_DangNgan into itemGroup
                                     select new
@@ -4434,7 +4434,7 @@ namespace ThuTien.DAL.Doi
         //                    where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
         //                        && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
         //                        && _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-        //                        && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+        //                        && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
         //                    orderby MaTo ascending
         //                    group item by MaTo into itemGroup
         //                    select new
@@ -4464,7 +4464,7 @@ namespace ThuTien.DAL.Doi
         //                        where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
         //                            && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
         //                            && _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-        //                            && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+        //                            && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
         //                        orderby MaTo ascending
         //                        group item by MaTo into itemGroup
         //                        select new
@@ -5095,7 +5095,7 @@ namespace ThuTien.DAL.Doi
                 ///Tổ Văn Phòng
                 var query = from item in _db.HOADONs
                             where item.DangNgan_ChuyenKhoan == true///chỉ lấy ngân hàng
-                            && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                            && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                             && item.KhoaTienDu == false
                             group item by item.DangNgan_ChuyenKhoan into itemGroup
                             select new
@@ -5118,7 +5118,7 @@ namespace ThuTien.DAL.Doi
                     ///Tổ Hành Thu & Quầy
                     var query = from item in _db.HOADONs
                                 where item.DangNgan_ChuyenKhoan == false///ngoài ngân hàng ra
-                                    && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                    && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                     && item.KhoaTienDu == false
                                 group item by item.DangNgan_ChuyenKhoan into itemGroup
                                 select new
@@ -5140,7 +5140,7 @@ namespace ThuTien.DAL.Doi
                         ///Tổ Hành Thu & Quầy
                         var query = from item in _db.HOADONs
                                     where item.DangNgan_ChuyenKhoan == false///ngoài ngân hàng ra
-                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                         && item.KhoaTienDu == false
                                     group item by item.DangNgan_ChuyenKhoan into itemGroup
                                     select new
@@ -5166,7 +5166,7 @@ namespace ThuTien.DAL.Doi
                 ///Tổ Văn Phòng
                 var query = from item in _db.HOADONs
                             where item.DangNgan_ChuyenKhoan == true///chỉ lấy ngân hàng
-                            && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                            && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                             && item.KhoaTienDu == false
                             group item by item.DangNgan_ChuyenKhoan into itemGroup
                             select new
@@ -5189,7 +5189,7 @@ namespace ThuTien.DAL.Doi
                     ///Tổ Hành Thu & Quầy
                     var query = from item in _db.HOADONs
                                 where item.DangNgan_ChuyenKhoan == false///ngoài ngân hàng ra
-                                    && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                    && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                     && item.KhoaTienDu == false
                                 group item by item.DangNgan_ChuyenKhoan into itemGroup
                                 select new
@@ -5211,7 +5211,7 @@ namespace ThuTien.DAL.Doi
                         ///Tổ Hành Thu & Quầy
                         var query = from item in _db.HOADONs
                                     where item.DangNgan_ChuyenKhoan == false///ngoài ngân hàng ra
-                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                         && item.KhoaTienDu == false
                                     group item by item.DangNgan_ChuyenKhoan into itemGroup
                                     select new
@@ -5237,7 +5237,7 @@ namespace ThuTien.DAL.Doi
                 ///Tổ Văn Phòng
                 var query = from item in _db.HOADONs
                             where item.DangNgan_ChuyenKhoan == true///chỉ lấy ngân hàng
-                            && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || item.NAM == Nam && item.KY < Ky) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                            && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || item.NAM == Nam && item.KY < Ky) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                             && item.KhoaTienDu == false
                             group item by item.DangNgan_ChuyenKhoan into itemGroup
                             select new
@@ -5260,7 +5260,7 @@ namespace ThuTien.DAL.Doi
                     ///Tổ Hành Thu & Quầy
                     var query = from item in _db.HOADONs
                                 where item.DangNgan_ChuyenKhoan == false///ngoài ngân hàng ra
-                                    && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || item.NAM == Nam && item.KY < Ky) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                    && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || item.NAM == Nam && item.KY < Ky) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                     && item.KhoaTienDu == false
                                 group item by item.DangNgan_ChuyenKhoan into itemGroup
                                 select new
@@ -5282,7 +5282,7 @@ namespace ThuTien.DAL.Doi
                         ///Tổ Hành Thu & Quầy
                         var query = from item in _db.HOADONs
                                     where item.DangNgan_ChuyenKhoan == false///ngoài ngân hàng ra
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || item.NAM == Nam && item.KY < Ky) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || item.NAM == Nam && item.KY < Ky) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                         && item.KhoaTienDu == false
                                     group item by item.DangNgan_ChuyenKhoan into itemGroup
                                     select new
@@ -5318,7 +5318,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5345,7 +5345,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5369,7 +5369,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
                                     select new
@@ -5395,7 +5395,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5419,7 +5419,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
                                     select new
@@ -5445,7 +5445,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                        && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5634,7 +5634,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5661,7 +5661,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                         && item.KhoaTienDu == false
                                     orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5685,7 +5685,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5712,7 +5712,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                         && item.KhoaTienDu == false
                                     orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5736,7 +5736,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5763,7 +5763,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                        && item.ChuyenNoKhoDoi == false && item.NAM == Nam && item.KY == Ky && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                         && item.KhoaTienDu == false
                                     orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5794,7 +5794,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5821,7 +5821,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                         && item.KhoaTienDu == false
                                     orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5845,7 +5845,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5872,7 +5872,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                         && item.KhoaTienDu == false
                                     orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5896,7 +5896,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5923,7 +5923,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                         && item.KhoaTienDu == false
                                     orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5954,7 +5954,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -5981,7 +5981,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                         && item.KhoaTienDu == false
                                     orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -6005,7 +6005,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -6032,7 +6032,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                         && item.KhoaTienDu == false
                                     orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -6056,7 +6056,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && (item.NAM < 2020 || (item.NAM == 2020 && item.KY < 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && (item.NAM < 2020 || (item.NAM == 2020 && item.KY < 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -6083,7 +6083,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && (item.NAM < 2020 || (item.NAM == 2020 && item.KY < 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && (item.NAM < 2020 || (item.NAM == 2020 && item.KY < 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                         && item.KhoaTienDu == false
                                     orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -6114,7 +6114,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -6141,7 +6141,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB >= 11 && item.GB <= 20
                                         && item.KhoaTienDu == false
                                     orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -6165,7 +6165,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -6192,7 +6192,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && item.GB > 20
                                         && item.KhoaTienDu == false
                                     orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -6216,7 +6216,7 @@ namespace ThuTien.DAL.Doi
                     {
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                         && item.KhoaTienDu == false
                                     //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -6243,7 +6243,7 @@ namespace ThuTien.DAL.Doi
                                     where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                        && item.ChuyenNoKhoDoi == false && (item.NAM < Nam || (item.NAM == Nam && item.KY < Ky)) && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                         && item.KhoaTienDu == false
                                     orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
@@ -6271,7 +6271,7 @@ namespace ThuTien.DAL.Doi
             {
                 var query = from item in _db.HOADONs
                             where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                && item.ChuyenNoKhoDoi == false && (item.NAM < 2020 || (item.NAM == 2020 && item.KY < 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                && item.ChuyenNoKhoDoi == false && (item.NAM < 2020 || (item.NAM == 2020 && item.KY < 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                 && item.KhoaTienDu == false
                             //orderby item.STT ascending
                             group item by item.MaNV_DangNgan into itemGroup
@@ -6298,7 +6298,7 @@ namespace ThuTien.DAL.Doi
                             where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                 _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                && item.ChuyenNoKhoDoi == false && (item.NAM < 2020 || (item.NAM == 2020 && item.KY < 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                && item.ChuyenNoKhoDoi == false && (item.NAM < 2020 || (item.NAM == 2020 && item.KY < 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                 && item.KhoaTienDu == false
                             orderby item.STT ascending
                             group item by item.MaNV_DangNgan into itemGroup
@@ -6325,7 +6325,7 @@ namespace ThuTien.DAL.Doi
             {
                 var query = from item in _db.HOADONs
                             where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                && item.ChuyenNoKhoDoi == false && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                && item.ChuyenNoKhoDoi == false && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                 && item.KhoaTienDu == false
                             //orderby item.STT ascending
                             group item by item.MaNV_DangNgan into itemGroup
@@ -6352,7 +6352,7 @@ namespace ThuTien.DAL.Doi
                             where //Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 //&& Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                 _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                && item.ChuyenNoKhoDoi == false && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                && item.ChuyenNoKhoDoi == false && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                                 && item.KhoaTienDu == false
                             orderby item.STT ascending
                             group item by item.MaNV_DangNgan into itemGroup
@@ -6378,7 +6378,7 @@ namespace ThuTien.DAL.Doi
                         + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
                         + " left join"
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
-                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and GB>=1 and GB<=20 and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and GB>=1 and GB<=20 and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
                         + " order by nd.STT asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -6389,7 +6389,7 @@ namespace ThuTien.DAL.Doi
                         + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
                         + " left join"
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
-                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and GB>=1 and GB<=20 and NAM=" + Nam + " and KY=" + Ky + " and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and GB>=1 and GB<=20 and NAM=" + Nam + " and KY=" + Ky + " and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
                         + " order by nd.STT asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -6400,7 +6400,7 @@ namespace ThuTien.DAL.Doi
                         + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
                         + " left join"
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
-                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and GB>=1 and GB<=20 and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<" + Ky + ")) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and GB>=1 and GB<=20 and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<" + Ky + ")) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
                         + " order by nd.STT asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -6411,7 +6411,7 @@ namespace ThuTien.DAL.Doi
                         + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
                         + " left join"
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
-                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
                         + " order by nd.STT asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -6433,7 +6433,7 @@ namespace ThuTien.DAL.Doi
                         + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
                         + " left join"
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
-                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and NAM=" + Nam + " and KY=" + Ky + " and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and NAM=" + Nam + " and KY=" + Ky + " and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
                         + " order by nd.STT asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -6444,7 +6444,7 @@ namespace ThuTien.DAL.Doi
                         + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
                         + " left join"
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
-                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<" + Ky + ")) and (NAM<2020 or(NAM=2020 and KY<7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<" + Ky + ")) and (NAM<2020 or(NAM=2020 and KY<7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
                         + " order by nd.STT asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -6455,7 +6455,7 @@ namespace ThuTien.DAL.Doi
                         + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
                         + " left join"
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
-                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<" + Ky + ")) and (NAM>2020 or(NAM=2020 and KY>=7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<" + Ky + ")) and (NAM>2020 or(NAM=2020 and KY>=7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
                         + " order by nd.STT asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -6466,7 +6466,7 @@ namespace ThuTien.DAL.Doi
                         + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
                         + " left join"
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
-                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and (NAM<2020 or (NAM=2020 and KY<7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and (NAM<2020 or (NAM=2020 and KY<7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
                         + " order by nd.STT asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -6477,7 +6477,7 @@ namespace ThuTien.DAL.Doi
                         + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
                         + " left join"
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
-                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and (NAM>2020 or (NAM=2020 and KY>=7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and (NAM>2020 or (NAM=2020 and KY>=7)) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
                         + " order by nd.STT asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -6520,15 +6520,15 @@ namespace ThuTien.DAL.Doi
                         + " set @ToNgayGiaiTrach='" + ToNgayGiaiTrach.ToString("yyyyMMdd") + "'"
                         + " select *,STT=CONVERT(varchar(8),NgayGiaiTrach,112) from"
                         + " (select PhanKy=N'Cùng Kỳ',NgayGiaiTrach=CAST(NGAYGIAITRACH as date),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
-                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and KY=MONTH(@ToNgayGiaiTrach) and NAM=YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
+                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and MaNV_DangNgan is not null and KY=MONTH(@ToNgayGiaiTrach) and NAM=YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
                         + " group by CAST(NGAYGIAITRACH as date)"
                         + " union all"
                         + " select PhanKy=N'Khác Kỳ',NgayGiaiTrach=CAST(NGAYGIAITRACH as date),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
-                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and KY<MONTH(@ToNgayGiaiTrach) and NAM=YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
+                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and MaNV_DangNgan is not null and KY<MONTH(@ToNgayGiaiTrach) and NAM=YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
                         + " group by CAST(NGAYGIAITRACH as date)"
                         + " union all"
                         + " select PhanKy=N'Khác Kỳ Năm',NgayGiaiTrach=CAST(NGAYGIAITRACH as date),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
-                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and NAM<YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
+                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and MaNV_DangNgan is not null and NAM<YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
                         + " group by CAST(NGAYGIAITRACH as date))t1"
                         + " order by PhanKy,NgayGiaiTrach";
             return ExecuteQuery_DataTable(sql);
@@ -6542,15 +6542,15 @@ namespace ThuTien.DAL.Doi
                         + " set @ToNgayGiaiTrach='" + ToNgayGiaiTrach.ToString("yyyyMMdd") + "'"
                         + " select *,STT=CONVERT(varchar(8),NgayGiaiTrach,112) from"
                         + " (select PhanKy=N'Cùng Kỳ',NgayGiaiTrach=RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH)),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
-                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and KY=MONTH(@ToNgayGiaiTrach) and NAM=YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
+                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and MaNV_DangNgan is not null and KY=MONTH(@ToNgayGiaiTrach) and NAM=YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
                         + " group by RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH))"
                         + " union all"
                         + " select PhanKy=N'Khác Kỳ',NgayGiaiTrach=RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH)),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
-                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and KY<MONTH(NGAYGIAITRACH) and NAM=YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
+                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and MaNV_DangNgan is not null and KY<MONTH(NGAYGIAITRACH) and NAM=YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
                         + " group by RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH))"
                         + " union all"
                         + " select PhanKy=N'Khác Kỳ Năm',NgayGiaiTrach=RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH)),GiaBan=SUM(GIABAN),ThueGTGT=SUM(THUE),PhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG) from HOADON"
-                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and NAM<YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
+                        + " where CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach and MaNV_DangNgan is not null and NAM<YEAR(@ToNgayGiaiTrach) and ChuyenNoKhoDoi=0"
                         + " group by RIGHT('0' + CAST(MONTH(NGAYGIAITRACH) as varchar(2)),2)+'/'+CONVERT(varchar(4),YEAR(NGAYGIAITRACH)))t1"
                         + " order by PhanKy,NgayGiaiTrach";
             return ExecuteQuery_DataTable(sql);
@@ -6962,7 +6962,7 @@ namespace ThuTien.DAL.Doi
             if (MaNV_DangNgan.HasValue)
             {
                 var query = from item in _db.HOADONs
-                            where item.MaNV_HanhThu == MaNV_HanhThu && item.MaNV_DangNgan == MaNV_DangNgan && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                            where item.MaNV_HanhThu == MaNV_HanhThu && item.MaNV_DangNgan == MaNV_DangNgan && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                             orderby item.MALOTRINH ascending
                             select new
                             {
@@ -6983,7 +6983,7 @@ namespace ThuTien.DAL.Doi
             else
             {
                 var query = from item in _db.HOADONs
-                            where item.MaNV_HanhThu == MaNV_HanhThu && item.MaNV_DangNgan == null && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                            where item.MaNV_HanhThu == MaNV_HanhThu && item.MaNV_DangNgan == null && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                             orderby item.MALOTRINH ascending
                             select new
                             {
@@ -7009,6 +7009,7 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on item.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where item.NGAYGIAITRACH.Value.Date >= FromNgayGiaiTrach.Date && item.NGAYGIAITRACH.Value.Date <= ToNgayGiaiTrach.Date && item.ChuyenNoKhoDoi == false
+                        && item.MaNV_DangNgan != null
                         orderby item.MALOTRINH ascending
                         select new
                         {
@@ -7209,7 +7210,7 @@ namespace ThuTien.DAL.Doi
         public DataTable getDSDangNgan_CoDCHD(DateTime NgayGiaiTrach)
         {
             var query = from item in _db.HOADONs
-                        where item.DCHD == true && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                        where item.DCHD == true && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
                         orderby item.MALOTRINH ascending
                         select new
                         {
@@ -7233,7 +7234,7 @@ namespace ThuTien.DAL.Doi
         public DataTable getDSDangNgan_CoDCHD(int MaTo, DateTime NgayGiaiTrach)
         {
             var query = from item in _db.HOADONs
-                        where item.DCHD == true && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == item.MaNV_DangNgan).MaTo == MaTo
+                        where item.DCHD == true && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == item.MaNV_DangNgan).MaTo == MaTo
                         orderby item.MALOTRINH ascending
                         select new
                         {
@@ -7264,7 +7265,7 @@ namespace ThuTien.DAL.Doi
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
-                            MaHD=itemHD.ID_HOADON,
+                            MaHD = itemHD.ID_HOADON,
                             itemHD.NGAYGIAITRACH,
                             itemHD.SOHOADON,
                             Ky = itemHD.KY + "/" + itemHD.NAM,

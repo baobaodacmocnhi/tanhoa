@@ -122,14 +122,14 @@ namespace ThuTien.DAL.TongHop
             if (_db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <= 6))) == true)
                 return true;
             else//hóa đơn điện tử
-                if (_db.DIEUCHINH_HDs.Any(item => item.SoHoaDon == SoHoaDon) == false)
+                if (_db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON) == false)
                     return true;
                 else
                 {
                     HOADON hd = _db.HOADONs.SingleOrDefault(itemHD => itemHD.ID_HOADON == _db.DIEUCHINH_HDs.FirstOrDefault(item => item.SoHoaDon == SoHoaDon && item.UpdatedHDDT == true).FK_HOADON);
                     if (hd != null)
                         DanhBo = hd.DANHBA + " " + hd.KY + "/" + hd.NAM;
-                    return _db.DIEUCHINH_HDs.Any(item => item.SoHoaDon == SoHoaDon && item.UpdatedHDDT == true);
+                    return _db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == hd.ID_HOADON && item.UpdatedHDDT == true);
                 }
         }
 
@@ -1409,7 +1409,7 @@ namespace ThuTien.DAL.TongHop
             return null;
         }
 
-        public DataTable GetChuanThu_DongNuoc_BaoCaoTongHop( DateTime FromDate, DateTime ToDate)
+        public DataTable GetChuanThu_DongNuoc_BaoCaoTongHop(DateTime FromDate, DateTime ToDate)
         {
             string sql = "declare @FromDate date;"
                         + " declare @ToDate date;"
@@ -1788,7 +1788,7 @@ namespace ThuTien.DAL.TongHop
                         join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemDC.TONGCONG_END == 0 && itemHD.NGAYGIAITRACH == null && itemDC.UpdatedHDDT==true
+                        where itemDC.TONGCONG_END == 0 && itemHD.NGAYGIAITRACH == null && itemDC.UpdatedHDDT == true
                         select new
                         {
                             NgayDC = itemDC.NGAY_DC,
