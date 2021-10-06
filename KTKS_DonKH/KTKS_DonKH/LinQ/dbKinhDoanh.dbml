@@ -1119,6 +1119,7 @@
       <Column Name="Phuong" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="DienThoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="NguoiBao" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ChanHoaDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TinhTrang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="HoanThanh" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />

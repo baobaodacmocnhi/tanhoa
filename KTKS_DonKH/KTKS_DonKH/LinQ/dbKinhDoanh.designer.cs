@@ -26479,6 +26479,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NguoiBao;
 		
+		private bool _ChanHoaDon;
+		
 		private System.Nullable<int> _MaDon;
 		
 		private string _TinhTrang;
@@ -26537,6 +26539,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDienThoaiChanged();
     partial void OnNguoiBaoChanging(string value);
     partial void OnNguoiBaoChanged();
+    partial void OnChanHoaDonChanging(bool value);
+    partial void OnChanHoaDonChanged();
     partial void OnMaDonChanging(System.Nullable<int> value);
     partial void OnMaDonChanged();
     partial void OnTinhTrangChanging(string value);
@@ -26899,6 +26903,26 @@ namespace KTKS_DonKH.LinQ
 					this._NguoiBao = value;
 					this.SendPropertyChanged("NguoiBao");
 					this.OnNguoiBaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChanHoaDon", DbType="Bit NOT NULL")]
+		public bool ChanHoaDon
+		{
+			get
+			{
+				return this._ChanHoaDon;
+			}
+			set
+			{
+				if ((this._ChanHoaDon != value))
+				{
+					this.OnChanHoaDonChanging(value);
+					this.SendPropertyChanging();
+					this._ChanHoaDon = value;
+					this.SendPropertyChanged("ChanHoaDon");
+					this.OnChanHoaDonChanged();
 				}
 			}
 		}

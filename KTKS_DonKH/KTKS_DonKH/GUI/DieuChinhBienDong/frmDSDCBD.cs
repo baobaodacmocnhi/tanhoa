@@ -45,6 +45,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         string _mnu = "mnuDSDCBD";
         List<GiaNuoc> _lstGiaNuoc;
+        dbThuTienDataContext _dbThuTien = new dbThuTienDataContext();
 
         public frmDSDCBD()
         {
@@ -81,7 +82,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["DinhMucHN"].Visible = true;
                 dgvDSDCBD.Columns["DinhMucHN_BD"].Visible = true;
                 ///
-                dgvDSDCBD.Columns["ChuyenThuTien"].Visible = false;
+                //dgvDSDCBD.Columns["ChuyenThuTien"].Visible = false;
+                dgvDSDCBD.Columns["ThuTienCapNhat"].Visible = false;
+                dgvDSDCBD.Columns["ThuTienGiaiTrach"].Visible = false;
                 dgvDSDCBD.Columns["Ky"].Visible = false;
                 dgvDSDCBD.Columns["CodeF2"].Visible = false;
                 dgvDSDCBD.Columns["TieuThu"].Visible = false;
@@ -108,7 +111,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["MSThue"].Visible = false;
                 dgvDSDCBD.Columns["MSThue_BD"].Visible = false;
                 ///
-                dgvDSDCBD.Columns["ChuyenThuTien"].Visible = true;
+                //dgvDSDCBD.Columns["ChuyenThuTien"].Visible = true;
+                dgvDSDCBD.Columns["ThuTienCapNhat"].Visible = true;
+                dgvDSDCBD.Columns["ThuTienGiaiTrach"].Visible = true;
                 dgvDSDCBD.Columns["Ky"].Visible = true;
                 dgvDSDCBD.Columns["CodeF2"].Visible = true;
                 dgvDSDCBD.Columns["GiaBieu"].Visible = true;
@@ -469,6 +474,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     default:
                         break;
                 }
+            if (radDSDCHD.Checked)
+                foreach (DataGridViewRow item in dgvDSDCBD.Rows)
+                {
+                    string[] Kys = item.Cells["Ky"].Value.ToString().Split('/');
+                    item.Cells["ThuTienCapNhat"].Value = _dbThuTien.DIEUCHINH_HDs.Any(itemDC => itemDC.FK_HOADON == _dbThuTien.HOADONs.SingleOrDefault(itemHD => itemHD.DANHBA == item.Cells["DanhBo"].Value.ToString() && itemHD.NAM == int.Parse(Kys[1]) && itemHD.KY == int.Parse(Kys[0])).ID_HOADON && itemDC.TONGCONG_END != null);
+                    item.Cells["ThuTienGiaiTrach"].Value = _dbThuTien.HOADONs.SingleOrDefault(itemHD => itemHD.DANHBA == item.Cells["DanhBo"].Value.ToString() && itemHD.NAM == int.Parse(Kys[1]) && itemHD.KY == int.Parse(Kys[0])).NGAYGIAITRACH;
+                }
+
         }
 
         private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
