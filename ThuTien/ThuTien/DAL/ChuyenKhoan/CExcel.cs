@@ -25,7 +25,8 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public OleDbConnection Connect()
         {
-            if (pathFile.Contains("xlsx")) _cn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + pathFile + ";" + "Extended Properties=Excel 12.0;";
+            if (pathFile.Contains("xlsx"))
+                _cn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + pathFile + ";" + "Extended Properties=Excel 12.0;";
             else
                 _cn = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source= " + pathFile + ";" + "Extended Properties=Excel 8.0;";
             _con = new OleDbConnection(_cn);

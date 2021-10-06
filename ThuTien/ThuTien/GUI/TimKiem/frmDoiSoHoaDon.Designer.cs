@@ -119,6 +119,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDoiSoHoaDon";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Đổi Số Hóa Đơn";
             this.Load += new System.EventHandler(this.frmDoiSoHoaDon_Load);
             this.ResumeLayout(false);

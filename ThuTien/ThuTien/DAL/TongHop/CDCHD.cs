@@ -126,10 +126,15 @@ namespace ThuTien.DAL.TongHop
                     return true;
                 else
                 {
-                    HOADON hd = _db.HOADONs.SingleOrDefault(itemHD => itemHD.ID_HOADON == _db.DIEUCHINH_HDs.FirstOrDefault(item => item.SoHoaDon == SoHoaDon && item.UpdatedHDDT == true).FK_HOADON);
-                    if (hd != null)
-                        DanhBo = hd.DANHBA + " " + hd.KY + "/" + hd.NAM;
-                    return _db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == hd.ID_HOADON && item.UpdatedHDDT == true);
+                    if (_db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON && item.UpdatedHDDT == true) == false)
+                    {
+                        HOADON hd = _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon);
+                        if (hd != null)
+                            DanhBo = hd.DANHBA + " " + hd.KY + "/" + hd.NAM;
+                        return false;
+                    }
+                    else
+                        return true;
                 }
         }
 

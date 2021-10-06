@@ -24,7 +24,7 @@ namespace ThuTien.GUI.TimKiem
 
         private void frmDoiSoHoaDon_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(100, 100);
+           
         }
 
         private void btnLuu_Click(object sender, EventArgs e)

@@ -479,8 +479,9 @@ namespace ThuTien.DAL
 
                 for (int c = 1; c <= cols; c++)
                 {
-                    string colname = xlWorksheet.Cells[1, c].Text;
-                    dt.Columns.Add(colname);
+                    //string colname = xlWorksheet.Cells[1, c].Text;
+                    //dt.Columns.Add(colname);
+                    dt.Columns.Add(c.ToString());
                     noofrow = 2;
                 }
 
@@ -489,7 +490,7 @@ namespace ThuTien.DAL
                     DataRow dr = dt.NewRow();
                     for (int c = 1; c <= cols; c++)
                     {
-                        dr[c - 1] = xlWorksheet.Cells[r, c].Value;
+                         dr[c - 1] = xlWorksheet.Cells[r, c].Value;
                     }
 
                     dt.Rows.Add(dr);

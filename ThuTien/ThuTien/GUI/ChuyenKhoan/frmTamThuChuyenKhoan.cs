@@ -870,11 +870,15 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            int i = -1;
             try
             {
                 foreach (DataGridViewRow item in dgvTamThu.Rows)
                     if (item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
                     {
+                        i++;
+                        //if(i==972)
+                        //    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString()))
                         {
                             MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -914,7 +918,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "\n" + i + " - " + dgvTamThu.Rows[i].Cells["DanhBo_TT"].Value.ToString() + " - " + dgvTamThu.Rows[i].Cells["Ky_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -948,24 +952,24 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 DataTable dt = _cTamThu.getDSTon_KyMoi(true);
                 foreach (DataRow item in dt.Rows)
+                {
+                    if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
                     {
-                        if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
-                        {
-                            MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
-                        {
-                            MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        string DanhBo = "";
-                        if (_cDCHD.CheckExist_UpdatedHDDT(item["SoHoaDon"].ToString(), ref DanhBo) == false)
-                        {
-                            MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
+                    if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
+                    {
+                        MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    string DanhBo = "";
+                    if (_cDCHD.CheckExist_UpdatedHDDT(item["SoHoaDon"].ToString(), ref DanhBo) == false)
+                    {
+                        MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
                 foreach (DataRow item in dt.Rows)
                     if (_cHoaDon.checkExists_KyMoi(item["Ky"].ToString()) == false)
                     {

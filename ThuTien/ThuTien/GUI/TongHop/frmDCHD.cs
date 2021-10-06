@@ -60,10 +60,10 @@ namespace ThuTien.GUI.TongHop
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
+            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ","")) && e.KeyChar == 13)
             {
-                dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim());
-                dgvDCHD.DataSource = _cDCHD.getDS_DanhBo(txtDanhBo.Text.Trim());
+                dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
+                dgvDCHD.DataSource = _cDCHD.getDS_DanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
             }
         }
 
@@ -586,6 +586,10 @@ namespace ThuTien.GUI.TongHop
                             {
                                 if (string.IsNullOrEmpty(item[20].ToString()) == false && item[20].ToString() != "")
                                 {
+                                    if (item[20].ToString().Length != 7 && item[20].ToString().Length != 13)
+                                    {
+                                        MessageBox.Show("Sai Số Hóa Đơn Điều Chỉnh, liên hệ P.TV để báo TCT cập nhật lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                     DIEUCHINH_HD dchd = _cDCHD.get(item[5].ToString());
                                     if (dchd != null && dchd.UpdatedHDDT == false && dchd.TONGCONG_END != null)
                                         using (TransactionScope scope = new TransactionScope())
