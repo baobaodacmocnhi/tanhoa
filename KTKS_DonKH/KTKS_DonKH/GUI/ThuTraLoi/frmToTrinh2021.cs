@@ -205,7 +205,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtDinhMucHN.Text = "";
             ///
             txtVeViec.Text = "";
-            txtKinhTrinh.Text = "";
+            txtKinhTrinh.Text = "Ban Giám Đốc";
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             ///
