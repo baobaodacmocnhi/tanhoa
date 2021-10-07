@@ -4786,7 +4786,7 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetTongDangNgan(string Loai, int MaNV_DangNgan, DateTime NgayGiaiTrach)
         {
-            if (Loai == "TG")
+            if (Loai == "TGf")
             {
                 var query = from item in _db.HOADONs
                             where item.MaNV_DangNgan == MaNV_DangNgan && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20

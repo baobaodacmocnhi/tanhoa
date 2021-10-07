@@ -639,12 +639,12 @@ namespace ThuTien.GUI.Doi
                             dr["Ky"] = item["Ky"];
                             dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                             dr["TongCong"] = item["TongCong"];
-                            //dr["GiaBieu"] = _cChotDangNgan.ExecuteQuery_ReturnOneValue("select Result from Temp_SyncHoaDon where SoHoaDon='" + item["SoHoaDon"].ToString() + "'");
+                            dr["GiaBieu"] = item["NgayGiaiTrach"];
                             dr["NhanVien"] = CNguoiDung.HoTen;
                             ds.Tables["DSHoaDon"].Rows.Add(dr);
                         }
 
-                        rptDSHoaDon_SyncError rpt = new rptDSHoaDon_SyncError();
+                        rptDSHoaDon_BCT rpt = new rptDSHoaDon_BCT();
                         rpt.SetDataSource(ds);
                         frmBaoCao frm = new frmBaoCao(rpt);
                         frm.Show();
