@@ -584,23 +584,23 @@ namespace ThuTien.GUI.TongHop
                             int count = 0;
                             foreach (DataRow item in dtExcel.Rows)
                             {
-                                if (string.IsNullOrEmpty(item[20].ToString()) == false && item[20].ToString() != "")
+                                if (string.IsNullOrEmpty(item[20].ToString().Trim()) == false && item[20].ToString().Trim() != "")
                                 {
-                                    if (item[20].ToString().Length != 7 && item[20].ToString().Length != 13)
+                                    if (item[20].ToString().Trim().Length != 7 && item[20].ToString().Trim().Length != 13)
                                     {
                                         MessageBox.Show("Sai Số Hóa Đơn Điều Chỉnh, liên hệ P.TV để báo TCT cập nhật lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
-                                    DIEUCHINH_HD dchd = _cDCHD.get(item[5].ToString());
+                                    DIEUCHINH_HD dchd = _cDCHD.get(item[5].ToString().Trim());
                                     if (dchd != null && dchd.UpdatedHDDT == false && dchd.TONGCONG_END != null)
                                         using (TransactionScope scope = new TransactionScope())
                                         {
                                             dchd.UpdatedHDDT = true;
-                                            if (item[20].ToString().Contains("CT/") == true)
-                                                dchd.SoHoaDonMoi = item[20].ToString();
+                                            if (item[20].ToString().Trim().Contains("CT/") == true)
+                                                dchd.SoHoaDonMoi = item[20].ToString().Trim();
                                             else
-                                                dchd.SoHoaDonMoi = KyHieu + item[20].ToString();
-                                            if (item[21].ToString() != "")
-                                                dchd.BaoCaoThue = bool.Parse(item[21].ToString());
+                                                dchd.SoHoaDonMoi = KyHieu + item[20].ToString().Trim();
+                                            if (item[21].ToString().Trim() != "")
+                                                dchd.BaoCaoThue = bool.Parse(item[21].ToString().Trim());
                                             if (_cDCHD.Sua(dchd) == true)
                                             {
                                                 HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
