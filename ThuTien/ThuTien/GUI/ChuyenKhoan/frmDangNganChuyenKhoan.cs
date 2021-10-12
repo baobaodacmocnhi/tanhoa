@@ -169,75 +169,72 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            try
             {
-                if (_cChotDangNgan.checkExist_ChotDangNgan(DateTime.Now) == true)
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
-                    MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                foreach (ListViewItem item in lstHD.Items)
-                {
-                    //if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
-                    //{
-                    //    MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //    lstHD.SelectedItem = item;
-                    //    return;
-                    //}
-                    //if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
-                    //{
-                    //    MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //    lstHD.SelectedItem = item;
-                    //    return;
-                    //}
-                    //if (!_cTamThu.CheckBySoHoaDon(item.ToString(), out loai))
-                    //{
-                    //    MessageBox.Show("Hóa Đơn không có Tạm Thu: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //    lstHD.SelectedItem = item;
-                    //    return;
-                    //}
-                    //if (loai == "Quầy")
-                    //{
-                    //    MessageBox.Show("Hóa Đơn có Tạm Thu(Quầy): " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //    lstHD.SelectedItem = item;
-                    //    return;
-                    //}
-                    //if (_cDCHD.CheckExistByDangRutDC(item.ToString()))
-                    //{
-                    //    MessageBox.Show("Hóa Đơn đã Rút đi Điều Chỉnh: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //    lstHD.SelectedItem = item;
-                    //    return;
-                    //}
-                    if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Text))
+                    if (_cChotDangNgan.checkExist_ChotDangNgan(DateTime.Now) == true)
                     {
-                        MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.Focus();
-                        item.Selected = true;
-                        item.Focused = true;
+                        MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Text))
-                    {
-                        MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.Focus();
-                        item.Selected = true;
-                        item.Focused = true;
-                        return;
-                    }
-                    string DanhBo = "";
-                    if (_cDCHD.CheckExist_UpdatedHDDT(item.Text, ref DanhBo) == false)
-                    {
-                        MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.Focus();
-                        item.Selected = true;
-                        item.Focused = true;
-                        return;
-                    }
-                }
-                try
-                {
                     foreach (ListViewItem item in lstHD.Items)
                     {
+                        //if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
+                        //{
+                        //    MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    lstHD.SelectedItem = item;
+                        //    return;
+                        //}
+                        //if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
+                        //{
+                        //    MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    lstHD.SelectedItem = item;
+                        //    return;
+                        //}
+                        //if (!_cTamThu.CheckBySoHoaDon(item.ToString(), out loai))
+                        //{
+                        //    MessageBox.Show("Hóa Đơn không có Tạm Thu: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    lstHD.SelectedItem = item;
+                        //    return;
+                        //}
+                        //if (loai == "Quầy")
+                        //{
+                        //    MessageBox.Show("Hóa Đơn có Tạm Thu(Quầy): " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    lstHD.SelectedItem = item;
+                        //    return;
+                        //}
+                        //if (_cDCHD.CheckExistByDangRutDC(item.ToString()))
+                        //{
+                        //    MessageBox.Show("Hóa Đơn đã Rút đi Điều Chỉnh: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    lstHD.SelectedItem = item;
+                        //    return;
+                        //}
+                        if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Text))
+                        {
+                            MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            lstHD.Focus();
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
+                        if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Text))
+                        {
+                            MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            lstHD.Focus();
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
+                        string DanhBo = "";
+                        if (_cDCHD.CheckExist_UpdatedHDDT(item.Text, ref DanhBo) == false)
+                        {
+                            MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            lstHD.Focus();
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
                         var transactionOptions = new TransactionOptions();
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
@@ -254,13 +251,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

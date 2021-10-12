@@ -444,7 +444,7 @@ namespace ThuTien.GUI.ToTruong
         {
             if (_cHoaDon.checkExist_DangNganCoDCHD((int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value) == true)
             {
-                MessageBox.Show("Có Hóa Đơn Điều Chỉnh(Chuyển Khoản),\nVui lòng chuyển cho Chuyển Khoản đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có Điều Chỉnh Hóa Đơn(Chuyển Khoản),\nVui lòng chuyển cho Chuyển Khoản đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             dsBaoCao ds = new dsBaoCao();

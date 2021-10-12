@@ -123,7 +123,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(142, 31);
+            this.dateDen.Location = new System.Drawing.Point(143, 31);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 18;
@@ -131,7 +131,7 @@
             // btnXoa
             // 
             this.btnXoa.Enabled = false;
-            this.btnXoa.Location = new System.Drawing.Point(597, 6);
+            this.btnXoa.Location = new System.Drawing.Point(598, 6);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 23;
@@ -141,7 +141,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(248, 6);
+            this.btnXem.Location = new System.Drawing.Point(249, 6);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 19;
@@ -172,14 +172,14 @@
             this.tabTamThu.Location = new System.Drawing.Point(4, 22);
             this.tabTamThu.Name = "tabTamThu";
             this.tabTamThu.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTamThu.Size = new System.Drawing.Size(1362, 572);
+            this.tabTamThu.Size = new System.Drawing.Size(1362, 564);
             this.tabTamThu.TabIndex = 1;
             this.tabTamThu.Text = "Danh Sách Tạm Thu";
             this.tabTamThu.UseVisualStyleBackColor = true;
             // 
             // btnChuyenDangNganKyMoi
             // 
-            this.btnChuyenDangNganKyMoi.Location = new System.Drawing.Point(1112, 6);
+            this.btnChuyenDangNganKyMoi.Location = new System.Drawing.Point(1113, 6);
             this.btnChuyenDangNganKyMoi.Name = "btnChuyenDangNganKyMoi";
             this.btnChuyenDangNganKyMoi.Size = new System.Drawing.Size(110, 40);
             this.btnChuyenDangNganKyMoi.TabIndex = 34;
@@ -189,7 +189,7 @@
             // 
             // btnKiemTraSaiSot
             // 
-            this.btnKiemTraSaiSot.Location = new System.Drawing.Point(890, 6);
+            this.btnKiemTraSaiSot.Location = new System.Drawing.Point(891, 6);
             this.btnKiemTraSaiSot.Name = "btnKiemTraSaiSot";
             this.btnKiemTraSaiSot.Size = new System.Drawing.Size(100, 23);
             this.btnKiemTraSaiSot.TabIndex = 30;
@@ -201,7 +201,7 @@
             // 
             this.radDienTu.AutoSize = true;
             this.radDienTu.Checked = true;
-            this.radDienTu.Location = new System.Drawing.Point(5, 29);
+            this.radDienTu.Location = new System.Drawing.Point(6, 29);
             this.radDienTu.Name = "radDienTu";
             this.radDienTu.Size = new System.Drawing.Size(63, 17);
             this.radDienTu.TabIndex = 25;
@@ -211,7 +211,7 @@
             // 
             // btnChuyenDangNgan
             // 
-            this.btnChuyenDangNgan.Location = new System.Drawing.Point(996, 6);
+            this.btnChuyenDangNgan.Location = new System.Drawing.Point(997, 6);
             this.btnChuyenDangNgan.Name = "btnChuyenDangNgan";
             this.btnChuyenDangNgan.Size = new System.Drawing.Size(110, 23);
             this.btnChuyenDangNgan.TabIndex = 29;
@@ -222,7 +222,7 @@
             // radGiay
             // 
             this.radGiay.AutoSize = true;
-            this.radGiay.Location = new System.Drawing.Point(5, 6);
+            this.radGiay.Location = new System.Drawing.Point(6, 6);
             this.radGiay.Name = "radGiay";
             this.radGiay.Size = new System.Drawing.Size(46, 17);
             this.radGiay.TabIndex = 24;
@@ -231,7 +231,7 @@
             // 
             // btnGuiTBDienThoai
             // 
-            this.btnGuiTBDienThoai.Location = new System.Drawing.Point(774, 6);
+            this.btnGuiTBDienThoai.Location = new System.Drawing.Point(775, 6);
             this.btnGuiTBDienThoai.Name = "btnGuiTBDienThoai";
             this.btnGuiTBDienThoai.Size = new System.Drawing.Size(110, 23);
             this.btnGuiTBDienThoai.TabIndex = 28;
@@ -241,7 +241,7 @@
             // 
             // btnInDSTamThuTienDu
             // 
-            this.btnInDSTamThuTienDu.Location = new System.Drawing.Point(678, 6);
+            this.btnInDSTamThuTienDu.Location = new System.Drawing.Point(679, 6);
             this.btnInDSTamThuTienDu.Name = "btnInDSTamThuTienDu";
             this.btnInDSTamThuTienDu.Size = new System.Drawing.Size(90, 23);
             this.btnInDSTamThuTienDu.TabIndex = 27;
@@ -253,7 +253,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Yellow;
-            this.label5.Location = new System.Drawing.Point(245, 33);
+            this.label5.Location = new System.Drawing.Point(246, 33);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(144, 13);
             this.label5.TabIndex = 23;
@@ -263,7 +263,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(142, 5);
+            this.dateTu.Location = new System.Drawing.Point(143, 5);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 26;
@@ -271,7 +271,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(85, 7);
+            this.label4.Location = new System.Drawing.Point(86, 7);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 13);
             this.label4.TabIndex = 25;
@@ -279,7 +279,7 @@
             // 
             // btnInDSTamThuChuaDN
             // 
-            this.btnInDSTamThuChuaDN.Location = new System.Drawing.Point(410, 6);
+            this.btnInDSTamThuChuaDN.Location = new System.Drawing.Point(411, 6);
             this.btnInDSTamThuChuaDN.Name = "btnInDSTamThuChuaDN";
             this.btnInDSTamThuChuaDN.Size = new System.Drawing.Size(100, 23);
             this.btnInDSTamThuChuaDN.TabIndex = 24;
@@ -289,7 +289,7 @@
             // 
             // btnXuatExcel
             // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(516, 6);
+            this.btnXuatExcel.Location = new System.Drawing.Point(517, 6);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
             this.btnXuatExcel.TabIndex = 21;
@@ -299,7 +299,7 @@
             // 
             // btnInDSTamThu
             // 
-            this.btnInDSTamThu.Location = new System.Drawing.Point(329, 6);
+            this.btnInDSTamThu.Location = new System.Drawing.Point(330, 6);
             this.btnInDSTamThu.Name = "btnInDSTamThu";
             this.btnInDSTamThu.Size = new System.Drawing.Size(75, 23);
             this.btnInDSTamThu.TabIndex = 20;
@@ -310,7 +310,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(78, 33);
+            this.label3.Location = new System.Drawing.Point(79, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 17;
@@ -359,12 +359,12 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTamThu.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvTamThu.Location = new System.Drawing.Point(4, 57);
+            this.dgvTamThu.Location = new System.Drawing.Point(6, 57);
             this.dgvTamThu.Name = "dgvTamThu";
             this.dgvTamThu.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvTamThu.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvTamThu.Size = new System.Drawing.Size(1350, 508);
+            this.dgvTamThu.Size = new System.Drawing.Size(1350, 503);
             this.dgvTamThu.TabIndex = 14;
             this.dgvTamThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTamThu_CellFormatting);
             this.dgvTamThu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTamThu_RowPostPaint);
@@ -587,7 +587,7 @@
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHoaDon.Size = new System.Drawing.Size(1350, 530);
+            this.dgvHoaDon.Size = new System.Drawing.Size(1350, 525);
             this.dgvHoaDon.TabIndex = 13;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHoaDon_RowPostPaint);
@@ -706,7 +706,7 @@
             this.tabThongTin.Location = new System.Drawing.Point(4, 22);
             this.tabThongTin.Name = "tabThongTin";
             this.tabThongTin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabThongTin.Size = new System.Drawing.Size(1362, 572);
+            this.tabThongTin.Size = new System.Drawing.Size(1362, 564);
             this.tabThongTin.TabIndex = 0;
             this.tabThongTin.Text = "Thông Tin";
             this.tabThongTin.UseVisualStyleBackColor = true;
@@ -763,10 +763,10 @@
             // 
             this.tabControl.Controls.Add(this.tabThongTin);
             this.tabControl.Controls.Add(this.tabTamThu);
-            this.tabControl.Location = new System.Drawing.Point(0, 35);
+            this.tabControl.Location = new System.Drawing.Point(0, 31);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1370, 598);
+            this.tabControl.Size = new System.Drawing.Size(1370, 590);
             this.tabControl.TabIndex = 4;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 

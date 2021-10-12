@@ -138,6 +138,16 @@ namespace ThuTien.DAL.TongHop
                 }
         }
 
+        public bool CheckExist_ChuaUpdatedHDDT(string DanhBo)
+        {
+            string sql = "select COUNT(dchd.ID_DIEUCHINH_HD) from HOADON hd,DIEUCHINH_HD dchd"
+                        + " where dchd.UpdatedHDDT=0 and hd.DANHBA='" + DanhBo + "' and hd.ID_HOADON=dchd.FK_HOADON";
+            if ((int)ExecuteQuery_ReturnOneValue(sql) == 0)
+                return false;
+            else
+                return true;
+        }
+
         public DIEUCHINH_HD Get(int MaHD)
         {
             DIEUCHINH_HD dchd = _db.DIEUCHINH_HDs.SingleOrDefault(item => item.FK_HOADON == MaHD);

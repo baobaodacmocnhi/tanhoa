@@ -18,6 +18,7 @@ using ThuTien.GUI.BaoCao;
 using ThuTien.GUI.TimKiem;
 using ThuTien.DAL;
 using System.Transactions;
+using ThuTien.DAL.TongHop;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -33,6 +34,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CBangKe _cBangKe = new CBangKe();
         CDHN _cDocSo = new CDHN();
         CNganHang _cNganHang = new CNganHang();
+        CDCHD _cDCHD = new CDCHD();
 
         public frmTienDu()
         {
@@ -312,42 +314,50 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnChuyenTamThu_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuTamThuChuyenKhoan", "Them"))
+            try
             {
-                if (MessageBox.Show("Bạn có chắc chắn Chuyển Tạm Thu từ Đợt " + cmbFromDot.SelectedItem.ToString() + " -> " + cmbToDot.SelectedItem.ToString() + " ?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (CNguoiDung.CheckQuyen("mnuTamThuChuyenKhoan", "Them"))
                 {
-                    foreach (DataGridViewRow item in dgvTienDu.Rows)
-                        if (_cHoaDon.CheckDCHDTienDuByDanhBo(item.Cells["DanhBo_TienDu"].Value.ToString()) == true)
-                        {
-                            MessageBox.Show("Danh bộ: " + item.Cells["DanhBo_TienDu"].Value.ToString() + " có ĐCHĐ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            List<HOADON> lstHD;
-                            if (chkTruHoNgheo.Checked)
-                                lstHD = _cHoaDon.GetDSTon_CoChanTienDu_TruHoNgheo(item.Cells["DanhBo_TienDu"].Value.ToString());
-                            else
-                                lstHD = _cHoaDon.GetDSTon_CoChanTienDu(item.Cells["DanhBo_TienDu"].Value.ToString());
-                            if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
-                            {
-                                foreach (HOADON itemHD in lstHD)
-                                    if (!_cTamThu.CheckExist(itemHD.SOHOADON))
+                    if (MessageBox.Show("Bạn có chắc chắn Chuyển Tạm Thu từ Đợt " + cmbFromDot.SelectedItem.ToString() + " -> " + cmbToDot.SelectedItem.ToString() + " ?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        foreach (DataGridViewRow item in dgvTienDu.Rows)
+                            if (_cDCHD.CheckExist_ChuaUpdatedHDDT(item.Cells["DanhBo_TienDu"].Value.ToString()) == false)
+                                if (_cHoaDon.CheckDCHDTienDuByDanhBo(item.Cells["DanhBo_TienDu"].Value.ToString()) == true)
+                                {
+                                    MessageBox.Show("Danh bộ: " + item.Cells["DanhBo_TienDu"].Value.ToString() + " có Điều Chỉnh Hóa Đơn(Chuyển Khoản)", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                else
+                                {
+                                    List<HOADON> lstHD;
+                                    if (chkTruHoNgheo.Checked)
+                                        lstHD = _cHoaDon.GetDSTon_CoChanTienDu_TruHoNgheo(item.Cells["DanhBo_TienDu"].Value.ToString());
+                                    else
+                                        lstHD = _cHoaDon.GetDSTon_CoChanTienDu(item.Cells["DanhBo_TienDu"].Value.ToString());
+                                    if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
                                     {
-                                        TAMTHU tamthu = new TAMTHU();
-                                        tamthu.DANHBA = itemHD.DANHBA;
-                                        tamthu.FK_HOADON = itemHD.ID_HOADON;
-                                        tamthu.SoHoaDon = itemHD.SOHOADON;
-                                        tamthu.ChuyenKhoan = true;
-                                        tamthu.TienDu = true;
-                                        _cTamThu.Them(tamthu);
-                                    }
+                                        foreach (HOADON itemHD in lstHD)
+                                            if (!_cTamThu.CheckExist(itemHD.SOHOADON))
+                                            {
+                                                TAMTHU tamthu = new TAMTHU();
+                                                tamthu.DANHBA = itemHD.DANHBA;
+                                                tamthu.FK_HOADON = itemHD.ID_HOADON;
+                                                tamthu.SoHoaDon = itemHD.SOHOADON;
+                                                tamthu.ChuyenKhoan = true;
+                                                tamthu.TienDu = true;
+                                                _cTamThu.Them(tamthu);
+                                            }
 
-                            }
-                        }
+                                    }
+                                }
+                    }
                 }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form Tạm Thu Chuyển Khoản", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form Tạm Thu Chuyển Khoản", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXuatExcelTienDu_Click(object sender, EventArgs e)
@@ -778,63 +788,64 @@ namespace ThuTien.GUI.ChuyenKhoan
                     if (MessageBox.Show("Bạn có chắc chắn Chuyển Chặn Tiền Dư từ Đợt " + cmbFromDot.SelectedItem.ToString() + " -> " + cmbToDot.SelectedItem.ToString() + " ?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         foreach (DataGridViewRow item in dgvTienDu.Rows)
-                        {
-                            List<HOADON> lstHD = _cHoaDon.getDSTon_KhongChanTienDu_KhongDCHD(item.Cells["DanhBo_TienDu"].Value.ToString());
-                            if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()))
-                                //số tiền dư > tổng cộng => thêm vào chặn tiền
-                                if (int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
-                                {
-                                    foreach (HOADON itemHD in lstHD)
+                            if (_cDCHD.CheckExist_ChuaUpdatedHDDT(item.Cells["DanhBo_TienDu"].Value.ToString()) == false)
+                            {
+                                List<HOADON> lstHD = _cHoaDon.getDSTon_KhongChanTienDu_KhongDCHD(item.Cells["DanhBo_TienDu"].Value.ToString());
+                                if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()))
+                                    //số tiền dư > tổng cộng => thêm vào chặn tiền
+                                    if (int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
                                     {
-                                        itemHD.KhoaTienDu = true;
-                                        itemHD.ChanTienDu = true;
-                                        itemHD.NgayChanTienDu = DateTime.Now;
-                                        itemHD.NGAYGIAITRACH = DateTime.Now;
-                                        itemHD.Name_PC = CNguoiDung.Name_PC;
-                                        itemHD.IP_PC = CNguoiDung.IP_PC;
-                                        _cHoaDon.Sua(itemHD);
-                                    }
-
-                                }
-                                //số tiền dư < tổng cộng => thêm vào điều chỉnh tiền
-                                else
-                                {
-                                    using (TransactionScope scope = new TransactionScope())
-                                    {
-                                        int TienDu = _cTienDu.GetTienDu(lstHD[0].DANHBA);
                                         foreach (HOADON itemHD in lstHD)
-                                            if (itemHD.DCHD == false)
-                                            {
-                                                if (TienDu > 0 && TienDu >= (int)itemHD.TONGCONG.Value)
+                                        {
+                                            itemHD.KhoaTienDu = true;
+                                            itemHD.ChanTienDu = true;
+                                            itemHD.NgayChanTienDu = DateTime.Now;
+                                            itemHD.NGAYGIAITRACH = DateTime.Now;
+                                            itemHD.Name_PC = CNguoiDung.Name_PC;
+                                            itemHD.IP_PC = CNguoiDung.IP_PC;
+                                            _cHoaDon.Sua(itemHD);
+                                        }
+
+                                    }
+                                    //số tiền dư < tổng cộng => thêm vào điều chỉnh tiền
+                                    else
+                                    {
+                                        using (TransactionScope scope = new TransactionScope())
+                                        {
+                                            int TienDu = _cTienDu.GetTienDu(lstHD[0].DANHBA);
+                                            foreach (HOADON itemHD in lstHD)
+                                                if (itemHD.DCHD == false)
                                                 {
-                                                    itemHD.DCHD = true;
-                                                    itemHD.Ngay_DCHD = DateTime.Now;
-                                                    itemHD.TongCongTruoc_DCHD = (int)itemHD.TONGCONG.Value;
-                                                    itemHD.TienDuTruoc_DCHD = (int)itemHD.TONGCONG.Value;
-                                                    itemHD.TONGCONG -= TienDu;
-                                                    itemHD.Name_PC = CNguoiDung.Name_PC;
-                                                    itemHD.IP_PC = CNguoiDung.IP_PC;
-                                                    _cHoaDon.Sua(itemHD);
-                                                    TienDu -= itemHD.TongCongTruoc_DCHD.Value;
-                                                }
-                                                else
-                                                    if (TienDu > 0)
+                                                    if (TienDu > 0 && TienDu >= (int)itemHD.TONGCONG.Value)
                                                     {
                                                         itemHD.DCHD = true;
                                                         itemHD.Ngay_DCHD = DateTime.Now;
                                                         itemHD.TongCongTruoc_DCHD = (int)itemHD.TONGCONG.Value;
-                                                        itemHD.TienDuTruoc_DCHD = TienDu;
+                                                        itemHD.TienDuTruoc_DCHD = (int)itemHD.TONGCONG.Value;
                                                         itemHD.TONGCONG -= TienDu;
                                                         itemHD.Name_PC = CNguoiDung.Name_PC;
                                                         itemHD.IP_PC = CNguoiDung.IP_PC;
                                                         _cHoaDon.Sua(itemHD);
-                                                        TienDu -= TienDu;
+                                                        TienDu -= itemHD.TongCongTruoc_DCHD.Value;
                                                     }
-                                            }
-                                        scope.Complete();
+                                                    else
+                                                        if (TienDu > 0)
+                                                        {
+                                                            itemHD.DCHD = true;
+                                                            itemHD.Ngay_DCHD = DateTime.Now;
+                                                            itemHD.TongCongTruoc_DCHD = (int)itemHD.TONGCONG.Value;
+                                                            itemHD.TienDuTruoc_DCHD = TienDu;
+                                                            itemHD.TONGCONG -= TienDu;
+                                                            itemHD.Name_PC = CNguoiDung.Name_PC;
+                                                            itemHD.IP_PC = CNguoiDung.IP_PC;
+                                                            _cHoaDon.Sua(itemHD);
+                                                            TienDu -= TienDu;
+                                                        }
+                                                }
+                                            scope.Complete();
+                                        }
                                     }
-                                }
-                        }
+                            }
                     }
                 }
                 else
@@ -842,7 +853,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
