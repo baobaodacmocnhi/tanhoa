@@ -858,7 +858,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 }
                                 if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString()))
                                 {
-                                    MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     item.Selected = true;
                                     return;
                                 }
@@ -919,7 +919,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         }
                         if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString()))
                         {
-                            MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             item.Selected = true;
                             return;
                         }
@@ -992,7 +992,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     }
                     if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
                     {
-                        MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     string DanhBo = "";

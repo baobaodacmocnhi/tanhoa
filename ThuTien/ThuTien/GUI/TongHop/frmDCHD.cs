@@ -589,6 +589,7 @@ namespace ThuTien.GUI.TongHop
                                     if (item[20].ToString().Trim().Length != 7 && item[20].ToString().Trim().Length != 13)
                                     {
                                         MessageBox.Show("Sai Số Hóa Đơn Điều Chỉnh, liên hệ P.TV để báo TCT cập nhật lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
                                     }
                                     DIEUCHINH_HD dchd = _cDCHD.get(item[5].ToString().Trim());
                                     if (dchd != null && dchd.UpdatedHDDT == false && dchd.TONGCONG_END != null)

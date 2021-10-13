@@ -215,7 +215,7 @@ namespace ThuTien.GUI.HanhThu
                         }
                         if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Text))
                         {
-                            MessageBox.Show("Hóa Đơn đã ĐCHĐ Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             lstHD.Focus();
                             item.Selected = true;
                             item.Focused = true;
@@ -362,7 +362,7 @@ namespace ThuTien.GUI.HanhThu
         {
             if (_cHoaDon.checkExist_DangNganCoDCHD(CNguoiDung.MaND, dateGiaiTrach.Value) == true)
             {
-                MessageBox.Show("Có Điều Chỉnh Hóa Đơn(Chuyển Khoản),\nVui lòng chuyển cho Chuyển Khoản đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư,\nVui lòng chuyển cho Chuyển Khoản đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             dsBaoCao ds = new dsBaoCao();
