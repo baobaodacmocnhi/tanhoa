@@ -146,10 +146,10 @@ namespace ThuTien.GUI.Doi
                     if (tabControl.SelectedTab.Name == "tabTienDu")
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_CoDCHD(dateGiaiTrach.Value);
+                            dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_DieuChinhTienDu(dateGiaiTrach.Value);
                         else
                             if (cmbTo.SelectedIndex > 0)
-                                dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_CoDCHD((int)cmbTo.SelectedValue, dateGiaiTrach.Value);
+                                dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_DieuChinhTienDu((int)cmbTo.SelectedValue, dateGiaiTrach.Value);
                         CoungdgvHDCoQuan();
                     }
         }

@@ -155,7 +155,7 @@ namespace ThuTien.GUI.HanhThu
             else
                 if (tabControl.SelectedTab.Name == "tabTienDu")
                 {
-                    dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_CoDCHD(CNguoiDung.MaND, dateGiaiTrach.Value);
+                    dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_DieuChinhTienDu(CNguoiDung.MaND, dateGiaiTrach.Value);
                     CountdgvHDCoQuan();
                 }
         }

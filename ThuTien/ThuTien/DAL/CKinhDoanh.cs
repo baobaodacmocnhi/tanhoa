@@ -2796,6 +2796,21 @@ namespace ThuTien.DAL
         //    }
         //}
 
+        public DonKH GetDonKHbyID(decimal MaDon)
+        {
+            return _dbKinhDoanh.DonKHs.SingleOrDefault(itemDonKH => itemDonKH.MaDon == MaDon);
+        }
+
+        public DonTXL GetDonTXLbyID(decimal MaDon)
+        {
+            return _dbKinhDoanh.DonTXLs.SingleOrDefault(itemDonTXL => itemDonTXL.MaDon == MaDon);
+        }
+
+        public DCBD_ChiTietHoaDon GetCTDCHDBySoPhieu(decimal SoPhieu)
+        {
+            return _dbKinhDoanh.DCBD_ChiTietHoaDons.SingleOrDefault(item => item.MaCTDCHD == SoPhieu);
+        }
+
         public DCBD_ChiTietBienDong GetDCBD(string DanhBo)
         {
             if (_dbKinhDoanh.DCBD_ChiTietBienDongs.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date >= DateTime.Now.AddDays(-31).Date))

@@ -12,6 +12,7 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.Doi;
 using System.Globalization;
 using ThuTien.DAL.Quay;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -25,6 +26,7 @@ namespace ThuTien.GUI.TongHop
         CDCHD _cDCHD = new CDCHD();
         CHoaDon _cHoaDon = new CHoaDon();
         CTamThu _cTamThu = new CTamThu();
+        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
 
         public frmShowDCHD(int MaHD, string SoHoaDon)
         {
@@ -73,7 +75,7 @@ namespace ThuTien.GUI.TongHop
                     if (_dchd.SoPhieu != null)
                     {
                         txtSoPhieu.Text = _dchd.SoPhieu.ToString().Insert(_dchd.SoPhieu.ToString().Length - 2, "-");
-                        _ctdchd = _cDCHD.GetCTDCHDBySoPhieu(_dchd.SoPhieu.Value);
+                        _ctdchd = _cKinhDoanh.GetCTDCHDBySoPhieu(_dchd.SoPhieu.Value);
                     }
                     ///
                     lbTangGiam.Text = _dchd.TangGiam;
@@ -115,7 +117,7 @@ namespace ThuTien.GUI.TongHop
         {
             if (!string.IsNullOrEmpty(txtSoPhieu.Text.Trim()) && e.KeyChar == 13)
             {
-                _ctdchd = _cDCHD.GetCTDCHDBySoPhieu(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
+                _ctdchd = _cKinhDoanh.GetCTDCHDBySoPhieu(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
 
                 if (_ctdchd.DCBD.MaDon != null)
                 {

@@ -79,30 +79,6 @@
             this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabChotDangNgan = new System.Windows.Forms.TabPage();
             this.dgvChotDangNgan = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayChot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Chot = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SLDangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TCDangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLCNKD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TCCNKD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLGiay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TCGiay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLHDDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TCHDDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLHDDTDC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TCHDDTDC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLHDDTDCBCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TCHDDTDCBCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLHDDTSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TCHDDTSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TCNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SyncNopTien = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ShowError = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ShowHDDTDCBCT = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.SyncNopTien_Except12 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.SyncNopTien_12 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnXemChot = new System.Windows.Forms.Button();
             this.dateTu_ChotDangNgan = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
@@ -137,6 +113,31 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnXuatExcel = new System.Windows.Forms.Button();
             this.backgroundWorker_NopTien = new System.ComponentModel.BackgroundWorker();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayChot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Chot = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SLDangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCDangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLCNKD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCCNKD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLGiay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCGiay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLHDDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCHDDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLHDDTDC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCHDDTDC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLHDDTDCBCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCHDDTDCBCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLHDDTSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCHDDTSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TCNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SyncNopTien = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.XuatFile = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ShowError = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ShowHDDTDCBCT = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SyncNopTien_Except12 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SyncNopTien_12 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -580,6 +581,7 @@
             this.SLNopTien,
             this.TCNopTien,
             this.SyncNopTien,
+            this.XuatFile,
             this.ShowError,
             this.ShowHDDTDCBCT,
             this.SyncNopTien_Except12,
@@ -602,179 +604,6 @@
             this.dgvChotDangNgan.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChotDangNgan_CellEndEdit);
             this.dgvChotDangNgan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvChotDangNgan_CellFormatting);
             this.dgvChotDangNgan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvChotDangNgan_RowPostPaint);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // NgayChot
-            // 
-            this.NgayChot.DataPropertyName = "NgayChot";
-            this.NgayChot.HeaderText = "Ngày Chốt";
-            this.NgayChot.Name = "NgayChot";
-            this.NgayChot.Width = 70;
-            // 
-            // Chot
-            // 
-            this.Chot.DataPropertyName = "Chot";
-            this.Chot.HeaderText = "Chốt";
-            this.Chot.Name = "Chot";
-            this.Chot.Width = 40;
-            // 
-            // SLDangNgan
-            // 
-            this.SLDangNgan.DataPropertyName = "SLDangNgan";
-            this.SLDangNgan.HeaderText = "SL Đăng Ngân";
-            this.SLDangNgan.Name = "SLDangNgan";
-            this.SLDangNgan.Width = 45;
-            // 
-            // TCDangNgan
-            // 
-            this.TCDangNgan.DataPropertyName = "TCDangNgan";
-            this.TCDangNgan.HeaderText = "TC Đăng Ngân";
-            this.TCDangNgan.Name = "TCDangNgan";
-            this.TCDangNgan.Width = 80;
-            // 
-            // SLCNKD
-            // 
-            this.SLCNKD.DataPropertyName = "SLCNKD";
-            this.SLCNKD.HeaderText = "SL CNKĐ";
-            this.SLCNKD.Name = "SLCNKD";
-            this.SLCNKD.Width = 40;
-            // 
-            // TCCNKD
-            // 
-            this.TCCNKD.DataPropertyName = "TCCNKD";
-            this.TCCNKD.HeaderText = "TC CNKĐ";
-            this.TCCNKD.Name = "TCCNKD";
-            this.TCCNKD.Width = 70;
-            // 
-            // SLGiay
-            // 
-            this.SLGiay.DataPropertyName = "SLGiay";
-            this.SLGiay.HeaderText = "SL Giấy";
-            this.SLGiay.Name = "SLGiay";
-            this.SLGiay.Width = 40;
-            // 
-            // TCGiay
-            // 
-            this.TCGiay.DataPropertyName = "TCGiay";
-            this.TCGiay.HeaderText = "TC Giấy";
-            this.TCGiay.Name = "TCGiay";
-            this.TCGiay.Width = 70;
-            // 
-            // SLHDDT
-            // 
-            this.SLHDDT.DataPropertyName = "SLHDDT";
-            this.SLHDDT.HeaderText = "SL HĐĐT";
-            this.SLHDDT.Name = "SLHDDT";
-            this.SLHDDT.Width = 45;
-            // 
-            // TCHDDT
-            // 
-            this.TCHDDT.DataPropertyName = "TCHDDT";
-            this.TCHDDT.HeaderText = "TC HĐĐT";
-            this.TCHDDT.Name = "TCHDDT";
-            this.TCHDDT.Width = 80;
-            // 
-            // SLHDDTDC
-            // 
-            this.SLHDDTDC.DataPropertyName = "SLHDDTDC";
-            this.SLHDDTDC.HeaderText = "SL ĐC";
-            this.SLHDDTDC.Name = "SLHDDTDC";
-            this.SLHDDTDC.Width = 30;
-            // 
-            // TCHDDTDC
-            // 
-            this.TCHDDTDC.DataPropertyName = "TCHDDTDC";
-            this.TCHDDTDC.HeaderText = "TC ĐC";
-            this.TCHDDTDC.Name = "TCHDDTDC";
-            this.TCHDDTDC.Width = 70;
-            // 
-            // SLHDDTDCBCT
-            // 
-            this.SLHDDTDCBCT.DataPropertyName = "SLHDDTDCBCT";
-            this.SLHDDTDCBCT.HeaderText = "SL ĐC BCT";
-            this.SLHDDTDCBCT.Name = "SLHDDTDCBCT";
-            this.SLHDDTDCBCT.Width = 30;
-            // 
-            // TCHDDTDCBCT
-            // 
-            this.TCHDDTDCBCT.DataPropertyName = "TCHDDTDCBCT";
-            this.TCHDDTDCBCT.HeaderText = "TC ĐC BCT";
-            this.TCHDDTDCBCT.Name = "TCHDDTDCBCT";
-            this.TCHDDTDCBCT.Width = 70;
-            // 
-            // SLHDDTSach
-            // 
-            this.SLHDDTSach.DataPropertyName = "SLHDDTSach";
-            this.SLHDDTSach.HeaderText = "SL Sạch";
-            this.SLHDDTSach.Name = "SLHDDTSach";
-            this.SLHDDTSach.Width = 50;
-            // 
-            // TCHDDTSach
-            // 
-            this.TCHDDTSach.DataPropertyName = "TCHDDTSach";
-            this.TCHDDTSach.HeaderText = "TC Sạch";
-            this.TCHDDTSach.Name = "TCHDDTSach";
-            this.TCHDDTSach.Width = 80;
-            // 
-            // SLNopTien
-            // 
-            this.SLNopTien.DataPropertyName = "SLNopTien";
-            this.SLNopTien.HeaderText = "SL Nộp Tiền";
-            this.SLNopTien.Name = "SLNopTien";
-            this.SLNopTien.Width = 45;
-            // 
-            // TCNopTien
-            // 
-            this.TCNopTien.DataPropertyName = "TCNopTien";
-            this.TCNopTien.HeaderText = "TC Nộp Tiền";
-            this.TCNopTien.Name = "TCNopTien";
-            this.TCNopTien.Width = 80;
-            // 
-            // SyncNopTien
-            // 
-            this.SyncNopTien.HeaderText = "Gửi Tổng";
-            this.SyncNopTien.Name = "SyncNopTien";
-            this.SyncNopTien.Text = "Nộp Tiền";
-            this.SyncNopTien.UseColumnTextForButtonValue = true;
-            this.SyncNopTien.Width = 60;
-            // 
-            // ShowError
-            // 
-            this.ShowError.HeaderText = "Lỗi";
-            this.ShowError.Name = "ShowError";
-            this.ShowError.Text = "Hiện Thị";
-            this.ShowError.UseColumnTextForButtonValue = true;
-            this.ShowError.Width = 60;
-            // 
-            // ShowHDDTDCBCT
-            // 
-            this.ShowHDDTDCBCT.HeaderText = "HĐ ĐC BCT";
-            this.ShowHDDTDCBCT.Name = "ShowHDDTDCBCT";
-            this.ShowHDDTDCBCT.Text = "Hiển Thị";
-            this.ShowHDDTDCBCT.UseColumnTextForButtonValue = true;
-            this.ShowHDDTDCBCT.Width = 60;
-            // 
-            // SyncNopTien_Except12
-            // 
-            this.SyncNopTien_Except12.HeaderText = "Gửi Tổng TRỪ kỳ 12";
-            this.SyncNopTien_Except12.Name = "SyncNopTien_Except12";
-            this.SyncNopTien_Except12.Text = "Nộp Tiền";
-            this.SyncNopTien_Except12.UseColumnTextForButtonValue = true;
-            this.SyncNopTien_Except12.Width = 60;
-            // 
-            // SyncNopTien_12
-            // 
-            this.SyncNopTien_12.HeaderText = "Gửi Tổng BÙ kỳ 12";
-            this.SyncNopTien_12.Name = "SyncNopTien_12";
-            this.SyncNopTien_12.Text = "Nộp Tiền";
-            this.SyncNopTien_12.UseColumnTextForButtonValue = true;
-            this.SyncNopTien_12.Width = 60;
             // 
             // btnXemChot
             // 
@@ -1108,6 +937,187 @@
             this.backgroundWorker_NopTien.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_NopTien_DoWork);
             this.backgroundWorker_NopTien.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_NopTien_RunWorkerCompleted);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // NgayChot
+            // 
+            this.NgayChot.DataPropertyName = "NgayChot";
+            this.NgayChot.HeaderText = "Ngày Chốt";
+            this.NgayChot.Name = "NgayChot";
+            this.NgayChot.Width = 70;
+            // 
+            // Chot
+            // 
+            this.Chot.DataPropertyName = "Chot";
+            this.Chot.HeaderText = "Chốt";
+            this.Chot.Name = "Chot";
+            this.Chot.Width = 40;
+            // 
+            // SLDangNgan
+            // 
+            this.SLDangNgan.DataPropertyName = "SLDangNgan";
+            this.SLDangNgan.HeaderText = "SL Đăng Ngân";
+            this.SLDangNgan.Name = "SLDangNgan";
+            this.SLDangNgan.Width = 45;
+            // 
+            // TCDangNgan
+            // 
+            this.TCDangNgan.DataPropertyName = "TCDangNgan";
+            this.TCDangNgan.HeaderText = "TC Đăng Ngân";
+            this.TCDangNgan.Name = "TCDangNgan";
+            this.TCDangNgan.Width = 80;
+            // 
+            // SLCNKD
+            // 
+            this.SLCNKD.DataPropertyName = "SLCNKD";
+            this.SLCNKD.HeaderText = "SL CNKĐ";
+            this.SLCNKD.Name = "SLCNKD";
+            this.SLCNKD.Width = 40;
+            // 
+            // TCCNKD
+            // 
+            this.TCCNKD.DataPropertyName = "TCCNKD";
+            this.TCCNKD.HeaderText = "TC CNKĐ";
+            this.TCCNKD.Name = "TCCNKD";
+            this.TCCNKD.Width = 70;
+            // 
+            // SLGiay
+            // 
+            this.SLGiay.DataPropertyName = "SLGiay";
+            this.SLGiay.HeaderText = "SL Giấy";
+            this.SLGiay.Name = "SLGiay";
+            this.SLGiay.Width = 40;
+            // 
+            // TCGiay
+            // 
+            this.TCGiay.DataPropertyName = "TCGiay";
+            this.TCGiay.HeaderText = "TC Giấy";
+            this.TCGiay.Name = "TCGiay";
+            this.TCGiay.Width = 70;
+            // 
+            // SLHDDT
+            // 
+            this.SLHDDT.DataPropertyName = "SLHDDT";
+            this.SLHDDT.HeaderText = "SL HĐĐT";
+            this.SLHDDT.Name = "SLHDDT";
+            this.SLHDDT.Width = 45;
+            // 
+            // TCHDDT
+            // 
+            this.TCHDDT.DataPropertyName = "TCHDDT";
+            this.TCHDDT.HeaderText = "TC HĐĐT";
+            this.TCHDDT.Name = "TCHDDT";
+            this.TCHDDT.Width = 80;
+            // 
+            // SLHDDTDC
+            // 
+            this.SLHDDTDC.DataPropertyName = "SLHDDTDC";
+            this.SLHDDTDC.HeaderText = "SL ĐC";
+            this.SLHDDTDC.Name = "SLHDDTDC";
+            this.SLHDDTDC.Width = 30;
+            // 
+            // TCHDDTDC
+            // 
+            this.TCHDDTDC.DataPropertyName = "TCHDDTDC";
+            this.TCHDDTDC.HeaderText = "TC ĐC";
+            this.TCHDDTDC.Name = "TCHDDTDC";
+            this.TCHDDTDC.Width = 70;
+            // 
+            // SLHDDTDCBCT
+            // 
+            this.SLHDDTDCBCT.DataPropertyName = "SLHDDTDCBCT";
+            this.SLHDDTDCBCT.HeaderText = "SL ĐC BCT";
+            this.SLHDDTDCBCT.Name = "SLHDDTDCBCT";
+            this.SLHDDTDCBCT.Width = 30;
+            // 
+            // TCHDDTDCBCT
+            // 
+            this.TCHDDTDCBCT.DataPropertyName = "TCHDDTDCBCT";
+            this.TCHDDTDCBCT.HeaderText = "TC ĐC BCT";
+            this.TCHDDTDCBCT.Name = "TCHDDTDCBCT";
+            this.TCHDDTDCBCT.Width = 70;
+            // 
+            // SLHDDTSach
+            // 
+            this.SLHDDTSach.DataPropertyName = "SLHDDTSach";
+            this.SLHDDTSach.HeaderText = "SL Sạch";
+            this.SLHDDTSach.Name = "SLHDDTSach";
+            this.SLHDDTSach.Width = 50;
+            // 
+            // TCHDDTSach
+            // 
+            this.TCHDDTSach.DataPropertyName = "TCHDDTSach";
+            this.TCHDDTSach.HeaderText = "TC Sạch";
+            this.TCHDDTSach.Name = "TCHDDTSach";
+            this.TCHDDTSach.Width = 80;
+            // 
+            // SLNopTien
+            // 
+            this.SLNopTien.DataPropertyName = "SLNopTien";
+            this.SLNopTien.HeaderText = "SL Nộp Tiền";
+            this.SLNopTien.Name = "SLNopTien";
+            this.SLNopTien.Width = 45;
+            // 
+            // TCNopTien
+            // 
+            this.TCNopTien.DataPropertyName = "TCNopTien";
+            this.TCNopTien.HeaderText = "TC Nộp Tiền";
+            this.TCNopTien.Name = "TCNopTien";
+            this.TCNopTien.Width = 80;
+            // 
+            // SyncNopTien
+            // 
+            this.SyncNopTien.HeaderText = "Gửi Tổng";
+            this.SyncNopTien.Name = "SyncNopTien";
+            this.SyncNopTien.Text = "Nộp Tiền";
+            this.SyncNopTien.UseColumnTextForButtonValue = true;
+            this.SyncNopTien.Width = 60;
+            // 
+            // XuatFile
+            // 
+            this.XuatFile.HeaderText = "HĐĐC";
+            this.XuatFile.Name = "XuatFile";
+            this.XuatFile.Text = "Xuất File";
+            this.XuatFile.UseColumnTextForButtonValue = true;
+            this.XuatFile.Width = 60;
+            // 
+            // ShowError
+            // 
+            this.ShowError.HeaderText = "Lỗi";
+            this.ShowError.Name = "ShowError";
+            this.ShowError.Text = "Hiện Thị";
+            this.ShowError.UseColumnTextForButtonValue = true;
+            this.ShowError.Width = 60;
+            // 
+            // ShowHDDTDCBCT
+            // 
+            this.ShowHDDTDCBCT.HeaderText = "HĐ ĐC BCT";
+            this.ShowHDDTDCBCT.Name = "ShowHDDTDCBCT";
+            this.ShowHDDTDCBCT.Text = "Hiển Thị";
+            this.ShowHDDTDCBCT.UseColumnTextForButtonValue = true;
+            this.ShowHDDTDCBCT.Width = 60;
+            // 
+            // SyncNopTien_Except12
+            // 
+            this.SyncNopTien_Except12.HeaderText = "Gửi Tổng TRỪ kỳ 12";
+            this.SyncNopTien_Except12.Name = "SyncNopTien_Except12";
+            this.SyncNopTien_Except12.Text = "Nộp Tiền";
+            this.SyncNopTien_Except12.UseColumnTextForButtonValue = true;
+            this.SyncNopTien_Except12.Width = 60;
+            // 
+            // SyncNopTien_12
+            // 
+            this.SyncNopTien_12.HeaderText = "Gửi Tổng BÙ kỳ 12";
+            this.SyncNopTien_12.Name = "SyncNopTien_12";
+            this.SyncNopTien_12.Text = "Nộp Tiền";
+            this.SyncNopTien_12.UseColumnTextForButtonValue = true;
+            this.SyncNopTien_12.Width = 60;
+            // 
             // frmKiemTraDangNganDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1247,6 +1257,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SLNopTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn TCNopTien;
         private System.Windows.Forms.DataGridViewButtonColumn SyncNopTien;
+        private System.Windows.Forms.DataGridViewButtonColumn XuatFile;
         private System.Windows.Forms.DataGridViewButtonColumn ShowError;
         private System.Windows.Forms.DataGridViewButtonColumn ShowHDDTDCBCT;
         private System.Windows.Forms.DataGridViewButtonColumn SyncNopTien_Except12;

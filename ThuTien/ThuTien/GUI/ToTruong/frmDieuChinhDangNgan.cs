@@ -120,7 +120,7 @@ namespace ThuTien.GUI.ToTruong
             else
                 if (tabControl.SelectedTab.Name == "tabTienDu")
                 {
-                    dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_CoDCHD((int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                    dgvHDCoQuan.DataSource = _cHoaDon.getDSDangNgan_DieuChinhTienDu((int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
                     CoungdgvHDCoQuan();
                 }
         }

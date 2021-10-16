@@ -7207,7 +7207,7 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public DataTable getDSDangNgan_CoDCHD(DateTime NgayGiaiTrach)
+        public DataTable getDSDangNgan_DieuChinhTienDu(DateTime NgayGiaiTrach)
         {
             var query = from item in _db.HOADONs
                         where item.DCHD == true && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
@@ -7231,7 +7231,7 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable getDSDangNgan_CoDCHD(int MaTo, DateTime NgayGiaiTrach)
+        public DataTable getDSDangNgan_DieuChinhTienDu(int MaTo, DateTime NgayGiaiTrach)
         {
             var query = from item in _db.HOADONs
                         where item.DCHD == true && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null && _db.TT_NguoiDungs.SingleOrDefault(itemA => itemA.MaND == item.MaNV_DangNgan).MaTo == MaTo
@@ -7869,6 +7869,25 @@ namespace ThuTien.DAL.Doi
                         return LINQToDataTable(query);
                     }
             return null;
+        }
+
+        public DataTable getDSDangNgan_DieuChinhHoaDon(DateTime NgayGiaiTrach)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON
+                        where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.MaNV_DangNgan != null
+                        select new
+                        {
+                            Nam = itemHD.NAM,
+                            SoPhatHanh = itemHD.SOPHATHANH,
+                            DangNgan = itemHD.DangNgan_ChuyenKhoan == true ? "10" : itemHD.DangNgan_Ton == true ? "TN" : itemHD.DangNgan_Quay == true ? "TQ" : "",
+                            NgayGiaiTrach = itemHD.NGAYGIAITRACH,
+                            TieuThu = itemDC.TIEUTHU_DC.Value - itemDC.TIEUTHU_BD.Value,
+                            GiaBan = itemDC.GIABAN_DC,
+                            ThueGTGT = itemDC.THUE_DC,
+                            PhiBVMT = itemDC.PHI_DC,
+                        };
+            return LINQToDataTable(query.ToList());
         }
 
         public DataTable GetDSTon_NV(int MaNV_HanhThu, int SoKy)

@@ -2072,22 +2072,6 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
-        dbKTKS_DonKHDataContext _dbKTKS_DonKH = new dbKTKS_DonKHDataContext();
-
-        public DonKH GetDonKHbyID(decimal MaDon)
-        {
-            return _dbKTKS_DonKH.DonKHs.SingleOrDefault(itemDonKH => itemDonKH.MaDon == MaDon);
-        }
-
-        public DonTXL GetDonTXLbyID(decimal MaDon)
-        {
-            return _dbKTKS_DonKH.DonTXLs.SingleOrDefault(itemDonTXL => itemDonTXL.MaDon == MaDon);
-        }
-
-        public DCBD_ChiTietHoaDon GetCTDCHDBySoPhieu(decimal SoPhieu)
-        {
-            return _dbKTKS_DonKH.DCBD_ChiTietHoaDons.SingleOrDefault(item => item.MaCTDCHD == SoPhieu);
-        }
 
         //hóa đơn chờ điều chỉnh
 
