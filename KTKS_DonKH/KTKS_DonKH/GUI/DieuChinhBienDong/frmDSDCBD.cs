@@ -317,7 +317,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                         else
                             if (radDSDCHD.Checked)
-                                dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                                if (txtKy.Text.Trim() != "")
+                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                                else
+                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                             else
                                 if (radDSCatChuyenDM.Checked)
                                     dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
@@ -466,7 +469,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_CreateDate(dateTu.Value, dateDen.Value);
                         else
                             if (radDSDCHD.Checked)
-                                dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(dateTu.Value, dateDen.Value);
+                                if (txtKy.Text.Trim() != "")
+                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(dateTu.Value, dateDen.Value, txtKy.Text.Trim());
+                                else
+                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(dateTu.Value, dateDen.Value);
                             else
                                 if (radDSCatChuyenDM.Checked)
                                     dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_CreateDate(dateTu.Value, dateDen.Value);

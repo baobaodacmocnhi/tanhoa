@@ -3047,6 +3047,63 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public DataTable getDS_HoaDon_CreateDate(DateTime FromCreateDate, DateTime ToCreateDate, string Ky)
+        {
+            try
+            {
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.CreateDate.Value.Date >= FromCreateDate.Date && itemCTDCHD.CreateDate.Value.Date <= ToCreateDate.Date
+                            && itemCTDCHD.KyHD == Ky
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                itemCTDCHD.ChuyenThuTien,
+                                ID = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.KyHD,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.CodeF2,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.DinhMucHN,
+                                itemCTDCHD.DinhMucHN_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TienNuoc_Start,
+                                itemCTDCHD.TienNuoc_End,
+                                itemCTDCHD.ThueGTGT_Start,
+                                itemCTDCHD.ThueGTGT_End,
+                                itemCTDCHD.PhiBVMT_Start,
+                                itemCTDCHD.PhiBVMT_End,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                                itemCTDCHD.Dot,
+                                itemCTDCHD.Ky,
+                                itemCTDCHD.Nam,
+                                SoPhatHanh = itemCTDCHD.SoHD,
+                                itemCTDCHD.SoHoaDon,
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable getDS_HoaDonDienTuExcel_CreateDate(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             try
@@ -3094,6 +3151,52 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCHD.Nam,
                                 SoPhatHanh = itemCTDCHD.SoHD,
                                 itemCTDCHD.SoHoaDon,
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable getDS_HoaDon_CreateDate(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate, string Ky)
+        {
+            try
+            {
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.CreateDate.Value.Date >= FromCreateDate.Date && itemCTDCHD.CreateDate.Value.Date <= ToCreateDate.Date
+                            && itemCTDCHD.KyHD == Ky
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                itemCTDCHD.ChuyenThuTien,
+                                ID = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.KyHD,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.CodeF2,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.DinhMucHN,
+                                itemCTDCHD.DinhMucHN_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
             }
