@@ -163,7 +163,6 @@ namespace KTKS_DonKH.GUI.DonTu
                         txtDinhMuc.Text = entity.DonTu_ChiTiets.SingleOrDefault().DinhMuc.Value.ToString();
                     if (entity.DonTu_ChiTiets.SingleOrDefault().DinhMucHN != null)
                         txtDinhMucHN.Text = entity.DonTu_ChiTiets.SingleOrDefault().DinhMucHN.Value.ToString();
-                    chkChanHoaDon.Checked = entity.DonTu_ChiTiets.SingleOrDefault().ChanHoaDon;
                 }
                 else
                 {
@@ -191,6 +190,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     }
                     //dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
                 }
+                chkChanHoaDon.Checked = entity.DonTu_ChiTiets.FirstOrDefault().ChanHoaDon;
                 chkVanPhong.Checked = entity.VanPhong;
                 txtMaDon.Text = entity.MaDon.ToString();
                 dateCreateDate.Value = entity.CreateDate.Value;
@@ -547,6 +547,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                 if (item.Cells["Phuong"].Value != null && item.Cells["Phuong"].Value.ToString() != "")
                                     entityCT.Phuong = item.Cells["Phuong"].Value.ToString();
 
+                                entityCT.ChanHoaDon = chkChanHoaDon.Checked;
                                 entityCT.CreateBy = CTaiKhoan.MaUser;
                                 entityCT.CreateDate = DateTime.Now;
                                 entityCT.TinhTrang = "Tồn";
