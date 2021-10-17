@@ -38,7 +38,6 @@
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,6 +54,7 @@
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNam = new System.Windows.Forms.TextBox();
@@ -82,8 +82,7 @@
             this.gridColumn16,
             this.gridColumn18,
             this.gridColumn19,
-            this.gridColumn20,
-            this.gridColumn22});
+            this.gridColumn20});
             this.gridViewChiTiet.GridControl = this.gridControl;
             this.gridViewChiTiet.Name = "gridViewChiTiet";
             this.gridViewChiTiet.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -158,14 +157,6 @@
             this.gridColumn20.Visible = true;
             this.gridColumn20.VisibleIndex = 7;
             // 
-            // gridColumn22
-            // 
-            this.gridColumn22.Caption = "Đăng Ngân";
-            this.gridColumn22.FieldName = "DangNgan";
-            this.gridColumn22.Name = "gridColumn22";
-            this.gridColumn22.Visible = true;
-            this.gridColumn22.VisibleIndex = 8;
-            // 
             // gridControl
             // 
             gridLevelNode1.LevelTemplate = this.gridViewChiTiet;
@@ -175,7 +166,7 @@
             this.gridControl.Location = new System.Drawing.Point(12, 39);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1157, 503);
+            this.gridControl.Size = new System.Drawing.Size(1257, 559);
             this.gridControl.TabIndex = 7;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView,
@@ -202,9 +193,9 @@
             this.gridColumn11,
             this.gridColumn23,
             this.gridColumn12,
+            this.gridColumn22,
             this.gridColumn21});
             this.gridView.GridControl = this.gridControl;
-            this.gridView.GroupCount = 1;
             this.gridView.IndicatorWidth = 41;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -213,16 +204,12 @@
             this.gridView.OptionsMenu.ShowGroupSummaryEditorItem = true;
             this.gridView.OptionsView.ColumnAutoWidth = false;
             this.gridView.OptionsView.ShowGroupPanel = false;
-            this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn24, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // gridColumn24
             // 
             this.gridColumn24.Caption = "Danh Bộ";
             this.gridColumn24.FieldName = "DanhBo";
             this.gridColumn24.Name = "gridColumn24";
-            this.gridColumn24.Visible = true;
-            this.gridColumn24.VisibleIndex = 0;
             // 
             // gridColumn2
             // 
@@ -231,7 +218,6 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 100;
             // 
             // gridColumn1
             // 
@@ -312,7 +298,7 @@
             // 
             // gridColumn11
             // 
-            this.gridColumn11.Caption = "CSN";
+            this.gridColumn11.Caption = "CSM";
             this.gridColumn11.FieldName = "CSM";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
@@ -334,13 +320,22 @@
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 12;
             // 
+            // gridColumn22
+            // 
+            this.gridColumn22.Caption = "Tiêu Thụ Lố Còn Lại";
+            this.gridColumn22.FieldName = "TieuThuLoConLai";
+            this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.Visible = true;
+            this.gridColumn22.VisibleIndex = 13;
+            this.gridColumn22.Width = 120;
+            // 
             // gridColumn21
             // 
             this.gridColumn21.Caption = "Tình Trạng";
             this.gridColumn21.FieldName = "TinhTrang";
             this.gridColumn21.Name = "gridColumn21";
             this.gridColumn21.Visible = true;
-            this.gridColumn21.VisibleIndex = 13;
+            this.gridColumn21.VisibleIndex = 14;
             // 
             // label1
             // 
@@ -382,6 +377,7 @@
             this.txtDot.Name = "txtDot";
             this.txtDot.Size = new System.Drawing.Size(50, 20);
             this.txtDot.TabIndex = 5;
+            this.txtDot.Text = "1";
             // 
             // label3
             // 
@@ -408,7 +404,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1212, 593);
+            this.ClientSize = new System.Drawing.Size(1342, 630);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.txtDot);
@@ -461,8 +457,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
     }
 }

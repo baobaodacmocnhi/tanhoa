@@ -27,6 +27,40 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void btnXem_Click(object sender, EventArgs e)
         {
             gridControl.DataSource = _cDocSo.getDS_DocLoChiSoNuoc(int.Parse(txtNam.Text.Trim()), int.Parse(txtKy.Text.Trim()), int.Parse(txtDot.Text.Trim())).Tables["Parent"];
+
+            for (int i = 0; i < gridView.DataRowCount; i++)
+            {
+                DataRow row = gridView.GetDataRow(i);
+                DataRow[] childRows = row.GetChildRows("Chi Tiết");
+                int TieuThuLo = int.Parse(row["TieuThuLo"].ToString()) * -1;
+                foreach (DataRow itemChild in childRows)
+                {
+                    if (itemChild["CodeMoi"].ToString().Contains("4") == false && itemChild["CodeMoi"].ToString().Contains("5") == false)
+                    {
+                        if (TieuThuLo > 0)
+                        {
+                            if (TieuThuLo >= int.Parse(itemChild["TieuThu"].ToString()))
+                            {
+                                itemChild["TieuThuDC"] = 0;
+                                TieuThuLo -= int.Parse(itemChild["TieuThu"].ToString());
+                            }
+                            else
+                                if (TieuThuLo < int.Parse(itemChild["TieuThu"].ToString()))
+                                {
+                                    itemChild["TieuThuDC"] = (int.Parse(itemChild["TieuThu"].ToString()) - TieuThuLo);
+                                    TieuThuLo = 0;
+                                }
+                        }
+                    }
+                }
+                row["TieuThuLoConLai"] = TieuThuLo * -1;
+                if (childRows.Count() > 0)
+                    row["TinhTrang"] = "Tồn";
+                //gridView.SetRowCellValue(i, "TinhTrang", "Tồn");
+                else
+                    row["TinhTrang"] = "Đã Đăng Ngân";
+                //gridView.SetRowCellValue(i, "TinhTrang", "Đã Đăng Ngân");
+            }
         }
 
 

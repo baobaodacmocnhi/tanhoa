@@ -74,21 +74,34 @@ namespace KTKS_DonKH.DAL
             try
             {
                 DataSet ds = new DataSet();
-                string sql = "(select DocSoID,DanhBo=DanhBa,MLT=MLT1,HoTen=TenKH,DiaChi=SoNhaCu+' '+Duong,Nam,Ky,Dot,CodeCu,CodeMoi,CSC=CSCu,CSM=CSMoi,TieuThu=TieuThuMoi"
-+ "                             from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi='N')"
-+ "union"
-+ "(select t2.* from"
-+ "(select DocSoID,DanhBo=DanhBa,MLT=MLT1,HoTen=TenKH,DiaChi=SoNhaCu+' '+Duong,Nam,Ky,Dot,CodeCu,CodeMoi,CSC=CSCu,CSM=CSMoi,TieuThu=TieuThuMoi"
-+ "                             from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi='N')t1,"
-+ "							 (select DocSoID,DanhBo=ds.DanhBa,MLT=MLT1,HoTen=ds.TenKH,DiaChi=SoNhaCu+' '+ds.Duong,ds.Nam,ds.Ky,ds.Dot,CodeCu,CodeMoi,CSC=ds.CSCu,CSM=ds.CSMoi,TieuThu=TieuThuMoi"
-+ "                             from DocSo ds,server9.HOADON_TA.dbo.HOADON hd where ds.Nam=" + Nam + " and ds.Ky>=6 and ds.Ky<" + Ky + " and ds.Dot=" + Dot + ""
-+ "							 and ds.Nam=hd.NAM and ds.Ky=hd.KY and ds.DanhBa=hd.DANHBA and hd.MaNV_DangNgan is null)t2"
-+ "							 where t1.DanhBo=t2.DanhBo)"
-+ "							 order by DanhBo,DocSoID desc";
+                //                string sql = "(select DocSoID,DanhBo=DanhBa,MLT=MLT1,HoTen=TenKH,DiaChi=SoNhaCu+' '+Duong,Nam,Ky,Dot,CodeCu,CodeMoi,CSC=CSCu,CSM=CSMoi,TieuThu=TieuThuMoi"
+                //+ "                             from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi='N')"
+                //+ "union"
+                //+ "(select t2.* from"
+                //+ "(select DocSoID,DanhBo=DanhBa,MLT=MLT1,HoTen=TenKH,DiaChi=SoNhaCu+' '+Duong,Nam,Ky,Dot,CodeCu,CodeMoi,CSC=CSCu,CSM=CSMoi,TieuThu=TieuThuMoi"
+                //+ "                             from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi='N')t1,"
+                //+ "							 (select DocSoID,DanhBo=ds.DanhBa,MLT=MLT1,HoTen=ds.TenKH,DiaChi=SoNhaCu+' '+ds.Duong,ds.Nam,ds.Ky,ds.Dot,CodeCu,CodeMoi,CSC=ds.CSCu,CSM=ds.CSMoi,TieuThu=TieuThuMoi"
+                //+ "                             from DocSo ds,server9.HOADON_TA.dbo.HOADON hd where ds.Nam=" + Nam + " and ds.Ky>=6 and ds.Ky<" + Ky + " and ds.Dot=" + Dot + ""
+                //+ "							 and ds.Nam=hd.NAM and ds.Ky=hd.KY and ds.DanhBa=hd.DANHBA and hd.MaNV_DangNgan is null)t2"
+                //+ "							 where t1.DanhBo=t2.DanhBo)"
+                //+ "							 order by DanhBo,DocSoID desc";
+                string sql = "(select DocSoID,DanhBo=DanhBa,MLT=MLT1,HoTen=TenKH,DiaChi=SoNhaCu+' '+Duong,Nam,Ky,Dot,CodeCu,CodeMoi,CSC=CSCu,CSM=CSMoi,TieuThu=TieuThuMoi,TieuThuLo=CSMoi-CSCu,TieuThuLoConLai=0,TinhTrang=''"
++ "                             from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi='N')order by DanhBo asc";
                 DataTable dtParent = ExecuteQuery_DataTable(sql);
                 dtParent.TableName = "Parent";
                 ds.Tables.Add(dtParent);
 
+                sql = "(select t2.* from"
++ "(select DocSoID,DanhBo=DanhBa,MLT=MLT1,HoTen=TenKH,DiaChi=SoNhaCu+' '+Duong,Nam,Ky,Dot,CodeCu,CodeMoi,CSC=CSCu,CSM=CSMoi,TieuThu=TieuThuMoi"
++ "                             from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi='N')t1,"
++ "							 (select DocSoID,DanhBo=ds.DanhBa,MLT=MLT1,HoTen=ds.TenKH,DiaChi=SoNhaCu+' '+ds.Duong,ds.Nam,ds.Ky,ds.Dot,CodeCu,CodeMoi,CSC=ds.CSCu,CSM=ds.CSMoi,TieuThu=TieuThuMoi,TieuThuDC=''"
++ "                             from DocSo ds,server9.HOADON_TA.dbo.HOADON hd where ds.Nam=" + Nam + " and ds.Ky>=6 and ds.Ky<" + Ky + " and ds.Dot=" + Dot + ""
++ "							 and ds.Nam=hd.NAM and ds.Ky=hd.KY and ds.DanhBa=hd.DANHBA and hd.MaNV_DangNgan is null)t2"
++ "							 where t1.DanhBo=t2.DanhBo)"
++ "							 order by DanhBo,DocSoID desc";
+                DataTable dtChild = ExecuteQuery_DataTable(sql);
+                dtChild.TableName = "Child";
+                ds.Tables.Add(dtChild);
                 //DataTable dtChild = new DataTable();
                 //foreach (DataRow item in dtParent.Rows)
                 //{
@@ -103,11 +116,9 @@ namespace KTKS_DonKH.DAL
                 //    dtChild.Merge(dtTemp);
                 //}
 
-                //dtChild.TableName = "Child";
-                //ds.Tables.Add(dtChild);
 
-                //if (dtParent.Rows.Count > 0 && dtChild.Rows.Count > 0)
-                //    ds.Relations.Add("Chi Tiết", ds.Tables["Parent"].Columns["DanhBo"], ds.Tables["Child"].Columns["DanhBo"]);
+                if (dtParent.Rows.Count > 0 && dtChild.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết", ds.Tables["Parent"].Columns["DanhBo"], ds.Tables["Child"].Columns["DanhBo"]);
                 return ds;
             }
             catch (Exception ex)
