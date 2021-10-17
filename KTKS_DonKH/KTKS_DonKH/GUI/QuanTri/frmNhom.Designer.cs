@@ -312,7 +312,7 @@
             // 
             this.txtTenNhom.Location = new System.Drawing.Point(90, 12);
             this.txtTenNhom.Name = "txtTenNhom";
-            this.txtTenNhom.Size = new System.Drawing.Size(132, 26);
+            this.txtTenNhom.Size = new System.Drawing.Size(132, 22);
             this.txtTenNhom.TabIndex = 15;
             // 
             // label1
@@ -320,13 +320,13 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 20);
+            this.label1.Size = new System.Drawing.Size(74, 16);
             this.label1.TabIndex = 14;
             this.label1.Text = "Tên Nhóm:";
             // 
             // frmNhom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;

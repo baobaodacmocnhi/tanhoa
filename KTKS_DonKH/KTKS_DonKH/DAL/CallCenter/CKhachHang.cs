@@ -73,7 +73,7 @@ namespace KTKS_DonKH.DAL.CallCenter
         public static DataTable getListHoaDonReport(string danhba, int rows)
         {
 
-            dbHandHeldDataContext db = new dbHandHeldDataContext();
+            dbDocSoDataContext db = new dbDocSoDataContext();
             DataSet ds = new DataSet();
 
             string query = " SELECT top(1)  ( CASE WHEN hd.KY<10 THEN CONVERT(VARCHAR(20),hd.KY) ELSE CONVERT(VARCHAR(20),hd.KY) END+'/' + CONVERT(VARCHAR(20),hd.NAM)) as  NAM , CONVERT(NCHAR(10), hd.DenNgay, 103) AS NGAYDOC, CodeMoi, hd.CSCU, hd.CSMOI, hd.TieuThuMoi as TIEUTHU,  0.0 as ThanhTien ";
@@ -197,7 +197,7 @@ namespace KTKS_DonKH.DAL.CallCenter
         {
             try
             {
-                dbHandHeldDataContext db = new dbHandHeldDataContext();                 
+                dbDocSoDataContext db = new dbDocSoDataContext();                 
                 DataSet ds = new DataSet();
 
                 string query = " SELECT NhanVienID + ' ['  + DienThoai + ']' ";
