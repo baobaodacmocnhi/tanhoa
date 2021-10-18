@@ -32,10 +32,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 DataRow row = gridView.GetDataRow(i);
                 DataRow[] childRows = row.GetChildRows("Chi Tiết");
+                int GiaiTrach = 0;
+
+                //tính chỉ số lố
+                foreach (DataRow itemChild in childRows)
+                {
+                    if (itemChild["CodeMoi"].ToString().Contains("N") == false)
+                    {
+                        row["TieuThuLo"] = int.Parse(row["CSM"].ToString()) - int.Parse(itemChild["CSM"].ToString());
+                        break;
+                    }
+                }
                 int TieuThuLo = int.Parse(row["TieuThuLo"].ToString()) * -1;
                 foreach (DataRow itemChild in childRows)
                 {
-                    if (itemChild["CodeMoi"].ToString().Contains("4") == false && itemChild["CodeMoi"].ToString().Contains("5") == false)
+                    //xét hđ tồn
+                    if (itemChild["NgayGiaiTrach"].ToString() != "")
+                        GiaiTrach++;
+
+                    //tính khấu trừ
+                    if (itemChild["NgayGiaiTrach"].ToString() == "" && itemChild["CodeMoi"].ToString().Contains("4") == false && itemChild["CodeMoi"].ToString().Contains("5") == false)
                     {
                         if (TieuThuLo > 0)
                         {
@@ -54,7 +70,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                 }
                 row["TieuThuLoConLai"] = TieuThuLo * -1;
-                if (childRows.Count() > 0)
+                if (childRows.Count() != GiaiTrach)
                     row["TinhTrang"] = "Tồn";
                 //gridView.SetRowCellValue(i, "TinhTrang", "Tồn");
                 else

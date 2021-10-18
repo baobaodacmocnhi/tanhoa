@@ -18,20 +18,21 @@
     <PublishUrl>C:\Users\Admin\Desktop\ThuongVuWFH\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>\\server9\BaoBao%24\KTKS_DonKH\</UpdateUrl>
     <TargetCulture>vi-VN</TargetCulture>
     <ProductName>Quản Lý Đơn Khách Hàng</ProductName>
     <PublisherName>P.CNTT</PublisherName>
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1606</ApplicationRevision>
+    <ApplicationRevision>1607</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

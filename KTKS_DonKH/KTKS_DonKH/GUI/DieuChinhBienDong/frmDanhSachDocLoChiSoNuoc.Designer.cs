@@ -63,6 +63,7 @@
             this.txtDot = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
+            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -82,7 +83,8 @@
             this.gridColumn16,
             this.gridColumn18,
             this.gridColumn19,
-            this.gridColumn20});
+            this.gridColumn20,
+            this.gridColumn25});
             this.gridViewChiTiet.GridControl = this.gridControl;
             this.gridViewChiTiet.Name = "gridViewChiTiet";
             this.gridViewChiTiet.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -398,6 +400,14 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
+            // gridColumn25
+            // 
+            this.gridColumn25.Caption = "Ngày Giải Trách";
+            this.gridColumn25.FieldName = "NgayGiaiTrach";
+            this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.Visible = true;
+            this.gridColumn25.VisibleIndex = 8;
+            // 
             // frmDanhSachDocLoChiSoNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -460,5 +470,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
     }
 }
