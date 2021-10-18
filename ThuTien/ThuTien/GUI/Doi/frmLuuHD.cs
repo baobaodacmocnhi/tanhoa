@@ -696,6 +696,22 @@ namespace ThuTien.GUI.Doi
                             DataTable dt = _cHoaDon.getDSHoaDon0_Ton(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHoaDon["Dot", e.RowIndex].Value.ToString()));
                             foreach (DataRow item in dt.Rows)
                             {
+                                if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
+                                {
+                                    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item["DanhBo"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
+                                {
+                                    MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item["DanhBo"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                string DanhBo = "";
+                                if (_cDCHD.CheckExist_UpdatedHDDT(item["SoHoaDon"].ToString(), ref DanhBo) == false)
+                                {
+                                    MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                                 _cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND);
                             }
                             MessageBox.Show("Xử Lý Hoàn Tất, Vui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

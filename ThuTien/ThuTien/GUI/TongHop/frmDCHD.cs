@@ -60,7 +60,7 @@ namespace ThuTien.GUI.TongHop
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ","")) && e.KeyChar == 13)
+            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) && e.KeyChar == 13)
             {
                 dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
                 dgvDCHD.DataSource = _cDCHD.getDS_DanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
@@ -582,6 +582,7 @@ namespace ThuTien.GUI.TongHop
                             //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                             string KyHieu = (string)_cHoaDon.ExecuteQuery_ReturnOneValue("select SoHoaDon from TT_DeviceConfig");
                             int count = 0;
+                            string message = "";
                             foreach (DataRow item in dtExcel.Rows)
                             {
                                 if (string.IsNullOrEmpty(item[20].ToString().Trim()) == false && item[20].ToString().Trim() != "")
@@ -592,36 +593,39 @@ namespace ThuTien.GUI.TongHop
                                         return;
                                     }
                                     DIEUCHINH_HD dchd = _cDCHD.get(item[5].ToString().Trim());
-                                    if (dchd != null && dchd.UpdatedHDDT == false && dchd.TONGCONG_END != null)
-                                        using (TransactionScope scope = new TransactionScope())
-                                        {
-                                            dchd.UpdatedHDDT = true;
-                                            if (item[20].ToString().Trim().Contains("CT/") == true)
-                                                dchd.SoHoaDonMoi = item[20].ToString().Trim();
-                                            else
-                                                dchd.SoHoaDonMoi = KyHieu + item[20].ToString().Trim();
-                                            if (item[21].ToString().Trim() != "")
-                                                dchd.BaoCaoThue = bool.Parse(item[21].ToString().Trim());
-                                            if (_cDCHD.Sua(dchd) == true)
+                                    if (dchd != null && dchd.UpdatedHDDT == false)
+                                        if (dchd.TONGCONG_END != null)
+                                            using (TransactionScope scope = new TransactionScope())
                                             {
-                                                HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
-                                                if (hd.SOHOADON != dchd.SoHoaDonMoi)
+                                                dchd.UpdatedHDDT = true;
+                                                if (item[20].ToString().Trim().Contains("CT/") == true)
+                                                    dchd.SoHoaDonMoi = item[20].ToString().Trim();
+                                                else
+                                                    dchd.SoHoaDonMoi = KyHieu + item[20].ToString().Trim();
+                                                if (item[21].ToString().Trim() != "")
+                                                    dchd.BaoCaoThue = bool.Parse(item[21].ToString().Trim());
+                                                if (_cDCHD.Sua(dchd) == true)
                                                 {
-                                                    hd.SoHoaDonCu = hd.SOHOADON;
-                                                    hd.SOHOADON = dchd.SoHoaDonMoi;
-                                                }
-                                                hd.BaoCaoThue = dchd.BaoCaoThue;
-                                                if (_cHoaDon.Sua(hd) == true)
-                                                {
-                                                    scope.Complete();
-                                                    scope.Dispose();
-                                                    count++;
+                                                    HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
+                                                    if (hd.SOHOADON != dchd.SoHoaDonMoi)
+                                                    {
+                                                        hd.SoHoaDonCu = hd.SOHOADON;
+                                                        hd.SOHOADON = dchd.SoHoaDonMoi;
+                                                    }
+                                                    hd.BaoCaoThue = dchd.BaoCaoThue;
+                                                    if (_cHoaDon.Sua(hd) == true)
+                                                    {
+                                                        scope.Complete();
+                                                        scope.Dispose();
+                                                        count++;
+                                                    }
                                                 }
                                             }
-                                        }
+                                        else
+                                            message += "\n" + item[3].ToString() + " - " + item[1].ToString() + "/" + item[2].ToString();
                                 }
                             }
-                            MessageBox.Show("Đã xử lý xong " + count + " hđ, Vui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Đã xử lý xong " + count + " hđ\nLỗi Không Xử lý" + message + "\nVui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             loadHD0Ton();
                         }
                 }

@@ -7875,7 +7875,7 @@ namespace ThuTien.DAL.Doi
         {
             var query = from itemHD in _db.HOADONs
                         join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON
-                        where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.MaNV_DangNgan != null
+                        where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.MaNV_DangNgan != null 
                         select new
                         {
                             Nam = itemHD.NAM,
