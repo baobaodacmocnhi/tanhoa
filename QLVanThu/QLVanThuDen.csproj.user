@@ -1,13 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <PublishUrlHistory>\\server9\BaoBao%24\QLVanThuDen\|\\192.168.90.9\BaoBao%24\QLVanThuDen\|\\192.168.90.9\cntt\BaoBao\QLVanThuDen\|publish\</PublishUrlHistory>
+    <PublishUrlHistory>C:\Users\BaoBao\Desktop\QLVanThuDen\|\\server9\BaoBao%24\QLVanThuDen\</PublishUrlHistory>
     <InstallUrlHistory>
     </InstallUrlHistory>
     <SupportUrlHistory>
     </SupportUrlHistory>
-    <UpdateUrlHistory>\\192.168.90.9\BaoBao%24\QLVanThuDen\|\\192.168.90.9\cntt\BaoBao\QLVanThuDen\</UpdateUrlHistory>
-    <BootstrapperUrlHistory>\\192.168.90.9\BaoBao%24\QLVanThuDen|\\192.168.90.9\cntt\BaoBao\QLVanThuDen</BootstrapperUrlHistory>
+    <UpdateUrlHistory>\\server9\BaoBao%24\QLVanThuDen\</UpdateUrlHistory>
+    <BootstrapperUrlHistory>\\192.168.90.9\BaoBao%24\QLVanThuDen</BootstrapperUrlHistory>
     <ErrorReportUrlHistory>
     </ErrorReportUrlHistory>
     <FallbackCulture>en-US</FallbackCulture>
