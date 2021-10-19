@@ -45,7 +45,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Absolute</BootstrapperComponentsLocation>
     <BootstrapperComponentsUrl>\\192.168.90.9\BaoBao%24\QLVanThuDi</BootstrapperComponentsUrl>
   </PropertyGroup>
