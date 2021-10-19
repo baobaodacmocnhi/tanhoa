@@ -38,6 +38,7 @@
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -63,7 +64,7 @@
             this.txtDot = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
-            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnQLDHNIn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -159,6 +160,14 @@
             this.gridColumn20.Visible = true;
             this.gridColumn20.VisibleIndex = 7;
             // 
+            // gridColumn25
+            // 
+            this.gridColumn25.Caption = "Ngày Giải Trách";
+            this.gridColumn25.FieldName = "NgayGiaiTrach";
+            this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.Visible = true;
+            this.gridColumn25.VisibleIndex = 8;
+            // 
             // gridControl
             // 
             gridLevelNode1.LevelTemplate = this.gridViewChiTiet;
@@ -206,6 +215,7 @@
             this.gridView.OptionsMenu.ShowGroupSummaryEditorItem = true;
             this.gridView.OptionsView.ColumnAutoWidth = false;
             this.gridView.OptionsView.ShowGroupPanel = false;
+            this.gridView.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_CustomDrawRowIndicator);
             // 
             // gridColumn24
             // 
@@ -400,13 +410,14 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
-            // gridColumn25
+            // btnQLDHNIn
             // 
-            this.gridColumn25.Caption = "Ngày Giải Trách";
-            this.gridColumn25.FieldName = "NgayGiaiTrach";
-            this.gridColumn25.Name = "gridColumn25";
-            this.gridColumn25.Visible = true;
-            this.gridColumn25.VisibleIndex = 8;
+            this.btnQLDHNIn.Location = new System.Drawing.Point(386, 10);
+            this.btnQLDHNIn.Name = "btnQLDHNIn";
+            this.btnQLDHNIn.Size = new System.Drawing.Size(75, 23);
+            this.btnQLDHNIn.TabIndex = 8;
+            this.btnQLDHNIn.Text = "QLĐHN In";
+            this.btnQLDHNIn.UseVisualStyleBackColor = true;
             // 
             // frmDanhSachDocLoChiSoNuoc
             // 
@@ -415,6 +426,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1342, 630);
+            this.Controls.Add(this.btnQLDHNIn);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.txtDot);
@@ -471,5 +483,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
+        private System.Windows.Forms.Button btnQLDHNIn;
     }
 }

@@ -37,13 +37,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 //tính chỉ số lố
                 foreach (DataRow itemChild in childRows)
                 {
-                    if (itemChild["CodeMoi"].ToString().Contains("N") == false)
+                    if (itemChild["CodeMoi"].ToString().Contains("4") == true || itemChild["CodeMoi"].ToString().Contains("5") == true || itemChild["CodeMoi"].ToString().Contains("8") == true)
                     {
                         row["TieuThuLo"] = int.Parse(row["CSM"].ToString()) - int.Parse(itemChild["CSM"].ToString());
                         break;
                     }
                 }
-                int TieuThuLo = int.Parse(row["TieuThuLo"].ToString()) * -1;
+                int TieuThuLo = int.Parse(row["TieuThuLo"].ToString());
                 foreach (DataRow itemChild in childRows)
                 {
                     //xét hđ tồn
@@ -51,7 +51,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         GiaiTrach++;
 
                     //tính khấu trừ
-                    if (itemChild["NgayGiaiTrach"].ToString() == "" && itemChild["CodeMoi"].ToString().Contains("4") == false && itemChild["CodeMoi"].ToString().Contains("5") == false)
+                    if (itemChild["NgayGiaiTrach"].ToString() == "" && itemChild["CodeMoi"].ToString().Contains("4") == false && itemChild["CodeMoi"].ToString().Contains("5") == false && itemChild["CodeMoi"].ToString().Contains("8") == false)
                     {
                         if (TieuThuLo > 0)
                         {
@@ -69,7 +69,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                     }
                 }
-                row["TieuThuLoConLai"] = TieuThuLo * -1;
+                row["TieuThuLoConLai"] = TieuThuLo;
                 if (childRows.Count() != GiaiTrach)
                     row["TinhTrang"] = "Tồn";
                 //gridView.SetRowCellValue(i, "TinhTrang", "Tồn");
@@ -77,6 +77,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     row["TinhTrang"] = "Đã Đăng Ngân";
                 //gridView.SetRowCellValue(i, "TinhTrang", "Đã Đăng Ngân");
             }
+        }
+
+        private void gridView_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
 
 
