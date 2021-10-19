@@ -616,7 +616,7 @@ namespace ThuTien.GUI.Doi
                                 foreach (DataRow item in dt.Rows)
                                 {
                                     writer.Write("\"" + item["Nam"] + "\"");
-                                    writer.Write(",\"" + item["SoPhatHanh"] + "\"");
+                                    writer.Write(",\"" + int.Parse(item["SoPhatHanh"].ToString()).ToString("00000000") + "\"");
                                     writer.Write(",\"" + item["DangNgan"] + "\"");
                                     writer.Write(",\"" + DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd") + "\"");
                                     writer.Write(",\"" + item["TieuThu"] + "\"");
