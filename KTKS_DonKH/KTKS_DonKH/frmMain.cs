@@ -723,13 +723,13 @@ namespace KTKS_DonKH
 
         private void mnuDanhSachDocLoChiSoNuoc_Click(object sender, EventArgs e)
         {
-            //if (CTaiKhoan.CheckQuyen("mnuSoDangKyDinhMuc", "Xem"))
-            //{
+            if (CTaiKhoan.CheckQuyen("mnuDanhSachDocLoChiSoNuoc", "Xem"))
+            {
                 frmDanhSachDocLoChiSoNuoc frm = new frmDanhSachDocLoChiSoNuoc();
                 OpenForm(frm);
-            //}
-            //else
-            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion
@@ -1004,9 +1004,9 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnBaoBe", "Xem"))
             {
-              //  frmBaoBe frm = new frmBaoBe();
-              //  OpenForm(frm);
-                string url = "http://hp_g7/callbaobe.aspx?u=" + CTaiKhoan.TaiKhoan ;
+                //  frmBaoBe frm = new frmBaoBe();
+                //  OpenForm(frm);
+                string url = "http://hp_g7/callbaobe.aspx?u=" + CTaiKhoan.TaiKhoan;
                 System.Diagnostics.Process.Start(url);
 
 
@@ -1132,15 +1132,15 @@ namespace KTKS_DonKH
 
         #endregion
 
-       
 
-        
 
-        
 
-        
 
-        
+
+
+
+
+
 
 
 

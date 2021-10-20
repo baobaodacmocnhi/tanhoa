@@ -7,12 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.DAL.DieuChinhBienDong;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.DieuChinhBienDong;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
     public partial class frmDanhSachDocLoChiSoNuoc : Form
     {
+        string _mnu = "mnuDanhSachDocLoChiSoNuoc";
         CDocSo _cDocSo = new CDocSo();
+        CDCBD _cDCBD = new CDCBD();
+        dbKinhDoanhDataContext _dbThuongVu = new dbKinhDoanhDataContext();
 
         public frmDanhSachDocLoChiSoNuoc()
         {
@@ -39,11 +48,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (itemChild["CodeMoi"].ToString().Contains("4") == true || itemChild["CodeMoi"].ToString().Contains("5") == true || itemChild["CodeMoi"].ToString().Contains("8") == true)
                     {
-                        row["TieuThuLo"] = int.Parse(row["CSM"].ToString()) - int.Parse(itemChild["CSM"].ToString());
+                        row["TieuThuLo"] = int.Parse(row["CSM"].ToString()) - (int.Parse(row["TieuThuLo"].ToString()) + int.Parse(itemChild["CSM"].ToString()));
                         break;
                     }
+                    else
+                    {
+                        row["TieuThuLo"] = int.Parse(row["TieuThuLo"].ToString()) + int.Parse(itemChild["TieuThu"].ToString());
+                    }
                 }
-                int TieuThuLo = int.Parse(row["TieuThuLo"].ToString());
+                int TieuThuLo = int.Parse(row["TieuThuLo"].ToString()) * -1;
                 foreach (DataRow itemChild in childRows)
                 {
                     //xét hđ tồn
@@ -69,7 +82,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                     }
                 }
-                row["TieuThuLoConLai"] = TieuThuLo;
+                row["TieuThuLoConLai"] = TieuThuLo * -1;
                 if (childRows.Count() != GiaiTrach)
                     row["TinhTrang"] = "Tồn";
                 //gridView.SetRowCellValue(i, "TinhTrang", "Tồn");
@@ -83,6 +96,134 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.Info.IsRowIndicator)
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
+        }
+
+        private void chkChonAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkChonAll.Checked)
+                for (int i = 0; i < gridView.RowCount; i++)
+                {
+                    DataRow row = gridView.GetDataRow(i);
+                    if (row["TinhTrang"].ToString() == "Tồn")
+                        row["Chon"] = "True";
+                    //gridView.SetRowCellValue(i, gridView.Columns["Chon"], "True");
+                }
+            else
+                for (int i = 0; i < gridView.RowCount; i++)
+                {
+                    DataRow row = gridView.GetDataRow(i);
+                    row["Chon"] = "False";
+                    //gridView.SetRowCellValue(i, gridView.Columns["Chon"], "False");
+                }
+        }
+
+        private void btnQLDHNChot_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+                {
+                    for (int i = 0; i < gridView.DataRowCount; i++)
+                    {
+                        DataRow row = gridView.GetDataRow(i);
+                        if (row["Chon"] != null && bool.Parse(row["Chon"].ToString()) == true)
+                        {
+                            ChiSoLo_DanhBo en = new ChiSoLo_DanhBo();
+                            en.DanhBo = row["DanhBo"].ToString();
+                            en.MLT = row["MLT"].ToString();
+                            en.HoTen = row["HoTen"].ToString();
+                            en.DiaChi = row["DiaChi"].ToString();
+                            en.Nam = int.Parse(row["Nam"].ToString());
+                            en.Ky = int.Parse(row["Ky"].ToString());
+                            en.Dot = int.Parse(row["Dot"].ToString());
+                            en.CodeCu = row["CodeCu"].ToString();
+                            en.CodeMoi = row["CodeMoi"].ToString();
+                            en.CSC = row["CSC"].ToString();
+                            en.CSM = row["CSM"].ToString();
+                            en.TieuThu = int.Parse(row["TieuThu"].ToString());
+                            en.TieuThuLo = int.Parse(row["TieuThuLo"].ToString());
+                            en.TieuThuLoConLai = int.Parse(row["TieuThuLoConLai"].ToString());
+                            en.CreateBy = CTaiKhoan.MaUser;
+                            en.CreateDate = DateTime.Now;
+                            if (_dbThuongVu.ChiSoLo_DanhBos.Any(item => item.DanhBo == row["DanhBo"].ToString() && item.Nam == int.Parse(row["Nam"].ToString()) && item.Ky == int.Parse(row["Ky"].ToString())) == false)
+                            {
+                                DataRow[] childRows = row.GetChildRows("Chi Tiết");
+                                foreach (DataRow itemChild in childRows)
+                                    if (itemChild["TieuThuDC"] != null && itemChild["TieuThuDC"].ToString() != "")
+                                    {
+                                        ChiSoLo_HoaDon enCT = new ChiSoLo_HoaDon();
+                                        enCT.MaHD = int.Parse(itemChild["MaHD"].ToString());
+                                        enCT.Nam = int.Parse(itemChild["Nam"].ToString());
+                                        enCT.Ky = int.Parse(itemChild["Ky"].ToString());
+                                        enCT.CodeCu = itemChild["CodeCu"].ToString();
+                                        enCT.CodeMoi = itemChild["CodeMoi"].ToString();
+                                        enCT.CSC = itemChild["CSC"].ToString();
+                                        enCT.CSM = itemChild["CSM"].ToString();
+                                        enCT.TieuThu = int.Parse(itemChild["TieuThu"].ToString());
+                                        enCT.TieuThuDC = int.Parse(itemChild["TieuThuDC"].ToString());
+                                        en.ChiSoLo_HoaDons.Add(enCT);
+                                    }
+                                _dbThuongVu.ChiSoLo_DanhBos.InsertOnSubmit(en);
+                                _dbThuongVu.SubmitChanges();
+                            }
+
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnQLDHNXemChot_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+
+            string sql = "(select ID,DanhBo,MLT,HoTen,DiaChi,Nam,Ky,Dot,CodeCu,CodeMoi,CSC,CSM,TieuThu,TieuThuLo,TieuThuLoConLai,TinhTrang=''"
++ "                             from ChiSoLo_DanhBo where Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim() + ")order by DanhBo asc";
+            DataTable dtParent = _cDCBD.ExecuteQuery_DataTable(sql);
+            dtParent.TableName = "Parent";
+            ds.Tables.Add(dtParent);
+
+            sql = "select hd.* "
++ "                             from ChiSoLo_DanhBo db,ChiSoLo_HoaDon hd where db.Nam=" + txtNam.Text.Trim() + " and db.Ky=" + txtKy.Text.Trim() + " and db.Dot=" + txtDot.Text.Trim() + ""
++ " and db.ID=hd.ID";
+            DataTable dtChild = _cDCBD.ExecuteQuery_DataTable(sql);
+            dtChild.TableName = "Child";
+            ds.Tables.Add(dtChild);
+
+            if (dtParent.Rows.Count > 0 && dtChild.Rows.Count > 0)
+                ds.Relations.Add("Chi Tiết", ds.Tables["Parent"].Columns["ID"], ds.Tables["Child"].Columns["ID"]);
+
+            gridControl.DataSource = ds.Tables["Parent"];
+        }
+
+        private void btnQLDHNIn_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            for (int i = 0; i < gridView.DataRowCount; i++)
+            {
+                DataRow row = gridView.GetDataRow(i);
+                DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
+                dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " "); ;
+                dr["HoTen"] = row["HoTen"].ToString();
+                dr["DiaChi"] = row["DiaChi"].ToString();
+                dr["TieuThuStart"] = row["Nam"].ToString();
+                dr["TienNuocStart"] = row["Ky"].ToString();
+                dr["ThueGTGTStart"] = row["Dot"].ToString();
+                dr["ChiTietCu"] = row["CodeMoi"].ToString();
+                dr["ChiTietMoi"] = row["CSM"].ToString();
+                dsBaoCao.Tables["DCHD"].Rows.Add(dr);
+            }
+            rptDS_ChiSoLo rpt = new rptDS_ChiSoLo();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
         }
 
 
