@@ -43,7 +43,7 @@
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridViewDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.In = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.MaDN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DanhBo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoTen = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -58,7 +58,6 @@
             this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThemHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.cmbNhanVienLap = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lbTo = new System.Windows.Forms.Label();
@@ -94,7 +93,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -206,8 +204,7 @@
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit1,
-            this.repositoryItemCheckEdit2});
+            this.repositoryItemCheckEdit1});
             this.gridControl.Size = new System.Drawing.Size(1068, 590);
             this.gridControl.TabIndex = 26;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -245,18 +242,18 @@
             // In
             // 
             this.In.Caption = "In";
-            this.In.ColumnEdit = this.repositoryItemCheckEdit2;
+            this.In.ColumnEdit = this.repositoryItemCheckEdit1;
             this.In.FieldName = "In";
             this.In.Name = "In";
             this.In.Visible = true;
             this.In.VisibleIndex = 0;
             this.In.Width = 30;
             // 
-            // repositoryItemCheckEdit2
+            // repositoryItemCheckEdit1
             // 
-            this.repositoryItemCheckEdit2.AutoHeight = false;
-            this.repositoryItemCheckEdit2.Caption = "Check";
-            this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Caption = "Check";
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
             // MaDN
             // 
@@ -370,12 +367,6 @@
             this.ThemHoaDon.Caption = "ThemHoaDon";
             this.ThemHoaDon.FieldName = "ThemHoaDon";
             this.ThemHoaDon.Name = "ThemHoaDon";
-            // 
-            // repositoryItemCheckEdit1
-            // 
-            this.repositoryItemCheckEdit1.AutoHeight = false;
-            this.repositoryItemCheckEdit1.Caption = "Check";
-            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
             // cmbNhanVienLap
             // 
@@ -730,7 +721,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -779,7 +769,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn NgayGiaiTrach;
         private System.Windows.Forms.Button btnInTB;
         private DevExpress.XtraGrid.Columns.GridColumn In;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
         private System.Windows.Forms.CheckBox chkAll;
         private DevExpress.XtraGrid.Columns.GridColumn TinhTrang;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
