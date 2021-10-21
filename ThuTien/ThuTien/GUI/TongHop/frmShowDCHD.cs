@@ -559,6 +559,7 @@ namespace ThuTien.GUI.TongHop
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 
 }
