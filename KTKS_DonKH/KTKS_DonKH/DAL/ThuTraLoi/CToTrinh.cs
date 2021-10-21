@@ -187,6 +187,16 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
+        public bool checkExist_ChiTiet_90Ngay(string DanhBo, string VeViec)
+        {
+            return db.ToTrinh_ChiTiets.Any(item => item.DanhBo == DanhBo && item.VeViec.Contains(VeViec) && item.CreateDate.Value.Date >= DateTime.Now.Date.AddDays(-90));
+        }
+
+        public bool checkExist_ChiTiet_DieuChinhHoaDon_Tu072021(string DanhBo)
+        {
+            return db.ToTrinh_ChiTiets.Any(item => item.DanhBo == DanhBo && item.VeViec.Contains("Điều chỉnh hóa đơn") && item.CreateDate.Value.Date >= new DateTime(2021, 7, 1).Date);
+        }
+
         public ToTrinh_ChiTiet get_ChiTiet(int IDCT)
         {
             return db.ToTrinh_ChiTiets.SingleOrDefault(item => item.IDCT == IDCT);

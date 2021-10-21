@@ -93,12 +93,15 @@ namespace KTKS_DonKH.GUI.TruyThu
                 txtDinhMuc.Text = hoadon.DM.ToString();
             if (hoadon.DinhMucHN != null)
                 txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
-            DataTable dt = _cThuTien.getDSAll(hoadon.DANHBA);
-            foreach (DataRow item in dt.Rows)
+            if (MessageBox.Show("Bạn có muốn chạy tự động nhập Kỳ", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                var index = dgvTruyThuTienNuoc.Rows.Add();
-                dgvTruyThuTienNuoc.Rows[index].Cells["Nam"].Value = item["Nam"];
-                dgvTruyThuTienNuoc.Rows[index].Cells["Ky"].Value = item["Ky"];
+                DataTable dt = _cThuTien.getDSAll(hoadon.DANHBA);
+                foreach (DataRow item in dt.Rows)
+                {
+                    var index = dgvTruyThuTienNuoc.Rows.Add();
+                    dgvTruyThuTienNuoc.Rows[index].Cells["Nam"].Value = item["Nam"];
+                    dgvTruyThuTienNuoc.Rows[index].Cells["Ky"].Value = item["Ky"];
+                }
             }
             if (_cDHN.CheckExist(hoadon.DANHBA) == false)
                 MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -488,7 +491,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         if (hd.TIEUTHU != null)
                             dgvTruyThuTienNuoc["TieuThu_Cu", e.RowIndex].Value = hd.TIEUTHU.Value;
                         //if (hd.GB != null)
-                            dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value = hd.GB;
+                        dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value = hd.GB;
                     }
                 }
                 if (dgvTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "GiaBieu_Cu")
@@ -538,7 +541,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 DenNgay = ds.DenNgay.Value;
                             }
                         }
-                        _cGiaNuoc.TinhTienNuoc(false,false, false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), TuNgay, DenNgay, int.Parse(dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value.ToString()), TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, DinhMucHN, TieuThu, out  TienNuocCuA, out ChiTietCuA, out  TienNuocCuB, out  ChiTietCuB, out  TieuThu_DieuChinhGia);
+                        _cGiaNuoc.TinhTienNuoc(false, false, false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), TuNgay, DenNgay, int.Parse(dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value.ToString()), TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, DinhMucHN, TieuThu, out  TienNuocCuA, out ChiTietCuA, out  TienNuocCuB, out  ChiTietCuB, out  TieuThu_DieuChinhGia);
                     }
                     int PhiBVMT = _cGiaNuoc.TinhPhiBMVT2010(int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value.ToString()), DinhMuc, TieuThu);
 
@@ -611,7 +614,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 DenNgay = ds.DenNgay.Value;
                             }
                         }
-                        _cGiaNuoc.TinhTienNuoc(false,false, false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), TuNgay, DenNgay, GiaBieu, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, int.Parse(dgvTruyThuTienNuoc["DinhMucHN_Cu", e.RowIndex].Value.ToString()), TieuThu, out  TienNuocCuA, out ChiTietCuA, out  TienNuocCuB, out  ChiTietCuB, out  TieuThu_DieuChinhGia);
+                        _cGiaNuoc.TinhTienNuoc(false, false, false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), TuNgay, DenNgay, GiaBieu, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, int.Parse(dgvTruyThuTienNuoc["DinhMucHN_Cu", e.RowIndex].Value.ToString()), TieuThu, out  TienNuocCuA, out ChiTietCuA, out  TienNuocCuB, out  ChiTietCuB, out  TieuThu_DieuChinhGia);
                     }
                     int PhiBVMT = _cGiaNuoc.TinhPhiBMVT2010(int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, TieuThu);
 
@@ -2109,9 +2112,9 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             try
             {
-                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+                if (_cttttn != null)
                 {
-                    if (_cttttn != null)
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                     {
                         TruyThuTienNuoc_HoaDon cttttn_hoadon = _cTTTN.get_HoaDon(_cttttn.IDCT, int.Parse(e.Row.Cells["Ky"].Value.ToString()), int.Parse(e.Row.Cells["Nam"].Value.ToString()));
                         if (_cTTTN.Xoa_HoaDon(cttttn_hoadon))
@@ -2122,9 +2125,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                             _cTTTN.SubmitChanges();
                         }
                     }
+                    else
+                        MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

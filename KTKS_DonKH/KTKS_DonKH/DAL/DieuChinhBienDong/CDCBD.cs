@@ -2134,6 +2134,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTDCHD.Nam,
                             SoPhatHanh = itemCTDCHD.SoHD,
                             itemCTDCHD.SoHoaDon,
+                            itemCTDCHD.HoTen_BD,
+                            itemCTDCHD.DiaChi_BD,
+                            itemCTDCHD.MST_BD,
+                            itemCTDCHD.ChiTietMoi,
                         };
             return LINQToDataTable(query);
         }
@@ -3037,6 +3041,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCHD.Nam,
                                 SoPhatHanh = itemCTDCHD.SoHD,
                                 itemCTDCHD.SoHoaDon,
+                                itemCTDCHD.HoTen_BD,
+                                itemCTDCHD.DiaChi_BD,
+                                itemCTDCHD.MST_BD,
+                                itemCTDCHD.ChiTietMoi,
                             };
                 return LINQToDataTable(query);
             }
@@ -3094,6 +3102,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCHD.Nam,
                                 SoPhatHanh = itemCTDCHD.SoHD,
                                 itemCTDCHD.SoHoaDon,
+                                itemCTDCHD.HoTen_BD,
+                                itemCTDCHD.DiaChi_BD,
+                                itemCTDCHD.MST_BD,
+                                itemCTDCHD.ChiTietMoi,
                             };
                 return LINQToDataTable(query);
             }
@@ -3151,6 +3163,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCHD.Nam,
                                 SoPhatHanh = itemCTDCHD.SoHD,
                                 itemCTDCHD.SoHoaDon,
+                                itemCTDCHD.HoTen_BD,
+                                itemCTDCHD.DiaChi_BD,
+                                itemCTDCHD.MST_BD,
+                                itemCTDCHD.ChiTietMoi,
                             };
                 return LINQToDataTable(query);
             }
@@ -3399,6 +3415,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCHD.Nam,
                                 SoPhatHanh = itemCTDCHD.SoHD,
                                 itemCTDCHD.SoHoaDon,
+                                itemCTDCHD.HoTen_BD,
+                                itemCTDCHD.DiaChi_BD,
+                                itemCTDCHD.MST_BD,
+                                itemCTDCHD.ChiTietMoi,
                             };
                 return LINQToDataTable(query);
             }

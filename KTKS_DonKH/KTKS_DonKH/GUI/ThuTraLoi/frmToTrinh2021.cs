@@ -905,7 +905,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 {
                     txtNoiNhan.Text = vv.NoiNhan;
                 }
-
+                if(_cTT.checkExist_ChiTiet_90Ngay(txtDanhBo.Text.Trim(),vv.Name)==true)
+                    MessageBox.Show("Danh Bộ này có Tờ Trình trong 30 ngày gần nhất", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

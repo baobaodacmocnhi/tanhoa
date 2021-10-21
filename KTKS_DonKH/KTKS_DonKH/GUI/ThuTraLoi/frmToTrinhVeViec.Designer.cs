@@ -64,7 +64,8 @@
             this.Namee,
             this.NoiDung,
             this.NoiNhan});
-            this.dgvDSVeViecTTTL.Location = new System.Drawing.Point(12, 282);
+            this.dgvDSVeViecTTTL.Location = new System.Drawing.Point(12, 272);
+            this.dgvDSVeViecTTTL.MultiSelect = false;
             this.dgvDSVeViecTTTL.Name = "dgvDSVeViecTTTL";
             this.dgvDSVeViecTTTL.Size = new System.Drawing.Size(870, 335);
             this.dgvDSVeViecTTTL.TabIndex = 8;
@@ -107,7 +108,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(783, 218);
+            this.btnSua.Location = new System.Drawing.Point(783, 208);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 7;
@@ -117,7 +118,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(783, 187);
+            this.btnThem.Location = new System.Drawing.Point(783, 177);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 6;
@@ -127,7 +128,7 @@
             // 
             // txtNoiDung
             // 
-            this.txtNoiDung.Location = new System.Drawing.Point(12, 62);
+            this.txtNoiDung.Location = new System.Drawing.Point(12, 52);
             this.txtNoiDung.Multiline = true;
             this.txtNoiDung.Name = "txtNoiDung";
             this.txtNoiDung.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -137,31 +138,31 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 44);
+            this.label2.Location = new System.Drawing.Point(9, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 20);
+            this.label2.Size = new System.Drawing.Size(67, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Nội Dung:";
             // 
             // txtVeViec
             // 
-            this.txtVeViec.Location = new System.Drawing.Point(80, 12);
+            this.txtVeViec.Location = new System.Drawing.Point(80, 2);
             this.txtVeViec.Name = "txtVeViec";
-            this.txtVeViec.Size = new System.Drawing.Size(542, 26);
+            this.txtVeViec.Size = new System.Drawing.Size(542, 22);
             this.txtVeViec.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 14);
+            this.label1.Location = new System.Drawing.Point(9, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 20);
+            this.label1.Size = new System.Drawing.Size(58, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Về Việc:";
             // 
             // txtNoiNhan
             // 
-            this.txtNoiNhan.Location = new System.Drawing.Point(628, 62);
+            this.txtNoiNhan.Location = new System.Drawing.Point(628, 52);
             this.txtNoiNhan.Multiline = true;
             this.txtNoiNhan.Name = "txtNoiNhan";
             this.txtNoiNhan.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -171,15 +172,15 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(625, 44);
+            this.label3.Location = new System.Drawing.Point(625, 34);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 20);
+            this.label3.Size = new System.Drawing.Size(67, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "Nơi Nhận:";
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(783, 249);
+            this.btnXoa.Location = new System.Drawing.Point(783, 239);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 9;
@@ -189,7 +190,7 @@
             // 
             // frmToTrinhVeViec
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;

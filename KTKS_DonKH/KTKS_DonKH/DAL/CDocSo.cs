@@ -76,7 +76,7 @@ namespace KTKS_DonKH.DAL
             {
                 DataSet ds = new DataSet();
 
-                string sql = "select Chon=0,DocSoID,DanhBo=DanhBa,MLT=MLT1,HoTen=(select TenKH from KhachHang where DanhBa=DocSo.DanhBa),DiaChi=SoNhaCu+' '+Duong,Nam,Ky,Dot,CodeCu,CodeMoi,CSC=CSCu,CSM=CSMoi,TieuThu=TieuThuMoi,TieuThuLo=0,TieuThuLoConLai=0,TinhTrang=''"
+                string sql = "select Chon=CAST(0 as bit),DocSoID,DanhBo=DanhBa,MLT=MLT1,HoTen=(select TenKH from KhachHang where DanhBa=DocSo.DanhBa),DiaChi=SoNhaCu+' '+Duong,Nam,Ky,Dot,CodeCu,CodeMoi,CSC=CSCu,CSM=CSMoi,TieuThu=TieuThuMoi,TieuThuLo=0,TieuThuLoConLai=0,TinhTrang=''"
                             + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi='N' order by DanhBo asc";
                 DataTable dtParent = ExecuteQuery_DataTable(sql);
                 dtParent.TableName = "Parent";
@@ -85,7 +85,7 @@ namespace KTKS_DonKH.DAL
                 sql = "(select t2.* from"
                         + "(select DocSoID,DanhBo=DanhBa,MLT=MLT1,HoTen=TenKH,DiaChi=SoNhaCu+' '+Duong,Nam,Ky,Dot,CodeCu,CodeMoi,CSC=CSCu,CSM=CSMoi,TieuThu=TieuThuMoi"
                         + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi='N')t1,"
-                        + "	(select DocSoID,DanhBo=ds.DanhBa,MLT=MLT1,HoTen=ds.TenKH,DiaChi=SoNhaCu+' '+ds.Duong,ds.Nam,ds.Ky,ds.Dot,CodeCu,CodeMoi,CSC=ds.CSCu,CSM=ds.CSMoi,TieuThu=TieuThuMoi,TieuThuDC='',NgayGiaiTrach=case when MaNV_DangNgan is not null then NgayGiaiTrach else null end,MaHD=ID_HOADON"
+                        + "	(select DocSoID,DanhBo=ds.DanhBa,MLT=MLT1,HoTen=ds.TenKH,DiaChi=SoNhaCu+' '+ds.Duong,ds.Nam,ds.Ky,ds.Dot,CodeCu,CodeMoi,CSC=ds.CSCu,CSM=ds.CSMoi,TieuThu=hd.TIEUTHU,TieuThuDC='',NgayGiaiTrach=case when MaNV_DangNgan is not null then NgayGiaiTrach else null end,MaHD=ID_HOADON"
                         + " from DocSo ds,server9.HOADON_TA.dbo.HOADON hd where ds.Nam=" + Nam + " and ds.Ky>=1 and ds.Ky<" + Ky + " and ds.Dot=" + Dot + ""
                         + "	and ds.Nam=hd.NAM and ds.Ky=hd.KY and ds.DanhBa=hd.DANHBA)t2"
                         + "	where t1.DanhBo=t2.DanhBo)"

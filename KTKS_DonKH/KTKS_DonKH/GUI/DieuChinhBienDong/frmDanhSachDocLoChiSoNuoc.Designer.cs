@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewChiTiet = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -59,6 +59,7 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNam = new System.Windows.Forms.TextBox();
             this.txtKy = new System.Windows.Forms.TextBox();
@@ -72,6 +73,7 @@
             this.btnTVXem = new System.Windows.Forms.Button();
             this.btnTVDieuChinh = new System.Windows.Forms.Button();
             this.btnQLDHNXemChot = new System.Windows.Forms.Button();
+            this.btnQLDHNXoaChot = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -189,10 +191,10 @@
             // 
             // gridControl
             // 
-            gridLevelNode1.LevelTemplate = this.gridViewChiTiet;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.LevelTemplate = this.gridViewChiTiet;
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl.Location = new System.Drawing.Point(12, 39);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
@@ -226,7 +228,8 @@
             this.gridColumn12,
             this.gridColumn13,
             this.gridColumn14,
-            this.gridColumn15});
+            this.gridColumn15,
+            this.gridColumn26});
             this.gridView.GridControl = this.gridControl;
             this.gridView.IndicatorWidth = 41;
             this.gridView.Name = "gridView";
@@ -250,8 +253,6 @@
             this.repositoryItemCheckEdit2.AutoHeight = false;
             this.repositoryItemCheckEdit2.Caption = "Check";
             this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
-            this.repositoryItemCheckEdit2.ValueChecked = null;
-            this.repositoryItemCheckEdit2.ValueUnchecked = null;
             // 
             // gridColumn1
             // 
@@ -382,6 +383,12 @@
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 15;
             // 
+            // gridColumn26
+            // 
+            this.gridColumn26.Caption = "ID";
+            this.gridColumn26.FieldName = "ID";
+            this.gridColumn26.Name = "gridColumn26";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -405,7 +412,7 @@
             this.txtKy.Name = "txtKy";
             this.txtKy.Size = new System.Drawing.Size(50, 20);
             this.txtKy.TabIndex = 3;
-            this.txtKy.Text = "10";
+            this.txtKy.Text = "11";
             // 
             // label2
             // 
@@ -476,21 +483,23 @@
             // 
             // btnTVXem
             // 
-            this.btnTVXem.Location = new System.Drawing.Point(783, 10);
+            this.btnTVXem.Location = new System.Drawing.Point(894, 10);
             this.btnTVXem.Name = "btnTVXem";
             this.btnTVXem.Size = new System.Drawing.Size(80, 23);
             this.btnTVXem.TabIndex = 11;
             this.btnTVXem.Text = "TV Xem";
             this.btnTVXem.UseVisualStyleBackColor = true;
+            this.btnTVXem.Click += new System.EventHandler(this.btnTVXem_Click);
             // 
             // btnTVDieuChinh
             // 
-            this.btnTVDieuChinh.Location = new System.Drawing.Point(869, 10);
+            this.btnTVDieuChinh.Location = new System.Drawing.Point(980, 10);
             this.btnTVDieuChinh.Name = "btnTVDieuChinh";
             this.btnTVDieuChinh.Size = new System.Drawing.Size(90, 23);
             this.btnTVDieuChinh.TabIndex = 12;
             this.btnTVDieuChinh.Text = "TV Điều Chỉnh";
             this.btnTVDieuChinh.UseVisualStyleBackColor = true;
+            this.btnTVDieuChinh.Click += new System.EventHandler(this.btnTVDieuChinh_Click);
             // 
             // btnQLDHNXemChot
             // 
@@ -502,6 +511,16 @@
             this.btnQLDHNXemChot.UseVisualStyleBackColor = true;
             this.btnQLDHNXemChot.Click += new System.EventHandler(this.btnQLDHNXemChot_Click);
             // 
+            // btnQLDHNXoaChot
+            // 
+            this.btnQLDHNXoaChot.Location = new System.Drawing.Point(783, 10);
+            this.btnQLDHNXoaChot.Name = "btnQLDHNXoaChot";
+            this.btnQLDHNXoaChot.Size = new System.Drawing.Size(105, 23);
+            this.btnQLDHNXoaChot.TabIndex = 28;
+            this.btnQLDHNXoaChot.Text = "QLĐHN Xóa Chốt";
+            this.btnQLDHNXoaChot.UseVisualStyleBackColor = true;
+            this.btnQLDHNXoaChot.Click += new System.EventHandler(this.btnQLDHNXoaChot_Click);
+            // 
             // frmDanhSachDocLoChiSoNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -509,6 +528,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1342, 630);
+            this.Controls.Add(this.btnQLDHNXoaChot);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.btnQLDHNXemChot);
             this.Controls.Add(this.btnTVDieuChinh);
@@ -580,5 +600,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private System.Windows.Forms.Button btnQLDHNXoaChot;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
     }
 }
