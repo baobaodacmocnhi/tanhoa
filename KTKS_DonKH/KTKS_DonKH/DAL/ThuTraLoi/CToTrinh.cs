@@ -192,9 +192,36 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             return db.ToTrinh_ChiTiets.Any(item => item.DanhBo == DanhBo && item.VeViec.Contains(VeViec) && item.CreateDate.Value.Date >= DateTime.Now.Date.AddDays(-90));
         }
 
-        public bool checkExist_ChiTiet_DieuChinhHoaDon_Tu072021(string DanhBo)
+        public bool checkExist_ChiTiet_DieuChinhHoaDon_Tu072021(string DanhBo,out string TinhTrang)
         {
-            return db.ToTrinh_ChiTiets.Any(item => item.DanhBo == DanhBo && item.VeViec.Contains("Điều chỉnh hóa đơn") && item.CreateDate.Value.Date >= new DateTime(2021, 7, 1).Date);
+            if (db.ToTrinh_ChiTiets.Any(item => item.DanhBo == DanhBo && item.VeViec.Contains("Điều chỉnh hóa đơn") && item.CreateDate.Value.Date >= new DateTime(2021, 7, 1).Date) == false)
+            {
+                DonTu_ChiTiet dontct = db.DonTu_ChiTiets.FirstOrDefault(itemCT => itemCT.DanhBo == DanhBo && itemCT.CreateDate.Value.Date >= new DateTime(2021, 10, 20).Date);
+                if (dontct != null)
+                {
+                    
+                    if (db.DonTu_LichSus.Any(itemLS => itemLS.MaDon == dontct.MaDon && itemLS.STT == dontct.STT && itemLS.ID_NoiNhan == 11) == true)
+                    {
+                        TinhTrang = "Chuyển Tờ Trình";
+                        return true;
+                    }
+                    else
+                    {
+                        TinhTrang = "";
+                        return false;
+                    }
+                }
+                else
+                {
+                    TinhTrang = "";
+                    return false;
+                }
+            }
+            else
+            {
+                TinhTrang = "Lập Tờ Trình";
+                return true;
+            }
         }
 
         public ToTrinh_ChiTiet get_ChiTiet(int IDCT)

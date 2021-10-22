@@ -2073,6 +2073,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return db.DCBD_ChiTietHoaDons.Any(item => item.SoHoaDon == SoHoaDon);
         }
 
+        public bool checkExist_HoaDon(string DanhBo, int Nam, int Ky)
+        {
+            return db.DCBD_ChiTietHoaDons.Any(item => item.DanhBo == DanhBo && item.Nam == Nam && item.Ky == Ky);
+        }
+
         public bool CheckExist_HoaDon(string Loai, decimal MaDon, string DanhBo, string KyHD)
         {
             switch (Loai)

@@ -14,6 +14,7 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.ThuTraLoi;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -22,6 +23,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         string _mnu = "mnuDanhSachDocLoChiSoNuoc";
         CDocSo _cDocSo = new CDocSo();
         CDCBD _cDCBD = new CDCBD();
+        CThuTien _cThuTien = new CThuTien();
+        CToTrinh _cTT = new CToTrinh();
+        CDonTu _cDonTu = new CDonTu();
+        CGiaNuoc _cGiaNuoc = new CGiaNuoc();
+        CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         dbKinhDoanhDataContext _dbThuongVu = new dbKinhDoanhDataContext();
 
         public frmDanhSachDocLoChiSoNuoc()
@@ -43,52 +49,58 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DataRow row = gridView.GetDataRow(i);
                 DataRow[] childRows = row.GetChildRows("Chi Tiết");
                 int GiaiTrach = 0;
-
+                bool flag = false;
                 //tính chỉ số lố
-                foreach (DataRow itemChild in childRows)
+                for (int j = 0; j < childRows.Count(); j++)
                 {
-                    if (itemChild["CodeMoi"].ToString().Contains("4") == true || itemChild["CodeMoi"].ToString().Contains("5") == true || itemChild["CodeMoi"].ToString().Contains("8") == true || itemChild["CodeMoi"].ToString().Contains("M") == true)
+                    if (childRows[j]["CodeMoi"].ToString().Contains("4") == true || childRows[j]["CodeMoi"].ToString().Contains("5") == true || childRows[j]["CodeMoi"].ToString().Contains("8") == true || childRows[j]["CodeMoi"].ToString().Contains("M") == true)
                     {
-                        row["TieuThuLo"] = int.Parse(row["CSM"].ToString()) - (int.Parse(row["TieuThuLo"].ToString()) + int.Parse(itemChild["CSM"].ToString()));
+                        row["TieuThuLo"] = int.Parse(row["CSM"].ToString()) - (int.Parse(row["TieuThuLo"].ToString()) + int.Parse(childRows[j]["CSM"].ToString()));
+                        if (j < childRows.Count()-1)
+                            if (childRows[j + 1]["CodeMoi"].ToString().Contains("4") == false && childRows[j + 1]["CodeMoi"].ToString().Contains("5") == false && childRows[j + 1]["CodeMoi"].ToString().Contains("8") == false && childRows[j + 1]["CodeMoi"].ToString().Contains("M") == false)
+                                flag = true;
                         break;
                     }
                     else
                     {
-                        row["TieuThuLo"] = int.Parse(row["TieuThuLo"].ToString()) + int.Parse(itemChild["TieuThu"].ToString());
+                        row["TieuThuLo"] = int.Parse(row["TieuThuLo"].ToString()) + int.Parse(childRows[j]["TieuThu"].ToString());
                     }
                 }
                 int TieuThuLo = int.Parse(row["TieuThuLo"].ToString()) * -1;
                 foreach (DataRow itemChild in childRows)
                 {
                     //xét hđ tồn
-                    if (itemChild["NgayGiaiTrach"].ToString() != "")
+                    if (itemChild["TinhTrang"].ToString() != "")
                         GiaiTrach++;
 
                     //tính khấu trừ
-                    if (itemChild["NgayGiaiTrach"].ToString() == "" && itemChild["CodeMoi"].ToString().Contains("4") == false && itemChild["CodeMoi"].ToString().Contains("5") == false && itemChild["CodeMoi"].ToString().Contains("8") == false && itemChild["CodeMoi"].ToString().Contains("M") == false)
-                    {
-                        if (TieuThuLo > 0)
-                        {
-                            if (TieuThuLo >= int.Parse(itemChild["TieuThu"].ToString()))
-                            {
-                                itemChild["TieuThuDC"] = 0;
-                                TieuThuLo -= int.Parse(itemChild["TieuThu"].ToString());
-                            }
-                            else
-                                if (TieuThuLo < int.Parse(itemChild["TieuThu"].ToString()))
-                                {
-                                    itemChild["TieuThuDC"] = (int.Parse(itemChild["TieuThu"].ToString()) - TieuThuLo);
-                                    TieuThuLo = 0;
-                                }
-                        }
-                    }
+                    //if (itemChild["TinhTrang"].ToString() == "" && itemChild["CodeMoi"].ToString().Contains("4") == false && itemChild["CodeMoi"].ToString().Contains("5") == false && itemChild["CodeMoi"].ToString().Contains("8") == false && itemChild["CodeMoi"].ToString().Contains("M") == false)
+                    //{
+                    //    if (TieuThuLo > 0)
+                    //    {
+                    //        if (TieuThuLo >= int.Parse(itemChild["TieuThu"].ToString()))
+                    //        {
+                    //            itemChild["TieuThuDC"] = 0;
+                    //            TieuThuLo -= int.Parse(itemChild["TieuThu"].ToString());
+                    //        }
+                    //        else
+                    //            if (TieuThuLo < int.Parse(itemChild["TieuThu"].ToString()))
+                    //            {
+                    //                itemChild["TieuThuDC"] = (int.Parse(itemChild["TieuThu"].ToString()) - TieuThuLo);
+                    //                TieuThuLo = 0;
+                    //            }
+                    //    }
+                    //}
                 }
                 row["TieuThuLoConLai"] = TieuThuLo * -1;
-                if (childRows.Count() != GiaiTrach)
-                    row["TinhTrang"] = "Tồn";
-                //gridView.SetRowCellValue(i, "TinhTrang", "Tồn");
+                if (flag == true)
+                    row["TinhTrang"] = "Sai Chỉ Số";
                 else
-                    row["TinhTrang"] = "Đã Đăng Ngân";
+                    if (childRows.Count() != GiaiTrach)
+                        row["TinhTrang"] = "Tồn";
+                    //gridView.SetRowCellValue(i, "TinhTrang", "Tồn");
+                    else
+                        row["TinhTrang"] = "Đã Đăng Ngân";
                 //gridView.SetRowCellValue(i, "TinhTrang", "Đã Đăng Ngân");
             }
         }
@@ -105,8 +117,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 for (int i = 0; i < gridView.RowCount; i++)
                 {
                     DataRow row = gridView.GetDataRow(i);
-                    if (row["TinhTrang"].ToString() == "Tồn")
-                        row["Chon"] = "True";
+                    if (row["ID"].ToString() == "")
+                    {
+                        if (row["TinhTrang"].ToString() == "Tồn")
+                            row["Chon"] = "True";
+                    }
+                    else
+                        if (row["TinhTrang"].ToString() == "")
+                            row["Chon"] = "True";
                     //gridView.SetRowCellValue(i, gridView.Columns["Chon"], "True");
                 }
             else
@@ -124,48 +142,51 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
-                    for (int i = 0; i < gridView.DataRowCount; i++)
+                    if (MessageBox.Show("Bạn có chắc chắn Chốt?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        DataRow row = gridView.GetDataRow(i);
-                        if (row["Chon"] != null && bool.Parse(row["Chon"].ToString()) == true)
+                        for (int i = 0; i < gridView.DataRowCount; i++)
                         {
-                            ChiSoLo_DanhBo en = new ChiSoLo_DanhBo();
-                            en.DanhBo = row["DanhBo"].ToString();
-                            en.MLT = row["MLT"].ToString();
-                            en.HoTen = row["HoTen"].ToString();
-                            en.DiaChi = row["DiaChi"].ToString();
-                            en.Nam = int.Parse(row["Nam"].ToString());
-                            en.Ky = int.Parse(row["Ky"].ToString());
-                            en.Dot = int.Parse(row["Dot"].ToString());
-                            en.CodeCu = row["CodeCu"].ToString();
-                            en.CodeMoi = row["CodeMoi"].ToString();
-                            en.CSC = row["CSC"].ToString();
-                            en.CSM = row["CSM"].ToString();
-                            en.TieuThu = int.Parse(row["TieuThu"].ToString());
-                            en.TieuThuLo = int.Parse(row["TieuThuLo"].ToString());
-                            en.TieuThuLoConLai = int.Parse(row["TieuThuLoConLai"].ToString());
-                            en.CreateBy = CTaiKhoan.MaUser;
-                            en.CreateDate = DateTime.Now;
-                            if (_dbThuongVu.ChiSoLo_DanhBos.Any(item => item.DanhBo == row["DanhBo"].ToString() && item.Nam == int.Parse(row["Nam"].ToString()) && item.Ky == int.Parse(row["Ky"].ToString())) == false)
+                            DataRow row = gridView.GetDataRow(i);
+                            if (row["Chon"] != null && bool.Parse(row["Chon"].ToString()) == true)
                             {
-                                DataRow[] childRows = row.GetChildRows("Chi Tiết");
-                                foreach (DataRow itemChild in childRows)
-                                    if (itemChild["TieuThuDC"] != null && itemChild["TieuThuDC"].ToString() != "")
-                                    {
-                                        ChiSoLo_HoaDon enCT = new ChiSoLo_HoaDon();
-                                        enCT.MaHD = int.Parse(itemChild["MaHD"].ToString());
-                                        enCT.Nam = int.Parse(itemChild["Nam"].ToString());
-                                        enCT.Ky = int.Parse(itemChild["Ky"].ToString());
-                                        enCT.CodeCu = itemChild["CodeCu"].ToString();
-                                        enCT.CodeMoi = itemChild["CodeMoi"].ToString();
-                                        enCT.CSC = itemChild["CSC"].ToString();
-                                        enCT.CSM = itemChild["CSM"].ToString();
-                                        enCT.TieuThu = int.Parse(itemChild["TieuThu"].ToString());
-                                        enCT.TieuThuDC = int.Parse(itemChild["TieuThuDC"].ToString());
-                                        en.ChiSoLo_HoaDons.Add(enCT);
-                                    }
-                                _dbThuongVu.ChiSoLo_DanhBos.InsertOnSubmit(en);
-                                _dbThuongVu.SubmitChanges();
+                                ChiSoLo_DanhBo en = new ChiSoLo_DanhBo();
+                                en.DanhBo = row["DanhBo"].ToString();
+                                en.MLT = row["MLT"].ToString();
+                                en.HoTen = row["HoTen"].ToString();
+                                en.DiaChi = row["DiaChi"].ToString();
+                                en.Nam = int.Parse(row["Nam"].ToString());
+                                en.Ky = int.Parse(row["Ky"].ToString());
+                                en.Dot = int.Parse(row["Dot"].ToString());
+                                en.CodeCu = row["CodeCu"].ToString();
+                                en.CodeMoi = row["CodeMoi"].ToString();
+                                en.CSC = row["CSC"].ToString();
+                                en.CSM = row["CSM"].ToString();
+                                en.TieuThu = int.Parse(row["TieuThu"].ToString());
+                                en.TieuThuLo = int.Parse(row["TieuThuLo"].ToString());
+                                en.TieuThuLoConLai = int.Parse(row["TieuThuLoConLai"].ToString());
+                                en.CreateBy = CTaiKhoan.MaUser;
+                                en.CreateDate = DateTime.Now;
+                                if (_dbThuongVu.ChiSoLo_DanhBos.Any(item => item.DanhBo == row["DanhBo"].ToString() && item.Nam == int.Parse(row["Nam"].ToString()) && item.Ky == int.Parse(row["Ky"].ToString())) == false)
+                                {
+                                    DataRow[] childRows = row.GetChildRows("Chi Tiết");
+                                    foreach (DataRow itemChild in childRows)
+                                        if (itemChild["TinhTrang"].ToString() == "")
+                                        {
+                                            ChiSoLo_HoaDon enCT = new ChiSoLo_HoaDon();
+                                            enCT.MaHD = int.Parse(itemChild["MaHD"].ToString());
+                                            enCT.Nam = int.Parse(itemChild["Nam"].ToString());
+                                            enCT.Ky = int.Parse(itemChild["Ky"].ToString());
+                                            enCT.CodeCu = itemChild["CodeCu"].ToString();
+                                            enCT.CodeMoi = itemChild["CodeMoi"].ToString();
+                                            enCT.CSC = itemChild["CSC"].ToString();
+                                            enCT.CSM = itemChild["CSM"].ToString();
+                                            enCT.TieuThu = int.Parse(itemChild["TieuThu"].ToString());
+                                            //enCT.TieuThuDC = int.Parse(itemChild["TieuThuDC"].ToString());
+                                            en.ChiSoLo_HoaDons.Add(enCT);
+                                        }
+                                    _dbThuongVu.ChiSoLo_DanhBos.InsertOnSubmit(en);
+                                    _dbThuongVu.SubmitChanges();
+                                }
                             }
                         }
                     }
@@ -185,13 +206,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             DataSet ds = new DataSet();
 
-            string sql = "(select Chon=CAST(0 as bit),ID,DanhBo,MLT,HoTen,DiaChi,Nam,Ky,Dot,CodeCu,CodeMoi,CSC,CSM,TieuThu,TieuThuLo,TieuThuLoConLai,TinhTrang=''"
+            string sql = "(select Chon=CAST(0 as bit),ID,DanhBo,MLT,HoTen,DiaChi,Nam,Ky,Dot,CodeCu,CodeMoi,CSC,CSM,TieuThu,TieuThuLo,TieuThuLoConLai,TinhTrang='',MaDon,STT"
                         + " from ChiSoLo_DanhBo where Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim() + ")order by DanhBo asc";
             DataTable dtParent = _cDCBD.ExecuteQuery_DataTable(sql);
             dtParent.TableName = "Parent";
             ds.Tables.Add(dtParent);
 
-            sql = "select hd.* "
+            sql = "select hd.*,TinhTrang='' "
                     + " from ChiSoLo_DanhBo db,ChiSoLo_HoaDon hd where db.Nam=" + txtNam.Text.Trim() + " and db.Ky=" + txtKy.Text.Trim() + " and db.Dot=" + txtDot.Text.Trim() + ""
                     + " and db.ID=hd.ID order by MaHD desc";
             DataTable dtChild = _cDCBD.ExecuteQuery_DataTable(sql);
@@ -203,7 +224,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             gridControl.DataSource = ds.Tables["Parent"];
         }
-        CThuTien _cThuTien = new CThuTien();
+
         private void btnQLDHNIn_Click(object sender, EventArgs e)
         {
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -216,7 +237,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["DiaChi"] = row["DiaChi"].ToString();
                 dr["TieuThuStart"] = row["Dot"].ToString();
                 dr["TienNuocStart"] = row["Ky"].ToString();
-                HOADON hd = _cThuTien.Get(row["DanhBo"].ToString(), int.Parse(row["Ky"].ToString())-1, int.Parse(row["Nam"].ToString()));
+                HOADON hd = _cThuTien.Get(row["DanhBo"].ToString(), int.Parse(row["Ky"].ToString()) - 1, int.Parse(row["Nam"].ToString()));
                 dr["ThueGTGTStart"] = hd.CODE;
                 dr["PhiBVMTStart"] = row["CodeMoi"].ToString();
                 dr["TongCongStart"] = "5" + hd.CODE;
@@ -235,8 +256,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("Bạn có chắc chắn Xóa?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
+                        if (gridView.GetDataRow(0)["MaDon"] != null && gridView.GetDataRow(0)["MaDon"].ToString() != "")
+                        {
+                            MessageBox.Show("Đã có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         for (int i = 0; i < gridView.DataRowCount; i++)
                         {
                             DataRow row = gridView.GetDataRow(i);
@@ -258,23 +284,339 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        CToTrinh _cTT = new CToTrinh();
+
         private void btnTVXem_Click(object sender, EventArgs e)
         {
             btnQLDHNXemChot.PerformClick();
             for (int i = 0; i < gridView.DataRowCount; i++)
             {
                 DataRow row = gridView.GetDataRow(i);
-                if (_cTT.checkExist_ChiTiet_DieuChinhHoaDon_Tu072021(row["DanhBo"].ToString()) == true)
-                    row["TinhTrang"] = "Có Tờ Trình Điều Chỉnh Hóa Đơn";
+                //kiểm tra có lập tờ trình
+                string str = "";
+                if (_cTT.checkExist_ChiTiet_DieuChinhHoaDon_Tu072021(row["DanhBo"].ToString(), out str) == true)
+                    row["TinhTrang"] = str;
+                else
+                {
+                    DataRow[] childRows = row.GetChildRows("Chi Tiết");
+                    int TieuThuLo = int.Parse(row["TieuThuLo"].ToString()) * -1;
+                    foreach (DataRow itemChild in childRows)
+                    {
+                        //kiểm tra có lập điều chỉnh hóa đơn
+                        if (_cDCBD.checkExist_HoaDon(row["DanhBo"].ToString(), int.Parse(itemChild["Nam"].ToString()), int.Parse(itemChild["Ky"].ToString())))
+                        {
+                            itemChild["TinhTrang"] = "Có Điều Chỉnh Hóa Đơn";
+                        }
+                        //tính khấu trừ
+                        if (itemChild["TinhTrang"].ToString() == "" && itemChild["CodeMoi"].ToString().Contains("4") == false && itemChild["CodeMoi"].ToString().Contains("5") == false && itemChild["CodeMoi"].ToString().Contains("8") == false && itemChild["CodeMoi"].ToString().Contains("M") == false)
+                        {
+                            if (TieuThuLo > 0)
+                            {
+                                if (TieuThuLo >= int.Parse(itemChild["TieuThu"].ToString()))
+                                {
+                                    itemChild["TieuThuDC"] = 0;
+                                    TieuThuLo -= int.Parse(itemChild["TieuThu"].ToString());
+                                }
+                                else
+                                    if (TieuThuLo < int.Parse(itemChild["TieuThu"].ToString()))
+                                    {
+                                        itemChild["TieuThuDC"] = (int.Parse(itemChild["TieuThu"].ToString()) - TieuThuLo);
+                                        TieuThuLo = 0;
+                                    }
+                            }
+                        }
+                    }
+                    row["TieuThuLoConLai"] = TieuThuLo * -1;
+                }
+            }
+        }
+
+        private void btnTVLapDon_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen("mnuDCHD", "Them"))
+                {
+                    if (gridView.GetDataRow(0)["MaDon"] != null && gridView.GetDataRow(0)["MaDon"].ToString() != "")
+                    {
+                        MessageBox.Show("Đã có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    LinQ.DonTu entity = new LinQ.DonTu();
+
+                    int ID = _cDonTu.getMaxID_ChiTiet();
+                    int STT = 0;
+                    for (int i = 0; i < gridView.DataRowCount; i++)
+                    {
+                        DataRow item = gridView.GetDataRow(i);
+                        HOADON hd = _cThuTien.GetMoiNhat(item["DanhBo"].ToString());
+
+                        DonTu_ChiTiet entityCT = new DonTu_ChiTiet();
+                        entityCT.ID = ++ID;
+                        entityCT.STT = ++STT;
+
+                        entityCT.DanhBo = item["DanhBo"].ToString();
+                        entityCT.MLT = hd.MALOTRINH;
+                        entityCT.HopDong = hd.HOPDONG;
+                        entityCT.HoTen = item["HoTen"].ToString();
+                        entityCT.DiaChi = item["DiaChi"].ToString();
+                        entityCT.GiaBieu = hd.GB;
+                        entityCT.DinhMuc = hd.DM;
+                        entityCT.DinhMucHN = hd.DinhMucHN;
+                        entityCT.Dot = int.Parse(item["Dot"].ToString());
+                        entityCT.Ky = int.Parse(item["Ky"].ToString());
+                        entityCT.Nam = int.Parse(item["Nam"].ToString());
+                        entityCT.Quan = hd.Quan;
+                        entityCT.Phuong = hd.Phuong;
+
+                        entityCT.CreateBy = CTaiKhoan.MaUser;
+                        entityCT.CreateDate = DateTime.Now;
+                        //entityCT.TinhTrang = "Tồn";
+
+                        entity.DonTu_ChiTiets.Add(entityCT);
+                    }
+
+                    entity.ID_NhomDon_PKH = "7";
+                    entity.Name_NhomDon_PKH = "Chỉ số nước";
+                    entity.VanPhong = true;
+                    entity.MaPhong = 1;
+                    if (_cDonTu.Them(entity))
+                    {
+                        foreach (DonTu_ChiTiet itemDonChiTiet in entity.DonTu_ChiTiets)
+                        {
+                            _cDCBD.ExecuteNonQuery("update ChiSoLo_DanhBo set MaDon=" + itemDonChiTiet.MaDon + ",STT=" + itemDonChiTiet.STT + " where DanhBo='" + itemDonChiTiet.DanhBo + "' and Nam=" + itemDonChiTiet.Nam + " and Ky=" + itemDonChiTiet.Ky + " and Dot=" + itemDonChiTiet.Dot);
+                        }
+                        MessageBox.Show("Thành công\nMã Đơn: " + entity.MaDon.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        gridControl.DataSource = null;
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnTVDieuChinh_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen("mnuDCHD", "Them"))
+                {
+                    for (int i = 0; i < gridView.DataRowCount; i++)
+                    {
+                        DataRow row = gridView.GetDataRow(i);
+                        DonTu_ChiTiet dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(row["MaDon"].ToString()), int.Parse(row["STT"].ToString()));
 
+                        if (_cDCBD.checkExist(dontu_ChiTiet.MaDon.Value) == false)
+                        {
+                            DCBD dcbd = new DCBD();
+                            dcbd.MaDonMoi = dontu_ChiTiet.MaDon.Value;
+                            _cDCBD.Them(dcbd);
+                        }
+                        DataRow[] childRows = row.GetChildRows("Chi Tiết");
+                        foreach (DataRow itemChild in childRows)
+                        {
+                            if (_cDCBD.checkExist_HoaDon(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.DanhBo, int.Parse(itemChild["Ky"].ToString()).ToString("00") + "/" + int.Parse(itemChild["Nam"].ToString())) == false)
+                            {
+                                DCBD_ChiTietHoaDon ctdchd = new DCBD_ChiTietHoaDon();
+                                ctdchd.MaDCBD = _cDCBD.get(dontu_ChiTiet.MaDon.Value).MaDCBD;
+                                ctdchd.STT = dontu_ChiTiet.STT.Value;
+
+                                ctdchd.DanhBo = dontu_ChiTiet.DanhBo;
+                                ctdchd.MLT = dontu_ChiTiet.MLT;
+                                ctdchd.HoTen = dontu_ChiTiet.HoTen;
+                                ctdchd.DiaChi = dontu_ChiTiet.DiaChi;
+
+                                ctdchd.NgayKy = DateTime.Now;
+
+                                ctdchd.KyHD = int.Parse(itemChild["Ky"].ToString()).ToString("00") + "/" + int.Parse(itemChild["Nam"].ToString());
+                                HOADON hd = _cThuTien.Get(dontu_ChiTiet.DanhBo, int.Parse(itemChild["Ky"].ToString()), int.Parse(itemChild["Nam"].ToString()));
+                                DocSo ds = _cDocSo.get(dontu_ChiTiet.DanhBo, int.Parse(itemChild["Ky"].ToString()), int.Parse(itemChild["Nam"].ToString()));
+                                if (hd != null)
+                                    ctdchd.Dot = hd.DOT;
+                                else
+                                    if (ds != null)
+                                        ctdchd.Dot = int.Parse(ds.Dot);
+                                ctdchd.Ky = int.Parse(itemChild["Ky"].ToString());
+                                ctdchd.Nam = int.Parse(itemChild["Nam"].ToString());
+                                if (hd != null)
+                                {
+                                    ctdchd.MST = hd.MST;
+                                    ctdchd.SoHoaDon = hd.SOHOADON;
+                                    ctdchd.Phuong = hd.Phuong;
+                                    ctdchd.Quan = hd.Quan;
+                                }
+                                ctdchd.SoHD = hd.SOPHATHANH.ToString();
+                                ///
+                                ctdchd.GiaBieu = hd.GB;
+                                ctdchd.DinhMucHN = hd.DinhMucHN;
+                                ctdchd.DinhMuc = hd.DM;
+                                ctdchd.TieuThu = hd.TIEUTHU;
+                                ///
+                                ctdchd.GiaBieu_BD = hd.GB;
+                                ctdchd.DinhMucHN_BD = hd.DinhMucHN;
+                                ctdchd.DinhMuc_BD = hd.DM;
+                                ctdchd.TieuThu_BD = int.Parse(itemChild["TieuThuDC"].ToString());
+                                ///
+
+                                string ChiTietCuA = "", ChiTietCuB = "", ChiTietMoiA = "", ChiTietMoiB = "";
+                                int Ky = 0, Nam = 0, TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0, TongTienCuA = 0, TongTienCuB = 0, TongTienMoiA = 0, TongTienMoiB = 0, TieuThu_DieuChinhGia = 0;
+                                DateTime TuNgay = new DateTime(), DenNgay = new DateTime();
+
+                                if (hd != null)
+                                {
+                                    Ky = hd.KY;
+                                    Nam = hd.NAM;
+                                    if (hd.TUNGAY != null)
+                                        TuNgay = hd.TUNGAY.Value;
+                                    else
+                                    {
+                                        TuNgay = ds.TuNgay.Value;
+                                    }
+                                    DenNgay = hd.DENNGAY.Value;
+                                    if (hd.TILESH != null && hd.TILESH.Value != 0)
+                                        TyleSH = hd.TILESH.Value;
+                                    if (hd.TILESX != null && hd.TILESX.Value != 0)
+                                        TyLeSX = hd.TILESX.Value;
+                                    if (hd.TILEDV != null && hd.TILEDV.Value != 0)
+                                        TyLeDV = hd.TILEDV.Value;
+                                    if (hd.TILEHCSN != null && hd.TILEHCSN.Value != 0)
+                                        TyLeHCSN = hd.TILEHCSN.Value;
+                                }
+                                else
+                                    if (ds != null)
+                                    {
+                                        Ky = int.Parse(ds.Ky);
+                                        Nam = ds.Nam.Value;
+                                        TuNgay = ds.TuNgay.Value;
+                                        DenNgay = ds.DenNgay.Value;
+                                        HOADON hoadon = new HOADON();
+                                        if (int.Parse(ds.Ky) == 1)
+                                            hoadon = _cThuTien.Get(ds.DanhBa, 12, ds.Nam.Value - 1);
+                                        else
+                                            hoadon = _cThuTien.Get(ds.DanhBa, int.Parse(ds.Ky) - 1, ds.Nam.Value);
+                                        if (hoadon.TILESH != null && hoadon.TILESH.Value != 0)
+                                            TyleSH = hoadon.TILESH.Value;
+                                        if (hoadon.TILESX != null && hoadon.TILESX.Value != 0)
+                                            TyLeSX = hoadon.TILESX.Value;
+                                        if (hoadon.TILEDV != null && hoadon.TILEDV.Value != 0)
+                                            TyLeDV = hoadon.TILEDV.Value;
+                                        if (hoadon.TILEHCSN != null && hoadon.TILEHCSN.Value != 0)
+                                            TyLeHCSN = hoadon.TILEHCSN.Value;
+                                    }
+
+                                _cGiaNuoc.TinhTienNuoc(false, false, false, 0, hd.DANHBA, Ky, Nam, TuNgay, DenNgay, ctdchd.GiaBieu.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, ctdchd.DinhMuc.Value, ctdchd.DinhMucHN.Value, ctdchd.TieuThu.Value, out TongTienCuA, out ChiTietCuA, out TongTienCuB, out ChiTietCuB, out TieuThu_DieuChinhGia);
+
+                                _cGiaNuoc.TinhTienNuoc(false, false, false, 0, hd.DANHBA, Ky, Nam, TuNgay, DenNgay, ctdchd.GiaBieu_BD.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, ctdchd.DinhMuc_BD.Value, ctdchd.DinhMucHN_BD.Value, ctdchd.TieuThu_BD.Value, out TongTienMoiA, out ChiTietMoiA, out TongTienMoiB, out ChiTietMoiB, out TieuThu_DieuChinhGia);
+
+                                ctdchd.ChiTietCu = ChiTietCuA + "\r\n" + ChiTietCuB;
+                                ctdchd.ChiTietMoi = ChiTietMoiA + "\r\n" + ChiTietMoiB;
+
+                                ///Tiền Nước
+                                if ((TongTienCuA + TongTienCuB) != 0)
+                                    ctdchd.TienNuoc_Start = TongTienCuA + TongTienCuB;
+                                else
+                                    ctdchd.TienNuoc_Start = 0;
+
+                                if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) != 0)
+                                    ctdchd.TienNuoc_BD = (TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB);
+                                else
+                                    ctdchd.TienNuoc_BD = 0;
+
+                                if ((TongTienMoiA + TongTienMoiB) != 0)
+                                    ctdchd.TienNuoc_End = (TongTienMoiA + TongTienMoiB);
+                                else
+                                    ctdchd.TienNuoc_End = 0;
+
+                                ///Thuế GTGT
+                                if ((TongTienCuA + TongTienCuB) != 0)
+                                    ctdchd.ThueGTGT_Start = (int)Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+                                else
+                                    ctdchd.ThueGTGT_Start = 0;
+
+                                if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) != 0)
+                                    ctdchd.ThueGTGT_BD = (int)(Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) - Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero));
+                                else
+                                    ctdchd.ThueGTGT_BD = 0;
+
+                                if ((TongTienMoiA + TongTienMoiB) != 0)
+                                    ctdchd.ThueGTGT_End = (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+                                else
+                                    ctdchd.ThueGTGT_End = 0;
+
+                                ///Phí BVMT
+                                if ((TongTienCuA + TongTienCuB) != 0)
+                                    ctdchd.PhiBVMT_Start = (int)Math.Round((double)(TongTienCuA + TongTienCuB) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                                else
+                                    ctdchd.PhiBVMT_Start = 0;
+
+                                if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) != 0)
+                                    ctdchd.PhiBVMT_BD = (int)(Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero) - Math.Round((double)(TongTienCuA + TongTienCuB) * 10 / 100, 0, MidpointRounding.AwayFromZero));
+                                else
+                                    ctdchd.PhiBVMT_BD = 0;
+
+                                if ((TongTienMoiA + TongTienMoiB) != 0)
+                                    ctdchd.PhiBVMT_End = (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                                else
+                                    ctdchd.PhiBVMT_End = 0;
+
+                                ///Tổng Cộng
+                                if ((TongTienCuA + TongTienCuB) != 0)
+                                    ctdchd.TongCong_Start = ((TongTienCuA + TongTienCuB) + (int)Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)(TongTienCuA + TongTienCuB) * 10 / 100, 0, MidpointRounding.AwayFromZero));
+                                else
+                                    ctdchd.TongCong_Start = 0;
+
+                                if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) != 0)
+                                    ctdchd.TongCong_BD = (((TongTienMoiA + TongTienMoiB) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero)) - ((TongTienCuA + TongTienCuB) + (int)Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)(TongTienCuA + TongTienCuB) * 10 / 100, 0, MidpointRounding.AwayFromZero)));
+                                else
+                                    ctdchd.TongCong_BD = 0;
+
+                                if ((TongTienMoiA + TongTienMoiB) != 0)
+                                    ctdchd.TongCong_End = ((TongTienMoiA + TongTienMoiB) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero));
+                                else
+                                    ctdchd.TongCong_End = 0;
+
+                                ctdchd.ThongTin = "Tiêu Thụ";
+
+                                if (ctdchd.TienNuoc_End - ctdchd.TienNuoc_Start == 0)
+                                    ctdchd.TangGiam = "";
+                                else
+                                    if (ctdchd.TienNuoc_End - ctdchd.TienNuoc_Start > 0)
+                                        ctdchd.TangGiam = "Tăng";
+                                    else
+                                        ctdchd.TangGiam = "Giảm";
+
+                                ///Ký Tên
+                                BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                                if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                    ctdchd.ChucVu = "GIÁM ĐỐC";
+                                else
+                                    ctdchd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                                ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                                ctdchd.PhieuDuocKy = true;
+                                _cDCBD.ThemDCHD(ctdchd);
+                            }
+                        }
+
+
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        private void TinhTienNuoc(string DanhBo, HOADON _hoadon, DocSo _docso)
+        {
 
+
+
+        }
     }
 }

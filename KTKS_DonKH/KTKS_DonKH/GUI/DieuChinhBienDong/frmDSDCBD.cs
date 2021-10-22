@@ -1850,6 +1850,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 //rpt.Dispose();
                             }
                         rptThongBaoDCHD_ChuKy rpt = new rptThongBaoDCHD_ChuKy();
+                        rpt.SetDataSource(dsBaoCao);
                         frmShowBaoCao frm = new frmShowBaoCao(rpt);
                         frm.Show();
                     }
