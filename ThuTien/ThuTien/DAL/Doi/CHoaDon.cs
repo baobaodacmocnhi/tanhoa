@@ -7875,17 +7875,19 @@ namespace ThuTien.DAL.Doi
         {
             var query = from itemHD in _db.HOADONs
                         join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON
-                        where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.MaNV_DangNgan != null 
+                        where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.MaNV_DangNgan != null
+                        && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7))
+                        group itemDC by itemDC.FK_HOADON into itemGroup
                         select new
                         {
-                            Nam = itemHD.NAM,
-                            SoPhatHanh = itemHD.SOPHATHANH,
-                            DangNgan = itemHD.DangNgan_ChuyenKhoan == true ? "10" : itemHD.DangNgan_Ton == true ? "TN" : itemHD.DangNgan_Quay == true ? "TQ" : "",
-                            NgayGiaiTrach = itemHD.NGAYGIAITRACH,
-                            TieuThu = itemDC.TIEUTHU_DC.Value - itemDC.TIEUTHU_BD.Value,
-                            GiaBan = itemDC.GIABAN_DC,
-                            ThueGTGT = itemDC.THUE_DC,
-                            PhiBVMT = itemDC.PHI_DC,
+                            Nam = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NAM,
+                            SoPhatHanh = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).SOPHATHANH,
+                            DangNgan = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_ChuyenKhoan == true ? "10" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Ton == true ? "TN" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Quay == true ? "TQ" : "",
+                            NgayGiaiTrach = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NGAYGIAITRACH,
+                            TieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU_DC) - itemGroup.Sum(groupItem => groupItem.TIEUTHU_BD),
+                            GiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN_DC),
+                            ThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE_DC),
+                            PhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI_DC),
                         };
             return LINQToDataTable(query.ToList());
         }
