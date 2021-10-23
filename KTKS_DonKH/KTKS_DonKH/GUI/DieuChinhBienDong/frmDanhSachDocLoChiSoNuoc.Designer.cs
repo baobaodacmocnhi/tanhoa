@@ -519,7 +519,6 @@
             this.btnTVLapDon.TabIndex = 12;
             this.btnTVLapDon.Text = "TV Lập Đơn";
             this.btnTVLapDon.UseVisualStyleBackColor = true;
-            this.btnTVLapDon.Visible = false;
             this.btnTVLapDon.Click += new System.EventHandler(this.btnTVLapDon_Click);
             // 
             // btnQLDHNXemChot
@@ -550,7 +549,6 @@
             this.btnTVDieuChinh.TabIndex = 29;
             this.btnTVDieuChinh.Text = "TV Điều Chỉnh";
             this.btnTVDieuChinh.UseVisualStyleBackColor = true;
-            this.btnTVDieuChinh.Visible = false;
             this.btnTVDieuChinh.Click += new System.EventHandler(this.btnTVDieuChinh_Click);
             // 
             // frmDanhSachDocLoChiSoNuoc
