@@ -146,18 +146,18 @@ namespace KTKS_DonKH.GUI.CongVan
                                     {
                                         if (_cCongVanDi.Them(item, dateNgayLap.Value))
                                         {
-                                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            Clear();
-                                            btnXem.PerformClick();
+                                            //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            //Clear();
+                                            //btnXem.PerformClick();
                                         }
                                     }
                                     else
                                     {
                                         if (_cCongVanDi.Them(item))
                                         {
-                                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            Clear();
-                                            btnXem.PerformClick();
+                                            //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            //Clear();
+                                            //btnXem.PerformClick();
                                         }
                                     }
                                 }
@@ -168,21 +168,24 @@ namespace KTKS_DonKH.GUI.CongVan
                                 {
                                     if (_cCongVanDi.Them(item, dateNgayLap.Value))
                                     {
-                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        Clear();
-                                        btnXem.PerformClick();
+                                        //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        //Clear();
+                                        //btnXem.PerformClick();
                                     }
                                 }
                                 else
                                 {
                                     if (_cCongVanDi.Them(item))
                                     {
-                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        Clear();
-                                        btnXem.PerformClick();
+                                        //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        //Clear();
+                                        //btnXem.PerformClick();
                                     }
                                 }
                         }
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Clear();
+                    btnXem.PerformClick();
                 }
                 else
                 {

@@ -46,6 +46,26 @@ namespace KTKS_DonKH.DAL
             db.SubmitChanges();
         }
 
+
+        public bool ExecuteNonQuery(string sql)
+        {
+            try
+            {
+                Connect();
+                command = new SqlCommand(sql, connection);
+                int rowsAffected = command.ExecuteNonQuery();
+                if (rowsAffected >= 1)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                Disconnect();
+                throw ex;
+            }
+        }
+
         public DataTable ExecuteQuery_DataTable(string sql)
         {
             this.Connect();

@@ -143,6 +143,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (MessageBox.Show("Bạn có chắc chắn Chốt?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
+                        if (_dbThuongVu.ChiSoLo_DanhBos.Any(item => item.DanhBo == gridView.GetDataRow(0)["DanhBo"].ToString() && item.Nam == int.Parse(gridView.GetDataRow(0)["Nam"].ToString()) && item.Ky == int.Parse(gridView.GetDataRow(0)["Ky"].ToString()) && item.MaDon != null) == true)
+                        {
+                            MessageBox.Show("Không Thêm Được do P. Thương Vụ đã Lập Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         for (int i = 0; i < gridView.DataRowCount; i++)
                         {
                             DataRow row = gridView.GetDataRow(i);
@@ -205,7 +210,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             DataSet ds = new DataSet();
 
-            string sql = "(select Chon=CAST(0 as bit),ID,DanhBo,MLT,HoTen,DiaChi,Nam,Ky,Dot,CodeCu,CodeMoi,CSC,CSM,TieuThu,TieuThuLo,TieuThuLoConLai,TinhTrang='',MaDon,STT"
+            string sql = "(select Chon=CAST(0 as bit),ID,DanhBo,MLT,HoTen,DiaChi,Nam,Ky,Dot,CodeCu,CodeMoi,CSC,CSM,TieuThu,TieuThuLo,TieuThuLoConLai,TinhTrang='',MaDon,STT,DCHD"
                         + " from ChiSoLo_DanhBo where Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim() + ")order by DanhBo asc";
             DataTable dtParent = _cDCBD.ExecuteQuery_DataTable(sql);
             dtParent.TableName = "Parent";
@@ -257,9 +262,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (MessageBox.Show("Bạn có chắc chắn Xóa?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        if (gridView.GetDataRow(0)["MaDon"] != null && gridView.GetDataRow(0)["MaDon"].ToString() != "")
+                        if (gridView.GetDataRow(0)["MaDon"].ToString() != "")
                         {
                             MessageBox.Show("Đã có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (bool.Parse(gridView.GetDataRow(0)["DCHD"].ToString()) == true)
+                        {
+                            MessageBox.Show("Đã Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         for (int i = 0; i < gridView.DataRowCount; i++)
@@ -326,7 +336,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                         }
                     }
-                    if(flag==true)
+                    if (flag == true)
                         row["TinhTrang"] = "Có Điều Chỉnh Hóa Đơn";
                     row["TieuThuLoConLai"] = TieuThuLo * -1;
                 }
@@ -415,6 +425,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (gridView.GetDataRow(0)["MaDon"].ToString() == "")
                         {
                             MessageBox.Show("Chưa có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (bool.Parse(gridView.GetDataRow(0)["DCHD"].ToString()) == true)
+                        {
+                            MessageBox.Show("Đã Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         for (int i = 0; i < gridView.DataRowCount; i++)
@@ -623,7 +638,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     }
                                     _cDCBD.ExecuteNonQuery("update ChiSoLo_HoaDon set TieuThuDC=" + itemChild["TieuThuDC"] + " where MaHD=" + itemChild["MaHD"]);
                                 }
-                            _cDCBD.ExecuteNonQuery("update ChiSoLo_DanhBo set TieuThuLoConLai=" + row["TieuThuLoConLai"] + " where DanhBo='" + row["DanhBo"] + "' and Nam=" + row["Nam"] + " and Ky=" + row["Ky"] + " and Dot=" + row["Dot"]);
+                            _cDCBD.ExecuteNonQuery("update ChiSoLo_DanhBo set TieuThuLoConLai=" + row["TieuThuLoConLai"] + ",DCHD=1 where DanhBo='" + row["DanhBo"] + "' and Nam=" + row["Nam"] + " and Ky=" + row["Ky"] + " and Dot=" + row["Dot"]);
                         }
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -637,11 +652,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void TinhTienNuoc(string DanhBo, HOADON _hoadon, DocSo _docso)
+        private void btnTVCapNhatQLDHN_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen("mnuDCHD", "Them"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        for (int i = 0; i < gridView.DataRowCount; i++)
+                        {
+                            DataRow row = gridView.GetDataRow(i);
 
-
-
+                            string sql = "update ChiSo set CodeMoi='5" + row["CodeCu"].ToString().Substring(0, 1) + "' where Nam=" + row["Nam"] + " and Ky=" + row["Ky"] + " and Dot=" + row["Dot"];
+                            _cDocSo.ExecuteNonQuery(sql);
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

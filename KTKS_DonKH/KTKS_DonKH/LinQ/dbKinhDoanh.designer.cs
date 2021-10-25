@@ -11068,6 +11068,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _TieuThuLoConLai;
 		
+		private bool _DCHD;
+		
+		private System.Nullable<int> _MaDon;
+		
+		private System.Nullable<int> _STT;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -11112,6 +11118,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnTieuThuLoChanged();
     partial void OnTieuThuLoConLaiChanging(System.Nullable<int> value);
     partial void OnTieuThuLoConLaiChanged();
+    partial void OnDCHDChanging(bool value);
+    partial void OnDCHDChanged();
+    partial void OnMaDonChanging(System.Nullable<int> value);
+    partial void OnMaDonChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -11424,6 +11436,66 @@ namespace KTKS_DonKH.LinQ
 					this._TieuThuLoConLai = value;
 					this.SendPropertyChanged("TieuThuLoConLai");
 					this.OnTieuThuLoConLaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DCHD", DbType="Bit NOT NULL")]
+		public bool DCHD
+		{
+			get
+			{
+				return this._DCHD;
+			}
+			set
+			{
+				if ((this._DCHD != value))
+				{
+					this.OnDCHDChanging(value);
+					this.SendPropertyChanging();
+					this._DCHD = value;
+					this.SendPropertyChanged("DCHD");
+					this.OnDCHDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="Int")]
+		public System.Nullable<int> MaDon
+		{
+			get
+			{
+				return this._MaDon;
+			}
+			set
+			{
+				if ((this._MaDon != value))
+				{
+					this.OnMaDonChanging(value);
+					this.SendPropertyChanging();
+					this._MaDon = value;
+					this.SendPropertyChanged("MaDon");
+					this.OnMaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
