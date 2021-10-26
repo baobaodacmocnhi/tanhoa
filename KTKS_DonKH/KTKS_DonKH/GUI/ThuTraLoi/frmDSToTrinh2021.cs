@@ -133,55 +133,55 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
         }
 
-        private void btnIn_Click(object sender, EventArgs e)
-        {
-            if (_cttt != null)
-            {
-                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+        //private void btnIn_Click(object sender, EventArgs e)
+        //{
+        //    if (_cttt != null)
+        //    {
+        //        DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+        //        DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
-                dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
-                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
-                dr["SoPhieu"] = _cttt.IDCT.ToString().Insert(_cttt.IDCT.ToString().Length - 2, "-");
-                dr["HoTen"] = _cttt.HoTen;
-                dr["DiaChi"] = _cttt.DiaChi;
-                if (!string.IsNullOrEmpty(_cttt.DanhBo) && _cttt.DanhBo.Length == 11)
-                    dr["DanhBo"] = _cttt.DanhBo.Insert(7, " ").Insert(4, " ");
-                dr["LoTrinh"] = _cttt.LoTrinh;
-                dr["GiaBieu"] = _cttt.GiaBieu;
-                if (_cttt.DinhMuc != null)
-                    dr["DinhMuc"] = _cttt.DinhMuc.Value;
-                if (_cttt.DinhMucHN != null)
-                    dr["DinhMucHN"] = _cttt.DinhMucHN.Value;
+        //        dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+        //        dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+        //        dr["SoPhieu"] = _cttt.IDCT.ToString().Insert(_cttt.IDCT.ToString().Length - 2, "-");
+        //        dr["HoTen"] = _cttt.HoTen;
+        //        dr["DiaChi"] = _cttt.DiaChi;
+        //        if (!string.IsNullOrEmpty(_cttt.DanhBo) && _cttt.DanhBo.Length == 11)
+        //            dr["DanhBo"] = _cttt.DanhBo.Insert(7, " ").Insert(4, " ");
+        //        dr["LoTrinh"] = _cttt.LoTrinh;
+        //        dr["GiaBieu"] = _cttt.GiaBieu;
+        //        if (_cttt.DinhMuc != null)
+        //            dr["DinhMuc"] = _cttt.DinhMuc.Value;
+        //        if (_cttt.DinhMucHN != null)
+        //            dr["DinhMucHN"] = _cttt.DinhMucHN.Value;
 
-                dr["VeViec"] = _cttt.VeViec;
-                dr["KinhTrinh"] = _cttt.KinhTrinh;
-                dr["ThongQua"] = _cttt.ThongQua;
-                dr["NoiDung"] = _cttt.NoiDung;
-                dr["NoiNhan"] = _cttt.NoiNhan;
-                BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                    dr["ChucVu"] = "GIÁM ĐỐC";
-                else
-                    dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
-                dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
+        //        dr["VeViec"] = _cttt.VeViec;
+        //        dr["KinhTrinh"] = _cttt.KinhTrinh;
+        //        dr["ThongQua"] = _cttt.ThongQua;
+        //        dr["NoiDung"] = _cttt.NoiDung;
+        //        dr["NoiNhan"] = _cttt.NoiNhan;
+        //        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+        //        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+        //            dr["ChucVu"] = "GIÁM ĐỐC";
+        //        else
+        //            dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
+        //        dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
 
-                dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+        //        dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
-                ReportDocument rpt;
-                if (_cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
-                {
-                    rpt = new rptToTrinh_ThongQuaPGD();
-                }
-                else
-                {
-                    rpt = new rptToTrinh();
-                }
-                rpt.SetDataSource(dsBaoCao);
-                frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                frm.Show();
-            }
-        }
+        //        ReportDocument rpt;
+        //        if (_cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
+        //        {
+        //            rpt = new rptToTrinh_ThongQuaPGD();
+        //        }
+        //        else
+        //        {
+        //            rpt = new rptToTrinh();
+        //        }
+        //        rpt.SetDataSource(dsBaoCao);
+        //        frmShowBaoCao frm = new frmShowBaoCao(rpt);
+        //        frm.Show();
+        //    }
+        //}
 
         private void dgvToTrinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -232,7 +232,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 PrintDialog printDialog = new PrintDialog();
                 if (printDialog.ShowDialog() == DialogResult.OK)
                 {
-                    BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                    BanGiamDoc bgdTQ = _cBanGiamDoc.getBGDNguoiKy();
+                    BanGiamDoc bgdDuyet = _cBanGiamDoc.getBGDNguoiKyDuyet();
                     for (int i = 0; i < dgvToTrinh.Rows.Count; i++)
                         if (dgvToTrinh["In", i].Value != null && bool.Parse(dgvToTrinh["In", i].Value.ToString()) == true)
                         {
@@ -262,11 +263,17 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 dr["ThongQua"] = cttt.ThongQua;
                                 dr["NoiDung"] = cttt.NoiDung;
                                 dr["NoiNhan"] = cttt.NoiNhan;
-                                if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                    dr["ChucVu"] = "GIÁM ĐỐC";
+                                dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
+                                dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
+
+                                if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                    dr["ChucVuThongQua"] = "GIÁM ĐỐC";
                                 else
-                                    dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
-                                dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
+                                    dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                                dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
+
+                                dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
+                                dr["NguoiKyDuyet"] = bgdDuyet.HoTen.ToUpper();
 
                                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
@@ -329,11 +336,17 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
                                                 dr["Luuy"] = "đồng hồ nước bị lỗi kỹ thuật";
                                             }
-                                    if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                        dr["ChucVu"] = "GIÁM ĐỐC";
+                                    dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
+                                    dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
+
+                                    if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                        dr["ChucVuThongQua"] = "GIÁM ĐỐC";
                                     else
-                                        dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
-                                    dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
+                                        dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                                    dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
+
+                                    dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
+                                    dr["NguoiKyDuyet"] = bgdDuyet.HoTen.ToUpper();
 
                                     dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
                                     //

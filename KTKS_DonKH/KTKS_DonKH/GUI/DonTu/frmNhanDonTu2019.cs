@@ -106,6 +106,9 @@ namespace KTKS_DonKH.GUI.DonTu
                 txtDinhMucHN.Text = "";
             dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(entity.DANHBA);
 
+            if (_cDonTu.checkExists_14ngay(entity.DANHBA) == true)
+                MessageBox.Show("Danh Bộ này có Đơn trong 14 ngày gần nhất", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             string str, TinhTrang = "";
             str = _cTTTN.check_TinhTrang_Ton(entity.DANHBA);
             if (str == "")
@@ -488,7 +491,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         entityCT.CreateBy = CTaiKhoan.MaUser;
                         entityCT.CreateDate = DateTime.Now;
                         entityCT.TinhTrang = "Tồn";
-                        
+
                         entity.DonTu_ChiTiets.Add(entityCT);
                     }
                     else if (tabControl.SelectedTab.Name == "tabCongVan")
@@ -1395,7 +1398,9 @@ namespace KTKS_DonKH.GUI.DonTu
             }
         }
 
-      
+
+
+
 
 
     }

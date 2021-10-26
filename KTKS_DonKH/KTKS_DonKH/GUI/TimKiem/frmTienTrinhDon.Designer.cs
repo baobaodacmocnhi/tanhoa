@@ -75,7 +75,9 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn123 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn113 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn114 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -294,6 +296,8 @@
             this.gridViewKTXM.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewKTXM.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewKTXM.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewKTXM.OptionsBehavior.Editable = false;
+            this.gridViewKTXM.OptionsBehavior.ReadOnly = true;
             this.gridViewKTXM.OptionsView.ColumnAutoWidth = false;
             this.gridViewKTXM.OptionsView.ShowGroupPanel = false;
             this.gridViewKTXM.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewKTXM_RowCellClick);
@@ -477,6 +481,8 @@
             this.gridViewBamChi.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewBamChi.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewBamChi.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewBamChi.OptionsBehavior.Editable = false;
+            this.gridViewBamChi.OptionsBehavior.ReadOnly = true;
             this.gridViewBamChi.OptionsView.ColumnAutoWidth = false;
             this.gridViewBamChi.OptionsView.ShowGroupPanel = false;
             this.gridViewBamChi.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewBamChi_RowCellClick);
@@ -576,6 +582,8 @@
             this.gridViewDongNuoc.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewDongNuoc.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewDongNuoc.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewDongNuoc.OptionsBehavior.Editable = false;
+            this.gridViewDongNuoc.OptionsBehavior.ReadOnly = true;
             this.gridViewDongNuoc.OptionsView.ColumnAutoWidth = false;
             this.gridViewDongNuoc.OptionsView.ShowGroupPanel = false;
             this.gridViewDongNuoc.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewDongNuoc_RowCellClick);
@@ -656,7 +664,9 @@
             this.gridColumn13,
             this.gridColumn123,
             this.gridColumn14,
+            this.gridColumn113,
             this.gridColumn15,
+            this.gridColumn114,
             this.gridColumn26,
             this.gridColumn16,
             this.gridColumn17,
@@ -681,6 +691,8 @@
             this.gridViewDCBD.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewDCBD.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewDCBD.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewDCBD.OptionsBehavior.Editable = false;
+            this.gridViewDCBD.OptionsBehavior.ReadOnly = true;
             this.gridViewDCBD.OptionsView.ColumnAutoWidth = false;
             this.gridViewDCBD.OptionsView.ShowGroupPanel = false;
             this.gridViewDCBD.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewDCBD_RowCellClick);
@@ -713,6 +725,12 @@
             this.gridColumn14.VisibleIndex = 2;
             this.gridColumn14.Width = 90;
             // 
+            // gridColumn113
+            // 
+            this.gridColumn113.Caption = "Kỳ";
+            this.gridColumn113.FieldName = "KyHD";
+            this.gridColumn113.Name = "gridColumn113";
+            // 
             // gridColumn15
             // 
             this.gridColumn15.Caption = "Thông Tin";
@@ -722,13 +740,21 @@
             this.gridColumn15.VisibleIndex = 3;
             this.gridColumn15.Width = 100;
             // 
+            // gridColumn114
+            // 
+            this.gridColumn114.Caption = "Hiệu Lực Kỳ";
+            this.gridColumn114.FieldName = "HieuLucKy";
+            this.gridColumn114.Name = "gridColumn114";
+            this.gridColumn114.Visible = true;
+            this.gridColumn114.VisibleIndex = 4;
+            // 
             // gridColumn26
             // 
             this.gridColumn26.Caption = "Danh Bộ";
             this.gridColumn26.FieldName = "DanhBo";
             this.gridColumn26.Name = "gridColumn26";
             this.gridColumn26.Visible = true;
-            this.gridColumn26.VisibleIndex = 4;
+            this.gridColumn26.VisibleIndex = 5;
             this.gridColumn26.Width = 90;
             // 
             // gridColumn16
@@ -737,7 +763,7 @@
             this.gridColumn16.FieldName = "HoTen";
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 5;
+            this.gridColumn16.VisibleIndex = 6;
             this.gridColumn16.Width = 200;
             // 
             // gridColumn17
@@ -795,7 +821,7 @@
             this.gridColumn23.FieldName = "GiaBieu_BD";
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 6;
+            this.gridColumn23.VisibleIndex = 7;
             this.gridColumn23.Width = 90;
             // 
             // gridColumn24
@@ -812,7 +838,7 @@
             this.gridColumn25.FieldName = "DinhMuc_BD";
             this.gridColumn25.Name = "gridColumn25";
             this.gridColumn25.Visible = true;
-            this.gridColumn25.VisibleIndex = 7;
+            this.gridColumn25.VisibleIndex = 8;
             this.gridColumn25.Width = 100;
             // 
             // gridColumn91
@@ -823,7 +849,7 @@
             this.gridColumn91.FieldName = "DinhMucHN_BD";
             this.gridColumn91.Name = "gridColumn91";
             this.gridColumn91.Visible = true;
-            this.gridColumn91.VisibleIndex = 8;
+            this.gridColumn91.VisibleIndex = 9;
             this.gridColumn91.Width = 150;
             // 
             // gridColumn27
@@ -862,7 +888,7 @@
             // 
             this.gridColumn31.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.gridColumn31.AppearanceCell.Options.UseBackColor = true;
-            this.gridColumn31.Caption = "Biến Động";
+            this.gridColumn31.Caption = "Tăng Giảm";
             this.gridColumn31.FieldName = "TangGiam";
             this.gridColumn31.Name = "gridColumn31";
             this.gridColumn31.Width = 90;
@@ -882,7 +908,7 @@
             this.gridColumn121.FieldName = "CreateBy";
             this.gridColumn121.Name = "gridColumn121";
             this.gridColumn121.Visible = true;
-            this.gridColumn121.VisibleIndex = 9;
+            this.gridColumn121.VisibleIndex = 10;
             this.gridColumn121.Width = 200;
             // 
             // gridViewCHDB
@@ -911,6 +937,8 @@
             this.gridViewCHDB.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewCHDB.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewCHDB.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewCHDB.OptionsBehavior.Editable = false;
+            this.gridViewCHDB.OptionsBehavior.ReadOnly = true;
             this.gridViewCHDB.OptionsView.ColumnAutoWidth = false;
             this.gridViewCHDB.OptionsView.ShowGroupPanel = false;
             this.gridViewCHDB.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewCHDB_RowCellClick);
@@ -1041,6 +1069,8 @@
             this.gridViewPhieuCHDB.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewPhieuCHDB.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewPhieuCHDB.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewPhieuCHDB.OptionsBehavior.Editable = false;
+            this.gridViewPhieuCHDB.OptionsBehavior.ReadOnly = true;
             this.gridViewPhieuCHDB.OptionsView.ColumnAutoWidth = false;
             this.gridViewPhieuCHDB.OptionsView.ShowGroupPanel = false;
             this.gridViewPhieuCHDB.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewPhieuCHDB_RowCellClick);
@@ -1140,6 +1170,8 @@
             this.gridViewTTTL.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewTTTL.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewTTTL.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewTTTL.OptionsBehavior.Editable = false;
+            this.gridViewTTTL.OptionsBehavior.ReadOnly = true;
             this.gridViewTTTL.OptionsView.ColumnAutoWidth = false;
             this.gridViewTTTL.OptionsView.ShowGroupPanel = false;
             this.gridViewTTTL.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewTTTL_RowCellClick);
@@ -1243,6 +1275,8 @@
             this.gridViewGianLan.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewGianLan.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewGianLan.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewGianLan.OptionsBehavior.Editable = false;
+            this.gridViewGianLan.OptionsBehavior.ReadOnly = true;
             this.gridViewGianLan.OptionsView.ColumnAutoWidth = false;
             this.gridViewGianLan.OptionsView.ShowGroupPanel = false;
             this.gridViewGianLan.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewGianLan_RowCellClick);
@@ -1400,6 +1434,8 @@
             this.gridViewTruyThu.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewTruyThu.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewTruyThu.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewTruyThu.OptionsBehavior.Editable = false;
+            this.gridViewTruyThu.OptionsBehavior.ReadOnly = true;
             this.gridViewTruyThu.OptionsView.ColumnAutoWidth = false;
             this.gridViewTruyThu.OptionsView.ShowGroupPanel = false;
             this.gridViewTruyThu.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewTruyThu_RowCellClick);
@@ -1509,6 +1545,8 @@
             this.gridViewToTrinh.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewToTrinh.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewToTrinh.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewToTrinh.OptionsBehavior.Editable = false;
+            this.gridViewToTrinh.OptionsBehavior.ReadOnly = true;
             this.gridViewToTrinh.OptionsView.ColumnAutoWidth = false;
             this.gridViewToTrinh.OptionsView.ShowGroupPanel = false;
             this.gridViewToTrinh.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewToTrinh_RowCellClick);
@@ -1594,6 +1632,8 @@
             this.gridViewThuMoi.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewThuMoi.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewThuMoi.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewThuMoi.OptionsBehavior.Editable = false;
+            this.gridViewThuMoi.OptionsBehavior.ReadOnly = true;
             this.gridViewThuMoi.OptionsView.ColumnAutoWidth = false;
             this.gridViewThuMoi.OptionsView.ShowGroupPanel = false;
             this.gridViewThuMoi.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewThuMoi_RowCellClick);
@@ -1681,6 +1721,8 @@
             this.gridViewTienTrinh.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewTienTrinh.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewTienTrinh.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewTienTrinh.OptionsBehavior.Editable = false;
+            this.gridViewTienTrinh.OptionsBehavior.ReadOnly = true;
             this.gridViewTienTrinh.OptionsView.ColumnAutoWidth = false;
             this.gridViewTienTrinh.OptionsView.ShowGroupPanel = false;
             // 
@@ -1766,6 +1808,8 @@
             this.gridViewDon.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewDon.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewDon.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewDon.OptionsBehavior.Editable = false;
+            this.gridViewDon.OptionsBehavior.ReadOnly = true;
             this.gridViewDon.OptionsFind.AllowFindPanel = false;
             this.gridViewDon.OptionsView.ColumnAutoWidth = false;
             this.gridViewDon.OptionsView.ShowGroupPanel = false;
@@ -2620,5 +2664,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn92;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn93;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn94;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn113;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn114;
     }
 }

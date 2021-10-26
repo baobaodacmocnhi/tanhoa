@@ -67,7 +67,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabTTKH = new System.Windows.Forms.TabPage();
-            this.chkChanHoaDon = new System.Windows.Forms.CheckBox();
             this.txtDinhMucHN = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.txtNguoiBao = new System.Windows.Forms.TextBox();
@@ -103,6 +102,7 @@
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkChanHoaDon = new System.Windows.Forms.CheckBox();
             this.txtDM = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtHieuLucKy = new System.Windows.Forms.TextBox();
@@ -529,16 +529,6 @@
             this.tabTTKH.Text = "Thông Tin Khách Hàng";
             this.tabTTKH.UseVisualStyleBackColor = true;
             // 
-            // chkChanHoaDon
-            // 
-            this.chkChanHoaDon.AutoSize = true;
-            this.chkChanHoaDon.Location = new System.Drawing.Point(682, 229);
-            this.chkChanHoaDon.Name = "chkChanHoaDon";
-            this.chkChanHoaDon.Size = new System.Drawing.Size(114, 20);
-            this.chkChanHoaDon.TabIndex = 95;
-            this.chkChanHoaDon.Text = "Chặn Hóa Đơn";
-            this.chkChanHoaDon.UseVisualStyleBackColor = true;
-            // 
             // txtDinhMucHN
             // 
             this.txtDinhMucHN.Location = new System.Drawing.Point(597, 90);
@@ -826,6 +816,16 @@
             this.Phuong.HeaderText = "Phường";
             this.Phuong.Name = "Phuong";
             this.Phuong.Visible = false;
+            // 
+            // chkChanHoaDon
+            // 
+            this.chkChanHoaDon.AutoSize = true;
+            this.chkChanHoaDon.Location = new System.Drawing.Point(682, 229);
+            this.chkChanHoaDon.Name = "chkChanHoaDon";
+            this.chkChanHoaDon.Size = new System.Drawing.Size(114, 20);
+            this.chkChanHoaDon.TabIndex = 95;
+            this.chkChanHoaDon.Text = "Chặn Hóa Đơn";
+            this.chkChanHoaDon.UseVisualStyleBackColor = true;
             // 
             // txtDM
             // 

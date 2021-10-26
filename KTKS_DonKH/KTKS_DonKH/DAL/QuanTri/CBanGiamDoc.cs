@@ -30,6 +30,11 @@ namespace KTKS_DonKH.DAL.QuanTri
             return db.BanGiamDocs.SingleOrDefault(itemBGD => itemBGD.KyTen == true);
         }
 
+        public BanGiamDoc getBGDNguoiKyDuyet()
+        {
+            return db.BanGiamDocs.SingleOrDefault(itemBGD => itemBGD.KyTenDuyet == true);
+        }
+
         public bool Them(BanGiamDoc bangiamdoc)
         {
             try

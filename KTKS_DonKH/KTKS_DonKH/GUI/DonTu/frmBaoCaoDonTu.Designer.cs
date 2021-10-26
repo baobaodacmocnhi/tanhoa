@@ -149,7 +149,7 @@
             this.groupBox1.Controls.Add(this.panel_KhoangThoiGian_LichSuChuyenDon);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(799, 89);
+            this.groupBox1.Size = new System.Drawing.Size(829, 89);
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lịch Sử Chuyển Đơn (ngày chuyển)";
@@ -171,7 +171,7 @@
             "",
             "Số Công Văn",
             "Ngày"});
-            this.cmbNoiNhan_LichSuChuyenDon.Location = new System.Drawing.Point(512, 31);
+            this.cmbNoiNhan_LichSuChuyenDon.Location = new System.Drawing.Point(539, 31);
             this.cmbNoiNhan_LichSuChuyenDon.Name = "cmbNoiNhan_LichSuChuyenDon";
             this.cmbNoiNhan_LichSuChuyenDon.Size = new System.Drawing.Size(200, 24);
             this.cmbNoiNhan_LichSuChuyenDon.TabIndex = 41;
@@ -179,7 +179,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(442, 36);
+            this.label9.Location = new System.Drawing.Point(469, 36);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(64, 16);
             this.label9.TabIndex = 40;
@@ -226,7 +226,7 @@
             // 
             // btnBaoCao_LichSuChuyenDon
             // 
-            this.btnBaoCao_LichSuChuyenDon.Location = new System.Drawing.Point(718, 30);
+            this.btnBaoCao_LichSuChuyenDon.Location = new System.Drawing.Point(745, 30);
             this.btnBaoCao_LichSuChuyenDon.Name = "btnBaoCao_LichSuChuyenDon";
             this.btnBaoCao_LichSuChuyenDon.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_LichSuChuyenDon.TabIndex = 25;
@@ -242,26 +242,26 @@
             this.panel_KhoangThoiGian_LichSuChuyenDon.Controls.Add(this.label2);
             this.panel_KhoangThoiGian_LichSuChuyenDon.Location = new System.Drawing.Point(259, 21);
             this.panel_KhoangThoiGian_LichSuChuyenDon.Name = "panel_KhoangThoiGian_LichSuChuyenDon";
-            this.panel_KhoangThoiGian_LichSuChuyenDon.Size = new System.Drawing.Size(177, 60);
+            this.panel_KhoangThoiGian_LichSuChuyenDon.Size = new System.Drawing.Size(209, 60);
             this.panel_KhoangThoiGian_LichSuChuyenDon.TabIndex = 24;
             this.panel_KhoangThoiGian_LichSuChuyenDon.Visible = false;
             // 
             // dateTu_LichSuChuyenDon
             // 
-            this.dateTu_LichSuChuyenDon.CustomFormat = "dd/MM/yyyy";
+            this.dateTu_LichSuChuyenDon.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dateTu_LichSuChuyenDon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTu_LichSuChuyenDon.Location = new System.Drawing.Point(80, 5);
             this.dateTu_LichSuChuyenDon.Name = "dateTu_LichSuChuyenDon";
-            this.dateTu_LichSuChuyenDon.Size = new System.Drawing.Size(90, 22);
+            this.dateTu_LichSuChuyenDon.Size = new System.Drawing.Size(121, 22);
             this.dateTu_LichSuChuyenDon.TabIndex = 13;
             // 
             // dateDen_LichSuChuyenDon
             // 
-            this.dateDen_LichSuChuyenDon.CustomFormat = "dd/MM/yyyy";
+            this.dateDen_LichSuChuyenDon.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dateDen_LichSuChuyenDon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateDen_LichSuChuyenDon.Location = new System.Drawing.Point(80, 33);
             this.dateDen_LichSuChuyenDon.Name = "dateDen_LichSuChuyenDon";
-            this.dateDen_LichSuChuyenDon.Size = new System.Drawing.Size(90, 22);
+            this.dateDen_LichSuChuyenDon.Size = new System.Drawing.Size(121, 22);
             this.dateDen_LichSuChuyenDon.TabIndex = 14;
             // 
             // label1

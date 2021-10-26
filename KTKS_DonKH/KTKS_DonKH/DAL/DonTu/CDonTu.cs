@@ -664,6 +664,11 @@ namespace KTKS_DonKH.DAL.DonTu
                 return false;
         }
 
+        public bool checkExists_14ngay(string DanhBo)
+        {
+            return db.DonTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date >= DateTime.Now.Date.AddDays(-14));
+        }
+
         public DonTu_ChiTiet get_ChiTiet(int ID)
         {
             return db.DonTu_ChiTiets.SingleOrDefault(item => item.ID == ID);
@@ -1422,7 +1427,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToGD":
                     var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                                where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate
                                 orderby item.NgayChuyen descending, item.ID descending
                                 select new
                                 {
@@ -1443,7 +1448,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToTB":
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -1464,7 +1469,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToTP":
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -1485,7 +1490,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToBC":
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -1506,7 +1511,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 default:
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            where item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -1534,7 +1539,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToGD":
                     var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where (item.ID_NoiChuyen == 1 || item.CreateBy == CreateBy) && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                                where (item.ID_NoiChuyen == 1 || item.CreateBy == CreateBy) && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate
                                 orderby item.NgayChuyen descending, item.ID descending
                                 select new
                                 {
@@ -1555,7 +1560,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToTB":
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where (item.ID_NoiChuyen == 2 || item.CreateBy == CreateBy) && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            where (item.ID_NoiChuyen == 2 || item.CreateBy == CreateBy) && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -1576,7 +1581,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToTP":
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where (item.ID_NoiChuyen == 3 || item.CreateBy == CreateBy) && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            where (item.ID_NoiChuyen == 3 || item.CreateBy == CreateBy) && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -1597,7 +1602,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToBC":
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where (item.ID_NoiChuyen == 4 || item.CreateBy == CreateBy) && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            where (item.ID_NoiChuyen == 4 || item.CreateBy == CreateBy) && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -1618,7 +1623,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 default:
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
+                            where item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate && item.CreateBy == CreateBy
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -1870,7 +1875,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToGD":
                     var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                                where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate && item.ID_NoiNhan == ID_NoiNhan
                                 orderby item.NgayChuyen descending, item.ID descending
                                 select new
                                 {
@@ -1891,7 +1896,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToTB":
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                            where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate && item.ID_NoiNhan == ID_NoiNhan
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -1912,7 +1917,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToTP":
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                            where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate && item.ID_NoiNhan == ID_NoiNhan
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -1933,7 +1938,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToBC":
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                            where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate && item.ID_NoiNhan == ID_NoiNhan
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -1954,7 +1959,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 default:
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan
+                            where item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate && item.ID_NoiNhan == ID_NoiNhan
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -1982,7 +1987,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToGD":
                     var query = from item in db.DonTu_LichSus
                                 join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                                where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                                where item.ID_NoiChuyen == 1 && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
                                 orderby item.NgayChuyen descending, item.ID descending
                                 select new
                                 {
@@ -2003,7 +2008,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToTB":
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            where item.ID_NoiChuyen == 2 && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -2024,7 +2029,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToTP":
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -2045,7 +2050,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "ToBC":
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {
@@ -2066,7 +2071,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 default:
                     query = from item in db.DonTu_LichSus
                             join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
-                            where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
+                            where item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate && item.ID_NoiNhan == ID_NoiNhan && item.CreateBy == CreateBy
                             orderby item.NgayChuyen descending, item.ID descending
                             select new
                             {

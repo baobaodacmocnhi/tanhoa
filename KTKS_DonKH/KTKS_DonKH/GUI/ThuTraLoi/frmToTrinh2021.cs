@@ -717,7 +717,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         {
             if (_cttt != null)
             {
-                BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                BanGiamDoc bgdTQ = _cBanGiamDoc.getBGDNguoiKy();
+                BanGiamDoc bgdDuyet = _cBanGiamDoc.getBGDNguoiKyDuyet();
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
                 if (tabControl.SelectedTab.Name == "tabTTKH")
@@ -742,12 +743,17 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     dr["ThongQua"] = _cttt.ThongQua;
                     dr["NoiDung"] = _cttt.NoiDung;
                     dr["NoiNhan"] = _cttt.NoiNhan;
+                    dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
+                    dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
 
-                    if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                        dr["ChucVu"] = "GIÁM ĐỐC";
+                    if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                        dr["ChucVuThongQua"] = "GIÁM ĐỐC";
                     else
-                        dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
-                    dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
+                        dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                    dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
+
+                    dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
+                    dr["NguoiKyDuyet"] = bgdDuyet.HoTen.ToUpper();
 
                     dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
@@ -804,11 +810,17 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 }
                         dr["NoiNhan"] = item.ToTrinh_ChiTiet.NoiNhan;
 
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            dr["ChucVu"] = "GIÁM ĐỐC";
+                        dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
+                        dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
+
+                        if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                            dr["ChucVuThongQua"] = "GIÁM ĐỐC";
                         else
-                            dr["ChucVu"] = "TRÌNH DUYỆT\n" + bangiamdoc.ChucVu.ToUpper();
-                        dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
+                            dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                        dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
+
+                        dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
+                        dr["NguoiKyDuyet"] = bgdDuyet.HoTen.ToUpper();
 
                         dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
                         //
@@ -905,7 +917,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 {
                     txtNoiNhan.Text = vv.NoiNhan;
                 }
-                if(_cTT.checkExist_ChiTiet_90Ngay(txtDanhBo.Text.Trim(),vv.Name)==true)
+                if (_cTT.checkExist_ChiTiet_90Ngay(txtDanhBo.Text.Trim(), vv.Name) == true)
                     MessageBox.Show("Danh Bộ này có Tờ Trình trong 30 ngày gần nhất", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else

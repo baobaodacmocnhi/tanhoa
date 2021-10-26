@@ -283,20 +283,22 @@ namespace KTKS_DonKH.GUI.TimKiem
                 view.Columns["MSThue"].Visible = true;
                 view.Columns["MSThue_BD"].Visible = true;
 
-                view.Columns["HoTen_BD"].VisibleIndex = 6;
-                //view.Columns["DiaChi"].VisibleIndex = 6;
-                view.Columns["DiaChi_BD"].VisibleIndex = 7;
-                //view.Columns["MSThue"].VisibleIndex = 8;
-                view.Columns["MSThue_BD"].VisibleIndex = 8;
-                //view.Columns["GiaBieu"].VisibleIndex = 10;
-                view.Columns["GiaBieu_BD"].VisibleIndex = 9;
-                //view.Columns["DinhMuc"].VisibleIndex = 12;
-                view.Columns["DinhMuc_BD"].VisibleIndex = 10;
-                view.Columns["DinhMucHN_BD"].VisibleIndex = 11;
-                view.Columns["CreateBy"].VisibleIndex = 12;
+                view.Columns["HoTen_BD"].VisibleIndex = 7;
+                //view.Columns["DiaChi"].VisibleIndex = 8;
+                view.Columns["DiaChi_BD"].VisibleIndex = 9;
+                //view.Columns["MSThue"].VisibleIndex = 10;
+                view.Columns["MSThue_BD"].VisibleIndex = 11;
+                //view.Columns["GiaBieu"].VisibleIndex = 12;
+                view.Columns["GiaBieu_BD"].VisibleIndex = 12;
+                //view.Columns["DinhMuc"].VisibleIndex = 13;
+                view.Columns["DinhMuc_BD"].VisibleIndex = 13;
+                view.Columns["DinhMucHN_BD"].VisibleIndex = 14;
+                view.Columns["CreateBy"].VisibleIndex = 15;
             }
             if (view.GetRowCellDisplayText(0, "DieuChinh") == "Hóa Đơn")
             {
+                view.Columns["KyHD"].Visible = true;
+                view.Columns["KyHD"].VisibleIndex = 3;
                 view.Columns["TieuThu"].Visible = true;
                 view.Columns["TieuThu_BD"].Visible = true;
                 view.Columns["TongCong_Start"].Visible = true;
@@ -304,7 +306,8 @@ namespace KTKS_DonKH.GUI.TimKiem
                 view.Columns["TangGiam"].Visible = true;
                 view.Columns["TongCong_BD"].Visible = true;
                 view.Columns["ThongTin"].Visible = false;
-                view.Columns["CreateBy"].VisibleIndex = 14;
+                view.Columns["HieuLucKy"].Visible = false;
+                view.Columns["CreateBy"].VisibleIndex = 16;
             }
         }
 
@@ -765,7 +768,6 @@ namespace KTKS_DonKH.GUI.TimKiem
             if (e.KeyChar == 13)
                 btnTimKiemTTKH.PerformClick();
         }
-
 
 
     }
