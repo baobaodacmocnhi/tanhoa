@@ -2841,6 +2841,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                     }
                                 }
+                            MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                 }
                 else

@@ -44,6 +44,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 var queryKTXM = from itemCTKTXM in db.KTXM_ChiTiets
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where itemCTKTXM.KTXM.MaDonMoi == MaDon
+                                orderby itemCTKTXM.NgayKTXM
                                 select new
                                 {
                                     MaDon = itemCTKTXM.KTXM.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTKTXM.KTXM.MaDonMoi.Value.ToString() : itemCTKTXM.KTXM.MaDonMoi.Value.ToString() + "." + itemCTKTXM.STT.Value.ToString(),
@@ -67,6 +68,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 var queryBamChi = from itemCTBamChi in db.BamChi_ChiTiets
                                   join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                                   where itemCTBamChi.BamChi.MaDonMoi == MaDon
+                                  orderby itemCTBamChi.NgayBC
                                   select new
                                   {
                                       MaDon = itemCTBamChi.BamChi.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi.Value.ToString() + "." + itemCTBamChi.STT.Value.ToString(),
@@ -89,6 +91,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 var queryDongNuoc = from itemCTDongNuoc in db.DongNuoc_ChiTiets
                                     join itemUser in db.Users on itemCTDongNuoc.CreateBy equals itemUser.MaU
                                     where itemCTDongNuoc.DongNuoc.MaDonMoi == MaDon
+                                   orderby itemCTDongNuoc.NgayDN
                                     select new
                                     {
                                         MaDon = itemCTDongNuoc.DongNuoc.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTDongNuoc.DongNuoc.MaDonMoi.Value.ToString() : itemCTDongNuoc.DongNuoc.MaDonMoi.Value.ToString() + "." + itemCTDongNuoc.STT.Value.ToString(),
@@ -110,6 +113,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 var queryCTDCBD = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                                   join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
                                   where itemCTDCBD.DCBD.MaDonMoi == MaDon
+                                  orderby itemCTDCBD.CreateDate
                                   select new
                                   {
                                       MaDon = itemCTDCBD.DCBD.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTDCBD.DCBD.MaDonMoi.Value.ToString() : itemCTDCBD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCBD.STT.Value.ToString(),
@@ -136,6 +140,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 var queryCTDCHD = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                                   join itemUser in db.Users on itemCTDCHD.CreateBy equals itemUser.MaU
                                   where itemCTDCHD.DCBD.MaDonMoi == MaDon
+                                  orderby itemCTDCHD.CreateDate
                                   select new
                                   {
                                       MaDon = itemCTDCHD.DCBD.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTDCHD.DCBD.MaDonMoi.Value.ToString() : itemCTDCHD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCHD.STT.Value.ToString(),
@@ -168,6 +173,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table CTCTDB
                 var queryCTCTDB = from itemCTCTDB in db.CHDB_ChiTietCatTams
                                   where itemCTCTDB.CHDB.MaDonMoi == MaDon
+                                  orderby itemCTCTDB.CreateDate
                                   select new
                                   {
                                       MaDon = itemCTCTDB.CHDB.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTCTDB.CHDB.MaDonMoi.Value.ToString() : itemCTCTDB.CHDB.MaDonMoi.Value.ToString() + "." + itemCTCTDB.STT.Value.ToString(),
@@ -186,6 +192,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table CHDB_ChiTietCatHuy
                 var queryCTCHDB = from itemCTCHDB in db.CHDB_ChiTietCatHuys
                                   where itemCTCHDB.CHDB.MaDonMoi == MaDon
+                                  orderby itemCTCHDB.CreateDate
                                   select new
                                   {
                                       MaDon = itemCTCHDB.CHDB.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTCHDB.CHDB.MaDonMoi.Value.ToString() : itemCTCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemCTCHDB.STT.Value.ToString(),
@@ -210,6 +217,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table PhieuCHDB
                 var queryPhieuCHDB = from itemYCCHDB in db.CHDB_Phieus
                                      where itemYCCHDB.CHDB.MaDonMoi == MaDon
+                                     orderby itemYCCHDB.CreateDate
                                      select new
                                      {
                                          MaDon = itemYCCHDB.CHDB.DonTu.DonTu_ChiTiets.Count == 1 ? itemYCCHDB.CHDB.MaDonMoi.Value.ToString() : itemYCCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemYCCHDB.STT.Value.ToString(),
@@ -230,6 +238,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table CTTTTL
                 var queryTTTL = from itemCTTTTL in db.ThuTraLoi_ChiTiets
                                 where itemCTTTTL.ThuTraLoi.MaDonMoi == MaDon
+                                orderby itemCTTTTL.CreateDate
                                 select new
                                 {
                                     MaDon = itemCTTTTL.ThuTraLoi.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTTTTL.ThuTraLoi.MaDonMoi.Value.ToString() : itemCTTTTL.ThuTraLoi.MaDonMoi.Value.ToString() + "." + itemCTTTTL.STT.Value.ToString(),
@@ -250,6 +259,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table GianLan
                 var queryGianLan = from itemGL in db.GianLan_ChiTiets
                                    where itemGL.GianLan.MaDonMoi == MaDon
+                                   orderby itemGL.CreateDate
                                    select new
                                    {
                                        MaDon = itemGL.GianLan.DonTu.DonTu_ChiTiets.Count == 1 ? itemGL.GianLan.MaDonMoi.Value.ToString() : itemGL.GianLan.MaDonMoi.Value.ToString() + "." + itemGL.STT.Value.ToString(),
@@ -273,6 +283,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table TruyThu
                 var queryTruyThu = from itemTT in db.TruyThuTienNuoc_ChiTiets
                                    where itemTT.TruyThuTienNuoc.MaDonMoi == MaDon
+                                   orderby itemTT.CreateDate
                                    select new
                                    {
                                        MaDon = itemTT.TruyThuTienNuoc.DonTu.DonTu_ChiTiets.Count == 1 ? itemTT.TruyThuTienNuoc.MaDonMoi.Value.ToString() : itemTT.TruyThuTienNuoc.MaDonMoi.Value.ToString() + "." + itemTT.STT.Value.ToString(),
@@ -294,6 +305,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table ToTrinh
                 var queryToTrinh = from itemCTTT in db.ToTrinh_ChiTiets
                                    where itemCTTT.ToTrinh.MaDonMoi == MaDon
+                                   orderby itemCTTT.CreateDate
                                    select new
                                    {
                                        MaDon = itemCTTT.ToTrinh.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTTT.ToTrinh.MaDonMoi.Value.ToString() : itemCTTT.ToTrinh.MaDonMoi.Value.ToString() + "." + itemCTTT.STT.Value.ToString(),
@@ -309,6 +321,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtToTrinh = LINQToDataTable(queryToTrinh);
                 var queryToTrinh2 = from itemCTTT in db.ToTrinh_ChiTiet_DanhSaches
                                     where itemCTTT.MaDon == MaDon
+                                    orderby itemCTTT.CreateDate
                                     select new
                                     {
                                         MaDon = db.DonTu_ChiTiets.Count(itemA => itemA.MaDon == itemCTTT.MaDon) == 1 ? itemCTTT.MaDon.Value.ToString() : itemCTTT.MaDon.Value.ToString() + "." + itemCTTT.STT.Value.ToString(),
@@ -327,6 +340,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table ThuMoi
                 var queryThuMoi = from item in db.ThuMoi_ChiTiets
                                   where item.ThuMoi.MaDonMoi == MaDon
+                                  orderby item.CreateDate
                                   select new
                                   {
                                       MaDon = item.ThuMoi.DonTu.DonTu_ChiTiets.Count == 1 ? item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi.Value.ToString() + "." + item.STT.Value.ToString(),
@@ -440,6 +454,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 var queryKTXM = from itemCTKTXM in db.KTXM_ChiTiets
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where itemCTKTXM.KTXM.MaDonMoi == MaDon && itemCTKTXM.STT == STT
+                                orderby itemCTKTXM.NgayKTXM
                                 select new
                                 {
                                     MaDon = itemCTKTXM.KTXM.MaDonMoi.Value.ToString() + "." + itemCTKTXM.STT.Value.ToString(),
@@ -463,6 +478,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 var queryBamChi = from itemCTBamChi in db.BamChi_ChiTiets
                                   join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                                   where itemCTBamChi.BamChi.MaDonMoi == MaDon && itemCTBamChi.STT == STT
+                                  orderby itemCTBamChi.NgayBC
                                   select new
                                   {
                                       MaDon = itemCTBamChi.BamChi.MaDonMoi.Value.ToString() + "." + itemCTBamChi.STT.Value.ToString(),
@@ -485,6 +501,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 var queryDongNuoc = from itemCTDongNuoc in db.DongNuoc_ChiTiets
                                     join itemUser in db.Users on itemCTDongNuoc.CreateBy equals itemUser.MaU
                                     where itemCTDongNuoc.DongNuoc.MaDonMoi == MaDon && itemCTDongNuoc.STT == STT
+                                    orderby itemCTDongNuoc.NgayDN
                                     select new
                                     {
                                         MaDon = itemCTDongNuoc.DongNuoc.MaDonMoi.Value.ToString() + "." + itemCTDongNuoc.STT.Value.ToString(),
@@ -506,6 +523,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 var queryCTDCBD = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                                   join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
                                   where itemCTDCBD.DCBD.MaDonMoi == MaDon && itemCTDCBD.STT == STT
+                                  orderby itemCTDCBD.CreateDate
                                   select new
                                   {
                                       MaDon = itemCTDCBD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCBD.STT.Value.ToString(),
@@ -532,6 +550,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 var queryCTDCHD = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                                   join itemUser in db.Users on itemCTDCHD.CreateBy equals itemUser.MaU
                                   where itemCTDCHD.DCBD.MaDonMoi == MaDon && itemCTDCHD.STT == STT
+                                  orderby itemCTDCHD.CreateDate
                                   select new
                                   {
                                       MaDon = itemCTDCHD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCHD.STT.Value.ToString(),
@@ -564,6 +583,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table CTCTDB
                 var queryCTCTDB = from itemCTCTDB in db.CHDB_ChiTietCatTams
                                   where itemCTCTDB.CHDB.MaDonMoi == MaDon && itemCTCTDB.STT == STT
+                                  orderby itemCTCTDB.CreateDate
                                   select new
                                   {
                                       MaDon = itemCTCTDB.CHDB.MaDonMoi.Value.ToString() + "." + itemCTCTDB.STT.Value.ToString(),
@@ -582,6 +602,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table CHDB_ChiTietCatHuy
                 var queryCTCHDB = from itemCTCHDB in db.CHDB_ChiTietCatHuys
                                   where itemCTCHDB.CHDB.MaDonMoi == MaDon && itemCTCHDB.STT == STT
+                                  orderby itemCTCHDB.CreateDate
                                   select new
                                   {
                                       MaDon = itemCTCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemCTCHDB.STT.Value.ToString(),
@@ -606,6 +627,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table PhieuCHDB
                 var queryPhieuCHDB = from itemYCCHDB in db.CHDB_Phieus
                                      where itemYCCHDB.CHDB.MaDonMoi == MaDon && itemYCCHDB.STT == STT
+                                     orderby itemYCCHDB.CreateDate
                                      select new
                                      {
                                          MaDon = itemYCCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemYCCHDB.STT.Value.ToString(),
@@ -626,6 +648,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table CTTTTL
                 var queryTTTL = from itemCTTTTL in db.ThuTraLoi_ChiTiets
                                 where itemCTTTTL.ThuTraLoi.MaDonMoi == MaDon && itemCTTTTL.STT == STT
+                                orderby itemCTTTTL.CreateDate
                                 select new
                                 {
                                     MaDon = itemCTTTTL.ThuTraLoi.MaDonMoi.Value.ToString() + "." + itemCTTTTL.STT.Value.ToString(),
@@ -646,6 +669,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table GianLan
                 var queryGianLan = from itemGL in db.GianLan_ChiTiets
                                    where itemGL.GianLan.MaDonMoi == MaDon && itemGL.STT == STT
+                                   orderby itemGL.CreateDate
                                    select new
                                    {
                                        MaDon = itemGL.GianLan.MaDonMoi.Value.ToString() + "." + itemGL.STT.Value.ToString(),
@@ -669,6 +693,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table TruyThu
                 var queryTruyThu = from itemTT in db.TruyThuTienNuoc_ChiTiets
                                    where itemTT.TruyThuTienNuoc.MaDonMoi == MaDon && itemTT.STT == STT
+                                   orderby itemTT.CreateDate
                                    select new
                                    {
                                        MaDon = itemTT.TruyThuTienNuoc.MaDonMoi.Value.ToString() + "." + itemTT.STT.Value.ToString(),
@@ -690,6 +715,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table ToTrinh
                 var queryToTrinh = from itemCTTT in db.ToTrinh_ChiTiets
                                    where itemCTTT.ToTrinh.MaDonMoi == MaDon && itemCTTT.STT == STT
+                                   orderby itemCTTT.CreateDate
                                    select new
                                    {
                                        MaDon = itemCTTT.ToTrinh.MaDonMoi.Value.ToString() + "." + itemCTTT.STT.Value.ToString(),
@@ -705,6 +731,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtToTrinh = LINQToDataTable(queryToTrinh);
                 var queryToTrinh2 = from itemCTTT in db.ToTrinh_ChiTiet_DanhSaches
                                     where itemCTTT.MaDon == MaDon && itemCTTT.STT == STT
+                                    orderby itemCTTT.CreateDate
                                     select new
                                     {
                                         MaDon = itemCTTT.MaDon.Value.ToString() + "." + itemCTTT.STT.Value.ToString(),
@@ -724,6 +751,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table ThuMoi
                 var queryThuMoi = from item in db.ThuMoi_ChiTiets
                                   where item.ThuMoi.MaDonMoi == MaDon && item.STT == STT
+                                  orderby item.CreateDate
                                   select new
                                   {
                                       MaDon = item.ThuMoi.MaDonMoi.Value.ToString() + "." + item.STT.Value.ToString(),

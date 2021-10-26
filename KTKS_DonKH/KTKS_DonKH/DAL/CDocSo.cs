@@ -97,7 +97,7 @@ namespace KTKS_DonKH.DAL
                 DataSet ds = new DataSet();
 
                 string sql = "select Chon=CAST(0 as bit),DocSoID,DanhBo=DanhBa,MLT=MLT1,HoTen=(select TenKH from KhachHang where DanhBa=DocSo.DanhBa),DiaChi=SoNhaCu+' '+Duong,Nam,Ky,Dot,CodeCu,CodeMoi,CSC=CSCu,CSM=CSMoi,TieuThu=TieuThuMoi,TieuThuLo=0,TieuThuLoConLai=0,TinhTrang=''"
-                            + " ,ID='',MaDon='',STT='' from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi='N' order by DanhBo asc";
+                            + " ,ID='',MaDon='',STT='' from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi='N' order by MLT asc";
                 DataTable dtParent = ExecuteQuery_DataTable(sql);
                 dtParent.TableName = "Parent";
                 ds.Tables.Add(dtParent);

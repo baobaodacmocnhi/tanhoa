@@ -167,163 +167,170 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         public void LoadDCHD(DCBD_ChiTietHoaDon ctdchd)
         {
-            if (ctdchd.DCBD.MaDonMoi != null)
+            try
             {
-                _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctdchd.DCBD.MaDonMoi.Value, ctdchd.STT.Value);
-                if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
-                    txtMaDonMoi.Text = ctdchd.DCBD.MaDonMoi.ToString();
-                else
-                    txtMaDonMoi.Text = ctdchd.DCBD.MaDonMoi.Value.ToString() + "." + ctdchd.STT.Value.ToString();
-            }
-            else
-                if (ctdchd.DCBD.MaDon != null)
+                if (ctdchd.DCBD.MaDonMoi != null)
                 {
-                    _dontkh = _cDonKH.Get(ctdchd.DCBD.MaDon.Value);
-                    txtMaDonCu.Text = ctdchd.DCBD.MaDon.ToString().Insert(ctdchd.DCBD.MaDon.ToString().Length - 2, "-");
+                    _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctdchd.DCBD.MaDonMoi.Value, ctdchd.STT.Value);
+                    if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                        txtMaDonMoi.Text = ctdchd.DCBD.MaDonMoi.ToString();
+                    else
+                        txtMaDonMoi.Text = ctdchd.DCBD.MaDonMoi.Value.ToString() + "." + ctdchd.STT.Value.ToString();
                 }
                 else
-                    if (ctdchd.DCBD.MaDonTXL != null)
+                    if (ctdchd.DCBD.MaDon != null)
                     {
-                        _dontxl = _cDonTXL.Get(ctdchd.DCBD.MaDonTXL.Value);
-                        txtMaDonCu.Text = "TXL" + ctdchd.DCBD.MaDonTXL.ToString().Insert(ctdchd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+                        _dontkh = _cDonKH.Get(ctdchd.DCBD.MaDon.Value);
+                        txtMaDonCu.Text = ctdchd.DCBD.MaDon.ToString().Insert(ctdchd.DCBD.MaDon.ToString().Length - 2, "-");
                     }
                     else
-                        if (ctdchd.DCBD.MaDonTBC != null)
+                        if (ctdchd.DCBD.MaDonTXL != null)
                         {
-                            _dontbc = _cDonTBC.Get(ctdchd.DCBD.MaDonTBC.Value);
-                            txtMaDonCu.Text = "TBC" + ctdchd.DCBD.MaDonTBC.ToString().Insert(ctdchd.DCBD.MaDonTBC.ToString().Length - 2, "-");
+                            _dontxl = _cDonTXL.Get(ctdchd.DCBD.MaDonTXL.Value);
+                            txtMaDonCu.Text = "TXL" + ctdchd.DCBD.MaDonTXL.ToString().Insert(ctdchd.DCBD.MaDonTXL.ToString().Length - 2, "-");
                         }
+                        else
+                            if (ctdchd.DCBD.MaDonTBC != null)
+                            {
+                                _dontbc = _cDonTBC.Get(ctdchd.DCBD.MaDonTBC.Value);
+                                txtMaDonCu.Text = "TBC" + ctdchd.DCBD.MaDonTBC.ToString().Insert(ctdchd.DCBD.MaDonTBC.ToString().Length - 2, "-");
+                            }
 
-            txtSoPhieu.Text = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
-            ///
-            chkCodeF2.Checked = ctdchd.CodeF2;
-            chkBaoCaoThue.Checked = ctdchd.BaoCaoThue;
-            txtSoVB.Text = ctdchd.SoVB;
-            dateNgayKy.Value = ctdchd.NgayKy.Value;
-            txtKyHD.Text = ctdchd.KyHD;
-            txtSoHD.Text = ctdchd.SoHD;
-            if (ctdchd.MaToTrinh != null)
-                txtMaToTrinh.Text = ctdchd.MaToTrinh.Value.ToString().Insert(ctdchd.MaToTrinh.Value.ToString().Length - 2, "-");
-            chkChuyenNhap.Checked = ctdchd.ChuyenNhap;
-            txtDanhBo.Text = ctdchd.DanhBo;
-            txtHoTen.Text = ctdchd.HoTen;
-            txtDiaChi.Text = ctdchd.DiaChi;
-            txtMLT.Text = ctdchd.MLT;
-            ///
-            string[] KyHD = txtKyHD.Text.Trim().Split('/');
-            _hoadon = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(KyHD[0]), int.Parse(KyHD[1]));
-            if (_hoadon != null)
-            {
+                txtSoPhieu.Text = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
+                ///
+                chkCodeF2.Checked = ctdchd.CodeF2;
+                chkBaoCaoThue.Checked = ctdchd.BaoCaoThue;
+                txtSoVB.Text = ctdchd.SoVB;
+                dateNgayKy.Value = ctdchd.NgayKy.Value;
+                txtKyHD.Text = ctdchd.KyHD;
+                txtSoHD.Text = ctdchd.SoHD;
+                if (ctdchd.MaToTrinh != null)
+                    txtMaToTrinh.Text = ctdchd.MaToTrinh.Value.ToString().Insert(ctdchd.MaToTrinh.Value.ToString().Length - 2, "-");
+                chkChuyenNhap.Checked = ctdchd.ChuyenNhap;
+                txtDanhBo.Text = ctdchd.DanhBo;
+                txtHoTen.Text = ctdchd.HoTen;
+                txtDiaChi.Text = ctdchd.DiaChi;
+                txtMLT.Text = ctdchd.MLT;
+                ///
+                string[] KyHD = txtKyHD.Text.Trim().Split('/');
+                _hoadon = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(KyHD[0]), int.Parse(KyHD[1]));
+                if (_hoadon != null)
+                {
+                }
+                else
+                {
+                    _docso = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(KyHD[0]), int.Parse(KyHD[1]));
+                }
+                ///
+                chkKhongApGiaGiam.Checked = ctdchd.KhongApGiaGiam;
+                txtGiaBieu_Cu.Text = ctdchd.GiaBieu.Value.ToString();
+                txtDinhMucHN_Cu.Text = ctdchd.DinhMucHN.Value.ToString();
+                txtDinhMuc_Cu.Text = ctdchd.DinhMuc.Value.ToString();
+                txtTieuThu_Cu.Text = ctdchd.TieuThu.Value.ToString();
+
+                ///
+                chkDieuChinhGia.Checked = ctdchd.DieuChinhGia;
+                if (ctdchd.GiaDieuChinh != null)
+                    txtGiaDieuChinh.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.GiaDieuChinh.Value);
+                else
+                    txtGiaDieuChinh.Text = "0";
+                ///
+                txtHoTen_BD.Text = ctdchd.HoTen_BD;
+                txtDiaChi_BD.Text = ctdchd.DiaChi_BD;
+                txtMST_BD.Text = ctdchd.MST_BD;
+                txtGiaBieu_Moi.Text = ctdchd.GiaBieu_BD.Value.ToString();
+                txtDinhMucHN_Moi.Text = ctdchd.DinhMucHN_BD.Value.ToString();
+                txtDinhMuc_Moi.Text = ctdchd.DinhMuc_BD.Value.ToString();
+                txtTieuThu_Moi.Text = ctdchd.TieuThu_BD.Value.ToString();
+
+                ///
+                chkKhauTru.Checked = ctdchd.KhauTru;
+                if (ctdchd.SoTienKhauTru != null)
+                    txtSoTienKhauTru.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.SoTienKhauTru.Value);
+                else
+                    txtSoTienKhauTru.Text = "0";
+                ///
+                chkDieuChinhGia2.Checked = ctdchd.DieuChinhGia2;
+                if (ctdchd.TieuThu_DieuChinhGia2 != null)
+                    txtTieuThu_DieuChinhGia2.Text = ctdchd.TieuThu_DieuChinhGia2.Value.ToString();
+                else
+                    txtTieuThu_DieuChinhGia2.Text = "0";
+                if (ctdchd.GiaDieuChinh2 != null)
+                    txtGiaDieuChinh2.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.GiaDieuChinh2.Value);
+                else
+                    txtGiaDieuChinh2.Text = "0";
+                ///
+                chkTyLe.Checked = ctdchd.TyLe;
+                if (ctdchd.SH != null)
+                    txtSH.Text = ctdchd.SH.Value.ToString();
+                else
+                    txtSH.Text = "0";
+                if (ctdchd.SX != null)
+                    txtSX.Text = ctdchd.SX.Value.ToString();
+                else
+                    txtSX.Text = "0";
+                if (ctdchd.DV != null)
+                    txtDV.Text = ctdchd.DV.Value.ToString();
+                else
+                    txtDV.Text = "0";
+                if (ctdchd.HCSN != null)
+                    txtHCSN.Text = ctdchd.HCSN.Value.ToString();
+                else
+                    txtHCSN.Text = "0";
+                ///
+                chkKhuCongNghiep.Checked = ctdchd.KhuCongNghiep;
+                chkApGiaNuocCu.Checked = ctdchd.ApGiaNuocCu;
+                ///
+                txtLyDoDieuChinh.Text = _ctdchd.LyDoDieuChinh;
+                txtGhiChu.Text = _ctdchd.GhiChu;
+                ///
+                txtTieuThu_Start.Text = _ctdchd.TieuThu.Value.ToString();
+                txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TienNuoc_Start);
+                txtThueGTGT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.ThueGTGT_Start);
+                txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.PhiBVMT_Start);
+                txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_Start);
+                ///
+                lbTangGiam.Text = ctdchd.TangGiam;
+                txtTieuThu_BD.Text = (ctdchd.TieuThu_BD - ctdchd.TieuThu).Value.ToString();
+
+                txtTienNuoc_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TienNuoc_BD);
+                txtThueGTGT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.ThueGTGT_BD);
+                txtPhiBVMT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.PhiBVMT_BD);
+                txtTongCong_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_BD);
+                ///
+                txtTieuThu_End.Text = _ctdchd.TieuThu_BD.Value.ToString();
+                if (ctdchd.TienNuoc_End != 0)
+                    txtTienNuoc_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TienNuoc_End);
+                else
+                    txtTienNuoc_End.Text = "0";
+                if (ctdchd.ThueGTGT_End != 0)
+                    txtThueGTGT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.ThueGTGT_End);
+                else
+                    txtThueGTGT_End.Text = "0";
+                if (ctdchd.PhiBVMT_End != 0)
+                    txtPhiBVMT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.PhiBVMT_End);
+                else
+                    txtPhiBVMT_End.Text = "0";
+                if (ctdchd.TongCong_End != 0)
+                    txtTongCong_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_End);
+                else
+                    txtTongCong_End.Text = "0";
+
+                txtChiTietCu.Text = ctdchd.ChiTietCu;
+                txtChiTietMoi.Text = ctdchd.ChiTietMoi;
+
+                dgvHinh.Rows.Clear();
+                foreach (DCBD_ChiTietHoaDon_Hinh item in ctdchd.DCBD_ChiTietHoaDon_Hinhs.ToList())
+                {
+                    var index = dgvHinh.Rows.Add();
+                    dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
+                    dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
+                    dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
+                }
             }
-            else
+            catch (Exception ex)
             {
-                _docso = _cDocSo.get(txtDanhBo.Text.Trim(), int.Parse(KyHD[0]), int.Parse(KyHD[1]));
-            }
-            ///
-            chkKhongApGiaGiam.Checked = ctdchd.KhongApGiaGiam;
-            txtGiaBieu_Cu.Text = ctdchd.GiaBieu.Value.ToString();
-            txtDinhMucHN_Cu.Text = ctdchd.DinhMucHN.Value.ToString();
-            txtDinhMuc_Cu.Text = ctdchd.DinhMuc.Value.ToString();
-            txtTieuThu_Cu.Text = ctdchd.TieuThu.Value.ToString();
-
-            ///
-            chkDieuChinhGia.Checked = ctdchd.DieuChinhGia;
-            if (ctdchd.GiaDieuChinh != null)
-                txtGiaDieuChinh.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.GiaDieuChinh.Value);
-            else
-                txtGiaDieuChinh.Text = "0";
-            ///
-            txtHoTen_BD.Text = ctdchd.HoTen_BD;
-            txtDiaChi_BD.Text = ctdchd.DiaChi_BD;
-            txtMST_BD.Text = ctdchd.MST_BD;
-            txtGiaBieu_Moi.Text = ctdchd.GiaBieu_BD.Value.ToString();
-            txtDinhMucHN_Moi.Text = ctdchd.DinhMucHN_BD.Value.ToString();
-            txtDinhMuc_Moi.Text = ctdchd.DinhMuc_BD.Value.ToString();
-            txtTieuThu_Moi.Text = ctdchd.TieuThu_BD.Value.ToString();
-
-            ///
-            chkKhauTru.Checked = ctdchd.KhauTru;
-            if (ctdchd.SoTienKhauTru != null)
-                txtSoTienKhauTru.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.SoTienKhauTru.Value);
-            else
-                txtSoTienKhauTru.Text = "0";
-            ///
-            chkDieuChinhGia2.Checked = ctdchd.DieuChinhGia2;
-            if (ctdchd.TieuThu_DieuChinhGia2 != null)
-                txtTieuThu_DieuChinhGia2.Text = ctdchd.TieuThu_DieuChinhGia2.Value.ToString();
-            else
-                txtTieuThu_DieuChinhGia2.Text = "0";
-            if (ctdchd.GiaDieuChinh2 != null)
-                txtGiaDieuChinh2.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.GiaDieuChinh2.Value);
-            else
-                txtGiaDieuChinh2.Text = "0";
-            ///
-            chkTyLe.Checked = ctdchd.TyLe;
-            if (ctdchd.SH != null)
-                txtSH.Text = ctdchd.SH.Value.ToString();
-            else
-                txtSH.Text = "0";
-            if (ctdchd.SX != null)
-                txtSX.Text = ctdchd.SX.Value.ToString();
-            else
-                txtSX.Text = "0";
-            if (ctdchd.DV != null)
-                txtDV.Text = ctdchd.DV.Value.ToString();
-            else
-                txtDV.Text = "0";
-            if (ctdchd.HCSN != null)
-                txtHCSN.Text = ctdchd.HCSN.Value.ToString();
-            else
-                txtHCSN.Text = "0";
-            ///
-            chkKhuCongNghiep.Checked = ctdchd.KhuCongNghiep;
-            chkApGiaNuocCu.Checked = ctdchd.ApGiaNuocCu;
-            ///
-            txtLyDoDieuChinh.Text = _ctdchd.LyDoDieuChinh;
-            txtGhiChu.Text = _ctdchd.GhiChu;
-            ///
-            txtTieuThu_Start.Text = _ctdchd.TieuThu.Value.ToString();
-            txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TienNuoc_Start);
-            txtThueGTGT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.ThueGTGT_Start);
-            txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.PhiBVMT_Start);
-            txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_Start);
-            ///
-            lbTangGiam.Text = ctdchd.TangGiam;
-            txtTieuThu_BD.Text = (ctdchd.TieuThu_BD - ctdchd.TieuThu).Value.ToString();
-
-            txtTienNuoc_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TienNuoc_BD);
-            txtThueGTGT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.ThueGTGT_BD);
-            txtPhiBVMT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.PhiBVMT_BD);
-            txtTongCong_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_BD);
-            ///
-            txtTieuThu_End.Text = _ctdchd.TieuThu_BD.Value.ToString();
-            if (ctdchd.TienNuoc_End != 0)
-                txtTienNuoc_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TienNuoc_End);
-            else
-                txtTienNuoc_End.Text = "0";
-            if (ctdchd.ThueGTGT_End != 0)
-                txtThueGTGT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.ThueGTGT_End);
-            else
-                txtThueGTGT_End.Text = "0";
-            if (ctdchd.PhiBVMT_End != 0)
-                txtPhiBVMT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.PhiBVMT_End);
-            else
-                txtPhiBVMT_End.Text = "0";
-            if (ctdchd.TongCong_End != 0)
-                txtTongCong_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_End);
-            else
-                txtTongCong_End.Text = "0";
-
-            txtChiTietCu.Text = ctdchd.ChiTietCu;
-            txtChiTietMoi.Text = ctdchd.ChiTietMoi;
-
-            dgvHinh.Rows.Clear();
-            foreach (DCBD_ChiTietHoaDon_Hinh item in ctdchd.DCBD_ChiTietHoaDon_Hinhs.ToList())
-            {
-                var index = dgvHinh.Rows.Add();
-                dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
-                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
-                dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -465,20 +472,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_hoadon != null)
                 {
                     LoadTTKH(_hoadon);
-                    _dchdLast = _cDCBD.getHoaDon_Last(_hoadon.DANHBA, _hoadon.NAM, _hoadon.KY);
-                    if (_dchdLast != null)
-                    {
-                        txtGiaBieu_Cu.Text = _dchdLast.GiaBieu_BD.Value.ToString();
-                        txtDinhMucHN_Cu.Text = _dchdLast.DinhMucHN_BD.Value.ToString();
-                        txtDinhMuc_Cu.Text = _dchdLast.DinhMuc_BD.Value.ToString();
-                        txtTieuThu_Cu.Text = _dchdLast.TieuThu_BD.Value.ToString();
-                        txtChiTietCu.Text = _dchdLast.ChiTietMoi;
-                        txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchdLast.TienNuoc_End.Value);
-                        txtThueGTGT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchdLast.ThueGTGT_End.Value);
-                        txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchdLast.PhiBVMT_End.Value);
-                        txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchdLast.TongCong_End.Value);
-                    }
-                    else
+                    //_dchdLast = _cDCBD.getHoaDon_Last(_hoadon.DANHBA, _hoadon.NAM, _hoadon.KY);
+                    //if (_dchdLast != null)
+                    //{
+                    //    txtGiaBieu_Cu.Text = _dchdLast.GiaBieu_BD.Value.ToString();
+                    //    txtDinhMucHN_Cu.Text = _dchdLast.DinhMucHN_BD.Value.ToString();
+                    //    txtDinhMuc_Cu.Text = _dchdLast.DinhMuc_BD.Value.ToString();
+                    //    txtTieuThu_Cu.Text = _dchdLast.TieuThu_BD.Value.ToString();
+                    //    txtChiTietCu.Text = _dchdLast.ChiTietMoi;
+                    //    txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchdLast.TienNuoc_End.Value);
+                    //    txtThueGTGT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchdLast.ThueGTGT_End.Value);
+                    //    txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchdLast.PhiBVMT_End.Value);
+                    //    txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchdLast.TongCong_End.Value);
+                    //}
+                    //else
                     {
                         txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _hoadon.GB.ToString();
                         if (_hoadon.DinhMucHN != null)
