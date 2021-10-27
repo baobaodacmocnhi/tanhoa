@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
-    partial class frmDanhSachDocLoChiSoNuoc
+    partial class frmDocLoChiSoNuoc
     {
         /// <summary>
         /// Required designer variable.
@@ -80,6 +80,7 @@
             this.btnQLDHNXoaChot = new System.Windows.Forms.Button();
             this.btnTVDieuChinh = new System.Windows.Forms.Button();
             this.btnTVCapNhatQLDHN = new System.Windows.Forms.Button();
+            this.btnQLDHNExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -204,13 +205,13 @@
             gridLevelNode1.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gridControl.Location = new System.Drawing.Point(12, 39);
+            this.gridControl.Location = new System.Drawing.Point(12, 68);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit2,
             this.repositoryItemCheckEdit1});
-            this.gridControl.Size = new System.Drawing.Size(1226, 555);
+            this.gridControl.Size = new System.Drawing.Size(1226, 526);
             this.gridControl.TabIndex = 27;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView,
@@ -498,7 +499,7 @@
             // 
             // btnQLDHNIn
             // 
-            this.btnQLDHNIn.Location = new System.Drawing.Point(702, 10);
+            this.btnQLDHNIn.Location = new System.Drawing.Point(505, 39);
             this.btnQLDHNIn.Name = "btnQLDHNIn";
             this.btnQLDHNIn.Size = new System.Drawing.Size(75, 23);
             this.btnQLDHNIn.TabIndex = 8;
@@ -519,7 +520,7 @@
             // 
             // btnQLDHNChot
             // 
-            this.btnQLDHNChot.Location = new System.Drawing.Point(505, 10);
+            this.btnQLDHNChot.Location = new System.Drawing.Point(419, 39);
             this.btnQLDHNChot.Name = "btnQLDHNChot";
             this.btnQLDHNChot.Size = new System.Drawing.Size(80, 23);
             this.btnQLDHNChot.TabIndex = 10;
@@ -539,7 +540,7 @@
             // 
             // btnTVLapDon
             // 
-            this.btnTVLapDon.Location = new System.Drawing.Point(980, 10);
+            this.btnTVLapDon.Location = new System.Drawing.Point(894, 39);
             this.btnTVLapDon.Name = "btnTVLapDon";
             this.btnTVLapDon.Size = new System.Drawing.Size(90, 23);
             this.btnTVLapDon.TabIndex = 12;
@@ -549,7 +550,7 @@
             // 
             // btnQLDHNXemChot
             // 
-            this.btnQLDHNXemChot.Location = new System.Drawing.Point(591, 10);
+            this.btnQLDHNXemChot.Location = new System.Drawing.Point(505, 10);
             this.btnQLDHNXemChot.Name = "btnQLDHNXemChot";
             this.btnQLDHNXemChot.Size = new System.Drawing.Size(105, 23);
             this.btnQLDHNXemChot.TabIndex = 13;
@@ -559,7 +560,7 @@
             // 
             // btnQLDHNXoaChot
             // 
-            this.btnQLDHNXoaChot.Location = new System.Drawing.Point(783, 10);
+            this.btnQLDHNXoaChot.Location = new System.Drawing.Point(586, 39);
             this.btnQLDHNXoaChot.Name = "btnQLDHNXoaChot";
             this.btnQLDHNXoaChot.Size = new System.Drawing.Size(105, 23);
             this.btnQLDHNXoaChot.TabIndex = 28;
@@ -569,7 +570,7 @@
             // 
             // btnTVDieuChinh
             // 
-            this.btnTVDieuChinh.Location = new System.Drawing.Point(1076, 10);
+            this.btnTVDieuChinh.Location = new System.Drawing.Point(990, 39);
             this.btnTVDieuChinh.Name = "btnTVDieuChinh";
             this.btnTVDieuChinh.Size = new System.Drawing.Size(90, 23);
             this.btnTVDieuChinh.TabIndex = 29;
@@ -579,7 +580,7 @@
             // 
             // btnTVCapNhatQLDHN
             // 
-            this.btnTVCapNhatQLDHN.Location = new System.Drawing.Point(1172, 10);
+            this.btnTVCapNhatQLDHN.Location = new System.Drawing.Point(1086, 39);
             this.btnTVCapNhatQLDHN.Name = "btnTVCapNhatQLDHN";
             this.btnTVCapNhatQLDHN.Size = new System.Drawing.Size(120, 23);
             this.btnTVCapNhatQLDHN.TabIndex = 30;
@@ -588,13 +589,24 @@
             this.btnTVCapNhatQLDHN.Visible = false;
             this.btnTVCapNhatQLDHN.Click += new System.EventHandler(this.btnTVCapNhatQLDHN_Click);
             // 
-            // frmDanhSachDocLoChiSoNuoc
+            // btnQLDHNExcel
+            // 
+            this.btnQLDHNExcel.Location = new System.Drawing.Point(616, 10);
+            this.btnQLDHNExcel.Name = "btnQLDHNExcel";
+            this.btnQLDHNExcel.Size = new System.Drawing.Size(90, 23);
+            this.btnQLDHNExcel.TabIndex = 31;
+            this.btnQLDHNExcel.Text = "QLĐHN Excel";
+            this.btnQLDHNExcel.UseVisualStyleBackColor = true;
+            this.btnQLDHNExcel.Click += new System.EventHandler(this.btnQLDHNExcel_Click);
+            // 
+            // frmDocLoChiSoNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1305, 606);
+            this.Controls.Add(this.btnQLDHNExcel);
             this.Controls.Add(this.btnTVCapNhatQLDHN);
             this.Controls.Add(this.btnTVDieuChinh);
             this.Controls.Add(this.btnQLDHNXoaChot);
@@ -612,7 +624,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNam);
             this.Controls.Add(this.label1);
-            this.Name = "frmDanhSachDocLoChiSoNuoc";
+            this.Name = "frmDocLoChiSoNuoc";
             this.Text = "Danh Sách Đọc Lố Chỉ Số Nước";
             this.Load += new System.EventHandler(this.frmDanhSachDocLoChiSoNuoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).EndInit();
@@ -678,5 +690,6 @@
         private System.Windows.Forms.Button btnTVCapNhatQLDHN;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn29;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private System.Windows.Forms.Button btnQLDHNExcel;
     }
 }

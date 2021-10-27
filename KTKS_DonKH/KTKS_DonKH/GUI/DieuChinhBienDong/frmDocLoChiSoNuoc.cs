@@ -18,7 +18,7 @@ using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
-    public partial class frmDanhSachDocLoChiSoNuoc : Form
+    public partial class frmDocLoChiSoNuoc : Form
     {
         string _mnu = "mnuDanhSachDocLoChiSoNuoc";
         CDocSo _cDocSo = new CDocSo();
@@ -30,7 +30,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         dbKinhDoanhDataContext _dbThuongVu = new dbKinhDoanhDataContext();
 
-        public frmDanhSachDocLoChiSoNuoc()
+        public frmDocLoChiSoNuoc()
         {
             InitializeComponent();
         }
@@ -680,6 +680,141 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnQLDHNExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string sql = "select Chon=CAST(0 as bit),ID,DanhBo,MLT,HoTen,DiaChi,Nam,Ky,Dot,CodeCu,CodeMoi,CSC,CSM,TieuThu,TieuThuLo,TieuThuLoConLai,TinhTrang='',MaDon,STT,DCHD"
+                   + " from ChiSoLo_DanhBo where Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim() + " and DCHD=1 order by MLT asc";
+                DataTable dt = _cDCBD.ExecuteQuery_DataTable(sql);
+
+                //Tạo các đối tượng Excel
+                Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbooks oBooks;
+                Microsoft.Office.Interop.Excel.Sheets oSheets;
+                Microsoft.Office.Interop.Excel.Workbook oBook;
+                Microsoft.Office.Interop.Excel.Worksheet oSheet;
+                //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
+
+                //Tạo mới một Excel WorkBook 
+                oExcel.Visible = true;
+                oExcel.DisplayAlerts = false;
+                //khai báo số lượng sheet
+                oExcel.Application.SheetsInNewWorkbook = 1;
+                oBooks = oExcel.Workbooks;
+
+                oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                oSheets = oBook.Worksheets;
+                oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+
+                oSheet.Name = "Sheet1";
+                // Tạo tiêu đề cột 
+                Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
+                cl1.Value2 = "MLT";
+                cl1.ColumnWidth = 12;
+
+                Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B1", "B1");
+                cl2.Value2 = "Danh Bộ";
+                cl2.ColumnWidth = 12;
+
+                Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C1", "C1");
+                cl3.Value2 = "Khách Hàng";
+                cl3.ColumnWidth = 20;
+
+                Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D1", "D1");
+                cl4.Value2 = "Địa Chỉ";
+                cl4.ColumnWidth = 20;
+
+                Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("E1", "E1");
+                cl5.Value2 = "Code Cũ";
+                cl5.ColumnWidth = 10;
+
+                Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("F1", "F1");
+                cl6.Value2 = "Code Mới";
+                cl6.ColumnWidth = 10;
+
+                Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("G1", "G1");
+                cl7.Value2 = "Code Điều Chỉnh";
+                cl7.ColumnWidth = 10;
+
+                Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("H1", "H1");
+                cl8.Value2 = "Chỉ Số";
+                cl8.ColumnWidth = 10;
+
+                Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("I1", "I1");
+                cl9.Value2 = "Tiêu Thụ Lố Tồn";
+                cl9.ColumnWidth = 10;
+
+
+                // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+                // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+                int numColumn = 9;
+                object[,] arr = new object[dt.Rows.Count, numColumn];
+
+                //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    {
+                        arr[i, 0] = dr["MLT"].ToString();
+                        arr[i, 1] = dr["DanhBo"].ToString();
+                        arr[i, 2] = dr["HoTen"].ToString();
+                        arr[i, 3] = dr["DiaChi"].ToString();
+                        arr[i, 4] = dr["CodeCu"].ToString();
+                        arr[i, 5] = dr["CodeMoi"].ToString();
+                        if (int.Parse(dr["TieuThuLoConLai"].ToString()) == 0)
+                            arr[i, 6] = "5" + dr["CodeCu"].ToString().Substring(0, 1);
+                        else
+                            arr[i, 6] = dr["CodeMoi"].ToString();
+                        arr[i, 7] = dr["CSM"].ToString();
+                        arr[i, 8] = dr["TieuThuLoConLai"].ToString();
+                    }
+                }
+
+                //Thiết lập vùng điền dữ liệu
+                int rowStart = 2;
+                int columnStart = 1;
+
+                int rowEnd = rowStart + dt.Rows.Count - 1;
+                int columnEnd = numColumn;
+
+                // Ô bắt đầu điền dữ liệu
+                Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+                // Ô kết thúc điền dữ liệu
+                Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+                // Lấy về vùng điền dữ liệu
+                Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+                Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
+                Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
+                Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+                c3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
+                Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
+                Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
+                c3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                c3b.NumberFormat = "@";
+
+                Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+                Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+                Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
+                c3c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
+                Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
+                Microsoft.Office.Interop.Excel.Range c3d = oSheet.get_Range(c1d, c2d);
+                c3d.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                //Điền dữ liệu vào vùng đã thiết lập
+                range.Value2 = arr;
             }
             catch (Exception ex)
             {

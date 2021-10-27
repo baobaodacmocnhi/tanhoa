@@ -725,7 +725,7 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnuDanhSachDocLoChiSoNuoc", "Xem"))
             {
-                frmDanhSachDocLoChiSoNuoc frm = new frmDanhSachDocLoChiSoNuoc();
+                frmDocLoChiSoNuoc frm = new frmDocLoChiSoNuoc();
                 OpenForm(frm);
             }
             else

@@ -15,9 +15,9 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Admin\Desktop\test\</PublishUrl>
+    <PublishUrl>\\192.168.90.9\baobao%24\KTKS_DonKH\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
+    <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -30,9 +30,10 @@
     <ProductName>Quản Lý Đơn Khách Hàng</ProductName>
     <PublisherName>P.CNTT</PublisherName>
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1629</ApplicationRevision>
+    <ApplicationRevision>1631</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1091,11 +1092,11 @@
     <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.Designer.cs">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DieuChinhBienDong\frmDanhSachDocLoChiSoNuoc.cs">
+    <Compile Include="GUI\DieuChinhBienDong\frmDocLoChiSoNuoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\DieuChinhBienDong\frmDanhSachDocLoChiSoNuoc.Designer.cs">
-      <DependentUpon>frmDanhSachDocLoChiSoNuoc.cs</DependentUpon>
+    <Compile Include="GUI\DieuChinhBienDong\frmDocLoChiSoNuoc.Designer.cs">
+      <DependentUpon>frmDocLoChiSoNuoc.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmHoNgheo.cs">
       <SubType>Form</SubType>
@@ -2258,8 +2259,8 @@
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.resx">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmDanhSachDocLoChiSoNuoc.resx">
-      <DependentUpon>frmDanhSachDocLoChiSoNuoc.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmDocLoChiSoNuoc.resx">
+      <DependentUpon>frmDocLoChiSoNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmHoNgheo.resx">
       <DependentUpon>frmHoNgheo.cs</DependentUpon>
