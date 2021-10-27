@@ -204,10 +204,6 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                 if (chkKiemTraLenhHuy.Checked == false)
                 {
-                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
-                    {
-                        item.DefaultCellStyle.BackColor = Color.Red;
-                    }
                     if (bool.Parse(item.Cells["DongNuoc"].Value.ToString()) == true)
                     {
                         item.DefaultCellStyle.BackColor = Color.Yellow;
