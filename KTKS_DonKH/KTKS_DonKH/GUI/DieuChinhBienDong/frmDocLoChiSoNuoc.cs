@@ -143,7 +143,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (MessageBox.Show("Bạn có chắc chắn Chốt?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        if (_dbThuongVu.ChiSoLo_DanhBos.Any(item => item.DanhBo == gridView.GetDataRow(0)["DanhBo"].ToString() && item.Nam == int.Parse(gridView.GetDataRow(0)["Nam"].ToString()) && item.Ky == int.Parse(gridView.GetDataRow(0)["Ky"].ToString()) && item.MaDon != null) == true)
+                        if (_dbThuongVu.ChiSoLo_DanhBos.Any(item => item.Nam == int.Parse(gridView.GetDataRow(0)["Nam"].ToString()) && item.Ky == int.Parse(gridView.GetDataRow(0)["Ky"].ToString()) && item.Dot == int.Parse(gridView.GetDataRow(0)["Dot"].ToString()) && item.MaDon != null) == true)
                         {
                             MessageBox.Show("Không Thêm Được do P. Thương Vụ đã Lập Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -262,14 +262,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (MessageBox.Show("Bạn có chắc chắn Xóa?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        if (gridView.GetDataRow(0)["MaDon"].ToString() != "")
+                        if (_dbThuongVu.ChiSoLo_DanhBos.Any(item => item.Nam == int.Parse(gridView.GetDataRow(0)["Nam"].ToString()) && item.Ky == int.Parse(gridView.GetDataRow(0)["Ky"].ToString()) && item.Dot == int.Parse(gridView.GetDataRow(0)["Dot"].ToString()) && item.MaDon != null) == true)
                         {
                             MessageBox.Show("Đã có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        if (bool.Parse(gridView.GetDataRow(0)["DCHD"].ToString()) == true)
-                        {
-                            MessageBox.Show("Đã Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         for (int i = 0; i < gridView.DataRowCount; i++)
@@ -297,7 +292,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void btnTVXem_Click(object sender, EventArgs e)
         {
             btnQLDHNXemChot.PerformClick();
-            if (bool.Parse(gridView.GetDataRow(0)["DCHD"].ToString()) == false)
+            if (_dbThuongVu.ChiSoLo_DanhBos.Any(item => item.Nam == int.Parse(gridView.GetDataRow(0)["Nam"].ToString()) && item.Ky == int.Parse(gridView.GetDataRow(0)["Ky"].ToString()) && item.Dot == int.Parse(gridView.GetDataRow(0)["Dot"].ToString()) && item.DCHD == true) == true)
+            {
+
+            }
+            else
+            {
                 for (int i = 0; i < gridView.DataRowCount; i++)
                 {
                     DataRow row = gridView.GetDataRow(i);
@@ -342,6 +342,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         row["TieuThuLoConLai"] = TieuThuLo * -1;
                     }
                 }
+            }
+
         }
 
         private void btnTVLapDon_Click(object sender, EventArgs e)
@@ -352,7 +354,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        if (gridView.GetDataRow(0)["MaDon"].ToString() != "")
+                        if (_dbThuongVu.ChiSoLo_DanhBos.Any(item => item.Nam == int.Parse(gridView.GetDataRow(0)["Nam"].ToString()) && item.Ky == int.Parse(gridView.GetDataRow(0)["Ky"].ToString()) && item.Dot == int.Parse(gridView.GetDataRow(0)["Dot"].ToString()) && item.MaDon != null) == true)
                         {
                             MessageBox.Show("Đã có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -426,12 +428,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        if (gridView.GetDataRow(0)["MaDon"].ToString() == "")
+                        if (_dbThuongVu.ChiSoLo_DanhBos.Count(item => item.Nam == int.Parse(gridView.GetDataRow(0)["Nam"].ToString()) && item.Ky == int.Parse(gridView.GetDataRow(0)["Ky"].ToString()) && item.Dot == int.Parse(gridView.GetDataRow(0)["Dot"].ToString()) && item.MaDon == null) == gridView.DataRowCount)
                         {
                             MessageBox.Show("Chưa có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (bool.Parse(gridView.GetDataRow(0)["DCHD"].ToString()) == true)
+                        if (_dbThuongVu.ChiSoLo_DanhBos.Any(item => item.Nam == int.Parse(gridView.GetDataRow(0)["Nam"].ToString()) && item.Ky == int.Parse(gridView.GetDataRow(0)["Ky"].ToString()) && item.Dot == int.Parse(gridView.GetDataRow(0)["Dot"].ToString()) && item.DCHD == true) == true)
                         {
                             MessageBox.Show("Đã Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
