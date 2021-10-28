@@ -145,7 +145,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         if (_dbThuongVu.ChiSoLo_DanhBos.Any(item => item.Nam == int.Parse(gridView.GetDataRow(0)["Nam"].ToString()) && item.Ky == int.Parse(gridView.GetDataRow(0)["Ky"].ToString()) && item.Dot == int.Parse(gridView.GetDataRow(0)["Dot"].ToString()) && item.MaDon != null) == true)
                         {
-                            MessageBox.Show("Không Thêm Được do P. Thương Vụ đã Lập Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("P. Thương Vụ đã Lập Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         for (int i = 0; i < gridView.DataRowCount; i++)
@@ -264,7 +264,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         if (_dbThuongVu.ChiSoLo_DanhBos.Any(item => item.Nam == int.Parse(gridView.GetDataRow(0)["Nam"].ToString()) && item.Ky == int.Parse(gridView.GetDataRow(0)["Ky"].ToString()) && item.Dot == int.Parse(gridView.GetDataRow(0)["Dot"].ToString()) && item.MaDon != null) == true)
                         {
-                            MessageBox.Show("Đã có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("P. Thương Vụ đã Lập Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         for (int i = 0; i < gridView.DataRowCount; i++)

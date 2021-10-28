@@ -318,7 +318,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             if (radDSDCHD.Checked)
                                 if (txtKy.Text.Trim() != "")
-                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value, txtKy.Text.Trim());
                                 else
                                     dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                             else
@@ -487,7 +487,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     item.Cells["ThuTienCapNhat"].Value = _dbThuTien.DIEUCHINH_HDs.Any(itemDC => itemDC.FK_HOADON == _dbThuTien.HOADONs.SingleOrDefault(itemHD => itemHD.DANHBA == item.Cells["DanhBo"].Value.ToString() && itemHD.NAM == int.Parse(Kys[1]) && itemHD.KY == int.Parse(Kys[0])).ID_HOADON && itemDC.TONGCONG_END != null);
                     item.Cells["ThuTienGiaiTrach"].Value = _dbThuTien.HOADONs.SingleOrDefault(itemHD => itemHD.DANHBA == item.Cells["DanhBo"].Value.ToString() && itemHD.NAM == int.Parse(Kys[1]) && itemHD.KY == int.Parse(Kys[0])).NGAYGIAITRACH;
                 }
-
         }
 
         private void chkSelectAll_CheckedChanged(object sender, EventArgs e)

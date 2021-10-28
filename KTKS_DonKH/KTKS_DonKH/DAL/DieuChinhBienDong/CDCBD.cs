@@ -12,6 +12,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {
     class CDCBD : CDAL
     {
+        dbThuTienDataContext _dbThuTien = new dbThuTienDataContext();
+
         ///Chứa hàm truy xuất dữ liệu từ bảng DCBD & DCBD_ChiTietBienDong & DCBD_ChiTietHoaDon
 
         #region DCBD (Điều Chỉnh Biến Động)

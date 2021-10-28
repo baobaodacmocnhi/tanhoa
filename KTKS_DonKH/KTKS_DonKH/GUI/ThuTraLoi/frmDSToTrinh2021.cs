@@ -225,7 +225,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             }
         }
 
-        private void btnInDS_Click(object sender, EventArgs e)
+        private void btnIn_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn chắc chắn In những Thư trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -464,6 +464,55 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 frmToTrinh2021 frm = new frmToTrinh2021(int.Parse(dgvToTrinh["IDCT", dgvToTrinh.CurrentRow.Index].Value.ToString()));
                 frm.ShowDialog();
             }
+        }
+
+        private void btnInDS_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            for (int i = 0; i < dgvToTrinh.Rows.Count; i++)
+                if (dgvToTrinh["In", i].Value != null && bool.Parse(dgvToTrinh["In", i].Value.ToString()) == true)
+                {
+                    DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
+
+                    ToTrinh_ChiTiet cttt = _cTT.get_ChiTiet(int.Parse(dgvToTrinh["IDCT", i].Value.ToString()));
+
+                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                    if (cttt.ToTrinh.MaDonMoi != null)
+                    {
+                        _dontu_ChiTiet = _cDonTu.get_ChiTiet(cttt.ToTrinh.MaDonMoi.Value, cttt.STT.Value);
+                        if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                            dr["MaDon"] = cttt.ToTrinh.MaDonMoi.ToString();
+                        else
+                            dr["MaDon"] = cttt.ToTrinh.MaDonMoi.Value.ToString() + "." + cttt.STT.Value.ToString();
+                    }
+                    else
+                        if (cttt.ToTrinh.MaDon != null)
+                        {
+                            dr["MaDon"] = cttt.ToTrinh.MaDon.Value.ToString().Insert(cttt.ToTrinh.MaDon.Value.ToString().Length - 2, "-");
+                        }
+                        else
+                            if (cttt.ToTrinh.MaDonTXL != null)
+                            {
+                                dr["MaDon"] = "TXL" + cttt.ToTrinh.MaDonTXL.Value.ToString().Insert(cttt.ToTrinh.MaDonTXL.Value.ToString().Length - 2, "-");
+                            }
+                            else
+                                if (cttt.ToTrinh.MaDonTBC != null)
+                                {
+                                    dr["MaDon"] = "TBC" + cttt.ToTrinh.MaDonTBC.Value.ToString().Insert(cttt.ToTrinh.MaDonTBC.Value.ToString().Length - 2, "-");
+                                }
+                    dr["HoTen"] = cttt.HoTen;
+                    dr["DiaChi"] = cttt.DiaChi;
+                    if (!string.IsNullOrEmpty(cttt.DanhBo) && cttt.DanhBo.Length == 11)
+                        dr["DanhBo"] = cttt.DanhBo.Insert(7, " ").Insert(4, " ");
+                    dr["DiaChi"] = cttt.DiaChi;
+                    dr["NhomDon"] = cttt.VeViec;
+
+                    dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
+                }
+            rptDanhSach_Ngang rpt = new rptDanhSach_Ngang();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
         }
 
 

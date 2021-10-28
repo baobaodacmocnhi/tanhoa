@@ -101,11 +101,11 @@ namespace KTKS_DonKH.DAL
                     return null;
         }
 
-        public DataTable getDSAll(string DanhBo)
+        public DataTable getDS(string DanhBo, int TuKy, int TuNam, int DenKy, int DenNam)
         {
-            string sql = "select Nam,Ky,GiaBieu=GB,DinhMuc=DM,DinhMucHN,TieuThu,TongCong from HOADON where DanhBa='" + DanhBo + "'"
+            string sql = "select Nam,Ky,GiaBieu=GB,DinhMuc=DM,DinhMucHN,TieuThu,TongCong from HOADON where DanhBa='" + DanhBo + "' and (NAM>" + TuNam + " or (NAM=" + TuNam + " and KY>=" + TuKy + ")) and (NAM<" + DenNam + " or (NAM=" + DenNam + " and KY<=" + DenKy + "))"
                         + " union"
-                        + " select Nam,Ky,GiaBieu=GB,DinhMuc=DM,DinhMucHN,TieuThu,TongCong from TT_HoaDonCu where DanhBa='" + DanhBo + "'"
+                        + " select Nam,Ky,GiaBieu=GB,DinhMuc=DM,DinhMucHN,TieuThu,TongCong from TT_HoaDonCu where DanhBa='" + DanhBo + "' and (NAM>" + TuNam + " or (NAM=" + TuNam + " and KY>=" + TuKy + ")) and (NAM<" + DenNam + " or (NAM=" + DenNam + " and KY<=" + DenKy + "))"
                         + " order by Nam,Ky";
             return ExecuteQuery_DataTable(sql);
         }

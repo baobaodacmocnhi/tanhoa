@@ -93,16 +93,16 @@ namespace KTKS_DonKH.GUI.TruyThu
                 txtDinhMuc.Text = hoadon.DM.ToString();
             if (hoadon.DinhMucHN != null)
                 txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
-            if (MessageBox.Show("Bạn có muốn chạy tự động nhập Kỳ", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-            {
-                DataTable dt = _cThuTien.getDSAll(hoadon.DANHBA);
-                foreach (DataRow item in dt.Rows)
-                {
-                    var index = dgvTruyThuTienNuoc.Rows.Add();
-                    dgvTruyThuTienNuoc.Rows[index].Cells["Nam"].Value = item["Nam"];
-                    dgvTruyThuTienNuoc.Rows[index].Cells["Ky"].Value = item["Ky"];
-                }
-            }
+            //if (MessageBox.Show("Bạn có muốn chạy tự động nhập Kỳ", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            //{
+            //    DataTable dt = _cThuTien.getDSAll(hoadon.DANHBA);
+            //    foreach (DataRow item in dt.Rows)
+            //    {
+            //        var index = dgvTruyThuTienNuoc.Rows.Add();
+            //        dgvTruyThuTienNuoc.Rows[index].Cells["Nam"].Value = item["Nam"];
+            //        dgvTruyThuTienNuoc.Rows[index].Cells["Ky"].Value = item["Ky"];
+            //    }
+            //}
             if (_cDHN.CheckExist(hoadon.DANHBA) == false)
                 MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -2277,6 +2277,18 @@ namespace KTKS_DonKH.GUI.TruyThu
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnAutoTaiHoaDon_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cThuTien.getDS(txtDanhBo.Text.Trim(), int.Parse(txtTuKy.Text.Trim()), int.Parse(txtTuNam.Text.Trim()), int.Parse(txtDenKy.Text.Trim()), int.Parse(txtDenNam.Text.Trim()));
+            foreach (DataRow item in dt.Rows)
+            {
+                var index = dgvTruyThuTienNuoc.Rows.Add();
+                dgvTruyThuTienNuoc.Rows[index].Cells["Nam"].Value = item["Nam"];
+                dgvTruyThuTienNuoc.Rows[index].Cells["Ky"].Value = item["Ky"];
+            }
+
         }
 
 
