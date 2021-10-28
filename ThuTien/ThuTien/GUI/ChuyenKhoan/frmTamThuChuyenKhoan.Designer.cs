@@ -172,7 +172,7 @@
             this.tabTamThu.Location = new System.Drawing.Point(4, 22);
             this.tabTamThu.Name = "tabTamThu";
             this.tabTamThu.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTamThu.Size = new System.Drawing.Size(1352, 554);
+            this.tabTamThu.Size = new System.Drawing.Size(1352, 564);
             this.tabTamThu.TabIndex = 1;
             this.tabTamThu.Text = "Danh Sách Tạm Thu";
             this.tabTamThu.UseVisualStyleBackColor = true;
@@ -364,7 +364,7 @@
             this.dgvTamThu.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvTamThu.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvTamThu.Size = new System.Drawing.Size(1340, 493);
+            this.dgvTamThu.Size = new System.Drawing.Size(1340, 504);
             this.dgvTamThu.TabIndex = 14;
             this.dgvTamThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTamThu_CellFormatting);
             this.dgvTamThu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTamThu_RowPostPaint);
@@ -587,7 +587,7 @@
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHoaDon.Size = new System.Drawing.Size(1340, 515);
+            this.dgvHoaDon.Size = new System.Drawing.Size(1340, 526);
             this.dgvHoaDon.TabIndex = 13;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHoaDon_RowPostPaint);
@@ -706,7 +706,7 @@
             this.tabThongTin.Location = new System.Drawing.Point(4, 22);
             this.tabThongTin.Name = "tabThongTin";
             this.tabThongTin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabThongTin.Size = new System.Drawing.Size(1352, 554);
+            this.tabThongTin.Size = new System.Drawing.Size(1352, 564);
             this.tabThongTin.TabIndex = 0;
             this.tabThongTin.Text = "Thông Tin";
             this.tabThongTin.UseVisualStyleBackColor = true;
@@ -766,7 +766,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 31);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1360, 580);
+            this.tabControl.Size = new System.Drawing.Size(1360, 590);
             this.tabControl.TabIndex = 4;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 

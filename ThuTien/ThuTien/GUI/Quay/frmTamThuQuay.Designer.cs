@@ -183,11 +183,11 @@
             this.To,
             this.HanhThu,
             this.DongNuoc});
-            this.dgvHoaDon.Location = new System.Drawing.Point(6, 35);
+            this.dgvHoaDon.Location = new System.Drawing.Point(4, 35);
             this.dgvHoaDon.Name = "dgvHoaDon";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvHoaDon.Size = new System.Drawing.Size(1315, 530);
+            this.dgvHoaDon.Size = new System.Drawing.Size(1315, 526);
             this.dgvHoaDon.TabIndex = 13;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvHoaDon_ColumnHeaderMouseClick);
@@ -330,10 +330,10 @@
             this.tabControl.Controls.Add(this.tabThongTin);
             this.tabControl.Controls.Add(this.tabTamThu);
             this.tabControl.Controls.Add(this.tabXacNhanNo);
-            this.tabControl.Location = new System.Drawing.Point(0, 35);
+            this.tabControl.Location = new System.Drawing.Point(0, 31);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1370, 598);
+            this.tabControl.Size = new System.Drawing.Size(1360, 590);
             this.tabControl.TabIndex = 3;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -348,7 +348,7 @@
             this.tabThongTin.Location = new System.Drawing.Point(4, 22);
             this.tabThongTin.Name = "tabThongTin";
             this.tabThongTin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabThongTin.Size = new System.Drawing.Size(1362, 572);
+            this.tabThongTin.Size = new System.Drawing.Size(1352, 564);
             this.tabThongTin.TabIndex = 0;
             this.tabThongTin.Text = "Thông Tin";
             this.tabThongTin.UseVisualStyleBackColor = true;
@@ -422,7 +422,7 @@
             this.tabTamThu.Location = new System.Drawing.Point(4, 22);
             this.tabTamThu.Name = "tabTamThu";
             this.tabTamThu.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTamThu.Size = new System.Drawing.Size(1362, 572);
+            this.tabTamThu.Size = new System.Drawing.Size(1352, 564);
             this.tabTamThu.TabIndex = 1;
             this.tabTamThu.Text = "Danh Sách Tạm Thu";
             this.tabTamThu.UseVisualStyleBackColor = true;
@@ -587,7 +587,7 @@
             this.dgvTamThu.Name = "dgvTamThu";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvTamThu.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvTamThu.Size = new System.Drawing.Size(1350, 511);
+            this.dgvTamThu.Size = new System.Drawing.Size(1350, 504);
             this.dgvTamThu.TabIndex = 14;
             this.dgvTamThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTamThu_CellFormatting);
             this.dgvTamThu.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvTamThu_CellValidating);
@@ -759,7 +759,7 @@
             this.tabXacNhanNo.Controls.Add(this.dgvXacNhanNo);
             this.tabXacNhanNo.Location = new System.Drawing.Point(4, 22);
             this.tabXacNhanNo.Name = "tabXacNhanNo";
-            this.tabXacNhanNo.Size = new System.Drawing.Size(1362, 572);
+            this.tabXacNhanNo.Size = new System.Drawing.Size(1352, 564);
             this.tabXacNhanNo.TabIndex = 2;
             this.tabXacNhanNo.Text = "Danh Sách Xác Nhận Nợ";
             this.tabXacNhanNo.UseVisualStyleBackColor = true;
@@ -843,7 +843,7 @@
             this.dgvXacNhanNo.Name = "dgvXacNhanNo";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvXacNhanNo.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvXacNhanNo.Size = new System.Drawing.Size(1315, 530);
+            this.dgvXacNhanNo.Size = new System.Drawing.Size(1315, 526);
             this.dgvXacNhanNo.TabIndex = 20;
             this.dgvXacNhanNo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvXacNhanNo_CellFormatting);
             this.dgvXacNhanNo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvXacNhanNo_RowPostPaint);
@@ -984,7 +984,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1360, 666);
+            this.ClientSize = new System.Drawing.Size(1408, 666);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.chkChuKy);
             this.Controls.Add(this.btnInTamThuKhong);
