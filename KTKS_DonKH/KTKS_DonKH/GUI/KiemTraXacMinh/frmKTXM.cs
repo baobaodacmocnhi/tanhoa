@@ -1086,7 +1086,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     //item.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                     //item.SubItems.Add(Convert.ToBase64String(bytes));
                     //lstVFile.Items.Add(item);
-                    byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
+
+                    //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
+                    byte[] bytes = _cKTXM.scanVanBan(dialog.FileName);
                     if (_ctktxm == null)
                     {
                         var index = dgvHinh.Rows.Add();

@@ -199,8 +199,8 @@ namespace KTKS_DonKH.DAL
         {
             try
             {
-                string Phuong = ", P." + db.PHUONGs.Single(itemPhuong => itemPhuong.MAQUAN == int.Parse(MaQuan) && itemPhuong.MAPHUONG == MaPhuong).TENPHUONG;
-                string Quan = ", Q." + db.QUANs.Single(itemQuan => itemQuan.MAQUAN == int.Parse(MaQuan)).TENQUAN;
+                string Phuong = " P." + db.PHUONGs.Single(itemPhuong => itemPhuong.MAQUAN == int.Parse(MaQuan) && itemPhuong.MAPHUONG == MaPhuong).TENPHUONG;
+                string Quan = " Q." + db.QUANs.Single(itemQuan => itemQuan.MAQUAN == int.Parse(MaQuan)).TENQUAN;
                 return Phuong + Quan;
             }
             catch (Exception)

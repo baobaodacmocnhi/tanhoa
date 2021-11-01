@@ -988,6 +988,7 @@ namespace KTKS_DonKH.GUI.BamChi
             }
         }
 
+
         //add file
         private void btnChonFile_Click(object sender, EventArgs e)
         {
@@ -1003,7 +1004,9 @@ namespace KTKS_DonKH.GUI.BamChi
                     //item.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                     //item.SubItems.Add(Convert.ToBase64String(bytes));
                     //lstVFile.Items.Add(item);
-                    byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
+
+                    //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
+                    byte[] bytes = _cBamChi.scanVanBan(dialog.FileName);
                     if (_ctbamchi == null)
                     {
                         var index = dgvHinh.Rows.Add();

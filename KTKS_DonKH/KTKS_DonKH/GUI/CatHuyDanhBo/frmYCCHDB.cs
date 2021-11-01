@@ -715,7 +715,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     //item.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                     //item.SubItems.Add(Convert.ToBase64String(bytes));
                     //lstVFile.Items.Add(item);
-                    byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
+
+                    //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
+                    byte[] bytes = _cCHDB.scanVanBan(dialog.FileName);
                     if (_ycchdb == null)
                     {
                         var index = dgvHinh.Rows.Add();

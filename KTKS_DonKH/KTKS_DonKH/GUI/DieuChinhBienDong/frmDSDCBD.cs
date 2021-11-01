@@ -2061,10 +2061,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["ThongTin"] = ctdcbd.CongDung;
                                 string[] HieuLucKys = ctdcbd.HieuLucKy.Split('/');
                                 GiaNuoc2 gn = _cGiaNuoc.getGiaNuoc(int.Parse(HieuLucKys[1]));
-                                dr["TienNuocSH"] = gn.SHTM;
-                                dr["TienNuocSHVuot1"] = gn.SHVM1;
-                                dr["TienNuocSHVuot2"] = gn.SHVM2;
-                                dr["TienNuocKDDV"] = gn.KDDV;
+                                dr["TienNuocSH"] = (int)(gn.SHTM * 1.15);
+                                dr["TienNuocSHVuot1"] = (int)(gn.SHVM1* 1.15);
+                                dr["TienNuocSHVuot2"] = (int)(gn.SHVM2 * 1.15);
+                                dr["TienNuocKDDV"] = (int)(gn.KDDV * 1.15);
 
                                 if (ctdcbd.SH_BD != "")
                                     dr["SH"] = ctdcbd.SH_BD;
@@ -2737,6 +2737,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         dchd.UpdatedHDDT = false;
                                                         hoadon.BaoCaoThue = false;
                                                     }
+                                                    hoadon.GB = dchd.GB_DC.Value;
+                                                    hoadon.DM = dchd.DM_DC;
+                                                    hoadon.TIEUTHU = dchd.TIEUTHU_DC;
                                                     hoadon.GIABAN = dchd.GIABAN_END;
                                                     hoadon.THUE = dchd.THUE_END;
                                                     hoadon.PHI = dchd.PHI_END;
@@ -2821,7 +2824,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         dchd1.UpdatedHDDT = false;
                                                         hoadon.BaoCaoThue = false;
                                                     }
-
+                                                    hoadon.GB = dchd1.GB_DC.Value;
+                                                    hoadon.DM = dchd1.DM_DC;
+                                                    hoadon.TIEUTHU = dchd1.TIEUTHU_DC;
                                                     hoadon.GIABAN = dchd1.GIABAN_END;
                                                     hoadon.THUE = dchd1.THUE_END;
                                                     hoadon.PHI = dchd1.PHI_END;
