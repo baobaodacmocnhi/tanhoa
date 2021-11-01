@@ -106,11 +106,11 @@ namespace ThuTien.GUI.Doi
                             if (!string.IsNullOrWhiteSpace(contents[6]))
                                 hoadon.HOPDONG = contents[6];
                             if (!string.IsNullOrWhiteSpace(contents[7]))
-                                hoadon.TENKH = contents[7];
+                                hoadon.TENKH = contents[7].Trim();
                             if (!string.IsNullOrWhiteSpace(contents[8]))
-                                hoadon.SO = contents[8];
+                                hoadon.SO = contents[8].Trim();
                             if (!string.IsNullOrWhiteSpace(contents[9]))
-                                hoadon.DUONG = contents[9];
+                                hoadon.DUONG = contents[9].Trim();
                             //if (!string.IsNullOrWhiteSpace(contents[10]))
                             //    hoadon.MSKH = contents[10];
                             //if (!string.IsNullOrWhiteSpace(contents[11]))

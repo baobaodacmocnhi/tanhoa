@@ -84,14 +84,14 @@ namespace ThuTien.GUI.TimKiem
                         //if (_cTTCH.CheckExist_CT(item.Cells["SoHoaDon"].Value.ToString()) == true)
                         if (bool.Parse(item.Cells["ToTrinh"].Value.ToString()) == true)
                         {
-                            item.DefaultCellStyle.BackColor = Color.Green;
+                            item.DefaultCellStyle.BackColor = Color.Blue;
                         }
                     //điều chỉnh tiền dư chuyển khoản
                     if (bool.Parse(item.Cells["DCHD"].Value.ToString()) == true)
                         item.DefaultCellStyle.BackColor = Color.Fuchsia;
                     //điều chỉnh hóa đơn thương vụ
-                    if (bool.Parse(item.Cells["ChanDCHD"].Value.ToString()) == false)
-                        item.DefaultCellStyle.BackColor = Color.Blue;
+                    if (bool.Parse(item.Cells["DCHD_TV"].Value.ToString()) == true)
+                        item.DefaultCellStyle.BackColor = Color.Green;
                     //if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()) == true)
                     //{
                     //TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
