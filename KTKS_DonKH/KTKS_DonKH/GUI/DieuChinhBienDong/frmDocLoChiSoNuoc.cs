@@ -216,9 +216,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dtParent.TableName = "Parent";
             ds.Tables.Add(dtParent);
 
-            sql = "select hd.*,TinhTrang='' "
-                    + " from ChiSoLo_DanhBo db,ChiSoLo_HoaDon hd where db.Nam=" + txtNam.Text.Trim() + " and db.Ky=" + txtKy.Text.Trim() + " and db.Dot=" + txtDot.Text.Trim() + ""
-                    + " and db.ID=hd.ID order by MaHD desc";
+            sql = "select b.*,TinhTrang=case when MaNV_DangNgan is not null then N'Đã Đăng Ngân' else '' end "
+                    + " from ChiSoLo_DanhBo a,ChiSoLo_HoaDon b,server9.HOADON_TA.dbo.HOADON hd where a.Nam=" + txtNam.Text.Trim() + " and a.Ky=" + txtKy.Text.Trim() + " and a.Dot=" + txtDot.Text.Trim() + ""
+                    + " and a.ID=b.ID and b.MaHD=hd.ID_HOADON order by MaHD desc";
             DataTable dtChild = _cDCBD.ExecuteQuery_DataTable(sql);
             dtChild.TableName = "Child";
             ds.Tables.Add(dtChild);
@@ -298,6 +298,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             else
             {
+                int GiaiTrach = 0;
                 for (int i = 0; i < gridView.DataRowCount; i++)
                 {
                     DataRow row = gridView.GetDataRow(i);
@@ -310,8 +311,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         DataRow[] childRows = row.GetChildRows("Chi Tiết");
                         int TieuThuLo = int.Parse(row["TieuThuLo"].ToString()) * -1;
+                        GiaiTrach = 0;   
                         foreach (DataRow itemChild in childRows)
                         {
+                            if (itemChild["TinhTrang"].ToString() != "")
+                                GiaiTrach++;
                             //kiểm tra có lập điều chỉnh hóa đơn
                             if (_cDCBD.checkExist_HoaDon(row["DanhBo"].ToString(), int.Parse(itemChild["Nam"].ToString()), int.Parse(itemChild["Ky"].ToString())))
                             {
@@ -339,6 +343,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                         if (flag == true)
                             row["TinhTrang"] = "Có Điều Chỉnh Hóa Đơn";
+                        if (childRows.Count() == GiaiTrach)
+                            row["TinhTrang"] = "Đã Đăng Ngân";
                         row["TieuThuLoConLai"] = TieuThuLo * -1;
                     }
                 }
