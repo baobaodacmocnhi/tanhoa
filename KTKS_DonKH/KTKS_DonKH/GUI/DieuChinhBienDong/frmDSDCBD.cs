@@ -481,12 +481,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         break;
                 }
             if (radDSDCHD.Checked)
-                foreach (DataGridViewRow item in dgvDSDCBD.Rows)
-                {
-                    string[] Kys = item.Cells["Ky"].Value.ToString().Split('/');
-                    item.Cells["ThuTienCapNhat"].Value = _dbThuTien.DIEUCHINH_HDs.Any(itemDC => itemDC.FK_HOADON == _dbThuTien.HOADONs.SingleOrDefault(itemHD => itemHD.DANHBA == item.Cells["DanhBo"].Value.ToString() && itemHD.NAM == int.Parse(Kys[1]) && itemHD.KY == int.Parse(Kys[0])).ID_HOADON && itemDC.TONGCONG_END != null);
-                    item.Cells["ThuTienGiaiTrach"].Value = _dbThuTien.HOADONs.SingleOrDefault(itemHD => itemHD.DANHBA == item.Cells["DanhBo"].Value.ToString() && itemHD.NAM == int.Parse(Kys[1]) && itemHD.KY == int.Parse(Kys[0])).NGAYGIAITRACH;
-                }
+                if (chkKhongCheckThuTien.Checked == false)
+                    foreach (DataGridViewRow item in dgvDSDCBD.Rows)
+                    {
+                        string[] Kys = item.Cells["Ky"].Value.ToString().Split('/');
+                        item.Cells["ThuTienCapNhat"].Value = _dbThuTien.DIEUCHINH_HDs.Any(itemDC => itemDC.FK_HOADON == _dbThuTien.HOADONs.SingleOrDefault(itemHD => itemHD.DANHBA == item.Cells["DanhBo"].Value.ToString() && itemHD.NAM == int.Parse(Kys[1]) && itemHD.KY == int.Parse(Kys[0])).ID_HOADON && itemDC.TONGCONG_END != null);
+                        item.Cells["ThuTienGiaiTrach"].Value = _dbThuTien.HOADONs.SingleOrDefault(itemHD => itemHD.DANHBA == item.Cells["DanhBo"].Value.ToString() && itemHD.NAM == int.Parse(Kys[1]) && itemHD.KY == int.Parse(Kys[0])).NGAYGIAITRACH;
+                    }
         }
 
         private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
@@ -2062,7 +2063,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 string[] HieuLucKys = ctdcbd.HieuLucKy.Split('/');
                                 GiaNuoc2 gn = _cGiaNuoc.getGiaNuoc(int.Parse(HieuLucKys[1]));
                                 dr["TienNuocSH"] = (int)(gn.SHTM * 1.15);
-                                dr["TienNuocSHVuot1"] = (int)(gn.SHVM1* 1.15);
+                                dr["TienNuocSHVuot1"] = (int)(gn.SHVM1 * 1.15);
                                 dr["TienNuocSHVuot2"] = (int)(gn.SHVM2 * 1.15);
                                 dr["TienNuocKDDV"] = (int)(gn.KDDV * 1.15);
 
