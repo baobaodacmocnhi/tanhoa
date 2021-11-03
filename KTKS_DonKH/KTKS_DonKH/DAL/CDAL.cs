@@ -488,7 +488,7 @@ namespace KTKS_DonKH.DAL
         public byte[] scanVanBan(string path)
         {
             Image image = Image.FromFile(path);
-            Bitmap resizedImage = resizeImage(image, 0.25m);
+            Bitmap resizedImage = resizeImage(image, 0.5m);
             return ImageToByte(resizedImage);
         }
     }

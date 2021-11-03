@@ -126,7 +126,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.txtKy = new System.Windows.Forms.TextBox();
-            this.btnExcelHDDT2 = new System.Windows.Forms.Button();
             this.chkKhongCheckThuTien = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDCBD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCatChuyenDM)).BeginInit();
@@ -984,16 +983,6 @@
             this.txtKy.Size = new System.Drawing.Size(60, 22);
             this.txtKy.TabIndex = 96;
             // 
-            // btnExcelHDDT2
-            // 
-            this.btnExcelHDDT2.Location = new System.Drawing.Point(1258, 43);
-            this.btnExcelHDDT2.Name = "btnExcelHDDT2";
-            this.btnExcelHDDT2.Size = new System.Drawing.Size(100, 25);
-            this.btnExcelHDDT2.TabIndex = 97;
-            this.btnExcelHDDT2.Text = "Excel HĐĐT 2";
-            this.btnExcelHDDT2.UseVisualStyleBackColor = true;
-            this.btnExcelHDDT2.Click += new System.EventHandler(this.btnExcelHDDT2_Click);
-            // 
             // chkKhongCheckThuTien
             // 
             this.chkKhongCheckThuTien.AutoSize = true;
@@ -1012,7 +1001,6 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1365, 647);
             this.Controls.Add(this.chkKhongCheckThuTien);
-            this.Controls.Add(this.btnExcelHDDT2);
             this.Controls.Add(this.txtKy);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnExcelHDDT);
@@ -1138,7 +1126,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtKy;
-        private System.Windows.Forms.Button btnExcelHDDT2;
         private System.Windows.Forms.CheckBox chkKhongCheckThuTien;
     }
 }

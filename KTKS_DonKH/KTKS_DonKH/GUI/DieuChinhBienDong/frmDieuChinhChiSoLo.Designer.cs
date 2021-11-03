@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
-    partial class frmDocLoChiSoNuoc
+    partial class frmDieuChinhChiSoLo
     {
         /// <summary>
         /// Required designer variable.
@@ -599,7 +599,7 @@
             this.btnQLDHNExcel.UseVisualStyleBackColor = true;
             this.btnQLDHNExcel.Click += new System.EventHandler(this.btnQLDHNExcel_Click);
             // 
-            // frmDocLoChiSoNuoc
+            // frmDieuChinhChiSoLo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -624,8 +624,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNam);
             this.Controls.Add(this.label1);
-            this.Name = "frmDocLoChiSoNuoc";
-            this.Text = "Danh Sách Đọc Lố Chỉ Số Nước";
+            this.Name = "frmDieuChinhChiSoLo";
+            this.Text = "Điều Chỉnh Chỉ Số Lố";
             this.Load += new System.EventHandler(this.frmDanhSachDocLoChiSoNuoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();

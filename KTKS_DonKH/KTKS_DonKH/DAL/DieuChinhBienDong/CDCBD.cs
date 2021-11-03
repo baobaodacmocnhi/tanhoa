@@ -2145,6 +2145,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTDCHD.DiaChi_BD,
                             itemCTDCHD.MST_BD,
                             itemCTDCHD.ChiTietMoi,
+                            itemCTDCHD.KhauTru,
+                            itemCTDCHD.DieuChinhGia,
+                            itemCTDCHD.DieuChinhGia2,
                         };
             return LINQToDataTable(query);
         }

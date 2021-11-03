@@ -123,6 +123,8 @@
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.btnInThongBaoMoi = new System.Windows.Forms.Button();
             this.btnInThongBaoMoi_BoQuan = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dateThucHien = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBoxNoiDungXuLy.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -236,7 +238,9 @@
             // 
             // groupBoxNoiDungXuLy
             // 
+            this.groupBoxNoiDungXuLy.Controls.Add(this.label15);
             this.groupBoxNoiDungXuLy.Controls.Add(this.chkCode68);
+            this.groupBoxNoiDungXuLy.Controls.Add(this.dateThucHien);
             this.groupBoxNoiDungXuLy.Controls.Add(this.groupBox4);
             this.groupBoxNoiDungXuLy.Controls.Add(this.cmbViTriDHN2);
             this.groupBoxNoiDungXuLy.Controls.Add(this.cmbViTriDHN1);
@@ -425,7 +429,7 @@
             // chkNgayXuLy
             // 
             this.chkNgayXuLy.AutoSize = true;
-            this.chkNgayXuLy.Location = new System.Drawing.Point(80, 223);
+            this.chkNgayXuLy.Location = new System.Drawing.Point(80, 251);
             this.chkNgayXuLy.Name = "chkNgayXuLy";
             this.chkNgayXuLy.Size = new System.Drawing.Size(98, 20);
             this.chkNgayXuLy.TabIndex = 15;
@@ -436,7 +440,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(77, 254);
+            this.label19.Location = new System.Drawing.Point(77, 282);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(67, 16);
             this.label19.TabIndex = 59;
@@ -446,7 +450,7 @@
             // 
             this.cmbNoiDung.Enabled = false;
             this.cmbNoiDung.FormattingEnabled = true;
-            this.cmbNoiDung.Location = new System.Drawing.Point(184, 251);
+            this.cmbNoiDung.Location = new System.Drawing.Point(184, 279);
             this.cmbNoiDung.Name = "cmbNoiDung";
             this.cmbNoiDung.Size = new System.Drawing.Size(200, 24);
             this.cmbNoiDung.TabIndex = 58;
@@ -456,7 +460,7 @@
             this.dateXuLy.CustomFormat = "dd/MM/yyyy";
             this.dateXuLy.Enabled = false;
             this.dateXuLy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateXuLy.Location = new System.Drawing.Point(184, 223);
+            this.dateXuLy.Location = new System.Drawing.Point(184, 251);
             this.dateXuLy.Name = "dateXuLy";
             this.dateXuLy.Size = new System.Drawing.Size(90, 22);
             this.dateXuLy.TabIndex = 16;
@@ -1055,13 +1059,32 @@
             this.btnInThongBaoMoi_BoQuan.UseVisualStyleBackColor = true;
             this.btnInThongBaoMoi_BoQuan.Click += new System.EventHandler(this.btnInThongBaoMoi_BoQuan_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(80, 226);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(98, 16);
+            this.label15.TabIndex = 129;
+            this.label15.Text = "Ngày Thự Hiện";
+            // 
+            // dateThucHien
+            // 
+            this.dateThucHien.CustomFormat = "dd/MM/yyyy";
+            this.dateThucHien.Enabled = false;
+            this.dateThucHien.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateThucHien.Location = new System.Drawing.Point(184, 223);
+            this.dateThucHien.Name = "dateThucHien";
+            this.dateThucHien.Size = new System.Drawing.Size(90, 22);
+            this.dateThucHien.TabIndex = 128;
+            // 
             // frmCTDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1445, 667);
+            this.ClientSize = new System.Drawing.Size(1445, 581);
             this.Controls.Add(this.btnInThongBaoMoi_BoQuan);
             this.Controls.Add(this.btnInThongBaoMoi);
             this.Controls.Add(this.label34);
@@ -1213,5 +1236,7 @@
         private System.Windows.Forms.CheckBox chkCode68;
         private System.Windows.Forms.Button btnInThongBaoMoi;
         private System.Windows.Forms.Button btnInThongBaoMoi_BoQuan;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DateTimePicker dateThucHien;
     }
 }

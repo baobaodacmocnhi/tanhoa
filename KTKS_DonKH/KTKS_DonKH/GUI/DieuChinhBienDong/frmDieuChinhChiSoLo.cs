@@ -18,9 +18,9 @@ using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
-    public partial class frmDocLoChiSoNuoc : Form
+    public partial class frmDieuChinhChiSoLo : Form
     {
-        string _mnu = "mnuDanhSachDocLoChiSoNuoc";
+        string _mnu = "mnuDieuChinhChiSoLo";
         CDocSo _cDocSo = new CDocSo();
         CDCBD _cDCBD = new CDCBD();
         CThuTien _cThuTien = new CThuTien();
@@ -30,7 +30,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         dbKinhDoanhDataContext _dbThuongVu = new dbKinhDoanhDataContext();
 
-        public frmDocLoChiSoNuoc()
+        public frmDieuChinhChiSoLo()
         {
             InitializeComponent();
         }
@@ -509,7 +509,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             ctdchd.DinhMuc_BD = hd.DM;
                                             ctdchd.TieuThu_BD = int.Parse(itemChild["TieuThuDC"].ToString());
                                             ///
-
+                                            if ((hd.NAM<2021)||(hd.NAM == 2021 && hd.KY <= 6))
+                                                ctdchd.BaoCaoThue = true;
+                                            ///
                                             string ChiTietCuA = "", ChiTietCuB = "", ChiTietMoiA = "", ChiTietMoiB = "";
                                             int Ky = 0, Nam = 0, TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0, TongTienCuA = 0, TongTienCuB = 0, TongTienMoiA = 0, TongTienMoiB = 0, TieuThu_DieuChinhGia = 0;
                                             DateTime TuNgay = new DateTime(), DenNgay = new DateTime();

@@ -723,9 +723,9 @@ namespace KTKS_DonKH
 
         private void mnuDanhSachDocLoChiSoNuoc_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen("mnuDanhSachDocLoChiSoNuoc", "Xem"))
+            if (CTaiKhoan.CheckQuyen("mnDieuChinhChiSoLo", "Xem"))
             {
-                frmDocLoChiSoNuoc frm = new frmDocLoChiSoNuoc();
+                frmDieuChinhChiSoLo frm = new frmDieuChinhChiSoLo();
                 OpenForm(frm);
             }
             else
