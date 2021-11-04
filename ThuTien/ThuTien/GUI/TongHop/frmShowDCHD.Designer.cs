@@ -371,6 +371,7 @@
             this.chkBaoCaoThue.TabIndex = 30;
             this.chkBaoCaoThue.Text = "Báo Cáo Thuế";
             this.chkBaoCaoThue.UseVisualStyleBackColor = true;
+            this.chkBaoCaoThue.CheckedChanged += new System.EventHandler(this.chkBaoCaoThue_CheckedChanged);
             // 
             // label1
             // 

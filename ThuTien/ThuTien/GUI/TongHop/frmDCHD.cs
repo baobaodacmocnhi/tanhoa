@@ -580,50 +580,78 @@ namespace ThuTien.GUI.TongHop
                             DataTable dtExcel = _cHoaDon.ExcelToDataTable(dialog.FileName);
                             //CExcel fileExcel = new CExcel(dialog.FileName);
                             //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
-                            string KyHieu = (string)_cHoaDon.ExecuteQuery_ReturnOneValue("select SoHoaDon from TT_DeviceConfig");
+                            //string KyHieu = (string)_cHoaDon.ExecuteQuery_ReturnOneValue("select SoHoaDon from TT_DeviceConfig");
                             int count = 0;
                             string message = "";
                             foreach (DataRow item in dtExcel.Rows)
                             {
-                                if (string.IsNullOrEmpty(item[20].ToString().Trim()) == false && item[20].ToString().Trim() != "")
-                                {
-                                    if (item[20].ToString().Trim().Length != 7 && item[20].ToString().Trim().Length != 13)
-                                    {
-                                        MessageBox.Show("Sai Số Hóa Đơn Điều Chỉnh, liên hệ P.TV để báo TCT cập nhật lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                    DIEUCHINH_HD dchd = _cDCHD.get(item[5].ToString().Trim());
-                                    if (dchd != null && dchd.UpdatedHDDT == false)
-                                        if (dchd.TONGCONG_END != null)
-                                            using (TransactionScope scope = new TransactionScope())
+                                //cấu hình điều chỉnh bằng chương trình
+                                DIEUCHINH_HD dchd = _cDCHD.get(item[1].ToString().Trim() + item[2].ToString().Trim());
+                                if (dchd != null && dchd.UpdatedHDDT == false)
+                                    if (dchd.TONGCONG_END != null)
+                                        using (TransactionScope scope = new TransactionScope())
+                                        {
+                                            dchd.UpdatedHDDT = true;
+                                            dchd.SoHoaDonMoi = item[1].ToString().Trim() + item[3].ToString().Trim();
+                                            if (_cDCHD.Sua(dchd) == true)
                                             {
-                                                dchd.UpdatedHDDT = true;
-                                                if (item[20].ToString().Trim().Contains("CT/") == true)
-                                                    dchd.SoHoaDonMoi = item[20].ToString().Trim();
-                                                else
-                                                    dchd.SoHoaDonMoi = KyHieu + item[20].ToString().Trim();
-                                                if (item[21].ToString().Trim() != "")
-                                                    dchd.BaoCaoThue = bool.Parse(item[21].ToString().Trim());
-                                                if (_cDCHD.Sua(dchd) == true)
+                                                HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
+                                                if (hd.SOHOADON != dchd.SoHoaDonMoi)
                                                 {
-                                                    HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
-                                                    if (hd.SOHOADON != dchd.SoHoaDonMoi)
-                                                    {
-                                                        hd.SoHoaDonCu = hd.SOHOADON;
-                                                        hd.SOHOADON = dchd.SoHoaDonMoi;
-                                                    }
-                                                    hd.BaoCaoThue = dchd.BaoCaoThue;
-                                                    if (_cHoaDon.Sua(hd) == true)
-                                                    {
-                                                        scope.Complete();
-                                                        scope.Dispose();
-                                                        count++;
-                                                    }
+                                                    hd.SoHoaDonCu = hd.SOHOADON;
+                                                    hd.SOHOADON = dchd.SoHoaDonMoi;
+                                                }
+                                                hd.BaoCaoThue = dchd.BaoCaoThue;
+                                                if (_cHoaDon.Sua(hd) == true)
+                                                {
+                                                    scope.Complete();
+                                                    scope.Dispose();
+                                                    count++;
                                                 }
                                             }
-                                        else
-                                            message += "\n" + item[3].ToString() + " - " + item[1].ToString() + "/" + item[2].ToString();
-                                }
+                                        }
+                                    else
+                                        message += "\n" + item[3].ToString() + " - " + item[1].ToString() + "/" + item[2].ToString();
+                                //cấu hình điều chỉnh bằng tay
+                                //if (string.IsNullOrEmpty(item[20].ToString().Trim()) == false && item[20].ToString().Trim() != "")
+                                //{
+                                //    if (item[20].ToString().Trim().Length != 7 && item[20].ToString().Trim().Length != 13)
+                                //    {
+                                //        MessageBox.Show("Sai Số Hóa Đơn Điều Chỉnh, liên hệ P.TV để báo TCT cập nhật lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //        return;
+                                //    }
+                                //    DIEUCHINH_HD dchd = _cDCHD.get(item[5].ToString().Trim());
+                                //    if (dchd != null && dchd.UpdatedHDDT == false)
+                                //        if (dchd.TONGCONG_END != null)
+                                //            using (TransactionScope scope = new TransactionScope())
+                                //            {
+                                //                dchd.UpdatedHDDT = true;
+                                //                if (item[20].ToString().Trim().Contains("CT/") == true)
+                                //                    dchd.SoHoaDonMoi = item[20].ToString().Trim();
+                                //                else
+                                //                    dchd.SoHoaDonMoi = KyHieu + item[20].ToString().Trim();
+                                //                if (item[21].ToString().Trim() != "")
+                                //                    dchd.BaoCaoThue = bool.Parse(item[21].ToString().Trim());
+                                //                if (_cDCHD.Sua(dchd) == true)
+                                //                {
+                                //                    HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
+                                //                    if (hd.SOHOADON != dchd.SoHoaDonMoi)
+                                //                    {
+                                //                        hd.SoHoaDonCu = hd.SOHOADON;
+                                //                        hd.SOHOADON = dchd.SoHoaDonMoi;
+                                //                    }
+                                //                    hd.BaoCaoThue = dchd.BaoCaoThue;
+                                //                    if (_cHoaDon.Sua(hd) == true)
+                                //                    {
+                                //                        scope.Complete();
+                                //                        scope.Dispose();
+                                //                        count++;
+                                //                    }
+                                //                }
+                                //            }
+                                //        else
+                                //            message += "\n" + item[3].ToString() + " - " + item[1].ToString() + "/" + item[2].ToString();
+                                //}
                             }
                             MessageBox.Show("Đã xử lý xong " + count + " hđ\nLỗi Không Xử lý" + message + "\nVui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             loadHD0Ton();

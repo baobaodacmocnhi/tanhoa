@@ -208,8 +208,7 @@ namespace ThuTien.GUI.TongHop
                             _dchd.ChuanThu1 = chkChuanThu1.Checked;
                             _dchd.BaoCaoThue = chkBaoCaoThue.Checked;
                             hd.BaoCaoThue = chkBaoCaoThue.Checked;
-                            if (chkBaoCaoThue.Checked == true)
-                                _dchd.UpdatedHDDT = chkUpdatedHDDT.Checked;
+                            _dchd.UpdatedHDDT = chkUpdatedHDDT.Checked;
 
                             if (_ctdchd != null)
                             {
@@ -250,6 +249,7 @@ namespace ThuTien.GUI.TongHop
 
                                 _dchd.GB_DC = _ctdchd.GiaBieu_BD;
                                 _dchd.DM_DC = _ctdchd.DinhMuc_BD;
+                                _dchd.DinhMucHN_DC = _ctdchd.DinhMucHN_BD;
                                 _dchd.TIEUTHU_DC = _ctdchd.TieuThu_BD;
                             }
                             ///không có phiếu điều chỉnh hóa đơn bên P.Kinh Doanh
@@ -282,6 +282,7 @@ namespace ThuTien.GUI.TongHop
 
                                 hd.GB = _dchd.GB_DC.Value;
                                 hd.DM = _dchd.DM_DC;
+                                hd.DinhMucHN = _dchd.DinhMucHN_DC;
                                 hd.TIEUTHU = _dchd.TIEUTHU_DC;
                                 hd.GIABAN = _dchd.GIABAN_END;
                                 hd.THUE = _dchd.THUE_END;
@@ -325,6 +326,8 @@ namespace ThuTien.GUI.TongHop
                             dchd.GiaBieu = _hoadon.GB;
                             if (_hoadon.DM != null)
                                 dchd.DinhMuc = (int)_hoadon.DM;
+                            if (_hoadon.DinhMucHN != null)
+                                dchd.DinhMucHN = (int)_hoadon.DinhMucHN;
                             dchd.TIEUTHU_BD = (int)_hoadon.TIEUTHU;
                             dchd.GIABAN_BD = _hoadon.GIABAN;
                             dchd.PHI_BD = _hoadon.PHI;
@@ -334,8 +337,7 @@ namespace ThuTien.GUI.TongHop
                             dchd.ChuanThu1 = chkChuanThu1.Checked;
                             dchd.BaoCaoThue = chkBaoCaoThue.Checked;
                             _hoadon.BaoCaoThue = chkBaoCaoThue.Checked;
-                            if (chkBaoCaoThue.Checked == true)
-                                dchd.UpdatedHDDT = chkUpdatedHDDT.Checked;
+                            dchd.UpdatedHDDT = chkUpdatedHDDT.Checked;
                             if (_ctdchd != null)
                             {
                                 if (_ctdchd.DCBD.MaDonMoi != null)
@@ -406,6 +408,7 @@ namespace ThuTien.GUI.TongHop
 
                                 _hoadon.GB = dchd.GB_DC.Value;
                                 _hoadon.DM = dchd.DM_DC;
+                                _hoadon.DinhMucHN = dchd.DinhMucHN_DC;
                                 _hoadon.TIEUTHU = dchd.TIEUTHU_DC;
                                 _hoadon.GIABAN = dchd.GIABAN_END;
                                 _hoadon.THUE = dchd.THUE_END;
@@ -533,6 +536,8 @@ namespace ThuTien.GUI.TongHop
                         dchd.GiaBieu = _hoadon.GB;
                         if (_hoadon.DM != null)
                             dchd.DinhMuc = (int)_hoadon.DM;
+                        if (_hoadon.DinhMucHN != null)
+                            dchd.DinhMucHN = (int)_hoadon.DinhMucHN;
                         dchd.TIEUTHU_BD = (int)_hoadon.TIEUTHU;
                         dchd.GIABAN_BD = _hoadon.GIABAN;
                         dchd.PHI_BD = _hoadon.PHI;
@@ -558,6 +563,14 @@ namespace ThuTien.GUI.TongHop
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void chkBaoCaoThue_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkBaoCaoThue.Checked == true)
+                chkUpdatedHDDT.Checked = true;
+            else
+                chkUpdatedHDDT.Checked = false;
         }
 
     }
