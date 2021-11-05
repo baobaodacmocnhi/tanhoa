@@ -7304,6 +7304,9 @@ namespace ThuTien.DAL.Doi
                             itemHD.TONGCONG,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
+                            itemHD.DangNgan_ChuyenKhoan,
+                            itemHD.DangNgan_Quay,
+                            itemHD.DangNgan_Ton,
                         };
             return LINQToDataTable(query);
         }

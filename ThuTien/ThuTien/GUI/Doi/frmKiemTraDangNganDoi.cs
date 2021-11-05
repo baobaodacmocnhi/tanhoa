@@ -668,6 +668,14 @@ namespace ThuTien.GUI.Doi
                             dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                             dr["TongCong"] = item["TongCong"];
                             dr["GiaBieu"] = item["NgayGiaiTrach"];
+                            if (bool.Parse(item["DangNgan_ChuyenKhoan"].ToString()) == true)
+                                dr["DinhMuc"] = "10";
+                            else
+                                if (bool.Parse(item["DangNgan_Quay"].ToString()) == true)
+                                    dr["DinhMuc"] = "TN";
+                                else
+                                    if (bool.Parse(item["DangNgan_Ton"].ToString()) == true)
+                                        dr["DinhMuc"] = "TQ";
                             dr["NhanVien"] = CNguoiDung.HoTen;
                             ds.Tables["DSHoaDon"].Rows.Add(dr);
                         }

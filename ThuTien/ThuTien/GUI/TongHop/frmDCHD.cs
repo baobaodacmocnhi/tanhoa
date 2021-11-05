@@ -612,6 +612,8 @@ namespace ThuTien.GUI.TongHop
                                         }
                                     else
                                         message += "\n" + item[3].ToString() + " - " + item[1].ToString() + "/" + item[2].ToString();
+                                else
+                                    message += "\n" + item[3].ToString() + " - " + item[1].ToString() + "/" + item[2].ToString();
                                 //cấu hình điều chỉnh bằng tay
                                 //if (string.IsNullOrEmpty(item[20].ToString().Trim()) == false && item[20].ToString().Trim() != "")
                                 //{

@@ -822,7 +822,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                                         itemHD.Ngay_DCHD = DateTime.Now;
                                                         itemHD.TongCongTruoc_DCHD = (int)itemHD.TONGCONG.Value;
                                                         itemHD.TienDuTruoc_DCHD = (int)itemHD.TONGCONG.Value;
-                                                        itemHD.TONGCONG -= TienDu;
+                                                        itemHD.TONGCONG = 0;
                                                         itemHD.Name_PC = CNguoiDung.Name_PC;
                                                         itemHD.IP_PC = CNguoiDung.IP_PC;
                                                         _cHoaDon.Sua(itemHD);
