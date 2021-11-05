@@ -1607,7 +1607,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 dr["NoiNhan"] = _ctchdb.NoiNhan + "\r\nTB" + _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length - 2, "-");
 
-                dr["NgayThucHien"] = _ctctdb.NgayThucHien.Value.ToString("dd/MM/yyyy");
+                dr["NgayThucHien"] = _ctchdb.NgayThucHien.Value.ToString("dd/MM/yyyy");
 
                 dr["ChucVu"] = _ctchdb.ChucVu;
                 dr["NguoiKy"] = _ctchdb.NguoiKy;

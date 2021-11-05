@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -42,7 +42,9 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxNoiDungXuLy = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.chkCode68 = new System.Windows.Forms.CheckBox();
+            this.dateThucHien = new System.Windows.Forms.DateTimePicker();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label30 = new System.Windows.Forms.Label();
             this.dgvHinh = new System.Windows.Forms.DataGridView();
@@ -123,8 +125,6 @@
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.btnInThongBaoMoi = new System.Windows.Forms.Button();
             this.btnInThongBaoMoi_BoQuan = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dateThucHien = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBoxNoiDungXuLy.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -269,6 +269,15 @@
             this.groupBoxNoiDungXuLy.TabStop = false;
             this.groupBoxNoiDungXuLy.Text = "Nội Dung Xử Lý";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(80, 226);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(98, 16);
+            this.label15.TabIndex = 129;
+            this.label15.Text = "Ngày Thự Hiện";
+            // 
             // chkCode68
             // 
             this.chkCode68.AutoSize = true;
@@ -278,6 +287,15 @@
             this.chkCode68.TabIndex = 127;
             this.chkCode68.Text = "Code 68";
             this.chkCode68.UseVisualStyleBackColor = true;
+            // 
+            // dateThucHien
+            // 
+            this.dateThucHien.CustomFormat = "dd/MM/yyyy";
+            this.dateThucHien.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateThucHien.Location = new System.Drawing.Point(184, 223);
+            this.dateThucHien.Name = "dateThucHien";
+            this.dateThucHien.Size = new System.Drawing.Size(90, 22);
+            this.dateThucHien.TabIndex = 128;
             // 
             // groupBox4
             // 
@@ -305,14 +323,14 @@
             // 
             this.dgvHinh.AllowUserToAddRows = false;
             this.dgvHinh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Hinh,
@@ -944,12 +962,13 @@
             // 
             // btnInThongBao
             // 
-            this.btnInThongBao.Location = new System.Drawing.Point(848, 292);
+            this.btnInThongBao.Location = new System.Drawing.Point(929, 230);
             this.btnInThongBao.Name = "btnInThongBao";
             this.btnInThongBao.Size = new System.Drawing.Size(100, 25);
             this.btnInThongBao.TabIndex = 112;
             this.btnInThongBao.Text = "In Thông Báo";
             this.btnInThongBao.UseVisualStyleBackColor = true;
+            this.btnInThongBao.Visible = false;
             this.btnInThongBao.Click += new System.EventHandler(this.btnInThongBao_Click);
             // 
             // txtMaDonMoi
@@ -1041,7 +1060,7 @@
             // 
             // btnInThongBaoMoi
             // 
-            this.btnInThongBaoMoi.Location = new System.Drawing.Point(954, 292);
+            this.btnInThongBaoMoi.Location = new System.Drawing.Point(848, 292);
             this.btnInThongBaoMoi.Name = "btnInThongBaoMoi";
             this.btnInThongBaoMoi.Size = new System.Drawing.Size(121, 25);
             this.btnInThongBaoMoi.TabIndex = 126;
@@ -1051,32 +1070,13 @@
             // 
             // btnInThongBaoMoi_BoQuan
             // 
-            this.btnInThongBaoMoi_BoQuan.Location = new System.Drawing.Point(1081, 275);
+            this.btnInThongBaoMoi_BoQuan.Location = new System.Drawing.Point(975, 275);
             this.btnInThongBaoMoi_BoQuan.Name = "btnInThongBaoMoi_BoQuan";
             this.btnInThongBaoMoi_BoQuan.Size = new System.Drawing.Size(121, 42);
             this.btnInThongBaoMoi_BoQuan.TabIndex = 127;
             this.btnInThongBaoMoi_BoQuan.Text = "In Thông Báo Mới (bỏ Quận)";
             this.btnInThongBaoMoi_BoQuan.UseVisualStyleBackColor = true;
             this.btnInThongBaoMoi_BoQuan.Click += new System.EventHandler(this.btnInThongBaoMoi_BoQuan_Click);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(80, 226);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(98, 16);
-            this.label15.TabIndex = 129;
-            this.label15.Text = "Ngày Thự Hiện";
-            // 
-            // dateThucHien
-            // 
-            this.dateThucHien.CustomFormat = "dd/MM/yyyy";
-            this.dateThucHien.Enabled = false;
-            this.dateThucHien.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateThucHien.Location = new System.Drawing.Point(184, 223);
-            this.dateThucHien.Name = "dateThucHien";
-            this.dateThucHien.Size = new System.Drawing.Size(90, 22);
-            this.dateThucHien.TabIndex = 128;
             // 
             // frmCTDB
             // 

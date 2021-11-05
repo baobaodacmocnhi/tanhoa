@@ -1484,7 +1484,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (_ctctdb.GhiChuLyDo != "")
                     dr["LyDo"] += _ctctdb.GhiChuLyDo + ". ";
                 if (_ctctdb.SoTien.ToString() != "")
-                    dr["LyDo"] += "Tổng Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctctdb.SoTien);
+                    dr["LyDo"] += "Tổng số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctctdb.SoTien);
                 dr["NoiDung"] = _ctctdb.NoiDung;
 
                 dr["NoiNhan"] = _ctctdb.NoiNhan + "\r\nTB" + _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");

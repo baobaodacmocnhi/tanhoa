@@ -2206,13 +2206,34 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
                         {
                             dt = _cDCBD.getHoaDon_DataTable(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
-                            if (bool.Parse(dt.Rows[0]["BaoCaoThue"].ToString()) == false && bool.Parse(dt.Rows[0]["DieuChinhGia"].ToString()) == false && bool.Parse(dt.Rows[0]["DieuChinhGia2"].ToString()) == false)
+                            //if (bool.Parse(dt.Rows[0]["BaoCaoThue"].ToString()) == false && bool.Parse(dt.Rows[0]["DieuChinhGia"].ToString()) == false && bool.Parse(dt.Rows[0]["DieuChinhGia2"].ToString()) == false)
+                            if (bool.Parse(dt.Rows[0]["BaoCaoThue"].ToString()) == false)
                                 dtBinhThuong.Merge(dt);
                             else
                                 dtBaoCaoThue.Merge(dt);
                         }
                     if (dtBinhThuong.Rows.Count > 0)
-                        ExcelBinhThuongKhauTru(dtBinhThuong);
+                    {
+                        int scale = 1000;
+                        int num1 = dtBinhThuong.Rows.Count / scale;
+                        int num2 = dtBinhThuong.Rows.Count % scale;
+                        if (num2 > 0)
+                            num2 = 1;
+                        else
+                            num2 = 0;
+                        DataTable[] dts = new DataTable[num1 + num2];
+                        for (int i = 0; i < dtBinhThuong.Rows.Count; i++)
+                        {
+                            if (dts[i / scale] == null)
+                                dts[i / scale] = dtBinhThuong.Clone();
+
+                            dts[i / scale].ImportRow(dtBinhThuong.Rows[i]);
+                        }
+                        foreach (DataTable item in dts)
+                        {
+                            ExcelBinhThuong(item);
+                        }
+                    }
                     if (dtBaoCaoThue.Rows.Count > 0)
                         ExcelBaoCaoThue(dtBaoCaoThue);
                 }
@@ -2223,7 +2244,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void ExcelBinhThuongKhauTru(DataTable dt)
+        private void ExcelBinhThuong(DataTable dt)
         {
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
@@ -2244,7 +2265,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-            oSheet.Name = "TH_BinhThuong_KhauTru";
+            oSheet.Name = "TH_BinhThuong(" + dt.Rows.Count + ")";
             // Tạo tiêu đề cột 
             Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
             cl1.Value2 = "Đợt";
@@ -2493,7 +2514,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-            oSheet.Name = "TH_BCT_DacBiet";
+            oSheet.Name = "TH_BCT(" + dt.Rows.Count + ")";
             // Tạo tiêu đề cột 
             Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
             cl1.Value2 = "Đợt";
@@ -2716,6 +2737,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                                     dchd.GB_DC = ctdchd.GiaBieu_BD;
                                                     dchd.DM_DC = ctdchd.DinhMuc_BD;
+                                                    dchd.DinhMucHN_DC = ctdchd.DinhMucHN_BD;
                                                     dchd.TIEUTHU_DC = ctdchd.TieuThu_BD;
 
                                                     dchd.ModifyDate = DateTime.Now;
@@ -2736,6 +2758,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     }
                                                     hoadon.GB = dchd.GB_DC.Value;
                                                     hoadon.DM = dchd.DM_DC;
+                                                    hoadon.DinhMucHN = dchd.DinhMucHN_DC;
                                                     hoadon.TIEUTHU = dchd.TIEUTHU_DC;
                                                     hoadon.GIABAN = dchd.GIABAN_END;
                                                     hoadon.THUE = dchd.THUE_END;
@@ -2802,6 +2825,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                                     dchd1.GB_DC = ctdchd.GiaBieu_BD;
                                                     dchd1.DM_DC = ctdchd.DinhMuc_BD;
+                                                    dchd1.DinhMucHN_DC = ctdchd.DinhMucHN_BD;
                                                     dchd1.TIEUTHU_DC = ctdchd.TieuThu_BD;
 
                                                     dchd1.CreateDate = DateTime.Now;
@@ -2823,6 +2847,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     }
                                                     hoadon.GB = dchd1.GB_DC.Value;
                                                     hoadon.DM = dchd1.DM_DC;
+                                                    hoadon.DinhMucHN = dchd1.DinhMucHN_DC;
                                                     hoadon.TIEUTHU = dchd1.TIEUTHU_DC;
                                                     hoadon.GIABAN = dchd1.GIABAN_END;
                                                     hoadon.THUE = dchd1.THUE_END;
