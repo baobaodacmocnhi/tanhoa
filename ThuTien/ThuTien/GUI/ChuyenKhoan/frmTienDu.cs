@@ -346,7 +346,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                                                 tamthu.TienDu = true;
                                                 _cTamThu.Them(tamthu);
                                             }
-
                                     }
                                 }
                     }

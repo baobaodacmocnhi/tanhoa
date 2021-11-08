@@ -581,7 +581,7 @@ namespace ThuTien.GUI.TongHop
                             //CExcel fileExcel = new CExcel(dialog.FileName);
                             //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                             //string KyHieu = (string)_cHoaDon.ExecuteQuery_ReturnOneValue("select SoHoaDon from TT_DeviceConfig");
-                            int count = 0;
+                            int countXuLy = 0, countDaXuLy = 0;
                             string message = "";
                             foreach (DataRow item in dtExcel.Rows)
                             {
@@ -606,14 +606,19 @@ namespace ThuTien.GUI.TongHop
                                                 {
                                                     scope.Complete();
                                                     scope.Dispose();
-                                                    count++;
+                                                    countXuLy++;
                                                 }
                                             }
                                         }
                                     else
-                                        message += "\n" + item[3].ToString() + " - " + item[1].ToString() + "/" + item[2].ToString();
+                                    {
+                                        HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
+                                        message += "\nP.TV chưa cập nhật\n" + item[3].ToString() + " - " + hd.DANHBA + " - " + hd.KY + "/" + hd.NAM;
+                                    }
                                 else
-                                    message += "\n" + item[3].ToString() + " - " + item[1].ToString() + "/" + item[2].ToString();
+                                {
+                                    countDaXuLy++;
+                                }
                                 //cấu hình điều chỉnh bằng tay
                                 //if (string.IsNullOrEmpty(item[20].ToString().Trim()) == false && item[20].ToString().Trim() != "")
                                 //{
@@ -655,7 +660,7 @@ namespace ThuTien.GUI.TongHop
                                 //            message += "\n" + item[3].ToString() + " - " + item[1].ToString() + "/" + item[2].ToString();
                                 //}
                             }
-                            MessageBox.Show("Đã xử lý xong " + count + " hđ\nLỗi Không Xử lý" + message + "\nVui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Đã xử lý xong " + countXuLy + " hđ\nĐã xử lý trước đó " + countDaXuLy + "\nLỗi Không Xử lý" + message + "\nVui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             loadHD0Ton();
                         }
                 }
