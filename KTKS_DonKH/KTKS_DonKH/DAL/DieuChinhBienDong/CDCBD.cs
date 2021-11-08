@@ -3527,9 +3527,59 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSHoaDon(string DanhBo, int Nam, int Ky)
+        public DataTable getDS_HoaDon(string DanhBo, int Nam, int Ky)
         {
             return LINQToDataTable(db.DCBD_ChiTietHoaDons.Where(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky).ToList());
+        }
+
+        public DataTable getDS_HoaDon_BaoCaoThue_DangNgan(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            string sql = "select ChuyenThuTien,"
+                        + " ID = MaCTDCHD,"
+                        + " DieuChinh = N'Hóa Đơn',"
+                        + " KyHD,"
+                        + " ThongTin,"
+                        + " LyDoDieuChinh,"
+                        + " dchd.CreateDate,"
+                        + " CodeF2,"
+                        + " DanhBo,"
+                        + " GiaBieu,"
+                        + " GiaBieu_BD,"
+                        + " DinhMuc,"
+                        + " DinhMuc_BD,"
+                        + " dchd.DinhMucHN,"
+                        + " DinhMucHN_BD,"
+                        + " dchd.TieuThu,"
+                        + " TieuThu_BD,"
+                        + " TienNuoc_Start,"
+                        + " TienNuoc_End,"
+                        + " ThueGTGT_Start,"
+                        + " ThueGTGT_End,"
+                        + " PhiBVMT_Start,"
+                        + " PhiBVMT_End,"
+                        + " TongCong_Start,"
+                        + " TongCong_End,"
+                        + " TongCong_BD,"
+                        + " TangGiam,"
+                        + " PhieuDuocKy,"
+                        + " NguoiKy,"
+                        + " CreateBy = u.HoTen,"
+                        + " dchd.Dot,"
+                        + " dchd.Ky,"
+                        + " dchd.Nam,"
+                        + " SoPhatHanh = SoHD,"
+                        + " dchd.SoHoaDon,"
+                        + " HoTen_BD,"
+                        + " DiaChi_BD,"
+                        + " MST_BD,"
+                        + " ChiTietMoi"
+                + " from DCBD_ChiTietHoaDon dchd"
+                + " left join Users u on dchd.CreateBy=u.MaU,"
+                + " server9.HOADON_TA.dbo.HOADON hd"
+                + " where CAST(NGAYGIAITRACH as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(NGAYGIAITRACH as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and hd.BaoCaoThue=1"
+                + " and dchd.DanhBo=hd.DANHBA and dchd.Nam=hd.NAM and dchd.Ky=hd.KY"
+                + " order by dchd.CreateDate asc";
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DCBD_ChiTietHoaDon getHoaDon_Last(string DanhBo, int Nam, int Ky)

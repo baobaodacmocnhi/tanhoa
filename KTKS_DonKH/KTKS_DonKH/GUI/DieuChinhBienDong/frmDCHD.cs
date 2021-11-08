@@ -515,7 +515,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 if (txtDanhBo.Text.Trim().Length == 11 && txtKyHD.Text.Trim() != "")
                 {
-                    dgvLichSu.DataSource = _cDCBD.getDSHoaDon(txtDanhBo.Text.Trim(), int.Parse(KyHD[1]), int.Parse(KyHD[0]));
+                    dgvLichSu.DataSource = _cDCBD.getDS_HoaDon(txtDanhBo.Text.Trim(), int.Parse(KyHD[1]), int.Parse(KyHD[0]));
                 }
             }
         }

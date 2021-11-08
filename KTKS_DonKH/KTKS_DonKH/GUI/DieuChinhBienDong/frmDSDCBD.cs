@@ -82,7 +82,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["DinhMucHN"].Visible = true;
                 dgvDSDCBD.Columns["DinhMucHN_BD"].Visible = true;
                 ///
-                //dgvDSDCBD.Columns["ChuyenThuTien"].Visible = false;
+                dgvDSDCBD.Columns["ChuyenThuTien"].Visible = false;
                 dgvDSDCBD.Columns["ThuTienCapNhat"].Visible = false;
                 dgvDSDCBD.Columns["ThuTienGiaiTrach"].Visible = false;
                 dgvDSDCBD.Columns["Ky"].Visible = false;
@@ -111,7 +111,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["MSThue"].Visible = false;
                 dgvDSDCBD.Columns["MSThue_BD"].Visible = false;
                 ///
-                //dgvDSDCBD.Columns["ChuyenThuTien"].Visible = true;
+                dgvDSDCBD.Columns["ChuyenThuTien"].Visible = true;
                 dgvDSDCBD.Columns["ThuTienCapNhat"].Visible = true;
                 dgvDSDCBD.Columns["ThuTienGiaiTrach"].Visible = true;
                 dgvDSDCBD.Columns["Ky"].Visible = true;
@@ -2885,6 +2885,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void btnXemHDBCTDangNgan_Click(object sender, EventArgs e)
+        {
+            if (radDSDCHD.Checked)
+                dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_BaoCaoThue_DangNgan(dateTu.Value, dateDen.Value);
         }
 
 
