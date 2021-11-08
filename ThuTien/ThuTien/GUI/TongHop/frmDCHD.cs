@@ -62,8 +62,7 @@ namespace ThuTien.GUI.TongHop
         {
             if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) && e.KeyChar == 13)
             {
-                dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
-                dgvDCHD.DataSource = _cDCHD.getDS_DanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
+                btnXem.PerformClick();
             }
         }
 
@@ -107,42 +106,26 @@ namespace ThuTien.GUI.TongHop
         {
             DataTable dt = new DataTable();
 
-            if (radGiay.Checked == true)
+            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")))
             {
-                if (chkTV.Checked == true && chkTong.Checked == true)
-                {
-                    dt = _cDCHD.getDS_Giay_TV_Tong_ChuaCapNhat();
-                }
-                else
-                    if (chkTV.Checked == true)
-                    {
-                        dt = _cDCHD.getDS_Giay_TV_ChuaCapNhat();
-                    }
-                    else if (chkTong.Checked == true)
-                    {
-                        dt = _cDCHD.getDS_Giay_Tong_ChuaCapNhat();
-                    }
-                    else
-                        if (chkTrongKy.Checked)
-                            dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                        else
-                            dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+                dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
+                dgvDCHD.DataSource = _cDCHD.getDS_DanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
             }
             else
-                if (radDienTu.Checked == true)
+                if (radGiay.Checked == true)
                 {
                     if (chkTV.Checked == true && chkTong.Checked == true)
                     {
-                        dt = _cDCHD.getDS_HDDT_TV_Tong_ChuaCapNhat();
+                        dt = _cDCHD.getDS_Giay_TV_Tong_ChuaCapNhat();
                     }
                     else
                         if (chkTV.Checked == true)
                         {
-                            dt = _cDCHD.getDS_HDDT_TV_ChuaCapNhat();
+                            dt = _cDCHD.getDS_Giay_TV_ChuaCapNhat();
                         }
                         else if (chkTong.Checked == true)
                         {
-                            dt = _cDCHD.getDS_HDDT_Tong_ChuaCapNhat();
+                            dt = _cDCHD.getDS_Giay_Tong_ChuaCapNhat();
                         }
                         else
                             if (chkTrongKy.Checked)
@@ -150,6 +133,28 @@ namespace ThuTien.GUI.TongHop
                             else
                                 dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
                 }
+                else
+                    if (radDienTu.Checked == true)
+                    {
+                        if (chkTV.Checked == true && chkTong.Checked == true)
+                        {
+                            dt = _cDCHD.getDS_HDDT_TV_Tong_ChuaCapNhat();
+                        }
+                        else
+                            if (chkTV.Checked == true)
+                            {
+                                dt = _cDCHD.getDS_HDDT_TV_ChuaCapNhat();
+                            }
+                            else if (chkTong.Checked == true)
+                            {
+                                dt = _cDCHD.getDS_HDDT_Tong_ChuaCapNhat();
+                            }
+                            else
+                                if (chkTrongKy.Checked)
+                                    dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                else
+                                    dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+                    }
 
             dgvDCHD.DataSource = dt;
         }
