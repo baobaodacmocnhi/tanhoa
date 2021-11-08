@@ -401,7 +401,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 entity.DonTu_ChiTiets.Add(entityCT);
                             }
                         }
-
+                        entity.SoCongVan_PhongBanDoi = "Đ. QLĐHN";
+                        entity.TongDB = entity.DonTu_ChiTiets.Count;
                         entity.ID_NhomDon_PKH = "7";
                         entity.Name_NhomDon_PKH = "Chỉ số nước";
                         entity.VanPhong = true;
