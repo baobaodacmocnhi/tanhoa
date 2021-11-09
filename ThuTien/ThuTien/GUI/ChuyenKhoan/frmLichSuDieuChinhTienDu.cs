@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ThuTien.DAL.ChuyenKhoan;
+using ThuTien.DAL.QuanTri;
+using ThuTien.LinQ;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
     public partial class frmLichSuDieuChinhTienDu : Form
     {
         CTienDu _cTienDu = new CTienDu();
+        string _mnu = "mnuLichSuDieuChinhTienDu";
 
         public frmLichSuDieuChinhTienDu()
         {
@@ -44,7 +47,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dt = _cTienDu.GetDSLichSu("Đăng Ngân", dateTu.Value, dateDen.Value);
                         break;
                     case "Chuyển Tiền":
-                        dt = _cTienDu.GetDSLichSu("Chuyển Tiền",dateTu.Value, dateDen.Value);
+                        dt = _cTienDu.GetDSLichSu("Chuyển Tiền", dateTu.Value, dateDen.Value);
                         break;
                     case "Nhận Tiền":
                         dt = _cTienDu.GetDSLichSu("Nhận Tiền", dateTu.Value, dateDen.Value);
@@ -91,27 +94,32 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
         }
 
+        public void loaddgvLichSuTienDu()
+        {
+            dgvLichSuTienDu.DataSource = _cTienDu.GetDSLichSu(txtDanhBo.Text.Trim().Replace(" ", ""));
+            long TongCong = 0;
+            for (int i = dgvLichSuTienDu.RowCount - 1; i >= 0; i--)
+                if (dgvLichSuTienDu["SoTien_LSTD", i].Value.ToString() != "")
+                {
+                    if (i == dgvLichSuTienDu.RowCount - 1)
+                        dgvLichSuTienDu["BienDong_LSTD", i].Value = dgvLichSuTienDu["SoTien_LSTD", i].Value;
+                    else
+                        dgvLichSuTienDu["BienDong_LSTD", i].Value = int.Parse(dgvLichSuTienDu["BienDong_LSTD", i + 1].Value.ToString()) + int.Parse(dgvLichSuTienDu["SoTien_LSTD", i].Value.ToString());
+                    TongCong += int.Parse(dgvLichSuTienDu["SoTien_LSTD", i].Value.ToString());
+                }
+            //foreach (DataGridViewRow item in dgvLichSuTienDu.Rows)
+            //    if (item.Cells["SoTien_LSTD"].Value.ToString() != "")
+            //    {
+            //        TongCong += int.Parse(item.Cells["SoTien_LSTD"].Value.ToString());
+            //    }
+            txtTongCong_LSTD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+        }
+
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (txtDanhBo.Text.Trim().Replace(" ", "") != "" && e.KeyChar == 13)
             {
-                dgvLichSuTienDu.DataSource = _cTienDu.GetDSLichSu(txtDanhBo.Text.Trim().Replace(" ", ""));
-                long TongCong = 0;
-                for (int i = dgvLichSuTienDu.RowCount-1; i >= 0; i--)
-                    if (dgvLichSuTienDu["SoTien_LSTD", i].Value.ToString() != "")
-                    {
-                        if (i == dgvLichSuTienDu.RowCount-1)
-                            dgvLichSuTienDu["BienDong_LSTD", i].Value = dgvLichSuTienDu["SoTien_LSTD", i].Value;
-                        else
-                            dgvLichSuTienDu["BienDong_LSTD", i].Value = int.Parse(dgvLichSuTienDu["BienDong_LSTD", i + 1].Value.ToString()) + int.Parse(dgvLichSuTienDu["SoTien_LSTD", i].Value.ToString());
-                        TongCong += int.Parse(dgvLichSuTienDu["SoTien_LSTD", i].Value.ToString());
-                    }
-                //foreach (DataGridViewRow item in dgvLichSuTienDu.Rows)
-                //    if (item.Cells["SoTien_LSTD"].Value.ToString() != "")
-                //    {
-                //        TongCong += int.Parse(item.Cells["SoTien_LSTD"].Value.ToString());
-                //    }
-                txtTongCong_LSTD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+                loaddgvLichSuTienDu();
             }
         }
 
@@ -233,7 +241,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if ((int)e.Value == 0)
                     e.Value = "0";
                 else
-                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+                    e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
             if (dgvLichSuTienDu.Columns[e.ColumnIndex].Name == "DanhBoChuyenNhan_LSTD" && e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
             {
@@ -247,6 +255,33 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void dgvLichSuTienDu_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        TT_TienDuLichSu en = _cTienDu.get_LichSu(int.Parse(e.Row.Cells["ID_TDLS"].Value.ToString()));
+                        if (en != null)
+                            if (_cTienDu.xoa_LichSu(en) == true)
+                            {
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                loaddgvLichSuTienDu();
+                            }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

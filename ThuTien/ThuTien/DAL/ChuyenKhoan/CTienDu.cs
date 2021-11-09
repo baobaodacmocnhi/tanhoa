@@ -27,9 +27,8 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -44,8 +43,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -87,11 +85,6 @@ namespace ThuTien.DAL.ChuyenKhoan
         public TT_TienDu Get(string DanhBo)
         {
             return _db.TT_TienDus.SingleOrDefault(item => item.DanhBo == DanhBo);
-        }
-
-        public TT_TienDuLichSu get_LichSu(string DanhBo, int SoTien, DateTime CreateDate, int MaBK)
-        {
-            return _db.TT_TienDuLichSus.SingleOrDefault(item => item.DanhBo == DanhBo && item.SoTien == SoTien && item.CreateDate.Value.Date == CreateDate.Date && item.MaBK == MaBK);
         }
 
         public bool CheckExist(string DanhBo)
@@ -455,6 +448,31 @@ namespace ThuTien.DAL.ChuyenKhoan
                 return _db.TT_TienDus.SingleOrDefault(item => item.DanhBo == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).DANHBA).SoTien.Value;
             else
                 return 0;
+        }
+
+        public bool xoa_LichSu(TT_TienDuLichSu en)
+        {
+            try
+            {
+                _db.TT_TienDuLichSus.DeleteOnSubmit(en);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public TT_TienDuLichSu get_LichSu(int ID)
+        {
+            return _db.TT_TienDuLichSus.SingleOrDefault(item => item.ID == ID);
+        }
+
+        public TT_TienDuLichSu get_LichSu(string DanhBo, int SoTien, DateTime CreateDate, int MaBK)
+        {
+            return _db.TT_TienDuLichSus.SingleOrDefault(item => item.DanhBo == DanhBo && item.SoTien == SoTien && item.CreateDate.Value.Date == CreateDate.Date && item.MaBK == MaBK);
         }
 
         public DataTable GetDSLichSu(string DanhBo)

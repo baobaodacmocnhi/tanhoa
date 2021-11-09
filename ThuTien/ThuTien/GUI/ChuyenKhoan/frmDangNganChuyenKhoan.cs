@@ -262,41 +262,41 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            try
             {
-                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (tabControl.SelectedTab.Name == "tabTuGia")
+                    if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
-                        {
-                            if (_cChotDangNgan.checkExist_ChotDangNgan(_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString())) == true)
-                            {
-                                MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                            if (_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString()).Date != DateTime.Now.Date)
-                            {
-                                MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                        }
-                    }
-                    else
-                        if (tabControl.SelectedTab.Name == "tabCoQuan")
+                        if (tabControl.SelectedTab.Name == "tabTuGia")
                         {
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                             {
-                                if (_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_CQ"].Value.ToString()).Date != DateTime.Now.Date)
+                                if (_cChotDangNgan.checkExist_ChotDangNgan(_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString())) == true)
+                                {
+                                    MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                if (_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString()).Date != DateTime.Now.Date)
                                 {
                                     MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
                             }
                         }
+                        else
+                            if (tabControl.SelectedTab.Name == "tabCoQuan")
+                            {
+                                foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                                {
+                                    if (_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_CQ"].Value.ToString()).Date != DateTime.Now.Date)
+                                    {
+                                        MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                }
+                            }
 
-                    try
-                    {
                         if (tabControl.SelectedTab.Name == "tabTuGia")
                         {
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
@@ -335,14 +335,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnInPhieu_Click(object sender, EventArgs e)
