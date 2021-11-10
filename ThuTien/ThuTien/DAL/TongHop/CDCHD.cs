@@ -2072,6 +2072,12 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
+        //get lịch sử
+
+        public DataTable getLichSu(int MaHD)
+        {
+            return LINQToDataTable(_db.TT_LichSuDieuChinhHDs.Where(item => item.FK_HOADON == MaHD).ToList());
+        }
 
         //hóa đơn chờ điều chỉnh
 

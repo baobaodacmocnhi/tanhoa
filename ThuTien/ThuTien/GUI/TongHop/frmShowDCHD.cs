@@ -37,6 +37,7 @@ namespace ThuTien.GUI.TongHop
 
         private void frmShowDCHD_Load(object sender, EventArgs e)
         {
+            dgvDanhSach.AutoGenerateColumns = false;
             Location = new Point(100, 100);
             //_hoadon = _cHoaDon.Get(_SoHoaDon);
             _dchd = _cDCHD.Get(_MaHD);
@@ -95,6 +96,8 @@ namespace ThuTien.GUI.TongHop
                     txtTongCong_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TONGCONG_DC.Value);
                     txtTongCong_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TONGCONG_END.Value);
                 }
+
+                dgvDanhSach.DataSource = _cDCHD.getLichSu(hd.ID_HOADON);
             }
             ///chưa có điều chỉnh
             else
@@ -453,6 +456,7 @@ namespace ThuTien.GUI.TongHop
             lsdc.SoHoaDon = dchd.SoHoaDon;
             lsdc.GiaBieu = dchd.GiaBieu;
             lsdc.DinhMuc = dchd.DinhMuc;
+            lsdc.DinhMucHN=dchd.DinhMucHN;
             lsdc.TIEUTHU_BD = dchd.TIEUTHU_BD;
             lsdc.GIABAN_BD = dchd.GIABAN_BD;
             lsdc.PHI_BD = dchd.PHI_BD;
@@ -479,6 +483,7 @@ namespace ThuTien.GUI.TongHop
 
             lsdc.GB_DC = dchd.GB_DC;
             lsdc.DM_DC = dchd.DM_DC;
+            lsdc.DinhMucHN_DC = dchd.DinhMucHN_DC;
             lsdc.TIEUTHU_DC = dchd.TIEUTHU_DC;
 
             _cDCHD.ThemLSDC(lsdc);
@@ -571,6 +576,18 @@ namespace ThuTien.GUI.TongHop
                 chkUpdatedHDDT.Checked = true;
             else
                 chkUpdatedHDDT.Checked = false;
+        }
+
+        private void dgvDanhSach_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDanhSach.Columns[e.ColumnIndex].Name == "TongCong_BD" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvDanhSach.Columns[e.ColumnIndex].Name == "TongCong_End" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
         }
 
     }

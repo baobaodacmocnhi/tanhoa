@@ -34,7 +34,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CToTrinhCatHuy _cTTCH = new CToTrinhCatHuy();
         CTienDu _cTienDu = new CTienDu();
-        frmLoading frm;
+        frmLoading frm=new frmLoading();
 
         public frmTamThuChuyenKhoan()
         {

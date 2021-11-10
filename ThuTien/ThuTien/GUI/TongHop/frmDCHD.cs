@@ -112,6 +112,7 @@ namespace ThuTien.GUI.TongHop
                 dgvDCHD.DataSource = _cDCHD.getDS_DanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
             }
             else
+            {
                 if (radGiay.Checked == true)
                 {
                     if (chkTV.Checked == true && chkTong.Checked == true)
@@ -155,8 +156,9 @@ namespace ThuTien.GUI.TongHop
                                 else
                                     dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
                     }
+                dgvDCHD.DataSource = dt;
+            }
 
-            dgvDCHD.DataSource = dt;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
