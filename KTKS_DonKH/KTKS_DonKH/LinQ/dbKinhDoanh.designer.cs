@@ -18859,6 +18859,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _GiaDieuChinh2;
 		
+		private bool _DieuChinhGia3;
+		
+		private System.Nullable<int> _TieuThuV1_DieuChinhGia3;
+		
+		private System.Nullable<int> _TieuThuV2_DieuChinhGia3;
+		
 		private bool _TyLe;
 		
 		private System.Nullable<int> _SH;
@@ -19037,6 +19043,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnTieuThu_DieuChinhGia2Changed();
     partial void OnGiaDieuChinh2Changing(System.Nullable<int> value);
     partial void OnGiaDieuChinh2Changed();
+    partial void OnDieuChinhGia3Changing(bool value);
+    partial void OnDieuChinhGia3Changed();
+    partial void OnTieuThuV1_DieuChinhGia3Changing(System.Nullable<int> value);
+    partial void OnTieuThuV1_DieuChinhGia3Changed();
+    partial void OnTieuThuV2_DieuChinhGia3Changing(System.Nullable<int> value);
+    partial void OnTieuThuV2_DieuChinhGia3Changed();
     partial void OnTyLeChanging(bool value);
     partial void OnTyLeChanged();
     partial void OnSHChanging(System.Nullable<int> value);
@@ -20040,6 +20052,66 @@ namespace KTKS_DonKH.LinQ
 					this._GiaDieuChinh2 = value;
 					this.SendPropertyChanged("GiaDieuChinh2");
 					this.OnGiaDieuChinh2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DieuChinhGia3", DbType="Bit NOT NULL")]
+		public bool DieuChinhGia3
+		{
+			get
+			{
+				return this._DieuChinhGia3;
+			}
+			set
+			{
+				if ((this._DieuChinhGia3 != value))
+				{
+					this.OnDieuChinhGia3Changing(value);
+					this.SendPropertyChanging();
+					this._DieuChinhGia3 = value;
+					this.SendPropertyChanged("DieuChinhGia3");
+					this.OnDieuChinhGia3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TieuThuV1_DieuChinhGia3", DbType="Int")]
+		public System.Nullable<int> TieuThuV1_DieuChinhGia3
+		{
+			get
+			{
+				return this._TieuThuV1_DieuChinhGia3;
+			}
+			set
+			{
+				if ((this._TieuThuV1_DieuChinhGia3 != value))
+				{
+					this.OnTieuThuV1_DieuChinhGia3Changing(value);
+					this.SendPropertyChanging();
+					this._TieuThuV1_DieuChinhGia3 = value;
+					this.SendPropertyChanged("TieuThuV1_DieuChinhGia3");
+					this.OnTieuThuV1_DieuChinhGia3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TieuThuV2_DieuChinhGia3", DbType="Int")]
+		public System.Nullable<int> TieuThuV2_DieuChinhGia3
+		{
+			get
+			{
+				return this._TieuThuV2_DieuChinhGia3;
+			}
+			set
+			{
+				if ((this._TieuThuV2_DieuChinhGia3 != value))
+				{
+					this.OnTieuThuV2_DieuChinhGia3Changing(value);
+					this.SendPropertyChanging();
+					this._TieuThuV2_DieuChinhGia3 = value;
+					this.SendPropertyChanged("TieuThuV2_DieuChinhGia3");
+					this.OnTieuThuV2_DieuChinhGia3Changed();
 				}
 			}
 		}

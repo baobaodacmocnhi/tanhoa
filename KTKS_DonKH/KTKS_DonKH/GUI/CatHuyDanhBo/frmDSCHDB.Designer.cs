@@ -134,7 +134,7 @@
             this.dgvDSCTCHDB.Location = new System.Drawing.Point(1, 68);
             this.dgvDSCTCHDB.Name = "dgvDSCTCHDB";
             this.dgvDSCTCHDB.RowHeadersWidth = 60;
-            this.dgvDSCTCHDB.Size = new System.Drawing.Size(1350, 550);
+            this.dgvDSCTCHDB.Size = new System.Drawing.Size(1350, 530);
             this.dgvDSCTCHDB.TabIndex = 11;
             this.dgvDSCTCHDB.Visible = false;
             this.dgvDSCTCHDB.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSCTCHDB_CellEndEdit);
@@ -418,7 +418,7 @@
             this.dgvDSYCCHDB.Location = new System.Drawing.Point(1, 113);
             this.dgvDSYCCHDB.Name = "dgvDSYCCHDB";
             this.dgvDSYCCHDB.RowHeadersWidth = 60;
-            this.dgvDSYCCHDB.Size = new System.Drawing.Size(1350, 550);
+            this.dgvDSYCCHDB.Size = new System.Drawing.Size(1350, 530);
             this.dgvDSYCCHDB.TabIndex = 25;
             this.dgvDSYCCHDB.Visible = false;
             this.dgvDSYCCHDB.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSYCCHDB_CellEndEdit);

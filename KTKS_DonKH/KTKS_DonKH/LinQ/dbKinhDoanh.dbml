@@ -822,6 +822,9 @@
       <Column Name="DieuChinhGia2" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TieuThu_DieuChinhGia2" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GiaDieuChinh2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DieuChinhGia3" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TieuThuV1_DieuChinhGia3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TieuThuV2_DieuChinhGia3" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TyLe" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SH" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SX" Type="System.Int32" DbType="Int" CanBeNull="true" />

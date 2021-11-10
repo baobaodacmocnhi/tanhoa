@@ -2740,6 +2740,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     dchd.DinhMucHN_DC = ctdchd.DinhMucHN_BD;
                                                     dchd.TIEUTHU_DC = ctdchd.TieuThu_BD;
 
+                                                    //hđ điều chỉnh lần 2
+                                                    dchd.UpdatedHDDT = false;
                                                     dchd.ModifyDate = DateTime.Now;
                                                     ///lưu lịch sử
                                                     _cThuTien.LuuLichSuDC(dchd);
