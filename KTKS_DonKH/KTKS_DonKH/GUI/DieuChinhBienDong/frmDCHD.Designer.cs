@@ -1508,6 +1508,7 @@
             this.txtTieuThuV1_DieuChinhGia3.Size = new System.Drawing.Size(50, 22);
             this.txtTieuThuV1_DieuChinhGia3.TabIndex = 48;
             this.txtTieuThuV1_DieuChinhGia3.Text = "0";
+            this.txtTieuThuV1_DieuChinhGia3.TextChanged += new System.EventHandler(this.txtTieuThuV1_DieuChinhGia3_TextChanged);
             // 
             // label43
             // 
@@ -1526,6 +1527,7 @@
             this.txtTieuThuV2_DieuChinhGia3.Size = new System.Drawing.Size(50, 22);
             this.txtTieuThuV2_DieuChinhGia3.TabIndex = 50;
             this.txtTieuThuV2_DieuChinhGia3.Text = "0";
+            this.txtTieuThuV2_DieuChinhGia3.TextChanged += new System.EventHandler(this.txtTieuThuV2_DieuChinhGia3_TextChanged);
             // 
             // frmDCHD
             // 

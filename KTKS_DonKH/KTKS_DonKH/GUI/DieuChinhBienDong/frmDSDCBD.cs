@@ -2712,13 +2712,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     dchd.NGAY_VB = ctdchd.NgayKy.Value;
                                                     dchd.NGAY_DC = DateTime.Now;
 
-                                                    //if (dchd.SoPhieu != ctdchd.MaCTDCHD)
-                                                    //{
-                                                    //    dchd.GIABAN_BD = hoadon.GIABAN;
-                                                    //    dchd.THUE_BD = hoadon.THUE;
-                                                    //    dchd.PHI_BD = hoadon.PHI;
-                                                    //    dchd.TONGCONG_BD = hoadon.TONGCONG;
-                                                    //}
+                                                    if (dchd.SoPhieu != ctdchd.MaCTDCHD)
+                                                    {
+                                                        dchd.GIABAN_BD = hoadon.GIABAN;
+                                                        dchd.THUE_BD = hoadon.THUE;
+                                                        dchd.PHI_BD = hoadon.PHI;
+                                                        dchd.TONGCONG_BD = hoadon.TONGCONG;
+                                                        //hđ điều chỉnh lần 2
+                                                        dchd.UpdatedHDDT = false;
+                                                    }
 
                                                     dchd.SoPhieu = ctdchd.MaCTDCHD;
                                                     dchd.TangGiam = ctdchd.TangGiam;
@@ -2740,8 +2742,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     dchd.DinhMucHN_DC = ctdchd.DinhMucHN_BD;
                                                     dchd.TIEUTHU_DC = ctdchd.TieuThu_BD;
 
-                                                    //hđ điều chỉnh lần 2
-                                                    dchd.UpdatedHDDT = false;
                                                     dchd.ModifyDate = DateTime.Now;
                                                     ///lưu lịch sử
                                                     _cThuTien.LuuLichSuDC(dchd);

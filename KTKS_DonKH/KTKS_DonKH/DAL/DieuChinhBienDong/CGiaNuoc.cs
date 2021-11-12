@@ -8348,7 +8348,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public bool checkExists_GiamGiaNuoc(int Nam, int Ky, int GiaBieu, ref DataTable dt)
         {
-            if (db.GiaNuoc_Giams.Any(item => item.Nam.Contains(Nam.ToString()) && item.Ky.Contains(Ky.ToString()) && item.GiaBieu.Contains(GiaBieu.ToString())) == true)
+            if (db.GiaNuoc_Giams.Any(item => item.Nam.Contains(Nam.ToString()) && item.Ky.Contains(Ky.ToString("00")) && item.GiaBieu.Contains(GiaBieu.ToString())) == true)
             {
                 double TyLeGiam = db.GiaNuoc_Giams.SingleOrDefault(item => item.Nam.Contains(Nam.ToString()) && item.Ky.Contains(Ky.ToString()) && item.GiaBieu.Contains(GiaBieu.ToString())).TyLeGiam.Value;
                 foreach (DataRow item in dt.Rows)

@@ -145,7 +145,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         lbTinhTrang.Text = "Tình Trạng: " + en_ChiTiet.TinhTrang;
                     }
                 }
-                LoadLichSu();
+                loaddgv();
                
             }
             catch (Exception ex)
@@ -160,7 +160,7 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 txtMaDon.Text += "." + entity.STT.Value;
 
-                LoadLichSu();
+                loaddgv();
             }
             catch (Exception ex)
             {
@@ -168,7 +168,7 @@ namespace KTKS_DonKH.GUI.DonTu
             }
         }
 
-        public void LoadLichSu()
+        public void loaddgv()
         {
             bool flag = false;
             if (_dontu != null)
@@ -198,6 +198,26 @@ namespace KTKS_DonKH.GUI.DonTu
             }
             if (flag == true)
                 MessageBox.Show("Danh Bộ này có đơn tồn cũ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void loaddgvLichSuDonTu()
+        {
+            if (_dontu != null)
+                if (_dontu_ChiTiet == null)
+                {
+                    dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu.MaDon, 1);
+                }
+                else
+                {
+                    if (dgvDanhBo.SelectedRows.Count > 1)
+                    {
+                        dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, dgvDanhBo.CurrentRow.Index);
+                    }
+                    else
+                    {
+                        dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                    }
+                }
         }
 
         public void FillLichSu(DonTu_LichSu en)
@@ -750,8 +770,9 @@ namespace KTKS_DonKH.GUI.DonTu
                     //ClearChuyenDon();
                     //LoadLichSu();
                     _cDonTu.Refresh();
-                    KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
-                    txtMaDon_KeyPress(sender, arg);
+                    loaddgvLichSuDonTu();
+                    //KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
+                    //txtMaDon_KeyPress(sender, arg);
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

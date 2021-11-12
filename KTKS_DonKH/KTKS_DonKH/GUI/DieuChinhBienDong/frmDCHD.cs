@@ -2515,6 +2515,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void txtTieuThuV1_DieuChinhGia3_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTieuThuV1_DieuChinhGia3.Text.Trim() != "")
+                TinhTienNuoc();
+        }
+
+        private void txtTieuThuV2_DieuChinhGia3_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTieuThuV2_DieuChinhGia3.Text.Trim() != "")
+                TinhTienNuoc();
+        }
+
 
     }
 }
