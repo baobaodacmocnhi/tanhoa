@@ -826,6 +826,7 @@
             this.chkChanHoaDon.TabIndex = 95;
             this.chkChanHoaDon.Text = "Chặn Hóa Đơn";
             this.chkChanHoaDon.UseVisualStyleBackColor = true;
+            this.chkChanHoaDon.Visible = false;
             // 
             // txtDM
             // 
