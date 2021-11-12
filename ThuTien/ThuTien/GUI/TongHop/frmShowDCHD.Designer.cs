@@ -80,9 +80,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
             this.Ngay_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCongCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCongMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
@@ -570,7 +571,7 @@
             this.groupBox1.Controls.Add(this.dgvDanhSach);
             this.groupBox1.Location = new System.Drawing.Point(12, 253);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(582, 105);
+            this.groupBox1.Size = new System.Drawing.Size(601, 105);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lịch Sử Điều Chỉnh";
@@ -582,13 +583,14 @@
             this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ngay_DC,
+            this.SoPhieu,
             this.SoHoaDon,
-            this.TongCongCu,
-            this.TongCongMoi});
+            this.TongCong_BD,
+            this.TongCong_End});
             this.dgvDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDanhSach.Location = new System.Drawing.Point(3, 16);
             this.dgvDanhSach.Name = "dgvDanhSach";
-            this.dgvDanhSach.Size = new System.Drawing.Size(576, 86);
+            this.dgvDanhSach.Size = new System.Drawing.Size(595, 86);
             this.dgvDanhSach.TabIndex = 0;
             this.dgvDanhSach.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhSach_CellFormatting);
             // 
@@ -598,25 +600,31 @@
             this.Ngay_DC.HeaderText = "Ngày ĐC";
             this.Ngay_DC.Name = "Ngay_DC";
             // 
+            // SoPhieu
+            // 
+            this.SoPhieu.DataPropertyName = "SoPhieu";
+            this.SoPhieu.HeaderText = "Số Phiếu";
+            this.SoPhieu.Name = "SoPhieu";
+            // 
             // SoHoaDon
             // 
             this.SoHoaDon.DataPropertyName = "SoHoaDon";
             this.SoHoaDon.HeaderText = "Số HĐ";
             this.SoHoaDon.Name = "SoHoaDon";
             // 
-            // TongCongCu
+            // TongCong_BD
             // 
-            this.TongCongCu.DataPropertyName = "TongCong_BD";
-            this.TongCongCu.HeaderText = "Tổng Cộng Cũ";
-            this.TongCongCu.Name = "TongCongCu";
-            this.TongCongCu.Width = 120;
+            this.TongCong_BD.DataPropertyName = "TongCong_BD";
+            this.TongCong_BD.HeaderText = "Tổng Cộng Cũ";
+            this.TongCong_BD.Name = "TongCong_BD";
+            this.TongCong_BD.Width = 120;
             // 
-            // TongCongMoi
+            // TongCong_End
             // 
-            this.TongCongMoi.DataPropertyName = "TongCong_End";
-            this.TongCongMoi.HeaderText = "Tổng Cộng Mới";
-            this.TongCongMoi.Name = "TongCongMoi";
-            this.TongCongMoi.Width = 120;
+            this.TongCong_End.DataPropertyName = "TongCong_End";
+            this.TongCong_End.HeaderText = "Tổng Cộng Mới";
+            this.TongCong_End.Name = "TongCong_End";
+            this.TongCong_End.Width = 120;
             // 
             // frmShowDCHD
             // 
@@ -717,8 +725,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvDanhSach;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_DC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongCongCu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongCongMoi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_BD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_End;
     }
 }

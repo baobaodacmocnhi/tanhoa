@@ -7311,6 +7311,21 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable getDSDangNgan_HDDC2lan(DateTime NgayGiaiTrach)
+        {
+            string sql = "WITH temp AS ("
++ "   select ID_HOADON,hd.SOHOADON,SOPHATHANH,TONGCONG,DanhBo=DANHBA,MLT=MALOTRINH,Ky=(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM))"
++ "   ,ROW_NUMBER() OVER (PARTITION BY dcls.SoPhieu ORDER BY dcls.CreateDate DESC) AS rn"
++ " from HOADON hd,DIEUCHINH_HD dc,TT_LichSuDieuChinhHD dcls"
++ " where CAST(NGAYGIAITRACH as date)='"+NgayGiaiTrach.ToString("yyyyMMdd")+"' and MaNV_DangNgan is not null and hd.ID_HOADON=dc.FK_HOADON and hd.ID_HOADON=dcls.FK_HOADON and dcls.SoPhieu is not null"
++ " )"
++ " SELECT ID_HOADON,SOHOADON,SOPHATHANH,TONGCONG,DanhBo,MLT,Ky,COUNT(*) FROM temp WHERE rn=1"
++ " group by ID_HOADON,SOHOADON,SOPHATHANH,TONGCONG,DanhBo,MLT,Ky"
++ " having count(*)>1";
+
+    return ExecuteQuery_DataTable(sql);
+        }
+
         public DataTable getDSXoaDangNgan_HoaDonDienTu(int MaNV_HanhThu, DateTime NgayXoaDangNgan)
         {
             var query = from item in _db.HOADONs

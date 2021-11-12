@@ -133,7 +133,8 @@
             this.SLNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TCNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SyncNopTien = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.XuatFile = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.FileHDDC = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ShowHDDC2lan = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ShowError = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ShowHDDTDCBCT = new System.Windows.Forms.DataGridViewButtonColumn();
             this.SyncNopTien_Except12 = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -581,7 +582,8 @@
             this.SLNopTien,
             this.TCNopTien,
             this.SyncNopTien,
-            this.XuatFile,
+            this.FileHDDC,
+            this.ShowHDDC2lan,
             this.ShowError,
             this.ShowHDDTDCBCT,
             this.SyncNopTien_Except12,
@@ -1078,13 +1080,21 @@
             this.SyncNopTien.UseColumnTextForButtonValue = true;
             this.SyncNopTien.Width = 60;
             // 
-            // XuatFile
+            // FileHDDC
             // 
-            this.XuatFile.HeaderText = "HĐĐC";
-            this.XuatFile.Name = "XuatFile";
-            this.XuatFile.Text = "Xuất File";
-            this.XuatFile.UseColumnTextForButtonValue = true;
-            this.XuatFile.Width = 60;
+            this.FileHDDC.HeaderText = "HĐ ĐC";
+            this.FileHDDC.Name = "FileHDDC";
+            this.FileHDDC.Text = "Xuất File";
+            this.FileHDDC.UseColumnTextForButtonValue = true;
+            this.FileHDDC.Width = 60;
+            // 
+            // ShowHDDC2lan
+            // 
+            this.ShowHDDC2lan.HeaderText = "HĐ ĐC 2 lần";
+            this.ShowHDDC2lan.Name = "ShowHDDC2lan";
+            this.ShowHDDC2lan.Text = "Hiển Thị";
+            this.ShowHDDC2lan.UseColumnTextForButtonValue = true;
+            this.ShowHDDC2lan.Width = 60;
             // 
             // ShowError
             // 
@@ -1257,7 +1267,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SLNopTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn TCNopTien;
         private System.Windows.Forms.DataGridViewButtonColumn SyncNopTien;
-        private System.Windows.Forms.DataGridViewButtonColumn XuatFile;
+        private System.Windows.Forms.DataGridViewButtonColumn FileHDDC;
+        private System.Windows.Forms.DataGridViewButtonColumn ShowHDDC2lan;
         private System.Windows.Forms.DataGridViewButtonColumn ShowError;
         private System.Windows.Forms.DataGridViewButtonColumn ShowHDDTDCBCT;
         private System.Windows.Forms.DataGridViewButtonColumn SyncNopTien_Except12;

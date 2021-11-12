@@ -603,7 +603,7 @@ namespace ThuTien.GUI.Doi
                         }
                     }
 
-                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "XuatFile")
+                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "FileHDDC")
                     {
                         SaveFileDialog saveFileDialog = new SaveFileDialog();
                         saveFileDialog.DefaultExt = "dat";
@@ -630,6 +630,29 @@ namespace ThuTien.GUI.Doi
 
                     }
 
+                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "ShowHDDC2lan")
+                    {
+                        TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
+                        DataTable dt = _cHoaDon.getDSDangNgan_HDDC2lan(en.NgayChot.Value);
+                        dsBaoCao ds = new dsBaoCao();
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                            dr["LoaiBaoCao"] = "HÓA ĐƠN ĐIỀU CHỈNH 2 LẦN";
+                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                            dr["Ky"] = item["Ky"];
+                            dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
+                            dr["TongCong"] = item["TongCong"];
+                            dr["GiaBieu"] = item["SoPhatHanh"];
+                            dr["NhanVien"] = CNguoiDung.HoTen;
+                            ds.Tables["DSHoaDon"].Rows.Add(dr);
+                        }
+                        rptDSHoaDon_SyncError rpt = new rptDSHoaDon_SyncError();
+                        rpt.SetDataSource(ds);
+                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frm.Show();
+                    }
+
                     if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "ShowError")
                     {
                         TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
@@ -647,7 +670,6 @@ namespace ThuTien.GUI.Doi
                             dr["NhanVien"] = CNguoiDung.HoTen;
                             ds.Tables["DSHoaDon"].Rows.Add(dr);
                         }
-
                         rptDSHoaDon_SyncError rpt = new rptDSHoaDon_SyncError();
                         rpt.SetDataSource(ds);
                         frmBaoCao frm = new frmBaoCao(rpt);
@@ -679,7 +701,6 @@ namespace ThuTien.GUI.Doi
                             dr["NhanVien"] = CNguoiDung.HoTen;
                             ds.Tables["DSHoaDon"].Rows.Add(dr);
                         }
-
                         rptDSHoaDon_BCT rpt = new rptDSHoaDon_BCT();
                         rpt.SetDataSource(ds);
                         frmBaoCao frm = new frmBaoCao(rpt);

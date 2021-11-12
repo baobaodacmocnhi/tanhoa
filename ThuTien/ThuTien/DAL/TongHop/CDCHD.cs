@@ -2076,7 +2076,14 @@ namespace ThuTien.DAL.TongHop
 
         public DataTable getLichSu(int MaHD)
         {
-            return LINQToDataTable(_db.TT_LichSuDieuChinhHDs.Where(item => item.FK_HOADON == MaHD).ToList());
+            string sql = "WITH temp AS ("
++ "   select *"
++ "   ,ROW_NUMBER() OVER (PARTITION BY SoPhieu ORDER BY CreateDate DESC) AS rn"
++ " from TT_LichSuDieuChinhHD"
++ " where FK_HOADON=" + MaHD + " and SoPhieu is not null"
++ " )"
++ " SELECT * FROM temp WHERE rn=1";
+            return ExecuteQuery_DataTable(sql);
         }
 
         //hóa đơn chờ điều chỉnh
