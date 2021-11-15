@@ -586,7 +586,6 @@
             this.btnTVCapNhatQLDHN.TabIndex = 30;
             this.btnTVCapNhatQLDHN.Text = "TV Cập Nhật QLĐHN";
             this.btnTVCapNhatQLDHN.UseVisualStyleBackColor = true;
-            this.btnTVCapNhatQLDHN.Visible = false;
             this.btnTVCapNhatQLDHN.Click += new System.EventHandler(this.btnTVCapNhatQLDHN_Click);
             // 
             // btnQLDHNExcel

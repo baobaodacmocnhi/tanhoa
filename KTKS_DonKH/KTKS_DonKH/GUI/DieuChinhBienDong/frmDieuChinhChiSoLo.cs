@@ -311,7 +311,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         DataRow[] childRows = row.GetChildRows("Chi Tiết");
                         int TieuThuLo = int.Parse(row["TieuThuLo"].ToString()) * -1;
-                        GiaiTrach = 0;   
+                        GiaiTrach = 0;
                         foreach (DataRow itemChild in childRows)
                         {
                             if (itemChild["TinhTrang"].ToString() != "")
@@ -510,7 +510,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             ctdchd.DinhMuc_BD = hd.DM;
                                             ctdchd.TieuThu_BD = int.Parse(itemChild["TieuThuDC"].ToString());
                                             ///
-                                            if ((hd.NAM<2021)||(hd.NAM == 2021 && hd.KY <= 6))
+                                            if ((hd.NAM < 2021) || (hd.NAM == 2021 && hd.KY <= 6))
                                                 ctdchd.BaoCaoThue = true;
                                             ///
                                             string ChiTietCuA = "", ChiTietCuB = "", ChiTietMoiA = "", ChiTietMoiB = "";
@@ -676,17 +676,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
-                if (CTaiKhoan.CheckQuyen("mnuDCHD", "Them"))
+                if (CTaiKhoan.Admin == true && CTaiKhoan.CheckQuyen("mnuDCHD", "Them"))
                 {
                     if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         for (int i = 0; i < gridView.DataRowCount; i++)
                         {
                             DataRow row = gridView.GetDataRow(i);
-
-                            string sql = "update ChiSo set CodeMoi='5" + row["CodeCu"].ToString().Substring(0, 1) + "' where Nam=" + row["Nam"] + " and Ky=" + row["Ky"] + " and Dot=" + row["Dot"];
-                            _cDocSo.ExecuteNonQuery(sql);
+                            if (row["MaDon"].ToString() != "")
+                            {
+                                string sql = "update DocSo set CodeMoi='55',CSMoi=" + (int.Parse(row["CSM"].ToString()) + int.Parse(row["TieuThuLoConLai"].ToString())) + " where DanhBa='" + row["DanhBo"] + "' and Nam=" + row["Nam"] + " and Ky=" + row["Ky"] + " and Dot=" + row["Dot"]
+                                    + " update DocSo set CodeCu='55',CSCu=" + (int.Parse(row["CSM"].ToString()) + int.Parse(row["TieuThuLoConLai"].ToString())) + " where DanhBa='" + row["DanhBo"] + "' and Nam=" + row["Nam"] + " and Ky=" + (int.Parse(row["Ky"].ToString()) + 1) + " and Dot=" + row["Dot"];
+                                _cDocSo.ExecuteNonQuery(sql);
+                            }
                         }
+                        MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
