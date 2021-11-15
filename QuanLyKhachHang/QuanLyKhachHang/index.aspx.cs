@@ -180,11 +180,11 @@ namespace QuanLyKhachHang
             {
                 string query = "SELECT DANHBO, LOTRINH,HOTEN, (SONHA+ ' ' + TENDUONG ) AS DCHI,HOPDONG,GIABIEU,DINHMUC,CODH, HIEUDH,SOTHANDH,YEAR(NGAYTHAY) AS NAMGAN, VITRIDHN,CHISOKYTRUOC"
                                 + " FROM TB_DULIEUKHACHHANG KH"
-                                + " WHERE (SONHA+' '+ TENDUONG) LIKE N'%" + this.txtDB.Text + "%'"
+                                + " WHERE (SONHA+' '+ TENDUONG) LIKE N'%" + this.txtDB.Text.Replace("*", "%") + "%'"
                                 + " union all"
                                 + " SELECT DANHBO, LOTRINH,HOTEN, (SONHA+ ' ' + TENDUONG ) AS DCHI,HOPDONG,GIABIEU,DINHMUC,CODH, HIEUDH,SOTHANDH,YEAR(NGAYTHAY) AS NAMGAN, VITRIDHN,CHISOKYTRUOC"
                                 + " FROM TB_DULIEUKHACHHANG_HUYDB KH"
-                                + " WHERE (SONHA+' '+ TENDUONG) LIKE N'%" + this.txtDB.Text + "%'";
+                                + " WHERE (SONHA+' '+ TENDUONG) LIKE N'%" + this.txtDB.Text.Replace("*", "%") + "%'";
                 DataTable tb = LinQConnection.getDataTable(query);
                 GridView3.DataSource = tb;
                 GridView3.DataBind();
