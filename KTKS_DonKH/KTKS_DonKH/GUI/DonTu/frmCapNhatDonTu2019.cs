@@ -305,6 +305,7 @@ namespace KTKS_DonKH.GUI.DonTu
         public void ClearChuyenDon()
         {
             dateChuyen.Value = DateTime.Now;
+            cmbNoiChuyen.SelectedIndex = -1;
             for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
             {
                 chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
@@ -313,8 +314,10 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 chkcmbNoiNhanKTXM.Properties.Items[i].CheckState = CheckState.Unchecked;
             }
-            txtNoiDung_LichSu.Text = "";
             _dontu_LichSu = null;
+            chkHoanThanh.Checked = false;
+            txtNoiDung_LichSu.Text = "";
+            lbTinhTrang.Text = "Tình Trạng";
         }
 
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -767,9 +770,8 @@ namespace KTKS_DonKH.GUI.DonTu
                                 }
                         }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //ClearChuyenDon();
-                    //LoadLichSu();
                     _cDonTu.Refresh();
+                    ClearChuyenDon();
                     loaddgvLichSuDonTu();
                     //KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
                     //txtMaDon_KeyPress(sender, arg);
@@ -815,7 +817,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                 DonTu_LichSu dtls = _cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()));
                                 int MaDon = dtls.MaDon.Value, STT = dtls.STT.Value;
                                 bool HoanThanh = dtls.HoanThanh;
-                                if (_cDonTu.Xoa_LichSu(dtls, false))
+                                if (_cDonTu.Xoa_LichSu(dtls, true))
                                 {
                                     if (HoanThanh == true)
                                     {
@@ -826,11 +828,6 @@ namespace KTKS_DonKH.GUI.DonTu
                                         _cDonTu.SubmitChanges();
                                     }
                                     scope.Complete();
-                                    //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    ////LoadLichSu();
-                                    //_cDonTu.Refresh();
-                                    //KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
-                                    //txtMaDon_KeyPress(sender, arg);
                                 }
                                 else
                                     MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -857,10 +854,10 @@ namespace KTKS_DonKH.GUI.DonTu
                             }
                         }
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //LoadLichSu();
                         _cDonTu.Refresh();
-                        KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
-                        txtMaDon_KeyPress(sender, arg);
+                        loaddgvLichSuDonTu();
+                        //KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
+                        //txtMaDon_KeyPress(sender, arg);
                     }
                 }
                 else
