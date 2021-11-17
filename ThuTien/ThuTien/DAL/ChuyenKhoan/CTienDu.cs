@@ -472,7 +472,7 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public TT_TienDuLichSu get_LichSu(string DanhBo, int SoTien, DateTime CreateDate, int MaBK)
         {
-            return _db.TT_TienDuLichSus.SingleOrDefault(item => item.DanhBo == DanhBo && item.SoTien == SoTien && item.CreateDate.Value.Date == CreateDate.Date && item.MaBK == MaBK);
+            return _db.TT_TienDuLichSus.Where(item => item.DanhBo == DanhBo && item.SoTien == SoTien && item.CreateDate.Value.Date == CreateDate.Date && item.MaBK == MaBK).OrderByDescending(item=>item.CreateDate).FirstOrDefault();
         }
 
         public DataTable GetDSLichSu(string DanhBo)
