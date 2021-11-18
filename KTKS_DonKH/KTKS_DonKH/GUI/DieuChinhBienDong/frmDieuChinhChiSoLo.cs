@@ -210,7 +210,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             DataSet ds = new DataSet();
 
-            string sql = "(select Chon=CAST(0 as bit),ID,DanhBo,MLT,HoTen,DiaChi,Nam,Ky,Dot,CodeCu,CodeMoi,CSC,CSM,TieuThu,TieuThuLo,TieuThuLoConLai,TinhTrang='',MaDon,STT,DCHD"
+            string sql = "(select Chon=CAST(0 as bit),ID,DanhBo,MLT,HoTen,DiaChi,Nam,Ky,Dot,CodeCu,CodeMoi,CSC,CSM,TieuThu,TieuThuLo,TieuThuLoConLai,TinhTrang='',MaDon,STT,DCHD,UpdatedDHN"
                         + " from ChiSoLo_DanhBo where Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim() + ")order by MLT asc";
             DataTable dtParent = _cDCBD.ExecuteQuery_DataTable(sql);
             dtParent.TableName = "Parent";
@@ -680,16 +680,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
+
                         for (int i = 0; i < gridView.DataRowCount; i++)
                         {
                             DataRow row = gridView.GetDataRow(i);
-                            if (row["MaDon"].ToString() != "")
+                            if (row["MaDon"].ToString() != "" && bool.Parse(row["UpdatedDHN"].ToString()) == false)
                             {
-                                string sql = "update DocSo set CodeMoi='55',CSMoi=" + (int.Parse(row["CSM"].ToString()) + int.Parse(row["TieuThuLoConLai"].ToString())) + " where DanhBa='" + row["DanhBo"] + "' and Nam=" + row["Nam"] + " and Ky=" + row["Ky"] + " and Dot=" + row["Dot"]
+                                string sql = " update DocSo set CodeMoi='55',CSMoi=" + (int.Parse(row["CSM"].ToString()) + int.Parse(row["TieuThuLoConLai"].ToString())) + " where DanhBa='" + row["DanhBo"] + "' and Nam=" + row["Nam"] + " and Ky=" + row["Ky"] + " and Dot=" + row["Dot"]
                                     + " update DocSo set CodeCu='55',CSCu=" + (int.Parse(row["CSM"].ToString()) + int.Parse(row["TieuThuLoConLai"].ToString())) + " where DanhBa='" + row["DanhBo"] + "' and Nam=" + row["Nam"] + " and Ky=" + (int.Parse(row["Ky"].ToString()) + 1) + " and Dot=" + row["Dot"];
-                                _cDocSo.ExecuteNonQuery(sql);
+                                if (_cDocSo.ExecuteNonQuery(sql))
+                                {
+                                    string sql2 = "update ChiSoLo_DanhBo set UpdatedDHN=1,UpdatedDHN_Ngay=getdate() where ID=" + row["ID"].ToString();
+                                    _cDCBD.ExecuteNonQuery(sql2);
+                                }
                             }
                         }
+
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

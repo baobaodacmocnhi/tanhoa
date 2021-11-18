@@ -81,11 +81,14 @@
             this.btnTVDieuChinh = new System.Windows.Forms.Button();
             this.btnTVCapNhatQLDHN = new System.Windows.Forms.Button();
             this.btnQLDHNExcel = new System.Windows.Forms.Button();
+            this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             this.SuspendLayout();
             // 
             // gridViewChiTiet
@@ -210,7 +213,8 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit2,
-            this.repositoryItemCheckEdit1});
+            this.repositoryItemCheckEdit1,
+            this.repositoryItemCheckEdit3});
             this.gridControl.Size = new System.Drawing.Size(1226, 526);
             this.gridControl.TabIndex = 27;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -243,7 +247,8 @@
             this.gridColumn26,
             this.gridColumn27,
             this.gridColumn28,
-            this.gridColumn29});
+            this.gridColumn29,
+            this.gridColumn30});
             this.gridView.GridControl = this.gridControl;
             this.gridView.IndicatorWidth = 41;
             this.gridView.Name = "gridView";
@@ -598,6 +603,22 @@
             this.btnQLDHNExcel.UseVisualStyleBackColor = true;
             this.btnQLDHNExcel.Click += new System.EventHandler(this.btnQLDHNExcel_Click);
             // 
+            // gridColumn30
+            // 
+            this.gridColumn30.Caption = "UpdatedDHN";
+            this.gridColumn30.ColumnEdit = this.repositoryItemCheckEdit3;
+            this.gridColumn30.FieldName = "UpdatedDHN";
+            this.gridColumn30.Name = "gridColumn30";
+            this.gridColumn30.Visible = true;
+            this.gridColumn30.VisibleIndex = 19;
+            this.gridColumn30.Width = 50;
+            // 
+            // repositoryItemCheckEdit3
+            // 
+            this.repositoryItemCheckEdit3.AutoHeight = false;
+            this.repositoryItemCheckEdit3.Caption = "Check";
+            this.repositoryItemCheckEdit3.Name = "repositoryItemCheckEdit3";
+            // 
             // frmDieuChinhChiSoLo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -631,6 +652,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -690,5 +712,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn29;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private System.Windows.Forms.Button btnQLDHNExcel;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn30;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
     }
 }

@@ -53,6 +53,7 @@ namespace KTKS_DonKH.DAL
             {
                 Connect();
                 command = new SqlCommand(sql, connection);
+                command.CommandTimeout = 600;
                 int rowsAffected = command.ExecuteNonQuery();
                 if (rowsAffected >= 1)
                     return true;
