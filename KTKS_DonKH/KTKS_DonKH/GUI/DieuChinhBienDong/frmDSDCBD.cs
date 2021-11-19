@@ -2695,8 +2695,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         DCBD_ChiTietHoaDon ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                                         if (ctdchd != null)
                                         {
-                                            DIEUCHINH_HD dchd = _cThuTien.get_DCHD(ctdchd.SoHoaDon);
                                             HOADON hoadon = _cThuTien.get(ctdchd.SoHoaDon);
+                                            DIEUCHINH_HD dchd = _cThuTien.get_DCHD(hoadon.ID_HOADON);
+                                            
                                             if (hoadon.MaNV_DangNgan == null)
                                                 if (dchd != null)
                                                 {

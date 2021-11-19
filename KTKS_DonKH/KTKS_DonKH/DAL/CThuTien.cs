@@ -89,6 +89,18 @@ namespace KTKS_DonKH.DAL
                     return null;
         }
 
+        public HOADON get(int MaHD)
+        {
+            HOADON a = new HOADON();
+            if (db.HOADONs.Any(item => item.ID_HOADON == MaHD))
+                return db.HOADONs.SingleOrDefault(item => item.ID_HOADON == MaHD);
+            else
+                if (db.TT_HoaDonCus.Any(item => item.ID_HOADON == MaHD))
+                    return Copy(a, db.TT_HoaDonCus.FirstOrDefault(item => item.ID_HOADON == MaHD));
+                else
+                    return null;
+        }
+
         public HOADON get(string SoHoaDon)
         {
             HOADON a = new HOADON();
@@ -243,6 +255,11 @@ namespace KTKS_DonKH.DAL
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public DIEUCHINH_HD get_DCHD(int MaHD)
+        {
+            return db.DIEUCHINH_HDs.SingleOrDefault(item => item.FK_HOADON == MaHD);
         }
 
         public DIEUCHINH_HD get_DCHD(string SoHoaDon)
