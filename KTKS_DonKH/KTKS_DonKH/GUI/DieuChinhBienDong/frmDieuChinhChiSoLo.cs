@@ -686,8 +686,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             DataRow row = gridView.GetDataRow(i);
                             if (row["MaDon"].ToString() != "" && bool.Parse(row["UpdatedDHN"].ToString()) == false)
                             {
-                                string sql = " update DocSo set CodeMoi='55',CSMoi=" + (int.Parse(row["CSM"].ToString()) - int.Parse(row["TieuThuLoConLai"].ToString())) + " where DanhBa='" + row["DanhBo"] + "' and Nam=" + row["Nam"] + " and Ky=" + row["Ky"] + " and Dot=" + row["Dot"]
-                                    + " update DocSo set CodeCu='55',CSCu=" + (int.Parse(row["CSM"].ToString()) - int.Parse(row["TieuThuLoConLai"].ToString())) + " where DanhBa='" + row["DanhBo"] + "' and Nam=" + row["Nam"] + " and Ky=" + (int.Parse(row["Ky"].ToString()) + 1) + " and Dot=" + row["Dot"];
+                                //string sql = " update DocSo set CodeMoi='55',CSMoi=" + (int.Parse(row["CSM"].ToString()) - int.Parse(row["TieuThuLoConLai"].ToString())) + " where DanhBa='" + row["DanhBo"] + "' and Nam=" + row["Nam"] + " and Ky=" + row["Ky"] + " and Dot=" + row["Dot"]
+                                //    + " update DocSo set CodeCu='55',CSCu=" + (int.Parse(row["CSM"].ToString()) - int.Parse(row["TieuThuLoConLai"].ToString())) + " where DanhBa='" + row["DanhBo"] + "' and Nam=" + row["Nam"] + " and Ky=" + (int.Parse(row["Ky"].ToString()) + 1) + " and Dot=" + row["Dot"];
+                                string sql = " update DocSo set CodeMoi='55',CSMoi=" + (int.Parse(row["CSM"].ToString()) - int.Parse(row["TieuThuLoConLai"].ToString())) + " where DocSoID=" + row["Nam"] + int.Parse(row["Ky"].ToString()).ToString("00") + row["DanhBo"]
+                                    + " update DocSo set CodeCu='55',CSCu=" + (int.Parse(row["CSM"].ToString()) - int.Parse(row["TieuThuLoConLai"].ToString())) + " where DocSoID=" + row["Nam"] + (int.Parse(row["Ky"].ToString()) + 1).ToString("00") + row["DanhBo"];
                                 if (_cDocSo.ExecuteNonQuery(sql))
                                 {
                                     string sql2 = "update ChiSoLo_DanhBo set UpdatedDHN=1,UpdatedDHN_Ngay=getdate() where ID=" + row["ID"].ToString();
