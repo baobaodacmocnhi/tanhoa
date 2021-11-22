@@ -25,6 +25,7 @@ namespace BaoCaoWeb.Controllers
             enTT.lstSanLuong = getlstSanLuong();
             enTT.lstDoanhThu = getlstDoanhThu();
             enTT.lstGiaBanBinhQuan = getlstGiaBanBinhQuan();
+            enTT.TongThatThoatNuoc = 18.30;
             return View(enTT);
         }
 

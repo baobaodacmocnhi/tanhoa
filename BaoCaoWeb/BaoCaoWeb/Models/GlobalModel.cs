@@ -10,7 +10,7 @@ namespace BaoCaoWeb.Models
         public decimal TongKhachHang { get; set; }
         public decimal TongSanLuong { get; set; }
         public decimal TongDoanhThu { get; set; }
-        public decimal TongThatThoatNuoc { get; set; }
+        public double TongThatThoatNuoc { get; set; }
         public int NamPresent { get; set; }
         public int NamPrevious { get; set; }
         public List<Chart> lstSanLuong { get; set; }
@@ -20,7 +20,8 @@ namespace BaoCaoWeb.Models
         public Array jsonSanLuong { get; set; }
         public ThongTin()
         {
-            TongKhachHang = TongSanLuong = TongDoanhThu = TongThatThoatNuoc = NamPresent = NamPrevious = 0;
+            TongKhachHang = TongSanLuong = TongDoanhThu =  NamPresent = NamPrevious = 0;
+            TongThatThoatNuoc = 0.0;
             lstSanLuong = lstDoanhThu = lstGiaBanBinhQuan = lstThuHo = new List<Chart>();
             jsonSanLuong = null;
         }
