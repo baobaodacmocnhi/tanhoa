@@ -358,7 +358,7 @@ namespace ThuTien.GUI.Doi
                                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                         {
-                                            if (_cTienDu.UpdateXoaTienMat_Doi(item.Cells["SoHoaDon_TG"].Value.ToString(), dateGiaiTrachSua.Value))
+                                            if (_cTienDu.UpdateXoaTienMat_Doi(item.Cells["SoHoaDon_TG"].Value.ToString(), dateGiaiTrach.Value))
                                                 if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_TG"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                                     scope.Complete();
                                         }
@@ -371,7 +371,7 @@ namespace ThuTien.GUI.Doi
                                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                         {
                                             if (_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_TG"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
-                                                if (_cTienDu.UpdateXoa_Doi(item.Cells["SoHoaDon_TG"].Value.ToString(), dateGiaiTrachSua.Value))
+                                                if (_cTienDu.UpdateXoa_Doi(item.Cells["SoHoaDon_TG"].Value.ToString(), dateGiaiTrach.Value))
                                                     scope.Complete();
                                         }
                                     }
