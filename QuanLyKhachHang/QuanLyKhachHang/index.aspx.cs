@@ -173,7 +173,7 @@ namespace QuanLyKhachHang
             string search = txtDB.Text;
             if ("0".Equals(s))
             {
-                LoadThongTinDB(this.txtDB.Text);
+                LoadThongTinDB(this.txtDB.Text.Replace(" ", "").Replace("-", ""));
                 Panel3.Visible = false;
             }
             else if ("1".Equals(s))
