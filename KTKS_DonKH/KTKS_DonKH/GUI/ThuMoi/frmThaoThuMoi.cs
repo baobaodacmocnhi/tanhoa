@@ -324,7 +324,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
                     else
                         txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();
-                    dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet(_dontu_ChiTiet.MaDon.Value,_dontu_ChiTiet.STT.Value);
+                    dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
 
                     _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
                     if (_hoadon != null)
@@ -641,6 +641,9 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     else
                         if (radRong.Checked == true)
                             rpt = new rptThuMoiChuyenDe_Rong();
+                        else
+                            if (radThanhToanTienNuoc.Checked == true)
+                                rpt = new rptThanhToanTienNuoc();
                 rpt.SetDataSource(dsBaoCao);
                 rpt.Subreports[0].SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
