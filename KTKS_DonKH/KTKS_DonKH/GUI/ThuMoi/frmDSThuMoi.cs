@@ -92,7 +92,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
             if (MessageBox.Show("Bạn chắc chắn In những Thư trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 PrintDialog printDialog = new PrintDialog();
-                if (printDialog.ShowDialog() == DialogResult.OK)
+                if (printDialog.ShowDialog() == DialogResult.OK && cmbLoaiIn.SelectedIndex >= 0)
                 {
 
                     for (int i = 0; i < dgvDSThu.Rows.Count; i++)
@@ -129,14 +129,21 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
 
                             ReportDocument rpt = new ReportDocument();
-                            if (radDutChi.Checked == true)
-                                rpt = new rptThuMoiDutChi();
-                            else
-                                if (radCDDM.Checked == true)
+                            switch (cmbLoaiIn.SelectedItem.ToString())
+                            {
+                                case "Đứt Chì":
+                                    rpt = new rptThuMoiDutChi();
+                                    break;
+                                case "Chuyên Đề Định Mức":
                                     rpt = new rptThuMoiChuyenDe();
-                                else
-                                    if (radRong.Checked == true)
-                                        rpt = new rptThuMoiChuyenDe_Rong();
+                                    break;
+                                case "Rỗng":
+                                    rpt = new rptThuMoiChuyenDe_Rong();
+                                    break;
+                                case "Thanh Toán Tiền Nước":
+                                    rpt = new rptThanhToanTienNuoc();
+                                    break;
+                            }
                             rpt.SetDataSource(dsBaoCao);
                             rpt.Subreports[0].SetDataSource(dsBaoCao);
 

@@ -4938,7 +4938,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                 string _chiTiet = "";
-                int DinhMuc = TongDinhMuc - DinhMucHN, _SH = 0, _SX = 0, _DV = 0, _HCSN = 0;
+                int DinhMuc = TongDinhMuc - DinhMucHN, _SH = 0, _DV = 0;
                 ///Table GiaNuoc được thiết lập theo bảng giá nước
                 ///1. Đến 4m3/người/tháng
                 ///2. Trên 4m3 đến 6m3/người/tháng

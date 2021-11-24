@@ -77,11 +77,8 @@
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CanCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radDutChi = new System.Windows.Forms.RadioButton();
-            this.radCDDM = new System.Windows.Forms.RadioButton();
             this.txtIDCT = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.radRong = new System.Windows.Forms.RadioButton();
             this.label34 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label32 = new System.Windows.Forms.Label();
@@ -94,7 +91,8 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.chkCanKhachHangLienHe = new System.Windows.Forms.CheckBox();
-            this.radThanhToanTienNuoc = new System.Windows.Forms.RadioButton();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cmbLoaiIn = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
@@ -122,7 +120,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(674, 232);
+            this.btnIn.Location = new System.Drawing.Point(665, 232);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 25);
             this.btnIn.TabIndex = 12;
@@ -542,27 +540,6 @@
             this.VaoLuc.Name = "VaoLuc";
             this.VaoLuc.Width = 200;
             // 
-            // radDutChi
-            // 
-            this.radDutChi.AutoSize = true;
-            this.radDutChi.Checked = true;
-            this.radDutChi.Location = new System.Drawing.Point(674, 149);
-            this.radDutChi.Name = "radDutChi";
-            this.radDutChi.Size = new System.Drawing.Size(67, 20);
-            this.radDutChi.TabIndex = 9;
-            this.radDutChi.Text = "Đứt Chì";
-            this.radDutChi.UseVisualStyleBackColor = true;
-            // 
-            // radCDDM
-            // 
-            this.radCDDM.AutoSize = true;
-            this.radCDDM.Location = new System.Drawing.Point(674, 175);
-            this.radCDDM.Name = "radCDDM";
-            this.radCDDM.Size = new System.Drawing.Size(64, 20);
-            this.radCDDM.TabIndex = 10;
-            this.radCDDM.Text = "CĐĐM";
-            this.radCDDM.UseVisualStyleBackColor = true;
-            // 
             // txtIDCT
             // 
             this.txtIDCT.Location = new System.Drawing.Point(572, 12);
@@ -579,16 +556,6 @@
             this.label9.Size = new System.Drawing.Size(53, 16);
             this.label9.TabIndex = 2;
             this.label9.Text = "Mã Thư";
-            // 
-            // radRong
-            // 
-            this.radRong.AutoSize = true;
-            this.radRong.Location = new System.Drawing.Point(674, 201);
-            this.radRong.Name = "radRong";
-            this.radRong.Size = new System.Drawing.Size(59, 20);
-            this.radRong.TabIndex = 11;
-            this.radRong.Text = "Rỗng";
-            this.radRong.UseVisualStyleBackColor = true;
             // 
             // label34
             // 
@@ -713,15 +680,27 @@
             this.chkCanKhachHangLienHe.Text = "Cần Khách Hàng Liên Hệ";
             this.chkCanKhachHangLienHe.UseVisualStyleBackColor = true;
             // 
-            // radThanhToanTienNuoc
+            // label18
             // 
-            this.radThanhToanTienNuoc.AutoSize = true;
-            this.radThanhToanTienNuoc.Location = new System.Drawing.Point(747, 149);
-            this.radThanhToanTienNuoc.Name = "radThanhToanTienNuoc";
-            this.radThanhToanTienNuoc.Size = new System.Drawing.Size(164, 20);
-            this.radThanhToanTienNuoc.TabIndex = 139;
-            this.radThanhToanTienNuoc.Text = "Thanh Toán Tiền Nước";
-            this.radThanhToanTienNuoc.UseVisualStyleBackColor = true;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(662, 181);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(47, 16);
+            this.label18.TabIndex = 140;
+            this.label18.Text = "Loại In";
+            // 
+            // cmbLoaiIn
+            // 
+            this.cmbLoaiIn.FormattingEnabled = true;
+            this.cmbLoaiIn.Items.AddRange(new object[] {
+            "Đứt Chì",
+            "Chuyên Đề Định Mức",
+            "Rỗng",
+            "Thanh Toán Tiền Nước"});
+            this.cmbLoaiIn.Location = new System.Drawing.Point(665, 202);
+            this.cmbLoaiIn.Name = "cmbLoaiIn";
+            this.cmbLoaiIn.Size = new System.Drawing.Size(121, 24);
+            this.cmbLoaiIn.TabIndex = 141;
             // 
             // frmThaoThuMoi
             // 
@@ -730,15 +709,13 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(923, 562);
-            this.Controls.Add(this.radThanhToanTienNuoc);
+            this.Controls.Add(this.cmbLoaiIn);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.chkCanKhachHangLienHe);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label34);
-            this.Controls.Add(this.radRong);
             this.Controls.Add(this.txtIDCT);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.radCDDM);
-            this.Controls.Add(this.radDutChi);
             this.Controls.Add(this.dgvDSThu);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label15);
@@ -804,11 +781,8 @@
         private System.Windows.Forms.TextBox txtVaoLuc;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgvDSThu;
-        private System.Windows.Forms.RadioButton radDutChi;
-        private System.Windows.Forms.RadioButton radCDDM;
         private System.Windows.Forms.TextBox txtIDCT;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.RadioButton radRong;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lan;
@@ -836,6 +810,7 @@
         private System.Windows.Forms.DateTimePicker dateTu;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.RadioButton radThanhToanTienNuoc;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox cmbLoaiIn;
     }
 }

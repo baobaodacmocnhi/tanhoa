@@ -449,6 +449,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         entity.Dot = _hoadon.DOT;
                         entity.Quan = _hoadon.Quan;
                         entity.Phuong = _hoadon.Phuong;
+                        entity.HopDong = _hoadon.HOPDONG;
                     }
                     entity.CanCu = txtCanCu.Text.Trim();
                     entity.TuNgay = dateTu.Value;
@@ -517,6 +518,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             _thumoi.Dot = _hoadon.DOT;
                             _thumoi.Quan = _hoadon.Quan;
                             _thumoi.Phuong = _hoadon.Phuong;
+                            _thumoi.HopDong = _hoadon.HOPDONG;
                         }
                         _thumoi.CanCu = txtCanCu.Text.Trim();
                         _thumoi.TuNgay = dateTu.Value;
@@ -585,7 +587,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            if (_thumoi != null)
+            if (_thumoi != null && cmbLoaiIn.SelectedIndex >= 0)
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
@@ -610,6 +612,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
 
                 dr["HoTen"] = _thumoi.HoTen;
                 dr["DiaChi"] = _thumoi.DiaChi;
+                dr["HopDong"] = _thumoi.HopDong;
                 if (!string.IsNullOrEmpty(_thumoi.DanhBo) && _thumoi.DanhBo.Length == 11)
                     dr["DanhBo"] = _thumoi.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["GiaBieu"] = _thumoi.GiaBieu.Value.ToString();
@@ -633,17 +636,22 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
 
                 ReportDocument rpt = new ReportDocument();
-                if (radDutChi.Checked == true)
-                    rpt = new rptThuMoiDutChi();
-                else
-                    if (radCDDM.Checked == true)
+
+                switch (cmbLoaiIn.SelectedItem.ToString())
+                {
+                    case "Đứt Chì":
+                        rpt = new rptThuMoiDutChi();
+                        break;
+                    case "Chuyên Đề Định Mức":
                         rpt = new rptThuMoiChuyenDe();
-                    else
-                        if (radRong.Checked == true)
-                            rpt = new rptThuMoiChuyenDe_Rong();
-                        else
-                            if (radThanhToanTienNuoc.Checked == true)
-                                rpt = new rptThanhToanTienNuoc();
+                        break;
+                    case "Rỗng":
+                        rpt = new rptThuMoiChuyenDe_Rong();
+                        break;
+                    case "Thanh Toán Tiền Nước":
+                        rpt = new rptThanhToanTienNuoc();
+                        break;
+                }
                 rpt.SetDataSource(dsBaoCao);
                 rpt.Subreports[0].SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
