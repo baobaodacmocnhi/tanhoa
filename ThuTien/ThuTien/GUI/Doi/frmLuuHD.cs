@@ -74,7 +74,7 @@ namespace ThuTien.GUI.Doi
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
-                    if (txtDuongDan.Text.Trim() != "" )//&& _fileName.Length == 12)
+                    if (txtDuongDan.Text.Trim() != "")//&& _fileName.Length == 12)
                     {
                         string[] lines = System.IO.File.ReadAllLines(txtDuongDan.Text.Trim());
                         progressBar.Minimum = 0;
@@ -204,7 +204,7 @@ namespace ThuTien.GUI.Doi
                             if ((hoadon.NAM > 2019 || (hoadon.KY == 12 && hoadon.NAM == 2019)) && !string.IsNullOrWhiteSpace(contents[61]))
                                 hoadon.DinhMucHN = int.Parse(contents[61]);
                             //cột 62 là số tiền giảm trừ covid19
-                            if (!string.IsNullOrWhiteSpace(contents[62]))
+                            if (contents.Length >= 63 && !string.IsNullOrWhiteSpace(contents[62]))
                                 hoadon.SoTienGiam = int.Parse(contents[62]);
 
                             hoadon.MALOTRINH = hoadon.DOT.ToString("00") + hoadon.MAY + hoadon.STT;
