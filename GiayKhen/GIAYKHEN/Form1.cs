@@ -181,7 +181,12 @@ namespace GIAYKHEN
         {
             cmbGiayKhen.SelectedIndex = 0;
             cmbNhom.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2021, 04, 12);
+            txtNgay.Value = new DateTime(2021, 11, 22);
+        }
+
+        private void txtQuyetDinhCaNhan_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }
