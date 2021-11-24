@@ -34,7 +34,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CToTrinhCatHuy _cTTCH = new CToTrinhCatHuy();
         CTienDu _cTienDu = new CTienDu();
-        frmLoading frm=new frmLoading();
+        frmLoading frm = new frmLoading();
 
         public frmTamThuChuyenKhoan()
         {
@@ -871,20 +871,38 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     return;
                                 }
                                 //đăng ngân
-                                if (_cHoaDon.checkExists_KyMoi(item.Cells["Ky_TT"].Value.ToString()) == false && (item.Cells["NgayGiaiTrach_TT"].Value == null || item.Cells["NgayGiaiTrach_TT"].Value.ToString() == ""))
+                                if (chkKhongKiemTraKy.Checked == true)
                                 {
-                                    var transactionOptions = new TransactionOptions();
-                                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
-                                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                                    if (item.Cells["NgayGiaiTrach_TT"].Value == null || item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
                                     {
-                                        if (_cHoaDon.DangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TT"].Value.ToString(), CNguoiDung.MaND))
-                                            if (_cTienDu.UpdateThem(item.Cells["SoHoaDon_TT"].Value.ToString()))
-                                            {
-                                                scope.Complete();
-                                                scope.Dispose();
-                                            }
+                                        var transactionOptions = new TransactionOptions();
+                                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                                        {
+                                            if (_cHoaDon.DangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TT"].Value.ToString(), CNguoiDung.MaND))
+                                                if (_cTienDu.UpdateThem(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                                                {
+                                                    scope.Complete();
+                                                    scope.Dispose();
+                                                }
+                                        }
                                     }
                                 }
+                                else
+                                    if (_cHoaDon.checkExists_KyMoi(item.Cells["Ky_TT"].Value.ToString()) == false && (item.Cells["NgayGiaiTrach_TT"].Value == null || item.Cells["NgayGiaiTrach_TT"].Value.ToString() == ""))
+                                    {
+                                        var transactionOptions = new TransactionOptions();
+                                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                                        {
+                                            if (_cHoaDon.DangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TT"].Value.ToString(), CNguoiDung.MaND))
+                                                if (_cTienDu.UpdateThem(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                                                {
+                                                    scope.Complete();
+                                                    scope.Dispose();
+                                                }
+                                        }
+                                    }
                             }
                         MessageBox.Show("Xử lý thành công\nVui lòng kiểm tra lại số liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnXem.PerformClick();

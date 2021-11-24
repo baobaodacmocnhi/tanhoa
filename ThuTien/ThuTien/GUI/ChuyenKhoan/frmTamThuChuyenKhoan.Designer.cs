@@ -103,6 +103,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.chkTruHoNgheo = new System.Windows.Forms.CheckBox();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.chkKhongKiemTraKy = new System.Windows.Forms.CheckBox();
             this.tabTamThu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTamThu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
@@ -151,6 +152,7 @@
             // 
             // tabTamThu
             // 
+            this.tabTamThu.Controls.Add(this.chkKhongKiemTraKy);
             this.tabTamThu.Controls.Add(this.btnChuyenDangNganKyMoi);
             this.tabTamThu.Controls.Add(this.btnKiemTraSaiSot);
             this.tabTamThu.Controls.Add(this.radDienTu);
@@ -804,6 +806,16 @@
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
+            // chkKhongKiemTraKy
+            // 
+            this.chkKhongKiemTraKy.AutoSize = true;
+            this.chkKhongKiemTraKy.Location = new System.Drawing.Point(997, 35);
+            this.chkKhongKiemTraKy.Name = "chkKhongKiemTraKy";
+            this.chkKhongKiemTraKy.Size = new System.Drawing.Size(117, 17);
+            this.chkKhongKiemTraKy.TabIndex = 35;
+            this.chkKhongKiemTraKy.Text = "Không Kiểm Tra Kỳ";
+            this.chkKhongKiemTraKy.UseVisualStyleBackColor = true;
+            // 
             // frmTamThuChuyenKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -904,5 +916,6 @@
         private System.Windows.Forms.RadioButton radDienTu;
         private System.Windows.Forms.Button btnKiemTraSaiSot;
         private System.Windows.Forms.Button btnChuyenDangNganKyMoi;
+        private System.Windows.Forms.CheckBox chkKhongKiemTraKy;
     }
 }
