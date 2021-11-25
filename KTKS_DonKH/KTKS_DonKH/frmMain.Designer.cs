@@ -95,6 +95,7 @@
             this.mnuHoNgheo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSoDangKyDinhMuc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnDieuChinhChiSoLo = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDieuChinhHangLoat = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCatHuy = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCTDB = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCHDB = new System.Windows.Forms.ToolStripMenuItem();
@@ -590,7 +591,8 @@
             this.mnuKhuCongNghiep,
             this.mnuHoNgheo,
             this.mnuSoDangKyDinhMuc,
-            this.mnDieuChinhChiSoLo});
+            this.mnDieuChinhChiSoLo,
+            this.mnuDieuChinhHangLoat});
             this.mnuDieuChinhBienDong.Name = "mnuDieuChinhBienDong";
             this.mnuDieuChinhBienDong.Size = new System.Drawing.Size(83, 20);
             this.mnuDieuChinhBienDong.Text = "Điểu Chỉnh";
@@ -678,6 +680,13 @@
             this.mnDieuChinhChiSoLo.Size = new System.Drawing.Size(243, 22);
             this.mnDieuChinhChiSoLo.Text = "Điều Chỉnh Chỉ Số Lố";
             this.mnDieuChinhChiSoLo.Click += new System.EventHandler(this.mnuDanhSachDocLoChiSoNuoc_Click);
+            // 
+            // mnuDieuChinhHangLoat
+            // 
+            this.mnuDieuChinhHangLoat.Name = "mnuDieuChinhHangLoat";
+            this.mnuDieuChinhHangLoat.Size = new System.Drawing.Size(243, 22);
+            this.mnuDieuChinhHangLoat.Text = "Điều Chỉnh Hàng Loạt";
+            this.mnuDieuChinhHangLoat.Click += new System.EventHandler(this.mnuDieuChinhHangLoat_Click);
             // 
             // mnuCatHuy
             // 
@@ -1111,5 +1120,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuVanBan;
         private System.Windows.Forms.ToolStripMenuItem mnuSoDangKyDinhMuc;
         private System.Windows.Forms.ToolStripMenuItem mnDieuChinhChiSoLo;
+        private System.Windows.Forms.ToolStripMenuItem mnuDieuChinhHangLoat;
     }
 }

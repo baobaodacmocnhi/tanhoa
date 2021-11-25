@@ -1103,6 +1103,12 @@
     <Compile Include="GUI\DieuChinhBienDong\frmDieuChinhChiSoLo.Designer.cs">
       <DependentUpon>frmDieuChinhChiSoLo.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmDieuChinhHangLoat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmDieuChinhHangLoat.Designer.cs">
+      <DependentUpon>frmDieuChinhHangLoat.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmHoNgheo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2270,6 +2276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmDieuChinhChiSoLo.resx">
       <DependentUpon>frmDieuChinhChiSoLo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmDieuChinhHangLoat.resx">
+      <DependentUpon>frmDieuChinhHangLoat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmHoNgheo.resx">
       <DependentUpon>frmHoNgheo.cs</DependentUpon>

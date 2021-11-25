@@ -42,7 +42,24 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            gridControl.DataSource = _cDocSo.getDS_DocLoChiSoNuoc(int.Parse(txtNam.Text.Trim()), int.Parse(txtKy.Text.Trim()), int.Parse(txtDot.Text.Trim())).Tables["Parent"];
+            DataSet ds = new DataSet();
+
+            string sql = "(select Chon=CAST(0 as bit),ID,DanhBo,MLT,HoTen,DiaChi,Nam,Ky,Dot,CodeCu,CodeMoi,CSC,CSM,TieuThu,TieuThuLo,TieuThuLoConLai,TinhTrang='',MaDon,STT,DCHD,UpdatedDHN"
+                        + " from ChiSoLo_DanhBo where Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim() + ")order by MLT asc";
+            DataTable dtParent = _cDCBD.ExecuteQuery_DataTable(sql);
+            dtParent.TableName = "Parent";
+            ds.Tables.Add(dtParent);
+
+            sql = "select b.*,TinhTrang=case when MaNV_DangNgan is not null then N'Đã Đăng Ngân' else '' end "
+                    + " from ChiSoLo_DanhBo a,ChiSoLo_HoaDon b,server9.HOADON_TA.dbo.HOADON hd where a.Nam=" + txtNam.Text.Trim() + " and a.Ky=" + txtKy.Text.Trim() + " and a.Dot=" + txtDot.Text.Trim() + ""
+                    + " and a.ID=b.ID and b.MaHD=hd.ID_HOADON order by MaHD desc";
+            DataTable dtChild = _cDCBD.ExecuteQuery_DataTable(sql);
+            dtChild.TableName = "Child";
+            ds.Tables.Add(dtChild);
+
+            if (dtParent.Rows.Count > 0 && dtChild.Rows.Count > 0)
+                ds.Relations.Add("Chi Tiết", ds.Tables["Parent"].Columns["ID"], ds.Tables["Child"].Columns["ID"]);
+            gridControl.DataSource = ds.Tables["Parent"];
 
             for (int i = 0; i < gridView.DataRowCount; i++)
             {
