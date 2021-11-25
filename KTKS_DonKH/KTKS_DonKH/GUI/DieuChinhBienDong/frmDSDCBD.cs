@@ -2604,9 +2604,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cl22.Value2 = "Báo Cáo Thuế";
             cl22.ColumnWidth = 15;
 
+            Microsoft.Office.Interop.Excel.Range cl23 = oSheet.get_Range("W1", "W1");
+            cl23.Value2 = "Loại Đăng Ngân";
+            cl23.ColumnWidth = 15;
+
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            int numColumn = 22;
+            int numColumn = 23;
             object[,] arr = new object[dt.Rows.Count, numColumn];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
@@ -2635,6 +2639,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     arr[i, 18] = dr["PhiBVMT_End"].ToString();
                     arr[i, 19] = dr["TongCong_End"].ToString();
                     arr[i, 21] = dr["BaoCaoThue"].ToString();
+                    DataTable dtTT = _cThuTien.ExecuteQuery_DataTable("select DangNgan_ChuyenKhoan,DangNgan_Quay,DangNgan_Ton from HOADON where DanhBa='" + dr["DanhBo"].ToString() + "' and Ky=" + dr["Ky"].ToString() + " and Nam=" + dr["Nam"].ToString());
+                    if (bool.Parse(dtTT.Rows[0]["DangNgan_ChuyenKhoan"].ToString()) == true)
+                        arr[i, 22] = "10";
+                    else
+                        if (bool.Parse(dtTT.Rows[0]["DangNgan_Quay"].ToString()) == true)
+                            arr[i, 22] = "TN";
+                        else
+                            if (bool.Parse(dtTT.Rows[0]["DangNgan_Ton"].ToString()) == true)
+                                arr[i, 22] = "TQ";
                 }
             }
 
@@ -2697,7 +2710,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         {
                                             HOADON hoadon = _cThuTien.get(ctdchd.SoHoaDon);
                                             DIEUCHINH_HD dchd = _cThuTien.get_DCHD(hoadon.ID_HOADON);
-                                            
+
                                             if (hoadon.MaNV_DangNgan == null)
                                                 if (dchd != null)
                                                 {

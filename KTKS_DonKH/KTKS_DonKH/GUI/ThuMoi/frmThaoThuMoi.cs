@@ -627,6 +627,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 dr["Luuy"] = _thumoi.Luuy;
                 dr["NoiNhan"] = _thumoi.NoiNhan + "(" + _thumoi.IDCT + ")";
                 dr["TenPhong"] = CTaiKhoan.TenPhong;
+                dr["ChucVu"] = CTaiKhoan.ChucVu;
                 dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
