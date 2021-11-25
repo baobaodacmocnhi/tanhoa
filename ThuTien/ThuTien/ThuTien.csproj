@@ -30,7 +30,6 @@
     <ProductName>Quản Lý Thu Ngân</ProductName>
     <PublisherName>T.CNTT</PublisherName>
     <MinimumRequiredVersion>1.0.0.1439</MinimumRequiredVersion>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>1478</ApplicationRevision>

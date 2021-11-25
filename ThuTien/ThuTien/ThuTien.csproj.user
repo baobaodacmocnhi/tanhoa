@@ -5,7 +5,7 @@
     <PublishUrlHistory>\\server9\BaoBao%24\ThuTien\|C:\Users\BaoBao\Desktop\ThuTienWFH\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
-    <UpdateUrlHistory>\\server9\BaoBao%24\ThuTien\</UpdateUrlHistory>
+    <UpdateUrlHistory>http://113.161.88.180:81/ThuTienWFH/|\\server9\BaoBao%24\ThuTien\</UpdateUrlHistory>
     <BootstrapperUrlHistory>\\server9\BaoBao%24\ThuTien</BootstrapperUrlHistory>
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>
