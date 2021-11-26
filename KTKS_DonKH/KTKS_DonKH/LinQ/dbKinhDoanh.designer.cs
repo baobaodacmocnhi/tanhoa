@@ -21855,15 +21855,11 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _STT2;
 		
-		private string _MLT;
+		private string _CSC;
 		
-		private string _HoTen;
-		
-		private string _DiaChi;
+		private string _CSM;
 		
 		private string _Code;
-		
-		private string _ChiSo;
 		
 		private System.Nullable<int> _TieuThu;
 		
@@ -21895,16 +21891,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnDotChanged();
     partial void OnSTT2Changing(System.Nullable<int> value);
     partial void OnSTT2Changed();
-    partial void OnMLTChanging(string value);
-    partial void OnMLTChanged();
-    partial void OnHoTenChanging(string value);
-    partial void OnHoTenChanged();
-    partial void OnDiaChiChanging(string value);
-    partial void OnDiaChiChanged();
+    partial void OnCSCChanging(string value);
+    partial void OnCSCChanged();
+    partial void OnCSMChanging(string value);
+    partial void OnCSMChanged();
     partial void OnCodeChanging(string value);
     partial void OnCodeChanged();
-    partial void OnChiSoChanging(string value);
-    partial void OnChiSoChanged();
     partial void OnTieuThuChanging(System.Nullable<int> value);
     partial void OnTieuThuChanged();
     partial void OnMaDonChanging(System.Nullable<int> value);
@@ -22028,62 +22020,42 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MLT", DbType="VarChar(50)")]
-		public string MLT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CSC", DbType="VarChar(10)")]
+		public string CSC
 		{
 			get
 			{
-				return this._MLT;
+				return this._CSC;
 			}
 			set
 			{
-				if ((this._MLT != value))
+				if ((this._CSC != value))
 				{
-					this.OnMLTChanging(value);
+					this.OnCSCChanging(value);
 					this.SendPropertyChanging();
-					this._MLT = value;
-					this.SendPropertyChanged("MLT");
-					this.OnMLTChanged();
+					this._CSC = value;
+					this.SendPropertyChanged("CSC");
+					this.OnCSCChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="VarChar(500)")]
-		public string HoTen
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CSM", DbType="VarChar(10)")]
+		public string CSM
 		{
 			get
 			{
-				return this._HoTen;
+				return this._CSM;
 			}
 			set
 			{
-				if ((this._HoTen != value))
+				if ((this._CSM != value))
 				{
-					this.OnHoTenChanging(value);
+					this.OnCSMChanging(value);
 					this.SendPropertyChanging();
-					this._HoTen = value;
-					this.SendPropertyChanged("HoTen");
-					this.OnHoTenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(500)")]
-		public string DiaChi
-		{
-			get
-			{
-				return this._DiaChi;
-			}
-			set
-			{
-				if ((this._DiaChi != value))
-				{
-					this.OnDiaChiChanging(value);
-					this.SendPropertyChanging();
-					this._DiaChi = value;
-					this.SendPropertyChanged("DiaChi");
-					this.OnDiaChiChanged();
+					this._CSM = value;
+					this.SendPropertyChanged("CSM");
+					this.OnCSMChanged();
 				}
 			}
 		}
@@ -22104,26 +22076,6 @@ namespace KTKS_DonKH.LinQ
 					this._Code = value;
 					this.SendPropertyChanged("Code");
 					this.OnCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChiSo", DbType="NVarChar(10)")]
-		public string ChiSo
-		{
-			get
-			{
-				return this._ChiSo;
-			}
-			set
-			{
-				if ((this._ChiSo != value))
-				{
-					this.OnChiSoChanging(value);
-					this.SendPropertyChanging();
-					this._ChiSo = value;
-					this.SendPropertyChanged("ChiSo");
-					this.OnChiSoChanged();
 				}
 			}
 		}

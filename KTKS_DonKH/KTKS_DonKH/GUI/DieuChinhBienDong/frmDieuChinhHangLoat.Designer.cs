@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DCHD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnChonFile = new System.Windows.Forms.Button();
             this.txtDot = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,6 +36,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNam = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.btnTVDieuChinh = new System.Windows.Forms.Button();
+            this.btnTVLapDon = new System.Windows.Forms.Button();
+            this.STT2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DCHD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,42 +56,20 @@
             this.dgvDanhSach.AllowUserToDeleteRows = false;
             this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MLT,
+            this.STT2,
             this.DanhBo,
-            this.HoTen,
-            this.DiaChi,
-            this.DCHD});
+            this.DCHD,
+            this.MaDon,
+            this.STT,
+            this.Nam,
+            this.Ky,
+            this.Dot});
             this.dgvDanhSach.Location = new System.Drawing.Point(1, 41);
             this.dgvDanhSach.Name = "dgvDanhSach";
-            this.dgvDanhSach.Size = new System.Drawing.Size(891, 274);
+            this.dgvDanhSach.Size = new System.Drawing.Size(917, 274);
             this.dgvDanhSach.TabIndex = 0;
-            // 
-            // MLT
-            // 
-            this.MLT.HeaderText = "MLT";
-            this.MLT.Name = "MLT";
-            this.MLT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.MLT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            // 
-            // HoTen
-            // 
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            // 
-            // DCHD
-            // 
-            this.DCHD.HeaderText = "ĐCHĐ";
-            this.DCHD.Name = "DCHD";
+            this.dgvDanhSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellContentClick);
+            this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
             // 
             // btnChonFile
             // 
@@ -148,12 +132,98 @@
             this.label1.TabIndex = 72;
             this.label1.Text = "Năm";
             // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(354, 12);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 78;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // btnTVDieuChinh
+            // 
+            this.btnTVDieuChinh.Location = new System.Drawing.Point(531, 12);
+            this.btnTVDieuChinh.Name = "btnTVDieuChinh";
+            this.btnTVDieuChinh.Size = new System.Drawing.Size(90, 23);
+            this.btnTVDieuChinh.TabIndex = 80;
+            this.btnTVDieuChinh.Text = "TV Điều Chỉnh";
+            this.btnTVDieuChinh.UseVisualStyleBackColor = true;
+            this.btnTVDieuChinh.Click += new System.EventHandler(this.btnTVDieuChinh_Click);
+            // 
+            // btnTVLapDon
+            // 
+            this.btnTVLapDon.Location = new System.Drawing.Point(435, 12);
+            this.btnTVLapDon.Name = "btnTVLapDon";
+            this.btnTVLapDon.Size = new System.Drawing.Size(90, 23);
+            this.btnTVLapDon.TabIndex = 79;
+            this.btnTVLapDon.Text = "TV Lập Đơn";
+            this.btnTVLapDon.UseVisualStyleBackColor = true;
+            this.btnTVLapDon.Click += new System.EventHandler(this.btnTVLapDon_Click);
+            // 
+            // STT2
+            // 
+            this.STT2.DataPropertyName = "STT2";
+            this.STT2.HeaderText = "STT";
+            this.STT2.Name = "STT2";
+            this.STT2.Width = 50;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // DCHD
+            // 
+            this.DCHD.DataPropertyName = "DCHD";
+            this.DCHD.HeaderText = "ĐCHĐ";
+            this.DCHD.Name = "DCHD";
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            // 
+            // STT
+            // 
+            this.STT.DataPropertyName = "STT";
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.Width = 50;
+            // 
+            // Nam
+            // 
+            this.Nam.DataPropertyName = "Nam";
+            this.Nam.HeaderText = "Năm";
+            this.Nam.Name = "Nam";
+            this.Nam.Width = 50;
+            // 
+            // Ky
+            // 
+            this.Ky.DataPropertyName = "Ky";
+            this.Ky.HeaderText = "Kỳ";
+            this.Ky.Name = "Ky";
+            this.Ky.Width = 50;
+            // 
+            // Dot
+            // 
+            this.Dot.DataPropertyName = "Dot";
+            this.Dot.HeaderText = "Đợt";
+            this.Dot.Name = "Dot";
+            this.Dot.Width = 50;
+            // 
             // frmDieuChinhHangLoat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1111, 668);
+            this.Controls.Add(this.btnTVDieuChinh);
+            this.Controls.Add(this.btnTVLapDon);
+            this.Controls.Add(this.btnXem);
             this.Controls.Add(this.txtDot);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtKy);
@@ -181,10 +251,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNam;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
+        private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.Button btnTVDieuChinh;
+        private System.Windows.Forms.Button btnTVLapDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT2;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DCHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
     }
 }

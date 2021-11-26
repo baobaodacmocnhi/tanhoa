@@ -916,11 +916,9 @@
       <Column Name="Ky" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Dot" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="STT2" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MLT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="HoTen" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CSC" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CSM" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="Code" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
-      <Column Name="ChiSo" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />

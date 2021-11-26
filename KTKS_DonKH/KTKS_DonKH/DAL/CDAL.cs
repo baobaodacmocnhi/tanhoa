@@ -386,7 +386,8 @@ namespace KTKS_DonKH.DAL
 
                 for (int c = 1; c <= cols; c++)
                 {
-                    string colname = xlWorksheet.Cells[1, c].Text;
+                    //string colname = xlWorksheet.Cells[1, c].Text;
+                    string colname = c.ToString();
                     dt.Columns.Add(colname);
                     noofrow = 2;
                 }
