@@ -587,13 +587,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             ctdchd.MST_BD = "";
 
                                             ///Tiền Nước
-                                            if ((TongTienCuA + TongTienCuB) != 0)
-                                                ctdchd.TienNuoc_Start = TongTienCuA + TongTienCuB;
+                                            if (hd.GIABAN.Value != 0)
+                                                ctdchd.TienNuoc_Start = (int)hd.GIABAN.Value;
                                             else
                                                 ctdchd.TienNuoc_Start = 0;
 
-                                            if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) != 0)
-                                                ctdchd.TienNuoc_BD = (TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB);
+                                            if ((TongTienMoiA + TongTienMoiB) - (int)hd.GIABAN.Value != 0)
+                                                ctdchd.TienNuoc_BD = (TongTienMoiA + TongTienMoiB) - (int)hd.GIABAN.Value;
                                             else
                                                 ctdchd.TienNuoc_BD = 0;
 
@@ -603,13 +603,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 ctdchd.TienNuoc_End = 0;
 
                                             ///Thuế GTGT
-                                            if ((TongTienCuA + TongTienCuB) != 0)
-                                                ctdchd.ThueGTGT_Start = (int)Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+                                            if ((int)hd.GIABAN.Value != 0)
+                                                ctdchd.ThueGTGT_Start = (int)hd.THUE.Value;
                                             else
                                                 ctdchd.ThueGTGT_Start = 0;
 
-                                            if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) != 0)
-                                                ctdchd.ThueGTGT_BD = (int)(Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) - Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero));
+                                            if ((TongTienMoiA + TongTienMoiB) - (int)hd.GIABAN.Value != 0)
+                                                ctdchd.ThueGTGT_BD = (int)(Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) - (int)hd.THUE.Value);
                                             else
                                                 ctdchd.ThueGTGT_BD = 0;
 
@@ -619,13 +619,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 ctdchd.ThueGTGT_End = 0;
 
                                             ///Phí BVMT
-                                            if ((TongTienCuA + TongTienCuB) != 0)
-                                                ctdchd.PhiBVMT_Start = (int)Math.Round((double)(TongTienCuA + TongTienCuB) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                                            if ((int)hd.GIABAN.Value != 0)
+                                                ctdchd.PhiBVMT_Start = (int)hd.PHI.Value;
                                             else
                                                 ctdchd.PhiBVMT_Start = 0;
 
-                                            if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) != 0)
-                                                ctdchd.PhiBVMT_BD = (int)(Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero) - Math.Round((double)(TongTienCuA + TongTienCuB) * 10 / 100, 0, MidpointRounding.AwayFromZero));
+                                            if ((TongTienMoiA + TongTienMoiB) - (int)hd.GIABAN.Value != 0)
+                                                ctdchd.PhiBVMT_BD = (int)(Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero) - (int)hd.PHI.Value);
                                             else
                                                 ctdchd.PhiBVMT_BD = 0;
 
@@ -635,13 +635,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 ctdchd.PhiBVMT_End = 0;
 
                                             ///Tổng Cộng
-                                            if ((TongTienCuA + TongTienCuB) != 0)
-                                                ctdchd.TongCong_Start = ((TongTienCuA + TongTienCuB) + (int)Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)(TongTienCuA + TongTienCuB) * 10 / 100, 0, MidpointRounding.AwayFromZero));
+                                            if ((int)hd.GIABAN.Value != 0)
+                                                ctdchd.TongCong_Start = (int)hd.TONGCONG.Value;
                                             else
                                                 ctdchd.TongCong_Start = 0;
 
-                                            if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) != 0)
-                                                ctdchd.TongCong_BD = (((TongTienMoiA + TongTienMoiB) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero)) - ((TongTienCuA + TongTienCuB) + (int)Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)(TongTienCuA + TongTienCuB) * 10 / 100, 0, MidpointRounding.AwayFromZero)));
+                                            if ((TongTienMoiA + TongTienMoiB) - (int)hd.GIABAN.Value != 0)
+                                                ctdchd.TongCong_BD = (((TongTienMoiA + TongTienMoiB) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero)) - (int)hd.TONGCONG.Value);
                                             else
                                                 ctdchd.TongCong_BD = 0;
 

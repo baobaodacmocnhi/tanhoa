@@ -66,7 +66,7 @@
             this.Dot});
             this.dgvDanhSach.Location = new System.Drawing.Point(1, 41);
             this.dgvDanhSach.Name = "dgvDanhSach";
-            this.dgvDanhSach.Size = new System.Drawing.Size(917, 274);
+            this.dgvDanhSach.Size = new System.Drawing.Size(571, 466);
             this.dgvDanhSach.TabIndex = 0;
             this.dgvDanhSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellContentClick);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
@@ -180,6 +180,7 @@
             this.DCHD.DataPropertyName = "DCHD";
             this.DCHD.HeaderText = "ĐCHĐ";
             this.DCHD.Name = "DCHD";
+            this.DCHD.Width = 50;
             // 
             // MaDon
             // 

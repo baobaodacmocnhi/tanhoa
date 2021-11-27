@@ -2082,13 +2082,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtTieuThu_BD.Text = (int.Parse(txtTieuThu_Moi.Text.Trim()) - int.Parse(txtTieuThu_Cu.Text.Trim())).ToString();
             txtTieuThu_End.Text = txtTieuThu_Moi.Text.Trim();
             ///Tiền Nước
-            if ((TongTienCuA + TongTienCuB) != 0)
-                txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (TongTienCuA + TongTienCuB));
+            if ((int)_hoadon.GIABAN.Value != 0)
+                txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int)_hoadon.GIABAN.Value);
             else
                 txtTienNuoc_Start.Text = "0";
 
-            if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) != 0)
-                txtTienNuoc_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB));
+            if ((TongTienMoiA + TongTienMoiB) - (int)_hoadon.GIABAN.Value != 0)
+                txtTienNuoc_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (TongTienMoiA + TongTienMoiB) - (int)_hoadon.GIABAN.Value);
             else
                 txtTienNuoc_BD.Text = "0";
 
@@ -2098,13 +2098,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtTienNuoc_End.Text = "0";
 
             ///Thuế GTGT
-            if ((TongTienCuA + TongTienCuB) != 0)
-                txtThueGTGT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero));
+            if ((int)_hoadon.GIABAN.Value != 0)
+                txtThueGTGT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int)_hoadon.THUE.Value);
             else
                 txtThueGTGT_Start.Text = "0";
 
-            if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) != 0)
-                txtThueGTGT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) - Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero)));
+            if ((TongTienMoiA + TongTienMoiB) - (int)_hoadon.GIABAN.Value != 0)
+                txtThueGTGT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) - (int)_hoadon.THUE.Value));
             else
                 txtThueGTGT_BD.Text = "0";
 
@@ -2125,13 +2125,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             else
             {
-                if ((TongTienCuA + TongTienCuB) != 0)
-                    txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Math.Round((double)(TongTienCuA + TongTienCuB) * 10 / 100, 0, MidpointRounding.AwayFromZero));
+                if ((int)_hoadon.GIABAN.Value != 0)
+                    txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int)_hoadon.PHI.Value);
                 else
                     txtPhiBVMT_Start.Text = "0";
 
-                if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) != 0)
-                    txtPhiBVMT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero) - Math.Round((double)(TongTienCuA + TongTienCuB) * 10 / 100, 0, MidpointRounding.AwayFromZero)));
+                if ((TongTienMoiA + TongTienMoiB) - (int)_hoadon.GIABAN.Value != 0)
+                    txtPhiBVMT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero) - (int)_hoadon.PHI.Value));
                 else
                     txtPhiBVMT_BD.Text = "0";
 
@@ -2142,13 +2142,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
 
             ///Tổng Cộng
-            if ((TongTienCuA + TongTienCuB) != 0)
-                txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ((TongTienCuA + TongTienCuB) + Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + Math.Round((double)(TongTienCuA + TongTienCuB) * 10 / 100, 0, MidpointRounding.AwayFromZero)));
+            if ((int)_hoadon.GIABAN.Value != 0)
+                txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int)_hoadon.TONGCONG.Value);
             else
                 txtTongCong_Start.Text = "0";
 
-            if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) != 0)
-                txtTongCong_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (((TongTienMoiA + TongTienMoiB) + Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero)) - ((TongTienCuA + TongTienCuB) + Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + Math.Round((double)(TongTienCuA + TongTienCuB) * 10 / 100, 0, MidpointRounding.AwayFromZero))));
+            if ((TongTienMoiA + TongTienMoiB) - (int)_hoadon.GIABAN.Value != 0)
+                txtTongCong_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (((TongTienMoiA + TongTienMoiB) + Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero)) - (int)_hoadon.TONGCONG.Value));
             else
                 txtTongCong_BD.Text = "0";
 
@@ -2158,10 +2158,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtTongCong_End.Text = "0";
 
             ///
-            if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) == 0)
+            if ((TongTienMoiA + TongTienMoiB) - (int)_hoadon.GIABAN.Value == 0)
                 lbTangGiam.Text = "";
             else
-                if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) > 0)
+                if ((TongTienMoiA + TongTienMoiB) - (int)_hoadon.GIABAN.Value > 0)
                     lbTangGiam.Text = "Tăng:";
                 else
                     lbTangGiam.Text = "Giảm:";
