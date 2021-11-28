@@ -153,27 +153,30 @@ namespace ThuTien.GUI.HanhThu
                 }
                 try
                 {
-                    _cQuetTam.BeginTransaction();
+                    //_cQuetTam.BeginTransaction();
                     foreach (ListViewItem item in lstHD.Items)
                         if (!_cQuetTam.CheckExist(item.Text, CNguoiDung.MaND, DateTime.Now))
                         {
                             TT_QuetTam quettam = new TT_QuetTam();
-                            quettam.MaHD = _cHoaDon.Get(item.Text).ID_HOADON;
+                            HOADON hd = _cHoaDon.Get(item.Text);
+                            if (hd == null)
+                                hd = _cHoaDon.GetSoHoaDonCu(item.Text);
+                            quettam.MaHD = hd.ID_HOADON;
                             quettam.SoHoaDon = item.Text;
                             if (!_cQuetTam.Them(quettam))
                             {
-                                _cQuetTam.Rollback();
+                                //_cQuetTam.Rollback();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                    _cQuetTam.CommitTransaction();
+                    //_cQuetTam.CommitTransaction();
                     lstHD.Items.Clear();
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
                 {
-                    _cQuetTam.Rollback();
+                    //_cQuetTam.Rollback();
                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -191,25 +194,25 @@ namespace ThuTien.GUI.HanhThu
                     {
                         try
                         {
-                            _cQuetTam.BeginTransaction();
+                            //_cQuetTam.BeginTransaction();
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                             {
                                 TT_QuetTam quettam = _cQuetTam.Get(int.Parse(item.Cells["ID_TG"].Value.ToString()));
                                 if (!_cQuetTam.Xoa(quettam))
                                 {
-                                    _cQuetTam.Rollback();
+                                    //_cQuetTam.Rollback();
                                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
                             }
-                            _cQuetTam.CommitTransaction();
+                            //_cQuetTam.CommitTransaction();
                             lstHD.Items.Clear();
                             btnXem.PerformClick();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         catch (Exception)
                         {
-                            _cQuetTam.Rollback();
+                            //_cQuetTam.Rollback();
                             MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
@@ -218,25 +221,25 @@ namespace ThuTien.GUI.HanhThu
                         {
                             try
                             {
-                                _cQuetTam.BeginTransaction();
+                                //_cQuetTam.BeginTransaction();
                                 foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
                                 {
                                     TT_QuetTam quettam = _cQuetTam.Get(int.Parse(item.Cells["ID_CQ"].Value.ToString()));
                                     if (!_cQuetTam.Xoa(quettam))
                                     {
-                                        _cQuetTam.Rollback();
+                                        //_cQuetTam.Rollback();
                                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
                                 }
-                                _cQuetTam.CommitTransaction();
+                                //_cQuetTam.CommitTransaction();
                                 lstHD.Items.Clear();
                                 btnXem.PerformClick();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             catch (Exception)
                             {
-                                _cQuetTam.Rollback();
+                                //_cQuetTam.Rollback();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }

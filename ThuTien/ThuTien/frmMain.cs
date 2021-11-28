@@ -55,7 +55,7 @@ namespace ThuTien
 
         void Application_Idle(object sender, EventArgs e)
         {
-            if (CNguoiDung.MaTo == 5 && CNguoiDung.MaND != 51)
+            if ((CNguoiDung.MaTo == 5 && CNguoiDung.MaND != 51) || CNguoiDung.Admin == true)
                 timer.Stop();
             else
                 timer.Start();
@@ -1076,7 +1076,7 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        #endregion 
+        #endregion
 
         #region Tổng Hợp
 
@@ -1168,7 +1168,7 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        #endregion   
+        #endregion
 
         #region Tìm Kiếm
 
@@ -1176,8 +1176,8 @@ namespace ThuTien
         {
             //if (CNguoiDung.CheckQuyen("mnuTimKiemKhachHang", "Xem"))
             //{
-                frmTimKiemKhachHang frm = new frmTimKiemKhachHang();
-                OpenForm(frm);
+            frmTimKiemKhachHang frm = new frmTimKiemKhachHang();
+            OpenForm(frm);
             //}
             //else
             //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1187,8 +1187,8 @@ namespace ThuTien
         {
             //if (CNguoiDung.CheckQuyen("mnuTimKiemDienThoai", "Xem"))
             //{
-                frmTimKiemDienThoai frm = new frmTimKiemDienThoai();
-                OpenForm(frm);
+            frmTimKiemDienThoai frm = new frmTimKiemDienThoai();
+            OpenForm(frm);
             //}
             //else
             //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1231,4 +1231,3 @@ namespace ThuTien
 
     }
 }
-    

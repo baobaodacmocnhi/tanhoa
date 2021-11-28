@@ -515,6 +515,11 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.SingleOrDefault(item => item.SOHOADON == SoHoaDon);
         }
 
+        public HOADON GetSoHoaDonCu(string SoHoaDon)
+        {
+            return _db.HOADONs.SingleOrDefault(item => item.SoHoaDonCu == SoHoaDon);
+        }
+
         public HOADON Get(string DanhBo, int Nam, int Ky)
         {
             return _db.HOADONs.SingleOrDefault(item => item.DANHBA == DanhBo && item.NAM == Nam && item.KY == Ky);

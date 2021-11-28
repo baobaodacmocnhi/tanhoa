@@ -10,6 +10,7 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using ThuTien.DAL.Doi;
 using ThuTien.DAL.ChuyenKhoan;
+using ThuTien.DAL.HanhThu;
 
 namespace ThuTien.GUI.Doi
 {
@@ -18,6 +19,7 @@ namespace ThuTien.GUI.Doi
         CTo _cTo = new CTo();
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CHoaDon _cHoaDon = new CHoaDon();
+        CQuetTam _cQuetTam = new CQuetTam();
         bool _flagLoadFirst = false;
 
 
@@ -164,7 +166,7 @@ namespace ThuTien.GUI.Doi
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi, Vui lòng thử lại "+ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi, Vui lòng thử lại " + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -304,6 +306,59 @@ namespace ThuTien.GUI.Doi
         private void btnSoSanh_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnChonFileTXTA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Files (.TXT)|*.txt";
+                dialog.Multiselect = false;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    lstViewA.Items.Clear();
+                    string[] lines = System.IO.File.ReadAllLines(dialog.FileName);
+                    foreach (string line in lines)
+                    {
+                        string lineR = line.Replace("\",\"", "$").Replace("\"", "");
+                        string[] contents = lineR.Split('$');
+                        ListViewItem lvi = new ListViewItem();
+                        lvi.Text = contents[12];
+                        lvi.Name = contents[12];
+
+                        lstViewA.Items.Add(lvi);
+                    }
+
+                    txtTongA.Text = lines.Count().ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi, Vui lòng thử lại " + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnInsertQuetTam_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (ListViewItem item in lstViewA.Items)
+                {
+                    TT_QuetTam quettam = new TT_QuetTam();
+                    HOADON hd = _cHoaDon.Get(item.Text);
+                    if (hd == null)
+                        hd = _cHoaDon.GetSoHoaDonCu(item.Text);
+                    quettam.MaHD = hd.ID_HOADON;
+                    quettam.SoHoaDon = item.Text;
+                    _cQuetTam.Them(quettam);
+                }
+                MessageBox.Show("Đã Xử Lý Xong", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi, Vui lòng thử lại " + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

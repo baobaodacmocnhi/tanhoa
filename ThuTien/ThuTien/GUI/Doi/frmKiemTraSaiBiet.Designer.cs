@@ -94,6 +94,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnChonFileTXTA = new System.Windows.Forms.Button();
+            this.btnInsertQuetTam = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -679,12 +681,34 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Danh Bộ";
             // 
+            // btnChonFileTXTA
+            // 
+            this.btnChonFileTXTA.Location = new System.Drawing.Point(906, 39);
+            this.btnChonFileTXTA.Name = "btnChonFileTXTA";
+            this.btnChonFileTXTA.Size = new System.Drawing.Size(85, 23);
+            this.btnChonFileTXTA.TabIndex = 79;
+            this.btnChonFileTXTA.Text = "Chọn File TXT";
+            this.btnChonFileTXTA.UseVisualStyleBackColor = true;
+            this.btnChonFileTXTA.Click += new System.EventHandler(this.btnChonFileTXTA_Click);
+            // 
+            // btnInsertQuetTam
+            // 
+            this.btnInsertQuetTam.Location = new System.Drawing.Point(825, 518);
+            this.btnInsertQuetTam.Name = "btnInsertQuetTam";
+            this.btnInsertQuetTam.Size = new System.Drawing.Size(110, 23);
+            this.btnInsertQuetTam.TabIndex = 80;
+            this.btnInsertQuetTam.Text = "Insert Quét Tạm";
+            this.btnInsertQuetTam.UseVisualStyleBackColor = true;
+            this.btnInsertQuetTam.Click += new System.EventHandler(this.btnInsertQuetTam_Click);
+            // 
             // frmKiemTraSaiBiet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1234, 748);
+            this.Controls.Add(this.btnInsertQuetTam);
+            this.Controls.Add(this.btnChonFileTXTA);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNoiDungB);
@@ -788,5 +812,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDanhBo;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnChonFileTXTA;
+        private System.Windows.Forms.Button btnInsertQuetTam;
     }
 }
