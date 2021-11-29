@@ -598,23 +598,31 @@ namespace ThuTien.GUI.TongHop
                                     if (dchd.TONGCONG_END != null)
                                         using (TransactionScope scope = new TransactionScope())
                                         {
-                                            dchd.UpdatedHDDT = true;
-                                            dchd.SoHoaDonMoi = item[1].ToString().Trim() + item[3].ToString().Trim();
-                                            if (_cDCHD.Sua(dchd) == true)
+                                            if (item[3].ToString().All(char.IsDigit) == true)
+                                            {
+                                                dchd.UpdatedHDDT = true;
+                                                dchd.SoHoaDonMoi = item[1].ToString().Trim() + item[3].ToString().Trim();
+                                                if (_cDCHD.Sua(dchd) == true)
+                                                {
+                                                    HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
+                                                    if (hd.SOHOADON != dchd.SoHoaDonMoi)
+                                                    {
+                                                        hd.SoHoaDonCu = hd.SOHOADON;
+                                                        hd.SOHOADON = dchd.SoHoaDonMoi;
+                                                    }
+                                                    hd.BaoCaoThue = dchd.BaoCaoThue;
+                                                    if (_cHoaDon.Sua(hd) == true)
+                                                    {
+                                                        scope.Complete();
+                                                        scope.Dispose();
+                                                        countXuLy++;
+                                                    }
+                                                }
+                                            }
+                                            else
                                             {
                                                 HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
-                                                if (hd.SOHOADON != dchd.SoHoaDonMoi)
-                                                {
-                                                    hd.SoHoaDonCu = hd.SOHOADON;
-                                                    hd.SOHOADON = dchd.SoHoaDonMoi;
-                                                }
-                                                hd.BaoCaoThue = dchd.BaoCaoThue;
-                                                if (_cHoaDon.Sua(hd) == true)
-                                                {
-                                                    scope.Complete();
-                                                    scope.Dispose();
-                                                    countXuLy++;
-                                                }
+                                                message += "\nHĐ có lỗi từ tct\n" + item[3].ToString() + " - " + hd.DANHBA + " - " + hd.KY + "/" + hd.NAM;
                                             }
                                         }
                                     else
@@ -741,6 +749,7 @@ namespace ThuTien.GUI.TongHop
                         {
                             _cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND);
                         }
+                        loadHD0Ton();
                         MessageBox.Show("Xử Lý Hoàn Tất, Vui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

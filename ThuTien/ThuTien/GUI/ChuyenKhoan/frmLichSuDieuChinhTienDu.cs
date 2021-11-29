@@ -265,7 +265,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        TT_TienDuLichSu en = _cTienDu.get_LichSu(int.Parse(e.Row.Cells["ID_TDLS"].Value.ToString()));
+                        TT_TienDuLichSu en = _cTienDu.get_LichSu(int.Parse(e.Row.Cells["ID_LSTD"].Value.ToString()));
                         if (en != null)
                             if (_cTienDu.xoa_LichSu(en) == true)
                             {
@@ -283,5 +283,6 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
 
         }
+
     }
 }
