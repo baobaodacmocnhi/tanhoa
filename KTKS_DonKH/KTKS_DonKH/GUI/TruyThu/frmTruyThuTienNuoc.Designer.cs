@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -277,7 +277,8 @@
             "Chuyển lập TB cắt tạm",
             "Chuyển lập TB hủy",
             "Chuyển lập TB Đóng Nước",
-            "Giữ nguyên"});
+            "Giữ nguyên",
+            "Tạm hoãn để bổ sung hồ sơ"});
             this.cmbTinhTrang.Location = new System.Drawing.Point(286, 160);
             this.cmbTinhTrang.Name = "cmbTinhTrang";
             this.cmbTinhTrang.Size = new System.Drawing.Size(172, 24);
@@ -504,10 +505,10 @@
             // GiaBieu_Cu
             // 
             this.GiaBieu_Cu.DataPropertyName = "GiaBieuCu";
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Red;
-            this.GiaBieu_Cu.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red;
+            this.GiaBieu_Cu.DefaultCellStyle = dataGridViewCellStyle1;
             this.GiaBieu_Cu.HeaderText = "GB";
             this.GiaBieu_Cu.Name = "GiaBieu_Cu";
             this.GiaBieu_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -516,10 +517,10 @@
             // DinhMuc_Cu
             // 
             this.DinhMuc_Cu.DataPropertyName = "DinhMucCu";
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Green;
-            this.DinhMuc_Cu.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Green;
+            this.DinhMuc_Cu.DefaultCellStyle = dataGridViewCellStyle2;
             this.DinhMuc_Cu.HeaderText = "ĐM";
             this.DinhMuc_Cu.Name = "DinhMuc_Cu";
             this.DinhMuc_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -536,10 +537,10 @@
             // TieuThu_Cu
             // 
             this.TieuThu_Cu.DataPropertyName = "TieuThuCu";
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Blue;
-            this.TieuThu_Cu.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Blue;
+            this.TieuThu_Cu.DefaultCellStyle = dataGridViewCellStyle3;
             this.TieuThu_Cu.HeaderText = "TT";
             this.TieuThu_Cu.Name = "TieuThu_Cu";
             this.TieuThu_Cu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -580,10 +581,10 @@
             // GiaBieu_Moi
             // 
             this.GiaBieu_Moi.DataPropertyName = "GiaBieuMoi";
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Red;
-            this.GiaBieu_Moi.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Red;
+            this.GiaBieu_Moi.DefaultCellStyle = dataGridViewCellStyle4;
             this.GiaBieu_Moi.HeaderText = "GB";
             this.GiaBieu_Moi.Name = "GiaBieu_Moi";
             this.GiaBieu_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -592,10 +593,10 @@
             // DinhMuc_Moi
             // 
             this.DinhMuc_Moi.DataPropertyName = "DinhMucMoi";
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Green;
-            this.DinhMuc_Moi.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Green;
+            this.DinhMuc_Moi.DefaultCellStyle = dataGridViewCellStyle5;
             this.DinhMuc_Moi.HeaderText = "ĐM";
             this.DinhMuc_Moi.Name = "DinhMuc_Moi";
             this.DinhMuc_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -611,10 +612,10 @@
             // TieuThu_Moi
             // 
             this.TieuThu_Moi.DataPropertyName = "TieuThuMoi";
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Blue;
-            this.TieuThu_Moi.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Blue;
+            this.TieuThu_Moi.DefaultCellStyle = dataGridViewCellStyle6;
             this.TieuThu_Moi.HeaderText = "TT";
             this.TieuThu_Moi.Name = "TieuThu_Moi";
             this.TieuThu_Moi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -1215,14 +1216,14 @@
             // 
             this.dgvHinh.AllowUserToAddRows = false;
             this.dgvHinh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvHinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Hinh,

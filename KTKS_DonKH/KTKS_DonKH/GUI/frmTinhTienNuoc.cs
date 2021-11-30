@@ -188,9 +188,9 @@ namespace KTKS_DonKH.GUI
             {
             }
 
-            int GiaBanCu = 0, GiaBanMoi = 0, ThueGTGT = 0, PhiBVMT = 0, TongCong = 0, TieuThu_DieuChinhGia = 0;
-            string ChiTietCu, ChiTietMoi;
-            _cGiaNuoc.TinhTienNuoc(false,false, false, 0, txtDanhBo.Text.Trim(), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()), dateTu.Value, dateDen.Value, int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtSH.Text.Trim()), int.Parse(txtSX.Text.Trim()), int.Parse(txtDV.Text.Trim()), int.Parse(txtHCSN.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out GiaBanCu, out ChiTietCu, out GiaBanMoi, out ChiTietMoi, out TieuThu_DieuChinhGia);
+            int GiaBanCu = 0, GiaBanMoi = 0, ThueGTGT = 0, PhiBVMTCu = 0, PhiBVMTMoi = 0, PhiBVMT = 0, TongCong = 0, TieuThu_DieuChinhGia = 0;
+            string ChiTietCu, ChiTietMoi, ChiTietPhiBVMTCu, ChiTietPhiBVMTMoi;
+            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, txtDanhBo.Text.Trim(), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()), dateTu.Value, dateDen.Value, int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtSH.Text.Trim()), int.Parse(txtSX.Text.Trim()), int.Parse(txtDV.Text.Trim()), int.Parse(txtHCSN.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out GiaBanCu, out ChiTietCu, out  PhiBVMTCu, out  ChiTietPhiBVMTCu, out GiaBanMoi, out ChiTietMoi, out  PhiBVMTMoi, out ChiTietPhiBVMTMoi, out TieuThu_DieuChinhGia);
             ThueGTGT = (int)Math.Round((double)(GiaBanCu + GiaBanMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
             PhiBVMT = (int)Math.Round((double)(GiaBanCu + GiaBanMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
             TongCong = (GiaBanCu + GiaBanMoi) + ThueGTGT + PhiBVMT;
@@ -248,7 +248,7 @@ namespace KTKS_DonKH.GUI
                     if (dateTu.Value.Date < lst[index].NgayTangGia.Value.Date && lst[index].NgayTangGia.Value.Date < dateDen.Value.Date)
                     {
                         //int TieuThu_DieuChinhGia;
-                        
+
                     }
                     else
                     {
