@@ -7322,13 +7322,13 @@ namespace ThuTien.DAL.Doi
 + "   select ID_HOADON,hd.SOHOADON,SOPHATHANH,TONGCONG,DanhBo=DANHBA,MLT=MALOTRINH,Ky=(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM))"
 + "   ,ROW_NUMBER() OVER (PARTITION BY dcls.SoPhieu ORDER BY dcls.CreateDate DESC) AS rn"
 + " from HOADON hd,DIEUCHINH_HD dc,TT_LichSuDieuChinhHD dcls"
-+ " where CAST(NGAYGIAITRACH as date)='"+NgayGiaiTrach.ToString("yyyyMMdd")+"' and MaNV_DangNgan is not null and hd.ID_HOADON=dc.FK_HOADON and hd.ID_HOADON=dcls.FK_HOADON and dcls.SoPhieu is not null"
++ " where CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null and hd.ID_HOADON=dc.FK_HOADON and hd.ID_HOADON=dcls.FK_HOADON and dcls.SoPhieu is not null"
 + " )"
 + " SELECT ID_HOADON,SOHOADON,SOPHATHANH,TONGCONG,DanhBo,MLT,Ky,COUNT(*) FROM temp WHERE rn=1"
 + " group by ID_HOADON,SOHOADON,SOPHATHANH,TONGCONG,DanhBo,MLT,Ky"
 + " having count(*)>1";
 
-    return ExecuteQuery_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDSXoaDangNgan_HoaDonDienTu(int MaNV_HanhThu, DateTime NgayXoaDangNgan)
@@ -7900,6 +7900,27 @@ namespace ThuTien.DAL.Doi
                         join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON
                         where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.MaNV_DangNgan != null
                         && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7))
+                        group itemDC by itemDC.FK_HOADON into itemGroup
+                        select new
+                        {
+                            Nam = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NAM,
+                            SoPhatHanh = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).SOPHATHANH,
+                            DangNgan = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_ChuyenKhoan == true ? "10" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Ton == true ? "TN" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Quay == true ? "TQ" : "",
+                            NgayGiaiTrach = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NGAYGIAITRACH,
+                            TieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU_DC) - itemGroup.Sum(groupItem => groupItem.TIEUTHU_BD),
+                            GiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN_DC),
+                            ThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE_DC),
+                            PhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI_DC),
+                        };
+            return LINQToDataTable(query.ToList());
+        }
+
+        public DataTable getDSDangNgan_DieuChinhHoaDon_Except12(DateTime NgayGiaiTrach)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON
+                        where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.MaNV_DangNgan != null
+                        && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7)) && (itemHD.NAM < NgayGiaiTrach.Year || (itemHD.NAM == NgayGiaiTrach.Year && itemHD.KY < 12))
                         group itemDC by itemDC.FK_HOADON into itemGroup
                         select new
                         {
