@@ -507,7 +507,7 @@ namespace ThuTien.GUI.Doi
         {
             try
             {
-                dgvChotDangNgan.DataSource = _cChotDangNgan.getDS(dateTu_ChotDangNgan.Value, dateDen_ChotDangNgan.Value);
+                dgvChotDangNgan.DataSource = _cChotDangNgan.getDS_notGroup(dateTu_ChotDangNgan.Value, dateDen_ChotDangNgan.Value);
             }
             catch (Exception ex)
             {
@@ -627,7 +627,6 @@ namespace ThuTien.GUI.Doi
                                 }
                             MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-
                     }
 
                     if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "FileHDDC_Except12")
@@ -654,7 +653,35 @@ namespace ThuTien.GUI.Doi
                                 }
                             MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
+                    }
 
+                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "FileHDDC_12")
+                    {
+                        SaveFileDialog saveFileDialog = new SaveFileDialog();
+                        saveFileDialog.DefaultExt = "dat";
+                        saveFileDialog.Filter = "Text files (*.dat)|*.dat";
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
+                            DataTable dt = _cHoaDon.getDSDangNgan_DieuChinhHoaDon_12(en.NgayChot.Value);
+                            //DateTime From = new DateTime(2021, 11, 24);
+                            //DateTime To = new DateTime(2021, 11, 30);
+                            //DataTable dt = _cHoaDon.getDSDangNgan_DieuChinhHoaDon_12(From, To);
+                            using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                                foreach (DataRow item in dt.Rows)
+                                {
+                                    writer.Write("\"" + item["Nam"] + "\"");
+                                    writer.Write(",\"" + int.Parse(item["SoPhatHanh"].ToString()).ToString("00000000") + "\"");
+                                    writer.Write(",\"" + item["DangNgan"] + "\"");
+                                    writer.Write(",\"" + DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd") + "\"");
+                                    writer.Write(",\"" + item["TieuThu"] + "\"");
+                                    writer.Write(",\"" + item["GiaBan"] + "\"");
+                                    writer.Write(",\"" + item["ThueGTGT"] + "\"");
+                                    writer.Write(",\"" + item["PhiBVMT"] + "\"");
+                                    writer.WriteLine(",\"1\"");
+                                }
+                            MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
 
                     if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "ShowHDDC2lan")

@@ -551,7 +551,7 @@ namespace ThuTien.GUI.DongNuoc
                     List<HOADON> lstHD = null;
                     if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
                         lstHD = _cHoaDon.GetDSTon(item["DanhBo"].ToString());
-                    if (lstHD != null)
+                    if (lstHD != null && lstHD.Count > 0)
                     {
                         foreach (HOADON itemHD in lstHD)
                         {

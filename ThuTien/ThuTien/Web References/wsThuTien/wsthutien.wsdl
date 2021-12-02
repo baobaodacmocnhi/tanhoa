@@ -955,6 +955,10 @@
             <s:element minOccurs="1" maxOccurs="1" name="TienNuocMoi" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="ChiTietMoi" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="TieuThu_DieuChinhGia" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PhiBVMTCu" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChiTietPhiBVMTCu" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PhiBVMTMoi" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChiTietPhiBVMTMoi" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -966,6 +970,10 @@
             <s:element minOccurs="1" maxOccurs="1" name="TienNuocMoi" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="ChiTietMoi" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="TieuThu_DieuChinhGia" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PhiBVMTCu" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChiTietPhiBVMTCu" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PhiBVMTMoi" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChiTietPhiBVMTMoi" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>

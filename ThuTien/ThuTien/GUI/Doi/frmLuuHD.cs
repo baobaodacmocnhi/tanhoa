@@ -67,8 +67,6 @@ namespace ThuTien.GUI.Doi
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            //TT_DongNuoc dn= _cDongNuoc.getDongNuoc_MoiNhat_Ton("13162310349",2020,7);
-            //return;
             int i = 1;
             try
             {
@@ -89,7 +87,6 @@ namespace ThuTien.GUI.Doi
                             //    MessageBox.Show("","Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             string lineR = line.Replace("\",\"", "$").Replace("\"", "");
                             string[] contents = lineR.Split('$');
-                            //string[] contents = System.Text.RegularExpressions.Regex.Split(line, @"\W+");
                             HOADON hoadon = new HOADON();
                             //if (!string.IsNullOrWhiteSpace(contents[0]))
                             //    hoadon.Khu = int.Parse(contents[0]);
@@ -206,24 +203,14 @@ namespace ThuTien.GUI.Doi
                             //cột 62 là số tiền giảm trừ covid19
                             if (contents.Length >= 63 && !string.IsNullOrWhiteSpace(contents[62]))
                                 hoadon.SoTienGiam = int.Parse(contents[62]);
-
                             hoadon.MALOTRINH = hoadon.DOT.ToString("00") + hoadon.MAY + hoadon.STT;
-
-                            //string Quan = "", Phuong = "", CoDH = "", MaDMA = "";
-                            //_cCapNuocTanHoa.GetDMA(hoadon.DANHBA, out Quan, out Phuong, out CoDH, out MaDMA);
-                            //hoadon.Quan = Quan;
-                            //hoadon.Phuong = Phuong;
-                            //hoadon.CoDH = CoDH;
-                            //hoadon.MaDMA = MaDMA;
-                            //if (CheckByNamKyDot(hoadon.NAM, hoadon.KY, hoadon.DOT.Value))
-                            //{
-                            //    this.Rollback();
-                            //    System.Windows.Forms.MessageBox.Show("Năm " + hoadon.NAM + "; Kỳ " + hoadon.KY + "; Đợt " + hoadon.DOT.Value + " đã có rồi", "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                            //    return false;
-                            //}
-
+                            //kiểm tra nếu có điều chỉnh không cho chạy lại
+                            if (_cHoaDon.checkExists_DieuChinh(hoadon.NAM, hoadon.KY, hoadon.DOT) == true)
+                            {
+                                MessageBox.Show("Năm " + hoadon.NAM + " Kỳ " + hoadon.KY + " Đợt " + hoadon.DOT + " có điều chỉnh nên không cập nhật được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                             //Nếu chưa có hóa đơn
-                            //if (hoadon.DANHBA == "13182498749")
                             if (!_cHoaDon.CheckExist(hoadon.DANHBA, hoadon.NAM, hoadon.KY))
                             {
                                 if (_cHoaDon.Them(hoadon) == true)
@@ -254,7 +241,6 @@ namespace ThuTien.GUI.Doi
                                                 KyTemp--;
                                             }
                                         }
-
                                         //thêm hóa đơn mới vào lệnh đóng nước
                                         if (_cDongNuoc.CheckExist_CTDongNuoc_Ton(hoadon.DANHBA, NamTemp, KyTemp) == true)
                                         {
@@ -264,7 +250,6 @@ namespace ThuTien.GUI.Doi
                                             hoadon.TBDongNuoc_Ngay = hoadonLenh.TBDongNuoc_Ngay;
                                             hoadon.TBDongNuoc_NgayHen = hoadonLenh.TBDongNuoc_NgayHen;
                                             hoadon.TBDongNuoc_Location = hoadonLenh.TBDongNuoc_Location;
-
                                             TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
                                             ctdongnuoc.MaDN = dongnuoc.MaDN;
                                             ctdongnuoc.MaHD = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM, hoadon.KY).ID_HOADON;
@@ -277,9 +262,7 @@ namespace ThuTien.GUI.Doi
                                             ctdongnuoc.TongCong = (int)hoadon.TONGCONG;
                                             ctdongnuoc.CreateBy = CNguoiDung.MaND;
                                             ctdongnuoc.CreateDate = DateTime.Now;
-
                                             dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
-
                                             _cDongNuoc.SuaDN(dongnuoc);
                                         }
                                         //thêm hóa đơn mới vào lệnh hủy
@@ -298,7 +281,6 @@ namespace ThuTien.GUI.Doi
                                             _cLenhHuy.Them(lenhhuy);
                                         }
                                     }
-
                                     //check hóa đơn chờ điều chỉnh
                                     if (_cDCHD.checkExist_HDChoDC(hoadon.DANHBA, hoadon.NAM, hoadon.KY) == true
                                         || _cKinhDoanh.checkExists_KhauTru(hoadon.DANHBA) == true)
@@ -315,13 +297,11 @@ namespace ThuTien.GUI.Doi
                                         dchd.THUE_BD = hoadon.THUE;
                                         dchd.TONGCONG_BD = hoadon.TONGCONG;
                                         dchd.NGAY_DC = DateTime.Now;
-
                                         if (_cDCHD.Them(dchd))
                                         {
                                             _cDCHD.Xoa_HDChoDC(_cDCHD.get_HDChoDC(hoadon.DANHBA, hoadon.NAM, hoadon.KY));
                                         }
                                     }
-
                                     //chặn hóa đơn auto
                                     if (_cChanHoaDonAuto.checkExists_ChanHoaDon(hoadon.DANHBA, hoadon.NAM, hoadon.KY) == true)
                                     {
@@ -364,17 +344,6 @@ namespace ThuTien.GUI.Doi
 
                         try
                         {
-                            //string lineR_Test = lines[0].Replace("\",\"", "$").Replace("\"", "");
-                            //string[] contents_Test = lineR_Test.Split('$');
-                            //int Nam = int.Parse("20" + contents_Test[19]);
-                            //int Ky = int.Parse(contents_Test[18]);
-                            //int Dot = int.Parse(contents_Test[1]);
-
-                            //string sql = "update HOADON set Quan=DLKH.QUAN,Phuong=DLKH.PHUONG,CoDH=DLKH.CODH,MaDMA=DLKH.MADMA from DLKH where HOADON.DANHBA=DLKH.DANHBO and HOADON.NAM=" + Nam + " and HOADON.KY=" + Ky + " and HOADON.DOT=" + Dot;
-                            //_cHoaDon.LinQ_ExecuteNonQuery(sql);
-                            //string sql_Huy = "update HOADON set Quan=DLKH_HUY.QUAN,Phuong=DLKH_HUY.PHUONG,CoDH=DLKH_HUY.CODH,MaDMA=DLKH_HUY.MADMA from DLKH_HUY where HOADON.DANHBA=DLKH_HUY.DANHBO and HOADON.NAM=" + Nam + " and HOADON.KY=" + Ky + " and HOADON.DOT=" + Dot;
-                            //_cHoaDon.LinQ_ExecuteNonQuery(sql_Huy);
-
                             if (Dot == 20)
                             {
                                 CGiaBanBinhQuan _cGBBQ = new CGiaBanBinhQuan();
@@ -387,7 +356,6 @@ namespace ThuTien.GUI.Doi
                                     entity.TongGiaBan = decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString());
                                     entity.TongTieuThu = decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString());
                                     entity.GiaBanBinhQuan = float.Parse(dt.Rows[0]["GiaBanBinhQuan"].ToString());
-
                                     _cGBBQ.Them(entity);
                                 }
                                 else
@@ -397,12 +365,10 @@ namespace ThuTien.GUI.Doi
                                         entity.TongGiaBan = decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString());
                                         entity.TongTieuThu = decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString());
                                         entity.GiaBanBinhQuan = float.Parse(dt.Rows[0]["GiaBanBinhQuan"].ToString());
-
                                         _cGBBQ.Sua(entity);
                                     }
                             }
                             _cHoaDon.ExecuteNonQuery("exec spUpdateHoaDonFromDHN " + Dot + "," + Ky + "," + Nam);
-
                         }
                         catch (Exception ex)
                         {

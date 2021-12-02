@@ -134,12 +134,13 @@
             this.TCNopTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SyncNopTien = new System.Windows.Forms.DataGridViewButtonColumn();
             this.FileHDDC = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.FileHDDC_Except12 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ShowHDDC2lan = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ShowError = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ShowHDDTDCBCT = new System.Windows.Forms.DataGridViewButtonColumn();
             this.SyncNopTien_Except12 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.SyncNopTien_12 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.FileHDDC_Except12 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.FileHDDC_12 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -584,12 +585,13 @@
             this.TCNopTien,
             this.SyncNopTien,
             this.FileHDDC,
-            this.FileHDDC_Except12,
             this.ShowHDDC2lan,
             this.ShowError,
             this.ShowHDDTDCBCT,
             this.SyncNopTien_Except12,
-            this.SyncNopTien_12});
+            this.SyncNopTien_12,
+            this.FileHDDC_Except12,
+            this.FileHDDC_12});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1090,14 +1092,6 @@
             this.FileHDDC.UseColumnTextForButtonValue = true;
             this.FileHDDC.Width = 60;
             // 
-            // FileHDDC_Except12
-            // 
-            this.FileHDDC_Except12.HeaderText = "HĐ ĐC TRỪ kỳ 12";
-            this.FileHDDC_Except12.Name = "FileHDDC_Except12";
-            this.FileHDDC_Except12.Text = "Xuất File";
-            this.FileHDDC_Except12.UseColumnTextForButtonValue = true;
-            this.FileHDDC_Except12.Width = 60;
-            // 
             // ShowHDDC2lan
             // 
             this.ShowHDDC2lan.HeaderText = "HĐ ĐC 2 lần";
@@ -1137,6 +1131,22 @@
             this.SyncNopTien_12.Text = "Nộp Tiền";
             this.SyncNopTien_12.UseColumnTextForButtonValue = true;
             this.SyncNopTien_12.Width = 60;
+            // 
+            // FileHDDC_Except12
+            // 
+            this.FileHDDC_Except12.HeaderText = "HĐ ĐC TRỪ kỳ 12";
+            this.FileHDDC_Except12.Name = "FileHDDC_Except12";
+            this.FileHDDC_Except12.Text = "Xuất File";
+            this.FileHDDC_Except12.UseColumnTextForButtonValue = true;
+            this.FileHDDC_Except12.Width = 60;
+            // 
+            // FileHDDC_12
+            // 
+            this.FileHDDC_12.HeaderText = "HĐ ĐC BÙ kỳ 12";
+            this.FileHDDC_12.Name = "FileHDDC_12";
+            this.FileHDDC_12.Text = "Xuất File";
+            this.FileHDDC_12.UseColumnTextForButtonValue = true;
+            this.FileHDDC_12.Width = 60;
             // 
             // frmKiemTraDangNganDoi
             // 
@@ -1278,11 +1288,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TCNopTien;
         private System.Windows.Forms.DataGridViewButtonColumn SyncNopTien;
         private System.Windows.Forms.DataGridViewButtonColumn FileHDDC;
-        private System.Windows.Forms.DataGridViewButtonColumn FileHDDC_Except12;
         private System.Windows.Forms.DataGridViewButtonColumn ShowHDDC2lan;
         private System.Windows.Forms.DataGridViewButtonColumn ShowError;
         private System.Windows.Forms.DataGridViewButtonColumn ShowHDDTDCBCT;
         private System.Windows.Forms.DataGridViewButtonColumn SyncNopTien_Except12;
         private System.Windows.Forms.DataGridViewButtonColumn SyncNopTien_12;
+        private System.Windows.Forms.DataGridViewButtonColumn FileHDDC_Except12;
+        private System.Windows.Forms.DataGridViewButtonColumn FileHDDC_12;
     }
 }

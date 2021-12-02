@@ -505,6 +505,18 @@ namespace ThuTien.DAL.Doi
                     return false;
         }
 
+        public bool checkExists_DieuChinh(int Nam, int Ky, int Dot)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON
+                        where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot
+                        select itemHD;
+            if (query.Count() > 0)
+                return true;
+            else
+                return false;
+        }
+
         public HOADON Get(int MaHD)
         {
             return _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == MaHD);
@@ -572,34 +584,43 @@ namespace ThuTien.DAL.Doi
 
         public List<HOADON> GetDSTon(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null).Count() > 0)
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null).OrderBy(item => item.ID_HOADON).ToList();
-            else
-                return null;
+            return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null).OrderBy(item => item.ID_HOADON).ToList();
         }
 
         public List<HOADON> getDSTon_KhongChanTienDu_KhongDCHD(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false).Count() > 0)
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null && item.ChanTienDu == false && item.DCHD == false).OrderBy(item => item.ID_HOADON).ToList();
-            else
-                return null;
+            var query = from itemHD in _db.HOADONs
+                        join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON into tableDC
+                        from itemtableDC in tableDC.DefaultIfEmpty()
+                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && itemHD.ChanTienDu == false && itemHD.DCHD == false
+                         && (itemtableDC == null || itemtableDC.UpdatedHDDT == true)
+                        orderby itemHD.ID_HOADON descending
+                        select itemHD;
+            return query.ToList();
         }
 
         public List<HOADON> GetDSTon_CoChanTienDu(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true)).Count() > 0)
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true)).ToList().OrderBy(item => item.ID_HOADON).ToList();
-            else
-                return null;
+            var query = from itemHD in _db.HOADONs
+                        join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON into tableDC
+                        from itemtableDC in tableDC.DefaultIfEmpty()
+                        where itemHD.DANHBA == DanhBo && (itemHD.NGAYGIAITRACH == null || itemHD.ChanTienDu == true)
+                         && (itemtableDC == null || itemtableDC.UpdatedHDDT == true)
+                        orderby itemHD.ID_HOADON descending
+                        select itemHD;
+            return query.ToList();
         }
 
         public List<HOADON> GetDSTon_CoChanTienDu_TruHoNgheo(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true && (item.GB != 10 && item.DinhMucHN == null))).Count() > 0)
-                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true && (item.GB != 10 && item.DinhMucHN == null))).OrderBy(item => item.ID_HOADON).ToList();
-            else
-                return null;
+            var query = from itemHD in _db.HOADONs
+                        join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON into tableDC
+                        from itemtableDC in tableDC.DefaultIfEmpty()
+                        where itemHD.DANHBA == DanhBo && (itemHD.NGAYGIAITRACH == null || itemHD.ChanTienDu == true && (itemHD.GB != 10 && itemHD.DinhMucHN == null))
+                         && (itemtableDC == null || itemtableDC.UpdatedHDDT == true)
+                        orderby itemHD.ID_HOADON descending
+                        select itemHD;
+            return query.ToList();
         }
 
         public DataTable GetTongTon_GroupKy(int Nam)
@@ -7936,6 +7957,48 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query.ToList());
         }
 
+        public DataTable getDSDangNgan_DieuChinhHoaDon_12(DateTime NgayGiaiTrach)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON
+                        where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.MaNV_DangNgan != null
+                        && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7)) && itemHD.NAM == NgayGiaiTrach.Year && itemHD.KY == 12
+                        group itemDC by itemDC.FK_HOADON into itemGroup
+                        select new
+                        {
+                            Nam = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NAM,
+                            SoPhatHanh = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).SOPHATHANH,
+                            DangNgan = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_ChuyenKhoan == true ? "10" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Ton == true ? "TN" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Quay == true ? "TQ" : "",
+                            NgayGiaiTrach = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NGAYGIAITRACH,
+                            TieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU_DC) - itemGroup.Sum(groupItem => groupItem.TIEUTHU_BD),
+                            GiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN_DC),
+                            ThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE_DC),
+                            PhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI_DC),
+                        };
+            return LINQToDataTable(query.ToList());
+        }
+
+        public DataTable getDSDangNgan_DieuChinhHoaDon_12(DateTime FromNgayGiaiTrach, DateTime ToNgayGiaiTrach)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON
+                        where itemHD.NGAYGIAITRACH.Value.Date >= FromNgayGiaiTrach.Date && itemHD.NGAYGIAITRACH.Value.Date <= ToNgayGiaiTrach.Date && itemHD.MaNV_DangNgan != null
+                        && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7)) && itemHD.NAM == FromNgayGiaiTrach.Year && itemHD.KY == 12
+                        group itemDC by itemDC.FK_HOADON into itemGroup
+                        select new
+                        {
+                            Nam = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NAM,
+                            SoPhatHanh = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).SOPHATHANH,
+                            DangNgan = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_ChuyenKhoan == true ? "10" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Ton == true ? "TN" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Quay == true ? "TQ" : "",
+                            NgayGiaiTrach = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NGAYGIAITRACH,
+                            TieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU_DC) - itemGroup.Sum(groupItem => groupItem.TIEUTHU_BD),
+                            GiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN_DC),
+                            ThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE_DC),
+                            PhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI_DC),
+                        };
+            return LINQToDataTable(query.ToList());
+        }
+
         public DataTable GetDSTon_NV(int MaNV_HanhThu, int SoKy)
         {
             string sql = "declare @MaNV_HanhThu int;"
@@ -9058,12 +9121,56 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSTonByDanhBo_BoDieuChinh(string DanhBo)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON into tableDC
+                        from itemtableDC in tableDC.DefaultIfEmpty()
+                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && ((itemHD.GB != 10 && itemHD.DinhMucHN == null) || ((itemHD.GB == 10 || (itemHD.GB != 10 && itemHD.DinhMucHN != null)) && ((itemHD.KY != 4 && itemHD.KY != 5 && itemHD.KY != 6 && itemHD.NAM == 2020) || itemHD.NAM > 2020)))
+                         && (itemtableDC == null || itemtableDC.UpdatedHDDT == true)
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            GiaBieu = itemHD.GB,
+                            TyLeSH = itemHD.TILESH,
+                            TyLeHCSN = itemHD.TILEHCSN,
+                            TyLeSX = itemHD.TILESX,
+                            TyLeDV = itemHD.TILEDV,
+                            itemHD.DinhMucHN,
+                            DinhMuc = itemHD.DM,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                            itemHD.TUNGAY,
+                            itemHD.DENNGAY,
+                            Ky2 = itemHD.KY,
+                            itemHD.NAM,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSTonByDanhBo_TruHoNgheo(string DanhBo)
         {
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON into tableDC
+                        from itemtableDC in tableDC.DefaultIfEmpty()
                         where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && (itemHD.GB != 10 && itemHD.DinhMucHN == null)
+                        && (itemtableDC == null || itemtableDC.UpdatedHDDT == true)
                         orderby itemHD.ID_HOADON descending
                         select new
                         {

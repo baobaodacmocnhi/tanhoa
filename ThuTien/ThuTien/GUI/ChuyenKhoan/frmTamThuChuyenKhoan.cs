@@ -65,8 +65,8 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (tabControl.SelectedTab.Name == "tabThongTin")
             {
-                if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) && e.KeyChar == 13
-                    && _cDCHD.CheckExist_ChuaUpdatedHDDT(txtDanhBo.Text.Trim().Replace(" ", "")) == false)
+                if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) && e.KeyChar == 13)
+                    //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(txtDanhBo.Text.Trim().Replace(" ", "")) == false)
                 {
                     DataTable dt = (DataTable)dgvHoaDon.DataSource;
                     foreach (string item in txtDanhBo.Lines)
@@ -344,8 +344,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                     string strTienDu = "";
                     string strDCHD = "";
                     foreach (DataRow item in dtExcel.Rows)
-                        if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString())
-                            && _cDCHD.CheckExist_ChuaUpdatedHDDT(item[0].ToString().Replace(" ", "")) == false)
+                        if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                            //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(item[0].ToString().Replace(" ", "")) == false)
                             if (_cHoaDon.CheckKhoaTienDuByDanhBo(item[0].ToString().Replace(" ", "")))
                             {
                                 strTienDu += item[0].ToString().Replace(" ", "") + "\n";
@@ -369,19 +369,19 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                     DataTable dt = new DataTable();
                     foreach (DataRow item in dtExcel.Rows)
-                        if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString())
-                            && _cDCHD.CheckExist_ChuaUpdatedHDDT(item[0].ToString().Replace(" ", "")) == false)
+                        if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                            //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(item[0].ToString().Replace(" ", "")) == false)
                         {
                             if (chkTruHoNgheo.Checked == true)
                                 dt.Merge(_cHoaDon.GetDSTonByDanhBo_TruHoNgheo(item[0].ToString().Replace(" ", "")));
                             else
-                                dt.Merge(_cHoaDon.GetDSTonByDanhBo(item[0].ToString().Replace(" ", "")));
+                                dt.Merge(_cHoaDon.GetDSTonByDanhBo_BoDieuChinh(item[0].ToString().Replace(" ", "")));
                         }
                     dgvHoaDon.DataSource = dt;
 
                     foreach (DataRow itemExcel in dtExcel.Rows)
-                        if (itemExcel[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(itemExcel[1].ToString()) && !string.IsNullOrEmpty(itemExcel[2].ToString())
-                            && _cDCHD.CheckExist_ChuaUpdatedHDDT(itemExcel[0].ToString().Replace(" ", "")) == false)
+                        if (itemExcel[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(itemExcel[1].ToString()) && !string.IsNullOrEmpty(itemExcel[2].ToString()))
+                            //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(itemExcel[0].ToString().Replace(" ", "")) == false)
                         {
                             DanhBo = itemExcel[0].ToString().Replace(" ", "");
                             string ChenhLech = "";

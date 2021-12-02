@@ -412,6 +412,50 @@ namespace ThuTien.GUI.HanhThu
             frm.Show();
         }
 
+        private void btnInDSDiaChiGroup_Click(object sender, EventArgs e)
+        {
+            dsBaoCao dsBaoCao = new dsBaoCao();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
+                    dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["HoTen"] = item.Cells["HoTen_TG"].Value;
+                    dr["DiaChi"] = item.Cells["DiaChi_TG"].Value;
+                    dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                    dr["TongCong"] = item.Cells["TongCong_TG"].Value;
+                    if (CNguoiDung.ToTruong)
+                        dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                    else
+                        dr["NhanVien"] = CNguoiDung.HoTen;
+                    dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr);
+                }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                    {
+                        DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
+                        dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["HoTen"] = item.Cells["HoTen_CQ"].Value;
+                        dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value;
+                        dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                        dr["TongCong"] = item.Cells["TongCong_CQ"].Value;
+                        if (CNguoiDung.ToTruong)
+                            dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                        else
+                            dr["NhanVien"] = CNguoiDung.HoTen;
+                        dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr);
+                    }
+                }
+            rptDSHoaDon_DiaChi_Group rpt = new rptDSHoaDon_DiaChi_Group();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
+
         private void btnInDSPhanTo_Click(object sender, EventArgs e)
         {
             dsBaoCao dsBaoCao = new dsBaoCao();
@@ -1227,6 +1271,8 @@ namespace ThuTien.GUI.HanhThu
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+    
 
     }
 }

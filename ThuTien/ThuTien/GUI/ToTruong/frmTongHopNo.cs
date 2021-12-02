@@ -405,7 +405,7 @@ namespace ThuTien.GUI.ToTruong
                         dr1["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                     }
                     if (chkTenKy.Checked == true)
-                        dr1["NguoiKy"] =CNguoiKy.getNguoiKy();
+                        dr1["NguoiKy"] = CNguoiKy.getNguoiKy();
 
                     ds.Tables["TongHopNo"].Rows.Add(dr1);
                     if (radA4.Checked)
@@ -662,16 +662,16 @@ namespace ThuTien.GUI.ToTruong
             if (dgvHoaDon.RowCount > 0)
                 if (dgvHoaDon.Columns[e.ColumnIndex].Name != "GiaBan" && dgvHoaDon.Columns[e.ColumnIndex].Name != "ThueGTGT" && dgvHoaDon.Columns[e.ColumnIndex].Name != "PhiBVMT" && dgvHoaDon.Columns[e.ColumnIndex].Name != "TongCong")
                 {
-                    int TienNuocA = 0, TienNuocB = 0, TieuThu_DieuChinhGia = 0;
-                    string ChiTietA = "", ChiTietB = "";
+                    int TienNuocA = 0, TienNuocB = 0, PhiBVMTA = 0, PhiBVMTB = 0, TieuThu_DieuChinhGia = 0;
+                    string ChiTietA = "", ChiTietB = "", ChiTietPhiBVMTA = "", ChiTietPhiBVMTB = "";
                     string[] Kys = dgvHoaDon["Ky", e.RowIndex].Value.ToString().Split('/');
                     wsThuTien.TinhTienNuoc(false, false, false, 0, dgvHoaDon["DanhBo", e.RowIndex].Value.ToString(), int.Parse(Kys[0]), int.Parse(Kys[1]), DateTime.Parse(dgvHoaDon["TuNgay", e.RowIndex].Value.ToString()), DateTime.Parse(dgvHoaDon["DenNgay", e.RowIndex].Value.ToString())
                          , int.Parse(dgvHoaDon["GiaBieu", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeSH", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeSX", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeDV", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeHCSN", e.RowIndex].Value.ToString())
-                         , int.Parse(dgvHoaDon["DinhMuc", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["DinhMucHN", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString()), ref TienNuocA, ref ChiTietA, ref TienNuocB, ref ChiTietB, ref TieuThu_DieuChinhGia);
+                         , int.Parse(dgvHoaDon["DinhMuc", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["DinhMucHN", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString()), ref TienNuocA, ref ChiTietA, ref TienNuocB, ref ChiTietB, ref TieuThu_DieuChinhGia, ref PhiBVMTA, ref ChiTietPhiBVMTA, ref PhiBVMTB, ref ChiTietPhiBVMTB);
                     dgvHoaDon["GiaBan", e.RowIndex].Value = (TienNuocA + TienNuocB);
                     dgvHoaDon["ThueGTGT", e.RowIndex].Value = Math.Round((double)(TienNuocA + TienNuocB) * 5 / 100, 0, MidpointRounding.AwayFromZero);
-                    dgvHoaDon["PhiBVMT", e.RowIndex].Value = Math.Round((double)(TienNuocA + TienNuocB) * 10 / 100, 0, MidpointRounding.AwayFromZero);
-                    dgvHoaDon["TongCong", e.RowIndex].Value = int.Parse(dgvHoaDon["GiaBan", e.RowIndex].Value.ToString()) + int.Parse(dgvHoaDon["ThueGTGT", e.RowIndex].Value.ToString()) + int.Parse(dgvHoaDon["PhiBVMT", e.RowIndex].Value.ToString());
+                    dgvHoaDon["PhiBVMT", e.RowIndex].Value = (PhiBVMTA + PhiBVMTB);
+                    dgvHoaDon["TongCong", e.RowIndex].Value = int.Parse(dgvHoaDon["GiaBan", e.RowIndex].Value.ToString()) + int.Parse(dgvHoaDon["ThueGTGT", e.RowIndex].Value.ToString()) + (PhiBVMTA + PhiBVMTB);
                 }
         }
 
