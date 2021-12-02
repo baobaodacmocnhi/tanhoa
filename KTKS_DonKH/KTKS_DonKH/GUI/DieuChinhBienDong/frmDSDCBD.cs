@@ -2555,10 +2555,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             oSheet.Cells[indexRow, 15] = dr["GiaBieu_BD"].ToString();
                             oSheet.Cells[indexRow, 16] = dr["DinhMuc_BD"].ToString();
                             oSheet.Cells[indexRow, 17] = dr["TieuThu_BD"].ToString();
-                            string[] DonGia = item.Split('x');
-                            oSheet.Cells[indexRow, 18] = DonGia[0].Trim().Replace(".", "");
-                            oSheet.Cells[indexRow, 19] = DonGia[1].Trim().Replace(".", "");
-                            oSheet.Cells[indexRow, 20] = int.Parse(DonGia[0].Trim().Replace(".", "")) * int.Parse(DonGia[1].Trim().Replace(".", ""));
+                            if (bool.Parse(dr["KhauTru"].ToString()) == true)
+                            {
+                                oSheet.Cells[indexRow, 20] = dr["TienNuoc_End"].ToString();
+                            }
+                            else
+                            {
+                                string[] DonGia = item.Split('x');
+                                oSheet.Cells[indexRow, 18] = DonGia[0].Trim().Replace(".", "");
+                                oSheet.Cells[indexRow, 19] = DonGia[1].Trim().Replace(".", "");
+                                oSheet.Cells[indexRow, 20] = int.Parse(DonGia[0].Trim().Replace(".", "")) * int.Parse(DonGia[1].Trim().Replace(".", ""));
+                            }
                             oSheet.Cells[indexRow, 21] = "5";
                             oSheet.Cells[indexRow, 22] = "10";
                             oSheet.Cells[indexRow, 23] = dr["TienNuoc_End"].ToString();
