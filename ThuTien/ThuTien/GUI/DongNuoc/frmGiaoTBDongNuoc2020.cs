@@ -806,6 +806,11 @@ namespace ThuTien.GUI.DongNuoc
             frm.ShowDialog();
         }
 
+        private void btnExcelTon_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

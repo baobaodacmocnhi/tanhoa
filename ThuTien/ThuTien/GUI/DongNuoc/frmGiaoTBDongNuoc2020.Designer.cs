@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -90,6 +90,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.btnInTBTrang = new System.Windows.Forms.Button();
+            this.btnExcelTon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -196,10 +197,10 @@
             // 
             // gridControl
             // 
-            gridLevelNode1.LevelTemplate = this.gridViewCTDN;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.LevelTemplate = this.gridViewCTDN;
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl.Location = new System.Drawing.Point(12, 38);
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
@@ -433,7 +434,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(797, 10);
+            this.btnXem.Location = new System.Drawing.Point(746, 9);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 17;
@@ -491,7 +492,7 @@
             // 
             // btnInDSTBNguoiLap
             // 
-            this.btnInDSTBNguoiLap.Location = new System.Drawing.Point(878, 10);
+            this.btnInDSTBNguoiLap.Location = new System.Drawing.Point(827, 9);
             this.btnInDSTBNguoiLap.Name = "btnInDSTBNguoiLap";
             this.btnInDSTBNguoiLap.Size = new System.Drawing.Size(117, 23);
             this.btnInDSTBNguoiLap.TabIndex = 32;
@@ -521,7 +522,7 @@
             // 
             // btnInTB
             // 
-            this.btnInTB.Location = new System.Drawing.Point(1001, 10);
+            this.btnInTB.Location = new System.Drawing.Point(950, 9);
             this.btnInTB.Name = "btnInTB";
             this.btnInTB.Size = new System.Drawing.Size(75, 23);
             this.btnInTB.TabIndex = 35;
@@ -563,11 +564,11 @@
             // 
             // btnXuatExcel
             // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(1193, 10);
+            this.btnXuatExcel.Location = new System.Drawing.Point(1142, 9);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
             this.btnXuatExcel.TabIndex = 98;
-            this.btnXuatExcel.Text = "Xuất Excel";
+            this.btnXuatExcel.Text = "Excel DS";
             this.btnXuatExcel.UseVisualStyleBackColor = true;
             this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
@@ -673,7 +674,7 @@
             // 
             // btnInTBTrang
             // 
-            this.btnInTBTrang.Location = new System.Drawing.Point(1082, 10);
+            this.btnInTBTrang.Location = new System.Drawing.Point(1031, 9);
             this.btnInTBTrang.Name = "btnInTBTrang";
             this.btnInTBTrang.Size = new System.Drawing.Size(105, 23);
             this.btnInTBTrang.TabIndex = 109;
@@ -681,12 +682,23 @@
             this.btnInTBTrang.UseVisualStyleBackColor = true;
             this.btnInTBTrang.Click += new System.EventHandler(this.btnInTBTrang_Click);
             // 
+            // btnExcelTon
+            // 
+            this.btnExcelTon.Location = new System.Drawing.Point(1223, 9);
+            this.btnExcelTon.Name = "btnExcelTon";
+            this.btnExcelTon.Size = new System.Drawing.Size(75, 23);
+            this.btnExcelTon.TabIndex = 110;
+            this.btnExcelTon.Text = "Excel Tồn";
+            this.btnExcelTon.UseVisualStyleBackColor = true;
+            this.btnExcelTon.Click += new System.EventHandler(this.btnExcelTon_Click);
+            // 
             // frmGiaoTBDongNuoc2020
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1309, 666);
+            this.Controls.Add(this.btnExcelTon);
             this.Controls.Add(this.btnInTBTrang);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.groupBox1);
@@ -792,5 +804,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn TongCongLenh;
         private System.Windows.Forms.Button btnInTBTrang;
+        private System.Windows.Forms.Button btnExcelTon;
     }
 }

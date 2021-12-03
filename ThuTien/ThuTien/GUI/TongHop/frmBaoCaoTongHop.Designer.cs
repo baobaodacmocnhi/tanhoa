@@ -56,6 +56,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dateDen_KeToan_Chot2019 = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
+            this.dateToGiaiTrachTongHopDangNgan = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnTongHopDangNganDoiMoi2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -63,6 +66,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnTongHopDangNganDoiMoi2);
+            this.groupBox1.Controls.Add(this.dateToGiaiTrachTongHopDangNgan);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.btnTongHopDangNganDoiMoi);
             this.groupBox1.Controls.Add(this.cmbKy);
             this.groupBox1.Controls.Add(this.label3);
@@ -76,7 +82,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(544, 77);
+            this.groupBox1.Size = new System.Drawing.Size(750, 77);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tổng Hợp Đăng Ngân";
@@ -363,12 +369,40 @@
             this.label7.TabIndex = 29;
             this.label7.Text = "Đến Ngày:";
             // 
+            // dateToGiaiTrachTongHopDangNgan
+            // 
+            this.dateToGiaiTrachTongHopDangNgan.CustomFormat = "dd/MM/yyyy";
+            this.dateToGiaiTrachTongHopDangNgan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateToGiaiTrachTongHopDangNgan.Location = new System.Drawing.Point(642, 19);
+            this.dateToGiaiTrachTongHopDangNgan.Name = "dateToGiaiTrachTongHopDangNgan";
+            this.dateToGiaiTrachTongHopDangNgan.Size = new System.Drawing.Size(100, 20);
+            this.dateToGiaiTrachTongHopDangNgan.TabIndex = 63;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(540, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(96, 13);
+            this.label8.TabIndex = 62;
+            this.label8.Text = "Ngày Giải Trách 2:";
+            // 
+            // btnTongHopDangNganDoiMoi2
+            // 
+            this.btnTongHopDangNganDoiMoi2.Location = new System.Drawing.Point(642, 45);
+            this.btnTongHopDangNganDoiMoi2.Name = "btnTongHopDangNganDoiMoi2";
+            this.btnTongHopDangNganDoiMoi2.Size = new System.Drawing.Size(100, 23);
+            this.btnTongHopDangNganDoiMoi2.TabIndex = 64;
+            this.btnTongHopDangNganDoiMoi2.Text = "Tổng Hợp Mới 2";
+            this.btnTongHopDangNganDoiMoi2.UseVisualStyleBackColor = true;
+            this.btnTongHopDangNganDoiMoi2.Click += new System.EventHandler(this.btnTongHopDangNganDoiMoi2_Click);
+            // 
             // frmBaoCaoTongHop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(712, 404);
+            this.ClientSize = new System.Drawing.Size(881, 404);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -415,5 +449,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateDen_KeToan_Chot2019;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dateToGiaiTrachTongHopDangNgan;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnTongHopDangNganDoiMoi2;
     }
 }

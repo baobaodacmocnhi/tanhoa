@@ -158,7 +158,6 @@ namespace ThuTien.GUI.TongHop
                     }
                 dgvDCHD.DataSource = dt;
             }
-
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -181,7 +180,7 @@ namespace ThuTien.GUI.TongHop
                         foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
                         {
                             DIEUCHINH_HD dchd = _cDCHD.GetByMaDC(int.Parse(item.Cells["MaDCHD"].Value.ToString()));
-                            HOADON hd = _cHoaDon.Get(dchd.SoHoaDon);
+                            HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
                             if (hd.SoHoaDonCu != null)
                             {
                                 hd.SOHOADON = hd.SoHoaDonCu;
