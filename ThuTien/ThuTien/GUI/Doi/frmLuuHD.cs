@@ -80,6 +80,14 @@ namespace ThuTien.GUI.Doi
                         int Nam = 0;
                         int Ky = 0;
                         int Dot = 0;
+                        //kiểm tra nếu có điều chỉnh không cho chạy lại
+                        string lineC = lines[0].Replace("\",\"", "$").Replace("\"", "");
+                        string[] contentsC = lineC.Split('$');
+                        if (_cHoaDon.checkExists_DieuChinh(int.Parse("20" + contentsC[19]), int.Parse(contentsC[18]), int.Parse(contentsC[1])) == true)
+                        {
+                            MessageBox.Show("Năm " + int.Parse("20" + contentsC[19]) + " Kỳ " + int.Parse(contentsC[18]) + " Đợt " + int.Parse(contentsC[1]) + " có điều chỉnh nên không cập nhật được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         foreach (string line in lines)
                         {
                             progressBar.Value = i++;
@@ -204,12 +212,7 @@ namespace ThuTien.GUI.Doi
                             if (contents.Length >= 63 && !string.IsNullOrWhiteSpace(contents[62]))
                                 hoadon.SoTienGiam = int.Parse(contents[62]);
                             hoadon.MALOTRINH = hoadon.DOT.ToString("00") + hoadon.MAY + hoadon.STT;
-                            //kiểm tra nếu có điều chỉnh không cho chạy lại
-                            if (_cHoaDon.checkExists_DieuChinh(hoadon.NAM, hoadon.KY, hoadon.DOT) == true)
-                            {
-                                MessageBox.Show("Năm " + hoadon.NAM + " Kỳ " + hoadon.KY + " Đợt " + hoadon.DOT + " có điều chỉnh nên không cập nhật được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                           
                             //Nếu chưa có hóa đơn
                             if (!_cHoaDon.CheckExist(hoadon.DANHBA, hoadon.NAM, hoadon.KY))
                             {

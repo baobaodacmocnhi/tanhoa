@@ -510,6 +510,7 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON
                         where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot
+                        && itemHD.CreateDate.Value.AddMinutes(30) < DateTime.Now
                         select itemHD;
             if (query.Count() > 0)
                 return true;

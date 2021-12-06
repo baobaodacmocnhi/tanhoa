@@ -2851,5 +2851,16 @@ namespace ThuTien.DAL
             //else
             //    return true;
         }
+
+        public string getPhuong( int MaQuan,int MaPhuong)
+        {
+            return (string)ExecuteQuery_ReturnOneValue("select Name2 from Phuong where IDQuan=" + MaQuan + " and IDPhuong=" + MaPhuong);
+        }
+
+        public string getQuan(int MaQuan)
+        {
+            return (string)ExecuteQuery_ReturnOneValue("select Name2 from Quan where ID=" + MaQuan);
+        }
+
     }
 }
