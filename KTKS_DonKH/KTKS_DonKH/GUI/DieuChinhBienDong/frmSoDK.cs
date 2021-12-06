@@ -94,6 +94,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             txtDanhBo.Text = ctchungtu.DanhBo;
                             chkKhacDiaBan.Checked = ctchungtu.ChungTu.KhacDiaBan;
+                            chkThuongTru.Checked = ctchungtu.ThuongTru;
+                            chkTamTru.Checked = ctchungtu.TamTru;
 
                             cmbLoaiCT.SelectedValue = ctchungtu.ChungTu.MaLCT;
                             txtMaCT.Text = ctchungtu.MaCT;
@@ -204,6 +206,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         txtDanhBo.Text = ctchungtu.DanhBo;
                         chkKhacDiaBan.Checked = ctchungtu.ChungTu.KhacDiaBan;
+                        chkThuongTru.Checked = ctchungtu.ThuongTru;
+                        chkTamTru.Checked = ctchungtu.TamTru;
+
                         cmbLoaiCT.SelectedValue = ctchungtu.ChungTu.MaLCT;
                         txtMaCT.Text = ctchungtu.MaCT;
                         //txtHoTen.Text = _dataT.HoTen;
@@ -293,7 +298,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         txtDiaChi.Text = _dataT.DiaChi;
                     }
                     dgvDSDanhBo.DataSource = _cChungTu.getDS_ChiTiet(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
-
                 }
                 _flagLoadFirst = true;
             }
@@ -348,6 +352,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             
                             ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
                             ctchungtu.DanhBo = txtDanhBo.Text.Trim();
+                            ctchungtu.ThuongTru = chkThuongTru.Checked;
+                            ctchungtu.TamTru = chkTamTru.Checked;
                             ctchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                             ctchungtu.MaCT = txtMaCT.Text.Trim();
                             ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
@@ -696,6 +702,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 return;
                             }
                             ///
+                            _ctchungtu.ThuongTru = chkThuongTru.Checked;
+                            _ctchungtu.TamTru = chkTamTru.Checked;
                             _ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
                             _ctchungtu.Lo = txtLo.Text.Trim();
                             _ctchungtu.Phong = txtPhong.Text.Trim();
@@ -1534,6 +1542,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dateHetHan.Enabled = true;
             else
                 dateHetHan.Enabled = false;
+        }
+
+        private void chkThuongTru_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkThuongTru.Checked == true)
+                chkTamTru.Checked = false;
+        }
+
+        private void chkTamTru_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkTamTru.Checked == true)
+            {
+                chkThuongTru.Checked = false;
+                txtThoiHan.Text = "6";
+            }
         }
 
     }
