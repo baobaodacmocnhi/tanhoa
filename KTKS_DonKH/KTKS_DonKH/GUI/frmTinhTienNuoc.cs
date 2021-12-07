@@ -135,15 +135,18 @@ namespace KTKS_DonKH.GUI
 
         private void btnTinhTienNuoc_Click(object sender, EventArgs e)
         {
-            List<GiaNuoc2> lst = _cGiaNuoc.getList();
+            DataTable dtGiaNuoc = _cGiaNuoc.getDS();
+            //check giảm giá
+            _cGiaNuoc.checkExists_GiamGiaNuoc(int.Parse(txtNam.Text.Trim()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtGiaBieu.Text.Trim()), ref dtGiaNuoc);
+
             int index = -1;
-            for (int i = 0; i < lst.Count; i++)
-                if (dateTu.Value.Date < lst[i].NgayTangGia.Value.Date && lst[i].NgayTangGia.Value.Date < dateDen.Value.Date)
+            for (int i = 0; i < dtGiaNuoc.Rows.Count; i++)
+                if (dateTu.Value.Date < DateTime.Parse(dtGiaNuoc.Rows[i]["NgayTangGia"].ToString()).Date && DateTime.Parse(dtGiaNuoc.Rows[i]["NgayTangGia"].ToString()).Date < dateDen.Value.Date)
                 {
                     index = i;
                 }
                 else
-                    if (dateTu.Value.Date >= lst[i].NgayTangGia.Value.Date)
+                    if (dateTu.Value.Date >= DateTime.Parse(dtGiaNuoc.Rows[i]["NgayTangGia"].ToString()).Date)
                     {
                         index = i;
                     }
@@ -153,12 +156,12 @@ namespace KTKS_DonKH.GUI
                 {
                 }
                 else
-                    if (dateTu.Value.Date < lst[index].NgayTangGia.Value.Date && lst[index].NgayTangGia.Value.Date < dateDen.Value.Date)
+                    if (dateTu.Value.Date < DateTime.Parse(dtGiaNuoc.Rows[index]["NgayTangGia"].ToString()).Date && DateTime.Parse(dtGiaNuoc.Rows[index]["NgayTangGia"].ToString()).Date < dateDen.Value.Date)
                     {
                         //int TieuThu_DieuChinhGia;
                         int TongSoNgay = (int)((dateDen.Value.Date - dateTu.Value.Date).TotalDays);
 
-                        int SoNgayCu = (int)((lst[index].NgayTangGia.Value.Date - dateTu.Value.Date).TotalDays);
+                        int SoNgayCu = (int)((DateTime.Parse(dtGiaNuoc.Rows[index]["NgayTangGia"].ToString()).Date - dateTu.Value.Date).TotalDays);
                         int TieuThuCu = (int)Math.Round(double.Parse(txtTieuThu.Text.Trim()) * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
                         int TieuThuMoi = int.Parse(txtTieuThu.Text.Trim()) - TieuThuCu;
                         int TongDinhMucCu = (int)Math.Round(double.Parse(txtDinhMuc.Text.Trim()) * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
