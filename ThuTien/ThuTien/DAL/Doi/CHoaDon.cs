@@ -600,7 +600,7 @@ namespace ThuTien.DAL.Doi
                         from itemtableDC in tableDC.DefaultIfEmpty()
                         where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && itemHD.ChanTienDu == false && itemHD.DCHD == false
                          && (itemtableDC == null || itemtableDC.UpdatedHDDT == true)
-                        orderby itemHD.ID_HOADON descending
+                        orderby itemHD.ID_HOADON ascending
                         select itemHD;
             return query.ToList();
         }
@@ -612,7 +612,7 @@ namespace ThuTien.DAL.Doi
                         from itemtableDC in tableDC.DefaultIfEmpty()
                         where itemHD.DANHBA == DanhBo && (itemHD.NGAYGIAITRACH == null || itemHD.ChanTienDu == true)
                          && (itemtableDC == null || itemtableDC.UpdatedHDDT == true)
-                        orderby itemHD.ID_HOADON descending
+                        orderby itemHD.ID_HOADON ascending
                         select itemHD;
             return query.ToList();
         }
@@ -624,7 +624,7 @@ namespace ThuTien.DAL.Doi
                         from itemtableDC in tableDC.DefaultIfEmpty()
                         where itemHD.DANHBA == DanhBo && (itemHD.NGAYGIAITRACH == null || itemHD.ChanTienDu == true && (itemHD.GB != 10 && itemHD.DinhMucHN == null))
                          && (itemtableDC == null || itemtableDC.UpdatedHDDT == true)
-                        orderby itemHD.ID_HOADON descending
+                        orderby itemHD.ID_HOADON ascending
                         select itemHD;
             return query.ToList();
         }
