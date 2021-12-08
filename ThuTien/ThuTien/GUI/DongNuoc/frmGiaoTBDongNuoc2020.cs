@@ -17,6 +17,7 @@ using ThuTien.DAL;
 using ThuTien.DAL.Quay;
 using CrystalDecisions.CrystalReports.Engine;
 using ThuTien.DAL.Doi;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace ThuTien.GUI.DongNuoc
 {
@@ -31,6 +32,8 @@ namespace ThuTien.GUI.DongNuoc
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CHoaDon _cHoaDon = new CHoaDon();
         CKinhDoanh _cKinhDoanh = new CKinhDoanh();
+
+        DataRowView _selectedRow = null;
 
         public frmGiaoTBDongNuoc2020()
         {
@@ -98,23 +101,26 @@ namespace ThuTien.GUI.DongNuoc
                 DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
 
                 string TinhTrang = "Tồn";
-                int DangNgan = 0;
-                foreach (DataRow itemChild in childRows)
+                if (_cDongNuoc.CheckExist_KQDongNuoc(int.Parse(row["MaDN"].ToString()), dateDen.Value.Date))
                 {
-                    DateTime NgayGiaiTrach;
-                    DateTime.TryParse(itemChild["NgayGiaiTrach"].ToString(), out NgayGiaiTrach);
-                    ///xét ngày đăng ngân để lấy tồn lùi
-                    if (!string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()) && NgayGiaiTrach.Date <= dateDen.Value.Date)
+                    TinhTrang = "Đã Khóa Nước";
+                }
+                else
+                {
+                    int DangNgan = 0;
+                    foreach (DataRow itemChild in childRows)
                     {
-                        //TinhTrang = "Đăng Ngân";
-                        DangNgan++;
+                        DateTime NgayGiaiTrach;
+                        DateTime.TryParse(itemChild["NgayGiaiTrach"].ToString(), out NgayGiaiTrach);
+                        ///xét ngày đăng ngân để lấy tồn lùi
+                        if (!string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()) && NgayGiaiTrach.Date <= dateDen.Value.Date)
+                        {
+                            //TinhTrang = "Đăng Ngân";
+                            DangNgan++;
+                        }
                     }
                     if (DangNgan == childRows.Count())
                         TinhTrang = "Đăng Ngân";
-                    if (_cDongNuoc.CheckExist_KQDongNuoc(int.Parse(row["MaDN"].ToString()), dateDen.Value.Date))
-                    {
-                        TinhTrang = "Đã Khóa Nước";
-                    }
                 }
                 gridViewDN.SetRowCellValue(i, "TinhTrang", TinhTrang);
             }
@@ -819,13 +825,14 @@ namespace ThuTien.GUI.DongNuoc
                     string Ky = "";
                     int TongCong = 0;
                     foreach (DataRow itemChild in childRows)
-                    {
-                        if (Ky != "")
-                            Ky += "; " + itemChild["Ky"];
-                        else
-                            Ky += itemChild["Ky"];
-                        TongCong += int.Parse(itemChild["TongCong"].ToString());
-                    }
+                        if (_cHoaDon.CheckDangNganByMaHD(int.Parse(itemChild["MaHD"].ToString())) == false)
+                        {
+                            if (Ky != "")
+                                Ky += "; " + itemChild["Ky"];
+                            else
+                                Ky += itemChild["Ky"];
+                            TongCong += int.Parse(itemChild["TongCong"].ToString());
+                        }
                     DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                     dr["HoTen"] = row["HoTen"];
                     dr["DiaChi"] = row["DiaChi"];
@@ -958,6 +965,45 @@ namespace ThuTien.GUI.DongNuoc
             range.Value2 = arr;
         }
 
+        private void gridViewCTDN_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.HitTest == DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitTest.RowCell)
+            {
+                e.Allow = false;
+                GridView gridView = (GridView)gridControl.GetViewAt(e.Point);
+                _selectedRow = (DataRowView)gridView.GetRow(gridView.GetSelectedRows()[0]);
+                popupMenu1.ShowPopup(gridControl.PointToScreen(e.Point));
+            }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (_selectedRow != null)
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn xóa Hóa Đơn " + _selectedRow["Ky"].ToString() + "?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        try
+                        {
+                            TT_CTDongNuoc en = _cDongNuoc.getCTDongNuoc(decimal.Parse(_selectedRow["MaDN"].ToString()), int.Parse(_selectedRow["MaHD"].ToString()));
+                            if (en != null)
+                                if (_cDongNuoc.XoaCT(en) == true)
+                                {
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    btnXem.PerformClick();
+                                }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
     }
 }

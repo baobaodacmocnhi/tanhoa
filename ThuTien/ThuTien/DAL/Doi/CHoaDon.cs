@@ -445,6 +445,11 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && item.MaNV_DangNgan != null);
         }
 
+        public bool CheckDangNganByMaHD(int MaHD)
+        {
+            return _db.HOADONs.Any(item => item.ID_HOADON == MaHD && item.MaNV_DangNgan != null);
+        }
+
         public bool CheckDangNganChuyenKhoanTienMat(string SoHoaDon)
         {
             return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && item.DangNgan_ChuyenKhoan == true && item.TienMat != null);

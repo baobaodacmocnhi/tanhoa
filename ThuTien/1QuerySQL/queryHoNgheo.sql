@@ -1,1 +1,0 @@
-select * from DIEUCHINH_HD where CAST(CreateDate as date)='20211026'

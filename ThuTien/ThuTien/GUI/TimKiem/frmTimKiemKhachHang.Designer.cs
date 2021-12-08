@@ -826,9 +826,9 @@
             this.label16.ForeColor = System.Drawing.Color.YellowGreen;
             this.label16.Location = new System.Drawing.Point(1072, 33);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(176, 15);
+            this.label16.Size = new System.Drawing.Size(246, 15);
             this.label16.TabIndex = 32;
-            this.label16.Text = "ĐCHĐ(P. TV): màu xanh lá";
+            this.label16.Text = "Đang Điều Chỉnh(P. TV): màu xanh lá";
             // 
             // frmTimKiemKhachHang
             // 

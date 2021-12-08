@@ -631,7 +631,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 666);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 648);
             this.barDockControlBottom.Size = new System.Drawing.Size(1286, 0);
             // 
             // barDockControlLeft
@@ -639,14 +639,14 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 666);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 648);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1286, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 666);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 648);
             // 
             // btnInTBTrang
             // 
@@ -674,7 +674,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1286, 666);
+            this.ClientSize = new System.Drawing.Size(1286, 648);
             this.Controls.Add(this.chkNangSuat);
             this.Controls.Add(this.btnInTBTrang);
             this.Controls.Add(this.radA5);
