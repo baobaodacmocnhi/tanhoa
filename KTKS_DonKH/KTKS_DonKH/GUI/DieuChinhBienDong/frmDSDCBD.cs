@@ -2864,6 +2864,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         dchd.PHI_BD = hoadon.PHI;
                                                         dchd.TONGCONG_BD = hoadon.TONGCONG;
                                                         //hđ điều chỉnh lần 2
+                                                        dchd.SoHoaDon = hoadon.SOHOADON;
+                                                        dchd.SoHoaDonMoi = null;
                                                         dchd.UpdatedHDDT = false;
                                                     }
 
