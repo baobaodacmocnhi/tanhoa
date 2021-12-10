@@ -101,7 +101,8 @@ namespace ThuTien.GUI.DongNuoc
                 DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
 
                 string TinhTrang = "Tồn";
-                if (_cDongNuoc.CheckExist_KQDongNuoc(int.Parse(row["MaDN"].ToString()), dateDen.Value.Date))
+                //if (_cDongNuoc.CheckExist_KQDongNuoc(int.Parse(row["MaDN"].ToString()), dateDen.Value.Date))
+                if (row["MaKQDN"].ToString() != "")
                 {
                     TinhTrang = "Đã Khóa Nước";
                 }

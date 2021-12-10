@@ -326,7 +326,7 @@ namespace ThuTien.DAL.DongNuoc
             }
             sql += " and exists(select * from HOADON a,TT_CTDongNuoc b where a.ID_HOADON=b.MaHD and b.MaDN=dn.MaDN)"
                             + " and (select COUNT(MaHD) from TT_CTDongNuoc ctdn,HOADON hd where MaDN=dn.MaDN and ctdn.MaHD=hd.ID_HOADON and ChuyenNoKhoDoi=0 and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as DATE)=CAST(getdate() as DATE)))>0"
-                            + " and (kqdn.MaDN is null or ((kqdn.DongNuoc=1 and kqdn.MoNuoc=0 and TroNgaiMN=0) or (CAST(kqdn.NgayMN as date)=CAST(GETDATE() as date))))" 
+                            + " and (kqdn.MaDN is null or ((kqdn.DongNuoc=1 and kqdn.MoNuoc=0 and TroNgaiMN=0) or (CAST(kqdn.NgayMN as date)=CAST(GETDATE() as date))))"
                             + " order by dn.MLT asc,ctdn.MaHD desc";
 
             DataTable dtCTDongNuoc = new DataTable();
@@ -356,6 +356,8 @@ namespace ThuTien.DAL.DongNuoc
                           from itemtableND1 in tableND1.DefaultIfEmpty()
                           join itemND2 in _db.TT_NguoiDungs on itemDN.MaNV_DongNuoc equals itemND2.MaND into tableND2
                           from itemtableND2 in tableND2.DefaultIfEmpty()
+                          join itemKQ in _db.TT_KQDongNuocs on itemDN.MaDN equals itemKQ.MaDN into tableKQ
+                          from itemtableKQ in tableKQ.DefaultIfEmpty()
                           where itemDN.Huy == false && itemDN.CreateBy == CreateBy && itemDN.CreateDate.Value.Date >= FromCreateDate.Date && itemDN.CreateDate.Value.Date <= ToCreateDate.Date
                           orderby itemDN.MLT ascending
                           select new
@@ -378,6 +380,7 @@ namespace ThuTien.DAL.DongNuoc
                                 itemDN.CreateDate,
                                 TinhTrang = "",//Phải thêm để GridView lấy cột để edit lại sau
                                 TongCongLenh = itemDN.TT_CTDongNuocs.Sum(item => item.TongCong),
+                                MaKQDN = itemtableKQ == null ? "" : itemtableKQ.MaKQDN.ToString(),
                             };
             DataTable dtDongNuoc = new DataTable();
             dtDongNuoc = LINQToDataTable(queryDN);

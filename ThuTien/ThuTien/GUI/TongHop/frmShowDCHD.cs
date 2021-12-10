@@ -58,6 +58,7 @@ namespace ThuTien.GUI.TongHop
 
                 chkChuanThu1.Checked = _dchd.ChuanThu1;
                 chkBaoCaoThue.Checked = _dchd.BaoCaoThue;
+                chkUpdatedHDDT.Checked = _dchd.UpdatedHDDT;
 
                 if (_dchd.PHIEU_DC != null)
                     if (!_dchd.TXL)
@@ -95,6 +96,11 @@ namespace ThuTien.GUI.TongHop
                     txtTongCong_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TONGCONG_BD.Value);
                     txtTongCong_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TONGCONG_DC.Value);
                     txtTongCong_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TONGCONG_END.Value);
+
+                    txtHoTen_Start.Text = _dchd.HoTen_BD;
+                    txtHoTen_End.Text = _dchd.HoTen_End;
+                    txtDiaChi_Start.Text = _dchd.DiaChi_BD;
+                    txtDiaChi_End.Text = _dchd.DiaChi_End;
                 }
 
                 dgvDanhSach.DataSource = _cDCHD.getLichSu(hd.ID_HOADON);
@@ -169,6 +175,17 @@ namespace ThuTien.GUI.TongHop
                 txtTongCong_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_Start.Value);
                 txtTongCong_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_BD.Value);
                 txtTongCong_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_End.Value);
+
+                if (_ctdchd.HoTen_BD != "")
+                {
+                   txtHoTen_Start.Text = _ctdchd.HoTen;
+                   txtHoTen_End.Text = _ctdchd.HoTen_BD;
+                }
+                if (_ctdchd.DiaChi_BD != "")
+                {
+                    txtDiaChi_Start.Text = _ctdchd.DiaChi;
+                    txtDiaChi_End.Text = _ctdchd.DiaChi_BD;
+                }
             }
         }
 
@@ -254,6 +271,27 @@ namespace ThuTien.GUI.TongHop
                                 _dchd.DM_DC = _ctdchd.DinhMuc_BD;
                                 _dchd.DinhMucHN_DC = _ctdchd.DinhMucHN_BD;
                                 _dchd.TIEUTHU_DC = _ctdchd.TieuThu_BD;
+
+                                if (_ctdchd.HoTen_BD != "")
+                                {
+                                    _dchd.HoTen_BD = _ctdchd.HoTen;
+                                    _dchd.HoTen_End = _ctdchd.HoTen_BD;
+                                }
+                                else
+                                {
+                                    _dchd.HoTen_BD = null;
+                                    _dchd.HoTen_End = null;
+                                }
+                                if (_ctdchd.DiaChi_BD != "")
+                                {
+                                    _dchd.DiaChi_BD = _ctdchd.DiaChi;
+                                    _dchd.DiaChi_End = _ctdchd.DiaChi_BD;
+                                }
+                                else
+                                {
+                                    _dchd.DiaChi_BD = null;
+                                    _dchd.DiaChi_End = null;
+                                }
                             }
                             ///không có phiếu điều chỉnh hóa đơn bên P.Kinh Doanh
                             ///hóa đơn điện tử k áp dụng
@@ -378,6 +416,17 @@ namespace ThuTien.GUI.TongHop
                                 dchd.GB_DC = _ctdchd.GiaBieu_BD;
                                 dchd.DM_DC = _ctdchd.DinhMuc_BD;
                                 dchd.TIEUTHU_DC = _ctdchd.TieuThu_BD;
+
+                                if (_ctdchd.HoTen_BD != "")
+                                {
+                                    dchd.HoTen_BD = _ctdchd.HoTen;
+                                    dchd.HoTen_End = _ctdchd.HoTen_BD;
+                                }
+                                if (_ctdchd.DiaChi_BD != "")
+                                {
+                                    dchd.DiaChi_BD = _ctdchd.DiaChi;
+                                    dchd.DiaChi_End = _ctdchd.DiaChi_BD;
+                                }
                             }
                             ///không có phiếu điều chỉnh hóa đơn bên P.Kinh Doanh
                             ///hóa đơn điện tử k áp dụng
@@ -456,7 +505,7 @@ namespace ThuTien.GUI.TongHop
             lsdc.SoHoaDon = dchd.SoHoaDon;
             lsdc.GiaBieu = dchd.GiaBieu;
             lsdc.DinhMuc = dchd.DinhMuc;
-            lsdc.DinhMucHN=dchd.DinhMucHN;
+            lsdc.DinhMucHN = dchd.DinhMucHN;
             lsdc.TIEUTHU_BD = dchd.TIEUTHU_BD;
             lsdc.GIABAN_BD = dchd.GIABAN_BD;
             lsdc.PHI_BD = dchd.PHI_BD;
@@ -485,6 +534,11 @@ namespace ThuTien.GUI.TongHop
             lsdc.DM_DC = dchd.DM_DC;
             lsdc.DinhMucHN_DC = dchd.DinhMucHN_DC;
             lsdc.TIEUTHU_DC = dchd.TIEUTHU_DC;
+
+            lsdc.HoTen_BD = dchd.HoTen_BD;
+            lsdc.HoTen_End = dchd.HoTen_End;
+            lsdc.DiaChi_BD = dchd.DiaChi_BD;
+            lsdc.DiaChi_End = dchd.DiaChi_End;
 
             _cDCHD.ThemLSDC(lsdc);
         }
@@ -580,6 +634,10 @@ namespace ThuTien.GUI.TongHop
 
         private void dgvDanhSach_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvDanhSach.Columns[e.ColumnIndex].Name == "SoPhieu" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
             if (dgvDanhSach.Columns[e.ColumnIndex].Name == "TongCong_BD" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
