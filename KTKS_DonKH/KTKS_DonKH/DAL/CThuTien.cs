@@ -303,6 +303,11 @@ namespace KTKS_DonKH.DAL
             lsdc.DM_DC = dchd.DM_DC;
             lsdc.TIEUTHU_DC = dchd.TIEUTHU_DC;
 
+            lsdc.HoTen_BD = dchd.HoTen_BD;
+            lsdc.HoTen_End = dchd.HoTen_End;
+            lsdc.DiaChi_BD = dchd.DiaChi_BD;
+            lsdc.DiaChi_End = dchd.DiaChi_End;
+
             if (db.TT_LichSuDieuChinhHDs.Count() > 0)
                 lsdc.ID = db.TT_LichSuDieuChinhHDs.Max(item => item.ID) + 1;
             else

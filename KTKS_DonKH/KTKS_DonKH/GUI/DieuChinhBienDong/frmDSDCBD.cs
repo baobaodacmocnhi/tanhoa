@@ -2729,9 +2729,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cl23.Value2 = "Loại Đăng Ngân";
             cl23.ColumnWidth = 15;
 
+            Microsoft.Office.Interop.Excel.Range cl24 = oSheet.get_Range("X1", "X1");
+            cl24.Value2 = "Họ Tên Mới";
+            cl24.ColumnWidth = 20;
+
+            Microsoft.Office.Interop.Excel.Range cl25 = oSheet.get_Range("Y1", "Y1");
+            cl25.Value2 = "Địa Chỉ Mới";
+            cl25.ColumnWidth = 20;
+
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            int numColumn = 23;
+            int numColumn = 25;
             object[,] arr = new object[dt.Rows.Count, numColumn];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
@@ -2769,6 +2777,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             if (bool.Parse(dtTT.Rows[0]["DangNgan_Ton"].ToString()) == true)
                                 arr[i, 22] = "TQ";
+                    arr[i, 23] = dr["HoTen_BD"].ToString();
+                    arr[i, 24] = dr["DiaChi_BD"].ToString();
                 }
             }
 
@@ -2877,6 +2887,27 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     dchd.DinhMucHN_DC = ctdchd.DinhMucHN_BD;
                                                     dchd.TIEUTHU_DC = ctdchd.TieuThu_BD;
 
+                                                    if (ctdchd.HoTen_BD != "")
+                                                    {
+                                                        dchd.HoTen_BD = ctdchd.HoTen;
+                                                        dchd.HoTen_End = ctdchd.HoTen_BD;
+                                                    }
+                                                    else
+                                                    {
+                                                        dchd.HoTen_BD = null;
+                                                        dchd.HoTen_End = null;
+                                                    }
+                                                    if (ctdchd.DiaChi_BD != "")
+                                                    {
+                                                        dchd.DiaChi_BD = ctdchd.DiaChi;
+                                                        dchd.DiaChi_End = ctdchd.DiaChi_BD;
+                                                    }
+                                                    else
+                                                    {
+                                                        dchd.DiaChi_BD =null;
+                                                        dchd.DiaChi_End = null;
+                                                    }
+
                                                     dchd.ModifyDate = DateTime.Now;
                                                     ///lưu lịch sử
                                                     _cThuTien.LuuLichSuDC(dchd);
@@ -2964,6 +2995,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     dchd1.DM_DC = ctdchd.DinhMuc_BD;
                                                     dchd1.DinhMucHN_DC = ctdchd.DinhMucHN_BD;
                                                     dchd1.TIEUTHU_DC = ctdchd.TieuThu_BD;
+
+                                                    if (ctdchd.HoTen_BD != "")
+                                                    {
+                                                        dchd1.HoTen_BD = ctdchd.HoTen;
+                                                        dchd1.HoTen_End = ctdchd.HoTen_BD;
+                                                    }
+                                                    if (ctdchd.DiaChi_BD != "")
+                                                    {
+                                                        dchd1.DiaChi_BD = ctdchd.DiaChi;
+                                                        dchd1.DiaChi_End = ctdchd.DiaChi_BD;
+                                                    }
 
                                                     dchd1.CreateDate = DateTime.Now;
                                                     _cThuTien.Them(dchd1);
