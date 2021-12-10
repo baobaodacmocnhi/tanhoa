@@ -11,15 +11,15 @@ using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using System.Data.SqlClient;
 
-namespace DocSo_PC.GUI.ChuanBiDocSo
+namespace DocSo_PC.GUI.Doi
 {
-    public partial class frmTaoDocSo : Form
+    public partial class frmTaoDot : Form
     {
         //  CNguoiDung _cNguoiDung = new CNguoiDung();
         CChuanBiDS _cChuanBi = new CChuanBiDS();
         int tumay = CNguoiDung.TuMayDS;
         int denmay = CNguoiDung.DenMayDS;
-        public frmTaoDocSo()
+        public frmTaoDot()
         {
             InitializeComponent();
         }
@@ -112,7 +112,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
         private void btnTaoDocSo_Click(object sender, EventArgs e)
         {
 
-            SqlConnection thisConnection = new SqlConnection(DocSo_PC.Properties.Settings.Default.DocSoSP01ConnectionString);
+            SqlConnection thisConnection = new SqlConnection(DocSo_PC.Properties.Settings.Default.DocSoTHTestConnectionString);
             SqlCommand command = null;
             thisConnection.Open();
 

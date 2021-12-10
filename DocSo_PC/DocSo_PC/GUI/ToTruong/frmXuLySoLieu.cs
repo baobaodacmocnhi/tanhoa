@@ -7,35 +7,34 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DocSo_PC.DAL.QuanTri;
-using DocSo_PC.DAL.ChuanBiDocSo;
-using DocSo_PC.DAL.XuLyDocSo;
 using DocSo_PC.DAL;
-using DocSo_PC.LinQ;
+using DocSo_PC.DAL.ToTruong;
 using System.Globalization;
+using DocSo_PC.LinQ;
 
-namespace DocSo_PC.GUI.XuLyDocSo
+namespace DocSo_PC.GUI.ToTruong
 {
-    public partial class frmDieuChinhDocSo : Form
+    public partial class frmXuLySoLieu : Form
     {
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CXuLyDocSo _cCXuLy = new CXuLyDocSo();
-        CDuDieuKH _kh = new CDuDieuKH();
+        CDHN _kh = new CDHN();
         int tumay = CNguoiDung.TuMayDS;
         int denmay = CNguoiDung.DenMayDS;
         int nam;
         string dot;
         string ky;
         string danhbo = "";
-        public frmDieuChinhDocSo()
+        public frmXuLySoLieu()
         {
-            frmChonDot f = new frmChonDot();
-            if (f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                InitializeComponent();
-            nam = f.nam;
-            ky = f.ky;
-            dot = f.dot;
-            //danhbo = "13172425656";
-            //LoadThongTin(danhbo);
+            //frmChonDot f = new frmChonDot();
+            //if (f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //    InitializeComponent();
+            //nam = f.nam;
+            //ky = f.ky;
+            //dot = f.dot;
+            ////danhbo = "13172425656";
+            ////LoadThongTin(danhbo);
         }
 
         void fromLoad()
@@ -166,7 +165,7 @@ namespace DocSo_PC.GUI.XuLyDocSo
 
             if (sodanhbo.Length == 11)
             {
-                khachhang = DAL.CDuDieuKH.finByDanhBo(sodanhbo);
+                khachhang = DAL.CDHN.finByDanhBo(sodanhbo);
                 if (khachhang != null)
                 {
                     txtDanhBo.Text = khachhang.DANHBO;                    
@@ -183,7 +182,7 @@ namespace DocSo_PC.GUI.XuLyDocSo
                 }
                 else
                 {
-                    TB_DULIEUKHACHHANG_HUYDB khachhanghuy = DAL.CDuDieuKH.finByDanhBoHuy(sodanhbo);
+                    TB_DULIEUKHACHHANG_HUYDB khachhanghuy = DAL.CDHN.finByDanhBoHuy(sodanhbo);
                     if (khachhanghuy != null)
                     {
                         txtDanhBo.Text = khachhanghuy.DANHBO;

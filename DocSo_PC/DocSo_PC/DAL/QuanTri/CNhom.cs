@@ -6,7 +6,7 @@ using DocSo_PC.LinQ;
 
 namespace DocSo_PC.DAL.QuanTri
 {
-    class CNhom:CDAL
+    class CNhom : CDAL
     {
         public bool Them(Nhom nhom)
         {

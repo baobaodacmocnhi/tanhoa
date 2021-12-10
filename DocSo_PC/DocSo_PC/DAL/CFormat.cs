@@ -22,6 +22,7 @@ namespace DocSo_PC.DAL
                 }
             }
         }
+
         public static string NgayVN(DateTime d1)
         {
             string kq = "";

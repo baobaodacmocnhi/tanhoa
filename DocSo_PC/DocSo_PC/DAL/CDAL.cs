@@ -12,9 +12,7 @@ namespace DocSo_PC.DAL
 {
     class CDAL
     {
-        protected static dbDocSoDataContext _db = new dbDocSoDataContext();
-
-
+        protected static dbDocSoTHTestDataContext _db = new dbDocSoTHTestDataContext();
         protected static string _connectionString;  // Chuỗi kết nối
         protected SqlConnection connection;         // Đối tượng kết nối
         protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
@@ -26,7 +24,7 @@ namespace DocSo_PC.DAL
             try
             {
                 //_connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
-                _connectionString = DocSo_PC.Properties.Settings.Default.DocSoTHConnectionString;
+                _connectionString = _db.Connection.ConnectionString;
                 connection = new SqlConnection(_connectionString);
             }
             catch (Exception)
@@ -36,7 +34,6 @@ namespace DocSo_PC.DAL
 
         }
 
-
         public void SubmitChanges()
         {
             _db.SubmitChanges();
@@ -44,7 +41,7 @@ namespace DocSo_PC.DAL
 
         public void Refresh()
         {
-            _db = new dbDocSoDataContext();
+            _db = new dbDocSoTHTestDataContext();
         }
 
         /// <summary>
@@ -130,7 +127,6 @@ namespace DocSo_PC.DAL
             }
             return dt;
         }
-
 
         public void Connect()
         {

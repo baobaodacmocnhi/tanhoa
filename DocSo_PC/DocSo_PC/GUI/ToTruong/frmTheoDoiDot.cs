@@ -10,18 +10,18 @@ using DocSo_PC.DAL.ChuanBiDocSo;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using System.Data.SqlClient;
-using DocSo_PC.DAL.XuLyDocSo;
+using DocSo_PC.DAL.ToTruong;
 
-namespace DocSo_PC.GUI.XuLyDocSo
+namespace DocSo_PC.GUI.ToTruong
 {
-    public partial class frmKiemSoatDocSo : Form
+    public partial class frmTheoDoiDot : Form
     {
         //  CNguoiDung _cNguoiDung = new CNguoiDung();
         CChuanBiDS _cChuanBi = new CChuanBiDS();
         CXuLyDocSo _cXuLy = new CXuLyDocSo();
         int tumay = CNguoiDung.TuMayDS;
         int denmay = CNguoiDung.DenMayDS;
-        public frmKiemSoatDocSo()
+        public frmTheoDoiDot()
         {
             InitializeComponent();
         }

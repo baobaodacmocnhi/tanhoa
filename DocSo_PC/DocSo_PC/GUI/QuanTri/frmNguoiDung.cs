@@ -210,7 +210,7 @@ namespace DocSo_PC.GUI.QuanTri
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void dgvNguoiDung_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvNguoiDung_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -243,7 +243,6 @@ namespace DocSo_PC.GUI.QuanTri
             catch (Exception)
             {
             }
-
         }
 
         private void dgvNguoiDung_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -399,5 +398,7 @@ namespace DocSo_PC.GUI.QuanTri
                 }
             }
         }
+
+        
     }
 }

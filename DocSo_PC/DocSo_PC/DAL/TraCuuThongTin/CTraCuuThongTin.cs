@@ -6,7 +6,7 @@ using System.Data;
 
 namespace DocSo_PC.DAL.TraCuuThongTin
 {
-    class CTraCuuThongTin : CDuDieuKH
+    class CTraCuuThongTin : CDHN
     {
         public DataTable Search(string danhbo, string diachi, string lotrinh, string hopdong, string sothan, string may, string dot)
         {

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace DocSo_PC.DAL.ChuyenBillding
 {
-    class CChuyenDuLieu : CDALTest
+    class CChuyenDuLieu : CDAL
     {
         public SqlConnection conn = new SqlConnection();
         public OdbcConnection connTongCT = new OdbcConnection();

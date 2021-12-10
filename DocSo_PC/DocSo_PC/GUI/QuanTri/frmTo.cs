@@ -27,8 +27,8 @@ namespace DocSo_PC.GUI.QuanTri
             _selectedindex = -1;
             txtTenTo.Text = "";
             chkHanhThu.Checked = false;
-            txtTuCuonGCS.Text = "";
-            txtDenCuonGCS.Text = "";
+            txtTuMay.Text = "";
+            txtDenMay.Text = "";
             dgvTo.DataSource = _cTo.GetDS();
         }
 
@@ -47,10 +47,10 @@ namespace DocSo_PC.GUI.QuanTri
                     To to = new To();
                     to.TenTo = txtTenTo.Text.Trim();
                     to.HanhThu = chkHanhThu.Checked;
-                    if (!string.IsNullOrEmpty(txtTuCuonGCS.Text.Trim()))
-                        to.TuCuonGCS = int.Parse(txtTuCuonGCS.Text.Trim());
-                    if (!string.IsNullOrEmpty(txtDenCuonGCS.Text.Trim()))
-                        to.DenCuonGCS = int.Parse(txtDenCuonGCS.Text.Trim());
+                    if (!string.IsNullOrEmpty(txtTuMay.Text.Trim()))
+                        to.TuMay = int.Parse(txtTuMay.Text.Trim());
+                    if (!string.IsNullOrEmpty(txtDenMay.Text.Trim()))
+                        to.DenMay = int.Parse(txtDenMay.Text.Trim());
                     _cTo.Them(to);
                     Clear();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -69,14 +69,14 @@ namespace DocSo_PC.GUI.QuanTri
                     To to = _cTo.GetByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
                     to.TenTo = txtTenTo.Text.Trim();
                     to.HanhThu = chkHanhThu.Checked;
-                    if (!string.IsNullOrEmpty(txtTuCuonGCS.Text.Trim()))
-                        to.TuCuonGCS = int.Parse(txtTuCuonGCS.Text.Trim());
+                    if (!string.IsNullOrEmpty(txtTuMay.Text.Trim()))
+                        to.TuMay = int.Parse(txtTuMay.Text.Trim());
                     else
-                        to.TuCuonGCS = null;
-                    if (!string.IsNullOrEmpty(txtDenCuonGCS.Text.Trim()))
-                        to.DenCuonGCS = int.Parse(txtDenCuonGCS.Text.Trim());
+                        to.TuMay = null;
+                    if (!string.IsNullOrEmpty(txtDenMay.Text.Trim()))
+                        to.DenMay = int.Parse(txtDenMay.Text.Trim());
                     else
-                        to.DenCuonGCS=null;
+                        to.DenMay = null;
                     _cTo.Sua(to);
                     Clear();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -105,20 +105,19 @@ namespace DocSo_PC.GUI.QuanTri
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void dgvTo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvTo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 _selectedindex = e.RowIndex;
                 txtTenTo.Text = dgvTo["TenTo", e.RowIndex].Value.ToString();
                 chkHanhThu.Checked = bool.Parse(dgvTo["HanhThu", e.RowIndex].Value.ToString());
-                txtTuCuonGCS.Text = dgvTo["TuCuonGCS", e.RowIndex].Value.ToString();
-                txtDenCuonGCS.Text = dgvTo["DenCuonGCS", e.RowIndex].Value.ToString();
+                txtTuMay.Text = dgvTo["TuMay", e.RowIndex].Value.ToString();
+                txtDenMay.Text = dgvTo["DenMay", e.RowIndex].Value.ToString();
             }
-            catch(Exception)
+            catch (Exception)
             {
             }
-            
         }
 
         private void dgvTo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -142,6 +141,7 @@ namespace DocSo_PC.GUI.QuanTri
                 e.Handled = true;
         }
 
+      
 
     }
 }

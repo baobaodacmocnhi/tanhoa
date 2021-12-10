@@ -40,7 +40,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 17);
             this.label1.TabIndex = 0;
@@ -73,7 +73,7 @@
             // 
             // txtXNMatKhauMoi
             // 
-            this.txtXNMatKhauMoi.Location = new System.Drawing.Point(181, 74);
+            this.txtXNMatKhauMoi.Location = new System.Drawing.Point(181, 75);
             this.txtXNMatKhauMoi.Name = "txtXNMatKhauMoi";
             this.txtXNMatKhauMoi.PasswordChar = '*';
             this.txtXNMatKhauMoi.Size = new System.Drawing.Size(200, 25);
@@ -92,7 +92,7 @@
             // 
             this.btnThayDoi.Location = new System.Drawing.Point(181, 115);
             this.btnThayDoi.Name = "btnThayDoi";
-            this.btnThayDoi.Size = new System.Drawing.Size(75, 23);
+            this.btnThayDoi.Size = new System.Drawing.Size(75, 24);
             this.btnThayDoi.TabIndex = 6;
             this.btnThayDoi.Text = "Thay Đổi";
             this.btnThayDoi.UseVisualStyleBackColor = true;
@@ -112,7 +112,7 @@
             this.Controls.Add(this.txtMatKhauCu);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmDoiMatKhau";
             this.Text = "Đổi Mật Khẩu";
             this.Load += new System.EventHandler(this.frmDoiMatKhau_Load);

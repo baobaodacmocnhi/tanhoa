@@ -11,7 +11,7 @@ using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using System.Data.SqlClient;
 
-namespace DocSo_PC.GUI.ChuanBiDocSo
+namespace DocSo_PC.GUI.ToTruong
 {
     public partial class frmGiaoTangCuong : Form
     {

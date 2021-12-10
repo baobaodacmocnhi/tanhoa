@@ -7,11 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DocSo_PC.DAL.QuanTri;
-using DocSo_PC.GUI.HeThong;
 using DocSo_PC.GUI.QuanTri;
-using DocSo_PC.GUI.ChuanBiDocSo;
-using DocSo_PC.GUI.XuLyDocSo;
-using DocSo_PC.GUI.ChuyenBillding;
+using DocSo_PC.GUI.Doi;
+using DocSo_PC.GUI.ToTruong;
+using DocSo_PC.GUI.HeThong;
 
 namespace DocSo_PC
 {
@@ -191,80 +190,67 @@ namespace DocSo_PC
 
         #endregion
 
-        #region Chuẩn Bị Đọc Số
+        #region Đội
 
-        private void mnuLuuHD_Click(object sender, EventArgs e)
+        private void mnuTaoDot_Click(object sender, EventArgs e)
         {
-            //if (CNguoiDung.CheckQuyen("mnuLuuHD", "Xem"))
-            //{
-            frmCapNhatHoaDon frm = new frmCapNhatHoaDon();
-            OpenForm(frm);
-            //}
-            //else
-            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (CNguoiDung.CheckQuyen("mnuTaoDot", "Xem"))
+            {
+                frmTaoDot frm = new frmTaoDot();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuCapNhatBienDong_Click(object sender, EventArgs e)
+        private void mnuKhongTinhPBVMT_Click(object sender, EventArgs e)
         {
-            //if (CNguoiDung.CheckQuyen("mnuLuuHD", "Xem"))
-            //{
-            frmCapNhatBienDong frm = new frmCapNhatBienDong();
-            OpenForm(frm);
-            //}
-            //else
-            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
-
-        }
-        private void mnuTaoDuLieu_Click(object sender, EventArgs e)
-        {
-            //if (CNguoiDung.CheckQuyen("mnuLuuHD", "Xem"))
-            //{
-            frmTaoDocSo frm = new frmTaoDocSo();
-            OpenForm(frm);
-            //}
-            //else
-            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        }
-        private void mnGiaoTangCuong_Click(object sender, EventArgs e)
-        {
-            //if (CNguoiDung.CheckQuyen("mnuLuuHD", "Xem"))
-            //{
-            frmGiaoTangCuong frm = new frmGiaoTangCuong();
-            OpenForm(frm);
-            //}
-            //else
-            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (CNguoiDung.CheckQuyen("mnuKhongTinhPBVMT", "Xem"))
+            {
+                frmKhongTinhPBVMT frm = new frmKhongTinhPBVMT();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion
 
-        #region Điều chỉnh dữ liệu đọc số
-        private void mnuKiemSoatDS_Click(object sender, EventArgs e)
+        #region Tổ Trưởng
+
+        private void mnuXuLySoLieu_Click(object sender, EventArgs e)
         {
-            frmKiemSoatDocSo frm = new frmKiemSoatDocSo();
-            OpenForm(frm);
-            
+            if (CNguoiDung.CheckQuyen("mnuNguoiDung", "Xem"))
+            {
+                frmXuLySoLieu frm = new frmXuLySoLieu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-       
-
-        private void mnuDieuChinhDS_Click(object sender, EventArgs e)
+        private void mnuTheoDoiDot_Click(object sender, EventArgs e)
         {
-            frmDieuChinhDocSo frm = new frmDieuChinhDocSo();
-            OpenForm(frm);
+            if (CNguoiDung.CheckQuyen("mnuTheoDoiDot", "Xem"))
+            {
+                frmTheoDoiDot frm = new frmTheoDoiDot();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-         #endregion
 
-          #region Chuyển dữ liệu billding2
-        private void mnuKiemsoatDL_Click(object sender, EventArgs e)
+        private void mnuGiaoTangCuong_Click(object sender, EventArgs e)
         {
-            frmKiemTraDuLieu frm = new frmKiemTraDuLieu();
-            OpenForm(frm);
-            
+            if (CNguoiDung.CheckQuyen("mnuGiaoTangCuong", "Xem"))
+            {
+                frmGiaoTangCuong frm = new frmGiaoTangCuong();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-          #endregion
+
+        #endregion
     }
 }

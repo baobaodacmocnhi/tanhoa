@@ -117,16 +117,16 @@ namespace DocSo_PC.GUI.QuanTri
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void dgvNhom_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvNhom_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 _selectedindex = e.RowIndex;
                 txtTenNhom.Text = dgvNhom["TenNhom", e.RowIndex].Value.ToString();
-                if(CNguoiDung.Admin)
-                gridControl.DataSource = _cPhanQuyenNhom.GetDSByMaNhom(true,int.Parse(dgvNhom["MaNhom", e.RowIndex].Value.ToString()));
+                if (CNguoiDung.Admin)
+                    gridControl.DataSource = _cPhanQuyenNhom.GetDSByMaNhom(true, int.Parse(dgvNhom["MaNhom", e.RowIndex].Value.ToString()));
                 else
-                    gridControl.DataSource = _cPhanQuyenNhom.GetDSByMaNhom(false,int.Parse(dgvNhom["MaNhom", e.RowIndex].Value.ToString()));
+                    gridControl.DataSource = _cPhanQuyenNhom.GetDSByMaNhom(false, int.Parse(dgvNhom["MaNhom", e.RowIndex].Value.ToString()));
             }
             catch (Exception)
             {
@@ -159,6 +159,8 @@ namespace DocSo_PC.GUI.QuanTri
                     gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xoa"], "False");
                 }
         }
+
+        
 
     }
 }

@@ -48,18 +48,15 @@ namespace DocSo_PC.GUI.HeThong
                 {
                     CPhanQuyenNhom _cPhanQuyenNhom = new CPhanQuyenNhom();
                     CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
-                    if (nguoidung.Doi)
-                    {
-                        CNguoiDung.TuMayDS = 0;
-                        CNguoiDung.DenMayDS = 150;
-
-                    }
-                    else
-                    {
-                        CNguoiDung.TuMayDS = _ct.GetByMaTo(nguoidung.MaTo.Value).TuMay.Value;
-                        CNguoiDung.DenMayDS = _ct.GetByMaTo(nguoidung.MaTo.Value).DenMay.Value;
-
-                    }
+                    //if (nguoidung.Doi)
+                    //{
+                    //    CNguoiDung.TuMayDS = 0;
+                    //    CNguoiDung.DenMayDS = 150;
+                    //}
+                    //else
+                    //{
+                        
+                    //}
                     CNguoiDung.MaND = nguoidung.MaND;
                     CNguoiDung.TaiKhoan = nguoidung.TaiKhoan;
                     CNguoiDung.HoTen = nguoidung.HoTen;
@@ -72,6 +69,8 @@ namespace DocSo_PC.GUI.HeThong
                     {
                         CNguoiDung.MaTo = nguoidung.MaTo.Value;
                         CNguoiDung.TenTo = nguoidung.To.TenTo;
+                        CNguoiDung.TuMayDS = _ct.GetByMaTo(nguoidung.MaTo.Value).TuMay.Value;
+                        CNguoiDung.DenMayDS = _ct.GetByMaTo(nguoidung.MaTo.Value).DenMay.Value;
                     }
                     else
                     {

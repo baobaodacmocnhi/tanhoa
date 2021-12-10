@@ -1,6 +1,6 @@
-﻿namespace DocSo_PC.GUI.XuLyDocSo
+﻿namespace DocSo_PC.GUI.ToTruong
 {
-    partial class frmDieuChinhDocSo
+    partial class frmXuLySoLieu
     {
         /// <summary>
         /// Required designer variable.
@@ -499,7 +499,7 @@
             // txtDanhBoDs
             // 
             this.txtDanhBoDs.Location = new System.Drawing.Point(60, 29);
-            this.txtDanhBoDs.Mask = "0000-000-0000";
+            this.txtDanhBoDs.Mask = "0000 000 0000";
             this.txtDanhBoDs.Name = "txtDanhBoDs";
             this.txtDanhBoDs.Size = new System.Drawing.Size(125, 24);
             this.txtDanhBoDs.TabIndex = 36;

@@ -10,17 +10,18 @@ using System.Windows.Forms;
 
 namespace DocSo_PC.DAL
 {
-    class CDALTest
+    class CDHN
     {
-        protected static DocSoTestDataContext _db = new DocSoTestDataContext();
+        protected static dbDHNDataContext _db = new dbDHNDataContext();
+
+        CThuTien _tTien = new CThuTien();
         protected static string _connectionString;  // Chuỗi kết nối
         protected SqlConnection connection;         // Đối tượng kết nối
         protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
         //protected SqlTransaction transaction;       // Đối tượng transaction
 
-
-        public CDALTest()
+        public CDHN()
         {
             try
             {
@@ -35,6 +36,7 @@ namespace DocSo_PC.DAL
 
         }
 
+
         public void SubmitChanges()
         {
             _db.SubmitChanges();
@@ -42,7 +44,7 @@ namespace DocSo_PC.DAL
 
         public void Refresh()
         {
-            _db = new DocSoTestDataContext();
+            _db = new dbDHNDataContext();
         }
 
         /// <summary>
@@ -310,89 +312,50 @@ namespace DocSo_PC.DAL
             
         }
 
-        #region ConvertMoneyToWord
-
-        private string unit(int n)
+        /// <summary>
+        /// Function lấy dữ liệu
+        /// </summary> 
+        public DataTable getGhiChuKH(string db)
         {
-            string chuoi = "";
-            if (n == 1) chuoi = " đồng ";
-            else if (n == 2) chuoi = " nghìn ";
-            else if (n == 3) chuoi = " triệu ";
-            else if (n == 4) chuoi = " tỷ ";
-            else if (n == 5) chuoi = " nghìn tỷ ";
-            else if (n == 6) chuoi = " triệu tỷ ";
-            else if (n == 7) chuoi = " tỷ tỷ ";
-            return chuoi;
+            string sql = "SELECT ID,NOIDUNG,DONVI,CREATEDATE FROM TB_GHICHU WHERE DANHBO='" + db + "'  ORDER BY CREATEDATE DESC";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+
         }
-
-        private string convert_number(string n)
+        public DataTable getTTThay(string db)
         {
-            string chuoi = "";
-            if (n == "0") chuoi = "không";
-            else if (n == "1") chuoi = "một";
-            else if (n == "2") chuoi = "hai";
-            else if (n == "3") chuoi = "ba";
-            else if (n == "4") chuoi = "bốn";
-            else if (n == "5") chuoi = "năm";
-            else if (n == "6") chuoi = "sáu";
-            else if (n == "7") chuoi = "bảy";
-            else if (n == "8") chuoi = "tám";
-            else if (n == "9") chuoi = "chín";
-            return chuoi;
+            string sql = "SELECT DHN_LYDOTHAY AS 'TENBANGKE',DHN_NGAYBAOTHAY,HCT_NGAYGAN,CASE WHEN ISNULL(HCT_TRONGAI,0)=1 THEN N'TN: ' +HCT_LYDOTRONGAI ELSE N'Hoàn tất' end as KETQUA,HCT_CHISOGO,HCT_CHISOGAN,HCT_CREATEDATE, HCT_CREATEBY ";
+            sql += " FROM  TB_THAYDHN thay WHERE DHN_DANHBO='" + db + "' ORDER BY DHN_NGAYBAOTHAY DESC ";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+
         }
-
-        private string join_number(string n)
+        public static TB_DULIEUKHACHHANG finByDanhBo(string danhbo)
         {
-            string chuoi = "";
-            int i = 1, j = n.Length;
-            while (i <= j)
+            try
             {
-                if (i == 1) chuoi = convert_number(n.Substring(j - i, 1)) + chuoi;
-                else if (i == 2) chuoi = convert_number(n.Substring(j - i, 1)) + " mươi " + chuoi;
-                else if (i == 3) chuoi = convert_number(n.Substring(j - i, 1)) + " trăm " + chuoi;
-                i += 1;
+                var query = from q in _db.TB_DULIEUKHACHHANGs where q.DANHBO == danhbo select q;
+                return query.SingleOrDefault();
             }
-            return chuoi;
-        }
-
-        private string join_unit(string n)
-        {
-            int sokytu = n.Length;
-            int sodonvi = (sokytu % 3 > 0) ? (sokytu / 3 + 1) : (sokytu / 3);
-            n = n.PadLeft(sodonvi * 3, '0');
-            sokytu = n.Length;
-            string chuoi = "";
-            int i = 1;
-            while (i <= sodonvi)
+            catch (Exception ex)
             {
-                if (i == sodonvi) chuoi = join_number((int.Parse(n.Substring(sokytu - (i * 3), 3))).ToString()) + unit(i) + chuoi;
-                else chuoi = join_number(n.Substring(sokytu - (i * 3), 3)) + unit(i) + chuoi;
-                i += 1;
+               // _db.Error(ex.Message);
             }
-            return chuoi;
+            return null;
         }
-
-        private string replace_special_word(string chuoi)
+        public static TB_DULIEUKHACHHANG_HUYDB finByDanhBoHuy(string danhbo)
         {
-            chuoi = chuoi.Replace("không mươi không ", "");
-            chuoi = chuoi.Replace("không mươi", "lẻ");
-            chuoi = chuoi.Replace("i không", "i");
-            chuoi = chuoi.Replace("i năm", "i lăm");
-            chuoi = chuoi.Replace("một mươi", "mười");
-            chuoi = chuoi.Replace("mươi một", "mươi mốt");
-            return chuoi;
+            try
+            {
+                var query = (from q in _db.TB_DULIEUKHACHHANG_HUYDBs where q.DANHBO == danhbo orderby q.CREATEDATE descending select q).Take(1);
+                return query.SingleOrDefault();
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            return null;
         }
-
-        public string ConvertMoneyToWord(string money)
-        {
-            string str=replace_special_word(join_unit(money));
-            if (str.Length > 1)
-                return str.Substring(0, 1).ToUpper() + str.Substring(1).ToLower();
-            else
-                return "";
-        }
-
-        #endregion
+ 
+    
 
     }
 }

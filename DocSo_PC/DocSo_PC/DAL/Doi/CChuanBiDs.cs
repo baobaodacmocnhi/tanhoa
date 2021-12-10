@@ -9,9 +9,8 @@ using System.Data.SqlClient;
 
 namespace DocSo_PC.DAL.ChuanBiDocSo
 {
-    class CChuanBiDS : CDALTest
+    class CChuanBiDS : CDAL
     {
-        static DocSoTestDataContext db = new DocSoTestDataContext();
         public bool CheckExist(string DanhBo, int Nam, string Ky, string Dot)
         {
             return _db.HoaDons.Any(item => item.DanhBa == DanhBo && item.Nam == Nam && item.Ky == Ky && item.Dot == Dot);
@@ -123,7 +122,7 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
         public void UpdateStoredProcedure(string storedNam, int nam, string ky, string dot)
         {
 
-            SqlConnection conn = new SqlConnection(db.Connection.ConnectionString);
+            SqlConnection conn = new SqlConnection(_db.Connection.ConnectionString);
             try
             {
 
@@ -163,7 +162,7 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
         public DataTable GetSoDocSo(string storedNam, int nam, string ky, string dot, int tu, int den)
         {
             DataTable tb = new DataTable();
-            SqlConnection conn = new SqlConnection(db.Connection.ConnectionString);
+            SqlConnection conn = new SqlConnection(_db.Connection.ConnectionString);
 
             try
             {
@@ -220,7 +219,7 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
 
         public List<BienDong> getListBienFong(int nam, string ky, string dot, int tumay, int denmay)
         {
-            var query = from q in db.BienDongs where q.Nam == nam && q.Ky == ky && q.Dot == dot && Convert.ToInt32(q.May) >= tumay && Convert.ToInt32(q.May) <= denmay select q;
+            var query = from q in _db.BienDongs where q.Nam == nam && q.Ky == ky && q.Dot == dot && Convert.ToInt32(q.May) >= tumay && Convert.ToInt32(q.May) <= denmay select q;
             return query.ToList();
         }
         public int getTTTB3ky(string danhba)

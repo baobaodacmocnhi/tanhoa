@@ -111,7 +111,7 @@
             this.dgvNhom.ReadOnly = true;
             this.dgvNhom.Size = new System.Drawing.Size(170, 309);
             this.dgvNhom.TabIndex = 8;
-            this.dgvNhom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhom_CellContentClick);
+            this.dgvNhom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhom_CellClick);
             this.dgvNhom.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvNhom_RowPostPaint);
             // 
             // MaNhom

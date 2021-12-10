@@ -26,30 +26,8 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=s" +
-            "a;Password=123@tanhoa")]
-        public string DocSoTHConnectionString {
-            get {
-                return ((string)(this["DocSoTHConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=DocSoSP01;Persist Security Info=True;User ID" +
-            "=sa;Password=123@tanhoa")]
-        public string DocSoSP01ConnectionString {
-            get {
-                return ((string)(this["DocSoSP01ConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;Use" +
-            "r ID=sa;Password=123@tanhoa")]
+            "r ID=sa;Password=db8@tanhoa")]
         public string CAPNUOCTANHOAConnectionString {
             get {
                 return ((string)(this["CAPNUOCTANHOAConnectionString"]));
@@ -59,11 +37,22 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=" +
-            "sa;Password=123@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=" +
+            "sa;Password=db9@tanhoa")]
         public string HOADON_TAConnectionString {
             get {
                 return ((string)(this["HOADON_TAConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=DocSoTHTest;Persist Security Info=True;User " +
+            "ID=sa;Password=db8@tanhoa")]
+        public string DocSoTHTestConnectionString {
+            get {
+                return ((string)(this["DocSoTHTestConnectionString"]));
             }
         }
     }

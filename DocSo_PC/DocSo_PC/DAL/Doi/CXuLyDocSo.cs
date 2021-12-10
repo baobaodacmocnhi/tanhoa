@@ -8,12 +8,10 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using DocSo_PC.DAL.QuanTri;
 
-namespace DocSo_PC.DAL.XuLyDocSo
+namespace DocSo_PC.DAL.ToTruong
 {
-    class CXuLyDocSo : CDALTest
+    class CXuLyDocSo : CDAL
     {
-        static DocSoTestDataContext db = new DocSoTestDataContext();
-
         public DataTable getMayDS(int tods)
         {
             string sql = "SELECT  May  FROM   MayDS WHERE NhanVienID is not null  ";

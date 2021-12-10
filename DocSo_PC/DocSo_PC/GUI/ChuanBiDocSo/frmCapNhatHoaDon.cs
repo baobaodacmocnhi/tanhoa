@@ -224,7 +224,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
 
                     int i = 1;
 
-                    SqlConnection thisConnection = new SqlConnection(DocSo_PC.Properties.Settings.Default.DocSoSP01ConnectionString);
+                    SqlConnection thisConnection = new SqlConnection(DocSo_PC.Properties.Settings.Default.DocSoTHTestConnectionString);
                     SqlCommand command = null;
                     thisConnection.Open();
 

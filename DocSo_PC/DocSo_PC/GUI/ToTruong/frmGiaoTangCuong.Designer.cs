@@ -1,4 +1,4 @@
-﻿namespace DocSo_PC.GUI.ChuanBiDocSo
+﻿namespace DocSo_PC.GUI.ToTruong
 {
     partial class frmGiaoTangCuong
     {

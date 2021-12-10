@@ -96,11 +96,12 @@
   <ItemGroup>
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\CFormat.cs" />
-    <Compile Include="DAL\ChuanBiDocSo\CChuanBiDS.cs" />
-    <Compile Include="DAL\CDALTest.cs" />
-    <Compile Include="DAL\CDuDieuKH.cs" />
-    <Compile Include="DAL\ChuyenBillding\CChuyenDuLieu.cs" />
+    <Compile Include="DAL\Doi\CChuanBiDS.cs" />
+    <Compile Include="DAL\CDHN.cs" />
+    <Compile Include="DAL\Doi\CChuyenDuLieu.cs" />
     <Compile Include="DAL\CThuTien.cs" />
+    <Compile Include="DAL\Doi\CDanhBoKhongTinhPBVMT.cs" />
+    <Compile Include="DAL\Doi\CDocSo.cs" />
     <Compile Include="DAL\QuanTri\CMenu.cs" />
     <Compile Include="DAL\QuanTri\CNguoiDung.cs" />
     <Compile Include="DAL\QuanTri\CNhom.cs" />
@@ -108,22 +109,23 @@
     <Compile Include="DAL\QuanTri\CPhanQuyenNhom.cs" />
     <Compile Include="DAL\QuanTri\CTo.cs" />
     <Compile Include="DAL\TraCuuThongTin\CTraCuuThongTin.cs" />
-    <Compile Include="DAL\XuLyDocSo\CXuLyDocSo.cs" />
-    <Compile Include="DocSoTHDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DocSoTHDataSet.xsd</DependentUpon>
-    </Compile>
+    <Compile Include="DAL\Doi\CXuLyDocSo.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ChuanBiDocSo\frmGiaoTangCuong.cs">
+    <Compile Include="GUI\Doi\frmKhongTinhPBVMT.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ChuanBiDocSo\frmGiaoTangCuong.Designer.cs">
+    <Compile Include="GUI\Doi\frmKhongTinhPBVMT.Designer.cs">
+      <DependentUpon>frmKhongTinhPBVMT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmGiaoTangCuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmGiaoTangCuong.Designer.cs">
       <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ChuanBiDocSo\frmCapNhatBienDong.cs">
@@ -138,11 +140,11 @@
     <Compile Include="GUI\ChuanBiDocSo\frmCapNhatHoaDon.Designer.cs">
       <DependentUpon>frmCapNhatHoaDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ChuanBiDocSo\frmTaoDocSo.cs">
+    <Compile Include="GUI\Doi\frmTaoDot.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ChuanBiDocSo\frmTaoDocSo.Designer.cs">
-      <DependentUpon>frmTaoDocSo.cs</DependentUpon>
+    <Compile Include="GUI\Doi\frmTaoDot.Designer.cs">
+      <DependentUpon>frmTaoDot.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ChuyenBillding\frmKiemTraDuLieu.cs">
       <SubType>Form</SubType>
@@ -198,37 +200,32 @@
     <Compile Include="GUI\XuLyDocSo\frmChonDot.Designer.cs">
       <DependentUpon>frmChonDot.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\XuLyDocSo\frmDieuChinhDocSo.cs">
+    <Compile Include="GUI\ToTruong\frmXuLySoLieu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\XuLyDocSo\frmDieuChinhDocSo.Designer.cs">
-      <DependentUpon>frmDieuChinhDocSo.cs</DependentUpon>
+    <Compile Include="GUI\ToTruong\frmXuLySoLieu.Designer.cs">
+      <DependentUpon>frmXuLySoLieu.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\XuLyDocSo\frmKiemSoatDocSo.cs">
+    <Compile Include="GUI\ToTruong\frmTheoDoiDot.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\XuLyDocSo\frmKiemSoatDocSo.Designer.cs">
-      <DependentUpon>frmKiemSoatDocSo.cs</DependentUpon>
+    <Compile Include="GUI\ToTruong\frmTheoDoiDot.Designer.cs">
+      <DependentUpon>frmTheoDoiDot.cs</DependentUpon>
     </Compile>
-    <Compile Include="LinQ\dbDocSo.designer.cs">
+    <Compile Include="LinQ\dbDHN.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbDocSo.dbml</DependentUpon>
+      <DependentUpon>dbDHN.dbml</DependentUpon>
     </Compile>
-    <Compile Include="LinQ\dbDuLieuKH.designer.cs">
+    <Compile Include="LinQ\dbDocSoTHTest.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbDuLieuKH.dbml</DependentUpon>
+      <DependentUpon>dbDocSoTHTest.dbml</DependentUpon>
     </Compile>
     <Compile Include="LinQ\dbThuTien.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dbThuTien.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="LinQ\DocSoTest.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DocSoTest.dbml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -238,29 +235,33 @@
     <EmbeddedResource Include="GUI\ChuyenBillding\frmKiemTraDuLieu.resx">
       <DependentUpon>frmKiemTraDuLieu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmKhongTinhPBVMT.resx">
+      <DependentUpon>frmKhongTinhPBVMT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\TraCuuThongTin\frmTimKiemDhn.resx">
       <DependentUpon>frmTimKiemDhn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\XuLyDocSo\rptTieuThu.rdlc" />
-    <None Include="DocSoTHDataSet.xsc">
-      <DependentUpon>DocSoTHDataSet.xsd</DependentUpon>
+    <None Include="LinQ\dbDHN.dbml.layout">
+      <DependentUpon>dbDHN.dbml</DependentUpon>
     </None>
-    <None Include="DocSoTHDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DocSoTHDataSet.Designer.cs</LastGenOutput>
+    <None Include="LinQ\dbDocSoTHTest.dbml.layout">
+      <DependentUpon>dbDocSoTHTest.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Report\XuLyDocSo\rptTieuThu.rdlc" />
+    <None Include="LinQ\dbDHN.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbDHN.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DocSoTHDataSet.xss">
-      <DependentUpon>DocSoTHDataSet.xsd</DependentUpon>
+    <None Include="LinQ\dbDocSoTHTest.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbDocSoTHTest.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="LinQ\dbThuTien.dbml.layout">
       <DependentUpon>dbThuTien.dbml</DependentUpon>
     </None>
-    <None Include="DocSo_PC_TemporaryKey.pfx" />
-    <None Include="LinQ\dbDocSo.dbml.layout">
-      <DependentUpon>dbDocSo.dbml</DependentUpon>
-    </None>
-    <EmbeddedResource Include="GUI\ChuanBiDocSo\frmGiaoTangCuong.resx">
+    <EmbeddedResource Include="GUI\ToTruong\frmGiaoTangCuong.resx">
       <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuanBiDocSo\frmCapNhatBienDong.resx">
@@ -269,8 +270,8 @@
     <EmbeddedResource Include="GUI\ChuanBiDocSo\frmCapNhatHoaDon.resx">
       <DependentUpon>frmCapNhatHoaDon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ChuanBiDocSo\frmTaoDocSo.resx">
-      <DependentUpon>frmTaoDocSo.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Doi\frmTaoDot.resx">
+      <DependentUpon>frmTaoDot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
@@ -290,31 +291,20 @@
     <EmbeddedResource Include="GUI\QuanTri\frmTo.resx">
       <DependentUpon>frmTo.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="LinQ\dbDuLieuKH.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbDuLieuKH.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="LinQ\dbThuTien.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbThuTien.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="LinQ\DocSoTest.dbml.layout">
-      <DependentUpon>DocSoTest.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="GUI\XuLyDocSo\frmChonDot.resx">
       <DependentUpon>frmChonDot.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\XuLyDocSo\frmDieuChinhDocSo.resx">
-      <DependentUpon>frmDieuChinhDocSo.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToTruong\frmXuLySoLieu.resx">
+      <DependentUpon>frmXuLySoLieu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\XuLyDocSo\frmKiemSoatDocSo.resx">
-      <DependentUpon>frmKiemSoatDocSo.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToTruong\frmTheoDoiDot.resx">
+      <DependentUpon>frmTheoDoiDot.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="LinQ\dbDuLieuKH.dbml.layout">
-      <DependentUpon>dbDuLieuKH.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -327,16 +317,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <None Include="LinQ\dbDocSo.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbDocSo.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="LinQ\DocSoTest.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DocSoTest.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -368,7 +348,11 @@
   <ItemGroup>
     <None Include="Resources\Arrow2 Right1.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DAL\ChuanBiDocSo\" />
+    <Folder Include="DAL\ChuyenBillding\" />
+    <Folder Include="DAL\ToTruong\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

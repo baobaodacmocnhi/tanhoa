@@ -22,7 +22,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
         string _mnu = "mnuLuuHD";
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CChuanBiDS _cChuanBi = new CChuanBiDS();
-        CDALTest _cDAL = new CDALTest();
+        CDAL _cDAL = new CDAL();
 
 
         public frmCapNhatBienDong()
@@ -245,7 +245,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
 
                         int i = 1;
 
-                        SqlConnection thisConnection = new SqlConnection(DocSo_PC.Properties.Settings.Default.DocSoSP01ConnectionString);
+                        SqlConnection thisConnection = new SqlConnection(DocSo_PC.Properties.Settings.Default.DocSoTHTestConnectionString);
                         SqlCommand command = null;
                         thisConnection.Open();
 
