@@ -178,8 +178,8 @@ namespace ThuTien.GUI.TongHop
 
                 if (_ctdchd.HoTen_BD != "")
                 {
-                   txtHoTen_Start.Text = _ctdchd.HoTen;
-                   txtHoTen_End.Text = _ctdchd.HoTen_BD;
+                    txtHoTen_Start.Text = _ctdchd.HoTen;
+                    txtHoTen_End.Text = _ctdchd.HoTen_BD;
                 }
                 if (_ctdchd.DiaChi_BD != "")
                 {
@@ -574,6 +574,8 @@ namespace ThuTien.GUI.TongHop
                     {
                         if (MessageBox.Show("Hóa Đơn này đã có Điều Chỉnh\nBạn có muốn chặn tiếp không?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
+                            _dchd.SoHoaDon = _SoHoaDon;
+                            _dchd.SoHoaDonMoi = null;
                             _dchd.UpdatedHDDT = false;
 
                             if (_cDCHD.Sua(_dchd))
