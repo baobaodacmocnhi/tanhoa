@@ -374,7 +374,7 @@ namespace ThuTien.GUI.TongHop
                             dchd.PHI_BD = _hoadon.PHI;
                             dchd.THUE_BD = _hoadon.THUE;
                             dchd.TONGCONG_BD = _hoadon.TONGCONG;
-                            dchd.NGAY_DC = DateTime.Now;
+                            dchd.NgayChan = dchd.NGAY_DC = DateTime.Now;
                             dchd.ChuanThu1 = chkChuanThu1.Checked;
                             dchd.BaoCaoThue = chkBaoCaoThue.Checked;
                             _hoadon.BaoCaoThue = chkBaoCaoThue.Checked;
@@ -539,6 +539,7 @@ namespace ThuTien.GUI.TongHop
             lsdc.HoTen_End = dchd.HoTen_End;
             lsdc.DiaChi_BD = dchd.DiaChi_BD;
             lsdc.DiaChi_End = dchd.DiaChi_End;
+            lsdc.NgayChan = dchd.NgayChan;
 
             _cDCHD.ThemLSDC(lsdc);
         }
@@ -574,15 +575,14 @@ namespace ThuTien.GUI.TongHop
                     {
                         if (MessageBox.Show("Hóa Đơn này đã có Điều Chỉnh\nBạn có muốn chặn tiếp không?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
+                            _dchd.NgayChan = DateTime.Now;
                             _dchd.SoHoaDon = _SoHoaDon;
                             _dchd.SoHoaDonMoi = null;
                             _dchd.UpdatedHDDT = false;
-
                             if (_cDCHD.Sua(_dchd))
                             {
                                 ///lưu lịch sử
                                 LuuLichSuDC(_dchd);
-
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                                 Close();
@@ -592,6 +592,7 @@ namespace ThuTien.GUI.TongHop
                     else
                     {
                         DIEUCHINH_HD dchd = new DIEUCHINH_HD();
+                        dchd.NgayChan = DateTime.Now;
                         dchd.FK_HOADON = _hoadon.ID_HOADON;
                         dchd.SoHoaDon = _hoadon.SOHOADON;
                         dchd.GiaBieu = _hoadon.GB;
@@ -604,13 +605,10 @@ namespace ThuTien.GUI.TongHop
                         dchd.PHI_BD = _hoadon.PHI;
                         dchd.THUE_BD = _hoadon.THUE;
                         dchd.TONGCONG_BD = _hoadon.TONGCONG;
-                        dchd.NGAY_DC = DateTime.Now;
-
                         if (_cDCHD.Them(dchd))
                         {
                             ///lưu lịch sử
                             LuuLichSuDC(dchd);
-
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.DialogResult = System.Windows.Forms.DialogResult.OK;
                             Close();

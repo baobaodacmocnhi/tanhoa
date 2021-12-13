@@ -80,19 +80,21 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.Ngay_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.txtHoTen_Start = new System.Windows.Forms.TextBox();
             this.txtDiaChi_Start = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txtDiaChi_End = new System.Windows.Forms.TextBox();
             this.txtHoTen_End = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.NgayChan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ngay_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoHoaDonMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
@@ -581,7 +583,7 @@
             this.groupBox1.Controls.Add(this.dgvDanhSach);
             this.groupBox1.Location = new System.Drawing.Point(12, 249);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(570, 105);
+            this.groupBox1.Size = new System.Drawing.Size(686, 105);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lịch Sử Điều Chỉnh";
@@ -592,15 +594,17 @@
             this.dgvDanhSach.AllowUserToDeleteRows = false;
             this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NgayChan,
             this.Ngay_DC,
             this.SoPhieu,
             this.SoHoaDon,
+            this.SoHoaDonMoi,
             this.TongCong_BD,
             this.TongCong_End});
             this.dgvDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDanhSach.Location = new System.Drawing.Point(3, 16);
             this.dgvDanhSach.Name = "dgvDanhSach";
-            this.dgvDanhSach.Size = new System.Drawing.Size(564, 86);
+            this.dgvDanhSach.Size = new System.Drawing.Size(680, 86);
             this.dgvDanhSach.TabIndex = 0;
             this.dgvDanhSach.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhSach_CellFormatting);
             // 
@@ -620,57 +624,6 @@
             this.groupBox2.TabIndex = 33;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả Điều Chỉnh Họ Tên - Địa Chỉ";
-            // 
-            // Ngay_DC
-            // 
-            this.Ngay_DC.DataPropertyName = "Ngay_DC";
-            this.Ngay_DC.HeaderText = "Ngày ĐC";
-            this.Ngay_DC.Name = "Ngay_DC";
-            // 
-            // SoPhieu
-            // 
-            this.SoPhieu.DataPropertyName = "SoPhieu";
-            this.SoPhieu.HeaderText = "Số Phiếu";
-            this.SoPhieu.Name = "SoPhieu";
-            this.SoPhieu.Width = 80;
-            // 
-            // SoHoaDon
-            // 
-            this.SoHoaDon.DataPropertyName = "SoHoaDon";
-            this.SoHoaDon.HeaderText = "Số HĐ";
-            this.SoHoaDon.Name = "SoHoaDon";
-            // 
-            // TongCong_BD
-            // 
-            this.TongCong_BD.DataPropertyName = "TongCong_BD";
-            this.TongCong_BD.HeaderText = "Tổng Cộng Cũ";
-            this.TongCong_BD.Name = "TongCong_BD";
-            this.TongCong_BD.Width = 120;
-            // 
-            // TongCong_End
-            // 
-            this.TongCong_End.DataPropertyName = "TongCong_End";
-            this.TongCong_End.HeaderText = "Tổng Cộng Mới";
-            this.TongCong_End.Name = "TongCong_End";
-            this.TongCong_End.Width = 120;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 39);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 13);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Ban Đầu:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 85);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(50, 13);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Phải Trả:";
             // 
             // label17
             // 
@@ -733,12 +686,77 @@
             this.txtHoTen_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtHoTen_End.Visible = false;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 39);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Ban Đầu:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 85);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(50, 13);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Phải Trả:";
+            // 
+            // NgayChan
+            // 
+            this.NgayChan.DataPropertyName = "NgayChan";
+            this.NgayChan.HeaderText = "Ngày Chặn";
+            this.NgayChan.Name = "NgayChan";
+            this.NgayChan.Width = 80;
+            // 
+            // Ngay_DC
+            // 
+            this.Ngay_DC.DataPropertyName = "Ngay_DC";
+            this.Ngay_DC.HeaderText = "Ngày ĐC";
+            this.Ngay_DC.Name = "Ngay_DC";
+            this.Ngay_DC.Width = 80;
+            // 
+            // SoPhieu
+            // 
+            this.SoPhieu.DataPropertyName = "SoPhieu";
+            this.SoPhieu.HeaderText = "Số Phiếu";
+            this.SoPhieu.Name = "SoPhieu";
+            this.SoPhieu.Width = 80;
+            // 
+            // SoHoaDon
+            // 
+            this.SoHoaDon.DataPropertyName = "SoHoaDon";
+            this.SoHoaDon.HeaderText = "Số HĐ Cũ";
+            this.SoHoaDon.Name = "SoHoaDon";
+            // 
+            // SoHoaDonMoi
+            // 
+            this.SoHoaDonMoi.DataPropertyName = "SoHoaDonMoi";
+            this.SoHoaDonMoi.HeaderText = "Số HĐ Mới";
+            this.SoHoaDonMoi.Name = "SoHoaDonMoi";
+            // 
+            // TongCong_BD
+            // 
+            this.TongCong_BD.DataPropertyName = "TongCong_BD";
+            this.TongCong_BD.HeaderText = "Tổng Cộng Cũ";
+            this.TongCong_BD.Name = "TongCong_BD";
+            this.TongCong_BD.Width = 90;
+            // 
+            // TongCong_End
+            // 
+            this.TongCong_End.DataPropertyName = "TongCong_End";
+            this.TongCong_End.HeaderText = "Tổng Cộng Mới";
+            this.TongCong_End.Name = "TongCong_End";
+            this.TongCong_End.Width = 90;
+            // 
             // frmShowDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(625, 497);
+            this.ClientSize = new System.Drawing.Size(708, 497);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chkBaoCaoThue);
@@ -834,11 +852,6 @@
         private System.Windows.Forms.CheckBox chkUpdatedHDDT;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvDanhSach;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_DC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_BD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_End;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtHoTen_Start;
@@ -848,5 +861,12 @@
         private System.Windows.Forms.TextBox txtHoTen_End;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayChan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_DC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDonMoi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_BD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_End;
     }
 }

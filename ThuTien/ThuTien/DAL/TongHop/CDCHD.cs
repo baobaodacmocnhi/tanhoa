@@ -1853,6 +1853,7 @@ namespace ThuTien.DAL.TongHop
                         where itemHD.DANHBA == DanhBo
                         select new
                         {
+                            itemDC.NgayChan,
                             NgayDC = itemDC.NGAY_DC,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             MaHD = itemDC.FK_HOADON,
