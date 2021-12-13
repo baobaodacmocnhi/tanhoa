@@ -307,6 +307,7 @@ namespace KTKS_DonKH.DAL
             lsdc.HoTen_End = dchd.HoTen_End;
             lsdc.DiaChi_BD = dchd.DiaChi_BD;
             lsdc.DiaChi_End = dchd.DiaChi_End;
+            lsdc.NgayChan = dchd.NgayChan;
 
             if (db.TT_LichSuDieuChinhHDs.Count() > 0)
                 lsdc.ID = db.TT_LichSuDieuChinhHDs.Max(item => item.ID) + 1;
@@ -319,7 +320,7 @@ namespace KTKS_DonKH.DAL
 
         public bool checkDangNgan(int MaHD)
         {
-            return db.HOADONs.Any(item => item.ID_HOADON == MaHD && item.NGAYGIAITRACH != null);
+            return db.HOADONs.Any(item => item.ID_HOADON == MaHD && item.MaNV_DangNgan != null);
         }
 
         public DataTable GetNam()

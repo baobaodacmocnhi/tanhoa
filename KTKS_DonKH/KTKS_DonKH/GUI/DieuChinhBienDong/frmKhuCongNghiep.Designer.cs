@@ -41,27 +41,27 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtSoTienConLai_KhauTru = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvKhauTruLichSu = new System.Windows.Forms.DataGridView();
+            this.DanhBo_KTLS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky_KTLS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTien_KTLS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate_KTLS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDanhBo_KhauTru = new System.Windows.Forms.TextBox();
             this.btnSua_KhauTru = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSoTien_KhauTru = new System.Windows.Forms.TextBox();
             this.dgvKhauTru = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnThem_KhauTru = new System.Windows.Forms.Button();
+            this.btnXoa_KhauTru = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_KhauTru = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTien_KhauTru = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate_KhauTru = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TatToan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnThem_KhauTru = new System.Windows.Forms.Button();
-            this.btnXoa_KhauTru = new System.Windows.Forms.Button();
-            this.txtSoTienConLai_KhauTru = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.DanhBo_KTLS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ky_KTLS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTien_KTLS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate_KTLS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBo)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -199,17 +199,33 @@
             this.groupBox2.Controls.Add(this.btnXoa_KhauTru);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(488, 453);
+            this.groupBox2.Size = new System.Drawing.Size(488, 582);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Khấu Trừ";
             // 
+            // txtSoTienConLai_KhauTru
+            // 
+            this.txtSoTienConLai_KhauTru.Location = new System.Drawing.Point(250, 551);
+            this.txtSoTienConLai_KhauTru.Name = "txtSoTienConLai_KhauTru";
+            this.txtSoTienConLai_KhauTru.Size = new System.Drawing.Size(100, 22);
+            this.txtSoTienConLai_KhauTru.TabIndex = 16;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(141, 554);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(103, 16);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Số Tiền Còn Lại";
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dgvKhauTruLichSu);
-            this.groupBox3.Location = new System.Drawing.Point(6, 233);
+            this.groupBox3.Location = new System.Drawing.Point(6, 354);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(468, 195);
+            this.groupBox3.Size = new System.Drawing.Size(468, 200);
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Lịch Sử Khấu Trừ";
@@ -227,10 +243,34 @@
             this.dgvKhauTruLichSu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvKhauTruLichSu.Location = new System.Drawing.Point(3, 18);
             this.dgvKhauTruLichSu.Name = "dgvKhauTruLichSu";
-            this.dgvKhauTruLichSu.Size = new System.Drawing.Size(462, 174);
+            this.dgvKhauTruLichSu.Size = new System.Drawing.Size(462, 179);
             this.dgvKhauTruLichSu.TabIndex = 11;
             this.dgvKhauTruLichSu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvKhauTruLichSu_CellFormatting);
             this.dgvKhauTruLichSu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvKhauTruLichSu_RowPostPaint);
+            // 
+            // DanhBo_KTLS
+            // 
+            this.DanhBo_KTLS.DataPropertyName = "DanhBo";
+            this.DanhBo_KTLS.HeaderText = "Danh Bộ";
+            this.DanhBo_KTLS.Name = "DanhBo_KTLS";
+            // 
+            // Ky_KTLS
+            // 
+            this.Ky_KTLS.DataPropertyName = "Ky";
+            this.Ky_KTLS.HeaderText = "Kỳ HĐ";
+            this.Ky_KTLS.Name = "Ky_KTLS";
+            // 
+            // SoTien_KTLS
+            // 
+            this.SoTien_KTLS.DataPropertyName = "SoTien";
+            this.SoTien_KTLS.HeaderText = "Số Tiền";
+            this.SoTien_KTLS.Name = "SoTien_KTLS";
+            // 
+            // CreateDate_KTLS
+            // 
+            this.CreateDate_KTLS.DataPropertyName = "CreateDate";
+            this.CreateDate_KTLS.HeaderText = "Ngày Lập";
+            this.CreateDate_KTLS.Name = "CreateDate_KTLS";
             // 
             // txtDanhBo_KhauTru
             // 
@@ -279,12 +319,41 @@
             this.TatToan});
             this.dgvKhauTru.Location = new System.Drawing.Point(10, 77);
             this.dgvKhauTru.Name = "dgvKhauTru";
-            this.dgvKhauTru.Size = new System.Drawing.Size(408, 150);
+            this.dgvKhauTru.Size = new System.Drawing.Size(435, 271);
             this.dgvKhauTru.TabIndex = 10;
             this.dgvKhauTru.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhauTru_CellClick);
             this.dgvKhauTru.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhauTru_CellEndEdit);
             this.dgvKhauTru.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvKhauTru_CellFormatting);
             this.dgvKhauTru.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvKhauTru_RowPostPaint);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 16);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Số Tiền";
+            // 
+            // btnThem_KhauTru
+            // 
+            this.btnThem_KhauTru.Location = new System.Drawing.Point(181, 20);
+            this.btnThem_KhauTru.Name = "btnThem_KhauTru";
+            this.btnThem_KhauTru.Size = new System.Drawing.Size(75, 23);
+            this.btnThem_KhauTru.TabIndex = 11;
+            this.btnThem_KhauTru.Text = "Thêm";
+            this.btnThem_KhauTru.UseVisualStyleBackColor = true;
+            this.btnThem_KhauTru.Click += new System.EventHandler(this.btnThem_KhauTru_Click);
+            // 
+            // btnXoa_KhauTru
+            // 
+            this.btnXoa_KhauTru.Location = new System.Drawing.Point(343, 20);
+            this.btnXoa_KhauTru.Name = "btnXoa_KhauTru";
+            this.btnXoa_KhauTru.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa_KhauTru.TabIndex = 12;
+            this.btnXoa_KhauTru.Text = "Xóa";
+            this.btnXoa_KhauTru.UseVisualStyleBackColor = true;
+            this.btnXoa_KhauTru.Click += new System.EventHandler(this.btnXoa_KhauTru_Click);
             // 
             // ID
             // 
@@ -316,76 +385,7 @@
             this.TatToan.DataPropertyName = "TatToan";
             this.TatToan.HeaderText = "Tất Toán";
             this.TatToan.Name = "TatToan";
-            this.TatToan.Width = 50;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 52);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 16);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Số Tiền";
-            // 
-            // btnThem_KhauTru
-            // 
-            this.btnThem_KhauTru.Location = new System.Drawing.Point(181, 20);
-            this.btnThem_KhauTru.Name = "btnThem_KhauTru";
-            this.btnThem_KhauTru.Size = new System.Drawing.Size(75, 23);
-            this.btnThem_KhauTru.TabIndex = 11;
-            this.btnThem_KhauTru.Text = "Thêm";
-            this.btnThem_KhauTru.UseVisualStyleBackColor = true;
-            this.btnThem_KhauTru.Click += new System.EventHandler(this.btnThem_KhauTru_Click);
-            // 
-            // btnXoa_KhauTru
-            // 
-            this.btnXoa_KhauTru.Location = new System.Drawing.Point(343, 20);
-            this.btnXoa_KhauTru.Name = "btnXoa_KhauTru";
-            this.btnXoa_KhauTru.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa_KhauTru.TabIndex = 12;
-            this.btnXoa_KhauTru.Text = "Xóa";
-            this.btnXoa_KhauTru.UseVisualStyleBackColor = true;
-            this.btnXoa_KhauTru.Click += new System.EventHandler(this.btnXoa_KhauTru_Click);
-            // 
-            // txtSoTienConLai_KhauTru
-            // 
-            this.txtSoTienConLai_KhauTru.Location = new System.Drawing.Point(250, 425);
-            this.txtSoTienConLai_KhauTru.Name = "txtSoTienConLai_KhauTru";
-            this.txtSoTienConLai_KhauTru.Size = new System.Drawing.Size(100, 22);
-            this.txtSoTienConLai_KhauTru.TabIndex = 16;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(141, 428);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 16);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Số Tiền Còn Lại";
-            // 
-            // DanhBo_KTLS
-            // 
-            this.DanhBo_KTLS.DataPropertyName = "DanhBo";
-            this.DanhBo_KTLS.HeaderText = "Danh Bộ";
-            this.DanhBo_KTLS.Name = "DanhBo_KTLS";
-            // 
-            // Ky_KTLS
-            // 
-            this.Ky_KTLS.DataPropertyName = "Ky";
-            this.Ky_KTLS.HeaderText = "Kỳ HĐ";
-            this.Ky_KTLS.Name = "Ky_KTLS";
-            // 
-            // SoTien_KTLS
-            // 
-            this.SoTien_KTLS.DataPropertyName = "SoTien";
-            this.SoTien_KTLS.HeaderText = "Số Tiền";
-            this.SoTien_KTLS.Name = "SoTien_KTLS";
-            // 
-            // CreateDate_KTLS
-            // 
-            this.CreateDate_KTLS.DataPropertyName = "CreateDate";
-            this.CreateDate_KTLS.HeaderText = "Ngày Lập";
-            this.CreateDate_KTLS.Name = "CreateDate_KTLS";
+            this.TatToan.Width = 70;
             // 
             // frmKhuCongNghiep
             // 
@@ -393,7 +393,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1134, 563);
+            this.ClientSize = new System.Drawing.Size(1134, 637);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -438,16 +438,16 @@
         private System.Windows.Forms.Button btnXoa_KhauTru;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvKhauTruLichSu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_KhauTru;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoTien_KhauTru;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_KhauTru;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn TatToan;
         private System.Windows.Forms.TextBox txtSoTienConLai_KhauTru;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_KTLS;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky_KTLS;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTien_KTLS;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_KTLS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_KhauTru;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoTien_KhauTru;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_KhauTru;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn TatToan;
     }
 }

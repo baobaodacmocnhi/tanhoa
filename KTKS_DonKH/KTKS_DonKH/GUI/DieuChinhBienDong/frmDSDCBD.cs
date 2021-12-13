@@ -2138,7 +2138,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         else
                                             if (ctdcbd.DCBD.MaDonTBC != null)
                                                 dr["MaDon"] = "TBC" + ctdcbd.DCBD.MaDonTBC.ToString().Insert(ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
-                                    dr["ChucVu"] = CTaiKhoan.ChucVu.Replace(" PHÒNG","");
+                                    dr["ChucVu"] = CTaiKhoan.ChucVu.Replace(" PHÒNG", "");
                                     dr["NguoiKy"] = CTaiKhoan.NguoiKy;
                                     dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                                     dsBaoCao.Tables["DCBD"].Rows.Add(dr);
@@ -2147,7 +2147,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
                                     dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
                                 }
-                                
+
                                 //DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
                                 //dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
@@ -2830,7 +2830,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (MessageBox.Show("Bạn chắc chắn Cập Nhật Thu Tiền những Phiếu trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         if (radDSDCHD.Checked)
                         {
-                            string message = "";
+                            string messageDangNgan = "", messageDCHDTienDu = "";
                             for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                                 if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenThuTien", i].Value.ToString()) == false)
                                 {
@@ -2842,220 +2842,225 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             HOADON hoadon = _cThuTien.get(ctdchd.SoHoaDon);
                                             DIEUCHINH_HD dchd = _cThuTien.get_DCHD(hoadon.ID_HOADON);
 
-                                            if (hoadon.MaNV_DangNgan == null)
-                                                if (dchd != null)
-                                                {
-                                                    if (ctdchd.DCBD.MaDon != null)
-                                                        dchd.PHIEU_DC = (int)ctdchd.DCBD.MaDon;
-                                                    else
-                                                        if (ctdchd.DCBD.MaDonTXL != null)
-                                                            dchd.PHIEU_DC = (int)ctdchd.DCBD.MaDonTXL;
-                                                        else
-                                                            if (ctdchd.DCBD.MaDonTBC != null)
-                                                                dchd.PHIEU_DC = (int)ctdchd.DCBD.MaDonTBC;
-
-                                                    dchd.NGAY_VB = ctdchd.NgayKy.Value;
-                                                    dchd.NGAY_DC = DateTime.Now;
-
-                                                    if (dchd.SoPhieu != ctdchd.MaCTDCHD)
+                                            if (hoadon.DCHD == false)
+                                                if (hoadon.MaNV_DangNgan == null)
+                                                    if (dchd != null)
                                                     {
-                                                        dchd.GIABAN_BD = hoadon.GIABAN;
-                                                        dchd.THUE_BD = hoadon.THUE;
-                                                        dchd.PHI_BD = hoadon.PHI;
-                                                        dchd.TONGCONG_BD = hoadon.TONGCONG;
-                                                        //hđ điều chỉnh lần 2
-                                                        dchd.SoHoaDon = hoadon.SOHOADON;
-                                                        dchd.SoHoaDonMoi = null;
-                                                        dchd.UpdatedHDDT = false;
-                                                    }
-
-                                                    dchd.SoPhieu = ctdchd.MaCTDCHD;
-                                                    dchd.TangGiam = ctdchd.TangGiam;
-
-                                                    dchd.GIABAN_DC = ctdchd.TienNuoc_BD.Value;
-                                                    dchd.GIABAN_END = ctdchd.TienNuoc_End.Value;
-
-                                                    dchd.THUE_DC = ctdchd.ThueGTGT_BD.Value;
-                                                    dchd.THUE_END = ctdchd.ThueGTGT_End.Value;
-
-                                                    dchd.PHI_DC = ctdchd.PhiBVMT_BD.Value;
-                                                    dchd.PHI_END = ctdchd.PhiBVMT_End.Value;
-
-                                                    dchd.TONGCONG_DC = ctdchd.TongCong_BD.Value;
-                                                    dchd.TONGCONG_END = ctdchd.TongCong_End.Value;
-
-                                                    dchd.GB_DC = ctdchd.GiaBieu_BD;
-                                                    dchd.DM_DC = ctdchd.DinhMuc_BD;
-                                                    dchd.DinhMucHN_DC = ctdchd.DinhMucHN_BD;
-                                                    dchd.TIEUTHU_DC = ctdchd.TieuThu_BD;
-
-                                                    if (ctdchd.HoTen_BD != "")
-                                                    {
-                                                        dchd.HoTen_BD = ctdchd.HoTen;
-                                                        dchd.HoTen_End = ctdchd.HoTen_BD;
-                                                    }
-                                                    else
-                                                    {
-                                                        dchd.HoTen_BD = null;
-                                                        dchd.HoTen_End = null;
-                                                    }
-                                                    if (ctdchd.DiaChi_BD != "")
-                                                    {
-                                                        dchd.DiaChi_BD = ctdchd.DiaChi;
-                                                        dchd.DiaChi_End = ctdchd.DiaChi_BD;
-                                                    }
-                                                    else
-                                                    {
-                                                        dchd.DiaChi_BD =null;
-                                                        dchd.DiaChi_End = null;
-                                                    }
-
-                                                    dchd.ModifyDate = DateTime.Now;
-                                                    ///lưu lịch sử
-                                                    _cThuTien.LuuLichSuDC(dchd);
-
-                                                    if (ctdchd.BaoCaoThue == true)
-                                                    {
-                                                        dchd.BaoCaoThue = true;
-                                                        dchd.UpdatedHDDT = true;
-                                                        hoadon.BaoCaoThue = true;
-                                                    }
-                                                    else
-                                                    {
-                                                        dchd.BaoCaoThue = false;
-                                                        dchd.UpdatedHDDT = false;
-                                                        hoadon.BaoCaoThue = false;
-                                                    }
-                                                    hoadon.GB = dchd.GB_DC.Value;
-                                                    hoadon.DM = dchd.DM_DC;
-                                                    hoadon.DinhMucHN = dchd.DinhMucHN_DC;
-                                                    hoadon.TIEUTHU = dchd.TIEUTHU_DC;
-                                                    hoadon.GIABAN = dchd.GIABAN_END;
-                                                    hoadon.THUE = dchd.THUE_END;
-                                                    hoadon.PHI = dchd.PHI_END;
-                                                    hoadon.TONGCONG = dchd.TONGCONG_END;
-                                                    hoadon.ModifyDate = DateTime.Now;
-                                                    _cThuTien.SubmitChanges();
-
-                                                    ctdchd.ChuyenThuTien = true;
-                                                    ctdchd.NgayChuyenThuTien = DateTime.Now;
-                                                    ctdchd.NguoiChuyenThuTien = CTaiKhoan.MaUser;
-                                                    ctdchd.ModifyBy = CTaiKhoan.MaUser;
-                                                    ctdchd.ModifyDate = DateTime.Now;
-                                                    _cDCBD.SubmitChanges();
-
-                                                    //scope.Complete();
-                                                }
-                                                else
-                                                {
-                                                    DIEUCHINH_HD dchd1 = new DIEUCHINH_HD();
-                                                    dchd1.FK_HOADON = hoadon.ID_HOADON;
-                                                    dchd1.SoHoaDon = hoadon.SOHOADON;
-                                                    dchd1.GiaBieu = hoadon.GB;
-                                                    if (hoadon.DM != null)
-                                                        dchd1.DinhMuc = (int)hoadon.DM;
-                                                    dchd1.TIEUTHU_BD = (int)hoadon.TIEUTHU;
-                                                    dchd1.GIABAN_BD = hoadon.GIABAN;
-                                                    dchd1.PHI_BD = hoadon.PHI;
-                                                    dchd1.THUE_BD = hoadon.THUE;
-                                                    dchd1.TONGCONG_BD = hoadon.TONGCONG;
-                                                    dchd1.NGAY_DC = DateTime.Now;
-
-                                                    if (ctdchd.DCBD.MaDonMoi != null)
-                                                        dchd1.PHIEU_DC = ctdchd.DCBD.MaDonMoi;
-                                                    else
                                                         if (ctdchd.DCBD.MaDon != null)
-                                                            dchd1.PHIEU_DC = (int)ctdchd.DCBD.MaDon;
+                                                            dchd.PHIEU_DC = (int)ctdchd.DCBD.MaDon;
                                                         else
                                                             if (ctdchd.DCBD.MaDonTXL != null)
-                                                                dchd1.PHIEU_DC = (int)ctdchd.DCBD.MaDonTXL;
+                                                                dchd.PHIEU_DC = (int)ctdchd.DCBD.MaDonTXL;
                                                             else
                                                                 if (ctdchd.DCBD.MaDonTBC != null)
-                                                                    dchd1.PHIEU_DC = (int)ctdchd.DCBD.MaDonTBC;
+                                                                    dchd.PHIEU_DC = (int)ctdchd.DCBD.MaDonTBC;
 
-                                                    dchd1.NGAY_VB = ctdchd.NgayKy.Value;
-                                                    dchd1.SoPhieu = ctdchd.MaCTDCHD;
-                                                    dchd1.TangGiam = ctdchd.TangGiam;
+                                                        dchd.NGAY_VB = ctdchd.NgayKy.Value;
+                                                        dchd.NGAY_DC = DateTime.Now;
 
-                                                    //_dchd.GIABAN_BD = ctdchd.TienNuoc_Start.Value;
-                                                    dchd1.GIABAN_DC = ctdchd.TienNuoc_BD.Value;
-                                                    dchd1.GIABAN_END = ctdchd.TienNuoc_End.Value;
+                                                        if (dchd.SoPhieu != ctdchd.MaCTDCHD)
+                                                        {
+                                                            dchd.GIABAN_BD = hoadon.GIABAN;
+                                                            dchd.THUE_BD = hoadon.THUE;
+                                                            dchd.PHI_BD = hoadon.PHI;
+                                                            dchd.TONGCONG_BD = hoadon.TONGCONG;
+                                                            //hđ điều chỉnh lần 2
+                                                            dchd.SoHoaDon = hoadon.SOHOADON;
+                                                            dchd.SoHoaDonMoi = null;
+                                                            dchd.UpdatedHDDT = false;
+                                                        }
 
-                                                    //_dchd.THUE_BD = ctdchd.ThueGTGT_Start.Value;
-                                                    dchd1.THUE_DC = ctdchd.ThueGTGT_BD.Value;
-                                                    dchd1.THUE_END = ctdchd.ThueGTGT_End.Value;
+                                                        dchd.SoPhieu = ctdchd.MaCTDCHD;
+                                                        dchd.TangGiam = ctdchd.TangGiam;
 
-                                                    //_dchd.PHI_BD = ctdchd.PhiBVMT_Start.Value;
-                                                    dchd1.PHI_DC = ctdchd.PhiBVMT_BD.Value;
-                                                    dchd1.PHI_END = ctdchd.PhiBVMT_End.Value;
+                                                        dchd.GIABAN_DC = ctdchd.TienNuoc_BD.Value;
+                                                        dchd.GIABAN_END = ctdchd.TienNuoc_End.Value;
 
-                                                    //_dchd.TONGCONG_BD = ctdchd.TongCong_Start.Value;
-                                                    dchd1.TONGCONG_DC = ctdchd.TongCong_BD.Value;
-                                                    dchd1.TONGCONG_END = ctdchd.TongCong_End.Value;
+                                                        dchd.THUE_DC = ctdchd.ThueGTGT_BD.Value;
+                                                        dchd.THUE_END = ctdchd.ThueGTGT_End.Value;
 
-                                                    dchd1.GB_DC = ctdchd.GiaBieu_BD;
-                                                    dchd1.DM_DC = ctdchd.DinhMuc_BD;
-                                                    dchd1.DinhMucHN_DC = ctdchd.DinhMucHN_BD;
-                                                    dchd1.TIEUTHU_DC = ctdchd.TieuThu_BD;
+                                                        dchd.PHI_DC = ctdchd.PhiBVMT_BD.Value;
+                                                        dchd.PHI_END = ctdchd.PhiBVMT_End.Value;
 
-                                                    if (ctdchd.HoTen_BD != "")
-                                                    {
-                                                        dchd1.HoTen_BD = ctdchd.HoTen;
-                                                        dchd1.HoTen_End = ctdchd.HoTen_BD;
-                                                    }
-                                                    if (ctdchd.DiaChi_BD != "")
-                                                    {
-                                                        dchd1.DiaChi_BD = ctdchd.DiaChi;
-                                                        dchd1.DiaChi_End = ctdchd.DiaChi_BD;
-                                                    }
+                                                        dchd.TONGCONG_DC = ctdchd.TongCong_BD.Value;
+                                                        dchd.TONGCONG_END = ctdchd.TongCong_End.Value;
 
-                                                    dchd1.CreateDate = DateTime.Now;
-                                                    _cThuTien.Them(dchd1);
-                                                    ///lưu lịch sử
-                                                    _cThuTien.LuuLichSuDC(dchd1);
+                                                        dchd.GB_DC = ctdchd.GiaBieu_BD;
+                                                        dchd.DM_DC = ctdchd.DinhMuc_BD;
+                                                        dchd.DinhMucHN_DC = ctdchd.DinhMucHN_BD;
+                                                        dchd.TIEUTHU_DC = ctdchd.TieuThu_BD;
 
-                                                    if (ctdchd.BaoCaoThue == true)
-                                                    {
-                                                        dchd1.BaoCaoThue = true;
-                                                        dchd1.UpdatedHDDT = true;
-                                                        hoadon.BaoCaoThue = true;
+                                                        if (ctdchd.HoTen_BD != "")
+                                                        {
+                                                            dchd.HoTen_BD = ctdchd.HoTen;
+                                                            dchd.HoTen_End = ctdchd.HoTen_BD;
+                                                        }
+                                                        else
+                                                        {
+                                                            dchd.HoTen_BD = null;
+                                                            dchd.HoTen_End = null;
+                                                        }
+                                                        if (ctdchd.DiaChi_BD != "")
+                                                        {
+                                                            dchd.DiaChi_BD = ctdchd.DiaChi;
+                                                            dchd.DiaChi_End = ctdchd.DiaChi_BD;
+                                                        }
+                                                        else
+                                                        {
+                                                            dchd.DiaChi_BD = null;
+                                                            dchd.DiaChi_End = null;
+                                                        }
+
+                                                        dchd.ModifyDate = DateTime.Now;
+                                                        ///lưu lịch sử
+                                                        _cThuTien.LuuLichSuDC(dchd);
+
+                                                        if (ctdchd.BaoCaoThue == true)
+                                                        {
+                                                            dchd.BaoCaoThue = true;
+                                                            dchd.UpdatedHDDT = true;
+                                                            hoadon.BaoCaoThue = true;
+                                                        }
+                                                        else
+                                                        {
+                                                            dchd.BaoCaoThue = false;
+                                                            dchd.UpdatedHDDT = false;
+                                                            hoadon.BaoCaoThue = false;
+                                                        }
+                                                        hoadon.GB = dchd.GB_DC.Value;
+                                                        hoadon.DM = dchd.DM_DC;
+                                                        hoadon.DinhMucHN = dchd.DinhMucHN_DC;
+                                                        hoadon.TIEUTHU = dchd.TIEUTHU_DC;
+                                                        hoadon.GIABAN = dchd.GIABAN_END;
+                                                        hoadon.THUE = dchd.THUE_END;
+                                                        hoadon.PHI = dchd.PHI_END;
+                                                        hoadon.TONGCONG = dchd.TONGCONG_END;
+                                                        hoadon.ModifyDate = DateTime.Now;
+                                                        _cThuTien.SubmitChanges();
+
+                                                        ctdchd.ChuyenThuTien = true;
+                                                        ctdchd.NgayChuyenThuTien = DateTime.Now;
+                                                        ctdchd.NguoiChuyenThuTien = CTaiKhoan.MaUser;
+                                                        ctdchd.ModifyBy = CTaiKhoan.MaUser;
+                                                        ctdchd.ModifyDate = DateTime.Now;
+                                                        _cDCBD.SubmitChanges();
+
+                                                        //scope.Complete();
                                                     }
                                                     else
                                                     {
-                                                        dchd1.BaoCaoThue = false;
-                                                        dchd1.UpdatedHDDT = false;
-                                                        hoadon.BaoCaoThue = false;
+                                                        DIEUCHINH_HD dchd1 = new DIEUCHINH_HD();
+                                                        dchd1.FK_HOADON = hoadon.ID_HOADON;
+                                                        dchd1.SoHoaDon = hoadon.SOHOADON;
+                                                        dchd1.GiaBieu = hoadon.GB;
+                                                        if (hoadon.DM != null)
+                                                            dchd1.DinhMuc = (int)hoadon.DM;
+                                                        dchd1.TIEUTHU_BD = (int)hoadon.TIEUTHU;
+                                                        dchd1.GIABAN_BD = hoadon.GIABAN;
+                                                        dchd1.PHI_BD = hoadon.PHI;
+                                                        dchd1.THUE_BD = hoadon.THUE;
+                                                        dchd1.TONGCONG_BD = hoadon.TONGCONG;
+                                                        dchd.NgayChan = dchd1.NGAY_DC = DateTime.Now;
+
+                                                        if (ctdchd.DCBD.MaDonMoi != null)
+                                                            dchd1.PHIEU_DC = ctdchd.DCBD.MaDonMoi;
+                                                        else
+                                                            if (ctdchd.DCBD.MaDon != null)
+                                                                dchd1.PHIEU_DC = (int)ctdchd.DCBD.MaDon;
+                                                            else
+                                                                if (ctdchd.DCBD.MaDonTXL != null)
+                                                                    dchd1.PHIEU_DC = (int)ctdchd.DCBD.MaDonTXL;
+                                                                else
+                                                                    if (ctdchd.DCBD.MaDonTBC != null)
+                                                                        dchd1.PHIEU_DC = (int)ctdchd.DCBD.MaDonTBC;
+
+                                                        dchd1.NGAY_VB = ctdchd.NgayKy.Value;
+                                                        dchd1.SoPhieu = ctdchd.MaCTDCHD;
+                                                        dchd1.TangGiam = ctdchd.TangGiam;
+
+                                                        //_dchd.GIABAN_BD = ctdchd.TienNuoc_Start.Value;
+                                                        dchd1.GIABAN_DC = ctdchd.TienNuoc_BD.Value;
+                                                        dchd1.GIABAN_END = ctdchd.TienNuoc_End.Value;
+
+                                                        //_dchd.THUE_BD = ctdchd.ThueGTGT_Start.Value;
+                                                        dchd1.THUE_DC = ctdchd.ThueGTGT_BD.Value;
+                                                        dchd1.THUE_END = ctdchd.ThueGTGT_End.Value;
+
+                                                        //_dchd.PHI_BD = ctdchd.PhiBVMT_Start.Value;
+                                                        dchd1.PHI_DC = ctdchd.PhiBVMT_BD.Value;
+                                                        dchd1.PHI_END = ctdchd.PhiBVMT_End.Value;
+
+                                                        //_dchd.TONGCONG_BD = ctdchd.TongCong_Start.Value;
+                                                        dchd1.TONGCONG_DC = ctdchd.TongCong_BD.Value;
+                                                        dchd1.TONGCONG_END = ctdchd.TongCong_End.Value;
+
+                                                        dchd1.GB_DC = ctdchd.GiaBieu_BD;
+                                                        dchd1.DM_DC = ctdchd.DinhMuc_BD;
+                                                        dchd1.DinhMucHN_DC = ctdchd.DinhMucHN_BD;
+                                                        dchd1.TIEUTHU_DC = ctdchd.TieuThu_BD;
+
+                                                        if (ctdchd.HoTen_BD != "")
+                                                        {
+                                                            dchd1.HoTen_BD = ctdchd.HoTen;
+                                                            dchd1.HoTen_End = ctdchd.HoTen_BD;
+                                                        }
+                                                        if (ctdchd.DiaChi_BD != "")
+                                                        {
+                                                            dchd1.DiaChi_BD = ctdchd.DiaChi;
+                                                            dchd1.DiaChi_End = ctdchd.DiaChi_BD;
+                                                        }
+
+                                                        dchd1.CreateDate = DateTime.Now;
+                                                        _cThuTien.Them(dchd1);
+                                                        ///lưu lịch sử
+                                                        _cThuTien.LuuLichSuDC(dchd1);
+
+                                                        if (ctdchd.BaoCaoThue == true)
+                                                        {
+                                                            dchd1.BaoCaoThue = true;
+                                                            dchd1.UpdatedHDDT = true;
+                                                            hoadon.BaoCaoThue = true;
+                                                        }
+                                                        else
+                                                        {
+                                                            dchd1.BaoCaoThue = false;
+                                                            dchd1.UpdatedHDDT = false;
+                                                            hoadon.BaoCaoThue = false;
+                                                        }
+                                                        hoadon.GB = dchd1.GB_DC.Value;
+                                                        hoadon.DM = dchd1.DM_DC;
+                                                        hoadon.DinhMucHN = dchd1.DinhMucHN_DC;
+                                                        hoadon.TIEUTHU = dchd1.TIEUTHU_DC;
+                                                        hoadon.GIABAN = dchd1.GIABAN_END;
+                                                        hoadon.THUE = dchd1.THUE_END;
+                                                        hoadon.PHI = dchd1.PHI_END;
+                                                        hoadon.TONGCONG = dchd1.TONGCONG_END;
+                                                        hoadon.ModifyDate = DateTime.Now;
+                                                        _cThuTien.SubmitChanges();
+
+                                                        ctdchd.ChuyenThuTien = true;
+                                                        ctdchd.NgayChuyenThuTien = DateTime.Now;
+                                                        ctdchd.NguoiChuyenThuTien = CTaiKhoan.MaUser;
+                                                        ctdchd.ModifyBy = CTaiKhoan.MaUser;
+                                                        ctdchd.ModifyDate = DateTime.Now;
+                                                        _cDCBD.SubmitChanges();
+
+                                                        //scope.Complete();
                                                     }
-                                                    hoadon.GB = dchd1.GB_DC.Value;
-                                                    hoadon.DM = dchd1.DM_DC;
-                                                    hoadon.DinhMucHN = dchd1.DinhMucHN_DC;
-                                                    hoadon.TIEUTHU = dchd1.TIEUTHU_DC;
-                                                    hoadon.GIABAN = dchd1.GIABAN_END;
-                                                    hoadon.THUE = dchd1.THUE_END;
-                                                    hoadon.PHI = dchd1.PHI_END;
-                                                    hoadon.TONGCONG = dchd1.TONGCONG_END;
-                                                    hoadon.ModifyDate = DateTime.Now;
-                                                    _cThuTien.SubmitChanges();
-
-                                                    ctdchd.ChuyenThuTien = true;
-                                                    ctdchd.NgayChuyenThuTien = DateTime.Now;
-                                                    ctdchd.NguoiChuyenThuTien = CTaiKhoan.MaUser;
-                                                    ctdchd.ModifyBy = CTaiKhoan.MaUser;
-                                                    ctdchd.ModifyDate = DateTime.Now;
-                                                    _cDCBD.SubmitChanges();
-
-                                                    //scope.Complete();
-                                                }
+                                                else
+                                                    messageDangNgan += "\n" + ctdchd.MaCTDCHD;
                                             else
-                                                message += "\n" + ctdchd.MaCTDCHD;
+                                                messageDCHDTienDu += "\n" + ctdchd.MaCTDCHD;
                                         }
-
                                     }
                                 }
-                            if (message == "")
-                                MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (messageDangNgan != "")
+                                MessageBox.Show("DS Đã Đăng Ngân:" + messageDangNgan, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             else
-                                MessageBox.Show("Cập Nhật Thành công\nDS Đã Đăng Ngân:" + message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                if (messageDCHDTienDu != "")
+                                    MessageBox.Show("DS Điều Chỉnh Tiền Dư(gửi Đ.TT):" + messageDCHDTienDu, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                else
+                                    MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                 }
                 else

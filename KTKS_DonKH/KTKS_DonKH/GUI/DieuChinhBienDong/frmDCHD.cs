@@ -514,13 +514,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.TONGCONG.Value);
                     }
                     txtSoHD.Text = _hoadon.SOPHATHANH.ToString("00000000");
-                    if (_hoadon.NGAYGIAITRACH == null)
-                        lbDangNgan.Text = "Hóa Đơn Tồn";
-                    else
+                    if (_hoadon.DCHD == true)
                     {
-                        lbDangNgan.Text = "Hóa Đơn Đã Đăng Ngân";
-                        MessageBox.Show("Hóa Đơn Đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lbDangNgan.Text = "Hóa Đơn có Điều Chỉnh Tiền Dư";
+                        MessageBox.Show(lbDangNgan.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    else
+                        if (_hoadon.MaNV_DangNgan == null)
+                            lbDangNgan.Text = "Hóa Đơn Tồn";
+                        else
+                        {
+                            lbDangNgan.Text = "Hóa Đơn Đã Đăng Ngân";
+                            MessageBox.Show(lbDangNgan.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                 }
                 else
                 {
@@ -1902,8 +1908,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             else
             {
-                txtSoTienKhauTru.Text = "0";
                 txtSoTienKhauTru.ReadOnly = true;
+                txtSoTienKhauTru.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cKCN.getSoTienKhauTruTon(_hoadon.DANHBA));
                 //TinhTienNuoc();
             }
         }
@@ -2249,6 +2255,36 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtTongCong_Start.Text = "0";
                 if (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) + int.Parse(txtThueGTGT_End.Text.Trim().Replace(".", "")) + int.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", "")) != 0)
                     txtTongCong_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) + int.Parse(txtThueGTGT_End.Text.Trim().Replace(".", "")) + int.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""))));
+                else
+                    txtTongCong_End.Text = "0";
+
+                if (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", "")) != 0)
+                    txtTienNuoc_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", ""))));
+                else
+                    txtTienNuoc_BD.Text = "0";
+                if (int.Parse(txtThueGTGT_End.Text.Trim().Replace(".", "")) - int.Parse(txtThueGTGT_Start.Text.Trim().Replace(".", "")) != 0)
+                    txtThueGTGT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(txtThueGTGT_End.Text.Trim().Replace(".", "")) - int.Parse(txtThueGTGT_Start.Text.Trim().Replace(".", ""))));
+                else
+                    txtThueGTGT_BD.Text = "0";
+                if (int.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", "")) - int.Parse(txtPhiBVMT_Start.Text.Trim().Replace(".", "")) != 0)
+                    txtPhiBVMT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", "")) - int.Parse(txtPhiBVMT_Start.Text.Trim().Replace(".", ""))));
+                else
+                    txtPhiBVMT_BD.Text = "0";
+                if (int.Parse(txtTongCong_End.Text.Trim().Replace(".", "")) - int.Parse(txtTongCong_Start.Text.Trim().Replace(".", "")) != 0)
+                    txtTongCong_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(txtTongCong_End.Text.Trim().Replace(".", "")) - int.Parse(txtTongCong_Start.Text.Trim().Replace(".", ""))));
+                else
+                    txtTongCong_BD.Text = "0";
+            }
+            //auto khấu trừ
+            if (txtSoTienKhauTru.Text.Trim().Replace(".", "") != "" && txtTienNuoc_Start.Text.Trim().Replace(".", "") != "" && txtThueGTGT_Start.Text.Trim().Replace(".", "") != "" && txtPhiBVMT_Start.Text.Trim().Replace(".", "") != "" && txtTongCong_Start.Text.Trim().Replace(".", "") != ""
+                 && txtTienNuoc_End.Text.Trim().Replace(".", "") != "" && txtThueGTGT_End.Text.Trim().Replace(".", "") != "" && txtPhiBVMT_End.Text.Trim().Replace(".", "") != "" && txtTongCong_End.Text.Trim().Replace(".", "") != "")
+            {
+                if (int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", "")) + int.Parse(txtThueGTGT_Start.Text.Trim().Replace(".", "")) + int.Parse(txtPhiBVMT_Start.Text.Trim().Replace(".", "")) != 0)
+                    txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", "")) + int.Parse(txtThueGTGT_Start.Text.Trim().Replace(".", "")) + int.Parse(txtPhiBVMT_Start.Text.Trim().Replace(".", ""))));
+                else
+                    txtTongCong_Start.Text = "0";
+                if (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) + int.Parse(txtThueGTGT_End.Text.Trim().Replace(".", "")) + int.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", "")) - +int.Parse(txtSoTienKhauTru.Text.Trim().Replace(".", "")) != 0)
+                    txtTongCong_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) + int.Parse(txtThueGTGT_End.Text.Trim().Replace(".", "")) + int.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", "")) - +int.Parse(txtSoTienKhauTru.Text.Trim().Replace(".", ""))));
                 else
                     txtTongCong_End.Text = "0";
 

@@ -5505,6 +5505,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DiaChi_End;
 		
+		private System.Nullable<System.DateTime> _NgayChan;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -5601,6 +5603,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDiaChi_BDChanged();
     partial void OnDiaChi_EndChanging(string value);
     partial void OnDiaChi_EndChanged();
+    partial void OnNgayChanChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayChanChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -6456,6 +6460,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChan", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayChan
+		{
+			get
+			{
+				return this._NgayChan;
+			}
+			set
+			{
+				if ((this._NgayChan != value))
+				{
+					this.OnNgayChanChanging(value);
+					this.SendPropertyChanging();
+					this._NgayChan = value;
+					this.SendPropertyChanged("NgayChan");
+					this.OnNgayChanChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
 		public System.Nullable<System.DateTime> CreateDate
 		{
@@ -6639,6 +6663,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DiaChi_End;
 		
+		private System.Nullable<System.DateTime> _NgayChan;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -6727,6 +6753,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDiaChi_BDChanged();
     partial void OnDiaChi_EndChanging(string value);
     partial void OnDiaChi_EndChanged();
+    partial void OnNgayChanChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayChanChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -7498,6 +7526,26 @@ namespace KTKS_DonKH.LinQ
 					this._DiaChi_End = value;
 					this.SendPropertyChanged("DiaChi_End");
 					this.OnDiaChi_EndChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChan", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayChan
+		{
+			get
+			{
+				return this._NgayChan;
+			}
+			set
+			{
+				if ((this._NgayChan != value))
+				{
+					this.OnNgayChanChanging(value);
+					this.SendPropertyChanging();
+					this._NgayChan = value;
+					this.SendPropertyChanged("NgayChan");
+					this.OnNgayChanChanged();
 				}
 			}
 		}
