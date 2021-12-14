@@ -312,8 +312,6 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
                             h.NVCapNhat = CNguoiDung.TaiKhoan;
                             h.BienDongID = h.Nam.ToString() + h.Ky + h.DanhBa;
 
-
-
                             //string cmd = "INSERT INTO [BienDong] ([BienDongID],[Nam],[Ky],[Dot],[DanhBa]) ";
                             //cmd += "VALUES ('" + BienDongID + "'," + nam + ",'" + ky + "','" + dot + "','" + danhba + "')";
 
@@ -322,16 +320,10 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
                             cmd += "'" + h.Duong + "','" + h.Phuong + "','" + h.Quan + "',0" + h.GB + ",0" + h.DM + ",0" + h.SH + ",0" + h.SX + ",0" + h.DV + ",0" + h.HC + ",'" + h.Hieu + "',";
                             cmd += "'" + h.Co + "','" + h.SoThan + "','" + h.Code + "',0" + h.ChiSo + ",0" + h.TieuThu + ",'" + h.NgayGan + "','" + h.STT + "','" + h.MLT1 + "','" + h.NVCapNhat + "')";
 
-
                             command = new SqlCommand(cmd, thisConnection);
                             command.ExecuteNonQuery();
-
                         }
-
                         thisConnection.Close();
-                       
-
-
                     }
                 }
                 else

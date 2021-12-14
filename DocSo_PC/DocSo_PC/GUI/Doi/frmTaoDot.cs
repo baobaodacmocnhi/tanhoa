@@ -30,7 +30,7 @@ namespace DocSo_PC.GUI.Doi
 
         private void frmTaoDot_Load(object sender, EventArgs e)
         {
-            dgvDanhSach.DataSource = false;
+            dgvDanhSach.AutoGenerateColumns = false;
             cmbNam.DataSource = _cDocSo.getDS_Nam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
@@ -51,11 +51,11 @@ namespace DocSo_PC.GUI.Doi
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            int i = 1;
             try
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
+                    int i = 1;
                     string[] lines = System.IO.File.ReadAllLines(txtDuongDan.Text.Trim());
                     progressBar.Minimum = 0;
                     progressBar.Maximum = lines.Count();
@@ -131,8 +131,9 @@ namespace DocSo_PC.GUI.Doi
                             en.ChiSo = int.Parse(contents[26]);
                         if (!string.IsNullOrWhiteSpace(contents[27]))
                             en.TieuThu = int.Parse(contents[27]);
-                        en.NVCapNhat = CNguoiDung.TaiKhoan;
                         en.BienDongID = en.Nam.ToString() + en.Ky + en.DanhBa;
+                        en.NVCapNhat = CNguoiDung.TaiKhoan;
+                        en.NgayCapNhat = DateTime.Now;
 
                         //string cmd = "INSERT INTO [BienDong] ([BienDongID],[Nam],[Ky],[Dot],[DanhBa],[HopDong],[May],[TenKH],[So],[Duong],[Phuong],[Quan],[GB],[DM],[SH],[SX],[DV],[HC],[Hieu],[Co],[SoThan],[Code],[ChiSo],[TieuThu],[NgayGan],[STT],[MLT1],[NVCapNhat]) ";
                         //cmd += " VALUES ('" + en.BienDongID + "'," + en.Nam + ",'" + en.Ky + "','" + en.Dot + "','" + en.DanhBa + "','" + en.HopDong + "','" + en.May + "','" + en.TenKH + "','" + en.So + "',";
@@ -141,7 +142,6 @@ namespace DocSo_PC.GUI.Doi
 
                         _cDocSo.them_BienDong(en);
                     }
-                    
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -154,7 +154,68 @@ namespace DocSo_PC.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvDanhSach.DataSource = _cDocSo.getDS_TaoDot();
+            dgvDanhSach.DataSource = _cDocSo.getDS_TaoDot(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString());
+        }
+
+        private void dgvDanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                {
+                    if (dgvDanhSach.Columns[e.ColumnIndex].Name == "TaoDot")
+                    {
+                        if (MessageBox.Show("Bạn có chắc chắn Tạo Đợt " + dgvDanhSach["Dot", e.RowIndex].Value.ToString() + "?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            if (_cDocSo.checkExists_DocSo(dgvDanhSach["Nam", e.RowIndex].Value.ToString(), dgvDanhSach["Ky", e.RowIndex].Value.ToString(), dgvDanhSach["Dot", e.RowIndex].Value.ToString()) == true)
+                            {
+                                MessageBox.Show("Năm " + dgvDanhSach["Nam", e.RowIndex].Value.ToString() + " Kỳ " + dgvDanhSach["Ky", e.RowIndex].Value.ToString() + " Đợt " + dgvDanhSach["Dot", e.RowIndex].Value.ToString() + " đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            int i = 1;
+                            List<BienDong> lst = _cDocSo.getDS_BienDong(dgvDanhSach["Nam", e.RowIndex].Value.ToString(), dgvDanhSach["Ky", e.RowIndex].Value.ToString(), dgvDanhSach["Dot", e.RowIndex].Value.ToString());
+                            progressBar.Minimum = 0;
+                            progressBar.Maximum = lst.Count;
+                            foreach (BienDong item in lst)
+                            {
+                                progressBar.Value = i++;
+                                DocSo en = new DocSo();
+                                en.DocSoID = item.BienDongID;
+                                en.DanhBa = item.DanhBa;
+                                en.MLT1 = item.MLT1;
+                                en.MLT2 = item.MLT1;
+                                en.SoNhaCu = item.So;
+                                en.Duong = item.Duong;
+                                en.GB = item.GB.Value.ToString();
+                                en.DM = item.DM.Value.ToString();
+                                en.Nam = item.Nam;
+                                en.Ky = item.Ky;
+                                en.Dot = item.Dot;
+                                en.May = item.May;
+                                en.TBTT = 0;
+                                en.TamTinh = 0;
+                                en.CodeCu = "";
+                                en.TTDHNCu = "";
+                                en.CSCu = item.ChiSo;
+                                en.TieuThuCu = item.TieuThu;
+                                en.TienNuoc = 0;
+                                en.BVMT = 0;
+                                en.Thue = 0;
+                                en.TongTien = 0;
+                                en.SoThanCu = item.SoThan;
+                                en.HieuCu = item.Hieu;
+                                en.CoCu = item.Co.Value.ToString();
+                            }
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //private void dataTaoDS_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

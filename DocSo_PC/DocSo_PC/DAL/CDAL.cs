@@ -23,13 +23,12 @@ namespace DocSo_PC.DAL
         {
             try
             {
-                //_connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
                 _connectionString = _db.Connection.ConnectionString;
                 connection = new SqlConnection(_connectionString);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw ex;
             }
 
         }
@@ -146,6 +145,7 @@ namespace DocSo_PC.DAL
             {
                 Connect();
                 command = new SqlCommand(sql, connection);
+                command.CommandTimeout = 3600;
                 int rowsAffected = command.ExecuteNonQuery();
                 if (rowsAffected >= 1)
                     return true;
@@ -165,6 +165,7 @@ namespace DocSo_PC.DAL
             {
                 Connect();
                 command = new SqlCommand(sql, connection);
+                command.CommandTimeout = 3600;
                 return command.ExecuteScalar();
             }
             catch (Exception)
@@ -204,6 +205,7 @@ namespace DocSo_PC.DAL
                 DataTable dt = new DataTable();
                 Connect();
                 command = new SqlCommand(sql, connection);
+                command.CommandTimeout = 3600;
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.HasRows)
                     dt.Load(reader);
@@ -230,6 +232,7 @@ namespace DocSo_PC.DAL
                 Connect();
                 DataSet dataset = new DataSet();
                 command = new SqlCommand();
+                command.CommandTimeout = 3600;
                 command.Connection = this.connection;
                 adapter = new SqlDataAdapter(sql, connection);
                 try
