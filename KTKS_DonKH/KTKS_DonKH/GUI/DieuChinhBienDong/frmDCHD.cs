@@ -2135,12 +2135,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             else
             {
                 if ((TongTienCuA + TongTienCuB) != 0)
-                    txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero));
+                    txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (PhiBVMTCuA + PhiBVMTCuB));
                 else
                     txtPhiBVMT_Start.Text = "0";
 
                 if ((TongTienMoiA + TongTienMoiB) - (TongTienCuA + TongTienCuB) != 0)
-                    txtPhiBVMT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ((PhiBVMTMoiA + PhiBVMTMoiB) - Math.Round((double)(TongTienCuA + TongTienCuB) * 5 / 100, 0, MidpointRounding.AwayFromZero)));
+                    txtPhiBVMT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ((PhiBVMTMoiA + PhiBVMTMoiB) - (PhiBVMTCuA + PhiBVMTCuB)));
                 else
                     txtPhiBVMT_BD.Text = "0";
 
