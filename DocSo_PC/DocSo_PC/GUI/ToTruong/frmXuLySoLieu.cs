@@ -39,51 +39,51 @@ namespace DocSo_PC.GUI.ToTruong
 
         void fromLoad()
         {
-            //Load To 
-            string sql = "SELECT MaTo,TenTo FROM [To] ";
-            if (CNguoiDung.ToTruong)
-                sql += " WHERE MaTo=" + CNguoiDung.MaTo;
-            DataTable tb = _cCXuLy.ExecuteQuery_SqlDataReader_DataTable(sql);
-            int index = 0;
-            if (tb.Rows.Count > 1)
-            {
-                DataRow newRow = tb.NewRow();
-                newRow["MaTo"] = "0";
-                newRow["TenTo"] = "Tất Cả";
-                tb.Rows.Add(newRow);
-                index = tb.Rows.Count - 1;
-            }
-            cmbToDS.DataSource = tb;
-            cmbToDS.DisplayMember = "TenTo";
-            cmbToDS.ValueMember = "MaTo";
-            cmbToDS.SelectedIndex = index;
-            getMayds(CNguoiDung.MaTo);
-            // Load Code DS
-            string sqlCodeDs = "SELECT TTDHN,CODE FROM TTDHN WHERE Vitri IS NOT NULL  ORDER BY Vitri ASC ";
-            DataTable tbCodeDs = _cCXuLy.ExecuteQuery_SqlDataReader_DataTable(sqlCodeDs);
+            ////Load To 
+            //string sql = "SELECT MaTo,TenTo FROM [To] ";
+            //if (CNguoiDung.ToTruong)
+            //    sql += " WHERE MaTo=" + CNguoiDung.MaTo;
+            //DataTable tb = _cCXuLy.ExecuteQuery_SqlDataReader_DataTable(sql);
+            //int index = 0;
+            //if (tb.Rows.Count > 1)
+            //{
+            //    DataRow newRow = tb.NewRow();
+            //    newRow["MaTo"] = "0";
+            //    newRow["TenTo"] = "Tất Cả";
+            //    tb.Rows.Add(newRow);
+            //    index = tb.Rows.Count - 1;
+            //}
+            //cmbToDS.DataSource = tb;
+            //cmbToDS.DisplayMember = "TenTo";
+            //cmbToDS.ValueMember = "MaTo";
+            //cmbToDS.SelectedIndex = index;
+            //getMayds(CNguoiDung.MaTo);
+            //// Load Code DS
+            //string sqlCodeDs = "SELECT TTDHN,CODE FROM TTDHN WHERE Vitri IS NOT NULL  ORDER BY Vitri ASC ";
+            //DataTable tbCodeDs = _cCXuLy.ExecuteQuery_SqlDataReader_DataTable(sqlCodeDs);
 
-            if (tbCodeDs.Rows.Count > 1)
-            {
-                DataRow newRow = tbCodeDs.NewRow();
-                newRow["TTDHN"] = "Chưa Ghi";
-                newRow["CODE"] = "";
-                tbCodeDs.Rows.Add(newRow);
+            //if (tbCodeDs.Rows.Count > 1)
+            //{
+            //    DataRow newRow = tbCodeDs.NewRow();
+            //    newRow["TTDHN"] = "Chưa Ghi";
+            //    newRow["CODE"] = "";
+            //    tbCodeDs.Rows.Add(newRow);
 
-                newRow = tbCodeDs.NewRow();
-                newRow["TTDHN"] = "Tất Cả";
-                newRow["CODE"] = "-1";
-                tbCodeDs.Rows.Add(newRow);
-            }
-            cmbCodeDS.DataSource = tbCodeDs;
-            cmbCodeDS.DisplayMember = "TTDHN";
-            cmbCodeDS.ValueMember = "CODE";
-            cmbCodeDS.SelectedValue = "-1";
+            //    newRow = tbCodeDs.NewRow();
+            //    newRow["TTDHN"] = "Tất Cả";
+            //    newRow["CODE"] = "-1";
+            //    tbCodeDs.Rows.Add(newRow);
+            //}
+            //cmbCodeDS.DataSource = tbCodeDs;
+            //cmbCodeDS.DisplayMember = "TTDHN";
+            //cmbCodeDS.ValueMember = "CODE";
+            //cmbCodeDS.SelectedValue = "-1";
 
-            // Load CodeM
-            string sqlCode = "SELECT TTDHN,CODE FROM TTDHN ORDER BY CODE ASC ";
-            cmbCodeDC.DataSource = _cCXuLy.ExecuteQuery_SqlDataReader_DataTable(sqlCode);
-            cmbCodeDC.DisplayMember = "TTDHN";
-            cmbCodeDC.ValueMember = "CODE";
+            //// Load CodeM
+            //string sqlCode = "SELECT TTDHN,CODE FROM TTDHN ORDER BY CODE ASC ";
+            //cmbCodeDC.DataSource = _cCXuLy.ExecuteQuery_SqlDataReader_DataTable(sqlCode);
+            //cmbCodeDC.DisplayMember = "TTDHN";
+            //cmbCodeDC.ValueMember = "CODE";
 
         }
 
@@ -207,12 +207,12 @@ namespace DocSo_PC.GUI.ToTruong
 
         public void LoadReport(string db)
         {
-            string sql = " SELECT  TOP(12)  H.DANHBA, H.KY, H.Nam AS NAM, H.CodeMoi AS CODE, H.CSCU, H.CSMOI, CONVERT(NCHAR(10), H.DenNgay, 103) AS DENNGAY, H.TieuThuMoi AS LNCC ";
-            sql += " FROM DocSo H   WHERE DANHBA ='" + db + "'  order by  NAM DESC,KY DESC ";
-            DataTable b = _cCXuLy.ExecuteQuery_SqlDataReader_DataTable(sql);
-            reportViewer1.LocalReport.DataSources.Clear();
-            reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("R1", b));
-            this.reportViewer1.RefreshReport();
+            //string sql = " SELECT  TOP(12)  H.DANHBA, H.KY, H.Nam AS NAM, H.CodeMoi AS CODE, H.CSCU, H.CSMOI, CONVERT(NCHAR(10), H.DenNgay, 103) AS DENNGAY, H.TieuThuMoi AS LNCC ";
+            //sql += " FROM DocSo H   WHERE DANHBA ='" + db + "'  order by  NAM DESC,KY DESC ";
+            //DataTable b = _cCXuLy.ExecuteQuery_SqlDataReader_DataTable(sql);
+            //reportViewer1.LocalReport.DataSources.Clear();
+            //reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("R1", b));
+            //this.reportViewer1.RefreshReport();
         }
 
         public void LoadReportHD(string db)
@@ -220,7 +220,7 @@ namespace DocSo_PC.GUI.ToTruong
             CThuTien _tt = new CThuTien();
             string sql = " SELECT  TOP(12)   H.DANHBA, H.KY, H.Nam AS NAM, H.CODE AS CODE, H.CSCU, H.CSMOI, CONVERT(NCHAR(10), H.DenNgay, 103) AS DENNGAY, H.TIEUTHU AS LNCC ";
             sql += " FROM HOADON H   WHERE DANHBA ='" + db + "'  order by  NAM DESC,KY DESC";
-            DataTable b = _tt.ExecuteQuery_SqlDataReader_DataTable(sql);
+            DataTable b = CXuLyDocSo._cDAL.ExecuteQuery_SqlDataReader_DataTable(sql);
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("R1", b));
             this.reportViewer1.RefreshReport();

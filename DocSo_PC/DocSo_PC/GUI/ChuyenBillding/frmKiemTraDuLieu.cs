@@ -64,7 +64,7 @@ namespace DocSo_PC.GUI.ChuyenBillding
             string ky = cmbKy.Text;
             string dot = cmbDot.Text;
             string SQL = "SELECT TODS,MAY,DANHBA,MLT1 FROM DocSo WHERE (CodeMoi='' OR CSMoi ='' OR TieuThuMoi ='' )  AND  NAM=" + nam + " AND KY='" + ky + "' AND DOT='" + dot + "' ORDER BY MLT1 ASC";
-            dataKiemsoat.DataSource = _cChuyen.ExecuteQuery_SqlDataAdapter_DataTable(SQL);
+            dataKiemsoat.DataSource = CChuyenDuLieu._cDAL.ExecuteQuery_SqlDataAdapter_DataTable(SQL);
         }
 
     }

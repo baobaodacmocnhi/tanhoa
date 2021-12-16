@@ -9,13 +9,14 @@ namespace DocSo_PC.DAL.Doi
 {
     class CDocSo : CDAL
     {
+
         public DataTable getDS_Nam()
         {
             string sql = "select Nam=CAST(SUBSTRING(BillID,0,5)as int)"
                           + " from BillState"
                           + " group by SUBSTRING(BillID,0,5)"
                           + " order by Nam desc";
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         //table BillState
@@ -84,6 +85,11 @@ namespace DocSo_PC.DAL.Doi
             }
         }
 
+        public bool checkExists_DocSo(string ID)
+        {
+            return _db.DocSos.Any(item => item.DocSoID == ID);
+        }
+
         public bool checkExists_DocSo(string Nam, string Ky, string Dot)
         {
             return _db.DocSos.Any(item => item.Nam == int.Parse(Nam) && item.Ky == Ky && item.Dot == Dot);
@@ -96,23 +102,23 @@ namespace DocSo_PC.DAL.Doi
 
         public int TinhTBTT(string DanhBo, string Nam, string Ky)
         {
-            if (Ky == "1")
+            if (Ky == "01")
             {
-                return (int)ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where Nam=" + (int.Parse(Nam) - 1) + " and Ky in (10,11,12) and DanhBa='" + DanhBo + "'");
+                return (int)_cDAL.ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where Nam=" + (int.Parse(Nam) - 1) + " and Ky in (10,11,12) and DanhBa='" + DanhBo + "'");
             }
             else
-                if (Ky == "2")
+                if (Ky == "02")
                 {
-                    return (int)ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where ((Nam=" + (int.Parse(Nam) - 1) + " and Ky in (11,12)) or (Nam=" + Nam + " and Ky in (" + (int.Parse(Ky) - 1) + "))) and DanhBa='" + DanhBo + "'");
+                    return (int)_cDAL.ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where ((Nam=" + (int.Parse(Nam) - 1) + " and Ky in (11,12)) or (Nam=" + Nam + " and Ky in (" + (int.Parse(Ky) - 1) + "))) and DanhBa='" + DanhBo + "'");
                 }
                 else
-                    if (Ky == "3")
+                    if (Ky == "03")
                     {
-                        return (int)ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where ((Nam=" + (int.Parse(Nam) - 1) + " and Ky in (12)) or (Nam=" + Nam + " and Ky in (" + (int.Parse(Ky) - 2) + "," + (int.Parse(Ky) - 1) + "))) and DanhBa='" + DanhBo + "'");
+                        return (int)_cDAL.ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where ((Nam=" + (int.Parse(Nam) - 1) + " and Ky in (12)) or (Nam=" + Nam + " and Ky in (" + (int.Parse(Ky) - 2) + "," + (int.Parse(Ky) - 1) + "))) and DanhBa='" + DanhBo + "'");
                     }
                     else
                     {
-                        return (int)ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where Nam=" + Nam + " and Ky in (" + (int.Parse(Ky) - 3) + "," + (int.Parse(Ky) - 2) + "," + (int.Parse(Ky) - 1) + ") and DanhBa='" + DanhBo + "'");
+                        return (int)_cDAL.ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where Nam=" + Nam + " and Ky in (" + (int.Parse(Ky) - 3) + "," + (int.Parse(Ky) - 2) + "," + (int.Parse(Ky) - 1) + ") and DanhBa='" + DanhBo + "'");
                     }
         }
 
@@ -130,6 +136,11 @@ namespace DocSo_PC.DAL.Doi
                 en.TTDHNCu = enTruoc.TTDHNMoi;
                 en.TuNgay = enTruoc.DenNgay;
             }
+        }
+
+        public void updateTBTTDocSo(string Nam,string Ky,string Dot)
+        {
+            _cDAL.ExecuteNonQuery("exec dbo.spUpdateTBTTDocSo '" + Nam + "','" + Ky + "','" + Dot + "'");
         }
 
         public DataTable getDS_TaoDot(string Nam, string Ky)
@@ -161,7 +172,7 @@ namespace DocSo_PC.DAL.Doi
                         + " ,Dot=SUBSTRING(BillID,7,2)"
                         + " ,ID=BillID"
                         + " from BillState where BillID like '" + Nam + Ky + "%')t1";
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
     }

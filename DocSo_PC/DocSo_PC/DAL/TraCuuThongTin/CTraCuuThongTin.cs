@@ -17,10 +17,10 @@ namespace DocSo_PC.DAL.TraCuuThongTin
             if (!"".Equals(danhbo))
             {
                 sql += " WHERE DANHBO = '" + danhbo + "' ORDER BY LOTRINH ASC ";
-                tb = ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                tb = _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
 
                 sql = " SELECT DANHBO, (SONHA+' '+ TENDUONG) as DIACHI, (QUAN+PHUONG) AS QUANPUONG ,LOTRINH, HOTEN,HOPDONG,HIEUDH,CODH,SOTHANDH, N'Hủy ' +HIEULUCHUY AS N'HL'  FROM TB_DULIEUKHACHHANG_HUYDB  WHERE DANHBO = '" + danhbo + "' ORDER BY LOTRINH ASC ";
-                tb.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sql));
+                tb.Merge(_cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql));
                 return tb;
             }
 
@@ -28,10 +28,10 @@ namespace DocSo_PC.DAL.TraCuuThongTin
             if (!"".Equals(diachi))
             {
                 sql += " WHERE (SONHA+' '+ TENDUONG) LIKE '" + diachi.Replace("*", "%") + "' ORDER BY LOTRINH ASC ";
-                tb = ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                tb = _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
 
                 sql = " SELECT DANHBO, (SONHA+' '+ TENDUONG) as DIACHI, (QUAN+PHUONG) AS QUANPUONG ,LOTRINH, HOTEN,HOPDONG,HIEUDH,CODH,SOTHANDH, N'Hủy ' +HIEULUCHUY AS N'HL'   FROM TB_DULIEUKHACHHANG_HUYDB  WHERE (SONHA+' '+ TENDUONG) LIKE '" + diachi.Replace("*", "%") + "' ORDER BY LOTRINH ASC ";
-                tb.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sql));
+                tb.Merge(_cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql));
                 return tb;
             }
 
@@ -39,28 +39,28 @@ namespace DocSo_PC.DAL.TraCuuThongTin
             if (!"".Equals(lotrinh))
             {
                 sql += " WHERE LOTRINH LIKE  '" + lotrinh.Replace("*", "%") + "' ORDER BY LOTRINH ASC ";
-                tb = ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                tb = _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
                 return tb;
             }
 
             if (!"".Equals(hopdong))
             {
                 sql += " WHERE HOPDONG LIKE  '" + hopdong.Replace("*", "%") + "' ORDER BY LOTRINH ASC ";
-                tb = ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                tb = _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
                 return tb;
             }
 
             if (!"".Equals(sothan))
             {
                 sql += " WHERE SOTHANDH LIKE  '%" + sothan.Replace("*", "%") + "' ORDER BY LOTRINH ASC ";
-                tb = ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                tb = _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
                 return tb;
             }
 
             if (!"".Equals(may))
             {
                 sql += " WHERE LEFT(LOTRINH,4)='" + dot + "" + may + "' ORDER BY LOTRINH ASC ";
-                tb = ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                tb = _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
                 return tb;
             }
 

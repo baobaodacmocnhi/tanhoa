@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnSoSanhKyTruoc = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
             this.btnXem = new System.Windows.Forms.Button();
@@ -58,7 +57,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnSoSanhKyTruoc);
             this.groupBox1.Controls.Add(this.progressBar);
             this.groupBox1.Controls.Add(this.dgvDanhSach);
             this.groupBox1.Controls.Add(this.btnXem);
@@ -66,25 +64,16 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cmbNam);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(3, 30);
+            this.groupBox1.Location = new System.Drawing.Point(3, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(820, 551);
+            this.groupBox1.Size = new System.Drawing.Size(644, 546);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
             // 
-            // btnSoSanhKyTruoc
-            // 
-            this.btnSoSanhKyTruoc.Location = new System.Drawing.Point(295, 25);
-            this.btnSoSanhKyTruoc.Name = "btnSoSanhKyTruoc";
-            this.btnSoSanhKyTruoc.Size = new System.Drawing.Size(105, 23);
-            this.btnSoSanhKyTruoc.TabIndex = 14;
-            this.btnSoSanhKyTruoc.Text = "So Sánh Kỳ Trước";
-            this.btnSoSanhKyTruoc.UseVisualStyleBackColor = true;
-            // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(561, 25);
+            this.progressBar.Location = new System.Drawing.Point(431, 25);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(203, 23);
             this.progressBar.TabIndex = 12;
@@ -93,14 +82,14 @@
             // 
             this.dgvDanhSach.AllowUserToAddRows = false;
             this.dgvDanhSach.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDanhSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDanhSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Dot,
@@ -115,9 +104,9 @@
             this.dgvDanhSach.Location = new System.Drawing.Point(9, 54);
             this.dgvDanhSach.MultiSelect = false;
             this.dgvDanhSach.Name = "dgvDanhSach";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDanhSach.Size = new System.Drawing.Size(805, 485);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvDanhSach.Size = new System.Drawing.Size(625, 485);
             this.dgvDanhSach.TabIndex = 5;
             this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
             // 
@@ -180,7 +169,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(517, 1);
+            this.btnThem.Location = new System.Drawing.Point(517, 5);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(120, 23);
             this.btnThem.TabIndex = 8;
@@ -190,7 +179,7 @@
             // 
             // btnChonFile
             // 
-            this.btnChonFile.Location = new System.Drawing.Point(391, 1);
+            this.btnChonFile.Location = new System.Drawing.Point(391, 5);
             this.btnChonFile.Name = "btnChonFile";
             this.btnChonFile.Size = new System.Drawing.Size(120, 23);
             this.btnChonFile.TabIndex = 7;
@@ -200,7 +189,7 @@
             // 
             // txtDuongDan
             // 
-            this.txtDuongDan.Location = new System.Drawing.Point(85, 3);
+            this.txtDuongDan.Location = new System.Drawing.Point(85, 7);
             this.txtDuongDan.Name = "txtDuongDan";
             this.txtDuongDan.ReadOnly = true;
             this.txtDuongDan.Size = new System.Drawing.Size(300, 20);
@@ -209,7 +198,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 6);
+            this.label1.Location = new System.Drawing.Point(14, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 5;
@@ -225,7 +214,7 @@
             // TongHD
             // 
             this.TongHD.DataPropertyName = "TongHD";
-            this.TongHD.HeaderText = "Tổng HĐ";
+            this.TongHD.HeaderText = "Tổng HĐ Kỳ Trước";
             this.TongHD.Name = "TongHD";
             this.TongHD.Width = 80;
             // 
@@ -281,7 +270,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 625);
+            this.ClientSize = new System.Drawing.Size(685, 607);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnChonFile);
@@ -302,7 +291,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnSoSanhKyTruoc;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.DataGridView dgvDanhSach;
         private System.Windows.Forms.Button btnXem;

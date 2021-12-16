@@ -132,7 +132,7 @@ namespace DocSo_PC.GUI.HeThong
         {
             if (e.KeyChar == 13)
             {
-                dgvResult.DataSource = _cNguoiDung.ExecuteQuery_SqlDataAdapter_DataTable(txtQuery.Text.Trim());
+                dgvResult.DataSource = CNguoiDung._cDAL.ExecuteQuery_SqlDataAdapter_DataTable(txtQuery.Text.Trim());
             }
         }
     }

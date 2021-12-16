@@ -86,10 +86,10 @@ namespace DocSo_PC.DAL.QuanTri
         public DataTable GetDSByMaND(bool Admin, int MaND)
         {
             if (Admin)
-                return LINQToDataTable(_db.PhanQuyenNguoiDungs.Where(item => item.MaND == MaND).Select(item =>
+                return _cDAL.LINQToDataTable(_db.PhanQuyenNguoiDungs.Where(item => item.MaND == MaND).Select(item =>
                 new { item.Menu.TextMenuCha, item.Menu.STT, item.MaMenu, item.Menu.TenMenu, item.Menu.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa, item.ToanQuyen, item.QuanLy }).ToList());
             else
-                return LINQToDataTable(_db.PhanQuyenNguoiDungs.Where(item => item.MaND == MaND && item.Menu.TenMenuCha != "mnuPhoGiamDoc").Select(item =>
+                return _cDAL.LINQToDataTable(_db.PhanQuyenNguoiDungs.Where(item => item.MaND == MaND && item.Menu.TenMenuCha != "mnuPhoGiamDoc").Select(item =>
                     new { item.Menu.TextMenuCha, item.Menu.STT, item.MaMenu, item.Menu.TenMenu, item.Menu.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa, item.ToanQuyen, item.QuanLy }).ToList());
         }
 

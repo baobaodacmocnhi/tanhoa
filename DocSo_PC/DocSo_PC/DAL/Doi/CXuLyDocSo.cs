@@ -19,13 +19,13 @@ namespace DocSo_PC.DAL.ToTruong
                 sql += " AND ToID=" + tods;
             sql += " order by may";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
         public DataTable getGanMoi(string db)
         {
             string sql = "SELECT DanhBa,NgayKiem,NoiDung,Hieu,Co,ChiSo,NgayCapNhat,NVCapNhat   FROM [DocSoTH].[dbo].[ThongBao]";
             sql += " WHERE  DanhBa='" + db + "' order by NgayKiem asc";
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         public DataTable getDuLieuDocSo(string db, string code, string may, int nam, string ky, string dot)
@@ -42,7 +42,7 @@ namespace DocSo_PC.DAL.ToTruong
                 sql += "AND May='" + may + "' ";
 
             sql += " ORDER BY MLT1 ASC ";
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         public DataTable SumTongSoDS(string tods, string may, int nam, string ky, string dot)
@@ -66,7 +66,7 @@ namespace DocSo_PC.DAL.ToTruong
                 sql += "AND May='" + may + "' ";
 
             // sql += " ORDER BY MLT1 ASC ";
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         public int TinhTieuThu(string DanhBo, int ky, int nam, string code, int csmoi)
@@ -75,8 +75,8 @@ namespace DocSo_PC.DAL.ToTruong
             try
             {
 
-                Connect();
-                SqlCommand cmd = new SqlCommand("calTieuTHu", connection);
+                _cDAL.Connect();
+                SqlCommand cmd = new SqlCommand("calTieuTHu");
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter _db = cmd.Parameters.Add("@DANHBO", SqlDbType.VarChar);
@@ -113,7 +113,7 @@ namespace DocSo_PC.DAL.ToTruong
             }
             finally
             {
-                Disconnect();
+                _cDAL.Disconnect();
             }
             return tieuthu;
         }
@@ -133,7 +133,7 @@ namespace DocSo_PC.DAL.ToTruong
             //string sql = "update DocSo set NVGHI='nvds',GIOGHI=getdate(),SOLANGHI=1,GPSDATA='0',CSMoi=" + CSMoi + ",CodeMoi='" + CodeMoi + "',TTDHNMoi='" + TTDHNMoi + "',TieuThuMoi=" + TieuThu + ",TienNuoc=" + GiaBan + ",BVMT=" + PhiBVMT + ",Thue=" + ThueGTGT + ",TongTien=" + TongCong + ","
             //    + "ChiTiet='" + ChiTiet + "',Latitude='" + Latitude + "',Longitude='" + Longitude + "',NgayDS=getdate() where DocSoID=" + ID + " and (NgayDS is null or Cast(NgayDS as date)='1900-01-01' or Cast(NgayDS as date)=Cast(getdate() as date))";
             string sql = "UPDATE DocSo SET StaCapNhat=(cast(StaCapNhat as int)+1 ),NgayCapNhat=Getdate(),NVCapNhat=N'" + CNguoiDung.TaiKhoan + "',CSMoi=" + CSMoi + ",CodeMoi='" + CodeMoi + "',TTDHNMoi='" + TTDHNMoi + "',TieuThuMoi=" + TieuThu + " where DocSoID=" + DocSoID + "";
-            return ExecuteNonQuery(sql);
+            return _cDAL.ExecuteNonQuery(sql);
             //return _DAL.ExecuteNonQuery(sql);
         }
 

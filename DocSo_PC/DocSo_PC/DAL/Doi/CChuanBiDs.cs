@@ -64,7 +64,7 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
                             TongTieuThu = itemGroup.Sum(groupItem => groupItem.TieuThu),
                             itemGroup.FirstOrDefault().NgayCapNhat,
                         };
-            return LINQToDataTable(query.OrderBy(item => item.Dot));
+            return _cDAL.LINQToDataTable(query.OrderBy(item => item.Dot));
             //string sql = "select DOT,count(ID_HoaDon) as TongHD,sum(TIEUTHU) as TongLNCC,sum(GIABAN) as TongGiaBan,sum(THUE) as TongThueGTGT,sum(PHI) as TongPhiBVMT,sum(TONGCONG) as TongCong "
             //    + "from HOADON where NAM='" + nam + "' and KY='" + ky + "' group by DOT order by DOT asc";
             //return ExecuteQuery_SqlDataReader_DataTable(sql);
@@ -231,7 +231,7 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
                 sql += " WHERE DanhBa='"+danhba+"'  ";
                 sql += " ORDER   BY  NAM DESC,KY DESC   ";
                 sql += "  as t1";
-                return int.Parse(ExecuteQuery_ReturnOneValue(sql).ToString());
+                return int.Parse(_cDAL.ExecuteQuery_ReturnOneValue(sql).ToString());
 
             }
             catch (Exception)
@@ -248,8 +248,8 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
             {
                 string sql = " SELECT  TOP(1) DenNgay FROM HoaDon  ";
                 sql += " WHERE Nam=" + nam + " AND Ky=" + (int.Parse(ky)-1) + " AND Dot='" + dot + "'  ";
-               
-                d= DateTime.Parse(ExecuteQuery_ReturnOneValue(sql).ToString());
+
+                d = DateTime.Parse(_cDAL.ExecuteQuery_ReturnOneValue(sql).ToString());
 
             }
             catch (Exception)
@@ -264,7 +264,7 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
             try
             {
                 string sql = " select COUNT(*)  from DocSo where Nam=" + nam + " AND Ky='" + ky + "' AND Dot='" + dot + "'   AND May='" + may + "'  and CAST( May as int)  != CAST(SUBSTRING(MLT1,3,2) as int) ";
-                return int.Parse(ExecuteQuery_ReturnOneValue(sql).ToString());
+                return int.Parse(_cDAL.ExecuteQuery_ReturnOneValue(sql).ToString());
 
             }
             catch (Exception)

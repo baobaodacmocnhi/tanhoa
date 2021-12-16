@@ -54,7 +54,7 @@ namespace DocSo_PC.DAL.Doi
 
         public DataTable getDS()
         {
-            return LINQToDataTable(_db.DanhBoKPBVMTs.ToList());
+            return _cDAL.LINQToDataTable(_db.DanhBoKPBVMTs.ToList());
         }
 
     }

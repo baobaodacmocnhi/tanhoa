@@ -56,7 +56,7 @@ namespace DocSo_PC.GUI.ToTruong
             string sql = "SELECT MaTo,TenTo FROM [To] ";
             if (CNguoiDung.ToTruong)
                 sql += " WHERE MaTo=" + CNguoiDung.MaTo;
-            cmbToDS.DataSource = _cChuanBi.ExecuteQuery_SqlDataReader_DataTable(sql);
+            cmbToDS.DataSource = CChuanBiDS._cDAL.ExecuteQuery_SqlDataReader_DataTable(sql);
             cmbToDS.DisplayMember = "TenTo";
             cmbToDS.ValueMember = "MaTo";
 
@@ -139,7 +139,7 @@ namespace DocSo_PC.GUI.ToTruong
         public void _tuMay()
         {
             string sql = " select 'false' as checkChia, MLT1,DanhBa,SoNhaCu,Duong from DocSo WHERE May = " + cmbMay.Text + " AND Nam=" + int.Parse(cmbNam.Text) + "AND Ky='" + cmbKy.Text + "' AND Dot='" + cmbDot.Text + "'   ORDER BY MLT1 ASC ";
-            dataDS.DataSource = _cChuanBi.ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            dataDS.DataSource = CChuanBiDS._cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
             lbSlDocTu.Text = " Tổng số lượng đọc " + dataDS.Rows.Count + " đc";
  
         }
@@ -150,7 +150,7 @@ namespace DocSo_PC.GUI.ToTruong
         public void _denMay()
         {
             string sql = " select MLT1,DanhBa,SoNhaCu,Duong from DocSo WHERE May = " + cmbDenTC.Text + " AND Nam=" + int.Parse(cmbNam.Text) + "AND Ky='" + cmbKy.Text + "' AND Dot='" + cmbDot.Text + "'   ORDER BY MLT1 ASC ";
-            dataGiaoTC.DataSource = _cChuanBi.ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            dataGiaoTC.DataSource = CChuanBiDS._cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
             lbGiaoTC.Text = " Tổng số lượng đọc " + dataGiaoTC.Rows.Count + " đc - Tăng cường " + _cChuanBi.getTangCuong(int.Parse(cmbNam.Text), cmbKy.Text, cmbDot.Text, cmbDenTC.Text) + " đc";
 
         
@@ -181,7 +181,7 @@ namespace DocSo_PC.GUI.ToTruong
                     }
                     db = db.Remove(db.Length - 1, 1);
                     string sql = "Update DocSo Set May='" + cmbDenTC.Text + "' WHERE DanhBa IN (" + db + ") AND Nam=" + int.Parse(cmbNam.Text) + "AND Ky='" + cmbKy.Text + "' AND Dot='" + cmbDot.Text + "'";
-                    _cChuanBi.ExecuteNonQuery(sql);
+                    CChuanBiDS._cDAL.ExecuteNonQuery(sql);
 
                     _tuMay();
                     _denMay();

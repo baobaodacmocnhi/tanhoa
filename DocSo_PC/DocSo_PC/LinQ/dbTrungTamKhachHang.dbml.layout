@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.375" name="dbTrungTamKhachHang">
+  <DataContextMoniker Name="/dbTrungTamKhachHangDataContext" />
+  <nestedChildShapes>
+    <classShape Id="7226fffe-55dc-42de-8aee-d62ef907f27f" absoluteBounds="0.75, 1.125, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/dbTrungTamKhachHangDataContext/Lich_DocSo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c457a9e3-0323-45ff-b3a7-e8d600890afc" absoluteBounds="0.765, 1.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e010286a-af06-41a9-9245-3bb1b49a1bfd" absoluteBounds="0.75, 6.625, 2, 3.5016097005208318">
+      <DataClassMoniker Name="/dbTrungTamKhachHangDataContext/Lich_Dot" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d4f3de8b-c54f-4cae-bcee-5ab9fb606e0c" absoluteBounds="0.765, 7.085, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e1b27168-21fc-4109-8cb3-2759bee9f1aa" absoluteBounds="3.5, 1, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/dbTrungTamKhachHangDataContext/Lich_DocSo_ChiTiet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="edd1276c-d170-4180-bb10-9a320126ee5c" absoluteBounds="3.515, 1.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.39505126953125); (3.5 : 2.39505126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbTrungTamKhachHangDataContext/Lich_DocSo/Lich_DocSo_Lich_DocSo_ChiTiet" />
+      <nodes>
+        <classShapeMoniker Id="7226fffe-55dc-42de-8aee-d62ef907f27f" />
+        <classShapeMoniker Id="e1b27168-21fc-4109-8cb3-2759bee9f1aa" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 8.37580485026042); (4.5 : 8.37580485026042); (4.5 : 3.92470540364583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbTrungTamKhachHangDataContext/Lich_Dot/Lich_Dot_Lich_DocSo_ChiTiet" />
+      <nodes>
+        <classShapeMoniker Id="e010286a-af06-41a9-9245-3bb1b49a1bfd" />
+        <classShapeMoniker Id="e1b27168-21fc-4109-8cb3-2759bee9f1aa" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

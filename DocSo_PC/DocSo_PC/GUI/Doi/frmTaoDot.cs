@@ -11,6 +11,7 @@ using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using System.Data.SqlClient;
 using DocSo_PC.DAL.Doi;
+using DocSo_PC.DAL;
 
 namespace DocSo_PC.GUI.Doi
 {
@@ -19,6 +20,7 @@ namespace DocSo_PC.GUI.Doi
         string _mnu = "mnuTaoDot";
         string _fileName = "";
         CDocSo _cDocSo = new CDocSo();
+        CLichDocSo _cLichDocSo = new CLichDocSo();
         CChuanBiDS _cChuanBi = new CChuanBiDS();
         int tumay = CNguoiDung.TuMayDS;
         int denmay = CNguoiDung.DenMayDS;
@@ -142,6 +144,7 @@ namespace DocSo_PC.GUI.Doi
 
                         _cDocSo.them_BienDong(en);
                     }
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -167,45 +170,59 @@ namespace DocSo_PC.GUI.Doi
                     {
                         if (MessageBox.Show("Bạn có chắc chắn Tạo Đợt " + dgvDanhSach["Dot", e.RowIndex].Value.ToString() + "?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            if (_cDocSo.checkExists_DocSo(dgvDanhSach["Nam", e.RowIndex].Value.ToString(), dgvDanhSach["Ky", e.RowIndex].Value.ToString(), dgvDanhSach["Dot", e.RowIndex].Value.ToString()) == true)
-                            {
-                                MessageBox.Show("Năm " + dgvDanhSach["Nam", e.RowIndex].Value.ToString() + " Kỳ " + dgvDanhSach["Ky", e.RowIndex].Value.ToString() + " Đợt " + dgvDanhSach["Dot", e.RowIndex].Value.ToString() + " đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                            //if (_cDocSo.checkExists_DocSo(dgvDanhSach["Nam", e.RowIndex].Value.ToString(), dgvDanhSach["Ky", e.RowIndex].Value.ToString(), dgvDanhSach["Dot", e.RowIndex].Value.ToString()) == true)
+                            //{
+                            //    MessageBox.Show("Năm " + dgvDanhSach["Nam", e.RowIndex].Value.ToString() + " Kỳ " + dgvDanhSach["Ky", e.RowIndex].Value.ToString() + " Đợt " + dgvDanhSach["Dot", e.RowIndex].Value.ToString() + " đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //    return;
+                            //}
                             int i = 1;
                             List<BienDong> lst = _cDocSo.getDS_BienDong(dgvDanhSach["Nam", e.RowIndex].Value.ToString(), dgvDanhSach["Ky", e.RowIndex].Value.ToString(), dgvDanhSach["Dot", e.RowIndex].Value.ToString());
                             progressBar.Minimum = 0;
                             progressBar.Maximum = lst.Count;
+                            //lấy ngày đọc
+                            DateTime NgayDoc = _cLichDocSo.getNgayDoc(int.Parse(dgvDanhSach["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvDanhSach["Nam", e.RowIndex].Value.ToString()), int.Parse(dgvDanhSach["Dot", e.RowIndex].Value.ToString()));
                             foreach (BienDong item in lst)
                             {
                                 progressBar.Value = i++;
-                                DocSo en = new DocSo();
-                                en.DocSoID = item.BienDongID;
-                                en.DanhBa = item.DanhBa;
-                                en.MLT1 = item.MLT1;
-                                en.MLT2 = item.MLT1;
-                                en.SoNhaCu = item.So;
-                                en.Duong = item.Duong;
-                                en.GB = item.GB.Value.ToString();
-                                en.DM = item.DM.Value.ToString();
-                                en.Nam = item.Nam;
-                                en.Ky = item.Ky;
-                                en.Dot = item.Dot;
-                                en.May = item.May;
-                                en.TBTT = 0;
-                                en.TamTinh = 0;
-                                en.CodeCu = "";
-                                en.TTDHNCu = "";
-                                en.CSCu = item.ChiSo;
-                                en.TieuThuCu = item.TieuThu;
-                                en.TienNuoc = 0;
-                                en.BVMT = 0;
-                                en.Thue = 0;
-                                en.TongTien = 0;
-                                en.SoThanCu = item.SoThan;
-                                en.HieuCu = item.Hieu;
-                                en.CoCu = item.Co.Value.ToString();
+                                if (_cDocSo.checkExists_DocSo(item.BienDongID) == false)
+                                {
+                                    DocSo en = new DocSo();
+                                    en.DocSoID = item.BienDongID;
+                                    en.DanhBa = item.DanhBa;
+                                    en.MLT1 = item.MLT1;
+                                    en.MLT2 = item.MLT1;
+                                    en.SoNhaCu = item.So;
+                                    en.Duong = item.Duong;
+                                    en.GB = item.GB.Value.ToString();
+                                    if (item.DM != null)
+                                        en.DM = item.DM.Value.ToString();
+                                    else
+                                        en.DM = "0";
+                                    en.Nam = item.Nam;
+                                    en.Ky = item.Ky;
+                                    en.Dot = item.Dot;
+                                    en.May = en.PhanMay = item.May;
+                                    en.TBTT = 0;
+                                    en.TamTinh = 0;
+                                    en.CodeCu = "";
+                                    en.TTDHNCu = "";
+                                    en.CSCu = item.ChiSo;
+                                    en.TieuThuCu = item.TieuThu;
+                                    en.TienNuoc = 0;
+                                    en.BVMT = 0;
+                                    en.Thue = 0;
+                                    en.TongTien = 0;
+                                    en.SoThanCu = item.SoThan;
+                                    en.HieuCu = item.Hieu;
+                                    en.CoCu = item.Co.Value.ToString();
+                                    en.DenNgay = NgayDoc;
+                                    en.NgayDS = DateTime.Now;
+                                    //_cDocSo.updateDocSo(ref en);
+                                    _cDocSo.them_DocSo(en);
+                                }
                             }
+                            _cDocSo.updateTBTTDocSo(dgvDanhSach["Nam", e.RowIndex].Value.ToString(), dgvDanhSach["Ky", e.RowIndex].Value.ToString(), dgvDanhSach["Dot", e.RowIndex].Value.ToString());
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }

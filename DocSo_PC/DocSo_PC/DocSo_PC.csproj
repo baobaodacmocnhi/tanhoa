@@ -96,12 +96,17 @@
   <ItemGroup>
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\CFormat.cs" />
+    <Compile Include="DAL\CConnection.cs" />
+    <Compile Include="DAL\CLichDocSo.cs" />
     <Compile Include="DAL\Doi\CChuanBiDS.cs" />
     <Compile Include="DAL\CDHN.cs" />
     <Compile Include="DAL\Doi\CChuyenDuLieu.cs" />
     <Compile Include="DAL\CThuTien.cs" />
     <Compile Include="DAL\Doi\CDanhBoKhongTinhPBVMT.cs" />
     <Compile Include="DAL\Doi\CDocSo.cs" />
+    <Compile Include="DAL\Doi\CXuLyDocSo.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DAL\QuanTri\CMenu.cs" />
     <Compile Include="DAL\QuanTri\CNguoiDung.cs" />
     <Compile Include="DAL\QuanTri\CNhom.cs" />
@@ -109,24 +114,11 @@
     <Compile Include="DAL\QuanTri\CPhanQuyenNhom.cs" />
     <Compile Include="DAL\QuanTri\CTo.cs" />
     <Compile Include="DAL\TraCuuThongTin\CTraCuuThongTin.cs" />
-    <Compile Include="DAL\Doi\CXuLyDocSo.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Doi\frmKhongTinhPBVMT.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Doi\frmKhongTinhPBVMT.Designer.cs">
-      <DependentUpon>frmKhongTinhPBVMT.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\ToTruong\frmGiaoTangCuong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\ToTruong\frmGiaoTangCuong.Designer.cs">
-      <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ChuanBiDocSo\frmCapNhatBienDong.cs">
       <SubType>Form</SubType>
@@ -140,17 +132,29 @@
     <Compile Include="GUI\ChuanBiDocSo\frmCapNhatHoaDon.Designer.cs">
       <DependentUpon>frmCapNhatHoaDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Doi\frmTaoDot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Doi\frmTaoDot.Designer.cs">
-      <DependentUpon>frmTaoDot.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\ChuyenBillding\frmKiemTraDuLieu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\ChuyenBillding\frmKiemTraDuLieu.Designer.cs">
       <DependentUpon>frmKiemTraDuLieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmKhongTinhPBVMT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmKhongTinhPBVMT.Designer.cs">
+      <DependentUpon>frmKhongTinhPBVMT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmLichDocSo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmLichDocSo.Designer.cs">
+      <DependentUpon>frmLichDocSo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmTaoDot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmTaoDot.Designer.cs">
+      <DependentUpon>frmTaoDot.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\HeThong\frmAdmin.cs">
       <SubType>Form</SubType>
@@ -188,6 +192,24 @@
     <Compile Include="GUI\QuanTri\frmTo.Designer.cs">
       <DependentUpon>frmTo.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToTruong\frmGiaoTangCuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmGiaoTangCuong.Designer.cs">
+      <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmTheoDoiDot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmTheoDoiDot.Designer.cs">
+      <DependentUpon>frmTheoDoiDot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmXuLySoLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmXuLySoLieu.Designer.cs">
+      <DependentUpon>frmXuLySoLieu.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\TraCuuThongTin\frmTimKiemDhn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,18 +221,6 @@
     </Compile>
     <Compile Include="GUI\XuLyDocSo\frmChonDot.Designer.cs">
       <DependentUpon>frmChonDot.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\ToTruong\frmXuLySoLieu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\ToTruong\frmXuLySoLieu.Designer.cs">
-      <DependentUpon>frmXuLySoLieu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\ToTruong\frmTheoDoiDot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\ToTruong\frmTheoDoiDot.Designer.cs">
-      <DependentUpon>frmTheoDoiDot.cs</DependentUpon>
     </Compile>
     <Compile Include="LinQ\dbDHN.designer.cs">
       <AutoGen>True</AutoGen>
@@ -227,16 +237,39 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbThuTien.dbml</DependentUpon>
     </Compile>
+    <Compile Include="LinQ\dbTrungTamKhachHang.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbTrungTamKhachHang.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChuanBiDocSo\frmCapNhatBienDong.resx">
+      <DependentUpon>frmCapNhatBienDong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChuanBiDocSo\frmCapNhatHoaDon.resx">
+      <DependentUpon>frmCapNhatHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenBillding\frmKiemTraDuLieu.resx">
       <DependentUpon>frmKiemTraDuLieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmKhongTinhPBVMT.resx">
       <DependentUpon>frmKhongTinhPBVMT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmLichDocSo.resx">
+      <DependentUpon>frmLichDocSo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmGiaoTangCuong.resx">
+      <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmTheoDoiDot.resx">
+      <DependentUpon>frmTheoDoiDot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmXuLySoLieu.resx">
+      <DependentUpon>frmXuLySoLieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TraCuuThongTin\frmTimKiemDhn.resx">
       <DependentUpon>frmTimKiemDhn.cs</DependentUpon>
@@ -246,6 +279,9 @@
     </None>
     <None Include="LinQ\dbDocSoTHTest.dbml.layout">
       <DependentUpon>dbDocSoTHTest.dbml</DependentUpon>
+    </None>
+    <None Include="LinQ\dbTrungTamKhachHang.dbml.layout">
+      <DependentUpon>dbTrungTamKhachHang.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="Report\XuLyDocSo\rptTieuThu.rdlc" />
     <None Include="LinQ\dbDHN.dbml">
@@ -261,15 +297,6 @@
     <None Include="LinQ\dbThuTien.dbml.layout">
       <DependentUpon>dbThuTien.dbml</DependentUpon>
     </None>
-    <EmbeddedResource Include="GUI\ToTruong\frmGiaoTangCuong.resx">
-      <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ChuanBiDocSo\frmCapNhatBienDong.resx">
-      <DependentUpon>frmCapNhatBienDong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ChuanBiDocSo\frmCapNhatHoaDon.resx">
-      <DependentUpon>frmCapNhatHoaDon.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmTaoDot.resx">
       <DependentUpon>frmTaoDot.cs</DependentUpon>
     </EmbeddedResource>
@@ -299,12 +326,6 @@
     <EmbeddedResource Include="GUI\XuLyDocSo\frmChonDot.resx">
       <DependentUpon>frmChonDot.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToTruong\frmXuLySoLieu.resx">
-      <DependentUpon>frmXuLySoLieu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToTruong\frmTheoDoiDot.resx">
-      <DependentUpon>frmTheoDoiDot.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -317,6 +338,11 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="LinQ\dbTrungTamKhachHang.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbTrungTamKhachHang.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

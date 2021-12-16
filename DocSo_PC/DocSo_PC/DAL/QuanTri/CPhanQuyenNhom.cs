@@ -86,10 +86,10 @@ namespace DocSo_PC.DAL.QuanTri
         public DataTable GetDSByMaNhom(bool Admin,int MaNhom)
         {
             if(Admin)
-                return LINQToDataTable(_db.PhanQuyenNhoms.Where(item => item.MaNhom == MaNhom).Select(item =>
+                return _cDAL.LINQToDataTable(_db.PhanQuyenNhoms.Where(item => item.MaNhom == MaNhom).Select(item =>
                 new { item.Menu.TextMenuCha, item.Menu.STT, item.MaMenu, item.Menu.TenMenu, item.Menu.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa, item.ToanQuyen, item.QuanLy }).ToList());
             else
-            return LINQToDataTable(_db.PhanQuyenNhoms.Where(item => item.MaNhom == MaNhom && item.Menu.TenMenuCha != "mnuPhoGiamDoc").Select(item =>
+                return _cDAL.LINQToDataTable(_db.PhanQuyenNhoms.Where(item => item.MaNhom == MaNhom && item.Menu.TenMenuCha != "mnuPhoGiamDoc").Select(item =>
                 new { item.Menu.TextMenuCha, item.Menu.STT, item.MaMenu, item.Menu.TenMenu, item.Menu.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa, item.ToanQuyen, item.QuanLy }).ToList());
         }
 
