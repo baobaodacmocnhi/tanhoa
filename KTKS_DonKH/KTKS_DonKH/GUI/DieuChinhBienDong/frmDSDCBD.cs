@@ -2960,7 +2960,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         dchd1.PHI_BD = hoadon.PHI;
                                                         dchd1.THUE_BD = hoadon.THUE;
                                                         dchd1.TONGCONG_BD = hoadon.TONGCONG;
-                                                        dchd.NgayChan = dchd1.NGAY_DC = DateTime.Now;
+                                                        dchd1.NgayChan = dchd1.NGAY_DC = DateTime.Now;
 
                                                         if (ctdchd.DCBD.MaDonMoi != null)
                                                             dchd1.PHIEU_DC = ctdchd.DCBD.MaDonMoi;
