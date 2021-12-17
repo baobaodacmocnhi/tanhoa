@@ -69,7 +69,7 @@ namespace DocSo_PC.GUI.ToTruong
             try
             {
                 CTo _ct = new CTo();
-                To _t = _ct.GetByMaTo(int.Parse(cmbToDS.SelectedValue.ToString()));
+                To _t = _ct.get(int.Parse(cmbToDS.SelectedValue.ToString()));
                 tumay = _t.TuMay.Value;
                 denmay = _t.DenMay.Value;
             }

@@ -40,9 +40,8 @@ namespace DocSo_PC.DAL
             }
             catch (Exception ex)
             {
-               // _db.Error(ex.Message);
+                throw ex;
             }
-            return null;
         }
         public static TB_DULIEUKHACHHANG_HUYDB finByDanhBoHuy(string danhbo)
         {
@@ -53,12 +52,11 @@ namespace DocSo_PC.DAL
             }
             catch (Exception ex)
             {
-                
+                throw ex;
             }
-            return null;
         }
- 
-    
+
+
 
     }
 }

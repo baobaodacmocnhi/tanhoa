@@ -67,7 +67,7 @@ namespace DocSo_PC.GUI.QuanTri
             }
             dgvNguoiDung.AutoGenerateColumns = false;
 
-            cmbTo.DataSource = _cTo.GetDS();
+            cmbTo.DataSource = _cTo.getDS();
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
             //cmbTo.SelectedIndex = -1;
@@ -256,7 +256,7 @@ namespace DocSo_PC.GUI.QuanTri
         private void dgvNguoiDung_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "TenTo" && dgvNguoiDung["MaTo", e.RowIndex].Value != null)
-                e.Value = _cTo.GetTenToByMaTo(int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString()));
+                e.Value = _cTo.getTenTo(int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString()));
             if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "TenNhom" && dgvNguoiDung["MaNhom", e.RowIndex].Value != null)
                 e.Value = _cNhom.GetTenNhomByMaNhom(int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString()));
         }

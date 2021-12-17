@@ -94,6 +94,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\QuanTri\CMayDS.cs" />
+    <Compile Include="GUI\QuanTri\frmNhanVienDocSo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanTri\frmNhanVienDocSo.Designer.cs">
+      <DependentUpon>frmNhanVienDocSo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain2.Designer.cs">
+      <DependentUpon>frmMain2.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\CFormat.cs" />
     <Compile Include="DAL\CConnection.cs" />
@@ -244,6 +257,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\QuanTri\frmNhanVienDocSo.resx">
+      <DependentUpon>frmNhanVienDocSo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain2.resx">
+      <DependentUpon>frmMain2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -377,7 +396,6 @@
   <ItemGroup>
     <Folder Include="DAL\ChuanBiDocSo\" />
     <Folder Include="DAL\ChuyenBillding\" />
-    <Folder Include="DAL\ToTruong\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

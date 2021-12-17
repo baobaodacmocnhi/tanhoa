@@ -29,13 +29,13 @@ namespace DocSo_PC.GUI.QuanTri
             chkHanhThu.Checked = false;
             txtTuMay.Text = "";
             txtDenMay.Text = "";
-            dgvTo.DataSource = _cTo.GetDS();
+            dgvTo.DataSource = _cTo.getDS();
         }
 
         private void frmTo_Load(object sender, EventArgs e)
         {
             dgvTo.AutoGenerateColumns = false;
-            dgvTo.DataSource = _cTo.GetDS();
+            dgvTo.DataSource = _cTo.getDS();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace DocSo_PC.GUI.QuanTri
             {
                 if (_selectedindex != -1)
                 {
-                    To to = _cTo.GetByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
+                    To to = _cTo.get(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
                     to.TenTo = txtTenTo.Text.Trim();
                     to.HanhThu = chkHanhThu.Checked;
                     if (!string.IsNullOrEmpty(txtTuMay.Text.Trim()))
@@ -93,7 +93,7 @@ namespace DocSo_PC.GUI.QuanTri
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     if (_selectedindex != -1)
                     {
-                        To to = _cTo.GetByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
+                        To to = _cTo.get(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
                         _cTo.Xoa(to);
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

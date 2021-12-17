@@ -61,27 +61,27 @@ namespace DocSo_PC.DAL.QuanTri
             }
         }
 
-        public List<To> GetDS()
+        public List<To> getDS()
         {
             return _db.Tos.ToList();
         }
 
-        public List<To> GetDSHanhThu()
+        public List<To> getDS_HanhThu()
         {
             return _db.Tos.Where(item => item.HanhThu == true).ToList();
         }
 
-        public To GetByMaTo(int MaTo)
+        public To get(int MaTo)
         {
             return _db.Tos.SingleOrDefault(item => item.MaTo == MaTo);
         }
 
-        public string GetTenToByMaTo(int MaTo)
+        public string getTenTo(int MaTo)
         {
             return _db.Tos.SingleOrDefault(item => item.MaTo == MaTo).TenTo;
         }
 
-        public bool CheckHanhThu(int MaTo)
+        public bool checkHanhThu(int MaTo)
         {
             return _db.Tos.Any(item => item.MaTo == MaTo && item.HanhThu == true);
         }

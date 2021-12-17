@@ -68,6 +68,12 @@ namespace DocSo_PC.DAL.Doi
         }
 
 
+        //table Code
+        public DataTable getDS_Code()
+        {
+            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable("select Code from TTDHN order by stt asc");
+        }
+
 
         //table DocSo
         public bool them_DocSo(DocSo en)
@@ -122,23 +128,7 @@ namespace DocSo_PC.DAL.Doi
                     }
         }
 
-        public void updateDocSo(ref DocSo en)
-        {
-            DocSo enTruoc;
-            if (en.Ky == "1")
-                enTruoc = get_DocSo(en.DanhBa, (en.Nam.Value - 1).ToString(), "12");
-            else
-                enTruoc = get_DocSo(en.DanhBa, en.Nam.Value.ToString(), (int.Parse(en.Ky) - 1).ToString());
-            if (enTruoc != null)
-            {
-                en.TBTT = TinhTBTT(en.DanhBa, en.Nam.Value.ToString(), en.Ky);
-                en.CodeCu = enTruoc.CodeMoi;
-                en.TTDHNCu = enTruoc.TTDHNMoi;
-                en.TuNgay = enTruoc.DenNgay;
-            }
-        }
-
-        public void updateTBTTDocSo(string Nam,string Ky,string Dot)
+        public void updateTBTTDocSo(string Nam, string Ky, string Dot)
         {
             _cDAL.ExecuteNonQuery("exec dbo.spUpdateTBTTDocSo '" + Nam + "','" + Ky + "','" + Dot + "'");
         }
@@ -172,6 +162,12 @@ namespace DocSo_PC.DAL.Doi
                         + " ,Dot=SUBSTRING(BillID,7,2)"
                         + " ,ID=BillID"
                         + " from BillState where BillID like '" + Nam + Ky + "%')t1";
+            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        public DataTable getDS_GiaoTangCuong(string May, string Nam, string Ky, string Dot)
+        {
+            string sql = "select DocSoID,MLT=MLT1,DanhBo=DanhBa,May,PhanMay from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and May=" + May+" order by MLT1 asc";
             return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 

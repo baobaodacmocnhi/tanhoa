@@ -14,9 +14,9 @@ using DocSo_PC.GUI.HeThong;
 
 namespace DocSo_PC
 {
-    public partial class frmMain : Form
+    public partial class frmMain2 : Form
     {
-        public frmMain()
+        public frmMain2()
         {
             InitializeComponent();
         }
@@ -188,17 +188,6 @@ namespace DocSo_PC
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuNhanVienDocSo_Click(object sender, EventArgs e)
-        {
-            if (CNguoiDung.CheckQuyen("mnuNhanVienDocSo", "Xem"))
-            {
-                frmNhanVienDocSo frm = new frmNhanVienDocSo();
-                OpenForm(frm);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
         #endregion
 
         #region Đội
@@ -242,7 +231,7 @@ namespace DocSo_PC
 
         private void mnuXuLySoLieu_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuXuLySoLieu", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuNguoiDung", "Xem"))
             {
                 frmXuLySoLieu frm = new frmXuLySoLieu();
                 OpenForm(frm);
@@ -274,8 +263,6 @@ namespace DocSo_PC
         }
 
         #endregion
-
-        
 
         
     }
