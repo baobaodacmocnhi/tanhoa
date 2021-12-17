@@ -129,10 +129,16 @@ namespace ThuTien.GUI.TongHop
                             dt = _cDCHD.getDS_Giay_Tong_ChuaCapNhat();
                         }
                         else
-                            if (chkTrongKy.Checked)
-                                dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                            if (chkTrongKy.Checked == true)
+                                if (radNgayDC.Checked == true)
+                                    dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                else
+                                    dt = _cDCHD.GetDSByNgayChan(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                             else
-                                dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+                                if (radNgayDC.Checked == true)
+                                    dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+                                else
+                                    dt = _cDCHD.GetDSByNgayChan(dateTu.Value, dateDen.Value);
                 }
                 else
                     if (radDienTu.Checked == true)
@@ -151,10 +157,16 @@ namespace ThuTien.GUI.TongHop
                                 dt = _cDCHD.getDS_HDDT_Tong_ChuaCapNhat();
                             }
                             else
-                                if (chkTrongKy.Checked)
-                                    dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                if (chkTrongKy.Checked == true)
+                                    if (radNgayDC.Checked == true)
+                                        dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                    else
+                                        dt = _cDCHD.GetDSByNgayChan(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                                 else
-                                    dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+                                    if (radNgayDC.Checked == true)
+                                        dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+                                    else
+                                        dt = _cDCHD.GetDSByNgayChan(dateTu.Value, dateDen.Value);
                     }
                 dgvDCHD.DataSource = dt;
             }

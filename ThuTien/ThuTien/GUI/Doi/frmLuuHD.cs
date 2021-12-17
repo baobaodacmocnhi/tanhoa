@@ -299,7 +299,7 @@ namespace ThuTien.GUI.Doi
                                         dchd.PHI_BD = hoadon.PHI;
                                         dchd.THUE_BD = hoadon.THUE;
                                         dchd.TONGCONG_BD = hoadon.TONGCONG;
-                                        dchd.NGAY_DC = DateTime.Now;
+                                        dchd.NgayChan = DateTime.Now;
                                         if (_cDCHD.Them(dchd))
                                         {
                                             _cDCHD.Xoa_HDChoDC(_cDCHD.get_HDChoDC(hoadon.DANHBA, hoadon.NAM, hoadon.KY));

@@ -144,7 +144,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDanhSach.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDanhSach.Size = new System.Drawing.Size(610, 150);
+            this.dgvDanhSach.Size = new System.Drawing.Size(610, 350);
             this.dgvDanhSach.TabIndex = 12;
             this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
             // 
@@ -245,7 +245,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(637, 252);
+            this.ClientSize = new System.Drawing.Size(637, 451);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtDiaChi);
             this.Controls.Add(this.label5);
