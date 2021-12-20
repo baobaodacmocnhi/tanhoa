@@ -138,17 +138,18 @@ namespace DocSo_PC.DAL
             {
                 Connect();
                 command = new SqlCommand(sql, connection);
-                command.CommandTimeout = 3600;
+                command.CommandTimeout = 600;
                 int rowsAffected = command.ExecuteNonQuery();
+                Disconnect();
                 if (rowsAffected >= 1)
                     return true;
                 else
                     return false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
-                throw;
+                Disconnect();
+                throw ex;
             }
         }
 
@@ -158,111 +159,54 @@ namespace DocSo_PC.DAL
             {
                 Connect();
                 command = new SqlCommand(sql, connection);
-                command.CommandTimeout = 3600;
-                return command.ExecuteScalar();
-            }
-            catch (Exception)
-            {
-                return false;
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Hàm thực thi các câu truy vấn lấy thông tin dữ liệu như Select
-        /// </summary>
-        /// <param name="sqlString"> Câu truy vấn (Select) cần thực thi </param>
-        /// <returns> Hàm trả về một đối tượng SqlDataReader chứa thông tin dữ liệu trả về </returns>
-        public SqlDataReader ExecuteQuery_SqlDataReader(string sql)
-        {
-            try
-            {
-                Connect();
-                command = new SqlCommand(sql, connection);
-                SqlDataReader reader = command.ExecuteReader();
-                //Disconnect();
-                return reader;
+                object result = command.ExecuteScalar();
+                Disconnect();
+                return result;
             }
             catch (Exception ex)
             {
                 Disconnect();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                throw ex;
             }
         }
 
-        public DataTable ExecuteQuery_SqlDataReader_DataTable(string sql)
+        public DataTable ExecuteQuery_DataTable(string sql)
         {
             try
             {
+                this.Connect();
                 DataTable dt = new DataTable();
-                Connect();
                 command = new SqlCommand(sql, connection);
-                command.CommandTimeout = 3600;
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                    dt.Load(reader);
-                Disconnect();
+                command.CommandTimeout = 60;
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+                this.Disconnect();
                 return dt;
             }
             catch (Exception ex)
             {
                 Disconnect();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }  
+                throw ex;
+            }
         }
 
-        /// <summary>
-        /// Thực thi câu truy vấn SQL trả về một đối tượng DataSet chứa kết quả trả về
-        /// </summary>
-        /// <param name="strSelect">Câu truy vấn cần thực thi lấy dữ liệu</param>
-        /// <returns>Đối tượng dataset chứa dữ liệu kết quả câu truy vấn</returns>
-        public DataSet ExecuteQuery_SqlDataAdapter_DataSet(string sql)
+        public DataSet ExecuteQuery_DataSet(string sql)
         {
             try
             {
                 Connect();
                 DataSet dataset = new DataSet();
-                command = new SqlCommand();
-                command.CommandTimeout = 3600;
-                command.Connection = this.connection;
-                adapter = new SqlDataAdapter(sql, connection);
-                try
-                {
-                    adapter.Fill(dataset);
-                }
-                catch (SqlException e)
-                {
-                    throw e;
-                }
+                command = new SqlCommand(sql, connection);
+                command.CommandTimeout = 0;
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataset);
                 Disconnect();
                 return dataset;
             }
             catch (Exception ex)
             {
                 Disconnect();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Thực thi câu truy vấn SQL trả về một đối tượng DataTable chứa kết quả trả về
-        /// </summary>
-        /// <param name="strSelect">Câu truy vấn cần thực thi lấy dữ liệu</param>
-        /// <returns>Đối tượng datatable chứa dữ liệu kết quả câu truy vấn</returns>
-        public DataTable ExecuteQuery_SqlDataAdapter_DataTable(string sql)
-        {
-            try
-            {
-                return ExecuteQuery_SqlDataAdapter_DataSet(sql).Tables[0];
-            }
-            catch (Exception ex)
-            {
-                Disconnect();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                throw ex;
             }
         }
 

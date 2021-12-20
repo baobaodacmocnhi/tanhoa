@@ -14,7 +14,7 @@ using DocSo_PC.LinQ;
 
 namespace DocSo_PC.GUI.ToTruong
 {
-    public partial class frmXuLySoLieu : Form
+    public partial class frmXuLySoLieu2 : Form
     {
         string _mnu = "mnuXuLySoLieu";
         CTo _cTo = new CTo();
@@ -28,7 +28,7 @@ namespace DocSo_PC.GUI.ToTruong
         string dot;
         string ky;
         string danhbo = "";
-        public frmXuLySoLieu()
+        public frmXuLySoLieu2()
         {
             //frmChonDot f = new frmChonDot();
             //if (f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -185,7 +185,7 @@ namespace DocSo_PC.GUI.ToTruong
 
             if (sodanhbo.Length == 11)
             {
-                khachhang = DAL.CDHN.finByDanhBo(sodanhbo);
+                khachhang = _kh.get(sodanhbo);
                 if (khachhang != null)
                 {
                     txtDanhBo.Text = khachhang.DANHBO;
@@ -202,7 +202,7 @@ namespace DocSo_PC.GUI.ToTruong
                 }
                 else
                 {
-                    TB_DULIEUKHACHHANG_HUYDB khachhanghuy = DAL.CDHN.finByDanhBoHuy(sodanhbo);
+                    TB_DULIEUKHACHHANG_HUYDB khachhanghuy = _kh.get_Huy(sodanhbo);
                     if (khachhanghuy != null)
                     {
                         txtDanhBo.Text = khachhanghuy.DANHBO;
@@ -240,7 +240,7 @@ namespace DocSo_PC.GUI.ToTruong
             CThuTien _tt = new CThuTien();
             string sql = " SELECT  TOP(12)   H.DANHBA, H.KY, H.Nam AS NAM, H.CODE AS CODE, H.CSCU, H.CSMOI, CONVERT(NCHAR(10), H.DenNgay, 103) AS DENNGAY, H.TIEUTHU AS LNCC ";
             sql += " FROM HOADON H   WHERE DANHBA ='" + db + "'  order by  NAM DESC,KY DESC";
-            DataTable b = CXuLyDocSo._cDAL.ExecuteQuery_SqlDataReader_DataTable(sql);
+            DataTable b = CXuLyDocSo._cDAL.ExecuteQuery_DataTable(sql);
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("R1", b));
             this.reportViewer1.RefreshReport();

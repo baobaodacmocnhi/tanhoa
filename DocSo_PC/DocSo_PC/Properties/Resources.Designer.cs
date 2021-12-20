@@ -63,19 +63,9 @@ namespace DocSo_PC.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Arrow2_Right {
+        internal static System.Drawing.Bitmap no_image {
             get {
-                object obj = ResourceManager.GetObject("Arrow2 Right", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Arrow2_Right1 {
-            get {
-                object obj = ResourceManager.GetObject("Arrow2 Right1", resourceCulture);
+                object obj = ResourceManager.GetObject("no_image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

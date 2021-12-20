@@ -67,7 +67,7 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
             return _cDAL.LINQToDataTable(query.OrderBy(item => item.Dot));
             //string sql = "select DOT,count(ID_HoaDon) as TongHD,sum(TIEUTHU) as TongLNCC,sum(GIABAN) as TongGiaBan,sum(THUE) as TongThueGTGT,sum(PHI) as TongPhiBVMT,sum(TONGCONG) as TongCong "
             //    + "from HOADON where NAM='" + nam + "' and KY='" + ky + "' group by DOT order by DOT asc";
-            //return ExecuteQuery_SqlDataReader_DataTable(sql);
+            //return ExecuteQuery_DataTable(sql);
         }
 
         /// <summary>

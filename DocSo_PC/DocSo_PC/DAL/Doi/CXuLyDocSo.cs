@@ -19,13 +19,13 @@ namespace DocSo_PC.DAL.ToTruong
                 sql += " AND ToID=" + tods;
             sql += " order by may";
 
-            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return _cDAL.ExecuteQuery_DataTable(sql);
         }
         public DataTable getGanMoi(string db)
         {
             string sql = "SELECT DanhBa,NgayKiem,NoiDung,Hieu,Co,ChiSo,NgayCapNhat,NVCapNhat   FROM [DocSoTH].[dbo].[ThongBao]";
             sql += " WHERE  DanhBa='" + db + "' order by NgayKiem asc";
-            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDuLieuDocSo(string db, string code, string may, int nam, string ky, string dot)
@@ -42,7 +42,7 @@ namespace DocSo_PC.DAL.ToTruong
                 sql += "AND May='" + may + "' ";
 
             sql += " ORDER BY MLT1 ASC ";
-            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
         public DataTable SumTongSoDS(string tods, string may, int nam, string ky, string dot)
@@ -66,7 +66,7 @@ namespace DocSo_PC.DAL.ToTruong
                 sql += "AND May='" + may + "' ";
 
             // sql += " ORDER BY MLT1 ASC ";
-            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
         public int TinhTieuThu(string DanhBo, int ky, int nam, string code, int csmoi)

@@ -51,7 +51,7 @@ namespace DocSo_PC.GUI.ToTruong
             string sql = "SELECT MaTo,TenTo FROM [To] ";
             if (CNguoiDung.ToTruong)
                 sql += " WHERE MaTo=" + CNguoiDung.MaTo;
-            cmbToDS.DataSource = CChuanBiDS._cDAL.ExecuteQuery_SqlDataReader_DataTable(sql);
+            cmbToDS.DataSource = CChuanBiDS._cDAL.ExecuteQuery_DataTable(sql);
             cmbToDS.DisplayMember = "TenTo";
             cmbToDS.ValueMember = "MaTo";
 
@@ -84,7 +84,7 @@ namespace DocSo_PC.GUI.ToTruong
             sql += " ,COUNT(CASE WHEN CodeMoi !='' THEN 1 ELSE NULL END) AS DADOC  ";
             sql += " ,COUNT(CASE WHEN CodeMoi = '' THEN 1 ELSE NULL END) AS CHUADOC  ";
             sql += " ,COUNT(CASE WHEN CodeMoi LIKE 'F%' THEN 1 ELSE NULL END) AS DONGCUA from DocSo where Nam=" + int.Parse(cmbNam.Text) + "AND Ky='" + cmbKy.Text + "' AND Dot='" + cmbDot.Text + "' AND TODS=" + int.Parse(cmbToDS.SelectedValue.ToString()) + " group by May ORDER BY MAY ASC ";
-            dataTaoDS.DataSource = CChuanBiDS._cDAL.ExecuteQuery_SqlDataReader_DataTable(sql);
+            dataTaoDS.DataSource = CChuanBiDS._cDAL.ExecuteQuery_DataTable(sql);
         }
        
 

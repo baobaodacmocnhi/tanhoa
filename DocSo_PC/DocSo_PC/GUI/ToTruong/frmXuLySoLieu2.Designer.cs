@@ -1,6 +1,6 @@
 ﻿namespace DocSo_PC.GUI.ToTruong
 {
-    partial class frmXuLySoLieu
+    partial class frmXuLySoLieu2
     {
         /// <summary>
         /// Required designer variable.

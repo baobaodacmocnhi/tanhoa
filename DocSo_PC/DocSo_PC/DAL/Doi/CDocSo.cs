@@ -16,7 +16,7 @@ namespace DocSo_PC.DAL.Doi
                           + " from BillState"
                           + " group by SUBSTRING(BillID,0,5)"
                           + " order by Nam desc";
-            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
         //table BillState
@@ -71,7 +71,7 @@ namespace DocSo_PC.DAL.Doi
         //table Code
         public DataTable getDS_Code()
         {
-            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable("select Code from TTDHN order by stt asc");
+            return _cDAL.ExecuteQuery_DataTable("select Code from TTDHN order by stt asc");
         }
 
 
@@ -99,6 +99,11 @@ namespace DocSo_PC.DAL.Doi
         public bool checkExists_DocSo(string Nam, string Ky, string Dot)
         {
             return _db.DocSos.Any(item => item.Nam == int.Parse(Nam) && item.Ky == Ky && item.Dot == Dot);
+        }
+
+        public DocSo get_DocSo(string DocSoID)
+        {
+            return _db.DocSos.SingleOrDefault(item => item.DocSoID == DocSoID);
         }
 
         public DocSo get_DocSo(string DanhBo, string Nam, string Ky)
@@ -162,14 +167,75 @@ namespace DocSo_PC.DAL.Doi
                         + " ,Dot=SUBSTRING(BillID,7,2)"
                         + " ,ID=BillID"
                         + " from BillState where BillID like '" + Nam + Ky + "%')t1";
-            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_GiaoTangCuong(string May, string Nam, string Ky, string Dot)
         {
-            string sql = "select DocSoID,MLT=MLT1,DanhBo=DanhBa,May,PhanMay from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and May=" + May+" order by MLT1 asc";
-            return _cDAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            string sql = "select DocSoID,MLT=MLT1,DanhBo=DanhBa,May,PhanMay from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and May=" + May + " order by MLT1 asc";
+            return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
+        public DataTable getDS_XuLy_DanhBo(string Nam, string Ky, string DanhBo)
+        {
+            string sql = "select * from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa=" + DanhBo;
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getDS_XuLy_DanhBo(string MaTo, string Nam, string Ky, string DanhBo)
+        {
+            string sql = "select * from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa=" + DanhBo + " (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ")";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getDS_XuLy(string MaTo, string Nam, string Ky, string Dot, string May, string Code, ref DataTable dtTong)
+        {
+            if (May == "Tất Cả")
+                May = "";
+            if (Code == "Tất Cả")
+                Code = "";
+            string sql = "select * from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ") and May like '%" + May + "%' and CodeMoi like '%" + Code + "%'";
+            string sql2 = "select TongSL=COUNT(DocSoID)"
+                        + " ,SLDaGhi=COUNT(case when CodeMoi!='' then 1 else null end)"
+                        + " ,SLChuaGhi=COUNT(case when CodeMoi='' then 1 else null end)"
+                        + " ,SanLuong=SUM(TieuThuMoi)"
+                        + " ,SLHD0=COUNT(case when TieuThuMoi=0 then 1 else null end)"
+                        + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ") and May like '%" + May + "%' and CodeMoi like '%" + Code + "%'";
+            dtTong = _cDAL.ExecuteQuery_DataTable(sql2);
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getThongBao(string DanhBo)
+        {
+            string sql = "select d.SoLenh,t.CodeDesc,ChiSo,NgayKiem,NoiDung,Hieu,Co,NgayCapNhat"
+                            + " from ThongBao d inner join ThamSo t on d.LoaiLenh=t.Code "
+                            + " where DanhBa='" + DanhBo + "' and t.CodeType='TB' order by ID desc";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getBaoThay(string DanhBo)
+        {
+            string sql = "select DanhBa,t.CodeDesc,CSGo,CSGan,SoThanMoi,NgayThay,NgayCapNhat,NVCapNhat"
+                            + " from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code "
+                            + " where DanhBa='" + DanhBo + "' and t.CodeType = 'BT' order by NgayCapNhat desc";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getLichSu(string DanhBo, string Nam, string Ky)
+        {
+            string sql = "select Col,Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0 from"
+            + "      (select 'Ky'+convert(varchar(5),(2021*12+12)-Nam*12-Ky) as KyN,Col,Val"
+            + "      from DocSo cross apply"
+            + "          (values"
+            + "              (N'1. Kỳ',Ky+'/'+str(Nam,4,0)),"
+            + "              (N'2. Ngày đọc',convert(varchar(10),DenNgay,103)),"
+            + "              ('3. Code',CodeMoi),"
+            + "              (N'4. Chỉ số',convert(varchar(10),CSMoi)),"
+            + "              (N'5. Tiêu thụ',convert(varchar(10),TieuThuMoi)))"
+            + "          cs (Col,Val)"
+            + "      where DanhBa = 13132150168) src"
+            + "  pivot (max(Val) for KyN in (Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0)) pvt";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
     }
 }

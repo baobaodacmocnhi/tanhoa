@@ -41,7 +41,7 @@ namespace DocSo_PC.GUI.ChuyenBillding
             //string sql = "SELECT MaTo,TenTo FROM [To] ";
             //if (CNguoiDung.ToTruong)
             //    sql += " WHERE MaTo=" + CNguoiDung.MaTo;
-            //cmbToDS.DataSource = _cChuanBi.ExecuteQuery_SqlDataReader_DataTable(sql);
+            //cmbToDS.DataSource = _cChuanBi.ExecuteQuery_DataTable(sql);
             //cmbToDS.DisplayMember = "TenTo";
             //cmbToDS.ValueMember = "MaTo";
 
@@ -64,7 +64,7 @@ namespace DocSo_PC.GUI.ChuyenBillding
             string ky = cmbKy.Text;
             string dot = cmbDot.Text;
             string SQL = "SELECT TODS,MAY,DANHBA,MLT1 FROM DocSo WHERE (CodeMoi='' OR CSMoi ='' OR TieuThuMoi ='' )  AND  NAM=" + nam + " AND KY='" + ky + "' AND DOT='" + dot + "' ORDER BY MLT1 ASC";
-            dataKiemsoat.DataSource = CChuyenDuLieu._cDAL.ExecuteQuery_SqlDataAdapter_DataTable(SQL);
+            dataKiemsoat.DataSource = CChuyenDuLieu._cDAL.ExecuteQuery_DataTable(SQL);
         }
 
     }

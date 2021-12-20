@@ -259,7 +259,7 @@ namespace DocSo_PC.GUI.Doi
         //    string sql = "SELECT MaTo,TenTo FROM [To] ";
         //    if (CNguoiDung.ToTruong)
         //        sql += " WHERE MaTo=" + CNguoiDung.MaTo;
-        //    cmbToDS.DataSource = _cChuanBi.ExecuteQuery_SqlDataReader_DataTable(sql);
+        //    cmbToDS.DataSource = _cChuanBi.ExecuteQuery_DataTable(sql);
         //    cmbToDS.DisplayMember = "TenTo";
         //    cmbToDS.ValueMember = "MaTo";
 
@@ -290,13 +290,13 @@ namespace DocSo_PC.GUI.Doi
         //        ////    tb.Select(" (May BETWEEN 0 AND 10 )");
         //        //dataTaoDS.DataSource = t2;
         //        string sql = " select May,COUNT(*) AS SOLUONG , 'True' as DaTao ,NVTaoDS,NgayTaoDS from DocSo WHERE (May BETWEEN " + tumay + " AND " + denmay + " )AND Nam=" + int.Parse(cmbNam.Text) + "AND Ky='" + cmbKy.Text + "' AND Dot='" + cmbDot.Text + "' group by May,NVTaoDS,NgayTaoDS ORDER BY May ASC ";
-        //        tb = _cChuanBi.ExecuteQuery_SqlDataReader_DataTable(sql);
+        //        tb = _cChuanBi.ExecuteQuery_DataTable(sql);
         //        if (tb.Rows.Count > 0)
         //            dgvDanhSach.DataSource = tb;
         //        else
         //        {
         //            sql = "select May,COUNT(*) AS SOLUONG , 'False' as DaTao ,'' AS NVTaoDS, '' AS NgayTaoDS from BienDong WHERE (May BETWEEN " + tumay + " AND " + denmay + " )AND Nam=" + int.Parse(cmbNam.Text) + "AND Ky='" + cmbKy.Text + "' AND Dot='" + cmbDot.Text + "' group by May ORDER BY May ASC ";
-        //            tb = _cChuanBi.ExecuteQuery_SqlDataReader_DataTable(sql);
+        //            tb = _cChuanBi.ExecuteQuery_DataTable(sql);
         //            dgvDanhSach.DataSource = tb;
         //        }
         //    }

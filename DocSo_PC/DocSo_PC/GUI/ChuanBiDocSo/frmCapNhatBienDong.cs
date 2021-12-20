@@ -363,11 +363,11 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
             sql += " count(case when LEFT(CODE,1) ='N' then 1 else null end) AS 'N',   ";
             sql += " count(case when LEFT(CODE,1) ='Q' then 1 else null end) AS 'Q'	     ";
             sql += " from BienDong where NAM=" + cmbNam.Text + " and KY='" + cmbKy.Text + "' and dot='" + cmbDot.Text + "' ";
-            dataCode.DataSource = CChuanBiDS._cDAL.ExecuteQuery_SqlDataReader_DataTable(sql);
+            dataCode.DataSource = CChuanBiDS._cDAL.ExecuteQuery_DataTable(sql);
 
 
             sql = "select  [MLT1], [DanhBa],[May],[TenKH],[So],[Duong],[Phuong],[Quan],[GB],[DM],[Hieu],[Co],[SoThan],[Code],[ChiSo],[TieuThu],convert(varchar(50),[NgayGan],103) as [NgayGan],[NgayCapNhat],[NVCapNhat] from BienDong where NAM=" + cmbNam.Text + " and KY='" + cmbKy.Text + "' and dot='" + cmbDot.Text + "' ";
-            DataTable tb = CChuanBiDS._cDAL.ExecuteQuery_SqlDataReader_DataTable(sql);
+            DataTable tb = CChuanBiDS._cDAL.ExecuteQuery_DataTable(sql);
             dataBiendong.DataSource = tb;
             lbSoLuongBd.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", tb.Rows.Count);
 
@@ -386,7 +386,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
                 string headerText = dataCode.Columns[e.ColumnIndex].HeaderText;
 
                 string sql = "select [MLT1], [DanhBa],[May],[TenKH],[So],[Duong],[Phuong],[Quan],[GB],[DM],[Hieu],[Co],[SoThan],[Code],[ChiSo],[TieuThu],convert(varchar(50),[NgayGan],103) as [NgayGan],[NgayCapNhat],[NVCapNhat] from BienDong where NAM=" + cmbNam.Text + " and KY='" + cmbKy.Text + "' and dot='" + cmbDot.Text + "'  AND LEFT(CODE,1)='" + headerText + "'";
-                DataTable tb = CChuanBiDS._cDAL.ExecuteQuery_SqlDataReader_DataTable(sql);
+                DataTable tb = CChuanBiDS._cDAL.ExecuteQuery_DataTable(sql);
                 dataBiendong.DataSource = tb;
 
             }
