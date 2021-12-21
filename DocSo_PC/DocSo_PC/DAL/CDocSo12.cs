@@ -5,9 +5,9 @@ using System.Text;
 
 namespace DocSo_PC.DAL
 {
-    class CConnection12
+    class CDocSo12
     {
-        public static CConnection _cDAL = new CConnection("");
+        public static CConnection _cDAL = new CConnection("Data Source=server12;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=sa;Password=db12@tanhoa");
 
         public byte[] getHinh(string ID)
         {

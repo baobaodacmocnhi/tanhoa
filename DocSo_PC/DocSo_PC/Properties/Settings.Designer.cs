@@ -66,5 +66,15 @@ namespace DocSo_PC.Properties {
                 return ((string)(this["TRUNGTAMKHACHHANGConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://113.161.88.180:81/wsthutien.asmx")]
+        public string DocSo_PC_WebReference_wsThuTien {
+            get {
+                return ((string)(this["DocSo_PC_WebReference_wsThuTien"]));
+            }
+        }
     }
 }

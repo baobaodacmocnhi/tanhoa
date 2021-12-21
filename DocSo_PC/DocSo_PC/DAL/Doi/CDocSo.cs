@@ -67,11 +67,21 @@ namespace DocSo_PC.DAL.Doi
             return _db.BienDongs.Where(item => item.Nam == int.Parse(Nam) && item.Ky == Ky && item.Dot == Dot).ToList();
         }
 
+        public BienDong get_BienDong(string ID)
+        {
+            return _db.BienDongs.SingleOrDefault(item => item.BienDongID == ID);
+        }
+
 
         //table Code
         public DataTable getDS_Code()
         {
             return _cDAL.ExecuteQuery_DataTable("select Code from TTDHN order by stt asc");
+        }
+
+        public string getTTDHNCode(string Code)
+        {
+            return _cDAL.ExecuteQuery_ReturnOneValue("select TTDHN from TTDHN where Code=" + Code).ToString();
         }
 
 

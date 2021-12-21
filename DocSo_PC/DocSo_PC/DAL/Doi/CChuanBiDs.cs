@@ -7,7 +7,7 @@ using DocSo_PC.DAL.QuanTri;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace DocSo_PC.DAL.ChuanBiDocSo
+namespace DocSo_PC.DAL.Doi
 {
     class CChuanBiDS : CDAL
     {

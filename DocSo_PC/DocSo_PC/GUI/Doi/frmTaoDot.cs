@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using DocSo_PC.DAL.ChuanBiDocSo;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using System.Data.SqlClient;

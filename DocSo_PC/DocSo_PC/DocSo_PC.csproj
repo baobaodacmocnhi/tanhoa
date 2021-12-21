@@ -83,6 +83,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -94,8 +95,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\CConnection12.cs" />
+    <Compile Include="DAL\CDocSo12.cs" />
     <Compile Include="DAL\QuanTri\CMayDS.cs" />
+    <Compile Include="GUI\Doi\frmChuyenBilling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmChuyenBilling.Designer.cs">
+      <DependentUpon>frmChuyenBilling.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QuanTri\frmNhanVienDocSo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,7 +121,7 @@
     <Compile Include="DAL\CLichDocSo.cs" />
     <Compile Include="DAL\Doi\CChuanBiDS.cs" />
     <Compile Include="DAL\CDHN.cs" />
-    <Compile Include="DAL\Doi\CChuyenDuLieu.cs" />
+    <Compile Include="DAL\Doi\CChuyenBilling.cs" />
     <Compile Include="DAL\CThuTien.cs" />
     <Compile Include="DAL\Doi\CDanhBoKhongTinhPBVMT.cs" />
     <Compile Include="DAL\Doi\CDocSo.cs" />
@@ -264,6 +271,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web References\WebReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GUI\Doi\frmChuyenBilling.resx">
+      <DependentUpon>frmChuyenBilling.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanTri\frmNhanVienDocSo.resx">
       <DependentUpon>frmNhanVienDocSo.cs</DependentUpon>
     </EmbeddedResource>
@@ -381,6 +396,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Web References\WebReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WebReference\wsthutien.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -397,18 +417,31 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Arrow2 Right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Arrow2 Right1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\ChuanBiDocSo\" />
-    <Folder Include="DAL\ChuyenBillding\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\no-image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://113.161.88.180:81/wsthutien.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WebReference\</RelPath>
+      <UpdateFromURL>http://113.161.88.180:81/wsthutien.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DocSo_PC_WebReference_wsThuTien</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WebReference\wsthutien.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

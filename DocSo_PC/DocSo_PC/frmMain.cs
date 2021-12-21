@@ -236,6 +236,17 @@ namespace DocSo_PC
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuChuyenBilling_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuChuyenBilling", "Xem"))
+            {
+                frmChuyenBilling frm = new frmChuyenBilling();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Tổ Trưởng
@@ -274,6 +285,8 @@ namespace DocSo_PC
         }
 
         #endregion
+
+       
 
         
 

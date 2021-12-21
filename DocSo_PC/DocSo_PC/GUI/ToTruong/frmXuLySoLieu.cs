@@ -10,6 +10,7 @@ using DocSo_PC.DAL.Doi;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using DocSo_PC.DAL;
+using DocSo_PC.WebReference;
 
 namespace DocSo_PC.GUI.ToTruong
 {
@@ -17,10 +18,12 @@ namespace DocSo_PC.GUI.ToTruong
     {
         string _mnu = "mnuXuLySoLieu";
         CDocSo _cDocSo = new CDocSo();
+        CDocSo12 _cDocSo12 = new CDocSo12();
         CTo _cTo = new CTo();
         CMayDS _cMayDS = new CMayDS();
         CDHN _cDHN = new CDHN();
         DocSo _docso = null;
+        wsThuTien wsThuTien = new wsThuTien();
         bool _flagLoadFirst = false;
 
         public frmXuLySoLieu()
@@ -48,6 +51,11 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbCode.DataSource = dtCode;
                 cmbCode.DisplayMember = "Code";
                 cmbCode.ValueMember = "Code";
+
+                dtCode = _cDocSo.getDS_Code();
+                cmbCodeMoi.DataSource = dtCode;
+                cmbCodeMoi.DisplayMember = "Code";
+                cmbCodeMoi.ValueMember = "Code";
                 if (CNguoiDung.Doi)
                 {
                     cmbTo.Visible = true;
@@ -109,6 +117,12 @@ namespace DocSo_PC.GUI.ToTruong
                         txtMLT.Text = dhn.LOTRINH.Insert(4, " ").Insert(2, " ");
                         txtGiaBieu.Text = dhn.GIABIEU;
                         txtDinhMuc.Text = dhn.DINHMUC;
+                        txtNgayGhiCS.Text = _docso.GIOGHI.Value.ToString();
+                        txtNguoiCapNhat.Text = _docso.NVCapNhat;
+                        txtNgayCapNhat.Text = _docso.NgayCapNhat.Value.ToString();
+                        tbxGCDS.Text = _docso.GhiChuDS;
+                        tbxGCKH.Text = _docso.GhiChuKH;
+                        tbxGCTV.Text = _docso.GhiChuTV;
                         dgvThongBao.DataSource = _cDocSo.getThongBao(_docso.DanhBa);
                         dgvBaoThay.DataSource = _cDocSo.getBaoThay(_docso.DanhBa);
                         dgvLichSu.DataSource = _cDocSo.getLichSu(_docso.DanhBa, _docso.Nam.Value.ToString(), _docso.Ky);
@@ -199,35 +213,159 @@ namespace DocSo_PC.GUI.ToTruong
         {
             if (_docso != null)
             {
+                lblKy0.Text = (int.Parse(_docso.Ky)).ToString("00") + "/" + (_docso.Nam);
+                byte[] img = _cDocSo12.getHinh((_docso.Nam) + (int.Parse(_docso.Ky)).ToString("00") + _docso.DanhBa);
+                if (img != null)
+                    ptbKy0.Image = _cDocSo.byteArrayToImage(img);
+                else
+                    ptbKy0.Image = Properties.Resources.no_image;
                 if (_docso.Ky == "01")
                 {
-                    lblKy0.Text = "12" + "/" + (_docso.Nam - 1);
-                    lblKy1.Text = "11" + "/" + (_docso.Nam - 1);
-                    lblKy2.Text = "10" + "/" + (_docso.Nam - 1);
+                    lblKy1.Text = "12" + "/" + (_docso.Nam - 1);
+                    lblKy2.Text = "11" + "/" + (_docso.Nam - 1);
+                    lblKy3.Text = "10" + "/" + (_docso.Nam - 1);
+                    img = _cDocSo12.getHinh((_docso.Nam - 1) + "12" + _docso.DanhBa);
+                    if (img != null)
+                        ptbKy1.Image = _cDocSo.byteArrayToImage(img);
+                    else
+                        ptbKy1.Image = Properties.Resources.no_image;
+                    img = _cDocSo12.getHinh((_docso.Nam - 1) + "11" + _docso.DanhBa);
+                    if (img != null)
+                        ptbKy2.Image = _cDocSo.byteArrayToImage(img);
+                    else
+                        ptbKy2.Image = Properties.Resources.no_image;
+                    img = _cDocSo12.getHinh((_docso.Nam - 1) + "10" + _docso.DanhBa);
+                    if (img != null)
+                        ptbKy3.Image = _cDocSo.byteArrayToImage(img);
+                    else
+                        ptbKy3.Image = Properties.Resources.no_image;
                 }
                 else
                     if (_docso.Ky == "02")
                     {
-                        lblKy0.Text = "01" + "/" + (_docso.Nam);
-                        lblKy1.Text = "12" + "/" + (_docso.Nam - 1);
-                        lblKy2.Text = "11" + "/" + (_docso.Nam - 1);
+                        lblKy1.Text = "01" + "/" + (_docso.Nam);
+                        lblKy2.Text = "12" + "/" + (_docso.Nam - 1);
+                        lblKy3.Text = "11" + "/" + (_docso.Nam - 1);
+                        img = _cDocSo12.getHinh((_docso.Nam) + "01" + _docso.DanhBa);
+                        if (img != null)
+                            ptbKy1.Image = _cDocSo.byteArrayToImage(img);
+                        else
+                            ptbKy1.Image = Properties.Resources.no_image;
+                        img = _cDocSo12.getHinh((_docso.Nam - 1) + "12" + _docso.DanhBa);
+                        if (img != null)
+                            ptbKy2.Image = _cDocSo.byteArrayToImage(img);
+                        else
+                            ptbKy2.Image = Properties.Resources.no_image;
+                        img = _cDocSo12.getHinh((_docso.Nam - 1) + "11" + _docso.DanhBa);
+                        if (img != null)
+                            ptbKy3.Image = _cDocSo.byteArrayToImage(img);
+                        else
+                            ptbKy3.Image = Properties.Resources.no_image;
                     }
                     else
                         if (_docso.Ky == "03")
                         {
-                            lblKy0.Text = "01" + "/" + (_docso.Nam);
-                            lblKy1.Text = "02" + "/" + (_docso.Nam);
-                            lblKy2.Text = "12" + "/" + (_docso.Nam - 1);
+                            lblKy1.Text = "01" + "/" + (_docso.Nam);
+                            lblKy2.Text = "02" + "/" + (_docso.Nam);
+                            lblKy3.Text = "12" + "/" + (_docso.Nam - 1);
+                            img = _cDocSo12.getHinh((_docso.Nam) + "01" + _docso.DanhBa);
+                            if (img != null)
+                                ptbKy1.Image = _cDocSo.byteArrayToImage(img);
+                            else
+                                ptbKy1.Image = Properties.Resources.no_image;
+                            img = _cDocSo12.getHinh((_docso.Nam) + "02" + _docso.DanhBa);
+                            if (img != null)
+                                ptbKy2.Image = _cDocSo.byteArrayToImage(img);
+                            else
+                                ptbKy2.Image = Properties.Resources.no_image;
+                            img = _cDocSo12.getHinh((_docso.Nam - 1) + "12" + _docso.DanhBa);
+                            if (img != null)
+                                ptbKy3.Image = _cDocSo.byteArrayToImage(img);
+                            else
+                                ptbKy3.Image = Properties.Resources.no_image;
                         }
                         else
                         {
-                            lblKy0.Text = (int.Parse(_docso.Ky) - 1).ToString("00") + "/" + (_docso.Nam);
-                            lblKy1.Text = (int.Parse(_docso.Ky) - 2).ToString("00") + "/" + (_docso.Nam);
-                            lblKy2.Text = (int.Parse(_docso.Ky) - 3).ToString("00") + "/" + (_docso.Nam);
+                            lblKy1.Text = (int.Parse(_docso.Ky) - 1).ToString("00") + "/" + (_docso.Nam);
+                            lblKy2.Text = (int.Parse(_docso.Ky) - 2).ToString("00") + "/" + (_docso.Nam);
+                            lblKy3.Text = (int.Parse(_docso.Ky) - 3).ToString("00") + "/" + (_docso.Nam);
+                            img = _cDocSo12.getHinh((_docso.Nam) + (int.Parse(_docso.Ky) - 1).ToString("00") + _docso.DanhBa);
+                            if (img != null)
+                                ptbKy1.Image = _cDocSo.byteArrayToImage(img);
+                            else
+                                ptbKy1.Image = Properties.Resources.no_image;
+                            img = _cDocSo12.getHinh((_docso.Nam) + (int.Parse(_docso.Ky) - 2).ToString("00") + _docso.DanhBa);
+                            if (img != null)
+                                ptbKy2.Image = _cDocSo.byteArrayToImage(img);
+                            else
+                                ptbKy2.Image = Properties.Resources.no_image;
+                            img = _cDocSo12.getHinh((_docso.Nam) + (int.Parse(_docso.Ky) - 3).ToString("00") + _docso.DanhBa);
+                            if (img != null)
+                                ptbKy3.Image = _cDocSo.byteArrayToImage(img);
+                            else
+                                ptbKy3.Image = Properties.Resources.no_image;
                         }
-                ptbKy0.Image = ImageUtil.FromByteArray(images.Img0);
-                ptbKy1.Image = ImageUtil.FromByteArray(images.Img1);
-                ptbKy2.Image = ImageUtil.FromByteArray(images.Img2);
+
+            }
+        }
+
+        private void ptbKy0_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKy0.Image));
+        }
+
+        private void ptbKy1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKy1.Image));
+        }
+
+        private void ptbKy2_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKy2.Image));
+        }
+
+        private void ptbKy3_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKy3.Image));
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (_docso != null)
+                    {
+                        if (_cDocSo.checkChuyenBilling_BillState(_docso.Nam.Value.ToString(), _docso.Ky, _docso.Dot) == true)
+                        {
+                            MessageBox.Show("Năm " + _docso.Nam.Value.ToString() + " Kỳ " + _docso.Ky + " Đợt " + _docso.Dot + " đã chuyển billing", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        _docso.CodeMoi = cmbCodeMoi.SelectedValue.ToString();
+                        _docso.TTDHNMoi = _cDocSo.getTTDHNCode(_docso.CodeMoi);
+                        _docso.CSCu = int.Parse(txtCSC.Text.Trim());
+                        _docso.CSMoi = int.Parse(txtCSM.Text.Trim());
+                        _docso.TieuThuMoi = int.Parse(txtTieuThu.Text.Trim());
+                        BienDong bd = _cDocSo.get_BienDong(_docso.DocSoID);
+                        int TienNuocA = 0, TienNuocB = 0, PhiBVMTA = 0, PhiBVMTB = 0, TieuThu_DieuChinhGia = 0;
+                        string ChiTietA = "", ChiTietB = "", ChiTietPhiBVMTA = "", ChiTietPhiBVMTB = "";
+                        wsThuTien.TinhTienNuoc(false, false, false, 0, bd.DanhBa, int.Parse(bd.Ky), bd.Nam.Value, _docso.TuNgay.Value, _docso.DenNgay.Value
+                             , bd.GB.Value, bd.SH.Value, bd.SX.Value, bd.DV.Value, bd.HC.Value
+                             , bd.DM.Value, bd.DMHN.Value, _docso.TieuThuMoi.Value, ref TienNuocA, ref ChiTietA, ref TienNuocB, ref ChiTietB, ref TieuThu_DieuChinhGia, ref PhiBVMTA, ref ChiTietPhiBVMTA, ref PhiBVMTB, ref ChiTietPhiBVMTB);
+                        _docso.TienNuoc = (TienNuocA + TienNuocB);
+                        _docso.Thue = (int)Math.Round((double)(TienNuocA + TienNuocB) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+                        _docso.BVMT = (PhiBVMTA + PhiBVMTB);
+                        _docso.TongTien = _docso.TienNuoc + _docso.Thue + (PhiBVMTA + PhiBVMTB);
+                        _cDocSo.SubmitChanges();
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

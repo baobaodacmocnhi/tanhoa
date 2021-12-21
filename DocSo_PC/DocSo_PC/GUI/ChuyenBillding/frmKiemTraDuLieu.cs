@@ -6,18 +6,17 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using DocSo_PC.DAL.ChuanBiDocSo;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using System.Data.SqlClient;
-using DocSo_PC.DAL.ChuyenBillding;
+using DocSo_PC.DAL.Doi;
 
 namespace DocSo_PC.GUI.ChuyenBillding
 {
     public partial class frmKiemTraDuLieu : Form
     {
         //  CNguoiDung _cNguoiDung = new CNguoiDung();
-        CChuyenDuLieu _cChuyen = new CChuyenDuLieu();
+        CChuyenBilling _cChuyen = new CChuyenBilling();
         int tumay = CNguoiDung.TuMayDS;
         int denmay = CNguoiDung.DenMayDS;
         public frmKiemTraDuLieu()
@@ -64,7 +63,7 @@ namespace DocSo_PC.GUI.ChuyenBillding
             string ky = cmbKy.Text;
             string dot = cmbDot.Text;
             string SQL = "SELECT TODS,MAY,DANHBA,MLT1 FROM DocSo WHERE (CodeMoi='' OR CSMoi ='' OR TieuThuMoi ='' )  AND  NAM=" + nam + " AND KY='" + ky + "' AND DOT='" + dot + "' ORDER BY MLT1 ASC";
-            dataKiemsoat.DataSource = CChuyenDuLieu._cDAL.ExecuteQuery_DataTable(SQL);
+            dataKiemsoat.DataSource = CChuyenBilling._cDAL.ExecuteQuery_DataTable(SQL);
         }
 
     }

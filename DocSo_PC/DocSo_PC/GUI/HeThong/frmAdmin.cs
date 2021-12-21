@@ -33,57 +33,56 @@ namespace DocSo_PC.GUI.HeThong
         {
             frmMain frm = new frmMain();
             foreach (ToolStripMenuItem itemParent in frm.MainMenuStrip.Items)
-                if (itemParent.Visible == true)
+            {
+                int STT = 1;
+                if (itemParent.Name == "mnuHeThong")
+                    continue;
+                foreach (ToolStripMenuItem itemChild in itemParent.DropDownItems)
                 {
-                    int STT = 1;
-                    if (itemParent.Name == "mnuHeThong")
-                        continue;
-                    foreach (ToolStripMenuItem itemChild in itemParent.DropDownItems)
+                    if (!_cMenu.CheckExistByTenMenu(itemChild.Name))
                     {
-                        if (!_cMenu.CheckExistByTenMenu(itemChild.Name))
+                        LinQ.Menu menu = new LinQ.Menu();
+                        menu.STT = STT++;
+                        menu.TenMenu = itemChild.Name;
+                        menu.TextMenu = itemChild.Text;
+                        menu.TenMenuCha = itemParent.Name;
+                        menu.TextMenuCha = itemParent.Text;
+                        foreach (var item in _cNhom.GetDS())
                         {
-                            LinQ.Menu menu = new LinQ.Menu();
-                            menu.STT = STT++;
-                            menu.TenMenu = itemChild.Name;
-                            menu.TextMenu = itemChild.Text;
-                            menu.TenMenuCha = itemParent.Name;
-                            menu.TextMenuCha = itemParent.Text;
-                            foreach (var item in _cNhom.GetDS())
-                            {
-                                PhanQuyenNhom phanquyennhom = new PhanQuyenNhom();
-                                phanquyennhom.MaMenu = menu.MaMenu;
-                                phanquyennhom.MaNhom = item.MaNhom;
-                                phanquyennhom.CreateBy = CNguoiDung.MaND;
-                                phanquyennhom.CreateDate = DateTime.Now;
-                                menu.PhanQuyenNhoms.Add(phanquyennhom);
-                            }
-                            foreach (var item in _cNguoiDung.GetDS())
-                            {
-                                PhanQuyenNguoiDung phanquyennguoidung = new PhanQuyenNguoiDung();
-                                phanquyennguoidung.MaMenu = menu.MaMenu;
-                                phanquyennguoidung.MaND = item.MaND;
-                                phanquyennguoidung.CreateBy = CNguoiDung.MaND;
-                                phanquyennguoidung.CreateDate = DateTime.Now;
-                                if (item.MaND == 0)
-                                {
-                                    phanquyennguoidung.Xem = true;
-                                    phanquyennguoidung.Them = true;
-                                    phanquyennguoidung.Sua = true;
-                                    phanquyennguoidung.Xoa = true;
-                                }
-                                menu.PhanQuyenNguoiDungs.Add(phanquyennguoidung);
-                            }
-                            _cMenu.Them(menu);
+                            PhanQuyenNhom phanquyennhom = new PhanQuyenNhom();
+                            phanquyennhom.MaMenu = menu.MaMenu;
+                            phanquyennhom.MaNhom = item.MaNhom;
+                            phanquyennhom.CreateBy = CNguoiDung.MaND;
+                            phanquyennhom.CreateDate = DateTime.Now;
+                            menu.PhanQuyenNhoms.Add(phanquyennhom);
                         }
-                        else
+                        foreach (var item in _cNguoiDung.GetDS())
                         {
-                            LinQ.Menu menu = _cMenu.GetByTenMenu(itemChild.Name);
-                            menu.STT = STT++;
-                            _cMenu.Sua(menu);
+                            PhanQuyenNguoiDung phanquyennguoidung = new PhanQuyenNguoiDung();
+                            phanquyennguoidung.MaMenu = menu.MaMenu;
+                            phanquyennguoidung.MaND = item.MaND;
+                            phanquyennguoidung.CreateBy = CNguoiDung.MaND;
+                            phanquyennguoidung.CreateDate = DateTime.Now;
+                            if (item.MaND == 0)
+                            {
+                                phanquyennguoidung.Xem = true;
+                                phanquyennguoidung.Them = true;
+                                phanquyennguoidung.Sua = true;
+                                phanquyennguoidung.Xoa = true;
+                            }
+                            menu.PhanQuyenNguoiDungs.Add(phanquyennguoidung);
                         }
+                        _cMenu.Them(menu);
                     }
-
+                    else
+                    {
+                        LinQ.Menu menu = _cMenu.GetByTenMenu(itemChild.Name);
+                        menu.STT = STT++;
+                        _cMenu.Sua(menu);
+                    }
                 }
+
+            }
 
         }
 

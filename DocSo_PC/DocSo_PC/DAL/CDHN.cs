@@ -6,7 +6,6 @@ using DocSo_PC.LinQ;
 using System.Data;
 using System.Reflection;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
 namespace DocSo_PC.DAL
 {
