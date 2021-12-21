@@ -122,5 +122,11 @@ namespace KTKS_DonKH.DAL
             catch (Exception ex)
             { throw ex; }
         }
+
+        public bool checkKhongTinhPBVMT(string DanhBo)
+        {
+            return db.DanhBoKPBVMTs.Any(item => item.DanhBo == DanhBo);
+        }
+
     }
 }

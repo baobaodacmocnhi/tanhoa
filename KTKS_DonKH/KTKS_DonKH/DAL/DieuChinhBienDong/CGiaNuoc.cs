@@ -7533,6 +7533,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         List<int> lstGiaNuoc = new List<int> { int.Parse(dtGiaNuoc.Rows[index]["SHTM"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHVM1"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHVM2"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SX"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["HCSN"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["KDDV"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHN"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["PhiBVMT"].ToString()) };
                         TienNuocCu = TinhTienNuoc(DieuChinhGia, GiaDieuChinh, lstGiaNuoc, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, out ChiTietCu, out TieuThu_DieuChinhGia, out PhiBVMTCu, out ChiTietPhiBVMTCu);
                     }
+                if (_cDocSo.checkKhongTinhPBVMT(DanhBo) == true)
+                {
+                    PhiBVMTCu = PhiBVMTMoi = 0;
+                    ChiTietPhiBVMTCu = ChiTietPhiBVMTMoi = "";
+                }
             }
             else
             {
@@ -7601,6 +7606,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         List<int> lstGiaNuoc = new List<int> { int.Parse(dtGiaNuoc.Rows[index]["SHTM"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHVM1"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHVM2"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SX"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["HCSN"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["KDDV"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHN"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["PhiBVMT"].ToString()) };
                         TienNuocCu = TinhTienNuoc2(lstGiaNuoc, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, TieuThu_GiaDieuChinh2, GiaTien_GiaDieuChinh2, out ChiTietCu, out PhiBVMTCu, out ChiTietPhiBVMTCu);
                     }
+                if (_cDocSo.checkKhongTinhPBVMT(DanhBo) == true)
+                {
+                    PhiBVMTCu = PhiBVMTMoi = 0;
+                    ChiTietPhiBVMTCu = ChiTietPhiBVMTMoi = "";
+                }
             }
             else
             {
@@ -7669,6 +7679,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         List<int> lstGiaNuoc = new List<int> { int.Parse(dtGiaNuoc.Rows[index]["SHTM"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHVM1"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHVM2"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SX"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["HCSN"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["KDDV"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHN"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["PhiBVMT"].ToString()) };
                         TienNuocCu = TinhTienNuoc3(lstGiaNuoc, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, TieuThuV1_GiaDieuChinh3, TieuThuV2_GiaDieuChinh3, out ChiTietCu, out PhiBVMTCu, out ChiTietPhiBVMTCu);
                     }
+                if (_cDocSo.checkKhongTinhPBVMT(DanhBo) == true)
+                {
+                    PhiBVMTCu = PhiBVMTMoi = 0;
+                    ChiTietPhiBVMTCu = ChiTietPhiBVMTMoi = "";
+                }
             }
             else
             {
@@ -7740,6 +7755,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         List<int> lstGiaNuoc = new List<int> { int.Parse(dtGiaNuoc.Rows[index]["SHTM"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHVM1"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHVM2"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SX"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["HCSN"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["KDDV"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHN"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["PhiBVMT"].ToString()) };
                         TienNuocCu = TinhTienNuoc_KhuCongNghiep(lstGiaNuoc, GiaBieu, TongDinhMuc, DinhMucHN, TieuThu, out ChiTietCu, out TyLe, out PhiBVMTCu, out ChiTietPhiBVMTCu);
                     }
+                if (_cDocSo.checkKhongTinhPBVMT(DanhBo) == true)
+                {
+                    PhiBVMTCu = PhiBVMTMoi = 0;
+                    ChiTietPhiBVMTCu = ChiTietPhiBVMTMoi = "";
+                }
             }
             else
             {
@@ -7815,6 +7835,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         List<int> lstGiaNuoc = new List<int> { int.Parse(dtGiaNuoc.Rows[index]["SHTM"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHVM1"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHVM2"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SX"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["HCSN"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["KDDV"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHN"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["PhiBVMT"].ToString()) };
                         TienNuocCu = TinhTienNuoc_HoNgheo(DieuChinhGia, GiaDieuChinh, lstGiaNuoc, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, out ChiTietCu, out TieuThu_DieuChinhGia, out PhiBVMTCu, out ChiTietPhiBVMTCu);
                     }
+                if (_cDocSo.checkKhongTinhPBVMT(DanhBo) == true)
+                {
+                    PhiBVMTCu = PhiBVMTMoi = 0;
+                    ChiTietPhiBVMTCu = ChiTietPhiBVMTMoi = "";
+                }
             }
             else
             {
@@ -7890,6 +7915,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         List<int> lstGiaNuoc = new List<int> { int.Parse(dtGiaNuoc.Rows[index]["SHTM"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHVM1"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHVM2"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SX"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["HCSN"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["KDDV"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["SHN"].ToString()), int.Parse(dtGiaNuoc.Rows[index]["PhiBVMT"].ToString()) };
                         TienNuocCu = TinhTienNuoc(DieuChinhGia, 0, lstGiaNuoc, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, out ChiTietCu, out TieuThu_DieuChinhGia, out PhiBVMTCu, out ChiTietPhiBVMTCu);
                     }
+                if (_cDocSo.checkKhongTinhPBVMT(DanhBo) == true)
+                {
+                    PhiBVMTCu = PhiBVMTMoi = 0;
+                    ChiTietPhiBVMTCu = ChiTietPhiBVMTMoi = "";
+                }
             }
             else
             {

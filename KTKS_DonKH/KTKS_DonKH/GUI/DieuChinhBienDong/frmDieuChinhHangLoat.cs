@@ -361,7 +361,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                             if ((TongTienMoiA + TongTienMoiB) - (int)hd.GIABAN.Value != 0)
                                                 //ctdchd.PhiBVMT_BD = (int)(Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero) - (int)hd.PHI.Value);
-                                                ctdchd.PhiBVMT_BD = (TongTienPhiBVMTMoiA + TongTienPhiBVMTMoiB)- (int)hd.PHI.Value;
+                                                ctdchd.PhiBVMT_BD = (TongTienPhiBVMTMoiA + TongTienPhiBVMTMoiB) - (int)hd.PHI.Value;
                                             else
                                                 ctdchd.PhiBVMT_BD = 0;
 
@@ -414,6 +414,85 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                         }
                         _db = new dbKinhDoanhDataContext();
+                        MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnTVCapNhatQLDHN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.Admin == true && CTaiKhoan.CheckQuyen("mnuDCHD", "Them"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        for (int i = 0; i < dgvDanhSach.Rows.Count; i++)
+                        {
+                            if (bool.Parse(dgvDanhSach.Rows[i].Cells["DCHD"].Value.ToString()) == true && bool.Parse(dgvDanhSach.Rows[i].Cells["UpdatedDHN"].Value.ToString()) == false)
+                            {
+                                DieuChinhHangLoat en = _db.DieuChinhHangLoats.SingleOrDefault(item => item.DanhBo == dgvDanhSach.Rows[i].Cells["DanhBo"].Value.ToString() && item.Nam == Convert.ToInt32(dgvDanhSach.Rows[i].Cells["Nam"].Value.ToString()) && item.Ky == Convert.ToInt32(dgvDanhSach.Rows[i].Cells["Ky"].Value.ToString()));
+                                if (en != null)
+                                    if (en.Code == "5K")
+                                    {
+                                        string Nam = dgvDanhSach.Rows[i].Cells["Nam"].Value.ToString();
+                                        string Ky = int.Parse(dgvDanhSach.Rows[i].Cells["Ky"].Value.ToString()).ToString("00");
+                                        string NamSau = "";
+                                        string KySau = "";
+                                        if (Ky == "12")
+                                        {
+                                            NamSau = (int.Parse(dgvDanhSach.Rows[i].Cells["Nam"].Value.ToString()) + 1).ToString();
+                                            KySau = "01";
+                                        }
+                                        else
+                                        {
+                                            NamSau = Nam;
+                                            KySau = (int.Parse(dgvDanhSach.Rows[i].Cells["Ky"].Value.ToString()) + 1).ToString("00");
+                                        }
+                                        string sql = " update DocSo set CodeMoi='K' where DocSoID=" + Nam + Ky + dgvDanhSach.Rows[i].Cells["DanhBo"].Value.ToString()
+                                              + " update DocSo set CodeCu='K' where DocSoID=" + NamSau + KySau + dgvDanhSach.Rows[i].Cells["DanhBo"].Value.ToString();
+                                        if (_cDocSo.ExecuteNonQuery(sql))
+                                        {
+                                            string sql2 = "update DieuChinhHangLoat set UpdatedDHN=1,UpdatedDHN_Ngay=getdate() where DanhBo=" + dgvDanhSach.Rows[i].Cells["DanhBo"].Value.ToString() + " and Nam=" + Nam + " and Ky=" + Ky;
+                                            _cDCBD.ExecuteNonQuery(sql2);
+                                        }
+                                    }
+                                    else
+                                        if (en.Code == "44" && en.TieuThu == 1)
+                                        {
+                                            string Nam = dgvDanhSach.Rows[i].Cells["Nam"].Value.ToString();
+                                            string Ky = dgvDanhSach.Rows[i].Cells["Ky"].Value.ToString();
+                                            string NamSau = "";
+                                            string KySau = "";
+                                            if (Ky == "12")
+                                            {
+                                                NamSau = (int.Parse(dgvDanhSach.Rows[i].Cells["Nam"].Value.ToString()) + 1).ToString();
+                                                KySau = "01";
+                                            }
+                                            else
+                                            {
+                                                NamSau = Nam;
+                                                KySau = (int.Parse(dgvDanhSach.Rows[i].Cells["Ky"].Value.ToString()) + 1).ToString("00");
+                                            }
+                                            string sql = " update DocSo set CSMoi=" + en.CSC + " where DocSoID=" + Nam + Ky + dgvDanhSach.Rows[i].Cells["DanhBo"].Value.ToString()
+                                                  + " update DocSo set CSCu=" + en.CSC + " where DocSoID=" + NamSau + KySau + dgvDanhSach.Rows[i].Cells["DanhBo"].Value.ToString();
+                                            if (_cDocSo.ExecuteNonQuery(sql))
+                                            {
+                                                string sql2 = "update DieuChinhHangLoat set UpdatedDHN=1,UpdatedDHN_Ngay=getdate() where DanhBo=" + dgvDanhSach.Rows[i].Cells["DanhBo"].Value.ToString() + " and Nam=" + Nam + " and Ky=" + Ky;
+                                                _cDCBD.ExecuteNonQuery(sql2);
+                                            }
+                                        }
+                            }
+
+                        }
+
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

@@ -194,6 +194,10 @@ namespace KTKS_DonKH.GUI.DonTu
                     //dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
                 }
                 chkChanHoaDon.Checked = entity.DonTu_ChiTiets.FirstOrDefault().ChanHoaDon;
+                if (entity.DonTu_ChiTiets.FirstOrDefault().ChanHoaDon_Ky != null)
+                {
+                    txtKyHDChan.Text = entity.DonTu_ChiTiets.FirstOrDefault().ChanHoaDon_Ky + "/" + entity.DonTu_ChiTiets.FirstOrDefault().ChanHoaDon_Nam;
+                }
                 chkVanPhong.Checked = entity.VanPhong;
                 txtMaDon.Text = entity.MaDon.ToString();
                 dateCreateDate.Value = entity.CreateDate.Value;
@@ -302,6 +306,7 @@ namespace KTKS_DonKH.GUI.DonTu
             txtNguoiBao.Text = "";
             txtDienThoai.Text = "";
             chkChanHoaDon.Checked = false;
+            txtKyHDChan.Text = "";
             if (dgvDanhBo.DataSource != null)
                 dgvDanhBo.DataSource = null;
             else
@@ -488,6 +493,13 @@ namespace KTKS_DonKH.GUI.DonTu
                             entityCT.Phuong = _hoadon.Phuong;
                         }
                         entityCT.ChanHoaDon = chkChanHoaDon.Checked;
+                        if (txtKyHDChan.Text.Trim() != "")
+                        {
+                            string[] Kys = txtKyHDChan.Text.Trim().Split('/');
+                            entityCT.ChanHoaDon_Ky = int.Parse(Kys[0]);
+                            entityCT.ChanHoaDon_Nam = int.Parse(Kys[0]);
+                            entityCT.ChanHoaDon_Ngay = DateTime.Now;
+                        }
                         entityCT.CreateBy = CTaiKhoan.MaUser;
                         entityCT.CreateDate = DateTime.Now;
                         entityCT.TinhTrang = "Tồn";
@@ -718,6 +730,12 @@ namespace KTKS_DonKH.GUI.DonTu
                                 _dontu.DonTu_ChiTiets.SingleOrDefault().Phuong = _hoadon.Phuong;
                             }
                             _dontu.DonTu_ChiTiets.SingleOrDefault().ChanHoaDon = chkChanHoaDon.Checked;
+                            if (txtKyHDChan.Text.Trim() != "")
+                            {
+                                string[] Kys = txtKyHDChan.Text.Trim().Split('/');
+                                _dontu.DonTu_ChiTiets.SingleOrDefault().ChanHoaDon_Ky = int.Parse(Kys[0]);
+                                _dontu.DonTu_ChiTiets.SingleOrDefault().ChanHoaDon_Nam = int.Parse(Kys[0]);
+                            }
                         }
                         if (tabControl.SelectedTab.Name == "tabTTKH")
                         {
@@ -970,6 +988,10 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["DinhMuc"] = entity.DonTu_ChiTiets.SingleOrDefault().DinhMuc;
                     dr["DinhMucHN"] = entity.DonTu_ChiTiets.SingleOrDefault().DinhMucHN;
                     dr["DienThoai"] = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
+                    if (entity.DonTu_ChiTiets.SingleOrDefault().ChanHoaDon == true)
+                    {
+                        dr["TenLD"] = "***";
+                    }
                 }
                 dr["NoiDung"] = entity.Name_NhomDon_PKH;
                 dr["LyDoLoaiKhac"] = entity.VanDeKhac;

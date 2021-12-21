@@ -94,7 +94,7 @@
             this.mnuKhuCongNghiep = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHoNgheo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSoDangKyDinhMuc = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnDieuChinhChiSoLo = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDieuChinhChiSoLo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDieuChinhHangLoat = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCatHuy = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCTDB = new System.Windows.Forms.ToolStripMenuItem();
@@ -591,7 +591,7 @@
             this.mnuKhuCongNghiep,
             this.mnuHoNgheo,
             this.mnuSoDangKyDinhMuc,
-            this.mnDieuChinhChiSoLo,
+            this.mnuDieuChinhChiSoLo,
             this.mnuDieuChinhHangLoat});
             this.mnuDieuChinhBienDong.Name = "mnuDieuChinhBienDong";
             this.mnuDieuChinhBienDong.Size = new System.Drawing.Size(83, 20);
@@ -674,12 +674,12 @@
             this.mnuSoDangKyDinhMuc.Text = "Sổ Đăng Ký Định Mức";
             this.mnuSoDangKyDinhMuc.Click += new System.EventHandler(this.mnuSoDangKyDinhMuc_Click);
             // 
-            // mnDieuChinhChiSoLo
+            // mnuDieuChinhChiSoLo
             // 
-            this.mnDieuChinhChiSoLo.Name = "mnDieuChinhChiSoLo";
-            this.mnDieuChinhChiSoLo.Size = new System.Drawing.Size(243, 22);
-            this.mnDieuChinhChiSoLo.Text = "Điều Chỉnh Chỉ Số Lố";
-            this.mnDieuChinhChiSoLo.Click += new System.EventHandler(this.mnuDanhSachDocLoChiSoNuoc_Click);
+            this.mnuDieuChinhChiSoLo.Name = "mnuDieuChinhChiSoLo";
+            this.mnuDieuChinhChiSoLo.Size = new System.Drawing.Size(243, 22);
+            this.mnuDieuChinhChiSoLo.Text = "Điều Chỉnh Chỉ Số Lố";
+            this.mnuDieuChinhChiSoLo.Click += new System.EventHandler(this.mnuDanhSachDocLoChiSoNuoc_Click);
             // 
             // mnuDieuChinhHangLoat
             // 
@@ -1119,7 +1119,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDSToTrinh;
         private System.Windows.Forms.ToolStripMenuItem mnuVanBan;
         private System.Windows.Forms.ToolStripMenuItem mnuSoDangKyDinhMuc;
-        private System.Windows.Forms.ToolStripMenuItem mnDieuChinhChiSoLo;
+        private System.Windows.Forms.ToolStripMenuItem mnuDieuChinhChiSoLo;
         private System.Windows.Forms.ToolStripMenuItem mnuDieuChinhHangLoat;
     }
 }

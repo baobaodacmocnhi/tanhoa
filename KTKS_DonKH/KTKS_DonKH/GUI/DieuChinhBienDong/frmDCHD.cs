@@ -2127,10 +2127,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (chkKhuCongNghiep.Checked == true)
             {
                 txtPhiBVMT_Start.Text = "0";
-
                 txtPhiBVMT_BD.Text = "0";
-
                 txtPhiBVMT_End.Text = "0";
+                PhiBVMTCuA = PhiBVMTCuB = PhiBVMTMoiA = PhiBVMTMoiB = 0;
             }
             else
             {

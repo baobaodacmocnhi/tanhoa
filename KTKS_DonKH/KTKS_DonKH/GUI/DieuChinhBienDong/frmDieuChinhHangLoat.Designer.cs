@@ -39,6 +39,7 @@
             this.btnXem = new System.Windows.Forms.Button();
             this.btnTVDieuChinh = new System.Windows.Forms.Button();
             this.btnTVLapDon = new System.Windows.Forms.Button();
+            this.btnTVCapNhatQLDHN = new System.Windows.Forms.Button();
             this.STT2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DCHD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -47,6 +48,8 @@
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UpdatedDHN = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.UpdatedDHN_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,10 +66,12 @@
             this.STT,
             this.Nam,
             this.Ky,
-            this.Dot});
+            this.Dot,
+            this.UpdatedDHN,
+            this.UpdatedDHN_Ngay});
             this.dgvDanhSach.Location = new System.Drawing.Point(1, 41);
             this.dgvDanhSach.Name = "dgvDanhSach";
-            this.dgvDanhSach.Size = new System.Drawing.Size(571, 466);
+            this.dgvDanhSach.Size = new System.Drawing.Size(762, 466);
             this.dgvDanhSach.TabIndex = 0;
             this.dgvDanhSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellContentClick);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
@@ -162,6 +167,16 @@
             this.btnTVLapDon.UseVisualStyleBackColor = true;
             this.btnTVLapDon.Click += new System.EventHandler(this.btnTVLapDon_Click);
             // 
+            // btnTVCapNhatQLDHN
+            // 
+            this.btnTVCapNhatQLDHN.Location = new System.Drawing.Point(627, 12);
+            this.btnTVCapNhatQLDHN.Name = "btnTVCapNhatQLDHN";
+            this.btnTVCapNhatQLDHN.Size = new System.Drawing.Size(120, 23);
+            this.btnTVCapNhatQLDHN.TabIndex = 81;
+            this.btnTVCapNhatQLDHN.Text = "TV Cập Nhật QLĐHN";
+            this.btnTVCapNhatQLDHN.UseVisualStyleBackColor = true;
+            this.btnTVCapNhatQLDHN.Click += new System.EventHandler(this.btnTVCapNhatQLDHN_Click);
+            // 
             // STT2
             // 
             this.STT2.DataPropertyName = "STT2";
@@ -216,12 +231,25 @@
             this.Dot.Name = "Dot";
             this.Dot.Width = 50;
             // 
+            // UpdatedDHN
+            // 
+            this.UpdatedDHN.DataPropertyName = "UpdatedDHN";
+            this.UpdatedDHN.HeaderText = "UpdatedDHN";
+            this.UpdatedDHN.Name = "UpdatedDHN";
+            // 
+            // UpdatedDHN_Ngay
+            // 
+            this.UpdatedDHN_Ngay.DataPropertyName = "UpdatedDHN_Ngay";
+            this.UpdatedDHN_Ngay.HeaderText = "UpdatedDHN_Ngay";
+            this.UpdatedDHN_Ngay.Name = "UpdatedDHN_Ngay";
+            // 
             // frmDieuChinhHangLoat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1111, 668);
+            this.Controls.Add(this.btnTVCapNhatQLDHN);
             this.Controls.Add(this.btnTVDieuChinh);
             this.Controls.Add(this.btnTVLapDon);
             this.Controls.Add(this.btnXem);
@@ -255,6 +283,7 @@
         private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.Button btnTVDieuChinh;
         private System.Windows.Forms.Button btnTVLapDon;
+        private System.Windows.Forms.Button btnTVCapNhatQLDHN;
         private System.Windows.Forms.DataGridViewTextBoxColumn STT2;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DCHD;
@@ -263,5 +292,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn UpdatedDHN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UpdatedDHN_Ngay;
     }
 }

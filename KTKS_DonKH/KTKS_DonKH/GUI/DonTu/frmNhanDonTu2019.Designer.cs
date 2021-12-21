@@ -67,6 +67,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabTTKH = new System.Windows.Forms.TabPage();
+            this.chkChanHoaDon = new System.Windows.Forms.CheckBox();
+            this.txtKyHDChan = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.txtDinhMucHN = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.txtNguoiBao = new System.Windows.Forms.TextBox();
@@ -102,7 +105,6 @@
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chkChanHoaDon = new System.Windows.Forms.CheckBox();
             this.txtDM = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtHieuLucKy = new System.Windows.Forms.TextBox();
@@ -503,6 +505,9 @@
             // tabTTKH
             // 
             this.tabTTKH.AutoScroll = true;
+            this.tabTTKH.Controls.Add(this.chkChanHoaDon);
+            this.tabTTKH.Controls.Add(this.txtKyHDChan);
+            this.tabTTKH.Controls.Add(this.label28);
             this.tabTTKH.Controls.Add(this.txtDinhMucHN);
             this.tabTTKH.Controls.Add(this.label25);
             this.tabTTKH.Controls.Add(this.txtNguoiBao);
@@ -528,6 +533,32 @@
             this.tabTTKH.TabIndex = 0;
             this.tabTTKH.Text = "Thông Tin Khách Hàng";
             this.tabTTKH.UseVisualStyleBackColor = true;
+            // 
+            // chkChanHoaDon
+            // 
+            this.chkChanHoaDon.AutoSize = true;
+            this.chkChanHoaDon.Location = new System.Drawing.Point(134, 120);
+            this.chkChanHoaDon.Name = "chkChanHoaDon";
+            this.chkChanHoaDon.Size = new System.Drawing.Size(114, 20);
+            this.chkChanHoaDon.TabIndex = 95;
+            this.chkChanHoaDon.Text = "Chặn Hóa Đơn";
+            this.chkChanHoaDon.UseVisualStyleBackColor = true;
+            // 
+            // txtKyHDChan
+            // 
+            this.txtKyHDChan.Location = new System.Drawing.Point(342, 118);
+            this.txtKyHDChan.Name = "txtKyHDChan";
+            this.txtKyHDChan.Size = new System.Drawing.Size(60, 22);
+            this.txtKyHDChan.TabIndex = 19;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(254, 121);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(82, 16);
+            this.label28.TabIndex = 18;
+            this.label28.Text = "Kỳ HĐ Chặn:";
             // 
             // txtDinhMucHN
             // 
@@ -816,17 +847,6 @@
             this.Phuong.HeaderText = "Phường";
             this.Phuong.Name = "Phuong";
             this.Phuong.Visible = false;
-            // 
-            // chkChanHoaDon
-            // 
-            this.chkChanHoaDon.AutoSize = true;
-            this.chkChanHoaDon.Location = new System.Drawing.Point(682, 229);
-            this.chkChanHoaDon.Name = "chkChanHoaDon";
-            this.chkChanHoaDon.Size = new System.Drawing.Size(114, 20);
-            this.chkChanHoaDon.TabIndex = 95;
-            this.chkChanHoaDon.Text = "Chặn Hóa Đơn";
-            this.chkChanHoaDon.UseVisualStyleBackColor = true;
-            this.chkChanHoaDon.Visible = false;
             // 
             // txtDM
             // 
@@ -1305,7 +1325,6 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1326, 594);
-            this.Controls.Add(this.chkChanHoaDon);
             this.Controls.Add(this.cmbNhomDon_ChiTiet);
             this.Controls.Add(this.chkcmbQuanLy);
             this.Controls.Add(this.chkcmbDHN);
@@ -1492,5 +1511,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quan;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phuong;
         private System.Windows.Forms.CheckBox chkChanHoaDon;
+        private System.Windows.Forms.TextBox txtKyHDChan;
+        private System.Windows.Forms.Label label28;
     }
 }
