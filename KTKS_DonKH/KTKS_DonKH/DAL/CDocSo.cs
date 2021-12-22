@@ -46,7 +46,6 @@ namespace KTKS_DonKH.DAL
             db.SubmitChanges();
         }
 
-
         public bool ExecuteNonQuery(string sql)
         {
             try

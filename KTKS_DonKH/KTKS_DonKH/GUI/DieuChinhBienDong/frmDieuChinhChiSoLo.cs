@@ -718,7 +718,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 }
                             }
                         }
-
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

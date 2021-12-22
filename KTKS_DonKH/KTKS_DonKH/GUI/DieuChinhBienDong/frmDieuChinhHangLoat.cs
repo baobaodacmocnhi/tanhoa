@@ -490,9 +490,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             }
                                         }
                             }
-
                         }
-
+                        _cDCBD.Refresh();
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
