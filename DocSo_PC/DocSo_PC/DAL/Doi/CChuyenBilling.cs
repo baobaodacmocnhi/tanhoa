@@ -58,40 +58,38 @@ namespace DocSo_PC.DAL.Doi
             bool result;
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
-                string text = dataTable.Rows[i]["DanhBa"].ToString().Trim();
-                string text2 = dataTable.Rows[i]["CodeMoi"].ToString().Trim();
-                string text3 = dataTable.Rows[i]["CSCu"].ToString().Trim();
-                string text4 = dataTable.Rows[i]["CSMoi"].ToString().Trim();
-                string text5 = dataTable.Rows[i]["TieuThuMoi"].ToString().Trim();
-                double num4 = Convert.ToDouble(this.getID());
-                string text6 = dataTable.Rows[i]["MLT2"].ToString().Trim();
-                string text7 = text6.Substring(2, 2);
-                string text8 = text6.Substring(4, 3);
-                string text9 = dataTable.Rows[i]["DenNgay"].ToString().Trim();
-                string congty = "TA";
-                string username = "";
-                string rST_ID = this.getRST_ID(text2);
+                string DanhBo = dataTable.Rows[i]["DanhBa"].ToString().Trim();
+                string CodeMoi = dataTable.Rows[i]["CodeMoi"].ToString().Trim();
+                string CSC = dataTable.Rows[i]["CSCu"].ToString().Trim();
+                string CSM = dataTable.Rows[i]["CSMoi"].ToString().Trim();
+                string TieuThuMoi = dataTable.Rows[i]["TieuThuMoi"].ToString().Trim();
+                double ID = Convert.ToDouble(this.getID());
+                string MLT = dataTable.Rows[i]["MLT2"].ToString().Trim();
+                string May = MLT.Substring(2, 2);
+                string STT = MLT.Substring(4, 3);
+                string NgayDoc = dataTable.Rows[i]["DenNgay"].ToString().Trim();
+                string rST_ID = this.getRST_ID(CodeMoi);
                 if (!(rST_ID.Trim() == ""))
                 {
                     goto IL_1C0;
                 }
             IL_1C0:
-                if (text2.Length == 0)
+                if (CodeMoi.Length == 0)
                 {
                     //MessageBox.Show("Kiểm tra lại code mới của danh bạ " + text);
                     result = false;
                     return result;
                 }
                 string cmdText = "INSERT INTO ADMIN.\"TMP$MR\" (ID, BRANCH_CODE, \"YEAR\", PERIOD, BC_CODE, CUSTOMER_NO, MR_STATUS, THIS_READING, CONSUMPTION, DATE_READING, CREATED_ON, CREATED_BY, BOOK_NO, OIB, EMP_ID, RST_ID) VALUES ("
-                            + num4 + ",'" + congty + "'," + Nam + "," + Ky + ",'" + Dot + "','" + text + "','" + text2 + "'," + text4 + "," + text5 + ",'" + text9 + "','" + DateTime.Now.ToString("dd/MM/yyyy") + "','" + username + "','" + text7 + "','" + text8 + "','100000002','" + rST_ID + "')";
-                if (text2.Length > 0 && (text2.Substring(0, 1) == "5" || text2.Substring(0, 1) == "8" || text2.Substring(0, 1) == "M"))
+                            + ID + ",'TH'," + Nam + "," + Ky + ",'" + Dot + "','" + DanhBo + "','" + CodeMoi + "'," + CSM + "," + TieuThuMoi + ",'" + NgayDoc + "','" + DateTime.Now.ToString("dd/MM/yyyy") + "','TH_HANDHELD','" + May + "','" + STT + "','100000002','" + rST_ID + "')";
+                if (CodeMoi.Length > 0 && (CodeMoi.Substring(0, 1) == "5" || CodeMoi.Substring(0, 1) == "8" || CodeMoi.Substring(0, 1) == "M"))
                 {
                     cmdText = "INSERT INTO ADMIN.\"TMP$MR\" (ID, BRANCH_CODE, \"YEAR\", PERIOD, BC_CODE, CUSTOMER_NO, MR_STATUS, LAST_READING, THIS_READING, CONSUMPTION, DATE_READING, CREATED_ON, CREATED_BY, BOOK_NO, OIB, EMP_ID,RST_ID) VALUES ("
-                            + num4 + ",'" + congty + "'," + Nam + "," + Ky + ",'" + Dot + "','" + text + "','" + text2 + "'," + text3 + "," + text4 + "," + text5 + ",'" + text9 + "','" + DateTime.Now.ToString("dd/MM/yyyy") + "','" + username + "','" + text7 + "','" + text8 + "','100000002','" + rST_ID + "')";
+                            + ID + ",'TH'," + Nam + "," + Ky + ",'" + Dot + "','" + DanhBo + "','" + CodeMoi + "'," + CSC + "," + CSM + "," + TieuThuMoi + ",'" + NgayDoc + "','" + DateTime.Now.ToString("dd/MM/yyyy") + "','TH_HANDHELD','" + May + "','" + STT + "','100000002','" + rST_ID + "')";
                 }
                 try
                 {
-                    if (text6.Length > 6)
+                    if (MLT.Length > 6)
                     {
                         try
                         {
