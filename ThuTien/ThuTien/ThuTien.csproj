@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.1439</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1501</ApplicationRevision>
+    <ApplicationRevision>1502</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -655,7 +655,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DAL\CDHN.cs" />
-    <Compile Include="DAL\CDocSoHandheld.cs" />
+    <Compile Include="DAL\CDocSo.cs" />
     <Compile Include="DAL\ChuyenKhoan\CBangKe.cs" />
     <Compile Include="DAL\ChuyenKhoan\CBangKe_PhiMoNuoc.cs" />
     <Compile Include="DAL\ChuyenKhoan\CChanHoaDonAuto.cs" />
@@ -1345,15 +1345,15 @@
     <Compile Include="GUI\ToTruong\frmGiaoHDDienThoai.Designer.cs">
       <DependentUpon>frmGiaoHDDienThoai.cs</DependentUpon>
     </Compile>
+    <Compile Include="LinQ\dbDHN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbDHN.dbml</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\dbDocSo.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dbDocSo.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="LinQ\dbDocSoHandheld.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbDocSoHandheld.dbml</DependentUpon>
     </Compile>
     <Compile Include="LinQ\dbKinhDoanh.designer.cs">
       <AutoGen>True</AutoGen>
@@ -1734,14 +1734,14 @@
     <None Include="BaoCao\dsBaoCao.xss">
       <DependentUpon>dsBaoCao.xsd</DependentUpon>
     </None>
+    <None Include="LinQ\dbDHN.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbDHN.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="LinQ\dbDocSo.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbDocSo.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="LinQ\dbDocSoHandheld.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbDocSoHandheld.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="LinQ\dbKinhDoanh.dbml">
@@ -2068,11 +2068,11 @@
     <EmbeddedResource Include="GUI\ToTruong\frmTongHopNo.resx">
       <DependentUpon>frmTongHopNo.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LinQ\dbDHN.dbml.layout">
+      <DependentUpon>dbDHN.dbml</DependentUpon>
+    </None>
     <None Include="LinQ\dbDocSo.dbml.layout">
       <DependentUpon>dbDocSo.dbml</DependentUpon>
-    </None>
-    <None Include="LinQ\dbDocSoHandheld.dbml.layout">
-      <DependentUpon>dbDocSoHandheld.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="GUI\ToTruong\frmGiaoHDDienThoai.resx">
       <DependentUpon>frmGiaoHDDienThoai.cs</DependentUpon>

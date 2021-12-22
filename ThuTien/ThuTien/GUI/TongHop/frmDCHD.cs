@@ -600,7 +600,7 @@ namespace ThuTien.GUI.TongHop
                             //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                             //string KyHieu = (string)_cHoaDon.ExecuteQuery_ReturnOneValue("select SoHoaDon from TT_DeviceConfig");
                             int countXuLy = 0, countDaXuLy = 0;
-                            string message = "";
+                            string messageTCT = "\nHĐ có lỗi từ tct", messageTV = "\nP.TV chưa cập nhật";
                             foreach (DataRow item in dtExcel.Rows)
                             {
                                 //cấu hình điều chỉnh bằng chương trình
@@ -633,13 +633,13 @@ namespace ThuTien.GUI.TongHop
                                             else
                                             {
                                                 HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
-                                                message += "\nHĐ có lỗi từ tct\n" + item[3].ToString() + " - " + hd.DANHBA + " - " + hd.KY + "/" + hd.NAM;
+                                                messageTCT += "\n" + item[3].ToString() + " - " + hd.DANHBA + " - " + hd.KY + "/" + hd.NAM;
                                             }
                                         }
                                     else
                                     {
                                         HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
-                                        message += "\nP.TV chưa cập nhật\n" + item[3].ToString() + " - " + hd.DANHBA + " - " + hd.KY + "/" + hd.NAM;
+                                        messageTV += "\n" + item[3].ToString() + " - " + hd.DANHBA + " - " + hd.KY + "/" + hd.NAM;
                                     }
                                 else
                                 {
@@ -686,7 +686,7 @@ namespace ThuTien.GUI.TongHop
                                 //            message += "\n" + item[3].ToString() + " - " + item[1].ToString() + "/" + item[2].ToString();
                                 //}
                             }
-                            MessageBox.Show("Đã xử lý xong " + countXuLy + " hđ\nĐã xử lý trước đó " + countDaXuLy + "\nLỗi Không Xử lý" + message + "\nVui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Đã xử lý xong " + countXuLy + " hđ\nĐã xử lý trước đó " + countDaXuLy + "\nLỗi Không Xử lý" + messageTCT + messageTV + "\nVui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             loadHD0Ton();
                         }
                 }

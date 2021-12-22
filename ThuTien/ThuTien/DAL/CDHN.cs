@@ -15,7 +15,7 @@ namespace ThuTien.DAL
         protected SqlConnection connection;         // Đối tượng kết nối
         protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
-        dbCAPNUOCTANHOADataContext _db = new dbCAPNUOCTANHOADataContext();
+        dbDHNDataContext _db = new dbDHNDataContext();
 
         public CDHN()
         {

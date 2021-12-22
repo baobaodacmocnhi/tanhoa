@@ -29,7 +29,7 @@ namespace ThuTien.GUI.ToTruong
         CTamThu _cTamThu = new CTamThu();
         CTienDu _cTienDu = new CTienDu();
         CKinhDoanh _cKinhDoanh = new CKinhDoanh();
-        CDocSoHandheld _cDocSo = new CDocSoHandheld();
+        CDocSo _cDocSo = new CDocSo();
         BindingSource bsHoaDon = new BindingSource();
         DataTable _dt = new DataTable();
 
@@ -164,137 +164,144 @@ namespace ThuTien.GUI.ToTruong
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            try
             {
-                DataTable dtTemp = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
-                if (dtTemp.Rows.Count > 0)
+                if (e.KeyChar == 13)
                 {
-                    foreach (DataRow item in dtTemp.Rows)
-                    //if (!_dt.Rows.Contains(item["MaHD"].ToString()))
+                    DataTable dtTemp = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
+                    if (dtTemp.Rows.Count > 0)
                     {
-                        DataRow row = _dt.NewRow();
-                        row["MaHD"] = item["MaHD"];
-                        row["DanhBo"] = item["DanhBo"];
-                        row["HoTen"] = item["HoTen"];
-                        row["DiaChi"] = item["DiaChi"];
-                        row["Ky"] = item["Ky"];
-                        row["SoHoaDon"] = item["SoHoaDon"];
-                        row["GiaBieu"] = item["GiaBieu"];
-                        if (item["TyLeSH"].ToString() != "")
-                            row["TyLeSH"] = item["TyLeSH"];
-                        else
-                            row["TyLeSH"] = 0;
-                        if (item["TyLeHCSN"].ToString() != "")
-                            row["TyLeHCSN"] = item["TyLeHCSN"];
-                        else
-                            row["TyLeHCSN"] = 0;
-                        if (item["TyLeSX"].ToString() != "")
-                            row["TyLeSX"] = item["TyLeSX"];
-                        else
-                            row["TyLeSX"] = 0;
-                        if (item["TyLeDV"].ToString() != "")
-                            row["TyLeDV"] = item["TyLeDV"];
-                        else
-                            row["TyLeDV"] = 0;
-                        if (item["DinhMucHN"].ToString() != "")
-                            row["DinhMucHN"] = item["DinhMucHN"];
-                        else
-                            row["DinhMucHN"] = 0;
-                        if (item["DinhMuc"].ToString() != "")
-                            row["DinhMuc"] = item["DinhMuc"];
-                        else
-                            row["DinhMuc"] = 0;
-                        row["TieuThu"] = item["TieuThu"];
-                        row["GiaBan"] = item["GiaBan"];
-                        row["ThueGTGT"] = item["ThueGTGT"];
-                        row["PhiBVMT"] = item["PhiBVMT"];
-                        row["TongCong"] = item["TongCong"];
-                        DCBD_ChiTietBienDong dcbd = _cKinhDoanh.GetDCBD(item["DanhBo"].ToString());
-                        if (dcbd != null)
+                        foreach (DataRow item in dtTemp.Rows)
+                        //if (!_dt.Rows.Contains(item["MaHD"].ToString()))
                         {
-                            if (dcbd.DinhMuc != null)
-                                row["DinhMuc_Cu"] = dcbd.DinhMuc;
-                            if (dcbd.DinhMuc_BD != null)
-                                row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
-                            if (dcbd.HieuLucKy != null)
-                                row["HieuLucKy"] = dcbd.HieuLucKy;
+                            DataRow row = _dt.NewRow();
+                            row["MaHD"] = item["MaHD"];
+                            row["DanhBo"] = item["DanhBo"];
+                            row["HoTen"] = item["HoTen"];
+                            row["DiaChi"] = item["DiaChi"];
+                            row["Ky"] = item["Ky"];
+                            row["SoHoaDon"] = item["SoHoaDon"];
+                            row["GiaBieu"] = item["GiaBieu"];
+                            if (item["TyLeSH"].ToString() != "")
+                                row["TyLeSH"] = item["TyLeSH"];
+                            else
+                                row["TyLeSH"] = 0;
+                            if (item["TyLeHCSN"].ToString() != "")
+                                row["TyLeHCSN"] = item["TyLeHCSN"];
+                            else
+                                row["TyLeHCSN"] = 0;
+                            if (item["TyLeSX"].ToString() != "")
+                                row["TyLeSX"] = item["TyLeSX"];
+                            else
+                                row["TyLeSX"] = 0;
+                            if (item["TyLeDV"].ToString() != "")
+                                row["TyLeDV"] = item["TyLeDV"];
+                            else
+                                row["TyLeDV"] = 0;
+                            if (item["DinhMucHN"].ToString() != "")
+                                row["DinhMucHN"] = item["DinhMucHN"];
+                            else
+                                row["DinhMucHN"] = 0;
+                            if (item["DinhMuc"].ToString() != "")
+                                row["DinhMuc"] = item["DinhMuc"];
+                            else
+                                row["DinhMuc"] = 0;
+                            row["TieuThu"] = item["TieuThu"];
+                            row["GiaBan"] = item["GiaBan"];
+                            row["ThueGTGT"] = item["ThueGTGT"];
+                            row["PhiBVMT"] = item["PhiBVMT"];
+                            row["TongCong"] = item["TongCong"];
+                            DCBD_ChiTietBienDong dcbd = _cKinhDoanh.GetDCBD(item["DanhBo"].ToString());
+                            if (dcbd != null)
+                            {
+                                if (dcbd.DinhMuc != null)
+                                    row["DinhMuc_Cu"] = dcbd.DinhMuc;
+                                if (dcbd.DinhMuc_BD != null)
+                                    row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
+                                if (dcbd.HieuLucKy != null)
+                                    row["HieuLucKy"] = dcbd.HieuLucKy;
+                            }
+                            row["TienDu"] = _cTienDu.GetTienDu(item["DanhBo"].ToString()) * -1;
+                            row["TuNgay"] = item["TuNgay"];
+                            row["DenNgay"] = item["DenNgay"];
+                            _dt.Rows.Add(row);
                         }
-                        row["TienDu"] = _cTienDu.GetTienDu(item["DanhBo"].ToString()) * -1;
-                        row["TuNgay"] = item["TuNgay"];
-                        row["DenNgay"] = item["DenNgay"];
-                        _dt.Rows.Add(row);
-                    }
-                }
-                else
-                {
-                    HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
-                    int Ky = 0, Nam = 0;
-                    if (hoadon.KY == 12)
-                    {
-                        Ky = 1;
-                        Nam = hoadon.NAM + 1;
                     }
                     else
                     {
-                        Ky = hoadon.KY + 1;
-                        Nam = hoadon.NAM;
-                    }
-                    DocSo docso = new DocSo();
-                    docso = _cDocSo.get(hoadon.DANHBA, Ky, Nam);
-                    if (docso == null)
-                        docso = _cDocSo.get(hoadon.DANHBA, hoadon.KY, hoadon.NAM);
-                    if (hoadon != null && docso != null)
-                    {
-                        DataRow row = _dt.NewRow();
-                        row["MaHD"] = hoadon.ID_HOADON;
-                        row["HoTen"] = hoadon.TENKH;
-                        row["DanhBo"] = hoadon.DANHBA;
-                        row["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
-                        row["Ky"] = docso.Ky + "/" + docso.Nam;
-                        row["GiaBieu"] = hoadon.GB;
-                        if (hoadon.TILESH != null)
-                            row["TyLeSH"] = hoadon.TILESH;
-                        else
-                            row["TyLeSH"] = 0;
-                        if (hoadon.TILEHCSN != null)
-                            row["TyLeHCSN"] = hoadon.TILEHCSN;
-                        else
-                            row["TyLeHCSN"] = 0;
-                        if (hoadon.TILESX != null)
-                            row["TyLeSX"] = hoadon.TILESX;
-                        else
-                            row["TyLeSX"] = 0;
-                        if (hoadon.TILEDV != null)
-                            row["TyLeDV"] = hoadon.TILEDV;
-                        else
-                            row["TyLeDV"] = 0;
-                        if (hoadon.DinhMucHN != null)
-                            row["DinhMucHN"] = hoadon.DinhMucHN;
-                        else
-                            row["DinhMucHN"] = 0;
-                        if (hoadon.DM != null)
-                            row["DinhMuc"] = hoadon.DM;
-                        else
-                            row["DinhMuc"] = 0;
-                        row["TieuThu"] = 0;
-                        DCBD_ChiTietBienDong dcbd = _cKinhDoanh.GetDCBD(hoadon.DANHBA);
-                        if (dcbd != null)
+                        HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
+                        int Ky = 0, Nam = 0;
+                        if (hoadon.KY == 12)
                         {
-                            if (dcbd.DinhMuc != null)
-                                row["DinhMuc_Cu"] = dcbd.DinhMuc;
-                            if (dcbd.DinhMuc_BD != null)
-                                row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
-                            if (dcbd.HieuLucKy != null)
-                                row["HieuLucKy"] = dcbd.HieuLucKy;
+                            Ky = 1;
+                            Nam = hoadon.NAM + 1;
                         }
-                        row["TienDu"] = _cTienDu.GetTienDu(hoadon.DANHBA) * -1;
-                        row["TuNgay"] = docso.TuNgay.Value;
-                        row["DenNgay"] = docso.DenNgay.Value;
-                        _dt.Rows.Add(row);
+                        else
+                        {
+                            Ky = hoadon.KY + 1;
+                            Nam = hoadon.NAM;
+                        }
+                        DocSo docso = new DocSo();
+                        docso = _cDocSo.get(hoadon.DANHBA, Ky, Nam);
+                        if (docso == null)
+                            docso = _cDocSo.get(hoadon.DANHBA, hoadon.KY, hoadon.NAM);
+                        if (hoadon != null && docso != null)
+                        {
+                            DataRow row = _dt.NewRow();
+                            row["MaHD"] = hoadon.ID_HOADON;
+                            row["HoTen"] = hoadon.TENKH;
+                            row["DanhBo"] = hoadon.DANHBA;
+                            row["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
+                            row["Ky"] = docso.Ky + "/" + docso.Nam;
+                            row["GiaBieu"] = hoadon.GB;
+                            if (hoadon.TILESH != null)
+                                row["TyLeSH"] = hoadon.TILESH;
+                            else
+                                row["TyLeSH"] = 0;
+                            if (hoadon.TILEHCSN != null)
+                                row["TyLeHCSN"] = hoadon.TILEHCSN;
+                            else
+                                row["TyLeHCSN"] = 0;
+                            if (hoadon.TILESX != null)
+                                row["TyLeSX"] = hoadon.TILESX;
+                            else
+                                row["TyLeSX"] = 0;
+                            if (hoadon.TILEDV != null)
+                                row["TyLeDV"] = hoadon.TILEDV;
+                            else
+                                row["TyLeDV"] = 0;
+                            if (hoadon.DinhMucHN != null)
+                                row["DinhMucHN"] = hoadon.DinhMucHN;
+                            else
+                                row["DinhMucHN"] = 0;
+                            if (hoadon.DM != null)
+                                row["DinhMuc"] = hoadon.DM;
+                            else
+                                row["DinhMuc"] = 0;
+                            row["TieuThu"] = 0;
+                            DCBD_ChiTietBienDong dcbd = _cKinhDoanh.GetDCBD(hoadon.DANHBA);
+                            if (dcbd != null)
+                            {
+                                if (dcbd.DinhMuc != null)
+                                    row["DinhMuc_Cu"] = dcbd.DinhMuc;
+                                if (dcbd.DinhMuc_BD != null)
+                                    row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
+                                if (dcbd.HieuLucKy != null)
+                                    row["HieuLucKy"] = dcbd.HieuLucKy;
+                            }
+                            row["TienDu"] = _cTienDu.GetTienDu(hoadon.DANHBA) * -1;
+                            row["TuNgay"] = docso.TuNgay.Value;
+                            row["DenNgay"] = docso.DenNgay.Value;
+                            _dt.Rows.Add(row);
+                        }
                     }
+                    bsHoaDon.DataSource = _dt;
+                    txtDanhBo.Text = "";
                 }
-                bsHoaDon.DataSource = _dt;
-                txtDanhBo.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

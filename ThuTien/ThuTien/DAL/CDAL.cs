@@ -192,6 +192,7 @@ namespace ThuTien.DAL
             }
             catch (Exception ex)
             {
+                Disconnect();
                 throw ex;
             }
         }

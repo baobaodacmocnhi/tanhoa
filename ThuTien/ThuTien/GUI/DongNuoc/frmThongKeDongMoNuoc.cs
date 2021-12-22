@@ -18,7 +18,7 @@ namespace ThuTien.GUI.DongNuoc
     {
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CTo _cTo = new CTo();
-        CDocSoHandheld _cDocSoHandheld = new CDocSoHandheld();
+        CDocSo _cDocSoHandheld = new CDocSo();
 
         public frmThongKeDongMoNuoc()
         {

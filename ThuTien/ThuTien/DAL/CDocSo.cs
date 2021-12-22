@@ -8,9 +8,9 @@ using ThuTien.LinQ;
 
 namespace ThuTien.DAL
 {
-    class CDocSoHandheld
+    class CDocSo
     {
-        dbDocSoHandheldDataContext _db = new dbDocSoHandheldDataContext();
+        dbDocSoDataContext _db = new dbDocSoDataContext();
 
         public DataTable LINQToDataTable<T>(IEnumerable<T> varlist)
         {
@@ -56,12 +56,12 @@ namespace ThuTien.DAL
 
         public DocSo Get(string DanhBo)
         {
-            return _db.DocSos.Where(item=>item.DanhBa==DanhBo).OrderByDescending(item=>item.DocSoID).FirstOrDefault();
+            return _db.DocSos.Where(item => item.DanhBa == DanhBo).OrderByDescending(item => item.DocSoID).FirstOrDefault();
         }
 
         public DocSo get(string DanhBo, int Ky, int Nam)
         {
-            return _db.DocSos.SingleOrDefault(item => item.DanhBa == DanhBo && Convert.ToInt32(item.Ky) == Ky && item.Nam == Nam);
+            return _db.DocSos.SingleOrDefault(item => item.Nam == Nam && Convert.ToInt32(item.Ky) == Ky && item.DanhBa == DanhBo);
         }
     }
 }
