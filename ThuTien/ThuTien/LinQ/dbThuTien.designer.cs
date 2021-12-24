@@ -889,6 +889,14 @@ namespace ThuTien.LinQ
 			}
 		}
 		
+		public System.Data.Linq.Table<TT_DeviceConfig> TT_DeviceConfigs
+		{
+			get
+			{
+				return this.GetTable<TT_DeviceConfig>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TimKiem", IsComposable=true)]
 		public IQueryable<TimKiemResult> TimKiem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DanhBo", DbType="VarChar(11)")] string danhBo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MLT", DbType="VarChar(11)")] string mLT)
 		{
@@ -32766,6 +32774,69 @@ namespace ThuTien.LinQ
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_DeviceConfig")]
+	public partial class TT_DeviceConfig
+	{
+		
+		private string _Version;
+		
+		private string _SoHoaDon;
+		
+		private bool _checkUpdatedHDDT;
+		
+		public TT_DeviceConfig()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Version", DbType="VarChar(50)")]
+		public string Version
+		{
+			get
+			{
+				return this._Version;
+			}
+			set
+			{
+				if ((this._Version != value))
+				{
+					this._Version = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoHoaDon", DbType="VarChar(10)")]
+		public string SoHoaDon
+		{
+			get
+			{
+				return this._SoHoaDon;
+			}
+			set
+			{
+				if ((this._SoHoaDon != value))
+				{
+					this._SoHoaDon = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_checkUpdatedHDDT", DbType="Bit NOT NULL")]
+		public bool checkUpdatedHDDT
+		{
+			get
+			{
+				return this._checkUpdatedHDDT;
+			}
+			set
+			{
+				if ((this._checkUpdatedHDDT != value))
+				{
+					this._checkUpdatedHDDT = value;
+				}
 			}
 		}
 	}

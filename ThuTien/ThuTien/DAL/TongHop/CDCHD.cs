@@ -118,24 +118,29 @@ namespace ThuTien.DAL.TongHop
 
         public bool CheckExist_UpdatedHDDT(string SoHoaDon, ref string DanhBo)
         {
-            //hóa đơn giấy
-            if (_db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <= 6))) == true)
-                return true;
-            else//hóa đơn điện tử
-                if (_db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON) == false)
+            if (_db.TT_DeviceConfigs.Any(item => item.checkUpdatedHDDT == true) == true)
+            {
+                //hóa đơn giấy
+                if (_db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <= 6))) == true)
                     return true;
-                else
-                {
-                    if (_db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON && item.UpdatedHDDT == true) == false)
-                    {
-                        HOADON hd = _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon);
-                        if (hd != null)
-                            DanhBo = hd.DANHBA + " " + hd.KY + "/" + hd.NAM;
-                        return false;
-                    }
-                    else
+                else//hóa đơn điện tử
+                    if (_db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON) == false)
                         return true;
-                }
+                    else
+                    {
+                        if (_db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON && item.UpdatedHDDT == true) == false)
+                        {
+                            HOADON hd = _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon);
+                            if (hd != null)
+                                DanhBo = hd.DANHBA + " " + hd.KY + "/" + hd.NAM;
+                            return false;
+                        }
+                        else
+                            return true;
+                    }
+            }
+            else
+                return true;
         }
 
         public bool CheckExist_ChuaUpdatedHDDT(string DanhBo)

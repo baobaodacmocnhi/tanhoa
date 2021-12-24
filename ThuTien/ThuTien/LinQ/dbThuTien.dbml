@@ -1503,6 +1503,13 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TT_DeviceConfig" Member="TT_DeviceConfigs">
+    <Type Name="TT_DeviceConfig">
+      <Column Name="Version" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SoHoaDon" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="checkUpdatedHDDT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">
     <Parameter Name="DanhBo" Parameter="danhBo" Type="System.String" DbType="VarChar(11)" />
     <Parameter Name="MLT" Parameter="mLT" Type="System.String" DbType="VarChar(11)" />

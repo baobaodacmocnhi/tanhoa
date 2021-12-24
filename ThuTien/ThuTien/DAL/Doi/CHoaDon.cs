@@ -493,6 +493,28 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Any(item => item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan == MaNV_DangNgan && item.DCHD == true);
         }
 
+        public bool checkExist_DangNganCoDCHDTongChuaCapNhat(int MaNV_DangNgan, DateTime NgayGiaiTrach, out DataTable dtResult)
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        where itemDC.TONGCONG_END != null && itemDC.UpdatedHDDT == false && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7))
+                        && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.MaNV_DangNgan == MaNV_DangNgan
+                        select new
+                        {
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            itemHD.TONGCONG,
+                            itemHD.SOPHATHANH,
+                            MLT=itemHD.MALOTRINH,
+                        };
+            dtResult = LINQToDataTable(query);
+            if (dtResult != null && dtResult.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
         public bool checkExists_KyMoi(string Ky)
         {
             string[] Kys = Ky.Split('/');

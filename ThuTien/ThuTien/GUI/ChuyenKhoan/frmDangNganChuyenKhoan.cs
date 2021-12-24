@@ -347,6 +347,30 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnInPhieu_Click(object sender, EventArgs e)
         {
+            DataTable dtTCT;
+            if (_cHoaDon.checkExist_DangNganCoDCHDTongChuaCapNhat(CNguoiDung.MaND, dateDen.Value, out dtTCT) == true)
+            {
+                dsBaoCao dsTCT = new dsBaoCao();
+                foreach (DataRow item in dtTCT.Rows)
+                {
+                    DataRow dr = dsTCT.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = "ĐIỀU CHỈNH TCT CHƯA CẬP NHẬT";
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                    dr["Ky"] = item["Ky"];
+                    dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
+                    dr["TongCong"] = item["TongCong"];
+                    dr["SoPhatHanh"] = item["SoPhatHanh"];
+                    dr["SoHoaDon"] = item["SoHoaDon"];
+                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    dsTCT.Tables["DSHoaDon"].Rows.Add(dr);
+                }
+                rptDSHoaDon rptTCT = new rptDSHoaDon();
+                rptTCT.SetDataSource(dsTCT);
+                frmBaoCao frmTCT = new frmBaoCao(rptTCT);
+                frmTCT.Show();
+                MessageBox.Show("Hóa Đơn đã Điều Chỉnh (TCT chưa cập nhật),\nVui lòng chuyển cho Tổ Trưởng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             dsBaoCao ds = new dsBaoCao();
             dsBaoCao dsPhanKyLon = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
