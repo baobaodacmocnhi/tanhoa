@@ -40,11 +40,20 @@ namespace DocSo_PC.DAL.Doi
             return _db.BillStates.Any(item => item.BillID == Nam + Ky + Dot);
         }
 
-        public bool checkChuyenBilling_BillState(string Nam, string Ky, string Dot)
+        public bool checkChot_BillState(string BillID)
+        {
+            return _db.BillStates.Any(item => item.BillID == BillID && item.izDS == "1");
+        }
+
+        public bool checkChot_BillState(string Nam, string Ky, string Dot)
         {
             return _db.BillStates.Any(item => item.BillID == Nam + Ky + Dot && item.izDS == "1");
         }
 
+        public BillState get_BillState(string BillID)
+        {
+            return _db.BillStates.SingleOrDefault(item => item.BillID == BillID);
+        }
 
         //table BienDong
         public bool them_BienDong(BienDong en)
@@ -148,7 +157,7 @@ namespace DocSo_PC.DAL.Doi
             _cDAL.ExecuteNonQuery("exec dbo.spUpdateTBTTDocSo '" + Nam + "','" + Ky + "','" + Dot + "'");
         }
 
-        public DataTable getDS_TaoDot(string Nam, string Ky)
+        public DataTable getTong_TaoDot(string Nam, string Ky)
         {
             string sql = "";
             if (Ky == "1")
@@ -162,7 +171,8 @@ namespace DocSo_PC.DAL.Doi
                             + " (select Nam=SUBSTRING(BillID,0,5)"
                             + " ,Ky=SUBSTRING(BillID,5,2)"
                             + " ,Dot=SUBSTRING(BillID,7,2)"
-                            + " ,ID=BillID"
+                            + " ,BillID=BillID"
+                            + " ,Chot=case when izDS is null then 'false' else 'true' end"
                             + " from BillState where BillID like '" + Nam + Ky + "%')t1";
             else
                 sql = "select *"
@@ -175,7 +185,8 @@ namespace DocSo_PC.DAL.Doi
                         + " (select Nam=SUBSTRING(BillID,0,5)"
                         + " ,Ky=SUBSTRING(BillID,5,2)"
                         + " ,Dot=SUBSTRING(BillID,7,2)"
-                        + " ,ID=BillID"
+                        + " ,BillID=BillID"
+                        + " ,Chot=case when izDS is null then 'false' else 'true' end"
                         + " from BillState where BillID like '" + Nam + Ky + "%')t1";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
@@ -186,6 +197,8 @@ namespace DocSo_PC.DAL.Doi
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
+
+        //xử lý
         public DataTable getDS_XuLy_DanhBo(string Nam, string Ky, string DanhBo)
         {
             string sql = "select * from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa=" + DanhBo;
@@ -233,6 +246,7 @@ namespace DocSo_PC.DAL.Doi
 
         public DataTable getLichSu(string DanhBo, string Nam, string Ky)
         {
+            DataTable dt;
             string sql = "select Col,Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0 from"
             + "      (select 'Ky'+convert(varchar(5),(2021*12+12)-Nam*12-Ky) as KyN,Col,Val"
             + "      from DocSo cross apply"
@@ -243,9 +257,73 @@ namespace DocSo_PC.DAL.Doi
             + "              (N'4. Chỉ số',convert(varchar(10),CSMoi)),"
             + "              (N'5. Tiêu thụ',convert(varchar(10),TieuThuMoi)))"
             + "          cs (Col,Val)"
-            + "      where DanhBa = 13132150168) src"
+            + "      where DanhBa = " + DanhBo + ") src"
             + "  pivot (max(Val) for KyN in (Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0)) pvt";
+            dt = _cDAL.ExecuteQuery_DataTable(sql);
+            sql = "select Col,Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0 from"
+            + "      (select 'Ky'+convert(varchar(5),(2021*12+12)-Nam*12-Ky) as KyN,Col,Val"
+            + "      from server9.HOADON_TA.dbo.HOADON cross apply"
+            + "          (values"
+            + "              (N'6. Tiêu Thụ HĐ',convert(varchar(10),TIEUTHU))"
+            + "              )"
+            + "          cs (Col,Val)"
+            + "      where DanhBa = " + DanhBo + ") src"
+            + "  pivot (max(Val) for KyN in (Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0)) pvt";
+            dt.Merge(_cDAL.ExecuteQuery_DataTable(sql));
+            return dt;
+        }
+
+        public int tinhCodeTieuThu(string DocSoID, string Code, int CSM)
+        {
+            string sql = "EXEC	[dbo].[spTinhTieuThu]"
+                    + " @DANHBO = N'" + DocSoID.Substring(6, 11) + "',"
+                    + " @KY = " + DocSoID.Substring(4, 2) + ","
+                    + " @NAM = " + DocSoID.Substring(0, 4) + ","
+                    + " @CODE = N'" + Code + "',"
+                    + " @CSMOI = " + CSM;
+            return (int)_cDAL.ExecuteQuery_ReturnOneValue(sql);
+        }
+
+        //chuyển billing
+        public DataTable getTong_ChuyenBilling(string Nam, string Ky)
+        {
+            string sql = "";
+            if (Ky == "1")
+                sql = "select *"
+                            + " ,TongHD=(select COUNT(*) from server9.HOADON_TA.dbo.HOADON where NAM=t1.Nam-1 and KY=12 and DOT=t1.Dot)"
+                            + " ,TongTieuThu=(select SUM(TieuThuMoi) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
+                            + " ,TongHDChuaChuyen=''"
+                            + " ,CreateDateChuyen=''"
+                            + " from"
+                            + " (select Nam=SUBSTRING(BillID,0,5)"
+                            + " ,Ky=SUBSTRING(BillID,5,2)"
+                            + " ,Dot=SUBSTRING(BillID,7,2)"
+                            + " ,BillID=BillID"
+                            + " ,Chot=case when izDS is null then 'false' else 'true' end"
+                            + " from BillState where BillID like '" + Nam + Ky + "%')t1";
+            else
+                sql = "select *"
+                        + " ,TongHD=(select COUNT(*) from server9.HOADON_TA.dbo.HOADON where NAM=t1.Nam and KY=t1.Ky-1 and DOT=t1.Dot)"
+                        + " ,TongTieuThu=(select SUM(TieuThuMoi) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
+                        + " ,TongHDChuaChuyen=''"
+                        + " ,CreateDateChuyen=''"
+                        + " from"
+                        + " (select Nam=SUBSTRING(BillID,0,5)"
+                        + " ,Ky=SUBSTRING(BillID,5,2)"
+                        + " ,Dot=SUBSTRING(BillID,7,2)"
+                        + " ,BillID=BillID"
+                        + " ,Chot=case when izDS is null then 'false' else 'true' end"
+                        + " from BillState where BillID like '" + Nam + Ky + "%')t1";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
+
+        public DataTable getDS_ChuyenBilling(string Nam, string Ky, string Dot)
+        {
+            string sql = "SELECT DanhBa,CSCu,CASE WHEN LEFT(CodeMoi, 1) = 'F' OR LEFT(CodeMoi, 1) = '6' THEN TieuThuMoi ELSE CSMOI END AS CSMoi,TieuThuMoi,CASE WHEN LEFT(CodeMoi,1) = '4' THEN '4' ELSE CodeMoi END AS CodeMoi,MLT2,TTDHNMoi"
+                        + ",DenNgay=CONVERT(varchar(10),DenNgay,103),Nam,Ky,Dot FROM DocSo WHERE Nam=" + Nam + " and Ky='" + Ky + "' AND Dot='" + Dot + "'";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
+
     }
 }

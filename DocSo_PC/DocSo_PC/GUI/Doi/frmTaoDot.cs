@@ -21,8 +21,6 @@ namespace DocSo_PC.GUI.Doi
         CDocSo _cDocSo = new CDocSo();
         CLichDocSo _cLichDocSo = new CLichDocSo();
         CChuanBiDS _cChuanBi = new CChuanBiDS();
-        int tumay = CNguoiDung.TuMayDS;
-        int denmay = CNguoiDung.DenMayDS;
 
         public frmTaoDot()
         {
@@ -156,7 +154,7 @@ namespace DocSo_PC.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvDanhSach.DataSource = _cDocSo.getDS_TaoDot(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString());
+            dgvDanhSach.DataSource = _cDocSo.getTong_TaoDot(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString());
         }
 
         private void dgvDanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -232,6 +230,55 @@ namespace DocSo_PC.GUI.Doi
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgvDanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            //try
+            //{
+            //    if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            //    {
+            //        if (dgvDanhSach.Columns[e.ColumnIndex].Name == "Chot")
+            //        {
+            //            if (CNguoiDung.Doi == true)
+            //            {
+            //                BillState en = _cDocSo.get_BillState(dgvDanhSach["BillID", e.RowIndex].Value.ToString());
+            //                if (en != null)
+            //                {
+            //                    if (dgvDanhSach[e.ColumnIndex, e.RowIndex].Value.ToString() != "" && bool.Parse(dgvDanhSach[e.ColumnIndex, e.RowIndex].Value.ToString()) == true)
+            //                        en.izDS = "1";
+            //                    else
+            //                        en.izDS = null;
+            //                    _cDocSo.SubmitChanges();
+            //                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //                }
+            //            }
+            //            else
+            //            {
+            //                if (dgvDanhSach[e.ColumnIndex, e.RowIndex].Value.ToString() != "" && bool.Parse(dgvDanhSach[e.ColumnIndex, e.RowIndex].Value.ToString()) == true)
+            //                {
+            //                    BillState en = _cDocSo.get_BillState(dgvDanhSach["BillID", e.RowIndex].Value.ToString());
+            //                    if (en != null)
+            //                    {
+            //                        en.izDS = "1";
+            //                        _cDocSo.SubmitChanges();
+            //                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //                    }
+            //                }
+            //                else
+            //                {
+            //                    MessageBox.Show("Đội mới có Quyền Bỏ Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //                }
+            //            }
+            //        }
+            //    }
+            //    else
+            //        MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         //private void dataTaoDS_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

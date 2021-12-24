@@ -218,7 +218,7 @@ namespace DocSo_PC
         {
             if (CNguoiDung.CheckQuyen("mnuLichDocSo", "Xem"))
             {
-                frmTaoDot frm = new frmTaoDot();
+                frmLichDocSo frm = new frmLichDocSo();
                 OpenForm(frm);
             }
             else

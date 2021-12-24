@@ -51,6 +51,8 @@
             this.TaoDot = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Chot = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.BillID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
@@ -66,14 +68,14 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(3, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(644, 546);
+            this.groupBox1.Size = new System.Drawing.Size(673, 546);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(431, 25);
+            this.progressBar.Location = new System.Drawing.Point(388, 25);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(203, 23);
             this.progressBar.TabIndex = 12;
@@ -100,15 +102,18 @@
             this.CreateDateTD,
             this.TaoDot,
             this.Nam,
-            this.Ky});
+            this.Ky,
+            this.Chot,
+            this.BillID});
             this.dgvDanhSach.Location = new System.Drawing.Point(9, 54);
             this.dgvDanhSach.MultiSelect = false;
             this.dgvDanhSach.Name = "dgvDanhSach";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDanhSach.Size = new System.Drawing.Size(625, 485);
+            this.dgvDanhSach.Size = new System.Drawing.Size(656, 485);
             this.dgvDanhSach.TabIndex = 5;
             this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
+            this.dgvDanhSach.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellValueChanged);
             // 
             // btnXem
             // 
@@ -266,11 +271,29 @@
             this.Ky.Name = "Ky";
             this.Ky.Visible = false;
             // 
+            // Chot
+            // 
+            this.Chot.DataPropertyName = "Chot";
+            this.Chot.HeaderText = "Chốt";
+            this.Chot.Name = "Chot";
+            this.Chot.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Chot.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Chot.ThreeState = true;
+            this.Chot.Visible = false;
+            this.Chot.Width = 50;
+            // 
+            // BillID
+            // 
+            this.BillID.DataPropertyName = "BillID";
+            this.BillID.HeaderText = "BillID";
+            this.BillID.Name = "BillID";
+            this.BillID.Visible = false;
+            // 
             // frmTaoDot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 607);
+            this.ClientSize = new System.Drawing.Size(703, 607);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnChonFile);
@@ -311,6 +334,8 @@
         private System.Windows.Forms.DataGridViewButtonColumn TaoDot;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Chot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BillID;
 
     }
 }
