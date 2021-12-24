@@ -140,7 +140,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 HOADON hd = _cThuTien.GetMoiNhat(item.DanhBo);
                 if (db.DCBD_ChiTietHoaDons.Any(itemA => itemA.DanhBo == hd.DANHBA && itemA.KyHD.Contains(hd.KY + "/" + hd.NAM) == true) == false)
-                    str += "Khấu Trừ: " + hd.DANHBA + " có hóa đơn kỳ " + hd.KY + "/" + hd.NAM;
+                    str += hd.DANHBA + "\r\n";
+                //str += "" + hd.DANHBA + " có hóa đơn kỳ " + hd.KY + "/" + hd.NAM + "\r\n";
             }
             return str;
         }

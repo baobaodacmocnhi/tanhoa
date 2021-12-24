@@ -323,9 +323,16 @@ namespace KTKS_DonKH.DAL
             return db.HOADONs.Any(item => item.ID_HOADON == MaHD && item.MaNV_DangNgan != null);
         }
 
+        public bool checkDieuChinh(int MaHD)
+        {
+            return db.DIEUCHINH_HDs.Any(itemDC => itemDC.FK_HOADON == MaHD && itemDC.TONGCONG_END != null);
+        }
+
         public DataTable GetNam()
         {
             return ExecuteQuery_DataTable("select * from ViewGetNamHD order by ID desc");
         }
+
+
     }
 }

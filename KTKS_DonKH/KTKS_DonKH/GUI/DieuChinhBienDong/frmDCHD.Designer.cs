@@ -169,6 +169,7 @@
             this.txtTieuThuV2_DieuChinhGia3 = new System.Windows.Forms.TextBox();
             this.txtChiTietPhiBVMTMoi = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
+            this.txtKhauTru = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -539,10 +540,11 @@
             // 
             this.lbTangGiam.AutoSize = true;
             this.lbTangGiam.ForeColor = System.Drawing.Color.Red;
-            this.lbTangGiam.Location = new System.Drawing.Point(13, 78);
+            this.lbTangGiam.Location = new System.Drawing.Point(12, 71);
             this.lbTangGiam.Name = "lbTangGiam";
-            this.lbTangGiam.Size = new System.Drawing.Size(0, 16);
+            this.lbTangGiam.Size = new System.Drawing.Size(12, 16);
             this.lbTangGiam.TabIndex = 11;
+            this.lbTangGiam.Text = "-";
             // 
             // txtTongCong_End
             // 
@@ -1143,7 +1145,7 @@
             this.TongCong_End});
             this.dgvLichSu.Location = new System.Drawing.Point(2, 456);
             this.dgvLichSu.Name = "dgvLichSu";
-            this.dgvLichSu.Size = new System.Drawing.Size(805, 141);
+            this.dgvLichSu.Size = new System.Drawing.Size(805, 130);
             this.dgvLichSu.TabIndex = 37;
             this.dgvLichSu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSu_CellFormatting);
             // 
@@ -1457,11 +1459,11 @@
             this.lbKhauTru.AutoSize = true;
             this.lbKhauTru.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbKhauTru.ForeColor = System.Drawing.Color.Red;
-            this.lbKhauTru.Location = new System.Drawing.Point(883, 5);
+            this.lbKhauTru.Location = new System.Drawing.Point(860, 32);
             this.lbKhauTru.Name = "lbKhauTru";
-            this.lbKhauTru.Size = new System.Drawing.Size(69, 16);
+            this.lbKhauTru.Size = new System.Drawing.Size(144, 16);
             this.lbKhauTru.TabIndex = 43;
-            this.lbKhauTru.Text = "Khấu Trừ";
+            this.lbKhauTru.Text = "Khấu Trừ có HĐ Mới";
             // 
             // txtSoTienKhauTruConLai
             // 
@@ -1550,6 +1552,16 @@
             this.label44.TabIndex = 52;
             this.label44.Text = "Phí BVMT Mới";
             // 
+            // txtKhauTru
+            // 
+            this.txtKhauTru.ForeColor = System.Drawing.Color.Red;
+            this.txtKhauTru.Location = new System.Drawing.Point(1010, 2);
+            this.txtKhauTru.Multiline = true;
+            this.txtKhauTru.Name = "txtKhauTru";
+            this.txtKhauTru.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtKhauTru.Size = new System.Drawing.Size(120, 65);
+            this.txtKhauTru.TabIndex = 53;
+            // 
             // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1557,6 +1569,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1303, 642);
+            this.Controls.Add(this.txtKhauTru);
             this.Controls.Add(this.label44);
             this.Controls.Add(this.txtChiTietPhiBVMTMoi);
             this.Controls.Add(this.label43);
@@ -1774,5 +1787,6 @@
         private System.Windows.Forms.TextBox txtTieuThuV2_DieuChinhGia3;
         private System.Windows.Forms.TextBox txtChiTietPhiBVMTMoi;
         private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox txtKhauTru;
     }
 }

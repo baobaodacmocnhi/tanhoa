@@ -45,7 +45,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         string _mnu = "mnuDSDCBD";
         List<GiaNuoc> _lstGiaNuoc;
-        dbThuTienDataContext _dbThuTien = new dbThuTienDataContext();
 
         public frmDSDCBD()
         {
@@ -177,317 +176,328 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            //string sql = "select *,SoPhieu=MaCTDCBD,'In'='false' from DCBD_ChiTietBienDong where CAST(CreateDate as date)>='2018-03-01' and CAST(CreateDate as date)<='2018-03-31' and ChuyenDocSo=0 and PhieuDuocKy=1"
-            //+ " and DanhBo not in (select DanhBo from DCBD_ChiTietBienDong where CAST(CreateDate as date)>'2018-03-31') order by CreateDate asc";
-            //dgvDSDCBD.DataSource = _cDCBD.ExecuteQuery_SqlDataAdapter_DataTable(sql);
-            if (chkCreateBy.Checked)
-                switch (cmbTimTheo.SelectedItem.ToString())
-                {
-                    case "Mã Đơn":
-                        if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                        {
-                            if (radDSDCBD.Checked)
-                            {
-                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                    dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                else
-                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                        dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                    else
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                            dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                        else
-                                            dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()), decimal.Parse(txtNoiDungTimKiem2.Text.Trim()));
-                            }
-                            else
-                                if (radDSDCHD.Checked)
-                                {
-                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                    else
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                            dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                        else
-                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                                dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                            else
-                                                dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()), decimal.Parse(txtNoiDungTimKiem2.Text.Trim()));
-                                }
-                                else
-                                    if (radDSCatChuyenDM.Checked)
-                                    {
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                            dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                        else
-                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                                dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                            else
-                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                                    dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                                else
-                                                    dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()), decimal.Parse(txtNoiDungTimKiem2.Text.Trim()));
-                                    }
-                        }
-                        else
-                            if (txtNoiDungTimKiem.Text.Trim() != "")
-                            {
-                                if (radDSDCBD.Checked)
-                                {
-                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                        dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                    else
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                            dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                        else
-                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                            else
-                                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
-                                }
-                                else
-                                    if (radDSDCHD.Checked)
-                                    {
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                            dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                        else
-                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                                dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                            else
-                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                                else
-                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
-                                    }
-                                    else
-                                        if (radDSCatChuyenDM.Checked)
-                                        {
-                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                                dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                            else
-                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                                    dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                                else
-                                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                                    else
-                                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
-                                        }
-                            }
-                        break;
-                    case "Số Phiếu":
-                        if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                        {
-                            if (radDSDCBD.Checked)
-                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_SoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                            else
-                                if (radDSDCHD.Checked)
-                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_SoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                                else
-                                    if (radDSCatChuyenDM.Checked)
-                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_SoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                        }
-                        else
-                            if (txtNoiDungTimKiem.Text.Trim() != "")
-                            {
-                                if (radDSDCBD.Checked)
-                                    dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_SoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                                else
-                                    if (radDSDCHD.Checked)
-                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_SoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                                    else
-                                        if (radDSCatChuyenDM.Checked)
-                                            dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_SoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                            }
-                        break;
-                    case "Danh Bộ":
-                        if (txtNoiDungTimKiem.Text.Trim() != "")
-                        {
-                            if (radDSDCBD.Checked)
-                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_DanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
-                            else
-                                if (radDSDCHD.Checked)
-                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_DanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
-                                else
-                                    if (radDSCatChuyenDM.Checked)
-                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_DanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
-                        }
-                        break;
-                    case "Ngày":
-                        if (radDSDCBD.Checked)
-                            dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
-                        else
-                            if (radDSDCHD.Checked)
-                                if (txtKy.Text.Trim() != "")
-                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value, txtKy.Text.Trim());
-                                else
-                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
-                            else
-                                if (radDSCatChuyenDM.Checked)
-                                    dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
-                        break;
-                    default:
-                        break;
-                }
-            else
-                switch (cmbTimTheo.SelectedItem.ToString())
-                {
-                    case "Mã Đơn":
-                        if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                        {
-                            if (radDSDCBD.Checked)
-                            {
-                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                    dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                else
-                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                        dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                    else
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                            dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                        else
-                                            dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()), decimal.Parse(txtNoiDungTimKiem2.Text.Trim()));
-                            }
-                            else
-                                if (radDSDCHD.Checked)
-                                {
-                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                    else
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                            dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                        else
-                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                                dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                            else
-                                                dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()), decimal.Parse(txtNoiDungTimKiem2.Text.Trim()));
-                                }
-                                else
-                                    if (radDSCatChuyenDM.Checked)
-                                    {
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                            dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                        else
-                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                                dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                            else
-                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                                    dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
-                                                else
-                                                    dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()), decimal.Parse(txtNoiDungTimKiem2.Text.Trim()));
-
-                                    }
-                        }
-                        else
-                            if (txtNoiDungTimKiem.Text.Trim() != "")
-                            {
-                                if (radDSDCBD.Checked)
-                                {
-                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                        dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                    else
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                            dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                        else
-                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                            else
-                                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
-
-                                }
-                                else
-                                    if (radDSDCHD.Checked)
-                                    {
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                            dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                        else
-                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                                dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                            else
-                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                                else
-                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
-
-                                    }
-                                    else
-                                        if (radDSCatChuyenDM.Checked)
-                                        {
-                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
-                                                dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                            else
-                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                                    dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                                else
-                                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                                                    else
-                                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
-
-                                        }
-                            }
-                        break;
-                    case "Số Phiếu":
-                        if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                        {
-                            if (radDSDCBD.Checked)
-                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_SoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                            else
-                                if (radDSDCHD.Checked)
-                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_SoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                                else
-                                    if (radDSCatChuyenDM.Checked)
-                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_SoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                        }
-                        else
-                            if (txtNoiDungTimKiem.Text.Trim() != "")
-                            {
-                                if (radDSDCBD.Checked)
-                                    dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_SoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                                else
-                                    if (radDSDCHD.Checked)
-                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_SoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                                    else
-                                        if (radDSCatChuyenDM.Checked)
-                                            dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_SoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                            }
-                        break;
-                    case "Danh Bộ":
-                        if (txtNoiDungTimKiem.Text.Trim() != "")
-                        {
-                            if (radDSDCBD.Checked)
-                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_DanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
-                            else
-                                if (radDSDCHD.Checked)
-                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_DanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
-                                else
-                                    if (radDSCatChuyenDM.Checked)
-                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_DanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
-                        }
-                        break;
-                    case "Ngày":
-                        if (radDSDCBD.Checked)
-                            dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_CreateDate(dateTu.Value, dateDen.Value);
-                        else
-                            if (radDSDCHD.Checked)
-                                if (txtKy.Text.Trim() != "")
-                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(dateTu.Value, dateDen.Value, txtKy.Text.Trim());
-                                else
-                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(dateTu.Value, dateDen.Value);
-                            else
-                                if (radDSCatChuyenDM.Checked)
-                                    dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_CreateDate(dateTu.Value, dateDen.Value);
-                        break;
-                    default:
-                        break;
-                }
-            if (radDSDCHD.Checked)
-                if (chkKhongCheckThuTien.Checked == false)
-                    foreach (DataGridViewRow item in dgvDSDCBD.Rows)
+            try
+            {
+                //string sql = "select *,SoPhieu=MaCTDCBD,'In'='false' from DCBD_ChiTietBienDong where CAST(CreateDate as date)>='2018-03-01' and CAST(CreateDate as date)<='2018-03-31' and ChuyenDocSo=0 and PhieuDuocKy=1"
+                //+ " and DanhBo not in (select DanhBo from DCBD_ChiTietBienDong where CAST(CreateDate as date)>'2018-03-31') order by CreateDate asc";
+                //dgvDSDCBD.DataSource = _cDCBD.ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                if (chkCreateBy.Checked)
+                    switch (cmbTimTheo.SelectedItem.ToString())
                     {
-                        string[] Kys = item.Cells["Ky"].Value.ToString().Split('/');
-                        item.Cells["ThuTienCapNhat"].Value = _dbThuTien.DIEUCHINH_HDs.Any(itemDC => itemDC.FK_HOADON == _dbThuTien.HOADONs.SingleOrDefault(itemHD => itemHD.DANHBA == item.Cells["DanhBo"].Value.ToString() && itemHD.NAM == int.Parse(Kys[1]) && itemHD.KY == int.Parse(Kys[0])).ID_HOADON && itemDC.TONGCONG_END != null);
-                        item.Cells["ThuTienGiaiTrach"].Value = _dbThuTien.HOADONs.SingleOrDefault(itemHD => itemHD.DANHBA == item.Cells["DanhBo"].Value.ToString() && itemHD.NAM == int.Parse(Kys[1]) && itemHD.KY == int.Parse(Kys[0])).NGAYGIAITRACH;
+                        case "Mã Đơn":
+                            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                            {
+                                if (radDSDCBD.Checked)
+                                {
+                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                        dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                    else
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                            dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                        else
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()), decimal.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                                }
+                                else
+                                    if (radDSDCHD.Checked)
+                                    {
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                            dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                        else
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                                dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                                else
+                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()), decimal.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                                    }
+                                    else
+                                        if (radDSCatChuyenDM.Checked)
+                                        {
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                                dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                                    dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                                else
+                                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                                    else
+                                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()), decimal.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                                        }
+                            }
+                            else
+                                if (txtNoiDungTimKiem.Text.Trim() != "")
+                                {
+                                    if (radDSDCBD.Checked)
+                                    {
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                            dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        else
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                else
+                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                                    }
+                                    else
+                                        if (radDSDCHD.Checked)
+                                        {
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                                dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                else
+                                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                    else
+                                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                                        }
+                                        else
+                                            if (radDSCatChuyenDM.Checked)
+                                            {
+                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                                    dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                else
+                                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                    else
+                                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                            dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                        else
+                                                            dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                                            }
+                                }
+                            break;
+                        case "Số Phiếu":
+                            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                            {
+                                if (radDSDCBD.Checked)
+                                    dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_SoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                                else
+                                    if (radDSDCHD.Checked)
+                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_SoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                                    else
+                                        if (radDSCatChuyenDM.Checked)
+                                            dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_SoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                            }
+                            else
+                                if (txtNoiDungTimKiem.Text.Trim() != "")
+                                {
+                                    if (radDSDCBD.Checked)
+                                        dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_SoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                    else
+                                        if (radDSDCHD.Checked)
+                                            dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_SoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                        else
+                                            if (radDSCatChuyenDM.Checked)
+                                                dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_SoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                }
+                            break;
+                        case "Danh Bộ":
+                            if (txtNoiDungTimKiem.Text.Trim() != "")
+                            {
+                                if (radDSDCBD.Checked)
+                                    dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_DanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
+                                else
+                                    if (radDSDCHD.Checked)
+                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_DanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
+                                    else
+                                        if (radDSCatChuyenDM.Checked)
+                                            dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_DanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
+                            }
+                            break;
+                        case "Ngày":
+                            if (radDSDCBD.Checked)
+                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                            else
+                                if (radDSDCHD.Checked)
+                                    if (txtKy.Text.Trim() != "")
+                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value, txtKy.Text.Trim());
+                                    else
+                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                                else
+                                    if (radDSCatChuyenDM.Checked)
+                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_CreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                            break;
+                        default:
+                            break;
                     }
+                else
+                    switch (cmbTimTheo.SelectedItem.ToString())
+                    {
+                        case "Mã Đơn":
+                            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                            {
+                                if (radDSDCBD.Checked)
+                                {
+                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                        dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                    else
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                            dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                        else
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()), decimal.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                                }
+                                else
+                                    if (radDSDCHD.Checked)
+                                    {
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                            dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                        else
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                                dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                                else
+                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()), decimal.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                                    }
+                                    else
+                                        if (radDSCatChuyenDM.Checked)
+                                        {
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                                dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                                    dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                                else
+                                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                                                    else
+                                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()), decimal.Parse(txtNoiDungTimKiem2.Text.Trim()));
+
+                                        }
+                            }
+                            else
+                                if (txtNoiDungTimKiem.Text.Trim() != "")
+                                {
+                                    if (radDSDCBD.Checked)
+                                    {
+                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                            dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                        else
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                else
+                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_MaDon("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+
+                                    }
+                                    else
+                                        if (radDSDCHD.Checked)
+                                        {
+                                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                                dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                            else
+                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                                    dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                else
+                                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                    else
+                                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_MaDon("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+
+                                        }
+                                        else
+                                            if (radDSCatChuyenDM.Checked)
+                                            {
+                                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
+                                                    dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                else
+                                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                    else
+                                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                                            dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                                        else
+                                                            dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_MaDon("", decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+
+                                            }
+                                }
+                            break;
+                        case "Số Phiếu":
+                            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                            {
+                                if (radDSDCBD.Checked)
+                                    dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_SoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                                else
+                                    if (radDSDCHD.Checked)
+                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_SoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                                    else
+                                        if (radDSCatChuyenDM.Checked)
+                                            dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_SoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                            }
+                            else
+                                if (txtNoiDungTimKiem.Text.Trim() != "")
+                                {
+                                    if (radDSDCBD.Checked)
+                                        dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_SoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                    else
+                                        if (radDSDCHD.Checked)
+                                            dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_SoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                        else
+                                            if (radDSCatChuyenDM.Checked)
+                                                dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_SoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                }
+                            break;
+                        case "Danh Bộ":
+                            if (txtNoiDungTimKiem.Text.Trim() != "")
+                            {
+                                if (radDSDCBD.Checked)
+                                    dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_DanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
+                                else
+                                    if (radDSDCHD.Checked)
+                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_DanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
+                                    else
+                                        if (radDSCatChuyenDM.Checked)
+                                            dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_DanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
+                            }
+                            break;
+                        case "Ngày":
+                            if (radDSDCBD.Checked)
+                                dgvDSDCBD.DataSource = _cDCBD.getDS_BienDong_CreateDate(dateTu.Value, dateDen.Value);
+                            else
+                                if (radDSDCHD.Checked)
+                                    if (txtKy.Text.Trim() != "")
+                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(dateTu.Value, dateDen.Value, txtKy.Text.Trim());
+                                    else
+                                        dgvDSDCBD.DataSource = _cDCBD.getDS_HoaDon_CreateDate(dateTu.Value, dateDen.Value);
+                                else
+                                    if (radDSCatChuyenDM.Checked)
+                                        dgvDSCatChuyenDM.DataSource = _cChungTu.getDS_CatChuyenDM_CreateDate(dateTu.Value, dateDen.Value);
+                            break;
+                        default:
+                            break;
+                    }
+                if (radDSDCHD.Checked)
+                    if (chkKhongCheckThuTien.Checked == false)
+                        foreach (DataGridViewRow item in dgvDSDCBD.Rows)
+                        {
+                            string[] Kys = item.Cells["Ky"].Value.ToString().Split('/');
+                            HOADON hd = _cThuTien.Get(item.Cells["DanhBo"].Value.ToString(), int.Parse(Kys[0]), int.Parse(Kys[1]));
+                            if (hd != null)
+                            {
+                                item.Cells["ThuTienCapNhat"].Value = _cThuTien.checkDieuChinh(hd.ID_HOADON);
+                                item.Cells["ThuTienGiaiTrach"].Value = hd.NGAYGIAITRACH;
+                            }
+                        }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
