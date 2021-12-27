@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DocSo_PC.DAL.Doi;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
+using DocSo_PC.wrDHN;
 
 namespace DocSo_PC.GUI.Doi
 {
@@ -16,7 +17,8 @@ namespace DocSo_PC.GUI.Doi
     {
         string _mnu = "mnuChuyenBilling";
         CDocSo _cDocSo = new CDocSo();
-        CChuyenBilling _cChuyenBilling = new CChuyenBilling();
+        //CChuyenBilling _cChuyenBilling = new CChuyenBilling();
+        wsDHN wsDHN = new wsDHN();
 
         public frmChuyenBilling()
         {
@@ -125,7 +127,7 @@ namespace DocSo_PC.GUI.Doi
                             foreach (DataRow item in dt.Rows)
                             {
                                 progressBar.Value = i++;
-                                if (_cChuyenBilling.insertBilling(item) == true)
+                                if (wsDHN.insertBilling(item["DocSoID"].ToString(), "tanho@2022") == true)
                                     count++;
                             }
                             MessageBox.Show("Đã chuyển xong " + count, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

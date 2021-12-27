@@ -10,7 +10,7 @@ namespace DocSo_PC.DAL.Doi
 {
     class CChuyenBilling : CDAL
     {
-        public OdbcConnection connTongCT = new OdbcConnection();
+        OdbcConnection connTongCT = new OdbcConnection();
 
         public CChuyenBilling()
         {

@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace DocSo_PC.WebReference {
+namespace DocSo_PC.wrThuTien {
     using System;
     using System.Web.Services;
     using System.Diagnostics;

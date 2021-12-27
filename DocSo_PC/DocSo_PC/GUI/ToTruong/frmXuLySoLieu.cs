@@ -10,7 +10,7 @@ using DocSo_PC.DAL.Doi;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using DocSo_PC.DAL;
-using DocSo_PC.WebReference;
+using DocSo_PC.wrThuTien;
 
 namespace DocSo_PC.GUI.ToTruong
 {
