@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectView>ShowAllFiles</ProjectView>
-    <PublishUrlHistory>\\HP_G7\dhn%24\QUAN LY DONG HO NUOC\DOC SO 2017\|\\192.168.90.9\BaoBao%24\DocSo_PC\|\\192.168.90.9\cntt\BaoBao\DocSo_PC\|publish\</PublishUrlHistory>
+    <ProjectView>ProjectFiles</ProjectView>
+    <PublishUrlHistory>\\192.168.90.9\BaoBao%24\DocSo_PC\|\\HP_G7\dhn%24\QUAN LY DONG HO NUOC\DOC SO 2017\|\\192.168.90.9\cntt\BaoBao\DocSo_PC\|publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
     <UpdateUrlHistory>\\HP_G7\dhn%24\QUAN LY DONG HO NUOC\DOC SO 2017\|\\192.168.90.9\BaoBao%24\DocSo_PC\|\\192.168.90.9\cntt\BaoBao\DocSo_PC\</UpdateUrlHistory>

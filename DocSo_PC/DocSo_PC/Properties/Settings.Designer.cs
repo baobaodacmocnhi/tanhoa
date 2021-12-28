@@ -71,19 +71,19 @@ namespace DocSo_PC.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.90.11:81/wsthutien.asmx")]
-        public string DocSo_PC_WebReference_wsThuTien {
+        public string DocSo_PC_wrThuTien_wsThuTien {
             get {
-                return ((string)(this["DocSo_PC_WebReference_wsThuTien"]));
+                return ((string)(this["DocSo_PC_wrThuTien_wsThuTien"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.90.6:82/wsdhn.asmx")]
-        public string DocSo_PC_wsDHN_wsDHN {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.90.11:81/wsdhn.asmx")]
+        public string DocSo_PC_wrDHN_wsDHN {
             get {
-                return ((string)(this["DocSo_PC_wsDHN_wsDHN"]));
+                return ((string)(this["DocSo_PC_wrDHN_wsDHN"]));
             }
         }
     }

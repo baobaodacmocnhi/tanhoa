@@ -34,11 +34,11 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=serverg8-01;Initial Catalog=TRUNGTAMKHACHHANG;Persist Security Info=True;User ID=sa;Password=db11@tanhoa</Value>
     </Setting>
-    <Setting Name="DocSo_PC_WebReference_wsThuTien" Type="(Web Service URL)" Scope="Application">
+    <Setting Name="DocSo_PC_wrThuTien_wsThuTien" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://192.168.90.11:81/wsthutien.asmx</Value>
     </Setting>
-    <Setting Name="DocSo_PC_wsDHN_wsDHN" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://192.168.90.6:82/wsdhn.asmx</Value>
+    <Setting Name="DocSo_PC_wrDHN_wsDHN" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.90.11:81/wsdhn.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

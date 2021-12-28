@@ -10,7 +10,7 @@ using DocSo_PC.DAL.Doi;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using DocSo_PC.DAL;
-using DocSo_PC.wrThuTien;
+using DocSo_PC.wrDHN;
 
 namespace DocSo_PC.GUI.ToTruong
 {
@@ -23,7 +23,7 @@ namespace DocSo_PC.GUI.ToTruong
         CMayDS _cMayDS = new CMayDS();
         CDHN _cDHN = new CDHN();
         DocSo _docso = null;
-        wsThuTien wsThuTien = new wsThuTien();
+        wsDHN wsDHN = new wsDHN();
         bool _flagLoadFirst = false;
 
         public frmXuLySoLieu()
@@ -44,6 +44,7 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbNam.DisplayMember = "Nam";
                 cmbNam.ValueMember = "Nam";
                 cmbKy.SelectedItem = DateTime.Now.Month.ToString();
+                cmbDot.SelectedIndex = 0;
                 DataTable dtCode = _cDocSo.getDS_Code();
                 DataRow dr = dtCode.NewRow();
                 dr["Code"] = "Tất Cả";
@@ -117,15 +118,26 @@ namespace DocSo_PC.GUI.ToTruong
                         txtMLT.Text = dhn.LOTRINH.Insert(4, " ").Insert(2, " ");
                         txtGiaBieu.Text = dhn.GIABIEU;
                         txtDinhMuc.Text = dhn.DINHMUC;
-                        txtNgayGhiCS.Text = _docso.GIOGHI.Value.ToString();
-                        txtNguoiCapNhat.Text = _docso.NVCapNhat;
-                        txtNgayCapNhat.Text = _docso.NgayCapNhat.Value.ToString();
+                        if (_docso.GIOGHI != null)
+                            txtNgayGhiCS.Text = _docso.GIOGHI.Value.ToString();
+                        if (_docso.NVCapNhat != null)
+                            txtNguoiCapNhat.Text = _docso.NVCapNhat;
+                        if (_docso.NgayCapNhat != null)
+                            txtNgayCapNhat.Text = _docso.NgayCapNhat.Value.ToString();
                         tbxGCDS.Text = _docso.GhiChuDS;
                         tbxGCKH.Text = _docso.GhiChuKH;
                         tbxGCTV.Text = _docso.GhiChuTV;
                         dgvThongBao.DataSource = _cDocSo.getThongBao(_docso.DanhBa);
                         dgvBaoThay.DataSource = _cDocSo.getBaoThay(_docso.DanhBa);
                         dgvLichSu.DataSource = _cDocSo.getLichSu(_docso.DanhBa, _docso.Nam.Value.ToString(), _docso.Ky);
+                        foreach (DataGridViewColumn item in dgvLichSu.Columns)
+                        {
+                            if (item.Name.Contains("Ky") == true && dgvLichSu[item.Index, dgvLichSu.Rows.Count - 2].Value.ToString() != "")
+                                dgvLichSu[item.Index, dgvLichSu.Rows.Count - 2].Style.BackColor = Color.LimeGreen;
+                        }
+                        dgvLichSu.Rows.RemoveAt(dgvLichSu.Rows.Count - 1);
+                        if (chkLoadHinh.Checked == true)
+                            btnXemHinh.PerformClick();
                     }
                 }
             }
@@ -348,22 +360,22 @@ namespace DocSo_PC.GUI.ToTruong
                             MessageBox.Show("Năm " + _docso.Nam.Value.ToString() + " Kỳ " + _docso.Ky + " Đợt " + _docso.Dot + " đã chuyển billing", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        _docso.CodeMoi = cmbCodeMoi.SelectedValue.ToString();
-                        _docso.TTDHNMoi = _cDocSo.getTTDHNCode(_docso.CodeMoi);
-                        _docso.CSCu = int.Parse(txtCSC.Text.Trim());
-                        _docso.CSMoi = int.Parse(txtCSM.Text.Trim());
-                        _docso.TieuThuMoi = int.Parse(txtTieuThu.Text.Trim());
-                        BienDong bd = _cDocSo.get_BienDong(_docso.DocSoID);
-                        int TienNuocA = 0, TienNuocB = 0, PhiBVMTA = 0, PhiBVMTB = 0, TieuThu_DieuChinhGia = 0;
-                        string ChiTietA = "", ChiTietB = "", ChiTietPhiBVMTA = "", ChiTietPhiBVMTB = "";
-                        wsThuTien.TinhTienNuoc(false, false, false, 0, bd.DanhBa, int.Parse(bd.Ky), bd.Nam.Value, _docso.TuNgay.Value, _docso.DenNgay.Value
-                             , bd.GB.Value, bd.SH.Value, bd.SX.Value, bd.DV.Value, bd.HC.Value
-                             , bd.DM.Value, bd.DMHN.Value, _docso.TieuThuMoi.Value, ref TienNuocA, ref ChiTietA, ref TienNuocB, ref ChiTietB, ref TieuThu_DieuChinhGia, ref PhiBVMTA, ref ChiTietPhiBVMTA, ref PhiBVMTB, ref ChiTietPhiBVMTB);
-                        _docso.TienNuoc = (TienNuocA + TienNuocB);
-                        _docso.Thue = (int)Math.Round((double)(TienNuocA + TienNuocB) * 5 / 100, 0, MidpointRounding.AwayFromZero);
-                        _docso.BVMT = (PhiBVMTA + PhiBVMTB);
-                        _docso.TongTien = _docso.TienNuoc + _docso.Thue + (PhiBVMTA + PhiBVMTB);
-                        _cDocSo.SubmitChanges();
+                        int GiaBan = 0, ThueGTGT = 0, PhiBVMT = 0, TongCong = 0, TieuThu = 0;
+                        if (wsDHN.tinhCodeTieuThu(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtCSM.Text.Trim()), out TieuThu, out GiaBan, out ThueGTGT, out PhiBVMT, out TongCong) == true)
+                        {
+                            _docso.CodeMoi = cmbCodeMoi.SelectedValue.ToString();
+                            _docso.TTDHNMoi = _cDocSo.getTTDHNCode(_docso.CodeMoi);
+                            _docso.CSCu = int.Parse(txtCSC.Text.Trim());
+                            _docso.CSMoi = int.Parse(txtCSM.Text.Trim());
+                            _docso.TieuThuMoi = TieuThu;
+
+                            _docso.TienNuoc = GiaBan;
+                            _docso.Thue = ThueGTGT;
+                            _docso.BVMT = PhiBVMT;
+                            _docso.TongTien = TongCong;
+                            _cDocSo.SubmitChanges();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
                 else

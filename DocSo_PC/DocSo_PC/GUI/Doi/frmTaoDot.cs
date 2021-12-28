@@ -201,8 +201,8 @@ namespace DocSo_PC.GUI.Doi
                                     en.May = en.PhanMay = item.May;
                                     en.TBTT = 0;
                                     en.TamTinh = 0;
-                                    en.CodeCu = "";
-                                    en.TTDHNCu = "";
+                                    en.CodeCu = en.CodeMoi = "";
+                                    en.TTDHNCu = en.TTDHNMoi = "";
                                     en.CSCu = item.ChiSo;
                                     en.TieuThuCu = item.TieuThu;
                                     en.TienNuoc = 0;

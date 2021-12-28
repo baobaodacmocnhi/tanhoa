@@ -151,7 +151,7 @@ namespace DocSo_PC.wrThuTien {
         
         /// <remarks/>
         public wsThuTien() {
-            this.Url = global::DocSo_PC.Properties.Settings.Default.DocSo_PC_WebReference_wsThuTien;
+            this.Url = global::DocSo_PC.Properties.Settings.Default.DocSo_PC_wrThuTien_wsThuTien;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

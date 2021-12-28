@@ -257,17 +257,18 @@ namespace DocSo_PC.DAL.Doi
             + "              (N'4. Chỉ số',convert(varchar(10),CSMoi)),"
             + "              (N'5. Tiêu thụ',convert(varchar(10),TieuThuMoi)))"
             + "          cs (Col,Val)"
-            + "      where DanhBa = " + DanhBo + ") src"
+            + "      where DanhBa = '" + DanhBo + "') src"
             + "  pivot (max(Val) for KyN in (Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0)) pvt";
             dt = _cDAL.ExecuteQuery_DataTable(sql);
             sql = "select Col,Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0 from"
             + "      (select 'Ky'+convert(varchar(5),(2021*12+12)-Nam*12-Ky) as KyN,Col,Val"
             + "      from server9.HOADON_TA.dbo.HOADON cross apply"
             + "          (values"
-            + "              (N'6. Tiêu Thụ HĐ',convert(varchar(10),TIEUTHU))"
+            + "              (N'6. Tiêu Thụ HĐ',convert(varchar(10),TIEUTHU)),"
+            + "              (N'7. Đăng Ngân',convert(varchar(3),MaNV_DangNgan))"
             + "              )"
             + "          cs (Col,Val)"
-            + "      where DanhBa = " + DanhBo + ") src"
+            + "      where DanhBa = '" + DanhBo + "') src"
             + "  pivot (max(Val) for KyN in (Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0)) pvt";
             dt.Merge(_cDAL.ExecuteQuery_DataTable(sql));
             return dt;

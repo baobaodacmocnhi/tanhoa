@@ -76,6 +76,7 @@ namespace DocSo_PC.DAL
         {
             try
             {
+                _db.Lich_DocSo_ChiTiets.DeleteAllOnSubmit(entity.Lich_DocSo_ChiTiets.ToList());
                 _db.Lich_DocSos.DeleteOnSubmit(entity);
                 _db.SubmitChanges();
                 return true;

@@ -31,11 +31,13 @@ namespace DocSo_PC.wrDHN {
         
         private System.Threading.SendOrPostCallback insertBillingOperationCompleted;
         
+        private System.Threading.SendOrPostCallback tinhCodeTieuThuOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
         public wsDHN() {
-            this.Url = global::DocSo_PC.Properties.Settings.Default.DocSo_PC_wsDHN_wsDHN;
+            this.Url = global::DocSo_PC.Properties.Settings.Default.DocSo_PC_wrDHN_wsDHN;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -73,6 +75,9 @@ namespace DocSo_PC.wrDHN {
         public event insertBillingCompletedEventHandler insertBillingCompleted;
         
         /// <remarks/>
+        public event tinhCodeTieuThuCompletedEventHandler tinhCodeTieuThuCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/insertBilling", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool insertBilling(string DocSoID, string checksum) {
             object[] results = this.Invoke("insertBilling", new object[] {
@@ -100,6 +105,44 @@ namespace DocSo_PC.wrDHN {
             if ((this.insertBillingCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.insertBillingCompleted(this, new insertBillingCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/tinhCodeTieuThu", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool tinhCodeTieuThu(string DocSoID, string Code, int CSM, out int TieuThu, out int GiaBan, out int ThueGTGT, out int PhiBVMT, out int TongCong) {
+            object[] results = this.Invoke("tinhCodeTieuThu", new object[] {
+                        DocSoID,
+                        Code,
+                        CSM});
+            TieuThu = ((int)(results[1]));
+            GiaBan = ((int)(results[2]));
+            ThueGTGT = ((int)(results[3]));
+            PhiBVMT = ((int)(results[4]));
+            TongCong = ((int)(results[5]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void tinhCodeTieuThuAsync(string DocSoID, string Code, int CSM) {
+            this.tinhCodeTieuThuAsync(DocSoID, Code, CSM, null);
+        }
+        
+        /// <remarks/>
+        public void tinhCodeTieuThuAsync(string DocSoID, string Code, int CSM, object userState) {
+            if ((this.tinhCodeTieuThuOperationCompleted == null)) {
+                this.tinhCodeTieuThuOperationCompleted = new System.Threading.SendOrPostCallback(this.OntinhCodeTieuThuOperationCompleted);
+            }
+            this.InvokeAsync("tinhCodeTieuThu", new object[] {
+                        DocSoID,
+                        Code,
+                        CSM}, this.tinhCodeTieuThuOperationCompleted, userState);
+        }
+        
+        private void OntinhCodeTieuThuOperationCompleted(object arg) {
+            if ((this.tinhCodeTieuThuCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.tinhCodeTieuThuCompleted(this, new tinhCodeTieuThuCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -144,6 +187,72 @@ namespace DocSo_PC.wrDHN {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void tinhCodeTieuThuCompletedEventHandler(object sender, tinhCodeTieuThuCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class tinhCodeTieuThuCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal tinhCodeTieuThuCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public int TieuThu {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[1]));
+            }
+        }
+        
+        /// <remarks/>
+        public int GiaBan {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[2]));
+            }
+        }
+        
+        /// <remarks/>
+        public int ThueGTGT {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[3]));
+            }
+        }
+        
+        /// <remarks/>
+        public int PhiBVMT {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[4]));
+            }
+        }
+        
+        /// <remarks/>
+        public int TongCong {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[5]));
             }
         }
     }
