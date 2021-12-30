@@ -90,7 +90,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvDanhSach.DataSource = _cDCBD.LINQToDataTable(_db.DieuChinhHangLoats.Where(item => item.Nam == int.Parse(txtNam.Text.Trim()) && item.Ky == int.Parse(txtKy.Text.Trim()) && item.Dot == int.Parse(txtDot.Text.Trim())).OrderBy(item => item.STT2).ToList());
+            string sql = "select * from DieuChinhHangLoat where Nam=" + int.Parse(txtNam.Text.Trim()) + " and Ky=" + int.Parse(txtKy.Text.Trim()) + " and Dot=" + int.Parse(txtDot.Text.Trim()) + " order by STT2 asc";
+            dgvDanhSach.DataSource = _cDCBD.ExecuteQuery_DataTable(sql);
+            //dgvDanhSach.DataSource = _cDCBD.LINQToDataTable(_db.DieuChinhHangLoats.Where(item => item.Nam == int.Parse(txtNam.Text.Trim()) && item.Ky == int.Parse(txtKy.Text.Trim()) && item.Dot == int.Parse(txtDot.Text.Trim())).OrderBy(item => item.STT2).ToList());
         }
 
         private void dgvDanhSach_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -489,9 +491,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 _cDCBD.ExecuteNonQuery(sql2);
                                             }
                                         }
+                                _cDCBD.Refresh();
                             }
                         }
-                        _cDCBD.Refresh();
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
