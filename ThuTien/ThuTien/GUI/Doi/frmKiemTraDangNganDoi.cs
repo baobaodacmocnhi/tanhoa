@@ -692,7 +692,7 @@ namespace ThuTien.GUI.Doi
                         foreach (DataRow item in dt.Rows)
                         {
                             DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                            dr["LoaiBaoCao"] = "HÓA ĐƠN ĐIỀU CHỈNH 2 LẦN";
+                            dr["LoaiBaoCao"] = "HÓA ĐƠN ĐIỀU CHỈNH 2 LẦN ngày " + en.NgayChot.Value.ToString("dd/MM/yyyy");
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                             dr["Ky"] = item["Ky"];
                             dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
@@ -738,7 +738,7 @@ namespace ThuTien.GUI.Doi
                         foreach (DataRow item in dt.Rows)
                         {
                             DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                            dr["LoaiBaoCao"] = "HÓA ĐƠN ĐIỀU CHỈNH ĐÃ BÁO CÁO THUẾ";
+                            dr["LoaiBaoCao"] = "HÓA ĐƠN ĐIỀU CHỈNH ĐÃ BÁO CÁO THUẾ ngày " + en.NgayChot.Value.ToString("dd/MM/yyyy");
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                             dr["Ky"] = item["Ky"];
                             dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
