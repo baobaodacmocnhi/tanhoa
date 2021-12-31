@@ -170,6 +170,7 @@
             this.txtChiTietPhiBVMTMoi = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
             this.txtKhauTru = new System.Windows.Forms.TextBox();
+            this.chkCongThucTinh = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1562,6 +1563,16 @@
             this.txtKhauTru.Size = new System.Drawing.Size(120, 65);
             this.txtKhauTru.TabIndex = 53;
             // 
+            // chkCongThucTinh
+            // 
+            this.chkCongThucTinh.AutoSize = true;
+            this.chkCongThucTinh.Location = new System.Drawing.Point(576, 32);
+            this.chkCongThucTinh.Name = "chkCongThucTinh";
+            this.chkCongThucTinh.Size = new System.Drawing.Size(112, 20);
+            this.chkCongThucTinh.TabIndex = 54;
+            this.chkCongThucTinh.Text = "Số Công Thức";
+            this.chkCongThucTinh.UseVisualStyleBackColor = true;
+            // 
             // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1569,6 +1580,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1303, 642);
+            this.Controls.Add(this.chkCongThucTinh);
             this.Controls.Add(this.txtKhauTru);
             this.Controls.Add(this.label44);
             this.Controls.Add(this.txtChiTietPhiBVMTMoi);
@@ -1788,5 +1800,6 @@
         private System.Windows.Forms.TextBox txtChiTietPhiBVMTMoi;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox txtKhauTru;
+        private System.Windows.Forms.CheckBox chkCongThucTinh;
     }
 }

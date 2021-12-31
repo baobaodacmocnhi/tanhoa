@@ -2327,7 +2327,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     DataTable dtBaoCaoThue = new DataTable();
                     DataTable dt = new DataTable();
                     for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
-                        if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
+                        if (dgvDSDCBD["In", i].Value != null && dgvDSDCBD["In", i].Value.ToString() != "" && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
                         {
                             dt = _cDCBD.getHoaDon_DataTable(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                             //if (bool.Parse(dt.Rows[0]["BaoCaoThue"].ToString()) == false && bool.Parse(dt.Rows[0]["DieuChinhGia"].ToString()) == false && bool.Parse(dt.Rows[0]["DieuChinhGia2"].ToString()) == false)
