@@ -506,7 +506,7 @@ namespace ThuTien.DAL.Doi
                             DanhBo = itemHD.DANHBA,
                             itemHD.TONGCONG,
                             itemHD.SOPHATHANH,
-                            MLT=itemHD.MALOTRINH,
+                            MLT = itemHD.MALOTRINH,
                         };
             dtResult = LINQToDataTable(query);
             if (dtResult != null && dtResult.Rows.Count > 0)
@@ -8181,15 +8181,44 @@ namespace ThuTien.DAL.Doi
         public DataTable getDSDangNgan_HDDC2lan(DateTime NgayGiaiTrach)
         {
             string sql = "WITH temp AS ("
-+ "   select ID_HOADON,hd.SOHOADON,SOPHATHANH,TONGCONG,DanhBo=DANHBA,MLT=MALOTRINH,Ky=(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM))"
-+ "   ,ROW_NUMBER() OVER (PARTITION BY dcls.SoPhieu ORDER BY dcls.CreateDate DESC) AS rn"
-+ " from HOADON hd,DIEUCHINH_HD dc,TT_LichSuDieuChinhHD dcls"
-+ " where CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null and hd.ID_HOADON=dc.FK_HOADON and hd.ID_HOADON=dcls.FK_HOADON and dcls.SoPhieu is not null"
-+ " )"
-+ " SELECT ID_HOADON,SOHOADON,SOPHATHANH,TONGCONG,DanhBo,MLT,Ky,COUNT(*) FROM temp WHERE rn=1"
-+ " group by ID_HOADON,SOHOADON,SOPHATHANH,TONGCONG,DanhBo,MLT,Ky"
-+ " having count(*)>1";
+                        + "   select ID_HOADON,hd.SOHOADON,SOPHATHANH,TONGCONG,DanhBo=DANHBA,MLT=MALOTRINH,Ky=(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM))"
+                        + "   ,ROW_NUMBER() OVER (PARTITION BY dcls.SoPhieu ORDER BY dcls.CreateDate DESC) AS rn"
+                        + " from HOADON hd,DIEUCHINH_HD dc,TT_LichSuDieuChinhHD dcls"
+                        + " where CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null and hd.ID_HOADON=dc.FK_HOADON and hd.ID_HOADON=dcls.FK_HOADON and dcls.SoPhieu is not null"
+                        + " )"
+                        + " SELECT MaHD=ID_HOADON,SOHOADON,SOPHATHANH,TONGCONG,DanhBo,MLT,Ky,COUNT(*) FROM temp WHERE rn=1"
+                        + " group by ID_HOADON,SOHOADON,SOPHATHANH,TONGCONG,DanhBo,MLT,Ky"
+                        + " having count(*)>1";
+            return ExecuteQuery_DataTable(sql);
+        }
 
+        public DataTable getDSDangNgan_HDDC2lan_Except12(DateTime NgayGiaiTrach)
+        {
+            string sql = "WITH temp AS ("
+                        + "   select ID_HOADON,hd.SOHOADON,SOPHATHANH,TONGCONG,DanhBo=DANHBA,MLT=MALOTRINH,Ky=(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM))"
+                        + "   ,ROW_NUMBER() OVER (PARTITION BY dcls.SoPhieu ORDER BY dcls.CreateDate DESC) AS rn"
+                        + " from HOADON hd,DIEUCHINH_HD dc,TT_LichSuDieuChinhHD dcls"
+                        + " where CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null and hd.ID_HOADON=dc.FK_HOADON and hd.ID_HOADON=dcls.FK_HOADON and dcls.SoPhieu is not null"
+                        + " and (NAM < " + NgayGiaiTrach.Year + " or (NAM = " + NgayGiaiTrach.Year + " and KY < " + NgayGiaiTrach.Month + "))"
+                        + " )"
+                        + " SELECT MaHD=ID_HOADON,SOHOADON,SOPHATHANH,TONGCONG,DanhBo,MLT,Ky,COUNT(*) FROM temp WHERE rn=1"
+                        + " group by ID_HOADON,SOHOADON,SOPHATHANH,TONGCONG,DanhBo,MLT,Ky"
+                        + " having count(*)>1";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getDSDangNgan_HDDC2lan_12(DateTime NgayGiaiTrach)
+        {
+            string sql = "WITH temp AS ("
+                        + "   select ID_HOADON,hd.SOHOADON,SOPHATHANH,TONGCONG,DanhBo=DANHBA,MLT=MALOTRINH,Ky=(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM))"
+                        + "   ,ROW_NUMBER() OVER (PARTITION BY dcls.SoPhieu ORDER BY dcls.CreateDate DESC) AS rn"
+                        + " from HOADON hd,DIEUCHINH_HD dc,TT_LichSuDieuChinhHD dcls"
+                        + " where CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and MaNV_DangNgan is not null and hd.ID_HOADON=dc.FK_HOADON and hd.ID_HOADON=dcls.FK_HOADON and dcls.SoPhieu is not null"
+                        + " and NAM = " + NgayGiaiTrach.Year + " and KY = " + NgayGiaiTrach.Month + ""
+                        + " )"
+                        + " SELECT MaHD=ID_HOADON,SOHOADON,SOPHATHANH,TONGCONG,DanhBo,MLT,Ky,COUNT(*) FROM temp WHERE rn=1"
+                        + " group by ID_HOADON,SOHOADON,SOPHATHANH,TONGCONG,DanhBo,MLT,Ky"
+                        + " having count(*)>1";
             return ExecuteQuery_DataTable(sql);
         }
 
@@ -8765,7 +8794,10 @@ namespace ThuTien.DAL.Doi
                         group itemDC by itemDC.FK_HOADON into itemGroup
                         select new
                         {
+                            MaHD = itemGroup.Key,
+                            DanhBo = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DANHBA,
                             Nam = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NAM,
+                            Ky = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).KY,
                             SoPhatHanh = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).SOPHATHANH,
                             DangNgan = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_ChuyenKhoan == true ? "10" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Ton == true ? "TN" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Quay == true ? "TQ" : "",
                             NgayGiaiTrach = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NGAYGIAITRACH,
@@ -8786,7 +8818,10 @@ namespace ThuTien.DAL.Doi
                         group itemDC by itemDC.FK_HOADON into itemGroup
                         select new
                         {
+                            MaHD = itemGroup.Key,
+                            DanhBo = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DANHBA,
                             Nam = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NAM,
+                            Ky = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).KY,
                             SoPhatHanh = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).SOPHATHANH,
                             DangNgan = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_ChuyenKhoan == true ? "10" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Ton == true ? "TN" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Quay == true ? "TQ" : "",
                             NgayGiaiTrach = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NGAYGIAITRACH,
@@ -8807,7 +8842,10 @@ namespace ThuTien.DAL.Doi
                         group itemDC by itemDC.FK_HOADON into itemGroup
                         select new
                         {
+                            MaHD = itemGroup.Key,
+                            DanhBo = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DANHBA,
                             Nam = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NAM,
+                            Ky = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).KY,
                             SoPhatHanh = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).SOPHATHANH,
                             DangNgan = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_ChuyenKhoan == true ? "10" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Ton == true ? "TN" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Quay == true ? "TQ" : "",
                             NgayGiaiTrach = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NGAYGIAITRACH,
@@ -8828,7 +8866,10 @@ namespace ThuTien.DAL.Doi
                         group itemDC by itemDC.FK_HOADON into itemGroup
                         select new
                         {
+                            MaHD = itemGroup.Key,
+                            DanhBo = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DANHBA,
                             Nam = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NAM,
+                            Ky = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).KY,
                             SoPhatHanh = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).SOPHATHANH,
                             DangNgan = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_ChuyenKhoan == true ? "10" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Ton == true ? "TN" : _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).DangNgan_Quay == true ? "TQ" : "",
                             NgayGiaiTrach = _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == itemGroup.Key).NGAYGIAITRACH,

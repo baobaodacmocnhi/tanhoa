@@ -77,7 +77,7 @@ namespace ThuTien.GUI.TongHop
                     if (_dchd.SoPhieu != null)
                     {
                         txtSoPhieu.Text = _dchd.SoPhieu.ToString().Insert(_dchd.SoPhieu.ToString().Length - 2, "-");
-                        _ctdchd = _cKinhDoanh.GetCTDCHDBySoPhieu(_dchd.SoPhieu.Value);
+                        _ctdchd = _cKinhDoanh.get_HoaDon(_dchd.SoPhieu.Value);
                     }
                     ///
                     lbTangGiam.Text = _dchd.TangGiam;
@@ -126,7 +126,7 @@ namespace ThuTien.GUI.TongHop
         {
             if (!string.IsNullOrEmpty(txtSoPhieu.Text.Trim()) && e.KeyChar == 13)
             {
-                _ctdchd = _cKinhDoanh.GetCTDCHDBySoPhieu(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
+                _ctdchd = _cKinhDoanh.get_HoaDon(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
 
                 if (_ctdchd.DCBD.MaDon != null)
                 {

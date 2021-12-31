@@ -2806,12 +2806,31 @@ namespace ThuTien.DAL
             return _dbKinhDoanh.DonTXLs.SingleOrDefault(itemDonTXL => itemDonTXL.MaDon == MaDon);
         }
 
-        public DCBD_ChiTietHoaDon GetCTDCHDBySoPhieu(decimal SoPhieu)
+        public DCBD_ChiTietHoaDon get_HoaDon(decimal SoPhieu)
         {
             return _dbKinhDoanh.DCBD_ChiTietHoaDons.SingleOrDefault(item => item.MaCTDCHD == SoPhieu);
         }
 
-        public DCBD_ChiTietBienDong GetDCBD(string DanhBo)
+        public DataTable getTong_HoaDon(string DanhBo, int Nam, int Ky)
+        {
+            string sql = "select TieuThu=sum(TieuThu_BD)-sum(TieuThu),GiaBan=sum(TienNuoc_BD),ThueGTGT=sum(ThueGTGT_BD),PhiBVMT=sum(PhiBVMT_BD)"
+                + " from DCBD_ChiTietHoaDon where DanhBo = '" + DanhBo + "' and Nam = " + Nam + " and Ky = " + Ky + " and PhieuDuocKy=1"
+                + " group by DanhBo,Nam,Ky";
+                return ExecuteQuery_DataTable(sql);
+            //var query = from item in _dbKinhDoanh.DCBD_ChiTietHoaDons
+            //            where item.DanhBo == DanhBo && item.Nam == Nam && item.Ky == Ky
+            //            group item by new { item.DanhBo, item.Nam, item.Ky } into itemGroup
+            //            select new
+            //            {
+            //                TieuThu = itemGroup.Sum(groupItem => groupItem.TieuThu) - itemGroup.Sum(groupItem => groupItem.TieuThu_BD),
+            //                GiaBan = itemGroup.Sum(groupItem => groupItem.TienNuoc_BD),
+            //                ThueGTGT = itemGroup.Sum(groupItem => groupItem.ThueGTGT_BD),
+            //                PhiBVMT = itemGroup.Sum(groupItem => groupItem.PhiBVMT_BD),
+            //            };
+            //return LINQToDataTable(query.ToList());
+        }
+
+        public DCBD_ChiTietBienDong get_BienDong(string DanhBo)
         {
             if (_dbKinhDoanh.DCBD_ChiTietBienDongs.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date >= DateTime.Now.AddDays(-31).Date))
                 return _dbKinhDoanh.DCBD_ChiTietBienDongs.Where(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date >= DateTime.Now.AddDays(-31).Date).OrderByDescending(item => item.CreateDate).First();
@@ -2852,7 +2871,7 @@ namespace ThuTien.DAL
             //    return true;
         }
 
-        public string getPhuong( int MaQuan,int MaPhuong)
+        public string getPhuong(int MaQuan, int MaPhuong)
         {
             return (string)ExecuteQuery_ReturnOneValue("select Name2 from Phuong where IDQuan=" + MaQuan + " and IDPhuong=" + MaPhuong);
         }

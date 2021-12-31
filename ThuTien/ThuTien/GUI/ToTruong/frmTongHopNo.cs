@@ -211,7 +211,7 @@ namespace ThuTien.GUI.ToTruong
                             row["ThueGTGT"] = item["ThueGTGT"];
                             row["PhiBVMT"] = item["PhiBVMT"];
                             row["TongCong"] = item["TongCong"];
-                            DCBD_ChiTietBienDong dcbd = _cKinhDoanh.GetDCBD(item["DanhBo"].ToString());
+                            DCBD_ChiTietBienDong dcbd = _cKinhDoanh.get_BienDong(item["DanhBo"].ToString());
                             if (dcbd != null)
                             {
                                 if (dcbd.DinhMuc != null)
@@ -279,7 +279,7 @@ namespace ThuTien.GUI.ToTruong
                             else
                                 row["DinhMuc"] = 0;
                             row["TieuThu"] = 0;
-                            DCBD_ChiTietBienDong dcbd = _cKinhDoanh.GetDCBD(hoadon.DANHBA);
+                            DCBD_ChiTietBienDong dcbd = _cKinhDoanh.get_BienDong(hoadon.DANHBA);
                             if (dcbd != null)
                             {
                                 if (dcbd.DinhMuc != null)

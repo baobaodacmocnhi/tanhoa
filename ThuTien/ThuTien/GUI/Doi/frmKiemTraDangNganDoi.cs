@@ -16,6 +16,7 @@ using ThuTien.GUI.BaoCao;
 using System.Net;
 using System.Web.Script.Serialization;
 using System.IO;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.Doi
 {
@@ -24,6 +25,7 @@ namespace ThuTien.GUI.Doi
         CTo _cTo = new CTo();
         CHoaDon _cHoaDon = new CHoaDon();
         CChotDangNgan _cChotDangNgan = new CChotDangNgan();
+        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
 
         frmLoading frm;
         string _actionNopTien = "";
@@ -612,73 +614,37 @@ namespace ThuTien.GUI.Doi
                         {
                             TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
                             DataTable dt = _cHoaDon.getDSDangNgan_DieuChinhHoaDon(en.NgayChot.Value);
-                            using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
-                                foreach (DataRow item in dt.Rows)
-                                {
-                                    writer.Write("\"" + item["Nam"] + "\"");
-                                    writer.Write(",\"" + int.Parse(item["SoPhatHanh"].ToString()).ToString("00000000") + "\"");
-                                    writer.Write(",\"" + item["DangNgan"] + "\"");
-                                    writer.Write(",\"" + DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd") + "\"");
-                                    writer.Write(",\"" + item["TieuThu"] + "\"");
-                                    writer.Write(",\"" + item["GiaBan"] + "\"");
-                                    writer.Write(",\"" + item["ThueGTGT"] + "\"");
-                                    writer.Write(",\"" + item["PhiBVMT"] + "\"");
-                                    writer.WriteLine(",\"1\"");
-                                }
-                            MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
+                            DataTable dt2lan = _cHoaDon.getDSDangNgan_HDDC2lan(en.NgayChot.Value);
 
-                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "FileHDDC_Except12")
-                    {
-                        SaveFileDialog saveFileDialog = new SaveFileDialog();
-                        saveFileDialog.DefaultExt = "dat";
-                        saveFileDialog.Filter = "Text files (*.dat)|*.dat";
-                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                        {
-                            TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
-                            DataTable dt = _cHoaDon.getDSDangNgan_DieuChinhHoaDon_Except12(en.NgayChot.Value);
                             using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
                                 foreach (DataRow item in dt.Rows)
                                 {
-                                    writer.Write("\"" + item["Nam"] + "\"");
-                                    writer.Write(",\"" + int.Parse(item["SoPhatHanh"].ToString()).ToString("00000000") + "\"");
-                                    writer.Write(",\"" + item["DangNgan"] + "\"");
-                                    writer.Write(",\"" + DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd") + "\"");
-                                    writer.Write(",\"" + item["TieuThu"] + "\"");
-                                    writer.Write(",\"" + item["GiaBan"] + "\"");
-                                    writer.Write(",\"" + item["ThueGTGT"] + "\"");
-                                    writer.Write(",\"" + item["PhiBVMT"] + "\"");
-                                    writer.WriteLine(",\"1\"");
-                                }
-                            MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-
-                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "FileHDDC_12")
-                    {
-                        SaveFileDialog saveFileDialog = new SaveFileDialog();
-                        saveFileDialog.DefaultExt = "dat";
-                        saveFileDialog.Filter = "Text files (*.dat)|*.dat";
-                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                        {
-                            TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
-                            DataTable dt = _cHoaDon.getDSDangNgan_DieuChinhHoaDon_12(en.NgayChot.Value);
-                            //DateTime From = new DateTime(2021, 11, 24);
-                            //DateTime To = new DateTime(2021, 11, 30);
-                            //DataTable dt = _cHoaDon.getDSDangNgan_DieuChinhHoaDon_12(From, To);
-                            using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
-                                foreach (DataRow item in dt.Rows)
-                                {
-                                    writer.Write("\"" + item["Nam"] + "\"");
-                                    writer.Write(",\"" + int.Parse(item["SoPhatHanh"].ToString()).ToString("00000000") + "\"");
-                                    writer.Write(",\"" + item["DangNgan"] + "\"");
-                                    writer.Write(",\"" + DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd") + "\"");
-                                    writer.Write(",\"" + item["TieuThu"] + "\"");
-                                    writer.Write(",\"" + item["GiaBan"] + "\"");
-                                    writer.Write(",\"" + item["ThueGTGT"] + "\"");
-                                    writer.Write(",\"" + item["PhiBVMT"] + "\"");
-                                    writer.WriteLine(",\"1\"");
+                                    DataRow[] find = dt2lan.Select("MaHD = " + item["MaHD"] + "");
+                                    if (find.Length == 0)
+                                    {
+                                        writer.Write("\"" + item["Nam"] + "\"");
+                                        writer.Write(",\"" + int.Parse(item["SoPhatHanh"].ToString()).ToString("00000000") + "\"");
+                                        writer.Write(",\"" + item["DangNgan"] + "\"");
+                                        writer.Write(",\"" + DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd") + "\"");
+                                        writer.Write(",\"" + item["TieuThu"] + "\"");
+                                        writer.Write(",\"" + item["GiaBan"] + "\"");
+                                        writer.Write(",\"" + item["ThueGTGT"] + "\"");
+                                        writer.Write(",\"" + item["PhiBVMT"] + "\"");
+                                        writer.WriteLine(",\"1\"");
+                                    }
+                                    else
+                                    {
+                                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                                        writer.Write("\"" + item["Nam"] + "\"");
+                                        writer.Write(",\"" + int.Parse(item["SoPhatHanh"].ToString()).ToString("00000000") + "\"");
+                                        writer.Write(",\"" + item["DangNgan"] + "\"");
+                                        writer.Write(",\"" + DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd") + "\"");
+                                        writer.Write(",\"" + dtDC.Rows[0]["TieuThu"] + "\"");
+                                        writer.Write(",\"" + dtDC.Rows[0]["GiaBan"] + "\"");
+                                        writer.Write(",\"" + dtDC.Rows[0]["ThueGTGT"] + "\"");
+                                        writer.Write(",\"" + dtDC.Rows[0]["PhiBVMT"] + "\"");
+                                        writer.WriteLine(",\"1\"");
+                                    }
                                 }
                             MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -802,6 +768,97 @@ namespace ThuTien.GUI.Doi
                                 frm = new frmLoading();
                                 frm.ShowDialog();
                             }
+                        }
+                    }
+
+                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "FileHDDC_Except12")
+                    {
+                        SaveFileDialog saveFileDialog = new SaveFileDialog();
+                        saveFileDialog.DefaultExt = "dat";
+                        saveFileDialog.Filter = "Text files (*.dat)|*.dat";
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
+                            DataTable dt = _cHoaDon.getDSDangNgan_DieuChinhHoaDon_Except12(en.NgayChot.Value);
+                            DataTable dt2lan = _cHoaDon.getDSDangNgan_HDDC2lan_Except12(en.NgayChot.Value);
+                            using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                                foreach (DataRow item in dt.Rows)
+                                {
+                                    DataRow[] find = dt2lan.Select("MaHD = " + item["MaHD"] + "");
+                                    if (find.Length == 0)
+                                    {
+                                        writer.Write("\"" + item["Nam"] + "\"");
+                                        writer.Write(",\"" + int.Parse(item["SoPhatHanh"].ToString()).ToString("00000000") + "\"");
+                                        writer.Write(",\"" + item["DangNgan"] + "\"");
+                                        writer.Write(",\"" + DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd") + "\"");
+                                        writer.Write(",\"" + item["TieuThu"] + "\"");
+                                        writer.Write(",\"" + item["GiaBan"] + "\"");
+                                        writer.Write(",\"" + item["ThueGTGT"] + "\"");
+                                        writer.Write(",\"" + item["PhiBVMT"] + "\"");
+                                        writer.WriteLine(",\"1\"");
+                                    }
+                                    else
+                                    {
+                                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                                        writer.Write("\"" + item["Nam"] + "\"");
+                                        writer.Write(",\"" + int.Parse(item["SoPhatHanh"].ToString()).ToString("00000000") + "\"");
+                                        writer.Write(",\"" + item["DangNgan"] + "\"");
+                                        writer.Write(",\"" + DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd") + "\"");
+                                        writer.Write(",\"" + dtDC.Rows[0]["TieuThu"] + "\"");
+                                        writer.Write(",\"" + dtDC.Rows[0]["GiaBan"] + "\"");
+                                        writer.Write(",\"" + dtDC.Rows[0]["ThueGTGT"] + "\"");
+                                        writer.Write(",\"" + dtDC.Rows[0]["PhiBVMT"] + "\"");
+                                        writer.WriteLine(",\"1\"");
+                                    }
+                                }
+                            MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
+                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "FileHDDC_12")
+                    {
+                        SaveFileDialog saveFileDialog = new SaveFileDialog();
+                        saveFileDialog.DefaultExt = "dat";
+                        saveFileDialog.Filter = "Text files (*.dat)|*.dat";
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
+                            DataTable dt = _cHoaDon.getDSDangNgan_DieuChinhHoaDon_12(en.NgayChot.Value);
+                            DataTable dt2lan = _cHoaDon.getDSDangNgan_HDDC2lan_12(en.NgayChot.Value);
+                            //DateTime From = new DateTime(2021, 11, 24);
+                            //DateTime To = new DateTime(2021, 11, 30);
+                            //DataTable dt = _cHoaDon.getDSDangNgan_DieuChinhHoaDon_12(From, To);
+                            using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                                foreach (DataRow item in dt.Rows)
+                                {
+                                    DataRow[] find = dt2lan.Select("MaHD = " + item["MaHD"] + "");
+                                    if (find.Length == 0)
+                                    {
+                                        writer.Write("\"" + item["Nam"] + "\"");
+                                        writer.Write(",\"" + int.Parse(item["SoPhatHanh"].ToString()).ToString("00000000") + "\"");
+                                        writer.Write(",\"" + item["DangNgan"] + "\"");
+                                        writer.Write(",\"" + DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd") + "\"");
+                                        writer.Write(",\"" + item["TieuThu"] + "\"");
+                                        writer.Write(",\"" + item["GiaBan"] + "\"");
+                                        writer.Write(",\"" + item["ThueGTGT"] + "\"");
+                                        writer.Write(",\"" + item["PhiBVMT"] + "\"");
+                                        writer.WriteLine(",\"1\"");
+                                    }
+                                    else
+                                    {
+                                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                                        writer.Write("\"" + item["Nam"] + "\"");
+                                        writer.Write(",\"" + int.Parse(item["SoPhatHanh"].ToString()).ToString("00000000") + "\"");
+                                        writer.Write(",\"" + item["DangNgan"] + "\"");
+                                        writer.Write(",\"" + DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd") + "\"");
+                                        writer.Write(",\"" + dtDC.Rows[0]["TieuThu"] + "\"");
+                                        writer.Write(",\"" + dtDC.Rows[0]["GiaBan"] + "\"");
+                                        writer.Write(",\"" + dtDC.Rows[0]["ThueGTGT"] + "\"");
+                                        writer.Write(",\"" + dtDC.Rows[0]["PhiBVMT"] + "\"");
+                                        writer.WriteLine(",\"1\"");
+                                    }
+                                }
+                            MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
