@@ -14,7 +14,7 @@ namespace DocSo_PC.DAL
 {
     class CDAL
     {
-        public static dbDocSoTHTestDataContext _db = new dbDocSoTHTestDataContext();
+        public static dbDocSoTHDataContext _db = new dbDocSoTHDataContext();
         public static CConnection _cDAL = new CConnection(_db.Connection.ConnectionString);
 
         public void SubmitChanges()
@@ -24,7 +24,7 @@ namespace DocSo_PC.DAL
 
         public void Refresh()
         {
-            _db = new dbDocSoTHTestDataContext();
+            _db = new dbDocSoTHDataContext();
         }
 
         public byte[] imageToByteArray(Image imageIn)
@@ -171,6 +171,54 @@ namespace DocSo_PC.DAL
         }
 
         #endregion
+
+        public void XuatExcel(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName)
+        {
+            oSheet.Name = SheetName;
+            object[,] arr = new object[dt.Rows.Count + 1, dt.Columns.Count];
+            for (int j = 0; j < dt.Columns.Count; j++)
+            {
+                arr[0, j] = dt.Columns[j].ColumnName;
+            }
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+                for (int j = 0; j < dt.Columns.Count; j++)
+                {
+                    arr[i+1, j] = dr[j];
+                }
+            }
+            int rowStart = 1;
+            int columnStart = 1;
+            int rowEnd = rowStart + dt.Rows.Count - 1;
+            int columnEnd = dt.Columns.Count;
+
+            Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+            Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+            Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+            range.Value2 = arr;
+
+            //Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
+            //Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
+            //Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+            //c3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            //Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
+            //Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
+            //Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
+            //c3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            //c3b.NumberFormat = "@";
+
+            //Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+            //Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+            //Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
+            //c3c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            //Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
+            //Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
+            //Microsoft.Office.Interop.Excel.Range c3d = oSheet.get_Range(c1d, c2d);
+            //c3d.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+        }
 
     }
 }

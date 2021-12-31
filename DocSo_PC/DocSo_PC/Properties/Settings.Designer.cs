@@ -48,11 +48,11 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=DocSoTHTest;Persist Security Info=True;User " +
-            "ID=sa;Password=db8@tanhoa")]
-        public string DocSoTHTestConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=s" +
+            "a;Password=db8@tanhoa")]
+        public string DocSoTHConnectionString {
             get {
-                return ((string)(this["DocSoTHTestConnectionString"]));
+                return ((string)(this["DocSoTHConnectionString"]));
             }
         }
         
@@ -74,6 +74,16 @@ namespace DocSo_PC.Properties {
         public string DocSo_PC_wrThuTien_wsThuTien {
             get {
                 return ((string)(this["DocSo_PC_wrThuTien_wsThuTien"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.90.6:82/wsbilling.asmx")]
+        public string DocSo_PC_wrBilling_wsBilling {
+            get {
+                return ((string)(this["DocSo_PC_wrBilling_wsBilling"]));
             }
         }
         

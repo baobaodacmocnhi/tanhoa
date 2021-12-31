@@ -22,8 +22,8 @@ namespace DocSo_PC.LinQ
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DocSoTHTest")]
-	public partial class dbDocSoTHTestDataContext : System.Data.Linq.DataContext
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DocSoTH")]
+	public partial class dbDocSoTHDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -66,6 +66,9 @@ namespace DocSo_PC.LinQ
     partial void InsertDocSoCode8(DocSoCode8 instance);
     partial void UpdateDocSoCode8(DocSoCode8 instance);
     partial void DeleteDocSoCode8(DocSoCode8 instance);
+    partial void InsertDocSoGhiChu(DocSoGhiChu instance);
+    partial void UpdateDocSoGhiChu(DocSoGhiChu instance);
+    partial void DeleteDocSoGhiChu(DocSoGhiChu instance);
     partial void InsertDocSoLuuTru(DocSoLuuTru instance);
     partial void UpdateDocSoLuuTru(DocSoLuuTru instance);
     partial void DeleteDocSoLuuTru(DocSoLuuTru instance);
@@ -119,31 +122,31 @@ namespace DocSo_PC.LinQ
     partial void DeleteTo(To instance);
     #endregion
 		
-		public dbDocSoTHTestDataContext() : 
-				base(global::DocSo_PC.Properties.Settings.Default.DocSoTHTestConnectionString, mappingSource)
+		public dbDocSoTHDataContext() : 
+				base(global::DocSo_PC.Properties.Settings.Default.DocSoTHConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public dbDocSoTHTestDataContext(string connection) : 
+		public dbDocSoTHDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public dbDocSoTHTestDataContext(System.Data.IDbConnection connection) : 
+		public dbDocSoTHDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public dbDocSoTHTestDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public dbDocSoTHDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
-		
-		public dbDocSoTHTestDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+
+        public dbDocSoTHDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -250,6 +253,14 @@ namespace DocSo_PC.LinQ
 			get
 			{
 				return this.GetTable<DocSoCode8>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DocSoGhiChu> DocSoGhiChus
+		{
+			get
+			{
+				return this.GetTable<DocSoGhiChu>();
 			}
 		}
 		
@@ -9389,6 +9400,164 @@ namespace DocSo_PC.LinQ
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DocSoGhiChu")]
+	public partial class DocSoGhiChu : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _DanhBa;
+		
+		private System.DateTime _ThoiGian;
+		
+		private string _NoiDung;
+		
+		private string _Username;
+		
+		private System.Nullable<bool> _Printed;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDanhBaChanging(string value);
+    partial void OnDanhBaChanged();
+    partial void OnThoiGianChanging(System.DateTime value);
+    partial void OnThoiGianChanged();
+    partial void OnNoiDungChanging(string value);
+    partial void OnNoiDungChanged();
+    partial void OnUsernameChanging(string value);
+    partial void OnUsernameChanged();
+    partial void OnPrintedChanging(System.Nullable<bool> value);
+    partial void OnPrintedChanged();
+    #endregion
+		
+		public DocSoGhiChu()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBa", DbType="Char(11) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string DanhBa
+		{
+			get
+			{
+				return this._DanhBa;
+			}
+			set
+			{
+				if ((this._DanhBa != value))
+				{
+					this.OnDanhBaChanging(value);
+					this.SendPropertyChanging();
+					this._DanhBa = value;
+					this.SendPropertyChanged("DanhBa");
+					this.OnDanhBaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThoiGian", DbType="DateTime NOT NULL", IsPrimaryKey=true)]
+		public System.DateTime ThoiGian
+		{
+			get
+			{
+				return this._ThoiGian;
+			}
+			set
+			{
+				if ((this._ThoiGian != value))
+				{
+					this.OnThoiGianChanging(value);
+					this.SendPropertyChanging();
+					this._ThoiGian = value;
+					this.SendPropertyChanged("ThoiGian");
+					this.OnThoiGianChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDung", DbType="NVarChar(500)")]
+		public string NoiDung
+		{
+			get
+			{
+				return this._NoiDung;
+			}
+			set
+			{
+				if ((this._NoiDung != value))
+				{
+					this.OnNoiDungChanging(value);
+					this.SendPropertyChanging();
+					this._NoiDung = value;
+					this.SendPropertyChanged("NoiDung");
+					this.OnNoiDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(20)")]
+		public string Username
+		{
+			get
+			{
+				return this._Username;
+			}
+			set
+			{
+				if ((this._Username != value))
+				{
+					this.OnUsernameChanging(value);
+					this.SendPropertyChanging();
+					this._Username = value;
+					this.SendPropertyChanged("Username");
+					this.OnUsernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Printed", DbType="Bit")]
+		public System.Nullable<bool> Printed
+		{
+			get
+			{
+				return this._Printed;
+			}
+			set
+			{
+				if ((this._Printed != value))
+				{
+					this.OnPrintedChanging(value);
+					this.SendPropertyChanging();
+					this._Printed = value;
+					this.SendPropertyChanged("Printed");
+					this.OnPrintedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DocSoLuuTru")]
 	public partial class DocSoLuuTru : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -13445,7 +13614,7 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<int> _DMHN;
 		
-		private System.Nullable<bool> _BVMT;
+		private System.Nullable<bool> _CoPBVMT;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -13529,8 +13698,8 @@ namespace DocSo_PC.LinQ
     partial void OnTTBaoThayChanged();
     partial void OnDMHNChanging(System.Nullable<int> value);
     partial void OnDMHNChanged();
-    partial void OnBVMTChanging(System.Nullable<bool> value);
-    partial void OnBVMTChanged();
+    partial void OnCoPBVMTChanging(System.Nullable<bool> value);
+    partial void OnCoPBVMTChanged();
     #endregion
 		
 		public KhachHang()
@@ -14318,22 +14487,22 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BVMT", DbType="Bit")]
-		public System.Nullable<bool> BVMT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CoPBVMT", DbType="Bit")]
+		public System.Nullable<bool> CoPBVMT
 		{
 			get
 			{
-				return this._BVMT;
+				return this._CoPBVMT;
 			}
 			set
 			{
-				if ((this._BVMT != value))
+				if ((this._CoPBVMT != value))
 				{
-					this.OnBVMTChanging(value);
+					this.OnCoPBVMTChanging(value);
 					this.SendPropertyChanging();
-					this._BVMT = value;
-					this.SendPropertyChanged("BVMT");
-					this.OnBVMTChanged();
+					this._CoPBVMT = value;
+					this.SendPropertyChanged("CoPBVMT");
+					this.OnCoPBVMTChanged();
 				}
 			}
 		}

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using DocSo_PC.LinQ;
 using System.Data;
+using DocSo_PC.DAL.QuanTri;
 
 namespace DocSo_PC.DAL.Doi
 {
@@ -217,7 +218,8 @@ namespace DocSo_PC.DAL.Doi
                 May = "";
             if (Code == "Tất Cả")
                 Code = "";
-            string sql = "select * from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ") and May like '%" + May + "%' and CodeMoi like '%" + Code + "%'";
+            string sql = "select * from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ") and May like '%" + May + "%' and CodeMoi like '%" + Code + "%'"
+                        + " order by MLT2 asc";
             string sql2 = "select TongSL=COUNT(DocSoID)"
                         + " ,SLDaGhi=COUNT(case when CodeMoi!='' then 1 else null end)"
                         + " ,SLChuaGhi=COUNT(case when CodeMoi='' then 1 else null end)"
@@ -285,26 +287,29 @@ namespace DocSo_PC.DAL.Doi
             return (int)_cDAL.ExecuteQuery_ReturnOneValue(sql);
         }
 
+        public DataTable getDS_Code5K5N(string Nam, string Ky, string Dot)
+        {
+            string sql = "select DanhBa,MLT1,CSCu,CSMoi,TieuThuMoi,CodeMoi"
+                            + " from DocSoTH.dbo.DocSo"
+                            + " where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi in ('5N','5K')"
+                            + " order by MLT1 asc";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
+        public bool updateDS_Code5K5N(string Nam, string Ky, string Dot)
+        {
+            string sql = "update DocSo"
+                            + "set CSCu=CSMoi-TieuThuMoi,NgayCapNhat=getdate(),NVCapNhat=N'" + CNguoiDung.HoTen + "'"
+                            + "whereNam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi in ('5N','5K')";
+            return _cDAL.ExecuteNonQuery(sql);
+        }
+
+
         //chuyển billing
         public DataTable getTong_ChuyenBilling(string Nam, string Ky)
         {
-            string sql = "";
-            if (Ky == "1")
-                sql = "select *"
-                            + " ,TongHD=(select COUNT(*) from server9.HOADON_TA.dbo.HOADON where NAM=t1.Nam-1 and KY=12 and DOT=t1.Dot)"
-                            + " ,TongTieuThu=(select SUM(TieuThuMoi) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
-                            + " ,TongHDChuaChuyen=''"
-                            + " ,CreateDateChuyen=''"
-                            + " from"
-                            + " (select Nam=SUBSTRING(BillID,0,5)"
-                            + " ,Ky=SUBSTRING(BillID,5,2)"
-                            + " ,Dot=SUBSTRING(BillID,7,2)"
-                            + " ,BillID=BillID"
-                            + " ,Chot=case when izDS is null then 'false' else 'true' end"
-                            + " from BillState where BillID like '" + Nam + Ky + "%')t1";
-            else
-                sql = "select *"
-                        + " ,TongHD=(select COUNT(*) from server9.HOADON_TA.dbo.HOADON where NAM=t1.Nam and KY=t1.Ky-1 and DOT=t1.Dot)"
+            string sql = "select *"
+                        + " ,TongHD=(select COUNT(*) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
                         + " ,TongTieuThu=(select SUM(TieuThuMoi) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
                         + " ,TongHDChuaChuyen=''"
                         + " ,CreateDateChuyen=''"
@@ -321,7 +326,7 @@ namespace DocSo_PC.DAL.Doi
         public DataTable getDS_ChuyenBilling(string Nam, string Ky, string Dot)
         {
             string sql = "SELECT DocSoID,DanhBa,CSCu,CASE WHEN LEFT(CodeMoi, 1) = 'F' OR LEFT(CodeMoi, 1) = '6' THEN TieuThuMoi ELSE CSMOI END AS CSMoi,TieuThuMoi,CASE WHEN LEFT(CodeMoi,1) = '4' THEN '4' ELSE CodeMoi END AS CodeMoi,MLT2,TTDHNMoi"
-                        + ",DenNgay=CONVERT(varchar(10),DenNgay,103),Nam,Ky,Dot FROM DocSo WHERE Nam=" + Nam + " and Ky='" + Ky + "' AND Dot='" + Dot + "'";
+                        + ",DenNgay=CONVERT(varchar(10),DenNgay,103),Nam,Ky,Dot FROM DocSo WHERE Nam=" + Nam + " and Ky='" + Ky + "' AND Dot='" + Dot + "' order by MLT2 asc";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 

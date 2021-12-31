@@ -10,6 +10,7 @@ using DocSo_PC.DAL.Doi;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using DocSo_PC.DAL;
+using DocSo_PC.wrBilling;
 using DocSo_PC.wrDHN;
 
 namespace DocSo_PC.GUI.ToTruong
@@ -23,6 +24,7 @@ namespace DocSo_PC.GUI.ToTruong
         CMayDS _cMayDS = new CMayDS();
         CDHN _cDHN = new CDHN();
         DocSo _docso = null;
+        wsBilling wsBilling = new wsBilling();
         wsDHN wsDHN = new wsDHN();
         bool _flagLoadFirst = false;
 
@@ -395,6 +397,64 @@ namespace DocSo_PC.GUI.ToTruong
                 {
                     txtTieuThu.Text = _cDocSo.tinhCodeTieuThu(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtCSM.Text.Trim())).ToString();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDieuChinhXuat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        if (_cDocSo.checkChot_BillState(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString()) == true)
+                        {
+                            MessageBox.Show("Năm " + cmbNam.SelectedValue.ToString() + " Kỳ " + cmbKy.SelectedItem.ToString() + " Đợt " + cmbDot.SelectedItem.ToString() + " đã chuyển billing", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        DataTable dt=new DataTable();
+                        switch (cmbDieuChinhXuat.SelectedItem.ToString())
+                        {
+                            case "Điều chỉnh Code 5N, 5K":
+                                dt = _cDocSo.getDS_Code5K5N(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
+                                break;
+                            default:
+                                break;
+                        }
+                        if (dt != null && dt.Rows.Count > 0)
+                        {
+                            //Tạo các đối tượng Excel
+                            Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                            Microsoft.Office.Interop.Excel.Workbooks oBooks;
+                            Microsoft.Office.Interop.Excel.Sheets oSheets;
+                            Microsoft.Office.Interop.Excel.Workbook oBook;
+                            Microsoft.Office.Interop.Excel.Worksheet oSheet;
+                            //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
+
+                            //Tạo mới một Excel WorkBook 
+                            oExcel.Visible = true;
+                            oExcel.DisplayAlerts = false;
+                            //khai báo số lượng sheet
+                            oExcel.Application.SheetsInNewWorkbook = 1;
+                            oBooks = oExcel.Workbooks;
+
+                            oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                            oSheets = oBook.Worksheets;
+                            oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+
+                            _cDocSo.XuatExcel(dt, oSheet, "5K,5N");
+                            if (_cDocSo.updateDS_Code5K5N(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString()) == true)
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using DocSo_PC.DAL.Doi;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
-using DocSo_PC.wrDHN;
+using DocSo_PC.wrBilling;
 
 
 namespace DocSo_PC.GUI.Doi
@@ -18,8 +18,8 @@ namespace DocSo_PC.GUI.Doi
     {
         string _mnu = "mnuChuyenBilling";
         CDocSo _cDocSo = new CDocSo();
-        //CChuyenBilling _cChuyenBilling = new CChuyenBilling();
-        wsDHN wsDHN = new wsDHN();
+        CChuyenBilling _cChuyenBilling = new CChuyenBilling();
+        wsBilling wsDHN = new wsBilling();
 
         public frmChuyenBilling()
         {
@@ -107,6 +107,7 @@ namespace DocSo_PC.GUI.Doi
 
         private void dgvDanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            string index = "";
             try
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
@@ -115,23 +116,27 @@ namespace DocSo_PC.GUI.Doi
                     {
                         if (MessageBox.Show("Bạn có chắc chắn Chuyển Billing Năm " + dgvDanhSach["Nam", e.RowIndex].Value.ToString() + " Kỳ " + dgvDanhSach["Ky", e.RowIndex].Value.ToString() + " Đợt " + dgvDanhSach["Dot", e.RowIndex].Value.ToString() + "?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            //if (_cDocSo.checkChot_BillState(dgvDanhSach["BillID", e.RowIndex].Value.ToString()) == false)
-                            //{
-                            //    MessageBox.Show("Năm " + dgvDanhSach["Nam", e.RowIndex].Value.ToString() + " Kỳ " + dgvDanhSach["Ky", e.RowIndex].Value.ToString() + " Đợt " + dgvDanhSach["Đợt", e.RowIndex].Value.ToString() + " chưa Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            //    return;
-                            //}
-                            //int i = 1;
-                            //DataTable dt = _cDocSo.getDS_ChuyenBilling(dgvDanhSach["Nam", e.RowIndex].Value.ToString(), dgvDanhSach["Ky", e.RowIndex].Value.ToString(), dgvDanhSach["Dot", e.RowIndex].Value.ToString());
-                            //progressBar.Minimum = 0;
-                            //progressBar.Maximum = dt.Rows.Count;
-                            //int count = 0;
-                            //foreach (DataRow item in dt.Rows)
-                            //{
-                            //    progressBar.Value = i++;
-                            //    if (wsDHN.insertBilling(item["DocSoID"].ToString(), "tanho@2022") == true)
-                            //        count++;
-                            //}
-                            //MessageBox.Show("Đã chuyển xong " + count, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (_cDocSo.checkChot_BillState(dgvDanhSach["BillID", e.RowIndex].Value.ToString()) == false)
+                            {
+                                MessageBox.Show("Năm " + dgvDanhSach["Nam", e.RowIndex].Value.ToString() + " Kỳ " + dgvDanhSach["Ky", e.RowIndex].Value.ToString() + " Đợt " + dgvDanhSach["Đợt", e.RowIndex].Value.ToString() + " chưa Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            int i = 1;
+                            DataTable dt = _cDocSo.getDS_ChuyenBilling(dgvDanhSach["Nam", e.RowIndex].Value.ToString(), dgvDanhSach["Ky", e.RowIndex].Value.ToString(), dgvDanhSach["Dot", e.RowIndex].Value.ToString());
+                            progressBar.Minimum = 0;
+                            progressBar.Maximum = dt.Rows.Count;
+                            int count = 0;
+                            System.IO.StreamWriter writer = new System.IO.StreamWriter(@"C:\\DocSoBilling.txt");
+                            foreach (DataRow item in dt.Rows)
+                            {
+                                index = item["DanhBa"].ToString();
+                                progressBar.Value = i++;
+                                writer.WriteLine(i.ToString() + "," + item["DanhBa"].ToString());
+                                if (wsDHN.insertBilling(item["DocSoID"].ToString(), "tanho@2022") == true)
+                                //if (_cChuyenBilling.insertBilling(item) == true)
+                                    count++;
+                            }
+                            MessageBox.Show("Đã chuyển xong " + count, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -140,8 +145,16 @@ namespace DocSo_PC.GUI.Doi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "\n" + index, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dgvDanhSach.AutoGenerateColumns = true;
+            dgvDanhSach.DataSource = _cChuyenBilling.getDS_Code();
+        }
+
+
     }
 }

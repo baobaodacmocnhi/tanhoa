@@ -298,6 +298,16 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<int> _SoTienGiam;
 		
+		private System.Nullable<int> _ThueGTGT_TDVTN;
+		
+		private System.Nullable<int> _LNTTC;
+		
+		private System.Nullable<int> _LNTTM;
+		
+		private System.Nullable<int> _PBVMT2021;
+		
+		private System.Nullable<int> _TDVTN2022;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -520,6 +530,16 @@ namespace DocSo_PC.LinQ
     partial void OnBaoCaoThueChanged();
     partial void OnSoTienGiamChanging(System.Nullable<int> value);
     partial void OnSoTienGiamChanged();
+    partial void OnThueGTGT_TDVTNChanging(System.Nullable<int> value);
+    partial void OnThueGTGT_TDVTNChanged();
+    partial void OnLNTTCChanging(System.Nullable<int> value);
+    partial void OnLNTTCChanged();
+    partial void OnLNTTMChanging(System.Nullable<int> value);
+    partial void OnLNTTMChanged();
+    partial void OnPBVMT2021Changing(System.Nullable<int> value);
+    partial void OnPBVMT2021Changed();
+    partial void OnTDVTN2022Changing(System.Nullable<int> value);
+    partial void OnTDVTN2022Changed();
     #endregion
 		
 		public HOADON()
@@ -2703,6 +2723,106 @@ namespace DocSo_PC.LinQ
 					this._SoTienGiam = value;
 					this.SendPropertyChanged("SoTienGiam");
 					this.OnSoTienGiamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThueGTGT_TDVTN", DbType="Int")]
+		public System.Nullable<int> ThueGTGT_TDVTN
+		{
+			get
+			{
+				return this._ThueGTGT_TDVTN;
+			}
+			set
+			{
+				if ((this._ThueGTGT_TDVTN != value))
+				{
+					this.OnThueGTGT_TDVTNChanging(value);
+					this.SendPropertyChanging();
+					this._ThueGTGT_TDVTN = value;
+					this.SendPropertyChanged("ThueGTGT_TDVTN");
+					this.OnThueGTGT_TDVTNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LNTTC", DbType="Int")]
+		public System.Nullable<int> LNTTC
+		{
+			get
+			{
+				return this._LNTTC;
+			}
+			set
+			{
+				if ((this._LNTTC != value))
+				{
+					this.OnLNTTCChanging(value);
+					this.SendPropertyChanging();
+					this._LNTTC = value;
+					this.SendPropertyChanged("LNTTC");
+					this.OnLNTTCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LNTTM", DbType="Int")]
+		public System.Nullable<int> LNTTM
+		{
+			get
+			{
+				return this._LNTTM;
+			}
+			set
+			{
+				if ((this._LNTTM != value))
+				{
+					this.OnLNTTMChanging(value);
+					this.SendPropertyChanging();
+					this._LNTTM = value;
+					this.SendPropertyChanged("LNTTM");
+					this.OnLNTTMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PBVMT2021", DbType="Int")]
+		public System.Nullable<int> PBVMT2021
+		{
+			get
+			{
+				return this._PBVMT2021;
+			}
+			set
+			{
+				if ((this._PBVMT2021 != value))
+				{
+					this.OnPBVMT2021Changing(value);
+					this.SendPropertyChanging();
+					this._PBVMT2021 = value;
+					this.SendPropertyChanged("PBVMT2021");
+					this.OnPBVMT2021Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TDVTN2022", DbType="Int")]
+		public System.Nullable<int> TDVTN2022
+		{
+			get
+			{
+				return this._TDVTN2022;
+			}
+			set
+			{
+				if ((this._TDVTN2022 != value))
+				{
+					this.OnTDVTN2022Changing(value);
+					this.SendPropertyChanging();
+					this._TDVTN2022 = value;
+					this.SendPropertyChanged("TDVTN2022");
+					this.OnTDVTN2022Changed();
 				}
 			}
 		}
