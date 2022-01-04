@@ -165,6 +165,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getDS_Nam">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDS_NamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDS_NamResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="SendNotificationToClient">
         <s:complexType>
           <s:sequence>
@@ -1051,6 +1061,12 @@
   <wsdl:message name="getDS_NhanVienSoapOut">
     <wsdl:part name="parameters" element="tns:getDS_NhanVienResponse" />
   </wsdl:message>
+  <wsdl:message name="getDS_NamSoapIn">
+    <wsdl:part name="parameters" element="tns:getDS_Nam" />
+  </wsdl:message>
+  <wsdl:message name="getDS_NamSoapOut">
+    <wsdl:part name="parameters" element="tns:getDS_NamResponse" />
+  </wsdl:message>
   <wsdl:message name="SendNotificationToClientSoapIn">
     <wsdl:part name="parameters" element="tns:SendNotificationToClient" />
   </wsdl:message>
@@ -1382,6 +1398,10 @@
       <wsdl:input message="tns:getDS_NhanVienSoapIn" />
       <wsdl:output message="tns:getDS_NhanVienSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getDS_Nam">
+      <wsdl:input message="tns:getDS_NamSoapIn" />
+      <wsdl:output message="tns:getDS_NamSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="SendNotificationToClient">
       <wsdl:input message="tns:SendNotificationToClientSoapIn" />
       <wsdl:output message="tns:SendNotificationToClientSoapOut" />
@@ -1674,6 +1694,15 @@
     </wsdl:operation>
     <wsdl:operation name="getDS_NhanVien">
       <soap:operation soapAction="http://tempuri.org/getDS_NhanVien" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS_Nam">
+      <soap:operation soapAction="http://tempuri.org/getDS_Nam" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2208,6 +2237,15 @@
     </wsdl:operation>
     <wsdl:operation name="getDS_NhanVien">
       <soap12:operation soapAction="http://tempuri.org/getDS_NhanVien" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS_Nam">
+      <soap12:operation soapAction="http://tempuri.org/getDS_Nam" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -9948,7 +9948,7 @@ namespace ThuTien.DAL.Doi
         public DataTable GetDSTon_DieuChinhMLT(string DanhBo, string MLT_Moi)
         {
             var query = from item in _db.HOADONs
-                        where item.DANHBA == DanhBo && item.MALOTRINH != MLT_Moi && item.NGAYGIAITRACH == null
+                        where item.DANHBA == DanhBo && item.MALOTRINH != MLT_Moi && item.NGAYGIAITRACH == null && item.MaNV_DangNgan == null
                         select new
                         {
                             MaHD = item.ID_HOADON,

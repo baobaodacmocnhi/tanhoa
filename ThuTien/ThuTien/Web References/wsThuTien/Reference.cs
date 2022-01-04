@@ -53,6 +53,8 @@ namespace ThuTien.wsThuTien {
         
         private System.Threading.SendOrPostCallback getDS_NhanVienOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getDS_NamOperationCompleted;
+        
         private System.Threading.SendOrPostCallback SendNotificationToClientOperationCompleted;
         
         private System.Threading.SendOrPostCallback getDSHoaDonTon_NhanVienOperationCompleted;
@@ -220,6 +222,9 @@ namespace ThuTien.wsThuTien {
         
         /// <remarks/>
         public event getDS_NhanVienCompletedEventHandler getDS_NhanVienCompleted;
+        
+        /// <remarks/>
+        public event getDS_NamCompletedEventHandler getDS_NamCompleted;
         
         /// <remarks/>
         public event SendNotificationToClientCompletedEventHandler SendNotificationToClientCompleted;
@@ -721,6 +726,33 @@ namespace ThuTien.wsThuTien {
             if ((this.getDS_NhanVienCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getDS_NhanVienCompleted(this, new getDS_NhanVienCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_Nam", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getDS_Nam() {
+            object[] results = this.Invoke("getDS_Nam", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDS_NamAsync() {
+            this.getDS_NamAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getDS_NamAsync(object userState) {
+            if ((this.getDS_NamOperationCompleted == null)) {
+                this.getDS_NamOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_NamOperationCompleted);
+            }
+            this.InvokeAsync("getDS_Nam", new object[0], this.getDS_NamOperationCompleted, userState);
+        }
+        
+        private void OngetDS_NamOperationCompleted(object arg) {
+            if ((this.getDS_NamCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDS_NamCompleted(this, new getDS_NamCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2848,6 +2880,32 @@ namespace ThuTien.wsThuTien {
         private object[] results;
         
         internal getDS_NhanVienCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getDS_NamCompletedEventHandler(object sender, getDS_NamCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getDS_NamCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getDS_NamCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

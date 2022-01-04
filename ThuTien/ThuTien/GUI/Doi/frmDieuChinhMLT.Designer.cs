@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCapNhat = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnChonFile
@@ -142,12 +143,22 @@
             this.btnCapNhat.UseVisualStyleBackColor = true;
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(93, 2);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(227, 13);
+            this.label3.TabIndex = 77;
+            this.label3.Text = "File Excel (cột 1 là Danh Bộ, cột 2 là MLT Mới)";
+            // 
             // frmDieuChinhMLT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(873, 558);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCapNhat);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -177,5 +188,6 @@
         private System.Windows.Forms.ColumnHeader SoHoaDon_B;
         private System.Windows.Forms.ColumnHeader Ky_B;
         private System.Windows.Forms.ColumnHeader MLT_B_Moi;
+        private System.Windows.Forms.Label label3;
     }
 }
