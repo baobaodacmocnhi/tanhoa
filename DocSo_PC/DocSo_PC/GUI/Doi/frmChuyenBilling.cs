@@ -126,12 +126,12 @@ namespace DocSo_PC.GUI.Doi
                             progressBar.Minimum = 0;
                             progressBar.Maximum = dt.Rows.Count;
                             int count = 0;
-                            System.IO.StreamWriter writer = new System.IO.StreamWriter(@"C:\\DocSoBilling.txt");
+                            //System.IO.StreamWriter writer = new System.IO.StreamWriter(@"C:\\DocSoBilling.txt");
                             foreach (DataRow item in dt.Rows)
                             {
                                 index = item["DanhBa"].ToString();
                                 progressBar.Value = i++;
-                                writer.WriteLine(i.ToString() + "," + item["DanhBa"].ToString());
+                                //writer.WriteLine(i.ToString() + "," + item["DanhBa"].ToString());
                                 if (wsDHN.insertBilling(item["DocSoID"].ToString(), "tanho@2022") == true)
                                 //if (_cChuyenBilling.insertBilling(item) == true)
                                     count++;
