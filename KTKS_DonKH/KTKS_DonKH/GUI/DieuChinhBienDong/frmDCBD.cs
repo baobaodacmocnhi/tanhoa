@@ -122,7 +122,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 sohoadon = hoadon.SoHoaDonCu;
             else
                 sohoadon = hoadon.SOHOADON;
-            if (hoadon.PHI.Value == 0 && hoadon.TIEUTHU.Value != 0 && _cDCBD.checkExist_HoaDon(sohoadon)==false)
+            if (hoadon.PHI.Value == 0 && hoadon.TIEUTHU.Value != 0 && _cDCBD.checkExist_HoaDon(sohoadon) == false)
                 lbKhongTinhPhiBVMT.Visible = true;
             else
                 lbKhongTinhPhiBVMT.Visible = false;
@@ -135,7 +135,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDieuChinh.Rows[0].DefaultCellStyle.Font = new Font(dgvDSDieuChinh.DefaultCellStyle.Font, FontStyle.Bold);
             }
             LoadTongNK();
-            if(_cDHN.CheckExist(hoadon.DANHBA)==false)
+            if (_cDHN.CheckExist(hoadon.DANHBA) == false)
                 MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
@@ -1001,7 +1001,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             MessageBox.Show("Đã có Chuyển Đọc Số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                         var transactionOptions = new TransactionOptions();
+                        var transactionOptions = new TransactionOptions();
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
@@ -1686,8 +1686,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dr["KhongBD"] = "Gia Hạn Nhập Cư";
                         else
                         {
-                            dr["ChucVu"] = _ctdcbd.ChucVu;
-                            dr["NguoiKy"] = _ctdcbd.NguoiKy;
+                            //dr["ChucVu"] = _ctdcbd.ChucVu;
+                            //dr["NguoiKy"] = _ctdcbd.NguoiKy;
+                            dr["ChucVu"] = "TUQ GIÁM ĐỐC\n" + CTaiKhoan.ChucVu.ToUpper().Replace("PHÒNG","")+ CTaiKhoan.TenPhong.ToUpper();
+                            dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
                         }
 
             dsBaoCao.Tables["DCBD"].Rows.Add(dr);

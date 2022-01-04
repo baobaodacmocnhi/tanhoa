@@ -623,8 +623,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 dr["KhongBD"] = "Gia Hạn Nhập Cư";
                                             else
                                             {
-                                                dr["ChucVu"] = ctdcbd.ChucVu;
-                                                dr["NguoiKy"] = ctdcbd.NguoiKy;
+                                                //dr["ChucVu"] = ctdcbd.ChucVu;
+                                                //dr["NguoiKy"] = ctdcbd.NguoiKy;
+                                                dr["ChucVu"] = "TUQ GIÁM ĐỐC\n" + CTaiKhoan.ChucVu.ToUpper().Replace("PHÒNG", "") + CTaiKhoan.TenPhong.ToUpper();
+                                                dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
                                             }
 
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
