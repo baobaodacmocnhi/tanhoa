@@ -108,6 +108,10 @@
             this.chkTyLe = new System.Windows.Forms.CheckBox();
             this.chkDieuChinhGia2 = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtPhiBVMTThue_End = new System.Windows.Forms.TextBox();
+            this.txtPhiBVMTThue_Start = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.txtPhiBVMTThue_BD = new System.Windows.Forms.TextBox();
             this.btnThem = new System.Windows.Forms.Button();
             this.chkKhauTru = new System.Windows.Forms.CheckBox();
             this.txtSoTienKhauTru = new System.Windows.Forms.TextBox();
@@ -382,7 +386,7 @@
             // 
             // txtTieuThu_Start
             // 
-            this.txtTieuThu_Start.Location = new System.Drawing.Point(95, 40);
+            this.txtTieuThu_Start.Location = new System.Drawing.Point(80, 40);
             this.txtTieuThu_Start.Name = "txtTieuThu_Start";
             this.txtTieuThu_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTieuThu_Start.Size = new System.Drawing.Size(100, 22);
@@ -400,38 +404,38 @@
             // 
             // txtTienNuoc_Start
             // 
-            this.txtTienNuoc_Start.Location = new System.Drawing.Point(201, 40);
+            this.txtTienNuoc_Start.Location = new System.Drawing.Point(186, 40);
             this.txtTienNuoc_Start.Name = "txtTienNuoc_Start";
             this.txtTienNuoc_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTienNuoc_Start.Size = new System.Drawing.Size(100, 22);
             this.txtTienNuoc_Start.TabIndex = 7;
             this.txtTienNuoc_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTienNuoc_Start.TextChanged += new System.EventHandler(this.txtTienNuoc_Start_TextChanged);
+            this.txtTienNuoc_Start.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTienNuoc_Start_KeyUp);
             // 
             // txtThueGTGT_Start
             // 
-            this.txtThueGTGT_Start.Location = new System.Drawing.Point(307, 40);
+            this.txtThueGTGT_Start.Location = new System.Drawing.Point(292, 40);
             this.txtThueGTGT_Start.Name = "txtThueGTGT_Start";
             this.txtThueGTGT_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtThueGTGT_Start.Size = new System.Drawing.Size(100, 22);
             this.txtThueGTGT_Start.TabIndex = 8;
             this.txtThueGTGT_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtThueGTGT_Start.TextChanged += new System.EventHandler(this.txtThueGTGT_Start_TextChanged);
+            this.txtThueGTGT_Start.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTienNuoc_Start_KeyUp);
             // 
             // txtPhiBVMT_Start
             // 
-            this.txtPhiBVMT_Start.Location = new System.Drawing.Point(413, 40);
+            this.txtPhiBVMT_Start.Location = new System.Drawing.Point(398, 40);
             this.txtPhiBVMT_Start.Name = "txtPhiBVMT_Start";
             this.txtPhiBVMT_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtPhiBVMT_Start.Size = new System.Drawing.Size(100, 22);
             this.txtPhiBVMT_Start.TabIndex = 9;
             this.txtPhiBVMT_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPhiBVMT_Start.TextChanged += new System.EventHandler(this.txtPhiBVMT_Start_TextChanged);
+            this.txtPhiBVMT_Start.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTienNuoc_Start_KeyUp);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(114, 20);
+            this.label12.Location = new System.Drawing.Point(99, 20);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(61, 16);
             this.label12.TabIndex = 0;
@@ -440,7 +444,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(216, 20);
+            this.label13.Location = new System.Drawing.Point(201, 20);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(70, 16);
             this.label13.TabIndex = 1;
@@ -449,7 +453,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(318, 20);
+            this.label14.Location = new System.Drawing.Point(303, 20);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(80, 16);
             this.label14.TabIndex = 2;
@@ -458,7 +462,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(430, 20);
+            this.label15.Location = new System.Drawing.Point(415, 20);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(68, 16);
             this.label15.TabIndex = 3;
@@ -467,7 +471,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(531, 20);
+            this.label16.Location = new System.Drawing.Point(622, 20);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(75, 16);
             this.label16.TabIndex = 4;
@@ -475,62 +479,58 @@
             // 
             // txtTongCong_Start
             // 
-            this.txtTongCong_Start.Location = new System.Drawing.Point(519, 40);
+            this.txtTongCong_Start.Location = new System.Drawing.Point(610, 40);
             this.txtTongCong_Start.Name = "txtTongCong_Start";
             this.txtTongCong_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTongCong_Start.Size = new System.Drawing.Size(100, 22);
             this.txtTongCong_Start.TabIndex = 10;
             this.txtTongCong_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTongCong_Start.TextChanged += new System.EventHandler(this.txtTongCong_Start_TextChanged);
+            this.txtTongCong_Start.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTienNuoc_Start_KeyUp);
             // 
             // txtTongCong_BD
             // 
             this.txtTongCong_BD.ForeColor = System.Drawing.Color.Red;
-            this.txtTongCong_BD.Location = new System.Drawing.Point(519, 68);
+            this.txtTongCong_BD.Location = new System.Drawing.Point(610, 68);
             this.txtTongCong_BD.Name = "txtTongCong_BD";
             this.txtTongCong_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTongCong_BD.Size = new System.Drawing.Size(100, 22);
             this.txtTongCong_BD.TabIndex = 16;
             this.txtTongCong_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTongCong_BD.TextChanged += new System.EventHandler(this.txtTongCong_BD_TextChanged);
             // 
             // txtPhiBVMT_BD
             // 
             this.txtPhiBVMT_BD.ForeColor = System.Drawing.Color.Red;
-            this.txtPhiBVMT_BD.Location = new System.Drawing.Point(413, 68);
+            this.txtPhiBVMT_BD.Location = new System.Drawing.Point(398, 68);
             this.txtPhiBVMT_BD.Name = "txtPhiBVMT_BD";
             this.txtPhiBVMT_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtPhiBVMT_BD.Size = new System.Drawing.Size(100, 22);
             this.txtPhiBVMT_BD.TabIndex = 15;
             this.txtPhiBVMT_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPhiBVMT_BD.TextChanged += new System.EventHandler(this.txtPhiBVMT_BD_TextChanged);
             // 
             // txtThueGTGT_BD
             // 
             this.txtThueGTGT_BD.ForeColor = System.Drawing.Color.Red;
-            this.txtThueGTGT_BD.Location = new System.Drawing.Point(307, 68);
+            this.txtThueGTGT_BD.Location = new System.Drawing.Point(292, 68);
             this.txtThueGTGT_BD.Name = "txtThueGTGT_BD";
             this.txtThueGTGT_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtThueGTGT_BD.Size = new System.Drawing.Size(100, 22);
             this.txtThueGTGT_BD.TabIndex = 14;
             this.txtThueGTGT_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtThueGTGT_BD.TextChanged += new System.EventHandler(this.txtThueGTGT_BD_TextChanged);
             // 
             // txtTienNuoc_BD
             // 
             this.txtTienNuoc_BD.ForeColor = System.Drawing.Color.Red;
-            this.txtTienNuoc_BD.Location = new System.Drawing.Point(201, 68);
+            this.txtTienNuoc_BD.Location = new System.Drawing.Point(186, 68);
             this.txtTienNuoc_BD.Name = "txtTienNuoc_BD";
             this.txtTienNuoc_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTienNuoc_BD.Size = new System.Drawing.Size(100, 22);
             this.txtTienNuoc_BD.TabIndex = 13;
             this.txtTienNuoc_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTienNuoc_BD.TextChanged += new System.EventHandler(this.txtTienNuoc_BD_TextChanged);
             // 
             // txtTieuThu_BD
             // 
             this.txtTieuThu_BD.ForeColor = System.Drawing.Color.Red;
-            this.txtTieuThu_BD.Location = new System.Drawing.Point(95, 68);
+            this.txtTieuThu_BD.Location = new System.Drawing.Point(80, 68);
             this.txtTieuThu_BD.Name = "txtTieuThu_BD";
             this.txtTieuThu_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTieuThu_BD.Size = new System.Drawing.Size(100, 22);
@@ -549,47 +549,47 @@
             // 
             // txtTongCong_End
             // 
-            this.txtTongCong_End.Location = new System.Drawing.Point(519, 96);
+            this.txtTongCong_End.Location = new System.Drawing.Point(610, 96);
             this.txtTongCong_End.Name = "txtTongCong_End";
             this.txtTongCong_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTongCong_End.Size = new System.Drawing.Size(100, 22);
             this.txtTongCong_End.TabIndex = 22;
             this.txtTongCong_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTongCong_End.TextChanged += new System.EventHandler(this.txtTongCong_End_TextChanged);
+            this.txtTongCong_End.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTongCong_End_KeyUp);
             // 
             // txtPhiBVMT_End
             // 
-            this.txtPhiBVMT_End.Location = new System.Drawing.Point(413, 96);
+            this.txtPhiBVMT_End.Location = new System.Drawing.Point(398, 96);
             this.txtPhiBVMT_End.Name = "txtPhiBVMT_End";
             this.txtPhiBVMT_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtPhiBVMT_End.Size = new System.Drawing.Size(100, 22);
             this.txtPhiBVMT_End.TabIndex = 21;
             this.txtPhiBVMT_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPhiBVMT_End.TextChanged += new System.EventHandler(this.txtPhiBVMT_End_TextChanged);
+            this.txtPhiBVMT_End.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTienNuoc_Start_KeyUp);
             // 
             // txtThueGTGT_End
             // 
-            this.txtThueGTGT_End.Location = new System.Drawing.Point(307, 96);
+            this.txtThueGTGT_End.Location = new System.Drawing.Point(292, 96);
             this.txtThueGTGT_End.Name = "txtThueGTGT_End";
             this.txtThueGTGT_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtThueGTGT_End.Size = new System.Drawing.Size(100, 22);
             this.txtThueGTGT_End.TabIndex = 20;
             this.txtThueGTGT_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtThueGTGT_End.TextChanged += new System.EventHandler(this.txtThueGTGT_End_TextChanged);
+            this.txtThueGTGT_End.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTienNuoc_Start_KeyUp);
             // 
             // txtTienNuoc_End
             // 
-            this.txtTienNuoc_End.Location = new System.Drawing.Point(201, 96);
+            this.txtTienNuoc_End.Location = new System.Drawing.Point(186, 96);
             this.txtTienNuoc_End.Name = "txtTienNuoc_End";
             this.txtTienNuoc_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTienNuoc_End.Size = new System.Drawing.Size(100, 22);
             this.txtTienNuoc_End.TabIndex = 19;
             this.txtTienNuoc_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTienNuoc_End.TextChanged += new System.EventHandler(this.txtTienNuoc_End_TextChanged);
+            this.txtTienNuoc_End.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTienNuoc_Start_KeyUp);
             // 
             // txtTieuThu_End
             // 
-            this.txtTieuThu_End.Location = new System.Drawing.Point(95, 96);
+            this.txtTieuThu_End.Location = new System.Drawing.Point(80, 96);
             this.txtTieuThu_End.Name = "txtTieuThu_End";
             this.txtTieuThu_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTieuThu_End.Size = new System.Drawing.Size(100, 22);
@@ -947,6 +947,10 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtPhiBVMTThue_End);
+            this.groupBox3.Controls.Add(this.txtPhiBVMTThue_Start);
+            this.groupBox3.Controls.Add(this.label45);
+            this.groupBox3.Controls.Add(this.txtPhiBVMTThue_BD);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.txtTieuThu_Start);
@@ -972,14 +976,53 @@
             this.groupBox3.Controls.Add(this.txtTieuThu_BD);
             this.groupBox3.Location = new System.Drawing.Point(2, 320);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(632, 129);
+            this.groupBox3.Size = new System.Drawing.Size(720, 129);
             this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết Quả Điều Chỉnh";
             // 
+            // txtPhiBVMTThue_End
+            // 
+            this.txtPhiBVMTThue_End.Location = new System.Drawing.Point(504, 96);
+            this.txtPhiBVMTThue_End.Name = "txtPhiBVMTThue_End";
+            this.txtPhiBVMTThue_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPhiBVMTThue_End.Size = new System.Drawing.Size(100, 22);
+            this.txtPhiBVMTThue_End.TabIndex = 26;
+            this.txtPhiBVMTThue_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPhiBVMTThue_End.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTienNuoc_Start_KeyUp);
+            // 
+            // txtPhiBVMTThue_Start
+            // 
+            this.txtPhiBVMTThue_Start.Location = new System.Drawing.Point(504, 40);
+            this.txtPhiBVMTThue_Start.Name = "txtPhiBVMTThue_Start";
+            this.txtPhiBVMTThue_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPhiBVMTThue_Start.Size = new System.Drawing.Size(100, 22);
+            this.txtPhiBVMTThue_Start.TabIndex = 24;
+            this.txtPhiBVMTThue_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPhiBVMTThue_Start.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTienNuoc_Start_KeyUp);
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(501, 20);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(110, 16);
+            this.label45.TabIndex = 23;
+            this.label45.Text = "Phí BVMT (Thuế)";
+            // 
+            // txtPhiBVMTThue_BD
+            // 
+            this.txtPhiBVMTThue_BD.ForeColor = System.Drawing.Color.Red;
+            this.txtPhiBVMTThue_BD.Location = new System.Drawing.Point(504, 68);
+            this.txtPhiBVMTThue_BD.Name = "txtPhiBVMTThue_BD";
+            this.txtPhiBVMTThue_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPhiBVMTThue_BD.Size = new System.Drawing.Size(100, 22);
+            this.txtPhiBVMTThue_BD.TabIndex = 25;
+            this.txtPhiBVMTThue_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(640, 363);
+            this.btnThem.Location = new System.Drawing.Point(728, 357);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 30;
@@ -1009,7 +1052,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(721, 394);
+            this.btnIn.Location = new System.Drawing.Point(809, 388);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(86, 25);
             this.btnIn.TabIndex = 34;
@@ -1123,7 +1166,7 @@
             // 
             // btnInA4
             // 
-            this.btnInA4.Location = new System.Drawing.Point(721, 425);
+            this.btnInA4.Location = new System.Drawing.Point(809, 419);
             this.btnInA4.Name = "btnInA4";
             this.btnInA4.Size = new System.Drawing.Size(86, 25);
             this.btnInA4.TabIndex = 35;
@@ -1196,7 +1239,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(640, 394);
+            this.btnSua.Location = new System.Drawing.Point(728, 388);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 31;
@@ -1206,7 +1249,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(640, 425);
+            this.btnXoa.Location = new System.Drawing.Point(728, 419);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 32;
@@ -1288,7 +1331,7 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Location = new System.Drawing.Point(721, 363);
+            this.btnInPhieu.Location = new System.Drawing.Point(809, 357);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(86, 25);
             this.btnInPhieu.TabIndex = 33;
@@ -1311,7 +1354,7 @@
             this.groupBox4.Controls.Add(this.label32);
             this.groupBox4.Controls.Add(this.dgvHinh);
             this.groupBox4.Controls.Add(this.btnChonFile);
-            this.groupBox4.Location = new System.Drawing.Point(813, 320);
+            this.groupBox4.Location = new System.Drawing.Point(813, 451);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(274, 135);
             this.groupBox4.TabIndex = 36;
@@ -1801,5 +1844,9 @@
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox txtKhauTru;
         private System.Windows.Forms.CheckBox chkCongThucTinh;
+        private System.Windows.Forms.TextBox txtPhiBVMTThue_End;
+        private System.Windows.Forms.TextBox txtPhiBVMTThue_Start;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.TextBox txtPhiBVMTThue_BD;
     }
 }
