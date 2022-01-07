@@ -8113,6 +8113,8 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _PhiBVMT_Start;
 		
+		private System.Nullable<int> _PhiBVMT_Thue_Start;
+		
 		private System.Nullable<int> _TongCong_Start;
 		
 		private string _ChiTietCu;
@@ -8171,6 +8173,8 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _PhiBVMT_BD;
 		
+		private System.Nullable<int> _PhiBVMT_Thue_BD;
+		
 		private System.Nullable<int> _TongCong_BD;
 		
 		private System.Nullable<int> _TienNuoc_End;
@@ -8178,6 +8182,8 @@ namespace ThuTien.LinQ
 		private System.Nullable<int> _ThueGTGT_End;
 		
 		private System.Nullable<int> _PhiBVMT_End;
+		
+		private string _PhiBVMT_Thue_End;
 		
 		private System.Nullable<int> _TongCong_End;
 		
@@ -8295,6 +8301,8 @@ namespace ThuTien.LinQ
     partial void OnThueGTGT_StartChanged();
     partial void OnPhiBVMT_StartChanging(System.Nullable<int> value);
     partial void OnPhiBVMT_StartChanged();
+    partial void OnPhiBVMT_Thue_StartChanging(System.Nullable<int> value);
+    partial void OnPhiBVMT_Thue_StartChanged();
     partial void OnTongCong_StartChanging(System.Nullable<int> value);
     partial void OnTongCong_StartChanged();
     partial void OnChiTietCuChanging(string value);
@@ -8353,6 +8361,8 @@ namespace ThuTien.LinQ
     partial void OnThueGTGT_BDChanged();
     partial void OnPhiBVMT_BDChanging(System.Nullable<int> value);
     partial void OnPhiBVMT_BDChanged();
+    partial void OnPhiBVMT_Thue_BDChanging(System.Nullable<int> value);
+    partial void OnPhiBVMT_Thue_BDChanged();
     partial void OnTongCong_BDChanging(System.Nullable<int> value);
     partial void OnTongCong_BDChanged();
     partial void OnTienNuoc_EndChanging(System.Nullable<int> value);
@@ -8361,6 +8371,8 @@ namespace ThuTien.LinQ
     partial void OnThueGTGT_EndChanged();
     partial void OnPhiBVMT_EndChanging(System.Nullable<int> value);
     partial void OnPhiBVMT_EndChanged();
+    partial void OnPhiBVMT_Thue_EndChanging(string value);
+    partial void OnPhiBVMT_Thue_EndChanged();
     partial void OnTongCong_EndChanging(System.Nullable<int> value);
     partial void OnTongCong_EndChanged();
     partial void OnChiTietMoiChanging(string value);
@@ -9055,6 +9067,26 @@ namespace ThuTien.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiBVMT_Thue_Start", DbType="Int")]
+		public System.Nullable<int> PhiBVMT_Thue_Start
+		{
+			get
+			{
+				return this._PhiBVMT_Thue_Start;
+			}
+			set
+			{
+				if ((this._PhiBVMT_Thue_Start != value))
+				{
+					this.OnPhiBVMT_Thue_StartChanging(value);
+					this.SendPropertyChanging();
+					this._PhiBVMT_Thue_Start = value;
+					this.SendPropertyChanged("PhiBVMT_Thue_Start");
+					this.OnPhiBVMT_Thue_StartChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongCong_Start", DbType="Int")]
 		public System.Nullable<int> TongCong_Start
 		{
@@ -9635,6 +9667,26 @@ namespace ThuTien.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiBVMT_Thue_BD", DbType="Int")]
+		public System.Nullable<int> PhiBVMT_Thue_BD
+		{
+			get
+			{
+				return this._PhiBVMT_Thue_BD;
+			}
+			set
+			{
+				if ((this._PhiBVMT_Thue_BD != value))
+				{
+					this.OnPhiBVMT_Thue_BDChanging(value);
+					this.SendPropertyChanging();
+					this._PhiBVMT_Thue_BD = value;
+					this.SendPropertyChanged("PhiBVMT_Thue_BD");
+					this.OnPhiBVMT_Thue_BDChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongCong_BD", DbType="Int")]
 		public System.Nullable<int> TongCong_BD
 		{
@@ -9711,6 +9763,26 @@ namespace ThuTien.LinQ
 					this._PhiBVMT_End = value;
 					this.SendPropertyChanged("PhiBVMT_End");
 					this.OnPhiBVMT_EndChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiBVMT_Thue_End", DbType="NChar(10)")]
+		public string PhiBVMT_Thue_End
+		{
+			get
+			{
+				return this._PhiBVMT_Thue_End;
+			}
+			set
+			{
+				if ((this._PhiBVMT_Thue_End != value))
+				{
+					this.OnPhiBVMT_Thue_EndChanging(value);
+					this.SendPropertyChanging();
+					this._PhiBVMT_Thue_End = value;
+					this.SendPropertyChanged("PhiBVMT_Thue_End");
+					this.OnPhiBVMT_Thue_EndChanged();
 				}
 			}
 		}

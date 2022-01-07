@@ -40,6 +40,8 @@ namespace ThuTien.GUI.QuanTri
             txtNam.Text = "";
             txtMaKemBamChi.Text = "";
             txtIDMobile.Text = "";
+            cmbTo.SelectedIndex = -1;
+            cmbNhom.SelectedIndex = -1;
             chkPhoGiamDoc.Checked = false;
             chkDoi.Checked = false;
             chkToTruong.Checked = false;
@@ -453,20 +455,26 @@ namespace ThuTien.GUI.QuanTri
             loaddgv();
         }
 
-        private void dgvNguoiDung_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void dgvNguoiDung_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            try
             {
-                if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "ActiveMobile")
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    TT_NguoiDung en = _cNguoiDung.GetByMaND(int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
-                    en.ActiveMobile = bool.Parse(dgvNguoiDung["ActiveMobile", e.RowIndex].Value.ToString());
-                    _cNguoiDung.Sua(en);
+                    if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "ActiveMobile")
+                    {
+                        TT_NguoiDung en = _cNguoiDung.GetByMaND(int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
+                        en.ActiveMobile = bool.Parse(dgvNguoiDung["ActiveMobile", e.RowIndex].Value.ToString());
+                        _cNguoiDung.Sua(en);
+                    }
                 }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
