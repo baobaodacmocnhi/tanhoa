@@ -8785,6 +8785,24 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
+        public DataTable getDSDangNgan_Sach(DateTime NgayGiaiTrach)
+        {
+            var query = from itemHD in _db.HOADONs
+                        where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.MaNV_DangNgan != null
+                        && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7)) && itemHD.SoHoaDonCu==null
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            DanhBo = itemHD.DANHBA,
+                            Nam = itemHD.NAM,
+                            Ky = itemHD.KY,
+                            SoPhatHanh = itemHD.SOPHATHANH,
+                            DangNgan = itemHD.DangNgan_ChuyenKhoan == true ? "10" : itemHD.DangNgan_Ton == true ? "TN" : itemHD.DangNgan_Quay == true ? "TQ" : "",
+                            NgayGiaiTrach = itemHD.NGAYGIAITRACH,
+                        };
+            return LINQToDataTable(query.ToList());
+        }
+
         public DataTable getDSDangNgan_DieuChinhHoaDon(DateTime NgayGiaiTrach)
         {
             var query = from itemHD in _db.HOADONs
@@ -8805,6 +8823,7 @@ namespace ThuTien.DAL.Doi
                             GiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN_DC),
                             ThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE_DC),
                             PhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI_DC),
+                            PhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.PHI_Thue_DC),
                         };
             return LINQToDataTable(query.ToList());
         }
@@ -8829,6 +8848,7 @@ namespace ThuTien.DAL.Doi
                             GiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN_DC),
                             ThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE_DC),
                             PhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI_DC),
+                            PhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.PHI_Thue_DC),
                         };
             return LINQToDataTable(query.ToList());
         }

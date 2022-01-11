@@ -54,6 +54,10 @@ namespace ThuTien.GUI.TongHop
                 textBox2.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.GIABAN_BD.Value);
                 textBox3.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.THUE_BD.Value);
                 textBox4.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.PHI_BD.Value);
+                if (_dchd.PHI_Thue_BD != null)
+                    textBox6.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.PHI_Thue_BD.Value);
+                else
+                    textBox6.Text = "0";
                 textBox5.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TONGCONG_BD.Value);
 
                 chkChuanThu1.Checked = _dchd.ChuanThu1;
@@ -93,6 +97,19 @@ namespace ThuTien.GUI.TongHop
                     txtPhiBVMT_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.PHI_DC.Value);
                     txtPhiBVMT_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.PHI_END.Value);
 
+                    if (_dchd.PHI_Thue_BD != null)
+                        txtPhiBVMT_Thue_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.PHI_Thue_BD.Value);
+                    else
+                        txtPhiBVMT_Thue_Start.Text = "0";
+                    if (_dchd.PHI_Thue_DC != null)
+                        txtPhiBVMT_Thue_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.PHI_Thue_DC.Value);
+                    else
+                        txtPhiBVMT_Thue_BD.Text = "0";
+                    if (_dchd.PHI_Thue_END != null)
+                        txtPhiBVMT_Thue_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.PHI_Thue_END.Value);
+                    else
+                        txtPhiBVMT_Thue_End.Text = "0";
+
                     txtTongCong_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TONGCONG_BD.Value);
                     txtTongCong_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TONGCONG_DC.Value);
                     txtTongCong_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TONGCONG_END.Value);
@@ -118,6 +135,10 @@ namespace ThuTien.GUI.TongHop
                 textBox2.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.GIABAN.Value);
                 textBox3.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.THUE.Value);
                 textBox4.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.PHI.Value);
+                if (_hoadon.ThueGTGT_TDVTN != null)
+                    textBox6.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.ThueGTGT_TDVTN.Value);
+                else
+                    textBox6.Text = "0";
                 textBox5.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _hoadon.TONGCONG.Value);
             }
         }
@@ -171,6 +192,19 @@ namespace ThuTien.GUI.TongHop
                 txtPhiBVMT_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Start.Value);
                 txtPhiBVMT_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_BD.Value);
                 txtPhiBVMT_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_End.Value);
+
+                if (_ctdchd.PhiBVMT_Start != null)
+                    txtPhiBVMT_Thue_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Thue_Start.Value);
+                else
+                    txtPhiBVMT_Thue_Start.Text = "0";
+                if (_ctdchd.PhiBVMT_BD != null)
+                    txtPhiBVMT_Thue_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Thue_BD.Value);
+                else
+                    txtPhiBVMT_Thue_BD.Text = "0";
+                if (_ctdchd.PhiBVMT_End != null)
+                    txtPhiBVMT_Thue_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Thue_End.Value);
+                else
+                    txtPhiBVMT_Thue_End.Text = "0";
 
                 txtTongCong_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_Start.Value);
                 txtTongCong_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_BD.Value);
@@ -249,6 +283,7 @@ namespace ThuTien.GUI.TongHop
                                     _dchd.GIABAN_BD = hd.GIABAN;
                                     _dchd.THUE_BD = hd.THUE;
                                     _dchd.PHI_BD = hd.PHI;
+                                    _dchd.PHI_Thue_BD = hd.ThueGTGT_TDVTN;
                                     _dchd.TONGCONG_BD = hd.TONGCONG;
                                 }
 
@@ -263,6 +298,8 @@ namespace ThuTien.GUI.TongHop
 
                                 _dchd.PHI_DC = _ctdchd.PhiBVMT_BD.Value;
                                 _dchd.PHI_END = _ctdchd.PhiBVMT_End.Value;
+                                    _dchd.PHI_Thue_DC = _ctdchd.PhiBVMT_Thue_BD;
+                                    _dchd.PHI_Thue_END = _ctdchd.PhiBVMT_Thue_End;
 
                                 _dchd.TONGCONG_DC = _ctdchd.TongCong_BD.Value;
                                 _dchd.TONGCONG_END = _ctdchd.TongCong_End.Value;
@@ -306,6 +343,9 @@ namespace ThuTien.GUI.TongHop
                                 _dchd.PHI_DC = decimal.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
                                 _dchd.PHI_END = decimal.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
 
+                                _dchd.PHI_Thue_DC = decimal.Parse(txtPhiBVMT_Thue_BD.Text.Trim().Replace(".", ""));
+                                _dchd.PHI_Thue_END = decimal.Parse(txtPhiBVMT_Thue_End.Text.Trim().Replace(".", ""));
+
                                 _dchd.TONGCONG_DC = decimal.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
                                 _dchd.TONGCONG_END = decimal.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
 
@@ -328,6 +368,7 @@ namespace ThuTien.GUI.TongHop
                                 hd.GIABAN = _dchd.GIABAN_END;
                                 hd.THUE = _dchd.THUE_END;
                                 hd.PHI = _dchd.PHI_END;
+                                hd.ThueGTGT_TDVTN = _dchd.PHI_Thue_END;
                                 hd.TONGCONG = _dchd.TONGCONG_END;
                                 if (_cHoaDon.Sua(hd))
                                 {
@@ -371,8 +412,9 @@ namespace ThuTien.GUI.TongHop
                                 dchd.DinhMucHN = (int)_hoadon.DinhMucHN;
                             dchd.TIEUTHU_BD = (int)_hoadon.TIEUTHU;
                             dchd.GIABAN_BD = _hoadon.GIABAN;
-                            dchd.PHI_BD = _hoadon.PHI;
                             dchd.THUE_BD = _hoadon.THUE;
+                            dchd.PHI_BD = _hoadon.PHI;
+                            dchd.PHI_Thue_BD = _hoadon.ThueGTGT_TDVTN;
                             dchd.TONGCONG_BD = _hoadon.TONGCONG;
                             dchd.NgayChan = dchd.NGAY_DC = DateTime.Now;
                             dchd.ChuanThu1 = chkChuanThu1.Checked;
@@ -408,6 +450,8 @@ namespace ThuTien.GUI.TongHop
                                 //_dchd.PHI_BD = _ctdchd.PhiBVMT_Start.Value;
                                 dchd.PHI_DC = _ctdchd.PhiBVMT_BD.Value;
                                 dchd.PHI_END = _ctdchd.PhiBVMT_End.Value;
+                                    dchd.PHI_Thue_DC = _ctdchd.PhiBVMT_Thue_BD;
+                                    dchd.PHI_Thue_END = _ctdchd.PhiBVMT_Thue_End;
 
                                 //_dchd.TONGCONG_BD = _ctdchd.TongCong_Start.Value;
                                 dchd.TONGCONG_DC = _ctdchd.TongCong_BD.Value;
@@ -465,6 +509,7 @@ namespace ThuTien.GUI.TongHop
                                 _hoadon.GIABAN = dchd.GIABAN_END;
                                 _hoadon.THUE = dchd.THUE_END;
                                 _hoadon.PHI = dchd.PHI_END;
+                                _hoadon.ThueGTGT_TDVTN = dchd.PHI_Thue_END;
                                 _hoadon.TONGCONG = dchd.TONGCONG_END;
                                 if (_cHoaDon.Sua(_hoadon))
                                 {
@@ -509,6 +554,7 @@ namespace ThuTien.GUI.TongHop
             lsdc.TIEUTHU_BD = dchd.TIEUTHU_BD;
             lsdc.GIABAN_BD = dchd.GIABAN_BD;
             lsdc.PHI_BD = dchd.PHI_BD;
+            lsdc.PHI_Thue_BD = dchd.PHI_Thue_BD;
             lsdc.THUE_BD = dchd.THUE_BD;
             lsdc.TONGCONG_BD = dchd.TONGCONG_BD;
 
@@ -526,6 +572,8 @@ namespace ThuTien.GUI.TongHop
 
             lsdc.PHI_DC = dchd.PHI_DC;
             lsdc.PHI_END = dchd.PHI_END;
+            lsdc.PHI_Thue_DC = dchd.PHI_Thue_DC;
+            lsdc.PHI_Thue_END = dchd.PHI_Thue_END;
 
             lsdc.TONGCONG_DC = dchd.TONGCONG_DC;
             lsdc.TONGCONG_END = dchd.TONGCONG_END;
@@ -602,8 +650,8 @@ namespace ThuTien.GUI.TongHop
                             dchd.DinhMucHN = (int)_hoadon.DinhMucHN;
                         dchd.TIEUTHU_BD = (int)_hoadon.TIEUTHU;
                         dchd.GIABAN_BD = _hoadon.GIABAN;
-                        dchd.PHI_BD = _hoadon.PHI;
                         dchd.THUE_BD = _hoadon.THUE;
+                        dchd.PHI_Thue_BD = _hoadon.ThueGTGT_TDVTN;
                         dchd.TONGCONG_BD = _hoadon.TONGCONG;
                         if (_cDCHD.Them(dchd))
                         {

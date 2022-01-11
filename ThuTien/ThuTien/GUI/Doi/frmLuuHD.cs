@@ -91,7 +91,7 @@ namespace ThuTien.GUI.Doi
                         foreach (string line in lines)
                         {
                             progressBar.Value = i++;
-                            //if(i==67)
+                            //if(i==11)
                             //    MessageBox.Show("","Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             string lineR = line.Replace("\",\"", "$").Replace("\"", "");
                             string[] contents = lineR.Split('$');
@@ -209,10 +209,20 @@ namespace ThuTien.GUI.Doi
                             if ((hoadon.NAM > 2019 || (hoadon.KY == 12 && hoadon.NAM == 2019)) && !string.IsNullOrWhiteSpace(contents[61]))
                                 hoadon.DinhMucHN = int.Parse(contents[61]);
                             //cột 62 là số tiền giảm trừ covid19
-                            if (contents.Length >= 63 && !string.IsNullOrWhiteSpace(contents[62]))
+                            if (!string.IsNullOrWhiteSpace(contents[62]))
                                 hoadon.SoTienGiam = int.Parse(contents[62]);
+                            if (!string.IsNullOrWhiteSpace(contents[63]))
+                                hoadon.ThueGTGT_TDVTN = int.Parse(contents[63]);
+                            if (!string.IsNullOrWhiteSpace(contents[64]))
+                                hoadon.LNTTC = int.Parse(contents[64]);
+                            if (!string.IsNullOrWhiteSpace(contents[65]))
+                                hoadon.LNTTM = int.Parse(contents[65]);
+                            if (!string.IsNullOrWhiteSpace(contents[66]))
+                                hoadon.PBVMT2021 = int.Parse(contents[66]);
+                            if (!string.IsNullOrWhiteSpace(contents[67]))
+                                hoadon.TDVTN2022 = int.Parse(contents[67]);
                             hoadon.MALOTRINH = hoadon.DOT.ToString("00") + hoadon.MAY + hoadon.STT;
-                           
+
                             //Nếu chưa có hóa đơn
                             if (!_cHoaDon.CheckExist(hoadon.DANHBA, hoadon.NAM, hoadon.KY))
                             {
@@ -526,6 +536,12 @@ namespace ThuTien.GUI.Doi
             hoadonCu.MST = hoadonMoi.MST;
             hoadonCu.MALOTRINH = hoadonMoi.MALOTRINH;
             hoadonCu.SoTienGiam = hoadonMoi.SoTienGiam;
+            hoadonCu.ThueGTGT_TDVTN = hoadonMoi.ThueGTGT_TDVTN;
+            hoadonCu.LNTTC = hoadonMoi.LNTTC;
+            hoadonCu.LNTTM = hoadonMoi.LNTTM;
+            hoadonCu.PBVMT2021 = hoadonMoi.PBVMT2021;
+            hoadonCu.TDVTN2022 = hoadonMoi.TDVTN2022;
+
         }
 
         private void btnSoSanhKyTruoc_Click(object sender, EventArgs e)

@@ -415,7 +415,7 @@
       <Column Name="TienNuoc_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ThueGTGT_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhiBVMT_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PhiBVMT_Thue_End" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="PhiBVMT_Thue_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TongCong_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ChiTietMoi" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="MaDCBD" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />

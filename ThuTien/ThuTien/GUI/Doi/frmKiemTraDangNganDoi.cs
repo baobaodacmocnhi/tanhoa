@@ -630,6 +630,10 @@ namespace ThuTien.GUI.Doi
                                         writer.Write(",\"" + item["GiaBan"] + "\"");
                                         writer.Write(",\"" + item["ThueGTGT"] + "\"");
                                         writer.Write(",\"" + item["PhiBVMT"] + "\"");
+                                        if (item["PhiBVMT_Thue"].ToString() != "")
+                                            writer.Write(",\"" + item["PhiBVMT_Thue"] + "\"");
+                                        else
+                                            writer.Write(",\"0\"");
                                         writer.WriteLine(",\"1\"");
                                     }
                                     else
@@ -643,8 +647,40 @@ namespace ThuTien.GUI.Doi
                                         writer.Write(",\"" + dtDC.Rows[0]["GiaBan"] + "\"");
                                         writer.Write(",\"" + dtDC.Rows[0]["ThueGTGT"] + "\"");
                                         writer.Write(",\"" + dtDC.Rows[0]["PhiBVMT"] + "\"");
+                                        if (dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                                            writer.Write(",\"" + dtDC.Rows[0]["PhiBVMT_Thue"] + "\"");
+                                        else
+                                            writer.Write(",\"0\"");
                                         writer.WriteLine(",\"1\"");
                                     }
+                                }
+                            MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
+                    if (dgvChotDangNgan.Columns[e.ColumnIndex].Name == "FileHDSach")
+                    {
+                        SaveFileDialog saveFileDialog = new SaveFileDialog();
+                        saveFileDialog.DefaultExt = "dat";
+                        saveFileDialog.Filter = "Text files (*.dat)|*.dat";
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan["ID", e.RowIndex].Value.ToString()));
+                            DataTable dt = _cHoaDon.getDSDangNgan_Sach(en.NgayChot.Value);
+
+                            using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                                foreach (DataRow item in dt.Rows)
+                                {
+                                    writer.Write("\"" + item["Nam"] + "\"");
+                                    writer.Write(",\"" + int.Parse(item["SoPhatHanh"].ToString()).ToString("00000000") + "\"");
+                                    writer.Write(",\"" + item["DangNgan"] + "\"");
+                                    writer.Write(",\"" + DateTime.Parse(item["NgayGiaiTrach"].ToString()).ToString("yyyyMMdd") + "\"");
+                                    writer.Write(",\"0\"");
+                                    writer.Write(",\"0\"");
+                                    writer.Write(",\"0\"");
+                                    writer.Write(",\"0\"");
+                                    writer.Write(",\"0\"");
+                                    writer.WriteLine(",\"1\"");
                                 }
                             MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -795,6 +831,10 @@ namespace ThuTien.GUI.Doi
                                         writer.Write(",\"" + item["GiaBan"] + "\"");
                                         writer.Write(",\"" + item["ThueGTGT"] + "\"");
                                         writer.Write(",\"" + item["PhiBVMT"] + "\"");
+                                        if (item["PhiBVMT_Thue"].ToString() != "")
+                                            writer.Write(",\"" + item["PhiBVMT_Thue"] + "\"");
+                                        else
+                                            writer.Write(",\"0\"");
                                         writer.WriteLine(",\"1\"");
                                     }
                                     else
@@ -808,6 +848,10 @@ namespace ThuTien.GUI.Doi
                                         writer.Write(",\"" + dtDC.Rows[0]["GiaBan"] + "\"");
                                         writer.Write(",\"" + dtDC.Rows[0]["ThueGTGT"] + "\"");
                                         writer.Write(",\"" + dtDC.Rows[0]["PhiBVMT"] + "\"");
+                                        if (item["PhiBVMT_Thue"].ToString() != "")
+                                            writer.Write(",\"" + dtDC.Rows[0]["PhiBVMT_Thue"] + "\"");
+                                        else
+                                            writer.Write(",\"0\"");
                                         writer.WriteLine(",\"1\"");
                                     }
                                 }
@@ -842,6 +886,10 @@ namespace ThuTien.GUI.Doi
                                         writer.Write(",\"" + item["GiaBan"] + "\"");
                                         writer.Write(",\"" + item["ThueGTGT"] + "\"");
                                         writer.Write(",\"" + item["PhiBVMT"] + "\"");
+                                        if (item["PhiBVMT_Thue"].ToString() != "")
+                                            writer.Write(",\"" + item["PhiBVMT_Thue"] + "\"");
+                                        else
+                                            writer.Write(",\"0\"");
                                         writer.WriteLine(",\"1\"");
                                     }
                                     else
@@ -855,6 +903,10 @@ namespace ThuTien.GUI.Doi
                                         writer.Write(",\"" + dtDC.Rows[0]["GiaBan"] + "\"");
                                         writer.Write(",\"" + dtDC.Rows[0]["ThueGTGT"] + "\"");
                                         writer.Write(",\"" + dtDC.Rows[0]["PhiBVMT"] + "\"");
+                                        if (item["PhiBVMT_Thue"].ToString() != "")
+                                            writer.Write(",\"" + dtDC.Rows[0]["PhiBVMT_Thue"] + "\"");
+                                        else
+                                            writer.Write(",\"0\"");
                                         writer.WriteLine(",\"1\"");
                                     }
                                 }
