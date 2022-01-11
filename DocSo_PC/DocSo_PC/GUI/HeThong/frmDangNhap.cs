@@ -61,7 +61,9 @@ namespace DocSo_PC.GUI.HeThong
                     {
                         CNguoiDung.MaTo = nguoidung.MaTo.Value;
                         CNguoiDung.TenTo = nguoidung.To.TenTo;
+                        if (_ct.get(nguoidung.MaTo.Value).TuMay!=null)
                         CNguoiDung.TuMayDS = _ct.get(nguoidung.MaTo.Value).TuMay.Value;
+                        if (_ct.get(nguoidung.MaTo.Value).DenMay != null)
                         CNguoiDung.DenMayDS = _ct.get(nguoidung.MaTo.Value).DenMay.Value;
                     }
                     else

@@ -34,6 +34,12 @@ namespace DocSo_PC.GUI.QuanTri
             txtHoTen.Text = "";
             txtTaiKhoan.Text = "";
             txtMatKhau.Text = "";
+            txtDienThoai.Text = "";
+            txtNam.Text = "";
+            txtMay.Text = "";
+            txtIDMobile.Text = "";
+            cmbTo.SelectedIndex = -1;
+            cmbNhom.SelectedIndex = -1;
             chkPhoGiamDoc.Checked = false;
             chkDoi.Checked = false;
             chkToTruong.Checked = false;
@@ -53,18 +59,7 @@ namespace DocSo_PC.GUI.QuanTri
 
         private void frmNguoiDung_Load(object sender, EventArgs e)
         {
-            if (CNguoiDung.Admin)
-            {
-                chkPhoGiamDoc.Visible = true;
-                chkAn.Visible = true;
-                _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDS_Admin());
-            }
-            else
-            {
-                chkPhoGiamDoc.Visible = false;
-                chkAn.Visible = false;
-                _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
-            }
+            loaddgv();
             dgvNguoiDung.AutoGenerateColumns = false;
 
             cmbTo.DataSource = _cTo.getDS();
@@ -80,6 +75,28 @@ namespace DocSo_PC.GUI.QuanTri
             dgvNguoiDung.DataSource = _blNguoiDung;
         }
 
+        public void loaddgv()
+        {
+            if (CNguoiDung.Admin)
+            {
+                chkPhoGiamDoc.Visible = true;
+                chkAn.Visible = true;
+                _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDS_Admin());
+            }
+            else
+                if (CNguoiDung.Doi)
+                {
+                    chkAn.Visible = true;
+                    _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDSExceptMaND_Doi(CNguoiDung.MaND));
+                }
+                else
+                {
+                    chkPhoGiamDoc.Visible = false;
+                    chkAn.Visible = false;
+                    _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
+                }
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
@@ -91,6 +108,8 @@ namespace DocSo_PC.GUI.QuanTri
                     nguoidung.DienThoai = txtDienThoai.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                    if (txtIDMobile.Text.Trim() != "")
+                        nguoidung.IDMobile = txtIDMobile.Text.Trim();
                     nguoidung.STT = _cNguoiDung.GetMaxSTT()+1;
                     if (!string.IsNullOrEmpty(txtNam.Text.Trim()))
                     {
@@ -147,6 +166,10 @@ namespace DocSo_PC.GUI.QuanTri
                     nguoidung.DienThoai = txtDienThoai.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                    if (txtIDMobile.Text.Trim() != "")
+                        nguoidung.IDMobile = txtIDMobile.Text.Trim();
+                    else
+                        nguoidung.IDMobile = null;
                     if (!string.IsNullOrEmpty(txtNam.Text.Trim()))
                         nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
                     nguoidung.MaTo = (int)cmbTo.SelectedValue;
@@ -226,6 +249,7 @@ namespace DocSo_PC.GUI.QuanTri
                     cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());
                 if (dgvNguoiDung["MaNhom", e.RowIndex].Value != null)
                     cmbNhom.SelectedValue = int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString());
+                if (dgvNguoiDung["May", e.RowIndex].Value != null)
                 txtMay.Text = dgvNguoiDung["May", e.RowIndex].Value.ToString();
                 chkPhoGiamDoc.Checked = bool.Parse(dgvNguoiDung["PhoGiamDoc", e.RowIndex].Value.ToString());
                 chkAn.Checked = bool.Parse(dgvNguoiDung["An", e.RowIndex].Value.ToString());
@@ -235,6 +259,10 @@ namespace DocSo_PC.GUI.QuanTri
                 chkDongNuoc.Checked = bool.Parse(dgvNguoiDung["DongNuoc", e.RowIndex].Value.ToString());
                 chkVanPhong.Checked = bool.Parse(dgvNguoiDung["VanPhong", e.RowIndex].Value.ToString());
                 chkChamCong.Checked = bool.Parse(dgvNguoiDung["ChamCong", e.RowIndex].Value.ToString());
+                if (dgvNguoiDung["IDMobile", e.RowIndex].Value != null)
+                    txtIDMobile.Text = dgvNguoiDung["IDMobile", e.RowIndex].Value.ToString();
+                else
+                    txtIDMobile.Text = "";
                 if (CNguoiDung.Admin)
                     gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(true, int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
                 else
@@ -396,6 +424,28 @@ namespace DocSo_PC.GUI.QuanTri
                     rowIndexFromMouseDown = dgvNguoiDung.SelectedRows[0].Index;
                     dgvNguoiDung.DoDragDrop(rw, DragDropEffects.Move);
                 }
+            }
+        }
+
+        private void dgvNguoiDung_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "ActiveMobile")
+                    {
+                        NguoiDung en = _cNguoiDung.GetByMaND(int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
+                        en.ActiveMobile = bool.Parse(dgvNguoiDung["ActiveMobile", e.RowIndex].Value.ToString());
+                        _cNguoiDung.Sua(en);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

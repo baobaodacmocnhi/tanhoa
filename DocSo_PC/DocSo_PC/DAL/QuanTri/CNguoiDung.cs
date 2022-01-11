@@ -240,6 +240,11 @@ namespace DocSo_PC.DAL.QuanTri
             return _db.NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0&&item.An==false && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
         }
 
+        public List<NguoiDung> GetDSExceptMaND_Doi(int MaND)
+        {
+            return _db.NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0 && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
+        }
+
         public List<NguoiDung> GetDS_Admin()
         {
             return _db.NguoiDungs.OrderBy(item => item.STT).ToList();

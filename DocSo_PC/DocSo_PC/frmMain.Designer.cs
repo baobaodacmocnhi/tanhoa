@@ -153,6 +153,7 @@
             this.mnuNhanVienDocSo.Name = "mnuNhanVienDocSo";
             this.mnuNhanVienDocSo.Size = new System.Drawing.Size(169, 22);
             this.mnuNhanVienDocSo.Text = "Nhân Viên Đọc Số";
+            this.mnuNhanVienDocSo.Visible = false;
             this.mnuNhanVienDocSo.Click += new System.EventHandler(this.mnuNhanVienDocSo_Click);
             // 
             // mnuDoi
