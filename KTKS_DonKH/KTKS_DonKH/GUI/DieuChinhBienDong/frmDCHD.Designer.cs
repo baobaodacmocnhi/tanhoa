@@ -108,10 +108,10 @@
             this.chkTyLe = new System.Windows.Forms.CheckBox();
             this.chkDieuChinhGia2 = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtPhiBVMTThue_End = new System.Windows.Forms.TextBox();
-            this.txtPhiBVMTThue_Start = new System.Windows.Forms.TextBox();
+            this.txtPhiBVMT_Thue_End = new System.Windows.Forms.TextBox();
+            this.txtPhiBVMT_Thue_Start = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
-            this.txtPhiBVMTThue_BD = new System.Windows.Forms.TextBox();
+            this.txtPhiBVMT_Thue_BD = new System.Windows.Forms.TextBox();
             this.btnThem = new System.Windows.Forms.Button();
             this.chkKhauTru = new System.Windows.Forms.CheckBox();
             this.txtSoTienKhauTru = new System.Windows.Forms.TextBox();
@@ -947,10 +947,10 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txtPhiBVMTThue_End);
-            this.groupBox3.Controls.Add(this.txtPhiBVMTThue_Start);
+            this.groupBox3.Controls.Add(this.txtPhiBVMT_Thue_End);
+            this.groupBox3.Controls.Add(this.txtPhiBVMT_Thue_Start);
             this.groupBox3.Controls.Add(this.label45);
-            this.groupBox3.Controls.Add(this.txtPhiBVMTThue_BD);
+            this.groupBox3.Controls.Add(this.txtPhiBVMT_Thue_BD);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.txtTieuThu_Start);
@@ -981,25 +981,25 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết Quả Điều Chỉnh";
             // 
-            // txtPhiBVMTThue_End
+            // txtPhiBVMT_Thue_End
             // 
-            this.txtPhiBVMTThue_End.Location = new System.Drawing.Point(504, 96);
-            this.txtPhiBVMTThue_End.Name = "txtPhiBVMTThue_End";
-            this.txtPhiBVMTThue_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtPhiBVMTThue_End.Size = new System.Drawing.Size(100, 22);
-            this.txtPhiBVMTThue_End.TabIndex = 26;
-            this.txtPhiBVMTThue_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPhiBVMTThue_End.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTienNuoc_Start_KeyUp);
+            this.txtPhiBVMT_Thue_End.Location = new System.Drawing.Point(504, 96);
+            this.txtPhiBVMT_Thue_End.Name = "txtPhiBVMT_Thue_End";
+            this.txtPhiBVMT_Thue_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPhiBVMT_Thue_End.Size = new System.Drawing.Size(100, 22);
+            this.txtPhiBVMT_Thue_End.TabIndex = 26;
+            this.txtPhiBVMT_Thue_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPhiBVMT_Thue_End.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTienNuoc_Start_KeyUp);
             // 
-            // txtPhiBVMTThue_Start
+            // txtPhiBVMT_Thue_Start
             // 
-            this.txtPhiBVMTThue_Start.Location = new System.Drawing.Point(504, 40);
-            this.txtPhiBVMTThue_Start.Name = "txtPhiBVMTThue_Start";
-            this.txtPhiBVMTThue_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtPhiBVMTThue_Start.Size = new System.Drawing.Size(100, 22);
-            this.txtPhiBVMTThue_Start.TabIndex = 24;
-            this.txtPhiBVMTThue_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPhiBVMTThue_Start.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTienNuoc_Start_KeyUp);
+            this.txtPhiBVMT_Thue_Start.Location = new System.Drawing.Point(504, 40);
+            this.txtPhiBVMT_Thue_Start.Name = "txtPhiBVMT_Thue_Start";
+            this.txtPhiBVMT_Thue_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPhiBVMT_Thue_Start.Size = new System.Drawing.Size(100, 22);
+            this.txtPhiBVMT_Thue_Start.TabIndex = 24;
+            this.txtPhiBVMT_Thue_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPhiBVMT_Thue_Start.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTienNuoc_Start_KeyUp);
             // 
             // label45
             // 
@@ -1010,15 +1010,15 @@
             this.label45.TabIndex = 23;
             this.label45.Text = "Phí BVMT (Thuế)";
             // 
-            // txtPhiBVMTThue_BD
+            // txtPhiBVMT_Thue_BD
             // 
-            this.txtPhiBVMTThue_BD.ForeColor = System.Drawing.Color.Red;
-            this.txtPhiBVMTThue_BD.Location = new System.Drawing.Point(504, 68);
-            this.txtPhiBVMTThue_BD.Name = "txtPhiBVMTThue_BD";
-            this.txtPhiBVMTThue_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtPhiBVMTThue_BD.Size = new System.Drawing.Size(100, 22);
-            this.txtPhiBVMTThue_BD.TabIndex = 25;
-            this.txtPhiBVMTThue_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPhiBVMT_Thue_BD.ForeColor = System.Drawing.Color.Red;
+            this.txtPhiBVMT_Thue_BD.Location = new System.Drawing.Point(504, 68);
+            this.txtPhiBVMT_Thue_BD.Name = "txtPhiBVMT_Thue_BD";
+            this.txtPhiBVMT_Thue_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPhiBVMT_Thue_BD.Size = new System.Drawing.Size(100, 22);
+            this.txtPhiBVMT_Thue_BD.TabIndex = 25;
+            this.txtPhiBVMT_Thue_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnThem
             // 
@@ -1844,9 +1844,9 @@
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox txtKhauTru;
         private System.Windows.Forms.CheckBox chkCongThucTinh;
-        private System.Windows.Forms.TextBox txtPhiBVMTThue_End;
-        private System.Windows.Forms.TextBox txtPhiBVMTThue_Start;
+        private System.Windows.Forms.TextBox txtPhiBVMT_Thue_End;
+        private System.Windows.Forms.TextBox txtPhiBVMT_Thue_Start;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.TextBox txtPhiBVMTThue_BD;
+        private System.Windows.Forms.TextBox txtPhiBVMT_Thue_BD;
     }
 }

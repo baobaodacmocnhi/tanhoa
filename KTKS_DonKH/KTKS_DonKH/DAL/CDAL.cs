@@ -140,6 +140,7 @@ namespace KTKS_DonKH.DAL
                 Connect();
                 command = new SqlCommand(sql, connection);
                 int rowsAffected = command.ExecuteNonQuery();
+                Disconnect();
                 if (rowsAffected >= 1)
                     return true;
                 else
@@ -185,7 +186,7 @@ namespace KTKS_DonKH.DAL
                 Connect();
                 command = new SqlCommand(sql, connection);
                 object result = command.ExecuteScalar();
-                //Disconnect();
+                Disconnect();
                 return result;
             }
             catch (Exception ex)

@@ -47,6 +47,23 @@ namespace KTKS_DonKH.DAL
             db.SubmitChanges();
         }
 
+        public object ExecuteQuery_ReturnOneValue(string sql)
+        {
+            try
+            {
+                Connect();
+                command = new SqlCommand(sql, connection);
+                object result = command.ExecuteScalar();
+                Disconnect();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Disconnect();
+                throw ex;
+            }
+        }
+
         public DataTable ExecuteQuery_DataTable(string sql)
         {
             this.Connect();
@@ -295,6 +312,8 @@ namespace KTKS_DonKH.DAL
 
             lsdc.PHI_DC = dchd.PHI_DC;
             lsdc.PHI_END = dchd.PHI_END;
+            lsdc.PHI_Thue_DC = dchd.PHI_Thue_DC;
+            lsdc.PHI_Thue_END = dchd.PHI_END;
 
             lsdc.TONGCONG_DC = dchd.TONGCONG_DC;
             lsdc.TONGCONG_END = dchd.TONGCONG_END;
@@ -328,11 +347,14 @@ namespace KTKS_DonKH.DAL
             return db.DIEUCHINH_HDs.Any(itemDC => itemDC.FK_HOADON == MaHD && itemDC.TONGCONG_END != null);
         }
 
-        public DataTable GetNam()
+        public DataTable getNam()
         {
             return ExecuteQuery_DataTable("select * from ViewGetNamHD order by ID desc");
         }
 
-
+        public string getBieuMau(string KyHieu)
+        {
+            return ExecuteQuery_ReturnOneValue("select BieuMau from TT_BieuMauHoaDon where KyHieu='" + KyHieu + "'").ToString();
+        }
     }
 }

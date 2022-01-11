@@ -45,7 +45,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbQuan_ThongKeDC.DisplayMember = "Name2";
             cmbQuan_ThongKeDC.ValueMember = "ID";
 
-            DataTable dtNam = _cThuTien.GetNam();
+            DataTable dtNam = _cThuTien.getNam();
             cmbNam.DataSource = dtNam;
             cmbNam.DisplayMember = "ID";
             cmbNam.ValueMember = "Nam";

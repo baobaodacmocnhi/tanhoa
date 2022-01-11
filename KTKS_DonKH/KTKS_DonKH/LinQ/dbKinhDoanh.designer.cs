@@ -19008,7 +19008,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _PhiBVMT_End;
 		
-		private string _PhiBVMT_Thue_End;
+		private System.Nullable<int> _PhiBVMT_Thue_End;
 		
 		private System.Nullable<int> _TongCong_End;
 		
@@ -19198,7 +19198,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnThueGTGT_EndChanged();
     partial void OnPhiBVMT_EndChanging(System.Nullable<int> value);
     partial void OnPhiBVMT_EndChanged();
-    partial void OnPhiBVMT_Thue_EndChanging(string value);
+    partial void OnPhiBVMT_Thue_EndChanging(System.Nullable<int> value);
     partial void OnPhiBVMT_Thue_EndChanged();
     partial void OnTongCong_EndChanging(System.Nullable<int> value);
     partial void OnTongCong_EndChanged();
@@ -20595,8 +20595,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiBVMT_Thue_End", DbType="NChar(10)")]
-		public string PhiBVMT_Thue_End
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiBVMT_Thue_End", DbType="Int")]
+		public System.Nullable<int> PhiBVMT_Thue_End
 		{
 			get
 			{
