@@ -486,6 +486,7 @@ namespace ThuTien.GUI.ToTruong
                     dr["TongGiaBan"] = item["TongGiaBan"].ToString();
                     dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
                     dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
+                    dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"].ToString();
                     dr["TongCong"] = item["TongCong"].ToString();
                     dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
                     ds.Tables["PhieuDangNgan"].Rows.Add(dr);
@@ -505,6 +506,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["TongGiaBan"] = item["TongGiaBan"].ToString();
                         dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
                         dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
+                        dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"].ToString();
                         dr["TongCong"] = item["TongCong"].ToString();
                         dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
                         ds.Tables["PhieuDangNgan"].Rows.Add(dr);

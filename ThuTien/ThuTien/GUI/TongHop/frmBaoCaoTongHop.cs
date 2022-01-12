@@ -51,11 +51,11 @@ namespace ThuTien.GUI.TongHop
         //            int TongHD = 0;
         //            long TongGiaBanTM = 0;
         //            long TongThueGTGTTM = 0;
-        //            long TongPhiBVMTTM = 0;
+        //            long TongPhiBVMTTM = 0; long TongPhiBVMT_ThueTM = 0;
         //            long TongCongTM = 0;
         //            long TongGiaBanCK = 0;
         //            long TongThueGTGTCK = 0;
-        //            long TongPhiBVMTCK = 0;
+        //            long TongPhiBVMTCK = 0; long TongPhiBVMT_ThueCK = 0;
         //            long TongCongCK = 0;
 
         //            dt = _cHoaDon.GetTongHopDangNgan(dateGiaiTrachTongHopDangNgan.Value);
@@ -81,7 +81,7 @@ namespace ThuTien.GUI.TongHop
         //                {
         //                    TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
         //                    TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-        //                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+        //                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());if (item["TongPhiBVMT_Thue"].ToString() != "")TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
         //                    TongCongCK += long.Parse(item["TongCong"].ToString());
         //                }
         //                else
@@ -104,18 +104,18 @@ namespace ThuTien.GUI.TongHop
 
         //                dr["TongGiaBanCK"] = TongGiaBanCK;
         //                dr["TongThueGTGTCK"] = TongThueGTGTCK;
-        //                dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+        //                dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
         //                dr["TongCongCK"] = TongCongCK;
 
         //                dr["TongGiaBanTM"] = TongGiaBanTM;
         //                dr["TongThueGTGTTM"] = TongThueGTGTTM;
-        //                dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+        //                dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
         //                dr["TongCongTM"] = TongCongTM;
 
         //                dr["TongHD"] = item["TongHD"];
         //                dr["TongGiaBan"] = item["TongGiaBan"];
         //                dr["TongThueGTGT"] = item["TongThueGTGT"];
-        //                dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+        //                dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
         //                dr["TongCong"] = item["TongCong"];
 
         //                if (dtCNKD.Rows.Count > 0)
@@ -123,7 +123,7 @@ namespace ThuTien.GUI.TongHop
         //                    dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
         //                    dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
         //                    dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-        //                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+        //                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
         //                }
 
         //                dr["NhanVien"] = CNguoiDung.HoTen;
@@ -150,7 +150,7 @@ namespace ThuTien.GUI.TongHop
         //                {
         //                    TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
         //                    TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-        //                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+        //                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());if (item["TongPhiBVMT_Thue"].ToString() != "")TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
         //                    TongCongCK += long.Parse(item["TongCong"].ToString());
         //                }
         //                else
@@ -170,18 +170,18 @@ namespace ThuTien.GUI.TongHop
 
         //                dr["TongGiaBanCK"] = TongGiaBanCK;
         //                dr["TongThueGTGTCK"] = TongThueGTGTCK;
-        //                dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+        //                dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
         //                dr["TongCongCK"] = TongCongCK;
 
         //                dr["TongGiaBanTM"] = TongGiaBanTM;
         //                dr["TongThueGTGTTM"] = TongThueGTGTTM;
-        //                dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+        //                dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
         //                dr["TongCongTM"] = TongCongTM;
 
         //                dr["TongHD"] = item["TongHD"];
         //                dr["TongGiaBan"] = item["TongGiaBan"];
         //                dr["TongThueGTGT"] = item["TongThueGTGT"];
-        //                dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+        //                dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
         //                dr["TongCong"] = item["TongCong"];
 
         //                if (dtCNKDTG.Rows.Count > 0)
@@ -210,7 +210,7 @@ namespace ThuTien.GUI.TongHop
         //                {
         //                    TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
         //                    TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-        //                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+        //                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());if (item["TongPhiBVMT_Thue"].ToString() != "")TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
         //                    TongCongCK += long.Parse(item["TongCong"].ToString());
         //                }
         //                else
@@ -230,18 +230,18 @@ namespace ThuTien.GUI.TongHop
 
         //                dr["TongGiaBanCK"] = TongGiaBanCK;
         //                dr["TongThueGTGTCK"] = TongThueGTGTCK;
-        //                dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+        //                dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
         //                dr["TongCongCK"] = TongCongCK;
 
         //                dr["TongGiaBanTM"] = TongGiaBanTM;
         //                dr["TongThueGTGTTM"] = TongThueGTGTTM;
-        //                dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+        //                dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
         //                dr["TongCongTM"] = TongCongTM;
 
         //                dr["TongHD"] = item["TongHD"];
         //                dr["TongGiaBan"] = item["TongGiaBan"];
         //                dr["TongThueGTGT"] = item["TongThueGTGT"];
-        //                dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+        //                dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
         //                dr["TongCong"] = item["TongCong"];
 
         //                if (dtCNKDCQ.Rows.Count > 0)
@@ -274,11 +274,11 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
                 long TongThueGTGTTM = 0;
-                long TongPhiBVMTTM = 0;
+                long TongPhiBVMTTM = 0; long TongPhiBVMT_ThueTM = 0;
                 long TongCongTM = 0;
                 long TongGiaBanCK = 0;
                 long TongThueGTGTCK = 0;
-                long TongPhiBVMTCK = 0;
+                long TongPhiBVMTCK = 0; long TongPhiBVMT_ThueCK = 0;
                 long TongCongCK = 0;
                 //long TongTienDu = 0;
                 long TongTienMat = 0;
@@ -293,7 +293,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -303,7 +303,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         //if (!string.IsNullOrEmpty(item["TongTienDu"].ToString()))
                         //TongTienDu += long.Parse(item["TongTienDu"].ToString());
@@ -329,20 +329,20 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     //dr["TongTienDu"] = TongTienDu;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -350,7 +350,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -366,7 +366,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -387,11 +387,11 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
                 long TongThueGTGTTM = 0;
-                long TongPhiBVMTTM = 0;
+                long TongPhiBVMTTM = 0; long TongPhiBVMT_ThueTM = 0;
                 long TongCongTM = 0;
                 long TongGiaBanCK = 0;
                 long TongThueGTGTCK = 0;
-                long TongPhiBVMTCK = 0;
+                long TongPhiBVMTCK = 0; long TongPhiBVMT_ThueCK = 0;
                 long TongCongCK = 0;
                 long TongTienMat = 0;
 
@@ -405,7 +405,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -415,7 +415,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -441,19 +441,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -461,7 +461,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -479,7 +479,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -508,7 +508,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -518,7 +518,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -543,19 +543,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -563,7 +563,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -582,7 +582,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -605,11 +605,11 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
                 long TongThueGTGTTM = 0;
-                long TongPhiBVMTTM = 0;
+                long TongPhiBVMTTM = 0; long TongPhiBVMT_ThueTM = 0;
                 long TongCongTM = 0;
                 long TongGiaBanCK = 0;
                 long TongThueGTGTCK = 0;
-                long TongPhiBVMTCK = 0;
+                long TongPhiBVMTCK = 0; long TongPhiBVMT_ThueCK = 0;
                 long TongCongCK = 0;
                 long TongTienMat = 0;
 
@@ -632,7 +632,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -642,7 +642,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -653,8 +653,7 @@ namespace ThuTien.GUI.TongHop
                             TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                         if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                             TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                            TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                             TongCongTM += long.Parse(item["TongCong"].ToString());
                     }
@@ -670,19 +669,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -690,7 +689,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -706,7 +705,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -728,11 +727,11 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
                 long TongThueGTGTTM = 0;
-                long TongPhiBVMTTM = 0;
+                long TongPhiBVMTTM = 0; long TongPhiBVMT_ThueTM = 0;
                 long TongCongTM = 0;
                 long TongGiaBanCK = 0;
                 long TongThueGTGTCK = 0;
-                long TongPhiBVMTCK = 0;
+                long TongPhiBVMTCK = 0; long TongPhiBVMT_ThueCK = 0;
                 long TongCongCK = 0;
                 long TongTienMat = 0;
 
@@ -755,7 +754,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -765,7 +764,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -776,8 +775,7 @@ namespace ThuTien.GUI.TongHop
                             TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                         if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                             TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                            TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                             TongCongTM += long.Parse(item["TongCong"].ToString());
                     }
@@ -795,19 +793,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -815,7 +813,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -833,7 +831,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -872,7 +870,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -882,7 +880,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -893,8 +891,7 @@ namespace ThuTien.GUI.TongHop
                             TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                         if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                             TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                            TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                             TongCongTM += long.Parse(item["TongCong"].ToString());
                     }
@@ -911,19 +908,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -931,7 +928,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -950,7 +947,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -973,11 +970,11 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
                 long TongThueGTGTTM = 0;
-                long TongPhiBVMTTM = 0;
+                long TongPhiBVMTTM = 0; long TongPhiBVMT_ThueTM = 0;
                 long TongCongTM = 0;
                 long TongGiaBanCK = 0;
                 long TongThueGTGTCK = 0;
-                long TongPhiBVMTCK = 0;
+                long TongPhiBVMTCK = 0; long TongPhiBVMT_ThueCK = 0;
                 long TongCongCK = 0;
                 long TongTienMat = 0;
 
@@ -994,7 +991,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -1004,7 +1001,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -1028,19 +1025,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -1048,7 +1045,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1064,7 +1061,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1086,11 +1083,11 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
                 long TongThueGTGTTM = 0;
-                long TongPhiBVMTTM = 0;
+                long TongPhiBVMTTM = 0; long TongPhiBVMT_ThueTM = 0;
                 long TongCongTM = 0;
                 long TongGiaBanCK = 0;
                 long TongThueGTGTCK = 0;
-                long TongPhiBVMTCK = 0;
+                long TongPhiBVMTCK = 0; long TongPhiBVMT_ThueCK = 0;
                 long TongCongCK = 0;
                 long TongTienMat = 0;
 
@@ -1107,7 +1104,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -1117,7 +1114,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -1143,19 +1140,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -1163,7 +1160,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1181,7 +1178,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1213,7 +1210,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -1223,7 +1220,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -1248,19 +1245,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -1268,7 +1265,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1287,7 +1284,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1325,11 +1322,11 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
                 long TongThueGTGTTM = 0;
-                long TongPhiBVMTTM = 0;
+                long TongPhiBVMTTM = 0; long TongPhiBVMT_ThueTM = 0;
                 long TongCongTM = 0;
                 long TongGiaBanCK = 0;
                 long TongThueGTGTCK = 0;
-                long TongPhiBVMTCK = 0;
+                long TongPhiBVMTCK = 0; long TongPhiBVMT_ThueCK = 0;
                 long TongCongCK = 0;
                 long TongTienMat = 0;
 
@@ -1348,6 +1345,8 @@ namespace ThuTien.GUI.TongHop
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
                     dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "")
+                        dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -1358,6 +1357,8 @@ namespace ThuTien.GUI.TongHop
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
                         TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (item["TongPhiBVMT_Thue"].ToString() != "")
+                            TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -1370,6 +1371,8 @@ namespace ThuTien.GUI.TongHop
                             TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
                         if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
                             TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString()))
+                            TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                             TongCongTM += long.Parse(item["TongCong"].ToString());
                     }
@@ -1385,19 +1388,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -1405,7 +1408,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1421,7 +1424,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1443,11 +1446,11 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
                 long TongThueGTGTTM = 0;
-                long TongPhiBVMTTM = 0;
+                long TongPhiBVMTTM = 0; long TongPhiBVMT_ThueTM = 0;
                 long TongCongTM = 0;
                 long TongGiaBanCK = 0;
                 long TongThueGTGTCK = 0;
-                long TongPhiBVMTCK = 0;
+                long TongPhiBVMTCK = 0; long TongPhiBVMT_ThueCK = 0;
                 long TongCongCK = 0;
                 long TongTienMat = 0;
 
@@ -1465,7 +1468,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -1475,7 +1478,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -1486,8 +1489,7 @@ namespace ThuTien.GUI.TongHop
                             TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                         if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                             TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                            TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                             TongCongTM += long.Parse(item["TongCong"].ToString());
                     }
@@ -1505,19 +1507,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -1525,7 +1527,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1543,7 +1545,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1578,7 +1580,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -1588,7 +1590,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -1599,8 +1601,7 @@ namespace ThuTien.GUI.TongHop
                             TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                         if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                             TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                            TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                             TongCongTM += long.Parse(item["TongCong"].ToString());
                     }
@@ -1617,19 +1618,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -1637,7 +1638,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1655,7 +1656,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1688,7 +1689,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -1698,7 +1699,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -1709,8 +1710,7 @@ namespace ThuTien.GUI.TongHop
                             TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                         if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                             TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                            TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                             TongCongTM += long.Parse(item["TongCong"].ToString());
                     }
@@ -1727,19 +1727,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -1747,7 +1747,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1766,7 +1766,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1806,11 +1806,11 @@ namespace ThuTien.GUI.TongHop
             DataTable dtCNKD = new DataTable();
             long TongGiaBanTM = 0;
             long TongThueGTGTTM = 0;
-            long TongPhiBVMTTM = 0;
+            long TongPhiBVMTTM = 0; long TongPhiBVMT_ThueTM = 0;
             long TongCongTM = 0;
             long TongGiaBanCK = 0;
             long TongThueGTGTCK = 0;
-            long TongPhiBVMTCK = 0;
+            long TongPhiBVMTCK = 0; long TongPhiBVMT_ThueCK = 0;
             long TongCongCK = 0;
             long TongTienMat = 0;
 
@@ -1828,7 +1828,7 @@ namespace ThuTien.GUI.TongHop
             {
                 dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                 dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                 dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
             }
 
@@ -1838,7 +1838,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                     TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                     TongCongCK += long.Parse(item["TongCong"].ToString());
                     if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                         TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -1849,8 +1849,7 @@ namespace ThuTien.GUI.TongHop
                         TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                     if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                         TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                    if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                        TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                    if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                     if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                         TongCongTM += long.Parse(item["TongCong"].ToString());
                 }
@@ -1868,19 +1867,19 @@ namespace ThuTien.GUI.TongHop
 
                 dr["TongGiaBanCK"] = TongGiaBanCK;
                 dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                 dr["TongCongCK"] = TongCongCK;
                 dr["TongTienMat"] = TongTienMat;
 
                 dr["TongGiaBanTM"] = TongGiaBanTM;
                 dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                 dr["TongCongTM"] = TongCongTM;
 
                 dr["TongHD"] = item["TongHD"];
                 dr["TongGiaBan"] = item["TongGiaBan"];
                 dr["TongThueGTGT"] = item["TongThueGTGT"];
-                dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                 dr["TongCong"] = item["TongCong"];
 
                 if (dtCNKD.Rows.Count > 0)
@@ -1888,7 +1887,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                     dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                 }
                 dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1906,7 +1905,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                     dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -1940,7 +1939,7 @@ namespace ThuTien.GUI.TongHop
             {
                 dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                 dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                 dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
             }
 
@@ -1950,7 +1949,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                     TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                     TongCongCK += long.Parse(item["TongCong"].ToString());
                     if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                         TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -1961,8 +1960,7 @@ namespace ThuTien.GUI.TongHop
                         TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                     if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                         TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                    if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                        TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                    if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                     if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                         TongCongTM += long.Parse(item["TongCong"].ToString());
                 }
@@ -1979,19 +1977,19 @@ namespace ThuTien.GUI.TongHop
 
                 dr["TongGiaBanCK"] = TongGiaBanCK;
                 dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                 dr["TongCongCK"] = TongCongCK;
                 dr["TongTienMat"] = TongTienMat;
 
                 dr["TongGiaBanTM"] = TongGiaBanTM;
                 dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                 dr["TongCongTM"] = TongCongTM;
 
                 dr["TongHD"] = item["TongHD"];
                 dr["TongGiaBan"] = item["TongGiaBan"];
                 dr["TongThueGTGT"] = item["TongThueGTGT"];
-                dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                 dr["TongCong"] = item["TongCong"];
 
                 if (dtCNKD.Rows.Count > 0)
@@ -1999,7 +1997,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                     dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                 }
                 dr["NhanVien"] = CNguoiDung.HoTen;
@@ -2018,7 +2016,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                     dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -2288,6 +2286,7 @@ namespace ThuTien.GUI.TongHop
                 dr["TongGiaBan"] = item["GiaBan"];
                 dr["TongThueGTGT"] = item["ThueGTGT"];
                 dr["TongPhiBVMT"] = item["PhiBVMT"];
+                dr["TongPhiBVMT_Thue"] = item["PhiBVMT_Thue"];
                 dr["TongCong"] = item["TongCong"];
 
                 if (int.Parse(item["Ky2"].ToString()) == dateDen_KeToan_Chot2019.Value.Month && int.Parse(item["Nam2"].ToString()) == dateDen_KeToan_Chot2019.Value.Year)
@@ -2332,11 +2331,11 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
                 long TongThueGTGTTM = 0;
-                long TongPhiBVMTTM = 0;
+                long TongPhiBVMTTM = 0; long TongPhiBVMT_ThueTM = 0;
                 long TongCongTM = 0;
                 long TongGiaBanCK = 0;
                 long TongThueGTGTCK = 0;
-                long TongPhiBVMTCK = 0;
+                long TongPhiBVMTCK = 0; long TongPhiBVMT_ThueCK = 0;
                 long TongCongCK = 0;
                 long TongTienMat = 0;
 
@@ -2354,7 +2353,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -2364,7 +2363,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -2375,8 +2374,7 @@ namespace ThuTien.GUI.TongHop
                             TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                         if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                             TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                            TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                             TongCongTM += long.Parse(item["TongCong"].ToString());
                     }
@@ -2393,19 +2391,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -2413,7 +2411,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -2429,7 +2427,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -2451,11 +2449,11 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD = new DataTable();
                 long TongGiaBanTM = 0;
                 long TongThueGTGTTM = 0;
-                long TongPhiBVMTTM = 0;
+                long TongPhiBVMTTM = 0; long TongPhiBVMT_ThueTM = 0;
                 long TongCongTM = 0;
                 long TongGiaBanCK = 0;
                 long TongThueGTGTCK = 0;
-                long TongPhiBVMTCK = 0;
+                long TongPhiBVMTCK = 0; long TongPhiBVMT_ThueCK = 0;
                 long TongCongCK = 0;
                 long TongTienMat = 0;
 
@@ -2473,7 +2471,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -2483,7 +2481,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -2494,8 +2492,7 @@ namespace ThuTien.GUI.TongHop
                             TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                         if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                             TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                            TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                             TongCongTM += long.Parse(item["TongCong"].ToString());
                     }
@@ -2514,19 +2511,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -2534,7 +2531,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -2552,7 +2549,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -2587,7 +2584,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -2597,7 +2594,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -2608,8 +2605,7 @@ namespace ThuTien.GUI.TongHop
                             TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                         if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                             TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                            TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                             TongCongTM += long.Parse(item["TongCong"].ToString());
                     }
@@ -2627,19 +2623,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -2647,7 +2643,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -2665,7 +2661,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -2698,7 +2694,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                     dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                     dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
                 }
 
@@ -2708,7 +2704,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                         TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                        TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         TongCongCK += long.Parse(item["TongCong"].ToString());
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -2719,8 +2715,7 @@ namespace ThuTien.GUI.TongHop
                             TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                         if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                             TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                            TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                        if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                         if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                             TongCongTM += long.Parse(item["TongCong"].ToString());
                     }
@@ -2738,19 +2733,19 @@ namespace ThuTien.GUI.TongHop
 
                     dr["TongGiaBanCK"] = TongGiaBanCK;
                     dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                    dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                     dr["TongCongCK"] = TongCongCK;
                     dr["TongTienMat"] = TongTienMat;
 
                     dr["TongGiaBanTM"] = TongGiaBanTM;
                     dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                    dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                     dr["TongCongTM"] = TongCongTM;
 
                     dr["TongHD"] = item["TongHD"];
                     dr["TongGiaBan"] = item["TongGiaBan"];
                     dr["TongThueGTGT"] = item["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                     dr["TongCong"] = item["TongCong"];
 
                     if (dtCNKD.Rows.Count > 0)
@@ -2758,7 +2753,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                     }
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -2777,7 +2772,7 @@ namespace ThuTien.GUI.TongHop
                         dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                         dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                         dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                        dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                         dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                         dr["NhanVien"] = CNguoiDung.HoTen;
@@ -2817,11 +2812,11 @@ namespace ThuTien.GUI.TongHop
             DataTable dtCNKD = new DataTable();
             long TongGiaBanTM = 0;
             long TongThueGTGTTM = 0;
-            long TongPhiBVMTTM = 0;
+            long TongPhiBVMTTM = 0; long TongPhiBVMT_ThueTM = 0;
             long TongCongTM = 0;
             long TongGiaBanCK = 0;
             long TongThueGTGTCK = 0;
-            long TongPhiBVMTCK = 0;
+            long TongPhiBVMTCK = 0; long TongPhiBVMT_ThueCK = 0;
             long TongCongCK = 0;
             long TongTienMat = 0;
 
@@ -2839,7 +2834,7 @@ namespace ThuTien.GUI.TongHop
             {
                 dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                 dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                 dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
             }
 
@@ -2849,7 +2844,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                     TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                     TongCongCK += long.Parse(item["TongCong"].ToString());
                     if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                         TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -2860,8 +2855,7 @@ namespace ThuTien.GUI.TongHop
                         TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                     if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                         TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                    if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                        TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                    if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                     if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                         TongCongTM += long.Parse(item["TongCong"].ToString());
                 }
@@ -2880,19 +2874,19 @@ namespace ThuTien.GUI.TongHop
 
                 dr["TongGiaBanCK"] = TongGiaBanCK;
                 dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                 dr["TongCongCK"] = TongCongCK;
                 dr["TongTienMat"] = TongTienMat;
 
                 dr["TongGiaBanTM"] = TongGiaBanTM;
                 dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                 dr["TongCongTM"] = TongCongTM;
 
                 dr["TongHD"] = item["TongHD"];
                 dr["TongGiaBan"] = item["TongGiaBan"];
                 dr["TongThueGTGT"] = item["TongThueGTGT"];
-                dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                 dr["TongCong"] = item["TongCong"];
 
                 if (dtCNKD.Rows.Count > 0)
@@ -2900,7 +2894,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                     dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                 }
                 dr["NhanVien"] = CNguoiDung.HoTen;
@@ -2918,7 +2912,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                     dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                     dr["NhanVien"] = CNguoiDung.HoTen;
@@ -2952,7 +2946,7 @@ namespace ThuTien.GUI.TongHop
             {
                 dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
                 dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
                 dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
             }
 
@@ -2962,7 +2956,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     TongGiaBanCK += long.Parse(item["TongGiaBan"].ToString());
                     TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
-                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
+                    TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString()); if (item["TongPhiBVMT_Thue"].ToString() != "") TongPhiBVMT_ThueCK += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                     TongCongCK += long.Parse(item["TongCong"].ToString());
                     if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                         TongTienMat += long.Parse(item["TongTienMat"].ToString());
@@ -2973,8 +2967,7 @@ namespace ThuTien.GUI.TongHop
                         TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
                     if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
                         TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                    if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
-                        TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                    if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString())) TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString()); if (!string.IsNullOrEmpty(item["TongPhiBVMT_Thue"].ToString())) TongPhiBVMT_ThueTM += long.Parse(item["TongPhiBVMT_Thue"].ToString());
                     if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
                         TongCongTM += long.Parse(item["TongCong"].ToString());
                 }
@@ -2992,19 +2985,19 @@ namespace ThuTien.GUI.TongHop
 
                 dr["TongGiaBanCK"] = TongGiaBanCK;
                 dr["TongThueGTGTCK"] = TongThueGTGTCK;
-                dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
+                dr["TongPhiBVMTCK"] = TongPhiBVMTCK; dr["TongPhiBVMT_ThueCK"] = TongPhiBVMT_ThueCK;
                 dr["TongCongCK"] = TongCongCK;
                 dr["TongTienMat"] = TongTienMat;
 
                 dr["TongGiaBanTM"] = TongGiaBanTM;
                 dr["TongThueGTGTTM"] = TongThueGTGTTM;
-                dr["TongPhiBVMTTM"] = TongPhiBVMTTM;
+                dr["TongPhiBVMTTM"] = TongPhiBVMTTM; dr["TongPhiBVMT_ThueTM"] = TongPhiBVMT_ThueTM;
                 dr["TongCongTM"] = TongCongTM;
 
                 dr["TongHD"] = item["TongHD"];
                 dr["TongGiaBan"] = item["TongGiaBan"];
                 dr["TongThueGTGT"] = item["TongThueGTGT"];
-                dr["TongPhiBVMT"] = item["TongPhiBVMT"];
+                dr["TongPhiBVMT"] = item["TongPhiBVMT"]; dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"];
                 dr["TongCong"] = item["TongCong"];
 
                 if (dtCNKD.Rows.Count > 0)
@@ -3012,7 +3005,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                     dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                 }
                 dr["NhanVien"] = CNguoiDung.HoTen;
@@ -3031,7 +3024,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"]; dr["TongPhiBVMT_ThueCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT_Thue"];
                     dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                     dr["NhanVien"] = CNguoiDung.HoTen;

@@ -528,6 +528,7 @@ namespace ThuTien.GUI.HanhThu
                 dr["TongGiaBan"] = item["TongGiaBan"].ToString();
                 dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
                 dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
+                dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"].ToString();
                 dr["TongCong"] = item["TongCong"].ToString();
                 if (CNguoiDung.ToTruong)
                     dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;

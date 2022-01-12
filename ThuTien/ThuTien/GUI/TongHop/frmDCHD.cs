@@ -624,6 +624,8 @@ namespace ThuTien.GUI.TongHop
                                                     hd.BaoCaoThue = dchd.BaoCaoThue;
                                                     if (_cHoaDon.Sua(hd) == true)
                                                     {
+                                                        ///lưu lịch sử
+                                                        _cDCHD.LuuLichSuDC(dchd);
                                                         scope.Complete();
                                                         scope.Dispose();
                                                         countXuLy++;

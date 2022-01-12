@@ -114,6 +114,10 @@ namespace ThuTien.GUI.TimKiem
             {
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "PhiBVMT_Thue" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
             if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
             {
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);

@@ -2167,13 +2167,71 @@ namespace ThuTien.DAL.TongHop
         public DataTable getLichSu(int MaHD)
         {
             string sql = "WITH temp AS ("
-+ "   select *"
-+ "   ,ROW_NUMBER() OVER (PARTITION BY SoPhieu ORDER BY CreateDate DESC) AS rn"
-+ " from TT_LichSuDieuChinhHD"
-+ " where FK_HOADON=" + MaHD + " and SoPhieu is not null"
-+ " )"
-+ " SELECT * FROM temp WHERE rn=1";
+                            + "   select *"
+                            + "   ,ROW_NUMBER() OVER (PARTITION BY SoPhieu ORDER BY CreateDate DESC) AS rn"
+                            + " from TT_LichSuDieuChinhHD"
+                            + " where FK_HOADON=" + MaHD + " and SoPhieu is not null"
+                            + " )"
+                            + " SELECT * FROM temp WHERE rn=1";
             return ExecuteQuery_DataTable(sql);
+        }
+
+        public bool updateLichSu(string SoPhieu, string SoHoaDonMoi)
+        {
+            string sql = "update TT_LichSuDieuChinhHD set SoHoaDonMoi='" + SoHoaDonMoi + "' where SoPhieu=" + SoPhieu;
+            return ExecuteNonQuery(sql);
+        }
+
+        public bool LuuLichSuDC(DIEUCHINH_HD dchd)
+        {
+            TT_LichSuDieuChinhHD lsdc = new TT_LichSuDieuChinhHD();
+
+            lsdc.FK_HOADON = dchd.FK_HOADON;
+            lsdc.SoHoaDon = dchd.SoHoaDon;
+            lsdc.GiaBieu = dchd.GiaBieu;
+            lsdc.DinhMuc = dchd.DinhMuc;
+            lsdc.DinhMucHN = dchd.DinhMucHN;
+            lsdc.TIEUTHU_BD = dchd.TIEUTHU_BD;
+            lsdc.GIABAN_BD = dchd.GIABAN_BD;
+            lsdc.PHI_BD = dchd.PHI_BD;
+            lsdc.PHI_Thue_BD = dchd.PHI_Thue_BD;
+            lsdc.THUE_BD = dchd.THUE_BD;
+            lsdc.TONGCONG_BD = dchd.TONGCONG_BD;
+
+            lsdc.PHIEU_DC = dchd.PHIEU_DC;
+            lsdc.NGAY_VB = dchd.NGAY_VB;
+            lsdc.NGAY_DC = dchd.NGAY_DC;
+            lsdc.SoPhieu = dchd.SoPhieu;
+            lsdc.TangGiam = dchd.TangGiam;
+
+            lsdc.GIABAN_DC = dchd.GIABAN_DC;
+            lsdc.GIABAN_END = dchd.GIABAN_END;
+
+            lsdc.THUE_DC = dchd.THUE_DC;
+            lsdc.THUE_END = dchd.THUE_END;
+
+            lsdc.PHI_DC = dchd.PHI_DC;
+            lsdc.PHI_END = dchd.PHI_END;
+            lsdc.PHI_Thue_DC = dchd.PHI_Thue_DC;
+            lsdc.PHI_Thue_END = dchd.PHI_Thue_END;
+
+            lsdc.TONGCONG_DC = dchd.TONGCONG_DC;
+            lsdc.TONGCONG_END = dchd.TONGCONG_END;
+
+            lsdc.GB_DC = dchd.GB_DC;
+            lsdc.DM_DC = dchd.DM_DC;
+            lsdc.DinhMucHN_DC = dchd.DinhMucHN_DC;
+            lsdc.TIEUTHU_DC = dchd.TIEUTHU_DC;
+
+            lsdc.SoHoaDonMoi = dchd.SoHoaDonMoi;
+
+            lsdc.HoTen_BD = dchd.HoTen_BD;
+            lsdc.HoTen_End = dchd.HoTen_End;
+            lsdc.DiaChi_BD = dchd.DiaChi_BD;
+            lsdc.DiaChi_End = dchd.DiaChi_End;
+            lsdc.NgayChan = dchd.NgayChan;
+
+            return ThemLSDC(lsdc);
         }
 
         //hóa đơn chờ điều chỉnh

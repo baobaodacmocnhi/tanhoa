@@ -359,7 +359,7 @@ namespace ThuTien.GUI.TongHop
                             if (_cDCHD.Sua(_dchd))
                             {
                                 ///lưu lịch sử
-                                LuuLichSuDC(_dchd);
+                                _cDCHD.LuuLichSuDC(_dchd);
 
                                 hd.GB = _dchd.GB_DC.Value;
                                 hd.DM = _dchd.DM_DC;
@@ -500,7 +500,7 @@ namespace ThuTien.GUI.TongHop
                             if (_cDCHD.Them(dchd))
                             {
                                 ///lưu lịch sử
-                                LuuLichSuDC(dchd);
+                                _cDCHD.LuuLichSuDC(dchd);
 
                                 _hoadon.GB = dchd.GB_DC.Value;
                                 _hoadon.DM = dchd.DM_DC;
@@ -542,56 +542,6 @@ namespace ThuTien.GUI.TongHop
             }
         }
 
-        private void LuuLichSuDC(DIEUCHINH_HD dchd)
-        {
-            TT_LichSuDieuChinhHD lsdc = new TT_LichSuDieuChinhHD();
-
-            lsdc.FK_HOADON = dchd.FK_HOADON;
-            lsdc.SoHoaDon = dchd.SoHoaDon;
-            lsdc.GiaBieu = dchd.GiaBieu;
-            lsdc.DinhMuc = dchd.DinhMuc;
-            lsdc.DinhMucHN = dchd.DinhMucHN;
-            lsdc.TIEUTHU_BD = dchd.TIEUTHU_BD;
-            lsdc.GIABAN_BD = dchd.GIABAN_BD;
-            lsdc.PHI_BD = dchd.PHI_BD;
-            lsdc.PHI_Thue_BD = dchd.PHI_Thue_BD;
-            lsdc.THUE_BD = dchd.THUE_BD;
-            lsdc.TONGCONG_BD = dchd.TONGCONG_BD;
-
-            lsdc.PHIEU_DC = dchd.PHIEU_DC;
-            lsdc.NGAY_VB = dchd.NGAY_VB;
-            lsdc.NGAY_DC = dchd.NGAY_DC;
-            lsdc.SoPhieu = dchd.SoPhieu;
-            lsdc.TangGiam = dchd.TangGiam;
-
-            lsdc.GIABAN_DC = dchd.GIABAN_DC;
-            lsdc.GIABAN_END = dchd.GIABAN_END;
-
-            lsdc.THUE_DC = dchd.THUE_DC;
-            lsdc.THUE_END = dchd.THUE_END;
-
-            lsdc.PHI_DC = dchd.PHI_DC;
-            lsdc.PHI_END = dchd.PHI_END;
-            lsdc.PHI_Thue_DC = dchd.PHI_Thue_DC;
-            lsdc.PHI_Thue_END = dchd.PHI_Thue_END;
-
-            lsdc.TONGCONG_DC = dchd.TONGCONG_DC;
-            lsdc.TONGCONG_END = dchd.TONGCONG_END;
-
-            lsdc.GB_DC = dchd.GB_DC;
-            lsdc.DM_DC = dchd.DM_DC;
-            lsdc.DinhMucHN_DC = dchd.DinhMucHN_DC;
-            lsdc.TIEUTHU_DC = dchd.TIEUTHU_DC;
-
-            lsdc.HoTen_BD = dchd.HoTen_BD;
-            lsdc.HoTen_End = dchd.HoTen_End;
-            lsdc.DiaChi_BD = dchd.DiaChi_BD;
-            lsdc.DiaChi_End = dchd.DiaChi_End;
-            lsdc.NgayChan = dchd.NgayChan;
-
-            _cDCHD.ThemLSDC(lsdc);
-        }
-
         private void frmShowDCHD_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -630,7 +580,7 @@ namespace ThuTien.GUI.TongHop
                             if (_cDCHD.Sua(_dchd))
                             {
                                 ///lưu lịch sử
-                                LuuLichSuDC(_dchd);
+                                _cDCHD.LuuLichSuDC(_dchd);
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                                 Close();
@@ -656,7 +606,7 @@ namespace ThuTien.GUI.TongHop
                         if (_cDCHD.Them(dchd))
                         {
                             ///lưu lịch sử
-                            LuuLichSuDC(dchd);
+                            _cDCHD.LuuLichSuDC(dchd);
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.DialogResult = System.Windows.Forms.DialogResult.OK;
                             Close();

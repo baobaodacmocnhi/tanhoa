@@ -64,6 +64,7 @@ namespace ThuTien.GUI.Doi
             long TongGiaBan = 0;
             long TongThueGTGT = 0;
             long TongPhiBVMT = 0;
+            long TongPhiBVMT_Thue = 0;
             long TongCong = 0;
             if (dgvHDTuGia.RowCount > 0)
             {
@@ -73,12 +74,15 @@ namespace ThuTien.GUI.Doi
                     TongGiaBan += long.Parse(item.Cells["TongGiaBan_TG"].Value.ToString());
                     TongThueGTGT += long.Parse(item.Cells["TongThueGTGT_TG"].Value.ToString());
                     TongPhiBVMT += long.Parse(item.Cells["TongPhiBVMT_TG"].Value.ToString());
+                    if (item.Cells["TongPhiBVMT_Thue_TG"].Value.ToString() != "")
+                        TongPhiBVMT_Thue += long.Parse(item.Cells["TongPhiBVMT_Thue_TG"].Value.ToString());
                     TongCong += long.Parse(item.Cells["TongCong_TG"].Value.ToString());
                 }
                 txtTongHD_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
                 txtTongGiaBan_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBan);
                 txtTongThueGTGT_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongThueGTGT);
                 txtTongPhiBVMT_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT);
+                txtTongPhiBVMT_Thue_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT_Thue);
                 txtTongCong_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
         }
@@ -114,6 +118,7 @@ namespace ThuTien.GUI.Doi
             long TongGiaBan = 0;
             long TongThueGTGT = 0;
             long TongPhiBVMT = 0;
+            long TongPhiBVMT_Thue = 0;
             long TongCong = 0;
             if (dgvNhanVien_TC.RowCount > 0)
             {
@@ -123,6 +128,8 @@ namespace ThuTien.GUI.Doi
                     TongGiaBan += long.Parse(item.Cells["TongGiaBan_TC"].Value.ToString());
                     TongThueGTGT += long.Parse(item.Cells["TongThueGTGT_TC"].Value.ToString());
                     TongPhiBVMT += long.Parse(item.Cells["TongPhiBVMT_TC"].Value.ToString());
+                    if (item.Cells["TongPhiBVMT_Thue_TC"].Value.ToString() != "")
+                        TongPhiBVMT_Thue += long.Parse(item.Cells["TongPhiBVMT_Thue_TC"].Value.ToString());
                     TongCong += long.Parse(item.Cells["TongCong_TC"].Value.ToString());
                 }
 
@@ -130,6 +137,7 @@ namespace ThuTien.GUI.Doi
                 txtTongGiaBan_TC.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBan);
                 txtTongThueGTGT_TC.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongThueGTGT);
                 txtTongPhiBVMT_TC.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT);
+                txtTongPhiBVMT_Thue_TC.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT_Thue);
                 txtTongCong_TC.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
         }
@@ -200,6 +208,10 @@ namespace ThuTien.GUI.Doi
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongPhiBVMT_Thue_TG" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
             if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCong_TG" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
@@ -246,7 +258,7 @@ namespace ThuTien.GUI.Doi
             }
         }
 
-        private void dgvHDTuGia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvHDTuGia_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvNhanVien.DataSource = _cHoaDon.GetTongDangNgan_To("", int.Parse(dgvHDTuGia["MaTo_TG", e.RowIndex].Value.ToString()), dateTu.Value, dateDen.Value);
         }
@@ -271,6 +283,10 @@ namespace ThuTien.GUI.Doi
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
             if (dgvNhanVien.Columns[e.ColumnIndex].Name == "TongPhiBVMT_NV" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvNhanVien.Columns[e.ColumnIndex].Name == "TongPhiBVMT_Thue_NV" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
@@ -303,6 +319,10 @@ namespace ThuTien.GUI.Doi
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
             if (dgvNhanVien_TC.Columns[e.ColumnIndex].Name == "TongPhiBVMT_TC" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvNhanVien_TC.Columns[e.ColumnIndex].Name == "TongPhiBVMT_Thue_TC" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
@@ -1043,6 +1063,8 @@ namespace ThuTien.GUI.Doi
 
             btnXemChot.PerformClick();
         }
+
+       
 
 
 
