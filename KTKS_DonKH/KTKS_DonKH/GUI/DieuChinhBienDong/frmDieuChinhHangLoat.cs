@@ -491,9 +491,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 _cDCBD.ExecuteNonQuery(sql2);
                                             }
                                         }
-                                _cDCBD.Refresh();
                             }
+                           
                         }
+                        _cDCBD.Refresh();
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

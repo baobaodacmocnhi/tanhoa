@@ -454,7 +454,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         cttt.LoTrinh = txtMLT.Text.Trim();
                         cttt.HoTen = txtHoTen.Text.Trim();
                         cttt.DiaChi = txtDiaChi.Text.Trim();
-                        cttt.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                        if (string.IsNullOrEmpty(txtGiaBieu.Text.Trim()) == false)
+                            cttt.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                         if (string.IsNullOrEmpty(txtDinhMuc.Text.Trim()) == false)
                             cttt.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         if (string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()) == false)
@@ -592,7 +593,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             _cttt.LoTrinh = txtMLT.Text.Trim();
                             _cttt.HoTen = txtHoTen.Text.Trim();
                             _cttt.DiaChi = txtDiaChi.Text.Trim();
-                            _cttt.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                            if (string.IsNullOrEmpty(txtGiaBieu.Text.Trim()) == false)
+                                _cttt.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                            else
+                                _cttt.GiaBieu = null;
                             if (string.IsNullOrEmpty(txtDinhMuc.Text.Trim()) == false)
                                 _cttt.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                             else

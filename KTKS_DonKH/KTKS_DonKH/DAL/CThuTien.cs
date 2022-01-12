@@ -322,6 +322,8 @@ namespace KTKS_DonKH.DAL
             lsdc.DM_DC = dchd.DM_DC;
             lsdc.TIEUTHU_DC = dchd.TIEUTHU_DC;
 
+            lsdc.SoHoaDonMoi = dchd.SoHoaDonMoi;
+
             lsdc.HoTen_BD = dchd.HoTen_BD;
             lsdc.HoTen_End = dchd.HoTen_End;
             lsdc.DiaChi_BD = dchd.DiaChi_BD;
