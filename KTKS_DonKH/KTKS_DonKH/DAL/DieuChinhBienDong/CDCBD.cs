@@ -2129,6 +2129,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTDCHD.ThueGTGT_End,
                             itemCTDCHD.PhiBVMT_Start,
                             itemCTDCHD.PhiBVMT_End,
+                            itemCTDCHD.PhiBVMT_Thue_End,
                             itemCTDCHD.TongCong_Start,
                             itemCTDCHD.TongCong_End,
                             itemCTDCHD.TongCong_BD,

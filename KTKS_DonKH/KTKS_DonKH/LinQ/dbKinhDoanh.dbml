@@ -2498,6 +2498,7 @@
       <Column Name="GiaBanCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ThueGTGTCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhiBVMTCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhiBVMT_ThueCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TongCongCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GiaBieuMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMucHNMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -2506,6 +2507,7 @@
       <Column Name="GiaBanMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ThueGTGTMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhiBVMTMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhiBVMT_ThueMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TongCongMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TangGiam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SoTien1m3" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />

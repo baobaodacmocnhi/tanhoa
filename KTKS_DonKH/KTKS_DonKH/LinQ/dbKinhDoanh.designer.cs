@@ -56889,6 +56889,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _PhiBVMTCu;
 		
+		private System.Nullable<int> _PhiBVMT_ThueCu;
+		
 		private System.Nullable<int> _TongCongCu;
 		
 		private System.Nullable<int> _GiaBieuMoi;
@@ -56904,6 +56906,8 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<int> _ThueGTGTMoi;
 		
 		private System.Nullable<int> _PhiBVMTMoi;
+		
+		private System.Nullable<int> _PhiBVMT_ThueMoi;
 		
 		private System.Nullable<int> _TongCongMoi;
 		
@@ -56949,6 +56953,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnThueGTGTCuChanged();
     partial void OnPhiBVMTCuChanging(System.Nullable<int> value);
     partial void OnPhiBVMTCuChanged();
+    partial void OnPhiBVMT_ThueCuChanging(System.Nullable<int> value);
+    partial void OnPhiBVMT_ThueCuChanged();
     partial void OnTongCongCuChanging(System.Nullable<int> value);
     partial void OnTongCongCuChanged();
     partial void OnGiaBieuMoiChanging(System.Nullable<int> value);
@@ -56965,6 +56971,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnThueGTGTMoiChanged();
     partial void OnPhiBVMTMoiChanging(System.Nullable<int> value);
     partial void OnPhiBVMTMoiChanged();
+    partial void OnPhiBVMT_ThueMoiChanging(System.Nullable<int> value);
+    partial void OnPhiBVMT_ThueMoiChanged();
     partial void OnTongCongMoiChanging(System.Nullable<int> value);
     partial void OnTongCongMoiChanged();
     partial void OnTangGiamChanging(string value);
@@ -57191,6 +57199,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiBVMT_ThueCu", DbType="Int")]
+		public System.Nullable<int> PhiBVMT_ThueCu
+		{
+			get
+			{
+				return this._PhiBVMT_ThueCu;
+			}
+			set
+			{
+				if ((this._PhiBVMT_ThueCu != value))
+				{
+					this.OnPhiBVMT_ThueCuChanging(value);
+					this.SendPropertyChanging();
+					this._PhiBVMT_ThueCu = value;
+					this.SendPropertyChanged("PhiBVMT_ThueCu");
+					this.OnPhiBVMT_ThueCuChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongCongCu", DbType="Int")]
 		public System.Nullable<int> TongCongCu
 		{
@@ -57347,6 +57375,26 @@ namespace KTKS_DonKH.LinQ
 					this._PhiBVMTMoi = value;
 					this.SendPropertyChanged("PhiBVMTMoi");
 					this.OnPhiBVMTMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiBVMT_ThueMoi", DbType="Int")]
+		public System.Nullable<int> PhiBVMT_ThueMoi
+		{
+			get
+			{
+				return this._PhiBVMT_ThueMoi;
+			}
+			set
+			{
+				if ((this._PhiBVMT_ThueMoi != value))
+				{
+					this.OnPhiBVMT_ThueMoiChanging(value);
+					this.SendPropertyChanging();
+					this._PhiBVMT_ThueMoi = value;
+					this.SendPropertyChanged("PhiBVMT_ThueMoi");
+					this.OnPhiBVMT_ThueMoiChanged();
 				}
 			}
 		}

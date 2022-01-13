@@ -2765,7 +2765,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     oSheet.Cells[indexRow, 24] = dr["ThueGTGT_End"].ToString();
                     oSheet.Cells[indexRow, 25] = dr["PhiBVMT_End"].ToString();
                     oSheet.Cells[indexRow, 26] = dr["TongCong_End"].ToString();
-                    oSheet.Cells[indexRow, 27] = dr["TongCong_Thue_End"].ToString();
+                    oSheet.Cells[indexRow, 27] = dr["PhiBVMT_Thue_End"].ToString();
                 }
                 else
                 {
@@ -2808,7 +2808,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             oSheet.Cells[indexRow, 24] = dr["ThueGTGT_End"].ToString();
                             oSheet.Cells[indexRow, 25] = dr["PhiBVMT_End"].ToString();
                             oSheet.Cells[indexRow, 26] = dr["TongCong_End"].ToString();
-                            oSheet.Cells[indexRow, 27] = dr["TongCong_Thue_End"].ToString();
+                            oSheet.Cells[indexRow, 27] = dr["PhiBVMT_Thue_End"].ToString();
                         }
                 }
             }
