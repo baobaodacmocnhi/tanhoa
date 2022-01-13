@@ -3851,6 +3851,8 @@ namespace ThuTien.BaoCao {
             
             private global::System.Data.DataColumn columnPhiBVMT;
             
+            private global::System.Data.DataColumn columnPhiBVMT_Thue;
+            
             private global::System.Data.DataColumn columnTongCong;
             
             private global::System.Data.DataColumn columnTongCongSo;
@@ -3997,6 +3999,14 @@ namespace ThuTien.BaoCao {
             public global::System.Data.DataColumn PhiBVMTColumn {
                 get {
                     return this.columnPhiBVMT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PhiBVMT_ThueColumn {
+                get {
+                    return this.columnPhiBVMT_Thue;
                 }
             }
             
@@ -4192,6 +4202,7 @@ namespace ThuTien.BaoCao {
                         int GiaBan, 
                         int ThueGTGT, 
                         int PhiBVMT, 
+                        int PhiBVMT_Thue, 
                         int TongCong, 
                         int TongCongSo, 
                         string TongCongChu, 
@@ -4222,6 +4233,7 @@ namespace ThuTien.BaoCao {
                         GiaBan,
                         ThueGTGT,
                         PhiBVMT,
+                        PhiBVMT_Thue,
                         TongCong,
                         TongCongSo,
                         TongCongChu,
@@ -4272,6 +4284,7 @@ namespace ThuTien.BaoCao {
                 this.columnGiaBan = base.Columns["GiaBan"];
                 this.columnThueGTGT = base.Columns["ThueGTGT"];
                 this.columnPhiBVMT = base.Columns["PhiBVMT"];
+                this.columnPhiBVMT_Thue = base.Columns["PhiBVMT_Thue"];
                 this.columnTongCong = base.Columns["TongCong"];
                 this.columnTongCongSo = base.Columns["TongCongSo"];
                 this.columnTongCongChu = base.Columns["TongCongChu"];
@@ -4315,6 +4328,8 @@ namespace ThuTien.BaoCao {
                 base.Columns.Add(this.columnThueGTGT);
                 this.columnPhiBVMT = new global::System.Data.DataColumn("PhiBVMT", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhiBVMT);
+                this.columnPhiBVMT_Thue = new global::System.Data.DataColumn("PhiBVMT_Thue", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhiBVMT_Thue);
                 this.columnTongCong = new global::System.Data.DataColumn("TongCong", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongCong);
                 this.columnTongCongSo = new global::System.Data.DataColumn("TongCongSo", typeof(int), null, global::System.Data.MappingType.Element);
@@ -16471,6 +16486,22 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int PhiBVMT_Thue {
+                get {
+                    try {
+                        return ((int)(this[this.tableTongHopNo.PhiBVMT_ThueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PhiBVMT_Thue\' in table \'TongHopNo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTongHopNo.PhiBVMT_ThueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int TongCong {
                 get {
                     try {
@@ -16875,6 +16906,18 @@ namespace ThuTien.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPhiBVMTNull() {
                 this[this.tableTongHopNo.PhiBVMTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPhiBVMT_ThueNull() {
+                return this.IsNull(this.tableTongHopNo.PhiBVMT_ThueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPhiBVMT_ThueNull() {
+                this[this.tableTongHopNo.PhiBVMT_ThueColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

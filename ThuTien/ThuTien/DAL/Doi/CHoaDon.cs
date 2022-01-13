@@ -10124,6 +10124,7 @@ namespace ThuTien.DAL.Doi
                             itemHD.GIABAN,
                             ThueGTGT = itemHD.THUE,
                             PhiBVMT = itemHD.PHI,
+                            PhiBVMT_Thue = itemHD.ThueGTGT_TDVTN,
                             itemHD.TONGCONG,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,

@@ -411,7 +411,8 @@ namespace ThuTien.GUI.HanhThu
                         dr["TongGiaBan"] = item["TongGiaBan"].ToString();
                         dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
                         dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
-                        dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"].ToString();
+                        if (item["TongPhiBVMT_Thue"].ToString() != "")
+                            dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"].ToString();
                         dr["TongCong"] = item["TongCong"].ToString();
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         ds.Tables["PhieuDangNgan"].Rows.Add(dr);
@@ -449,7 +450,8 @@ namespace ThuTien.GUI.HanhThu
                         dr["TongGiaBan"] = item["TongGiaBan"].ToString();
                         dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
                         dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
-                        dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"].ToString();
+                        if (item["TongPhiBVMT_Thue"].ToString() != "")
+                            dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"].ToString();
                         dr["TongCong"] = item["TongCong"].ToString();
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         dsPhanKyLon.Tables["PhieuDangNgan"].Rows.Add(dr);
@@ -470,7 +472,8 @@ namespace ThuTien.GUI.HanhThu
                         dr["TongGiaBan"] = item["TongGiaBan"].ToString();
                         dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
                         dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
-                        dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"].ToString();
+                        if (item["TongPhiBVMT_Thue"].ToString() != "")
+                            dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"].ToString();
                         dr["TongCong"] = item["TongCong"].ToString();
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         ds.Tables["PhieuDangNgan"].Rows.Add(dr);
