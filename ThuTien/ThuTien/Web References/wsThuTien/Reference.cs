@@ -2416,15 +2416,19 @@ namespace ThuTien.wsThuTien {
                     int TongDinhMuc, 
                     int DinhMucHN, 
                     int TieuThu, 
-                    ref int TienNuocCu, 
-                    ref string ChiTietCu, 
-                    ref int TienNuocMoi, 
-                    ref string ChiTietMoi, 
+                    ref int TienNuocNamCu, 
+                    ref string ChiTietNamCu, 
+                    ref int TienNuocNamMoi, 
+                    ref string ChiTietNamMoi, 
                     ref int TieuThu_DieuChinhGia, 
-                    ref int PhiBVMTCu, 
-                    ref string ChiTietPhiBVMTCu, 
-                    ref int PhiBVMTMoi, 
-                    ref string ChiTietPhiBVMTMoi) {
+                    ref int PhiBVMTNamCu, 
+                    ref string ChiTietPhiBVMTNamCu, 
+                    ref int PhiBVMTNamMoi, 
+                    ref string ChiTietPhiBVMTNamMoi, 
+                    ref int TienNuoc, 
+                    ref int ThueGTGT, 
+                    ref int TDVTN, 
+                    ref int ThueTDVTN) {
             object[] results = this.Invoke("TinhTienNuoc", new object[] {
                         KhongApGiaGiam,
                         ApGiaNuocCu,
@@ -2443,24 +2447,32 @@ namespace ThuTien.wsThuTien {
                         TongDinhMuc,
                         DinhMucHN,
                         TieuThu,
-                        TienNuocCu,
-                        ChiTietCu,
-                        TienNuocMoi,
-                        ChiTietMoi,
+                        TienNuocNamCu,
+                        ChiTietNamCu,
+                        TienNuocNamMoi,
+                        ChiTietNamMoi,
                         TieuThu_DieuChinhGia,
-                        PhiBVMTCu,
-                        ChiTietPhiBVMTCu,
-                        PhiBVMTMoi,
-                        ChiTietPhiBVMTMoi});
-            TienNuocCu = ((int)(results[0]));
-            ChiTietCu = ((string)(results[1]));
-            TienNuocMoi = ((int)(results[2]));
-            ChiTietMoi = ((string)(results[3]));
+                        PhiBVMTNamCu,
+                        ChiTietPhiBVMTNamCu,
+                        PhiBVMTNamMoi,
+                        ChiTietPhiBVMTNamMoi,
+                        TienNuoc,
+                        ThueGTGT,
+                        TDVTN,
+                        ThueTDVTN});
+            TienNuocNamCu = ((int)(results[0]));
+            ChiTietNamCu = ((string)(results[1]));
+            TienNuocNamMoi = ((int)(results[2]));
+            ChiTietNamMoi = ((string)(results[3]));
             TieuThu_DieuChinhGia = ((int)(results[4]));
-            PhiBVMTCu = ((int)(results[5]));
-            ChiTietPhiBVMTCu = ((string)(results[6]));
-            PhiBVMTMoi = ((int)(results[7]));
-            ChiTietPhiBVMTMoi = ((string)(results[8]));
+            PhiBVMTNamCu = ((int)(results[5]));
+            ChiTietPhiBVMTNamCu = ((string)(results[6]));
+            PhiBVMTNamMoi = ((int)(results[7]));
+            ChiTietPhiBVMTNamMoi = ((string)(results[8]));
+            TienNuoc = ((int)(results[9]));
+            ThueGTGT = ((int)(results[10]));
+            TDVTN = ((int)(results[11]));
+            ThueTDVTN = ((int)(results[12]));
         }
         
         /// <remarks/>
@@ -2482,16 +2494,20 @@ namespace ThuTien.wsThuTien {
                     int TongDinhMuc, 
                     int DinhMucHN, 
                     int TieuThu, 
-                    int TienNuocCu, 
-                    string ChiTietCu, 
-                    int TienNuocMoi, 
-                    string ChiTietMoi, 
+                    int TienNuocNamCu, 
+                    string ChiTietNamCu, 
+                    int TienNuocNamMoi, 
+                    string ChiTietNamMoi, 
                     int TieuThu_DieuChinhGia, 
-                    int PhiBVMTCu, 
-                    string ChiTietPhiBVMTCu, 
-                    int PhiBVMTMoi, 
-                    string ChiTietPhiBVMTMoi) {
-            this.TinhTienNuocAsync(KhongApGiaGiam, ApGiaNuocCu, DieuChinhGia, GiaDieuChinh, DanhBo, Ky, Nam, TuNgay, DenNgay, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, TienNuocCu, ChiTietCu, TienNuocMoi, ChiTietMoi, TieuThu_DieuChinhGia, PhiBVMTCu, ChiTietPhiBVMTCu, PhiBVMTMoi, ChiTietPhiBVMTMoi, null);
+                    int PhiBVMTNamCu, 
+                    string ChiTietPhiBVMTNamCu, 
+                    int PhiBVMTNamMoi, 
+                    string ChiTietPhiBVMTNamMoi, 
+                    int TienNuoc, 
+                    int ThueGTGT, 
+                    int TDVTN, 
+                    int ThueTDVTN) {
+            this.TinhTienNuocAsync(KhongApGiaGiam, ApGiaNuocCu, DieuChinhGia, GiaDieuChinh, DanhBo, Ky, Nam, TuNgay, DenNgay, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, TienNuocNamCu, ChiTietNamCu, TienNuocNamMoi, ChiTietNamMoi, TieuThu_DieuChinhGia, PhiBVMTNamCu, ChiTietPhiBVMTNamCu, PhiBVMTNamMoi, ChiTietPhiBVMTNamMoi, TienNuoc, ThueGTGT, TDVTN, ThueTDVTN, null);
         }
         
         /// <remarks/>
@@ -2513,15 +2529,19 @@ namespace ThuTien.wsThuTien {
                     int TongDinhMuc, 
                     int DinhMucHN, 
                     int TieuThu, 
-                    int TienNuocCu, 
-                    string ChiTietCu, 
-                    int TienNuocMoi, 
-                    string ChiTietMoi, 
+                    int TienNuocNamCu, 
+                    string ChiTietNamCu, 
+                    int TienNuocNamMoi, 
+                    string ChiTietNamMoi, 
                     int TieuThu_DieuChinhGia, 
-                    int PhiBVMTCu, 
-                    string ChiTietPhiBVMTCu, 
-                    int PhiBVMTMoi, 
-                    string ChiTietPhiBVMTMoi, 
+                    int PhiBVMTNamCu, 
+                    string ChiTietPhiBVMTNamCu, 
+                    int PhiBVMTNamMoi, 
+                    string ChiTietPhiBVMTNamMoi, 
+                    int TienNuoc, 
+                    int ThueGTGT, 
+                    int TDVTN, 
+                    int ThueTDVTN, 
                     object userState) {
             if ((this.TinhTienNuocOperationCompleted == null)) {
                 this.TinhTienNuocOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTinhTienNuocOperationCompleted);
@@ -2544,15 +2564,19 @@ namespace ThuTien.wsThuTien {
                         TongDinhMuc,
                         DinhMucHN,
                         TieuThu,
-                        TienNuocCu,
-                        ChiTietCu,
-                        TienNuocMoi,
-                        ChiTietMoi,
+                        TienNuocNamCu,
+                        ChiTietNamCu,
+                        TienNuocNamMoi,
+                        ChiTietNamMoi,
                         TieuThu_DieuChinhGia,
-                        PhiBVMTCu,
-                        ChiTietPhiBVMTCu,
-                        PhiBVMTMoi,
-                        ChiTietPhiBVMTMoi}, this.TinhTienNuocOperationCompleted, userState);
+                        PhiBVMTNamCu,
+                        ChiTietPhiBVMTNamCu,
+                        PhiBVMTNamMoi,
+                        ChiTietPhiBVMTNamMoi,
+                        TienNuoc,
+                        ThueGTGT,
+                        TDVTN,
+                        ThueTDVTN}, this.TinhTienNuocOperationCompleted, userState);
         }
         
         private void OnTinhTienNuocOperationCompleted(object arg) {
@@ -4133,7 +4157,7 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
-        public int TienNuocCu {
+        public int TienNuocNamCu {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[0]));
@@ -4141,7 +4165,7 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
-        public string ChiTietCu {
+        public string ChiTietNamCu {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[1]));
@@ -4149,7 +4173,7 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
-        public int TienNuocMoi {
+        public int TienNuocNamMoi {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[2]));
@@ -4157,7 +4181,7 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
-        public string ChiTietMoi {
+        public string ChiTietNamMoi {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[3]));
@@ -4173,7 +4197,7 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
-        public int PhiBVMTCu {
+        public int PhiBVMTNamCu {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[5]));
@@ -4181,7 +4205,7 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
-        public string ChiTietPhiBVMTCu {
+        public string ChiTietPhiBVMTNamCu {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[6]));
@@ -4189,7 +4213,7 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
-        public int PhiBVMTMoi {
+        public int PhiBVMTNamMoi {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[7]));
@@ -4197,10 +4221,42 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
-        public string ChiTietPhiBVMTMoi {
+        public string ChiTietPhiBVMTNamMoi {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[8]));
+            }
+        }
+        
+        /// <remarks/>
+        public int TienNuoc {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[9]));
+            }
+        }
+        
+        /// <remarks/>
+        public int ThueGTGT {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[10]));
+            }
+        }
+        
+        /// <remarks/>
+        public int TDVTN {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[11]));
+            }
+        }
+        
+        /// <remarks/>
+        public int ThueTDVTN {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[12]));
             }
         }
     }
