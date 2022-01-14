@@ -31,7 +31,9 @@ namespace DocSo_PC.wrDHN {
         
         private System.Threading.SendOrPostCallback insertBillingOperationCompleted;
         
-        private System.Threading.SendOrPostCallback tinhCodeTieuThuOperationCompleted;
+        private System.Threading.SendOrPostCallback tinhCodeTieuThu_TieuThuOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback tinhCodeTieuThu_CSMOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -75,7 +77,10 @@ namespace DocSo_PC.wrDHN {
         public event insertBillingCompletedEventHandler insertBillingCompleted;
         
         /// <remarks/>
-        public event tinhCodeTieuThuCompletedEventHandler tinhCodeTieuThuCompleted;
+        public event tinhCodeTieuThu_TieuThuCompletedEventHandler tinhCodeTieuThu_TieuThuCompleted;
+        
+        /// <remarks/>
+        public event tinhCodeTieuThu_CSMCompletedEventHandler tinhCodeTieuThu_CSMCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/insertBilling", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -109,9 +114,46 @@ namespace DocSo_PC.wrDHN {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/tinhCodeTieuThu", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool tinhCodeTieuThu(string DocSoID, string Code, int CSM, out int TieuThu, out int GiaBan, out int ThueGTGT, out int PhiBVMT, out int TongCong) {
-            object[] results = this.Invoke("tinhCodeTieuThu", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/tinhCodeTieuThu_TieuThu", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool tinhCodeTieuThu_TieuThu(string DocSoID, string Code, int TieuThu, out int GiaBan, out int ThueGTGT, out int PhiBVMT, out int TongCong) {
+            object[] results = this.Invoke("tinhCodeTieuThu_TieuThu", new object[] {
+                        DocSoID,
+                        Code,
+                        TieuThu});
+            GiaBan = ((int)(results[1]));
+            ThueGTGT = ((int)(results[2]));
+            PhiBVMT = ((int)(results[3]));
+            TongCong = ((int)(results[4]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void tinhCodeTieuThu_TieuThuAsync(string DocSoID, string Code, int TieuThu) {
+            this.tinhCodeTieuThu_TieuThuAsync(DocSoID, Code, TieuThu, null);
+        }
+        
+        /// <remarks/>
+        public void tinhCodeTieuThu_TieuThuAsync(string DocSoID, string Code, int TieuThu, object userState) {
+            if ((this.tinhCodeTieuThu_TieuThuOperationCompleted == null)) {
+                this.tinhCodeTieuThu_TieuThuOperationCompleted = new System.Threading.SendOrPostCallback(this.OntinhCodeTieuThu_TieuThuOperationCompleted);
+            }
+            this.InvokeAsync("tinhCodeTieuThu_TieuThu", new object[] {
+                        DocSoID,
+                        Code,
+                        TieuThu}, this.tinhCodeTieuThu_TieuThuOperationCompleted, userState);
+        }
+        
+        private void OntinhCodeTieuThu_TieuThuOperationCompleted(object arg) {
+            if ((this.tinhCodeTieuThu_TieuThuCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.tinhCodeTieuThu_TieuThuCompleted(this, new tinhCodeTieuThu_TieuThuCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/tinhCodeTieuThu_CSM", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool tinhCodeTieuThu_CSM(string DocSoID, string Code, int CSM, out int TieuThu, out int GiaBan, out int ThueGTGT, out int PhiBVMT, out int TongCong) {
+            object[] results = this.Invoke("tinhCodeTieuThu_CSM", new object[] {
                         DocSoID,
                         Code,
                         CSM});
@@ -124,25 +166,25 @@ namespace DocSo_PC.wrDHN {
         }
         
         /// <remarks/>
-        public void tinhCodeTieuThuAsync(string DocSoID, string Code, int CSM) {
-            this.tinhCodeTieuThuAsync(DocSoID, Code, CSM, null);
+        public void tinhCodeTieuThu_CSMAsync(string DocSoID, string Code, int CSM) {
+            this.tinhCodeTieuThu_CSMAsync(DocSoID, Code, CSM, null);
         }
         
         /// <remarks/>
-        public void tinhCodeTieuThuAsync(string DocSoID, string Code, int CSM, object userState) {
-            if ((this.tinhCodeTieuThuOperationCompleted == null)) {
-                this.tinhCodeTieuThuOperationCompleted = new System.Threading.SendOrPostCallback(this.OntinhCodeTieuThuOperationCompleted);
+        public void tinhCodeTieuThu_CSMAsync(string DocSoID, string Code, int CSM, object userState) {
+            if ((this.tinhCodeTieuThu_CSMOperationCompleted == null)) {
+                this.tinhCodeTieuThu_CSMOperationCompleted = new System.Threading.SendOrPostCallback(this.OntinhCodeTieuThu_CSMOperationCompleted);
             }
-            this.InvokeAsync("tinhCodeTieuThu", new object[] {
+            this.InvokeAsync("tinhCodeTieuThu_CSM", new object[] {
                         DocSoID,
                         Code,
-                        CSM}, this.tinhCodeTieuThuOperationCompleted, userState);
+                        CSM}, this.tinhCodeTieuThu_CSMOperationCompleted, userState);
         }
         
-        private void OntinhCodeTieuThuOperationCompleted(object arg) {
-            if ((this.tinhCodeTieuThuCompleted != null)) {
+        private void OntinhCodeTieuThu_CSMOperationCompleted(object arg) {
+            if ((this.tinhCodeTieuThu_CSMCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.tinhCodeTieuThuCompleted(this, new tinhCodeTieuThuCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.tinhCodeTieuThu_CSMCompleted(this, new tinhCodeTieuThu_CSMCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -193,17 +235,75 @@ namespace DocSo_PC.wrDHN {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void tinhCodeTieuThuCompletedEventHandler(object sender, tinhCodeTieuThuCompletedEventArgs e);
+    public delegate void tinhCodeTieuThu_TieuThuCompletedEventHandler(object sender, tinhCodeTieuThu_TieuThuCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class tinhCodeTieuThuCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class tinhCodeTieuThu_TieuThuCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal tinhCodeTieuThuCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal tinhCodeTieuThu_TieuThuCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public int GiaBan {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[1]));
+            }
+        }
+        
+        /// <remarks/>
+        public int ThueGTGT {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[2]));
+            }
+        }
+        
+        /// <remarks/>
+        public int PhiBVMT {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[3]));
+            }
+        }
+        
+        /// <remarks/>
+        public int TongCong {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[4]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void tinhCodeTieuThu_CSMCompletedEventHandler(object sender, tinhCodeTieuThu_CSMCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class tinhCodeTieuThu_CSMCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal tinhCodeTieuThu_CSMCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

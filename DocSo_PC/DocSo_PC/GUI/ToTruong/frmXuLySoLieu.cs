@@ -45,7 +45,7 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbNam.DataSource = _cDocSo.getDS_Nam();
                 cmbNam.DisplayMember = "Nam";
                 cmbNam.ValueMember = "Nam";
-                cmbKy.SelectedItem = DateTime.Now.Month.ToString();
+                cmbKy.SelectedItem = DateTime.Now.Month.ToString("00");
                 cmbDot.SelectedIndex = 0;
                 DataTable dtCode = _cDocSo.getDS_Code();
                 DataRow dr = dtCode.NewRow();
@@ -62,8 +62,12 @@ namespace DocSo_PC.GUI.ToTruong
                 if (CNguoiDung.Doi)
                 {
                     cmbTo.Visible = true;
-
-                    cmbTo.DataSource = _cTo.getDS_HanhThu();
+                    List<To> lst = _cTo.getDS_HanhThu();
+                    To en = new To();
+                    en.MaTo = 0;
+                    en.TenTo = "Tất Cả";
+                    lst.Insert(0, en);
+                    cmbTo.DataSource = lst;
                     cmbTo.DisplayMember = "TenTo";
                     cmbTo.ValueMember = "MaTo";
                     cmbTo.SelectedIndex = -1;
@@ -74,6 +78,7 @@ namespace DocSo_PC.GUI.ToTruong
                     loadMay(CNguoiDung.MaTo.ToString());
                 }
                 _flagLoadFirst = true;
+
             }
             catch (Exception ex)
             {
@@ -85,14 +90,21 @@ namespace DocSo_PC.GUI.ToTruong
         {
             try
             {
-                DataTable dtMay = _cMayDS.getDS(MaTo);
+                DataTable dtMay = new DataTable();
+                if (MaTo == "0")
+                    for (int i = 1; i < cmbTo.Items.Count; i++)
+                    {
+                        dtMay.Merge(_cMayDS.getDS(((To)cmbTo.Items[i]).MaTo.ToString()));
+                    }
+                else
+                    dtMay = _cMayDS.getDS(MaTo);
                 DataRow dr = dtMay.NewRow();
                 dr["May"] = "Tất Cả";
                 dtMay.Rows.InsertAt(dr, 0);
                 cmbMay.DataSource = dtMay;
                 cmbMay.DisplayMember = "May";
                 cmbMay.ValueMember = "May";
-                //cmbMay.SelectedIndex = ;
+                cmbMay.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -109,6 +121,7 @@ namespace DocSo_PC.GUI.ToTruong
                     TB_DULIEUKHACHHANG dhn = _cDHN.get(_docso.DanhBa);
                     if (dhn != null)
                     {
+                        txtCSC.Text = _docso.CSCu.Value.ToString();
                         txtHoTen.Text = dhn.HOTEN;
                         txtDanhBo.Text = dhn.DANHBO.Insert(7, " ").Insert(4, " ");
                         txtHieu.Text = dhn.HIEUDH;
@@ -172,7 +185,14 @@ namespace DocSo_PC.GUI.ToTruong
             }
             else
             {
-
+                if (txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", "") != "")
+                {
+                    dt = _cDocSo.getDS_XuLy_DanhBo(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", ""));
+                }
+                else
+                {
+                    dt = _cDocSo.getDS_XuLy(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString(), cmbCode.SelectedValue.ToString(), ref dtTong);
+                }
             }
             dgvDanhSach.DataSource = dt;
             if (dtTong != null && dtTong.Rows.Count > 0)
@@ -362,21 +382,24 @@ namespace DocSo_PC.GUI.ToTruong
                             MessageBox.Show("Năm " + _docso.Nam.Value.ToString() + " Kỳ " + _docso.Ky + " Đợt " + _docso.Dot + " đã chuyển billing", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        int GiaBan = 0, ThueGTGT = 0, PhiBVMT = 0, TongCong = 0, TieuThu = 0;
-                        if (wsDHN.tinhCodeTieuThu(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtCSM.Text.Trim()), out TieuThu, out GiaBan, out ThueGTGT, out PhiBVMT, out TongCong) == true)
+                        int TienNuoc = 0, ThueGTGT = 0, TDVTN = 0, ThueTDVTN = 0, TieuThu = 0;
+                        //if (wsDHN.tinhCodeTieuThu_CSM(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtCSM.Text.Trim()), out TieuThu, out GiaBan, out ThueGTGT, out PhiBVMT, out TongCong) == true)
+                        if (wsDHN.tinhCodeTieuThu_TieuThu(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtTieuThu.Text.Trim()), out TienNuoc, out ThueGTGT, out TDVTN, out ThueTDVTN) == true)
                         {
                             _docso.CodeMoi = cmbCodeMoi.SelectedValue.ToString();
                             _docso.TTDHNMoi = _cDocSo.getTTDHNCode(_docso.CodeMoi);
                             _docso.CSCu = int.Parse(txtCSC.Text.Trim());
                             _docso.CSMoi = int.Parse(txtCSM.Text.Trim());
-                            _docso.TieuThuMoi = TieuThu;
+                            //_docso.TieuThuMoi = TieuThu;
+                            _docso.TieuThuMoi = int.Parse(txtTieuThu.Text.Trim());
 
-                            _docso.TienNuoc = GiaBan;
+                            _docso.TienNuoc = TienNuoc;
                             _docso.Thue = ThueGTGT;
-                            _docso.BVMT = PhiBVMT;
-                            _docso.TongTien = TongCong;
+                            _docso.BVMT = TDVTN;
+                            _docso.TongTien = TienNuoc + ThueGTGT + TDVTN + ThueTDVTN;
                             _cDocSo.SubmitChanges();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnXem.PerformClick();
                         }
                     }
                 }
@@ -417,7 +440,7 @@ namespace DocSo_PC.GUI.ToTruong
                             MessageBox.Show("Năm " + cmbNam.SelectedValue.ToString() + " Kỳ " + cmbKy.SelectedItem.ToString() + " Đợt " + cmbDot.SelectedItem.ToString() + " đã chuyển billing", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        DataTable dt=new DataTable();
+                        DataTable dt = new DataTable();
                         switch (cmbDieuChinhXuat.SelectedItem.ToString())
                         {
                             case "Điều chỉnh Code 5N, 5K":

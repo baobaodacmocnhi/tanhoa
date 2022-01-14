@@ -91,7 +91,7 @@ namespace DocSo_PC.DAL.Doi
 
         public string getTTDHNCode(string Code)
         {
-            return _cDAL.ExecuteQuery_ReturnOneValue("select TTDHN from TTDHN where Code=" + Code).ToString();
+            return _cDAL.ExecuteQuery_ReturnOneValue("select TTDHN from TTDHN where Code='" + Code + "'").ToString();
         }
 
 
@@ -214,18 +214,22 @@ namespace DocSo_PC.DAL.Doi
 
         public DataTable getDS_XuLy(string MaTo, string Nam, string Ky, string Dot, string May, string Code, ref DataTable dtTong)
         {
+            if (MaTo == "0")
+                MaTo = "";
+            else
+                MaTo = "and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ")";
             if (May == "Tất Cả")
                 May = "";
             if (Code == "Tất Cả")
                 Code = "";
-            string sql = "select * from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ") and May like '%" + May + "%' and CodeMoi like '%" + Code + "%'"
+            string sql = "select * from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " " + MaTo + " and May like '%" + May + "%' and CodeMoi like '%" + Code + "%'"
                         + " order by MLT2 asc";
             string sql2 = "select TongSL=COUNT(DocSoID)"
                         + " ,SLDaGhi=COUNT(case when CodeMoi!='' then 1 else null end)"
                         + " ,SLChuaGhi=COUNT(case when CodeMoi='' then 1 else null end)"
                         + " ,SanLuong=SUM(TieuThuMoi)"
                         + " ,SLHD0=COUNT(case when TieuThuMoi=0 then 1 else null end)"
-                        + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ") and May like '%" + May + "%' and CodeMoi like '%" + Code + "%'";
+                        + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " " + MaTo + " and May like '%" + May + "%' and CodeMoi like '%" + Code + "%'";
             dtTong = _cDAL.ExecuteQuery_DataTable(sql2);
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
@@ -250,7 +254,7 @@ namespace DocSo_PC.DAL.Doi
         {
             DataTable dt;
             string sql = "select Col,Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0 from"
-            + "      (select 'Ky'+convert(varchar(5),(2021*12+12)-Nam*12-Ky) as KyN,Col,Val"
+            + "      (select 'Ky'+convert(varchar(5),(2021*12+12)-Nam*12-Ky+1) as KyN,Col,Val"
             + "      from DocSo cross apply"
             + "          (values"
             + "              (N'1. Kỳ',Ky+'/'+str(Nam,4,0)),"
@@ -263,7 +267,7 @@ namespace DocSo_PC.DAL.Doi
             + "  pivot (max(Val) for KyN in (Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0)) pvt";
             dt = _cDAL.ExecuteQuery_DataTable(sql);
             sql = "select Col,Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0 from"
-            + "      (select 'Ky'+convert(varchar(5),(2021*12+12)-Nam*12-Ky) as KyN,Col,Val"
+            + "      (select 'Ky'+convert(varchar(5),(2021*12+12)-Nam*12-Ky+1) as KyN,Col,Val"
             + "      from server9.HOADON_TA.dbo.HOADON cross apply"
             + "          (values"
             + "              (N'6. Tiêu Thụ HĐ',convert(varchar(10),TIEUTHU)),"
@@ -278,7 +282,7 @@ namespace DocSo_PC.DAL.Doi
 
         public int tinhCodeTieuThu(string DocSoID, string Code, int CSM)
         {
-            string sql = "EXEC	[dbo].[spTinhTieuThu]"
+            string sql = "EXEC [dbo].[spTinhTieuThu]"
                     + " @DANHBO = N'" + DocSoID.Substring(6, 11) + "',"
                     + " @KY = " + DocSoID.Substring(4, 2) + ","
                     + " @NAM = " + DocSoID.Substring(0, 4) + ","
@@ -299,8 +303,8 @@ namespace DocSo_PC.DAL.Doi
         public bool updateDS_Code5K5N(string Nam, string Ky, string Dot)
         {
             string sql = "update DocSo"
-                            + "set CSCu=CSMoi-TieuThuMoi,NgayCapNhat=getdate(),NVCapNhat=N'" + CNguoiDung.HoTen + "'"
-                            + "whereNam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi in ('5N','5K')";
+                            + " set CSCu=CSMoi-TieuThuMoi,NgayCapNhat=getdate(),NVCapNhat=N'" + CNguoiDung.HoTen + "'"
+                            + " where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi in ('5N','5K')";
             return _cDAL.ExecuteNonQuery(sql);
         }
 

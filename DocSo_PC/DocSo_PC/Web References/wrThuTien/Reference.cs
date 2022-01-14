@@ -53,6 +53,8 @@ namespace DocSo_PC.wrThuTien {
         
         private System.Threading.SendOrPostCallback getDS_NhanVienOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getDS_NamOperationCompleted;
+        
         private System.Threading.SendOrPostCallback SendNotificationToClientOperationCompleted;
         
         private System.Threading.SendOrPostCallback getDSHoaDonTon_NhanVienOperationCompleted;
@@ -220,6 +222,9 @@ namespace DocSo_PC.wrThuTien {
         
         /// <remarks/>
         public event getDS_NhanVienCompletedEventHandler getDS_NhanVienCompleted;
+        
+        /// <remarks/>
+        public event getDS_NamCompletedEventHandler getDS_NamCompleted;
         
         /// <remarks/>
         public event SendNotificationToClientCompletedEventHandler SendNotificationToClientCompleted;
@@ -721,6 +726,33 @@ namespace DocSo_PC.wrThuTien {
             if ((this.getDS_NhanVienCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getDS_NhanVienCompleted(this, new getDS_NhanVienCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_Nam", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getDS_Nam() {
+            object[] results = this.Invoke("getDS_Nam", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDS_NamAsync() {
+            this.getDS_NamAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getDS_NamAsync(object userState) {
+            if ((this.getDS_NamOperationCompleted == null)) {
+                this.getDS_NamOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_NamOperationCompleted);
+            }
+            this.InvokeAsync("getDS_Nam", new object[0], this.getDS_NamOperationCompleted, userState);
+        }
+        
+        private void OngetDS_NamOperationCompleted(object arg) {
+            if ((this.getDS_NamCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDS_NamCompleted(this, new getDS_NamCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2384,15 +2416,19 @@ namespace DocSo_PC.wrThuTien {
                     int TongDinhMuc, 
                     int DinhMucHN, 
                     int TieuThu, 
-                    ref int TienNuocCu, 
-                    ref string ChiTietCu, 
-                    ref int TienNuocMoi, 
-                    ref string ChiTietMoi, 
+                    ref int TienNuocNamCu, 
+                    ref string ChiTietNamCu, 
+                    ref int TienNuocNamMoi, 
+                    ref string ChiTietNamMoi, 
                     ref int TieuThu_DieuChinhGia, 
-                    ref int PhiBVMTCu, 
-                    ref string ChiTietPhiBVMTCu, 
-                    ref int PhiBVMTMoi, 
-                    ref string ChiTietPhiBVMTMoi) {
+                    ref int PhiBVMTNamCu, 
+                    ref string ChiTietPhiBVMTNamCu, 
+                    ref int PhiBVMTNamMoi, 
+                    ref string ChiTietPhiBVMTNamMoi, 
+                    ref int TienNuoc, 
+                    ref int ThueGTGT, 
+                    ref int TDVTN, 
+                    ref int ThueTDVTN) {
             object[] results = this.Invoke("TinhTienNuoc", new object[] {
                         KhongApGiaGiam,
                         ApGiaNuocCu,
@@ -2411,24 +2447,32 @@ namespace DocSo_PC.wrThuTien {
                         TongDinhMuc,
                         DinhMucHN,
                         TieuThu,
-                        TienNuocCu,
-                        ChiTietCu,
-                        TienNuocMoi,
-                        ChiTietMoi,
+                        TienNuocNamCu,
+                        ChiTietNamCu,
+                        TienNuocNamMoi,
+                        ChiTietNamMoi,
                         TieuThu_DieuChinhGia,
-                        PhiBVMTCu,
-                        ChiTietPhiBVMTCu,
-                        PhiBVMTMoi,
-                        ChiTietPhiBVMTMoi});
-            TienNuocCu = ((int)(results[0]));
-            ChiTietCu = ((string)(results[1]));
-            TienNuocMoi = ((int)(results[2]));
-            ChiTietMoi = ((string)(results[3]));
+                        PhiBVMTNamCu,
+                        ChiTietPhiBVMTNamCu,
+                        PhiBVMTNamMoi,
+                        ChiTietPhiBVMTNamMoi,
+                        TienNuoc,
+                        ThueGTGT,
+                        TDVTN,
+                        ThueTDVTN});
+            TienNuocNamCu = ((int)(results[0]));
+            ChiTietNamCu = ((string)(results[1]));
+            TienNuocNamMoi = ((int)(results[2]));
+            ChiTietNamMoi = ((string)(results[3]));
             TieuThu_DieuChinhGia = ((int)(results[4]));
-            PhiBVMTCu = ((int)(results[5]));
-            ChiTietPhiBVMTCu = ((string)(results[6]));
-            PhiBVMTMoi = ((int)(results[7]));
-            ChiTietPhiBVMTMoi = ((string)(results[8]));
+            PhiBVMTNamCu = ((int)(results[5]));
+            ChiTietPhiBVMTNamCu = ((string)(results[6]));
+            PhiBVMTNamMoi = ((int)(results[7]));
+            ChiTietPhiBVMTNamMoi = ((string)(results[8]));
+            TienNuoc = ((int)(results[9]));
+            ThueGTGT = ((int)(results[10]));
+            TDVTN = ((int)(results[11]));
+            ThueTDVTN = ((int)(results[12]));
         }
         
         /// <remarks/>
@@ -2450,16 +2494,20 @@ namespace DocSo_PC.wrThuTien {
                     int TongDinhMuc, 
                     int DinhMucHN, 
                     int TieuThu, 
-                    int TienNuocCu, 
-                    string ChiTietCu, 
-                    int TienNuocMoi, 
-                    string ChiTietMoi, 
+                    int TienNuocNamCu, 
+                    string ChiTietNamCu, 
+                    int TienNuocNamMoi, 
+                    string ChiTietNamMoi, 
                     int TieuThu_DieuChinhGia, 
-                    int PhiBVMTCu, 
-                    string ChiTietPhiBVMTCu, 
-                    int PhiBVMTMoi, 
-                    string ChiTietPhiBVMTMoi) {
-            this.TinhTienNuocAsync(KhongApGiaGiam, ApGiaNuocCu, DieuChinhGia, GiaDieuChinh, DanhBo, Ky, Nam, TuNgay, DenNgay, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, TienNuocCu, ChiTietCu, TienNuocMoi, ChiTietMoi, TieuThu_DieuChinhGia, PhiBVMTCu, ChiTietPhiBVMTCu, PhiBVMTMoi, ChiTietPhiBVMTMoi, null);
+                    int PhiBVMTNamCu, 
+                    string ChiTietPhiBVMTNamCu, 
+                    int PhiBVMTNamMoi, 
+                    string ChiTietPhiBVMTNamMoi, 
+                    int TienNuoc, 
+                    int ThueGTGT, 
+                    int TDVTN, 
+                    int ThueTDVTN) {
+            this.TinhTienNuocAsync(KhongApGiaGiam, ApGiaNuocCu, DieuChinhGia, GiaDieuChinh, DanhBo, Ky, Nam, TuNgay, DenNgay, GiaBieu, TyLeSH, TyLeSX, TyLeDV, TyLeHCSN, TongDinhMuc, DinhMucHN, TieuThu, TienNuocNamCu, ChiTietNamCu, TienNuocNamMoi, ChiTietNamMoi, TieuThu_DieuChinhGia, PhiBVMTNamCu, ChiTietPhiBVMTNamCu, PhiBVMTNamMoi, ChiTietPhiBVMTNamMoi, TienNuoc, ThueGTGT, TDVTN, ThueTDVTN, null);
         }
         
         /// <remarks/>
@@ -2481,15 +2529,19 @@ namespace DocSo_PC.wrThuTien {
                     int TongDinhMuc, 
                     int DinhMucHN, 
                     int TieuThu, 
-                    int TienNuocCu, 
-                    string ChiTietCu, 
-                    int TienNuocMoi, 
-                    string ChiTietMoi, 
+                    int TienNuocNamCu, 
+                    string ChiTietNamCu, 
+                    int TienNuocNamMoi, 
+                    string ChiTietNamMoi, 
                     int TieuThu_DieuChinhGia, 
-                    int PhiBVMTCu, 
-                    string ChiTietPhiBVMTCu, 
-                    int PhiBVMTMoi, 
-                    string ChiTietPhiBVMTMoi, 
+                    int PhiBVMTNamCu, 
+                    string ChiTietPhiBVMTNamCu, 
+                    int PhiBVMTNamMoi, 
+                    string ChiTietPhiBVMTNamMoi, 
+                    int TienNuoc, 
+                    int ThueGTGT, 
+                    int TDVTN, 
+                    int ThueTDVTN, 
                     object userState) {
             if ((this.TinhTienNuocOperationCompleted == null)) {
                 this.TinhTienNuocOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTinhTienNuocOperationCompleted);
@@ -2512,15 +2564,19 @@ namespace DocSo_PC.wrThuTien {
                         TongDinhMuc,
                         DinhMucHN,
                         TieuThu,
-                        TienNuocCu,
-                        ChiTietCu,
-                        TienNuocMoi,
-                        ChiTietMoi,
+                        TienNuocNamCu,
+                        ChiTietNamCu,
+                        TienNuocNamMoi,
+                        ChiTietNamMoi,
                         TieuThu_DieuChinhGia,
-                        PhiBVMTCu,
-                        ChiTietPhiBVMTCu,
-                        PhiBVMTMoi,
-                        ChiTietPhiBVMTMoi}, this.TinhTienNuocOperationCompleted, userState);
+                        PhiBVMTNamCu,
+                        ChiTietPhiBVMTNamCu,
+                        PhiBVMTNamMoi,
+                        ChiTietPhiBVMTNamMoi,
+                        TienNuoc,
+                        ThueGTGT,
+                        TDVTN,
+                        ThueTDVTN}, this.TinhTienNuocOperationCompleted, userState);
         }
         
         private void OnTinhTienNuocOperationCompleted(object arg) {
@@ -2848,6 +2904,32 @@ namespace DocSo_PC.wrThuTien {
         private object[] results;
         
         internal getDS_NhanVienCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getDS_NamCompletedEventHandler(object sender, getDS_NamCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getDS_NamCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getDS_NamCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -4075,7 +4157,7 @@ namespace DocSo_PC.wrThuTien {
         }
         
         /// <remarks/>
-        public int TienNuocCu {
+        public int TienNuocNamCu {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[0]));
@@ -4083,7 +4165,7 @@ namespace DocSo_PC.wrThuTien {
         }
         
         /// <remarks/>
-        public string ChiTietCu {
+        public string ChiTietNamCu {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[1]));
@@ -4091,7 +4173,7 @@ namespace DocSo_PC.wrThuTien {
         }
         
         /// <remarks/>
-        public int TienNuocMoi {
+        public int TienNuocNamMoi {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[2]));
@@ -4099,7 +4181,7 @@ namespace DocSo_PC.wrThuTien {
         }
         
         /// <remarks/>
-        public string ChiTietMoi {
+        public string ChiTietNamMoi {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[3]));
@@ -4115,7 +4197,7 @@ namespace DocSo_PC.wrThuTien {
         }
         
         /// <remarks/>
-        public int PhiBVMTCu {
+        public int PhiBVMTNamCu {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[5]));
@@ -4123,7 +4205,7 @@ namespace DocSo_PC.wrThuTien {
         }
         
         /// <remarks/>
-        public string ChiTietPhiBVMTCu {
+        public string ChiTietPhiBVMTNamCu {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[6]));
@@ -4131,7 +4213,7 @@ namespace DocSo_PC.wrThuTien {
         }
         
         /// <remarks/>
-        public int PhiBVMTMoi {
+        public int PhiBVMTNamMoi {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[7]));
@@ -4139,10 +4221,42 @@ namespace DocSo_PC.wrThuTien {
         }
         
         /// <remarks/>
-        public string ChiTietPhiBVMTMoi {
+        public string ChiTietPhiBVMTNamMoi {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[8]));
+            }
+        }
+        
+        /// <remarks/>
+        public int TienNuoc {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[9]));
+            }
+        }
+        
+        /// <remarks/>
+        public int ThueGTGT {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[10]));
+            }
+        }
+        
+        /// <remarks/>
+        public int TDVTN {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[11]));
+            }
+        }
+        
+        /// <remarks/>
+        public int ThueTDVTN {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[12]));
             }
         }
     }

@@ -17,7 +17,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="tinhCodeTieuThu">
+      <s:element name="tinhCodeTieuThu_TieuThu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DocSoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TieuThu" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tinhCodeTieuThu_TieuThuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tinhCodeTieuThu_TieuThuResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="GiaBan" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ThueGTGT" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PhiBVMT" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TongCong" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tinhCodeTieuThu_CSM">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="DocSoID" type="s:string" />
@@ -26,10 +46,10 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="tinhCodeTieuThuResponse">
+      <s:element name="tinhCodeTieuThu_CSMResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="tinhCodeTieuThuResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="tinhCodeTieuThu_CSMResult" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="TieuThu" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="GiaBan" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="ThueGTGT" type="s:int" />
@@ -46,20 +66,30 @@
   <wsdl:message name="insertBillingSoapOut">
     <wsdl:part name="parameters" element="tns:insertBillingResponse" />
   </wsdl:message>
-  <wsdl:message name="tinhCodeTieuThuSoapIn">
-    <wsdl:part name="parameters" element="tns:tinhCodeTieuThu" />
+  <wsdl:message name="tinhCodeTieuThu_TieuThuSoapIn">
+    <wsdl:part name="parameters" element="tns:tinhCodeTieuThu_TieuThu" />
   </wsdl:message>
-  <wsdl:message name="tinhCodeTieuThuSoapOut">
-    <wsdl:part name="parameters" element="tns:tinhCodeTieuThuResponse" />
+  <wsdl:message name="tinhCodeTieuThu_TieuThuSoapOut">
+    <wsdl:part name="parameters" element="tns:tinhCodeTieuThu_TieuThuResponse" />
+  </wsdl:message>
+  <wsdl:message name="tinhCodeTieuThu_CSMSoapIn">
+    <wsdl:part name="parameters" element="tns:tinhCodeTieuThu_CSM" />
+  </wsdl:message>
+  <wsdl:message name="tinhCodeTieuThu_CSMSoapOut">
+    <wsdl:part name="parameters" element="tns:tinhCodeTieuThu_CSMResponse" />
   </wsdl:message>
   <wsdl:portType name="wsDHNSoap">
     <wsdl:operation name="insertBilling">
       <wsdl:input message="tns:insertBillingSoapIn" />
       <wsdl:output message="tns:insertBillingSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="tinhCodeTieuThu">
-      <wsdl:input message="tns:tinhCodeTieuThuSoapIn" />
-      <wsdl:output message="tns:tinhCodeTieuThuSoapOut" />
+    <wsdl:operation name="tinhCodeTieuThu_TieuThu">
+      <wsdl:input message="tns:tinhCodeTieuThu_TieuThuSoapIn" />
+      <wsdl:output message="tns:tinhCodeTieuThu_TieuThuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="tinhCodeTieuThu_CSM">
+      <wsdl:input message="tns:tinhCodeTieuThu_CSMSoapIn" />
+      <wsdl:output message="tns:tinhCodeTieuThu_CSMSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsDHNSoap" type="tns:wsDHNSoap">
@@ -73,8 +103,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="tinhCodeTieuThu">
-      <soap:operation soapAction="http://tempuri.org/tinhCodeTieuThu" style="document" />
+    <wsdl:operation name="tinhCodeTieuThu_TieuThu">
+      <soap:operation soapAction="http://tempuri.org/tinhCodeTieuThu_TieuThu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tinhCodeTieuThu_CSM">
+      <soap:operation soapAction="http://tempuri.org/tinhCodeTieuThu_CSM" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -94,8 +133,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="tinhCodeTieuThu">
-      <soap12:operation soapAction="http://tempuri.org/tinhCodeTieuThu" style="document" />
+    <wsdl:operation name="tinhCodeTieuThu_TieuThu">
+      <soap12:operation soapAction="http://tempuri.org/tinhCodeTieuThu_TieuThu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tinhCodeTieuThu_CSM">
+      <soap12:operation soapAction="http://tempuri.org/tinhCodeTieuThu_CSM" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
