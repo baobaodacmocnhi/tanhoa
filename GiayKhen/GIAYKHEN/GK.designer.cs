@@ -22,7 +22,7 @@ namespace GIAYKHEN
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="HOADON_TA")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DH_CODONG")]
 	public partial class GKDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -36,7 +36,7 @@ namespace GIAYKHEN
     #endregion
 		
 		public GKDataContext() : 
-				base(global::GIAYKHEN.Properties.Settings.Default.HOADON_TAConnectionString, mappingSource)
+				base(global::GIAYKHEN.Properties.Settings.Default.DH_CODONGConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -82,7 +82,11 @@ namespace GIAYKHEN
 		
 		private int _ID;
 		
+		private System.Nullable<bool> _GioiTinh;
+		
 		private bool _Name;
+		
+		private System.Nullable<int> _SoVaoSo;
 		
 		private string _HOTEN;
 		
@@ -98,14 +102,26 @@ namespace GIAYKHEN
 		
 		private bool _DoanThanhNien;
 		
+		private bool _DangBo;
+		
+		private bool _Guong;
+		
+		private bool _HCM;
+		
+		private bool _DanVanKheo;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnGioiTinhChanging(System.Nullable<bool> value);
+    partial void OnGioiTinhChanged();
     partial void OnNameChanging(bool value);
     partial void OnNameChanged();
+    partial void OnSoVaoSoChanging(System.Nullable<int> value);
+    partial void OnSoVaoSoChanged();
     partial void OnHOTENChanging(string value);
     partial void OnHOTENChanged();
     partial void OnHOTENBChanging(string value);
@@ -120,6 +136,14 @@ namespace GIAYKHEN
     partial void OnCongDoanChanged();
     partial void OnDoanThanhNienChanging(bool value);
     partial void OnDoanThanhNienChanged();
+    partial void OnDangBoChanging(bool value);
+    partial void OnDangBoChanged();
+    partial void OnGuongChanging(bool value);
+    partial void OnGuongChanged();
+    partial void OnHCMChanging(bool value);
+    partial void OnHCMChanged();
+    partial void OnDanVanKheoChanging(bool value);
+    partial void OnDanVanKheoChanged();
     #endregion
 		
 		public A_GIAYKHEN()
@@ -127,7 +151,7 @@ namespace GIAYKHEN
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID
 		{
 			get
@@ -143,6 +167,26 @@ namespace GIAYKHEN
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GioiTinh", DbType="Bit")]
+		public System.Nullable<bool> GioiTinh
+		{
+			get
+			{
+				return this._GioiTinh;
+			}
+			set
+			{
+				if ((this._GioiTinh != value))
+				{
+					this.OnGioiTinhChanging(value);
+					this.SendPropertyChanging();
+					this._GioiTinh = value;
+					this.SendPropertyChanged("GioiTinh");
+					this.OnGioiTinhChanged();
 				}
 			}
 		}
@@ -163,6 +207,26 @@ namespace GIAYKHEN
 					this._Name = value;
 					this.SendPropertyChanged("Name");
 					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoVaoSo", DbType="Int")]
+		public System.Nullable<int> SoVaoSo
+		{
+			get
+			{
+				return this._SoVaoSo;
+			}
+			set
+			{
+				if ((this._SoVaoSo != value))
+				{
+					this.OnSoVaoSoChanging(value);
+					this.SendPropertyChanging();
+					this._SoVaoSo = value;
+					this.SendPropertyChanged("SoVaoSo");
+					this.OnSoVaoSoChanged();
 				}
 			}
 		}
@@ -303,6 +367,86 @@ namespace GIAYKHEN
 					this._DoanThanhNien = value;
 					this.SendPropertyChanged("DoanThanhNien");
 					this.OnDoanThanhNienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DangBo", DbType="Bit NOT NULL")]
+		public bool DangBo
+		{
+			get
+			{
+				return this._DangBo;
+			}
+			set
+			{
+				if ((this._DangBo != value))
+				{
+					this.OnDangBoChanging(value);
+					this.SendPropertyChanging();
+					this._DangBo = value;
+					this.SendPropertyChanged("DangBo");
+					this.OnDangBoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Guong", DbType="Bit NOT NULL")]
+		public bool Guong
+		{
+			get
+			{
+				return this._Guong;
+			}
+			set
+			{
+				if ((this._Guong != value))
+				{
+					this.OnGuongChanging(value);
+					this.SendPropertyChanging();
+					this._Guong = value;
+					this.SendPropertyChanged("Guong");
+					this.OnGuongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HCM", DbType="Bit NOT NULL")]
+		public bool HCM
+		{
+			get
+			{
+				return this._HCM;
+			}
+			set
+			{
+				if ((this._HCM != value))
+				{
+					this.OnHCMChanging(value);
+					this.SendPropertyChanging();
+					this._HCM = value;
+					this.SendPropertyChanged("HCM");
+					this.OnHCMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanVanKheo", DbType="Bit NOT NULL")]
+		public bool DanVanKheo
+		{
+			get
+			{
+				return this._DanVanKheo;
+			}
+			set
+			{
+				if ((this._DanVanKheo != value))
+				{
+					this.OnDanVanKheoChanging(value);
+					this.SendPropertyChanging();
+					this._DanVanKheo = value;
+					this.SendPropertyChanged("DanVanKheo");
+					this.OnDanVanKheoChanged();
 				}
 			}
 		}

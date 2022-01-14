@@ -28,7 +28,7 @@ namespace GIAYKHEN
 
             SqlDataAdapter adapter = new SqlDataAdapter(sql, db.Connection.ConnectionString);
 
-            adapter.Fill(ds, "GIAYKHEN");
+            adapter.Fill(ds, "A_GIAYKHEN");
             return ds;
         }
 
@@ -42,111 +42,111 @@ namespace GIAYKHEN
             //    item["PHONGBAN"] = UNI_2_TCVN3(item["PHONGBAN"].ToString());
             //}
             ReportDocument rp = new ReportDocument();
-            if(cmbGiayKhen.SelectedIndex>-1)
-            if (cmbGiayKhen.SelectedItem.ToString() == "Công ty")
-            {
-                if (cmbNhom.SelectedIndex == 0)
-                {
-                    sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and CongDoan=0 and DoanThanhNien=0 and DangBo=0 and DanVanKheo=0";
-                    rp = new ChinhQuyen_CANHAN_A3();
-                }
-                else
-                    if (cmbNhom.SelectedIndex == 1)
-                    {
-                        sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and CongDoan=0 and DoanThanhNien=0 and DangBo=0 and DanVanKheo=0";
-                        rp = new ChinhQuyen_TAPTHE_A3();
-                    }
-            }
-            else
-                if (cmbGiayKhen.SelectedItem.ToString() == "Công đoàn")
+            if (cmbGiayKhen.SelectedIndex > -1)
+                if (cmbGiayKhen.SelectedItem.ToString() == "Công ty")
                 {
                     if (cmbNhom.SelectedIndex == 0)
                     {
-                        sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and CongDoan=1";
-                        rp = new TLD_GKCongDoan_CANHAN_2021();
+                        sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=0 and CongDoan=0 and DoanThanhNien=0 and DangBo=0 and DanVanKheo=0";
+                        rp = new ChinhQuyen_CANHAN_A3();
                     }
                     else
                         if (cmbNhom.SelectedIndex == 1)
                         {
-                            sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and CongDoan=1";
-                            rp = new TLD_GKCongDoan_TAPTHE_2021();
+                            sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=1 and CongDoan=0 and DoanThanhNien=0 and DangBo=0 and DanVanKheo=0";
+                            rp = new ChinhQuyen_TAPTHE_A3();
                         }
                 }
                 else
-                    if (cmbGiayKhen.SelectedItem.ToString() == "Đảng")
+                    if (cmbGiayKhen.SelectedItem.ToString() == "Công đoàn")
                     {
                         if (cmbNhom.SelectedIndex == 0)
                         {
-                            sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and DangBo=1";
-                            rp = new DangBo_CANHAN_A3_2021();
+                            sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=0 and CongDoan=1";
+                            rp = new TLD_GKCongDoan_CANHAN_2021();
                         }
                         else
                             if (cmbNhom.SelectedIndex == 1)
                             {
-                                sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and DangBo=1";
-                                rp = new DangBo_TAPTHE_A3();
+                                sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=1 and CongDoan=1";
+                                rp = new TLD_GKCongDoan_TAPTHE_2021();
                             }
                     }
                     else
-                        if (cmbGiayKhen.SelectedItem.ToString() == "Đoàn thanh niên")
+                        if (cmbGiayKhen.SelectedItem.ToString() == "Đảng")
                         {
                             if (cmbNhom.SelectedIndex == 0)
                             {
-                                sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and DoanThanhNien=1";
-                                rp = new DoanThanhNien_SoQD_BT_CANHAN_A4();
+                                sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=0 and DangBo=1";
+                                rp = new DangBo_CANHAN_A3_2021();
                             }
                             else
                                 if (cmbNhom.SelectedIndex == 1)
                                 {
-                                    sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and DoanThanhNien=1";
-                                    rp = new DoanThanhNien_SoQD_BT_TAPTHE_A4();
+                                    sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=1 and DangBo=1";
+                                    rp = new DangBo_TAPTHE_A3();
                                 }
                         }
                         else
-                            if (cmbGiayKhen.SelectedItem.ToString() == "Gương 5 năm")
+                            if (cmbGiayKhen.SelectedItem.ToString() == "Đoàn thanh niên")
                             {
                                 if (cmbNhom.SelectedIndex == 0)
                                 {
-                                    sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and Guong=1";
-                                    rp = new GuongDienHinh5nam_CANHAN_A3();
+                                    sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=0 and DoanThanhNien=1";
+                                    rp = new DoanThanhNien_SoQD_BT_CANHAN_A4();
                                 }
                                 else
                                     if (cmbNhom.SelectedIndex == 1)
                                     {
-                                        sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and Guong=1";
-                                        rp = new GuongDienHinh5nam_TAPTHE_A3();
+                                        sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=1 and DoanThanhNien=1";
+                                        rp = new DoanThanhNien_SoQD_BT_TAPTHE_A4();
                                     }
                             }
                             else
-                                if (cmbGiayKhen.SelectedItem.ToString() == "HCM")
+                                if (cmbGiayKhen.SelectedItem.ToString() == "Gương 5 năm")
                                 {
                                     if (cmbNhom.SelectedIndex == 0)
                                     {
-                                        sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and HCM=1";
-                                        rp = new HCM_CANHAN_A3();
+                                        sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=0 and Guong=1";
+                                        rp = new GuongDienHinh5nam_CANHAN_A3();
                                     }
                                     else
                                         if (cmbNhom.SelectedIndex == 1)
                                         {
-                                            sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and HCM=1";
-                                            rp = new HCM_TAPTHE_A3();
+                                            sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=1 and Guong=1";
+                                            rp = new GuongDienHinh5nam_TAPTHE_A3();
                                         }
                                 }
                                 else
-                                    if (cmbGiayKhen.SelectedItem.ToString() == "Dân vận khéo")
+                                    if (cmbGiayKhen.SelectedItem.ToString() == "HCM")
                                     {
                                         if (cmbNhom.SelectedIndex == 0)
                                         {
-                                            sql = "select * FROM GIAYKHEN WHERE TAPTHE=0 and DanVanKheo=1";
-                                            rp = new DanVanKheo_CANHAN_A3_2020();
+                                            sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=0 and HCM=1";
+                                            rp = new HCM_CANHAN_A3();
                                         }
                                         else
                                             if (cmbNhom.SelectedIndex == 1)
                                             {
-                                                sql = "select * FROM GIAYKHEN WHERE TAPTHE=1 and DanVanKheo=1";
-                                                rp = new DanVanKheo_TAPTHE_A3_2020();
+                                                sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=1 and HCM=1";
+                                                rp = new HCM_TAPTHE_A3();
                                             }
                                     }
+                                    else
+                                        if (cmbGiayKhen.SelectedItem.ToString() == "Dân vận khéo")
+                                        {
+                                            if (cmbNhom.SelectedIndex == 0)
+                                            {
+                                                sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=0 and DanVanKheo=1";
+                                                rp = new DanVanKheo_CANHAN_A3_2020();
+                                            }
+                                            else
+                                                if (cmbNhom.SelectedIndex == 1)
+                                                {
+                                                    sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=1 and DanVanKheo=1";
+                                                    rp = new DanVanKheo_TAPTHE_A3_2020();
+                                                }
+                                        }
 
             DataTable dt = getData(sql).Tables[0];
             //ReportDocument rp = new GKCongDoan_CANHAN();
@@ -181,12 +181,18 @@ namespace GIAYKHEN
         {
             cmbGiayKhen.SelectedIndex = 0;
             cmbNhom.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2021, 11, 22);
+            txtNgay.Value = new DateTime(2022, 01, 05);
         }
 
         private void txtQuyetDinhCaNhan_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnNhap_Click(object sender, EventArgs e)
+        {
+            frmNhap frm = new frmNhap();
+            frm.ShowDialog();
         }
 
     }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnNhap = new System.Windows.Forms.Button();
             this.cmbGiayKhen = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtQuyetDinhTapThe = new System.Windows.Forms.TextBox();
@@ -44,6 +45,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -58,6 +60,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnNhap);
             this.splitContainer1.Panel1.Controls.Add(this.cmbGiayKhen);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
             this.splitContainer1.Panel1.Controls.Add(this.txtQuyetDinhTapThe);
@@ -79,6 +82,16 @@
             this.splitContainer1.Size = new System.Drawing.Size(1215, 577);
             this.splitContainer1.SplitterDistance = 76;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // btnNhap
+            // 
+            this.btnNhap.Location = new System.Drawing.Point(1070, 14);
+            this.btnNhap.Name = "btnNhap";
+            this.btnNhap.Size = new System.Drawing.Size(92, 27);
+            this.btnNhap.TabIndex = 14;
+            this.btnNhap.Text = "Nhập";
+            this.btnNhap.UseVisualStyleBackColor = true;
+            this.btnNhap.Click += new System.EventHandler(this.btnNhap_Click);
             // 
             // cmbGiayKhen
             // 
@@ -111,7 +124,7 @@
             this.txtQuyetDinhTapThe.Name = "txtQuyetDinhTapThe";
             this.txtQuyetDinhTapThe.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhTapThe.TabIndex = 11;
-            this.txtQuyetDinhTapThe.Text = "0201/QĐ-TH-TCHC";
+            this.txtQuyetDinhTapThe.Text = "0026/QĐ-TH-TCHC";
             // 
             // txtQDNm
             // 
@@ -119,7 +132,7 @@
             this.txtQDNm.Name = "txtQDNm";
             this.txtQDNm.Size = new System.Drawing.Size(68, 26);
             this.txtQDNm.TabIndex = 2;
-            this.txtQDNm.Text = "2020";
+            this.txtQDNm.Text = "2021";
             // 
             // label5
             // 
@@ -134,8 +147,8 @@
             // 
             this.cmbNhom.FormattingEnabled = true;
             this.cmbNhom.Items.AddRange(new object[] {
-            "Công Đoàn - Cá Nhân",
-            "Công Đoàn - Tập Thể"});
+            "Cá Nhân",
+            "Tập Thể"});
             this.cmbNhom.Location = new System.Drawing.Point(83, 41);
             this.cmbNhom.Name = "cmbNhom";
             this.cmbNhom.Size = new System.Drawing.Size(165, 27);
@@ -143,7 +156,7 @@
             // 
             // btXem
             // 
-            this.btXem.Location = new System.Drawing.Point(1084, 14);
+            this.btXem.Location = new System.Drawing.Point(711, 47);
             this.btXem.Name = "btXem";
             this.btXem.Size = new System.Drawing.Size(92, 27);
             this.btXem.TabIndex = 6;
@@ -174,7 +187,7 @@
             this.txtQuyetDinhCaNhan.Name = "txtQuyetDinhCaNhan";
             this.txtQuyetDinhCaNhan.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhCaNhan.TabIndex = 3;
-            this.txtQuyetDinhCaNhan.Text = "0201/QĐ-TH-TCHC";
+            this.txtQuyetDinhCaNhan.Text = "0026/QĐ-TH-TCHC";
             this.txtQuyetDinhCaNhan.TextChanged += new System.EventHandler(this.txtQuyetDinhCaNhan_TextChanged);
             // 
             // label4
@@ -242,6 +255,7 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -265,6 +279,7 @@
         private System.Windows.Forms.TextBox txtQuyetDinhTapThe;
         private System.Windows.Forms.ComboBox cmbGiayKhen;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnNhap;
 
     }
 }
