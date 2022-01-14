@@ -267,8 +267,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             if ((hd.NAM < 2021) || (hd.NAM == 2021 && hd.KY <= 6))
                                                 ctdchd.BaoCaoThue = true;
                                             ///
-                                            string ChiTietCuA = "", ChiTietCuB = "", ChiTietMoiA = "", ChiTietMoiB = "", ChiTietPhiBVMTCuA = "", ChiTietPhiBVMTCuB = "", ChiTietPhiBVMTMoiA = "", ChiTietPhiBVMTMoiB = "";
-                                            int Ky = 0, Nam = 0, TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0, TongTienCuA = 0, TongTienCuB = 0, TongTienMoiA = 0, TongTienMoiB = 0, TieuThu_DieuChinhGia = 0, TongTienPhiBVMTCuA = 0, TongTienPhiBVMTCuB = 0, TongTienPhiBVMTMoiA = 0, TongTienPhiBVMTMoiB = 0;
+                                            string ChiTietNamCuTruoc = "", ChiTietNamMoiTruoc = "", ChiTietNamCuSau = "", ChiTietNamMoiSau = "", ChiTietPhiBVMTNamCuTruoc = "", ChiTietPhiBVMTNamMoiTruoc = "", ChiTietPhiBVMTNamCuSau = "", ChiTietPhiBVMTNamMoiSau = "";
+                                            int Ky = 0, Nam = 0, TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0, TienNuocNamCuTruoc = 0, TienNuocNamMoiTruoc = 0, TienNuocNamCuSau = 0, TienNuocNamMoiSau = 0, TieuThu_DieuChinhGia = 0
+                                                , PhiBVMTNamCuTruoc = 0, PhiBVMTNamMoiTruoc = 0, PhiBVMTNamCuSau = 0, PhiBVMTNamMoiSau = 0
+                                                , TienNuocTruoc = 0, ThueGTGTTruoc = 0, TDVTNTruoc = 0, ThueTDVTNTruoc = 0, TienNuocSau = 0, ThueGTGTSau = 0, TDVTNSau = 0, ThueTDVTNSau = 0;
                                             DateTime TuNgay = new DateTime(), DenNgay = new DateTime();
 
                                             if (hd != null)
@@ -313,12 +315,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         TyLeHCSN = hoadon.TILEHCSN.Value;
                                                 }
 
-                                            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, hd.DANHBA, Ky, Nam, TuNgay, DenNgay, ctdchd.GiaBieu.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, ctdchd.DinhMuc.Value, ctdchd.DinhMucHN.Value, ctdchd.TieuThu.Value, out TongTienCuA, out ChiTietCuA, out TongTienCuB, out ChiTietCuB, out TieuThu_DieuChinhGia, out TongTienPhiBVMTCuA, out ChiTietPhiBVMTCuA, out TongTienPhiBVMTCuB, out ChiTietPhiBVMTCuB);
+                                            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, hd.DANHBA, Ky, Nam, TuNgay, DenNgay, ctdchd.GiaBieu.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, ctdchd.DinhMuc.Value, ctdchd.DinhMucHN.Value, ctdchd.TieuThu.Value, out TienNuocNamCuTruoc, out ChiTietNamCuTruoc, out TienNuocNamMoiTruoc, out ChiTietNamMoiTruoc, out TieuThu_DieuChinhGia, out PhiBVMTNamCuTruoc, out ChiTietPhiBVMTNamCuTruoc, out PhiBVMTNamMoiTruoc, out ChiTietPhiBVMTNamMoiTruoc, out TienNuocTruoc, out ThueGTGTTruoc, out TDVTNTruoc, out ThueTDVTNTruoc);
 
-                                            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, hd.DANHBA, Ky, Nam, TuNgay, DenNgay, ctdchd.GiaBieu_BD.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, ctdchd.DinhMuc_BD.Value, ctdchd.DinhMucHN_BD.Value, ctdchd.TieuThu_BD.Value, out TongTienMoiA, out ChiTietMoiA, out TongTienMoiB, out ChiTietMoiB, out TieuThu_DieuChinhGia, out TongTienPhiBVMTMoiA, out ChiTietPhiBVMTMoiA, out TongTienPhiBVMTMoiB, out ChiTietPhiBVMTMoiB);
+                                            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, hd.DANHBA, Ky, Nam, TuNgay, DenNgay, ctdchd.GiaBieu_BD.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, ctdchd.DinhMuc_BD.Value, ctdchd.DinhMucHN_BD.Value, ctdchd.TieuThu_BD.Value, out TienNuocNamCuSau, out ChiTietNamCuSau, out TienNuocNamMoiSau, out ChiTietNamMoiSau, out TieuThu_DieuChinhGia, out PhiBVMTNamCuSau, out ChiTietPhiBVMTNamCuSau, out PhiBVMTNamMoiSau, out ChiTietPhiBVMTNamMoiSau, out TienNuocSau, out ThueGTGTSau, out TDVTNSau, out ThueTDVTNSau);
 
-                                            ctdchd.ChiTietCu = ChiTietCuA + "\r\n" + ChiTietCuB;
-                                            ctdchd.ChiTietMoi = ChiTietMoiA + "\r\n" + ChiTietMoiB;
+                                            ctdchd.ChiTietCu = ChiTietNamCuTruoc + "\r\n" + ChiTietNamMoiTruoc;
+                                            ctdchd.ChiTietMoi = ChiTietNamCuSau + "\r\n" + ChiTietNamMoiSau;
                                             ctdchd.HoTen_BD = "";
                                             ctdchd.DiaChi_BD = "";
                                             ctdchd.MST_BD = "";
@@ -329,13 +331,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             else
                                                 ctdchd.TienNuoc_Start = 0;
 
-                                            if ((TongTienMoiA + TongTienMoiB) - (int)hd.GIABAN.Value != 0)
-                                                ctdchd.TienNuoc_BD = (TongTienMoiA + TongTienMoiB) - (int)hd.GIABAN.Value;
+                                            if (TienNuocSau - (int)hd.GIABAN.Value != 0)
+                                                ctdchd.TienNuoc_BD = TienNuocSau - (int)hd.GIABAN.Value;
                                             else
                                                 ctdchd.TienNuoc_BD = 0;
 
-                                            if ((TongTienMoiA + TongTienMoiB) != 0)
-                                                ctdchd.TienNuoc_End = (TongTienMoiA + TongTienMoiB);
+                                            if (TienNuocSau != 0)
+                                                ctdchd.TienNuoc_End = TienNuocSau;
                                             else
                                                 ctdchd.TienNuoc_End = 0;
 
@@ -345,13 +347,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             else
                                                 ctdchd.ThueGTGT_Start = 0;
 
-                                            if ((TongTienMoiA + TongTienMoiB) - (int)hd.GIABAN.Value != 0)
-                                                ctdchd.ThueGTGT_BD = (int)(Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) - (int)hd.THUE.Value);
+                                            if (TienNuocSau - (int)hd.GIABAN.Value != 0)
+                                                ctdchd.ThueGTGT_BD = (ThueGTGTSau - (int)hd.THUE.Value);
                                             else
                                                 ctdchd.ThueGTGT_BD = 0;
 
-                                            if ((TongTienMoiA + TongTienMoiB) != 0)
-                                                ctdchd.ThueGTGT_End = (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+                                            if (TienNuocSau != 0)
+                                                ctdchd.ThueGTGT_End = (int)ThueGTGTSau;
                                             else
                                                 ctdchd.ThueGTGT_End = 0;
 
@@ -361,15 +363,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             else
                                                 ctdchd.PhiBVMT_Start = 0;
 
-                                            if ((TongTienMoiA + TongTienMoiB) - (int)hd.GIABAN.Value != 0)
-                                                //ctdchd.PhiBVMT_BD = (int)(Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero) - (int)hd.PHI.Value);
-                                                ctdchd.PhiBVMT_BD = (TongTienPhiBVMTMoiA + TongTienPhiBVMTMoiB) - (int)hd.PHI.Value;
+                                            if (TienNuocSau - (int)hd.GIABAN.Value != 0)
+                                                //ctdchd.PhiBVMT_BD = (int)(Math.Round((double)TienNuocSau * 10 / 100, 0, MidpointRounding.AwayFromZero) - (int)hd.PHI.Value);
+                                                ctdchd.PhiBVMT_BD = TDVTNSau - (int)hd.PHI.Value;
                                             else
                                                 ctdchd.PhiBVMT_BD = 0;
 
-                                            if ((TongTienMoiA + TongTienMoiB) != 0)
-                                                //ctdchd.PhiBVMT_End = (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero);
-                                                ctdchd.PhiBVMT_End = (TongTienPhiBVMTMoiA + TongTienPhiBVMTMoiB);
+                                            if (TienNuocSau != 0)
+                                                //ctdchd.PhiBVMT_End = (int)Math.Round((double)TienNuocSau * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                                                ctdchd.PhiBVMT_End = TDVTNSau;
                                             else
                                                 ctdchd.PhiBVMT_End = 0;
 
@@ -379,15 +381,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             else
                                                 ctdchd.TongCong_Start = 0;
 
-                                            if ((TongTienMoiA + TongTienMoiB) - (int)hd.GIABAN.Value != 0)
-                                                //ctdchd.TongCong_BD = (((TongTienMoiA + TongTienMoiB) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero)) - (int)hd.TONGCONG.Value);
-                                                ctdchd.TongCong_BD = (((TongTienMoiA + TongTienMoiB) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + (TongTienPhiBVMTMoiA + TongTienPhiBVMTMoiB)) - (int)hd.TONGCONG.Value);
+                                            if (TienNuocSau - (int)hd.GIABAN.Value != 0)
+                                                //ctdchd.TongCong_BD = ((TienNuocSau + (int)Math.Round((double)TienNuocSau * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)TienNuocSau * 10 / 100, 0, MidpointRounding.AwayFromZero)) - (int)hd.TONGCONG.Value);
+                                                ctdchd.TongCong_BD = ((TienNuocSau + ThueGTGTSau + TDVTNSau) - (int)hd.TONGCONG.Value);
                                             else
                                                 ctdchd.TongCong_BD = 0;
 
-                                            if ((TongTienMoiA + TongTienMoiB) != 0)
-                                                //ctdchd.TongCong_End = ((TongTienMoiA + TongTienMoiB) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 10 / 100, 0, MidpointRounding.AwayFromZero));
-                                                ctdchd.TongCong_End = ((TongTienMoiA + TongTienMoiB) + (int)Math.Round((double)(TongTienMoiA + TongTienMoiB) * 5 / 100, 0, MidpointRounding.AwayFromZero) + (TongTienPhiBVMTMoiA + TongTienPhiBVMTMoiB));
+                                            if (TienNuocSau != 0)
+                                                //ctdchd.TongCong_End = (TienNuocSau + (int)Math.Round((double)TienNuocSau * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)TienNuocSau * 10 / 100, 0, MidpointRounding.AwayFromZero));
+                                                ctdchd.TongCong_End = (TienNuocSau + ThueGTGTSau + TDVTNSau);
                                             else
                                                 ctdchd.TongCong_End = 0;
 
@@ -492,7 +494,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             }
                                         }
                             }
-                           
+
                         }
                         _cDCBD.Refresh();
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -191,43 +191,44 @@ namespace KTKS_DonKH.GUI
             {
             }
 
-            int GiaBanG1 = 0, GiaBanG2 = 0, ThueGTGT = 0, PhiBVMTG1 = 0, PhiBVMTG2 = 0, ThueGTGTTDVTN = 0, TongCong = 0, TieuThu_DieuChinhGia = 0;
-            string ChiTietCu = "", ChiTietMoi = "", ChiTietPhiBVMTCu = "", ChiTietPhiBVMTMoi = "";
-            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, txtDanhBo.Text.Trim(), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()), dateTu.Value, dateDen.Value, int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtSH.Text.Trim()), int.Parse(txtSX.Text.Trim()), int.Parse(txtDV.Text.Trim()), int.Parse(txtHCSN.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out GiaBanG1, out ChiTietCu, out GiaBanG2, out ChiTietMoi, out TieuThu_DieuChinhGia, out  PhiBVMTG1, out  ChiTietPhiBVMTCu, out  PhiBVMTG2, out ChiTietPhiBVMTMoi);
-            ThueGTGT = (int)Math.Round((double)(GiaBanG1 + GiaBanG2) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+            int TienNuocNamCu = 0, TienNuocNamMoi = 0, TienNuoc = 0, ThueGTGT = 0, TDVTNNamCu = 0, TDVTNNamMoi = 0, TDVTN = 0, ThueTDVTN = 0, TongCong = 0, TieuThu_DieuChinhGia = 0;
+            string ChiTietNamCu = "", ChiTietNamMoi = "", ChiTietPhiBVMTNamCu = "", ChiTietPhiBVMTNamMoi = "";
+            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, txtDanhBo.Text.Trim(), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()), dateTu.Value, dateDen.Value, int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtSH.Text.Trim()), int.Parse(txtSX.Text.Trim()), int.Parse(txtDV.Text.Trim()), int.Parse(txtHCSN.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out TienNuocNamCu, out ChiTietNamCu, out TienNuocNamMoi, out ChiTietNamMoi, out TieuThu_DieuChinhGia, out  TDVTNNamCu, out  ChiTietPhiBVMTNamCu, out  TDVTNNamMoi, out ChiTietPhiBVMTNamMoi, out TienNuoc, out ThueGTGT, out TDVTN, out ThueTDVTN);
+            //ThueGTGT = (int)Math.Round((double)(TienNuocNamCu + TienNuocNamMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+            TongCong = TienNuoc + ThueGTGT + TDVTN + ThueTDVTN;
 
-            txtGiaBanCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBanG1);
-            txtGiaBanMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBanG2);
-            txtGiaBan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBanG1 + GiaBanG2));
+            txtGiaBanCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TienNuocNamCu);
+            txtGiaBanMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TienNuocNamMoi);
+            txtGiaBan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TienNuoc);
 
             txtThueGTGT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ThueGTGT);
 
-            txtTDVTNCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", PhiBVMTG1);
-            txtTDVTNMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", PhiBVMTG2);
-            txtTDVTN.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (PhiBVMTG1 + PhiBVMTG2));
+            txtTDVTNCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TDVTNNamCu);
+            txtTDVTNMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TDVTNNamMoi);
+            txtTDVTN.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TDVTN);
 
-            txtChiTietCu.Text = ChiTietCu;
-            txtChiTietTDVTNCu.Text = ChiTietPhiBVMTCu;
-            txtChiTietMoi.Text = ChiTietMoi;
-            txtChiTietTDVTNMoi.Text = ChiTietPhiBVMTMoi;
-            //Từ 2022 Phí BVMT -> Tiền Dịch Vụ Thoát Nước
-            if ((dateTu.Value.Year < 2021) || (dateTu.Value.Year == 2021 && dateDen.Value.Year == 2021))
-            {
-                TongCong = (GiaBanG1 + GiaBanG2) + ThueGTGT + (PhiBVMTG1 + PhiBVMTG2);
-            }
-            else
-                if (dateTu.Value.Year == 2021 && dateDen.Value.Year == 2022)
-                {
-                    ThueGTGTTDVTN = (int)Math.Round((double)PhiBVMTG2 * 10 / 100, 0, MidpointRounding.AwayFromZero);
-                    TongCong = (GiaBanG1 + GiaBanG2) + ThueGTGT + (PhiBVMTG1 + PhiBVMTG2) + ThueGTGTTDVTN;
-                }
-                else
-                    if (dateTu.Value.Year >= 2022)
-                    {
-                        ThueGTGTTDVTN = (int)Math.Round((double)(PhiBVMTG1 + PhiBVMTG2) * 10 / 100, 0, MidpointRounding.AwayFromZero);
-                        TongCong = (GiaBanG1 + GiaBanG2) + ThueGTGT + (PhiBVMTG1 + PhiBVMTG2) + ThueGTGTTDVTN;
-                    }
-            txtThueGTGTTDVTN.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ThueGTGTTDVTN);
+            txtChiTietCu.Text = ChiTietNamCu;
+            txtChiTietTDVTNCu.Text = ChiTietPhiBVMTNamCu;
+            txtChiTietMoi.Text = ChiTietNamMoi;
+            txtChiTietTDVTNMoi.Text = ChiTietPhiBVMTNamMoi;
+            ////Từ 2022 Phí BVMT -> Tiền Dịch Vụ Thoát Nước
+            //if ((dateTu.Value.Year < 2021) || (dateTu.Value.Year == 2021 && dateDen.Value.Year == 2021))
+            //{
+            //    TongCong = (TienNuocNamCu + TienNuocNamMoi) + ThueGTGT + (TDVTNNamCu + TDVTNNamMoi);
+            //}
+            //else
+            //    if (dateTu.Value.Year == 2021 && dateDen.Value.Year == 2022)
+            //    {
+            //        ThueTDVTN = (int)Math.Round((double)TDVTNNamMoi * 10 / 100, 0, MidpointRounding.AwayFromZero);
+            //        TongCong = (TienNuocNamCu + TienNuocNamMoi) + ThueGTGT + (TDVTNNamCu + TDVTNNamMoi) + ThueTDVTN;
+            //    }
+            //    else
+            //        if (dateTu.Value.Year >= 2022)
+            //        {
+            //            ThueTDVTN = (int)Math.Round((double)(TDVTNNamCu + TDVTNNamMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+            //            TongCong = (TienNuocNamCu + TienNuocNamMoi) + ThueGTGT + (TDVTNNamCu + TDVTNNamMoi) + ThueTDVTN;
+            //        }
+            txtThueGTGTTDVTN.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ThueTDVTN);
             txtTongCong.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
         }
 
@@ -308,20 +309,20 @@ namespace KTKS_DonKH.GUI
             txtTieuThuCu.Text = TieuThuCu.ToString();
             txtTieuThuMoi.Text = TieuThuMoi.ToString();
 
-            int GiaBanCu = 0, GiaBanMoi = 0, ThueGTGT = 0, PhiBVMTCu = 0, PhiBVMTMoi = 0, PhiBVMT = 0, TongCong = 0, TieuThu_DieuChinhGia = 0;
-            string ChiTietCu, ChiTietMoi, ChiTietPhiBVMTCu, ChiTietPhiBVMTMoi;
-            _cGiaNuoc.TinhTienNuoc_TheoSoNgay(false, false, false, 0, txtDanhBo.Text.Trim(), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()), dateTu.Value, dateDen.Value, int.Parse(txtSoNgayCu.Text.Trim()), int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtSH.Text.Trim()), int.Parse(txtSX.Text.Trim()), int.Parse(txtDV.Text.Trim()), int.Parse(txtHCSN.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out GiaBanCu, out ChiTietCu, out GiaBanMoi, out ChiTietMoi, out TieuThu_DieuChinhGia, out  PhiBVMTCu, out  ChiTietPhiBVMTCu, out  PhiBVMTMoi, out ChiTietPhiBVMTMoi);
-            ThueGTGT = (int)Math.Round((double)(GiaBanCu + GiaBanMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
-            PhiBVMT = (PhiBVMTCu + PhiBVMTMoi);
-            TongCong = (GiaBanCu + GiaBanMoi) + ThueGTGT + PhiBVMT;
-            txtGiaBanCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBanCu);
-            txtGiaBanMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBanMoi);
-            txtGiaBan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBanCu + GiaBanMoi));
+            int GiaBanNamCu = 0, GiaBanNamMoi = 0, TienNuoc = 0, ThueGTGT = 0, PhiBVMTNamCu = 0, PhiBVMTNamMoi = 0, TDVTN = 0, ThueTDVTN = 0, TongCong = 0, TieuThu_DieuChinhGia = 0;
+            string ChiTietNamCu, ChiTietNamMoi, ChiTietPhiBVMTNamCu, ChiTietPhiBVMTNamMoi;
+            _cGiaNuoc.TinhTienNuoc_TheoSoNgay(false, false, false, 0, txtDanhBo.Text.Trim(), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()), dateTu.Value, dateDen.Value, int.Parse(txtSoNgayCu.Text.Trim()), int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtSH.Text.Trim()), int.Parse(txtSX.Text.Trim()), int.Parse(txtDV.Text.Trim()), int.Parse(txtHCSN.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out GiaBanNamCu, out ChiTietNamCu, out GiaBanNamMoi, out ChiTietNamMoi, out TieuThu_DieuChinhGia, out  PhiBVMTNamCu, out  ChiTietPhiBVMTNamCu, out  PhiBVMTNamMoi, out ChiTietPhiBVMTNamMoi, out TienNuoc, out ThueGTGT, out TDVTN, out ThueTDVTN);
+            //ThueGTGT = (int)Math.Round((double)(GiaBanNamCu + GiaBanNamMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+            //TDVTN = (PhiBVMTNamCu + PhiBVMTNamMoi);
+            TongCong = TienNuoc + ThueGTGT + TDVTN + ThueTDVTN;
+            txtGiaBanCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBanNamCu);
+            txtGiaBanMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBanNamMoi);
+            txtGiaBan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TienNuoc);
             txtThueGTGT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ThueGTGT);
-            txtTDVTNCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", PhiBVMT);
+            txtTDVTNCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TDVTN);
             txtTongCong.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
-            txtChiTietCu.Text = ChiTietCu;
-            txtChiTietMoi.Text = ChiTietMoi;
+            txtChiTietCu.Text = ChiTietNamCu;
+            txtChiTietMoi.Text = ChiTietNamMoi;
         }
 
 
