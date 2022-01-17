@@ -117,6 +117,8 @@ namespace KTKS_DonKH.GUI.CongVan
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
             chkNgayLap.Checked = false;
+            chkKTXM.Checked = false;
+            chkToTrinh.Checked = false;
             for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
                 chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
         }
@@ -138,7 +140,8 @@ namespace KTKS_DonKH.GUI.CongVan
                             item.DiaChi = txtDiaChi.Text.Trim();
                             item.NoiDung = txtNoiDung.Text.Trim();
                             item.NoiChuyen = chkcmbNoiNhan.Properties.Items[i].ToString();
-
+                            item.KTXM = chkKTXM.Checked;
+                            item.ToTrinh = chkToTrinh.Checked;
                             if (txtTuMa.Text.Trim().Replace("-", "") != "")
                                 if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma, item.NoiChuyen, DateTime.Now))
                                 {
@@ -337,7 +340,7 @@ namespace KTKS_DonKH.GUI.CongVan
                             dgvDSCongVan.DataSource = _cCongVanDi.GetDS_Ma(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                             break;
                         case "Phòng Đội":
-                            dgvDSCongVan.DataSource = _cCongVanDi.GetDS_PhongDoi(CTaiKhoan.MaUser, dateTu.Value, int.Parse(cmbTuGio.SelectedItem.ToString()), dateDen.Value, int.Parse(cmbDenGio.SelectedItem.ToString()),txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            dgvDSCongVan.DataSource = _cCongVanDi.GetDS_PhongDoi(CTaiKhoan.MaUser, dateTu.Value, int.Parse(cmbTuGio.SelectedItem.ToString()), dateDen.Value, int.Parse(cmbDenGio.SelectedItem.ToString()), txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                             break;
                         default:
                             break;
@@ -360,7 +363,7 @@ namespace KTKS_DonKH.GUI.CongVan
                             dgvDSCongVan.DataSource = _cCongVanDi.GetDS_Ma(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                             break;
                         case "Phòng Đội":
-                            dgvDSCongVan.DataSource = _cCongVanDi.GetDS_PhongDoi(dateTu.Value, int.Parse(cmbTuGio.SelectedItem.ToString()), dateDen.Value, int.Parse(cmbDenGio.SelectedItem.ToString()),txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            dgvDSCongVan.DataSource = _cCongVanDi.GetDS_PhongDoi(dateTu.Value, int.Parse(cmbTuGio.SelectedItem.ToString()), dateDen.Value, int.Parse(cmbDenGio.SelectedItem.ToString()), txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                             break;
                         default:
                             break;

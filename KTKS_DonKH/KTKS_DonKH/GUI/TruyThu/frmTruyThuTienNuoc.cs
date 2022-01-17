@@ -1155,7 +1155,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     cttttn_hoadon.GiaBanCu = int.Parse(item.Cells["GiaBan_Cu"].Value.ToString());
                                     cttttn_hoadon.ThueGTGTCu = int.Parse(item.Cells["ThueGTGT_Cu"].Value.ToString());
                                     cttttn_hoadon.PhiBVMTCu = int.Parse(item.Cells["PhiBVMT_Cu"].Value.ToString());
-                                    cttttn_hoadon.PhiBVMT_ThueCu = int.Parse(item.Cells["PhiBVMT_Thue_Cu"].Value.ToString());
+                                    if (item.Cells["PhiBVMT_Thue_Cu"].Value != null && item.Cells["PhiBVMT_Thue_Cu"].Value.ToString() != "")
+                                        cttttn_hoadon.PhiBVMT_ThueCu = int.Parse(item.Cells["PhiBVMT_Thue_Cu"].Value.ToString());
                                     cttttn_hoadon.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
                                     ///
                                     cttttn_hoadon.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
@@ -1165,7 +1166,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     cttttn_hoadon.GiaBanMoi = int.Parse(item.Cells["GiaBan_Moi"].Value.ToString());
                                     cttttn_hoadon.ThueGTGTMoi = int.Parse(item.Cells["ThueGTGT_Moi"].Value.ToString());
                                     cttttn_hoadon.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
-                                    cttttn_hoadon.PhiBVMT_ThueMoi = int.Parse(item.Cells["PhiBVMT_Thue_Moi"].Value.ToString());
+                                    if (item.Cells["PhiBVMT_Thue_Moi"].Value != null && item.Cells["PhiBVMT_Thue_Moi"].Value.ToString() != "")
+                                        cttttn_hoadon.PhiBVMT_ThueMoi = int.Parse(item.Cells["PhiBVMT_Thue_Moi"].Value.ToString());
                                     cttttn_hoadon.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
                                     cttttn_hoadon.TangGiam = item.Cells["TangGiam"].Value.ToString();
                                     cttttn_hoadon.SoTien1m3 = int.Parse(item.Cells["SoTien1m3"].Value.ToString());
@@ -1190,7 +1192,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     cttttn_hoadon.GiaBanCu = int.Parse(item.Cells["GiaBan_Cu"].Value.ToString());
                                     cttttn_hoadon.ThueGTGTCu = int.Parse(item.Cells["ThueGTGT_Cu"].Value.ToString());
                                     cttttn_hoadon.PhiBVMTCu = int.Parse(item.Cells["PhiBVMT_Cu"].Value.ToString());
-                                    cttttn_hoadon.PhiBVMT_ThueCu = int.Parse(item.Cells["PhiBVMT_Thue_Cu"].Value.ToString());
+                                    if (item.Cells["PhiBVMT_Thue_Cu"].Value != null && item.Cells["PhiBVMT_Thue_Cu"].Value.ToString() != "")
+                                        cttttn_hoadon.PhiBVMT_ThueCu = int.Parse(item.Cells["PhiBVMT_Thue_Cu"].Value.ToString());
                                     cttttn_hoadon.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
                                     ///
                                     cttttn_hoadon.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
@@ -1200,7 +1203,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     cttttn_hoadon.GiaBanMoi = int.Parse(item.Cells["GiaBan_Moi"].Value.ToString());
                                     cttttn_hoadon.ThueGTGTMoi = int.Parse(item.Cells["ThueGTGT_Moi"].Value.ToString());
                                     cttttn_hoadon.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
-                                    cttttn_hoadon.PhiBVMT_ThueMoi = int.Parse(item.Cells["PhiBVMT_Thue_Moi"].Value.ToString());
+                                    if (item.Cells["PhiBVMT_Thue_Moi"].Value != null && item.Cells["PhiBVMT_Thue_Moi"].Value.ToString() != "")
+                                        cttttn_hoadon.PhiBVMT_ThueMoi = int.Parse(item.Cells["PhiBVMT_Thue_Moi"].Value.ToString());
                                     cttttn_hoadon.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
                                     cttttn_hoadon.TangGiam = item.Cells["TangGiam"].Value.ToString();
                                     if (item.Cells["SoTien1m3"].Value == null || item.Cells["SoTien1m3"].Value.ToString() == "" || item.Cells["SoTien1m3"].Value.ToString() == "0")

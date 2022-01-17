@@ -15941,6 +15941,14 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MaDonMoi;
 		
+		private bool _KTXM;
+		
+		private bool _ToTrinh;
+		
+		private bool _Nhan_QLDHN;
+		
+		private System.Nullable<System.DateTime> _Nhan_QLDHN_Ngay;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -15981,6 +15989,14 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTBCChanged();
     partial void OnMaDonMoiChanging(string value);
     partial void OnMaDonMoiChanged();
+    partial void OnKTXMChanging(bool value);
+    partial void OnKTXMChanged();
+    partial void OnToTrinhChanging(bool value);
+    partial void OnToTrinhChanged();
+    partial void OnNhan_QLDHNChanging(bool value);
+    partial void OnNhan_QLDHNChanged();
+    partial void OnNhan_QLDHN_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnNhan_QLDHN_NgayChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -16272,6 +16288,86 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonMoi = value;
 					this.SendPropertyChanged("MaDonMoi");
 					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KTXM", DbType="Bit NOT NULL")]
+		public bool KTXM
+		{
+			get
+			{
+				return this._KTXM;
+			}
+			set
+			{
+				if ((this._KTXM != value))
+				{
+					this.OnKTXMChanging(value);
+					this.SendPropertyChanging();
+					this._KTXM = value;
+					this.SendPropertyChanged("KTXM");
+					this.OnKTXMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToTrinh", DbType="Bit NOT NULL")]
+		public bool ToTrinh
+		{
+			get
+			{
+				return this._ToTrinh;
+			}
+			set
+			{
+				if ((this._ToTrinh != value))
+				{
+					this.OnToTrinhChanging(value);
+					this.SendPropertyChanging();
+					this._ToTrinh = value;
+					this.SendPropertyChanged("ToTrinh");
+					this.OnToTrinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nhan_QLDHN", DbType="Bit NOT NULL")]
+		public bool Nhan_QLDHN
+		{
+			get
+			{
+				return this._Nhan_QLDHN;
+			}
+			set
+			{
+				if ((this._Nhan_QLDHN != value))
+				{
+					this.OnNhan_QLDHNChanging(value);
+					this.SendPropertyChanging();
+					this._Nhan_QLDHN = value;
+					this.SendPropertyChanged("Nhan_QLDHN");
+					this.OnNhan_QLDHNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nhan_QLDHN_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Nhan_QLDHN_Ngay
+		{
+			get
+			{
+				return this._Nhan_QLDHN_Ngay;
+			}
+			set
+			{
+				if ((this._Nhan_QLDHN_Ngay != value))
+				{
+					this.OnNhan_QLDHN_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._Nhan_QLDHN_Ngay = value;
+					this.SendPropertyChanged("Nhan_QLDHN_Ngay");
+					this.OnNhan_QLDHN_NgayChanged();
 				}
 			}
 		}
