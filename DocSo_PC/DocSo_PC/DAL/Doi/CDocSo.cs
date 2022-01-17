@@ -89,6 +89,11 @@ namespace DocSo_PC.DAL.Doi
             return _cDAL.ExecuteQuery_DataTable("select Code from TTDHN order by stt asc");
         }
 
+        public DataTable getDS_Code(string Nam, string Ky, string Dot)
+        {
+            return _cDAL.ExecuteQuery_DataTable("select Code=CodeMoi from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " group by CodeMoi");
+        }
+
         public string getTTDHNCode(string Code)
         {
             return _cDAL.ExecuteQuery_ReturnOneValue("select TTDHN from TTDHN where Code='" + Code + "'").ToString();
@@ -198,17 +203,25 @@ namespace DocSo_PC.DAL.Doi
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
+        public DataTable getDS_GhiChu(string DanhBo)
+        {
+            string sql = "select Ky+'/'+str(Nam,4,0) as NamKy,DanhBa,CodeMoi,TTDHNMoi,CSCu,CSMoi,TieuThuMoi,GhiChuDS,GhiChuKH,GhiChuTV"
+                            + " from DocSo where DanhBa='" + DanhBo + "' order by DocSoID desc";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
 
         //xử lý
         public DataTable getDS_XuLy_DanhBo(string Nam, string Ky, string DanhBo)
         {
-            string sql = "select * from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa=" + DanhBo;
+            string sql = "select *,BaoThay=case when exists(select top 1 DanhBa from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where DanhBa=DocSo.DanhBa and t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE()) then 'true' else 'false' end"
+            + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa=" + DanhBo;
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_XuLy_DanhBo(string MaTo, string Nam, string Ky, string DanhBo)
         {
-            string sql = "select * from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa=" + DanhBo + " (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ")";
+            string sql = "select *,BaoThay=case when exists(select top 1 DanhBa from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where DanhBa=DocSo.DanhBa and t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE()) then 'true' else 'false' end"
+            + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa=" + DanhBo + " and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ")";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
@@ -217,19 +230,24 @@ namespace DocSo_PC.DAL.Doi
             if (MaTo == "0")
                 MaTo = "";
             else
-                MaTo = "and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ")";
-            if (May == "Tất Cả")
+                MaTo = " and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ")";
+            if (May == "" || May == "Tất Cả")
                 May = "";
-            if (Code == "Tất Cả")
+            else
+                May = " and May like '" + May + "'";
+            if (Code == "" || Code == "Tất Cả")
                 Code = "";
-            string sql = "select * from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " " + MaTo + " and May like '%" + May + "%' and CodeMoi like '%" + Code + "%'"
+            else
+                Code = " and CodeMoi like '" + Code + "'";
+            string sql = "select *,BaoThay=case when exists(select top 1 DanhBa from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where DanhBa=DocSo.DanhBa and t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE()) then 'true' else 'false' end"
+                        + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + MaTo + May + Code
                         + " order by MLT2 asc";
             string sql2 = "select TongSL=COUNT(DocSoID)"
                         + " ,SLDaGhi=COUNT(case when CodeMoi!='' then 1 else null end)"
                         + " ,SLChuaGhi=COUNT(case when CodeMoi='' then 1 else null end)"
                         + " ,SanLuong=SUM(TieuThuMoi)"
                         + " ,SLHD0=COUNT(case when TieuThuMoi=0 then 1 else null end)"
-                        + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " " + MaTo + " and May like '%" + May + "%' and CodeMoi like '%" + Code + "%'";
+                        + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + MaTo + May + Code;
             dtTong = _cDAL.ExecuteQuery_DataTable(sql2);
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
@@ -248,6 +266,16 @@ namespace DocSo_PC.DAL.Doi
                             + " from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code "
                             + " where DanhBa='" + DanhBo + "' and t.CodeType = 'BT' order by NgayCapNhat desc";
             return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
+        public bool checkBaoThay(string DanhBo)
+        {
+            string sql = "select top 1 DanhBa from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where DanhBa='" + DanhBo + "' and t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE()";
+            object result = _cDAL.ExecuteQuery_ReturnOneValue(sql);
+            if (result != null && result.ToString() != "")
+                return true;
+            else
+                return false;
         }
 
         public DataTable getLichSu(string DanhBo, string Nam, string Ky)
@@ -271,7 +299,8 @@ namespace DocSo_PC.DAL.Doi
             + "      from server9.HOADON_TA.dbo.HOADON cross apply"
             + "          (values"
             + "              (N'6. Tiêu Thụ HĐ',convert(varchar(10),TIEUTHU)),"
-            + "              (N'7. Đăng Ngân',convert(varchar(3),MaNV_DangNgan))"
+            + "              (N'7. Đăng Ngân',convert(varchar(10),NgayGiaiTrach,103)),"
+            + "              (N'8. SoHoaDonCu',SoHoaDonCu)"
             + "              )"
             + "          cs (Col,Val)"
             + "      where DanhBa = '" + DanhBo + "') src"

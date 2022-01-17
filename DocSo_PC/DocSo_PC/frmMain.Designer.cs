@@ -57,6 +57,8 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.mnuVanThu = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCongVanDen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +71,8 @@
             this.mnuHeThong,
             this.mnuQuanTri,
             this.mnuDoi,
-            this.mnuToTruong});
+            this.mnuToTruong,
+            this.mnuVanThu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(984, 24);
@@ -280,6 +283,21 @@
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // mnuVanThu
+            // 
+            this.mnuVanThu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuCongVanDen});
+            this.mnuVanThu.Name = "mnuVanThu";
+            this.mnuVanThu.Size = new System.Drawing.Size(61, 20);
+            this.mnuVanThu.Text = "Văn Thư";
+            // 
+            // mnuCongVanDen
+            // 
+            this.mnuCongVanDen.Name = "mnuCongVanDen";
+            this.mnuCongVanDen.Size = new System.Drawing.Size(152, 22);
+            this.mnuCongVanDen.Text = "Công Văn Đến";
+            this.mnuCongVanDen.Click += new System.EventHandler(this.mnuCongVanDen_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,6 +356,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuLichDocSo;
         private System.Windows.Forms.ToolStripMenuItem mnuNhanVienDocSo;
         private System.Windows.Forms.ToolStripMenuItem mnuChuyenBilling;
+        private System.Windows.Forms.ToolStripMenuItem mnuVanThu;
+        private System.Windows.Forms.ToolStripMenuItem mnuCongVanDen;
     }
 }
 

@@ -11,6 +11,7 @@ using DocSo_PC.GUI.QuanTri;
 using DocSo_PC.GUI.Doi;
 using DocSo_PC.GUI.ToTruong;
 using DocSo_PC.GUI.HeThong;
+using DocSo_PC.GUI.VanThu;
 
 namespace DocSo_PC
 {
@@ -286,10 +287,23 @@ namespace DocSo_PC
 
         #endregion
 
-       
+        #region Văn Thư
 
-        
+        private void mnuCongVanDen_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuCongVanDen", "Xem"))
+            {
+                frmCongVanDen frm = new frmCongVanDen();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
-        
+        #endregion
+
+
+
+
     }
 }

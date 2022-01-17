@@ -47,15 +47,8 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbNam.ValueMember = "Nam";
                 cmbKy.SelectedItem = DateTime.Now.Month.ToString("00");
                 cmbDot.SelectedIndex = 0;
-                DataTable dtCode = _cDocSo.getDS_Code();
-                DataRow dr = dtCode.NewRow();
-                dr["Code"] = "Tất Cả";
-                dtCode.Rows.InsertAt(dr, 0);
-                cmbCode.DataSource = dtCode;
-                cmbCode.DisplayMember = "Code";
-                cmbCode.ValueMember = "Code";
 
-                dtCode = _cDocSo.getDS_Code();
+                DataTable dtCode = _cDocSo.getDS_Code();
                 cmbCodeMoi.DataSource = dtCode;
                 cmbCodeMoi.DisplayMember = "Code";
                 cmbCodeMoi.ValueMember = "Code";
@@ -78,7 +71,7 @@ namespace DocSo_PC.GUI.ToTruong
                     loadMay(CNguoiDung.MaTo.ToString());
                 }
                 _flagLoadFirst = true;
-
+                loadCodeMoi();
             }
             catch (Exception ex)
             {
@@ -121,7 +114,10 @@ namespace DocSo_PC.GUI.ToTruong
                     TB_DULIEUKHACHHANG dhn = _cDHN.get(_docso.DanhBa);
                     if (dhn != null)
                     {
+                        cmbCodeMoi.SelectedValue = _docso.CodeMoi;
                         txtCSC.Text = _docso.CSCu.Value.ToString();
+                        txtCSM.Text = _docso.CSMoi.Value.ToString();
+                        txtTieuThu.Text = _docso.TieuThuMoi.Value.ToString();
                         txtHoTen.Text = dhn.HOTEN;
                         txtDanhBo.Text = dhn.DANHBO.Insert(7, " ").Insert(4, " ");
                         txtHieu.Text = dhn.HIEUDH;
@@ -147,12 +143,13 @@ namespace DocSo_PC.GUI.ToTruong
                         dgvLichSu.DataSource = _cDocSo.getLichSu(_docso.DanhBa, _docso.Nam.Value.ToString(), _docso.Ky);
                         foreach (DataGridViewColumn item in dgvLichSu.Columns)
                         {
-                            if (item.Name.Contains("Ky") == true && dgvLichSu[item.Index, dgvLichSu.Rows.Count - 2].Value.ToString() != "")
-                                dgvLichSu[item.Index, dgvLichSu.Rows.Count - 2].Style.BackColor = Color.LimeGreen;
+                            if (item.Name.Contains("Ky") == true && dgvLichSu[item.Index, dgvLichSu.Rows.Count - 1].Value.ToString() != "")
+                                dgvLichSu[item.Index, dgvLichSu.Rows.Count - 3].Style.BackColor = Color.Orange;
                         }
                         dgvLichSu.Rows.RemoveAt(dgvLichSu.Rows.Count - 1);
                         if (chkLoadHinh.Checked == true)
                             btnXemHinh.PerformClick();
+                        txtCSM.Focus();
                     }
                 }
             }
@@ -172,29 +169,34 @@ namespace DocSo_PC.GUI.ToTruong
         {
             DataTable dt = new DataTable();
             DataTable dtTong = new DataTable();
-            if (CNguoiDung.Doi == true)
+
+            if (cmbMay.SelectedValue != null && cmbCode.SelectedValue != null)
             {
-                if (txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", "") != "")
+                if (CNguoiDung.Doi == true)
                 {
-                    dt = _cDocSo.getDS_XuLy_DanhBo(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", ""));
+                    if (txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", "") != "")
+                    {
+                        dt = _cDocSo.getDS_XuLy_DanhBo(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", ""));
+                    }
+                    else
+                    {
+                        dt = _cDocSo.getDS_XuLy(cmbTo.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString(), cmbCode.SelectedValue.ToString(), ref dtTong);
+                    }
                 }
                 else
                 {
-                    dt = _cDocSo.getDS_XuLy(cmbTo.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString(), cmbCode.SelectedValue.ToString(), ref dtTong);
-                }
-            }
-            else
-            {
-                if (txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", "") != "")
-                {
-                    dt = _cDocSo.getDS_XuLy_DanhBo(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", ""));
-                }
-                else
-                {
-                    dt = _cDocSo.getDS_XuLy(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString(), cmbCode.SelectedValue.ToString(), ref dtTong);
+                    if (txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", "") != "")
+                    {
+                        dt = _cDocSo.getDS_XuLy_DanhBo(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", ""));
+                    }
+                    else
+                    {
+                        dt = _cDocSo.getDS_XuLy(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString(), cmbCode.SelectedValue.ToString(), ref dtTong);
+                    }
                 }
             }
             dgvDanhSach.DataSource = dt;
+            loaddgvDanhSach();
             if (dtTong != null && dtTong.Rows.Count > 0)
             {
                 lbTongSL.Text = dtTong.Rows[0]["TongSL"].ToString();
@@ -202,6 +204,29 @@ namespace DocSo_PC.GUI.ToTruong
                 lbSLChuaGhi.Text = dtTong.Rows[0]["SLChuaGhi"].ToString();
                 lbSanLuong.Text = dtTong.Rows[0]["SanLuong"].ToString();
                 lbSLHD0.Text = dtTong.Rows[0]["SLHD0"].ToString();
+            }
+        }
+
+        public void loaddgvDanhSach()
+        {
+            foreach (DataGridViewRow item in dgvDanhSach.Rows)
+            {
+                //tiêu thu tăng cao, tiêu thụ âm
+                if (item.Cells["TieuThuMoi"].Value != null && item.Cells["TieuThuMoi"].Value.ToString() != "" && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) > 0
+                    && (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.4 || int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) < 0))
+                    item.DefaultCellStyle.BackColor = Color.Red;
+                //có BBKT, tờ trình
+                //if (item.Cells["TieuThu"].Value != null && item.Cells["TieuThu"].Value.ToString() != ""
+                //    && (int.Parse(item.Cells["TieuThu"].Value.ToString()) >= int.Parse(item.Cells["TTTB"].Value.ToString()) * 1.4 || int.Parse(item.Cells["TieuThu"].Value.ToString()) < 0))
+                //    item.DefaultCellStyle.BackColor = Color.Orange;
+                //có hoàn công thay
+                if (bool.Parse(item.Cells["BaoThay"].Value.ToString()) == true)
+                    item.DefaultCellStyle.BackColor = Color.Yellow;
+                //nhập sai code
+                if (item.Cells["CodeMoi"].Value != null && item.Cells["CodeMoi"].Value.ToString() != ""
+                    && ((item.Cells["CodeCu"].Value.ToString().Contains("4") && item.Cells["CodeMoi"].Value.ToString().Contains("5"))
+                    || (item.Cells["CodeCu"].Value.ToString().Contains("4") && item.Cells["CodeMoi"].Value.ToString().Contains("8"))))
+                    item.DefaultCellStyle.BackColor = Color.DeepSkyBlue;
             }
         }
 
@@ -392,14 +417,19 @@ namespace DocSo_PC.GUI.ToTruong
                             _docso.CSMoi = int.Parse(txtCSM.Text.Trim());
                             //_docso.TieuThuMoi = TieuThu;
                             _docso.TieuThuMoi = int.Parse(txtTieuThu.Text.Trim());
-
                             _docso.TienNuoc = TienNuoc;
                             _docso.Thue = ThueGTGT;
                             _docso.BVMT = TDVTN;
                             _docso.TongTien = TienNuoc + ThueGTGT + TDVTN + ThueTDVTN;
+                            _docso.NVCapNhat = CNguoiDung.HoTen;
+                            _docso.NgayCapNhat = DateTime.Now;
                             _cDocSo.SubmitChanges();
+                            dgvDanhSach.CurrentRow.Cells["TTDHNMoi"].Value = _docso.TTDHNMoi;
+                            dgvDanhSach.CurrentRow.Cells["CodeMoi"].Value = _docso.CodeMoi;
+                            dgvDanhSach.CurrentRow.Cells["CSMoi"].Value = _docso.CSMoi;
+                            dgvDanhSach.CurrentRow.Cells["TieuThuMoi"].Value = _docso.TieuThuMoi;
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            btnXem.PerformClick();
+                            //btnXem.PerformClick();
                         }
                     }
                 }
@@ -419,6 +449,7 @@ namespace DocSo_PC.GUI.ToTruong
                 if (txtCSM.Text.Trim() != "" && e.KeyChar == 13)
                 {
                     txtTieuThu.Text = _cDocSo.tinhCodeTieuThu(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtCSM.Text.Trim())).ToString();
+                    txtTieuThu.Focus();
                 }
             }
             catch (Exception ex)
@@ -483,6 +514,79 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cmbCode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnXem.PerformClick();
+        }
+
+        private void cmbMay_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnXem.PerformClick();
+        }
+
+        private void cmbDot_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadCodeMoi();
+        }
+
+        private void cmbKy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadCodeMoi();
+        }
+
+        private void cmbNam_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadCodeMoi();
+        }
+
+        public void loadCodeMoi()
+        {
+            if (_flagLoadFirst == true)
+            {
+                DataTable dtCode = _cDocSo.getDS_Code(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
+                DataRow dr = dtCode.NewRow();
+                dr["Code"] = "Tất Cả";
+                dtCode.Rows.InsertAt(dr, 0);
+                cmbCode.DataSource = dtCode;
+                cmbCode.DisplayMember = "Code";
+                cmbCode.ValueMember = "Code";
+            }
+        }
+
+        private void btnXemGhiChu_Click(object sender, EventArgs e)
+        {
+            if (_docso != null)
+            {
+                frmXemGhiChu frm = new frmXemGhiChu(_docso.DanhBa);
+                frm.ShowDialog();
+            }
+        }
+
+        private void txtTieuThu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (txtTieuThu.Text.Trim() != "" && e.KeyChar == 13)
+                {
+                    btnSua.PerformClick();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbCodeMoi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtCSM.Focus();
+        }
+
+        private void dgvDanhSach_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            loaddgvDanhSach();
         }
     }
 }

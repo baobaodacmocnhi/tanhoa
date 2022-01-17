@@ -30,7 +30,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>21</ApplicationRevision>
+    <ApplicationRevision>27</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -220,6 +220,12 @@
     <Compile Include="GUI\QuanTri\frmTo.Designer.cs">
       <DependentUpon>frmTo.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToTruong\frmXemGhiChu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmXemGhiChu.Designer.cs">
+      <DependentUpon>frmXemGhiChu.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToTruong\frmXuLySoLieu2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +255,12 @@
     </Compile>
     <Compile Include="GUI\TraCuuThongTin\frmTimKiemDhn.Designer.cs">
       <DependentUpon>frmTimKiemDhn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\VanThu\frmCongVanDen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\VanThu\frmCongVanDen.Designer.cs">
+      <DependentUpon>frmCongVanDen.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\XuLyDocSo\frmChonDot.cs">
       <SubType>Form</SubType>
@@ -320,6 +332,9 @@
     <EmbeddedResource Include="GUI\Doi\frmLichDocSo.resx">
       <DependentUpon>frmLichDocSo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmXemGhiChu.resx">
+      <DependentUpon>frmXemGhiChu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmXuLySoLieu2.resx">
       <DependentUpon>frmXuLySoLieu2.cs</DependentUpon>
     </EmbeddedResource>
@@ -344,6 +359,9 @@
     <None Include="LinQ\dbTrungTamKhachHang.dbml.layout">
       <DependentUpon>dbTrungTamKhachHang.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\VanThu\frmCongVanDen.resx">
+      <DependentUpon>frmCongVanDen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\XuLyDocSo\rptTieuThu.rdlc" />
     <None Include="LinQ\dbDHN.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>

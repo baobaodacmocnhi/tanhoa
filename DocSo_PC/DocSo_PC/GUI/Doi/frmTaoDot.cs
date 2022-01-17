@@ -61,15 +61,15 @@ namespace DocSo_PC.GUI.Doi
                     //kiểm tra
                     string lineC = lines[0].Replace("\",\"", "$").Replace("\"", "");
                     string[] contentsC = lineC.Split('$');
-                    if (_cDocSo.checkExists_BillState(contentsC[2], contentsC[3], contentsC[4]) == true)
+                    if (_cDocSo.checkExists_BillState(int.Parse(contentsC[2]).ToString("0000"), int.Parse(contentsC[3]).ToString("00"), int.Parse(contentsC[4]).ToString("00")) == true)
                     {
-                        MessageBox.Show("Năm " + contentsC[2] + " Kỳ " + contentsC[3] + " Đợt " + contentsC[4] + " đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Năm " + int.Parse(contentsC[2]).ToString("0000") + " Kỳ " + int.Parse(contentsC[3]).ToString("00") + " Đợt " + int.Parse(contentsC[4]).ToString("00") + " đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     else
                     {
                         BillState enB = new BillState();
-                        enB.BillID = contentsC[2] + contentsC[3] + contentsC[4];
+                        enB.BillID = int.Parse(contentsC[2]).ToString("0000") + int.Parse(contentsC[3]).ToString("00") + int.Parse(contentsC[4]).ToString("00");
                         enB.izCB = "1";
                         _cDocSo.them_BillState(enB);
                     }
@@ -85,11 +85,11 @@ namespace DocSo_PC.GUI.Doi
                         if (!string.IsNullOrWhiteSpace(contents[2]))
                             en.Nam = int.Parse(contents[2]);
                         if (!string.IsNullOrWhiteSpace(contents[3]))
-                            en.Ky = contents[3];
+                            en.Ky = int.Parse(contents[3]).ToString("00");
                         if (!string.IsNullOrWhiteSpace(contents[4]))
-                            en.Dot = contents[4];
+                            en.Dot = int.Parse(contents[4]).ToString("00");
                         if (!string.IsNullOrWhiteSpace(contents[5]))
-                            en.May = contents[5];
+                            en.May = int.Parse(contents[5]).ToString("00");
                         if (!string.IsNullOrWhiteSpace(contents[6]))
                             en.MLT1 = en.Dot + en.May + contents[6];
                         if (!string.IsNullOrWhiteSpace(contents[8]))
