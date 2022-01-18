@@ -29338,7 +29338,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name_NhomDon_ChiTiet", DbType="NVarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name_NhomDon_ChiTiet", DbType="NVarChar(500)")]
 		public string Name_NhomDon_ChiTiet
 		{
 			get

@@ -1226,7 +1226,7 @@
       <Column Name="ID_NhomDon" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Name_NhomDon" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="ID_NhomDon_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Name_NhomDon_ChiTiet" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Name_NhomDon_ChiTiet" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="ID_NhomDon_PKH" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Name_NhomDon_PKH" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="CT_HoaDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />

@@ -2558,48 +2558,70 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     oSheet.Cells[indexRow, 26] = dr["TongCong_End"].ToString();
                 }
                 else
-                {
-                    string[] ChiTietMois = dr["ChiTietMoi"].ToString().Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-                    foreach (string item in ChiTietMois)
-                        if (item.Trim() != "")
-                        {
-                            indexRow++;
-                            oSheet.Cells[indexRow, 1] = dr["Dot"].ToString();
-                            oSheet.Cells[indexRow, 2] = dr["Ky"].ToString();
-                            oSheet.Cells[indexRow, 3] = dr["Nam"].ToString();
-                            oSheet.Cells[indexRow, 4] = dr["DanhBo"].ToString();
-                            oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
-                            oSheet.Cells[indexRow, 6] = "";
-                            oSheet.Cells[indexRow, 7] = "";
-                            oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
-                            oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
-                            oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
-                            oSheet.Cells[indexRow, 11] = dr["HoTen_BD"].ToString();
-                            oSheet.Cells[indexRow, 12] = dr["HoTen_BD"].ToString();
-                            oSheet.Cells[indexRow, 13] = dr["DiaChi_BD"].ToString();
-                            oSheet.Cells[indexRow, 14] = dr["MST_BD"].ToString();
-                            oSheet.Cells[indexRow, 15] = dr["GiaBieu_BD"].ToString();
-                            oSheet.Cells[indexRow, 16] = dr["DinhMuc_BD"].ToString();
-                            oSheet.Cells[indexRow, 17] = dr["TieuThu_BD"].ToString();
-                            if (bool.Parse(dr["KhauTru"].ToString()) == true)
+                    if (bool.Parse(dr["KhauTru"].ToString()) == true)
+                    {
+                        indexRow++;
+                        oSheet.Cells[indexRow, 1] = dr["Dot"].ToString();
+                        oSheet.Cells[indexRow, 2] = dr["Ky"].ToString();
+                        oSheet.Cells[indexRow, 3] = dr["Nam"].ToString();
+                        oSheet.Cells[indexRow, 4] = dr["DanhBo"].ToString();
+                        oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
+                        oSheet.Cells[indexRow, 6] = "";
+                        oSheet.Cells[indexRow, 7] = "";
+                        oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                        oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
+                        oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                        oSheet.Cells[indexRow, 11] = dr["HoTen_BD"].ToString();
+                        oSheet.Cells[indexRow, 12] = dr["HoTen_BD"].ToString();
+                        oSheet.Cells[indexRow, 13] = dr["DiaChi_BD"].ToString();
+                        oSheet.Cells[indexRow, 14] = dr["MST_BD"].ToString();
+                        oSheet.Cells[indexRow, 15] = dr["GiaBieu_BD"].ToString();
+                        oSheet.Cells[indexRow, 16] = dr["DinhMuc_BD"].ToString();
+                        oSheet.Cells[indexRow, 17] = dr["TieuThu_BD"].ToString();
+                        oSheet.Cells[indexRow, 20] = dr["TienNuoc_End"].ToString();//khấu trừ
+                        oSheet.Cells[indexRow, 21] = "5";
+                        oSheet.Cells[indexRow, 22] = "10";
+                        oSheet.Cells[indexRow, 23] = dr["TienNuoc_End"].ToString();
+                        oSheet.Cells[indexRow, 24] = dr["ThueGTGT_End"].ToString();
+                        oSheet.Cells[indexRow, 25] = dr["PhiBVMT_End"].ToString();
+                        oSheet.Cells[indexRow, 26] = dr["TongCong_End"].ToString();
+                    }
+                    else
+                    {
+                        string[] ChiTietMois = dr["ChiTietMoi"].ToString().Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+                        foreach (string item in ChiTietMois)
+                            if (item.Trim() != "")
                             {
-                                oSheet.Cells[indexRow, 20] = dr["TienNuoc_End"].ToString();
-                            }
-                            else
-                            {
+                                indexRow++;
+                                oSheet.Cells[indexRow, 1] = dr["Dot"].ToString();
+                                oSheet.Cells[indexRow, 2] = dr["Ky"].ToString();
+                                oSheet.Cells[indexRow, 3] = dr["Nam"].ToString();
+                                oSheet.Cells[indexRow, 4] = dr["DanhBo"].ToString();
+                                oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
+                                oSheet.Cells[indexRow, 6] = "";
+                                oSheet.Cells[indexRow, 7] = "";
+                                oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                                oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
+                                oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                                oSheet.Cells[indexRow, 11] = dr["HoTen_BD"].ToString();
+                                oSheet.Cells[indexRow, 12] = dr["HoTen_BD"].ToString();
+                                oSheet.Cells[indexRow, 13] = dr["DiaChi_BD"].ToString();
+                                oSheet.Cells[indexRow, 14] = dr["MST_BD"].ToString();
+                                oSheet.Cells[indexRow, 15] = dr["GiaBieu_BD"].ToString();
+                                oSheet.Cells[indexRow, 16] = dr["DinhMuc_BD"].ToString();
+                                oSheet.Cells[indexRow, 17] = dr["TieuThu_BD"].ToString();
                                 string[] DonGia = item.Split('x');
                                 oSheet.Cells[indexRow, 18] = DonGia[0].Trim().Replace(".", "");
                                 oSheet.Cells[indexRow, 19] = DonGia[1].Trim().Replace(".", "");
                                 oSheet.Cells[indexRow, 20] = int.Parse(DonGia[0].Trim().Replace(".", "")) * int.Parse(DonGia[1].Trim().Replace(".", ""));
+                                oSheet.Cells[indexRow, 21] = "5";
+                                oSheet.Cells[indexRow, 22] = "10";
+                                oSheet.Cells[indexRow, 23] = dr["TienNuoc_End"].ToString();
+                                oSheet.Cells[indexRow, 24] = dr["ThueGTGT_End"].ToString();
+                                oSheet.Cells[indexRow, 25] = dr["PhiBVMT_End"].ToString();
+                                oSheet.Cells[indexRow, 26] = dr["TongCong_End"].ToString();
                             }
-                            oSheet.Cells[indexRow, 21] = "5";
-                            oSheet.Cells[indexRow, 22] = "10";
-                            oSheet.Cells[indexRow, 23] = dr["TienNuoc_End"].ToString();
-                            oSheet.Cells[indexRow, 24] = dr["ThueGTGT_End"].ToString();
-                            oSheet.Cells[indexRow, 25] = dr["PhiBVMT_End"].ToString();
-                            oSheet.Cells[indexRow, 26] = dr["TongCong_End"].ToString();
-                        }
-                }
+                    }
             }
         }
 
@@ -2768,49 +2790,72 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     oSheet.Cells[indexRow, 27] = dr["PhiBVMT_Thue_End"].ToString();
                 }
                 else
-                {
-                    string[] ChiTietMois = dr["ChiTietMoi"].ToString().Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-                    foreach (string item in ChiTietMois)
-                        if (item.Trim() != "")
-                        {
-                            indexRow++;
-                            oSheet.Cells[indexRow, 1] = dr["Dot"].ToString();
-                            oSheet.Cells[indexRow, 2] = dr["Ky"].ToString();
-                            oSheet.Cells[indexRow, 3] = dr["Nam"].ToString();
-                            oSheet.Cells[indexRow, 4] = dr["DanhBo"].ToString();
-                            oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
-                            oSheet.Cells[indexRow, 6] = "";
-                            oSheet.Cells[indexRow, 7] = "";
-                            oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
-                            oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
-                            oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
-                            oSheet.Cells[indexRow, 11] = dr["HoTen_BD"].ToString();
-                            oSheet.Cells[indexRow, 12] = dr["HoTen_BD"].ToString();
-                            oSheet.Cells[indexRow, 13] = dr["DiaChi_BD"].ToString();
-                            oSheet.Cells[indexRow, 14] = dr["MST_BD"].ToString();
-                            oSheet.Cells[indexRow, 15] = dr["GiaBieu_BD"].ToString();
-                            oSheet.Cells[indexRow, 16] = dr["DinhMuc_BD"].ToString();
-                            oSheet.Cells[indexRow, 17] = dr["TieuThu_BD"].ToString();
-                            if (bool.Parse(dr["KhauTru"].ToString()) == true)
+                    if (bool.Parse(dr["KhauTru"].ToString()) == true)
+                    {
+                        indexRow++;
+                        oSheet.Cells[indexRow, 1] = dr["Dot"].ToString();
+                        oSheet.Cells[indexRow, 2] = dr["Ky"].ToString();
+                        oSheet.Cells[indexRow, 3] = dr["Nam"].ToString();
+                        oSheet.Cells[indexRow, 4] = dr["DanhBo"].ToString();
+                        oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
+                        oSheet.Cells[indexRow, 6] = "";
+                        oSheet.Cells[indexRow, 7] = "";
+                        oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                        oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
+                        oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                        oSheet.Cells[indexRow, 11] = dr["HoTen_BD"].ToString();
+                        oSheet.Cells[indexRow, 12] = dr["HoTen_BD"].ToString();
+                        oSheet.Cells[indexRow, 13] = dr["DiaChi_BD"].ToString();
+                        oSheet.Cells[indexRow, 14] = dr["MST_BD"].ToString();
+                        oSheet.Cells[indexRow, 15] = dr["GiaBieu_BD"].ToString();
+                        oSheet.Cells[indexRow, 16] = dr["DinhMuc_BD"].ToString();
+                        oSheet.Cells[indexRow, 17] = dr["TieuThu_BD"].ToString();
+                        oSheet.Cells[indexRow, 20] = dr["TienNuoc_End"].ToString();//khấu trừ
+                        oSheet.Cells[indexRow, 21] = "5";
+                        oSheet.Cells[indexRow, 22] = "10";
+                        oSheet.Cells[indexRow, 23] = dr["TienNuoc_End"].ToString();
+                        oSheet.Cells[indexRow, 24] = dr["ThueGTGT_End"].ToString();
+                        oSheet.Cells[indexRow, 25] = dr["PhiBVMT_End"].ToString();
+                        oSheet.Cells[indexRow, 26] = dr["TongCong_End"].ToString();
+                        oSheet.Cells[indexRow, 27] = dr["PhiBVMT_Thue_End"].ToString();
+                    }
+                    else
+                    {
+                        string[] ChiTietMois = dr["ChiTietMoi"].ToString().Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+                        foreach (string item in ChiTietMois)
+                            if (item.Trim() != "")
                             {
-                                oSheet.Cells[indexRow, 20] = dr["TienNuoc_End"].ToString();
-                            }
-                            else
-                            {
+                                indexRow++;
+                                oSheet.Cells[indexRow, 1] = dr["Dot"].ToString();
+                                oSheet.Cells[indexRow, 2] = dr["Ky"].ToString();
+                                oSheet.Cells[indexRow, 3] = dr["Nam"].ToString();
+                                oSheet.Cells[indexRow, 4] = dr["DanhBo"].ToString();
+                                oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
+                                oSheet.Cells[indexRow, 6] = "";
+                                oSheet.Cells[indexRow, 7] = "";
+                                oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                                oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
+                                oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                                oSheet.Cells[indexRow, 11] = dr["HoTen_BD"].ToString();
+                                oSheet.Cells[indexRow, 12] = dr["HoTen_BD"].ToString();
+                                oSheet.Cells[indexRow, 13] = dr["DiaChi_BD"].ToString();
+                                oSheet.Cells[indexRow, 14] = dr["MST_BD"].ToString();
+                                oSheet.Cells[indexRow, 15] = dr["GiaBieu_BD"].ToString();
+                                oSheet.Cells[indexRow, 16] = dr["DinhMuc_BD"].ToString();
+                                oSheet.Cells[indexRow, 17] = dr["TieuThu_BD"].ToString();
                                 string[] DonGia = item.Split('x');
                                 oSheet.Cells[indexRow, 18] = DonGia[0].Trim().Replace(".", "");
                                 oSheet.Cells[indexRow, 19] = DonGia[1].Trim().Replace(".", "");
                                 oSheet.Cells[indexRow, 20] = int.Parse(DonGia[0].Trim().Replace(".", "")) * int.Parse(DonGia[1].Trim().Replace(".", ""));
+                                oSheet.Cells[indexRow, 21] = "5";
+                                oSheet.Cells[indexRow, 22] = "10";
+                                oSheet.Cells[indexRow, 23] = dr["TienNuoc_End"].ToString();
+                                oSheet.Cells[indexRow, 24] = dr["ThueGTGT_End"].ToString();
+                                oSheet.Cells[indexRow, 25] = dr["PhiBVMT_End"].ToString();
+                                oSheet.Cells[indexRow, 26] = dr["TongCong_End"].ToString();
+                                oSheet.Cells[indexRow, 27] = dr["PhiBVMT_Thue_End"].ToString();
                             }
-                            oSheet.Cells[indexRow, 21] = "5";
-                            oSheet.Cells[indexRow, 22] = "10";
-                            oSheet.Cells[indexRow, 23] = dr["TienNuoc_End"].ToString();
-                            oSheet.Cells[indexRow, 24] = dr["ThueGTGT_End"].ToString();
-                            oSheet.Cells[indexRow, 25] = dr["PhiBVMT_End"].ToString();
-                            oSheet.Cells[indexRow, 26] = dr["TongCong_End"].ToString();
-                            oSheet.Cells[indexRow, 27] = dr["PhiBVMT_Thue_End"].ToString();
-                        }
-                }
+                    }
             }
         }
 
