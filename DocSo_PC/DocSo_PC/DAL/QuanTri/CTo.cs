@@ -25,8 +25,7 @@ namespace DocSo_PC.DAL.QuanTri
             catch (Exception ex)
             {
                 Refresh();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -41,8 +40,7 @@ namespace DocSo_PC.DAL.QuanTri
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -56,8 +54,7 @@ namespace DocSo_PC.DAL.QuanTri
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 

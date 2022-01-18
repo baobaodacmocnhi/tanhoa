@@ -30,7 +30,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>27</ApplicationRevision>
+    <ApplicationRevision>28</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -103,7 +103,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\CDocSo12.cs" />
+    <Compile Include="DAL\CThuongVu.cs" />
     <Compile Include="DAL\QuanTri\CMayDS.cs" />
+    <Compile Include="DAL\VanThu\CCongVanDen.cs" />
     <Compile Include="GUI\Doi\frmChuyenBilling.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,10 +275,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbDHN.dbml</DependentUpon>
     </Compile>
-    <Compile Include="LinQ\dbDocSoTH.designer.cs">
+    <Compile Include="LinQ\dbDocSo.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbDocSoTH.dbml</DependentUpon>
+      <DependentUpon>dbDocSo.dbml</DependentUpon>
     </Compile>
     <Compile Include="LinQ\dbThuTien.designer.cs">
       <AutoGen>True</AutoGen>
@@ -353,8 +355,10 @@
     <None Include="LinQ\dbDHN.dbml.layout">
       <DependentUpon>dbDHN.dbml</DependentUpon>
     </None>
-    <None Include="LinQ\dbDocSoTH.dbml.layout">
-      <DependentUpon>dbDocSoTH.dbml</DependentUpon>
+    <None Include="LinQ\dbDocSo.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbDocSo.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="LinQ\dbTrungTamKhachHang.dbml.layout">
       <DependentUpon>dbTrungTamKhachHang.dbml</DependentUpon>
@@ -362,15 +366,13 @@
     <EmbeddedResource Include="GUI\VanThu\frmCongVanDen.resx">
       <DependentUpon>frmCongVanDen.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LinQ\dbDocSo.dbml.layout">
+      <DependentUpon>dbDocSo.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Report\XuLyDocSo\rptTieuThu.rdlc" />
     <None Include="LinQ\dbDHN.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbDHN.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="LinQ\dbDocSoTH.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbDocSoTH.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="LinQ\dbThuTien.dbml.layout">

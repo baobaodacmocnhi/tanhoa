@@ -48,17 +48,6 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=s" +
-            "a;Password=db8@tanhoa")]
-        public string DocSoTHConnectionString {
-            get {
-                return ((string)(this["DocSoTHConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=serverg8-01;Initial Catalog=TRUNGTAMKHACHHANG;Persist Security Info=T" +
             "rue;User ID=sa;Password=db11@tanhoa")]
         public string TRUNGTAMKHACHHANGConnectionString {
@@ -94,6 +83,17 @@ namespace DocSo_PC.Properties {
         public string DocSo_PC_wrDHN_wsDHN {
             get {
                 return ((string)(this["DocSo_PC_wrDHN_wsDHN"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=hp_g7\\kd;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=s" +
+            "a;Password=db8@tanhoa")]
+        public string DocSoTHConnectionString {
+            get {
+                return ((string)(this["DocSoTHConnectionString"]));
             }
         }
     }

@@ -374,22 +374,22 @@ namespace DocSo_PC.GUI.ToTruong
             }
         }
 
-        private void ptbKy0_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void ptbKy0_MouseClick(object sender, MouseEventArgs e)
         {
             _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKy0.Image));
         }
 
-        private void ptbKy1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void ptbKy1_MouseClick(object sender, MouseEventArgs e)
         {
             _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKy1.Image));
         }
 
-        private void ptbKy2_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void ptbKy2_MouseClick(object sender, MouseEventArgs e)
         {
             _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKy2.Image));
         }
 
-        private void ptbKy3_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void ptbKy3_MouseClick(object sender, MouseEventArgs e)
         {
             _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKy3.Image));
         }
@@ -581,6 +581,8 @@ namespace DocSo_PC.GUI.ToTruong
 
         private void cmbCodeMoi_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbCodeMoi.SelectedValue.ToString() == "N")
+                txtTieuThu.Text = "0";
             txtCSM.Focus();
         }
 
@@ -588,5 +590,7 @@ namespace DocSo_PC.GUI.ToTruong
         {
             loaddgvDanhSach();
         }
+
+
     }
 }

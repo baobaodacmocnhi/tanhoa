@@ -14,7 +14,7 @@ namespace DocSo_PC.DAL
 {
     class CDAL
     {
-        public static dbDocSoTHDataContext _db = new dbDocSoTHDataContext();
+        public static dbDocSoDataContext _db = new dbDocSoDataContext();
         public static CConnection _cDAL = new CConnection(_db.Connection.ConnectionString);
 
         public void SubmitChanges()
@@ -24,7 +24,7 @@ namespace DocSo_PC.DAL
 
         public void Refresh()
         {
-            _db = new dbDocSoTHDataContext();
+            _db = new dbDocSoDataContext();
         }
 
         public byte[] imageToByteArray(Image imageIn)
