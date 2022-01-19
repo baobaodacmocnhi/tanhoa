@@ -230,6 +230,24 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="BaoCao\ThuTraLoi\rptToTrinh_DCMS_2022.cs">
+      <DependentUpon>rptToTrinh_DCMS_2022.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\ThuTraLoi\rptToTrinh_DCHD_2022.cs">
+      <DependentUpon>rptToTrinh_DCHD_2022.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\ThuTraLoi\rptToTrinh_ThongQuaPGD_2022.cs">
+      <DependentUpon>rptToTrinh_ThongQuaPGD_2022.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\ThuTraLoi\rptToTrinh_DCHD.cs">
       <DependentUpon>rptToTrinh_DCHD.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1764,6 +1782,18 @@
     <EmbeddedResource Include="BaoCao\ThuMoi\rptThanhToanTienNuoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThanhToanTienNuoc.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ThuTraLoi\rptToTrinh_DCMS_2022.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToTrinh_DCMS_2022.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ThuTraLoi\rptToTrinh_DCHD_2022.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToTrinh_DCHD_2022.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ThuTraLoi\rptToTrinh_ThongQuaPGD_2022.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToTrinh_ThongQuaPGD_2022.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ThuTraLoi\rptToTrinh_DCHD.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

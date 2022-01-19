@@ -764,7 +764,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     ReportDocument rpt;
                     //if (_cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
                     //{
-                    rpt = new rptToTrinh_ThongQuaPGD();
+                    rpt = new rptToTrinh_ThongQuaPGD_2022();
                     //}
                     //else
                     //{
@@ -881,7 +881,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         rpt2.SetDataSource(dsBaoCao);
                         frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
                         frm2.Show();
-                        rptToTrinh_DCHD rpt1 = new rptToTrinh_DCHD();
+                        rptToTrinh_DCHD_2022 rpt1 = new rptToTrinh_DCHD_2022();
                         rpt1.SetDataSource(dsBaoCao);
                         frmShowBaoCao frm1 = new frmShowBaoCao(rpt1);
                         frm1.Show();
@@ -892,7 +892,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         rpt2.SetDataSource(dsBaoCao);
                         frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
                         frm2.Show();
-                        rptToTrinh_DCMS rpt1 = new rptToTrinh_DCMS();
+                        rptToTrinh_DCMS_2022 rpt1 = new rptToTrinh_DCMS_2022();
                         rpt1.SetDataSource(dsBaoCao);
                         frmShowBaoCao frm1 = new frmShowBaoCao(rpt1);
                         frm1.Show();

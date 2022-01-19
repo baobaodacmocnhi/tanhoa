@@ -147,6 +147,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 _dontbc = _cDonTBC.Get(ctktxm.KTXM.MaDonTBC.Value);
                                 txtMaDonCu.Text = "TBC" + ctktxm.KTXM.MaDonTBC.ToString().Insert(ctktxm.KTXM.MaDonTBC.ToString().Length - 2, "-");
                             }
+                chkBanChinh.Checked = ctktxm.BanChinh;
                 txtDanhBo.Text = ctktxm.DanhBo;
                 txtHopDong.Text = ctktxm.HopDong;
                 txtHoTen.Text = ctktxm.HoTen;
@@ -215,6 +216,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         public void Clear()
         {
+            chkBanChinh.Checked = false;
             txtMaDonCu.Text = "";
             txtMaDonMoi.Text = "";
             txtDanhBo.Text = "";
@@ -535,7 +537,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                     MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-
+                    ctktxm.BanChinh = chkBanChinh.Checked;
                     ctktxm.DanhBo = txtDanhBo.Text.Trim();
                     ctktxm.HopDong = txtHopDong.Text.Trim();
                     ctktxm.HoTen = txtHoTen.Text.Trim().ToUpper();
@@ -666,7 +668,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 MessageBox.Show("Thiếu Tên Khách Hàng Ký", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-
+                        _ctktxm.BanChinh = chkBanChinh.Checked;
                         _ctktxm.DanhBo = txtDanhBo.Text.Trim();
                         _ctktxm.HopDong = txtHopDong.Text.Trim();
                         _ctktxm.HoTen = txtHoTen.Text.Trim();

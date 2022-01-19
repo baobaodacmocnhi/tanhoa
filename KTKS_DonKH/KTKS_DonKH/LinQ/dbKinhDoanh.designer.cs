@@ -38528,6 +38528,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _DinhMuc_KhongDangKy;
 		
+		private bool _BanChinh;
+		
 		private System.Nullable<decimal> _MaKTXM;
 		
 		private System.Nullable<int> _STT;
@@ -38662,6 +38664,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnLapTruyThuChanged();
     partial void OnDinhMuc_KhongDangKyChanging(System.Nullable<int> value);
     partial void OnDinhMuc_KhongDangKyChanged();
+    partial void OnBanChinhChanging(bool value);
+    partial void OnBanChinhChanged();
     partial void OnMaKTXMChanging(System.Nullable<decimal> value);
     partial void OnMaKTXMChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
@@ -39692,6 +39696,26 @@ namespace KTKS_DonKH.LinQ
 					this._DinhMuc_KhongDangKy = value;
 					this.SendPropertyChanged("DinhMuc_KhongDangKy");
 					this.OnDinhMuc_KhongDangKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BanChinh", DbType="Bit NOT NULL")]
+		public bool BanChinh
+		{
+			get
+			{
+				return this._BanChinh;
+			}
+			set
+			{
+				if ((this._BanChinh != value))
+				{
+					this.OnBanChinhChanging(value);
+					this.SendPropertyChanging();
+					this._BanChinh = value;
+					this.SendPropertyChanged("BanChinh");
+					this.OnBanChinhChanged();
 				}
 			}
 		}
