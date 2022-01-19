@@ -211,6 +211,10 @@ namespace DocSo_PC.GUI.Doi
                                         en.TieuThuCu = item.TieuThu;
                                     else
                                         en.TieuThuCu = 0;
+                                    if (en.CSCu == en.TieuThuCu)
+                                    {
+
+                                    }
                                     en.TienNuoc = 0;
                                     en.BVMT = 0;
                                     en.Thue = 0;
