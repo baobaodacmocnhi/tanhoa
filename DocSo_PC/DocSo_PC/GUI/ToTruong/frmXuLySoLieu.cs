@@ -114,10 +114,13 @@ namespace DocSo_PC.GUI.ToTruong
                     TB_DULIEUKHACHHANG dhn = _cDHN.get(_docso.DanhBa);
                     if (dhn != null)
                     {
-                        cmbCodeMoi.SelectedValue = _docso.CodeMoi;
                         txtCSC.Text = _docso.CSCu.Value.ToString();
-                        txtCSM.Text = _docso.CSMoi.Value.ToString();
-                        txtTieuThu.Text = _docso.TieuThuMoi.Value.ToString();
+                        if (_docso.CodeMoi != null && _docso.CodeMoi.ToString() != "")
+                            cmbCodeMoi.SelectedValue = _docso.CodeMoi;
+                        if (_docso.CSMoi != null)
+                            txtCSM.Text = _docso.CSMoi.Value.ToString();
+                        if (_docso.TieuThuMoi != null)
+                            txtTieuThu.Text = _docso.TieuThuMoi.Value.ToString();
                         txtHoTen.Text = dhn.HOTEN;
                         txtDanhBo.Text = dhn.DANHBO.Insert(7, " ").Insert(4, " ");
                         txtHieu.Text = dhn.HIEUDH;
@@ -215,18 +218,14 @@ namespace DocSo_PC.GUI.ToTruong
                 if (item.Cells["TieuThuMoi"].Value != null && item.Cells["TieuThuMoi"].Value.ToString() != "" && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) > 0
                     && (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.4 || int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) < 0))
                     item.DefaultCellStyle.BackColor = Color.Red;
-                //có BBKT, tờ trình
-                //if (item.Cells["TieuThu"].Value != null && item.Cells["TieuThu"].Value.ToString() != ""
-                //    && (int.Parse(item.Cells["TieuThu"].Value.ToString()) >= int.Parse(item.Cells["TTTB"].Value.ToString()) * 1.4 || int.Parse(item.Cells["TieuThu"].Value.ToString()) < 0))
-                //    item.DefaultCellStyle.BackColor = Color.Orange;
-                //có hoàn công thay
-                if (bool.Parse(item.Cells["BaoThay"].Value.ToString()) == true)
-                    item.DefaultCellStyle.BackColor = Color.Yellow;
-                //nhập sai code
-                if (item.Cells["CodeMoi"].Value != null && item.Cells["CodeMoi"].Value.ToString() != ""
+                //có BBKT, tờ trình, code 8 không có hoàn công thay (bồi thường, tái lập,...)
+                if (bool.Parse(item.Cells["BaoThayBT"].Value.ToString()) == true)
+                    item.DefaultCellStyle.BackColor = Color.Orange;
+                //code 4 có hoàn công thay (báo thay), sai code
+                if (item.Cells["CodeMoi"].Value != null && item.Cells["CodeMoi"].Value.ToString() != "" && bool.Parse(item.Cells["BaoThayDK"].Value.ToString()) == true
                     && ((item.Cells["CodeCu"].Value.ToString().Contains("4") && item.Cells["CodeMoi"].Value.ToString().Contains("5"))
                     || (item.Cells["CodeCu"].Value.ToString().Contains("4") && item.Cells["CodeMoi"].Value.ToString().Contains("8"))))
-                    item.DefaultCellStyle.BackColor = Color.DeepSkyBlue;
+                    item.DefaultCellStyle.BackColor = Color.Yellow;
             }
         }
 

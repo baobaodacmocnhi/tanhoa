@@ -33,7 +33,7 @@ namespace DocSo_PC.GUI.Doi
             cmbNam.DataSource = _cDocSo.getDS_Nam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
-            cmbKy.SelectedItem = DateTime.Now.Month.ToString();
+            cmbKy.SelectedItem = DateTime.Now.Month.ToString("00");
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -203,15 +203,21 @@ namespace DocSo_PC.GUI.Doi
                                     en.TamTinh = 0;
                                     en.CodeCu = en.CodeMoi = "";
                                     en.TTDHNCu = en.TTDHNMoi = "";
-                                    en.CSCu = item.ChiSo;
-                                    en.TieuThuCu = item.TieuThu;
+                                    if (item.ChiSo != null)
+                                        en.CSCu = item.ChiSo;
+                                    else
+                                        en.CSCu = 0;
+                                    if (item.TieuThu != null)
+                                        en.TieuThuCu = item.TieuThu;
+                                    else
+                                        en.TieuThuCu = 0;
                                     en.TienNuoc = 0;
                                     en.BVMT = 0;
                                     en.Thue = 0;
                                     en.TongTien = 0;
-                                    en.SoThanCu = item.SoThan;
-                                    en.HieuCu = item.Hieu;
-                                    en.CoCu = item.Co.Value.ToString();
+                                    //en.SoThanCu = item.SoThan;
+                                    //en.HieuCu = item.Hieu;
+                                    //en.CoCu = item.Co.Value.ToString();
                                     en.DenNgay = NgayDoc;
                                     en.NgayDS = DateTime.Now;
                                     //_cDocSo.updateDocSo(ref en);
