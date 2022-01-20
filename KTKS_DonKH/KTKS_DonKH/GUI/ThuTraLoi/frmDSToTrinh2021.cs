@@ -171,7 +171,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         //        ReportDocument rpt;
         //        if (_cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
         //        {
-        //            rpt = new rptToTrinh_ThongQuaPGD();
+        //            rpt = new rptToTrinh_ThongQuaPGD_2022();
         //        }
         //        else
         //        {
@@ -266,10 +266,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
                                 dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
 
-                                if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                    dr["ChucVuThongQua"] = "GIÁM ĐỐC";
-                                else
-                                    dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                                //if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                //    dr["ChucVuThongQua"] = "GIÁM ĐỐC";
+                                //else
+                                //    dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                                dr["ChucVuThongQua"] = "DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
                                 dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
 
                                 dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
@@ -280,7 +281,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 ReportDocument rpt;
                                 //if (cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
                                 //{
-                                rpt = new rptToTrinh_ThongQuaPGD();
+                                rpt = new rptToTrinh_ThongQuaPGD_2022();
                                 //}
                                 //else
                                 //{
@@ -339,10 +340,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                     dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
                                     dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
 
-                                    if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                        dr["ChucVuThongQua"] = "GIÁM ĐỐC";
-                                    else
-                                        dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                                    //if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                    //    dr["ChucVuThongQua"] = "GIÁM ĐỐC";
+                                    //else
+                                    //    dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                                    dr["ChucVuThongQua"] = "DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
                                     dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
 
                                     dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
@@ -401,14 +403,14 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 {
                                     rpt2 = new rptToTrinh_DCHD_DinhKem();
                                     rpt2.SetDataSource(dsBaoCao);
-                                    rpt1 = new rptToTrinh_DCHD();
+                                    rpt1 = new rptToTrinh_DCHD_2022();
                                     rpt1.SetDataSource(dsBaoCao);
                                 }
                                 else
                                 {
                                     rpt2 = new rptToTrinh_DCMS_DinhKem();
                                     rpt2.SetDataSource(dsBaoCao);
-                                    rpt1 = new rptToTrinh_DCMS();
+                                    rpt1 = new rptToTrinh_DCMS_2022();
                                     rpt1.SetDataSource(dsBaoCao);
                                 }
 

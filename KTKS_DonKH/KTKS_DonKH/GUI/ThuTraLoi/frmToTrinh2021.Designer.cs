@@ -175,7 +175,6 @@
             this.txtKinhTrinh.Name = "txtKinhTrinh";
             this.txtKinhTrinh.Size = new System.Drawing.Size(287, 44);
             this.txtKinhTrinh.TabIndex = 3;
-            this.txtKinhTrinh.Text = "Ban Giám Đốc";
             // 
             // label2
             // 

@@ -750,10 +750,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
                     dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
 
-                    if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                        dr["ChucVuThongQua"] = "GIÁM ĐỐC";
-                    else
-                        dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                    //if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                    //    dr["ChucVuThongQua"] = "GIÁM ĐỐC";
+                    //else
+                    //    dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                    dr["ChucVuThongQua"] = "DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
                     dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
 
                     dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
@@ -817,10 +818,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
                         dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
 
-                        if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            dr["ChucVuThongQua"] = "GIÁM ĐỐC";
-                        else
-                            dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                        //if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                        //    dr["ChucVuThongQua"] = "GIÁM ĐỐC";
+                        //else
+                        //    dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                        dr["ChucVuThongQua"] = "DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
                         dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
 
                         dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
