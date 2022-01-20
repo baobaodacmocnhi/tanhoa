@@ -406,9 +406,9 @@ namespace DocSo_PC.GUI.ToTruong
                             MessageBox.Show("Năm " + _docso.Nam.Value.ToString() + " Kỳ " + _docso.Ky + " Đợt " + _docso.Dot + " đã chuyển billing", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        int TienNuoc = 0, ThueGTGT = 0, TDVTN = 0, ThueTDVTN = 0, TieuThu = 0;
+                        int TTienNuoc = 0, TThueGTGT = 0, TTDVTN = 0, TThueTDVTN = 0, TTieuThu = 0;
                         //if (wsDHN.tinhCodeTieuThu_CSM(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtCSM.Text.Trim()), out TieuThu, out GiaBan, out ThueGTGT, out PhiBVMT, out TongCong) == true)
-                        if (wsDHN.tinhCodeTieuThu_TieuThu(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtTieuThu.Text.Trim()), out TienNuoc, out ThueGTGT, out TDVTN, out ThueTDVTN) == true)
+                        if (wsDHN.tinhCodeTieuThu_TieuThu(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtTieuThu.Text.Trim()), out TTienNuoc, out TThueGTGT, out TTDVTN, out TThueTDVTN) == true)
                         {
                             _docso.CodeMoi = cmbCodeMoi.SelectedValue.ToString();
                             _docso.TTDHNMoi = _cDocSo.getTTDHNCode(_docso.CodeMoi);
@@ -416,10 +416,10 @@ namespace DocSo_PC.GUI.ToTruong
                             _docso.CSMoi = int.Parse(txtCSM.Text.Trim());
                             //_docso.TieuThuMoi = TieuThu;
                             _docso.TieuThuMoi = int.Parse(txtTieuThu.Text.Trim());
-                            _docso.TienNuoc = TienNuoc;
-                            _docso.Thue = ThueGTGT;
-                            _docso.BVMT = TDVTN;
-                            _docso.TongTien = TienNuoc + ThueGTGT + TDVTN + ThueTDVTN;
+                            _docso.TienNuoc = TTienNuoc;
+                            _docso.Thue = TThueGTGT;
+                            _docso.BVMT = TTDVTN;
+                            _docso.TongTien = TTienNuoc + TThueGTGT + TTDVTN + TThueTDVTN;
                             _docso.NVCapNhat = CNguoiDung.HoTen;
                             _docso.NgayCapNhat = DateTime.Now;
                             _cDocSo.SubmitChanges();

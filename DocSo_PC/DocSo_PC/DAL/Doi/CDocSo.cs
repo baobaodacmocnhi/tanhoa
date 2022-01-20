@@ -332,7 +332,11 @@ namespace DocSo_PC.DAL.Doi
                     + " @NAM = " + DocSoID.Substring(0, 4) + ","
                     + " @CODE = N'" + Code + "',"
                     + " @CSMOI = " + CSM;
-            return (int)_cDAL.ExecuteQuery_ReturnOneValue(sql);
+            object result = _cDAL.ExecuteQuery_ReturnOneValue(sql);
+            if (result != null)
+                return (int)result;
+            else
+                return 0;
         }
 
         public DataTable getDS_Code5K5N(string Nam, string Ky, string Dot)
