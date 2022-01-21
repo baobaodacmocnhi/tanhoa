@@ -3127,8 +3127,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                                         dchd.PHI_DC = ctdchd.PhiBVMT_BD.Value;
                                                         dchd.PHI_END = ctdchd.PhiBVMT_End.Value;
-                                                        dchd.PHI_Thue_DC = ctdchd.PhiBVMT_Thue_BD.Value;
-                                                        dchd.PHI_Thue_END = ctdchd.PhiBVMT_Thue_End.Value;
+                                                        if (ctdchd.PhiBVMT_Thue_BD != null)
+                                                            dchd.PHI_Thue_DC = ctdchd.PhiBVMT_Thue_BD.Value;
+                                                        if (ctdchd.PhiBVMT_Thue_End != null)
+                                                            dchd.PHI_Thue_END = ctdchd.PhiBVMT_Thue_End.Value;
 
                                                         dchd.TONGCONG_DC = ctdchd.TongCong_BD.Value;
                                                         dchd.TONGCONG_END = ctdchd.TongCong_End.Value;
@@ -3182,7 +3184,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         hoadon.GIABAN = dchd.GIABAN_END;
                                                         hoadon.THUE = dchd.THUE_END;
                                                         hoadon.PHI = dchd.PHI_END;
-                                                        hoadon.ThueGTGT_TDVTN = (int)dchd.PHI_Thue_END;
+                                                        if (dchd.PHI_Thue_END != null)
+                                                            hoadon.ThueGTGT_TDVTN = (int)dchd.PHI_Thue_END;
                                                         hoadon.TONGCONG = dchd.TONGCONG_END;
                                                         hoadon.ModifyDate = DateTime.Now;
                                                         _cThuTien.SubmitChanges();
@@ -3208,7 +3211,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         dchd1.GIABAN_BD = hoadon.GIABAN;
                                                         dchd1.THUE_BD = hoadon.THUE;
                                                         dchd1.PHI_BD = hoadon.PHI;
-                                                        dchd1.PHI_Thue_BD = hoadon.ThueGTGT_TDVTN;
+                                                        if (hoadon.ThueGTGT_TDVTN != null)
+                                                            dchd1.PHI_Thue_BD = hoadon.ThueGTGT_TDVTN;
                                                         dchd1.TONGCONG_BD = hoadon.TONGCONG;
                                                         dchd1.NgayChan = dchd1.NGAY_DC = DateTime.Now;
 
@@ -3239,8 +3243,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         //_dchd.PHI_BD = ctdchd.PhiBVMT_Start.Value;
                                                         dchd1.PHI_DC = ctdchd.PhiBVMT_BD.Value;
                                                         dchd1.PHI_END = ctdchd.PhiBVMT_End.Value;
-                                                        dchd1.PHI_Thue_DC = ctdchd.PhiBVMT_Thue_BD.Value;
-                                                        dchd1.PHI_Thue_END = ctdchd.PhiBVMT_Thue_End.Value;
+                                                        if (ctdchd.PhiBVMT_Thue_BD != null)
+                                                            dchd1.PHI_Thue_DC = ctdchd.PhiBVMT_Thue_BD.Value;
+                                                        if (ctdchd.PhiBVMT_Thue_End != null)
+                                                            dchd1.PHI_Thue_END = ctdchd.PhiBVMT_Thue_End.Value;
 
                                                         //_dchd.TONGCONG_BD = ctdchd.TongCong_Start.Value;
                                                         dchd1.TONGCONG_DC = ctdchd.TongCong_BD.Value;
@@ -3286,6 +3292,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         hoadon.GIABAN = dchd1.GIABAN_END;
                                                         hoadon.THUE = dchd1.THUE_END;
                                                         hoadon.PHI = dchd1.PHI_END;
+                                                        if (dchd1.PHI_Thue_END != null)
                                                         hoadon.ThueGTGT_TDVTN = (int)dchd1.PHI_Thue_END;
                                                         hoadon.TONGCONG = dchd1.TONGCONG_END;
                                                         hoadon.ModifyDate = DateTime.Now;

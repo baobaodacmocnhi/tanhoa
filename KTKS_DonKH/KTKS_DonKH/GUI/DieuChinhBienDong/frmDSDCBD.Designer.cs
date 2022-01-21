@@ -121,9 +121,6 @@
             this.btnInNhan = new System.Windows.Forms.Button();
             this.btnCapNhatThuTien = new System.Windows.Forms.Button();
             this.btnExcelHDDT = new System.Windows.Forms.Button();
-            this.radTruongPhong = new System.Windows.Forms.RadioButton();
-            this.radPhoPhong = new System.Windows.Forms.RadioButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.txtKy = new System.Windows.Forms.TextBox();
             this.chkKhongCheckThuTien = new System.Windows.Forms.CheckBox();
@@ -131,7 +128,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDCBD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCatChuyenDM)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvDSDCBD
@@ -936,38 +932,6 @@
             this.btnExcelHDDT.UseVisualStyleBackColor = true;
             this.btnExcelHDDT.Click += new System.EventHandler(this.btnExcelHDDT_Click);
             // 
-            // radTruongPhong
-            // 
-            this.radTruongPhong.AutoSize = true;
-            this.radTruongPhong.Checked = true;
-            this.radTruongPhong.Location = new System.Drawing.Point(3, 3);
-            this.radTruongPhong.Name = "radTruongPhong";
-            this.radTruongPhong.Size = new System.Drawing.Size(147, 20);
-            this.radTruongPhong.TabIndex = 0;
-            this.radTruongPhong.TabStop = true;
-            this.radTruongPhong.Text = "NGUYỄN VĂN ĐẢM";
-            this.radTruongPhong.UseVisualStyleBackColor = true;
-            // 
-            // radPhoPhong
-            // 
-            this.radPhoPhong.AutoSize = true;
-            this.radPhoPhong.Location = new System.Drawing.Point(156, 3);
-            this.radPhoPhong.Name = "radPhoPhong";
-            this.radPhoPhong.Size = new System.Drawing.Size(178, 20);
-            this.radPhoPhong.TabIndex = 1;
-            this.radPhoPhong.Text = "TRẦN HỮU LÊ PHƯƠNG";
-            this.radPhoPhong.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.radPhoPhong);
-            this.panel1.Controls.Add(this.radTruongPhong);
-            this.panel1.Location = new System.Drawing.Point(797, 74);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(338, 25);
-            this.panel1.TabIndex = 92;
-            this.panel1.Visible = false;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -1017,7 +981,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnExcelHDDT);
             this.Controls.Add(this.btnCapNhatThuTien);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnInNhan);
             this.Controls.Add(this.btnInThuBao);
             this.Controls.Add(this.btnThuHoiCapNhatDocSo);
@@ -1048,8 +1011,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCatChuyenDM)).EndInit();
             this.panel_KhoangThoiGian.ResumeLayout(false);
             this.panel_KhoangThoiGian.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1102,9 +1063,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_CC;
         private System.Windows.Forms.Button btnCapNhatThuTien;
         private System.Windows.Forms.Button btnExcelHDDT;
-        private System.Windows.Forms.RadioButton radTruongPhong;
-        private System.Windows.Forms.RadioButton radPhoPhong;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn In;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ChuyenDocSo;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ThuTienCapNhat;
