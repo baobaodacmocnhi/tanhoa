@@ -33,7 +33,7 @@ namespace DocSo_PC.GUI.Doi
             cmbNam.DataSource = _cDocSo.getDS_Nam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
-            cmbKy.SelectedItem = DateTime.Now.Month.ToString("00");
+            cmbKy.SelectedItem = CNguoiDung.Ky;
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -61,18 +61,19 @@ namespace DocSo_PC.GUI.Doi
                     //kiểm tra
                     string lineC = lines[0].Replace("\",\"", "$").Replace("\"", "");
                     string[] contentsC = lineC.Split('$');
-                    //if (_cDocSo.checkExists_BillState(int.Parse(contentsC[2]).ToString("0000"), int.Parse(contentsC[3]).ToString("00"), int.Parse(contentsC[4]).ToString("00")) == true)
-                    //{
-                    //    MessageBox.Show("Năm " + int.Parse(contentsC[2]).ToString("0000") + " Kỳ " + int.Parse(contentsC[3]).ToString("00") + " Đợt " + int.Parse(contentsC[4]).ToString("00") + " đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //    return;
-                    //}
-                    //else
-                    //{
-                    //    BillState enB = new BillState();
-                    //    enB.BillID = int.Parse(contentsC[2]).ToString("0000") + int.Parse(contentsC[3]).ToString("00") + int.Parse(contentsC[4]).ToString("00");
-                    //    enB.izCB = "1";
-                    //    _cDocSo.them_BillState(enB);
-                    //}
+                    if (_cDocSo.checkExists_BillState(int.Parse(contentsC[2]).ToString("0000"), int.Parse(contentsC[3]).ToString("00"), int.Parse(contentsC[4]).ToString("00")) == true)
+                    {
+                        //MessageBox.Show("Năm " + int.Parse(contentsC[2]).ToString("0000") + " Kỳ " + int.Parse(contentsC[3]).ToString("00") + " Đợt " + int.Parse(contentsC[4]).ToString("00") + " đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (MessageBox.Show("Năm " + int.Parse(contentsC[2]).ToString("0000") + " Kỳ " + int.Parse(contentsC[3]).ToString("00") + " Đợt " + int.Parse(contentsC[4]).ToString("00") + " đã tồn tại\nBạn có muốn Thêm lại", "Thông Báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                            return;
+                    }
+                    else
+                    {
+                        BillState enB = new BillState();
+                        enB.BillID = int.Parse(contentsC[2]).ToString("0000") + int.Parse(contentsC[3]).ToString("00") + int.Parse(contentsC[4]).ToString("00");
+                        enB.izCB = "1";
+                        _cDocSo.them_BillState(enB);
+                    }
                     foreach (string line in lines)
                     {
                         progressBar.Value = i++;
@@ -143,10 +144,14 @@ namespace DocSo_PC.GUI.Doi
                         //cmd += "'" + en.Duong + "','" + en.Phuong + "','" + en.Quan + "',0" + en.GB + ",0" + en.DM + ",0" + en.SH + ",0" + en.SX + ",0" + en.DV + ",0" + en.HC + ",'" + en.Hieu + "',";
                         //cmd += "'" + en.Co + "','" + en.SoThan + "','" + en.Code + "',0" + en.ChiSo + ",0" + en.TieuThu + ",'" + en.NgayGan + "','" + en.STT + "','" + en.MLT1 + "','" + en.NVCapNhat + "')";
 
-                        DocSo enCN = _cDocSo.get_DocSo(en.BienDongID);
-                        enCN.DMHN = en.DMHN;
-                        _cDocSo.SubmitChanges();
-                        //_cDocSo.them_BienDong(en);
+                        if (_cDocSo.checkExists_BienDong(en.BienDongID) == false)
+                            _cDocSo.them_BienDong(en);
+                        else
+                        {
+                            BienDong enCN = _cDocSo.get_BienDong(en.BienDongID);
+                            _cDocSo.updateBienDong(en, ref enCN);
+                            _cDocSo.SubmitChanges();
+                        }
                     }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -176,8 +181,9 @@ namespace DocSo_PC.GUI.Doi
                         {
                             if (_cDocSo.checkExists_DocSo(dgvDanhSach["Nam", e.RowIndex].Value.ToString(), dgvDanhSach["Ky", e.RowIndex].Value.ToString(), dgvDanhSach["Dot", e.RowIndex].Value.ToString()) == true)
                             {
-                                MessageBox.Show("Năm " + dgvDanhSach["Nam", e.RowIndex].Value.ToString() + " Kỳ " + dgvDanhSach["Ky", e.RowIndex].Value.ToString() + " Đợt " + dgvDanhSach["Dot", e.RowIndex].Value.ToString() + " đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                //MessageBox.Show("Năm " + dgvDanhSach["Nam", e.RowIndex].Value.ToString() + " Kỳ " + dgvDanhSach["Ky", e.RowIndex].Value.ToString() + " Đợt " + dgvDanhSach["Dot", e.RowIndex].Value.ToString() + " đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                if (MessageBox.Show("Năm " + dgvDanhSach["Nam", e.RowIndex].Value.ToString() + " Kỳ " + dgvDanhSach["Ky", e.RowIndex].Value.ToString() + " Đợt " + dgvDanhSach["Dot", e.RowIndex].Value.ToString() + " đã tồn tại\nBạn có muốn Thêm lại", "Thông Báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                                    return;
                             }
                             int i = 1;
                             List<BienDong> lst = _cDocSo.getDS_BienDong(dgvDanhSach["Nam", e.RowIndex].Value.ToString(), dgvDanhSach["Ky", e.RowIndex].Value.ToString(), dgvDanhSach["Dot", e.RowIndex].Value.ToString());
@@ -226,13 +232,16 @@ namespace DocSo_PC.GUI.Doi
                                     en.BVMT = 0;
                                     en.Thue = 0;
                                     en.TongTien = 0;
-                                    //en.SoThanCu = item.SoThan;
-                                    //en.HieuCu = item.Hieu;
-                                    //en.CoCu = item.Co.Value.ToString();
                                     en.DenNgay = NgayDoc;
                                     en.NgayDS = DateTime.Now;
-                                    //_cDocSo.updateDocSo(ref en);
-                                    _cDocSo.them_DocSo(en);
+                                    if (_cDocSo.checkExists_DocSo(en.DocSoID) == false)
+                                        _cDocSo.them_DocSo(en);
+                                    else
+                                    {
+                                        DocSo enCN = _cDocSo.get_DocSo(en.DocSoID);
+                                        _cDocSo.updateDocSo(en, ref enCN);
+                                        _cDocSo.SubmitChanges();
+                                    }
                                 }
                             }
                             _cDocSo.updateTBTTDocSo(dgvDanhSach["Nam", e.RowIndex].Value.ToString(), dgvDanhSach["Ky", e.RowIndex].Value.ToString(), dgvDanhSach["Dot", e.RowIndex].Value.ToString());

@@ -13,7 +13,7 @@ namespace DocSo_PC.DAL
         public DataTable getDS_KTXM_ChuaNhan(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             string sql = "select ktxmct.DanhBo,ktxmct.HoTen,ktxmct.DiaChi,NoiDung=ktxmct.NoiDungKiemTra,NgayLap=ktxmct.NgayKTXM,NgayChuyen=cvd.CreateDate"
-                        + " ,MLT=(select LOTRINH from server8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ktxmct.DanhBo),cvd.ID"
+                        + " ,MLT=(select LOTRINH from server8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ktxmct.DanhBo),cvd.ID,Nhan_QLDHN"
                         + " ,MaDon=cvd.Ma,LoaiVB=N'Biên Bản Kiểm Tra',TableName='KTXM_ChiTiet',IDCT=CAST(ktxmct.MaCTKTXM as int),NoiChuyen=N'P. Thương Vụ'"
                         + " from CongVanDi cvd,KTXM ktxm,KTXM_ChiTiet ktxmct"
                         + " where CAST(cvd.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(cvd.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
@@ -28,7 +28,7 @@ namespace DocSo_PC.DAL
         public DataTable getDS_ToTrinh_ChuaNhan(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             string sql = "select ttct.DanhBo,ttct.HoTen,ttct.DiaChi,NoiDung=ttct.VeViec,NgayLap=ttct.CreateDate,NgayChuyen=cvd.CreateDate"
-                         + " ,MLT=(select LOTRINH from server8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ttct.DanhBo),cvd.ID"
+                         + " ,MLT=(select LOTRINH from server8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ttct.DanhBo),cvd.ID,Nhan_QLDHN"
                          + " ,MaDon=cvd.Ma,LoaiVB=N'Tờ Trình',TableName='ToTrinh_ChiTiet',IDCT=CAST(ttct.IDCT as int),NoiChuyen=N'P. Thương Vụ'"
                          + " from CongVanDi cvd,ToTrinh tt,ToTrinh_ChiTiet ttct"
                          + " where CAST(cvd.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(cvd.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"

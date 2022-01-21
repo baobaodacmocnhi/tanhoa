@@ -16,7 +16,7 @@ namespace DocSo_PC.GUI.VanThu
     public partial class frmCongVanDen : Form
     {
         string _mnu = "mnuCongVanDen";
-        CCongVanDen _CVD = new CCongVanDen();
+        CCongVanDen _cCVD = new CCongVanDen();
         CThuongVu _cThuongVu = new CThuongVu();
 
         public frmCongVanDen()
@@ -54,25 +54,20 @@ namespace DocSo_PC.GUI.VanThu
         {
             try
             {
-                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
-                {
-                    CongVanDen en = new CongVanDen();
-                    en.LoaiVB = dgvDanhSachChuaNhan.CurrentRow.Cells["LoaiVB"].Value.ToString();
-                    en.NoiChuyen = dgvDanhSachChuaNhan.CurrentRow.Cells["NoiChuyen"].Value.ToString();
-                    en.NgayChuyen = DateTime.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["NgayChuyen"].Value.ToString());
-                    en.MLT = dgvDanhSachChuaNhan.CurrentRow.Cells["MLT"].Value.ToString();
-                    en.DanhBo = dgvDanhSachChuaNhan.CurrentRow.Cells["DanhBo"].Value.ToString();
-                    en.HoTen = dgvDanhSachChuaNhan.CurrentRow.Cells["HoTen"].Value.ToString();
-                    en.DiaChi = dgvDanhSachChuaNhan.CurrentRow.Cells["DiaChi"].Value.ToString();
-                    en.NoiDung = dgvDanhSachChuaNhan.CurrentRow.Cells["NoiDung"].Value.ToString();
-                    en.MaDon = dgvDanhSachChuaNhan.CurrentRow.Cells["MaDon"].Value.ToString();
-                    en.TableName = dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString();
-                    en.IDCT = int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString());
-                    if (_CVD.Them(en) == true)
-                    {
-                        CThuongVu._cDAL.ExecuteNonQuery("update CongVanDi set Nhan_QLDHN=1,Nhan_QLDHN_Ngay=getdate() where ID=" + dgvDanhSachChuaNhan.CurrentRow.Cells["ID"].Value.ToString());
-                    }
-                }
+                //object image = null;
+                //switch (dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString())
+                //{
+                //    case "KTXM_ChiTiet":
+                //        image = _cThuongVu.getHinh_KTXM(int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString()));
+                //        break;
+                //    case "ToTrinh_ChiTiet":
+                //        image = _cThuongVu.getHinh_ToTrinh(int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString()));
+                //        break;
+                //}
+                //if (image != null)
+                //    _cCVD.LoadImageView((byte[])image);
+                //else
+                //    MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 object image = null;
                 switch (dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString())
                 {
@@ -84,9 +79,35 @@ namespace DocSo_PC.GUI.VanThu
                         break;
                 }
                 if (image != null)
-                    _CVD.LoadImageView((byte[])image);
+                {
+                    if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                    {
+                        CongVanDen en = new CongVanDen();
+                        en.LoaiVB = dgvDanhSachChuaNhan.CurrentRow.Cells["LoaiVB"].Value.ToString();
+                        en.NoiChuyen = dgvDanhSachChuaNhan.CurrentRow.Cells["NoiChuyen"].Value.ToString();
+                        en.NgayChuyen = DateTime.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["NgayChuyen"].Value.ToString());
+                        en.MLT = dgvDanhSachChuaNhan.CurrentRow.Cells["MLT"].Value.ToString();
+                        en.DanhBo = dgvDanhSachChuaNhan.CurrentRow.Cells["DanhBo"].Value.ToString();
+                        en.HoTen = dgvDanhSachChuaNhan.CurrentRow.Cells["HoTen"].Value.ToString();
+                        en.DiaChi = dgvDanhSachChuaNhan.CurrentRow.Cells["DiaChi"].Value.ToString();
+                        en.NoiDung = dgvDanhSachChuaNhan.CurrentRow.Cells["NoiDung"].Value.ToString();
+                        en.MaDon = dgvDanhSachChuaNhan.CurrentRow.Cells["MaDon"].Value.ToString();
+                        en.TableName = dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString();
+                        en.IDCT = int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString());
+                        if (_cCVD.checkExists(en.TableName, en.IDCT.Value) == false)
+                            if (_cCVD.Them(en) == true)
+                            {
+                                CThuongVu._cDAL.ExecuteNonQuery("update CongVanDi set Nhan_QLDHN=1,Nhan_QLDHN_Ngay=getdate() where ID=" + dgvDanhSachChuaNhan.CurrentRow.Cells["ID"].Value.ToString());
+                            }
+                        frmShowCongVan frm = new frmShowCongVan(en.TableName, en.IDCT.Value);
+                        frm.ShowDialog();
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 else
                     MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
             catch (Exception ex)
             {
@@ -104,7 +125,7 @@ namespace DocSo_PC.GUI.VanThu
             }
             else
                 if (tabControl.SelectedTab.Name == "tabDaNhan")
-                    dgvDanhSachDaNhan.DataSource = _CVD.getDS(dateTu.Value, dateDen.Value);
+                    dgvDanhSachDaNhan.DataSource = _cCVD.getDS(dateTu.Value, dateDen.Value);
         }
 
         private void dgvDanhSachDaNhan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -129,20 +150,8 @@ namespace DocSo_PC.GUI.VanThu
 
         private void dgvDanhSachDaNhan_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            object image = null;
-            switch (dgvDanhSachDaNhan.CurrentRow.Cells["TableName_DaNhan"].Value.ToString())
-            {
-                case "KTXM_ChiTiet":
-                    image = _cThuongVu.getHinh_KTXM(int.Parse(dgvDanhSachDaNhan.CurrentRow.Cells["IDCT_DaNhan"].Value.ToString()));
-                    break;
-                case "ToTrinh_ChiTiet":
-                    image = _cThuongVu.getHinh_ToTrinh(int.Parse(dgvDanhSachDaNhan.CurrentRow.Cells["IDCT_DaNhan"].Value.ToString()));
-                    break;
-            }
-            if (image != null)
-                _CVD.LoadImageView((byte[])image);
-            else
-                MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            frmShowCongVan frm = new frmShowCongVan(dgvDanhSachDaNhan.CurrentRow.Cells["TableName_DaNhan"].Value.ToString(), int.Parse(dgvDanhSachDaNhan.CurrentRow.Cells["IDCT_DaNhan"].Value.ToString()));
+            frm.ShowDialog();
         }
 
         private void btnXoa_DaNhan_Click(object sender, EventArgs e)
@@ -154,7 +163,7 @@ namespace DocSo_PC.GUI.VanThu
                     if (MessageBox.Show("Bạn có chắc chắn", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         foreach (DataGridViewRow item in dgvDanhSachDaNhan.SelectedRows)
                         {
-                            _CVD.Xoa(_CVD.get(int.Parse(item.Cells["ID_DaNhan"].Value.ToString())));
+                            _cCVD.Xoa(_cCVD.get(int.Parse(item.Cells["ID_DaNhan"].Value.ToString())));
                         }
                     btnXem.PerformClick();
                 }

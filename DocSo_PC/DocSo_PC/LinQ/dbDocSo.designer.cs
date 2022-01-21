@@ -3690,6 +3690,12 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<int> _IDCT;
 		
+		private bool _TinhTieuThu;
+		
+		private bool _BaoThay;
+		
+		private bool _BaoThayThu;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -3726,6 +3732,12 @@ namespace DocSo_PC.LinQ
     partial void OnTableNameChanged();
     partial void OnIDCTChanging(System.Nullable<int> value);
     partial void OnIDCTChanged();
+    partial void OnTinhTieuThuChanging(bool value);
+    partial void OnTinhTieuThuChanged();
+    partial void OnBaoThayChanging(bool value);
+    partial void OnBaoThayChanged();
+    partial void OnBaoThayThuChanging(bool value);
+    partial void OnBaoThayThuChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -3977,6 +3989,66 @@ namespace DocSo_PC.LinQ
 					this._IDCT = value;
 					this.SendPropertyChanged("IDCT");
 					this.OnIDCTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinhTieuThu", DbType="Bit NOT NULL")]
+		public bool TinhTieuThu
+		{
+			get
+			{
+				return this._TinhTieuThu;
+			}
+			set
+			{
+				if ((this._TinhTieuThu != value))
+				{
+					this.OnTinhTieuThuChanging(value);
+					this.SendPropertyChanging();
+					this._TinhTieuThu = value;
+					this.SendPropertyChanged("TinhTieuThu");
+					this.OnTinhTieuThuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BaoThay", DbType="Bit NOT NULL")]
+		public bool BaoThay
+		{
+			get
+			{
+				return this._BaoThay;
+			}
+			set
+			{
+				if ((this._BaoThay != value))
+				{
+					this.OnBaoThayChanging(value);
+					this.SendPropertyChanging();
+					this._BaoThay = value;
+					this.SendPropertyChanged("BaoThay");
+					this.OnBaoThayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BaoThayThu", DbType="Bit NOT NULL")]
+		public bool BaoThayThu
+		{
+			get
+			{
+				return this._BaoThayThu;
+			}
+			set
+			{
+				if ((this._BaoThayThu != value))
+				{
+					this.OnBaoThayThuChanging(value);
+					this.SendPropertyChanging();
+					this._BaoThayThu = value;
+					this.SendPropertyChanged("BaoThayThu");
+					this.OnBaoThayThuChanged();
 				}
 			}
 		}
@@ -16421,6 +16493,8 @@ namespace DocSo_PC.LinQ
 		
 		private bool _ChamCong;
 		
+		private bool _updateChuyenListing;
+		
 		private bool _An;
 		
 		private System.Nullable<int> _May;
@@ -16493,6 +16567,8 @@ namespace DocSo_PC.LinQ
     partial void OnVanPhongChanged();
     partial void OnChamCongChanging(bool value);
     partial void OnChamCongChanged();
+    partial void OnupdateChuyenListingChanging(bool value);
+    partial void OnupdateChuyenListingChanged();
     partial void OnAnChanging(bool value);
     partial void OnAnChanged();
     partial void OnMayChanging(System.Nullable<int> value);
@@ -16903,6 +16979,26 @@ namespace DocSo_PC.LinQ
 					this._ChamCong = value;
 					this.SendPropertyChanged("ChamCong");
 					this.OnChamCongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_updateChuyenListing", DbType="Bit NOT NULL")]
+		public bool updateChuyenListing
+		{
+			get
+			{
+				return this._updateChuyenListing;
+			}
+			set
+			{
+				if ((this._updateChuyenListing != value))
+				{
+					this.OnupdateChuyenListingChanging(value);
+					this.SendPropertyChanging();
+					this._updateChuyenListing = value;
+					this.SendPropertyChanged("updateChuyenListing");
+					this.OnupdateChuyenListingChanged();
 				}
 			}
 		}

@@ -30,7 +30,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>34</ApplicationRevision>
+    <ApplicationRevision>38</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -72,6 +72,9 @@
   <PropertyGroup>
     <ApplicationIcon>Water.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -106,6 +109,7 @@
     <Compile Include="DAL\CThuongVu.cs" />
     <Compile Include="DAL\QuanTri\CMayDS.cs" />
     <Compile Include="DAL\VanThu\CCongVanDen.cs" />
+    <Compile Include="DAL\VanThu\ImageUtil.cs" />
     <Compile Include="GUI\Doi\frmChuyenBilling.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +268,12 @@
     <Compile Include="GUI\VanThu\frmCongVanDen.Designer.cs">
       <DependentUpon>frmCongVanDen.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\VanThu\frmShowCongVan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\VanThu\frmShowCongVan.Designer.cs">
+      <DependentUpon>frmShowCongVan.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\XuLyDocSo\frmChonDot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -369,6 +379,9 @@
     <None Include="LinQ\dbDocSo.dbml.layout">
       <DependentUpon>dbDocSo.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\VanThu\frmShowCongVan.resx">
+      <DependentUpon>frmShowCongVan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\XuLyDocSo\rptTieuThu.rdlc" />
     <None Include="LinQ\dbDHN.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>

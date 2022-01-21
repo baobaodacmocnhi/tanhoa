@@ -61,12 +61,22 @@ namespace DocSo_PC.DAL.VanThu
             }
         }
 
+        public bool checkExists(string TableName, int IDCT)
+        {
+            return _db.CongVanDens.Any(item => item.TableName == TableName && item.IDCT == IDCT);
+        }
+
         public CongVanDen get(int ID)
         {
             return _db.CongVanDens.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DataTable getDS(DateTime FromCreateDate,DateTime ToCreateDate)
+        public CongVanDen get(string TableName, int IDCT)
+        {
+            return _db.CongVanDens.SingleOrDefault(item => item.TableName == TableName && item.IDCT == IDCT);
+        }
+
+        public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             return _cDAL.LINQToDataTable(_db.CongVanDens.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date));
         }

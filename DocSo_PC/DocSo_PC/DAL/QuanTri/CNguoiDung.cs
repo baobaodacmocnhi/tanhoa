@@ -8,6 +8,27 @@ namespace DocSo_PC.DAL.QuanTri
 {
     class CNguoiDung : CDAL
     {
+        static string _Nam;
+        public static string Nam
+        {
+            get { return CNguoiDung._Nam; }
+            set { CNguoiDung._Nam = value; }
+        }
+
+        static string _Ky;
+        public static string Ky
+        {
+            get { return CNguoiDung._Ky; }
+            set { CNguoiDung._Ky = value; }
+        }
+
+        static string _Dot;
+        public static string Dot
+        {
+            get { return CNguoiDung._Dot; }
+            set { CNguoiDung._Dot = value; }
+        }
+
         static int _TuMayDS;
         public static int TuMayDS
         {
@@ -83,6 +104,13 @@ namespace DocSo_PC.DAL.QuanTri
         {
             get { return CNguoiDung._ToTruong; }
             set { CNguoiDung._ToTruong = value; }
+        }
+
+        static bool _updateChuyenListing;
+        public static bool updateChuyenListing
+        {
+            get { return CNguoiDung._updateChuyenListing; }
+            set { CNguoiDung._updateChuyenListing = value; }
         }
 
         static System.Data.DataTable _dtQuyenNhom;
@@ -237,7 +265,7 @@ namespace DocSo_PC.DAL.QuanTri
         /// <returns></returns>
         public List<NguoiDung> GetDSExceptMaND(int MaND)
         {
-            return _db.NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0&&item.An==false && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
+            return _db.NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0 && item.An == false && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
         }
 
         public List<NguoiDung> GetDSExceptMaND_Doi(int MaND)
@@ -262,12 +290,12 @@ namespace DocSo_PC.DAL.QuanTri
 
         public List<NguoiDung> GetDSByMaTo(int MaTo)
         {
-            return _db.NguoiDungs.Where(item => item.MaTo == MaTo && (item.HanhThu == true||item.ToTruong)).OrderBy(item => item.STT).ToList();
+            return _db.NguoiDungs.Where(item => item.MaTo == MaTo && (item.HanhThu == true || item.ToTruong)).OrderBy(item => item.STT).ToList();
         }
 
         public List<NguoiDung> GetDSByToVanPhong(int MaTo)
         {
-            return _db.NguoiDungs.Where(item => item.MaTo == MaTo && item.To.HanhThu==false && item.VanPhong == true).OrderBy(item => item.STT).ToList();
+            return _db.NguoiDungs.Where(item => item.MaTo == MaTo && item.To.HanhThu == false && item.VanPhong == true).OrderBy(item => item.STT).ToList();
         }
 
         public List<NguoiDung> GetDSDongNuocByMaTo(int MaTo)
@@ -291,7 +319,7 @@ namespace DocSo_PC.DAL.QuanTri
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                 return null;
             }
-            
+
         }
 
         public bool DangNhap(string TaiKhoan, string MatKhau)
@@ -304,7 +332,7 @@ namespace DocSo_PC.DAL.QuanTri
             {
                 return false;
             }
-            
+
         }
 
         public string GetHoTenByMaND(int MaND)

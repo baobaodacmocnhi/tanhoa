@@ -72,6 +72,11 @@ namespace DocSo_PC.DAL.Doi
             }
         }
 
+        public bool checkExists_BienDong(string ID)
+        {
+            return _db.BienDongs.Any(item => item.BienDongID == ID);
+        }
+
         public List<BienDong> getDS_BienDong(string Nam, string Ky, string Dot)
         {
             return _db.BienDongs.Where(item => item.Nam == int.Parse(Nam) && item.Ky == Ky && item.Dot == Dot).ToList();
@@ -82,6 +87,37 @@ namespace DocSo_PC.DAL.Doi
             return _db.BienDongs.SingleOrDefault(item => item.BienDongID == ID);
         }
 
+        public void updateBienDong(BienDong en,ref BienDong enCN)
+        {
+            enCN.STT = en.STT;
+            enCN.Nam = en.Nam;
+            enCN.Ky = en.Ky;
+            enCN.Dot = en.Dot;
+            enCN.May = en.May;
+            enCN.MLT1 = en.MLT1;
+            enCN.DanhBa = en.DanhBa;
+            enCN.TenKH = en.TenKH;
+            enCN.So = en.So;
+            enCN.Duong = en.Duong;
+            enCN.Phuong = en.Phuong;
+            enCN.Quan = en.Quan;
+            enCN.GB = en.GB;
+            enCN.DM = en.DM;
+            enCN.SH = en.SH;
+            enCN.SX = en.SX;
+            enCN.DV = en.DV;
+            enCN.HC = en.HC;
+            enCN.Co = en.Co;
+            enCN.Hieu = en.Hieu;
+            enCN.SoThan = en.SoThan;
+            enCN.NgayGan = en.NgayGan;
+            enCN.Code = en.Code;
+            enCN.ChiSo = en.ChiSo;
+            enCN.TieuThu = en.TieuThu;
+            enCN.DMHN = en.DMHN;
+            enCN.NVCapNhat = en.NVCapNhat;
+            enCN.NgayCapNhat = en.NgayCapNhat;
+        }
 
         //table Code
         public DataTable getDS_Code()
@@ -210,6 +246,33 @@ namespace DocSo_PC.DAL.Doi
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
+        public void updateDocSo(DocSo en, ref DocSo enCN)
+        {
+            enCN.DanhBa = en.DanhBa;
+            enCN.MLT1 = en.MLT1;
+            enCN.MLT2 = en.MLT2;
+            enCN.SoNhaCu = en.SoNhaCu;
+            enCN.Duong = en.Duong;
+            enCN.GB = en.GB;
+            enCN.DM = en.DM;
+            enCN.Nam = en.Nam;
+            enCN.Ky = en.Ky;
+            enCN.Dot = en.Dot;
+            enCN.May = enCN.PhanMay = en.May;
+            enCN.TBTT = en.TBTT;
+            enCN.TamTinh = en.TamTinh;
+            enCN.CodeCu = enCN.CodeMoi = en.CodeCu;
+            enCN.TTDHNCu = enCN.TTDHNMoi = en.TTDHNCu;
+            enCN.CSCu = en.CSCu;
+            enCN.TieuThuCu = en.TieuThuCu;
+            enCN.TienNuoc = en.TienNuoc;
+            enCN.BVMT = en.BVMT;
+            enCN.Thue = en.Thue;
+            enCN.TongTien = en.TongTien;
+            enCN.DenNgay = en.DenNgay;
+            enCN.NgayDS = en.NgayDS;
+        }
+
         //xử lý
         public DataTable getDS_XuLy_DanhBo(string Nam, string Ky, string DanhBo)
         {
@@ -217,7 +280,7 @@ namespace DocSo_PC.DAL.Doi
                         + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end"
                         + " ,CSGo=case when baothay.DanhBo is not null then baothay.CSGo else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
                         + " ,CSGan=case when baothay.DanhBo is not null then baothay.CSGan else case when thwater.DanhBo is not null then thwater.CSGan else '' end end"
-                        + " from DocSo  ds left join (SELECT DanhBo=REPLACE(DANHBO,'-',''),CSGan=ChiSo,CSGo=TCTB_CSGo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE()) thwater on ds.DanhBa=thwater.DanhBo"
+                        + " from DocSo  ds left join (SELECT DanhBo=REPLACE(DANHBO,'-',''),CSGan=ChiSo,CSGo=TCTB_CSGo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null) thwater on ds.DanhBa=thwater.DanhBo"
                         + " left join (select DanhBo=DanhBa,CSGo,CSGan from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE()) baothay on ds.DanhBa=baothay.DanhBo"
                         + " where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa=" + DanhBo;
             return _cDAL.ExecuteQuery_DataTable(sql);
@@ -229,7 +292,7 @@ namespace DocSo_PC.DAL.Doi
                         + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end"
                         + " ,CSGo=case when baothay.DanhBo is not null then baothay.CSGo else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
                         + " ,CSGan=case when baothay.DanhBo is not null then baothay.CSGan else case when thwater.DanhBo is not null then thwater.CSGan else '' end end"
-                        + " from DocSo ds left join (SELECT DanhBo=REPLACE(DANHBO,'-',''),CSGan=ChiSo,CSGo=TCTB_CSGo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE()) thwater on ds.DanhBa=thwater.DanhBo"
+                        + " from DocSo ds left join (SELECT DanhBo=REPLACE(DANHBO,'-',''),CSGan=ChiSo,CSGo=TCTB_CSGo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null) thwater on ds.DanhBa=thwater.DanhBo"
                         + " left join (select DanhBo=DanhBa,CSGo,CSGan from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE()) baothay on ds.DanhBa=baothay.DanhBo"
                         + " where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa=" + DanhBo + " and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ")";
             return _cDAL.ExecuteQuery_DataTable(sql);
@@ -245,21 +308,24 @@ namespace DocSo_PC.DAL.Doi
                 May = "";
             else
                 May = " and May like '" + May + "'";
-            if (Code == "" || Code == "Tất Cả")
+            if (Code == "Tất Cả")
                 Code = "";
             else
-                Code = " and CodeMoi like '" + Code + "'";
+                if (Code == "")
+                    Code = " and (CodeMoi is null or CodeMoi='')";
+                else
+                    Code = " and CodeMoi like '" + Code + "'";
             string sql = "select ds.*,BaoThayDK=case when baothay.DanhBo is not null then 'true' else 'false' end"
                         + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end"
                         + " ,CSGo=case when baothay.DanhBo is not null then baothay.CSGo else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
                         + " ,CSGan=case when baothay.DanhBo is not null then baothay.CSGan else case when thwater.DanhBo is not null then thwater.CSGan else '' end end"
-                        + " from DocSo ds left join (SELECT DanhBo=REPLACE(DANHBO,'-',''),CSGan=ChiSo,CSGo=TCTB_CSGo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE()) thwater on ds.DanhBa=thwater.DanhBo"
+                        + " from DocSo ds left join (SELECT DanhBo=REPLACE(DANHBO,'-',''),CSGan=ChiSo,CSGo=TCTB_CSGo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null) thwater on ds.DanhBa=thwater.DanhBo"
                         + " left join (select DanhBo=DanhBa,CSGo,CSGan from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE()) baothay on ds.DanhBa=baothay.DanhBo"
                         + " where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + MaTo + May + Code
                         + " order by MLT2 asc";
             string sql2 = "select TongSL=COUNT(DocSoID)"
-                        + " ,SLDaGhi=COUNT(case when CodeMoi!='' then 1 else null end)"
-                        + " ,SLChuaGhi=COUNT(case when CodeMoi='' then 1 else null end)"
+                        + " ,SLDaGhi=COUNT(case when CodeMoi is not null and CodeMoi!='' then 1 else null end)"
+                        + " ,SLChuaGhi=COUNT(case when CodeMoi is null or CodeMoi='' then 1 else null end)"
                         + " ,SanLuong=SUM(TieuThuMoi)"
                         + " ,SLHD0=COUNT(case when TieuThuMoi=0 then 1 else null end)"
                         + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + MaTo + May + Code;

@@ -32,7 +32,8 @@ namespace DocSo_PC.GUI.ToTruong
             cmbNam.DataSource = _cDocSo.getDS_Nam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
-            cmbKy.SelectedItem = DateTime.Now.Month.ToString();
+            cmbKy.SelectedItem = CNguoiDung.Ky;
+            cmbDot.SelectedItem = CNguoiDung.Dot;
 
             if (CNguoiDung.Doi)
             {

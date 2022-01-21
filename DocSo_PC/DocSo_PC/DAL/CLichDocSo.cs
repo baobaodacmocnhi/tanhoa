@@ -108,6 +108,15 @@ namespace DocSo_PC.DAL
             return get(Nam, Ky).Lich_DocSo_ChiTiets.SingleOrDefault(item => item.IDDot == Dot).NgayDoc.Value;
         }
 
+        public string getNamKyDot(DateTime NgayDoc)
+        {
+            Lich_DocSo_ChiTiet en = _db.Lich_DocSo_ChiTiets.Where(item => item.NgayDoc.Value.Date == NgayDoc.Date).Take(1).SingleOrDefault();
+            if (en != null)
+                return en.Lich_DocSo.Nam.Value.ToString() + "-" + en.Lich_DocSo.Ky.Value.ToString("00") + "-" + en.Lich_Dot.ID.ToString("00");
+            else
+                return "";
+        }
+
         public DataTable getDS()
         {
             return _cDAL.LINQToDataTable(_db.Lich_DocSos.OrderByDescending(item => item.CreateDate).ToList());

@@ -45,8 +45,8 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbNam.DataSource = _cDocSo.getDS_Nam();
                 cmbNam.DisplayMember = "Nam";
                 cmbNam.ValueMember = "Nam";
-                cmbKy.SelectedItem = DateTime.Now.Month.ToString("00");
-                cmbDot.SelectedIndex = 0;
+                cmbKy.SelectedItem = CNguoiDung.Ky;
+                cmbDot.SelectedItem = CNguoiDung.Dot;
 
                 DataTable dtCode = _cDocSo.getDS_Code();
                 cmbCodeMoi.DataSource = dtCode;
@@ -177,6 +177,8 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 if (CNguoiDung.Doi == true)
                 {
+                    CNguoiDung.Ky = cmbKy.SelectedItem.ToString();
+                    CNguoiDung.Dot = cmbDot.SelectedItem.ToString();
                     if (txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", "") != "")
                     {
                         dt = _cDocSo.getDS_XuLy_DanhBo(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", ""));
@@ -188,6 +190,8 @@ namespace DocSo_PC.GUI.ToTruong
                 }
                 else
                 {
+                    CNguoiDung.Ky = cmbKy.SelectedItem.ToString();
+                    CNguoiDung.Dot = cmbDot.SelectedItem.ToString();
                     if (txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", "") != "")
                     {
                         dt = _cDocSo.getDS_XuLy_DanhBo(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", ""));
@@ -401,11 +405,12 @@ namespace DocSo_PC.GUI.ToTruong
                 {
                     if (_docso != null)
                     {
-                        if (_cDocSo.checkChot_BillState(_docso.Nam.Value.ToString(), _docso.Ky, _docso.Dot) == true)
-                        {
-                            MessageBox.Show("Năm " + _docso.Nam.Value.ToString() + " Kỳ " + _docso.Ky + " Đợt " + _docso.Dot + " đã chuyển billing", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        if (CNguoiDung.updateChuyenListing == false)
+                            if (_cDocSo.checkChot_BillState(_docso.Nam.Value.ToString(), _docso.Ky, _docso.Dot) == true)
+                            {
+                                MessageBox.Show("Năm " + _docso.Nam.Value.ToString() + " Kỳ " + _docso.Ky + " Đợt " + _docso.Dot + " đã chuyển billing", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         int TTienNuoc = 0, TThueGTGT = 0, TTDVTN = 0, TThueTDVTN = 0, TTieuThu = 0;
                         //if (wsDHN.tinhCodeTieuThu_CSM(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtCSM.Text.Trim()), out TieuThu, out GiaBan, out ThueGTGT, out PhiBVMT, out TongCong) == true)
                         if (wsDHN.tinhCodeTieuThu_TieuThu(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtTieuThu.Text.Trim()), out TTienNuoc, out TThueGTGT, out TTDVTN, out TThueTDVTN) == true)
@@ -428,6 +433,7 @@ namespace DocSo_PC.GUI.ToTruong
                             dgvDanhSach.CurrentRow.Cells["CSMoi"].Value = _docso.CSMoi;
                             dgvDanhSach.CurrentRow.Cells["TieuThuMoi"].Value = _docso.TieuThuMoi;
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadCodeMoi();
                             //btnXem.PerformClick();
                         }
                     }

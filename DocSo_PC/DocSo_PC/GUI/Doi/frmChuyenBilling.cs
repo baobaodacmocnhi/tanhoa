@@ -32,7 +32,7 @@ namespace DocSo_PC.GUI.Doi
             cmbNam.DataSource = _cDocSo.getDS_Nam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
-            cmbKy.SelectedItem = DateTime.Now.Month.ToString("00");
+            cmbKy.SelectedItem = CNguoiDung.Ky;
         }
 
         private void btnXem_Click(object sender, EventArgs e)

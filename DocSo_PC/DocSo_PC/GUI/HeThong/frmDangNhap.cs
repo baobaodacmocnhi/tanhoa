@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
+using DocSo_PC.DAL;
 
 namespace DocSo_PC.GUI.HeThong
 {
@@ -41,6 +42,7 @@ namespace DocSo_PC.GUI.HeThong
         {
             CNguoiDung _cNguoiDung = new CNguoiDung();
             CTo _ct = new CTo();
+            CLichDocSo _cLDS = new CLichDocSo();
             if (_cNguoiDung.DangNhap(txtTaiKhoan.Text.Trim(), txtMatKhau.Text.Trim()))
             {
                 NguoiDung nguoidung = _cNguoiDung.GetByTaiKhoan(txtTaiKhoan.Text.Trim());
@@ -56,15 +58,15 @@ namespace DocSo_PC.GUI.HeThong
                     CNguoiDung.PhoGiamDoc = nguoidung.PhoGiamDoc;
                     CNguoiDung.Doi = nguoidung.Doi;
                     CNguoiDung.ToTruong = nguoidung.ToTruong;
-                 
+                    CNguoiDung.updateChuyenListing = nguoidung.updateChuyenListing;
                     if (nguoidung.MaTo != null)
                     {
                         CNguoiDung.MaTo = nguoidung.MaTo.Value;
                         CNguoiDung.TenTo = nguoidung.To.TenTo;
-                        if (_ct.get(nguoidung.MaTo.Value).TuMay!=null)
-                        CNguoiDung.TuMayDS = _ct.get(nguoidung.MaTo.Value).TuMay.Value;
+                        if (_ct.get(nguoidung.MaTo.Value).TuMay != null)
+                            CNguoiDung.TuMayDS = _ct.get(nguoidung.MaTo.Value).TuMay.Value;
                         if (_ct.get(nguoidung.MaTo.Value).DenMay != null)
-                        CNguoiDung.DenMayDS = _ct.get(nguoidung.MaTo.Value).DenMay.Value;
+                            CNguoiDung.DenMayDS = _ct.get(nguoidung.MaTo.Value).DenMay.Value;
                     }
                     else
                     {
@@ -76,6 +78,20 @@ namespace DocSo_PC.GUI.HeThong
                         CNguoiDung.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(true, nguoidung.MaNhom.Value);
                     CNguoiDung.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(true, nguoidung.MaND);
 
+                    string NamKyDot = _cLDS.getNamKyDot(DateTime.Now);
+                    if (NamKyDot != "")
+                    {
+                        string[] NamKyDots = NamKyDot.Split('-');
+                        CNguoiDung.Nam = NamKyDots[0];
+                        CNguoiDung.Ky = NamKyDots[1];
+                        CNguoiDung.Dot = NamKyDots[2];
+                    }
+                    else
+                    {
+                        CNguoiDung.Nam = DateTime.Now.Year.ToString();
+                        CNguoiDung.Ky = DateTime.Now.Month.ToString("00");
+                        CNguoiDung.Dot = "01";
+                    }
                     GetLoginResult(true);
                     this.Hide();
                 }
