@@ -91,13 +91,13 @@ namespace ThuTien.GUI.TongHop
                 frmShowDCHD frm = new frmShowDCHD(int.Parse(dgvDCHD.CurrentRow.Cells["MaHD_DC"].Value.ToString()), dgvDCHD.CurrentRow.Cells["SoHoaDon_DC"].Value.ToString());
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    _cDCHD.Refresh();
-                    btnXem.PerformClick();
+                    //_cDCHD.Refresh();
+                    //btnXem.PerformClick();
                 }
                 else
                 {
-                    _cDCHD.Refresh();
-                    btnXem.PerformClick();
+                    //_cDCHD.Refresh();
+                    //btnXem.PerformClick();
                 }
             }
         }

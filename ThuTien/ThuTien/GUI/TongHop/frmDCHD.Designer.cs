@@ -103,8 +103,8 @@
             this.lbHD0 = new System.Windows.Forms.Label();
             this.btnDangNganHD0 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.radNgayChan = new System.Windows.Forms.RadioButton();
             this.radNgayDC = new System.Windows.Forms.RadioButton();
+            this.radNgayChan = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDCHD)).BeginInit();
             this.panel1.SuspendLayout();
@@ -361,7 +361,7 @@
             this.dgvDCHD.Name = "dgvDCHD";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDCHD.RowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvDCHD.Size = new System.Drawing.Size(1340, 350);
+            this.dgvDCHD.Size = new System.Drawing.Size(1340, 330);
             this.dgvDCHD.TabIndex = 34;
             this.dgvDCHD.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDCHD_CellFormatting);
             this.dgvDCHD.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvDCHD_CellValidating);
@@ -753,16 +753,6 @@
             this.panel2.Size = new System.Drawing.Size(84, 47);
             this.panel2.TabIndex = 54;
             // 
-            // radNgayChan
-            // 
-            this.radNgayChan.AutoSize = true;
-            this.radNgayChan.Location = new System.Drawing.Point(3, 3);
-            this.radNgayChan.Name = "radNgayChan";
-            this.radNgayChan.Size = new System.Drawing.Size(78, 17);
-            this.radNgayChan.TabIndex = 0;
-            this.radNgayChan.Text = "Ngày Chặn";
-            this.radNgayChan.UseVisualStyleBackColor = true;
-            // 
             // radNgayDC
             // 
             this.radNgayDC.AutoSize = true;
@@ -774,6 +764,16 @@
             this.radNgayDC.TabStop = true;
             this.radNgayDC.Text = "Ngày ĐC";
             this.radNgayDC.UseVisualStyleBackColor = true;
+            // 
+            // radNgayChan
+            // 
+            this.radNgayChan.AutoSize = true;
+            this.radNgayChan.Location = new System.Drawing.Point(3, 3);
+            this.radNgayChan.Name = "radNgayChan";
+            this.radNgayChan.Size = new System.Drawing.Size(78, 17);
+            this.radNgayChan.TabIndex = 0;
+            this.radNgayChan.Text = "Ngày Chặn";
+            this.radNgayChan.UseVisualStyleBackColor = true;
             // 
             // frmDCHD
             // 
