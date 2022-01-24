@@ -174,6 +174,46 @@ namespace GIAYKHEN
                 MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnDoanThanhNien_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                dialog.Multiselect = false;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                    if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        DataTable dtExcel = ExcelToDataTable(dialog.FileName);
+                        string PhongBan = "";
+                        for (int i = 16; i < dtExcel.Rows.Count; i++)
+                            if (!string.IsNullOrEmpty(dtExcel.Rows[i][0].ToString().Trim()) && IsNumeric(dtExcel.Rows[i][0].ToString().Trim()))
+                            {
+                                A_GIAYKHEN en = new A_GIAYKHEN();
+                                en.HOTEN = dtExcel.Rows[i][1].ToString().Trim();
+                                en.CHUCVU = dtExcel.Rows[i][3].ToString().Trim().ToUpper();
+                                en.PHONGBAN = dtExcel.Rows[i][2].ToString().Trim().ToUpper();
+                                if (dtExcel.Rows[i][4].ToString().Trim() == "Nữ")
+                                    en.GioiTinh = false;
+                                else
+                                    en.GioiTinh = true;
+                                _db.A_GIAYKHENs.InsertOnSubmit(en);
+                                _db.SubmitChanges();
+                            }
+                            else
+                            {
+                                PhongBan = dtExcel.Rows[i][2].ToString().Trim();
+                            }
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 
 }

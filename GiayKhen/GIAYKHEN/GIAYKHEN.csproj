@@ -111,6 +111,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="DoanThanhNien_BT_CANHAN_A4_FormNho.cs">
+      <DependentUpon>DoanThanhNien_BT_CANHAN_A4_FormNho.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DangBo_CANHAN_A3_2021.cs">
       <DependentUpon>DangBo_CANHAN_A3_2021.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -171,8 +177,8 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="DoanThanhNien_BT_CANHAN_A4_FormNho.cs">
-      <DependentUpon>DoanThanhNien_BT_CANHAN_A4_FormNho.rpt</DependentUpon>
+    <Compile Include="DoanThanhNien_BT_TAPTHE_A4_FormNho.cs">
+      <DependentUpon>DoanThanhNien_BT_TAPTHE_A4_FormNho.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -287,6 +293,7 @@
     </Compile>
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="TLD_GKCongDoan_TAPTHE_2name.cs">
       <DependentUpon>TLD_GKCongDoan_TAPTHE_2name.rpt</DependentUpon>
@@ -364,6 +371,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ChinhQuyen_TAPTHE_A3_Edit.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="DoanThanhNien_BT_CANHAN_A4_FormNho.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DoanThanhNien_BT_CANHAN_A4_FormNho.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="DangBo_CANHAN_A3_2021.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DangBo_CANHAN_A3_2021.cs</LastGenOutput>
@@ -403,9 +414,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>GuongDienHinh5nam_CANHAN_A3.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="DoanThanhNien_BT_CANHAN_A4_FormNho.rpt">
+    <EmbeddedResource Include="DoanThanhNien_BT_TAPTHE_A4_FormNho.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>DoanThanhNien_BT_CANHAN_A4_FormNho.cs</LastGenOutput>
+      <LastGenOutput>DoanThanhNien_BT_TAPTHE_A4_FormNho.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="DoanThanhNien_SoQD_BT_CANHAN_A4_FormNho.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

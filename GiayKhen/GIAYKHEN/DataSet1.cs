@@ -1,12 +1,6 @@
-﻿namespace GIAYKHEN
-{
-}
-namespace GIAYKHEN
-{
-}
-namespace GIAYKHEN
-{
-}
-namespace GIAYKHEN
-{
+﻿namespace GIAYKHEN {
+    
+    
+    public partial class DataSet1 {
+    }
 }

@@ -124,7 +124,7 @@
             this.txtQuyetDinhTapThe.Name = "txtQuyetDinhTapThe";
             this.txtQuyetDinhTapThe.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhTapThe.TabIndex = 11;
-            this.txtQuyetDinhTapThe.Text = "0026/QĐ-TH-TCHC";
+            this.txtQuyetDinhTapThe.Text = "46-QĐ/ĐTN";
             // 
             // txtQDNm
             // 
@@ -170,7 +170,7 @@
             this.txtNguoiKy.Name = "txtNguoiKy";
             this.txtNguoiKy.Size = new System.Drawing.Size(166, 26);
             this.txtNguoiKy.TabIndex = 5;
-            this.txtNguoiKy.Text = "PHẠM KHƯƠNG THẢO";
+            this.txtNguoiKy.Text = "NGUYỄN TRẦN LAM";
             // 
             // txtNgay
             // 
@@ -187,7 +187,7 @@
             this.txtQuyetDinhCaNhan.Name = "txtQuyetDinhCaNhan";
             this.txtQuyetDinhCaNhan.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhCaNhan.TabIndex = 3;
-            this.txtQuyetDinhCaNhan.Text = "0026/QĐ-TH-TCHC";
+            this.txtQuyetDinhCaNhan.Text = "46-QĐ/ĐTN";
             this.txtQuyetDinhCaNhan.TextChanged += new System.EventHandler(this.txtQuyetDinhCaNhan_TextChanged);
             // 
             // label4

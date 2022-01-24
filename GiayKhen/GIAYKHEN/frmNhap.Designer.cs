@@ -30,6 +30,7 @@
         {
             this.btnCongDoan = new System.Windows.Forms.Button();
             this.btnCongTy = new System.Windows.Forms.Button();
+            this.btnDoanThanhNien = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCongDoan
@@ -52,11 +53,22 @@
             this.btnCongTy.UseVisualStyleBackColor = true;
             this.btnCongTy.Click += new System.EventHandler(this.btnCongTy_Click);
             // 
+            // btnDoanThanhNien
+            // 
+            this.btnDoanThanhNien.Location = new System.Drawing.Point(174, 12);
+            this.btnDoanThanhNien.Name = "btnDoanThanhNien";
+            this.btnDoanThanhNien.Size = new System.Drawing.Size(101, 23);
+            this.btnDoanThanhNien.TabIndex = 2;
+            this.btnDoanThanhNien.Text = "Đoàn Thanh Niên";
+            this.btnDoanThanhNien.UseVisualStyleBackColor = true;
+            this.btnDoanThanhNien.Click += new System.EventHandler(this.btnDoanThanhNien_Click);
+            // 
             // frmNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 210);
+            this.Controls.Add(this.btnDoanThanhNien);
             this.Controls.Add(this.btnCongTy);
             this.Controls.Add(this.btnCongDoan);
             this.Name = "frmNhap";
@@ -70,6 +82,7 @@
 
         private System.Windows.Forms.Button btnCongDoan;
         private System.Windows.Forms.Button btnCongTy;
+        private System.Windows.Forms.Button btnDoanThanhNien;
 
     }
 }
