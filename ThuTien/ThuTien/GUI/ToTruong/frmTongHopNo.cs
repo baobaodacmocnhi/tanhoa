@@ -650,11 +650,6 @@ namespace ThuTien.GUI.ToTruong
                 }
         }
 
-        private void dgvHoaDon_CellValidated(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))

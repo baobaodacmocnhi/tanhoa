@@ -2299,14 +2299,19 @@ namespace ThuTien.GUI.TongHop
                     dr["PhanKy"] = "II. Số tiền nước thu được từ các kỳ hóa đơn trước đó của năm " + dateDen_KeToan_Chot2019.Value.Year.ToString();
                     ds.Tables["TongHopDangNgan"].Rows.Add(dr);
                 }
+                if (int.Parse(item["Nam2"].ToString()) == 2021)
+                {
+                    dr["PhanKy"] = "III. Số tiền nước thu được của năm 2021";
+                    ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+                }
                 if (int.Parse(item["Nam2"].ToString()) == 2020)
                 {
-                    dr["PhanKy"] = "III. Số tiền nước thu được của năm 2020";
+                    dr["PhanKy"] = "IV. Số tiền nước thu được của năm 2020";
                     ds.Tables["TongHopDangNgan"].Rows.Add(dr);
                 }
                 if (int.Parse(item["Nam2"].ToString()) == 2019)
                 {
-                    dr["PhanKy"] = "IV. Số tiền nước thu được của năm 2019";
+                    dr["PhanKy"] = "V. Số tiền nước thu được của năm 2019";
                     ds.Tables["TongHopDangNgan"].Rows.Add(dr);
                 }
             }
