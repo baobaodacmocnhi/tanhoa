@@ -73,6 +73,9 @@ namespace DocSo_PC.GUI.QuanTri
             //cmbNhom.SelectedIndex = -1;
             
             dgvNguoiDung.DataSource = _blNguoiDung;
+
+            if (CNguoiDung.Doi == true)
+                dgvNguoiDung.Columns["MatKhau"].Visible = true;
         }
 
         public void loaddgv()

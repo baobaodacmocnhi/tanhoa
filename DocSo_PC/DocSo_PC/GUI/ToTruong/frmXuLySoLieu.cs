@@ -433,7 +433,7 @@ namespace DocSo_PC.GUI.ToTruong
                             dgvDanhSach.CurrentRow.Cells["CSMoi"].Value = _docso.CSMoi;
                             dgvDanhSach.CurrentRow.Cells["TieuThuMoi"].Value = _docso.TieuThuMoi;
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            loadCodeMoi();
+                            //loadCodeMoi();
                             //btnXem.PerformClick();
                         }
                     }
