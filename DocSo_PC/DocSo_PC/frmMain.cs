@@ -24,7 +24,7 @@ namespace DocSo_PC
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            Application.Idle += new EventHandler(Application_Idle);
+            //Application.Idle += new EventHandler(Application_Idle);
             mnuDangNhap.PerformClick();
         }
 

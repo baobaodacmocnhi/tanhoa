@@ -10,7 +10,6 @@ using DocSo_PC.DAL.Doi;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using DocSo_PC.DAL;
-using DocSo_PC.wrBilling;
 using DocSo_PC.wrDHN;
 
 namespace DocSo_PC.GUI.ToTruong
@@ -24,7 +23,6 @@ namespace DocSo_PC.GUI.ToTruong
         CMayDS _cMayDS = new CMayDS();
         CDHN _cDHN = new CDHN();
         DocSo _docso = null;
-        wsBilling wsBilling = new wsBilling();
         wsDHN wsDHN = new wsDHN();
         bool _flagLoadFirst = false;
 
@@ -586,7 +584,7 @@ namespace DocSo_PC.GUI.ToTruong
 
         private void cmbCodeMoi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbCodeMoi.SelectedValue.ToString() == "N")
+            if (cmbCodeMoi.SelectedValue.ToString() == "N" || cmbCodeMoi.SelectedValue.ToString() == "K" || cmbCodeMoi.SelectedValue.ToString() == "68")
                 txtTieuThu.Text = "0";
             txtCSM.Focus();
         }

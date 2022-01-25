@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using DocSo_PC.DAL.Doi;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
-using DocSo_PC.wrBilling;
+using DocSo_PC.wrDHN;
 
 
 namespace DocSo_PC.GUI.Doi
@@ -19,7 +19,7 @@ namespace DocSo_PC.GUI.Doi
         string _mnu = "mnuChuyenBilling";
         CDocSo _cDocSo = new CDocSo();
         CChuyenBilling _cChuyenBilling = new CChuyenBilling();
-        wsBilling wsDHN = new wsBilling();
+        wsDHN _wsDHN = new wsDHN();
 
         public frmChuyenBilling()
         {
@@ -132,7 +132,7 @@ namespace DocSo_PC.GUI.Doi
                                 index = item["DanhBa"].ToString();
                                 progressBar.Value = i++;
                                 //writer.WriteLine(i.ToString() + "," + item["DanhBa"].ToString());
-                                if (wsDHN.insertBilling(item["DocSoID"].ToString(), "tanho@2022") == true)
+                                if (_wsDHN.insertBilling(item["DocSoID"].ToString(), "tanho@2022") == true)
                                 //if (_cChuyenBilling.insertBilling(item) == true)
                                     count++;
                             }
