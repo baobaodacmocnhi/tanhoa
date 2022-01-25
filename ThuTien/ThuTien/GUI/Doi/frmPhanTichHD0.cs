@@ -24,6 +24,7 @@ namespace ThuTien.GUI.Doi
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CDangKyHD0 _cDangKyHD0 = new CDangKyHD0();
         CDangKy _cDangKy = new CDangKy();
+        CDangKy2 _cDangKy2 = new CDangKy2();
         List<TT_To> _lstTo;
 
         public frmPhanTichHD0()
@@ -733,20 +734,27 @@ namespace ThuTien.GUI.Doi
 
         private void btnXoaDK2_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            try
             {
-                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
-                    foreach (DataGridViewRow item in dgvDanhBoDK2.SelectedRows)
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        TT_DangKy dangky = _cDangKy.Get(item.Cells["DanhBo_DK2"].Value.ToString(), int.Parse(item.Cells["MaNV_DK2"].Value.ToString()));
-                        _cDangKy.Xoa(dangky);
+                        foreach (DataGridViewRow item in dgvDanhBoDK2.SelectedRows)
+                        {
+                            TT_DangKy dangky = _cDangKy.Get(item.Cells["DanhBo_DK2"].Value.ToString(), int.Parse(item.Cells["MaNV_DK2"].Value.ToString()));
+                            _cDangKy.Xoa(dangky);
+                        }
+                        btnXemDK2.PerformClick();
                     }
-                    btnXemDK2.PerformClick();
                 }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtDanhBoDK2_KeyPress(object sender, KeyPressEventArgs e)
@@ -989,7 +997,7 @@ namespace ThuTien.GUI.Doi
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvDanhBoDK2.Rows)
-                if (int.Parse(item.Cells["Ky"+DateTime.Today.Month+"_DK2"].Value.ToString()) == 0)
+                if (int.Parse(item.Cells["Ky" + DateTime.Today.Month + "_DK2"].Value.ToString()) == 0)
                 {
                     DataRow dr = ds.Tables["DSHoaDon"].NewRow();
                     dr["NhanVien"] = item.Cells["NhanVien_DK2"].Value;
@@ -1005,6 +1013,77 @@ namespace ThuTien.GUI.Doi
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
+        }
+
+        private void btnChonFile3_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                try
+                {
+                    OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                    dialog.Multiselect = false;
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            DataTable dtExcel = _cHoaDon.ExcelToDataTable(dialog.FileName);
+                            foreach (DataRow item in dtExcel.Rows)
+                                if (item[0].ToString().Replace(" ", "").Length == 11)
+                                {
+                                    if (_cDangKy2.CheckExist(item[0].ToString().Replace(" ", "")) == true)
+                                    {
+                                        MessageBox.Show(item[0].ToString().Replace(" ", "") + " đã đăng ký ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        TT_DangKy2 dangky = new TT_DangKy2();
+                                        dangky.DanhBo = item[0].ToString().Replace(" ", "");
+
+                                        _cDangKy2.Them(dangky);
+                                    }
+                                }
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnXem3.PerformClick();
+                        }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnXoa3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        foreach (DataGridViewRow item in dgvDangKy3.SelectedRows)
+                        {
+                            TT_DangKy2 dangky = _cDangKy2.Get(item.Cells["DanhBo_DK3"].Value.ToString());
+                            _cDangKy2.Xoa(dangky);
+                        }
+                        btnXem3.PerformClick();
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXem3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

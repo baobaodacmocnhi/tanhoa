@@ -678,6 +678,7 @@
     <Compile Include="DAL\Doi\CChotDangNgan.cs" />
     <Compile Include="DAL\Doi\CNguoiKy.cs" />
     <Compile Include="DAL\Doi\CNiemChi.cs" />
+    <Compile Include="DAL\Doi\CDangKy2.cs" />
     <Compile Include="DAL\Doi\CPhiMoNuocDoi.cs" />
     <Compile Include="DAL\Doi\CToTrinhCatHuy.cs" />
     <Compile Include="DAL\DongNuoc\CDongNuoc.cs" />
