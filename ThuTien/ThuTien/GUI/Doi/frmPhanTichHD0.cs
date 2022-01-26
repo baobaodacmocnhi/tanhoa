@@ -38,6 +38,7 @@ namespace ThuTien.GUI.Doi
             dgvDSTongHD0.AutoGenerateColumns = false;
             dgvDanhBoDK.AutoGenerateColumns = false;
             dgvDanhBoDK2.AutoGenerateColumns = false;
+            dgvDangKy3.AutoGenerateColumns = false;
 
             _lstTo = _cTo.getDS();
             TT_To to = new TT_To();
@@ -48,7 +49,8 @@ namespace ThuTien.GUI.Doi
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
 
-            cmbNam.DataSource = _cHoaDon.GetNam();
+            DataTable dt = _cHoaDon.GetNam();
+            cmbNam.DataSource = dt;
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
 
@@ -56,7 +58,7 @@ namespace ThuTien.GUI.Doi
             cmbToDK.DisplayMember = "TenTo";
             cmbToDK.ValueMember = "MaTo";
 
-            cmbNamDK.DataSource = _cHoaDon.GetNam();
+            cmbNamDK.DataSource = dt;
             cmbNamDK.DisplayMember = "Nam";
             cmbNamDK.ValueMember = "Nam";
 
@@ -67,9 +69,13 @@ namespace ThuTien.GUI.Doi
             cmbToDK2.DisplayMember = "TenTo";
             cmbToDK2.ValueMember = "MaTo";
 
-            cmbNamDK2.DataSource = _cHoaDon.GetNam();
+            cmbNamDK2.DataSource = dt;
             cmbNamDK2.DisplayMember = "Nam";
             cmbNamDK2.ValueMember = "Nam";
+
+            cmbNam3.DataSource = dt;
+            cmbNam3.DisplayMember = "Nam";
+            cmbNam3.ValueMember = "Nam";
         }
 
         public void CountdgvDanhBoDK()
@@ -1083,7 +1089,11 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem3_Click(object sender, EventArgs e)
         {
-
+            dgvDangKy3.DataSource = _cDangKy2.getDS(int.Parse(cmbNam3.SelectedValue.ToString()));
+            foreach (DataGridViewRow item in dgvDangKy3.Rows)
+            {
+                item.Cells["Ky1_DK3"].Value = item.Cells["Ky1_DK3"].Value.ToString().Replace("\r\n", Environment.NewLine);
+            }
         }
     }
 }
