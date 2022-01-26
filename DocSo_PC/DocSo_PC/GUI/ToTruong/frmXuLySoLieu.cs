@@ -120,7 +120,7 @@ namespace DocSo_PC.GUI.ToTruong
                         if (_docso.TieuThuMoi != null)
                             txtTieuThu.Text = _docso.TieuThuMoi.Value.ToString();
                         txtHoTen.Text = dhn.HOTEN;
-                        txtDanhBo.Text = dhn.DANHBO.Insert(7, " ").Insert(4, " ");
+                        txtDanhBo.Text = dhn.DANHBO;//.Insert(7, " ").Insert(4, " ");
                         txtHieu.Text = dhn.HIEUDH;
                         txtCo.Text = dhn.CODH;
                         txtSoThan.Text = dhn.SOTHANDH;
@@ -150,7 +150,7 @@ namespace DocSo_PC.GUI.ToTruong
                         dgvLichSu.Rows.RemoveAt(dgvLichSu.Rows.Count - 1);
                         if (chkLoadHinh.Checked == true)
                             btnXemHinh.PerformClick();
-                        txtCSM.Focus();
+                        //txtCSM.Focus();
                     }
                 }
             }
@@ -243,10 +243,10 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
             }
-            if (dgvDanhSach.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
-            }
+            //if (dgvDanhSach.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
+            //{
+            //    e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            //}
         }
 
         private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -419,6 +419,8 @@ namespace DocSo_PC.GUI.ToTruong
                             _docso.CSMoi = int.Parse(txtCSM.Text.Trim());
                             //_docso.TieuThuMoi = TieuThu;
                             _docso.TieuThuMoi = int.Parse(txtTieuThu.Text.Trim());
+                            if (_docso.CodeMoi.Contains("F") == true)
+                                _docso.CSMoi = _docso.CSCu + _docso.TieuThuMoi;
                             _docso.TienNuoc = TTienNuoc;
                             _docso.Thue = TThueGTGT;
                             _docso.BVMT = TTDVTN;
