@@ -189,12 +189,12 @@
             this.cmbToDK2 = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.cmbNam3 = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.btnXoa3 = new System.Windows.Forms.Button();
             this.btnChonFile3 = new System.Windows.Forms.Button();
             this.btnXem3 = new System.Windows.Forms.Button();
             this.dgvDangKy3 = new System.Windows.Forms.DataGridView();
-            this.cmbNam3 = new System.Windows.Forms.ComboBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -216,6 +216,30 @@
             this.Ky10_DK3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky11_DK3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky12_DK3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTongHD0)).BeginInit();
@@ -1767,6 +1791,23 @@
             this.tabPage4.Text = "Đăng Ký 3";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // cmbNam3
+            // 
+            this.cmbNam3.FormattingEnabled = true;
+            this.cmbNam3.Location = new System.Drawing.Point(163, 6);
+            this.cmbNam3.Name = "cmbNam3";
+            this.cmbNam3.Size = new System.Drawing.Size(60, 21);
+            this.cmbNam3.TabIndex = 126;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(125, 9);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(32, 13);
+            this.label20.TabIndex = 125;
+            this.label20.Text = "Năm:";
+            // 
             // btnXoa3
             // 
             this.btnXoa3.Location = new System.Drawing.Point(8, 4);
@@ -1831,7 +1872,31 @@
             this.Ky9_DK3,
             this.Ky10_DK3,
             this.Ky11_DK3,
-            this.Ky12_DK3});
+            this.Ky12_DK3,
+            this.TieuThu1,
+            this.NgayGiaiTrach1,
+            this.TieuThu2,
+            this.NgayGiaiTrach2,
+            this.TieuThu3,
+            this.NgayGiaiTrach3,
+            this.TieuThu4,
+            this.NgayGiaiTrach4,
+            this.TieuThu5,
+            this.NgayGiaiTrach5,
+            this.TieuThu6,
+            this.NgayGiaiTrach6,
+            this.TieuThu7,
+            this.NgayGiaiTrach7,
+            this.TieuThu8,
+            this.NgayGiaiTrach8,
+            this.TieuThu9,
+            this.NgayGiaiTrach9,
+            this.TieuThu10,
+            this.NgayGiaiTrach10,
+            this.TieuThu11,
+            this.NgayGiaiTrach11,
+            this.TieuThu12,
+            this.NgayGiaiTrach12});
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1849,23 +1914,6 @@
             this.dgvDangKy3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDangKy3.Size = new System.Drawing.Size(1310, 547);
             this.dgvDangKy3.TabIndex = 121;
-            // 
-            // cmbNam3
-            // 
-            this.cmbNam3.FormattingEnabled = true;
-            this.cmbNam3.Location = new System.Drawing.Point(163, 6);
-            this.cmbNam3.Name = "cmbNam3";
-            this.cmbNam3.Size = new System.Drawing.Size(60, 21);
-            this.cmbNam3.TabIndex = 126;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(125, 9);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(32, 13);
-            this.label20.TabIndex = 125;
-            this.label20.Text = "Năm:";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -2013,6 +2061,173 @@
             this.Ky12_DK3.HeaderText = "Kỳ 12";
             this.Ky12_DK3.Name = "Ky12_DK3";
             this.Ky12_DK3.Width = 90;
+            // 
+            // TieuThu1
+            // 
+            this.TieuThu1.DataPropertyName = "TieuThu1";
+            this.TieuThu1.HeaderText = "Column1";
+            this.TieuThu1.Name = "TieuThu1";
+            this.TieuThu1.Visible = false;
+            // 
+            // NgayGiaiTrach1
+            // 
+            this.NgayGiaiTrach1.DataPropertyName = "NgayGiaiTrach1";
+            this.NgayGiaiTrach1.HeaderText = "Column2";
+            this.NgayGiaiTrach1.Name = "NgayGiaiTrach1";
+            this.NgayGiaiTrach1.Visible = false;
+            // 
+            // TieuThu2
+            // 
+            this.TieuThu2.DataPropertyName = "TieuThu2";
+            this.TieuThu2.HeaderText = "Column3";
+            this.TieuThu2.Name = "TieuThu2";
+            this.TieuThu2.Visible = false;
+            // 
+            // NgayGiaiTrach2
+            // 
+            this.NgayGiaiTrach2.DataPropertyName = "NgayGiaiTrach2";
+            this.NgayGiaiTrach2.HeaderText = "Column4";
+            this.NgayGiaiTrach2.Name = "NgayGiaiTrach2";
+            this.NgayGiaiTrach2.Visible = false;
+            // 
+            // TieuThu3
+            // 
+            this.TieuThu3.DataPropertyName = "TieuThu3";
+            this.TieuThu3.HeaderText = "Column5";
+            this.TieuThu3.Name = "TieuThu3";
+            this.TieuThu3.Visible = false;
+            // 
+            // NgayGiaiTrach3
+            // 
+            this.NgayGiaiTrach3.DataPropertyName = "NgayGiaiTrach3";
+            this.NgayGiaiTrach3.HeaderText = "Column6";
+            this.NgayGiaiTrach3.Name = "NgayGiaiTrach3";
+            this.NgayGiaiTrach3.Visible = false;
+            // 
+            // TieuThu4
+            // 
+            this.TieuThu4.DataPropertyName = "TieuThu4";
+            this.TieuThu4.HeaderText = "Column7";
+            this.TieuThu4.Name = "TieuThu4";
+            this.TieuThu4.Visible = false;
+            // 
+            // NgayGiaiTrach4
+            // 
+            this.NgayGiaiTrach4.DataPropertyName = "NgayGiaiTrach4";
+            this.NgayGiaiTrach4.HeaderText = "Column8";
+            this.NgayGiaiTrach4.Name = "NgayGiaiTrach4";
+            this.NgayGiaiTrach4.Visible = false;
+            // 
+            // TieuThu5
+            // 
+            this.TieuThu5.DataPropertyName = "TieuThu5";
+            this.TieuThu5.HeaderText = "Column9";
+            this.TieuThu5.Name = "TieuThu5";
+            this.TieuThu5.Visible = false;
+            // 
+            // NgayGiaiTrach5
+            // 
+            this.NgayGiaiTrach5.DataPropertyName = "NgayGiaiTrach5";
+            this.NgayGiaiTrach5.HeaderText = "Column10";
+            this.NgayGiaiTrach5.Name = "NgayGiaiTrach5";
+            this.NgayGiaiTrach5.Visible = false;
+            // 
+            // TieuThu6
+            // 
+            this.TieuThu6.DataPropertyName = "TieuThu6";
+            this.TieuThu6.HeaderText = "Column11";
+            this.TieuThu6.Name = "TieuThu6";
+            this.TieuThu6.Visible = false;
+            // 
+            // NgayGiaiTrach6
+            // 
+            this.NgayGiaiTrach6.DataPropertyName = "NgayGiaiTrach6";
+            this.NgayGiaiTrach6.HeaderText = "Column12";
+            this.NgayGiaiTrach6.Name = "NgayGiaiTrach6";
+            this.NgayGiaiTrach6.Visible = false;
+            // 
+            // TieuThu7
+            // 
+            this.TieuThu7.DataPropertyName = "TieuThu7";
+            this.TieuThu7.HeaderText = "Column13";
+            this.TieuThu7.Name = "TieuThu7";
+            this.TieuThu7.Visible = false;
+            // 
+            // NgayGiaiTrach7
+            // 
+            this.NgayGiaiTrach7.DataPropertyName = "NgayGiaiTrach7";
+            this.NgayGiaiTrach7.HeaderText = "Column14";
+            this.NgayGiaiTrach7.Name = "NgayGiaiTrach7";
+            this.NgayGiaiTrach7.Visible = false;
+            // 
+            // TieuThu8
+            // 
+            this.TieuThu8.DataPropertyName = "TieuThu8";
+            this.TieuThu8.HeaderText = "Column15";
+            this.TieuThu8.Name = "TieuThu8";
+            this.TieuThu8.Visible = false;
+            // 
+            // NgayGiaiTrach8
+            // 
+            this.NgayGiaiTrach8.DataPropertyName = "NgayGiaiTrach8";
+            this.NgayGiaiTrach8.HeaderText = "Column16";
+            this.NgayGiaiTrach8.Name = "NgayGiaiTrach8";
+            this.NgayGiaiTrach8.Visible = false;
+            // 
+            // TieuThu9
+            // 
+            this.TieuThu9.DataPropertyName = "TieuThu9";
+            this.TieuThu9.HeaderText = "Column17";
+            this.TieuThu9.Name = "TieuThu9";
+            this.TieuThu9.Visible = false;
+            // 
+            // NgayGiaiTrach9
+            // 
+            this.NgayGiaiTrach9.DataPropertyName = "NgayGiaiTrach9";
+            this.NgayGiaiTrach9.HeaderText = "Column18";
+            this.NgayGiaiTrach9.Name = "NgayGiaiTrach9";
+            // 
+            // TieuThu10
+            // 
+            this.TieuThu10.DataPropertyName = "TieuThu10";
+            this.TieuThu10.HeaderText = "Column19";
+            this.TieuThu10.Name = "TieuThu10";
+            this.TieuThu10.Visible = false;
+            // 
+            // NgayGiaiTrach10
+            // 
+            this.NgayGiaiTrach10.DataPropertyName = "NgayGiaiTrach10";
+            this.NgayGiaiTrach10.HeaderText = "Column20";
+            this.NgayGiaiTrach10.Name = "NgayGiaiTrach10";
+            this.NgayGiaiTrach10.Visible = false;
+            // 
+            // TieuThu11
+            // 
+            this.TieuThu11.DataPropertyName = "TieuThu11";
+            this.TieuThu11.HeaderText = "Column21";
+            this.TieuThu11.Name = "TieuThu11";
+            this.TieuThu11.Visible = false;
+            // 
+            // NgayGiaiTrach11
+            // 
+            this.NgayGiaiTrach11.DataPropertyName = "NgayGiaiTrach11";
+            this.NgayGiaiTrach11.HeaderText = "Column22";
+            this.NgayGiaiTrach11.Name = "NgayGiaiTrach11";
+            this.NgayGiaiTrach11.Visible = false;
+            // 
+            // TieuThu12
+            // 
+            this.TieuThu12.DataPropertyName = "TieuThu12";
+            this.TieuThu12.HeaderText = "Column23";
+            this.TieuThu12.Name = "TieuThu12";
+            this.TieuThu12.Visible = false;
+            // 
+            // NgayGiaiTrach12
+            // 
+            this.NgayGiaiTrach12.DataPropertyName = "NgayGiaiTrach12";
+            this.NgayGiaiTrach12.HeaderText = "Column24";
+            this.NgayGiaiTrach12.Name = "NgayGiaiTrach12";
+            this.NgayGiaiTrach12.Visible = false;
             // 
             // frmPhanTichHD0
             // 
@@ -2215,6 +2430,30 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky10_DK3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky11_DK3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky12_DK3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach12;
 
     }
 }
