@@ -120,7 +120,7 @@ namespace DocSo_PC.GUI.ToTruong
                         if (_docso.TieuThuMoi != null)
                             txtTieuThu.Text = _docso.TieuThuMoi.Value.ToString();
                         txtHoTen.Text = dhn.HOTEN;
-                        txtDanhBo.Text = dhn.DANHBO;//.Insert(7, " ").Insert(4, " ");
+                        txtDanhBo.Text = dhn.DANHBO.Insert(7, " ").Insert(4, " ");
                         txtHieu.Text = dhn.HIEUDH;
                         txtCo.Text = dhn.CODH;
                         txtSoThan.Text = dhn.SOTHANDH;
@@ -150,7 +150,7 @@ namespace DocSo_PC.GUI.ToTruong
                         dgvLichSu.Rows.RemoveAt(dgvLichSu.Rows.Count - 1);
                         if (chkLoadHinh.Checked == true)
                             btnXemHinh.PerformClick();
-                        //txtCSM.Focus();
+                        //cmbCodeMoi.Focus();
                     }
                 }
             }
