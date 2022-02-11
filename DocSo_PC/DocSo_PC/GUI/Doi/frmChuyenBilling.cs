@@ -132,9 +132,12 @@ namespace DocSo_PC.GUI.Doi
                                 index = item["DanhBa"].ToString();
                                 progressBar.Value = i++;
                                 //writer.WriteLine(i.ToString() + "," + item["DanhBa"].ToString());
-                                if (_wsDHN.insertBilling(item["DocSoID"].ToString(), "tanho@2022") == true)
-                                //if (_cChuyenBilling.insertBilling(item) == true)
+                                string message;
+                                if (_wsDHN.insertBilling(item["DocSoID"].ToString(), "tanho@2022", out message) == true)
+                                    //if (_cChuyenBilling.insertBilling(item) == true)
                                     count++;
+                                else
+                                    index += " : " + message;
                             }
                             MessageBox.Show("Đã chuyển xong " + count, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }

@@ -265,9 +265,9 @@ namespace DocSo_PC
 
         private void mnuTheoDoiDot_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuTheoDoiDot", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuTheoDoiDocSo", "Xem"))
             {
-                frmTheoDoiDot frm = new frmTheoDoiDot();
+                frmTheoDoiDocSo frm = new frmTheoDoiDocSo();
                 OpenForm(frm);
             }
             else

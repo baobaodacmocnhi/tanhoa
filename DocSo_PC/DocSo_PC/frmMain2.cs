@@ -244,7 +244,7 @@ namespace DocSo_PC
         {
             if (CNguoiDung.CheckQuyen("mnuTheoDoiDot", "Xem"))
             {
-                frmTheoDoiDot frm = new frmTheoDoiDot();
+                frmTheoDoiDocSo frm = new frmTheoDoiDocSo();
                 OpenForm(frm);
             }
             else

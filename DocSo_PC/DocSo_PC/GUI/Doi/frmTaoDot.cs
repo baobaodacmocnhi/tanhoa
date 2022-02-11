@@ -109,6 +109,8 @@ namespace DocSo_PC.GUI.Doi
                             en.GB = short.Parse(contents[15]);
                         if (!string.IsNullOrWhiteSpace(contents[16]))
                             en.DM = int.Parse(contents[16]);
+                        else
+                            en.DM = 0;
                         if (!string.IsNullOrWhiteSpace(contents[17]))
                             en.SH = short.Parse(contents[17]);
                         if (!string.IsNullOrWhiteSpace(contents[18]))
@@ -173,9 +175,9 @@ namespace DocSo_PC.GUI.Doi
         {
             try
             {
-                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                if (dgvDanhSach.Columns[e.ColumnIndex].Name == "TaoDot")
                 {
-                    if (dgvDanhSach.Columns[e.ColumnIndex].Name == "TaoDot")
+                    if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                     {
                         if (MessageBox.Show("Bạn có chắc chắn Tạo Đợt " + dgvDanhSach["Dot", e.RowIndex].Value.ToString() + "?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
@@ -248,9 +250,20 @@ namespace DocSo_PC.GUI.Doi
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
+                    else
+                        MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (dgvDanhSach.Columns[e.ColumnIndex].Name == "KiemTra")
+                {
+                    if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                    {
+                        DataTable dt = _cDocSo.getTaoDot_KiemTra(dgvDanhSach["Nam", e.RowIndex].Value.ToString(), dgvDanhSach["Ky", e.RowIndex].Value.ToString(), dgvDanhSach["Dot", e.RowIndex].Value.ToString());
+                        frmTaoDotKiemTra frm = new frmTaoDotKiemTra(dt);
+                        frm.ShowDialog();
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {

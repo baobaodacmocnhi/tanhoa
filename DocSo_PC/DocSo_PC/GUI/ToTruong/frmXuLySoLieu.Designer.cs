@@ -48,16 +48,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.lbTo = new System.Windows.Forms.Label();
             this.cmbMay = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cmbTo = new System.Windows.Forms.ComboBox();
-            this.cmbDot = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cmbKy = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbNam = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDanhBoTK = new System.Windows.Forms.TextBox();
             this.cmbCode = new System.Windows.Forms.ComboBox();
@@ -190,6 +182,14 @@
             this.cmbDieuChinhXuat = new System.Windows.Forms.ComboBox();
             this.btnDieuChinhXuat = new System.Windows.Forms.Button();
             this.btnXemGhiChu = new System.Windows.Forms.Button();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.lbTo = new System.Windows.Forms.Label();
+            this.cmbNam = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbKy = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbDot = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -203,16 +203,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbKy1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbKy0)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lbTo
-            // 
-            this.lbTo.AutoSize = true;
-            this.lbTo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTo.Location = new System.Drawing.Point(9, 2);
-            this.lbTo.Name = "lbTo";
-            this.lbTo.Size = new System.Drawing.Size(32, 19);
-            this.lbTo.TabIndex = 43;
-            this.lbTo.Text = "Tổ:";
             // 
             // cmbMay
             // 
@@ -231,117 +221,6 @@
             this.label5.Size = new System.Drawing.Size(27, 13);
             this.label5.TabIndex = 41;
             this.label5.Text = "Máy";
-            // 
-            // cmbTo
-            // 
-            this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Items.AddRange(new object[] {
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12"});
-            this.cmbTo.Location = new System.Drawing.Point(47, 2);
-            this.cmbTo.Name = "cmbTo";
-            this.cmbTo.Size = new System.Drawing.Size(100, 21);
-            this.cmbTo.TabIndex = 40;
-            this.cmbTo.Visible = false;
-            this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
-            // 
-            // cmbDot
-            // 
-            this.cmbDot.FormattingEnabled = true;
-            this.cmbDot.Items.AddRange(new object[] {
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
-            this.cmbDot.Location = new System.Drawing.Point(348, 2);
-            this.cmbDot.Name = "cmbDot";
-            this.cmbDot.Size = new System.Drawing.Size(39, 21);
-            this.cmbDot.TabIndex = 49;
-            this.cmbDot.SelectedIndexChanged += new System.EventHandler(this.cmbDot_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(318, 5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 13);
-            this.label4.TabIndex = 48;
-            this.label4.Text = "Đợt";
-            // 
-            // cmbKy
-            // 
-            this.cmbKy.FormattingEnabled = true;
-            this.cmbKy.Items.AddRange(new object[] {
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12"});
-            this.cmbKy.Location = new System.Drawing.Point(275, 2);
-            this.cmbKy.Name = "cmbKy";
-            this.cmbKy.Size = new System.Drawing.Size(37, 21);
-            this.cmbKy.TabIndex = 47;
-            this.cmbKy.SelectedIndexChanged += new System.EventHandler(this.cmbKy_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(153, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "Năm ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(247, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(22, 13);
-            this.label3.TabIndex = 46;
-            this.label3.Text = "Kỳ ";
-            // 
-            // cmbNam
-            // 
-            this.cmbNam.FormattingEnabled = true;
-            this.cmbNam.Location = new System.Drawing.Point(191, 2);
-            this.cmbNam.Name = "cmbNam";
-            this.cmbNam.Size = new System.Drawing.Size(50, 21);
-            this.cmbNam.TabIndex = 45;
-            this.cmbNam.SelectedIndexChanged += new System.EventHandler(this.cmbNam_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -1618,6 +1497,127 @@
             this.btnXemGhiChu.UseVisualStyleBackColor = true;
             this.btnXemGhiChu.Click += new System.EventHandler(this.btnXemGhiChu_Click);
             // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Items.AddRange(new object[] {
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12"});
+            this.cmbTo.Location = new System.Drawing.Point(47, 2);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(100, 21);
+            this.cmbTo.TabIndex = 40;
+            this.cmbTo.Visible = false;
+            this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
+            // 
+            // lbTo
+            // 
+            this.lbTo.AutoSize = true;
+            this.lbTo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTo.Location = new System.Drawing.Point(9, 2);
+            this.lbTo.Name = "lbTo";
+            this.lbTo.Size = new System.Drawing.Size(32, 19);
+            this.lbTo.TabIndex = 43;
+            this.lbTo.Text = "Tổ:";
+            // 
+            // cmbNam
+            // 
+            this.cmbNam.FormattingEnabled = true;
+            this.cmbNam.Location = new System.Drawing.Point(191, 2);
+            this.cmbNam.Name = "cmbNam";
+            this.cmbNam.Size = new System.Drawing.Size(50, 21);
+            this.cmbNam.TabIndex = 45;
+            this.cmbNam.SelectedIndexChanged += new System.EventHandler(this.cmbNam_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(247, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(22, 13);
+            this.label3.TabIndex = 46;
+            this.label3.Text = "Kỳ ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(153, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Năm ";
+            // 
+            // cmbKy
+            // 
+            this.cmbKy.FormattingEnabled = true;
+            this.cmbKy.Items.AddRange(new object[] {
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12"});
+            this.cmbKy.Location = new System.Drawing.Point(275, 2);
+            this.cmbKy.Name = "cmbKy";
+            this.cmbKy.Size = new System.Drawing.Size(37, 21);
+            this.cmbKy.TabIndex = 47;
+            this.cmbKy.SelectedIndexChanged += new System.EventHandler(this.cmbKy_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(318, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.TabIndex = 48;
+            this.label4.Text = "Đợt";
+            // 
+            // cmbDot
+            // 
+            this.cmbDot.FormattingEnabled = true;
+            this.cmbDot.Items.AddRange(new object[] {
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cmbDot.Location = new System.Drawing.Point(348, 2);
+            this.cmbDot.Name = "cmbDot";
+            this.cmbDot.Size = new System.Drawing.Size(39, 21);
+            this.cmbDot.TabIndex = 49;
+            this.cmbDot.SelectedIndexChanged += new System.EventHandler(this.cmbDot_SelectedIndexChanged);
+            // 
             // frmXuLySoLieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1706,16 +1706,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbTo;
         private System.Windows.Forms.ComboBox cmbMay;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cmbTo;
-        private System.Windows.Forms.ComboBox cmbDot;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cmbKy;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbNam;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDanhBoTK;
         private System.Windows.Forms.ComboBox cmbCode;
@@ -1848,5 +1840,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
         private System.Windows.Forms.DataGridViewCheckBoxColumn BaoThayDK;
         private System.Windows.Forms.DataGridViewCheckBoxColumn BaoThayBT;
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label lbTo;
+        private System.Windows.Forms.ComboBox cmbNam;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbKy;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbDot;
     }
 }

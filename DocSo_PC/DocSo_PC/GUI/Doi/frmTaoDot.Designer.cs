@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
@@ -49,6 +49,7 @@
             this.CreateDateBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDateTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaoDot = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.KiemTra = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Chot = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -68,7 +69,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(3, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(673, 546);
+            this.groupBox1.Size = new System.Drawing.Size(712, 546);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
@@ -84,14 +85,14 @@
             // 
             this.dgvDanhSach.AllowUserToAddRows = false;
             this.dgvDanhSach.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDanhSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDanhSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Dot,
@@ -101,6 +102,7 @@
             this.CreateDateBD,
             this.CreateDateTD,
             this.TaoDot,
+            this.KiemTra,
             this.Nam,
             this.Ky,
             this.Chot,
@@ -108,9 +110,9 @@
             this.dgvDanhSach.Location = new System.Drawing.Point(9, 54);
             this.dgvDanhSach.MultiSelect = false;
             this.dgvDanhSach.Name = "dgvDanhSach";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDanhSach.Size = new System.Drawing.Size(656, 485);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvDanhSach.Size = new System.Drawing.Size(695, 485);
             this.dgvDanhSach.TabIndex = 5;
             this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
             this.dgvDanhSach.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellValueChanged);
@@ -257,6 +259,14 @@
             this.TaoDot.UseColumnTextForButtonValue = true;
             this.TaoDot.Width = 70;
             // 
+            // KiemTra
+            // 
+            this.KiemTra.HeaderText = "Chỉ Số Nền";
+            this.KiemTra.Name = "KiemTra";
+            this.KiemTra.Text = "Kiểm Tra";
+            this.KiemTra.UseColumnTextForButtonValue = true;
+            this.KiemTra.Width = 70;
+            // 
             // Nam
             // 
             this.Nam.DataPropertyName = "Nam";
@@ -293,7 +303,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 607);
+            this.ClientSize = new System.Drawing.Size(792, 607);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnChonFile);
@@ -332,6 +342,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDateBD;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDateTD;
         private System.Windows.Forms.DataGridViewButtonColumn TaoDot;
+        private System.Windows.Forms.DataGridViewButtonColumn KiemTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Chot;

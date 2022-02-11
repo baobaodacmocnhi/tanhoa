@@ -1,12 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
-    <PublishUrlHistory>C:\Users\BaoBao\Desktop\DocSo_PC\|C:\Users\BaoBao\Desktop\DocSoWFH\|\\192.168.90.9\BaoBao%24\DocSo_PC\|\\HP_G7\dhn%24\QUAN LY DONG HO NUOC\DOC SO 2017\|\\192.168.90.9\cntt\BaoBao\DocSo_PC\</PublishUrlHistory>
+    <PublishUrlHistory>C:\Users\BaoBao\Desktop\DocSo_PC\|C:\Users\BaoBao\Desktop\DocSoWFH\|\\192.168.90.9\BaoBao%24\DocSo_PC\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
-    <UpdateUrlHistory>http://113.161.88.180:81/DocSoWFH/|\\192.168.90.9\BaoBao%24\DocSo_PC\|\\HP_G7\dhn%24\QUAN LY DONG HO NUOC\DOC SO 2017\|\\192.168.90.9\cntt\BaoBao\DocSo_PC\</UpdateUrlHistory>
-    <BootstrapperUrlHistory>\\HP_G7\dhn%24\QUAN LY DONG HO NUOC\DOC SO 2017|\\192.168.90.9\BaoBao%24\DocSo_PC\|\\192.168.90.9\cntt\BaoBao\DocSo_PC\</BootstrapperUrlHistory>
+    <UpdateUrlHistory>http://113.161.88.180:81/DocSoWFH/|\\192.168.90.9\BaoBao%24\DocSo_PC\|\\192.168.90.9\cntt\BaoBao\DocSo_PC\</UpdateUrlHistory>
+    <BootstrapperUrlHistory>\\192.168.90.9\BaoBao%24\DocSo_PC\|\\192.168.90.9\cntt\BaoBao\DocSo_PC\</BootstrapperUrlHistory>
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>

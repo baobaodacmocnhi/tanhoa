@@ -84,10 +84,11 @@ namespace DocSo_PC.wrDHN {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/insertBilling", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool insertBilling(string DocSoID, string checksum) {
+        public bool insertBilling(string DocSoID, string checksum, out string message) {
             object[] results = this.Invoke("insertBilling", new object[] {
                         DocSoID,
                         checksum});
+            message = ((string)(results[1]));
             return ((bool)(results[0]));
         }
         
@@ -229,6 +230,14 @@ namespace DocSo_PC.wrDHN {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string message {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
             }
         }
     }

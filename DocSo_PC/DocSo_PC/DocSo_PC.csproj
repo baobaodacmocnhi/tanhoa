@@ -15,9 +15,9 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\BaoBao\Desktop\DocSo_PC\</PublishUrl>
+    <PublishUrl>\\192.168.90.9\BaoBao%24\DocSo_PC\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
+    <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -30,7 +30,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>45</ApplicationRevision>
+    <ApplicationRevision>49</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -115,6 +115,12 @@
     </Compile>
     <Compile Include="GUI\Doi\frmChuyenBilling.Designer.cs">
       <DependentUpon>frmChuyenBilling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmTaoDotKiemTra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmTaoDotKiemTra.Designer.cs">
+      <DependentUpon>frmTaoDotKiemTra.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanTri\frmNhanVienDocSo.cs">
       <SubType>Form</SubType>
@@ -226,6 +232,12 @@
     <Compile Include="GUI\QuanTri\frmTo.Designer.cs">
       <DependentUpon>frmTo.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToTruong\frmTheoDoiDocSo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmTheoDoiDocSo.Designer.cs">
+      <DependentUpon>frmTheoDoiDocSo.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToTruong\frmXemGhiChu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,12 +255,6 @@
     </Compile>
     <Compile Include="GUI\ToTruong\frmGiaoTangCuong.Designer.cs">
       <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\ToTruong\frmTheoDoiDot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\ToTruong\frmTheoDoiDot.Designer.cs">
-      <DependentUpon>frmTheoDoiDot.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToTruong\frmXuLySoLieu.cs">
       <SubType>Form</SubType>
@@ -315,6 +321,9 @@
     <EmbeddedResource Include="GUI\Doi\frmChuyenBilling.resx">
       <DependentUpon>frmChuyenBilling.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmTaoDotKiemTra.resx">
+      <DependentUpon>frmTaoDotKiemTra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanTri\frmNhanVienDocSo.resx">
       <DependentUpon>frmNhanVienDocSo.cs</DependentUpon>
     </EmbeddedResource>
@@ -339,6 +348,9 @@
     <EmbeddedResource Include="GUI\Doi\frmLichDocSo.resx">
       <DependentUpon>frmLichDocSo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmTheoDoiDocSo.resx">
+      <DependentUpon>frmTheoDoiDocSo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmXemGhiChu.resx">
       <DependentUpon>frmXemGhiChu.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,9 +359,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmGiaoTangCuong.resx">
       <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToTruong\frmTheoDoiDot.resx">
-      <DependentUpon>frmTheoDoiDot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmXuLySoLieu.resx">
       <DependentUpon>frmXuLySoLieu.cs</DependentUpon>
