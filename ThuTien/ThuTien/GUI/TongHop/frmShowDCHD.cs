@@ -239,10 +239,13 @@ namespace ThuTien.GUI.TongHop
             {
                 if (CNguoiDung.CheckQuyen("mnuDCHD", "Sua"))
                 {
-                    if (_cHoaDon.CheckDangNganBySoHoaDon(_SoHoaDon))
+                    if (CNguoiDung.Doi == false)
                     {
-                        MessageBox.Show("Hóa đơn đã đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        if (_cHoaDon.CheckDangNganBySoHoaDon(_SoHoaDon))
+                        {
+                            MessageBox.Show("Hóa đơn đã đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
                     if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(_SoHoaDon))
                     {
@@ -654,6 +657,11 @@ namespace ThuTien.GUI.TongHop
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
+        }
+
+        private void lbTangGiam_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

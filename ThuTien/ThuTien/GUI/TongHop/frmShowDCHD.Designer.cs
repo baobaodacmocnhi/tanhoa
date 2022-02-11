@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtPhiBVMT_Thue_End = new System.Windows.Forms.TextBox();
+            this.txtPhiBVMT_Thue_Start = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtPhiBVMT_Thue_BD = new System.Windows.Forms.TextBox();
             this.chkChuanThu1 = new System.Windows.Forms.CheckBox();
             this.txtSoHoaDonMoi = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -95,10 +99,6 @@
             this.txtHoTen_End = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtPhiBVMT_Thue_End = new System.Windows.Forms.TextBox();
-            this.txtPhiBVMT_Thue_Start = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtPhiBVMT_Thue_BD = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -144,6 +144,44 @@
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết Quả Điều Chỉnh Số Tiền";
+            // 
+            // txtPhiBVMT_Thue_End
+            // 
+            this.txtPhiBVMT_Thue_End.Location = new System.Drawing.Point(404, 117);
+            this.txtPhiBVMT_Thue_End.Name = "txtPhiBVMT_Thue_End";
+            this.txtPhiBVMT_Thue_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPhiBVMT_Thue_End.Size = new System.Drawing.Size(93, 20);
+            this.txtPhiBVMT_Thue_End.TabIndex = 34;
+            this.txtPhiBVMT_Thue_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtPhiBVMT_Thue_Start
+            // 
+            this.txtPhiBVMT_Thue_Start.Location = new System.Drawing.Point(404, 65);
+            this.txtPhiBVMT_Thue_Start.Name = "txtPhiBVMT_Thue_Start";
+            this.txtPhiBVMT_Thue_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPhiBVMT_Thue_Start.Size = new System.Drawing.Size(93, 20);
+            this.txtPhiBVMT_Thue_Start.TabIndex = 32;
+            this.txtPhiBVMT_Thue_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label20.Location = new System.Drawing.Point(404, 43);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(93, 15);
+            this.label20.TabIndex = 31;
+            this.label20.Text = "Phí BVMT (Thuế)";
+            // 
+            // txtPhiBVMT_Thue_BD
+            // 
+            this.txtPhiBVMT_Thue_BD.ForeColor = System.Drawing.Color.Red;
+            this.txtPhiBVMT_Thue_BD.Location = new System.Drawing.Point(404, 91);
+            this.txtPhiBVMT_Thue_BD.Name = "txtPhiBVMT_Thue_BD";
+            this.txtPhiBVMT_Thue_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPhiBVMT_Thue_BD.Size = new System.Drawing.Size(93, 20);
+            this.txtPhiBVMT_Thue_BD.TabIndex = 33;
+            this.txtPhiBVMT_Thue_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // chkChuanThu1
             // 
@@ -366,10 +404,11 @@
             // 
             this.lbTangGiam.AutoSize = true;
             this.lbTangGiam.ForeColor = System.Drawing.Color.Red;
-            this.lbTangGiam.Location = new System.Drawing.Point(13, 85);
+            this.lbTangGiam.Location = new System.Drawing.Point(10, 94);
             this.lbTangGiam.Name = "lbTangGiam";
             this.lbTangGiam.Size = new System.Drawing.Size(0, 13);
             this.lbTangGiam.TabIndex = 11;
+            this.lbTangGiam.Click += new System.EventHandler(this.lbTangGiam_Click);
             // 
             // txtTienNuoc_BD
             // 
@@ -759,44 +798,6 @@
             this.label10.Size = new System.Drawing.Size(50, 13);
             this.label10.TabIndex = 19;
             this.label10.Text = "Phải Trả:";
-            // 
-            // txtPhiBVMT_Thue_End
-            // 
-            this.txtPhiBVMT_Thue_End.Location = new System.Drawing.Point(404, 117);
-            this.txtPhiBVMT_Thue_End.Name = "txtPhiBVMT_Thue_End";
-            this.txtPhiBVMT_Thue_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtPhiBVMT_Thue_End.Size = new System.Drawing.Size(93, 20);
-            this.txtPhiBVMT_Thue_End.TabIndex = 34;
-            this.txtPhiBVMT_Thue_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtPhiBVMT_Thue_Start
-            // 
-            this.txtPhiBVMT_Thue_Start.Location = new System.Drawing.Point(404, 65);
-            this.txtPhiBVMT_Thue_Start.Name = "txtPhiBVMT_Thue_Start";
-            this.txtPhiBVMT_Thue_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtPhiBVMT_Thue_Start.Size = new System.Drawing.Size(93, 20);
-            this.txtPhiBVMT_Thue_Start.TabIndex = 32;
-            this.txtPhiBVMT_Thue_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label20.Location = new System.Drawing.Point(404, 43);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(93, 15);
-            this.label20.TabIndex = 31;
-            this.label20.Text = "Phí BVMT (Thuế)";
-            // 
-            // txtPhiBVMT_Thue_BD
-            // 
-            this.txtPhiBVMT_Thue_BD.ForeColor = System.Drawing.Color.Red;
-            this.txtPhiBVMT_Thue_BD.Location = new System.Drawing.Point(404, 91);
-            this.txtPhiBVMT_Thue_BD.Name = "txtPhiBVMT_Thue_BD";
-            this.txtPhiBVMT_Thue_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtPhiBVMT_Thue_BD.Size = new System.Drawing.Size(93, 20);
-            this.txtPhiBVMT_Thue_BD.TabIndex = 33;
-            this.txtPhiBVMT_Thue_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox6
             // 

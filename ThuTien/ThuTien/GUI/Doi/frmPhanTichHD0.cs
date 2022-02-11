@@ -190,6 +190,62 @@ namespace ThuTien.GUI.Doi
             txtKy12_2.Text = Ky12.ToString();
         }
 
+        public void CountdgvDanhBoDK3()
+        {
+            int Ky1 = 0;
+            int Ky2 = 0;
+            int Ky3 = 0;
+            int Ky4 = 0;
+            int Ky5 = 0;
+            int Ky6 = 0;
+            int Ky7 = 0;
+            int Ky8 = 0;
+            int Ky9 = 0;
+            int Ky10 = 0;
+            int Ky11 = 0;
+            int Ky12 = 0;
+            foreach (DataGridViewRow item in dgvDangKy3.Rows)
+            {
+                if (item.Cells["NgayGiaiTrach1"] != null && item.Cells["NgayGiaiTrach1"].Value.ToString() != "" )
+                    Ky1++;
+                if (item.Cells["NgayGiaiTrach2"] != null && item.Cells["NgayGiaiTrach2"].Value.ToString() != "")
+                    Ky2++;
+                if (item.Cells["NgayGiaiTrach3"] != null && item.Cells["NgayGiaiTrach3"].Value.ToString() != "")
+                    Ky3++;
+                if (item.Cells["NgayGiaiTrach4"] != null && item.Cells["NgayGiaiTrach4"].Value.ToString() != "")
+                    Ky4++;
+                if (item.Cells["NgayGiaiTrach5"] != null && item.Cells["NgayGiaiTrach5"].Value.ToString() != "")
+                    Ky5++;
+                if (item.Cells["NgayGiaiTrach6"] != null && item.Cells["NgayGiaiTrach6"].Value.ToString() != "")
+                    Ky6++;
+                if (item.Cells["NgayGiaiTrach7"] != null && item.Cells["NgayGiaiTrach7"].Value.ToString() != "")
+                    Ky7++;
+                if (item.Cells["NgayGiaiTrach8"] != null && item.Cells["NgayGiaiTrach8"].Value.ToString() != "")
+                    Ky8++;
+                if (item.Cells["NgayGiaiTrach9"] != null && item.Cells["NgayGiaiTrach9"].Value.ToString() != "")
+                    Ky9++;
+                if (item.Cells["NgayGiaiTrach10"] != null && item.Cells["NgayGiaiTrach10"].Value.ToString() != "")
+                    Ky10++;
+                if (item.Cells["NgayGiaiTrach11"] != null && item.Cells["NgayGiaiTrach11"].Value.ToString() != "")
+                    Ky11++;
+                if (item.Cells["NgayGiaiTrach12"] != null && item.Cells["NgayGiaiTrach12"].Value.ToString() != "")
+                    Ky12++;
+            }
+            txtTong3.Text = dgvDangKy3.Rows.Count.ToString();
+            txtKy1_3.Text = Ky1.ToString();
+            txtKy2_3.Text = Ky2.ToString();
+            txtKy3_3.Text = Ky3.ToString();
+            txtKy4_3.Text = Ky4.ToString();
+            txtKy5_3.Text = Ky5.ToString();
+            txtKy6_3.Text = Ky6.ToString();
+            txtKy7_3.Text = Ky7.ToString();
+            txtKy8_3.Text = Ky8.ToString();
+            txtKy9_3.Text = Ky9.ToString();
+            txtKy10_3.Text = Ky10.ToString();
+            txtKy11_3.Text = Ky11.ToString();
+            txtKy12_3.Text = Ky12.ToString();
+        }
+
         private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbTo.SelectedIndex > 0)
@@ -1093,6 +1149,15 @@ namespace ThuTien.GUI.Doi
             foreach (DataGridViewRow item in dgvDangKy3.Rows)
             {
                 item.Cells["Ky1_DK3"].Value = item.Cells["Ky1_DK3"].Value.ToString().Replace("\r\n", Environment.NewLine);
+            }
+            CountdgvDanhBoDK3();
+        }
+
+        private void dgvDangKy3_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDangKy3.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
     }
