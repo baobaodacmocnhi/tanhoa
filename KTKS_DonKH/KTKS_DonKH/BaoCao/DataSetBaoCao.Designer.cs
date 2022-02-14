@@ -4500,6 +4500,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnPhiBVMTStart;
             
+            private global::System.Data.DataColumn columnPhiBVMT_ThueStart;
+            
             private global::System.Data.DataColumn columnTongCongStart;
             
             private global::System.Data.DataColumn columnTangGiam;
@@ -4512,6 +4514,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnPhiBVMTBD;
             
+            private global::System.Data.DataColumn columnPhiBVMT_ThueBD;
+            
             private global::System.Data.DataColumn columnTongCongBD;
             
             private global::System.Data.DataColumn columnTieuThuEnd;
@@ -4521,6 +4525,8 @@ namespace KTKS_DonKH.BaoCao {
             private global::System.Data.DataColumn columnThueGTGTEnd;
             
             private global::System.Data.DataColumn columnPhiBVMTEnd;
+            
+            private global::System.Data.DataColumn columnPhiBVMT_ThueEnd;
             
             private global::System.Data.DataColumn columnTongCongEnd;
             
@@ -4733,6 +4739,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PhiBVMT_ThueStartColumn {
+                get {
+                    return this.columnPhiBVMT_ThueStart;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn TongCongStartColumn {
                 get {
                     return this.columnTongCongStart;
@@ -4781,6 +4795,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PhiBVMT_ThueBDColumn {
+                get {
+                    return this.columnPhiBVMT_ThueBD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn TongCongBDColumn {
                 get {
                     return this.columnTongCongBD;
@@ -4816,6 +4838,14 @@ namespace KTKS_DonKH.BaoCao {
             public global::System.Data.DataColumn PhiBVMTEndColumn {
                 get {
                     return this.columnPhiBVMTEnd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PhiBVMT_ThueEndColumn {
+                get {
+                    return this.columnPhiBVMT_ThueEnd;
                 }
             }
             
@@ -5065,17 +5095,20 @@ namespace KTKS_DonKH.BaoCao {
                         string TienNuocStart, 
                         string ThueGTGTStart, 
                         string PhiBVMTStart, 
+                        string PhiBVMT_ThueStart, 
                         string TongCongStart, 
                         string TangGiam, 
                         string TieuThuBD, 
                         string TienNuocBD, 
                         string ThueGTGTBD, 
                         string PhiBVMTBD, 
+                        string PhiBVMT_ThueBD, 
                         string TongCongBD, 
                         string TieuThuEnd, 
                         string TienNuocEnd, 
                         string ThueGTGTEnd, 
                         string PhiBVMTEnd, 
+                        string PhiBVMT_ThueEnd, 
                         string TongCongEnd, 
                         string ChucVu, 
                         string NguoiKy, 
@@ -5118,17 +5151,20 @@ namespace KTKS_DonKH.BaoCao {
                         TienNuocStart,
                         ThueGTGTStart,
                         PhiBVMTStart,
+                        PhiBVMT_ThueStart,
                         TongCongStart,
                         TangGiam,
                         TieuThuBD,
                         TienNuocBD,
                         ThueGTGTBD,
                         PhiBVMTBD,
+                        PhiBVMT_ThueBD,
                         TongCongBD,
                         TieuThuEnd,
                         TienNuocEnd,
                         ThueGTGTEnd,
                         PhiBVMTEnd,
+                        PhiBVMT_ThueEnd,
                         TongCongEnd,
                         ChucVu,
                         NguoiKy,
@@ -5191,17 +5227,20 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnTienNuocStart = base.Columns["TienNuocStart"];
                 this.columnThueGTGTStart = base.Columns["ThueGTGTStart"];
                 this.columnPhiBVMTStart = base.Columns["PhiBVMTStart"];
+                this.columnPhiBVMT_ThueStart = base.Columns["PhiBVMT_ThueStart"];
                 this.columnTongCongStart = base.Columns["TongCongStart"];
                 this.columnTangGiam = base.Columns["TangGiam"];
                 this.columnTieuThuBD = base.Columns["TieuThuBD"];
                 this.columnTienNuocBD = base.Columns["TienNuocBD"];
                 this.columnThueGTGTBD = base.Columns["ThueGTGTBD"];
                 this.columnPhiBVMTBD = base.Columns["PhiBVMTBD"];
+                this.columnPhiBVMT_ThueBD = base.Columns["PhiBVMT_ThueBD"];
                 this.columnTongCongBD = base.Columns["TongCongBD"];
                 this.columnTieuThuEnd = base.Columns["TieuThuEnd"];
                 this.columnTienNuocEnd = base.Columns["TienNuocEnd"];
                 this.columnThueGTGTEnd = base.Columns["ThueGTGTEnd"];
                 this.columnPhiBVMTEnd = base.Columns["PhiBVMTEnd"];
+                this.columnPhiBVMT_ThueEnd = base.Columns["PhiBVMT_ThueEnd"];
                 this.columnTongCongEnd = base.Columns["TongCongEnd"];
                 this.columnChucVu = base.Columns["ChucVu"];
                 this.columnNguoiKy = base.Columns["NguoiKy"];
@@ -5263,6 +5302,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnThueGTGTStart);
                 this.columnPhiBVMTStart = new global::System.Data.DataColumn("PhiBVMTStart", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhiBVMTStart);
+                this.columnPhiBVMT_ThueStart = new global::System.Data.DataColumn("PhiBVMT_ThueStart", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhiBVMT_ThueStart);
                 this.columnTongCongStart = new global::System.Data.DataColumn("TongCongStart", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongCongStart);
                 this.columnTangGiam = new global::System.Data.DataColumn("TangGiam", typeof(string), null, global::System.Data.MappingType.Element);
@@ -5275,6 +5316,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnThueGTGTBD);
                 this.columnPhiBVMTBD = new global::System.Data.DataColumn("PhiBVMTBD", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhiBVMTBD);
+                this.columnPhiBVMT_ThueBD = new global::System.Data.DataColumn("PhiBVMT_ThueBD", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhiBVMT_ThueBD);
                 this.columnTongCongBD = new global::System.Data.DataColumn("TongCongBD", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongCongBD);
                 this.columnTieuThuEnd = new global::System.Data.DataColumn("TieuThuEnd", typeof(string), null, global::System.Data.MappingType.Element);
@@ -5285,6 +5328,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnThueGTGTEnd);
                 this.columnPhiBVMTEnd = new global::System.Data.DataColumn("PhiBVMTEnd", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhiBVMTEnd);
+                this.columnPhiBVMT_ThueEnd = new global::System.Data.DataColumn("PhiBVMT_ThueEnd", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhiBVMT_ThueEnd);
                 this.columnTongCongEnd = new global::System.Data.DataColumn("TongCongEnd", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongCongEnd);
                 this.columnChucVu = new global::System.Data.DataColumn("ChucVu", typeof(string), null, global::System.Data.MappingType.Element);
@@ -24249,6 +24294,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PhiBVMT_ThueStart {
+                get {
+                    try {
+                        return ((string)(this[this.tableDCHD.PhiBVMT_ThueStartColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PhiBVMT_ThueStart\' in table \'DCHD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDCHD.PhiBVMT_ThueStartColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string TongCongStart {
                 get {
                     try {
@@ -24345,6 +24406,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PhiBVMT_ThueBD {
+                get {
+                    try {
+                        return ((string)(this[this.tableDCHD.PhiBVMT_ThueBDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PhiBVMT_ThueBD\' in table \'DCHD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDCHD.PhiBVMT_ThueBDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string TongCongBD {
                 get {
                     try {
@@ -24420,6 +24497,22 @@ namespace KTKS_DonKH.BaoCao {
                 }
                 set {
                     this[this.tableDCHD.PhiBVMTEndColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PhiBVMT_ThueEnd {
+                get {
+                    try {
+                        return ((string)(this[this.tableDCHD.PhiBVMT_ThueEndColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PhiBVMT_ThueEnd\' in table \'DCHD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDCHD.PhiBVMT_ThueEndColumn] = value;
                 }
             }
             
@@ -25001,6 +25094,18 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPhiBVMT_ThueStartNull() {
+                return this.IsNull(this.tableDCHD.PhiBVMT_ThueStartColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPhiBVMT_ThueStartNull() {
+                this[this.tableDCHD.PhiBVMT_ThueStartColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTongCongStartNull() {
                 return this.IsNull(this.tableDCHD.TongCongStartColumn);
             }
@@ -25073,6 +25178,18 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPhiBVMT_ThueBDNull() {
+                return this.IsNull(this.tableDCHD.PhiBVMT_ThueBDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPhiBVMT_ThueBDNull() {
+                this[this.tableDCHD.PhiBVMT_ThueBDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTongCongBDNull() {
                 return this.IsNull(this.tableDCHD.TongCongBDColumn);
             }
@@ -25129,6 +25246,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPhiBVMTEndNull() {
                 this[this.tableDCHD.PhiBVMTEndColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPhiBVMT_ThueEndNull() {
+                return this.IsNull(this.tableDCHD.PhiBVMT_ThueEndColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPhiBVMT_ThueEndNull() {
+                this[this.tableDCHD.PhiBVMT_ThueEndColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

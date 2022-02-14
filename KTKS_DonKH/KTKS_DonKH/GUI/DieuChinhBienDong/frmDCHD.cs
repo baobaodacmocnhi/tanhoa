@@ -1504,6 +1504,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["PhiBVMTStart"] = 0;
                     else
                         dr["PhiBVMTStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Start.Value);
+                    if (_ctdchd.PhiBVMT_Thue_Start.Value == 0)
+                        dr["PhiBVMT_ThueStart"] = 0;
+                    else
+                        dr["PhiBVMT_ThueStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Thue_Start.Value);
                     if (_ctdchd.TongCong_Start.Value == 0)
                         dr["TongCongStart"] = 0;
                     else
@@ -1531,6 +1535,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["PhiBVMTBD"] = 0;
                     else
                         dr["PhiBVMTBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_BD.Value);
+                    if (_ctdchd.PhiBVMT_Thue_BD.Value == 0)
+                        dr["PhiBVMT_ThueBD"] = 0;
+                    else
+                        dr["PhiBVMT_ThueBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Thue_BD.Value);
                     if (_ctdchd.TongCong_BD.Value == 0)
                         dr["TongCongBD"] = 0;
                     else
@@ -1549,6 +1557,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["PhiBVMTEnd"] = 0;
                     else
                         dr["PhiBVMTEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_End.Value);
+                    if (_ctdchd.PhiBVMT_Thue_End.Value == 0)
+                        dr["PhiBVMT_ThueEnd"] = 0;
+                    else
+                        dr["PhiBVMT_ThueEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Thue_End.Value);
                     if (_ctdchd.TongCong_End.Value == 0)
                         dr["TongCongEnd"] = 0;
                     else
@@ -1666,6 +1678,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["PhiBVMTStart"] = 0;
                     else
                         dr["PhiBVMTStart"] = txtPhiBVMT_Start.Text.Trim();
+                    if (txtPhiBVMT_Thue_Start.Text.Trim() == "0")
+                        dr["PhiBVMT_ThueStart"] = 0;
+                    else
+                        dr["PhiBVMT_ThueStart"] = txtPhiBVMT_Thue_Start.Text.Trim();
                     if (txtTongCong_Start.Text.Trim() == "0")
                         dr["TongCongStart"] = 0;
                     else
@@ -1692,6 +1708,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["PhiBVMTBD"] = 0;
                     else
                         dr["PhiBVMTBD"] = txtPhiBVMT_BD.Text.Trim();
+                    if (txtPhiBVMT_Thue_BD.Text.Trim() == "0")
+                        dr["PhiBVMT_ThueBD"] = 0;
+                    else
+                        dr["PhiBVMT_ThueBD"] = txtPhiBVMT_Thue_BD.Text.Trim();
                     if (txtTongCong_BD.Text.Trim() == "0")
                         dr["TongCongBD"] = 0;
                     else
@@ -1710,6 +1730,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["PhiBVMTEnd"] = 0;
                     else
                         dr["PhiBVMTEnd"] = txtPhiBVMT_End.Text.Trim();
+                    if (txtPhiBVMT_Thue_End.Text.Trim() == "0")
+                        dr["PhiBVMT_ThueEnd"] = 0;
+                    else
+                        dr["PhiBVMT_ThueEnd"] = txtPhiBVMT_Thue_End.Text.Trim();
                     if (txtTongCong_End.Text.Trim() == "0")
                         dr["TongCongEnd"] = 0;
                     else
