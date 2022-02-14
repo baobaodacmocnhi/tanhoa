@@ -12049,22 +12049,46 @@ namespace DocSo_PC.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _ID;
+		private int _Nam;
 		
-		private System.Nullable<System.DateTime> _UpdateTime;
+		private string _Ky;
 		
-		private string _UserName;
+		private string _Dot;
+		
+		private string _May;
+		
+		private System.Nullable<System.DateTime> _NgayDoc;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIDChanging(string value);
-    partial void OnIDChanged();
-    partial void OnUpdateTimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnUpdateTimeChanged();
-    partial void OnUserNameChanging(string value);
-    partial void OnUserNameChanged();
+    partial void OnNamChanging(int value);
+    partial void OnNamChanged();
+    partial void OnKyChanging(string value);
+    partial void OnKyChanged();
+    partial void OnDotChanging(string value);
+    partial void OnDotChanged();
+    partial void OnMayChanging(string value);
+    partial void OnMayChanged();
+    partial void OnNgayDocChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayDocChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
     #endregion
 		
 		public DocSoTruoc()
@@ -12072,62 +12096,182 @@ namespace DocSo_PC.LinQ
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="NChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nam", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Nam
 		{
 			get
 			{
-				return this._ID;
+				return this._Nam;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((this._Nam != value))
 				{
-					this.OnIDChanging(value);
+					this.OnNamChanging(value);
 					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					this._Nam = value;
+					this.SendPropertyChanged("Nam");
+					this.OnNamChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> UpdateTime
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ky", DbType="NChar(2) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Ky
 		{
 			get
 			{
-				return this._UpdateTime;
+				return this._Ky;
 			}
 			set
 			{
-				if ((this._UpdateTime != value))
+				if ((this._Ky != value))
 				{
-					this.OnUpdateTimeChanging(value);
+					this.OnKyChanging(value);
 					this.SendPropertyChanging();
-					this._UpdateTime = value;
-					this.SendPropertyChanged("UpdateTime");
-					this.OnUpdateTimeChanged();
+					this._Ky = value;
+					this.SendPropertyChanged("Ky");
+					this.OnKyChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(20)")]
-		public string UserName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dot", DbType="NChar(2) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Dot
 		{
 			get
 			{
-				return this._UserName;
+				return this._Dot;
 			}
 			set
 			{
-				if ((this._UserName != value))
+				if ((this._Dot != value))
 				{
-					this.OnUserNameChanging(value);
+					this.OnDotChanging(value);
 					this.SendPropertyChanging();
-					this._UserName = value;
-					this.SendPropertyChanged("UserName");
-					this.OnUserNameChanged();
+					this._Dot = value;
+					this.SendPropertyChanged("Dot");
+					this.OnDotChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_May", DbType="NChar(2) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string May
+		{
+			get
+			{
+				return this._May;
+			}
+			set
+			{
+				if ((this._May != value))
+				{
+					this.OnMayChanging(value);
+					this.SendPropertyChanging();
+					this._May = value;
+					this.SendPropertyChanged("May");
+					this.OnMayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayDoc", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayDoc
+		{
+			get
+			{
+				return this._NgayDoc;
+			}
+			set
+			{
+				if ((this._NgayDoc != value))
+				{
+					this.OnNgayDocChanging(value);
+					this.SendPropertyChanging();
+					this._NgayDoc = value;
+					this.SendPropertyChanged("NgayDoc");
+					this.OnNgayDocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
 				}
 			}
 		}

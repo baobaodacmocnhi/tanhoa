@@ -36,12 +36,12 @@
             this.DocSoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TieuThuDS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TieuThuHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CSCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CSCuMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThongTin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,17 +63,17 @@
             this.DocSoID,
             this.DanhBo,
             this.TieuThuDS,
-            this.TieuThuHD,
             this.CSCu,
             this.CSCuMoi,
             this.Nam,
             this.Ky,
-            this.Dot});
+            this.Dot,
+            this.ThongTin});
             this.dgvDanhSach.Location = new System.Drawing.Point(12, 31);
             this.dgvDanhSach.Name = "dgvDanhSach";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDanhSach.Size = new System.Drawing.Size(615, 485);
+            this.dgvDanhSach.Size = new System.Drawing.Size(714, 485);
             this.dgvDanhSach.TabIndex = 6;
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
             // 
@@ -113,12 +113,6 @@
             this.TieuThuDS.HeaderText = "Tiêu Thụ ĐS";
             this.TieuThuDS.Name = "TieuThuDS";
             // 
-            // TieuThuHD
-            // 
-            this.TieuThuHD.DataPropertyName = "TieuThuHD";
-            this.TieuThuHD.HeaderText = "Tiêu Thụ HĐ";
-            this.TieuThuHD.Name = "TieuThuHD";
-            // 
             // CSCu
             // 
             this.CSCu.DataPropertyName = "CSCu";
@@ -153,14 +147,22 @@
             this.Dot.Name = "Dot";
             this.Dot.Visible = false;
             // 
+            // ThongTin
+            // 
+            this.ThongTin.DataPropertyName = "ThongTin";
+            this.ThongTin.HeaderText = "Thông Tin";
+            this.ThongTin.Name = "ThongTin";
+            this.ThongTin.Width = 200;
+            // 
             // frmTaoDotKiemTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 548);
+            this.ClientSize = new System.Drawing.Size(738, 525);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.dgvDanhSach);
             this.Name = "frmTaoDotKiemTra";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tạo Đợt Kiểm Tra Chỉ Số Nền";
             this.Load += new System.EventHandler(this.frmTaoDotKiemTra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).EndInit();
@@ -176,11 +178,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DocSoID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn TieuThuDS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThuHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn CSCu;
         private System.Windows.Forms.DataGridViewTextBoxColumn CSCuMoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThongTin;
     }
 }

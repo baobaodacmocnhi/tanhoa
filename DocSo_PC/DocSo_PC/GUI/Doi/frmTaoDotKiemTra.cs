@@ -25,10 +25,10 @@ namespace DocSo_PC.GUI.Doi
         {
             dgvDanhSach.AutoGenerateColumns = false;
             dgvDanhSach.DataSource = _dt;
-            foreach (DataGridViewRow item in dgvDanhSach.Rows)
-            {
-                item.Cells["CSCuMoi"].Value = int.Parse(item.Cells["CSCu"].Value.ToString()) + int.Parse(item.Cells["TieuThuHD"].Value.ToString()) - int.Parse(item.Cells["TieuThuDS"].Value.ToString());
-            }
+            //foreach (DataGridViewRow item in dgvDanhSach.Rows)
+            //{
+            //    item.Cells["CSCuMoi"].Value = int.Parse(item.Cells["CSCu"].Value.ToString()) + int.Parse(item.Cells["TieuThuHD"].Value.ToString()) - int.Parse(item.Cells["TieuThuDS"].Value.ToString());
+            //}
         }
 
         private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

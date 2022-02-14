@@ -30,7 +30,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>49</ApplicationRevision>
+    <ApplicationRevision>50</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -108,6 +108,7 @@
     <Compile Include="DAL\CDocSo12.cs" />
     <Compile Include="DAL\CThuongVu.cs" />
     <Compile Include="DAL\QuanTri\CMayDS.cs" />
+    <Compile Include="DAL\ToTruong\CDocSoTruoc.cs" />
     <Compile Include="DAL\VanThu\CCongVanDen.cs" />
     <Compile Include="DAL\VanThu\ImageUtil.cs" />
     <Compile Include="GUI\Doi\frmChuyenBilling.cs">
@@ -232,6 +233,12 @@
     <Compile Include="GUI\QuanTri\frmTo.Designer.cs">
       <DependentUpon>frmTo.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToTruong\frmDocSoTruoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmDocSoTruoc.Designer.cs">
+      <DependentUpon>frmDocSoTruoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToTruong\frmTheoDoiDocSo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -347,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmLichDocSo.resx">
       <DependentUpon>frmLichDocSo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmDocSoTruoc.resx">
+      <DependentUpon>frmDocSoTruoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmTheoDoiDocSo.resx">
       <DependentUpon>frmTheoDoiDocSo.cs</DependentUpon>

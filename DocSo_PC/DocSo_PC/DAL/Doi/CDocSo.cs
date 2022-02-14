@@ -235,23 +235,26 @@ namespace DocSo_PC.DAL.Doi
 
         public DataTable getTaoDot_KiemTra(string Nam, string Ky, string Dot)
         {
-            string sql = "declare @Nam char(4),@Ky char(2),@Dot char(2),@Nam2 int,@Ky2 int"
-                        + " set @Nam=" + Nam
-                        + " set @Ky=" + Ky
-                        + " set @Dot=" + Dot
-                        + " if(@Ky='01')"
-                        + "     begin"
-                        + " 		set @Nam2=@Nam-1"
-                        + " 		set @Ky2=12"
-                        + "     end"
-                        + "     else"
-                        + "     begin"
-                        + " 		set @Nam2=@Nam"
-                        + " 		set @Ky2=@Ky-1"
-                        + " 	end"
-                        + " select Chon='false',DocSoID,DanhBo=ds.DanhBa,ds.CSCu,TieuThuDS=TieuThuCu,TieuThuHD=hd.TieuThu,ds.Nam,ds.Ky,ds.Dot from DocSo ds,server9.HOADON_TA.dbo.HOADON hd"
-                        + " where ds.Nam=@Nam and ds.Ky=@Ky and ds.Dot=@Dot and ds.TieuThuCu!=hd.TieuThu"
-                        + " and ds.DanhBa=hd.DanhBa and hd.Nam=@Nam2 and hd.Ky=@Ky2";
+            //string sql = "declare @Nam char(4),@Ky char(2),@Dot char(2),@Nam2 int,@Ky2 int"
+            //            + " set @Nam=" + Nam
+            //            + " set @Ky=" + Ky
+            //            + " set @Dot=" + Dot
+            //            + " if(@Ky='01')"
+            //            + "     begin"
+            //            + " 		set @Nam2=@Nam-1"
+            //            + " 		set @Ky2=12"
+            //            + "     end"
+            //            + "     else"
+            //            + "     begin"
+            //            + " 		set @Nam2=@Nam"
+            //            + " 		set @Ky2=@Ky-1"
+            //            + " 	end"
+            //            + " select Chon='false',DocSoID,DanhBo=ds.DanhBa,ds.CSCu,TieuThuDS=TieuThuCu,TieuThuHD=hd.TieuThu,ds.Nam,ds.Ky,ds.Dot from DocSo ds,server9.HOADON_TA.dbo.HOADON hd"
+            //            + " where ds.Nam=@Nam and ds.Ky=@Ky and ds.Dot=@Dot and ds.TieuThuCu!=hd.TieuThu"
+            //            + " and ds.DanhBa=hd.DanhBa and hd.Nam=@Nam2 and hd.Ky=@Ky2";
+            string sql = "select Chon='false',DocSoID,DanhBo=ds.DanhBa,ds.CSCu,TieuThuDS=TieuThuCu,ds.Nam,ds.Ky,ds.Dot,ThongTin=dc.KyHD+' - '+dc.ThongTin from DocSo ds,server11.KTKS_DonKH.dbo.DCBD_ChiTietHoaDon dc"
+                        + " where ds.Nam=" + Nam + " and ds.Ky=" + Ky + " and ds.Dot=" + Dot
+                        + " and ds.DanhBa=dc.DanhBo and DATEADD(DAY,30,dc.CreateDate)>=GETDATE()";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
@@ -300,7 +303,7 @@ namespace DocSo_PC.DAL.Doi
             string sql = "select May,Tong=COUNT(DocSoID)"
                     + " ,DaDoc=COUNT(CASE WHEN CodeMoi not like '' THEN 1 END)"
                     + " ,ChuaDoc=COUNT(CASE WHEN CodeMoi like '' THEN 1 END)"
-                    + " ,CodeF=COUNT(CASE WHEN CodeMoi like '%F%' THEN 1 END)"
+                    + " ,CodeF=COUNT(CASE WHEN CodeMoi like 'F%' THEN 1 END)"
                     + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot
                     + " group by May";
             return _cDAL.ExecuteQuery_DataTable(sql);
@@ -311,7 +314,7 @@ namespace DocSo_PC.DAL.Doi
             string sql = "select May,Tong=COUNT(DocSoID)"
                     + " ,DaDoc=COUNT(CASE WHEN CodeMoi not like '' THEN 1 END)"
                     + " ,ChuaDoc=COUNT(CASE WHEN CodeMoi like '' THEN 1 END)"
-                    + " ,CodeF=COUNT(CASE WHEN CodeMoi like '%F%' THEN 1 END)"
+                    + " ,CodeF=COUNT(CASE WHEN CodeMoi like 'F%' THEN 1 END)"
                     + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ")"
                     + " group by May";
             return _cDAL.ExecuteQuery_DataTable(sql);
