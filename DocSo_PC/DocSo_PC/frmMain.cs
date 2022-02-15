@@ -296,6 +296,28 @@ namespace DocSo_PC
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuGhiChu_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuGhiChu", "Xem"))
+            {
+                frmGhiChu frm = new frmGhiChu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuPhieuChuyen_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuPhieuChuyen", "Xem"))
+            {
+                frmPhieuChuyen frm = new frmPhieuChuyen();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Văn Thư
@@ -312,6 +334,8 @@ namespace DocSo_PC
         }
 
         #endregion
+
+       
 
        
 

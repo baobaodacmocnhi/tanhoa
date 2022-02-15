@@ -239,17 +239,29 @@
     <Compile Include="GUI\ToTruong\frmDocSoTruoc.Designer.cs">
       <DependentUpon>frmDocSoTruoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToTruong\frmGhiChu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmGhiChu.Designer.cs">
+      <DependentUpon>frmGhiChu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmPhieuChuyen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmPhieuChuyen.Designer.cs">
+      <DependentUpon>frmPhieuChuyen.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToTruong\frmTheoDoiDocSo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\ToTruong\frmTheoDoiDocSo.Designer.cs">
       <DependentUpon>frmTheoDoiDocSo.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToTruong\frmXemGhiChu.cs">
+    <Compile Include="GUI\ToTruong\frmXemLichSuGhiChu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToTruong\frmXemGhiChu.Designer.cs">
-      <DependentUpon>frmXemGhiChu.cs</DependentUpon>
+    <Compile Include="GUI\ToTruong\frmXemLichSuGhiChu.Designer.cs">
+      <DependentUpon>frmXemLichSuGhiChu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToTruong\frmXuLySoLieu2.cs">
       <SubType>Form</SubType>
@@ -358,11 +370,17 @@
     <EmbeddedResource Include="GUI\ToTruong\frmDocSoTruoc.resx">
       <DependentUpon>frmDocSoTruoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmGhiChu.resx">
+      <DependentUpon>frmGhiChu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmPhieuChuyen.resx">
+      <DependentUpon>frmPhieuChuyen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmTheoDoiDocSo.resx">
       <DependentUpon>frmTheoDoiDocSo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToTruong\frmXemGhiChu.resx">
-      <DependentUpon>frmXemGhiChu.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToTruong\frmXemLichSuGhiChu.resx">
+      <DependentUpon>frmXemLichSuGhiChu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmXuLySoLieu2.resx">
       <DependentUpon>frmXuLySoLieu2.cs</DependentUpon>

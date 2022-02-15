@@ -10,11 +10,11 @@ using DocSo_PC.DAL.Doi;
 
 namespace DocSo_PC.GUI.ToTruong
 {
-    public partial class frmXemGhiChu : Form
+    public partial class frmXemLichSuGhiChu : Form
     {
         CDocSo _cDocSo = new CDocSo();
 
-        public frmXemGhiChu(string DanhBo)
+        public frmXemLichSuGhiChu(string DanhBo)
         {
             InitializeComponent();
             dgvGhiChu.DataSource = _cDocSo.getDS_GhiChu(DanhBo);

@@ -43,7 +43,6 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbTo.DataSource = lst;
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
-                cmbTo.SelectedIndex = -1;
             }
             else
             {

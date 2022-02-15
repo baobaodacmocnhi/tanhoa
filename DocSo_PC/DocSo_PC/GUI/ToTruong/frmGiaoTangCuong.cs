@@ -42,7 +42,6 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbTo.DataSource = _cTo.getDS_HanhThu();
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
-                cmbTo.SelectedIndex = -1;
             }
             else
             {
@@ -50,6 +49,7 @@ namespace DocSo_PC.GUI.ToTruong
                 loadMay(CNguoiDung.MaTo.ToString());
             }
             _flagLoadFirst = true;
+            loadMay(cmbTo.SelectedValue.ToString());
         }
 
         public void loadMay(string MaTo)

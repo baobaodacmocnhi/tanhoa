@@ -233,7 +233,7 @@
             // 
             // txtDanhBoTK
             // 
-            this.txtDanhBoTK.Location = new System.Drawing.Point(628, 4);
+            this.txtDanhBoTK.Location = new System.Drawing.Point(628, 2);
             this.txtDanhBoTK.Name = "txtDanhBoTK";
             this.txtDanhBoTK.Size = new System.Drawing.Size(100, 20);
             this.txtDanhBoTK.TabIndex = 51;

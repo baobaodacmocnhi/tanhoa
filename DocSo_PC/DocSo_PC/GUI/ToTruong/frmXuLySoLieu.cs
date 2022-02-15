@@ -61,7 +61,6 @@ namespace DocSo_PC.GUI.ToTruong
                     cmbTo.DataSource = lst;
                     cmbTo.DisplayMember = "TenTo";
                     cmbTo.ValueMember = "MaTo";
-                    cmbTo.SelectedIndex = -1;
                 }
                 else
                 {
@@ -69,6 +68,7 @@ namespace DocSo_PC.GUI.ToTruong
                     loadMay(CNguoiDung.MaTo.ToString());
                 }
                 _flagLoadFirst = true;
+                loadMay(cmbTo.SelectedValue.ToString());
                 loadCodeMoi();
             }
             catch (Exception ex)
@@ -564,7 +564,7 @@ namespace DocSo_PC.GUI.ToTruong
         {
             if (_docso != null)
             {
-                frmXemGhiChu frm = new frmXemGhiChu(_docso.DanhBa);
+                frmXemLichSuGhiChu frm = new frmXemLichSuGhiChu(_docso.DanhBa);
                 frm.ShowDialog();
             }
         }

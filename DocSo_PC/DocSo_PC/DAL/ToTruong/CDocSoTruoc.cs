@@ -52,9 +52,9 @@ namespace DocSo_PC.DAL.ToTruong
             return _db.DocSoTruocs.SingleOrDefault(item => item.Nam == Convert.ToInt32(Nam) && item.Ky == Ky && item.Dot == Dot && item.May == May);
         }
 
-        public DataTable getDS()
+        public DataTable getDS(string MaTo)
         {
-            return _cDAL.LINQToDataTable(_db.DocSoTruocs.ToList().OrderByDescending(item => item.CreateDate));
+            return _cDAL.LINQToDataTable(_db.DocSoTruocs.Where(item => Convert.ToInt32(item.May) >= _db.Tos.SingleOrDefault(itemT => itemT.MaTo == Convert.ToInt32(MaTo)).TuMay && Convert.ToInt32(item.May) <= _db.Tos.SingleOrDefault(itemT => itemT.MaTo == Convert.ToInt32(MaTo)).DenMay).OrderByDescending(item => item.CreateDate));
         }
 
     }
