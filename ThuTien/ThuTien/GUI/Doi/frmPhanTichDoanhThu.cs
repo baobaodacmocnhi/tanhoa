@@ -48,8 +48,8 @@ namespace ThuTien.GUI.Doi
                 else
                     if (cmbKy.SelectedIndex > 0)
                     {
-                         dtTong = _cHoaDon.GetGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                         dtPhanTich = _cHoaDon.PhanTichDoanhThuByGiaBieu(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        dtTong = _cHoaDon.GetGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        dtPhanTich = _cHoaDon.PhanTichDoanhThuByGiaBieu(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     }
             }
             else
@@ -83,11 +83,11 @@ namespace ThuTien.GUI.Doi
             dgvDoanhThu.DataSource = dtPhanTich;
 
             foreach (DataGridViewRow item in dgvDoanhThu.Rows)
-                if ((decimal)item.Cells["TongGiaBan"].Value > 0 && (decimal)item.Cells["TongTieuThu"].Value > 0)
+                if (decimal.Parse(item.Cells["TongGiaBan"].Value.ToString()) > 0 && decimal.Parse(item.Cells["TongTieuThu"].Value.ToString()) > 0)
                 {
-                    item.Cells["GiaBanBinhQuan"].Value = (decimal)item.Cells["TongGiaBan"].Value / (decimal)item.Cells["TongTieuThu"].Value;
-                    item.Cells["TyLeTongTieuThu"].Value = Math.Round(((decimal)item.Cells["TongTieuThu"].Value / decimal.Parse(dtTong.Rows[0]["TongTieuThu"].ToString()))*100,2);
-                    item.Cells["TyLeTongGiaBan"].Value = Math.Round(((decimal)item.Cells["TongGiaBan"].Value / decimal.Parse(dtTong.Rows[0]["TongGiaBan"].ToString()))*100,2);
+                    item.Cells["GiaBanBinhQuan"].Value =decimal.Parse(item.Cells["TongGiaBan"].Value.ToString()) / decimal.Parse(item.Cells["TongTieuThu"].Value.ToString());
+                    item.Cells["TyLeTongTieuThu"].Value = Math.Round((decimal.Parse(item.Cells["TongTieuThu"].Value.ToString()) / decimal.Parse(dtTong.Rows[0]["TongTieuThu"].ToString())) * 100, 2);
+                    item.Cells["TyLeTongGiaBan"].Value = Math.Round((decimal.Parse(item.Cells["TongGiaBan"].Value.ToString()) / decimal.Parse(dtTong.Rows[0]["TongGiaBan"].ToString())) * 100, 2);
                 }
                 else
                 {
@@ -175,26 +175,26 @@ namespace ThuTien.GUI.Doi
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvDoanhThu.Rows)
-                {
-                    DataRow dr = ds.Tables["PhanTichDoanhThu"].NewRow();
-                    if (radGiaBieu.Checked)
-                        dr["LoaiBaoCao"] = "Giá Biểu";
-                    else
-                        if (radDinhMuc.Checked)
-                            dr["LoaiBaoCao"] = "Định Mức";
-                    dr["Ky"] = cmbKy.SelectedItem.ToString();
-                    dr["Nam"] = cmbNam.SelectedValue.ToString();
-                    dr["Loai"] = item.Cells["Loai"].Value.ToString();
-                    dr["TongHD"] = item.Cells["TongHD"].Value;
-                    dr["TongDinhMuc"] = item.Cells["TongDinhMuc"].Value;
-                    dr["TongTieuThu"] = item.Cells["TongTieuThu"].Value;
-                    dr["TongGiaBan"] = item.Cells["TongGiaBan"].Value;
-                    dr["GiaBanBinhQuan"] = item.Cells["GiaBanBinhQuan"].Value;
-                    dr["TyLeTongTieuThu"] = item.Cells["TyLeTongTieuThu"].Value;
-                    dr["TyLeTongGiaBan"] = item.Cells["TyLeTongGiaBan"].Value;
+            {
+                DataRow dr = ds.Tables["PhanTichDoanhThu"].NewRow();
+                if (radGiaBieu.Checked)
+                    dr["LoaiBaoCao"] = "Giá Biểu";
+                else
+                    if (radDinhMuc.Checked)
+                        dr["LoaiBaoCao"] = "Định Mức";
+                dr["Ky"] = cmbKy.SelectedItem.ToString();
+                dr["Nam"] = cmbNam.SelectedValue.ToString();
+                dr["Loai"] = item.Cells["Loai"].Value.ToString();
+                dr["TongHD"] = item.Cells["TongHD"].Value;
+                dr["TongDinhMuc"] = item.Cells["TongDinhMuc"].Value;
+                dr["TongTieuThu"] = item.Cells["TongTieuThu"].Value;
+                dr["TongGiaBan"] = item.Cells["TongGiaBan"].Value;
+                dr["GiaBanBinhQuan"] = item.Cells["GiaBanBinhQuan"].Value;
+                dr["TyLeTongTieuThu"] = item.Cells["TyLeTongTieuThu"].Value;
+                dr["TyLeTongGiaBan"] = item.Cells["TyLeTongGiaBan"].Value;
 
-                    ds.Tables["PhanTichDoanhThu"].Rows.Add(dr);
-                }
+                ds.Tables["PhanTichDoanhThu"].Rows.Add(dr);
+            }
             rptPhanTichDoanhThu rpt = new rptPhanTichDoanhThu();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);

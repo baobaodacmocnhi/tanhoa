@@ -950,6 +950,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             dt.Columns.Add("GiaBan", typeof(int));
             dt.Columns.Add("ThueGTGT", typeof(int));
             dt.Columns.Add("PhiBVMT", typeof(int));
+            dt.Columns.Add("PhiBVMT_Thue", typeof(int));
             dt.Columns.Add("TongCong", typeof(int));
             dt.Columns.Add("Lech", typeof(int));
             dt.Columns.Add("TienMat", typeof(int));
@@ -957,7 +958,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             dt.Columns.Add("BangKeCu", typeof(string));
 
             string SoPhieuThu = "";
-            int count = 1, countSum = 1, SumSoTien = 0, SumGiaBan = 0, SumThueGTGT = 0, SumPhiBVMT = 0, SumTongCong = 0;
+            int count = 1, countSum = 1, SumSoTien = 0, SumGiaBan = 0, SumThueGTGT = 0, SumPhiBVMT = 0, SumPhiBVMT_Thue = 0, SumTongCong = 0;
             foreach (DataRow item in dtBK.Rows)
             {
                 if (SoPhieuThu == "")
@@ -984,6 +985,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["GiaBan"] = SumGiaBan;
                             dr["ThueGTGT"] = SumThueGTGT;
                             dr["PhiBVMT"] = SumPhiBVMT;
+                            dr["PhiBVMT_Thue"] = SumPhiBVMT_Thue;
                             dr["TongCong"] = SumTongCong;
                             dr["Lech"] = SumSoTien - SumTongCong;
                             dt.Rows.Add(dr);
@@ -992,6 +994,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         SumGiaBan = 0;
                         SumThueGTGT = 0;
                         SumPhiBVMT = 0;
+                        SumPhiBVMT_Thue = 0;
                         SumTongCong = 0;
                         SoPhieuThu = item["SoPhieuThu"].ToString();
                         SumSoTien = int.Parse(item["SoTien"].ToString());
@@ -1007,6 +1010,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     int GiaBan = int.Parse(dtDN.Compute("sum(GiaBan)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
                     int ThueGTGT = int.Parse(dtDN.Compute("sum(ThueGTGT)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
                     int PhiBVMT = int.Parse(dtDN.Compute("sum(PhiBVMT)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
+                    int PhiBVMT_Thue = int.Parse(dtDN.Compute("sum(PhiBVMT_Thue)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
                     int TongCong = int.Parse(dtDN.Compute("sum(TongCong)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
 
                     //cập nhật sum
@@ -1015,6 +1019,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         SumGiaBan += GiaBan;
                         SumThueGTGT += ThueGTGT;
                         SumPhiBVMT += PhiBVMT;
+                        SumPhiBVMT_Thue += PhiBVMT_Thue;
                         SumTongCong += TongCong;
                     }
                     //else
@@ -1058,6 +1063,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["GiaBan"] = itemdrDN["GiaBan"];
                             dr["ThueGTGT"] = itemdrDN["ThueGTGT"];
                             dr["PhiBVMT"] = itemdrDN["PhiBVMT"];
+                            dr["PhiBVMT_Thue"] = itemdrDN["PhiBVMT_Thue"];
                             dr["TongCong"] = itemdrDN["TongCong"];
                         }
                         else
@@ -1065,6 +1071,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["GiaBan"] = int.Parse(itemdrDN["GiaBan"].ToString()) - int.Parse(itemdrDN["TienMat"].ToString());
                             dr["ThueGTGT"] = itemdrDN["ThueGTGT"];
                             dr["PhiBVMT"] = itemdrDN["PhiBVMT"];
+                            dr["PhiBVMT_Thue"] = itemdrDN["PhiBVMT_Thue"];
                             dr["TongCong"] = int.Parse(itemdrDN["TongCong"].ToString()) - int.Parse(itemdrDN["TienMat"].ToString());
                         }
                         dr["TienMat"] = itemdrDN["TienMat"];
@@ -1167,6 +1174,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["GiaBan"] = item["GiaBan"];
                         dr["ThueGTGT"] = item["ThueGTGT"];
                         dr["PhiBVMT"] = item["PhiBVMT"];
+                        dr["PhiBVMT_Thue"] = item["PhiBVMT_Thue"];
                         dr["TongCong"] = item["TongCong"];
                     }
                     else
@@ -1174,6 +1182,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["GiaBan"] = int.Parse(item["GiaBan"].ToString()) - int.Parse(item["TienMat"].ToString());
                         dr["ThueGTGT"] = item["ThueGTGT"];
                         dr["PhiBVMT"] = item["PhiBVMT"];
+                        dr["PhiBVMT_Thue"] = item["PhiBVMT_Thue"];
                         dr["TongCong"] = int.Parse(item["TongCong"].ToString()) - int.Parse(item["TienMat"].ToString());
                     }
                     dr["Lech"] = int.Parse(item["TongCong"].ToString()) * -1;
@@ -1198,6 +1207,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["GiaBan"] = item["GiaBan"];
                         dr["ThueGTGT"] = item["ThueGTGT"];
                         dr["PhiBVMT"] = item["PhiBVMT"];
+                        dr["PhiBVMT_Thue"] = item["PhiBVMT_Thue"];
                         dr["TongCong"] = item["TongCong"];
                     }
                     else
@@ -1205,6 +1215,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["GiaBan"] = int.Parse(item["GiaBan"].ToString()) - int.Parse(item["TienMat"].ToString());
                         dr["ThueGTGT"] = item["ThueGTGT"];
                         dr["PhiBVMT"] = item["PhiBVMT"];
+                        dr["PhiBVMT_Thue"] = item["PhiBVMT_Thue"];
                         dr["TongCong"] = int.Parse(item["TongCong"].ToString()) - int.Parse(item["TienMat"].ToString());
                     }
                     dr["Lech"] = int.Parse(item["TongCong"].ToString()) * -1;
@@ -1327,7 +1338,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             cl4b.Font.Bold = true;
             cl4b.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("F5", "M5");
+            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("F5", "N5");
             cl5.MergeCells = true;
             cl5.Value2 = "GIẢI TRÁCH";
             cl5.ColumnWidth = 70;
@@ -1371,48 +1382,55 @@ namespace ThuTien.GUI.ChuyenKhoan
             cl5e.Font.Name = "Times New Roman";
 
             Microsoft.Office.Interop.Excel.Range cl5f = oSheet.get_Range("K6", "K6");
-            cl5f.Value2 = "PHÍ BVMT";
+            cl5f.Value2 = "TDVTN";
             cl5f.ColumnWidth = 10;
             cl5f.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5f.Font.Bold = true;
             cl5f.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl5g = oSheet.get_Range("L6", "L6");
+            Microsoft.Office.Interop.Excel.Range cl5ff = oSheet.get_Range("L6", "L6");
+            cl5ff.Value2 = "Thuế TDVTN";
+            cl5ff.ColumnWidth = 10;
+            cl5ff.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl5ff.Font.Bold = true;
+            cl5ff.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl5g = oSheet.get_Range("M6", "M6");
             cl5g.Value2 = "CỘNG GT";
             cl5g.ColumnWidth = 12;
             cl5g.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5g.Font.Bold = true;
             cl5g.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl5h = oSheet.get_Range("M6", "M6");
+            Microsoft.Office.Interop.Excel.Range cl5h = oSheet.get_Range("N6", "N6");
             cl5h.Value2 = "LỆCH";
             cl5h.ColumnWidth = 10;
             cl5h.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5h.Font.Bold = true;
             cl5h.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("N5", "N5");
+            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("O5", "O5");
             cl6.Value2 = "LOẠI";
             cl6.ColumnWidth = 5;
             cl6.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl6.Font.Bold = true;
             cl6.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("O5", "O5");
+            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("P5", "P5");
             cl7.Value2 = "BANK";
             cl7.ColumnWidth = 10;
             cl7.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl7.Font.Bold = true;
             cl7.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("P5", "P5");
+            Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("Q5", "Q5");
             cl8.Value2 = "TIỀN MẶT";
             cl8.ColumnWidth = 10;
             cl8.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl8.Font.Bold = true;
             cl8.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("Q5", "Q5");
+            Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("R5", "R5");
             cl9.Value2 = "BẢNG KÊ CŨ";
             cl9.ColumnWidth = 10;
             cl9.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
@@ -1448,15 +1466,16 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i, 8] = dr["GiaBan"].ToString();
                 arr[i, 9] = dr["ThueGTGT"].ToString();
                 arr[i, 10] = dr["PhiBVMT"].ToString();
-                arr[i, 11] = dr["TongCong"].ToString();
+                arr[i, 11] = dr["PhiBVMT_Thue"].ToString();
+                arr[i, 12] = dr["TongCong"].ToString();
                 //if (!string.IsNullOrEmpty(dr["SoTien"].ToString()) && !string.IsNullOrEmpty(dr["TongCong"].ToString()))
-                //    arr[i, 12] = int.Parse(dr["SoTien"].ToString()) - int.Parse(dr["TongCong"].ToString());
-                arr[i, 12] = dr["Lech"];
-                //arr[i, 13] = dr["Loai"];
+                //    arr[i, 13] = int.Parse(dr["SoTien"].ToString()) - int.Parse(dr["TongCong"].ToString());
+                arr[i, 13] = dr["Lech"];
+                //arr[i, 14] = dr["Loai"];
 
-                arr[i, 14] = dr["NganHang"];
-                arr[i, 15] = dr["TienMat"];
-                arr[i, 16] = dr["BangKeCu"];
+                arr[i, 15] = dr["NganHang"];
+                arr[i, 16] = dr["TienMat"];
+                arr[i, 17] = dr["BangKeCu"];
                 //if (!string.IsNullOrEmpty(dr["TongBK"].ToString()))
                 //    if (int.Parse(dr["TongBK"].ToString()) > 1)
                 //        arr[i, 14] = "X";
@@ -1549,10 +1568,11 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheet.Cells[rowEnd + 1, 9] = dt.Compute("sum(GiaBan)", "DanhBo <> ''");
             oSheet.Cells[rowEnd + 1, 10] = dt.Compute("sum(ThueGTGT)", "DanhBo <> ''");
             oSheet.Cells[rowEnd + 1, 11] = dt.Compute("sum(PhiBVMT)", "DanhBo <> ''");
-            oSheet.Cells[rowEnd + 1, 12] = dt.Compute("sum(TongCong)", "DanhBo <> ''");
+            oSheet.Cells[rowEnd + 1, 12] = dt.Compute("sum(PhiBVMT_Thue)", "DanhBo <> ''");
+            oSheet.Cells[rowEnd + 1, 13] = dt.Compute("sum(TongCong)", "DanhBo <> ''");
             //format number
             Microsoft.Office.Interop.Excel.Range c1sum1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd + 1, 5];
-            Microsoft.Office.Interop.Excel.Range c2sum1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd + 1, 12];
+            Microsoft.Office.Interop.Excel.Range c2sum1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd + 1, 13];
             Microsoft.Office.Interop.Excel.Range c3sum1 = oSheet.get_Range(c1sum1, c2sum1);
             oSheet.get_Range(c2sum1, c3sum1).Font.Bold = true;
             //oSheet.get_Range(c2sum1, c3sum1).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;

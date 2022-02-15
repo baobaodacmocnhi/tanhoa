@@ -8779,6 +8779,7 @@ namespace ThuTien.DAL.Doi
                             itemHD.GIABAN,
                             ThueGTGT = itemHD.THUE,
                             PhiBVMT = itemHD.PHI,
+                            PhiBVMT_Thue = itemHD.ThueGTGT_TDVTN != null ? itemHD.ThueGTGT_TDVTN : 0,
                             TongCong = itemHD.TONGCONG,
                             GiaBieu = itemHD.GB,
                             itemHD.TienMat,
