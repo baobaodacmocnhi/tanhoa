@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectView>ProjectFiles</ProjectView>
-    <PublishUrlHistory>C:\Users\BaoBao\Desktop\DocSo_PC\|C:\Users\BaoBao\Desktop\DocSoWFH\|\\192.168.90.9\BaoBao%24\DocSo_PC\</PublishUrlHistory>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <PublishUrlHistory>\\192.168.90.9\BaoBao%24\DocSo_PC\|C:\Users\BaoBao\Desktop\DocSo_PC\|C:\Users\BaoBao\Desktop\DocSoWFH\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
     <UpdateUrlHistory>http://113.161.88.180:81/DocSoWFH/|\\192.168.90.9\BaoBao%24\DocSo_PC\|\\192.168.90.9\cntt\BaoBao\DocSo_PC\</UpdateUrlHistory>
@@ -10,5 +10,8 @@
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ReferencePath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\</ReferencePath>
   </PropertyGroup>
 </Project>

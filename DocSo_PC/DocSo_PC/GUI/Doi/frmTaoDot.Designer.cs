@@ -33,15 +33,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.cmbKy = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbNam = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnChonFile = new System.Windows.Forms.Button();
-            this.txtDuongDan = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,12 +45,27 @@
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Chot = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.BillID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.cmbKy = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbNam = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.btnChonFile = new System.Windows.Forms.Button();
+            this.txtDuongDan = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtTongHD = new System.Windows.Forms.TextBox();
+            this.txtTongBD = new System.Windows.Forms.TextBox();
+            this.txtTongTD = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtTongTD);
+            this.groupBox1.Controls.Add(this.txtTongBD);
+            this.groupBox1.Controls.Add(this.txtTongHD);
             this.groupBox1.Controls.Add(this.progressBar);
             this.groupBox1.Controls.Add(this.dgvDanhSach);
             this.groupBox1.Controls.Add(this.btnXem);
@@ -69,7 +75,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(3, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(712, 546);
+            this.groupBox1.Size = new System.Drawing.Size(712, 566);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
@@ -112,10 +118,98 @@
             this.dgvDanhSach.Name = "dgvDanhSach";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDanhSach.Size = new System.Drawing.Size(695, 485);
+            this.dgvDanhSach.Size = new System.Drawing.Size(695, 480);
             this.dgvDanhSach.TabIndex = 5;
             this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
             this.dgvDanhSach.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellValueChanged);
+            // 
+            // Dot
+            // 
+            this.Dot.DataPropertyName = "Dot";
+            this.Dot.HeaderText = "Đợt";
+            this.Dot.Name = "Dot";
+            this.Dot.Width = 50;
+            // 
+            // TongHD
+            // 
+            this.TongHD.DataPropertyName = "TongHD";
+            this.TongHD.HeaderText = "Tổng HĐ Kỳ Trước";
+            this.TongHD.Name = "TongHD";
+            this.TongHD.Width = 80;
+            // 
+            // TongBD
+            // 
+            this.TongBD.DataPropertyName = "TongBD";
+            this.TongBD.HeaderText = "Tổng BĐ";
+            this.TongBD.Name = "TongBD";
+            this.TongBD.Width = 80;
+            // 
+            // TongTD
+            // 
+            this.TongTD.DataPropertyName = "TongTD";
+            this.TongTD.HeaderText = "Tổng TĐ";
+            this.TongTD.Name = "TongTD";
+            this.TongTD.Width = 80;
+            // 
+            // CreateDateBD
+            // 
+            this.CreateDateBD.DataPropertyName = "CreateDateBD";
+            this.CreateDateBD.HeaderText = "Ngày Lập BĐ";
+            this.CreateDateBD.Name = "CreateDateBD";
+            // 
+            // CreateDateTD
+            // 
+            this.CreateDateTD.DataPropertyName = "CreateDateTD";
+            this.CreateDateTD.HeaderText = "Ngày Lập TĐ";
+            this.CreateDateTD.Name = "CreateDateTD";
+            // 
+            // TaoDot
+            // 
+            this.TaoDot.HeaderText = "Tạo Đợt";
+            this.TaoDot.Name = "TaoDot";
+            this.TaoDot.Text = "Tạo Đợt";
+            this.TaoDot.UseColumnTextForButtonValue = true;
+            this.TaoDot.Width = 70;
+            // 
+            // KiemTra
+            // 
+            this.KiemTra.HeaderText = "Chỉ Số Nền";
+            this.KiemTra.Name = "KiemTra";
+            this.KiemTra.Text = "Kiểm Tra";
+            this.KiemTra.UseColumnTextForButtonValue = true;
+            this.KiemTra.Width = 70;
+            // 
+            // Nam
+            // 
+            this.Nam.DataPropertyName = "Nam";
+            this.Nam.HeaderText = "Năm";
+            this.Nam.Name = "Nam";
+            this.Nam.Visible = false;
+            // 
+            // Ky
+            // 
+            this.Ky.DataPropertyName = "Ky";
+            this.Ky.HeaderText = "Kỳ";
+            this.Ky.Name = "Ky";
+            this.Ky.Visible = false;
+            // 
+            // Chot
+            // 
+            this.Chot.DataPropertyName = "Chot";
+            this.Chot.HeaderText = "Chốt";
+            this.Chot.Name = "Chot";
+            this.Chot.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Chot.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Chot.ThreeState = true;
+            this.Chot.Visible = false;
+            this.Chot.Width = 50;
+            // 
+            // BillID
+            // 
+            this.BillID.DataPropertyName = "BillID";
+            this.BillID.HeaderText = "BillID";
+            this.BillID.Name = "BillID";
+            this.BillID.Visible = false;
             // 
             // btnXem
             // 
@@ -211,99 +305,38 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Đường Dẫn:";
             // 
-            // Dot
+            // txtTongHD
             // 
-            this.Dot.DataPropertyName = "Dot";
-            this.Dot.HeaderText = "Đợt";
-            this.Dot.Name = "Dot";
-            this.Dot.Width = 50;
+            this.txtTongHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongHD.Location = new System.Drawing.Point(101, 534);
+            this.txtTongHD.Name = "txtTongHD";
+            this.txtTongHD.Size = new System.Drawing.Size(80, 20);
+            this.txtTongHD.TabIndex = 13;
+            this.txtTongHD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TongHD
+            // txtTongBD
             // 
-            this.TongHD.DataPropertyName = "TongHD";
-            this.TongHD.HeaderText = "Tổng HĐ Kỳ Trước";
-            this.TongHD.Name = "TongHD";
-            this.TongHD.Width = 80;
+            this.txtTongBD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongBD.Location = new System.Drawing.Point(181, 534);
+            this.txtTongBD.Name = "txtTongBD";
+            this.txtTongBD.Size = new System.Drawing.Size(80, 20);
+            this.txtTongBD.TabIndex = 14;
+            this.txtTongBD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TongBD
+            // txtTongTD
             // 
-            this.TongBD.DataPropertyName = "TongBD";
-            this.TongBD.HeaderText = "Tổng BĐ";
-            this.TongBD.Name = "TongBD";
-            this.TongBD.Width = 80;
-            // 
-            // TongTD
-            // 
-            this.TongTD.DataPropertyName = "TongTD";
-            this.TongTD.HeaderText = "Tổng TĐ";
-            this.TongTD.Name = "TongTD";
-            this.TongTD.Width = 80;
-            // 
-            // CreateDateBD
-            // 
-            this.CreateDateBD.DataPropertyName = "CreateDateBD";
-            this.CreateDateBD.HeaderText = "Ngày Lập BĐ";
-            this.CreateDateBD.Name = "CreateDateBD";
-            // 
-            // CreateDateTD
-            // 
-            this.CreateDateTD.DataPropertyName = "CreateDateTD";
-            this.CreateDateTD.HeaderText = "Ngày Lập TĐ";
-            this.CreateDateTD.Name = "CreateDateTD";
-            // 
-            // TaoDot
-            // 
-            this.TaoDot.HeaderText = "Tạo Đợt";
-            this.TaoDot.Name = "TaoDot";
-            this.TaoDot.Text = "Tạo Đợt";
-            this.TaoDot.UseColumnTextForButtonValue = true;
-            this.TaoDot.Width = 70;
-            // 
-            // KiemTra
-            // 
-            this.KiemTra.HeaderText = "Chỉ Số Nền";
-            this.KiemTra.Name = "KiemTra";
-            this.KiemTra.Text = "Kiểm Tra";
-            this.KiemTra.UseColumnTextForButtonValue = true;
-            this.KiemTra.Width = 70;
-            // 
-            // Nam
-            // 
-            this.Nam.DataPropertyName = "Nam";
-            this.Nam.HeaderText = "Năm";
-            this.Nam.Name = "Nam";
-            this.Nam.Visible = false;
-            // 
-            // Ky
-            // 
-            this.Ky.DataPropertyName = "Ky";
-            this.Ky.HeaderText = "Kỳ";
-            this.Ky.Name = "Ky";
-            this.Ky.Visible = false;
-            // 
-            // Chot
-            // 
-            this.Chot.DataPropertyName = "Chot";
-            this.Chot.HeaderText = "Chốt";
-            this.Chot.Name = "Chot";
-            this.Chot.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Chot.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Chot.ThreeState = true;
-            this.Chot.Visible = false;
-            this.Chot.Width = 50;
-            // 
-            // BillID
-            // 
-            this.BillID.DataPropertyName = "BillID";
-            this.BillID.HeaderText = "BillID";
-            this.BillID.Name = "BillID";
-            this.BillID.Visible = false;
+            this.txtTongTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongTD.Location = new System.Drawing.Point(261, 534);
+            this.txtTongTD.Name = "txtTongTD";
+            this.txtTongTD.Size = new System.Drawing.Size(80, 20);
+            this.txtTongTD.TabIndex = 15;
+            this.txtTongTD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmTaoDot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 607);
+            this.ClientSize = new System.Drawing.Size(792, 630);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnChonFile);
@@ -347,6 +380,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Chot;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillID;
+        private System.Windows.Forms.TextBox txtTongTD;
+        private System.Windows.Forms.TextBox txtTongBD;
+        private System.Windows.Forms.TextBox txtTongHD;
 
     }
 }

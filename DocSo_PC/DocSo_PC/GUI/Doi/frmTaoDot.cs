@@ -11,6 +11,7 @@ using DocSo_PC.LinQ;
 using System.Data.SqlClient;
 using DocSo_PC.DAL.Doi;
 using DocSo_PC.DAL;
+using System.Globalization;
 
 namespace DocSo_PC.GUI.Doi
 {
@@ -21,6 +22,7 @@ namespace DocSo_PC.GUI.Doi
         CDocSo _cDocSo = new CDocSo();
         CLichDocSo _cLichDocSo = new CLichDocSo();
         CChuanBiDS _cChuanBi = new CChuanBiDS();
+        CTo _cTo = new CTo();
 
         public frmTaoDot()
         {
@@ -169,6 +171,16 @@ namespace DocSo_PC.GUI.Doi
         private void btnXem_Click(object sender, EventArgs e)
         {
             dgvDanhSach.DataSource = _cDocSo.getTong_TaoDot(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString());
+            int TongHD = 0, TongBD = 0, TongTD = 0;
+            foreach (DataGridViewRow item in dgvDanhSach.Rows)
+            {
+                TongHD += int.Parse(item.Cells["TongHD"].Value.ToString());
+                TongBD += int.Parse(item.Cells["TongBD"].Value.ToString());
+                TongTD += int.Parse(item.Cells["TongTD"].Value.ToString());
+            }
+            txtTongHD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
+            txtTongBD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongBD);
+            txtTongTD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongTD);
         }
 
         private void dgvDanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -236,6 +248,7 @@ namespace DocSo_PC.GUI.Doi
                                     en.TongTien = 0;
                                     en.DenNgay = NgayDoc;
                                     en.NgayDS = DateTime.Now;
+                                    en.TODS = _cTo.get_MaTo(int.Parse(en.May));
                                     if (_cDocSo.checkExists_DocSo(en.DocSoID) == false)
                                         _cDocSo.them_DocSo(en);
                                     else
