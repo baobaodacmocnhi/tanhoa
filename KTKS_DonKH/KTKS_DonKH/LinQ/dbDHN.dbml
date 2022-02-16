@@ -1,5 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CAPNUOCTANHOA" Class="dbDHNDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=HP_G7\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="CAPNUOCTANHOAConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=hp_g7\kd;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="CAPNUOCTANHOAConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TB_GHICHU" Member="TB_GHICHUs">
+    <Type Name="TB_GHICHU">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DANHBO" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NOIDUNG" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DONVI" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CREATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CREATEBY" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MODIFYDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MODIFYBY" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="HIENTHI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QUAN" Member="QUANs">
+    <Type Name="QUAN">
+      <Column Name="MAQUAN" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENQUAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="QUAN_PHUONG" Member="PHUONGs" ThisKey="MAQUAN" OtherKey="MAQUAN" Type="PHUONG" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHUONG" Member="PHUONGs">
+    <Type Name="PHUONG">
+      <Column Name="MAQUAN" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAPHUONG" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENPHUONG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="QUAN_PHUONG" Member="QUAN" ThisKey="MAQUAN" OtherKey="MAQUAN" Type="QUAN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HOSOPDF" Member="HOSOPDFs">
+    <Type Name="HOSOPDF">
+      <Column Name="DanhBo" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="Ten" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PDF" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.TB_DULIEUKHACHHANG" Member="TB_DULIEUKHACHHANGs">
     <Type Name="TB_DULIEUKHACHHANG">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
@@ -51,6 +86,7 @@
       <Column Name="MADMA" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="CHUKYDS" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DINHMUCHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Gieng" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.TB_DULIEUKHACHHANG_HUYDB" Member="TB_DULIEUKHACHHANG_HUYDBs">
@@ -111,41 +147,7 @@
       <Column Name="KY" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NAM" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DINHMUCHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TB_GHICHU" Member="TB_GHICHUs">
-    <Type Name="TB_GHICHU">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="DANHBO" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="NOIDUNG" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DONVI" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="CREATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CREATEBY" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="MODIFYDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="MODIFYBY" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="HIENTHI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.QUAN" Member="QUANs">
-    <Type Name="QUAN">
-      <Column Name="MAQUAN" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TENQUAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="QUAN_PHUONG" Member="PHUONGs" ThisKey="MAQUAN" OtherKey="MAQUAN" Type="PHUONG" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PHUONG" Member="PHUONGs">
-    <Type Name="PHUONG">
-      <Column Name="MAQUAN" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MAPHUONG" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TENPHUONG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="QUAN_PHUONG" Member="QUAN" ThisKey="MAQUAN" OtherKey="MAQUAN" Type="QUAN" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.HOSOPDF" Member="HOSOPDFs">
-    <Type Name="HOSOPDF">
-      <Column Name="DanhBo" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
-      <Column Name="Ten" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="PDF" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Gieng" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>
