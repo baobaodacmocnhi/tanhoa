@@ -51,7 +51,7 @@
             this.ViTri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbViTri = new System.Windows.Forms.ComboBox();
+            this.cmbViTri1 = new System.Windows.Forms.ComboBox();
             this.btnSua = new System.Windows.Forms.Button();
             this.txtSoNha = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,12 +60,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDienThoai = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnChonFile = new System.Windows.Forms.Button();
+            this.cmbViTri2 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtTongDienThoai = new System.Windows.Forms.TextBox();
+            this.txtTongViTri = new System.Windows.Forms.TextBox();
             this.DanhBo_DT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DienThoai_DT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_DT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoChinh_DT = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnChonFile = new System.Windows.Forms.Button();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDienThoai)).BeginInit();
@@ -237,17 +242,17 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(777, 240);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 69;
-            this.label2.Text = "Vị Trí";
+            this.label2.Text = "Vị Trí 1";
             // 
-            // cmbViTri
+            // cmbViTri1
             // 
-            this.cmbViTri.FormattingEnabled = true;
-            this.cmbViTri.Location = new System.Drawing.Point(844, 237);
-            this.cmbViTri.Name = "cmbViTri";
-            this.cmbViTri.Size = new System.Drawing.Size(100, 21);
-            this.cmbViTri.TabIndex = 70;
+            this.cmbViTri1.FormattingEnabled = true;
+            this.cmbViTri1.Location = new System.Drawing.Point(844, 237);
+            this.cmbViTri1.Name = "cmbViTri1";
+            this.cmbViTri1.Size = new System.Drawing.Size(100, 21);
+            this.cmbViTri1.TabIndex = 70;
             // 
             // btnSua
             // 
@@ -306,7 +311,7 @@
             this.groupBox1.Controls.Add(this.dgvDienThoai);
             this.groupBox1.Location = new System.Drawing.Point(776, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(320, 140);
+            this.groupBox1.Size = new System.Drawing.Size(416, 140);
             this.groupBox1.TabIndex = 77;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Điện Thoại";
@@ -326,7 +331,8 @@
             this.DanhBo_DT,
             this.DienThoai_DT,
             this.HoTen_DT,
-            this.SoChinh_DT});
+            this.SoChinh_DT,
+            this.CreateDate});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -348,12 +354,63 @@
             this.dgvDienThoai.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDienThoai.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvDienThoai.Size = new System.Drawing.Size(314, 121);
+            this.dgvDienThoai.Size = new System.Drawing.Size(410, 121);
             this.dgvDienThoai.TabIndex = 69;
             this.dgvDienThoai.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDienThoai_CellEndEdit);
             this.dgvDienThoai.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDienThoai_RowValidated);
             this.dgvDienThoai.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDienThoai_UserAddedRow);
             this.dgvDienThoai.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvDienThoai_UserDeletingRow);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(825, 23);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(268, 13);
+            this.label6.TabIndex = 78;
+            this.label6.Text = "Xóa SĐT: Chọn dòng => bấm nút Delete trên bàn phím";
+            // 
+            // btnChonFile
+            // 
+            this.btnChonFile.Location = new System.Drawing.Point(844, 316);
+            this.btnChonFile.Name = "btnChonFile";
+            this.btnChonFile.Size = new System.Drawing.Size(75, 23);
+            this.btnChonFile.TabIndex = 79;
+            this.btnChonFile.Text = "Chọn File";
+            this.btnChonFile.UseVisualStyleBackColor = true;
+            this.btnChonFile.Visible = false;
+            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
+            // 
+            // cmbViTri2
+            // 
+            this.cmbViTri2.FormattingEnabled = true;
+            this.cmbViTri2.Location = new System.Drawing.Point(998, 237);
+            this.cmbViTri2.Name = "cmbViTri2";
+            this.cmbViTri2.Size = new System.Drawing.Size(100, 21);
+            this.cmbViTri2.TabIndex = 81;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(950, 240);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 13);
+            this.label7.TabIndex = 80;
+            this.label7.Text = "Vị Trí 2";
+            // 
+            // txtTongDienThoai
+            // 
+            this.txtTongDienThoai.Location = new System.Drawing.Point(645, 625);
+            this.txtTongDienThoai.Name = "txtTongDienThoai";
+            this.txtTongDienThoai.Size = new System.Drawing.Size(100, 20);
+            this.txtTongDienThoai.TabIndex = 82;
+            // 
+            // txtTongViTri
+            // 
+            this.txtTongViTri.Location = new System.Drawing.Point(585, 625);
+            this.txtTongViTri.Name = "txtTongViTri";
+            this.txtTongViTri.Size = new System.Drawing.Size(60, 20);
+            this.txtTongViTri.TabIndex = 83;
             // 
             // DanhBo_DT
             // 
@@ -384,30 +441,21 @@
             this.SoChinh_DT.TrueValue = "True";
             this.SoChinh_DT.Width = 50;
             // 
-            // label6
+            // CreateDate
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(825, 23);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(268, 13);
-            this.label6.TabIndex = 78;
-            this.label6.Text = "Xóa SĐT: Chọn dòng => bấm nút Delete trên bàn phím";
-            // 
-            // btnChonFile
-            // 
-            this.btnChonFile.Location = new System.Drawing.Point(1112, 15);
-            this.btnChonFile.Name = "btnChonFile";
-            this.btnChonFile.Size = new System.Drawing.Size(75, 23);
-            this.btnChonFile.TabIndex = 79;
-            this.btnChonFile.Text = "Chọn File";
-            this.btnChonFile.UseVisualStyleBackColor = true;
-            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
             // 
             // frmGhiChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1327, 655);
+            this.Controls.Add(this.txtTongViTri);
+            this.Controls.Add(this.txtTongDienThoai);
+            this.Controls.Add(this.cmbViTri2);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnChonFile);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox1);
@@ -417,7 +465,7 @@
             this.Controls.Add(this.txtSoNha);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSua);
-            this.Controls.Add(this.cmbViTri);
+            this.Controls.Add(this.cmbViTri1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvDanhSach);
             this.Controls.Add(this.btnXem);
@@ -455,7 +503,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ViTri;
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbViTri;
+        private System.Windows.Forms.ComboBox cmbViTri1;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.TextBox txtSoNha;
         private System.Windows.Forms.Label label3;
@@ -465,10 +513,15 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvDienThoai;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnChonFile;
+        private System.Windows.Forms.ComboBox cmbViTri2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtTongDienThoai;
+        private System.Windows.Forms.TextBox txtTongViTri;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_DT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai_DT;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_DT;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SoChinh_DT;
-        private System.Windows.Forms.Button btnChonFile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
     }
 }

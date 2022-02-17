@@ -61,6 +61,7 @@ namespace DocSo_PC.GUI.ToTruong
                     cmbTo.DataSource = lst;
                     cmbTo.DisplayMember = "TenTo";
                     cmbTo.ValueMember = "MaTo";
+                    loadMay(cmbTo.SelectedValue.ToString());
                 }
                 else
                 {
@@ -68,7 +69,6 @@ namespace DocSo_PC.GUI.ToTruong
                     loadMay(CNguoiDung.MaTo.ToString());
                 }
                 _flagLoadFirst = true;
-                loadMay(cmbTo.SelectedValue.ToString());
                 loadCodeMoi();
             }
             catch (Exception ex)

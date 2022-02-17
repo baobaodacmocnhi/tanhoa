@@ -10,6 +10,7 @@ using DocSo_PC.DAL.Doi;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using DocSo_PC.DAL;
+using System.Globalization;
 
 namespace DocSo_PC.GUI.ToTruong
 {
@@ -32,6 +33,8 @@ namespace DocSo_PC.GUI.ToTruong
         {
             dgvDanhSach.AutoGenerateColumns = false;
             dgvDienThoai.AutoGenerateColumns = false;
+            if (CNguoiDung.Admin)
+                btnChonFile.Visible = true;
             if (CNguoiDung.Doi)
             {
                 cmbTo.Visible = true;
@@ -43,18 +46,22 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbTo.DataSource = lst;
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
+                loadMay(cmbTo.SelectedValue.ToString());
             }
             else
             {
                 lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
                 loadMay(CNguoiDung.MaTo.ToString());
             }
-            DataTable dt = _cDHN.getDS_ViTriDHN();
-            cmbViTri.DataSource = dt;
-            cmbViTri.DisplayMember = "KyHieu";
-            cmbViTri.ValueMember = "KyHieu";
+            DataTable dt1, dt2;
+            dt1 = dt2 = _cDHN.getDS_ViTriDHN();
+            cmbViTri1.DataSource = dt1;
+            cmbViTri1.DisplayMember = "KyHieu";
+            cmbViTri1.ValueMember = "KyHieu";
+            cmbViTri2.DataSource = dt2;
+            cmbViTri2.DisplayMember = "KyHieu";
+            cmbViTri2.ValueMember = "KyHieu";
             _flagLoadFirst = true;
-            loadMay(cmbTo.SelectedValue.ToString());
         }
 
         public void loadMay(string MaTo)
@@ -87,7 +94,8 @@ namespace DocSo_PC.GUI.ToTruong
         {
             txtSoNha.Text = "";
             txtTenDuong.Text = "";
-            cmbViTri.SelectedIndex = -1;
+            cmbViTri1.SelectedIndex = -1;
+            cmbViTri2.SelectedIndex = -1;
             chkGieng.Checked = false;
         }
 
@@ -97,7 +105,10 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 txtSoNha.Text = en.SONHA;
                 txtTenDuong.Text = en.TENDUONG;
-                cmbViTri.SelectedValue = en.VITRIDHN;
+                if (en.VITRIDHN != null && en.VITRIDHN != "")
+                    cmbViTri1.SelectedValue = en.VITRIDHN;
+                if (en.ViTriDHN2 != null && en.ViTriDHN2 != "")
+                    cmbViTri2.SelectedValue = en.ViTriDHN2;
                 chkGieng.Checked = en.Gieng;
                 dgvDienThoai.DataSource = _cDHN.getDS_DienThoai(en.DANHBO);
             }
@@ -146,6 +157,16 @@ namespace DocSo_PC.GUI.ToTruong
                         dgvDanhSach.DataSource = _cDHN.getDS_May(cmbMay.SelectedValue.ToString());
                     }
             }
+            int TongViTri = 0, TongDienThoai = 0;
+            foreach (DataGridViewRow item in dgvDanhSach.Rows)
+            {
+                if (item.Cells["ViTri"].Value.ToString() != "")
+                    TongViTri++;
+                if (item.Cells["DienThoai"].Value.ToString() != "")
+                    TongDienThoai++;
+            }
+            txtTongViTri.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongViTri);
+            txtTongDienThoai.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDienThoai);
         }
 
         private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -166,8 +187,10 @@ namespace DocSo_PC.GUI.ToTruong
                     {
                         _enDLKH.SONHA = txtSoNha.Text.Trim();
                         _enDLKH.TENDUONG = txtTenDuong.Text.Trim();
-                        if (cmbViTri.SelectedIndex >= 0)
-                            _enDLKH.VITRIDHN = cmbViTri.SelectedValue.ToString();
+                        if (cmbViTri1.SelectedIndex >= 0)
+                            _enDLKH.VITRIDHN = cmbViTri1.SelectedValue.ToString();
+                        if (cmbViTri2.SelectedIndex >= 0)
+                            _enDLKH.ViTriDHN2 = cmbViTri2.SelectedValue.ToString();
                         _enDLKH.Gieng = chkGieng.Checked;
                         _cDHN.SubmitChanges();
                         foreach (DataGridViewRow item in dgvDienThoai.Rows)
@@ -247,6 +270,8 @@ namespace DocSo_PC.GUI.ToTruong
                                     en.SoChinh = bool.Parse(dgvDienThoai["SoChinh_DT", e.RowIndex].Value.ToString());
                                 else
                                     en.SoChinh = false;
+                                en.ModifyBy = CNguoiDung.MaND;
+                                en.ModifyDate = DateTime.Now;
                                 _cDHN.SubmitChanges();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
@@ -314,13 +339,18 @@ namespace DocSo_PC.GUI.ToTruong
                             DataTable dtExcel = _cDocSo.ExcelToDataTable(dialog.FileName);
 
                             foreach (DataRow item in dtExcel.Rows)
-                                if ((string.IsNullOrEmpty(item[0].ToString()) || item[0].ToString().Replace(" ", "").Length == 11) && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                                if (!string.IsNullOrEmpty(item[2].ToString()))
                                 {
-                                        //TT_BangKe bangke = new TT_BangKe();
-                                        //bangke.DanhBo = item[0].ToString().Trim().Replace(" ", "");
-                                        //bangke.SoTien = int.Parse(item[1].ToString().Trim());
-                                   
-                                    
+                                    string[] DanhBos = item[2].ToString().Split(',');
+                                    foreach (string itemS in DanhBos)
+                                    {
+                                        SDT_DHN en = new SDT_DHN();
+                                        en.DanhBo = itemS;
+                                        en.HoTen = item[0].ToString();
+                                        en.DienThoai = item[3].ToString();
+                                        if (_cDHN.checkExists_DienThoai(en.DanhBo, en.DienThoai) == false)
+                                            _cDHN.them_DienThoai(en);
+                                    }
                                 }
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
