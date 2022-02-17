@@ -160,7 +160,7 @@ namespace DocSo_PC.GUI.ToTruong
             int TongViTri = 0, TongDienThoai = 0;
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
             {
-                if (item.Cells["ViTri"].Value.ToString() != "")
+                if (item.Cells["ViTri1"].Value.ToString() != "")
                     TongViTri++;
                 if (item.Cells["DienThoai"].Value.ToString() != "")
                     TongDienThoai++;

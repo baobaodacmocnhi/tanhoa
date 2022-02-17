@@ -61,7 +61,7 @@ namespace DocSo_PC.DAL
 
         public DataTable getDS_Doi()
         {
-            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri=VITRIDHN"
+            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
                         + " ,DienThoai=(select top 1 DIENTHOAI from SDT_DHN where DANHBO=TB_DULIEUKHACHHANG.DANHBO)"
                         + " from TB_DULIEUKHACHHANG order by LOTRINH";
             return _cDAL.ExecuteQuery_DataTable(sql);
@@ -69,7 +69,7 @@ namespace DocSo_PC.DAL
 
         public DataTable getDS_To(string MaTo)
         {
-            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri=VITRIDHN"
+            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
                 + " ,DienThoai=(select top 1 DIENTHOAI from SDT_DHN where DANHBO=TB_DULIEUKHACHHANG.DANHBO)"
                         + " from TB_DULIEUKHACHHANG where SUBSTRING(LOTRINH,3,2)>=(select TuMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") and SUBSTRING(LOTRINH,3,2)<=(select DenMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") order by LOTRINH";
             return _cDAL.ExecuteQuery_DataTable(sql);
@@ -77,7 +77,7 @@ namespace DocSo_PC.DAL
 
         public DataTable getDS_May(string May)
         {
-            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri=VITRIDHN"
+            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
                 + " ,DienThoai=(select top 1 DIENTHOAI from SDT_DHN where DANHBO=TB_DULIEUKHACHHANG.DANHBO)"
                         + " from TB_DULIEUKHACHHANG where SUBSTRING(LOTRINH,3,2)=" + May + " order by LOTRINH";
             return _cDAL.ExecuteQuery_DataTable(sql);
@@ -85,7 +85,7 @@ namespace DocSo_PC.DAL
 
         public DataTable getDS_DanhBo(string DanhBo)
         {
-            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri=VITRIDHN"
+            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
                 + " ,DienThoai=(select top 1 DIENTHOAI from SDT_DHN where DANHBO=TB_DULIEUKHACHHANG.DANHBO)"
                         + " from TB_DULIEUKHACHHANG where DanhBo='" + DanhBo + "' order by LOTRINH";
             return _cDAL.ExecuteQuery_DataTable(sql);
@@ -93,7 +93,7 @@ namespace DocSo_PC.DAL
 
         public DataTable getDS_DanhBo(string MaTo, string DanhBo)
         {
-            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri=VITRIDHN"
+            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
                 + " ,DienThoai=(select top 1 DIENTHOAI from SDT_DHN where DANHBO=TB_DULIEUKHACHHANG.DANHBO)"
                         + " from TB_DULIEUKHACHHANG where DanhBo='" + DanhBo + "' and SUBSTRING(LOTRINH,3,2)>=(select TuMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") and SUBSTRING(LOTRINH,3,2)<=(select DenMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") order by LOTRINH";
             return _cDAL.ExecuteQuery_DataTable(sql);
