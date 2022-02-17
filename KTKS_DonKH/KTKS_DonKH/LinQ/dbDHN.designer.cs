@@ -776,6 +776,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _VITRIDHN;
 		
+		private string _ViTriDHN2;
+		
 		private string _SODHN;
 		
 		private System.Nullable<System.DateTime> _NGAYTHAY;
@@ -880,6 +882,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCHIGOCChanged();
     partial void OnVITRIDHNChanging(string value);
     partial void OnVITRIDHNChanged();
+    partial void OnViTriDHN2Changing(string value);
+    partial void OnViTriDHN2Changed();
     partial void OnSODHNChanging(string value);
     partial void OnSODHNChanged();
     partial void OnNGAYTHAYChanging(System.Nullable<System.DateTime> value);
@@ -1545,6 +1549,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ViTriDHN2", DbType="NVarChar(50)")]
+		public string ViTriDHN2
+		{
+			get
+			{
+				return this._ViTriDHN2;
+			}
+			set
+			{
+				if ((this._ViTriDHN2 != value))
+				{
+					this.OnViTriDHN2Changing(value);
+					this.SendPropertyChanging();
+					this._ViTriDHN2 = value;
+					this.SendPropertyChanged("ViTriDHN2");
+					this.OnViTriDHN2Changed();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SODHN", DbType="NVarChar(255)")]
 		public string SODHN
 		{
@@ -2014,6 +2038,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _VITRIDHN;
 		
+		private string _ViTriDHN2;
+		
 		private System.Nullable<System.DateTime> _NGAYTHAY;
 		
 		private System.Nullable<System.DateTime> _NGAYKIEMDINH;
@@ -2132,6 +2158,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCHIGOCChanged();
     partial void OnVITRIDHNChanging(string value);
     partial void OnVITRIDHNChanged();
+    partial void OnViTriDHN2Changing(string value);
+    partial void OnViTriDHN2Changed();
     partial void OnNGAYTHAYChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYTHAYChanged();
     partial void OnNGAYKIEMDINHChanging(System.Nullable<System.DateTime> value);
@@ -2807,6 +2835,26 @@ namespace KTKS_DonKH.LinQ
 					this._VITRIDHN = value;
 					this.SendPropertyChanged("VITRIDHN");
 					this.OnVITRIDHNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ViTriDHN2", DbType="NVarChar(50)")]
+		public string ViTriDHN2
+		{
+			get
+			{
+				return this._ViTriDHN2;
+			}
+			set
+			{
+				if ((this._ViTriDHN2 != value))
+				{
+					this.OnViTriDHN2Changing(value);
+					this.SendPropertyChanging();
+					this._ViTriDHN2 = value;
+					this.SendPropertyChanged("ViTriDHN2");
+					this.OnViTriDHN2Changed();
 				}
 			}
 		}

@@ -258,6 +258,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.NgayKTXM,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
+                                    itemCTKTXM.BanChinh,
                                     STT_HTKT = itemtableHTKT.STT,
                                     itemCTKTXM.HienTrangKiemTra,
                                     itemCTKTXM.TieuThuTrungBinh,
@@ -282,6 +283,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                itemCTKTXM.BanChinh,
                                 STT_HTKT = itemtableHTKT.STT,
                                 itemCTKTXM.HienTrangKiemTra,
                                 itemCTKTXM.TieuThuTrungBinh,
@@ -306,6 +308,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                itemCTKTXM.BanChinh,
                                 STT_HTKT = itemtableHTKT.STT,
                                 itemCTKTXM.HienTrangKiemTra,
                                 itemCTKTXM.TieuThuTrungBinh,
@@ -335,6 +338,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                itemCTKTXM.BanChinh,
                                 STT_HTKT = itemtableHTKT.STT,
                                 itemCTKTXM.HienTrangKiemTra,
                                 itemCTKTXM.TieuThuTrungBinh,
@@ -362,6 +366,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.NgayKTXM,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
+                                    itemCTKTXM.BanChinh,
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
@@ -379,6 +384,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                itemCTKTXM.BanChinh,
                             };
                     return LINQToDataTable(query);
                 case "TBC":
@@ -396,6 +402,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                itemCTKTXM.BanChinh,
                             };
                     return LINQToDataTable(query);
                 default:
@@ -413,6 +420,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                itemCTKTXM.BanChinh,
                             };
                     return LINQToDataTable(query);
             }
@@ -437,6 +445,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.NgayKTXM,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
+                                    itemCTKTXM.BanChinh,
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
@@ -454,6 +463,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                itemCTKTXM.BanChinh,
                             };
                     return LINQToDataTable(query);
                 case "TBC":
@@ -471,6 +481,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                itemCTKTXM.BanChinh,
                             };
                     return LINQToDataTable(query);
                 default:
@@ -488,6 +499,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                itemCTKTXM.BanChinh,
                             };
                     return LINQToDataTable(query);
             }
@@ -514,6 +526,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.NgayKTXM,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
+                                    itemCTKTXM.BanChinh,
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
@@ -533,6 +546,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                itemCTKTXM.BanChinh,
                             };
                     return LINQToDataTable(query);
                 case "TBC":
@@ -552,6 +566,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                itemCTKTXM.BanChinh,
                             };
                     return LINQToDataTable(query);
                 default:
@@ -569,6 +584,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                itemCTKTXM.BanChinh,
                             };
                     return LINQToDataTable(query);
             }
@@ -597,6 +613,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NgayKTXM,
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
+                            itemCTKTXM.BanChinh,
                         };
             return LINQToDataTable(query);
         }
@@ -624,6 +641,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NgayKTXM,
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
+                            itemCTKTXM.BanChinh,
                         };
             return LINQToDataTable(query);
         }
@@ -650,6 +668,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NgayKTXM,
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
+                            itemCTKTXM.BanChinh,
                         };
             return LINQToDataTable(query);
         }
@@ -676,6 +695,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NgayKTXM,
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
+                            itemCTKTXM.BanChinh,
                         };
             return LINQToDataTable(query);
         }
@@ -702,6 +722,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NgayKTXM,
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
+                            itemCTKTXM.BanChinh,
                         };
             return LINQToDataTable(query);
         }
@@ -728,6 +749,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NgayKTXM,
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
+                            itemCTKTXM.BanChinh,
                         };
             return LINQToDataTable(query);
         }
@@ -755,6 +777,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NgayKTXM,
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
+                            itemCTKTXM.BanChinh,
                         };
             return LINQToDataTable(query);
         }
@@ -783,6 +806,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NgayKTXM,
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
+                            itemCTKTXM.BanChinh,
                         };
             return LINQToDataTable(query);
         }
@@ -811,6 +835,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NgayKTXM,
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
+                            itemCTKTXM.BanChinh,
                         };
             return LINQToDataTable(query);
         }
@@ -839,6 +864,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.DinhMuc,
                             itemCTKTXM.DinhMucMoi,
                             CreateBy = itemUser.HoTen,
+                            itemCTKTXM.BanChinh,
                         };
             return LINQToDataTable(query);
         }
@@ -863,6 +889,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NgayKTXM,
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
+                            itemCTKTXM.BanChinh,
                             itemCTKTXM.NoiDungBaoThay,
                         };
             return LINQToDataTable(query);
@@ -1228,7 +1255,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         //                    itemCTKTXM.DiaChi,
         //                    itemCTKTXM.NgayKTXM,
         //                    itemCTKTXM.NoiDungKiemTra,
-        //                    CreateBy = itemUser.HoTen,
+        //                    CreateBy = itemUser.HoTen,itemCTKTXM.BanChinh,
         //                };
         //    return LINQToDataTable(query);
         //}

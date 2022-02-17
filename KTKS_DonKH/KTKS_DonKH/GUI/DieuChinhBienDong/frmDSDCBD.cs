@@ -2129,15 +2129,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     else
                                         if (ctdcbd.DV != "")
                                             dr["DV"] = ctdcbd.DV;
-
-                                    if (ctdcbd.DCBD.MaDon != null)
-                                        dr["MaDon"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
-                                    else
-                                        if (ctdcbd.DCBD.MaDonTXL != null)
-                                            dr["MaDon"] = "TXL" + ctdcbd.DCBD.MaDonTXL.ToString().Insert(ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+                                    if (ctdcbd.DCBD.MaDonMoi != null)
+                                    {
+                                        DonTu_ChiTiet dontu_ChiTiet = _cDonTu.get_ChiTiet(ctdcbd.DCBD.MaDonMoi.Value, ctdcbd.STT.Value);
+                                        if (dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                                            dr["MaDon"] = ctdcbd.DCBD.MaDonMoi.ToString();
                                         else
-                                            if (ctdcbd.DCBD.MaDonTBC != null)
-                                                dr["MaDon"] = "TBC" + ctdcbd.DCBD.MaDonTBC.ToString().Insert(ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
+                                            dr["MaDon"] = ctdcbd.DCBD.MaDonMoi.Value.ToString() + "." + ctdcbd.STT.Value.ToString();
+                                    }
+                                    else
+                                        if (ctdcbd.DCBD.MaDon != null)
+                                            dr["MaDon"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
+                                        else
+                                            if (ctdcbd.DCBD.MaDonTXL != null)
+                                                dr["MaDon"] = "TXL" + ctdcbd.DCBD.MaDonTXL.ToString().Insert(ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+                                            else
+                                                if (ctdcbd.DCBD.MaDonTBC != null)
+                                                    dr["MaDon"] = "TBC" + ctdcbd.DCBD.MaDonTBC.ToString().Insert(ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
                                     dr["ChucVu"] = CTaiKhoan.ChucVu.Replace(" PHÒNG", "");
                                     dr["NguoiKy"] = CTaiKhoan.NguoiKy;
                                     dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
@@ -2178,14 +2186,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         if (ctdcbd.DV != "")
                                             dr["DV"] = ctdcbd.DV;
 
-                                    if (ctdcbd.DCBD.MaDon != null)
-                                        dr["MaDon"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
-                                    else
-                                        if (ctdcbd.DCBD.MaDonTXL != null)
-                                            dr["MaDon"] = "TXL" + ctdcbd.DCBD.MaDonTXL.ToString().Insert(ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+                                    if (ctdcbd.DCBD.MaDonMoi != null)
+                                    {
+                                        DonTu_ChiTiet dontu_ChiTiet = _cDonTu.get_ChiTiet(ctdcbd.DCBD.MaDonMoi.Value, ctdcbd.STT.Value);
+                                        if (dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count == 1)
+                                            dr["MaDon"] = ctdcbd.DCBD.MaDonMoi.ToString();
                                         else
-                                            if (ctdcbd.DCBD.MaDonTBC != null)
-                                                dr["MaDon"] = "TBC" + ctdcbd.DCBD.MaDonTBC.ToString().Insert(ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
+                                            dr["MaDon"] = ctdcbd.DCBD.MaDonMoi.Value.ToString() + "." + ctdcbd.STT.Value.ToString();
+                                    }
+                                    else
+                                        if (ctdcbd.DCBD.MaDon != null)
+                                            dr["MaDon"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
+                                        else
+                                            if (ctdcbd.DCBD.MaDonTXL != null)
+                                                dr["MaDon"] = "TXL" + ctdcbd.DCBD.MaDonTXL.ToString().Insert(ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+                                            else
+                                                if (ctdcbd.DCBD.MaDonTBC != null)
+                                                    dr["MaDon"] = "TBC" + ctdcbd.DCBD.MaDonTBC.ToString().Insert(ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
                                     dr["ChucVu"] = CTaiKhoan.ChucVu.Replace(" PHÒNG", "");
                                     dr["NguoiKy"] = CTaiKhoan.NguoiKy;
                                     dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
@@ -3329,7 +3346,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         hoadon.THUE = dchd1.THUE_END;
                                                         hoadon.PHI = dchd1.PHI_END;
                                                         if (dchd1.PHI_Thue_END != null)
-                                                        hoadon.ThueGTGT_TDVTN = (int)dchd1.PHI_Thue_END;
+                                                            hoadon.ThueGTGT_TDVTN = (int)dchd1.PHI_Thue_END;
                                                         hoadon.TONGCONG = dchd1.TONGCONG_END;
                                                         hoadon.ModifyDate = DateTime.Now;
                                                         _cThuTien.SubmitChanges();

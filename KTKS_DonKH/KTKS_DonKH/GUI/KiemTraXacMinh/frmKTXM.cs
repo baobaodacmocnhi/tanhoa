@@ -826,7 +826,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             //}
         }
 
-        private void dgvDSKetQuaKiemTra_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvDSKetQuaKiemTra_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -1187,6 +1187,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
 
 
     }
