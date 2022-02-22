@@ -953,6 +953,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdchd.TienNuoc_Start = int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", ""));
                         _ctdchd.ThueGTGT_Start = int.Parse(txtThueGTGT_Start.Text.Trim().Replace(".", ""));
                         _ctdchd.PhiBVMT_Start = int.Parse(txtPhiBVMT_Start.Text.Trim().Replace(".", ""));
+                        _ctdchd.PhiBVMT_Thue_Start = int.Parse(txtPhiBVMT_Thue_Start.Text.Trim().Replace(".", ""));
                         _ctdchd.TongCong_Start = int.Parse(txtTongCong_Start.Text.Trim().Replace(".", ""));
                         _ctdchd.ChiTietCu = txtChiTietCu.Text.Trim();
                         ///
@@ -1110,11 +1111,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdchd.TienNuoc_BD = int.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
                         _ctdchd.ThueGTGT_BD = int.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
                         _ctdchd.PhiBVMT_BD = int.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
+                        _ctdchd.PhiBVMT_Thue_BD = int.Parse(txtPhiBVMT_Thue_BD.Text.Trim().Replace(".", ""));
                         _ctdchd.TongCong_BD = int.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
                         ///
                         _ctdchd.TienNuoc_End = int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", ""));
                         _ctdchd.ThueGTGT_End = int.Parse(txtThueGTGT_End.Text.Trim().Replace(".", ""));
                         _ctdchd.PhiBVMT_End = int.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
+                        _ctdchd.PhiBVMT_Thue_End = int.Parse(txtPhiBVMT_Thue_End.Text.Trim().Replace(".", ""));
                         _ctdchd.TongCong_End = int.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
                         _ctdchd.ChiTietMoi = txtChiTietMoi.Text.Trim();
 
