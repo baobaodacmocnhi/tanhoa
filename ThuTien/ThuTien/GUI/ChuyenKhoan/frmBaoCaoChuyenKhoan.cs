@@ -1439,7 +1439,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 17];
+            object[,] arr = new object[dt.Rows.Count, 18];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             //int STT = 1;
@@ -1489,7 +1489,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             int columnStart = 1;
 
             int rowEnd = rowStart + dt.Rows.Count - 1;
-            int columnEnd = 17;
+            int columnEnd = 18;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
