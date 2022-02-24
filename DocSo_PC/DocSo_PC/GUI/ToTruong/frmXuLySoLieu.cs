@@ -327,15 +327,15 @@ namespace DocSo_PC.GUI.ToTruong
                         else
                             if (_docso.Ky == "03")
                             {
-                                lblKy1.Text = "01" + "/" + (_docso.Nam);
-                                lblKy2.Text = "02" + "/" + (_docso.Nam);
+                                lblKy1.Text = "02" + "/" + (_docso.Nam);
+                                lblKy2.Text = "01" + "/" + (_docso.Nam);
                                 lblKy3.Text = "12" + "/" + (_docso.Nam - 1);
-                                img = _cDocSo12.getHinh((_docso.Nam) + "01" + _docso.DanhBa);
+                                img = _cDocSo12.getHinh((_docso.Nam) + "02" + _docso.DanhBa);
                                 if (img != null)
                                     ptbKy1.Image = _cDocSo.byteArrayToImage(img);
                                 else
                                     ptbKy1.Image = Properties.Resources.no_image;
-                                img = _cDocSo12.getHinh((_docso.Nam) + "02" + _docso.DanhBa);
+                                img = _cDocSo12.getHinh((_docso.Nam) + "01" + _docso.DanhBa);
                                 if (img != null)
                                     ptbKy2.Image = _cDocSo.byteArrayToImage(img);
                                 else
@@ -413,13 +413,17 @@ namespace DocSo_PC.GUI.ToTruong
                         //if (wsDHN.tinhCodeTieuThu_CSM(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtCSM.Text.Trim()), out TieuThu, out GiaBan, out ThueGTGT, out PhiBVMT, out TongCong) == true)
                         if (wsDHN.tinhCodeTieuThu_TieuThu(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtTieuThu.Text.Trim()), out TTienNuoc, out TThueGTGT, out TTDVTN, out TThueTDVTN) == true)
                         {
+                            _docso.GhiChuDS = tbxGCDS.Text.Trim();
+                            _docso.GhiChuKH = tbxGCKH.Text.Trim();
+                            _docso.GhiChuTV = tbxGCTV.Text.Trim();
+
                             _docso.CodeMoi = cmbCodeMoi.SelectedValue.ToString();
                             _docso.TTDHNMoi = _cDocSo.getTTDHNCode(_docso.CodeMoi);
-                            _docso.CSCu = int.Parse(txtCSC.Text.Trim());
+                            //_docso.CSCu = int.Parse(txtCSC.Text.Trim());
                             _docso.CSMoi = int.Parse(txtCSM.Text.Trim());
                             //_docso.TieuThuMoi = TieuThu;
                             _docso.TieuThuMoi = int.Parse(txtTieuThu.Text.Trim());
-                            if (_docso.CodeMoi.Contains("F") == true)
+                            if (_docso.CodeMoi.Substring(0, 1).Contains("F") == true)
                                 _docso.CSMoi = _docso.CSCu + _docso.TieuThuMoi;
                             _docso.TienNuoc = TTienNuoc;
                             _docso.Thue = TThueGTGT;
@@ -594,6 +598,21 @@ namespace DocSo_PC.GUI.ToTruong
         private void dgvDanhSach_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             loaddgvDanhSach();
+        }
+
+        private void dgvDanhSach_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
+                {
+                    _docso = _cDocSo.get_DocSo(dgvDanhSach.CurrentRow.Cells["DocSoID"].Value.ToString());
+                    loadThongTin();
+                }
+            }
+            catch
+            {
+            }
         }
 
 
