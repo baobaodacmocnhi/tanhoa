@@ -62,6 +62,7 @@ namespace DocSo_PC.GUI.ToTruong
                     cmbTo.DisplayMember = "TenTo";
                     cmbTo.ValueMember = "MaTo";
                     loadMay(cmbTo.SelectedValue.ToString());
+                    btnReset.Visible = true;
                 }
                 else
                 {
@@ -613,6 +614,39 @@ namespace DocSo_PC.GUI.ToTruong
             catch
             {
             }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                if (CNguoiDung.updateChuyenListing == false)
+                    if (_cDocSo.checkChot_BillState(_docso.Nam.Value.ToString(), _docso.Ky, _docso.Dot) == true)
+                    {
+                        MessageBox.Show("Năm " + _docso.Nam.Value.ToString() + " Kỳ " + _docso.Ky + " Đợt " + _docso.Dot + " đã chuyển billing", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (_docso != null)
+                    {
+                        _docso.CodeMoi = null;
+                        _docso.TTDHNMoi = null;
+                        _docso.CSMoi = null;
+                        _docso.TieuThuMoi = null;
+                        _docso.TienNuoc = null;
+                        _docso.Thue = null;
+                        _docso.BVMT = null;
+                        _docso.TongTien = null;
+                        _docso.NVCapNhat = CNguoiDung.HoTen;
+                        _docso.NgayCapNhat = DateTime.Now;
+                        _cDocSo.SubmitChanges();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                        MessageBox.Show("Lỗi, Vui lòng chọn Người Dùng cần xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 

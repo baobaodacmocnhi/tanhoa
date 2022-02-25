@@ -139,7 +139,7 @@ namespace DocSo_PC.GUI.ToTruong
                         }
                         else
                         {
-                            dgvDanhSach.DataSource = _cDHN.getDS_May(cmbMay.SelectedValue.ToString());
+                            dgvDanhSach.DataSource = _cDHN.getDS_May(cmbDot.SelectedItem.ToString(),cmbMay.SelectedValue.ToString());
                         }
                     }
             }
@@ -154,19 +154,25 @@ namespace DocSo_PC.GUI.ToTruong
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_May(cmbMay.SelectedValue.ToString());
+                        dgvDanhSach.DataSource = _cDHN.getDS_May(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
                     }
             }
-            int TongViTri = 0, TongDienThoai = 0;
+            int TongViTri = 0, TongDTDHN = 0, TongDTKH = 0, TongDTTV = 0;
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
             {
                 if (item.Cells["ViTri1"].Value.ToString() != "")
                     TongViTri++;
-                if (item.Cells["DienThoai"].Value.ToString() != "")
-                    TongDienThoai++;
+                if (item.Cells["DTDHN"].Value.ToString() != "")
+                    TongDTDHN++;
+                if (item.Cells["DTKH"].Value.ToString() != "")
+                    TongDTKH++;
+                if (item.Cells["DTTV"].Value.ToString() != "")
+                    TongDTTV++;
             }
             txtTongViTri.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongViTri);
-            txtTongDienThoai.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDienThoai);
+            txtTongDTDHN.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDTDHN);
+            txtTongDTKH.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDTKH);
+            txtTongDTTV.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDTTV);
         }
 
         private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -307,6 +313,7 @@ namespace DocSo_PC.GUI.ToTruong
                             en.SoChinh = bool.Parse(dgvDienThoai["SoChinh_DT", e.RowIndex].Value.ToString());
                         else
                             en.SoChinh = false;
+                        en.DHN = true;
                         if (_cDHN.them_DienThoai(en) == true)
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -348,6 +355,7 @@ namespace DocSo_PC.GUI.ToTruong
                                         en.DanhBo = itemS;
                                         en.HoTen = item[0].ToString();
                                         en.DienThoai = item[3].ToString();
+
                                         if (_cDHN.checkExists_DienThoai(en.DanhBo, en.DienThoai) == false)
                                             _cDHN.them_DienThoai(en);
                                     }

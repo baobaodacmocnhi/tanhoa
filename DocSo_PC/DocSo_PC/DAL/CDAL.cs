@@ -19,12 +19,25 @@ namespace DocSo_PC.DAL
 
         public void SubmitChanges()
         {
-            _db.SubmitChanges();
+            try
+            {
+                _db.SubmitChanges();
+            }
+            catch
+            {
+                Refresh();
+            }
         }
 
         public void Refresh()
         {
-            _db = new dbDocSoDataContext();
+            try
+            {
+                _db = new dbDocSoDataContext();
+            }
+            catch
+            {
+            }
         }
 
         public byte[] imageToByteArray(Image imageIn)
@@ -185,7 +198,7 @@ namespace DocSo_PC.DAL
                 DataRow dr = dt.Rows[i];
                 for (int j = 0; j < dt.Columns.Count; j++)
                 {
-                    arr[i+1, j] = dr[j];
+                    arr[i + 1, j] = dr[j];
                 }
             }
             int rowStart = 1;

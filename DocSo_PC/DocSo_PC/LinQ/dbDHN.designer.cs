@@ -3763,6 +3763,12 @@ namespace DocSo_PC.LinQ
 		
 		private bool _SoChinh;
 		
+		private bool _DHN;
+		
+		private bool _KH;
+		
+		private bool _TV;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -3783,6 +3789,12 @@ namespace DocSo_PC.LinQ
     partial void OnHoTenChanged();
     partial void OnSoChinhChanging(bool value);
     partial void OnSoChinhChanged();
+    partial void OnDHNChanging(bool value);
+    partial void OnDHNChanged();
+    partial void OnKHChanging(bool value);
+    partial void OnKHChanged();
+    partial void OnTVChanging(bool value);
+    partial void OnTVChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -3874,6 +3886,66 @@ namespace DocSo_PC.LinQ
 					this._SoChinh = value;
 					this.SendPropertyChanged("SoChinh");
 					this.OnSoChinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DHN", DbType="Bit NOT NULL")]
+		public bool DHN
+		{
+			get
+			{
+				return this._DHN;
+			}
+			set
+			{
+				if ((this._DHN != value))
+				{
+					this.OnDHNChanging(value);
+					this.SendPropertyChanging();
+					this._DHN = value;
+					this.SendPropertyChanged("DHN");
+					this.OnDHNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KH", DbType="Bit NOT NULL")]
+		public bool KH
+		{
+			get
+			{
+				return this._KH;
+			}
+			set
+			{
+				if ((this._KH != value))
+				{
+					this.OnKHChanging(value);
+					this.SendPropertyChanging();
+					this._KH = value;
+					this.SendPropertyChanged("KH");
+					this.OnKHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TV", DbType="Bit NOT NULL")]
+		public bool TV
+		{
+			get
+			{
+				return this._TV;
+			}
+			set
+			{
+				if ((this._TV != value))
+				{
+					this.OnTVChanging(value);
+					this.SendPropertyChanging();
+					this._TV = value;
+					this.SendPropertyChanged("TV");
+					this.OnTVChanged();
 				}
 			}
 		}
