@@ -61,6 +61,7 @@ namespace DocSo_PC.GUI.ToTruong
             cmbViTri2.DataSource = dt2;
             cmbViTri2.DisplayMember = "KyHieu";
             cmbViTri2.ValueMember = "KyHieu";
+            cmbDot.SelectedIndex = 0;
             _flagLoadFirst = true;
         }
 
@@ -139,7 +140,7 @@ namespace DocSo_PC.GUI.ToTruong
                         }
                         else
                         {
-                            dgvDanhSach.DataSource = _cDHN.getDS_May(cmbDot.SelectedItem.ToString(),cmbMay.SelectedValue.ToString());
+                            dgvDanhSach.DataSource = _cDHN.getDS_May(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
                         }
                     }
             }
@@ -157,22 +158,22 @@ namespace DocSo_PC.GUI.ToTruong
                         dgvDanhSach.DataSource = _cDHN.getDS_May(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
                     }
             }
-            int TongViTri = 0, TongDTDHN = 0, TongDTKH = 0, TongDTTV = 0;
+            int TongViTri = 0, TongDienThoai = 0, TongDTKH = 0, TongDTDHN = 0;
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
             {
                 if (item.Cells["ViTri1"].Value.ToString() != "")
                     TongViTri++;
-                if (item.Cells["DTDHN"].Value.ToString() != "")
-                    TongDTDHN++;
+                if (item.Cells["DienThoai"].Value.ToString() != "")
+                    TongDienThoai++;
                 if (item.Cells["DTKH"].Value.ToString() != "")
                     TongDTKH++;
-                if (item.Cells["DTTV"].Value.ToString() != "")
-                    TongDTTV++;
+                if (item.Cells["DTDHN"].Value.ToString() != "")
+                    TongDTDHN++;
             }
             txtTongViTri.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongViTri);
-            txtTongDTDHN.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDTDHN);
+            txtTongDienThoai.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDienThoai);
             txtTongDTKH.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDTKH);
-            txtTongDTTV.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDTTV);
+            txtTongDTDHN.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDTDHN);
         }
 
         private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -276,6 +277,7 @@ namespace DocSo_PC.GUI.ToTruong
                                     en.SoChinh = bool.Parse(dgvDienThoai["SoChinh_DT", e.RowIndex].Value.ToString());
                                 else
                                     en.SoChinh = false;
+                                en.GhiChu = dgvDienThoai["GhiChu_DT", e.RowIndex].Value.ToString();
                                 en.ModifyBy = CNguoiDung.MaND;
                                 en.ModifyDate = DateTime.Now;
                                 _cDHN.SubmitChanges();
@@ -313,7 +315,7 @@ namespace DocSo_PC.GUI.ToTruong
                             en.SoChinh = bool.Parse(dgvDienThoai["SoChinh_DT", e.RowIndex].Value.ToString());
                         else
                             en.SoChinh = false;
-                        en.DHN = true;
+                        en.GhiChu = dgvDienThoai["GhiChu_DT", e.RowIndex].Value.ToString();
                         if (_cDHN.them_DienThoai(en) == true)
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -332,36 +334,59 @@ namespace DocSo_PC.GUI.ToTruong
 
         private void btnChonFile_Click(object sender, EventArgs e)
         {
+            string error = "";
             try
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
-                    OpenFileDialog dialog = new OpenFileDialog();
-                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
-                    dialog.Multiselect = false;
+                    //OpenFileDialog dialog = new OpenFileDialog();
+                    //dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                    //dialog.Multiselect = false;
 
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                        if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    //if (dialog.ShowDialog() == DialogResult.OK)
+                    //    if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    //    {
+                    //        DataTable dtExcel = _cDocSo.ExcelToDataTable(dialog.FileName);
+
+                    //        foreach (DataRow item in dtExcel.Rows)
+                    //            if (!string.IsNullOrEmpty(item[2].ToString()))
+                    //            {
+                    //                string[] DanhBos = item[2].ToString().Split(',');
+                    //                foreach (string itemS in DanhBos)
+                    //                {
+                    //                    SDT_DHN en = new SDT_DHN();
+                    //                    en.DanhBo = itemS;
+                    //                    en.HoTen = item[0].ToString();
+                    //                    en.DienThoai = item[3].ToString();
+
+                    //                    if (_cDHN.checkExists_DienThoai(en.DanhBo, en.DienThoai) == false)
+                    //                        _cDHN.them_DienThoai(en);
+                    //                }
+                    //            }
+                    //        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //        btnXem.PerformClick();
+                    //    }
+                    DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select DanhBo=DanhBa,DienThoai=SDT from KhachHang");
+                    foreach (DataRow item in dt.Rows)
+                        if (item["DienThoai"].ToString().Trim() != "")
                         {
-                            DataTable dtExcel = _cDocSo.ExcelToDataTable(dialog.FileName);
-
-                            foreach (DataRow item in dtExcel.Rows)
-                                if (!string.IsNullOrEmpty(item[2].ToString()))
+                            error = item["DanhBo"].ToString();
+                            string[] DienThoais = item["DienThoai"].ToString().Split('-');
+                            foreach (string itemDT in DienThoais)
+                            {
+                                if (itemDT.Trim() != "" && itemDT.Trim().Length < 15 && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString(), itemDT.Trim()) == false)
                                 {
-                                    string[] DanhBos = item[2].ToString().Split(',');
-                                    foreach (string itemS in DanhBos)
+                                    SDT_DHN en = new SDT_DHN();
+                                    en.DanhBo = item["DanhBo"].ToString();
+                                    en.DienThoai = itemDT.Trim();
+                                    en.HoTen = "";
+                                    en.SoChinh = true;
+                                    en.GhiChu = "Đ. QLĐHN";
+                                    if (_cDHN.them_DienThoai(en) == true)
                                     {
-                                        SDT_DHN en = new SDT_DHN();
-                                        en.DanhBo = itemS;
-                                        en.HoTen = item[0].ToString();
-                                        en.DienThoai = item[3].ToString();
-
-                                        if (_cDHN.checkExists_DienThoai(en.DanhBo, en.DienThoai) == false)
-                                            _cDHN.them_DienThoai(en);
                                     }
                                 }
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            btnXem.PerformClick();
+                            }
                         }
                 }
                 else
@@ -369,7 +394,7 @@ namespace DocSo_PC.GUI.ToTruong
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

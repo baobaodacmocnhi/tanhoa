@@ -27,10 +27,11 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\192.168.90.9\BaoBao%24\DocSo_PC\</UpdateUrl>
     <TargetCulture>vi-VN</TargetCulture>
+    <ProductName>Quản Lý Đọc Số</ProductName>
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>62</ApplicationRevision>
+    <ApplicationRevision>67</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

@@ -62,7 +62,7 @@ namespace DocSo_PC.GUI.ToTruong
                     cmbTo.DisplayMember = "TenTo";
                     cmbTo.ValueMember = "MaTo";
                     loadMay(cmbTo.SelectedValue.ToString());
-                    btnReset.Visible = true;
+
                 }
                 else
                 {
@@ -71,6 +71,8 @@ namespace DocSo_PC.GUI.ToTruong
                 }
                 _flagLoadFirst = true;
                 loadCodeMoi();
+                if (CNguoiDung.Admin)
+                    btnReset.Visible = true;
             }
             catch (Exception ex)
             {
@@ -432,6 +434,7 @@ namespace DocSo_PC.GUI.ToTruong
                             _docso.TongTien = TTienNuoc + TThueGTGT + TTDVTN + TThueTDVTN;
                             _docso.NVCapNhat = CNguoiDung.HoTen;
                             _docso.NgayCapNhat = DateTime.Now;
+                            _docso.StaCapNhat = "1";
                             _cDocSo.SubmitChanges();
                             dgvDanhSach.CurrentRow.Cells["TTDHNMoi"].Value = _docso.TTDHNMoi;
                             dgvDanhSach.CurrentRow.Cells["CodeMoi"].Value = _docso.CodeMoi;
