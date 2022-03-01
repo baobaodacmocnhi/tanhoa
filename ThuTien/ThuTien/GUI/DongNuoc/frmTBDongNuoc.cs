@@ -320,6 +320,9 @@ namespace ThuTien.GUI.DongNuoc
                         }
 
                         DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                        dr["Ngay"] = DateTime.Parse(item["CreateDate"].ToString()).Day.ToString("00");
+                        dr["Thang"] = DateTime.Parse(item["CreateDate"].ToString()).Month.ToString("00");
+                        dr["Nam"] = DateTime.Parse(item["CreateDate"].ToString()).Year.ToString("0000");
                         dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-");
                         dr["ThemHoaDon"] = item["ThemHoaDon"];
                         dr["HoTen"] = item["HoTen"];

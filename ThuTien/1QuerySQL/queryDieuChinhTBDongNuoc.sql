@@ -26,3 +26,10 @@ and CAST(NGAYGIAITRACH as date)>='20201201' and CAST(NGAYGIAITRACH as date)<='20
 and  exists(select * from TT_KQDongNuoc where MaDN=dn.MaDN)
 --and (select COUNT(*) from TT_CTDongNuoc where MaDN=dn.MaDN)=(select COUNT(*) from TT_CTDongNuoc a,HOADON b where a.MaHD=b.ID_HOADON and MaDN=dn.MaDN and NGAYGIAITRACH is not null)
 --and (select COUNT(*) from TT_CTDongNuoc where MaDN=dn.MaDN)=1
+
+--update phimonuoc
+select * from TT_DongNuoc dn, TT_KQDongNuoc kq
+where dn.MaDN=kq.MaDN and dn.Huy=0 and kq.MoNuoc=0 and kq.TroNgaiMN=0 and kq.Co>25
+
+--update TT_KQDongNuoc set PhiMoNuoc=259000 where MaKQDN in (select MaKQDN from TT_DongNuoc dn, TT_KQDongNuoc kq
+--where dn.MaDN=kq.MaDN and dn.Huy=0 and kq.MoNuoc=0 and kq.TroNgaiMN=0 and kq.Co<=25)
