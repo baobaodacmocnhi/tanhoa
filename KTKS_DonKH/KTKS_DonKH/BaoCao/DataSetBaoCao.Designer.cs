@@ -15576,7 +15576,7 @@ namespace KTKS_DonKH.BaoCao {
                         int GiaBanMoi, 
                         int ThueGTGTMoi, 
                         int PhiBVMTMoi, 
-                        string PhiBVMT_ThueMoi, 
+                        int PhiBVMT_ThueMoi, 
                         int TongCongMoi, 
                         string TangGiam, 
                         string NhanVien, 
@@ -15773,7 +15773,7 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnThueGTGTMoi);
                 this.columnPhiBVMTMoi = new global::System.Data.DataColumn("PhiBVMTMoi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhiBVMTMoi);
-                this.columnPhiBVMT_ThueMoi = new global::System.Data.DataColumn("PhiBVMT_ThueMoi", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnPhiBVMT_ThueMoi = new global::System.Data.DataColumn("PhiBVMT_ThueMoi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhiBVMT_ThueMoi);
                 this.columnTongCongMoi = new global::System.Data.DataColumn("TongCongMoi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongCongMoi);
@@ -35954,10 +35954,10 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PhiBVMT_ThueMoi {
+            public int PhiBVMT_ThueMoi {
                 get {
                     try {
-                        return ((string)(this[this.tableTruyThuTienNuoc.PhiBVMT_ThueMoiColumn]));
+                        return ((int)(this[this.tableTruyThuTienNuoc.PhiBVMT_ThueMoiColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'PhiBVMT_ThueMoi\' in table \'TruyThuTienNuoc\' is DBNull.", e);
