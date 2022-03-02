@@ -101,7 +101,7 @@ namespace DocSo_PC.GUI.ToTruong
                     string sql = "";
                     foreach (DataGridViewRow item in dgvDanhSach.SelectedRows)
                     {
-                        sql += " update DocSo set PhanMay='" + cmbMayTangCuong.SelectedItem.ToString() + "' where DocSoID='" + item.Cells["DocSoID"].Value.ToString() + "'";
+                        sql += " update DocSo set PhanMay='" + int.Parse(cmbMayTangCuong.SelectedItem.ToString()).ToString("00") + "' where DocSoID='" + item.Cells["DocSoID"].Value.ToString() + "'";
                     }
                     CDocSo._cDAL.ExecuteNonQuery(sql);
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -117,7 +117,7 @@ namespace DocSo_PC.GUI.ToTruong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvDanhSach.DataSource = _cDocSo.getDS_GiaoTangCuong(cmbMay.SelectedItem.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
+                dgvDanhSach.DataSource = _cDocSo.getDS_GiaoTangCuong(cmbMay.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
         }
 
 

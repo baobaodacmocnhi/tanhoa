@@ -348,7 +348,7 @@ namespace DocSo_PC.DAL.Doi
         public DataTable getDS_XuLy_DanhBo(string Nam, string Ky, string DanhBo)
         {
             string sql = "select ds.*,BaoThayDK=case when baothay.DanhBo is not null then 'true' else 'false' end"
-                        + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end"
+                        + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end,GCKH=GhiChuKH"
                         + " ,CSGo=case when baothay.DanhBo is not null then CAST(baothay.CSGo as varchar(10)) else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
                         + " ,CSGan=case when baothay.DanhBo is not null then baothay.CSGan else case when thwater.DanhBo is not null then thwater.CSGan else '' end end"
                         + " from DocSo  ds left join (SELECT DanhBo=REPLACE(DANHBO,'-',''),CSGan=ChiSo,CSGo=TCTB_CSGo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null) thwater on ds.DanhBa=thwater.DanhBo"
@@ -360,7 +360,7 @@ namespace DocSo_PC.DAL.Doi
         public DataTable getDS_XuLy_DanhBo(string MaTo, string Nam, string Ky, string DanhBo)
         {
             string sql = "select ds.*,BaoThayDK=case when baothay.DanhBo is not null then 'true' else 'false' end"
-                        + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end"
+                        + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end,GCKH=GhiChuKH"
                         + " ,CSGo=case when baothay.DanhBo is not null then CAST(baothay.CSGo as varchar(10)) else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
                         + " ,CSGan=case when baothay.DanhBo is not null then baothay.CSGan else case when thwater.DanhBo is not null then thwater.CSGan else '' end end"
                         + " from DocSo ds left join (SELECT DanhBo=REPLACE(DANHBO,'-',''),CSGan=ChiSo,CSGo=TCTB_CSGo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null) thwater on ds.DanhBa=thwater.DanhBo"
@@ -387,7 +387,7 @@ namespace DocSo_PC.DAL.Doi
                 else
                     Code = " and CodeMoi like '" + Code + "'";
             string sql = "select ds.*,BaoThayDK=case when baothay.DanhBo is not null then 'true' else 'false' end"
-                        + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end"
+                        + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end,GCKH=GhiChuKH"
                         + " ,CSGo=case when baothay.DanhBo is not null then CAST(baothay.CSGo as varchar(10)) else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
                         + " ,CSGan=case when baothay.DanhBo is not null then baothay.CSGan else case when thwater.DanhBo is not null then thwater.CSGan else '' end end"
                         + " from DocSo ds left join (SELECT DanhBo=REPLACE(DANHBO,'-',''),CSGan=ChiSo,CSGo=TCTB_CSGo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null) thwater on ds.DanhBa=thwater.DanhBo"
