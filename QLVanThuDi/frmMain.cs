@@ -37,7 +37,8 @@ namespace QLVanThu
 
         private void LoadDSVanThuDiFilter()
         {
-            string expression = String.Format("(NgayThangVB like '%{0}%' or SoKyHieuVB like '%{0}%' or LoaiTrichYeuNoiDung like '%{0}%')", txtNoiDungTimKiem.Text.Trim());
+            string expression = String.Format("(SoKyHieuVB like '%{0}%' or LoaiTrichYeuNoiDung like '%{0}%')", txtNoiDungTimKiem.Text.Trim());
+            //string expression = String.Format("(NgayThangVB like '%{0}%' or SoKyHieuVB like '%{0}%' or LoaiTrichYeuNoiDung like '%{0}%')", txtNoiDungTimKiem.Text.Trim());
             //if (chkCongVanDen.Checked)
             //    expression = "LoaiVBGID=3 and " + expression;
             //else
