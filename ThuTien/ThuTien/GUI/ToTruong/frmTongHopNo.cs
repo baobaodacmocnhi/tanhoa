@@ -581,7 +581,8 @@ namespace ThuTien.GUI.ToTruong
                 dr["GiaBan"] = item.GiaBan.Value.ToString();
                 dr["ThueGTGT"] = item.ThueGTGT.Value.ToString();
                 dr["PhiBVMT"] = item.PhiBVMT.Value.ToString();
-                dr["PhiBVMT_Thue"] = item.PhiBVMT_Thue.Value.ToString();
+                if (item.PhiBVMT_Thue != null)
+                    dr["PhiBVMT_Thue"] = item.PhiBVMT_Thue.Value.ToString();
                 dr["TongCong"] = item.TongCong.Value.ToString();
                 if (item.TienDu != null)
                     dr["TienDu"] = item.TienDu.Value.ToString();
