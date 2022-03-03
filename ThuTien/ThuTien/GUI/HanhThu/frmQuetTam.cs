@@ -686,7 +686,7 @@ namespace ThuTien.GUI.HanhThu
                         int SoPhieu = 0;
                         foreach (DataRow itemChild in drTemp)
                         {
-                            Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
+                            Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "; ";
                             TongCong += int.Parse(itemChild["TongCong"].ToString());
                             if (string.IsNullOrEmpty(itemChild["SoPhieu"].ToString()) == true)
                             {
