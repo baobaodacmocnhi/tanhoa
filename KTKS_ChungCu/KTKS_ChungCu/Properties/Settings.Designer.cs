@@ -26,8 +26,8 @@ namespace KTKS_ChungCu.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=113.161.88.180,1133;Initial Catalog=KTKS_DonKH;Persist Security Info=" +
-            "True;User ID=sa;Password=db11@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;Use" +
+            "r ID=sa;Password=db11@tanhoa")]
         public string KTKS_DonKHConnectionString {
             get {
                 return ((string)(this["KTKS_DonKHConnectionString"]));
@@ -37,8 +37,8 @@ namespace KTKS_ChungCu.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=113.161.88.180,1933;Initial Catalog=HOADON_TA;Persist Security Info=T" +
-            "rue;User ID=sa;Password=db9@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=" +
+            "sa;Password=db9@tanhoa")]
         public string HOADON_TAConnectionString {
             get {
                 return ((string)(this["HOADON_TAConnectionString"]));
@@ -48,8 +48,8 @@ namespace KTKS_ChungCu.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=113.161.88.180,1133;Initial Catalog=ChungCu;Persist Security Info=Tru" +
-            "e;User ID=sa;Password=db11@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=serverg8-01;Initial Catalog=ChungCu;Persist Security Info=True;User I" +
+            "D=sa;Password=db11@tanhoa")]
         public string ChungCuConnectionString {
             get {
                 return ((string)(this["ChungCuConnectionString"]));

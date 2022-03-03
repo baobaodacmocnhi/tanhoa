@@ -64,6 +64,7 @@ namespace KTKS_ChungCu
             txtPhong.Text = "";
             cmbLoaiCT.SelectedIndex = 0;
             txtMaCT.Text = "";
+            txtCCCD.Text = "";
             txtHoTenCT.Text = "";
             txtSoNKDangKy.Text = "";
             txtGhiChu.Text = "";
@@ -125,6 +126,7 @@ namespace KTKS_ChungCu
                         DanhSachChungTu entity = new DanhSachChungTu();
                         ChungTu chungtu = new ChungTu();
                         entity.MaCT = txtMaCT.Text.Trim();
+                        entity.CCCD = txtCCCD.Text.Trim();
                         entity.HoTen = txtHoTenCT.Text.Trim();
                         entity.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                         entity.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
@@ -134,6 +136,7 @@ namespace KTKS_ChungCu
                             entity.STT = int.Parse(txtSTT.Text.Trim());
                         entity.DanhBo = txtDanhBo.Text.Trim();
                         entity.MaCT = txtMaCT.Text.Trim();
+                        entity.CCCD = txtCCCD.Text.Trim();
                         entity.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
                         //if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
                         //    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
@@ -149,6 +152,7 @@ namespace KTKS_ChungCu
                         lichsuchungtu.Phong = txtPhong.Text.Trim();
                         lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
                         lichsuchungtu.MaCT = txtMaCT.Text.Trim();
+                        lichsuchungtu.CCCD = txtCCCD.Text.Trim();
                         lichsuchungtu.DanhBo = txtDanhBo.Text.Trim();
                         lichsuchungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                         lichsuchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
@@ -170,6 +174,7 @@ namespace KTKS_ChungCu
                                 //txtPhong.Text = "";
                                 cmbLoaiCT.SelectedIndex = 0;
                                 txtMaCT.Text = "";
+                                txtCCCD.Text = "";
                                 txtHoTenCT.Text = "";
                                 txtSoNKTong.Text = "";
                                 txtSoNKDangKy.Text = "";
@@ -207,6 +212,7 @@ namespace KTKS_ChungCu
                             DanhSachChungTu entity = _cDSCT.Get(int.Parse(dgvKhachHangChungCu["ID", _selectedindex].Value.ToString()));
                             //ChungTu chungtu = new ChungTu();
                             entity.MaCT = txtMaCT.Text.Trim();
+                            entity.CCCD = txtCCCD.Text.Trim();
                             entity.HoTen = txtHoTenCT.Text.Trim();
                             entity.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                             entity.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
@@ -215,6 +221,7 @@ namespace KTKS_ChungCu
                             entity.STT = int.Parse(txtSTT.Text.Trim());
                             entity.DanhBo = txtDanhBo.Text.Trim();
                             entity.MaCT = txtMaCT.Text.Trim();
+                            entity.CCCD = txtCCCD.Text.Trim();
                             entity.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
                             //if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
                             //    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
@@ -231,6 +238,7 @@ namespace KTKS_ChungCu
                             lichsuchungtu.Phong = txtPhong.Text.Trim();
                             lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
                             lichsuchungtu.MaCT = txtMaCT.Text.Trim();
+                            lichsuchungtu.CCCD = txtCCCD.Text.Trim();
                             lichsuchungtu.DanhBo = txtDanhBo.Text.Trim();
                             lichsuchungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                             lichsuchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
@@ -249,6 +257,7 @@ namespace KTKS_ChungCu
                                 txtPhong.Text = "";
                                 cmbLoaiCT.SelectedIndex = 0;
                                 txtMaCT.Text = "";
+                                txtCCCD.Text = "";
                                 txtHoTenCT.Text = "";
                                 txtSoNKTong.Text = "";
                                 txtSoNKDangKy.Text = "";
@@ -276,6 +285,7 @@ namespace KTKS_ChungCu
                 txtPhong.Text = dgvKhachHangChungCu["Phong", e.RowIndex].Value.ToString();
                 cmbLoaiCT.SelectedValue = int.Parse(dgvKhachHangChungCu["MaLCT", e.RowIndex].Value.ToString());
                 txtMaCT.Text = dgvKhachHangChungCu["MaCT", e.RowIndex].Value.ToString();
+                txtCCCD.Text = dgvKhachHangChungCu["CCCD", e.RowIndex].Value.ToString();
                 txtHoTenCT.Text = dgvKhachHangChungCu["HoTen", e.RowIndex].Value.ToString();
                 txtSoNKTong.Text = dgvKhachHangChungCu["SoNKTong", e.RowIndex].Value.ToString();
                 txtSoNKDangKy.Text = dgvKhachHangChungCu["SoNKDangKy", e.RowIndex].Value.ToString();

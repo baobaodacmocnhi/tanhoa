@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 15, 14.5" name="dbChungCu">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.5, 15.25" name="dbChungCu">
   <DataContextMoniker Name="/dbChungCuDataContext" />
   <nestedChildShapes>
     <classShape Id="26276295-dafa-4d68-a0d3-67a2ec5378dd" absoluteBounds="0.75, 5.5, 2, 4.6554182942708335">
@@ -8,28 +8,10 @@
         <elementListCompartment Id="b49c8ed0-714d-4f48-b8db-76d2f5eb7d5b" absoluteBounds="0.765, 5.96, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="52933e03-652e-48b2-8eec-5b210ac785b5" absoluteBounds="6.75, 0.75, 2, 8.1168440755208326">
-      <DataClassMoniker Name="/dbChungCuDataContext/LichSuChungTu" />
-      <nestedChildShapes>
-        <elementListCompartment Id="8afb8479-75a1-415f-a9ef-b4af0d4aeacd" absoluteBounds="6.765, 1.21, 1.9700000000000002, 7.556844075520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="012951b0-659b-436d-969d-da5fb8f38519" absoluteBounds="3.5, 1.5, 2, 12.732078450520834">
       <DataClassMoniker Name="/dbChungCuDataContext/CTChungTu" />
       <nestedChildShapes>
         <elementListCompartment Id="3b77fdb6-baef-496e-a009-3f3d98c36d3a" absoluteBounds="3.515, 1.96, 1.9700000000000002, 12.172078450520832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="47a28101-379f-4dec-94e7-e3ee6ce6f801" absoluteBounds="9.75, 0.75, 2, 13.5012841796875">
-      <DataClassMoniker Name="/dbChungCuDataContext/DanhSachChungTu" />
-      <nestedChildShapes>
-        <elementListCompartment Id="3fe0ae1c-bd7a-467b-a7a1-516477849aa1" absoluteBounds="9.765, 1.21, 1.9700000000000002, 12.9412841796875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="7659949f-9b65-4f86-b878-dc4dfdfebf75" absoluteBounds="12.75, 0.75, 2, 13.5012841796875">
-      <DataClassMoniker Name="/dbChungCuDataContext/DanhSachChungTu_Xoa" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ff10813a-9bfe-47b6-a540-7323238a7d78" absoluteBounds="12.765, 1.21, 1.9700000000000002, 12.9412841796875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(2.75 : 7.82770914713542); (3.5 : 7.82770914713542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
@@ -39,5 +21,23 @@
         <classShapeMoniker Id="012951b0-659b-436d-969d-da5fb8f38519" />
       </nodes>
     </associationConnector>
+    <classShape Id="58acd67a-3b0a-48a7-9d6c-3d0ca83a5265" absoluteBounds="9.625, 1, 2, 13.693585611979165">
+      <DataClassMoniker Name="/dbChungCuDataContext/DanhSachChungTu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="852dcbf2-c4f5-4e77-b16e-d741217b0511" absoluteBounds="9.64, 1.46, 1.9700000000000002, 13.133585611979166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d20d1b45-2db9-42b5-9327-d8cbad11d96c" absoluteBounds="12.25, 1.125, 2, 13.885887044270833">
+      <DataClassMoniker Name="/dbChungCuDataContext/DanhSachChungTu_Xoa" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cc493931-c202-49dd-a99e-6271ad8eef69" absoluteBounds="12.265, 1.585, 1.9700000000000002, 13.325887044270832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b3de6e4d-4be4-4c45-961e-d8bbde5d8862" absoluteBounds="6.375, 1.25, 2, 8.3091455078125">
+      <DataClassMoniker Name="/dbChungCuDataContext/LichSuChungTu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8407d539-dd8b-4d28-960b-d4b4f7937214" absoluteBounds="6.39, 1.71, 1.9700000000000002, 7.7491455078125009" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
