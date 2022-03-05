@@ -13,7 +13,7 @@ namespace DocSo_PC.DAL
     class CLichDocSo
     {
         public static dbTrungTamKhachHangDataContext _db = new dbTrungTamKhachHangDataContext();
-        public static CConnection _cDAL = new CConnection("Data Source=serverg8-01;Initial Catalog=TRUNGTAMKHACHHANG;Persist Security Info=True;User ID=sa;Password=db11@tanhoa");
+        public static CConnection _cDAL = new CConnection(_db.Connection.ConnectionString);
 
         public void SubmitChanges()
         {

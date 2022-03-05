@@ -15,9 +15,9 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\192.168.90.9\BaoBao%24\DocSo_PC\</PublishUrl>
+    <PublishUrl>C:\Users\Admin\Desktop\DocSoWFH\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Unc</InstallFrom>
+    <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>\\192.168.90.9\BaoBao%24\DocSo_PC\</UpdateUrl>
+    <UpdateUrl>http://113.161.88.180:81/DocSoWFH/</UpdateUrl>
     <TargetCulture>vi-VN</TargetCulture>
     <ProductName>Quản Lý Đọc Số</ProductName>
     <PublisherName>T.CNTT</PublisherName>
@@ -97,6 +97,7 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -128,6 +129,7 @@
     <Compile Include="DAL\CDocSo12.cs" />
     <Compile Include="DAL\CThuongVu.cs" />
     <Compile Include="DAL\QuanTri\CMayDS.cs" />
+    <Compile Include="DAL\sDHN\CsDHN.cs" />
     <Compile Include="DAL\ToTruong\CDocSoTruoc.cs" />
     <Compile Include="DAL\VanThu\CCongVanDen.cs" />
     <Compile Include="DAL\VanThu\ImageUtil.cs" />
@@ -264,6 +266,12 @@
     </Compile>
     <Compile Include="GUI\QuanTri\frmTo.Designer.cs">
       <DependentUpon>frmTo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\sDHN\frmDSsDHN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\sDHN\frmDSsDHN.Designer.cs">
+      <DependentUpon>frmDSsDHN.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToTruong\frmDocSoTruoc.cs">
       <SubType>Form</SubType>
@@ -406,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmLichDocSo.resx">
       <DependentUpon>frmLichDocSo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\sDHN\frmDSsDHN.resx">
+      <DependentUpon>frmDSsDHN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmDocSoTruoc.resx">
       <DependentUpon>frmDocSoTruoc.cs</DependentUpon>

@@ -13,6 +13,7 @@ using DocSo_PC.GUI.ToTruong;
 using DocSo_PC.GUI.HeThong;
 using DocSo_PC.GUI.VanThu;
 using DocSo_PC.GUI.BaoCao;
+using DocSo_PC.GUI.sDHN;
 
 namespace DocSo_PC
 {
@@ -341,6 +342,17 @@ namespace DocSo_PC
             if (CNguoiDung.CheckQuyen("mnuThongKe", "Xem"))
             {
                 frmThongKe frm = new frmThongKe();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuDSsDHN_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuDSsDHN", "Xem"))
+            {
+                frmDSsDHN frm = new frmDSsDHN();
                 OpenForm(frm);
             }
             else
