@@ -174,13 +174,13 @@ namespace DocSo_PC.DAL.sDHN
                     dt.Columns.Add("CBMoHop", typeof(System.Boolean));
                     dt.Columns.Add("ThoiGianCapNhat", typeof(System.DateTime));
                     DataRow dr = dt.NewRow();
-                    dr["CBPinYeu"] = bool.Parse(obj["IsLowBatt"]);
-                    dr["CBRoRi"] = bool.Parse(obj["IsLeakage"]);
-                    dr["CBQuaDong"] = bool.Parse(obj["IsOverLoad"]);
-                    dr["CBChayNguoc"] = bool.Parse(obj["IsReverse"]);
-                    dr["CBNamCham"] = bool.Parse(obj["IsTampering"]);
-                    dr["CBKhoOng"] = bool.Parse(obj["IsDry"]);
-                    dr["CBMoHop"] = bool.Parse(obj["IsOpenBox"]);
+                    dr["CBPinYeu"] = obj["IsLowBatt"];
+                    dr["CBRoRi"] = obj["IsLeakage"];
+                    dr["CBQuaDong"] = obj["IsOverLoad"];
+                    dr["CBChayNguoc"] = obj["IsReverse"];
+                    dr["CBNamCham"] = obj["IsTampering"];
+                    dr["CBKhoOng"] = obj["IsDry"];
+                    dr["CBMoHop"] = obj["IsOpenBox"];
                     dr["ThoiGianCapNhat"] = DateTime.Parse(obj["TimeUpdate"]);
                     dt.Rows.Add(dr);
                     return dt;
@@ -213,11 +213,11 @@ namespace DocSo_PC.DAL.sDHN
                     var obj = jss.Deserialize<dynamic>(result);
                     DataTable dt = new DataTable();
                     dt.Columns.Add("Pin", typeof(System.Int32));
-                    dt.Columns.Add("ThoiLuongPinConLai", typeof(System.Int32));
+                    dt.Columns.Add("ThoiLuongPinConLai", typeof(System.String));
                     dt.Columns.Add("ThoiGianCapNhat", typeof(System.DateTime));
                     DataRow dr = dt.NewRow();
-                    dr["Pin"] = Int32.Parse(obj["batt_percent"]);
-                    dr["ThoiLuongPinConLai"] = Int32.Parse(obj["batt_duration"]);
+                    dr["Pin"] = obj["batt_percent"];
+                    dr["ThoiLuongPinConLai"] = obj["batt_duration"];
                     dr["ThoiGianCapNhat"] = DateTime.Parse(obj["TimeUpdate"]);
                     dt.Rows.Add(dr);
                     return dt;
@@ -251,7 +251,7 @@ namespace DocSo_PC.DAL.sDHN
                     DataTable dt = new DataTable();
                     dt.Columns.Add("ChiSo", typeof(System.Double));
                     dt.Columns.Add("Pin", typeof(System.Int32));
-                    dt.Columns.Add("ThoiLuongPinConLai", typeof(System.Int32));
+                    dt.Columns.Add("ThoiLuongPinConLai", typeof(System.String));
                     dt.Columns.Add("LuuLuong", typeof(System.Double));
                     dt.Columns.Add("ChatLuongSong", typeof(System.String));
                     dt.Columns.Add("CBPinYeu", typeof(System.Boolean));
@@ -267,23 +267,92 @@ namespace DocSo_PC.DAL.sDHN
                     dt.Columns.Add("ChuKy", typeof(System.Int32));
                     dt.Columns.Add("ThoiGianCapNhat", typeof(System.DateTime));
                     DataRow dr = dt.NewRow();
-                    dr["ChiSo"] = Double.Parse(obj["Volume"]);
-                    dr["Pin"] = Int32.Parse(obj["Battery"]);
-                    dr["ThoiLuongPinConLai"] = Int32.Parse(obj["RemainBatt"]);
-                    dr["LuuLuong"] = Double.Parse(obj["Flow"]);
-                    dr["CBPinYeu"] = bool.Parse(obj["IsLowBatt"]);
-                    dr["CBRoRi"] = bool.Parse(obj["IsLeakage"]);
-                    dr["CBQuaDong"] = bool.Parse(obj["IsOverLoad"]);
-                    dr["CBChayNguoc"] = bool.Parse(obj["IsReverse"]);
-                    dr["CBNamCham"] = bool.Parse(obj["IsTampering"]);
-                    dr["CBKhoOng"] = bool.Parse(obj["IsDry"]);
-                    dr["CBMoHop"] = bool.Parse(obj["IsOpenBox"]);
-                    dr["Longitude"] = Double.Parse(obj["Longitude"]);
-                    dr["Latitude"] = Double.Parse(obj["Latitude"]);
-                    dr["Altitude"] = Double.Parse(obj["Altitude"]);
-                    dr["ChuKy"] = Int32.Parse(obj["Interval"]);
-                    dr["ThoiGianCapNhat"] = DateTime.Parse(obj["TimeUpdate"]);
+                    dr["ChiSo"] = obj["Volume"];
+                    dr["Pin"] = obj["Battery"];
+                    dr["ThoiLuongPinConLai"] = obj["RemainBatt"];
+                    dr["LuuLuong"] = obj["Flow"] ?? DBNull.Value;
+                    dr["ChatLuongSong"] = obj["Rssi"] ?? DBNull.Value;
+                    dr["CBPinYeu"] = obj["IsLowBatt"];
+                    dr["CBRoRi"] = obj["IsLeakage"];
+                    dr["CBQuaDong"] = obj["IsOverLoad"];
+                    dr["CBChayNguoc"] = obj["IsReverse"];
+                    dr["CBNamCham"] = obj["IsTampering"];
+                    dr["CBKhoOng"] = obj["IsDry"];
+                    dr["CBMoHop"] = obj["IsOpenBox"];
+                    dr["Longitude"] = obj["Longitude"] ?? DBNull.Value;
+                    dr["Latitude"] = obj["Latitude"] ?? DBNull.Value;
+                    dr["Altitude"] = obj["Altitude"] ?? DBNull.Value;
+                    dr["ChuKy"] = obj["Interval"] ?? DBNull.Value;
+                    dr["ThoiGianCapNhat"] = DateTime.Parse(obj["Time"]);
                     dt.Rows.Add(dr);
+                    return dt;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable get_All(string DanhBo, DateTime FromTime, DateTime ToTime)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://swm.sawaco.com.vn:8033/api/all/?id=" + DanhBo + "&date1=" + FromTime.ToString("dd-MM-yyyy") + "&date2=" + ToTime.ToString("dd-MM-yyyy"));
+                request.Method = "GET";
+                request.ContentType = "application/json; charset=utf-8";
+
+                HttpWebResponse respuesta = (HttpWebResponse)request.GetResponse();
+                if (respuesta.StatusCode == HttpStatusCode.Accepted || respuesta.StatusCode == HttpStatusCode.OK || respuesta.StatusCode == HttpStatusCode.Created)
+                {
+                    StreamReader read = new StreamReader(respuesta.GetResponseStream());
+                    string result = read.ReadToEnd();
+                    read.Close();
+                    respuesta.Close();
+
+                    var obj = jss.Deserialize<dynamic>(result);
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("ChiSo", typeof(System.Double));
+                    dt.Columns.Add("Pin", typeof(System.Int32));
+                    dt.Columns.Add("ThoiLuongPinConLai", typeof(System.String));
+                    dt.Columns.Add("LuuLuong", typeof(System.Double));
+                    dt.Columns.Add("ChatLuongSong", typeof(System.String));
+                    dt.Columns.Add("CBPinYeu", typeof(System.Boolean));
+                    dt.Columns.Add("CBRoRi", typeof(System.Boolean));
+                    dt.Columns.Add("CBQuaDong", typeof(System.Boolean));
+                    dt.Columns.Add("CBChayNguoc", typeof(System.Boolean));
+                    dt.Columns.Add("CBNamCham", typeof(System.Boolean));
+                    dt.Columns.Add("CBKhoOng", typeof(System.Boolean));
+                    dt.Columns.Add("CBMoHop", typeof(System.Boolean));
+                    dt.Columns.Add("Longitude", typeof(System.Double));
+                    dt.Columns.Add("Latitude", typeof(System.Double));
+                    dt.Columns.Add("Altitude", typeof(System.Double));
+                    dt.Columns.Add("ChuKy", typeof(System.Int32));
+                    dt.Columns.Add("ThoiGianCapNhat", typeof(System.DateTime));
+                    foreach (var item in obj)
+                    {
+                        DataRow dr = dt.NewRow();
+                        dr["ChiSo"] = item["Volume"];
+                        dr["Pin"] = item["Battery"];
+                        dr["ThoiLuongPinConLai"] = item["RemainBatt"];
+                        dr["LuuLuong"] = item["Flow"] ?? DBNull.Value;
+                        dr["CBPinYeu"] = item["IsLowBatt"];
+                        dr["CBRoRi"] = item["IsLeakage"];
+                        dr["CBQuaDong"] = item["IsOverLoad"];
+                        dr["CBChayNguoc"] = item["IsReverse"];
+                        dr["CBNamCham"] = item["IsTampering"];
+                        dr["CBKhoOng"] = item["IsDry"];
+                        dr["CBMoHop"] = item["IsOpenBox"];
+                        dr["Longitude"] = item["Longitude"] ?? DBNull.Value;
+                        dr["Latitude"] = item["Latitude"] ?? DBNull.Value;
+                        dr["Altitude"] = item["Altitude"] ?? DBNull.Value;
+                        dr["ChuKy"] = item["Interval"] ?? DBNull.Value;
+                        dr["ThoiGianCapNhat"] = DateTime.Parse(item["Time"]);
+                        dt.Rows.Add(dr);
+                    }
+
                     return dt;
                 }
                 else

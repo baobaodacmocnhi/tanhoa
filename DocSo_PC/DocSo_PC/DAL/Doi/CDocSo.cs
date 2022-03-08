@@ -477,7 +477,7 @@ namespace DocSo_PC.DAL.Doi
             if (result != null)
                 return (int)result;
             else
-                return 0;
+                return -1;
         }
 
         public DataTable getDS_Code5K5N(string Nam, string Ky, string Dot)

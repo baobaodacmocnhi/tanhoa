@@ -95,7 +95,7 @@ namespace DocSo_PC.GUI.sDHN
                         dgvLichSu.DataSource = _csDHN.get_All(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), DateTime.Now);
                         break;
                     case "Tất Cả 10 ngày":
-
+                        dgvLichSu.DataSource = _csDHN.get_All(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(),DateTime.Now.AddDays(-10), DateTime.Now);
                         break;
                     default:
                         break;

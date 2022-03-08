@@ -40,11 +40,11 @@
             this.cmbNCC = new System.Windows.Forms.ComboBox();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.btnCapNhatDS = new System.Windows.Forms.Button();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCapNhatDS = new System.Windows.Forms.Button();
             this.dgvLichSu = new System.Windows.Forms.DataGridView();
             this.cmbLoaiXem = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
@@ -104,7 +104,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDanhSach.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDanhSach.Location = new System.Drawing.Point(12, 41);
+            this.dgvDanhSach.Location = new System.Drawing.Point(2, 41);
             this.dgvDanhSach.Name = "dgvDanhSach";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -116,21 +116,11 @@
             this.dgvDanhSach.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDanhSach.Size = new System.Drawing.Size(614, 403);
+            this.dgvDanhSach.Size = new System.Drawing.Size(614, 581);
             this.dgvDanhSach.TabIndex = 56;
             this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
             this.dgvDanhSach.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhSach_CellFormatting);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
-            // 
-            // btnCapNhatDS
-            // 
-            this.btnCapNhatDS.Location = new System.Drawing.Point(316, 12);
-            this.btnCapNhatDS.Name = "btnCapNhatDS";
-            this.btnCapNhatDS.Size = new System.Drawing.Size(80, 23);
-            this.btnCapNhatDS.TabIndex = 57;
-            this.btnCapNhatDS.Text = "Cập Nhật DS";
-            this.btnCapNhatDS.UseVisualStyleBackColor = true;
-            this.btnCapNhatDS.Click += new System.EventHandler(this.btnCapNhatDS_Click);
             // 
             // MLT
             // 
@@ -158,6 +148,16 @@
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Width = 200;
             // 
+            // btnCapNhatDS
+            // 
+            this.btnCapNhatDS.Location = new System.Drawing.Point(316, 12);
+            this.btnCapNhatDS.Name = "btnCapNhatDS";
+            this.btnCapNhatDS.Size = new System.Drawing.Size(80, 23);
+            this.btnCapNhatDS.TabIndex = 57;
+            this.btnCapNhatDS.Text = "Cập Nhật DS";
+            this.btnCapNhatDS.UseVisualStyleBackColor = true;
+            this.btnCapNhatDS.Click += new System.EventHandler(this.btnCapNhatDS_Click);
+            // 
             // dgvLichSu
             // 
             this.dgvLichSu.AllowUserToAddRows = false;
@@ -179,7 +179,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvLichSu.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvLichSu.Location = new System.Drawing.Point(632, 41);
+            this.dgvLichSu.Location = new System.Drawing.Point(622, 41);
             this.dgvLichSu.Name = "dgvLichSu";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
@@ -191,7 +191,7 @@
             this.dgvLichSu.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvLichSu.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvLichSu.Size = new System.Drawing.Size(614, 403);
+            this.dgvLichSu.Size = new System.Drawing.Size(735, 581);
             this.dgvLichSu.TabIndex = 58;
             // 
             // cmbLoaiXem
@@ -213,7 +213,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1259, 456);
+            this.ClientSize = new System.Drawing.Size(1437, 634);
             this.Controls.Add(this.cmbLoaiXem);
             this.Controls.Add(this.dgvLichSu);
             this.Controls.Add(this.btnCapNhatDS);
