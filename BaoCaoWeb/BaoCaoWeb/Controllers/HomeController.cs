@@ -13,19 +13,52 @@ namespace BaoCaoWeb.Controllers
         cDHN _cDHN = new cDHN();
         cDocSo _cDocSo = new cDocSo();
         cThuTien _cThuTien = new cThuTien();
-
+        cTTKH _cTTKH = new cTTKH();
         public ActionResult Index()
         {
             ThongTin enTT = new ThongTin();
             enTT.NamPresent = DateTime.Now.Year;
             enTT.NamPrevious = DateTime.Now.Year - 1;
-            enTT.TongKhachHang = decimal.Parse(_cDHN.ExecuteQuery_ReturnOneValue("select count(DanhBo) from TB_DULIEUKHACHHANG").ToString());
-            enTT.TongSanLuong = decimal.Parse(_cDocSo.ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where Nam=" + enTT.NamPresent).ToString());
-            enTT.TongDoanhThu = decimal.Parse(_cThuTien.ExecuteQuery_ReturnOneValue("select SUM(TONGCONG) from HOADON where YEAR(NGAYGIAITRACH)=" + enTT.NamPresent + " and MaNV_DangNgan is not null").ToString());
+            enTT.KhachHang = decimal.Parse(_cDHN.ExecuteQuery_ReturnOneValue("select count(DanhBo) from TB_DULIEUKHACHHANG").ToString());
+            enTT.SanLuong = decimal.Parse(_cDocSo.ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where Nam=" + enTT.NamPresent).ToString());
+            enTT.DoanhThu = decimal.Parse(_cThuTien.ExecuteQuery_ReturnOneValue("select SUM(TONGCONG) from HOADON where YEAR(NGAYGIAITRACH)=" + enTT.NamPresent + " and MaNV_DangNgan is not null").ToString());
             enTT.lstSanLuong = getlstSanLuong();
             enTT.lstDoanhThu = getlstDoanhThu();
             enTT.lstGiaBanBinhQuan = getlstGiaBanBinhQuan();
-            enTT.TongThatThoatNuoc = 18.30;
+            enTT.ThatThoatNuoc = 18.30;
+            return View(enTT);
+        }
+
+        public ActionResult IndexChiTieu()
+        {
+            ThongTin enTT = new ThongTin();
+            enTT.NamPresent = DateTime.Now.Year;
+            enTT.NamPrevious = DateTime.Now.Year - 1;
+            DataTable dtKeHoach = _cTTKH.ExecuteQuery_DataTable("select * from BC_KeHoach where Nam=" + enTT.NamPresent);
+            string sql = "select Nam,SanLuong=SUM(SanLuong),DoanhThu=SUM(DoanhThu),GanMoi=SUM(GanMoi)"
+                    + " , ThayDHNNho = SUM(ThayDHNNho), ThayDHNLon = SUM(ThayDHNLon), TyLeThatThoatNuoc = SUM(TyLeThatThoatNuoc)"
+                    + " from BC_SoLieu where Nam = " + enTT.NamPresent + " group by Nam";
+            DataTable dtSoLieu = _cTTKH.ExecuteQuery_DataTable(sql);
+            enTT.SanLuongKH = int.Parse(dtKeHoach.Rows[0]["SanLuong"].ToString());
+            enTT.DoanhThuKH = decimal.Parse(dtKeHoach.Rows[0]["DoanhThu"].ToString());
+            enTT.GanMoiKH = int.Parse(dtKeHoach.Rows[0]["GanMoi"].ToString());
+            enTT.ThayDHNNhoKH = int.Parse(dtKeHoach.Rows[0]["ThayDHNNho"].ToString());
+            enTT.ThayDHNLonKH = int.Parse(dtKeHoach.Rows[0]["ThayDHNLon"].ToString());
+            enTT.ThatThoatNuocKH = double.Parse(dtKeHoach.Rows[0]["TyLeThatThoatNuoc"].ToString());
+            //
+            enTT.SanLuong = int.Parse(dtSoLieu.Rows[0]["SanLuong"].ToString());
+            enTT.DoanhThu = decimal.Parse(dtSoLieu.Rows[0]["DoanhThu"].ToString());
+            enTT.GanMoi = int.Parse(dtSoLieu.Rows[0]["GanMoi"].ToString());
+            enTT.ThayDHNNho = int.Parse(dtSoLieu.Rows[0]["ThayDHNNho"].ToString());
+            enTT.ThayDHNLon = int.Parse(dtSoLieu.Rows[0]["ThayDHNLon"].ToString());
+            enTT.ThatThoatNuoc = double.Parse(dtSoLieu.Rows[0]["TyLeThatThoatNuoc"].ToString());
+            //
+            enTT.SanLuongDat = (double)enTT.SanLuong / (double)enTT.SanLuongKH * 100;
+            enTT.DoanhThuDat = (double)enTT.DoanhThu / (double)enTT.DoanhThuKH * 100;
+            enTT.GanMoiDat = (double)enTT.GanMoi / (double)enTT.GanMoiKH * 100;
+            enTT.ThayDHNNhoDat = (double)enTT.ThayDHNNho / (double)enTT.ThayDHNNhoKH * 100;
+            enTT.ThayDHNLonDat = (double)enTT.ThayDHNLon / (double)enTT.ThayDHNLonKH * 100;
+            enTT.ThatThoatNuocDat = enTT.ThatThoatNuoc - enTT.ThatThoatNuocKH;
             return View(enTT);
         }
 
@@ -77,11 +110,11 @@ namespace BaoCaoWeb.Controllers
         [HttpGet]
         public JsonResult getSanLuong_anycharts()
         {
-            List< Array> lstChart = new List<Array>();
+            List<Array> lstChart = new List<Array>();
             DataTable dt = _cDocSo.getSanLuong();
             for (int i = 1; i <= 12; i++)
             {
-                string[] a = new string[] {i.ToString(), dt.Rows[i - 1]["SanLuongPrevious"].ToString(), dt.Rows[i - 1]["SanLuongPresent"].ToString() };
+                string[] a = new string[] { i.ToString(), dt.Rows[i - 1]["SanLuongPrevious"].ToString(), dt.Rows[i - 1]["SanLuongPresent"].ToString() };
 
                 lstChart.Add(a);
             }

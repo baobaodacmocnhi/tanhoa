@@ -10,16 +10,17 @@
         color: inherit;
     }
 </style>
-<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/themes/material.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/themes/kelly.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-cartesian-3d.min.js"></script>
+<link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+<link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/amcharts/jschartSanLuong.js"></script>
-<script src="~/Scripts/amcharts/jschartDoanhThu.js"></script>
-<script src="~/Scripts/amcharts/jschartGiaBanBinhQuan.js"></script>
+<script src="~/Scripts/anychart/jschartSanLuong.js"></script>
+<script src="~/Scripts/anychart/jschartDoanhThu.js"></script>
+<script src="~/Scripts/anychart/jschartGiaBanBinhQuan.js"></script>
 <script>
     $(document).ready(function () {
         getSanLuong();
@@ -95,7 +96,7 @@
                     <div class="font-weight-bold text-danger mb-1">
                         Tổng thất thoát nước năm 2021 (%)
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TongThatThoatNuoc</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TongThatThoatNuoc.ToString().Replace(".",",")</div>
                 </div>
                 <div class="col-auto">
                     <i class="glyphicon glyphicon-sort-by-attributes-alt fa-2x text-danger"></i>

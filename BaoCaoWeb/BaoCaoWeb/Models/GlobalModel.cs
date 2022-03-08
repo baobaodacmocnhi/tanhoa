@@ -7,10 +7,25 @@ namespace BaoCaoWeb.Models
 {
     public class ThongTin
     {
-        public decimal TongKhachHang { get; set; }
-        public decimal TongSanLuong { get; set; }
-        public decimal TongDoanhThu { get; set; }
-        public double TongThatThoatNuoc { get; set; }
+        public decimal KhachHang { get; set; }
+        public decimal SanLuong { get; set; }
+        public decimal SanLuongKH { get; set; }
+        public double SanLuongDat { get; set; }
+        public decimal DoanhThu { get; set; }
+        public decimal DoanhThuKH { get; set; }
+        public double DoanhThuDat { get; set; }
+        public double ThatThoatNuoc { get; set; }
+        public double ThatThoatNuocKH { get; set; }
+        public double ThatThoatNuocDat { get; set; }
+        public decimal GanMoi { get; set; }
+        public decimal GanMoiKH { get; set; }
+        public double GanMoiDat { get; set; }
+        public decimal ThayDHNNho { get; set; }
+        public decimal ThayDHNNhoKH { get; set; }
+        public double ThayDHNNhoDat { get; set; }
+        public decimal ThayDHNLon { get; set; }
+        public decimal ThayDHNLonKH { get; set; }
+        public double ThayDHNLonDat { get; set; }
         public int NamPresent { get; set; }
         public int NamPrevious { get; set; }
         public List<Chart> lstSanLuong { get; set; }
@@ -20,8 +35,8 @@ namespace BaoCaoWeb.Models
         public Array jsonSanLuong { get; set; }
         public ThongTin()
         {
-            TongKhachHang = TongSanLuong = TongDoanhThu =  NamPresent = NamPrevious = 0;
-            TongThatThoatNuoc = 0.0;
+            KhachHang = SanLuong = DoanhThu = SanLuongKH = DoanhThuKH = NamPresent = NamPrevious = 0;
+            ThatThoatNuoc = ThatThoatNuocKH = ThatThoatNuocDat = SanLuongDat = DoanhThuDat = 0.0;
             lstSanLuong = lstDoanhThu = lstGiaBanBinhQuan = lstThuHo = new List<Chart>();
             jsonSanLuong = null;
         }
