@@ -2496,6 +2496,8 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Ky" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TuNgay" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="DenNgay" Type="System.String" DbType="Char(10)" CanBeNull="true" />
       <Column Name="GiaBieuCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMucHNCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMucCu" Type="System.Int32" DbType="Int" CanBeNull="true" />

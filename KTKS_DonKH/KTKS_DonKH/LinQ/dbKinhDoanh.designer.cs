@@ -56995,6 +56995,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _Nam;
 		
+		private string _TuNgay;
+		
+		private string _DenNgay;
+		
 		private System.Nullable<int> _GiaBieuCu;
 		
 		private System.Nullable<int> _DinhMucHNCu;
@@ -57059,6 +57063,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnKyChanged();
     partial void OnNamChanging(System.Nullable<int> value);
     partial void OnNamChanged();
+    partial void OnTuNgayChanging(string value);
+    partial void OnTuNgayChanged();
+    partial void OnDenNgayChanging(string value);
+    partial void OnDenNgayChanged();
     partial void OnGiaBieuCuChanging(System.Nullable<int> value);
     partial void OnGiaBieuCuChanged();
     partial void OnDinhMucHNCuChanging(System.Nullable<int> value);
@@ -57175,6 +57183,46 @@ namespace KTKS_DonKH.LinQ
 					this._Nam = value;
 					this.SendPropertyChanged("Nam");
 					this.OnNamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TuNgay", DbType="Char(10)")]
+		public string TuNgay
+		{
+			get
+			{
+				return this._TuNgay;
+			}
+			set
+			{
+				if ((this._TuNgay != value))
+				{
+					this.OnTuNgayChanging(value);
+					this.SendPropertyChanging();
+					this._TuNgay = value;
+					this.SendPropertyChanged("TuNgay");
+					this.OnTuNgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DenNgay", DbType="Char(10)")]
+		public string DenNgay
+		{
+			get
+			{
+				return this._DenNgay;
+			}
+			set
+			{
+				if ((this._DenNgay != value))
+				{
+					this.OnDenNgayChanging(value);
+					this.SendPropertyChanging();
+					this._DenNgay = value;
+					this.SendPropertyChanged("DenNgay");
+					this.OnDenNgayChanged();
 				}
 			}
 		}
