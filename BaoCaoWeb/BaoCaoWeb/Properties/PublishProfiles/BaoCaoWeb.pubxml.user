@@ -13,7 +13,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/22/2013 08:43:40</publishTime>
     </File>
     <File Include="bin/BaoCaoWeb.dll">
-      <publishTime>11/22/2021 10:25:31</publishTime>
+      <publishTime>03/09/2022 14:17:02</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 09:32:26</publishTime>
@@ -5586,11 +5586,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>02/02/2021 15:08:06</publishTime>
     </File>
+    <File Include="Views/Home/Index - Copy.cshtml">
+      <publishTime>03/09/2022 07:30:11</publishTime>
+    </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/22/2021 10:22:57</publishTime>
+      <publishTime>03/09/2022 14:16:50</publishTime>
     </File>
     <File Include="Views/Home/Index2.cshtml">
       <publishTime>04/01/2021 09:47:18</publishTime>
+    </File>
+    <File Include="Views/Home/IndexChiTieu.cshtml">
+      <publishTime>03/09/2022 07:40:08</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>02/02/2021 15:08:13</publishTime>
