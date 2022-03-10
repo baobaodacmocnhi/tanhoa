@@ -1139,9 +1139,14 @@ namespace ThuTien.GUI.ChuyenKhoan
             Microsoft.Office.Interop.Excel.Range cl17 = oSheet.get_Range("Q1", "Q1");
             cl17.Value2 = "Thoát Nghèo";
             cl17.ColumnWidth = 10;
+
+            Microsoft.Office.Interop.Excel.Range cl18 = oSheet.get_Range("R1", "R1");
+            cl18.Value2 = "Cỡ";
+            cl18.ColumnWidth = 10;
+
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            int column = 16;
+            int column = 17;
             object[,] arr = new object[dt.Rows.Count, column];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
@@ -1165,6 +1170,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i, 13] = dr["TieuThu"].ToString();
                 arr[i, 14] = dr["DinhMuc"].ToString();
                 arr[i, 15] = dr["DinhMucHN"].ToString();
+                arr[i, 16] = dr["CoDH"].ToString();
             }
 
             //Thiết lập vùng điền dữ liệu

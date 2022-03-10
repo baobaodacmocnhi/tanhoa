@@ -90,14 +90,6 @@
             this.dateDen_KD = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.dgvDSCongVan = new System.Windows.Forms.DataGridView();
-            this.Chon_CV = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Loai_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ma_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThuTien_NgayNhan_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GhiChu_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbLoaiVanBan_KD = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -113,6 +105,16 @@
             this.ThuTien_GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDanhBo_KD = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.Chon_CV = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Loai_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThuTien_NgayNhan_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GhiChu_CV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThuTien_ButPhe = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ThuTien_NgayButPhe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongMoNuoc)).BeginInit();
@@ -639,7 +641,9 @@
             this.DiaChi_CV,
             this.NoiDung_CV,
             this.ThuTien_NgayNhan_CV,
-            this.GhiChu_CV});
+            this.GhiChu_CV,
+            this.ThuTien_ButPhe,
+            this.ThuTien_NgayButPhe});
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -661,63 +665,10 @@
             this.dgvDSCongVan.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.dgvDSCongVan.RowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.dgvDSCongVan.Size = new System.Drawing.Size(827, 327);
+            this.dgvDSCongVan.Size = new System.Drawing.Size(963, 327);
             this.dgvDSCongVan.TabIndex = 18;
             this.dgvDSCongVan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCongVan_CellFormatting);
             this.dgvDSCongVan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSCongVan_RowPostPaint);
-            // 
-            // Chon_CV
-            // 
-            this.Chon_CV.DataPropertyName = "Chon";
-            this.Chon_CV.HeaderText = "Chọn";
-            this.Chon_CV.Name = "Chon_CV";
-            this.Chon_CV.Width = 40;
-            // 
-            // Loai_CV
-            // 
-            this.Loai_CV.DataPropertyName = "Loai";
-            this.Loai_CV.HeaderText = "Loại";
-            this.Loai_CV.Name = "Loai_CV";
-            this.Loai_CV.Width = 120;
-            // 
-            // Ma_CV
-            // 
-            this.Ma_CV.DataPropertyName = "Ma";
-            this.Ma_CV.HeaderText = "Mã";
-            this.Ma_CV.Name = "Ma_CV";
-            this.Ma_CV.Width = 60;
-            // 
-            // DanhBo_CV
-            // 
-            this.DanhBo_CV.DataPropertyName = "DanhBo";
-            this.DanhBo_CV.HeaderText = "Danh Bộ";
-            this.DanhBo_CV.Name = "DanhBo_CV";
-            // 
-            // DiaChi_CV
-            // 
-            this.DiaChi_CV.DataPropertyName = "DiaChi";
-            this.DiaChi_CV.HeaderText = "Địa Chỉ";
-            this.DiaChi_CV.Name = "DiaChi_CV";
-            // 
-            // NoiDung_CV
-            // 
-            this.NoiDung_CV.DataPropertyName = "NoiDung";
-            this.NoiDung_CV.HeaderText = "Nội Dung";
-            this.NoiDung_CV.Name = "NoiDung_CV";
-            // 
-            // ThuTien_NgayNhan_CV
-            // 
-            this.ThuTien_NgayNhan_CV.DataPropertyName = "ThuTien_NgayNhan";
-            this.ThuTien_NgayNhan_CV.HeaderText = "Ngày Nhận";
-            this.ThuTien_NgayNhan_CV.Name = "ThuTien_NgayNhan_CV";
-            this.ThuTien_NgayNhan_CV.Width = 90;
-            // 
-            // GhiChu_CV
-            // 
-            this.GhiChu_CV.DataPropertyName = "ThuTien_GhiChu";
-            this.GhiChu_CV.HeaderText = "Ghi Chú";
-            this.GhiChu_CV.Name = "GhiChu_CV";
-            this.GhiChu_CV.Width = 150;
             // 
             // cmbLoaiVanBan_KD
             // 
@@ -884,6 +835,75 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Danh Bộ:";
             // 
+            // Chon_CV
+            // 
+            this.Chon_CV.DataPropertyName = "Chon";
+            this.Chon_CV.HeaderText = "Chọn";
+            this.Chon_CV.Name = "Chon_CV";
+            this.Chon_CV.Width = 40;
+            // 
+            // Loai_CV
+            // 
+            this.Loai_CV.DataPropertyName = "Loai";
+            this.Loai_CV.HeaderText = "Loại";
+            this.Loai_CV.Name = "Loai_CV";
+            this.Loai_CV.Width = 120;
+            // 
+            // Ma_CV
+            // 
+            this.Ma_CV.DataPropertyName = "Ma";
+            this.Ma_CV.HeaderText = "Mã";
+            this.Ma_CV.Name = "Ma_CV";
+            this.Ma_CV.Width = 60;
+            // 
+            // DanhBo_CV
+            // 
+            this.DanhBo_CV.DataPropertyName = "DanhBo";
+            this.DanhBo_CV.HeaderText = "Danh Bộ";
+            this.DanhBo_CV.Name = "DanhBo_CV";
+            // 
+            // DiaChi_CV
+            // 
+            this.DiaChi_CV.DataPropertyName = "DiaChi";
+            this.DiaChi_CV.HeaderText = "Địa Chỉ";
+            this.DiaChi_CV.Name = "DiaChi_CV";
+            // 
+            // NoiDung_CV
+            // 
+            this.NoiDung_CV.DataPropertyName = "NoiDung";
+            this.NoiDung_CV.HeaderText = "Nội Dung";
+            this.NoiDung_CV.Name = "NoiDung_CV";
+            // 
+            // ThuTien_NgayNhan_CV
+            // 
+            this.ThuTien_NgayNhan_CV.DataPropertyName = "ThuTien_NgayNhan";
+            this.ThuTien_NgayNhan_CV.HeaderText = "Ngày Nhận";
+            this.ThuTien_NgayNhan_CV.Name = "ThuTien_NgayNhan_CV";
+            this.ThuTien_NgayNhan_CV.Width = 90;
+            // 
+            // GhiChu_CV
+            // 
+            this.GhiChu_CV.DataPropertyName = "ThuTien_GhiChu";
+            this.GhiChu_CV.HeaderText = "Ghi Chú";
+            this.GhiChu_CV.Name = "GhiChu_CV";
+            this.GhiChu_CV.Width = 150;
+            // 
+            // ThuTien_ButPhe
+            // 
+            this.ThuTien_ButPhe.DataPropertyName = "ThuTien_ButPhe";
+            this.ThuTien_ButPhe.HeaderText = "Bút Phê";
+            this.ThuTien_ButPhe.Name = "ThuTien_ButPhe";
+            this.ThuTien_ButPhe.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ThuTien_ButPhe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ThuTien_ButPhe.Width = 50;
+            // 
+            // ThuTien_NgayButPhe
+            // 
+            this.ThuTien_NgayButPhe.DataPropertyName = "ThuTien_NgayButPhe";
+            this.ThuTien_NgayButPhe.HeaderText = "Ngày Bút Phê";
+            this.ThuTien_NgayButPhe.Name = "ThuTien_NgayButPhe";
+            this.ThuTien_NgayButPhe.Width = 90;
+            // 
             // frmCongVan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -943,14 +963,6 @@
         private System.Windows.Forms.DateTimePicker dateDen_KD;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnIn_KD;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Chon_CV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loai_CV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_CV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_CV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi_CV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung_CV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ThuTien_NgayNhan_CV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu_CV;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbLoaiVanBan_KD_Them;
@@ -977,6 +989,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSoMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieuMN_DMN;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Chon_CV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loai_CV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_CV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_CV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi_CV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung_CV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThuTien_NgayNhan_CV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu_CV;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ThuTien_ButPhe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThuTien_NgayButPhe;
 
     }
 }

@@ -8,7 +8,7 @@ using System.Data;
 
 namespace ThuTien.DAL.TongHop
 {
-    class CCongVan:CDAL
+    class CCongVan : CDAL
     {
         public bool Them(TT_CongVan en)
         {
@@ -70,20 +70,20 @@ namespace ThuTien.DAL.TongHop
         public DataTable GetDS(string DanhBo)
         {
             var query = from item in _db.TT_CongVans
-                        where item.DanhBo==DanhBo
+                        where item.DanhBo == DanhBo
                         select new
                         {
-                            db="Thu Tiền",
+                            db = "Thu Tiền",
                             item.Loai,
                             item.NoiDung,
                             item.DanhBo,
                             item.CreateDate,
-                            Table="TT_CongVan",
-                            Column="MaCV",
-                            Ma=(decimal)item.MaCV,
-                            ThuTien_Nhan=true,
+                            Table = "TT_CongVan",
+                            Column = "MaCV",
+                            Ma = (decimal)item.MaCV,
+                            ThuTien_Nhan = true,
                             ThuTien_NgayNhan = item.CreateDate,
-                            ThuTien_GhiChu=item.GhiChu,
+                            ThuTien_GhiChu = item.GhiChu,
                             item.GhiChu,
                         };
             return LINQToDataTable(query);
@@ -106,6 +106,8 @@ namespace ThuTien.DAL.TongHop
                             ThuTien_Nhan = true,
                             ThuTien_NgayNhan = item.CreateDate,
                             ThuTien_GhiChu = item.GhiChu,
+                            ThuTien_ButPhe = item.ButPhe,
+                            ThuTien_NgayButPhe = item.NgayButPhe,
                             item.GhiChu,
                         };
             return LINQToDataTable(query);
