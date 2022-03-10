@@ -494,12 +494,19 @@ namespace KTKS_DonKH.GUI.TruyThu
             if (_flagLoad == false)
             {
                 int GiaBieu = 0, DinhMucHN = 0, DinhMuc = 0, TieuThu = 0;
-
+                DateTime TuNgay = DateTime.Now, DenNgay = DateTime.Now;
+                dgvTruyThuTienNuoc["TuNgay", e.RowIndex].Value = TuNgay.ToString("dd/MM/yyyy");
+                dgvTruyThuTienNuoc["DenNgay", e.RowIndex].Value = DenNgay.ToString("dd/MM/yyyy");
                 if (dgvTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "Ky" && dgvTruyThuTienNuoc["Nam", e.RowIndex].Value != null && dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString() != "" && int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()) >= 2011)
                 {
                     HOADON hd = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
+
                     if (hd != null)
                     {
+                        if (hd.TUNGAY != null)
+                            TuNgay = hd.TUNGAY.Value;
+                        if (hd.DENNGAY != null)
+                            DenNgay = hd.DENNGAY.Value;
                         if (hd.DinhMucHN != null)
                             dgvTruyThuTienNuoc["DinhMucHN_Cu", e.RowIndex].Value = hd.DinhMucHN.Value;
                         if (hd.DM != null)
@@ -510,6 +517,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value = hd.GB;
                     }
                 }
+                
                 if (dgvTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "GiaBieu_Cu")
                 {
                     dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value = dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value;
@@ -525,7 +533,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     if (dgvTruyThuTienNuoc["Ky", e.RowIndex].Value != null)
                     {
-                        tinhTienNuocTruoc(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu);
+                        tinhTienNuocTruoc(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu, DateTime.Parse(dgvTruyThuTienNuoc["TuNgay", e.RowIndex].Value.ToString()), DateTime.Parse(dgvTruyThuTienNuoc["DenNgay", e.RowIndex].Value.ToString()));
                     }
                 }
 
@@ -544,7 +552,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     if (dgvTruyThuTienNuoc["Ky", e.RowIndex].Value != null)
                     {
-                        tinhTienNuocTruoc(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu);
+                        tinhTienNuocTruoc(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu, DateTime.Parse(dgvTruyThuTienNuoc["TuNgay", e.RowIndex].Value.ToString()), DateTime.Parse(dgvTruyThuTienNuoc["DenNgay", e.RowIndex].Value.ToString()));
                     }
                 }
 
@@ -563,7 +571,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     if (dgvTruyThuTienNuoc["Ky", e.RowIndex].Value != null)
                     {
-                        tinhTienNuocTruoc(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu);
+                        tinhTienNuocTruoc(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu, DateTime.Parse(dgvTruyThuTienNuoc["TuNgay", e.RowIndex].Value.ToString()), DateTime.Parse(dgvTruyThuTienNuoc["DenNgay", e.RowIndex].Value.ToString()));
                     }
                 }
 
@@ -582,7 +590,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     if (dgvTruyThuTienNuoc["Ky", e.RowIndex].Value != null)
                     {
-                        tinhTienNuocTruoc(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu);
+                        tinhTienNuocTruoc(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu, DateTime.Parse(dgvTruyThuTienNuoc["TuNgay", e.RowIndex].Value.ToString()), DateTime.Parse(dgvTruyThuTienNuoc["DenNgay", e.RowIndex].Value.ToString()));
                     }
                 }
                 ////////////////////////////////////////////
@@ -600,7 +608,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     if (dgvTruyThuTienNuoc["Ky", e.RowIndex].Value != null)
                     {
-                        tinhTienNuocSau(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu);
+                        tinhTienNuocSau(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu, DateTime.Parse(dgvTruyThuTienNuoc["TuNgay", e.RowIndex].Value.ToString()), DateTime.Parse(dgvTruyThuTienNuoc["DenNgay", e.RowIndex].Value.ToString()));
                     }
                 }
 
@@ -617,7 +625,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     if (dgvTruyThuTienNuoc["Ky", e.RowIndex].Value != null)
                     {
-                        tinhTienNuocSau(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu);
+                        tinhTienNuocSau(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu, DateTime.Parse(dgvTruyThuTienNuoc["TuNgay", e.RowIndex].Value.ToString()), DateTime.Parse(dgvTruyThuTienNuoc["DenNgay", e.RowIndex].Value.ToString()));
                     }
                 }
 
@@ -634,7 +642,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     if (dgvTruyThuTienNuoc["Ky", e.RowIndex].Value != null)
                     {
-                        tinhTienNuocSau(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu);
+                        tinhTienNuocSau(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu, DateTime.Parse(dgvTruyThuTienNuoc["TuNgay", e.RowIndex].Value.ToString()), DateTime.Parse(dgvTruyThuTienNuoc["DenNgay", e.RowIndex].Value.ToString()));
                     }
                 }
 
@@ -651,19 +659,19 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     if (dgvTruyThuTienNuoc["Ky", e.RowIndex].Value != null)
                     {
-                        tinhTienNuocSau(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu);
+                        tinhTienNuocSau(e.RowIndex, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), GiaBieu, DinhMuc, DinhMucHN, TieuThu, DateTime.Parse(dgvTruyThuTienNuoc["TuNgay", e.RowIndex].Value.ToString()), DateTime.Parse(dgvTruyThuTienNuoc["DenNgay", e.RowIndex].Value.ToString()));
                     }
                 }
             }
         }
 
-        private void tinhTienNuocTruoc(int RowIndex, string DanhBo, int Ky, int Nam, int GiaBieu, int DinhMuc, int DinhMucHN, int TieuThu)
+        private void tinhTienNuocTruoc(int RowIndex, string DanhBo, int Ky, int Nam, int GiaBieu, int DinhMuc, int DinhMucHN, int TieuThu, DateTime TuNgay, DateTime DenNgay)
         {
             HOADON hd = _cThuTien.Get(DanhBo, Ky, Nam);
             int TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0;
             int TienNuocNamCu, TienNuocNamMoi, TieuThu_DieuChinhGia, PhiBVMTNamCu, PhiBVMTNamMoi, TienNuoc, ThueGTGT, TDVTN, ThueTDVTN;
             string ChiTietNamCu, ChiTietNamMoi, ChiTietPhiBVMTNamCu, ChiTietPhiBVMTNamMoi;
-            DateTime TuNgay = DateTime.Now, DenNgay = DateTime.Now;
+            //DateTime TuNgay = DateTime.Now, DenNgay = DateTime.Now;
             if (hd != null)
             {
                 if (hd.TILESH != null && hd.TILESH.Value != 0)
@@ -737,14 +745,14 @@ namespace KTKS_DonKH.GUI.TruyThu
                         dgvTruyThuTienNuoc["TangGiam", RowIndex].Value = "";
         }
 
-        private void tinhTienNuocSau(int RowIndex, string DanhBo, int Ky, int Nam, int GiaBieu, int DinhMuc, int DinhMucHN, int TieuThu)
+        private void tinhTienNuocSau(int RowIndex, string DanhBo, int Ky, int Nam, int GiaBieu, int DinhMuc, int DinhMucHN, int TieuThu, DateTime TuNgay, DateTime DenNgay)
         {
             HOADON hd = _cThuTien.Get(DanhBo, Ky, Nam);
             DocSo ds = null;
             int TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0;
             int TienNuocNamCu, TienNuocNamMoi, TieuThu_DieuChinhGia, PhiBVMTNamCu, PhiBVMTNamMoi, TienNuoc, ThueGTGT, TDVTN, ThueTDVTN;
             string ChiTietNamCu, ChiTietNamMoi, ChiTietPhiBVMTNamCu, ChiTietPhiBVMTNamMoi;
-            DateTime TuNgay = DateTime.Now, DenNgay = DateTime.Now;
+            //DateTime TuNgay = DateTime.Now, DenNgay = DateTime.Now;
             if (hd != null)
             {
                 if (hd.TILESH != null && hd.TILESH.Value != 0)

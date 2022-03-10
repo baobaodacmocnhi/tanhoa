@@ -5163,6 +5163,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _ThuTien_GhiChu;
 		
+		private bool _ThuTien_ButPhe;
+		
+		private System.Nullable<System.DateTime> _ThuTien_NgayButPhe;
+		
 		private bool _DocSo_Nhan;
 		
 		private System.Nullable<System.DateTime> _DocSo_NgayNhan;
@@ -5297,6 +5301,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnThuTien_NgayNhanChanged();
     partial void OnThuTien_GhiChuChanging(string value);
     partial void OnThuTien_GhiChuChanged();
+    partial void OnThuTien_ButPheChanging(bool value);
+    partial void OnThuTien_ButPheChanged();
+    partial void OnThuTien_NgayButPheChanging(System.Nullable<System.DateTime> value);
+    partial void OnThuTien_NgayButPheChanged();
     partial void OnDocSo_NhanChanging(bool value);
     partial void OnDocSo_NhanChanged();
     partial void OnDocSo_NgayNhanChanging(System.Nullable<System.DateTime> value);
@@ -6478,6 +6486,46 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_ButPhe", DbType="Bit NOT NULL")]
+		public bool ThuTien_ButPhe
+		{
+			get
+			{
+				return this._ThuTien_ButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_ButPhe != value))
+				{
+					this.OnThuTien_ButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_ButPhe = value;
+					this.SendPropertyChanged("ThuTien_ButPhe");
+					this.OnThuTien_ButPheChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_NgayButPhe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ThuTien_NgayButPhe
+		{
+			get
+			{
+				return this._ThuTien_NgayButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_NgayButPhe != value))
+				{
+					this.OnThuTien_NgayButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_NgayButPhe = value;
+					this.SendPropertyChanged("ThuTien_NgayButPhe");
+					this.OnThuTien_NgayButPheChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocSo_Nhan", DbType="Bit NOT NULL")]
 		public bool DocSo_Nhan
 		{
@@ -7001,6 +7049,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _ThuTien_GhiChu;
 		
+		private bool _ThuTien_ButPhe;
+		
+		private System.Nullable<System.DateTime> _ThuTien_NgayButPhe;
+		
 		private bool _DocSo_Nhan;
 		
 		private System.Nullable<System.DateTime> _DocSo_NgayNhan;
@@ -7123,6 +7175,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnThuTien_NgayNhanChanged();
     partial void OnThuTien_GhiChuChanging(string value);
     partial void OnThuTien_GhiChuChanged();
+    partial void OnThuTien_ButPheChanging(bool value);
+    partial void OnThuTien_ButPheChanged();
+    partial void OnThuTien_NgayButPheChanging(System.Nullable<System.DateTime> value);
+    partial void OnThuTien_NgayButPheChanged();
     partial void OnDocSo_NhanChanging(bool value);
     partial void OnDocSo_NhanChanged();
     partial void OnDocSo_NgayNhanChanging(System.Nullable<System.DateTime> value);
@@ -8180,6 +8236,46 @@ namespace KTKS_DonKH.LinQ
 					this._ThuTien_GhiChu = value;
 					this.SendPropertyChanged("ThuTien_GhiChu");
 					this.OnThuTien_GhiChuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_ButPhe", DbType="Bit NOT NULL")]
+		public bool ThuTien_ButPhe
+		{
+			get
+			{
+				return this._ThuTien_ButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_ButPhe != value))
+				{
+					this.OnThuTien_ButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_ButPhe = value;
+					this.SendPropertyChanged("ThuTien_ButPhe");
+					this.OnThuTien_ButPheChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_NgayButPhe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ThuTien_NgayButPhe
+		{
+			get
+			{
+				return this._ThuTien_NgayButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_NgayButPhe != value))
+				{
+					this.OnThuTien_NgayButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_NgayButPhe = value;
+					this.SendPropertyChanged("ThuTien_NgayButPhe");
+					this.OnThuTien_NgayButPheChanged();
 				}
 			}
 		}
@@ -9597,6 +9693,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _ThuTien_GhiChu;
 		
+		private bool _ThuTien_ButPhe;
+		
+		private System.Nullable<System.DateTime> _ThuTien_NgayButPhe;
+		
 		private bool _DocSo_Nhan;
 		
 		private System.Nullable<System.DateTime> _DocSo_NgayNhan;
@@ -9693,6 +9793,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnThuTien_NgayNhanChanged();
     partial void OnThuTien_GhiChuChanging(string value);
     partial void OnThuTien_GhiChuChanged();
+    partial void OnThuTien_ButPheChanging(bool value);
+    partial void OnThuTien_ButPheChanged();
+    partial void OnThuTien_NgayButPheChanging(System.Nullable<System.DateTime> value);
+    partial void OnThuTien_NgayButPheChanged();
     partial void OnDocSo_NhanChanging(bool value);
     partial void OnDocSo_NhanChanged();
     partial void OnDocSo_NgayNhanChanging(System.Nullable<System.DateTime> value);
@@ -10498,6 +10602,46 @@ namespace KTKS_DonKH.LinQ
 					this._ThuTien_GhiChu = value;
 					this.SendPropertyChanged("ThuTien_GhiChu");
 					this.OnThuTien_GhiChuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_ButPhe", DbType="Bit NOT NULL")]
+		public bool ThuTien_ButPhe
+		{
+			get
+			{
+				return this._ThuTien_ButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_ButPhe != value))
+				{
+					this.OnThuTien_ButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_ButPhe = value;
+					this.SendPropertyChanged("ThuTien_ButPhe");
+					this.OnThuTien_ButPheChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_NgayButPhe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ThuTien_NgayButPhe
+		{
+			get
+			{
+				return this._ThuTien_NgayButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_NgayButPhe != value))
+				{
+					this.OnThuTien_NgayButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_NgayButPhe = value;
+					this.SendPropertyChanged("ThuTien_NgayButPhe");
+					this.OnThuTien_NgayButPheChanged();
 				}
 			}
 		}
@@ -17248,6 +17392,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _ThuTien_GhiChu;
 		
+		private bool _ThuTien_ButPhe;
+		
+		private System.Nullable<System.DateTime> _ThuTien_NgayButPhe;
+		
 		private bool _DocSo_Nhan;
 		
 		private System.Nullable<System.DateTime> _DocSo_NgayNhan;
@@ -17382,6 +17530,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnThuTien_NgayNhanChanged();
     partial void OnThuTien_GhiChuChanging(string value);
     partial void OnThuTien_GhiChuChanged();
+    partial void OnThuTien_ButPheChanging(bool value);
+    partial void OnThuTien_ButPheChanged();
+    partial void OnThuTien_NgayButPheChanging(System.Nullable<System.DateTime> value);
+    partial void OnThuTien_NgayButPheChanged();
     partial void OnDocSo_NhanChanging(bool value);
     partial void OnDocSo_NhanChanged();
     partial void OnDocSo_NgayNhanChanging(System.Nullable<System.DateTime> value);
@@ -18601,6 +18753,46 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_ButPhe", DbType="Bit NOT NULL")]
+		public bool ThuTien_ButPhe
+		{
+			get
+			{
+				return this._ThuTien_ButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_ButPhe != value))
+				{
+					this.OnThuTien_ButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_ButPhe = value;
+					this.SendPropertyChanged("ThuTien_ButPhe");
+					this.OnThuTien_ButPheChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_NgayButPhe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ThuTien_NgayButPhe
+		{
+			get
+			{
+				return this._ThuTien_NgayButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_NgayButPhe != value))
+				{
+					this.OnThuTien_NgayButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_NgayButPhe = value;
+					this.SendPropertyChanged("ThuTien_NgayButPhe");
+					this.OnThuTien_NgayButPheChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocSo_Nhan", DbType="Bit NOT NULL")]
 		public bool DocSo_Nhan
 		{
@@ -19146,6 +19338,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _ThuTien_GhiChu;
 		
+		private bool _ThuTien_ButPhe;
+		
+		private System.Nullable<System.DateTime> _ThuTien_NgayButPhe;
+		
 		private bool _DocSo_Nhan;
 		
 		private System.Nullable<System.DateTime> _DocSo_NgayNhan;
@@ -19336,6 +19532,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnThuTien_NgayNhanChanged();
     partial void OnThuTien_GhiChuChanging(string value);
     partial void OnThuTien_GhiChuChanged();
+    partial void OnThuTien_ButPheChanging(bool value);
+    partial void OnThuTien_ButPheChanged();
+    partial void OnThuTien_NgayButPheChanging(System.Nullable<System.DateTime> value);
+    partial void OnThuTien_NgayButPheChanged();
     partial void OnDocSo_NhanChanging(bool value);
     partial void OnDocSo_NhanChanged();
     partial void OnDocSo_NgayNhanChanging(System.Nullable<System.DateTime> value);
@@ -21111,6 +21311,46 @@ namespace KTKS_DonKH.LinQ
 					this._ThuTien_GhiChu = value;
 					this.SendPropertyChanged("ThuTien_GhiChu");
 					this.OnThuTien_GhiChuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_ButPhe", DbType="Bit NOT NULL")]
+		public bool ThuTien_ButPhe
+		{
+			get
+			{
+				return this._ThuTien_ButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_ButPhe != value))
+				{
+					this.OnThuTien_ButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_ButPhe = value;
+					this.SendPropertyChanged("ThuTien_ButPhe");
+					this.OnThuTien_ButPheChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_NgayButPhe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ThuTien_NgayButPhe
+		{
+			get
+			{
+				return this._ThuTien_NgayButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_NgayButPhe != value))
+				{
+					this.OnThuTien_NgayButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_NgayButPhe = value;
+					this.SendPropertyChanged("ThuTien_NgayButPhe");
+					this.OnThuTien_NgayButPheChanged();
 				}
 			}
 		}
@@ -38548,6 +38788,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _ThuTien_GhiChu;
 		
+		private bool _ThuTien_ButPhe;
+		
+		private System.Nullable<System.DateTime> _ThuTien_NgayButPhe;
+		
 		private bool _DocSo_Nhan;
 		
 		private System.Nullable<System.DateTime> _DocSo_NgayNhan;
@@ -38684,6 +38928,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnThuTien_NgayNhanChanged();
     partial void OnThuTien_GhiChuChanging(string value);
     partial void OnThuTien_GhiChuChanged();
+    partial void OnThuTien_ButPheChanging(bool value);
+    partial void OnThuTien_ButPheChanged();
+    partial void OnThuTien_NgayButPheChanging(System.Nullable<System.DateTime> value);
+    partial void OnThuTien_NgayButPheChanged();
     partial void OnDocSo_NhanChanging(bool value);
     partial void OnDocSo_NhanChanged();
     partial void OnDocSo_NgayNhanChanging(System.Nullable<System.DateTime> value);
@@ -39900,6 +40148,46 @@ namespace KTKS_DonKH.LinQ
 					this._ThuTien_GhiChu = value;
 					this.SendPropertyChanged("ThuTien_GhiChu");
 					this.OnThuTien_GhiChuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_ButPhe", DbType="Bit NOT NULL")]
+		public bool ThuTien_ButPhe
+		{
+			get
+			{
+				return this._ThuTien_ButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_ButPhe != value))
+				{
+					this.OnThuTien_ButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_ButPhe = value;
+					this.SendPropertyChanged("ThuTien_ButPhe");
+					this.OnThuTien_ButPheChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_NgayButPhe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ThuTien_NgayButPhe
+		{
+			get
+			{
+				return this._ThuTien_NgayButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_NgayButPhe != value))
+				{
+					this.OnThuTien_NgayButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_NgayButPhe = value;
+					this.SendPropertyChanged("ThuTien_NgayButPhe");
+					this.OnThuTien_NgayButPheChanged();
 				}
 			}
 		}
@@ -50391,6 +50679,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _ThuTien_GhiChu;
 		
+		private bool _ThuTien_ButPhe;
+		
+		private System.Nullable<System.DateTime> _ThuTien_NgayButPhe;
+		
 		private bool _DocSo_Nhan;
 		
 		private System.Nullable<System.DateTime> _DocSo_NgayNhan;
@@ -50489,6 +50781,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnThuTien_NgayNhanChanged();
     partial void OnThuTien_GhiChuChanging(string value);
     partial void OnThuTien_GhiChuChanged();
+    partial void OnThuTien_ButPheChanging(bool value);
+    partial void OnThuTien_ButPheChanged();
+    partial void OnThuTien_NgayButPheChanging(System.Nullable<System.DateTime> value);
+    partial void OnThuTien_NgayButPheChanged();
     partial void OnDocSo_NhanChanging(bool value);
     partial void OnDocSo_NhanChanged();
     partial void OnDocSo_NgayNhanChanging(System.Nullable<System.DateTime> value);
@@ -51344,6 +51640,46 @@ namespace KTKS_DonKH.LinQ
 					this._ThuTien_GhiChu = value;
 					this.SendPropertyChanged("ThuTien_GhiChu");
 					this.OnThuTien_GhiChuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_ButPhe", DbType="Bit NOT NULL")]
+		public bool ThuTien_ButPhe
+		{
+			get
+			{
+				return this._ThuTien_ButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_ButPhe != value))
+				{
+					this.OnThuTien_ButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_ButPhe = value;
+					this.SendPropertyChanged("ThuTien_ButPhe");
+					this.OnThuTien_ButPheChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_NgayButPhe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ThuTien_NgayButPhe
+		{
+			get
+			{
+				return this._ThuTien_NgayButPhe;
+			}
+			set
+			{
+				if ((this._ThuTien_NgayButPhe != value))
+				{
+					this.OnThuTien_NgayButPheChanging(value);
+					this.SendPropertyChanging();
+					this._ThuTien_NgayButPhe = value;
+					this.SendPropertyChanged("ThuTien_NgayButPhe");
+					this.OnThuTien_NgayButPheChanged();
 				}
 			}
 		}
