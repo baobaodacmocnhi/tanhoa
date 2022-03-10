@@ -78,8 +78,12 @@ namespace DocSo_PC.DAL
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getDS_To(string MaTo)
+        public DataTable getDS_Doi(string Dot, string May)
         {
+            if (Dot == "Tất Cả")
+                Dot = "";
+            if (May == "Tất Cả")
+                May = "";
             string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
                         + " ,DienThoai=( select"
                         + "   distinct"
@@ -93,26 +97,7 @@ namespace DocSo_PC.DAL
                         + " ,DTKH=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. KH' order by CreateDate desc)"
                         + " ,DTDHN=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'Đ. QLĐHN' order by CreateDate desc)"
                         + " ,DTTV=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. TV' order by CreateDate desc)"
-                        + " from TB_DULIEUKHACHHANG where SUBSTRING(LOTRINH,3,2)>=(select TuMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") and SUBSTRING(LOTRINH,3,2)<=(select DenMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") order by LOTRINH";
-            return _cDAL.ExecuteQuery_DataTable(sql);
-        }
-
-        public DataTable getDS_May(string Dot, string May)
-        {
-            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
-                        + " ,DienThoai=( select"
-                        + "   distinct"
-                        + "    stuff(("
-                        + "        select ',' + u.DienThoai+' '+u.HoTen"
-                        + "        from SDT_DHN u"
-                        + "        where u.DanhBo = TB_DULIEUKHACHHANG.DanhBo"
-                        + "        for xml path('')"
-                        + "    ),1,1,'')"
-                        + ")"
-                        + " ,DTKH=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. KH' order by CreateDate desc)"
-                        + " ,DTDHN=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'Đ. QLĐHN' order by CreateDate desc)"
-                        + " ,DTTV=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. TV' order by CreateDate desc)"
-                        + " from TB_DULIEUKHACHHANG where SUBSTRING(LOTRINH,0,3)=" + Dot + " and SUBSTRING(LOTRINH,3,2)=" + May + " order by LOTRINH";
+                        + " from TB_DULIEUKHACHHANG where SUBSTRING(LOTRINH,0,3) like '%" + Dot + "%' and SUBSTRING(LOTRINH,3,2) like '%" + May + "%' order by LOTRINH";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 

@@ -15,9 +15,9 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Admin\Desktop\DocSoWFH\</PublishUrl>
+    <PublishUrl>\\192.168.90.9\BaoBao%24\DocSo_PC\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
+    <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -25,13 +25,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>http://113.161.88.180:81/DocSoWFH/</UpdateUrl>
+    <UpdateUrl>\\192.168.90.9\BaoBao%24\DocSo_PC\</UpdateUrl>
     <TargetCulture>vi-VN</TargetCulture>
     <ProductName>Quản Lý Đọc Số</ProductName>
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>73</ApplicationRevision>
+    <ApplicationRevision>78</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -273,6 +273,12 @@
     <Compile Include="GUI\sDHN\frmDSsDHN.Designer.cs">
       <DependentUpon>frmDSsDHN.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToTruong\frmXemLichSuXuLy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmXemLichSuXuLy.Designer.cs">
+      <DependentUpon>frmXemLichSuXuLy.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToTruong\frmDocSoTruoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -417,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\sDHN\frmDSsDHN.resx">
       <DependentUpon>frmDSsDHN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmXemLichSuXuLy.resx">
+      <DependentUpon>frmXemLichSuXuLy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmDocSoTruoc.resx">
       <DependentUpon>frmDocSoTruoc.cs</DependentUpon>

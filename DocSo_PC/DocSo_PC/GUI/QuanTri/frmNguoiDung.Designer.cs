@@ -77,6 +77,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtIDMobile = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.chkDoiXem = new System.Windows.Forms.CheckBox();
             this.ActiveMobile = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,6 +93,7 @@
             this.PhoGiamDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.An = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DoiXem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToTruong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -213,6 +215,7 @@
             this.PhoGiamDoc,
             this.An,
             this.Doi,
+            this.DoiXem,
             this.ToTruong,
             this.HanhThu,
             this.DongNuoc,
@@ -586,6 +589,16 @@
             this.label9.TabIndex = 32;
             this.label9.Text = "ID Mobile";
             // 
+            // chkDoiXem
+            // 
+            this.chkDoiXem.AutoSize = true;
+            this.chkDoiXem.Location = new System.Drawing.Point(305, 105);
+            this.chkDoiXem.Name = "chkDoiXem";
+            this.chkDoiXem.Size = new System.Drawing.Size(83, 17);
+            this.chkDoiXem.TabIndex = 34;
+            this.chkDoiXem.Text = "Đội chỉ Xem";
+            this.chkDoiXem.UseVisualStyleBackColor = true;
+            // 
             // ActiveMobile
             // 
             this.ActiveMobile.DataPropertyName = "ActiveMobile";
@@ -691,6 +704,14 @@
             this.Doi.Name = "Doi";
             this.Doi.Visible = false;
             // 
+            // DoiXem
+            // 
+            this.DoiXem.DataPropertyName = "DoiXem";
+            this.DoiXem.HeaderText = "DoiXem";
+            this.DoiXem.Name = "DoiXem";
+            this.DoiXem.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DoiXem.Visible = false;
+            // 
             // ToTruong
             // 
             this.ToTruong.DataPropertyName = "ToTruong";
@@ -738,6 +759,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1253, 669);
+            this.Controls.Add(this.chkDoiXem);
             this.Controls.Add(this.txtIDMobile);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtMay);
@@ -838,6 +860,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtIDMobile;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox chkDoiXem;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ActiveMobile;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaND;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
@@ -853,6 +876,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoGiamDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn An;
         private System.Windows.Forms.DataGridViewTextBoxColumn Doi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DoiXem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ToTruong;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DongNuoc;

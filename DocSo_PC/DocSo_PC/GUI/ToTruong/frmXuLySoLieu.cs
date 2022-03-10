@@ -430,7 +430,7 @@ namespace DocSo_PC.GUI.ToTruong
                             _docso.CSMoi = int.Parse(txtCSM.Text.Trim());
                             //_docso.TieuThuMoi = TieuThu;
                             _docso.TieuThuMoi = int.Parse(txtTieuThu.Text.Trim());
-                            if (_docso.CodeMoi.Substring(0, 1).Contains("F") == true)
+                            if (_docso.CodeMoi.Substring(0, 1).Contains("F") == true || _docso.CodeMoi.Substring(0, 1).Contains("6") == true)
                                 _docso.CSMoi = _docso.CSCu + _docso.TieuThuMoi;
                             _docso.TienNuoc = TTienNuoc;
                             _docso.Thue = TThueGTGT;
@@ -581,6 +581,15 @@ namespace DocSo_PC.GUI.ToTruong
             }
         }
 
+        private void btnXemLichSu_Click(object sender, EventArgs e)
+        {
+            if (_docso != null)
+            {
+                frmXemLichSuXuLy frm = new frmXemLichSuXuLy(_docso.DocSoID);
+                frm.ShowDialog();
+            }
+        }
+
         private void txtTieuThu_KeyPress(object sender, KeyPressEventArgs e)
         {
             try
@@ -655,6 +664,8 @@ namespace DocSo_PC.GUI.ToTruong
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        
 
 
     }

@@ -42,6 +42,7 @@ namespace DocSo_PC.GUI.QuanTri
             cmbNhom.SelectedIndex = -1;
             chkPhoGiamDoc.Checked = false;
             chkDoi.Checked = false;
+            chkDoiXem.Checked = false;
             chkToTruong.Checked = false;
             chkHanhThu.Checked = false;
             chkDongNuoc.Checked = false;
@@ -128,6 +129,7 @@ namespace DocSo_PC.GUI.QuanTri
                     nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
                     nguoidung.An = chkAn.Checked;
                     nguoidung.Doi = chkDoi.Checked;
+                    nguoidung.DoiXem = chkDoiXem.Checked;
                     nguoidung.ToTruong = chkToTruong.Checked;
                     nguoidung.HanhThu = chkHanhThu.Checked;
                     nguoidung.DongNuoc = chkDongNuoc.Checked;
@@ -184,6 +186,7 @@ namespace DocSo_PC.GUI.QuanTri
                     nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
                     nguoidung.An = chkAn.Checked;
                     nguoidung.Doi = chkDoi.Checked;
+                    nguoidung.DoiXem = chkDoiXem.Checked;
                     nguoidung.ToTruong = chkToTruong.Checked;
                     nguoidung.HanhThu = chkHanhThu.Checked;
                     nguoidung.DongNuoc = chkDongNuoc.Checked;
@@ -257,6 +260,7 @@ namespace DocSo_PC.GUI.QuanTri
                 chkPhoGiamDoc.Checked = bool.Parse(dgvNguoiDung["PhoGiamDoc", e.RowIndex].Value.ToString());
                 chkAn.Checked = bool.Parse(dgvNguoiDung["An", e.RowIndex].Value.ToString());
                 chkDoi.Checked = bool.Parse(dgvNguoiDung["Doi", e.RowIndex].Value.ToString());
+                chkDoiXem.Checked = bool.Parse(dgvNguoiDung["DoiXem", e.RowIndex].Value.ToString());
                 chkToTruong.Checked = bool.Parse(dgvNguoiDung["ToTruong", e.RowIndex].Value.ToString());
                 chkHanhThu.Checked = bool.Parse(dgvNguoiDung["HanhThu", e.RowIndex].Value.ToString());
                 chkDongNuoc.Checked = bool.Parse(dgvNguoiDung["DongNuoc", e.RowIndex].Value.ToString());

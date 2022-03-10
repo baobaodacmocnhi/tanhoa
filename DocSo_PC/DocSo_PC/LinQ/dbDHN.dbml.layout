@@ -45,10 +45,10 @@
         <elementListCompartment Id="1fe16102-a2ee-4d12-8bbe-3d9fb0d6fdec" absoluteBounds="3.015, 1.085, 1.9700000000000002, 11.402872721354166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="e29b485c-844d-4e3b-8e00-1095f13d2598" absoluteBounds="9, 1.125, 2, 2.5401025390625">
+    <classShape Id="73ffcea4-6083-45f8-a2ef-2968969a6c42" absoluteBounds="8.25, 1.5, 2, 2.5401025390625">
       <DataClassMoniker Name="/dbDHNDataContext/SDT_DHN" />
       <nestedChildShapes>
-        <elementListCompartment Id="f00d68cd-1fae-428a-be62-0688fdcfccce" absoluteBounds="9.015, 1.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9de1ff68-cdc9-40c2-bf3a-93206f729f98" absoluteBounds="8.265, 1.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

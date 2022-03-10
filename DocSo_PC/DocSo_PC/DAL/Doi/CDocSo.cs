@@ -271,6 +271,13 @@ namespace DocSo_PC.DAL.Doi
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
+        public DataTable getDS_LichSuXuLy(string ID)
+        {
+            string sql = "select SUBSTRING(KeyValue,5,2)+'/'+SUBSTRING(KeyValue,0,5) as NamKy,[EditTime],[OldValue],[NewValue],[UserName]"
+                            + " from EditLog where KeyValue='" + ID + "' and TableName like 'DocSo%' order by EditTime desc";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
         public void updateDocSo(DocSo en, ref DocSo enCN)
         {
             enCN.DanhBa = en.DanhBa;
@@ -456,7 +463,7 @@ namespace DocSo_PC.DAL.Doi
             + "          (values"
             + "              (N'6. Tiêu Thụ HĐ',convert(varchar(10),TIEUTHU)),"
             + "              (N'7. Đăng Ngân',convert(varchar(10),NgayGiaiTrach,103)),"
-            + "              (N'8. SoHoaDonCu',SoHoaDonCu)"
+            + "              (N'8. ĐCHĐ',(select SoHoaDon from server9.HOADON_TA.dbo.DIEUCHINH_HD where FK_HOADON=ID_HOADON))"
             + "              )"
             + "          cs (Col,Val)"
             + "      where DanhBa = '" + DanhBo + "') src"

@@ -142,13 +142,15 @@
             this.Column10.Name = "Column10";
             this.Column10.Width = 200;
             // 
-            // frmXemGhiChu
+            // frmXemLichSuGhiChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1258, 328);
             this.Controls.Add(this.dgvGhiChu);
-            this.Name = "frmXemGhiChu";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmXemLichSuGhiChu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ghi Chú";
             this.Load += new System.EventHandler(this.frmXemGhiChu_Load);

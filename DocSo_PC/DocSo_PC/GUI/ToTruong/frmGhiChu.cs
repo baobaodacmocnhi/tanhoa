@@ -128,20 +128,24 @@ namespace DocSo_PC.GUI.ToTruong
                 if (txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", "") != "")
                     dgvDanhSach.DataSource = _cDHN.getDS_DanhBo(txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
                 else
-                    if (cmbTo.SelectedIndex == 0)
+                    if (cmbMay.SelectedIndex == 0)
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_Doi();
+                        DataTable dt = new DataTable();
+                        foreach (object item in cmbMay.Items)
+                        {
+                            DataRowView row = item as DataRowView;
+                            if (row != null)
+                            {
+                                string displayValue = row["May"].ToString();
+                                if (displayValue != "Tất Cả")
+                                    dt.Merge(_cDHN.getDS_Doi(cmbDot.SelectedItem.ToString(), displayValue));
+                            }
+                        }
+                        dgvDanhSach.DataSource = dt;
                     }
                     else
                     {
-                        if (cmbMay.SelectedIndex == 0)
-                        {
-                            dgvDanhSach.DataSource = _cDHN.getDS_To(cmbTo.SelectedValue.ToString());
-                        }
-                        else
-                        {
-                            dgvDanhSach.DataSource = _cDHN.getDS_May(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
-                        }
+                        dgvDanhSach.DataSource = _cDHN.getDS_Doi(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
                     }
             }
             else
@@ -151,11 +155,22 @@ namespace DocSo_PC.GUI.ToTruong
                 else
                     if (cmbMay.SelectedIndex == 0)
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_To(CNguoiDung.MaTo.ToString());
+                        DataTable dt = new DataTable();
+                        foreach (object item in cmbMay.Items)
+                        {
+                            DataRowView row = item as DataRowView;
+                            if (row != null)
+                            {
+                                string displayValue = row["May"].ToString();
+                                if (displayValue != "Tất Cả")
+                                    dt.Merge(_cDHN.getDS_Doi(cmbDot.SelectedItem.ToString(), displayValue));
+                            }
+                        }
+                        dgvDanhSach.DataSource = dt;
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_May(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
+                        dgvDanhSach.DataSource = _cDHN.getDS_Doi(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
                     }
             }
             int TongViTri = 0, TongDienThoai = 0, TongDTKH = 0, TongDTDHN = 0, TongDTTV = 0;
@@ -305,6 +320,11 @@ namespace DocSo_PC.GUI.ToTruong
                 {
                     if (_enDLKH != null && _flagThemDienThoai == true)
                     {
+                        if (dgvDienThoai["DienThoai_DT", e.RowIndex].Value.ToString().Length != 11)
+                        {
+                            MessageBox.Show("Không đủ 10 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (_cDHN.checkExists_DienThoai(_enDLKH.DANHBO, dgvDienThoai["DienThoai_DT", e.RowIndex].Value.ToString()) == true)
                         {
                             MessageBox.Show("Đã Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

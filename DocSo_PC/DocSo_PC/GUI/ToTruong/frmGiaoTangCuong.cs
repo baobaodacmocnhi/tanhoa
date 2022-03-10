@@ -101,7 +101,7 @@ namespace DocSo_PC.GUI.ToTruong
                     string sql = "";
                     foreach (DataGridViewRow item in dgvDanhSach.SelectedRows)
                     {
-                        sql += " update DocSo set PhanMay='" + int.Parse(cmbMayTangCuong.SelectedItem.ToString()).ToString("00") + "' where DocSoID='" + item.Cells["DocSoID"].Value.ToString() + "'";
+                        sql += " update DocSo set PhanMay='" + int.Parse(cmbMayTangCuong.SelectedValue.ToString()).ToString("00") + "' where DocSoID='" + item.Cells["DocSoID"].Value.ToString() + "'";
                     }
                     CDocSo._cDAL.ExecuteNonQuery(sql);
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
