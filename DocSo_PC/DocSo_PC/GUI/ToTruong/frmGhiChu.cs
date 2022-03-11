@@ -33,6 +33,7 @@ namespace DocSo_PC.GUI.ToTruong
         {
             dgvDanhSach.AutoGenerateColumns = false;
             dgvDienThoai.AutoGenerateColumns = false;
+            dgvThongKe.AutoGenerateColumns = false;
             if (CNguoiDung.Admin)
                 btnChonFile.Visible = true;
             if (CNguoiDung.Doi)
@@ -126,7 +127,7 @@ namespace DocSo_PC.GUI.ToTruong
             if (CNguoiDung.Doi == true)
             {
                 if (txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", "") != "")
-                    dgvDanhSach.DataSource = _cDHN.getDS_DanhBo(txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
+                    dgvDanhSach.DataSource = _cDHN.getDS_GhiChu_DanhBo(txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
                 else
                     if (cmbMay.SelectedIndex == 0)
                     {
@@ -138,20 +139,30 @@ namespace DocSo_PC.GUI.ToTruong
                             {
                                 string displayValue = row["May"].ToString();
                                 if (displayValue != "Tất Cả")
-                                    dt.Merge(_cDHN.getDS_Doi(cmbDot.SelectedItem.ToString(), displayValue));
+                                    dt.Merge(_cDHN.getDS_GhiChu(cmbDot.SelectedItem.ToString(), displayValue));
                             }
                         }
                         dgvDanhSach.DataSource = dt;
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_Doi(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
+                        dgvDanhSach.DataSource = _cDHN.getDS_GhiChu(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
                     }
+                if (cmbDot.SelectedIndex == 0)
+                {
+                    DataTable dt = new DataTable();
+                    for (int i = 1; i < cmbDot.Items.Count; i++)
+                    {
+                        dt.Merge(_cDHN.getThongKe_DienThoai(cmbDot.Items[i].ToString()));
+                    }
+                }
+                else
+                    dgvThongKe.DataSource = _cDHN.getThongKe_DienThoai(cmbDot.SelectedItem.ToString());
             }
             else
             {
                 if (txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", "") != "")
-                    dgvDanhSach.DataSource = _cDHN.getDS_DanhBo(CNguoiDung.MaTo.ToString(), txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
+                    dgvDanhSach.DataSource = _cDHN.getDS_GhiChu_DanhBo(CNguoiDung.MaTo.ToString(), txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
                 else
                     if (cmbMay.SelectedIndex == 0)
                     {
@@ -163,15 +174,25 @@ namespace DocSo_PC.GUI.ToTruong
                             {
                                 string displayValue = row["May"].ToString();
                                 if (displayValue != "Tất Cả")
-                                    dt.Merge(_cDHN.getDS_Doi(cmbDot.SelectedItem.ToString(), displayValue));
+                                    dt.Merge(_cDHN.getDS_GhiChu(cmbDot.SelectedItem.ToString(), displayValue));
                             }
                         }
                         dgvDanhSach.DataSource = dt;
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_Doi(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
+                        dgvDanhSach.DataSource = _cDHN.getDS_GhiChu(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
                     }
+                if (cmbDot.SelectedIndex == 0)
+                {
+                    DataTable dt = new DataTable();
+                    for (int i = 1; i < cmbDot.Items.Count; i++)
+                    {
+                        dt.Merge(_cDHN.getThongKe_DienThoai(cmbDot.Items[i].ToString()));
+                    }
+                }
+                else
+                    dgvThongKe.DataSource = _cDHN.getThongKe_DienThoai(cmbDot.SelectedItem.ToString());
             }
             int TongViTri = 0, TongDienThoai = 0, TongDTKH = 0, TongDTDHN = 0, TongDTTV = 0;
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
@@ -389,28 +410,38 @@ namespace DocSo_PC.GUI.ToTruong
                     //        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //        btnXem.PerformClick();
                     //    }
-                    DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select DanhBo=DanhBa,DienThoai=SDT from KhachHang");
+                    DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select DanhBo,DienThoai from server11.KTKS_DonKH.dbo.DonTu_ChiTiet where DienThoai is not null and DienThoai not like '' and LEN(DienThoai)=10 and DanhBo not like ''");
                     foreach (DataRow item in dt.Rows)
-                        if (item["DienThoai"].ToString().Trim() != "")
+                        if (item["DienThoai"].ToString().Trim() != "" && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString(), item["DienThoai"].ToString().Trim()) == false)
                         {
-                            error = item["DanhBo"].ToString();
-                            string[] DienThoais = item["DienThoai"].ToString().Split('-');
-                            foreach (string itemDT in DienThoais)
+                            SDT_DHN en = new SDT_DHN();
+                            en.DanhBo = item["DanhBo"].ToString();
+                            en.DienThoai = item["DienThoai"].ToString().Trim();
+                            en.HoTen = "";
+                            //en.SoChinh = true;
+                            en.GhiChu = "P. TV";
+                            if (_cDHN.them_DienThoai(en) == true)
                             {
-                                if (itemDT.Trim() != "" && itemDT.Trim().Length < 15 && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString(), itemDT.Trim()) == false)
-                                {
-                                    SDT_DHN en = new SDT_DHN();
-                                    en.DanhBo = item["DanhBo"].ToString();
-                                    en.DienThoai = itemDT.Trim();
-                                    en.HoTen = "";
-                                    en.SoChinh = true;
-                                    en.GhiChu = "Đ. QLĐHN";
-                                    if (_cDHN.them_DienThoai(en) == true)
-                                    {
-                                    }
-                                }
                             }
+                            //error = item["DanhBo"].ToString();
+                            //string[] DienThoais = item["DienThoai"].ToString().Split('-');
+                            //foreach (string itemDT in DienThoais)
+                            //{
+                            //    if (itemDT.Trim() != "" && itemDT.Trim().Length < 15 && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString(), itemDT.Trim()) == false)
+                            //    {
+                            //        SDT_DHN en = new SDT_DHN();
+                            //        en.DanhBo = item["DanhBo"].ToString();
+                            //        en.DienThoai = itemDT.Trim();
+                            //        en.HoTen = "";
+                            //        en.SoChinh = true;
+                            //        en.GhiChu = "Đ. QLĐHN";
+                            //        if (_cDHN.them_DienThoai(en) == true)
+                            //        {
+                            //        }
+                            //    }
+                            //}
                         }
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

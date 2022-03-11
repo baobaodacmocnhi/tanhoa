@@ -59,7 +59,7 @@ namespace DocSo_PC.DAL
             return _cDAL.LINQToDataTable(_db.ViTriDHNs.ToList());
         }
 
-        public DataTable getDS_Doi()
+        public DataTable getDS_GhiChu()
         {
             string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
                         + " ,DienThoai=( select"
@@ -78,7 +78,7 @@ namespace DocSo_PC.DAL
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getDS_Doi(string Dot, string May)
+        public DataTable getDS_GhiChu(string Dot, string May)
         {
             if (Dot == "Tất Cả")
                 Dot = "";
@@ -101,7 +101,7 @@ namespace DocSo_PC.DAL
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getDS_DanhBo(string DanhBo)
+        public DataTable getDS_GhiChu_DanhBo(string DanhBo)
         {
             string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
                         + " ,DienThoai=( select"
@@ -120,7 +120,7 @@ namespace DocSo_PC.DAL
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getDS_DanhBo(string MaTo, string DanhBo)
+        public DataTable getDS_GhiChu_DanhBo(string MaTo, string DanhBo)
         {
             string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
                         + " ,DienThoai=( select"
@@ -147,6 +147,16 @@ namespace DocSo_PC.DAL
         public DataTable getDS_DienThoai(string DanhBo)
         {
             return _cDAL.ExecuteQuery_DataTable("select * from SDT_DHN where DanhBo='" + DanhBo + "' order by CreateDate desc");
+        }
+
+        public DataTable getThongKe_DienThoai(string Dot)
+        {
+            string sql = "select May,Tong=COUNT(distinct t1.DANHBO),DaCo=COUNT(distinct dt.DANHBO),ChuaCo=COUNT(distinct t1.DANHBO)-COUNT(distinct dt.DANHBO) from"
+                    + " (select May=SUBSTRING(LOTRINH,3,2),DanhBo from TB_DULIEUKHACHHANG where SUBSTRING(LOTRINH,1,2)=" + Dot + ")t1"
+                    + " left join (select * from SDT_DHN where GhiChu=N'Đ. QLĐHN')dt on t1.DANHBO=dt.DanhBo"
+                    + " group by May"
+                    + " order by May";
+            return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
         public bool them_DienThoai(SDT_DHN en)
