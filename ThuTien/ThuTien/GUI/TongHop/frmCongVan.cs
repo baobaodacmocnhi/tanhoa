@@ -240,21 +240,7 @@ namespace ThuTien.GUI.TongHop
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (dgvKinhDoanh.Columns[e.ColumnIndex].Name == "ThuTien_ButPhe" && e.FormattedValue.ToString().Trim() != dgvKinhDoanh[e.ColumnIndex, e.RowIndex].Value.ToString().Trim())
-            {
-                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
-                {
-                    if (dgvKinhDoanh["db", e.RowIndex].Value.ToString() == "Kinh Doanh")
-                        _cKinhDoanh.LinQ_ExecuteNonQuery("update " + dgvKinhDoanh["Table", e.RowIndex].Value.ToString() + " set ThuTien_ButPhe=1,ThuTien_NgayButPhe=getdate() where " + dgvKinhDoanh["Column", e.RowIndex].Value.ToString() + "=" + dgvKinhDoanh["Ma", e.RowIndex].Value.ToString());
-                    if (dgvKinhDoanh["db", e.RowIndex].Value.ToString() == "Thu Tiền")
-                    {
-                        _cCongVan.LinQ_ExecuteNonQuery("update " + dgvKinhDoanh["Table", e.RowIndex].Value.ToString() + " set ButPhe=1,NgayButPhe=getdate() where " + dgvKinhDoanh["Column", e.RowIndex].Value.ToString() + "=" + dgvKinhDoanh["Ma", e.RowIndex].Value.ToString());
-                        _cCongVan.SubmitChanges();
-                    }
-                }
-                else
-                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
         private void dgvKinhDoanh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -418,6 +404,25 @@ namespace ThuTien.GUI.TongHop
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvDSCongVan_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dgvKinhDoanh.Columns[e.ColumnIndex].Name == "ThuTien_ButPhe" && e.FormattedValue.ToString().Trim() != dgvKinhDoanh[e.ColumnIndex, e.RowIndex].Value.ToString().Trim())
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (dgvKinhDoanh["db", e.RowIndex].Value.ToString() == "Kinh Doanh")
+                        _cKinhDoanh.LinQ_ExecuteNonQuery("update " + dgvKinhDoanh["Table", e.RowIndex].Value.ToString() + " set ThuTien_ButPhe=1,ThuTien_NgayButPhe=getdate() where " + dgvKinhDoanh["Column", e.RowIndex].Value.ToString() + "=" + dgvKinhDoanh["Ma", e.RowIndex].Value.ToString());
+                    if (dgvKinhDoanh["db", e.RowIndex].Value.ToString() == "Thu Tiền")
+                    {
+                        _cCongVan.LinQ_ExecuteNonQuery("update " + dgvKinhDoanh["Table", e.RowIndex].Value.ToString() + " set ButPhe=1,NgayButPhe=getdate() where " + dgvKinhDoanh["Column", e.RowIndex].Value.ToString() + "=" + dgvKinhDoanh["Ma", e.RowIndex].Value.ToString());
+                        _cCongVan.SubmitChanges();
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }
