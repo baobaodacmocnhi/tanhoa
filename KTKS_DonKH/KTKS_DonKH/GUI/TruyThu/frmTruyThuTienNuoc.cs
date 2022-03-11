@@ -495,8 +495,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             {
                 int GiaBieu = 0, DinhMucHN = 0, DinhMuc = 0, TieuThu = 0;
                 DateTime TuNgay = DateTime.Now, DenNgay = DateTime.Now;
-                dgvTruyThuTienNuoc["TuNgay", e.RowIndex].Value = TuNgay.ToString("dd/MM/yyyy");
-                dgvTruyThuTienNuoc["DenNgay", e.RowIndex].Value = DenNgay.ToString("dd/MM/yyyy");
+
                 if (dgvTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "Ky" && dgvTruyThuTienNuoc["Nam", e.RowIndex].Value != null && dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString() != "" && int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()) >= 2011)
                 {
                     HOADON hd = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()));
@@ -515,9 +514,19 @@ namespace KTKS_DonKH.GUI.TruyThu
                             dgvTruyThuTienNuoc["TieuThu_Cu", e.RowIndex].Value = hd.TIEUTHU.Value;
                         //if (hd.GB != null)
                         dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value = hd.GB;
+                        dgvTruyThuTienNuoc["TuNgay", e.RowIndex].Value = TuNgay.ToString("dd/MM/yyyy");
+                        dgvTruyThuTienNuoc["DenNgay", e.RowIndex].Value = DenNgay.ToString("dd/MM/yyyy");
                     }
                 }
-                
+                else
+                    if (e.RowIndex >= 0)
+                    {
+                        if (dgvTruyThuTienNuoc["TuNgay", e.RowIndex].Value == null)
+                            dgvTruyThuTienNuoc["TuNgay", e.RowIndex].Value = TuNgay.ToString("dd/MM/yyyy");
+                        if (dgvTruyThuTienNuoc["DenNgay", e.RowIndex].Value == null)
+                            dgvTruyThuTienNuoc["DenNgay", e.RowIndex].Value = DenNgay.ToString("dd/MM/yyyy");
+                    }
+
                 if (dgvTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "GiaBieu_Cu")
                 {
                     dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value = dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value;
