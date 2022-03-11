@@ -508,6 +508,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                             DenNgay = hd.DENNGAY.Value;
                         if (hd.DinhMucHN != null)
                             dgvTruyThuTienNuoc["DinhMucHN_Cu", e.RowIndex].Value = hd.DinhMucHN.Value;
+                        else
+                            dgvTruyThuTienNuoc["DinhMucHN_Cu", e.RowIndex].Value = 0;
                         if (hd.DM != null)
                             dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex].Value = hd.DM.Value;
                         if (hd.TIEUTHU != null)
@@ -879,11 +881,13 @@ namespace KTKS_DonKH.GUI.TruyThu
             if (_flagLoad == false && dgvTruyThuTienNuoc["ID_HoaDon", e.RowIndex].Value == null)
                 if (e.RowIndex < dgvTruyThuTienNuoc.RowCount - 1)
                 {
-                    dgvTruyThuTienNuoc["Nam", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["Nam", e.RowIndex].Value;
+                    if (dgvTruyThuTienNuoc["Nam", e.RowIndex + 1].Value == null)
+                        dgvTruyThuTienNuoc["Nam", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["Nam", e.RowIndex].Value;
                     dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value;
                     dgvTruyThuTienNuoc["DinhMucHN_Cu", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMucHN_Cu", e.RowIndex].Value;
                     dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex].Value;
                     dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value;
+                    dgvTruyThuTienNuoc["DinhMucHN_Moi", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMucHN_Moi", e.RowIndex].Value;
                     dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex].Value;
                 }
         }
