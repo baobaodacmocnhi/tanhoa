@@ -341,7 +341,7 @@ namespace DocSo_PC.GUI.ToTruong
                 {
                     if (_enDLKH != null && _flagThemDienThoai == true)
                     {
-                        if (dgvDienThoai["DienThoai_DT", e.RowIndex].Value.ToString().Length != 11)
+                        if (dgvDienThoai["DienThoai_DT", e.RowIndex].Value.ToString().Length != 11 && dgvDienThoai["DienThoai_DT", e.RowIndex].Value.ToString().All(char.IsNumber) == false)
                         {
                             MessageBox.Show("Không đủ 10 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
