@@ -133,5 +133,37 @@ namespace KTKS_DonKH.GUI.HeThong
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            wsThuongVu.wsThuongVu ws = new wsThuongVu.wsThuongVu();
+            DataTable dt = _cMenu.ExecuteQuery_DataTable(textBox1.Text.Trim());
+            foreach (DataRow item in dt.Rows)
+            {
+                DataTable dtt = _cMenu.ExecuteQuery_DataTable("select Hinh from " + item["TableName"].ToString() + " where ID=" + item["ID"].ToString());
+                if (ws.ghi_Hinh(item["TableName"].ToString(), item["IDCT"].ToString(), item["Name"].ToString() + ".jpg", (byte[])dtt.Rows[0]["Hinh"]) == true)
+                    _cMenu.ExecuteNonQuery("update " + item["TableName"].ToString() + " set Loai=1 where ID=" + item["ID"].ToString());
+            }
+            MessageBox.Show("Thành Công");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            wsThuongVu.wsThuongVu ws = new wsThuongVu.wsThuongVu();
+            DataTable dt = _cMenu.ExecuteQuery_DataTable(textBox1.Text.Trim());
+            foreach (DataRow item in dt.Rows)
+            {
+                DataTable dtt = _cMenu.ExecuteQuery_DataTable("select Hinh from " + item["TableName"].ToString() + " where ID=" + item["ID"].ToString());
+                System.IO.MemoryStream ms = new System.IO.MemoryStream((byte[])dtt.Rows[0]["Hinh"]);
+                Image image = Image.FromStream(ms);
+                Bitmap resizedImage = _cMenu.resizeImage(image, 0.5m);
+                ImageConverter converter = new ImageConverter();
+                byte[] hinh = (byte[])converter.ConvertTo(resizedImage, typeof(byte[]));
+                
+                if (ws.ghi_Hinh(item["TableName"].ToString(), item["IDCT"].ToString(), item["Name"].ToString() + ".jpg", hinh) == true)
+                    _cMenu.ExecuteNonQuery("update " + item["TableName"].ToString() + " set Loai=1 where ID=" + item["ID"].ToString());
+            }
+            MessageBox.Show("Thành Công");
+        }
     }
 }

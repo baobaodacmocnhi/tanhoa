@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>SELECT ID,TableName='ThuTraLoi_ChiTiet_Hinh',IDCT=IDTTTL_ChiTiet,[Name] FROM [KTKS_DonKH].[dbo].[ThuTraLoi_ChiTiet_Hinh] where Loai is null and cast(createdate as date)&gt;='20211001' and id!=14429 and id!=32660</value>
+  </data>
 </root>

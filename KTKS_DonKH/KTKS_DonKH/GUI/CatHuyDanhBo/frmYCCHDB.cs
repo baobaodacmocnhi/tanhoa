@@ -35,6 +35,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CCHDB _cCHDB = new CCHDB();
         CCHDB_LyDo _cLyDoCHDB = new CCHDB_LyDo();
+        wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;
         DonKH _dontkh = null;
@@ -153,6 +154,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 var index = dgvHinh.Rows.Add();
                 dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
                 dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
+                if (item.Hinh != null)
                 dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
             }
         }
@@ -450,7 +452,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 CHDB_Phieu_Hinh en = new CHDB_Phieu_Hinh();
                                 en.IDCHDB_Phieu = ycchdb.MaYCCHDB;
                                 en.Name = item.Cells["Name_Hinh"].Value.ToString();
-                                en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
+                                //en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
+                                if (_wsThuongVu.ghi_Hinh("CHDB_Phieu_Hinh", en.IDCHDB_Phieu.Value.ToString(), en.Name + ".jpg", Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString())) == true)
                                 _cCHDB.Them_Hinh(en);
                             }
                             if (_dontu_ChiTiet != null)
@@ -554,6 +557,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     if (_ycchdb != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
+                        string flagID = _ycchdb.MaYCCHDB.ToString();
                         var transactionOptions = new TransactionOptions();
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
@@ -565,6 +569,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             }
                             if (_cCHDB.XoaPhieuHuy(_ycchdb))
                             {
+                                _wsThuongVu.xoa_Folder_Hinh("CHDB_Phieu_Hinh", flagID);
                                 scope.Complete();
                                 scope.Dispose();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -712,7 +717,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     //ListViewItem item = new ListViewItem();
                     //item.ImageKey = "file";
-                    //item.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                    //item.Text = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
                     //item.SubItems.Add(Convert.ToBase64String(bytes));
                     //lstVFile.Items.Add(item);
 
@@ -721,7 +726,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (_ycchdb == null)
                     {
                         var index = dgvHinh.Rows.Add();
-                        dgvHinh.Rows[index].Cells["Name_Hinh"].Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                        dgvHinh.Rows[index].Cells["Name_Hinh"].Value = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
                         dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
                     }
                     else
@@ -730,8 +735,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             CHDB_Phieu_Hinh en = new CHDB_Phieu_Hinh();
                             en.IDCHDB_Phieu = _ycchdb.MaYCCHDB;
-                            en.Name = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-                            en.Hinh = bytes;
+                            en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
+                            //en.Hinh = bytes;
+                            if (_wsThuongVu.ghi_Hinh("CHDB_Phieu_Hinh", en.IDCHDB_Phieu.Value.ToString(), en.Name + ".jpg", bytes) == true)
                             if (_cCHDB.Them_Hinh(en) == true)
                             {
                                 _cCHDB.Refresh();
@@ -770,7 +776,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            _cCHDB.LoadImageView(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
+            if (dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value != null && dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString() != "")
+                _cCHDB.LoadImageView(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
+            else
+                _cCHDB.LoadImageView(_wsThuongVu.get_Hinh("CHDB_Phieu_Hinh", _ycchdb.MaYCCHDB.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + ".jpg"));
         }
 
         private void xoaFile_dgvHinh_Click(object sender, EventArgs e)
@@ -785,6 +794,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null)
+                                if (_wsThuongVu.xoa_Hinh("CHDB_Phieu_Hinh", _ycchdb.MaYCCHDB.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + ".jpg") == true)
                                 if (_cCHDB.Xoa_Hinh(_cCHDB.get_Phieu_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
                                 {
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
