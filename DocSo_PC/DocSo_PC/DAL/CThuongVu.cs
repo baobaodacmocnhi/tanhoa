@@ -9,6 +9,7 @@ namespace DocSo_PC.DAL
     class CThuongVu
     {
         public static CConnection _cDAL = new CConnection("Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=db11@tanhoa");
+        wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
 
         public DataTable getDS_KTXM_ChuaNhan(DateTime FromCreateDate, DateTime ToCreateDate)
         {
@@ -20,7 +21,7 @@ namespace DocSo_PC.DAL
                         + " and NoiChuyen=N'Đội QLĐHN' and KTXM=1 and ktxm.MaKTXM=ktxmct.MaKTXM"
                         + " and ktxm.MaDonMoi=case when cvd.Ma like '%.%' then SUBSTRING(Ma,0,9) else Ma end"
                         + " and ktxmct.STT=case when cvd.Ma like '%.%' then RIGHT(Ma,LEN(Ma)-9) else 1 end"
-                        //+ " and ktxmct.MaCTKTXM not in (select IDCT from server8.DocSoTH.dbo.CongVanDen where TableName='KTXM_ChiTiet')"
+                //+ " and ktxmct.MaCTKTXM not in (select IDCT from server8.DocSoTH.dbo.CongVanDen where TableName='KTXM_ChiTiet')"
                         + " order by cvd.CreateDate asc";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
@@ -35,20 +36,35 @@ namespace DocSo_PC.DAL
                          + " and NoiChuyen=N'Đội QLĐHN' and ToTrinh=1 and tt.ID=ttct.ID"
                          + " and tt.MaDonMoi=case when cvd.Ma like '%.%' then SUBSTRING(Ma,0,9) else Ma end"
                          + " and ttct.STT=case when cvd.Ma like '%.%' then RIGHT(Ma,LEN(Ma)-9) else 1 end"
-                         //+ " and ttct.IDCT not in (select IDCT from server8.DocSoTH.dbo.CongVanDen where TableName='ToTrinh_ChiTiet')"
+                //+ " and ttct.IDCT not in (select IDCT from server8.DocSoTH.dbo.CongVanDen where TableName='ToTrinh_ChiTiet')"
                          + " order by cvd.CreateDate asc";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
-        public object getHinh_KTXM(int IDCT)
+        //public object getHinh_KTXM(int IDCT)
+        //{
+        //    return _cDAL.ExecuteQuery_ReturnOneValue("select Hinh from KTXM_ChiTiet_Hinh where IDKTXM_ChiTiet=" + IDCT);
+        //}
+
+        //public object getHinh_ToTrinh(int IDCT)
+        //{
+        //    return _cDAL.ExecuteQuery_ReturnOneValue("select Hinh from ToTrinh_ChiTiet_Hinh where IDToTrinh_ChiTiet=" + IDCT);
+        //}
+
+        public byte[] getHinh_KTXM(int IDCT)
         {
-            return _cDAL.ExecuteQuery_ReturnOneValue("select Hinh from KTXM_ChiTiet_Hinh where IDKTXM_ChiTiet=" + IDCT);
+            object filename = _cDAL.ExecuteQuery_ReturnOneValue("select [Name]+'.'+Loai from KTXM_ChiTiet_Hinh where IDKTXM_ChiTiet=" + IDCT);
+            if (filename != null)
+                return _wsThuongVu.get_Hinh("KTXM_ChiTiet_Hinh", IDCT.ToString(), filename.ToString());
+            else return null;
         }
 
-        public object getHinh_ToTrinh(int IDCT)
+        public byte[] getHinh_ToTrinh(int IDCT)
         {
-            return _cDAL.ExecuteQuery_ReturnOneValue("select Hinh from ToTrinh_ChiTiet_Hinh where IDToTrinh_ChiTiet=" + IDCT);
+            object filename = _cDAL.ExecuteQuery_ReturnOneValue("select [Name]+'.'+Loai from ToTrinh_ChiTiet_Hinh where IDToTrinh_ChiTiet=" + IDCT);
+            if (filename != null)
+                return _wsThuongVu.get_Hinh("ToTrinh_ChiTiet_Hinh", IDCT.ToString(), filename.ToString());
+            else return null;
         }
-
     }
 }

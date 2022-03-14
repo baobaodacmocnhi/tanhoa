@@ -26,8 +26,8 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=113.161.88.180,1833;Initial Catalog=CAPNUOCTANHOA;Persist Security In" +
-            "fo=True;User ID=sa;Password=db8@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=hp_g7\\kd;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;Use" +
+            "r ID=sa;Password=db8@tanhoa")]
         public string CAPNUOCTANHOAConnectionString {
             get {
                 return ((string)(this["CAPNUOCTANHOAConnectionString"]));
@@ -37,8 +37,8 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=113.161.88.180,1933;Initial Catalog=HOADON_TA;Persist Security Info=T" +
-            "rue;User ID=sa;Password=db9@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=" +
+            "sa;Password=db9@tanhoa")]
         public string HOADON_TAConnectionString {
             get {
                 return ((string)(this["HOADON_TAConnectionString"]));
@@ -48,8 +48,8 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=113.161.88.180,1133;Initial Catalog=TRUNGTAMKHACHHANG;Persist Securit" +
-            "y Info=True;User ID=sa;Password=db11@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=serverg8-01;Initial Catalog=TRUNGTAMKHACHHANG;Persist Security Info=T" +
+            "rue;User ID=sa;Password=db11@tanhoa")]
         public string TRUNGTAMKHACHHANGConnectionString {
             get {
                 return ((string)(this["TRUNGTAMKHACHHANGConnectionString"]));
@@ -59,7 +59,7 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://113.161.88.180:81/wsthutien.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.90.11:81/wsthutien.asmx")]
         public string DocSo_PC_wrThuTien_wsThuTien {
             get {
                 return ((string)(this["DocSo_PC_wrThuTien_wsThuTien"]));
@@ -69,7 +69,7 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://113.161.88.180:81/wsdhn.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.90.11:81/wsdhn.asmx")]
         public string DocSo_PC_wrDHN_wsDHN {
             get {
                 return ((string)(this["DocSo_PC_wrDHN_wsDHN"]));
@@ -79,11 +79,21 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=113.161.88.180,1833;Initial Catalog=DocSoTH;Persist Security Info=Tru" +
-            "e;User ID=sa;Password=db8@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=hp_g7\\kd;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=s" +
+            "a;Password=db8@tanhoa")]
         public string DocSoTHConnectionString {
             get {
                 return ((string)(this["DocSoTHConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.90.11:81/wsthuongvu.asmx")]
+        public string DocSo_PC_wsThuongVu_wsThuongVu {
+            get {
+                return ((string)(this["DocSo_PC_wsThuongVu_wsThuongVu"]));
             }
         }
     }

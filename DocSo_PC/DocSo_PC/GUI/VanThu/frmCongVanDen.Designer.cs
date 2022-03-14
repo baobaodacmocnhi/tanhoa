@@ -75,6 +75,8 @@
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.radKTXM = new System.Windows.Forms.RadioButton();
+            this.radToTrinh = new System.Windows.Forms.RadioButton();
             this.tabControl.SuspendLayout();
             this.tabChuaNhan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachChuaNhan)).BeginInit();
@@ -467,11 +469,35 @@
             this.label4.TabIndex = 25;
             this.label4.Text = "Đến Ngày:";
             // 
+            // radKTXM
+            // 
+            this.radKTXM.AutoSize = true;
+            this.radKTXM.Checked = true;
+            this.radKTXM.Location = new System.Drawing.Point(579, 0);
+            this.radKTXM.Name = "radKTXM";
+            this.radKTXM.Size = new System.Drawing.Size(55, 17);
+            this.radKTXM.TabIndex = 27;
+            this.radKTXM.TabStop = true;
+            this.radKTXM.Text = "KTXM";
+            this.radKTXM.UseVisualStyleBackColor = true;
+            // 
+            // radToTrinh
+            // 
+            this.radToTrinh.AutoSize = true;
+            this.radToTrinh.Location = new System.Drawing.Point(640, 0);
+            this.radToTrinh.Name = "radToTrinh";
+            this.radToTrinh.Size = new System.Drawing.Size(65, 17);
+            this.radToTrinh.TabIndex = 28;
+            this.radToTrinh.Text = "Tờ Trình";
+            this.radToTrinh.UseVisualStyleBackColor = true;
+            // 
             // frmCongVanDen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1242, 708);
+            this.Controls.Add(this.radToTrinh);
+            this.Controls.Add(this.radKTXM);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.dateTu);
             this.Controls.Add(this.dateDen);
@@ -503,6 +529,7 @@
         private System.Windows.Forms.DateTimePicker dateDen;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnXoa_DaNhan;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Nhan_QLDHN;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiVB;
@@ -516,7 +543,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.Button btnXoa_DaNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_DaNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiVB_DaNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT_DaNhan;
@@ -532,5 +558,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn TinhTieuThu;
         private System.Windows.Forms.DataGridViewCheckBoxColumn BaoThay;
         private System.Windows.Forms.DataGridViewCheckBoxColumn BaoThayThu;
+        private System.Windows.Forms.RadioButton radKTXM;
+        private System.Windows.Forms.RadioButton radToTrinh;
     }
 }

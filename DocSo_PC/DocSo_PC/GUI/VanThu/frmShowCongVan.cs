@@ -87,10 +87,13 @@ namespace DocSo_PC.GUI.VanThu
         Matrix transform;
         private void pictureBox_Paint(object sender, PaintEventArgs e)
         {
-            var g = e.Graphics;
-            if (transform != null)
-                g.Transform = transform;
-            e.Graphics.DrawImage(image1,0,0,pictureBox.Width,pictureBox.Height);
+            if (image1 != null)
+            {
+                var g = e.Graphics;
+                if (transform != null)
+                    g.Transform = transform;
+                e.Graphics.DrawImage(image1, 0, 0, pictureBox.Width, pictureBox.Height);
+            }
         }
 
         private void pictureBox_MouseWheel(object sender, MouseEventArgs e)

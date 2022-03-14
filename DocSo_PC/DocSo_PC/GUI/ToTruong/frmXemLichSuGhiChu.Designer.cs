@@ -153,6 +153,7 @@
             this.Name = "frmXemLichSuGhiChu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ghi Chú";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmXemGhiChu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGhiChu)).EndInit();
             this.ResumeLayout(false);

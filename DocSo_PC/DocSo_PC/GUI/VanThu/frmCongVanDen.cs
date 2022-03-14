@@ -119,8 +119,11 @@ namespace DocSo_PC.GUI.VanThu
         {
             if (tabControl.SelectedTab.Name == "tabChuaNhan")
             {
-                DataTable dt = _cThuongVu.getDS_KTXM_ChuaNhan(dateTu.Value, dateDen.Value);
-                dt.Merge(_cThuongVu.getDS_ToTrinh_ChuaNhan(dateTu.Value, dateDen.Value));
+                DataTable dt = new DataTable();
+                if (radKTXM.Checked)
+                    dt = _cThuongVu.getDS_KTXM_ChuaNhan(dateTu.Value, dateDen.Value);
+                else
+                    dt = _cThuongVu.getDS_ToTrinh_ChuaNhan(dateTu.Value, dateDen.Value);
                 dgvDanhSachChuaNhan.DataSource = dt;
             }
             else

@@ -157,6 +157,18 @@
     <Compile Include="GUI\Doi\frmTaoDotKiemTra.Designer.cs">
       <DependentUpon>frmTaoDotKiemTra.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\MaHoa\frmDSDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MaHoa\frmDSDon.Designer.cs">
+      <DependentUpon>frmDSDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MaHoa\frmNhanDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MaHoa\frmNhanDon.Designer.cs">
+      <DependentUpon>frmNhanDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QuanTri\frmNhanVienDocSo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -377,6 +389,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\wsThuongVu\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BaoCao\rptHeader.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptHeader.cs</LastGenOutput>
@@ -396,6 +413,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmTaoDotKiemTra.resx">
       <DependentUpon>frmTaoDotKiemTra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MaHoa\frmDSDon.resx">
+      <DependentUpon>frmDSDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MaHoa\frmNhanDon.resx">
+      <DependentUpon>frmNhanDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanTri\frmNhanVienDocSo.resx">
       <DependentUpon>frmNhanVienDocSo.cs</DependentUpon>
@@ -556,6 +579,11 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\wrThuTien\wsthutien.wsdl" />
+    <None Include="Web References\wsThuongVu\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsThuongVu\wsthuongvu.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -584,6 +612,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Water.ico" />
+    <None Include="Web References\wsThuongVu\wsthuongvu.disco" />
     <None Include="Web References\wrDHN\wsdhn.disco" />
     <None Include="Web References\wrThuTien\wsthutien.disco" />
   </ItemGroup>
@@ -881,6 +910,17 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>DocSo_PC_wrDHN_wsDHN</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.90.11:81/wsthuongvu.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsThuongVu\</RelPath>
+      <UpdateFromURL>http://192.168.90.11:81/wsthuongvu.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DocSo_PC_wsThuongVu_wsThuongVu</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://192.168.90.11:81/wsthutien.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\wrThuTien\</RelPath>
@@ -893,7 +933,9 @@
       <CachedSettingsPropName>DocSo_PC_wrThuTien_wsThuTien</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DAL\MaHoa\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
