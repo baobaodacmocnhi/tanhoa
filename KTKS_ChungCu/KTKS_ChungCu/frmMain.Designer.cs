@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtCCCD = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.txtSoNKTong = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtSTT = new System.Windows.Forms.TextBox();
@@ -82,8 +84,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
             this.chkAnGhiChu = new System.Windows.Forms.CheckBox();
-            this.txtCCCD = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -134,6 +134,24 @@
             this.groupBox2.Size = new System.Drawing.Size(1035, 87);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // txtCCCD
+            // 
+            this.txtCCCD.Location = new System.Drawing.Point(438, 49);
+            this.txtCCCD.Name = "txtCCCD";
+            this.txtCCCD.Size = new System.Drawing.Size(100, 25);
+            this.txtCCCD.TabIndex = 19;
+            this.txtCCCD.Visible = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(380, 52);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(52, 17);
+            this.label19.TabIndex = 18;
+            this.label19.Text = "CCCD:";
+            this.label19.Visible = false;
             // 
             // txtSoNKTong
             // 
@@ -624,22 +642,6 @@
             this.chkAnGhiChu.Text = "Ẩn Ghi Chú";
             this.chkAnGhiChu.UseVisualStyleBackColor = true;
             // 
-            // txtCCCD
-            // 
-            this.txtCCCD.Location = new System.Drawing.Point(438, 49);
-            this.txtCCCD.Name = "txtCCCD";
-            this.txtCCCD.Size = new System.Drawing.Size(100, 25);
-            this.txtCCCD.TabIndex = 19;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(380, 52);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(52, 17);
-            this.label19.TabIndex = 18;
-            this.label19.Text = "CCCD:";
-            // 
             // STT
             // 
             this.STT.DataPropertyName = "STT";
@@ -705,6 +707,7 @@
             this.CCCD.DataPropertyName = "CCCD";
             this.CCCD.HeaderText = "CCCD";
             this.CCCD.Name = "CCCD";
+            this.CCCD.Visible = false;
             // 
             // HoTen
             // 
