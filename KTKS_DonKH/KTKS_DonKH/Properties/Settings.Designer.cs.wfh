@@ -88,5 +88,14 @@ namespace KTKS_DonKH.Properties {
                 return ((string)(this["TRUNGTAMKHACHHANGConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://113.161.88.180:81/wsthuongvu.asmx")]
+        public string KTKS_DonKH_wsThuongVu_wsThuongVu {
+            get {
+                return ((string)(this["KTKS_DonKH_wsThuongVu_wsThuongVu"]));
+            }
+        }
     }
 }

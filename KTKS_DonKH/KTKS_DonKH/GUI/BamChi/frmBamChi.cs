@@ -161,7 +161,8 @@ namespace KTKS_DonKH.GUI.BamChi
                 dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
                 dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
                 if (item.Hinh != null)
-                dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
+                    dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
+                dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = item.Loai;
             }
         }
 
@@ -632,8 +633,9 @@ namespace KTKS_DonKH.GUI.BamChi
                                 en.IDBamChi_ChiTiet = ctbamchi.MaCTBC;
                                 en.Name = item.Cells["Name_Hinh"].Value.ToString();
                                 //en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
+                                en.Loai = item.Cells["Loai_Hinh"].Value.ToString();
                                 if (_wsThuongVu.ghi_Hinh("BamChi_ChiTiet_Hinh", en.IDBamChi_ChiTiet.Value.ToString(), en.Name + ".jpg", Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString())) == true)
-                                _cBamChi.Them_Hinh(en);
+                                    _cBamChi.Them_Hinh(en);
                             }
                             if (_dontu_ChiTiet != null)
                             {
@@ -1017,6 +1019,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         var index = dgvHinh.Rows.Add();
                         dgvHinh.Rows[index].Cells["Name_Hinh"].Value = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
                         dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                        dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
                     }
                     else
                     {
@@ -1032,14 +1035,16 @@ namespace KTKS_DonKH.GUI.BamChi
                             en.IDBamChi_ChiTiet = _ctbamchi.MaCTBC;
                             en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
                             //en.Hinh = bytes;
+                            en.Loai = System.IO.Path.GetExtension(dialog.FileName);
                             if (_wsThuongVu.ghi_Hinh("BamChi_ChiTiet_Hinh", en.IDBamChi_ChiTiet.Value.ToString(), en.Name + ".jpg", bytes) == true)
-                            if (_cBamChi.Them_Hinh(en) == true)
-                            {
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                var index = dgvHinh.Rows.Add();
-                                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
-                                dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
-                            }
+                                if (_cBamChi.Them_Hinh(en) == true)
+                                {
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    var index = dgvHinh.Rows.Add();
+                                    dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
+                                    dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                                    dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
+                                }
                         }
                         else
                             MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1095,13 +1100,13 @@ namespace KTKS_DonKH.GUI.BamChi
                                 }
                             if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null)
                                 if (_wsThuongVu.xoa_Hinh("BamChi_ChiTiet_Hinh", _ctbamchi.MaCTBC.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + ".jpg") == true)
-                                if (_cBamChi.Xoa_Hinh(_cBamChi.get_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
-                                {
-                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    dgvHinh.Rows.RemoveAt(dgvHinh.CurrentRow.Index);
-                                }
-                                else
-                                    MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    if (_cBamChi.Xoa_Hinh(_cBamChi.get_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
+                                    {
+                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        dgvHinh.Rows.RemoveAt(dgvHinh.CurrentRow.Index);
+                                    }
+                                    else
+                                        MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else

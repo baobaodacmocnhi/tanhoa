@@ -1778,6 +1778,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<VanBan_ChiTiet> _VanBan_ChiTiet;
 		
     #region Extensibility Method Definitions
@@ -1796,6 +1798,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public VanBan_ChiTiet_Hinh()
@@ -1924,6 +1928,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}
@@ -3020,6 +3044,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<BamChi_ChiTiet> _BamChi_ChiTiet;
 		
     #region Extensibility Method Definitions
@@ -3038,6 +3064,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public BamChi_ChiTiet_Hinh()
@@ -3166,6 +3194,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}
@@ -6734,6 +6782,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<CHDB_ChiTietCatHuy> _CHDB_ChiTietCatHuy;
 		
     #region Extensibility Method Definitions
@@ -6752,6 +6802,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public CHDB_ChiTietCatHuy_Hinh()
@@ -6880,6 +6932,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}
@@ -8488,6 +8560,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<CHDB_ChiTietCatTam> _CHDB_ChiTietCatTam;
 		
     #region Extensibility Method Definitions
@@ -8506,6 +8580,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public CHDB_ChiTietCatTam_Hinh()
@@ -8634,6 +8710,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}
@@ -10872,6 +10968,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<CHDB_Phieu> _CHDB_Phieu;
 		
     #region Extensibility Method Definitions
@@ -10890,6 +10988,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public CHDB_Phieu_Hinh()
@@ -11018,6 +11118,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}
@@ -18951,6 +19071,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<DCBD_ChiTietBienDong> _DCBD_ChiTietBienDong;
 		
     #region Extensibility Method Definitions
@@ -18969,6 +19091,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public DCBD_ChiTietBienDong_Hinh()
@@ -19097,6 +19221,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}
@@ -21513,6 +21657,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<DCBD_ChiTietHoaDon> _DCBD_ChiTietHoaDon;
 		
     #region Extensibility Method Definitions
@@ -21531,6 +21677,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public DCBD_ChiTietHoaDon_Hinh()
@@ -21659,6 +21807,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}
@@ -24862,6 +25030,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<DongNuoc_ChiTiet> _DongNuoc_ChiTiet;
 		
     #region Extensibility Method Definitions
@@ -24880,6 +25050,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public DongNuoc_ChiTiet_Hinh()
@@ -25008,6 +25180,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}
@@ -35389,6 +35581,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<GianLan_ChiTiet> _GianLan_ChiTiet;
 		
     #region Extensibility Method Definitions
@@ -35407,6 +35601,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public GianLan_ChiTiet_Hinh()
@@ -35535,6 +35731,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}
@@ -40375,6 +40591,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<KTXM_ChiTiet> _KTXM_ChiTiet;
 		
     #region Extensibility Method Definitions
@@ -40393,6 +40611,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public KTXM_ChiTiet_Hinh()
@@ -40521,6 +40741,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}
@@ -49938,6 +50178,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<ThuMoi_ChiTiet> _ThuMoi_ChiTiet;
 		
     #region Extensibility Method Definitions
@@ -49956,6 +50198,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public ThuMoi_ChiTiet_Hinh()
@@ -50084,6 +50328,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}
@@ -51842,6 +52106,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<ThuTraLoi_ChiTiet> _ThuTraLoi_ChiTiet;
 		
     #region Extensibility Method Definitions
@@ -51860,6 +52126,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public ThuTraLoi_ChiTiet_Hinh()
@@ -51988,6 +52256,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}
@@ -55291,6 +55579,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<ToTrinh_ChiTiet> _ToTrinh_ChiTiet;
 		
     #region Extensibility Method Definitions
@@ -55309,6 +55599,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public ToTrinh_ChiTiet_Hinh()
@@ -55437,6 +55729,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}
@@ -57114,6 +57426,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _Loai;
+		
 		private EntityRef<TruyThuTienNuoc_ChiTiet> _TruyThuTienNuoc_ChiTiet;
 		
     #region Extensibility Method Definitions
@@ -57132,6 +57446,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
     #endregion
 		
 		public TruyThuTienNuoc_ChiTiet_Hinh()
@@ -57260,6 +57576,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
 				}
 			}
 		}

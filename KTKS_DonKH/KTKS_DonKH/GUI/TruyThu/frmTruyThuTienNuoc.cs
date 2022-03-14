@@ -235,6 +235,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
                     if (item.Hinh != null) 
                         dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
+                    dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = item.Loai;
                 }
             }
             catch (Exception ex)
@@ -1040,6 +1041,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             en.IDTruyThuTienNuoc_ChiTiet = cttttn.IDCT;
                             en.Name = item.Cells["Name_Hinh"].Value.ToString();
                             //en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
+                            en.Loai = item.Cells["Loai_Hinh"].Value.ToString();
                             if (_wsThuongVu.ghi_Hinh("TruyThuTienNuoc_ChiTiet_Hinh", en.IDTruyThuTienNuoc_ChiTiet.Value.ToString(), en.Name + ".jpg", Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString())) == true)
                                 _cTTTN.Them_Hinh(en);
                         }
@@ -1971,6 +1973,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         var index = dgvHinh.Rows.Add();
                         dgvHinh.Rows[index].Cells["Name_Hinh"].Value = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
                         dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                        dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
                     }
                     else
                     {
@@ -1980,6 +1983,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             en.IDTruyThuTienNuoc_ChiTiet = _cttttn.IDCT;
                             en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
                             //en.Hinh = bytes;
+                            en.Loai = System.IO.Path.GetExtension(dialog.FileName);
                             if (_wsThuongVu.ghi_Hinh("TruyThuTienNuoc_ChiTiet_Hinh", en.IDTruyThuTienNuoc_ChiTiet.Value.ToString(), en.Name + ".jpg", bytes) == true)
                             if (_cTTTN.Them_Hinh(en) == true)
                             {
@@ -1988,6 +1992,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 var index = dgvHinh.Rows.Add();
                                 dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
                                 dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                                dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
                             }
                         }
                         else

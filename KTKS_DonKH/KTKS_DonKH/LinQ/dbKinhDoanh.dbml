@@ -26,6 +26,7 @@
       <Column Name="IDVanBan_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="VanBan_ChiTiet_VanBan_ChiTiet_Hinh" Member="VanBan_ChiTiet" ThisKey="IDVanBan_ChiTiet" OtherKey="IDCT" Type="VanBan_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
@@ -81,6 +82,7 @@
       <Column Name="IDBamChi_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="BamChi_ChiTiet_BamChi_ChiTiet_Hinh" Member="BamChi_ChiTiet" ThisKey="IDBamChi_ChiTiet" OtherKey="MaCTBC" Type="BamChi_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
@@ -245,6 +247,7 @@
       <Column Name="IDCHDB_ChiTietCatHuy" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="CHDB_ChiTietCatHuy_CHDB_ChiTietCatHuy_Hinh" Member="CHDB_ChiTietCatHuy" ThisKey="IDCHDB_ChiTietCatHuy" OtherKey="MaCTCHDB" Type="CHDB_ChiTietCatHuy" IsForeignKey="true" />
     </Type>
   </Table>
@@ -321,6 +324,7 @@
       <Column Name="IDCHDB_ChiTietCatTam" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="CHDB_ChiTietCatTam_CHDB_ChiTietCatTam_Hinh" Member="CHDB_ChiTietCatTam" ThisKey="IDCHDB_ChiTietCatTam" OtherKey="MaCTCTDB" Type="CHDB_ChiTietCatTam" IsForeignKey="true" />
     </Type>
   </Table>
@@ -428,6 +432,7 @@
       <Column Name="IDCHDB_Phieu" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="CHDB_Phieu_CHDB_Phieu_Hinh" Member="CHDB_Phieu" ThisKey="IDCHDB_Phieu" OtherKey="MaYCCHDB" Type="CHDB_Phieu" IsForeignKey="true" />
     </Type>
   </Table>
@@ -787,6 +792,7 @@
       <Column Name="IDDCBD_ChiTietBienDong" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="DCBD_ChiTietBienDong_DCBD_ChiTietBienDong_Hinh" Member="DCBD_ChiTietBienDong" ThisKey="IDDCBD_ChiTietBienDong" OtherKey="MaCTDCBD" Type="DCBD_ChiTietBienDong" IsForeignKey="true" />
     </Type>
   </Table>
@@ -897,6 +903,7 @@
       <Column Name="IDDCBD_ChiTietHoaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="DCBD_ChiTietHoaDon_DCBD_ChiTietHoaDon_Hinh" Member="DCBD_ChiTietHoaDon" ThisKey="IDDCBD_ChiTietHoaDon" OtherKey="MaCTDCHD" Type="DCBD_ChiTietHoaDon" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1048,6 +1055,7 @@
       <Column Name="IDDongNuoc_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="DongNuoc_ChiTiet_DongNuoc_ChiTiet_Hinh" Member="DongNuoc_ChiTiet" ThisKey="IDDongNuoc_ChiTiet" OtherKey="MaCTDN" Type="DongNuoc_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1494,6 +1502,7 @@
       <Column Name="IDGianLan_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="GianLan_ChiTiet_GianLan_ChiTiet_Hinh" Member="GianLan_ChiTiet" ThisKey="IDGianLan_ChiTiet" OtherKey="MaCTGL" Type="GianLan_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1727,6 +1736,7 @@
       <Column Name="IDKTXM_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="KTXM_ChiTiet_KTXM_ChiTiet_Hinh" Member="KTXM_ChiTiet" ThisKey="IDKTXM_ChiTiet" OtherKey="MaCTKTXM" Type="KTXM_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
@@ -2185,6 +2195,7 @@
       <Column Name="IDThuMoi_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="ThuMoi_ChiTiet_ThuMoi_ChiTiet_Hinh" Member="ThuMoi_ChiTiet" ThisKey="IDThuMoi_ChiTiet" OtherKey="IDCT" Type="ThuMoi_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
@@ -2267,6 +2278,7 @@
       <Column Name="IDTTTL_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="ThuTraLoi_ChiTiet_ThuTraLoi_ChiTiet_Hinh" Member="ThuTraLoi_ChiTiet" ThisKey="IDTTTL_ChiTiet" OtherKey="MaCTTTTL" Type="ThuTraLoi_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
@@ -2422,6 +2434,7 @@
       <Column Name="IDToTrinh_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="ToTrinh_ChiTiet_ToTrinh_ChiTiet_Hinh" Member="ToTrinh_ChiTiet" ThisKey="IDToTrinh_ChiTiet" OtherKey="IDCT" Type="ToTrinh_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
@@ -2502,6 +2515,7 @@
       <Column Name="IDTruyThuTienNuoc_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Association Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ChiTiet_Hinh" Member="TruyThuTienNuoc_ChiTiet" ThisKey="IDTruyThuTienNuoc_ChiTiet" OtherKey="IDCT" Type="TruyThuTienNuoc_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>

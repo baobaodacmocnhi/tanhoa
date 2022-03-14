@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdmin));
             this.dgvResult = new System.Windows.Forms.DataGridView();
             this.txtQuery = new System.Windows.Forms.TextBox();
             this.btnCapNhatPhanQuyenNguoiDung = new System.Windows.Forms.Button();
@@ -109,7 +108,9 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(920, 46);
             this.textBox1.TabIndex = 11;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
+            this.textBox1.Text = "SELECT ID,TableName=\'KTXM_ChiTiet_Hinh\',IDCT=IDKTXM_ChiTiet,[Name] FROM [KTKS_Don" +
+                "KH].[dbo].[KTXM_ChiTiet_Hinh] where Loai is null and cast(createdate as date)>=\'" +
+                "20211001\' and id>=32663";
             // 
             // button2
             // 

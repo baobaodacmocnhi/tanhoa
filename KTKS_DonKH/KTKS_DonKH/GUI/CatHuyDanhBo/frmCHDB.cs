@@ -225,6 +225,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
                 if (item.Hinh != null)
                 dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
+                dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = item.Loai;
             }
 
             dgvGhiChu.DataSource = _cCHDB.GetDSGhiChuByMaCTCHDB(ctchdb.MaCTCHDB);
@@ -664,6 +665,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 en.IDCHDB_ChiTietCatHuy = ctchdb.MaCTCHDB;
                                 en.Name = item.Cells["Name_Hinh"].Value.ToString();
                                 //en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
+                                en.Loai = item.Cells["Loai_Hinh"].Value.ToString();
                                 if (_wsThuongVu.ghi_Hinh("CHDB_ChiTietCatHuy_Hinh", en.IDCHDB_ChiTietCatHuy.Value.ToString(), en.Name + ".jpg", Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString())) == true)
                                 _cCHDB.Them_Hinh(en);
                             }
@@ -1503,6 +1505,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         var index = dgvHinh.Rows.Add();
                         dgvHinh.Rows[index].Cells["Name_Hinh"].Value = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
                         dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                        dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
                     }
                     else
                     {
@@ -1512,6 +1515,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             en.IDCHDB_ChiTietCatHuy = _ctchdb.MaCTCHDB;
                             en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
                             //en.Hinh = bytes;
+                            en.Loai = System.IO.Path.GetExtension(dialog.FileName);
                             if (_wsThuongVu.ghi_Hinh("CHDB_ChiTietCatHuy_Hinh", en.IDCHDB_ChiTietCatHuy.Value.ToString(), en.Name + ".jpg", bytes) == true)
                             if (_cCHDB.Them_Hinh(en) == true)
                             {
@@ -1520,6 +1524,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 var index = dgvHinh.Rows.Add();
                                 dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
                                 dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                                dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
                             }
                         }
                         else
