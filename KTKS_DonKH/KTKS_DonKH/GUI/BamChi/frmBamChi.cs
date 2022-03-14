@@ -634,7 +634,7 @@ namespace KTKS_DonKH.GUI.BamChi
                                 en.Name = item.Cells["Name_Hinh"].Value.ToString();
                                 //en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
                                 en.Loai = item.Cells["Loai_Hinh"].Value.ToString();
-                                if (_wsThuongVu.ghi_Hinh("BamChi_ChiTiet_Hinh", en.IDBamChi_ChiTiet.Value.ToString(), en.Name + ".jpg", Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString())) == true)
+                                if (_wsThuongVu.ghi_Hinh("BamChi_ChiTiet_Hinh", en.IDBamChi_ChiTiet.Value.ToString(), en.Name + en.Loai, Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString())) == true)
                                     _cBamChi.Them_Hinh(en);
                             }
                             if (_dontu_ChiTiet != null)
@@ -671,7 +671,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             MessageBox.Show("Biên bản bấm chì đã được Chốt Quyết Toán", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                        if (CTaiKhoan.Admin==false&&CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                             if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
                             {
                                 MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1025,7 +1025,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     {
                         if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                         {
-                            if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                            if (CTaiKhoan.Admin==false&&CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                                 if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
                                 {
                                     MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1036,7 +1036,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
                             //en.Hinh = bytes;
                             en.Loai = System.IO.Path.GetExtension(dialog.FileName);
-                            if (_wsThuongVu.ghi_Hinh("BamChi_ChiTiet_Hinh", en.IDBamChi_ChiTiet.Value.ToString(), en.Name + ".jpg", bytes) == true)
+                            if (_wsThuongVu.ghi_Hinh("BamChi_ChiTiet_Hinh", en.IDBamChi_ChiTiet.Value.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cBamChi.Them_Hinh(en) == true)
                                 {
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1078,7 +1078,7 @@ namespace KTKS_DonKH.GUI.BamChi
             if (dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value != null && dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString() != "")
                 _cBamChi.LoadImageView(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
             else
-                _cBamChi.LoadImageView(_wsThuongVu.get_Hinh("BamChi_ChiTiet_Hinh", _ctbamchi.MaCTBC.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + ".jpg"));
+                _cBamChi.LoadImageView(_wsThuongVu.get_Hinh("BamChi_ChiTiet_Hinh", _ctbamchi.MaCTBC.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()));
         }
 
         private void xoaFile_dgvHinh_Click(object sender, EventArgs e)
@@ -1099,7 +1099,7 @@ namespace KTKS_DonKH.GUI.BamChi
                                     return;
                                 }
                             if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null)
-                                if (_wsThuongVu.xoa_Hinh("BamChi_ChiTiet_Hinh", _ctbamchi.MaCTBC.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + ".jpg") == true)
+                                if (_wsThuongVu.xoa_Hinh("BamChi_ChiTiet_Hinh", _ctbamchi.MaCTBC.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()) == true)
                                     if (_cBamChi.Xoa_Hinh(_cBamChi.get_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
                                     {
                                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

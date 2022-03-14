@@ -886,7 +886,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 en.Name = item.Cells["Name_Hinh"].Value.ToString();
                                 //en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
                                 en.Loai = item.Cells["Loai_Hinh"].Value.ToString();
-                                if (_wsThuongVu.ghi_Hinh("DCBD_ChiTietHoaDon_Hinh", en.IDDCBD_ChiTietHoaDon.Value.ToString(), en.Name + ".jpg", Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString())) == true)
+                                if (_wsThuongVu.ghi_Hinh("DCBD_ChiTietHoaDon_Hinh", en.IDDCBD_ChiTietHoaDon.Value.ToString(), en.Name + en.Loai, Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString())) == true)
                                 _cDCBD.Them_Hinh(en);
                             }
                             if (_dontu_ChiTiet != null)
@@ -2571,7 +2571,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
                             //en.Hinh = bytes;
                             en.Loai = System.IO.Path.GetExtension(dialog.FileName);
-                            if (_wsThuongVu.ghi_Hinh("DCBD_ChiTietHoaDon_Hinh", en.IDDCBD_ChiTietHoaDon.Value.ToString(), en.Name + ".jpg", bytes) == true)
+                            if (_wsThuongVu.ghi_Hinh("DCBD_ChiTietHoaDon_Hinh", en.IDDCBD_ChiTietHoaDon.Value.ToString(), en.Name + en.Loai, bytes) == true)
                             if (_cDCBD.Them_Hinh(en) == true)
                             {
                                 _cDCBD.Refresh();
@@ -2614,7 +2614,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value != null && dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString() != "")
                 _cDCBD.LoadImageView(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
             else
-                _cDCBD.LoadImageView(_wsThuongVu.get_Hinh("DCBD_ChiTietHoaDon_Hinh", _ctdchd.MaCTDCHD.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + ".jpg"));
+                _cDCBD.LoadImageView(_wsThuongVu.get_Hinh("DCBD_ChiTietHoaDon_Hinh", _ctdchd.MaCTDCHD.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()));
         }
 
         private void xoaFile_dgvHinh_Click(object sender, EventArgs e)
@@ -2629,7 +2629,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null)
-                                if (_wsThuongVu.xoa_Hinh("DCBD_ChiTietHoaDon_Hinh", _ctdchd.MaCTDCHD.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + ".jpg") == true)
+                                if (_wsThuongVu.xoa_Hinh("DCBD_ChiTietHoaDon_Hinh", _ctdchd.MaCTDCHD.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()) == true)
                                 if (_cDCBD.Xoa_Hinh(_cDCBD.get_HoaDon_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
                                 {
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
