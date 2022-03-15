@@ -311,7 +311,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtTienNuoc_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TienNuoc_BD);
                 txtThueGTGT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.ThueGTGT_BD);
                 txtPhiBVMT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.PhiBVMT_BD);
-                txtPhiBVMT_Thue_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.PhiBVMT_Thue_BD);
+                if (ctdchd.PhiBVMT_Thue_BD != 0)
+                    txtPhiBVMT_Thue_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.PhiBVMT_Thue_BD);
+                else
+                    txtPhiBVMT_Thue_BD.Text = "0";
                 txtTongCong_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_BD);
                 ///
                 txtTieuThu_End.Text = _ctdchd.TieuThu_BD.Value.ToString();
@@ -346,7 +349,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
                     if (item.Hinh != null)
-                    dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
+                        dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
                     dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = item.Loai;
                 }
             }
@@ -887,7 +890,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 //en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
                                 en.Loai = item.Cells["Loai_Hinh"].Value.ToString();
                                 if (_wsThuongVu.ghi_Hinh("DCBD_ChiTietHoaDon_Hinh", en.IDDCBD_ChiTietHoaDon.Value.ToString(), en.Name + en.Loai, Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString())) == true)
-                                _cDCBD.Them_Hinh(en);
+                                    _cDCBD.Them_Hinh(en);
                             }
                             if (_dontu_ChiTiet != null)
                             {
@@ -2572,15 +2575,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             //en.Hinh = bytes;
                             en.Loai = System.IO.Path.GetExtension(dialog.FileName);
                             if (_wsThuongVu.ghi_Hinh("DCBD_ChiTietHoaDon_Hinh", en.IDDCBD_ChiTietHoaDon.Value.ToString(), en.Name + en.Loai, bytes) == true)
-                            if (_cDCBD.Them_Hinh(en) == true)
-                            {
-                                _cDCBD.Refresh();
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                var index = dgvHinh.Rows.Add();
-                                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
-                                dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
-                                dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
-                            }
+                                if (_cDCBD.Them_Hinh(en) == true)
+                                {
+                                    _cDCBD.Refresh();
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    var index = dgvHinh.Rows.Add();
+                                    dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
+                                    dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                                    dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
+                                }
                         }
                         else
                             MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -2630,13 +2633,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null)
                                 if (_wsThuongVu.xoa_Hinh("DCBD_ChiTietHoaDon_Hinh", _ctdchd.MaCTDCHD.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()) == true)
-                                if (_cDCBD.Xoa_Hinh(_cDCBD.get_HoaDon_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
-                                {
-                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    dgvHinh.Rows.RemoveAt(dgvHinh.CurrentRow.Index);
-                                }
-                                else
-                                    MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    if (_cDCBD.Xoa_Hinh(_cDCBD.get_HoaDon_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
+                                    {
+                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        dgvHinh.Rows.RemoveAt(dgvHinh.CurrentRow.Index);
+                                    }
+                                    else
+                                        MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else

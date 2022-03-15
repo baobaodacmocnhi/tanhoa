@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://113.161.88.180:81/wsthuongvu.asmx?disco" filename="wsthuongvu.disco" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://113.161.88.180:81/wsthuongvu.asmx?wsdl" filename="wsthuongvu.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://192.168.90.11:81/wsthuongvu.asmx?wsdl" filename="wsthuongvu.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://192.168.90.11:81/wsthuongvu.asmx?disco" filename="wsthuongvu.disco" />
   </Results>
 </DiscoveryClientResultsFile>
