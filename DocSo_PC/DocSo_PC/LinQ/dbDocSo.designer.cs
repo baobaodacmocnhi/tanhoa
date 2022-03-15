@@ -16187,7 +16187,7 @@ namespace DocSo_PC.LinQ
 		
 		private string _DienThoai;
 		
-		private System.Nullable<int> _MaDon;
+		private System.Nullable<int> _IDMaDon;
 		
 		private System.Nullable<int> _STT;
 		
@@ -16244,6 +16244,8 @@ namespace DocSo_PC.LinQ
 		private System.Nullable<System.DateTime> _DocSo_NgayNhan;
 		
 		private string _DocSo_GhiChu;
+		
+		private EntityRef<MaHoa_DonTu> _MaHoa_DonTu;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -16321,8 +16323,8 @@ namespace DocSo_PC.LinQ
     partial void OnHieuLucKyChanged();
     partial void OnDienThoaiChanging(string value);
     partial void OnDienThoaiChanged();
-    partial void OnMaDonChanging(System.Nullable<int> value);
-    partial void OnMaDonChanged();
+    partial void OnIDMaDonChanging(System.Nullable<int> value);
+    partial void OnIDMaDonChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
     partial void OnSTTChanged();
     partial void OnNguoiKyChanging(string value);
@@ -16383,6 +16385,7 @@ namespace DocSo_PC.LinQ
 		
 		public MaHoa_DCBD()
 		{
+			this._MaHoa_DonTu = default(EntityRef<MaHoa_DonTu>);
 			OnCreated();
 		}
 		
@@ -17106,22 +17109,26 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="Int")]
-		public System.Nullable<int> MaDon
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMaDon", DbType="Int")]
+		public System.Nullable<int> IDMaDon
 		{
 			get
 			{
-				return this._MaDon;
+				return this._IDMaDon;
 			}
 			set
 			{
-				if ((this._MaDon != value))
+				if ((this._IDMaDon != value))
 				{
-					this.OnMaDonChanging(value);
+					if (this._MaHoa_DonTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDMaDonChanging(value);
 					this.SendPropertyChanging();
-					this._MaDon = value;
-					this.SendPropertyChanged("MaDon");
-					this.OnMaDonChanged();
+					this._IDMaDon = value;
+					this.SendPropertyChanged("IDMaDon");
+					this.OnIDMaDonChanged();
 				}
 			}
 		}
@@ -17686,6 +17693,40 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MaHoa_DonTu_MaHoa_DCBD", Storage="_MaHoa_DonTu", ThisKey="IDMaDon", OtherKey="ID", IsForeignKey=true)]
+		public MaHoa_DonTu MaHoa_DonTu
+		{
+			get
+			{
+				return this._MaHoa_DonTu.Entity;
+			}
+			set
+			{
+				MaHoa_DonTu previousValue = this._MaHoa_DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._MaHoa_DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MaHoa_DonTu.Entity = null;
+						previousValue.MaHoa_DCBDs.Remove(this);
+					}
+					this._MaHoa_DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.MaHoa_DCBDs.Add(this);
+						this._IDMaDon = value.ID;
+					}
+					else
+					{
+						this._IDMaDon = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("MaHoa_DonTu");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -17737,6 +17778,10 @@ namespace DocSo_PC.LinQ
 		
 		private string _NoiDung;
 		
+		private string _Phuong;
+		
+		private string _Quan;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.DateTime _CreateDate;
@@ -17744,6 +17789,12 @@ namespace DocSo_PC.LinQ
 		private System.Nullable<int> _ModifyBy;
 		
 		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private EntitySet<MaHoa_DCBD> _MaHoa_DCBDs;
+		
+		private EntitySet<MaHoa_DonTu_LichSu> _MaHoa_DonTu_LichSus;
+		
+		private EntitySet<MaHoa_KTXM> _MaHoa_KTXMs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -17773,6 +17824,10 @@ namespace DocSo_PC.LinQ
     partial void OnDinhMucHNChanged();
     partial void OnNoiDungChanging(string value);
     partial void OnNoiDungChanged();
+    partial void OnPhuongChanging(string value);
+    partial void OnPhuongChanged();
+    partial void OnQuanChanging(string value);
+    partial void OnQuanChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.DateTime value);
@@ -17785,6 +17840,9 @@ namespace DocSo_PC.LinQ
 		
 		public MaHoa_DonTu()
 		{
+			this._MaHoa_DCBDs = new EntitySet<MaHoa_DCBD>(new Action<MaHoa_DCBD>(this.attach_MaHoa_DCBDs), new Action<MaHoa_DCBD>(this.detach_MaHoa_DCBDs));
+			this._MaHoa_DonTu_LichSus = new EntitySet<MaHoa_DonTu_LichSu>(new Action<MaHoa_DonTu_LichSu>(this.attach_MaHoa_DonTu_LichSus), new Action<MaHoa_DonTu_LichSu>(this.detach_MaHoa_DonTu_LichSus));
+			this._MaHoa_KTXMs = new EntitySet<MaHoa_KTXM>(new Action<MaHoa_KTXM>(this.attach_MaHoa_KTXMs), new Action<MaHoa_KTXM>(this.detach_MaHoa_KTXMs));
 			OnCreated();
 		}
 		
@@ -18028,6 +18086,46 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phuong", DbType="VarChar(2)")]
+		public string Phuong
+		{
+			get
+			{
+				return this._Phuong;
+			}
+			set
+			{
+				if ((this._Phuong != value))
+				{
+					this.OnPhuongChanging(value);
+					this.SendPropertyChanging();
+					this._Phuong = value;
+					this.SendPropertyChanged("Phuong");
+					this.OnPhuongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quan", DbType="VarChar(2)")]
+		public string Quan
+		{
+			get
+			{
+				return this._Quan;
+			}
+			set
+			{
+				if ((this._Quan != value))
+				{
+					this.OnQuanChanging(value);
+					this.SendPropertyChanging();
+					this._Quan = value;
+					this.SendPropertyChanged("Quan");
+					this.OnQuanChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
 		public System.Nullable<int> CreateBy
 		{
@@ -18108,6 +18206,45 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MaHoa_DonTu_MaHoa_DCBD", Storage="_MaHoa_DCBDs", ThisKey="ID", OtherKey="IDMaDon")]
+		public EntitySet<MaHoa_DCBD> MaHoa_DCBDs
+		{
+			get
+			{
+				return this._MaHoa_DCBDs;
+			}
+			set
+			{
+				this._MaHoa_DCBDs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MaHoa_DonTu_MaHoa_DonTu_LichSu", Storage="_MaHoa_DonTu_LichSus", ThisKey="ID", OtherKey="IDMaDon")]
+		public EntitySet<MaHoa_DonTu_LichSu> MaHoa_DonTu_LichSus
+		{
+			get
+			{
+				return this._MaHoa_DonTu_LichSus;
+			}
+			set
+			{
+				this._MaHoa_DonTu_LichSus.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MaHoa_DonTu_MaHoa_KTXM", Storage="_MaHoa_KTXMs", ThisKey="ID", OtherKey="IDMaDon")]
+		public EntitySet<MaHoa_KTXM> MaHoa_KTXMs
+		{
+			get
+			{
+				return this._MaHoa_KTXMs;
+			}
+			set
+			{
+				this._MaHoa_KTXMs.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -18126,6 +18263,42 @@ namespace DocSo_PC.LinQ
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_MaHoa_DCBDs(MaHoa_DCBD entity)
+		{
+			this.SendPropertyChanging();
+			entity.MaHoa_DonTu = this;
+		}
+		
+		private void detach_MaHoa_DCBDs(MaHoa_DCBD entity)
+		{
+			this.SendPropertyChanging();
+			entity.MaHoa_DonTu = null;
+		}
+		
+		private void attach_MaHoa_DonTu_LichSus(MaHoa_DonTu_LichSu entity)
+		{
+			this.SendPropertyChanging();
+			entity.MaHoa_DonTu = this;
+		}
+		
+		private void detach_MaHoa_DonTu_LichSus(MaHoa_DonTu_LichSu entity)
+		{
+			this.SendPropertyChanging();
+			entity.MaHoa_DonTu = null;
+		}
+		
+		private void attach_MaHoa_KTXMs(MaHoa_KTXM entity)
+		{
+			this.SendPropertyChanging();
+			entity.MaHoa_DonTu = this;
+		}
+		
+		private void detach_MaHoa_KTXMs(MaHoa_KTXM entity)
+		{
+			this.SendPropertyChanging();
+			entity.MaHoa_DonTu = null;
 		}
 	}
 	
@@ -18157,7 +18330,7 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<int> _IDCT;
 		
-		private System.Nullable<int> _MaDon;
+		private System.Nullable<int> _IDMaDon;
 		
 		private System.Nullable<int> _STT;
 		
@@ -18174,6 +18347,8 @@ namespace DocSo_PC.LinQ
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private EntityRef<MaHoa_DonTu> _MaHoa_DonTu;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -18201,8 +18376,8 @@ namespace DocSo_PC.LinQ
     partial void OnTableNameChanged();
     partial void OnIDCTChanging(System.Nullable<int> value);
     partial void OnIDCTChanged();
-    partial void OnMaDonChanging(System.Nullable<int> value);
-    partial void OnMaDonChanged();
+    partial void OnIDMaDonChanging(System.Nullable<int> value);
+    partial void OnIDMaDonChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
     partial void OnSTTChanged();
     partial void OnNhanChanging(bool value);
@@ -18223,6 +18398,7 @@ namespace DocSo_PC.LinQ
 		
 		public MaHoa_DonTu_LichSu()
 		{
+			this._MaHoa_DonTu = default(EntityRef<MaHoa_DonTu>);
 			OnCreated();
 		}
 		
@@ -18446,22 +18622,26 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="Int")]
-		public System.Nullable<int> MaDon
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMaDon", DbType="Int")]
+		public System.Nullable<int> IDMaDon
 		{
 			get
 			{
-				return this._MaDon;
+				return this._IDMaDon;
 			}
 			set
 			{
-				if ((this._MaDon != value))
+				if ((this._IDMaDon != value))
 				{
-					this.OnMaDonChanging(value);
+					if (this._MaHoa_DonTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDMaDonChanging(value);
 					this.SendPropertyChanging();
-					this._MaDon = value;
-					this.SendPropertyChanged("MaDon");
-					this.OnMaDonChanged();
+					this._IDMaDon = value;
+					this.SendPropertyChanged("IDMaDon");
+					this.OnIDMaDonChanged();
 				}
 			}
 		}
@@ -18626,6 +18806,40 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MaHoa_DonTu_MaHoa_DonTu_LichSu", Storage="_MaHoa_DonTu", ThisKey="IDMaDon", OtherKey="ID", IsForeignKey=true)]
+		public MaHoa_DonTu MaHoa_DonTu
+		{
+			get
+			{
+				return this._MaHoa_DonTu.Entity;
+			}
+			set
+			{
+				MaHoa_DonTu previousValue = this._MaHoa_DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._MaHoa_DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MaHoa_DonTu.Entity = null;
+						previousValue.MaHoa_DonTu_LichSus.Remove(this);
+					}
+					this._MaHoa_DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.MaHoa_DonTu_LichSus.Add(this);
+						this._IDMaDon = value.ID;
+					}
+					else
+					{
+						this._IDMaDon = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("MaHoa_DonTu");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -18755,7 +18969,7 @@ namespace DocSo_PC.LinQ
 		
 		private bool _BanChinh;
 		
-		private System.Nullable<int> _MaDon;
+		private System.Nullable<int> _IDMaDon;
 		
 		private System.Nullable<int> _STT;
 		
@@ -18782,6 +18996,8 @@ namespace DocSo_PC.LinQ
 		private System.Nullable<System.DateTime> _DocSo_NgayNhan;
 		
 		private string _DocSo_GhiChu;
+		
+		private EntityRef<MaHoa_DonTu> _MaHoa_DonTu;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -18889,8 +19105,8 @@ namespace DocSo_PC.LinQ
     partial void OnDinhMuc_KhongDangKyChanged();
     partial void OnBanChinhChanging(bool value);
     partial void OnBanChinhChanged();
-    partial void OnMaDonChanging(System.Nullable<int> value);
-    partial void OnMaDonChanged();
+    partial void OnIDMaDonChanging(System.Nullable<int> value);
+    partial void OnIDMaDonChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
     partial void OnSTTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -18921,6 +19137,7 @@ namespace DocSo_PC.LinQ
 		
 		public MaHoa_KTXM()
 		{
+			this._MaHoa_DonTu = default(EntityRef<MaHoa_DonTu>);
 			OnCreated();
 		}
 		
@@ -19944,22 +20161,26 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="Int")]
-		public System.Nullable<int> MaDon
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMaDon", DbType="Int")]
+		public System.Nullable<int> IDMaDon
 		{
 			get
 			{
-				return this._MaDon;
+				return this._IDMaDon;
 			}
 			set
 			{
-				if ((this._MaDon != value))
+				if ((this._IDMaDon != value))
 				{
-					this.OnMaDonChanging(value);
+					if (this._MaHoa_DonTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDMaDonChanging(value);
 					this.SendPropertyChanging();
-					this._MaDon = value;
-					this.SendPropertyChanged("MaDon");
-					this.OnMaDonChanged();
+					this._IDMaDon = value;
+					this.SendPropertyChanged("IDMaDon");
+					this.OnIDMaDonChanged();
 				}
 			}
 		}
@@ -20220,6 +20441,40 @@ namespace DocSo_PC.LinQ
 					this._DocSo_GhiChu = value;
 					this.SendPropertyChanged("DocSo_GhiChu");
 					this.OnDocSo_GhiChuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MaHoa_DonTu_MaHoa_KTXM", Storage="_MaHoa_DonTu", ThisKey="IDMaDon", OtherKey="ID", IsForeignKey=true)]
+		public MaHoa_DonTu MaHoa_DonTu
+		{
+			get
+			{
+				return this._MaHoa_DonTu.Entity;
+			}
+			set
+			{
+				MaHoa_DonTu previousValue = this._MaHoa_DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._MaHoa_DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MaHoa_DonTu.Entity = null;
+						previousValue.MaHoa_KTXMs.Remove(this);
+					}
+					this._MaHoa_DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.MaHoa_KTXMs.Add(this);
+						this._IDMaDon = value.ID;
+					}
+					else
+					{
+						this._IDMaDon = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("MaHoa_DonTu");
 				}
 			}
 		}
@@ -21339,6 +21594,10 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<System.DateTime> _UIDDate;
 		
+		private string _ChucVu;
+		
+		private bool _KyTen;
+		
 		private bool _ActiveMobile;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -21417,6 +21676,10 @@ namespace DocSo_PC.LinQ
     partial void OnUIDChanged();
     partial void OnUIDDateChanging(System.Nullable<System.DateTime> value);
     partial void OnUIDDateChanged();
+    partial void OnChucVuChanging(string value);
+    partial void OnChucVuChanged();
+    partial void OnKyTenChanging(bool value);
+    partial void OnKyTenChanged();
     partial void OnActiveMobileChanging(bool value);
     partial void OnActiveMobileChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -22021,6 +22284,46 @@ namespace DocSo_PC.LinQ
 					this._UIDDate = value;
 					this.SendPropertyChanged("UIDDate");
 					this.OnUIDDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChucVu", DbType="NVarChar(50)")]
+		public string ChucVu
+		{
+			get
+			{
+				return this._ChucVu;
+			}
+			set
+			{
+				if ((this._ChucVu != value))
+				{
+					this.OnChucVuChanging(value);
+					this.SendPropertyChanging();
+					this._ChucVu = value;
+					this.SendPropertyChanged("ChucVu");
+					this.OnChucVuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KyTen", DbType="Bit NOT NULL")]
+		public bool KyTen
+		{
+			get
+			{
+				return this._KyTen;
+			}
+			set
+			{
+				if ((this._KyTen != value))
+				{
+					this.OnKyTenChanging(value);
+					this.SendPropertyChanging();
+					this._KyTen = value;
+					this.SendPropertyChanged("KyTen");
+					this.OnKyTenChanged();
 				}
 			}
 		}

@@ -780,7 +780,7 @@
       <Column Name="KhongTinhPhiBVMT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="HieuLucKy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DienThoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="MaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDMaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
@@ -809,6 +809,7 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="MaHoa_DonTu_MaHoa_DCBD" Member="MaHoa_DonTu" ThisKey="IDMaDon" OtherKey="ID" Type="MaHoa_DonTu" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MaHoa_DonTu" Member="MaHoa_DonTus">
@@ -825,10 +826,15 @@
       <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMucHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Phuong" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Quan" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="MaHoa_DonTu_MaHoa_DCBD" Member="MaHoa_DCBDs" ThisKey="ID" OtherKey="IDMaDon" Type="MaHoa_DCBD" />
+      <Association Name="MaHoa_DonTu_MaHoa_DonTu_LichSu" Member="MaHoa_DonTu_LichSus" ThisKey="ID" OtherKey="IDMaDon" Type="MaHoa_DonTu_LichSu" />
+      <Association Name="MaHoa_DonTu_MaHoa_KTXM" Member="MaHoa_KTXMs" ThisKey="ID" OtherKey="IDMaDon" Type="MaHoa_KTXM" />
     </Type>
   </Table>
   <Table Name="dbo.MaHoa_DonTu_LichSu" Member="MaHoa_DonTu_LichSus">
@@ -844,7 +850,7 @@
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
       <Column Name="TableName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="IDCT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDMaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -853,6 +859,7 @@
       <Column Name="HoanThanh" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="MaHoa_DonTu_MaHoa_DonTu_LichSu" Member="MaHoa_DonTu" ThisKey="IDMaDon" OtherKey="ID" Type="MaHoa_DonTu" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MaHoa_KTXM" Member="MaHoa_KTXMs">
@@ -908,7 +915,7 @@
       <Column Name="LapTruyThu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DinhMuc_KhongDangKy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="BanChinh" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="MaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDMaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -922,6 +929,7 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="MaHoa_DonTu_MaHoa_KTXM" Member="MaHoa_DonTu" ThisKey="IDMaDon" OtherKey="ID" Type="MaHoa_DonTu" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MaHoa_NoiChuyen" Member="MaHoa_NoiChuyens">
@@ -1017,6 +1025,8 @@
       <Column Name="IDMobile" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="UID" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
       <Column Name="UIDDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ChucVu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KyTen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="ActiveMobile" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />

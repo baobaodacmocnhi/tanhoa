@@ -19,7 +19,8 @@ namespace DocSo_PC.GUI.QuanTri
         CMenu _cMenu = new CMenu();
         CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
         //CChamCong _cChamCong = new CChamCong();
-        int _selectedindex = -1;
+        //int _selectedindex = -1;
+        NguoiDung _nguoidung = null;
         string _mnu = "mnuNguoiDung";
         BindingList<NguoiDung> _blNguoiDung;
 
@@ -30,7 +31,7 @@ namespace DocSo_PC.GUI.QuanTri
 
         public void Clear()
         {
-            _selectedindex = -1;
+            _nguoidung = null;
             txtHoTen.Text = "";
             txtTaiKhoan.Text = "";
             txtMatKhau.Text = "";
@@ -47,6 +48,8 @@ namespace DocSo_PC.GUI.QuanTri
             chkHanhThu.Checked = false;
             chkDongNuoc.Checked = false;
             chkVanPhong.Checked = false;
+            chkKyTen.Checked = false;
+            txtChucVu.Text = "";
             if (CNguoiDung.Admin)
             {
                 _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDS_Admin());
@@ -72,11 +75,52 @@ namespace DocSo_PC.GUI.QuanTri
             cmbNhom.DisplayMember = "TenNhom";
             cmbNhom.ValueMember = "MaNhom";
             //cmbNhom.SelectedIndex = -1;
-            
+
             dgvNguoiDung.DataSource = _blNguoiDung;
 
             if (CNguoiDung.Doi == true)
                 dgvNguoiDung.Columns["MatKhau"].Visible = true;
+        }
+
+        public void fillEntity(NguoiDung en)
+        {
+            try
+            {
+                txtHoTen.Text = en.HoTen;
+                txtDienThoai.Text = en.DienThoai;
+                txtTaiKhoan.Text = en.TaiKhoan;
+                txtMatKhau.Text = en.MatKhau;
+                if (en.NamVaoLam != null)
+                    txtNam.Text = en.NamVaoLam.Value.ToString();
+                if (en.MaTo != null)
+                    cmbTo.SelectedValue = en.MaTo.Value;
+                if (en.MaNhom != null)
+                    cmbNhom.SelectedValue = en.MaNhom.Value;
+                if (en.May != null)
+                    txtMay.Text = en.May.Value.ToString();
+                chkPhoGiamDoc.Checked = en.PhoGiamDoc;
+                chkAn.Checked = en.PhoGiamDoc;
+                chkDoi.Checked = en.An;
+                chkDoiXem.Checked = en.DoiXem;
+                chkToTruong.Checked = en.ToTruong;
+                chkHanhThu.Checked = en.HanhThu;
+                chkDongNuoc.Checked = en.DongNuoc;
+                chkVanPhong.Checked = en.VanPhong;
+                chkChamCong.Checked = en.ChamCong;
+                chkKyTen.Checked = en.KyTen;
+                txtChucVu.Text = en.ChucVu;
+                if (en.IDMobile != null)
+                    txtIDMobile.Text = en.IDMobile;
+                else
+                    txtIDMobile.Text = "";
+                if (CNguoiDung.Admin)
+                    gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(true, en.MaND);
+                else
+                    gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(false, en.MaND);
+            }
+            catch (Exception)
+            {
+            }
         }
 
         public void loaddgv()
@@ -114,7 +158,7 @@ namespace DocSo_PC.GUI.QuanTri
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
                     if (txtIDMobile.Text.Trim() != "")
                         nguoidung.IDMobile = txtIDMobile.Text.Trim();
-                    nguoidung.STT = _cNguoiDung.GetMaxSTT()+1;
+                    nguoidung.STT = _cNguoiDung.GetMaxSTT() + 1;
                     if (!string.IsNullOrEmpty(txtNam.Text.Trim()))
                     {
                         nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
@@ -135,6 +179,8 @@ namespace DocSo_PC.GUI.QuanTri
                     nguoidung.DongNuoc = chkDongNuoc.Checked;
                     nguoidung.VanPhong = chkVanPhong.Checked;
                     nguoidung.ChamCong = chkChamCong.Checked;
+                    nguoidung.KyTen = chkKyTen.Checked;
+                    nguoidung.ChucVu = txtChucVu.Text.Trim();
                     ///tự động thêm quyền cho người mới
                     foreach (var item in _cMenu.GetDS())
                     {
@@ -164,39 +210,40 @@ namespace DocSo_PC.GUI.QuanTri
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
-                if (_selectedindex != -1)
+                if (_nguoidung != null)
                 {
-                    NguoiDung nguoidung = _cNguoiDung.GetByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
-                    nguoidung.HoTen = txtHoTen.Text.Trim();
-                    nguoidung.DienThoai = txtDienThoai.Text.Trim();
-                    nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
-                    nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                    _nguoidung.HoTen = txtHoTen.Text.Trim();
+                    _nguoidung.DienThoai = txtDienThoai.Text.Trim();
+                    _nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
+                    _nguoidung.MatKhau = txtMatKhau.Text.Trim();
                     if (txtIDMobile.Text.Trim() != "")
-                        nguoidung.IDMobile = txtIDMobile.Text.Trim();
+                        _nguoidung.IDMobile = txtIDMobile.Text.Trim();
                     else
-                        nguoidung.IDMobile = null;
+                        _nguoidung.IDMobile = null;
                     if (!string.IsNullOrEmpty(txtNam.Text.Trim()))
-                        nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
-                    nguoidung.MaTo = (int)cmbTo.SelectedValue;
-                    nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                        _nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
+                    _nguoidung.MaTo = (int)cmbTo.SelectedValue;
+                    _nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
                     if (txtMay.Text.Trim() != "")
-                        nguoidung.May = int.Parse(txtMay.Text.Trim());
+                        _nguoidung.May = int.Parse(txtMay.Text.Trim());
                     else
-                        nguoidung.May = null;
-                    nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
-                    nguoidung.An = chkAn.Checked;
-                    nguoidung.Doi = chkDoi.Checked;
-                    nguoidung.DoiXem = chkDoiXem.Checked;
-                    nguoidung.ToTruong = chkToTruong.Checked;
-                    nguoidung.HanhThu = chkHanhThu.Checked;
-                    nguoidung.DongNuoc = chkDongNuoc.Checked;
-                    nguoidung.VanPhong = chkVanPhong.Checked;
-                    nguoidung.ChamCong = chkChamCong.Checked;
-                    _cNguoiDung.Sua(nguoidung);
+                        _nguoidung.May = null;
+                    _nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
+                    _nguoidung.An = chkAn.Checked;
+                    _nguoidung.Doi = chkDoi.Checked;
+                    _nguoidung.DoiXem = chkDoiXem.Checked;
+                    _nguoidung.ToTruong = chkToTruong.Checked;
+                    _nguoidung.HanhThu = chkHanhThu.Checked;
+                    _nguoidung.DongNuoc = chkDongNuoc.Checked;
+                    _nguoidung.VanPhong = chkVanPhong.Checked;
+                    _nguoidung.ChamCong = chkChamCong.Checked;
+                    _nguoidung.KyTen = chkKyTen.Checked;
+                    _nguoidung.ChucVu = txtChucVu.Text.Trim();
+                    _cNguoiDung.Sua(_nguoidung);
                     DataTable dt = ((DataView)gridView.DataSource).Table;
                     foreach (DataRow item in dt.Rows)
                     {
-                        PhanQuyenNguoiDung phanquyennguoidung = _cPhanQuyenNguoiDung.GetByMaMenuMaND(int.Parse(item["MaMenu"].ToString()), nguoidung.MaND);
+                        PhanQuyenNguoiDung phanquyennguoidung = _cPhanQuyenNguoiDung.GetByMaMenuMaND(int.Parse(item["MaMenu"].ToString()), _nguoidung.MaND);
                         if (phanquyennguoidung.Xem != bool.Parse(item["Xem"].ToString()) || phanquyennguoidung.Them != bool.Parse(item["Them"].ToString()) ||
                             phanquyennguoidung.Sua != bool.Parse(item["Sua"].ToString()) || phanquyennguoidung.Xoa != bool.Parse(item["Xoa"].ToString()) ||
                             phanquyennguoidung.QuanLy != bool.Parse(item["QuanLy"].ToString()))
@@ -222,15 +269,14 @@ namespace DocSo_PC.GUI.QuanTri
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    if (_selectedindex != -1)
+                    if (_nguoidung != null)
                     {
-                        NguoiDung nguoidung = _cNguoiDung.GetByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
                         ///xóa quan hệ 1 nhiều
                         //_cPhanQuyenNguoiDung.Xoa(nguoidung.PhanQuyenNguoiDungs.ToList());
-                        nguoidung.An = true;
-                        _cNguoiDung.Sua(nguoidung);
-                        Clear();
+                        _nguoidung.An = true;
+                        _cNguoiDung.Sua(_nguoidung);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear();
                     }
                     else
                         MessageBox.Show("Lỗi, Vui lòng chọn Người Dùng cần xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -243,37 +289,8 @@ namespace DocSo_PC.GUI.QuanTri
         {
             try
             {
-                _selectedindex = e.RowIndex;
-                txtHoTen.Text = dgvNguoiDung["HoTen", e.RowIndex].Value.ToString();
-                if (dgvNguoiDung["DienThoai", e.RowIndex].Value != null)
-                    txtDienThoai.Text = dgvNguoiDung["DienThoai", e.RowIndex].Value.ToString();
-                txtTaiKhoan.Text = dgvNguoiDung["TaiKhoan", e.RowIndex].Value.ToString();
-                txtMatKhau.Text = dgvNguoiDung["MatKhau", e.RowIndex].Value.ToString();
-                if (dgvNguoiDung["NamVaoLam", e.RowIndex].Value != null)
-                    txtNam.Text = dgvNguoiDung["NamVaoLam", e.RowIndex].Value.ToString();
-                if (dgvNguoiDung["MaTo", e.RowIndex].Value != null)
-                    cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());
-                if (dgvNguoiDung["MaNhom", e.RowIndex].Value != null)
-                    cmbNhom.SelectedValue = int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString());
-                if (dgvNguoiDung["May", e.RowIndex].Value != null)
-                txtMay.Text = dgvNguoiDung["May", e.RowIndex].Value.ToString();
-                chkPhoGiamDoc.Checked = bool.Parse(dgvNguoiDung["PhoGiamDoc", e.RowIndex].Value.ToString());
-                chkAn.Checked = bool.Parse(dgvNguoiDung["An", e.RowIndex].Value.ToString());
-                chkDoi.Checked = bool.Parse(dgvNguoiDung["Doi", e.RowIndex].Value.ToString());
-                chkDoiXem.Checked = bool.Parse(dgvNguoiDung["DoiXem", e.RowIndex].Value.ToString());
-                chkToTruong.Checked = bool.Parse(dgvNguoiDung["ToTruong", e.RowIndex].Value.ToString());
-                chkHanhThu.Checked = bool.Parse(dgvNguoiDung["HanhThu", e.RowIndex].Value.ToString());
-                chkDongNuoc.Checked = bool.Parse(dgvNguoiDung["DongNuoc", e.RowIndex].Value.ToString());
-                chkVanPhong.Checked = bool.Parse(dgvNguoiDung["VanPhong", e.RowIndex].Value.ToString());
-                chkChamCong.Checked = bool.Parse(dgvNguoiDung["ChamCong", e.RowIndex].Value.ToString());
-                if (dgvNguoiDung["IDMobile", e.RowIndex].Value != null)
-                    txtIDMobile.Text = dgvNguoiDung["IDMobile", e.RowIndex].Value.ToString();
-                else
-                    txtIDMobile.Text = "";
-                if (CNguoiDung.Admin)
-                    gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(true, int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
-                else
-                    gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(false, int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
+                _nguoidung = _cNguoiDung.GetByMaND(int.Parse(dgvNguoiDung.Rows[e.RowIndex].Cells["MaND"].Value.ToString()));
+                fillEntity(_nguoidung);
             }
             catch (Exception)
             {
@@ -402,8 +419,8 @@ namespace DocSo_PC.GUI.QuanTri
             {
                 var item = this._blNguoiDung[rowIndexFromMouseDown];
                 _blNguoiDung.RemoveAt(rowIndexFromMouseDown);
-                _blNguoiDung.Insert(rowIndexOfItemUnderMouseToDrop,item);
-                
+                _blNguoiDung.Insert(rowIndexOfItemUnderMouseToDrop, item);
+
                 ///update STT dô database
                 for (int i = 0; i < _blNguoiDung.Count; i++)
                 {
@@ -456,6 +473,6 @@ namespace DocSo_PC.GUI.QuanTri
             }
         }
 
-        
+
     }
 }

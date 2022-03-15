@@ -15,9 +15,9 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\BaoBao\Desktop\DocSoWFH\</PublishUrl>
+    <PublishUrl>\\192.168.90.9\BaoBao%24\DocSo_PC\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
+    <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -25,13 +25,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>http://113.161.88.180:81/DocSoWFH/</UpdateUrl>
+    <UpdateUrl>\\192.168.90.9\BaoBao%24\DocSo_PC\</UpdateUrl>
     <TargetCulture>vi-VN</TargetCulture>
     <ProductName>Quản Lý Đọc Số</ProductName>
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>80</ApplicationRevision>
+    <ApplicationRevision>82</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -128,6 +128,7 @@
     </Compile>
     <Compile Include="DAL\CDocSo12.cs" />
     <Compile Include="DAL\CThuongVu.cs" />
+    <Compile Include="DAL\MaHoa\CDonTu.cs" />
     <Compile Include="DAL\QuanTri\CMayDS.cs" />
     <Compile Include="DAL\sDHN\CsDHN.cs" />
     <Compile Include="DAL\ToTruong\CDocSoTruoc.cs" />
@@ -156,12 +157,6 @@
     </Compile>
     <Compile Include="GUI\Doi\frmTaoDotKiemTra.Designer.cs">
       <DependentUpon>frmTaoDotKiemTra.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\MaHoa\frmDSDon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\MaHoa\frmDSDon.Designer.cs">
-      <DependentUpon>frmDSDon.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\MaHoa\frmNhanDon.cs">
       <SubType>Form</SubType>
@@ -413,9 +408,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmTaoDotKiemTra.resx">
       <DependentUpon>frmTaoDotKiemTra.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\MaHoa\frmDSDon.resx">
-      <DependentUpon>frmDSDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\MaHoa\frmNhanDon.resx">
       <DependentUpon>frmNhanDon.cs</DependentUpon>
@@ -933,9 +925,7 @@
       <CachedSettingsPropName>DocSo_PC_wrThuTien_wsThuTien</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\MaHoa\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
