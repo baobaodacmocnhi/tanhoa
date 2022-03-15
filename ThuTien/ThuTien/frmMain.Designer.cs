@@ -551,6 +551,7 @@
             this.mnuDangNganHanhThu.Name = "mnuDangNganHanhThu";
             this.mnuDangNganHanhThu.Size = new System.Drawing.Size(189, 22);
             this.mnuDangNganHanhThu.Text = "Đăng Ngân Hành Thu";
+            this.mnuDangNganHanhThu.Visible = false;
             this.mnuDangNganHanhThu.Click += new System.EventHandler(this.mnuDangNganHD_Click);
             // 
             // mnuDangNganTon
