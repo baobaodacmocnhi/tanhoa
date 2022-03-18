@@ -165,6 +165,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dgvTruyThuTienNuoc["ID_HoaDon", dgvTruyThuTienNuoc.RowCount - 2].Value = item.ID;
                     dgvTruyThuTienNuoc["Ky", dgvTruyThuTienNuoc.RowCount - 2].Value = item.Ky;
                     dgvTruyThuTienNuoc["Nam", dgvTruyThuTienNuoc.RowCount - 2].Value = item.Nam;
+                    dgvTruyThuTienNuoc["TuNgay", dgvTruyThuTienNuoc.RowCount - 2].Value = item.TuNgay;
+                    dgvTruyThuTienNuoc["DenNgay", dgvTruyThuTienNuoc.RowCount - 2].Value = item.DenNgay;
                     dgvTruyThuTienNuoc["GiaBieu_Cu", dgvTruyThuTienNuoc.RowCount - 2].Value = item.GiaBieuCu;
                     dgvTruyThuTienNuoc["DinhMucHN_Cu", dgvTruyThuTienNuoc.RowCount - 2].Value = item.DinhMucHNCu;
                     dgvTruyThuTienNuoc["DinhMuc_Cu", dgvTruyThuTienNuoc.RowCount - 2].Value = item.DinhMucCu;
@@ -1067,6 +1069,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 cttttn_hoadon.IDCT = IDCT;
                                 cttttn_hoadon.Ky = int.Parse(item.Cells["Ky"].Value.ToString());
                                 cttttn_hoadon.Nam = int.Parse(item.Cells["Nam"].Value.ToString());
+                                cttttn_hoadon.TuNgay = item.Cells["TuNgay"].Value.ToString();
+                                cttttn_hoadon.DenNgay = item.Cells["TuNgay"].Value.ToString();
                                 cttttn_hoadon.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
                                 if (item.Cells["DinhMucHN_Cu"].Value != null)
                                     cttttn_hoadon.DinhMucHNCu = int.Parse(item.Cells["DinhMucHN_Cu"].Value.ToString());
@@ -1174,6 +1178,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     cttttn_hoadon.IDCT = _cttttn.IDCT;
                                     cttttn_hoadon.Ky = int.Parse(item.Cells["Ky"].Value.ToString());
                                     cttttn_hoadon.Nam = int.Parse(item.Cells["Nam"].Value.ToString());
+                                    cttttn_hoadon.TuNgay = item.Cells["TuNgay"].Value.ToString();
+                                    cttttn_hoadon.DenNgay = item.Cells["TuNgay"].Value.ToString();
                                     cttttn_hoadon.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
                                     cttttn_hoadon.DinhMucHNCu = int.Parse(item.Cells["DinhMucHN_Cu"].Value.ToString());
                                     cttttn_hoadon.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
@@ -1211,6 +1217,8 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                                     cttttn_hoadon.Ky = int.Parse(item.Cells["Ky"].Value.ToString());
                                     cttttn_hoadon.Nam = int.Parse(item.Cells["Nam"].Value.ToString());
+                                    cttttn_hoadon.TuNgay = item.Cells["TuNgay"].Value.ToString();
+                                    cttttn_hoadon.DenNgay = item.Cells["TuNgay"].Value.ToString();
                                     cttttn_hoadon.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
                                     cttttn_hoadon.DinhMucHNCu = int.Parse(item.Cells["DinhMucHN_Cu"].Value.ToString());
                                     cttttn_hoadon.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
