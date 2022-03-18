@@ -410,36 +410,36 @@ namespace DocSo_PC.GUI.ToTruong
                     //        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //        btnXem.PerformClick();
                     //    }
-                    DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select DanhBo,DienThoai from server11.KTKS_DonKH.dbo.DonTu_ChiTiet where DienThoai is not null and DienThoai not like '' and LEN(DienThoai)=10 and DanhBo not like ''");
+                    DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select DanhBo=DanhBa,DienThoai=SDT from KhachHang");
                     foreach (DataRow item in dt.Rows)
-                        if (item["DienThoai"].ToString().Trim() != "" && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString(), item["DienThoai"].ToString().Trim()) == false)
+                        if (item["DienThoai"].ToString().Trim() != "")// && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString(), item["DienThoai"].ToString().Trim()) == false)
                         {
-                            SDT_DHN en = new SDT_DHN();
-                            en.DanhBo = item["DanhBo"].ToString();
-                            en.DienThoai = item["DienThoai"].ToString().Trim();
-                            en.HoTen = "";
-                            //en.SoChinh = true;
-                            en.GhiChu = "P. TV";
-                            if (_cDHN.them_DienThoai(en) == true)
-                            {
-                            }
-                            //error = item["DanhBo"].ToString();
-                            //string[] DienThoais = item["DienThoai"].ToString().Split('-');
-                            //foreach (string itemDT in DienThoais)
+                            //SDT_DHN en = new SDT_DHN();
+                            //en.DanhBo = item["DanhBo"].ToString();
+                            //en.DienThoai = item["DienThoai"].ToString().Trim();
+                            //en.HoTen = "";
+                            ////en.SoChinh = true;
+                            //en.GhiChu = "P. TV";
+                            //if (_cDHN.them_DienThoai(en) == true)
                             //{
-                            //    if (itemDT.Trim() != "" && itemDT.Trim().Length < 15 && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString(), itemDT.Trim()) == false)
-                            //    {
-                            //        SDT_DHN en = new SDT_DHN();
-                            //        en.DanhBo = item["DanhBo"].ToString();
-                            //        en.DienThoai = itemDT.Trim();
-                            //        en.HoTen = "";
-                            //        en.SoChinh = true;
-                            //        en.GhiChu = "Đ. QLĐHN";
-                            //        if (_cDHN.them_DienThoai(en) == true)
-                            //        {
-                            //        }
-                            //    }
                             //}
+                            error = item["DanhBo"].ToString();
+                            string[] DienThoais = item["DienThoai"].ToString().Split('-');
+                            foreach (string itemDT in DienThoais)
+                            {
+                                if (itemDT.Trim() != "" && itemDT.Trim().Replace(".","").Length==10 && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString(), itemDT.Trim()) == false)
+                                {
+                                    SDT_DHN en = new SDT_DHN();
+                                    en.DanhBo = item["DanhBo"].ToString();
+                                    en.DienThoai = itemDT.Trim();
+                                    en.HoTen = "";
+                                    en.SoChinh = true;
+                                    en.GhiChu = "Đ. QLĐHN";
+                                    if (_cDHN.them_DienThoai(en) == true)
+                                    {
+                                    }
+                                }
+                            }
                         }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

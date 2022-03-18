@@ -29,10 +29,18 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void frmNhanDon_Load(object sender, EventArgs e)
         {
+            try
+            {
+                dgvDanhSach.AutoGenerateColumns = false;
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        public void LoadTTKH(HOADON entity)
+        public void loadTTKH(HOADON entity)
         {
             txtDanhBo.Text = entity.DANHBA.Insert(7, " ").Insert(4, " ");
             txtHoTen.Text = entity.TENKH;
@@ -48,7 +56,7 @@ namespace DocSo_PC.GUI.MaHoa
                 txtDinhMucHN.Text = "";
         }
 
-        public void LoadEntity(MaHoa_DonTu entity)
+        public void loadEntity(MaHoa_DonTu entity)
         {
             txtDanhBo.Text = entity.DanhBo.Insert(7, " ").Insert(4, " ");
             txtHoTen.Text = entity.HoTen;
@@ -191,7 +199,7 @@ namespace DocSo_PC.GUI.MaHoa
                 _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
                 if (_hoadon != null)
                 {
-                    LoadTTKH(_hoadon);
+                    loadTTKH(_hoadon);
                 }
                 else
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -205,10 +213,30 @@ namespace DocSo_PC.GUI.MaHoa
                 _dontu = _cDonTu.get(int.Parse(txtMaDon.Text.Trim()));
                 if (_dontu != null)
                 {
-                    LoadEntity(_dontu);
+                    loadEntity(_dontu);
                 }
                 else
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDanhSach.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                _dontu = _cDonTu.get(int.Parse(dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString()));
+                loadEntity(_dontu);
+            }
+            catch
+            {
             }
         }
 
