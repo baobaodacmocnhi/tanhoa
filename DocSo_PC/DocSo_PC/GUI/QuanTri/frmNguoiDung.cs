@@ -99,10 +99,11 @@ namespace DocSo_PC.GUI.QuanTri
                 if (en.May != null)
                     txtMay.Text = en.May.Value.ToString();
                 chkPhoGiamDoc.Checked = en.PhoGiamDoc;
-                chkAn.Checked = en.PhoGiamDoc;
-                chkDoi.Checked = en.An;
+                chkAn.Checked = en.An;
+                chkDoi.Checked = en.Doi;
                 chkDoiXem.Checked = en.DoiXem;
                 chkToTruong.Checked = en.ToTruong;
+                chkKTXM.Checked = en.KTXM;
                 chkHanhThu.Checked = en.HanhThu;
                 chkDongNuoc.Checked = en.DongNuoc;
                 chkVanPhong.Checked = en.VanPhong;
@@ -175,6 +176,7 @@ namespace DocSo_PC.GUI.QuanTri
                     nguoidung.Doi = chkDoi.Checked;
                     nguoidung.DoiXem = chkDoiXem.Checked;
                     nguoidung.ToTruong = chkToTruong.Checked;
+                    nguoidung.KTXM = chkKTXM.Checked;
                     nguoidung.HanhThu = chkHanhThu.Checked;
                     nguoidung.DongNuoc = chkDongNuoc.Checked;
                     nguoidung.VanPhong = chkVanPhong.Checked;
@@ -233,6 +235,7 @@ namespace DocSo_PC.GUI.QuanTri
                     _nguoidung.Doi = chkDoi.Checked;
                     _nguoidung.DoiXem = chkDoiXem.Checked;
                     _nguoidung.ToTruong = chkToTruong.Checked;
+                    _nguoidung.KTXM = chkKTXM.Checked;
                     _nguoidung.HanhThu = chkHanhThu.Checked;
                     _nguoidung.DongNuoc = chkDongNuoc.Checked;
                     _nguoidung.VanPhong = chkVanPhong.Checked;

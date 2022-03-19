@@ -20516,12 +20516,6 @@ namespace DocSo_PC.LinQ
 		
 		private bool _DonTuNhan;
 		
-		private bool _TKH;
-		
-		private bool _TXL;
-		
-		private bool _TBC;
-		
 		private bool _KiemTra;
 		
     #region Extensibility Method Definitions
@@ -20538,12 +20532,6 @@ namespace DocSo_PC.LinQ
     partial void OnDonTuChuyenChanged();
     partial void OnDonTuNhanChanging(bool value);
     partial void OnDonTuNhanChanged();
-    partial void OnTKHChanging(bool value);
-    partial void OnTKHChanged();
-    partial void OnTXLChanging(bool value);
-    partial void OnTXLChanged();
-    partial void OnTBCChanging(bool value);
-    partial void OnTBCChanged();
     partial void OnKiemTraChanging(bool value);
     partial void OnKiemTraChanged();
     #endregion
@@ -20649,66 +20637,6 @@ namespace DocSo_PC.LinQ
 					this._DonTuNhan = value;
 					this.SendPropertyChanged("DonTuNhan");
 					this.OnDonTuNhanChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TKH", DbType="Bit NOT NULL")]
-		public bool TKH
-		{
-			get
-			{
-				return this._TKH;
-			}
-			set
-			{
-				if ((this._TKH != value))
-				{
-					this.OnTKHChanging(value);
-					this.SendPropertyChanging();
-					this._TKH = value;
-					this.SendPropertyChanged("TKH");
-					this.OnTKHChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TXL", DbType="Bit NOT NULL")]
-		public bool TXL
-		{
-			get
-			{
-				return this._TXL;
-			}
-			set
-			{
-				if ((this._TXL != value))
-				{
-					this.OnTXLChanging(value);
-					this.SendPropertyChanging();
-					this._TXL = value;
-					this.SendPropertyChanged("TXL");
-					this.OnTXLChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TBC", DbType="Bit NOT NULL")]
-		public bool TBC
-		{
-			get
-			{
-				return this._TBC;
-			}
-			set
-			{
-				if ((this._TBC != value))
-				{
-					this.OnTBCChanging(value);
-					this.SendPropertyChanging();
-					this._TBC = value;
-					this.SendPropertyChanged("TBC");
-					this.OnTBCChanged();
 				}
 			}
 		}

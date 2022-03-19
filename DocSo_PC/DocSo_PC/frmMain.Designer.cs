@@ -288,13 +288,15 @@
             // 
             this.mnuKTXM.Name = "mnuKTXM";
             this.mnuKTXM.Size = new System.Drawing.Size(189, 22);
-            this.mnuKTXM.Text = "Nhập KTXM";
+            this.mnuKTXM.Text = "Kiểm Tra Xác Minh";
+            this.mnuKTXM.Click += new System.EventHandler(this.mnuKTXM_Click);
             // 
             // mnuDieuChinhThongTin
             // 
             this.mnuDieuChinhThongTin.Name = "mnuDieuChinhThongTin";
             this.mnuDieuChinhThongTin.Size = new System.Drawing.Size(189, 22);
             this.mnuDieuChinhThongTin.Text = "Điều Chỉnh Thông Tin";
+            this.mnuDieuChinhThongTin.Click += new System.EventHandler(this.mnuDieuChinhThongTin_Click);
             // 
             // mnuVanThu
             // 

@@ -18,6 +18,7 @@ namespace DocSo_PC.GUI.MaHoa
         string _mnu = "mnuNhanDon";
         CDonTu _cDonTu = new CDonTu();
         CThuTien _cThuTien = new CThuTien();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
 
         MaHoa_DonTu _dontu = null;
         HOADON _hoadon = null;
@@ -32,7 +33,15 @@ namespace DocSo_PC.GUI.MaHoa
             try
             {
                 dgvDanhSach.AutoGenerateColumns = false;
-
+                dgvDonTuLichSu.AutoGenerateColumns = false;
+                cmbNoiChuyen.DataSource = _cDonTu.getDS_NoiChuyen();
+                cmbNoiChuyen.ValueMember = "ID";
+                cmbNoiChuyen.DisplayMember = "Name";
+                cmbNoiChuyen.SelectedIndex = -1;
+                cmbNoiNhan.DataSource = _cDonTu.getDS_NoiNhan();
+                cmbNoiNhan.ValueMember = "ID";
+                cmbNoiNhan.DisplayMember = "Name";
+                cmbNoiNhan.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -56,7 +65,7 @@ namespace DocSo_PC.GUI.MaHoa
                 txtDinhMucHN.Text = "";
         }
 
-        public void loadEntity(MaHoa_DonTu entity)
+        public void loadDonTu(MaHoa_DonTu entity)
         {
             txtDanhBo.Text = entity.DanhBo.Insert(7, " ").Insert(4, " ");
             txtHoTen.Text = entity.HoTen;
@@ -70,6 +79,13 @@ namespace DocSo_PC.GUI.MaHoa
                 txtDinhMucHN.Text = entity.DinhMucHN.Value.ToString();
             else
                 txtDinhMucHN.Text = "";
+            //lbTinhTrang.Text = "Tình Trạng: " + entity.DonTu_ChiTiets.SingleOrDefault().TinhTrang;
+            loadDonTu_LichSu(entity.ID);
+        }
+
+        public void loadDonTu_LichSu(int MaDon)
+        {
+            dgvDonTuLichSu.DataSource = _cDonTu.getDS_LichSu(MaDon);
         }
 
         public void Clear()
@@ -81,6 +97,17 @@ namespace DocSo_PC.GUI.MaHoa
             txtDinhMuc.Text = "";
             txtDinhMucHN.Text = "";
             txtNoiDung.Text = "";
+            ClearChuyenDon();
+        }
+
+        public void ClearChuyenDon()
+        {
+            dateChuyen.Value = DateTime.Now;
+            cmbNoiChuyen.SelectedIndex = -1;
+            cmbNoiNhan.SelectedIndex = -1;
+            cmbKTXM.DataSource = null;
+            txtNoiDung_LichSu.Text = "";
+            lbTinhTrang.Text = "Tình Trạng";
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -208,12 +235,12 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (txtMaDon.Text.Trim()!="" && e.KeyChar == 13)
+            if (txtMaDon.Text.Trim() != "" && e.KeyChar == 13)
             {
                 _dontu = _cDonTu.get(int.Parse(txtMaDon.Text.Trim()));
                 if (_dontu != null)
                 {
-                    loadEntity(_dontu);
+                    loadDonTu(_dontu);
                 }
                 else
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -233,10 +260,90 @@ namespace DocSo_PC.GUI.MaHoa
             try
             {
                 _dontu = _cDonTu.get(int.Parse(dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString()));
-                loadEntity(_dontu);
+                loadDonTu(_dontu);
             }
             catch
             {
+            }
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            dgvDanhSach.DataSource = _cDonTu.getDS(dateTuNgay.Value, dateDenNgay.Value);
+        }
+
+        private void btnCapNhat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (_dontu != null)
+                    {
+                        MaHoa_DonTu_LichSu entity = new MaHoa_DonTu_LichSu();
+                        entity.NgayChuyen = dateChuyen.Value;
+                        entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                        entity.NoiChuyen = cmbNoiChuyen.Text;
+                        entity.ID_NoiNhan = int.Parse(cmbNoiNhan.SelectedValue.ToString());
+                        entity.NoiNhan = cmbNoiNhan.SelectedValue.ToString();
+                        entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                        entity.IDMaDon = _dontu.ID;
+                        if (cmbNoiNhan.SelectedValue.ToString() == "2")
+                        {
+                            entity.ID_KTXM = int.Parse(cmbKTXM.SelectedValue.ToString());
+                            entity.KTXM = cmbKTXM.SelectedText.ToString();
+                        }
+                        if (_cDonTu.Them_LichSu(entity) == true)
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadDonTu_LichSu(_dontu.ID);
+                            ClearChuyenDon();
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbNoiNhan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbNoiNhan.Items.Count > 0 && cmbNoiNhan.SelectedIndex >= 0 && cmbNoiNhan.SelectedValue.ToString() == "2")
+            {
+                DataTable dt = _cNguoiDung.getDS_KTXM();
+                cmbKTXM.DataSource = dt;
+                cmbKTXM.ValueMember = "MaND";
+                cmbKTXM.DisplayMember = "HoTen";
+            }
+        }
+
+        private void dgvDonTuLichSu_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+                {
+                    if (_dontu != null)
+                    {
+                        MaHoa_DonTu_LichSu en = _cDonTu.get_LicSu(int.Parse(e.Row.Cells["ID_DTLS"].Value.ToString()));
+                        if (_cDonTu.Xoa_LichSu(en) == true)
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadDonTu_LichSu(_dontu.ID);
+                            ClearChuyenDon();
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

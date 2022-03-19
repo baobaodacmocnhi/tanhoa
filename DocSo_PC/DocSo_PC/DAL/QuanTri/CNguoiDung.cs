@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DocSo_PC.LinQ;
+using System.Data;
 
 namespace DocSo_PC.DAL.QuanTri
 {
@@ -301,6 +302,11 @@ namespace DocSo_PC.DAL.QuanTri
         public List<NguoiDung> GetDSDongNuocByMaTo(int MaTo)
         {
             return _db.NguoiDungs.Where(item => item.MaTo == MaTo && item.DongNuoc == true).OrderBy(item => item.STT).ToList();
+        }
+
+        public DataTable getDS_KTXM()
+        {
+            return _cDAL.LINQToDataTable(_db.NguoiDungs.Where(item => item.KTXM == true).OrderBy(item => item.STT).ToList());
         }
 
         public NguoiDung GetByMaND(int MaND)

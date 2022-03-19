@@ -97,6 +97,7 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
@@ -109,6 +110,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCao\dsBaoCao.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsBaoCao.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BaoCao\MaHoa\rptPhieuDCBD_15112019.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPhieuDCBD_15112019.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaoCao\rptHeader.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,14 +133,10 @@
       <DependentUpon>rptThongKe.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\dsBaoCao.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsBaoCao.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DAL\CDocSo12.cs" />
     <Compile Include="DAL\CThuongVu.cs" />
     <Compile Include="DAL\MaHoa\CDonTu.cs" />
+    <Compile Include="DAL\MaHoa\CKTXM.cs" />
     <Compile Include="DAL\QuanTri\CMayDS.cs" />
     <Compile Include="DAL\sDHN\CsDHN.cs" />
     <Compile Include="DAL\ToTruong\CDocSoTruoc.cs" />
@@ -157,6 +165,18 @@
     </Compile>
     <Compile Include="GUI\Doi\frmTaoDotKiemTra.Designer.cs">
       <DependentUpon>frmTaoDotKiemTra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MaHoa\frmDieuChinhThongTin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MaHoa\frmDieuChinhThongTin.Designer.cs">
+      <DependentUpon>frmDieuChinhThongTin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MaHoa\frmKTXM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MaHoa\frmKTXM.Designer.cs">
+      <DependentUpon>frmKTXM.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\MaHoa\frmNhanDon.cs">
       <SubType>Form</SubType>
@@ -389,6 +409,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCao\MaHoa\rptPhieuDCBD_15112019.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuDCBD_15112019.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\rptHeader.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptHeader.cs</LastGenOutput>
@@ -408,6 +432,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmTaoDotKiemTra.resx">
       <DependentUpon>frmTaoDotKiemTra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MaHoa\frmDieuChinhThongTin.resx">
+      <DependentUpon>frmDieuChinhThongTin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MaHoa\frmKTXM.resx">
+      <DependentUpon>frmKTXM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\MaHoa\frmNhanDon.resx">
       <DependentUpon>frmNhanDon.cs</DependentUpon>
@@ -470,9 +500,9 @@
       <DependentUpon>dsBaoCao.xsd</DependentUpon>
     </None>
     <None Include="BaoCao\dsBaoCao.xsd">
-      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dsBaoCao.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="BaoCao\dsBaoCao.xss">
       <DependentUpon>dsBaoCao.xsd</DependentUpon>
@@ -603,6 +633,7 @@
     <None Include="Resources\Water.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\file 24x24.png" />
     <Content Include="Water.ico" />
     <None Include="Web References\wsThuongVu\wsthuongvu.disco" />
     <None Include="Web References\wrDHN\wsdhn.disco" />

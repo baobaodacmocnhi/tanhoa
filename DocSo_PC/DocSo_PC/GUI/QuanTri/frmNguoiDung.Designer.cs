@@ -103,6 +103,7 @@
             this.txtChucVu = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.chkKyTen = new System.Windows.Forms.CheckBox();
+            this.chkKTXM = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -604,7 +605,7 @@
             // chkToTruong
             // 
             this.chkToTruong.AutoSize = true;
-            this.chkToTruong.Location = new System.Drawing.Point(252, 128);
+            this.chkToTruong.Location = new System.Drawing.Point(249, 108);
             this.chkToTruong.Name = "chkToTruong";
             this.chkToTruong.Size = new System.Drawing.Size(76, 17);
             this.chkToTruong.TabIndex = 16;
@@ -670,7 +671,7 @@
             // chkDoi
             // 
             this.chkDoi.AutoSize = true;
-            this.chkDoi.Location = new System.Drawing.Point(204, 128);
+            this.chkDoi.Location = new System.Drawing.Point(201, 108);
             this.chkDoi.Name = "chkDoi";
             this.chkDoi.Size = new System.Drawing.Size(42, 17);
             this.chkDoi.TabIndex = 23;
@@ -696,7 +697,7 @@
             // chkPhoGiamDoc
             // 
             this.chkPhoGiamDoc.AutoSize = true;
-            this.chkPhoGiamDoc.Location = new System.Drawing.Point(204, 105);
+            this.chkPhoGiamDoc.Location = new System.Drawing.Point(673, 128);
             this.chkPhoGiamDoc.Name = "chkPhoGiamDoc";
             this.chkPhoGiamDoc.Size = new System.Drawing.Size(95, 17);
             this.chkPhoGiamDoc.TabIndex = 26;
@@ -750,7 +751,7 @@
             // chkDoiXem
             // 
             this.chkDoiXem.AutoSize = true;
-            this.chkDoiXem.Location = new System.Drawing.Point(305, 105);
+            this.chkDoiXem.Location = new System.Drawing.Point(774, 128);
             this.chkDoiXem.Name = "chkDoiXem";
             this.chkDoiXem.Size = new System.Drawing.Size(83, 17);
             this.chkDoiXem.TabIndex = 34;
@@ -783,11 +784,22 @@
             this.chkKyTen.Text = "Ký Tên";
             this.chkKyTen.UseVisualStyleBackColor = true;
             // 
+            // chkKTXM
+            // 
+            this.chkKTXM.AutoSize = true;
+            this.chkKTXM.Location = new System.Drawing.Point(249, 128);
+            this.chkKTXM.Name = "chkKTXM";
+            this.chkKTXM.Size = new System.Drawing.Size(56, 17);
+            this.chkKTXM.TabIndex = 38;
+            this.chkKTXM.Text = "KTXM";
+            this.chkKTXM.UseVisualStyleBackColor = true;
+            // 
             // frmNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1253, 669);
+            this.Controls.Add(this.chkKTXM);
             this.Controls.Add(this.chkKyTen);
             this.Controls.Add(this.txtChucVu);
             this.Controls.Add(this.label10);
@@ -918,5 +930,6 @@
         private System.Windows.Forms.TextBox txtChucVu;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox chkKyTen;
+        private System.Windows.Forms.CheckBox chkKTXM;
     }
 }
