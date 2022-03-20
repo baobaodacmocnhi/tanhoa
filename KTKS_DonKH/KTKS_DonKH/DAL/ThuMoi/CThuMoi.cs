@@ -140,8 +140,9 @@ namespace KTKS_DonKH.DAL.ThuMoi
         {
             try
             {
-                CDonTu _cDonTu = new CDonTu();
-                _cDonTu.Xoa_LichSu("ThuMoi_ChiTiet", (int)entity.IDCT);
+                //CDonTu _cDonTu = new CDonTu();
+                //_cDonTu.Xoa_LichSu("ThuMoi_ChiTiet", (int)entity.IDCT);
+                db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "ThuMoi_ChiTiet" && item.IDCT == Convert.ToInt32(entity.IDCT.ToString())));
                 int ID = entity.ID;
                 db.ThuMoi_ChiTiet_Hinhs.DeleteAllOnSubmit(entity.ThuMoi_ChiTiet_Hinhs.ToList());
                 db.ThuMoi_ChiTiets.DeleteOnSubmit(entity);

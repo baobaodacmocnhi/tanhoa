@@ -207,7 +207,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
                     if (item.Hinh != null)
-                    dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
+                        dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
                     dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = item.Loai;
                 }
             }
@@ -623,7 +623,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 //en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
                                 en.Loai = item.Cells["Loai_Hinh"].Value.ToString();
                                 if (_wsThuongVu.ghi_Hinh("KTXM_ChiTiet_Hinh", en.IDKTXM_ChiTiet.Value.ToString(), en.Name + en.Loai, Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString())) == true)
-                                _cKTXM.Them_Hinh(en);
+                                    _cKTXM.Them_Hinh(en);
                             }
                             if (_dontu_ChiTiet != null)
                             {
@@ -759,7 +759,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtMaDonCu.Focus();
+                            txtMaDonMoi.Focus();
                         }
                     }
                 }
@@ -780,7 +780,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 {
                     if (_ctktxm != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if (CTaiKhoan.Admin == false &&CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                        if (CTaiKhoan.Admin == false && CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                             if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
                             {
                                 MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -791,11 +791,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("KTXM_ChiTiet", (int)_ctktxm.MaCTKTXM);
-                            if (dtls != null)
-                            {
-                                _cDonTu.Xoa_LichSu(dtls, true);
-                            }
+                            //DonTu_LichSu dtls = _cDonTu.get_LichSu("KTXM_ChiTiet", (int)_ctktxm.MaCTKTXM);
+                            //if (dtls != null)
+                            //{
+                            //    _cDonTu.Xoa_LichSu(dtls, true);
+                            //}
                             if (_cKTXM.XoaCT(_ctktxm))
                             {
                                 _wsThuongVu.xoa_Folder_Hinh("KTXM_ChiTiet_Hinh", flagID);
@@ -803,7 +803,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 scope.Dispose();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Clear();
-                                txtMaDonCu.Focus();
+                                txtMaDonMoi.Focus();
                             }
                         }
                     }
@@ -1109,7 +1109,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     {
                         if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                         {
-                            if (CTaiKhoan.Admin==false&& CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                            if (CTaiKhoan.Admin == false && CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                                 if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
                                 {
                                     MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1121,15 +1121,15 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             //en.Hinh = bytes;
                             en.Loai = System.IO.Path.GetExtension(dialog.FileName);
                             if (_wsThuongVu.ghi_Hinh("KTXM_ChiTiet_Hinh", en.IDKTXM_ChiTiet.Value.ToString(), en.Name + en.Loai, bytes) == true)
-                            if (_cKTXM.Them_Hinh(en) == true)
-                            {
-                                _cKTXM.Refresh();
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                var index = dgvHinh.Rows.Add();
-                                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
-                                dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
-                                dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
-                            }
+                                if (_cKTXM.Them_Hinh(en) == true)
+                                {
+                                    _cKTXM.Refresh();
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    var index = dgvHinh.Rows.Add();
+                                    dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
+                                    dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                                    dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
+                                }
                         }
                         else
                             MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1185,13 +1185,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 }
                             if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null)
                                 if (_wsThuongVu.xoa_Hinh("KTXM_ChiTiet_Hinh", _ctktxm.MaCTKTXM.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()) == true)
-                                if (_cKTXM.Xoa_Hinh(_cKTXM.get_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
-                                {
-                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    dgvHinh.Rows.RemoveAt(dgvHinh.CurrentRow.Index);
-                                }
-                                else
-                                    MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    if (_cKTXM.Xoa_Hinh(_cKTXM.get_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
+                                    {
+                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        dgvHinh.Rows.RemoveAt(dgvHinh.CurrentRow.Index);
+                                    }
+                                    else
+                                        MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
@@ -1203,7 +1203,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             }
         }
 
-       
+
 
 
     }

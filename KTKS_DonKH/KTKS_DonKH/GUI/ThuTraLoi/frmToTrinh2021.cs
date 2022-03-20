@@ -711,11 +711,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("ThuMoi_ChiTiet", (int)_cttt.IDCT);
-                            if (dtls != null)
-                            {
-                                _cDonTu.Xoa_LichSu(dtls, true);
-                            }
+                            //DonTu_LichSu dtls = _cDonTu.get_LichSu("ThuMoi_ChiTiet", (int)_cttt.IDCT);
+                            //if (dtls != null)
+                            //{
+                            //    _cDonTu.Xoa_LichSu(dtls, true);
+                            //}
                             if (_cTT.Xoa_ChiTiet(_cttt))
                             {
                                 _wsThuongVu.xoa_Folder_Hinh("CHDB_Phieu_Hinh", flagID);

@@ -380,11 +380,11 @@ namespace KTKS_DonKH.GUI.VanBan
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("VanBan_ChiTiet", (int)_enCT.IDCT);
-                            if (dtls != null)
-                            {
-                                _cDonTu.Xoa_LichSu(dtls, true);
-                            }
+                            //DonTu_LichSu dtls = _cDonTu.get_LichSu("VanBan_ChiTiet", (int)_enCT.IDCT);
+                            //if (dtls != null)
+                            //{
+                            //    _cDonTu.Xoa_LichSu(dtls, true);
+                            //}
                             if (_cVanBan.XoaCT(_enCT))
                             {
                                 _wsThuongVu.xoa_Folder_Hinh("VanBan_ChiTiet_Hinh", flagID);

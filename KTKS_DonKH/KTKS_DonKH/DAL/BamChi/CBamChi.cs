@@ -165,8 +165,9 @@ namespace KTKS_DonKH.DAL.BamChi
         {
             try
             {
-                CDonTu _cDonTu = new CDonTu();
-                _cDonTu.Xoa_LichSu("BamChi_ChiTiet", (int)ctbamchi.MaCTBC);
+                //CDonTu _cDonTu = new CDonTu();
+                //_cDonTu.Xoa_LichSu("BamChi_ChiTiet", (int)ctbamchi.MaCTBC);
+                db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "BamChi_ChiTiet" && item.IDCT == Convert.ToInt32(ctbamchi.MaCTBC.ToString())));
                 decimal MaBC = ctbamchi.MaBC.Value;
                 db.BamChi_ChiTiet_Hinhs.DeleteAllOnSubmit(ctbamchi.BamChi_ChiTiet_Hinhs.ToList());
                 db.BamChi_ChiTiets.DeleteOnSubmit(ctbamchi);

@@ -121,8 +121,9 @@ namespace KTKS_DonKH.DAL.VanBan
         {
             try
             {
-                CDonTu _cDonTu = new CDonTu();
-                _cDonTu.Xoa_LichSu("VanBan_ChiTiet", (int)en.IDCT);
+                //CDonTu _cDonTu = new CDonTu();
+                //_cDonTu.Xoa_LichSu("VanBan_ChiTiet", (int)en.IDCT);
+                db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "VanBan_ChiTiet" && item.IDCT == Convert.ToInt32(en.IDCT.ToString())));
                 decimal ID = en.ID;
                 db.VanBan_ChiTiet_Hinhs.DeleteAllOnSubmit(en.VanBan_ChiTiet_Hinhs.ToList());
                 db.VanBan_ChiTiets.DeleteOnSubmit(en);

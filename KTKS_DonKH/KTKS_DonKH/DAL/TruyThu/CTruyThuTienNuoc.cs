@@ -159,8 +159,9 @@ namespace KTKS_DonKH.DAL.TruyThu
         {
             try
             {
-                CDonTu _cDonTu = new CDonTu();
-                _cDonTu.Xoa_LichSu("TruyThuTienNuoc_ChiTiet", (int)cttttn.IDCT);
+                //CDonTu _cDonTu = new CDonTu();
+                //_cDonTu.Xoa_LichSu("TruyThuTienNuoc_ChiTiet", (int)cttttn.IDCT);
+                db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "TruyThuTienNuoc_ChiTiet" && item.IDCT == Convert.ToInt32(cttttn.IDCT.ToString())));
                 int ID = cttttn.ID.Value;
                 int IDCT = cttttn.IDCT;
                 db.TruyThuTienNuoc_HoaDons.DeleteAllOnSubmit(cttttn.TruyThuTienNuoc_HoaDons.ToList());

@@ -834,11 +834,11 @@ namespace KTKS_DonKH.GUI.BamChi
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("BamChi_ChiTiet", (int)_ctbamchi.MaCTBC);
-                            if (dtls != null)
-                            {
-                                _cDonTu.Xoa_LichSu(dtls, true);
-                            }
+                            //DonTu_LichSu dtls = _cDonTu.get_LichSu("BamChi_ChiTiet", (int)_ctbamchi.MaCTBC);
+                            //if (dtls != null)
+                            //{
+                            //    _cDonTu.Xoa_LichSu(dtls, true);
+                            //}
                             if (_cBamChi.XoaCT(_ctbamchi))
                             {
                                 _wsThuongVu.xoa_Folder_Hinh("BamChi_ChiTiet_Hinh", flagID);
