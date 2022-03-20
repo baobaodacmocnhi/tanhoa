@@ -58,6 +58,7 @@ namespace DocSo_PC.GUI.HeThong
                     CNguoiDung.PhoGiamDoc = nguoidung.PhoGiamDoc;
                     CNguoiDung.Doi = nguoidung.Doi;
                     CNguoiDung.ToTruong = nguoidung.ToTruong;
+                    CNguoiDung.ThuKy = nguoidung.ThuKy;
                     CNguoiDung.updateChuyenListing = nguoidung.updateChuyenListing;
                     if (nguoidung.MaTo != null)
                     {

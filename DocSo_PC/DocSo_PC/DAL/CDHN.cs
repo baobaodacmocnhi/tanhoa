@@ -15,7 +15,6 @@ namespace DocSo_PC.DAL
         public static dbDHNDataContext _db = new dbDHNDataContext();
         public static CConnection _cDAL = new CConnection(_db.Connection.ConnectionString);
 
-
         public void SubmitChanges()
         {
             _db.SubmitChanges();

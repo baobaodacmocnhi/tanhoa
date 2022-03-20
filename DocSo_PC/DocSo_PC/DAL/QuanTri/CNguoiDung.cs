@@ -107,6 +107,13 @@ namespace DocSo_PC.DAL.QuanTri
             set { CNguoiDung._ToTruong = value; }
         }
 
+        static bool _ThuKy;
+        public static bool ThuKy
+        {
+            get { return CNguoiDung._ThuKy; }
+            set { CNguoiDung._ThuKy = value; }
+        }
+
         static bool _updateChuyenListing;
         public static bool updateChuyenListing
         {

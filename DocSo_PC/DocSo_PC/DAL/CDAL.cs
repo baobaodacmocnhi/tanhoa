@@ -9,6 +9,8 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Drawing;
 using System.Diagnostics;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 
 namespace DocSo_PC.DAL
 {
@@ -99,6 +101,51 @@ namespace DocSo_PC.DAL
             {
                 throw ex;
             }
+        }
+
+        public Bitmap resizeImage(Image image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
+        }
+
+        public Bitmap resizeImage(Image image, decimal percentage)
+        {
+            int width = (int)Math.Round(image.Width * percentage, MidpointRounding.AwayFromZero);
+            int height = (int)Math.Round(image.Height * percentage, MidpointRounding.AwayFromZero);
+            return resizeImage(image, width, height);
+        }
+
+        public byte[] ImageToByte(Bitmap image)
+        {
+            ImageConverter converter = new ImageConverter();
+            return (byte[])converter.ConvertTo(image, typeof(byte[]));
+        }
+
+        public byte[] scanVanBan(string path)
+        {
+            Image image = Image.FromFile(path);
+            Bitmap resizedImage = resizeImage(image, 0.5m);
+            return ImageToByte(resizedImage);
         }
 
         #region ConvertMoneyToWord
@@ -307,5 +354,7 @@ namespace DocSo_PC.DAL
             }
             return dt;
         }
+
+
     }
 }

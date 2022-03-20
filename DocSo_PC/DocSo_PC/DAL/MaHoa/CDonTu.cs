@@ -117,6 +117,51 @@ namespace DocSo_PC.DAL.MaHoa
             }
         }
 
+        public bool Them_LichSu(DateTime NgayChuyen, string NoiChuyen, string NoiDung, int IDCT, int MaDon, int STT)
+        {
+            try
+            {
+                MaHoa_DonTu_LichSu entity = new MaHoa_DonTu_LichSu();
+                entity.NgayChuyen = NgayChuyen;
+                switch (NoiChuyen)
+                {
+                    case "KTXM":
+                        entity.ID_NoiChuyen = 5;
+                        entity.NoiChuyen = "Kiểm Tra";
+                        entity.NoiDung = NoiDung;
+                        entity.TableName = "KTXM_ChiTiet";
+                        entity.IDCT = IDCT;
+                        //entity.NgayChuyen = db.KTXM_ChiTiets.SingleOrDefault(item => item.MaCTKTXM == IDCT).NgayKTXM;
+                        break;
+                    case "DCBD":
+                        entity.ID_NoiChuyen = 6;
+                        entity.NoiChuyen = "Điều Chỉnh";
+                        entity.NoiDung = NoiDung;
+                        entity.TableName = "DCBD_ChiTietBienDong";
+                        entity.IDCT = IDCT;
+                        break;
+                    default:
+                        break;
+                }
+                entity.MaDon = MaDon;
+                entity.STT = STT;
+                if (db.DonTu_LichSus.Count() == 0)
+                    entity.ID = 1;
+                else
+                    entity.ID = db.DonTu_LichSus.Max(item => item.ID) + 1;
+                entity.CreateBy = CTaiKhoan.MaUser;
+                entity.CreateDate = DateTime.Now;
+                db.DonTu_LichSus.InsertOnSubmit(entity);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
         public bool Xoa_LichSu(MaHoa_DonTu_LichSu entity)
         {
             try
@@ -135,6 +180,11 @@ namespace DocSo_PC.DAL.MaHoa
         public MaHoa_DonTu_LichSu get_LicSu(int ID)
         {
             return _db.MaHoa_DonTu_LichSus.SingleOrDefault(item => item.ID == ID);
+        }
+
+        public MaHoa_DonTu_LichSu get_LichSu(string TableName, int IDCT)
+        {
+            return _db.MaHoa_DonTu_LichSus.SingleOrDefault(item => item.TableName == TableName && item.IDCT == IDCT);
         }
 
         public DataTable getDS_LichSu(int MaDon)

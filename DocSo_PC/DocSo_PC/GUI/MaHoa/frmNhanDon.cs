@@ -19,6 +19,7 @@ namespace DocSo_PC.GUI.MaHoa
         CDonTu _cDonTu = new CDonTu();
         CThuTien _cThuTien = new CThuTien();
         CNguoiDung _cNguoiDung = new CNguoiDung();
+        wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
 
         MaHoa_DonTu _dontu = null;
         HOADON _hoadon = null;
@@ -79,7 +80,7 @@ namespace DocSo_PC.GUI.MaHoa
                 txtDinhMucHN.Text = entity.DinhMucHN.Value.ToString();
             else
                 txtDinhMucHN.Text = "";
-            //lbTinhTrang.Text = "Tình Trạng: " + entity.DonTu_ChiTiets.SingleOrDefault().TinhTrang;
+            lbTinhTrang.Text = "Tình Trạng: " + entity.TinhTrang;
             loadDonTu_LichSu(entity.ID);
         }
 
@@ -261,6 +262,10 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 _dontu = _cDonTu.get(int.Parse(dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString()));
                 loadDonTu(_dontu);
+                if (dgvDanhSach.Columns[e.ColumnIndex].Name == "XemHinh")
+                {
+                    _cDonTu.LoadImageView(_wsDHN.get_Hinh_MaHoa("DonTu", _dontu.ID.ToString(), _dontu.MaHoa_DonTu_Hinhs.SingleOrDefault().Name + _dontu.MaHoa_DonTu_Hinhs.SingleOrDefault().Loai));
+                }
             }
             catch
             {
@@ -298,6 +303,7 @@ namespace DocSo_PC.GUI.MaHoa
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             loadDonTu_LichSu(_dontu.ID);
                             ClearChuyenDon();
+                            _cDonTu.Refresh();
                         }
                     }
                 }

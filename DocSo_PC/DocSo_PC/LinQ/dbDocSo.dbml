@@ -809,7 +809,19 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="MaHoa_DCBD_MaHoa_DCBD_Hinh" Member="MaHoa_DCBD_Hinhs" ThisKey="ID" OtherKey="IDParent" Type="MaHoa_DCBD_Hinh" />
       <Association Name="MaHoa_DonTu_MaHoa_DCBD" Member="MaHoa_DonTu" ThisKey="IDMaDon" OtherKey="ID" Type="MaHoa_DonTu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MaHoa_DCBD_Hinh" Member="MaHoa_DCBD_Hinhs">
+    <Type Name="MaHoa_DCBD_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="IDParent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Association Name="MaHoa_DCBD_MaHoa_DCBD_Hinh" Member="MaHoa_DCBD" ThisKey="IDParent" OtherKey="ID" Type="MaHoa_DCBD" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MaHoa_DonTu" Member="MaHoa_DonTus">
@@ -828,13 +840,27 @@
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="Phuong" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="Quan" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TinhTrang" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="HoanThanh_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="MaHoa_DonTu_MaHoa_DCBD" Member="MaHoa_DCBDs" ThisKey="ID" OtherKey="IDMaDon" Type="MaHoa_DCBD" />
+      <Association Name="MaHoa_DonTu_MaHoa_DonTu_Hinh" Member="MaHoa_DonTu_Hinhs" ThisKey="ID" OtherKey="IDParent" Type="MaHoa_DonTu_Hinh" />
       <Association Name="MaHoa_DonTu_MaHoa_DonTu_LichSu" Member="MaHoa_DonTu_LichSus" ThisKey="ID" OtherKey="IDMaDon" Type="MaHoa_DonTu_LichSu" />
       <Association Name="MaHoa_DonTu_MaHoa_KTXM" Member="MaHoa_KTXMs" ThisKey="ID" OtherKey="IDMaDon" Type="MaHoa_KTXM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MaHoa_DonTu_Hinh" Member="MaHoa_DonTu_Hinhs">
+    <Type Name="MaHoa_DonTu_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="IDParent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Association Name="MaHoa_DonTu_MaHoa_DonTu_Hinh" Member="MaHoa_DonTu" ThisKey="IDParent" OtherKey="ID" Type="MaHoa_DonTu" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MaHoa_DonTu_LichSu" Member="MaHoa_DonTu_LichSus">
@@ -929,7 +955,28 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="MaHoa_KTXM_MaHoa_KTXM_Hinh" Member="MaHoa_KTXM_Hinhs" ThisKey="ID" OtherKey="IDParent" Type="MaHoa_KTXM_Hinh" />
       <Association Name="MaHoa_DonTu_MaHoa_KTXM" Member="MaHoa_DonTu" ThisKey="IDMaDon" OtherKey="ID" Type="MaHoa_DonTu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MaHoa_KTXM_HienTrang" Member="MaHoa_KTXM_HienTrangs">
+    <Type Name="MaHoa_KTXM_HienTrang">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MaHoa_KTXM_Hinh" Member="MaHoa_KTXM_Hinhs">
+    <Type Name="MaHoa_KTXM_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="IDParent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Association Name="MaHoa_KTXM_MaHoa_KTXM_Hinh" Member="MaHoa_KTXM" ThisKey="IDParent" OtherKey="ID" Type="MaHoa_KTXM" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MaHoa_NoiChuyen" Member="MaHoa_NoiChuyens">
@@ -940,6 +987,17 @@
       <Column Name="DonTuChuyen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DonTuNhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="KiemTra" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MaHoa_PhieuChuyen" Member="MaHoa_PhieuChuyens">
+    <Type Name="MaHoa_PhieuChuyen">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.MayDS" Member="MayDs">
@@ -1014,6 +1072,7 @@
       <Column Name="VanPhong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="ChamCong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="KTXM" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ThuKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="updateChuyenListing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="An" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="May" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -1139,30 +1198,6 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.ThamSo" Member="ThamSos">
-    <Type Name="ThamSo">
-      <Column Name="Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CodeDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="CodeType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Stt" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ThongBao" Member="ThongBaos">
-    <Type Name="ThongBao">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="LoaiLenh" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DanhBa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SoLenh" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Hieu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Co" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ChiSo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(800)" CanBeNull="true" />
-      <Column Name="NgayKiem" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="NVCapNhat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SoThan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.TKGIENG" Member="TKGIENGs">
     <Type Name="TKGIENG">
       <Column Name="LOTRINH" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
@@ -1199,6 +1234,30 @@
       <Column Name="MoTa" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="Stt" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Vitri" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ThamSo" Member="ThamSos">
+    <Type Name="ThamSo">
+      <Column Name="Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CodeDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CodeType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Stt" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ThongBao" Member="ThongBaos">
+    <Type Name="ThongBao">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LoaiLenh" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DanhBa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SoLenh" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Hieu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Co" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChiSo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(800)" CanBeNull="true" />
+      <Column Name="NgayKiem" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NVCapNhat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SoThan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.UserGroup" Member="UserGroups">
