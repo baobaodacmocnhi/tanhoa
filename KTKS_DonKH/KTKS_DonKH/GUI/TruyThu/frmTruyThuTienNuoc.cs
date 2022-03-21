@@ -235,7 +235,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     var index = dgvHinh.Rows.Add();
                     dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
-                    if (item.Hinh != null) 
+                    if (item.Hinh != null)
                         dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
                     dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = item.Loai;
                 }
@@ -1178,8 +1178,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     cttttn_hoadon.IDCT = _cttttn.IDCT;
                                     cttttn_hoadon.Ky = int.Parse(item.Cells["Ky"].Value.ToString());
                                     cttttn_hoadon.Nam = int.Parse(item.Cells["Nam"].Value.ToString());
-                                    cttttn_hoadon.TuNgay = item.Cells["TuNgay"].Value.ToString();
-                                    cttttn_hoadon.DenNgay = item.Cells["TuNgay"].Value.ToString();
+                                    if (item.Cells["TuNgay"].Value != null)
+                                        cttttn_hoadon.TuNgay = item.Cells["TuNgay"].Value.ToString();
+                                    if (item.Cells["DenNgay"].Value != null)
+                                        cttttn_hoadon.DenNgay = item.Cells["DenNgay"].Value.ToString();
                                     cttttn_hoadon.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
                                     cttttn_hoadon.DinhMucHNCu = int.Parse(item.Cells["DinhMucHN_Cu"].Value.ToString());
                                     cttttn_hoadon.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
@@ -1217,8 +1219,10 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                                     cttttn_hoadon.Ky = int.Parse(item.Cells["Ky"].Value.ToString());
                                     cttttn_hoadon.Nam = int.Parse(item.Cells["Nam"].Value.ToString());
-                                    cttttn_hoadon.TuNgay = item.Cells["TuNgay"].Value.ToString();
-                                    cttttn_hoadon.DenNgay = item.Cells["TuNgay"].Value.ToString();
+                                    if (item.Cells["TuNgay"].Value != null)
+                                        cttttn_hoadon.TuNgay = item.Cells["TuNgay"].Value.ToString();
+                                    if (item.Cells["DenNgay"].Value != null)
+                                        cttttn_hoadon.DenNgay = item.Cells["DenNgay"].Value.ToString();
                                     cttttn_hoadon.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
                                     cttttn_hoadon.DinhMucHNCu = int.Parse(item.Cells["DinhMucHN_Cu"].Value.ToString());
                                     cttttn_hoadon.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
@@ -1993,15 +1997,15 @@ namespace KTKS_DonKH.GUI.TruyThu
                             //en.Hinh = bytes;
                             en.Loai = System.IO.Path.GetExtension(dialog.FileName);
                             if (_wsThuongVu.ghi_Hinh("TruyThuTienNuoc_ChiTiet_Hinh", en.IDTruyThuTienNuoc_ChiTiet.Value.ToString(), en.Name + en.Loai, bytes) == true)
-                            if (_cTTTN.Them_Hinh(en) == true)
-                            {
-                                _cTTTN.Refresh();
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                var index = dgvHinh.Rows.Add();
-                                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
-                                dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
-                                dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
-                            }
+                                if (_cTTTN.Them_Hinh(en) == true)
+                                {
+                                    _cTTTN.Refresh();
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    var index = dgvHinh.Rows.Add();
+                                    dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
+                                    dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                                    dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
+                                }
                         }
                         else
                             MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -2051,13 +2055,13 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null)
                                 if (_wsThuongVu.xoa_Hinh("TruyThuTienNuoc_ChiTiet_Hinh", _cttttn.IDCT.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()) == true)
-                                if (_cTTTN.Xoa_Hinh(_cTTTN.get_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
-                                {
-                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    dgvHinh.Rows.RemoveAt(dgvHinh.CurrentRow.Index);
-                                }
-                                else
-                                    MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    if (_cTTTN.Xoa_Hinh(_cTTTN.get_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
+                                    {
+                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        dgvHinh.Rows.RemoveAt(dgvHinh.CurrentRow.Index);
+                                    }
+                                    else
+                                        MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
