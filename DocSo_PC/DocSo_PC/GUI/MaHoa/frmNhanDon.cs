@@ -80,6 +80,8 @@ namespace DocSo_PC.GUI.MaHoa
                 txtDinhMucHN.Text = entity.DinhMucHN.Value.ToString();
             else
                 txtDinhMucHN.Text = "";
+            txtNoiDung.Text = entity.NoiDung;
+            txtGhiChu.Text = entity.GhiChu;
             lbTinhTrang.Text = "Tình Trạng: " + entity.TinhTrang;
             loadDonTu_LichSu(entity.ID);
         }
@@ -98,6 +100,7 @@ namespace DocSo_PC.GUI.MaHoa
             txtDinhMuc.Text = "";
             txtDinhMucHN.Text = "";
             txtNoiDung.Text = "";
+            txtGhiChu.Text = "";
             ClearChuyenDon();
         }
 
@@ -128,9 +131,11 @@ namespace DocSo_PC.GUI.MaHoa
                     if (txtDinhMucHN.Text.Trim() != "")
                         en.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                     en.NoiDung = txtNoiDung.Text.Trim();
+                    en.GhiChu = txtGhiChu.Text.Trim();
                     if (_hoadon != null)
                     {
                         en.MLT = _hoadon.MALOTRINH;
+                        en.HopDong = _hoadon.HOPDONG;
                         en.Dot = _hoadon.DOT;
                         en.Ky = _hoadon.KY;
                         en.Nam = _hoadon.NAM;
@@ -195,6 +200,7 @@ namespace DocSo_PC.GUI.MaHoa
                         if (txtDinhMucHN.Text.Trim() != "")
                             _dontu.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                         _dontu.NoiDung = txtNoiDung.Text.Trim();
+                        _dontu.GhiChu = txtGhiChu.Text.Trim();
                         if (_hoadon != null)
                         {
                             _dontu.MLT = _hoadon.MALOTRINH;

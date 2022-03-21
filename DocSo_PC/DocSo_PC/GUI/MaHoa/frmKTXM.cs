@@ -360,9 +360,9 @@ namespace DocSo_PC.GUI.MaHoa
                                 scope.Complete();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear_LoadDSKTXM();
-                            txtMaDonMoi.Focus();
+                            txtMaDon.Focus();
                         }
-                    LoadDSKTXM();
+                    loadDSKTXM();
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

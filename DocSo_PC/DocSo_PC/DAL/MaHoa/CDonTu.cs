@@ -79,6 +79,11 @@ namespace DocSo_PC.DAL.MaHoa
             return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date).ToList());
         }
 
+        public DataTable getDS_ChuyenDCBD(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.TinhTrang == "Tồn (Điều Chỉnh)").ToList());
+        }
+
         #region Nơi Chuyển
 
         public DataTable getDS_NoiChuyen()
@@ -117,7 +122,7 @@ namespace DocSo_PC.DAL.MaHoa
             }
         }
 
-        public bool Them_LichSu(DateTime NgayChuyen, string NoiChuyen, string NoiDung, int IDCT, int MaDon, int STT)
+        public bool Them_LichSu(DateTime NgayChuyen, string NoiChuyen, string NoiDung, int IDCT, int MaDon)
         {
             try
             {
@@ -126,33 +131,32 @@ namespace DocSo_PC.DAL.MaHoa
                 switch (NoiChuyen)
                 {
                     case "KTXM":
-                        entity.ID_NoiChuyen = 5;
+                        entity.ID_NoiChuyen = 2;
                         entity.NoiChuyen = "Kiểm Tra";
                         entity.NoiDung = NoiDung;
-                        entity.TableName = "KTXM_ChiTiet";
+                        entity.TableName = "KTXM";
                         entity.IDCT = IDCT;
                         //entity.NgayChuyen = db.KTXM_ChiTiets.SingleOrDefault(item => item.MaCTKTXM == IDCT).NgayKTXM;
                         break;
                     case "DCBD":
-                        entity.ID_NoiChuyen = 6;
+                        entity.ID_NoiChuyen = 3;
                         entity.NoiChuyen = "Điều Chỉnh";
                         entity.NoiDung = NoiDung;
-                        entity.TableName = "DCBD_ChiTietBienDong";
+                        entity.TableName = "DCBD";
                         entity.IDCT = IDCT;
                         break;
                     default:
                         break;
                 }
-                entity.MaDon = MaDon;
-                entity.STT = STT;
-                if (db.DonTu_LichSus.Count() == 0)
+                entity.IDMaDon = MaDon;
+                if (_db.MaHoa_DonTu_LichSus.Count() == 0)
                     entity.ID = 1;
                 else
-                    entity.ID = db.DonTu_LichSus.Max(item => item.ID) + 1;
-                entity.CreateBy = CTaiKhoan.MaUser;
+                    entity.ID = _db.MaHoa_DonTu_LichSus.Max(item => item.ID) + 1;
+                entity.CreateBy = CNguoiDung.MaND;
                 entity.CreateDate = DateTime.Now;
-                db.DonTu_LichSus.InsertOnSubmit(entity);
-                db.SubmitChanges();
+                _db.MaHoa_DonTu_LichSus.InsertOnSubmit(entity);
+                _db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
@@ -190,7 +194,7 @@ namespace DocSo_PC.DAL.MaHoa
         public DataTable getDS_LichSu(int MaDon)
         {
             var query = from itemLS in _db.MaHoa_DonTu_LichSus
-                        join itemDon in _db.MaHoa_DonTus on  itemLS.IDMaDon equals  itemDon.ID
+                        join itemDon in _db.MaHoa_DonTus on itemLS.IDMaDon equals itemDon.ID
                         where itemDon.ID == MaDon
                         orderby itemLS.NgayChuyen descending, itemLS.ID descending
                         select new

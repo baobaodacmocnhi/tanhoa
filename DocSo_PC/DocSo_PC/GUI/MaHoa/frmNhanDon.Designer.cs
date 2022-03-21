@@ -88,12 +88,15 @@
             this.dateDenNgay = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.dateTuNgay = new System.Windows.Forms.DateTimePicker();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.XemHinh = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -310,11 +313,13 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(966, 580);
+            this.tabControl1.Size = new System.Drawing.Size(976, 580);
             this.tabControl1.TabIndex = 10;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.txtGhiChu);
+            this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.txtMaDon);
             this.tabPage1.Controls.Add(this.txtNoiDung);
             this.tabPage1.Controls.Add(this.label1);
@@ -358,7 +363,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(958, 554);
+            this.tabPage2.Size = new System.Drawing.Size(968, 554);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Xử Lý Đơn";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -597,6 +602,7 @@
             this.HoTen,
             this.DiaChi,
             this.NoiDung,
+            this.GhiChu,
             this.XemHinh});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
@@ -618,7 +624,7 @@
             this.dgvDanhSach.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvDanhSach.Size = new System.Drawing.Size(941, 194);
+            this.dgvDanhSach.Size = new System.Drawing.Size(957, 194);
             this.dgvDanhSach.TabIndex = 56;
             this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
@@ -669,6 +675,22 @@
             this.dateTuNgay.Size = new System.Drawing.Size(95, 20);
             this.dateTuNgay.TabIndex = 6;
             // 
+            // txtGhiChu
+            // 
+            this.txtGhiChu.Location = new System.Drawing.Point(86, 164);
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(400, 20);
+            this.txtGhiChu.TabIndex = 11;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(13, 167);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(45, 13);
+            this.label14.TabIndex = 10;
+            this.label14.Text = "Ghi Chú";
+            // 
             // CreateDate
             // 
             this.CreateDate.DataPropertyName = "CreateDate";
@@ -708,6 +730,12 @@
             this.NoiDung.Name = "NoiDung";
             this.NoiDung.Width = 150;
             // 
+            // GhiChu
+            // 
+            this.GhiChu.DataPropertyName = "GhiChu";
+            this.GhiChu.HeaderText = "Ghi Chú";
+            this.GhiChu.Name = "GhiChu";
+            // 
             // XemHinh
             // 
             this.XemHinh.HeaderText = "Hình";
@@ -720,7 +748,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(966, 580);
+            this.ClientSize = new System.Drawing.Size(976, 580);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmNhanDon";
             this.Text = "Tiếp Nhận";
@@ -792,12 +820,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn KTXM_DTLS;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_DTLS;
         private System.Windows.Forms.Label lbTinhTrang;
+        private System.Windows.Forms.TextBox txtGhiChu;
+        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewButtonColumn XemHinh;
     }
 }

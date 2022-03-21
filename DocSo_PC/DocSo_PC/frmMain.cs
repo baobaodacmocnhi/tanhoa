@@ -349,9 +349,9 @@ namespace DocSo_PC
 
         private void mnuDieuChinhThongTin_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuDieuChinhThongTin", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuDCBD", "Xem"))
             {
-                frmDieuChinhThongTin frm = new frmDieuChinhThongTin();
+                frmDCBD frm = new frmDCBD();
                 OpenForm(frm);
             }
             else
