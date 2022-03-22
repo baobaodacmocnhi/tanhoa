@@ -55,17 +55,19 @@
                         <span>BẦU CỬ NLĐ</span></a></li>
                     <li id="mnBauCuCongDoan" class="top"><a href="pBauCuCongDoan.aspx" id="BauCuCongDoan"
                         class="top_link"><span>BẦU CỬ CÔNG ĐOÀN</span></a></li>
+                    <li id="mnBauCuDoanThanhNien" class="top"><a href="pBauCuDoanThanhNien.aspx" id="BauCuDoanThanhNien"
+                        class="top_link"><span>BẦU CỬ ĐOÀN THANH NIÊN</span></a></li>
                 </ul>
             </div>
         </div>
-        <script language="javascript" type="text/javascript">
+        <%--        <script language="javascript" type="text/javascript">
             window.document.getElementById("HOME").className = "current_link";
             window.document.getElementById("CODONG").className = "top_link";
             window.document.getElementById("KIEMPHIEU").className = "top_link";
             window.document.getElementById("BIEUQUYET").className = "top_link";
             window.document.getElementById("BauCuNLD").className = "top_link";
             window.document.getElementById("BauCuCongDoan").className = "top_link"; 
-        </script>
+        </script>--%>
         <!--		END MENU	-->
         <!-- Content -->
         <div class="Content">
