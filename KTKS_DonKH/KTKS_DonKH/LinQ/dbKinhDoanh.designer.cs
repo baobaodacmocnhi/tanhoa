@@ -56595,7 +56595,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _Tongm3BinhQuan;
 		
-		private int _TongTien;
+		private decimal _TongTien;
 		
 		private System.Nullable<int> _ID;
 		
@@ -56665,7 +56665,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnSoTien1m3Changed();
     partial void OnTongm3BinhQuanChanging(int value);
     partial void OnTongm3BinhQuanChanged();
-    partial void OnTongTienChanging(int value);
+    partial void OnTongTienChanging(decimal value);
     partial void OnTongTienChanged();
     partial void OnIDChanging(System.Nullable<int> value);
     partial void OnIDChanged();
@@ -57129,8 +57129,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="Int NOT NULL")]
-		public int TongTien
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="Decimal(18,0) NOT NULL")]
+		public decimal TongTien
 		{
 			get
 			{

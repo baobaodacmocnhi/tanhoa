@@ -2494,7 +2494,7 @@
       <Column Name="TinhTrang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SoTien1m3" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Tongm3BinhQuan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TongTien" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
