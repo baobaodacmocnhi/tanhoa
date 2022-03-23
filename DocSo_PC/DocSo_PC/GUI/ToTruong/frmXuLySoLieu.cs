@@ -221,7 +221,7 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 //tiêu thu tăng cao, tiêu thụ âm
                 if (item.Cells["TieuThuMoi"].Value != null && item.Cells["TieuThuMoi"].Value.ToString() != "" && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) > 0
-                    && (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.4 || int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) < 0))
+                    && (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) < int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.4 || int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.4 || int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) < 0))
                     item.DefaultCellStyle.BackColor = Color.Red;
                 //có BBKT, tờ trình, code 8 không có hoàn công thay (bồi thường, tái lập,...)
                 if (bool.Parse(item.Cells["BaoThayBT"].Value.ToString()) == true)
@@ -430,7 +430,7 @@ namespace DocSo_PC.GUI.ToTruong
                             _docso.CSMoi = int.Parse(txtCSM.Text.Trim());
                             //_docso.TieuThuMoi = TieuThu;
                             _docso.TieuThuMoi = int.Parse(txtTieuThu.Text.Trim());
-                            if (_docso.CodeMoi.Substring(0, 1).Contains("F") == true || _docso.CodeMoi.Substring(0, 1).Contains("6") == true)
+                            if (_docso.CodeMoi.Substring(0, 1).Contains("F") == true || _docso.CodeMoi.Contains("61") == true)
                                 _docso.CSMoi = _docso.CSCu + _docso.TieuThuMoi;
                             _docso.TienNuoc = TTienNuoc;
                             _docso.Thue = TThueGTGT;

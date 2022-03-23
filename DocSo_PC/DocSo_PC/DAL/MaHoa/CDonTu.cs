@@ -58,6 +58,7 @@ namespace DocSo_PC.DAL.MaHoa
             try
             {
                 _db.MaHoa_DonTu_LichSus.DeleteAllOnSubmit(entity.MaHoa_DonTu_LichSus.ToList());
+                _db.MaHoa_DonTu_Hinhs.DeleteAllOnSubmit(entity.MaHoa_DonTu_Hinhs.ToList());
                 _db.MaHoa_DonTus.DeleteOnSubmit(entity);
                 _db.SubmitChanges();
                 return true;

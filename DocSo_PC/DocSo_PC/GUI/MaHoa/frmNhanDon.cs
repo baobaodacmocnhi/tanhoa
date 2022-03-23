@@ -10,6 +10,7 @@ using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using DocSo_PC.DAL.MaHoa;
 using DocSo_PC.DAL;
+using System.Transactions;
 
 namespace DocSo_PC.GUI.MaHoa
 {
@@ -166,10 +167,19 @@ namespace DocSo_PC.GUI.MaHoa
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         if (_dontu != null)
                         {
-                            if (_cDonTu.Xoa(_dontu))
+                            string flagID = _dontu.ID.ToString();
+                            var transactionOptions = new TransactionOptions();
+                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                             {
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Clear();
+                                if (_cDonTu.Xoa(_dontu))
+                                {
+                                    _wsDHN.xoa_Folder_Hinh_MaHoa("DonTu", flagID);
+                                    scope.Complete();
+                                    scope.Dispose();
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    Clear();
+                                }
                             }
                         }
                 }
