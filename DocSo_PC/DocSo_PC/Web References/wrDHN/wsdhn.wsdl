@@ -128,6 +128,46 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getDS_Code">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDS_CodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDS_CodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDS_ViTriDHN">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDS_ViTriDHNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDS_ViTriDHNResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDS_GiaNuoc">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDS_GiaNuocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDS_GiaNuocResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDS_KhongTinhPBVMT">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDS_KhongTinhPBVMTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDS_KhongTinhPBVMTResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getDS_DocSo">
         <s:complexType>
           <s:sequence>
@@ -159,36 +199,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="getDS_HoaDonTonResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="getDS_Code">
-        <s:complexType />
-      </s:element>
-      <s:element name="getDS_CodeResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getDS_CodeResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="getDS_ViTriDHN">
-        <s:complexType />
-      </s:element>
-      <s:element name="getDS_ViTriDHNResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getDS_ViTriDHNResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="getDS_PhieuChuyen">
-        <s:complexType />
-      </s:element>
-      <s:element name="getDS_PhieuChuyenResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getDS_PhieuChuyenResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -303,6 +313,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ghi_Hinh_NAT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HinhDHN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ghi_Hinh_NATResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ghi_Hinh_NATResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="xoa_Hinh">
         <s:complexType>
           <s:sequence>
@@ -334,6 +359,31 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="ghiChiSoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ghiChiSo_GianTiep">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChiSo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TieuThu" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TienNuoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ThueGTGT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PhiBVMT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PhiBVMT_Thue" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TongCong" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HinhDHN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MaNV" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ghiChiSo_GianTiepResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ghiChiSo_GianTiepResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -478,6 +528,63 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getDS_PhieuChuyen">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDS_PhieuChuyenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDS_PhieuChuyenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ghi_DonTu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoiDung" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GhiChu" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MaNV" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ghi_DonTuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ghi_DonTuResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ghi_Hinh_DonTu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Hinh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MaNV" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ghi_Hinh_DonTuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ghi_Hinh_DonTuResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDS_DonTu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDS_DonTuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDS_DonTuResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetVersionSoapIn">
@@ -540,18 +647,6 @@
   <wsdl:message name="getDS_NhanVienSoapOut">
     <wsdl:part name="parameters" element="tns:getDS_NhanVienResponse" />
   </wsdl:message>
-  <wsdl:message name="getDS_DocSoSoapIn">
-    <wsdl:part name="parameters" element="tns:getDS_DocSo" />
-  </wsdl:message>
-  <wsdl:message name="getDS_DocSoSoapOut">
-    <wsdl:part name="parameters" element="tns:getDS_DocSoResponse" />
-  </wsdl:message>
-  <wsdl:message name="getDS_HoaDonTonSoapIn">
-    <wsdl:part name="parameters" element="tns:getDS_HoaDonTon" />
-  </wsdl:message>
-  <wsdl:message name="getDS_HoaDonTonSoapOut">
-    <wsdl:part name="parameters" element="tns:getDS_HoaDonTonResponse" />
-  </wsdl:message>
   <wsdl:message name="getDS_CodeSoapIn">
     <wsdl:part name="parameters" element="tns:getDS_Code" />
   </wsdl:message>
@@ -564,11 +659,29 @@
   <wsdl:message name="getDS_ViTriDHNSoapOut">
     <wsdl:part name="parameters" element="tns:getDS_ViTriDHNResponse" />
   </wsdl:message>
-  <wsdl:message name="getDS_PhieuChuyenSoapIn">
-    <wsdl:part name="parameters" element="tns:getDS_PhieuChuyen" />
+  <wsdl:message name="getDS_GiaNuocSoapIn">
+    <wsdl:part name="parameters" element="tns:getDS_GiaNuoc" />
   </wsdl:message>
-  <wsdl:message name="getDS_PhieuChuyenSoapOut">
-    <wsdl:part name="parameters" element="tns:getDS_PhieuChuyenResponse" />
+  <wsdl:message name="getDS_GiaNuocSoapOut">
+    <wsdl:part name="parameters" element="tns:getDS_GiaNuocResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDS_KhongTinhPBVMTSoapIn">
+    <wsdl:part name="parameters" element="tns:getDS_KhongTinhPBVMT" />
+  </wsdl:message>
+  <wsdl:message name="getDS_KhongTinhPBVMTSoapOut">
+    <wsdl:part name="parameters" element="tns:getDS_KhongTinhPBVMTResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDS_DocSoSoapIn">
+    <wsdl:part name="parameters" element="tns:getDS_DocSo" />
+  </wsdl:message>
+  <wsdl:message name="getDS_DocSoSoapOut">
+    <wsdl:part name="parameters" element="tns:getDS_DocSoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDS_HoaDonTonSoapIn">
+    <wsdl:part name="parameters" element="tns:getDS_HoaDonTon" />
+  </wsdl:message>
+  <wsdl:message name="getDS_HoaDonTonSoapOut">
+    <wsdl:part name="parameters" element="tns:getDS_HoaDonTonResponse" />
   </wsdl:message>
   <wsdl:message name="get_GhiChuSoapIn">
     <wsdl:part name="parameters" element="tns:get_GhiChu" />
@@ -612,6 +725,12 @@
   <wsdl:message name="ghi_HinhSoapOut">
     <wsdl:part name="parameters" element="tns:ghi_HinhResponse" />
   </wsdl:message>
+  <wsdl:message name="ghi_Hinh_NATSoapIn">
+    <wsdl:part name="parameters" element="tns:ghi_Hinh_NAT" />
+  </wsdl:message>
+  <wsdl:message name="ghi_Hinh_NATSoapOut">
+    <wsdl:part name="parameters" element="tns:ghi_Hinh_NATResponse" />
+  </wsdl:message>
   <wsdl:message name="xoa_HinhSoapIn">
     <wsdl:part name="parameters" element="tns:xoa_Hinh" />
   </wsdl:message>
@@ -623,6 +742,12 @@
   </wsdl:message>
   <wsdl:message name="ghiChiSoSoapOut">
     <wsdl:part name="parameters" element="tns:ghiChiSoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ghiChiSo_GianTiepSoapIn">
+    <wsdl:part name="parameters" element="tns:ghiChiSo_GianTiep" />
+  </wsdl:message>
+  <wsdl:message name="ghiChiSo_GianTiepSoapOut">
+    <wsdl:part name="parameters" element="tns:ghiChiSo_GianTiepResponse" />
   </wsdl:message>
   <wsdl:message name="insertBillingSoapIn">
     <wsdl:part name="parameters" element="tns:insertBilling" />
@@ -672,6 +797,30 @@
   <wsdl:message name="xoa_Folder_Hinh_MaHoaSoapOut">
     <wsdl:part name="parameters" element="tns:xoa_Folder_Hinh_MaHoaResponse" />
   </wsdl:message>
+  <wsdl:message name="getDS_PhieuChuyenSoapIn">
+    <wsdl:part name="parameters" element="tns:getDS_PhieuChuyen" />
+  </wsdl:message>
+  <wsdl:message name="getDS_PhieuChuyenSoapOut">
+    <wsdl:part name="parameters" element="tns:getDS_PhieuChuyenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ghi_DonTuSoapIn">
+    <wsdl:part name="parameters" element="tns:ghi_DonTu" />
+  </wsdl:message>
+  <wsdl:message name="ghi_DonTuSoapOut">
+    <wsdl:part name="parameters" element="tns:ghi_DonTuResponse" />
+  </wsdl:message>
+  <wsdl:message name="ghi_Hinh_DonTuSoapIn">
+    <wsdl:part name="parameters" element="tns:ghi_Hinh_DonTu" />
+  </wsdl:message>
+  <wsdl:message name="ghi_Hinh_DonTuSoapOut">
+    <wsdl:part name="parameters" element="tns:ghi_Hinh_DonTuResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDS_DonTuSoapIn">
+    <wsdl:part name="parameters" element="tns:getDS_DonTu" />
+  </wsdl:message>
+  <wsdl:message name="getDS_DonTuSoapOut">
+    <wsdl:part name="parameters" element="tns:getDS_DonTuResponse" />
+  </wsdl:message>
   <wsdl:portType name="wsDHNSoap">
     <wsdl:operation name="GetVersion">
       <wsdl:input message="tns:GetVersionSoapIn" />
@@ -713,14 +862,6 @@
       <wsdl:input message="tns:getDS_NhanVienSoapIn" />
       <wsdl:output message="tns:getDS_NhanVienSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="getDS_DocSo">
-      <wsdl:input message="tns:getDS_DocSoSoapIn" />
-      <wsdl:output message="tns:getDS_DocSoSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="getDS_HoaDonTon">
-      <wsdl:input message="tns:getDS_HoaDonTonSoapIn" />
-      <wsdl:output message="tns:getDS_HoaDonTonSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="getDS_Code">
       <wsdl:input message="tns:getDS_CodeSoapIn" />
       <wsdl:output message="tns:getDS_CodeSoapOut" />
@@ -729,9 +870,21 @@
       <wsdl:input message="tns:getDS_ViTriDHNSoapIn" />
       <wsdl:output message="tns:getDS_ViTriDHNSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="getDS_PhieuChuyen">
-      <wsdl:input message="tns:getDS_PhieuChuyenSoapIn" />
-      <wsdl:output message="tns:getDS_PhieuChuyenSoapOut" />
+    <wsdl:operation name="getDS_GiaNuoc">
+      <wsdl:input message="tns:getDS_GiaNuocSoapIn" />
+      <wsdl:output message="tns:getDS_GiaNuocSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDS_KhongTinhPBVMT">
+      <wsdl:input message="tns:getDS_KhongTinhPBVMTSoapIn" />
+      <wsdl:output message="tns:getDS_KhongTinhPBVMTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDS_DocSo">
+      <wsdl:input message="tns:getDS_DocSoSoapIn" />
+      <wsdl:output message="tns:getDS_DocSoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDS_HoaDonTon">
+      <wsdl:input message="tns:getDS_HoaDonTonSoapIn" />
+      <wsdl:output message="tns:getDS_HoaDonTonSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="get_GhiChu">
       <wsdl:input message="tns:get_GhiChuSoapIn" />
@@ -761,6 +914,10 @@
       <wsdl:input message="tns:ghi_HinhSoapIn" />
       <wsdl:output message="tns:ghi_HinhSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ghi_Hinh_NAT">
+      <wsdl:input message="tns:ghi_Hinh_NATSoapIn" />
+      <wsdl:output message="tns:ghi_Hinh_NATSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="xoa_Hinh">
       <wsdl:input message="tns:xoa_HinhSoapIn" />
       <wsdl:output message="tns:xoa_HinhSoapOut" />
@@ -768,6 +925,10 @@
     <wsdl:operation name="ghiChiSo">
       <wsdl:input message="tns:ghiChiSoSoapIn" />
       <wsdl:output message="tns:ghiChiSoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ghiChiSo_GianTiep">
+      <wsdl:input message="tns:ghiChiSo_GianTiepSoapIn" />
+      <wsdl:output message="tns:ghiChiSo_GianTiepSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="insertBilling">
       <wsdl:input message="tns:insertBillingSoapIn" />
@@ -800,6 +961,22 @@
     <wsdl:operation name="xoa_Folder_Hinh_MaHoa">
       <wsdl:input message="tns:xoa_Folder_Hinh_MaHoaSoapIn" />
       <wsdl:output message="tns:xoa_Folder_Hinh_MaHoaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDS_PhieuChuyen">
+      <wsdl:input message="tns:getDS_PhieuChuyenSoapIn" />
+      <wsdl:output message="tns:getDS_PhieuChuyenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ghi_DonTu">
+      <wsdl:input message="tns:ghi_DonTuSoapIn" />
+      <wsdl:output message="tns:ghi_DonTuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ghi_Hinh_DonTu">
+      <wsdl:input message="tns:ghi_Hinh_DonTuSoapIn" />
+      <wsdl:output message="tns:ghi_Hinh_DonTuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDS_DonTu">
+      <wsdl:input message="tns:getDS_DonTuSoapIn" />
+      <wsdl:output message="tns:getDS_DonTuSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsDHNSoap" type="tns:wsDHNSoap">
@@ -894,24 +1071,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getDS_DocSo">
-      <soap:operation soapAction="http://tempuri.org/getDS_DocSo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getDS_HoaDonTon">
-      <soap:operation soapAction="http://tempuri.org/getDS_HoaDonTon" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getDS_Code">
       <soap:operation soapAction="http://tempuri.org/getDS_Code" style="document" />
       <wsdl:input>
@@ -930,8 +1089,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getDS_PhieuChuyen">
-      <soap:operation soapAction="http://tempuri.org/getDS_PhieuChuyen" style="document" />
+    <wsdl:operation name="getDS_GiaNuoc">
+      <soap:operation soapAction="http://tempuri.org/getDS_GiaNuoc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS_KhongTinhPBVMT">
+      <soap:operation soapAction="http://tempuri.org/getDS_KhongTinhPBVMT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS_DocSo">
+      <soap:operation soapAction="http://tempuri.org/getDS_DocSo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS_HoaDonTon">
+      <soap:operation soapAction="http://tempuri.org/getDS_HoaDonTon" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1002,6 +1188,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ghi_Hinh_NAT">
+      <soap:operation soapAction="http://tempuri.org/ghi_Hinh_NAT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="xoa_Hinh">
       <soap:operation soapAction="http://tempuri.org/xoa_Hinh" style="document" />
       <wsdl:input>
@@ -1013,6 +1208,15 @@
     </wsdl:operation>
     <wsdl:operation name="ghiChiSo">
       <soap:operation soapAction="http://tempuri.org/ghiChiSo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ghiChiSo_GianTiep">
+      <soap:operation soapAction="http://tempuri.org/ghiChiSo_GianTiep" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1085,6 +1289,42 @@
     </wsdl:operation>
     <wsdl:operation name="xoa_Folder_Hinh_MaHoa">
       <soap:operation soapAction="http://tempuri.org/xoa_Folder_Hinh_MaHoa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS_PhieuChuyen">
+      <soap:operation soapAction="http://tempuri.org/getDS_PhieuChuyen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ghi_DonTu">
+      <soap:operation soapAction="http://tempuri.org/ghi_DonTu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ghi_Hinh_DonTu">
+      <soap:operation soapAction="http://tempuri.org/ghi_Hinh_DonTu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS_DonTu">
+      <soap:operation soapAction="http://tempuri.org/getDS_DonTu" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1185,24 +1425,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getDS_DocSo">
-      <soap12:operation soapAction="http://tempuri.org/getDS_DocSo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getDS_HoaDonTon">
-      <soap12:operation soapAction="http://tempuri.org/getDS_HoaDonTon" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getDS_Code">
       <soap12:operation soapAction="http://tempuri.org/getDS_Code" style="document" />
       <wsdl:input>
@@ -1221,8 +1443,35 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getDS_PhieuChuyen">
-      <soap12:operation soapAction="http://tempuri.org/getDS_PhieuChuyen" style="document" />
+    <wsdl:operation name="getDS_GiaNuoc">
+      <soap12:operation soapAction="http://tempuri.org/getDS_GiaNuoc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS_KhongTinhPBVMT">
+      <soap12:operation soapAction="http://tempuri.org/getDS_KhongTinhPBVMT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS_DocSo">
+      <soap12:operation soapAction="http://tempuri.org/getDS_DocSo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS_HoaDonTon">
+      <soap12:operation soapAction="http://tempuri.org/getDS_HoaDonTon" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1293,6 +1542,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ghi_Hinh_NAT">
+      <soap12:operation soapAction="http://tempuri.org/ghi_Hinh_NAT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="xoa_Hinh">
       <soap12:operation soapAction="http://tempuri.org/xoa_Hinh" style="document" />
       <wsdl:input>
@@ -1304,6 +1562,15 @@
     </wsdl:operation>
     <wsdl:operation name="ghiChiSo">
       <soap12:operation soapAction="http://tempuri.org/ghiChiSo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ghiChiSo_GianTiep">
+      <soap12:operation soapAction="http://tempuri.org/ghiChiSo_GianTiep" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1383,13 +1650,49 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getDS_PhieuChuyen">
+      <soap12:operation soapAction="http://tempuri.org/getDS_PhieuChuyen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ghi_DonTu">
+      <soap12:operation soapAction="http://tempuri.org/ghi_DonTu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ghi_Hinh_DonTu">
+      <soap12:operation soapAction="http://tempuri.org/ghi_Hinh_DonTu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS_DonTu">
+      <soap12:operation soapAction="http://tempuri.org/getDS_DonTu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="wsDHN">
     <wsdl:port name="wsDHNSoap" binding="tns:wsDHNSoap">
-      <soap:address location="http://113.161.88.180:81/wsdhn.asmx" />
+      <soap:address location="http://192.168.90.11:81/wsdhn.asmx" />
     </wsdl:port>
     <wsdl:port name="wsDHNSoap12" binding="tns:wsDHNSoap12">
-      <soap12:address location="http://113.161.88.180:81/wsdhn.asmx" />
+      <soap12:address location="http://192.168.90.11:81/wsdhn.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -33,6 +33,7 @@
             this.btnCapNhatPhanQuyenNguoiDung = new System.Windows.Forms.Button();
             this.txtQuery = new System.Windows.Forms.TextBox();
             this.dgvResult = new System.Windows.Forms.DataGridView();
+            this.btnChuyenHinhDHN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,6 +74,7 @@
             this.txtQuery.Name = "txtQuery";
             this.txtQuery.Size = new System.Drawing.Size(450, 100);
             this.txtQuery.TabIndex = 3;
+            this.txtQuery.Text = "select ID from Temp_HinhDHN order by CreateDate asc";
             this.txtQuery.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuery_KeyPress);
             // 
             // dgvResult
@@ -83,11 +85,22 @@
             this.dgvResult.Size = new System.Drawing.Size(900, 350);
             this.dgvResult.TabIndex = 4;
             // 
+            // btnChuyenHinhDHN
+            // 
+            this.btnChuyenHinhDHN.Location = new System.Drawing.Point(468, 55);
+            this.btnChuyenHinhDHN.Name = "btnChuyenHinhDHN";
+            this.btnChuyenHinhDHN.Size = new System.Drawing.Size(107, 23);
+            this.btnChuyenHinhDHN.TabIndex = 11;
+            this.btnChuyenHinhDHN.Text = "Chuyển Hình ĐHN";
+            this.btnChuyenHinhDHN.UseVisualStyleBackColor = true;
+            this.btnChuyenHinhDHN.Click += new System.EventHandler(this.btnChuyenHinhDHN_Click);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 524);
+            this.Controls.Add(this.btnChuyenHinhDHN);
             this.Controls.Add(this.dgvResult);
             this.Controls.Add(this.txtQuery);
             this.Controls.Add(this.btnCapNhatPhanQuyenNguoiDung);
@@ -109,5 +122,6 @@
         private System.Windows.Forms.Button btnCapNhatPhanQuyenNguoiDung;
         private System.Windows.Forms.TextBox txtQuery;
         private System.Windows.Forms.DataGridView dgvResult;
+        private System.Windows.Forms.Button btnChuyenHinhDHN;
     }
 }

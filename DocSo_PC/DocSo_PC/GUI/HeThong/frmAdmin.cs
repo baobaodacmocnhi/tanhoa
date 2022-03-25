@@ -134,5 +134,25 @@ namespace DocSo_PC.GUI.HeThong
                 dgvResult.DataSource = CNguoiDung._cDAL.ExecuteQuery_DataTable(txtQuery.Text.Trim());
             }
         }
+
+        private void btnChuyenHinhDHN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                wrDHN.wsDHN wsDHN = new wrDHN.wsDHN();
+                DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable(txtQuery.Text.Trim());
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataTable dtTemp = CMenu._cDAL.ExecuteQuery_DataTable("select Hinh from Temp_HinhDHN where ID='" + item["ID"].ToString() + "'");
+                    if (wsDHN.ghi_Hinh_NAT(item["ID"].ToString(), dtTemp.Rows[0]["Hinh"].ToString()) == true)
+                        CMenu._cDAL.ExecuteNonQuery("delete Temp_HinhDHN where ID='" + item["ID"].ToString() + "'");
+                }
+            }
+            catch
+            {
+                
+            }
+            
+        }
     }
 }
