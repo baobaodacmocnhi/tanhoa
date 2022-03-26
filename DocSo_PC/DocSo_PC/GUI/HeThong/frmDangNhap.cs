@@ -59,6 +59,8 @@ namespace DocSo_PC.GUI.HeThong
                     CNguoiDung.Doi = nguoidung.Doi;
                     CNguoiDung.ToTruong = nguoidung.ToTruong;
                     CNguoiDung.ThuKy = nguoidung.ThuKy;
+                    CNguoiDung.ChucVu = _cNguoiDung.getChucVu();
+                    CNguoiDung.NguoiKy = _cNguoiDung.getNguoiKy();
                     CNguoiDung.updateChuyenListing = nguoidung.updateChuyenListing;
                     if (nguoidung.MaTo != null)
                     {

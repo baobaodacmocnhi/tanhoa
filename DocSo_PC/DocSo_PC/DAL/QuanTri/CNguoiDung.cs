@@ -114,6 +114,20 @@ namespace DocSo_PC.DAL.QuanTri
             set { CNguoiDung._ThuKy = value; }
         }
 
+        static string _ChucVu = "";
+        public static string ChucVu
+        {
+            get { return CNguoiDung._ChucVu; }
+            set { CNguoiDung._ChucVu = value; }
+        }
+
+        static string _NguoiKy = "";
+        public static string NguoiKy
+        {
+            get { return CNguoiDung._NguoiKy; }
+            set { CNguoiDung._NguoiKy = value; }
+        }
+
         static bool _updateChuyenListing;
         public static bool updateChuyenListing
         {
@@ -375,5 +389,16 @@ namespace DocSo_PC.DAL.QuanTri
             else
                 return _db.NguoiDungs.Max(item => item.STT).Value;
         }
+
+        public string getChucVu()
+        {
+            return _db.NguoiDungs.SingleOrDefault(item => item.KyTen == true).ChucVu;
+        }
+
+        public string getNguoiKy()
+        {
+            return _db.NguoiDungs.SingleOrDefault(item => item.KyTen == true).HoTen;
+        }
+
     }
 }

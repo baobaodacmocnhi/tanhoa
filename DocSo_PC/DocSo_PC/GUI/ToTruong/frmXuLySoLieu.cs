@@ -437,6 +437,7 @@ namespace DocSo_PC.GUI.ToTruong
                             _docso.TienNuoc = TTienNuoc;
                             _docso.Thue = TThueGTGT;
                             _docso.BVMT = TTDVTN;
+                            _docso.BVMT_Thue = TThueTDVTN;
                             _docso.TongTien = TTienNuoc + TThueGTGT + TTDVTN + TThueTDVTN;
                             _docso.NVCapNhat = CNguoiDung.HoTen;
                             _docso.NgayCapNhat = DateTime.Now;

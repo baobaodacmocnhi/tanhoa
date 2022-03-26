@@ -280,7 +280,7 @@ namespace DocSo_PC.GUI.MaHoa
                 loadDonTu(_dontu);
                 if (dgvDanhSach.Columns[e.ColumnIndex].Name == "XemHinh")
                 {
-                    _cDonTu.LoadImageView(_wsDHN.get_Hinh_MaHoa("DonTu", _dontu.ID.ToString(), _dontu.MaHoa_DonTu_Hinhs.SingleOrDefault().Name + _dontu.MaHoa_DonTu_Hinhs.SingleOrDefault().Loai));
+                    _cDonTu.LoadImageView(_cDonTu.imageToByteArray(_cDonTu.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DonTu", _dontu.ID.ToString(), _dontu.MaHoa_DonTu_Hinhs.SingleOrDefault().Name + _dontu.MaHoa_DonTu_Hinhs.SingleOrDefault().Loai))));
                 }
             }
             catch

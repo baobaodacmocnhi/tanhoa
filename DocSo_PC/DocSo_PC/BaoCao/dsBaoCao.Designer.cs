@@ -314,6 +314,8 @@ namespace DocSo_PC.BaoCao {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class BaoCaoDataTable : global::System.Data.TypedTableBase<BaoCaoRow> {
             
+            private global::System.Data.DataColumn columnPathLogo;
+            
             private global::System.Data.DataColumn columnDanhBo;
             
             private global::System.Data.DataColumn columnMLT;
@@ -361,6 +363,14 @@ namespace DocSo_PC.BaoCao {
             protected BaoCaoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PathLogoColumn {
+                get {
+                    return this.columnPathLogo;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -464,9 +474,10 @@ namespace DocSo_PC.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BaoCaoRow AddBaoCaoRow(string DanhBo, string MLT, string HoTen, string DiaChi, string Hieu, string Co, string SoThan, string TieuThu) {
+            public BaoCaoRow AddBaoCaoRow(string PathLogo, string DanhBo, string MLT, string HoTen, string DiaChi, string Hieu, string Co, string SoThan, string TieuThu) {
                 BaoCaoRow rowBaoCaoRow = ((BaoCaoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        PathLogo,
                         DanhBo,
                         MLT,
                         HoTen,
@@ -497,6 +508,7 @@ namespace DocSo_PC.BaoCao {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnPathLogo = base.Columns["PathLogo"];
                 this.columnDanhBo = base.Columns["DanhBo"];
                 this.columnMLT = base.Columns["MLT"];
                 this.columnHoTen = base.Columns["HoTen"];
@@ -510,6 +522,8 @@ namespace DocSo_PC.BaoCao {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnPathLogo = new global::System.Data.DataColumn("PathLogo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPathLogo);
                 this.columnDanhBo = new global::System.Data.DataColumn("DanhBo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDanhBo);
                 this.columnMLT = new global::System.Data.DataColumn("MLT", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1495,6 +1509,22 @@ namespace DocSo_PC.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PathLogo {
+                get {
+                    try {
+                        return ((string)(this[this.tableBaoCao.PathLogoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PathLogo\' in table \'BaoCao\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBaoCao.PathLogoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string DanhBo {
                 get {
                     try {
@@ -1619,6 +1649,18 @@ namespace DocSo_PC.BaoCao {
                 set {
                     this[this.tableBaoCao.TieuThuColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPathLogoNull() {
+                return this.IsNull(this.tableBaoCao.PathLogoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPathLogoNull() {
+                this[this.tableBaoCao.PathLogoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
