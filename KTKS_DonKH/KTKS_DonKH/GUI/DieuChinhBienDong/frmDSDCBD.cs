@@ -2113,11 +2113,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["ThongTin"] = ctdcbd.CongDung;
                                     string[] HieuLucKys = ctdcbd.HieuLucKy.Split('/');
                                     GiaNuoc2 gn = _cGiaNuoc.getGiaNuoc(int.Parse(HieuLucKys[1]));
-                                    dr["TienNuocSH"] = (int)(gn.SHTM * 1.15);
-                                    dr["TienNuocSHVuot1"] = (int)(gn.SHVM1 * 1.15);
-                                    dr["TienNuocSHVuot2"] = (int)(gn.SHVM2 * 1.15);
-                                    dr["TienNuocKDDV"] = (int)(gn.KDDV * 1.15);
-
+                                    if (gn != null)
+                                    {
+                                        dr["TienNuocSH"] = (int)(gn.SHTM.Value + gn.SHTM.Value * 0.05 + gn.SHTM.Value * gn.PhiBVMT.Value / 100 + gn.SHTM.Value * gn.PhiBVMT.Value / 100 * 0.1);
+                                        dr["TienNuocSHVuot1"] = (int)(gn.SHVM1.Value + gn.SHVM1.Value * 0.05 + gn.SHVM1.Value * gn.PhiBVMT.Value / 100 + gn.SHVM1.Value * gn.PhiBVMT.Value / 100 * 0.1);
+                                        dr["TienNuocSHVuot2"] = (int)(gn.SHVM2.Value + gn.SHVM2.Value * 0.05 + gn.SHVM2.Value * gn.PhiBVMT.Value / 100 + gn.SHVM2.Value * gn.PhiBVMT.Value / 100 * 0.1);
+                                        dr["TienNuocKDDV"] = (int)(gn.KDDV.Value + gn.KDDV.Value * 0.05 + gn.KDDV.Value * gn.PhiBVMT.Value / 100 + gn.KDDV.Value * gn.PhiBVMT.Value / 100 * 0.1);
+                                    }
                                     if (ctdcbd.SH_BD != "")
                                         dr["SH"] = ctdcbd.SH_BD;
                                     else
@@ -2169,11 +2171,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["ThongTin"] = ctdcbd.CongDung;
                                     string[] HieuLucKys = ctdcbd.HieuLucKy.Split('/');
                                     GiaNuoc2 gn = _cGiaNuoc.getGiaNuoc(int.Parse(HieuLucKys[1]));
-                                    dr["TienNuocSH"] = (int)(gn.SHTM * 1.15);
-                                    dr["TienNuocSHVuot1"] = (int)(gn.SHVM1 * 1.15);
-                                    dr["TienNuocSHVuot2"] = (int)(gn.SHVM2 * 1.15);
-                                    dr["TienNuocKDDV"] = (int)(gn.KDDV * 1.15);
-
+                                    if (gn != null)
+                                    {
+                                        dr["TienNuocSH"] = (int)(gn.SHTM.Value + gn.SHTM.Value * 0.05 + gn.SHTM.Value * gn.PhiBVMT.Value / 100 + gn.SHTM.Value * gn.PhiBVMT.Value / 100 * 0.1);
+                                        dr["TienNuocSHVuot1"] = (int)(gn.SHVM1.Value + gn.SHVM1.Value * 0.05 + gn.SHVM1.Value * gn.PhiBVMT.Value / 100 + gn.SHVM1.Value * gn.PhiBVMT.Value / 100 * 0.1);
+                                        dr["TienNuocSHVuot2"] = (int)(gn.SHVM2.Value + gn.SHVM2.Value * 0.05 + gn.SHVM2.Value * gn.PhiBVMT.Value / 100 + gn.SHVM2.Value * gn.PhiBVMT.Value / 100 * 0.1);
+                                        dr["TienNuocKDDV"] = (int)(gn.KDDV.Value + gn.KDDV.Value * 0.05 + gn.KDDV.Value * gn.PhiBVMT.Value / 100 + gn.KDDV.Value * gn.PhiBVMT.Value / 100 * 0.1);
+                                    }
                                     if (ctdcbd.SH_BD != "")
                                         dr["SH"] = ctdcbd.SH_BD;
                                     else
