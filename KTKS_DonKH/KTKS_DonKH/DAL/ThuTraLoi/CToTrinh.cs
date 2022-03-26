@@ -148,9 +148,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
         {
             try
             {
-                //CDonTu _cDonTu = new CDonTu();
-                //_cDonTu.Xoa_LichSus("ToTrinh_ChiTiet", (int)en.IDCT);
-                db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "ToTrinh_ChiTiet" && item.IDCT == Convert.ToInt32(en.IDCT.ToString())));
+                //db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "ToTrinh_ChiTiet" && item.IDCT == Convert.ToInt32(en.IDCT.ToString())));
                 decimal ID = en.ID;
                 db.ToTrinh_ChiTiet_Hinhs.DeleteAllOnSubmit(en.ToTrinh_ChiTiet_Hinhs.ToList());
                 db.ToTrinh_ChiTiet_DanhSaches.DeleteAllOnSubmit(en.ToTrinh_ChiTiet_DanhSaches.ToList());

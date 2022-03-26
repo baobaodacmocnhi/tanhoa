@@ -637,11 +637,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            //DonTu_LichSu dtls = _cDonTu.get_LichSu("TTTL_ChiTiet", (int)_cttttl.MaCTTTTL);
-                            //if (dtls != null)
-                            //{
-                            //    _cDonTu.Xoa_LichSu(dtls, true);
-                            //}
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("TTTL_ChiTiet", (int)_cttttl.MaCTTTTL);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls, true);
+                            }
                             if (_cTTTL.XoaCT(_cttttl))
                             {
                                 _wsThuongVu.xoa_Folder_Hinh("TTTL_ChiTiet_Hinh", flagID);

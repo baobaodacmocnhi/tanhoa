@@ -147,9 +147,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                //CDonTu _cDonTu = new CDonTu();
-                //_cDonTu.Xoa_LichSu("KTXM_ChiTiet", (int)ctktxm.MaCTKTXM);
-                db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "KTXM_ChiTiet" && item.IDCT == Convert.ToInt32(ctktxm.MaCTKTXM.ToString())));
+                //db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "KTXM_ChiTiet" && item.IDCT == Convert.ToInt32(ctktxm.MaCTKTXM.ToString())));
                 decimal MaKTXM = ctktxm.MaKTXM.Value;
                 db.KTXM_BangGias.DeleteAllOnSubmit(ctktxm.KTXM_BangGias.ToList());
                 db.KTXM_ChiTiet_Hinhs.DeleteAllOnSubmit(ctktxm.KTXM_ChiTiet_Hinhs.ToList());

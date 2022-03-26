@@ -404,9 +404,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                //CDonTu _cDonTu = new CDonTu();
-                //_cDonTu.Xoa_LichSu("DCBD_ChiTietBienDong", (int)ctdcbd.MaCTDCBD);
-                db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "DCBD_ChiTietBienDong" && item.IDCT == Convert.ToInt32(ctdcbd.MaCTDCBD.ToString())));
+                //db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "DCBD_ChiTietBienDong" && item.IDCT == Convert.ToInt32(ctdcbd.MaCTDCBD.ToString())));
                 decimal ID = ctdcbd.MaDCBD.Value;
                 db.DCBD_ChiTietBienDong_Hinhs.DeleteAllOnSubmit(ctdcbd.DCBD_ChiTietBienDong_Hinhs.ToList());
                 db.DCBD_ChiTietBienDongs.DeleteOnSubmit(ctdcbd);
@@ -2020,9 +2018,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                //CDonTu _cDonTu = new CDonTu();
-                //_cDonTu.Xoa_LichSu("DCBD_ChiTietHoaDon", (int)ctdchd.MaCTDCHD);
-                db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "DCBD_ChiTietHoaDon" && item.IDCT == Convert.ToInt32(ctdchd.MaCTDCHD.ToString())));
+                //db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "DCBD_ChiTietHoaDon" && item.IDCT == Convert.ToInt32(ctdchd.MaCTDCHD.ToString())));
                 decimal ID = ctdchd.MaDCBD;
                 db.DCBD_ChiTietHoaDon_Hinhs.DeleteAllOnSubmit(ctdchd.DCBD_ChiTietHoaDon_Hinhs.ToList());
                 db.DCBD_ChiTietHoaDons.DeleteOnSubmit(ctdchd);

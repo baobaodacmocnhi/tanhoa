@@ -1011,11 +1011,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            //DonTu_LichSu dtls = _cDonTu.get_LichSu("DCBD_ChiTietBienDong", (int)_ctdcbd.MaCTDCBD);
-                            //if (dtls != null)
-                            //{
-                            //    _cDonTu.Xoa_LichSu(dtls, true);
-                            //}
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("DCBD_ChiTietBienDong", (int)_ctdcbd.MaCTDCBD);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls, true);
+                            }
                             if (_cDCBD.XoaDCBD(_ctdcbd))
                             {
                                 _wsThuongVu.xoa_Folder_Hinh("DCBD_ChiTietBienDong_Hinh", flagID);

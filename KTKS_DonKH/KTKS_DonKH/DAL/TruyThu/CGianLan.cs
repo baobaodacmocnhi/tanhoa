@@ -148,9 +148,7 @@ namespace KTKS_DonKH.DAL.TruyThu
         {
             try
             {
-                //CDonTu _cDonTu = new CDonTu();
-                //_cDonTu.Xoa_LichSu("GianLan_ChiTiet", (int)entity.MaCTGL);
-                db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "GianLan_ChiTiet" && item.IDCT == Convert.ToInt32(entity.MaCTGL.ToString())));
+                //db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "GianLan_ChiTiet" && item.IDCT == Convert.ToInt32(entity.MaCTGL.ToString())));
                 int ID = entity.MaGL.Value;
                 db.GianLan_ChiTiet_Hinhs.DeleteAllOnSubmit(entity.GianLan_ChiTiet_Hinhs.ToList());
                 db.GianLan_ChiTiets.DeleteOnSubmit(entity);

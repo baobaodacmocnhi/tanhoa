@@ -804,11 +804,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            //DonTu_LichSu dtls = _cDonTu.get_LichSu("CHDB_ChiTietCatHuy", (int)_ctchdb.MaCTCHDB);
-                            //if (dtls != null)
-                            //{
-                            //    _cDonTu.Xoa_LichSu(dtls, true);
-                            //}
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("CHDB_ChiTietCatHuy", (int)_ctchdb.MaCTCHDB);
+                            if (dtls != null)
+                            {
+                                _cDonTu.Xoa_LichSu(dtls, true);
+                            }
                             if (_cCHDB.XoaCTCHDB(_ctchdb))
                             {
                                 _wsThuongVu.xoa_Folder_Hinh("CHDB_ChiTietCatHuy_Hinh", flagID);

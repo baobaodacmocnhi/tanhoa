@@ -229,9 +229,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                //CDonTu _cDonTu = new CDonTu();
-                //_cDonTu.Xoa_LichSu("CHDB_ChiTietCatTam", (int)ctctdb.MaCTCTDB);
-                db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "CHDB_ChiTietCatTam" && item.IDCT == Convert.ToInt32(ctctdb.MaCTCTDB.ToString())));
+                //db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "CHDB_ChiTietCatTam" && item.IDCT == Convert.ToInt32(ctctdb.MaCTCTDB.ToString())));
                 decimal ID = ctctdb.MaCHDB.Value;
                 db.CHDB_ChiTietCatTam_Hinhs.DeleteAllOnSubmit(ctctdb.CHDB_ChiTietCatTam_Hinhs.ToList());
                 db.CHDB_ChiTietCatTams.DeleteOnSubmit(ctctdb);
@@ -851,9 +849,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                //CDonTu _cDonTu = new CDonTu();
-                //_cDonTu.Xoa_LichSu("CHDB_ChiTietCatHuy", (int)ctchdb.MaCTCHDB);
-                db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "CHDB_ChiTietCatHuy" && item.IDCT == Convert.ToInt32(ctchdb.MaCTCHDB.ToString())));
+                //db.DonTu_LichSus.DeleteOnSubmit(db.DonTu_LichSus.SingleOrDefault(item => item.TableName == "CHDB_ChiTietCatHuy" && item.IDCT == Convert.ToInt32(ctchdb.MaCTCHDB.ToString())));
                 decimal ID = ctchdb.MaCHDB.Value;
                 db.CHDB_ChiTietCatHuy_Hinhs.DeleteAllOnSubmit(ctchdb.CHDB_ChiTietCatHuy_Hinhs.ToList());
                 db.CHDB_ChiTietCatHuys.DeleteOnSubmit(ctchdb);
@@ -1477,8 +1473,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                CDonTu _cDonTu = new CDonTu();
-                _cDonTu.Xoa_LichSu("CHDB_Phieu", (int)ycchdb.MaYCCHDB);
                 decimal ID = ycchdb.MaCHDB.Value;
                 db.CHDB_Phieu_Hinhs.DeleteAllOnSubmit(ycchdb.CHDB_Phieu_Hinhs.ToList());
                 db.CHDB_Phieus.DeleteOnSubmit(ycchdb);
