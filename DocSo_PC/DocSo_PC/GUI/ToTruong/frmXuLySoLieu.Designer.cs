@@ -1599,7 +1599,6 @@
             this.NgayCapNhat.DataPropertyName = "NgayCapNhat";
             this.NgayCapNhat.HeaderText = "Ngày CN";
             this.NgayCapNhat.Name = "NgayCapNhat";
-            this.NgayCapNhat.Width = 80;
             // 
             // GCKH
             // 

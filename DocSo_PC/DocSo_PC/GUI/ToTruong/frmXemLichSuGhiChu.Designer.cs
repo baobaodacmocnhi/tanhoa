@@ -71,7 +71,7 @@
             this.dgvGhiChu.Name = "dgvGhiChu";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvGhiChu.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvGhiChu.Size = new System.Drawing.Size(1258, 328);
+            this.dgvGhiChu.Size = new System.Drawing.Size(1258, 661);
             this.dgvGhiChu.TabIndex = 1;
             // 
             // Column1
@@ -146,14 +146,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1258, 328);
+            this.ClientSize = new System.Drawing.Size(1258, 661);
             this.Controls.Add(this.dgvGhiChu);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmXemLichSuGhiChu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ghi Chú";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmXemGhiChu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGhiChu)).EndInit();
             this.ResumeLayout(false);

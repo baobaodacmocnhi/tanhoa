@@ -244,6 +244,7 @@ namespace DocSo_PC.GUI.Doi
                                     }
                                     en.TienNuoc = 0;
                                     en.BVMT = 0;
+                                    en.BVMT_Thue = 0;
                                     en.Thue = 0;
                                     en.TongTien = 0;
                                     en.DenNgay = NgayDoc;

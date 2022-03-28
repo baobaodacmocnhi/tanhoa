@@ -13,6 +13,7 @@ using System.Transactions;
 using DocSo_PC.BaoCao;
 using DocSo_PC.BaoCao.MaHoa;
 using DocSo_PC.GUI.BaoCao;
+using DocSo_PC.DAL;
 
 namespace DocSo_PC.GUI.MaHoa
 {
@@ -21,6 +22,7 @@ namespace DocSo_PC.GUI.MaHoa
         string _mnu = "mnuDCBD";
         CDonTu _cDonTu = new CDonTu();
         CDCBD _cDCBD = new CDCBD();
+        CThuongVu _cThuongVu = new CThuongVu();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
 
         public frmDCBD()
@@ -121,27 +123,28 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
-                    foreach (DataGridViewRow item in dgvDanhSach.Rows)
-                        if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true)
-                        {
-                            MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
-                            if (en != null)
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        foreach (DataGridViewRow item in dgvDanhSach.Rows)
+                            if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true)
                             {
-                                string flagID = en.ID.ToString();
-                                var transactionOptions = new TransactionOptions();
-                                transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
-                                using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                                MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
+                                if (en != null)
                                 {
-                                    if (_cDCBD.Xoa(en))
+                                    string flagID = en.ID.ToString();
+                                    var transactionOptions = new TransactionOptions();
+                                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                     {
-                                        _wsDHN.xoa_Folder_Hinh_MaHoa("DCBD", flagID);
-                                        scope.Complete();
-                                        scope.Dispose();
-                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        if (_cDCBD.Xoa(en))
+                                        {
+                                            _wsDHN.xoa_Folder_Hinh_MaHoa("DCBD", flagID);
+                                            scope.Complete();
+                                            scope.Dispose();
+                                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
                                     }
                                 }
                             }
-                        }
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -230,13 +233,13 @@ namespace DocSo_PC.GUI.MaHoa
                                 dr["DiaChi"] = en.DiaChi;
                                 dr["ThongTin"] = en.CongDung;
                                 string[] HieuLucKys = en.HieuLucKy.Split('/');
-                                GiaNuoc2 gn = _cGiaNuoc.getGiaNuoc(int.Parse(HieuLucKys[1]));
-                                if (gn != null)
+                                DataTable gn = _cThuongVu.getGiaNuoc(HieuLucKys[1]);
+                                if (gn != null && gn.Rows.Count > 0)
                                 {
-                                    dr["TienNuocSH"] = (int)(gn.SHTM.Value + gn.SHTM.Value * 0.05 + gn.SHTM.Value * gn.PhiBVMT.Value / 100 + gn.SHTM.Value * gn.PhiBVMT.Value / 100 * 0.1);
-                                    dr["TienNuocSHVuot1"] = (int)(gn.SHVM1.Value + gn.SHVM1.Value * 0.05 + gn.SHVM1.Value * gn.PhiBVMT.Value / 100 + gn.SHVM1.Value * gn.PhiBVMT.Value / 100 * 0.1);
-                                    dr["TienNuocSHVuot2"] = (int)(gn.SHVM2.Value + gn.SHVM2.Value * 0.05 + gn.SHVM2.Value * gn.PhiBVMT.Value / 100 + gn.SHVM2.Value * gn.PhiBVMT.Value / 100 * 0.1);
-                                    dr["TienNuocKDDV"] = (int)(gn.KDDV.Value + gn.KDDV.Value * 0.05 + gn.KDDV.Value * gn.PhiBVMT.Value / 100 + gn.KDDV.Value * gn.PhiBVMT.Value / 100 * 0.1);
+                                    dr["TienNuocSH"] = (int)(int.Parse(gn.Rows[0]["SHTM"].ToString()) + int.Parse(gn.Rows[0]["SHTM"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHTM"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHTM"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
+                                    dr["TienNuocSHVuot1"] = (int)(int.Parse(gn.Rows[0]["SHVM1"].ToString()) + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
+                                    dr["TienNuocSHVuot2"] = (int)(int.Parse(gn.Rows[0]["SHVM2"].ToString()) + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
+                                    dr["TienNuocKDDV"] = (int)(int.Parse(gn.Rows[0]["KDDV"].ToString()) + int.Parse(gn.Rows[0]["KDDV"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["KDDV"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["KDDV"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
                                 }
                                 if (en.SH_BD != "")
                                     dr["SH"] = en.SH_BD;
@@ -249,10 +252,10 @@ namespace DocSo_PC.GUI.MaHoa
                                 else
                                     if (en.DV != "")
                                         dr["DV"] = en.DV;
-                                        dr["MaDon"] = en.IDMaDon.ToString();
-                                dr["ChucVu"] = CTaiKhoan.ChucVu.Replace(" PHÒNG", "");
-                                dr["NguoiKy"] = CTaiKhoan.NguoiKy;
-                                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                                dr["MaDon"] = en.IDMaDon.ToString();
+                                dr["ChucVu"] = CNguoiDung.ChucVu.Replace(" PHÒNG", "");
+                                dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                                dr["TenPhong"] = "";
                                 dsBaoCaoCC.Tables["DCBD"].Rows.Add(dr);
 
                                 DataRow drLogo = dsBaoCaoCC.Tables["BienNhanDonKH"].NewRow();
@@ -272,13 +275,13 @@ namespace DocSo_PC.GUI.MaHoa
                                 dr["DiaChi"] = en.DiaChi;
                                 dr["ThongTin"] = en.CongDung;
                                 string[] HieuLucKys = en.HieuLucKy.Split('/');
-                                GiaNuoc2 gn = _cGiaNuoc.getGiaNuoc(int.Parse(HieuLucKys[1]));
+                                DataTable gn = _cThuongVu.getGiaNuoc(HieuLucKys[1]);
                                 if (gn != null)
                                 {
-                                    dr["TienNuocSH"] = (int)(gn.SHTM.Value + gn.SHTM.Value * 0.05 + gn.SHTM.Value * gn.PhiBVMT.Value / 100 + gn.SHTM.Value * gn.PhiBVMT.Value / 100 * 0.1);
-                                    dr["TienNuocSHVuot1"] = (int)(gn.SHVM1.Value + gn.SHVM1.Value * 0.05 + gn.SHVM1.Value * gn.PhiBVMT.Value / 100 + gn.SHVM1.Value * gn.PhiBVMT.Value / 100 * 0.1);
-                                    dr["TienNuocSHVuot2"] = (int)(gn.SHVM2.Value + gn.SHVM2.Value * 0.05 + gn.SHVM2.Value * gn.PhiBVMT.Value / 100 + gn.SHVM2.Value * gn.PhiBVMT.Value / 100 * 0.1);
-                                    dr["TienNuocKDDV"] = (int)(gn.KDDV.Value + gn.KDDV.Value * 0.05 + gn.KDDV.Value * gn.PhiBVMT.Value / 100 + gn.KDDV.Value * gn.PhiBVMT.Value / 100 * 0.1);
+                                    dr["TienNuocSH"] = (int)(int.Parse(gn.Rows[0]["SHTM"].ToString()) + int.Parse(gn.Rows[0]["SHTM"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHTM"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHTM"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
+                                    dr["TienNuocSHVuot1"] = (int)(int.Parse(gn.Rows[0]["SHVM1"].ToString()) + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
+                                    dr["TienNuocSHVuot2"] = (int)(int.Parse(gn.Rows[0]["SHVM2"].ToString()) + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
+                                    dr["TienNuocKDDV"] = (int)(int.Parse(gn.Rows[0]["KDDV"].ToString()) + int.Parse(gn.Rows[0]["KDDV"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["KDDV"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["KDDV"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
                                 }
                                 if (en.SH_BD != "")
                                     dr["SH"] = en.SH_BD;
@@ -291,11 +294,11 @@ namespace DocSo_PC.GUI.MaHoa
                                 else
                                     if (en.DV != "")
                                         dr["DV"] = en.DV;
-                                        dr["MaDon"] = en.IDMaDon.ToString();
+                                dr["MaDon"] = en.IDMaDon.ToString();
 
                                 dr["ChucVu"] = CNguoiDung.ChucVu.Replace(" PHÒNG", "");
                                 dr["NguoiKy"] = CNguoiDung.NguoiKy;
-                                dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
+                                dr["TenPhong"] = "";
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
                                 DataRow drLogo = dsBaoCao.Tables["BaoCao"].NewRow();
@@ -303,7 +306,7 @@ namespace DocSo_PC.GUI.MaHoa
                                 dsBaoCao.Tables["BaoCao"].Rows.Add(drLogo);
                             }
 
-                            
+
                         }
                     }
                 if (dsBaoCaoCC.Tables["DCBD"].Rows.Count > 0)

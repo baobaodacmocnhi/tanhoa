@@ -66,5 +66,11 @@ namespace DocSo_PC.DAL
                 return _wsThuongVu.get_Hinh("ToTrinh_ChiTiet_Hinh", IDCT.ToString(), filename.ToString());
             else return null;
         }
+
+        public DataTable getGiaNuoc(string Nam)
+        {
+            return _cDAL.ExecuteQuery_DataTable("select * from GiaNuoc2 where Nam=" + Nam);
+        }
+
     }
 }

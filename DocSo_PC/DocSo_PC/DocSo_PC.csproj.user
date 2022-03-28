@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
-    <PublishUrlHistory>C:\Users\Admin\Desktop\DocSoWFH\|\\192.168.90.9\BaoBao%24\DocSo_PC\|C:\Users\BaoBao\Desktop\DocSoWFH\|C:\Users\BaoBao\Desktop\DocSo_PC\</PublishUrlHistory>
+    <PublishUrlHistory>\\192.168.90.9\BaoBao%24\DocSo_PC\|C:\Users\Admin\Desktop\DocSoWFH\|C:\Users\BaoBao\Desktop\DocSoWFH\|C:\Users\BaoBao\Desktop\DocSo_PC\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
-    <UpdateUrlHistory>\\192.168.90.9\BaoBao%24\DocSo_PC\|http://113.161.88.180:81/DocSoWFH/|\\192.168.90.9\cntt\BaoBao\DocSo_PC\</UpdateUrlHistory>
+    <UpdateUrlHistory>http://113.161.88.180:81/DocSoWFH/|\\192.168.90.9\BaoBao%24\DocSo_PC\|\\192.168.90.9\cntt\BaoBao\DocSo_PC\</UpdateUrlHistory>
     <BootstrapperUrlHistory>\\HP_G7\dhn%24\QUAN LY DONG HO NUOC\DOC SO 2017|\\192.168.90.9\BaoBao%24\DocSo_PC\|\\192.168.90.9\cntt\BaoBao\DocSo_PC\</BootstrapperUrlHistory>
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>
