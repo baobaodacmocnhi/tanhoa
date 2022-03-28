@@ -74,6 +74,7 @@
             this.lbDenDM3 = new System.Windows.Forms.Label();
             this.txtTuDM3 = new System.Windows.Forms.TextBox();
             this.lbTuDM3 = new System.Windows.Forms.Label();
+            this.btnInGroup = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoanhThu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -443,12 +444,23 @@
             this.lbTuDM3.Text = "Từ ĐM:";
             this.lbTuDM3.Visible = false;
             // 
+            // btnInGroup
+            // 
+            this.btnInGroup.Location = new System.Drawing.Point(474, 10);
+            this.btnInGroup.Name = "btnInGroup";
+            this.btnInGroup.Size = new System.Drawing.Size(75, 23);
+            this.btnInGroup.TabIndex = 42;
+            this.btnInGroup.Text = "In Group";
+            this.btnInGroup.UseVisualStyleBackColor = true;
+            this.btnInGroup.Click += new System.EventHandler(this.btnInGroup_Click);
+            // 
             // frmPhanTichDoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(906, 619);
+            this.Controls.Add(this.btnInGroup);
             this.Controls.Add(this.txtDenDM3);
             this.Controls.Add(this.lbDenDM3);
             this.Controls.Add(this.txtTuDM3);
@@ -522,5 +534,6 @@
         private System.Windows.Forms.Label lbDenDM3;
         private System.Windows.Forms.TextBox txtTuDM3;
         private System.Windows.Forms.Label lbTuDM3;
+        private System.Windows.Forms.Button btnInGroup;
     }
 }

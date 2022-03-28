@@ -85,7 +85,7 @@ namespace ThuTien.GUI.Doi
             foreach (DataGridViewRow item in dgvDoanhThu.Rows)
                 if (decimal.Parse(item.Cells["TongGiaBan"].Value.ToString()) > 0 && decimal.Parse(item.Cells["TongTieuThu"].Value.ToString()) > 0)
                 {
-                    item.Cells["GiaBanBinhQuan"].Value =decimal.Parse(item.Cells["TongGiaBan"].Value.ToString()) / decimal.Parse(item.Cells["TongTieuThu"].Value.ToString());
+                    item.Cells["GiaBanBinhQuan"].Value = decimal.Parse(item.Cells["TongGiaBan"].Value.ToString()) / decimal.Parse(item.Cells["TongTieuThu"].Value.ToString());
                     item.Cells["TyLeTongTieuThu"].Value = Math.Round((decimal.Parse(item.Cells["TongTieuThu"].Value.ToString()) / decimal.Parse(dtTong.Rows[0]["TongTieuThu"].ToString())) * 100, 2);
                     item.Cells["TyLeTongGiaBan"].Value = Math.Round((decimal.Parse(item.Cells["TongGiaBan"].Value.ToString()) / decimal.Parse(dtTong.Rows[0]["TongGiaBan"].ToString())) * 100, 2);
                 }
@@ -194,6 +194,151 @@ namespace ThuTien.GUI.Doi
                 dr["TyLeTongGiaBan"] = item.Cells["TyLeTongGiaBan"].Value;
 
                 ds.Tables["PhanTichDoanhThu"].Rows.Add(dr);
+            }
+            rptPhanTichDoanhThu rpt = new rptPhanTichDoanhThu();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
+
+        private void btnInGroup_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Loai", typeof(string));
+            dt.Columns.Add("TongHD", typeof(int));
+            dt.Columns.Add("TongDinhMuc", typeof(int));
+            dt.Columns.Add("TongTieuThu", typeof(int));
+            dt.Columns.Add("TongGiaBan", typeof(double));
+            dt.Columns.Add("GiaBanBinhQuan", typeof(float));
+            dt.Columns.Add("TyLeTongTieuThu", typeof(float));
+            dt.Columns.Add("TyLeTongGiaBan", typeof(float));
+            if (radGiaBieu.Checked)
+            {
+                DataRow dr = dt.NewRow();
+
+                dr["Loai"] = "Sinh hoạt";
+                dr["TongHD"] = 0;
+                dr["TongDinhMuc"] = 0;
+                dr["TongTieuThu"] = 0;
+                dr["TongGiaBan"] = 0;
+                dr["GiaBanBinhQuan"] = 0;
+                dr["TyLeTongTieuThu"] = 0.0f;
+                dr["TyLeTongGiaBan"] = 0.0f;
+                dt.Rows.Add(dr);
+
+                dr = dt.NewRow();
+                dr["Loai"] = "HCSN";
+                dr["TongHD"] = 0;
+                dr["TongDinhMuc"] = 0;
+                dr["TongTieuThu"] = 0;
+                dr["TongGiaBan"] = 0;
+                dr["GiaBanBinhQuan"] = 0;
+                dr["TyLeTongTieuThu"] = 0.0f;
+                dr["TyLeTongGiaBan"] = 0.0f;
+                dt.Rows.Add(dr);
+
+                dr = dt.NewRow();
+                dr["Loai"] = "Sản xuất";
+                dr["TongHD"] = 0;
+                dr["TongDinhMuc"] = 0;
+                dr["TongTieuThu"] = 0;
+                dr["TongGiaBan"] = 0;
+                dr["GiaBanBinhQuan"] = 0;
+                dr["TyLeTongTieuThu"] = 0.0f;
+                dr["TyLeTongGiaBan"] = 0.0f;
+                dt.Rows.Add(dr);
+
+                dr = dt.NewRow();
+                dr["Loai"] = "Sinh hoạt";
+                dr["TongHD"] = 0;
+                dr["TongDinhMuc"] = 0;
+                dr["TongTieuThu"] = 0;
+                dr["TongGiaBan"] = 0;
+                dr["GiaBanBinhQuan"] = 0;
+                dr["TyLeTongTieuThu"] = 0.0f;
+                dr["TyLeTongGiaBan"] = 0.0f;
+                dt.Rows.Add(dr);
+                foreach (DataGridViewRow item in dgvDoanhThu.Rows)
+                    if (item.Cells["TongHD"].Value.ToString() != "")
+                    {
+                        switch (item.Cells["Loai"].Value.ToString())
+                        {
+                            case "10":
+                            case "11":
+                            case "16":
+                            case "21":
+                            case "25":
+                            case "51":
+                            case "59":
+                            case "68":
+                                dt.Rows[0]["TongHD"] = (long.Parse(dt.Rows[0]["TongHD"].ToString()) + long.Parse(item.Cells["TongHD"].Value.ToString())).ToString();
+                                dt.Rows[0]["TongDinhMuc"] = (long.Parse(dt.Rows[0]["TongDinhMuc"].ToString()) + long.Parse(item.Cells["TongDinhMuc"].Value.ToString())).ToString();
+                                dt.Rows[0]["TongTieuThu"] = (long.Parse(dt.Rows[0]["TongTieuThu"].ToString()) + long.Parse(item.Cells["TongTieuThu"].Value.ToString())).ToString();
+                                dt.Rows[0]["TongGiaBan"] = (double.Parse(dt.Rows[0]["TongGiaBan"].ToString()) + double.Parse(item.Cells["TongGiaBan"].Value.ToString())).ToString();
+                                dt.Rows[0]["GiaBanBinhQuan"] = (float.Parse(dt.Rows[0]["GiaBanBinhQuan"].ToString()) + float.Parse(item.Cells["GiaBanBinhQuan"].Value.ToString())).ToString();
+                                dt.Rows[0]["TyLeTongTieuThu"] = (float.Parse(dt.Rows[0]["TyLeTongTieuThu"].ToString()) + float.Parse(item.Cells["TyLeTongTieuThu"].Value.ToString())).ToString();
+                                dt.Rows[0]["TyLeTongGiaBan"] = (float.Parse(dt.Rows[0]["TyLeTongGiaBan"].ToString()) + float.Parse(item.Cells["TyLeTongGiaBan"].Value.ToString())).ToString();
+                                break;
+                            case "31":
+                            case "35":
+                            case "36":
+                                dt.Rows[1]["TongHD"] = (long.Parse(dt.Rows[1]["TongHD"].ToString()) + long.Parse(item.Cells["TongHD"].Value.ToString())).ToString();
+                                dt.Rows[1]["TongDinhMuc"] = (long.Parse(dt.Rows[1]["TongDinhMuc"].ToString()) + long.Parse(item.Cells["TongDinhMuc"].Value.ToString())).ToString();
+                                dt.Rows[1]["TongTieuThu"] = (long.Parse(dt.Rows[1]["TongTieuThu"].ToString()) + long.Parse(item.Cells["TongTieuThu"].Value.ToString())).ToString();
+                                dt.Rows[1]["TongGiaBan"] = (double.Parse(dt.Rows[1]["TongGiaBan"].ToString()) + double.Parse(item.Cells["TongGiaBan"].Value.ToString())).ToString();
+                                dt.Rows[1]["GiaBanBinhQuan"] = (float.Parse(dt.Rows[1]["GiaBanBinhQuan"].ToString()) + float.Parse(item.Cells["GiaBanBinhQuan"].Value.ToString())).ToString();
+                                dt.Rows[1]["TyLeTongTieuThu"] = (float.Parse(dt.Rows[1]["TyLeTongTieuThu"].ToString()) + float.Parse(item.Cells["TyLeTongTieuThu"].Value.ToString())).ToString();
+                                dt.Rows[1]["TyLeTongGiaBan"] = (float.Parse(dt.Rows[1]["TyLeTongGiaBan"].ToString()) + float.Parse(item.Cells["TyLeTongGiaBan"].Value.ToString())).ToString();
+                                break;
+                            case "12":
+                            case "14":
+                            case "22":
+                            case "24":
+                            case "32":
+                            case "52":
+                                dt.Rows[2]["TongHD"] = (long.Parse(dt.Rows[2]["TongHD"].ToString()) + long.Parse(item.Cells["TongHD"].Value.ToString())).ToString();
+                                dt.Rows[2]["TongDinhMuc"] = (long.Parse(dt.Rows[2]["TongDinhMuc"].ToString()) + long.Parse(item.Cells["TongDinhMuc"].Value.ToString())).ToString();
+                                dt.Rows[2]["TongTieuThu"] = (long.Parse(dt.Rows[2]["TongTieuThu"].ToString()) + long.Parse(item.Cells["TongTieuThu"].Value.ToString())).ToString();
+                                dt.Rows[2]["TongGiaBan"] = (double.Parse(dt.Rows[2]["TongGiaBan"].ToString()) + double.Parse(item.Cells["TongGiaBan"].Value.ToString())).ToString();
+                                dt.Rows[2]["GiaBanBinhQuan"] = (float.Parse(dt.Rows[2]["GiaBanBinhQuan"].ToString()) + float.Parse(item.Cells["GiaBanBinhQuan"].Value.ToString())).ToString();
+                                dt.Rows[2]["TyLeTongTieuThu"] = (float.Parse(dt.Rows[2]["TyLeTongTieuThu"].ToString()) + float.Parse(item.Cells["TyLeTongTieuThu"].Value.ToString())).ToString();
+                                dt.Rows[2]["TyLeTongGiaBan"] = (float.Parse(dt.Rows[2]["TyLeTongGiaBan"].ToString()) + float.Parse(item.Cells["TyLeTongGiaBan"].Value.ToString())).ToString();
+                                break;
+                            case "13":
+                            case "15":
+                            case "33":
+                                dt.Rows[3]["TongHD"] = (long.Parse(dt.Rows[3]["TongHD"].ToString()) + long.Parse(item.Cells["TongHD"].Value.ToString())).ToString();
+                                dt.Rows[3]["TongDinhMuc"] = (long.Parse(dt.Rows[3]["TongDinhMuc"].ToString()) + long.Parse(item.Cells["TongDinhMuc"].Value.ToString())).ToString();
+                                dt.Rows[3]["TongTieuThu"] = (long.Parse(dt.Rows[3]["TongTieuThu"].ToString()) + long.Parse(item.Cells["TongTieuThu"].Value.ToString())).ToString();
+                                dt.Rows[3]["TongGiaBan"] = (double.Parse(dt.Rows[3]["TongGiaBan"].ToString()) + double.Parse(item.Cells["TongGiaBan"].Value.ToString())).ToString();
+                                dt.Rows[3]["GiaBanBinhQuan"] = (float.Parse(dt.Rows[3]["GiaBanBinhQuan"].ToString()) + float.Parse(item.Cells["GiaBanBinhQuan"].Value.ToString())).ToString();
+                                dt.Rows[3]["TyLeTongTieuThu"] = (float.Parse(dt.Rows[3]["TyLeTongTieuThu"].ToString()) + float.Parse(item.Cells["TyLeTongTieuThu"].Value.ToString())).ToString();
+                                dt.Rows[3]["TyLeTongGiaBan"] = (float.Parse(dt.Rows[3]["TyLeTongGiaBan"].ToString()) + float.Parse(item.Cells["TyLeTongGiaBan"].Value.ToString())).ToString();
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                for (int i = 0; i < 4; i++)
+                {
+                    DataRow dr2 = ds.Tables["PhanTichDoanhThu"].NewRow();
+                    dr2["LoaiBaoCao"] = "Giá Biểu";
+
+                    dr2["Ky"] = cmbKy.SelectedItem.ToString();
+                    dr2["Nam"] = cmbNam.SelectedValue.ToString();
+                    dr2["Loai"] = dt.Rows[i]["Loai"].ToString();
+                    dr2["TongHD"] = dt.Rows[i]["TongHD"].ToString();
+                    dr2["TongDinhMuc"] = dt.Rows[i]["TongDinhMuc"].ToString();
+                    dr2["TongTieuThu"] = dt.Rows[i]["TongTieuThu"].ToString();
+                    dr2["TongGiaBan"] = dt.Rows[i]["TongGiaBan"].ToString();
+                    dr2["GiaBanBinhQuan"] = dt.Rows[i]["GiaBanBinhQuan"].ToString();
+                    dr2["TyLeTongTieuThu"] = dt.Rows[i]["TyLeTongTieuThu"].ToString();
+                    dr2["TyLeTongGiaBan"] = dt.Rows[i]["TyLeTongGiaBan"].ToString();
+
+                    ds.Tables["PhanTichDoanhThu"].Rows.Add(dr2);
+                }
+
             }
             rptPhanTichDoanhThu rpt = new rptPhanTichDoanhThu();
             rpt.SetDataSource(ds);
