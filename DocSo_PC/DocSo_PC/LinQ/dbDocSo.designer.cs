@@ -4808,7 +4808,7 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<int> _TODS;
 		
-		private System.Nullable<System.DateTime> _NgayDS;
+		private System.Nullable<System.DateTime> _NgayTaoDot;
 		
 		private string _ChiTiet;
 		
@@ -4820,7 +4820,7 @@ namespace DocSo_PC.LinQ
 		
 		private string _NVTaoDS;
 		
-		private string _NgayTaoDS;
+		private string _NgayTaoDS1;
 		
 		private string _DutChiThan;
 		
@@ -4970,8 +4970,8 @@ namespace DocSo_PC.LinQ
     partial void OnNVCapNhatChanged();
     partial void OnTODSChanging(System.Nullable<int> value);
     partial void OnTODSChanged();
-    partial void OnNgayDSChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayDSChanged();
+    partial void OnNgayTaoDotChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayTaoDotChanged();
     partial void OnChiTietChanging(string value);
     partial void OnChiTietChanged();
     partial void OnLatitudeChanging(string value);
@@ -4982,8 +4982,8 @@ namespace DocSo_PC.LinQ
     partial void OnBVMT_ThueChanged();
     partial void OnNVTaoDSChanging(string value);
     partial void OnNVTaoDSChanged();
-    partial void OnNgayTaoDSChanging(string value);
-    partial void OnNgayTaoDSChanged();
+    partial void OnNgayTaoDS1Changing(string value);
+    partial void OnNgayTaoDS1Changed();
     partial void OnDutChiThanChanging(string value);
     partial void OnDutChiThanChanged();
     partial void OnDutChiGocChanging(string value);
@@ -6323,22 +6323,22 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayDS", DbType="DateTime")]
-		public System.Nullable<System.DateTime> NgayDS
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayTaoDot", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayTaoDot
 		{
 			get
 			{
-				return this._NgayDS;
+				return this._NgayTaoDot;
 			}
 			set
 			{
-				if ((this._NgayDS != value))
+				if ((this._NgayTaoDot != value))
 				{
-					this.OnNgayDSChanging(value);
+					this.OnNgayTaoDotChanging(value);
 					this.SendPropertyChanging();
-					this._NgayDS = value;
-					this.SendPropertyChanged("NgayDS");
-					this.OnNgayDSChanged();
+					this._NgayTaoDot = value;
+					this.SendPropertyChanged("NgayTaoDot");
+					this.OnNgayTaoDotChanged();
 				}
 			}
 		}
@@ -6443,22 +6443,22 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayTaoDS", DbType="VarChar(200)")]
-		public string NgayTaoDS
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayTaoDS1", DbType="VarChar(200)")]
+		public string NgayTaoDS1
 		{
 			get
 			{
-				return this._NgayTaoDS;
+				return this._NgayTaoDS1;
 			}
 			set
 			{
-				if ((this._NgayTaoDS != value))
+				if ((this._NgayTaoDS1 != value))
 				{
-					this.OnNgayTaoDSChanging(value);
+					this.OnNgayTaoDS1Changing(value);
 					this.SendPropertyChanging();
-					this._NgayTaoDS = value;
-					this.SendPropertyChanged("NgayTaoDS");
-					this.OnNgayTaoDSChanged();
+					this._NgayTaoDS1 = value;
+					this.SendPropertyChanged("NgayTaoDS1");
+					this.OnNgayTaoDS1Changed();
 				}
 			}
 		}

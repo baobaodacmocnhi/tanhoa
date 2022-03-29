@@ -262,13 +262,13 @@
       <Column Name="NgayCapNhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NVCapNhat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="TODS" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NgayDS" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NgayTaoDot" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ChiTiet" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="Latitude" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Longitude" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="BVMT_Thue" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NVTaoDS" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="NgayTaoDS" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="NgayTaoDS1" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="DutChiThan" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="DutChiGoc" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="DHNSaiTT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />

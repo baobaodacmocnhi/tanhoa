@@ -302,7 +302,7 @@ namespace DocSo_PC.DAL.Doi
             enCN.Thue = en.Thue;
             enCN.TongTien = en.TongTien;
             enCN.DenNgay = en.DenNgay;
-            enCN.NgayDS = en.NgayDS;
+            enCN.NgayTaoDot = en.NgayTaoDot;
         }
 
         public DataTable getTheoDoiDocSo(string Nam, string Ky, string Dot)
@@ -415,7 +415,8 @@ namespace DocSo_PC.DAL.Doi
         {
             string sql = "select d.SoLenh,t.CodeDesc,ChiSo,NgayKiem,NoiDung,Hieu,Co,NgayCapNhat"
                             + " from ThongBao d inner join ThamSo t on d.LoaiLenh=t.Code "
-                            + " where DanhBa='" + DanhBo + "' and t.CodeType='TB' and DATEADD(DAY,30,NgayCapNhat)>=GETDATE() order by ID desc";
+                            + " where DanhBa='" + DanhBo + "' and t.CodeType='TB' order by ID desc";
+                            //+ " where DanhBa='" + DanhBo + "' and t.CodeType='TB' and DATEADD(DAY,30,NgayCapNhat)>=GETDATE() order by ID desc";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
