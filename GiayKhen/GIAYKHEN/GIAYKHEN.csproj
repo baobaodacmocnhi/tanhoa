@@ -111,6 +111,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ChinhQuyen_CANHAN_A3_DacBiet.cs">
+      <DependentUpon>ChinhQuyen_CANHAN_A3_DacBiet.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DoanThanhNien_BT_CANHAN_A4_FormNho.cs">
       <DependentUpon>DoanThanhNien_BT_CANHAN_A4_FormNho.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -370,6 +376,10 @@
     <EmbeddedResource Include="ChinhQuyen_TAPTHE_A3_Edit.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ChinhQuyen_TAPTHE_A3_Edit.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChinhQuyen_CANHAN_A3_DacBiet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ChinhQuyen_CANHAN_A3_DacBiet.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="DoanThanhNien_BT_CANHAN_A4_FormNho.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
