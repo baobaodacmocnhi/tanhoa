@@ -32,6 +32,7 @@ namespace KTKS_DonKH.GUI.DonTu
         CThuMoi _cThuMoi = new CThuMoi();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CPhongBanDoi _cPBD = new CPhongBanDoi();
+        CTTKH _cTTKH = new CTTKH();
 
         LinQ.DonTu _dontu = null;
         HOADON _hoadon = null;
@@ -223,12 +224,25 @@ namespace KTKS_DonKH.GUI.DonTu
                 }
                 //if (entity.ID_NhomDon_ChiTiet != null)
                 //    cmbNhomDon_ChiTiet.SelectedValue = entity.ID_NhomDon_ChiTiet;
+                if (chkcmbDieuChinh.Properties.Items.Count > 0)
+                {
+                    int count = 0;
+                    for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
+                    {
+                        if (chkcmbDieuChinh.Properties.Items[i].CheckState == CheckState.Checked && (chkcmbDieuChinh.Properties.Items[i].Value.ToString() == "7"))
+                            count++;
+                    }
+                    if (count != 0)
+                        panel1.Visible = true;
+                    else
+                        panel1.Visible = false;
+                }
                 txtNoiDungKhachHang.Text = entity.Name_NhomDon_PKH;
                 txtNoiDungThuongVu.Text = entity.Name_NhomDon;
                 txtVanDeKhac.Text = entity.VanDeKhac;
 
                 chkCT_HopDongNganHang.Checked = entity.CT_HopDongNganHang;
-                chkCT_GiayBao.Checked = entity.CT_GiayBao;
+                chkCT_GiaiQuyet_Huy_DKCT.Checked = entity.CT_GiayBao;
                 chkCT_HDTN_CQN.Checked = entity.CT_HDTN_CQN;
                 chkCT_CQN.Checked = entity.CT_CQN;
                 chkCT_Khac.Checked = entity.CT_Khac;
@@ -244,7 +258,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 chkCT_HK_KT3.Checked = entity.CT_HK_KT3;
                 chkCT_STT_GXNTT.Checked = entity.CT_STT_GXNTT;
                 chkCT_GDKKD.Checked = entity.CT_GDKKD;
-                chkCT_HoNgheo.Checked = entity.CT_HoNgheo;
+                chkCT_GiayUyQuyen.Checked = entity.CT_HoNgheo;
 
                 chkCT_GC_SDSN.Checked = entity.CT_GC_SDSN;
                 chkCT_GXN2SN.Checked = entity.CT_GXN2SN;
@@ -294,6 +308,8 @@ namespace KTKS_DonKH.GUI.DonTu
             cmbNhomDon_ChiTiet.SelectedIndex = -1;
             txtSoNK.Text = "";
             txtHieuLucKy.Text = "";
+            cmbThoiHan.SelectedIndex = -1;
+            //dateHetHan.Value = DateTime.Now;
 
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
@@ -316,7 +332,7 @@ namespace KTKS_DonKH.GUI.DonTu
             }
 
             chkCT_HopDongNganHang.Checked = false;
-            chkCT_GiayBao.Checked = false;
+            chkCT_GiaiQuyet_Huy_DKCT.Checked = false;
             chkCT_HDTN_CQN.Checked = false;
             chkCT_CQN.Checked = false;
             chkCT_Khac.Checked = false;
@@ -325,7 +341,7 @@ namespace KTKS_DonKH.GUI.DonTu
             chkCT_HK_KT3.Checked = false;
             chkCT_STT_GXNTT.Checked = false;
             chkCT_GDKKD.Checked = false;
-            chkCT_HoNgheo.Checked = false;
+            chkCT_GiayUyQuyen.Checked = false;
 
             chkCT_GC_SDSN.Checked = false;
             chkCT_GXN2SN.Checked = false;
@@ -466,6 +482,11 @@ namespace KTKS_DonKH.GUI.DonTu
                         {
                             entity.SoNK = int.Parse(txtSoNK.Text.Trim());
                             entity.HieuLucKy = txtHieuLucKy.Text.Trim();
+                            if (cmbThoiHan.SelectedIndex >= 0)
+                            {
+                                entity.ThoiHan = cmbThoiHan.SelectedItem.ToString();
+                                entity.NgayHetHan = dateHetHan.Value;
+                            }
                         }
 
                         DonTu_ChiTiet entityCT = new DonTu_ChiTiet();
@@ -628,8 +649,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     ///
                     if (chkCT_HopDongNganHang.Checked)
                         entity.CT_HopDongNganHang = true;
-                    if (chkCT_GiayBao.Checked)
-                        entity.CT_GiayBao = true;
+                    if (chkCT_GiaiQuyet_Huy_DKCT.Checked)
+                        entity.CT_GiaiQuyet_Huy_DKCT = true;
                     if (chkCT_HDTN_CQN.Checked)
                         entity.CT_HDTN_CQN = true;
                     if (chkCT_CQN.Checked)
@@ -646,8 +667,8 @@ namespace KTKS_DonKH.GUI.DonTu
                         entity.CT_STT_GXNTT = true;
                     if (chkCT_GDKKD.Checked)
                         entity.CT_GDKKD = true;
-                    if (chkCT_HoNgheo.Checked)
-                        entity.CT_HoNgheo = true;
+                    if (chkCT_GiayUyQuyen.Checked)
+                        entity.CT_GiayUyQuyen = true;
 
                     if (chkCT_GC_SDSN.Checked)
                         entity.CT_GC_SDSN = true;
@@ -821,10 +842,10 @@ namespace KTKS_DonKH.GUI.DonTu
                         else
                             _dontu.CT_HopDongNganHang = false;
 
-                        if (chkCT_GiayBao.Checked)
-                            _dontu.CT_GiayBao = true;
+                        if (chkCT_GiaiQuyet_Huy_DKCT.Checked)
+                            _dontu.CT_GiaiQuyet_Huy_DKCT = true;
                         else
-                            _dontu.CT_GiayBao = false;
+                            _dontu.CT_GiaiQuyet_Huy_DKCT = false;
 
                         if (chkCT_HDTN_CQN.Checked)
                             _dontu.CT_HDTN_CQN = true;
@@ -863,10 +884,10 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.CT_GDKKD = true;
                         else
                             _dontu.CT_GDKKD = false;
-                        if (chkCT_HoNgheo.Checked)
-                            _dontu.CT_HoNgheo = true;
+                        if (chkCT_GiayUyQuyen.Checked)
+                            _dontu.CT_GiayUyQuyen = true;
                         else
-                            _dontu.CT_HoNgheo = false;
+                            _dontu.CT_GiayUyQuyen = false;
 
                         //
 
@@ -1007,7 +1028,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["CT_HopDongNganHang"] = false;
                 }
 
-                if (entity.CT_GiayBao)
+                if (entity.CT_GiaiQuyet_Huy_DKCT)
                 {
                     dr["CT_GiayBao"] = true;
                 }
@@ -1073,7 +1094,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["CT_GDKKD"] = false;
                 }
 
-                if (entity.CT_HoNgheo)
+                if (entity.CT_GiayUyQuyen)
                 {
                     dr["CT_HoNgheo"] = true;
                 }
@@ -1115,7 +1136,9 @@ namespace KTKS_DonKH.GUI.DonTu
                 dr["NgayGiaiQuyet"] = entity.NgayHenGiaiQuyet;
                 if (entity.SoNK != null)
                     dr["DinhMucSau"] = entity.SoNK * 4;
-                //dr["HieuLucTuKy"] = entity.HieuLucKy;
+                dr["HieuLucTuKy"] = entity.HieuLucKy;
+                if (entity.NgayHetHan != null)
+                    dr["NgayHetHan"] = entity.NgayHetHan.Value.ToString("dd/MM/yyyy");
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 dr["HoTenNV"] = CTaiKhoan.HoTen;
                 dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
@@ -1265,6 +1288,14 @@ namespace KTKS_DonKH.GUI.DonTu
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void txtSoNK_Leave(object sender, EventArgs e)
+        {
+            if (txtSoNK.Text.Trim() != "")
+            {
+                txtHieuLucKy.Text = _cTTKH.getHieuLucKyToi();
             }
         }
 
@@ -1420,8 +1451,25 @@ namespace KTKS_DonKH.GUI.DonTu
             }
         }
 
+        private void cmbThoiHan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbThoiHan.SelectedIndex >= 0)
+            {
+                switch (cmbThoiHan.SelectedItem.ToString())
+                {
+                    case "6 tháng":
+                        dateHetHan.Value = DateTime.Now.AddMonths(6);
+                        break;
+                    case "12 tháng":
+                        dateHetHan.Value = DateTime.Now.AddMonths(12);
+                        break;
+                    default:
+                        dateHetHan.Value = DateTime.Now;
+                        break;
+                }
 
-
+            }
+        }
 
 
 

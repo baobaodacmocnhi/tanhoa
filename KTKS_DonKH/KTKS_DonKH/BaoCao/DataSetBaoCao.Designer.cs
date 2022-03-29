@@ -2270,6 +2270,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnPathLogo;
             
+            private global::System.Data.DataColumn columnNgayHetHan;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public BienNhanDonKHDataTable() {
@@ -2705,6 +2707,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NgayHetHanColumn {
+                get {
+                    return this.columnNgayHetHan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2790,7 +2800,8 @@ namespace KTKS_DonKH.BaoCao {
                         string HieuLucTuKy, 
                         string NgayGiaiQuyet, 
                         string TenPhong, 
-                        string PathLogo) {
+                        string PathLogo, 
+                        string NgayHetHan) {
                 BienNhanDonKHRow rowBienNhanDonKHRow = ((BienNhanDonKHRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MaDon,
@@ -2842,7 +2853,8 @@ namespace KTKS_DonKH.BaoCao {
                         HieuLucTuKy,
                         NgayGiaiQuyet,
                         TenPhong,
-                        PathLogo};
+                        PathLogo,
+                        NgayHetHan};
                 rowBienNhanDonKHRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBienNhanDonKHRow);
                 return rowBienNhanDonKHRow;
@@ -2915,6 +2927,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnNgayGiaiQuyet = base.Columns["NgayGiaiQuyet"];
                 this.columnTenPhong = base.Columns["TenPhong"];
                 this.columnPathLogo = base.Columns["PathLogo"];
+                this.columnNgayHetHan = base.Columns["NgayHetHan"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3020,6 +3033,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnTenPhong);
                 this.columnPathLogo = new global::System.Data.DataColumn("PathLogo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPathLogo);
+                this.columnNgayHetHan = new global::System.Data.DataColumn("NgayHetHan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNgayHetHan);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21825,6 +21840,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NgayHetHan {
+                get {
+                    try {
+                        return ((string)(this[this.tableBienNhanDonKH.NgayHetHanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NgayHetHan\' in table \'BienNhanDonKH\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBienNhanDonKH.NgayHetHanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsMaDonNull() {
                 return this.IsNull(this.tableBienNhanDonKH.MaDonColumn);
             }
@@ -22421,6 +22452,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPathLogoNull() {
                 this[this.tableBienNhanDonKH.PathLogoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNgayHetHanNull() {
+                return this.IsNull(this.tableBienNhanDonKH.NgayHetHanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNgayHetHanNull() {
+                this[this.tableBienNhanDonKH.NgayHetHanColumn] = global::System.Convert.DBNull;
             }
         }
         
