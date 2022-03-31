@@ -51,7 +51,7 @@
       <Value Profile="(Default)">Data Source=hp_g7\kd;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=sa;Password=db8@tanhoa</Value>
     </Setting>
     <Setting Name="KTKS_DonKH_wsThuongVu_wsThuongVu" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://192.168.90.11:81/wsthuongvu.asmx</Value>
+      <Value Profile="(Default)">http://113.161.88.180:81/wsthuongvu.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>
