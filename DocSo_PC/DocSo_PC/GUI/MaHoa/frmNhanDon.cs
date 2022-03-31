@@ -121,6 +121,11 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
+                    if (_cDonTu.checkExists(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+                    {
+                        MessageBox.Show("Đã lập Đơn trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     MaHoa_DonTu en = new MaHoa_DonTu();
                     en.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                     en.HoTen = txtHoTen.Text.Trim();
@@ -133,6 +138,7 @@ namespace DocSo_PC.GUI.MaHoa
                         en.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                     en.NoiDung = txtNoiDung.Text.Trim();
                     en.GhiChu = txtGhiChu.Text.Trim();
+                    en.TinhTrang = "Tồn";
                     if (_hoadon != null)
                     {
                         en.MLT = _hoadon.MALOTRINH;

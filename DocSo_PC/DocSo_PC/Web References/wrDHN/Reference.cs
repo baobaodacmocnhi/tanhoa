@@ -57,7 +57,11 @@ namespace DocSo_PC.wrDHN {
         
         private System.Threading.SendOrPostCallback getDS_KhongTinhPBVMTOperationCompleted;
         
+        private System.Threading.SendOrPostCallback checkNgayDocOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getDS_DocSoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getDS_DocSo_TonOperationCompleted;
         
         private System.Threading.SendOrPostCallback getDS_HoaDonTonOperationCompleted;
         
@@ -75,9 +79,9 @@ namespace DocSo_PC.wrDHN {
         
         private System.Threading.SendOrPostCallback ghi_HinhOperationCompleted;
         
-        private System.Threading.SendOrPostCallback ghi_Hinh_NATOperationCompleted;
-        
         private System.Threading.SendOrPostCallback xoa_HinhOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback checkExists_HinhOperationCompleted;
         
         private System.Threading.SendOrPostCallback ghiChiSoOperationCompleted;
         
@@ -188,7 +192,13 @@ namespace DocSo_PC.wrDHN {
         public event getDS_KhongTinhPBVMTCompletedEventHandler getDS_KhongTinhPBVMTCompleted;
         
         /// <remarks/>
+        public event checkNgayDocCompletedEventHandler checkNgayDocCompleted;
+        
+        /// <remarks/>
         public event getDS_DocSoCompletedEventHandler getDS_DocSoCompleted;
+        
+        /// <remarks/>
+        public event getDS_DocSo_TonCompletedEventHandler getDS_DocSo_TonCompleted;
         
         /// <remarks/>
         public event getDS_HoaDonTonCompletedEventHandler getDS_HoaDonTonCompleted;
@@ -215,10 +225,10 @@ namespace DocSo_PC.wrDHN {
         public event ghi_HinhCompletedEventHandler ghi_HinhCompleted;
         
         /// <remarks/>
-        public event ghi_Hinh_NATCompletedEventHandler ghi_Hinh_NATCompleted;
+        public event xoa_HinhCompletedEventHandler xoa_HinhCompleted;
         
         /// <remarks/>
-        public event xoa_HinhCompletedEventHandler xoa_HinhCompleted;
+        public event checkExists_HinhCompletedEventHandler checkExists_HinhCompleted;
         
         /// <remarks/>
         public event ghiChiSoCompletedEventHandler ghiChiSoCompleted;
@@ -663,6 +673,41 @@ namespace DocSo_PC.wrDHN {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/checkNgayDoc", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool checkNgayDoc(string Nam, string Ky, string Dot, string May) {
+            object[] results = this.Invoke("checkNgayDoc", new object[] {
+                        Nam,
+                        Ky,
+                        Dot,
+                        May});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void checkNgayDocAsync(string Nam, string Ky, string Dot, string May) {
+            this.checkNgayDocAsync(Nam, Ky, Dot, May, null);
+        }
+        
+        /// <remarks/>
+        public void checkNgayDocAsync(string Nam, string Ky, string Dot, string May, object userState) {
+            if ((this.checkNgayDocOperationCompleted == null)) {
+                this.checkNgayDocOperationCompleted = new System.Threading.SendOrPostCallback(this.OncheckNgayDocOperationCompleted);
+            }
+            this.InvokeAsync("checkNgayDoc", new object[] {
+                        Nam,
+                        Ky,
+                        Dot,
+                        May}, this.checkNgayDocOperationCompleted, userState);
+        }
+        
+        private void OncheckNgayDocOperationCompleted(object arg) {
+            if ((this.checkNgayDocCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.checkNgayDocCompleted(this, new checkNgayDocCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_DocSo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string getDS_DocSo(string Nam, string Ky, string Dot, string May) {
             object[] results = this.Invoke("getDS_DocSo", new object[] {
@@ -694,6 +739,41 @@ namespace DocSo_PC.wrDHN {
             if ((this.getDS_DocSoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getDS_DocSoCompleted(this, new getDS_DocSoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_DocSo_Ton", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getDS_DocSo_Ton(string Nam, string Ky, string Dot, string May) {
+            object[] results = this.Invoke("getDS_DocSo_Ton", new object[] {
+                        Nam,
+                        Ky,
+                        Dot,
+                        May});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDS_DocSo_TonAsync(string Nam, string Ky, string Dot, string May) {
+            this.getDS_DocSo_TonAsync(Nam, Ky, Dot, May, null);
+        }
+        
+        /// <remarks/>
+        public void getDS_DocSo_TonAsync(string Nam, string Ky, string Dot, string May, object userState) {
+            if ((this.getDS_DocSo_TonOperationCompleted == null)) {
+                this.getDS_DocSo_TonOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_DocSo_TonOperationCompleted);
+            }
+            this.InvokeAsync("getDS_DocSo_Ton", new object[] {
+                        Nam,
+                        Ky,
+                        Dot,
+                        May}, this.getDS_DocSo_TonOperationCompleted, userState);
+        }
+        
+        private void OngetDS_DocSo_TonOperationCompleted(object arg) {
+            if ((this.getDS_DocSo_TonCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDS_DocSo_TonCompleted(this, new getDS_DocSo_TonCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -963,37 +1043,6 @@ namespace DocSo_PC.wrDHN {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ghi_Hinh_NAT", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool ghi_Hinh_NAT(string ID, string HinhDHN) {
-            object[] results = this.Invoke("ghi_Hinh_NAT", new object[] {
-                        ID,
-                        HinhDHN});
-            return ((bool)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void ghi_Hinh_NATAsync(string ID, string HinhDHN) {
-            this.ghi_Hinh_NATAsync(ID, HinhDHN, null);
-        }
-        
-        /// <remarks/>
-        public void ghi_Hinh_NATAsync(string ID, string HinhDHN, object userState) {
-            if ((this.ghi_Hinh_NATOperationCompleted == null)) {
-                this.ghi_Hinh_NATOperationCompleted = new System.Threading.SendOrPostCallback(this.Onghi_Hinh_NATOperationCompleted);
-            }
-            this.InvokeAsync("ghi_Hinh_NAT", new object[] {
-                        ID,
-                        HinhDHN}, this.ghi_Hinh_NATOperationCompleted, userState);
-        }
-        
-        private void Onghi_Hinh_NATOperationCompleted(object arg) {
-            if ((this.ghi_Hinh_NATCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.ghi_Hinh_NATCompleted(this, new ghi_Hinh_NATCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/xoa_Hinh", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool xoa_Hinh(string ID) {
             object[] results = this.Invoke("xoa_Hinh", new object[] {
@@ -1019,6 +1068,35 @@ namespace DocSo_PC.wrDHN {
             if ((this.xoa_HinhCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.xoa_HinhCompleted(this, new xoa_HinhCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/checkExists_Hinh", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool checkExists_Hinh(string ID) {
+            object[] results = this.Invoke("checkExists_Hinh", new object[] {
+                        ID});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void checkExists_HinhAsync(string ID) {
+            this.checkExists_HinhAsync(ID, null);
+        }
+        
+        /// <remarks/>
+        public void checkExists_HinhAsync(string ID, object userState) {
+            if ((this.checkExists_HinhOperationCompleted == null)) {
+                this.checkExists_HinhOperationCompleted = new System.Threading.SendOrPostCallback(this.OncheckExists_HinhOperationCompleted);
+            }
+            this.InvokeAsync("checkExists_Hinh", new object[] {
+                        ID}, this.checkExists_HinhOperationCompleted, userState);
+        }
+        
+        private void OncheckExists_HinhOperationCompleted(object arg) {
+            if ((this.checkExists_HinhCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.checkExists_HinhCompleted(this, new checkExists_HinhCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1065,7 +1143,7 @@ namespace DocSo_PC.wrDHN {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ghiChiSo_GianTiep", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string ghiChiSo_GianTiep(string ID, string Code, string ChiSo, string TieuThu, string TienNuoc, string ThueGTGT, string PhiBVMT, string PhiBVMT_Thue, string TongCong, string HinhDHN, string Dot, string MaNV) {
+        public string ghiChiSo_GianTiep(string ID, string Code, string ChiSo, string TieuThu, string TienNuoc, string ThueGTGT, string PhiBVMT, string PhiBVMT_Thue, string TongCong, string HinhDHN, string Dot, string MaNV, string NgayDS) {
             object[] results = this.Invoke("ghiChiSo_GianTiep", new object[] {
                         ID,
                         Code,
@@ -1078,17 +1156,18 @@ namespace DocSo_PC.wrDHN {
                         TongCong,
                         HinhDHN,
                         Dot,
-                        MaNV});
+                        MaNV,
+                        NgayDS});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void ghiChiSo_GianTiepAsync(string ID, string Code, string ChiSo, string TieuThu, string TienNuoc, string ThueGTGT, string PhiBVMT, string PhiBVMT_Thue, string TongCong, string HinhDHN, string Dot, string MaNV) {
-            this.ghiChiSo_GianTiepAsync(ID, Code, ChiSo, TieuThu, TienNuoc, ThueGTGT, PhiBVMT, PhiBVMT_Thue, TongCong, HinhDHN, Dot, MaNV, null);
+        public void ghiChiSo_GianTiepAsync(string ID, string Code, string ChiSo, string TieuThu, string TienNuoc, string ThueGTGT, string PhiBVMT, string PhiBVMT_Thue, string TongCong, string HinhDHN, string Dot, string MaNV, string NgayDS) {
+            this.ghiChiSo_GianTiepAsync(ID, Code, ChiSo, TieuThu, TienNuoc, ThueGTGT, PhiBVMT, PhiBVMT_Thue, TongCong, HinhDHN, Dot, MaNV, NgayDS, null);
         }
         
         /// <remarks/>
-        public void ghiChiSo_GianTiepAsync(string ID, string Code, string ChiSo, string TieuThu, string TienNuoc, string ThueGTGT, string PhiBVMT, string PhiBVMT_Thue, string TongCong, string HinhDHN, string Dot, string MaNV, object userState) {
+        public void ghiChiSo_GianTiepAsync(string ID, string Code, string ChiSo, string TieuThu, string TienNuoc, string ThueGTGT, string PhiBVMT, string PhiBVMT_Thue, string TongCong, string HinhDHN, string Dot, string MaNV, string NgayDS, object userState) {
             if ((this.ghiChiSo_GianTiepOperationCompleted == null)) {
                 this.ghiChiSo_GianTiepOperationCompleted = new System.Threading.SendOrPostCallback(this.OnghiChiSo_GianTiepOperationCompleted);
             }
@@ -1104,7 +1183,8 @@ namespace DocSo_PC.wrDHN {
                         TongCong,
                         HinhDHN,
                         Dot,
-                        MaNV}, this.ghiChiSo_GianTiepOperationCompleted, userState);
+                        MaNV,
+                        NgayDS}, this.ghiChiSo_GianTiepOperationCompleted, userState);
         }
         
         private void OnghiChiSo_GianTiepOperationCompleted(object arg) {
@@ -1904,6 +1984,32 @@ namespace DocSo_PC.wrDHN {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void checkNgayDocCompletedEventHandler(object sender, checkNgayDocCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class checkNgayDocCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal checkNgayDocCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void getDS_DocSoCompletedEventHandler(object sender, getDS_DocSoCompletedEventArgs e);
     
     /// <remarks/>
@@ -1915,6 +2021,32 @@ namespace DocSo_PC.wrDHN {
         private object[] results;
         
         internal getDS_DocSoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getDS_DocSo_TonCompletedEventHandler(object sender, getDS_DocSo_TonCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getDS_DocSo_TonCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getDS_DocSo_TonCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2138,17 +2270,17 @@ namespace DocSo_PC.wrDHN {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void ghi_Hinh_NATCompletedEventHandler(object sender, ghi_Hinh_NATCompletedEventArgs e);
+    public delegate void xoa_HinhCompletedEventHandler(object sender, xoa_HinhCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class ghi_Hinh_NATCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class xoa_HinhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal ghi_Hinh_NATCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal xoa_HinhCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2164,17 +2296,17 @@ namespace DocSo_PC.wrDHN {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void xoa_HinhCompletedEventHandler(object sender, xoa_HinhCompletedEventArgs e);
+    public delegate void checkExists_HinhCompletedEventHandler(object sender, checkExists_HinhCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class xoa_HinhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class checkExists_HinhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal xoa_HinhCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal checkExists_HinhCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

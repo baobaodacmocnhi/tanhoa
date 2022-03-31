@@ -15,7 +15,7 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\192.168.90.9\BaoBao%24\DocSo_PC\</PublishUrl>
+    <PublishUrl>\\server9\BaoBao%24\DocSo_PC\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -25,13 +25,14 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>\\192.168.90.9\BaoBao%24\DocSo_PC\</UpdateUrl>
+    <UpdateUrl>\\server9\BaoBao%24\DocSo_PC\</UpdateUrl>
     <TargetCulture>vi-VN</TargetCulture>
     <ProductName>Quản Lý Đọc Số</ProductName>
     <PublisherName>T.CNTT</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>90</ApplicationRevision>
+    <ApplicationRevision>94</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -418,12 +419,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Web References\wrThuTien\Reference.cs">
+    <Compile Include="Web References\wrThuongVu\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Web References\wsThuongVu\Reference.cs">
+    <Compile Include="Web References\wrThuTien\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -627,16 +628,16 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\wrDHN\wsdhn.wsdl" />
+    <None Include="Web References\wrThuongVu\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wrThuongVu\wsthuongvu.wsdl" />
     <None Include="Web References\wrThuTien\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\wrThuTien\wsthutien.wsdl" />
-    <None Include="Web References\wsThuongVu\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\wsThuongVu\wsthuongvu.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -664,10 +665,10 @@
     <None Include="Resources\Water.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Web References\wrThuongVu\wsthuongvu.disco" />
     <None Include="Resources\file 24x24.png" />
     <None Include="Resources\logocongty.png" />
     <Content Include="Water.ico" />
-    <None Include="Web References\wsThuongVu\wsthuongvu.disco" />
     <None Include="Web References\wrDHN\wsdhn.disco" />
     <None Include="Web References\wrThuTien\wsthutien.disco" />
   </ItemGroup>
@@ -967,14 +968,14 @@
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://192.168.90.11:81/wsthuongvu.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\wsThuongVu\</RelPath>
+      <RelPath>Web References\wrThuongVu\</RelPath>
       <UpdateFromURL>http://192.168.90.11:81/wsthuongvu.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>DocSo_PC_wsThuongVu_wsThuongVu</CachedSettingsPropName>
+      <CachedSettingsPropName>DocSo_PC_wrThuongVu_wsThuongVu</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://192.168.90.11:81/wsthutien.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -988,7 +989,9 @@
       <CachedSettingsPropName>DocSo_PC_wrThuTien_wsThuTien</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

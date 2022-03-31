@@ -91,9 +91,9 @@ namespace DocSo_PC.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://113.161.88.180:81/wsthuongvu.asmx")]
-        public string DocSo_PC_wsThuongVu_wsThuongVu {
+        public string DocSo_PC_wrThuongVu_wsThuongVu {
             get {
-                return ((string)(this["DocSo_PC_wsThuongVu_wsThuongVu"]));
+                return ((string)(this["DocSo_PC_wrThuongVu_wsThuongVu"]));
             }
         }
     }

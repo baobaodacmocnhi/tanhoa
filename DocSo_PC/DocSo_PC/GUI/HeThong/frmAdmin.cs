@@ -144,7 +144,7 @@ namespace DocSo_PC.GUI.HeThong
                 foreach (DataRow item in dt.Rows)
                 {
                     DataTable dtTemp = CMenu._cDAL.ExecuteQuery_DataTable("select Hinh from Temp_HinhDHN where ID='" + item["ID"].ToString() + "'");
-                    if (wsDHN.ghi_Hinh_NAT(item["ID"].ToString(), dtTemp.Rows[0]["Hinh"].ToString()) == true)
+                    if (wsDHN.ghi_Hinh(item["ID"].ToString(), dtTemp.Rows[0]["Hinh"].ToString()) == true)
                         CMenu._cDAL.ExecuteNonQuery("delete Temp_HinhDHN where ID='" + item["ID"].ToString() + "'");
                 }
             }

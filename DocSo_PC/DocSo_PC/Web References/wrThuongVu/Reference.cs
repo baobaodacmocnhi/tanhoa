@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace DocSo_PC.wsThuongVu {
+namespace DocSo_PC.wrThuongVu {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -41,7 +41,7 @@ namespace DocSo_PC.wsThuongVu {
         
         /// <remarks/>
         public wsThuongVu() {
-            this.Url = global::DocSo_PC.Properties.Settings.Default.DocSo_PC_wsThuongVu_wsThuongVu;
+            this.Url = global::DocSo_PC.Properties.Settings.Default.DocSo_PC_wrThuongVu_wsThuongVu;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

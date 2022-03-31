@@ -26,7 +26,7 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=hp_g7\\kd;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;Use" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;Use" +
             "r ID=sa;Password=db8@tanhoa")]
         public string CAPNUOCTANHOAConnectionString {
             get {
@@ -91,9 +91,9 @@ namespace DocSo_PC.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.90.11:81/wsthuongvu.asmx")]
-        public string DocSo_PC_wsThuongVu_wsThuongVu {
+        public string DocSo_PC_wrThuongVu_wsThuongVu {
             get {
-                return ((string)(this["DocSo_PC_wsThuongVu_wsThuongVu"]));
+                return ((string)(this["DocSo_PC_wrThuongVu_wsThuongVu"]));
             }
         }
     }

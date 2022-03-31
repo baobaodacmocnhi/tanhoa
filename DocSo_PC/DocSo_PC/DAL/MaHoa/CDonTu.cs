@@ -70,6 +70,11 @@ namespace DocSo_PC.DAL.MaHoa
             }
         }
 
+        public bool checkExists(string DanhBo, DateTime CreateDate)
+        {
+            return _db.MaHoa_DonTus.Any(item => item.DanhBo == DanhBo && item.CreateDate.Date == CreateDate.Date);
+        }
+
         public MaHoa_DonTu get(int ID)
         {
             return _db.MaHoa_DonTus.SingleOrDefault(item => item.ID == ID);

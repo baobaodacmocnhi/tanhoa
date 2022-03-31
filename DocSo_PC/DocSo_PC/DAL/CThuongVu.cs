@@ -9,7 +9,7 @@ namespace DocSo_PC.DAL
     class CThuongVu
     {
         public static CConnection _cDAL = new CConnection("Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=db11@tanhoa");
-        wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
+        wrThuongVu.wsThuongVu _wsThuongVu = new wrThuongVu.wsThuongVu();
 
         public DataTable getDS_KTXM_ChuaNhan(DateTime FromCreateDate, DateTime ToCreateDate)
         {
