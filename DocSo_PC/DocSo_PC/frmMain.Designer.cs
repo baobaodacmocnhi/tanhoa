@@ -54,7 +54,7 @@
             this.mnuGhiChu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPhieuChuyen = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMaHoa = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuNhanDon = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDonTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKTXM = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDieuChinhThongTin = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuVanThu = new System.Windows.Forms.ToolStripMenuItem();
@@ -270,19 +270,19 @@
             // mnuMaHoa
             // 
             this.mnuMaHoa.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuNhanDon,
+            this.mnuDonTu,
             this.mnuKTXM,
             this.mnuDieuChinhThongTin});
             this.mnuMaHoa.Name = "mnuMaHoa";
             this.mnuMaHoa.Size = new System.Drawing.Size(61, 20);
             this.mnuMaHoa.Text = "Mã Hóa";
             // 
-            // mnuNhanDon
+            // mnuDonTu
             // 
-            this.mnuNhanDon.Name = "mnuNhanDon";
-            this.mnuNhanDon.Size = new System.Drawing.Size(189, 22);
-            this.mnuNhanDon.Text = "Nhận Đơn";
-            this.mnuNhanDon.Click += new System.EventHandler(this.mnuNhanDon_Click);
+            this.mnuDonTu.Name = "mnuDonTu";
+            this.mnuDonTu.Size = new System.Drawing.Size(189, 22);
+            this.mnuDonTu.Text = "Đơn Từ";
+            this.mnuDonTu.Click += new System.EventHandler(this.mnuDonTu_Click);
             // 
             // mnuKTXM
             // 
@@ -465,7 +465,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnusDHN;
         private System.Windows.Forms.ToolStripMenuItem mnuDSsDHN;
         private System.Windows.Forms.ToolStripMenuItem mnuMaHoa;
-        private System.Windows.Forms.ToolStripMenuItem mnuNhanDon;
+        private System.Windows.Forms.ToolStripMenuItem mnuDonTu;
         private System.Windows.Forms.ToolStripMenuItem mnuKTXM;
         private System.Windows.Forms.ToolStripMenuItem mnuDieuChinhThongTin;
     }

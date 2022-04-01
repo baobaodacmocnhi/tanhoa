@@ -14,9 +14,9 @@ using System.Transactions;
 
 namespace DocSo_PC.GUI.MaHoa
 {
-    public partial class frmNhanDon : Form
+    public partial class frmDonTu : Form
     {
-        string _mnu = "mnuNhanDon";
+        string _mnu = "mnuDonTu";
         CDonTu _cDonTu = new CDonTu();
         CThuTien _cThuTien = new CThuTien();
         CNguoiDung _cNguoiDung = new CNguoiDung();
@@ -25,7 +25,7 @@ namespace DocSo_PC.GUI.MaHoa
         MaHoa_DonTu _dontu = null;
         HOADON _hoadon = null;
 
-        public frmNhanDon()
+        public frmDonTu()
         {
             InitializeComponent();
         }
@@ -94,6 +94,7 @@ namespace DocSo_PC.GUI.MaHoa
 
         public void Clear()
         {
+            cmbNoiDung.SelectedIndex = -1;
             txtDanhBo.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
@@ -373,6 +374,14 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cmbNoiDung_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbNoiDung.SelectedIndex >= 0)
+                txtNoiDung.Text = cmbNoiDung.SelectedItem.ToString();
+            else
+                txtNoiDung.Text = "";
         }
 
 

@@ -676,37 +676,43 @@ namespace DocSo_PC.GUI.ToTruong
         {
             try
             {
-                if (CNguoiDung.CheckQuyen("mnuNhanDon", "Them"))
+                if (CNguoiDung.CheckQuyen("mnuDonTu", "Them"))
                 {
-                    foreach (DataGridViewRow item in dgvDanhSach.SelectedRows)
-                        if (_cDonTu.checkExists(item.Cells["DanhBo"].ToString().Replace(" ", ""), DateTime.Now) == true)
-                        {
-                            MaHoa_DonTu en = new MaHoa_DonTu();
-                            HOADON hd = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].ToString().Replace(" ", ""));
-
-                            if (hd != null)
-                            {
-                                en.DanhBo = hd.DANHBA;
-                                en.HoTen = hd.TENKH;
-                                en.DiaChi = hd.SO + " " + hd.DUONG;
-                                en.GiaBieu = hd.GB;
-                                if (hd.DM != null)
-                                    en.DinhMuc = hd.DM;
-                                if (hd.DinhMucHN != null)
-                                    en.DinhMucHN = hd.DinhMucHN;
-                                en.NoiDung = txtNoiDung.Text.Trim();
-                                //en.GhiChu = txtGhiChu.Text.Trim();
-                                en.TinhTrang = "Tồn";
-                                en.MLT = hd.MALOTRINH;
-                                en.HopDong = hd.HOPDONG;
-                                en.Dot = hd.DOT;
-                                en.Ky = hd.KY;
-                                en.Nam = hd.NAM;
-                                en.Quan = hd.Quan;
-                                en.Phuong = hd.Phuong;
-                            }
-                            _cDonTu.Them(en);
-                        }
+                    if (cmbNoiDung.SelectedIndex >= 0)
+                    {
+                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                            foreach (DataGridViewRow item in dgvDanhSach.SelectedRows)
+                                if (_cDonTu.checkExists(item.Cells["DanhBo"].Value.ToString().Replace(" ", ""), DateTime.Now) == false)
+                                {
+                                    MaHoa_DonTu en = new MaHoa_DonTu();
+                                    HOADON hd = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString().Replace(" ", ""));
+                                    if (hd != null)
+                                    {
+                                        en.DanhBo = hd.DANHBA;
+                                        en.HoTen = hd.TENKH;
+                                        en.DiaChi = hd.SO + " " + hd.DUONG;
+                                        en.GiaBieu = hd.GB;
+                                        if (hd.DM != null)
+                                            en.DinhMuc = hd.DM;
+                                        if (hd.DinhMucHN != null)
+                                            en.DinhMucHN = hd.DinhMucHN;
+                                        en.NoiDung = cmbNoiDung.SelectedItem.ToString();
+                                        //en.GhiChu = txtGhiChu.Text.Trim();
+                                        en.TinhTrang = "Tồn";
+                                        en.MLT = hd.MALOTRINH;
+                                        en.HopDong = hd.HOPDONG;
+                                        en.Dot = hd.DOT;
+                                        en.Ky = hd.KY;
+                                        en.Nam = hd.NAM;
+                                        en.Quan = hd.Quan;
+                                        en.Phuong = hd.Phuong;
+                                        _cDonTu.Them(en);
+                                    }
+                                }
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                        MessageBox.Show("Chưa chọn Nội Dung Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

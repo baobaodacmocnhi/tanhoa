@@ -325,11 +325,11 @@ namespace DocSo_PC
 
         #region Mã Hóa
 
-        private void mnuNhanDon_Click(object sender, EventArgs e)
+        private void mnuDonTu_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuNhanDon", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuDonTu", "Xem"))
             {
-                frmNhanDon frm = new frmNhanDon();
+                frmDonTu frm = new frmDonTu();
                 OpenForm(frm);
             }
             else
