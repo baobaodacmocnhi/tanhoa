@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.1439</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1539</ApplicationRevision>
+    <ApplicationRevision>1542</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1716,6 +1716,11 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="LinQ\dbDocSo.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbDocSo.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web References\wsThuTien\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -1738,11 +1743,6 @@
     <None Include="LinQ\dbDHN.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbDHN.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="LinQ\dbDocSo.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbDocSo.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="LinQ\dbKinhDoanh.dbml">
@@ -2072,12 +2072,12 @@
     <None Include="LinQ\dbDHN.dbml.layout">
       <DependentUpon>dbDHN.dbml</DependentUpon>
     </None>
-    <None Include="LinQ\dbDocSo.dbml.layout">
-      <DependentUpon>dbDocSo.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="GUI\ToTruong\frmGiaoHDDienThoai.resx">
       <DependentUpon>frmGiaoHDDienThoai.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LinQ\dbDocSo.dbml.layout">
+      <DependentUpon>dbDocSo.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

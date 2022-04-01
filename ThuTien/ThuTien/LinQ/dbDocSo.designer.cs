@@ -212,7 +212,7 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _TODS;
 		
-		private System.Nullable<System.DateTime> _NgayDS;
+		private System.Nullable<System.DateTime> _NgayTaoDot;
 		
 		private string _ChiTiet;
 		
@@ -220,11 +220,11 @@ namespace ThuTien.LinQ
 		
 		private string _Longitude;
 		
-		private string _TenKH;
+		private System.Nullable<int> _BVMT_Thue;
 		
 		private string _NVTaoDS;
 		
-		private string _NgayTaoDS;
+		private string _NgayTaoDS1;
 		
 		private string _DutChiThan;
 		
@@ -374,20 +374,20 @@ namespace ThuTien.LinQ
     partial void OnNVCapNhatChanged();
     partial void OnTODSChanging(System.Nullable<int> value);
     partial void OnTODSChanged();
-    partial void OnNgayDSChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayDSChanged();
+    partial void OnNgayTaoDotChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayTaoDotChanged();
     partial void OnChiTietChanging(string value);
     partial void OnChiTietChanged();
     partial void OnLatitudeChanging(string value);
     partial void OnLatitudeChanged();
     partial void OnLongitudeChanging(string value);
     partial void OnLongitudeChanged();
-    partial void OnTenKHChanging(string value);
-    partial void OnTenKHChanged();
+    partial void OnBVMT_ThueChanging(System.Nullable<int> value);
+    partial void OnBVMT_ThueChanged();
     partial void OnNVTaoDSChanging(string value);
     partial void OnNVTaoDSChanged();
-    partial void OnNgayTaoDSChanging(string value);
-    partial void OnNgayTaoDSChanged();
+    partial void OnNgayTaoDS1Changing(string value);
+    partial void OnNgayTaoDS1Changed();
     partial void OnDutChiThanChanging(string value);
     partial void OnDutChiThanChanged();
     partial void OnDutChiGocChanging(string value);
@@ -1687,7 +1687,7 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NVCapNhat", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NVCapNhat", DbType="NVarChar(50)")]
 		public string NVCapNhat
 		{
 			get
@@ -1727,22 +1727,22 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayDS", DbType="DateTime")]
-		public System.Nullable<System.DateTime> NgayDS
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayTaoDot", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayTaoDot
 		{
 			get
 			{
-				return this._NgayDS;
+				return this._NgayTaoDot;
 			}
 			set
 			{
-				if ((this._NgayDS != value))
+				if ((this._NgayTaoDot != value))
 				{
-					this.OnNgayDSChanging(value);
+					this.OnNgayTaoDotChanging(value);
 					this.SendPropertyChanging();
-					this._NgayDS = value;
-					this.SendPropertyChanged("NgayDS");
-					this.OnNgayDSChanged();
+					this._NgayTaoDot = value;
+					this.SendPropertyChanged("NgayTaoDot");
+					this.OnNgayTaoDotChanged();
 				}
 			}
 		}
@@ -1807,22 +1807,22 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenKH", DbType="VarChar(200)")]
-		public string TenKH
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BVMT_Thue", DbType="Int")]
+		public System.Nullable<int> BVMT_Thue
 		{
 			get
 			{
-				return this._TenKH;
+				return this._BVMT_Thue;
 			}
 			set
 			{
-				if ((this._TenKH != value))
+				if ((this._BVMT_Thue != value))
 				{
-					this.OnTenKHChanging(value);
+					this.OnBVMT_ThueChanging(value);
 					this.SendPropertyChanging();
-					this._TenKH = value;
-					this.SendPropertyChanged("TenKH");
-					this.OnTenKHChanged();
+					this._BVMT_Thue = value;
+					this.SendPropertyChanged("BVMT_Thue");
+					this.OnBVMT_ThueChanged();
 				}
 			}
 		}
@@ -1847,22 +1847,22 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayTaoDS", DbType="VarChar(200)")]
-		public string NgayTaoDS
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayTaoDS1", DbType="VarChar(200)")]
+		public string NgayTaoDS1
 		{
 			get
 			{
-				return this._NgayTaoDS;
+				return this._NgayTaoDS1;
 			}
 			set
 			{
-				if ((this._NgayTaoDS != value))
+				if ((this._NgayTaoDS1 != value))
 				{
-					this.OnNgayTaoDSChanging(value);
+					this.OnNgayTaoDS1Changing(value);
 					this.SendPropertyChanging();
-					this._NgayTaoDS = value;
-					this.SendPropertyChanged("NgayTaoDS");
-					this.OnNgayTaoDSChanged();
+					this._NgayTaoDS1 = value;
+					this.SendPropertyChanged("NgayTaoDS1");
+					this.OnNgayTaoDS1Changed();
 				}
 			}
 		}

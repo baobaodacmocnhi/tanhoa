@@ -684,7 +684,7 @@ namespace ThuTien.GUI.ToTruong
                     string ChiTietNamCu = "", ChiTietNamMoi = "", ChiTietPhiBVMTNamCu = "", ChiTietPhiBVMTNamMoi = "";
                     string[] Kys = dgvHoaDon["Ky", e.RowIndex].Value.ToString().Split('/');
                     HOADON hd = _cHoaDon.Get(dgvHoaDon["DanhBo", e.RowIndex].Value.ToString(), int.Parse(Kys[1]), int.Parse(Kys[0]));
-                    if (hd.DCHD == true)
+                    if (hd != null && hd.DCHD == true)
                     {
                         dgvHoaDon["GiaBan", e.RowIndex].Value = hd.GIABAN;
                         dgvHoaDon["ThueGTGT", e.RowIndex].Value = hd.THUE;

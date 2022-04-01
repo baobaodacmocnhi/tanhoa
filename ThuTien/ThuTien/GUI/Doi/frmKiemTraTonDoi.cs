@@ -18,6 +18,7 @@ using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.ChuyenKhoan;
 using ThuTien.BaoCao.ToTruong;
 using ThuTien.BaoCao.ChuyenKhoan;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.Doi
 {
@@ -29,6 +30,7 @@ namespace ThuTien.GUI.Doi
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
+        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
         List<TT_To> _lstTo;
 
         public frmKiemTraTonDoi()
@@ -1967,9 +1969,17 @@ namespace ThuTien.GUI.Doi
             cl19.Value2 = "Cỡ";
             cl19.ColumnWidth = 10;
 
+            Microsoft.Office.Interop.Excel.Range cl20 = oSheet.get_Range("T1", "T1");
+            cl20.Value2 = "Phường";
+            cl20.ColumnWidth = 10;
+
+            Microsoft.Office.Interop.Excel.Range cl21 = oSheet.get_Range("U1", "U1");
+            cl21.Value2 = "Quận";
+            cl21.ColumnWidth = 10;
+
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            int column = 19;
+            int column = 21;
             object[,] arr = new object[dt.Rows.Count, column];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
@@ -1997,6 +2007,8 @@ namespace ThuTien.GUI.Doi
                 arr[i, 16] = dr["DinhMucHN"].ToString();
                 arr[i, 17] = dr["TieuThu"].ToString();
                 arr[i, 18] = dr["CoDH"].ToString();
+                arr[i, 19] = _cKinhDoanh.getPhuong(int.Parse(dr["Quan"].ToString()), int.Parse(dr["Phuong"].ToString()));
+                arr[i, 20] = _cKinhDoanh.getQuan(int.Parse(dr["Quan"].ToString()));
             }
 
             //Thiết lập vùng điền dữ liệu
