@@ -680,7 +680,7 @@ namespace DocSo_PC.GUI.ToTruong
                 {
                     if (cmbNoiDung.SelectedIndex >= 0)
                     {
-                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                             foreach (DataGridViewRow item in dgvDanhSach.SelectedRows)
                                 if (_cDonTu.checkExists(item.Cells["DanhBo"].Value.ToString().Replace(" ", ""), DateTime.Now) == false)
                                 {
