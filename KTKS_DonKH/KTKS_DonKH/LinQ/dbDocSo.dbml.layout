@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 18.375" name="dbDocSo">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 17.375" name="dbDocSo">
   <DataContextMoniker Name="/dbDocSoDataContext" />
   <nestedChildShapes>
-    <classShape Id="6c9623e5-d8e4-422d-a2fc-236aa6614562" absoluteBounds="3.75, 2.125, 2, 16.001202799479167">
-      <DataClassMoniker Name="/dbDocSoDataContext/DocSo" />
-      <nestedChildShapes>
-        <elementListCompartment Id="7556593b-0f1e-446c-a197-dbe192b4b65c" absoluteBounds="3.765, 2.585, 1.9700000000000002, 15.441202799479166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="a595c3d5-055e-491d-90fe-da989377f6ab" absoluteBounds="6.625, 1.75, 2, 1.7708968098958331">
+    <classShape Id="a595c3d5-055e-491d-90fe-da989377f6ab" absoluteBounds="4.25, 0.875, 2, 1.7708968098958331">
       <DataClassMoniker Name="/dbDocSoDataContext/DanhBoKPBVMT" />
       <nestedChildShapes>
-        <elementListCompartment Id="d7e7a837-b724-4a5f-8a7c-0c8fac1f345f" absoluteBounds="6.64, 2.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d7e7a837-b724-4a5f-8a7c-0c8fac1f345f" absoluteBounds="4.265, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1d79348a-6e10-4d6e-bc6c-6778e99e83fe" absoluteBounds="2, 1.125, 2, 16.001202799479167">
+      <DataClassMoniker Name="/dbDocSoDataContext/DocSo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="49498e5f-04fb-4ee7-bc03-bf4a0a9ae4c0" absoluteBounds="2.0149999999999997, 1.585, 1.9700000000000002, 15.441202799479166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

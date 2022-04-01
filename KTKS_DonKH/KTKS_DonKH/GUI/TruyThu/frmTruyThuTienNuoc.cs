@@ -750,7 +750,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             else
             {
                 dgvTruyThuTienNuoc["PhiBVMT_Cu", RowIndex].Value = PhiBVMT;
-                dgvTruyThuTienNuoc["TongCong_Cu", RowIndex].Value = (TienNuocNamCu + TienNuocNamMoi) + ThueGTGT + PhiBVMT;
+                dgvTruyThuTienNuoc["TongCong_Cu", RowIndex].Value = TienNuoc + ThueGTGT + PhiBVMT;
             }
             if (dgvTruyThuTienNuoc["TongCong_Cu", RowIndex].Value != null && dgvTruyThuTienNuoc["TongCong_Moi", RowIndex].Value != null)
                 if (int.Parse(dgvTruyThuTienNuoc["TongCong_Cu", RowIndex].Value.ToString()) < int.Parse(dgvTruyThuTienNuoc["TongCong_Moi", RowIndex].Value.ToString()))
@@ -805,7 +805,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dgvTruyThuTienNuoc["SoTien1m3", RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(TuNgay, DenNgay, GiaBieu);
             int PhiBVMT = _cGiaNuoc.TinhPhiBMVT2010(Nam, GiaBieu, DinhMuc, TieuThu);
 
-            dgvTruyThuTienNuoc["GiaBan_Moi", RowIndex].Value = (TienNuocNamCu + TienNuocNamMoi);
+            dgvTruyThuTienNuoc["GiaBan_Moi", RowIndex].Value = TienNuoc;
             dgvTruyThuTienNuoc["ThueGTGT_Moi", RowIndex].Value = ThueGTGT;
             dgvTruyThuTienNuoc["PhiBVMT_Moi", RowIndex].Value = TDVTN;
             if (PhiBVMT == 0)
@@ -835,7 +835,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             else
             {
                 dgvTruyThuTienNuoc["PhiBVMT_Moi", RowIndex].Value = PhiBVMT;
-                dgvTruyThuTienNuoc["TongCong_Moi", RowIndex].Value = (TienNuocNamCu + TienNuocNamMoi) + ThueGTGT + PhiBVMT;
+                dgvTruyThuTienNuoc["TongCong_Moi", RowIndex].Value = TienNuoc + ThueGTGT + PhiBVMT;
             }
             if (dgvTruyThuTienNuoc["TongCong_Cu", RowIndex].Value != null && dgvTruyThuTienNuoc["TongCong_Moi", RowIndex].Value != null)
                 if (int.Parse(dgvTruyThuTienNuoc["TongCong_Cu", RowIndex].Value.ToString()) < int.Parse(dgvTruyThuTienNuoc["TongCong_Moi", RowIndex].Value.ToString()))
