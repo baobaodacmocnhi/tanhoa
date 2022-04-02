@@ -375,6 +375,7 @@
             this.cmbTimTheo_DSChuyenKTXM.Items.AddRange(new object[] {
             "",
             "Số Công Văn",
+            "Mã Đơn",
             "Ngày"});
             this.cmbTimTheo_DSChuyenKTXM.Location = new System.Drawing.Point(80, 29);
             this.cmbTimTheo_DSChuyenKTXM.Name = "cmbTimTheo_DSChuyenKTXM";

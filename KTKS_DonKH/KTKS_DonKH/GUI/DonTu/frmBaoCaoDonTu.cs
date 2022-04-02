@@ -236,6 +236,18 @@ namespace KTKS_DonKH.GUI.DonTu
                         else
                             dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), cmbNoiDungThuongVu_DSChuyenKTXM.SelectedValue.ToString(), txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
                     break;
+                case "Mã Đơn":
+                    if (CTaiKhoan.TruongPhong == true || cmbNhanVienKiemTra.SelectedIndex == 0)
+                        if (cmbNoiDungThuongVu_DSChuyenKTXM.SelectedIndex == 0)
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper()));
+                        else
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, cmbNoiDungThuongVu_DSChuyenKTXM.SelectedValue.ToString(), int.Parse(txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper()));
+                    else
+                        if (cmbNoiDungThuongVu_DSChuyenKTXM.SelectedIndex == 0)
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), int.Parse(txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper()));
+                        else
+                            dt = _cDonTu.getDS_ChuyenKTXM(CTaiKhoan.KyHieuMaTo, int.Parse(cmbNhanVienKiemTra.SelectedValue.ToString()), cmbNoiDungThuongVu_DSChuyenKTXM.SelectedValue.ToString(), int.Parse(txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper()));
+                    break;
             }
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
