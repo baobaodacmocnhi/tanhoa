@@ -11,6 +11,9 @@ using DocSo_PC.LinQ;
 using DocSo_PC.DAL.MaHoa;
 using DocSo_PC.DAL;
 using System.Transactions;
+using DocSo_PC.BaoCao;
+using DocSo_PC.BaoCao.MaHoa;
+using DocSo_PC.GUI.BaoCao;
 
 namespace DocSo_PC.GUI.MaHoa
 {
@@ -44,12 +47,18 @@ namespace DocSo_PC.GUI.MaHoa
                 cmbNoiNhan.ValueMember = "ID";
                 cmbNoiNhan.DisplayMember = "Name";
                 cmbNoiNhan.SelectedIndex = -1;
+                DataTable dt = _cNguoiDung.getDS_KTXM();
+                cmbKTXM_DSChuyenKTXM.DataSource = dt;
+                cmbKTXM_DSChuyenKTXM.ValueMember = "MaND";
+                cmbKTXM_DSChuyenKTXM.DisplayMember = "HoTen";
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        #region Nhận Đơn
 
         public void loadTTKH(HOADON entity)
         {
@@ -87,11 +96,6 @@ namespace DocSo_PC.GUI.MaHoa
             loadDonTu_LichSu(entity.ID);
         }
 
-        public void loadDonTu_LichSu(int MaDon)
-        {
-            dgvDonTuLichSu.DataSource = _cDonTu.getDS_LichSu(MaDon);
-        }
-
         public void Clear()
         {
             cmbNoiDung.SelectedIndex = -1;
@@ -104,16 +108,6 @@ namespace DocSo_PC.GUI.MaHoa
             txtNoiDung.Text = "";
             txtGhiChu.Text = "";
             ClearChuyenDon();
-        }
-
-        public void ClearChuyenDon()
-        {
-            dateChuyen.Value = DateTime.Now;
-            cmbNoiChuyen.SelectedIndex = -1;
-            cmbNoiNhan.SelectedIndex = -1;
-            cmbKTXM.DataSource = null;
-            txtNoiDung_LichSu.Text = "";
-            lbTinhTrang.Text = "Tình Trạng";
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -271,6 +265,33 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
+        private void cmbNoiDung_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbNoiDung.SelectedIndex >= 0)
+                txtNoiDung.Text = cmbNoiDung.SelectedItem.ToString();
+            else
+                txtNoiDung.Text = "";
+        }
+
+        #endregion
+
+        #region Danh Sách
+
+        public void loadDonTu_LichSu(int MaDon)
+        {
+            dgvDonTuLichSu.DataSource = _cDonTu.getDS_LichSu(MaDon);
+        }
+
+        public void ClearChuyenDon()
+        {
+            dateChuyen.Value = DateTime.Now;
+            cmbNoiChuyen.SelectedIndex = -1;
+            cmbNoiNhan.SelectedIndex = -1;
+            cmbKTXM.DataSource = null;
+            txtNoiDung_LichSu.Text = "";
+            lbTinhTrang.Text = "Tình Trạng";
+        }
+
         private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dgvDanhSach.RowHeadersDefaultCellStyle.ForeColor))
@@ -313,7 +334,7 @@ namespace DocSo_PC.GUI.MaHoa
                         entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
                         entity.NoiChuyen = cmbNoiChuyen.Text;
                         entity.ID_NoiNhan = int.Parse(cmbNoiNhan.SelectedValue.ToString());
-                        entity.NoiNhan = cmbNoiNhan.SelectedValue.ToString();
+                        entity.NoiNhan = cmbNoiNhan.SelectedText;
                         entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
                         entity.IDMaDon = _dontu.ID;
                         if (cmbNoiNhan.SelectedValue.ToString() == "2")
@@ -376,14 +397,72 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
-        private void cmbNoiDung_SelectedIndexChanged(object sender, EventArgs e)
+        #endregion
+
+        #region Báo Cáo
+
+        private void btnIn_DSChuyenKTXM_Click(object sender, EventArgs e)
         {
-            if (cmbNoiDung.SelectedIndex >= 0)
-                txtNoiDung.Text = cmbNoiDung.SelectedItem.ToString();
+            DataTable dt;
+            if(cmbKTXM_DSChuyenKTXM.SelectedIndex == 0)
+             dt = _cDonTu.getDS_ChuyenKTXM(dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
             else
-                txtNoiDung.Text = "";
+                dt = _cDonTu.getDS_ChuyenKTXM(int.Parse(cmbKTXM_DSChuyenKTXM.SelectedValue.ToString()),dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                dsBaoCao dsBaoCao = new dsBaoCao();
+                if (chkChuaKTXM_DSChuyenKTXM.Checked)
+                    foreach (DataRow itemRow in dt.Rows)
+                    {
+                        if (bool.Parse(itemRow["KTXM"].ToString()) == false)
+                        {
+                            DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
+
+                            dr["ThoiGian"] = "Từ ngày " + dateTu_DSChuyenKTXM.Value.ToString("dd/MM/yyyy") + " đến ngày " + dateDen_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                            dr["MaDon"] = itemRow["MaDon"].ToString();
+                            dr["NgayChuyen"] = itemRow["NgayChuyen"];
+                            //dr["NgayNhan"] = itemRow["NgayNhan"];
+                            if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
+                                dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                            dr["HoTen"] = itemRow["HoTen"];
+                            dr["DiaChi"] = itemRow["DiaChi"];
+                            dr["NoiDung"] = itemRow["NoiDung"];
+                            dr["GhiChu"] = itemRow["NoiDungKTXM"];
+                            dr["NguoiKTXM"] = itemRow["NguoiKTXM"];
+                            dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
+
+                            dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
+                        }
+                    }
+                else
+                    foreach (DataRow itemRow in dt.Rows)
+                    {
+                        DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
+
+                        dr["ThoiGian"] = "Từ ngày " + dateTu_DSChuyenKTXM.Value.ToString("dd/MM/yyyy") + " đến ngày " + dateDen_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                        dr["MaDon"] = itemRow["MaDon"].ToString();
+                        dr["NgayChuyen"] = itemRow["NgayChuyen"];
+                        //dr["NgayNhan"] = itemRow["NgayNhan"];
+                        if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
+                            dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["HoTen"] = itemRow["HoTen"];
+                        dr["DiaChi"] = itemRow["DiaChi"];
+                        dr["NoiDung"] = itemRow["NoiDung"];
+                        dr["GhiChu"] = itemRow["NoiDungKTXM"];
+                        dr["NguoiKTXM"] = itemRow["NguoiKTXM"];
+                        dr["KTXM"] = itemRow["KTXM"];
+                        dr["NgayKTXM"] = itemRow["NgayKTXM"];
+                        dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
+
+                        dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
+                    }
+                rptDSChuyenKTXM rpt = new rptDSChuyenKTXM();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
+            }
         }
 
-
+        #endregion
     }
 }
