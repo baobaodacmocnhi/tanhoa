@@ -101,7 +101,29 @@ namespace DocSo_PC.DAL.MaHoa
             return _cDAL.LINQToDataTable(query);
         }
 
-        public bool checkExist(int CreateBy, int MaDon,  string DanhBo, DateTime NgayKTXM, string HienTrangKiemTra)
+        public DataTable getDS(int MaNV_KTXM, DateTime FromNgayKTXM, DateTime ToNgayKTXM)
+        {
+            var query = from itemCTKTXM in _db.MaHoa_KTXMs
+                        join itemUser in _db.NguoiDungs on itemCTKTXM.CreateBy equals itemUser.MaND
+                        where itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
+                        && itemCTKTXM.CreateBy == MaNV_KTXM
+                        select new
+                        {
+                            MaDon = itemCTKTXM.IDMaDon,
+                            TenLD = itemCTKTXM.MaHoa_DonTu.NoiDung,
+                            MaCTKTXM = itemCTKTXM.ID,
+                            itemCTKTXM.DanhBo,
+                            itemCTKTXM.HoTen,
+                            itemCTKTXM.DiaChi,
+                            itemCTKTXM.NgayKTXM,
+                            itemCTKTXM.NoiDungKiemTra,
+                            CreateBy = itemUser.HoTen,
+                            itemCTKTXM.BanChinh,
+                        };
+            return _cDAL.LINQToDataTable(query);
+        }
+
+        public bool checkExist(int CreateBy, int MaDon, string DanhBo, DateTime NgayKTXM, string HienTrangKiemTra)
         {
             return _db.MaHoa_KTXMs.Any(item => item.CreateBy == CreateBy && item.IDMaDon == MaDon && item.DanhBo == DanhBo && item.NgayKTXM == NgayKTXM && item.HienTrangKiemTra == HienTrangKiemTra);
         }

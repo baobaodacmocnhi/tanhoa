@@ -86,11 +86,6 @@
             this.dateChuyen = new System.Windows.Forms.DateTimePicker();
             this.label30 = new System.Windows.Forms.Label();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dateDenNgay = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dateTuNgay = new System.Windows.Forms.DateTimePicker();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,16 +96,21 @@
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.XemHinh = new System.Windows.Forms.DataGridViewButtonColumn();
             this.TinhTrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dateDenNgay = new System.Windows.Forms.DateTimePicker();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dateTuNgay = new System.Windows.Forms.DateTimePicker();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkChuaKTXM_DSChuyenKTXM = new System.Windows.Forms.CheckBox();
+            this.cmbKTXM_DSChuyenKTXM = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.btnIn_DSChuyenKTXM = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.dateDen_DSChuyenKTXM = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.dateTu_DSChuyenKTXM = new System.Windows.Forms.DateTimePicker();
-            this.cmbKTXM_DSChuyenKTXM = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.chkChuaKTXM_DSChuyenKTXM = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -432,7 +432,6 @@
             // dgvDonTuLichSu
             // 
             this.dgvDonTuLichSu.AllowUserToAddRows = false;
-            this.dgvDonTuLichSu.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
@@ -681,52 +680,6 @@
             this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
             // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(399, 4);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 23);
-            this.btnXem.TabIndex = 9;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(237, 9);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(55, 13);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "Đến Ngày";
-            // 
-            // dateDenNgay
-            // 
-            this.dateDenNgay.CustomFormat = "dd/MM/yyyy";
-            this.dateDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDenNgay.Location = new System.Drawing.Point(298, 6);
-            this.dateDenNgay.Name = "dateDenNgay";
-            this.dateDenNgay.Size = new System.Drawing.Size(95, 20);
-            this.dateDenNgay.TabIndex = 8;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(82, 9);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(48, 13);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Từ Ngày";
-            // 
-            // dateTuNgay
-            // 
-            this.dateTuNgay.CustomFormat = "dd/MM/yyyy";
-            this.dateTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTuNgay.Location = new System.Drawing.Point(136, 6);
-            this.dateTuNgay.Name = "dateTuNgay";
-            this.dateTuNgay.Size = new System.Drawing.Size(95, 20);
-            this.dateTuNgay.TabIndex = 6;
-            // 
             // CreateDate
             // 
             this.CreateDate.DataPropertyName = "CreateDate";
@@ -792,6 +745,52 @@
             this.TinhTrang.HeaderText = "Tình Trạng";
             this.TinhTrang.Name = "TinhTrang";
             // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(399, 4);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 9;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(237, 9);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(55, 13);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Đến Ngày";
+            // 
+            // dateDenNgay
+            // 
+            this.dateDenNgay.CustomFormat = "dd/MM/yyyy";
+            this.dateDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDenNgay.Location = new System.Drawing.Point(298, 6);
+            this.dateDenNgay.Name = "dateDenNgay";
+            this.dateDenNgay.Size = new System.Drawing.Size(95, 20);
+            this.dateDenNgay.TabIndex = 8;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(82, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(48, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Từ Ngày";
+            // 
+            // dateTuNgay
+            // 
+            this.dateTuNgay.CustomFormat = "dd/MM/yyyy";
+            this.dateTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTuNgay.Location = new System.Drawing.Point(136, 6);
+            this.dateTuNgay.Name = "dateTuNgay";
+            this.dateTuNgay.Size = new System.Drawing.Size(95, 20);
+            this.dateTuNgay.TabIndex = 6;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.groupBox2);
@@ -818,6 +817,34 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh Sách Chuyển KTXM";
+            // 
+            // chkChuaKTXM_DSChuyenKTXM
+            // 
+            this.chkChuaKTXM_DSChuyenKTXM.AutoSize = true;
+            this.chkChuaKTXM_DSChuyenKTXM.Location = new System.Drawing.Point(316, 17);
+            this.chkChuaKTXM_DSChuyenKTXM.Name = "chkChuaKTXM_DSChuyenKTXM";
+            this.chkChuaKTXM_DSChuyenKTXM.Size = new System.Drawing.Size(84, 17);
+            this.chkChuaKTXM_DSChuyenKTXM.TabIndex = 44;
+            this.chkChuaKTXM_DSChuyenKTXM.Text = "Chưa KTXM";
+            this.chkChuaKTXM_DSChuyenKTXM.UseVisualStyleBackColor = true;
+            // 
+            // cmbKTXM_DSChuyenKTXM
+            // 
+            this.cmbKTXM_DSChuyenKTXM.FormattingEnabled = true;
+            this.cmbKTXM_DSChuyenKTXM.Location = new System.Drawing.Point(168, 40);
+            this.cmbKTXM_DSChuyenKTXM.MaxDropDownItems = 10;
+            this.cmbKTXM_DSChuyenKTXM.Name = "cmbKTXM_DSChuyenKTXM";
+            this.cmbKTXM_DSChuyenKTXM.Size = new System.Drawing.Size(150, 21);
+            this.cmbKTXM_DSChuyenKTXM.TabIndex = 43;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(168, 21);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(102, 13);
+            this.label17.TabIndex = 42;
+            this.label17.Text = "Nhân Viên Kiểm Tra";
             // 
             // btnIn_DSChuyenKTXM
             // 
@@ -864,34 +891,6 @@
             this.dateTu_DSChuyenKTXM.Name = "dateTu_DSChuyenKTXM";
             this.dateTu_DSChuyenKTXM.Size = new System.Drawing.Size(95, 20);
             this.dateTu_DSChuyenKTXM.TabIndex = 11;
-            // 
-            // cmbKTXM_DSChuyenKTXM
-            // 
-            this.cmbKTXM_DSChuyenKTXM.FormattingEnabled = true;
-            this.cmbKTXM_DSChuyenKTXM.Location = new System.Drawing.Point(168, 40);
-            this.cmbKTXM_DSChuyenKTXM.MaxDropDownItems = 10;
-            this.cmbKTXM_DSChuyenKTXM.Name = "cmbKTXM_DSChuyenKTXM";
-            this.cmbKTXM_DSChuyenKTXM.Size = new System.Drawing.Size(150, 21);
-            this.cmbKTXM_DSChuyenKTXM.TabIndex = 43;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(168, 21);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(102, 13);
-            this.label17.TabIndex = 42;
-            this.label17.Text = "Nhân Viên Kiểm Tra";
-            // 
-            // chkChuaKTXM_DSChuyenKTXM
-            // 
-            this.chkChuaKTXM_DSChuyenKTXM.AutoSize = true;
-            this.chkChuaKTXM_DSChuyenKTXM.Location = new System.Drawing.Point(316, 17);
-            this.chkChuaKTXM_DSChuyenKTXM.Name = "chkChuaKTXM_DSChuyenKTXM";
-            this.chkChuaKTXM_DSChuyenKTXM.Size = new System.Drawing.Size(84, 17);
-            this.chkChuaKTXM_DSChuyenKTXM.TabIndex = 44;
-            this.chkChuaKTXM_DSChuyenKTXM.Text = "Chưa KTXM";
-            this.chkChuaKTXM_DSChuyenKTXM.UseVisualStyleBackColor = true;
             // 
             // frmDonTu
             // 

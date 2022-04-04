@@ -69,11 +69,6 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgvHinh = new System.Windows.Forms.DataGridView();
-            this.ID_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Image_Hinh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Name_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bytes_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Loai_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnChonFile = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -123,6 +118,13 @@
             this.dateDenNgay = new System.Windows.Forms.DateTimePicker();
             this.label22 = new System.Windows.Forms.Label();
             this.dateTuNgay = new System.Windows.Forms.DateTimePicker();
+            this.cmbKTXM = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.ID_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Image_Hinh = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Name_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bytes_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loai_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -470,7 +472,6 @@
             // dgvHinh
             // 
             this.dgvHinh.AllowUserToAddRows = false;
-            this.dgvHinh.AllowUserToDeleteRows = false;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -492,42 +493,6 @@
             this.dgvHinh.TabIndex = 10;
             this.dgvHinh.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvHinh_UserDeletingRow);
             this.dgvHinh.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvHinh_MouseDoubleClick);
-            // 
-            // ID_Hinh
-            // 
-            this.ID_Hinh.DataPropertyName = "ID";
-            this.ID_Hinh.HeaderText = "ID";
-            this.ID_Hinh.Name = "ID_Hinh";
-            this.ID_Hinh.Visible = false;
-            // 
-            // Image_Hinh
-            // 
-            this.Image_Hinh.HeaderText = "Image";
-            this.Image_Hinh.Name = "Image_Hinh";
-            this.Image_Hinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Image_Hinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Image_Hinh.Width = 50;
-            // 
-            // Name_Hinh
-            // 
-            this.Name_Hinh.DataPropertyName = "Name";
-            this.Name_Hinh.HeaderText = "File";
-            this.Name_Hinh.Name = "Name_Hinh";
-            this.Name_Hinh.Width = 150;
-            // 
-            // Bytes_Hinh
-            // 
-            this.Bytes_Hinh.DataPropertyName = "Bytes";
-            this.Bytes_Hinh.HeaderText = "Bytes";
-            this.Bytes_Hinh.Name = "Bytes_Hinh";
-            this.Bytes_Hinh.Visible = false;
-            // 
-            // Loai_Hinh
-            // 
-            this.Loai_Hinh.DataPropertyName = "Loai";
-            this.Loai_Hinh.HeaderText = "Loai_Hinh";
-            this.Loai_Hinh.Name = "Loai_Hinh";
-            this.Loai_Hinh.Visible = false;
             // 
             // btnChonFile
             // 
@@ -924,6 +889,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.cmbKTXM);
+            this.tabPage2.Controls.Add(this.label24);
             this.tabPage2.Controls.Add(this.dgvDanhSach);
             this.tabPage2.Controls.Add(this.btnXem);
             this.tabPage2.Controls.Add(this.label21);
@@ -1029,17 +996,18 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(399, 4);
+            this.btnXem.Location = new System.Drawing.Point(586, 4);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 61;
             this.btnXem.Text = "Xem";
             this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(237, 9);
+            this.label21.Location = new System.Drawing.Point(424, 9);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(55, 13);
             this.label21.TabIndex = 59;
@@ -1049,7 +1017,7 @@
             // 
             this.dateDenNgay.CustomFormat = "dd/MM/yyyy";
             this.dateDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDenNgay.Location = new System.Drawing.Point(298, 6);
+            this.dateDenNgay.Location = new System.Drawing.Point(485, 6);
             this.dateDenNgay.Name = "dateDenNgay";
             this.dateDenNgay.Size = new System.Drawing.Size(95, 20);
             this.dateDenNgay.TabIndex = 60;
@@ -1057,7 +1025,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(82, 9);
+            this.label22.Location = new System.Drawing.Point(269, 9);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(48, 13);
             this.label22.TabIndex = 57;
@@ -1067,10 +1035,67 @@
             // 
             this.dateTuNgay.CustomFormat = "dd/MM/yyyy";
             this.dateTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTuNgay.Location = new System.Drawing.Point(136, 6);
+            this.dateTuNgay.Location = new System.Drawing.Point(323, 6);
             this.dateTuNgay.Name = "dateTuNgay";
             this.dateTuNgay.Size = new System.Drawing.Size(95, 20);
             this.dateTuNgay.TabIndex = 58;
+            // 
+            // cmbKTXM
+            // 
+            this.cmbKTXM.FormattingEnabled = true;
+            this.cmbKTXM.Location = new System.Drawing.Point(113, 6);
+            this.cmbKTXM.MaxDropDownItems = 10;
+            this.cmbKTXM.Name = "cmbKTXM";
+            this.cmbKTXM.Size = new System.Drawing.Size(150, 21);
+            this.cmbKTXM.TabIndex = 71;
+            this.cmbKTXM.Visible = false;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(5, 9);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(102, 13);
+            this.label24.TabIndex = 70;
+            this.label24.Text = "Nhân Viên Kiểm Tra";
+            this.label24.Visible = false;
+            // 
+            // ID_Hinh
+            // 
+            this.ID_Hinh.DataPropertyName = "ID";
+            this.ID_Hinh.HeaderText = "ID";
+            this.ID_Hinh.Name = "ID_Hinh";
+            this.ID_Hinh.Visible = false;
+            // 
+            // Image_Hinh
+            // 
+            this.Image_Hinh.HeaderText = "Image";
+            this.Image_Hinh.Image = global::DocSo_PC.Properties.Resources.file_24x24;
+            this.Image_Hinh.Name = "Image_Hinh";
+            this.Image_Hinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Image_Hinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Image_Hinh.Width = 50;
+            // 
+            // Name_Hinh
+            // 
+            this.Name_Hinh.DataPropertyName = "Name";
+            this.Name_Hinh.HeaderText = "File";
+            this.Name_Hinh.Name = "Name_Hinh";
+            this.Name_Hinh.Width = 150;
+            // 
+            // Bytes_Hinh
+            // 
+            this.Bytes_Hinh.DataPropertyName = "Bytes";
+            this.Bytes_Hinh.HeaderText = "Bytes";
+            this.Bytes_Hinh.Name = "Bytes_Hinh";
+            this.Bytes_Hinh.Visible = false;
+            // 
+            // Loai_Hinh
+            // 
+            this.Loai_Hinh.DataPropertyName = "Loai";
+            this.Loai_Hinh.HeaderText = "Loai_Hinh";
+            this.Loai_Hinh.Name = "Loai_Hinh";
+            this.Loai_Hinh.Visible = false;
             // 
             // frmKTXM
             // 
@@ -1134,11 +1159,6 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dgvHinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Hinh;
-        private System.Windows.Forms.DataGridViewImageColumn Image_Hinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name_Hinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
         private System.Windows.Forms.Button btnChonFile;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1189,6 +1209,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi_DS;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung_DS;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_DS;
+        private System.Windows.Forms.ComboBox cmbKTXM;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Hinh;
+        private System.Windows.Forms.DataGridViewImageColumn Image_Hinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name_Hinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
 
 
     }

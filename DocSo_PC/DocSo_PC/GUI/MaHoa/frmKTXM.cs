@@ -21,6 +21,7 @@ namespace DocSo_PC.GUI.MaHoa
         CDHN _cDHN = new CDHN();
         CDonTu _cDonTu = new CDonTu();
         CThuTien _cThuTien = new CThuTien();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
 
         MaHoa_DonTu _dontu = null;
@@ -35,11 +36,26 @@ namespace DocSo_PC.GUI.MaHoa
         private void frmKTXM_Load(object sender, EventArgs e)
         {
             dgvDSKetQuaKiemTra.AutoGenerateColumns = false;
+            dgvDanhSach.AutoGenerateColumns = false;
             dgvHinh.AutoGenerateColumns = false;
             cmbHienTrangKiemTra.DataSource = _cKTXM.getDS_HienTrang();
             cmbHienTrangKiemTra.DisplayMember = "Name";
             cmbHienTrangKiemTra.ValueMember = "Name";
             cmbHienTrangKiemTra.SelectedIndex = -1;
+            if (CNguoiDung.Doi == true || CNguoiDung.ToTruong == true)
+            {
+                label24.Visible = true;
+                cmbKTXM.Visible = true;
+                DataTable dt = _cNguoiDung.getDS_KTXM();
+                cmbKTXM.DataSource = dt;
+                cmbKTXM.ValueMember = "MaND";
+                cmbKTXM.DisplayMember = "HoTen";
+            }
+            else
+            {
+                label24.Visible = false;
+                cmbKTXM.Visible = false;
+            }
         }
 
         public void loadTTKH(HOADON hoadon)
@@ -348,7 +364,7 @@ namespace DocSo_PC.GUI.MaHoa
                                 en.IDParent = ctktxm.ID;
                                 en.Name = item.Cells["Name_Hinh"].Value.ToString();
                                 en.Loai = item.Cells["Loai_Hinh"].Value.ToString();
-                                if (_wsDHN.ghi_Hinh_MaHoa("KTXM", en.ID.ToString(), en.Name + en.Loai, Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString())) == true)
+                                if (_wsDHN.ghi_Hinh_MaHoa("KTXM", ctktxm.ID.ToString(), en.Name + en.Loai, Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString())) == true)
                                     _cKTXM.Them_Hinh(en);
                             }
                             if (_dontu != null)
@@ -569,7 +585,11 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            _cKTXM.LoadImageView(_wsDHN.get_Hinh_MaHoa("KTXM", _ctktxm.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()));
+            byte[] hinh = _wsDHN.get_Hinh_MaHoa("KTXM", _ctktxm.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+            if(hinh!=null)
+                _cKTXM.LoadImageView(hinh);
+            else
+                MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvHinh_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -618,6 +638,18 @@ namespace DocSo_PC.GUI.MaHoa
             }
             catch (Exception)
             {
+            }
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.Doi == true || CNguoiDung.ToTruong == true)
+            {
+                dgvDanhSach.DataSource = _cKTXM.getDS(int.Parse(cmbKTXM.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+            }
+            else
+            {
+                 dgvDanhSach.DataSource=_cKTXM.getDS(CNguoiDung.MaND,dateTuNgay.Value,dateDenNgay.Value);
             }
         }
 

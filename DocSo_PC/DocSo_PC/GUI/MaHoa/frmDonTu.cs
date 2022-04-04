@@ -48,6 +48,10 @@ namespace DocSo_PC.GUI.MaHoa
                 cmbNoiNhan.DisplayMember = "Name";
                 cmbNoiNhan.SelectedIndex = -1;
                 DataTable dt = _cNguoiDung.getDS_KTXM();
+                DataRow dr = dt.NewRow();
+                dr["MaND"] = 0;
+                dr["HoTen"] = "Tất Cả";
+                dt.Rows.InsertAt(dr, 0);
                 cmbKTXM_DSChuyenKTXM.DataSource = dt;
                 cmbKTXM_DSChuyenKTXM.ValueMember = "MaND";
                 cmbKTXM_DSChuyenKTXM.DisplayMember = "HoTen";
@@ -334,13 +338,13 @@ namespace DocSo_PC.GUI.MaHoa
                         entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
                         entity.NoiChuyen = cmbNoiChuyen.Text;
                         entity.ID_NoiNhan = int.Parse(cmbNoiNhan.SelectedValue.ToString());
-                        entity.NoiNhan = cmbNoiNhan.SelectedText;
+                        entity.NoiNhan = cmbNoiNhan.Text;
                         entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
                         entity.IDMaDon = _dontu.ID;
                         if (cmbNoiNhan.SelectedValue.ToString() == "2")
                         {
                             entity.ID_KTXM = int.Parse(cmbKTXM.SelectedValue.ToString());
-                            entity.KTXM = cmbKTXM.SelectedText.ToString();
+                            entity.KTXM = cmbKTXM.Text;
                         }
                         if (_cDonTu.Them_LichSu(entity) == true)
                         {
@@ -403,18 +407,41 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnIn_DSChuyenKTXM_Click(object sender, EventArgs e)
         {
-            DataTable dt;
-            if(cmbKTXM_DSChuyenKTXM.SelectedIndex == 0)
-             dt = _cDonTu.getDS_ChuyenKTXM(dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
-            else
-                dt = _cDonTu.getDS_ChuyenKTXM(int.Parse(cmbKTXM_DSChuyenKTXM.SelectedValue.ToString()),dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
-            if (dt != null && dt.Rows.Count > 0)
+            try
             {
-                dsBaoCao dsBaoCao = new dsBaoCao();
-                if (chkChuaKTXM_DSChuyenKTXM.Checked)
-                    foreach (DataRow itemRow in dt.Rows)
-                    {
-                        if (bool.Parse(itemRow["KTXM"].ToString()) == false)
+                DataTable dt;
+                if (cmbKTXM_DSChuyenKTXM.SelectedIndex == 0)
+                    dt = _cDonTu.getDS_ChuyenKTXM(dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                else
+                    dt = _cDonTu.getDS_ChuyenKTXM(int.Parse(cmbKTXM_DSChuyenKTXM.SelectedValue.ToString()), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    dsBaoCao dsBaoCao = new dsBaoCao();
+                    if (chkChuaKTXM_DSChuyenKTXM.Checked)
+                        foreach (DataRow itemRow in dt.Rows)
+                        {
+                            if (bool.Parse(itemRow["KTXM"].ToString()) == false)
+                            {
+                                DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
+
+                                dr["ThoiGian"] = "Từ ngày " + dateTu_DSChuyenKTXM.Value.ToString("dd/MM/yyyy") + " đến ngày " + dateDen_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                                dr["MaDon"] = itemRow["MaDon"].ToString();
+                                dr["NgayChuyen"] = itemRow["NgayChuyen"];
+                                //dr["NgayNhan"] = itemRow["NgayNhan"];
+                                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
+                                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                                dr["HoTen"] = itemRow["HoTen"];
+                                dr["DiaChi"] = itemRow["DiaChi"];
+                                dr["NoiDung"] = itemRow["NoiDung"];
+                                dr["GhiChu"] = itemRow["NoiDungKTXM"];
+                                dr["NguoiKTXM"] = itemRow["NguoiKTXM"];
+                                dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
+
+                                dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
+                            }
+                        }
+                    else
+                        foreach (DataRow itemRow in dt.Rows)
                         {
                             DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
 
@@ -429,37 +456,21 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["NoiDung"] = itemRow["NoiDung"];
                             dr["GhiChu"] = itemRow["NoiDungKTXM"];
                             dr["NguoiKTXM"] = itemRow["NguoiKTXM"];
+                            dr["KTXM"] = itemRow["KTXM"];
+                            dr["NgayKTXM"] = itemRow["NgayKTXM"];
                             dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
 
                             dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
                         }
-                    }
-                else
-                    foreach (DataRow itemRow in dt.Rows)
-                    {
-                        DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
-
-                        dr["ThoiGian"] = "Từ ngày " + dateTu_DSChuyenKTXM.Value.ToString("dd/MM/yyyy") + " đến ngày " + dateDen_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
-                        dr["MaDon"] = itemRow["MaDon"].ToString();
-                        dr["NgayChuyen"] = itemRow["NgayChuyen"];
-                        //dr["NgayNhan"] = itemRow["NgayNhan"];
-                        if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
-                            dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        dr["HoTen"] = itemRow["HoTen"];
-                        dr["DiaChi"] = itemRow["DiaChi"];
-                        dr["NoiDung"] = itemRow["NoiDung"];
-                        dr["GhiChu"] = itemRow["NoiDungKTXM"];
-                        dr["NguoiKTXM"] = itemRow["NguoiKTXM"];
-                        dr["KTXM"] = itemRow["KTXM"];
-                        dr["NgayKTXM"] = itemRow["NgayKTXM"];
-                        dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
-
-                        dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
-                    }
-                rptDSChuyenKTXM rpt = new rptDSChuyenKTXM();
-                rpt.SetDataSource(dsBaoCao);
-                frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                frm.Show();
+                    rptDSChuyenKTXM rpt = new rptDSChuyenKTXM();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

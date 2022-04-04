@@ -56,6 +56,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnThem = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnInThuBao = new System.Windows.Forms.Button();
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvDCBD = new System.Windows.Forms.DataGridView();
@@ -76,7 +77,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dateDen_DS = new System.Windows.Forms.DateTimePicker();
-            this.btnInThongBao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -285,7 +285,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.btnInThongBao);
+            this.tabPage2.Controls.Add(this.btnInThuBao);
             this.tabPage2.Controls.Add(this.btnInPhieu);
             this.tabPage2.Controls.Add(this.btnXoa);
             this.tabPage2.Controls.Add(this.dgvDCBD);
@@ -301,6 +301,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Danh Sách";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnInThuBao
+            // 
+            this.btnInThuBao.Location = new System.Drawing.Point(642, 4);
+            this.btnInThuBao.Name = "btnInThuBao";
+            this.btnInThuBao.Size = new System.Drawing.Size(80, 23);
+            this.btnInThuBao.TabIndex = 71;
+            this.btnInThuBao.Text = "In Thư Báo";
+            this.btnInThuBao.UseVisualStyleBackColor = true;
+            this.btnInThuBao.Click += new System.EventHandler(this.btnInThuBao_Click);
             // 
             // btnInPhieu
             // 
@@ -499,16 +509,6 @@
             this.dateDen_DS.Size = new System.Drawing.Size(95, 20);
             this.dateDen_DS.TabIndex = 66;
             // 
-            // btnInThongBao
-            // 
-            this.btnInThongBao.Location = new System.Drawing.Point(642, 4);
-            this.btnInThongBao.Name = "btnInThongBao";
-            this.btnInThongBao.Size = new System.Drawing.Size(80, 23);
-            this.btnInThongBao.TabIndex = 71;
-            this.btnInThongBao.Text = "In Thông Báo";
-            this.btnInThongBao.UseVisualStyleBackColor = true;
-            this.btnInThongBao.Click += new System.EventHandler(this.btnInThongBao_Click);
-            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -571,6 +571,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieuMoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn HieuLucKy;
         private System.Windows.Forms.Button btnInPhieu;
-        private System.Windows.Forms.Button btnInThongBao;
+        private System.Windows.Forms.Button btnInThuBao;
     }
 }

@@ -89,7 +89,7 @@ namespace DocSo_PC.DAL.MaHoa
                         orderby item.CreateDate descending
                         select new
                         {
-                            Chon = false,
+                            Chon = true,
                             item.ID,
                             item.ThongTin,
                             item.CreateDate,

@@ -275,6 +275,7 @@
       <Column Name="BaoKinhDoanh" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="DMHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhanMay" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ChuBao" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.DocSo_BAK" Member="DocSo_BAKs">
@@ -440,6 +441,17 @@
       <Column Name="DHNSaiTT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="BaoKinhDoanh" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="DMHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DocSo_Web" Member="DocSo_Webs">
+    <Type Name="DocSo_Web">
+      <Column Name="DanhBo" Type="System.String" DbType="Char(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nam" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Ky" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Dot" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChiSo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.DocSo_Zalo" Member="DocSo_Zalos">
@@ -1199,6 +1211,15 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Temp" Member="Temps">
+    <Type Name="Temp">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaHD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>

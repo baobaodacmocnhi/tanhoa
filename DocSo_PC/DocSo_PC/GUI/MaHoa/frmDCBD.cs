@@ -33,12 +33,16 @@ namespace DocSo_PC.GUI.MaHoa
         private void frmDieuChinhThongTin_Load(object sender, EventArgs e)
         {
             dgvDanhSach.AutoGenerateColumns = false;
-
+            dgvDCBD.AutoGenerateColumns = false;
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
             dgvDanhSach.DataSource = _cDonTu.getDS_ChuyenDCBD(dateTuNgay.Value, dateDenNgay.Value);
+            foreach (DataGridViewRow item in dgvDanhSach.Rows)
+            {
+                item.Cells["Chon"].Value = true;
+            }
         }
 
         private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -124,7 +128,7 @@ namespace DocSo_PC.GUI.MaHoa
                 if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                        foreach (DataGridViewRow item in dgvDanhSach.Rows)
+                        foreach (DataGridViewRow item in dgvDCBD.Rows)
                             if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true)
                             {
                                 MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
@@ -159,7 +163,7 @@ namespace DocSo_PC.GUI.MaHoa
         {
             try
             {
-                foreach (DataGridViewRow item in dgvDanhSach.Rows)
+                foreach (DataGridViewRow item in dgvDCBD.Rows)
                     if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true)
                     {
                         MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
@@ -184,7 +188,8 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DinhMucHN"] = en.DinhMucHN;
                             ///Biến Động
                             dr["GiaBieuBD"] = en.GiaBieu_BD;
-
+                            dr["ChucVu"] = CNguoiDung.ChucVu+"\n"+CNguoiDung.TenPhong;
+                            dr["NguoiKy"] = CNguoiDung.NguoiKy;
                             dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
                             rptPhieuDCBD_15112019 rpt = new rptPhieuDCBD_15112019();
@@ -208,13 +213,13 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
-        private void btnInThongBao_Click(object sender, EventArgs e)
+        private void btnInThuBao_Click(object sender, EventArgs e)
         {
             try
             {
                 dsBaoCao dsBaoCao = new dsBaoCao();
                 dsBaoCao dsBaoCaoCC = new dsBaoCao();
-                foreach (DataGridViewRow item in dgvDanhSach.Rows)
+                foreach (DataGridViewRow item in dgvDCBD.Rows)
                     if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true)
                     {
                         MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));

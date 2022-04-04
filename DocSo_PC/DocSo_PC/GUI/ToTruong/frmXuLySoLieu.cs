@@ -237,6 +237,8 @@ namespace DocSo_PC.GUI.ToTruong
                     && ((item.Cells["CodeCu"].Value.ToString().Contains("4") && item.Cells["CodeMoi"].Value.ToString().Contains("5"))
                     || (item.Cells["CodeCu"].Value.ToString().Contains("4") && item.Cells["CodeMoi"].Value.ToString().Contains("8"))))
                     item.DefaultCellStyle.BackColor = Color.Yellow;
+                if (bool.Parse(item.Cells["ChuBao"].Value.ToString()) == true)
+                    item.DefaultCellStyle.BackColor = Color.Green;
             }
         }
 
