@@ -90,6 +90,7 @@
       <Column Name="BaoKinhDoanh" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="DMHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhanMay" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ChuBao" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>
