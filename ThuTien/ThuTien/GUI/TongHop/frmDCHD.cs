@@ -178,6 +178,7 @@ namespace ThuTien.GUI.TongHop
             {
                 if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+                    if(CNguoiDung.Admin==false)
                     foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
                         if (_cHoaDon.CheckDangNganBySoHoaDon(item.Cells["SoHoaDon_DC"].Value.ToString()))
                         {

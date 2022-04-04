@@ -238,6 +238,8 @@ namespace ThuTien.LinQ
 		
 		private string _PhanMay;
 		
+		private bool _ChuBao;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -400,6 +402,8 @@ namespace ThuTien.LinQ
     partial void OnDMHNChanged();
     partial void OnPhanMayChanging(string value);
     partial void OnPhanMayChanged();
+    partial void OnChuBaoChanging(bool value);
+    partial void OnChuBaoChanged();
     #endregion
 		
 		public DocSo()
@@ -1983,6 +1987,26 @@ namespace ThuTien.LinQ
 					this._PhanMay = value;
 					this.SendPropertyChanged("PhanMay");
 					this.OnPhanMayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChuBao", DbType="Bit NOT NULL")]
+		public bool ChuBao
+		{
+			get
+			{
+				return this._ChuBao;
+			}
+			set
+			{
+				if ((this._ChuBao != value))
+				{
+					this.OnChuBaoChanging(value);
+					this.SendPropertyChanging();
+					this._ChuBao = value;
+					this.SendPropertyChanged("ChuBao");
+					this.OnChuBaoChanged();
 				}
 			}
 		}

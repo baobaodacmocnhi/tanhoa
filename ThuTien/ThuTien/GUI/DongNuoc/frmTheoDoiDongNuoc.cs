@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ThuTien.DAL.QuanTri;
 using System.Globalization;
 using ThuTien.DAL.DongNuoc;
+using ThuTien.LinQ;
 
 namespace ThuTien.GUI.DongNuoc
 {
@@ -16,6 +17,7 @@ namespace ThuTien.GUI.DongNuoc
     {
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CDongNuoc _cDongNuoc = new CDongNuoc();
+        CTo _cTo = new CTo();
 
         public frmTheoDoiDongNuoc()
         {
@@ -24,9 +26,21 @@ namespace ThuTien.GUI.DongNuoc
 
         private void frmTheoDoiDongNuoc_Load(object sender, EventArgs e)
         {
-            cmbNhanVienDongNuoc.DataSource = _cNguoiDung.getDS_DongNuoc();
-            cmbNhanVienDongNuoc.DisplayMember = "HoTen";
-            cmbNhanVienDongNuoc.ValueMember = "MaND";
+            if (CNguoiDung.Doi)
+            {
+                cmbTo.DataSource = _cTo.getDS_HanhThu();
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+                cmbTo.Visible = true;
+            }
+            else
+            {
+                cmbNhanVienDongNuoc.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(CNguoiDung.MaTo);
+                cmbNhanVienDongNuoc.DisplayMember = "HoTen";
+                cmbNhanVienDongNuoc.ValueMember = "MaND";
+                cmbTo.Visible = false;
+                lbTo.Text = "Tổ: " + CNguoiDung.TenTo;
+            }
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewCTDN);
 
@@ -128,6 +142,16 @@ namespace ThuTien.GUI.DongNuoc
             if (e.Column.FieldName == "TongCong" && e.Value != null)
             {
                 e.DisplayText = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CNguoiDung.Doi == true && cmbTo.SelectedIndex >= 0)
+            {
+                cmbNhanVienDongNuoc.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(((TT_To)cmbTo.SelectedItem).MaTo);
+                cmbNhanVienDongNuoc.DisplayMember = "HoTen";
+                cmbNhanVienDongNuoc.ValueMember = "MaND";
             }
         }
     }

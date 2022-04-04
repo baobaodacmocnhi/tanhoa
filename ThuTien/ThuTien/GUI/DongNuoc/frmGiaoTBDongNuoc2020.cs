@@ -42,14 +42,30 @@ namespace ThuTien.GUI.DongNuoc
 
         private void frmGiaoTBDongNuoc_Load(object sender, EventArgs e)
         {
-            cmbTo.DataSource = _cTo.getDS_HanhThu();
-            cmbTo.DisplayMember = "TenTo";
-            cmbTo.ValueMember = "MaTo";
+            if (CNguoiDung.Doi)
+            {
+                cmbTo.DataSource = _cTo.getDS_HanhThu();
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+                cmbTo.Visible = true;
+            }
+            else
+            {
+                TT_NguoiDung nguoidung = new TT_NguoiDung();
+                nguoidung.MaND = -1;
+                nguoidung.HoTen = "Tất cả";
+                _lstND = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+                _lstND.Insert(0, nguoidung);
+                cmbNhanVienLap.DataSource = _lstND;
+                cmbNhanVienLap.DisplayMember = "HoTen";
+                cmbNhanVienLap.ValueMember = "MaND";
 
-            cmbNhanVienGiao.DataSource = _cNguoiDung.getDS_DongNuoc();
-            cmbNhanVienGiao.DisplayMember = "HoTen";
-            cmbNhanVienGiao.ValueMember = "MaND";
-
+                cmbNhanVienGiao.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(CNguoiDung.MaTo);
+                cmbNhanVienGiao.DisplayMember = "HoTen";
+                cmbNhanVienGiao.ValueMember = "MaND";
+                cmbTo.Visible = false;
+                lbTo.Text = "Tổ: " + CNguoiDung.TenTo;
+            }
             gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewCTDN);
 
             dateTu.Value = DateTime.Now;
@@ -666,7 +682,7 @@ namespace ThuTien.GUI.DongNuoc
             range.Value2 = arr;
         }
 
-        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbToCapNhat_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbToCapNhat.SelectedIndex > -1)
             {
@@ -703,16 +719,23 @@ namespace ThuTien.GUI.DongNuoc
 
         }
 
-        private void cmbTo_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TT_NguoiDung nguoidung = new TT_NguoiDung();
-            nguoidung.MaND = -1;
-            nguoidung.HoTen = "Tất cả";
-            _lstND = _cNguoiDung.GetDSHanhThuByMaTo(((TT_To)cmbTo.SelectedItem).MaTo);
-            _lstND.Insert(0, nguoidung);
-            cmbNhanVienLap.DataSource = _lstND;
-            cmbNhanVienLap.DisplayMember = "HoTen";
-            cmbNhanVienLap.ValueMember = "MaND";
+            if (CNguoiDung.Doi == true && cmbTo.SelectedIndex >= 0)
+            {
+                TT_NguoiDung nguoidung = new TT_NguoiDung();
+                nguoidung.MaND = -1;
+                nguoidung.HoTen = "Tất cả";
+                _lstND = _cNguoiDung.GetDSHanhThuByMaTo(((TT_To)cmbTo.SelectedItem).MaTo);
+                _lstND.Insert(0, nguoidung);
+                cmbNhanVienLap.DataSource = _lstND;
+                cmbNhanVienLap.DisplayMember = "HoTen";
+                cmbNhanVienLap.ValueMember = "MaND";
+
+                cmbNhanVienGiao.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(((TT_To)cmbTo.SelectedItem).MaTo);
+                cmbNhanVienGiao.DisplayMember = "HoTen";
+                cmbNhanVienGiao.ValueMember = "MaND";
+            }
         }
 
         private void gridViewDN_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)

@@ -8016,6 +8016,7 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on item.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where item.NGAYGIAITRACH.Value.Date >= FromNgayGiaiTrach.Date && item.NGAYGIAITRACH.Value.Date <= ToNgayGiaiTrach.Date
+                        && item.KhoaTienDu == false
                         orderby item.MALOTRINH ascending
                         select new
                         {

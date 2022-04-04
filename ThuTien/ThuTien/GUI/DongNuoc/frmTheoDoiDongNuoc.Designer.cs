@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -65,6 +65,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtTongCong = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.lbTo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -171,10 +173,10 @@
             // 
             // gridControl
             // 
-            gridLevelNode1.LevelTemplate = this.gridViewCTDN;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.LevelTemplate = this.gridViewCTDN;
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl.Location = new System.Drawing.Point(12, 39);
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
@@ -308,7 +310,7 @@
             // cmbNhanVienDongNuoc
             // 
             this.cmbNhanVienDongNuoc.FormattingEnabled = true;
-            this.cmbNhanVienDongNuoc.Location = new System.Drawing.Point(373, 12);
+            this.cmbNhanVienDongNuoc.Location = new System.Drawing.Point(457, 12);
             this.cmbNhanVienDongNuoc.Name = "cmbNhanVienDongNuoc";
             this.cmbNhanVienDongNuoc.Size = new System.Drawing.Size(118, 21);
             this.cmbNhanVienDongNuoc.TabIndex = 14;
@@ -316,7 +318,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(252, 15);
+            this.label4.Location = new System.Drawing.Point(336, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(115, 13);
             this.label4.TabIndex = 13;
@@ -324,7 +326,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(497, 10);
+            this.btnXem.Location = new System.Drawing.Point(581, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 28;
@@ -335,7 +337,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 15);
+            this.label1.Location = new System.Drawing.Point(158, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 29;
@@ -348,7 +350,7 @@
             "Tất Cả",
             "Đã Đóng Nước",
             "Đã Mở Nước"});
-            this.cmbTimTheo.Location = new System.Drawing.Point(128, 12);
+            this.cmbTimTheo.Location = new System.Drawing.Point(212, 12);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(118, 21);
             this.cmbTimTheo.TabIndex = 30;
@@ -401,6 +403,25 @@
             this.label5.TabIndex = 35;
             this.label5.Text = "Tổng Cộng";
             // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(92, 12);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(60, 21);
+            this.cmbTo.TabIndex = 105;
+            this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
+            // 
+            // lbTo
+            // 
+            this.lbTo.AutoSize = true;
+            this.lbTo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTo.Location = new System.Drawing.Point(54, 14);
+            this.lbTo.Name = "lbTo";
+            this.lbTo.Size = new System.Drawing.Size(32, 19);
+            this.lbTo.TabIndex = 104;
+            this.lbTo.Text = "Tổ:";
+            // 
             // frmTheoDoiDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -408,6 +429,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1262, 722);
+            this.Controls.Add(this.cmbTo);
+            this.Controls.Add(this.lbTo);
             this.Controls.Add(this.txtTongCong);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtTongHD);
@@ -471,5 +494,7 @@
         private System.Windows.Forms.TextBox txtTongCong;
         private System.Windows.Forms.Label label5;
         private DevExpress.XtraGrid.Columns.GridColumn MaKQDN;
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label lbTo;
     }
 }
