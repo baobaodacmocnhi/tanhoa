@@ -258,14 +258,14 @@ namespace DocSo_PC.GUI.MaHoa
                                     if (en.DV != "")
                                         dr["DV"] = en.DV;
                                 dr["MaDon"] = en.IDMaDon.ToString();
-                                dr["ChucVu"] = CNguoiDung.ChucVu.Replace(" PHÒNG", "");
+                                dr["ChucVu"] = CNguoiDung.ChucVu + "\n" + CNguoiDung.TenPhong;
                                 dr["NguoiKy"] = CNguoiDung.NguoiKy;
                                 dr["TenPhong"] = "";
                                 dsBaoCaoCC.Tables["DCBD"].Rows.Add(dr);
 
-                                DataRow drLogo = dsBaoCaoCC.Tables["BienNhanDonKH"].NewRow();
+                                DataRow drLogo = dsBaoCaoCC.Tables["BaoCao"].NewRow();
                                 drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
-                                dsBaoCaoCC.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+                                dsBaoCaoCC.Tables["BaoCao"].Rows.Add(drLogo);
                             }
                             else
                             {
@@ -301,7 +301,7 @@ namespace DocSo_PC.GUI.MaHoa
                                         dr["DV"] = en.DV;
                                 dr["MaDon"] = en.IDMaDon.ToString();
 
-                                dr["ChucVu"] = CNguoiDung.ChucVu.Replace(" PHÒNG", "");
+                                dr["ChucVu"] = CNguoiDung.ChucVu + "\n" + CNguoiDung.TenPhong;
                                 dr["NguoiKy"] = CNguoiDung.NguoiKy;
                                 dr["TenPhong"] = "";
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);

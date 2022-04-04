@@ -8,7 +8,7 @@ namespace DocSo_PC.DAL
 {
     class CThuongVu
     {
-        public static CConnection _cDAL = new CConnection("Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=db11@tanhoa");
+        public static CConnection _cDAL = new CConnection("Data Source=113.161.88.180,1133;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=db11@tanhoa");
         wrThuongVu.wsThuongVu _wsThuongVu = new wrThuongVu.wsThuongVu();
 
         public DataTable getDS_KTXM_ChuaNhan(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -69,7 +69,7 @@ namespace DocSo_PC.DAL
 
         public DataTable getGiaNuoc(string Nam)
         {
-            return _cDAL.ExecuteQuery_DataTable("select * from GiaNuoc2 where Nam=" + Nam);
+            return _cDAL.ExecuteQuery_DataTable("select * from GiaNuoc2 where Name=" + Nam);
         }
 
     }
