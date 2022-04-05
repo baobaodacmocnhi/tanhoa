@@ -149,23 +149,23 @@ namespace ThuTien.GUI.DongNuoc
             {
                 try
                 {
-                    _cDongNuoc.SqlBeginTransaction();
+                    //_cDongNuoc.SqlBeginTransaction();
                     DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
                     foreach (DataRow item in dt.Rows)
                         if (bool.Parse(item["In"].ToString()))
                             if (!_cDongNuoc.GiaoDongNuoc(decimal.Parse(item["MaDN"].ToString()), int.Parse(cmbNhanVienGiao.SelectedValue.ToString())))
                             {
-                                _cDongNuoc.SqlRollbackTransaction();
+                                //_cDongNuoc.SqlRollbackTransaction();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                    _cDongNuoc.SqlCommitTransaction();
+                    //_cDongNuoc.SqlCommitTransaction();
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    _cDongNuoc.SqlRollbackTransaction();
+                    //_cDongNuoc.SqlRollbackTransaction();
                     MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -189,41 +189,43 @@ namespace ThuTien.GUI.DongNuoc
             {
                 try
                 {
-                    _cDongNuoc.SqlBeginTransaction();
-                    DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
-                    foreach (DataRow item in dt.Rows)
-                        if (bool.Parse(item["In"].ToString()))
-                        {
-                            if (!_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(item["MaDN"].ToString()), int.Parse(item["MaNV_DongNuoc"].ToString())))
+                    //_cDongNuoc.SqlBeginTransaction();
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
+                        foreach (DataRow item in dt.Rows)
+                            if (bool.Parse(item["In"].ToString()))
                             {
-                                if (!_cDongNuoc.XoaGiaoDongNuoc(decimal.Parse(item["MaDN"].ToString())))
+                                if (item["MaNV_DongNuoc"].ToString() != "" && _cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(item["MaDN"].ToString()), int.Parse(item["MaNV_DongNuoc"].ToString())) == false)
                                 {
-                                    _cDongNuoc.SqlRollbackTransaction();
-                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
+                                    if (_cDongNuoc.XoaGiaoDongNuoc(decimal.Parse(item["MaDN"].ToString())) == false)
+                                    {
+                                        //_cDongNuoc.SqlRollbackTransaction();
+                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
                                 }
                             }
-                        }
-                    //DevExpress.XtraGrid.Views.Grid.GridView gv = ((DevExpress.XtraGrid.Views.Grid.GridView)gridControl.DefaultView);
-                    //int[] rows = gv.GetSelectedRows();
-                    //foreach (int i in rows)
-                    //    if (!_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(gv.GetDataRow(i)["MaDN"].ToString()), int.Parse(gv.GetDataRow(i)["MaNV_DongNuoc"].ToString())))
-                    //    {
-                    //        if (!_cDongNuoc.XoaGiaoDongNuoc(decimal.Parse(gv.GetDataRow(i)["MaDN"].ToString())))
-                    //        {
-                    //            _cDongNuoc.SqlRollbackTransaction();
-                    //            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //            return;
-                    //        }
-                    //    }
-                    _cDongNuoc.SqlCommitTransaction();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    gridControl.DataSource = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
-
+                        //DevExpress.XtraGrid.Views.Grid.GridView gv = ((DevExpress.XtraGrid.Views.Grid.GridView)gridControl.DefaultView);
+                        //int[] rows = gv.GetSelectedRows();
+                        //foreach (int i in rows)
+                        //    if (!_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(gv.GetDataRow(i)["MaDN"].ToString()), int.Parse(gv.GetDataRow(i)["MaNV_DongNuoc"].ToString())))
+                        //    {
+                        //        if (!_cDongNuoc.XoaGiaoDongNuoc(decimal.Parse(gv.GetDataRow(i)["MaDN"].ToString())))
+                        //        {
+                        //            _cDongNuoc.SqlRollbackTransaction();
+                        //            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //            return;
+                        //        }
+                        //    }
+                        //_cDongNuoc.SqlCommitTransaction();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        gridControl.DataSource = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                    }
                 }
                 catch (Exception ex)
                 {
-                    _cDongNuoc.SqlRollbackTransaction();
+                    //_cDongNuoc.SqlRollbackTransaction();
                     MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
