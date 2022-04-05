@@ -90,6 +90,22 @@ namespace DocSo_PC.DAL.MaHoa
             return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.TinhTrang == "Tồn (Điều Chỉnh)").ToList());
         }
 
+
+        public DataTable getDS_PhieuChuyenApp()
+        {
+            return _cDAL.LINQToDataTable(_db.MaHoa_PhieuChuyens.Where(item => item.App == true).ToList());
+        }
+
+        public DataTable getDS_PhieuChuyenPC()
+        {
+            return _cDAL.LINQToDataTable(_db.MaHoa_PhieuChuyens.Where(item => item.PC == true).ToList());
+        }
+
+        public DataTable getDS_PhieuChuyenAll()
+        {
+            return _cDAL.LINQToDataTable(_db.MaHoa_PhieuChuyens.ToList());
+        }
+
         #region Nơi Chuyển
 
         public DataTable getDS_NoiChuyen()

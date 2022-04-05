@@ -22020,6 +22020,10 @@ namespace DocSo_PC.LinQ
 		
 		private string _ToValue;
 		
+		private bool _PC;
+		
+		private bool _App;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.DateTime _CreateDate;
@@ -22042,6 +22046,10 @@ namespace DocSo_PC.LinQ
     partial void OnFromValueChanged();
     partial void OnToValueChanging(string value);
     partial void OnToValueChanged();
+    partial void OnPCChanging(bool value);
+    partial void OnPCChanged();
+    partial void OnAppChanging(bool value);
+    partial void OnAppChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.DateTime value);
@@ -22153,6 +22161,46 @@ namespace DocSo_PC.LinQ
 					this._ToValue = value;
 					this.SendPropertyChanged("ToValue");
 					this.OnToValueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PC", DbType="Bit NOT NULL")]
+		public bool PC
+		{
+			get
+			{
+				return this._PC;
+			}
+			set
+			{
+				if ((this._PC != value))
+				{
+					this.OnPCChanging(value);
+					this.SendPropertyChanging();
+					this._PC = value;
+					this.SendPropertyChanged("PC");
+					this.OnPCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_App", DbType="Bit NOT NULL")]
+		public bool App
+		{
+			get
+			{
+				return this._App;
+			}
+			set
+			{
+				if ((this._App != value))
+				{
+					this.OnAppChanging(value);
+					this.SendPropertyChanging();
+					this._App = value;
+					this.SendPropertyChanged("App");
+					this.OnAppChanged();
 				}
 			}
 		}

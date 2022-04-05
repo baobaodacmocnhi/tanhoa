@@ -59,7 +59,7 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.90.11:81/wsthutien.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://serverg8-01:81/wsthutien.asmx")]
         public string DocSo_PC_wrThuTien_wsThuTien {
             get {
                 return ((string)(this["DocSo_PC_wrThuTien_wsThuTien"]));
@@ -69,7 +69,7 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.90.11:81/wsdhn.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://serverg8-01:81/wsdhn.asmx")]
         public string DocSo_PC_wrDHN_wsDHN {
             get {
                 return ((string)(this["DocSo_PC_wrDHN_wsDHN"]));
@@ -90,7 +90,7 @@ namespace DocSo_PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.90.11:81/wsthuongvu.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://serverg8-01:81/wsthuongvu.asmx")]
         public string DocSo_PC_wrThuongVu_wsThuongVu {
             get {
                 return ((string)(this["DocSo_PC_wrThuongVu_wsThuongVu"]));

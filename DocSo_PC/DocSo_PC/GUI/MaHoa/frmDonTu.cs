@@ -55,6 +55,23 @@ namespace DocSo_PC.GUI.MaHoa
                 cmbKTXM_DSChuyenKTXM.DataSource = dt;
                 cmbKTXM_DSChuyenKTXM.ValueMember = "MaND";
                 cmbKTXM_DSChuyenKTXM.DisplayMember = "HoTen";
+                cmbNoiDung.DataSource = _cDonTu.getDS_PhieuChuyenPC();
+                cmbNoiDung.ValueMember = "Name";
+                cmbNoiDung.DisplayMember = "Name";
+                cmbNoiDung.SelectedIndex = -1;
+                dt = _cDonTu.getDS_PhieuChuyenAll();
+                string str = "";
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    if (str == "")
+                        str += dt.Rows[0]["Name"].ToString();
+                    else
+                        str += ";" + dt.Rows[0]["Name"].ToString();
+                }
+                chkcmbNoiDung.Properties.DataSource = _cDonTu.getDS_PhieuChuyenAll();
+                chkcmbNoiDung.Properties.ValueMember = "Name";
+                chkcmbNoiDung.Properties.DisplayMember = "Name";
+                chkcmbNoiDung.SetEditValue(str);
             }
             catch (Exception ex)
             {
@@ -272,7 +289,7 @@ namespace DocSo_PC.GUI.MaHoa
         private void cmbNoiDung_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbNoiDung.SelectedIndex >= 0)
-                txtNoiDung.Text = cmbNoiDung.SelectedItem.ToString();
+                txtNoiDung.Text = cmbNoiDung.SelectedValue.ToString();
             else
                 txtNoiDung.Text = "";
         }
@@ -475,5 +492,6 @@ namespace DocSo_PC.GUI.MaHoa
         }
 
         #endregion
+
     }
 }

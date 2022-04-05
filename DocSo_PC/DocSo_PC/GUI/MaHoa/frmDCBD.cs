@@ -90,19 +90,15 @@ namespace DocSo_PC.GUI.MaHoa
                                 ctdcbd.ThongTin = "Giá Biểu";
                                 ctdcbd.CongDung = item.Cells["GhiChu"].Value.ToString();
                                 ctdcbd.PhieuDuocKy = true;
-                                using (TransactionScope scope = new TransactionScope())
-                                    if (_cDCBD.Them(ctdcbd))
+                                if (_cDCBD.Them(ctdcbd))
+                                {
+                                    if (dontu != null)
                                     {
-                                        if (dontu != null)
+                                        _cDonTu.Them_LichSu(ctdcbd.CreateDate.Value, "DCBD", "Đã Điều Chỉnh Biến Động, " + ctdcbd.ThongTin, ctdcbd.ID, dontu.ID);
                                         {
-                                            if (_cDonTu.Them_LichSu(ctdcbd.CreateDate.Value, "DCBD", "Đã Điều Chỉnh Biến Động, " + ctdcbd.ThongTin, ctdcbd.ID, dontu.ID) == true)
-                                            {
-                                                scope.Complete();
-                                            }
                                         }
-                                        else
-                                            scope.Complete();
                                     }
+                                }
                             }
                         }
                     MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -188,7 +184,7 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DinhMucHN"] = en.DinhMucHN;
                             ///Biến Động
                             dr["GiaBieuBD"] = en.GiaBieu_BD;
-                            dr["ChucVu"] = CNguoiDung.ChucVu+"\n"+CNguoiDung.TenPhong;
+                            dr["ChucVu"] = CNguoiDung.ChucVu + "\n" + CNguoiDung.TenPhong;
                             dr["NguoiKy"] = CNguoiDung.NguoiKy;
                             dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
@@ -307,11 +303,9 @@ namespace DocSo_PC.GUI.MaHoa
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
                                 DataRow drLogo = dsBaoCao.Tables["BaoCao"].NewRow();
-                                drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                                drLogo["PathLogo"] =Application.StartupPath.ToString() + @"\Resources\logocongty.png";
                                 dsBaoCao.Tables["BaoCao"].Rows.Add(drLogo);
                             }
-
-
                         }
                     }
                 if (dsBaoCaoCC.Tables["DCBD"].Rows.Count > 0)
