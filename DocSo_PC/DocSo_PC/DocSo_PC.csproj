@@ -213,6 +213,18 @@
     <Compile Include="GUI\MaHoa\frmDonTu.Designer.cs">
       <DependentUpon>frmDonTu.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\MaHoa\frmTimKiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MaHoa\frmTimKiem.Designer.cs">
+      <DependentUpon>frmTimKiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MaHoa\frmToTrinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MaHoa\frmToTrinh.Designer.cs">
+      <DependentUpon>frmToTrinh.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QuanTri\frmNhanVienDocSo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -486,6 +498,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\MaHoa\frmDonTu.resx">
       <DependentUpon>frmDonTu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MaHoa\frmTimKiem.resx">
+      <DependentUpon>frmTimKiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MaHoa\frmToTrinh.resx">
+      <DependentUpon>frmToTrinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanTri\frmNhanVienDocSo.resx">
       <DependentUpon>frmNhanVienDocSo.cs</DependentUpon>

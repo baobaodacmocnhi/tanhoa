@@ -24,6 +24,7 @@ namespace DocSo_PC.GUI.MaHoa
         CDCBD _cDCBD = new CDCBD();
         CThuongVu _cThuongVu = new CThuongVu();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
+        MaHoa_DCBD _dcbd = null;
 
         public frmDCBD()
         {
@@ -34,6 +35,7 @@ namespace DocSo_PC.GUI.MaHoa
         {
             dgvDanhSach.AutoGenerateColumns = false;
             dgvDCBD.AutoGenerateColumns = false;
+            dgvHinh.AutoGenerateColumns = false;
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -77,9 +79,9 @@ namespace DocSo_PC.GUI.MaHoa
                                 ctdcbd.HoTen = dontu.HoTen;
                                 ctdcbd.DiaChi = dontu.DiaChi;
                                 ctdcbd.MaQuanPhuong = dontu.Quan + " " + dontu.Phuong;
-                                ctdcbd.Ky = dontu.Ky.ToString();
-                                ctdcbd.Nam = dontu.Nam.ToString();
-                                ctdcbd.Dot = dontu.Dot.ToString();
+                                ctdcbd.Ky = dontu.Ky;
+                                ctdcbd.Nam = dontu.Nam;
+                                ctdcbd.Dot = dontu.Dot;
                                 ctdcbd.Phuong = dontu.Phuong;
                                 ctdcbd.Quan = dontu.Quan;
                                 ctdcbd.GiaBieu = int.Parse(item.Cells["GiaBieuCu"].Value.ToString());
@@ -324,6 +326,89 @@ namespace DocSo_PC.GUI.MaHoa
                     frmShowBaoCao frm = new frmShowBaoCao(rpt);
                     frm.Show();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDCBD_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _dcbd = _cDCBD.get(int.Parse(dgvDCBD.Rows[e.RowIndex].Cells["ID_DS"].Value.ToString()));
+        }
+
+        private void btnChonFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+            dialog.Multiselect = false;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    byte[] bytes = _cDCBD.scanVanBan(dialog.FileName);
+                    if (_dcbd != null)
+                    {
+                        if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                        {
+                            MaHoa_DCBD_Hinh en = new MaHoa_DCBD_Hinh();
+                            en.IDParent = _dcbd.ID;
+                            en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
+                            en.Loai = System.IO.Path.GetExtension(dialog.FileName);
+                            if (_wsDHN.ghi_Hinh_MaHoa("KTXM", en.ID.ToString(), en.Name + en.Loai, bytes) == true)
+                                if (_cDCBD.Them_Hinh(en) == true)
+                                {
+                                    _cDCBD.Refresh();
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    var index = dgvHinh.Rows.Add();
+                                    dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
+                                    dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                                    dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
+                                }
+                        }
+                        else
+                            MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            byte[] hinh = _wsDHN.get_Hinh_MaHoa("KTXM", _dcbd.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+            if (hinh != null)
+                _cDCBD.LoadImageView(hinh);
+            else
+                MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvHinh_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            try
+            {
+                if (_dcbd != null)
+                    if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                    {
+                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            if (e.Row.Cells["ID_Hinh"].Value != null)
+                                if (_wsDHN.xoa_Hinh_MaHoa("KTXM", _dcbd.ID.ToString(), e.Row.Cells["Name_Hinh"].Value.ToString() + e.Row.Cells["Loai_Hinh"].Value.ToString()) == true)
+                                    if (_cDCBD.Xoa_Hinh(_cDCBD.get_Hinh(int.Parse(e.Row.Cells["ID_Hinh"].Value.ToString()))))
+                                    {
+                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        dgvHinh.Rows.RemoveAt(e.Row.Index);
+                                    }
+                                    else
+                                        MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

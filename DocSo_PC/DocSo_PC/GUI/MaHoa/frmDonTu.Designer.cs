@@ -537,7 +537,6 @@
             this.cmbKTXM.Name = "cmbKTXM";
             this.cmbKTXM.Size = new System.Drawing.Size(150, 21);
             this.cmbKTXM.TabIndex = 69;
-            this.cmbKTXM.SelectedIndexChanged += new System.EventHandler(this.cmbKTXM_SelectedIndexChanged);
             // 
             // cmbNoiNhan
             // 

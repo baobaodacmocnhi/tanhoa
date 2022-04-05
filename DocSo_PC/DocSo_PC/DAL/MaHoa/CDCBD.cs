@@ -106,5 +106,49 @@ namespace DocSo_PC.DAL.MaHoa
             return _cDAL.LINQToDataTable(query);
         }
 
+        #region Hình
+
+        public bool Them_Hinh(MaHoa_DCBD_Hinh en)
+        {
+            try
+            {
+                if (_db.MaHoa_DCBD_Hinhs.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = _db.MaHoa_DCBD_Hinhs.Max(item => item.ID) + 1;
+                en.CreateBy = CNguoiDung.MaND;
+                en.CreateDate = DateTime.Now;
+                _db.MaHoa_DCBD_Hinhs.InsertOnSubmit(en);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_Hinh(MaHoa_DCBD_Hinh en)
+        {
+            try
+            {
+                _db.MaHoa_DCBD_Hinhs.DeleteOnSubmit(en);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public MaHoa_DCBD_Hinh get_Hinh(int ID)
+        {
+            return _db.MaHoa_DCBD_Hinhs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        #endregion
     }
 }

@@ -90,7 +90,7 @@ namespace DocSo_PC.GUI.MaHoa
                 txtHopDong.Text = ctktxm.HopDong;
                 txtHoTen.Text = ctktxm.HoTen;
                 txtDiaChi.Text = ctktxm.DiaChi;
-                txtGiaBieu.Text = ctktxm.GiaBieu;
+                txtGiaBieu.Text = ctktxm.GiaBieu.Value.ToString();
                 if (ctktxm.DinhMuc != null)
                     txtDinhMuc.Text = ctktxm.DinhMuc.Value.ToString();
                 if (ctktxm.DinhMucHN != null)
@@ -304,16 +304,16 @@ namespace DocSo_PC.GUI.MaHoa
                     ctktxm.HopDong = txtHopDong.Text.Trim();
                     ctktxm.HoTen = txtHoTen.Text.Trim().ToUpper();
                     ctktxm.DiaChi = txtDiaChi.Text.Trim().ToUpper();
-                    ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
+                    ctktxm.GiaBieu =int.Parse( txtGiaBieu.Text.Trim());
                     if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
                         ctktxm.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                     if (!string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()))
                         ctktxm.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                     if (_hoadon != null)
                     {
-                        ctktxm.Dot = _hoadon.DOT.ToString();
-                        ctktxm.Ky = _hoadon.KY.ToString();
-                        ctktxm.Nam = _hoadon.NAM.ToString();
+                        ctktxm.Dot = _hoadon.DOT;
+                        ctktxm.Ky = _hoadon.KY;
+                        ctktxm.Nam = _hoadon.NAM;
                         ctktxm.Phuong = _hoadon.Phuong;
                         ctktxm.Quan = _hoadon.Quan;
                     }
@@ -438,16 +438,16 @@ namespace DocSo_PC.GUI.MaHoa
                         _ctktxm.HopDong = txtHopDong.Text.Trim();
                         _ctktxm.HoTen = txtHoTen.Text.Trim().ToUpper();
                         _ctktxm.DiaChi = txtDiaChi.Text.Trim().ToUpper();
-                        _ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
+                        _ctktxm.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                         if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
                             _ctktxm.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         if (!string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()))
                             _ctktxm.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                         if (_hoadon != null)
                         {
-                            _ctktxm.Dot = _hoadon.DOT.ToString();
-                            _ctktxm.Ky = _hoadon.KY.ToString();
-                            _ctktxm.Nam = _hoadon.NAM.ToString();
+                            _ctktxm.Dot = _hoadon.DOT;
+                            _ctktxm.Ky = _hoadon.KY;
+                            _ctktxm.Nam = _hoadon.NAM;
                             _ctktxm.Phuong = _hoadon.Phuong;
                             _ctktxm.Quan = _hoadon.Quan;
                         }
@@ -615,7 +615,6 @@ namespace DocSo_PC.GUI.MaHoa
                             MaHoa_KTXM_Hinh en = new MaHoa_KTXM_Hinh();
                             en.IDParent = _ctktxm.ID;
                             en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
-                            //en.Hinh = bytes;
                             en.Loai = System.IO.Path.GetExtension(dialog.FileName);
                             if (_wsDHN.ghi_Hinh_MaHoa("KTXM", en.ID.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cKTXM.Them_Hinh(en) == true)

@@ -70,6 +70,8 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.mnuToTrinh = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTimKiem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -272,7 +274,9 @@
             this.mnuMaHoa.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuDonTu,
             this.mnuKTXM,
-            this.mnuDieuChinhThongTin});
+            this.mnuDieuChinhThongTin,
+            this.mnuToTrinh,
+            this.mnuTimKiem});
             this.mnuMaHoa.Name = "mnuMaHoa";
             this.mnuMaHoa.Size = new System.Drawing.Size(61, 20);
             this.mnuMaHoa.Text = "Mã Hóa";
@@ -397,6 +401,20 @@
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // mnuToTrinh
+            // 
+            this.mnuToTrinh.Name = "mnuToTrinh";
+            this.mnuToTrinh.Size = new System.Drawing.Size(189, 22);
+            this.mnuToTrinh.Text = "Tờ Trình";
+            this.mnuToTrinh.Click += new System.EventHandler(this.mnuToTrinh_Click);
+            // 
+            // mnuTimKiem
+            // 
+            this.mnuTimKiem.Name = "mnuTimKiem";
+            this.mnuTimKiem.Size = new System.Drawing.Size(189, 22);
+            this.mnuTimKiem.Text = "Tìm Kiếm";
+            this.mnuTimKiem.Click += new System.EventHandler(this.mnuTimKiem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -468,6 +486,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDonTu;
         private System.Windows.Forms.ToolStripMenuItem mnuKTXM;
         private System.Windows.Forms.ToolStripMenuItem mnuDieuChinhThongTin;
+        private System.Windows.Forms.ToolStripMenuItem mnuToTrinh;
+        private System.Windows.Forms.ToolStripMenuItem mnuTimKiem;
     }
 }
 
